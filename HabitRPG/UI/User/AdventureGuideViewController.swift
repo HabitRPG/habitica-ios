@@ -110,8 +110,8 @@ class AdventureGuideAchievement: UIView, Themeable {
         }
     }
     
-    private let iconView: UIImageView = {
-        let view = UIImageView()
+    private let iconView: NetworkImageView = {
+        let view = NetworkImageView()
         view.contentMode = .center
         return view
     }()

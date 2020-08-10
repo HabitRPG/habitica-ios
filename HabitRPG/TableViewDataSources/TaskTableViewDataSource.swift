@@ -175,6 +175,10 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
                 action(indexPath)
             }
         }
+        
+        cell.challengeIconTapped = {[weak self] in
+            self?.showBrokenChallengeDialog(task: task)
+        }
     }
     
     internal func expandSelectedCell(indexPath: IndexPath) {
@@ -235,5 +239,20 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
             .observeCompleted {
                 SoundManager.shared.play(effect: soundEffect)
             })
+    }
+    
+    private func showBrokenChallengeDialog(task: TaskProtocol) {
+        repository.getChallengeTasks(id: task.challengeID ?? "").take(first: 1).on(value: { tasks in
+            let taskCount = tasks.value.count
+            let alert = HabiticaAlertController(title: L10n.brokenChallenge, message: L10n.brokenChallengeDescription(taskCount))
+            alert.addAction(title: L10n.keepXTasks(taskCount), style: .default, isMainAction: true) { _ in
+                self.repository.unlinkAllTasks(challengeID: task.challengeID ?? "", keepOption: "keep-all").observeCompleted {}
+            }
+            alert.addAction(title: L10n.deleteXTasks(taskCount), style: .destructive) { _ in
+                self.repository.unlinkAllTasks(challengeID: task.challengeID ?? "", keepOption: "remove-all").observeCompleted {}
+            }
+            alert.setCloseAction(title: L10n.close, handler: {})
+            alert.show()
+            }).start()
     }
 }

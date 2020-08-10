@@ -945,3 +945,11 @@
 "user_was_unblocked" = "You unblocked %s.";
 "gift_gems" = "Gift Gems";
 "gift_subscription" = "Gift Subscription";
+"broken_challenge" = "Broken Challenge";
+"broken_challenge_description" = "This is one of %d tasks that are part of a Challenge that no longer exists. What would you like to do with these left over tasks?";
+"keep_x_tasks" = "Keep %d Tasks";
+"delete_x_tasks" = "Delete %d Tasks";
+"delete_challenge_task" = "Delete Challenge Task?";
+"delete_challenge_task_description" = "This is one of %d tasks that are part of the “%s” Challenge. You must leave the Challenge to delete this task.";
+"leave_and_delete_task" = "Leave & Delete Task";
+"leave_and_delete_x_tasks" = "Leave & Delete %d Tasks";

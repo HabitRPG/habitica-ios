@@ -42,7 +42,7 @@ class QuestDetailViewController: BaseUIViewController {
     @IBOutlet weak var abortButton: UIButton!
     @IBOutlet weak var forceStartButton: UIButton!
     @IBOutlet weak var questBossView: UIStackView!
-    @IBOutlet weak var bossImageView: UIImageView!
+    @IBOutlet weak var bossImageView: NetworkImageView!
     @IBOutlet weak var bosNameLabel: UILabel!
     @IBOutlet weak var healthIconView: UIImageView!
     @IBOutlet weak var bossHealthlabel: UILabel!

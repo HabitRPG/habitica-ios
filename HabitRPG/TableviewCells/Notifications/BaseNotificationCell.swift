@@ -12,7 +12,7 @@ import Habitica_Models
 
 class BaseNotificationCell<NP>: UITableViewCell {
     
-    let iconView = UIImageView()
+    let iconView = NetworkImageView()
     internal let titleLabel: UILabel = {
         let label = UILabel()
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)

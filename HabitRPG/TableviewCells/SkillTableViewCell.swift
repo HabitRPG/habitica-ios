@@ -12,7 +12,7 @@ import Habitica_Models
 class SkillTableViewCell: UITableViewCell {
     
     @IBOutlet weak var containerView: UIView?
-    @IBOutlet weak var skillImageView: UIImageView!
+    @IBOutlet weak var skillImageView: NetworkImageView!
     @IBOutlet weak var buyButton: UIView!
     @IBOutlet weak var magicIconView: UIImageView?
     @IBOutlet weak var costLabel: UILabel?

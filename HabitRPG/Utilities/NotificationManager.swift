@@ -63,14 +63,14 @@ class NotificationManager {
         let iconStackView = UIStackView()
         iconStackView.axis = .horizontal
         iconStackView.spacing = 16
-        let eggView = UIImageView()
+        let eggView = NetworkImageView()
         eggView.setImagewith(name: "Pet_Egg_\(firstDropNotification.egg ?? "")")
         eggView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         eggView.cornerRadius = 4
         eggView.contentMode = .center
         iconStackView.addArrangedSubview(eggView)
         eggView.addWidthConstraint(width: 80)
-        let potionView = UIImageView()
+        let potionView = NetworkImageView()
         potionView.setImagewith(name: "Pet_HatchingPotion_\(firstDropNotification.hatchingPotion ?? "")")
         potionView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         potionView.cornerRadius = 4

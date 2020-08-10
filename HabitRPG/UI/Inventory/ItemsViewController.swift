@@ -132,7 +132,7 @@ class ItemsViewController: BaseTableViewController {
                     let alertController = HabiticaAlertController(title: quest.text)
                     let detailView = QuestDetailView(frame: CGRect.zero)
                     detailView.configure(quest: quest)
-                    let imageView = UIImageView()
+                    let imageView = NetworkImageView()
                     imageView.contentMode = .center
                     ImageManager.setImage(on: imageView, name: "quest_" + (quest.key ?? ""))
                     let textView = UITextView()

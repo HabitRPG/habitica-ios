@@ -58,6 +58,12 @@ public enum L10n {
   public static var bodySize: String { return L10n.tr("Mainstrings", "body_size") }
   /// Broad
   public static var broad: String { return L10n.tr("Mainstrings", "broad") }
+  /// Broken Challenge
+  public static var brokenChallenge: String { return L10n.tr("Mainstrings", "broken_challenge") }
+  /// This is one of %d tasks that are part of a Challenge that no longer exists. What would you like to do with these left over tasks?
+  public static func brokenChallengeDescription(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "broken_challenge_description", p1)
+  }
   /// Buffs
   public static var buffs: String { return L10n.tr("Mainstrings", "buffs") }
   /// buy
@@ -160,8 +166,18 @@ public enum L10n {
   public static var defeat: String { return L10n.tr("Mainstrings", "defeat") }
   /// Delete
   public static var delete: String { return L10n.tr("Mainstrings", "delete") }
+  /// Delete Challenge Task?
+  public static var deleteChallengeTask: String { return L10n.tr("Mainstrings", "delete_challenge_task") }
+  /// This is one of %d tasks that are part of the “%s” Challenge. You must leave the Challenge to delete this task.
+  public static func deleteChallengeTaskDescription(_ p1: Int, _ p2: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "delete_challenge_task_description", p1, p2)
+  }
   /// Delete Tasks
   public static var deleteTasks: String { return L10n.tr("Mainstrings", "delete_tasks") }
+  /// Delete %d Tasks
+  public static func deleteXTasks(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "delete_x_tasks", p1)
+  }
   /// Description
   public static var description: String { return L10n.tr("Mainstrings", "description") }
   /// Details
@@ -376,6 +392,10 @@ public enum L10n {
   public static var joinChallenge: String { return L10n.tr("Mainstrings", "join_challenge") }
   /// Keep Tasks
   public static var keepTasks: String { return L10n.tr("Mainstrings", "keep_tasks") }
+  /// Keep %d Tasks
+  public static func keepXTasks(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "keep_x_tasks", p1)
+  }
   /// Last Activity %@
   public static func lastActivity(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "last_activity", p1)
@@ -386,6 +406,12 @@ public enum L10n {
   public static var learnMore: String { return L10n.tr("Mainstrings", "learn_more") }
   /// Leave
   public static var leave: String { return L10n.tr("Mainstrings", "leave") }
+  /// Leave & Delete Task
+  public static var leaveAndDeleteTask: String { return L10n.tr("Mainstrings", "leave_and_delete_task") }
+  /// Leave & Delete %d Tasks
+  public static func leaveAndDeleteXTasks(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "leave_and_delete_x_tasks", p1)
+  }
   /// Leave Challenge
   public static var leaveChallenge: String { return L10n.tr("Mainstrings", "leave_challenge") }
   /// Do you want to leave the challenge and keep or delete the tasks?

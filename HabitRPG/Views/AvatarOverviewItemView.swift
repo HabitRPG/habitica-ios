@@ -9,8 +9,8 @@
 import Foundation
 
 class AvatarOverviewItemView: UIView {
-    var imageView: UIImageView = {
-        let imageView = UIImageView()
+    var imageView: NetworkImageView = {
+        let imageView = NetworkImageView()
         imageView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         imageView.layer.cornerRadius = 4
         imageView.contentMode = .center

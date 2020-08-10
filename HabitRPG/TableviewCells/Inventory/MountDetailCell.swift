@@ -11,7 +11,7 @@ import Habitica_Models
 
 class MountDetailCell: UICollectionViewCell {
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: NetworkImageView!
     
     func configure(mountItem: MountStableItem) {
         backgroundColor = ThemeService.shared.theme.contentBackgroundColor

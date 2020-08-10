@@ -10,7 +10,7 @@ import Foundation
 
 class ImageOverlayView: HabiticaAlertController {
     
-    private var imageView = UIImageView()
+    private var imageView = NetworkImageView()
     private var imageHeightConstraint: NSLayoutConstraint?
     
     var imageName: String? {

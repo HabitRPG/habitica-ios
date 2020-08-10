@@ -164,7 +164,7 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
             let detailLabel = cell.viewWithTag(2) as? UILabel
             detailLabel?.text = "\(ownedItems[(ownedItem.key ?? "") + (ownedItem.itemType ?? "")] ?? 0)"
             detailLabel?.textColor = theme.secondaryTextColor
-            let imageView = cell.viewWithTag(3) as? UIImageView
+            let imageView = cell.viewWithTag(3) as? NetworkImageView
             imageView?.setImagewith(name: ownedItem.imageName)
             
             imageView?.alpha = 1.0

@@ -155,7 +155,7 @@ class AvatarView: UIView {
         }
     }
     
-    var imageViews = [AnimatedImageView]()
+    var imageViews = [NetworkImageView]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -169,7 +169,7 @@ class AvatarView: UIView {
     
     private func setupSubviews() {
         viewOrder.forEach({ (_) in
-            let imageView = AnimatedImageView()
+            let imageView = NetworkImageView()
             addSubview(imageView)
             imageViews.append(imageView)
         })
@@ -200,7 +200,7 @@ class AvatarView: UIView {
         }
     }
     
-    private func setImage(_ imageView: UIImageView, type: String) {
+    private func setImage(_ imageView: NetworkImageView, type: String) {
         guard let name = nameDictionary[type] else {
             return
         }

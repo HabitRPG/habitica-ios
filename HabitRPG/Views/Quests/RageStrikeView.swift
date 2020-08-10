@@ -10,7 +10,7 @@ import UIKit
 
 class RageStrikeView: UIView {
     
-    let backgroundView = UIImageView()
+    let backgroundView = NetworkImageView()
     let borderView = UIImageView(image: #imageLiteral(resourceName: "rage_strike_pending"))
     
     var isActive = false {
@@ -131,8 +131,8 @@ class RageStrikeView: UIView {
             guard let contentView = Bundle.main.loadNibNamed("RageStrikeActiveContentView", owner: self, options: nil)?.first as? UIView else {
                 return
             }
-            let npcBackgroundView = contentView.viewWithTag(1) as? UIImageView
-            let npcSceneView = contentView.viewWithTag(2) as? UIImageView
+            let npcBackgroundView = contentView.viewWithTag(1) as? NetworkImageView
+            let npcSceneView = contentView.viewWithTag(2) as? NetworkImageView
             let label = contentView.viewWithTag(3) as? UITextView
             
             ImageManager.getImage(name: "\(locationIdentifier)_background_\(questIdentifier)") { (image, _) in

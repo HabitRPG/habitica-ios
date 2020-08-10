@@ -33,6 +33,7 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
 
     @objc var syncErrorTouched: (() -> Void)?
     @objc var openForm: (() -> Void)?
+    @objc var challengeIconTapped: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,6 +49,12 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         gestureRecognizer.delegate = self
         gestureRecognizer.cancelsTouchesInView = false
         subtitleLabel.addGestureRecognizer(gestureRecognizer)
+        
+        taskDetailLine.onChallengeIconTapped = {[weak self] in
+            if let action = self?.challengeIconTapped {
+                action()
+            }
+        }
         
         contentStartEdge = mainTaskWrapper.edge.start
         contentEndEdge = mainTaskWrapper.edge.end

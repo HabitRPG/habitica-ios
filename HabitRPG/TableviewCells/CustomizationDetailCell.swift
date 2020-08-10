@@ -11,7 +11,7 @@ import Habitica_Models
 
 class CustomizationDetailCell: UICollectionViewCell {
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: NetworkImageView!
     @IBOutlet weak var currencyView: HRPGCurrencyCountView!
     
     var isCustomizationSelected: Bool = false {

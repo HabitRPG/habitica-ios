@@ -28,6 +28,12 @@ class TaskDetailLineView: UIView {
     @IBOutlet weak var reminderIconView: UIImageView!
     @IBOutlet weak var reminderLabel: UILabel!
     
+    var challengeTapArea: UIView = {
+        let view = UIView()
+        view.isUserInteractionEnabled = true
+        return view
+    }()
+    
     private var iconColor: UIColor {
         return ThemeService.shared.theme.ternaryTextColor
     }
@@ -41,6 +47,7 @@ class TaskDetailLineView: UIView {
     var hasContent = true
     
     var checklistIndicatorTapped: (() -> Void)?
+    var onChallengeIconTapped: (() -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -63,6 +70,9 @@ class TaskDetailLineView: UIView {
             self.detailLabel.font = font
             self.streakLabel.font = font
             self.reminderLabel.font = font
+            
+            challengeIconView.addSubview(challengeTapArea)
+            challengeIconView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(challengeTapped)))
         }
     }
 
@@ -200,8 +210,10 @@ class TaskDetailLineView: UIView {
         challengeIconView.isHidden = !enabled
         if enabled {
             if broken != nil {
+                challengeIconView.isUserInteractionEnabled = true
                 challengeIconView.image = Asset.challengeBroken.image
             } else {
+                challengeIconView.isUserInteractionEnabled = false
                 challengeIconView.image = Asset.challenge.image
             }
             challengeIconView.tintColor = iconColor
@@ -244,7 +256,6 @@ class TaskDetailLineView: UIView {
         }
     }
 
-    
     override public var intrinsicContentSize: CGSize {
         var size = super.intrinsicContentSize
 
@@ -256,5 +267,16 @@ class TaskDetailLineView: UIView {
 
         return size
     }
-
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        challengeTapArea.frame = CGRect(x: -10, y: -10, width: challengeIconView.frame.size.width + 20, height: challengeIconView.frame.size.height + 20)
+    }
+    
+    @objc
+    func challengeTapped() {
+        if let action = onChallengeIconTapped {
+            action()
+        }
+    }
 }

@@ -11,7 +11,7 @@ import Habitica_Models
 
 class EquipmentCell: UITableViewCell {
     
-    @IBOutlet weak var gearImageView: UIImageView!
+    @IBOutlet weak var gearImageView: NetworkImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionlabel: UILabel!
     @IBOutlet weak var twoHandedSpacing: NSLayoutConstraint!

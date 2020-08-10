@@ -168,7 +168,7 @@ class UserProfileViewController: BaseTableViewController {
                 textView?.attributedText = try? Down(markdownString: member?.profile?.blurb ?? "").toHabiticaAttributedString()
             case 4:
                 if let imageUrl = member?.profile?.photoUrl {
-                    let imageView = cell.viewWithTag(1) as? UIImageView
+                    let imageView = cell.viewWithTag(1) as? NetworkImageView
                     imageView?.kf.setImage(with: URL(string: imageUrl))
                 }
             case 5:
@@ -298,7 +298,7 @@ class UserProfileViewController: BaseTableViewController {
         let typeLabel = cell.viewWithTag(1) as? UILabel
         let attributeLabel = cell.viewWithTag(2) as? UILabel
         let detailTextLabel = cell.viewWithTag(3) as? UILabel
-        let imageView = cell.viewWithTag(4) as? UIImageView
+        let imageView = cell.viewWithTag(4) as? NetworkImageView
         
         var equipmentKey: String?
         var typeName: String?

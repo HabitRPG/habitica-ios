@@ -11,7 +11,7 @@ import Habitica_Models
 
 class WorldBossMenuHeader: UIView {
     
-    @IBOutlet weak var bossImageView: UIImageView!
+    @IBOutlet weak var bossImageView: NetworkImageView!
     @IBOutlet weak var bossNameLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var hearthIconView: UIImageView!

@@ -48,8 +48,8 @@ class AchievementCell: UICollectionViewCell {
         label.numberOfLines = 0
         return label
     }()
-    private var iconView: UIImageView = {
-        let view = UIImageView()
+    private var iconView: NetworkImageView = {
+        let view = NetworkImageView()
         view.contentMode = .center
         return view
     }()

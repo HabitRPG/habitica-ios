@@ -69,7 +69,7 @@
                                 </label>
                             </subviews>
                         </stackView>
-                        <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="challenge" translatesAutoresizingMaskIntoConstraints="NO" id="bsa-9e-Xu0">
+                        <imageView alpha="0.25" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="challenge" translatesAutoresizingMaskIntoConstraints="NO" id="bsa-9e-Xu0">
                             <rect key="frame" x="279" y="2" width="18" height="12"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="12" id="8bc-Cy-VYw"/>
