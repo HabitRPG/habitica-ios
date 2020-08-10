@@ -206,6 +206,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         if !task.isValid {
             return Signal.empty
         }
+        
         let call = DeleteTaskCall(task: task)
         
         call.httpResponseSignal.observeValues {[weak self] (response) in
@@ -267,4 +268,21 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
             return self?.localRepository.getReminders(userID: userID) ?? SignalProducer.empty
         })
     }
+    
+    func getChallengeTasks(id challengeID: String) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
+            return self?.localRepository.getTasks(userID: userID,
+                                                  predicate: NSPredicate(format: "(challengeID == '\(challengeID)')"),
+                                                  sortKey: "order") ?? SignalProducer.empty
+        })
+    }
+    
+    func unlinkAllTasks(challengeID: String, keepOption: String) -> Signal<[TaskProtocol]?, Never> {
+        let call = UnlinkAllTasksCall(challengeID: challengeID, keepOption: keepOption)
+        return call.objectSignal.flatMap(.latest) {[weak self] _ in
+            return self?.retrieveTasks() ?? Signal.empty
+        }
+    }
+    
+    
 }

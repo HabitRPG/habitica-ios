@@ -86,6 +86,11 @@ class TaskFormViewController: FormViewController, Themeable {
             if let type = task.type, let newTaskType = TaskType(rawValue: type) {
                 taskType = newTaskType
             }
+            if let challengeID = task.challengeID {
+                socialRepository.retrieveChallenge(challengeID: challengeID).on(value: {[weak self] challenge in
+                    self?.challenge = challenge
+                }).observeCompleted {}
+            }
             let theme = ThemeService.shared.theme
             if isCreating {
                 if theme.isDark {
@@ -106,10 +111,12 @@ class TaskFormViewController: FormViewController, Themeable {
             }
         }
     }
+    var challenge: ChallengeProtocol?
     
     private let viewModel = TaskFormViewModel()
     private let taskRepository = TaskRepository()
     private let userRepository = UserRepository()
+    private let socialRepository = SocialRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     private let repeatablesSummaryInteractor = TaskRepeatablesSummaryInteractor()
     
@@ -844,6 +851,10 @@ class TaskFormViewController: FormViewController, Themeable {
     }
     
     private func deleteButtonTapped() {
+        if task.isChallengeTask {
+            showChallengeTaskDeleteDialog()
+            return
+        }
         let alertController = HabiticaAlertController(title: L10n.Tasks.Form.confirmDelete)
         alertController.addAction(title: L10n.delete, style: .default, isMainAction: true) {[weak self] (_) in
             if let task = self?.task {
@@ -861,5 +872,31 @@ class TaskFormViewController: FormViewController, Themeable {
             historyViewController.taskID = taskId
         }
         present(nc, animated: true, completion: nil)
+    }
+    
+    private func showChallengeTaskDeleteDialog() {
+        taskRepository.getChallengeTasks(id: task.challengeID ?? "").on(
+            value: { tasks in
+                let taskCount = tasks.value.count
+                let alert = HabiticaAlertController(title: L10n.deleteChallengeTask, message: L10n.deleteChallengeTaskDescription(taskCount, self.challenge?.name ?? "" ))
+                alert.addAction(title: L10n.leaveAndDeleteTask, style: .destructive, isMainAction: true, handler: { _ in
+                    self.socialRepository.leaveChallenge(challengeID: self.task.challengeID ?? "", keepTasks: true)
+                        .flatMap(.latest) { _ in
+                            return self.taskRepository.deleteTask(self.task)
+                    }
+                    .flatMap(.latest) { _ in
+                        return self.taskRepository.retrieveTasks()
+                    }.observeCompleted {}
+                })
+                alert.addAction(title: L10n.leaveAndDeleteXTasks(taskCount), style: .destructive, isMainAction: false, handler: { _ in
+                    self.socialRepository.leaveChallenge(challengeID: self.task.challengeID ?? "", keepTasks: false)
+                    .flatMap(.latest) { _ in
+                        return self.taskRepository.retrieveTasks()
+                    }.observeCompleted {}
+                })
+                alert.setCloseAction(title: L10n.close, handler: {})
+                alert.show()
+        }
+        ).start()
     }
 }
