@@ -36,6 +36,11 @@ class HabitTableViewCell: TaskTableViewCell {
         minusButton.action = {[weak self] in
             self?.scoreDown()
         }
+        
+        if !task.up && !task.down {
+            titleLabel.textColor = ThemeService.shared.theme.quadTextColor
+            subtitleLabel.textColor = ThemeService.shared.theme.quadTextColor
+        }
     }
     
     override func applyAccessibility(_ task: TaskProtocol) {

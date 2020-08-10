@@ -70,6 +70,7 @@ internal enum Asset {
   internal static let categorySkin = ImageAsset(name: "category_skin")
   internal static let challenge = ImageAsset(name: "challenge")
   internal static let challengeBroken = ImageAsset(name: "challenge_broken")
+  internal static let checkChecklist = ImageAsset(name: "check_checklist")
   internal static let checkboxChecked = ImageAsset(name: "checkbox_checked")
   internal static let checkboxUnchecked = ImageAsset(name: "checkbox_unchecked")
   internal static let checkmarkSmall = ImageAsset(name: "checkmark_small")

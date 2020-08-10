@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import ReactiveSwift
 
 class PartyViewController: SplitSocialViewController {
     
@@ -24,6 +25,8 @@ class PartyViewController: SplitSocialViewController {
     @IBOutlet weak var createPartyButton: UIButton!
     @IBOutlet weak var joinPartyTitle: UILabel!
     @IBOutlet weak var joinPartyDescriptionLabel: UILabel!
+    
+    var userDisposable: Disposable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +46,7 @@ class PartyViewController: SplitSocialViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        disposable.inner.add(userRepository.getUser()
+        userDisposable = userRepository.getUser()
             .on(value: {[weak self] user in
                 self?.userIDButton.setTitle("@\(user.username ?? "")", for: .normal)
                 self?.groupInvitationListView.set(invitations: user.invitations)
@@ -69,7 +72,14 @@ class PartyViewController: SplitSocialViewController {
             .on(failed: { error in
                 Crashlytics.sharedInstance().recordError(error)
             })
-            .start())
+            .start()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if userDisposable?.isDisposed == false {
+            userDisposable?.dispose()
+        }
+        super.viewWillDisappear(animated)
     }
     
     override func applyTheme(theme: Theme) {

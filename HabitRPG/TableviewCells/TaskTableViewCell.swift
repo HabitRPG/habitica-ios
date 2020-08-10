@@ -101,6 +101,8 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         mainTaskWrapper.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         titleLabel.backgroundColor = mainTaskWrapper.backgroundColor
         subtitleLabel.backgroundColor = mainTaskWrapper.backgroundColor
+        titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
+        subtitleLabel.textColor = ThemeService.shared.theme.ternaryTextColor
     }
     
     func applyAccessibility(_ task: TaskProtocol) {

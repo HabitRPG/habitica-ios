@@ -141,7 +141,9 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             if let task = self.item(at: indexPath) {
-                repository.deleteTask(task).observeCompleted {}
+                repository.deleteTask(task).observeCompleted {
+                    self.fetchTasks()
+                }
             }
         }
     }

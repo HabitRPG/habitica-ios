@@ -68,7 +68,6 @@ class CheckboxView: UIView {
     }()
     var checkView: UIImageView = {
         let view = UIImageView()
-        view.image = Asset.checkmarkSmall.image
         view.contentMode = .center
         return view
     }()
@@ -104,6 +103,7 @@ class CheckboxView: UIView {
     
     func configure(task: TaskProtocol) {
         checked = task.completed
+        checkView.image = Asset.checkmarkSmall.image
         if let layer = self.layer as? CheckmarkLayer {
             layer.drawPercentage = checked ? 1 : 0
         }
@@ -115,7 +115,7 @@ class CheckboxView: UIView {
             boxCornerRadius = 3
             if task.completed {
                 backgroundColor = theme.windowBackgroundColor
-                checkColor = theme.ternaryTextColor
+                checkColor = theme.dimmedTextColor
                 boxFillColor = theme.offsetBackgroundColor
             } else {
                 backgroundColor = theme.offsetBackgroundColor
@@ -130,9 +130,9 @@ class CheckboxView: UIView {
         } else {
             boxCornerRadius = size/2
             if task.completed {
-                boxFillColor = theme.dimmedTextColor
-                backgroundColor = theme.offsetBackgroundColor
-                checkColor = theme.ternaryTextColor
+                boxFillColor = theme.offsetBackgroundColor
+                boxFillColor = theme.offsetBackgroundColor
+                checkColor = theme.dimmedTextColor
             } else {
                 backgroundColor = UIColor.forTaskValueLight(Int(task.value))
                 checkColor = UIColor.forTaskValue(Int(task.value))
@@ -147,11 +147,12 @@ class CheckboxView: UIView {
         layer.setNeedsDisplay()
     }
     
-    func configure(checklistItem: ChecklistItemProtocol, withTitle: Bool, checkColor: UIColor) {
+    func configure(checklistItem: ChecklistItemProtocol, withTitle: Bool, checkColor: UIColor, taskType: String?) {
         size = 20
-        boxCornerRadius = 4
+        boxCornerRadius = taskType == TaskType.daily.rawValue ? 4 : (size/2)
         padding = 10
         checked = checklistItem.completed
+        checkView.image = Asset.checkChecklist.image
         if let layer = self.layer as? CheckmarkLayer {
             layer.drawPercentage = checked ? 1 : 0
         }

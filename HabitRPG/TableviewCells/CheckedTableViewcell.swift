@@ -30,7 +30,7 @@ class CheckedTableViewCell: TaskTableViewCell {
         if checklistIndicator.isHidden {
             return super.minHeight
         } else {
-            return 50
+            return 67
         }
     }
     
@@ -53,8 +53,7 @@ class CheckedTableViewCell: TaskTableViewCell {
         
         if task.completed {
             titleLabel.textColor = ThemeService.shared.theme.quadTextColor
-        } else {
-            titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
+            subtitleLabel.textColor = ThemeService.shared.theme.quadTextColor
         }
     }
     
@@ -90,7 +89,7 @@ class CheckedTableViewCell: TaskTableViewCell {
         }
         if isExpanded {
             addChecklistViews(task: task)
-            if task.completed || !task.isDue {
+            if task.completed || (task.type == TaskType.daily.rawValue && !task.isDue) {
                 checklistBoxBackground.backgroundColor = theme.offsetBackgroundColor
             } else {
                 checklistBoxBackground.backgroundColor = UIColor.forTaskValueExtraLight(Int(task.value))
@@ -103,14 +102,14 @@ class CheckedTableViewCell: TaskTableViewCell {
     
     private func addChecklistViews(task: TaskProtocol) {
         var checkColor = UIColor.white
-        if task.completed || !task.isDue {
+        if task.completed || (task.type == TaskType.daily.rawValue && !task.isDue) {
             checkColor = ThemeService.shared.theme.quadTextColor
         } else {
             checkColor = UIColor.forTaskValueDark(Int(task.value))
         }
         for item in task.checklist {
             let checkbox = CheckboxView()
-            checkbox.configure(checklistItem: item, withTitle: true, checkColor: checkColor)
+            checkbox.configure(checklistItem: item, withTitle: true, checkColor: checkColor, taskType: task.type)
             checklistContainer.addArrangedSubview(checkbox)
             checkbox.wasTouched = {[weak self] in
                 if let action = self?.checklistItemTouched {

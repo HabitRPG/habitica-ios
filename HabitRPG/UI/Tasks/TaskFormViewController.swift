@@ -875,7 +875,7 @@ class TaskFormViewController: FormViewController, Themeable {
     }
     
     private func showChallengeTaskDeleteDialog() {
-        taskRepository.getChallengeTasks(id: task.challengeID ?? "").on(
+        taskRepository.getChallengeTasks(id: task.challengeID ?? "").take(first: 1).on(
             value: { tasks in
                 let taskCount = tasks.value.count
                 let alert = HabiticaAlertController(title: L10n.deleteChallengeTask, message: L10n.deleteChallengeTaskDescription(taskCount, self.challenge?.name ?? "" ))

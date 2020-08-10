@@ -20,11 +20,6 @@
                         <rect key="frame" x="10" y="4" width="355" height="100"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2kE-Y1-vPl" customClass="HabitButton" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="157" y="0.0" width="40" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5z9-bI-agT">
                                 <rect key="frame" x="167" y="40" width="20" height="20"/>
                                 <subviews>
@@ -46,11 +41,6 @@
                                     <constraint firstAttribute="trailing" secondItem="KH9-Kh-uU2" secondAttribute="trailing" id="pxZ-4s-Do3"/>
                                     <constraint firstAttribute="bottom" secondItem="KH9-Kh-uU2" secondAttribute="bottom" id="x2E-3e-bIY"/>
                                 </constraints>
-                            </view>
-                            <view tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OhG-0e-MXk" customClass="HabitButton" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="157" y="0.0" width="40" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" fixedFrame="YES" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iKv-Jy-TLC">
                                 <rect key="frame" x="62" y="33" width="231" height="33"/>
@@ -74,6 +64,16 @@
                                 <rect key="frame" x="62" y="42" width="231" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2kE-Y1-vPl" customClass="HabitButton" customModule="Habitica" customModuleProvider="target">
+                                <rect key="frame" x="157" y="0.0" width="40" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OhG-0e-MXk" customClass="HabitButton" customModule="Habitica" customModuleProvider="target">
+                                <rect key="frame" x="157" y="0.0" width="40" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -183,7 +183,7 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
                 headerView.configure(customizationSet: set, isBackground: customizationType == "background")
                 if set.setItems?.contains(where: { (customization) -> Bool in
                     return !self.owns(customization: customization)
-                }) == true && set.setPrice != 0 && set.key?.contains("timeTravel") != true {
+                }) == true && set.setPrice != 0 && set.key?.contains("timeTravel") != true && set.key?.contains("incentive") != true {
                     headerView.purchaseButton.isHidden = false
                 } else {
                     headerView.purchaseButton.isHidden = true
