@@ -35,7 +35,7 @@ class QuestCompletedAlertController: HabiticaAlertController {
                 stackView.addArrangedSubview(detailView)
             }
             if let key = quest.key {
-                let imageView = UIImageView()
+                let imageView = NetworkImageView()
                 imageView.contentMode = .center
                 ImageManager.setImage(on: imageView, name: "quest_" + key)
                 stackView.addArrangedSubview(imageView)

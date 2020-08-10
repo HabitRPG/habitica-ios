@@ -73,7 +73,7 @@ class FeedViewDataSource: BaseReactiveTableViewDataSource<FoodProtocol>, FeedVie
             label?.text = ownedItem.text
             let detailLabel = cell.viewWithTag(2) as? UILabel
             detailLabel?.text = "\(ownedItems[(ownedItem.key ?? "") + (ownedItem.itemType ?? "")] ?? 0)"
-            let imageView = cell.viewWithTag(3) as? UIImageView
+            let imageView = cell.viewWithTag(3) as? NetworkImageView
             imageView?.setImagewith(name: ownedItem.imageName)
         }
         return cell

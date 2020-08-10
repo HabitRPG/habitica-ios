@@ -11,7 +11,7 @@ import Habitica_Models
 
 class PetDetailCell: UICollectionViewCell {
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: NetworkImageView!
     @IBOutlet weak var progressView: UIProgressView!
     
     func configure(petItem: PetStableItem) {

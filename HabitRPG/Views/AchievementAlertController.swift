@@ -25,8 +25,8 @@ class AchievementAlertController: HabiticaAlertController {
         view.spacing = 16
         return view
     }()
-    private let iconView: UIImageView = {
-        let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 52, height: 56))
+    private let iconView: NetworkImageView = {
+        let view = NetworkImageView(frame: CGRect(x: 0, y: 0, width: 52, height: 56))
         return view
     }()
     private let achievementTitleLabel: UILabel = {

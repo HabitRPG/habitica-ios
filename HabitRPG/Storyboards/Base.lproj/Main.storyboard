@@ -753,7 +753,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="108"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="USK-KR-4jY">
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="USK-KR-4jY" customClass="NetworkImageView" customModule="Habitica" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="USK-KR-4jY" secondAttribute="height" multiplier="1:1" id="K4H-I8-owE"/>
@@ -970,7 +970,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="96"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KEt-eV-vgw">
+                                        <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KEt-eV-vgw" customClass="NetworkImageView" customModule="Habitica" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="ayb-an-B0G"/>
@@ -1055,7 +1055,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="90" height="110"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wkk-JG-erq">
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wkk-JG-erq" customClass="NetworkImageView" customModule="Habitica" customModuleProvider="target">
                                             <rect key="frame" x="4.5" y="5.5" width="81" height="99"/>
                                             <color key="tintColor" red="0.88328301909999996" green="0.87696492670000004" blue="0.89030760529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
@@ -1108,7 +1108,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="96"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i4O-mB-OwI">
+                                        <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i4O-mB-OwI" customClass="NetworkImageView" customModule="Habitica" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="Fr7-cR-mU5"/>
@@ -1201,7 +1201,7 @@
                                             </constraints>
                                             <color key="trackTintColor" red="0.92813128229999997" green="0.92537832259999997" blue="0.93166613580000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </progressView>
-                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eoV-zR-Bm4">
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eoV-zR-Bm4" customClass="NetworkImageView" customModule="Habitica" customModuleProvider="target">
                                             <rect key="frame" x="2.5" y="0.0" width="81" height="90"/>
                                             <color key="tintColor" red="0.88328301909999996" green="0.87696492670000004" blue="0.89030760529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
@@ -1276,7 +1276,7 @@
                                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tnL-5m-eCi" customClass="AnimatedImageView" customModule="Kingfisher">
+                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tnL-5m-eCi" customClass="NetworkImageView" customModule="Habitica" customModuleProvider="target">
                                             <rect key="frame" x="8" y="0.0" width="68" height="68"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="68" id="FLy-AU-ha2"/>
@@ -1337,7 +1337,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uYF-on-EP6" customClass="AnimatedImageView" customModule="Kingfisher">
+                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uYF-on-EP6" customClass="NetworkImageView" customModule="Habitica" customModuleProvider="target">
                                             <rect key="frame" x="16" y="10" width="80" height="80"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="kBl-x5-qV3"/>
@@ -1752,7 +1752,7 @@
                             <rect key="frame" x="0.0" y="226.5" width="375" height="490"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qWw-qV-Dif">
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qWw-qV-Dif" customClass="NetworkImageView" customModule="Habitica" customModuleProvider="target">
                                     <rect key="frame" x="8" y="150.5" width="359" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="WMy-Bc-rwq"/>
@@ -2113,7 +2113,7 @@
                                             <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LPU-bD-OrN" customClass="AnimatedImageView" customModule="Kingfisher">
+                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LPU-bD-OrN" customClass="NetworkImageView" customModule="Habitica" customModuleProvider="target">
                                             <rect key="frame" x="8" y="0.0" width="68" height="68"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="68" id="dF9-9O-Zgd"/>
@@ -3287,7 +3287,7 @@
         <segue reference="WRT-c8-yJ5"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="jU9-l6-uQc"/>
-        <segue reference="qTg-hC-uiS"/>
+        <segue reference="nYO-SY-Og4"/>
         <segue reference="PHp-cT-md6"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -12,7 +12,7 @@ import Habitica_Models
 
 class QuestProgressView: UIView {
     
-    @IBOutlet weak var questImageView: UIImageView!
+    @IBOutlet weak var questImageView: NetworkImageView!
     @IBOutlet weak var healthProgressView: QuestProgressBarView!
     @IBOutlet weak var rageProgressView: QuestProgressBarView!
     @IBOutlet weak var backgroundView: UIImageView!

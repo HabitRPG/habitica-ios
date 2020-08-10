@@ -119,7 +119,6 @@
 		292DEEA5204F6F6C0086D5F7 /* DailyTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEA4204F6F6C0086D5F7 /* DailyTableViewDataSource.swift */; };
 		292DEEA7204F6F8C0086D5F7 /* TodoTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEA6204F6F8C0086D5F7 /* TodoTableViewDataSource.swift */; };
 		292F9662206E363000804151 /* GroupChatViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F9661206E363000804151 /* GroupChatViewDataSource.swift */; };
-		292F967E207239A700804151 /* ImageView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F967D207239A700804151 /* ImageView-Extensions.swift */; };
 		292F968020723A4D00804151 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F967F20723A4D00804151 /* ImageManager.swift */; };
 		292F968320724B1100804151 /* GuildsOverviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F968220724B1100804151 /* GuildsOverviewDataSource.swift */; };
 		2931150422D744ED00E4A9E3 /* AchievementsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931150322D744ED00E4A9E3 /* AchievementsCollectionViewController.swift */; };
@@ -176,6 +175,7 @@
 		295D42F620921F4200948E7E /* ClassSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D42F520921F4200948E7E /* ClassSelectionViewController.swift */; };
 		295D42F820922BA700948E7E /* ClassSelectionOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D42F720922BA700948E7E /* ClassSelectionOptionView.swift */; };
 		295E9DF420B456F100D58D45 /* FilterTableviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DF320B456F100D58D45 /* FilterTableviewDataSource.swift */; };
+		29617E0824E12A5300CF5EB4 /* NetworkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29617E0724E12A5300CF5EB4 /* NetworkImageView.swift */; };
 		29646DD6205BE4C10050886C /* TaskFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29646DD5205BE4C10050886C /* TaskFormViewModel.swift */; };
 		29646DE1205C18FA0050886C /* TaskType-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29646DE0205C18FA0050886C /* TaskType-Extensions.swift */; };
 		29646DE3205C1F390050886C /* TaskFormVisualEffectsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29646DE2205C1F390050886C /* TaskFormVisualEffectsModalViewController.swift */; };
@@ -747,7 +747,6 @@
 		292DEEA4204F6F6C0086D5F7 /* DailyTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTableViewDataSource.swift; sourceTree = "<group>"; };
 		292DEEA6204F6F8C0086D5F7 /* TodoTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewDataSource.swift; sourceTree = "<group>"; };
 		292F9661206E363000804151 /* GroupChatViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatViewDataSource.swift; sourceTree = "<group>"; };
-		292F967D207239A700804151 /* ImageView-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView-Extensions.swift"; sourceTree = "<group>"; };
 		292F967F20723A4D00804151 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		292F968220724B1100804151 /* GuildsOverviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildsOverviewDataSource.swift; sourceTree = "<group>"; };
 		2931150322D744ED00E4A9E3 /* AchievementsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -818,6 +817,7 @@
 		295D42F520921F4200948E7E /* ClassSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassSelectionViewController.swift; sourceTree = "<group>"; };
 		295D42F720922BA700948E7E /* ClassSelectionOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassSelectionOptionView.swift; sourceTree = "<group>"; };
 		295E9DF320B456F100D58D45 /* FilterTableviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableviewDataSource.swift; sourceTree = "<group>"; };
+		29617E0724E12A5300CF5EB4 /* NetworkImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImageView.swift; sourceTree = "<group>"; };
 		29646DD5205BE4C10050886C /* TaskFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormViewModel.swift; sourceTree = "<group>"; };
 		29646DE0205C18FA0050886C /* TaskType-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskType-Extensions.swift"; sourceTree = "<group>"; };
 		29646DE2205C1F390050886C /* TaskFormVisualEffectsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormVisualEffectsModalViewController.swift; sourceTree = "<group>"; };
@@ -2128,7 +2128,6 @@
 				D9BB45581E71AFAF0002AE2E /* Down-Extensions.swift */,
 				D9525F9E1E65A18300C529B8 /* EmojifiedString.swift */,
 				D95704421E1528F2004F6804 /* Event-Extensions.swift */,
-				292F967D207239A700804151 /* ImageView-Extensions.swift */,
 				29A06E1C23ED4125003BADE9 /* InAppRewardProtocol-Extensions.swift */,
 				291448872088F3F700F3A6B5 /* NSAttributedString.swift */,
 				29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */,
@@ -2484,6 +2483,7 @@
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
 				29C38C8424A2466400F219A1 /* AdventureGuidePromoView.swift */,
 				29C38C8A24A48F9D00F219A1 /* AchievementAlertController.swift */,
+				29617E0724E12A5300CF5EB4 /* NetworkImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3466,7 +3466,6 @@
 				494E53FE1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.m in Sources */,
 				498E4CFF1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.swift in Sources */,
 				297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */,
-				292F967E207239A700804151 /* ImageView-Extensions.swift in Sources */,
 				2914485B2084E61400F3A6B5 /* MountOverviewDataSource.swift in Sources */,
 				291E95AF20988025006EE585 /* NewsViewController.swift in Sources */,
 				29FC5A6B20406932008E88C8 /* GuidelinesViewController.swift in Sources */,
@@ -3623,6 +3622,7 @@
 				D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */,
 				292DEE76204E053D0086D5F7 /* HabitButton.swift in Sources */,
 				292D6C9B2101FF080078288A /* InviteMembersViewController.swift in Sources */,
+				29617E0824E12A5300CF5EB4 /* NetworkImageView.swift in Sources */,
 				29028C392034ABAF00B7F704 /* TaskRepositoryImpl.swift in Sources */,
 				D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */,
 				D94AADBA192A5CE700546C8E /* HRPGSpellTabBarController.m in Sources */,
@@ -4088,7 +4088,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 481;
+				CURRENT_PROJECT_VERSION = 483;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4097,7 +4097,7 @@
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.10.1;
+				MARKETING_VERSION = 2.11;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-IntentsUI";
@@ -4123,7 +4123,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 481;
+				CURRENT_PROJECT_VERSION = 483;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4132,7 +4132,7 @@
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.10.1;
+				MARKETING_VERSION = 2.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-IntentsUI";
@@ -4157,7 +4157,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 481;
+				CURRENT_PROJECT_VERSION = 483;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4166,7 +4166,7 @@
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.10.1;
+				MARKETING_VERSION = 2.11;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
@@ -4194,7 +4194,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 481;
+				CURRENT_PROJECT_VERSION = 483;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4203,7 +4203,7 @@
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.10.1;
+				MARKETING_VERSION = 2.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
@@ -4456,7 +4456,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 481;
+				CURRENT_PROJECT_VERSION = 483;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4511,7 +4511,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 481;
+				CURRENT_PROJECT_VERSION = 483;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4541,7 +4541,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 481;
+				CURRENT_PROJECT_VERSION = 483;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -4585,7 +4585,7 @@
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.10.1;
+				MARKETING_VERSION = 2.11;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -4634,7 +4634,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 481;
+				CURRENT_PROJECT_VERSION = 483;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";
@@ -4678,7 +4678,7 @@
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.10.1;
+				MARKETING_VERSION = 2.11;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",

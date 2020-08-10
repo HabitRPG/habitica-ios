@@ -10,8 +10,8 @@ import UIKit
 import Habitica_Models
 
 class NPCBannerView: UIView {
-    @IBOutlet weak var bgImageView: UIImageView!
-    @IBOutlet weak var foregroundImageView: UIImageView!
+    @IBOutlet weak var bgImageView: NetworkImageView!
+    @IBOutlet weak var foregroundImageView: NetworkImageView!
     @IBOutlet weak var notesLabel: UILabel!
     @IBOutlet weak var npcNameLabel: UILabel!
     @IBOutlet weak var plaqueImageView: UIImageView!

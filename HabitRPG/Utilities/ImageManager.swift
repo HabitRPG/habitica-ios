@@ -43,11 +43,17 @@ class ImageManager: NSObject {
     ]
     
     @objc
-    static func setImage(on imageView: ImageView, name: String, extension fileExtension: String = "", completion: ((UIImage?, NSError?) -> Void)? = nil) {
+    static func setImage(on imageView: NetworkImageView, name: String, extension fileExtension: String = "", completion: ((UIImage?, NSError?) -> Void)? = nil) {
+        if imageView.loadedImageName != name {
+            imageView.image = nil
+        }
+        imageView.loadedImageName = name
         getImage(name: name, extension: fileExtension) { (image, error) in
-            imageView.image = image
-            if let action = completion {
-                action(image, error)
+            if imageView.loadedImageName == name {
+                imageView.image = image
+                if let action = completion {
+                    action(image, error)
+                }
             }
         }
     }

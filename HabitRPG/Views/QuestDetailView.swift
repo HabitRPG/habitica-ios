@@ -89,7 +89,7 @@ class QuestDetailView: UIView, Themeable {
     func makeRewardView(title: String?, imageName: String) -> UIView {
         if let view = UIView.fromNib(nibName: "QuestDetailRewardView") {
             view.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-            if let imageView = view.viewWithTag(1) as? UIImageView {
+            if let imageView = view.viewWithTag(1) as? NetworkImageView {
                 imageView.setImagewith(name: imageName)
             }
             if let label = view.viewWithTag(2) as? UILabel {

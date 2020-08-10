@@ -10,7 +10,7 @@ import Foundation
 
 class StableOverviewCell: UICollectionViewCell {
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: NetworkImageView!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
     

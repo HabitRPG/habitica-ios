@@ -11,8 +11,8 @@ import Habitica_Models
 
 class QuestTitleView: UIView {
     
-    let imageView: UIImageView = {
-        let view = UIImageView()
+    let imageView: NetworkImageView = {
+        let view = NetworkImageView()
         view.cornerRadius = 6
         view.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         return view
