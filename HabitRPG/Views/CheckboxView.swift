@@ -130,7 +130,7 @@ class CheckboxView: UIView {
         } else {
             boxCornerRadius = size/2
             if task.completed {
-                boxFillColor = theme.offsetBackgroundColor
+                backgroundColor = theme.windowBackgroundColor
                 boxFillColor = theme.offsetBackgroundColor
                 checkColor = theme.dimmedTextColor
             } else {

@@ -71,6 +71,9 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
     
     var user: UserProtocol? {
         didSet {
+            if user?.isValid != true {
+                return
+            }
             if let user = self.user {
                 avatarView.avatar = AvatarViewModel(avatar: user)
             }
@@ -107,7 +110,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         avatarView.showPet = false
         avatarView.size = .regular
         
-        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
         }).start())
         

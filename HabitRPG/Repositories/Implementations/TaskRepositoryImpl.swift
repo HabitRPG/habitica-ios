@@ -76,6 +76,9 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     
     func score(task: TaskProtocol, direction: TaskScoringDirection) -> Signal<TaskResponseProtocol?, Never> {
         if !task.isValid { return Signal.empty }
+        if #available(iOS 10, *) {
+            UIImpactFeedbackGenerator.oneShotImpactOccurred(.light)
+        }
         return ScoreTaskCall(task: task, direction: direction).objectSignal.withLatest(from: localRepository.getUserStats(id: AuthenticationManager.shared.currentUserId ?? "")
             .flatMapError({ (_) in
             return SignalProducer.empty
@@ -109,11 +112,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
                                           background: healthDiff >= 0 ? .green : .red)
                 ToastManager.show(toast: toastView)
             }
-            
-            if #available(iOS 10, *) {
-                UIImpactFeedbackGenerator.oneShotImpactOccurred(.light)
-            }
-            
+
             if let drop = response.temp?.drop {
                 var dialog = drop.dialog
                 if dialog == nil {

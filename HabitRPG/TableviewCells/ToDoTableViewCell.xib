@@ -70,6 +70,11 @@
                                     <constraint firstAttribute="trailing" secondItem="gcs-R1-Xfj" secondAttribute="trailing" id="kYy-eg-OcD"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kbr-Vp-0I1">
+                                <rect key="frame" x="57" y="2" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HCj-nK-d47">
                                 <rect key="frame" x="57" y="2" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -129,6 +134,7 @@
                 <outlet property="checklistDoneLabel" destination="kVR-N3-Q4f" id="jdD-aL-ANb"/>
                 <outlet property="checklistIndicator" destination="VhA-oi-hZQ" id="tjV-mV-5kL"/>
                 <outlet property="checklistIndicatorSeparator" destination="QiL-nq-MeX" id="s13-eW-LOl"/>
+                <outlet property="checklistTapArea" destination="kbr-Vp-0I1" id="RFY-B4-8gh"/>
                 <outlet property="checklistTotalLabel" destination="sVg-pl-3cA" id="dD7-BX-wtb"/>
                 <outlet property="mainTaskWrapper" destination="kZt-Pf-hDf" id="Bfr-l2-sRa"/>
                 <outlet property="subtitleLabel" destination="SBb-l7-Ilu" id="31h-ho-nhg"/>

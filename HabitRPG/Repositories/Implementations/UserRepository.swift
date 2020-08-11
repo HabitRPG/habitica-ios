@@ -286,9 +286,9 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     func retrieveInAppRewards() -> Signal<[InAppRewardProtocol]?, Never> {
         let call = RetrieveInAppRewardsCall(language: LanguageHandler.getAppLanguage().code)
         
-        return call.arraySignal.on(value: {[weak self] inAppRewards in
-            if let userID = self?.currentUserId, let inAppRewards = inAppRewards {
-                self?.localRepository.save(userID: userID, inAppRewards: inAppRewards)
+        return call.arraySignal.on(value: { inAppRewards in
+            if let userID = self.currentUserId, let inAppRewards = inAppRewards {
+                self.localRepository.save(userID: userID, inAppRewards: inAppRewards)
             }
         })
     }

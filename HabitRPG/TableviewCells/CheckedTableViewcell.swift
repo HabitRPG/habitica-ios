@@ -18,6 +18,7 @@ class CheckedTableViewCell: TaskTableViewCell {
     @IBOutlet weak var checklistIndicatorSeparator: UIView!
     @IBOutlet weak var checklistDoneLabel: UILabel!
     @IBOutlet weak var checklistTotalLabel: UILabel!
+    @IBOutlet weak var checklistTapArea: UIView!
     @IBOutlet weak var checklistBoxBackground: UIView!
     
     weak var task: TaskProtocol?
@@ -38,7 +39,7 @@ class CheckedTableViewCell: TaskTableViewCell {
         super.awakeFromNib()
         contentStartEdge = checkBox.edge.end
         
-        checklistIndicator.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(expandTask)))
+        checklistTapArea.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(expandTask)))
     }
     
     override func configure(task: TaskProtocol) {
@@ -80,8 +81,10 @@ class CheckedTableViewCell: TaskTableViewCell {
                 checklistIndicatorSeparator.backgroundColor = theme.lightTextColor
             }
             checklistIndicator.isHidden = false
+            checklistTapArea.isHidden = false
         } else {
             checklistIndicator.isHidden = true
+            checklistTapArea.isHidden = true
         }
 
         checklistContainer.arrangedSubviews.forEach { (view) in
@@ -193,6 +196,7 @@ class CheckedTableViewCell: TaskTableViewCell {
             checklistIndicatorSeparator.pin.width(12).height(1).center()
             checklistDoneLabel.pin.above(of: checklistIndicatorSeparator).marginBottom(2).start().end().sizeToFit(.width)
             checklistTotalLabel.pin.below(of: checklistIndicatorSeparator).marginTop(2).start().end().sizeToFit(.width)
+            checklistTapArea.pin.start(to: checklistIndicator.edge.start).end(to: checklistIndicator.edge.end).margin(0, -15).top().bottom()
         }
         
         if isExpanded {

@@ -56,6 +56,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P42-Su-ys7">
+                                <rect key="frame" x="57" y="-7" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uG-Fs-lZB">
                                 <rect key="frame" x="289" y="47" width="20" height="20"/>
                                 <subviews>
@@ -128,6 +133,7 @@
                 <outlet property="checklistDoneLabel" destination="fsF-Bc-klr" id="Efl-fz-DgW"/>
                 <outlet property="checklistIndicator" destination="vIn-t1-fNp" id="Obd-Mt-oHk"/>
                 <outlet property="checklistIndicatorSeparator" destination="yxJ-at-XsQ" id="9jn-Cu-cob"/>
+                <outlet property="checklistTapArea" destination="P42-Su-ys7" id="h4x-lI-MLk"/>
                 <outlet property="checklistTotalLabel" destination="KHK-7B-5ok" id="3sx-RZ-g14"/>
                 <outlet property="mainTaskWrapper" destination="5OU-DP-IHx" id="fz2-uh-FuN"/>
                 <outlet property="subtitleLabel" destination="Pov-Qx-SNY" id="nyy-KW-znk"/>
