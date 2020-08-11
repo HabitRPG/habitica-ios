@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="464" height="127"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XSH-GM-86g" id="QoR-9C-CZD">
-                <rect key="frame" x="0.0" y="0.0" width="464" height="126.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="464" height="127"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ISS-gO-fwb">
@@ -54,7 +52,7 @@
                                 <color key="textColor" red="0.64723795650000004" green="0.63275462390000003" blue="0.67308568950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" fixedFrame="YES" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TbF-Ge-g2M">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" fixedFrame="YES" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TbF-Ge-g2M" customClass="LinksOnlyTextView" customModule="Habitica" customModuleProvider="target">
                                 <rect key="frame" x="8" y="43" width="377" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -177,7 +175,7 @@
                 <outlet property="copyButton" destination="G1R-RL-d8l" id="sPR-xx-sL5"/>
                 <outlet property="deleteButton" destination="dUD-VU-Sa0" id="Gfd-tq-BVV"/>
                 <outlet property="displaynameLabel" destination="YoQ-TM-ipq" id="VgH-YO-VP6"/>
-                <outlet property="messageTextView" destination="TbF-Ge-g2M" id="ej9-Rj-7Cp"/>
+                <outlet property="messageTextView" destination="TbF-Ge-g2M" id="cUe-by-1ED"/>
                 <outlet property="messageWrapper" destination="73G-Ol-XzR" id="vXg-1a-Qzj"/>
                 <outlet property="plusOneButton" destination="bFH-4J-Pe0" id="h50-yg-naf"/>
                 <outlet property="positionLabel" destination="rx1-HL-DWe" id="YvB-bG-FUT"/>
