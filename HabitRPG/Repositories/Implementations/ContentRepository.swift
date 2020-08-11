@@ -42,6 +42,14 @@ class ContentRepository: BaseRepository<ContentLocalRepository> {
         return localRepository.getSkills(habitClass: habitClass)
     }
     
+    func retrieveHallOfContributors() -> Signal<[MemberProtocol]?, Never> {
+        return RetrieveHallOfContributorsCall().arraySignal
+    }
+    
+    func retrieveHallOfPatrons() -> Signal<[MemberProtocol]?, Never> {
+        return RetrieveHallOfPatronsCall().arraySignal
+    }
+    
     func clearDatabase() {
         localRepository.clearDatabase()
         ImageManager.clearImageCache()

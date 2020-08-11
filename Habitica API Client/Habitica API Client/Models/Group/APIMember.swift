@@ -15,6 +15,7 @@ public class APIMember: MemberProtocol, Decodable {
     public var preferences: PreferencesProtocol?
     public var profile: ProfileProtocol?
     public var contributor: ContributorProtocol?
+    public var backer: BackerProtocol?
     public var items: UserItemsProtocol?
     public var party: UserPartyProtocol?
     public var flags: FlagsProtocol?
@@ -23,11 +24,13 @@ public class APIMember: MemberProtocol, Decodable {
     
     enum CodingKeys: String, CodingKey {
         case id
+        case uid = "_id"
         case stats
         case flags
         case preferences
         case profile
         case contributor
+        case backer
         case items
         case party
         case authentication = "auth"
@@ -36,10 +39,14 @@ public class APIMember: MemberProtocol, Decodable {
     public required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try? values.decode(String.self, forKey: .id)
+        if id == nil {
+            id = try? values.decode(String.self, forKey: .uid)
+        }
         stats = (try? values.decode(APIStats.self, forKey: .stats))
         preferences = (try? values.decode(APIPreferences.self, forKey: .preferences))
         profile = (try? values.decode(APIProfile.self, forKey: .profile))
         contributor = (try? values.decode(APIContributor.self, forKey: .contributor))
+        backer = (try? values.decode(APIBacker.self, forKey: .backer))
         items = (try? values.decode(APIMemberItems.self, forKey: .items))
         party = try? values.decode(APIUserParty.self, forKey: .party)
         flags = try? values.decode(APIFlags.self, forKey: .flags)

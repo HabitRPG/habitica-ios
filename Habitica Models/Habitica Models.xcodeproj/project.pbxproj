@@ -40,6 +40,7 @@
 		2914489C208A335C00F3A6B5 /* CustomizationSetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914489B208A335C00F3A6B5 /* CustomizationSetProtocol.swift */; };
 		291DE978209B43920073182A /* QuestParticipantProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DE977209B43920073182A /* QuestParticipantProtocol.swift */; };
 		291E95B120988706006EE585 /* UserPartyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95B020988706006EE585 /* UserPartyProtocol.swift */; };
+		2927025024E3060600BCAA77 /* BackerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927024F24E3060600BCAA77 /* BackerProtocol.swift */; };
 		2927269A20B6FB61009DD08A /* ChallengeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927269920B6FB61009DD08A /* ChallengeProtocol.swift */; };
 		2927269C20B6FD34009DD08A /* ChallengeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927269B20B6FD34009DD08A /* ChallengeCategory.swift */; };
 		292726B020B70429009DD08A /* ChallengeMembershipProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726AF20B70429009DD08A /* ChallengeMembershipProtocol.swift */; };
@@ -169,6 +170,7 @@
 		2914489B208A335C00F3A6B5 /* CustomizationSetProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationSetProtocol.swift; sourceTree = "<group>"; };
 		291DE977209B43920073182A /* QuestParticipantProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestParticipantProtocol.swift; sourceTree = "<group>"; };
 		291E95B020988706006EE585 /* UserPartyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPartyProtocol.swift; sourceTree = "<group>"; };
+		2927024F24E3060600BCAA77 /* BackerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackerProtocol.swift; sourceTree = "<group>"; };
 		2927269920B6FB61009DD08A /* ChallengeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeProtocol.swift; sourceTree = "<group>"; };
 		2927269B20B6FD34009DD08A /* ChallengeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCategory.swift; sourceTree = "<group>"; };
 		292726AF20B70429009DD08A /* ChallengeMembershipProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeMembershipProtocol.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 				291E95B020988706006EE585 /* UserPartyProtocol.swift */,
 				29323E0F20504DA600AC6D6F /* UserProtocol.swift */,
 				29C38C7E24A2321400F219A1 /* UserAchievementsProtocol.swift */,
+				2927024F24E3060600BCAA77 /* BackerProtocol.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -662,6 +665,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29323E4F2052F68A00AC6D6F /* UserGearProtocol.swift in Sources */,
+				2927025024E3060600BCAA77 /* BackerProtocol.swift in Sources */,
 				292DEE7A204E36F60086D5F7 /* TagProtocol.swift in Sources */,
 				295BC6EB226F111B00DDDF1A /* NotificationNewsProtocol.swift in Sources */,
 				298CB21120AF0722006DA349 /* QuestDropItemProtocol.swift in Sources */,

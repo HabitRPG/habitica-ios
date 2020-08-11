@@ -56,7 +56,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,6 +71,8 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         } else if section == 2 {
             count = 2
         } else if section == 3 {
+            count = 3
+        } else if section == 4 {
             count = 2
             if !HabiticaAppDelegate.isRunningLive() {
                 count += 1
@@ -82,7 +84,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cellStyle = UITableViewCell.CellStyle.default
-        if indexPath.section == 0 || indexPath.section == 2 {
+        if indexPath.section == 0 || indexPath.section == 3 {
             cellStyle = UITableViewCell.CellStyle.value1
         }
         let cell = UITableViewCell(style: cellStyle, reuseIdentifier: "Cell")
@@ -113,13 +115,22 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
             }
         } else if indexPath.section == 2 {
             if indexPath.item == 0 {
+                cell.textLabel?.text = L10n.Titles.hallOfContributors
+            } else if indexPath.item == 1 {
+                cell.textLabel?.text = L10n.Titles.hallOfPatrons
+            }
+        } else if indexPath.section == 3 {
+            if indexPath.item == 0 {
                 cell.textLabel?.text = L10n.About.website
                 cell.detailTextLabel?.text = "habitica.com"
             } else if indexPath.item == 1 {
                 cell.textLabel?.text = "Twitter"
                 cell.detailTextLabel?.text = "@habitica"
-            }
-        } else if indexPath.section == 3 {
+            } else if indexPath.item == 2 {
+               cell.textLabel?.text = "Instagram"
+               cell.detailTextLabel?.text = "@habitica"
+           }
+        } else if indexPath.section == 4 {
             if indexPath.item == 0 {
                 cell.textLabel?.text = L10n.About.viewSourceCode
             } else if indexPath.item == 1 {
@@ -149,11 +160,19 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
             }
         } else if indexPath.section == 2 {
             if indexPath.item == 0 {
+                perform(segue: StoryboardSegue.Main.hallOfContributorsSegue)
+            } else if indexPath.item == 1 {
+                perform(segue: StoryboardSegue.Main.hallOfPatronsSegue)
+            }
+        } else if indexPath.section == 3 {
+            if indexPath.item == 0 {
                 open(url: "https://habitica.com/")
             } else if indexPath.item == 1 {
                 open(url: "https://twitter.com/habitica")
-            }
-        } else if indexPath.section == 3 {
+            } else if indexPath.item == 2 {
+               open(url: "https://instagram.com/habitica")
+           }
+        } else if indexPath.section == 4 {
             if indexPath.item == 0 {
                 open(url: "https://github.com/habitRPG/habitica-ios")
             } else if indexPath.item == 1 {

@@ -22,6 +22,7 @@ public protocol UserProtocol: AvatarProtocol {
     var flags: FlagsProtocol? { get set }
     var profile: ProfileProtocol? { get set }
     var contributor: ContributorProtocol? { get set }
+    var backer: BackerProtocol? { get set }
     var balance: Float { get set }
     var tasksOrder: [String: [String]] { get set }
     var tags: [TagProtocol] { get set }

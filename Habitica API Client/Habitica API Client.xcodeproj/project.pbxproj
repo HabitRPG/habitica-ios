@@ -72,6 +72,9 @@
 		291E1A28209B704A00BA1FFB /* CancelQuestInvitationCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E1A27209B704A00BA1FFB /* CancelQuestInvitationCall.swift */; };
 		291E95AD20986CDE006EE585 /* DateEncodingStrategy-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95AC20986CDE006EE585 /* DateEncodingStrategy-Extension.swift */; };
 		291E95B5209888E1006EE585 /* APIUserParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95B4209888E1006EE585 /* APIUserParty.swift */; };
+		2927024124E2D3DF00BCAA77 /* RetrieveHallOfContributorsCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927024024E2D3DF00BCAA77 /* RetrieveHallOfContributorsCall.swift */; };
+		2927024824E3035800BCAA77 /* RetrieveHallOfPatronsCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927024724E3035800BCAA77 /* RetrieveHallOfPatronsCall.swift */; };
+		2927024E24E3059200BCAA77 /* APIBacker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927024D24E3059200BCAA77 /* APIBacker.swift */; };
 		2927269420B6ECAB009DD08A /* RetrieveRemoteConfigCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927269320B6ECAB009DD08A /* RetrieveRemoteConfigCall.swift */; };
 		2927269620B6F316009DD08A /* RetrieveMaintenanceInfoCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927269520B6F316009DD08A /* RetrieveMaintenanceInfoCall.swift */; };
 		2927269820B6F332009DD08A /* RetrieveDeprecationInfoCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927269720B6F332009DD08A /* RetrieveDeprecationInfoCall.swift */; };
@@ -317,6 +320,9 @@
 		291E1A27209B704A00BA1FFB /* CancelQuestInvitationCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelQuestInvitationCall.swift; sourceTree = "<group>"; };
 		291E95AC20986CDE006EE585 /* DateEncodingStrategy-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateEncodingStrategy-Extension.swift"; sourceTree = "<group>"; };
 		291E95B4209888E1006EE585 /* APIUserParty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserParty.swift; sourceTree = "<group>"; };
+		2927024024E2D3DF00BCAA77 /* RetrieveHallOfContributorsCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveHallOfContributorsCall.swift; sourceTree = "<group>"; };
+		2927024724E3035800BCAA77 /* RetrieveHallOfPatronsCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveHallOfPatronsCall.swift; sourceTree = "<group>"; };
+		2927024D24E3059200BCAA77 /* APIBacker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBacker.swift; sourceTree = "<group>"; };
 		2927269320B6ECAB009DD08A /* RetrieveRemoteConfigCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveRemoteConfigCall.swift; sourceTree = "<group>"; };
 		2927269520B6F316009DD08A /* RetrieveMaintenanceInfoCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveMaintenanceInfoCall.swift; sourceTree = "<group>"; };
 		2927269720B6F332009DD08A /* RetrieveDeprecationInfoCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveDeprecationInfoCall.swift; sourceTree = "<group>"; };
@@ -604,6 +610,7 @@
 				2931151322D768DA00E4A9E3 /* APIAchievementList.swift */,
 				29A06E1623EB33F0003BADE9 /* APIEmailNotifications.swift */,
 				29C38C8024A232A300F219A1 /* APIUserAchievements.swift */,
+				2927024D24E3059200BCAA77 /* APIBacker.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -852,6 +859,8 @@
 			children = (
 				295610E12056C3AC00D9711A /* RetrieveContentCall.swift */,
 				29027994205836A8006DACB9 /* RetrieveWorldStateCall.swift */,
+				2927024024E2D3DF00BCAA77 /* RetrieveHallOfContributorsCall.swift */,
+				2927024724E3035800BCAA77 /* RetrieveHallOfPatronsCall.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -1176,6 +1185,7 @@
 				295E9DD620B2ECB900D58D45 /* RetrieveShopInventoryCall.swift in Sources */,
 				291DE97A209B443D0073182A /* APIQuestParticipant.swift in Sources */,
 				290C3046206D44670066AF5B /* RetrieveGroupCall.swift in Sources */,
+				2927024E24E3059200BCAA77 /* APIBacker.swift in Sources */,
 				290B6277207BA86F007287C4 /* SendPasswordResetEmailCall.swift in Sources */,
 				290C3028206B98A50066AF5B /* APIOwnedItem.swift in Sources */,
 				290C3032206CF0190066AF5B /* APISkillResponse.swift in Sources */,
@@ -1227,6 +1237,7 @@
 				29323E532052F7A600AC6D6F /* APIUserGear.swift in Sources */,
 				291E95AD20986CDE006EE585 /* DateEncodingStrategy-Extension.swift in Sources */,
 				290B62542073D957007287C4 /* APIPushNotifications.swift in Sources */,
+				2927024824E3035800BCAA77 /* RetrieveHallOfPatronsCall.swift in Sources */,
 				295610EB2056C6F600D9711A /* APIContent.swift in Sources */,
 				2956110D2056E18A00D9711A /* APIQuestCollect.swift in Sources */,
 				2912C3CB22CCD28600BC485F /* ReadNotificationsCall.swift in Sources */,
@@ -1324,6 +1335,7 @@
 				292F9659206E2AAB00804151 /* MarkChatSeenCall.swift in Sources */,
 				2902795E2057E858006DACB9 /* APIFAQEntry.swift in Sources */,
 				2912C3BF22CB5CF300BC485F /* APINotificationUnallocatedStatsData.swift in Sources */,
+				2927024124E2D3DF00BCAA77 /* RetrieveHallOfContributorsCall.swift in Sources */,
 				291E1A28209B704A00BA1FFB /* CancelQuestInvitationCall.swift in Sources */,
 				292DEE4B204DA1220086D5F7 /* NetworkAuthenticationManager.swift in Sources */,
 				290A1D98223FEF16004E32A2 /* APIMemberGear.swift in Sources */,

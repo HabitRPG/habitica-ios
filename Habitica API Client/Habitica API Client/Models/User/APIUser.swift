@@ -20,6 +20,7 @@ public class APIUser: UserProtocol, Decodable {
     public var preferences: PreferencesProtocol?
     public var profile: ProfileProtocol?
     public var contributor: ContributorProtocol?
+    public var backer: BackerProtocol?
     public var items: UserItemsProtocol?
     public var balance: Float = 0
     public var tasksOrder: [String: [String]]
@@ -43,6 +44,7 @@ public class APIUser: UserProtocol, Decodable {
         case preferences
         case profile
         case contributor
+        case backer
         case items
         case balance
         case tasksOrder
@@ -68,6 +70,7 @@ public class APIUser: UserProtocol, Decodable {
         preferences = (try? values.decode(APIPreferences.self, forKey: .preferences))
         profile = (try? values.decode(APIProfile.self, forKey: .profile))
         contributor = (try? values.decode(APIContributor.self, forKey: .contributor))
+        backer = (try? values.decode(APIBacker.self, forKey: .backer))
         items = (try? values.decode(APIUserItems.self, forKey: .items))
         balance = (try? values.decode(Float.self, forKey: .balance)) ?? -1
         tasksOrder = (try? values.decode([String: [String]].self, forKey: .tasksOrder)) ?? [:]

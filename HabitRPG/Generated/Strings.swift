@@ -38,6 +38,10 @@ public enum L10n {
   public static var apiKey: String { return L10n.tr("Mainstrings", "api_key") }
   /// Back
   public static var back: String { return L10n.tr("Mainstrings", "back") }
+  /// Backer Tier: %d
+  public static func backerTier(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "backer_tier", p1)
+  }
   /// Bangs
   public static var bangs: String { return L10n.tr("Mainstrings", "bangs") }
   /// You have earned the “Beast Master” Achievement for collecting all the pets!
@@ -2151,6 +2155,12 @@ public enum L10n {
     public static var guild: String { return L10n.tr("Mainstrings", "titles.guild") }
     /// Guilds
     public static var guilds: String { return L10n.tr("Mainstrings", "titles.guilds") }
+    /// Hall of Contributors
+    public static var hallOfContributors: String { return L10n.tr("Mainstrings", "titles.hall_of_contributors") }
+    /// Hall of Heroes
+    public static var hallOfHeroes: String { return L10n.tr("Mainstrings", "titles.hall_of_heroes") }
+    /// Hall of Patrons
+    public static var hallOfPatrons: String { return L10n.tr("Mainstrings", "titles.hall_of_patrons") }
     /// Invite Members
     public static var inviteMembers: String { return L10n.tr("Mainstrings", "titles.invite_members") }
     /// Items

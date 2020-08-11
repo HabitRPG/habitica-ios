@@ -77,6 +77,23 @@ class RealmMember: Object, MemberProtocol {
         }
     }
     @objc dynamic var realmContributor: RealmContributor?
+    
+    var backer: BackerProtocol? {
+        get {
+            return realmBacker
+        }
+        set {
+            if let newBacker = newValue as? RealmBacker {
+                realmBacker = newBacker
+                return
+            }
+            if let newBacker = newValue {
+                realmBacker = RealmBacker(id: id, backer: newBacker)
+            }
+        }
+    }
+    @objc dynamic var realmBacker: RealmBacker?
+    
     var items: UserItemsProtocol? {
         get {
             return realmItems

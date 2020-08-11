@@ -13,6 +13,7 @@ public protocol MemberProtocol: AvatarProtocol {
     var id: String? { get set }
     var profile: ProfileProtocol? { get set }
     var contributor: ContributorProtocol? { get set }
+    var backer: BackerProtocol? { get set }
     var party: UserPartyProtocol? { get set }
     var flags: FlagsProtocol? { get set }
     var authentication: AuthenticationProtocol? { get set }

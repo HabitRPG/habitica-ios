@@ -25,6 +25,7 @@ class UserProfileViewController: BaseTableViewController {
     
     @objc var userID: String?
     @objc var username: String?
+    @objc var needsDoneButton = false
     
     private var member: MemberProtocol? {
         didSet {
@@ -76,8 +77,17 @@ class UserProfileViewController: BaseTableViewController {
             }).start())
         }
         
+        if needsDoneButton {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped))
+        }
+        
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
+    }
+    
+    @objc
+    private func doneTapped() {
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     private func refresh() {
