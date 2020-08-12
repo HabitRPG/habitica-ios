@@ -39,8 +39,6 @@ internal enum StoryboardScene {
 
     internal static let equipmentOverviewViewController = SceneType<Habitica.EquipmentOverviewViewController>(storyboard: Main.self, identifier: "EquipmentOverviewViewController")
 
-    internal static let faqOverviewViewController = SceneType<Habitica.FAQTableViewController>(storyboard: Main.self, identifier: "FAQOverviewViewController")
-
     internal static let gemPurchaseViewController = SceneType<Habitica.GemViewController>(storyboard: Main.self, identifier: "GemPurchaseViewController")
 
     internal static let giftGemsNavController = SceneType<Habitica.ThemedNavigationController>(storyboard: Main.self, identifier: "GiftGemsNavController")
@@ -136,6 +134,17 @@ internal enum StoryboardScene {
     internal static let userProfileNavController = SceneType<UIKit.UINavigationController>(storyboard: Social.self, identifier: "UserProfileNavController")
 
     internal static let userProfileViewController = SceneType<Habitica.UserProfileViewController>(storyboard: Social.self, identifier: "UserProfileViewController")
+  }
+  internal enum Support: StoryboardType {
+    internal static let storyboardName = "Support"
+
+    internal static let initialScene = InitialSceneType<Habitica.MainSupportViewController>(storyboard: Support.self)
+
+    internal static let faqViewController = SceneType<Habitica.FAQViewController>(storyboard: Support.self, identifier: "FAQViewController")
+
+    internal static let mainSupportViewController = SceneType<Habitica.MainSupportViewController>(storyboard: Support.self, identifier: "MainSupportViewController")
+
+    internal static let reportBugViewController = SceneType<Habitica.ReportBugViewController>(storyboard: Support.self, identifier: "ReportBugViewController")
   }
   internal enum Tasks: StoryboardType {
     internal static let storyboardName = "Tasks"

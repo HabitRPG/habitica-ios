@@ -31,8 +31,6 @@ internal enum StoryboardSegue {
     case customizationSegue = "CustomizationSegue"
     case detailSegue = "DetailSegue"
     case equipmentSegue = "EquipmentSegue"
-    case faqDetailSegue = "FAQDetailSegue"
-    case faqSegue = "FAQSegue"
     case feedSegue = "FeedSegue"
     case filterSegue = "FilterSegue"
     case formSegue = "FormSegue"
@@ -62,6 +60,7 @@ internal enum StoryboardSegue {
     case showMarketSegue
     case showQuestShopSegue
     case showSeasonalShopSegue
+    case showSupportSegue
     case showTimeTravelersSegue
     case showUserProfileSegue
     case subscriptionSegue

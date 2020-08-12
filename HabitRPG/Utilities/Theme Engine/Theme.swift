@@ -64,7 +64,7 @@ extension Theme {
     public var navbarHiddenColor: UIColor { return backgroundTintColor }
     
     public var primaryTextColor: UIColor { return UIColor.gray10 }
-    public var secondaryTextColor: UIColor { return UIColor.gray100 }
+    public var secondaryTextColor: UIColor { return UIColor.gray50 }
     public var ternaryTextColor: UIColor { return UIColor.gray200 }
     public var quadTextColor: UIColor { return UIColor.gray300 }
     public var dimmedTextColor: UIColor { return UIColor.gray400 }

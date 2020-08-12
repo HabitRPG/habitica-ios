@@ -95,7 +95,11 @@ class CheckedTableViewCell: TaskTableViewCell {
             if task.completed || (task.type == TaskType.daily.rawValue && !task.isDue) {
                 checklistBoxBackground.backgroundColor = theme.offsetBackgroundColor
             } else {
-                checklistBoxBackground.backgroundColor = UIColor.forTaskValueExtraLight(Int(task.value))
+                if theme.isDark {
+                    checklistBoxBackground.backgroundColor = UIColor.forTaskValueDark(Int(task.value))
+                } else {
+                    checklistBoxBackground.backgroundColor = UIColor.forTaskValueExtraLight(Int(task.value))
+                }
             }
             checklistBoxBackground.isHidden = false
         } else {

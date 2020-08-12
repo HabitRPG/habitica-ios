@@ -112,6 +112,8 @@ public enum L10n {
   public static var collect: String { return L10n.tr("Mainstrings", "collect") }
   /// Color
   public static var color: String { return L10n.tr("Mainstrings", "color") }
+  /// Common Questions
+  public static var commonQuestions: String { return L10n.tr("Mainstrings", "common_questions") }
   /// Complete
   public static var complete: String { return L10n.tr("Mainstrings", "complete") }
   /// You need to complete more tasks before you can afford this item!
@@ -270,6 +272,8 @@ public enum L10n {
   public static var forceStart: String { return L10n.tr("Mainstrings", "force_start") }
   /// Friday
   public static var friday: String { return L10n.tr("Mainstrings", "friday") }
+  /// Game Mechanics
+  public static var gameMechanics: String { return L10n.tr("Mainstrings", "game_mechanics") }
   /// Gems allow you to buy fun extras for your account, including:
   public static var gemBenefitsTitle: String { return L10n.tr("Mainstrings", "gem_benefits_title") }
   /// %d Gem cap
@@ -626,7 +630,7 @@ public enum L10n {
   public static func reportXViolation(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "report_x_violation", p1)
   }
-  /// Reset Justins Tips
+  /// Reset Tutorials
   public static var resetTips: String { return L10n.tr("Mainstrings", "reset_tips") }
   /// Reset Streak
   public static var resetStreak: String { return L10n.tr("Mainstrings", "resetStreak") }
@@ -1361,6 +1365,8 @@ public enum L10n {
     public static var social: String { return L10n.tr("Mainstrings", "menu.social") }
     /// Subscription
     public static var subscription: String { return L10n.tr("Mainstrings", "menu.subscription") }
+    /// Support
+    public static var support: String { return L10n.tr("Mainstrings", "menu.support") }
     /// Use Skills
     public static var useSkills: String { return L10n.tr("Mainstrings", "menu.use_skills") }
   }
@@ -1801,6 +1807,27 @@ public enum L10n {
     public static var total: String { return L10n.tr("Mainstrings", "stats.total") }
   }
 
+  public enum Support {
+    /// Get Help
+    public static var bugFixesButton: String { return L10n.tr("Mainstrings", "support.bug_fixes_button") }
+    /// Did something go wrong? Check for answers here or reach out to us for help
+    public static var bugFixesDescription: String { return L10n.tr("Mainstrings", "support.bug_fixes_description") }
+    /// Bugs & Fixes
+    public static var bugFixesTitle: String { return L10n.tr("Mainstrings", "support.bug_fixes_title") }
+    /// Read More
+    public static var questionsButton: String { return L10n.tr("Mainstrings", "support.questions_button") }
+    /// We’ll explain the basics and answer common questions to get you up to speed
+    public static var questionsDescription: String { return L10n.tr("Mainstrings", "support.questions_description") }
+    /// Habitica Questions
+    public static var questionsTitle: String { return L10n.tr("Mainstrings", "support.questions_title") }
+    /// Submit Feedback
+    public static var suggestionsButton: String { return L10n.tr("Mainstrings", "support.suggestions_button") }
+    /// Have input on how features could work better or an idea for something new? Tell us!
+    public static var suggestionsDescription: String { return L10n.tr("Mainstrings", "support.suggestions_description") }
+    /// Suggestions & Feedback
+    public static var suggestionsTitle: String { return L10n.tr("Mainstrings", "support.suggestions_title") }
+  }
+
   public enum Tasks {
     /// Add %@
     public static func addX(_ p1: String) -> String {
@@ -2133,6 +2160,8 @@ public enum L10n {
     public static var authentication: String { return L10n.tr("Mainstrings", "titles.authentication") }
     /// Avatar
     public static var avatar: String { return L10n.tr("Mainstrings", "titles.avatar") }
+    /// Basics
+    public static var basics: String { return L10n.tr("Mainstrings", "titles.basics") }
     /// Challenges
     public static var challenges: String { return L10n.tr("Mainstrings", "titles.challenges") }
     /// Choose Recipient

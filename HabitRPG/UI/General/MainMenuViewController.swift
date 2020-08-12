@@ -224,7 +224,7 @@ class MainMenuViewController: BaseTableViewController {
                 ]),
             MenuSection(title: L10n.Titles.about, iconAsset: Asset.iconHelp, items: [
                 MenuItem(title: L10n.Titles.news, segue: StoryboardSegue.Main.newsSegue.rawValue),
-                MenuItem(title: L10n.Menu.helpFaq, segue: StoryboardSegue.Main.faqSegue.rawValue),
+                MenuItem(title: L10n.Menu.support, segue: StoryboardSegue.Main.showSupportSegue.rawValue),
                 MenuItem(title: L10n.Titles.about, segue: StoryboardSegue.Main.aboutSegue.rawValue)
                 ])
         ]

@@ -67,7 +67,7 @@ class RouterHandler: NSObject {
         }
         router.register("/static/faq") { _ in
             self.displayTab(index: 4)
-            self.push(StoryboardScene.Main.faqOverviewViewController.instantiate())
+            self.push(StoryboardScene.Support.mainSupportViewController.instantiate())
         }
         router.register("user/settings.*") { _ in
             self.displayTab(index: 4)

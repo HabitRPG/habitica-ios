@@ -16,7 +16,7 @@
 "summary" = "Summary";
 "clear" = "Clear";
 "use" = "Use";
-"reset_tips" = "Reset Justins Tips";
+"reset_tips" = "Reset Tutorials";
 "titles.settings" = "Settings";
 "titles.authentication" = "Authentication";
 "titles.profile" = "Profile";
@@ -53,6 +53,7 @@
 "titles.hall_of_heroes" = "Hall of Heroes";
 "titles.hall_of_contributors" = "Hall of Contributors";
 "titles.hall_of_patrons" = "Hall of Patrons";
+"titles.basics" = "Basics";
 "stats.no_points_to_allocate" = "0 Points to Allocate";
 "stats.one_point_to_allocate" = "1 Point to Allocate";
 "stats.points_to_allocate" = "%d Point to Allocate";
@@ -231,6 +232,7 @@
 "menu.gems" = "Purchase Gems";
 "menu.subscription" = "Subscription";
 "menu.help_faq" = "Help & FAQ";
+"menu.support" = "Support";
 "skills.unlocks_at" = "Unlocks at level %d";
 "skills.use_skill" = "You use %@";
 "skills.cant_cast_on_challenge_tasks" = "Can't cast a spell on a challenge task";
@@ -957,3 +959,14 @@
 "leave_and_delete_task" = "Leave & Delete Task";
 "leave_and_delete_x_tasks" = "Leave & Delete %d Tasks";
 "backer_tier" = "Backer Tier: %d";
+"support.questions_title" = "Habitica Questions";
+"support.questions_description" = "We’ll explain the basics and answer common questions to get you up to speed";
+"support.questions_button" = "Read More";
+"support.bug_fixes_title" = "Bugs & Fixes";
+"support.bug_fixes_description" = "Did something go wrong? Check for answers here or reach out to us for help";
+"support.bug_fixes_button" = "Get Help";
+"support.suggestions_title" = "Suggestions & Feedback";
+"support.suggestions_description" = "Have input on how features could work better or an idea for something new? Tell us!";
+"support.suggestions_button" = "Submit Feedback";
+"game_mechanics" = "Game Mechanics";
+"common_questions" = "Common Questions";

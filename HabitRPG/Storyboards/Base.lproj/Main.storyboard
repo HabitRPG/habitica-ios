@@ -175,7 +175,6 @@
                         <segue destination="sS8-cF-myv" kind="show" identifier="ItemSegue" id="ETz-qE-xC2"/>
                         <segue destination="rxD-1b-YpQ" kind="show" identifier="NewsSegue" id="A1v-Vl-4j8"/>
                         <segue destination="r5L-RV-Ig6" kind="show" identifier="AboutSegue" id="V5t-v4-xQG"/>
-                        <segue destination="Kau-eC-iCv" kind="show" identifier="FAQSegue" id="Ndm-2R-Hd2"/>
                         <segue destination="Bwt-cz-wxO" kind="show" identifier="ShopsSegue" id="fqC-VU-hsx"/>
                         <segue destination="6X4-ER-0VC" kind="presentation" identifier="SettingsSegue" modalPresentationStyle="formSheet" id="iEJ-Rx-jir"/>
                         <segue destination="9I8-N9-2zE" kind="presentation" identifier="InboxSegue" modalPresentationStyle="formSheet" id="aQi-0b-fOp"/>
@@ -199,11 +198,22 @@
                         <segue destination="s9t-re-NbM" kind="show" identifier="showTimeTravelersSegue" id="GNu-1J-ZVK"/>
                         <segue destination="WTd-tE-eOd" kind="presentation" identifier="showAdventureGuide" id="gXQ-dZ-OGd"/>
                         <segue destination="x5n-fS-qd9" kind="presentation" identifier="showUserProfileSegue" id="K1h-r2-aQe"/>
+                        <segue destination="A14-ZR-jzj" kind="show" identifier="showSupportSegue" id="aRB-2U-UuU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVG-cg-SZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1993" y="1751"/>
+        </scene>
+        <!--Support-->
+        <scene sceneID="CPd-ek-EtQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Support" id="A14-ZR-jzj" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="nz8-DZ-GAe"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qMP-BL-Lzt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2666" y="1305"/>
         </scene>
         <!--UserProfileNavController-->
         <scene sceneID="NiG-aR-Dc6">
@@ -549,96 +559,6 @@
                 <exit id="l4R-rS-UCd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="7889" y="1896"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="V5q-Dw-DeL">
-            <objects>
-                <tableViewController storyboardIdentifier="FAQOverviewViewController" id="Kau-eC-iCv" customClass="FAQTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="5qA-rI-0zB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="Q7p-n7-bvB" style="IBUITableViewCellStyleDefault" id="auC-m1-JmF">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="auC-m1-JmF" id="Byw-OT-Pwn">
-                                    <rect key="frame" x="0.0" y="0.0" width="348" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q7p-n7-bvB">
-                                            <rect key="frame" x="16" y="0.0" width="324" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Kau-eC-iCv" id="Zom-N7-iGK"/>
-                            <outlet property="delegate" destination="Kau-eC-iCv" id="Yvb-le-LCn"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="sni-tf-k5c"/>
-                    <connections>
-                        <segue destination="EKs-nQ-slC" kind="show" identifier="FAQDetailSegue" id="kWM-WS-dNV"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rYO-oD-n3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6047" y="-605"/>
-        </scene>
-        <!--Detail View Controller-->
-        <scene sceneID="4IN-KI-Dqx">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="EKs-nQ-slC" customClass="FAQDetailViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="PUx-1m-TEb"/>
-                        <viewControllerLayoutGuide type="bottom" id="iqV-eg-bF0"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qgK-LN-ots">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iE-Xy-7j2">
-                                <rect key="frame" x="0.0" y="76" width="375" height="542"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5f-pj-SLH">
-                                <rect key="frame" x="16" y="60" width="343" height="0.0"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="500" constant="21" id="8kI-LC-7S3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Z5f-pj-SLH" firstAttribute="top" secondItem="PUx-1m-TEb" secondAttribute="bottom" constant="16" id="5PW-vw-IuM"/>
-                            <constraint firstItem="2iE-Xy-7j2" firstAttribute="leading" secondItem="qgK-LN-ots" secondAttribute="leadingMargin" constant="-16" id="C3l-hg-Enq"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="2iE-Xy-7j2" secondAttribute="trailing" constant="-16" id="GDF-cB-PI9"/>
-                            <constraint firstItem="iqV-eg-bF0" firstAttribute="top" secondItem="2iE-Xy-7j2" secondAttribute="bottom" id="N4z-ni-nxC"/>
-                            <constraint firstItem="Z5f-pj-SLH" firstAttribute="leading" secondItem="qgK-LN-ots" secondAttribute="leadingMargin" id="Ucr-Yj-C9x"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Z5f-pj-SLH" secondAttribute="trailing" id="gpT-vZ-fpe"/>
-                            <constraint firstItem="2iE-Xy-7j2" firstAttribute="top" secondItem="Z5f-pj-SLH" secondAttribute="bottom" constant="16" id="mfC-su-m8N"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="answerTextView" destination="2iE-Xy-7j2" id="3DL-bH-nMP"/>
-                        <outlet property="questionLabel" destination="Z5f-pj-SLH" id="jtr-EL-7Fe"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Nfs-aV-KV4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6751" y="-605"/>
         </scene>
         <!--Avatar Overview View Controller-->
         <scene sceneID="raq-ir-4h4">
@@ -3384,7 +3304,7 @@
         <segue reference="WRT-c8-yJ5"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="jU9-l6-uQc"/>
-        <segue reference="nYO-SY-Og4"/>
+        <segue reference="GNu-1J-ZVK"/>
         <segue reference="PHp-cT-md6"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
