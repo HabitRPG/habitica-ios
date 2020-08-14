@@ -95,6 +95,10 @@ internal enum StoryboardSegue {
     case giftGemsSegue
     case giftSubscriptionSegue
   }
+  internal enum Support: String, SegueType {
+    case showFAQDetailSegue
+    case showKnownIssueDetailSegue
+  }
   internal enum Tasks: String, SegueType {
     case embedSegue = "EmbedSegue"
   }

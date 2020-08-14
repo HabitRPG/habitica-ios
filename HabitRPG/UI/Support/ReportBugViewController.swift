@@ -20,24 +20,117 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
         return "\(versionString ?? "") (\(buildNumber ?? ""))"
     }()
     
+    @IBOutlet weak var mainStackView: UIStackView!
+    @IBOutlet weak var knownIssuesTitleLabel: UILabel!
+    @IBOutlet weak var knownIssuesBackground: UIView!
+    @IBOutlet weak var knownIssuesStackView: UIStackView!
+    @IBOutlet weak var commonFixesTitleLabel: UILabel!
+    @IBOutlet weak var commonFixesStackView: UIStackView!
+    @IBOutlet weak var clearCacheBackground: UIView!
+    @IBOutlet weak var clearCacheTitleLabel: UILabel!
+    @IBOutlet weak var clearCacheDescriptionLabel: UILabel!
+    @IBOutlet weak var manualSyncBackground: UIView!
+    @IBOutlet weak var manualSyncTitleLabel: UILabel!
+    @IBOutlet weak var manualSyncDescriptionLabel: UILabel!
+    @IBOutlet weak var updateAppBackground: UIView!
+    @IBOutlet weak var updateAppTitleLabel: UILabel!
+    @IBOutlet weak var updateAppDescriptionLabel: UILabel!
+    @IBOutlet weak var moreHelpStackView: UIStackView!
+    @IBOutlet weak var moreHelpTitleLabel: UILabel!
+    @IBOutlet weak var moreHelpDescriptionLabel: UILabel!
+    @IBOutlet weak var moreHelpButton: UIButton!
+    
     private var supportEmail = ""
     private var user: UserProtocol?
+    
+    private var knownIssues: NSArray = []
+    private var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator?.hideHeader = true
         topHeaderCoordinator?.followScrollView = false
+        mainStackView.isLayoutMarginsRelativeArrangement = true
+        mainStackView.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        moreHelpStackView.isLayoutMarginsRelativeArrangement = true
+        moreHelpStackView.layoutMargins = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
+        knownIssuesStackView.isLayoutMarginsRelativeArrangement = true
+        knownIssuesStackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
 
         supportEmail = configRepository.string(variable: .supportEmail, defaultValue: "admin@habitica.com")
         
         userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
         }).start()
+        
+        knownIssues = configRepository.array(variable: .knownIssues)
+        populateKnownIssues()
     }
     
     override func populateText() {
         super.populateText()
-        navigationItem.title = L10n.Support.bugFixesTitle
+        knownIssuesTitleLabel.text = L10n.knownIssues.uppercased()
+        commonFixesTitleLabel.text = L10n.commonFixes.uppercased()
+        moreHelpTitleLabel.text = L10n.moreHelpTitle
+        moreHelpDescriptionLabel.text = L10n.moreHelpDescription
+        moreHelpButton.setTitle(L10n.moreHelpButton, for: .normal)
+        clearCacheTitleLabel.text = L10n.clearCacheTitle
+        clearCacheDescriptionLabel.text = L10n.clearCacheDescription
+        manualSyncTitleLabel.text = L10n.manualSyncTitle
+        manualSyncDescriptionLabel.text = L10n.manualSyncDescription
+        updateAppTitleLabel.text = L10n.updateAppTitle
+        updateAppDescriptionLabel.text = L10n.updateAppDescription
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        knownIssuesTitleLabel.textColor = theme.quadTextColor
+        commonFixesTitleLabel.textColor = theme.quadTextColor
+        clearCacheBackground.backgroundColor = theme.windowBackgroundColor
+        clearCacheTitleLabel.textColor = theme.primaryTextColor
+        clearCacheDescriptionLabel.textColor = theme.ternaryTextColor
+        manualSyncBackground.backgroundColor = theme.windowBackgroundColor
+        manualSyncTitleLabel.textColor = theme.primaryTextColor
+        manualSyncDescriptionLabel.textColor = theme.ternaryTextColor
+        updateAppBackground.backgroundColor = theme.windowBackgroundColor
+        updateAppTitleLabel.textColor = theme.primaryTextColor
+        updateAppDescriptionLabel.textColor = theme.ternaryTextColor
+        moreHelpTitleLabel.textColor = theme.primaryTextColor
+        moreHelpDescriptionLabel.textColor = theme.ternaryTextColor
+        moreHelpButton.backgroundColor = theme.tintColor
+        moreHelpButton.setTitleColor(theme.lightTextColor, for: .normal)
+        knownIssuesBackground.backgroundColor = theme.windowBackgroundColor
+    }
+    
+    private func populateKnownIssues() {
+        knownIssuesStackView.removeAllArrangedSubviews()
+        knownIssues.forEach { issue in
+            guard let issueDict = issue as? NSDictionary else {
+                return
+            }
+            let stackView = UIStackView()
+            stackView.axis = .horizontal
+            stackView.isLayoutMarginsRelativeArrangement = true
+            stackView.spacing = 8
+            stackView.layoutMargins = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 15)
+            let title = UILabel()
+            title.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
+            title.text = issueDict["title"] as? String
+            title.numberOfLines = 0
+            title.textColor = ThemeService.shared.theme.primaryTextColor
+            let imageView = UIImageView(image: Asset.caretRight.image)
+            imageView.contentMode = .center
+            imageView.addWidthConstraint(width: 9)
+            stackView.addArrangedSubview(title)
+            stackView.addArrangedSubview(imageView)
+            stackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(knownIssueTapped)))
+            knownIssuesStackView.addArrangedSubview(stackView)
+            let separator = UIView()
+            separator.addHeightConstraint(height: 1)
+            separator.backgroundColor = ThemeService.shared.theme.tableviewSeparatorColor
+            knownIssuesStackView.addArrangedSubview(separator)
+        }
+        knownIssuesStackView.arrangedSubviews.last?.removeFromSuperview()
     }
     
     private func sendEmail(subject: String) {
@@ -94,5 +187,28 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func reportBugButtonTapped(_ sender: Any) {
+        sendEmail(subject: "[iOS] Bugreport")
+    }
+    
+    @objc
+    private func knownIssueTapped(_ source: UITapGestureRecognizer) {
+        if let view = source.view {
+            selectedIndex = (knownIssuesStackView.arrangedSubviews.firstIndex(of: view) ?? 0) / 2
+            perform(segue: StoryboardSegue.Support.showKnownIssueDetailSegue)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == StoryboardSegue.Support.showKnownIssueDetailSegue.rawValue {
+            let destination = segue.destination as? FAQDetailViewController
+            guard let issue = knownIssues[selectedIndex] as? NSDictionary else {
+                return
+            }
+            destination?.faqTitle = issue["title"] as? String
+            destination?.faqText = issue["text"] as? String
+        }
     }
 }

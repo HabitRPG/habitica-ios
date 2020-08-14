@@ -29,6 +29,7 @@ enum ConfigVariable: Int {
     case raiseShops
     case feedbackURL
     case enableAdventureGuide
+    case knownIssues
 
     func name() -> String {
         // swiftlint:disable switch_case_on_newline
@@ -51,6 +52,7 @@ enum ConfigVariable: Int {
         case .raiseShops: return "raiseShops"
         case .feedbackURL: return "feedbackURL"
         case .enableAdventureGuide: return "enableAdventureGuide"
+        case .knownIssues: return "knownIssues"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -93,6 +95,8 @@ enum ConfigVariable: Int {
             return NSNumber(booleanLiteral: false)
         case .feedbackURL:
             return NSString(string: "https://docs.google.com/forms/d/e/1FAIpQLScPhrwq_7P1C6PTrI3lbvTsvqGyTNnGzp1ugi1Ml0PFee_p5g/viewform?usp=sf_link")
+        case .knownIssues:
+            return NSString(string: "[]")
         }
     }
     
@@ -114,7 +118,8 @@ enum ConfigVariable: Int {
             .insufficientGemPurchaseAdjust,
             .raiseShops,
             .feedbackURL,
-            .enableAdventureGuide
+            .enableAdventureGuide,
+            .knownIssues
         ]
     }
 }
@@ -168,5 +173,23 @@ class ConfigRepository: NSObject {
             }
         }
         return NSDictionary()
+    }
+    
+    @objc
+    func array(variable: ConfigVariable) -> NSArray {
+        let configString = ConfigRepository.remoteConfig.configValue(forKey: variable.name()).stringValue
+        if let data = configString?.data(using: String.Encoding.utf8) {
+            do {
+                try JSONSerialization.jsonObject(with: data, options: [])
+            } catch let error {
+                print(error)
+            }
+            if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
+                if let jsonArray = json as? NSArray {
+                    return jsonArray
+                }
+            }
+        }
+        return NSArray()
     }
 }

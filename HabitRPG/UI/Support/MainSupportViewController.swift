@@ -56,23 +56,23 @@ class MainSupportViewController: BaseUIViewController {
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         questionsContainer.backgroundColor = theme.windowBackgroundColor
-        questionsTitleLabel.textColor = theme.secondaryTextColor
+        questionsTitleLabel.textColor = theme.primaryTextColor
         questionsDescriptionLabel.textColor = theme.ternaryTextColor
         questionsButton.backgroundColor = theme.tintColor
         
         bugContainer.backgroundColor = theme.windowBackgroundColor
-        bugTitle.textColor = theme.secondaryTextColor
+        bugTitle.textColor = theme.primaryTextColor
         bugDescription.textColor = theme.ternaryTextColor
         bugButton.backgroundColor = theme.tintColor
         
         suggestionsContainer.backgroundColor = theme.windowBackgroundColor
-        suggestionsTitle.textColor = theme.secondaryTextColor
+        suggestionsTitle.textColor = theme.primaryTextColor
         suggestionsDescription.textColor = theme.ternaryTextColor
         suggestionsButton.backgroundColor = theme.tintColor
         
         resetTutorialContainer.backgroundColor = theme.windowBackgroundColor
         resetTutorialButton.backgroundColor = theme.offsetBackgroundColor
-        resetTutorialButton.setTitleColor(theme.secondaryTextColor, for: .normal)
+        resetTutorialButton.setTitleColor(theme.primaryTextColor, for: .normal)
     }
     
     @IBAction func suggestionButtonTapped(_ sender: Any) {

@@ -106,12 +106,18 @@ public enum L10n {
   public static var chooseTask: String { return L10n.tr("Mainstrings", "choose_task") }
   /// Clear
   public static var clear: String { return L10n.tr("Mainstrings", "clear") }
+  /// To do this, open Menu > Settings then scroll to the bottom to find the buttons
+  public static var clearCacheDescription: String { return L10n.tr("Mainstrings", "clear_cache_description") }
+  /// Clear Cache & Reload Conent
+  public static var clearCacheTitle: String { return L10n.tr("Mainstrings", "clear_cache_title") }
   /// Close
   public static var close: String { return L10n.tr("Mainstrings", "close") }
   /// Collect
   public static var collect: String { return L10n.tr("Mainstrings", "collect") }
   /// Color
   public static var color: String { return L10n.tr("Mainstrings", "color") }
+  /// Common Fixes
+  public static var commonFixes: String { return L10n.tr("Mainstrings", "common_fixes") }
   /// Common Questions
   public static var commonQuestions: String { return L10n.tr("Mainstrings", "common_questions") }
   /// Complete
@@ -404,6 +410,8 @@ public enum L10n {
   public static func keepXTasks(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "keep_x_tasks", p1)
   }
+  /// Known Issues
+  public static var knownIssues: String { return L10n.tr("Mainstrings", "known_issues") }
   /// Last Activity %@
   public static func lastActivity(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "last_activity", p1)
@@ -446,6 +454,10 @@ public enum L10n {
   public static var mana: String { return L10n.tr("Mainstrings", "mana") }
   /// Mana Points
   public static var manaPoints: String { return L10n.tr("Mainstrings", "mana_points") }
+  /// Sometimes the app won’t automatically sync content or gets stuck with some odd behavior. Pull to refresh or force close the app and reopen it to see if it helps
+  public static var manualSyncDescription: String { return L10n.tr("Mainstrings", "manual_sync_description") }
+  /// Manual Sync & Force Restart
+  public static var manualSyncTitle: String { return L10n.tr("Mainstrings", "manual_sync_title") }
   /// Member of a Group Plan
   public static var memberGroupPlan: String { return L10n.tr("Mainstrings", "member_group_plan") }
   /// Menu
@@ -462,8 +474,18 @@ public enum L10n {
   public static var months: String { return L10n.tr("Mainstrings", "months") }
   /// You’ll need more Gems to buy this item!
   public static var moreGemsMessage: String { return L10n.tr("Mainstrings", "more_gems_message") }
+  /// Report a Bug
+  public static var moreHelpButton: String { return L10n.tr("Mainstrings", "more_help_button") }
+  /// Send a report to us and we’ll get back to you!
+  public static var moreHelpDescription: String { return L10n.tr("Mainstrings", "more_help_description") }
+  /// Need more help?
+  public static var moreHelpTitle: String { return L10n.tr("Mainstrings", "more_help_title") }
   /// More Options
   public static var moreOptions: String { return L10n.tr("Mainstrings", "more_options") }
+  /// Post a message in the Habitica Help Guild to have your questions answered by a fellow player
+  public static var moreQuestionsText: String { return L10n.tr("Mainstrings", "more_questions_text") }
+  /// Still have a question?
+  public static var moreQuestionsTitle: String { return L10n.tr("Mainstrings", "more_questions_title") }
   /// You have earned the “Mount Master” achievement for taming all the mounts!
   public static var mountMasterDescription: String { return L10n.tr("Mainstrings", "mountMasterDescription") }
   /// Mount Master
@@ -790,6 +812,10 @@ public enum L10n {
   public static var unsubscribeItunes: String { return L10n.tr("Mainstrings", "unsubscribe_itunes") }
   /// No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.
   public static var unsubscribeWebsite: String { return L10n.tr("Mainstrings", "unsubscribe_website") }
+  /// We’re constantly pushing out new fixes, so be sure to check the App Store to see if there are any updates available
+  public static var updateAppDescription: String { return L10n.tr("Mainstrings", "update_app_description") }
+  /// Update the App
+  public static var updateAppTitle: String { return L10n.tr("Mainstrings", "update_app_title") }
   /// Use
   public static var use: String { return L10n.tr("Mainstrings", "use") }
   /// You blocked %s.
