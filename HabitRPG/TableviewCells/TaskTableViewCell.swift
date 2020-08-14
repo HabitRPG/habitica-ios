@@ -176,15 +176,23 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     
     func layoutContentEndEdge() {
-        
+        if let contentEndEdge = contentEndEdge {
+            if !syncingIndicator.isHidden {
+                syncingIndicator.pin.left(to: contentEndEdge).marginEnd(8).size(20)
+                self.contentEndEdge = syncingIndicator.edge.start
+            } else if !syncErrorIndicator.isHidden {
+                syncErrorIndicator.pin.left(to: contentEndEdge).marginEnd(8).size(20)
+                self.contentEndEdge = syncErrorIndicator.edge.start
+            }
+        }
     }
     
     func layout() {
         mainTaskWrapper.pin.horizontally(10).top(4)
         var lastView: UIView = titleLabel
+        layoutContentStartEdge()
+        layoutContentEndEdge()
         if let contentStartEdge = contentStartEdge, let contentEndEdge = contentEndEdge {
-            layoutContentStartEdge()
-            layoutContentEndEdge()
             titleLabel.pin.top(10).start(to: contentStartEdge).marginStart(10).marginEnd(11).end(to: contentEndEdge).sizeToFit(.width)
             if !subtitleLabel.text.isEmpty {
                 subtitleLabel.pin.below(of: lastView).marginTop(1).start(to: contentStartEdge).marginStart(10).marginEnd(11).end(to: contentEndEdge).sizeToFit(.width)

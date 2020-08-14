@@ -20,6 +20,14 @@
                         <rect key="frame" x="10" y="4" width="355" height="133"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aUc-r5-hyI">
+                                <rect key="frame" x="167" y="56" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gcs-R1-Xfj">
+                                <rect key="frame" x="167" y="56" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <view tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ifb-Uy-aJJ" customClass="CheckboxView" customModule="Habitica" customModuleProvider="target">
                                 <rect key="frame" x="157" y="0.0" width="40" height="133"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -47,28 +55,6 @@
                                 <rect key="frame" x="64" y="58" width="227" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g9Y-gE-1z4">
-                                <rect key="frame" x="167" y="56" width="20" height="20"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aUc-r5-hyI">
-                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                                    </activityIndicatorView>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gcs-R1-Xfj">
-                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="gcs-R1-Xfj" firstAttribute="leading" secondItem="g9Y-gE-1z4" secondAttribute="leading" id="5W2-UW-zim"/>
-                                    <constraint firstAttribute="height" constant="20" id="DyQ-th-hU5"/>
-                                    <constraint firstItem="aUc-r5-hyI" firstAttribute="centerX" secondItem="g9Y-gE-1z4" secondAttribute="centerX" id="GtH-Cv-S22"/>
-                                    <constraint firstItem="aUc-r5-hyI" firstAttribute="centerY" secondItem="g9Y-gE-1z4" secondAttribute="centerY" id="Pve-vh-cKB"/>
-                                    <constraint firstAttribute="bottom" secondItem="gcs-R1-Xfj" secondAttribute="bottom" id="X86-wU-oKU"/>
-                                    <constraint firstItem="gcs-R1-Xfj" firstAttribute="top" secondItem="g9Y-gE-1z4" secondAttribute="top" id="cCV-Jx-806"/>
-                                    <constraint firstAttribute="width" constant="20" id="gDd-RK-WQU"/>
-                                    <constraint firstAttribute="trailing" secondItem="gcs-R1-Xfj" secondAttribute="trailing" id="kYy-eg-OcD"/>
-                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kbr-Vp-0I1">
                                 <rect key="frame" x="57" y="2" width="240" height="128"/>

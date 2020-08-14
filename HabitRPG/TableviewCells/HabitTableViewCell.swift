@@ -61,6 +61,8 @@ class HabitTableViewCell: TaskTableViewCell {
     
     override func layoutContentEndEdge() {
         minusButton.pin.width(40).end()
+        contentEndEdge = minusButton.edge.start
+        super.layoutContentEndEdge()
     }
     
     override func layout() {

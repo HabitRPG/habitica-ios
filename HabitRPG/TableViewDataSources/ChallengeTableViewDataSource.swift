@@ -110,9 +110,9 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
     
     func getPredicate() -> NSPredicate? {
         var searchComponents = [String]()
-        
+        let userId = socialRepository.currentUserId ?? ""
+
         if self.showOwned != self.showNotOwned {
-            let userId = socialRepository.currentUserId ?? ""
             if self.showOwned {
                 searchComponents.append("leaderID == \'\(userId)\'")
             } else {
@@ -137,7 +137,7 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
         }
         
         if isShowingJoinedChallenges {
-            var component = "id IN {"
+            var component = "(id IN {"
             if membershipIDs.isEmpty == false {
                 component.append("\'\(membershipIDs[0])\'")
             }
@@ -145,6 +145,11 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
                 component.append(", \'\(id)\'")
             }
             component.append("}")
+            if showOwned {
+                component.append(" || leaderID == \'\(userId)\')")
+            } else {
+                component.append(")")
+            }
             searchComponents.append(component)
         }
         

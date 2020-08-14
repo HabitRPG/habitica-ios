@@ -61,27 +61,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uG-Fs-lZB">
-                                <rect key="frame" x="289" y="47" width="20" height="20"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="UA8-xf-JqU">
-                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                                    </activityIndicatorView>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DcS-jT-3cG">
-                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="DcS-jT-3cG" firstAttribute="top" secondItem="4uG-Fs-lZB" secondAttribute="top" id="A9v-Dn-6ib"/>
-                                    <constraint firstItem="UA8-xf-JqU" firstAttribute="centerY" secondItem="4uG-Fs-lZB" secondAttribute="centerY" id="Jr3-Sj-lTo"/>
-                                    <constraint firstAttribute="height" constant="20" id="UDq-tW-2Ba"/>
-                                    <constraint firstAttribute="bottom" secondItem="DcS-jT-3cG" secondAttribute="bottom" id="Uss-tT-gZO"/>
-                                    <constraint firstAttribute="trailing" secondItem="DcS-jT-3cG" secondAttribute="trailing" id="ePF-LU-EZh"/>
-                                    <constraint firstItem="DcS-jT-3cG" firstAttribute="leading" secondItem="4uG-Fs-lZB" secondAttribute="leading" id="sjD-CT-o0r"/>
-                                    <constraint firstItem="UA8-xf-JqU" firstAttribute="centerX" secondItem="4uG-Fs-lZB" secondAttribute="centerX" id="vL4-HF-Gc9"/>
-                                </constraints>
-                            </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="UA8-xf-JqU">
+                                <rect key="frame" x="167" y="47" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DcS-jT-3cG">
+                                <rect key="frame" x="167" y="47" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" fixedFrame="YES" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lQL-s4-CWi">
                                 <rect key="frame" x="63" y="40" width="229" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

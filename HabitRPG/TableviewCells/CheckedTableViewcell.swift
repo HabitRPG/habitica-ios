@@ -190,6 +190,7 @@ class CheckedTableViewCell: TaskTableViewCell {
         } else {
             contentEndEdge = mainTaskWrapper.edge.end
         }
+        super.layoutContentEndEdge()
     }
     
     override func layout() {
