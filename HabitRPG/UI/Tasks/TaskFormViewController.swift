@@ -35,6 +35,7 @@ enum TaskFormTags {
     static let historyButton = "historyButton"
     static let attributeSection = "attributeSection"
     static let attribute = "attribute"
+    static let challengeName = "challengeName"
 }
 
 //swiftlint:disable:next type_body_length
@@ -89,6 +90,8 @@ class TaskFormViewController: FormViewController, Themeable {
             if let challengeID = task.challengeID {
                 socialRepository.retrieveChallenge(challengeID: challengeID).on(value: {[weak self] challenge in
                     self?.challenge = challenge
+                    self?.form.rowBy(tag: TaskFormTags.challengeName)?.title = challenge?.name
+                    self?.form.rowBy(tag: TaskFormTags.challengeName)?.updateCell()
                 }).observeCompleted {}
             }
             let theme = ThemeService.shared.theme
@@ -309,7 +312,7 @@ class TaskFormViewController: FormViewController, Themeable {
             header.height = { 0 }
             section.header = header
             }
-        if (task.isChallengeTask) {
+        if task.isChallengeTask {
             section <<< LabelRow { row in
                 row.title = L10n.editChallengeTasks
                 row.cellUpdate { (cell, _) in
@@ -347,6 +350,17 @@ class TaskFormViewController: FormViewController, Themeable {
                     self?.view.setNeedsLayout()
                 })
         }
+        section <<< LabelRow(TaskFormTags.challengeName) { row in
+            row.title = "SDSFWER"
+            row.hidden = Condition(booleanLiteral: !task.isChallengeTask)
+            row.cellUpdate({ (cell, _) in
+                cell.backgroundColor = self.taskTintColor
+                cell.textLabel?.textColor = .white
+                cell.textLabel?.textAlignment = .center
+                cell.textLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+                cell.textLabel?.numberOfLines = 0
+            })
+            }
         form +++ section
     }
     
@@ -852,7 +866,11 @@ class TaskFormViewController: FormViewController, Themeable {
     
     private func deleteButtonTapped() {
         if task.isChallengeTask {
+            if task.challengeBroken == nil {
             showChallengeTaskDeleteDialog()
+            } else {
+                showBrokenChallengeDialog()
+            }
             return
         }
         let alertController = HabiticaAlertController(title: L10n.Tasks.Form.confirmDelete)
@@ -887,16 +905,35 @@ class TaskFormViewController: FormViewController, Themeable {
                     .flatMap(.latest) { _ in
                         return self.taskRepository.retrieveTasks()
                     }.observeCompleted {}
+                    self.dismiss(animated: true, completion: nil)
                 })
                 alert.addAction(title: L10n.leaveAndDeleteXTasks(taskCount), style: .destructive, isMainAction: false, handler: { _ in
                     self.socialRepository.leaveChallenge(challengeID: self.task.challengeID ?? "", keepTasks: false)
                     .flatMap(.latest) { _ in
                         return self.taskRepository.retrieveTasks()
                     }.observeCompleted {}
+                    self.dismiss(animated: true, completion: nil)
                 })
                 alert.setCloseAction(title: L10n.close, handler: {})
                 alert.show()
         }
         ).start()
+    }
+    
+    private func showBrokenChallengeDialog() {
+        taskRepository.getChallengeTasks(id: task.challengeID ?? "").take(first: 1).on(value: { tasks in
+            let taskCount = tasks.value.count
+            let alert = HabiticaAlertController(title: L10n.brokenChallenge, message: L10n.brokenChallengeDescription(taskCount))
+            alert.addAction(title: L10n.keepXTasks(taskCount), style: .default, isMainAction: true) { _ in
+                self.taskRepository.unlinkAllTasks(challengeID: self.task.challengeID ?? "", keepOption: "keep-all").observeCompleted {}
+                self.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(title: L10n.deleteXTasks(taskCount), style: .destructive) { _ in
+                self.taskRepository.unlinkAllTasks(challengeID: self.task.challengeID ?? "", keepOption: "remove-all").observeCompleted {}
+                self.dismiss(animated: true, completion: nil)
+            }
+            alert.setCloseAction(title: L10n.close, handler: {})
+            alert.show()
+            }).start()
     }
 }
