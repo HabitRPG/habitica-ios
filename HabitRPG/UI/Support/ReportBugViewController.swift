@@ -23,7 +23,7 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var knownIssuesTitleLabel: UILabel!
     @IBOutlet weak var knownIssuesBackground: UIView!
-    @IBOutlet weak var knownIssuesStackView: UIStackView!
+    @IBOutlet weak var knownIssuesStackView: SeparatedStackView!
     @IBOutlet weak var commonFixesTitleLabel: UILabel!
     @IBOutlet weak var commonFixesStackView: UIStackView!
     @IBOutlet weak var clearCacheBackground: UIView!
@@ -56,6 +56,8 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
         moreHelpStackView.layoutMargins = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
         knownIssuesStackView.isLayoutMarginsRelativeArrangement = true
         knownIssuesStackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+        knownIssuesStackView.separatorBetweenItems = true
+        knownIssuesStackView.separatorInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
 
         supportEmail = configRepository.string(variable: .supportEmail, defaultValue: "admin@habitica.com")
         
@@ -108,7 +110,7 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
             guard let issueDict = issue as? NSDictionary else {
                 return
             }
-            let stackView = UIStackView()
+            let stackView = SeparatedStackView()
             stackView.axis = .horizontal
             stackView.isLayoutMarginsRelativeArrangement = true
             stackView.spacing = 8
@@ -125,10 +127,6 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
             stackView.addArrangedSubview(imageView)
             stackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(knownIssueTapped)))
             knownIssuesStackView.addArrangedSubview(stackView)
-            let separator = UIView()
-            separator.addHeightConstraint(height: 1)
-            separator.backgroundColor = ThemeService.shared.theme.tableviewSeparatorColor
-            knownIssuesStackView.addArrangedSubview(separator)
         }
         knownIssuesStackView.arrangedSubviews.last?.removeFromSuperview()
     }

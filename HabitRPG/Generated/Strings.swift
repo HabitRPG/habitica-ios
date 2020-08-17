@@ -162,6 +162,8 @@ public enum L10n {
   public static var createdTaskDescription: String { return L10n.tr("Mainstrings", "createdTaskDescription") }
   /// Created your first task
   public static var createdTaskTitle: String { return L10n.tr("Mainstrings", "createdTaskTitle") }
+  /// Currency
+  public static var currency: String { return L10n.tr("Mainstrings", "currency") }
   /// Daily
   public static var daily: String { return L10n.tr("Mainstrings", "daily") }
   /// Damage Paused
@@ -246,6 +248,10 @@ public enum L10n {
   }
   /// Experience
   public static var experience: String { return L10n.tr("Mainstrings", "experience") }
+  /// Experience points represent your progress and allow you to level up. You’ll mainly **gain EXP** from completing tasks or quests, but there are also some class skills that give EXP.\n\nTasks of higher difficulty, or red-colored tasks will give you **more EXP**. The **Intelligence stat** also raises your rate of EXP gain.
+  public static var experienceDescription: String { return L10n.tr("Mainstrings", "experience_description") }
+  /// Experience Points
+  public static var experiencePoints: String { return L10n.tr("Mainstrings", "experience_points") }
   /// Every Pet has a specific food they enjoy! Experiment to find out which will grow your Pet the fastest
   public static var fedPetDescription: String { return L10n.tr("Mainstrings", "fedPetDescription") }
   /// Fed a Pet
@@ -288,6 +294,8 @@ public enum L10n {
   }
   /// Gems
   public static var gems: String { return L10n.tr("Mainstrings", "gems") }
+  /// Gems are a currency purchased with real money that allow you to buy extra content within Habitica and are one of the main sources of financial support for the Habitica team alongside subscriptions.\n\nAll content purchased through Gems is purely cosmetic or can be obtained for free with time.\n\nYou can also receive Gems through gifts from other players, Challenge prizes, contributing to Habitica, or subscribing.
+  public static var gemsDescription: String { return L10n.tr("Mainstrings", "gems_description") }
   /// Purchasing Gems supports our small team and helps keep Habitica running
   public static var gemsSupportDevelopers: String { return L10n.tr("Mainstrings", "gems_support_developers") }
   /// Get more out of Habitica
@@ -344,6 +352,8 @@ public enum L10n {
   public static var goToItems: String { return L10n.tr("Mainstrings", "go_to_items") }
   /// Gold
   public static var gold: String { return L10n.tr("Mainstrings", "gold") }
+  /// Gold is the **main form of currency** within Habitica and allows you to buy certain gear, quests, items, or even custom rewards you make for yourself.\n\n**Earn Gold** through completing tasks or quests, or through some Class skills. Higher **Perception stats** raise the amount of Gold you earn.\n\nIf you subscribe to Habitica, you can even use Gold to purchase a number of Gems determined by the length of time you’ve been subscribed.
+  public static var goldDescription: String { return L10n.tr("Mainstrings", "gold_description") }
   /// Great
   public static var great: String { return L10n.tr("Mainstrings", "great") }
   /// Grey
@@ -376,10 +386,16 @@ public enum L10n {
   public static var headband: String { return L10n.tr("Mainstrings", "headband") }
   /// Health
   public static var health: String { return L10n.tr("Mainstrings", "health") }
+  /// This represents your avatar’s life. Missing a Daily or doing a negative Habit **reduces your HP**.\n\n**Regain HP** by leveling up, using a Health Potion, or a class skill with healing ability.\n\nIf your **HP reaches 0** you will lose a level, all Gold, and one piece of equipment. Lost equipment can be re-purchased.
+  public static var healthDescription: String { return L10n.tr("Mainstrings", "health_description") }
+  /// Health Points
+  public static var healthPoints: String { return L10n.tr("Mainstrings", "health_points") }
   /// +%d Mystic Hourglass
   public static func hourglassCount(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "hourglass_count", p1)
   }
+  /// Mystic Hourglasses are an extremely rare form of currency you can only receive for subscribing to Habitica for three consecutive months or more. They are used in the Time Traveler’s shop to buy past gear sets, pets, mounts, animated backgrounds, or even special quests.\n\nYou can receive up to four Mystic Hourglasses a year. The time they are rewarded is based on your subscription renewal schedule. They are sent out on the first day of a new month after your last subscription payment that qualified you for an hourglass. See the [Subscription] page for more details.
+  public static var hourglassesDescription: String { return L10n.tr("Mainstrings", "hourglasses_description") }
   /// 100 Gold
   public static var hundredGold: String { return L10n.tr("Mainstrings", "hundred_gold") }
   /// Inactive
@@ -452,6 +468,8 @@ public enum L10n {
   }
   /// Mana
   public static var mana: String { return L10n.tr("Mainstrings", "mana") }
+  /// Mana points are unlocked with the class system at level 10 and allow you to **use Skills** once you begin learning them at level 11.\n\nSome **MP is restored** at day reset every day, but you can regain more by completing tasks or using a Mage class skill.
+  public static var manaDescription: String { return L10n.tr("Mainstrings", "mana_description") }
   /// Mana Points
   public static var manaPoints: String { return L10n.tr("Mainstrings", "mana_points") }
   /// Sometimes the app won’t automatically sync content or gets stuck with some odd behavior. Pull to refresh or force close the app and reopen it to see if it helps
@@ -482,7 +500,7 @@ public enum L10n {
   public static var moreHelpTitle: String { return L10n.tr("Mainstrings", "more_help_title") }
   /// More Options
   public static var moreOptions: String { return L10n.tr("Mainstrings", "more_options") }
-  /// Post a message in the Habitica Help Guild to have your questions answered by a fellow player
+  /// Post a message in the [Habitica Help Guild](https://habitica.com/groups/guild/5481ccf3-5d2d-48a9-a871-70a7380cee5a) to have your questions answered by a fellow player
   public static var moreQuestionsText: String { return L10n.tr("Mainstrings", "more_questions_text") }
   /// Still have a question?
   public static var moreQuestionsTitle: String { return L10n.tr("Mainstrings", "more_questions_title") }
@@ -498,6 +516,8 @@ public enum L10n {
   public static var myGuilds: String { return L10n.tr("Mainstrings", "my_guilds") }
   /// Mystery Sets
   public static var mysterySets: String { return L10n.tr("Mainstrings", "mystery_sets") }
+  /// Mystic Hourglasses
+  public static var mysticHourglasses: String { return L10n.tr("Mainstrings", "mystic_hourglasses") }
   /// Name
   public static var name: String { return L10n.tr("Mainstrings", "name") }
   /// Never
@@ -586,6 +606,8 @@ public enum L10n {
   public static var plainBackgrounds: String { return L10n.tr("Mainstrings", "plain_backgrounds") }
   /// Ponytail
   public static var ponytail: String { return L10n.tr("Mainstrings", "ponytail") }
+  /// Premium Currency
+  public static var premiumCurrency: String { return L10n.tr("Mainstrings", "premium_currency") }
   /// Publish Challenge
   public static var publishChallenge: String { return L10n.tr("Mainstrings", "publish_challenge") }
   /// Purchase Customization
@@ -700,6 +722,10 @@ public enum L10n {
   public static var staff: String { return L10n.tr("Mainstrings", "staff") }
   /// Start my day
   public static var startMyDay: String { return L10n.tr("Mainstrings", "start_my_day") }
+  /// Stat Allocation
+  public static var statAllocation: String { return L10n.tr("Mainstrings", "stat_allocation") }
+  /// All Habitica characters have four stats that affect the gameplay aspects of Habitica.\n\n**Strength (STR)** affects critical hits and raises damage done to a Quest Boss. Warriors and Rogues gain STR from their class equipment.\n\n**Constitution (CON)** raises your HP and makes you take less damage. Healers and Warriors gain CON from their class equipment.\n\n**Intelligence (INT)** raises the amount of EXP you earn and gives you more Mana. Mages and Healers gain INT from their class equipment.\n\n**Perception (PER)** increases the gold you earn and the rate of finding dropped items. Rogues and Mages gain PER from their class equipment.\n\nAfter level 10, you earn 1 Stat Point every level you gain that you can put into any stat you’d like. You can also equip gear that has different combinations of stat boosts.
+  public static var statDescription: String { return L10n.tr("Mainstrings", "stat_description") }
   /// You've completed your Daily for 21 days in a row! Amazing job. Don't break the streak!
   public static var streakAchievementDescription: String { return L10n.tr("Mainstrings", "streak_achievement_description") }
   /// You earned a streak achievement!
@@ -712,6 +738,8 @@ public enum L10n {
   public static var subscribeForHourglasses: String { return L10n.tr("Mainstrings", "subscribe_for_hourglasses") }
   /// Want more than 2 weeks of data?
   public static var subscribeForTaskHistory: String { return L10n.tr("Mainstrings", "subscribe_for_task_history") }
+  /// Subscriber Currency
+  public static var subscriberCurrency: String { return L10n.tr("Mainstrings", "subscriber_currency") }
   /// Subscription
   public static var subscription: String { return L10n.tr("Mainstrings", "subscription") }
   /// Become a subscriber and you’ll get these useful benefits

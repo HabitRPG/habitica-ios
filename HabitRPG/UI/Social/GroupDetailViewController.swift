@@ -12,7 +12,7 @@ import ReactiveSwift
 import Down
 import Crashlytics
 
-class GroupDetailViewController: BaseUIViewController, UITextViewDelegate {
+class GroupDetailViewController: BaseUIViewController {
     var groupID: String?
 
     var groupProperty = MutableProperty<GroupProtocol?>(nil)
@@ -33,9 +33,7 @@ class GroupDetailViewController: BaseUIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        groupDescriptionTextView?.delegate = self
-        
+                
         let margins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         groupDescriptionStackView?.layoutMargins = margins
         groupDescriptionStackView?.isLayoutMarginsRelativeArrangement = true
@@ -103,9 +101,5 @@ class GroupDetailViewController: BaseUIViewController, UITextViewDelegate {
                 invitationViewController.groupID = groupID
             }
         }
-    }
-    
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
-        return !RouterHandler.shared.handle(url: URL)
     }
 }

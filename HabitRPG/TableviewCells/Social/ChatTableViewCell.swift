@@ -20,7 +20,7 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
     @IBOutlet weak private var displaynameLabel: UsernameLabel!
     @IBOutlet weak private var positionLabel: PaddedLabel!
     @IBOutlet weak private var sublineLabel: UILabel!
-    @IBOutlet weak private var messageTextView: LinksOnlyTextView!
+    @IBOutlet weak private var messageTextView: MarkdownTextView!
     @IBOutlet weak private var plusOneButton: UIButton!
     @IBOutlet weak private var replyButton: UIButton!
     @IBOutlet weak private var copyButton: UIButton!
@@ -186,7 +186,7 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
         displaynameLabel.contributorLevel = contributorLevel
         
         if let text = inboxMessage.text {
-            messageTextView.attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString()
+            messageTextView.setMarkdownString(text.unicodeEmoji)
         }
         
         if previousMessage?.sent == inboxMessage.sent {
@@ -233,11 +233,7 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
     }
     
     private func setMessageText(_ text: String) {
-        if let attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString() {
-            messageTextView.attributedText = attributedText
-        } else {
-            messageTextView.text = ""
-        }
+        messageTextView.setMarkdownString(text.unicodeEmoji)
     }
     
     private func stylePlusOneButton(likes: [ChatMessageReactionProtocol], userID: String) {

@@ -174,8 +174,8 @@ class UserProfileViewController: BaseTableViewController {
                 cell.textLabel?.text = L10n.userID
                 cell.detailTextLabel?.text = member?.id
             case 3:
-                let textView = cell.viewWithTag(1) as? UITextView
-                textView?.attributedText = try? Down(markdownString: member?.profile?.blurb ?? "").toHabiticaAttributedString()
+                let textView = cell.viewWithTag(1) as? MarkdownTextView
+                textView?.setMarkdownString(member?.profile?.blurb)
             case 4:
                 if let imageUrl = member?.profile?.photoUrl {
                     let imageView = cell.viewWithTag(1) as? NetworkImageView

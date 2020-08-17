@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable
 class CollapsibleStackView: SeparatedStackView {
     
-    private var titleView: CollapsibleTitle?
+    var titleView: CollapsibleTitle?
     
     private var topBorder: CALayer?
     private var bottomBorder: CALayer?
@@ -32,16 +32,22 @@ class CollapsibleStackView: SeparatedStackView {
                 }
                 return
             }
-            let transitionOptions: UIView.AnimationOptions = [isCollapsed ? .transitionFlipFromBottom : .transitionFlipFromTop, .showHideTransitionViews]
+            let transitionOptions: UIView.AnimationOptions = [isCollapsed ? .transitionCrossDissolve : .transitionCrossDissolve, .showHideTransitionViews]
             for subview in self.arrangedSubviews where subview != self.titleView {
                 UIView.animate(withDuration: 0.3, animations: {
                     subview.isHidden = self.isCollapsed
                 })
-                UIView.transition(with: subview, duration: 0.6, options: transitionOptions, animations: { [unowned self] in
+                UIView.transition(with: subview, duration: 0.3, options: transitionOptions, animations: { [unowned self] in
                     subview.alpha = self.isCollapsed ? 0 : 1
                     }, completion: nil)
             }
             
+        }
+    }
+    
+    var showSeparators = true {
+        didSet {
+            applyTheme(theme: ThemeService.shared.theme)
         }
     }
 
@@ -73,12 +79,13 @@ class CollapsibleStackView: SeparatedStackView {
     }
     
     private func setupView() {
+        axis = .vertical
         if arrangedSubviews.isEmpty == false, let subView = arrangedSubviews[0] as? CollapsibleTitle {
             titleView = subView
         } else {
             let view = CollapsibleTitle()
             titleView = view
-            addArrangedSubview(view)
+            insertArrangedSubview(view, at: 0)
         }
         titleView?.tapAction = {[weak self] in
             guard let weakSelf = self else {
@@ -86,6 +93,7 @@ class CollapsibleStackView: SeparatedStackView {
             }
             weakSelf.isCollapsed = !weakSelf.isCollapsed
         }
+        applyTheme(theme: ThemeService.shared.theme)
     }
     
     override func layoutSublayers(of layer: CALayer) {
@@ -111,12 +119,13 @@ class CollapsibleStackView: SeparatedStackView {
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        let separatorColor = theme.separatorColor
+        let separatorColor = showSeparators ? theme.separatorColor : .clear
         topBorder = addTopBorderWithColor(color: separatorColor, width: 1)
         bottomBorder = addBottomBorderWithColor(color: separatorColor, width: 1)
         titleBottomBorder = addBottomBorderWithColor(color: separatorColor, width: 1)
         
         backgroundColor = theme.contentBackgroundColor
         titleView?.textColor = theme.primaryTextColor
+        titleView?.subtitleColor = theme.secondaryTextColor
     }
 }

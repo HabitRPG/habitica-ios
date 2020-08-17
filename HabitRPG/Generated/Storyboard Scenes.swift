@@ -140,6 +140,8 @@ internal enum StoryboardScene {
 
     internal static let initialScene = InitialSceneType<Habitica.MainSupportViewController>(storyboard: Support.self)
 
+    internal static let faqDetailViewController = SceneType<Habitica.FAQDetailViewController>(storyboard: Support.self, identifier: "FAQDetailViewController")
+
     internal static let faqViewController = SceneType<Habitica.FAQViewController>(storyboard: Support.self, identifier: "FAQViewController")
 
     internal static let mainSupportViewController = SceneType<Habitica.MainSupportViewController>(storyboard: Support.self, identifier: "MainSupportViewController")

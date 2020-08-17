@@ -971,7 +971,7 @@
 "game_mechanics" = "Game Mechanics";
 "common_questions" = "Common Questions";
 "more_questions_title" = "Still have a question?";
-"more_questions_text" = "Post a message in the Habitica Help Guild to have your questions answered by a fellow player";
+"more_questions_text" = "Post a message in the [Habitica Help Guild](https://habitica.com/groups/guild/5481ccf3-5d2d-48a9-a871-70a7380cee5a) to have your questions answered by a fellow player";
 "known_issues" = "Known Issues";
 "common_fixes" = "Common Fixes";
 "more_help_title" = "Need more help?";
@@ -983,3 +983,18 @@
 "manual_sync_description" = "Sometimes the app won’t automatically sync content or gets stuck with some odd behavior. Pull to refresh or force close the app and reopen it to see if it helps";
 "update_app_title" = "Update the App";
 "update_app_description" = "We’re constantly pushing out new fixes, so be sure to check the App Store to see if there are any updates available";
+"health_points" = "Health Points";
+"health_description" = "This represents your avatar’s life. Missing a Daily or doing a negative Habit **reduces your HP**.\n\n**Regain HP** by leveling up, using a Health Potion, or a class skill with healing ability.\n\nIf your **HP reaches 0** you will lose a level, all Gold, and one piece of equipment. Lost equipment can be re-purchased.";
+"experience_points" = "Experience Points";
+"experience_description" = "Experience points represent your progress and allow you to level up. You’ll mainly **gain EXP** from completing tasks or quests, but there are also some class skills that give EXP.\n\nTasks of higher difficulty, or red-colored tasks will give you **more EXP**. The **Intelligence stat** also raises your rate of EXP gain.";
+"mana_points" = "Mana Points";
+"gold_description" = "Gold is the **main form of currency** within Habitica and allows you to buy certain gear, quests, items, or even custom rewards you make for yourself.\n\n**Earn Gold** through completing tasks or quests, or through some Class skills. Higher **Perception stats** raise the amount of Gold you earn.\n\nIf you subscribe to Habitica, you can even use Gold to purchase a number of Gems determined by the length of time you’ve been subscribed.";
+"mana_description" = "Mana points are unlocked with the class system at level 10 and allow you to **use Skills** once you begin learning them at level 11.\n\nSome **MP is restored** at day reset every day, but you can regain more by completing tasks or using a Mage class skill.";
+"stat_allocation" = "Stat Allocation";
+"stat_description" = "All Habitica characters have four stats that affect the gameplay aspects of Habitica.\n\n**Strength (STR)** affects critical hits and raises damage done to a Quest Boss. Warriors and Rogues gain STR from their class equipment.\n\n**Constitution (CON)** raises your HP and makes you take less damage. Healers and Warriors gain CON from their class equipment.\n\n**Intelligence (INT)** raises the amount of EXP you earn and gives you more Mana. Mages and Healers gain INT from their class equipment.\n\n**Perception (PER)** increases the gold you earn and the rate of finding dropped items. Rogues and Mages gain PER from their class equipment.\n\nAfter level 10, you earn 1 Stat Point every level you gain that you can put into any stat you’d like. You can also equip gear that has different combinations of stat boosts.";
+"premium_currency" = "Premium Currency";
+"currency" = "Currency";
+"gems_description" = "Gems are a currency purchased with real money that allow you to buy extra content within Habitica and are one of the main sources of financial support for the Habitica team alongside subscriptions.\n\nAll content purchased through Gems is purely cosmetic or can be obtained for free with time.\n\nYou can also receive Gems through gifts from other players, Challenge prizes, contributing to Habitica, or subscribing.";
+"subscriber_currency" = "Subscriber Currency";
+"mystic_hourglasses" = "Mystic Hourglasses";
+"hourglasses_description" = "Mystic Hourglasses are an extremely rare form of currency you can only receive for subscribing to Habitica for three consecutive months or more. They are used in the Time Traveler’s shop to buy past gear sets, pets, mounts, animated backgrounds, or even special quests.\n\nYou can receive up to four Mystic Hourglasses a year. The time they are rewarded is based on your subscription renewal schedule. They are sent out on the first day of a new month after your last subscription payment that qualified you for an hourglass. See the [Subscription] page for more details.";

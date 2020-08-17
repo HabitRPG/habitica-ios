@@ -334,7 +334,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2fa-LQ-4Ma">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="521"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="776"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9nG-AQ-Kln">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
@@ -357,7 +357,7 @@
                                                     <constraint firstItem="tM4-JA-0M5" firstAttribute="leading" secondItem="9nG-AQ-Kln" secondAttribute="leading" constant="16" id="not-wh-vDB"/>
                                                 </constraints>
                                             </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uXN-HO-6tg">
+                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uXN-HO-6tg">
                                                 <rect key="frame" x="0.0" y="63" width="414" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="500" constant="300" id="CLH-cP-eM4"/>
@@ -387,7 +387,7 @@
                                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M4Q-0Y-zs2">
                                                 <rect key="frame" x="0.0" y="176" width="414" height="300"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5C0-ce-FO1">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5C0-ce-FO1" customClass="SeparatedStackView" customModule="Habitica" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="501" constant="300" id="bSg-YJ-ZSk"/>
@@ -409,7 +409,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="gAs-0x-ank">
-                                                <rect key="frame" x="0.0" y="476" width="414" height="45"/>
+                                                <rect key="frame" x="0.0" y="476" width="414" height="300"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WX9-YK-OVf">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
@@ -420,15 +420,14 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dA-RP-V1I">
-                                                        <rect key="frame" x="0.0" y="24.5" width="414" height="20.5"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" priority="500" constant="20" id="jsZ-A7-B9O"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cwy-dt-cjY" customClass="MarkdownTextView" customModule="Habitica" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="24.5" width="414" height="275.5"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="501" constant="300" id="qyt-fG-9Yz"/>
@@ -467,7 +466,7 @@
                         <outlet property="mechanicsStackView" destination="uXN-HO-6tg" id="bCl-Br-F7w"/>
                         <outlet property="mechanicsTitleLabel" destination="tM4-JA-0M5" id="vrT-5x-81Q"/>
                         <outlet property="moreQuestionsStackView" destination="gAs-0x-ank" id="gzL-ay-2uO"/>
-                        <outlet property="moreQuestionsText" destination="4dA-RP-V1I" id="vqC-ue-073"/>
+                        <outlet property="moreQuestionsText" destination="cwy-dt-cjY" id="0yW-DE-GRz"/>
                         <outlet property="moreQuestionsTitle" destination="WX9-YK-OVf" id="K1a-rH-KBf"/>
                         <segue destination="Zzv-XT-YeL" kind="show" identifier="showFAQDetailSegue" id="p4b-j2-14v"/>
                     </connections>
@@ -479,7 +478,7 @@
         <!--Detail View Controller-->
         <scene sceneID="xlQ-se-I8U">
             <objects>
-                <viewController id="Zzv-XT-YeL" customClass="FAQDetailViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FAQDetailViewController" id="Zzv-XT-YeL" customClass="FAQDetailViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uqd-1u-8Xf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -493,7 +492,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" editable="NO" text="werqwerqwer" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="U5U-nR-j47">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" editable="NO" text="werqwerqwer" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="U5U-nR-j47" customClass="MarkdownTextView" customModule="Habitica" customModuleProvider="target">
                                 <rect key="frame" x="26" y="149.5" width="362" height="686.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -561,7 +560,7 @@
                                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="SWd-FJ-ft7">
                                                 <rect key="frame" x="0.0" y="63" width="414" height="300"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2JD-uU-eT9">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2JD-uU-eT9" customClass="SeparatedStackView" customModule="Habitica" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="500" constant="30" id="xq0-Ms-OvP"/>

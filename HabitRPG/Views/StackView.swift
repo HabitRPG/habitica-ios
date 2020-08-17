@@ -19,6 +19,15 @@ class StackView: UIStackView {
         }
     }
     
+    override var cornerRadius: CGFloat {
+        get {
+            backgroundLayer.cornerRadius
+        }
+        set {
+            backgroundLayer.cornerRadius = newValue
+        }
+    }
+    
     private lazy var backgroundLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         self.layer.insertSublayer(layer, at: 0)
@@ -26,7 +35,7 @@ class StackView: UIStackView {
     }()
     override func layoutSubviews() {
         super.layoutSubviews()
-        backgroundLayer.path = UIBezierPath(rect: self.bounds).cgPath
+        backgroundLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: backgroundLayer.cornerRadius).cgPath
         backgroundLayer.fillColor = self.backgroundColor?.cgColor
     }
 }

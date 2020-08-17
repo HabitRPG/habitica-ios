@@ -90,7 +90,8 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         self.delegate = delegate
         super.init()
         sections.append(ItemSection<InAppRewardProtocol>())
-        sections[0].showIfEmpty = hasGearSection()
+        sections[0].showIfEmpty = needsGearSection
+        
         
         disposable.add(inventoryRepository.getShop(identifier: identifier).combineLatest(with: userRepository.getUser()).on(value: {[weak self] (shop, user) in
             let sectionCount = self?.sections.count ?? 0
@@ -261,7 +262,14 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let item = item(at: indexPath) {
+        if indexPath.section == 0 && !hasGearSection() {
+            if !hasGearSection() {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyGearCell", for: indexPath)
+                (cell.viewWithTag(1) as? UILabel)?.text = L10n.Shops.purchasedAllGear
+                cell.viewWithTag(2)?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                return cell
+            }
+        } else if let item = item(at: indexPath) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath)
             if let itemCell = cell as? InAppRewardCell {
                 itemCell.configure(reward: item, user: user)
@@ -271,13 +279,6 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 itemCell.isPinned = pinnedItems.contains(item.key)
             }
             return cell
-        } else if indexPath.section == 0 && needsGearSection {
-            if !hasGearSection() {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyGearCell", for: indexPath)
-                (cell.viewWithTag(1) as? UILabel)?.text = L10n.Shops.purchasedAllGear
-                cell.viewWithTag(2)?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-                return cell
-            }
         }
         return collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath)
     }
@@ -296,6 +297,6 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 return firstObject.pinType == "marketGear"
             }
         }
-        return shopIdentifier == Constants.MarketKey
+        return false
     }
 }

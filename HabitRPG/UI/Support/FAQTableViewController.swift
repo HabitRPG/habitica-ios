@@ -9,6 +9,7 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
+import Down
 
 class FAQViewController: BaseUIViewController {
     
@@ -27,10 +28,10 @@ class FAQViewController: BaseUIViewController {
     @IBOutlet private var mechanicsStackView: UIStackView!
     @IBOutlet private var commonQuestionsTitleLabel: UILabel!
     @IBOutlet weak var commonQuestionsBackground: UIView!
-    @IBOutlet private var commonQuestionsStackView: UIStackView!
+    @IBOutlet private var commonQuestionsStackView: SeparatedStackView!
     @IBOutlet weak var moreQuestionsStackView: UIStackView!
     @IBOutlet weak var moreQuestionsTitle: UILabel!
-    @IBOutlet weak var moreQuestionsText: UILabel!
+    @IBOutlet weak var moreQuestionsText: MarkdownTextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +44,8 @@ class FAQViewController: BaseUIViewController {
         moreQuestionsStackView.layoutMargins = UIEdgeInsets(top: 30, left: 22, bottom: 0, right: 22)
         commonQuestionsStackView.isLayoutMarginsRelativeArrangement = true
         commonQuestionsStackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+        commonQuestionsStackView.separatorBetweenItems = true
+        commonQuestionsStackView.separatorInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         
         populateMechanics()
         contentRepository.getFAQEntries().on(value: {[weak self] entries in
@@ -55,7 +58,7 @@ class FAQViewController: BaseUIViewController {
         mechanicsTitleLabel.text = L10n.gameMechanics.uppercased()
         commonQuestionsTitleLabel.text = L10n.commonQuestions.uppercased()
         moreQuestionsTitle.text = L10n.moreQuestionsTitle
-        moreQuestionsText.text = L10n.moreQuestionsText
+        moreQuestionsText.setMarkdownString(L10n.moreQuestionsText)
     }
     
     override func applyTheme(theme: Theme) {
@@ -65,10 +68,35 @@ class FAQViewController: BaseUIViewController {
         moreQuestionsTitle.textColor = theme.primaryTextColor
         moreQuestionsText.textColor = theme.ternaryTextColor
         commonQuestionsBackground.backgroundColor = theme.windowBackgroundColor
+        populateMechanics()
     }
     
     private func populateMechanics() {
-        
+        mechanicsStackView.removeAllArrangedSubviews()
+        FAQViewController.mechanics.forEach { entry in
+            let stackView = CollapsibleStackView()
+            stackView.titleView?.text = entry["title"] as? String
+            stackView.titleView?.subtitle = entry["subtitle"] as? String
+            stackView.titleView?.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
+            stackView.titleView?.subtitleFont = CustomFontMetrics.scaledSystemFont(ofSize: 15)
+            stackView.titleView?.icon = entry["icon"] as? UIImage
+            stackView.titleView?.showCarret = false
+            stackView.titleView?.insets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+            stackView.cornerRadius = 6
+            stackView.showSeparators = false
+            stackView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+            let textView = MarkdownTextView()
+            textView.isEditable = false
+            textView.isScrollEnabled = false
+            textView.setMarkdownString(entry["text"] as? String)
+            textView.backgroundColor = .clear
+            textView.textContainerInset = UIEdgeInsets(top: 4, left: 12, bottom: 16, right: 12)
+            textView.font = CustomFontMetrics.scaledSystemFont(ofSize: 13)
+            textView.textColor = ThemeService.shared.theme.secondaryTextColor
+            stackView.addArrangedSubview(textView)
+            mechanicsStackView.addArrangedSubview(stackView)
+            stackView.isCollapsed = true
+        }
     }
     
     private func populateFAQ(questions: [FAQEntryProtocol]) {
@@ -91,10 +119,6 @@ class FAQViewController: BaseUIViewController {
             stackView.addArrangedSubview(imageView)
             stackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(questionTapped)))
             commonQuestionsStackView.addArrangedSubview(stackView)
-            let separator = UIView()
-            separator.addHeightConstraint(height: 1)
-            separator.backgroundColor = ThemeService.shared.theme.tableviewSeparatorColor
-            commonQuestionsStackView.addArrangedSubview(separator)
         }
         commonQuestionsStackView.arrangedSubviews.last?.removeFromSuperview()
     }
@@ -102,7 +126,7 @@ class FAQViewController: BaseUIViewController {
     @objc
     private func questionTapped(_ source: UITapGestureRecognizer) {
         if let view = source.view {
-            selectedIndex = (commonQuestionsStackView.arrangedSubviews.firstIndex(of: view) ?? 0) / 2
+            selectedIndex = (commonQuestionsStackView.arrangedSubviews.firstIndex(of: view) ?? 0)
             perform(segue: StoryboardSegue.Support.showFAQDetailSegue)
         }
     }
@@ -113,4 +137,15 @@ class FAQViewController: BaseUIViewController {
             destination?.index = selectedIndex ?? 0
         }
     }
+
+    
+    private static let mechanics = [
+        ["title": L10n.healthPoints, "subtitle": "HP", "icon": HabiticaIcons.imageOfHeartLarge, "text": L10n.healthDescription],
+        ["title": L10n.experiencePoints, "subtitle": "EXP", "icon": HabiticaIcons.imageOfExperienceReward, "text": L10n.experienceDescription],
+        ["title": L10n.manaPoints, "subtitle": "MP", "icon": HabiticaIcons.imageOfMagic, "text": L10n.manaDescription],
+        ["title": L10n.gold, "subtitle": L10n.currency, "icon": HabiticaIcons.imageOfGoldReward, "text": L10n.goldDescription],
+        ["title": L10n.gems, "subtitle": L10n.premiumCurrency, "icon": HabiticaIcons.imageOfGem, "text": L10n.gemsDescription],
+        ["title": L10n.mysticHourglasses, "subtitle": L10n.premiumCurrency, "icon": HabiticaIcons.imageOfHourglass, "text": L10n.hourglassesDescription],
+        ["title": L10n.statAllocation, "subtitle": "STR, CON, INT, PER", "icon": HabiticaIcons.imageOfStats, "text": L10n.statDescription]
+    ]
 }

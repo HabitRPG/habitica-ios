@@ -15,8 +15,8 @@ import PinLayout
 class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
 
     //swiftlint:disable private_outlet
-    @IBOutlet weak var titleLabel: UITextView!
-    @IBOutlet weak var subtitleLabel: UITextView!
+    @IBOutlet weak var titleLabel: MarkdownTextView!
+    @IBOutlet weak var subtitleLabel: MarkdownTextView!
     @IBOutlet weak var taskDetailLine: TaskDetailLineView!
     @IBOutlet weak var mainTaskWrapper: UIView!
     @IBOutlet weak var syncingIndicator: UIActivityIndicatorView!

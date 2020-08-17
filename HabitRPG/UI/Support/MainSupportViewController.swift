@@ -43,7 +43,7 @@ class MainSupportViewController: BaseUIViewController {
         questionsTitleLabel.text = L10n.Support.questionsTitle
         questionsDescriptionLabel.text = L10n.Support.questionsDescription
         questionsButton.setTitle(L10n.Support.questionsButton, for: .normal)
-        bugTitle.text = L10n.Support.bugFixesButton
+        bugTitle.text = L10n.Support.bugFixesTitle
         bugDescription.text = L10n.Support.bugFixesDescription
         bugButton.setTitle(L10n.Support.bugFixesButton, for: .normal)
         suggestionsTitle.text = L10n.Support.suggestionsTitle

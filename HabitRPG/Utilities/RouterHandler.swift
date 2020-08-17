@@ -69,6 +69,12 @@ class RouterHandler: NSObject {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Support.mainSupportViewController.instantiate())
         }
+        router.register("/static/faq/:index") { link in
+            self.displayTab(index: 4)
+            let viewController = StoryboardScene.Support.faqDetailViewController.instantiate()
+            viewController.index = (link?.routeParameters["index"] as? Int) ?? 0
+            self.push(viewController)
+        }
         router.register("user/settings.*") { _ in
             self.displayTab(index: 4)
             self.push(StoryboardScene.Settings.initialScene.instantiate())

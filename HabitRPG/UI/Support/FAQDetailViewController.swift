@@ -15,7 +15,7 @@ class FAQDetailViewController: BaseUIViewController {
     
     var index: Int = -1
     
-    @IBOutlet weak var answerTextView: UITextView!
+    @IBOutlet weak var answerTextView: MarkdownTextView!
     @IBOutlet weak var questionLabel: UILabel!
     
     private let contentRepository = ContentRepository()
@@ -35,12 +35,12 @@ class FAQDetailViewController: BaseUIViewController {
             questionLabel.text = title
         }
         if let text = faqText {
-            answerTextView.attributedText = try? Down(markdownString: text).toHabiticaAttributedString()
+            answerTextView.setMarkdownString(text)
         }
         if index >= 0 {
             disposable.inner.add(contentRepository.getFAQEntry(index: index).on(value: {[weak self]entry in
                 self?.questionLabel.text = entry.question
-                self?.answerTextView.attributedText = try? Down(markdownString: entry.answer).toHabiticaAttributedString()
+                self?.answerTextView.setMarkdownString(entry.answer)
             }).start())
         }
     }

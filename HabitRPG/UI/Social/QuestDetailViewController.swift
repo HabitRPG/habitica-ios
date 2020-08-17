@@ -33,7 +33,7 @@ class QuestDetailViewController: BaseUIViewController {
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var questTypeHeader: UILabel!
-    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var descriptionTextView: MarkdownTextView!
     @IBOutlet weak var invitationsHeader: UILabel!
     @IBOutlet weak var invitationsStackView: UIStackView!
     @IBOutlet weak var rejectButton: UIButton!
@@ -135,7 +135,7 @@ class QuestDetailViewController: BaseUIViewController {
     }
     
     private func set(quest: QuestProtocol) {
-        descriptionTextView.attributedText = try? Down(markdownString: quest.notes ?? "").toHabiticaAttributedString()
+        descriptionTextView.setMarkdownString(quest.notes)
         if quest.isBossQuest {
             questTypeHeader.text = L10n.Quests.bossBattle
             bossImageView.setImagewith(name: "quest_\(quest.key ?? "")")

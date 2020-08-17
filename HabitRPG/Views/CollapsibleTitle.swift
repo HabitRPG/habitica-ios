@@ -12,11 +12,25 @@ import PinLayout
 @IBDesignable
 class CollapsibleTitle: UIView, UIGestureRecognizerDelegate {
     
+    private var iconView = UIImageView()
     private var label = UILabel()
+    private var subtitleLabel = UILabel()
     private var carretIconView = UIImageView(image: #imageLiteral(resourceName: "carret_up").withRenderingMode(.alwaysTemplate))
     private var infoIconView: UIImageView?
     
     var tapAction: (() -> Void)?
+    
+    var icon: UIImage? {
+        get {
+            return iconView.image
+        }
+        set {
+            iconView.isHidden = newValue == nil
+            iconView.image = newValue
+            iconView.contentMode = .scaleAspectFit
+            setNeedsLayout()
+        }
+    }
     
     @IBInspectable var text: String? {
         get {
@@ -24,6 +38,17 @@ class CollapsibleTitle: UIView, UIGestureRecognizerDelegate {
         }
         set {
             label.text = newValue
+            setNeedsLayout()
+        }
+    }
+    
+    @IBInspectable var subtitle: String? {
+        get {
+            return subtitleLabel.text
+        }
+        set {
+            subtitleLabel.isHidden = newValue == nil
+            subtitleLabel.text = newValue
             setNeedsLayout()
         }
     }
@@ -37,12 +62,31 @@ class CollapsibleTitle: UIView, UIGestureRecognizerDelegate {
         }
     }
     
+    @IBInspectable var subtitleColor: UIColor {
+        get {
+            return subtitleLabel.textColor
+        }
+        set {
+            subtitleLabel.textColor = newValue
+        }
+    }
+    
     var font: UIFont {
         get {
             return label.font
         }
         set {
             label.font = newValue
+            setNeedsLayout()
+        }
+    }
+    
+    var subtitleFont: UIFont {
+        get {
+            return subtitleLabel.font
+        }
+        set {
+            subtitleLabel.font = newValue
             setNeedsLayout()
         }
     }
@@ -76,6 +120,12 @@ class CollapsibleTitle: UIView, UIGestureRecognizerDelegate {
         }
     }
     
+    var showCarret = true {
+        didSet {
+            carretIconView.isHidden = !showCarret
+        }
+    }
+    
     var infoIconAction: (() -> Void)?
     
     override init(frame: CGRect) {
@@ -93,6 +143,10 @@ class CollapsibleTitle: UIView, UIGestureRecognizerDelegate {
     private func setupView() {
         addSubview(carretIconView)
         addSubview(label)
+        addSubview(subtitleLabel)
+        addSubview(iconView)
+        iconView.isHidden = true
+        subtitleLabel.isHidden = true
         carretIconView.contentMode = .center
         carretIconView.tintColor = ThemeService.shared.theme.dimmedColor
         label.textColor = ThemeService.shared.theme.primaryTextColor
@@ -105,7 +159,17 @@ class CollapsibleTitle: UIView, UIGestureRecognizerDelegate {
     }
     
     override func layoutSubviews() {
-        label.pin.start(insets.left).vertically().sizeToFit(.height)
+        var leftInset = insets.left
+        if !iconView.isHidden {
+            iconView.pin.start(leftInset + 6).size(28).vCenter()
+            leftInset = iconView.frame.origin.x + iconView.frame.size.width + 16
+        }
+        if subtitleLabel.isHidden {
+            label.pin.start(leftInset).vertically().sizeToFit(.height)
+        } else {
+            label.pin.start(leftInset).bottom(to: edge.vCenter).marginBottom(1).sizeToFit()
+            subtitleLabel.pin.top(to: edge.vCenter).marginTop(1).start(leftInset).sizeToFit()
+        }
         carretIconView.pin.end(16).size(24).vCenter()
         if let iconView = infoIconView {
             iconView.pin.start(label.frame.size.width + 8).width(18).vertically()
@@ -134,6 +198,6 @@ class CollapsibleTitle: UIView, UIGestureRecognizerDelegate {
     }
 
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: super.intrinsicContentSize.width, height: 48)
+        return CGSize(width: super.intrinsicContentSize.width, height: subtitle != nil ? 60 : 48)
     }
 }
