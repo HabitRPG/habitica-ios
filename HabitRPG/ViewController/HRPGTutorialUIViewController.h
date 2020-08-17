@@ -14,7 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface HRPGTutorialUIViewController : UIViewController
 
 @property NSString *tutorialIdentifier;
-@property NSArray *coachMarks;
 @property BOOL displayedTutorialStep;
 @property TutorialStepView *activeTutorialView;
 @end

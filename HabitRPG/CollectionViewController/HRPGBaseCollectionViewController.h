@@ -16,7 +16,6 @@
 @property BOOL hidesTopBar;
 
 @property NSString *tutorialIdentifier;
-@property NSArray *coachMarks;
 @property BOOL displayedTutorialStep;
 @property TutorialStepView *activeTutorialView;
 

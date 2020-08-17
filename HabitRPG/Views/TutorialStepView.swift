@@ -14,7 +14,7 @@ enum TutorialStepViewPosition {
 
 class TutorialStepView: UIView {
     
-    @IBOutlet weak var backgroundView: HRPGHoledView!
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var speechbubbleView: SpeechbubbleView!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var centerConstraint: NSLayoutConstraint!
@@ -22,12 +22,10 @@ class TutorialStepView: UIView {
     
     private weak var displayView: UIView?
     @objc var dismissAction: (() -> Void)?
-    @objc var hintView: HRPGHintView?
     private var textList = [String]()
     
     @objc var highlightedFrame: CGRect = CGRect.zero {
         didSet {
-            backgroundView.highlightedFrame = highlightedFrame
             backgroundView.setNeedsDisplay()
         }
     }
@@ -48,7 +46,7 @@ class TutorialStepView: UIView {
             view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
             addSubview(view)
             
-            backgroundView.dimColor = ThemeService.shared.theme.backgroundTintColor.withAlphaComponent(0.6)
+            backgroundView.backgroundColor = ThemeService.shared.theme.backgroundTintColor.withAlphaComponent(0.6)
             
             shouldGroupAccessibilityChildren = true
             isAccessibilityElement = true
@@ -64,20 +62,6 @@ class TutorialStepView: UIView {
         let view = nib.instantiate(withOwner: self, options: nil)[0] as? UIView
         
         return view
-    }
-    
-    @objc
-    func displayHint(onView: UIView, displayView: UIView, animated: Bool) {
-        self.displayView = displayView
-        let hintView = HRPGHintView()
-        
-        hintView.frame = CGRect(x: highlightedFrame.origin.x + ((highlightedFrame.size.width - 45) / 2),
-                                y: self.highlightedFrame.origin.y + ((self.highlightedFrame.size.height - 45) / 2),
-                                width: 45, height: 45)
-        hintView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hintViewTapped)))
-        hintView.pulse(toSize: 1.4, withDuration: 1.0)
-        onView.addSubview(hintView)
-        self.hintView = hintView
     }
     
     @objc
@@ -125,15 +109,6 @@ class TutorialStepView: UIView {
             textList = list
             setText(textList.removeFirst())
             speechbubbleView.animateTextView()
-        }
-    }
-    
-    @objc
-    func hintViewTapped() {
-        hintView?.removeFromSuperview()
-        hintView = nil
-        if let view = displayView {
-            display(onView: view, animated: true)
         }
     }
     

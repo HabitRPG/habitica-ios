@@ -207,9 +207,9 @@ class ItemsViewController: BaseTableViewController {
             self?.inventoryRepository.equip(type: "pet", key: "\(egg.key ?? "")-\(potion.key ?? "")").observeCompleted {}
         }
         imageAlert.addAction(title: L10n.share) { (_) in
-            HRPGSharingManager.shareItems([
+            SharingManager.share(items: [
                     L10n.Inventory.hatchedSharing(egg.text ?? "", potion.text ?? "")
-                ], withPresenting: imageAlert, withSourceView: nil)
+                ], presentingViewController: imageAlert, sourceView: nil)
         }
         imageAlert.arrangeMessageLast = true
         imageAlert.containerViewSpacing = 12

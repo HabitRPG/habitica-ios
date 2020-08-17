@@ -175,7 +175,6 @@
                         <segue destination="sS8-cF-myv" kind="show" identifier="ItemSegue" id="ETz-qE-xC2"/>
                         <segue destination="rxD-1b-YpQ" kind="show" identifier="NewsSegue" id="A1v-Vl-4j8"/>
                         <segue destination="r5L-RV-Ig6" kind="show" identifier="AboutSegue" id="V5t-v4-xQG"/>
-                        <segue destination="Bwt-cz-wxO" kind="show" identifier="ShopsSegue" id="fqC-VU-hsx"/>
                         <segue destination="6X4-ER-0VC" kind="presentation" identifier="SettingsSegue" modalPresentationStyle="formSheet" id="iEJ-Rx-jir"/>
                         <segue destination="9I8-N9-2zE" kind="presentation" identifier="InboxSegue" modalPresentationStyle="formSheet" id="aQi-0b-fOp"/>
                         <segue destination="xpj-mf-wcH" kind="show" identifier="SpellsSegue" id="vLi-wq-h9L"/>
@@ -505,14 +504,6 @@
                 <exit id="tcH-c8-7GQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="6871" y="927"/>
-        </scene>
-        <!--Shops-->
-        <scene sceneID="vvj-08-KMZ">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Shops" id="Bwt-cz-wxO" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BfY-wU-KEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7014" y="1365"/>
         </scene>
         <!--Shop-->
         <scene sceneID="aqJ-C4-dAk">
@@ -3301,7 +3292,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="FPm-Dv-Zos"/>
-        <segue reference="WRT-c8-yJ5"/>
+        <segue reference="04Z-5H-zfF"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="jU9-l6-uQc"/>
         <segue reference="GNu-1J-ZVK"/>

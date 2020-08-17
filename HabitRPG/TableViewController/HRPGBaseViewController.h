@@ -18,7 +18,6 @@
 @property NSString *readableScreenName;
 
 @property NSString *tutorialIdentifier;
-@property NSArray *coachMarks;
 @property BOOL displayedTutorialStep;
 @property TutorialStepView *activeTutorialView;
 

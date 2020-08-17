@@ -89,6 +89,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     self.isVisible = NO;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIContentSizeCategoryDidChangeNotification object:nil];
     [super viewWillDisappear:animated];
     [self.topHeaderCoordinator viewWillDisappear];
 }

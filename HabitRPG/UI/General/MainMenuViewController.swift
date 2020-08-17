@@ -214,7 +214,6 @@ class MainMenuViewController: BaseTableViewController {
                 MenuItem(title: L10n.Locations.timeTravelersShop, segue: StoryboardSegue.Main.showTimeTravelersSegue.rawValue)
             ]),
             MenuSection(title: L10n.Menu.inventory, iconAsset: Asset.iconInventory, items: [
-                MenuItem(title: L10n.Titles.shops, segue: StoryboardSegue.Main.shopsSegue.rawValue),
                 MenuItem(title: L10n.Menu.customizeAvatar, segue: StoryboardSegue.Main.customizationSegue.rawValue),
                 MenuItem(title: L10n.Titles.equipment, segue: StoryboardSegue.Main.equipmentSegue.rawValue),
                 MenuItem(title: L10n.Titles.items, segue: StoryboardSegue.Main.itemSegue.rawValue),
@@ -233,14 +232,6 @@ class MainMenuViewController: BaseTableViewController {
         if configRepository.bool(variable: .enableGiftOneGetOne) {
             menuSections[2].items[6].pillText = L10n.sale
             menuSections[2].items[6].pillColor = .teal50
-        }
-        
-        if configRepository.bool(variable: .raiseShops) {
-            menuSections[3].items[0].isHidden = true
-            menuSections[2].isHidden = false
-        } else {
-            menuSections[2].isHidden = true
-            menuSections[3].items[0].isHidden = false
         }
     }
     

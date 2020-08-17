@@ -37,9 +37,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
 
         let nib = UINib(nibName: getCellNibName() ?? "", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
-        
-        coachMarks = ["addTask", "editTask", "filterTask", "reorderTask"]
-        
+                
         let refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
         refreshControl = refresher

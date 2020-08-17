@@ -14,7 +14,6 @@
 
 @dynamic displayedTutorialStep;
 @dynamic tutorialIdentifier;
-@dynamic coachMarks;
 @dynamic activeTutorialView;
 
 - (void)displayTutorialStep {
@@ -33,42 +32,15 @@
             if (!([nextAppearance compare:[NSDate date]] == NSOrderedDescending)) {
                 self.displayedTutorialStep = YES;
                 [self displayExlanationView:self.tutorialIdentifier
-                           highlightingArea:CGRectZero
                                withDefaults:defaults
                               inDefaultsKey:defaultsKey
                            withTutorialType:@"common"];
             }
         }
     }
-
-    if (self.coachMarks && !self.displayedTutorialStep) {
-        for (NSString *coachMark in self.coachMarks) {
-            if ([UserManager.shared shouldDisplayTutorialStepWithKey:self.tutorialIdentifier]) {
-                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                NSString *defaultsKey = [NSString stringWithFormat:@"tutorial%@", coachMark];
-                NSDate *nextAppearance = [defaults valueForKey:defaultsKey];
-                if ([nextAppearance compare:[NSDate date]] == NSOrderedDescending) {
-                    continue;
-                }
-                if ([self respondsToSelector:@selector(getFrameForCoachmark:)]) {
-                    CGRect frame = [self getFrameForCoachmark:coachMark];
-                    if (!CGRectEqualToRect(frame, CGRectZero)) {
-                        self.displayedTutorialStep = YES;
-                        [self displayExlanationView:coachMark
-                                   highlightingArea:frame
-                                       withDefaults:defaults
-                                      inDefaultsKey:defaultsKey
-                                   withTutorialType:@"ios"];
-                    }
-                }
-                break;
-            }
-        }
-    }
 }
 
 - (void)displayExlanationView:(NSString *)identifier
-             highlightingArea:(CGRect)frame
                  withDefaults:(NSUserDefaults *)defaults
                 inDefaultsKey:(NSString *)defaultsKey
              withTutorialType:(NSString *)type {
@@ -81,12 +53,7 @@
     } else {
         [tutorialStepView setText:tutorialDefinition[@"text"]];
     }
-    if (!CGRectIsEmpty(frame)) {
-        tutorialStepView.highlightedFrame = frame;
-        [tutorialStepView displayHintOnView:self.parentViewController.view displayView:self.parentViewController.parentViewController.view animated:YES];
-    } else {
-        [tutorialStepView displayOnView:self.parentViewController.parentViewController.view animated:YES];
-    }
+    [tutorialStepView displayOnView:self.parentViewController.parentViewController.view animated:YES];
 
     NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
     [eventProperties setValue:@"tutorial" forKey:@"eventAction"];

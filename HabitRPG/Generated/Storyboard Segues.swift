@@ -45,7 +45,6 @@ internal enum StoryboardSegue {
     case petDetailSegue = "PetDetailSegue"
     case scannedCodeSegue = "ScannedCodeSegue"
     case settingsSegue = "SettingsSegue"
-    case shopsSegue = "ShopsSegue"
     case showShopSegue = "ShowShopSegue"
     case spellsSegue = "SpellsSegue"
     case stableSegue = "StableSegue"
@@ -75,9 +74,6 @@ internal enum StoryboardSegue {
   }
   internal enum Shop: String, SegueType {
     case buyModal
-  }
-  internal enum Shops: String, SegueType {
-    case shopSegue = "ShopSegue"
   }
   internal enum Social: String, SegueType {
     case challengesSegue = "ChallengesSegue"

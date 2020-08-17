@@ -91,11 +91,6 @@ internal enum StoryboardScene {
 
     internal static let initialScene = InitialSceneType<HRPGShopViewController>(storyboard: Shop.self)
   }
-  internal enum Shops: StoryboardType {
-    internal static let storyboardName = "Shops"
-
-    internal static let initialScene = InitialSceneType<HRPGShopOverviewViewController>(storyboard: Shops.self)
-  }
   internal enum Social: StoryboardType {
     internal static let storyboardName = "Social"
 

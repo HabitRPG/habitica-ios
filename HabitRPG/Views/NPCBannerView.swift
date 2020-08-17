@@ -87,7 +87,7 @@ class NPCBannerView: UIView {
                 self.npcNameLabel.text = unwrappedShop.text
             }
             
-            if let notes = unwrappedShop.notes?.strippingHTML() {
+            if let notes = unwrappedShop.notes?.stripHTML() {
                 setNotes(notes)
             }
             self.invalidateIntrinsicContentSize()

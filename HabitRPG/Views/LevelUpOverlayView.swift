@@ -41,7 +41,7 @@ class LevelUpOverlayView: HabiticaAlertController {
                 items.append(image)
             }
             if let weakSelf = self {
-                HRPGSharingManager.shareItems(items, withPresenting: weakSelf, withSourceView: nil)
+                SharingManager.share(items: items, presentingViewController: weakSelf, sourceView: nil)
             }
         }
     }
