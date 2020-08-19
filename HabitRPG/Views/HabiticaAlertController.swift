@@ -27,6 +27,8 @@ class HabiticaAlertController: UIViewController, Themeable {
     @IBOutlet weak var buttonContainerView: UIView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonUpperSpacing: NSLayoutConstraint!
+    @IBOutlet weak var buttonLowerSpacing: NSLayoutConstraint!
     
     private var buttonHandlers = [Int: ((UIButton) -> Swift.Void)]()
     private var buttons = [UIButton]()
@@ -156,7 +158,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         maximumSize.width = min(300, maximumSize.width - 24)
         maximumSize.width -= contentViewInsets.left + contentViewInsets.right
         maximumSize.height -= contentViewInsets.top + contentViewInsets.bottom
-        let maximumHeight = maximumSize.height - (32 + 140)
+        let maximumHeight = maximumSize.height - (32 + 140) - buttonUpperSpacing.constant - buttonLowerSpacing.constant
         var contentHeight = contentView?.systemLayoutSizeFitting(maximumSize).height ?? 0
         if contentHeight == 0 {
             contentHeight = contentView?.intrinsicContentSize.height ?? 0

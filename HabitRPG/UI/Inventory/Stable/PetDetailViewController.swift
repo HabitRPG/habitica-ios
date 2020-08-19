@@ -82,7 +82,7 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
     }
     
     @IBAction func unwindToFeed(_ segue: UIStoryboardSegue) {
-        let feedViewController = segue.source as? HRPGFeedViewController
+        let feedViewController = segue.source as? FeedViewController
         if let pet = selectedPet, let food = feedViewController?.selectedFood {
             inventoryRepository.feed(pet: pet, food: food).observeCompleted {}
         }

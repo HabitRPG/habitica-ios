@@ -75,7 +75,7 @@ class HRPGCurrencyCountView: UIView {
         }
     }
     
-    private let countLabel: HRPGAbbrevNumberLabel = HRPGAbbrevNumberLabel()
+    private let countLabel = AbbreviatedNumberLabel()
     private let currencyImageView: UIImageView = UIImageView(image: HabiticaIcons.imageOfGold)
     
     override init(frame: CGRect) {

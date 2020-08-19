@@ -16,7 +16,7 @@ class CustomRewardCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
     @IBOutlet weak var currencyImageView: UIImageView!
-    @IBOutlet weak var amountLabel: HRPGAbbrevNumberLabel!
+    @IBOutlet weak var amountLabel: AbbreviatedNumberLabel!
     @IBOutlet weak var buyButton: UIView!
 
     var onBuyButtonTapped: (() -> Void)?

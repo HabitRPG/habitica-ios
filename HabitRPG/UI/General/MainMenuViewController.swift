@@ -101,24 +101,20 @@ class MainMenuViewController: BaseTableViewController {
                 tableView.tableFooterView = nil
             }
             if user?.isSubscribed == true {
-                menuSections[3].items[6].subtitle = nil
+                menuSections[3].items[5].subtitle = nil
             } else {
-                menuSections[3].items[6].subtitle = L10n.getMoreHabitica
+                menuSections[3].items[5].subtitle = L10n.getMoreHabitica
             }
-            if configRepository.bool(variable: .enableAdventureGuide) {
-                if user?.achievements?.hasCompletedOnboarding == true {
-                    tableView.tableHeaderView = nil                } else {
-                    let view = AdventureGuideBannerView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 103))
-                    view.onTapped = { [weak self] in
-                        self?.perform(segue: StoryboardSegue.Main.showAdventureGuide)
-                    }
-                    if let achievements = user?.achievements?.onboardingAchievements {
-                        view.setProgress(earned: achievements.filter({ $0.value }).count, total: achievements.count)
-                    }
-                    tableView.tableHeaderView = view
+            if user?.achievements?.hasCompletedOnboarding == true {
+                tableView.tableHeaderView = nil                } else {
+                let view = AdventureGuideBannerView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 103))
+                view.onTapped = { [weak self] in
+                    self?.perform(segue: StoryboardSegue.Main.showAdventureGuide)
                 }
-            } else {
-                tableView.tableHeaderView = nil
+                if let achievements = user?.achievements?.onboardingAchievements {
+                    view.setProgress(earned: achievements.filter({ $0.value }).count, total: achievements.count)
+                }
+                tableView.tableHeaderView = view
             }
         }
     }
@@ -230,8 +226,8 @@ class MainMenuViewController: BaseTableViewController {
         menuSections[1].items[0].subtitleColor = UIColor.orange10
         
         if configRepository.bool(variable: .enableGiftOneGetOne) {
-            menuSections[2].items[6].pillText = L10n.sale
-            menuSections[2].items[6].pillColor = .teal50
+            menuSections[3].items[5].pillText = L10n.sale
+            menuSections[3].items[5].pillColor = .teal50
         }
     }
     

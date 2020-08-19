@@ -18,9 +18,6 @@
 
 - (void)displayTutorialStep {
     if (self.activeTutorialView) {
-        if (self.activeTutorialView.hintView) {
-            [self.activeTutorialView.hintView continueAnimating];
-        }
         return;
     }
     if (self.tutorialIdentifier && !self.displayedTutorialStep) {

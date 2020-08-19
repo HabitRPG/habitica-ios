@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -14,7 +14,9 @@
                 <outlet property="alertStackView" destination="TfL-K4-Ks4" id="dzH-0N-t5J"/>
                 <outlet property="bottomOffsetConstraint" destination="8EC-pR-IK1" id="Kpa-30-jU0"/>
                 <outlet property="buttonContainerView" destination="NTK-Ff-M86" id="pBk-sD-uyG"/>
+                <outlet property="buttonLowerSpacing" destination="MgD-oG-Q6b" id="xoQ-38-Jnh"/>
                 <outlet property="buttonStackView" destination="q8R-qq-vxV" id="E0D-eA-zXr"/>
+                <outlet property="buttonUpperSpacing" destination="4Bu-qQ-rbV" id="LVL-o1-TxD"/>
                 <outlet property="centerConstraint" destination="Ja4-aA-Xor" id="xJm-tB-avg"/>
                 <outlet property="closeButton" destination="TbI-aA-bqR" id="fdb-2o-5FY"/>
                 <outlet property="containerView" destination="8Rl-Cu-kD9" id="LQR-yq-Tna"/>
@@ -155,7 +157,7 @@
             <constraints>
                 <constraint firstItem="I9B-sr-L3E" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hIR-Qr-gyg" secondAttribute="trailing" constant="12" id="0nz-qf-CS5"/>
                 <constraint firstItem="I9B-sr-L3E" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hIR-Qr-gyg" secondAttribute="bottom" constant="16" id="8EC-pR-IK1"/>
-                <constraint firstItem="hIR-Qr-gyg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="I9B-sr-L3E" secondAttribute="top" priority="999" constant="16" id="9Et-vd-sNt"/>
+                <constraint firstItem="hIR-Qr-gyg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="I9B-sr-L3E" secondAttribute="top" constant="16" id="9Et-vd-sNt"/>
                 <constraint firstItem="hIR-Qr-gyg" firstAttribute="centerX" secondItem="bkQ-it-OYY" secondAttribute="centerX" id="JJc-fz-JrU"/>
                 <constraint firstItem="hIR-Qr-gyg" firstAttribute="centerY" secondItem="bkQ-it-OYY" secondAttribute="centerY" priority="999" id="Ja4-aA-Xor"/>
                 <constraint firstItem="hIR-Qr-gyg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="I9B-sr-L3E" secondAttribute="leading" constant="12" id="eRo-Sv-1Jj"/>

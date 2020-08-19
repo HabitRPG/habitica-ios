@@ -56,7 +56,7 @@
                                             <constraint firstAttribute="height" constant="22" id="tov-6M-DXX"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPB-27-hRy" customClass="HRPGAbbrevNumberLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPB-27-hRy" customClass="AbbreviatedNumberLabel" customModule="Habitica" customModuleProvider="target">
                                         <rect key="frame" x="4" y="38.5" width="48" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="6vW-kp-s32"/>
