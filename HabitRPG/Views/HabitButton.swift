@@ -67,7 +67,7 @@ class HabitButton: UIView {
             
             if task.value >= -1 && task.value < 1 {
                 if ThemeService.shared.theme.isDark {
-                    roundedView.backgroundColor = UIColor.yellow5
+                    roundedView.backgroundColor = UIColor.yellow10
                 } else {
                     roundedView.backgroundColor = UIColor.yellow10
                 }

@@ -147,7 +147,7 @@ class AchievementAlertController: HabiticaAlertController {
             ])
             attrString.addAttributesToSubstring(string: L10n.hundredGold, attributes: [
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .bold),
-                NSAttributedString.Key.foregroundColor: UIColor.yellow5
+                NSAttributedString.Key.foregroundColor: UIColor.yellow10
             ])
             achievementTitleLabel.attributedText = attrString
         } else {

@@ -38,7 +38,7 @@ class SubscriptionDetailView: UITableViewCell {
         if plan.isActive {
             if plan.isGifted {
                 statusPill.text = L10n.notRecurring
-                statusPill.pillColor = .yellow5
+                statusPill.pillColor = .yellow10
             } else if plan.isGroupPlanSub {
                 statusPill.text = L10n.groupPlan
                 statusPill.pillColor = .purple300

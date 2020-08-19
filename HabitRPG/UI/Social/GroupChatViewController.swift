@@ -153,7 +153,7 @@ class GroupChatViewController: SLKTextViewController, Themeable {
         super.textViewDidChange(textView)
         let textLength = textView.text.count
         if textLength > Int(Double(textInputbar.maxCharCount) * 0.95) {
-            textInputbar.charCountLabelNormalColor = UIColor.yellow5
+            textInputbar.charCountLabelNormalColor = UIColor.yellow10
         } else {
             textInputbar.charCountLabelNormalColor = UIColor.gray400
         }

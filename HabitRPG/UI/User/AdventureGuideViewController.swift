@@ -58,12 +58,12 @@ class AdventureGuideViewController: BaseUIViewController {
         ])
         attrString.addAttributesToSubstring(string: L10n.hundredGold, attributes: [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .bold),
-            NSAttributedString.Key.foregroundColor: UIColor.yellow5
+            NSAttributedString.Key.foregroundColor: UIColor.yellow10
         ])
         descriptionLabel.attributedText = attrString
         progressView.trackTintColor = theme.offsetBackgroundColor
         progressView.tintColor = .yellow50
-        progressLabel.textColor = .yellow5
+        progressLabel.textColor = .yellow10
         yourProgressLabel.textColor = theme.secondaryTextColor
         navigationController?.navigationBar.tintColor = theme.tintColor
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)

@@ -71,6 +71,7 @@ class TaskFormViewController: FormViewController, Themeable {
         return dateFormatter
     }()
     var lightTaskTintColor: UIColor = UIColor.purple400
+    var darkestTaskTintColor: UIColor = UIColor(white: 1, alpha: 0.7)
     
     var taskId: String? {
         get {
@@ -87,7 +88,7 @@ class TaskFormViewController: FormViewController, Themeable {
             if let type = task.type, let newTaskType = TaskType(rawValue: type) {
                 taskType = newTaskType
             }
-            if let challengeID = task.challengeID {
+            if let challengeID = task.challengeID, task.challengeBroken == nil, challenge == nil {
                 socialRepository.retrieveChallenge(challengeID: challengeID).on(value: {[weak self] challenge in
                     self?.challenge = challenge
                     self?.form.rowBy(tag: TaskFormTags.challengeName)?.title = challenge?.name
@@ -96,6 +97,7 @@ class TaskFormViewController: FormViewController, Themeable {
             }
             let theme = ThemeService.shared.theme
             if isCreating {
+                darkestTaskTintColor = UIColor(white: 1, alpha: 0.7)
                 if theme.isDark {
                     lightTaskTintColor = UIColor.purple300
                     taskTintColor = UIColor.purple200
@@ -104,6 +106,7 @@ class TaskFormViewController: FormViewController, Themeable {
                     taskTintColor = UIColor.purple300
                 }
             } else {
+                darkestTaskTintColor = UIColor.forTaskValueDarkest(Int(task.value))
                 if theme.isDark {
                     lightTaskTintColor = UIColor.forTaskValue(Int(task.value))
                     taskTintColor = UIColor.forTaskValueDark(Int(task.value))
@@ -259,6 +262,7 @@ class TaskFormViewController: FormViewController, Themeable {
         tableView.separatorColor = theme.tableviewSeparatorColor
 
         if isCreating {
+            darkestTaskTintColor = UIColor(white: 1, alpha: 0.7)
             if theme.isDark {
                 lightTaskTintColor = UIColor.purple300
                 taskTintColor = UIColor.purple200
@@ -267,7 +271,8 @@ class TaskFormViewController: FormViewController, Themeable {
                 taskTintColor = UIColor.purple300
             }
         } else {
-            if (task.isValid) {
+            if task.isValid {
+                darkestTaskTintColor = UIColor.forTaskValueDarkest(Int(task.value))
                 if theme.isDark {
                     lightTaskTintColor = UIColor.forTaskValue(Int(task.value))
                     taskTintColor = UIColor.forTaskValueDark(Int(task.value))
@@ -324,7 +329,7 @@ class TaskFormViewController: FormViewController, Themeable {
             section <<< TaskTextInputRow(TaskFormTags.title) { row in
                 row.title = L10n.title
                 row.cellUpdate({ (cell, _) in
-                    cell.updateTintColor(self.taskTintColor)
+                    cell.updateTintColor(self.taskTintColor, self.darkestTaskTintColor)
                 })
                 row.topSpacing = 12
                 row.add(rule: RuleRequired())
@@ -340,7 +345,7 @@ class TaskFormViewController: FormViewController, Themeable {
                 row.title = L10n.notes
                 row.placeholder = L10n.Tasks.Form.notesPlaceholder
                 row.cellUpdate({ (cell, _) in
-                    cell.updateTintColor(self.taskTintColor)
+                    cell.updateTintColor(self.taskTintColor, self.darkestTaskTintColor)
                 })
                 row.topSpacing = 8
                 row.bottomSpacing = 12
@@ -350,15 +355,15 @@ class TaskFormViewController: FormViewController, Themeable {
                     self?.view.setNeedsLayout()
                 })
         }
-        section <<< LabelRow(TaskFormTags.challengeName) { row in
-            row.title = "SDSFWER"
-            row.hidden = Condition(booleanLiteral: !task.isChallengeTask)
+        section <<< ButtonRow(TaskFormTags.challengeName) { row in
+            row.hidden = Condition(booleanLiteral: !task.isChallengeTask && task.challengeBroken == nil)
             row.cellUpdate({ (cell, _) in
                 cell.backgroundColor = self.taskTintColor
-                cell.textLabel?.textColor = .white
+                cell.textLabel?.textColor = self.darkestTaskTintColor
                 cell.textLabel?.textAlignment = .center
-                cell.textLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+                cell.textLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 13, ofWeight: .semibold)
                 cell.textLabel?.numberOfLines = 0
+                cell.height = { return 36 }
             })
             }
         form +++ section
@@ -379,7 +384,7 @@ class TaskFormViewController: FormViewController, Themeable {
         form +++ MultivaluedSection(multivaluedOptions: [.Reorder, .Insert, .Delete],
                                     header: L10n.Tasks.Form.checklist) { section in
                                         section.tag = TaskFormTags.checklistSection
-                                        if (!task.isChallengeTask) {
+                                        if !task.isChallengeTask {
                                         section.addButtonProvider = { section in
                                             return ButtonRow { row in
                                                 row.title = L10n.Tasks.Form.newChecklistItem

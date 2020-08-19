@@ -217,6 +217,30 @@ extension UIColor {
     }
     
     /**
+     The darkest color associated with a specific task value. Defaults to blue50.
+     
+     - parameter taskValue: NSNumber value.
+     */
+    @objc
+    public static func forTaskValueDarkest(_ taskValue: Int) -> UIColor {
+        if taskValue < -20 {
+            return UIColor.red1
+        } else if taskValue < -10 {
+            return UIColor.red1
+        } else if taskValue < -1 {
+            return UIColor.orange1
+        } else if taskValue < 1 {
+            return UIColor.yellow1
+        } else if taskValue < 5 {
+            return UIColor.green1
+        } else if taskValue < 10 {
+            return UIColor.teal1
+        } else {
+            return UIColor.blue1
+        }
+    }
+    
+    /**
      Hex string of a UIColor instance.
      
      - parameter includeAlpha: Whether the alpha should be included.

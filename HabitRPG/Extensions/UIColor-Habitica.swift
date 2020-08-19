@@ -10,8 +10,16 @@ import Foundation
 
 extension UIColor {
 
+    @nonobjc class var red1: UIColor {
+      return UIColor(red: 108.0 / 255.0, green: 4.0 / 255.0, blue: 6.0 / 255.0, alpha: 1.0)
+    }
+
     @nonobjc class var red10: UIColor {
       return UIColor(red: 242.0 / 255.0, green: 48.0 / 255.0, blue: 53.0 / 255.0, alpha: 1.0)
+    }
+
+    @nonobjc class var red50: UIColor {
+      return UIColor(red: 248.0 / 255.0, green: 78.0 / 255.0, blue: 82.0 / 255.0, alpha: 1.0)
     }
 
     @nonobjc class var red100: UIColor {
@@ -23,17 +31,13 @@ extension UIColor {
     }
 
     @nonobjc class var yellow1: UIColor {
-        return UIColor(red: 121.0 / 255.0, green: 75.0 / 255.0, blue: 0, alpha: 1.0)
+      return UIColor(red: 121.0 / 255.0, green: 75.0 / 255.0, blue: 0.0, alpha: 1.0)
     }
-    
-    @nonobjc class var yellow5: UIColor {
-        return UIColor(red: 0.93, green: 0.57, blue: 0.04, alpha: 1.0)
-    }
-    
+
     @nonobjc class var yellow10: UIColor {
-        return UIColor(red: 1.0, green: 166.0 / 255.0, blue: 36.0 / 255.0, alpha: 1.0)
+      return UIColor(red: 1.0, green: 166.0 / 255.0, blue: 36.0 / 255.0, alpha: 1.0)
     }
-    
+
     @nonobjc class var yellow50: UIColor {
       return UIColor(red: 1.0, green: 180.0 / 255.0, blue: 69.0 / 255.0, alpha: 1.0)
     }
@@ -44,6 +48,10 @@ extension UIColor {
 
     @nonobjc class var yellow500: UIColor {
       return UIColor(red: 254.0 / 255.0, green: 222.0 / 255.0, blue: 172.0 / 255.0, alpha: 1.0)
+    }
+
+    @nonobjc class var blue1: UIColor {
+      return UIColor(red: 2.0 / 255.0, green: 63.0 / 255.0, blue: 94.0 / 255.0, alpha: 1.0)
     }
 
     @nonobjc class var blue10: UIColor {
@@ -78,6 +86,10 @@ extension UIColor {
       return UIColor(red: 241.0 / 255.0, green: 149.0 / 255.0, blue: 149.0 / 255.0, alpha: 1.0)
     }
 
+    @nonobjc class var orange1: UIColor {
+      return UIColor(red: 127.0 / 255.0, green: 51.0 / 255.0, blue: 0.0, alpha: 1.0)
+    }
+
     @nonobjc class var orange10: UIColor {
       return UIColor(red: 244.0 / 255.0, green: 120.0 / 255.0, blue: 37.0 / 255.0, alpha: 1.0)
     }
@@ -92,6 +104,10 @@ extension UIColor {
 
     @nonobjc class var orange500: UIColor {
       return UIColor(red: 1.0, green: 200.0 / 255.0, blue: 167.0 / 255.0, alpha: 1.0)
+    }
+
+    @nonobjc class var teal1: UIColor {
+      return UIColor(red: 0.0, green: 81.0 / 255.0, blue: 88.0 / 255.0, alpha: 1.0)
     }
 
     @nonobjc class var teal10: UIColor {
@@ -110,6 +126,10 @@ extension UIColor {
       return UIColor(red: 142.0 / 255.0, green: 237.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
     }
 
+    @nonobjc class var green1: UIColor {
+      return UIColor(red: 0.0, green: 87.0 / 255.0, blue: 55.0 / 255.0, alpha: 1.0)
+    }
+
     @nonobjc class var green10: UIColor {
       return UIColor(red: 28.0 / 255.0, green: 163.0 / 255.0, blue: 114.0 / 255.0, alpha: 1.0)
     }
@@ -124,10 +144,6 @@ extension UIColor {
 
     @nonobjc class var green500: UIColor {
       return UIColor(red: 119.0 / 255.0, green: 244.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0)
-    }
-
-    @nonobjc class var red50: UIColor {
-      return UIColor(red: 248.0 / 255.0, green: 78.0 / 255.0, blue: 82.0 / 255.0, alpha: 1.0)
     }
 
     @nonobjc class var black: UIColor {
@@ -170,18 +186,6 @@ extension UIColor {
       return UIColor(white: 249.0 / 255.0, alpha: 1.0)
     }
 
-    @nonobjc class var blackPurple50: UIColor {
-        return UIColor(red: 0.1, green: 0.09, blue: 0.11, alpha: 1.0)
-    }
-    
-    @nonobjc class var blackPurple100: UIColor {
-        return UIColor(red: 0.2, green: 0.19, blue: 0.23, alpha: 1.0)
-    }
-    
-    @nonobjc class var purple10: UIColor {
-        return UIColor(red: 0.18, green: 0.11, blue: 0.31, alpha: 1.0)
-    }
-    
     @nonobjc class var purple50: UIColor {
       return UIColor(red: 54.0 / 255.0, green: 32.0 / 255.0, blue: 93.0 / 255.0, alpha: 1.0)
     }
@@ -194,26 +198,38 @@ extension UIColor {
       return UIColor(red: 79.0 / 255.0, green: 42.0 / 255.0, blue: 147.0 / 255.0, alpha: 1.0)
     }
 
-      @nonobjc class var purple300: UIColor {
-        return UIColor(red: 97.0 / 255.0, green: 51.0 / 255.0, blue: 180.0 / 255.0, alpha: 1.0)
-      }
+    @nonobjc class var purple300: UIColor {
+      return UIColor(red: 97.0 / 255.0, green: 51.0 / 255.0, blue: 180.0 / 255.0, alpha: 1.0)
+    }
 
     @nonobjc class var purple400: UIColor {
-      return UIColor(red: 0.57, green: 0.36, blue: 0.95, alpha: 1.00)
+      return UIColor(red: 154.0 / 255.0, green: 98.0 / 255.0, blue: 1.0, alpha: 1.0)
     }
 
     @nonobjc class var purple500: UIColor {
       return UIColor(red: 189.0 / 255.0, green: 168.0 / 255.0, blue: 1.0, alpha: 1.0)
     }
-    
+
     @nonobjc class var purple600: UIColor {
         return UIColor(red: 0.969, green: 0.937, blue: 1.0, alpha: 1.0)
     }
-
+    
     @nonobjc class var purple5060: UIColor {
       return UIColor(red: 54.0 / 255.0, green: 32.0 / 255.0, blue: 93.0 / 255.0, alpha: 0.6)
     }
 
+    @nonobjc class var blackPurple50: UIColor {
+        return UIColor(red: 0.1, green: 0.09, blue: 0.11, alpha: 1.0)
+    }
+    
+    @nonobjc class var blackPurple100: UIColor {
+        return UIColor(red: 0.2, green: 0.19, blue: 0.23, alpha: 1.0)
+    }
+    
+    @nonobjc class var purple10: UIColor {
+        return UIColor(red: 0.18, green: 0.11, blue: 0.31, alpha: 1.0)
+    }
+    
     @nonobjc class var tier1: UIColor {
       return UIColor(red: 196.0 / 255.0, green: 40.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
     }
@@ -245,6 +261,7 @@ extension UIColor {
     @nonobjc class var tierMod: UIColor {
       return UIColor(red: 39.0 / 255.0, green: 126.0 / 255.0, blue: 171.0 / 255.0, alpha: 1.0)
     }
+
     
     class func contributorColor(forTier tier: Int) -> UIColor {
         if ThemeService.shared.theme.isDark {

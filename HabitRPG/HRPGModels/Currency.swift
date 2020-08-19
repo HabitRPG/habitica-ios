@@ -38,7 +38,7 @@ public enum Currency: String {
         } else {
             switch self {
             case .gold:
-                return .yellow5
+                return .yellow10
             case .gem:
                 return .green10
             case .hourglass:

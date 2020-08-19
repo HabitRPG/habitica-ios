@@ -87,7 +87,7 @@ class AdventureGuideBannerView: UIView, Themeable {
         attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: theme.primaryTextColor, range: NSRange(location: 0, length: attrString.length))
         attrString.addAttributesToSubstring(string: L10n.hundredGold, attributes: [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12, weight: .bold),
-            NSAttributedString.Key.foregroundColor: UIColor.yellow5
+            NSAttributedString.Key.foregroundColor: UIColor.yellow10
         ])
         completeLabel.attributedText = attrString
         backgroundColor = theme.navbarHiddenColor

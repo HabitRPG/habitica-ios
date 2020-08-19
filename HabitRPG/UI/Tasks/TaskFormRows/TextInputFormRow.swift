@@ -35,7 +35,6 @@ public class TaskTextInputCell: Cell<String>, CellType, UITextViewDelegate {
         
         if let taskRow = row as? TaskTextInputRow {
             textField.keyboardAppearance = ThemeService.shared.theme.isDark ? .dark : .default
-            titleLabel.textColor = UIColor(white: 1, alpha: 0.7)
             //textField.attributedPlaceholder = NSAttributedString(string: taskRow.placeholder ?? "", attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.5)])
             topSpacing = taskRow.topSpacing
             bottomSpacing = taskRow.bottomSpacing
@@ -45,10 +44,11 @@ public class TaskTextInputCell: Cell<String>, CellType, UITextViewDelegate {
         accessibilityLabel = textField.accessibilityLabel
     }
     
-    func updateTintColor(_ newTint: UIColor) {
+    func updateTintColor(_ newTint: UIColor, _ newTitleTint: UIColor) {
         tintColor = newTint
         cellBackgroundView.backgroundColor = newTint
         textField.tintColor = newTint.lighter(by: 10)
+        titleLabel.textColor = newTitleTint
     }
     
     public func textViewDidChange(_ textView: UITextView) {

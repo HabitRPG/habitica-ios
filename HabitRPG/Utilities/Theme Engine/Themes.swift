@@ -51,9 +51,9 @@ public struct OrangeTheme: Theme {
 }
 
 public struct YellowTheme: Theme {
-    public var backgroundTintColor: UIColor { return UIColor.yellow5 }
+    public var backgroundTintColor: UIColor { return UIColor.yellow10 }
     public var tintColor: UIColor { return UIColor.yellow10 }
-    public var dimmBackgroundColor: UIColor { return UIColor.yellow5 }
+    public var dimmBackgroundColor: UIColor { return UIColor.yellow10 }
 }
 
 public struct GrayTheme: Theme {
@@ -115,7 +115,7 @@ public struct OrangeDarkTheme: DarkTheme {
 public struct YellowDarkTheme: DarkTheme {
     public var backgroundTintColor: UIColor { return UIColor.yellow50 }
     public var tintColor: UIColor { return UIColor.yellow50 }
-    public var dimmBackgroundColor: UIColor { return UIColor.yellow5 }
+    public var dimmBackgroundColor: UIColor { return UIColor.yellow10 }
 }
 
 public struct GrayDarkTheme: DarkTheme {

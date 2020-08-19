@@ -106,7 +106,7 @@ class ClassSelectionOptionView: UIView {
         case .healer:
             iconView.image = HabiticaIcons.imageOfHealerLightBg
             label.text = L10n.Classes.healer
-            tintColor = UIColor.yellow5
+            tintColor = UIColor.yellow10
         case .rogue:
             iconView.image = HabiticaIcons.imageOfRogueLightBg
             label.text = L10n.Classes.rogue
