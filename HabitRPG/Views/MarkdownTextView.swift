@@ -21,9 +21,13 @@ class MarkdownTextView: LinksOnlyTextView, UITextViewDelegate {
         delegate = self
     }
     
-    func setMarkdownString(_ markdownString: String?) {
+    func setMarkdownString(_ markdownString: String?, attributes: [NSAttributedString.Key:Any]? = nil) {
         if let str = markdownString {
-            attributedText = try? Down(markdownString: str).toHabiticaAttributedString()
+            let attributedStr = try? Down(markdownString: str).toHabiticaAttributedString()
+            if let attributes = attributes {
+                attributedStr?.addAttributes(attributes, range: NSRange(location: 0, length: attributedStr?.length ?? 0))
+            }
+            attributedText = attributedStr
             delegate = self
         } else {
             text = nil

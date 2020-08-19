@@ -275,6 +275,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     public func joinGroup(groupID: String) -> Signal<GroupProtocol?, Never> {
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
         return JoinGroupCall(groupID: groupID).objectSignal.on(value: {[weak self]group in
             if let userID = AuthenticationManager.shared.currentUserId {
                 ToastManager.show(text: L10n.Guilds.joinedGuild, color: .green)
@@ -286,6 +287,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     public func leaveGroup(groupID: String, leaveChallenges: Bool) -> Signal<GroupProtocol?, Never> {
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
         return LeaveGroupCall(groupID: groupID, leaveChallenges: leaveChallenges)
             .objectSignal.on(value: {[weak self]group in
             if let userID = AuthenticationManager.shared.currentUserId {
@@ -297,6 +299,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     public func rejectGroupInvitation(groupID: String) -> Signal<EmptyResponseProtocol?, Never> {
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
         return RejectGroupInvitationCall(groupID: groupID)
             .objectSignal.on(value: {[weak self] response in
             if response != nil, let userID = AuthenticationManager.shared.currentUserId {
@@ -322,8 +325,13 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     public func joinChallenge(challengeID: String) -> Signal<ChallengeProtocol?, Never> {
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        if let userID = AuthenticationManager.shared.currentUserId {
+            localRepository.joinChallenge(userID: userID, challengeID: challengeID, challenge: nil)
+        }
         return JoinChallengeCall(challengeID: challengeID)
             .objectSignal.on(value: {[weak self]challenge in
+            UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
             if let userID = AuthenticationManager.shared.currentUserId {
                 self?.localRepository.joinChallenge(userID: userID, challengeID: challengeID, challenge: challenge)
             }
@@ -335,8 +343,13 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     public func leaveChallenge(challengeID: String, keepTasks: Bool) -> Signal<ChallengeProtocol?, Never> {
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        if let userID = AuthenticationManager.shared.currentUserId {
+            localRepository.leaveChallenge(userID: userID, challengeID: challengeID, challenge: nil)
+        }
         return LeaveChallengeCall(challengeID: challengeID, keepTasks: keepTasks)
             .objectSignal.on(value: {[weak self]challenge in
+            UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
             if let userID = AuthenticationManager.shared.currentUserId {
                 self?.localRepository.leaveChallenge(userID: userID, challengeID: challengeID, challenge: challenge)
             }
@@ -363,33 +376,39 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     public func rejectQuestInvitation(groupID: String) -> Signal<QuestStateProtocol?, Never> {
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
         localRepository.changeQuestRSVP(userID: currentUserId ?? "", rsvpNeeded: false)
         return RejectQuestInvitationCall(groupID: groupID)
             .objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
     }
     
     public func acceptQuestInvitation(groupID: String) -> Signal<QuestStateProtocol?, Never> {
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
         localRepository.changeQuestRSVP(userID: currentUserId ?? "", rsvpNeeded: false)
         return AcceptQuestInvitationCall(groupID: groupID)
             .objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
     }
     
     public func cancelQuestInvitation(groupID: String) -> Signal<QuestStateProtocol?, Never> {
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
         return CancelQuestInvitationCall(groupID: groupID)
             .objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
     }
     
     public func abortQuest(groupID: String) -> Signal<QuestStateProtocol?, Never> {
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
         return AbortQuestCall(groupID: groupID)
             .objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
     }
     
     public func forceStartQuest(groupID: String) -> Signal<QuestStateProtocol?, Never> {
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
         return ForceStartQuestCall(groupID: groupID)
             .objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
     }
     
     private func saveQuestState(objectID: String, groupID: String) -> ((QuestStateProtocol?) -> Void) {
+        UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
         return {[weak self] questState in
             if let questState = questState {
                 self?.localRepository.save(objectID: objectID, groupID: groupID, questState: questState)

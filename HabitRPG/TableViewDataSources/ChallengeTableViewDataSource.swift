@@ -66,6 +66,11 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
         }).start()
     }
     
+    func initialDataLoad() {
+        socialRepository.retrieveChallenges(page: nextPage, memberOnly: true).observeCompleted {}
+        socialRepository.retrieveChallenges(page: nextPage, memberOnly: false).observeCompleted {}
+    }
+    
     func retrieveData(forced: Bool, completed: (() -> Void)?) {
         if forced {
             nextPage = 0

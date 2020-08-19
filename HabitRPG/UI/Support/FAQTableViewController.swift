@@ -58,7 +58,9 @@ class FAQViewController: BaseUIViewController {
         mechanicsTitleLabel.text = L10n.gameMechanics.uppercased()
         commonQuestionsTitleLabel.text = L10n.commonQuestions.uppercased()
         moreQuestionsTitle.text = L10n.moreQuestionsTitle
-        moreQuestionsText.setMarkdownString(L10n.moreQuestionsText)
+        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.center
+        moreQuestionsText.setMarkdownString(L10n.moreQuestionsText, attributes: [.paragraphStyle: paragraphStyle])
     }
     
     override func applyTheme(theme: Theme) {

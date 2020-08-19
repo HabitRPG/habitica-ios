@@ -111,7 +111,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     }
         
     private func setup(challenge: ChallengeProtocol?) {
-        Signal.zip(infoSectionProperty.signal,
+        Signal.combineLatest(infoSectionProperty.signal,
                    habitsSectionProperty.signal,
                    dailiesSectionProperty.signal,
                    todosSectionProperty.signal,
@@ -124,9 +124,8 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
                 self?.cellModelsProperty.value = sections.filter { $0.items?.count ?? 0 > 0 }
         }
         
-        setupButtons()
-        
         setupInfo()
+        setupButtons()
         
         challengeProperty.signal.observeValues {[weak self] newChallenge in
             self?.joinLeaveStyleProvider.challengeProperty.value = newChallenge
@@ -145,15 +144,15 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     }
     
     func setupInfo() {
-        challengeProperty.signal.skipNil().combineLatest(with: challengeCreatorProperty.signal)
-            .observeValues { (challenge, creator) in
+        Signal.combineLatest(challengeProperty.signal.skipNil(), mainButtonItemProperty.signal, challengeCreatorProperty.signal)
+            .observeValues { (challenge, mainButtonValue, creator) in
             let infoItem = ChallengeMultiModelDataSourceItem<ChallengeDetailInfoTableViewCell>(challenge, identifier: "info")
                 let creatorItem = ChallengeCreatorMultiModelDataSourceItem(challenge, creator: creator, cellDelegate: self, identifier: "creator")
             let categoryItem = ChallengeResizableMultiModelDataSourceItem<ChallengeCategoriesTableViewCell>(challenge, resizingDelegate: self, identifier: "categories")
             let descriptionItem = ChallengeResizableMultiModelDataSourceItem<ChallengeDescriptionTableViewCell>(challenge, resizingDelegate: self, identifier: "description")
             
             let infoSection = MultiModelDataSourceSection()
-            if let mainButton = self.mainButtonItemProperty.value {
+            if let mainButton = mainButtonValue {
                 infoSection.items = [infoItem, mainButton, creatorItem, categoryItem, descriptionItem]
             } else {
                 infoSection.items = [infoItem, creatorItem, categoryItem, descriptionItem]
@@ -249,19 +248,29 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         unownedChallengeSignal.observeValues { _ in
             self.doubleEndButtonItemProperty.value = nil
         }
-        unownedChallengeSignal.withLatest(from: challengeMembershipProperty.signal)
-            .filter({ (_, membership) -> Bool in
+        challengeMembershipProperty.signal.combineLatest(with: unownedChallengeSignal)
+        .skipRepeats({ (first, second) -> Bool in
+            return (first.0 == nil) == (second.0 == nil)
+        })
+            .filter({ (membership, _) -> Bool in
                 return membership == nil
-            }).observeValues {[weak self] _ in
+            })
+            .observeValues {[weak self] _ in
                 self?.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self?.joinLeaveStyleProvider, inputs: self?.joinLeaveStyleProvider, identifier: "mainButton")
                 self?.endButtonItemProperty.value = nil
                 self?.doubleEndButtonItemProperty.value = nil
         }
-        unownedChallengeSignal.withLatest(from: challengeMembershipProperty.signal)
-            .filter({ (_, membership) -> Bool in
+        challengeMembershipProperty.signal.combineLatest(with: unownedChallengeSignal)
+        .skipRepeats({ (first, second) -> Bool in
+            return (first.0 == nil) == (second.0 == nil)
+        })
+
+            .filter({ (membership, _) -> Bool in
                 return membership != nil
-            }).observeValues {[weak self] _ in
+            })            .observeValues {[weak self] _ in
+                self?.mainButtonItemProperty.value = nil
                 self?.endButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self?.joinLeaveStyleProvider, inputs: self?.joinLeaveStyleProvider, identifier: "mainButton")
+                self?.doubleEndButtonItemProperty.value = nil
         }
     }
     

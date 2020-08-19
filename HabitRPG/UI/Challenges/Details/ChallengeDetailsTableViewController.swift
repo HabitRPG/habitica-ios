@@ -57,6 +57,11 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
         self.viewModel?.viewDidLoad()
     }
     
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        tableView.backgroundColor = theme.contentBackgroundColor
+    }
+    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let dataSourceSection = dataSource.sections?[section] {
             if let sectionTitleString = dataSourceSection.title {
@@ -77,5 +82,25 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return dataSource.sections?[section].title != nil ? 55 : 0
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (tableView.indexPathsForVisibleRows?.count ?? 0) == 0 {
+            return
+        }
+        if tableView.indexPathsForVisibleRows?.contains(where: { indexPath -> Bool in
+            return indexPath.section == 0 && indexPath.item == 0
+        }) == true {
+            if navigationItem.rightBarButtonItem != nil {
+                navigationItem.rightBarButtonItem = nil
+            }
+        } else if viewModel?.challengeMembershipProperty.value == nil && navigationItem.rightBarButtonItem == nil {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.join, style: .plain, target: self, action: #selector(joinChallenge))
+        }
+    }
+    
+    @objc
+    private func joinChallenge() {
+        
     }
 }

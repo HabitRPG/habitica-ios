@@ -62,7 +62,7 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.keyboardDismissMode = .onDrag
         
-        refresh()
+        dataSource.initialDataLoad()
         dataSource.tableView = self.tableView
         
         segmentedFilterControl.selectedSegmentIndex = 0
