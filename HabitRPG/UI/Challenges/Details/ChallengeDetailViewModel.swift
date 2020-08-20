@@ -67,6 +67,9 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     let participantsStyleProvider: ParticipantsButtonAttributeProvider
     let endChallengeStyleProvider: EndChallengeButtonAttributeProvider
     
+    var joinInteractor: JoinChallengeInteractor?
+    var leaveInteractor: LeaveChallengeInteractor?
+    
     private let socialRepository = SocialRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
@@ -76,6 +79,11 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         reloadTableSignal = reloadTableProperty.signal
         animateUpdatesSignal = animateUpdatesProperty.signal
         nextViewControllerSignal = nextViewControllerProperty.signal.skipNil()
+        
+        self.joinInteractor = JoinChallengeInteractor()
+        if let viewController = UIApplication.shared.keyWindow?.visibleController() {
+            self.leaveInteractor = LeaveChallengeInteractor(presentingViewController: viewController)
+        }
         
         joinLeaveStyleProvider = JoinLeaveButtonAttributeProvider(challenge)
         publishStyleProvider = PublishButtonAttributeProvider(challenge)
@@ -140,6 +148,17 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         
         joinLeaveStyleProvider.challengeUpdatedProperty.signal.observeValues {[weak self] _ in
             self?.reloadChallenge()
+        }
+        
+        joinLeaveStyleProvider.buttonStateSignal.sample(on: joinLeaveStyleProvider.buttonPressedProperty.signal).observeValues { [weak self] (state) in
+            guard let challenge = self?.challengeProperty.value else {
+                return
+            }
+            if state == .join {
+                self?.joinInteractor?.run(with: challenge)
+            } else {
+                self?.leaveInteractor?.run(with: challenge)
+            }
         }
     }
     

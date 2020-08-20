@@ -279,7 +279,6 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         return JoinGroupCall(groupID: groupID).objectSignal.on(value: {[weak self]group in
             if let userID = AuthenticationManager.shared.currentUserId {
                 ToastManager.show(text: L10n.Guilds.joinedGuild, color: .green)
-                UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
                 self?.localRepository.joinGroup(userID: userID, groupID: groupID, group: group)
                 self?.localRepository.deleteGroupInvitation(userID: userID, groupID: groupID)
             }
@@ -292,7 +291,6 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             .objectSignal.on(value: {[weak self]group in
             if let userID = AuthenticationManager.shared.currentUserId {
                 ToastManager.show(text: L10n.Guilds.leftGuild, color: .green)
-                UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
                 self?.localRepository.leaveGroup(userID: userID, groupID: groupID, group: group)
             }
         })
@@ -331,7 +329,6 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         }
         return JoinChallengeCall(challengeID: challengeID)
             .objectSignal.on(value: {[weak self]challenge in
-            UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
             if let userID = AuthenticationManager.shared.currentUserId {
                 self?.localRepository.joinChallenge(userID: userID, challengeID: challengeID, challenge: challenge)
             }
@@ -349,7 +346,6 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         }
         return LeaveChallengeCall(challengeID: challengeID, keepTasks: keepTasks)
             .objectSignal.on(value: {[weak self]challenge in
-            UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
             if let userID = AuthenticationManager.shared.currentUserId {
                 self?.localRepository.leaveChallenge(userID: userID, challengeID: challengeID, challenge: challenge)
             }
@@ -408,7 +404,6 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     private func saveQuestState(objectID: String, groupID: String) -> ((QuestStateProtocol?) -> Void) {
-        UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
         return {[weak self] questState in
             if let questState = questState {
                 self?.localRepository.save(objectID: objectID, groupID: groupID, questState: questState)

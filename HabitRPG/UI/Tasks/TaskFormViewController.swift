@@ -89,11 +89,11 @@ class TaskFormViewController: FormViewController, Themeable {
                 taskType = newTaskType
             }
             if let challengeID = task.challengeID, task.challengeBroken == nil, challenge == nil {
-                socialRepository.retrieveChallenge(challengeID: challengeID).on(value: {[weak self] challenge in
+                socialRepository.getChallenge(challengeID: challengeID, retrieveIfNotFound: true).on(value: {[weak self] challenge in
                     self?.challenge = challenge
                     self?.form.rowBy(tag: TaskFormTags.challengeName)?.title = challenge?.name
                     self?.form.rowBy(tag: TaskFormTags.challengeName)?.updateCell()
-                }).observeCompleted {}
+                    }).start()
             }
             let theme = ThemeService.shared.theme
             if isCreating {
@@ -106,7 +106,11 @@ class TaskFormViewController: FormViewController, Themeable {
                     taskTintColor = UIColor.purple300
                 }
             } else {
-                darkestTaskTintColor = UIColor.forTaskValueDarkest(Int(task.value))
+                if task.value < -20 {
+                    darkestTaskTintColor = UIColor(white: 1, alpha: 0.7)
+                } else {
+                    darkestTaskTintColor = UIColor.forTaskValueDarkest(Int(task.value))
+                }
                 if theme.isDark {
                     lightTaskTintColor = UIColor.forTaskValue(Int(task.value))
                     taskTintColor = UIColor.forTaskValueDark(Int(task.value))
@@ -299,6 +303,13 @@ class TaskFormViewController: FormViewController, Themeable {
             } else {
                 self.overrideUserInterfaceStyle = .unspecified
             }
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if task.challengeBroken != nil {
+            showBrokenChallengeDialog()
         }
     }
     
@@ -872,7 +883,7 @@ class TaskFormViewController: FormViewController, Themeable {
     private func deleteButtonTapped() {
         if task.isChallengeTask {
             if task.challengeBroken == nil {
-            showChallengeTaskDeleteDialog()
+                showChallengeTaskDeleteDialog()
             } else {
                 showBrokenChallengeDialog()
             }

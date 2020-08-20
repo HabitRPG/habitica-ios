@@ -24,6 +24,7 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
             disposable.inner.add(viewModel.cellModelsSignal.observeValues({[weak self] (sections) in
                 self?.dataSource.sections = sections
                 self?.tableView.reloadData()
+                self?.updateNavbarButton()
             }))
             
             disposable.inner.add(viewModel.reloadTableSignal.observeValues {[weak self] _ in
@@ -85,22 +86,42 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (tableView.indexPathsForVisibleRows?.count ?? 0) == 0 {
-            return
-        }
-        if tableView.indexPathsForVisibleRows?.contains(where: { indexPath -> Bool in
-            return indexPath.section == 0 && indexPath.item == 0
-        }) == true {
-            if navigationItem.rightBarButtonItem != nil {
-                navigationItem.rightBarButtonItem = nil
-            }
-        } else if viewModel?.challengeMembershipProperty.value == nil && navigationItem.rightBarButtonItem == nil {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.join, style: .plain, target: self, action: #selector(joinChallenge))
+        updateNavbarButton()
+    }
+    
+    private func updateNavbarButton() {
+         if (tableView.indexPathsForVisibleRows?.count ?? 0) == 0 {
+             return
+         }
+         let isMember = viewModel?.challengeMembershipProperty.value != nil
+         var indexPath = IndexPath(item: 0, section: 0)
+         if isMember {
+             indexPath = IndexPath(item: 0, section: tableView.numberOfSections-1)
+         }
+         if tableView.isVisible(indexPath: indexPath) {
+             if navigationItem.rightBarButtonItem != nil {
+                 navigationItem.rightBarButtonItem = nil
+             }
+         } else if !isMember && navigationItem.rightBarButtonItem?.title != L10n.join {
+             navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.join, style: .plain, target: self, action: #selector(joinChallenge))
+         } else if isMember && navigationItem.rightBarButtonItem?.title != L10n.leave {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.leave, style: .plain, target: self, action: #selector(leaveChallenge))
         }
     }
     
     @objc
     private func joinChallenge() {
-        
+        guard let challenge = viewModel?.challengeProperty.value else {
+            return
+        }
+        viewModel?.joinInteractor?.run(with: challenge)
+    }
+    
+    @objc
+    private func leaveChallenge() {
+        guard let challenge = viewModel?.challengeProperty.value else {
+            return
+        }
+        viewModel?.leaveInteractor?.run(with: challenge)
     }
 }

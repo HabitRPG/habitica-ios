@@ -60,35 +60,7 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
         titleSignal = Signal.merge(joinTitleSignal, leaveTitleSignal)
         enabledSignal = buttonStateSignal.map { $0 != .publishDisabled }
         
-        buttonStateSignal.sample(on: buttonPressedProperty.signal).observeValues { [weak self] (state) in
-            if state == .join {
-                self?.socialRepository.joinChallenge(challengeID: self?.challengeProperty.value?.id ?? "").observeCompleted {
-                    self?.challengeUpdatedProperty.value = ()
-                }
-            } else {
-                self?.promptProperty.value = self?.leavePrompt()
-            }
-        }
-        
         challengeProperty.value = challenge
-    }
-    
-    func leavePrompt() -> UIViewController {
-        let alert = HabiticaAlertController(title: L10n.leaveChallengeTitle,
-                                            message: L10n.leaveChallengePrompt)
-        alert.addAction(title: L10n.keepTasks, style: .default, handler: {[weak self] (_) in
-            self?.socialRepository.leaveChallenge(challengeID: self?.challengeProperty.value?.id ?? "", keepTasks: true).observeCompleted {
-                self?.challengeUpdatedProperty.value = ()
-            }
-        })
-        alert.addAction(title: L10n.deleteTasks, style: .default, handler: {[weak self] (_) in
-            self?.socialRepository.leaveChallenge(challengeID: self?.challengeProperty.value?.id ?? "", keepTasks: false).observeCompleted {
-                self?.challengeUpdatedProperty.value = ()
-            }
-        })
-        alert.addAction(title: L10n.cancel, style: .cancel, handler: { (_) in })
-        
-        return alert
     }
     
     // MARK: HRPGButtonAttributeProvider functions

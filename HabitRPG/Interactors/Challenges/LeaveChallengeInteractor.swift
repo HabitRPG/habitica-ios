@@ -14,6 +14,7 @@ class LeaveChallengeInteractor: Interactor<ChallengeProtocol, Bool> {
     weak var presentingController: UIViewController?
 
     private let socialRepository = SocialRepository()
+    private let taskRepository = TaskRepository()
 
     init(presentingViewController: UIViewController) {
         self.presentingController = presentingViewController
@@ -29,6 +30,9 @@ class LeaveChallengeInteractor: Interactor<ChallengeProtocol, Bool> {
             }.flatMap(.concat) {[weak self] (_, keepTasks, challenge) -> Signal<Bool, NSError> in
                 let challengeID = challenge.id ?? ""
                 return self?.socialRepository.leaveChallenge(challengeID: challengeID, keepTasks: keepTasks)
+                    .flatMap(.latest, { _ in
+                        return (self?.taskRepository.retrieveTasks() ?? Signal.empty)
+                    })
                     .map({ (_) in
                         return false
                     })

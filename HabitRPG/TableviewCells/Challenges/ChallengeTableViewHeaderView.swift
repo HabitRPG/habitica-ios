@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChallengeTableViewHeaderView: UITableViewHeaderFooterView {
+class ChallengeTableViewHeaderView: UITableViewHeaderFooterView, Themeable {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
     
@@ -17,15 +17,18 @@ class ChallengeTableViewHeaderView: UITableViewHeaderFooterView {
     }
     
     func setup() {
-        let theme = ThemeService.shared.theme
-        titleLabel.textColor = theme.primaryTextColor
 
         countLabel.layer.cornerRadius = 11
-        countLabel.backgroundColor = theme.contentBackgroundColor
-        countLabel.textColor = theme.dimmedTextColor
         countLabel.clipsToBounds = true
 
-        backgroundView?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-
+        ThemeService.shared.addThemeable(themable: self)
+    }
+    
+    func applyTheme(theme: Theme) {
+        titleLabel.textColor = theme.primaryTextColor
+        countLabel.backgroundColor = theme.windowBackgroundColor
+        countLabel.textColor = theme.dimmedTextColor
+        backgroundView?.backgroundColor = theme.contentBackgroundColor
+        backgroundColor = theme.contentBackgroundColor
     }
 }

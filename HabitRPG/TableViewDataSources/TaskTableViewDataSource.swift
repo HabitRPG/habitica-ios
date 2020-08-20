@@ -10,6 +10,7 @@ import UIKit
 import Habitica_Models
 import ReactiveSwift
 import Crashlytics
+import Habitica_Database
 
 @objc
 public protocol TaskTableViewDataSourceProtocol {
@@ -79,6 +80,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
     
     internal let userRepository = UserRepository()
     internal let repository = TaskRepository()
+    internal let socialRepository = SocialRepository()
     
     @objc var taskToEdit: TaskProtocol?
     private var expandedIndexPath: IndexPath?
@@ -128,9 +130,6 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if let task = item(at: indexPath) {
-            return !task.isChallengeTask
-        }
         return true
     }
     
@@ -141,6 +140,14 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             if let task = self.item(at: indexPath) {
+                if task.isChallengeTask {
+                    if task.challengeBroken == nil {
+                        showChallengeTaskDeleteDialog(task: task)
+                    } else {
+                        showBrokenChallengeDialog(task: task)
+                    }
+                    return
+                }
                 repository.deleteTask(task).observeCompleted {
                     self.fetchTasks()
                 }
@@ -241,6 +248,35 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
             .observeCompleted {
                 SoundManager.shared.play(effect: soundEffect)
             })
+    }
+    
+    private func showChallengeTaskDeleteDialog(task: TaskProtocol) {
+        socialRepository.getChallenge(challengeID: task.challengeID ?? "", retrieveIfNotFound: true).take(first: 1).combineLatest(with:
+            repository.getChallengeTasks(id: task.challengeID ?? "").take(first: 1).flatMapError({ (_) -> SignalProducer<ReactiveResults<[TaskProtocol]>, Never> in
+                return SignalProducer.empty
+            })).on(
+            value: { (challenge, tasks) in
+                let taskCount = tasks.value.count
+                let alert = HabiticaAlertController(title: L10n.deleteChallengeTask, message: L10n.deleteChallengeTaskDescription(taskCount, challenge?.name ?? "" ))
+                alert.addAction(title: L10n.leaveAndDeleteTask, style: .destructive, isMainAction: true, handler: { _ in
+                    self.socialRepository.leaveChallenge(challengeID: task.challengeID ?? "", keepTasks: true)
+                        .flatMap(.latest) { _ in
+                            return self.repository.deleteTask(task)
+                    }
+                    .flatMap(.latest) { _ in
+                        return self.repository.retrieveTasks()
+                    }.observeCompleted {}
+                })
+                alert.addAction(title: L10n.leaveAndDeleteXTasks(taskCount), style: .destructive, isMainAction: false, handler: { _ in
+                    self.socialRepository.leaveChallenge(challengeID: task.challengeID ?? "", keepTasks: false)
+                    .flatMap(.latest) { _ in
+                        return self.repository.retrieveTasks()
+                    }.observeCompleted {}
+                })
+                alert.setCloseAction(title: L10n.close, handler: {})
+                alert.show()
+        }
+        ).start()
     }
     
     private func showBrokenChallengeDialog(task: TaskProtocol) {
