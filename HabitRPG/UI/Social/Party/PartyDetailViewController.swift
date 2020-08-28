@@ -63,6 +63,7 @@ class PartyDetailViewController: GroupDetailViewController {
         questContentStackView.separatorBetweenItems = true
         questContentStackView.separatorInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
         questStackViewTitle.insets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        questContentStackView.separatorColor = .clear
         
         questInvitationUserAvatarView.showPet = false
         questInvitationUserAvatarView.showMount = false
@@ -141,7 +142,7 @@ class PartyDetailViewController: GroupDetailViewController {
                 actionSheet.addAction(UIAlertAction(title: L10n.writeMessage, style: .default, handler: { _ in
                     
                 }))
-                if (self?.groupProperty.value?.leaderID == self?.userRepository.currentUserId && self?.groupProperty.value?.leaderID != member.id) {
+                if self?.groupProperty.value?.leaderID == self?.userRepository.currentUserId && self?.groupProperty.value?.leaderID != member.id {
                     actionSheet.addAction(UIAlertAction(title: L10n.transferOwnership, style: .default, handler: { _ in
                         self?.showTransferOwnershipDialog(memberID: member.id ?? "", displayName: member.profile?.name ?? "")
                     }))

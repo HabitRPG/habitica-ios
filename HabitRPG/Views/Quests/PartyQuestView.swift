@@ -11,8 +11,8 @@ import Habitica_Models
 
 class PartyQuestView: UIView {
     
-    let questImageView: UIImageView = {
-        let imageView = UIImageView()
+    let questImageView: NetworkImageView = {
+        let imageView = NetworkImageView()
         imageView.contentMode = .center
         return imageView
     }()
