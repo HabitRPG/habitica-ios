@@ -50,6 +50,9 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         gestureRecognizer.cancelsTouchesInView = false
         subtitleLabel.addGestureRecognizer(gestureRecognizer)
         
+        contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(doNothing)))
+        mainTaskWrapper.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openFormTapped)))
+        
         taskDetailLine.onChallengeIconTapped = {[weak self] in
             if let action = self?.challengeIconTapped {
                 action()
@@ -59,6 +62,9 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         contentStartEdge = mainTaskWrapper.edge.start
         contentEndEdge = mainTaskWrapper.edge.end
     }
+    
+    @objc
+    private func doNothing() {}
     
     @objc
     func configure(task: TaskProtocol) {
@@ -125,7 +131,7 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     
     @objc
-    private func openFormTapped() {
+    private func openFormTapped(_ recognizer: UITapGestureRecognizer) {
         if let action = openForm {
             action()
         }

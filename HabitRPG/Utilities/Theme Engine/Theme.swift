@@ -106,6 +106,7 @@ extension DarkTheme {
     public var ternaryTextColor: UIColor { return UIColor.gray400 }
     public var quadTextColor: UIColor { return UIColor.gray200 }
     public var dimmedTextColor: UIColor { return UIColor.gray200 }
+    public var lightTextColor: UIColor { return UIColor.gray500 }
     public var separatorColor: UIColor { return UIColor.gray10 }
     public var tableviewSeparatorColor: UIColor { return UIColor.gray100 }
     public var navbarHiddenColor: UIColor { return contentBackgroundColor }

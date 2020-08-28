@@ -641,7 +641,7 @@
 "months" = "months";
 "years" = "years";
 "leave_challenge_title" = "Leave Challenge?";
-"leave_challenge_prompt" = "Do you want to leave the challenge and keep or delete the tasks?";
+"leave_challenge_prompt" = "Do you want to leave the Challenge and keep or delete the tasks?";
 "keep_tasks" = "Keep Tasks";
 "delete_tasks" = "Delete Tasks";
 "locations.market" = "Market";
@@ -958,6 +958,8 @@
 "delete_challenge_task_description" = "This is one of %d tasks that are part of the “%s” Challenge. You must leave the Challenge to delete this task.";
 "leave_and_delete_task" = "Leave & Delete Task";
 "leave_and_delete_x_tasks" = "Leave & Delete %d Tasks";
+"leave_and_keep_tasks" = "Leave & Keep Tasks";
+"leave_and_delete_tasks" = "Leave & Delete Tasks";
 "backer_tier" = "Backer Tier: %d";
 "support.questions_title" = "Habitica Questions";
 "support.questions_description" = "We’ll explain the basics and answer common questions to get you up to speed";
@@ -998,3 +1000,5 @@
 "subscriber_currency" = "Subscriber Currency";
 "mystic_hourglasses" = "Mystic Hourglasses";
 "hourglasses_description" = "Mystic Hourglasses are an extremely rare form of currency you can only receive for subscribing to Habitica for three consecutive months or more. They are used in the Time Traveler’s shop to buy past gear sets, pets, mounts, animated backgrounds, or even special quests.\n\nYou can receive up to four Mystic Hourglasses a year. The time they are rewarded is based on your subscription renewal schedule. They are sent out on the first day of a new month after your last subscription payment that qualified you for an hourglass. See the [Subscription] page for more details.";
+"joined_challenge" = "Joined Challenge";
+"left_challenge" = "Left Challenge";

@@ -99,7 +99,7 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
         updateAppDescriptionLabel.textColor = theme.ternaryTextColor
         moreHelpTitleLabel.textColor = theme.primaryTextColor
         moreHelpDescriptionLabel.textColor = theme.ternaryTextColor
-        moreHelpButton.backgroundColor = theme.tintColor
+        moreHelpButton.backgroundColor = theme.fixedTintColor
         moreHelpButton.setTitleColor(theme.lightTextColor, for: .normal)
         knownIssuesBackground.backgroundColor = theme.windowBackgroundColor
     }
@@ -194,7 +194,7 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
     @objc
     private func knownIssueTapped(_ source: UITapGestureRecognizer) {
         if let view = source.view {
-            selectedIndex = (knownIssuesStackView.arrangedSubviews.firstIndex(of: view) ?? 0) / 2
+            selectedIndex = knownIssuesStackView.arrangedSubviews.firstIndex(of: view) ?? 0
             perform(segue: StoryboardSegue.Support.showKnownIssueDetailSegue)
         }
     }

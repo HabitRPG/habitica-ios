@@ -422,7 +422,7 @@
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cwy-dt-cjY" customClass="MarkdownTextView" customModule="Habitica" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="24.5" width="414" height="275.5"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -483,32 +483,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqW-fd-GvX">
-                                <rect key="frame" x="30" y="114" width="354" height="26.5"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DS3-wV-wdp">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqW-fd-GvX">
+                                        <rect key="frame" x="24" y="20" width="366" height="26.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" priority="500" constant="21" id="CD9-7x-Cyl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" contentInsetAdjustmentBehavior="never" editable="NO" text="werqwerqwer" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="U5U-nR-j47" customClass="MarkdownTextView" customModule="Habitica" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="500"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="500" id="qKJ-JZ-Bi8"/>
+                                        </constraints>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" priority="500" constant="21" id="CD9-7x-Cyl"/>
+                                    <constraint firstAttribute="bottom" secondItem="U5U-nR-j47" secondAttribute="bottom" constant="20" id="Byx-Wa-aMk"/>
+                                    <constraint firstItem="U5U-nR-j47" firstAttribute="top" secondItem="gqW-fd-GvX" secondAttribute="bottom" constant="9" id="IgO-4e-KrN"/>
+                                    <constraint firstItem="gqW-fd-GvX" firstAttribute="leading" secondItem="DS3-wV-wdp" secondAttribute="leading" constant="24" id="OW8-6L-LGG"/>
+                                    <constraint firstAttribute="trailing" secondItem="U5U-nR-j47" secondAttribute="trailing" id="RTA-Ki-MWQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="gqW-fd-GvX" secondAttribute="trailing" constant="24" id="cWq-c4-jLf"/>
+                                    <constraint firstItem="gqW-fd-GvX" firstAttribute="top" secondItem="DS3-wV-wdp" secondAttribute="top" constant="20" id="f5K-nj-PiB"/>
+                                    <constraint firstItem="U5U-nR-j47" firstAttribute="top" secondItem="gqW-fd-GvX" secondAttribute="bottom" constant="9" id="nFc-sW-wjL"/>
+                                    <constraint firstItem="U5U-nR-j47" firstAttribute="leading" secondItem="DS3-wV-wdp" secondAttribute="leading" id="w1O-4k-RB3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" editable="NO" text="werqwerqwer" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="U5U-nR-j47" customClass="MarkdownTextView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="26" y="149.5" width="362" height="686.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="gqW-fd-GvX" firstAttribute="leading" secondItem="p1L-Zl-qnd" secondAttribute="leading" constant="30" id="7UN-DB-iRx"/>
-                            <constraint firstItem="p1L-Zl-qnd" firstAttribute="trailing" secondItem="gqW-fd-GvX" secondAttribute="trailing" constant="30" id="85i-VN-CcY"/>
-                            <constraint firstItem="U5U-nR-j47" firstAttribute="top" secondItem="gqW-fd-GvX" secondAttribute="bottom" constant="9" id="HpV-d7-cBU"/>
-                            <constraint firstItem="U5U-nR-j47" firstAttribute="leading" secondItem="p1L-Zl-qnd" secondAttribute="leading" constant="26" id="rph-eJ-buj"/>
-                            <constraint firstItem="gqW-fd-GvX" firstAttribute="top" secondItem="p1L-Zl-qnd" secondAttribute="top" constant="26" id="rxS-5H-sKC"/>
-                            <constraint firstItem="p1L-Zl-qnd" firstAttribute="trailing" secondItem="U5U-nR-j47" secondAttribute="trailing" constant="26" id="tO5-Za-mhI"/>
-                            <constraint firstItem="p1L-Zl-qnd" firstAttribute="bottom" secondItem="U5U-nR-j47" secondAttribute="bottom" constant="26" id="ycr-63-zvk"/>
+                            <constraint firstItem="U5U-nR-j47" firstAttribute="width" secondItem="uqd-1u-8Xf" secondAttribute="width" id="1Y0-Ef-dzS"/>
+                            <constraint firstItem="p1L-Zl-qnd" firstAttribute="trailing" secondItem="DS3-wV-wdp" secondAttribute="trailing" id="6oi-K1-nVc"/>
+                            <constraint firstAttribute="bottom" secondItem="DS3-wV-wdp" secondAttribute="bottom" id="9wp-4A-NCk"/>
+                            <constraint firstItem="DS3-wV-wdp" firstAttribute="leading" secondItem="p1L-Zl-qnd" secondAttribute="leading" id="KZ2-Ql-Dpw"/>
+                            <constraint firstItem="DS3-wV-wdp" firstAttribute="top" secondItem="p1L-Zl-qnd" secondAttribute="top" id="Ovx-oB-Yq3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="p1L-Zl-qnd"/>
                     </view>

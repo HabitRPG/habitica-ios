@@ -420,6 +420,8 @@ public enum L10n {
   public static var join: String { return L10n.tr("Mainstrings", "join") }
   /// Join Challenge
   public static var joinChallenge: String { return L10n.tr("Mainstrings", "join_challenge") }
+  /// Joined Challenge
+  public static var joinedChallenge: String { return L10n.tr("Mainstrings", "joined_challenge") }
   /// Keep Tasks
   public static var keepTasks: String { return L10n.tr("Mainstrings", "keep_tasks") }
   /// Keep %d Tasks
@@ -440,16 +442,22 @@ public enum L10n {
   public static var leave: String { return L10n.tr("Mainstrings", "leave") }
   /// Leave & Delete Task
   public static var leaveAndDeleteTask: String { return L10n.tr("Mainstrings", "leave_and_delete_task") }
+  /// Leave & Delete Tasks
+  public static var leaveAndDeleteTasks: String { return L10n.tr("Mainstrings", "leave_and_delete_tasks") }
   /// Leave & Delete %d Tasks
   public static func leaveAndDeleteXTasks(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "leave_and_delete_x_tasks", p1)
   }
+  /// Leave & Keep Tasks
+  public static var leaveAndKeepTasks: String { return L10n.tr("Mainstrings", "leave_and_keep_tasks") }
   /// Leave Challenge
   public static var leaveChallenge: String { return L10n.tr("Mainstrings", "leave_challenge") }
-  /// Do you want to leave the challenge and keep or delete the tasks?
+  /// Do you want to leave the Challenge and keep or delete the tasks?
   public static var leaveChallengePrompt: String { return L10n.tr("Mainstrings", "leave_challenge_prompt") }
   /// Leave Challenge?
   public static var leaveChallengeTitle: String { return L10n.tr("Mainstrings", "leave_challenge_title") }
+  /// Left Challenge
+  public static var leftChallenge: String { return L10n.tr("Mainstrings", "left_challenge") }
   /// Level
   public static var level: String { return L10n.tr("Mainstrings", "level") }
   /// Level %d

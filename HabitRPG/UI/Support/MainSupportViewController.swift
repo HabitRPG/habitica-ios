@@ -55,20 +55,21 @@ class MainSupportViewController: BaseUIViewController {
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
+        var buttonTintColor = theme.fixedTintColor
         questionsContainer.backgroundColor = theme.windowBackgroundColor
         questionsTitleLabel.textColor = theme.primaryTextColor
         questionsDescriptionLabel.textColor = theme.ternaryTextColor
-        questionsButton.backgroundColor = theme.tintColor
+        questionsButton.backgroundColor = buttonTintColor
         
         bugContainer.backgroundColor = theme.windowBackgroundColor
         bugTitle.textColor = theme.primaryTextColor
         bugDescription.textColor = theme.ternaryTextColor
-        bugButton.backgroundColor = theme.tintColor
+        bugButton.backgroundColor = buttonTintColor
         
         suggestionsContainer.backgroundColor = theme.windowBackgroundColor
         suggestionsTitle.textColor = theme.primaryTextColor
         suggestionsDescription.textColor = theme.ternaryTextColor
-        suggestionsButton.backgroundColor = theme.tintColor
+        suggestionsButton.backgroundColor = buttonTintColor
         
         resetTutorialContainer.backgroundColor = theme.windowBackgroundColor
         resetTutorialButton.backgroundColor = theme.offsetBackgroundColor

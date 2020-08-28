@@ -214,6 +214,7 @@ class QuestDetailViewController: BaseUIViewController {
                 view.configure(participant: participant)
             }
             invitationsStackView.addArrangedSubview(view)
+            view.addHeightConstraint(height: 56)
         }
         invitationsStackView.setNeedsLayout()
     }

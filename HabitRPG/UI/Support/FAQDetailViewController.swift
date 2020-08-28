@@ -29,7 +29,7 @@ class FAQDetailViewController: BaseUIViewController {
         topHeaderCoordinator?.hideHeader = true
         
         answerTextView.contentInset = UIEdgeInsets.zero
-        answerTextView.textContainerInset = UIEdgeInsets.zero
+        answerTextView.textContainerInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         
         if let title = faqTitle {
             questionLabel.text = title
@@ -40,7 +40,7 @@ class FAQDetailViewController: BaseUIViewController {
         if index >= 0 {
             disposable.inner.add(contentRepository.getFAQEntry(index: index).on(value: {[weak self]entry in
                 self?.questionLabel.text = entry.question
-                self?.answerTextView.setMarkdownString(entry.answer)
+                self?.answerTextView.setMarkdownString(entry.answer, highlightUsernames: false)
             }).start())
         }
     }

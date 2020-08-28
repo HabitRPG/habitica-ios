@@ -43,10 +43,10 @@ class LeaveChallengeInteractor: Interactor<ChallengeProtocol, Bool> {
     private func createConfirmationAlert(challenge: ChallengeProtocol, observer: Signal<(Bool, Bool, ChallengeProtocol), NSError>.Observer) {
         let alert = HabiticaAlertController(title: L10n.leaveChallengeTitle,
                                       message: L10n.leaveChallengePrompt)
-        alert.addAction(title: L10n.keepTasks, handler: { (_) in
+        alert.addAction(title: L10n.leaveAndKeepTasks, handler: { (_) in
             observer.send(value: (true, true, challenge))
         })
-        alert.addAction(title: L10n.deleteTasks, style: .destructive, handler: { (_) in
+        alert.addAction(title: L10n.leaveAndDeleteTasks, style: .destructive, handler: { (_) in
             observer.send(value: (true, false, challenge))
         })
         alert.setCloseAction(title: L10n.cancel, handler: {

@@ -63,7 +63,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     func applyTheme(theme: Theme) {
         view.backgroundColor = theme.contentBackgroundColor
         startDayButton.setTitleColor(.white, for: .normal)
-        startDayButton.backgroundColor = theme.tintColor
+        startDayButton.backgroundColor = theme.fixedTintColor
         tableViewWrapper.backgroundColor = theme.windowBackgroundColor
         checkinCountView.textColor = theme.primaryTextColor
         nextCheckinCountView.textColor = theme.secondaryTextColor

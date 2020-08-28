@@ -70,12 +70,20 @@ class CheckedTableViewCell: TaskTableViewCell {
             checklistDoneLabel.text = "\(checkedCount)"
             checklistTotalLabel.text = "\(checklistCount)"
             if checkedCount == checklistCount {
-                checklistIndicator.backgroundColor = theme.offsetBackgroundColor
+                if theme.isDark {
+                    checklistIndicator.backgroundColor = .gray50
+                } else {
+                    checklistIndicator.backgroundColor = theme.offsetBackgroundColor
+                }
                 checklistDoneLabel.textColor = theme.quadTextColor
                 checklistTotalLabel.textColor = theme.quadTextColor
                 checklistIndicatorSeparator.backgroundColor = theme.quadTextColor
             } else {
-                checklistIndicator.backgroundColor = theme.ternaryTextColor
+                if theme.isDark {
+                    checklistIndicator.backgroundColor = .gray100
+                } else {
+                    checklistIndicator.backgroundColor = theme.ternaryTextColor
+                }
                 checklistDoneLabel.textColor = theme.lightTextColor
                 checklistTotalLabel.textColor = theme.lightTextColor
                 checklistIndicatorSeparator.backgroundColor = theme.lightTextColor
@@ -102,8 +110,10 @@ class CheckedTableViewCell: TaskTableViewCell {
                 }
             }
             checklistBoxBackground.isHidden = false
+            checklistContainer.isHidden = false
         } else {
             checklistBoxBackground.isHidden = true
+            checklistContainer.isHidden = true
         }
     }
     

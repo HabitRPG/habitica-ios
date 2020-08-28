@@ -72,7 +72,7 @@ class RouterHandler: NSObject {
         router.register("/static/faq/:index") { link in
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Support.faqDetailViewController.instantiate()
-            viewController.index = (link?.routeParameters["index"] as? Int) ?? 0
+            viewController.index = Int(string: (link?.routeParameters["index"] as? String) ?? "0") ?? 0
             self.push(viewController)
         }
         router.register("user/settings.*") { _ in

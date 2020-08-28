@@ -62,18 +62,16 @@ public class ThemeService: NSObject {
         ]
         UINavigationBar.appearance().backgroundColor = theme.contentBackgroundColor
         UINavigationBar.appearance().barTintColor = theme.contentBackgroundColor
+        UITabBar.appearance().tintColor = theme.tintColor
+        UITabBar.appearance().barTintColor = theme.contentBackgroundColor
+        UITabBar.appearance().backgroundColor = theme.contentBackgroundColor
+        UITabBar.appearance().backgroundImage = UIImage.from(color: theme.contentBackgroundColor)
+        UITabBar.appearance().shadowImage = UIImage.from(color: theme.contentBackgroundColor)
+        UITabBar.appearance().barStyle = .black
         if theme.isDark {
-            UITabBar.appearance().tintColor = theme.tintColor
-            UITabBar.appearance().backgroundColor = theme.windowBackgroundColor
-            UITabBar.appearance().barTintColor = .clear
-            UITabBar.appearance().barStyle = .black
             UISearchBar.appearance().barStyle = .blackTranslucent
             UITextField.appearance().keyboardAppearance = .dark
         } else {
-            UITabBar.appearance().tintColor = theme.tintColor
-            UITabBar.appearance().barTintColor = theme.contentBackgroundColor
-            UITabBar.appearance().backgroundColor = theme.contentBackgroundColor
-            UITabBar.appearance().barStyle = .black
             UISearchBar.appearance().barStyle = .default
             UITextField.appearance().keyboardAppearance = .default
         }

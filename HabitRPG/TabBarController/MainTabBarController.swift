@@ -80,7 +80,6 @@ class MainTabBarController: UITabBarController, Themeable {
     }
     
     func applyTheme(theme: Theme) {
-        tabBar.tintColor = theme.tintColor
         tabBar.items?.forEach({
             $0.badgeColor = theme.badgeColor
             if theme.badgeColor.isLight() {
@@ -89,17 +88,12 @@ class MainTabBarController: UITabBarController, Themeable {
                 $0.setBadgeTextAttributes([.foregroundColor: UIColor.gray700], for: .normal)
             }
         })
-        if theme.isDark {
-            tabBar.tintColor = theme.tintColor
-            tabBar.backgroundColor = theme.windowBackgroundColor
-            tabBar.barTintColor = .clear
-            tabBar.barStyle = .blackOpaque
-        } else {
-            tabBar.tintColor = theme.tintColor
-            tabBar.barTintColor = theme.contentBackgroundColor
-            tabBar.backgroundColor = .clear
-            tabBar.barStyle = .black
-        }
+        tabBar.tintColor = theme.fixedTintColor
+        tabBar.barTintColor = theme.contentBackgroundColor
+        tabBar.backgroundColor = theme.contentBackgroundColor
+        tabBar.backgroundImage = UIImage.from(color: theme.contentBackgroundColor)
+        tabBar.shadowImage = UIImage.from(color: theme.contentBackgroundColor)
+        tabBar.barStyle = .black
         
         if #available(iOS 13.0, *) {
             if ThemeService.shared.themeMode == "dark" {

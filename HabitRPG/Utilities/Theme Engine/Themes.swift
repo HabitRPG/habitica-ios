@@ -68,7 +68,7 @@ public struct DysheatenerTheme: Theme {
 }
 
 public struct DefaultDarkTheme: DarkTheme {
-    public var backgroundTintColor: UIColor { return UIColor.purple300 }
+    public var backgroundTintColor: UIColor { return UIColor.purple400 }
     public var tintColor: UIColor { return UIColor.purple500 }
     public var fixedTintColor: UIColor { return UIColor.purple400 }
     public var dimmBackgroundColor: UIColor { return UIColor.purple10 }

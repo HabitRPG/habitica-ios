@@ -332,6 +332,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             if let userID = AuthenticationManager.shared.currentUserId {
                 self?.localRepository.joinChallenge(userID: userID, challengeID: challengeID, challenge: challenge)
             }
+                ToastManager.show(text: L10n.joinedChallenge, color: .green)
         }).flatMap(.latest, {[weak self] challenge -> Signal<ChallengeProtocol?, Never> in
             return self?.userRepository.retrieveUser().map({ _ in
                 challenge
@@ -349,6 +350,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             if let userID = AuthenticationManager.shared.currentUserId {
                 self?.localRepository.leaveChallenge(userID: userID, challengeID: challengeID, challenge: challenge)
             }
+            ToastManager.show(text: L10n.leftChallenge, color: .green)
         })
     }
     

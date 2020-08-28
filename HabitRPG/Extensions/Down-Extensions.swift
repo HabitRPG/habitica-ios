@@ -23,7 +23,7 @@ extension Down {
     }
     
     func toHabiticaAttributedString(baseSize: CGFloat = 15,
-                                    textColor: UIColor = ThemeService.shared.theme.primaryTextColor, useAST: Bool = true) throws -> NSMutableAttributedString {
+                                    textColor: UIColor = ThemeService.shared.theme.primaryTextColor, useAST: Bool = true, highlightUsernames: Bool = true) throws -> NSMutableAttributedString {
         let mentions = matchUsernames(text: markdownString)
         
         if markdownString.range(of: "[*_#\\[<`]", options: .regularExpression, range: nil, locale: nil) == nil {
@@ -31,7 +31,7 @@ extension Down {
                                                    attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: baseSize),
                                                                 .foregroundColor: textColor])
             applyParagraphStyling(string)
-            if mentions.isEmpty == false {
+            if mentions.isEmpty == false && highlightUsernames {
                 applyMentions(string, mentions: mentions)
             }
             applyCustomEmoji(string, size: baseSize)
@@ -42,7 +42,7 @@ extension Down {
                                                   attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: baseSize),
                                                                .foregroundColor: textColor])
             applyParagraphStyling(string)
-            if mentions.isEmpty == false {
+            if mentions.isEmpty == false && highlightUsernames {
                 applyMentions(string, mentions: mentions)
             }
             applyCustomEmoji(string, size: baseSize)
@@ -71,7 +71,7 @@ extension Down {
                                         }
             })
         }
-        if mentions.isEmpty == false {
+        if mentions.isEmpty == false && highlightUsernames {
             applyMentions(string, mentions: mentions)
         }
         applyCustomEmoji(string, size: baseSize)
@@ -151,7 +151,9 @@ private class HabiticaStyler: Styler {
     }
     
     func style(item str: NSMutableAttributedString, prefixLength: Int) {
-        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.headIndent = CGFloat(prefixLength * 12)
+        str.addAttribute(.paragraphStyle, value: paragraphStyle)
     }
     
     func style(heading str: NSMutableAttributedString, level: Int) {
@@ -185,7 +187,11 @@ private class HabiticaStyler: Styler {
         self.textColor = textColor
     }
     
-    var listPrefixAttributes: [NSAttributedString.Key: Any] = [:]
+    var listPrefixAttributes: [NSAttributedString.Key: Any] {
+            return [
+            .foregroundColor: ThemeService.shared.theme.primaryTextColor
+        ]
+    }
     func style(document str: NSMutableAttributedString) {}
     func style(blockQuote str: NSMutableAttributedString) {}
     func style(list str: NSMutableAttributedString) {}
@@ -204,6 +210,9 @@ private class HabiticaStyler: Styler {
         str.addAttribute(.paragraphStyle, value: paragraphStyle)
     }
     func style(listItemPrefix str: NSMutableAttributedString) {
+        str.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: baseSize))
+        str.addAttribute(.foregroundColor, value: textColor)
+        str.replaceCharacters(in: NSRange(location: 1, length: 1), with: " ")
     }
     func style(thematicBreak str: NSMutableAttributedString) {}
     func style(text str: NSMutableAttributedString) {

@@ -124,9 +124,9 @@ class MenuNavigationBarView: UIView, Themeable {
         usernameLabel.textColor = theme.lightTextColor
         settingsBadge.backgroundColor = theme.badgeColor
         settingsBadge.textColor = theme.lightTextColor
-        messagesBadge.backgroundColor = theme.badgeColor
         messagesBadge.textColor = theme.lightTextColor
-        notificationsBadge.backgroundColor = theme.badgeColor
+        notificationsBadge.backgroundColor = theme.fixedTintColor
+        messagesBadge.backgroundColor = theme.fixedTintColor
         notificationsBadge.textColor = theme.lightTextColor
     }
     
