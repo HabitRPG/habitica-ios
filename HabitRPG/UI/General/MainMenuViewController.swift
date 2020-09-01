@@ -72,6 +72,8 @@ class MainMenuViewController: BaseTableViewController {
 
     private var user: UserProtocol? {
         didSet {
+            let socialIndex = configRepository.bool(variable: .reorderMenu) ? 3 : 1
+            let inventoryIndex = configRepository.bool(variable: .reorderMenu) ? 2 : 3
             if let user = self.user {
                 navbarView.configure(user: user)
             }
@@ -88,12 +90,12 @@ class MainMenuViewController: BaseTableViewController {
                 let hasPartActivity = user?.hasNewMessages.first(where: { (newMessages) -> Bool in
                     return newMessages.id == partyID
                 })
-                menuSections[1].items[1].showIndicator = hasPartActivity?.hasNewMessages ?? false
+                menuSections[socialIndex].items[1].showIndicator = hasPartActivity?.hasNewMessages ?? false
             } else {
-                menuSections[1].items[1].showIndicator = false
+                menuSections[socialIndex].items[1].showIndicator = false
             }
             
-            menuSections[1].items[0].subtitle = user?.preferences?.sleep == true ? L10n.damagePaused : nil
+            menuSections[socialIndex].items[0].subtitle = user?.preferences?.sleep == true ? L10n.damagePaused : nil
             
             tableView.reloadData()
             
@@ -101,9 +103,9 @@ class MainMenuViewController: BaseTableViewController {
                 tableView.tableFooterView = nil
             }
             if user?.isSubscribed == true {
-                menuSections[3].items[5].subtitle = nil
+                menuSections[inventoryIndex].items[5].subtitle = nil
             } else {
-                menuSections[3].items[5].subtitle = L10n.getMoreHabitica
+                menuSections[inventoryIndex].items[5].subtitle = L10n.getMoreHabitica
             }
             if user?.achievements?.hasCompletedOnboarding == true {
                 tableView.tableHeaderView = nil                } else {
@@ -224,6 +226,11 @@ class MainMenuViewController: BaseTableViewController {
                 ])
         ]
         menuSections[1].items[0].subtitleColor = UIColor.orange10
+        
+        if configRepository.bool(variable: .reorderMenu) {
+            let item = menuSections.remove(at: 1)
+            menuSections.insert(item, at: 3)
+        }
         
         if configRepository.bool(variable: .enableGiftOneGetOne) {
             menuSections[3].items[5].pillText = L10n.sale

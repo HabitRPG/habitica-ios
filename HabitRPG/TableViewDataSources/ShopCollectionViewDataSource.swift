@@ -150,7 +150,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     }
     
     private func fetchGear() {
-        if shopIdentifier != Constants.MarketKey {
+        if !needsGearSection {
             return
         }
         if let disposable = fetchGearDisposable {
@@ -177,6 +177,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             .on(value: {[weak self] items in
                 if (self?.sections.count ?? 0) > 0 {
                     self?.sections[0].items = items
+                    self?.sections[0].showIfEmpty = true
                     self?.collectionView?.reloadData()
                 }
         }).start()
@@ -262,7 +263,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if indexPath.section == 0 && !hasGearSection() {
+        if indexPath.section == 0 && needsGearSection {
             if !hasGearSection() {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyGearCell", for: indexPath)
                 (cell.viewWithTag(1) as? UILabel)?.text = L10n.Shops.purchasedAllGear

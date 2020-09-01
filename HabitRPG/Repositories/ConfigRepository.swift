@@ -30,6 +30,7 @@ enum ConfigVariable: Int {
     case feedbackURL
     case enableAdventureGuide
     case knownIssues
+    case reorderMenu
 
     func name() -> String {
         // swiftlint:disable switch_case_on_newline
@@ -53,6 +54,7 @@ enum ConfigVariable: Int {
         case .feedbackURL: return "feedbackURL"
         case .enableAdventureGuide: return "enableAdventureGuide"
         case .knownIssues: return "knownIssues"
+        case .reorderMenu: return "reorderMenu"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -97,6 +99,8 @@ enum ConfigVariable: Int {
             return NSString(string: "https://docs.google.com/forms/d/e/1FAIpQLScPhrwq_7P1C6PTrI3lbvTsvqGyTNnGzp1ugi1Ml0PFee_p5g/viewform?usp=sf_link")
         case .knownIssues:
             return NSString(string: "[]")
+        case .reorderMenu:
+            return NSNumber(booleanLiteral: false)
         }
     }
     
@@ -119,7 +123,8 @@ enum ConfigVariable: Int {
             .raiseShops,
             .feedbackURL,
             .enableAdventureGuide,
-            .knownIssues
+            .knownIssues,
+            .reorderMenu
         ]
     }
 }

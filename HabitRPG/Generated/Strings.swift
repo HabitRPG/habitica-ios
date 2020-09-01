@@ -266,7 +266,7 @@ public enum L10n {
   public static var filterByTags: String { return L10n.tr("Mainstrings", "filter_by_tags") }
   /// Finish
   public static var finish: String { return L10n.tr("Mainstrings", "finish") }
-  /// Completing tasks gives you a chance to find eggs, hatching potions,  and pet food.
+  /// Completing tasks gives you a chance to find eggs, hatching potions, and pet food.
   public static var firstDropExplanation1: String { return L10n.tr("Mainstrings", "first_drop_explanation1") }
   /// Head to your Items and try combining your new Egg and Hatching Potion!
   public static var firstDropExplanation2: String { return L10n.tr("Mainstrings", "first_drop_explanation2") }

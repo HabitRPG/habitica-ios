@@ -142,6 +142,7 @@ internal enum Asset {
   internal static let crown = ImageAsset(name: "crown")
   internal static let downIcon = ImageAsset(name: "down_icon")
   internal static let filterIcon = ImageAsset(name: "filter_icon")
+  internal static let filterIconActive = ImageAsset(name: "filter_icon_active")
   internal static let flagFlap = ImageAsset(name: "flag_flap")
   internal static let gemPurchaseHeader = ImageAsset(name: "gem_purchase_header")
   internal static let gemPurchaseHeaderDark = ImageAsset(name: "gem_purchase_header_dark")
