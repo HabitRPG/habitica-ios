@@ -474,6 +474,8 @@ public enum L10n {
   public static func levelupTitle(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "levelup_title", p1)
   }
+  /// Limited Event
+  public static var limitedEvent: String { return L10n.tr("Mainstrings", "limited_event") }
   /// Mana
   public static var mana: String { return L10n.tr("Mainstrings", "mana") }
   /// Mana points are unlocked with the class system at level 10 and allow you to **use Skills** once you begin learning them at level 11.\n\nSome **MP is restored** at day reset every day, but you can regain more by completing tasks or using a Mage class skill.
@@ -616,6 +618,10 @@ public enum L10n {
   public static var ponytail: String { return L10n.tr("Mainstrings", "ponytail") }
   /// Premium Currency
   public static var premiumCurrency: String { return L10n.tr("Mainstrings", "premium_currency") }
+  /// How it works
+  public static var promoInfoInstructionsTitle: String { return L10n.tr("Mainstrings", "promo_info_instructions_title") }
+  /// Limitations
+  public static var promoInfoLimitationsTitle: String { return L10n.tr("Mainstrings", "promo_info_limitations_title") }
   /// Publish Challenge
   public static var publishChallenge: String { return L10n.tr("Mainstrings", "publish_challenge") }
   /// Purchase Customization
@@ -878,8 +884,14 @@ public enum L10n {
   public static var usernamePromptWiki: String { return L10n.tr("Mainstrings", "username_prompt_wiki") }
   /// Invitation was sent to users.
   public static var usersInvited: String { return L10n.tr("Mainstrings", "users_invited") }
+  /// Usually %d Gems
+  public static func usuallyXGems(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "usually_x_gems", p1)
+  }
   /// View Achievements
   public static var viewAchievements: String { return L10n.tr("Mainstrings", "view_achievements") }
+  /// View Gem Bundles
+  public static var viewGemBundles: String { return L10n.tr("Mainstrings", "view_gem_bundles") }
   /// View Onboarding Tasks
   public static var viewOnboardingTasks: String { return L10n.tr("Mainstrings", "view_onboarding_tasks") }
   /// View Participant Progress
@@ -915,6 +927,10 @@ public enum L10n {
   /// %d Months
   public static func xMonths(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "x_months", p1)
+  }
+  /// %@ to %@
+  public static func xToY(_ p1: String, _ p2: String) -> String {
+    return L10n.tr("Mainstrings", "x_to_y", p1, p2)
   }
   /// Yearly
   public static var yearly: String { return L10n.tr("Mainstrings", "yearly") }
@@ -1223,6 +1239,15 @@ public enum L10n {
     public static var goodLuck: String { return L10n.tr("Mainstrings", "faint.good_luck") }
     /// You ran out of Health!
     public static var title: String { return L10n.tr("Mainstrings", "faint.title") }
+  }
+
+  public enum FallPromo {
+    /// Between September 22nd and 30th, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!
+    public static var infoInstructions: String { return L10n.tr("Mainstrings", "fall_promo.info_instructions") }
+    /// This promotion only applies during the limited time event. This event starts on September 22nd at 8:00 AM EDT (12:00 UTC) and will end September 30th at 8:00 PM EDT (00:00 UTC). The promo offer is only available when buying Gems for yourself.
+    public static var infoLimitations: String { return L10n.tr("Mainstrings", "fall_promo.info_limitations") }
+    /// The Fall Gala is in full swing so we thought it was the perfect time to introduce our first ever Gem Sale! Now you will get more Gems with each purchase than ever before.
+    public static var infoPrompt: String { return L10n.tr("Mainstrings", "fall_promo.info_prompt") }
   }
 
   public enum Groups {
@@ -1779,6 +1804,15 @@ public enum L10n {
     public static func usedTransformationItem(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "skills.used_transformation_item", p1)
     }
+  }
+
+  public enum SpookyPromo {
+    /// Between October 29th and November 2nd, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!
+    public static var infoInstructions: String { return L10n.tr("Mainstrings", "spooky_promo.info_instructions") }
+    /// This promotion only applies during the limited time event. This event starts on October 29th at 8:00 AM EDT (12:00 UTC) and will end November 2nd at 8:00 PM EDT (00:00 UTC). The promo offer is only available when buying Gems for yourself.
+    public static var infoLimitations: String { return L10n.tr("Mainstrings", "spooky_promo.info_limitations") }
+    /// The Gem Sale is back to haunt the very end of this year’s Fall Gala! This is one last chance to get more Gems than ever, so stock up while it lasts!
+    public static var infoPrompt: String { return L10n.tr("Mainstrings", "spooky_promo.info_prompt") }
   }
 
   public enum Stable {

@@ -69,6 +69,8 @@ class MainMenuViewController: BaseTableViewController {
         return menuSections.filter { (section) in !section.isHidden }
     }
     private var giftRecipientUsername = ""
+    
+    private var activePromo: HabiticaPromotion?
 
     private var user: UserProtocol? {
         didSet {
@@ -118,6 +120,17 @@ class MainMenuViewController: BaseTableViewController {
                 }
                 tableView.tableHeaderView = view
             }
+            
+            if let promo = activePromo {
+                if promo.promoType == .gemsPrice || promo.promoType == .gemsAmount {
+                    menuSections[inventoryIndex].items[4].pillText = L10n.sale
+                    menuSections[inventoryIndex].items[4].pillColor = promo.pillColor()
+                }
+                if promo.promoType == .subscription {
+                    menuSections[inventoryIndex].items[5].pillText = L10n.sale
+                    menuSections[inventoryIndex].items[5].pillColor = promo.pillColor()
+                }
+            }
         }
     }
     
@@ -157,6 +170,8 @@ class MainMenuViewController: BaseTableViewController {
         
         setupMenu()
         
+        activePromo = configRepository.activePromotion()
+        
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
         }).start())
@@ -181,6 +196,11 @@ class MainMenuViewController: BaseTableViewController {
         } else if configRepository.bool(variable: .showSubscriptionBanner) {
             let view = SubscriptionPromoView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
             view.onButtonTapped = { [weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.subscriptionSegue.rawValue, sender: self) }
+            tableView.tableFooterView = view
+        } else if let promo = activePromo {
+            let view = PromoMenuView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
+            promo.configurePromoMenuView(view: view)
+            view.onButtonTapped = { [weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.showPromoInfoSegue.rawValue, sender: self) }
             tableView.tableFooterView = view
         }
     }

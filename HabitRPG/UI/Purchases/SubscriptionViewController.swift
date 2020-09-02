@@ -130,6 +130,7 @@ class SubscriptionViewController: BaseTableViewController {
         } else {
             navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
         }
+        navigationController?.navigationBar.shadowImage = UIImage()
         giftSubscriptionExplanationLabel.textColor = theme.ternaryTextColor
         subscriptionSupportLabel.textColor = theme.secondaryTextColor
         

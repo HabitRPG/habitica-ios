@@ -31,7 +31,9 @@ enum ConfigVariable: Int {
     case enableAdventureGuide
     case knownIssues
     case reorderMenu
+    case activePromotion
 
+    // swiftlint:disable cyclomatic_complexity
     func name() -> String {
         // swiftlint:disable switch_case_on_newline
         switch self {
@@ -55,10 +57,11 @@ enum ConfigVariable: Int {
         case .enableAdventureGuide: return "enableAdventureGuide"
         case .knownIssues: return "knownIssues"
         case .reorderMenu: return "reorderMenu"
+        case .activePromotion: return "activePromo"
         }
         // swiftlint:enable switch_case_on_newline
     }
-    
+
     func defaultValue() -> NSObject {
         switch self {
         case .supportEmail:
@@ -101,6 +104,8 @@ enum ConfigVariable: Int {
             return NSString(string: "[]")
         case .reorderMenu:
             return NSNumber(booleanLiteral: false)
+        case .activePromotion:
+            return NSString(string: "")
         }
     }
     
@@ -124,9 +129,11 @@ enum ConfigVariable: Int {
             .feedbackURL,
             .enableAdventureGuide,
             .knownIssues,
-            .reorderMenu
+            .reorderMenu,
+            .activePromotion
         ]
     }
+    // swiftlint:enable cyclomatic_complexity
 }
 
 @objc
@@ -196,5 +203,15 @@ class ConfigRepository: NSObject {
             }
         }
         return NSArray()
+    }
+    
+    func activePromotion() -> HabiticaPromotion? {
+        let key = string(variable: .activePromotion)
+        let promo = HabiticaPromotionType.getPromoFromKey(key: key ?? "")
+        if let promo = promo, promo.endDate > Date() {
+            return promo
+        } else {
+            return nil
+        }
     }
 }

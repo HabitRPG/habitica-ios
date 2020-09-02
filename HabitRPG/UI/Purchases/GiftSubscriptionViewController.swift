@@ -91,6 +91,11 @@ class GiftSubscriptionViewController: BaseTableViewController {
         navigationItem.title = L10n.Titles.giftSubscription
     }
     
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
     func retrieveProductList() {
         SwiftyStoreKit.retrieveProductsInfo(Set(PurchaseHandler.noRenewSubscriptionIdentifiers)) { (result) in
             self.products = Array(result.retrievedProducts)

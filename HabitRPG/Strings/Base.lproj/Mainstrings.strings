@@ -1002,3 +1002,17 @@
 "hourglasses_description" = "Mystic Hourglasses are an extremely rare form of currency you can only receive for subscribing to Habitica for three consecutive months or more. They are used in the Time Traveler’s shop to buy past gear sets, pets, mounts, animated backgrounds, or even special quests.\n\nYou can receive up to four Mystic Hourglasses a year. The time they are rewarded is based on your subscription renewal schedule. They are sent out on the first day of a new month after your last subscription payment that qualified you for an hourglass. See the [Subscription] page for more details.";
 "joined_challenge" = "Joined Challenge";
 "left_challenge" = "Left Challenge";
+"limited_event" = "Limited Event";
+"x_to_y" = "%@ to %@";
+"usually_x_gems" = "Usually %d Gems";
+"view_gem_bundles" = "View Gem Bundles";
+"promo_info_instructions_title" = "How it works";
+"promo_info_limitations_title" = "Limitations";
+
+"fall_promo.info_prompt" = "The Fall Gala is in full swing so we thought it was the perfect time to introduce our first ever Gem Sale! Now you will get more Gems with each purchase than ever before.";
+"fall_promo.info_instructions" = "Between September 22nd and 30th, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!";
+"fall_promo.info_limitations" = "This promotion only applies during the limited time event. This event starts on September 22nd at 8:00 AM EDT (12:00 UTC) and will end September 30th at 8:00 PM EDT (00:00 UTC). The promo offer is only available when buying Gems for yourself.";
+
+"spooky_promo.info_prompt" = "The Gem Sale is back to haunt the very end of this year’s Fall Gala! This is one last chance to get more Gems than ever, so stock up while it lasts!";
+"spooky_promo.info_instructions" = "Between October 29th and November 2nd, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!";
+"spooky_promo.info_limitations" = "This promotion only applies during the limited time event. This event starts on October 29th at 8:00 AM EDT (12:00 UTC) and will end November 2nd at 8:00 PM EDT (00:00 UTC). The promo offer is only available when buying Gems for yourself.";

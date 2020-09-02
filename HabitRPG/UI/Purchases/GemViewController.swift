@@ -24,6 +24,8 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     private let configRepository = ConfigRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
+    private var activePromo: HabiticaPromotion?
+    
     var isSubscribed = false
     
     override func viewDidLoad() {
@@ -41,6 +43,8 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
             navigationController?.navigationBar.standardAppearance.shadowColor = .clear
             navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
         }
+        
+        activePromo = configRepository.activePromotion()
     }
     
     override func applyTheme(theme: Theme) {
@@ -50,6 +54,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         } else {
             navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
         }
+        navigationController?.navigationBar.shadowImage = UIImage()
         collectionView.backgroundColor = theme.contentBackgroundColor
     }
     
@@ -82,29 +87,33 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let product = self.products?[indexPath.item], let cell = self.collectionView?.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? HRPGGemPurchaseView else {
+        guard let product = self.products?[indexPath.item], let cell = self.collectionView?.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? GemPurchaseCell else {
             return UICollectionViewCell()
         }
         cell.setPrice(product.localizedPrice)
         cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
 
+        var amount = 0
         if product.productIdentifier == "com.habitrpg.ios.Habitica.4gems" {
-            cell.setGemAmount(4)
+            amount = 4
         } else if product.productIdentifier == "com.habitrpg.ios.Habitica.21gems" {
-            cell.setGemAmount(21)
+            amount = 21
         } else if product.productIdentifier == "com.habitrpg.ios.Habitica.42gems" {
-            cell.setGemAmount(42)
+            amount = 42
         } else if product.productIdentifier == "com.habitrpg.ios.Habitica.84gems" {
-            cell.setGemAmount(84)
+            amount = 84
         }
+        cell.setGemAmount(amount)
         
         cell.purchaseButton.isUserInteractionEnabled = false
+        
+        activePromo?.configureGemView(view: cell, regularAmount: amount)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if configRepository.bool(variable: .enableGiftOneGetOne) {
+        if configRepository.bool(variable: .enableGiftOneGetOne) || activePromo != nil {
             return CGSize(width: collectionView.frame.size.width, height: 320)
         } else {
             return CGSize(width: collectionView.frame.size.width, height: 239)
@@ -164,6 +173,12 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
                         self?.showGiftSubscriptionModal()
                     }
                     //promoView.frame = CGRect(x: 0, y: 0, width: collectionView.frame.size.width, height: 411)
+                }
+            } else if let promo = activePromo {
+                if let promoView = view.viewWithTag(5) as? PromoBannerView {
+                    promoView.isHidden = false
+                    promo.configurePurchaseBanner(view: promoView)
+                    promoView.onTapped = { [weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.showPromoInfoSegue.rawValue, sender: self) }
                 }
             }
         }
@@ -280,5 +295,9 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         alertController.addCancelAction()
         alertController.show()
         usernameTextField.becomeFirstResponder()
+    }
+    
+    
+    @IBAction func unwindToList(_ segue: UIStoryboardSegue) {
     }
 }

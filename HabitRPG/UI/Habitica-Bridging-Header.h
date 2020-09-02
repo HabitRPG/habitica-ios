@@ -9,7 +9,6 @@
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
 #import "Amplitude+HRPGHelpers.h"
 #import "HRPGBaseCollectionViewController.h"
-#import "HRPGGemPurchaseView.h"
 #import "HRPGMaintenanceViewController.h"
 #import "HRPGShopViewController.h"
 #import "HRPGCopyTableViewCell.h"
@@ -23,3 +22,4 @@
 #import "NSString+Emoji.h"
 #import "UIViewController+TutorialSteps.h"
 #import "HRPGTutorialUIViewController.h"
+#import "HRPGPurchaseLoadingButton.h"

@@ -41,12 +41,6 @@
         tapGestureRecognizer.minimumPressDuration = 0.001;
         [self addGestureRecognizer:tapGestureRecognizer];
         self.userInteractionEnabled = YES;
-        
-        self.layer.shadowColor = [[ObjcThemeWrapper buttonShadowColor] CGColor];
-        self.layer.shadowRadius = 2;
-        self.layer.shadowOffset = CGSizeMake(1, 1);
-        self.layer.shadowOpacity = 0.5;
-        self.layer.masksToBounds = false;
     }
 
     return self;
