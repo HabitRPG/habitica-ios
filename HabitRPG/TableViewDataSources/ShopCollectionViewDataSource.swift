@@ -263,13 +263,11 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if indexPath.section == 0 && needsGearSection {
-            if !hasGearSection() {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyGearCell", for: indexPath)
-                (cell.viewWithTag(1) as? UILabel)?.text = L10n.Shops.purchasedAllGear
-                cell.viewWithTag(2)?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-                return cell
-            }
+        if indexPath.section == 0 && needsGearSection && !hasGearSection() {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyGearCell", for: indexPath)
+            (cell.viewWithTag(1) as? UILabel)?.text = L10n.Shops.purchasedAllGear
+            cell.viewWithTag(2)?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+            return cell
         } else if let item = item(at: indexPath) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath)
             if let itemCell = cell as? InAppRewardCell {
