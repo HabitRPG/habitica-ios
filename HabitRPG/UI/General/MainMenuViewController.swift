@@ -17,6 +17,7 @@ struct MenuItem {
     var subtitleColor: UIColor?
     var pillText: String?
     var pillColor: UIColor?
+    var pillBuilder: ((PillView) -> Void)?
     var accessibilityLabel: String?
     var segue: String
     var cellName = "Cell"
@@ -101,7 +102,7 @@ class MainMenuViewController: BaseTableViewController {
             
             tableView.reloadData()
             
-            if user?.isSubscribed == true && !configRepository.bool(variable: .enableGiftOneGetOne) {
+            if user?.isSubscribed == true && (!configRepository.bool(variable: .enableGiftOneGetOne) && activePromo == nil) {
                 tableView.tableFooterView = nil
             }
             if user?.isSubscribed == true {
@@ -124,11 +125,11 @@ class MainMenuViewController: BaseTableViewController {
             if let promo = activePromo {
                 if promo.promoType == .gemsPrice || promo.promoType == .gemsAmount {
                     menuSections[inventoryIndex].items[4].pillText = L10n.sale
-                    menuSections[inventoryIndex].items[4].pillColor = promo.pillColor()
+                    menuSections[inventoryIndex].items[4].pillBuilder = promo.configurePill
                 }
                 if promo.promoType == .subscription {
                     menuSections[inventoryIndex].items[5].pillText = L10n.sale
-                    menuSections[inventoryIndex].items[5].pillColor = promo.pillColor()
+                    menuSections[inventoryIndex].items[5].pillBuilder = promo.configurePill
                 }
             }
         }
@@ -343,7 +344,11 @@ class MainMenuViewController: BaseTableViewController {
         let pillView = cell.viewWithTag(3) as? PillView
         pillView?.text = item?.pillText
         pillView?.isHidden = item?.pillText == nil
-        pillView?.pillColor = item?.pillColor ?? UIColor.purple300
+        if let builder = item?.pillBuilder, let pill = pillView {
+            builder(pill)
+        } else {
+            pillView?.pillColor = item?.pillColor ?? UIColor.purple300
+        }
         
         let subtitleLabel = cell.viewWithTag(4) as? UILabel
         subtitleLabel?.text = item?.subtitle

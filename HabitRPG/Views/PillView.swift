@@ -136,6 +136,16 @@ class PillView: UIView {
             labelOffset = CGFloat(27)
         }
         label.frame = CGRect(x: labelOffset, y: 0, width: frame.size.width-labelOffset, height: frame.size.height)
+        layer.sublayers?.forEach({ sublayer in
+            sublayer.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
+            if isCircular {
+                sublayer.cornerRadius = frame.size.height / 2
+            } else if hasRoundedCorners {
+                sublayer.cornerRadius = 5
+            } else {
+                sublayer.cornerRadius = 0
+            }
+        })
         if isCircular {
             layer.cornerRadius = frame.size.height / 2
         } else if hasRoundedCorners {

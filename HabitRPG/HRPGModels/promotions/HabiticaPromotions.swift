@@ -33,9 +33,9 @@ protocol HabiticaPromotion {
     var endDate: Date { get }
     
     func backgroundColor() -> UIColor
-    func pillColor() -> UIColor
     func buttonBackground() -> UIColor
     
+    func configurePill(_ pillView: PillView)
     func configurePromoMenuView(view: PromoMenuView)
     func configurePurchaseBanner(view: PromoBannerView)
     func configureGemView(view: GemPurchaseCell, regularAmount: Int)
@@ -54,13 +54,29 @@ class FallExtraGemsPromotion: HabiticaPromotion {
     func backgroundColor() -> UIColor {
         return UIColor.gray10
     }
-    
-    func pillColor() -> UIColor {
+
+    func buttonBackground() -> UIColor {
         return UIColor.orange50
     }
     
-    func buttonBackground() -> UIColor {
-        return UIColor.orange50
+    private func makeGradient(view: UIView) -> CAGradientLayer {
+        let gradient: CAGradientLayer = CAGradientLayer()
+
+        gradient.colors = [UIColor("#FF6165").cgColor, UIColor("#FA8537").cgColor, UIColor("#FFB445").cgColor]
+        gradient.locations = [0.0, 0.5, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height)
+        return gradient
+    }
+    
+    func configurePill(_ pillView: PillView) {
+        pillView.backgroundColor = nil
+        pillView.layer.sublayers?.filter { $0 is CAGradientLayer}.forEach { $0.removeFromSuperlayer() }
+        let gradientLayer = makeGradient(view: pillView)
+        gradientLayer.cornerRadius = pillView.frame.size.height / 2
+        pillView.layer.insertSublayer(gradientLayer, at: 0)
+        pillView.textColor = .white
     }
     
     func configurePromoMenuView(view: PromoMenuView) {
@@ -77,12 +93,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         view.backgroundColor = backgroundColor()
         view.leftImageView.image = Asset.fallPromoBannerLeft.image
         view.rightImageView.image = Asset.fallPromoBannerRight.image
-        view.setTitleImage(Asset.fallPromoTitle.image)
-        view.durationLabel.textColor = UIColor("#FEE2B6")
-        view.durationLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d"
-        view.setDuration(L10n.xToY(formatter.string(from: startDate), formatter.string(from: endDate)))
+        view.setTitleImage(Asset.fallPromoTitleDate.image)
     }
     
     func configureGemView(view: GemPurchaseCell, regularAmount: Int) {
@@ -94,8 +105,15 @@ class FallExtraGemsPromotion: HabiticaPromotion {
             UIColor.purple400,
             UIColor.yellow50
         ].shuffled()
-        view.decorationImageView.image = HabiticaIcons.imageOfFallGemPromoBG(redGemColor: colors[0], greenGemColor: colors[1], blueGemColor: colors[2], purpleGemColor: colors[3])
-        view.purchaseButton.tintColor = buttonBackground()
+        let decorationImage = HabiticaIcons.imageOfFallGemPromoBG(redGemColor: colors[0], greenGemColor: colors[1], blueGemColor: colors[2], purpleGemColor: colors[3])
+        view.leftDecorationImageView.image = decorationImage
+        view.rightDecorationImageView.image = decorationImage
+        view.purchaseButton.tintColor = .clear
+        view.purchaseButton.layer.sublayers?.filter { $0 is CAGradientLayer}.forEach { $0.removeFromSuperlayer() }
+        
+        let gradientLayer = makeGradient(view: view.purchaseButton)
+        gradientLayer.cornerRadius = 8
+        view.purchaseButton.layer.insertSublayer(gradientLayer, at: 0)
         view.footerLabel.text = L10n.usuallyXGems(regularAmount)
         view.footerLabel.textColor = UIColor("#CAC7CE")
         view.footerLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12, ofWeight: .semibold)
@@ -141,7 +159,6 @@ class FallExtraGemsPromotion: HabiticaPromotion {
     }
 }
 
-
 class SpookyExtraGemsPromotion: HabiticaPromotion {
 
     var identifier = "spooky_extra_gems"
@@ -152,15 +169,15 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
     var endDate: Date = Date.with(year: 2020, month: 11, day: 2, timezone: TimeZone(abbreviation: "UTC"))
     
     func backgroundColor() -> UIColor {
-        return UIColor.gray10
+        return .gray10
     }
-    
-    func pillColor() -> UIColor {
-        return UIColor.orange50
-    }
-    
+
     func buttonBackground() -> UIColor {
-        return UIColor.orange50
+        return .orange50
+    }
+    
+    func configurePill(_ pillView: PillView) {
+        pillView.pillColor = .orange50
     }
     
     func configurePromoMenuView(view: PromoMenuView) {
@@ -177,17 +194,14 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         view.backgroundColor = backgroundColor()
         view.leftImageView.image = Asset.spookyPromoBannerLeft.image
         view.rightImageView.image = Asset.spookyPromoBannerRight.image
-        view.setTitleImage(Asset.spookyPromoTitle.image)
-        view.durationLabel.textColor = UIColor("#FEE2B6")
-        view.durationLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d"
-        view.setDuration(L10n.xToY(formatter.string(from: startDate), formatter.string(from: endDate)))
+        view.setTitleImage(Asset.spookyPromoTitleDate.image)
     }
     
     func configureGemView(view: GemPurchaseCell, regularAmount: Int) {
         view.backgroundColor = backgroundColor()
-        view.decorationImageView.image = HabiticaIcons.imageOfSpookyGemPromoBG
+        let decorationImage = HabiticaIcons.imageOfSpookyGemPromoBG
+        view.leftDecorationImageView.image = decorationImage
+        view.rightDecorationImageView.image = decorationImage
         view.purchaseButton.tintColor = buttonBackground()
         view.footerLabel.text = L10n.usuallyXGems(regularAmount)
         view.footerLabel.textColor = UIColor("#CAC7CE")

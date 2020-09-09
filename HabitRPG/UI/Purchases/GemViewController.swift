@@ -114,10 +114,14 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if configRepository.bool(variable: .enableGiftOneGetOne) || activePromo != nil {
-            return CGSize(width: collectionView.frame.size.width, height: 320)
+            return CGSize(width: collectionView.frame.size.width, height: 340)
         } else {
-            return CGSize(width: collectionView.frame.size.width, height: 239)
+            return CGSize(width: collectionView.frame.size.width, height: 260)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 160, height: 212)
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

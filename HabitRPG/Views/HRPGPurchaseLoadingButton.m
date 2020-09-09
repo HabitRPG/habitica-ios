@@ -26,7 +26,7 @@
         self.label.layer.cornerRadius = 8.0f;
         self.label.textAlignment = NSTextAlignmentCenter;
         self.label.textColor = [UIColor whiteColor];
-        self.label.font = [UIFont systemFontOfSize:16];
+        self.label.font = [UIFont systemFontOfSize:16 weight:UIFontWeightSemibold];
         self.loadingView = [[UIActivityIndicatorView alloc] init];
         self.loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
 

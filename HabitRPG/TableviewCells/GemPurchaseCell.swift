@@ -14,7 +14,8 @@ class GemPurchaseCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var gemsLabel: UILabel!
-    @IBOutlet weak var decorationImageView: UIImageView!
+    @IBOutlet weak var leftDecorationImageView: UIImageView!
+    @IBOutlet weak var rightDecorationImageView: UIImageView!
     @IBOutlet weak var footerLabel: UILabel!
     
     func setGemAmount(_ amount: Int) {

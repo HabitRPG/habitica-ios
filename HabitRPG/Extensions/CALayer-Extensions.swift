@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+extension CALayer {
+    func replaceSublayers(with newSublayer: CALayer) {
+        sublayers?.forEach({ sublayer in
+            sublayer.removeFromSuperlayer()
+        })
+        insertSublayer(newSublayer, at: 0)
+    }
+}

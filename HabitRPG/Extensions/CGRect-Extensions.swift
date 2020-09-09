@@ -31,8 +31,6 @@ extension CGRect {
     }
     
     var totalHeight: CGFloat {
-        get {
-            return origin.y + size.height
-        }
+        return origin.y + size.height
     }
 }
