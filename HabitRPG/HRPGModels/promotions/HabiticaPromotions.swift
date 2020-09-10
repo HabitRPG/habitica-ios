@@ -13,12 +13,12 @@ public enum HabiticaPromotionType {
     case gemsPrice
     case subscription
     
-    static func getPromoFromKey(key: String) -> HabiticaPromotion? {
+    static func getPromoFromKey(key: String, startDate: Date?, endDate: Date?) -> HabiticaPromotion? {
         switch key {
-        case "fall_extra_gems":
-            return FallExtraGemsPromotion()
-        case "spooky_extra_gems":
-            return SpookyExtraGemsPromotion()
+        case "fall_extra_gems", "fall2020", "testfall2020":
+            return FallExtraGemsPromotion(startDate: startDate, endDate: endDate)
+        case "spooky_extra_gems", "fall2020SecondPromo", "testfall2020SecondPromo":
+            return SpookyExtraGemsPromotion(startDate: startDate, endDate: endDate)
         default:
             return nil
         }
@@ -47,9 +47,13 @@ class FallExtraGemsPromotion: HabiticaPromotion {
     var identifier = "fall_extra_gems"
     var promoType: HabiticaPromotionType = .gemsAmount
     
-    var startDate: Date = Date.with(year: 2020, month: 9, day: 22, timezone: TimeZone(abbreviation: "UTC"))
+    var startDate: Date
+    var endDate: Date
     
-    var endDate: Date = Date.with(year: 2020, month: 9, day: 30, timezone: TimeZone(abbreviation: "UTC"))
+    init(startDate: Date?, endDate: Date?) {
+        self.startDate = startDate ?? Date.with(year: 2020, month: 9, day: 22, timezone: TimeZone(abbreviation: "UTC"))
+        self.endDate = endDate ?? Date.with(year: 2020, month: 9, day: 30, timezone: TimeZone(abbreviation: "UTC"))
+    }
     
     func backgroundColor() -> UIColor {
         return UIColor.gray10
@@ -62,7 +66,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
     private func makeGradient(view: UIView) -> CAGradientLayer {
         let gradient: CAGradientLayer = CAGradientLayer()
 
-        gradient.colors = [UIColor("#FF6165").cgColor, UIColor("#FA8537").cgColor, UIColor("#FFB445").cgColor]
+        gradient.colors = [UIColor("#FFB445").cgColor, UIColor("#FA8537").cgColor, UIColor("#FF6165").cgColor]
         gradient.locations = [0.0, 0.5, 1.0]
         gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
@@ -93,7 +97,13 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         view.backgroundColor = backgroundColor()
         view.leftImageView.image = Asset.fallPromoBannerLeft.image
         view.rightImageView.image = Asset.fallPromoBannerRight.image
-        view.setTitleImage(Asset.fallPromoTitleDate.image)
+        view.setTitleImage(Asset.fallPromoTitle.image)
+        view.descriptionLabel.textColor = .white
+        view.descriptionLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d"
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        view.setDescription(L10n.xToY(formatter.string(from: startDate), formatter.string(from: endDate)))
     }
     
     func configureGemView(view: GemPurchaseCell, regularAmount: Int) {
@@ -110,13 +120,12 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         view.rightDecorationImageView.image = decorationImage
         view.purchaseButton.tintColor = .clear
         view.purchaseButton.layer.sublayers?.filter { $0 is CAGradientLayer}.forEach { $0.removeFromSuperlayer() }
-        
         let gradientLayer = makeGradient(view: view.purchaseButton)
         gradientLayer.cornerRadius = 8
         view.purchaseButton.layer.insertSublayer(gradientLayer, at: 0)
         view.footerLabel.text = L10n.usuallyXGems(regularAmount)
         view.footerLabel.textColor = UIColor("#CAC7CE")
-        view.footerLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12, ofWeight: .semibold)
+        view.footerLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
         
         switch regularAmount {
         case 4:
@@ -145,17 +154,23 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         viewController.promoBanner.durationLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d"
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
         viewController.promoBanner.setDuration(L10n.xToY(formatter.string(from: startDate), formatter.string(from: endDate)))
         
         viewController.promptLabel.textColor = UIColor("#F78E2F")
         viewController.promptLabel.text = L10n.FallPromo.infoPrompt
         viewController.promptButton.setTitle(L10n.viewGemBundles, for: .normal)
         viewController.promptButton.setTitleColor(.white, for: .normal)
-        viewController.promptButton.backgroundColor = buttonBackground()
+        viewController.promptButton.layer.sublayers?.filter { $0 is CAGradientLayer}.forEach { $0.removeFromSuperlayer() }
+        let gradientLayer = makeGradient(view: viewController.promptButton)
+        gradientLayer.cornerRadius = 8
+        viewController.promptButton.layer.insertSublayer(gradientLayer, at: 0)
         viewController.instructionsTitleLabel.text = L10n.promoInfoInstructionsTitle
-        viewController.instructionsDescriptionLabel.text = L10n.FallPromo.infoInstructions
-        viewController.limitationsTitleLabel.text = L10n.promoInfoInstructionsTitle
-        viewController.limitationsDescriptionLabel.text = L10n.FallPromo.infoLimitations
+        viewController.instructionsDescriptionLabel.text = L10n.FallPromo.infoInstructions(formatter.string(from: startDate), formatter.string(from: endDate))
+        viewController.limitationsTitleLabel.text = L10n.promoInfoLimitationsTitle
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .long
+        viewController.limitationsDescriptionLabel.text = L10n.GemsPromo.infoLimitations(formatter.string(from: startDate), formatter.string(from: endDate))
     }
 }
 
@@ -164,9 +179,13 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
     var identifier = "spooky_extra_gems"
     var promoType: HabiticaPromotionType = .gemsAmount
     
-    var startDate: Date = Date.with(year: 2020, month: 10, day: 29, timezone: TimeZone(abbreviation: "UTC"))
-     
-    var endDate: Date = Date.with(year: 2020, month: 11, day: 2, timezone: TimeZone(abbreviation: "UTC"))
+    var startDate: Date
+    var endDate: Date
+    
+    init(startDate: Date?, endDate: Date?) {
+        self.startDate = startDate ?? Date.with(year: 2020, month: 10, day: 29, timezone: TimeZone(abbreviation: "UTC"))
+        self.endDate = endDate ?? Date.with(year: 2020, month: 11, day: 2, timezone: TimeZone(abbreviation: "UTC"))
+    }
     
     func backgroundColor() -> UIColor {
         return .gray10
@@ -194,7 +213,13 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         view.backgroundColor = backgroundColor()
         view.leftImageView.image = Asset.spookyPromoBannerLeft.image
         view.rightImageView.image = Asset.spookyPromoBannerRight.image
-        view.setTitleImage(Asset.spookyPromoTitleDate.image)
+        view.setTitleImage(Asset.spookyPromoTitle.image)
+        view.descriptionLabel.textColor = .white
+        view.descriptionLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d"
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        view.setDescription(L10n.xToY(formatter.string(from: startDate), formatter.string(from: endDate)))
     }
     
     func configureGemView(view: GemPurchaseCell, regularAmount: Int) {
@@ -205,7 +230,7 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         view.purchaseButton.tintColor = buttonBackground()
         view.footerLabel.text = L10n.usuallyXGems(regularAmount)
         view.footerLabel.textColor = UIColor("#CAC7CE")
-        view.footerLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12, ofWeight: .semibold)
+        view.footerLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
         
         switch regularAmount {
         case 4:
@@ -234,6 +259,7 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         viewController.promoBanner.durationLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d"
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
         viewController.promoBanner.setDuration(L10n.xToY(formatter.string(from: startDate), formatter.string(from: endDate)))
         
         viewController.promptLabel.textColor = UIColor("#F78E2F")
@@ -242,8 +268,10 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         viewController.promptButton.setTitleColor(.white, for: .normal)
         viewController.promptButton.backgroundColor = buttonBackground()
         viewController.instructionsTitleLabel.text = L10n.promoInfoInstructionsTitle
-        viewController.instructionsDescriptionLabel.text = L10n.SpookyPromo.infoInstructions
-        viewController.limitationsTitleLabel.text = L10n.promoInfoInstructionsTitle
-        viewController.limitationsDescriptionLabel.text = L10n.SpookyPromo.infoLimitations
+        viewController.instructionsDescriptionLabel.text = L10n.SpookyPromo.infoInstructions(formatter.string(from: startDate), formatter.string(from: endDate))
+        viewController.limitationsTitleLabel.text = L10n.promoInfoLimitationsTitle
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .long
+        viewController.limitationsDescriptionLabel.text = L10n.GemsPromo.infoLimitations(formatter.string(from: startDate), formatter.string(from: endDate))
     }
 }

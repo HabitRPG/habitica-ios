@@ -39,6 +39,6 @@ class GemPurchaseCell: UICollectionViewCell {
     
     func setPrice(_ price: String?) {
         purchaseButton.text = price
-        purchaseButton.tintColor = ThemeService.shared.theme.tintColor
+        purchaseButton.tintColor = ThemeService.shared.theme.fixedTintColor
     }
 }

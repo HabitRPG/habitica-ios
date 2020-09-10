@@ -25,6 +25,9 @@ class RealmWorldState: Object, WorldStateProtocol {
         }
     }
     @objc dynamic var realmWorldBoss: RealmQuestState?
+    @objc dynamic var currentEventKey: String?
+    @objc dynamic var currentEventStartDate: Date?
+    @objc dynamic var currentEventEndDate: Date?
     
     override static func primaryKey() -> String {
         return "id"
@@ -34,6 +37,9 @@ class RealmWorldState: Object, WorldStateProtocol {
         self.init()
         self.id = id
         worldBoss = state.worldBoss
+        currentEventKey = state.currentEventKey
+        currentEventStartDate = state.currentEventStartDate
+        currentEventEndDate = state.currentEventEndDate
     }
     
 }

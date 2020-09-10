@@ -287,10 +287,7 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
             contentRepository.getFAQEntries()
                 .take(first: 1)
                 .flatMap(.latest) {[weak self] (entries) in
-                    return self?.contentRepository.retrieveContent(force: entries.value.isEmpty)
-                        .flatMap(.latest, {[weak self] (_) -> Signal<WorldStateProtocol?, Never> in
-                            return self?.contentRepository.retrieveWorldState() ?? Signal.empty
-                        }) ?? Signal.empty
+                    return self?.contentRepository.retrieveContent(force: entries.value.isEmpty) ?? Signal.empty
                 }
                 .on(completed: {
                     defaults.setValue(Date(), forKey: "lastContentFetch")
@@ -298,6 +295,8 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
                 })
                 .start()
         }
+        
+        contentRepository.retrieveWorldState().observeCompleted {}
     }
     
     @objc

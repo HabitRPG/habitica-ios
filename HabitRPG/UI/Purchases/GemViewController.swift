@@ -114,9 +114,9 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if configRepository.bool(variable: .enableGiftOneGetOne) || activePromo != nil {
-            return CGSize(width: collectionView.frame.size.width, height: 340)
+            return CGSize(width: collectionView.frame.size.width, height: 352)
         } else {
-            return CGSize(width: collectionView.frame.size.width, height: 260)
+            return CGSize(width: collectionView.frame.size.width, height: 272)
         }
     }
     
@@ -163,11 +163,24 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
             }
             
             if let headerLabel = view.viewWithTag(3) as? UILabel {
-                headerLabel.textColor = ThemeService.shared.theme.backgroundTintColor
+                if ThemeService.shared.theme.isDark {
+                    headerLabel.textColor = ThemeService.shared.theme.ternaryTextColor
+                } else {
+                    headerLabel.textColor = ThemeService.shared.theme.backgroundTintColor
+                }
             }
             
             if let listLabel = view.viewWithTag(4) as? UILabel {
-                listLabel.textColor = ThemeService.shared.theme.backgroundTintColor
+                if ThemeService.shared.theme.isDark {
+                    listLabel.textColor = ThemeService.shared.theme.ternaryTextColor
+                } else {
+                    listLabel.textColor = ThemeService.shared.theme.backgroundTintColor
+                }
+            }
+            
+            if let stackView = view.viewWithTag(6) as? UIStackView {
+                stackView.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+                stackView.isLayoutMarginsRelativeArrangement = true
             }
             
             if configRepository.bool(variable: .enableGiftOneGetOne) {

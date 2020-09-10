@@ -206,8 +206,12 @@ class ConfigRepository: NSObject {
     }
     
     func activePromotion() -> HabiticaPromotion? {
-        let key = string(variable: .activePromotion)
-        let promo = HabiticaPromotionType.getPromoFromKey(key: key ?? "")
+        guard let key = userConfig.string(forKey: "currentEvent") else {
+            return nil
+        }
+        let startDate = userConfig.object(forKey: "currentEventStartDate") as? Date
+        let endDate = userConfig.object(forKey: "currentEventEndDate") as? Date
+        let promo = HabiticaPromotionType.getPromoFromKey(key: key, startDate: startDate, endDate: endDate)
         if let promo = promo, promo.endDate > Date() {
             return promo
         } else {

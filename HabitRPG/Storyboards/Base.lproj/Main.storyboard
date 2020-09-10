@@ -1467,17 +1467,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="18" minimumInteritemSpacing="18" id="VJm-WU-tp7">
                             <size key="itemSize" width="150" height="200"/>
-                            <size key="headerReferenceSize" width="50" height="239"/>
+                            <size key="headerReferenceSize" width="50" height="257"/>
                             <size key="footerReferenceSize" width="50" height="317"/>
                             <inset key="sectionInset" minX="18" minY="0.0" maxX="18" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells/>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderView" id="Spt-Jl-ne3">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="239"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="257"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="s7W-cO-Mih">
-                                    <rect key="frame" x="20" y="0.0" width="335" height="227"/>
+                                    <rect key="frame" x="20" y="0.0" width="335" height="233"/>
                                     <subviews>
                                         <view hidden="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ao-1p-lNQ" customClass="GiftOneGetOnePromoView" customModule="Habitica" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="-81" width="335" height="81"/>
@@ -1499,86 +1499,94 @@
                                                 <constraint firstAttribute="height" constant="84" id="HN6-9G-pMA"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Gems allow you to buy fun extras for your account, including:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhA-8b-NmG">
-                                            <rect key="frame" x="0.0" y="98" width="335" height="41"/>
+                                        <stackView opaque="NO" tag="6" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="5i8-z2-1Et">
+                                            <rect key="frame" x="0.0" y="98" width="335" height="135"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Gems allow you to buy fun extras for your account, including:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhA-8b-NmG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="41"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" priority="500" constant="21" id="Myz-28-LqS"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="999" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmc-Sz-mph">
+                                                    <rect key="frame" x="0.0" y="55" width="335" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" priority="500" constant="21" id="Ns1-9T-eqn"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="✔">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" size="13" name="ZapfDingbatsITC"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment>
+                                                            <string key="content"> Cool costumes for your avatar
+</string>
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="✔">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" size="13" name="ZapfDingbatsITC"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment>
+                                                            <string key="content"> Awesome backgrounds
+</string>
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="✔">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" size="13" name="ZapfDingbatsITC"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment>
+                                                            <string key="content"> Quests that reward you with pet eggs
+</string>
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="✔">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" size="13" name="ZapfDingbatsITC"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=" The ability to change your class before level 100">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="height" priority="500" constant="21" id="Myz-28-LqS"/>
+                                                <constraint firstAttribute="width" constant="300" id="vXP-dS-wsG"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                            <color key="textColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmc-Sz-mph">
-                                            <rect key="frame" x="0.0" y="153" width="335" height="74"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" priority="500" constant="21" id="Ns1-9T-eqn"/>
-                                            </constraints>
-                                            <attributedString key="attributedText">
-                                                <fragment content="✔">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="13" name="ZapfDingbatsITC"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment>
-                                                    <string key="content"> Cool costumes for your avatar
-</string>
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" metaFont="system"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="✔">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="13" name="ZapfDingbatsITC"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment>
-                                                    <string key="content"> Awesome backgrounds
-</string>
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" metaFont="system"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="✔">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="13" name="ZapfDingbatsITC"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment>
-                                                    <string key="content"> Quests that reward you with pet eggs
-</string>
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" metaFont="system"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="✔">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="13" name="ZapfDingbatsITC"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content=" The ability to change your class before level 100">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" metaFont="system"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="231" id="hCt-Iv-oLn"/>
@@ -1587,13 +1595,13 @@
                             </subviews>
                             <constraints>
                                 <constraint firstItem="s7W-cO-Mih" firstAttribute="leading" secondItem="Spt-Jl-ne3" secondAttribute="leading" constant="20" id="6Eo-Da-Ry7"/>
-                                <constraint firstAttribute="bottom" secondItem="s7W-cO-Mih" secondAttribute="bottom" constant="12" id="c2B-ab-ZGQ"/>
+                                <constraint firstAttribute="bottom" secondItem="s7W-cO-Mih" secondAttribute="bottom" constant="24" id="c2B-ab-ZGQ"/>
                                 <constraint firstAttribute="trailing" secondItem="s7W-cO-Mih" secondAttribute="trailing" constant="20" id="lB8-K3-WeT"/>
                                 <constraint firstItem="s7W-cO-Mih" firstAttribute="top" secondItem="Spt-Jl-ne3" secondAttribute="top" id="lqH-aO-gsC"/>
                             </constraints>
                         </collectionReusableView>
                         <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FooterView" id="n9Z-3I-42b">
-                            <rect key="frame" x="0.0" y="239" width="375" height="317"/>
+                            <rect key="frame" x="0.0" y="257" width="375" height="317"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="421-JA-vci">
@@ -3251,7 +3259,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="500" constant="20" id="D49-yT-DaK"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -3260,6 +3268,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="pQd-MZ-uQ8"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <state key="normal" title="Button"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -3275,7 +3284,7 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOV-Ce-gbY">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="18"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -3295,7 +3304,7 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuk-K5-4Te">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="18"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>

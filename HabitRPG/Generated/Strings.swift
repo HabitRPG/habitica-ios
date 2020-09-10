@@ -1242,12 +1242,19 @@ public enum L10n {
   }
 
   public enum FallPromo {
-    /// Between September 22nd and 30th, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!
-    public static var infoInstructions: String { return L10n.tr("Mainstrings", "fall_promo.info_instructions") }
-    /// This promotion only applies during the limited time event. This event starts on September 22nd at 8:00 AM EDT (12:00 UTC) and will end September 30th at 8:00 PM EDT (00:00 UTC). The promo offer is only available when buying Gems for yourself.
-    public static var infoLimitations: String { return L10n.tr("Mainstrings", "fall_promo.info_limitations") }
+    /// Between %s and %s, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!
+    public static func infoInstructions(_ p1: UnsafePointer<CChar>, _ p2: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "fall_promo.info_instructions", p1, p2)
+    }
     /// The Fall Gala is in full swing so we thought it was the perfect time to introduce our first ever Gem Sale! Now you will get more Gems with each purchase than ever before.
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "fall_promo.info_prompt") }
+  }
+
+  public enum GemsPromo {
+    /// This promotion only applies during the limited time event. This event starts on %s (12:00 UTC) and will end %s (00:00 UTC). The promo offer is only available when buying Gems for yourself.
+    public static func infoLimitations(_ p1: UnsafePointer<CChar>, _ p2: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "gems_promo.info_limitations", p1, p2)
+    }
   }
 
   public enum Groups {
@@ -1807,10 +1814,10 @@ public enum L10n {
   }
 
   public enum SpookyPromo {
-    /// Between October 29th and November 2nd, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!
-    public static var infoInstructions: String { return L10n.tr("Mainstrings", "spooky_promo.info_instructions") }
-    /// This promotion only applies during the limited time event. This event starts on October 29th at 8:00 AM EDT (12:00 UTC) and will end November 2nd at 8:00 PM EDT (00:00 UTC). The promo offer is only available when buying Gems for yourself.
-    public static var infoLimitations: String { return L10n.tr("Mainstrings", "spooky_promo.info_limitations") }
+    /// Between %s and %s, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!
+    public static func infoInstructions(_ p1: UnsafePointer<CChar>, _ p2: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "spooky_promo.info_instructions", p1, p2)
+    }
     /// The Gem Sale is back to haunt the very end of this year’s Fall Gala! This is one last chance to get more Gems than ever, so stock up while it lasts!
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "spooky_promo.info_prompt") }
   }

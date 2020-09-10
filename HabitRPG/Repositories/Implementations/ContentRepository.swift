@@ -26,6 +26,11 @@ class ContentRepository: BaseRepository<ContentLocalRepository> {
         return RetrieveWorldStateCall().objectSignal.on(value: {[weak self] worldState in
             if let worldState = worldState {
                 self?.localRepository.save(worldState)
+                
+                let defaults = UserDefaults.standard
+                defaults.set(worldState.currentEventKey, forKey: "currentEvent")
+                defaults.set(worldState.currentEventStartDate, forKey: "currentEvent")
+                defaults.set(worldState.currentEventEndDate, forKey: "currentEvent")
             }
         })
     }

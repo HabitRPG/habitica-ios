@@ -10,4 +10,7 @@ import Foundation
 
 public protocol WorldStateProtocol {
     var worldBoss: QuestStateProtocol? { get set }
+    var currentEventKey: String? { get set }
+    var currentEventStartDate: Date? { get set }
+    var currentEventEndDate: Date? { get set }
 }
