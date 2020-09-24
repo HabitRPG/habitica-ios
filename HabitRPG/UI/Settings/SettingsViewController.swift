@@ -828,7 +828,7 @@ class SettingsViewController: FormViewController, Themeable {
             })
         }
         form +++ section
-        if UI_USER_INTERFACE_IDIOM() == .phone {
+        if #available(iOS 10.3, *) {
             section <<< PushRow<String>(SettingsTags.appIcon) { row in
                 row.title = L10n.Settings.appIcon
                 row.cellUpdate { cell, _ in
