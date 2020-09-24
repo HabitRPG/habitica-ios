@@ -22,6 +22,7 @@ struct StableOverviewItem {
 class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionViewDataSource<StableOverviewItem> {
     
     internal let stableRepository = StableRepository()
+    internal let inventoryRepository = InventoryRepository()
     internal var fetchDisposable: Disposable?
     
     var organizeByColor = false {
@@ -52,7 +53,7 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
         }
     }
     
-    internal func mapData(owned: [String], animals: [AnimalProtocol]) -> [String: [StableOverviewItem]] {
+    internal func mapData(owned: [String], animals: [AnimalProtocol], items: [String: String]) -> [String: [StableOverviewItem]] {
         var data = ["drop": [StableOverviewItem](), "quest": [StableOverviewItem](), "special": [StableOverviewItem](), "wacky": [StableOverviewItem]()]
         animals.forEach { (animal) in
             let type = (animal.type == "premium" ? "drop" : animal.type) ?? ""
@@ -63,10 +64,16 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
                 return
             }
             
+            var displayText = (organizeByColor ? animal.potion : animal.egg) ?? ""
+            if let text = items[(organizeByColor ? animal.potion : animal.egg) ?? ""] {
+                displayText = text
+            } else if animal.type == "special" || animal.type == "wacky" {
+                displayText = animal.key ?? ""
+            }
             let searchText = ((animal.type == "special" || animal.type == "wacky") ? animal.key : (organizeByColor ? animal.potion : animal.egg)) ?? ""
             
-            if item?.text == nil || item?.text != searchText {
-                item = StableOverviewItem(imageName: getImageName(animal), text: searchText, numberOwned: 0, totalNumber: 0, searchKey: searchText, type: animal.type ?? "")
+            if item?.text == nil || item?.text != displayText {
+                item = StableOverviewItem(imageName: getImageName(animal), text: displayText, numberOwned: 0, totalNumber: 0, searchKey: searchText, type: animal.type ?? "")
                 if let item = item {
                     data[type]?.append(item)
                 }
@@ -87,7 +94,7 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
     
     internal func getImageName(_ animal: AnimalProtocol) -> String {
         if animal.type == "special" || animal.type == "wacky" {
-            return "Pet-\(animal.key ?? "")"
+            return "stable_Pet-\(animal.key ?? "")"
         } else {
             if organizeByColor {
                 return "Pet_HatchingPotion_\(animal.potion ?? "")"

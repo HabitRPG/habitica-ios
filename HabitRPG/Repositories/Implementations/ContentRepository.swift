@@ -29,8 +29,8 @@ class ContentRepository: BaseRepository<ContentLocalRepository> {
                 
                 let defaults = UserDefaults.standard
                 defaults.set(worldState.currentEventKey, forKey: "currentEvent")
-                defaults.set(worldState.currentEventStartDate, forKey: "currentEvent")
-                defaults.set(worldState.currentEventEndDate, forKey: "currentEvent")
+                defaults.set(worldState.currentEventStartDate, forKey: "currentEventStartDate")
+                defaults.set(worldState.currentEventEndDate, forKey: "currentEventEndDate")
             }
         })
     }

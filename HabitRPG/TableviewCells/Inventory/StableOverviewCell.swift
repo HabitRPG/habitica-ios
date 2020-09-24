@@ -13,6 +13,7 @@ class StableOverviewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: NetworkImageView!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var countLabelHeightConstraint: NSLayoutConstraint!
     
     func configure(item: StableOverviewItem) {
         backgroundColor = ThemeService.shared.theme.windowBackgroundColor
@@ -33,11 +34,14 @@ class StableOverviewCell: UICollectionViewCell {
         } else {
             countLabel.textColor = ThemeService.shared.theme.secondaryTextColor
         }
-        
-        if item.type == "wacky" {
-            textLabel.isHidden = true
+        if item.type == "special" || item.type == "wacky" {
+            textLabel?.numberOfLines = 2
+            countLabel?.isHidden = true
+            countLabelHeightConstraint.constant = 0
         } else {
-            textLabel.isHidden = false
+            textLabel?.numberOfLines = 1
+            countLabel?.isHidden = false
+            countLabelHeightConstraint.constant = 20
         }
         
         shouldGroupAccessibilityChildren = true

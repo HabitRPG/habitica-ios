@@ -45,8 +45,12 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         return localRepository.getItems(keys: keys)
     }
     
-    func getFood(keys: [String]) ->SignalProducer<ReactiveResults<[FoodProtocol]>, ReactiveSwiftRealmError> {
+    func getFood(keys: [String]) -> SignalProducer<ReactiveResults<[FoodProtocol]>, ReactiveSwiftRealmError> {
             return localRepository.getFood(keys: keys)
+    }
+    
+    func getItems(type: ItemType) -> SignalProducer<ReactiveResults<[ItemProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getItems(type: type)
     }
     
     func getSpecialItems(keys: [String]) ->SignalProducer<ReactiveResults<[SpecialItemProtocol]>, ReactiveSwiftRealmError> {

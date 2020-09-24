@@ -13,6 +13,19 @@ private class CurrentEvent: Decodable {
     var event: String?
     var start: Date?
     var end: Date?
+    
+    enum CodingKeys: String, CodingKey {
+        case event
+        case start
+        case end
+    }
+    
+    public required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        event = try? values.decode(String.self, forKey: .event)
+        start = try? values.decode(Date.self, forKey: .start)
+        end = try? values.decode(Date.self, forKey: .end)
+    }
 }
 
 public class APIWorldState: WorldStateProtocol, Codable {

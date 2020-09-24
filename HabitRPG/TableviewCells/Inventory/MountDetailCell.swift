@@ -14,14 +14,14 @@ class MountDetailCell: UICollectionViewCell {
     @IBOutlet weak var imageView: NetworkImageView!
     
     func configure(mountItem: MountStableItem) {
-        backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         imageView.tintColor = ThemeService.shared.theme.dimmedColor
         if let key = mountItem.mount?.key {
             if mountItem.owned {
-                imageView.setImagewith(name: "Mount_Icon_\(key)")
+                imageView.setImagewith(name: "stable_Mount_Icon_\(key)")
                 accessibilityLabel = mountItem.mount?.text
             } else {
-                ImageManager.getImage(name: "Mount_Icon_\(key)") {[weak self] (image, _) in
+                ImageManager.getImage(name: "stable_Mount_Icon_\(key)") {[weak self] (image, _) in
                     self?.imageView.image = image?.withRenderingMode(.alwaysTemplate)
                 }
                 accessibilityLabel = L10n.Accessibility.unknownMount

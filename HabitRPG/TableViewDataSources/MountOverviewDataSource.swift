@@ -31,8 +31,11 @@ class MountOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                 })
             })
             .combineLatest(with: self.stableRepository.getMounts(sortKey: (organizeByColor ? "potion" : "egg")))
-            .map({[weak self] (ownedMounts, mounts) in
-                return self?.mapData(owned: ownedMounts, animals: mounts.value) ?? [:]
+            .combineLatest(with: self.inventoryRepository.getItems(type: (organizeByColor ? ItemType.hatchingPotions : ItemType.eggs)))
+            .map({[weak self] (mounts, items) -> [String: [StableOverviewItem]] in
+                var sortedItems = [String: String]()
+                items.value.forEach { sortedItems[$0.key ?? ""] = $0.text }
+                return self?.mapData(owned: mounts.0, animals: mounts.1.value, items: sortedItems) ?? [:]
             })
             .on(value: {[weak self]overviewItems in
                 self?.sections[0].items.removeAll()
@@ -49,12 +52,12 @@ class MountOverviewDataSource: StableOverviewDataSource<PetProtocol> {
     
     override func getImageName(_ animal: AnimalProtocol) -> String {
         if animal.type == "special" {
-            return "Mount_Icon_\(animal.key ?? "")"
+            return "stable_Mount_Icon_\(animal.key ?? "")"
         } else {
             if organizeByColor {
                 return "Pet_HatchingPotion_\(animal.potion ?? "")"
             } else {
-                return "Mount_Icon_\(animal.egg ?? "")-Base"
+                return "stable_Mount_Icon_\(animal.egg ?? "")-Base"
             }
         }
     }

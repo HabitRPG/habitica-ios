@@ -31,7 +31,7 @@ class PetOverviewViewController: StableOverviewViewController<PetOverviewDataSou
             let indexPath = collectionView?.indexPath(for: cell)
             destination?.searchKey = datasource?.item(at: indexPath)?.searchKey ?? ""
             destination?.searchEggs = !organizeByColor
-            destination?.petType = datasource?.item(at: indexPath)?.type ?? ""
+            destination?.animalType = datasource?.item(at: indexPath)?.type ?? ""
         }
     }
     

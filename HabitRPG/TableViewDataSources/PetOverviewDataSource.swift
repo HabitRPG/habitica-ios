@@ -31,8 +31,11 @@ class PetOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                 })
             })
             .combineLatest(with: self.stableRepository.getPets(sortKey: (organizeByColor ? "potion" : "egg")))
-            .map({[weak self] (ownedPets, pets) in
-                return self?.mapData(owned: ownedPets, animals: pets.value) ?? [:]
+            .combineLatest(with: self.inventoryRepository.getItems(type: (organizeByColor ? ItemType.hatchingPotions : ItemType.eggs)))
+            .map({[weak self] (pets, items) -> [String: [StableOverviewItem]] in
+                var sortedItems = [String: String]()
+                items.value.forEach { sortedItems[$0.key ?? ""] = $0.text }
+                return self?.mapData(owned: pets.0, animals: pets.1.value, items: sortedItems) ?? [:]
             })
             .on(value: {[weak self]overviewItems in
                 self?.sections[0].items.removeAll()

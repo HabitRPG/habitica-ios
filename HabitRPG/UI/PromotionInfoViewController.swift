@@ -35,6 +35,11 @@ class PromotionInfoViewController: BaseUIViewController {
         mainStackView.isLayoutMarginsRelativeArrangement = true
         
         promotion?.configureInfoView(self)
+        
+        if #available(iOS 13.0, *) {
+            navigationController?.navigationBar.standardAppearance.shadowColor = .clear
+            navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -47,10 +52,15 @@ class PromotionInfoViewController: BaseUIViewController {
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         navigationController?.navigationBar.shadowImage = UIImage()
+        if #available(iOS 13.0, *) {
+            navigationController?.navigationBar.standardAppearance.backgroundColor = theme.contentBackgroundColor
+        } else {
+            navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
+        }
         instructionsTitleLabel.textColor = theme.secondaryTextColor
         limitationsTitleLabel.textColor = theme.secondaryTextColor
-        instructionsDescriptionLabel.textColor = theme.quadTextColor
-        limitationsDescriptionLabel.textColor = theme.quadTextColor
+        instructionsDescriptionLabel.textColor = theme.ternaryTextColor
+        limitationsDescriptionLabel.textColor = theme.ternaryTextColor
     }
     
     @IBAction func promptButtonTapped(_ sender: Any) {

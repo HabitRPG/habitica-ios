@@ -114,9 +114,9 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if configRepository.bool(variable: .enableGiftOneGetOne) || activePromo != nil {
-            return CGSize(width: collectionView.frame.size.width, height: 352)
+            return CGSize(width: collectionView.frame.size.width, height: 382)
         } else {
-            return CGSize(width: collectionView.frame.size.width, height: 272)
+            return CGSize(width: collectionView.frame.size.width, height: 302)
         }
     }
     

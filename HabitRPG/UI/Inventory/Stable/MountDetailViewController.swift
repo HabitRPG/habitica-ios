@@ -10,12 +10,7 @@ import Foundation
 import Habitica_Models
 
 class MountDetailViewController: StableDetailViewController<MountDetailDataSource> {
-    
-    var searchEggs = true
-    var searchKey: String = ""
-    var mountType: String = "drop"
-    
-    private var inventoryRepository = InventoryRepository()
+
     private var stableRepository = StableRepository()
     private let userRepository = UserRepository()
     
@@ -23,10 +18,10 @@ class MountDetailViewController: StableDetailViewController<MountDetailDataSourc
     
     override func viewDidLoad() {
         datasource = MountDetailDataSource(searchEggs: searchEggs, searchKey: searchKey)
-        if mountType == "drop" || mountType == "premium" {
+        if animalType == "drop" || animalType == "premium" {
             datasource?.types = ["drop", "premium"]
         } else {
-            datasource?.types = [mountType]
+            datasource?.types = [animalType]
         }
         datasource?.collectionView = collectionView
         super.viewDidLoad()
@@ -38,10 +33,6 @@ class MountDetailViewController: StableDetailViewController<MountDetailDataSourc
     
     deinit {
         datasource?.dispose()
-    }
-    
-    override func populateText() {
-        navigationItem.title = L10n.Titles.mounts
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

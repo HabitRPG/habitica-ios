@@ -67,6 +67,27 @@ public class InventoryLocalRepository: ContentLocalRepository {
             }))
     }
     
+    public func getItems(type: ItemType) -> SignalProducer<ReactiveResults<[ItemProtocol]>, ReactiveSwiftRealmError> {
+        if type == ItemType.eggs {
+            return RealmEgg.findAll().sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[ItemProtocol]> in
+                return (value.map({ (item) -> ItemProtocol in return item }), changeset)
+            })
+        } else if type == ItemType.hatchingPotions {
+            return RealmHatchingPotion.findAll().sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[ItemProtocol]> in
+                return (value.map({ (item) -> ItemProtocol in return item }), changeset)
+            })
+        } else if type == ItemType.food {
+            return RealmFood.findAll().sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[ItemProtocol]> in
+                return (value.map({ (item) -> ItemProtocol in return item }), changeset)
+            })
+        } else if type == ItemType.special {
+            return RealmSpecialItem.findAll().sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[ItemProtocol]> in
+                return (value.map({ (item) -> ItemProtocol in return item }), changeset)
+            })
+        }
+        return SignalProducer.empty
+    }
+    
     public func getSpecialItems(keys: [String]) -> SignalProducer<ReactiveResults<[SpecialItemProtocol]>, ReactiveSwiftRealmError> {
         return RealmSpecialItem.findBy(predicate: NSPredicate(format: "key IN %@", keys)).sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[SpecialItemProtocol]> in
                 return (value.map({ (item) -> SpecialItemProtocol in return item }), changeset)

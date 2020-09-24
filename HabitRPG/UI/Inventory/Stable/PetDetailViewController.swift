@@ -10,12 +10,6 @@ import Foundation
 import Habitica_Models
 
 class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
-    
-    var searchEggs = true
-    var searchKey: String = ""
-    var petType: String = "drop"
-    
-    private let inventoryRepository = InventoryRepository()
     private let userRepository = UserRepository()
     
     private var user: UserProtocol?
@@ -24,10 +18,10 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
     
     override func viewDidLoad() {
         datasource = PetDetailDataSource(searchEggs: searchEggs, searchKey: searchKey)
-        if petType == "drop" || petType == "premium" {
+        if animalType == "drop" || animalType == "premium" {
             datasource?.types = ["drop", "premium"]
         } else {
-            datasource?.types = [petType]
+            datasource?.types = [animalType]
         }
         datasource?.collectionView = collectionView
         super.viewDidLoad()
@@ -39,10 +33,6 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
     
     deinit {
         datasource?.dispose()
-    }
-    
-    override func populateText() {
-        navigationItem.title = L10n.Titles.pets
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

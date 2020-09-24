@@ -33,6 +33,7 @@ class StableOverviewViewController<DS>: BaseCollectionViewController {
     }
     
     override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
         collectionView.backgroundColor = theme.contentBackgroundColor
         headerView.applyTheme(backgroundColor: theme.contentBackgroundColor)
     }
