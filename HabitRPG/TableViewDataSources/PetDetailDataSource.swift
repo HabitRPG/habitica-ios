@@ -19,7 +19,10 @@ struct PetStableItem {
 class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
     
     private let stableRepsository = StableRepository()
+    private let inventoryRepository = InventoryRepository()
     var types = ["drop", "premium"]
+    
+    private var ownedItems = [String: OwnedItemProtocol]()
     
     init(searchEggs: Bool, searchKey: String) {
         super.init()
@@ -78,16 +81,45 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
                 }
                 self?.collectionView?.reloadData()
             }).start())
+        
+        disposable.add(inventoryRepository.getOwnedItems()
+                        .map({ items -> [String: OwnedItemProtocol] in
+                            var itemMap = [String: OwnedItemProtocol]()
+                            items.value.forEach { ownedItem in
+                                itemMap["\(ownedItem.key ?? "")-\(ownedItem.itemType ?? "")"] = ownedItem
+                            }
+                            return itemMap
+                        })
+                        .on(value: { ownedItems in
+                            self.ownedItems = ownedItems
+                            self.collectionView?.reloadData()
+                        }).start())
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        
-        if let petItem = item(at: indexPath), let petCell = cell as? PetDetailCell {
-            petCell.configure(petItem: petItem)
+        var cell: UICollectionViewCell?
+        if let petItem = item(at: indexPath) {
+            if petItem.trained <= 0 && canHatch(petItem) {
+                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HatchCell", for: indexPath)
+                let eggView = cell?.viewWithTag(2) as? NetworkImageView
+                eggView?.setImagewith(name: "Pet_Egg_" + (petItem.pet?.egg ?? ""))
+                let potionView = cell?.viewWithTag(3) as? NetworkImageView
+                potionView?.setImagewith(name: "Pet_HatchingPotion_" + (petItem.pet?.potion ?? ""))
+                cell?.borderColor = ThemeService.shared.theme.tintColor
+            } else {
+                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+                (cell as? PetDetailCell)?.configure(petItem: petItem)
+            }
         }
         
-        return cell
+        return cell ?? UICollectionViewCell()
+    }
+    
+    private func canHatch(_ pet: PetStableItem) -> Bool {
+        let portions = pet.pet?.key?.split(separator: "-")
+        let egg = portions?.first ?? ""
+        let potion = portions?.last ?? ""
+        return (ownedItems[egg + "-eggs"] != nil) && (ownedItems[potion + "-hatchingPotions"] != nil)
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

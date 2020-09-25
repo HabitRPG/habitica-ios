@@ -1196,6 +1196,56 @@
                                     <outlet property="progressView" destination="rTs-KB-m18" id="2hN-4d-gWz"/>
                                 </connections>
                             </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HatchCell" id="KZo-TE-dDe" customClass="PetDetailCell" customModule="Habitica" customModuleProvider="target">
+                                <rect key="frame" x="105" y="0.0" width="76" height="96"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="76" height="96"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="reM-ea-z4g" customClass="NetworkImageView" customModule="Habitica" customModuleProvider="target">
+                                            <rect key="frame" x="12" y="8" width="68" height="68"/>
+                                            <color key="tintColor" red="0.88328301909999996" green="0.87696492670000004" blue="0.89030760529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="68" id="anz-dP-qCx"/>
+                                                <constraint firstAttribute="height" constant="68" id="yas-pv-y0h"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" tag="2" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eDM-kx-eXq" customClass="NetworkImageView" customModule="Habitica" customModuleProvider="target">
+                                            <rect key="frame" x="-4" y="8" width="68" height="68"/>
+                                            <color key="tintColor" red="0.88328301909999996" green="0.87696492670000004" blue="0.89030760529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="68" id="Pc4-WE-HMO"/>
+                                                <constraint firstAttribute="height" constant="68" id="vL1-EN-bQX"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark_small" translatesAutoresizingMaskIntoConstraints="NO" id="3Yl-Dw-pgg">
+                                            <rect key="frame" x="32" y="74" width="12" height="10"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="12" id="8bV-Al-vnA"/>
+                                                <constraint firstAttribute="height" constant="10" id="gtD-WQ-vIw"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="eDM-kx-eXq" secondAttribute="centerX" constant="8" id="9Nw-O3-2mZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="3Yl-Dw-pgg" secondAttribute="bottom" constant="12" id="TgK-gy-Gx6"/>
+                                    <constraint firstItem="reM-ea-z4g" firstAttribute="top" secondItem="KZo-TE-dDe" secondAttribute="top" constant="8" id="XAX-BA-0wI"/>
+                                    <constraint firstItem="reM-ea-z4g" firstAttribute="centerX" secondItem="KZo-TE-dDe" secondAttribute="centerX" constant="8" id="k84-9a-adp"/>
+                                    <constraint firstItem="eDM-kx-eXq" firstAttribute="top" secondItem="KZo-TE-dDe" secondAttribute="top" constant="8" id="qkZ-Ii-GEY"/>
+                                    <constraint firstItem="3Yl-Dw-pgg" firstAttribute="centerX" secondItem="KZo-TE-dDe" secondAttribute="centerX" id="xFi-Xy-OQI"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </collectionViewCell>
                         </cells>
                         <connections>
                             <outlet property="dataSource" destination="OMM-QF-DNw" id="BlL-5J-alx"/>
@@ -1465,7 +1515,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="GemPurchaseViewController" id="0F5-C1-rPv" customClass="GemViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" id="CgT-fS-CrK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="18" minimumInteritemSpacing="18" id="VJm-WU-tp7">
@@ -3479,6 +3529,7 @@
     <resources>
         <image name="add_icon" width="20" height="20"/>
         <image name="adventureGuideArt" width="149" height="40"/>
+        <image name="checkmark_small" width="13" height="10"/>
         <image name="filter_icon" width="22" height="17"/>
         <image name="gem_purchase_header" width="254" height="68"/>
         <image name="gift_sub_gift" width="24" height="25"/>
