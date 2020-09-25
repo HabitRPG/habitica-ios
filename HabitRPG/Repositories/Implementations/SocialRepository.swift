@@ -181,7 +181,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
                 return SignalProducer.empty
             })
             .flatMap(.concat, {[weak self] (challenge) -> SignalProducer<ChallengeProtocol?, Never> in
-                if retrieveIfNotFound, let weakSelf = self {
+                if challenge == nil && retrieveIfNotFound, let weakSelf = self {
                     return SignalProducer(weakSelf.retrieveChallenge(challengeID: challengeID))
                 } else {
                     return SignalProducer(value: challenge)
