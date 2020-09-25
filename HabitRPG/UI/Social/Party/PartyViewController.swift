@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Crashlytics
+import FirebaseCrashlytics
 import ReactiveSwift
 
 class PartyViewController: SplitSocialViewController {
@@ -70,7 +70,7 @@ class PartyViewController: SplitSocialViewController {
                 }
             })
             .on(failed: { error in
-                Crashlytics.sharedInstance().recordError(error)
+                Crashlytics.crashlytics().record(error: error)
             })
             .start()
     }

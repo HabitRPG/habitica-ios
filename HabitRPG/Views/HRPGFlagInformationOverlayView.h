@@ -17,6 +17,6 @@
 @property(weak, nonatomic) IBOutlet UITextView *messageTextView;
 @property(weak, nonatomic) IBOutlet UITextView *explanationTextView;
 
-@property(nonatomic, copy) void (^flagAction)();
+@property(nonatomic, copy) void (^flagAction)(void);
 
 @end

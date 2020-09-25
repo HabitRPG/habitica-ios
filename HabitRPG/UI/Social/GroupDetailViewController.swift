@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 import Down
-import Crashlytics
+import FirebaseCrashlytics
 
 class GroupDetailViewController: BaseUIViewController {
     var groupID: String?
@@ -40,7 +40,7 @@ class GroupDetailViewController: BaseUIViewController {
         
         disposable.inner.add(groupProperty.signal.skipNil()
             .on(failed: { error in
-                Crashlytics.sharedInstance().recordError(error)
+                Crashlytics.crashlytics().record(error: error)
             })
             .observeValues({[weak self] group in
                 self?.updateData(group: group)

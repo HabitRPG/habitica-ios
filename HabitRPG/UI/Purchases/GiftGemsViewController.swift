@@ -12,7 +12,6 @@ import StoreKit
 import Keys
 import ReactiveSwift
 import Habitica_Models
-import Crashlytics
 
 class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var giftModeControl: UISegmentedControl!

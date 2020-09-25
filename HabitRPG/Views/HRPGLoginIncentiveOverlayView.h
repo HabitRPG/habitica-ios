@@ -18,7 +18,7 @@
 @property(nonatomic) NSString *titleText;
 @property(nonatomic) NSString *descriptionText;
 
-@property(nonatomic) void (^dismissAction)();
-@property(nonatomic) void (^shareAction)();
+@property(nonatomic) void (^dismissAction)(void);
+@property(nonatomic) void (^shareAction)(void);
 
 @end

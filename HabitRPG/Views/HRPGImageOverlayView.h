@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *rightAchievementView;
 
 @property(nonatomic) NSString *dismissButtonText;
-@property(nonatomic) void (^dismissAction)();
-@property(nonatomic) void (^shareAction)();
+@property(nonatomic) void (^dismissAction)(void);
+@property(nonatomic) void (^shareAction)(void);
 
 @end

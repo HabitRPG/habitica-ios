@@ -11,7 +11,7 @@ import Habitica_Models
 import Habitica_Database
 import Habitica_API_Client
 import ReactiveSwift
-import Crashlytics
+import FirebaseCrashlytics
 
 class UserRepository: BaseRepository<UserLocalRepository> {
     
@@ -118,7 +118,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             }).flatMap(.latest, { _ in
                 return self.retrieveUser()
             }).on(failed: { error in
-                Crashlytics.sharedInstance().recordError(error)
+                Crashlytics.crashlytics().record(error: error)
             }).observeCompleted {
                 disposable?.dispose()
             }
@@ -126,7 +126,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             disposable = RunCronCall().responseSignal.flatMap(.latest, { (_) in
                 return self.retrieveUser()
             }).on(failed: { error in
-                Crashlytics.sharedInstance().recordError(error)
+                Crashlytics.crashlytics().record(error: error)
             }).observeCompleted {
                 disposable?.dispose()
             }

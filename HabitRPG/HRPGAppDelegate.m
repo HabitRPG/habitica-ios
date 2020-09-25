@@ -8,9 +8,7 @@
 
 #import "HRPGAppDelegate.h"
 #import <CoreSpotlight/CoreSpotlight.h>
-#import <Crashlytics/Crashlytics.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <Fabric/Fabric.h>
 #import "Amplitude.h"
 #import "HRPGMaintenanceViewController.h"
 #import <Keys/HabiticaKeys.h>
@@ -160,7 +158,7 @@
 - (void)application:(UIApplication *)application
     handleActionWithIdentifier:(NSString *)identifier
           forLocalNotification:(UILocalNotification *)notification
-             completionHandler:(void (^)())completionHandler {
+  completionHandler:(void (^)())completionHandler {
     if ([identifier isEqualToString:@"completeAction"]) {
         [self completeTaskWithId:[notification.userInfo valueForKey:@"taskID"] completionHandler:completionHandler];
     }
@@ -338,7 +336,7 @@
     [self.swiftAppDelegate saveDeviceToken:deviceToken];
 }
 
-- (void)completeTaskWithId:(NSString *)taskID completionHandler:(void (^)())completionHandler {
+- (void)completeTaskWithId:(NSString *)taskID completionHandler:(void (^)(void))completionHandler {
     [self.swiftAppDelegate scoreTask:taskID direction:@"up" completed: ^() {
         if (completionHandler) {
             completionHandler();

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1010"
+   LastUpgradeVersion = "1150"
    version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -41,6 +41,15 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "D9EB4E8A18CB4A9400BB2094"
+            BuildableName = "Habitica.app"
+            BlueprintName = "Habitica"
+            ReferencedContainer = "container:Habitica.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -66,24 +75,13 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "29701FEA1F5848880097BBCC"
+               BlueprintIdentifier = "C8415990225F8B7800989FB8"
                BuildableName = "Habitica Snapshots.xctest"
                BlueprintName = "Habitica Snapshots"
                ReferencedContainer = "container:Habitica.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D9EB4E8A18CB4A9400BB2094"
-            BuildableName = "Habitica.app"
-            BlueprintName = "Habitica"
-            ReferencedContainer = "container:Habitica.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -106,8 +104,6 @@
             ReferencedContainer = "container:Habitica.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

@@ -8,8 +8,7 @@
 
 import UIKit
 import PopupDialog
-import Fabric
-import Crashlytics
+import FirebaseCrashlytics
 import Keys
 import Amplitude_iOS
 import Habitica_API_Client
@@ -79,9 +78,7 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     func setupLogging() {
         let userID = AuthenticationManager.shared.currentUserId
         FirebaseApp.configure()
-        Fabric.with([Crashlytics.self])
-        Crashlytics.sharedInstance().setUserIdentifier(userID)
-        Crashlytics.sharedInstance().setUserName(userID)
+        Crashlytics.crashlytics().setUserID(userID ?? "")
     }
     
     @objc

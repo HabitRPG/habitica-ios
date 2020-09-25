@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Crashlytics
 
 class HabitTableViewController: TaskTableViewController {
     var lastLoggedPredicate: String?

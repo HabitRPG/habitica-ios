@@ -44,8 +44,7 @@ target 'Habitica' do
   pod 'FacebookSDK'
   pod 'FacebookSDK/LoginKit'
   pod 'Firebase/Core'
-  pod 'Fabric'
-  pod 'Crashlytics'
+  pod 'FirebaseCrashlytics'
   pod 'Firebase/Performance'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Messaging'
@@ -103,8 +102,7 @@ end
 target "Habitica API Client" do
   project 'Habitica API Client/Habitica API Client.xcodeproj'
   reactive_pods
-  pod 'Fabric'
-  pod 'Crashlytics'
+  pod 'FirebaseCrashlytics'
   pod 'OHHTTPStubs/Swift'
   pod 'Prelude'
 
@@ -119,8 +117,7 @@ target "Habitica Database" do
   project 'Habitica Database/Habitica Database.xcodeproj'
   pod "RealmSwift", '4.4.1'
 
-  pod 'Fabric'
-  pod 'Crashlytics'
+  pod 'FirebaseCrashlytics'
   reactive_pods
 
   target 'Habitica DatabaseTests' do

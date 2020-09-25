@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 import Habitica_Database
 import PopupDialog
-import Crashlytics
+import FirebaseCrashlytics
 
 @objc
 class UserManager: NSObject {
@@ -88,7 +88,7 @@ class UserManager: NSObject {
                 }
             })
             .on(failed: { error in
-                Crashlytics.sharedInstance().recordError(error)
+                Crashlytics.crashlytics().record(error: error)
             })
             .start())
         disposable.add(taskRepository.getReminders()

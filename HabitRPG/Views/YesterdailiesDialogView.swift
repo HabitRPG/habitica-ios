@@ -10,7 +10,6 @@ import UIKit
 import PopupDialog
 import Habitica_Models
 import ReactiveSwift
-import Crashlytics
 
 class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableViewDataSource, Themeable {
 

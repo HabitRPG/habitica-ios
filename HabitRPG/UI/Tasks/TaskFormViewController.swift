@@ -89,11 +89,13 @@ class TaskFormViewController: FormViewController, Themeable {
                 taskType = newTaskType
             }
             if let challengeID = task.challengeID, task.challengeBroken == nil, challenge == nil {
-                socialRepository.getChallenge(challengeID: challengeID, retrieveIfNotFound: true).on(value: {[weak self] challenge in
-                    self?.challenge = challenge
-                    self?.form.rowBy(tag: TaskFormTags.challengeName)?.title = challenge?.name
-                    self?.form.rowBy(tag: TaskFormTags.challengeName)?.updateCell()
-                    }).start()
+                if challenge == nil {
+                    socialRepository.getChallenge(challengeID: challengeID, retrieveIfNotFound: true).on(value: {[weak self] challenge in
+                        self?.challenge = challenge
+                        self?.form.rowBy(tag: TaskFormTags.challengeName)?.title = challenge?.name
+                        self?.form.rowBy(tag: TaskFormTags.challengeName)?.updateCell()
+                        }).start()
+                }
             }
             let theme = ThemeService.shared.theme
             if isCreating {

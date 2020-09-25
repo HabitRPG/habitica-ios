@@ -8,14 +8,11 @@ PODS:
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
-  - Crashlytics (3.14.0):
-    - Fabric (~> 1.10.2)
   - DateTools (2.0.0)
   - DeepLinkKit (1.5.1)
   - Down (0.9.3)
   - DynamicBlurView (3.0.1)
   - Eureka (5.3.0)
-  - Fabric (1.10.2)
   - FacebookSDK (7.1.1):
     - FacebookSDK/CoreKit (= 7.1.1)
   - FacebookSDK/CoreKit (7.1.1):
@@ -67,6 +64,12 @@ PODS:
     - GoogleUtilities/Environment (~> 6.7)
     - GoogleUtilities/Logger (~> 6.7)
     - nanopb (~> 1.30906.0)
+  - FirebaseCrashlytics (4.6.1):
+    - FirebaseCore (~> 6.10)
+    - FirebaseInstallations (~> 1.6)
+    - GoogleDataTransport (~> 7.2)
+    - nanopb (~> 1.30906.0)
+    - PromisesObjC (~> 1.2)
   - FirebaseInstallations (1.7.0):
     - FirebaseCore (~> 6.10)
     - GoogleUtilities/Environment (~> 6.7)
@@ -223,18 +226,17 @@ DEPENDENCIES:
   - Amplitude-iOS (~> 4.8.0)
   - AppAuth
   - Charts
-  - Crashlytics
   - DateTools
   - DeepLinkKit
   - Down
   - Eureka
-  - Fabric
   - FacebookSDK
   - FacebookSDK/LoginKit
   - Firebase/Core
   - Firebase/Messaging
   - Firebase/Performance
   - Firebase/RemoteConfig
+  - FirebaseCrashlytics
   - FLEX (~> 3.0)
   - iOSSnapshotTestCase
   - KeychainAccess
@@ -266,13 +268,11 @@ SPEC REPOS:
     - Amplitude-iOS
     - AppAuth
     - Charts
-    - Crashlytics
     - DateTools
     - DeepLinkKit
     - Down
     - DynamicBlurView
     - Eureka
-    - Fabric
     - FacebookSDK
     - FBSDKCoreKit
     - FBSDKLoginKit
@@ -281,6 +281,7 @@ SPEC REPOS:
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseCrashlytics
     - FirebaseInstallations
     - FirebaseInstanceID
     - FirebaseMessaging
@@ -328,13 +329,11 @@ SPEC CHECKSUMS:
   Amplitude-iOS: 46c8e6e65c49bb1ad1909a9add1a68e1f8562b3f
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
-  Crashlytics: 9220f5bc89e7a618df411b4f639389dbfb0e03d2
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   DeepLinkKit: 9f300348cbb20ef8389a5018a57d8c9952b1831c
   Down: 4553b984236807e384fa0ef7c7e360ef9f7c425d
   DynamicBlurView: b1df5415f9bd31897549e5d7077e5ec120a4d636
   Eureka: 49239596c9d2eed9ab523990c34de62b6feac9f0
-  Fabric: ea977e3cd9c20425516d3dafd3bf8c941c51223f
   FacebookSDK: 77d80e61681768f1b17db5bfc8646a9aa89d658d
   FBSDKCoreKit: b46507dc8b8cefed31d644e74d7cc30e2a715ef8
   FBSDKLoginKit: 1a61d79e2b25e2fc0d03dccab1e34b38bbdf2546
@@ -343,6 +342,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 5dd088bd2e67bb9d13dbf792d1164ceaf3052193
   FirebaseCore: d889d9e12535b7f36ac8bfbf1713a0836a3012cd
   FirebaseCoreDiagnostics: 770ac5958e1372ce67959ae4b4f31d8e127c3ac1
+  FirebaseCrashlytics: 5777d3462fb8c3ab9e80a2473bd7d667a2e8411c
   FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
   FirebaseInstanceID: ac5a82fcd21f804dbfc8f318eff9e1d7a9916e49
   FirebaseMessaging: fc1f98b4592f8f2ea538169b1c317c6e76f81300
@@ -383,6 +383,6 @@ SPEC CHECKSUMS:
   VTAcknowledgementsViewController: 5bb83eaa344bff2af32291162b15778c080262fe
   XLForm: 7ee02761be8a369d1ad1bbffe738b97083d94f3e
 
-PODFILE CHECKSUM: 16195958f6c765821f5888cf0ceea308540ff4b6
+PODFILE CHECKSUM: 2796793ae4eef5fc0cbb95f62c506c8f9d9e6c55
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.9.2

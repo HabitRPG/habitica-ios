@@ -9,7 +9,7 @@
 import Foundation
 import ReactiveSwift
 import RealmSwift
-import Crashlytics
+import FirebaseCrashlytics
 
 // swiftlint:disable force_try
 public enum ReactiveSwiftRealmError: Error {
@@ -360,7 +360,6 @@ public extension SignalProducerProtocol where Value: NotificationEmitter, Error 
      func reactive() -> SignalProducer<ReactiveResults, ReactiveSwiftRealmError> {
         return producer.flatMap(.latest) {results -> SignalProducer<ReactiveResults, ReactiveSwiftRealmError> in
             return SignalProducer { observer, lifetime in
-                Crashlytics.sharedInstance().setObjectValue(String(describing: results), forKey: "lastNotificationBlock")
                 let notificationToken = results.observe { (changes: RealmCollectionChange) in
                     switch changes {
                     case .initial:

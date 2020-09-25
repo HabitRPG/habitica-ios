@@ -13,7 +13,7 @@ FABRIC_KEY_FILE='./private/fabric.key'
 
 if [ -e "${FABRIC_KEY_FILE}" ]; then
   source "${FABRIC_KEY_FILE}"
-  ./Pods/Fabric/run ${FABRIC_API} ${FABRIC_API_SECRET}
+  ./Pods/FirebaseCrashlytics/run
 else
   SCRIPT_PATH="./bin/xcode-build-phase/fabric.sh:14:"
   REASON="File $FABRIC_KEY_FILE was not found."

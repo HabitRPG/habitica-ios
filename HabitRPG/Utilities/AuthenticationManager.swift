@@ -9,7 +9,7 @@
 import Foundation
 import ReactiveSwift
 import KeychainAccess
-import Crashlytics
+import FirebaseCrashlytics
 import Amplitude_iOS
 import Habitica_API_Client
 
@@ -40,8 +40,7 @@ class AuthenticationManager: NSObject {
             NetworkAuthenticationManager.shared.currentUserId = newUserId
             currentUserIDProperty.value = newUserId
             if newUserId != nil {
-                Crashlytics.sharedInstance().setUserIdentifier(newUserId)
-                Crashlytics.sharedInstance().setUserName(newUserId)
+                Crashlytics.crashlytics().setUserID(newUserId ?? "")
                 Amplitude.instance().setUserId(newUserId)
             }
         }

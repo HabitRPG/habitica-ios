@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Crashlytics
+import FirebaseCrashlytics
 
 extension JSONDecoder {
     
@@ -72,7 +72,9 @@ extension JSONDecoder {
                 return date
             }
             
-            Crashlytics.sharedInstance().recordCustomExceptionName("DateParserException", reason: "Date \(dateStr) could not be parsed", frameArray: [])
+            let exm = ExceptionModel(name: "DateParserException", reason: "Date \(dateStr) could not be parsed")
+            
+            Crashlytics.crashlytics().record(exceptionModel: exm)
             
             return Date(timeIntervalSince1970: 0)
         })

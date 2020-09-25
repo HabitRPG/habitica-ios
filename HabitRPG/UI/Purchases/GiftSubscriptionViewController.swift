@@ -12,7 +12,6 @@ import StoreKit
 import Keys
 import ReactiveSwift
 import Habitica_Models
-import Crashlytics
 
 class GiftSubscriptionViewController: BaseTableViewController {
     
