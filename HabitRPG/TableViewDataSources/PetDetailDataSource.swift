@@ -116,10 +116,15 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
     }
     
     private func canHatch(_ pet: PetStableItem) -> Bool {
+        let ownedItems = ownedItemsFor(pet: pet)
+        return ((ownedItems.eggs?.numberOwned ?? 0) > 0 && (ownedItems.potions?.numberOwned ?? 0) > 0)
+    }
+    
+    func ownedItemsFor(pet: PetStableItem) -> (eggs: OwnedItemProtocol?, potions: OwnedItemProtocol?) {
         let portions = pet.pet?.key?.split(separator: "-")
         let egg = portions?.first ?? ""
         let potion = portions?.last ?? ""
-        return (ownedItems[egg + "-eggs"] != nil) && (ownedItems[potion + "-hatchingPotions"] != nil)
+        return (eggs: ownedItems[egg + "-eggs"], potions: ownedItems[potion + "-hatchingPotions"])
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

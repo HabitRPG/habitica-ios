@@ -36,8 +36,12 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let item = datasource?.item(at: indexPath), item.trained > 0 {
-            showActionSheet(forStableItem: item, withSource: collectionView.cellForItem(at: indexPath))
+        if let item = datasource?.item(at: indexPath) {
+            if item.trained > 0 {
+                showActionSheet(forStableItem: item, withSource: collectionView.cellForItem(at: indexPath))
+            } else {
+                showHatchingDialog(forStableItem: item)
+            }
         }
     }
     
@@ -66,6 +70,12 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
             actionSheet.setSourceInCenter(view)
         }
         present(actionSheet, animated: true, completion: nil)
+    }
+    
+    private func showHatchingDialog(forStableItem item: PetStableItem) {
+        let ownedItems = datasource?.ownedItemsFor(pet: item)
+        let alert = PetHatchingAlertController(item: item, ownedEggs: ownedItems?.eggs, ownedPotions: ownedItems?.potions)
+        alert.show()
     }
     
     @IBAction func unwindToList(_ segue: UIStoryboardSegue) {
