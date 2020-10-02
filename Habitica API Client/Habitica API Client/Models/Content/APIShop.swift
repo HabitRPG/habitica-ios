@@ -39,9 +39,13 @@ public class APIShop: ShopProtocol, Decodable {
     }
     
     private func addGemPurchaseItem() {
-        let category = APIShopCategory()
-        category.identifier = "special"
-        category.text = "Special"
+        var category: ShopCategoryProtocol = APIShopCategory()
+        if let index = categories.firstIndex(where: { $0.identifier == "special" }) {
+            category = categories.remove(at: index)
+        } else {
+            category.identifier = "special"
+            category.text = "Special"
+        }
         let gemItem = APIInAppReward()
         gemItem.key = "gem"
         gemItem.text = "Gem"
@@ -53,7 +57,19 @@ public class APIShop: ShopProtocol, Decodable {
         gemItem.isSubscriberItem = true
         gemItem.pinType = "gem"
         gemItem.path = "special.gems"
-        category.items = [gemItem]
+        category.items.append(gemItem)
+        
+        if !category.items.contains(where: { $0.key == "fortify" }) {
+            let fortify = APIInAppReward()
+            fortify.key = "fortify"
+            fortify.text = "Fortify Potion"
+            fortify.notes = "Return all tasks to neutral value (yellow color), and restore all lost Health"
+            fortify.imageName = "inventory_special_fortify"
+            fortify.currency = "gems"
+            fortify.value = 4
+            fortify.path = "special.fortify"
+            category.items.append(fortify)
+        }
         categories.append(category)
     }
 }

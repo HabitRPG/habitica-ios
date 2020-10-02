@@ -314,7 +314,9 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func reroll() -> Signal<UserProtocol?, Never> {
-        return RerollCall().objectSignal.on(value: handleUserUpdate())
+        return RerollCall().objectSignal.flatMap(.latest, {[weak self] (_) in
+            return self?.retrieveUser() ?? Signal.empty
+        })
     }
     
     func sendPasswordResetEmail(email: String) -> Signal<EmptyResponseProtocol?, Never> {
