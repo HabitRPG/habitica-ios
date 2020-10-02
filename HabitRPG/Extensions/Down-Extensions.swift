@@ -97,7 +97,7 @@ extension Down {
         let range = text.range(of: ":melior:")
         if range.length > 0 {
             let attachment = NSTextAttachment()
-            attachment.image = UIImage(named: "melior.png")
+            attachment.image = Asset.melior.image
             attachment.bounds = CGRect(x: 0, y: 0, width: size, height: size)
             let addedString = NSAttributedString(attachment: attachment)
             string.replaceCharacters(in: range, with: addedString)

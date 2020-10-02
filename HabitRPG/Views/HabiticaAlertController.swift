@@ -213,7 +213,8 @@ class HabiticaAlertController: UIViewController, Themeable {
     }
     
     @objc
-    func addAction(title: String, style: UIAlertAction.Style = .default, isMainAction: Bool = false, closeOnTap: Bool = true, identifier: String? = nil, handler: ((UIButton) -> Swift.Void)? = nil) {
+    @discardableResult
+    func addAction(title: String, style: UIAlertAction.Style = .default, isMainAction: Bool = false, closeOnTap: Bool = true, identifier: String? = nil, handler: ((UIButton) -> Swift.Void)? = nil) -> UIButton {
         let button = UIButton()
         if let identifier = identifier {
             button.accessibilityIdentifier = identifier
@@ -259,6 +260,7 @@ class HabiticaAlertController: UIViewController, Themeable {
                 buttonStackView.axis = .vertical
             }
         }
+        return button
     }
     
     @objc

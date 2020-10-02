@@ -900,6 +900,8 @@ public enum L10n {
   public static var updateAppTitle: String { return L10n.tr("Mainstrings", "update_app_title") }
   /// Use
   public static var use: String { return L10n.tr("Mainstrings", "use") }
+  /// This will take effect immediately after buying!
+  public static var useImmediatelyDisclaimer: String { return L10n.tr("Mainstrings", "use_immediately_disclaimer") }
   /// You blocked %s.
   public static func userWasBlocked(_ p1: UnsafePointer<CChar>) -> String {
     return L10n.tr("Mainstrings", "user_was_blocked", p1)

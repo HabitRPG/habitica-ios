@@ -131,13 +131,23 @@ class PetHatchingAlertController: HabiticaAlertController {
             
             inventoryRepository.getItems(keys: [ItemType.eggs: [item.pet?.egg ?? ""], ItemType.hatchingPotions: [item.pet?.potion ?? ""]]).take(first: 1).on(value: { items in
                 let egg = items.eggs.value.first
-                let potion = items.hatchingPotions
+                let potion = items.hatchingPotions.value.first
                 var hatchValue = self.getItemPrice(pet: item.pet, item: egg, hasUnlocked: ownedEggs != nil)
                 hatchValue += self.getItemPrice(pet: item.pet, item: potion, hasUnlocked: ownedPotions != nil)
                 
                 if hatchValue > 0 {
-                    self.addAction(title: L10n.hatch, isMainAction: false) { _ in
-                        var signal = SignalProducer<UserProtocol?, Never> { (observable, lifetime) in
+                    let attributedText = NSMutableAttributedString(string: L10n.hatch + "   \(hatchValue) :gems:")
+                    let text = attributedText.mutableString
+                    let range = text.range(of: ":gems:")
+                    if range.length > 0 {
+                        let attachment = NSTextAttachment()
+                        attachment.image = Asset.gem.image
+                        attachment.bounds = CGRect(x: 0, y: 0, width: 16, height: 16)
+                        let addedString = NSAttributedString(attachment: attachment)
+                        attributedText.replaceCharacters(in: range, with: addedString)
+                    }
+                    let button = self.addAction(title: L10n.hatch, isMainAction: false) { _ in
+                        var signal = SignalProducer<UserProtocol?, Never> { (observable, _) in
                             observable.send(Signal.Event.value(nil))
                             observable.sendCompleted()
                         }
@@ -156,6 +166,7 @@ class PetHatchingAlertController: HabiticaAlertController {
                             return self.inventoryRepository.hatchPet(egg: item.pet?.egg, potion: item.pet?.potion)
                         }).start()
                     }
+                    button.setAttributedTitle(attributedText, for: .normal)
                 }
             }).start()
         }
