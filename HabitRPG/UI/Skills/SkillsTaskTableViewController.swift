@@ -33,7 +33,7 @@ class SkillsTaskTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let task = dataSource?.item(at: indexPath) {
-            let tabBarController = parent as? HRPGSpellTabBarController
+            let tabBarController = parent as? SpellTabBarController
             tabBarController?.taskID = task.id
             tabBarController?.castSpell()
         }

@@ -143,7 +143,6 @@ PODS:
   - Keys (1.0.1)
   - Kingfisher (4.10.1)
   - KLCPopup (1.0)
-  - Magnetic (3.2.1)
   - Masonry (1.1.0)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
@@ -236,7 +235,6 @@ DEPENDENCIES:
   - Keys (from `Pods/CocoaPodsKeys`)
   - Kingfisher
   - KLCPopup
-  - Magnetic
   - Masonry
   - MRProgress
   - Nimble (~> 7.3)
@@ -289,7 +287,6 @@ SPEC REPOS:
     - KeychainAccess
     - Kingfisher
     - KLCPopup
-    - Magnetic
     - Masonry
     - MRProgress
     - nanopb
@@ -350,7 +347,6 @@ SPEC CHECKSUMS:
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   KLCPopup: 76c5a19227977f1e53d85236f9ef42257c168d98
-  Magnetic: 02b9d6686160421cc4285140387419ec9ccab033
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
@@ -374,6 +370,6 @@ SPEC CHECKSUMS:
   VTAcknowledgementsViewController: 5bb83eaa344bff2af32291162b15778c080262fe
   XLForm: 7ee02761be8a369d1ad1bbffe738b97083d94f3e
 
-PODFILE CHECKSUM: 60414f951b8d931e6c031dad89d674b38d862f64
+PODFILE CHECKSUM: 787f1c89ebc67da8606d726b8dbc64f8b6fbb863
 
 COCOAPODS: 1.9.2

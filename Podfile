@@ -73,8 +73,6 @@ target 'Habitica' do
   pod 'OHHTTPStubs/Swift'
   pod 'Prelude'
 
-  pod 'Magnetic'
-
   pod 'Charts'
   
   target 'HabiticaTests' do

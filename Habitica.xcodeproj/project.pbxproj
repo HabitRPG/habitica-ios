@@ -35,7 +35,7 @@
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
 		2908784A220210CF0010820A /* Strings-objcBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29087849220210CF0010820A /* Strings-objcBridge.swift */; };
 		2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */; };
-		2908E3512217255600D246CD /* (null) in Resources */ = {isa = PBXBuildFile; };
+		2908E3512217255600D246CD /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		290922F02242628600645D0E /* LanguageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290922EF2242628600645D0E /* LanguageHandler.swift */; };
 		290A405421FA175800A409BA /* Purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405221FA175700A409BA /* Purple@2x.png */; };
 		290A405521FA175800A409BA /* Purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405321FA175800A409BA /* Purple@3x.png */; };
@@ -464,6 +464,7 @@
 		C8380303251E449600AE90ED /* ObjcRemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8380302251E449600AE90ED /* ObjcRemoteLogger.swift */; };
 		C8415994225F8B7800989FB8 /* Habitica_Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */; };
 		C841599C225F8C2A00989FB8 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C841599B225F8C2900989FB8 /* SnapshotHelper.swift */; };
+		C85A68AF2527812400EED0D6 /* SpellTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85A68AE2527812400EED0D6 /* SpellTabBarController.swift */; };
 		C897F63C218CCF51002907C2 /* RouterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897F63B218CCF51002907C2 /* RouterHandler.swift */; };
 		C897F63F218CE054002907C2 /* Storyboard Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897F63D218CE052002907C2 /* Storyboard Scenes.swift */; };
 		C897F640218CE054002907C2 /* Storyboard Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897F63E218CE052002907C2 /* Storyboard Segues.swift */; };
@@ -486,7 +487,6 @@
 		D94461911AB355940015215E /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = D94461901AB355940015215E /* user.json */; };
 		D946E5C21B30A89500806BE6 /* NSDate+NSDateMock.m in Sources */ = {isa = PBXBuildFile; fileRef = D946E5C11B30A89500806BE6 /* NSDate+NSDateMock.m */; };
 		D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */; };
-		D94AADBA192A5CE700546C8E /* HRPGSpellTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */; };
 		D94B96A01B8B2CEE00C977C2 /* content-24.8.15.json in Resources */ = {isa = PBXBuildFile; fileRef = D94B969F1B8B2CEE00C977C2 /* content-24.8.15.json */; };
 		D9525F9B1E5F559600C529B8 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */; };
 		D9525F9D1E64739900C529B8 /* PaddedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9525F9C1E64739900C529B8 /* PaddedView.swift */; };
@@ -1164,6 +1164,7 @@
 		C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitica_Snapshots.swift; sourceTree = "<group>"; };
 		C8415995225F8B7800989FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C841599B225F8C2900989FB8 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		C85A68AE2527812400EED0D6 /* SpellTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellTabBarController.swift; sourceTree = "<group>"; };
 		C897F63B218CCF51002907C2 /* RouterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterHandler.swift; sourceTree = "<group>"; };
 		C897F63D218CE052002907C2 /* Storyboard Scenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Scenes.swift"; sourceTree = "<group>"; };
 		C897F63E218CE052002907C2 /* Storyboard Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Segues.swift"; sourceTree = "<group>"; };
@@ -1212,8 +1213,6 @@
 		D946E5C11B30A89500806BE6 /* NSDate+NSDateMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NSDateMock.m"; sourceTree = "<group>"; };
 		D9479605196DF4B6002CB34C /* HRPGImageOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGImageOverlayView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGImageOverlayView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		D94AADB8192A5CE700546C8E /* HRPGSpellTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpellTabBarController.h; sourceTree = "<group>"; };
-		D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSpellTabBarController.m; sourceTree = "<group>"; };
 		D94B969F1B8B2CEE00C977C2 /* content-24.8.15.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "content-24.8.15.json"; path = "HabiticaTests/Fixtures/content-24.8.15.json"; sourceTree = SOURCE_ROOT; };
 		D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		D9525F9C1E64739900C529B8 /* PaddedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedView.swift; sourceTree = "<group>"; };
@@ -2394,9 +2393,8 @@
 		D9ADD3531943BE33006202C1 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
-				D94AADB8192A5CE700546C8E /* HRPGSpellTabBarController.h */,
-				D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */,
 				2974BDB32090926B00EC1A25 /* MainTabBarController.swift */,
+				C85A68AE2527812400EED0D6 /* SpellTabBarController.swift */,
 			);
 			path = TabBarController;
 			sourceTree = "<group>";
@@ -3013,7 +3011,7 @@
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
-				2908E3512217255600D246CD /* (null) in Resources */,
+				2908E3512217255600D246CD /* BuildFile in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
@@ -3302,7 +3300,6 @@
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework",
-				"${BUILT_PRODUCTS_DIR}/Magnetic/Magnetic.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
@@ -3342,7 +3339,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRProgress.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Magnetic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinLayout.framework",
@@ -3644,7 +3640,6 @@
 				29617E0824E12A5300CF5EB4 /* NetworkImageView.swift in Sources */,
 				29028C392034ABAF00B7F704 /* TaskRepositoryImpl.swift in Sources */,
 				D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */,
-				D94AADBA192A5CE700546C8E /* HRPGSpellTabBarController.m in Sources */,
 				29C38C8524A2466400F219A1 /* AdventureGuidePromoView.swift in Sources */,
 				294FD5692064135500EABCC9 /* HabitControlsRow.swift in Sources */,
 				C8380303251E449600AE90ED /* ObjcRemoteLogger.swift in Sources */,
@@ -3685,6 +3680,7 @@
 				29255E431F3DD2120094A3E3 /* TutorialStepView.swift in Sources */,
 				D9BB45DA1E79A02C0002AE2E /* LabeledCheckboxView.swift in Sources */,
 				29A1B9B91F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift in Sources */,
+				C85A68AF2527812400EED0D6 /* SpellTabBarController.swift in Sources */,
 				29FC884C2010CC8A002B3D3F /* SocialRepository.swift in Sources */,
 				498E4D031FA17C31006933FF /* ChallengeDescriptionTableViewCell.swift in Sources */,
 				D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */,

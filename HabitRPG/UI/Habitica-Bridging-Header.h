@@ -15,7 +15,6 @@
 #import "HRPGFlagInformationOverlayView.h"
 #import "HRPGLabeledProgressBar.h"
 #import "HRPGSpellViewController.h"
-#import "HRPGSpellTabBarController.h"
 #import "HRPGSearchDataManager.h"
 #import "HRPGCoachmarkFrameProvider.h"
 #import "NSString+Emoji.h"
