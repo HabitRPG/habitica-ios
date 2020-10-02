@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
-import FirebaseCrashlytics
+import Shared
 
 class PartyDetailViewController: GroupDetailViewController {
     
@@ -86,7 +86,7 @@ class PartyDetailViewController: GroupDetailViewController {
             .flatMap(.latest, {[weak self] groupID in
             return self?.socialRepository.getGroupMembers(groupID: groupID) ?? SignalProducer.empty
             }).on(failed: { error in
-                Crashlytics.crashlytics().record(error: error)
+                RemoteLogger.shared.record(error: error)
             }, value: {[weak self] (members, _) in
             self?.set(members: members)
         }).start())

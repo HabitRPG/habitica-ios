@@ -9,7 +9,6 @@
 #import "HRPGAppDelegate.h"
 #import <CoreSpotlight/CoreSpotlight.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import "Amplitude.h"
 #import "HRPGMaintenanceViewController.h"
 #import <Keys/HabiticaKeys.h>
 #import "AppAuth.h"
@@ -232,7 +231,7 @@
     [eventProperties setValue:@"navigate" forKey:@"eventAction"];
     [eventProperties setValue:@"navigation" forKey:@"eventCategory"];
     [eventProperties setValue:userInfo[@"identifier"] forKey:@"identifier"];
-    [[Amplitude instance] logEvent:@"open notification" withEventProperties:eventProperties outOfSession:YES];
+    [ObjcHabiticaAnalytics log:@"open notification" withEventProperties:eventProperties];
     
     UINavigationController *displayedNavigationController = [self displayTabAtIndex:4];
     if (displayedNavigationController) {

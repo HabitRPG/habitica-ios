@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 import Habitica_Database
 import PopupDialog
-import FirebaseCrashlytics
+import Shared
 
 @objc
 class UserManager: NSObject {
@@ -66,7 +66,7 @@ class UserManager: NSObject {
                 eventProperties["eventCategory"] = "behaviour"
                 eventProperties["event"] = "event"
                 eventProperties["task count"] = uncompletedTaskCount
-                Amplitude.instance()?.logEvent("show cron", withEventProperties: eventProperties)
+                HabiticaAnalytics.shared.log("show cron", withEventProperties: eventProperties)
                 
                 if uncompletedTaskCount == 0 {
                     self?.userRepository.runCron(tasks: [])
@@ -88,7 +88,7 @@ class UserManager: NSObject {
                 }
             })
             .on(failed: { error in
-                Crashlytics.crashlytics().record(error: error)
+                RemoteLogger.shared.record(error: error)
             })
             .start())
         disposable.add(taskRepository.getReminders()

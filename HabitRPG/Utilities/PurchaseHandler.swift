@@ -10,7 +10,7 @@ import Foundation
 import SwiftyStoreKit
 import StoreKit
 import Keys
-import FirebaseCrashlytics
+import Shared
 
 class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     @objc static let shared = PurchaseHandler()
@@ -73,7 +73,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         if transactions.isEmpty == false {
             for product in transactions {
-                Crashlytics.crashlytics().log(format: "Purchase: %@", arguments: getVaList([product.payment.productIdentifier]))
+                RemoteLogger.shared.log(format: "Purchase: %@", arguments: getVaList([product.payment.productIdentifier]))
             }
         }
         SwiftyStoreKit.fetchReceipt(forceRefresh: false) { result in
@@ -83,7 +83,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                     self.handleUnfinished(transaction: transaction, receiptData: receiptData)
                 }
             case .error(let error):
-                Crashlytics.crashlytics().record(error: error)
+                RemoteLogger.shared.record(error: error)
             }
         }
     }
@@ -123,7 +123,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                 self.verifyPurchase(product)
                 completion(true)
             case .error(let error):
-                Crashlytics.crashlytics().record(error: error)
+                RemoteLogger.shared.record(error: error)
                 completion(false)
             }
         }
@@ -137,7 +137,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                 self.verifyPurchase(product)
                 completion(true)
             case .error(let error):
-                Crashlytics.crashlytics().record(error: error)
+                RemoteLogger.shared.record(error: error)
                 completion(false)
             }
         }
@@ -156,7 +156,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                     }
                 }
             case .error(let error):
-                Crashlytics.crashlytics().record(error: error)
+                RemoteLogger.shared.record(error: error)
                 print("Receipt verification failed: \(error)")
             }
         }
@@ -269,7 +269,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                     SwiftyStoreKit.finishTransaction(transaction)
                 }
             case .error(let error):
-                Crashlytics.crashlytics().record(error: error)
+                RemoteLogger.shared.record(error: error)
             }
         })
     }

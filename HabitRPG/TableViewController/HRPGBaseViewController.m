@@ -7,7 +7,6 @@
 //
 
 #import "HRPGBaseViewController.h"
-#import "Amplitude+HRPGHelpers.h"
 #import "UIViewController+TutorialSteps.h"
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
 #import "Habitica-Swift.h"
@@ -23,7 +22,7 @@
     [super viewDidLoad];
     [self populateText];
 
-    [[Amplitude instance] logNavigateEventForClass:NSStringFromClass([self class])];
+    [ObjcHabiticaAnalytics logNavigationEventWithPageName:NSStringFromClass([self class])];
 
     [self.topHeaderCoordinator viewDidLoad];
     

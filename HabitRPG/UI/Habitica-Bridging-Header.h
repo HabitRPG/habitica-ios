@@ -7,7 +7,6 @@
 #import "HRPGAppDelegate.h"
 #import "HRPGTypingLabel.h"
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
-#import "Amplitude+HRPGHelpers.h"
 #import "HRPGBaseCollectionViewController.h"
 #import "HRPGMaintenanceViewController.h"
 #import "HRPGShopViewController.h"

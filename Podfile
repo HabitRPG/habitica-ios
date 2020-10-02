@@ -36,18 +36,18 @@ target 'Habitica' do
   pod 'FLEX', '~> 3.0', :configurations => ['Debug']
   pod 'MRProgress'
   pod 'KLCPopup'
-  pod 'Amplitude-iOS', '~> 4.8.0'
   pod 'Masonry'
   pod "SlackTextViewController"
   pod 'AppAuth'
 
-  pod 'FacebookSDK'
-  pod 'FacebookSDK/LoginKit'
+  pod 'FBSDKCoreKit'  
+  pod 'FBSDKLoginKit'
   pod 'Firebase/Core'
-  pod 'FirebaseCrashlytics'
   pod 'Firebase/Performance'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Messaging'
+
+  pod 'Amplitude-iOS'
 
   reactive_pods
 
@@ -102,7 +102,6 @@ end
 target "Habitica API Client" do
   project 'Habitica API Client/Habitica API Client.xcodeproj'
   reactive_pods
-  pod 'FirebaseCrashlytics'
   pod 'OHHTTPStubs/Swift'
   pod 'Prelude'
 
@@ -117,11 +116,17 @@ target "Habitica Database" do
   project 'Habitica Database/Habitica Database.xcodeproj'
   pod "RealmSwift", '4.4.1'
 
-  pod 'FirebaseCrashlytics'
   reactive_pods
 
   target 'Habitica DatabaseTests' do
     inherit! :search_paths
     test_pods
   end
+end
+
+target "Shared" do
+  project 'Shared/Shared.xcodeproj'
+  
+  pod 'FirebaseCrashlytics'
+  pod 'Amplitude-iOS'
 end

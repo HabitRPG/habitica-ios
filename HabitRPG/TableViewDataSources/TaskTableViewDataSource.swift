@@ -9,7 +9,7 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
-import FirebaseCrashlytics
+import Shared
 import Habitica_Database
 
 @objc
@@ -106,7 +106,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
             disposable.dispose()
         }
         fetchTasksDisposable = repository.getTasks(predicate: predicate, sortKey: sortKey).on(failed: {[weak self] error in
-            Crashlytics.crashlytics().record(error: error)
+            RemoteLogger.shared.record(error: error)
                 self?.fetchTasks()
             }, value: {[weak self] (tasks, changes) in
                 self?.sections[0].items = tasks

@@ -1,5 +1,5 @@
 PODS:
-  - Amplitude-iOS (4.8.2)
+  - Amplitude-iOS (4.10.0)
   - AppAuth (1.4.0):
     - AppAuth/Core (= 1.4.0)
     - AppAuth/ExternalUserAgent (= 1.4.0)
@@ -13,13 +13,6 @@ PODS:
   - Down (0.9.3)
   - DynamicBlurView (3.0.1)
   - Eureka (5.3.1)
-  - FacebookSDK (8.0.0):
-    - FacebookSDK/CoreKit (= 8.0.0)
-  - FacebookSDK/CoreKit (8.0.0):
-    - FBSDKCoreKit (~> 8.0.0)
-  - FacebookSDK/LoginKit (8.0.0):
-    - FacebookSDK/CoreKit
-    - FBSDKLoginKit (~> 8.0.0)
   - FBSDKCoreKit (8.0.0):
     - FBSDKCoreKit/Basics (= 8.0.0)
     - FBSDKCoreKit/Core (= 8.0.0)
@@ -223,15 +216,15 @@ PODS:
   - XLForm (4.1.0)
 
 DEPENDENCIES:
-  - Amplitude-iOS (~> 4.8.0)
+  - Amplitude-iOS
   - AppAuth
   - Charts
   - DateTools
   - DeepLinkKit
   - Down
   - Eureka
-  - FacebookSDK
-  - FacebookSDK/LoginKit
+  - FBSDKCoreKit
+  - FBSDKLoginKit
   - Firebase/Core
   - Firebase/Messaging
   - Firebase/Performance
@@ -273,7 +266,6 @@ SPEC REPOS:
     - Down
     - DynamicBlurView
     - Eureka
-    - FacebookSDK
     - FBSDKCoreKit
     - FBSDKLoginKit
     - Firebase
@@ -326,7 +318,7 @@ EXTERNAL SOURCES:
     :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
-  Amplitude-iOS: 46c8e6e65c49bb1ad1909a9add1a68e1f8562b3f
+  Amplitude-iOS: 7d8cdc3408ba35c2e68368fc7c692cd104606b94
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
@@ -334,7 +326,6 @@ SPEC CHECKSUMS:
   Down: 4553b984236807e384fa0ef7c7e360ef9f7c425d
   DynamicBlurView: b1df5415f9bd31897549e5d7077e5ec120a4d636
   Eureka: 859877ab1e85661b6b7e810015d430e937d9cc7d
-  FacebookSDK: 57f08b331cc29d7c65e2b7200dbb6f58e223d627
   FBSDKCoreKit: 9d27fe97a2fa2abe5eeefea8240e837623ab88e0
   FBSDKLoginKit: 2cbaf5405379731b22f2ebc224f7c30f62378171
   Firebase: 8db6f2d1b2c5e2984efba4949a145875a8f65fe5
@@ -383,6 +374,6 @@ SPEC CHECKSUMS:
   VTAcknowledgementsViewController: 5bb83eaa344bff2af32291162b15778c080262fe
   XLForm: 7ee02761be8a369d1ad1bbffe738b97083d94f3e
 
-PODFILE CHECKSUM: 2796793ae4eef5fc0cbb95f62c506c8f9d9e6c55
+PODFILE CHECKSUM: 60414f951b8d931e6c031dad89d674b38d862f64
 
 COCOAPODS: 1.9.2

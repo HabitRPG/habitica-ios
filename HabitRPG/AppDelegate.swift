@@ -8,7 +8,7 @@
 
 import UIKit
 import PopupDialog
-import FirebaseCrashlytics
+import Shared
 import Keys
 import Amplitude_iOS
 import Habitica_API_Client
@@ -20,6 +20,7 @@ import SwiftyStoreKit
 import StoreKit
 import UserNotifications
 import FirebaseMessaging
+import Shared
 
 //This will eventually replace the old ObjC AppDelegate once that code is ported to swift.
 //Reason for adding this class now is mostly, to configure PopupDialogs dim color.
@@ -78,7 +79,7 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     func setupLogging() {
         let userID = AuthenticationManager.shared.currentUserId
         FirebaseApp.configure()
-        Crashlytics.crashlytics().setUserID(userID ?? "")
+        RemoteLogger.shared.setUserID(userID)
     }
     
     @objc

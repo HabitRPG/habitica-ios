@@ -7,7 +7,6 @@
 //
 
 #import "UIViewController+TutorialSteps.h"
-#import "Amplitude.h"
 #import "Habitica-Swift.h"
 
 @implementation UIViewController (TutorialSteps)
@@ -60,7 +59,6 @@
                        forKey:@"eventLabel"];
     [eventProperties setValue:identifier forKey:@"eventValue"];
     [eventProperties setValue:@NO forKey:@"complete"];
-    [[Amplitude instance] logEvent:@"tutorial" withEventProperties:eventProperties];
 
     tutorialStepView.dismissAction = ^() {
         self.activeTutorialView = nil;
@@ -73,7 +71,6 @@
                            forKey:@"eventLabel"];
         [eventProperties setValue:identifier forKey:@"eventValue"];
         [eventProperties setValue:@YES forKey:@"complete"];
-        [[Amplitude instance] logEvent:@"tutorial" withEventProperties:eventProperties];
         [UserManager.shared markTutorialAsSeenWithType:type key:identifier];
     };
 }

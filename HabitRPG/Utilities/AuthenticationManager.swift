@@ -9,8 +9,7 @@
 import Foundation
 import ReactiveSwift
 import KeychainAccess
-import FirebaseCrashlytics
-import Amplitude_iOS
+import Shared
 import Habitica_API_Client
 
 class AuthenticationManager: NSObject {
@@ -40,8 +39,8 @@ class AuthenticationManager: NSObject {
             NetworkAuthenticationManager.shared.currentUserId = newUserId
             currentUserIDProperty.value = newUserId
             if newUserId != nil {
-                Crashlytics.crashlytics().setUserID(newUserId ?? "")
-                Amplitude.instance().setUserId(newUserId)
+                RemoteLogger.shared.setUserID(newUserId ?? "")
+                HabiticaAnalytics.shared.setUserID(newUserId)
             }
         }
     }

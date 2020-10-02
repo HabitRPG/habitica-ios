@@ -9,7 +9,6 @@
 import Foundation
 import ReactiveSwift
 import RealmSwift
-import FirebaseCrashlytics
 
 // swiftlint:disable force_try
 public enum ReactiveSwiftRealmError: Error {

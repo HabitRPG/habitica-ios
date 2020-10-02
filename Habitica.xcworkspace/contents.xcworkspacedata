@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/phillip/Code/habitica-ios/HabitRPG/UI/Social/InboxChatViewController.swift">
+      location = "group:Shared/Shared.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Habitica Models/Habitica Models.xcodeproj">
