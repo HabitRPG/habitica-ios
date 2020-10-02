@@ -12,24 +12,24 @@ PODS:
   - DeepLinkKit (1.5.1)
   - Down (0.9.3)
   - DynamicBlurView (3.0.1)
-  - Eureka (5.3.0)
-  - FacebookSDK (7.1.1):
-    - FacebookSDK/CoreKit (= 7.1.1)
-  - FacebookSDK/CoreKit (7.1.1):
-    - FBSDKCoreKit (~> 7.1.1)
-  - FacebookSDK/LoginKit (7.1.1):
+  - Eureka (5.3.1)
+  - FacebookSDK (8.0.0):
+    - FacebookSDK/CoreKit (= 8.0.0)
+  - FacebookSDK/CoreKit (8.0.0):
+    - FBSDKCoreKit (~> 8.0.0)
+  - FacebookSDK/LoginKit (8.0.0):
     - FacebookSDK/CoreKit
-    - FBSDKLoginKit (~> 7.1.1)
-  - FBSDKCoreKit (7.1.1):
-    - FBSDKCoreKit/Basics (= 7.1.1)
-    - FBSDKCoreKit/Core (= 7.1.1)
-  - FBSDKCoreKit/Basics (7.1.1)
-  - FBSDKCoreKit/Core (7.1.1):
+    - FBSDKLoginKit (~> 8.0.0)
+  - FBSDKCoreKit (8.0.0):
+    - FBSDKCoreKit/Basics (= 8.0.0)
+    - FBSDKCoreKit/Core (= 8.0.0)
+  - FBSDKCoreKit/Basics (8.0.0)
+  - FBSDKCoreKit/Core (8.0.0):
     - FBSDKCoreKit/Basics
-  - FBSDKLoginKit (7.1.1):
-    - FBSDKLoginKit/Login (= 7.1.1)
-  - FBSDKLoginKit/Login (7.1.1):
-    - FBSDKCoreKit (~> 7.1.1)
+  - FBSDKLoginKit (8.0.0):
+    - FBSDKLoginKit/Login (= 8.0.0)
+  - FBSDKLoginKit/Login (8.0.0):
+    - FBSDKCoreKit (~> 8.0.0)
   - Firebase/Core (6.33.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.8.3)
@@ -206,9 +206,9 @@ PODS:
   - PromisesObjC (1.2.10)
   - Protobuf (3.13.0)
   - Quick (1.2.0)
-  - ReactiveCocoa (11.0.0):
+  - ReactiveCocoa (11.1.0):
     - ReactiveSwift (~> 6.2)
-  - ReactiveSwift (6.3.0)
+  - ReactiveSwift (6.4.0)
   - Realm (4.4.1):
     - Realm/Headers (= 4.4.1)
   - Realm/Headers (4.4.1)
@@ -333,10 +333,10 @@ SPEC CHECKSUMS:
   DeepLinkKit: 9f300348cbb20ef8389a5018a57d8c9952b1831c
   Down: 4553b984236807e384fa0ef7c7e360ef9f7c425d
   DynamicBlurView: b1df5415f9bd31897549e5d7077e5ec120a4d636
-  Eureka: 49239596c9d2eed9ab523990c34de62b6feac9f0
-  FacebookSDK: 77d80e61681768f1b17db5bfc8646a9aa89d658d
-  FBSDKCoreKit: b46507dc8b8cefed31d644e74d7cc30e2a715ef8
-  FBSDKLoginKit: 1a61d79e2b25e2fc0d03dccab1e34b38bbdf2546
+  Eureka: 859877ab1e85661b6b7e810015d430e937d9cc7d
+  FacebookSDK: 57f08b331cc29d7c65e2b7200dbb6f58e223d627
+  FBSDKCoreKit: 9d27fe97a2fa2abe5eeefea8240e837623ab88e0
+  FBSDKLoginKit: 2cbaf5405379731b22f2ebc224f7c30f62378171
   Firebase: 8db6f2d1b2c5e2984efba4949a145875a8f65fe5
   FirebaseABTesting: 8a9d8df3acc2b43f4a22014ddf9f601bca6af699
   FirebaseAnalytics: 5dd088bd2e67bb9d13dbf792d1164ceaf3052193
@@ -371,8 +371,8 @@ SPEC CHECKSUMS:
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
-  ReactiveCocoa: 189fcea9c5af7e394dd8a4cfc1c6f77af9ff3598
-  ReactiveSwift: 7937f26ec18d555e2a99352bd0a8b2817d1f042d
+  ReactiveCocoa: 7bc87ad2d361b9de141278b1950edd7fe91b15b1
+  ReactiveSwift: 7555791a608c0679563a3f72546f971b2a06de98
   Realm: 4eb04d7487bd43c0581256f40b424eafb711deff
   RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
   SimulatorStatusMagic: 28d4a9d1a500ac7cea0b2b5a43c1c6ddb40ba56c

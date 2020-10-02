@@ -35,7 +35,7 @@
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
 		2908784A220210CF0010820A /* Strings-objcBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29087849220210CF0010820A /* Strings-objcBridge.swift */; };
 		2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */; };
-		2908E3512217255600D246CD /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		2908E3512217255600D246CD /* (null) in Resources */ = {isa = PBXBuildFile; };
 		290922F02242628600645D0E /* LanguageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290922EF2242628600645D0E /* LanguageHandler.swift */; };
 		290A405421FA175800A409BA /* Purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405221FA175700A409BA /* Purple@2x.png */; };
 		290A405521FA175800A409BA /* Purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405321FA175800A409BA /* Purple@3x.png */; };
@@ -525,7 +525,6 @@
 		D99E42681D6B1FD500811B6D /* FaintViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D99E42671D6B1FD500811B6D /* FaintViewController.xib */; };
 		D99EA7421B8667C90048BF6A /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D99EA7411B8667C90048BF6A /* libOCMock.a */; };
 		D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99F15BF191027D90081836E /* HRPGBaseViewController.m */; };
-		D9A28F721B08DF58002907E0 /* HRPGPurchaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A28F711B08DF58002907E0 /* HRPGPurchaseButton.m */; };
 		D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9A50E991A868DE400FC8B1A /* Launch Screen.xib */; };
 		D9A63A341E10328A0083ADC4 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A63A331E10328A0083ADC4 /* LoginTableViewController.swift */; };
 		D9A63A361E1032BD0083ADC4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A63A351E1032BD0083ADC4 /* LoginViewModel.swift */; };
@@ -1252,7 +1251,7 @@
 		D98F5DC21C6A34540035CBEC /* ChatMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMessageCell.xib; sourceTree = "<group>"; };
 		D98F5DCB1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGFlagInformationOverlayView.h; sourceTree = "<group>"; };
 		D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGFlagInformationOverlayView.m; sourceTree = "<group>"; };
-		D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HRPGFlagInformationOverlayView.xib; path = ../HRPGFlagInformationOverlayView.xib; sourceTree = "<group>"; };
+		D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGFlagInformationOverlayView.xib; sourceTree = "<group>"; };
 		D99B82171BD9545800E770B7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D99B82181BD9545800E770B7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D99BC43019D4C34A006DC132 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = 1Password.xcassets; sourceTree = "<group>"; };
@@ -1263,8 +1262,6 @@
 		D99EA7411B8667C90048BF6A /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = OCMock/libOCMock.a; sourceTree = "<group>"; };
 		D99F15BE191027D90081836E /* HRPGBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGBaseViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D99F15BF191027D90081836E /* HRPGBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGBaseViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		D9A28F701B08DF58002907E0 /* HRPGPurchaseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPurchaseButton.h; sourceTree = "<group>"; };
-		D9A28F711B08DF58002907E0 /* HRPGPurchaseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPurchaseButton.m; sourceTree = "<group>"; };
 		D9A50E991A868DE400FC8B1A /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "Launch Screen.xib"; path = "HabitRPG/Launch Screen.xib"; sourceTree = SOURCE_ROOT; };
 		D9A63A321E10328A0083ADC4 /* Habitica-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Habitica-Bridging-Header.h"; path = "UI/Habitica-Bridging-Header.h"; sourceTree = "<group>"; };
 		D9A63A331E10328A0083ADC4 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
@@ -1607,12 +1604,21 @@
 				29C38C8A24A48F9D00F219A1 /* AchievementAlertController.swift */,
 				29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */,
 				29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */,
+				D98F5DCB1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.h */,
+				D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */,
+				D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */,
+				D9479605196DF4B6002CB34C /* HRPGImageOverlayView.h */,
+				D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */,
+				D9E9E0C71CCE64A3006D94A2 /* HRPGImageOverlayView.xib */,
+				D905D08D1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.h */,
+				D905D08E1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m */,
+				D905D08B1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib */,
 				294973D1208118C100F02AC3 /* ImageOverlayView.swift */,
 				29E30DE520D935AF00F74ECB /* LevelUpOverlayView.swift */,
+				2967CE5C25236F0E00F366DF /* PetHatchingDialog.swift */,
 				2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
-				2967CE5C25236F0E00F366DF /* PetHatchingDialog.swift */,
 			);
 			name = Alerts;
 			sourceTree = "<group>";
@@ -2026,8 +2032,6 @@
 				493ECBB81F47D82A0099B1FC /* HRPGGearSetItem.xib */,
 				493ECBB21F47A1100099B1FC /* HRPGItemStatsView.swift */,
 				493ECBB41F47A58F0099B1FC /* HRPGItemStatsView.xib */,
-				D9A28F701B08DF58002907E0 /* HRPGPurchaseButton.h */,
-				D9A28F711B08DF58002907E0 /* HRPGPurchaseButton.m */,
 				D9C89CF41B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.h */,
 				D9C89CF51B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m */,
 				49DCB7B51F3F64B40079FDD0 /* HRPGShopModalBgView.swift */,
@@ -2469,15 +2473,6 @@
 				292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */,
 				29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */,
 				49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */,
-				D98F5DCB1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.h */,
-				D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */,
-				D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */,
-				D9479605196DF4B6002CB34C /* HRPGImageOverlayView.h */,
-				D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */,
-				D9E9E0C71CCE64A3006D94A2 /* HRPGImageOverlayView.xib */,
-				D905D08D1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.h */,
-				D905D08E1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m */,
-				D905D08B1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib */,
 				D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */,
 				D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */,
 				29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */,
@@ -2917,10 +2912,9 @@
 			};
 			buildConfigurationList = D9EB4E8618CB4A9400BB2094 /* Build configuration list for PBXProject "Habitica" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 				cs,
@@ -3015,7 +3009,7 @@
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
-				2908E3512217255600D246CD /* BuildFile in Resources */,
+				2908E3512217255600D246CD /* (null) in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
@@ -3683,7 +3677,6 @@
 				296D6F1D20A0908B00D9CAB5 /* PartyQuestView.swift in Sources */,
 				29A9B057228082BF0049291E /* BaseCollectionViewController.swift in Sources */,
 				298119AB1F50251300F9FB39 /* InventoryRepository.swift in Sources */,
-				D9A28F721B08DF58002907E0 /* HRPGPurchaseButton.m in Sources */,
 				29255E431F3DD2120094A3E3 /* TutorialStepView.swift in Sources */,
 				D9BB45DA1E79A02C0002AE2E /* LabeledCheckboxView.swift in Sources */,
 				29A1B9B91F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift in Sources */,
@@ -4506,7 +4499,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4554,7 +4547,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
