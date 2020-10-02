@@ -191,6 +191,7 @@
 		29646DD6205BE4C10050886C /* TaskFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29646DD5205BE4C10050886C /* TaskFormViewModel.swift */; };
 		29646DE1205C18FA0050886C /* TaskType-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29646DE0205C18FA0050886C /* TaskType-Extensions.swift */; };
 		29646DE3205C1F390050886C /* TaskFormVisualEffectsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29646DE2205C1F390050886C /* TaskFormVisualEffectsModalViewController.swift */; };
+		2967CE5D25236F0E00F366DF /* PetHatchingDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2967CE5C25236F0E00F366DF /* PetHatchingDialog.swift */; };
 		296AC81420AC85C200885682 /* RewardViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296AC81320AC85C200885682 /* RewardViewDataSource.swift */; };
 		296CB4EE218C99FD0044A33E /* HabiticaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CB4ED218C99FD0044A33E /* HabiticaButton.swift */; };
 		296D6F1D20A0908B00D9CAB5 /* PartyQuestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296D6F1C20A0908B00D9CAB5 /* PartyQuestView.swift */; };
@@ -839,6 +840,7 @@
 		29646DD5205BE4C10050886C /* TaskFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormViewModel.swift; sourceTree = "<group>"; };
 		29646DE0205C18FA0050886C /* TaskType-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskType-Extensions.swift"; sourceTree = "<group>"; };
 		29646DE2205C1F390050886C /* TaskFormVisualEffectsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormVisualEffectsModalViewController.swift; sourceTree = "<group>"; };
+		2967CE5C25236F0E00F366DF /* PetHatchingDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetHatchingDialog.swift; sourceTree = "<group>"; };
 		296AC81320AC85C200885682 /* RewardViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardViewDataSource.swift; sourceTree = "<group>"; };
 		296ACB37251B605100EC7110 /* Habitica IntentsUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Habitica IntentsUI.entitlements"; sourceTree = "<group>"; };
 		296CB4ED218C99FD0044A33E /* HabiticaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaButton.swift; sourceTree = "<group>"; };
@@ -1408,13 +1410,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		290279612057EBE9006DACB9 /* FAQ */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FAQ;
-			sourceTree = "<group>";
-		};
 		290279642057F005006DACB9 /* Strings */ = {
 			isa = PBXGroup;
 			children = (
@@ -1492,6 +1487,8 @@
 		290B62A0207F814D007287C4 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				2919FDDE2091D87A0096A53B /* FaintViewController.swift */,
+				D99E42671D6B1FD500811B6D /* FaintViewController.xib */,
 				290C3016206A963D0066AF5B /* MainMenuViewController.swift */,
 				29C1B6AA20594F500001D3EF /* VisualEffectsModalViewController.swift */,
 				299FB2A02084A93100422522 /* HabiticaSplitViewController.swift */,
@@ -1604,6 +1601,55 @@
 			path = Notifications;
 			sourceTree = "<group>";
 		};
+		2967CF7E252479C400F366DF /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				29C38C8A24A48F9D00F219A1 /* AchievementAlertController.swift */,
+				29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */,
+				29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */,
+				294973D1208118C100F02AC3 /* ImageOverlayView.swift */,
+				29E30DE520D935AF00F74ECB /* LevelUpOverlayView.swift */,
+				2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */,
+				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
+				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
+				2967CE5C25236F0E00F366DF /* PetHatchingDialog.swift */,
+			);
+			name = Alerts;
+			sourceTree = "<group>";
+		};
+		2967CF7F252479D600F366DF /* Equipment */ = {
+			isa = PBXGroup;
+			children = (
+				2914487F2086508A00F3A6B5 /* EquipmentOverviewItemView.swift */,
+				2914487B20864EB800F3A6B5 /* EquipmentOverviewItemView.xib */,
+				2914487720864A2900F3A6B5 /* EquipmentOverviewView.swift */,
+				2914487920864A3300F3A6B5 /* EquipmentOverviewView.xib */,
+			);
+			name = Equipment;
+			sourceTree = "<group>";
+		};
+		2967CF80252479FA00F366DF /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				29FC88592017C039002B3D3F /* CollapsibleStackView.swift */,
+				29FC88552017B840002B3D3F /* CollapsibleTitle.swift */,
+				296CB4ED218C99FD0044A33E /* HabiticaButton.swift */,
+				D9BA33D21AB5E5820028AFEC /* HRPGLabeledProgressBar.h */,
+				D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */,
+				29701FE31F56C2200097BBCC /* IconLabel.swift */,
+				D9BB45D91E79A02C0002AE2E /* LabeledCheckboxView.swift */,
+				328C951D24A2C13100293E16 /* LinksOnlyTextView.swift */,
+				29C135FD24EACA7B00DBC6B3 /* MarkdownTextView.swift */,
+				29617E0724E12A5300CF5EB4 /* NetworkImageView.swift */,
+				299BD6211F505DFA00E22935 /* PaddedLabel.swift */,
+				299F93F0246D9C49008DB702 /* PaddedTextField.swift */,
+				D9525F9C1E64739900C529B8 /* PaddedView.swift */,
+				29701FE51F56DABC0097BBCC /* RoundedView.swift */,
+				290B6288207CF248007287C4 /* StackView.swift */,
+			);
+			name = Basic;
+			sourceTree = "<group>";
+		};
 		296E4B1D21AEF35E00DB3602 /* AppIcons */ = {
 			isa = PBXGroup;
 			children = (
@@ -1674,13 +1720,6 @@
 				2959813D2241189E00819029 /* YellowAltBlack@3x.png */,
 			);
 			path = AppIcons;
-			sourceTree = "<group>";
-		};
-		2974BDAE2090896600EC1A25 /* Inbox */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Inbox;
 			sourceTree = "<group>";
 		};
 		2986EB091FCC63CC00B316F6 /* User */ = {
@@ -2319,9 +2358,7 @@
 			children = (
 				2927025324E3EEB400BCAA77 /* Support */,
 				29B4788220BD6DDF00B6123F /* Skills */,
-				2974BDAE2090896600EC1A25 /* Inbox */,
 				D9E02EC41E5E02E7002CFCE2 /* Challenges */,
-				290279612057EBE9006DACB9 /* FAQ */,
 				290B62A0207F814D007287C4 /* General */,
 				290B629F207F8140007287C4 /* Inventory */,
 				D9A63A371E104F6C0083ADC4 /* Login */,
@@ -2412,22 +2449,18 @@
 		D9C000311928F85E003D4E4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				29066CF524FE6A5F00A266EE /* promotions */,
+				29C1360124EBD12E00DBC6B3 /* AbbreviatedNumberLabel.swift */,
+				29C38C8424A2466400F219A1 /* AdventureGuidePromoView.swift */,
+				2967CF7E252479C400F366DF /* Alerts */,
 				2914488B2089E2D300F3A6B5 /* AvatarOverviewItemView.swift */,
 				29FEB279202B4F0400EA245A /* AvatarView.swift */,
 				29E48F0C22E89DB3005C4B45 /* BadgeView.swift */,
+				2967CF80252479FA00F366DF /* Basic */,
 				293BB4A01FD06E7E003B6F4F /* BulkStatsAllocationView.xib */,
 				299BD6311F5420A300E22935 /* Challenges */,
 				292DEE77204E1FFD0086D5F7 /* CheckboxView.swift */,
 				295D42F720922BA700948E7E /* ClassSelectionOptionView.swift */,
-				29FC88592017C039002B3D3F /* CollapsibleStackView.swift */,
-				29FC88552017B840002B3D3F /* CollapsibleTitle.swift */,
-				2914487F2086508A00F3A6B5 /* EquipmentOverviewItemView.swift */,
-				2914487B20864EB800F3A6B5 /* EquipmentOverviewItemView.xib */,
-				2914487720864A2900F3A6B5 /* EquipmentOverviewView.swift */,
-				2914487920864A3300F3A6B5 /* EquipmentOverviewView.xib */,
-				2919FDDE2091D87A0096A53B /* FaintViewController.swift */,
-				D99E42671D6B1FD500811B6D /* FaintViewController.xib */,
+				2967CF7F252479D600F366DF /* Equipment */,
 				2975F00223881D05005DBF2E /* FlagView.swift */,
 				2975F004238C4996005DBF2E /* GiftOneGetOnePromoView.swift */,
 				4904C73F1F1ED87400F80723 /* GradientImageView.swift */,
@@ -2435,9 +2468,6 @@
 				292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */,
 				292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */,
 				29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */,
-				29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */,
-				29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */,
-				296CB4ED218C99FD0044A33E /* HabiticaButton.swift */,
 				49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */,
 				D98F5DCB1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.h */,
 				D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */,
@@ -2445,36 +2475,25 @@
 				D9479605196DF4B6002CB34C /* HRPGImageOverlayView.h */,
 				D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */,
 				D9E9E0C71CCE64A3006D94A2 /* HRPGImageOverlayView.xib */,
-				D9BA33D21AB5E5820028AFEC /* HRPGLabeledProgressBar.h */,
-				D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */,
 				D905D08D1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.h */,
 				D905D08E1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m */,
 				D905D08B1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib */,
 				D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */,
 				D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */,
-				29701FE31F56C2200097BBCC /* IconLabel.swift */,
-				294973D1208118C100F02AC3 /* ImageOverlayView.swift */,
-				D9BB45D91E79A02C0002AE2E /* LabeledCheckboxView.swift */,
-				29E30DE520D935AF00F74ECB /* LevelUpOverlayView.swift */,
 				29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */,
 				29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */,
 				291DE9752099D85D0073182A /* MemberLlistView.swift */,
 				29E1630E200E279900685640 /* MenuNavigationBarView.swift */,
 				49DCB7C11F40D7F00079FDD0 /* NPCBannerView.swift */,
 				49DCB7C31F40D80B0079FDD0 /* NPCBannerView.xib */,
-				299BD6211F505DFA00E22935 /* PaddedLabel.swift */,
-				299F93F0246D9C49008DB702 /* PaddedTextField.swift */,
-				D9525F9C1E64739900C529B8 /* PaddedView.swift */,
 				D9CE90441E4CDD6200702578 /* PillView.swift */,
 				29FC8861201A300B002B3D3F /* ProgressBar.swift */,
-				2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */,
+				29066CF524FE6A5F00A266EE /* promotions */,
 				29FC8867201B7B61002B3D3F /* Quests */,
-				29701FE51F56DABC0097BBCC /* RoundedView.swift */,
 				29DC5AC120A1C63000993400 /* SeparatedStackView.swift */,
 				293282131F389CC000D42961 /* SetupCustomizationItemView.swift */,
 				293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */,
 				49DCB7B31F3F5E820079FDD0 /* Shop */,
-				290B6288207CF248007287C4 /* StackView.swift */,
 				293BB4A41FD078EC003B6F4F /* StatsSliderView.swift */,
 				293BB4A21FD07603003B6F4F /* StatsSliderView.xib */,
 				293BB4991FCD7DC0003B6F4F /* StatsView.swift */,
@@ -2488,14 +2507,6 @@
 				29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */,
 				29323E342052008800AC6D6F /* UserTopHeader.swift */,
 				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
-				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
-				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
-				328C951D24A2C13100293E16 /* LinksOnlyTextView.swift */,
-				29C38C8424A2466400F219A1 /* AdventureGuidePromoView.swift */,
-				29C38C8A24A48F9D00F219A1 /* AchievementAlertController.swift */,
-				29617E0724E12A5300CF5EB4 /* NetworkImageView.swift */,
-				29C135FD24EACA7B00DBC6B3 /* MarkdownTextView.swift */,
-				29C1360124EBD12E00DBC6B3 /* AbbreviatedNumberLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3679,6 +3690,7 @@
 				29FC884C2010CC8A002B3D3F /* SocialRepository.swift in Sources */,
 				498E4D031FA17C31006933FF /* ChallengeDescriptionTableViewCell.swift in Sources */,
 				D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */,
+				2967CE5D25236F0E00F366DF /* PetHatchingDialog.swift in Sources */,
 				291E95B720988B85006EE585 /* PartyDetailViewController.swift in Sources */,
 				2931151022D75B4B00E4A9E3 /* AchievementCell.swift in Sources */,
 				2912C3B022CA701C00BC485F /* QuestCompletedAlertController.swift in Sources */,
@@ -4476,7 +4488,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 512;
+				CURRENT_PROJECT_VERSION = 513;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4531,7 +4543,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 512;
+				CURRENT_PROJECT_VERSION = 513;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

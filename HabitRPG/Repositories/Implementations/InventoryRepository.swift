@@ -37,12 +37,14 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     }
     
     // swiftlint:disable:next large_tuple
-    func getItems(keys: [ItemType: [String]]) -> SignalProducer<(ReactiveResults<[EggProtocol]>,
-        ReactiveResults<[FoodProtocol]>,
-        ReactiveResults<[HatchingPotionProtocol]>,
-        ReactiveResults<[SpecialItemProtocol]>,
-        ReactiveResults<[QuestProtocol]>), ReactiveSwiftRealmError> {
-        return localRepository.getItems(keys: keys)
+    func getItems(keys: [ItemType: [String]]) -> SignalProducer<(eggs: ReactiveResults<[EggProtocol]>,
+                                                                 food: ReactiveResults<[FoodProtocol]>,
+                                                                 hatchingPotions: ReactiveResults<[HatchingPotionProtocol]>,
+                                                                 special: ReactiveResults<[SpecialItemProtocol]>,
+                                                                 quests: ReactiveResults<[QuestProtocol]>), ReactiveSwiftRealmError> {
+        return localRepository.getItems(keys: keys).map { items in
+            return (eggs: items.0, food: items.1, hatchingPotions: items.2, special: items.3, quests: items.4)
+        }
     }
     
     func getFood(keys: [String]) -> SignalProducer<ReactiveResults<[FoodProtocol]>, ReactiveSwiftRealmError> {
@@ -76,7 +78,11 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     }
     
     func hatchPet(egg: EggProtocol, potion: HatchingPotionProtocol) -> Signal<UserItemsProtocol?, Never> {
-        let call = HatchPetCall(egg: egg, potion: potion)
+        return hatchPet(egg: egg.key, potion: potion.key)
+    }
+    
+    func hatchPet(egg: String?, potion: String?) -> Signal<UserItemsProtocol?, Never> {
+        let call = HatchPetCall(egg: egg ?? "", potion: potion ?? "")
         
         return call.objectSignal.on(value: {[weak self]userItems in
             if let userItems = userItems, let userID = self?.currentUserId {

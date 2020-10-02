@@ -459,6 +459,15 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     }
                 })
             }
+        } else if purchaseType == "fortify" {
+            userRepository.reroll().observeResult({ (result) in
+            switch result {
+            case .success:
+                successBlock()
+            case .failure:
+                HRPGBuyItemModalViewController.displayInsufficientGoldModal()
+                }
+            })
         } else if currency == .gem || purchaseType == "gems" {
             inventoryRepository.purchaseItem(purchaseType: purchaseType, key: key, value: value, quantity: quantity, text: text)
             .flatMap(.latest, { _ in
@@ -473,15 +482,6 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     } else {
                         HRPGBuyItemModalViewController.displayInsufficientGemsModal()
                     }
-                }
-            })
-        } else if purchaseType == "fortify" {
-            userRepository.reroll().observeResult({ (result) in
-            switch result {
-            case .success:
-                successBlock()
-            case .failure:
-                HRPGBuyItemModalViewController.displayInsufficientGoldModal()
                 }
             })
         } else {

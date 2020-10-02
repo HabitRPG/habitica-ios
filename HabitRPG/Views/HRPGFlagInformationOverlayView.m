@@ -104,6 +104,7 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
     if (self.flagAction) {
         self.flagAction();
     }
+    [self dismissPresentingPopup];
 }
 
 - (void)sizeToFit {

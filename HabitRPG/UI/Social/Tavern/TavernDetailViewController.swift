@@ -120,18 +120,16 @@ class TavernDetailViewController: GroupDetailViewController {
     }
     
     @IBAction func guidelinesButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "GuidelinesSegue", sender: self)
+        perform(segue: StoryboardSegue.Social.guidelinesSegue)
     }
     
     @IBAction func faqButtonTapped(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "FAQOverviewViewController")
+        let viewController = StoryboardScene.Support.faqViewController.instantiate()
         navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction func reportBugButtonTapped(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "AboutViewController")
+        let viewController = StoryboardScene.Support.reportBugViewController.instantiate()
         navigationController?.pushViewController(viewController, animated: true)
     }
     

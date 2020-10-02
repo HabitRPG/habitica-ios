@@ -93,6 +93,11 @@ extension UIView {
             constant: width))
     }
     
+    func addSizeConstraint(size: CGFloat, relatedBy: NSLayoutConstraint.Relation = NSLayoutConstraint.Relation.equal) {
+        addHeightConstraint(height: size)
+        addWidthConstraint(width: size)
+    }
+    
     func addCenterXConstraint() {
         if let superview = superview {
             centerXAnchor.constraint(equalTo: superview.centerXAnchor).isActive = true

@@ -1015,3 +1015,17 @@
 "spooky_promo.info_prompt" = "The Gem Sale is back to haunt the very end of this year’s Fall Gala! This is one last chance to get more Gems than ever, so stock up while it lasts!";
 "spooky_promo.info_instructions" = "Between %s and %s, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!";
 "gems_promo.info_limitations" = "This promotion only applies during the limited time event. This event starts on %s (12:00 UTC) and will end %s (00:00 UTC). The promo offer is only available when buying Gems for yourself.";
+"suggest_pet_hatch_missing_egg" = "You still need a %@ Egg to hatch this pet";
+"suggest_pet_hatch_missing_potion" = "You still need a %@ Potion to hatch this pet";
+"suggest_pet_hatch_missing_both" = "You need a %@ and %@ Potion to hatch this pet";
+"suggest_pet_hatch_again_missing_egg" = "You still need a %@ Egg to hatch this pet again";
+"suggest_pet_hatch_again_missing_potion" = "You still need a %@ Potion to hatch this pet again";
+"suggest_pet_hatch_again_missing_both" = "You need a %@ and %@ Potion to hatch this pet again";
+"can_hatch_pet" = "Combine your %@ Egg and %@ Potion to hatch this pet!";
+"hatch_pet" = "Hatch Pet";
+"hatch" = "Hatch";
+"unhatched_pet" = "Unhatched Pet";
+"hatch_pet_again" = "Hatch Pet again";
+"magic_potions" = "Magic Potions";
+"magic_potion" = "Magic Potion";
+"use_immediately_disclaimer" = "This will take effect immediately after buying!";

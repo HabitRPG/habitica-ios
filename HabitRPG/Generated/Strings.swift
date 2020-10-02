@@ -82,6 +82,10 @@ public enum L10n {
   public static func buyReward(_ p1: String, _ p2: String) -> String {
     return L10n.tr("Mainstrings", "buy_reward", p1, p2)
   }
+  /// Combine your %@ Egg and %@ Potion to hatch this pet!
+  public static func canHatchPet(_ p1: String, _ p2: String) -> String {
+    return L10n.tr("Mainstrings", "can_hatch_pet", p1, p2)
+  }
   /// Cancel
   public static var cancel: String { return L10n.tr("Mainstrings", "cancel") }
   /// Cancel Subscription
@@ -366,8 +370,14 @@ public enum L10n {
   public static var guildJoinedDescription: String { return L10n.tr("Mainstrings", "guildJoinedDescription") }
   /// Joined a Guild
   public static var guildJoinedTitle: String { return L10n.tr("Mainstrings", "guildJoinedTitle") }
+  /// Hatch
+  public static var hatch: String { return L10n.tr("Mainstrings", "hatch") }
   /// Use on Egg
   public static var hatchEgg: String { return L10n.tr("Mainstrings", "hatch_egg") }
+  /// Hatch Pet
+  public static var hatchPet: String { return L10n.tr("Mainstrings", "hatch_pet") }
+  /// Hatch Pet again
+  public static var hatchPetAgain: String { return L10n.tr("Mainstrings", "hatch_pet_again") }
   /// Complete tasks to get a Hatching Potion and Egg then hatch your Pet!
   public static var hatchPetDescription: String { return L10n.tr("Mainstrings", "hatch_pet_description") }
   /// Hatch a Pet
@@ -476,6 +486,10 @@ public enum L10n {
   }
   /// Limited Event
   public static var limitedEvent: String { return L10n.tr("Mainstrings", "limited_event") }
+  /// Magic Potion
+  public static var magicPotion: String { return L10n.tr("Mainstrings", "magic_potion") }
+  /// Magic Potions
+  public static var magicPotions: String { return L10n.tr("Mainstrings", "magic_potions") }
   /// Mana
   public static var mana: String { return L10n.tr("Mainstrings", "mana") }
   /// Mana points are unlocked with the class system at level 10 and allow you to **use Skills** once you begin learning them at level 11.\n\nSome **MP is restored** at day reset every day, but you can regain more by completing tasks or using a Mage class skill.
@@ -802,6 +816,30 @@ public enum L10n {
   public static var subscriptionSupportDevelopers: String { return L10n.tr("Mainstrings", "subscription_support_developers") }
   /// success
   public static var success: String { return L10n.tr("Mainstrings", "success") }
+  /// You need a %@ and %@ Potion to hatch this pet again
+  public static func suggestPetHatchAgainMissingBoth(_ p1: String, _ p2: String) -> String {
+    return L10n.tr("Mainstrings", "suggest_pet_hatch_again_missing_both", p1, p2)
+  }
+  /// You still need a %@ Egg to hatch this pet again
+  public static func suggestPetHatchAgainMissingEgg(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "suggest_pet_hatch_again_missing_egg", p1)
+  }
+  /// You still need a %@ Potion to hatch this pet again
+  public static func suggestPetHatchAgainMissingPotion(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "suggest_pet_hatch_again_missing_potion", p1)
+  }
+  /// You need a %@ and %@ Potion to hatch this pet
+  public static func suggestPetHatchMissingBoth(_ p1: String, _ p2: String) -> String {
+    return L10n.tr("Mainstrings", "suggest_pet_hatch_missing_both", p1, p2)
+  }
+  /// You still need a %@ Egg to hatch this pet
+  public static func suggestPetHatchMissingEgg(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "suggest_pet_hatch_missing_egg", p1)
+  }
+  /// You still need a %@ Potion to hatch this pet
+  public static func suggestPetHatchMissingPotion(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "suggest_pet_hatch_missing_potion", p1)
+  }
   /// Summary
   public static var summary: String { return L10n.tr("Mainstrings", "summary") }
   /// Sunday
@@ -840,6 +878,8 @@ public enum L10n {
   public static var unblockUser: String { return L10n.tr("Mainstrings", "unblock_user") }
   /// Unequip
   public static var unequip: String { return L10n.tr("Mainstrings", "unequip") }
+  /// Unhatched Pet
+  public static var unhatchedPet: String { return L10n.tr("Mainstrings", "unhatched_pet") }
   /// You've unlocked the Drop System! Now when you complete tasks, you have a small chance of finding an item, including eggs, potions, and food!
   public static var unlockDropsDescription: String { return L10n.tr("Mainstrings", "unlockDropsDescription") }
   /// You unlocked the drop system!
@@ -860,6 +900,8 @@ public enum L10n {
   public static var updateAppTitle: String { return L10n.tr("Mainstrings", "update_app_title") }
   /// Use
   public static var use: String { return L10n.tr("Mainstrings", "use") }
+  /// This will take effect immediately after buying!
+  public static var useImmediatelyDisclaimer: String { return L10n.tr("Mainstrings", "use_immediately_disclaimer") }
   /// You blocked %s.
   public static func userWasBlocked(_ p1: UnsafePointer<CChar>) -> String {
     return L10n.tr("Mainstrings", "user_was_blocked", p1)
