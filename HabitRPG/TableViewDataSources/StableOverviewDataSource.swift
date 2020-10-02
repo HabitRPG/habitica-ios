@@ -78,9 +78,7 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
                     data[type]?.append(item)
                 }
             }
-            if animal.type != "premium" || isOwned {
-                item?.totalNumber += 1
-            }
+            item?.totalNumber += 1
             if isOwned {
                 item?.numberOwned += 1
             }
