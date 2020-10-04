@@ -408,7 +408,6 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="KXt-8h-VNr" secondAttribute="trailing" constant="12" id="4T7-du-Hll"/>
                                                             <constraint firstAttribute="height" priority="500" constant="22" id="DaW-Zd-kdM"/>
@@ -459,7 +458,6 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="wYP-zx-dbe" secondAttribute="trailing" constant="26" id="KLO-2j-deG"/>
                                             <constraint firstAttribute="height" priority="500" constant="500" id="OVm-hr-4FN"/>
