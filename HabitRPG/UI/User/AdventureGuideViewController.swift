@@ -47,7 +47,7 @@ class AdventureGuideViewController: BaseUIViewController {
         super.applyTheme(theme: theme)
         view.backgroundColor = theme.contentBackgroundColor
         var textColor = UIColor.gray50
-        if (theme.isDark) {
+        if theme.isDark {
             textColor = theme.primaryTextColor
         }
         gettingStartedLabel.textColor = textColor
