@@ -71,7 +71,7 @@ class LoadingViewController: UIViewController {
         if UserDefaults.standard.bool(forKey: "isInSetup") {
             perform(segue: StoryboardSegue.Intro.setupSegue)
         } else {
-            perform(segue: StoryboardSegue.Intro.setupSegue)
+            perform(segue: StoryboardSegue.Intro.initialSegue)
         }
     }
     

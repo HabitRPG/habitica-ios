@@ -13,7 +13,7 @@ import Habitica_Models
 class CheckedTableViewCell: TaskTableViewCell {
 
     @IBOutlet weak var checkBox: CheckboxView!
-    @IBOutlet weak var checklistContainer: UIStackView!
+    @IBOutlet weak var checklistContainer: StackView!
     @IBOutlet weak var checklistIndicator: UIView!
     @IBOutlet weak var checklistIndicatorSeparator: UIView!
     @IBOutlet weak var checklistDoneLabel: UILabel!
@@ -95,19 +95,20 @@ class CheckedTableViewCell: TaskTableViewCell {
             checklistTapArea.isHidden = true
         }
 
+        checklistContainer.backgroundColor = .clear
         checklistContainer.arrangedSubviews.forEach { (view) in
             view.removeFromSuperview()
         }
         if isExpanded {
             addChecklistViews(task: task)
             if task.completed || (task.type == TaskType.daily.rawValue && !task.isDue) {
-                checklistBoxBackground.backgroundColor = theme.offsetBackgroundColor
-            } else {
                 if theme.isDark {
-                    checklistBoxBackground.backgroundColor = UIColor.forTaskValueDark(Int(task.value))
+                    checklistBoxBackground.backgroundColor = .gray50
                 } else {
-                    checklistBoxBackground.backgroundColor = UIColor.forTaskValueExtraLight(Int(task.value))
+                    checklistBoxBackground.backgroundColor = theme.offsetBackgroundColor
                 }
+            } else {
+                checklistBoxBackground.backgroundColor = UIColor.forTaskValueExtraLight(Int(task.value))
             }
             checklistBoxBackground.isHidden = false
             checklistContainer.isHidden = false
@@ -122,11 +123,18 @@ class CheckedTableViewCell: TaskTableViewCell {
         if task.completed || (task.type == TaskType.daily.rawValue && !task.isDue) {
             checkColor = ThemeService.shared.theme.quadTextColor
         } else {
-            checkColor = UIColor.forTaskValueDark(Int(task.value))
+            checkColor = UIColor.forTaskValueDarkest(Int(task.value))
         }
+        var checkboxColor = UIColor.white
+        if task.completed || (task.type == TaskType.daily.rawValue && !task.isDue) {
+            checkboxColor = ThemeService.shared.theme.separatorColor
+        } else {
+            checkboxColor = UIColor.forTaskValueLight(Int(task.value))
+        }
+
         for item in task.checklist {
             let checkbox = CheckboxView()
-            checkbox.configure(checklistItem: item, withTitle: true, checkColor: checkColor, taskType: task.type)
+            checkbox.configure(checklistItem: item, withTitle: true, checkColor: checkColor, checkboxColor: checkboxColor, taskType: task.type)
             checklistContainer.addArrangedSubview(checkbox)
             checkbox.wasTouched = {[weak self] in
                 if let action = self?.checklistItemTouched {
