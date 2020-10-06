@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SpeechbubbleView: UIView {
+class SpeechbubbleView: UIView, Themeable {
     
     @IBInspectable var npcName: String? {
         didSet {
@@ -68,11 +68,15 @@ class SpeechbubbleView: UIView {
             
             textView.textContainerInset = UIEdgeInsets(top: 16, left: 20, bottom: 12, right: 12)
             textView.layer.cornerRadius = 4
-            textView.textColor = ThemeService.shared.theme.primaryTextColor
-            textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+            ThemeService.shared.addThemeable(themable: self)
             
             namePlateBackgroundView.image = #imageLiteral(resourceName: "Nameplate").resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 21, bottom: 0, right: 21))
         }
+    }
+    
+    func applyTheme(theme: Theme) {
+        textView.textColor = ThemeService.shared.theme.primaryTextColor
+        textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
     }
     
     func loadViewFromNib() -> UIView? {

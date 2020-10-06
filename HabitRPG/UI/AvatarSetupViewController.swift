@@ -41,7 +41,7 @@ public enum AvatarCustomizationSubcategory {
     }
 }
 
-class AvatarSetupViewController: UIViewController, TypingTextViewController {
+class AvatarSetupViewController: UIViewController, TypingTextViewController, Themeable {
 
     @IBOutlet weak var bodyButton: UIStackView!
     @IBOutlet weak var bodyImageView: UIImageView!
@@ -104,7 +104,8 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         super.viewDidLoad()
         
         populateText()
-        
+        ThemeService.shared.addThemeable(themable: self)
+
         avatarView.showBackground = false
         avatarView.showMount = false
         avatarView.showPet = false
@@ -133,6 +134,10 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
             contentHeight.constant = 120
             categoryHeight.constant = 85
         }
+    }
+    
+    func applyTheme(theme: Theme) {
+        view.backgroundColor = theme.windowBackgroundColor
     }
     
     func populateText() {
