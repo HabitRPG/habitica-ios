@@ -33,7 +33,9 @@ class TaskAttributeCell: Cell<String>, CellType {
 
     @objc
     private func strengthTapped() {
-        if row.isDisabled { return }
+        if row.isDisabled {
+            return
+        }
         row.value = "str"
         row.updateCell()
         if #available(iOS 10, *) {
@@ -43,7 +45,9 @@ class TaskAttributeCell: Cell<String>, CellType {
     
     @objc
     private func intelligenceTapped() {
-        if row.isDisabled { return }
+        if row.isDisabled {
+            return
+        }
         row.value = "int"
         row.updateCell()
         if #available(iOS 10, *) {
@@ -53,7 +57,9 @@ class TaskAttributeCell: Cell<String>, CellType {
     
     @objc
     private func constitutionTapped() {
-        if row.isDisabled { return }
+        if row.isDisabled {
+            return
+        }
         row.value = "con"
         row.updateCell()
         if #available(iOS 10, *) {
@@ -63,7 +69,9 @@ class TaskAttributeCell: Cell<String>, CellType {
     
     @objc
     private func perceptionTapped() {
-        if row.isDisabled { return }
+        if row.isDisabled {
+            return
+        }
         row.value = "per"
         row.updateCell()
         if #available(iOS 10, *) {

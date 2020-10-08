@@ -117,7 +117,7 @@ class InboxChatViewController: SLKTextViewController, Themeable {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == StoryboardSegue.Social.userProfileSegue.rawValue) {
+        if segue.identifier == StoryboardSegue.Social.userProfileSegue.rawValue {
             let profileViewController = segue.destination as? UserProfileViewController
             profileViewController?.userID = userID
             profileViewController?.username = username

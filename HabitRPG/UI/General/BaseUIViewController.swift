@@ -11,7 +11,7 @@ import Foundation
 class BaseUIViewController: HRPGTutorialUIViewController, Themeable {
     
     lazy var topHeaderCoordinator: TopHeaderCoordinator? = {
-        if (hrpgTopHeaderNavigationController() != nil) {
+        if hrpgTopHeaderNavigationController() != nil {
             return TopHeaderCoordinator(topHeaderNavigationController: hrpgTopHeaderNavigationController())
         }
         return nil

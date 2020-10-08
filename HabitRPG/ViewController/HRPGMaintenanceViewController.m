@@ -155,7 +155,7 @@
 
 - (void)appstoreButtonPressed {
     NSString *iTunesLink = @"https://itunes.apple.com/us/app/apple-store/id994882113?mt=8";
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink] options:@{} completionHandler:nil];
 }
 
 @end

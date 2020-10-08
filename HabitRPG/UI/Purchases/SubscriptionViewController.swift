@@ -221,7 +221,7 @@ class SubscriptionViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
-        if (isInformationSection(section)) {
+        if isInformationSection(section) {
             let separatorView = UIImageView(image: Asset.separatorFancy.image)
             separatorView.contentMode = .center
             view.addSubview(separatorView)
@@ -324,7 +324,7 @@ class SubscriptionViewController: BaseTableViewController {
             if let subscriptionPlan = self.user?.purchased?.subscriptionPlan {
                 cell.setPlan(subscriptionPlan)
                 cell.cancelSubscriptionAction = {[weak self] in
-                    if (self?.hasTerminationDate == true) {
+                    if self?.hasTerminationDate == true {
                         self?.showSubscribeOptions = true
                         tableView.reloadData()
                         tableView.scrollToRow(at: IndexPath(row: 0, section: 2), at: .top, animated: true)

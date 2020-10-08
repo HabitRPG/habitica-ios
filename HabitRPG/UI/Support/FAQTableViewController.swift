@@ -140,7 +140,6 @@ class FAQViewController: BaseUIViewController {
         }
     }
 
-    
     private static let mechanics = [
         ["title": L10n.healthPoints, "subtitle": "HP", "icon": HabiticaIcons.imageOfHeartLarge, "text": L10n.healthDescription],
         ["title": L10n.experiencePoints, "subtitle": "EXP", "icon": HabiticaIcons.imageOfExperienceReward, "text": L10n.experienceDescription],

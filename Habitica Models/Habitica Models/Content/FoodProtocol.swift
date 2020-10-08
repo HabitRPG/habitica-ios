@@ -15,7 +15,7 @@ public protocol FoodProtocol: ItemProtocol {
 }
 
 public extension FoodProtocol {
-    public var imageName: String {
+    var imageName: String {
         return "Pet_Food_\(key ?? "")"
     }
 }

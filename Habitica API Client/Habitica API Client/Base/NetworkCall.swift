@@ -92,7 +92,7 @@ open class NetworkCall {
             dataTaskProperty.value = session.dataTask(with: request as URLRequest) { (data, response, error) in
                 self.errorProperty.value = error as NSError?
                 self.responseProperty.value = response
-                if let _ = error {
+                if error != nil {
                     self.errorDataProperty.value = data
                 } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode > 299 {
                     self.errorDataProperty.value = data

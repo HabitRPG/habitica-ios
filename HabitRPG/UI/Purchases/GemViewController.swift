@@ -314,8 +314,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         alertController.show()
         usernameTextField.becomeFirstResponder()
     }
-    
-    
+
     @IBAction func unwindToList(_ segue: UIStoryboardSegue) {
     }
 }

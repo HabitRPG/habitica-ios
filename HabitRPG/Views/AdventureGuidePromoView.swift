@@ -91,7 +91,7 @@ class AdventureGuideBannerView: UIView, Themeable {
         ])
         completeLabel.attributedText = attrString
         backgroundColor = theme.navbarHiddenColor
-        if (theme.isDark) {
+        if theme.isDark {
             container.backgroundColor = theme.windowBackgroundColor
             rightIndicator.backgroundColor = theme.offsetBackgroundColor
         } else {

@@ -181,7 +181,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     
     func activateNoRenewSubscription(_ identifier: String, receipt: Data, recipientID: String?, completion: @escaping (Bool) -> Void) {
         pendingGifts[identifier] = recipientID
-        if (recipientID == nil) {
+        if recipientID == nil {
             completion(false)
             return
         }

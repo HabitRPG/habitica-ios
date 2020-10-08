@@ -71,7 +71,8 @@ class SubscriptionOptionView: UITableViewCell {
         case 12:
             setGemCap(45)
             setHourglassCount(4)
-        default: break
+        default:
+            break
         }
     }
 

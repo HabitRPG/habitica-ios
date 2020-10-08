@@ -69,7 +69,7 @@ class QuestInviteNotificationCell: BaseNotificationCell<NotificationQuestInviteP
         goalTitleLabel.pin.start(20).top(to: titleLabel.edge.bottom).marginTop(12).end(20).height(16).sizeToFit(.height)
         difficultyTitleLabel.pin.start(20).top(to: goalTitleLabel.edge.bottom).marginTop(4).end(20).height(16).sizeToFit(.height)
         var startEdge = goalTitleLabel.edge.end
-        if (goalTitleLabel.frame.width < difficultyTitleLabel.frame.width) {
+        if goalTitleLabel.frame.width < difficultyTitleLabel.frame.width {
             startEdge = difficultyTitleLabel.edge.end
         }
         goalDetailLabel.pin.start(to: startEdge).marginStart(8).top(to: titleLabel.edge.bottom).marginTop(12).end(20).height(16).sizeToFit(.height)

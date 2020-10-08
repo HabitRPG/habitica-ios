@@ -155,7 +155,7 @@ class ConfigRepository: NSObject {
     @objc
     func fetchremoteConfig() {
         ConfigRepository.remoteConfig.fetch(withExpirationDuration: HabiticaAppDelegate.isRunningLive() ? 3600 : 0) { (_, _) in
-            ConfigRepository.remoteConfig.activate(completionHandler: nil)
+            ConfigRepository.remoteConfig.activate(completion: nil)
         }
         var defaults = [String: NSObject]()
         for variable in ConfigVariable.allVariables() {

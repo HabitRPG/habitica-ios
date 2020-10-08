@@ -95,13 +95,12 @@ class ImageManager: NSObject {
     }
     
     private static func getFormat(name: String, format: String) -> String {
-        if (!format.isEmpty) {
+        if !format.isEmpty {
             return format
         }
         return formatDictionary[name] ?? "png"
     }
-    
-    
+
     private static func substituteSprite(name: String?) -> String? {
         for (key, value) in substitutions {
             if let keyString = key as? String, name?.contains(keyString) == true {

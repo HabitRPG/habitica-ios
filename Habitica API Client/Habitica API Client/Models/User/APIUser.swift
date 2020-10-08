@@ -10,7 +10,6 @@ import Foundation
 import Habitica_Models
 
 
-
 public class APIUser: UserProtocol, Decodable {
     public var party: UserPartyProtocol?
     

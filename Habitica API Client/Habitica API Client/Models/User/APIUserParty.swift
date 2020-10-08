@@ -26,7 +26,7 @@ class APIUserParty: UserPartyProtocol, Decodable {
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try? values.decode(String.self, forKey: .id)
-        if (id == nil && id?.isEmpty == true) {
+        if id == nil && id?.isEmpty == true {
             id = try? values.decode(String.self, forKey: .otherId)
         }
         order = try? values.decode(String.self, forKey: .order)
