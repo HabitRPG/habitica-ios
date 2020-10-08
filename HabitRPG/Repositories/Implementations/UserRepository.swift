@@ -13,6 +13,8 @@ import Habitica_API_Client
 import ReactiveSwift
 import Crashlytics
 
+import WidgetKit
+
 class UserRepository: BaseRepository<UserLocalRepository> {
     
     var lastPushDeviceSync: Date?
@@ -121,6 +123,9 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                 Crashlytics.sharedInstance().recordError(error)
             }).observeCompleted {
                 disposable?.dispose()
+                if #available(iOS 14.0, *) {
+                    WidgetCenter.shared.reloadAllTimelines()
+                }
             }
         } else {
             disposable = RunCronCall().responseSignal.flatMap(.latest, { (_) in
@@ -129,6 +134,9 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                 Crashlytics.sharedInstance().recordError(error)
             }).observeCompleted {
                 disposable?.dispose()
+                if #available(iOS 14.0, *) {
+                    WidgetCenter.shared.reloadAllTimelines()
+                }
             }
         }
     }

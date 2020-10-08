@@ -216,6 +216,7 @@ PODS:
   - SwiftGen (6.3.0)
   - SwiftLint (0.40.3)
   - SwiftyStoreKit (0.16.1)
+  - URLImage (0.9.19)
   - VTAcknowledgementsViewController (1.5.3)
   - XLForm (4.1.0)
 
@@ -258,6 +259,7 @@ DEPENDENCIES:
   - SwiftGen
   - SwiftLint
   - SwiftyStoreKit
+  - URLImage
   - VTAcknowledgementsViewController
   - XLForm
 
@@ -317,6 +319,7 @@ SPEC REPOS:
     - SwiftGen
     - SwiftLint
     - SwiftyStoreKit
+    - URLImage
     - VTAcknowledgementsViewController
     - XLForm
 
@@ -380,9 +383,10 @@ SPEC CHECKSUMS:
   SwiftGen: 3d5024a47ea79e408cded20763d7a17d18a4548c
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
   SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
+  URLImage: 107320dff147321cceb201af24e8a154f24e6aed
   VTAcknowledgementsViewController: 5bb83eaa344bff2af32291162b15778c080262fe
   XLForm: 7ee02761be8a369d1ad1bbffe738b97083d94f3e
 
-PODFILE CHECKSUM: 16195958f6c765821f5888cf0ceea308540ff4b6
+PODFILE CHECKSUM: 398ee6ec6cf795fbc0763ec8fb4b957a0f34c15f
 
 COCOAPODS: 1.9.3

@@ -8,6 +8,7 @@
 
 import Foundation
 import DeepLinkKit
+import Habitica_Models
 
 @objc
 class RouterHandler: NSObject {
@@ -95,6 +96,12 @@ class RouterHandler: NSObject {
             let viewController = StoryboardScene.Social.userProfileViewController.instantiate()
             viewController.userID = link?.routeParameters["userID"] as? String
             self.push(viewController)
+        }
+        router.register("/user/tasks/:taskType/add") { link in
+            let modalViewController = StoryboardScene.Tasks.taskFormViewController.instantiate()
+            modalViewController.taskType = TaskType(rawValue: link?.routeParameters["taskType"] as? String ?? "habit") ?? TaskType.habit
+            modalViewController.isCreating = true
+            self.present(modalViewController)
         }
     }
     
