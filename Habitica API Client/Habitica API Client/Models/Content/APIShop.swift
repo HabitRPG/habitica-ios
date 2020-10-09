@@ -65,6 +65,7 @@ public class APIShop: ShopProtocol, Decodable {
             fortify.text = "Fortify Potion"
             fortify.notes = "Return all tasks to neutral value (yellow color), and restore all lost Health"
             fortify.imageName = "inventory_special_fortify"
+            fortify.purchaseType = "fortify"
             fortify.currency = "gems"
             fortify.value = 4
             fortify.path = "special.fortify"

@@ -227,7 +227,9 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         }
         deregisterPushDevice().observeCompleted {}
         let defaults = UserDefaults.standard
+        let themeMode = defaults.string(forKey: "themeMode")
         defaults.dictionaryRepresentation().keys.forEach { defaults.removeObject(forKey: $0) }
+        defaults.set(themeMode, forKey: "themeMode")
     }
     
     func updateEmail(newEmail: String, password: String) -> Signal<UserProtocol, ReactiveSwiftRealmError> {
