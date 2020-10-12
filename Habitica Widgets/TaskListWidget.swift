@@ -9,7 +9,6 @@
 import WidgetKit
 import SwiftUI
 import Habitica_Models
-import URLImage
 
 
 struct TaskListProvider: TimelineProvider {

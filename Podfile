@@ -89,9 +89,9 @@ target 'Habitica' do
   end
 
   target 'Habitica WidgetsExtension' do
-    platform :ios, '14.0'
+#    platform :ios, '14.0'
     pod 'KeychainAccess'
-    pod 'URLImage'
+#    pod 'URLImage'
     inherit! :search_paths
   end
 end

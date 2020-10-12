@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2354DBE87B77AA2822946B19 /* Pods_Habitica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA30D777368D157F78256BF /* Pods_Habitica.framework */; };
+		2354DBE87B77AA2822946B19 /* Pods_Habitica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA30D777368D157F78256BF /* Pods_Habitica.framework */; platformFilter = ios; };
 		290279632057EC03006DACB9 /* FAQTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290279622057EC03006DACB9 /* FAQTableViewController.swift */; };
 		2902796C2057F2C5006DACB9 /* Assets-Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290279692057F2C4006DACB9 /* Assets-Images.swift */; };
 		2902796D2057F2C5006DACB9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902796A2057F2C5006DACB9 /* Strings.swift */; };
@@ -100,9 +100,9 @@
 		29255E491F3E1B0F0094A3E3 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E481F3E1B0F0094A3E3 /* ToastView.swift */; };
 		29255E4B1F3E236C0094A3E3 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E4A1F3E236C0094A3E3 /* ToastManager.swift */; };
 		29255E4D1F3E25910094A3E3 /* CGRect-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E4C1F3E25910094A3E3 /* CGRect-Extensions.swift */; };
-		29265891206A4E84006C8B54 /* Habitica_Models.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		29265893206A4E84006C8B54 /* Habitica_Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		29265895206A4E84006C8B54 /* Habitica_API_Client.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		29265891206A4E84006C8B54 /* Habitica_Models.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		29265893206A4E84006C8B54 /* Habitica_Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		29265895206A4E84006C8B54 /* Habitica_API_Client.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2927024324E2D83700BCAA77 /* HallOfContributorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927024224E2D83700BCAA77 /* HallOfContributorsViewController.swift */; };
 		2927024624E2D8AB00BCAA77 /* HallOfContributorsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927024524E2D8AB00BCAA77 /* HallOfContributorsDataSource.swift */; };
 		2927024A24E303CB00BCAA77 /* HallOfPatronsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927024924E303CB00BCAA77 /* HallOfPatronsViewController.swift */; };
@@ -117,9 +117,9 @@
 		2929AAB522E9E59A00DF9463 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2929AAB422E9E59A00DF9463 /* Habitica_Models.framework */; };
 		292AA72420FE15090022CC5F /* UIFont-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292AA72320FE15090022CC5F /* UIFont-Extensions.swift */; };
 		292D6C9B2101FF080078288A /* InviteMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D6C9A2101FF080078288A /* InviteMembersViewController.swift */; };
-		292DEE3A204D9D290086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; };
-		292DEE3C204D9D360086D5F7 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; };
-		292DEE4C204DA1830086D5F7 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */; };
+		292DEE3A204D9D290086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; platformFilter = ios; };
+		292DEE3C204D9D360086D5F7 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; platformFilter = ios; };
+		292DEE4C204DA1830086D5F7 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */; platformFilter = ios; };
 		292DEE53204DA5B40086D5F7 /* Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE52204DA5B40086D5F7 /* Repositories.swift */; };
 		292DEE58204DA6E00086D5F7 /* TaskRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE57204DA6E00086D5F7 /* TaskRepositoryProtocol.swift */; };
 		292DEE70204DEB120086D5F7 /* TaskTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE6F204DEB120086D5F7 /* TaskTableViewDataSource.swift */; };
@@ -327,7 +327,7 @@
 		29BEE62F252CCFE100D456F8 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BEE62E252CCFE100D456F8 /* SwiftUI.framework */; };
 		29BEE632252CCFE100D456F8 /* StatsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE631252CCFE100D456F8 /* StatsWidget.swift */; };
 		29BEE634252CCFE300D456F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29BEE633252CCFE300D456F8 /* Assets.xcassets */; };
-		29BEE638252CCFE300D456F8 /* Habitica WidgetsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		29BEE638252CCFE300D456F8 /* Habitica WidgetsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		29BEE64D252DD3F400D456F8 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E1B122898E9F0081E96F /* TaskManager.swift */; };
 		29BEE653252DD85600D456F8 /* TaskRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE57204DA6E00086D5F7 /* TaskRepositoryProtocol.swift */; };
 		29BEE659252DD85C00D456F8 /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884D2010CCC2002B3D3F /* BaseRepository.swift */; };
@@ -473,8 +473,8 @@
 		7A84E19C228928AD0081E96F /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A84E19B228928AD0081E96F /* IntentsUI.framework */; };
 		7A84E19F228928AD0081E96F /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E19E228928AD0081E96F /* IntentViewController.swift */; };
 		7A84E1A2228928AD0081E96F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A84E1A0228928AD0081E96F /* MainInterface.storyboard */; };
-		7A84E1A6228928AD0081E96F /* Habitica IntentsUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7A84E19A228928AD0081E96F /* Habitica IntentsUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		7A84E1A9228928AD0081E96F /* Habitica Intents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7A84E191228928AC0081E96F /* Habitica Intents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7A84E1A6228928AD0081E96F /* Habitica IntentsUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7A84E19A228928AD0081E96F /* Habitica IntentsUI.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7A84E1A9228928AD0081E96F /* Habitica Intents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7A84E191228928AC0081E96F /* Habitica Intents.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7A84E1B222898E9F0081E96F /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E1B122898E9F0081E96F /* TaskManager.swift */; };
 		7A84E1B32289963E0081E96F /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884D2010CCC2002B3D3F /* BaseRepository.swift */; };
 		7A84E1B42289968B0081E96F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
@@ -500,7 +500,7 @@
 		D92A084B1D33FA08000F8B66 /* HRPGShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A084A1D33FA08000F8B66 /* HRPGShopViewController.m */; };
 		D92C0C411B8745DF000AF799 /* HRPGAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C0C401B8745DF000AF799 /* HRPGAPITests.m */; };
 		D92C60FC1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C60FB1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m */; };
-		D92D26161D58EF00001FD977 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D92D26151D58EF00001FD977 /* AVFoundation.framework */; };
+		D92D26161D58EF00001FD977 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D92D26151D58EF00001FD977 /* AVFoundation.framework */; platformFilter = ios; };
 		D942B5381CAAE6B1009AB756 /* Social.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D942B53A1CAAE6B1009AB756 /* Social.storyboard */; };
 		D9436AC11C63A4BB008D1171 /* UIViewController+Markdown.m in Sources */ = {isa = PBXBuildFile; fileRef = D9436AC01C63A4BB008D1171 /* UIViewController+Markdown.m */; };
 		D94461911AB355940015215E /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = D94461901AB355940015215E /* user.json */; };
@@ -516,10 +516,10 @@
 		D95704471E153767004F6804 /* TestObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95704461E153767004F6804 /* TestObserver.swift */; };
 		D957044B1E1585DB004F6804 /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D957044A1E1585DB004F6804 /* LoginViewControllerTests.swift */; };
 		D957044D1E1589AB004F6804 /* TraitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D957044C1E1589AB004F6804 /* TraitController.swift */; };
-		D958E2AD1915D40600186A08 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D958E2AC1915D40600186A08 /* CoreText.framework */; };
-		D958E2AE1915D40F00186A08 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D915F8621915BEE50037D04D /* QuartzCore.framework */; };
-		D958E2B01915D41400186A08 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D958E2AF1915D41400186A08 /* Security.framework */; };
-		D958E2B11915D41D00186A08 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D915F8641915BF0D0037D04D /* SystemConfiguration.framework */; };
+		D958E2AD1915D40600186A08 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D958E2AC1915D40600186A08 /* CoreText.framework */; platformFilter = ios; };
+		D958E2AE1915D40F00186A08 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D915F8621915BEE50037D04D /* QuartzCore.framework */; platformFilter = ios; };
+		D958E2B01915D41400186A08 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D958E2AF1915D41400186A08 /* Security.framework */; platformFilter = ios; };
+		D958E2B11915D41D00186A08 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D915F8641915BF0D0037D04D /* SystemConfiguration.framework */; platformFilter = ios; };
 		D96BFC4C1E181B4A00266EEF /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96BFC4B1E181B4A00266EEF /* IntroViewController.swift */; };
 		D96BFC4F1E191D7200266EEF /* UIAlertController-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96BFC4E1E191D7200266EEF /* UIAlertController-Extensions.swift */; };
 		D96BFC511E1930A500266EEF /* Signal-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96BFC501E1930A500266EEF /* Signal-Extensions.swift */; };
@@ -569,8 +569,8 @@
 		D9BE05841DA6ADE70074D3B7 /* GemPurchaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9BE05831DA6ADE70074D3B7 /* GemPurchaseView.xib */; };
 		D9C31DB31C6501090096F4EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C31DB11C6501090096F4EC /* Main.storyboard */; };
 		D9C89CF61B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C89CF51B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m */; };
-		D9C89CF91B1F0E6C00A599B0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9C89CF81B1F0E6C00A599B0 /* StoreKit.framework */; };
-		D9CD2DBE1BC7FBB500B1304B /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9CD2DBD1BC7FBB500B1304B /* CoreSpotlight.framework */; };
+		D9C89CF91B1F0E6C00A599B0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9C89CF81B1F0E6C00A599B0 /* StoreKit.framework */; platformFilter = ios; };
+		D9CD2DBE1BC7FBB500B1304B /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9CD2DBD1BC7FBB500B1304B /* CoreSpotlight.framework */; platformFilter = ios; };
 		D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CD2DD41BCAA6F700B1304B /* UIViewController+TutorialSteps.m */; };
 		D9CE90431E4CDC9100702578 /* SubscriptionDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9CE90421E4CDC9100702578 /* SubscriptionDetailView.xib */; };
 		D9CE90451E4CDD6200702578 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CE90441E4CDD6200702578 /* PillView.swift */; };
@@ -585,9 +585,9 @@
 		D9D17CDE1E6AFFD900AD9232 /* ChallengeDetailAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CDD1E6AFFD900AD9232 /* ChallengeDetailAlert.swift */; };
 		D9E02EC61E5E0458002CFCE2 /* ChallengeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E02EC51E5E0458002CFCE2 /* ChallengeTableViewController.swift */; };
 		D9E9E0C81CCE64A3006D94A2 /* HRPGImageOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9E9E0C71CCE64A3006D94A2 /* HRPGImageOverlayView.xib */; };
-		D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */; };
-		D9EB4E9118CB4A9400BB2094 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E9018CB4A9400BB2094 /* CoreGraphics.framework */; };
-		D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E9218CB4A9400BB2094 /* UIKit.framework */; };
+		D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */; platformFilter = ios; };
+		D9EB4E9118CB4A9400BB2094 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E9018CB4A9400BB2094 /* CoreGraphics.framework */; platformFilter = ios; };
+		D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E9218CB4A9400BB2094 /* UIKit.framework */; platformFilter = ios; };
 		D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4E9718CB4A9400BB2094 /* InfoPlist.strings */; };
 		D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EB4E9A18CB4A9400BB2094 /* main.m */; };
 		D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */; };
@@ -3916,16 +3916,19 @@
 /* Begin PBXTargetDependency section */
 		29BEE637252CCFE300D456F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 29BEE62A252CCFE100D456F8 /* Habitica WidgetsExtension */;
 			targetProxy = 29BEE636252CCFE300D456F8 /* PBXContainerItemProxy */;
 		};
 		7A84E1A5228928AD0081E96F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 7A84E199228928AD0081E96F /* Habitica IntentsUI */;
 			targetProxy = 7A84E1A4228928AD0081E96F /* PBXContainerItemProxy */;
 		};
 		7A84E1A8228928AD0081E96F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 7A84E190228928AC0081E96F /* Habitica Intents */;
 			targetProxy = 7A84E1A7228928AD0081E96F /* PBXContainerItemProxy */;
 		};
@@ -4193,7 +4196,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -4238,7 +4241,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -4276,7 +4279,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-IntentsUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -4317,7 +4320,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-IntentsUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -4356,7 +4359,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -4398,7 +4401,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -4824,7 +4827,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Habitica;
 				PROVISIONING_PROFILE = "";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "HabitRPG/UI/Habitica-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -4921,7 +4924,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Habitica;
 				PROVISIONING_PROFILE = "";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "HabitRPG/UI/Habitica-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

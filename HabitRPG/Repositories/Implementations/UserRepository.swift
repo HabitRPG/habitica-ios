@@ -124,7 +124,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             }).observeCompleted {
                 disposable?.dispose()
                 if #available(iOS 14.0, *) {
-                    WidgetCenter.shared.reloadAllTimelines()
+                    // WidgetCenter.shared.reloadAllTimelines()
                 }
             }
         } else {
@@ -135,7 +135,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             }).observeCompleted {
                 disposable?.dispose()
                 if #available(iOS 14.0, *) {
-                    WidgetCenter.shared.reloadAllTimelines()
+                    // WidgetCenter.shared.reloadAllTimelines()
                 }
             }
         }
