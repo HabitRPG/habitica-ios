@@ -180,6 +180,8 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
             amount = 84
         }
         purchaseGems(identifier: PurchaseHandler.IAPIdentifiers[indexPath.item], amount: amount)
+        let cell = collectionView.cellForItem(at: indexPath)
+        (cell as? GemPurchaseCell)?.setLoading(true)
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -200,7 +202,7 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
             amount = 84
         }
         cell.setGemAmount(amount)
-        cell.purchaseButton.isUserInteractionEnabled = false
+        cell.setLoading(false)
         
         return cell
     }

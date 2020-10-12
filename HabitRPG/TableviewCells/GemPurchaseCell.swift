@@ -10,13 +10,14 @@ import Foundation
 
 class GemPurchaseCell: UICollectionViewCell {
     
-    @IBOutlet weak var purchaseButton: HRPGPurchaseLoadingButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var gemsLabel: UILabel!
     @IBOutlet weak var leftDecorationImageView: UIImageView!
     @IBOutlet weak var rightDecorationImageView: UIImageView!
     @IBOutlet weak var footerLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     func setGemAmount(_ amount: Int) {
         amountLabel.text = String(amount)
@@ -38,7 +39,17 @@ class GemPurchaseCell: UICollectionViewCell {
     }
     
     func setPrice(_ price: String?) {
-        purchaseButton.text = price
-        purchaseButton.tintColor = ThemeService.shared.theme.fixedTintColor
+        priceLabel.text = price
+        priceLabel.backgroundColor = ThemeService.shared.theme.fixedTintColor
+    }
+    
+    func setLoading(_ isLoading: Bool) {
+        if isLoading {
+            priceLabel.isHidden = true
+            loadingIndicator.isHidden = false
+        } else {
+                priceLabel.isHidden = false
+                loadingIndicator.isHidden = true
+        }
     }
 }

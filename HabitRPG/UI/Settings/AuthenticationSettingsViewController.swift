@@ -153,9 +153,10 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         textView.font = UIFont.preferredFont(forTextStyle: .subheadline)
         textView.textColor = ThemeService.shared.theme.ternaryTextColor
         textView.isEditable = false
-        textView.isScrollEnabled = false
+        textView.isScrollEnabled = true
         textView.isSelectable = false
         textView.textAlignment = .center
+        textView.addHeightConstraint(height: 150)
         textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         stackView.addArrangedSubview(textView)
         let textField = PaddedTextField()
@@ -192,9 +193,9 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         textView.font = UIFont.preferredFont(forTextStyle: .subheadline)
         textView.textColor = ThemeService.shared.theme.ternaryTextColor
         textView.isEditable = false
-        textView.isScrollEnabled = false
         textView.isSelectable = false
         textView.textAlignment = .center
+        textView.addHeightConstraint(height: 350)
         textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         alertController.contentView = textView
         

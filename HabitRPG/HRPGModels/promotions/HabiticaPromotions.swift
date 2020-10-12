@@ -116,11 +116,10 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         let decorationImage = HabiticaIcons.imageOfFallGemPromoBG(redGemColor: colors[0], greenGemColor: colors[1], blueGemColor: colors[2], purpleGemColor: colors[3])
         view.leftDecorationImageView.image = decorationImage
         view.rightDecorationImageView.image = decorationImage
-        view.purchaseButton.tintColor = .clear
-        view.purchaseButton.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
-        let gradientLayer = makeGradient(view: view.purchaseButton)
+        view.priceLabel.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
+        let gradientLayer = makeGradient(view: view.priceLabel)
         gradientLayer.cornerRadius = 8
-        view.purchaseButton.layer.insertSublayer(gradientLayer, at: 0)
+        view.priceLabel.layer.insertSublayer(gradientLayer, at: 0)
         view.footerLabel.text = L10n.usuallyXGems(regularAmount)
         view.footerLabel.textColor = UIColor("#CAC7CE")
         view.footerLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
@@ -223,7 +222,7 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         let decorationImage = HabiticaIcons.imageOfSpookyGemPromoBG
         view.leftDecorationImageView.image = decorationImage
         view.rightDecorationImageView.image = decorationImage
-        view.purchaseButton.tintColor = buttonBackground()
+        view.priceLabel.backgroundColor = buttonBackground()
         view.footerLabel.text = L10n.usuallyXGems(regularAmount)
         view.footerLabel.textColor = UIColor("#CAC7CE")
         view.footerLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)

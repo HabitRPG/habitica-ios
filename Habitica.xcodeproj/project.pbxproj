@@ -547,7 +547,6 @@
 		D99E42681D6B1FD500811B6D /* FaintViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D99E42671D6B1FD500811B6D /* FaintViewController.xib */; };
 		D99EA7421B8667C90048BF6A /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D99EA7411B8667C90048BF6A /* libOCMock.a */; };
 		D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99F15BF191027D90081836E /* HRPGBaseViewController.m */; };
-		D9A28F721B08DF58002907E0 /* HRPGPurchaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A28F711B08DF58002907E0 /* HRPGPurchaseButton.m */; };
 		D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9A50E991A868DE400FC8B1A /* Launch Screen.xib */; };
 		D9A63A341E10328A0083ADC4 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A63A331E10328A0083ADC4 /* LoginTableViewController.swift */; };
 		D9A63A361E1032BD0083ADC4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A63A351E1032BD0083ADC4 /* LoginViewModel.swift */; };
@@ -568,7 +567,6 @@
 		D9BBF32E1DBD128700C4114C /* ShopAdFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */; };
 		D9BE05841DA6ADE70074D3B7 /* GemPurchaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9BE05831DA6ADE70074D3B7 /* GemPurchaseView.xib */; };
 		D9C31DB31C6501090096F4EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C31DB11C6501090096F4EC /* Main.storyboard */; };
-		D9C89CF61B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C89CF51B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m */; };
 		D9C89CF91B1F0E6C00A599B0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9C89CF81B1F0E6C00A599B0 /* StoreKit.framework */; platformFilter = ios; };
 		D9CD2DBE1BC7FBB500B1304B /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9CD2DBD1BC7FBB500B1304B /* CoreSpotlight.framework */; platformFilter = ios; };
 		D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CD2DD41BCAA6F700B1304B /* UIViewController+TutorialSteps.m */; };
@@ -1313,8 +1311,6 @@
 		D99EA7411B8667C90048BF6A /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = OCMock/libOCMock.a; sourceTree = "<group>"; };
 		D99F15BE191027D90081836E /* HRPGBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGBaseViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D99F15BF191027D90081836E /* HRPGBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGBaseViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		D9A28F701B08DF58002907E0 /* HRPGPurchaseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPurchaseButton.h; sourceTree = "<group>"; };
-		D9A28F711B08DF58002907E0 /* HRPGPurchaseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPurchaseButton.m; sourceTree = "<group>"; };
 		D9A50E991A868DE400FC8B1A /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "Launch Screen.xib"; path = "HabitRPG/Launch Screen.xib"; sourceTree = SOURCE_ROOT; };
 		D9A63A321E10328A0083ADC4 /* Habitica-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Habitica-Bridging-Header.h"; path = "UI/Habitica-Bridging-Header.h"; sourceTree = "<group>"; };
 		D9A63A331E10328A0083ADC4 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
@@ -1345,8 +1341,6 @@
 		D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopAdFooter.xib; sourceTree = "<group>"; };
 		D9BE05831DA6ADE70074D3B7 /* GemPurchaseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GemPurchaseView.xib; path = ../Views/GemPurchaseView.xib; sourceTree = "<group>"; };
 		D9C31DB21C6501090096F4EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D9C89CF41B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPurchaseLoadingButton.h; sourceTree = "<group>"; };
-		D9C89CF51B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPurchaseLoadingButton.m; sourceTree = "<group>"; };
 		D9C89CF81B1F0E6C00A599B0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D9CD2DBD1BC7FBB500B1304B /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
 		D9CD2DD31BCAA6F700B1304B /* UIViewController+TutorialSteps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+TutorialSteps.h"; path = "HabitRPG/Utilities/UIViewController+TutorialSteps.h"; sourceTree = SOURCE_ROOT; };
@@ -2096,10 +2090,6 @@
 				493ECBB81F47D82A0099B1FC /* HRPGGearSetItem.xib */,
 				493ECBB21F47A1100099B1FC /* HRPGItemStatsView.swift */,
 				493ECBB41F47A58F0099B1FC /* HRPGItemStatsView.xib */,
-				D9A28F701B08DF58002907E0 /* HRPGPurchaseButton.h */,
-				D9A28F711B08DF58002907E0 /* HRPGPurchaseButton.m */,
-				D9C89CF41B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.h */,
-				D9C89CF51B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m */,
 				49DCB7B51F3F64B40079FDD0 /* HRPGShopModalBgView.swift */,
 				49DCB7B71F3F64D40079FDD0 /* HRPGShopModalBgView.xib */,
 				49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */,
@@ -3749,7 +3739,6 @@
 				296D6F1D20A0908B00D9CAB5 /* PartyQuestView.swift in Sources */,
 				29A9B057228082BF0049291E /* BaseCollectionViewController.swift in Sources */,
 				298119AB1F50251300F9FB39 /* InventoryRepository.swift in Sources */,
-				D9A28F721B08DF58002907E0 /* HRPGPurchaseButton.m in Sources */,
 				29255E431F3DD2120094A3E3 /* TutorialStepView.swift in Sources */,
 				D9BB45DA1E79A02C0002AE2E /* LabeledCheckboxView.swift in Sources */,
 				29A1B9B91F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift in Sources */,
@@ -3824,7 +3813,6 @@
 				D9525F9B1E5F559600C529B8 /* ChallengeTableViewCell.swift in Sources */,
 				D9A63A341E10328A0083ADC4 /* LoginTableViewController.swift in Sources */,
 				299328AB24E5985B003BCE0C /* UIStackview-Extensions.swift in Sources */,
-				D9C89CF61B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m in Sources */,
 				D9436AC11C63A4BB008D1171 /* UIViewController+Markdown.m in Sources */,
 				297D15FD20B825DE0048101F /* HRPGSearchDataManager.m in Sources */,
 				D9BB455D1E71C8C70002AE2E /* CheckedTableViewcell.swift in Sources */,

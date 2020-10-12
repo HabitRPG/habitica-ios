@@ -84,6 +84,8 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         purchaseGems(identifier: PurchaseHandler.IAPIdentifiers[indexPath.item])
+        let cell = collectionView.cellForItem(at: indexPath)
+        (cell as? GemPurchaseCell)?.setLoading(true)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -104,9 +106,8 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
             amount = 84
         }
         cell.setGemAmount(amount)
-        
-        cell.purchaseButton.isUserInteractionEnabled = false
-        
+        cell.setLoading(false)
+                
         activePromo?.configureGemView(view: cell, regularAmount: amount)
         
         return cell

@@ -22,4 +22,3 @@
 #import "NSString+Emoji.h"
 #import "UIViewController+TutorialSteps.h"
 #import "HRPGTutorialUIViewController.h"
-#import "HRPGPurchaseLoadingButton.h"
