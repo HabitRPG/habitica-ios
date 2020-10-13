@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public protocol TagProtocol {
+public protocol TagProtocol: BaseModelProtocol {
     @objc var id: String? { get set }
     @objc var text: String? { get set }
     @objc var order: Int { get set }

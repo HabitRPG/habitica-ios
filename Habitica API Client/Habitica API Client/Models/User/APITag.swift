@@ -13,7 +13,8 @@ public class APITag: TagProtocol, Codable {
     public var id: String?
     public var text: String?
     public var order: Int = 0
-    
+    public var isValid: Bool { return true }
+
     enum CodingKeys: String, CodingKey {
         case id
         case text = "name"

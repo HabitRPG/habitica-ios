@@ -19,12 +19,21 @@ class DailyTableViewDataSource: TaskTableViewDataSource {
         super.configure(cell: cell, indexPath: indexPath, task: task)
         if let dailycell = cell as? DailyTableViewCell {
             dailycell.checkboxTouched = {[weak self] in
+                if task.isValid == false {
+                    return
+                }
                 self?.scoreTask(task: task, direction: task.completed ? .down : .up, soundEffect: .dailyCompleted)
             }
             dailycell.checklistItemTouched = {[weak self] checklistItem in
+                if task.isValid == false {
+                    return
+                }
                 self?.disposable.add(self?.repository.score(checklistItem: checklistItem, task: task).observeCompleted {})
             }
             dailycell.checklistIndicatorTouched = {[weak self] in
+                if task.isValid == false {
+                    return
+                }
                 self?.expandSelectedCell(indexPath: indexPath)
             }
         }
