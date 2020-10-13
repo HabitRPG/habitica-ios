@@ -45,6 +45,7 @@ class CustomizationDetailCell: UICollectionViewCell {
         imageView.setImagewith(name: "shop_\(gear.key ?? "")")
         if gear.gearSet == "animal" {
             currencyView.amount = 2
+            currencyView.currency = .gem
         }
         applyTheme()
     }
