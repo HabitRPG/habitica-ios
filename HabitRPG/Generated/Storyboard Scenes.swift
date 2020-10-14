@@ -37,6 +37,8 @@ internal enum StoryboardScene {
 
     internal static let avatarOverviewViewController = SceneType<Habitica.AvatarOverviewViewController>(storyboard: Main.self, identifier: "AvatarOverviewViewController")
 
+    internal static let dailiesViewController = SceneType<Habitica.DailyTableViewController>(storyboard: Main.self, identifier: "DailiesViewController")
+
     internal static let equipmentOverviewViewController = SceneType<Habitica.EquipmentOverviewViewController>(storyboard: Main.self, identifier: "EquipmentOverviewViewController")
 
     internal static let gemPurchaseViewController = SceneType<Habitica.GemViewController>(storyboard: Main.self, identifier: "GemPurchaseViewController")
@@ -46,6 +48,8 @@ internal enum StoryboardScene {
     internal static let giftSubscriptionNavController = SceneType<Habitica.ThemedNavigationController>(storyboard: Main.self, identifier: "GiftSubscriptionNavController")
 
     internal static let giftSubscriptionViewController = SceneType<Habitica.GiftSubscriptionViewController>(storyboard: Main.self, identifier: "GiftSubscriptionViewController")
+
+    internal static let habitsViewController = SceneType<Habitica.HabitTableViewController>(storyboard: Main.self, identifier: "HabitsViewController")
 
     internal static let itemNavigationController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "ItemNavigationController")
 
@@ -63,6 +67,8 @@ internal enum StoryboardScene {
 
     internal static let purchaseGemNavController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "PurchaseGemNavController")
 
+    internal static let rewardsViewController = SceneType<Habitica.RewardViewController>(storyboard: Main.self, identifier: "RewardsViewController")
+
     internal static let scanQRCodeNavController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "ScanQRCodeNavController")
 
     internal static let spellUserNavigationController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "SpellUserNavigationController")
@@ -72,6 +78,8 @@ internal enum StoryboardScene {
     internal static let subscriptionNavController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "SubscriptionNavController")
 
     internal static let subscriptionViewController = SceneType<Habitica.SubscriptionViewController>(storyboard: Main.self, identifier: "SubscriptionViewController")
+
+    internal static let todosViewController = SceneType<Habitica.ToDoTableViewController>(storyboard: Main.self, identifier: "TodosViewController")
 
     internal static let spellTaskNavigationController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "spellTaskNavigationController")
 

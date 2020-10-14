@@ -11,7 +11,49 @@ import Habitica_Models
 import Eureka
 import ReactiveSwift
 
-struct MenuItem {
+
+
+class MenuItem {
+    enum Key: String {
+        case tasks
+        case habits
+        case dailies
+        case todos
+        case rewards
+        
+        case skills
+        case selectClass
+        case stats
+        case achievements
+        
+        case customizeAvatar
+        case equipment
+        case items
+        case stable
+        case gems
+        case subscription
+        
+        case market
+        case questShop
+        case seasonalShop
+        case timeTravelersShop
+        
+        case tavern
+        case party
+        case questDetail
+        case guilds
+        case challenges
+        
+        case support
+        case about
+        case news
+        
+        case settings
+        case notifications
+        case messages
+    }
+    
+    var key: MenuItem.Key
     var title: String
     var subtitle: String?
     var subtitleColor: UIColor?
@@ -20,22 +62,65 @@ struct MenuItem {
     var pillBuilder: ((PillView) -> Void)?
     var accessibilityLabel: String?
     var segue: String
+    var vcInstantiator: (() -> UIViewController?)?
     var cellName = "Cell"
     var showIndicator = false
     var isHidden = false
     
-    init(title: String, subtitle: String? = nil, pillText: String? = nil, accessibilityLabel: String? = nil, segue: String, cellName: String = "Cell", showIndicator: Bool = false) {
+    init(key: Key, title: String, subtitle: String? = nil, pillText: String? = nil, accessibilityLabel: String? = nil, segue: String? = nil, vcInstantiator: (() -> UIViewController?)? = nil, cellName: String = "Cell", showIndicator: Bool = false) {
+        self.key = key
         self.title = title
         self.subtitle = subtitle
         self.pillText = pillText
         self.accessibilityLabel = accessibilityLabel
-        self.segue = segue
+        self.segue = segue ?? ""
+        self.vcInstantiator = vcInstantiator
         self.cellName = cellName
         self.showIndicator = showIndicator
     }
+    
+    static let allItems = [
+        MenuItem(key: .habits, title: L10n.Tasks.habits, vcInstantiator: StoryboardScene.Main.habitsViewController.instantiate),
+        MenuItem(key: .dailies, title: L10n.Tasks.dailies, vcInstantiator: StoryboardScene.Main.dailiesViewController.instantiate),
+        MenuItem(key: .todos, title: L10n.Tasks.todos, vcInstantiator: StoryboardScene.Main.todosViewController.instantiate),
+        MenuItem(key: .rewards, title: L10n.Tasks.rewards, vcInstantiator: StoryboardScene.Main.rewardsViewController.instantiate),
+        MenuItem(key: .skills, title: L10n.Menu.castSpells, segue: StoryboardSegue.Main.spellsSegue.rawValue),
+        //MenuItem(key: .selectClass, title: L10n.Menu.selectClass, segue: StoryboardSegue.Main.selectClassSegue.rawValue),
+        MenuItem(key: .stats, title: L10n.Titles.stats, segue: StoryboardSegue.Main.statsSegue.rawValue),
+        MenuItem(key: .achievements, title: L10n.Titles.achievements, segue: StoryboardSegue.Main.achievementsSegue.rawValue),
+        MenuItem(key: .market, title: L10n.Locations.market, segue: StoryboardSegue.Main.showMarketSegue.rawValue),
+        MenuItem(key: .questShop, title: L10n.Locations.questShop, segue: StoryboardSegue.Main.showQuestShopSegue.rawValue),
+        MenuItem(key: .seasonalShop, title: L10n.Locations.seasonalShop, segue: StoryboardSegue.Main.showSeasonalShopSegue.rawValue),
+        MenuItem(key: .timeTravelersShop, title: L10n.Locations.timeTravelersShop, segue: StoryboardSegue.Main.showTimeTravelersSegue.rawValue),
+        MenuItem(key: .customizeAvatar, title: L10n.Menu.customizeAvatar, segue: StoryboardSegue.Main.customizationSegue.rawValue),
+        MenuItem(key: .equipment, title: L10n.Titles.equipment, segue: StoryboardSegue.Main.equipmentSegue.rawValue),
+        MenuItem(key: .items, title: L10n.Titles.items, segue: StoryboardSegue.Main.itemSegue.rawValue),
+        MenuItem(key: .stable, title: L10n.Titles.petsAndMounts, segue: StoryboardSegue.Main.stableSegue.rawValue),
+        MenuItem(key: .gems, title: L10n.Menu.gems, segue: StoryboardSegue.Main.purchaseGemsSegue.rawValue),
+        MenuItem(key: .subscription, title: L10n.Menu.subscription, segue: StoryboardSegue.Main.subscriptionSegue.rawValue),
+        MenuItem(key: .tavern, title: L10n.Titles.tavern, segue: StoryboardSegue.Main.tavernSegue.rawValue),
+        MenuItem(key: .party, title: L10n.Titles.party, segue: StoryboardSegue.Main.partySegue.rawValue),
+        MenuItem(key: .questDetail, title: L10n.quest, vcInstantiator: StoryboardScene.Social.questDetailViewController.instantiate),
+        MenuItem(key: .guilds, title: L10n.Titles.guilds, segue: StoryboardSegue.Main.guildsSegue.rawValue),
+        MenuItem(key: .challenges, title: L10n.Titles.challenges, segue: StoryboardSegue.Main.challengesSegue.rawValue),
+        MenuItem(key: .news, title: L10n.Titles.news, segue: StoryboardSegue.Main.newsSegue.rawValue),
+        MenuItem(key: .support, title: L10n.Menu.support, segue: StoryboardSegue.Main.showSupportSegue.rawValue),
+        MenuItem(key: .about, title: L10n.Titles.about, segue: StoryboardSegue.Main.aboutSegue.rawValue),
+        MenuItem(key: .settings, title: L10n.Titles.settings, segue: StoryboardSegue.Main.settingsSegue.rawValue),
+        MenuItem(key: .messages, title: L10n.Titles.messages, segue: StoryboardSegue.Main.inboxSegue.rawValue),
+        MenuItem(key: .notifications, title: L10n.Titles.notifications, vcInstantiator: StoryboardScene.Main.notificationsNavigationController.instantiate)
+    ]
 }
 
 struct MenuSection {
+    enum Key: String {
+        case user
+        case inventory
+        case shops
+        case social
+        case about
+    }
+    let key: Key
     let title: String?
     let iconAsset: ImageAsset?
     var isHidden: Bool = false
@@ -67,7 +152,7 @@ class MainMenuViewController: BaseTableViewController {
     
     private var menuSections = [MenuSection]()
     var visibleSections: [MenuSection] {
-        return menuSections.filter { (section) in !section.isHidden }
+        return menuSections.filter { (section) in (!section.isHidden && !section.visibleItems.isEmpty) }
     }
     private var giftRecipientUsername = ""
     
@@ -75,30 +160,22 @@ class MainMenuViewController: BaseTableViewController {
 
     private var user: UserProtocol? {
         didSet {
-            let socialIndex = configRepository.bool(variable: .reorderMenu) ? 3 : 1
-            let inventoryIndex = configRepository.bool(variable: .reorderMenu) ? 2 : 3
             if let user = self.user {
                 navbarView.configure(user: user)
             }
-            if user?.stats?.habitClass == "wizard" || user?.stats?.habitClass == "healer" {
-                menuSections[0].items[0].title = L10n.Menu.castSpells
-            } else {
-                menuSections[0].items[0].title = L10n.Menu.useSkills
-            }
-            menuSections[0].items[0].isHidden = user?.canUseSkills == false
-            menuSections[0].items[1].isHidden = user?.needsToChooseClass == true
-            menuSections[4].items[0].showIndicator = user?.flags?.hasNewStuff == true
+            menuItem(withKey: .skills).isHidden = user?.canUseSkills == false
+            menuItem(withKey: .news).showIndicator = user?.flags?.hasNewStuff == true
             
             if let partyID = user?.party?.id {
                 let hasPartActivity = user?.hasNewMessages.first(where: { (newMessages) -> Bool in
                     return newMessages.id == partyID
                 })
-                menuSections[socialIndex].items[1].showIndicator = hasPartActivity?.hasNewMessages ?? false
+                menuItem(withKey: .party).showIndicator = hasPartActivity?.hasNewMessages ?? false
             } else {
-                menuSections[socialIndex].items[1].showIndicator = false
+                menuItem(withKey: .party).showIndicator = false
             }
             
-            menuSections[socialIndex].items[0].subtitle = user?.preferences?.sleep == true ? L10n.damagePaused : nil
+            menuItem(withKey: .tavern).subtitle = user?.preferences?.sleep == true ? L10n.damagePaused : nil
             
             tableView.reloadData()
             
@@ -106,9 +183,9 @@ class MainMenuViewController: BaseTableViewController {
                 tableView.tableFooterView = nil
             }
             if user?.isSubscribed == true {
-                menuSections[inventoryIndex].items[5].subtitle = nil
+                menuItem(withKey: .subscription).subtitle = nil
             } else {
-                menuSections[inventoryIndex].items[5].subtitle = L10n.getMoreHabitica
+                menuItem(withKey: .subscription).subtitle = L10n.getMoreHabitica
             }
             if user?.achievements?.hasCompletedOnboarding == true {
                 tableView.tableHeaderView = nil                } else {
@@ -124,15 +201,45 @@ class MainMenuViewController: BaseTableViewController {
             
             if let promo = activePromo {
                 if promo.promoType == .gemsPrice || promo.promoType == .gemsAmount {
-                    menuSections[inventoryIndex].items[4].pillText = L10n.sale
-                    menuSections[inventoryIndex].items[4].pillBuilder = promo.configurePill
+                    menuItem(withKey: .gems).pillText = L10n.sale
+                    menuItem(withKey: .gems).pillBuilder = promo.configurePill
                 }
                 if promo.promoType == .subscription {
-                    menuSections[inventoryIndex].items[5].pillText = L10n.sale
-                    menuSections[inventoryIndex].items[5].pillBuilder = promo.configurePill
+                    menuItem(withKey: .subscription).pillText = L10n.sale
+                    menuItem(withKey: .subscription).pillBuilder = promo.configurePill
+                }
+            }
+            
+            let customMenu = configRepository.array(variable: .customMenu)
+            // swiftlint:disable:next empty_count
+            if customMenu.count > 0 {
+                reorderMenu(customMenu)
+            }
+            
+            menuItem(withKey: .challenges).isHidden = configRepository.bool(variable: .disableChallenges)
+        }
+    }
+    
+    private func reorderMenu(_ customMenu: NSArray) {
+        var newOrder = [MenuSection]()
+        for section in customMenu {
+            if let entry = section as? NSDictionary, let key = MenuSection.Key(rawValue: entry["key"] as? String ?? "") {
+                if var existingSection = menuSection(withKey: key) {
+                    if let itemKeys = entry["items"] as? NSArray {
+                        var items = [MenuItem]()
+                        for key in itemKeys {
+                            if let itemKey = MenuItem.Key(rawValue: key as? String ?? "") {
+                                items.append(menuItem(withKey: itemKey))
+                            }
+                        }
+                        existingSection.items = items
+                    }
+                    newOrder.append(existingSection)
                 }
             }
         }
+        menuSections = newOrder
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -214,49 +321,57 @@ class MainMenuViewController: BaseTableViewController {
     
     private func setupMenu() {
         menuSections = [
-            MenuSection(title: nil, iconAsset: nil, items: [
-                MenuItem(title: L10n.Menu.castSpells, segue: StoryboardSegue.Main.spellsSegue.rawValue),
-                //MenuItem(title: L10n.Menu.selectClass, segue: StoryboardSegue.Main.selectClassSegue.rawValue),
-                MenuItem(title: L10n.Titles.stats, segue: StoryboardSegue.Main.statsSegue.rawValue),
-                MenuItem(title: L10n.Titles.achievements, segue: StoryboardSegue.Main.achievementsSegue.rawValue)
+            MenuSection(key: .user, title: L10n.Settings.user, iconAsset: nil, items: [
+                menuItem(withKey: .skills),
+                menuItem(withKey: .stats),
+                menuItem(withKey: .achievements)
                 ]),
-            MenuSection(title: L10n.Menu.social, iconAsset: Asset.iconSocial, items: [
-                MenuItem(title: L10n.Titles.tavern, segue: StoryboardSegue.Main.tavernSegue.rawValue),
-                MenuItem(title: L10n.Titles.party, segue: StoryboardSegue.Main.partySegue.rawValue),
-                MenuItem(title: L10n.Titles.guilds, segue: StoryboardSegue.Main.guildsSegue.rawValue),
-                MenuItem(title: L10n.Titles.challenges, segue: StoryboardSegue.Main.challengesSegue.rawValue)
-                ]),
-            MenuSection(title: L10n.Menu.shops, iconAsset: Asset.iconInventory, items: [
-                MenuItem(title: L10n.Locations.market, segue: StoryboardSegue.Main.showMarketSegue.rawValue),
-                MenuItem(title: L10n.Locations.questShop, segue: StoryboardSegue.Main.showQuestShopSegue.rawValue),
-                MenuItem(title: L10n.Locations.seasonalShop, segue: StoryboardSegue.Main.showSeasonalShopSegue.rawValue),
-                MenuItem(title: L10n.Locations.timeTravelersShop, segue: StoryboardSegue.Main.showTimeTravelersSegue.rawValue)
+            MenuSection(key: .shops, title: L10n.Menu.shops, iconAsset: Asset.iconInventory, items: [
+                menuItem(withKey: .market),
+                menuItem(withKey: .questShop),
+                menuItem(withKey: .seasonalShop),
+                menuItem(withKey: .timeTravelersShop)
             ]),
-            MenuSection(title: L10n.Menu.inventory, iconAsset: Asset.iconInventory, items: [
-                MenuItem(title: L10n.Menu.customizeAvatar, segue: StoryboardSegue.Main.customizationSegue.rawValue),
-                MenuItem(title: L10n.Titles.equipment, segue: StoryboardSegue.Main.equipmentSegue.rawValue),
-                MenuItem(title: L10n.Titles.items, segue: StoryboardSegue.Main.itemSegue.rawValue),
-                MenuItem(title: L10n.Titles.petsAndMounts, segue: StoryboardSegue.Main.stableSegue.rawValue),
-                MenuItem(title: L10n.Menu.gems, segue: StoryboardSegue.Main.purchaseGemsSegue.rawValue),
-                MenuItem(title: L10n.Menu.subscription, segue: StoryboardSegue.Main.subscriptionSegue.rawValue)
+            MenuSection(key: .inventory, title: L10n.Menu.inventory, iconAsset: Asset.iconInventory, items: [
+                menuItem(withKey: .customizeAvatar),
+                menuItem(withKey: .equipment),
+                menuItem(withKey: .items),
+                menuItem(withKey: .stable),
+                menuItem(withKey: .gems),
+                menuItem(withKey: .subscription)
                 ]),
-            MenuSection(title: L10n.Titles.about, iconAsset: Asset.iconHelp, items: [
-                MenuItem(title: L10n.Titles.news, segue: StoryboardSegue.Main.newsSegue.rawValue),
-                MenuItem(title: L10n.Menu.support, segue: StoryboardSegue.Main.showSupportSegue.rawValue),
-                MenuItem(title: L10n.Titles.about, segue: StoryboardSegue.Main.aboutSegue.rawValue)
+            MenuSection(key: .social, title: L10n.Menu.social, iconAsset: Asset.iconSocial, items: [
+                menuItem(withKey: .tavern),
+                menuItem(withKey: .party),
+                menuItem(withKey: .guilds),
+                menuItem(withKey: .challenges)
+                ]),
+            MenuSection(key: .about, title: L10n.Titles.about, iconAsset: Asset.iconHelp, items: [
+                menuItem(withKey: .news),
+                menuItem(withKey: .support),
+                menuItem(withKey: .about)
                 ])
         ]
-        menuSections[1].items[0].subtitleColor = UIColor.orange10
-        
-        if configRepository.bool(variable: .reorderMenu) {
-            let item = menuSections.remove(at: 1)
-            menuSections.insert(item, at: 3)
-        }
+        menuItem(withKey: .tavern).subtitleColor = UIColor.orange10
         
         if configRepository.bool(variable: .enableGiftOneGetOne) {
-            menuSections[3].items[5].pillText = L10n.sale
-            menuSections[3].items[5].pillColor = .teal50
+            menuItem(withKey: .subscription).pillText = L10n.sale
+            menuItem(withKey: .subscription).pillColor = .teal50
         }
+    }
+    
+    private func menuSection(withKey key: MenuSection.Key) -> MenuSection? {
+        for section in menuSections where section.key == key {
+            return section
+        }
+        return nil
+    }
+    
+    private func menuItem(withKey key: MenuItem.Key) -> MenuItem {
+        for item in MenuItem.allItems where item.key == key {
+            return item
+        }
+        return MenuItem.allItems[0]
     }
     
     @objc
@@ -275,6 +390,9 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return nil
+        }
         return sectionAt(index: section)?.title
     }
     
@@ -316,7 +434,16 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: visibleSections[indexPath.section].visibleItems[indexPath.item].segue, sender: self)
+        let item = visibleSections[indexPath.section].visibleItems[indexPath.item]
+        if let instantiator = item.vcInstantiator, let vc = instantiator() {
+            if let nc = vc as? UINavigationController {
+                navigationController?.present(vc, animated: true, completion: nil)
+            } else {
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        } else {
+            performSegue(withIdentifier: item.segue, sender: self)
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

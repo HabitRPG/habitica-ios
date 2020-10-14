@@ -1483,7 +1483,7 @@ public enum L10n {
   }
 
   public enum Menu {
-    /// Cast Spells
+    /// Cast Skills
     public static var castSpells: String { return L10n.tr("Mainstrings", "menu.cast_spells") }
     /// Customize Avatar
     public static var customizeAvatar: String { return L10n.tr("Mainstrings", "menu.customize_avatar") }
@@ -1503,8 +1503,6 @@ public enum L10n {
     public static var subscription: String { return L10n.tr("Mainstrings", "menu.subscription") }
     /// Support
     public static var support: String { return L10n.tr("Mainstrings", "menu.support") }
-    /// Use Skills
-    public static var useSkills: String { return L10n.tr("Mainstrings", "menu.use_skills") }
   }
 
   public enum Notifications {
