@@ -32,6 +32,8 @@ enum ConfigVariable: Int {
     case knownIssues
     case reorderMenu
     case activePromotion
+    case customMenu
+    case disableChallenges
 
     // swiftlint:disable cyclomatic_complexity
     func name() -> String {
@@ -58,6 +60,8 @@ enum ConfigVariable: Int {
         case .knownIssues: return "knownIssues"
         case .reorderMenu: return "reorderMenu"
         case .activePromotion: return "activePromo"
+        case .customMenu: return "customMenu"
+        case .disableChallenges: return "disableChallenges"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -106,6 +110,10 @@ enum ConfigVariable: Int {
             return NSNumber(booleanLiteral: false)
         case .activePromotion:
             return NSString(string: "")
+        case .customMenu:
+            return NSString(string: "[{\"key\": \"about\", \"items\": [\"habits\", \"dailies\", \"questDetail\", \"notifications\"]}, {\"key\": \"inventory\", \"items\": [\"equipment\", \"items\"]}]")
+        case .disableChallenges:
+            return NSNumber(booleanLiteral: false)
         }
     }
     
@@ -130,7 +138,9 @@ enum ConfigVariable: Int {
             .enableAdventureGuide,
             .knownIssues,
             .reorderMenu,
-            .activePromotion
+            .activePromotion,
+            .customMenu,
+            .disableChallenges
         ]
     }
     // swiftlint:enable cyclomatic_complexity

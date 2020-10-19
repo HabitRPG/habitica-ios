@@ -172,6 +172,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         }
         cell.configure(task: task)
         cell.syncErrorTouched = {[weak self] in
+            if !task.isValid { return }
             let alertController = HabiticaAlertController(title: L10n.Errors.sync, message: L10n.Errors.syncMessage)
             alertController.addAction(title: L10n.resyncTask, style: .default, isMainAction: false, handler: {[weak self] (_) in
                 self?.repository.syncTask(task).observeCompleted {}
@@ -180,12 +181,14 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
             alertController.show()
         }
         cell.openForm = {[weak self] in
+            if !task.isValid { return }
             if let action = self?.onOpenForm {
                 action(indexPath)
             }
         }
         
         cell.challengeIconTapped = {[weak self] in
+            if !task.isValid { return }
             self?.showBrokenChallengeDialog(task: task)
         }
     }

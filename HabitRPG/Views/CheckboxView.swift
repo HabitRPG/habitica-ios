@@ -147,7 +147,7 @@ class CheckboxView: UIView {
         layer.setNeedsDisplay()
     }
     
-    func configure(checklistItem: ChecklistItemProtocol, withTitle: Bool, checkColor: UIColor, taskType: String?) {
+    func configure(checklistItem: ChecklistItemProtocol, withTitle: Bool, checkColor: UIColor, checkboxColor: UIColor, taskType: String?) {
         size = 20
         boxCornerRadius = taskType == TaskType.daily.rawValue ? 4 : (size/2)
         padding = 10
@@ -172,7 +172,7 @@ class CheckboxView: UIView {
         let theme = ThemeService.shared.theme
         label.textColor = checked ? theme.dimmedTextColor : theme.primaryTextColor
         backgroundColor = UIColor.clear
-        boxFillColor = theme.contentBackgroundColor.withAlphaComponent(0.65)
+        boxFillColor = checkboxColor
         boxBorderColor = nil
         self.checkColor = checkColor
         centerCheckbox = false

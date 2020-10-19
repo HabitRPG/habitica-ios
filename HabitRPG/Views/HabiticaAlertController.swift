@@ -354,7 +354,6 @@ class HabiticaAlertController: UIViewController, Themeable {
             }
         }
     }
-
     
     @objc
     func enqueue() {

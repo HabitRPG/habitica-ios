@@ -21,6 +21,8 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
                              "daily": ["daily", "dailies", "dailys"]]
     let spokenTaskTypes = ["Habits", "Dailies", "To-Dos"]
     var possibleTaskLists: [INTaskList]
+    
+    private let userLocalRepository = UserLocalRepository()
 
     override init() {
         self.possibleTaskLists = self.listSpokenPhraseMap.keys.map {
@@ -197,4 +199,18 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
         })
     }
 
+    func getUser() -> SignalProducer<UserProtocol, ReactiveSwiftRealmError> {
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
+            return self?.userLocalRepository.getUser(userID) ?? SignalProducer.empty
+        })
+    }
+
+    func retrieveUser() -> Signal<UserProtocol?, Never> {
+        let call = RetrieveUserCall()
+        return call.objectSignal.on(value: {[weak self] user in
+            if let user = user {
+                self?.userLocalRepository.save(user)
+            }
+        })
+    }
 }

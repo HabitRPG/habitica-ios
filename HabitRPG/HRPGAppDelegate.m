@@ -96,6 +96,15 @@
     return YES;
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    if ([_currentAuthorizationFlow resumeExternalUserAgentFlowWithURL:url]) {
+        _currentAuthorizationFlow = nil;
+        return YES;
+    }
+
+    return [RouterHandler.shared handleWithUrl:url];
+}
+
 - (BOOL)application:(UIApplication *)application
               openURL:(NSURL *)url
     sourceApplication:(NSString *)sourceApplication

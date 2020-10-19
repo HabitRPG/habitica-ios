@@ -573,7 +573,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>513</string>
+	<string>516</string>
 	<key>CustomDomain</key>
 	<string>${CUSTOM_DOMAIN}</string>
 	<key>DisableSSL</key>
@@ -674,6 +674,11 @@
 	<string>Habitica needs access to the microphone to be able to attach voice notes</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>In order to scan a QR Code, Habitica will need access to the devices camera.</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>HRPGAddTaskIntent</string>
+		<string>HRPGDailiesCountIntent</string>
+	</array>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>

@@ -161,6 +161,9 @@ class TaskFormViewController: FormViewController, Themeable {
                         return
                     }
                     row.value = self.task.tags.contains(where: { (taskTag) -> Bool in
+                        if !taskTag.isValid || !tag.isValid {
+                            return false
+                        }
                         return taskTag.id == tag.id
                     })
                     row.cellUpdate({ (cell, _) in
@@ -607,7 +610,7 @@ class TaskFormViewController: FormViewController, Themeable {
             section.tag = TaskFormTags.tagSection
         }
     
-        disposable.inner.add(taskRepository.getTags().on(value: {[weak self](tags, _) in
+        disposable.inner.add(taskRepository.getTags().take(first: 1).on(value: {[weak self](tags, _) in
             self?.tags = tags
         }).start())
     }

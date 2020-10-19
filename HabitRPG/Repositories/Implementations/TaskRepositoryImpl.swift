@@ -74,6 +74,8 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         localRepository.save(userID: currentUserId, task: task)
     }
     
+    private var userLevel: Int?
+    
     func score(task: TaskProtocol, direction: TaskScoringDirection) -> Signal<TaskResponseProtocol?, Never> {
         if !task.isValid { return Signal.empty }
         if #available(iOS 10, *) {
@@ -120,6 +122,16 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
                 }
                 ToastManager.show(text: dialog ?? "", color: .gray)
             }
+            if let userLevel = self?.userLevel {
+                if userLevel < stats.level {
+                    UserRepository().getUser().take(first: 1).on(value: { user in
+                        let levelUpView = LevelUpOverlayView(avatar: user)
+                        levelUpView.show()
+                        SoundManager.shared.play(effect: .levelUp)
+                    }).start()
+                }
+            }
+            self?.userLevel = stats.level
         }).map({ (response, _) in
             return response
         })

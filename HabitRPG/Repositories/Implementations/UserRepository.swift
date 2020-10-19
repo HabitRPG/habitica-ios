@@ -13,6 +13,8 @@ import Habitica_API_Client
 import ReactiveSwift
 import Shared
 
+import WidgetKit
+
 class UserRepository: BaseRepository<UserLocalRepository> {
     
     var lastPushDeviceSync: Date?
@@ -121,6 +123,9 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                 RemoteLogger.shared.record(error: error)
             }).observeCompleted {
                 disposable?.dispose()
+                if #available(iOS 14.0, *) {
+                    // WidgetCenter.shared.reloadAllTimelines()
+                }
             }
         } else {
             disposable = RunCronCall().responseSignal.flatMap(.latest, { (_) in
@@ -129,6 +134,9 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                 RemoteLogger.shared.record(error: error)
             }).observeCompleted {
                 disposable?.dispose()
+                if #available(iOS 14.0, *) {
+                    // WidgetCenter.shared.reloadAllTimelines()
+                }
             }
         }
     }
@@ -219,7 +227,9 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         }
         deregisterPushDevice().observeCompleted {}
         let defaults = UserDefaults.standard
+        let themeMode = defaults.string(forKey: "themeMode")
         defaults.dictionaryRepresentation().keys.forEach { defaults.removeObject(forKey: $0) }
+        defaults.set(themeMode, forKey: "themeMode")
     }
     
     func updateEmail(newEmail: String, password: String) -> Signal<UserProtocol, ReactiveSwiftRealmError> {

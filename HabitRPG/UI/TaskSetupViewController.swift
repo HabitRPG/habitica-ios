@@ -119,7 +119,7 @@ enum SetupTaskCategory {
     }
 }
 
-class TaskSetupViewController: UIViewController, TypingTextViewController {
+class TaskSetupViewController: UIViewController, TypingTextViewController, Themeable {
     
     @IBOutlet weak var avatarView: AvatarView!
 
@@ -152,7 +152,8 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
         super.viewDidLoad()
         
         speechBubbleView.text = L10n.Intro.taskSetupSpeechbubble
-        
+        ThemeService.shared.addThemeable(themable: self)
+
         avatarView.showBackground = false
         avatarView.showMount = false
         avatarView.showPet = false
@@ -167,6 +168,10 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
         if view.frame.size.height <= 568 {
             containerHeight.constant = 205
         }
+    }
+    
+    func applyTheme(theme: Theme) {
+        view.backgroundColor = theme.windowBackgroundColor
     }
     
     func initButtons() {

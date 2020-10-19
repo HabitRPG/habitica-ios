@@ -86,12 +86,11 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     private let shopIdentifier: String
     
     init(identifier: String, delegate: ShopCollectionViewDataSourceDelegate) {
-        self.shopIdentifier = identifier
+        shopIdentifier = identifier
         self.delegate = delegate
         super.init()
         sections.append(ItemSection<InAppRewardProtocol>())
         sections[0].showIfEmpty = needsGearSection
-        
         
         disposable.add(inventoryRepository.getShop(identifier: identifier).combineLatest(with: userRepository.getUser()).on(value: {[weak self] (shop, user) in
             let sectionCount = self?.sections.count ?? 0

@@ -68,6 +68,7 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
     
     @objc
     func configure(task: TaskProtocol) {
+        if !task.isValid { return }
         self.titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
         self.titleLabel.textContainerInset = UIEdgeInsets.zero
         self.subtitleLabel.textContainerInset = UIEdgeInsets.zero

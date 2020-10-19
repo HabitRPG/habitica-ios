@@ -30,9 +30,7 @@ class UserManager: NSObject {
     weak var yesterdailiesDialog: YesterdailiesDialogView?
     
     private var tutorialSteps = [String: Bool]()
-    
-    private var userLevel: Int?
-    
+        
     func beginListening() {
         let today = Date()
         let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)
@@ -113,15 +111,6 @@ class UserManager: NSObject {
         faintViewController = checkFainting(user: user)
         
         let wasShown = checkClassSelection(user: user)
-        
-        if !wasShown, let userLevel = userLevel {
-            if userLevel < (user.stats?.level ?? 0) {
-                let levelUpView = LevelUpOverlayView(avatar: user)
-                levelUpView.show()
-                SoundManager.shared.play(effect: .levelUp)
-            }
-        }
-        userLevel = user.stats?.level
         
         handleQuestCompletion(user)
         

@@ -106,6 +106,9 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
                 let potionView = cell?.viewWithTag(3) as? NetworkImageView
                 potionView?.setImagewith(name: "Pet_HatchingPotion_" + (petItem.pet?.potion ?? ""))
                 cell?.borderColor = ThemeService.shared.theme.tintColor
+                cell?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                cell?.borderColor = ThemeService.shared.theme.tintColor
+                cell?.viewWithTag(2)?.tintColor = ThemeService.shared.theme.tintColor
             } else {
                 cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
                 (cell as? PetDetailCell)?.configure(petItem: petItem)

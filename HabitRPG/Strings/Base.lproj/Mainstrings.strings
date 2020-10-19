@@ -225,8 +225,7 @@
 "menu.social" = "Social";
 "menu.inventory" = "Inventory";
 "menu.select_class" = "Select Class";
-"menu.cast_spells" = "Cast Spells";
-"menu.use_skills" = "Use Skills";
+"menu.cast_spells" = "Cast Skills";
 "menu.shops" = "Shops";
 "menu.customize_avatar" = "Customize Avatar";
 "menu.gems" = "Purchase Gems";

@@ -20,6 +20,11 @@ class RealmTag: Object, TagProtocol {
         return "id"
     }
     
+    
+    var isValid: Bool {
+        return !isInvalidated
+    }
+    
     convenience init(userID: String?, tagProtocol: TagProtocol) {
         self.init()
         id = tagProtocol.id

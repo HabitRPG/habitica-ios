@@ -12,7 +12,7 @@ import ReactiveCocoa
 import Habitica_Models
 import Habitica_Database
 
-class WelcomeViewController: UIViewController, TypingTextViewController, UITextFieldDelegate {
+class WelcomeViewController: UIViewController, TypingTextViewController, UITextFieldDelegate, Themeable {
     
     var onEnableNextButton: ((Bool) -> Void)?
     var displayName: String? {
@@ -34,6 +34,11 @@ class WelcomeViewController: UIViewController, TypingTextViewController, UITextF
     @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var speechbubbleView: SpeechbubbleView!
+    @IBOutlet weak var nameContainer: UIView!
+    @IBOutlet weak var displayNameContainer: UIView!
+    @IBOutlet weak var usernameContainer: UIView!
+    @IBOutlet weak var nameHorizontalSeparator: UIView!
+    @IBOutlet weak var nameVerticalSeparator: UIView!
     
     func startTyping() {
         speechbubbleView.animateTextView()
@@ -46,9 +51,10 @@ class WelcomeViewController: UIViewController, TypingTextViewController, UITextF
         super.viewDidLoad()
         
         populateText()
+        ThemeService.shared.addThemeable(themable: self)
         
-        displayNameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50, percentage: 100)
-        usernameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50, percentage: 100)
+        displayNameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.white, percentage: 100).withRenderingMode(.alwaysTemplate)
+        usernameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.white, percentage: 100).withRenderingMode(.alwaysTemplate)
         
         displayNameIconView.isHidden = true
         usernameIconView.isHidden = true
@@ -91,6 +97,25 @@ class WelcomeViewController: UIViewController, TypingTextViewController, UITextF
             self?.usernameProperty.value = user.username
             self?.currentUsername = user.username
         }).start()
+    }
+    
+    func applyTheme(theme: Theme) {
+        welcomePromptLabel.textColor = theme.backgroundTintColor
+        view.backgroundColor = theme.windowBackgroundColor
+        errorLabel.textColor = theme.errorColor
+        
+        displayNameLabel.textColor = theme.secondaryTextColor
+        usernameLabel.textColor = theme.secondaryTextColor
+        displayNameTextField.textColor = theme.primaryTextColor
+        usernameTextField.textColor = theme.primaryTextColor
+        displayNameIconView.tintColor = theme.successColor
+        usernameIconView.tintColor = theme.successColor
+        nameContainer.backgroundColor = theme.offsetBackgroundColor
+        nameContainer.borderColor = theme.tableviewSeparatorColor
+        displayNameContainer.backgroundColor = theme.contentBackgroundColor
+        usernameContainer.backgroundColor = theme.contentBackgroundColor
+        nameVerticalSeparator.backgroundColor = theme.tableviewSeparatorColor
+        nameHorizontalSeparator.backgroundColor = theme.tableviewSeparatorColor
     }
     
     func populateText() {

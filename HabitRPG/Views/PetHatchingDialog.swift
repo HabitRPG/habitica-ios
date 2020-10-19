@@ -122,8 +122,14 @@ class PetHatchingAlertController: HabiticaAlertController {
         
         if eggCount > 0 && potionCount > 0 {
             addAction(title: L10n.hatch, isMainAction: true) { _ in
+                self.inventoryRepository.getItems(keys: [ItemType.eggs: [item.pet?.egg ?? ""], ItemType.hatchingPotions: [item.pet?.potion ?? ""]]).take(first: 1).on(value: { items in
                 self.inventoryRepository.hatchPet(egg: ownedEggs?.key, potion: ownedPotions?.key).observeCompleted {
+                    guard let egg = items.eggs.value.first, let potion = items.hatchingPotions.value.first else {
+                        return
+                    }
+                    self.showHatchedDialog(egg: egg, potion: potion)
                 }
+                }).start()
             }
             addCloseAction()
         } else {
@@ -132,10 +138,10 @@ class PetHatchingAlertController: HabiticaAlertController {
             inventoryRepository.getItems(keys: [ItemType.eggs: [item.pet?.egg ?? ""], ItemType.hatchingPotions: [item.pet?.potion ?? ""]]).take(first: 1).on(value: { items in
                 let egg = items.eggs.value.first
                 let potion = items.hatchingPotions.value.first
-                var hatchValue = self.getItemPrice(pet: item.pet, item: egg, hasUnlocked: ownedEggs != nil)
-                hatchValue += self.getItemPrice(pet: item.pet, item: potion, hasUnlocked: ownedPotions != nil)
+                var hatchValue = Int(egg?.value ?? 0.0)
+                hatchValue += Int(potion?.value ?? 0.0)
                 
-                if hatchValue > 0 {
+                if hatchValue > 0 && (item.pet?.type == "drop" || (item.pet?.type == "quest" && ownedEggs != nil)) {
                     let attributedText = NSMutableAttributedString(string: L10n.hatch + "   \(hatchValue) :gems:")
                     let text = attributedText.mutableString
                     let range = text.range(of: ":gems:")
@@ -174,12 +180,22 @@ class PetHatchingAlertController: HabiticaAlertController {
         setupView()
     }
     
-    private func getItemPrice(pet: PetProtocol?, item: ItemProtocol?, hasUnlocked: Bool) -> Int {
-            if pet?.type == "drop" || (pet?.type == "quest" && hasUnlocked) {
-                return Int(item?.value ?? 0.0)
-            }
-            return 0
+    private func showHatchedDialog(egg: EggProtocol, potion: HatchingPotionProtocol) {
+        let imageAlert = ImageOverlayView(imageName: "Pet-\(egg.key ?? "")-\(potion.key ?? "")", title: L10n.Inventory.hatched, message: "\(potion.text ?? "") \(egg.text ?? "")")
+        imageAlert.addAction(title: L10n.equip, isMainAction: true) {[weak self] _ in
+            self?.inventoryRepository.equip(type: "pet", key: "\(egg.key ?? "")-\(potion.key ?? "")").observeCompleted {}
         }
+        imageAlert.addAction(title: L10n.share) { (_) in
+            SharingManager.share(items: [
+                    L10n.Inventory.hatchedSharing(egg.text ?? "", potion.text ?? "")
+                ], presentingViewController: imageAlert, sourceView: nil)
+        }
+        imageAlert.arrangeMessageLast = true
+        imageAlert.containerViewSpacing = 12
+        imageAlert.setCloseAction(title: L10n.close, handler: {})
+        imageAlert.imageHeight = 99
+        imageAlert.enqueue()
+    }
     
     private func setupView() {
         contentView = stackView
