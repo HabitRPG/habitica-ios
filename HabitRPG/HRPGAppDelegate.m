@@ -9,7 +9,6 @@
 #import "HRPGAppDelegate.h"
 #import <CoreSpotlight/CoreSpotlight.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import "HRPGMaintenanceViewController.h"
 #import <Keys/HabiticaKeys.h>
 #import "AppAuth.h"
 #import "Habitica-Swift.h"

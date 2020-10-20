@@ -11,6 +11,7 @@ import SlackTextViewController
 import Down
 import Habitica_Models
 import ReactiveSwift
+import Shared
 
 class GroupChatViewController: SLKTextViewController, Themeable {
     

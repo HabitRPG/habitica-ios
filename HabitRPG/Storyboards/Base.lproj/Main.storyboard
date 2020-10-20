@@ -60,7 +60,7 @@
                         </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" image="add_icon" id="eoD-0q-22r">
                             <connections>
-                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" animates="NO" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="PHp-cT-md6"/>
+                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" modalPresentationStyle="automatic" modalTransitionStyle="coverVertical" id="PHp-cT-md6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -108,7 +108,7 @@
                         </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" image="add_icon" id="QMS-gq-G3V">
                             <connections>
-                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" animates="NO" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="WX7-CS-CSr"/>
+                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" modalPresentationStyle="automatic" modalTransitionStyle="coverVertical" id="WX7-CS-CSr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -149,7 +149,7 @@
                         </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" image="add_icon" id="txM-DJ-1EC">
                             <connections>
-                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" animates="NO" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="6tw-63-M3K"/>
+                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" modalPresentationStyle="automatic" modalTransitionStyle="coverVertical" id="6tw-63-M3K"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1513,7 +1513,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="GemPurchaseViewController" id="0F5-C1-rPv" customClass="GemViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" id="CgT-fS-CrK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="18" minimumInteritemSpacing="18" id="VJm-WU-tp7">
@@ -2734,7 +2734,7 @@
                     <navigationItem key="navigationItem" id="HHL-mH-FJc">
                         <barButtonItem key="rightBarButtonItem" image="add_icon" id="NiR-ou-IuB">
                             <connections>
-                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" animates="NO" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="tO1-JH-hWy"/>
+                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" animates="NO" modalPresentationStyle="automatic" modalTransitionStyle="coverVertical" id="tO1-JH-hWy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -3521,7 +3521,7 @@
         <segue reference="ETz-qE-xC2"/>
         <segue reference="mRM-bY-AV4"/>
         <segue reference="nYO-SY-Og4"/>
-        <segue reference="tO1-JH-hWy"/>
+        <segue reference="6tw-63-M3K"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>

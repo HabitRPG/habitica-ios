@@ -124,7 +124,13 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         if let chosenServer = UserDefaults().string(forKey: "chosenServer") {
             switch chosenServer {
             case "production":
-                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.production
+                let configRepository = ConfigRepository()
+                if let host = configRepository.string(variable: .prodHost), let apiVersion = configRepository.string(variable: .apiVersion) {
+                    let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion)")
+                    AuthenticatedCall.defaultConfiguration = config
+                } else {
+                    AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.production
+                }
             case "staging":
                 AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.staging
             case "beta":
@@ -257,10 +263,10 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     @objc
     func displayMaintenanceScreen(data: [AnyHashable: Any], isDeprecated: Bool) {
         if let presentedController = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.presentedViewController {
-        if !(presentedController is HRPGMaintenanceViewController) {
-            let maintenanceController = HRPGMaintenanceViewController()
-            maintenanceController.setMaintenanceData(data)
-            maintenanceController.isDeprecatedApp = isDeprecated
+        if !(presentedController is MaintenanceViewController) {
+            let maintenanceController = MaintenanceViewController()
+            //maintenanceController.setMaintenanceData(data)
+            //maintenanceController.isDeprecatedApp = isDeprecated
             presentedController.present(maintenanceController, animated: true, completion: nil)
         }
         }
@@ -269,7 +275,7 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     @objc
     func hideMaintenanceScreen() {
         if let presentedController = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.presentedViewController {
-            if presentedController is HRPGMaintenanceViewController {
+            if presentedController is MaintenanceViewController {
                 presentedController.dismiss(animated: true, completion: nil)
             }
         }

@@ -100,7 +100,6 @@
 		298FB9E1204D9404004DDACC /* Habitica_Models.h in Headers */ = {isa = PBXBuildFile; fileRef = 298FB9D3204D9403004DDACC /* Habitica_Models.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		298FB9EB204D940E004DDACC /* TaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298FB9EA204D940E004DDACC /* TaskProtocol.swift */; };
 		29990DAC20E3E5B2001ADD8B /* QuestProgressCollectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DAB20E3E5B2001ADD8B /* QuestProgressCollectProtocol.swift */; };
-		29990DB220E3FA82001ADD8B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DB120E3FA82001ADD8B /* Constants.swift */; };
 		29990DB620E51C4B001ADD8B /* PushDeviceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DB520E51C4B001ADD8B /* PushDeviceProtocol.swift */; };
 		29990DC020E65C05001ADD8B /* TaskResponseQuestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DBF20E65C05001ADD8B /* TaskResponseQuestProtocol.swift */; };
 		29990DC220E65C33001ADD8B /* TaskResponseTempProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DC120E65C33001ADD8B /* TaskResponseTempProtocol.swift */; };
@@ -233,7 +232,6 @@
 		298FB9E0204D9404004DDACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		298FB9EA204D940E004DDACC /* TaskProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskProtocol.swift; sourceTree = "<group>"; };
 		29990DAB20E3E5B2001ADD8B /* QuestProgressCollectProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestProgressCollectProtocol.swift; sourceTree = "<group>"; };
-		29990DB120E3FA82001ADD8B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		29990DB520E51C4B001ADD8B /* PushDeviceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushDeviceProtocol.swift; sourceTree = "<group>"; };
 		29990DBF20E65C05001ADD8B /* TaskResponseQuestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskResponseQuestProtocol.swift; sourceTree = "<group>"; };
 		29990DC120E65C33001ADD8B /* TaskResponseTempProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskResponseTempProtocol.swift; sourceTree = "<group>"; };
@@ -464,7 +462,6 @@
 				29B478C020C531B000B6123F /* ArmoireResponseProtocol.swift */,
 				29A62B02216CC66F00D4BD90 /* VerifyUsernameResponse.swift */,
 				29DBFF0820D1336000DF9CF2 /* EquatableStringEnumProtocol.swift */,
-				29990DB120E3FA82001ADD8B /* Constants.swift */,
 				2981849F20F8AC3E00F06D3D /* BaseModelProtocol.swift */,
 			);
 			path = "Habitica Models";
@@ -680,7 +677,6 @@
 				29323E4320521A7900AC6D6F /* ContributorProtocol.swift in Sources */,
 				29990DB620E51C4B001ADD8B /* PushDeviceProtocol.swift in Sources */,
 				290279872058341F006DACB9 /* QuestProgressProtocol.swift in Sources */,
-				29990DB220E3FA82001ADD8B /* Constants.swift in Sources */,
 				295BC6FF226F607F00DDDF1A /* NotificationNewMysteryItemProtocol.swift in Sources */,
 				292DEE86204E48A80086D5F7 /* ReminderProtocol.swift in Sources */,
 				292DEE7C204E372E0086D5F7 /* ChecklistItemProtocol.swift in Sources */,

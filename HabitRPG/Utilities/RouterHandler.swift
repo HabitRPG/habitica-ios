@@ -98,10 +98,13 @@ class RouterHandler: NSObject {
             self.push(viewController)
         }
         router.register("/user/tasks/:taskType/add") { link in
-            let modalViewController = StoryboardScene.Tasks.taskFormViewController.instantiate()
-            modalViewController.taskType = TaskType(rawValue: link?.routeParameters["taskType"] as? String ?? "habit") ?? TaskType.habit
-            modalViewController.isCreating = true
-            self.present(modalViewController)
+            let navigationController = StoryboardScene.Tasks.taskFormViewController.instantiate()
+            guard let formController = navigationController.topViewController as? TaskFormViewController else {
+                return
+            }
+            formController.isCreating = true
+            formController.taskType = TaskType(rawValue: link?.routeParameters["taskType"] as? String ?? "habit") ?? TaskType.habit
+            self.present(navigationController)
         }
     }
     

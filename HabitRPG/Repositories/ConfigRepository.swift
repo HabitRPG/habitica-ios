@@ -8,10 +8,18 @@
 import Foundation
 import Habitica_API_Client
 import FirebaseRemoteConfig
+import Shared
 
 @objc
 enum ConfigVariable: Int {
     case supportEmail
+    case twitterUsername
+    case instagramUsername
+    case appstoreUrl
+    case prodHost
+    case apiVersion
+    case feedbackURL
+    
     case shopSpriteSuffix
     case maxChatLength
     case enableGiftOneGetOne
@@ -27,7 +35,6 @@ enum ConfigVariable: Int {
     case insufficientGemPurchase
     case insufficientGemPurchaseAdjust
     case raiseShops
-    case feedbackURL
     case enableAdventureGuide
     case knownIssues
     case reorderMenu
@@ -40,6 +47,11 @@ enum ConfigVariable: Int {
         // swiftlint:disable switch_case_on_newline
         switch self {
         case .supportEmail: return "supportEmail"
+        case .twitterUsername: return "twitterUsername"
+        case .instagramUsername: return "instagramUsername"
+        case .appstoreUrl: return "appstoreUrl"
+        case .prodHost: return "prodHost"
+        case .apiVersion: return "apiVersion"
         case .shopSpriteSuffix: return "shopSpriteSuffix"
         case .maxChatLength: return "maxChatLength"
         case .enableGiftOneGetOne: return "enableGiftOneGetOne"
@@ -70,6 +82,16 @@ enum ConfigVariable: Int {
         switch self {
         case .supportEmail:
             return NSString(string: "admin@habitica.com")
+        case .twitterUsername:
+            return NSString(string: Constants.defaultTwitterUsername)
+        case .instagramUsername:
+            return NSString(string: Constants.defaultInstagramUsername)
+        case .appstoreUrl:
+            return NSString(string: Constants.defaultAppstoreUrl)
+        case .prodHost:
+            return NSString(string: Constants.defaultProdHost)
+        case .apiVersion:
+            return NSString(string: Constants.defaultApiVersion)
         case .shopSpriteSuffix:
             return NSString(string: "")
         case .maxChatLength:
@@ -111,7 +133,7 @@ enum ConfigVariable: Int {
         case .activePromotion:
             return NSString(string: "")
         case .customMenu:
-            return NSString(string: "[{\"key\": \"about\", \"items\": [\"habits\", \"dailies\", \"questDetail\", \"notifications\"]}, {\"key\": \"inventory\", \"items\": [\"equipment\", \"items\"]}]")
+            return NSString(string: "[]")
         case .disableChallenges:
             return NSNumber(booleanLiteral: false)
         }
@@ -120,6 +142,11 @@ enum ConfigVariable: Int {
     static func allVariables() -> [ConfigVariable] {
         return [
             .supportEmail,
+            .twitterUsername,
+            .instagramUsername,
+            .appstoreUrl,
+            .prodHost,
+            .apiVersion,
             .shopSpriteSuffix,
             .maxChatLength,
             .enableGiftOneGetOne,

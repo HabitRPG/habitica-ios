@@ -107,15 +107,18 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FormSegue" {
-            guard let destinationController = segue.destination as? TaskFormVisualEffectsModalViewController else {
+            guard let destinationController = segue.destination as? UINavigationController else {
                 return
             }
-            destinationController.taskType = .reward
+            guard let formController = destinationController.topViewController as? TaskFormViewController else {
+                return
+            }
+            formController.taskType = .reward
             if let editedReward = self.editedReward {
-                destinationController.taskId = editedReward.id
-                destinationController.isCreating = false
+                formController.taskId = editedReward.id
+                formController.isCreating = false
             } else {
-                destinationController.isCreating = true
+                formController.isCreating = true
             }
             editedReward = nil
         }

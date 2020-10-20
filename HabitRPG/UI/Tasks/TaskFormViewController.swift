@@ -40,8 +40,6 @@ enum TaskFormTags {
 
 //swiftlint:disable:next type_body_length
 class TaskFormViewController: FormViewController, Themeable {
-
-    weak var modalContainerViewController: VisualEffectModalViewController?
     
     @objc var isCreating = true {
         didSet {
@@ -60,7 +58,6 @@ class TaskFormViewController: FormViewController, Themeable {
             if tableView != nil {
                 tableView.reloadData()
             }
-            modalContainerViewController?.screenDimView.backgroundColor = taskTintColor.darker(by: 50).withAlphaComponent(0.6)
         }
     }
     
@@ -73,16 +70,7 @@ class TaskFormViewController: FormViewController, Themeable {
     var lightTaskTintColor: UIColor = UIColor.purple400
     var darkestTaskTintColor: UIColor = UIColor(white: 1, alpha: 0.7)
     
-    var taskId: String? {
-        get {
-            return task.id
-        }
-        set {
-            if let id = newValue, let task = taskRepository.getEditableTask(id: id) {
-                self.task = task
-            }
-        }
-    }
+    var taskId: String?
     @objc var task: TaskProtocol = TaskRepository().getNewTask() {
         didSet {
             if let type = task.type, let newTaskType = TaskType(rawValue: type) {
@@ -245,26 +233,29 @@ class TaskFormViewController: FormViewController, Themeable {
                         self.deleteButtonTapped()
                     })
             }
+            if let id = taskId, let task = taskRepository.getEditableTask(id: id) {
+                self.task = task
+            }
             fillForm()
-            modalContainerViewController?.rightButton.setTitle(L10n.save, for: .normal)
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.save, style: .plain, target: self, action: #selector(rightButtonTapped))
         } else {
             task.type = taskType.rawValue
-            modalContainerViewController?.rightButton.setTitle(L10n.create, for: .normal)
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.create, style: .plain, target: self, action: #selector(rightButtonTapped))
         }
         
         tableView.backgroundColor = .clear
-        tableView.isScrollEnabled = false
-        
-        modalContainerViewController?.onRightButtonTapped = {
-            let errors = self.form.validate()
-            if errors.isEmpty {
-                self.save()
-                self.modalContainerViewController?.dismiss()
-            }
-        }
         
         ThemeService.shared.addThemeable(themable: self, applyImmediately: false)
         tableView.separatorColor = ThemeService.shared.theme.tableviewSeparatorColor
+    }
+    
+    @objc
+    func rightButtonTapped() {
+        let errors = self.form.validate()
+        if errors.isEmpty {
+            self.save()
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     func applyTheme(theme: Theme) {
@@ -291,6 +282,7 @@ class TaskFormViewController: FormViewController, Themeable {
                 }
             }
         }
+        updateTitleBarColor()
         tableView.reloadData()
     }
     
@@ -318,13 +310,9 @@ class TaskFormViewController: FormViewController, Themeable {
         }
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
-        if let visualEffectViewController = modalContainerViewController {
-            visualEffectViewController.contentHeightConstraint.constant = tableView.contentSize.height
-        }
-        tableView.frame = view.frame
+    override func viewDidLayoutSubviews() {
+          super.viewDidLayoutSubviews()
+          self.tableView.contentInset = UIEdgeInsets(top: -2, left: 0, bottom: 0, right: 0)
     }
     
     private func setupBasicTaskInput() {
@@ -870,19 +858,19 @@ class TaskFormViewController: FormViewController, Themeable {
     }
     
     private func updateTitle() {
-        if let visualEffectViewController = modalContainerViewController {
-            if isCreating {
-                visualEffectViewController.title = L10n.Tasks.Form.create(taskType.prettyName())
-            } else {
-                visualEffectViewController.title = L10n.Tasks.Form.edit(taskType.prettyName())
-            }
+        if isCreating {
+            navigationItem.title = L10n.Tasks.Form.create(taskType.prettyName())
+        } else {
+            navigationItem.title = L10n.Tasks.Form.edit(taskType.prettyName())
         }
     }
     
     private func updateTitleBarColor() {
-        if let visualEffectViewController = modalContainerViewController {
-            visualEffectViewController.titleBar.backgroundColor = taskTintColor.darker(by: 16)
-        }
+        navigationController?.navigationBar.barTintColor = taskTintColor.darker(by: 16)
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.white
+            ]
     }
     
     private func deleteButtonTapped() {

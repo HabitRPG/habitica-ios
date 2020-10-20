@@ -8,6 +8,7 @@
 
 import Foundation
 import Habitica_Models
+import Shared
 
 public class APIShop: ShopProtocol, Decodable {
     public var identifier: String?

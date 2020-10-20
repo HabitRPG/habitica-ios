@@ -8,6 +8,7 @@
 
 import Foundation
 import Habitica_Models
+import Shared
 
 class FeedViewController: BaseTableViewController {
     private let dataSource = FeedViewDataSource()

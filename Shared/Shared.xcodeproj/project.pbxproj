@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29BEEB2B253EF88F00D456F8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BEEB2A253EF88E00D456F8 /* Constants.swift */; };
 		C83802EA251DE95500AE90ED /* Shared.h in Headers */ = {isa = PBXBuildFile; fileRef = C83802E8251DE95500AE90ED /* Shared.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C83802F1251DE96700AE90ED /* RemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83802F0251DE96700AE90ED /* RemoteLogger.swift */; };
 		C83802FD251DF1AB00AE90ED /* Pods_Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF641110B4F6EBCBB27C51BD /* Pods_Shared.framework */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		1F9C6555F935919F01510216 /* Pods-Shared.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shared.debug.xcconfig"; path = "Target Support Files/Pods-Shared/Pods-Shared.debug.xcconfig"; sourceTree = "<group>"; };
+		29BEEB2A253EF88E00D456F8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		62C2CC9DF5E9A184B94772C9 /* Pods-Shared.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shared.release.xcconfig"; path = "Target Support Files/Pods-Shared/Pods-Shared.release.xcconfig"; sourceTree = "<group>"; };
 		AF641110B4F6EBCBB27C51BD /* Pods_Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C83802E5251DE95500AE90ED /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +96,7 @@
 				C83802E9251DE95500AE90ED /* Info.plist */,
 				C83802F0251DE96700AE90ED /* RemoteLogger.swift */,
 				C8380300251DF30C00AE90ED /* HabiticaAnalytics.swift */,
+				29BEEB2A253EF88E00D456F8 /* Constants.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			files = (
 				C83802F1251DE96700AE90ED /* RemoteLogger.swift in Sources */,
 				C8380301251DF30C00AE90ED /* HabiticaAnalytics.swift in Sources */,
+				29BEEB2B253EF88F00D456F8 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

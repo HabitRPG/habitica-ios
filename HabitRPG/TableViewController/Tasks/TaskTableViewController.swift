@@ -435,16 +435,19 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FormSegue" {
-            if let destinationVC = segue.destination as? TaskFormVisualEffectsModalViewController {
-                if let typeName = self.typeName {
-                    destinationVC.setTaskTypeString(type: typeName)
+            if let destinationVC = segue.destination as? UINavigationController {
+                guard let formController = destinationVC.topViewController as? TaskFormViewController else {
+                    return
+                }
+                if let typeName = self.typeName, let type = TaskType(rawValue: typeName) {
+                    formController.taskType = type
                 }
                 if let task = dataSource?.taskToEdit {
                     dataSource?.taskToEdit = nil
-                    destinationVC.taskId = task.id
-                    destinationVC.isCreating = false
+                    formController.taskId = task.id
+                    formController.isCreating = false
                 } else {
-                    destinationVC.isCreating = true
+                    formController.isCreating = true
                 }
             }
         } else if segue.identifier == "FilterSegue" {

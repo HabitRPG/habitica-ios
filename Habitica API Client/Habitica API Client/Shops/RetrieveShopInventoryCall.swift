@@ -9,6 +9,7 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
+import Shared
 
 public class RetrieveShopInventoryCall: ResponseObjectCall<ShopProtocol, APIShop> {
     public init(identifier: String, language: String? = nil, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {

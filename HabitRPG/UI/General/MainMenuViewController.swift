@@ -10,8 +10,7 @@ import UIKit
 import Habitica_Models
 import Eureka
 import ReactiveSwift
-
-
+import Shared
 
 class MenuItem {
     enum Key: String {

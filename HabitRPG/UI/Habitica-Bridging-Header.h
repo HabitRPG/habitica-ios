@@ -8,7 +8,6 @@
 #import "HRPGTypingLabel.h"
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
 #import "HRPGBaseCollectionViewController.h"
-#import "HRPGMaintenanceViewController.h"
 #import "HRPGShopViewController.h"
 #import "HRPGCopyTableViewCell.h"
 #import <SlackTextViewController/SLKTextViewController.h>

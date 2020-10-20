@@ -125,10 +125,10 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
                 cell.detailTextLabel?.text = "habitica.com"
             } else if indexPath.item == 1 {
                 cell.textLabel?.text = "Twitter"
-                cell.detailTextLabel?.text = "@habitica"
+                cell.detailTextLabel?.text = "@\(configRepository.string(variable: .twitterUsername) ?? "")"
             } else if indexPath.item == 2 {
                cell.textLabel?.text = "Instagram"
-               cell.detailTextLabel?.text = "@habitica"
+               cell.detailTextLabel?.text = "@\(configRepository.string(variable: .instagramUsername) ?? "")"
            }
         } else if indexPath.section == 4 {
             if indexPath.item == 0 {
@@ -148,7 +148,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
 
         if indexPath.section == 0 {
             if needsUpdate() && indexPath.item == 1 {
-                open(url: "itms-apps://itunes.apple.com/app/id994882113")
+                open(url: configRepository.string(variable: .appstoreUrl) ?? "")
             }
         } else if indexPath.section == 1 {
             if indexPath.item == 0 {
@@ -156,7 +156,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
             } else if indexPath.item == 1 {
                 handleBugReport()
             } else if indexPath.item == 2 {
-                open(url: "itms-apps://itunes.apple.com/app/id994882113")
+                open(url: configRepository.string(variable: .appstoreUrl) ?? "")
             }
         } else if indexPath.section == 2 {
             if indexPath.item == 0 {
@@ -166,11 +166,11 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
             }
         } else if indexPath.section == 3 {
             if indexPath.item == 0 {
-                open(url: "https://habitica.com/")
+                open(url: "https://\(configRepository.string(variable: .prodHost) ?? "")/")
             } else if indexPath.item == 1 {
-                open(url: "https://twitter.com/habitica")
+                open(url: "https://twitter.com/\(configRepository.string(variable: .twitterUsername) ?? "")")
             } else if indexPath.item == 2 {
-               open(url: "https://instagram.com/habitica")
+               open(url: "https://instagram.com/\(configRepository.string(variable: .instagramUsername) ?? "")")
            }
         } else if indexPath.section == 4 {
             if indexPath.item == 0 {

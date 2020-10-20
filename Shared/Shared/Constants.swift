@@ -17,4 +17,10 @@ public class Constants: NSObject {
     @objc public static let QuestShopKey = "questShop"
     @objc public static let TimeTravelersShopKey = "timeTravelersShop"
     @objc public static let SeasonalShopKey = "seasonalShop"
+    
+    @objc public static let defaultTwitterUsername = "habitica"
+    @objc public static let defaultInstagramUsername = "habitica"
+    @objc public static let defaultAppstoreUrl = "itms-apps://itunes.apple.com/app/id994882113"
+    @objc public static let defaultProdHost = "habitica.com"
+    @objc public static let defaultApiVersion = "v4"
 }
