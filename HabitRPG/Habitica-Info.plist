@@ -752,5 +752,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+    <key>FacebookAutoLogAppEventsEnabled</key>
+    <false/>
 </dict>
 </plist>
