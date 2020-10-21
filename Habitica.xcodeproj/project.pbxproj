@@ -495,9 +495,6 @@
 		D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */; };
 		D902AD8A1B540AE30098A1BD /* HRPGBaseCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D902AD891B540AE30098A1BD /* HRPGBaseCollectionViewController.m */; };
 		D90576851BD83240009BB7BC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D90576871BD83240009BB7BC /* InfoPlist.strings */; };
-		D905D08C1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D905D08B1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib */; };
-		D905D08F1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D905D08E1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m */; };
-		D914890D1CD23A900015B42D /* HRPGMaintenanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D914890B1CD23A900015B42D /* HRPGMaintenanceViewController.m */; };
 		D91CCAD01BCF11CC001C6A0C /* UserTopHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */; };
 		D92A084B1D33FA08000F8B66 /* HRPGShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A084A1D33FA08000F8B66 /* HRPGShopViewController.m */; };
 		D92C0C411B8745DF000AF799 /* HRPGAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C0C401B8745DF000AF799 /* HRPGAPITests.m */; };
@@ -507,7 +504,6 @@
 		D9436AC11C63A4BB008D1171 /* UIViewController+Markdown.m in Sources */ = {isa = PBXBuildFile; fileRef = D9436AC01C63A4BB008D1171 /* UIViewController+Markdown.m */; };
 		D94461911AB355940015215E /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = D94461901AB355940015215E /* user.json */; };
 		D946E5C21B30A89500806BE6 /* NSDate+NSDateMock.m in Sources */ = {isa = PBXBuildFile; fileRef = D946E5C11B30A89500806BE6 /* NSDate+NSDateMock.m */; };
-		D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */; };
 		D94B96A01B8B2CEE00C977C2 /* content-24.8.15.json in Resources */ = {isa = PBXBuildFile; fileRef = D94B969F1B8B2CEE00C977C2 /* content-24.8.15.json */; };
 		D9525F9B1E5F559600C529B8 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */; };
 		D9525F9D1E64739900C529B8 /* PaddedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9525F9C1E64739900C529B8 /* PaddedView.swift */; };
@@ -583,7 +579,6 @@
 		D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */; };
 		D9D17CDE1E6AFFD900AD9232 /* ChallengeDetailAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CDD1E6AFFD900AD9232 /* ChallengeDetailAlert.swift */; };
 		D9E02EC61E5E0458002CFCE2 /* ChallengeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E02EC51E5E0458002CFCE2 /* ChallengeTableViewController.swift */; };
-		D9E9E0C81CCE64A3006D94A2 /* HRPGImageOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9E9E0C71CCE64A3006D94A2 /* HRPGImageOverlayView.xib */; };
 		D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */; platformFilter = ios; };
 		D9EB4E9118CB4A9400BB2094 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E9018CB4A9400BB2094 /* CoreGraphics.framework */; platformFilter = ios; };
 		D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E9218CB4A9400BB2094 /* UIKit.framework */; platformFilter = ios; };
@@ -1231,11 +1226,6 @@
 		D90576941BD83259009BB7BC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D90576981BD8326F009BB7BC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D90576991BD8326F009BB7BC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D905D08B1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGLoginIncentiveOverlayView.xib; sourceTree = "<group>"; };
-		D905D08D1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGLoginIncentiveOverlayView.h; sourceTree = "<group>"; };
-		D905D08E1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLoginIncentiveOverlayView.m; sourceTree = "<group>"; };
-		D914890A1CD23A900015B42D /* HRPGMaintenanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGMaintenanceViewController.h; sourceTree = "<group>"; };
-		D914890B1CD23A900015B42D /* HRPGMaintenanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGMaintenanceViewController.m; sourceTree = "<group>"; };
 		D915F8621915BEE50037D04D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D915F8641915BF0D0037D04D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTopHeader.xib; sourceTree = "<group>"; };
@@ -1257,8 +1247,6 @@
 		D94461901AB355940015215E /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = user.json; path = HabiticaTests/Fixtures/user.json; sourceTree = SOURCE_ROOT; };
 		D946E5C01B30A89500806BE6 /* NSDate+NSDateMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NSDateMock.h"; sourceTree = "<group>"; };
 		D946E5C11B30A89500806BE6 /* NSDate+NSDateMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NSDateMock.m"; sourceTree = "<group>"; };
-		D9479605196DF4B6002CB34C /* HRPGImageOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGImageOverlayView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGImageOverlayView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D94B969F1B8B2CEE00C977C2 /* content-24.8.15.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "content-24.8.15.json"; path = "HabiticaTests/Fixtures/content-24.8.15.json"; sourceTree = SOURCE_ROOT; };
 		D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		D9525F9C1E64739900C529B8 /* PaddedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedView.swift; sourceTree = "<group>"; };
@@ -1360,7 +1348,6 @@
 		D9D795F71CAAE64E00112D38 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9D795F81CAAE64E00112D38 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9E02EC51E5E0458002CFCE2 /* ChallengeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewController.swift; sourceTree = "<group>"; };
-		D9E9E0C71CCE64A3006D94A2 /* HRPGImageOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGImageOverlayView.xib; sourceTree = "<group>"; };
 		D9EB4E8B18CB4A9400BB2094 /* Habitica.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habitica.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9EB4E9018CB4A9400BB2094 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1657,12 +1644,6 @@
 				D98F5DCB1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.h */,
 				D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */,
 				D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */,
-				D9479605196DF4B6002CB34C /* HRPGImageOverlayView.h */,
-				D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */,
-				D9E9E0C71CCE64A3006D94A2 /* HRPGImageOverlayView.xib */,
-				D905D08D1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.h */,
-				D905D08E1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m */,
-				D905D08B1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib */,
 				294973D1208118C100F02AC3 /* ImageOverlayView.swift */,
 				29E30DE520D935AF00F74ECB /* LevelUpOverlayView.swift */,
 				2967CE5C25236F0E00F366DF /* PetHatchingDialog.swift */,
@@ -2167,8 +2148,6 @@
 		D91489091CD23A600015B42D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D914890A1CD23A900015B42D /* HRPGMaintenanceViewController.h */,
-				D914890B1CD23A900015B42D /* HRPGMaintenanceViewController.m */,
 				D92A08491D33FA08000F8B66 /* HRPGShopViewController.h */,
 				D92A084A1D33FA08000F8B66 /* HRPGShopViewController.m */,
 				29EBDA86232BAC3A006611E3 /* HRPGTutorialUIViewController.h */,
@@ -3144,7 +3123,6 @@
 				29A0FD81203DF49900590BDE /* GuidelinesPromptView.xib in Resources */,
 				296E4BBC21AEFE6100DB3602 /* Black@3x.png in Resources */,
 				49DCB7C41F40D80B0079FDD0 /* NPCBannerView.xib in Resources */,
-				D905D08C1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib in Resources */,
 				296E4BB921AEFE6100DB3602 /* PurpleAlt@3x.png in Resources */,
 				29598153224118A100819029 /* TealAltBlack@3x.png in Resources */,
 				2959815E224118A100819029 /* MaroonAltBlack@2x.png in Resources */,
@@ -3214,7 +3192,6 @@
 				D9F1E3EA1E55DCFB0034D0F4 /* SubscriptionInformationCell.xib in Resources */,
 				296E4BC021AEFE6100DB3602 /* Maroon@2x.png in Resources */,
 				293282161F389DBB00D42961 /* SetupCustomizationItemView.xib in Resources */,
-				D9E9E0C81CCE64A3006D94A2 /* HRPGImageOverlayView.xib in Resources */,
 				D984D58F1E4A2F41006E84F8 /* SubscriptionOptionView.xib in Resources */,
 				29205E372062E0030024E355 /* TaskTextInputCell.xib in Resources */,
 				296E4BCD21AEFE6100DB3602 /* BlackAlt@3x.png in Resources */,
@@ -3625,7 +3602,6 @@
 				D9F1E3E81E55DCEC0034D0F4 /* SubscriptionInformationCell.swift in Sources */,
 				290279732057FB4E006DACB9 /* FAQTableViewDataSource.swift in Sources */,
 				29FC884E2010CCC2002B3D3F /* BaseRepository.swift in Sources */,
-				D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */,
 				297517B41F30EBD100B5BCB9 /* AvatarSetupViewController.swift in Sources */,
 				2957B8C41F4D922C00E836EF /* CustomRewardCell.swift in Sources */,
 				D9BB45DD1E7AE5240002AE2E /* ConfigRepository.swift in Sources */,
@@ -3657,7 +3633,6 @@
 				D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */,
 				296CB4EE218C99FD0044A33E /* HabiticaButton.swift in Sources */,
 				29EBDA762328FC43006611E3 /* NSString+Emoji.m in Sources */,
-				D905D08F1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m in Sources */,
 				29EBDA83232A3ABA006611E3 /* KeychainItem.swift in Sources */,
 				49DCB7B21F3E6D400079FDD0 /* HRPGSingleOptionModalViewController.swift in Sources */,
 				292AA72420FE15090022CC5F /* UIFont-Extensions.swift in Sources */,
@@ -3726,7 +3701,6 @@
 				49FA9FF720DC47AD0086C478 /* TaskTableViewController.swift in Sources */,
 				299F93F1246D9C49008DB702 /* PaddedTextField.swift in Sources */,
 				C897F63C218CCF51002907C2 /* RouterHandler.swift in Sources */,
-				D914890D1CD23A900015B42D /* HRPGMaintenanceViewController.m in Sources */,
 				D9525F9D1E64739900C529B8 /* PaddedView.swift in Sources */,
 				2914488C2089E2D300F3A6B5 /* AvatarOverviewItemView.swift in Sources */,
 				290C302C206BACBB0066AF5B /* SpellsTableViewDataSource.swift in Sources */,

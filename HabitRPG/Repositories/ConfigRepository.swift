@@ -12,6 +12,7 @@ import Shared
 
 @objc
 enum ConfigVariable: Int {
+    //Permanent config variables
     case supportEmail
     case twitterUsername
     case instagramUsername
@@ -23,23 +24,21 @@ enum ConfigVariable: Int {
     case shopSpriteSuffix
     case maxChatLength
     case enableGiftOneGetOne
-    case enableUsernameAutocomplete
     case spriteSubstitutions
-    case stableName
     case lastVersionNumber
     case lastVersionCode
     case randomizeAvatar
-    case enablePushMentions
     case showSubscriptionBanner
-    case useNewMysteryBenefits
-    case insufficientGemPurchase
-    case insufficientGemPurchaseAdjust
     case raiseShops
-    case enableAdventureGuide
     case knownIssues
-    case reorderMenu
     case activePromotion
     case customMenu
+    case maintenanceData
+    
+    
+    //A/B Tests
+    case enableAdventureGuide
+    case enableUsernameAutocomplete
     case disableChallenges
 
     // swiftlint:disable cyclomatic_complexity
@@ -57,23 +56,18 @@ enum ConfigVariable: Int {
         case .enableGiftOneGetOne: return "enableGiftOneGetOne"
         case .enableUsernameAutocomplete: return "enableUsernameAutocomplete"
         case .spriteSubstitutions: return "spriteSubstitutions"
-        case .stableName: return "stableName"
         case .lastVersionNumber: return "lastVersionNumber"
         case .lastVersionCode: return "lastVersionCode"
         case .randomizeAvatar: return "randomizeAvatar"
-        case .enablePushMentions: return "enablePushMentions"
         case .showSubscriptionBanner: return "showSubscriptionBanner"
-        case .useNewMysteryBenefits: return "useNewMysteryBenefits"
-        case .insufficientGemPurchase:return "insufficientGemPurchase"
-        case .insufficientGemPurchaseAdjust: return "insufficientGemPurchaseAdjust"
         case .raiseShops: return "raiseShops"
         case .feedbackURL: return "feedbackURL"
         case .enableAdventureGuide: return "enableAdventureGuide"
         case .knownIssues: return "knownIssues"
-        case .reorderMenu: return "reorderMenu"
         case .activePromotion: return "activePromo"
         case .customMenu: return "customMenu"
         case .disableChallenges: return "disableChallenges"
+        case .maintenanceData: return "maintenanceData"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -81,61 +75,51 @@ enum ConfigVariable: Int {
     func defaultValue() -> NSObject {
         switch self {
         case .supportEmail:
-            return NSString(string: "admin@habitica.com")
+            return "admin@habitica.com" as NSString
         case .twitterUsername:
-            return NSString(string: Constants.defaultTwitterUsername)
+            return Constants.defaultTwitterUsername as NSString
         case .instagramUsername:
-            return NSString(string: Constants.defaultInstagramUsername)
+            return Constants.defaultInstagramUsername as NSString
         case .appstoreUrl:
-            return NSString(string: Constants.defaultAppstoreUrl)
+            return Constants.defaultAppstoreUrl as NSString
         case .prodHost:
-            return NSString(string: Constants.defaultProdHost)
+            return Constants.defaultProdHost as NSString
         case .apiVersion:
-            return NSString(string: Constants.defaultApiVersion)
+            return Constants.defaultApiVersion as NSString
         case .shopSpriteSuffix:
-            return NSString(string: "")
+            return "" as NSString
         case .maxChatLength:
-            return NSNumber(integerLiteral: 3000)
+            return 3000 as NSNumber
         case .enableGiftOneGetOne:
-            return NSNumber(booleanLiteral: false)
+            return false as NSNumber
         case .enableUsernameAutocomplete:
-            return NSNumber(booleanLiteral: false)
+            return false as NSNumber
         case .spriteSubstitutions:
-            return NSString(string: "{}")
-        case .stableName:
-            return NSString(string: "")
+            return "{}" as NSString
         case .lastVersionNumber:
-            return NSString(string: "")
+            return "" as NSString
         case .lastVersionCode:
-            return NSNumber(integerLiteral: 0)
+            return 0 as NSNumber
         case .randomizeAvatar:
-            return NSNumber(booleanLiteral: false)
-        case .enablePushMentions:
-            return NSNumber(booleanLiteral: false)
-        case .showSubscriptionBanner:
-            return NSNumber(booleanLiteral: false)
-        case .useNewMysteryBenefits:
-            return NSNumber(booleanLiteral: false)
-        case .insufficientGemPurchase:
-            return NSNumber(booleanLiteral: false)
-        case .insufficientGemPurchaseAdjust:
-            return NSNumber(booleanLiteral: false)
+            return false as NSNumber
         case .raiseShops:
-            return NSNumber(booleanLiteral: false)
+            return false as NSNumber
         case .enableAdventureGuide:
-            return NSNumber(booleanLiteral: false)
+            return false as NSNumber
         case .feedbackURL:
-            return NSString(string: "https://docs.google.com/forms/d/e/1FAIpQLScPhrwq_7P1C6PTrI3lbvTsvqGyTNnGzp1ugi1Ml0PFee_p5g/viewform?usp=sf_link")
+            return "https://docs.google.com/forms/d/e/1FAIpQLScPhrwq_7P1C6PTrI3lbvTsvqGyTNnGzp1ugi1Ml0PFee_p5g/viewform?usp=sf_link" as NSString
         case .knownIssues:
-            return NSString(string: "[]")
-        case .reorderMenu:
-            return NSNumber(booleanLiteral: false)
+            return "[]" as NSString
         case .activePromotion:
-            return NSString(string: "")
+            return "" as NSString
         case .customMenu:
-            return NSString(string: "[]")
+            return "[]" as NSString
         case .disableChallenges:
-            return NSNumber(booleanLiteral: false)
+            return false as NSNumber
+        case .showSubscriptionBanner:
+            return false as NSNumber
+        case .maintenanceData:
+            return "{}" as NSString
         }
     }
     
@@ -152,22 +136,17 @@ enum ConfigVariable: Int {
             .enableGiftOneGetOne,
             .enableUsernameAutocomplete,
             .spriteSubstitutions,
-            .stableName,
             .lastVersionNumber,
             .lastVersionCode,
             .randomizeAvatar,
-            .enablePushMentions,
-            .useNewMysteryBenefits,
-            .insufficientGemPurchase,
-            .insufficientGemPurchaseAdjust,
             .raiseShops,
             .feedbackURL,
             .enableAdventureGuide,
             .knownIssues,
-            .reorderMenu,
             .activePromotion,
             .customMenu,
-            .disableChallenges
+            .disableChallenges,
+            .maintenanceData
         ]
     }
     // swiftlint:enable cyclomatic_complexity

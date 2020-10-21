@@ -284,7 +284,6 @@ class UserManager: NSObject {
         localNotification.soundName = UILocalNotificationDefaultSoundName
         localNotification.category = "completeCategory"
         UIApplication.shared.scheduleLocalNotification(localNotification)
-        print("Scheduled Notification for task", reminder.task?.text ?? "", " at time ", fireDate)
         return localNotification
     }
     

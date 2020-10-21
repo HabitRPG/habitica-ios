@@ -222,63 +222,43 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     }
 
     @objc
-    func handleMaintenanceScreen() {
-        let call = RetrieveMaintenanceInfoCall()
-        
-        call.jsonSignal.map({ json -> [String: Any]? in
-            let jsonDict = json as? [String: Any]
-            return jsonDict
-        })
-            .skipNil()
-            .on(value: {[weak self]json in
-                if let activeMaintenance = json["activeMaintenance"] as? Bool, activeMaintenance {
-                    self?.displayMaintenanceScreen(data: json, isDeprecated: false)
-                } else {
-                    self?.hideMaintenanceScreen()
-                }
-            })
-            .filter { (json) -> Bool in
-                guard let buildNumber = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? NSString else {
-                    return false
-                }
-                if let minVersion = json["minVersion"] as? Int, minVersion > buildNumber.integerValue {
-                    return true
-                }
-                return false
-            }
-            .flatMap(.latest) { (_) -> Signal<Any, Never> in
-                let call = RetrieveDeprecationInfoCall()
-                
-                return call.jsonSignal
-            }
-            .map({ (jsonObject) in
-                return jsonObject as? [AnyHashable: Any]
-            })
-            .skipNil()
-            .observeValues {[weak self] (json) in
-                self?.displayMaintenanceScreen(data: json, isDeprecated: true)
+    func handleMaintenanceScreen() -> Bool {
+        let maintenanceData = ConfigRepository().dictionary(variable: .maintenanceData)
+        if let title = maintenanceData["title"] as? String, let descriptionString = maintenanceData["description"] as? String {
+            displayMaintenanceScreen(title: title, descriptionString: descriptionString)
+            return true
+        } else {
+            hideMaintenanceScreen()
         }
+        return false
     }
     
     @objc
-    func displayMaintenanceScreen(data: [AnyHashable: Any], isDeprecated: Bool) {
-        if let presentedController = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.presentedViewController {
-        if !(presentedController is MaintenanceViewController) {
+    func displayMaintenanceScreen(title: String, descriptionString: String) {
+        if findMaintenanceScreen() == nil {
             let maintenanceController = MaintenanceViewController()
-            //maintenanceController.setMaintenanceData(data)
-            //maintenanceController.isDeprecatedApp = isDeprecated
-            presentedController.present(maintenanceController, animated: true, completion: nil)
-        }
+            maintenanceController.configure(title: title, descriptionString: descriptionString, showAppstoreButton: false)
+            maintenanceController.modalPresentationStyle = .fullScreen
+            maintenanceController.modalTransitionStyle = .crossDissolve
+            UIApplication.topViewController()?.present(maintenanceController, animated: true, completion: nil)
         }
     }
     
     @objc
     func hideMaintenanceScreen() {
-        if let presentedController = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.presentedViewController {
-            if presentedController is MaintenanceViewController {
-                presentedController.dismiss(animated: true, completion: nil)
+        findMaintenanceScreen()?.dismiss(animated: true, completion: nil)
+    }
+    
+    private func findMaintenanceScreen() -> MaintenanceViewController? {
+        var viewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController
+        while viewController != nil {
+            if let maintenanceController = viewController as? MaintenanceViewController {
+                return maintenanceController
+            } else {
+                viewController = viewController?.presentedViewController
             }
         }
+        return nil
     }
     
     @objc
@@ -408,11 +388,8 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
-        
         let dataDict: [String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
-        // TODO: If necessary send token to application server.
-        // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
     
     @objc

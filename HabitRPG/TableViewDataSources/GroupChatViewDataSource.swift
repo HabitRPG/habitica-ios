@@ -95,6 +95,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
                 self?.socialRepository.flag(groupID: self?.groupID ?? "", chatMessage: chatMessage).observeCompleted {}
             }
             view.sizeToFit()
+            
             let popup = KLCPopup(contentView: view,
                                  showType: KLCPopupShowType.bounceIn,
                                  dismissType: KLCPopupDismissType.bounceOut,

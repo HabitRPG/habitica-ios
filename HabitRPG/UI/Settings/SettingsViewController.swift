@@ -628,13 +628,11 @@ class SettingsViewController: FormViewController, Themeable {
                 L10n.Settings.PushNotifications.invitedQuest,
                 L10n.Settings.PushNotifications.questBegun,
                 L10n.Settings.PushNotifications.importantAnnouncement,
-                L10n.Settings.PushNotifications.partyActivity]
-                if configRepository.bool(variable: .enablePushMentions) {
-                    row.options?.append(contentsOf: [
-                    L10n.Settings.PushNotifications.mentionParty,
-                    L10n.Settings.PushNotifications.mentionJoinedGuild,
-                    L10n.Settings.PushNotifications.mentionUnjoinedGuild])
-                }
+                L10n.Settings.PushNotifications.partyActivity,
+                L10n.Settings.PushNotifications.mentionParty,
+                L10n.Settings.PushNotifications.mentionJoinedGuild,
+                L10n.Settings.PushNotifications.mentionUnjoinedGuild
+                ]
                 row.disabled = Condition.function([SettingsTags.disableAllNotifications], { (form) -> Bool in
                     return (form.rowBy(tag: SettingsTags.disableAllNotifications) as? SwitchRow)?.value == true
                 })

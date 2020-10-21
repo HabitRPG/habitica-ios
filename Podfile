@@ -36,7 +36,6 @@ target 'Habitica' do
   pod 'FLEX', '~> 3.0', :configurations => ['Debug']
   pod 'MRProgress'
   pod 'KLCPopup'
-  pod 'Masonry'
   pod "SlackTextViewController"
   pod 'AppAuth'
 

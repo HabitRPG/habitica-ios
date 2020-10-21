@@ -41,6 +41,11 @@ class LoadingViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        if let delegate = UIApplication.shared.delegate as? HRPGAppDelegate {
+            if delegate.swiftAppDelegate.handleMaintenanceScreen() {
+                return
+            }
+        }
         if AuthenticationManager.shared.hasAuthentication() {
             if let repository = userRepository, repository.hasUserData() == false {
                 showLoadingIndicator()

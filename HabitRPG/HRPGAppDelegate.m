@@ -83,7 +83,6 @@
 
     [self.swiftAppDelegate retrieveContent];
 
-    [self.swiftAppDelegate handleMaintenanceScreen];
     [[[ConfigRepository alloc] init] fetchremoteConfig];
 }
 
