@@ -21,7 +21,7 @@ class IOSNetworkIndicatorController: NetworkIndicatorController {
     public func endNetworking() {
         IOSNetworkIndicatorController.networkCount -= 1
         if IOSNetworkIndicatorController.networkCount == 0 {
-            DispatchQueue.main.async { self.showIndicator() }
+            DispatchQueue.main.async { self.hideIndicator() }
         } else if IOSNetworkIndicatorController.networkCount < 0 {
             IOSNetworkIndicatorController.networkCount = 0
         }

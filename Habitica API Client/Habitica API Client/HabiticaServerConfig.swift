@@ -18,8 +18,6 @@ public class HabiticaServerConfig {
     public static let stub = ServerConfiguration(shouldStub: true, scheme: "https", host: "habitica.com", apiRoute: "api/\(Constants.defaultApiVersion)")
     
     public static var current = production
-    
-    public static var aws = ServerConfiguration(scheme: "https", host: "s3.amazonaws.com", apiRoute: "habitica-assets/mobileApp/endpoint")
-    
+        
     public static var etags: [String: String] = [:]
 }
