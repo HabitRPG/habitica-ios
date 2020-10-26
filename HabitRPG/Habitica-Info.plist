@@ -751,8 +751,8 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
+	<key>FacebookAutoLogAppEventsEnabled</key>
 	<false/>
-    <key>FacebookAutoLogAppEventsEnabled</key>
-    <false/>
 </dict>
 </plist>

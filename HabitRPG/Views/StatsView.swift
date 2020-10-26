@@ -73,8 +73,15 @@ class StatsView: UIView, Themeable {
             if canAllocatePoints {
                 allocateButton.backgroundColor = theme.offsetBackgroundColor
                 allocatedBackgroundView.backgroundColor = theme.offsetBackgroundColor
-                allocatedValueLabel.textColor = attributeTextColor
-                allocatedLabel.textColor = attributeTextColor
+                if theme.isDark {
+                    allocateButton.tintColor = .gray400
+                    allocatedLabel.textColor = theme.primaryTextColor
+                    allocatedValueLabel.textColor = theme.primaryTextColor
+                } else {
+                    allocateButton.tintColor = .purple500
+                    allocatedValueLabel.textColor = attributeTextColor
+                    allocatedLabel.textColor = attributeTextColor
+                }
             } else {
                 allocateButton.backgroundColor = theme.windowBackgroundColor
                 allocatedBackgroundView.backgroundColor = theme.windowBackgroundColor

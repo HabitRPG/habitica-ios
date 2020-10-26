@@ -13,6 +13,8 @@ public protocol NotificationProtocol: BaseModelProtocol {
     var id: String { get set }
     var type: HabiticaNotificationType { get set }
     var achievementKey: String? { get set }
+    var achievementMessage: String? { get set }
+    var achievementModalText: String? { get set }
     var seen: Bool { get set }
 }
 

@@ -126,7 +126,7 @@ extension UIColor {
      - parameter taskValue: NSNumber value.
      */
     @objc
-    public static func forTaskValue(_ taskValue: Int) -> UIColor {
+    public static func forTaskValue(_ taskValue: Float) -> UIColor {
         if taskValue < -20 {
             return UIColor.maroon50
         } else if taskValue < -10 {
@@ -150,7 +150,7 @@ extension UIColor {
      - parameter taskValue: NSNumber value.
      */
     @objc
-    public static func forTaskValueDark(_ taskValue: Int) -> UIColor {
+    public static func forTaskValueDark(_ taskValue: Float) -> UIColor {
         if taskValue < -20 {
             return UIColor.maroon10
         } else if taskValue < -10 {
@@ -174,7 +174,7 @@ extension UIColor {
      - parameter taskValue: NSNumber value.
      */
     @objc
-    public static func forTaskValueLight(_ taskValue: Int) -> UIColor {
+    public static func forTaskValueLight(_ taskValue: Float) -> UIColor {
         if taskValue < -20 {
             return UIColor.maroon100
         } else if taskValue < -10 {
@@ -198,7 +198,7 @@ extension UIColor {
      - parameter taskValue: NSNumber value.
      */
     @objc
-    public static func forTaskValueExtraLight(_ taskValue: Int) -> UIColor {
+    public static func forTaskValueExtraLight(_ taskValue: Float) -> UIColor {
         if taskValue < -20 {
             return UIColor.maroon500
         } else if taskValue < -10 {
@@ -222,7 +222,7 @@ extension UIColor {
      - parameter taskValue: NSNumber value.
      */
     @objc
-    public static func forTaskValueDarkest(_ taskValue: Int) -> UIColor {
+    public static func forTaskValueDarkest(_ taskValue: Float) -> UIColor {
         if taskValue < -20 {
             return UIColor.red1
         } else if taskValue < -10 {

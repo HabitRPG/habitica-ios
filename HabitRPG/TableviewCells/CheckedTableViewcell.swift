@@ -99,7 +99,7 @@ class CheckedTableViewCell: TaskTableViewCell {
         checklistContainer.arrangedSubviews.forEach { (view) in
             view.removeFromSuperview()
         }
-        if isExpanded {
+        if isExpanded && checklistCount > 0 {
             addChecklistViews(task: task)
             if task.completed || (task.type == TaskType.daily.rawValue && !task.isDue) {
                 if theme.isDark {
@@ -108,7 +108,7 @@ class CheckedTableViewCell: TaskTableViewCell {
                     checklistBoxBackground.backgroundColor = theme.offsetBackgroundColor
                 }
             } else {
-                checklistBoxBackground.backgroundColor = UIColor.forTaskValueExtraLight(Int(task.value))
+                checklistBoxBackground.backgroundColor = UIColor.forTaskValueExtraLight(task.value)
             }
             checklistBoxBackground.isHidden = false
             checklistContainer.isHidden = false
@@ -123,13 +123,13 @@ class CheckedTableViewCell: TaskTableViewCell {
         if task.completed || (task.type == TaskType.daily.rawValue && !task.isDue) {
             checkColor = ThemeService.shared.theme.quadTextColor
         } else {
-            checkColor = UIColor.forTaskValueDarkest(Int(task.value))
+            checkColor = UIColor.forTaskValueDarkest(task.value)
         }
         var checkboxColor = UIColor.white
         if task.completed || (task.type == TaskType.daily.rawValue && !task.isDue) {
             checkboxColor = ThemeService.shared.theme.separatorColor
         } else {
-            checkboxColor = UIColor.forTaskValueLight(Int(task.value))
+            checkboxColor = UIColor.forTaskValueLight(task.value)
         }
 
         for item in task.checklist {

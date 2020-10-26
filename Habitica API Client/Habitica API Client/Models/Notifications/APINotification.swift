@@ -11,6 +11,8 @@ import Habitica_Models
 
 private class APINotificationAchievementData: Decodable {
     var achievement: String
+    var message: String?
+    var modalText: String?
 }
 
 public class APINotification: NotificationProtocol, NotificationNewsProtocol, NotificationNewChatProtocol, NotificationUnallocatedStatsProtocol, NotificationFirstDropProtocol, Decodable {
@@ -25,6 +27,8 @@ public class APINotification: NotificationProtocol, NotificationNewsProtocol, No
     public var title: String?
     public var points: Int = 0
     public var achievementKey: String?
+    public var achievementMessage: String?
+    public var achievementModalText: String?
     public var egg: String?
     public var hatchingPotion: String?
     
@@ -51,15 +55,19 @@ public class APINotification: NotificationProtocol, NotificationNewsProtocol, No
         case .unallocatedStatsPoints:
             let data = try? values.decode(APINotificationUnallocatedStatsData.self, forKey: .data)
             points = data?.points ?? 0
-        case .achievementGeneric:
-            let data = try? values.decode(APINotificationAchievementData.self, forKey: .data)
-            achievementKey = data?.achievement
         case .firstDrop:
             let data = try? values.decode(APINotificationFirstDropData.self, forKey: .data)
             egg = data?.egg
             hatchingPotion = data?.hatchingPotion
         default:
             break
+        }
+        
+        if type.rawValue.contains("ACHIEVEMENT") {
+            let data = try? values.decode(APINotificationAchievementData.self, forKey: .data)
+            achievementKey = data?.achievement
+            achievementMessage = data?.message
+            achievementModalText = data?.modalText
         }
     }
 }

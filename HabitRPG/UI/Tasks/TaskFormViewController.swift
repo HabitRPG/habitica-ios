@@ -99,14 +99,14 @@ class TaskFormViewController: FormViewController, Themeable {
                 if task.value < -20 {
                     darkestTaskTintColor = UIColor(white: 1, alpha: 0.7)
                 } else {
-                    darkestTaskTintColor = UIColor.forTaskValueDarkest(Int(task.value))
+                    darkestTaskTintColor = UIColor.forTaskValueDarkest(task.value)
                 }
                 if theme.isDark {
-                    lightTaskTintColor = UIColor.forTaskValue(Int(task.value))
-                    taskTintColor = UIColor.forTaskValueDark(Int(task.value))
+                    lightTaskTintColor = UIColor.forTaskValue(task.value)
+                    taskTintColor = UIColor.forTaskValueDark(task.value)
                 } else {
-                    lightTaskTintColor = UIColor.forTaskValueLight(Int(task.value))
-                    taskTintColor = UIColor.forTaskValue(Int(task.value))
+                    lightTaskTintColor = UIColor.forTaskValueLight(task.value)
+                    taskTintColor = UIColor.forTaskValue(task.value)
                 }
             }
         }
@@ -272,13 +272,13 @@ class TaskFormViewController: FormViewController, Themeable {
             }
         } else {
             if task.isValid {
-                darkestTaskTintColor = UIColor.forTaskValueDarkest(Int(task.value))
+                darkestTaskTintColor = UIColor.forTaskValueDarkest(task.value)
                 if theme.isDark {
-                    lightTaskTintColor = UIColor.forTaskValue(Int(task.value))
-                    taskTintColor = UIColor.forTaskValueDark(Int(task.value))
+                    lightTaskTintColor = UIColor.forTaskValue(task.value)
+                    taskTintColor = UIColor.forTaskValueDark(task.value)
                 } else {
-                    lightTaskTintColor = UIColor.forTaskValueLight(Int(task.value))
-                    taskTintColor = UIColor.forTaskValue(Int(task.value))
+                    lightTaskTintColor = UIColor.forTaskValueLight(task.value)
+                    taskTintColor = UIColor.forTaskValue(task.value)
                 }
             }
         }
@@ -301,6 +301,8 @@ class TaskFormViewController: FormViewController, Themeable {
                 self.overrideUserInterfaceStyle = .unspecified
             }
         }
+        
+        tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -122,4 +122,12 @@ class FaintViewController: UIViewController {
             }
         }
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if ThemeService.shared.theme.isDark {
+            return .lightContent
+        } else {
+            return .default
+        }
+    }
 }

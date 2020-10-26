@@ -43,6 +43,8 @@ NotificationFirstDropProtocol {
     @objc dynamic var questKey: String?
     @objc dynamic var points: Int = 0
     @objc dynamic var achievementKey: String?
+    @objc dynamic var achievementMessage: String?
+    @objc dynamic var achievementModalText: String?
     @objc dynamic var egg: String?
     @objc dynamic var hatchingPotion: String?
     
@@ -77,5 +79,7 @@ NotificationFirstDropProtocol {
             title = notification.title
         }
         achievementKey = protocolObject.achievementKey
+        achievementMessage = protocolObject.achievementMessage
+        achievementModalText = protocolObject.achievementModalText
     }
 }

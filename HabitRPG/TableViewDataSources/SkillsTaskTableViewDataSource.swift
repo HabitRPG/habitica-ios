@@ -30,7 +30,7 @@ class SkillsTaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtoco
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         if let task = item(at: indexPath) {
             cell.textLabel?.text = task.text?.unicodeEmoji
-            cell.textLabel?.textColor = UIColor.forTaskValue(Int(task.value))
+            cell.textLabel?.textColor = UIColor.forTaskValue(task.value)
             if task.challengeID != nil {
                 cell.detailTextLabel?.text = L10n.Skills.cantCastOnChallengeTasks
                 cell.backgroundColor = .lightGray

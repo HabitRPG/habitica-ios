@@ -40,6 +40,19 @@ class YesterdailyTaskCell: UITableViewCell {
         })
         checklistItems = []
 
+        var checkColor = UIColor.white
+        if task.completed {
+            checkColor = ThemeService.shared.theme.quadTextColor
+        } else {
+            checkColor = UIColor.forTaskValueDarkest(task.value)
+        }
+        var checkboxColor = UIColor.white
+        if task.completed {
+            checkboxColor = ThemeService.shared.theme.separatorColor
+        } else {
+            checkboxColor = UIColor.forTaskValueLight(task.value)
+        }
+        
         for checklistItem in task.checklist {
             if let view = UIView.fromNib(nibName: "YesterdailyChecklistItem") {
                 view.isUserInteractionEnabled = true
@@ -47,8 +60,12 @@ class YesterdailyTaskCell: UITableViewCell {
                 let label = view.viewWithTag(2) as? UILabel
                 label?.attributedText = try? Down(markdownString: checklistItem.text?.unicodeEmoji ?? "").toHabiticaAttributedString()
                 let checkbox = view.viewWithTag(1) as? CheckboxView
-                checkbox?.configure(checklistItem: checklistItem, withTitle: false, checkColor: .forTaskValueDarkest(Int(task.value)), checkboxColor: .forTaskValueLight(Int(task.value)), taskType: task.type)
-                checkbox?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                checkbox?.configure(checklistItem: checklistItem, withTitle: false, checkColor: checkColor, checkboxColor: checkboxColor, taskType: task.type)
+                if task.completed {
+                    checkbox?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                } else {
+                    checkbox?.backgroundColor = UIColor.forTaskValueExtraLight(task.value)
+                }
                 checkbox?.wasTouched = {[weak self] in
                     if let checked = self?.onChecklistItemChecked {
                         checked(checklistItem)

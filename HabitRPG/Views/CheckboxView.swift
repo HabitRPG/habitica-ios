@@ -121,8 +121,8 @@ class CheckboxView: UIView {
                 backgroundColor = theme.offsetBackgroundColor
                 checkColor = theme.ternaryTextColor
                 if task.dueToday() {
-                    backgroundColor = UIColor.forTaskValueLight(Int(task.value))
-                    checkColor = UIColor.forTaskValue(Int(task.value))
+                    backgroundColor = UIColor.forTaskValueLight(task.value)
+                    checkColor = UIColor.forTaskValue(task.value)
                 } else {
                     boxFillColor = theme.windowBackgroundColor
                 }
@@ -134,8 +134,8 @@ class CheckboxView: UIView {
                 boxFillColor = theme.offsetBackgroundColor
                 checkColor = theme.dimmedTextColor
             } else {
-                backgroundColor = UIColor.forTaskValueLight(Int(task.value))
-                checkColor = UIColor.forTaskValue(Int(task.value))
+                backgroundColor = UIColor.forTaskValueLight(task.value)
+                checkColor = UIColor.forTaskValue(task.value)
             }
         }
         

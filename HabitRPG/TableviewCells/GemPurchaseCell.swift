@@ -41,6 +41,7 @@ class GemPurchaseCell: UICollectionViewCell {
     func setPrice(_ price: String?) {
         priceLabel.text = price
         priceLabel.backgroundColor = ThemeService.shared.theme.fixedTintColor
+        priceLabel.textColor = .white
     }
     
     func setLoading(_ isLoading: Bool) {

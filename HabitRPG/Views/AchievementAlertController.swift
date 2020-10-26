@@ -91,7 +91,10 @@ class AchievementAlertController: HabiticaAlertController {
     func setNotification(notification: NotificationProtocol, isOnboarding: Bool, isLastOnboardingAchievement: Bool) {
         self.isOnboarding = isOnboarding
         self.isLastOnboardingAchievement = isLastOnboardingAchievement
-        let key = notification.achievementKey ?? notification.type.rawValue
+        var key = notification.type.rawValue
+        if notification.type == HabiticaNotificationType.achievementGeneric {
+            key = notification.achievementKey ?? ""
+        }
         switch key {
         case HabiticaNotificationType.achievementPartyUp.rawValue:
             configureAlert(title: L10n.partyUpTitle, text: L10n.partyUpDescription, iconName: "partyUp")
@@ -107,6 +110,30 @@ class AchievementAlertController: HabiticaAlertController {
             configureAlert(title: L10n.guildJoinedTitle, text: L10n.guildJoinedDescription, iconName: "guild")
         case HabiticaNotificationType.achievementChallengeJoined.rawValue:
             configureAlert(title: L10n.challengeJoinedTitle, text: L10n.challengeJoinedDescription, iconName: "challenge")
+            
+        case HabiticaNotificationType.achievementAllYourBase.rawValue,
+             HabiticaNotificationType.achievementBackToBasics.rawValue,
+             HabiticaNotificationType.achievementJustAddWater.rawValue,
+             HabiticaNotificationType.achievementLostMasterclasser.rawValue,
+             HabiticaNotificationType.achievementMindOverMatter.rawValue,
+             HabiticaNotificationType.achievementDustDevil.rawValue,
+             HabiticaNotificationType.achievementAridAuthority.rawValue,
+             HabiticaNotificationType.achievementMonsterMagus.rawValue,
+             HabiticaNotificationType.achievementMonsterMagus.rawValue,
+             HabiticaNotificationType.achievementUndeadUndertaker.rawValue,
+             HabiticaNotificationType.achievementPrimedForPainting.rawValue,
+             HabiticaNotificationType.achievementPearlyPro.rawValue,
+             HabiticaNotificationType.achievementTickledPink.rawValue,
+             HabiticaNotificationType.achievementRosyOutlook.rawValue,
+             HabiticaNotificationType.achievementBugBonanza.rawValue,
+             HabiticaNotificationType.achievementBareNecessities.rawValue,
+             HabiticaNotificationType.achievementFreshwaterFriends.rawValue,
+             HabiticaNotificationType.achievementGoodAsGold.rawValue,
+             HabiticaNotificationType.achievementAllThatGlitters.rawValue,
+             HabiticaNotificationType.achievementBoneCollector.rawValue,
+             HabiticaNotificationType.achievementSkeletonCrew.rawValue:
+            configureAlert(title: notification.achievementMessage ?? "", text: notification.achievementModalText ?? "", iconName: notification.achievementKey ?? "")
+            
         case HabiticaNotificationType.achievementInvitedFriend.rawValue:
             configureAlert(title: L10n.invitedFriendTitle, text: L10n.invitedFriendDescription, iconName: "friends")
         case "createdTask":

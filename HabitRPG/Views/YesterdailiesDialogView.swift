@@ -67,6 +67,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         checkinCountView.textColor = theme.primaryTextColor
         nextCheckinCountView.textColor = theme.secondaryTextColor
         startDayButton.layer.shadowColor = ThemeService.shared.theme.buttonShadowColor.cgColor
+        yesterdailiesTableView.reloadData()
     }
 
     override func viewWillLayoutSubviews() {

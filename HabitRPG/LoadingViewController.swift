@@ -94,4 +94,8 @@ class LoadingViewController: UIViewController {
             loginViewController?.isRootViewController = true
         }
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }

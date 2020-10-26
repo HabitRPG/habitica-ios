@@ -201,7 +201,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         backgroundView.backgroundColor = theme.contentBackgroundColor
         upperBackgroundView.backgroundColor = theme.contentBackgroundColor
         setNavigationBarColors()
-        updateStatusbarColor()
+        setNeedsStatusBarAppearanceUpdate()
     }
     
     override func viewWillLayoutSubviews() {
@@ -328,15 +328,16 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         })
     }
     
-    private func updateStatusbarColor() {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
         let isLightColor = self.upperBackgroundView.backgroundColor?.isLight() ?? true
-        let currentStyle = UIApplication.shared.statusBarStyle
-        if currentStyle == .default && !isLightColor {
-            UIApplication.shared.statusBarStyle = .lightContent
-            setNeedsStatusBarAppearanceUpdate()
-        } else if currentStyle == .lightContent && isLightColor {
-            UIApplication.shared.statusBarStyle = .default
-            setNeedsStatusBarAppearanceUpdate()
+        if !isLightColor {
+            return .lightContent
+        } else {
+            if #available(iOS 13.0, *) {
+                return .darkContent
+            } else {
+                return .default
+            }
         }
     }
     

@@ -79,7 +79,7 @@ class TaskHistoryViewController: BaseUIViewController {
         var colors = [UIColor]()
         task.history.forEach { (historyEntry) in
             let dataEntry = ChartDataEntry(x: historyEntry.timestamp?.timeIntervalSince1970 ?? 0, y: Double(historyEntry.value))
-            colors.append(UIColor.forTaskValue(Int(historyEntry.value)))
+            colors.append(UIColor.forTaskValue(historyEntry.value))
             entries.append(dataEntry)
         }
         let dataset = LineChartDataSet(entries)

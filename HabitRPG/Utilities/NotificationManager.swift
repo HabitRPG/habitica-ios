@@ -21,14 +21,36 @@ class NotificationManager {
         }.forEach { notification in
             var notificationDisplayed: Bool? = false
             switch notification.type {
-            case HabiticaNotificationType.achievementPartyUp, HabiticaNotificationType.achievementPartyOn,
+            case HabiticaNotificationType.achievementPartyUp,
+                 HabiticaNotificationType.achievementPartyOn,
                 HabiticaNotificationType.achievementBeastMaster,
                 HabiticaNotificationType.achievementTriadBingo,
                 HabiticaNotificationType.achievementGuildJoined,
                 HabiticaNotificationType.achievementMountMaster,
                 HabiticaNotificationType.achievementInvitedFriend,
                 HabiticaNotificationType.achievementChallengeJoined,
-                HabiticaNotificationType.achievementOnboardingComplete:
+                HabiticaNotificationType.achievementOnboardingComplete,
+                HabiticaNotificationType.achievementAllYourBase,
+                 HabiticaNotificationType.achievementBackToBasics,
+                 HabiticaNotificationType.achievementJustAddWater,
+                 HabiticaNotificationType.achievementLostMasterclasser,
+                 HabiticaNotificationType.achievementMindOverMatter,
+                 HabiticaNotificationType.achievementDustDevil,
+                 HabiticaNotificationType.achievementAridAuthority,
+                 HabiticaNotificationType.achievementMonsterMagus,
+                 HabiticaNotificationType.achievementMonsterMagus,
+                 HabiticaNotificationType.achievementUndeadUndertaker,
+                 HabiticaNotificationType.achievementPrimedForPainting,
+                 HabiticaNotificationType.achievementPearlyPro,
+                 HabiticaNotificationType.achievementTickledPink,
+                 HabiticaNotificationType.achievementRosyOutlook,
+                 HabiticaNotificationType.achievementBugBonanza,
+                 HabiticaNotificationType.achievementBareNecessities,
+                 HabiticaNotificationType.achievementFreshwaterFriends,
+                 HabiticaNotificationType.achievementGoodAsGold,
+                 HabiticaNotificationType.achievementAllThatGlitters,
+                 HabiticaNotificationType.achievementBoneCollector,
+                 HabiticaNotificationType.achievementSkeletonCrew:
                 notificationDisplayed = NotificationManager.displayAchievement(notification: notification, isOnboarding: false, isLastOnboardingAchievement: false)
             case HabiticaNotificationType.achievementGeneric:
                 notificationDisplayed = NotificationManager.displayAchievement(notification: notification, isOnboarding: true, isLastOnboardingAchievement: notifications.contains {

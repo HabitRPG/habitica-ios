@@ -63,7 +63,7 @@ class HabitButton: UIView {
             label.image = Asset.plus.image.withRenderingMode(.alwaysTemplate)
         }
         if isActive {
-            backgroundColor = UIColor.forTaskValueLight(Int(task.value))
+            backgroundColor = UIColor.forTaskValueLight(task.value)
             
             if task.value >= -1 && task.value < 1 {
                 if ThemeService.shared.theme.isDark {
@@ -72,7 +72,7 @@ class HabitButton: UIView {
                     roundedView.backgroundColor = UIColor.yellow10
                 }
             } else {
-                roundedView.backgroundColor = UIColor.forTaskValue(Int(task.value))
+                roundedView.backgroundColor = UIColor.forTaskValue(task.value)
             }
             roundedView.layer.borderColor = UIColor.clear.cgColor
             label.tintColor = .white

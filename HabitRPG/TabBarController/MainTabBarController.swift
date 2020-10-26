@@ -77,24 +77,12 @@ class MainTabBarController: UITabBarController, Themeable {
         #endif
                 
         ThemeService.shared.addThemeable(themable: self)
+        if let mainTabBar = tabBar as? MainTabBar {
+            ThemeService.shared.addThemeable(themable: mainTabBar)
+        }
     }
     
     func applyTheme(theme: Theme) {
-        tabBar.items?.forEach({
-            $0.badgeColor = theme.badgeColor
-            if theme.badgeColor.isLight() {
-                $0.setBadgeTextAttributes([.foregroundColor: UIColor.gray50], for: .normal)
-            } else {
-                $0.setBadgeTextAttributes([.foregroundColor: UIColor.gray700], for: .normal)
-            }
-        })
-        tabBar.tintColor = theme.fixedTintColor
-        tabBar.barTintColor = theme.contentBackgroundColor
-        tabBar.backgroundColor = theme.contentBackgroundColor
-        tabBar.backgroundImage = UIImage.from(color: theme.contentBackgroundColor)
-        tabBar.shadowImage = UIImage.from(color: theme.contentBackgroundColor)
-        tabBar.barStyle = .black
-        
         if #available(iOS 13.0, *) {
             if ThemeService.shared.themeMode == "dark" {
                 self.overrideUserInterfaceStyle = .dark
@@ -237,9 +225,10 @@ class MainTabBarController: UITabBarController, Themeable {
         }
     }
     #endif
+
 }
 
-class MainTabBar: UITabBar {
+class MainTabBar: UITabBar, Themeable {
     var badges = [Int: PaddedView]()
 
     override open func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -253,6 +242,25 @@ class MainTabBar: UITabBar {
             }
         }
         return sizeThatFits
+    }
+    
+    func applyTheme(theme: Theme) {
+        items?.forEach({
+            $0.badgeColor = theme.badgeColor
+            if theme.badgeColor.isLight() {
+                $0.setBadgeTextAttributes([.foregroundColor: UIColor.gray50], for: .normal)
+            } else {
+                $0.setBadgeTextAttributes([.foregroundColor: UIColor.gray700], for: .normal)
+            }
+        })
+        tintColor = theme.fixedTintColor
+        barTintColor = theme.contentBackgroundColor
+        backgroundColor = theme.contentBackgroundColor
+        backgroundImage = UIImage.from(color: theme.contentBackgroundColor)
+        shadowImage = UIImage.from(color: theme.contentBackgroundColor)
+        barStyle = .black
+        
+        unselectedItemTintColor = theme.dimmedTextColor
     }
     
     override func layoutSubviews() {
