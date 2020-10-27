@@ -11,7 +11,6 @@ import Habitica_Models
 import ReactiveSwift
 import Habitica_Database
 import PopupDialog
-import Shared
 
 @objc
 class UserManager: NSObject {

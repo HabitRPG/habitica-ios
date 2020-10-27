@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Shared
+import Habitica_Models
+
 public class HabiticaServerConfig {
     public static let production = ServerConfiguration(scheme: "https", host: Constants.defaultProdHost, apiRoute: "api/\(Constants.defaultApiVersion)")
     public static let staging = ServerConfiguration(scheme: "https", host: "habitrpg-staging.herokuapp.com", apiRoute: "api/\(Constants.defaultApiVersion)")

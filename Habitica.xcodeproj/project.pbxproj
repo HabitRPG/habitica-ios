@@ -35,7 +35,7 @@
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
 		2908784A220210CF0010820A /* Strings-objcBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29087849220210CF0010820A /* Strings-objcBridge.swift */; };
 		2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */; };
-		2908E3512217255600D246CD /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		2908E3512217255600D246CD /* (null) in Resources */ = {isa = PBXBuildFile; };
 		290922F02242628600645D0E /* LanguageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290922EF2242628600645D0E /* LanguageHandler.swift */; };
 		290A405421FA175800A409BA /* Purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405221FA175700A409BA /* Purple@2x.png */; };
 		290A405521FA175800A409BA /* Purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405321FA175800A409BA /* Purple@3x.png */; };
@@ -299,6 +299,12 @@
 		29A6B86420644BFE0086B2A6 /* WeekdayFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A6B86320644BFE0086B2A6 /* WeekdayFormCell.xib */; };
 		29A6B86620644CA40086B2A6 /* WeekdayFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B86520644CA40086B2A6 /* WeekdayFormCell.swift */; };
 		29A77B1F22EED4CE00FE41E4 /* NetworkIndicatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A77B1E22EED4CE00FE41E4 /* NetworkIndicatorController.swift */; };
+		29A984D22547294E00F04665 /* HabiticaAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A984D02547294E00F04665 /* HabiticaAnalytics.swift */; };
+		29A984D32547294E00F04665 /* RemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A984D12547294E00F04665 /* RemoteLogger.swift */; };
+		29A9857F25472D1600F04665 /* HabiticaAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A984D02547294E00F04665 /* HabiticaAnalytics.swift */; };
+		29A9858025472D1600F04665 /* RemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A984D12547294E00F04665 /* RemoteLogger.swift */; };
+		29A9858125472D1700F04665 /* HabiticaAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A984D02547294E00F04665 /* HabiticaAnalytics.swift */; };
+		29A9858225472D1700F04665 /* RemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A984D12547294E00F04665 /* RemoteLogger.swift */; };
 		29A9B0552280825A0049291E /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B0542280825A0049291E /* BaseUIViewController.swift */; };
 		29A9B057228082BF0049291E /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B056228082BF0049291E /* BaseCollectionViewController.swift */; };
 		29A9B06722843DEB0049291E /* UINotificationFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B06622843DEB0049291E /* UINotificationFeedbackGenerator.swift */; };
@@ -479,8 +485,6 @@
 		7A84E1B5228996A90081E96F /* TaskRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE57204DA6E00086D5F7 /* TaskRepositoryProtocol.swift */; };
 		8A9EFF49EEC15BA9621F41AE /* Pods_Habitica_Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF52781EFA40CF917137423 /* Pods_Habitica_Intents.framework */; };
 		90BD17F04375C02E86E05112 /* Pods_Habitica_Snapshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8BD1B9D0EC5AE436BE86A57 /* Pods_Habitica_Snapshots.framework */; };
-		C83802FB251DEA0F00AE90ED /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C83802FA251DEA0F00AE90ED /* Shared.framework */; };
-		C83802FC251DEA0F00AE90ED /* Shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C83802FA251DEA0F00AE90ED /* Shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8380303251E449600AE90ED /* ObjcRemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8380302251E449600AE90ED /* ObjcRemoteLogger.swift */; };
 		C8415994225F8B7800989FB8 /* Habitica_Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */; };
 		C841599C225F8C2A00989FB8 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C841599B225F8C2900989FB8 /* SnapshotHelper.swift */; };
@@ -642,7 +646,6 @@
 				29265893206A4E84006C8B54 /* Habitica_Database.framework in Embed Frameworks */,
 				29265891206A4E84006C8B54 /* Habitica_Models.framework in Embed Frameworks */,
 				29265895206A4E84006C8B54 /* Habitica_API_Client.framework in Embed Frameworks */,
-				C83802FC251DEA0F00AE90ED /* Shared.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -999,6 +1002,8 @@
 		29A6B86320644BFE0086B2A6 /* WeekdayFormCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekdayFormCell.xib; sourceTree = "<group>"; };
 		29A6B86520644CA40086B2A6 /* WeekdayFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayFormCell.swift; sourceTree = "<group>"; };
 		29A77B1E22EED4CE00FE41E4 /* NetworkIndicatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkIndicatorController.swift; sourceTree = "<group>"; };
+		29A984D02547294E00F04665 /* HabiticaAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabiticaAnalytics.swift; sourceTree = "<group>"; };
+		29A984D12547294E00F04665 /* RemoteLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteLogger.swift; sourceTree = "<group>"; };
 		29A9B0542280825A0049291E /* BaseUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIViewController.swift; sourceTree = "<group>"; };
 		29A9B056228082BF0049291E /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
 		29A9B06622843DEB0049291E /* UINotificationFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINotificationFeedbackGenerator.swift; sourceTree = "<group>"; };
@@ -1433,7 +1438,6 @@
 				D958E2AE1915D40F00186A08 /* QuartzCore.framework in Frameworks */,
 				D958E2AD1915D40600186A08 /* CoreText.framework in Frameworks */,
 				D9EB4E9118CB4A9400BB2094 /* CoreGraphics.framework in Frameworks */,
-				C83802FB251DEA0F00AE90ED /* Shared.framework in Frameworks */,
 				D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */,
 				D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */,
 				D9C89CF91B1F0E6C00A599B0 /* StoreKit.framework in Frameworks */,
@@ -2398,6 +2402,8 @@
 				29EBDA752328FC43006611E3 /* NSString+Emoji.m */,
 				29EBDA82232A3ABA006611E3 /* KeychainItem.swift */,
 				C8380302251E449600AE90ED /* ObjcRemoteLogger.swift */,
+				29A984D12547294E00F04665 /* RemoteLogger.swift */,
+				29A984D02547294E00F04665 /* HabiticaAnalytics.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -3092,7 +3098,7 @@
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
-				2908E3512217255600D246CD /* BuildFile in Resources */,
+				2908E3512217255600D246CD /* (null) in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
@@ -3374,7 +3380,7 @@
 				"${BUILT_PRODUCTS_DIR}/FLEX/FLEX.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities-ac14cd06/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/KLCPopup/KLCPopup.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
@@ -3523,6 +3529,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29BEE64D252DD3F400D456F8 /* TaskManager.swift in Sources */,
+				29A9858125472D1700F04665 /* HabiticaAnalytics.swift in Sources */,
 				29BEE6ED252E27B800D456F8 /* DailiesCount.intentdefinition in Sources */,
 				29BEE755252E321F00D456F8 /* AvatarWidget.swift in Sources */,
 				29BEE632252CCFE100D456F8 /* StatsWidget.swift in Sources */,
@@ -3530,6 +3537,7 @@
 				29BEE65F252DD86200D456F8 /* AuthenticationManager.swift in Sources */,
 				29BEE6D7252E14F000D456F8 /* HabiticaWidgets.swift in Sources */,
 				29BEE760252E367600D456F8 /* URLImage.swift in Sources */,
+				29A9858225472D1700F04665 /* RemoteLogger.swift in Sources */,
 				29BEE6E7252E1B7700D456F8 /* Color-Extensions.swift in Sources */,
 				29BEE75A252E33AB00D456F8 /* Avatar.swift in Sources */,
 				29BEE81E252F101600D456F8 /* TaskListWidget.swift in Sources */,
@@ -3544,6 +3552,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A84E1B5228996A90081E96F /* TaskRepositoryProtocol.swift in Sources */,
+				29A9857F25472D1600F04665 /* HabiticaAnalytics.swift in Sources */,
+				29A9858025472D1600F04665 /* RemoteLogger.swift in Sources */,
 				7A84E1B32289963E0081E96F /* BaseRepository.swift in Sources */,
 				7A84E1B42289968B0081E96F /* AuthenticationManager.swift in Sources */,
 				7A84E1B222898E9F0081E96F /* TaskManager.swift in Sources */,
@@ -3748,6 +3758,7 @@
 				49391ED320C9C94B002B2BB5 /* ToDoTableViewController.swift in Sources */,
 				293BB49A1FCD7DC0003B6F4F /* StatsView.swift in Sources */,
 				49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */,
+				29A984D22547294E00F04665 /* HabiticaAnalytics.swift in Sources */,
 				2908784A220210CF0010820A /* Strings-objcBridge.swift in Sources */,
 				2912C3B422CB441C00BC485F /* NewMysteryitemNotificationCell.swift in Sources */,
 				2902796D2057F2C5006DACB9 /* Strings.swift in Sources */,
@@ -3948,6 +3959,7 @@
 				2974BD91208DEFEA00EC1A25 /* CustomizationDetailCell.swift in Sources */,
 				292DEE58204DA6E00086D5F7 /* TaskRepositoryProtocol.swift in Sources */,
 				49A37A8020C0EBFF008C28F5 /* SingleItemTableViewDataSource.swift in Sources */,
+				29A984D32547294E00F04665 /* RemoteLogger.swift in Sources */,
 				49DCB7BC1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift in Sources */,
 				D97ED0AE1E6DBB97006C2A26 /* JoinChallengeInteractor.swift in Sources */,
 			);
@@ -4302,7 +4314,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 517;
+				CURRENT_PROJECT_VERSION = 518;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4343,7 +4355,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 517;
+				CURRENT_PROJECT_VERSION = 518;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4382,7 +4394,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 517;
+				CURRENT_PROJECT_VERSION = 518;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4424,7 +4436,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 517;
+				CURRENT_PROJECT_VERSION = 518;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4707,7 +4719,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 517;
+				CURRENT_PROJECT_VERSION = 518;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4762,7 +4774,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 517;
+				CURRENT_PROJECT_VERSION = 518;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4793,7 +4805,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 517;
+				CURRENT_PROJECT_VERSION = 518;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -4890,7 +4902,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 517;
+				CURRENT_PROJECT_VERSION = 518;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";

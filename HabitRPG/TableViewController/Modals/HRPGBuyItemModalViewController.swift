@@ -10,7 +10,6 @@ import UIKit
 import Habitica_Models
 import ReactiveSwift
 import Habitica_Database
-import Shared
 
 // swiftlint:disable:next type_body_length
 class HRPGBuyItemModalViewController: UIViewController, Themeable {

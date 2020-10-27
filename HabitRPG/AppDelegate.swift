@@ -8,7 +8,6 @@
 
 import UIKit
 import PopupDialog
-import Shared
 import Keys
 import Amplitude_iOS
 import Habitica_API_Client
@@ -20,7 +19,6 @@ import SwiftyStoreKit
 import StoreKit
 import UserNotifications
 import FirebaseMessaging
-import Shared
 
 //This will eventually replace the old ObjC AppDelegate once that code is ported to swift.
 //Reason for adding this class now is mostly, to configure PopupDialogs dim color.

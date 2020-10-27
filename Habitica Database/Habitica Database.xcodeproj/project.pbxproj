@@ -100,7 +100,6 @@
 		29DBFEFB20CADB4100DF9CF2 /* RealmSpecialItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEFA20CADB4100DF9CF2 /* RealmSpecialItem.swift */; };
 		29DBFF0D20D15B0500DF9CF2 /* RealmUserNewMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0C20D15B0500DF9CF2 /* RealmUserNewMessages.swift */; };
 		29EBDA7C23290E7A006611E3 /* RealmInboxConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA7B23290E7A006611E3 /* RealmInboxConversation.swift */; };
-		C83802F3251DE9A800AE90ED /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C83802F2251DE9A800AE90ED /* Shared.framework */; };
 		EFA96FFA3536BF094D7B36B3 /* Pods_Habitica_DatabaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930CE9895A927708C0C96A90 /* Pods_Habitica_DatabaseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -227,7 +226,6 @@
 				292DEE41204D9D860086D5F7 /* Habitica_Models.framework in Frameworks */,
 				292DEE3F204D9D810086D5F7 /* Habitica_API_Client.framework in Frameworks */,
 				175E06DDF89F66BE894D1E3E /* Pods_Habitica_Database.framework in Frameworks */,
-				C83802F3251DE9A800AE90ED /* Shared.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

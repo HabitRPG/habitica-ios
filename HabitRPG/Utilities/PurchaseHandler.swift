@@ -10,7 +10,6 @@ import Foundation
 import SwiftyStoreKit
 import StoreKit
 import Keys
-import Shared
 
 class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     @objc static let shared = PurchaseHandler()

@@ -8,7 +8,6 @@
 
 import UIKit
 import Habitica_Models
-import Shared
 
 class ItemsViewController: BaseTableViewController {
     

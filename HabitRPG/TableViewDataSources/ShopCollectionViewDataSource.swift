@@ -9,7 +9,6 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
-import Shared
 
 @objc
 protocol ShopCollectionViewDataSourceProtocol: UICollectionViewDelegateFlowLayout {

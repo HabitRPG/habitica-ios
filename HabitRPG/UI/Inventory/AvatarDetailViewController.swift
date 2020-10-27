@@ -8,7 +8,6 @@
 
 import Foundation
 import Habitica_Models
-import Shared
 
 class AvatarDetailViewController: BaseCollectionViewController, UICollectionViewDelegateFlowLayout {
     

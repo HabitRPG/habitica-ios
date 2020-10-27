@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Shared
 import ReactiveSwift
 
 class PartyViewController: SplitSocialViewController {

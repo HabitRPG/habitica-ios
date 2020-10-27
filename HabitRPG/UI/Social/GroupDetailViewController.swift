@@ -10,7 +10,6 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 import Down
-import Shared
 
 class GroupDetailViewController: BaseUIViewController {
     var groupID: String?

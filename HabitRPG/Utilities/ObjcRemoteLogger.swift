@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Shared
 
 @objc
 class ObjcHabiticaAnalytics: NSObject {

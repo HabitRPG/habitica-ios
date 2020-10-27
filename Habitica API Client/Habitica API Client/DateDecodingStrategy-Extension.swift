@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Shared
 
 extension JSONDecoder {
     
@@ -72,7 +71,7 @@ extension JSONDecoder {
                 return date
             }
             
-            RemoteLogger.shared.record(name: "DateParserException", reason: "Date \(dateStr) could not be parsed")
+            //RemoteLogger.shared.record(name: "DateParserException", reason: "Date \(dateStr) could not be parsed")
             
             return Date(timeIntervalSince1970: 0)
         })

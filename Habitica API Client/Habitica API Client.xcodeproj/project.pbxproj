@@ -237,7 +237,6 @@
 		29EBDA85232A8BE0006611E3 /* AppleLoginCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA84232A8BE0006611E3 /* AppleLoginCall.swift */; };
 		9A268BF127E13DFBBE1D6DAF /* Pods_Habitica_API_ClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B265032E3FD15918939BFD0F /* Pods_Habitica_API_ClientTests.framework */; };
 		AE4ADE8B2AF941F3FCBB5DD9 /* Pods_Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41C03127A377E7796EFB1E8 /* Pods_Habitica_API_Client.framework */; };
-		C83802F7251DE9C200AE90ED /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C83802F6251DE9C200AE90ED /* Shared.framework */; };
 		DC2C4A0476068E29973DB0CD /* RetrieveGroupMembersCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C420658EE5D517E37D97D /* RetrieveGroupMembersCall.swift */; };
 /* End PBXBuildFile section */
 
@@ -499,7 +498,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				292DEE44204D9D8D0086D5F7 /* Habitica_Models.framework in Frameworks */,
-				C83802F7251DE9C200AE90ED /* Shared.framework in Frameworks */,
 				AE4ADE8B2AF941F3FCBB5DD9 /* Pods_Habitica_API_Client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

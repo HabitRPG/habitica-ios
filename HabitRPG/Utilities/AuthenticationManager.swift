@@ -9,7 +9,6 @@
 import Foundation
 import ReactiveSwift
 import KeychainAccess
-import Shared
 import Habitica_API_Client
 
 class AuthenticationManager: NSObject {

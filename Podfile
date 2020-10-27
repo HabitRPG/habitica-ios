@@ -42,6 +42,7 @@ target 'Habitica' do
   pod 'FBSDKCoreKit'  
   pod 'FBSDKLoginKit'
   pod 'Firebase/Core'
+  pod 'FirebaseCrashlytics'
   pod 'Firebase/Performance'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Messaging'
@@ -127,9 +128,3 @@ target "Habitica Database" do
   end
 end
 
-target "Shared" do
-  project 'Shared/Shared.xcodeproj'
-  
-  pod 'FirebaseCrashlytics'
-  pod 'Amplitude-iOS'
-end
