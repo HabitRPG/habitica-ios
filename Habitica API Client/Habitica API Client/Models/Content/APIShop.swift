@@ -68,6 +68,7 @@ public class APIShop: ShopProtocol, Decodable {
             fortify.purchaseType = "fortify"
             fortify.currency = "gems"
             fortify.value = 4
+            fortify.pinType = "fortify"
             fortify.path = "special.fortify"
             category.items.append(fortify)
         }

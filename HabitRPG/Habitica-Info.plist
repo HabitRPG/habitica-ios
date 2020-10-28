@@ -573,7 +573,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>518</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CustomDomain</key>
 	<string>${CUSTOM_DOMAIN}</string>
 	<key>DisableSSL</key>
@@ -594,6 +594,8 @@
 	</dict>
 	<key>FacebookAppID</key>
 	<string>128307497299777</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<false/>
 	<key>FacebookDisplayName</key>
 	<string>Habitica</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
@@ -752,7 +754,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-	<key>FacebookAutoLogAppEventsEnabled</key>
-	<false/>
 </dict>
 </plist>
