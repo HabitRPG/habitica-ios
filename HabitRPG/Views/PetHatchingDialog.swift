@@ -138,8 +138,8 @@ class PetHatchingAlertController: HabiticaAlertController {
             inventoryRepository.getItems(keys: [ItemType.eggs: [item.pet?.egg ?? ""], ItemType.hatchingPotions: [item.pet?.potion ?? ""]]).take(first: 1).on(value: { items in
                 let egg = items.eggs.value.first
                 let potion = items.hatchingPotions.value.first
-                var hatchValue = Int(egg?.value ?? 0.0)
-                hatchValue += Int(potion?.value ?? 0.0)
+                var hatchValue = eggCount > 0 ? 0 : Int(egg?.value ?? 0.0)
+                hatchValue += potionCount > 0 ? 0 : Int(potion?.value ?? 0.0)
                 
                 if hatchValue > 0 && (item.pet?.type == "drop" || (item.pet?.type == "quest" && ownedEggs != nil)) {
                     let attributedText = NSMutableAttributedString(string: L10n.hatch + "   \(hatchValue) :gems:")
@@ -159,12 +159,12 @@ class PetHatchingAlertController: HabiticaAlertController {
                         }
                         if eggCount == 0 {
                             signal = signal.flatMap(.latest, { _ -> Signal<UserProtocol?, Never> in
-                                return self.inventoryRepository.purchaseItem(purchaseType: "eggs", key: item.pet?.egg ?? "", value: 4, quantity: 1, text: item.pet?.egg ?? "")
+                                return self.inventoryRepository.purchaseItem(purchaseType: "eggs", key: item.pet?.egg ?? "", value: 4, quantity: 1, text: (egg?.text ?? "") + " " + L10n.egg)
                             })
                         }
                         if potionCount == 0 {
                             signal = signal.flatMap(.latest, { _ -> Signal<UserProtocol?, Never> in
-                                return self.inventoryRepository.purchaseItem(purchaseType: "hatchingPotions", key: item.pet?.potion ?? "", value: 4, quantity: 1, text: item.pet?.potion ?? "")
+                                return self.inventoryRepository.purchaseItem(purchaseType: "hatchingPotions", key: item.pet?.potion ?? "", value: 4, quantity: 1, text: (potion?.text ?? "") + " " + L10n.hatchingPotion)
                             })
                         }
                         

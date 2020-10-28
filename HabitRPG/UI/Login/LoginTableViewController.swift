@@ -195,6 +195,8 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
             guard let weakSelf = self else {
                 return
             }
+            weakSelf.viewModel.inputs.usernameChanged(username: nil)
+            weakSelf.viewModel.inputs.passwordChanged(password: nil)
             if weakSelf.isRootViewController || segueName == "SetupSegue" {
                 weakSelf.performSegue(withIdentifier: segueName, sender: self)
             } else {

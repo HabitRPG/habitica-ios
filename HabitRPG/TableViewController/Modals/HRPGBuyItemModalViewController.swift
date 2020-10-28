@@ -463,7 +463,6 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             userRepository.reroll().observeResult({ (result) in
             switch result {
             case .success:
-                ToastManager.show(text: L10n.purchased("Fortify Potion"), color: .green, delay: 1)
                 successBlock()
             case .failure:
                 HRPGBuyItemModalViewController.displayInsufficientGemsModal()

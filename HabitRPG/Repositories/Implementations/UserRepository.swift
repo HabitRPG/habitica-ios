@@ -323,7 +323,11 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func reroll() -> Signal<UserProtocol?, Never> {
-        return RerollCall().objectSignal.flatMap(.latest, {[weak self] (_) in
+        return RerollCall().objectSignal
+            .on(value: { _ in
+                ToastManager.show(text: L10n.purchased("Fortify Potion"), color: .green, delay: 1)
+            })
+            .flatMap(.latest, {[weak self] (_) in
             return self?.retrieveUser() ?? Signal.empty
         })
     }

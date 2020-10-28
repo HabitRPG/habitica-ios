@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AuthenticationSettingsViewController: BaseSettingsViewController {
+class AuthenticationSettingsViewController: BaseSettingsViewController, UITextFieldDelegate {
     
     private var configRepository = ConfigRepository()
     
@@ -166,6 +166,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         configureTextField(textField)
         textField.isSecureTextEntry = true
         textField.returnKeyType = .done
+        textField.delegate = self
         stackView.addArrangedSubview(textField)
         alertController.contentView = stackView
         
@@ -227,6 +228,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         passwordTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.oldPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
         configureTextField(passwordTextField)
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.delegate = self
         stackView.addArrangedSubview(passwordTextField)
         alertController.contentView = stackView
         
@@ -252,6 +254,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         loginNameTextField.autocapitalizationType = .none
         loginNameTextField.spellCheckingType = .no
         loginNameTextField.text = user?.username
+        loginNameTextField.delegate = self
         stackView.addArrangedSubview(loginNameTextField)
         alertController.contentView = stackView
         
@@ -284,6 +287,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         confirmTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.confirmNewPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
         configureTextField(confirmTextField)
         confirmTextField.isSecureTextEntry = true
+        confirmTextField.delegate = self
         stackView.addArrangedSubview(confirmTextField)
         alertController.contentView = stackView
         
@@ -316,6 +320,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         confirmTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.confirmNewPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
         configureTextField(confirmTextField)
         confirmTextField.isSecureTextEntry = true
+        confirmTextField.delegate = self
         stackView.addArrangedSubview(confirmTextField)
         alertController.contentView = stackView
         
@@ -389,6 +394,11 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         textField.cornerRadius = 8
         textField.textInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         textField.textColor = ThemeService.shared.theme.secondaryTextColor
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 
