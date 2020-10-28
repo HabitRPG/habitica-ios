@@ -222,7 +222,7 @@ class CheckedTableViewCell: TaskTableViewCell {
             checklistTapArea.pin.start(to: checklistIndicator.edge.start).end(to: checklistIndicator.edge.end).margin(0, -15).top().bottom()
         }
         
-        if isExpanded {
+        if isExpanded && (task?.checklist.count ?? 0) > 0 {
             checklistContainer.pin.below(of: checkBox).marginTop(10).start().end()
             var containerHeight: CGFloat = 0
             for checkbox in checklistContainer.arrangedSubviews {
