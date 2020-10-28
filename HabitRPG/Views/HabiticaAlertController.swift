@@ -120,6 +120,8 @@ class HabiticaAlertController: UIViewController, Themeable {
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backgroundTapped)))
         alertBackgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(alertTapped)))
+    
+        KeyboardManager.addObservingView(view)
     }
     
     func applyTheme(theme: Theme) {
@@ -158,7 +160,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         maximumSize.width = min(300, maximumSize.width - 24)
         maximumSize.width -= contentViewInsets.left + contentViewInsets.right
         maximumSize.height -= contentViewInsets.top + contentViewInsets.bottom
-        let maximumHeight = maximumSize.height - (32 + 140) - buttonUpperSpacing.constant - buttonLowerSpacing.constant
+        let maximumHeight = maximumSize.height - (32 + 140) - buttonUpperSpacing.constant - buttonLowerSpacing.constant - KeyboardManager.height
         var contentHeight = contentView?.systemLayoutSizeFitting(maximumSize).height ?? 0
         if contentHeight == 0 {
             contentHeight = contentView?.intrinsicContentSize.height ?? 0
