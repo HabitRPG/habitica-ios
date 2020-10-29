@@ -91,7 +91,7 @@ class RouterHandler: NSObject {
         router.register("/user/onboarding") { _ in
             self.present(StoryboardScene.Main.adventureGuideNavigationViewController.instantiate())
         }
-        router.register("profile/:userID") { link in
+        router.register("/profile/:userID") { link in
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Social.userProfileViewController.instantiate()
             viewController.userID = link?.routeParameters["userID"] as? String

@@ -31,10 +31,7 @@ extension Down {
                                                    attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: baseSize),
                                                                 .foregroundColor: textColor])
             applyParagraphStyling(string)
-            if mentions.isEmpty == false && highlightUsernames {
-                applyMentions(string, mentions: mentions)
-            }
-            applyCustomEmoji(string, size: baseSize)
+            applyCustomChanges(string, mentions: mentions, highlightUsernames: highlightUsernames, baseSize: baseSize)
             return string
         }
         guard let string = try? (useAST ? toAttributedString(styler: HabiticaStyler(ofSize: baseSize, textColor: textColor)) : toAttributedString()).mutableCopy() as? NSMutableAttributedString else {
@@ -42,10 +39,7 @@ extension Down {
                                                   attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: baseSize),
                                                                .foregroundColor: textColor])
             applyParagraphStyling(string)
-            if mentions.isEmpty == false && highlightUsernames {
-                applyMentions(string, mentions: mentions)
-            }
-            applyCustomEmoji(string, size: baseSize)
+            applyCustomChanges(string, mentions: mentions, highlightUsernames: highlightUsernames, baseSize: baseSize)
             return string
         }
         if !useAST {
@@ -71,10 +65,8 @@ extension Down {
                                         }
             })
         }
-        if mentions.isEmpty == false && highlightUsernames {
-            applyMentions(string, mentions: mentions)
-        }
-        applyCustomEmoji(string, size: baseSize)
+        applyCustomChanges(string, mentions: mentions, highlightUsernames: highlightUsernames, baseSize: baseSize)
+
         if !useAST {
             if string.length == 0 {
                 return string
@@ -82,6 +74,19 @@ extension Down {
             string.deleteCharacters(in: NSRange(location: string.length-1, length: 1))
         }
         return string
+    }
+    
+    private func applyCustomChanges(_ string: NSMutableAttributedString, mentions: [String], highlightUsernames: Bool, baseSize: CGFloat) {
+        if mentions.isEmpty == false && highlightUsernames {
+            applyMentions(string, mentions: mentions)
+        }
+        applyCustomEmoji(string, size: baseSize)
+        
+        var range = string.mutableString.range(of: "<br>")
+        while range.length > 0 {
+            string.replaceCharacters(in: range, with: "\n")
+            range = string.mutableString.range(of: "<br>")
+        }
     }
     
     private func applyMentions(_ string: NSMutableAttributedString, mentions: [String]) {

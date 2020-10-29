@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -128,7 +128,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TbI-aA-bqR">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TbI-aA-bqR">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -148,11 +148,12 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="height" priority="500" constant="50" id="FF9-h9-hV6"/>
-                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="320" id="Uci-qm-Xpi"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="340" id="Uci-qm-Xpi"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="gvr-HL-F82"/>
                     </constraints>
                 </stackView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="I9B-sr-L3E"/>
             <color key="backgroundColor" red="0.21256542210000001" green="0.1243311539" blue="0.36635309459999998" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="I9B-sr-L3E" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hIR-Qr-gyg" secondAttribute="trailing" constant="12" id="0nz-qf-CS5"/>
@@ -162,7 +163,6 @@
                 <constraint firstItem="hIR-Qr-gyg" firstAttribute="centerY" secondItem="bkQ-it-OYY" secondAttribute="centerY" priority="999" id="Ja4-aA-Xor"/>
                 <constraint firstItem="hIR-Qr-gyg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="I9B-sr-L3E" secondAttribute="leading" constant="12" id="eRo-Sv-1Jj"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="I9B-sr-L3E"/>
             <point key="canvasLocation" x="381.5" y="-8.5"/>
         </view>
     </objects>
