@@ -164,12 +164,20 @@ class PetHatchingAlertController: HabiticaAlertController {
                         }
                         if potionCount == 0 {
                             signal = signal.flatMap(.latest, { _ -> Signal<UserProtocol?, Never> in
-                                return self.inventoryRepository.purchaseItem(purchaseType: "hatchingPotions", key: item.pet?.potion ?? "", value: 4, quantity: 1, text: (potion?.text ?? "") + " " + L10n.hatchingPotion)
+                                return self.inventoryRepository.purchaseItem(purchaseType: "hatchingPotions", key: item.pet?.potion ?? "",
+                                                                             value: 4,
+                                                                             quantity: 1,
+                                                                             text: (potion?.text ?? "") + " " + L10n.hatchingPotion)
                             })
                         }
                         
                         signal.flatMap(.latest, { _ in
                             return self.inventoryRepository.hatchPet(egg: item.pet?.egg, potion: item.pet?.potion)
+                        }).on(completed: {
+                            guard let egg = items.eggs.value.first, let potion = items.hatchingPotions.value.first else {
+                                return
+                            }
+                            self.showHatchedDialog(egg: egg, potion: potion)
                         }).start()
                     }
                     button.setAttributedTitle(attributedText, for: .normal)
