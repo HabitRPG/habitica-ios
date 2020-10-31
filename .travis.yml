@@ -9,8 +9,8 @@ install:
   - brew update
   - brew install swiftlint || true
   - brew upgrade swiftlint || true
-  - pod repo update
-  - pod install
+  - bundle exec pod repo update
+  - bundle exec pod install
 env:
   global:
     - GoogleClient=123
