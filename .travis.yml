@@ -3,6 +3,7 @@ cache: cocoapods
 osx_image: xcode10.2
 install:
   - rvm install ruby-2.3.3
+  - gem install bundler
   - bundle update
   - bundle install
   - brew update
