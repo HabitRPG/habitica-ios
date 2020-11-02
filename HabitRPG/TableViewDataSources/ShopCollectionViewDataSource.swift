@@ -170,7 +170,10 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             )
             .map({ (items, ownedGear) in
                 return items.filter({ (item) -> Bool in
-                    return !ownedGear.contains(item.key)
+                    guard item.isValid, let key = item.key else {
+                        return false
+                    }
+                    return !ownedGear.contains(key)
                 })
             })
             .on(value: {[weak self] items in
