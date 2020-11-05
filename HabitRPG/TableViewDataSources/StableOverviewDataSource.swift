@@ -17,6 +17,8 @@ struct StableOverviewItem {
     var totalNumber: Int
     var searchKey: String
     var type: String
+    var animal: String
+    var color: String
 }
 
 class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionViewDataSource<StableOverviewItem> {
@@ -31,6 +33,8 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
         }
     }
     
+    var ownedItems = [String: OwnedItemProtocol]()
+    
     deinit {
         if let disposable = fetchDisposable {
             disposable.dispose()
@@ -41,7 +45,15 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
         if let animalItem = item(at: indexPath), let overviewCell = cell as? StableOverviewCell {
-            overviewCell.configure(item: animalItem)
+            var ownsItem = false
+            if true {
+                if organizeByColor {
+                    ownsItem = ownedItems["\(animalItem.color)-hatchingPotions"] != nil
+                } else {
+                    ownsItem = ownedItems["\(animalItem.animal)-eggs"] != nil
+                }
+            }
+            overviewCell.configure(item: animalItem, ownsItem: ownsItem)
         }
         
         return cell
@@ -73,7 +85,7 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
             let searchText = ((animal.type == "special" || animal.type == "wacky") ? animal.key : (organizeByColor ? animal.potion : animal.egg)) ?? ""
             
             if item?.text == nil || item?.text != displayText {
-                item = StableOverviewItem(imageName: getImageName(animal), text: displayText, numberOwned: 0, totalNumber: 0, searchKey: searchText, type: animal.type ?? "")
+                item = StableOverviewItem(imageName: getImageName(animal), text: displayText, numberOwned: 0, totalNumber: 0, searchKey: searchText, type: animal.type ?? "", animal: animal.egg ?? "", color: animal.potion ?? "")
                 if let item = item {
                     data[type]?.append(item)
                 }

@@ -186,8 +186,9 @@ class MainMenuViewController: BaseTableViewController {
                 menuItem(withKey: .subscription).subtitle = L10n.getMoreHabitica
             }
             if user?.achievements?.hasCompletedOnboarding == true {
-                tableView.tableHeaderView = nil                } else {
-                let view = AdventureGuideBannerView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 103))
+                tableView.tableHeaderView = nil
+            } else {
+                let view = AdventureGuideBannerView(frame: CGRect(x: 0, y: -10, width: tableView.frame.size.width, height: 103))
                 view.onTapped = { [weak self] in
                     self?.perform(segue: StoryboardSegue.Main.showAdventureGuide)
                 }
@@ -351,6 +352,12 @@ class MainMenuViewController: BaseTableViewController {
                 ])
         ]
         menuItem(withKey: .tavern).subtitleColor = UIColor.orange10
+        
+        if !configRepository.bool(variable: .reorderMenu) {
+            let item = menuSections.remove(at: 3)
+            menuSections.insert(item, at: 1)
+            tableView.reloadData()
+        }
         
         if configRepository.bool(variable: .enableGiftOneGetOne) {
             menuItem(withKey: .subscription).pillText = L10n.sale

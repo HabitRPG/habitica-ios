@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 
 class PetOverviewDataSource: StableOverviewDataSource<PetProtocol> {
-    
+
     override init() {
         super.init()
         sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.standardPets))
@@ -48,5 +48,18 @@ class PetOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                 self?.sections[3].items.append(contentsOf: overviewItems["special"] ?? [])
                 self?.collectionView?.reloadData()
             }).start()
+        
+        disposable.add(inventoryRepository.getOwnedItems()
+                        .map({ items -> [String: OwnedItemProtocol] in
+                            var itemMap = [String: OwnedItemProtocol]()
+                            items.value.forEach { ownedItem in
+                                itemMap["\(ownedItem.key ?? "")-\(ownedItem.itemType ?? "")"] = ownedItem
+                            }
+                            return itemMap
+                        })
+                        .on(value: { ownedItems in
+                            self.ownedItems = ownedItems
+                            self.collectionView?.reloadData()
+                        }).start())
     }
 }

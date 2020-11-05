@@ -15,7 +15,7 @@ class StableOverviewCell: UICollectionViewCell {
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var countLabelHeightConstraint: NSLayoutConstraint!
     
-    func configure(item: StableOverviewItem) {
+    func configure(item: StableOverviewItem, ownsItem: Bool) {
         backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         imageView.setImagewith(name: item.imageName)
         textLabel.text = item.text
@@ -24,7 +24,7 @@ class StableOverviewCell: UICollectionViewCell {
         countLabel.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
         textLabel.textColor = ThemeService.shared.theme.secondaryTextColor
         imageView.alpha = 1.0
-        if item.numberOwned == 0 {
+        if item.numberOwned == 0 && !ownsItem {
             countLabel.textColor = ThemeService.shared.theme.dimmedTextColor
             textLabel.textColor = ThemeService.shared.theme.dimmedTextColor
             imageView.alpha = 0.5

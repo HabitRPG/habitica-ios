@@ -9,6 +9,7 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
+import FirebaseAnalytics
 
 class PetHatchingAlertController: HabiticaAlertController {
     private let inventoryRepository = InventoryRepository()
@@ -136,6 +137,7 @@ class PetHatchingAlertController: HabiticaAlertController {
             addAction(title: L10n.close, isMainAction: true)
             
             inventoryRepository.getItems(keys: [ItemType.eggs: [item.pet?.egg ?? ""], ItemType.hatchingPotions: [item.pet?.potion ?? ""]]).take(first: 1).on(value: { items in
+                Analytics.logEvent("hatch_buy_button_tapped", parameters: nil)
                 let egg = items.eggs.value.first
                 let potion = items.hatchingPotions.value.first
                 var hatchValue = eggCount > 0 ? 0 : Int(egg?.value ?? 0.0)
