@@ -1513,7 +1513,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="GemPurchaseViewController" id="0F5-C1-rPv" customClass="GemViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" id="CgT-fS-CrK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="18" minimumInteritemSpacing="18" id="VJm-WU-tp7">
@@ -2190,11 +2190,11 @@
         <!--Spell Tab Bar Controller-->
         <scene sceneID="oWJ-eh-rJ0">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="tGw-Sj-nll" customClass="HRPGSpellTabBarController" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" id="tGw-Sj-nll" customClass="SpellTabBarController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Yuh-D9-NY5">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="PBv-iZ-ev0">
                             <connections>
-                                <action selector="cancelAction:" destination="tGw-Sj-nll" id="rxo-kg-FDV"/>
+                                <segue destination="gID-Ki-rDo" kind="unwind" unwindAction="unwindToList:" id="Tbj-vc-amg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

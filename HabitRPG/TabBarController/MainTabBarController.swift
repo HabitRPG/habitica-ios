@@ -75,7 +75,13 @@ class MainTabBarController: UITabBarController, Themeable {
         swipe.numberOfTouchesRequired = 1
         tabBar.addGestureRecognizer(swipe)
         #endif
-                
+        
+        tabBar.items?[0].accessibilityLabel = L10n.Tasks.habits
+        tabBar.items?[1].accessibilityLabel = L10n.Tasks.dailies
+        tabBar.items?[2].accessibilityLabel = L10n.Tasks.todos
+        tabBar.items?[3].accessibilityLabel = L10n.Tasks.rewards
+        tabBar.items?[4].accessibilityLabel = L10n.menu
+
         ThemeService.shared.addThemeable(themable: self)
         if let mainTabBar = tabBar as? MainTabBar {
             ThemeService.shared.addThemeable(themable: mainTabBar)
