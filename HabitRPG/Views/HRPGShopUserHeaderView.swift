@@ -39,7 +39,7 @@ class HRPGShopUserHeaderView: UIView {
         usernameLabel.text = user.profile?.name
         usernameLabel.textColor = user.contributor?.color
         
-        if let shouldDisable = user.preferences?.disableClasses, !shouldDisable, let userClass = user.stats?.habitClass {
+        if let shouldDisable = user.preferences?.disableClasses, !shouldDisable, let userClass = user.stats?.habitClassNice {
             userClassImageView.isHidden = false
             userClassImageView.image = UIImage(named: "icon_\(userClass)")
         } else {
