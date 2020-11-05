@@ -119,7 +119,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         disposable.add(inventoryRepository.getOwnedItems().map({ (items, _) -> [String: OwnedItemProtocol] in
             var ownedItems: [String: OwnedItemProtocol] = [:]
             for item in items where item.key != nil {
-                ownedItems[item.key ?? ""] = item
+                ownedItems["\(item.key ?? "")-\(item.itemType ?? "")"] = item
             }
             return ownedItems
         }).on(value: {[weak self] items in
@@ -271,7 +271,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath)
             if let itemCell = cell as? InAppRewardCell {
                 itemCell.configure(reward: item, user: user)
-                if let ownedItem = ownedItems[item.key ?? ""] {
+                if let ownedItem = ownedItems["\(item.key ?? "")-\(item.type ?? item.purchaseType ?? "")"] {
                     itemCell.itemsLeft = ownedItem.numberOwned
                 }
                 itemCell.isPinned = pinnedItems.contains(item.key)
