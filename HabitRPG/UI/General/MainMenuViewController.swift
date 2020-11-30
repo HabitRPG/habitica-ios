@@ -64,6 +64,7 @@ class MenuItem {
     var cellName = "Cell"
     var showIndicator = false
     var isHidden = false
+    var isDisabled = false
     
     init(key: Key, title: String, subtitle: String? = nil, pillText: String? = nil, accessibilityLabel: String? = nil, segue: String? = nil, vcInstantiator: (() -> UIViewController?)? = nil, cellName: String = "Cell", showIndicator: Bool = false) {
         self.key = key
@@ -160,6 +161,19 @@ class MainMenuViewController: BaseTableViewController {
         didSet {
             if let user = self.user {
                 navbarView.configure(user: user)
+            }
+            let skillsItem = menuItem(withKey: .skills)
+            if (user?.preferences?.disableClasses == true) {
+                skillsItem.isHidden = true
+            } else {
+                skillsItem.isHidden = false
+                if (user?.stats?.level ?? 0 < 10 || user?.flags?.classSelected == false) {
+                    skillsItem.subtitle = L10n.unlocksLevelTen
+                    skillsItem.isDisabled = true
+                } else {
+                    skillsItem.subtitle = nil
+                    skillsItem.isDisabled = false
+                }
             }
             menuItem(withKey: .skills).isHidden = user?.canUseSkills == false
             menuItem(withKey: .news).showIndicator = user?.flags?.hasNewStuff == true
@@ -440,9 +454,12 @@ class MainMenuViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = visibleSections[indexPath.section].visibleItems[indexPath.item]
+        if item.isDisabled {
+            return
+        }
         if let instantiator = item.vcInstantiator, let vc = instantiator() {
             if let nc = vc as? UINavigationController {
-                navigationController?.present(vc, animated: true, completion: nil)
+                nc.present(vc, animated: true, completion: nil)
             } else {
                 navigationController?.pushViewController(vc, animated: true)
             }
@@ -465,7 +482,11 @@ class MainMenuViewController: BaseTableViewController {
         let label = cell.viewWithTag(1) as? UILabel
         label?.text = item?.title
         label?.font = CustomFontMetrics.scaledSystemFont(ofSize: 17)
-        label?.textColor = ThemeService.shared.theme.primaryTextColor
+        if item?.isDisabled == true {
+            label?.textColor = ThemeService.shared.theme.dimmedTextColor
+        } else {
+            label?.textColor = ThemeService.shared.theme.primaryTextColor
+        }
         label?.backgroundColor = .clear
 
         let indicatorView = cell.viewWithTag(2)
