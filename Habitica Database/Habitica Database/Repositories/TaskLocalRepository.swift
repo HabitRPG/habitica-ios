@@ -115,6 +115,10 @@ public class TaskLocalRepository: BaseLocalRepository {
     }
     
     public func update(taskId: String, stats: StatsProtocol, direction: TaskScoringDirection, response: TaskResponseProtocol) {
+        if (response.level == 0) {
+            //This can happen for team tasks that require approval.
+            return
+        }
         RealmTask.findBy(key: taskId).take(first: 1).skipNil().on(value: {[weak self] realmTask in
             self?.updateCall { _ in
                 if let delta = response.delta {

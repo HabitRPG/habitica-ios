@@ -85,11 +85,13 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
             .flatMapError({ (_) in
             return SignalProducer.empty
         })).on(value: {[weak self] (taskResponse, stats) in
-            if !task.isValid { return }
             guard let response = taskResponse else {
                 return
             }
-            
+            if !task.isValid {
+                return
+            }
+
             let healthDiff = (response.health ?? 0) - stats.health
             let magicDiff = (response.magic ?? 0) - stats.mana
             let expDiff = (response.experience ?? 0) - stats.experience
