@@ -38,7 +38,6 @@ class NotificationManager {
                  HabiticaNotificationType.achievementDustDevil,
                  HabiticaNotificationType.achievementAridAuthority,
                  HabiticaNotificationType.achievementMonsterMagus,
-                 HabiticaNotificationType.achievementMonsterMagus,
                  HabiticaNotificationType.achievementUndeadUndertaker,
                  HabiticaNotificationType.achievementPrimedForPainting,
                  HabiticaNotificationType.achievementPearlyPro,
