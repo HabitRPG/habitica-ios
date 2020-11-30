@@ -40,13 +40,13 @@ enum AppLanguage: Int {
         case .czech:
             return "čeština"
         case .chinese:
-            return "中文（简体)"
+            return "中文（正體）"
         case .german:
             return "Deutsch"
         case .french:
             return "Français"
         case .chineseSimplified:
-            return "中文（正體)"
+            return "中文（简体）"
         case .portugueseBrazil:
             return "Português Brasileiro"
         case .hebrew:
