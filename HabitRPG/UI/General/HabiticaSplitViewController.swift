@@ -105,11 +105,13 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let currentPage = getCurrentPage()
         segmentedControl.selectedSegmentIndex = currentPage
+        view.endEditing(true)
     }
     
     @objc
     func switchView(_ segmentedControl: UISegmentedControl) {
         scrollTo(page: segmentedControl.selectedSegmentIndex)
+        view.endEditing(true)
     }
     
     func getCurrentPage() -> Int {
