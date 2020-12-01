@@ -38,6 +38,8 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         headerImageView.contentMode = .center
         headerImageView.addHeightConstraint(height: 130)
         tableView.tableHeaderView = headerImageView
+        
+        tableView.rowHeight = UITableView.automaticDimension
                 
         supportEmail = configRepository.string(variable: .supportEmail, defaultValue: "admin@habitica.com")
         

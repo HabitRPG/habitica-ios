@@ -260,7 +260,7 @@ class TaskDetailLineView: UIView {
         var size = super.intrinsicContentSize
 
         if hasContent {
-            size.height = 18
+            size.height = detailLabel.font.lineHeight
         } else {
             size.height = 0
         }

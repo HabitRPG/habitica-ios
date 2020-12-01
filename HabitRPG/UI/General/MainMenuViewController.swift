@@ -448,7 +448,8 @@ class MainMenuViewController: BaseTableViewController {
         if section == 0 {
             return 20
         } else {
-            return 40
+            let font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
+            return 20 + font.lineHeight
         }
     }
     

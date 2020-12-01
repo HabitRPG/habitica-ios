@@ -97,6 +97,7 @@ class CheckboxView: UIView {
     private func setupView() {
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
         isUserInteractionEnabled = true
+        label.numberOfLines = 0
         addSubview(checkView)
         addSubview(dimmOverlayView)
     }

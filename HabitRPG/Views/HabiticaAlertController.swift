@@ -246,7 +246,6 @@ class HabiticaAlertController: UIViewController, Themeable {
         }
         
         button.addWidthConstraint(width: 150, relatedBy: NSLayoutConstraint.Relation.greaterThanOrEqual)
-        button.addHeightConstraint(height: 38)
         
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
     

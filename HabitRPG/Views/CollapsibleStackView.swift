@@ -93,6 +93,7 @@ class CollapsibleStackView: SeparatedStackView {
             }
             weakSelf.isCollapsed = !weakSelf.isCollapsed
         }
+        titleView?.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
         applyTheme(theme: ThemeService.shared.theme)
     }
     
