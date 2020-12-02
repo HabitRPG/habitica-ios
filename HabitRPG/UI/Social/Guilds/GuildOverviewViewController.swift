@@ -116,4 +116,16 @@ class GuildOverviewViewController: BaseTableViewController, UISearchBarDelegate 
             destViewController?.groupID = dataSource.item(at: indexPath)?.id
         }
     }
+    
+    @IBAction func createGuildAction(_ sender: Any) {
+        let alert = HabiticaAlertController(title: L10n.createGuild, message:  L10n.createGuildDescription)
+        alert.addAction(title: L10n.openWebsite, style: .default, isMainAction: true) { _ in
+            guard let url = URL(string: "https://habitica.com/groups/myGuilds") else {
+                return
+            }
+            UIApplication.shared.open(url)
+        }
+        alert.addCloseAction()
+        alert.show()
+    }
 }

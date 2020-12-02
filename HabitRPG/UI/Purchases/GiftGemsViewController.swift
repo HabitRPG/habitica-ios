@@ -239,8 +239,13 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
     
     @IBAction func sendGemsFromBalance(_ sender: Any) {
         if let user = giftedUser {
-            userRepository.sendGems(amount: balanceAmount, recipient: user.id ?? "").observeCompleted {[weak self] in
-                self?.showConfirmationDialog(gemCount: self?.balanceAmount ?? 0)
+            userRepository.sendGems(amount: balanceAmount, recipient: user.id ?? "").observeValues {[weak self] response in
+                if response?.success == true {
+                    self?.showConfirmationDialog(gemCount: self?.balanceAmount ?? 0)
+                } else {
+                    let alert = HabiticaAlertController.genericError(message: L10n.couldNotGiftGems)
+                    alert.enqueue()
+                }
             }
         }
     }

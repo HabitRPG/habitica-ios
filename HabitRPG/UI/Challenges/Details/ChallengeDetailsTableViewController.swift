@@ -47,6 +47,9 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
                     self?.parent?.present(alertController, animated: true, completion: nil)
                 }
             }))
+            disposable.inner.add(viewModel.endChallengeStyleProvider.buttonPressedProperty.signal.observeValues({[weak self] _ in
+                self?.endChallengeAction()
+            }))
         }
 
         tableView.delegate = self
@@ -123,5 +126,17 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
             return
         }
         viewModel?.leaveInteractor?.run(with: challenge)
+    }
+    
+    func endChallengeAction() {
+        let alert = HabiticaAlertController(title: L10n.endChallenge, message:  L10n.endChallengeDescription)
+        alert.addAction(title: L10n.openWebsite, style: .default, isMainAction: true) { _ in
+            guard let url = URL(string: "https://habitica.com/challenges/\(self.viewModel?.challengeID)") else {
+                return
+            }
+            UIApplication.shared.open(url)
+        }
+        alert.addCloseAction()
+        alert.show()
     }
 }

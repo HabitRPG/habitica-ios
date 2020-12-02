@@ -340,8 +340,8 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return PurchaseGemsCall(receipt: receipt, recipient: recipient).objectSignal
     }
     
-    func sendGems(amount: Int, recipient: String) -> Signal<EmptyResponseProtocol?, Never> {
-        return SendGemsCall(amount: amount, recipient: recipient).objectSignal
+    func sendGems(amount: Int, recipient: String) -> Signal<HabiticaResponse<APIEmptyResponse>?, Never> {
+        return SendGemsCall(amount: amount, recipient: recipient).habiticaResponseSignal
     }
     
     func purchaseNoRenewSubscription(identifier: String, receipt: [String: Any], recipient: String? = nil) -> Signal<EmptyResponseProtocol?, Never> {

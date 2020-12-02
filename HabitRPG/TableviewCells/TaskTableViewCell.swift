@@ -206,7 +206,7 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
                 lastView = subtitleLabel
             }
             if !taskDetailLine.isHidden {
-                taskDetailLine.pin.below(of: lastView).marginTop(7).start(to: contentStartEdge).marginStart(12).marginEnd(12).end(to: contentEndEdge).sizeToFit(.width)
+                taskDetailLine.pin.below(of: lastView).marginTop(7).start(to: contentStartEdge).marginStart(12).marginEnd(12).end(to: contentEndEdge).height(taskDetailLine.detailLabel.font.lineHeight)
                 lastView = taskDetailLine
             }
         }

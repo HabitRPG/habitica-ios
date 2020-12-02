@@ -48,6 +48,16 @@ class HabiticaAlertController: UIViewController, Themeable {
         }
     }
     
+    var attributedTitle: NSAttributedString? {
+        didSet {
+            if attributedTitle == nil || self.view == nil {
+                return
+            }
+            attributedMessage = nil
+            configureTitleView()
+        }
+    }
+    
     var message: String? {
         didSet {
             if message == nil || self.view == nil {
@@ -92,6 +102,18 @@ class HabiticaAlertController: UIViewController, Themeable {
     var containerViewSpacing: CGFloat = 8
     
     var closeTitle: String?
+    
+    convenience init(attributedTitle newTitle: NSAttributedString?, message newMessage: String? = nil) {
+        self.init()
+        attributedTitle = newTitle
+        message = newMessage
+    }
+    
+    convenience init(attributedTitle newTitle: NSAttributedString?, attributedMessage newMessage: NSAttributedString) {
+        self.init()
+        attributedTitle = newTitle
+        attributedMessage = newMessage
+    }
     
     convenience init(title newTitle: String?, message newMessage: String? = nil) {
         self.init()
@@ -272,9 +294,13 @@ class HabiticaAlertController: UIViewController, Themeable {
     
     private func configureTitleView() {
         if titleLabel != nil {
-            titleLabel.text = title
+            if title != nil {
+                titleLabel.text = title
+            } else {
+                titleLabel.attributedText = attributedTitle
+            }
         }
-        if title == nil && titleLabelTopMargin != nil && titleLabelBottomMargin != nil {
+        if (title == nil && attributedTitle == nil) && titleLabelTopMargin != nil && titleLabelBottomMargin != nil {
             titleLabelTopMargin.constant = 0
             titleLabelBottomMargin.constant = 0
         } else if titleLabelTopMargin != nil && titleLabelBottomMargin != nil {

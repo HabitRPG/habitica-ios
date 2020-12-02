@@ -36,8 +36,11 @@
                                         <constraint firstAttribute="width" constant="18" id="T97-3E-9fY"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcu-PY-akv">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcu-PY-akv">
                                     <rect key="frame" x="20" y="0.0" width="34" height="13"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="500" constant="16" id="PS9-b0-Hmq"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                     <color key="textColor" red="0.69796198610000004" green="0.69808381799999997" blue="0.69795435669999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -58,9 +61,10 @@
                                         <constraint firstAttribute="height" constant="8" id="ojC-J7-FfH"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zte-Jt-U0D">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zte-Jt-U0D">
                                     <rect key="frame" x="14" y="0.0" width="50" height="8"/>
                                     <constraints>
+                                        <constraint firstAttribute="height" priority="500" constant="16" id="Q54-ch-mQT"/>
                                         <constraint firstAttribute="width" priority="50" constant="20" id="kmE-7K-u9L"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
@@ -86,8 +90,11 @@
                                         <constraint firstAttribute="height" constant="15" id="Uku-nI-gai"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5J7-hC-HRT">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5J7-hC-HRT">
                                     <rect key="frame" x="20" y="0.0" width="50" height="15"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="500" constant="16" id="Xn5-nu-uzx"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                     <color key="textColor" red="0.69796198610000004" green="0.69808381799999997" blue="0.69795435669999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -95,9 +102,6 @@
                             </subviews>
                         </stackView>
                     </subviews>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="16" id="2Ub-Zl-OPA"/>
-                    </constraints>
                 </stackView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

@@ -154,8 +154,14 @@ public enum L10n {
   public static func copiedXToClipboard(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "copied_x_to_clipboard", p1)
   }
+  /// Could not gift gems. Please try again later.
+  public static var couldNotGiftGems: String { return L10n.tr("Mainstrings", "could_not_gift_gems") }
   /// Create
   public static var create: String { return L10n.tr("Mainstrings", "create") }
+  /// Create Guild
+  public static var createGuild: String { return L10n.tr("Mainstrings", "create_guild") }
+  /// To create a Guild, log in to the Habitica website then tap the “Create” button on the “My Guilds” screen.
+  public static var createGuildDescription: String { return L10n.tr("Mainstrings", "create_guild_description") }
   /// Create Tag
   public static var createTag: String { return L10n.tr("Mainstrings", "create_tag") }
   /// Add a task for something you would like to accomplish this week
@@ -234,6 +240,8 @@ public enum L10n {
   public static var email: String { return L10n.tr("Mainstrings", "email") }
   /// End Challenge
   public static var endChallenge: String { return L10n.tr("Mainstrings", "end_challenge") }
+  /// To end a Challenge, log in to the Habitica website then tap the “End Challenge” button on the right of the Challenge screen.
+  public static var endChallengeDescription: String { return L10n.tr("Mainstrings", "end_challenge_description") }
   /// Ending on %@
   public static func endingOn(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "ending_on", p1)
@@ -598,7 +606,7 @@ public enum L10n {
   public static var openAppStore: String { return L10n.tr("Mainstrings", "open_app_store") }
   /// Open Apple ID Subscriptions
   public static var openItunes: String { return L10n.tr("Mainstrings", "open_itunes") }
-  /// Open Habitica Website
+  /// Open Website
   public static var openWebsite: String { return L10n.tr("Mainstrings", "open_website") }
   /// Organize By
   public static var organizeBy: String { return L10n.tr("Mainstrings", "organize_by") }
