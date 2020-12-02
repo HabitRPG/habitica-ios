@@ -167,11 +167,23 @@ class MemberListView: UIView {
     func layout() {
         avatarView.pin.start().width(97).height(99).vCenter()
         displayNameLabel.pin.top(14).after(of: avatarView).marginStart(16).height(21).sizeToFit(.height)
+        
+        buffIconView.pin.size(15).after(of: displayNameLabel).top(to: displayNameLabel.edge.top).marginStart(6).marginTop(4)
+        classIconView.pin.size(15).top(to: displayNameLabel.edge.top).marginStart(4).marginTop(4)
+        if buffIconView.isHidden {
+            classIconView.pin.after(of: displayNameLabel)
+        } else {
+            classIconView.pin.after(of: buffIconView)
+        }
+        
         moreButton.pin.top(to: displayNameLabel.edge.top).height(20).sizeToFit(.height)
         moreButton.pin.end()
         leaderView.pin.top(to: displayNameLabel.edge.top).height(20).sizeToFit(.height)
-        leaderView.pin.width(leaderView.bounds.size.width + 16).before(of: moreButton).marginEnd(4)
-        sublineLabel.pin.after(of: avatarView).marginStart(16).below(of: displayNameLabel).marginTop(4).height(18).sizeToFit(.height)
+        leaderView.pin.width(leaderView.bounds.size.width + 16).before(of: moreButton).marginEnd(8)
+        if leaderView.frame.origin.x <= classIconView.frame.maxX {
+            leaderView.pin.below(of: displayNameLabel).marginTop(4).after(of: avatarView).marginStart(16)
+        }
+        sublineLabel.pin.after(of: avatarView).marginStart(16).below(of: leaderView).marginTop(4).height(18).sizeToFit(.height)
 
         healthLabel.pin.below(of: sublineLabel).height(16).sizeToFit(.height)
         experienceLabel.pin.below(of: healthLabel).marginTop(3).height(16).sizeToFit(.height)
@@ -187,13 +199,6 @@ class MemberListView: UIView {
         experienceBar.pin.after(of: avatarView).marginStart(16).below(of: healthBar).marginTop(11).height(8).before(of: healthLabel).marginEnd(12)
         manaBar.pin.after(of: avatarView).marginStart(16).below(of: experienceBar).marginTop(11).height(8).before(of: healthLabel).marginEnd(12)
 
-        buffIconView.pin.size(15).after(of: displayNameLabel).top(to: displayNameLabel.edge.top).marginStart(6).marginTop(4)
-        classIconView.pin.size(15).top(to: displayNameLabel.edge.top).marginStart(4).marginTop(4)
-        if buffIconView.isHidden {
-            classIconView.pin.after(of: displayNameLabel)
-        } else {
-            classIconView.pin.after(of: buffIconView)
-        }
     }
 
     override var intrinsicContentSize: CGSize {
