@@ -108,11 +108,15 @@ public enum L10n {
   public static var checkinYesterdaysDalies: String { return L10n.tr("Mainstrings", "checkin_yesterdays_dalies") }
   /// Choose Task
   public static var chooseTask: String { return L10n.tr("Mainstrings", "choose_task") }
+  /// Class System disabled.
+  public static var classSystemDisabled: String { return L10n.tr("Mainstrings", "class_system_disabled") }
+  /// You can enable the class system from the apps settings.
+  public static var classSystemEnableInstructions: String { return L10n.tr("Mainstrings", "class_system_enable_instructions") }
   /// Clear
   public static var clear: String { return L10n.tr("Mainstrings", "clear") }
   /// To do this, open Menu > Settings then scroll to the bottom to find the buttons
   public static var clearCacheDescription: String { return L10n.tr("Mainstrings", "clear_cache_description") }
-  /// Clear Cache & Reload Conent
+  /// Clear Cache & Reload Content
   public static var clearCacheTitle: String { return L10n.tr("Mainstrings", "clear_cache_title") }
   /// Close
   public static var close: String { return L10n.tr("Mainstrings", "close") }
@@ -896,6 +900,10 @@ public enum L10n {
   public static var unlocksLevelTen: String { return L10n.tr("Mainstrings", "unlocks_level_ten") }
   /// Unlocks after selecting a class
   public static var unlocksSelectingClass: String { return L10n.tr("Mainstrings", "unlocks_selecting_class") }
+  /// Skills are unlocked once you reach level 10 and have selected a class
+  public static var unlocksSelectingClassDescription: String { return L10n.tr("Mainstrings", "unlocks_selecting_class_description") }
+  /// Now that you reached level 10, you can choose a class!
+  public static var unlocksSelectingClassPrompt: String { return L10n.tr("Mainstrings", "unlocks_selecting_class_prompt") }
   /// Unpin
   public static var unpin: String { return L10n.tr("Mainstrings", "unpin") }
   /// No longer want to subscribe? You can manage your subscription from iTunes.

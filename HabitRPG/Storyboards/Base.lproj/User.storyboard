@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina3_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -100,7 +100,7 @@
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="4"/>
+                                                    <real key="value" value="8"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
@@ -181,7 +181,7 @@
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="4"/>
+                                                    <real key="value" value="8"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
@@ -273,7 +273,7 @@
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="4"/>
+                                                    <real key="value" value="8"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
@@ -310,6 +310,69 @@
                                     <outlet property="numberOwnedLabel" destination="reg-ed-u0h" id="DbC-nN-f2o"/>
                                     <outlet property="skillImageView" destination="fHG-qr-8NW" id="uw7-Ro-1rD"/>
                                     <outlet property="titleLabel" destination="0tK-FT-t1u" id="lL7-AL-wkb"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InformationCell" rowHeight="117" id="tZU-t8-ro3" customClass="SkillTableViewCell" customModule="Habitica" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="406.5" width="320" height="117"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tZU-t8-ro3" id="Ift-OV-3bc">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="117"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbS-X8-Fun">
+                                            <rect key="frame" x="16" y="4" width="288" height="109"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="CV7-qf-vbB">
+                                                    <rect key="frame" x="16" y="20" width="256" height="69"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1p-C0-0pv">
+                                                            <rect key="frame" x="0.0" y="0.0" width="256" height="0.0"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" priority="500" constant="21" id="mBM-cm-q07"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                            <color key="textColor" red="0.3075395823" green="0.2903449535" blue="0.34151983260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eos-FB-McD">
+                                                            <rect key="frame" x="0.0" y="8" width="256" height="0.0"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" priority="500" constant="21" id="v3p-Ck-LyC"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfH-lc-KAi">
+                                                            <rect key="frame" x="0.0" y="16" width="256" height="53"/>
+                                                            <state key="normal" title="Select Class"/>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.97636467220000001" green="0.97653168440000004" blue="0.9763541818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="CV7-qf-vbB" secondAttribute="bottom" constant="20" id="95L-kn-vhP"/>
+                                                <constraint firstItem="CV7-qf-vbB" firstAttribute="top" secondItem="vbS-X8-Fun" secondAttribute="top" constant="20" id="L7r-CI-bte"/>
+                                                <constraint firstAttribute="trailing" secondItem="CV7-qf-vbB" secondAttribute="trailing" constant="16" id="kI4-bz-v44"/>
+                                                <constraint firstItem="CV7-qf-vbB" firstAttribute="leading" secondItem="vbS-X8-Fun" secondAttribute="leading" constant="16" id="rOX-5g-nZ7"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="8"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="vbS-X8-Fun" firstAttribute="top" secondItem="Ift-OV-3bc" secondAttribute="top" constant="4" id="0mK-8P-vQc"/>
+                                        <constraint firstAttribute="bottom" secondItem="vbS-X8-Fun" secondAttribute="bottom" constant="4" id="K8P-JL-EJj"/>
+                                        <constraint firstItem="vbS-X8-Fun" firstAttribute="leading" secondItem="Ift-OV-3bc" secondAttribute="leading" constant="16" id="rlm-sW-cyM"/>
+                                        <constraint firstAttribute="trailing" secondItem="vbS-X8-Fun" secondAttribute="trailing" constant="16" id="zZd-fk-JUJ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="containerView" destination="vbS-X8-Fun" id="Is9-Rh-BR5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -508,7 +571,7 @@
                                                 <color key="textColor" red="0.95870476959999995" green="0.36744427680000002" blue="0.37960040569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CqQ-x9-BSL" customClass="HabiticaButton" customModule="Habitica" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CqQ-x9-BSL" customClass="HabiticaButton" customModule="Habitica" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="220" width="288" height="38"/>
                                                 <color key="backgroundColor" red="0.31023409959999998" green="0.1661486328" blue="0.57239967579999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -596,6 +659,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="FK0-CO-PAF"/>
                         <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="2xD-rf-HIY" secondAttribute="bottom" id="2oi-aZ-QB5"/>
@@ -604,7 +668,6 @@
                             <constraint firstAttribute="trailing" secondItem="2xD-rf-HIY" secondAttribute="trailing" id="m6j-LJ-hNr"/>
                             <constraint firstItem="8IW-iy-JrG" firstAttribute="width" secondItem="KYV-fe-lMG" secondAttribute="width" id="ugu-hJ-k9q"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="FK0-CO-PAF"/>
                     </view>
                     <connections>
                         <outlet property="confirmButton" destination="CqQ-x9-BSL" id="xVk-Ql-vaL"/>
@@ -1054,6 +1117,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="znW-64-ucM"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="CJ3-zt-Adk" secondAttribute="trailing" priority="999" id="1fN-dK-09C"/>
@@ -1062,7 +1126,6 @@
                             <constraint firstAttribute="bottom" secondItem="CJ3-zt-Adk" secondAttribute="bottom" id="lRn-K7-vF6"/>
                             <constraint firstItem="CJ3-zt-Adk" firstAttribute="top" secondItem="znW-64-ucM" secondAttribute="top" id="tzV-qS-jcy"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="znW-64-ucM"/>
                     </view>
                     <navigationItem key="navigationItem" id="jad-F6-0UB"/>
                     <connections>
@@ -1152,6 +1215,11 @@
             <point key="canvasLocation" x="144" y="-5"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="CqQ-x9-BSL">
+            <size key="intrinsicContentSize" width="135" height="30"/>
+        </designable>
+    </designables>
     <resources>
         <image name="HelloHabitican" width="221" height="91"/>
         <image name="VeteranPets" width="121" height="31"/>

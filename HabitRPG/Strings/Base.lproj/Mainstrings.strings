@@ -1034,3 +1034,7 @@
 "end_challenge" = "End Challenge";
 "end_challenge_description" = "To end a Challenge, log in to the Habitica website then tap the “End Challenge” button on the right of the Challenge screen.";
 "could_not_gift_gems" = "Could not gift gems. Please try again later.";
+"class_system_disabled" = "Class System disabled.";
+"class_system_enable_instructions" = "You can enable the class system from the apps settings.";
+"unlocks_selecting_class_description" = "Skills are unlocked once you reach level 10 and have selected a class";
+"unlocks_selecting_class_prompt" = "Now that you reached level 10, you can choose a class!";

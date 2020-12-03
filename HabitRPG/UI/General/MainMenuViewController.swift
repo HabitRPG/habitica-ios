@@ -162,20 +162,19 @@ class MainMenuViewController: BaseTableViewController {
             if let user = self.user {
                 navbarView.configure(user: user)
             }
-            let skillsItem = menuItem(withKey: .skills)
+            let statsItem = menuItem(withKey: .stats)
             if (user?.preferences?.disableClasses == true) {
-                skillsItem.isHidden = true
+                statsItem.isHidden = true
             } else {
-                skillsItem.isHidden = false
-                if (user?.stats?.level ?? 0 < 10 || user?.flags?.classSelected == false) {
-                    skillsItem.subtitle = L10n.unlocksLevelTen
-                    skillsItem.isDisabled = true
+                statsItem.isHidden = false
+                if user?.stats?.level ?? 0 < 10 || user?.flags?.classSelected == false {
+                    statsItem.subtitle = L10n.unlocksLevelTen
+                    statsItem.isDisabled = true
                 } else {
-                    skillsItem.subtitle = nil
-                    skillsItem.isDisabled = false
+                    statsItem.subtitle = nil
+                    statsItem.isDisabled = false
                 }
             }
-            menuItem(withKey: .skills).isHidden = user?.canUseSkills == false
             menuItem(withKey: .news).showIndicator = user?.flags?.hasNewStuff == true
             
             if let partyID = user?.party?.id {
@@ -456,6 +455,7 @@ class MainMenuViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = visibleSections[indexPath.section].visibleItems[indexPath.item]
         if item.isDisabled {
+            tableView.deselectRow(at: indexPath, animated: true)
             return
         }
         if let instantiator = item.vcInstantiator, let vc = instantiator() {
@@ -509,6 +509,8 @@ class MainMenuViewController: BaseTableViewController {
         subtitleLabel?.isHidden = item?.subtitle == nil
         subtitleLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 11)
         subtitleLabel?.textColor = item?.subtitleColor ?? ThemeService.shared.theme.secondaryTextColor
+        
+        cell.selectionStyle = item?.isDisabled == true ? .default : .none
         return cell
     }
     
