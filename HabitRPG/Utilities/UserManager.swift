@@ -30,9 +30,12 @@ class UserManager: NSObject {
     
     private var tutorialSteps = [String: Bool]()
         
-    func beginListening() {
+    private func getYesterday() -> Date? {
         let today = Date()
-        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)
+        return Calendar.current.date(byAdding: .day, value: -1, to: today)
+    }
+    
+    func beginListening() {
         disposable.add(userRepository.getUser()
             .throttle(1, on: QueueScheduler.main)
             .on(value: {[weak self]user in
@@ -40,7 +43,7 @@ class UserManager: NSObject {
             }).filter({[weak self] (user) -> Bool in
                 return user.needsCron && self?.yesterdailiesDialog == nil
             }).flatMap(.latest, {[weak self] user in
-                return self?.taskRepository.retrieveTasks(dueOnDay: yesterday).skipNil()
+                return self?.taskRepository.retrieveTasks(dueOnDay: self?.getYesterday()).skipNil()
                     .map({ tasks in
                         return tasks.filter({ task in
                             return task.isDue && !task.completed
