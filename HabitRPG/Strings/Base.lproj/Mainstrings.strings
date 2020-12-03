@@ -978,7 +978,7 @@
 "more_help_title" = "Need more help?";
 "more_help_description" = "Send a report to us and we’ll get back to you!";
 "more_help_button" = "Report a Bug";
-"clear_cache_title" = "Clear Cache & Reload Conent";
+"clear_cache_title" = "Clear Cache & Reload Content";
 "clear_cache_description" = "To do this, open Menu > Settings then scroll to the bottom to find the buttons";
 "manual_sync_title" = "Manual Sync & Force Restart";
 "manual_sync_description" = "Sometimes the app won’t automatically sync content or gets stuck with some odd behavior. Pull to refresh or force close the app and reopen it to see if it helps";
