@@ -24,13 +24,13 @@ class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
         rewardCurrencyCountView.viewSize = .large
     }
     
-    func configure(with challenge: ChallengeProtocol) {
+    func configure(with challenge: ChallengeProtocol, userID: String?) {
         challengeTitleLabel.text = challenge.name?.unicodeEmoji
         rewardCurrencyCountView.amount = challenge.prize
         participantsLabel.text = "\(challenge.memberCount)"
         
         tagHolderView.translatesAutoresizingMaskIntoConstraints = false
-        addTags(for: challenge)
+        addTags(for: challenge, userID: userID)
         
         let theme = ThemeService.shared.theme
         contentView.backgroundColor = theme.windowBackgroundColor
@@ -38,14 +38,14 @@ class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
         prizeWrapper.backgroundColor = theme.contentBackgroundColor
     }
     
-    func addTags(for challenge: ChallengeProtocol) {
+    func addTags(for challenge: ChallengeProtocol, userID: String?) {
         for view in tagHolderView.subviews {
             view.removeFromSuperview()
         }
         
         var tags: [UILabel] = []
         
-        if challenge.isOwner() {
+        if challenge.isOwner(userID) {
             tags.append(ownerTag())
         }
         if challenge.official {

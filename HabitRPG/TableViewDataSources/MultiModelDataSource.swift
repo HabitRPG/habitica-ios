@@ -11,7 +11,7 @@ import UIKit
 protocol MultiModelDataSourceItem {
     func cellIdentifier() -> String
     func cellClass() -> UITableViewCell.Type
-    func configureCell(_ cell: UITableViewCell)
+    func configureCell(_ cell: UITableViewCell, userID: String?)
 }
 
 class ConcreteMultiModelDataSourceItem<T>: MultiModelDataSourceItem where T: UITableViewCell {
@@ -29,7 +29,7 @@ class ConcreteMultiModelDataSourceItem<T>: MultiModelDataSourceItem where T: UIT
         return T.self
     }
     
-    func configureCell(_ cell: UITableViewCell) {
+    func configureCell(_ cell: UITableViewCell, userID: String?) {
         // NO OP: override me!
     }
 }
@@ -44,6 +44,7 @@ class MultiModelDataSourceSection {
 // MARK: -
 
 class MultiModelDataSource: NSObject, UITableViewDataSource {
+    private var socialRepository = SocialRepository()
     var tableView: UITableView? {
         didSet {
             registerCells()
@@ -91,7 +92,7 @@ class MultiModelDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let item = sections?[indexPath.section].items?[indexPath.row] {
             if let cell = tableView.dequeueReusableCell(withIdentifier: item.cellIdentifier()) {
-                item.configureCell(cell)
+                item.configureCell(cell, userID: socialRepository.currentUserId)
                 return cell
             }
         }

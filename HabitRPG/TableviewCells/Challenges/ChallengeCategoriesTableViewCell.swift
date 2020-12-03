@@ -22,7 +22,7 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
         super.awakeFromNib()
     }
     
-    func configure(with challenge: ChallengeProtocol) {
+    func configure(with challenge: ChallengeProtocol, userID: String?) {
         categories = challenge.categories.map { $0.name ?? "" }
         if isExpanded {
             contentView.removeConstraint(bottomConstraint)

@@ -35,7 +35,7 @@ class ChallengeCreatorTableViewCell: UITableViewCell, ChallengeConfigurable {
         // Initialization code
     }
     
-    func configure(with challenge: ChallengeProtocol) {
+    func configure(with challenge: ChallengeProtocol, userID: String?) {
         userNameLabel.text = challenge.leaderName
     }
     

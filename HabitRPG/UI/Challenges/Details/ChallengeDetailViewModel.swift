@@ -86,9 +86,9 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         }
         
         joinLeaveStyleProvider = JoinLeaveButtonAttributeProvider(challenge)
-        publishStyleProvider = PublishButtonAttributeProvider(challenge)
-        participantsStyleProvider = ParticipantsButtonAttributeProvider(challenge)
-        endChallengeStyleProvider = EndChallengeButtonAttributeProvider(challenge)
+        publishStyleProvider = PublishButtonAttributeProvider(challenge, userID: socialRepository.currentUserId)
+        participantsStyleProvider = ParticipantsButtonAttributeProvider(challenge, userID: socialRepository.currentUserId)
+        endChallengeStyleProvider = EndChallengeButtonAttributeProvider(challenge, userID: socialRepository.currentUserId)
         
         let initialCellModelsSignal = cellModelsProperty.signal.sample(on: viewDidLoadProperty.signal)
         
@@ -106,9 +106,9 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         nextViewControllerSignal = nextViewControllerProperty.signal.skipNil()
         
         joinLeaveStyleProvider = JoinLeaveButtonAttributeProvider(nil)
-        publishStyleProvider = PublishButtonAttributeProvider(nil)
-        participantsStyleProvider = ParticipantsButtonAttributeProvider(nil)
-        endChallengeStyleProvider = EndChallengeButtonAttributeProvider(nil)
+        publishStyleProvider = PublishButtonAttributeProvider(nil, userID: socialRepository.currentUserId)
+        participantsStyleProvider = ParticipantsButtonAttributeProvider(nil, userID: socialRepository.currentUserId)
+        endChallengeStyleProvider = EndChallengeButtonAttributeProvider(nil, userID: socialRepository.currentUserId)
         
         let initialCellModelsSignal = cellModelsProperty.signal.sample(on: viewDidLoadProperty.signal)
         
@@ -222,10 +222,10 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     
     func setupButtons() {
         let ownedChallengeSignal = challengeProperty.signal.skipNil().filter { (challenge) -> Bool in
-            return challenge.isOwner()
+            return challenge.isOwner(self.socialRepository.currentUserId)
         }
         let unownedChallengeSignal = challengeProperty.signal.skipNil().filter { (challenge) -> Bool in
-            return !challenge.isOwner()
+            return !challenge.isOwner(self.socialRepository.currentUserId)
         }
         
         endButtonItemProperty.signal.skipNil().observeValues { (item) in
@@ -370,7 +370,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
 // MARK: -
 
 protocol ChallengeConfigurable {
-    func configure(with challenge: ChallengeProtocol)
+    func configure(with challenge: ChallengeProtocol, userID: String?)
 }
 
 // MARK: -
@@ -383,9 +383,9 @@ class ChallengeMultiModelDataSourceItem<T>: ConcreteMultiModelDataSourceItem<T> 
         super.init(identifier: identifier)
     }
     
-    override func configureCell(_ cell: UITableViewCell) {
+    override func configureCell(_ cell: UITableViewCell, userID: String?) {
         if let clazzCell: T = cell as? T {
-            clazzCell.configure(with: challenge)
+            clazzCell.configure(with: challenge, userID: userID)
         }
     }
 }
@@ -404,8 +404,8 @@ class ChallengeCreatorMultiModelDataSourceItem: ChallengeMultiModelDataSourceIte
         super.init(challenge, identifier: identifier)
     }
     
-    override func configureCell(_ cell: UITableViewCell) {
-        super.configureCell(cell)
+    override func configureCell(_ cell: UITableViewCell, userID: String?) {
+        super.configureCell(cell, userID: userID)
         
         if let creatorCell = cell as? ChallengeCreatorTableViewCell {
             creatorCell.delegate = cellDelegate
@@ -425,8 +425,8 @@ class ChallengeResizableMultiModelDataSourceItem<T>: ChallengeMultiModelDataSour
         self.resizingDelegate = resizingDelegate
     }
     
-    override func configureCell(_ cell: UITableViewCell) {
-        super.configureCell(cell)
+    override func configureCell(_ cell: UITableViewCell, userID: String?) {
+        super.configureCell(cell, userID: userID)
         
         if let clazzCell: T = cell as? T {
             clazzCell.resizingDelegate = resizingDelegate
@@ -444,7 +444,7 @@ class ChallengeTaskMultiModelDataSourceItem<T>: ConcreteMultiModelDataSourceItem
         super.init(identifier: identifier)
     }
     
-    override func configureCell(_ cell: UITableViewCell) {
+    override func configureCell(_ cell: UITableViewCell, userID: String?) {
         if let clazzCell: T = cell as? T {
             clazzCell.configure(task: challengeTask)
         }
@@ -461,7 +461,7 @@ class RewardMultiModelDataSourceItem<T>: ConcreteMultiModelDataSourceItem<T> whe
         super.init(identifier: identifier)
     }
     
-    override func configureCell(_ cell: UITableViewCell) {
+    override func configureCell(_ cell: UITableViewCell, userID: String?) {
         if let clazzCell: T = cell as? T {
             clazzCell.configure(reward: challengeTask)
         }

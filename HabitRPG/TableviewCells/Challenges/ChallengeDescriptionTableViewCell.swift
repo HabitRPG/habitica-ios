@@ -24,7 +24,7 @@ class ChallengeDescriptionTableViewCell: ResizableTableViewCell, ChallengeConfig
         // Initialization code
     }
     
-    func configure(with challenge: ChallengeProtocol) {
+    func configure(with challenge: ChallengeProtocol, userID: String?) {
         if let notes = challenge.notes {
             descriptionLabel.attributedText = try? Down(markdownString: notes.unicodeEmoji).toHabiticaAttributedString(baseSize: descriptionLabel.font.pointSize)
         }

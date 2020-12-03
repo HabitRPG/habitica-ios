@@ -129,9 +129,10 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
     }
     
     func endChallengeAction() {
-        let alert = HabiticaAlertController(title: L10n.endChallenge, message:  L10n.endChallengeDescription)
+        let alert = HabiticaAlertController(title: L10n.endChallenge, message: L10n.endChallengeDescription)
         alert.addAction(title: L10n.openWebsite, style: .default, isMainAction: true) { _ in
-            guard let url = URL(string: "https://habitica.com/challenges/\(self.viewModel?.challengeID)") else {
+            let challengeID = self.viewModel?.challengeID ?? ""
+            guard let url = URL(string: "https://habitica.com/challenges/\(challengeID)") else {
                 return
             }
             UIApplication.shared.open(url)

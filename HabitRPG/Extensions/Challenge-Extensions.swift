@@ -11,40 +11,40 @@ import Habitica_Models
 
 extension ChallengeProtocol {
     
-    func shouldBePublishable() -> Bool {
-        if !isOwner() {
+    func shouldBePublishable(_ userID: String?) -> Bool {
+        if !isOwner(userID) {
             return false
         } else {
             return hasTasks()
         }
     }
     
-    func shouldBeUnpublishable() -> Bool {
-        if !isOwner() {
+    func shouldBeUnpublishable(_ userID: String?) -> Bool {
+        if !isOwner(userID) {
             return false
         } else {
             return !hasTasks()
         }
     }
     
-    func shouldEnable() -> Bool {
-        if !isOwner() {
+    func shouldEnable(_ userID: String?) -> Bool {
+        if !isOwner(userID) {
             return true
         } else {
             return hasTasks()
         }
     }
     
-    func isOwner() -> Bool {
-        return false
+    func isOwner(_ userID: String?) -> Bool {
+        return leaderID == userID
     }
     
     func isPublished() -> Bool {
         return true
     }
     
-    func isEndable() -> Bool {
-        return isOwner() && isPublished()
+    func isEndable(_ userID: String?) -> Bool {
+        return isOwner(userID) && isPublished()
     }
     
     func hasTasks() -> Bool {

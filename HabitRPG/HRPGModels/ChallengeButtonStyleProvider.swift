@@ -87,14 +87,14 @@ class PublishButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButtonMod
     let titleSignal: Signal<String, Never>
     let enabledSignal: Signal<Bool, Never>
     
-    init(_ challenge: ChallengeProtocol?) {
+    init(_ challenge: ChallengeProtocol?, userID: String?) {
         let publishableChallengeSignal = challengeProperty.signal
             .filter({ (challenge) -> Bool in
-                return challenge?.shouldBeUnpublishable() == true
+                return challenge?.shouldBeUnpublishable(userID) == true
             }).map { _ in ChallengeButtonState.publishEnabled }
         let unpublishableChallengeSignal = challengeProperty.signal
             .filter({ (challenge) -> Bool in
-                return challenge?.shouldBeUnpublishable() == true
+                return challenge?.shouldBeUnpublishable(userID) == true
             }).map { _ in ChallengeButtonState.publishDisabled }
         
         buttonStateSignal = Signal.merge(publishableChallengeSignal, unpublishableChallengeSignal).sample(on: triggerStyleProperty.signal)
@@ -138,11 +138,13 @@ class ParticipantsButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
     let titleSignal: Signal<String, Never>
     let enabledSignal: Signal<Bool, Never>
     
-    init(_ challenge: ChallengeProtocol?) {
+    init(_ challenge: ChallengeProtocol?, userID: String?) {
         let participantsViewableSignal = challengeProperty.signal
             .filter({ (challenge) -> Bool in
-                return challenge?.isOwner() == true && challenge?.isPublished() == true
+                return challenge?.isOwner(userID) == true && challenge?.isPublished() == true
             })
+            // Eventually remove this once viewing participants actually works
+            .filter({ _ -> Bool in return false })
             .map { _ in ChallengeButtonState.viewParticipants }
         
         buttonStateSignal = participantsViewableSignal.sample(on: triggerStyleProperty.signal)
@@ -178,10 +180,10 @@ class EndChallengeButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
     let titleSignal: Signal<String, Never>
     let enabledSignal: Signal<Bool, Never>
     
-    init(_ challenge: ChallengeProtocol?) {
+    init(_ challenge: ChallengeProtocol?, userID: String?) {
         let endableSignal = challengeProperty.signal
             .filter({ (challenge) -> Bool in
-                return challenge?.isOwner() == true
+                return challenge?.isOwner(userID) == true
             })
             .map { _ in ChallengeButtonState.endChallenge }
         

@@ -33,7 +33,7 @@ class ButtonCellMultiModelDataSourceItem: ConcreteMultiModelDataSourceItem<Chall
         super.init(identifier: identifier)
     }
     
-    override func configureCell(_ cell: UITableViewCell) {
+    override func configureCell(_ cell: UITableViewCell, userID: String?) {
         if let buttonCell = cell as? ChallengeButtonTableViewCell {
             buttonCell.buttonViewModel.attributeProvider = attributeProvider
             buttonCell.modelInputs = inputs
