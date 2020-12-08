@@ -1038,3 +1038,5 @@
 "class_system_enable_instructions" = "You can enable the class system from the apps settings.";
 "unlocks_selecting_class_description" = "Skills are unlocked once you reach level 10 and have selected a class";
 "unlocks_selecting_class_prompt" = "Now that you reached level 10, you can choose a class!";
+"pet_accessibility_label_raised" = "%@, Raised %d%%";
+"pet_accessibility_label_mount_owned" = "%@, Mount Owned";

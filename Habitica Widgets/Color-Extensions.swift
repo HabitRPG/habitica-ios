@@ -11,6 +11,8 @@ import SwiftUI
 extension Color {
     static let widgetBackground = Color("widgetBackground")
     static let widgetText = Color("widgetText")
+    static let widgetTextSecondary = Color("widgetTextSecondary")
+    static let dailiesWidgetPurple = Color("dailiesWidgetPurple")
     static let progressBackground = Color("progressBackground")
     
     static let barRed = Color(red: 1.0, green: 97.0 / 255.0, blue: 101.0 / 255.0)
@@ -19,4 +21,5 @@ extension Color {
     static let barGreen = Color(red: 36.0 / 255.0, green: 204.0 / 255.0, blue: 143.0 / 255.0)
     static let barTeal = Color(red: 59.0 / 255.0, green: 202.0 / 255.0, blue: 215.0 / 255.0)
     static let barBlue = Color(red: 80.0 / 255.0, green: 181.0 / 255.0, blue: 233.0 / 255.0)
+    static let barPurple = Color(red: 146.0 / 255.0, green: 92.0 / 255.0, blue: 243.0 / 255.0)
 }

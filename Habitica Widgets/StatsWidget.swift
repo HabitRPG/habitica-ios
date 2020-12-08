@@ -73,10 +73,10 @@ struct StatsWidgetView : View {
                     Text("Level \(entry.level)").font(.footnote).foregroundColor(Color.widgetText)
                     Spacer()
                     Image("Gold")
-                    Text("\(entry.gold)").font(.footnote).foregroundColor(Color.widgetText)
+                    Text("\(entry.gold)".stringWithAbbreviatedNumber()).font(.footnote).foregroundColor(Color.widgetText)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 8))
                     Image("Gem")
-                    Text("\(entry.gems)").font(.footnote).foregroundColor(Color.widgetText)
+                    Text("\(entry.gems)".stringWithAbbreviatedNumber()).font(.footnote).foregroundColor(Color.widgetText)
                 }
             }
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)

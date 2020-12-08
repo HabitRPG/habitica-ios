@@ -290,6 +290,8 @@
 		29A06E1D23ED4125003BADE9 /* InAppRewardProtocol-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A06E1C23ED4125003BADE9 /* InAppRewardProtocol-Extensions.swift */; };
 		29A0FD81203DF49900590BDE /* GuidelinesPromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */; };
 		29A1B9B91F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */; };
+		29A4CB71257FF3150013F0B3 /* String-SafeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4CB70257FF3150013F0B3 /* String-SafeExtensions.swift */; };
+		29A4CB77257FF31F0013F0B3 /* String-SafeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4CB70257FF3150013F0B3 /* String-SafeExtensions.swift */; };
 		29A62B012167D55200D4BD90 /* VerifyUsernameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */; };
 		29A62B09216CE5D700D4BD90 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B08216CE5D700D4BD90 /* AboutViewController.swift */; };
 		29A62B0B216CF4E200D4BD90 /* UIDevice-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B0A216CF4E200D4BD90 /* UIDevice-Extensions.swift */; };
@@ -995,6 +997,7 @@
 		29A06E1C23ED4125003BADE9 /* InAppRewardProtocol-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InAppRewardProtocol-Extensions.swift"; sourceTree = "<group>"; };
 		29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuidelinesPromptView.xib; sourceTree = "<group>"; };
 		29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction-Extensions.swift"; sourceTree = "<group>"; };
+		29A4CB70257FF3150013F0B3 /* String-SafeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-SafeExtensions.swift"; sourceTree = "<group>"; };
 		29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUsernameModalViewController.swift; sourceTree = "<group>"; };
 		29A62B08216CE5D700D4BD90 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		29A62B0A216CF4E200D4BD90 /* UIDevice-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice-Extensions.swift"; sourceTree = "<group>"; };
@@ -2256,6 +2259,7 @@
 				299328AA24E5985B003BCE0C /* UIStackview-Extensions.swift */,
 				29C1360724EE917F00DBC6B3 /* UITableView-Extensions.swift */,
 				29066CFE24FFA20B00A266EE /* Date-Extensions.swift */,
+				29A4CB70257FF3150013F0B3 /* String-SafeExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3537,6 +3541,7 @@
 				29BEE755252E321F00D456F8 /* AvatarWidget.swift in Sources */,
 				29BEE632252CCFE100D456F8 /* StatsWidget.swift in Sources */,
 				29BEE659252DD85C00D456F8 /* BaseRepository.swift in Sources */,
+				29A4CB77257FF31F0013F0B3 /* String-SafeExtensions.swift in Sources */,
 				29BEE65F252DD86200D456F8 /* AuthenticationManager.swift in Sources */,
 				29BEE6D7252E14F000D456F8 /* HabiticaWidgets.swift in Sources */,
 				29BEE760252E367600D456F8 /* URLImage.swift in Sources */,
@@ -3936,6 +3941,7 @@
 				29E1630B200D050E00685640 /* TopHeaderNavigationController.swift in Sources */,
 				29144872208628A300F3A6B5 /* FeedViewDataSource.swift in Sources */,
 				291448602084EA0100F3A6B5 /* PetDetailDataSource.swift in Sources */,
+				29A4CB71257FF3150013F0B3 /* String-SafeExtensions.swift in Sources */,
 				29B6AD4C1F2A0DBE00AC8878 /* LoginEntryView.swift in Sources */,
 				2980E6091EEA25CE005B7100 /* YesterdailiesDialogView.swift in Sources */,
 				29646DE1205C18FA0050886C /* TaskType-Extensions.swift in Sources */,

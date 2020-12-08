@@ -17,10 +17,15 @@ class PetDetailCell: UICollectionViewCell {
     func configure(petItem: PetStableItem) {
         backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         imageView.tintColor = ThemeService.shared.theme.dimmedColor
+        let percentage = Float(petItem.trained) / 50.0
         if let key = petItem.pet?.key {
             if petItem.trained != 0 {
                 imageView.setImagewith(name: "stable_Pet-\(key)")
-                accessibilityLabel = petItem.pet?.text
+                if petItem.trained > 0 {
+                    accessibilityLabel = L10n.petAccessibilityLabelRaised(petItem.pet?.text ?? "", Int(percentage*100))
+                } else {
+                    accessibilityLabel = L10n.petAccessibilityLabelMountOwned(petItem.pet?.text ?? "")
+                }
             } else {
                 ImageManager.getImage(name: "stable_Pet-\(key)") {[weak self] (image, _) in
                     self?.imageView.image = image?.withRenderingMode(.alwaysTemplate)
@@ -37,7 +42,7 @@ class PetDetailCell: UICollectionViewCell {
         progressView.trackTintColor = ThemeService.shared.theme.offsetBackgroundColor
         if petItem.pet?.type != " " && petItem.trained > 0 && petItem.canRaise == true {
             progressView.isHidden = false
-            progressView.progress = Float(petItem.trained) / 50.0
+            progressView.progress = percentage
         } else {
             progressView.isHidden = true
         }

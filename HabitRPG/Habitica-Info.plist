@@ -679,6 +679,7 @@
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>HRPGAddTaskIntent</string>
+		<string>HRPGAddTaskSingleIntent</string>
 		<string>HRPGDailiesCountIntent</string>
 	</array>
 	<key>UIApplicationShortcutItems</key>

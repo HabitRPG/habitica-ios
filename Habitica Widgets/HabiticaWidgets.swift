@@ -14,9 +14,10 @@ struct HabiticaWidgets: WidgetBundle {
     @WidgetBundleBuilder
     var body: some Widget {
         DailiesCountWidget()
-        AvatarWidget()
+        //AvatarWidget()
         StatsWidget()
+        AddTaskWidgetSingle()
         AddTaskWidget()
-        TaskListWidget()
+        //TaskListWidget()
     }
 }

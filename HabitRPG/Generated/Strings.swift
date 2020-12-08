@@ -632,6 +632,14 @@ public enum L10n {
   public static func percentComplete(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "percent_complete", p1)
   }
+  /// %@, Mount Owned
+  public static func petAccessibilityLabelMountOwned(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "pet_accessibility_label_mount_owned", p1)
+  }
+  /// %@, Raised %d%%
+  public static func petAccessibilityLabelRaised(_ p1: String, _ p2: Int) -> String {
+    return L10n.tr("Mainstrings", "pet_accessibility_label_raised", p1, p2)
+  }
   /// Pets
   public static var pets: String { return L10n.tr("Mainstrings", "pets") }
   /// Photo URL

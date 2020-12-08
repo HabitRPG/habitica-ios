@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "AddDaily.png",
+      "filename" : "Add Daily.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "AddDaily@2x.png",
+      "filename" : "Add Daily@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "AddDaily@3x.png",
+      "filename" : "Add Daily@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

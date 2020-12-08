@@ -54,7 +54,7 @@ struct TaskListWidgetView : View {
                 }
             }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             if (entry.tasks.isEmpty) {
-                CompletedView().frame(maxWidth: .infinity, alignment: .center)
+                CompletedView(totalCount: 0).frame(maxWidth: .infinity, alignment: .center)
             } else {
                 TaskListView(tasks: entry.tasks, maxCount: maxCount)
             }
