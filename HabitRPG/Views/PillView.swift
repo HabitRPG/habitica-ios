@@ -124,7 +124,7 @@ class PillView: UIView {
         iconView.contentMode = .center
         
         if borderColor == nil {
-            borderColor = UIColor.gray200
+            borderColor = ThemeService.shared.theme.secondaryBadgeColor
         }
     }
 

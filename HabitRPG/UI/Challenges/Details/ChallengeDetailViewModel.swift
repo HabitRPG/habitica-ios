@@ -105,6 +105,11 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         animateUpdatesSignal = animateUpdatesProperty.signal
         nextViewControllerSignal = nextViewControllerProperty.signal.skipNil()
         
+        self.joinInteractor = JoinChallengeInteractor()
+        if let viewController = UIApplication.shared.keyWindow?.visibleController() {
+            self.leaveInteractor = LeaveChallengeInteractor(presentingViewController: viewController)
+        }
+        
         joinLeaveStyleProvider = JoinLeaveButtonAttributeProvider(nil)
         publishStyleProvider = PublishButtonAttributeProvider(nil, userID: socialRepository.currentUserId)
         participantsStyleProvider = ParticipantsButtonAttributeProvider(nil, userID: socialRepository.currentUserId)
@@ -116,6 +121,10 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         
         setup(challenge: nil)
         reloadChallenge()
+    }
+    
+    private func setup(_ challenge: ChallengeProtocol?) {
+        
     }
         
     private func setup(challenge: ChallengeProtocol?) {
