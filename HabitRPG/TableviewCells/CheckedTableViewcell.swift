@@ -154,7 +154,7 @@ class CheckedTableViewCell: TaskTableViewCell {
     
     override func applyAccessibility(_ task: TaskProtocol) {
         super.applyAccessibility(task)
-        self.mainTaskWrapper?.accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Accessibility.completeTask, target: self, selector: #selector(checkTask)))
+        self.accessibilityWrapper?.accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Accessibility.completeTask, target: self, selector: #selector(checkTask)))
 
         var stateText = ""
         if task.type == "daily" {
@@ -169,16 +169,16 @@ class CheckedTableViewCell: TaskTableViewCell {
         if task.completed {
             stateText = L10n.Accessibility.completed
         }
-        self.mainTaskWrapper?.accessibilityLabel = "\(stateText), \(mainTaskWrapper.accessibilityLabel ?? "")"
+        self.accessibilityWrapper?.accessibilityLabel = "\(stateText), \(accessibilityWrapper.accessibilityLabel ?? "")"
         
         let checklistCount = task.checklist.count
         if checklistCount > 0 {
-            self.mainTaskWrapper?.accessibilityLabel = "\(mainTaskWrapper.accessibilityLabel ?? ""), \(checklistCount) checklist items"
+            self.accessibilityWrapper?.accessibilityLabel = "\(accessibilityWrapper.accessibilityLabel ?? ""), \(checklistCount) checklist items"
             self.isAccessibilityElement = false
             if isExpanded {
-                self.mainTaskWrapper?.accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Accessibility.collapseChecklist, target: self, selector: #selector(expandTask)))
+                self.accessibilityWrapper?.accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Accessibility.collapseChecklist, target: self, selector: #selector(expandTask)))
             } else {
-                self.mainTaskWrapper?.accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Accessibility.expandChecklist, target: self, selector: #selector(expandTask)))
+                self.accessibilityWrapper?.accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Accessibility.expandChecklist, target: self, selector: #selector(expandTask)))
             }
         }
     }

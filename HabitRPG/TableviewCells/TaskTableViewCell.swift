@@ -19,6 +19,7 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var subtitleLabel: MarkdownTextView!
     @IBOutlet weak var taskDetailLine: TaskDetailLineView!
     @IBOutlet weak var mainTaskWrapper: UIView!
+    @IBOutlet weak var accessibilityWrapper: UIView!
     @IBOutlet weak var syncingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var syncErrorIndicator: UIImageView!
     //swiftlint:disable private_outlet
@@ -113,14 +114,13 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     
     func applyAccessibility(_ task: TaskProtocol) {
-        self.mainTaskWrapper.accessibilityCustomActions = []
-        self.mainTaskWrapper.shouldGroupAccessibilityChildren = true
-        self.mainTaskWrapper.isAccessibilityElement = true
-        self.mainTaskWrapper.accessibilityHint = L10n.Accessibility.doubleTapToEdit
-        self.mainTaskWrapper.accessibilityLabel = "\(task.text ?? "")"
-        self.mainTaskWrapper.accessibilityLabel = "\(self.mainTaskWrapper.accessibilityLabel ?? ""), Value: \(String.forTaskQuality(task: task))"
+        self.accessibilityWrapper.accessibilityCustomActions = []
+        self.accessibilityWrapper.shouldGroupAccessibilityChildren = true
+        self.accessibilityWrapper.isAccessibilityElement = true
+        self.accessibilityWrapper.accessibilityHint = L10n.Accessibility.doubleTapToEdit
+        self.accessibilityWrapper.accessibilityLabel = "\(task.text ?? ""), Value: \(String.forTaskQuality(task: task))"
         if let notes = task.notes, !notes.isEmpty {
-            self.mainTaskWrapper.accessibilityLabel = "\(self.mainTaskWrapper.accessibilityLabel ?? ""), \(notes)"
+            self.accessibilityWrapper.accessibilityLabel = "\(self.mainTaskWrapper.accessibilityLabel ?? ""), \(notes)"
         }
     }
     
@@ -217,6 +217,9 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         mainTaskWrapper.pin.height(max(height, minHeight))
         if lastView == titleLabel {
             titleLabel.pin.vCenter()
+        }
+        if accessibilityWrapper != mainTaskWrapper {
+            accessibilityWrapper.pin.all()
         }
     }
     
