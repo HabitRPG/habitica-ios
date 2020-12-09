@@ -99,6 +99,12 @@
         _currentAuthorizationFlow = nil;
         return YES;
     }
+    
+    BOOL wasHandled = [[FBSDKApplicationDelegate sharedInstance] application:app openURL:url options:options];
+    
+    if (!wasHandled) {
+        return [RouterHandler.shared handleWithUrl:url];
+    }
 
     return [RouterHandler.shared handleWithUrl:url];
 }
@@ -112,7 +118,7 @@
         _currentAuthorizationFlow = nil;
         return YES;
     }
-    
+        
     BOOL wasHandled = [[FBSDKApplicationDelegate sharedInstance] application:application
                                                           openURL:url
                                                 sourceApplication:sourceApplication
