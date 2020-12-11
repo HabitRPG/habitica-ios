@@ -19,6 +19,8 @@ public enum HabiticaPromotionType {
             return FallExtraGemsPromotion(startDate: startDate, endDate: endDate)
         case "spooky_extra_gems", "fall2020SecondPromo", "testfall2020SecondPromo":
             return SpookyExtraGemsPromotion(startDate: startDate, endDate: endDate)
+        case "g1g1":
+            return GiftOneGetOnePromotion(startDate: startDate, endDate: endDate)
         default:
             return nil
         }
@@ -267,5 +269,128 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         formatter.dateStyle = .medium
         formatter.timeStyle = .long
         viewController.limitationsDescriptionLabel.text = L10n.GemsPromo.infoLimitations(formatter.string(from: startDate), formatter.string(from: endDate))
+    }
+}
+
+class GiftOneGetOnePromotion: HabiticaPromotion {
+
+    var identifier = "gift1_get1"
+    var promoType: HabiticaPromotionType = .subscription
+    
+    var startDate: Date
+    var endDate: Date
+    
+    init(startDate: Date?, endDate: Date?) {
+        self.startDate = startDate ?? Date.with(year: 2020, month: 12, day: 17, timezone: TimeZone(abbreviation: "UTC"))
+        self.endDate = endDate ?? Date.with(year: 2021, month: 1, day: 7, timezone: TimeZone(abbreviation: "UTC"))
+    }
+    
+    func backgroundColor() -> UIColor {
+        return UIColor.gray10
+    }
+
+    func buttonBackground() -> UIColor {
+        return ThemeService.shared.theme.contentBackgroundColor
+    }
+    
+    private func makeGradient(view: UIView) -> CAGradientLayer {
+        let gradient: CAGradientLayer = CAGradientLayer()
+
+        gradient.colors = [UIColor("#3BCAD7").cgColor, UIColor("#925CF3").cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height)
+        return gradient
+    }
+    
+    func configurePill(_ pillView: PillView) {
+        pillView.backgroundColor = nil
+        pillView.layer.sublayers?.filter { $0 is CAGradientLayer}.forEach { $0.removeFromSuperlayer() }
+        let gradientLayer = makeGradient(view: pillView)
+        gradientLayer.cornerRadius = pillView.frame.size.height / 2
+        pillView.layer.insertSublayer(gradientLayer, at: 0)
+        pillView.textColor = .white
+    }
+    
+    func configurePromoMenuView(view: PromoMenuView) {
+        view.backgroundColor = backgroundColor()
+        view.leftImageView.image = Asset.promoGiftLeftLarge.image
+        view.rightImageView.image = Asset.promoGiftRightLarge.image
+        view.setTitle(L10n.giftOneGetOneEvent)
+        view.setDescription(L10n.giftOneGetOneDescription)
+        view.actionButton.backgroundColor = buttonBackground()
+        view.actionButton.setTitle(L10n.learnMore, for: .normal)
+        view.actionButton.setTitleColor(UIColor.teal50, for: .normal)
+    }
+    
+    func configurePurchaseBanner(view: PromoBannerView) {
+        view.backgroundColor = backgroundColor()
+        view.leftImageView.image = Asset.promoGiftsLeft.image
+        view.rightImageView.image = Asset.promoGiftsRight.image
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d"
+        view.setTitle(L10n.GiftOneGetOneData.purchaseBannerTitle(formatter.string(from: endDate)).uppercased())
+    }
+    
+    func configureGemView(view: GemPurchaseCell, regularAmount: Int) {
+        view.backgroundColor = backgroundColor()
+        let colors = [
+            UIColor.red10,
+            UIColor.blue50,
+            UIColor.green50,
+            UIColor.purple400,
+            UIColor.yellow50
+        ].shuffled()
+        let decorationImage = HabiticaIcons.imageOfFallGemPromoBG(redGemColor: colors[0], greenGemColor: colors[1], blueGemColor: colors[2], purpleGemColor: colors[3])
+        view.leftDecorationImageView.image = decorationImage
+        view.rightDecorationImageView.image = decorationImage
+        view.priceLabel.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
+        let gradientLayer = makeGradient(view: view.priceLabel)
+        gradientLayer.cornerRadius = 8
+        view.priceLabel.layer.insertSublayer(gradientLayer, at: 0)
+        view.footerLabel.text = L10n.usuallyXGems(regularAmount)
+        view.footerLabel.textColor = UIColor("#CAC7CE")
+        view.footerLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+        
+        switch regularAmount {
+        case 4:
+            view.setGemAmount(5)
+        case 21:
+            view.setGemAmount(30)
+        case 42:
+            view.setGemAmount(60)
+        case 84:
+            view.setGemAmount(125)
+        default:
+            break
+        }
+        view.amountLabel.textColor = UIColor("#FEE2B6")
+        view.gemsLabel.textColor = UIColor("#FEE2B6")
+    }
+    
+    func configureInfoView(_ viewController: PromotionInfoViewController) {
+        viewController.promoBanner.backgroundColor = backgroundColor()
+        viewController.promoBanner.leftImageView.image = Asset.promoGiftsLeft.image
+        viewController.promoBanner.rightImageView.image = Asset.promoGiftsRight.image
+        viewController.promoBanner.setTitle(L10n.giftOneGetOneTitle)
+        viewController.promoBanner.setDescription(L10n.limitedEvent.uppercased())
+        viewController.promoBanner.durationLabel.textColor = .white
+        viewController.promoBanner.durationLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d"
+        viewController.promoBanner.setDuration(L10n.xToY(formatter.string(from: startDate), formatter.string(from: endDate)))
+        
+        viewController.promptLabel.textColor = UIColor("#F78E2F")
+        viewController.promptLabel.text = L10n.GiftOneGetOneData.infoPrompt
+        viewController.promptButton.setTitle(L10n.giftSubscription, for: .normal)
+        viewController.promptButton.setTitleColor(.white, for: .normal)
+        viewController.promptButton.backgroundColor = UIColor.purple400
+        viewController.instructionsTitleLabel.text = L10n.promoInfoInstructionsTitle
+        viewController.instructionsDescriptionLabel.text = L10n.GiftOneGetOneData.infoInstructions
+        viewController.limitationsTitleLabel.text = L10n.promoInfoLimitationsTitle
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .long
+        viewController.limitationsDescriptionLabel.text = L10n.GiftOneGetOneData.infoLimitations(formatter.string(from: startDate), formatter.string(from: endDate))
     }
 }

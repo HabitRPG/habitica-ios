@@ -30,8 +30,9 @@ class SubscriptionViewController: BaseTableViewController {
     @IBOutlet weak var giftSubscriptionButton: UIButton!
     @IBOutlet weak var subscriptionSupportLabel: UILabel!
     @IBOutlet weak var headerImage: UIImageView!
-    @IBOutlet weak var giftOneGetOnePromoView: GiftOneGetOnePromoView!
     
+    private var activePromo: HabiticaPromotion?
+
     var products: [SKProduct]?
     var selectedSubscriptionPlan: SKProduct?
     var user: UserProtocol? {
@@ -74,6 +75,8 @@ class SubscriptionViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        activePromo = configRepository.activePromotion()
+        
         if let termsView = self.tableView.tableFooterView?.viewWithTag(2) as? UITextView {
             let termsAttributedText = NSMutableAttributedString(string: "Once we’ve confirmed your purchase, the payment will be charged to your Apple ID.\n\nSubscriptions automatically renew unless auto-renewal is turned off at least 24-hours before the end of the current period. You can manage subscription renewal from your Apple IDSettings. If you have an active subscription, your account will be charged for renewal within 24-hours prior to the end of your current subscription period and you will be charged the same price you initially paid.\n\nBy continuing you accept the Terms of Use and Privacy Policy.")
             termsAttributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: ThemeService.shared.theme.primaryTextColor, range: NSRange(location: 0, length: termsAttributedText.length))
@@ -108,16 +111,9 @@ class SubscriptionViewController: BaseTableViewController {
             self.mysteryGear = gear
         }).start())
         
-        if configRepository.bool(variable: .enableGiftOneGetOne) {
+        if activePromo != nil {
             if let header = tableView.tableHeaderView {
                 header.frame = CGRect(x: header.frame.origin.x, y: header.frame.origin.y, width: header.frame.size.width, height: 165)
-            }
-            giftOneGetOnePromoView.isHidden = false
-            giftOneGetOnePromoView.onTapped = {[weak self] in
-                guard let weakSelf = self else {
-                    return
-                }
-                weakSelf.giftSubscriptionButtonTapped(weakSelf.giftOneGetOnePromoView)
             }
         }
     }

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "promo_gifts_right.png",
+      "filename" : "promo_gift_left_large.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "promo_gifts_right@2x.png",
+      "filename" : "promo_gift_left_large@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "promo_gifts_right@3x.png",
+      "filename" : "promo_gift_left_large@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

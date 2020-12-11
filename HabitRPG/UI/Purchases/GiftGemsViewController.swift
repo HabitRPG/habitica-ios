@@ -33,6 +33,8 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
     private let configRepository = ConfigRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
+    private var activePromo: HabiticaPromotion?
+
     var products: [SKProduct]?
     var selectedSubscriptionPlan: SKProduct?
     public var giftRecipientUsername: String?
@@ -105,6 +107,8 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
             navigationController?.navigationBar.standardAppearance.shadowColor = .clear
             navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
         }
+        
+        activePromo = configRepository.activePromotion()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -207,7 +211,7 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if configRepository.bool(variable: .enableGiftOneGetOne) {
+        if activePromo != nil {
             return CGSize(width: collectionView.frame.size.width, height: 320)
         } else {
             return CGSize(width: collectionView.frame.size.width, height: 239)

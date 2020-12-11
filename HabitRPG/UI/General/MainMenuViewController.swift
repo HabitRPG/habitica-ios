@@ -190,7 +190,7 @@ class MainMenuViewController: BaseTableViewController {
             
             tableView.reloadData()
             
-            if user?.isSubscribed == true && (!configRepository.bool(variable: .enableGiftOneGetOne) && activePromo == nil) {
+            if user?.isSubscribed == true && activePromo == nil {
                 tableView.tableFooterView = nil
             }
             if user?.isSubscribed == true {
@@ -307,13 +307,7 @@ class MainMenuViewController: BaseTableViewController {
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableView.automaticDimension
         
-        if configRepository.bool(variable: .enableGiftOneGetOne) {
-            let view = GiftOneGetOnePromoView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
-            view.size = .large
-            view.cornerRadius = 0
-            view.onTapped = { [weak self] in self?.giftSubscriptionButtonTapped() }
-            tableView.tableFooterView = view
-        } else if configRepository.bool(variable: .showSubscriptionBanner) {
+        if configRepository.bool(variable: .showSubscriptionBanner) {
             let view = SubscriptionPromoView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
             view.onButtonTapped = { [weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.subscriptionSegue.rawValue, sender: self) }
             tableView.tableFooterView = view
@@ -370,11 +364,6 @@ class MainMenuViewController: BaseTableViewController {
             let item = menuSections.remove(at: 3)
             menuSections.insert(item, at: 1)
             tableView.reloadData()
-        }
-        
-        if configRepository.bool(variable: .enableGiftOneGetOne) {
-            menuItem(withKey: .subscription).pillText = L10n.sale
-            menuItem(withKey: .subscription).pillColor = .teal50
         }
     }
     

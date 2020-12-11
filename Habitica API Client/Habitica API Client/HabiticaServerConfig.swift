@@ -18,7 +18,7 @@ public class HabiticaServerConfig {
     public static let localhost = ServerConfiguration(scheme: "http", host: "192.168.178.52:3000", apiRoute: "api/\(Constants.defaultApiVersion)")
     public static let stub = ServerConfiguration(shouldStub: true, scheme: "https", host: "habitica.com", apiRoute: "api/\(Constants.defaultApiVersion)")
     
-    public static var current = production
+    public static var current = delta
         
     public static var etags: [String: String] = [:]
 }

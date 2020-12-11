@@ -26,6 +26,8 @@ class GiftSubscriptionViewController: BaseTableViewController {
     private let configRepository = ConfigRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
+    private var activePromo: HabiticaPromotion?
+
     var products: [SKProduct]?
     var selectedSubscriptionPlan: SKProduct?
     public var giftRecipientUsername: String?
@@ -78,8 +80,10 @@ class GiftSubscriptionViewController: BaseTableViewController {
                 self.giftedUser = member
             }))
         }
-        
-        if !configRepository.bool(variable: .enableGiftOneGetOne) {
+
+        activePromo = configRepository.activePromotion()
+
+        if activePromo == nil {
             tableView.tableFooterView = nil
         }
         

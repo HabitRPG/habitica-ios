@@ -26,6 +26,7 @@ class RealmWorldState: Object, WorldStateProtocol {
     }
     @objc dynamic var realmWorldBoss: RealmQuestState?
     @objc dynamic var currentEventKey: String?
+    @objc dynamic var currentEventPromo: String?
     @objc dynamic var currentEventStartDate: Date?
     @objc dynamic var currentEventEndDate: Date?
     
@@ -38,6 +39,7 @@ class RealmWorldState: Object, WorldStateProtocol {
         self.id = id
         worldBoss = state.worldBoss
         currentEventKey = state.currentEventKey
+        currentEventPromo = state.currentEventPromo
         currentEventStartDate = state.currentEventStartDate
         currentEventEndDate = state.currentEventEndDate
     }

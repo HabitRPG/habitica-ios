@@ -114,7 +114,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if configRepository.bool(variable: .enableGiftOneGetOne) || activePromo != nil {
+        if activePromo != nil {
             return CGSize(width: collectionView.frame.size.width, height: 382)
         } else {
             return CGSize(width: collectionView.frame.size.width, height: 302)
@@ -184,15 +184,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
                 stackView.isLayoutMarginsRelativeArrangement = true
             }
             
-            if configRepository.bool(variable: .enableGiftOneGetOne) {
-                if let promoView = view.viewWithTag(2) as? GiftOneGetOnePromoView {
-                    promoView.isHidden = false
-                    promoView.onTapped = {[weak self] in
-                        self?.showGiftSubscriptionModal()
-                    }
-                    //promoView.frame = CGRect(x: 0, y: 0, width: collectionView.frame.size.width, height: 411)
-                }
-            } else if let promo = activePromo {
+            if let promo = activePromo {
                 if let promoView = view.viewWithTag(5) as? PromoBannerView {
                     promoView.isHidden = false
                     promo.configurePurchaseBanner(view: promoView)

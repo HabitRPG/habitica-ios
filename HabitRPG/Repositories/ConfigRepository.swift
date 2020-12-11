@@ -23,7 +23,6 @@ enum ConfigVariable: Int {
     
     case shopSpriteSuffix
     case maxChatLength
-    case enableGiftOneGetOne
     case spriteSubstitutions
     case lastVersionNumber
     case lastVersionCode
@@ -53,7 +52,6 @@ enum ConfigVariable: Int {
         case .apiVersion: return "apiVersion"
         case .shopSpriteSuffix: return "shopSpriteSuffix"
         case .maxChatLength: return "maxChatLength"
-        case .enableGiftOneGetOne: return "enableGiftOneGetOne"
         case .enableUsernameAutocomplete: return "enableUsernameAutocomplete"
         case .spriteSubstitutions: return "spriteSubstitutions"
         case .lastVersionNumber: return "lastVersionNumber"
@@ -91,8 +89,6 @@ enum ConfigVariable: Int {
             return "" as NSString
         case .maxChatLength:
             return 3000 as NSNumber
-        case .enableGiftOneGetOne:
-            return false as NSNumber
         case .enableUsernameAutocomplete:
             return false as NSNumber
         case .spriteSubstitutions:
@@ -136,7 +132,6 @@ enum ConfigVariable: Int {
             .apiVersion,
             .shopSpriteSuffix,
             .maxChatLength,
-            .enableGiftOneGetOne,
             .enableUsernameAutocomplete,
             .spriteSubstitutions,
             .lastVersionNumber,
@@ -231,7 +226,7 @@ class ConfigRepository: NSObject {
         }
         let startDate = userConfig.object(forKey: "currentEventStartDate") as? Date
         let endDate = userConfig.object(forKey: "currentEventEndDate") as? Date
-        let promo = HabiticaPromotionType.getPromoFromKey(key: key, startDate: startDate, endDate: endDate)
+        let promo = HabiticaPromotionType.getPromoFromKey(key: userConfig.string(forKey: "currentEventPromo") ?? key, startDate: startDate, endDate: endDate)
         if let promo = promo, promo.endDate > Date() {
             return promo
         } else {

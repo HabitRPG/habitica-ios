@@ -204,6 +204,8 @@ internal enum Asset {
   internal static let pillGryphon = ImageAsset(name: "pillGryphon")
   internal static let plus = ImageAsset(name: "plus")
   internal static let plusGray = ImageAsset(name: "plus_gray")
+  internal static let promoGiftLeftLarge = ImageAsset(name: "promo_gift_left_large")
+  internal static let promoGiftRightLarge = ImageAsset(name: "promo_gift_right_large")
   internal static let promoGiftsLeft = ImageAsset(name: "promo_gifts_left")
   internal static let promoGiftsRight = ImageAsset(name: "promo_gifts_right")
   internal static let rageStrikeActive = ImageAsset(name: "rage_strike_active")
