@@ -18,14 +18,45 @@ class PromotionInfoViewController: BaseUIViewController {
     @IBOutlet weak var promoBanner: PromoBannerView!
     @IBOutlet weak var promptLabel: UILabel!
     @IBOutlet weak var promptButton: UIButton!
-    @IBOutlet weak var instructionsTitleLabel: UILabel!
-    @IBOutlet weak var instructionsDescriptionLabel: UILabel!
-    @IBOutlet weak var limitationsTitleLabel: UILabel!
-    @IBOutlet weak var limitationsDescriptionLabel: UILabel!
+    @IBOutlet private weak var instructionsTitleLabel: UILabel!
+    @IBOutlet private weak var instructionsDescriptionLabel: UILabel!
+    @IBOutlet private weak var limitationsTitleLabel: UILabel!
+    @IBOutlet private weak var limitationsDescriptionLabel: UILabel!
+    
+    var instructionsDescription: String? {
+        get {
+            return instructionsDescriptionLabel.text
+        }
+        set {
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 4
+            paragraphStyle.alignment = .center
+            let attrString = NSMutableAttributedString(string: newValue ?? "")
+            attrString.addAttribute(.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+            instructionsDescriptionLabel.attributedText = attrString
+        }
+    }
+    
+var limitationsDescription: String? {
+        get {
+            return limitationsDescriptionLabel.text
+        }
+        set {
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 4
+            paragraphStyle.alignment = .center
+            let attrString = NSMutableAttributedString(string: newValue ?? "")
+            attrString.addAttribute(.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+            limitationsDescriptionLabel.attributedText = attrString
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         promotion = configRepository.activePromotion()
+        
+        instructionsTitleLabel.text = L10n.promoInfoInstructionsTitle
+        limitationsTitleLabel.text = L10n.promoInfoLimitationsTitle
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,8 +90,8 @@ class PromotionInfoViewController: BaseUIViewController {
         }
         instructionsTitleLabel.textColor = theme.secondaryTextColor
         limitationsTitleLabel.textColor = theme.secondaryTextColor
-        instructionsDescriptionLabel.textColor = theme.ternaryTextColor
-        limitationsDescriptionLabel.textColor = theme.ternaryTextColor
+        instructionsDescriptionLabel.textColor = theme.quadTextColor
+        limitationsDescriptionLabel.textColor = theme.quadTextColor
     }
     
     @IBAction func promptButtonTapped(_ sender: Any) {
@@ -70,7 +101,38 @@ class PromotionInfoViewController: BaseUIViewController {
         if promo.promoType == .gemsAmount || promo.promoType == .gemsPrice {
             perform(segue: StoryboardSegue.Main.purchaseGemsSegue)
         } else if promo.promoType == .subscription {
-            perform(segue: StoryboardSegue.Main.subscriptionSegue)
+            if promo.identifier == "g1g1" {
+                showGiftSubscriptionAlert()
+            } else {
+                perform(segue: StoryboardSegue.Main.subscriptionSegue)
+            }
         }
     }
+    
+    private var giftRecipientUsername = ""
+
+    private func showGiftSubscriptionAlert() {
+        let alertController = HabiticaAlertController(title: L10n.giftRecipientTitle, message: L10n.giftRecipientSubtitle)
+        let textField = UITextField()
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
+        textField.borderColor = UIColor.gray300
+        textField.borderWidth = 1
+        textField.tintColor = ThemeService.shared.theme.tintColor
+        alertController.contentView = textField
+        alertController.addAction(title: L10n.continue, style: .default, isMainAction: true, closeOnTap: true, handler: { _ in
+            if let username = textField.text, username.isEmpty == false {
+                let navigationController = StoryboardScene.Main.giftSubscriptionNavController.instantiate()
+                if let giftViewController = navigationController.topViewController as? GiftSubscriptionViewController {
+                    giftViewController.giftRecipientUsername = username
+                }
+                self.present(navigationController, animated: true, completion: nil)
+            }
+        })
+        alertController.addCancelAction()
+        alertController.containerViewSpacing = 8
+        alertController.show()
+        textField.becomeFirstResponder()
+    }
+
 }

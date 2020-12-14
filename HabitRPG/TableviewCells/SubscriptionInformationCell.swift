@@ -14,34 +14,41 @@ class SubscriptionInformationCell: UITableViewCell {
     @IBOutlet weak private var descriptionTextView: UILabel!
     @IBOutlet weak var iconView: UIImageView!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
+        titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
+        
+        descriptionTextView.font = CustomFontMetrics.scaledSystemFont(ofSize: 13)
+        descriptionTextView.textColor = ThemeService.shared.theme.secondaryTextColor
+    }
+    
     var title: String {
-        set {
-            titleLabel.text = newValue
-        }
-
         get {
             return titleLabel.text ?? ""
+        }
+        set {
+            titleLabel.text = newValue
         }
     }
 
     var descriptionText: String {
+        get {
+            return descriptionTextView.text ?? ""
+        }
         set {
             descriptionTextView.text = newValue
             descriptionTextView.textColor = ThemeService.shared.theme.primaryTextColor
         }
-
-        get {
-            return descriptionTextView.text ?? ""
-        }
     }
     
     var icon: UIImage? {
-        set {
-            iconView.image = newValue
-        }
-        
         get {
             return iconView.image
+        }
+        set {
+            iconView.image = newValue
         }
     }
 }

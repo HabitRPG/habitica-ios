@@ -14,7 +14,9 @@ class PromoBannerView: UIView {
     
     let titleView: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledBoldSystemFont(ofSize: 14)
+        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 20, ofWeight: .semibold)
+        label.numberOfLines = 0
+        label.textAlignment = .center
         return label
     }()
     let titleImageView = UIImageView()
@@ -53,7 +55,7 @@ class PromoBannerView: UIView {
     
     func setDescription(_ text: String) {
         let attributedString = NSMutableAttributedString(string: text)
-        attributedString.addAttribute(NSAttributedString.Key.kern, value: 1.8, range: NSMakeRange(0, attributedString.length))
+        attributedString.addAttribute(NSAttributedString.Key.kern, value: 1.8, range: NSRange(location: 0, length: attributedString.length))
         descriptionLabel.attributedText = attributedString
         descriptionLabel.isHidden = false
     }
@@ -103,7 +105,7 @@ class PromoBannerView: UIView {
         rightImageView.pin.end().bottom().sizeToFit()
         var upperEdge = edge.top
         if !titleView.isHidden {
-            titleView.pin.top(to: upperEdge).marginTop(20).sizeToFit().hCenter()
+            titleView.pin.top(to: upperEdge).marginTop(20).start(80).end(80).sizeToFit(.width)
             upperEdge = titleView.edge.bottom
         }
         if !titleImageView.isHidden {
@@ -111,16 +113,21 @@ class PromoBannerView: UIView {
             upperEdge = titleImageView.edge.bottom
         }
         if !descriptionLabel.isHidden {
-            descriptionLabel.pin.top(to: upperEdge).marginTop(8).sizeToFit().hCenter()
+            descriptionLabel.pin.top(to: upperEdge).marginTop(4).start(80).end(80).sizeToFit(.width)
             upperEdge = descriptionLabel.edge.bottom
         }
         if !descriptionImageView.isHidden {
-            descriptionImageView.pin.top(to: upperEdge).marginTop(8).sizeToFit().hCenter()
+            descriptionImageView.pin.top(to: upperEdge).marginTop(4).sizeToFit().hCenter()
             upperEdge = descriptionImageView.edge.bottom
         }
         if !durationLabel.isHidden {
             durationLabel.pin.top(to: upperEdge).start(34).end(34).marginTop(8).maxWidth(400).sizeToFit(.width)
             upperEdge = durationLabel.edge.bottom
+        }
+    
+        layer.sublayers?.filter { $0 is CAGradientLayer }.forEach {
+            $0.frame = CGRect(x: 0.0, y: 0.0, width: frame.size.width, height: frame.size.height)
+
         }
     }
     

@@ -163,12 +163,10 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         let gradientLayer = makeGradient(view: viewController.promptButton)
         gradientLayer.cornerRadius = 8
         viewController.promptButton.layer.insertSublayer(gradientLayer, at: 0)
-        viewController.instructionsTitleLabel.text = L10n.promoInfoInstructionsTitle
-        viewController.instructionsDescriptionLabel.text = L10n.FallPromo.infoInstructions(formatter.string(from: startDate), formatter.string(from: endDate))
-        viewController.limitationsTitleLabel.text = L10n.promoInfoLimitationsTitle
+        viewController.instructionsDescription = L10n.FallPromo.infoInstructions(formatter.string(from: startDate), formatter.string(from: endDate))
         formatter.dateStyle = .medium
         formatter.timeStyle = .long
-        viewController.limitationsDescriptionLabel.text = L10n.GemsPromo.infoLimitations(formatter.string(from: startDate), formatter.string(from: endDate))
+        viewController.limitationsDescription = L10n.GemsPromo.infoLimitations(formatter.string(from: startDate), formatter.string(from: endDate))
     }
 }
 
@@ -263,18 +261,16 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         viewController.promptButton.setTitle(L10n.viewGemBundles, for: .normal)
         viewController.promptButton.setTitleColor(.white, for: .normal)
         viewController.promptButton.backgroundColor = buttonBackground()
-        viewController.instructionsTitleLabel.text = L10n.promoInfoInstructionsTitle
-        viewController.instructionsDescriptionLabel.text = L10n.SpookyPromo.infoInstructions(formatter.string(from: startDate), formatter.string(from: endDate))
-        viewController.limitationsTitleLabel.text = L10n.promoInfoLimitationsTitle
+        viewController.instructionsDescription = L10n.SpookyPromo.infoInstructions(formatter.string(from: startDate), formatter.string(from: endDate))
         formatter.dateStyle = .medium
         formatter.timeStyle = .long
-        viewController.limitationsDescriptionLabel.text = L10n.GemsPromo.infoLimitations(formatter.string(from: startDate), formatter.string(from: endDate))
+        viewController.limitationsDescription = L10n.GemsPromo.infoLimitations(formatter.string(from: startDate), formatter.string(from: endDate))
     }
 }
 
 class GiftOneGetOnePromotion: HabiticaPromotion {
 
-    var identifier = "gift1_get1"
+    var identifier = "g1g1"
     var promoType: HabiticaPromotionType = .subscription
     
     var startDate: Date
@@ -306,7 +302,7 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
     
     func configurePill(_ pillView: PillView) {
         pillView.backgroundColor = nil
-        pillView.layer.sublayers?.filter { $0 is CAGradientLayer}.forEach { $0.removeFromSuperlayer() }
+        pillView.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: pillView)
         gradientLayer.cornerRadius = pillView.frame.size.height / 2
         pillView.layer.insertSublayer(gradientLayer, at: 0)
@@ -314,83 +310,70 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
     }
     
     func configurePromoMenuView(view: PromoMenuView) {
-        view.backgroundColor = backgroundColor()
+        view.backgroundColor = nil
+        view.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
+        let gradientLayer = makeGradient(view: view)
+        view.layer.insertSublayer(gradientLayer, at: 0)
         view.leftImageView.image = Asset.promoGiftLeftLarge.image
         view.rightImageView.image = Asset.promoGiftRightLarge.image
         view.setTitle(L10n.giftOneGetOneEvent)
+        view.titleView.textColor = .white
         view.setDescription(L10n.giftOneGetOneDescription)
+        view.descriptionView.textColor = .white
         view.actionButton.backgroundColor = buttonBackground()
         view.actionButton.setTitle(L10n.learnMore, for: .normal)
-        view.actionButton.setTitleColor(UIColor.teal50, for: .normal)
+        if ThemeService.shared.theme.isDark {
+            view.actionButton.setTitleColor(UIColor.teal100, for: .normal)
+        } else {
+            view.actionButton.setTitleColor(UIColor.teal10, for: .normal)
+        }
     }
     
     func configurePurchaseBanner(view: PromoBannerView) {
-        view.backgroundColor = backgroundColor()
+        view.backgroundColor = nil
+        view.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
+        let gradientLayer = makeGradient(view: view)
+        view.layer.insertSublayer(gradientLayer, at: 0)
         view.leftImageView.image = Asset.promoGiftsLeft.image
         view.rightImageView.image = Asset.promoGiftsRight.image
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d"
-        view.setTitle(L10n.GiftOneGetOneData.purchaseBannerTitle(formatter.string(from: endDate)).uppercased())
+        view.setTitle(L10n.GiftOneGetOneData.purchaseBannerTitle(formatter.string(from: endDate)))
+        view.titleView.textColor = .white
+        view.titleView.font = .systemFont(ofSize: 17, weight: .semibold)
     }
     
     func configureGemView(view: GemPurchaseCell, regularAmount: Int) {
-        view.backgroundColor = backgroundColor()
-        let colors = [
-            UIColor.red10,
-            UIColor.blue50,
-            UIColor.green50,
-            UIColor.purple400,
-            UIColor.yellow50
-        ].shuffled()
-        let decorationImage = HabiticaIcons.imageOfFallGemPromoBG(redGemColor: colors[0], greenGemColor: colors[1], blueGemColor: colors[2], purpleGemColor: colors[3])
-        view.leftDecorationImageView.image = decorationImage
-        view.rightDecorationImageView.image = decorationImage
-        view.priceLabel.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
-        let gradientLayer = makeGradient(view: view.priceLabel)
-        gradientLayer.cornerRadius = 8
-        view.priceLabel.layer.insertSublayer(gradientLayer, at: 0)
-        view.footerLabel.text = L10n.usuallyXGems(regularAmount)
-        view.footerLabel.textColor = UIColor("#CAC7CE")
-        view.footerLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
-        
-        switch regularAmount {
-        case 4:
-            view.setGemAmount(5)
-        case 21:
-            view.setGemAmount(30)
-        case 42:
-            view.setGemAmount(60)
-        case 84:
-            view.setGemAmount(125)
-        default:
-            break
-        }
-        view.amountLabel.textColor = UIColor("#FEE2B6")
-        view.gemsLabel.textColor = UIColor("#FEE2B6")
     }
     
     func configureInfoView(_ viewController: PromotionInfoViewController) {
-        viewController.promoBanner.backgroundColor = backgroundColor()
+        viewController.promoBanner.backgroundColor = nil
+        viewController.promoBanner.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
+        let gradientLayer = makeGradient(view: viewController.promoBanner)
+        viewController.promoBanner.layer.insertSublayer(gradientLayer, at: 0)
         viewController.promoBanner.leftImageView.image = Asset.promoGiftsLeft.image
         viewController.promoBanner.rightImageView.image = Asset.promoGiftsRight.image
         viewController.promoBanner.setTitle(L10n.giftOneGetOneTitle)
+        viewController.promoBanner.titleView.textColor = .white
         viewController.promoBanner.setDescription(L10n.limitedEvent.uppercased())
+        viewController.promoBanner.descriptionLabel.textColor = .white
         viewController.promoBanner.durationLabel.textColor = .white
         viewController.promoBanner.durationLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d"
         viewController.promoBanner.setDuration(L10n.xToY(formatter.string(from: startDate), formatter.string(from: endDate)))
-        
-        viewController.promptLabel.textColor = UIColor("#F78E2F")
+        if ThemeService.shared.theme.isDark {
+            viewController.promptLabel.textColor = UIColor.teal100
+        } else {
+            viewController.promptLabel.textColor = UIColor.teal10
+        }
         viewController.promptLabel.text = L10n.GiftOneGetOneData.infoPrompt
         viewController.promptButton.setTitle(L10n.giftSubscription, for: .normal)
         viewController.promptButton.setTitleColor(.white, for: .normal)
-        viewController.promptButton.backgroundColor = UIColor.purple400
-        viewController.instructionsTitleLabel.text = L10n.promoInfoInstructionsTitle
-        viewController.instructionsDescriptionLabel.text = L10n.GiftOneGetOneData.infoInstructions
-        viewController.limitationsTitleLabel.text = L10n.promoInfoLimitationsTitle
+        viewController.promptButton.backgroundColor = UIColor("#925CF3")
+        viewController.instructionsDescription = L10n.GiftOneGetOneData.infoInstructions
         formatter.dateStyle = .medium
         formatter.timeStyle = .long
-        viewController.limitationsDescriptionLabel.text = L10n.GiftOneGetOneData.infoLimitations(formatter.string(from: startDate), formatter.string(from: endDate))
+        viewController.limitationsDescription = L10n.GiftOneGetOneData.infoLimitations(formatter.string(from: startDate), formatter.string(from: endDate))
     }
 }

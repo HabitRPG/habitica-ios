@@ -30,6 +30,7 @@ class SubscriptionViewController: BaseTableViewController {
     @IBOutlet weak var giftSubscriptionButton: UIButton!
     @IBOutlet weak var subscriptionSupportLabel: UILabel!
     @IBOutlet weak var headerImage: UIImageView!
+    @IBOutlet weak var promoBannerView: PromoBannerView!
     
     private var activePromo: HabiticaPromotion?
 
@@ -111,9 +112,14 @@ class SubscriptionViewController: BaseTableViewController {
             self.mysteryGear = gear
         }).start())
         
-        if activePromo != nil {
+        if let promo = activePromo {
             if let header = tableView.tableHeaderView {
                 header.frame = CGRect(x: header.frame.origin.x, y: header.frame.origin.y, width: header.frame.size.width, height: 165)
+                if let promoView = header.viewWithTag(2) as? PromoBannerView {
+                        promoView.isHidden = false
+                        promo.configurePurchaseBanner(view: promoView)
+                        promoView.onTapped = { [weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.showPromoInfoSegue.rawValue, sender: self) }
+                }
             }
         }
     }
@@ -217,13 +223,13 @@ class SubscriptionViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
-        if (isInformationSection(section)) {
+        if isInformationSection(section) {
             let separatorView = UIImageView(image: Asset.separatorFancy.image)
             separatorView.contentMode = .center
             view.addSubview(separatorView)
             let titleView = UILabel()
             titleView.numberOfLines = 0
-            titleView.textColor = ThemeService.shared.theme.tintColor
+            titleView.textColor = ThemeService.shared.theme.backgroundTintColor
             titleView.font = CustomFontMetrics.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
             titleView.textAlignment = .center
             if isSubscribed {
@@ -232,7 +238,7 @@ class SubscriptionViewController: BaseTableViewController {
                 titleView.text = L10n.subscriptionBenefitsTitle
             }
             view.addSubview(titleView)
-            titleView.pin.start(20%).end(20%).top().sizeToFit(.width)
+            titleView.pin.start(10%).end(10%).top().sizeToFit(.width)
             separatorView.pin.start().end().below(of: titleView).marginTop(16).height(16)
             view.pin.height(separatorView.frame.origin.y + separatorView.frame.size.height + 16)
         } else if isOptionSection(section) && showSubscribeOptions {
@@ -241,12 +247,12 @@ class SubscriptionViewController: BaseTableViewController {
             view.addSubview(separatorView)
             let titleView = UILabel()
             titleView.numberOfLines = 0
-            titleView.textColor = ThemeService.shared.theme.tintColor
+            titleView.textColor = ThemeService.shared.theme.backgroundTintColor
             titleView.font = CustomFontMetrics.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
             titleView.textAlignment = .center
             titleView.text = L10n.subscriptionOptionsTitle
             view.addSubview(titleView)
-            separatorView.pin.start().end().top(16).height(16)
+            separatorView.pin.start().end().top(4).height(16)
             titleView.pin.start(20%).end(20%).below(of: separatorView).marginTop(16).sizeToFit(.width)
             view.pin.height(titleView.frame.origin.y + titleView.frame.size.height + 8)
         }

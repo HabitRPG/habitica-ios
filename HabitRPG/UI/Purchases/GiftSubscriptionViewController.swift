@@ -83,8 +83,19 @@ class GiftSubscriptionViewController: BaseTableViewController {
 
         activePromo = configRepository.activePromotion()
 
-        if activePromo == nil {
+        if activePromo?.identifier != "g1g1" {
             tableView.tableFooterView = nil
+        } else if let footer = tableView.tableFooterView {
+            footer.backgroundColor = nil
+            footer.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
+            let gradient: CAGradientLayer = CAGradientLayer()
+
+            gradient.colors = [UIColor("#3BCAD7").cgColor, UIColor("#925CF3").cgColor]
+            gradient.locations = [0.0, 1.0]
+            gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
+            gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+            gradient.frame = CGRect(x: 0.0, y: 0.0, width: footer.frame.size.width, height: footer.frame.size.height)
+            footer.layer.insertSublayer(gradient, at: 0)
         }
         
         explanationTitle.text = L10n.giftSubscriptionPrompt
@@ -97,6 +108,10 @@ class GiftSubscriptionViewController: BaseTableViewController {
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
+        tableView.backgroundColor = theme.contentBackgroundColor
+        explanationTitle.textColor = theme.primaryTextColor
+        tableView.reloadData()
     }
     
     func retrieveProductList() {

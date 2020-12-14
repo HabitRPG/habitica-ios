@@ -14,7 +14,7 @@ class PromoMenuView: UIView, Themeable {
     
     let titleView: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledBoldSystemFont(ofSize: 14)
+        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
         return label
     }()
     let titleImageView = UIImageView()
@@ -102,7 +102,7 @@ class PromoMenuView: UIView, Themeable {
             upperEdge = titleImageView.edge.bottom
         }
         if !descriptionView.isHidden {
-            descriptionView.pin.top(to: upperEdge).start(34).end(34).marginTop(8).maxWidth(400).sizeToFit(.width)
+            descriptionView.pin.top(to: upperEdge).start(34).end(34).marginTop(8).maxWidth(250).sizeToFit(.width)
             upperEdge = descriptionView.edge.bottom
         }
         if !descriptionImageView.isHidden {
