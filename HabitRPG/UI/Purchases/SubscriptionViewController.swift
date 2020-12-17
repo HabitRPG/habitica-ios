@@ -42,7 +42,11 @@ class SubscriptionViewController: BaseTableViewController {
                 isSubscribed = true
                 showSubscribeOptions = false
                 restorePurchaseButton.isHidden = true
-                headerImage.image = Asset.subscriberHeader.image
+                if ThemeService.shared.theme.isDark {
+                    headerImage.image = Asset.subscriberHeaderDark.image
+                } else {
+                    headerImage.image = Asset.subscriberHeader.image
+                }
             }
             hasTerminationDate = user?.purchased?.subscriptionPlan?.dateTerminated != nil
         }
@@ -114,7 +118,7 @@ class SubscriptionViewController: BaseTableViewController {
         
         if let promo = activePromo {
             if let header = tableView.tableHeaderView {
-                header.frame = CGRect(x: header.frame.origin.x, y: header.frame.origin.y, width: header.frame.size.width, height: 165)
+                header.frame = CGRect(x: header.frame.origin.x, y: header.frame.origin.y, width: header.frame.size.width, height: 205)
                 if let promoView = header.viewWithTag(2) as? PromoBannerView {
                         promoView.isHidden = false
                         promo.configurePurchaseBanner(view: promoView)
@@ -229,7 +233,11 @@ class SubscriptionViewController: BaseTableViewController {
             view.addSubview(separatorView)
             let titleView = UILabel()
             titleView.numberOfLines = 0
-            titleView.textColor = ThemeService.shared.theme.backgroundTintColor
+            if ThemeService.shared.theme.isDark {
+                titleView.textColor = ThemeService.shared.theme.tintColor
+            } else {
+                titleView.textColor = ThemeService.shared.theme.backgroundTintColor
+            }
             titleView.font = CustomFontMetrics.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
             titleView.textAlignment = .center
             if isSubscribed {
@@ -247,7 +255,11 @@ class SubscriptionViewController: BaseTableViewController {
             view.addSubview(separatorView)
             let titleView = UILabel()
             titleView.numberOfLines = 0
-            titleView.textColor = ThemeService.shared.theme.backgroundTintColor
+            if ThemeService.shared.theme.isDark {
+                titleView.textColor = ThemeService.shared.theme.tintColor
+            } else {
+                titleView.textColor = ThemeService.shared.theme.backgroundTintColor
+            }
             titleView.font = CustomFontMetrics.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
             titleView.textAlignment = .center
             titleView.text = L10n.subscriptionOptionsTitle

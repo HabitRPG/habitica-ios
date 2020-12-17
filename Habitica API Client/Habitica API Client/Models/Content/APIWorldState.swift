@@ -37,15 +37,18 @@ public class APIWorldState: WorldStateProtocol, Decodable {
     public var currentEventPromo: String?
     public var currentEventStartDate: Date?
     public var currentEventEndDate: Date?
+    public var npcImageSuffix: String?
     
     enum CodingKeys: String, CodingKey {
         case worldBoss
+        case npcImageSuffix
         case currentEvent
     }
     
     public required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         worldBoss = try? values.decode(APIQuestState.self, forKey: .worldBoss)
+        npcImageSuffix = try? values.decode(String.self, forKey: .npcImageSuffix)
         if let event = try? values.decode(CurrentEvent.self, forKey: .currentEvent) {
             currentEventKey = event.event
             currentEventPromo = event.promo

@@ -156,7 +156,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         viewController.promoBanner.setDuration(L10n.xToY(formatter.string(from: startDate), formatter.string(from: endDate)))
         
         viewController.promptLabel.textColor = UIColor("#F78E2F")
-        viewController.promptLabel.text = L10n.FallPromo.infoPrompt
+        viewController.promptText = L10n.FallPromo.infoPrompt
         viewController.promptButton.setTitle(L10n.viewGemBundles, for: .normal)
         viewController.promptButton.setTitleColor(.white, for: .normal)
         viewController.promptButton.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
@@ -257,7 +257,7 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         viewController.promoBanner.setDuration(L10n.xToY(formatter.string(from: startDate), formatter.string(from: endDate)))
         
         viewController.promptLabel.textColor = UIColor("#F78E2F")
-        viewController.promptLabel.text = L10n.SpookyPromo.infoPrompt
+        viewController.promptText = L10n.SpookyPromo.infoPrompt
         viewController.promptButton.setTitle(L10n.viewGemBundles, for: .normal)
         viewController.promptButton.setTitleColor(.white, for: .normal)
         viewController.promptButton.backgroundColor = buttonBackground()
@@ -334,8 +334,8 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
         view.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: view)
         view.layer.insertSublayer(gradientLayer, at: 0)
-        view.leftImageView.image = Asset.promoGiftsLeft.image
-        view.rightImageView.image = Asset.promoGiftsRight.image
+        view.leftImageView.image = Asset.subScreenG1g1PresentsLeft.image
+        view.rightImageView.image = Asset.subScreenG1g1PresentsRight.image
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d"
         view.setTitle(L10n.GiftOneGetOneData.purchaseBannerTitle(formatter.string(from: endDate)))
@@ -367,7 +367,7 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
         } else {
             viewController.promptLabel.textColor = UIColor.teal10
         }
-        viewController.promptLabel.text = L10n.GiftOneGetOneData.infoPrompt
+        viewController.promptText = L10n.GiftOneGetOneData.infoPrompt
         viewController.promptButton.setTitle(L10n.giftSubscription, for: .normal)
         viewController.promptButton.setTitleColor(.white, for: .normal)
         viewController.promptButton.backgroundColor = UIColor("#925CF3")

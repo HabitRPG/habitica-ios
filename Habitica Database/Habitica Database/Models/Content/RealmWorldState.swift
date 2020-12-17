@@ -29,6 +29,7 @@ class RealmWorldState: Object, WorldStateProtocol {
     @objc dynamic var currentEventPromo: String?
     @objc dynamic var currentEventStartDate: Date?
     @objc dynamic var currentEventEndDate: Date?
+    @objc dynamic var npcImageSuffix: String?
     
     override static func primaryKey() -> String {
         return "id"
@@ -42,6 +43,7 @@ class RealmWorldState: Object, WorldStateProtocol {
         currentEventPromo = state.currentEventPromo
         currentEventStartDate = state.currentEventStartDate
         currentEventEndDate = state.currentEventEndDate
+        npcImageSuffix = state.npcImageSuffix
     }
     
 }

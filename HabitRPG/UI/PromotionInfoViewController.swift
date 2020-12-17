@@ -23,13 +23,27 @@ class PromotionInfoViewController: BaseUIViewController {
     @IBOutlet private weak var limitationsTitleLabel: UILabel!
     @IBOutlet private weak var limitationsDescriptionLabel: UILabel!
     
+    var promptText: String? {
+        get {
+            return promptLabel.text
+        }
+        set {
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 3
+            paragraphStyle.alignment = .center
+            let attrString = NSMutableAttributedString(string: newValue ?? "")
+            attrString.addAttribute(.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+            promptLabel.attributedText = attrString
+        }
+    }
+    
     var instructionsDescription: String? {
         get {
             return instructionsDescriptionLabel.text
         }
         set {
             let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.lineSpacing = 4
+            paragraphStyle.lineSpacing = 3
             paragraphStyle.alignment = .center
             let attrString = NSMutableAttributedString(string: newValue ?? "")
             attrString.addAttribute(.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
@@ -37,13 +51,13 @@ class PromotionInfoViewController: BaseUIViewController {
         }
     }
     
-var limitationsDescription: String? {
+    var limitationsDescription: String? {
         get {
             return limitationsDescriptionLabel.text
         }
         set {
             let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.lineSpacing = 4
+            paragraphStyle.lineSpacing = 3
             paragraphStyle.alignment = .center
             let attrString = NSMutableAttributedString(string: newValue ?? "")
             attrString.addAttribute(.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attrString.length))

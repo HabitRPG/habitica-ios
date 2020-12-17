@@ -23,6 +23,7 @@ class GiftSubscriptionViewController: BaseTableViewController {
     @IBOutlet weak var giftOneGetOneDescriptionLabel: UILabel!
     
     private let socialRepository = SocialRepository()
+    private let userRepository = UserRepository()
     private let configRepository = ConfigRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
@@ -30,6 +31,7 @@ class GiftSubscriptionViewController: BaseTableViewController {
 
     var products: [SKProduct]?
     var selectedSubscriptionPlan: SKProduct?
+    var isSubscribing = false
     public var giftRecipientUsername: String?
     var giftedUser: MemberProtocol? {
         didSet {
@@ -98,6 +100,11 @@ class GiftSubscriptionViewController: BaseTableViewController {
             footer.layer.insertSublayer(gradient, at: 0)
         }
         
+        if #available(iOS 13.0, *) {
+            navigationController?.navigationBar.standardAppearance.shadowColor = .clear
+            navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
+        }
+        
         explanationTitle.text = L10n.giftSubscriptionPrompt
     }
     
@@ -108,7 +115,11 @@ class GiftSubscriptionViewController: BaseTableViewController {
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
+        if #available(iOS 13.0, *) {
+            navigationController?.navigationBar.standardAppearance.backgroundColor = theme.contentBackgroundColor
+        } else {
+            navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
+        }
         tableView.backgroundColor = theme.contentBackgroundColor
         explanationTitle.textColor = theme.primaryTextColor
         tableView.reloadData()
@@ -210,6 +221,9 @@ class GiftSubscriptionViewController: BaseTableViewController {
     }
     
     @IBAction func subscribeButtonPressed(_ sender: Any) {
+        if isSubscribing {
+            return
+        }
         self.subscribeToPlan()
     }
     
@@ -217,11 +231,14 @@ class GiftSubscriptionViewController: BaseTableViewController {
         guard let identifier = self.selectedSubscriptionPlan?.productIdentifier else {
             return
         }
+        isSubscribing = true
         PurchaseHandler.shared.pendingGifts[identifier] = self.giftedUser?.id
         SwiftyStoreKit.purchaseProduct(identifier, atomically: false) { result in
+            self.isSubscribing = false
             switch result {
             case .success(let product):
                 self.displayConfirmationDialog()
+                self.userRepository.retrieveUser().observeCompleted {}
                 print("Purchase Success: \(product.productId)")
             case .error(let error):
                 print("Purchase Failed: \(error)")
@@ -269,10 +286,15 @@ class GiftSubscriptionViewController: BaseTableViewController {
     }
     
     func displayConfirmationDialog() {
-        let body = L10n.giftConfirmationBody(usernameLabel.text ?? "", selectedDurationString())
+        var body = L10n.giftConfirmationBody(usernameLabel.text ?? "", selectedDurationString())
+        if activePromo?.identifier == "g1g1" {
+            body = L10n.giftConfirmationBodyG1g1(usernameLabel.text ?? "", selectedDurationString())
+        }
         let alertController = HabiticaAlertController(title: L10n.giftConfirmationTitle, message: body)
         alertController.addCloseAction { _ in
-            self.dismiss(animated: true, completion: nil)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                self.performSegue(withIdentifier: "unwindToList", sender: self)
+            }
         }
         alertController.show()
     }

@@ -321,6 +321,10 @@ public enum L10n {
     return L10n.tr("Mainstrings", "gift_confirmation_body", p1, p2)
   }
   /// You sent %@ a %@-month Habitica subscription and the same subscription was applied to your account for our Gift One Get One promotion!
+  public static func giftConfirmationBodyG1G1(_ p1: String, _ p2: String) -> String {
+    return L10n.tr("Mainstrings", "gift_confirmation_body_g1_g1", p1, p2)
+  }
+  /// You sent %@ a %@-month Habitica subscription and the same subscription was applied to your account for our Gift One Get One promotion!
   public static func giftConfirmationBodyG1g1(_ p1: String, _ p2: String) -> String {
     return L10n.tr("Mainstrings", "gift_confirmation_body_g1g1", p1, p2)
   }

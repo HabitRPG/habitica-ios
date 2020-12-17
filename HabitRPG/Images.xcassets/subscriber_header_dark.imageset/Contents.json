@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "habitica_subscriber_art_DARK.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "habitica_subscriber_art_DARK@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "habitica_subscriber_art_DARK@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

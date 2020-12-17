@@ -14,4 +14,5 @@ public protocol WorldStateProtocol {
     var currentEventPromo: String? { get set }
     var currentEventStartDate: Date? { get set }
     var currentEventEndDate: Date? { get set }
+    var npcImageSuffix: String? { get set }
 }

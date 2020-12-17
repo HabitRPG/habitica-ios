@@ -66,6 +66,7 @@ internal enum StoryboardSegue {
     case subscriptionSegue
     case unwindSaveSegue
     case unwindSegue
+    case unwindToList
   }
   internal enum Settings: String, SegueType {
     case apiSegue = "APISegue"

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,7 +20,7 @@
                         <rect key="frame" x="16" y="8" width="343" height="127"/>
                         <subviews>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="JQl-uq-L9i" customClass="FlagView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="303" y="12" width="40" height="24"/>
+                                <rect key="frame" x="323" y="12" width="20" height="24"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="13U-DT-J01"/>
@@ -47,7 +47,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" priority="500" constant="10" id="TNd-5R-izk"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <color key="textColor" red="0.29921266436576843" green="0.17604684829711914" blue="0.4975128173828125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -154,6 +154,11 @@
             <point key="canvasLocation" x="-50.5" y="500.5"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="JQl-uq-L9i">
+            <size key="intrinsicContentSize" width="20" height="24"/>
+        </designable>
+    </designables>
     <resources>
         <image name="circle_unselected" width="20" height="20"/>
     </resources>

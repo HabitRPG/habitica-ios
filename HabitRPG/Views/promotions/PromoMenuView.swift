@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PromoMenuView: UIView, Themeable {
+class PromoMenuView: UIView {
     
     var onButtonTapped: (() -> Void)?
     
@@ -20,7 +20,7 @@ class PromoMenuView: UIView, Themeable {
     let titleImageView = UIImageView()
     let descriptionView: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 13)
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -80,8 +80,6 @@ class PromoMenuView: UIView, Themeable {
         titleImageView.isHidden = true
         descriptionView.isHidden = true
         descriptionImageView.isHidden = true
-        
-        ThemeService.shared.addThemeable(themable: self)
     }
     
     override func layoutSubviews() {
@@ -94,15 +92,15 @@ class PromoMenuView: UIView, Themeable {
         rightImageView.pin.end().bottom().sizeToFit()
         var upperEdge = edge.top
         if !titleView.isHidden {
-            titleView.pin.top(to: upperEdge).marginTop(28).sizeToFit().hCenter()
+            titleView.pin.top(to: upperEdge).marginTop(20).sizeToFit().hCenter()
             upperEdge = titleView.edge.bottom
         }
         if !titleImageView.isHidden {
-            titleImageView.pin.top(to: upperEdge).marginTop(28).sizeToFit().hCenter()
+            titleImageView.pin.top(to: upperEdge).marginTop(24).sizeToFit().hCenter()
             upperEdge = titleImageView.edge.bottom
         }
         if !descriptionView.isHidden {
-            descriptionView.pin.top(to: upperEdge).start(34).end(34).marginTop(8).maxWidth(250).sizeToFit(.width)
+            descriptionView.pin.top(to: upperEdge).hCenter().marginTop(8).maxWidth(250).sizeToFit(.width)
             upperEdge = descriptionView.edge.bottom
         }
         if !descriptionImageView.isHidden {
@@ -121,12 +119,6 @@ class PromoMenuView: UIView, Themeable {
         frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: size.width, height: size.height)
         layout()
         return size
-    }
-    
-    func applyTheme(theme: Theme) {
-        titleView.textColor = theme.primaryTextColor
-        descriptionView.textColor = theme.secondaryTextColor
-        actionButton.backgroundColor = theme.backgroundTintColor
     }
     
     @objc

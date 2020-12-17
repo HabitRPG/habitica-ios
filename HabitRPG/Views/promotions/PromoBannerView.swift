@@ -101,11 +101,11 @@ class PromoBannerView: UIView {
     }
     
     private func layout() {
-        leftImageView.pin.start().bottom().sizeToFit()
-        rightImageView.pin.end().bottom().sizeToFit()
+        leftImageView.pin.sizeToFit().start().bottom()
+        rightImageView.pin.sizeToFit().end().bottom()
         var upperEdge = edge.top
         if !titleView.isHidden {
-            titleView.pin.top(to: upperEdge).marginTop(20).start(80).end(80).sizeToFit(.width)
+            titleView.pin.top(to: upperEdge).marginTop(20).start(60).end(60).sizeToFit(.width)
             upperEdge = titleView.edge.bottom
         }
         if !titleImageView.isHidden {
@@ -113,7 +113,7 @@ class PromoBannerView: UIView {
             upperEdge = titleImageView.edge.bottom
         }
         if !descriptionLabel.isHidden {
-            descriptionLabel.pin.top(to: upperEdge).marginTop(4).start(80).end(80).sizeToFit(.width)
+            descriptionLabel.pin.top(to: upperEdge).marginTop(4).start(60).end(60).sizeToFit(.width)
             upperEdge = descriptionLabel.edge.bottom
         }
         if !descriptionImageView.isHidden {
@@ -127,8 +127,9 @@ class PromoBannerView: UIView {
     
         layer.sublayers?.filter { $0 is CAGradientLayer }.forEach {
             $0.frame = CGRect(x: 0.0, y: 0.0, width: frame.size.width, height: frame.size.height)
-
         }
+        leftImageView.pin.start().bottom()
+        rightImageView.pin.end().bottom()
     }
     
     override var intrinsicContentSize: CGSize {
