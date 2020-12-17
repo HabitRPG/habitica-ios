@@ -349,6 +349,8 @@ public enum L10n {
   /// Gift a subscription now and you’ll get the same sub for yourself free!
   public static var giftOneGetOneDescription: String { return L10n.tr("Mainstrings", "gift_one_get_one_description") }
   /// Gift One, Get One Event
+  public static var giftOneGetOneEvent: String { return L10n.tr("Mainstrings", "gift_one_get_one_event") }
+  /// Gift One, Get One
   public static var giftOneGetOneTitle: String { return L10n.tr("Mainstrings", "gift_one_get_one_title") }
   /// Enter recipient's @ username
   public static var giftRecipientSubtitle: String { return L10n.tr("Mainstrings", "gift_recipient_subtitle") }

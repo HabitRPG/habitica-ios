@@ -1034,3 +1034,15 @@
 "gift_one_get_one_data.info_limitations" = "This is a limited time event that starts on %@ (13:00 UTC) and will end %@ (01:00 UTC). This promotion only applies when you gift to another Habitican. If you or your gift recipient already have a subscription, the gifted subscription will add months of credit that will only be used after the current subscription is cancelled or expires.";
 "gift_one_get_one_data.purchase_banner_title" = "Gift a sub and get a sub for free until %@";
 "gift_confirmation_body_g1_g1" = "You sent %@ a %@-month Habitica subscription and the same subscription was applied to your account for our Gift One Get One promotion!";
+"create_guild" = "Create Guild";
+"create_guild_description" = "To create a Guild, log in to the Habitica website then tap the “Create” button on the “My Guilds” screen.";
+"open_website" = "Open Website";
+"end_challenge" = "End Challenge";
+"end_challenge_description" = "To end a Challenge, log in to the Habitica website then tap the “End Challenge” button on the right of the Challenge screen.";
+"could_not_gift_gems" = "Could not gift gems. Please try again later.";
+"class_system_disabled" = "Class System disabled.";
+"class_system_enable_instructions" = "You can enable the class system from the apps settings.";
+"unlocks_selecting_class_description" = "Skills are unlocked once you reach level 10 and have selected a class";
+"unlocks_selecting_class_prompt" = "Now that you reached level 10, you can choose a class!";
+"pet_accessibility_label_raised" = "%@, Raised %d%%";
+"pet_accessibility_label_mount_owned" = "%@, Mount Owned";
