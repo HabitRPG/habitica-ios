@@ -105,10 +105,10 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             }
             if message.sent {
                 profileViewController.userID = self?.user?.id
-                profileViewController.username = self?.user?.profile?.name
+                profileViewController.username = self?.user?.username
             } else {
                 profileViewController.userID = message.userID
-                profileViewController.username = message.displayName
+                profileViewController.username = message.username
             }
             self?.viewController?.navigationController?.pushViewController(profileViewController, animated: true)
         }
