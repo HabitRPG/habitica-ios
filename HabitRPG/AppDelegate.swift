@@ -141,6 +141,14 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
             default:
                 AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.localhost
             }
+        } else {
+            let configRepository = ConfigRepository()
+            if let host = configRepository.string(variable: .prodHost), let apiVersion = configRepository.string(variable: .apiVersion), !host.isEmpty, !apiVersion.isEmpty {
+                let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion)")
+                AuthenticatedCall.defaultConfiguration = config
+            } else {
+                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.production
+            }
         }
     }
     
