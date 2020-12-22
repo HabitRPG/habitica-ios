@@ -281,7 +281,7 @@ class MainMenuViewController: BaseTableViewController {
             self?.present(viewController, animated: true, completion: nil)
         }
         navbarView.profileAction = {[weak self] in
-            self?.perform(segue: StoryboardSegue.Main.showUserProfileSegue)
+            RouterHandler.shared.handle(urlString: "/profile/\(self?.user?.id ?? "")")
         }
         
         let refreshControl = UIRefreshControl()

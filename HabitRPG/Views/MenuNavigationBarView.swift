@@ -16,14 +16,15 @@ class MenuNavigationBarView: UIView, Themeable {
     @objc public var settingsAction: (() -> Void)?
     @objc public var notificationsAction: (() -> Void)?
     
-    private var avatarWrapper: UIView = {
+    private lazy var avatarWrapper: UIView = {
         let view = UIView()
         view.cornerRadius = 20
         view.clipsToBounds = true
+        view.isUserInteractionEnabled = true
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(profileAreaTapped)))
         return view
     }()
-    private var avatarView: AvatarView = {
+    private lazy var avatarView: AvatarView = {
         let view = AvatarView()
         view.showPet = false
         view.showMount = false
@@ -31,7 +32,7 @@ class MenuNavigationBarView: UIView, Themeable {
         view.isUserInteractionEnabled = true
         return view
     }()
-    private var displayNameLabel: UILabel = {
+    private lazy var displayNameLabel: UILabel = {
         let label = UILabel()
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
         label.adjustsFontForContentSizeCategory = true
@@ -39,7 +40,7 @@ class MenuNavigationBarView: UIView, Themeable {
         label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(profileAreaTapped)))
         return label
     }()
-    private var usernameLabel: UILabel = {
+    private lazy var usernameLabel: UILabel = {
         let label = UILabel()
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
         label.adjustsFontForContentSizeCategory = true
@@ -48,21 +49,21 @@ class MenuNavigationBarView: UIView, Themeable {
         return label
     }()
     
-    private var messagesButton: UIButton = {
+    private lazy var messagesButton: UIButton = {
         let button = UIButton()
         button.accessibilityLabel = L10n.Titles.messages
         button.setImage(Asset.menuMessages.image, for: .normal)
         button.addTarget(self, action: #selector(messageButtonTapped), for: .touchUpInside)
         return button
     }()
-    private var settingsButton: UIButton = {
+    private lazy var settingsButton: UIButton = {
         let button = UIButton()
         button.accessibilityLabel = L10n.Titles.settings
         button.setImage(Asset.menuSettings.image, for: .normal)
         button.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
         return button
     }()
-    var notificationsButton: UIButton = {
+    lazy var notificationsButton: UIButton = {
         let button = UIButton()
         button.accessibilityLabel = L10n.Titles.notifications
         button.setImage(Asset.menuNotifications.image, for: .normal)
@@ -105,6 +106,8 @@ class MenuNavigationBarView: UIView, Themeable {
         addSubview(settingsButton)
         addSubview(settingsBadge)
         isUserInteractionEnabled = true
+        messagesBadge.isHidden = true
+        settingsBadge.isHidden = true
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
         
         #if DEBUG
