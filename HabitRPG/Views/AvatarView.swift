@@ -111,11 +111,11 @@ class AvatarView: UIView {
         }
     }
     
-    let backgroundConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+    let backgroundConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { _, view, _, _ in
         view.pin.all()
     }
     
-    let characterConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+    let characterConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { _, view, size, offset in
         if size == .regular {
             view.pin.start(17%).top(offset)
         } else {
@@ -123,15 +123,15 @@ class AvatarView: UIView {
         }
     }
     
-    let mountConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+    let mountConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { _, view, _, _ in
         view.pin.start(17.5%).top(12%)
     }
     
-    let petConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+    let petConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { _, view, _, _ in
         view.pin.start().bottom()
     }
     
-    let weaponSpecialConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+    let weaponSpecialConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { _, view, size, offset in
         if size == .regular {
             view.pin.start(8%).top(offset)
         } else {
@@ -139,7 +139,7 @@ class AvatarView: UIView {
         }
     }
     
-    let weaponSpecialCriticalConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+    let weaponSpecialCriticalConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { _, view, size, offset in
         if size == .regular {
             view.pin.start(8%).top(offset+10)
         } else {
@@ -147,7 +147,7 @@ class AvatarView: UIView {
         }
     }
     
-    let headSpecialConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+    let headSpecialConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { _, view, size, offset in
         if size == .regular {
             view.pin.start(17%).top(offset+3)
         } else {

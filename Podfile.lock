@@ -190,11 +190,11 @@ PODS:
   - OHHTTPStubs/OHPathHelpers (9.1.0)
   - OHHTTPStubs/Swift (9.1.0):
     - OHHTTPStubs/Default
-  - PinLayout (1.9.2)
+  - PinLayout (1.9.3)
   - PopupDialog (1.0.0):
     - DynamicBlurView (~> 3.0.1)
   - Prelude (3.0.0)
-  - PromisesObjC (1.2.11)
+  - PromisesObjC (1.2.12)
   - Protobuf (3.14.0)
   - Quick (1.2.0)
   - ReactiveCocoa (11.1.0):
@@ -208,7 +208,7 @@ PODS:
   - SimulatorStatusMagic (2.4.1)
   - SlackTextViewController (1.9.6)
   - SwiftGen (6.4.0)
-  - SwiftLint (0.41.0)
+  - SwiftLint (0.42.0)
   - SwiftyStoreKit (0.16.1)
   - VTAcknowledgementsViewController (1.5.3)
   - XLForm (4.2.0)
@@ -348,10 +348,10 @@ SPEC CHECKSUMS:
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
-  PinLayout: 0d96022e46e8b80468d819f182a393b97ca038da
+  PinLayout: 4d8733121f8687edcc8f00c19bf1379d12808767
   PopupDialog: 28f29a1ffe9e1fab32fb258b53d56ca31670e8a2
   Prelude: fe4cc0fd961d34edf48fe6b04d05c863449efb0a
-  PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
+  PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Protobuf: 0cde852566359049847168e51bd1c690e0f70056
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   ReactiveCocoa: 7bc87ad2d361b9de141278b1950edd7fe91b15b1
@@ -361,7 +361,7 @@ SPEC CHECKSUMS:
   SimulatorStatusMagic: 28d4a9d1a500ac7cea0b2b5a43c1c6ddb40ba56c
   SlackTextViewController: b854e62c1c156336bc4fd409c6ca79b5773e8f9d
   SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
-  SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
+  SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
   SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
   VTAcknowledgementsViewController: 5bb83eaa344bff2af32291162b15778c080262fe
   XLForm: eb04ea4104f26250b70a72a7fa2eed3748dca5cd

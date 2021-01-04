@@ -34,10 +34,11 @@ class RealmBuff: Object, BuffProtocol {
         intelligence = buff.intelligence
         constitution = buff.constitution
         perception = buff.perception
-        shinySeed = buff.shinySeed
-        seafoam = buff.seafoam
         streaks = buff.streaks
         stealth = buff.stealth
+        shinySeed = buff.shinySeed
+        seafoam = buff.seafoam
+        snowball = buff.snowball
         spookySparkles = buff.spookySparkles
     }
 }

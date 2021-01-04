@@ -34,7 +34,7 @@
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
 		2908784A220210CF0010820A /* Strings-objcBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29087849220210CF0010820A /* Strings-objcBridge.swift */; };
 		2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */; };
-		2908E3512217255600D246CD /* (null) in Resources */ = {isa = PBXBuildFile; };
+		2908E3512217255600D246CD /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		290922F02242628600645D0E /* LanguageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290922EF2242628600645D0E /* LanguageHandler.swift */; };
 		290A405421FA175800A409BA /* Purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405221FA175700A409BA /* Purple@2x.png */; };
 		290A405521FA175800A409BA /* Purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405321FA175800A409BA /* Purple@3x.png */; };
@@ -599,7 +599,7 @@
 		D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */; };
 		D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */; };
 		DC2C41815D97E02EF9D3BEF9 /* HRPGLabeledProgressBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */; };
-		E67AF5CD27E9B8D3891CDC45 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		E67AF5CD27E9B8D3891CDC45 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1399,7 +1399,7 @@
 			files = (
 				2929AAB522E9E59A00DF9463 /* Habitica_Models.framework in Frameworks */,
 				2929AAB322E9E58E00DF9463 /* Habitica_Database.framework in Frameworks */,
-				E67AF5CD27E9B8D3891CDC45 /* (null) in Frameworks */,
+				E67AF5CD27E9B8D3891CDC45 /* BuildFile in Frameworks */,
 				312DC62E84B3B9FC14A04033 /* Pods_Habitica_Intents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3103,7 +3103,7 @@
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
-				2908E3512217255600D246CD /* (null) in Resources */,
+				2908E3512217255600D246CD /* BuildFile in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
@@ -4239,7 +4239,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 526;
+				CURRENT_PROJECT_VERSION = 519;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4253,7 +4253,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.1.1;
+				MARKETING_VERSION = 3.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Widgets";
@@ -4285,7 +4285,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 526;
+				CURRENT_PROJECT_VERSION = 519;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4299,7 +4299,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.1.1;
+				MARKETING_VERSION = 3.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Widgets";
@@ -4324,7 +4324,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 526;
+				CURRENT_PROJECT_VERSION = 519;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4337,7 +4337,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.1.1;
+				MARKETING_VERSION = 3.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -4365,7 +4365,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 526;
+				CURRENT_PROJECT_VERSION = 519;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4378,7 +4378,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.1.1;
+				MARKETING_VERSION = 3.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -4404,7 +4404,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 526;
+				CURRENT_PROJECT_VERSION = 519;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4417,7 +4417,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.1.1;
+				MARKETING_VERSION = 3.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
@@ -4446,7 +4446,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 526;
+				CURRENT_PROJECT_VERSION = 519;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4459,7 +4459,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.1.1;
+				MARKETING_VERSION = 3.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
@@ -4729,7 +4729,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 518;
+				CURRENT_PROJECT_VERSION = 519;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4784,7 +4784,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 518;
+				CURRENT_PROJECT_VERSION = 519;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4815,7 +4815,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 526;
+				CURRENT_PROJECT_VERSION = 519;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -4862,7 +4862,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.1;
+				MARKETING_VERSION = 3.2;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -4912,7 +4912,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 526;
+				CURRENT_PROJECT_VERSION = 519;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";
@@ -4959,7 +4959,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.1;
+				MARKETING_VERSION = 3.2;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
