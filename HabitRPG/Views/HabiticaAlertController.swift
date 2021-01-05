@@ -271,6 +271,10 @@ class HabiticaAlertController: UIViewController, Themeable {
         
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
     
+        if #available(iOS 13.4, *) {
+            button.isPointerInteractionEnabled = true
+        }
+        
         button.tag = buttons.count
         if let action = handler {
             buttonHandlers[button.tag] = action

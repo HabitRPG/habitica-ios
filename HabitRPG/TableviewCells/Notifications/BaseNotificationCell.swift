@@ -28,6 +28,9 @@ class BaseNotificationCell<NP>: UITableViewCell {
     let closeButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(asset: Asset.notificationsClose), for: .normal)
+        if #available(iOS 13.4, *) {
+            button.isPointerInteractionEnabled = true
+        }
         return button
     }()
     let declineButton: UIButton = {
@@ -36,6 +39,9 @@ class BaseNotificationCell<NP>: UITableViewCell {
         button.titleLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 12, ofWeight: .medium)
         button.cornerRadius = 4
         button.setTitleColor(.white, for: .normal)
+        if #available(iOS 13.4, *) {
+            button.isPointerInteractionEnabled = true
+        }
         return button
     }()
     let acceptButton: UIButton = {
@@ -44,6 +50,9 @@ class BaseNotificationCell<NP>: UITableViewCell {
         button.titleLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 12, ofWeight: .medium)
         button.cornerRadius = 4
         button.setTitleColor(.white, for: .normal)
+        if #available(iOS 13.4, *) {
+            button.isPointerInteractionEnabled = true
+        }
         return button
     }()
     

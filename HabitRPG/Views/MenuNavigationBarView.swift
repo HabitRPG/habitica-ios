@@ -54,6 +54,9 @@ class MenuNavigationBarView: UIView, Themeable {
         button.accessibilityLabel = L10n.Titles.messages
         button.setImage(Asset.menuMessages.image, for: .normal)
         button.addTarget(self, action: #selector(messageButtonTapped), for: .touchUpInside)
+        if #available(iOS 13.4, *) {
+            button.isPointerInteractionEnabled = true
+        }
         return button
     }()
     private lazy var settingsButton: UIButton = {
@@ -61,6 +64,9 @@ class MenuNavigationBarView: UIView, Themeable {
         button.accessibilityLabel = L10n.Titles.settings
         button.setImage(Asset.menuSettings.image, for: .normal)
         button.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
+        if #available(iOS 13.4, *) {
+            button.isPointerInteractionEnabled = true
+        }
         return button
     }()
     lazy var notificationsButton: UIButton = {
@@ -68,6 +74,9 @@ class MenuNavigationBarView: UIView, Themeable {
         button.accessibilityLabel = L10n.Titles.notifications
         button.setImage(Asset.menuNotifications.image, for: .normal)
         button.addTarget(self, action: #selector(notificationsButtonTapped), for: .touchUpInside)
+        if #available(iOS 13.4, *) {
+            button.isPointerInteractionEnabled = true
+        }
         return button
     }()
     var messagesBadge = BadgeView()

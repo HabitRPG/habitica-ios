@@ -86,6 +86,9 @@ class MemberListView: UIView {
         button.setImage(Asset.moreInteractionsIcon.image, for: .normal)
         button.tintColor = ThemeService.shared.theme.tintColor
         button.addTarget(self, action: #selector(onMoreButtonTapped), for: .touchUpInside)
+        if #available(iOS 13.4, *) {
+            button.isPointerInteractionEnabled = true
+        }
         return button
     }()
 

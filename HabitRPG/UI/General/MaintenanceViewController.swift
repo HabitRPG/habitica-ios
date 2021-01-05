@@ -32,6 +32,9 @@ class MaintenanceViewController: UIViewController, Themeable {
         button.setTitle(L10n.openAppStore, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(appstoreButtonTapped), for: .touchUpInside)
+        if #available(iOS 13.4, *) {
+            button.isPointerInteractionEnabled = true
+        }
         return button
     }()
     

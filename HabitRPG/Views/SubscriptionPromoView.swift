@@ -33,6 +33,9 @@ class SubscriptionPromoView: UIView, Themeable {
         button.titleLabel?.font = .boldSystemFont(ofSize: 14)
         button.cornerRadius = 8
         button.addTarget(self, action: #selector(subscribeButtonTapped), for: .touchUpInside)
+        if #available(iOS 13.4, *) {
+            button.isPointerInteractionEnabled = true
+        }
         return button
     }()
     let leftImageView = UIImageView(image: Asset.subscriptionPromoGems.image)

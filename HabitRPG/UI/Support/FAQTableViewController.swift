@@ -14,7 +14,6 @@ import Down
 class FAQViewController: BaseUIViewController {
     
     private let searchBar = UISearchBar()
-    private let resetTutorialButton = UIButton()
     
     private let dataSource = FAQTableViewDataSource()
     private var selectedIndex: Int?
