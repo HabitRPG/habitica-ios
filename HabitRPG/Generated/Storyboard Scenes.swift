@@ -55,6 +55,8 @@ internal enum StoryboardScene {
 
     internal static let itemsViewController = SceneType<Habitica.ItemsViewController>(storyboard: Main.self, identifier: "ItemsViewController")
 
+    internal static let mainSplitViewController = SceneType<UIKit.UISplitViewController>(storyboard: Main.self, identifier: "MainSplitViewController")
+
     internal static let mainTabBarController = SceneType<Habitica.MainTabBarController>(storyboard: Main.self, identifier: "MainTabBarController")
 
     internal static let mountsOverviewViewController = SceneType<Habitica.MountOverviewViewController>(storyboard: Main.self, identifier: "MountsOverviewViewController")

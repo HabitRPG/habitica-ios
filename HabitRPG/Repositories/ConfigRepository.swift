@@ -39,6 +39,7 @@ enum ConfigVariable: Int {
     case enableUsernameAutocomplete
     case disableChallenges
     case reorderMenu
+    case enableIPadUI
 
     // swiftlint:disable cyclomatic_complexity
     func name() -> String {
@@ -67,6 +68,7 @@ enum ConfigVariable: Int {
         case .disableChallenges: return "disableChallenges"
         case .maintenanceData: return "maintenanceData"
         case .reorderMenu: return "reorderMenu"
+        case .enableIPadUI: return "enableIpadUI"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -119,6 +121,8 @@ enum ConfigVariable: Int {
             return "{}" as NSString
         case .reorderMenu:
             return false as NSNumber
+        case .enableIPadUI:
+            return false as NSNumber
         }
     }
     
@@ -145,7 +149,8 @@ enum ConfigVariable: Int {
             .customMenu,
             .disableChallenges,
             .maintenanceData,
-            .reorderMenu
+            .reorderMenu,
+            .enableIPadUI
         ]
     }
     // swiftlint:enable cyclomatic_complexity

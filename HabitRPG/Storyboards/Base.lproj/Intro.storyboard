@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="upQ-EI-E3w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="upQ-EI-E3w">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -49,7 +49,7 @@
                         <outlet property="activityIndicator" destination="GeH-AC-vCO" id="sHf-iF-90Q"/>
                         <outlet property="logoView" destination="56g-ur-5TX" id="9eB-RC-kUM"/>
                         <segue destination="0Ix-Uy-5zN" kind="presentation" identifier="IntroSegue" animates="NO" modalPresentationStyle="fullScreen" id="8cI-OH-Ddw"/>
-                        <segue destination="qul-kf-4Gi" kind="presentation" identifier="InitialSegue" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Z2J-RM-J8b"/>
+                        <segue destination="qul-kf-4Gi" kind="presentation" identifier="InitialSegue" customClass="MainVCSelectionSegue" customModule="Habitica" customModuleProvider="target" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Z2J-RM-J8b"/>
                         <segue destination="v9W-i7-og5" kind="presentation" identifier="SetupSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Zxx-A1-MXZ"/>
                     </connections>
                 </viewController>
@@ -386,7 +386,7 @@
                         <outlet property="privacyPolicyLabel" destination="E6t-4E-ZNY" id="Mk6-AI-XL5"/>
                         <outlet property="registerBeginButton" destination="Ohf-iu-Phe" id="POZ-1N-6gG"/>
                         <outlet property="usernameField" destination="u44-DM-dLI" id="qp1-8m-KY5"/>
-                        <segue destination="qul-kf-4Gi" kind="presentation" identifier="MainSegue" modalPresentationStyle="fullScreen" id="aKA-6e-Im9"/>
+                        <segue destination="qul-kf-4Gi" kind="presentation" identifier="MainSegue" customClass="MainVCSelectionSegue" customModule="Habitica" customModuleProvider="target" modalPresentationStyle="fullScreen" id="aKA-6e-Im9"/>
                         <segue destination="v9W-i7-og5" kind="presentation" identifier="SetupSegue" modalPresentationStyle="fullScreen" id="5Hb-dX-OsZ"/>
                     </connections>
                 </viewController>
@@ -394,10 +394,10 @@
             </objects>
             <point key="canvasLocation" x="-1964" y="950.37481259370327"/>
         </scene>
-        <!--MainTabBarController-->
+        <!--MainSplitViewController-->
         <scene sceneID="FOW-Qy-yak">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="MainTabBarController" id="qul-kf-4Gi" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="MainSplitViewController" id="qul-kf-4Gi" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fVA-8K-sgN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-91" y="386"/>
@@ -820,7 +820,7 @@
                         <outlet property="previousButtonView" destination="44v-tO-jSl" id="Mgw-Ox-eHt"/>
                         <outlet property="taskSetupView" destination="T79-B6-w4O" id="rdj-5i-l7g"/>
                         <outlet property="welcomeView" destination="CBb-Xk-KnM" id="Lo2-CQ-HIM"/>
-                        <segue destination="qul-kf-4Gi" kind="presentation" identifier="MainSegue" modalPresentationStyle="fullScreen" id="mhd-Im-RcK"/>
+                        <segue destination="qul-kf-4Gi" kind="presentation" identifier="MainSegue" customClass="MainVCSelectionSegue" customModule="Habitica" customModuleProvider="target" modalPresentationStyle="fullScreen" id="mhd-Im-RcK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hOz-re-B06" userLabel="First Responder" sceneMemberID="firstResponder"/>

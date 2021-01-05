@@ -9,6 +9,20 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Split View Controller-->
+        <scene sceneID="Yhu-PL-0XV">
+            <objects>
+                <splitViewController storyboardIdentifier="MainSplitViewController" allowDoubleColumnStyle="YES" id="CB1-dr-Ach" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="JSb-MY-Gwo" kind="relationship" relationship="masterViewController" id="Jy5-RC-gge"/>
+                        <segue destination="8YX-ce-x5E" kind="relationship" relationship="compactViewController" id="pNv-om-HTC"/>
+                        <segue destination="F9m-od-YIG" kind="relationship" relationship="detailViewController" id="kXy-1V-RrM"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pt9-79-oUU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-484" y="224"/>
+        </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
             <objects>
@@ -667,6 +681,7 @@
                             <constraint firstItem="WwC-SX-HDy" firstAttribute="top" secondItem="Y0d-VG-Fv7" secondAttribute="bottom" id="qIj-1e-RwG"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ezA-f6-dxw"/>
                     <connections>
                         <outlet property="animalEarsView" destination="5h1-Pe-YfX" id="j9X-Ej-6Nv"/>
                         <outlet property="backgroundView" destination="Wvd-FH-IL0" id="bpN-rL-Zck"/>
@@ -858,7 +873,9 @@
         <!--SpellsViewController-->
         <scene sceneID="dFm-cd-iY4">
             <objects>
-                <viewControllerPlaceholder storyboardName="User" referencedIdentifier="SpellsViewController" id="xpj-mf-wcH" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="User" referencedIdentifier="SpellsViewController" id="xpj-mf-wcH" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="oi1-Xc-XS9"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uYu-fZ-gHv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3889" y="1322"/>
@@ -866,7 +883,9 @@
         <!--AttributePointsViewController-->
         <scene sceneID="U5R-Ps-yGJ">
             <objects>
-                <viewControllerPlaceholder storyboardName="User" referencedIdentifier="AttributePointsViewController" id="utX-nh-KXf" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="User" referencedIdentifier="AttributePointsViewController" id="utX-nh-KXf" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="HJd-Lr-oUg"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PMb-g7-7qe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3934" y="1353"/>
@@ -874,7 +893,9 @@
         <!--TavernViewController-->
         <scene sceneID="WTY-AZ-QZE">
             <objects>
-                <viewControllerPlaceholder storyboardName="Social" referencedIdentifier="TavernViewController" id="d6K-oQ-bcc" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Social" referencedIdentifier="TavernViewController" id="d6K-oQ-bcc" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="gce-1B-Bkl"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tpk-jO-hFW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3891" y="1395"/>
@@ -882,7 +903,9 @@
         <!--PartyViewController-->
         <scene sceneID="zz6-4H-FIH">
             <objects>
-                <viewControllerPlaceholder storyboardName="Social" referencedIdentifier="PartyViewController" id="oL1-I7-dz0" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Social" referencedIdentifier="PartyViewController" id="oL1-I7-dz0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="uMV-gd-nRa"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="32R-r1-rqH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3886" y="1426"/>
@@ -890,7 +913,9 @@
         <!--GuildsOverviewViewController-->
         <scene sceneID="0gq-z6-3CJ">
             <objects>
-                <viewControllerPlaceholder storyboardName="Social" referencedIdentifier="GuildsOverviewViewController" id="id8-rI-GMs" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Social" referencedIdentifier="GuildsOverviewViewController" id="id8-rI-GMs" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="edc-xm-IH8"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IVb-9G-seM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3935" y="1456"/>
@@ -898,7 +923,9 @@
         <!--ChallengeTableViewController-->
         <scene sceneID="4bO-rD-rpL">
             <objects>
-                <viewControllerPlaceholder storyboardName="Social" referencedIdentifier="ChallengeTableViewController" id="Z6b-ez-Mmy" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Social" referencedIdentifier="ChallengeTableViewController" id="Z6b-ez-Mmy" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="cR7-Es-NMh"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v3c-2r-ADh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3933" y="1486"/>
@@ -906,7 +933,9 @@
         <!--AchievementsCollectionViewController-->
         <scene sceneID="Fro-hY-CK8">
             <objects>
-                <viewControllerPlaceholder storyboardName="User" referencedIdentifier="AchievementsCollectionViewController" id="hEH-25-nQA" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="User" referencedIdentifier="AchievementsCollectionViewController" id="hEH-25-nQA" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Z1e-cE-dOd"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WNI-zW-5VJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3976" y="1518"/>
@@ -916,7 +945,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="MountsOverviewViewController" autoresizesArchivedViewToFullSize="NO" id="k4g-ZO-Buh" customClass="MountOverviewViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="uMo-F9-k66">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="574"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="ugs-DU-Mbl">
@@ -1002,7 +1031,7 @@
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="LGJ-iF-vTZ" customClass="MountDetailViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="Jyn-1Y-gwc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="Lf1-Aa-zJn">
@@ -1055,7 +1084,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="PetsOverviewViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iyK-dS-pks" customClass="PetOverviewViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="0uY-w8-R73">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="574"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="tQa-dP-3X4">
@@ -1141,7 +1170,7 @@
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="OMM-QF-DNw" customClass="PetDetailViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="0NF-w0-Ru8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="HL5-tx-L50">
@@ -1264,7 +1293,7 @@
             <objects>
                 <tableViewController id="cVq-Fh-1Yu" customClass="FeedViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="mJC-fk-DDR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -1739,7 +1768,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="SubscriptionViewController" id="32f-nw-z2z" customClass="SubscriptionViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="61" sectionHeaderHeight="18" sectionFooterHeight="18" id="uHA-ok-e4Z">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="2y3-dE-HOI">
@@ -1985,7 +2014,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n8Y-qd-yqL">
-                                <rect key="frame" x="8" y="44" width="359" height="574"/>
+                                <rect key="frame" x="8" y="44" width="359" height="623"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="alG-bc-9xq">
@@ -2798,22 +2827,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S70-Y1-yfR">
-                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
                                     <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="czQ-Ho-JSx">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="574"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                         <connections>
                                             <segue destination="iyK-dS-pks" kind="embed" id="UbK-ox-2Ce"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7rM-nT-9RT">
-                                        <rect key="frame" x="375" y="0.0" width="375" height="574"/>
+                                        <rect key="frame" x="375" y="0.0" width="375" height="623"/>
                                         <connections>
                                             <segue destination="k4g-ZO-Buh" kind="embed" id="HY1-1v-mBf"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wde-Lz-yBP">
-                                        <rect key="frame" x="375" y="0.0" width="1" height="574"/>
+                                        <rect key="frame" x="375" y="0.0" width="1" height="623"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="WK7-gT-dwO"/>
@@ -3350,7 +3379,7 @@ a matching subscription automatically after sending your gift.</string>
                         <viewControllerLayoutGuide type="bottom" id="WaS-jq-SUQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Io1-HB-nAL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5P-ER-Ol8">
@@ -3578,6 +3607,8 @@ a matching subscription automatically after sending your gift.</string>
         <segue reference="9d2-gY-n53"/>
         <segue reference="ImE-mD-NfV"/>
         <segue reference="gXN-6g-Ete"/>
+        <segue reference="kXy-1V-RrM"/>
+        <segue reference="Jy5-RC-gge"/>
         <segue reference="iSa-66-Wjc"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="0lJ-Wy-mKC"/>

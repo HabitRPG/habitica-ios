@@ -34,7 +34,7 @@
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
 		2908784A220210CF0010820A /* Strings-objcBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29087849220210CF0010820A /* Strings-objcBridge.swift */; };
 		2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */; };
-		2908E3512217255600D246CD /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		2908E3512217255600D246CD /* (null) in Resources */ = {isa = PBXBuildFile; };
 		290922F02242628600645D0E /* LanguageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290922EF2242628600645D0E /* LanguageHandler.swift */; };
 		290A405421FA175800A409BA /* Purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405221FA175700A409BA /* Purple@2x.png */; };
 		290A405521FA175800A409BA /* Purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405321FA175800A409BA /* Purple@3x.png */; };
@@ -363,6 +363,8 @@
 		29C38C8724A256F800F219A1 /* AdventureGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8624A256F800F219A1 /* AdventureGuideViewController.swift */; };
 		29C38C8924A33E6600F219A1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8824A33E6600F219A1 /* NotificationManager.swift */; };
 		29C38C8B24A48F9D00F219A1 /* AchievementAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8A24A48F9D00F219A1 /* AchievementAlertController.swift */; };
+		29D16C7725A336E8001D9A61 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D16C7625A336E8001D9A61 /* MainSplitViewController.swift */; };
+		29D16C7E25A33F70001D9A61 /* MainVCSelectionSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D16C7D25A33F70001D9A61 /* MainVCSelectionSegue.swift */; };
 		29DBFEF720C997D100DF9CF2 /* CalculateUserStatsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEF620C997D100DF9CF2 /* CalculateUserStatsInteractor.swift */; };
 		29DBFF0120CE6FFF00DF9CF2 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */; };
 		29DBFF0520CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0420CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift */; };
@@ -599,7 +601,7 @@
 		D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */; };
 		D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */; };
 		DC2C41815D97E02EF9D3BEF9 /* HRPGLabeledProgressBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */; };
-		E67AF5CD27E9B8D3891CDC45 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		E67AF5CD27E9B8D3891CDC45 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1071,6 +1073,8 @@
 		29C5A72B22F08C010083749D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		29C6009F20F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
 		29C600A120F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		29D16C7625A336E8001D9A61 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
+		29D16C7D25A33F70001D9A61 /* MainVCSelectionSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCSelectionSegue.swift; sourceTree = "<group>"; };
 		29D5AD5B20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29D5AD5C20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
 		29D5AD5E20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1399,7 +1403,7 @@
 			files = (
 				2929AAB522E9E59A00DF9463 /* Habitica_Models.framework in Frameworks */,
 				2929AAB322E9E58E00DF9463 /* Habitica_Database.framework in Frameworks */,
-				E67AF5CD27E9B8D3891CDC45 /* BuildFile in Frameworks */,
+				E67AF5CD27E9B8D3891CDC45 /* (null) in Frameworks */,
 				312DC62E84B3B9FC14A04033 /* Pods_Habitica_Intents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2765,6 +2769,8 @@
 				29951A212327E94F00918FC8 /* ThemedNavigationController.swift */,
 				29FC5A6A20406932008E88C8 /* GuidelinesViewController.swift */,
 				2902799620583D82006DACB9 /* LoadingViewController.swift */,
+				29D16C7625A336E8001D9A61 /* MainSplitViewController.swift */,
+				29D16C7D25A33F70001D9A61 /* MainVCSelectionSegue.swift */,
 				290279AC20583EE8006DACB9 /* Storyboards */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
 				D9A63A321E10328A0083ADC4 /* Habitica-Bridging-Header.h */,
@@ -3103,7 +3109,7 @@
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
-				2908E3512217255600D246CD /* BuildFile in Resources */,
+				2908E3512217255600D246CD /* (null) in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
@@ -3625,6 +3631,7 @@
 				29F9761822DDFDA50079B945 /* AchievementHeaderReusableView.swift in Sources */,
 				29DC5AC220A1C63000993400 /* SeparatedStackView.swift in Sources */,
 				29701FE01F560D310097BBCC /* UIApplication-Extensions.swift in Sources */,
+				29D16C7E25A33F70001D9A61 /* MainVCSelectionSegue.swift in Sources */,
 				2919FDDF2091D87A0096A53B /* FaintViewController.swift in Sources */,
 				29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */,
 				29B4788420BD6DED00B6123F /* SkillsUserTableViewController.swift in Sources */,
@@ -3791,6 +3798,7 @@
 				292DEE74204DECF60086D5F7 /* BaseReactiveDataSource.swift in Sources */,
 				291448802086508A00F3A6B5 /* EquipmentOverviewItemView.swift in Sources */,
 				29E162E21FFC21E100685640 /* CustomFontMetrics.swift in Sources */,
+				29D16C7725A336E8001D9A61 /* MainSplitViewController.swift in Sources */,
 				D984D5861E48E5CF006E84F8 /* TaskDetailLineView.swift in Sources */,
 				2980E60B1EEA39B1005B7100 /* YesterdailyTaskCell.swift in Sources */,
 				296E480821BE86F800D15E4A /* GiftSubscriptionViewController.swift in Sources */,
