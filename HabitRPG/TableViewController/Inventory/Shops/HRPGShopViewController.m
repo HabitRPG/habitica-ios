@@ -30,6 +30,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.topHeaderCoordinator.alternativeHeader = self.shopBannerView;
+    [self.shopBannerView setSpritesWithIdentifier:self.shopIdentifier];
+    [self.shopBannerView setNPCNameWithIdentifier:self.shopIdentifier];
     
     [self setupNavBar];
     

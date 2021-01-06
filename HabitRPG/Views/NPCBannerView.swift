@@ -74,18 +74,7 @@ class NPCBannerView: UIView {
     private func setupShop() {
         if let unwrappedShop = shop, let identifier = unwrappedShop.identifier {
             setSprites(identifier: identifier)
-            switch unwrappedShop.identifier {
-            case .some("market"):
-                self.npcNameLabel.text = "Alex"
-            case .some("questShop"):
-                self.npcNameLabel.text = "Ian"
-            case .some("seasonalShop"):
-                self.npcNameLabel.text = "Leslie"
-            case .some("timeTravelersShop"):
-                self.npcNameLabel.text = "Tyler & Vicky"
-            default:
-                self.npcNameLabel.text = unwrappedShop.text
-            }
+            setNPCName(identifier: identifier)
             
             if let notes = unwrappedShop.notes?.stripHTML() {
                 setNotes(notes)
@@ -93,7 +82,24 @@ class NPCBannerView: UIView {
             self.invalidateIntrinsicContentSize()
         }
     }
+    
+    @objc
+    func setNPCName(identifier: String) {
+        switch identifier {
+        case "market":
+            self.npcNameLabel.text = "Alex"
+        case "questShop":
+            self.npcNameLabel.text = "Ian"
+        case "seasonalShop":
+            self.npcNameLabel.text = "Leslie"
+        case "timeTravelersShop":
+            self.npcNameLabel.text = "Tyler & Vicky"
+        default:
+            self.npcNameLabel.text = ""
+        }
+    }
 
+    @objc
     func setSprites(identifier: String) {
         let spriteSuffix = ConfigRepository().string(variable: .shopSpriteSuffix, defaultValue: "")
         ImageManager.getImage(name: identifier + "_background"+spriteSuffix) { (image, _) in
