@@ -39,7 +39,7 @@ class ShopCollectionViewDataSourceInstantiator: NSObject {
 @objc protocol ShopCollectionViewDataSourceDelegate {
     func didSelectItem(_ item: InAppRewardProtocol?)
     func scrollViewDidScroll(_ scrollView: UIScrollView)
-    func showGearSelection()
+    func showGearSelection(sourceView: UIView)
     func updateShopHeader(shop: ShopProtocol?)
     func updateNavBar(gold: Int, gems: Int)
 }
@@ -231,9 +231,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 headerView.gearCategoryLabel.text = selectedGearCategory?.capitalized
                 headerView.gearCategoryButton.isHidden = false
                 headerView.onGearCategoryLabelTapped = {[weak self] in
-                    self?.delegate?.showGearSelection()
+                    self?.delegate?.showGearSelection(sourceView: headerView.gearCategoryButton)
                 }
-                 headerView.otherClassDisclaimer.isHidden = userClass == selectedInternalGearCategory
+                 headerView.otherClassDisclaimer.isHidden = userClass == selectedInternalGearCategory || selectedInternalGearCategory == "none"
                 headerView.otherClassDisclaimer.text = L10n.Shops.otherClassDisclaimer
             } else {
                 headerView.titleLabel.text = titleFor(section: indexPath.section)

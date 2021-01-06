@@ -212,7 +212,7 @@
     return _shopBannerView;
 }
 
-- (void)showGearSelection {
+- (void)showGearSelectionWithSourceView:(UIView *)sourceView {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
     for (NSString *title in @[@"warrior", @"mage", @"healer", @"rogue", @"none"]) {
@@ -224,7 +224,12 @@
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:objcL10n.cancel style:UIAlertActionStyleCancel handler:nil];
     [alertController addAction:cancelAction];
-    [alertController setSourceInCenter:self.view];
+    if (sourceView != nil) {
+        alertController.popoverPresentationController.sourceView = sourceView;
+        alertController.popoverPresentationController.sourceRect = sourceView.bounds;
+    } else {
+        [alertController setSourceInCenter:self.view];
+    }
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
