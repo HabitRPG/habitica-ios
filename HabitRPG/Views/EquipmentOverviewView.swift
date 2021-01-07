@@ -88,11 +88,12 @@ class EquipmentOverviewView: UIView {
     }
     
     private func layout() {
-        let itemWidth = (bounds.size.width - (7*8)) / 4
+        let sidePadding: CGFloat = traitCollection.isIPad ? 16 : 8
+        let itemWidth = (bounds.size.width - (5*8) - (2*sidePadding)) / 4
         let itemHeight = itemWidth+36
-        containerView.pin.top(54).left(8).right(8).height(itemHeight*2+(3*8))
-        titleLabel.pin.top(0).left(8).above(of: containerView).sizeToFit(.height)
-        switchView.pin.right(8).top(11)
+        containerView.pin.top(54).start(sidePadding).end(sidePadding).height(itemHeight*2+(3*8))
+        titleLabel.pin.top(0).start(sidePadding).above(of: containerView).sizeToFit(.height)
+        switchView.pin.end(sidePadding).top(11)
         switchLabelView.pin.top(0).above(of: containerView).left(of: switchView).marginRight(8).sizeToFit(.height)
         
         weaponItemView.pin.top(8).left(8).width(itemWidth).height(itemHeight)

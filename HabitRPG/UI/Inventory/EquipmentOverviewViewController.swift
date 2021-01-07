@@ -14,6 +14,7 @@ import PinLayout
 class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var gearView: EquipmentOverviewView!
     @IBOutlet weak var costumeView: EquipmentOverviewView!
     @IBOutlet weak var costumeViewHeightConstraint: NSLayoutConstraint!
@@ -74,8 +75,16 @@ class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegat
     }
     
     override func viewWillLayoutSubviews() {
-        gearViewHeightConstraint.constant = gearView.getTotalHeight(for: view.frame.width)
-        costumeViewHeightConstraint.constant = costumeView.getTotalHeight(for: view.frame.width)
+        if traitCollection.isIPad {
+            if UIApplication.shared.statusBarOrientation.isLandscape {
+                stackView.axis = .horizontal
+            } else {
+                stackView.axis = .vertical
+            }
+        }
+        let width = stackView.axis == .horizontal ? (view.frame.width / 2) : view.frame.width
+        gearViewHeightConstraint.constant = gearView.getTotalHeight(for: width)
+        costumeViewHeightConstraint.constant = costumeView.getTotalHeight(for: width)
         super.viewWillLayoutSubviews()
     }
     

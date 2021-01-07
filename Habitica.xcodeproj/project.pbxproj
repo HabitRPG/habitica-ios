@@ -365,6 +365,7 @@
 		29C38C8B24A48F9D00F219A1 /* AchievementAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8A24A48F9D00F219A1 /* AchievementAlertController.swift */; };
 		29D16C7725A336E8001D9A61 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D16C7625A336E8001D9A61 /* MainSplitViewController.swift */; };
 		29D16C7E25A33F70001D9A61 /* MainVCSelectionSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D16C7D25A33F70001D9A61 /* MainVCSelectionSegue.swift */; };
+		29D16C8525A72211001D9A61 /* UITraitCollection-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D16C8425A72211001D9A61 /* UITraitCollection-Extensions.swift */; };
 		29DBFEF720C997D100DF9CF2 /* CalculateUserStatsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEF620C997D100DF9CF2 /* CalculateUserStatsInteractor.swift */; };
 		29DBFF0120CE6FFF00DF9CF2 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */; };
 		29DBFF0520CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0420CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift */; };
@@ -1075,6 +1076,7 @@
 		29C600A120F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		29D16C7625A336E8001D9A61 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
 		29D16C7D25A33F70001D9A61 /* MainVCSelectionSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCSelectionSegue.swift; sourceTree = "<group>"; };
+		29D16C8425A72211001D9A61 /* UITraitCollection-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection-Extensions.swift"; sourceTree = "<group>"; };
 		29D5AD5B20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29D5AD5C20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
 		29D5AD5E20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2264,6 +2266,7 @@
 				29C1360724EE917F00DBC6B3 /* UITableView-Extensions.swift */,
 				29066CFE24FFA20B00A266EE /* Date-Extensions.swift */,
 				29A4CB70257FF3150013F0B3 /* String-SafeExtensions.swift */,
+				29D16C8425A72211001D9A61 /* UITraitCollection-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3659,6 +3662,7 @@
 				D984D58B1E4A1F59006E84F8 /* SubscriptionViewController.swift in Sources */,
 				299FB29D2084A67D00422522 /* StableOverviewViewController.swift in Sources */,
 				290B6287207CD6B5007287C4 /* GroupDetailViewController.swift in Sources */,
+				29D16C8525A72211001D9A61 /* UITraitCollection-Extensions.swift in Sources */,
 				290B6298207E3F37007287C4 /* LeaveGroupInteractor.swift in Sources */,
 				328C951E24A2C13100293E16 /* LinksOnlyTextView.swift in Sources */,
 				2912C3C522CB955B00BC485F /* QuestInviteNotificationCell.swift in Sources */,

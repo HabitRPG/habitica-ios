@@ -71,8 +71,6 @@ internal enum StoryboardScene {
 
     internal static let rewardsViewController = SceneType<Habitica.RewardViewController>(storyboard: Main.self, identifier: "RewardsViewController")
 
-    internal static let scanQRCodeNavController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "ScanQRCodeNavController")
-
     internal static let spellUserNavigationController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "SpellUserNavigationController")
 
     internal static let stableViewController = SceneType<Habitica.StableSplitViewController>(storyboard: Main.self, identifier: "StableViewController")

@@ -35,6 +35,9 @@ class ItemsViewController: BaseTableViewController {
         dataSource.tableView = tableView
         dataSource.itemType = itemType
         
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 68
+        
         if (navigationController as? TopHeaderViewController) != nil {
 			navigationItem.rightBarButtonItem = nil
             isPresentedModally = false
