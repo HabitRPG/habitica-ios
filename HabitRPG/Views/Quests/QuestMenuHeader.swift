@@ -1,5 +1,5 @@
 //
-//  WorldBossMenuHeader.swift
+//  QuestMenuHeader.swift
 //  Habitica
 //
 //  Created by Phillip Thelen on 26.01.18.
@@ -9,7 +9,7 @@
 import UIKit
 import Habitica_Models
 
-class WorldBossMenuHeader: UIView {
+class QuestMenuHeader: UIView {
     
     @IBOutlet weak var bossImageView: NetworkImageView!
     @IBOutlet weak var bossNameLabel: UILabel!
@@ -25,6 +25,7 @@ class WorldBossMenuHeader: UIView {
     var formatter = NumberFormatter()
     
     private var quest: QuestProtocol?
+    var isWorldBoss = false
     
     var isCollapsed: Bool = false {
         didSet {
@@ -41,11 +42,9 @@ class WorldBossMenuHeader: UIView {
         super.awakeFromNib()
         hearthIconView.image = HabiticaIcons.imageOfHeartDarkBg
         healthProgressBar.barColor = UIColor.red50
+        healthProgressBar.stackedBarColor = UIColor.yellow50
         healthProgressBar.barBackgroundColor = UIColor(white: 1.0, alpha: 0.16)
-        
-        let userDefaults = UserDefaults()
-        isCollapsed = userDefaults.bool(forKey: "worldBossArtCollapsed")
-        
+                
         topStackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(bossArtTapped)))
         pendingDamageIcon.image = HabiticaIcons.imageOfDamage
         
@@ -61,7 +60,7 @@ class WorldBossMenuHeader: UIView {
         bossImageView.backgroundColor = quest.uicolorMedium
         bossNameLabel.text = quest.boss?.name
         healthProgressBar.maxValue = CGFloat(quest.boss?.health ?? 0)
-        typeLabel.text = "World Boss"
+        typeLabel.text = "Active Quest"
         statBarView.backgroundColor = quest.uicolorDark
         configureAccessibility()
     }
@@ -69,20 +68,18 @@ class WorldBossMenuHeader: UIView {
     @objc
     func configure(group: GroupProtocol) {
         healthProgressBar.value = CGFloat(group.quest?.progress?.health ?? 0)
-
-        let userDefaults = UserDefaults()
-        isCollapsed = userDefaults.bool(forKey: "worldBossArtCollapsed")
-        
         configureAccessibility()
     }
     
     @objc
     func configure(user: UserProtocol) {
-        if (user.party?.quest?.progress?.up ?? 0) > 0 {
-            pendingDamageLabel.text = "+\(formatter.string(from: NSNumber(value: user.party?.quest?.progress?.up ?? 0)) ?? "0")"
+        let pendingDamage: Float = user.party?.quest?.progress?.up ?? 0.0
+        if pendingDamage > 0 {
+            pendingDamageLabel.text = "+\(formatter.string(from: NSNumber(value: pendingDamage)) ?? "0")"
         } else {
             pendingDamageLabel.text = "+0"
         }
+        healthProgressBar.stackedValue = CGFloat(pendingDamage)
         configureAccessibility()
     }
     
@@ -108,7 +105,7 @@ class WorldBossMenuHeader: UIView {
         typeLabel.textColor = .white
         
         let userDefaults = UserDefaults()
-        userDefaults.set(false, forKey: "worldBossArtCollapsed")
+        userDefaults.set(false, forKey: "questMenuArtCollapsed")
     }
     
     @objc
@@ -121,7 +118,7 @@ class WorldBossMenuHeader: UIView {
         typeLabel.textColor = UIColor.red100
         
         let userDefaults = UserDefaults()
-        userDefaults.set(true, forKey: "worldBossArtCollapsed")
+        userDefaults.set(true, forKey: "questMenuArtCollapsed")
     }
     
     override var intrinsicContentSize: CGSize {
@@ -137,8 +134,14 @@ class WorldBossMenuHeader: UIView {
         guard let quest = quest else {
             return
         }
+        
+        if !isWorldBoss {
+            RouterHandler.shared.handle(urlString: "/party")
+            return
+        }
+        
         let alertController = HabiticaAlertController.alert(title: L10n.whatsWorldBoss)
-        let view = Bundle.main.loadNibNamed("WorldBossDescription", owner: nil, options: nil)?.last as? WorldBossDescriptionView
+        let view = Bundle.main.loadNibNamed("questMenuArtCollapsed", owner: nil, options: nil)?.last as? WorldBossDescriptionView
         view?.bossName = quest.boss?.name
         view?.questColorLight = quest.uicolorLight
         view?.questColorExtraLight = quest.uicolorExtraLight

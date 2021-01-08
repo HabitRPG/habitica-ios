@@ -140,11 +140,13 @@ class MainMenuViewController: BaseTableViewController {
             }
         }
     }
-    private var worldBossTintColor: UIColor?
+    private var questTintColor: UIColor?
     private var navbarView = MenuNavigationBarView()
-    private var worldBossHeaderView: WorldBossMenuHeader?
+    private var questHeaderView: QuestMenuHeader?
     
     private var userRepository = UserRepository()
+    private var socialRepository = SocialRepository()
+    private var inventoryRepository = InventoryRepository()
     private let configRepository = ConfigRepository()
     
     private var disposable = ScopedDisposable(CompositeDisposable())
@@ -163,7 +165,7 @@ class MainMenuViewController: BaseTableViewController {
                 navbarView.configure(user: user)
             }
             let statsItem = menuItem(withKey: .stats)
-            if (user?.preferences?.disableClasses == true) {
+            if user?.preferences?.disableClasses == true {
                 statsItem.isHidden = true
             } else {
                 statsItem.isHidden = false
@@ -294,7 +296,38 @@ class MainMenuViewController: BaseTableViewController {
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
-        }).start())
+        })
+        .filter({ $0.party?.id != nil})
+        .map({ $0.party?.id ?? "" })
+        .flatMap(.latest, { partyID in
+            return self.socialRepository.getGroup(groupID: partyID).skipNil()
+        })
+        .on(value: {[weak self] party in
+            if party.quest?.active == true {
+                if self?.questHeaderView == nil {
+                    self?.questHeaderView = UIView.fromNib(nibName: "QuestMenuHeader")
+                }
+                self?.questHeaderView?.configure(group: party)
+                if let user = self?.user {
+                    self?.questHeaderView?.configure(user: user)
+                }
+                self?.tableView?.tableHeaderView = self?.questHeaderView
+            } else {
+                self?.tableView.tableHeaderView = nil
+            }
+        })
+        .filter({ $0.quest?.active ==  true })
+        .flatMap(.latest, { party in
+            return self.inventoryRepository.getQuest(key: party.quest?.key ?? "").skipNil()
+        })
+        .on(value: {[weak self] quest in
+            if quest.isBossQuest {
+            self?.questHeaderView?.configure(quest: quest)
+            } else {
+                self?.tableView.tableHeaderView = nil
+            }
+        })
+        .start())
         disposable.inner.add(userRepository.getUnreadNotificationCount().on(value: {[weak self] notificationCount in
             if notificationCount > 0 {
                 self?.navbarView.notificationsBadge.text = String(notificationCount)

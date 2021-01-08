@@ -410,8 +410,8 @@
 		29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29FC885D2018D858002B3D3F /* WorldBossDescription.xib */; };
 		29FC88602018DB64002B3D3F /* WorldBossDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC885F2018DB64002B3D3F /* WorldBossDescriptionView.swift */; };
 		29FC8862201A300B002B3D3F /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC8861201A300B002B3D3F /* ProgressBar.swift */; };
-		29FC8864201B78D6002B3D3F /* WorldBossMenuHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29FC8863201B78D6002B3D3F /* WorldBossMenuHeader.xib */; };
-		29FC8866201B7B5B002B3D3F /* WorldBossMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC8865201B7B5B002B3D3F /* WorldBossMenuHeader.swift */; };
+		29FC8864201B78D6002B3D3F /* QuestMenuHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29FC8863201B78D6002B3D3F /* QuestMenuHeader.xib */; };
+		29FC8866201B7B5B002B3D3F /* QuestMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC8865201B7B5B002B3D3F /* QuestMenuHeader.swift */; };
 		29FD8AA0203D753F0094322E /* SplitSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FD8A9F203D753F0094322E /* SplitSocialViewController.swift */; };
 		29FD8AA3203D7D010094322E /* PartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FD8AA2203D7D010094322E /* PartyViewController.swift */; };
 		29FD8AA7203DA42A0094322E /* NSLayoutConstraint-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */; };
@@ -1127,8 +1127,8 @@
 		29FC885D2018D858002B3D3F /* WorldBossDescription.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorldBossDescription.xib; sourceTree = "<group>"; };
 		29FC885F2018DB64002B3D3F /* WorldBossDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldBossDescriptionView.swift; sourceTree = "<group>"; };
 		29FC8861201A300B002B3D3F /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
-		29FC8863201B78D6002B3D3F /* WorldBossMenuHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorldBossMenuHeader.xib; sourceTree = "<group>"; };
-		29FC8865201B7B5B002B3D3F /* WorldBossMenuHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldBossMenuHeader.swift; sourceTree = "<group>"; };
+		29FC8863201B78D6002B3D3F /* QuestMenuHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestMenuHeader.xib; sourceTree = "<group>"; };
+		29FC8865201B7B5B002B3D3F /* QuestMenuHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestMenuHeader.swift; sourceTree = "<group>"; };
 		29FD8A9F203D753F0094322E /* SplitSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitSocialViewController.swift; sourceTree = "<group>"; };
 		29FD8AA2203D7D010094322E /* PartyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyViewController.swift; sourceTree = "<group>"; };
 		29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint-Extensions.swift"; sourceTree = "<group>"; };
@@ -1963,8 +1963,8 @@
 				29028BB020319E4000B7F704 /* RageStrikeActiveContentView.xib */,
 				29FC885D2018D858002B3D3F /* WorldBossDescription.xib */,
 				29FC885F2018DB64002B3D3F /* WorldBossDescriptionView.swift */,
-				29FC8863201B78D6002B3D3F /* WorldBossMenuHeader.xib */,
-				29FC8865201B7B5B002B3D3F /* WorldBossMenuHeader.swift */,
+				29FC8863201B78D6002B3D3F /* QuestMenuHeader.xib */,
+				29FC8865201B7B5B002B3D3F /* QuestMenuHeader.swift */,
 				296D6F1C20A0908B00D9CAB5 /* PartyQuestView.swift */,
 				29DC5AC820A1F6C100993400 /* QuestParticipantView.swift */,
 				29DC5ACA20A20A6C00993400 /* QuestTitleView.swift */,
@@ -3157,7 +3157,7 @@
 				29598150224118A100819029 /* TealAltBlack@2x.png in Resources */,
 				29598154224118A100819029 /* RedAltBlack@2x.png in Resources */,
 				296E4BD621AEFE6100DB3602 /* MaroonAlt@2x.png in Resources */,
-				29FC8864201B78D6002B3D3F /* WorldBossMenuHeader.xib in Resources */,
+				29FC8864201B78D6002B3D3F /* QuestMenuHeader.xib in Resources */,
 				2927025A24E3F42100BCAA77 /* Support.storyboard in Resources */,
 				296E4BBE21AEFE6100DB3602 /* YellowAlt@3x.png in Resources */,
 				294FD56B20641B2F00EABCC9 /* HabitControlsCell.xib in Resources */,
@@ -3334,21 +3334,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3382,81 +3373,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Habitica/Pods-Habitica-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
-				"${BUILT_PRODUCTS_DIR}/Amplitude-iOS/Amplitude_iOS.framework",
-				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
-				"${BUILT_PRODUCTS_DIR}/DateTools/DateTools.framework",
-				"${BUILT_PRODUCTS_DIR}/DeepLinkKit/DeepLinkKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
-				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
-				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FLEX/FLEX.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/KLCPopup/KLCPopup.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework",
-				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
-				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
-				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
-				"${BUILT_PRODUCTS_DIR}/Prelude/Prelude.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework",
-				"${BUILT_PRODUCTS_DIR}/SlackTextViewController/SlackTextViewController.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/VTAcknowledgementsViewController/VTAcknowledgementsViewController.framework",
-				"${BUILT_PRODUCTS_DIR}/XLForm/XLForm.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Habitica/Pods-Habitica-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Amplitude_iOS.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateTools.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeepLinkKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLEX.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KLCPopup.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRProgress.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinLayout.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Prelude.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimulatorStatusMagic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SlackTextViewController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VTAcknowledgementsViewController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLForm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Habitica/Pods-Habitica-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3468,17 +3390,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3639,7 +3556,7 @@
 				29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */,
 				29B4788420BD6DED00B6123F /* SkillsUserTableViewController.swift in Sources */,
 				49E3784F200912BA00E0DA3D /* ResizableTableViewCell.swift in Sources */,
-				29FC8866201B7B5B002B3D3F /* WorldBossMenuHeader.swift in Sources */,
+				29FC8866201B7B5B002B3D3F /* QuestMenuHeader.swift in Sources */,
 				290922F02242628600645D0E /* LanguageHandler.swift in Sources */,
 				29A98593254841C500F04665 /* KeyboardManager.swift in Sources */,
 				D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */,
@@ -4251,7 +4168,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 519;
+				CURRENT_PROJECT_VERSION = 520;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4297,7 +4214,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 519;
+				CURRENT_PROJECT_VERSION = 520;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4336,7 +4253,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 519;
+				CURRENT_PROJECT_VERSION = 520;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4377,7 +4294,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 519;
+				CURRENT_PROJECT_VERSION = 520;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4416,7 +4333,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 519;
+				CURRENT_PROJECT_VERSION = 520;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4458,7 +4375,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 519;
+				CURRENT_PROJECT_VERSION = 520;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4741,7 +4658,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 519;
+				CURRENT_PROJECT_VERSION = 520;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4796,7 +4713,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 519;
+				CURRENT_PROJECT_VERSION = 520;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4827,7 +4744,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 519;
+				CURRENT_PROJECT_VERSION = 520;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -4924,7 +4841,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 519;
+				CURRENT_PROJECT_VERSION = 520;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";
