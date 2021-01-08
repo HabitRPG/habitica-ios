@@ -31,9 +31,11 @@ public extension NetworkErrorHandler {
             Self.handle(error: error, messages: response)
         }))
     }
-    func observe(signal: Signal<[String], Never>) {
+    func observe(signal: Signal<[NetworkError], Never>) {
         disposable.inner.add(signal.observeValues({ messages in
-            Self.handle(error: NetworkError(message: messages.first ?? ""), messages: messages)
+            Self.handle(error: messages.first ?? NetworkError(message: ""), messages: messages.map({ error in
+                return error.message
+            }))
         }))
     }
 }
@@ -65,19 +67,19 @@ extension UIAlertController {
     }
 }
 
-class NetworkError: NSError {
+public class NetworkError: NSError {
     var message: String
     
-    init(message: String) {
+    init(message: String, code: Int = -1000) {
         self.message = message
-        super.init(domain: "NetworkError", code: -1000, userInfo: nil)
+        super.init(domain: "NetworkError", code: code, userInfo: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override var localizedDescription: String {
+    public override var localizedDescription: String {
         return message
     }
 }

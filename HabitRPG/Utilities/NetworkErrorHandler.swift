@@ -29,6 +29,14 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
     public static let errorMessages: [ErrorMessage]? = [DefaultServerUnavailableErrorMessage(), DefaultServerIssueErrorMessage(), DefaultOfflineErrorMessage()]
     let disposable = ScopedDisposable(CompositeDisposable())
     
+    private static let dismissingVCs = [
+        ChallengeDetailsTableViewController.self,
+        SplitSocialViewController.self,
+        PartyViewController.self,
+        QuestDetailViewController.self,
+        UserProfileViewController.self
+    ]
+    
     public static func handle(error: NSError, messages: [String]) {
         if let errorMessage = errorMessageForCode(code: error.code) {
             notify(message: errorMessage.message, code: error.code)
@@ -60,6 +68,12 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
             }
             let toastView = ToastView(title: message, background: .red, duration: duration)
             ToastManager.show(toast: toastView)
+        }
+        
+        if code == 404 {
+            if let visibleViewController = UIApplication.topViewController(), dismissingVCs.contains(where: { type(of: visibleViewController) == $0 }) {
+                visibleViewController.navigationController?.popViewController(animated: true)
+            }
         }
     }
 }

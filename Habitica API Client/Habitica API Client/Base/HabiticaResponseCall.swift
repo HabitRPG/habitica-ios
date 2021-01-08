@@ -45,17 +45,21 @@ public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
     override func setupErrorHandler() {
         let errorHandler = customErrorHandler ?? AuthenticatedCall.errorHandler
         errorHandler?.observe(signal: errorSignal)
-        errorHandler?.observe(signal: errorJsonSignal.map({ json -> [String] in
-            var errors = [String]()
+        errorHandler?.observe(signal: errorJsonSignal.map({ json -> [NetworkError] in
+            var errors = [NetworkError]()
+            var isNotFound = false
+            if let error = json["error"] as? String, error == "NotFound" {
+                isNotFound = true
+            }
             if let jsonErrors = json["errors"] as? [[String: Any]] {
                 for jsonError in jsonErrors {
                     if let errorMessage = jsonError["message"] as? String {
-                        errors.append(errorMessage)
+                        errors.append(NetworkError(message: errorMessage, code: isNotFound ? 404 : -1000))
                     }
                 }
             }
             if errors.isEmpty, let message = json["message"] as? String {
-                errors.append(message)
+                errors.append(NetworkError(message: message, code: isNotFound ? 404 : -1000))
             }
             return errors
         }))
