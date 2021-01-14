@@ -297,13 +297,13 @@ class MainMenuViewController: BaseTableViewController {
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
         })
-        .filter({ $0.party?.id != nil})
+        .filter({ $0.party?.id != nil })
         .map({ $0.party?.id ?? "" })
         .flatMap(.latest, { partyID in
             return self.socialRepository.getGroup(groupID: partyID).skipNil()
         })
         .on(value: {[weak self] party in
-            if party.quest?.active == true {
+            if party.quest?.active == true && self?.configRepository.bool(variable: .showQuestInMenu) == true {
                 if self?.questHeaderView == nil {
                     self?.questHeaderView = UIView.fromNib(nibName: "QuestMenuHeader")
                 }

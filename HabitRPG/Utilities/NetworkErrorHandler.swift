@@ -34,7 +34,9 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
         SplitSocialViewController.self,
         PartyViewController.self,
         QuestDetailViewController.self,
-        UserProfileViewController.self
+        UserProfileViewController.self,
+        GiftGemsViewController.self,
+        GiftSubscriptionViewController.self
     ]
     
     public static func handle(error: NSError, messages: [String]) {

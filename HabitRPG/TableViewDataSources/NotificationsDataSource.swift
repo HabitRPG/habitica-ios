@@ -78,10 +78,12 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
         guard let notification = item(at: indexPath) else {
             return UITableViewCell()
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: notification.type.rawValue, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: notification.achievementKey != nil ? "ACHIEVEMENT" : notification.type.rawValue, for: indexPath)
         cell.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         
-        if !notification.isValid { return cell }
+        if !notification.isValid {
+            return cell
+        }
         
         switch notification.type {
         case .unallocatedStatsPoints:
@@ -132,7 +134,13 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
                 }
             }
         default:
-            cell.textLabel?.text = notification.id
+            if notification.achievementKey != nil {
+                if let cell = cell as? AchievementNotificationCell {
+                    cell.configureFor(notification: notification)
+                }
+            } else {
+                cell.textLabel?.text = notification.id
+            }
         }
         
         return cell

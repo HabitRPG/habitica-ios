@@ -26,6 +26,7 @@ class NotificationsTableViewController: BaseTableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 50
         
+        tableView.register(AchievementNotificationCell.self, forCellReuseIdentifier: "ACHIEVEMENT")
         tableView.register(UnallocatedPointsNotificationCell.self, forCellReuseIdentifier: HabiticaNotificationType.unallocatedStatsPoints.rawValue)
         tableView.register(NewsNotificationCell.self, forCellReuseIdentifier: HabiticaNotificationType.newStuff.rawValue)
         tableView.register(UnreadGroupNotificationCell.self, forCellReuseIdentifier: HabiticaNotificationType.newChatMessage.rawValue)

@@ -124,7 +124,7 @@ class SpellsTableViewDataSource: BaseReactiveTableViewDataSource<Any>, SpellsTab
             cellname = "SkillLockedCell"
         } else if transformItem != nil {
             cellname = "TransformationItemCell"
-        } else {
+        } else if skill == nil {
             cellname = "InformationCell"
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: cellname, for: indexPath)

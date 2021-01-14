@@ -357,17 +357,20 @@ public extension SignalProducerProtocol where Value: NotificationEmitter, Error 
     typealias ReactiveResults = (value: Self.Value, changes: ReactiveChangeset?)
     
      func reactive() -> SignalProducer<ReactiveResults, ReactiveSwiftRealmError> {
-        return producer.flatMap(.latest) {results -> SignalProducer<ReactiveResults, ReactiveSwiftRealmError> in
+        return producer.flatMap(.latest) { results -> SignalProducer<ReactiveResults, ReactiveSwiftRealmError> in
             return SignalProducer { observer, lifetime in
+                let dispatchQueue = OperationQueue.current?.underlyingQueue ?? DispatchQueue.main
                 let notificationToken = results.observe { (changes: RealmCollectionChange) in
-                    switch changes {
-                    case .initial:
-                        observer.send(value: (value: results, changes: ReactiveChangeset(initial: true, deleted: [], inserted: (0..<results.count).map { $0 }, updated: [])))
-                    case .update(let values, let deletes, let inserts, let updates):
-                        observer.send(value: (value: values, changes: ReactiveChangeset(initial: false, deleted: deletes, inserted: inserts, updated: updates)))
-                    case .error(let error):
-                        // An error occurred while opening the Realm file on the background worker thread
-                        fatalError("\(error)")
+                    dispatchQueue.async {
+                        switch changes {
+                        case .initial:
+                            observer.send(value: (value: results, changes: ReactiveChangeset(initial: true, deleted: [], inserted: (0..<results.count).map { $0 }, updated: [])))
+                        case .update(let values, let deletes, let inserts, let updates):
+                            observer.send(value: (value: values, changes: ReactiveChangeset(initial: false, deleted: deletes, inserted: inserts, updated: updates)))
+                        case .error(let error):
+                            // An error occurred while opening the Realm file on the background worker thread
+                            fatalError("\(error)")
+                        }
                     }
                 }
                 lifetime.observeEnded {
@@ -392,15 +395,18 @@ public extension SignalProducerProtocol where Value: ObjectNotificationEmitter, 
         return producer.flatMap(.latest) {realmObject -> SignalProducer<ReactiveObject, ReactiveSwiftRealmError> in
             return SignalProducer { observer, lifetime in
                 observer.send(value: (value: realmObject, changes: nil))
+                let dispatchQueue = OperationQueue.current?.underlyingQueue ?? DispatchQueue.main
                 let notificationToken = realmObject.observe { change in
+                    dispatchQueue.async {
                     switch change {
-                    case .change(let properties):
-                        observer.send(value: (value: realmObject, changes: ReactiveChange(deleted: false, properties: properties)))
-                    case .error(let error):
-                        fatalError("\(error)")
-                    case .deleted:
-                        observer.send(value: (value: realmObject, changes: ReactiveChange(deleted: true, properties: [])))
-                        observer.sendCompleted()
+                        case .change(let properties):
+                            observer.send(value: (value: realmObject, changes: ReactiveChange(deleted: false, properties: properties)))
+                        case .error(let error):
+                            fatalError("\(error)")
+                        case .deleted:
+                            observer.send(value: (value: realmObject, changes: ReactiveChange(deleted: true, properties: [])))
+                            observer.sendCompleted()
+                        }
                     }
                 }
                 lifetime.observeEnded {
