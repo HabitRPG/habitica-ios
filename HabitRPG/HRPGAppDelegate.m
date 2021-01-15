@@ -248,7 +248,9 @@
     
     UINavigationController *displayedNavigationController = [self displayTabAtIndex:4];
     if (displayedNavigationController) {
-        if ([userInfo[@"identifier"] isEqualToString:@"newPM"] || [userInfo[@"identifier"] isEqualToString:@"giftedGems"] || [userInfo[@"identifier"] isEqualToString:@"giftedSubscription"]) {
+        if (userInfo[@"openURL"] != nil) {
+            [RouterHandler.shared handleWithUrlString:userInfo[@"openURL"]];
+        } else if ([userInfo[@"identifier"] isEqualToString:@"newPM"] || [userInfo[@"identifier"] isEqualToString:@"giftedGems"] || [userInfo[@"identifier"] isEqualToString:@"giftedSubscription"]) {
             InboxChatViewController *inboxChatViewController = (InboxChatViewController *)[self loadViewController:@"InboxChatViewController" fromStoryboard:@"Social"];
             inboxChatViewController.userID = userInfo[@"replyTo"];
             [displayedNavigationController pushViewController:inboxChatViewController animated:YES];

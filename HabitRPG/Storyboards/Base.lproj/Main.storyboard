@@ -1542,7 +1542,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="GemPurchaseViewController" id="0F5-C1-rPv" customClass="GemViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" id="CgT-fS-CrK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="18" minimumInteritemSpacing="18" id="VJm-WU-tp7">
@@ -3323,7 +3323,7 @@ a matching subscription automatically after sending your gift.</string>
         <!--Navigation Controller-->
         <scene sceneID="Rct-Wv-pGu">
             <objects>
-                <navigationController id="aby-Ry-5XE" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PromotionInfoNavController" id="aby-Ry-5XE" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dgW-0k-V8d">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3339,17 +3339,17 @@ a matching subscription automatically after sending your gift.</string>
         <!--Promotion Info View Controller-->
         <scene sceneID="Zba-Xk-CFo">
             <objects>
-                <viewController id="PEc-OD-wNM" customClass="PromotionInfoViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PromotionInfoViewController" id="PEc-OD-wNM" customClass="PromotionInfoViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YoZ-Cn-jtO"/>
                         <viewControllerLayoutGuide type="bottom" id="WaS-jq-SUQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Io1-HB-nAL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5P-ER-Ol8">
-                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="CWi-0Z-cNn">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="325"/>
@@ -3570,6 +3570,7 @@ a matching subscription automatically after sending your gift.</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="bk4-n7-ZlI"/>
         <segue reference="9d2-gY-n53"/>
         <segue reference="0lO-rm-fRj"/>
         <segue reference="BqT-36-Icz"/>

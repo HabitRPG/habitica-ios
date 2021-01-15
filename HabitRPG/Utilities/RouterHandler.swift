@@ -17,6 +17,7 @@ class RouterHandler: NSObject {
 
     private let router = DPLDeepLinkRouter()
     
+    // swiftlint:disable:next function_body_length
     func register() {
         router.register("/groups/guild/:groupID") { link in
             self.displayTab(index: 4)
@@ -54,9 +55,29 @@ class RouterHandler: NSObject {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Social.partyViewController.instantiate())
         }
-        router.register("/inventory/items") { _ in
+        router.register("/inventory/market") { _ in
             self.displayTab(index: 4)
-            self.push(StoryboardScene.Main.itemsViewController.instantiate())
+            let viewController = StoryboardScene.Shop.initialScene.instantiate()
+            viewController.shopIdentifier = Constants.MarketKey
+            self.push(viewController)
+        }
+        router.register("/inventory/quests") { _ in
+            self.displayTab(index: 4)
+            let viewController = StoryboardScene.Shop.initialScene.instantiate()
+            viewController.shopIdentifier = Constants.QuestShopKey
+            self.push(viewController)
+        }
+        router.register("/inventory/seasonal") { _ in
+            self.displayTab(index: 4)
+            let viewController = StoryboardScene.Shop.initialScene.instantiate()
+            viewController.shopIdentifier = Constants.SeasonalShopKey
+            self.push(viewController)
+        }
+        router.register("/inventory/time") { _ in
+            self.displayTab(index: 4)
+            let viewController = StoryboardScene.Shop.initialScene.instantiate()
+            viewController.shopIdentifier = Constants.TimeTravelersShopKey
+            self.push(viewController)
         }
         router.register("/inventory/equipment") { _ in
             self.displayTab(index: 4)
@@ -66,9 +87,17 @@ class RouterHandler: NSObject {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.stableViewController.instantiate())
         }
+        router.register("/static/new-stuff") { _ in
+            self.displayTab(index: 4)
+            self.push(StoryboardScene.Main.newsViewController.instantiate())
+        }
         router.register("/static/faq") { _ in
             self.displayTab(index: 4)
             self.push(StoryboardScene.Support.mainSupportViewController.instantiate())
+        }
+        router.register("/static/about") { _ in
+            self.displayTab(index: 4)
+            self.push(StoryboardScene.Main.aboutViewController.instantiate())
         }
         router.register("/static/faq/:index") { link in
             self.displayTab(index: 4)
@@ -76,17 +105,45 @@ class RouterHandler: NSObject {
             viewController.index = Int(string: (link?.routeParameters["index"] as? String) ?? "0") ?? 0
             self.push(viewController)
         }
-        router.register("user/settings.*") { _ in
+        router.register("/user/settings.*") { _ in
             self.displayTab(index: 4)
-            self.push(StoryboardScene.Settings.initialScene.instantiate())
+            self.present(StoryboardScene.Settings.initialScene.instantiate())
+        }
+        router.register("/user/settings/subscription") { _ in
+            self.displayTab(index: 4)
+            self.present(StoryboardScene.Main.subscriptionNavController.instantiate())
+        }
+        router.register("/user/settings/gems") { _ in
+            self.displayTab(index: 4)
+            self.present(StoryboardScene.Main.purchaseGemNavController.instantiate())
+        }
+        router.register("/promo") { _ in
+            self.displayTab(index: 4)
+            self.present(StoryboardScene.Main.promotionInfoNavController.instantiate())
+        }
+        router.register("/private-messages") { _ in
+            self.displayTab(index: 4)
+            self.present(StoryboardScene.Social.inboxNavigationViewController.instantiate())
+        }
+        router.register("/user/notifications") { _ in
+            self.displayTab(index: 4)
+            self.present(StoryboardScene.Main.notificationsNavigationController.instantiate())
         }
         router.register("/user/stats") { _ in
             self.displayTab(index: 4)
             self.push(StoryboardScene.User.attributePointsViewController.instantiate())
         }
+        router.register("/user/skills") { _ in
+            self.displayTab(index: 4)
+            self.push(StoryboardScene.User.spellsViewController.instantiate())
+        }
         router.register("/user/achievements") { _ in
             self.displayTab(index: 4)
             self.push(StoryboardScene.User.achievementsCollectionViewController.instantiate())
+        }
+        router.register("/user/avatar") { _ in
+            self.displayTab(index: 4)
+            self.push(StoryboardScene.Main.avatarOverviewViewController.instantiate())
         }
         router.register("/user/onboarding") { _ in
             self.present(StoryboardScene.Main.adventureGuideNavigationViewController.instantiate())
