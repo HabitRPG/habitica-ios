@@ -56,6 +56,7 @@ class SkillTableViewCell: UITableViewCell {
         notesLabel.text = transformationItem.notes
         skillImageView.setShopImagewith(name: transformationItem.key)
         numberOwnedLabel?.text = String(numberOwned)
+        buyButton.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
         
         (buyButton.viewWithTag(1) as? UILabel)?.text = L10n.use
     }

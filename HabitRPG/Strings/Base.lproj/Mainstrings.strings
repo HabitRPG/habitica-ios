@@ -225,7 +225,7 @@
 "menu.social" = "Social";
 "menu.inventory" = "Inventory";
 "menu.select_class" = "Select Class";
-"menu.cast_spells" = "Cast Skills";
+"menu.skills" = "Skills";
 "menu.shops" = "Shops";
 "menu.customize_avatar" = "Customize Avatar";
 "menu.gems" = "Purchase Gems";
@@ -1036,6 +1036,8 @@
 "gift_confirmation_body_g1_g1" = "You sent %@ a %@-month Habitica subscription and the same subscription was applied to your account for our Gift One Get One promotion!";
 "create_guild" = "Create Guild";
 "create_guild_description" = "To create a Guild, log in to the Habitica website then tap the “Create” button on the “My Guilds” screen.";
+"create_challenge" = "Create Challenge";
+"create_challenge_description" = "To create a Challenge, log in to the Habitica website then tap the “Create” button on the “My Challenges” screen.";
 "open_website" = "Open Website";
 "end_challenge" = "End Challenge";
 "end_challenge_description" = "To end a Challenge, log in to the Habitica website then tap the “End Challenge” button on the right of the Challenge screen.";

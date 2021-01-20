@@ -12,6 +12,8 @@ import PinLayout
 
 class LevelUpOverlayView: HabiticaAlertController {
     
+    private let userRepository = UserRepository()
+    
     private var avatarView: AvatarView = {
         let view = AvatarView()
         return view
@@ -23,19 +25,19 @@ class LevelUpOverlayView: HabiticaAlertController {
     }()
     private var avatarWrapper = UIView()
     
-    init(avatar: AvatarProtocol) {
+    private var user: UserProtocol?
+    
+    override init() {
         super.init()
-        title = L10n.levelupTitle(avatar.stats?.level ?? 0)
         messageFont = CustomFontMetrics.scaledSystemFont(ofSize: 15)
         messageColor = ThemeService.shared.theme.ternaryTextColor
         message = L10n.levelupDescription
         arrangeMessageLast = true
         containerViewSpacing = 18
-        setupAvatarView(avatar: avatar)
         addAction(title: L10n.onwards, isMainAction: true)
         addShareAction {[weak self] (_) in
             var items: [Any] = [
-                L10n.levelupShare(avatar.stats?.level ?? 0)
+                L10n.levelupShare(self?.user?.stats?.level ?? 0)
             ]
             if let image = self?.avatarView.snapshotView(afterScreenUpdates: true) {
                 items.append(image)
@@ -44,6 +46,11 @@ class LevelUpOverlayView: HabiticaAlertController {
                 SharingManager.share(items: items, presentingViewController: weakSelf, sourceView: nil)
             }
         }
+        userRepository.getUser().on(value: { user in
+            self.user = user
+            self.title = L10n.levelupTitle(user.stats?.level ?? 0)
+            self.setupAvatarView(avatar: user)
+        }).start()
     }
     
     required init?(coder aDecoder: NSCoder) {

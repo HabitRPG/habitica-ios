@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-class ClassSelectionOptionView: UIView {
+class ClassSelectionOptionView: UIView, Themeable {
     private let avatarView: AvatarView = {
         let avatarView = AvatarView()
         avatarView.showBackground = false
@@ -79,6 +79,12 @@ class ClassSelectionOptionView: UIView {
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapped)))
         isUserInteractionEnabled = true
         backgroundColor = .clear
+        
+        ThemeService.shared.addThemeable(themable: self)
+    }
+    
+    func applyTheme(theme: Theme) {
+        labelWrapper.backgroundColor = theme.windowBackgroundColor
     }
     
     override func layoutSubviews() {

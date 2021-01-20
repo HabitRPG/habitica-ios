@@ -319,7 +319,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="117"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbS-X8-Fun">
+                                        <view clipsSubviews="YES" tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbS-X8-Fun">
                                             <rect key="frame" x="16" y="4" width="288" height="109"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="CV7-qf-vbB">
@@ -371,9 +371,6 @@
                                         <constraint firstAttribute="trailing" secondItem="vbS-X8-Fun" secondAttribute="trailing" constant="16" id="zZd-fk-JUJ"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="containerView" destination="vbS-X8-Fun" id="Is9-Rh-BR5"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

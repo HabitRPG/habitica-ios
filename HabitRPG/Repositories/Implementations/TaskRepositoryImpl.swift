@@ -94,7 +94,14 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
 
             let healthDiff = (response.health ?? 0) - stats.health
             let magicDiff = (response.magic ?? 0) - stats.mana
-            let expDiff = (response.experience ?? 0) - stats.experience
+            var expDiff = (response.experience ?? 0) - stats.experience
+            if stats.level < (response.level ?? 0) {
+                let levelUpView = LevelUpOverlayView()
+                levelUpView.show()
+                SoundManager.shared.play(effect: .levelUp)
+                
+                expDiff = stats.toNextLevel - stats.experience + (response.experience ?? 0)
+            }
             let goldDiff = (response.gold ?? 0) - stats.gold
             let questDamage = (response.temp?.quest?.progressDelta ?? 0)
             if task.type == "reward" {
@@ -123,15 +130,6 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
                     dialog = "You found a \(drop.key ?? "")"
                 }
                 ToastManager.show(text: dialog ?? "", color: .gray)
-            }
-            if let userLevel = self?.userLevel {
-                if userLevel < stats.level {
-                    UserRepository().getUser().take(first: 1).on(value: { user in
-                        let levelUpView = LevelUpOverlayView(avatar: user)
-                        levelUpView.show()
-                        SoundManager.shared.play(effect: .levelUp)
-                    }).start()
-                }
             }
             self?.userLevel = stats.level
         }).map({ (response, _) in

@@ -86,12 +86,21 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             })
     }
     
-    func useTransformationItem(item: SpecialItemProtocol, targetId: String) -> Signal<EmptyResponseProtocol?, Never> {
-        return UseTransformationItemCall(item: item, target: targetId).objectSignal.on(value: {[weak self] _ in
+    func useTransformationItem(item: SpecialItemProtocol, targetId: String) -> Signal<UserProtocol?, Never> {
+        return UseTransformationItemCall(item: item, target: targetId).objectSignal
+            .on(value: {[weak self] _ in
             self?.localRepository.usedTransformationItem(userID: self?.currentUserId ?? "", key: item.key ?? "")
-            let toastView = ToastView(title: L10n.Skills.usedTransformationItem(item.text ?? ""), background: .gray)
-            ToastManager.show(toast: toastView)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                ToastManager.show(text: L10n.Skills.usedTransformationItem(item.text ?? ""), color: .gray)
+            }
         })
+            .flatMap(.latest, { _ in
+                if targetId == self.currentUserId {
+                    return self.retrieveUser().producer
+                } else {
+                    return SignalProducer.empty
+                }
+            })
     }
     
     func useDebuffItem(key: String) -> Signal<UserProtocol?, Never> {

@@ -45,8 +45,9 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         
         filterButton.setImage(HabiticaIcons.imageOfFilterIcon().withRenderingMode(.alwaysTemplate), for: .normal)
         filterButton.addTarget(self, action: #selector(filterTapped(_:)), for: .touchUpInside)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: filterButton)
-        
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addChallengeAction))
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: filterButton), addButton]
+
         self.segmentedFilterControl.addTarget(self, action: #selector(ChallengeTableViewController.switchFilter(_:)), for: .valueChanged)
         segmentedWrapper.addSubview(self.segmentedFilterControl)
         topHeaderCoordinator?.alternativeHeader = segmentedWrapper
@@ -169,5 +170,17 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         self.dataSource.showNotOwned = showNotOwned
         self.dataSource.shownGuilds = shownGuilds
         self.dataSource.updatePredicate()
+    }
+    
+    @IBAction func addChallengeAction(_ sender: Any) {
+        let alert = HabiticaAlertController(title: L10n.createChallenge, message:  L10n.createChallengeDescription)
+        alert.addAction(title: L10n.openWebsite, style: .default, isMainAction: true) { _ in
+            guard let url = URL(string: "https://habitica.com/challenges/myChallenges") else {
+                return
+            }
+            UIApplication.shared.open(url)
+        }
+        alert.addCloseAction()
+        alert.show()
     }
 }

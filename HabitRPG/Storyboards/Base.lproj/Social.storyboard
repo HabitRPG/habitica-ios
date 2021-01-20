@@ -1407,7 +1407,13 @@
                             <outlet property="delegate" destination="BE2-xn-Wwl" id="5wQ-dI-zJ2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Challenges" id="OHs-Q2-g2k"/>
+                    <navigationItem key="navigationItem" title="Challenges" id="OHs-Q2-g2k">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="1Xp-IK-G29">
+                            <connections>
+                                <action selector="addChallengeAction:" destination="BE2-xn-Wwl" id="XBe-Cm-M1l"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="LJL-4h-PRX" kind="show" identifier="challengeDetailsSegue" id="XbT-AM-M1f"/>
                     </connections>

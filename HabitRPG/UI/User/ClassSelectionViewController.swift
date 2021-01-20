@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 import PinLayout
 
-class ClassSelectionViewController: UIViewController {
+class ClassSelectionViewController: UIViewController, Themeable {
     
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var titleView: UILabel!
@@ -54,6 +54,8 @@ class ClassSelectionViewController: UIViewController {
             .flatMap(.latest) { _ in
                 return self.userRepository.selectClass()
             }.start())
+        
+        ThemeService.shared.addThemeable(themable: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +69,10 @@ class ClassSelectionViewController: UIViewController {
         showView()
     }
     
+    func applyTheme(theme: Theme) {
+        view.backgroundColor = theme.contentBackgroundColor
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         layout()
@@ -75,7 +81,10 @@ class ClassSelectionViewController: UIViewController {
     private func showView() {
         UIView.animate(withDuration: 0.4, animations: {[weak self] in
             self?.navigationController?.view.alpha = 1
-        }, completion: {[weak self] (_) in
+        }, completion: {[weak self] (done) in
+            if !done {
+                return
+            }
             self?.set(class: .warrior)
             UIView.animate(withDuration: 0.6) {[weak self] in
                 self?.bottomView.pin.top(58%)

@@ -162,6 +162,10 @@ public enum L10n {
   public static var couldNotGiftGems: String { return L10n.tr("Mainstrings", "could_not_gift_gems") }
   /// Create
   public static var create: String { return L10n.tr("Mainstrings", "create") }
+  /// Create Challenge
+  public static var createChallenge: String { return L10n.tr("Mainstrings", "create_challenge") }
+  /// To create a Challenge, log in to the Habitica website then tap the “Create” button on the “My Challenges” screen.
+  public static var createChallengeDescription: String { return L10n.tr("Mainstrings", "create_challenge_description") }
   /// Create Guild
   public static var createGuild: String { return L10n.tr("Mainstrings", "create_guild") }
   /// To create a Guild, log in to the Habitica website then tap the “Create” button on the “My Guilds” screen.
@@ -1528,8 +1532,6 @@ public enum L10n {
   }
 
   public enum Menu {
-    /// Cast Skills
-    public static var castSpells: String { return L10n.tr("Mainstrings", "menu.cast_spells") }
     /// Customize Avatar
     public static var customizeAvatar: String { return L10n.tr("Mainstrings", "menu.customize_avatar") }
     /// Purchase Gems
@@ -1542,6 +1544,8 @@ public enum L10n {
     public static var selectClass: String { return L10n.tr("Mainstrings", "menu.select_class") }
     /// Shops
     public static var shops: String { return L10n.tr("Mainstrings", "menu.shops") }
+    /// Skills
+    public static var skills: String { return L10n.tr("Mainstrings", "menu.skills") }
     /// Social
     public static var social: String { return L10n.tr("Mainstrings", "menu.social") }
     /// Subscription

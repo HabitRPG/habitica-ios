@@ -83,7 +83,7 @@ class MenuItem {
         MenuItem(key: .dailies, title: L10n.Tasks.dailies, vcInstantiator: StoryboardScene.Main.dailiesViewController.instantiate),
         MenuItem(key: .todos, title: L10n.Tasks.todos, vcInstantiator: StoryboardScene.Main.todosViewController.instantiate),
         MenuItem(key: .rewards, title: L10n.Tasks.rewards, vcInstantiator: StoryboardScene.Main.rewardsViewController.instantiate),
-        MenuItem(key: .skills, title: L10n.Menu.castSpells, segue: StoryboardSegue.Main.spellsSegue.rawValue),
+        MenuItem(key: .skills, title: L10n.Menu.skills, segue: StoryboardSegue.Main.spellsSegue.rawValue),
         //MenuItem(key: .selectClass, title: L10n.Menu.selectClass, segue: StoryboardSegue.Main.selectClassSegue.rawValue),
         MenuItem(key: .stats, title: L10n.Titles.stats, segue: StoryboardSegue.Main.statsSegue.rawValue),
         MenuItem(key: .achievements, title: L10n.Titles.achievements, segue: StoryboardSegue.Main.achievementsSegue.rawValue),
@@ -392,12 +392,6 @@ class MainMenuViewController: BaseTableViewController {
                 ])
         ]
         menuItem(withKey: .tavern).subtitleColor = UIColor.orange10
-        
-        if !configRepository.bool(variable: .reorderMenu) {
-            let item = menuSections.remove(at: 3)
-            menuSections.insert(item, at: 1)
-            tableView.reloadData()
-        }
     }
     
     private func menuSection(withKey key: MenuSection.Key) -> MenuSection? {

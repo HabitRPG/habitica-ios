@@ -320,10 +320,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         #if targetEnvironment(simulator)
         if HabiticaAppDelegate.isRunningScreenshots() {
-            dataSource?.userRepository.getUser().take(first: 1).on(value: { user in
-                let levelUpView = LevelUpOverlayView(avatar: user)
-                levelUpView.show()
-            }).start()
+            let levelUpView = LevelUpOverlayView()
+            levelUpView.show()
             return
         }
         #endif

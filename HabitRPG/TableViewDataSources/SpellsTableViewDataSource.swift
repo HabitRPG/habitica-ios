@@ -139,11 +139,16 @@ class SpellsTableViewDataSource: BaseReactiveTableViewDataSource<Any>, SpellsTab
             skillCell.configure(transformationItem: item, numberOwned: ownedItems[item.key ?? ""] ?? 0)
         }
         if let item = item(at: indexPath) as? (String, String) {
+            let  theme = ThemeService.shared.theme
+            cell.viewWithTag(4)?.backgroundColor = theme.windowBackgroundColor
             let titleLabel = cell.viewWithTag(1) as? UILabel
             titleLabel?.text = item.0
+            titleLabel?.textColor = theme.primaryTextColor
             let messageLabel = cell.viewWithTag(2) as? UILabel
             messageLabel?.text = item.1
+            messageLabel?.textColor = theme.secondaryTextColor
             cell.viewWithTag(3)?.isHidden = classSelected || disabledClasses || (stats?.level ?? 0) < 10
+            cell.viewWithTag(3)?.tintColor = theme.tintColor
         }
         return cell
     }
