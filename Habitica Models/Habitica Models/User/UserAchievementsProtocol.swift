@@ -12,7 +12,8 @@ import Foundation
 public protocol UserAchievementsProtocol: BaseModelProtocol {
     var isValid: Bool { get }
     
-    var quests: [AchievementProtocol]? { get set }
+    var quests: [AchievementProtocol] { get set }
+    var challenges: [AchievementProtocol] { get set }
     var streak: Int { get set }
     var createdTask: Bool { get set }
     var completedTask: Bool { get set }

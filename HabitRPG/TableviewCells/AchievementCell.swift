@@ -14,7 +14,7 @@ class AchievementCell: UICollectionViewCell {
     
     var isGridLayout = false {
         didSet {
-            if isGridLayout && !isQuestAchievement {
+            if isGridLayout && isRegularAchievement {
                 titleLabel.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
                 titleLabel.textAlignment = .center
                 titleLabel.numberOfLines = 3
@@ -56,12 +56,12 @@ class AchievementCell: UICollectionViewCell {
     
     private var countBadge = BadgeView()
     
-    private var isQuestAchievement: Bool = false {
+    private var isRegularAchievement: Bool = false {
         didSet {
-            if isQuestAchievement {
-                countBadge.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .medium)
-            } else {
+            if isRegularAchievement {
                 countBadge.font = CustomFontMetrics.scaledSystemFont(ofSize: 13)
+            } else {
+                countBadge.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .medium)
             }
         }
     }
@@ -86,7 +86,7 @@ class AchievementCell: UICollectionViewCell {
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
             var newFrame = layoutAttributes.frame
-            if isGridLayout && !isQuestAchievement {
+            if isGridLayout && isRegularAchievement {
                 newFrame.size.width = 156
                 newFrame.size.height = 106
             } else {
@@ -105,7 +105,7 @@ class AchievementCell: UICollectionViewCell {
     }
     
     private func layout() {
-        if isGridLayout && !isQuestAchievement {
+        if isGridLayout && isRegularAchievement {
             iconView.pin.start(4).top(4).end(4).height(66)
             titleLabel.pin.start(4).below(of: iconView).bottom().end(4)
             countBadge.pin.start().top().sizeToFit()
@@ -119,18 +119,18 @@ class AchievementCell: UICollectionViewCell {
             titleLabel.pin.top(offset)
             descriptionlabel.pin.below(of: titleLabel)
         }
-        if isQuestAchievement {
+        if !isRegularAchievement {
             countBadge.pin.size(40).start(20).vCenter()
         }
     }
     
     func heightForWidth(_ width: CGFloat) -> CGFloat {
-        if isGridLayout && !isQuestAchievement {
+        if isGridLayout && isRegularAchievement {
             return 106
         } else {
             var height = titleLabel.sizeThatFits(CGSize(width: width - 84, height: 200)).height
             height += descriptionlabel.sizeThatFits(CGSize(width: width - 84, height: 200)).height
-            if isQuestAchievement {
+            if !isRegularAchievement {
                 return max(height + 16, 60)
             } else {
                 return max(height + 16, 80)
@@ -144,7 +144,9 @@ class AchievementCell: UICollectionViewCell {
         descriptionlabel.text = achievement.text
         descriptionlabel.textColor = ThemeService.shared.theme.secondaryTextColor
         if !achievement.isQuestAchievement {
-            if achievement.earned {
+            if achievement.isChallengeAchievement {
+                iconView.image = Asset.wonChallengeIcon.image
+            } else if achievement.earned {
                 iconView.setImagewith(name: (achievement.icon ?? "") + "2x")
             } else {
                 iconView.setImagewith(name: "achievement-unearned2x")
@@ -164,7 +166,7 @@ class AchievementCell: UICollectionViewCell {
             countBadge.isHidden = true
         }
         
-        isQuestAchievement = achievement.isQuestAchievement
+        isRegularAchievement = !achievement.isQuestAchievement && !achievement.isChallengeAchievement
         
         setNeedsLayout()
     }

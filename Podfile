@@ -41,6 +41,8 @@ target 'Habitica' do
 
   pod 'FBSDKCoreKit'  
   pod 'FBSDKLoginKit'
+
+
   pod 'Firebase/Core'
   pod 'FirebaseCrashlytics'
   pod 'Firebase/Performance'
@@ -79,18 +81,22 @@ target 'Habitica' do
     inherit! :search_paths
     test_pods
   end
+end
 
-  target 'Habitica Intents' do
-    pod 'KeychainAccess'
-    inherit! :search_paths
-  end
+target 'Habitica Intents' do
+  pod 'Amplitude-iOS'
+  pod 'RealmSwift', '4.4.1'
+  reactive_pods
+  pod 'KeychainAccess'
+  inherit! :search_paths
+end
 
-  target 'Habitica WidgetsExtension' do
-#    platform :ios, '14.0'
-    pod 'KeychainAccess'
-#    pod 'URLImage'
-    inherit! :search_paths
-  end
+target 'Habitica WidgetsExtension' do
+  pod 'Amplitude-iOS'
+  pod 'RealmSwift', '4.4.1'
+  reactive_pods
+  pod 'KeychainAccess'
+  inherit! :search_paths
 end
 
 target 'Habitica Snapshots' do

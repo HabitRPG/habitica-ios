@@ -20,6 +20,7 @@ import StoreKit
 import UserNotifications
 import FirebaseMessaging
 import Down
+import WidgetKit
 
 //This will eventually replace the old ObjC AppDelegate once that code is ported to swift.
 //Reason for adding this class now is mostly, to configure PopupDialogs dim color.
@@ -408,5 +409,15 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         alertController.addCloseAction()
         alertController.enqueue()
         UINotificationFeedbackGenerator.oneShotNotificationOccurred(.warning)
+    }
+    
+    @objc
+    func reloadWidgetData() {
+        #if arch(arm64) || arch(i386) || arch(x86_64)
+        if #available(iOS 14.0, *) {
+            WidgetCenter.shared.reloadTimelines(ofKind: "DailiesCountWidget")
+            WidgetCenter.shared.reloadTimelines(ofKind: "StatsWidget")
+        }
+        #endif
     }
 }

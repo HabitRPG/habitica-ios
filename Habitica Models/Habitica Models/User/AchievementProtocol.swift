@@ -24,4 +24,7 @@ public extension AchievementProtocol {
     var isQuestAchievement: Bool {
         return category == "quests"
     }
+    var isChallengeAchievement: Bool {
+        return category == "challenges"
+    }
 }

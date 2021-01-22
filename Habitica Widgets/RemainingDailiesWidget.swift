@@ -76,7 +76,8 @@ struct DailiesCountWidgetView : View {
         }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
                 .padding(EdgeInsets(top: 24, leading: 0, bottom: 20, trailing: 0))
                 .background(Color.widgetBackground)
-            }
+        .widgetURL(URL(string: "/user/tasks/daily"))
+    }
 }
 
 struct CountView: View {

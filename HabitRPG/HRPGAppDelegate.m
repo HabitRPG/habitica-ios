@@ -167,6 +167,10 @@
     completionHandler(YES);
 }
 
+- (void)applicationWillResignActive:(UIApplication *)application {
+    [self.swiftAppDelegate reloadWidgetData];
+}
+
 - (void)application:(UIApplication *)application
     handleActionWithIdentifier:(NSString *)identifier
           forLocalNotification:(UILocalNotification *)notification

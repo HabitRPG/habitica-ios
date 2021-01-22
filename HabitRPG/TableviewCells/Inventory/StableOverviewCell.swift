@@ -17,13 +17,13 @@ class StableOverviewCell: UICollectionViewCell {
     
     func configure(item: StableOverviewItem, ownsItem: Bool) {
         backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        imageView.setImagewith(name: item.imageName)
         textLabel.text = item.text
         countLabel.text = "\(item.numberOwned)/\(item.totalNumber)"
         
         countLabel.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
         textLabel.textColor = ThemeService.shared.theme.secondaryTextColor
         imageView.alpha = 1.0
+        imageView.tintColor = ThemeService.shared.theme.dimmedColor
         if item.numberOwned == 0 && !ownsItem {
             countLabel.textColor = ThemeService.shared.theme.dimmedTextColor
             textLabel.textColor = ThemeService.shared.theme.dimmedTextColor
@@ -38,10 +38,18 @@ class StableOverviewCell: UICollectionViewCell {
             textLabel?.numberOfLines = 2
             countLabel?.isHidden = true
             countLabelHeightConstraint.constant = 0
+            if item.numberOwned != 0 || ownsItem {
+                imageView.setImagewith(name: item.imageName)
+            } else {
+                ImageManager.getImage(name: item.imageName) {[weak self] (image, _) in
+                    self?.imageView.image = image?.withRenderingMode(.alwaysTemplate)
+                }
+            }
         } else {
             textLabel?.numberOfLines = 1
             countLabel?.isHidden = false
             countLabelHeightConstraint.constant = 20
+            imageView.setImagewith(name: item.imageName)
         }
         
         shouldGroupAccessibilityChildren = true

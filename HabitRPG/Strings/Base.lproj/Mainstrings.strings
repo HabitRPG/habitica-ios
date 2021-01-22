@@ -860,6 +860,7 @@
 "achievements.seasonal" = "Seasonal Achievements";
 "achievements.special" = "Special Achievements";
 "achievements.quests" = "Quests completed";
+"achievements.challenges" = "Challenges won";
 "organize_by" = "Organize By";
 "task_history" = "Task History (Very Experimental)";
 "subscription_promo_title" = "Need Gems?";

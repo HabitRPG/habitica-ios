@@ -13,7 +13,42 @@ import RealmSwift
 class RealmUserAchievements: Object, UserAchievementsProtocol {
     @objc dynamic var userID: String?
 
-    var quests: [AchievementProtocol]?
+    var quests: [AchievementProtocol] {
+        get {
+            return realmQuests.map({ (achievement) -> RealmAchievement in
+                return achievement
+            })
+        }
+        set {
+            realmQuests.removeAll()
+            newValue.forEach { (achievement) in
+                if let realmAchievement = achievement as? RealmAchievement {
+                    realmQuests.append(realmAchievement)
+                } else {
+                    realmQuests.append(RealmAchievement(userID: userID, protocolObject: achievement))
+                }
+            }
+        }
+    }
+    var realmQuests = List<RealmAchievement>()
+    var challenges: [AchievementProtocol] {
+        get {
+            return realmChallenges.map({ (achievement) -> RealmAchievement in
+                return achievement
+            })
+        }
+        set {
+            realmChallenges.removeAll()
+            newValue.forEach { (achievement) in
+                if let realmAchievement = achievement as? RealmAchievement {
+                    realmChallenges.append(realmAchievement)
+                } else {
+                    realmChallenges.append(RealmAchievement(userID: userID, protocolObject: achievement))
+                }
+            }
+        }
+    }
+    var realmChallenges = List<RealmAchievement>()
     var streak: Int = 0
     var createdTask: Bool = false
     var completedTask: Bool = false
@@ -42,5 +77,6 @@ class RealmUserAchievements: Object, UserAchievementsProtocol {
         purchasedEquipment = protocolObject.purchasedEquipment
         streak = protocolObject.streak
         quests = protocolObject.quests
+        challenges = protocolObject.challenges
     }
 }

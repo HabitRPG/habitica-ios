@@ -46,12 +46,14 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
         
         if let animalItem = item(at: indexPath), let overviewCell = cell as? StableOverviewCell {
             var ownsItem = false
-            if true {
-                if organizeByColor {
+            if animalItem.type != "special" {
+                if organizeByColor || animalItem.type == "wacky"{
                     ownsItem = ownedItems["\(animalItem.color)-hatchingPotions"] != nil
                 } else {
                     ownsItem = ownedItems["\(animalItem.animal)-eggs"] != nil
                 }
+            } else {
+                ownsItem = true
             }
             overviewCell.configure(item: animalItem, ownsItem: ownsItem)
         }

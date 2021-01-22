@@ -13,16 +13,16 @@ PODS:
   - Down (0.9.4)
   - DynamicBlurView (3.0.1)
   - Eureka (5.3.2)
-  - FBSDKCoreKit (8.2.0):
-    - FBSDKCoreKit/Basics (= 8.2.0)
-    - FBSDKCoreKit/Core (= 8.2.0)
-  - FBSDKCoreKit/Basics (8.2.0)
-  - FBSDKCoreKit/Core (8.2.0):
+  - FBSDKCoreKit (9.0.0):
+    - FBSDKCoreKit/Basics (= 9.0.0)
+    - FBSDKCoreKit/Core (= 9.0.0)
+  - FBSDKCoreKit/Basics (9.0.0)
+  - FBSDKCoreKit/Core (9.0.0):
     - FBSDKCoreKit/Basics
-  - FBSDKLoginKit (8.2.0):
-    - FBSDKLoginKit/Login (= 8.2.0)
-  - FBSDKLoginKit/Login (8.2.0):
-    - FBSDKCoreKit (~> 8.2.0)
+  - FBSDKLoginKit (9.0.0):
+    - FBSDKLoginKit/Login (= 9.0.0)
+  - FBSDKLoginKit/Login (9.0.0):
+    - FBSDKCoreKit (~> 9.0.0)
   - Firebase/Core (6.34.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.9.0)
@@ -320,8 +320,8 @@ SPEC CHECKSUMS:
   Down: 276f2c3eeeaf30345873bdad25f44b2640fcfa3a
   DynamicBlurView: b1df5415f9bd31897549e5d7077e5ec120a4d636
   Eureka: 1c2b8b5892bfb0e972d0fe05f8c09fd89f8625ec
-  FBSDKCoreKit: 4afd6ff53d8133a433dbcda44451c9498f8c6ce4
-  FBSDKLoginKit: 7181765f2524d7ebf82d9629066c8e6caafc99d0
+  FBSDKCoreKit: ac6cc500b8e104bb9a4dd20b1527b5d199123c2e
+  FBSDKLoginKit: e9b6542fdee322333502ab497f628b011dce7d78
   Firebase: c23a36d9e4cdf7877dfcba8dd0c58add66358999
   FirebaseABTesting: 8a9d8df3acc2b43f4a22014ddf9f601bca6af699
   FirebaseAnalytics: 3bb096873ee0d7fa4b6c70f5e9166b6da413cc7f
@@ -366,6 +366,6 @@ SPEC CHECKSUMS:
   VTAcknowledgementsViewController: 5bb83eaa344bff2af32291162b15778c080262fe
   XLForm: eb04ea4104f26250b70a72a7fa2eed3748dca5cd
 
-PODFILE CHECKSUM: 32866a4d341d9ea8bb3cab3d308a9e0603d10794
+PODFILE CHECKSUM: 78cb3f3c871ec82c125124d5f2e369fdcfc2949a
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.10.1

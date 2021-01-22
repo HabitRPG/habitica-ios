@@ -1133,6 +1133,8 @@ public enum L10n {
   public enum Achievements {
     /// Basic Achievements
     public static var basic: String { return L10n.tr("Mainstrings", "achievements.basic") }
+    /// Challenges won
+    public static var challenges: String { return L10n.tr("Mainstrings", "achievements.challenges") }
     /// Onboarding Achievements
     public static var onboarding: String { return L10n.tr("Mainstrings", "achievements.onboarding") }
     /// Quests completed

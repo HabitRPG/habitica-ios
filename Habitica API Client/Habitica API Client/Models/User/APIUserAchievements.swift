@@ -13,7 +13,8 @@ class APIUserAchievements: UserAchievementsProtocol, Decodable {
     
     var isValid: Bool = true
     
-    var quests: [AchievementProtocol]?
+    var quests: [AchievementProtocol]
+    var challenges: [AchievementProtocol]
     var streak: Int = 0
     var createdTask: Bool = false
     var completedTask: Bool = false
@@ -23,6 +24,7 @@ class APIUserAchievements: UserAchievementsProtocol, Decodable {
     
     enum CodingKeys: String, CodingKey {
         case quests
+        case challenges
         case streak
         case createdTask
         case completedTask
@@ -39,15 +41,25 @@ class APIUserAchievements: UserAchievementsProtocol, Decodable {
         fedPet = (try? values.decode(Bool.self, forKey: .fedPet)) ?? false
         purchasedEquipment = (try? values.decode(Bool.self, forKey: .purchasedEquipment)) ?? false
         streak = (try? values.decode(Int.self, forKey: .streak)) ?? 0
-        let userQuests = try? values.decode([String: Int].self, forKey: .quests)
         quests = []
+        challenges = []
+        let userQuests = try? values.decode([String: Int].self, forKey: .quests)
         userQuests?.forEach({ (key, count) in
             let achievement = APIAchievement()
             achievement.key = key
             achievement.earned = true
             achievement.optionalCount = count
             achievement.category = "quests"
-            quests?.append(achievement)
+            quests.append(achievement)
+        })
+        let userChallenges = try? values.decode([String].self, forKey: .challenges)
+        userChallenges?.forEach({ key in
+            let achievement = APIAchievement()
+            achievement.key = key
+            achievement.title = key
+            achievement.earned = true
+            achievement.category = "challenges"
+            challenges.append(achievement)
         })
     }
 }

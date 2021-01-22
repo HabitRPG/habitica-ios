@@ -333,6 +333,7 @@
 				290B625A207B8A09007287C4 /* AuthenticationProtocol.swift */,
 				290B625C207B945A007287C4 /* AuthenticationTimestampsProtocol.swift */,
 				292F967B20722E5800804151 /* AvatarProtocol.swift */,
+				2927024F24E3060600BCAA77 /* BackerProtocol.swift */,
 				2902797620580E87006DACB9 /* BaseStatsProtocol.swift */,
 				2902797420580E3E006DACB9 /* BuffProtocol.swift */,
 				29323E4220521A7900AC6D6F /* ContributorProtocol.swift */,
@@ -359,13 +360,12 @@
 				2974BD96208E0E0D00EC1A25 /* SubscriptionPlanProtocol.swift */,
 				292DEE79204E36F60086D5F7 /* TagProtocol.swift */,
 				295D42FF2097380700948E7E /* TutorialStepProtocol.swift */,
+				29C38C7E24A2321400F219A1 /* UserAchievementsProtocol.swift */,
 				29323E4E2052F68A00AC6D6F /* UserGearProtocol.swift */,
 				29323E4A2052F4CF00AC6D6F /* UserItemsProtocol.swift */,
 				29DBFF0A20D15A4A00DF9CF2 /* UserNewMessagesProtocol.swift */,
 				291E95B020988706006EE585 /* UserPartyProtocol.swift */,
 				29323E0F20504DA600AC6D6F /* UserProtocol.swift */,
-				29C38C7E24A2321400F219A1 /* UserAchievementsProtocol.swift */,
-				2927024F24E3060600BCAA77 /* BackerProtocol.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";

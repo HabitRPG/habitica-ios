@@ -154,6 +154,23 @@ class RouterHandler: NSObject {
             viewController.userID = link?.routeParameters["userID"] as? String
             self.push(viewController)
         }
+        
+        router.register("/user/tasks/:taskType") { link in
+            let type = link?.routeParameters["taskType"] as? String ?? ""
+            switch type {
+            case "habit":
+                self.displayTab(index: 0)
+            case "daily":
+                self.displayTab(index: 1)
+            case "todo":
+                self.displayTab(index: 2)
+            case "reward":
+                self.displayTab(index: 3)
+            default:
+                return
+            }
+        }
+        
         router.register("/user/tasks/:taskType/add") { link in
             let navigationController = StoryboardScene.Tasks.taskFormViewController.instantiate()
             guard let formController = navigationController.topViewController as? TaskFormViewController else {

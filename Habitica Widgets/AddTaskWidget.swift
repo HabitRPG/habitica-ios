@@ -58,7 +58,7 @@ struct AddTaskEntry: TimelineEntry {
 struct AddTaskWidgetView : View {
     var entry: AddTaskProvider.Entry
     
-    var taskIdentifier: String {
+    var taskIdentifier: String? {
         switch entry.taskType {
         case .habit:
             return "habit"
@@ -69,14 +69,20 @@ struct AddTaskWidgetView : View {
         case .reward:
             return "reward"
         default:
-            return ""
+            return nil
         }
     }
 
     var body: some View {
         HStack(spacing: 12) {
             if (entry.widgetFamily == .systemSmall) {
-                AddView(taskType: entry.taskType ?? HRPGTaskType.todo, isSingle: true, showLabel: true).widgetURL(URL(string: "/user/tasks/\(taskIdentifier)/add"))
+                if let identifier = taskIdentifier {
+                    AddView(taskType: entry.taskType ?? HRPGTaskType.todo, isSingle: true, showLabel: true).widgetURL(URL(string: "/user/tasks/\(identifier)/add"))
+                } else {
+                    Text("Edit this widget to choose a task type.")
+                        .font(.system(size: 15, weight: .semibold))
+                        .foregroundColor(.widgetText)
+                }
             } else {
                 VStack(alignment: .center) {
                     Link(destination: URL(string: "/user/tasks/habit/add")!, label: {
@@ -87,7 +93,7 @@ struct AddTaskWidgetView : View {
                     })
                 }.padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 0))
                 VStack(alignment: .center) {
-                    Link(destination: URL(string: "/user/tasksdaily/add")!, label: {
+                    Link(destination: URL(string: "/user/tasks/daily/add")!, label: {
                         AddView(taskType: .daily, showLabel: entry.showLabels).padding(EdgeInsets(top: 0, leading: 0, bottom: 9, trailing: 0))
                     })
                     Link(destination: URL(string: "/user/tasks/reward/add")!, label: {

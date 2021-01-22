@@ -44,6 +44,7 @@ class AchievementsViewDataSource: BaseReactiveCollectionViewDataSource<Achieveme
         sections.append(ItemSection<AchievementProtocol>(title: L10n.Achievements.seasonal))
         sections.append(ItemSection<AchievementProtocol>(title: L10n.Achievements.special))
         sections.append(ItemSection<AchievementProtocol>(title: L10n.Achievements.quests))
+        sections.append(ItemSection<AchievementProtocol>(title: L10n.Achievements.challenges))
 
         disposable.add(userRepository.getAchievements().on(value: {[weak self] (achievements, _) in
             self?.sections[0].items = achievements.filter({ $0.category == "onboarding" })
@@ -51,6 +52,7 @@ class AchievementsViewDataSource: BaseReactiveCollectionViewDataSource<Achieveme
             self?.sections[2].items = achievements.filter({ $0.category == "seasonal" })
             self?.sections[3].items = achievements.filter({ $0.category == "special" })
             self?.sections[4].items = achievements.filter({ $0.category == "quests" })
+            self?.sections[5].items = achievements.filter({ $0.category == "challenges" })
         }).flatMap(.latest, {[weak self] (achievements, _) in
             return self?.inventoryReqpository.getQuests(keys: achievements.map { $0.key ?? "" }) ?? SignalProducer.empty
         }).on(value: {[weak self] (quests, changes) in
@@ -85,12 +87,8 @@ class AchievementsViewDataSource: BaseReactiveCollectionViewDataSource<Achieveme
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         if let cell = cell as? AchievementCell, let achievement = item(at: indexPath) {
-            if achievement.isQuestAchievement {
-                if let quest = quests[achievement.key ?? ""] {
-                    cell.configure(achievement: achievement, quest: quest)
-                } else {
-                    cell.configure(achievement: achievement)
-                }
+            if achievement.isQuestAchievement, let quest = quests[achievement.key ?? ""] {
+                cell.configure(achievement: achievement, quest: quest)
             } else {
                 cell.configure(achievement: achievement)
             }
