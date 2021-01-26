@@ -25,11 +25,15 @@ class MyGuildCell: UITableViewCell {
         } else {*/
             lastActivityLabel.text = nil
             labelSpacing.constant = 0
-        //}
+        // }
+        var countText = String(describing: group.memberCount).stringWithAbbreviatedNumber(maximumFractionDigits: 1)
+        if (group.memberCount > 10000) {
+            countText = String(describing: group.memberCount).stringWithAbbreviatedNumber(maximumFractionDigits: 0)
+        }
         crestImageView.image = HabiticaIcons.imageOfGuildCrest(isOwner: false,
                                                                isPublic: group.privacy == "public",
                                                                memberCount: CGFloat(group.memberCount),
-                                                               memberCountLabel: String(describing: group.memberCount).stringWithAbbreviatedNumber(roundingIncrement: 0.1))
+                                                               memberCountLabel: countText)
         
         titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
         titleLabel.backgroundColor = ThemeService.shared.theme.contentBackgroundColor

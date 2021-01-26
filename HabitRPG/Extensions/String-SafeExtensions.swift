@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
     
-    func stringWithAbbreviatedNumber(roundingIncrement: Double = 0.01) -> String {
+    func stringWithAbbreviatedNumber(maximumFractionDigits: Int = 2) -> String {
         guard var value = Double(self) else {
             return ""
         }
@@ -21,7 +21,7 @@ extension String {
         }
         
         let formatter = NumberFormatter()
-        formatter.roundingIncrement = roundingIncrement as NSNumber
+        formatter.maximumFractionDigits = maximumFractionDigits
         formatter.numberStyle = .decimal
         return "\(formatter.string(from: NSNumber(value: value)) ?? "")\(abbreviationFor(counter: counter))"
     }

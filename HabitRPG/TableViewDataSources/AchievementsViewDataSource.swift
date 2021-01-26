@@ -74,7 +74,7 @@ class AchievementsViewDataSource: BaseReactiveCollectionViewDataSource<Achieveme
             ) as? AchievementHeaderReusableView
         
         if let headerView = view {
-            let section = sections[indexPath.section]
+            let section = visibleSections[indexPath.section]
             headerView.titleLabel.text = section.title
             headerView.earnedCountLabel.number = section.items.filter({ (achievement) -> Bool in
                 return achievement.earned

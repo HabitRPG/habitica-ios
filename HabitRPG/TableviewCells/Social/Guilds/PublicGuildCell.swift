@@ -11,6 +11,7 @@ import Habitica_Models
 
 class PublicGuildCell: UITableViewCell {
     
+    @IBOutlet weak var contentBackgroundView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var joinLeaveButton: UIButton!
@@ -23,6 +24,7 @@ class PublicGuildCell: UITableViewCell {
         memberCountLabel.text = String(describing: group.memberCount).stringWithAbbreviatedNumber()
         crestIconView.image = HabiticaIcons.imageOfGuildCrestSmall(memberCount: CGFloat(group.memberCount))
         
+        contentBackgroundView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
         descriptionLabel.textColor = ThemeService.shared.theme.secondaryTextColor
         memberCountLabel.textColor = ThemeService.shared.theme.secondaryTextColor

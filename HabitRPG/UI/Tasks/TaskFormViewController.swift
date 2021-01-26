@@ -241,6 +241,18 @@ class TaskFormViewController: FormViewController, Themeable {
         } else {
             task.type = taskType.rawValue
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.create, style: .plain, target: self, action: #selector(rightButtonTapped))
+            
+            let row = form.rowBy(tag: TaskFormTags.title) as? TaskTextInputRow
+            row?.cell.textField.becomeFirstResponder()
+            
+            darkestTaskTintColor = UIColor(white: 1, alpha: 0.7)
+            if ThemeService.shared.theme.isDark {
+                lightTaskTintColor = UIColor.purple300
+                taskTintColor = UIColor.purple200
+            } else {
+                lightTaskTintColor = UIColor.purple400
+                taskTintColor = UIColor.purple300
+            }
         }
         
         tableView.backgroundColor = .clear
