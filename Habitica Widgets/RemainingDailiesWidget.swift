@@ -123,7 +123,7 @@ struct CompletedView: View {
             Spacer()
             HStack() {
                 Text(String(totalCount)).font(Font.system(size: 50, weight: .semibold)).foregroundColor(Color.dailiesWidgetPurple)
-                Image("DailiesAllCompleted").padding(.leading, 1)
+                Image("Sparkles").padding(.leading, 1)
             }
             Text("Dailies done").foregroundColor(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center).padding(.top, -14)
             GeometryReader { geometry in
@@ -135,8 +135,8 @@ struct CompletedView: View {
                     
                 }
                 .cornerRadius(4.0)
-            }.padding(.top, 8)
-            Text("All done today!").font(Font.system(size: 12)).padding(.top, 4).foregroundColor(.widgetTextSecondary)
+            }.padding(.top, 12)
+            Text("All done today!").font(Font.system(size: 12)).padding(.top, 4).padding(.bottom, 4).foregroundColor(.widgetTextSecondary)
         }.padding(18)
     }
 }

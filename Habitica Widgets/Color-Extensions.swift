@@ -22,4 +22,7 @@ extension Color {
     static let barTeal = Color(red: 59.0 / 255.0, green: 202.0 / 255.0, blue: 215.0 / 255.0)
     static let barBlue = Color(red: 80.0 / 255.0, green: 181.0 / 255.0, blue: 233.0 / 255.0)
     static let barPurple = Color(red: 146.0 / 255.0, green: 92.0 / 255.0, blue: 243.0 / 255.0)
+    static let barGray = Color(red: 52.0 / 255.0, green: 49.0 / 255.0, blue: 58.0 / 255.0)
+    
+    static let gray500 = Color(red: 225.0 / 255.0, green: 224.0 / 255.0, blue: 227.0 / 255.0)
 }

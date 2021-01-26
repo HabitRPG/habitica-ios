@@ -79,9 +79,7 @@ struct AddTaskWidgetView : View {
                 if let identifier = taskIdentifier {
                     AddView(taskType: entry.taskType ?? HRPGTaskType.todo, isSingle: true, showLabel: true).widgetURL(URL(string: "/user/tasks/\(identifier)/add"))
                 } else {
-                    Text("Edit this widget to choose a task type.")
-                        .font(.system(size: 15, weight: .semibold))
-                        .foregroundColor(.widgetText)
+                    AddView(taskType: nil, isSingle: true, showLabel: true)
                 }
             } else {
                 VStack(alignment: .center) {
@@ -107,7 +105,7 @@ struct AddTaskWidgetView : View {
 }
 
 struct AddView: View {
-    var taskType: HRPGTaskType
+    var taskType: HRPGTaskType?
     var isSingle: Bool = false
     var showLabel: Bool = false
     
@@ -123,7 +121,7 @@ struct AddView: View {
             case .reward:
                 return "AddRewardText"
             default:
-                return ""
+                return "Settings"
             }
         } else if (showLabel) {
             switch taskType {
@@ -136,7 +134,7 @@ struct AddView: View {
             case .reward:
                 return "AddRewardSmall"
             default:
-                return ""
+                return "Settings"
             }
         } else {
             switch taskType {
@@ -149,7 +147,7 @@ struct AddView: View {
             case .reward:
                 return "AddReward"
             default:
-                return ""
+                return "Settings"
             }
         }
     }
@@ -161,7 +159,7 @@ struct AddView: View {
         case .daily:
             return "Daily"
         case .todo:
-            return "ToDo"
+            return "To Do"
         case .reward:
             return "Reward"
         default:
@@ -180,7 +178,7 @@ struct AddView: View {
         case .reward:
             return Color.barGreen
         default:
-            return Color.barOrange
+            return Color.barGray
         }
     }
     
@@ -188,13 +186,13 @@ struct AddView: View {
         VStack(alignment: showLabel ? .leading : .center) {
             if (showLabel) { Spacer() }
             Image(iconName)
-            if (showLabel) { Text("New \(taskName)")
-                .foregroundColor(Color(white: 0, opacity: 0.6))
-                .font(.system(size: isSingle ? 17 : 15, weight: .semibold))
+            if (showLabel) { Text(taskType == nil ? "Edit to select a task type" : "Add new\n\(taskName)")
+                .foregroundColor(taskType == nil ? Color.gray500 : Color(white: 0, opacity: 0.6))
+                .font(.system(size: isSingle ? (taskType == nil ? 17 : 22) : 15, weight: .semibold))
                 .padding(.top, isSingle ? -4 : -6)
             }
         }
-        .padding(EdgeInsets(top: 0, leading: showLabel ? (isSingle ? 20 : 14) : 0, bottom: showLabel ? (isSingle ? 34 : 10) : 0, trailing: 0))
+        .padding(EdgeInsets(top: 0, leading: showLabel ? (isSingle ? 20 : 14) : 0, bottom: showLabel ? (isSingle ? 16 : 10) : 0, trailing: showLabel ? (isSingle ? 20 : 14) : 0))
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: showLabel ? .leading : .center)
         .background(taskColor)
         .cornerRadius(16)
