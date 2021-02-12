@@ -434,7 +434,9 @@ class HabiticaAlertController: UIViewController, Themeable {
         }
         if !alertQueue.isEmpty {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                alertQueue[0].show()
+                if alertQueue[0].presentingViewController == nil {
+                    alertQueue[0].show()
+                }
             }
         }
     }

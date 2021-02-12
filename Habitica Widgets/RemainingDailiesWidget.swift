@@ -74,7 +74,7 @@ struct DailiesCountWidgetView : View {
                 CountView(completedCount: entry.completedCount, totalCount: entry.totalCount, displayCount: displayCount, displayRemaining: entry.displayRemaining)
             }
         }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
-                .padding(EdgeInsets(top: 24, leading: 0, bottom: 20, trailing: 0))
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 17, trailing: 0))
                 .background(Color.widgetBackground)
         .widgetURL(URL(string: "/user/tasks/daily"))
     }
@@ -97,7 +97,7 @@ struct CountView: View {
         VStack(alignment: .leading, spacing: 8) {
             Spacer()
             Text(String(displayCount)).font(Font.system(size: 50, weight: .semibold)).foregroundColor(Color.dailiesWidgetPurple)
-            Text(displayRemaining ? "Dailies left" : "Dailies done").foregroundColor(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center).padding(.top, -14)
+            Text(displayRemaining ? "Dailies left" : "Dailies done").foregroundColor(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center).padding(.top, -12)
             GeometryReader { geometry in
                 let width = geometry.size.width
                 ZStack(alignment: .leading) {
@@ -110,9 +110,9 @@ struct CountView: View {
                     
                 }
                 .cornerRadius(4.0)
-            }.padding(.top, 8)
+            }.padding(.top, 12)
             Text(displayRemaining ? "\(completedCount) done" : "\(totalCount - completedCount) left to do").font(Font.system(size: 12)).padding(.top, 4).foregroundColor(.widgetTextSecondary)
-        }.padding(18)
+        }.padding(17)
     }
 }
 
@@ -125,7 +125,7 @@ struct CompletedView: View {
                 Text(String(totalCount)).font(Font.system(size: 50, weight: .semibold)).foregroundColor(Color.dailiesWidgetPurple)
                 Image("Sparkles").padding(.leading, 1)
             }
-            Text("Dailies done").foregroundColor(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center).padding(.top, -14)
+            Text("Dailies done").foregroundColor(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center).padding(.top, -12)
             GeometryReader { geometry in
                 let width = geometry.size.width
                 ZStack(alignment: .leading) {
@@ -136,14 +136,15 @@ struct CompletedView: View {
                 }
                 .cornerRadius(4.0)
             }.padding(.top, 12)
-            Text("All done today!").font(Font.system(size: 12)).padding(.top, 4).padding(.bottom, 4).foregroundColor(.widgetTextSecondary)
-        }.padding(18)
+            Text("All done today!").font(Font.system(size: 12)).padding(.top, 4).foregroundColor(.widgetTextSecondary)
+        }.padding(17)
     }
 }
 
 struct StartDayView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 12) {
+            Spacer()
             Image("StartDayIcon")
             Text("Start a new day").foregroundColor(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center)
         }

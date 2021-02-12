@@ -814,11 +814,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="c0I-zN-kPF">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="19K-lZ-xxi">
-                            <connections>
-                                <action selector="createGuildAction:" destination="ub7-zx-k6a" id="ZWm-W3-rPw"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="search" id="7eG-iE-JlR">
+                                <connections>
+                                    <action selector="searchButtonTapped:" destination="ub7-zx-k6a" id="hYV-lv-nAq"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="19K-lZ-xxi">
+                                <connections>
+                                    <action selector="createGuildAction:" destination="ub7-zx-k6a" id="ZWm-W3-rPw"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sRP-Qk-aIK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1422,11 +1429,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Challenges" id="OHs-Q2-g2k">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="1Xp-IK-G29">
-                            <connections>
-                                <action selector="addChallengeAction:" destination="BE2-xn-Wwl" id="XBe-Cm-M1l"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="search" id="Ylq-np-YlR">
+                                <connections>
+                                    <action selector="searchButtonTapped:" destination="BE2-xn-Wwl" id="ldn-73-Uw5"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="1Xp-IK-G29">
+                                <connections>
+                                    <action selector="addChallengeAction:" destination="BE2-xn-Wwl" id="XBe-Cm-M1l"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <segue destination="LJL-4h-PRX" kind="show" identifier="challengeDetailsSegue" id="XbT-AM-M1f"/>

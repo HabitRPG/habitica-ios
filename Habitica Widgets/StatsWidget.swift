@@ -62,13 +62,24 @@ struct UserEntry: TimelineEntry {
 
 struct StatsWidgetView : View {
     var entry: Provider.Entry
+    
+    var padding: EdgeInsets {
+        if entry.widgetFamily == .systemSmall {
+            return EdgeInsets(top: 33, leading: 14, bottom: 33, trailing: 20)
+        } else {
+            return EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
+        }
+    }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            ValueBar(title: entry.widgetFamily == .systemSmall ? "HP" : "Health", value: entry.health, maxValue: entry.maxHealth, color: Color.barRed, iconName: "Heart", compact: entry.widgetFamily == .systemSmall)
-            ValueBar(title: entry.widgetFamily == .systemSmall ? "XP" : "Experience", value: entry.experience, maxValue: entry.maxExperience, color: Color.barYellow, iconName: "Experience", compact: entry.widgetFamily == .systemSmall)
-            ValueBar(title: entry.widgetFamily == .systemSmall ? "MP" : "Mana", value: entry.mana, maxValue: entry.maxMana, color: Color.barBlue, iconName: "Mana", compact: entry.widgetFamily == .systemSmall)
+        VStack(alignment: .leading, spacing: 0) {
+            ValueBar(title: "Health", value: entry.health, maxValue: entry.maxHealth, color: Color.barRed, iconName: "Heart", showLabels: entry.widgetFamily != .systemSmall)
+            Spacer()
+            ValueBar(title: "Experience", value: entry.experience, maxValue: entry.maxExperience, color: Color.barYellow, iconName: "Experience", showLabels: entry.widgetFamily != .systemSmall)
+            Spacer()
+            ValueBar(title: "Mana", value: entry.mana, maxValue: entry.maxMana, color: Color.barBlue, iconName: "Mana", showLabels: entry.widgetFamily != .systemSmall)
             if entry.widgetFamily != .systemSmall {
+                Spacer()
                 HStack {
                     Text("Level \(entry.level)").font(.footnote).foregroundColor(Color.widgetText)
                     Spacer()
@@ -80,7 +91,7 @@ struct StatsWidgetView : View {
                 }
             }
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-                    .padding()
+        .padding(padding)
         .background(Color.widgetBackground)
             }
 }
@@ -91,23 +102,31 @@ struct ValueBar: View {
     var maxValue: Float
     var color: Color
     var iconName: String
-    var compact = false
+    var showLabels = false
+    
+    var thickness: CGFloat {
+        if showLabels {
+            return 8
+        } else {
+            return 10
+        }
+    }
+    
     var body: some View {
-        HStack(alignment: .top) {
+        HStack(alignment: showLabels ? .top : .center) {
             Image(iconName)
-            VStack(alignment: .leading, spacing: 0, content: {
+            VStack(alignment: .center, spacing: 0, content: {
                 GeometryReader { metrics in
                     ZStack(alignment: .leading, content: {
-                        Rectangle().fill(Color.progressBackground).frame(width: metrics.size.width, height: 8, alignment: .leading).cornerRadius(4)
-                        Rectangle().fill(color).frame(width: metrics.size.width * CGFloat(value / maxValue), height: 8, alignment: .leading).cornerRadius(4)
+                        Rectangle().fill(Color.progressBackground).frame(width: metrics.size.width, height: thickness, alignment: .leading).cornerRadius(4)
+                        Rectangle().fill(color).frame(width: metrics.size.width * CGFloat(value / maxValue), height: thickness, alignment: .leading).cornerRadius(4)
                     })
-                }
-                HStack {
+                }.frame(width: .infinity, height: thickness, alignment: .center)
+                if showLabels { HStack {
                     Text(title).font(.caption).foregroundColor(Color.widgetText)
                     Spacer()
                     Text("\(Int(value))/\(Int(maxValue))").font(.caption).foregroundColor(Color.widgetText)
-                }
-                if compact { Spacer() }
+                }.padding(.top, 2) }
             })
         }
     }

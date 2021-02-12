@@ -223,6 +223,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     }
     
     func updateBuyButton() {
+        if reward?.isValid == false {
+            return
+        }
         var isLocked = itemIsLocked()
         if let reward = self.reward {
             let totalValue = Int(reward.value) * purchaseQuantity

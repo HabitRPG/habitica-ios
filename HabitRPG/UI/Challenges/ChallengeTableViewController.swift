@@ -22,7 +22,8 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     private let (lifetime, token) = Lifetime.make()
     private var disposable: CompositeDisposable = CompositeDisposable()
     private var filterButton = UIButton()
-    
+    var searchBar = UISearchBar()
+
     @objc var showOnlyUserChallenges = true
 
     var displayedAlert: ChallengeDetailAlert?
@@ -37,16 +38,14 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         
         tableView.register(UINib(nibName: "ChallengeTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         
-        let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
-        searchbar.placeholder = L10n.search
-        searchbar.delegate = self
-        
-        self.tableView.tableHeaderView = searchbar
-        
+        searchBar.placeholder = L10n.search
+        searchBar.delegate = self
+                
         filterButton.setImage(HabiticaIcons.imageOfFilterIcon().withRenderingMode(.alwaysTemplate), for: .normal)
         filterButton.addTarget(self, action: #selector(filterTapped(_:)), for: .touchUpInside)
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addChallengeAction))
-        navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: filterButton), addButton]
+        let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonTapped(_:)))
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: filterButton), searchButton, addButton]
 
         self.segmentedFilterControl.addTarget(self, action: #selector(ChallengeTableViewController.switchFilter(_:)), for: .valueChanged)
         segmentedWrapper.addSubview(self.segmentedFilterControl)
@@ -71,6 +70,12 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
+        if theme.isDark {
+            searchBar.barStyle = .blackTranslucent
+        } else {
+            searchBar.barStyle = .default
+        }
+        searchBar.backgroundColor = theme.contentBackgroundColor
         navigationItem.rightBarButtonItem?.tintColor = theme.tintColor
     }
 
@@ -144,12 +149,39 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
             }
         }
     }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.dataSource.searchText = searchText
         dataSource.updatePredicate()
     }
 
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
+        
+        dataSource.searchText = nil
+        UIView.animate(withDuration: 0.3, animations: {
+            self.searchBar.alpha = 0
+        }) { _ in
+            self.searchBar.removeFromSuperview()
+        }
+        tableView.reloadData()
+    }
+    
     @objc
     func filterTapped(_ sender: UIButton!) {
         let viewController = ChallengeFilterAlert()
@@ -182,5 +214,15 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         }
         alert.addCloseAction()
         alert.show()
+    }
+    
+    @IBAction func searchButtonTapped(_ sender: Any) {
+        navigationController?.navigationBar.addSubview(searchBar)
+        searchBar.frame = CGRect(x: 12, y: 0, width: tableView.bounds.size.width - 24, height: navigationController?.navigationBar.frame.size.height ?? 48)
+        searchBar.becomeFirstResponder()
+        searchBar.alpha = 0
+        UIView.animate(withDuration: 0.3) {
+            self.searchBar.alpha = 1
+        }
     }
 }
