@@ -51,26 +51,8 @@
     }
     [tutorialStepView displayOnView:self.parentViewController.parentViewController.view animated:YES];
 
-    NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
-    [eventProperties setValue:@"tutorial" forKey:@"eventAction"];
-    [eventProperties setValue:@"behaviour" forKey:@"eventCategory"];
-    [eventProperties setValue:@"event" forKey:@"event"];
-    [eventProperties setValue:[identifier stringByAppendingString:@"-iOS"]
-                       forKey:@"eventLabel"];
-    [eventProperties setValue:identifier forKey:@"eventValue"];
-    [eventProperties setValue:@NO forKey:@"complete"];
-
     tutorialStepView.dismissAction = ^() {
         self.activeTutorialView = nil;
-        
-        NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
-        [eventProperties setValue:@"tutorial" forKey:@"eventAction"];
-        [eventProperties setValue:@"behaviour" forKey:@"eventCategory"];
-        [eventProperties setValue:@"event" forKey:@"event"];
-        [eventProperties setValue:[identifier stringByAppendingString:@"-iOS"]
-                           forKey:@"eventLabel"];
-        [eventProperties setValue:identifier forKey:@"eventValue"];
-        [eventProperties setValue:@YES forKey:@"complete"];
         [UserManager.shared markTutorialAsSeenWithType:type key:identifier];
     };
 }

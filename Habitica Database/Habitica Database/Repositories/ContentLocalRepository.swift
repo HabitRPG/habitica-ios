@@ -74,6 +74,12 @@ public class ContentLocalRepository: BaseLocalRepository {
         save(object: RealmWorldState(id: "habitica", state: worldState))
     }
     
+    public func getWorldState() -> SignalProducer<WorldStateProtocol, ReactiveSwiftRealmError> {
+        return RealmWorldState.findBy(key: "habitica").skipNil().map({ (entry) -> WorldStateProtocol in
+            return entry
+        })
+    }
+    
     public func getFAQEntries(search searchText: String? = nil) -> SignalProducer<ReactiveResults<[FAQEntryProtocol]>, ReactiveSwiftRealmError> {
         var producer: SignalProducer<Results<RealmFAQEntry>, ReactiveSwiftRealmError>?
         if let text = searchText, !text.isEmpty {

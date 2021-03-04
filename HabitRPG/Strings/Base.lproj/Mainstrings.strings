@@ -318,6 +318,7 @@
 "settings.push_notifications.mention_unjoined_guild" = "@Mentions in not joined Guilds";
 "settings.add_email_and_password" = "Add Email and Password authentication";
 "settings.added_local_auth" = "Successfully added email and password";
+"settings.launch_screen" = "Launch screen";
 "theme.default_theme" = "Default";
 "theme.blue" = "Blue";
 "theme.teal" = "Teal";
@@ -1049,3 +1050,4 @@
 "unlocks_selecting_class_prompt" = "Now that you reached level 10, you can choose a class!";
 "pet_accessibility_label_raised" = "%@, Raised %d%%";
 "pet_accessibility_label_mount_owned" = "%@, Mount Owned";
+

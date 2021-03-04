@@ -49,7 +49,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         }
         hasCompletionHandler = true
         
-        //Workaround for SwiftyStoreKit.completeTransactions not correctly returning consumable IAPs
+        // Workaround for SwiftyStoreKit.completeTransactions not correctly returning consumable IAPs
         SKPaymentQueue.default().add(self)
         SwiftyStoreKit.completeTransactions(atomically: false) { _ in
         }
@@ -162,7 +162,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     }
     
     func activatePurchase(_ identifier: String, receipt: Data, completion: @escaping (Bool) -> Void) {
-        var recipientID: String? = nil
+        var recipientID: String?
         if let id = pendingGifts[identifier] {
             recipientID = id
         }
@@ -180,7 +180,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     
     func activateNoRenewSubscription(_ identifier: String, receipt: Data, recipientID: String?, completion: @escaping (Bool) -> Void) {
         pendingGifts[identifier] = recipientID
-        if (recipientID == nil) {
+        if recipientID == nil {
             completion(false)
             return
         }

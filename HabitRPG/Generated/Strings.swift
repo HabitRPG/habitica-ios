@@ -1780,6 +1780,8 @@ public enum L10n {
     public static var fixValuesDescription: String { return L10n.tr("Mainstrings", "settings.fix_values_description") }
     /// Language
     public static var language: String { return L10n.tr("Mainstrings", "settings.language") }
+    /// Launch screen
+    public static var launchScreen: String { return L10n.tr("Mainstrings", "settings.launch_screen") }
     /// Local
     public static var local: String { return L10n.tr("Mainstrings", "settings.local") }
     /// Log Out

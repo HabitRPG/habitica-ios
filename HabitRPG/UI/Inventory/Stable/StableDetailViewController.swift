@@ -28,7 +28,7 @@ class StableDetailViewController<DS>: BaseCollectionViewController {
         let layout = collectionViewLayout as? UICollectionViewFlowLayout
         layout?.headerReferenceSize = CGSize(width: collectionView?.bounds.size.width ?? 50, height: 60)
         super.viewDidLoad()
-        disposable.inner.add(inventoryRepository.getItems(keys: [(searchEggs ? ItemType.eggs : ItemType.hatchingPotions) : [searchKey]]).take(first: 1).on(value: {[weak self] items in
+        disposable.inner.add(inventoryRepository.getItems(keys: [(searchEggs ? ItemType.eggs : ItemType.hatchingPotions): [searchKey]]).take(first: 1).on(value: {[weak self] items in
             if self?.searchEggs == true {
                 self?.title = items.0.value.first?.text
             } else {

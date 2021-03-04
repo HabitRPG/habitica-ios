@@ -9,51 +9,49 @@
 import Foundation
 import Habitica_Models
 
-private class CurrentEvent: Decodable {
-    var event: String?
-    var promo: String?
-    var start: Date?
-    var end: Date?
+public class APIWorldStateEvent: WorldStateEventProtocol, Decodable {
+    public var eventKey: String?
+    public var promo: String?
+    public var start: Date?
+    public var end: Date?
+    public var npcImageSuffix: String?
     
     enum CodingKeys: String, CodingKey {
         case event
         case promo
         case start
         case end
+        case npcImageSuffix
     }
     
     public required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        event = try? values.decode(String.self, forKey: .event)
+        eventKey = try? values.decode(String.self, forKey: .event)
         promo = try? values.decode(String.self, forKey: .promo)
         start = try? values.decode(Date.self, forKey: .start)
         end = try? values.decode(Date.self, forKey: .end)
+        npcImageSuffix = try? values.decode(String.self, forKey: .npcImageSuffix)
     }
 }
 
 public class APIWorldState: WorldStateProtocol, Decodable {
     public var worldBoss: QuestStateProtocol?
-    public var currentEventKey: String?
-    public var currentEventPromo: String?
-    public var currentEventStartDate: Date?
-    public var currentEventEndDate: Date?
     public var npcImageSuffix: String?
+    public var currentEvent: WorldStateEventProtocol?
+    public var events: [WorldStateEventProtocol]
     
     enum CodingKeys: String, CodingKey {
         case worldBoss
         case npcImageSuffix
         case currentEvent
+        case events
     }
     
     public required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         worldBoss = try? values.decode(APIQuestState.self, forKey: .worldBoss)
         npcImageSuffix = try? values.decode(String.self, forKey: .npcImageSuffix)
-        if let event = try? values.decode(CurrentEvent.self, forKey: .currentEvent) {
-            currentEventKey = event.event
-            currentEventPromo = event.promo
-            currentEventStartDate = event.start
-            currentEventEndDate = event.end
-        }
+        currentEvent = try? values.decode(APIWorldStateEvent.self, forKey: .currentEvent)
+        events = (try? values.decode([APIWorldStateEvent].self, forKey: .events)) ?? []
     }
 }

@@ -79,6 +79,10 @@ class RouterHandler: NSObject {
             viewController.shopIdentifier = Constants.TimeTravelersShopKey
             self.push(viewController)
         }
+        router.register("/inventory/items") { _ in
+            self.displayTab(index: 4)
+            self.push(StoryboardScene.Main.itemsViewController.instantiate())
+        }
         router.register("/inventory/equipment") { _ in
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.equipmentOverviewViewController.instantiate())
@@ -86,6 +90,20 @@ class RouterHandler: NSObject {
         router.register("/inventory/stable") { _ in
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.stableViewController.instantiate())
+        }
+        router.register("/inventory/stable/pets/:petType") { link in
+            self.displayTab(index: 4)
+            self.push(StoryboardScene.Main.stableViewController.instantiate())
+            let viewController = StoryboardScene.Main.petDetailViewController.instantiate()
+            viewController.searchKey = (link?.routeParameters["petType"] as? String) ?? ""
+            self.push(viewController)
+        }
+        router.register("/inventory/stable/mounts/:mountType") { link in
+            self.displayTab(index: 4)
+            self.push(StoryboardScene.Main.stableViewController.instantiate())
+            let viewController = StoryboardScene.Main.mountDetailViewController.instantiate()
+            viewController.searchKey = (link?.routeParameters["mountType"] as? String) ?? ""
+            self.push(viewController)
         }
         router.register("/static/new-stuff") { _ in
             self.displayTab(index: 4)
@@ -158,13 +176,13 @@ class RouterHandler: NSObject {
         router.register("/user/tasks/:taskType") { link in
             let type = link?.routeParameters["taskType"] as? String ?? ""
             switch type {
-            case "habit":
+            case "habit", "habits":
                 self.displayTab(index: 0)
-            case "daily":
+            case "daily", "dailies":
                 self.displayTab(index: 1)
-            case "todo":
+            case "todo", "todos":
                 self.displayTab(index: 2)
-            case "reward":
+            case "reward", "rewards":
                 self.displayTab(index: 3)
             default:
                 return
@@ -179,6 +197,9 @@ class RouterHandler: NSObject {
             formController.isCreating = true
             formController.taskType = TaskType(rawValue: link?.routeParameters["taskType"] as? String ?? "habit") ?? TaskType.habit
             self.present(navigationController)
+        }
+        router.register("/menu") { _ in
+            self.displayTab(index: 4)
         }
     }
     

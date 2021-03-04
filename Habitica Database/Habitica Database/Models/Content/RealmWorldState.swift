@@ -25,11 +25,41 @@ class RealmWorldState: Object, WorldStateProtocol {
         }
     }
     @objc dynamic var realmWorldBoss: RealmQuestState?
-    @objc dynamic var currentEventKey: String?
-    @objc dynamic var currentEventPromo: String?
-    @objc dynamic var currentEventStartDate: Date?
-    @objc dynamic var currentEventEndDate: Date?
     @objc dynamic var npcImageSuffix: String?
+    
+    var currentEvent: WorldStateEventProtocol? {
+        get {
+            return realmCurrentEvent
+        }
+        set {
+            if let newEvent = newValue as? RealmWorldStateEvent {
+                realmCurrentEvent = newEvent
+                return
+            }
+            if let newEvent = newValue {
+                realmCurrentEvent = RealmWorldStateEvent(event: newEvent)
+            }
+        }
+    }
+    @objc dynamic var realmCurrentEvent: RealmWorldStateEvent?
+    var events: [WorldStateEventProtocol] {
+        get {
+            return realmEvents.map({ event -> WorldStateEventProtocol in
+                return event
+            })
+        }
+        set {
+            realmEvents.removeAll()
+            newValue.forEach { event in
+                if let realmEvent = event as? RealmWorldStateEvent {
+                    realmEvents.append(realmEvent)
+                } else {
+                    realmEvents.append(RealmWorldStateEvent(event: event))
+                }
+            }
+        }
+    }
+    var realmEvents = List<RealmWorldStateEvent>()
     
     override static func primaryKey() -> String {
         return "id"
@@ -39,11 +69,25 @@ class RealmWorldState: Object, WorldStateProtocol {
         self.init()
         self.id = id
         worldBoss = state.worldBoss
-        currentEventKey = state.currentEventKey
-        currentEventPromo = state.currentEventPromo
-        currentEventStartDate = state.currentEventStartDate
-        currentEventEndDate = state.currentEventEndDate
+        currentEvent = state.currentEvent
+        events = state.events
         npcImageSuffix = state.npcImageSuffix
     }
+}
+
+class RealmWorldStateEvent: Object, WorldStateEventProtocol {
+    @objc dynamic var eventKey: String?
+    @objc dynamic var start: Date?
+    @objc dynamic var end: Date?
+    @objc dynamic var promo: String?
+    @objc dynamic var npcImageSuffix: String?
     
+    convenience init(event: WorldStateEventProtocol) {
+        self.init()
+        eventKey = event.eventKey
+        start = event.start
+        end = event.end
+        promo = event.promo
+        npcImageSuffix = event.npcImageSuffix
+    }
 }

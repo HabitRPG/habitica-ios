@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public protocol GroupProtocol {
+public protocol GroupProtocol: BaseModelProtocol {
     var id: String? { get set }
     var name: String? { get set }
     var groupDescription: String? { get set }
@@ -21,6 +21,7 @@ public protocol GroupProtocol {
     var balance: Float { get set }
     var leaderOnlyChallenges: Bool { get set }
     var quest: QuestStateProtocol? { get set }
+    var categories: [GroupCategoryProtocol] { get set }
 }
 
 public extension GroupProtocol {

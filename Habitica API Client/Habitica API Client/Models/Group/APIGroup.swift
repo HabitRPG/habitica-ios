@@ -14,6 +14,8 @@ private struct LeaderObject: Decodable {
 }
 
 public class APIGroup: GroupProtocol, Codable {
+    public var isValid: Bool = true
+    
     public var id: String?
     public var name: String?
     public var groupDescription: String?
@@ -25,7 +27,8 @@ public class APIGroup: GroupProtocol, Codable {
     public var leaderID: String?
     public var leaderOnlyChallenges: Bool = false
     public var quest: QuestStateProtocol?
-    
+    public var categories: [GroupCategoryProtocol] = []
+
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case name
@@ -38,6 +41,7 @@ public class APIGroup: GroupProtocol, Codable {
         case leader
         case leaderOnlyChallenges = "leaderOnly"
         case quest
+        case categories
     }
     
     public required init(from decoder: Decoder) throws {
@@ -59,6 +63,7 @@ public class APIGroup: GroupProtocol, Codable {
             return key == "challenges"
         })?.value == true) ?? false
         quest = try? values.decode(APIQuestState.self, forKey: .quest)
+        categories = (try? values.decode([APIGroupCategory].self, forKey: .categories)) ?? []
     }
     
     public init(_ group: GroupProtocol) {
@@ -70,6 +75,7 @@ public class APIGroup: GroupProtocol, Codable {
         type = group.type
         leaderID = group.leaderID
         leaderOnlyChallenges = group.leaderOnlyChallenges
+        categories = group.categories
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -80,6 +86,7 @@ public class APIGroup: GroupProtocol, Codable {
         try? container.encode(summary, forKey: .summary)
         try? container.encode(privacy, forKey: .privacy)
         try? container.encode(type, forKey: .type)
+        //try? container.encode(categories, forKey: .categories)
         if let leaderID = self.leaderID {
             try? container.encode(leaderID, forKey: .leader)
         }

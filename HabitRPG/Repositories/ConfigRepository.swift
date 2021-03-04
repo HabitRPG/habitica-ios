@@ -166,7 +166,10 @@ class ConfigRepository: NSObject {
 
     private static let remoteConfig = RemoteConfig.remoteConfig()
     private let userConfig = UserDefaults.standard
+    private let contentRepository = ContentRepository()
 
+    private var worldState: WorldStateProtocol?
+    
     @objc
     func fetchremoteConfig() {
         ConfigRepository.remoteConfig.fetch(withExpirationDuration: HabiticaAppDelegate.isRunningLive() ? 3600 : 0) { (_, _) in
@@ -177,6 +180,11 @@ class ConfigRepository: NSObject {
             defaults[variable.name()] = variable.defaultValue()
         }
         ConfigRepository.remoteConfig.setDefaults(defaults)
+        
+        
+            contentRepository.getWorldState().on(value: {[weak self] state in
+                self?.worldState = state
+            }).start()
     }
 
     @objc
@@ -231,16 +239,15 @@ class ConfigRepository: NSObject {
     }
     
     func activePromotion() -> HabiticaPromotion? {
-        guard let key = userConfig.string(forKey: "currentEvent") else {
-            return nil
+        var promo: HabiticaPromotion?
+        for event in worldState?.events ?? [] where event.promo != nil {
+            promo = HabiticaPromotionType.getPromoFromKey(key: event.promo ?? "", startDate: event.start, endDate: event.end)
         }
-        let startDate = userConfig.object(forKey: "currentEventStartDate") as? Date
-        let endDate = userConfig.object(forKey: "currentEventEndDate") as? Date
-        let promo = HabiticaPromotionType.getPromoFromKey(key: userConfig.string(forKey: "currentEventPromo") ?? key, startDate: startDate, endDate: endDate)
         if let promo = promo, promo.endDate > Date() {
             return promo
         } else {
             return nil
         }
+
     }
 }

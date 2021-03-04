@@ -65,8 +65,10 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         application.registerForRemoteNotifications()
         Messaging.messaging().delegate = self
         
+        let userDefaults = UserDefaults.standard
         Analytics.setUserProperty(LanguageHandler.getAppLanguage().code, forName: "app_language")
         Analytics.setUserProperty(UIApplication.shared.alternateIconName, forName: "app_icon")
+        Analytics.setUserProperty(userDefaults.string(forKey: "initialScreenURL"), forName: "launch_screen")
     }
     
     @objc
@@ -87,7 +89,10 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         let keys = HabiticaKeys()
         Amplitude.instance().initializeApiKey(keys.amplitudeApiKey)
         Amplitude.instance().setUserId(AuthenticationManager.shared.currentUserId)
-        Amplitude.instance()?.setUserProperties(["iosTimezoneOffset": -(NSTimeZone.local.secondsFromGMT() / 60)])
+        let userDefaults = UserDefaults.standard
+        Amplitude.instance()?.setUserProperties(["iosTimezoneOffset": -(NSTimeZone.local.secondsFromGMT() / 60),
+                                                 "appLaunchScreen": userDefaults.string(forKey: "initialScreenURL") ?? ""
+        ])
     }
     
     @objc
@@ -204,6 +209,16 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
             UIApplication.shared.cancelAllLocalNotifications()
             
             rescheduleDailyReminder()
+        } else {
+            guard let url = defaults.string(forKey: "initialScreenURL") else {
+                return
+            }
+            let appDelegate = UIApplication.shared.delegate as? HRPGAppDelegate
+            if let loadingViewcontroller = appDelegate?.window?.rootViewController as? LoadingViewController {
+                loadingViewcontroller.loadingFinishedAction = {
+                    RouterHandler.shared.handle(urlString: url)
+                }
+            }
         }
     }
     
@@ -417,6 +432,14 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         if #available(iOS 14.0, *) {
             WidgetCenter.shared.reloadTimelines(ofKind: "DailiesCountWidget")
             WidgetCenter.shared.reloadTimelines(ofKind: "StatsWidget")
+            
+            WidgetCenter.shared.getCurrentConfigurations { result in
+                switch result {
+                case let .success(info):
+                    Analytics.setUserProperty(String(info.count), forName: "widgetCount")
+                case let .failure(error): print(error)
+                }
+            }
         }
         #endif
     }

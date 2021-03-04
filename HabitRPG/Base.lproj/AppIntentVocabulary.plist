@@ -9,7 +9,7 @@
 			<string>INAddTasksIntent</string>
 			<key>IntentExamples</key>
 			<array>
-				<string>Add Buy Groceries to my To-Dos in Habitica</string>
+				<string>Add Buy Groceries to my To Dos in Habitica</string>
 				<string>Add Get up early to my dailies in Habitica</string>
 			</array>
 		</dict>
@@ -18,7 +18,7 @@
 			<string>INSearchForNotebookItemsIntent</string>
 			<key>IntentExamples</key>
 			<array>
-				<string>What are my To-Dos in Habitica</string>
+				<string>What are my To Dos in Habitica</string>
 			</array>
 		</dict>
 		<dict>

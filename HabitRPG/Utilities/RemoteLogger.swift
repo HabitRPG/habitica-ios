@@ -22,7 +22,7 @@ public class RemoteLogger: NSObject {
         Crashlytics.crashlytics().record(exceptionModel: exm)
     }
     
-    public func log(format: String, arguments: CVaListPointer) {
+public func log(format: String, arguments: CVaListPointer) {
         Crashlytics.crashlytics().log(format: format, arguments: arguments)
     }
     

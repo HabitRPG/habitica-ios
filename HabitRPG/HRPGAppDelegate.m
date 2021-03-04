@@ -61,11 +61,6 @@
     
     [self cleanAndRefresh:application];
     
-    UINavigationController *displayedNavigationController = [self displayTabAtIndex:4];
-
-    AuthenticationSettingsViewController *authSettingsViewcontroller = (AuthenticationSettingsViewController *)[self loadViewController:@"AuthenticationSettingsViewController" fromStoryboard:@"Settings"];
-    [displayedNavigationController pushViewController:authSettingsViewcontroller animated:YES];
-    
     return YES;
 }
 
@@ -73,8 +68,6 @@
     [self.swiftAppDelegate setupUserManager];
     [self.swiftAppDelegate setupTheme];
 }
-
-
 
 - (void)cleanAndRefresh:(UIApplication *)application {
     NSArray *scheduledNotifications =

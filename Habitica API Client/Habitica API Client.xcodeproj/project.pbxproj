@@ -220,6 +220,7 @@
 		29A9B06322817DCF0049291E /* ServerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B06022817DCE0049291E /* ServerConfiguration.swift */; };
 		29A9B06422817DCF0049291E /* StubbableNetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B06122817DCF0049291E /* StubbableNetworkCall.swift */; };
 		29A9B06522817DCF0049291E /* StubHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B06222817DCF0049291E /* StubHolder.swift */; };
+		29ACED7825DD38BD00E1263D /* APIGroupCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ACED7725DD38BD00E1263D /* APIGroupCategory.swift */; };
 		29B4788C20BEFBDC00B6123F /* ScoreChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4788B20BEFBDC00B6123F /* ScoreChecklistItem.swift */; };
 		29B478BB20C0360E00B6123F /* UpdateDayStartTimeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B478BA20C0360E00B6123F /* UpdateDayStartTimeCall.swift */; };
 		29B478C320C5330600B6123F /* APIBuyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B478C220C5330600B6123F /* APIBuyResponse.swift */; };
@@ -465,6 +466,7 @@
 		29A9B06022817DCE0049291E /* ServerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConfiguration.swift; sourceTree = "<group>"; };
 		29A9B06122817DCF0049291E /* StubbableNetworkCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubbableNetworkCall.swift; sourceTree = "<group>"; };
 		29A9B06222817DCF0049291E /* StubHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubHolder.swift; sourceTree = "<group>"; };
+		29ACED7725DD38BD00E1263D /* APIGroupCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGroupCategory.swift; sourceTree = "<group>"; };
 		29B4788B20BEFBDC00B6123F /* ScoreChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreChecklistItem.swift; sourceTree = "<group>"; };
 		29B478BA20C0360E00B6123F /* UpdateDayStartTimeCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDayStartTimeCall.swift; sourceTree = "<group>"; };
 		29B478C220C5330600B6123F /* APIBuyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBuyResponse.swift; sourceTree = "<group>"; };
@@ -630,6 +632,7 @@
 			isa = PBXGroup;
 			children = (
 				290C303F206D3DE80066AF5B /* APIGroup.swift */,
+				29ACED7725DD38BD00E1263D /* APIGroupCategory.swift */,
 				290C3041206D3EC30066AF5B /* APIChatMessage.swift */,
 				292F96732072277D00804151 /* APIChatMessageReaction.swift */,
 				292F9675207227AB00804151 /* APIUserStyle.swift */,
@@ -1146,6 +1149,7 @@
 				295E9DC820B2DF9600D58D45 /* PurchaseItemCall.swift in Sources */,
 				290B6291207E1E76007287C4 /* RetrieveMemberCall.swift in Sources */,
 				2914489E208A346700F3A6B5 /* APICustomization.swift in Sources */,
+				29ACED7825DD38BD00E1263D /* APIGroupCategory.swift in Sources */,
 				290B6263207B9707007287C4 /* APILocalAuthentication.swift in Sources */,
 				296AC81C20ADD9D500885682 /* APIInAppReward.swift in Sources */,
 				29617E0A24E1706900CF5EB4 /* UnlinkAllTasksCall.swift in Sources */,

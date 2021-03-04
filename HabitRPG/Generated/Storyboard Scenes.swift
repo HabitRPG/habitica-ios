@@ -59,11 +59,15 @@ internal enum StoryboardScene {
 
     internal static let mainTabBarController = SceneType<Habitica.MainTabBarController>(storyboard: Main.self, identifier: "MainTabBarController")
 
+    internal static let mountDetailViewController = SceneType<Habitica.MountDetailViewController>(storyboard: Main.self, identifier: "MountDetailViewController")
+
     internal static let mountsOverviewViewController = SceneType<Habitica.MountOverviewViewController>(storyboard: Main.self, identifier: "MountsOverviewViewController")
 
     internal static let newsViewController = SceneType<Habitica.NewsViewController>(storyboard: Main.self, identifier: "NewsViewController")
 
     internal static let notificationsNavigationController = SceneType<Habitica.ThemedNavigationController>(storyboard: Main.self, identifier: "NotificationsNavigationController")
+
+    internal static let petDetailViewController = SceneType<Habitica.PetDetailViewController>(storyboard: Main.self, identifier: "PetDetailViewController")
 
     internal static let petsOverviewViewController = SceneType<Habitica.PetOverviewViewController>(storyboard: Main.self, identifier: "PetsOverviewViewController")
 

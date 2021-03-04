@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 
-class RealmGroup: Object, GroupProtocol {
+class RealmGroup: Object, GroupProtocol {    
     @objc dynamic var id: String?
     @objc dynamic var name: String?
     @objc dynamic var groupDescription: String?
@@ -35,12 +35,35 @@ class RealmGroup: Object, GroupProtocol {
     }
     @objc dynamic var realmQuest: RealmQuestState?
     
+    var categories: [GroupCategoryProtocol] {
+        get {
+            return realmCategories.map({ (category) -> GroupCategoryProtocol in
+                return category
+            })
+        }
+        set {
+            realmCategories.removeAll()
+            newValue.forEach { (category) in
+                if let realmCategory = category as? RealmGroupCategory {
+                    realmCategories.append(realmCategory)
+                } else {
+                    realmCategories.append(RealmGroupCategory(category))
+                }
+            }
+        }
+    }
+    var realmCategories = List<RealmGroupCategory>()
+    
+    var isValid: Bool {
+        return !isInvalidated
+    }
+    
     override static func primaryKey() -> String {
         return "id"
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["quest"]
+        return ["quest", "categories"]
     }
     
     convenience init(_ groupProtocol: GroupProtocol) {
@@ -56,5 +79,6 @@ class RealmGroup: Object, GroupProtocol {
         leaderID = groupProtocol.leaderID
         leaderOnlyChallenges = groupProtocol.leaderOnlyChallenges
         quest = groupProtocol.quest
+        categories = groupProtocol.categories
     }
 }

@@ -75,6 +75,8 @@ target 'Habitica' do
   pod 'OHHTTPStubs/Swift'
   pod 'Prelude'
 
+  pod 'TagListView', '~> 1.0'
+
   pod 'Charts'
   
   target 'HabiticaTests' do

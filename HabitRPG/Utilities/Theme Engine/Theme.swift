@@ -96,7 +96,7 @@ extension DarkTheme {
     public var contentBackgroundColorDimmed: UIColor { return UIColor.blackPurple100.darker(by: 7) }
     public var contentBackgroundColor: UIColor { return UIColor.blackPurple50 }
     public var offsetBackgroundColor: UIColor { return UIColor.blackPurple100 }
-    public var lightlyTintedBackgroundColor: UIColor { return UIColor.gray300 }
+    public var lightlyTintedBackgroundColor: UIColor { return UIColor.gray10 }
     public var backgroundTintColor: UIColor { return UIColor.gray300 }
     public var tintColor: UIColor { return UIColor.gray500 }
     public var fixedTintColor: UIColor { return tintColor }

@@ -31,6 +31,8 @@ enum SettingsTags {
     static let server = "server"
     static let searchableUsername = "searchableUsername"
     static let appLanguage = "appLanguage"
+    static let initialAppScreen = "initialAppScreen"
+    static let initialTaskBoard = "initialTaskBoard"
 }
 
 enum Servers: String {
@@ -65,6 +67,44 @@ enum Servers: String {
         ]
     }
 }
+
+enum InitialScreens: String {
+    case habits = "/user/tasks/habit"
+    case dailies = "/user/tasks/daily"
+    case todos = "/user/tasks/todo"
+    case rewards = "/user/tasks/reward"
+    case menu = "/menu"
+    case party = "/party"
+    
+    var niceName: String {
+        switch self {
+        case .habits:
+            return L10n.Tasks.habits
+        case .dailies:
+            return L10n.Tasks.dailies
+        case .todos:
+            return L10n.Tasks.todos
+        case .rewards:
+            return L10n.Tasks.rewards
+        case .menu:
+            return L10n.menu
+        case .party:
+            return L10n.Titles.party
+        }
+    }
+    
+    static var allScreens: [InitialScreens] {
+        return [
+            .habits,
+            .dailies,
+            .todos,
+            .rewards,
+            .menu,
+            .party
+        ]
+    }
+}
+
 
 enum ThemeName: String {
     case defaultTheme
@@ -736,6 +776,28 @@ class SettingsViewController: FormViewController, Themeable {
                     if let value = row.value?.value, let newLanguage = AppLanguage(rawValue: value) {
                         self?.update(language: newLanguage)
                     }
+                })
+                row.onPresent({ (_, to) in
+                    to.selectableRowCellUpdate = { cell, _ in
+                        cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    }
+                })
+            }
+            <<< PushRow<LabeledFormValue<String>>(SettingsTags.initialAppScreen) { row in
+                row.title = L10n.Settings.launchScreen
+                row.cellUpdate { cell, _ in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                }
+                row.options = InitialScreens.allScreens.map({ screen -> LabeledFormValue<String> in
+                    return LabeledFormValue(value: screen.rawValue, label: screen.niceName)
+                })
+                
+                if let screen = InitialScreens(rawValue: UserDefaults().string(forKey: "initialScreenURL") ?? "") {
+                    row.value = LabeledFormValue(value: screen.rawValue, label: screen.niceName)
+                }
+                row.onChange({ (row) in
+                    UserDefaults().set(row.value?.value, forKey: "initialScreenURL")
                 })
                 row.onPresent({ (_, to) in
                     to.selectableRowCellUpdate = { cell, _ in

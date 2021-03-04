@@ -26,14 +26,12 @@ class ContentRepository: BaseRepository<ContentLocalRepository> {
         return RetrieveWorldStateCall().objectSignal.on(value: {[weak self] worldState in
             if let worldState = worldState {
                 self?.localRepository.save(worldState)
-                
-                let defaults = UserDefaults.standard
-                defaults.set(worldState.currentEventKey, forKey: "currentEvent")
-                defaults.set(worldState.currentEventPromo, forKey: "currentEventPromo")
-                defaults.set(worldState.currentEventStartDate, forKey: "currentEventStartDate")
-                defaults.set(worldState.currentEventEndDate, forKey: "currentEventEndDate")
             }
         })
+    }
+    
+    func getWorldState() -> SignalProducer<WorldStateProtocol, ReactiveSwiftRealmError> {
+        return localRepository.getWorldState()
     }
     
     func getFAQEntries(search searchText: String? = nil) -> SignalProducer<ReactiveResults<[FAQEntryProtocol]>, ReactiveSwiftRealmError> {
