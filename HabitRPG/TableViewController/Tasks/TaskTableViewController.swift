@@ -48,20 +48,15 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeFilter), name: NSNotification.Name(rawValue: "taskFilterChanged"), object: nil)
         didChangeFilter()
         
-        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
+        if UIDevice().userInterfaceIdiom == .pad {
             extraCellSpacing = 8
         }
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
         
-        if #available(iOS 11.0, *) {
-            tableView.dragDelegate = self
-            tableView.dropDelegate = self
-            tableView.dragInteractionEnabled = true
-        } else {
-            let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressRecognized))
-            tableView.addGestureRecognizer(longPress)
-        }
+        tableView.dragDelegate = self
+        tableView.dropDelegate = self
+        tableView.dragInteractionEnabled = true
         
         navigationItem.leftBarButtonItem?.title = L10n.filter
     }
@@ -69,9 +64,11 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         if theme.isDark {
-            searchBar.barStyle = .blackTranslucent
+            searchBar.barStyle = .black
+            searchBar.isTranslucent = true
         } else {
             searchBar.barStyle = .default
+            searchBar.isTranslucent = false
         }
         searchBar.backgroundColor = theme.contentBackgroundColor
         tableView.backgroundColor = theme.contentBackgroundColor
@@ -341,7 +338,6 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     
     // MARK: - Drop delegate
     
-    @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
         if let movedTask = movedTask, let destIndexPath = coordinator.destinationIndexPath {
             let order = movedTask.order
@@ -360,7 +356,6 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     
     // MARK: - Drag delegate
     
-    @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         movedTask = dataSource?.task(at: indexPath)
         sourceIndexPath = indexPath
@@ -377,12 +372,10 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         return [UIDragItem(itemProvider: itemProvider)]
     }
     
-    @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, canHandle session: UIDropSession) -> Bool {
         return true
     }
     
-    @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
         return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
     }

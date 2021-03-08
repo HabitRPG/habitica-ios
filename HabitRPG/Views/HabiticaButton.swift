@@ -59,8 +59,6 @@ class HabiticaButton: UIButton {
         setTitleColor(.white, for: .normal)
         setTitleColor(.white, for: .highlighted)
         setTitleColor(.white, for: .selected)
-        if #available(iOS 13.4, *) {
-            isPointerInteractionEnabled = true
-        }
+        isPointerInteractionEnabled = true
     }
 }

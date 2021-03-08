@@ -175,10 +175,8 @@ class HabiticaAlertController: UIViewController, Themeable {
     
     override func viewWillLayoutSubviews() {
         var maximumSize = view.frame.size
-        if #available(iOS 11.0, *) {
-            let guide = view.safeAreaLayoutGuide
-            maximumSize = guide.layoutFrame.size
-        }
+        let guide = view.safeAreaLayoutGuide
+        maximumSize = guide.layoutFrame.size
         maximumSize.width = min(300, maximumSize.width - 24)
         maximumSize.width -= contentViewInsets.left + contentViewInsets.right
         maximumSize.height -= contentViewInsets.top + contentViewInsets.bottom
@@ -271,9 +269,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
     
-        if #available(iOS 13.4, *) {
-            button.isPointerInteractionEnabled = true
-        }
+        button.isPointerInteractionEnabled = true
         
         button.tag = buttons.count
         if let action = handler {
@@ -375,7 +371,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     
     @objc
     func show() {
-        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+        if var topController = UIApplication.topViewController() {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }

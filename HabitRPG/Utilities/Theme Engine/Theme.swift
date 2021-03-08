@@ -142,7 +142,6 @@ class ObjcThemeWrapper: NSObject {
     
     @objc public static var buttonShadowColor: UIColor { return ThemeService.shared.theme.buttonShadowColor }
     
-    @available(iOS 12.0, *)
     @objc public static func updateUserInterfaceStyle(_ newStyle: UIUserInterfaceStyle) { ThemeService.shared.updateInterfaceStyle(newStyle: newStyle) }
     
     @objc public static func addObjcThemeable(_ themeable: ObjcThemeable) {

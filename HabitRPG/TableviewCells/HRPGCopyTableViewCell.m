@@ -25,8 +25,7 @@
 - (void)selectedCell {
     [self becomeFirstResponder];
     UIMenuController *menu = [UIMenuController sharedMenuController];
-    [menu setTargetRect:self.frame inView:self.superview];
-    [menu setMenuVisible:YES animated:YES];
+    [menu showMenuFromView:self.superview rect:self.frame];
 }
 
 - (BOOL)canBecomeFirstResponder {

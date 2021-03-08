@@ -81,7 +81,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         nextViewControllerSignal = nextViewControllerProperty.signal.skipNil()
         
         self.joinInteractor = JoinChallengeInteractor()
-        if let viewController = UIApplication.shared.keyWindow?.visibleController() {
+        if let viewController = UIApplication.topViewController() {
             self.leaveInteractor = LeaveChallengeInteractor(presentingViewController: viewController)
         }
         
@@ -106,7 +106,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         nextViewControllerSignal = nextViewControllerProperty.signal.skipNil()
         
         self.joinInteractor = JoinChallengeInteractor()
-        if let viewController = UIApplication.shared.keyWindow?.visibleController() {
+        if let viewController = UIApplication.topViewController() {
             self.leaveInteractor = LeaveChallengeInteractor(presentingViewController: viewController)
         }
         

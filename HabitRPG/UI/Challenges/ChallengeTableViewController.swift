@@ -71,9 +71,11 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         if theme.isDark {
-            searchBar.barStyle = .blackTranslucent
+            searchBar.barStyle = .black
+            searchBar.isTranslucent = true
         } else {
             searchBar.barStyle = .default
+            searchBar.isTranslucent = false
         }
         searchBar.backgroundColor = theme.contentBackgroundColor
         navigationItem.rightBarButtonItem?.tintColor = theme.tintColor

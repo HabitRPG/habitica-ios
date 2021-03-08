@@ -69,13 +69,8 @@
     
     UIBarButtonItem *gemsBarItem;
     UIBarButtonItem *goldBarItem;
-    if (@available(iOS 11, *)) {
-        gemsBarItem = [[UIBarButtonItem alloc] initWithCustomView:self.gemView];
-        goldBarItem = [[UIBarButtonItem alloc] initWithCustomView:self.goldView];
-    } else {
-        gemsBarItem = [[UIBarButtonItem alloc] initWithCustomView:[self viewContainingCenteredView:self.gemView]];
-        goldBarItem = [[UIBarButtonItem alloc] initWithCustomView:[self viewContainingCenteredView:self.goldView]];
-    }
+    gemsBarItem = [[UIBarButtonItem alloc] initWithCustomView:self.gemView];
+    goldBarItem = [[UIBarButtonItem alloc] initWithCustomView:self.goldView];
     
     self.navigationItem.rightBarButtonItems = @[goldBarItem, gemsBarItem];
 }

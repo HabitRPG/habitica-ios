@@ -99,7 +99,7 @@ class FaintViewController: UIViewController {
     
     func show() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            if var topController = UIApplication.topViewController() {
                 while let presentedViewController = topController.presentedViewController {
                     topController = presentedViewController
                 }

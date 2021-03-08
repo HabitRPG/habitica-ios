@@ -232,13 +232,13 @@ class RouterHandler: NSObject {
     }
     
     private func displayTab(index: Int) {
-        if let presentedController = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController as? MainTabBarController {
+        if let presentedController = UIApplication.shared.findKeyWindow()?.rootViewController?.presentedViewController as? MainTabBarController {
             presentedController.selectedIndex = index
         }
     }
     
     private var tabbarController: MainTabBarController? {
-        var viewController = UIApplication.shared.keyWindow?.rootViewController
+        var viewController = UIApplication.shared.findKeyWindow()?.rootViewController
         while viewController != nil && viewController as? MainTabBarController == nil {
             viewController = viewController?.presentedViewController
         }

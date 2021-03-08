@@ -49,7 +49,7 @@ class PartyDetailViewController: GroupDetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 11.0, *), let groupNameLabel = self.groupNameLabel {
+        if let groupNameLabel = self.groupNameLabel {
             mainStackView.setCustomSpacing(16, after: groupNameLabel)
         }
         

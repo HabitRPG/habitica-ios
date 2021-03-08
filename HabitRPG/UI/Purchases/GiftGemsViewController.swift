@@ -103,10 +103,8 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
             self?.balanceAmountView.maxValue = user.gemCount
             }).start())
         
-        if #available(iOS 13.0, *) {
-            navigationController?.navigationBar.standardAppearance.shadowColor = .clear
-            navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
-        }
+        navigationController?.navigationBar.standardAppearance.shadowColor = .clear
+        navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
         
         activePromo = configRepository.activePromotion()
     }
@@ -128,11 +126,7 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
         view.backgroundColor = theme.contentBackgroundColor
         giftingExplanationLabel.textColor = theme.secondaryTextColor
         giftingDisclaimerLabel.textColor = theme.quadTextColor
-        if #available(iOS 13.0, *) {
-            navigationController?.navigationBar.standardAppearance.backgroundColor = theme.contentBackgroundColor
-        } else {
-            navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
-        }
+        navigationController?.navigationBar.standardAppearance.backgroundColor = theme.contentBackgroundColor
         collectionView.backgroundColor = theme.contentBackgroundColor
         gemBalanceCountView.backgroundColor = theme.contentBackgroundColor
         balanceAmountView.backgroundColor = theme.contentBackgroundColor

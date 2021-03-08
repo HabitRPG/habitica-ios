@@ -41,9 +41,7 @@ public class TaskDifficultyCell: Cell<Float>, CellType {
         if row.isDisabled { return }
         row.value = 0.1
         row.updateCell()
-        if #available(iOS 10, *) {
-            UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        }
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
         accessibilityValue = L10n.Tasks.Form.Accessibility.taskDifficulty(L10n.Tasks.Form.trivial)
     }
     
@@ -52,9 +50,7 @@ public class TaskDifficultyCell: Cell<Float>, CellType {
         if row.isDisabled { return }
         row.value = 1
         row.updateCell()
-        if #available(iOS 10, *) {
-            UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        }
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
         accessibilityValue = L10n.Tasks.Form.Accessibility.taskDifficulty(L10n.Tasks.Form.easy)
     }
     
@@ -63,9 +59,7 @@ public class TaskDifficultyCell: Cell<Float>, CellType {
         if row.isDisabled { return }
         row.value = 1.5
         row.updateCell()
-        if #available(iOS 10, *) {
-            UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        }
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
         accessibilityValue = L10n.Tasks.Form.Accessibility.taskDifficulty(L10n.Tasks.Form.medium)
     }
     
@@ -74,9 +68,7 @@ public class TaskDifficultyCell: Cell<Float>, CellType {
         if row.isDisabled { return }
         row.value = 2
         row.updateCell()
-        if #available(iOS 10, *) {
-            UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        }
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
         accessibilityValue = L10n.Tasks.Form.Accessibility.taskDifficulty(L10n.Tasks.Form.hard)
     }
 

@@ -76,7 +76,7 @@ class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegat
     
     override func viewWillLayoutSubviews() {
         if traitCollection.isIPad {
-            if UIApplication.shared.statusBarOrientation.isLandscape {
+            if view.window?.windowScene?.isLandscape == true {
                 stackView.axis = .horizontal
             } else {
                 stackView.axis = .vertical

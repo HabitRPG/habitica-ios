@@ -444,11 +444,7 @@ class MainMenuViewController: BaseTableViewController {
         let iconView = UIImageView()
         iconView.tintColor = ThemeService.shared.theme.primaryTextColor
         view.addSubview(iconView)
-        if #available(iOS 13.0, *) {
-            iconView.pin.start(4).size(16)
-        } else {
-            iconView.pin.start(8).size(16)
-        }
+        iconView.pin.start(4).size(16)
         label.pin.after(of: iconView).top(14).marginStart(6).sizeToFit(.heightFlexible)
         view.pin.width(view.frame.size.width).height(label.frame.size.height + 14)
         iconView.pin.vCenter(to: label.edge.vCenter)

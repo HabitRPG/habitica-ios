@@ -211,21 +211,14 @@ enum ThemeMode: String {
         case .light:
             return L10n.Theme.alwaysLight
         case .dark:
-            if #available(iOS 13.0, *) { return L10n.Theme.alwaysDark } else { return L10n.Theme.dark }
+            return L10n.Theme.alwaysDark
         case .system:
-            if #available(iOS 13.0, *) { return L10n.Theme.followSystem } else { return L10n.Theme.light }
-        default:
-            return ""
+            return L10n.Theme.followSystem
         }
     }
     
     static var allModes: [ThemeMode] {
-        if #available(iOS 13.0, *) {
-            return [.system, .light, .dark]
-        } else {
-            // iOS 12 and below should use "system" as default, so that when upgrading to iOS 13 it adopt the automatic switching
-            return [.system, .dark]
-        }
+        return [.system, .light, .dark]
     }
 }
 
@@ -403,11 +396,9 @@ class SettingsViewController: FormViewController, Themeable {
     private var isSettingUserData = false
     
     override func viewDidLoad() {
-        if #available(iOS 13.0, *) {
-            tableView = UITableView(frame: view.bounds, style: .insetGrouped)
-            tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            tableView.cellLayoutMarginsFollowReadableWidth = false
-        }
+        tableView = UITableView(frame: view.bounds, style: .insetGrouped)
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        tableView.cellLayoutMarginsFollowReadableWidth = false
         super.viewDidLoad()
         navigationItem.title = L10n.Titles.settings
         setupForm()
@@ -887,41 +878,39 @@ class SettingsViewController: FormViewController, Themeable {
             })
         }
         form +++ section
-        if #available(iOS 10.3, *) {
-            section <<< PushRow<String>(SettingsTags.appIcon) { row in
-                row.title = L10n.Settings.appIcon
-                row.cellUpdate { cell, _ in
+        section <<< PushRow<String>(SettingsTags.appIcon) { row in
+            row.title = L10n.Settings.appIcon
+            row.cellUpdate { cell, _ in
+                cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                cell.tintColor = ThemeService.shared.theme.tintColor
+            }
+            row.options = AppIconName.allNames.map({ (name) -> String in
+                return name.rawValue
+            })
+            row.value = UIApplication.shared.alternateIconName ?? AppIconName.defaultTheme.rawValue
+            row.onPresent({ (_, to) in
+                to.selectableRowCellUpdate = { cell, row in
+                    let filename = AppIconName(rawValue: row.title ?? "")?.fileName ?? "Purple"
+                    cell.height = { 68 }
+                    cell.imageView?.cornerRadius = 12
+                    cell.imageView?.contentMode = .center
+                    cell.imageView?.image = UIImage(named: filename)
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.contentView.layoutMargins = UIEdgeInsets(top: 4, left: cell.layoutMargins.left, bottom: 4, right: cell.layoutMargins.right)
                 }
-                row.options = AppIconName.allNames.map({ (name) -> String in
-                    return name.rawValue
-                })
-                row.value = UIApplication.shared.alternateIconName ?? AppIconName.defaultTheme.rawValue
-                row.onPresent({ (_, to) in
-                    to.selectableRowCellUpdate = { cell, row in
-                        let filename = AppIconName(rawValue: row.title ?? "")?.fileName ?? "Purple"
-                        cell.height = { 68 }
-                        cell.imageView?.cornerRadius = 12
-                        cell.imageView?.contentMode = .center
-                        cell.imageView?.image = UIImage(named: filename)
-                        cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                        cell.contentView.layoutMargins = UIEdgeInsets(top: 4, left: cell.layoutMargins.left, bottom: 4, right: cell.layoutMargins.right)
-                    }
-                })
-                row.onChange({[weak self] (row) in
-                    if self?.isSettingUserData == true { return }
-                    if let newAppIcon = AppIconName(rawValue: row.value ?? "") {
-                        DispatchQueue.main.async {
-                            UIApplication.shared.setAlternateIconName(newAppIcon.fileName) { (error) in
-                                if let error = error {
-                                    print("error: \(error)")
-                                }
+            })
+            row.onChange({[weak self] (row) in
+                if self?.isSettingUserData == true { return }
+                if let newAppIcon = AppIconName(rawValue: row.value ?? "") {
+                    DispatchQueue.main.async {
+                        UIApplication.shared.setAlternateIconName(newAppIcon.fileName) { (error) in
+                            if let error = error {
+                                print("error: \(error)")
                             }
                         }
                     }
-                })
-            }
+                }
+            })
         }
     }
     

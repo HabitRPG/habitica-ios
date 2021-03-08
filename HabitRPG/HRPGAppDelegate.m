@@ -79,14 +79,6 @@
     [[[ConfigRepository alloc] init] fetchremoteConfig];
 }
 
-- (BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder {
-    return YES;
-}
-
-- (BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder {
-    return YES;
-}
-
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     if ([_currentAuthorizationFlow resumeExternalUserAgentFlowWithURL:url]) {
         _currentAuthorizationFlow = nil;
@@ -100,27 +92,6 @@
     }
 
     return [RouterHandler.shared handleWithUrl:url];
-}
-
-- (BOOL)application:(UIApplication *)application
-              openURL:(NSURL *)url
-    sourceApplication:(NSString *)sourceApplication
-           annotation:(id)annotation {
-        
-    if ([_currentAuthorizationFlow resumeExternalUserAgentFlowWithURL:url]) {
-        _currentAuthorizationFlow = nil;
-        return YES;
-    }
-        
-    BOOL wasHandled = [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                          openURL:url
-                                                sourceApplication:sourceApplication
-                                                       annotation:annotation];
-    
-    if (!wasHandled) {
-        return [RouterHandler.shared handleWithUrl:url];
-    }
-    return YES;
 }
 
 - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler {

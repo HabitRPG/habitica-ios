@@ -263,7 +263,6 @@
 		29865F35233A92380041FAA4 /* TaskHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29865F34233A92380041FAA4 /* TaskHistoryViewController.swift */; };
 		2986EB0B1FCC63F900B316F6 /* AttributePointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */; };
 		298FAB0224BF5BF30084CB0D /* MainTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 298FAB0124BF5BF30084CB0D /* MainTableviewCell.xib */; };
-		29914DFC260247ED007A766E /* EventHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29914DFB260247ED007A766E /* EventHelper.swift */; };
 		299328A924E57858003BCE0C /* FAQDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299328A824E57858003BCE0C /* FAQDetailViewController.swift */; };
 		299328AB24E5985B003BCE0C /* UIStackview-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299328AA24E5985B003BCE0C /* UIStackview-Extensions.swift */; };
 		29951A1E2326670500918FC8 /* InboxOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29951A1D2326670500918FC8 /* InboxOverviewViewController.swift */; };
@@ -367,6 +366,7 @@
 		29D16C7725A336E8001D9A61 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D16C7625A336E8001D9A61 /* MainSplitViewController.swift */; };
 		29D16C7E25A33F70001D9A61 /* MainVCSelectionSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D16C7D25A33F70001D9A61 /* MainVCSelectionSegue.swift */; };
 		29D16C8525A72211001D9A61 /* UITraitCollection-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D16C8425A72211001D9A61 /* UITraitCollection-Extensions.swift */; };
+		29D50A6825F66F760009CF55 /* UIWindowScene-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D50A6725F66F760009CF55 /* UIWindowScene-Extensions.swift */; };
 		29DBFEF720C997D100DF9CF2 /* CalculateUserStatsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEF620C997D100DF9CF2 /* CalculateUserStatsInteractor.swift */; };
 		29DBFF0120CE6FFF00DF9CF2 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */; };
 		29DBFF0520CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0420CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift */; };
@@ -956,7 +956,6 @@
 		29865F34233A92380041FAA4 /* TaskHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskHistoryViewController.swift; sourceTree = "<group>"; };
 		2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributePointsViewController.swift; sourceTree = "<group>"; };
 		298FAB0124BF5BF30084CB0D /* MainTableviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTableviewCell.xib; sourceTree = "<group>"; };
-		29914DFB260247ED007A766E /* EventHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHelper.swift; sourceTree = "<group>"; };
 		299328A824E57858003BCE0C /* FAQDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQDetailViewController.swift; sourceTree = "<group>"; };
 		299328AA24E5985B003BCE0C /* UIStackview-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackview-Extensions.swift"; sourceTree = "<group>"; };
 		29951A1D2326670500918FC8 /* InboxOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InboxOverviewViewController.swift; path = HabitRPG/UI/Social/InboxOverviewViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -1078,6 +1077,7 @@
 		29D16C7625A336E8001D9A61 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
 		29D16C7D25A33F70001D9A61 /* MainVCSelectionSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCSelectionSegue.swift; sourceTree = "<group>"; };
 		29D16C8425A72211001D9A61 /* UITraitCollection-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection-Extensions.swift"; sourceTree = "<group>"; };
+		29D50A6725F66F760009CF55 /* UIWindowScene-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindowScene-Extensions.swift"; sourceTree = "<group>"; };
 		29D5AD5B20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29D5AD5C20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
 		29D5AD5E20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2245,6 +2245,7 @@
 				29255E4C1F3E25910094A3E3 /* CGRect-Extensions.swift */,
 				491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */,
 				29323E4820521FD500AC6D6F /* ContributorProtocol-Extensions.swift */,
+				29066CFE24FFA20B00A266EE /* Date-Extensions.swift */,
 				D9CE90461E4CDF3F00702578 /* Designable-Extensions.swift */,
 				D9BB45581E71AFAF0002AE2E /* Down-Extensions.swift */,
 				D9525F9E1E65A18300C529B8 /* EmojifiedString.swift */,
@@ -2255,6 +2256,7 @@
 				29FC885B2018D47D002B3D3F /* Quest-Extensions.swift */,
 				D96BFC501E1930A500266EEF /* Signal-Extensions.swift */,
 				29F89F191F47882A004E5B84 /* String-Extensions.swift */,
+				29A4CB70257FF3150013F0B3 /* String-SafeExtensions.swift */,
 				29646DE0205C18FA0050886C /* TaskType-Extensions.swift */,
 				29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */,
 				D96BFC4E1E191D7200266EEF /* UIAlertController-Extensions.swift */,
@@ -2263,14 +2265,13 @@
 				291CE4B5231E828D0001A243 /* UIColor-Habitica.swift */,
 				29A62B0A216CF4E200D4BD90 /* UIDevice-Extensions.swift */,
 				292AA72320FE15090022CC5F /* UIFont-Extensions.swift */,
-				29A9B06622843DEB0049291E /* UINotificationFeedbackGenerator.swift */,
-				D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */,
 				293DFE3B24F5647400E115FE /* UIImage-Extensions.swift */,
+				29A9B06622843DEB0049291E /* UINotificationFeedbackGenerator.swift */,
 				299328AA24E5985B003BCE0C /* UIStackview-Extensions.swift */,
 				29C1360724EE917F00DBC6B3 /* UITableView-Extensions.swift */,
-				29066CFE24FFA20B00A266EE /* Date-Extensions.swift */,
-				29A4CB70257FF3150013F0B3 /* String-SafeExtensions.swift */,
 				29D16C8425A72211001D9A61 /* UITraitCollection-Extensions.swift */,
+				D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */,
+				29D50A6725F66F760009CF55 /* UIWindowScene-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2422,7 +2423,6 @@
 				29A984D12547294E00F04665 /* RemoteLogger.swift */,
 				29A984D02547294E00F04665 /* HabiticaAnalytics.swift */,
 				29A98592254841C500F04665 /* KeyboardManager.swift */,
-				29914DFB260247ED007A766E /* EventHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -2948,7 +2948,7 @@
 			attributes = {
 				CLASSPREFIX = HRPG;
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "HabitRPG Inc.";
 				TargetAttributes = {
 					29BEE62A252CCFE100D456F8 = {
@@ -3820,7 +3820,6 @@
 				2974BDB62090C03E00EC1A25 /* InboxOverviewDataSource.swift in Sources */,
 				29066CFB24FE83D300A266EE /* PromoBannerView.swift in Sources */,
 				29AAE55724508FC600220DB1 /* HRPGBulkPurchaseView.swift in Sources */,
-				29914DFC260247ED007A766E /* EventHelper.swift in Sources */,
 				29DBFF0120CE6FFF00DF9CF2 /* SoundManager.swift in Sources */,
 				49FA9FF720DC47AD0086C478 /* TaskTableViewController.swift in Sources */,
 				299F93F1246D9C49008DB702 /* PaddedTextField.swift in Sources */,
@@ -3983,6 +3982,7 @@
 				293282141F389CC000D42961 /* SetupCustomizationItemView.swift in Sources */,
 				2974BDAD208F68A800EC1A25 /* CustomizationHeaderView.swift in Sources */,
 				494E54131F2EF7100003683C /* HRPGCollectionViewController.m in Sources */,
+				29D50A6825F66F760009CF55 /* UIWindowScene-Extensions.swift in Sources */,
 				2927024C24E3040A00BCAA77 /* HallOfPatronsDataSource.swift in Sources */,
 				D9BB45D41E7849B40002AE2E /* ChallengeTaskListView.swift in Sources */,
 				D9A63A361E1032BD0083ADC4 /* LoginViewModel.swift in Sources */,
@@ -4261,7 +4261,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 577;
+				CURRENT_PROJECT_VERSION = 572;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4275,7 +4275,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.2.2;
+				MARKETING_VERSION = 3.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4308,7 +4308,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 577;
+				CURRENT_PROJECT_VERSION = 572;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4322,7 +4322,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.2.2;
+				MARKETING_VERSION = 3.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4348,20 +4348,20 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 577;
+				CURRENT_PROJECT_VERSION = 572;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.2.2;
+				MARKETING_VERSION = 3.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -4389,20 +4389,20 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 577;
+				CURRENT_PROJECT_VERSION = 572;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.2.2;
+				MARKETING_VERSION = 3.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -4428,20 +4428,20 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 577;
+				CURRENT_PROJECT_VERSION = 572;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.2.2;
+				MARKETING_VERSION = 3.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4471,20 +4471,20 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 577;
+				CURRENT_PROJECT_VERSION = 572;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.2.2;
+				MARKETING_VERSION = 3.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4629,7 +4629,7 @@
 					"\"$(PROJECT_DIR)/OCMock\"",
 				);
 				INFOPLIST_FILE = HabiticaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4706,7 +4706,7 @@
 					"\"$(PROJECT_DIR)/OCMock\"",
 				);
 				INFOPLIST_FILE = HabiticaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4748,6 +4748,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -4755,7 +4756,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 577;
+				CURRENT_PROJECT_VERSION = 572;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4773,7 +4774,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4803,6 +4804,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -4810,7 +4812,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 577;
+				CURRENT_PROJECT_VERSION = 572;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4821,7 +4823,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -4836,12 +4838,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 577;
+				CURRENT_PROJECT_VERSION = 572;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -4883,12 +4884,12 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.2.2;
+				MARKETING_VERSION = 3.3;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -4933,12 +4934,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 577;
+				CURRENT_PROJECT_VERSION = 572;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";
@@ -4980,12 +4980,12 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.2.2;
+				MARKETING_VERSION = 3.3;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",

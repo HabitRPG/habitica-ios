@@ -38,9 +38,7 @@ class GroupInvitationView: UIView {
         view.cornerRadius = 16
         view.setImage(HabiticaIcons.imageOfDeclineIcon, for: .normal)
         view.addTarget(self, action: #selector(declineInvitation), for: .touchUpInside)
-        if #available(iOS 13.4, *) {
-            view.isPointerInteractionEnabled = true
-        }
+        view.isPointerInteractionEnabled = true
         return view
     }()
     private let acceptButton: UIButton = {
@@ -49,9 +47,7 @@ class GroupInvitationView: UIView {
         view.cornerRadius = 16
         view.setImage(HabiticaIcons.imageOfAcceptIcon, for: .normal)
         view.addTarget(self, action: #selector(acceptInvitation), for: .touchUpInside)
-        if #available(iOS 13.4, *) {
-            view.isPointerInteractionEnabled = true
-        }
+        view.isPointerInteractionEnabled = true
         return view
     }()
     private let separatorView: UIView = {

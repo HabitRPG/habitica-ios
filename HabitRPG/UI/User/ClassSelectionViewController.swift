@@ -178,9 +178,6 @@ class ClassSelectionViewController: UIViewController, Themeable {
             showLoadingSelection()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {[weak self] in
                 self?.userRepository.selectClass(selectedClass)
-                    .on(failed: {[weak self] _ in
-                        self?.isSelecting = false
-                    })
                     .observeCompleted {
                  self?.dismiss(animated: true, completion: nil)
                  }

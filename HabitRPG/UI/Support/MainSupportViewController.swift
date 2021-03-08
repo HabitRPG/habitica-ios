@@ -55,7 +55,7 @@ class MainSupportViewController: BaseUIViewController {
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        var buttonTintColor = theme.fixedTintColor
+        let buttonTintColor = theme.fixedTintColor
         questionsContainer.backgroundColor = theme.windowBackgroundColor
         questionsTitleLabel.textColor = theme.primaryTextColor
         questionsDescriptionLabel.textColor = theme.ternaryTextColor

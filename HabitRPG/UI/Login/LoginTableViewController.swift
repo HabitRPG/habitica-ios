@@ -549,7 +549,6 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
-@available(iOS 13.0, *)
 extension LoginTableViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
@@ -583,7 +582,6 @@ extension LoginTableViewController: ASAuthorizationControllerDelegate {
     }
 }
 
-@available(iOS 13.0, *)
 extension LoginTableViewController: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return view.window ?? UIWindow()

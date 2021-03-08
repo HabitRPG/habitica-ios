@@ -57,9 +57,7 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
         if row.isDisabled { return }
         row.value?.monday = !(row.value?.monday ?? false)
         row.updateCell()
-        if #available(iOS 10, *) {
-            UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        }
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
     }
     
     @objc
@@ -67,9 +65,7 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
         if row.isDisabled { return }
         row.value?.tuesday = !(row.value?.tuesday ?? false)
         row.updateCell()
-        if #available(iOS 10, *) {
-            UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        }
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
     }
     
     @objc
@@ -77,9 +73,7 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
         if row.isDisabled { return }
         row.value?.wednesday = !(row.value?.wednesday ?? false)
         row.updateCell()
-        if #available(iOS 10, *) {
-            UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        }
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
     }
     
     @objc
@@ -87,9 +81,7 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
         if row.isDisabled { return }
         row.value?.thursday = !(row.value?.thursday ?? false)
         row.updateCell()
-        if #available(iOS 10, *) {
-            UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        }
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
     }
     
     @objc
@@ -97,9 +89,7 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
         if row.isDisabled { return }
         row.value?.friday = !(row.value?.friday ?? false)
         row.updateCell()
-        if #available(iOS 10, *) {
-            UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        }
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
     }
     
     @objc
@@ -107,9 +97,7 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
         if row.isDisabled { return }
         row.value?.saturday = !(row.value?.saturday ?? false)
         row.updateCell()
-        if #available(iOS 10, *) {
-            UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        }
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
     }
     
     @objc
@@ -117,9 +105,7 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
         if row.isDisabled { return }
         row.value?.sunday = !(row.value?.sunday ?? false)
         row.updateCell()
-        if #available(iOS 10, *) {
-            UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        }
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
     }
    
     public override func update() {

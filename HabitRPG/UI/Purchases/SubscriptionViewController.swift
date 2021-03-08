@@ -107,10 +107,8 @@ class SubscriptionViewController: BaseTableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 106
         
-        if #available(iOS 13.0, *) {
-            navigationController?.navigationBar.standardAppearance.shadowColor = .clear
-            navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
-        }
+        navigationController?.navigationBar.standardAppearance.shadowColor = .clear
+        navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
         
         disposable.inner.add(inventoryRepository.getLatestMysteryGear().on(value: { gear in
             self.mysteryGear = gear
@@ -131,11 +129,7 @@ class SubscriptionViewController: BaseTableViewController {
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         tableView.backgroundColor = theme.contentBackgroundColor
-        if #available(iOS 13.0, *) {
-            navigationController?.navigationBar.standardAppearance.backgroundColor = theme.contentBackgroundColor
-        } else {
-            navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
-        }
+        navigationController?.navigationBar.standardAppearance.backgroundColor = theme.contentBackgroundColor
         navigationController?.navigationBar.shadowImage = UIImage()
         giftSubscriptionExplanationLabel.textColor = theme.ternaryTextColor
         subscriptionSupportLabel.textColor = theme.secondaryTextColor

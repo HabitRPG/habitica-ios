@@ -9,9 +9,9 @@
 import Foundation
 import Habitica_Models
 
-class NewsViewController: BaseUIViewController, UIWebViewDelegate {
+class NewsViewController: BaseUIViewController, WKNavigationDelegate {
     
-    @IBOutlet private var newsWebView: UIWebView!
+    @IBOutlet private var newsWebView: WKWebView!
     @IBOutlet private var loadingIndicator: UIActivityIndicatorView!
     
     private let userRepository = UserRepository()
@@ -22,34 +22,13 @@ class NewsViewController: BaseUIViewController, UIWebViewDelegate {
         topHeaderCoordinator?.hideHeader = true
         if let url = URL(string: "https://habitica.com/static/new-stuff") {
             let request = URLRequest(url: url)
-            newsWebView.delegate = self
-            newsWebView.loadRequest(request)
+            newsWebView.navigationDelegate = self
+            newsWebView.load(request)
         }
         loadingIndicator.startAnimating()
     }
     
     override func populateText() {
         navigationItem.title = L10n.Titles.news
-    }
-    
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        UIView.animate(withDuration: 0.4) {[weak self] in
-            self?.newsWebView.alpha = 1
-            self?.loadingIndicator.alpha = 0
-        }
-        userRepository.updateUser(key: "flags.newStuff", value: false).observeCompleted {}
-    }
-    
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
-        if request.url?.absoluteString.contains("/new-stuff") == true {
-            return true
-        }
-        if let url = request.url {
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.6) {
-                RouterHandler.shared.handleOrOpen(url: url)
-            }
-            return false
-        }
-        return true
     }
 }

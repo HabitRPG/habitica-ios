@@ -30,14 +30,12 @@
     
     [self.topHeaderCoordinator viewWillAppear];
     
-    if (@available(iOS 13.0, *)) {
-        if ([ObjcThemeWrapper.themeMode  isEqual: @"dark"]) {
-            self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
-        } else if ([ObjcThemeWrapper.themeMode  isEqual: @"light"]) {
-            self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
-        } else {
-            self.overrideUserInterfaceStyle = UIUserInterfaceStyleUnspecified;
-        }
+    if ([ObjcThemeWrapper.themeMode  isEqual: @"dark"]) {
+        self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
+    } else if ([ObjcThemeWrapper.themeMode  isEqual: @"light"]) {
+        self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+    } else {
+        self.overrideUserInterfaceStyle = UIUserInterfaceStyleUnspecified;
     }
 }
 

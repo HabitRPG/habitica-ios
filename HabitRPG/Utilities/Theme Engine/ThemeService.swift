@@ -27,11 +27,6 @@ public class ThemeService: NSObject {
     
     private var listeners = NSHashTable<AnyObject>.weakObjects()
     private var objcListeners = NSHashTable<AnyObject>.weakObjects()
-
-    override public init() {
-        if #available(iOS 13.0, *) {
-        }
-    }
     
     public func addThemeable(themable: Themeable, applyImmediately: Bool = true) {
         guard !listeners.contains(themable) else {
@@ -69,10 +64,12 @@ public class ThemeService: NSObject {
         UITabBar.appearance().shadowImage = UIImage.from(color: theme.contentBackgroundColor)
         UITabBar.appearance().barStyle = .black
         if theme.isDark {
-            UISearchBar.appearance().barStyle = .blackTranslucent
+            UISearchBar.appearance().barStyle = .black
+            UISearchBar.appearance().isTranslucent = true
             UITextField.appearance().keyboardAppearance = .dark
         } else {
             UISearchBar.appearance().barStyle = .default
+            UISearchBar.appearance().isTranslucent = false
             UITextField.appearance().keyboardAppearance = .default
         }
 
@@ -82,7 +79,7 @@ public class ThemeService: NSObject {
         UIRefreshControl.appearance().tintColor = theme.tintColor
         UISegmentedControl.appearance().tintColor = theme.segmentedTintColor
         UISwitch.appearance().onTintColor = theme.backgroundTintColor
-        //UIButton.appearance().tintColor = theme.tintColor
+        // UIButton.appearance().tintColor = theme.tintColor
         UISearchBar.appearance().backgroundColor = theme.windowBackgroundColor
         UISearchBar.appearance().tintColor = theme.tintColor
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = theme.contentBackgroundColor
@@ -108,17 +105,13 @@ public class ThemeService: NSObject {
         containerAppearance.cornerRadius = 16.0 as Float
         
         let view = UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self])
-        if #available(iOS 13.0, *) {
-            view.tintColor = theme.tintColor
-        } else {
-            view.tintColor = UIColor.purple300
-        }
+        view.tintColor = theme.tintColor
         // Update styles via UIAppearance
         UITabBarItem.appearance().badgeColor = theme.badgeColor
         UITabBar.appearance().unselectedItemTintColor = theme.dimmedTextColor
                         
         // The tintColor will trickle down to each view
-        if let window = UIApplication.shared.keyWindow {
+        UIApplication.shared.windows.forEach { window in
             window.tintColor = theme.tintColor
         }
         
@@ -131,18 +124,13 @@ public class ThemeService: NSObject {
             .forEach { $0.applyTheme() }
     }
     
-    @available(iOS 12.0, *)
     func updateInterfaceStyle(newStyle: UIUserInterfaceStyle) {
         let isDark = newStyle == .dark
         updateDarkMode(systemIsDark: isDark)
     }
     
     func updateDarkMode() {
-        if #available(iOS 13.0, *) {
-            updateDarkMode(systemIsDark: UIScreen.main.traitCollection.userInterfaceStyle == .dark)
-        } else {
-            updateDarkMode(systemIsDark: false)
-        }
+        updateDarkMode(systemIsDark: UIScreen.main.traitCollection.userInterfaceStyle == .dark)
     }
     
     func updateDarkMode(systemIsDark: Bool) {
@@ -156,15 +144,13 @@ public class ThemeService: NSObject {
             let themeName = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") ?? ThemeName.defaultTheme
             ThemeService.shared.theme = themeName.themeClass
             
-            if #available(iOS 13.0, *) {
-                if let window = UIApplication.shared.delegate?.window {
-                    if ThemeService.shared.themeMode == "dark" {
-                            window?.overrideUserInterfaceStyle = .dark
-                    } else if ThemeService.shared.themeMode == "light" {
-                        window?.overrideUserInterfaceStyle = .light
-                    } else {
-                        window?.overrideUserInterfaceStyle = .unspecified
-                    }
+            if let window = UIApplication.shared.delegate?.window {
+                if ThemeService.shared.themeMode == "dark" {
+                        window?.overrideUserInterfaceStyle = .dark
+                } else if ThemeService.shared.themeMode == "light" {
+                    window?.overrideUserInterfaceStyle = .light
+                } else {
+                    window?.overrideUserInterfaceStyle = .unspecified
                 }
             }
         }

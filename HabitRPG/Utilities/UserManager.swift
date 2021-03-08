@@ -76,7 +76,7 @@ class UserManager: NSObject {
                 let viewController = YesterdailiesDialogView()
                 viewController.tasks = tasks
                 let popup = PopupDialog(viewController: viewController)
-                if var topController = UIApplication.shared.keyWindow?.rootViewController {
+                if var topController = UIApplication.shared.findKeyWindow()?.rootViewController {
                     while let presentedViewController = topController.presentedViewController {
                         topController = presentedViewController
                     }
@@ -123,7 +123,7 @@ class UserManager: NSObject {
         setTimezoneOffset(user)
 
         if user.flags?.verifiedUsername == false {
-            if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            if var topController = UIApplication.shared.findKeyWindow()?.rootViewController {
                 while let presentedViewController = topController.presentedViewController {
                     topController = presentedViewController
                 }
@@ -165,7 +165,7 @@ class UserManager: NSObject {
             }
             if classSelectionViewController == nil {
                 let classSelectionController = StoryboardScene.Settings.classSelectionNavigationController.instantiate()
-                if var topController = UIApplication.shared.keyWindow?.rootViewController {
+                if var topController = UIApplication.shared.findKeyWindow()?.rootViewController {
                     while let presentedViewController = topController.presentedViewController {
                         topController = presentedViewController
                     }

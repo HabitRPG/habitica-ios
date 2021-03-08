@@ -39,21 +39,15 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
             self?.user = user
         }).start())
         
-        if #available(iOS 13.0, *) {
-            navigationController?.navigationBar.standardAppearance.shadowColor = .clear
-            navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
-        }
+        navigationController?.navigationBar.standardAppearance.shadowColor = .clear
+        navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
         
         activePromo = configRepository.activePromotion()
     }
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        if #available(iOS 13.0, *) {
-            navigationController?.navigationBar.standardAppearance.backgroundColor = theme.contentBackgroundColor
-        } else {
-            navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
-        }
+        navigationController?.navigationBar.standardAppearance.backgroundColor = theme.contentBackgroundColor
         navigationController?.navigationBar.shadowImage = UIImage()
         collectionView.backgroundColor = theme.contentBackgroundColor
     }

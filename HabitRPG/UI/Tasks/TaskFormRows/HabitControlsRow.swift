@@ -44,9 +44,7 @@ class HabitControlsCell: Cell<HabitControlsValue>, CellType {
         if row.isDisabled { return }
         row.value?.positive = !(row.value?.positive ?? false)
         row.updateCell()
-        if #available(iOS 10, *) {
-            UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        }
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
     }
     
     @objc
@@ -54,9 +52,7 @@ class HabitControlsCell: Cell<HabitControlsValue>, CellType {
         if row.isDisabled { return }
         row.value?.negative = !(row.value?.negative ?? false)
         row.updateCell()
-        if #available(iOS 10, *) {
-            UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        }
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
     }
 
     public override func update() {

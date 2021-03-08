@@ -1542,7 +1542,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="GemPurchaseViewController" id="0F5-C1-rPv" customClass="GemViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" id="CgT-fS-CrK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="18" minimumInteritemSpacing="18" id="VJm-WU-tp7">
@@ -1968,34 +1968,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n8Y-qd-yqL">
-                                <rect key="frame" x="12" y="88" width="390" height="774"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="alG-bc-9xq">
                                 <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cj1-9e-fjR">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="n8Y-qd-yqL" firstAttribute="leading" secondItem="paU-l3-xja" secondAttribute="leadingMargin" constant="-8" id="KOq-4e-8y8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="n8Y-qd-yqL" secondAttribute="trailing" constant="-8" id="clY-MU-mkk"/>
-                            <constraint firstItem="n8Y-qd-yqL" firstAttribute="top" secondItem="paU-l3-xja" secondAttribute="topMargin" id="jZU-9u-zVK"/>
+                            <constraint firstAttribute="bottom" secondItem="cj1-9e-fjR" secondAttribute="bottom" id="4Up-gr-lJO"/>
+                            <constraint firstAttribute="trailing" secondItem="cj1-9e-fjR" secondAttribute="trailing" id="9sv-rb-2ua"/>
+                            <constraint firstItem="cj1-9e-fjR" firstAttribute="leading" secondItem="paU-l3-xja" secondAttribute="leading" id="NwT-kZ-1oS"/>
+                            <constraint firstItem="cj1-9e-fjR" firstAttribute="top" secondItem="IbB-TZ-RPt" secondAttribute="bottom" id="qCd-tc-Y8B"/>
                             <constraint firstAttribute="centerY" secondItem="alG-bc-9xq" secondAttribute="centerY" id="wzn-10-J9a"/>
-                            <constraint firstItem="n8Y-qd-yqL" firstAttribute="bottom" secondItem="paU-l3-xja" secondAttribute="bottomMargin" id="xJK-CY-RBb"/>
                             <constraint firstAttribute="centerX" secondItem="alG-bc-9xq" secondAttribute="centerX" id="xgu-H2-CB2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Jni-km-FCZ"/>
                     <connections>
                         <outlet property="loadingIndicator" destination="alG-bc-9xq" id="IOM-xa-api"/>
-                        <outlet property="newsWebView" destination="n8Y-qd-yqL" id="tEj-pC-E08"/>
+                        <outlet property="newsWebView" destination="cj1-9e-fjR" id="xRT-CR-M6C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2c-cU-Mzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4348.125" y="731.25"/>
+            <point key="canvasLocation" x="4347.826086956522" y="731.25"/>
         </scene>
         <!--Equipment Overview View Controller-->
         <scene sceneID="kth-SG-qfp">

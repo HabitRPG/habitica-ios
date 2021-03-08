@@ -89,14 +89,12 @@ class MainTabBarController: UITabBarController, Themeable {
     }
     
     func applyTheme(theme: Theme) {
-        if #available(iOS 13.0, *) {
-            if ThemeService.shared.themeMode == "dark" {
-                self.overrideUserInterfaceStyle = .dark
-            } else if ThemeService.shared.themeMode == "light" {
-                self.overrideUserInterfaceStyle = .light
-            } else {
-                self.overrideUserInterfaceStyle = .unspecified
-            }
+        if ThemeService.shared.themeMode == "dark" {
+            self.overrideUserInterfaceStyle = .dark
+        } else if ThemeService.shared.themeMode == "light" {
+            self.overrideUserInterfaceStyle = .light
+        } else {
+            self.overrideUserInterfaceStyle = .unspecified
         }
     }
     
@@ -218,9 +216,7 @@ class MainTabBarController: UITabBarController, Themeable {
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        if #available(iOS 13.0, *) {
-            ThemeService.shared.updateInterfaceStyle(newStyle: traitCollection.userInterfaceStyle)
-        }
+        ThemeService.shared.updateInterfaceStyle(newStyle: traitCollection.userInterfaceStyle)
     }
     
     #if DEBUG
@@ -239,13 +235,11 @@ class MainTabBar: UITabBar, Themeable {
 
     override open func sizeThatFits(_ size: CGSize) -> CGSize {
         var sizeThatFits = super.sizeThatFits(size)
-        guard let window = UIApplication.shared.keyWindow else {
+        guard let window = UIApplication.shared.findKeyWindow() else {
             return sizeThatFits
         }
-        if #available(iOS 11.0, *) {
-            if window.safeAreaInsets.bottom > 0 {
-                sizeThatFits.height = 42 + window.safeAreaInsets.bottom
-            }
+        if window.safeAreaInsets.bottom > 0 {
+            sizeThatFits.height = 42 + window.safeAreaInsets.bottom
         }
         return sizeThatFits
     }

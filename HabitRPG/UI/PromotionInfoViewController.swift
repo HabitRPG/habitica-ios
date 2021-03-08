@@ -81,10 +81,8 @@ class PromotionInfoViewController: BaseUIViewController {
         
         promotion?.configureInfoView(self)
         
-        if #available(iOS 13.0, *) {
-            navigationController?.navigationBar.standardAppearance.shadowColor = .clear
-            navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
-        }
+        navigationController?.navigationBar.standardAppearance.shadowColor = .clear
+        navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -97,11 +95,7 @@ class PromotionInfoViewController: BaseUIViewController {
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         navigationController?.navigationBar.shadowImage = UIImage()
-        if #available(iOS 13.0, *) {
-            navigationController?.navigationBar.standardAppearance.backgroundColor = theme.contentBackgroundColor
-        } else {
-            navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
-        }
+        navigationController?.navigationBar.standardAppearance.backgroundColor = theme.contentBackgroundColor
         instructionsTitleLabel.textColor = theme.secondaryTextColor
         limitationsTitleLabel.textColor = theme.secondaryTextColor
         instructionsDescriptionLabel.textColor = theme.quadTextColor

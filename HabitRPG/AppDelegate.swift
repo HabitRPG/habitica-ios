@@ -273,7 +273,7 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     }
     
     private func findMaintenanceScreen() -> MaintenanceViewController? {
-        var viewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController
+        var viewController: UIViewController? = UIApplication.shared.findKeyWindow()?.rootViewController
         while viewController != nil {
             if let maintenanceController = viewController as? MaintenanceViewController {
                 return maintenanceController

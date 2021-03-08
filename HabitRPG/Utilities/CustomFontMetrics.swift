@@ -49,7 +49,6 @@ private extension CGFloat {
 public class CustomFontMetrics: NSObject {
     
     private enum Representation {
-        @available(iOS 11.0, tvOS 11.0, watchOS 4.0, *)
         case modern(UIFontMetrics)
         
         case legacy(UIFont.TextStyle)
@@ -64,21 +63,13 @@ public class CustomFontMetrics: NSObject {
     
     /// The standard font metrics used for body text.
     public static var `default`: CustomFontMetrics {
-        if #available(iOS 11.0, tvOS 11.0, watchOS 4.0, *) {
-            return CustomFontMetrics(.modern(.default))
-        } else {
-            return CustomFontMetrics(.legacyDefault)
-        }
+        return CustomFontMetrics(.modern(.default))
     }
     
     /// Creates font metrics for interpolating values for a `textStyle`.
     @objc
     public init(forTextStyle textStyle: UIFont.TextStyle) {
-        if #available(iOS 11.0, tvOS 11.0, watchOS 4.0, *) {
-            rep = .modern(UIFontMetrics(forTextStyle: textStyle))
-        } else {
-            rep = .legacy(textStyle)
-        }
+        rep = .modern(UIFontMetrics(forTextStyle: textStyle))
     }
     
     private static let supportedDynamicTypeStyles: Set<UIFont.TextStyle> = [

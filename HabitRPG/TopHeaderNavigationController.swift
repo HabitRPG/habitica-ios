@@ -108,7 +108,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     }
     
     var defaultHeaderHeight: CGFloat {
-        if UI_USER_INTERFACE_IDIOM() == .pad {
+        if UIDevice().userInterfaceIdiom == .pad {
             return 190
         } else {
             return 152
@@ -124,8 +124,8 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     }
     
     var statusBarHeight: CGFloat {
-        let statusBarSize = UIApplication.shared.statusBarFrame.size
-        return min(statusBarSize.width, statusBarSize.height)
+        let statusBarSize = view.window?.windowScene?.statusBarManager?.statusBarFrame
+        return min(statusBarSize?.width ?? 0, statusBarSize?.height ?? 0)
     }
     
      @objc public var contentInset: CGFloat {
@@ -333,11 +333,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         if !isLightColor {
             return .lightContent
         } else {
-            if #available(iOS 13.0, *) {
-                return .darkContent
-            } else {
-                return .default
-            }
+            return .darkContent
         }
     }
     

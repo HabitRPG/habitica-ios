@@ -100,10 +100,8 @@ class GiftSubscriptionViewController: BaseTableViewController {
             footer.layer.insertSublayer(gradient, at: 0)
         }
         
-        if #available(iOS 13.0, *) {
-            navigationController?.navigationBar.standardAppearance.shadowColor = .clear
-            navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
-        }
+        navigationController?.navigationBar.standardAppearance.shadowColor = .clear
+        navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
         
         explanationTitle.text = L10n.giftSubscriptionPrompt
     }
@@ -115,11 +113,7 @@ class GiftSubscriptionViewController: BaseTableViewController {
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         navigationController?.navigationBar.shadowImage = UIImage()
-        if #available(iOS 13.0, *) {
-            navigationController?.navigationBar.standardAppearance.backgroundColor = theme.contentBackgroundColor
-        } else {
-            navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
-        }
+        navigationController?.navigationBar.standardAppearance.backgroundColor = theme.contentBackgroundColor
         tableView.backgroundColor = theme.contentBackgroundColor
         explanationTitle.textColor = theme.primaryTextColor
         tableView.reloadData()

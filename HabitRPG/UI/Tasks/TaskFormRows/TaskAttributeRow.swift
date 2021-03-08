@@ -36,9 +36,7 @@ class TaskAttributeCell: Cell<String>, CellType {
         if row.isDisabled { return }
         row.value = "str"
         row.updateCell()
-        if #available(iOS 10, *) {
-            UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        }
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
     }
     
     @objc
@@ -46,9 +44,7 @@ class TaskAttributeCell: Cell<String>, CellType {
         if row.isDisabled { return }
         row.value = "int"
         row.updateCell()
-        if #available(iOS 10, *) {
-            UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        }
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
     }
     
     @objc
@@ -56,9 +52,7 @@ class TaskAttributeCell: Cell<String>, CellType {
         if row.isDisabled { return }
         row.value = "con"
         row.updateCell()
-        if #available(iOS 10, *) {
-            UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        }
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
     }
     
     @objc
@@ -66,9 +60,7 @@ class TaskAttributeCell: Cell<String>, CellType {
         if row.isDisabled { return }
         row.value = "per"
         row.updateCell()
-        if #available(iOS 10, *) {
-            UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        }
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
     }
 
     public override func update() {

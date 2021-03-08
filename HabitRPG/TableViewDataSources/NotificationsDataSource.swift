@@ -62,9 +62,7 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
         view.addSubview(button)
         button.pin.top().bottom().sizeToFit(.height).end(16)
         button.addTarget(self, action: #selector(dismissAll), for: .touchUpInside)
-        if #available(iOS 13.4, *) {
-            button.isPointerInteractionEnabled = true
-        }
+        button.isPointerInteractionEnabled = true
         
         let separator = UIView()
         separator.backgroundColor = ThemeService.shared.theme.tableviewSeparatorColor
