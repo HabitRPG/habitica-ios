@@ -93,6 +93,7 @@ class GuildOverviewViewController: BaseTableViewController, UISearchBarDelegate 
     @objc
     private func switchFilter() {
         dataSource.isShowingPrivateGuilds = isShowingPrivateGuilds
+        dataSource.retrieveData(completed: nil)
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

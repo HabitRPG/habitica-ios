@@ -793,9 +793,8 @@ class SettingsViewController: FormViewController, Themeable {
                     return LabeledFormValue(value: screen.rawValue, label: screen.niceName)
                 })
                 
-                if let screen = InitialScreens(rawValue: UserDefaults().string(forKey: "initialScreenURL") ?? "") {
-                    row.value = LabeledFormValue(value: screen.rawValue, label: screen.niceName)
-                }
+                let screen = InitialScreens(rawValue: UserDefaults().string(forKey: "initialScreenURL") ?? "") ?? InitialScreens.habits
+                row.value = LabeledFormValue(value: screen.rawValue, label: screen.niceName)
                 row.onChange({ (row) in
                     UserDefaults().set(row.value?.value, forKey: "initialScreenURL")
                 })

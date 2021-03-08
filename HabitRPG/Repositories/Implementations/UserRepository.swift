@@ -236,8 +236,10 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         deregisterPushDevice().observeCompleted {}
         let defaults = UserDefaults.standard
         let themeMode = defaults.string(forKey: "themeMode")
+        let launchScreen = defaults.string(forKey: "initialScreenURL")
         defaults.dictionaryRepresentation().keys.forEach { defaults.removeObject(forKey: $0) }
         defaults.set(themeMode, forKey: "themeMode")
+        defaults.set(launchScreen, forKey: "initialScreenURL")
     }
     
     func updateEmail(newEmail: String, password: String) -> Signal<UserProtocol, ReactiveSwiftRealmError> {

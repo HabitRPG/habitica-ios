@@ -284,7 +284,7 @@ extension UIColor {
         case 6: return UIColor.tier6
         case 7: return UIColor.tier7
         case 8: return UIColor.tierMod
-        case 9: return UIColor.purple300
+        case 9: return UIColor.purple400
         default:
             return ThemeService.shared.theme.primaryTextColor
         }
