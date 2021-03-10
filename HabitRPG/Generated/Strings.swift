@@ -320,6 +320,8 @@ public enum L10n {
   public static var gemsSupportDevelopers: String { return L10n.tr("Mainstrings", "gems_support_developers") }
   /// Get more out of Habitica
   public static var getMoreHabitica: String { return L10n.tr("Mainstrings", "get_more_habitica") }
+  /// Get Started
+  public static var getStarted: String { return L10n.tr("Mainstrings", "get_started") }
   /// You sent %@ a %@-month Habitica subscription.
   public static func giftConfirmationBody(_ p1: String, _ p2: String) -> String {
     return L10n.tr("Mainstrings", "gift_confirmation_body", p1, p2)

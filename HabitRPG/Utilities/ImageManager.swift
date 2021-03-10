@@ -64,15 +64,7 @@ class ImageManager: NSObject {
     
     @objc
     static func getImage(name: String, extension fileExtension: String = "", completion: @escaping (UIImage?, NSError?) -> Void) {
-        guard let url = URL(string: "\(baseURL)\(name).\(getFormat(name: name, format: fileExtension))") else {
-            return
-        }
-        KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil) { (image, error, _, _) in
-            if let error = error {
-                print("Image loading error:", name, error.localizedDescription)
-            }
-            completion(image, error)
-        }
+        getImage(url: "\(baseURL)\(name).\(getFormat(name: name, format: fileExtension))", completion: completion)
     }
     
     @objc
@@ -80,11 +72,13 @@ class ImageManager: NSObject {
         guard let url = URL(string: urlString) else {
             return
         }
-        KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil) { (image, error, _, _) in
-            if let error = error {
-                print("Image loading error:", url, error.localizedDescription)
+        KingfisherManager.shared.retrieveImage(with: url) { result in
+            switch result {
+            case .success(let imageResult):
+                completion(imageResult.image, nil)
+            case .failure(let error):
+                completion(nil, error as NSError)
             }
-            completion(image, error)
         }
     }
     
@@ -95,12 +89,11 @@ class ImageManager: NSObject {
     }
     
     private static func getFormat(name: String, format: String) -> String {
-        if (!format.isEmpty) {
+        if !format.isEmpty {
             return format
         }
         return formatDictionary[name] ?? "png"
     }
-    
     
     private static func substituteSprite(name: String?) -> String? {
         for (key, value) in substitutions {

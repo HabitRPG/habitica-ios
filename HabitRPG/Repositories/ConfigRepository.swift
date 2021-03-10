@@ -225,7 +225,7 @@ class ConfigRepository: NSObject {
     
     @objc
     func integer(variable: ConfigVariable) -> Int {
-        return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).numberValue?.intValue ?? 0
+        return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).numberValue.intValue
     }
     
     @objc

@@ -22,8 +22,8 @@ def reactive_pods
 end
 
 def test_pods
-  pod 'Quick', '~> 1.2.0'
-  pod 'Nimble', '~> 7.3'
+  pod 'Quick'
+  pod 'Nimble'
   pod 'iOSSnapshotTestCase'
 end
 
@@ -65,7 +65,7 @@ target 'Habitica' do
 
   pod 'RealmSwift', '4.4.1'
 
-  pod 'Kingfisher'
+  pod 'Kingfisher', '~> 5.8.0'
 
   pod 'SwiftGen'
 
@@ -136,3 +136,10 @@ target "Habitica Database" do
   end
 end
 
+post_install do |installer|
+ installer.pods_project.targets.each do |target|
+  target.build_configurations.each do |config|
+   config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.6'
+  end
+ end
+end
