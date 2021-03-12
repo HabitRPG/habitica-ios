@@ -42,8 +42,8 @@ class LoadingViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if let delegate = UIApplication.shared.delegate as? HRPGAppDelegate {
-            if delegate.swiftAppDelegate.handleMaintenanceScreen() {
+        if let delegate = UIApplication.shared.delegate as? HabiticaAppDelegate {
+            if delegate.handleMaintenanceScreen() {
                 return
             }
         }

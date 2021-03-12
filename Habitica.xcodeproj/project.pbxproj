@@ -368,6 +368,10 @@
 		29D16C8525A72211001D9A61 /* UITraitCollection-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D16C8425A72211001D9A61 /* UITraitCollection-Extensions.swift */; };
 		29D50A6825F66F760009CF55 /* UIWindowScene-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D50A6725F66F760009CF55 /* UIWindowScene-Extensions.swift */; };
 		29D50AD125F769520009CF55 /* Alignment-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D50AD025F769520009CF55 /* Alignment-Extensions.swift */; };
+		29D50B7B25F9037A0009CF55 /* AppDelegate-Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D50B7A25F9037A0009CF55 /* AppDelegate-Notifications.swift */; };
+		29D50B9225F92E460009CF55 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D50B9125F92E460009CF55 /* NotificationService.swift */; };
+		29D50B9625F92E460009CF55 /* Habitica Notifications.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 29D50B8F25F92E460009CF55 /* Habitica Notifications.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		29D50BA025F92ED10009CF55 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902796A2057F2C5006DACB9 /* Strings.swift */; };
 		29DBFEF720C997D100DF9CF2 /* CalculateUserStatsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEF620C997D100DF9CF2 /* CalculateUserStatsInteractor.swift */; };
 		29DBFF0120CE6FFF00DF9CF2 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */; };
 		29DBFF0520CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0420CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift */; };
@@ -608,6 +612,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		29D50B9425F92E460009CF55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9EB4E8318CB4A9400BB2094 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 29D50B8E25F92E460009CF55;
+			remoteInfo = "Habitica Notifications";
+		};
 		32C71C6825507E65007E48C5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D9EB4E8318CB4A9400BB2094 /* Project object */;
@@ -668,6 +679,7 @@
 				7A84E1A9228928AD0081E96F /* Habitica Intents.appex in Embed App Extensions */,
 				7A84E1A6228928AD0081E96F /* Habitica IntentsUI.appex in Embed App Extensions */,
 				32C71C6725507E65007E48C5 /* Habitica WidgetsExtension.appex in Embed App Extensions */,
+				29D50B9625F92E460009CF55 /* Habitica Notifications.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1080,6 +1092,10 @@
 		29D16C8425A72211001D9A61 /* UITraitCollection-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection-Extensions.swift"; sourceTree = "<group>"; };
 		29D50A6725F66F760009CF55 /* UIWindowScene-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindowScene-Extensions.swift"; sourceTree = "<group>"; };
 		29D50AD025F769520009CF55 /* Alignment-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alignment-Extensions.swift"; sourceTree = "<group>"; };
+		29D50B7A25F9037A0009CF55 /* AppDelegate-Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate-Notifications.swift"; sourceTree = "<group>"; };
+		29D50B8F25F92E460009CF55 /* Habitica Notifications.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Habitica Notifications.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		29D50B9125F92E460009CF55 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		29D50B9325F92E460009CF55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29D5AD5B20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29D5AD5C20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
 		29D5AD5E20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1402,6 +1418,13 @@
 				29BEE6B4252DDA2800D456F8 /* Habitica_Models.framework in Frameworks */,
 				29BEE62D252CCFE100D456F8 /* WidgetKit.framework in Frameworks */,
 				76A11BC1E1A59742814F4CFD /* Pods_Habitica_WidgetsExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29D50B8C25F92E460009CF55 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1916,6 +1939,15 @@
 				291CE4B7231EC11E0001A243 /* FilterViewController.swift */,
 			);
 			path = Tasks;
+			sourceTree = "<group>";
+		};
+		29D50B9025F92E460009CF55 /* Habitica Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				29D50B9125F92E460009CF55 /* NotificationService.swift */,
+				29D50B9325F92E460009CF55 /* Info.plist */,
+			);
+			path = "Habitica Notifications";
 			sourceTree = "<group>";
 		};
 		29E16318200E849000685640 /* Social */ = {
@@ -2698,6 +2730,7 @@
 				7A84E192228928AC0081E96F /* Habitica Intents */,
 				7A84E19D228928AD0081E96F /* Habitica IntentsUI */,
 				29BEE630252CCFE100D456F8 /* Habitica Widgets */,
+				29D50B9025F92E460009CF55 /* Habitica Notifications */,
 				D9EB4E8D18CB4A9400BB2094 /* Frameworks */,
 				D9EB4E8C18CB4A9400BB2094 /* Products */,
 				C2CC6C72831C3578E8CE2B30 /* Pods */,
@@ -2713,6 +2746,7 @@
 				7A84E191228928AC0081E96F /* Habitica Intents.appex */,
 				7A84E19A228928AD0081E96F /* Habitica IntentsUI.appex */,
 				29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */,
+				29D50B8F25F92E460009CF55 /* Habitica Notifications.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2776,6 +2810,7 @@
 				D9EB4E9D18CB4A9400BB2094 /* HRPGAppDelegate.h */,
 				D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */,
 				29255E461F3E14920094A3E3 /* AppDelegate.swift */,
+				29D50B7A25F9037A0009CF55 /* AppDelegate-Notifications.swift */,
 				29A77B1E22EED4CE00FE41E4 /* NetworkIndicatorController.swift */,
 				29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */,
 				29951A212327E94F00918FC8 /* ThemedNavigationController.swift */,
@@ -2839,6 +2874,23 @@
 			name = "Habitica WidgetsExtension";
 			productName = "Habitica WidgetsExtension";
 			productReference = 29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		29D50B8E25F92E460009CF55 /* Habitica Notifications */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 29D50B9725F92E460009CF55 /* Build configuration list for PBXNativeTarget "Habitica Notifications" */;
+			buildPhases = (
+				29D50B8B25F92E460009CF55 /* Sources */,
+				29D50B8C25F92E460009CF55 /* Frameworks */,
+				29D50B8D25F92E460009CF55 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Habitica Notifications";
+			productName = "Habitica Notifications";
+			productReference = 29D50B8F25F92E460009CF55 /* Habitica Notifications.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		7A84E190228928AC0081E96F /* Habitica Intents */ = {
@@ -2937,6 +2989,7 @@
 				7A84E1A5228928AD0081E96F /* PBXTargetDependency */,
 				7A84E1A8228928AD0081E96F /* PBXTargetDependency */,
 				32C71C6925507E65007E48C5 /* PBXTargetDependency */,
+				29D50B9525F92E460009CF55 /* PBXTargetDependency */,
 			);
 			name = Habitica;
 			productName = HabitRPG;
@@ -2950,12 +3003,15 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = HRPG;
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "HabitRPG Inc.";
 				TargetAttributes = {
 					29BEE62A252CCFE100D456F8 = {
 						CreatedOnToolsVersion = 12.0.1;
+					};
+					29D50B8E25F92E460009CF55 = {
+						CreatedOnToolsVersion = 12.4;
 					};
 					7A84E190228928AC0081E96F = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -3050,6 +3106,7 @@
 				7A84E190228928AC0081E96F /* Habitica Intents */,
 				7A84E199228928AD0081E96F /* Habitica IntentsUI */,
 				29BEE62A252CCFE100D456F8 /* Habitica WidgetsExtension */,
+				29D50B8E25F92E460009CF55 /* Habitica Notifications */,
 			);
 		};
 /* End PBXProject section */
@@ -3060,6 +3117,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				29BEE634252CCFE300D456F8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29D50B8D25F92E460009CF55 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3588,6 +3652,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		29D50B8B25F92E460009CF55 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29D50BA025F92ED10009CF55 /* Strings.swift in Sources */,
+				29D50B9225F92E460009CF55 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A84E18D228928AC0081E96F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3912,6 +3985,7 @@
 				29323E352052008800AC6D6F /* UserTopHeader.swift in Sources */,
 				293BB4A51FD078EC003B6F4F /* StatsSliderView.swift in Sources */,
 				29C1360824EE917F00DBC6B3 /* UITableView-Extensions.swift in Sources */,
+				29D50B7B25F9037A0009CF55 /* AppDelegate-Notifications.swift in Sources */,
 				2927025724E3EEDE00BCAA77 /* ReportBugViewController.swift in Sources */,
 				29BEE73F252E2CC300D456F8 /* DailiesCount.intentdefinition in Sources */,
 				49EE3FD8201908AB00CD7608 /* ChallengeButtonStyleProvider.swift in Sources */,
@@ -4016,6 +4090,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		29D50B9525F92E460009CF55 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 29D50B8E25F92E460009CF55 /* Habitica Notifications */;
+			targetProxy = 29D50B9425F92E460009CF55 /* PBXContainerItemProxy */;
+		};
 		32C71C6925507E65007E48C5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = ios;
@@ -4348,6 +4427,77 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		29D50B9825F92E460009CF55 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Habitica Notifications/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Notifications";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		29D50B9925F92E460009CF55 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Habitica Notifications/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Notifications";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -5049,6 +5199,15 @@
 			buildConfigurations = (
 				29BEE63A252CCFE300D456F8 /* Debug */,
 				29BEE63B252CCFE300D456F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		29D50B9725F92E460009CF55 /* Build configuration list for PBXNativeTarget "Habitica Notifications" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				29D50B9825F92E460009CF55 /* Debug */,
+				29D50B9925F92E460009CF55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

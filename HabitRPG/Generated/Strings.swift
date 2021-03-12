@@ -184,6 +184,26 @@ public enum L10n {
   public static var currency: String { return L10n.tr("Mainstrings", "currency") }
   /// Daily
   public static var daily: String { return L10n.tr("Mainstrings", "daily") }
+  /// Want to try something new? Join a Challenge to expand your task list and win some Gems!
+  public static var dailyTip0: String { return L10n.tr("Mainstrings", "daily_tip_0") }
+  /// Add checklists to your To Do's to multiply your rewards!
+  public static var dailyTip1: String { return L10n.tr("Mainstrings", "daily_tip_1") }
+  /// You can change how often each Daily repeats. Even infrequent tasks can be scheduled.
+  public static var dailyTip2: String { return L10n.tr("Mainstrings", "daily_tip_2") }
+  /// You can schedule specific reminders for Dailies too.
+  public static var dailyTip3: String { return L10n.tr("Mainstrings", "daily_tip_3") }
+  /// Occasionally re-evaluating your tasks can help keep you on the right path.
+  public static var dailyTip4: String { return L10n.tr("Mainstrings", "daily_tip_4") }
+  /// Take a few deep breaths to help you focus. You can do this!
+  public static var dailyTip5: String { return L10n.tr("Mainstrings", "daily_tip_5") }
+  /// Try setting a timer for ten minutes and seeing how much you can get done!
+  public static var dailyTip6: String { return L10n.tr("Mainstrings", "daily_tip_6") }
+  /// Try pinning items from the Market to your Rewards to help motivate you to earn them!
+  public static var dailyTip7: String { return L10n.tr("Mainstrings", "daily_tip_7") }
+  /// You can change your task's difficulty to reward yourself more for hard tasks!
+  public static var dailyTip8: String { return L10n.tr("Mainstrings", "daily_tip_8") }
+  /// If you're having a tough time, try breaking your tasks down into smaller parts.
+  public static var dailyTip9: String { return L10n.tr("Mainstrings", "daily_tip_9") }
   /// Damage Paused
   public static var damagePaused: String { return L10n.tr("Mainstrings", "damage_paused") }
   /// Dated
@@ -978,6 +998,10 @@ public enum L10n {
   public static var `weak`: String { return L10n.tr("Mainstrings", "weak") }
   /// Wednesday
   public static var wednesday: String { return L10n.tr("Mainstrings", "wednesday") }
+  /// Breaks are healthy, but you can still earn points for simple activities to level up and get cool gear!
+  public static var weekReminderBody: String { return L10n.tr("Mainstrings", "week_reminder_body") }
+  /// How are your tasks going?
+  public static var weekReminderTitle: String { return L10n.tr("Mainstrings", "week_reminder_title") }
   /// Weekly
   public static var weekly: String { return L10n.tr("Mainstrings", "weekly") }
   /// weeks

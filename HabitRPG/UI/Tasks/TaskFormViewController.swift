@@ -38,7 +38,7 @@ enum TaskFormTags {
     static let challengeName = "challengeName"
 }
 
-//swiftlint:disable:next type_body_length
+// swiftlint:disable:next type_body_length
 class TaskFormViewController: FormViewController, Themeable {
     
     @objc var isCreating = true {
@@ -401,7 +401,7 @@ class TaskFormViewController: FormViewController, Themeable {
                                     header: L10n.Tasks.Form.checklist) { section in
                                         section.tag = TaskFormTags.checklistSection
                                         if !task.isChallengeTask {
-                                        section.addButtonProvider = { section in
+                                        section.addButtonProvider = { _ in
                                             return ButtonRow { row in
                                                 row.title = L10n.Tasks.Form.newChecklistItem
                                                 row.cellUpdate({ (cell, _) in
@@ -413,7 +413,7 @@ class TaskFormViewController: FormViewController, Themeable {
                                             }
                                         }
                                         }
-                                        section.multivaluedRowToInsertAt = { index in
+                                        section.multivaluedRowToInsertAt = { _ in
                                             return TextRow { row in
                                                 row.cellUpdate({ (cell, _) in
                                                     cell.tintColor = self.lightTaskTintColor
@@ -579,7 +579,7 @@ class TaskFormViewController: FormViewController, Themeable {
         form +++ MultivaluedSection(multivaluedOptions: [.Reorder, .Insert, .Delete],
                                     header: L10n.Tasks.Form.reminders) { section in
                                         section.tag = TaskFormTags.reminderSection
-                                        section.addButtonProvider = { section in
+                                        section.addButtonProvider = { _ in
                                             return ButtonRow { row in
                                                 row.title = L10n.Tasks.Form.newReminder
                                                 row.cellUpdate({ (cell, _) in
@@ -590,7 +590,7 @@ class TaskFormViewController: FormViewController, Themeable {
                                                 })
                                             }
                                         }
-                                        section.multivaluedRowToInsertAt = { index in
+                                        section.multivaluedRowToInsertAt = { _ in
                                             return TimeRow { row in
                                                 row.title = L10n.Tasks.Form.remindMe
                                                 row.value = Date()

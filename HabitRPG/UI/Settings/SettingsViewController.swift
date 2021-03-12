@@ -464,8 +464,8 @@ class SettingsViewController: FormViewController, Themeable {
                 })
                 row.onChange({ (row) in
                     UserDefaults().set(row.value?.value, forKey: "chosenServer")
-                    let appDelegate = UIApplication.shared.delegate as? HRPGAppDelegate
-                    appDelegate?.swiftAppDelegate.updateServer()
+                    let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate
+                    appDelegate?.updateServer()
                 })
         }
     }
@@ -550,8 +550,8 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                     let defaults = UserDefaults()
                     defaults.set(row.value ?? false, forKey: "dailyReminderActive")
-                    if let appDelegate = UIApplication.shared.delegate as? HRPGAppDelegate {
-                        appDelegate.swiftAppDelegate.rescheduleDailyReminder()
+                    if let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate {
+                        appDelegate.rescheduleDailyReminder()
                     }
                 })
             <<< TimeRow(SettingsTags.dailyReminderTime) { row in
@@ -569,8 +569,8 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                     let defaults = UserDefaults()
                     defaults.set(row.value, forKey: "dailyReminderTime")
-                    if let appDelegate = UIApplication.shared.delegate as? HRPGAppDelegate {
-                        appDelegate.swiftAppDelegate.rescheduleDailyReminder()
+                    if let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate {
+                        appDelegate.rescheduleDailyReminder()
                     }
                 })
             +++ Section(L10n.Settings.notificationBadge)

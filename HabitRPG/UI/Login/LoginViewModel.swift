@@ -354,7 +354,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                                                    additionalParameters: nil)
 
         // performs authentication request
-        if let appDelegate = UIApplication.shared.delegate as? HRPGAppDelegate {
+        if let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate {
             guard let viewController = self.viewController else {
                 return
             }

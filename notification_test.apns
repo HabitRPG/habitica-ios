@@ -1,0 +1,9 @@
+{
+    "Simulator Target Bundle": "com.habitrpg.ios.habitica",
+    "aps": {
+        "alert": {
+            "body": "This is a test",
+            "title": "Blablabal"
+        }
+    }
+}

@@ -6,10 +6,10 @@
 //  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
 
-#import "HRPGAppDelegate.h"
+#import "Habitica-Swift.h"
 
 int main(int argc, char *argv[]) {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([HRPGAppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([HabiticaAppDelegate class]));
     }
 }

@@ -21,24 +21,82 @@ import UserNotifications
 import FirebaseMessaging
 import Down
 import WidgetKit
+import FBSDKCoreKit
+import AppAuth
 
-//This will eventually replace the old ObjC AppDelegate once that code is ported to swift.
-//Reason for adding this class now is mostly, to configure PopupDialogs dim color.
-class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenterDelegate {
+class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIApplicationDelegate {
+    var window: UIWindow?
+    var currentAuthorizationFlow: OIDExternalUserAgentSession?
     
     static let possibleLaunchArgs = ["userid", "apikey"]
     
-    private let application: UIApplication
+    var application: UIApplication?
     
     private let userRepository = UserRepository()
     private let contentRepository = ContentRepository()
     private let taskRepository = TaskRepository()
     private let socialRepository = SocialRepository()
+    private let configRepository = ConfigRepository()
     
-    @objc
-    init(application: UIApplication) {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         self.application = application
-        super.init()
+        handleLaunchArgs()
+        setupLogging()
+        setupAnalytics()
+        setupRouter()
+        setupPurchaseHandling()
+        setupNetworkClient()
+        setupTheme()
+        setupDatabase()
+        setupFirebase()
+        configureNotifications()
+        
+        if let userInfo = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
+            handlePushnotification(identifier: nil, userInfo: userInfo)
+        }
+        
+        handleInitialLaunch()
+        
+        application.findKeyWindow()?.rootViewController = StoryboardScene.Intro.initialScene.instantiate()
+        
+        return true
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        setupUserManager()
+        setupTheme()
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        if currentAuthorizationFlow?.resumeExternalUserAgentFlow(with: url) == true {
+            currentAuthorizationFlow = nil
+            return true
+        }
+        let wasHandled = ApplicationDelegate.shared.application(app, open: url, options: options)
+        if !wasHandled {
+            return RouterHandler.shared.handle(url: url)
+        }
+        return wasHandled
+    }
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        if shortcutItem.type == "com.habitrpg.habitica.ios.newhabit" {
+            RouterHandler.shared.handle(urlString: "/user/tasks/habit/add")
+        } else if shortcutItem.type == "com.habitrpg.habitica.ios.newdaily" {
+            RouterHandler.shared.handle(urlString: "/user/tasks/daily/add")
+        } else if shortcutItem.type == "com.habitrpg.habitica.ios.newtodo" {
+            RouterHandler.shared.handle(urlString: "/user/tasks/todo/add")
+        }
+        completionHandler(true)
+    }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        reloadWidgetData()
+    }
+    
+    private func cleanAndRefresh() {
+        retrieveContent()
+        configRepository.fetchremoteConfig()
     }
     
     @objc
@@ -54,21 +112,16 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     
     @objc
     func setupFirebase() {
-        // For iOS 10 display notification (sent via APNS)
-        UNUserNotificationCenter.current().delegate = self
-        
-        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-        UNUserNotificationCenter.current().requestAuthorization(
-            options: authOptions,
-            completionHandler: { _, _ in })
-        
-        application.registerForRemoteNotifications()
         Messaging.messaging().delegate = self
         
         let userDefaults = UserDefaults.standard
         Analytics.setUserProperty(LanguageHandler.getAppLanguage().code, forName: "app_language")
         Analytics.setUserProperty(UIApplication.shared.alternateIconName, forName: "app_icon")
         Analytics.setUserProperty(userDefaults.string(forKey: "initialScreenURL"), forName: "launch_screen")
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        
     }
     
     @objc
@@ -97,7 +150,9 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     
     @objc
     func setupPurchaseHandling() {
-        PurchaseHandler.shared.completionHandler()
+        #if !targetEnvironment(simulator)
+            PurchaseHandler.shared.completionHandler()
+        #endif
     }
     
     @objc
@@ -206,47 +261,24 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
             defaults.set(true, forKey: "dailyReminderActive")
             defaults.set(newDate, forKey: "dailyReminderTime")
             defaults.set(true, forKey: "appBadgeActive")
-            UIApplication.shared.cancelAllLocalNotifications()
+            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             
             rescheduleDailyReminder()
         } else {
             guard let url = defaults.string(forKey: "initialScreenURL") else {
                 return
             }
-            let appDelegate = UIApplication.shared.delegate as? HRPGAppDelegate
-            if let loadingViewcontroller = appDelegate?.window?.rootViewController as? LoadingViewController {
+            if let loadingViewcontroller = UIApplication.shared.findKeyWindow()?.rootViewController as? LoadingViewController {
                 loadingViewcontroller.loadingFinishedAction = {
                     RouterHandler.shared.handle(urlString: url)
                 }
             }
         }
     }
-    
-    @objc
-    func rescheduleDailyReminder() {
-        let defaults = UserDefaults.standard
-        
-        let sharedApplication = UIApplication.shared
-        for localNotification in sharedApplication.scheduledLocalNotifications ?? [] {
-            if (localNotification.userInfo?["id"] as? String ?? "").isEmpty || (localNotification.userInfo?["isDailyNotification"] as? Bool) == true {
-                sharedApplication.cancelLocalNotification(localNotification)
-            }
-        }
-        
-        if defaults.bool(forKey: "dailyReminderActive"), let date = defaults.value(forKey: "dailyReminderTime") as? Date {
-            let localNotification = UILocalNotification()
-            localNotification.fireDate = date
-            localNotification.repeatInterval = .day
-            localNotification.alertBody = L10n.rememberCheckOffDailies
-            localNotification.soundName = UILocalNotificationDefaultSoundName
-            localNotification.timeZone = NSTimeZone.default
-            UIApplication.shared.scheduleLocalNotification(localNotification)
-        }
-    }
 
     @objc
     func handleMaintenanceScreen() -> Bool {
-        let maintenanceData = ConfigRepository().dictionary(variable: .maintenanceData)
+        let maintenanceData = configRepository.dictionary(variable: .maintenanceData)
         if let title = maintenanceData["title"] as? String, let descriptionString = maintenanceData["description"] as? String {
             displayMaintenanceScreen(title: title, descriptionString: descriptionString)
             return true

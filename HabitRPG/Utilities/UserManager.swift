@@ -199,31 +199,23 @@ class UserManager: NSObject {
     }
     
     private func removeAllReminderNotifications() {
-        let sharedApplication = UIApplication.shared
-        for notification in (sharedApplication.scheduledLocalNotifications ?? []) where notification.userInfo?["ID"] != nil {
-            sharedApplication.cancelLocalNotification(notification)
-        }
-    }
-    
-    private func removeReminderNotifications(ids: [String]) {
-        let sharedApplication = UIApplication.shared
-        for notification in (sharedApplication.scheduledLocalNotifications ?? []) {
-            if let reminderID = notification.userInfo?["ID"] as? String, reminderID.isEmpty == false {
-                if ids.contains(reminderID) {
-                    sharedApplication.cancelLocalNotification(notification)
-                }
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
+            var toCancel = [String]()
+            for request in requests where UUID(uuidString: request.identifier) != nil {
+                toCancel.append(request.identifier)
             }
-        }
+            notificationCenter.removePendingNotificationRequests(withIdentifiers: toCancel)
+        })
     }
     
-    private func scheduleNotifications(reminder: ReminderProtocol, existingNotifications: [UILocalNotification] = []) {
+    private func scheduleNotifications(reminder: ReminderProtocol) {
         guard let task = reminder.task else {
             return
         }
         if reminder.id == nil || reminder.id?.isEmpty == true {
             return
         }
-        var newNotifications = [UILocalNotification?]()
         if task.type == TaskType.daily {
             let calendar = Calendar(identifier: .gregorian)
             for day in 0...6 {
@@ -232,27 +224,21 @@ class UserManager: NSObject {
                 }
                 let checkedDate = Date(timeIntervalSinceNow: TimeInterval(day * 86400))
                 if (task.isDue && day == 0) || task.dueOn(date: checkedDate, calendar: calendar) {
-                    newNotifications.append(scheduleForDay(reminder: reminder, date: checkedDate, atTime: reminder.time, existingNotifications: existingNotifications))
+                    scheduleForDay(reminder: reminder, date: checkedDate, atTime: reminder.time)
                 }
             }
         } else if task.type == TaskType.todo, let time = reminder.time {
             if time > Date() {
-                newNotifications.append(scheduleForDay(reminder: reminder, date: time))
-            }
-        }
-        let sharedApplication = UIApplication.shared
-        existingNotifications.forEach { (oldNotification) in
-            if !newNotifications.contains(oldNotification) {
-                sharedApplication.cancelLocalNotification(oldNotification)
+                scheduleForDay(reminder: reminder, date: time)
             }
         }
     }
     
-    private func scheduleForDay(reminder: ReminderProtocol, date: Date, atTime: Date? = nil, existingNotifications: [UILocalNotification] = []) -> UILocalNotification? {
+    private func scheduleForDay(reminder: ReminderProtocol, date: Date, atTime: Date? = nil) {
         var fireDate = date
+        let calendar = Calendar(identifier: .gregorian)
+        var components = calendar.dateComponents([.year, .month, .day], from: date)
         if let atTime = atTime {
-            let calendar = Calendar.current
-            var components = calendar.dateComponents([.year, .month, .day], from: date)
             let timeComponents = calendar.dateComponents([.hour, .minute], from: atTime)
             components.hour = timeComponents.hour
             components.minute = timeComponents.minute
@@ -263,33 +249,27 @@ class UserManager: NSObject {
         }
         
         if fireDate < Date() {
-            return nil
+            return
         }
         
         let taskText = reminder.task?.text?.unicodeEmoji
-        if let notification = existingNotifications.first(where: { (notification) -> Bool in
-            return notification.fireDate == fireDate && notification.alertBody == taskText
-        }) {
-            return notification
-        }
         
-        let localNotification = UILocalNotification()
-        localNotification.fireDate = fireDate
-        localNotification.alertBody = taskText
-        localNotification.timeZone = TimeZone.current
+        let content = UNMutableNotificationContent()
+        content.body = taskText ?? ""
+        content.sound = UNNotificationSound.default
         if let taskID = reminder.task?.id, let taskType = reminder.task?.type {
-            localNotification.userInfo = [
+            content.userInfo = [
                 "ID": reminder.id ?? "",
                 "taskID": taskID,
                 "taskType": taskType
             ]
         } else {
-            localNotification.userInfo = [ "ID": reminder.id ?? "" ]
+            content.userInfo = [ "ID": reminder.id ?? "" ]
         }
-        localNotification.soundName = UILocalNotificationDefaultSoundName
-        localNotification.category = "completeCategory"
-        UIApplication.shared.scheduleLocalNotification(localNotification)
-        return localNotification
+        content.categoryIdentifier = "completeCategory"
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+        let request = UNNotificationRequest(identifier: "", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
     private func setTimezoneOffset(_ user: UserProtocol) {
