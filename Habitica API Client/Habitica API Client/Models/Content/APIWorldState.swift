@@ -15,6 +15,7 @@ public class APIWorldStateEvent: WorldStateEventProtocol, Decodable {
     public var start: Date?
     public var end: Date?
     public var npcImageSuffix: String?
+    public var aprilFools: String?
     
     enum CodingKeys: String, CodingKey {
         case event
@@ -22,6 +23,7 @@ public class APIWorldStateEvent: WorldStateEventProtocol, Decodable {
         case start
         case end
         case npcImageSuffix
+        case aprilFools
     }
     
     public required init(from decoder: Decoder) throws {
@@ -31,6 +33,7 @@ public class APIWorldStateEvent: WorldStateEventProtocol, Decodable {
         start = try? values.decode(Date.self, forKey: .start)
         end = try? values.decode(Date.self, forKey: .end)
         npcImageSuffix = try? values.decode(String.self, forKey: .npcImageSuffix)
+        aprilFools = try? values.decode(String.self, forKey: .aprilFools)
     }
 }
 
@@ -44,7 +47,7 @@ public class APIWorldState: WorldStateProtocol, Decodable {
         case worldBoss
         case npcImageSuffix
         case currentEvent
-        case events
+        case currentEventList
     }
     
     public required init(from decoder: Decoder) throws {
@@ -52,6 +55,6 @@ public class APIWorldState: WorldStateProtocol, Decodable {
         worldBoss = try? values.decode(APIQuestState.self, forKey: .worldBoss)
         npcImageSuffix = try? values.decode(String.self, forKey: .npcImageSuffix)
         currentEvent = try? values.decode(APIWorldStateEvent.self, forKey: .currentEvent)
-        events = (try? values.decode([APIWorldStateEvent].self, forKey: .events)) ?? []
+        events = (try? values.decode([APIWorldStateEvent].self, forKey: .currentEventList)) ?? []
     }
 }

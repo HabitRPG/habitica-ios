@@ -21,4 +21,5 @@ public protocol WorldStateEventProtocol {
     var end: Date? { get set }
     var promo: String? { get set }
     var npcImageSuffix: String? { get set }
+    var aprilFools: String? { get set }
 }

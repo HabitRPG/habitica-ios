@@ -40,7 +40,7 @@ class AvatarView: UIView {
     private var nameDictionary: [String: String?] = [:]
     private var viewDictionary: [String: Bool] = [:]
     
-    private let viewOrder = [
+    private static let viewOrder = [
         "background",
         "mount-body",
         "chair",
@@ -66,6 +66,8 @@ class AvatarView: UIView {
         "knockout",
         "pet"
     ]
+    
+    static var imageFilters: [String: (UIImage) -> UIImage] = [:]
     
     lazy private var constraintsDictionary = [
         "background": backgroundConstraints,
@@ -168,7 +170,7 @@ class AvatarView: UIView {
     }
     
     private func setupSubviews() {
-        viewOrder.forEach({ (_) in
+        AvatarView.viewOrder.forEach({ (_) in
             let imageView = NetworkImageView()
             addSubview(imageView)
             imageViews.append(imageView)
@@ -181,7 +183,7 @@ class AvatarView: UIView {
         }
         viewDictionary = avatar.getViewDictionary(showsBackground: showBackground, showsMount: showMount, showsPet: showPet, isFainted: isFainted, ignoreSleeping: ignoreSleeping)
 
-        viewOrder.enumerated().forEach({ (index, type) in
+        AvatarView.viewOrder.enumerated().forEach({ (index, type) in
             if viewDictionary[type] ?? false {
                 let imageView = imageViews[index]
                 imageView.isHidden = false
@@ -208,6 +210,10 @@ class AvatarView: UIView {
             if let image = image, type != "background" {
                 self.resize(view: imageView, image: image, size: self.size)
                 self.setLayout(imageView, type: type)
+                
+                if let filter = AvatarView.imageFilters[type] {
+                    imageView.image = filter(image)
+                }
             }
             if error != nil {
                 print(error?.localizedDescription ?? "")
@@ -221,7 +227,7 @@ class AvatarView: UIView {
     }
     
     private func layout() {
-        viewOrder.enumerated().forEach({ (index, type) in
+        AvatarView.viewOrder.enumerated().forEach({ (index, type) in
             if viewDictionary[type] ?? false {
                 let imageView = imageViews[index]
                 imageView.isHidden = false
