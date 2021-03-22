@@ -18,6 +18,7 @@ class LoadingViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var userRepository: UserRepository?
+    private var configRepository = ConfigRepository()
     private let disposable = CompositeDisposable()
     
     private var wasDismissed = false
@@ -53,9 +54,24 @@ class LoadingViewController: UIViewController {
                 segueForLoggedInUser()
             }
         } else {
-            perform(segue: StoryboardSegue.Intro.introSegue)
+            if ConfigRepository.hasFetched {
+                completeInitialLaunch()
+            } else {
+                ConfigRepository.onFetchCompleted = {
+                    self.completeInitialLaunch()
+                }
+            }
+            
         }
         super.viewDidAppear(animated)
+    }
+    
+    private func completeInitialLaunch() {
+        if configRepository.bool(variable: .disableIntroSlides) {
+            perform(segue: StoryboardSegue.Intro.loginSegue)
+        } else {
+            perform(segue: StoryboardSegue.Intro.introSegue)
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {

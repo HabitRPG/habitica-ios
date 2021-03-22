@@ -12,7 +12,7 @@ import Habitica_Models
 
 @objc
 enum ConfigVariable: Int {
-    //Permanent config variables
+    // Permanent config variables
     case supportEmail
     case twitterUsername
     case instagramUsername
@@ -34,13 +34,14 @@ enum ConfigVariable: Int {
     case customMenu
     case maintenanceData
     
-    //A/B Tests
+    // A/B Tests
     case enableAdventureGuide
     case enableUsernameAutocomplete
     case disableChallenges
     case reorderMenu
     case enableIPadUI
     case showQuestInMenu
+    case disableIntroSlides
 
     // swiftlint:disable cyclomatic_complexity
     func name() -> String {
@@ -71,6 +72,7 @@ enum ConfigVariable: Int {
         case .reorderMenu: return "reorderMenu"
         case .enableIPadUI: return "enableIpadUI"
         case .showQuestInMenu: return "showQuestInMenu"
+        case .disableIntroSlides: return "disableIntroSlides"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -127,6 +129,8 @@ enum ConfigVariable: Int {
             return false as NSNumber
         case .showQuestInMenu:
             return false as NSNumber
+        case .disableIntroSlides:
+            return false as NSNumber
         }
     }
     
@@ -155,7 +159,8 @@ enum ConfigVariable: Int {
             .maintenanceData,
             .reorderMenu,
             .enableIPadUI,
-            showQuestInMenu
+            showQuestInMenu,
+            disableIntroSlides
         ]
     }
     // swiftlint:enable cyclomatic_complexity
@@ -170,21 +175,32 @@ class ConfigRepository: NSObject {
 
     private var worldState: WorldStateProtocol?
     
+    static var onFetchCompleted: (() -> Void)?
+    static var hasFetched: Bool {
+        return remoteConfig.lastFetchStatus == .success
+    }
     @objc
     func fetchremoteConfig() {
         ConfigRepository.remoteConfig.fetch(withExpirationDuration: HabiticaAppDelegate.isRunningLive() ? 3600 : 0) { (_, _) in
-            ConfigRepository.remoteConfig.activate(completion: nil)
+            ConfigRepository.remoteConfig.activate(completion: { _, _ in
+                if let action = ConfigRepository.onFetchCompleted {
+                    action()
+                }
+            })
         }
         var defaults = [String: NSObject]()
         for variable in ConfigVariable.allVariables() {
             defaults[variable.name()] = variable.defaultValue()
         }
         ConfigRepository.remoteConfig.setDefaults(defaults)
-        
-        
-            contentRepository.getWorldState().on(value: {[weak self] state in
-                self?.worldState = state
-            }).start()
+        contentRepository.getWorldState().on(value: {[weak self] state in
+            self?.worldState = state
+            for event in state.events {
+                if let aprilFools = event.aprilFools {
+                    EventHelper.setup(event: aprilFools, endDate: event.end)
+                }
+            }
+        }).start()
     }
 
     @objc

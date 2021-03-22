@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,6 +18,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_bg" translatesAutoresizingMaskIntoConstraints="NO" id="zzf-Ms-aKz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_logo" translatesAutoresizingMaskIntoConstraints="NO" id="VYm-Tu-aaY">
                         <rect key="frame" x="105" y="144" width="165" height="140"/>
                         <constraints>
@@ -28,7 +31,11 @@
                 </subviews>
                 <color key="backgroundColor" red="0.31023409959999998" green="0.1661486328" blue="0.57239967579999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="zzf-Ms-aKz" secondAttribute="bottom" id="2xx-cR-rKm"/>
+                    <constraint firstItem="zzf-Ms-aKz" firstAttribute="top" secondItem="akb-tb-YfK" secondAttribute="top" id="7Fm-rc-MQx"/>
                     <constraint firstItem="VYm-Tu-aaY" firstAttribute="centerX" secondItem="akb-tb-YfK" secondAttribute="centerX" id="8K6-bI-S0P"/>
+                    <constraint firstAttribute="trailing" secondItem="zzf-Ms-aKz" secondAttribute="trailing" id="YEk-uW-krF"/>
+                    <constraint firstItem="zzf-Ms-aKz" firstAttribute="leading" secondItem="akb-tb-YfK" secondAttribute="leading" id="d85-95-6Qm"/>
                     <constraint firstItem="VYm-Tu-aaY" firstAttribute="top" secondItem="Cr3-tQ-hPU" secondAttribute="bottom" constant="100" id="nxQ-My-Hbs"/>
                 </constraints>
             </view>
@@ -36,6 +43,7 @@
         </viewController>
     </objects>
     <resources>
+        <image name="launch_bg" width="414" height="736"/>
         <image name="launch_logo" width="165" height="140"/>
     </resources>
 </document>

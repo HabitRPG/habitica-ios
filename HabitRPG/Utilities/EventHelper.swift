@@ -19,7 +19,7 @@ class EventHelper {
     }
     
     private static func setupInvertedAprilFools(endDate: Date?) {
-        AvatarView.imageFilters["pets"] = { image in
+        AvatarView.imageFilters["pet"] = { image in
             if endDate?.compare(Date()) != .orderedDescending {
                 return image
             }

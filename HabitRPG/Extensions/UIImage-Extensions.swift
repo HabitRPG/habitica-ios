@@ -25,9 +25,12 @@ extension UIImage {
     
     func inverted() -> UIImage? {
         if let filter = CIFilter(name: "CIColorInvert") {
-            filter.setValue(self, forKey: kCIInputImageKey)
+            filter.setValue(CIImage(image: self), forKey: kCIInputImageKey)
             if let image = filter.outputImage {
-                return UIImage(ciImage: image)
+                let context = CIContext()
+                if let cgImage = context.createCGImage(image, from: image.extent) {
+                    return UIImage(cgImage: cgImage)
+                }
             }
         }
         return nil

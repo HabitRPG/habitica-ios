@@ -23,10 +23,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="GeH-AC-vCO">
-                                <rect key="frame" x="141.5" y="248" width="37" height="37"/>
+                                <rect key="frame" x="141.5" y="244" width="37" height="37"/>
                             </activityIndicatorView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_logo" translatesAutoresizingMaskIntoConstraints="NO" id="56g-ur-5TX">
-                                <rect key="frame" x="77.5" y="100" width="165" height="140"/>
+                                <rect key="frame" x="77.5" y="96" width="165" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="dzM-I8-kFu"/>
                                     <constraint firstAttribute="width" constant="165" id="eIR-4r-nB9"/>
@@ -37,7 +37,7 @@
                         <constraints>
                             <constraint firstItem="GeH-AC-vCO" firstAttribute="centerX" secondItem="F88-NI-vdf" secondAttribute="centerX" id="0QI-y6-UK2"/>
                             <constraint firstItem="uxj-i6-Ftu" firstAttribute="top" secondItem="F88-NI-vdf" secondAttribute="firstBaseline" id="4DM-dX-9we"/>
-                            <constraint firstItem="56g-ur-5TX" firstAttribute="top" secondItem="HOh-YP-nne" secondAttribute="bottom" constant="100" id="MD5-jc-OWp"/>
+                            <constraint firstItem="56g-ur-5TX" firstAttribute="top" secondItem="HOh-YP-nne" secondAttribute="bottom" constant="96" id="MD5-jc-OWp"/>
                             <constraint firstItem="GeH-AC-vCO" firstAttribute="top" secondItem="56g-ur-5TX" secondAttribute="bottom" constant="8" id="fV1-Tx-oMR"/>
                             <constraint firstItem="uxj-i6-Ftu" firstAttribute="leading" secondItem="F88-NI-vdf" secondAttribute="leading" id="lIh-0D-WrD"/>
                             <constraint firstAttribute="bottom" secondItem="uxj-i6-Ftu" secondAttribute="bottom" id="rPN-Th-N0m"/>
@@ -51,6 +51,7 @@
                         <segue destination="0Ix-Uy-5zN" kind="presentation" identifier="IntroSegue" animates="NO" modalPresentationStyle="fullScreen" id="8cI-OH-Ddw"/>
                         <segue destination="qul-kf-4Gi" kind="presentation" identifier="InitialSegue" customClass="MainVCSelectionSegue" customModule="Habitica" customModuleProvider="target" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Z2J-RM-J8b"/>
                         <segue destination="v9W-i7-og5" kind="presentation" identifier="SetupSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Zxx-A1-MXZ"/>
+                        <segue destination="MVV-J1-w4Z" kind="presentation" identifier="LoginSegue" id="mTS-Zt-np2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="us7-8q-KcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -66,14 +67,14 @@
                         <viewControllerLayoutGuide type="bottom" id="Lsz-rs-reS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="LgY-Wx-7fl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHc-yB-sBi">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yjQ-YG-PfK" customClass="GradientView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="852"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="822"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="startColor">
@@ -85,20 +86,20 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="SNG-tQ-QdC">
-                                        <rect key="frame" x="0.0" y="602" width="320" height="300"/>
+                                        <rect key="frame" x="0.0" y="572" width="320" height="300"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="BPm-L6-m5f"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud1" translatesAutoresizingMaskIntoConstraints="NO" id="qPb-EC-8mn">
-                                        <rect key="frame" x="-109" y="345" width="240" height="87"/>
+                                        <rect key="frame" x="-109" y="315" width="240" height="87"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="87" id="b2k-rs-3w8"/>
                                             <constraint firstAttribute="width" constant="240" id="lUT-9d-4c1"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud2" translatesAutoresizingMaskIntoConstraints="NO" id="zQm-MY-iyJ">
-                                        <rect key="frame" x="157" y="322" width="273" height="90"/>
+                                        <rect key="frame" x="157" y="292" width="273" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="273" id="K1D-rx-Onl"/>
                                             <constraint firstAttribute="height" constant="90" id="hcl-Vv-w43"/>
@@ -121,7 +122,7 @@
                                 </constraints>
                             </scrollView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2a-jv-aOl">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="QC8-Jd-4Uw">
                                         <rect key="frame" x="40" y="198" width="240" height="549"/>
@@ -1533,9 +1534,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5Hb-dX-OsZ"/>
-        <segue reference="aKA-6e-Im9"/>
-        <segue reference="6ya-X1-F2T"/>
+        <segue reference="Zxx-A1-MXZ"/>
+        <segue reference="Z2J-RM-J8b"/>
+        <segue reference="mTS-Zt-np2"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Cloud1" width="240" height="87"/>

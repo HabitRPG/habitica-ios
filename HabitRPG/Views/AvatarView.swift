@@ -206,19 +206,18 @@ class AvatarView: UIView {
         guard let name = nameDictionary[type] else {
             return
         }
-        imageView.setImagewith(name: name, completion: { image, error in
-            if let image = image, type != "background" {
-                self.resize(view: imageView, image: image, size: self.size)
-                self.setLayout(imageView, type: type)
-                
-                if let filter = AvatarView.imageFilters[type] {
-                    imageView.image = filter(image)
-                }
+        ImageManager.getImage(name: name ?? "") { image, _ in
+            guard let image = image else {
+                return
             }
-            if error != nil {
-                print(error?.localizedDescription ?? "")
+            if let filter = AvatarView.imageFilters[type] {
+                imageView.image = filter(image)
+            } else {
+                imageView.image = image
             }
-        })
+            self.resize(view: imageView, image: image, size: self.size)
+            self.setLayout(imageView, type: type)
+        }
     }
     
     override func layoutSubviews() {
