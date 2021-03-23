@@ -89,7 +89,14 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
             let searchText = ((animal.type == "special" || animal.type == "wacky") ? animal.key : (organizeByColor ? animal.potion : animal.egg)) ?? ""
             
             if item?.text == nil || item?.text != displayText {
-                item = StableOverviewItem(imageName: getImageName(animal), text: displayText, numberOwned: 0, totalNumber: 0, searchKey: searchText, type: animal.type ?? "", animal: animal.egg ?? "", color: animal.potion ?? "")
+                item = StableOverviewItem(imageName: getImageName(animal),
+                                          text: displayText,
+                                          numberOwned: 0,
+                                          totalNumber: 0,
+                                          searchKey: searchText,
+                                          type: animal.type ?? "",
+                                          animal: animal.egg ?? "",
+                                          color: animal.potion ?? "")
                 if let item = item {
                     data[type]?.append(item)
                 }
@@ -125,6 +132,7 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
         if kind == UICollectionView.elementKindSectionHeader {
             let label = view.viewWithTag(1) as? UILabel
             label?.text = visibleSections[indexPath.section].title
+            label?.textColor = ThemeService.shared.theme.secondaryTextColor
             let countLabel = view.viewWithTag(2) as? UILabel
             countLabel?.textColor = ThemeService.shared.theme.ternaryTextColor
             view.viewWithTag(3)?.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor

@@ -137,6 +137,7 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
         if kind == UICollectionView.elementKindSectionHeader {
             let label = view.viewWithTag(1) as? UILabel
             label?.text = visibleSections[indexPath.section].title
+            label?.textColor = ThemeService.shared.theme.secondaryTextColor
             let countLabel = view.viewWithTag(2) as? UILabel
             countLabel?.textColor = ThemeService.shared.theme.ternaryTextColor
             view.viewWithTag(3)?.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
