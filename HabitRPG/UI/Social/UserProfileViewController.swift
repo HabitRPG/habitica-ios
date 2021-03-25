@@ -132,7 +132,7 @@ class UserProfileViewController: BaseTableViewController {
         }
     }
     
-    //swiftlint:disable:next cyclomatic_complexity
+    // swiftlint:disable:next cyclomatic_complexity
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cellname = "Cell"
         switch indexPath.section {

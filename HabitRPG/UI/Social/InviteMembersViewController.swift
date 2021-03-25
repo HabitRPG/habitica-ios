@@ -78,7 +78,7 @@ class InviteMembersViewController: FormViewController {
                                     header: L10n.username) { section in
                                         section.tag = InviteMembersFormTags.usernameSection
 
-                                        section.addButtonProvider = { section in
+                                        section.addButtonProvider = { _ in
                                             return ButtonRow { row in
                                                 row.title = L10n.Groups.Invite.addUsername
                                                 row.cellSetup({ (cell, _) in
@@ -86,7 +86,7 @@ class InviteMembersViewController: FormViewController {
                                                 })
                                             }
                                         }
-                                        section.multivaluedRowToInsertAt = { index in
+                                        section.multivaluedRowToInsertAt = { _ in
                                             return TextRow { row in
                                                 row.cellSetup({ (cell, _) in
                                                     cell.tintColor = ThemeService.shared.theme.tintColor
@@ -99,7 +99,7 @@ class InviteMembersViewController: FormViewController {
                                     header: L10n.email) { section in
                                         section.tag = InviteMembersFormTags.emailsSection
                                         
-                                        section.addButtonProvider = { section in
+                                        section.addButtonProvider = { _ in
                                             return ButtonRow { row in
                                                 row.title = L10n.Groups.Invite.addEmail
                                                 row.cellSetup({ (cell, _) in
@@ -107,7 +107,7 @@ class InviteMembersViewController: FormViewController {
                                                 })
                                             }
                                         }
-                                        section.multivaluedRowToInsertAt = { index in
+                                        section.multivaluedRowToInsertAt = { _ in
                                             return TextRow { row in
                                                 row.cellSetup({ (cell, _) in
                                                     cell.tintColor = ThemeService.shared.theme.tintColor

@@ -106,8 +106,8 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
         if userDrivenDataUpdate {
             return
         }
-        //reload the whole tableview for now, since using the animations can cause issues
-        //see https://github.com/realm/realm-cocoa/issues/4425
+        // reload the whole tableview for now, since using the animations can cause issues
+        // see https://github.com/realm/realm-cocoa/issues/4425
         /*if changes.initial == true {
          checkForEmpty()
          tableView?.reloadData()

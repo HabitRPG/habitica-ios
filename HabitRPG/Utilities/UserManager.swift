@@ -115,7 +115,7 @@ class UserManager: NSObject {
         
         faintViewController = checkFainting(user: user)
         
-        let wasShown = checkClassSelection(user: user)
+        _ = checkClassSelection(user: user)
         
         handleQuestCompletion(user)
         

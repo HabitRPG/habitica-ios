@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 
-class RealmGroup: Object, GroupProtocol {    
+class RealmGroup: Object, GroupProtocol {
     @objc dynamic var id: String?
     @objc dynamic var name: String?
     @objc dynamic var groupDescription: String?

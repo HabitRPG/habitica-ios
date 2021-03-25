@@ -153,7 +153,7 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
             // start watching for a change in the local repo for todo items
             let taskSignalProducer = self.getTasks(predicate: NSPredicate(format: "type == 'todo'"))
             var disposable: Disposable?
-            disposable = taskSignalProducer.on(value: {[weak self](tasks, changes) in
+            disposable = taskSignalProducer.on(value: { (tasks, changes) in
                 var titles: [String] = []
                 tasks.forEach({(task) in
                     if let taskTitle = task.text {

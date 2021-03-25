@@ -79,7 +79,6 @@ class ChallengeDetailAlert: UIViewController {
         ownerLabel.text = challenge.leaderName?.unicodeEmoji
         gemLabel.text = String(challenge.prize)
         memberCountLabel.text = String(challenge.memberCount)
-        //isMember = challenge.user != nil
 
         habitsList.configure(tasks: challenge.habits.sorted(by: { (first, second) -> Bool in
             first.order < second.order

@@ -10,7 +10,7 @@ import UIKit
 
 class SubscriptionOptionView: UITableViewCell {
 
-    //swiftlint:disable private_outlet
+    // swiftlint:disable private_outlet
     @IBOutlet weak var wrapperView: UIView!
     @IBOutlet weak var selectionView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
@@ -18,7 +18,7 @@ class SubscriptionOptionView: UITableViewCell {
     @IBOutlet weak var gemCapLabel: PaddedLabel!
     @IBOutlet weak var mysticHourglassLabel: PaddedLabel!
     @IBOutlet weak var flagView: FlagView!
-    //swiftlint:enable private_outlet
+    // swiftlint:enable private_outlet
     
     private var isAlreadySelected = false
 
@@ -71,7 +71,8 @@ class SubscriptionOptionView: UITableViewCell {
         case 12:
             setGemCap(45)
             setHourglassCount(4)
-        default: break
+        default:
+            break
         }
     }
 

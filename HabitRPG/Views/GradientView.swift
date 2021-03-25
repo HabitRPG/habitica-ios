@@ -46,7 +46,7 @@ class GradientView: UIView {
     override class var layerClass: AnyClass { return CAGradientLayer.self }
     
     @objc var gradientLayer: CAGradientLayer {
-        //swiftlint:disable:next force_cast
+        // swiftlint:disable:next force_cast
         return layer as! CAGradientLayer
     }
     

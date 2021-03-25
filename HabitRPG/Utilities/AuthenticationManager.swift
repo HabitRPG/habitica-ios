@@ -94,7 +94,7 @@ class AuthenticationManager: NSObject {
 
     @objc
     func clearAuthentication(userId: String) {
-        //Will be used once we support multiple users
+        // Will be used once we support multiple users
         clearAuthenticationForAllUsers()
     }
 }

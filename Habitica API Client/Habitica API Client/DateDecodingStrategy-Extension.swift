@@ -37,7 +37,7 @@ extension JSONDecoder {
                 return date
             }
             
-            //This is sometimes used for the `nextDue` dates
+            // This is sometimes used for the `nextDue` dates
             var splitString = dateStr.split(separator: " ")
             if splitString.count == 6 {
                 splitString[5] = splitString[5].trimmingCharacters(in: CharacterSet(charactersIn: "01234567890+").inverted).split(separator: " ")[0]
@@ -47,7 +47,7 @@ extension JSONDecoder {
                 }
             }
             
-            //Various formats for just the day
+            // Various formats for just the day
             dateFormatter.dateFormat = "yyyy-MM-dd"
             if let date = dateFormatter.date(from: dateStr) {
                 return date
@@ -71,7 +71,7 @@ extension JSONDecoder {
                 return date
             }
             
-            //RemoteLogger.shared.record(name: "DateParserException", reason: "Date \(dateStr) could not be parsed")
+            // RemoteLogger.shared.record(name: "DateParserException", reason: "Date \(dateStr) could not be parsed")
             
             return Date(timeIntervalSince1970: 0)
         })

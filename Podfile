@@ -32,7 +32,6 @@ target 'Habitica' do
   pod 'KeychainAccess'
   pod 'VTAcknowledgementsViewController'
   pod 'DateTools'
-  pod 'XLForm'
   pod 'FLEX', '~> 3.0', :configurations => ['Debug']
   pod 'MRProgress'
   pod 'KLCPopup'

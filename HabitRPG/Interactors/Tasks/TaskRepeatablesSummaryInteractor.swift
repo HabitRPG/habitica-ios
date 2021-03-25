@@ -146,7 +146,7 @@ class TaskRepeatablesSummaryInteractor: NSObject {
         super.init()
     }
 
-    //swiftlint:disable function_parameter_count
+    // swiftlint:disable function_parameter_count
     func repeatablesSummary(frequency: String?,
                             everyX: Int?,
                             monday: Bool?,
@@ -173,7 +173,7 @@ class TaskRepeatablesSummaryInteractor: NSObject {
                                   weeksOfMonth: weeksOfMonth)
         return self.repeatablesSummary(task)
     }
-    //swiftlint:enable function_parameter_count
+    // swiftlint:enable function_parameter_count
 
     @objc
     func repeatablesSummary(_ task: TaskProtocol) -> String {

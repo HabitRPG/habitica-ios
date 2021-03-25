@@ -86,19 +86,19 @@ class BulkStatsAllocationViewController: UIViewController, Themeable {
             perceptionSliderView.originalValue = stats.perception
         }
         
-        strengthSliderView.allocateAction = {[weak self] value in
+        strengthSliderView.allocateAction = {[weak self] _ in
             self?.checkRedistribution(excludedSlider: self?.strengthSliderView)
             self?.updateAllocatedCountLabel()
         }
-        intelligenceSliderView.allocateAction = {[weak self] value in
+        intelligenceSliderView.allocateAction = {[weak self] _ in
             self?.checkRedistribution(excludedSlider: self?.intelligenceSliderView)
             self?.updateAllocatedCountLabel()
         }
-        constitutionSliderView.allocateAction = {[weak self] value in
+        constitutionSliderView.allocateAction = {[weak self] _ in
             self?.checkRedistribution(excludedSlider: self?.constitutionSliderView)
             self?.updateAllocatedCountLabel()
         }
-        perceptionSliderView.allocateAction = {[weak self] value in
+        perceptionSliderView.allocateAction = {[weak self] _ in
             self?.checkRedistribution(excludedSlider: self?.perceptionSliderView)
             self?.updateAllocatedCountLabel()
         }

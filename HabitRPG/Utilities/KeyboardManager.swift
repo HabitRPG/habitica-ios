@@ -52,13 +52,13 @@ class KeyboardManager: NSObject {
 }
 
 private class ObservingView<T: UIView> {
-  weak var value : T?
+  weak var value: T?
   init (value: T) {
     self.value = value
   }
 }
 
-private extension Array where Element:ObservingView<UIView> {
+private extension Array where Element: ObservingView<UIView> {
   mutating func reap () {
     self = self.filter { nil != $0.value }
   }

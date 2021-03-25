@@ -21,7 +21,7 @@ public class HabiticaAnalytics {
             "eventAction": "navigate",
             "eventCategory": "navigation",
             "hitType": "pageview",
-            "page": pageName,
+            "page": pageName
         ]
         Amplitude.instance()?.logEvent("navigate", withEventProperties: properties)
     }

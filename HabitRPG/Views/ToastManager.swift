@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-//swiftlint:disable:next attributes
+// swiftlint:disable:next attributes
 @objc public enum ToastColor: Int {
     case blue = 0, green, red, gray, yellow, purple
     

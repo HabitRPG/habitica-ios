@@ -20,7 +20,6 @@ class RealmTag: Object, TagProtocol {
         return "id"
     }
     
-    
     var isValid: Bool {
         return !isInvalidated
     }

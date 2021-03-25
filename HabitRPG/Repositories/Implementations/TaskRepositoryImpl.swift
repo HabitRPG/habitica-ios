@@ -77,7 +77,9 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     private var userLevel: Int?
     
     func score(task: TaskProtocol, direction: TaskScoringDirection) -> Signal<TaskResponseProtocol?, Never> {
-        if !task.isValid { return Signal.empty }
+        if !task.isValid {
+            return Signal.empty
+        }
         UIImpactFeedbackGenerator.oneShotImpactOccurred(.light)
         return ScoreTaskCall(task: task, direction: direction).objectSignal.withLatest(from: localRepository.getUserStats(id: AuthenticationManager.shared.currentUserId ?? "")
             .flatMapError({ (_) in

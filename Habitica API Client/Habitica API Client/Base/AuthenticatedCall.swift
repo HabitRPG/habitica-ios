@@ -26,7 +26,7 @@ public class AuthenticatedCall: JsonNetworkCall {
     
     public lazy var errorJsonSignal: Signal<[String: Any], Never> = self.errorDataSignal
         .map(JsonDataHandler.serialize).map({ json in
-            return json as? Dictionary<String, Any>
+            return json as? [String: Any]
         }).skipNil()
     
     public static var errorHandler: NetworkErrorHandler?

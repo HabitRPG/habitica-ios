@@ -11,10 +11,8 @@ import Habitica_Models
 
 @objc
 class SpellTabBarController: UITabBarController {
-    @objc
-    var skill: SkillProtocol?
-    @objc
-    var taskID: String?
+    @objc var skill: SkillProtocol?
+    @objc var taskID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()

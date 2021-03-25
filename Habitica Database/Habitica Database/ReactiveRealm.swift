@@ -399,14 +399,14 @@ public extension SignalProducerProtocol where Value: ObjectNotificationEmitter, 
                 let notificationToken = realmObject.observe { change in
                     dispatchQueue.async {
                     switch change {
-                        case .change(let properties):
-                            observer.send(value: (value: realmObject, changes: ReactiveChange(deleted: false, properties: properties)))
-                        case .error(let error):
-                            fatalError("\(error)")
-                        case .deleted:
-                            observer.send(value: (value: realmObject, changes: ReactiveChange(deleted: true, properties: [])))
-                            observer.sendCompleted()
-                        }
+                    case .change(let properties):
+                        observer.send(value: (value: realmObject, changes: ReactiveChange(deleted: false, properties: properties)))
+                    case .error(let error):
+                        fatalError("\(error)")
+                    case .deleted:
+                        observer.send(value: (value: realmObject, changes: ReactiveChange(deleted: true, properties: [])))
+                        observer.sendCompleted()
+                    }
                     }
                 }
                 lifetime.observeEnded {

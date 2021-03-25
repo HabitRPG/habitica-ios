@@ -11,6 +11,9 @@ import UIKit
 class GradientImageView: UIImageView {
     private var _gradient: CAGradientLayer?
     @objc open var gradient: CAGradientLayer? {
+        get {
+            return _gradient
+        }
         set {
             gradient?.removeFromSuperlayer()
             _gradient = newValue
@@ -18,9 +21,6 @@ class GradientImageView: UIImageView {
                 layer.insertSublayer(newGradient, at: 0)
             }
             setNeedsLayout()
-        }
-        get {
-            return _gradient
         }
     }
     

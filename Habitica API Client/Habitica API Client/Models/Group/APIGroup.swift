@@ -86,7 +86,6 @@ public class APIGroup: GroupProtocol, Codable {
         try? container.encode(summary, forKey: .summary)
         try? container.encode(privacy, forKey: .privacy)
         try? container.encode(type, forKey: .type)
-        //try? container.encode(categories, forKey: .categories)
         if let leaderID = self.leaderID {
             try? container.encode(leaderID, forKey: .leader)
         }

@@ -60,7 +60,7 @@ class UserTopHeader: UIView, Themeable {
         magicLabel.icon = HabiticaIcons.imageOfMagic
         magicLabel.type = L10n.mana
         
-        if UIDevice().userInterfaceIdiom == .pad {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             healthLabel.fontSize = 13
             experienceLabel.fontSize = 13
             magicLabel.fontSize = 13

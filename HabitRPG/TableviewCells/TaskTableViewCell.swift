@@ -14,7 +14,7 @@ import PinLayout
 @objc
 class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
 
-    //swiftlint:disable private_outlet
+    // swiftlint:disable private_outlet
     @IBOutlet weak var titleLabel: MarkdownTextView!
     @IBOutlet weak var subtitleLabel: MarkdownTextView!
     @IBOutlet weak var taskDetailLine: TaskDetailLineView!
@@ -22,7 +22,7 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var accessibilityWrapper: UIView!
     @IBOutlet weak var syncingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var syncErrorIndicator: UIImageView!
-    //swiftlint:disable private_outlet
+    // swiftlint:disable private_outlet
     
     var contentStartEdge: HorizontalEdge?
     var contentEndEdge: HorizontalEdge?
@@ -69,7 +69,9 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
     
     @objc
     func configure(task: TaskProtocol) {
-        if !task.isValid { return }
+        if !task.isValid {
+            return
+        }
         self.titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
         self.titleLabel.textContainerInset = UIEdgeInsets.zero
         self.subtitleLabel.textContainerInset = UIEdgeInsets.zero

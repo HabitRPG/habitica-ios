@@ -357,7 +357,6 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func changeQuestRSVP(userID: String, rsvpNeeded: Bool) {
-        // swiftlint:disable:next first_where
         if let realm = getRealm(), let questState = realm.objects(RealmQuestState.self).filter("combinedKey BEGINSWITH %@", userID).first {
             updateCall { _ in
                 questState.rsvpNeeded = rsvpNeeded

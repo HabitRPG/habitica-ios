@@ -11,9 +11,9 @@ import Habitica_Models
 
 class HabitTableViewCell: TaskTableViewCell {
 
-    //swiftlint:disable:next private_outlet
+    // swiftlint:disable:next private_outlet
     @IBOutlet weak var plusButton: HabitButton!
-    //swiftlint:disable:next private_outlet
+    // swiftlint:disable:next private_outlet
     @IBOutlet weak var minusButton: HabitButton!
 
     @objc var plusTouched: (() -> Void)?

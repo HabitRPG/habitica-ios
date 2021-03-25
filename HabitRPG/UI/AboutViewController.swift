@@ -178,10 +178,9 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
             if indexPath.item == 0 {
                 open(url: "https://github.com/habitRPG/habitica-ios")
             } else if indexPath.item == 1 {
-                if let viewController = VTAcknowledgementsViewController.acknowledgementsViewController() {
-                    viewController.headerText = L10n.About.loveOpenSource
-                    navigationController?.pushViewController(viewController, animated: true)
-                }
+                let viewController = VTAcknowledgementsViewController.acknowledgementsViewController()
+                viewController.headerText = L10n.About.loveOpenSource
+                navigationController?.pushViewController(viewController, animated: true)
             } else if indexPath.item == 2 {
                 if let url = RLMRealmConfiguration.default().fileURL {
                     let activityViewController = UIActivityViewController.init(activityItems: [url], applicationActivities: nil)

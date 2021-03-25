@@ -67,7 +67,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     @objc public var navbarVisibleColor: UIColor = UIColor.white {
         didSet {
             let isVisibleLightColor = navbarVisibleColor.isLight()
-            if (ThemeService.shared.theme.isDark) {
+            if ThemeService.shared.theme.isDark {
                 visibleTintColor = ThemeService.shared.theme.primaryTextColor
             } else {
                 visibleTintColor = isVisibleLightColor ? ThemeService.shared.theme.primaryTextColor : UIColor.white
@@ -108,7 +108,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     }
     
     var defaultHeaderHeight: CGFloat {
-        if UIDevice().userInterfaceIdiom == .pad {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             return 190
         } else {
             return 152

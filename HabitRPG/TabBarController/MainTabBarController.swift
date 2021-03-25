@@ -28,12 +28,14 @@ class MainTabBarController: UITabBarController, Themeable {
     private var tutorialToDoCount = 0
     
     private var badges: [Int: PaddedView]? {
+        get {
+            return (tabBar as? MainTabBar)?.badges
+        }
         set {
             if let badges = newValue {
                 (tabBar as? MainTabBar)?.badges = badges
             }
         }
-        get { return (tabBar as? MainTabBar)?.badges }
     }
         
     private var showAdventureGuideBadge = false {

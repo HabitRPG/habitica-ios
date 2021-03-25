@@ -80,7 +80,7 @@ extension KeyedDecodingContainer {
 
 extension UnkeyedDecodingContainer {
     
-    mutating func decode(_ type: [Any].Type) throws -> Array<Any> {
+    mutating func decode(_ type: [Any].Type) throws -> [Any] {
         var array: [Any] = []
         while isAtEnd == false {
             // See if the current value in the JSON array is `null` first and prevent infite recursion with nested arrays.
@@ -101,7 +101,7 @@ extension UnkeyedDecodingContainer {
         return array
     }
     
-    mutating func decode(_ type: [String: Any].Type) throws -> Dictionary<String, Any> {
+    mutating func decode(_ type: [String: Any].Type) throws -> [String: Any] {
         let nestedContainer = try self.nestedContainer(keyedBy: JSONCodingKeys.self)
         return try nestedContainer.decode(type)
     }

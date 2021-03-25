@@ -692,7 +692,9 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 row.onChange({[weak self] (row) in
-                    if self?.isSettingUserData == true { return }
+                    if self?.isSettingUserData == true {
+                        return
+                    }
                     if row.value == self?.user?.preferences?.emailNotifications?.unsubscribeFromAll {
                         return
                     }
@@ -745,7 +747,9 @@ class SettingsViewController: FormViewController, Themeable {
                         return
                     }
                     if let value = row.value {
-                        if self?.isSettingUserData == true { return }
+                        if self?.isSettingUserData == true {
+                            return
+                        }
                         self?.userRepository.updateUser(key: "inbox.optOut", value: value).observeCompleted {}
                     }
                 })
@@ -763,7 +767,9 @@ class SettingsViewController: FormViewController, Themeable {
                 let language = LanguageHandler.getAppLanguage()
                 row.value = LabeledFormValue(value: language.rawValue, label: language.name)
                 row.onChange({[weak self] (row) in
-                    if self?.isSettingUserData == true { return }
+                    if self?.isSettingUserData == true {
+                        return
+                    }
                     if let value = row.value?.value, let newLanguage = AppLanguage(rawValue: value) {
                         self?.update(language: newLanguage)
                     }
@@ -805,7 +811,9 @@ class SettingsViewController: FormViewController, Themeable {
                     return LabeledFormValue(value: theme.rawValue, label: theme.niceName)
                 })
                 row.onChange({[weak self] (row) in
-                    if self?.isSettingUserData == true { return }
+                    if self?.isSettingUserData == true {
+                        return
+                    }
                     if let newTheme = SoundTheme(rawValue: row.value?.value ?? "") {
                         SoundManager.shared.currentTheme = newTheme
                     }
@@ -835,7 +843,9 @@ class SettingsViewController: FormViewController, Themeable {
                     row.value = LabeledFormValue(value: theme.rawValue, label: theme.niceName)
                 }
                 row.onChange({[weak self] (row) in
-                    if self?.isSettingUserData == true { return }
+                    if self?.isSettingUserData == true {
+                        return
+                    }
                     if let newTheme = ThemeName(rawValue: row.value?.value ?? "") {
                         ThemeService.shared.theme = newTheme.themeClass
                         let defaults = UserDefaults.standard
@@ -864,7 +874,9 @@ class SettingsViewController: FormViewController, Themeable {
                 row.value = LabeledFormValue(value: theme.rawValue, label: theme.niceName)
             }
             row.onChange({[weak self] (row) in
-                if self?.isSettingUserData == true { return }
+                if self?.isSettingUserData == true {
+                    return
+                }
                 if let newTheme = ThemeMode(rawValue: row.value?.value ?? "") {
                     let defaults = UserDefaults.standard
                     defaults.set(newTheme.rawValue, forKey: "themeMode")
@@ -900,7 +912,9 @@ class SettingsViewController: FormViewController, Themeable {
                 }
             })
             row.onChange({[weak self] (row) in
-                if self?.isSettingUserData == true { return }
+                if self?.isSettingUserData == true {
+                    return
+                }
                 if let newAppIcon = AppIconName(rawValue: row.value ?? "") {
                     DispatchQueue.main.async {
                         UIApplication.shared.setAlternateIconName(newAppIcon.fileName) { (error) in

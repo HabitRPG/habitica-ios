@@ -172,7 +172,9 @@ open class BalloonMarker: MarkerImage {
     }
     
     open override func draw(context: CGContext, point: CGPoint) {
-        guard let label = label else { return }
+        guard let label = label else {
+            return
+        }
         
         let offset = self.offsetForDrawing(atPoint: point)
         let size = self.size
@@ -197,7 +199,7 @@ open class BalloonMarker: MarkerImage {
             context.addLine(to: CGPoint(
                 x: rect.origin.x + (rect.size.width - arrowSize.width) / 2.0,
                 y: rect.origin.y + arrowSize.height))
-            //arrow vertex
+            // arrow vertex
             context.addLine(to: CGPoint(
                 x: point.x,
                 y: point.y))
@@ -231,7 +233,7 @@ open class BalloonMarker: MarkerImage {
             context.addLine(to: CGPoint(
                 x: rect.origin.x + (rect.size.width + arrowSize.width) / 2.0,
                 y: rect.origin.y + rect.size.height - arrowSize.height))
-            //arrow vertex
+            // arrow vertex
             context.addLine(to: CGPoint(
                 x: point.x,
                 y: point.y))
@@ -268,7 +270,8 @@ open class BalloonMarker: MarkerImage {
         setLabel(formatter.string(from: Date(timeIntervalSince1970: entry.x)))
     }
     
-    @objc open func setLabel(_ newLabel: String) {
+    @objc
+    open func setLabel(_ newLabel: String) {
         label = newLabel
         
         _drawAttributes.removeAll()

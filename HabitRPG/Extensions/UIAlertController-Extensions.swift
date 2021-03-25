@@ -7,8 +7,8 @@ public extension UIAlertController {
 
     @objc
     static func alert(title: String? = nil,
-                             message: String? = nil,
-                             handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
+                      message: String? = nil,
+                      handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
         let alertController = UIAlertController(
             title: title,
             message: message,

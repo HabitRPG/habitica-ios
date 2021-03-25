@@ -372,8 +372,8 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         return reward?.key == "gem" || ["eggs", "hatchingPotions", "food"].contains(reward?.purchaseType ?? "")
     }
     
-    //swiftlint:disable function_body_length
-    //swiftlint:disable cyclomatic_complexity
+    // swiftlint:disable function_body_length
+    // swiftlint:disable cyclomatic_complexity
     @objc
     func buyPressed() {
         if itemIsLocked() {
@@ -530,7 +530,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         })
         alert.addCloseAction()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            //delay a bit to give the buying modal a chance to disappear
+            // delay a bit to give the buying modal a chance to disappear
             alert.enqueue()
         }
     }
@@ -539,7 +539,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         let alert = prepareInsufficientModal(title: L10n.notEnoughGold, message: L10n.completeMoreTasks, image: Asset.insufficientGold.image)
         alert.addAction(title: L10n.takeMeBack, isMainAction: true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            //delay a bit to give the buying modal a chance to disappear
+            // delay a bit to give the buying modal a chance to disappear
             alert.enqueue()
         }
     }
@@ -558,7 +558,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             alert.addCloseAction()
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            //delay a bit to give the buying modal a chance to disappear
+            // delay a bit to give the buying modal a chance to disappear
             alert.enqueue()
         }
     }
@@ -567,7 +567,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         let alert = prepareInsufficientModal(title: L10n.monthlyGemCapReached, message: L10n.Inventory.noGemsLeft, image: Asset.insufficientGems.image)
         alert.addAction(title: L10n.takeMeBack, isMainAction: true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            //delay a bit to give the buying modal a chance to disappear
+            // delay a bit to give the buying modal a chance to disappear
             alert.enqueue()
         }
     }

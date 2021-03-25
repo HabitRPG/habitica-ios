@@ -34,9 +34,7 @@ class RealmInAppReward: Object, InAppRewardProtocol {
     @objc dynamic var level: Int = 0
     
     @objc dynamic var category: ShopCategoryProtocol? {
-        get {
-            return realmCategory.first
-        }
+        return realmCategory.first
     }
     var realmCategory = LinkingObjects(fromType: RealmShopCategory.self, property: "realmItems")
     

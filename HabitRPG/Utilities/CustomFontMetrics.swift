@@ -118,7 +118,6 @@ public class CustomFontMetrics: NSObject {
     /// pristine iOS simulator, because it is set to the standard text size.
     @objc
     public func scaledFont(for font: UIFont, compatibleWith traitCollection: UITraitCollection? = nil) -> UIFont {
-        // TODO: support "maximumPointSize: CGFloat = 0"
         switch rep {
         case .modern(let metrics):
             return metrics.scaledFont(for: font, compatibleWith: traitCollection)

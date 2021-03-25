@@ -82,9 +82,7 @@ class BaseNotificationCell<NP>: UITableViewCell {
         }
     }
     var hasDescription: Bool {
-        get {
-            return itemDescription?.isEmpty == false
-        }
+        return itemDescription?.isEmpty == false
     }
     var showResponseButtons: Bool = false {
         didSet {

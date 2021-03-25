@@ -107,7 +107,7 @@ class PublishButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButtonMod
         
         buttonStateSignal.sample(on: buttonPressedProperty.signal).observeValues { (state) in
             if state == .publishEnabled {
-                //TODO: publish challenge
+                // TODO: publish challenge
             }
         }
         

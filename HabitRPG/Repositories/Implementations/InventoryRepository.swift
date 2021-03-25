@@ -123,22 +123,8 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                             ToastManager.show(text: text, color: .yellow, duration: 4.0)
                         } else if armoire.type == "food" {
                             ToastManager.show(text: text, color: .gray, duration: 4.0)
-                            //TODO: Show images in armoire toasts
-                            /*ImageManager.getImage(name: "Pet_Food_\(armoire.dropText ?? "")", completion: { (image, _) in
-                             if let image = image {
-                             let toastView = ToastView(title: text, icon: image, background: .gray)
-                             ToastManager.show(toast: toastView)
-                             }
-                             })*/
                         } else if armoire.type == "gear" {
                             ToastManager.show(text: text, color: .gray, duration: 4.0)
-                            //TODO: Show images in armoire toasts
-                            /*ImageManager.getImage(name: "shop_\(armoire.dropText ?? "")", completion: { (image, _) in
-                             if let image = image {
-                             let toastView = ToastView(title: text, icon: image, background: .gray)
-                             ToastManager.show(toast: toastView)
-                             }
-                             })*/
                         }
                     }
                 } else {

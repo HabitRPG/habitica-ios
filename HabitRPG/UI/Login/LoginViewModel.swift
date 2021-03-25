@@ -93,8 +93,8 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     
     private let userRepository = UserRepository()
 
-    //swiftlint:disable function_body_length
-    //swiftlint:disable cyclomatic_complexity
+    // swiftlint:disable function_body_length
+    // swiftlint:disable cyclomatic_complexity
     init() {
         let authValues = Signal.combineLatest(
             self.authTypeProperty.signal,

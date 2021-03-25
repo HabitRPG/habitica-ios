@@ -78,7 +78,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
     
     func configurePill(_ pillView: PillView) {
         pillView.backgroundColor = nil
-        pillView.layer.sublayers?.filter { $0 is CAGradientLayer}.forEach { $0.removeFromSuperlayer() }
+        pillView.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: pillView)
         gradientLayer.cornerRadius = pillView.frame.size.height / 2
         pillView.layer.insertSublayer(gradientLayer, at: 0)

@@ -43,7 +43,12 @@ open class NetworkCall {
     
     var ignoreEtag = false
     
-    public init(configuration: ServerConfigurationProtocol, httpMethod: String = "GET", httpHeaders: Dictionary<String, String>? = [:], endpoint: String, postData: Data?, networkErrorHandler: NetworkErrorHandler? = nil, ignoreEtag: Bool = false) {
+    public init(configuration: ServerConfigurationProtocol,
+                httpMethod: String = "GET",
+                httpHeaders: [String: String]? = [:],
+                endpoint: String, postData: Data?,
+                networkErrorHandler: NetworkErrorHandler? = nil,
+                ignoreEtag: Bool = false) {
         self.configuration = configuration
         self.httpMethod = httpMethod
         self.httpHeaders = httpHeaders
@@ -92,7 +97,7 @@ open class NetworkCall {
             dataTaskProperty.value = session.dataTask(with: request as URLRequest) { (data, response, error) in
                 self.errorProperty.value = error as NSError?
                 self.responseProperty.value = response
-                if let _ = error {
+                if error != nil {
                     self.errorDataProperty.value = data
                 } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode > 299 {
                     self.errorDataProperty.value = data

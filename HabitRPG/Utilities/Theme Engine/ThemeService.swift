@@ -22,7 +22,7 @@ public class ThemeService: NSObject {
         }
     }
     public var themeMode: String {
-        get { return defaults.string(forKey: "themeMode") ?? ThemeMode.system.rawValue }
+        return defaults.string(forKey: "themeMode") ?? ThemeMode.system.rawValue
     }
     
     private var listeners = NSHashTable<AnyObject>.weakObjects()

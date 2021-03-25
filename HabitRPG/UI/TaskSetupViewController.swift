@@ -13,7 +13,7 @@ import ReactiveSwift
 enum SetupTaskCategory {
     case work, exercise, health, school, team, chores, creativity
 
-    //siwftlint:disable:next identifier_name
+    // siwftlint:disable:next identifier_name
     func createSampleHabit(_ text: String, tagId: String?, positive: Bool, negative: Bool, taskRepository: TaskRepository) -> TaskProtocol {
         let task = taskRepository.getNewTask()
         task.text = text

@@ -15,7 +15,9 @@ public typealias HabiticaModelCodable = HabiticaModel & Codable
 
 public extension HabiticaModel where Self: Codable {
     static func from(json: String, using encoding: String.Encoding = .utf8) -> Self? {
-        guard let data = json.data(using: encoding) else { return nil }
+        guard let data = json.data(using: encoding) else {
+            return nil
+        }
         return from(data: data)
     }
     

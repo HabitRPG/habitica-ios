@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 extension UITraitCollection {
     var isIPad: Bool {
         return horizontalSizeClass == .regular && verticalSizeClass == .regular

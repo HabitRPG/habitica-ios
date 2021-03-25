@@ -232,7 +232,7 @@ class MenuNavigationBarView: UIView, Themeable {
         if displayInTwoRows {
             topOffset = 62
             endSpacing = 58
-            //take the full width, subtract spacing on the side and subtract the width of all 3 buttons. Remaining width is the divided evenly among the buttons
+            // take the full width, subtract spacing on the side and subtract the width of all 3 buttons. Remaining width is the divided evenly among the buttons
             buttonSpacing = (parentWidth - (endSpacing * 2) - 150) / 2
         }
         settingsButton.pin.top(topOffset).end(endSpacing)

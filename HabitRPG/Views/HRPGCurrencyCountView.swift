@@ -172,7 +172,7 @@ class HRPGCurrencyCountView: UIView {
         layout()
     }
     
-    //Helper methods since objc can't access swift enums
+    // Helper methods since objc can't access swift enums
     @objc
     public func setAsGold() {
         currency = .gold

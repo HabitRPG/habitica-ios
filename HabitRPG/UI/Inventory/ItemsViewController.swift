@@ -96,7 +96,8 @@ class ItemsViewController: BaseTableViewController {
         }
     }
     
-    @objc func openMarket() {
+    @objc
+    func openMarket() {
         let storyboard = UIStoryboard(name: "Shop", bundle: nil)
         if let viewController = storyboard.instantiateInitialViewController() as? HRPGShopViewController {
             viewController.shopIdentifier = Constants.MarketKey

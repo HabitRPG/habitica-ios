@@ -56,6 +56,7 @@
 		2912C3B422CB441C00BC485F /* NewMysteryitemNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912C3B322CB441C00BC485F /* NewMysteryitemNotificationCell.swift */; };
 		2912C3C522CB955B00BC485F /* QuestInviteNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912C3C422CB955B00BC485F /* QuestInviteNotificationCell.swift */; };
 		2912C3C722CB956400BC485F /* GroupInviteNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912C3C622CB956400BC485F /* GroupInviteNotificationCell.swift */; };
+		291424A1260CCE740069F792 /* EventHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291424A0260CCE740069F792 /* EventHelper.swift */; };
 		2914485B2084E61400F3A6B5 /* MountOverviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914485A2084E61400F3A6B5 /* MountOverviewDataSource.swift */; };
 		2914485D2084E6ED00F3A6B5 /* MountOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914485C2084E6ED00F3A6B5 /* MountOverviewViewController.swift */; };
 		291448602084EA0100F3A6B5 /* PetDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914485F2084EA0100F3A6B5 /* PetDetailDataSource.swift */; };
@@ -601,7 +602,6 @@
 		D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E9218CB4A9400BB2094 /* UIKit.framework */; platformFilter = ios; };
 		D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4E9718CB4A9400BB2094 /* InfoPlist.strings */; };
 		D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EB4E9A18CB4A9400BB2094 /* main.m */; };
-		D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */; };
 		D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */; };
 		D9F1E3E81E55DCEC0034D0F4 /* SubscriptionInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F1E3E71E55DCEB0034D0F4 /* SubscriptionInformationCell.swift */; };
 		D9F1E3EA1E55DCFB0034D0F4 /* SubscriptionInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9F1E3E91E55DCFB0034D0F4 /* SubscriptionInformationCell.xib */; };
@@ -743,6 +743,7 @@
 		2913E3B120F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
 		2913E3B320F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2913E3B420F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		291424A0260CCE740069F792 /* EventHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHelper.swift; sourceTree = "<group>"; };
 		2914485A2084E61400F3A6B5 /* MountOverviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountOverviewDataSource.swift; sourceTree = "<group>"; };
 		2914485C2084E6ED00F3A6B5 /* MountOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountOverviewViewController.swift; sourceTree = "<group>"; };
 		2914485F2084EA0100F3A6B5 /* PetDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailDataSource.swift; sourceTree = "<group>"; };
@@ -1393,8 +1394,6 @@
 		D9EB4E9818CB4A9400BB2094 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9EB4E9A18CB4A9400BB2094 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D9EB4E9C18CB4A9400BB2094 /* Habitica-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Habitica-Prefix.pch"; sourceTree = "<group>"; };
-		D9EB4E9D18CB4A9400BB2094 /* HRPGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGAppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D9EB4EB318CB4A9400BB2094 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D9F1E3E71E55DCEB0034D0F4 /* SubscriptionInformationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionInformationCell.swift; sourceTree = "<group>"; };
@@ -2457,6 +2456,7 @@
 				29A984D12547294E00F04665 /* RemoteLogger.swift */,
 				29A984D02547294E00F04665 /* HabiticaAnalytics.swift */,
 				29A98592254841C500F04665 /* KeyboardManager.swift */,
+				291424A0260CCE740069F792 /* EventHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -2807,8 +2807,6 @@
 				D9ADD3531943BE33006202C1 /* TabBarController */,
 				D9ADD3571943C13F006202C1 /* Collection View Controller */,
 				D987393919687E46002A2426 /* Utilities */,
-				D9EB4E9D18CB4A9400BB2094 /* HRPGAppDelegate.h */,
-				D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */,
 				29255E461F3E14920094A3E3 /* AppDelegate.swift */,
 				29D50B7A25F9037A0009CF55 /* AppDelegate-Notifications.swift */,
 				29A77B1E22EED4CE00FE41E4 /* NetworkIndicatorController.swift */,
@@ -3428,6 +3426,7 @@
 				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseInstanceID/FirebaseInstanceID.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebasePerformance/FirebasePerformance.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseRemoteConfig/FirebaseRemoteConfig.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -3450,7 +3449,6 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework",
 				"${BUILT_PRODUCTS_DIR}/VTAcknowledgementsViewController/VTAcknowledgementsViewController.framework",
-				"${BUILT_PRODUCTS_DIR}/XLForm/XLForm.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -3474,6 +3472,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstanceID.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseMessaging.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebasePerformance.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseRemoteConfig.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
@@ -3496,7 +3495,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TagListView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VTAcknowledgementsViewController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLForm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3940,7 +3938,6 @@
 				49E378512009540500E0DA3D /* ChallengeTableViewHeaderView.swift in Sources */,
 				292F968320724B1100804151 /* GuildsOverviewDataSource.swift in Sources */,
 				29066CF924FE7C9200A266EE /* GemPurchaseCell.swift in Sources */,
-				D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */,
 				2957B8BC1F4B4DDE00E836EF /* InAppRewardCell.swift in Sources */,
 				29066CFD24FF8CC200A266EE /* PromotionInfoViewController.swift in Sources */,
 				49DCECEA1F9A84AF00982E99 /* ChallengeDetailsTableViewController.swift in Sources */,
@@ -4049,6 +4046,7 @@
 				29144876208648D500F3A6B5 /* EquipmentOverviewViewController.swift in Sources */,
 				29951A222327E94F00918FC8 /* ThemedNavigationController.swift in Sources */,
 				491C6E5B2020FE64005030A2 /* Challenge-Extensions.swift in Sources */,
+				291424A1260CCE740069F792 /* EventHelper.swift in Sources */,
 				2914487820864A2900F3A6B5 /* EquipmentOverviewView.swift in Sources */,
 				29E1630B200D050E00685640 /* TopHeaderNavigationController.swift in Sources */,
 				29144872208628A300F3A6B5 /* FeedViewDataSource.swift in Sources */,

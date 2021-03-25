@@ -22,7 +22,7 @@ class HabitTableViewController: TaskTableViewController {
         configureTitle(L10n.Tasks.habits)
     }
     
-    override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]! {
+    override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]? {
         if tutorialIdentifier == "habits" {
             let localizedStringArray = [L10n.Tutorials.habits1, L10n.Tutorials.habits2, L10n.Tutorials.habits3, L10n.Tutorials.habits4]
             return ["textList": localizedStringArray]

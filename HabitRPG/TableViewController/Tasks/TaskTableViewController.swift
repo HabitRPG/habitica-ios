@@ -48,7 +48,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeFilter), name: NSNotification.Name(rawValue: "taskFilterChanged"), object: nil)
         didChangeFilter()
         
-        if UIDevice().userInterfaceIdiom == .pad {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             extraCellSpacing = 8
         }
         tableView.rowHeight = UITableView.automaticDimension
