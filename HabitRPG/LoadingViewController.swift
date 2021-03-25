@@ -67,10 +67,12 @@ class LoadingViewController: UIViewController {
     }
     
     private func completeInitialLaunch() {
-        if configRepository.bool(variable: .disableIntroSlides) {
-            perform(segue: StoryboardSegue.Intro.loginSegue)
-        } else {
-            perform(segue: StoryboardSegue.Intro.introSegue)
+        DispatchQueue.main.async {
+            if self.configRepository.bool(variable: .disableIntroSlides) {
+                self.perform(segue: StoryboardSegue.Intro.loginSegue)
+            } else {
+                self.perform(segue: StoryboardSegue.Intro.introSegue)
+            }
         }
     }
     

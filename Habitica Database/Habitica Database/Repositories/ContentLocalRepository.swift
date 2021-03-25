@@ -67,6 +67,10 @@ public class ContentLocalRepository: BaseLocalRepository {
     }
     
     public func save(_ worldState: WorldStateProtocol) {
+        // swiftlint:disable:next first_where
+        if let oldWorldState = getRealm()?.objects(RealmWorldState.self).filter("id == 'habitica'").first {
+            delete(object: oldWorldState)
+        }
         if let realmWorldState = worldState as? RealmWorldState {
             save(object: realmWorldState)
             return

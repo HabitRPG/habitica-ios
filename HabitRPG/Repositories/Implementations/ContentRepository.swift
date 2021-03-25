@@ -26,11 +26,6 @@ class ContentRepository: BaseRepository<ContentLocalRepository> {
         return RetrieveWorldStateCall().objectSignal.on(value: {[weak self] worldState in
             if let worldState = worldState {
                 self?.localRepository.save(worldState)
-                for event in worldState.events {
-                    if let aprilFools = event.aprilFools {
-                        EventHelper.setup(event: aprilFools, endDate: event.end)
-                    }
-                }
             }
         })
     }

@@ -195,10 +195,15 @@ class ConfigRepository: NSObject {
         ConfigRepository.remoteConfig.setDefaults(defaults)
         contentRepository.getWorldState().on(value: {[weak self] state in
             self?.worldState = state
+            var hasAprilFools = false
             for event in state.events {
                 if let aprilFools = event.aprilFools {
                     EventHelper.setup(event: aprilFools, endDate: event.end)
+                    hasAprilFools = true
                 }
+            }
+            if !hasAprilFools {
+                EventHelper.disableAll()
             }
         }).start()
     }
