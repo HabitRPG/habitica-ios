@@ -12,6 +12,6 @@ import ReactiveSwift
 
 public class RemoveMemberCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
     public init(groupID: String, userID: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "member.json")) {
-        super.init(httpMethod: .GET, endpoint: "groups/\(groupID)/removeMember/\(userID)", stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/removeMember/\(userID)", stubHolder: stubHolder)
     }
 }
