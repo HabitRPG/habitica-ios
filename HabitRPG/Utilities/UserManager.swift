@@ -229,7 +229,7 @@ class UserManager: NSObject {
             }
         } else if task.type == TaskType.todo, let time = reminder.time {
             if time > Date() {
-                scheduleForDay(reminder: reminder, date: time)
+                scheduleForDay(reminder: reminder, date: task.duedate ?? time, atTime: time)
             }
         }
     }
