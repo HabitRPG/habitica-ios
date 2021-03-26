@@ -14,12 +14,15 @@ class HabitTableViewController: TaskTableViewController {
     override func viewDidLoad() {
         readableName = L10n.Tasks.habit
         typeName = "habit"
-        dataSource = HabitTableViewDataSource(predicate: self.getPredicate())
         super.viewDidLoad()
         dataSource?.emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.habitsStyle)
                 
         self.tutorialIdentifier = "habits"
         configureTitle(L10n.Tasks.habits)
+    }
+    
+    override func createDataSource() {
+        dataSource = HabitTableViewDataSource(predicate: self.getPredicate())
     }
     
     override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]? {

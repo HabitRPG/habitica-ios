@@ -407,7 +407,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     
     public func leaveQuest(groupID: String) -> Signal<EmptyResponseProtocol?, Never> {
         UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        return LeaveQuestCall(groupID: groupID)
+        return LeaveQuestCall(groupID: groupID).objectSignal
     }
     
     private func saveQuestState(objectID: String, groupID: String) -> ((QuestStateProtocol?) -> Void) {

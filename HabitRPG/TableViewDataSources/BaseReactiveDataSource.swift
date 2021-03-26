@@ -129,6 +129,7 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
          tableView?.endUpdates()
          }*/
         checkForEmpty()
+        tableView?.reloadData()
     }
     
     func checkForEmpty() {
@@ -153,7 +154,6 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
                 tableView?.bounces = true
             }
         }
-        tableView?.reloadData()
     }
     
     @objc(numberOfSectionsInTableView:)

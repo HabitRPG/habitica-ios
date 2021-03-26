@@ -177,7 +177,7 @@ class QuestDetailViewController: BaseUIViewController {
             forceStartButton.isHidden = true
         }
         
-        if group.quest?.leaderID != userRepository.currentUserID {
+        if group.quest?.leaderID != userRepository.currentUserId {
             leaveButton.isHidden = hideRSVPButtons
         } else {
             leaveButton.isHidden = true
@@ -279,7 +279,7 @@ class QuestDetailViewController: BaseUIViewController {
     }
     
     @IBAction func leaveButtonTapped(_ sender: Any) {
-        let alertController = HabiticaAlertController(title: nil, message: isQuestActive ? L10n.Quests.confirmLeaveQuest : L10n.Quests.confirmLeaveNostart)
+        let alertController = HabiticaAlertController(title: nil, message: isQuestActive ? L10n.Quests.confirmLeave : L10n.Quests.confirmLeaveNostart)
         alertController.addAction(title: L10n.confirm, style: .default, isMainAction: true, handler: {[weak self] (_) in
             if let groupID = self?.groupID {
                 self?.disposable.inner.add(self?.socialRepository.leaveQuest(groupID: groupID).observeCompleted {})

@@ -13,12 +13,15 @@ class ToDoTableViewController: TaskTableViewController {
     override func viewDidLoad() {
         readableName = L10n.Tasks.todo
         typeName = "todo"
-        dataSource = TodoTableViewDataSource(predicate: getPredicate())
         super.viewDidLoad()
         dataSource?.emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.todoStyle)
         
         self.tutorialIdentifier = "todos"
         configureTitle(L10n.Tasks.todos)
+    }
+    
+    override func createDataSource() {
+        dataSource = HabitTableViewDataSource(predicate: self.getPredicate())
     }
     
     override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]? {

@@ -13,12 +13,15 @@ class DailyTableViewController: TaskTableViewController {
     override func viewDidLoad() {
         readableName = L10n.Tasks.daily
         typeName = "daily"
-        dataSource = DailyTableViewDataSource(predicate: self.getPredicate())
         super.viewDidLoad()
         dataSource?.emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.dailiesStyle)
         
         self.tutorialIdentifier = "dailies"
         configureTitle(L10n.Tasks.dailies)
+    }
+    
+    override func createDataSource() {
+        dataSource = DailyTableViewDataSource(predicate: self.getPredicate())
     }
     
     override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]? {
