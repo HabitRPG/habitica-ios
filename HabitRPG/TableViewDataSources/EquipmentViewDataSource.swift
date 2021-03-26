@@ -44,6 +44,7 @@ class EquipmentViewDataSource: BaseReactiveTableViewDataSource<GearProtocol> {
             } else {
                 self?.equippedKey = user.items?.gear?.equipped?.keyFor(type: gearType)
             }
+            self?.tableView?.reloadData()
         }).start())
     }
     
