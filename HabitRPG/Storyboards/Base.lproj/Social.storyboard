@@ -500,7 +500,7 @@
                                                 <rect key="frame" x="16" y="18" width="343" height="36"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pIy-vb-vm3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="56.5" height="36"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="44.5" height="36"/>
                                                         <color key="backgroundColor" red="0.95870476959999995" green="0.36744427680000002" blue="0.37960040569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                         <state key="normal">
@@ -516,7 +516,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6iy-Mx-6lI">
-                                                        <rect key="frame" x="71.5" y="0.0" width="56.5" height="36"/>
+                                                        <rect key="frame" x="59.5" y="0.0" width="45" height="36"/>
                                                         <color key="backgroundColor" red="0.26895910499999998" green="0.79955726859999998" blue="0.56116724009999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                         <state key="normal">
@@ -532,7 +532,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pXx-qO-qxd">
-                                                        <rect key="frame" x="143" y="0.0" width="57" height="36"/>
+                                                        <rect key="frame" x="119.5" y="0.0" width="44.5" height="36"/>
                                                         <color key="backgroundColor" red="0.95870476959999995" green="0.36744427680000002" blue="0.37960040569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                         <state key="normal">
@@ -548,8 +548,8 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uJd-V9-acD">
-                                                        <rect key="frame" x="215" y="0.0" width="56.5" height="36"/>
-                                                        <color key="backgroundColor" red="0.95870476959999995" green="0.36744427680000002" blue="0.37960040569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <rect key="frame" x="179" y="0.0" width="44.5" height="36"/>
+                                                        <color key="backgroundColor" red="0.96078431372549022" green="0.41176470588235292" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                         <state key="normal">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -564,7 +564,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oo2-ht-HrC">
-                                                        <rect key="frame" x="286.5" y="0.0" width="56.5" height="36"/>
+                                                        <rect key="frame" x="238.5" y="0.0" width="45" height="36"/>
                                                         <color key="backgroundColor" red="0.92813128229999997" green="0.92537832259999997" blue="0.93166613580000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                         <userDefinedRuntimeAttributes>
@@ -574,6 +574,23 @@
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="forceStartButtonTapped:" destination="h0f-kS-d60" eventType="touchUpInside" id="oYb-VE-caz"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WQ2-mh-mXh">
+                                                        <rect key="frame" x="298.5" y="0.0" width="44.5" height="36"/>
+                                                        <color key="backgroundColor" red="0.96078431372549022" green="0.41176470588235292" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                        <state key="normal">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="6"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="forceStartButtonTapped:" destination="h0f-kS-d60" eventType="touchUpInside" id="xcv-MT-HSH"/>
+                                                            <action selector="leaveButtonTapped:" destination="h0f-kS-d60" eventType="touchUpInside" id="5im-hy-8pD"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -631,6 +648,7 @@
                         <outlet property="healthIconView" destination="zmT-fC-L7n" id="xRG-Xr-szz"/>
                         <outlet property="invitationsHeader" destination="q4z-83-kc2" id="Pld-wq-h08"/>
                         <outlet property="invitationsStackView" destination="03F-b3-D6O" id="iWq-cn-4ey"/>
+                        <outlet property="leaveButton" destination="WQ2-mh-mXh" id="AjD-JM-cl3"/>
                         <outlet property="questBossView" destination="V5p-do-14l" id="8jm-Dx-LUZ"/>
                         <outlet property="questTypeHeader" destination="Hdi-g1-MiM" id="rkt-e8-wiC"/>
                         <outlet property="rejectButton" destination="pIy-vb-vm3" id="z2J-Xg-AMy"/>
@@ -758,7 +776,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVE-dK-Vtq">
-                                            <rect key="frame" x="30" y="23" width="282" height="0.0"/>
+                                            <rect key="frame" x="30" y="23" width="282" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="500" constant="15" id="qCi-zd-vPi"/>
                                             </constraints>
@@ -767,13 +785,13 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5M1-O7-8SK">
-                                            <rect key="frame" x="312" y="11" width="63" height="16"/>
+                                            <rect key="frame" x="312" y="11" width="63" height="36"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="63" id="9yQ-jK-eHb"/>
                                             </constraints>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o36-K8-WE9">
-                                            <rect key="frame" x="345" y="35" width="0.0" height="0.0"/>
+                                            <rect key="frame" x="345" y="55" width="0.0" height="0.0"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" priority="500" constant="42" id="iXX-nv-dQm"/>
                                                 <constraint firstAttribute="height" priority="500" constant="21" id="pg6-HC-x8e"/>
@@ -783,14 +801,14 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bzg-8o-qvO">
-                                            <rect key="frame" x="325" y="27" width="16" height="16"/>
+                                            <rect key="frame" x="325" y="47" width="16" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="nYL-bH-Geh"/>
                                                 <constraint firstAttribute="width" constant="16" id="wMZ-47-REq"/>
                                             </constraints>
                                         </imageView>
                                         <view userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="ydi-2t-xFg" customClass="TagListView" customModule="TagListView">
-                                            <rect key="frame" x="30" y="35" width="287" height="40"/>
+                                            <rect key="frame" x="30" y="55" width="287" height="20"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="500" constant="20" id="S4z-Nh-ULl"/>
@@ -2894,6 +2912,9 @@
         </designable>
         <designable name="x55-Jn-3In">
             <size key="intrinsicContentSize" width="30" height="33"/>
+        </designable>
+        <designable name="ydi-2t-xFg">
+            <size key="intrinsicContentSize" width="287" height="20"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>

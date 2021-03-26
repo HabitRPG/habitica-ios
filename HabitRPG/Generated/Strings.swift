@@ -1687,6 +1687,10 @@ public enum L10n {
     public static var confirmCancelInvitation: String { return L10n.tr("Mainstrings", "quests.confirm_cancel_invitation") }
     /// Are you sure? Not all party members have joined this quest! Quests start automatically when all players have joined or rejected the invitation.
     public static var confirmForceStart: String { return L10n.tr("Mainstrings", "quests.confirm_force_start") }
+    /// Are you sure you want to leave the Quest? All your progress will be lost.
+    public static var confirmLeave: String { return L10n.tr("Mainstrings", "quests.confirm_leave") }
+    /// Are you sure you want to leave the Quest? You won't be able to participate.
+    public static var confirmLeaveNostart: String { return L10n.tr("Mainstrings", "quests.confirm_leave_nostart") }
     /// Invitations
     public static var invitationsHeader: String { return L10n.tr("Mainstrings", "quests.invitations_header") }
     /// Participants

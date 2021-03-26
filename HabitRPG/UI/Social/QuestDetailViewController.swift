@@ -41,6 +41,7 @@ class QuestDetailViewController: BaseUIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var abortButton: UIButton!
     @IBOutlet weak var forceStartButton: UIButton!
+    @IBOutlet weak var leaveButton: UIButton!
     @IBOutlet weak var questBossView: UIStackView!
     @IBOutlet weak var bossImageView: NetworkImageView!
     @IBOutlet weak var bosNameLabel: UILabel!
@@ -123,13 +124,16 @@ class QuestDetailViewController: BaseUIViewController {
         cancelButton.setTitle(L10n.cancel, for: .normal)
         abortButton.setTitle(L10n.abort, for: .normal)
         forceStartButton.setTitle(L10n.forceStart, for: .normal)
+        leaveButton.setTitle(L10n.leave, for: .normal)
         
         invitationsHeader.text = L10n.invitations
         descriptionHeaderView.text = L10n.description
     }
     
+    private var hideRSVPButtons = false
+    
     private func set(user: UserProtocol) {
-        let hideRSVPButtons = !(user.party?.quest?.rsvpNeeded ?? false)
+        hideRSVPButtons = !(user.party?.quest?.rsvpNeeded ?? false)
         acceptButton.isHidden = hideRSVPButtons
         rejectButton.isHidden = hideRSVPButtons
     }
@@ -171,6 +175,12 @@ class QuestDetailViewController: BaseUIViewController {
             abortButton.isHidden = true
             cancelButton.isHidden = true
             forceStartButton.isHidden = true
+        }
+        
+        if group.quest?.leaderID != userRepository.currentUserID {
+            leaveButton.isHidden = hideRSVPButtons
+        } else {
+            leaveButton.isHidden = true
         }
         
         if let leaderID = group.quest?.leaderID {
@@ -262,6 +272,17 @@ class QuestDetailViewController: BaseUIViewController {
         alertController.addAction(title: L10n.confirm, style: .default, isMainAction: true, handler: {[weak self] (_) in
             if let groupID = self?.groupID {
                 self?.disposable.inner.add(self?.socialRepository.forceStartQuest(groupID: groupID).observeCompleted {})
+            }
+        })
+        alertController.addCancelAction()
+        alertController.show()
+    }
+    
+    @IBAction func leaveButtonTapped(_ sender: Any) {
+        let alertController = HabiticaAlertController(title: nil, message: isQuestActive ? L10n.Quests.confirmLeaveQuest : L10n.Quests.confirmLeaveNostart)
+        alertController.addAction(title: L10n.confirm, style: .default, isMainAction: true, handler: {[weak self] (_) in
+            if let groupID = self?.groupID {
+                self?.disposable.inner.add(self?.socialRepository.leaveQuest(groupID: groupID).observeCompleted {})
             }
         })
         alertController.addCancelAction()

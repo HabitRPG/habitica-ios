@@ -470,6 +470,8 @@
 "quests.confirm_cancel_invitation" = "Are you sure you want to cancel this quest? All invitation acceptances will be lost. The quest owner will retain possession of the quest scroll.";
 "quests.confirm_force_start" = "Are you sure? Not all party members have joined this quest! Quests start automatically when all players have joined or rejected the invitation.";
 "quests.confirm_abort" = "Are you sure you want to abort this mission? It will abort it for everyone in your party and all progress will be lost. The quest scroll will be returned to the quest owner.";
+"quests.confirm_leave" = "Are you sure you want to leave the Quest? All your progress will be lost.";
+"quests.confirm_leave_nostart" = "Are you sure you want to leave the Quest? You won\'t be able to participate.";
 "quests.started_by" = "Started by %@";
 "quests.reward_experience" = "%d Experience Points";
 "quests.reward_gold" = "%d Gold";
@@ -1063,3 +1065,4 @@
 "daily_tip_9" = "If you\'re having a tough time, try breaking your tasks down into smaller parts.";
 "week_reminder_title" = "How are your tasks going?";
 "week_reminder_body" = "Breaks are healthy, but you can still earn points for simple activities to level up and get cool gear!";
+

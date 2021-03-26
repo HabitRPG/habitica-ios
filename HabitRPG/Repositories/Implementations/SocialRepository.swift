@@ -405,6 +405,11 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             .objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
     }
     
+    public func leaveQuest(groupID: String) -> Signal<EmptyResponseProtocol?, Never> {
+        UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        return LeaveQuestCall(groupID: groupID)
+    }
+    
     private func saveQuestState(objectID: String, groupID: String) -> ((QuestStateProtocol?) -> Void) {
         return {[weak self] questState in
             if let questState = questState {
