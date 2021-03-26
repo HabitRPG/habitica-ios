@@ -19,6 +19,8 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
     private let inventoryRepository = InventoryRepository()
     private let socialRepository = SocialRepository()
     
+    private var partyID: String?
+    
     override init() {
         super.init()
         sections.append(ItemSection<NotificationProtocol>())
@@ -30,6 +32,10 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
                 self?.sections[0].items = entries
                 self?.notify(changes: changes)
             }).start())
+        disposable.add(userRepository.getUser().map { $0.party?.id }.skipRepeats()
+                        .on(value: {[weak self] partyID in
+                            self?.partyID = partyID
+                        }).start())
     }
     
     func headerView(forSection section: Int, frame: CGRect) -> UIView? {
@@ -96,7 +102,7 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
             }
         case .newChatMessage:
             if let cell = cell as? UnreadGroupNotificationCell, let notif = notification as? NotificationNewChatProtocol {
-                cell.configureFor(notification: notif)
+                cell.configureFor(notification: notif, partyID: partyID)
                 cell.closeAction = { [weak self] in self?.dismiss(notification: notification) }
             }
         case .newMysteryItem:
@@ -179,7 +185,7 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
             }
         case .newChatMessage:
             if let notif = notification as? NotificationNewChatProtocol {
-                if notif.isParty {
+                if notif.groupID == partyID {
                     url = "/party"
                 } else {
                     url = "/groups/guild/\(notif.groupID ?? "")"

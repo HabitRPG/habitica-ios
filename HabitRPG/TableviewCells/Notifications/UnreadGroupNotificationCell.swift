@@ -11,9 +11,9 @@ import Habitica_Models
 
 class UnreadGroupNotificationCell: BaseNotificationCell<NotificationNewChatProtocol> {
     
-    override func configureFor(notification: NotificationNewChatProtocol) {
+    func configureFor(notification: NotificationNewChatProtocol, partyID: String?) {
         super.configureFor(notification: notification)
-        if notification.isParty {
+        if notification.groupID == partyID {
             attributedTitle = try? HabiticaMarkdownHelper.toHabiticaAttributedString(L10n.Notifications.unreadPartyMessage(notification.groupName?.unicodeEmoji ?? ""))
         } else {
             attributedTitle = try? HabiticaMarkdownHelper.toHabiticaAttributedString(L10n.Notifications.unreadGuildMessage(notification.groupName?.unicodeEmoji ?? ""))

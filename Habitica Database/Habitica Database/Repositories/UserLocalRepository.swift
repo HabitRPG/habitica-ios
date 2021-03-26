@@ -49,7 +49,7 @@ public class UserLocalRepository: BaseLocalRepository {
                 }
                 return notification as? RealmNotification
             }
-            save(objects: notifications.flatMap { $0 })
+            save(objects: notifications.compactMap { $0 })
         }
     }
     
