@@ -16,6 +16,7 @@ class RealmQuestProgress: Object, QuestProgressProtocol {
     @objc dynamic var health: Float = 0
     @objc dynamic var rage: Float = 0
     @objc dynamic var up: Float = 0
+    @objc dynamic var collectedItems: Int = 0
     var collect: [QuestProgressCollectProtocol] {
         get {
             return realmCollect.map({ (collectItem) -> QuestProgressCollectProtocol in
@@ -46,6 +47,7 @@ class RealmQuestProgress: Object, QuestProgressProtocol {
         health = progress.health
         rage = progress.rage
         up = progress.up
+        collectedItems = progress.collectedItems
         collect = progress.collect
     }
 }

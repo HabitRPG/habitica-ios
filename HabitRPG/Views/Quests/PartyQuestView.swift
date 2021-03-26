@@ -31,6 +31,15 @@ class PartyQuestView: UIView {
     var progressBarViews = [QuestProgressBarView]()
     var isBossQuest = true
     
+    var pendingLabel: UILabel = {
+        let view = UILabel()
+        view.isHidden = true
+        view.textAlignment = .right
+        view.font = .systemFont(ofSize: 13)
+        view.textColor = ThemeService.shared.theme.secondaryTextColor
+        return view
+    }()
+    
     init() {
         super.init(frame: CGRect.zero)
         setupView()
@@ -44,6 +53,7 @@ class PartyQuestView: UIView {
     private func setupView() {
         addSubview(questImageView)
         addSubview(backgroundView)
+        addSubview(pendingLabel)
     }
     
     func configure(state: QuestStateProtocol, quest: QuestProtocol) {
@@ -133,6 +143,13 @@ class PartyQuestView: UIView {
         }
     }
     
+    func setCollectedItems(_ pending: Int) {
+        if !isBossQuest {
+            pendingLabel.text = L10n.xItemsFound(pending)
+            pendingLabel.isHidden = false
+        }
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         layout()
@@ -145,6 +162,10 @@ class PartyQuestView: UIView {
         for progressView in progressBarViews {
             progressView.pin.top(to: edge).marginTop(10).start(16).end(16).height(progressView.intrinsicContentSize.height)
             edge = progressView.edge.bottom
+        }
+        if !pendingLabel.isHidden {
+            pendingLabel.pin.top(to: edge).marginTop(4).start(16).end(16).sizeToFit(.width)
+            edge = pendingLabel.edge.bottom
         }
         backgroundView.pin.top(to: questImageView.edge.bottom).marginTop(12).bottom(to: edge).marginBottom(-10).start().end()
     }

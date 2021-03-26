@@ -13,5 +13,6 @@ public protocol QuestProgressProtocol {
     var health: Float { get set }
     var rage: Float { get set }
     var up: Float { get set }
+    var collectedItems: Int { get set }
     var collect: [QuestProgressCollectProtocol] { get set }
 }

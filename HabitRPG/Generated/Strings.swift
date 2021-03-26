@@ -1026,6 +1026,10 @@ public enum L10n {
   public static func xFilters(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "x_filters", p1)
   }
+  /// %d Items found
+  public static func xItemsFound(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "x_items_found", p1)
+  }
   /// %d Months
   public static func xMonths(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "x_months", p1)

@@ -232,6 +232,9 @@ class PartyDetailViewController: GroupDetailViewController {
         if let pendingDamage = user.party?.quest?.progress?.up, pendingDamage > 0 {
             partyQuestView.setPendingDamage(pendingDamage)
         }
+        if let collectedItems = user.party?.quest?.progress?.collectedItems, collectedItems > 0 {
+            partyQuestView.setCollectedItems(collectedItems)
+        }
         if questStateDisposable == nil {
             updateQuestStateInfo(questState: user.party?.quest)
         }
