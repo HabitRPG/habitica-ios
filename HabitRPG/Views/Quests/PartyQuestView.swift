@@ -21,11 +21,8 @@ class PartyQuestView: UIView {
         let view = UIImageView()
         view.isHidden = true
         let theme = ThemeService.shared.theme
-        view.image = HabiticaIcons.imageOfQuestBackground(bossColorDark: theme.windowBackgroundColor,
-                                                          bossColorMedium: theme.dimmedTextColor,
-                                                          bossColorLight: theme.dimmedColor)
-            .resizableImage(withCapInsets: UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10),
-                            resizingMode: UIImage.ResizingMode.stretch)
+        view.backgroundColor = theme.windowBackgroundColor
+        view.cornerRadius = 12
         return view
     }()
     var progressBarViews = [QuestProgressBarView]()
@@ -34,9 +31,12 @@ class PartyQuestView: UIView {
     var pendingLabel: UILabel = {
         let view = UILabel()
         view.isHidden = true
-        view.textAlignment = .right
-        view.font = .systemFont(ofSize: 13)
-        view.textColor = ThemeService.shared.theme.secondaryTextColor
+        view.textAlignment = .center
+        view.font = .systemFont(ofSize: 12, weight: .semibold)
+        view.textColor = .white
+        view.backgroundColor = ThemeService.shared.theme.secondaryBadgeColor
+        view.cornerRadius = 12
+        view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         return view
     }()
     
@@ -164,10 +164,10 @@ class PartyQuestView: UIView {
             edge = progressView.edge.bottom
         }
         if !pendingLabel.isHidden {
-            pendingLabel.pin.top(to: edge).marginTop(4).start(16).end(16).sizeToFit(.width)
+            pendingLabel.pin.top(to: edge).marginTop(10).start().end().height(28)
             edge = pendingLabel.edge.bottom
         }
-        backgroundView.pin.top(to: questImageView.edge.bottom).marginTop(12).bottom(to: edge).marginBottom(-10).start().end()
+        backgroundView.pin.top(to: questImageView.edge.bottom).marginTop(12).bottom(to: edge).start().end()
     }
     
     override var intrinsicContentSize: CGSize {

@@ -460,6 +460,7 @@
 "groups.members" = "Members";
 "groups.invite_member" = "Invite a Member";
 "pending_damage" = "Pending damage";
+"pending_items" = "Pending items";
 "quests.boss_battle" = "Boss Battle";
 "quests.collection_quest" = "Collection quest";
 "quests.invitations_header" = "Invitations";

@@ -660,6 +660,8 @@ public enum L10n {
   public static var pauseDamage: String { return L10n.tr("Mainstrings", "pause_damage") }
   /// Pending damage
   public static var pendingDamage: String { return L10n.tr("Mainstrings", "pending_damage") }
+  /// Pending items
+  public static var pendingItems: String { return L10n.tr("Mainstrings", "pending_items") }
   /// %d%% Complete
   public static func percentComplete(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "percent_complete", p1)
