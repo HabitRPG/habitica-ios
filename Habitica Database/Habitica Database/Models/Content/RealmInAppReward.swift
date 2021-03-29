@@ -14,7 +14,8 @@ class RealmInAppReward: Object, InAppRewardProtocol {
     @objc dynamic var combinedKey: String?
     @objc dynamic var userID: String?
     @objc dynamic var key: String?
-    @objc dynamic var availableUntil: Date?
+    @objc dynamic var eventStart: Date?
+    @objc dynamic var eventEnd: Date?
     @objc dynamic var currency: String?
     @objc dynamic var isSuggested: Bool = false
     @objc dynamic var lastPurchased: Date?
@@ -51,7 +52,8 @@ class RealmInAppReward: Object, InAppRewardProtocol {
         self.combinedKey = (userID ?? "") + (protocolObject.key ?? "")
         self.userID = userID
         key = protocolObject.key
-        availableUntil = protocolObject.availableUntil
+        eventStart = protocolObject.eventStart
+        eventEnd = protocolObject.eventEnd
         currency = protocolObject.currency
         isSuggested = protocolObject.isSuggested
         lastPurchased = protocolObject.lastPurchased

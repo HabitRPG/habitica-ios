@@ -470,6 +470,8 @@ public enum L10n {
   public static var invitedFriendDescription: String { return L10n.tr("Mainstrings", "invitedFriendDescription") }
   /// Invited a Friend
   public static var invitedFriendTitle: String { return L10n.tr("Mainstrings", "invitedFriendTitle") }
+  /// Open
+  public static var isOpen: String { return L10n.tr("Mainstrings", "is_open") }
   /// Join
   public static var join: String { return L10n.tr("Mainstrings", "join") }
   /// Join Challenge
@@ -592,6 +594,8 @@ public enum L10n {
   public static var never: String { return L10n.tr("Mainstrings", "never") }
   /// never
   public static var neverLowerCase: String { return L10n.tr("Mainstrings", "never_lower_case") }
+  /// New
+  public static var new: String { return L10n.tr("Mainstrings", "new") }
   /// New Message
   public static var newMessage: String { return L10n.tr("Mainstrings", "new_message") }
   /// Next
@@ -778,6 +782,8 @@ public enum L10n {
   public static var save: String { return L10n.tr("Mainstrings", "save") }
   /// Search
   public static var search: String { return L10n.tr("Mainstrings", "search") }
+  /// Seasonal Potions available
+  public static var seasonalPotionsAvailable: String { return L10n.tr("Mainstrings", "seasonal_potions_available") }
   /// Sell for %d Gold
   public static func sell(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "sell", p1)
@@ -1482,6 +1488,10 @@ public enum L10n {
   }
 
   public enum Inventory {
+    /// Available For %dh %dm
+    public static func availableFor(_ p1: Int, _ p2: Int) -> String {
+      return L10n.tr("Mainstrings", "inventory.available_for", p1, p2)
+    }
     /// Available Until %@
     public static func availableUntil(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "inventory.available_until", p1)

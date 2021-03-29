@@ -84,8 +84,8 @@ class HRPGSimpleShopItemView: UIView {
         shopItemTitleLabel.text = reward.text
 
         var purchaseType = ""
-        if let availableUntil = reward.availableUntil {
-            setAvailableUntil(date: availableUntil)
+        if let date = reward.eventEnd, date > Date() {
+            setAvailableUntil(date: date)
         }
         var imageName = reward.imageName ?? ""
         if reward.path?.contains("timeTravelBackgrounds") == true {
@@ -186,13 +186,18 @@ class HRPGSimpleShopItemView: UIView {
     }
     
     private func setAvailableUntil(date: Date) {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .none
-        formatter.dateStyle = .medium
-        formatter.timeZone = TimeZone(identifier: "UTC")
-        let dateString = formatter.string(from: date)
-        topBannerLabel.text = L10n.Inventory.availableUntil(dateString)
-        topBannerWrapper.backgroundColor = UIColor.purple200
+        let diff = Calendar.current.dateComponents([.hour, .minute], from: Date(), to: date)
+        if (diff.hour ?? 24) < 24 {
+            topBannerLabel.text = L10n.Inventory.availableFor(diff.hour ?? 0, diff.minute ?? 0)
+        } else {
+            let formatter = DateFormatter()
+            formatter.timeStyle = .none
+            formatter.dateStyle = .long
+            formatter.timeZone = TimeZone.autoupdatingCurrent
+            let dateString = formatter.string(from: date)
+            topBannerLabel.text = L10n.Inventory.availableUntil(dateString)
+        }
+        topBannerWrapper.backgroundColor = UIColor.purple300
         topBannerWrapper.isHidden = false
     }
     

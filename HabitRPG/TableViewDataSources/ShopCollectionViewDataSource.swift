@@ -97,6 +97,12 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             if sectionCount >= 2 {
                 self?.sections.removeLast(sectionCount - 1)
             }
+            
+            var categories = shop?.categories ?? []
+            if shop?.identifier == Constants.SeasonalShopKey {
+                categories.reverse()
+            }
+            
             self?.loadCategories(shop?.categories ?? [], isSubscribed: user.isSubscribed)
             self?.delegate?.updateShopHeader(shop: shop)
             

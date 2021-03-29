@@ -496,6 +496,7 @@
 "inventory.number_gems_left" = "Monthly Gems: %d/%d Remaining";
 "inventory.wrong_class" = "Only available for %@s. You can change your class from Settings";
 "inventory.available_until" = "Available Until %@";
+"inventory.available_for" = "Available For %dh %dm";
 "member.member_since" = "Member Since";
 "member.last_logged_in" = "Last logged in";
 "active" = "Active";
@@ -528,6 +529,7 @@
 "copied_to_clipboard" = "Copied to Clipboard";
 "copied_x_to_clipboard" = "Copied %@ to Clipboard";
 "open" = "Open";
+"is_open" = "Open";
 "received_mystery_item" = "You open the box and receive %@";
 "monday" = "Monday";
 "tuesday" = "Tuesday";
@@ -1071,3 +1073,5 @@
 "week_reminder_title" = "How are your tasks going?";
 "week_reminder_body" = "Breaks are healthy, but you can still earn points for simple activities to level up and get cool gear!";
 "x_items_found" = "%d Items found";
+"new" = "New";
+"seasonal_potions_available" = "Seasonal Potions available";

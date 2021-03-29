@@ -15,6 +15,17 @@ public protocol WorldStateProtocol {
     var events: [WorldStateEventProtocol] { get set }
 }
 
+public extension WorldStateProtocol {
+    var isSeasonalShopOpen: Bool {
+        for event in events {
+            if event.gear {
+                return true
+            }
+        }
+        return false
+    }
+}
+
 public protocol WorldStateEventProtocol {
     var eventKey: String? { get set }
     var start: Date? { get set }
@@ -22,4 +33,5 @@ public protocol WorldStateEventProtocol {
     var promo: String? { get set }
     var npcImageSuffix: String? { get set }
     var aprilFools: String? { get set }
+    var gear: Bool { get set }
 }

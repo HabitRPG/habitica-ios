@@ -267,4 +267,8 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     func getLatestMysteryGear() -> SignalProducer<GearProtocol?, ReactiveSwiftRealmError> {
         return localRepository.getLatestMysteryGear()
     }
+    
+    func getCurrentTimeLimitedItems() -> SignalProducer<[ItemProtocol], ReactiveSwiftRealmError> {
+        return localRepository.getCurrentTimeLimitedItems()
+    }
 }

@@ -16,6 +16,7 @@ public class APIWorldStateEvent: WorldStateEventProtocol, Decodable {
     public var end: Date?
     public var npcImageSuffix: String?
     public var aprilFools: String?
+    public var gear: Bool
     
     enum CodingKeys: String, CodingKey {
         case event
@@ -24,6 +25,7 @@ public class APIWorldStateEvent: WorldStateEventProtocol, Decodable {
         case end
         case npcImageSuffix
         case aprilFools
+        case gear
     }
     
     public required init(from decoder: Decoder) throws {
@@ -34,6 +36,7 @@ public class APIWorldStateEvent: WorldStateEventProtocol, Decodable {
         end = try? values.decode(Date.self, forKey: .end)
         npcImageSuffix = try? values.decode(String.self, forKey: .npcImageSuffix)
         aprilFools = try? values.decode(String.self, forKey: .aprilFools)
+        gear = (try? values.decode(Bool.self, forKey: .gear)) ?? false
     }
 }
 

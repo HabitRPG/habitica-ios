@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-class APIFood: FoodProtocol, Codable {
+class APIFood: FoodProtocol, Decodable {
     var isSubscriberItem: Bool = false
     var key: String?
     var text: String?
@@ -18,6 +18,8 @@ class APIFood: FoodProtocol, Codable {
     var target: String?
     var canDrop: Bool = false
     var itemType: String?
+    var eventStart: Date?
+    var eventEnd: Date?
     
     enum CodingKeys: String, CodingKey {
         case key
@@ -27,5 +29,20 @@ class APIFood: FoodProtocol, Codable {
         case target
         case canDrop
         case itemType
+        case event
+    }
+    
+    public required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        key = try? values.decode(String.self, forKey: .key)
+        text = try? values.decode(String.self, forKey: .text)
+        notes = try? values.decode(String.self, forKey: .notes)
+        value = (try? values.decode(Float.self, forKey: .value)) ?? 0
+        target = try? values.decode(String.self, forKey: .target)
+        canDrop = (try? values.decode(Bool.self, forKey: .canDrop)) ?? false
+        itemType = try? values.decode(String.self, forKey: .itemType)
+        let event = try? values.decode(APIEvent.self, forKey: .event)
+        eventStart = event?.start
+        eventEnd = event?.end
     }
 }

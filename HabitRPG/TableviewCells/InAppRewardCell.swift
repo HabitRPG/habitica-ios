@@ -109,7 +109,12 @@ class InAppRewardCell: UICollectionViewCell {
         if let lastPurchased = reward.lastPurchased, wasRecentlyPurchased(lastPurchased) {
             showPurchaseConfirmation()
         }
-        availableUntil = reward.availableUntil
+        
+        if let date = reward.eventEnd, date > Date() {
+            availableUntil = date
+        } else {
+            availableUntil = nil
+        }
         applyAccessibility()
         
         if let lockedReason = reward.shortLockedReason, reward.locked {

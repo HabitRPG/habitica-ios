@@ -17,7 +17,8 @@ private struct APIUnlockCondition: Decodable {
 public class APIInAppReward: InAppRewardProtocol, Decodable {
     public var category: ShopCategoryProtocol?
     public var key: String?
-    public var availableUntil: Date?
+    public var eventStart: Date?
+    public var eventEnd: Date?
     public var currency: String?
     public var isSuggested: Bool = false
     public var lastPurchased: Date?
@@ -55,12 +56,12 @@ public class APIInAppReward: InAppRewardProtocol, Decodable {
         case unlockCondition
         case previous
         case level
+        case event
     }
     
     public required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         key = try? values.decode(String.self, forKey: .key)
-        availableUntil = try? values.decode(Date.self, forKey: .availableUntil)
         isSuggested = (try? values.decode(Bool.self, forKey: .isSuggested)) ?? false
         lastPurchased = try? values.decode(Date.self, forKey: .lastPurchased)
         locked = (try? values.decode(Bool.self, forKey: .locked)) ?? false
@@ -78,6 +79,9 @@ public class APIInAppReward: InAppRewardProtocol, Decodable {
         unlockConditionIncentiveThreshold = unlockCondition?.incentiveThreshold ?? 0
         previous = try? values.decode(String.self, forKey: .previous)
         level = (try? values.decode(Int.self, forKey: .level)) ?? 0
+        let event = try? values.decode(APIEvent.self, forKey: .event)
+        eventStart = event?.start
+        eventEnd = event?.end
     }
     
     init() {

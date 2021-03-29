@@ -147,6 +147,7 @@ class MainMenuViewController: BaseTableViewController {
     private var userRepository = UserRepository()
     private var socialRepository = SocialRepository()
     private var inventoryRepository = InventoryRepository()
+    private let contentRepository = ContentRepository()
     private let configRepository = ConfigRepository()
     
     private var disposable = ScopedDisposable(CompositeDisposable())
@@ -350,6 +351,25 @@ class MainMenuViewController: BaseTableViewController {
             view.onButtonTapped = { [weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.showPromoInfoSegue.rawValue, sender: self) }
             tableView.tableFooterView = view
         }
+        
+        disposable.inner.add(contentRepository.getWorldState().on(value: {[weak self] worldState in
+            if worldState.isSeasonalShopOpen == true {
+                self?.menuItem(withKey: .seasonalShop).pillText = L10n.isOpen
+                self?.menuItem(withKey: .seasonalShop).isHidden = false
+            } else {
+                self?.menuItem(withKey: .seasonalShop).isHidden = true
+            }
+        }).start())
+        disposable.inner.add(inventoryRepository.getCurrentTimeLimitedItems().on(value: {[weak self] items in
+            let market = self?.menuItem(withKey: .market)
+            if !items.isEmpty {
+                market?.pillText = L10n.new
+                market?.subtitle = L10n.seasonalPotionsAvailable
+            } else {
+                market?.pillText = nil
+                market?.subtitle = nil
+            }
+        }).start())
     }
     
     override func applyTheme(theme: Theme) {

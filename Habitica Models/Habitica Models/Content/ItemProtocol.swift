@@ -24,6 +24,8 @@ public protocol ItemProtocol {
     var value: Float { get set }
     var itemType: String? { get set }
     var isSubscriberItem: Bool { get set }
+    var eventStart: Date? { get set }
+    var eventEnd: Date? { get set }
 }
 
 public extension ItemProtocol {
@@ -45,5 +47,13 @@ public extension ItemProtocol {
             }
         }
         return ""
+    }
+    
+    var isAvailable: Bool {
+        guard let eventStart = eventStart, let eventEnd = eventEnd else {
+            return true
+        }
+        let now = Date()
+        return eventStart < now && now < eventEnd
     }
 }

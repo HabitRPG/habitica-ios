@@ -192,6 +192,7 @@
 		2974BDAB208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDAA208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift */; };
 		2974BDB220908E4600EC1A25 /* APIInboxMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDB120908E4600EC1A25 /* APIInboxMessages.swift */; };
 		297F19D5260E0A2D00385C5C /* LeaveQuestCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297F19D4260E0A2D00385C5C /* LeaveQuestCall.swift */; };
+		297F1A282611DE5000385C5C /* APIEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297F1A272611DE5000385C5C /* APIEvent.swift */; };
 		29865F3B233AB5A70041FAA4 /* APITaskHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29865F3A233AB5A70041FAA4 /* APITaskHistory.swift */; };
 		29990DB020E3E791001ADD8B /* APIQuestProgressCollect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DAF20E3E791001ADD8B /* APIQuestProgressCollect.swift */; };
 		29990DB420E4EB3F001ADD8B /* RetrieveInboxMessagesCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DB320E4EB3F001ADD8B /* RetrieveInboxMessagesCall.swift */; };
@@ -439,6 +440,7 @@
 		2974BDAA208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockCustomizationsCall.swift; sourceTree = "<group>"; };
 		2974BDB120908E4600EC1A25 /* APIInboxMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIInboxMessages.swift; sourceTree = "<group>"; };
 		297F19D4260E0A2D00385C5C /* LeaveQuestCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveQuestCall.swift; sourceTree = "<group>"; };
+		297F1A272611DE5000385C5C /* APIEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEvent.swift; sourceTree = "<group>"; };
 		29865F3A233AB5A70041FAA4 /* APITaskHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITaskHistory.swift; sourceTree = "<group>"; };
 		29990DAF20E3E791001ADD8B /* APIQuestProgressCollect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestProgressCollect.swift; sourceTree = "<group>"; };
 		29990DB320E4EB3F001ADD8B /* RetrieveInboxMessagesCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveInboxMessagesCall.swift; sourceTree = "<group>"; };
@@ -565,6 +567,7 @@
 				2902798E205835DF006DACB9 /* APIWorldState.swift */,
 				292AA71F20FDF6A30022CC5F /* APIPinResponse.swift */,
 				292AA72120FDF6C40022CC5F /* APIPinResponseItem.swift */,
+				297F1A272611DE5000385C5C /* APIEvent.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -1165,6 +1168,7 @@
 				29A9B05C22817DBE0049291E /* JsonDataHandler.swift in Sources */,
 				295610F92056CAA800D9711A /* APIHatchingPotion.swift in Sources */,
 				290B627D207BA9D4007287C4 /* SocialLoginCall.swift in Sources */,
+				297F1A282611DE5000385C5C /* APIEvent.swift in Sources */,
 				29323E1720504F5600AC6D6F /* APIStats.swift in Sources */,
 				295E9DCE20B2E00300D58D45 /* PurchaseMysterySetCall.swift in Sources */,
 				295E9DE220B31BE400D58D45 /* UpdateTagCall.swift in Sources */,

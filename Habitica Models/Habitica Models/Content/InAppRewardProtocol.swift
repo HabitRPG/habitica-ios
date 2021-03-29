@@ -11,7 +11,8 @@ import Foundation
 @objc
 public protocol InAppRewardProtocol: BaseRewardProtocol {
     var key: String? { get set }
-    var availableUntil: Date? { get set }
+    var eventStart: Date? { get set }
+    var eventEnd: Date? { get set }
     var currency: String? { get set }
     var isSuggested: Bool { get set }
     var lastPurchased: Date? { get set }

@@ -17,6 +17,8 @@ class RealmItem: Object, ItemProtocol {
     @objc dynamic var value: Float = 0
     @objc dynamic var itemType: String?
     @objc dynamic var isSubscriberItem: Bool = false
+    @objc dynamic var eventStart: Date?
+    @objc dynamic var eventEnd: Date?
     
     override static func primaryKey() -> String {
         return "key"
@@ -29,5 +31,7 @@ class RealmItem: Object, ItemProtocol {
         notes = item.notes
         value = item.value
         isSubscriberItem = item.isSubscriberItem
+        eventStart = item.eventStart
+        eventEnd = item.eventEnd
     }
 }
