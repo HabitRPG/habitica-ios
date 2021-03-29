@@ -2198,10 +2198,14 @@ public enum L10n {
     }
 
     public enum Form {
+      /// Adjust Streak
+      public static var adjustStreak: String { return L10n.tr("Mainstrings", "tasks.form.adjust_streak") }
       /// Checklist
       public static var checklist: String { return L10n.tr("Mainstrings", "tasks.form.checklist") }
       /// Clear
       public static var clear: String { return L10n.tr("Mainstrings", "tasks.form.clear") }
+      /// Completions
+      public static var completions: String { return L10n.tr("Mainstrings", "tasks.form.completions") }
       /// Are you sure you want to delete this task?
       public static var confirmDelete: String { return L10n.tr("Mainstrings", "tasks.form.confirm_delete") }
       /// Controls
@@ -2236,12 +2240,16 @@ public enum L10n {
       public static var hard: String { return L10n.tr("Mainstrings", "tasks.form.hard") }
       /// Medium
       public static var medium: String { return L10n.tr("Mainstrings", "tasks.form.medium") }
+      /// Negative
+      public static var negative: String { return L10n.tr("Mainstrings", "tasks.form.negative") }
       /// New checklist item
       public static var newChecklistItem: String { return L10n.tr("Mainstrings", "tasks.form.new_checklist_item") }
       /// New reminder
       public static var newReminder: String { return L10n.tr("Mainstrings", "tasks.form.new_reminder") }
       /// Include any notes to help you out
       public static var notesPlaceholder: String { return L10n.tr("Mainstrings", "tasks.form.notes_placeholder") }
+      /// Positive
+      public static var positive: String { return L10n.tr("Mainstrings", "tasks.form.positive") }
       /// Remind me
       public static var remindMe: String { return L10n.tr("Mainstrings", "tasks.form.remind_me") }
       /// Reminders

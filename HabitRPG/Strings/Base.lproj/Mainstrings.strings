@@ -137,6 +137,10 @@
 "tasks.form.accessibility.disable" = "Disable %@";
 "tasks.form.accessibility.set_attribute" = "Change attribute to %@";
 "tasks.form.accessibility.attribute" = "Attribute is %@";
+"tasks.form.adjust_streak" = "Adjust Streak";
+"tasks.form.positive" = "Positive";
+"tasks.form.negative" = "Negative";
+"tasks.form.completions" = "Completions";
 "tasks.work" = "Work";
 "tasks.exercise" = "Exercise";
 "tasks.health" = "Health";
