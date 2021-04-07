@@ -110,7 +110,7 @@ class InAppRewardCell: UICollectionViewCell {
             showPurchaseConfirmation()
         }
         
-        if let date = reward.eventEnd, date > Date() {
+        if let date = reward.eventEnd {
             availableUntil = date
         } else {
             availableUntil = nil

@@ -644,6 +644,10 @@ public enum L10n {
   public static var `open`: String { return L10n.tr("Mainstrings", "open") }
   /// Open App Store Page
   public static var openAppStore: String { return L10n.tr("Mainstrings", "open_app_store") }
+  /// Open For %s
+  public static func openFor(_ p1: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "open_for", p1)
+  }
   /// Open Apple ID Subscriptions
   public static var openItunes: String { return L10n.tr("Mainstrings", "open_itunes") }
   /// Open Website
@@ -782,7 +786,7 @@ public enum L10n {
   public static var save: String { return L10n.tr("Mainstrings", "save") }
   /// Search
   public static var search: String { return L10n.tr("Mainstrings", "search") }
-  /// Seasonal Potions available
+  /// Seasonal Items available
   public static var seasonalPotionsAvailable: String { return L10n.tr("Mainstrings", "seasonal_potions_available") }
   /// Sell for %d Gold
   public static func sell(_ p1: Int) -> String {
@@ -1488,9 +1492,9 @@ public enum L10n {
   }
 
   public enum Inventory {
-    /// Available For %dh %dm
-    public static func availableFor(_ p1: Int, _ p2: Int) -> String {
-      return L10n.tr("Mainstrings", "inventory.available_for", p1, p2)
+    /// Available For %s
+    public static func availableFor(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "inventory.available_for", p1)
     }
     /// Available Until %@
     public static func availableUntil(_ p1: String) -> String {

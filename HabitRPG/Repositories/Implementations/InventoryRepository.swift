@@ -228,9 +228,20 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     func retrieveShopInventory(identifier: String) -> Signal<ShopProtocol?, Never> {
         let call = RetrieveShopInventoryCall(identifier: identifier, language: LanguageHandler.getAppLanguage().code)
         
-        return call.objectSignal.on(value: {[weak self]shop in
+        return call.objectSignal.on(value: {[weak self] shop in
             if let shop = shop {
                 shop.identifier = identifier
+                if shop.identifier == Constants.SeasonalShopKey {
+                    shop.categories.sort(by: { (first, second) -> Bool in
+                        if first.items.count == 1 {
+                            return false
+                        }
+                        if second.items.count == 1 {
+                            return false
+                        }
+                        return (first.items.first?.eventEnd ?? Date()) > second.items.first?.eventStart ?? Date()
+                    })
+                }
                 self?.localRepository.save(shop: shop)
             }
         })

@@ -151,6 +151,7 @@ class MainMenuViewController: BaseTableViewController {
     private let configRepository = ConfigRepository()
     
     private var disposable = ScopedDisposable(CompositeDisposable())
+    private var seasonalShopTimer: Timer?
     
     private var menuSections = [MenuSection]()
     var visibleSections: [MenuSection] {
@@ -353,12 +354,17 @@ class MainMenuViewController: BaseTableViewController {
         }
         
         disposable.inner.add(contentRepository.getWorldState().on(value: {[weak self] worldState in
-            if worldState.isSeasonalShopOpen == true {
-                self?.menuItem(withKey: .seasonalShop).pillText = L10n.isOpen
-                self?.menuItem(withKey: .seasonalShop).isHidden = false
-            } else {
-                self?.menuItem(withKey: .seasonalShop).isHidden = true
-            }
+            self?.seasonalShopTimer?.invalidate()
+            self?.seasonalShopTimer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true, block: {[weak self] _ in
+                if worldState.isSeasonalShopOpen == true {
+                    self?.menuItem(withKey: .seasonalShop).pillText = L10n.isOpen
+                    self?.menuItem(withKey: .seasonalShop).subtitle = L10n.openFor(worldState.seasonalShopEvent?.end?.getShortRemainingString() ?? "")
+                    self?.menuItem(withKey: .seasonalShop).isHidden = false
+                } else {
+                    self?.menuItem(withKey: .seasonalShop).isHidden = true
+                }
+                self?.tableView.reloadSections(IndexSet([1]), with: .automatic)
+            })
         }).start())
         disposable.inner.add(inventoryRepository.getCurrentTimeLimitedItems().on(value: {[weak self] items in
             let market = self?.menuItem(withKey: .market)

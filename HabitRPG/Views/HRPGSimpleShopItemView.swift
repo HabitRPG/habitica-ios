@@ -135,6 +135,10 @@ class HRPGSimpleShopItemView: UIView {
         topBannerWrapper.isHidden = false
     }
     
+    deinit {
+        timer?.invalidate()
+    }
+    
     private func setImage(name: String, fileExtension: String = "png") {
         var imageName = name
         if imageName.contains(" ") {
@@ -185,20 +189,25 @@ class HRPGSimpleShopItemView: UIView {
         }
     }
     
+    private var timer: Timer?
+    
     private func setAvailableUntil(date: Date) {
-        let diff = Calendar.current.dateComponents([.hour, .minute], from: Date(), to: date)
-        if (diff.hour ?? 24) < 24 {
-            topBannerLabel.text = L10n.Inventory.availableFor(diff.hour ?? 0, diff.minute ?? 0)
+        timer?.invalidate()
+        updateAvailableUntil(date: date)
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: {[weak self] _ in
+            self?.updateAvailableUntil(date: date)
+        })
+    }
+    
+    @objc
+    private func updateAvailableUntil(date: Date) {
+        if date.compare(Date()) != .orderedAscending {
+            topBannerLabel.text = L10n.Inventory.availableFor(date.getShortRemainingString())
+            topBannerWrapper.backgroundColor = UIColor.purple300
+            topBannerWrapper.isHidden = false
         } else {
-            let formatter = DateFormatter()
-            formatter.timeStyle = .none
-            formatter.dateStyle = .long
-            formatter.timeZone = TimeZone.autoupdatingCurrent
-            let dateString = formatter.string(from: date)
-            topBannerLabel.text = L10n.Inventory.availableUntil(dateString)
+            topBannerWrapper.isHidden = true
         }
-        topBannerWrapper.backgroundColor = UIColor.purple300
-        topBannerWrapper.isHidden = false
     }
     
     // MARK: - Private Helper Methods

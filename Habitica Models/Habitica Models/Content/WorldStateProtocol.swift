@@ -16,13 +16,16 @@ public protocol WorldStateProtocol {
 }
 
 public extension WorldStateProtocol {
-    var isSeasonalShopOpen: Bool {
-        for event in events {
-            if event.gear {
-                return true
-            }
+    
+    var seasonalShopEvent: WorldStateEventProtocol? {
+        for event in events where event.gear {
+            return event
         }
-        return false
+        return nil
+    }
+    
+    var isSeasonalShopOpen: Bool {
+        return seasonalShopEvent != nil
     }
 }
 
