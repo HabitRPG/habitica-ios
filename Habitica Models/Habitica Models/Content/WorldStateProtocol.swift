@@ -25,7 +25,10 @@ public extension WorldStateProtocol {
     }
     
     var isSeasonalShopOpen: Bool {
-        return seasonalShopEvent != nil
+        if let end = seasonalShopEvent?.end {
+            return end > Date()
+        }
+        return false
     }
 }
 

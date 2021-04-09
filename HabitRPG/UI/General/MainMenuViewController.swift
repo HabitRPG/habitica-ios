@@ -353,29 +353,34 @@ class MainMenuViewController: BaseTableViewController {
             tableView.tableFooterView = view
         }
         
-        disposable.inner.add(contentRepository.getWorldState().on(value: {[weak self] worldState in
+        disposable.inner.add(contentRepository.getWorldState()
+                                .combineLatest(with: inventoryRepository.getCurrentTimeLimitedItems())
+                                .on(value: {[weak self] (worldState, items) in
             self?.seasonalShopTimer?.invalidate()
+                                    self?.updateSeasonalEntries(worldState: worldState, items: items)
             self?.seasonalShopTimer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true, block: {[weak self] _ in
-                if worldState.isSeasonalShopOpen == true {
-                    self?.menuItem(withKey: .seasonalShop).pillText = L10n.isOpen
-                    self?.menuItem(withKey: .seasonalShop).subtitle = L10n.openFor(worldState.seasonalShopEvent?.end?.getShortRemainingString() ?? "")
-                    self?.menuItem(withKey: .seasonalShop).isHidden = false
-                } else {
-                    self?.menuItem(withKey: .seasonalShop).isHidden = true
-                }
-                self?.tableView.reloadSections(IndexSet([1]), with: .automatic)
+                self?.updateSeasonalEntries(worldState: worldState, items: items)
             })
         }).start())
-        disposable.inner.add(inventoryRepository.getCurrentTimeLimitedItems().on(value: {[weak self] items in
-            let market = self?.menuItem(withKey: .market)
-            if !items.isEmpty {
-                market?.pillText = L10n.new
-                market?.subtitle = L10n.seasonalPotionsAvailable
-            } else {
-                market?.pillText = nil
-                market?.subtitle = nil
-            }
-        }).start())
+    }
+    
+    private func updateSeasonalEntries(worldState: WorldStateProtocol, items: [ItemProtocol]) {
+        let market = menuItem(withKey: .market)
+        if !items.isEmpty && (items.first?.eventEnd ?? Date()) > Date() {
+            market.pillText = L10n.new
+            market.subtitle = L10n.seasonalPotionsAvailable
+        } else {
+            market.pillText = nil
+            market.subtitle = nil
+        }
+        if worldState.isSeasonalShopOpen == true {
+            menuItem(withKey: .seasonalShop).pillText = L10n.isOpen
+            menuItem(withKey: .seasonalShop).subtitle = L10n.openFor(worldState.seasonalShopEvent?.end?.getShortRemainingString() ?? "")
+            menuItem(withKey: .seasonalShop).isHidden = false
+        } else {
+            menuItem(withKey: .seasonalShop).isHidden = true
+        }
+        tableView.reloadSections(IndexSet([1]), with: .automatic)
     }
     
     override func applyTheme(theme: Theme) {

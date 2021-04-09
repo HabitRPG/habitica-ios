@@ -84,7 +84,7 @@ class HRPGSimpleShopItemView: UIView {
         shopItemTitleLabel.text = reward.text
 
         var purchaseType = ""
-        if let date = reward.eventEnd, date > Date() {
+        if let date = reward.eventEnd {
             setAvailableUntil(date: date)
         }
         var imageName = reward.imageName ?? ""
@@ -201,11 +201,13 @@ class HRPGSimpleShopItemView: UIView {
     
     @objc
     private func updateAvailableUntil(date: Date) {
-        if date.compare(Date()) != .orderedAscending {
+        if date > Date() {
             topBannerLabel.text = L10n.Inventory.availableFor(date.getShortRemainingString())
             topBannerWrapper.backgroundColor = UIColor.purple300
             topBannerWrapper.isHidden = false
         } else {
+            topBannerLabel.text = L10n.Inventory.noLongerAvailable
+            topBannerWrapper.backgroundColor = UIColor.gray100
             topBannerWrapper.isHidden = true
         }
     }

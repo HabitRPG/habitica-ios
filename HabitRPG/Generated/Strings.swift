@@ -1504,10 +1504,12 @@ public enum L10n {
     public static var hatched: String { return L10n.tr("Mainstrings", "inventory.hatched") }
     /// I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!
     public static func hatchedSharing(_ p1: String, _ p2: String) -> String {
-      return L10n.tr("Mainstrings", "inventory.hatchedSharing", p1, p2)
+      return L10n.tr("Mainstrings", "inventory.hatched_sharing", p1, p2)
     }
     /// You have bought all the Gems you can this month. More become available within the first three days of each month. Thanks for subscribing!
     public static var noGemsLeft: String { return L10n.tr("Mainstrings", "inventory.no_gems_left") }
+    /// No Longer Available
+    public static var noLongerAvailable: String { return L10n.tr("Mainstrings", "inventory.no_longer_available") }
     /// Monthly Gems: %d/%d Remaining
     public static func numberGemsLeft(_ p1: Int, _ p2: Int) -> String {
       return L10n.tr("Mainstrings", "inventory.number_gems_left", p1, p2)

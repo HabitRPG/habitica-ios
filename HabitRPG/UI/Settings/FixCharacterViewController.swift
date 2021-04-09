@@ -166,7 +166,7 @@ class FixCharacterViewController: BaseTableViewController {
         if let cell = sender.superview?.superview?.superview as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
             let value = stats[identifierFor(index: indexPath.item)]
             if value is Int {
-                stats[identifierFor(index: indexPath.item)] = Int(sender.text ?? "") ?? 0
+                stats[identifierFor(index: indexPath.item)] = Int(sender.text ?? "") ?? Float(sender.text ?? "") ?? 0
             } else if value is Float {
                 stats[identifierFor(index: indexPath.item)] = Float(sender.text ?? "") ?? 0
             }

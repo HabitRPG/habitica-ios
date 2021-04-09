@@ -370,7 +370,8 @@
 "close" = "Close";
 "ok" = "OK";
 "inventory.hatched" = "You hatched a new pet!";
-"inventory.hatchedSharing" = "I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!";
+"inventory.hatched_sharing" = "I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!";
+"inventory.no_longer_available" = "No Longer Available";
 "pets" = "Pets";
 "mounts" = "Mounts";
 "stable.standard_pets" = "Standard Pets";
