@@ -233,11 +233,11 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 shop.identifier = identifier
                 if shop.identifier == Constants.SeasonalShopKey {
                     shop.categories.sort(by: { (first, second) -> Bool in
-                        if first.items.count == 1 {
+                        if first.items.count == 1 || second.items.count == 1 {
                             return false
                         }
-                        if second.items.count == 1 {
-                            return false
+                        if first.items.first?.currency != second.items.first?.currency {
+                            return first.items.first?.currency == "gold"
                         }
                         return (first.items.first?.eventEnd ?? Date()) > second.items.first?.eventStart ?? Date()
                     })
