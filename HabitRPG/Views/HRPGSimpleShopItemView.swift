@@ -208,7 +208,7 @@ class HRPGSimpleShopItemView: UIView {
         } else {
             topBannerLabel.text = L10n.Inventory.noLongerAvailable
             topBannerWrapper.backgroundColor = UIColor.gray100
-            topBannerWrapper.isHidden = true
+            topBannerWrapper.isHidden = false
         }
     }
     

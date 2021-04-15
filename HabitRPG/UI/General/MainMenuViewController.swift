@@ -373,7 +373,7 @@ class MainMenuViewController: BaseTableViewController {
             market.pillText = nil
             market.subtitle = nil
         }
-        if worldState.isSeasonalShopOpen == true {
+        if worldState.isValid && worldState.isSeasonalShopOpen {
             menuItem(withKey: .seasonalShop).pillText = L10n.isOpen
             menuItem(withKey: .seasonalShop).subtitle = L10n.openFor(worldState.seasonalShopEvent?.end?.getShortRemainingString() ?? "")
             menuItem(withKey: .seasonalShop).isHidden = false

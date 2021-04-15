@@ -45,6 +45,7 @@ public class APIWorldState: WorldStateProtocol, Decodable {
     public var npcImageSuffix: String?
     public var currentEvent: WorldStateEventProtocol?
     public var events: [WorldStateEventProtocol]
+    public var isValid: Bool = true
     
     enum CodingKeys: String, CodingKey {
         case worldBoss

@@ -644,7 +644,7 @@ public enum L10n {
   public static var `open`: String { return L10n.tr("Mainstrings", "open") }
   /// Open App Store Page
   public static var openAppStore: String { return L10n.tr("Mainstrings", "open_app_store") }
-  /// Open For %s
+  /// Open for %s
   public static func openFor(_ p1: UnsafePointer<CChar>) -> String {
     return L10n.tr("Mainstrings", "open_for", p1)
   }
@@ -786,7 +786,7 @@ public enum L10n {
   public static var save: String { return L10n.tr("Mainstrings", "save") }
   /// Search
   public static var search: String { return L10n.tr("Mainstrings", "search") }
-  /// Seasonal Items available
+  /// Seasonal items available
   public static var seasonalPotionsAvailable: String { return L10n.tr("Mainstrings", "seasonal_potions_available") }
   /// Sell for %d Gold
   public static func sell(_ p1: Int) -> String {
@@ -1508,7 +1508,7 @@ public enum L10n {
     }
     /// You have bought all the Gems you can this month. More become available within the first three days of each month. Thanks for subscribing!
     public static var noGemsLeft: String { return L10n.tr("Mainstrings", "inventory.no_gems_left") }
-    /// No Longer Available
+    /// No longer available
     public static var noLongerAvailable: String { return L10n.tr("Mainstrings", "inventory.no_longer_available") }
     /// Monthly Gems: %d/%d Remaining
     public static func numberGemsLeft(_ p1: Int, _ p2: Int) -> String {
