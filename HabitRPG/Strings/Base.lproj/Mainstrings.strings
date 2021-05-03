@@ -137,6 +137,10 @@
 "tasks.form.accessibility.disable" = "Disable %@";
 "tasks.form.accessibility.set_attribute" = "Change attribute to %@";
 "tasks.form.accessibility.attribute" = "Attribute is %@";
+"tasks.form.adjust_streak" = "Adjust Streak";
+"tasks.form.positive" = "Positive";
+"tasks.form.negative" = "Negative";
+"tasks.form.completions" = "Completions";
 "tasks.work" = "Work";
 "tasks.exercise" = "Exercise";
 "tasks.health" = "Health";
@@ -366,7 +370,8 @@
 "close" = "Close";
 "ok" = "OK";
 "inventory.hatched" = "You hatched a new pet!";
-"inventory.hatchedSharing" = "I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!";
+"inventory.hatched_sharing" = "I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!";
+"inventory.no_longer_available" = "No longer available";
 "pets" = "Pets";
 "mounts" = "Mounts";
 "stable.standard_pets" = "Standard Pets";
@@ -460,6 +465,7 @@
 "groups.members" = "Members";
 "groups.invite_member" = "Invite a Member";
 "pending_damage" = "Pending damage";
+"pending_items" = "Pending items";
 "quests.boss_battle" = "Boss Battle";
 "quests.collection_quest" = "Collection quest";
 "quests.invitations_header" = "Invitations";
@@ -470,6 +476,8 @@
 "quests.confirm_cancel_invitation" = "Are you sure you want to cancel this quest? All invitation acceptances will be lost. The quest owner will retain possession of the quest scroll.";
 "quests.confirm_force_start" = "Are you sure? Not all party members have joined this quest! Quests start automatically when all players have joined or rejected the invitation.";
 "quests.confirm_abort" = "Are you sure you want to abort this mission? It will abort it for everyone in your party and all progress will be lost. The quest scroll will be returned to the quest owner.";
+"quests.confirm_leave" = "Are you sure you want to leave the Quest? All your progress will be lost.";
+"quests.confirm_leave_nostart" = "Are you sure you want to leave the Quest? You won\'t be able to participate.";
 "quests.started_by" = "Started by %@";
 "quests.reward_experience" = "%d Experience Points";
 "quests.reward_gold" = "%d Gold";
@@ -489,6 +497,7 @@
 "inventory.number_gems_left" = "Monthly Gems: %d/%d Remaining";
 "inventory.wrong_class" = "Only available for %@s. You can change your class from Settings";
 "inventory.available_until" = "Available Until %@";
+"inventory.available_for" = "Available For %@";
 "member.member_since" = "Member Since";
 "member.last_logged_in" = "Last logged in";
 "active" = "Active";
@@ -521,6 +530,7 @@
 "copied_to_clipboard" = "Copied to Clipboard";
 "copied_x_to_clipboard" = "Copied %@ to Clipboard";
 "open" = "Open";
+"is_open" = "Open";
 "received_mystery_item" = "You open the box and receive %@";
 "monday" = "Monday";
 "tuesday" = "Tuesday";
@@ -1063,3 +1073,7 @@
 "daily_tip_9" = "If you\'re having a tough time, try breaking your tasks down into smaller parts.";
 "week_reminder_title" = "How are your tasks going?";
 "week_reminder_body" = "Breaks are healthy, but you can still earn points for simple activities to level up and get cool gear!";
+"x_items_found" = "%d Items found";
+"new" = "New";
+"seasonal_potions_available" = "Seasonal items available";
+"open_for" = "Open for %s";
