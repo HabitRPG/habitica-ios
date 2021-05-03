@@ -136,8 +136,13 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         return true
     }
     
+    private var isStillAliveAndConnected: Bool {
+        return fetchTasksDisposable?.isDisposed == false
+            && tableView != nil
+    }
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+        if editingStyle == .delete && isStillAliveAndConnected {
             if let task = self.item(at: indexPath) {
                 if task.isChallengeTask {
                     if task.challengeBroken == nil {
@@ -151,6 +156,9 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
                     self.fetchTasks()
                 }
             }
+        }
+        if !isStillAliveAndConnected {
+            fetchTasks()
         }
     }
     

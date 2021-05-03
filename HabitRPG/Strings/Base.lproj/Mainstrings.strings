@@ -371,7 +371,7 @@
 "ok" = "OK";
 "inventory.hatched" = "You hatched a new pet!";
 "inventory.hatched_sharing" = "I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!";
-"inventory.no_longer_available" = "No longer available";
+"inventory.no_longer_available" = "No Longer Available";
 "pets" = "Pets";
 "mounts" = "Mounts";
 "stable.standard_pets" = "Standard Pets";
@@ -497,7 +497,7 @@
 "inventory.number_gems_left" = "Monthly Gems: %d/%d Remaining";
 "inventory.wrong_class" = "Only available for %@s. You can change your class from Settings";
 "inventory.available_until" = "Available Until %@";
-"inventory.available_for" = "Available For %@";
+"inventory.available_for" = "Available For %dh %dm";
 "member.member_since" = "Member Since";
 "member.last_logged_in" = "Last logged in";
 "active" = "Active";
@@ -1075,5 +1075,4 @@
 "week_reminder_body" = "Breaks are healthy, but you can still earn points for simple activities to level up and get cool gear!";
 "x_items_found" = "%d Items found";
 "new" = "New";
-"seasonal_potions_available" = "Seasonal items available";
-"open_for" = "Open for %s";
+"seasonal_potions_available" = "Seasonal Potions available";

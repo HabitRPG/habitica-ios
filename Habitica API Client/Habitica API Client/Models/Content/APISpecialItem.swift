@@ -19,6 +19,9 @@ class APISpecialItem: SpecialItemProtocol, Decodable {
     var target: String?
     var immediateUse: Bool = false
     var silent: Bool = false
+    var eventStart: Date?
+    var eventEnd: Date?
+    var isValid: Bool = true
     
     enum CodingKeys: String, CodingKey {
         case key
@@ -28,6 +31,7 @@ class APISpecialItem: SpecialItemProtocol, Decodable {
         case target
         case immediateUse
         case silent
+        case event
     }
     
     public required init(from decoder: Decoder) throws {
@@ -40,5 +44,8 @@ class APISpecialItem: SpecialItemProtocol, Decodable {
         immediateUse = (try? values.decode(Bool.self, forKey: .immediateUse)) ?? false
         silent = (try? values.decode(Bool.self, forKey: .silent)) ?? false
         itemType = ItemType.special.rawValue
+        let event = try? values.decode(APIEvent.self, forKey: .event)
+        eventStart = event?.start
+        eventEnd = event?.end
     }
 }

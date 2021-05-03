@@ -36,6 +36,8 @@ enum TaskFormTags {
     static let attributeSection = "attributeSection"
     static let attribute = "attribute"
     static let challengeName = "challengeName"
+    static let positiveStreak = "positiveStreak"
+    static let negativeStreak = "negativeStreak"
 }
 
 // swiftlint:disable:next type_body_length
@@ -207,6 +209,30 @@ class TaskFormViewController: FormViewController, Themeable {
                     row.cellUpdate { (cell, _) in
                         cell.updateTintColor(self.taskTintColor)
                     }
+            }
+        }
+        
+        if !isCreating && (taskType == .habit || taskType == .daily) {
+            form +++ Section(L10n.Tasks.Form.adjustStreak)
+                <<< IntRow(TaskFormTags.positiveStreak) { row in
+                row.title = taskType == .daily ? L10n.Tasks.Form.completions : L10n.Tasks.Form.positive
+                row.add(rule: RuleGreaterOrEqualThan(min: 0))
+                row.cellUpdate { (cell, _) in
+                    cell.tintColor = self.taskTintColor
+                    if !row.isValid {
+                        cell.titleLabel?.textColor = .red
+                    }
+                }
+            } <<< IntRow(TaskFormTags.negativeStreak) { row in
+                row.title = L10n.Tasks.Form.negative
+                row.add(rule: RuleGreaterOrEqualThan(min: 0))
+                row.cellUpdate { (cell, _) in
+                    cell.tintColor = self.taskTintColor
+                    if !row.isValid {
+                        cell.titleLabel?.textColor = .red
+                    }
+                }
+                row.hidden = Condition(booleanLiteral: taskType != .habit)
             }
         }
         
@@ -658,6 +684,8 @@ class TaskFormViewController: FormViewController, Themeable {
         let controls = HabitControlsValue(positive: task.up, negative: task.down)
         form.setValues([
             TaskFormTags.habitControls: controls,
+            TaskFormTags.positiveStreak: task.counterUp,
+            TaskFormTags.negativeStreak: task.counterDown,
             TaskFormTags.habitResetStreak: TaskFormViewController.habitResetStreakOptions.first(where: { (option) -> Bool in
                 return option.value == task.frequency
             })
@@ -678,6 +706,7 @@ class TaskFormViewController: FormViewController, Themeable {
                 return option.value == task.frequency
             }),
             TaskFormTags.dailyEvery: task.everyX,
+            TaskFormTags.positiveStreak: task.streak,
             TaskFormTags.repeatWeekdays: weekRepeat
             ])
         if task.daysOfMonth.isEmpty == false {
@@ -774,6 +803,8 @@ class TaskFormViewController: FormViewController, Themeable {
         let controls = values[TaskFormTags.habitControls] as? HabitControlsValue
         task.up = controls?.positive ?? true
         task.down = controls?.negative ?? true
+        task.counterUp = values[TaskFormTags.positiveStreak] as? Int ?? 0
+        task.counterDown = values[TaskFormTags.negativeStreak] as? Int ?? 0
         task.frequency = (values[TaskFormTags.habitResetStreak] as? LabeledFormValue<String>)?.value
     }
     
@@ -781,6 +812,7 @@ class TaskFormViewController: FormViewController, Themeable {
         task.startDate = values[TaskFormTags.startDate] as? Date
         task.everyX = values[TaskFormTags.dailyEvery] as? Int ?? 1
         task.frequency = (values[TaskFormTags.dailyRepeat] as? LabeledFormValue<String>)?.value
+        task.streak = values[TaskFormTags.positiveStreak] as? Int ?? 0
         if task.frequency == "monthly", let startDate = task.startDate {
             let calendar = Calendar.current
             let selectedValue = values[TaskFormTags.repeatMonthlySegment] as? String

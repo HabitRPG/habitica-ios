@@ -8,18 +8,36 @@
 
 import Foundation
 
-public protocol WorldStateProtocol {
+@objc public protocol WorldStateProtocol: BaseModelProtocol {
     var worldBoss: QuestStateProtocol? { get set }
     var npcImageSuffix: String? { get set }
     var currentEvent: WorldStateEventProtocol? { get set }
     var events: [WorldStateEventProtocol] { get set }
 }
 
-public protocol WorldStateEventProtocol {
+public extension WorldStateProtocol {
+    
+    var seasonalShopEvent: WorldStateEventProtocol? {
+        for event in events where event.gear {
+            return event
+        }
+        return nil
+    }
+    
+    var isSeasonalShopOpen: Bool {
+        if let end = seasonalShopEvent?.end {
+            return end > Date()
+        }
+        return false
+    }
+}
+
+@objc public protocol WorldStateEventProtocol {
     var eventKey: String? { get set }
     var start: Date? { get set }
     var end: Date? { get set }
     var promo: String? { get set }
     var npcImageSuffix: String? { get set }
     var aprilFools: String? { get set }
+    var gear: Bool { get set }
 }

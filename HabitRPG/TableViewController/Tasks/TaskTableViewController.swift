@@ -28,6 +28,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        createDataSource()
         dataSource?.tableView = tableView
         dataSource?.onOpenForm = {[weak self] indexPath in
             self?.dataSource?.selectRowAt(indexPath: indexPath)
@@ -61,6 +62,10 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         navigationItem.leftBarButtonItem?.title = L10n.filter
     }
     
+    func createDataSource() {
+        
+    }
+    
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         if theme.isDark {
@@ -85,6 +90,9 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
             searchBar.setShowsCancelButton(false, animated: true)
         }
         
+        if dataSource == nil {
+            createDataSource()
+        }
         dataSource?.tableView = tableView
         
         navigationItem.rightBarButtonItem?.accessibilityLabel = L10n.Tasks.addX(readableName ?? "")

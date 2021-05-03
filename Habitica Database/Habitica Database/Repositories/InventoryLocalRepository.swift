@@ -202,4 +202,32 @@ public class InventoryLocalRepository: ContentLocalRepository {
                 return result.first
         }
     }
+    
+    public func getCurrentTimeLimitedItems() -> SignalProducer<[ItemProtocol], ReactiveSwiftRealmError> {
+        let now = Date() as NSDate
+        return SignalProducer.combineLatest(
+            RealmEgg.findBy(predicate: NSPredicate(format: "eventStart < %@ && %@ < eventEnd", now, now)).reactive().map({ (value, changeset) -> ReactiveResults<[EggProtocol]> in
+                return (value.map({ (item) -> EggProtocol in return item }), changeset)
+            }),
+            RealmFood.findBy(predicate: NSPredicate(format: "eventStart < %@ && %@ < eventEnd", now, now)).reactive().map({ (value, changeset) -> ReactiveResults<[FoodProtocol]> in
+                return (value.map({ (item) -> FoodProtocol in return item }), changeset)
+            }),
+            RealmHatchingPotion.findBy(predicate: NSPredicate(format: "eventStart < %@ && %@ < eventEnd", now, now)).reactive().map({ (value, changeset) -> ReactiveResults<[HatchingPotionProtocol]> in
+                return (value.map({ (item) -> HatchingPotionProtocol in return item }), changeset)
+            }),
+            RealmSpecialItem.findBy(predicate: NSPredicate(format: "eventStart < %@ && %@ < eventEnd", now, now)).reactive().map({ (value, changeset) -> ReactiveResults<[SpecialItemProtocol]> in
+                return (value.map({ (item) -> SpecialItemProtocol in return item }), changeset)
+            }),
+            RealmQuest.findBy(predicate: NSPredicate(format: "eventStart < %@ && %@ < eventEnd", now, now)).reactive().map({ (value, changeset) -> ReactiveResults<[QuestProtocol]> in
+                return (value.map({ (item) -> QuestProtocol in return item }), changeset)
+            })).map { items in
+                var allItems = [ItemProtocol]()
+                for type in [items.0.value, items.1.value, items.2.value, items.3.value, items.4.value] as [[ItemProtocol]] {
+                    for item in type {
+                        allItems.append(item)
+                    }
+                }
+                return allItems
+            }
+    }
 }

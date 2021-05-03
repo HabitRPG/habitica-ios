@@ -269,6 +269,5 @@ class ConfigRepository: NSObject {
         } else {
             return nil
         }
-
     }
 }

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PopupDialog
 
 @objc
 class HabiticaAlertController: UIViewController, Themeable {

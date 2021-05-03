@@ -26,6 +26,7 @@ class APIShopCategory: ShopCategoryProtocol, Decodable {
         case purchaseAll
         case pinType
         case items
+        case event
     }
     
     public required init(from decoder: Decoder) throws {
@@ -37,6 +38,15 @@ class APIShopCategory: ShopCategoryProtocol, Decodable {
         purchaseAll = (try? values.decode(Bool.self, forKey: .purchaseAll)) ?? false
         pinType = try? values.decode(String.self, forKey: .pinType)
         items = (try? values.decode([APIInAppReward].self, forKey: .items)) ?? []
+        let event = try? values.decode(APIEvent.self, forKey: .event)
+        items.forEach { item in
+            if let start = event?.start {
+                item.eventStart = start
+            }
+            if let end = event?.end {
+                item.eventEnd = end
+            }
+        }
     }
     
     init() {

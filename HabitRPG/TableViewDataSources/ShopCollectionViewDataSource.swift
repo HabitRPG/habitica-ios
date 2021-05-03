@@ -96,7 +96,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             let sectionCount = self?.sections.count ?? 0
             if sectionCount >= 2 {
                 self?.sections.removeLast(sectionCount - 1)
-            }
+            }            
             self?.loadCategories(shop?.categories ?? [], isSubscribed: user.isSubscribed)
             self?.delegate?.updateShopHeader(shop: shop)
             

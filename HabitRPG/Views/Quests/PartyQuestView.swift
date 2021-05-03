@@ -21,15 +21,24 @@ class PartyQuestView: UIView {
         let view = UIImageView()
         view.isHidden = true
         let theme = ThemeService.shared.theme
-        view.image = HabiticaIcons.imageOfQuestBackground(bossColorDark: theme.windowBackgroundColor,
-                                                          bossColorMedium: theme.dimmedTextColor,
-                                                          bossColorLight: theme.dimmedColor)
-            .resizableImage(withCapInsets: UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10),
-                            resizingMode: UIImage.ResizingMode.stretch)
+        view.backgroundColor = theme.windowBackgroundColor
+        view.cornerRadius = 12
         return view
     }()
     var progressBarViews = [QuestProgressBarView]()
     var isBossQuest = true
+    
+    var pendingLabel: UILabel = {
+        let view = UILabel()
+        view.isHidden = true
+        view.textAlignment = .center
+        view.font = .systemFont(ofSize: 12, weight: .semibold)
+        view.textColor = .white
+        view.backgroundColor = ThemeService.shared.theme.secondaryBadgeColor
+        view.cornerRadius = 12
+        view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        return view
+    }()
     
     init() {
         super.init(frame: CGRect.zero)
@@ -44,6 +53,7 @@ class PartyQuestView: UIView {
     private func setupView() {
         addSubview(questImageView)
         addSubview(backgroundView)
+        addSubview(pendingLabel)
     }
     
     func configure(state: QuestStateProtocol, quest: QuestProtocol) {
@@ -133,6 +143,13 @@ class PartyQuestView: UIView {
         }
     }
     
+    func setCollectedItems(_ pending: Int) {
+        if !isBossQuest {
+            pendingLabel.text = L10n.xItemsFound(pending)
+            pendingLabel.isHidden = false
+        }
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         layout()
@@ -146,7 +163,11 @@ class PartyQuestView: UIView {
             progressView.pin.top(to: edge).marginTop(10).start(16).end(16).height(progressView.intrinsicContentSize.height)
             edge = progressView.edge.bottom
         }
-        backgroundView.pin.top(to: questImageView.edge.bottom).marginTop(12).bottom(to: edge).marginBottom(-10).start().end()
+        if !pendingLabel.isHidden {
+            pendingLabel.pin.top(to: edge).marginTop(10).start().end().height(28)
+            edge = pendingLabel.edge.bottom
+        }
+        backgroundView.pin.top(to: questImageView.edge.bottom).marginTop(12).bottom(to: edge).start().end()
     }
     
     override var intrinsicContentSize: CGSize {

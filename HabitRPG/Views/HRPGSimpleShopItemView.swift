@@ -84,8 +84,8 @@ class HRPGSimpleShopItemView: UIView {
         shopItemTitleLabel.text = reward.text
 
         var purchaseType = ""
-        if let availableUntil = reward.availableUntil {
-            setAvailableUntil(date: availableUntil)
+        if let date = reward.eventEnd {
+            setAvailableUntil(date: date)
         }
         var imageName = reward.imageName ?? ""
         if reward.path?.contains("timeTravelBackgrounds") == true {
@@ -133,6 +133,10 @@ class HRPGSimpleShopItemView: UIView {
             topBannerLabel.text = lockedReason
         }
         topBannerWrapper.isHidden = false
+    }
+    
+    deinit {
+        timer?.invalidate()
     }
     
     private func setImage(name: String, fileExtension: String = "png") {
@@ -185,15 +189,27 @@ class HRPGSimpleShopItemView: UIView {
         }
     }
     
+    private var timer: Timer?
+    
     private func setAvailableUntil(date: Date) {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .none
-        formatter.dateStyle = .medium
-        formatter.timeZone = TimeZone(identifier: "UTC")
-        let dateString = formatter.string(from: date)
-        topBannerLabel.text = L10n.Inventory.availableUntil(dateString)
-        topBannerWrapper.backgroundColor = UIColor.purple200
-        topBannerWrapper.isHidden = false
+        timer?.invalidate()
+        updateAvailableUntil(date: date)
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: {[weak self] _ in
+            self?.updateAvailableUntil(date: date)
+        })
+    }
+    
+    @objc
+    private func updateAvailableUntil(date: Date) {
+        if date > Date() {
+            topBannerLabel.text = L10n.Inventory.availableFor(date.getShortRemainingString())
+            topBannerWrapper.backgroundColor = UIColor.purple300
+            topBannerWrapper.isHidden = false
+        } else {
+            topBannerLabel.text = L10n.Inventory.noLongerAvailable
+            topBannerWrapper.backgroundColor = UIColor.gray100
+            topBannerWrapper.isHidden = false
+        }
     }
     
     // MARK: - Private Helper Methods

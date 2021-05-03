@@ -470,6 +470,8 @@ public enum L10n {
   public static var invitedFriendDescription: String { return L10n.tr("Mainstrings", "invitedFriendDescription") }
   /// Invited a Friend
   public static var invitedFriendTitle: String { return L10n.tr("Mainstrings", "invitedFriendTitle") }
+  /// Open
+  public static var isOpen: String { return L10n.tr("Mainstrings", "is_open") }
   /// Join
   public static var join: String { return L10n.tr("Mainstrings", "join") }
   /// Join Challenge
@@ -592,6 +594,8 @@ public enum L10n {
   public static var never: String { return L10n.tr("Mainstrings", "never") }
   /// never
   public static var neverLowerCase: String { return L10n.tr("Mainstrings", "never_lower_case") }
+  /// New
+  public static var new: String { return L10n.tr("Mainstrings", "new") }
   /// New Message
   public static var newMessage: String { return L10n.tr("Mainstrings", "new_message") }
   /// Next
@@ -640,6 +644,10 @@ public enum L10n {
   public static var `open`: String { return L10n.tr("Mainstrings", "open") }
   /// Open App Store Page
   public static var openAppStore: String { return L10n.tr("Mainstrings", "open_app_store") }
+  /// Open for %s
+  public static func openFor(_ p1: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "open_for", p1)
+  }
   /// Open Apple ID Subscriptions
   public static var openItunes: String { return L10n.tr("Mainstrings", "open_itunes") }
   /// Open Website
@@ -660,6 +668,8 @@ public enum L10n {
   public static var pauseDamage: String { return L10n.tr("Mainstrings", "pause_damage") }
   /// Pending damage
   public static var pendingDamage: String { return L10n.tr("Mainstrings", "pending_damage") }
+  /// Pending items
+  public static var pendingItems: String { return L10n.tr("Mainstrings", "pending_items") }
   /// %d%% Complete
   public static func percentComplete(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "percent_complete", p1)
@@ -776,6 +786,8 @@ public enum L10n {
   public static var save: String { return L10n.tr("Mainstrings", "save") }
   /// Search
   public static var search: String { return L10n.tr("Mainstrings", "search") }
+  /// Seasonal items available
+  public static var seasonalPotionsAvailable: String { return L10n.tr("Mainstrings", "seasonal_potions_available") }
   /// Sell for %d Gold
   public static func sell(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "sell", p1)
@@ -1025,6 +1037,10 @@ public enum L10n {
   /// %ld Filters
   public static func xFilters(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "x_filters", p1)
+  }
+  /// %d Items found
+  public static func xItemsFound(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "x_items_found", p1)
   }
   /// %d Months
   public static func xMonths(_ p1: Int) -> String {
@@ -1476,6 +1492,10 @@ public enum L10n {
   }
 
   public enum Inventory {
+    /// Available For %s
+    public static func availableFor(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "inventory.available_for", p1)
+    }
     /// Available Until %@
     public static func availableUntil(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "inventory.available_until", p1)
@@ -1484,10 +1504,12 @@ public enum L10n {
     public static var hatched: String { return L10n.tr("Mainstrings", "inventory.hatched") }
     /// I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!
     public static func hatchedSharing(_ p1: String, _ p2: String) -> String {
-      return L10n.tr("Mainstrings", "inventory.hatchedSharing", p1, p2)
+      return L10n.tr("Mainstrings", "inventory.hatched_sharing", p1, p2)
     }
     /// You have bought all the Gems you can this month. More become available within the first three days of each month. Thanks for subscribing!
     public static var noGemsLeft: String { return L10n.tr("Mainstrings", "inventory.no_gems_left") }
+    /// No longer available
+    public static var noLongerAvailable: String { return L10n.tr("Mainstrings", "inventory.no_longer_available") }
     /// Monthly Gems: %d/%d Remaining
     public static func numberGemsLeft(_ p1: Int, _ p2: Int) -> String {
       return L10n.tr("Mainstrings", "inventory.number_gems_left", p1, p2)
@@ -1687,6 +1709,10 @@ public enum L10n {
     public static var confirmCancelInvitation: String { return L10n.tr("Mainstrings", "quests.confirm_cancel_invitation") }
     /// Are you sure? Not all party members have joined this quest! Quests start automatically when all players have joined or rejected the invitation.
     public static var confirmForceStart: String { return L10n.tr("Mainstrings", "quests.confirm_force_start") }
+    /// Are you sure you want to leave the Quest? All your progress will be lost.
+    public static var confirmLeave: String { return L10n.tr("Mainstrings", "quests.confirm_leave") }
+    /// Are you sure you want to leave the Quest? You won't be able to participate.
+    public static var confirmLeaveNostart: String { return L10n.tr("Mainstrings", "quests.confirm_leave_nostart") }
     /// Invitations
     public static var invitationsHeader: String { return L10n.tr("Mainstrings", "quests.invitations_header") }
     /// Participants
@@ -2188,10 +2214,14 @@ public enum L10n {
     }
 
     public enum Form {
+      /// Adjust Streak
+      public static var adjustStreak: String { return L10n.tr("Mainstrings", "tasks.form.adjust_streak") }
       /// Checklist
       public static var checklist: String { return L10n.tr("Mainstrings", "tasks.form.checklist") }
       /// Clear
       public static var clear: String { return L10n.tr("Mainstrings", "tasks.form.clear") }
+      /// Completions
+      public static var completions: String { return L10n.tr("Mainstrings", "tasks.form.completions") }
       /// Are you sure you want to delete this task?
       public static var confirmDelete: String { return L10n.tr("Mainstrings", "tasks.form.confirm_delete") }
       /// Controls
@@ -2226,12 +2256,16 @@ public enum L10n {
       public static var hard: String { return L10n.tr("Mainstrings", "tasks.form.hard") }
       /// Medium
       public static var medium: String { return L10n.tr("Mainstrings", "tasks.form.medium") }
+      /// Negative
+      public static var negative: String { return L10n.tr("Mainstrings", "tasks.form.negative") }
       /// New checklist item
       public static var newChecklistItem: String { return L10n.tr("Mainstrings", "tasks.form.new_checklist_item") }
       /// New reminder
       public static var newReminder: String { return L10n.tr("Mainstrings", "tasks.form.new_reminder") }
       /// Include any notes to help you out
       public static var notesPlaceholder: String { return L10n.tr("Mainstrings", "tasks.form.notes_placeholder") }
+      /// Positive
+      public static var positive: String { return L10n.tr("Mainstrings", "tasks.form.positive") }
       /// Remind me
       public static var remindMe: String { return L10n.tr("Mainstrings", "tasks.form.remind_me") }
       /// Reminders
