@@ -45,7 +45,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             refreshBalances()
             updateBuyButton()
             
-            if reward?.key == "gem" {
+            if reward?.isValid == true && reward?.key == "gem" {
                 bulkView?.maxValue = user?.purchased?.subscriptionPlan?.gemsRemaining ?? 0
                 itemView?.setGemsLeft(user?.purchased?.subscriptionPlan?.gemsRemaining ?? 0,
                                       gemsTotal: user?.purchased?.subscriptionPlan?.gemCapTotal ?? 0)

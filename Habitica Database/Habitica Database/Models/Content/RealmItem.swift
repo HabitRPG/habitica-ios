@@ -24,6 +24,10 @@ class RealmItem: Object, ItemProtocol {
         return "key"
     }
     
+    var isValid: Bool {
+        return !isInvalidated
+    }
+    
     convenience init(item: ItemProtocol) {
         self.init()
         key = item.key

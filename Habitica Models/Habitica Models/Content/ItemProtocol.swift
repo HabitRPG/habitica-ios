@@ -17,7 +17,7 @@ public enum ItemType: String, EquatableStringEnumProtocol {
 }
 
 @objc
-public protocol ItemProtocol {
+public protocol ItemProtocol: BaseModelProtocol {
     var key: String? { get set }
     var text: String? { get set }
     var notes: String? { get set }

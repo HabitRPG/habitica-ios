@@ -24,6 +24,7 @@ class APIQuest: QuestProtocol, Decodable {
     var colors: QuestColorsProtocol?
     var eventStart: Date?
     var eventEnd: Date?
+    var isValid: Bool = true
     
     enum CodingKeys: String, CodingKey {
         case key
