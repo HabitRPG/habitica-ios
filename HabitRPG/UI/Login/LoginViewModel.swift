@@ -12,6 +12,7 @@ import AppAuth
 import Keys
 import FBSDKLoginKit
 import AuthenticationServices
+import FirebaseAnalytics
 
 enum LoginViewAuthType {
     case none
@@ -321,6 +322,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                     })
                     .observeValues { loginResult in
                     if loginResult != nil {
+                        Analytics.logEvent("register", parameters: nil)
                         self.onSuccessfulLogin()
                     }
                 }

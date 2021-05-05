@@ -25,6 +25,6 @@ extension UIApplication {
     }
     
     func findKeyWindow() -> UIWindow? {
-        return windows.first(where: { $0.isKeyWindow })
+        return windows.first(where: { $0.isKeyWindow }) ?? windows.first
     }
 }

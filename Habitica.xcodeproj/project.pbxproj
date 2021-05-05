@@ -273,6 +273,7 @@
 		2995F7FC25BAF3B600322CB3 /* RemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2995F7FA25BAF3B600322CB3 /* RemoteLogger.swift */; };
 		2996AA1F22EB157800033D92 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2996AA2122EB157800033D92 /* AppIntentVocabulary.plist */; };
 		299A556226402F800015EA5C /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299A556126402F800015EA5C /* TaskDetailView.swift */; };
+		299B12492642D2AB00498025 /* PromoWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299B12482642D2AB00498025 /* PromoWebViewController.swift */; };
 		299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6211F505DFA00E22935 /* PaddedLabel.swift */; };
 		299BD6351F54346F00E22935 /* QuestDetailRewardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */; };
 		299BD6371F5457E100E22935 /* HabiticaIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6361F5457E100E22935 /* HabiticaIcons.swift */; };
@@ -992,6 +993,7 @@
 		2996AA3222EB159E00033D92 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = zh; path = zh.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		2996AA3322EB159F00033D92 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = fr; path = fr.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		299A556126402F800015EA5C /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
+		299B12482642D2AB00498025 /* PromoWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoWebViewController.swift; sourceTree = "<group>"; };
 		299BD6211F505DFA00E22935 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestDetailRewardView.xib; sourceTree = "<group>"; };
 		299BD6361F5457E100E22935 /* HabiticaIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabiticaIcons.swift; sourceTree = "<group>"; };
@@ -2483,6 +2485,7 @@
 				2986EB091FCC63CC00B316F6 /* User */,
 				29A62B08216CE5D700D4BD90 /* AboutViewController.swift */,
 				29066CFC24FF8CC200A266EE /* PromotionInfoViewController.swift */,
+				299B12482642D2AB00498025 /* PromoWebViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -3892,6 +3895,7 @@
 				292D6C9B2101FF080078288A /* InviteMembersViewController.swift in Sources */,
 				29617E0824E12A5300CF5EB4 /* NetworkImageView.swift in Sources */,
 				29028C392034ABAF00B7F704 /* TaskRepositoryImpl.swift in Sources */,
+				299B12492642D2AB00498025 /* PromoWebViewController.swift in Sources */,
 				D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */,
 				29C38C8524A2466400F219A1 /* AdventureGuidePromoView.swift in Sources */,
 				294FD5692064135500EABCC9 /* HabitControlsRow.swift in Sources */,

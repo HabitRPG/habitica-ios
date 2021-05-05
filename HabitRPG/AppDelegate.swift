@@ -56,9 +56,9 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
             handlePushnotification(identifier: nil, userInfo: userInfo)
         }
         
-        handleInitialLaunch()
-        
         application.findKeyWindow()?.rootViewController = StoryboardScene.Intro.initialScene.instantiate()
+        
+        handleInitialLaunch()
         
         cleanAndRefresh()
         
@@ -271,7 +271,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
             guard let url = defaults.string(forKey: "initialScreenURL") else {
                 return
             }
-            if let loadingViewcontroller = UIApplication.shared.findKeyWindow()?.rootViewController as? LoadingViewController {
+            if let loadingViewcontroller = UIApplication.shared.findKeyWindow()?.rootViewController as? LoadingViewController, loadingViewcontroller.loadingFinishedAction == nil {
                 loadingViewcontroller.loadingFinishedAction = {
                     RouterHandler.shared.handle(urlString: url)
                 }

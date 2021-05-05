@@ -190,6 +190,19 @@ class RouterHandler: NSObject {
         }
         
         router.register("/user/tasks/:taskType/add") { link in
+            let type = link?.routeParameters["taskType"] as? String ?? ""
+            switch type {
+            case "habit", "habits":
+                self.displayTab(index: 0)
+            case "daily", "dailies":
+                self.displayTab(index: 1)
+            case "todo", "todos":
+                self.displayTab(index: 2)
+            case "reward", "rewards":
+                self.displayTab(index: 3)
+            default:
+                return
+            }
             let navigationController = StoryboardScene.Tasks.taskFormViewController.instantiate()
             guard let formController = navigationController.topViewController as? TaskFormViewController else {
                 return
@@ -249,15 +262,27 @@ class RouterHandler: NSObject {
         return tabbarController?.selectedViewController as? UINavigationController
     }
     
+    private var loadingController: LoadingViewController? {
+        return UIApplication.shared.findKeyWindow()?.rootViewController as? LoadingViewController
+    }
+    
     private func present(_ viewController: UIViewController) {
         if let tabbarController = self.tabbarController {
             tabbarController.present(viewController, animated: true, completion: nil)
+        } else {
+            loadingController?.loadingFinishedAction = {[weak self] in
+                self?.tabbarController?.present(viewController, animated: true, completion: nil)
+            }
         }
     }
     
     private func push(_ viewController: UIViewController) {
         if let navigationController = selectedNavigationController {
             navigationController.pushViewController(viewController, animated: true)
+        } else {
+            loadingController?.loadingFinishedAction = {[weak self] in
+                self?.selectedNavigationController?.present(viewController, animated: true, completion: nil)
+            }
         }
     }
     

@@ -43,7 +43,6 @@ class AdventureGuideTableViewCell: UITableViewCell {
     private let backgroundStarView: UIImageView = {
         let view = UIImageView()
         view.image = Asset.adventureGuideBackground.image
-        view.contentMode = .center
         return view
     }()
     
@@ -137,7 +136,7 @@ class AdventureGuideTableViewCell: UITableViewCell {
     private func layout() {
         gradientView.pin.top().bottom(4).horizontally(10)
         overlayView.pin.top(3).bottom(7).horizontally(13)
-        backgroundStarView.pin.end(13).top().bottom(4).width(140)
+        backgroundStarView.pin.end(13).top(3).bottom(7).width(147)
         starView.pin.start(22).width(30).height(35).vCenter()
         titleView.pin.start(62).top(13).sizeToFit()
         progressText.pin.end(28).bottom(15).sizeToFit()
