@@ -349,7 +349,13 @@ class MainMenuViewController: BaseTableViewController {
         } else if let promo = activePromo {
             let view = PromoMenuView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
             promo.configurePromoMenuView(view: view)
-            view.onButtonTapped = { [weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.showPromoInfoSegue.rawValue, sender: self) }
+            view.onButtonTapped = { [weak self] in
+                if self?.activePromo?.isWebPromo == true {
+                    self?.perform(segue: StoryboardSegue.Main.showWebPromoSegue)
+                } else {
+                    self?.perform(segue: StoryboardSegue.Main.showPromoInfoSegue)
+                }
+            }
             tableView.tableFooterView = view
         }
         

@@ -62,6 +62,7 @@ internal enum StoryboardSegue {
     case showSupportSegue
     case showTimeTravelersSegue
     case showUserProfileSegue
+    case showWebPromoSegue
     case subscriptionSegue
     case unwindSaveSegue
     case unwindSegue

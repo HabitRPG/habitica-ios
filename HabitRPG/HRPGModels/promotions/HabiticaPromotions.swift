@@ -12,6 +12,7 @@ public enum HabiticaPromotionType {
     case gemsAmount
     case gemsPrice
     case subscription
+    case survey
     
     static func getPromoFromKey(key: String, startDate: Date?, endDate: Date?) -> HabiticaPromotion? {
         switch key {
@@ -21,6 +22,8 @@ public enum HabiticaPromotionType {
             return SpookyExtraGemsPromotion(startDate: startDate, endDate: endDate)
         case "g1g1":
             return GiftOneGetOnePromotion(startDate: startDate, endDate: endDate)
+        case "survey2021":
+            return Survey2021Promotion()
         default:
             return nil
         }
@@ -30,6 +33,7 @@ public enum HabiticaPromotionType {
 protocol HabiticaPromotion {
     var identifier: String { get }
     var promoType: HabiticaPromotionType { get }
+    var isWebPromo: Bool { get }
     
     var startDate: Date { get }
     var endDate: Date { get }
@@ -44,11 +48,15 @@ protocol HabiticaPromotion {
     func configureInfoView(_ viewController: PromotionInfoViewController)
 }
 
+protocol HabiticaWebPromotion: HabiticaPromotion {
+    var url: URL? { get }
+}
+
 class FallExtraGemsPromotion: HabiticaPromotion {
 
     var identifier = "fall_extra_gems"
     var promoType: HabiticaPromotionType = .gemsAmount
-    
+    var isWebPromo: Bool = false
     var startDate: Date
     var endDate: Date
     
@@ -174,7 +182,7 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
 
     var identifier = "spooky_extra_gems"
     var promoType: HabiticaPromotionType = .gemsAmount
-    
+    var isWebPromo: Bool = false
     var startDate: Date
     var endDate: Date
     
@@ -272,7 +280,7 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
 
     var identifier = "g1g1"
     var promoType: HabiticaPromotionType = .subscription
-    
+    var isWebPromo: Bool = false
     var startDate: Date
     var endDate: Date
     
@@ -375,5 +383,49 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
         formatter.dateStyle = .medium
         formatter.timeStyle = .long
         viewController.limitationsDescription = L10n.GiftOneGetOneData.infoLimitations(formatter.string(from: startDate), formatter.string(from: endDate))
+    }
+}
+
+class Survey2021Promotion: HabiticaWebPromotion {
+
+    var identifier = "survey2021"
+    var promoType: HabiticaPromotionType = .survey
+    var isWebPromo: Bool = true
+    var startDate: Date = Date()
+    var endDate: Date = Date().addingTimeInterval(1000)
+    
+    var url = URL(string: "https://habitica.com")
+    
+    func backgroundColor() -> UIColor {
+        return UIColor.blue1
+    }
+
+    func buttonBackground() -> UIColor {
+        return ThemeService.shared.theme.contentBackgroundColor
+    }
+    
+    func configurePill(_ pillView: PillView) {
+    }
+    
+    func configurePromoMenuView(view: PromoMenuView) {
+        view.backgroundColor = backgroundColor()
+        view.leftImageView.image = Asset.surveyArtLeft.image
+        view.rightImageView.image = Asset.surveyArtRight.image
+        view.setTitle(L10n.Survey.title)
+        view.titleView.textColor = .white
+        view.setDescription(L10n.Survey.description)
+        view.descriptionView.textColor = .white
+        view.actionButton.backgroundColor = .white
+        view.actionButton.setTitle(L10n.Survey.button, for: .normal)
+        view.actionButton.setTitleColor(UIColor.blue10, for: .normal)
+    }
+    
+    func configurePurchaseBanner(view: PromoBannerView) {
+    }
+    
+    func configureGemView(view: GemPurchaseCell, regularAmount: Int) {
+    }
+    
+    func configureInfoView(_ viewController: PromotionInfoViewController) {
     }
 }

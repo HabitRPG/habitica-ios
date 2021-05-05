@@ -33,6 +33,7 @@ enum ConfigVariable: Int {
     case activePromotion
     case customMenu
     case maintenanceData
+    case activePromo
     
     // A/B Tests
     case moveAdventureGuide
@@ -75,6 +76,7 @@ enum ConfigVariable: Int {
         case .showQuestInMenu: return "showQuestInMenu"
         case .disableIntroSlides: return "disableIntroSlides"
         case .showTaskDetailScreen: return "showTaskDetailScreen"
+        case .activePromo: return "activePromo"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -135,6 +137,8 @@ enum ConfigVariable: Int {
             return false as NSNumber
         case .showTaskDetailScreen:
             return false as NSNumber
+        case .activePromo:
+            return "" as NSString
         }
     }
     
@@ -267,6 +271,9 @@ class ConfigRepository: NSObject {
         var promo: HabiticaPromotion?
         for event in worldState?.events ?? [] where event.promo != nil {
             promo = HabiticaPromotionType.getPromoFromKey(key: event.promo ?? "", startDate: event.start, endDate: event.end)
+        }
+        if promo == nil, let key = string(variable: .activePromo), key.isEmpty == false {
+            promo = HabiticaPromotionType.getPromoFromKey(key: key, startDate: nil, endDate: nil)
         }
         if let promo = promo, promo.endDate > Date() {
             return promo

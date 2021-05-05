@@ -2086,6 +2086,15 @@ public enum L10n {
     public static var suggestionsTitle: String { return L10n.tr("Mainstrings", "support.suggestions_title") }
   }
 
+  public enum Survey {
+    /// Go to Survey
+    public static var button: String { return L10n.tr("Mainstrings", "survey.button") }
+    /// Fill out this 5 minute survey to help us grow and receive an achievement!
+    public static var description: String { return L10n.tr("Mainstrings", "survey.description") }
+    /// Habitica player survey
+    public static var title: String { return L10n.tr("Mainstrings", "survey.title") }
+  }
+
   public enum Tasks {
     /// Add %@
     public static func addX(_ p1: String) -> String {

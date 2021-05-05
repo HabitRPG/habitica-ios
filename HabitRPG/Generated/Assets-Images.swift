@@ -251,6 +251,8 @@ internal enum Asset {
   internal static let summerCoralBackground = ImageAsset(name: "summer_coral_background")
   internal static let summerIanScene = ImageAsset(name: "summer_ian_scene")
   internal static let supportArt = ImageAsset(name: "support_art")
+  internal static let surveyArtLeft = ImageAsset(name: "survey_art_left")
+  internal static let surveyArtRight = ImageAsset(name: "survey_art_right")
   internal static let tabbarDailies = ImageAsset(name: "tabbar_dailies")
   internal static let tabbarDailiesSelected = ImageAsset(name: "tabbar_dailies_selected")
   internal static let tabbarHabits = ImageAsset(name: "tabbar_habits")

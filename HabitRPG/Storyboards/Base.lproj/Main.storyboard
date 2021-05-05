@@ -226,6 +226,7 @@
                         <segue destination="x5n-fS-qd9" kind="presentation" identifier="showUserProfileSegue" id="K1h-r2-aQe"/>
                         <segue destination="A14-ZR-jzj" kind="show" identifier="showSupportSegue" id="aRB-2U-UuU"/>
                         <segue destination="aby-Ry-5XE" kind="presentation" identifier="showPromoInfoSegue" id="x0h-sG-Le1"/>
+                        <segue destination="anC-LE-PSB" kind="presentation" identifier="showWebPromoSegue" modalPresentationStyle="fullScreen" id="aTQ-V9-9Du"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVG-cg-SZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1557,7 +1558,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="GemPurchaseViewController" id="0F5-C1-rPv" customClass="GemViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" id="CgT-fS-CrK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="18" minimumInteritemSpacing="18" id="VJm-WU-tp7">
@@ -2878,7 +2879,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="suN-cq-IcA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2457" y="2514"/>
+            <point key="canvasLocation" x="2638" y="2472"/>
         </scene>
         <!--Themed Navigation Controller-->
         <scene sceneID="Nat-bP-7Es">
@@ -3595,20 +3596,88 @@ a matching subscription automatically after sending your gift.</string>
             </objects>
             <point key="canvasLocation" x="3657" y="-688"/>
         </scene>
+        <!--Promo Web View Controller-->
+        <scene sceneID="7uA-Br-BG8">
+            <objects>
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="PrT-43-uFK" customClass="PromoWebViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pAg-y9-Rb2"/>
+                        <viewControllerLayoutGuide type="bottom" id="zju-uU-NGz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="d4A-4s-lD4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="2hQ-Ys-bsD">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5h-f0-DhF">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="h5h-f0-DhF" firstAttribute="top" secondItem="pAg-y9-Rb2" secondAttribute="bottom" id="M4G-IM-ydR"/>
+                            <constraint firstAttribute="centerY" secondItem="2hQ-Ys-bsD" secondAttribute="centerY" id="MI1-DI-fN5"/>
+                            <constraint firstAttribute="trailing" secondItem="h5h-f0-DhF" secondAttribute="trailing" id="Mxy-Kx-vt8"/>
+                            <constraint firstItem="h5h-f0-DhF" firstAttribute="leading" secondItem="d4A-4s-lD4" secondAttribute="leading" id="Pgu-jf-Ink"/>
+                            <constraint firstAttribute="centerX" secondItem="2hQ-Ys-bsD" secondAttribute="centerX" id="PuN-Y7-f0E"/>
+                            <constraint firstAttribute="bottom" secondItem="h5h-f0-DhF" secondAttribute="bottom" id="p5c-LG-b37"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="KWX-Rz-66z">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="HXy-rI-Fps">
+                            <connections>
+                                <segue destination="KSM-6P-9Ap" kind="unwind" unwindAction="unwindToList:" id="WbJ-gJ-eQN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="loadingIndicator" destination="2hQ-Ys-bsD" id="ye4-oi-irv"/>
+                        <outlet property="newsWebView" destination="h5h-f0-DhF" id="MaH-4W-w4v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cSY-fZ-TIM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="KSM-6P-9Ap" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="8846" y="1104"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="naT-rF-NWC">
+            <objects>
+                <navigationController id="anC-LE-PSB" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RNS-zX-Zih">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="PrT-43-uFK" kind="relationship" relationship="rootViewController" id="aGC-Ey-nX7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7l0-CR-liL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8074" y="1104"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="yNZ-LP-06T"/>
-        <segue reference="9d2-gY-n53"/>
-        <segue reference="0lO-rm-fRj"/>
-        <segue reference="BqT-36-Icz"/>
+        <segue reference="N8x-3a-QZ4"/>
+        <segue reference="2vn-wQ-bqg"/>
+        <segue reference="FPm-Dv-Zos"/>
+        <segue reference="x0h-sG-Le1"/>
         <segue reference="kXy-1V-RrM"/>
         <segue reference="Jy5-RC-gge"/>
-        <segue reference="WRT-c8-yJ5"/>
+        <segue reference="04Z-5H-zfF"/>
         <segue reference="ETz-qE-xC2"/>
-        <segue reference="0lJ-Wy-mKC"/>
-        <segue reference="V6b-ej-qnx"/>
-        <segue reference="u8W-Xm-nze"/>
-        <segue reference="PHp-cT-md6"/>
+        <segue reference="jU9-l6-uQc"/>
+        <segue reference="aPT-Gw-lJZ"/>
+        <segue reference="j6y-gM-wIL"/>
+        <segue reference="WX7-CS-CSr"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
