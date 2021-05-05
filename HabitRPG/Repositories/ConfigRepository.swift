@@ -35,13 +35,14 @@ enum ConfigVariable: Int {
     case maintenanceData
     
     // A/B Tests
-    case enableAdventureGuide
+    case moveAdventureGuide
     case enableUsernameAutocomplete
     case disableChallenges
     case reorderMenu
     case enableIPadUI
     case showQuestInMenu
     case disableIntroSlides
+    case showTaskDetailScreen
 
     // swiftlint:disable cyclomatic_complexity
     func name() -> String {
@@ -63,7 +64,7 @@ enum ConfigVariable: Int {
         case .showSubscriptionBanner: return "showSubscriptionBanner"
         case .raiseShops: return "raiseShops"
         case .feedbackURL: return "feedbackURL"
-        case .enableAdventureGuide: return "enableAdventureGuide"
+        case .moveAdventureGuide: return "enableAdventureGuide"
         case .knownIssues: return "knownIssues"
         case .activePromotion: return "activePromo"
         case .customMenu: return "customMenu"
@@ -73,6 +74,7 @@ enum ConfigVariable: Int {
         case .enableIPadUI: return "enableIpadUI"
         case .showQuestInMenu: return "showQuestInMenu"
         case .disableIntroSlides: return "disableIntroSlides"
+        case .showTaskDetailScreen: return "showTaskDetailScreen"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -107,7 +109,7 @@ enum ConfigVariable: Int {
             return false as NSNumber
         case .raiseShops:
             return false as NSNumber
-        case .enableAdventureGuide:
+        case .moveAdventureGuide:
             return false as NSNumber
         case .feedbackURL:
             return "https://docs.google.com/forms/d/e/1FAIpQLScPhrwq_7P1C6PTrI3lbvTsvqGyTNnGzp1ugi1Ml0PFee_p5g/viewform?usp=sf_link" as NSString
@@ -131,6 +133,8 @@ enum ConfigVariable: Int {
             return false as NSNumber
         case .disableIntroSlides:
             return false as NSNumber
+        case .showTaskDetailScreen:
+            return false as NSNumber
         }
     }
     
@@ -151,7 +155,7 @@ enum ConfigVariable: Int {
             .randomizeAvatar,
             .raiseShops,
             .feedbackURL,
-            .enableAdventureGuide,
+            .moveAdventureGuide,
             .knownIssues,
             .activePromotion,
             .customMenu,

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "adventure_guide_art.png",
+      "filename" : "adventureGuideStars.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "adventure_guide_art@2x.png",
+      "filename" : "adventureGuideStars@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "adventure_guide_art@3x.png",
+      "filename" : "adventureGuideStars@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

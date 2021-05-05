@@ -162,6 +162,8 @@ internal enum StoryboardScene {
   internal enum Tasks: StoryboardType {
     internal static let storyboardName = "Tasks"
 
+    internal static let taskDetailViewController = SceneType<UIKit.UINavigationController>(storyboard: Tasks.self, identifier: "TaskDetailViewController")
+
     internal static let taskFormViewController = SceneType<UIKit.UINavigationController>(storyboard: Tasks.self, identifier: "TaskFormViewController")
 
     internal static let taskHistoryNavigationController = SceneType<UIKit.UINavigationController>(storyboard: Tasks.self, identifier: "TaskHistoryNavigationController")

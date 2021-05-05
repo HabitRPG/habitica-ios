@@ -18,6 +18,6 @@ struct HabiticaWidgets: WidgetBundle {
         StatsWidget()
         AddTaskWidgetSingle()
         AddTaskWidget()
-        //TaskListWidget()
+        TaskListWidget()
     }
 }

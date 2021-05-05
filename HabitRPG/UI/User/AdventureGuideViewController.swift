@@ -62,8 +62,8 @@ class AdventureGuideViewController: BaseUIViewController {
         ])
         descriptionLabel.attributedText = attrString
         progressView.trackTintColor = theme.offsetBackgroundColor
-        progressView.tintColor = .yellow50
-        progressLabel.textColor = .yellow10
+        progressView.tintColor = .purple400
+        progressLabel.textColor = .purple400
         yourProgressLabel.textColor = theme.secondaryTextColor
         navigationController?.navigationBar.tintColor = theme.tintColor
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)

@@ -21,7 +21,7 @@ class ToDoTableViewController: TaskTableViewController {
     }
     
     override func createDataSource() {
-        dataSource = HabitTableViewDataSource(predicate: self.getPredicate())
+        dataSource = TodoTableViewDataSource(predicate: self.getPredicate())
     }
     
     override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]? {

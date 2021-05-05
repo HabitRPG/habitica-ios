@@ -96,6 +96,9 @@ internal enum StoryboardSegue {
     case showFAQDetailSegue
     case showKnownIssueDetailSegue
   }
+  internal enum Tasks: String, SegueType {
+    case formSegue = "FormSegue"
+  }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
 

@@ -202,7 +202,7 @@ class MainMenuViewController: BaseTableViewController {
             } else {
                 menuItem(withKey: .subscription).subtitle = L10n.getMoreHabitica
             }
-            if user?.achievements?.hasCompletedOnboarding == true {
+            if user?.achievements?.hasCompletedOnboarding == true || configRepository.bool(variable: .moveAdventureGuide) {
                 tableView.tableHeaderView = nil
             } else {
                 let view = AdventureGuideBannerView(frame: CGRect(x: 0, y: -10, width: tableView.frame.size.width, height: 103))

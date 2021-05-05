@@ -133,10 +133,8 @@ class NotificationManager {
     static func displayAchievement(notification: NotificationProtocol, isOnboarding: Bool, isLastOnboardingAchievement: Bool) -> Bool {
         userRepository.retrieveUser().observeCompleted {}
         userRepository.readNotification(notification: notification).observeCompleted {}
-        if !configRepository.bool(variable: .enableAdventureGuide) {
-            if isOnboarding || notification.type == HabiticaNotificationType.achievementOnboardingComplete {
-                return true
-            }
+        if isOnboarding || notification.type == HabiticaNotificationType.achievementOnboardingComplete {
+            return true
         }
         if isOnboarding {
             Analytics.logEvent(notification.achievementKey ?? "", parameters: nil)

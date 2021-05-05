@@ -272,6 +272,7 @@
 		2995F7FB25BAF3B600322CB3 /* RemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2995F7FA25BAF3B600322CB3 /* RemoteLogger.swift */; };
 		2995F7FC25BAF3B600322CB3 /* RemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2995F7FA25BAF3B600322CB3 /* RemoteLogger.swift */; };
 		2996AA1F22EB157800033D92 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2996AA2122EB157800033D92 /* AppIntentVocabulary.plist */; };
+		299A556226402F800015EA5C /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299A556126402F800015EA5C /* TaskDetailView.swift */; };
 		299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6211F505DFA00E22935 /* PaddedLabel.swift */; };
 		299BD6351F54346F00E22935 /* QuestDetailRewardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */; };
 		299BD6371F5457E100E22935 /* HabiticaIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6361F5457E100E22935 /* HabiticaIcons.swift */; };
@@ -317,6 +318,7 @@
 		29AAA1631F2B6D2000029737 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA1621F2B6D2000029737 /* SetupViewController.swift */; };
 		29AAE55724508FC600220DB1 /* HRPGBulkPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAE55624508FC600220DB1 /* HRPGBulkPurchaseView.swift */; };
 		29AAE5592450934C00220DB1 /* HRPGBulkPurchaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29AAE5582450934C00220DB1 /* HRPGBulkPurchaseView.xib */; };
+		29ACB3AC26404496009B059C /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ACB3AB26404496009B059C /* CalendarView.swift */; };
 		29B388E11EF2BB7600A72950 /* YesterdailyChecklistItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */; };
 		29B3FEAC1F9A3395000B12CF /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEAB1F9A3395000B12CF /* ProfileSettingsViewController.swift */; };
 		29B3FEAF1F9A33AB000B12CF /* APISettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEAE1F9A33AB000B12CF /* APISettingsViewController.swift */; };
@@ -364,6 +366,10 @@
 		29C38C8724A256F800F219A1 /* AdventureGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8624A256F800F219A1 /* AdventureGuideViewController.swift */; };
 		29C38C8924A33E6600F219A1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8824A33E6600F219A1 /* NotificationManager.swift */; };
 		29C38C8B24A48F9D00F219A1 /* AchievementAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8A24A48F9D00F219A1 /* AchievementAlertController.swift */; };
+		29CEA81D26414F0D00101C0A /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */; };
+		29CEA822264150CA00101C0A /* UIColor-Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CEA821264150CA00101C0A /* UIColor-Contributor.swift */; };
+		29CEA8562641A2B500101C0A /* AdventureGuideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CEA8552641A2B500101C0A /* AdventureGuideTableViewCell.swift */; };
+		29D064B926414E5A007D4F4F /* UIColor-Habitica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291CE4B5231E828D0001A243 /* UIColor-Habitica.swift */; };
 		29D16C7725A336E8001D9A61 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D16C7625A336E8001D9A61 /* MainSplitViewController.swift */; };
 		29D16C7E25A33F70001D9A61 /* MainVCSelectionSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D16C7D25A33F70001D9A61 /* MainVCSelectionSegue.swift */; };
 		29D16C8525A72211001D9A61 /* UITraitCollection-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D16C8425A72211001D9A61 /* UITraitCollection-Extensions.swift */; };
@@ -985,6 +991,7 @@
 		2996AA3122EB159C00033D92 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		2996AA3222EB159E00033D92 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = zh; path = zh.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		2996AA3322EB159F00033D92 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = fr; path = fr.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		299A556126402F800015EA5C /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
 		299BD6211F505DFA00E22935 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestDetailRewardView.xib; sourceTree = "<group>"; };
 		299BD6361F5457E100E22935 /* HabiticaIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabiticaIcons.swift; sourceTree = "<group>"; };
@@ -1025,6 +1032,7 @@
 		29AAA1621F2B6D2000029737 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		29AAE55624508FC600220DB1 /* HRPGBulkPurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRPGBulkPurchaseView.swift; sourceTree = "<group>"; };
 		29AAE5582450934C00220DB1 /* HRPGBulkPurchaseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HRPGBulkPurchaseView.xib; sourceTree = "<group>"; };
+		29ACB3AB26404496009B059C /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailyChecklistItem.xib; sourceTree = "<group>"; };
 		29B3FEAB1F9A3395000B12CF /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		29B3FEAE1F9A33AB000B12CF /* APISettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISettingsViewController.swift; sourceTree = "<group>"; };
@@ -1079,6 +1087,8 @@
 		29C5A72B22F08C010083749D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		29C6009F20F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
 		29C600A120F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		29CEA821264150CA00101C0A /* UIColor-Contributor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Contributor.swift"; sourceTree = "<group>"; };
+		29CEA8552641A2B500101C0A /* AdventureGuideTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventureGuideTableViewCell.swift; sourceTree = "<group>"; };
 		29D16C7625A336E8001D9A61 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
 		29D16C7D25A33F70001D9A61 /* MainVCSelectionSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCSelectionSegue.swift; sourceTree = "<group>"; };
 		29D16C8425A72211001D9A61 /* UITraitCollection-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection-Extensions.swift"; sourceTree = "<group>"; };
@@ -1927,6 +1937,7 @@
 				29205E332062DF620024E355 /* TaskFormRows */,
 				29C1B6B320599E6D0001D3EF /* TaskFormViewController.swift */,
 				291CE4B7231EC11E0001A243 /* FilterViewController.swift */,
+				299A556126402F800015EA5C /* TaskDetailView.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -2286,6 +2297,7 @@
 				29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */,
 				29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */,
 				291CE4B5231E828D0001A243 /* UIColor-Habitica.swift */,
+				29CEA821264150CA00101C0A /* UIColor-Contributor.swift */,
 				29A62B0A216CF4E200D4BD90 /* UIDevice-Extensions.swift */,
 				292AA72320FE15090022CC5F /* UIFont-Extensions.swift */,
 				293DFE3B24F5647400E115FE /* UIImage-Extensions.swift */,
@@ -2595,6 +2607,7 @@
 				29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */,
 				29323E342052008800AC6D6F /* UserTopHeader.swift */,
 				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
+				29ACB3AB26404496009B059C /* CalendarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2660,6 +2673,7 @@
 				2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */,
 				2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */,
 				298FAB0124BF5BF30084CB0D /* MainTableviewCell.xib */,
+				29CEA8552641A2B500101C0A /* AdventureGuideTableViewCell.swift */,
 			);
 			name = Cells;
 			path = TableviewCells;
@@ -3628,10 +3642,12 @@
 				29BEE632252CCFE100D456F8 /* StatsWidget.swift in Sources */,
 				29BEE659252DD85C00D456F8 /* BaseRepository.swift in Sources */,
 				29A4CB77257FF31F0013F0B3 /* String-SafeExtensions.swift in Sources */,
+				29CEA81D26414F0D00101C0A /* UIColor-Extensions.swift in Sources */,
 				29BEE65F252DD86200D456F8 /* AuthenticationManager.swift in Sources */,
 				29BEE6D7252E14F000D456F8 /* HabiticaWidgets.swift in Sources */,
 				29BEE760252E367600D456F8 /* URLImage.swift in Sources */,
 				29BEE6E7252E1B7700D456F8 /* Color-Extensions.swift in Sources */,
+				29D064B926414E5A007D4F4F /* UIColor-Habitica.swift in Sources */,
 				29BEE75A252E33AB00D456F8 /* Avatar.swift in Sources */,
 				29BEE81E252F101600D456F8 /* TaskListWidget.swift in Sources */,
 				29BEE7B5252EE92D00D456F8 /* AddTaskWidget.swift in Sources */,
@@ -3869,6 +3885,7 @@
 				29A984D22547294E00F04665 /* HabiticaAnalytics.swift in Sources */,
 				2908784A220210CF0010820A /* Strings-objcBridge.swift in Sources */,
 				2912C3B422CB441C00BC485F /* NewMysteryitemNotificationCell.swift in Sources */,
+				29CEA8562641A2B500101C0A /* AdventureGuideTableViewCell.swift in Sources */,
 				2902796D2057F2C5006DACB9 /* Strings.swift in Sources */,
 				D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */,
 				292DEE76204E053D0086D5F7 /* HabitButton.swift in Sources */,
@@ -3892,6 +3909,7 @@
 				29E162E21FFC21E100685640 /* CustomFontMetrics.swift in Sources */,
 				29D16C7725A336E8001D9A61 /* MainSplitViewController.swift in Sources */,
 				D984D5861E48E5CF006E84F8 /* TaskDetailLineView.swift in Sources */,
+				299A556226402F800015EA5C /* TaskDetailView.swift in Sources */,
 				2980E60B1EEA39B1005B7100 /* YesterdailyTaskCell.swift in Sources */,
 				296E480821BE86F800D15E4A /* GiftSubscriptionViewController.swift in Sources */,
 				4904C7401F1ED87400F80723 /* GradientImageView.swift in Sources */,
@@ -3941,6 +3959,7 @@
 				29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */,
 				29A62B09216CE5D700D4BD90 /* AboutViewController.swift in Sources */,
 				2914486E2085EAD300F3A6B5 /* MountDetailDataSource.swift in Sources */,
+				29CEA822264150CA00101C0A /* UIColor-Contributor.swift in Sources */,
 				D9D17CDE1E6AFFD900AD9232 /* ChallengeDetailAlert.swift in Sources */,
 				2914485D2084E6ED00F3A6B5 /* MountOverviewViewController.swift in Sources */,
 				49DCB7C21F40D7F10079FDD0 /* NPCBannerView.swift in Sources */,
@@ -3949,6 +3968,7 @@
 				29C1360024EAE07E00DBC6B3 /* SharingManager.swift in Sources */,
 				295BC6FD226F5E3700DDDF1A /* UnallocatedPointsNotificationCell.swift in Sources */,
 				29FC8862201A300B002B3D3F /* ProgressBar.swift in Sources */,
+				29ACB3AC26404496009B059C /* CalendarView.swift in Sources */,
 				29FD8AA3203D7D010094322E /* PartyViewController.swift in Sources */,
 				29DC5AC720A1E52400993400 /* QuestDetailViewController.swift in Sources */,
 				295BC6F6226F4BC600DDDF1A /* NotificationsDataSource.swift in Sources */,

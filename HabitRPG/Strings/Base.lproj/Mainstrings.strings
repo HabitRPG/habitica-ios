@@ -84,6 +84,9 @@
 "controls" = "Controls";
 "difficulty" = "Difficulty";
 "resetStreak" = "Reset Streak";
+"streak" = "Streak";
+"total_completions" = "Total Completions";
+"created_at" = "Created At";
 "tags" = "Tags";
 "create" = "Create";
 "save" = "Save";
@@ -212,6 +215,8 @@
 "tasks.examples.creativity_daily_notes" = "Tap to specify the name of your current project + set the schedule!";
 "tasks.examples.creativity_todo_text" = "Finish creative project";
 "tasks.examples.creativity_todo_notes" = "Tap to specify the name of your project";
+"tasks.edit_details" = "Edit Details";
+"update" = "Update";
 "menu" = "Menu";
 "filter" = "Filter";
 "one_filter" = "1 Filter";
@@ -497,7 +502,7 @@
 "inventory.number_gems_left" = "Monthly Gems: %d/%d Remaining";
 "inventory.wrong_class" = "Only available for %@s. You can change your class from Settings";
 "inventory.available_until" = "Available Until %@";
-"inventory.available_for" = "Available For %dh %dm";
+"inventory.available_for" = "Available For %@";
 "member.member_since" = "Member Since";
 "member.last_logged_in" = "Last logged in";
 "active" = "Active";
@@ -952,6 +957,7 @@
 "feedPet_title" = "Feed a Pet";
 "hundred_gold" = "100 Gold";
 "five_achievements" = "5 Achievements";
+"beginner_objectives" = "Beginner Objectives";
 "adventure_guide_description" = "Complete these onboarding tasks and you’ll earn 5 Achievements and 100 Gold once you’re done!";
 "block" = "Block";
 "block_user" = "Block";
@@ -1076,3 +1082,5 @@
 "x_items_found" = "%d Items found";
 "new" = "New";
 "seasonal_potions_available" = "Seasonal Potions available";
+"open_for" = "Open for %@";
+

@@ -80,16 +80,31 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
     internal let userRepository = UserRepository()
     internal let repository = TaskRepository()
     internal let socialRepository = SocialRepository()
+    private let configRepository = ConfigRepository()
     
     @objc var taskToEdit: TaskProtocol?
     private var expandedIndexPath: IndexPath?
     private var fetchTasksDisposable: Disposable?
+    
+    var showingAdventureGuide = false
+    private var adventureGuideCompletedCount = 0
+    private var adventureGuideTotalCount = 0
     
     init(predicate: NSPredicate, taskType: TaskType) {
         self.predicate = predicate
         self.taskType = taskType
         super.init()
         sections.append(ItemSection<TaskProtocol>())
+        if configRepository.bool(variable: .moveAdventureGuide) {
+            disposable.add(userRepository.getUser().on(value: { user in
+                self.showingAdventureGuide = !(user.achievements?.hasCompletedOnboarding ?? true)
+                if self.showingAdventureGuide {
+                    self.adventureGuideCompletedCount = user.achievements?.onboardingAchievements.filter({ $0.value }).count ?? 0
+                    self.adventureGuideTotalCount = 5
+                    self.tableView?.reloadData()
+                }
+            }).start())
+        }
     }
     
     override func retrieveData(completed: (() -> Void)?) {
@@ -111,6 +126,14 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
                 self?.sections[0].items = tasks
                 self?.notify(changes: changes)
         }).start()
+    }
+    
+    override func item(at indexPath: IndexPath?) -> TaskProtocol? {
+        if showingAdventureGuide {
+            return super.item(at: IndexPath(item: (indexPath?.item ?? 0) - 1, section: indexPath?.section ?? 0))
+        } else {
+            return super.item(at: indexPath)
+        }
     }
 
     @objc
@@ -163,11 +186,20 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        if let taskCell = cell as? TaskTableViewCell, let task = item(at: indexPath) {
-            configure(cell: taskCell, indexPath: indexPath, task: task)
+        if showingAdventureGuide && indexPath.item == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "adventureGuideCell", for: indexPath)
+            if let agCell = cell as? AdventureGuideTableViewCell {
+                agCell.completedCount = adventureGuideCompletedCount
+                agCell.totalCount = adventureGuideTotalCount
+            }
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            if let taskCell = cell as? TaskTableViewCell, let task = item(at: indexPath) {
+                configure(cell: taskCell, indexPath: indexPath, task: task)
+            }
+            return cell
         }
-        return cell
     }
     
     func configure(cell: TaskTableViewCell, indexPath: IndexPath, task: TaskProtocol) {

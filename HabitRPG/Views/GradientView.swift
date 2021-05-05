@@ -17,12 +17,22 @@ class GradientView: UIView {
             updateColors()
         }
     }
+    @IBInspectable var middleColor: UIColor? {
+        didSet {
+            updateColors()
+        }
+    }
     @IBInspectable var endColor: UIColor = .white {
         didSet {
             updateColors()
         }
     }
     @IBInspectable var startLocation: Double = 0.05 {
+        didSet {
+            updateLocations()
+        }
+    }
+    @IBInspectable var middleLocation: Double = 0.5 {
         didSet {
             updateLocations()
         }
@@ -62,11 +72,19 @@ class GradientView: UIView {
     }
     @objc
     func updateLocations() {
-        gradientLayer.locations = [startLocation as NSNumber, endLocation as NSNumber]
+        if middleColor != nil {
+            gradientLayer.locations = [startLocation as NSNumber, middleLocation as NSNumber, endLocation as NSNumber]
+        } else {
+            gradientLayer.locations = [startLocation as NSNumber, endLocation as NSNumber]
+        }
     }
     @objc
     func updateColors() {
-        gradientLayer.colors    = [startColor.cgColor, endColor.cgColor]
+        if let middleColor = middleColor {
+            gradientLayer.colors = [startColor.cgColor, middleColor.cgColor, endColor.cgColor]
+        } else {
+            gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
+        }
     }
     
     override func layoutSubviews() {

@@ -48,6 +48,8 @@ public enum L10n {
   public static var beastMasterDescription: String { return L10n.tr("Mainstrings", "beastMasterDescription") }
   /// Beast Master
   public static var beastMasterTitle: String { return L10n.tr("Mainstrings", "beastMasterTitle") }
+  /// Beginner Objectives
+  public static var beginnerObjectives: String { return L10n.tr("Mainstrings", "beginner_objectives") }
   /// Block
   public static var block: String { return L10n.tr("Mainstrings", "block") }
   /// A blocked user cannot send you Private Messages but you will still see their posts in Tavern or Guilds. This will have no effect if the person is a moderator now or in the future.
@@ -176,6 +178,8 @@ public enum L10n {
   public static var createTaskDescription: String { return L10n.tr("Mainstrings", "create_task_description") }
   /// Create a Task
   public static var createTaskTitle: String { return L10n.tr("Mainstrings", "create_task_title") }
+  /// Created At
+  public static var createdAt: String { return L10n.tr("Mainstrings", "created_at") }
   /// Keep it up! If you need help planning tasks, try thinking about what you’d like to do during a specific time of day
   public static var createdTaskDescription: String { return L10n.tr("Mainstrings", "createdTaskDescription") }
   /// Created your first task
@@ -644,8 +648,8 @@ public enum L10n {
   public static var `open`: String { return L10n.tr("Mainstrings", "open") }
   /// Open App Store Page
   public static var openAppStore: String { return L10n.tr("Mainstrings", "open_app_store") }
-  /// Open for %s
-  public static func openFor(_ p1: UnsafePointer<CChar>) -> String {
+  /// Open for %@
+  public static func openFor(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "open_for", p1)
   }
   /// Open Apple ID Subscriptions
@@ -786,7 +790,7 @@ public enum L10n {
   public static var save: String { return L10n.tr("Mainstrings", "save") }
   /// Search
   public static var search: String { return L10n.tr("Mainstrings", "search") }
-  /// Seasonal items available
+  /// Seasonal Potions available
   public static var seasonalPotionsAvailable: String { return L10n.tr("Mainstrings", "seasonal_potions_available") }
   /// Sell for %d Gold
   public static func sell(_ p1: Int) -> String {
@@ -818,6 +822,8 @@ public enum L10n {
   public static var statAllocation: String { return L10n.tr("Mainstrings", "stat_allocation") }
   /// All Habitica characters have four stats that affect the gameplay aspects of Habitica.\n\n**Strength (STR)** affects critical hits and raises damage done to a Quest Boss. Warriors and Rogues gain STR from their class equipment.\n\n**Constitution (CON)** raises your HP and makes you take less damage. Healers and Warriors gain CON from their class equipment.\n\n**Intelligence (INT)** raises the amount of EXP you earn and gives you more Mana. Mages and Healers gain INT from their class equipment.\n\n**Perception (PER)** increases the gold you earn and the rate of finding dropped items. Rogues and Mages gain PER from their class equipment.\n\nAfter level 10, you earn 1 Stat Point every level you gain that you can put into any stat you’d like. You can also equip gear that has different combinations of stat boosts.
   public static var statDescription: String { return L10n.tr("Mainstrings", "stat_description") }
+  /// Streak
+  public static var streak: String { return L10n.tr("Mainstrings", "streak") }
   /// You've completed your Daily for 21 days in a row! Amazing job. Don't break the streak!
   public static var streakAchievementDescription: String { return L10n.tr("Mainstrings", "streak_achievement_description") }
   /// You earned a streak achievement!
@@ -926,6 +932,8 @@ public enum L10n {
   public static var timeTravelBackgrounds: String { return L10n.tr("Mainstrings", "time_travel_backgrounds") }
   /// Title
   public static var title: String { return L10n.tr("Mainstrings", "title") }
+  /// Total Completions
+  public static var totalCompletions: String { return L10n.tr("Mainstrings", "total_completions") }
   /// Transfer
   public static var transfer: String { return L10n.tr("Mainstrings", "transfer") }
   /// Transfer Leadership
@@ -962,6 +970,8 @@ public enum L10n {
   public static var unsubscribeItunes: String { return L10n.tr("Mainstrings", "unsubscribe_itunes") }
   /// No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.
   public static var unsubscribeWebsite: String { return L10n.tr("Mainstrings", "unsubscribe_website") }
+  /// Update
+  public static var update: String { return L10n.tr("Mainstrings", "update") }
   /// We’re constantly pushing out new fixes, so be sure to check the App Store to see if there are any updates available
   public static var updateAppDescription: String { return L10n.tr("Mainstrings", "update_app_description") }
   /// Update the App
@@ -1492,8 +1502,8 @@ public enum L10n {
   }
 
   public enum Inventory {
-    /// Available For %s
-    public static func availableFor(_ p1: UnsafePointer<CChar>) -> String {
+    /// Available For %@
+    public static func availableFor(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "inventory.available_for", p1)
     }
     /// Available Until %@
@@ -1508,7 +1518,7 @@ public enum L10n {
     }
     /// You have bought all the Gems you can this month. More become available within the first three days of each month. Thanks for subscribing!
     public static var noGemsLeft: String { return L10n.tr("Mainstrings", "inventory.no_gems_left") }
-    /// No longer available
+    /// No Longer Available
     public static var noLongerAvailable: String { return L10n.tr("Mainstrings", "inventory.no_longer_available") }
     /// Monthly Gems: %d/%d Remaining
     public static func numberGemsLeft(_ p1: Int, _ p2: Int) -> String {
@@ -2101,6 +2111,8 @@ public enum L10n {
     public static func dueX(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "tasks.due_x", p1)
     }
+    /// Edit Details
+    public static var editDetails: String { return L10n.tr("Mainstrings", "tasks.edit_details") }
     /// every %d %@
     public static func everyX(_ p1: Int, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "tasks.every_x", p1, p2)

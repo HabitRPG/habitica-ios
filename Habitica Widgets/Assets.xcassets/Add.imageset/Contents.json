@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "adventure_guide_art.png",
+      "filename" : "add_icon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "adventure_guide_art@2x.png",
+      "filename" : "add_icon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "adventure_guide_art@3x.png",
+      "filename" : "add_icon@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -19,5 +19,8 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }

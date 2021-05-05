@@ -12,6 +12,7 @@ import Habitica_Models
 class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UITableViewDragDelegate, UITableViewDropDelegate {
     public var dataSource: TaskTableViewDataSource?
     public var filterType: Int = 0
+    private let configRepository = ConfigRepository()
     @objc public var scrollToTaskAfterLoading: String?
     var readableName: String?
     var typeName: String?
@@ -31,10 +32,10 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         createDataSource()
         dataSource?.tableView = tableView
         dataSource?.onOpenForm = {[weak self] indexPath in
-            self?.dataSource?.selectRowAt(indexPath: indexPath)
-            self?.performSegue(withIdentifier: "FormSegue", sender: self)
+            self?.handleOpenForm(at: indexPath)
         }
         tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "emptyCell")
+        tableView.register(AdventureGuideTableViewCell.self, forCellReuseIdentifier: "adventureGuideCell")
 
         let nib = UINib(nibName: getCellNibName() ?? "", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
@@ -148,81 +149,6 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         navigationItem.title = title
     }
     
-    @IBAction func longPressRecognized(sender: Any?) {
-        if let longPress = sender as? UILongPressGestureRecognizer {
-            let location = longPress.location(in: tableView)
-            guard let indexPath = tableView.indexPathForRow(at: location) else {
-                return
-            }
-            
-            switch longPress.state {
-            case .began:
-                sourceIndexPath = indexPath
-                
-                if let cell = tableView.cellForRow(at: indexPath) {
-                    
-                    if let snapshot = customSnapshotFromView(inputView: cell) {
-                        self.snapshot = snapshot
-                        snapshot.alpha = 0
-                        
-                        var center = cell.center
-                        snapshot.center = center
-                        tableView.addSubview(snapshot)
-                        
-                        UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.25, initialSpringVelocity: 0.75, options: UIView.AnimationOptions.init(rawValue: 0), animations: {
-                            center.y = location.y
-                            snapshot.center = center
-                            snapshot.transform = CGAffineTransform(scaleX: 1.075, y: 1.075)
-                            snapshot.alpha = 0.98
-                            cell.alpha = 0.0
-                        }) { _ in
-                            cell.isHidden = true
-                        }
-                    }
-                }
-            case .changed:
-                if let sourcePath = sourceIndexPath, indexPath != sourcePath {
-                    dataSource?.userDrivenDataUpdate = true
-                    
-                    tableView.moveRow(at: sourcePath, to: indexPath)
-                    sourceIndexPath = indexPath
-                    dataSource?.userDrivenDataUpdate = false
-                }
-                
-                if var center = snapshot?.center {
-                    center.y = location.y
-                    snapshot?.center = center
-                    
-                    let positionInTableView = view.convert(center, from: snapshot?.superview).y - tableView.contentOffset.y
-                    let bottomThreshold = tableView.frame.size.height - 120
-                    let topThreshold = tableView.frame.origin.y + 120
-                    if positionInTableView > bottomThreshold {
-                        if autoScrollSpeed == 0 {
-                            startAutoScrolling()
-                        }
-                        autoScrollSpeed = (positionInTableView - bottomThreshold) / 12
-                    } else if positionInTableView < topThreshold {
-                        if autoScrollSpeed == 0 {
-                            startAutoScrolling()
-                        }
-                        autoScrollSpeed = (positionInTableView - topThreshold) / 12
-                    } else {
-                        autoScrollSpeed = 0
-                    }
-                }
-            default:
-                if let sourceIndexPath = sourceIndexPath, let task = dataSource?.task(at: sourceIndexPath) {
-                    dataSource?.moveTask(task: task, toPosition: task.order, completion: {})
-                    let cell = tableView.cellForRow(at: sourceIndexPath)
-                    cell?.alpha = 0.0
-                    UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1.0, options: UIView.AnimationOptions(rawValue: 0), animations: {[weak self] in
-                        self?.snapshot?.transform = CGAffineTransform.identity
-                    }, completion: nil)
-                }
-            }
-        }
-    }
-    
     func getCellNibName() -> String? {
         return nil
     }
@@ -330,9 +256,21 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
             return
         }
         #endif
-        dataSource?.selectRowAt(indexPath: indexPath)
-        performSegue(withIdentifier: "FormSegue", sender: self)
+        if dataSource?.showingAdventureGuide == true && indexPath.item == 0 && indexPath.section == 0 {
+            perform(segue: StoryboardSegue.Main.showAdventureGuide)
+        } else {
+            handleOpenForm(at: indexPath)
+        }
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    private func handleOpenForm(at indexPath: IndexPath) {
+        dataSource?.selectRowAt(indexPath: indexPath)
+        if configRepository.bool(variable: .showTaskDetailScreen) {
+            perform(segue: StoryboardSegue.Main.detailSegue)
+        } else {
+            perform(segue: StoryboardSegue.Main.formSegue)
+        }
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -447,6 +385,16 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
                     formController.isCreating = false
                 } else {
                     formController.isCreating = true
+                }
+            }
+        } else if segue.identifier == "DetailSegue" {
+            if let destinationVC = segue.destination as? UINavigationController {
+                guard let detailController = destinationVC.topViewController as? TaskDetailViewController else {
+                    return
+                }
+                if let task = dataSource?.repository.getEditableTask(id: dataSource?.taskToEdit?.id ?? "") {
+                    dataSource?.taskToEdit = nil
+                    detailController.task = task
                 }
             }
         } else if segue.identifier == "FilterSegue" {

@@ -14,7 +14,7 @@
             <objects>
                 <navigationController storyboardIdentifier="TaskFormViewController" id="cDd-au-UtJ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Ck-Th-UMf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -30,13 +30,13 @@
             <objects>
                 <viewController id="399-FC-7aE" customClass="TaskFormViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lDZ-IB-as8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="haE-a6-UQa">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="591"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lgt-RT-FEm">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="systemThickMaterial"/>
@@ -80,13 +80,23 @@
             </objects>
             <point key="canvasLocation" x="-10" y="866"/>
         </scene>
-        <!--Hosting Controller-->
+        <!--Task Detail View Controller-->
         <scene sceneID="KPF-oF-pSn">
             <objects>
-                <hostingController id="kQL-SD-oeC" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="diN-NN-oqE"/>
+                <hostingController id="kQL-SD-oeC" customClass="TaskDetailViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="diN-NN-oqE">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="plc-Gj-pzk">
+                            <connections>
+                                <segue destination="6tx-Lu-NJ3" kind="unwind" unwindAction="unwindToList:" id="cDO-y8-YTK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="cDd-au-UtJ" kind="presentation" identifier="FormSegue" id="kxd-ay-SxI"/>
+                    </connections>
                 </hostingController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a4n-0j-qoA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="6tx-Lu-NJ3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="742" y="866"/>
         </scene>

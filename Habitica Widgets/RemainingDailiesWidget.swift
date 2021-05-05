@@ -142,9 +142,10 @@ struct CompletedView: View {
 }
 
 struct StartDayView: View {
+    var showSpacer = true
     var body: some View {
         VStack(alignment: .center, spacing: 12) {
-            Spacer()
+            if showSpacer { Spacer() }
             Image("StartDayIcon")
             Text("Start a new day").foregroundColor(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center)
         }
@@ -171,6 +172,10 @@ struct DailiesCountWidget: Widget {
 struct DailiesCountWidgetPreview: PreviewProvider {
     static var previews: some View {
         DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .systemSmall, totalCount: 42, completedCount: 10))
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .systemSmall, totalCount: 42, completedCount: 42))
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .systemSmall, totalCount: 42, completedCount: 10, needsCron: true))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
