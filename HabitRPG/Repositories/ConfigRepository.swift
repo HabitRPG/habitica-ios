@@ -34,6 +34,7 @@ enum ConfigVariable: Int {
     case customMenu
     case maintenanceData
     case activePromo
+    case surveyURL
     
     // A/B Tests
     case moveAdventureGuide
@@ -77,6 +78,7 @@ enum ConfigVariable: Int {
         case .disableIntroSlides: return "disableIntroSlides"
         case .showTaskDetailScreen: return "showTaskDetailScreen"
         case .activePromo: return "activePromo"
+        case .surveyURL: return "surveyURL"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -139,6 +141,8 @@ enum ConfigVariable: Int {
             return false as NSNumber
         case .activePromo:
             return "" as NSString
+        case .surveyURL:
+            return "" as NSString
         }
     }
     
@@ -167,8 +171,10 @@ enum ConfigVariable: Int {
             .maintenanceData,
             .reorderMenu,
             .enableIPadUI,
-            showQuestInMenu,
-            disableIntroSlides
+            .showQuestInMenu,
+            .disableIntroSlides,
+            .activePromo,
+            .surveyURL
         ]
     }
     // swiftlint:enable cyclomatic_complexity

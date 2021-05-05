@@ -23,7 +23,8 @@ public enum HabiticaPromotionType {
         case "g1g1":
             return GiftOneGetOnePromotion(startDate: startDate, endDate: endDate)
         case "survey2021":
-            return Survey2021Promotion()
+            let url = ConfigRepository().string(variable: .surveyURL)
+            return Survey2021Promotion(url: url)
         default:
             return nil
         }
@@ -394,7 +395,11 @@ class Survey2021Promotion: HabiticaWebPromotion {
     var startDate: Date = Date()
     var endDate: Date = Date().addingTimeInterval(1000)
     
-    var url = URL(string: "https://habitica.com")
+    var url: URL?
+    
+    init(url: String?) {
+        self.url = URL(string: url ?? "")
+    }
     
     func backgroundColor() -> UIColor {
         return UIColor.blue1
