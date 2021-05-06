@@ -159,6 +159,7 @@ internal enum Asset {
   internal static let g1g1SparklesLeft = ImageAsset(name: "g1g1_sparkles_left")
   internal static let g1g1SparklesRight = ImageAsset(name: "g1g1_sparkles_right")
   internal static let gemPurchaseFooter = ImageAsset(name: "gem_purchase_footer")
+  internal static let gemPurchaseFooterSparkles = ImageAsset(name: "gem_purchase_footer_sparkles")
   internal static let gemPurchaseHeader = ImageAsset(name: "gem_purchase_header")
   internal static let gemPurchaseHeaderDark = ImageAsset(name: "gem_purchase_header_dark")
   internal static let giftSubGift = ImageAsset(name: "gift_sub_gift")

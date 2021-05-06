@@ -191,10 +191,10 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     }
 
     func purchaseGems(identifier: String) {
-        guard let user = self.user else {
+        guard let userID = self.user?.id ?? userRepository.currentUserId else {
             return
         }
-        PurchaseHandler.shared.purchaseGems(identifier, applicationUsername: String(user.id?.hashValue ?? 0)) { _ in
+        PurchaseHandler.shared.purchaseGems(identifier, applicationUsername: String(userID.hashValue)) { _ in
             self.collectionView?.reloadData()
         }
     }

@@ -347,8 +347,8 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return SendPasswordResetEmailCall(email: email).objectSignal
     }
     
-    func purchaseGems(receipt: [String: Any], recipient: String? = nil) -> Signal<EmptyResponseProtocol?, Never> {
-        return PurchaseGemsCall(receipt: receipt, recipient: recipient).objectSignal
+    func purchaseGems(receipt: [String: Any], recipient: String? = nil) -> Signal<HabiticaResponse<APIEmptyResponse>?, Never> {
+        return PurchaseGemsCall(receipt: receipt, recipient: recipient).habiticaResponseSignal
     }
     
     func sendGems(amount: Int, recipient: String) -> Signal<HabiticaResponse<APIEmptyResponse>?, Never> {

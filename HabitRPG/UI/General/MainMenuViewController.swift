@@ -372,7 +372,7 @@ class MainMenuViewController: BaseTableViewController {
     
     private func updateSeasonalEntries(worldState: WorldStateProtocol, items: [ItemProtocol]) {
         let market = menuItem(withKey: .market)
-        if !items.isEmpty && (items.first?.eventEnd ?? Date()) > Date() {
+        if !items.isEmpty && items.first?.isValid == true && (items.first?.eventEnd ?? Date()) > Date() {
             market.pillText = L10n.new
             market.subtitle = L10n.seasonalPotionsAvailable
         } else {
@@ -520,7 +520,7 @@ class MainMenuViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = visibleItemAt(indexPath: indexPath)
-        let cell = tableView.dequeueReusableCell(withIdentifier: item?.cellName ?? "", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: item?.cellName ?? "Cell", for: indexPath)
         cell.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         
         if item?.accessibilityLabel?.isEmpty != true {

@@ -59,7 +59,6 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                 print("Restore Failed: \(results.restoreFailedPurchases)")
             } else if results.restoredPurchases.isEmpty == false {
                 for purchase in results.restoredPurchases {
-                    // fetch content from your server, then:
                     SwiftyStoreKit.finishTransaction(purchase.transaction)
                 }
                 print("Restore Success: \(results.restoredPurchases)")
@@ -82,7 +81,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                     self.handleUnfinished(transaction: transaction, receiptData: receiptData)
                 }
             case .error(let error):
-                RemoteLogger.shared.record(error: error)
+                self.handle(error: error)
             }
         }
     }
@@ -122,7 +121,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                 self.verifyPurchase(product)
                 completion(true)
             case .error(let error):
-                RemoteLogger.shared.record(error: error)
+                self.handle(error: error)
                 completion(false)
             }
         }
@@ -136,7 +135,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                 self.verifyPurchase(product)
                 completion(true)
             case .error(let error):
-                RemoteLogger.shared.record(error: error)
+                self.handle(error: error)
                 completion(false)
             }
         }
@@ -155,7 +154,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                     }
                 }
             case .error(let error):
-                RemoteLogger.shared.record(error: error)
+                self.handle(error: error)
                 print("Receipt verification failed: \(error)")
             }
         }
@@ -166,15 +165,16 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         if let id = pendingGifts[identifier] {
             recipientID = id
         }
-        userRepository.purchaseGems(receipt: ["receipt": receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))], recipient: recipientID).observeValues {[weak self] (result) in
-            if result != nil {
-                if recipientID != nil {
-                    self?.pendingGifts.removeValue(forKey: identifier)
+        userRepository.purchaseGems(receipt: ["receipt": receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))], recipient: recipientID)
+            .observeValues {[weak self] (result) in
+                if result?.error?.isEmpty != true || result?.error == "RECEIPT_ALREADY_USED" {
+                    if recipientID != nil {
+                        self?.pendingGifts.removeValue(forKey: identifier)
+                    }
+                    completion(true)
+                } else {
+                    completion(false)
                 }
-                completion(true)
-            } else {
-                completion(false)
-            }
         }
     }
     
@@ -255,6 +255,9 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     }
     
     private func applySubscription(transaction: SKPaymentTransaction) {
+        if SwiftyStoreKit.localReceiptData == nil {
+            return
+        }
         SwiftyStoreKit.verifyReceipt(using: appleValidator, completion: {[weak self] (verificationResult) in
             switch verificationResult {
             case .success(let receipt):
@@ -268,8 +271,16 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                     SwiftyStoreKit.finishTransaction(transaction)
                 }
             case .error(let error):
-                RemoteLogger.shared.record(error: error)
+                self?.handle(error: error)
             }
         })
+    }
+    
+    private func handle(error: SKError) {
+        RemoteLogger.shared.record(error: error)
+    }
+    
+    private func handle(error: ReceiptError) {
+        RemoteLogger.shared.record(error: error)
     }
 }
