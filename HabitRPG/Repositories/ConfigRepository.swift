@@ -229,12 +229,19 @@ class ConfigRepository: NSObject {
 
     @objc
     func string(variable: ConfigVariable) -> String? {
+        if variable == .shopSpriteSuffix {
+            for event in worldState?.events ?? [] {
+                if event.npcImageSuffix?.isEmpty == false {
+                    return event.npcImageSuffix
+                }
+            }
+        }
         return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).stringValue
     }
     
     @objc
     func string(variable: ConfigVariable, defaultValue: String) -> String {
-        return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).stringValue ?? defaultValue
+        return string(variable: variable) ?? defaultValue
     }
     
     @objc
