@@ -491,6 +491,8 @@
 "quests.unlock_invite_short" = "Invite Friends";
 "quests.unlock_level" = "Unlock by reaching level %d";
 "quests.unlock_level_short" = "Level %d";
+"quests.unlock_incentive" = "Unlock by checking in %d times";
+"quests.unlock_incentive_short" = "%d Check-Ins";
 "quests.unlock_previous" = "Unlock by finishing Quest %d";
 "quests.unlock_previous_short" = "Finish Quest %d";
 "groups.leader_challenges" = "Only leader can create Challenges";

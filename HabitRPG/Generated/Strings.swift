@@ -1747,6 +1747,14 @@ public enum L10n {
     public static func startedBy(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "quests.started_by", p1)
     }
+    /// Unlock by checking in %d times
+    public static func unlockIncentive(_ p1: Int) -> String {
+      return L10n.tr("Mainstrings", "quests.unlock_incentive", p1)
+    }
+    /// %d Check-Ins
+    public static func unlockIncentiveShort(_ p1: Int) -> String {
+      return L10n.tr("Mainstrings", "quests.unlock_incentive_short", p1)
+    }
     /// Unlock by inviting friends to your party
     public static var unlockInvite: String { return L10n.tr("Mainstrings", "quests.unlock_invite") }
     /// Invite Friends

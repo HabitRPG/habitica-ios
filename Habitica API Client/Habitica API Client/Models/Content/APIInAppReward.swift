@@ -11,7 +11,9 @@ import Habitica_Models
 
 private struct APIUnlockCondition: Decodable {
     var reason: String?
-    var incentiveThreshold: Int = 0
+    var condition: String?
+    var incentiveThreshold: Int? = 0
+    var text: String?
 }
 
 public class APIInAppReward: InAppRewardProtocol, Decodable {
@@ -34,6 +36,7 @@ public class APIInAppReward: InAppRewardProtocol, Decodable {
     public var isSubscriberItem: Bool = false
     public var isValid: Bool { return true }
     public var unlockConditionReason: String?
+    public var unlockConditionText: String?
     public var unlockConditionIncentiveThreshold: Int = 0
     public var previous: String?
     public var level: Int = 0
@@ -75,8 +78,9 @@ public class APIInAppReward: InAppRewardProtocol, Decodable {
         value = (try? values.decode(Float.self, forKey: .value)) ?? 0
         currency = try? values.decode(String.self, forKey: .currency)
         let unlockCondition = try? values.decode(APIUnlockCondition.self, forKey: .unlockCondition)
-        unlockConditionReason = unlockCondition?.reason
+        unlockConditionReason = unlockCondition?.reason ?? unlockCondition?.condition
         unlockConditionIncentiveThreshold = unlockCondition?.incentiveThreshold ?? 0
+        unlockConditionText = unlockCondition?.text
         previous = try? values.decode(String.self, forKey: .previous)
         level = (try? values.decode(Int.self, forKey: .level)) ?? 0
         let event = try? values.decode(APIEvent.self, forKey: .event)

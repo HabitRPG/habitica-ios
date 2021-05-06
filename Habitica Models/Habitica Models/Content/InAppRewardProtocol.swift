@@ -23,6 +23,7 @@ public protocol InAppRewardProtocol: BaseRewardProtocol {
     var imageName: String? { get set }
     var isSubscriberItem: Bool { get set }
     var unlockConditionReason: String? { get set }
+    var unlockConditionText: String? { get set }
     var unlockConditionIncentiveThreshold: Int { get set }
     var previous: String? { get set }
     var level: Int { get set }
