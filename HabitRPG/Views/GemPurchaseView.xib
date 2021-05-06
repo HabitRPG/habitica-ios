@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,21 +16,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="160" height="212"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZt-Wf-rfp">
-                        <rect key="frame" x="0.0" y="135" width="160" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" priority="500" constant="21" id="cER-RY-PVx"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="mhq-Nl-oUE"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                        <color key="textColor" red="0.16078431904315948" green="0.58431375026702881" blue="0.80392158031463623" alpha="1" colorSpace="deviceRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="21_gems" translatesAutoresizingMaskIntoConstraints="NO" id="aHI-TN-dVp">
-                        <rect key="frame" x="0.0" y="16" width="160" height="98"/>
+                        <rect key="frame" x="0.0" y="16" width="160" height="113"/>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PZY-LO-5K0">
-                        <rect key="frame" x="42" y="107" width="30" height="35"/>
+                        <rect key="frame" x="42" y="122" width="30" height="35"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="FJt-OA-pbF"/>
@@ -38,7 +28,7 @@
                         </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z3F-yU-X87">
-                        <rect key="frame" x="88" y="107" width="30" height="35"/>
+                        <rect key="frame" x="88" y="122" width="30" height="35"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="GMx-5Y-u5I"/>
@@ -46,7 +36,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CD-7L-CWx">
-                        <rect key="frame" x="80" y="114" width="0.0" height="21"/>
+                        <rect key="frame" x="80" y="129" width="0.0" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" priority="500" constant="40" id="IdH-b5-pjx"/>
                             <constraint firstAttribute="height" priority="500" constant="21" id="guv-Pb-kSg"/>
@@ -88,18 +78,15 @@
                 <constraint firstItem="I2h-et-1tI" firstAttribute="leading" secondItem="XB3-4A-WOm" secondAttribute="leading" constant="12" id="3n4-Ly-SGT"/>
                 <constraint firstItem="PZY-LO-5K0" firstAttribute="centerY" secondItem="8CD-7L-CWx" secondAttribute="centerY" id="67V-EJ-dhX"/>
                 <constraint firstItem="8CD-7L-CWx" firstAttribute="centerX" secondItem="XB3-4A-WOm" secondAttribute="centerX" id="9AQ-ai-1qF"/>
-                <constraint firstAttribute="trailing" secondItem="iZt-Wf-rfp" secondAttribute="trailing" id="BVA-oC-gQG"/>
                 <constraint firstItem="aqg-2P-exk" firstAttribute="top" secondItem="I2h-et-1tI" secondAttribute="bottom" constant="6" id="EbC-Zl-x3L"/>
                 <constraint firstItem="aHI-TN-dVp" firstAttribute="top" secondItem="XB3-4A-WOm" secondAttribute="top" constant="16" id="Ggk-wq-lk4"/>
                 <constraint firstAttribute="trailing" secondItem="I2h-et-1tI" secondAttribute="trailing" constant="12" id="PLk-tH-rnD"/>
                 <constraint firstAttribute="trailing" secondItem="aqg-2P-exk" secondAttribute="trailing" constant="8" id="RaV-tR-ylE"/>
                 <constraint firstItem="aJz-UN-jEZ" firstAttribute="centerY" secondItem="I2h-et-1tI" secondAttribute="centerY" id="RjW-rU-arl"/>
-                <constraint firstItem="iZt-Wf-rfp" firstAttribute="top" secondItem="8CD-7L-CWx" secondAttribute="bottom" id="aWt-eB-lYN"/>
                 <constraint firstAttribute="trailing" secondItem="aHI-TN-dVp" secondAttribute="trailing" id="dq0-oc-6b6"/>
                 <constraint firstAttribute="bottom" secondItem="aqg-2P-exk" secondAttribute="bottom" constant="6" id="je7-jr-Je1"/>
-                <constraint firstItem="I2h-et-1tI" firstAttribute="top" secondItem="iZt-Wf-rfp" secondAttribute="bottom" constant="6" id="mu4-v4-aze"/>
+                <constraint firstItem="I2h-et-1tI" firstAttribute="top" secondItem="8CD-7L-CWx" secondAttribute="bottom" constant="12" id="mu4-v4-aze"/>
                 <constraint firstItem="aqg-2P-exk" firstAttribute="leading" secondItem="XB3-4A-WOm" secondAttribute="leading" constant="8" id="nZo-8r-VSy"/>
-                <constraint firstItem="iZt-Wf-rfp" firstAttribute="leading" secondItem="XB3-4A-WOm" secondAttribute="leading" id="nwy-Af-PoQ"/>
                 <constraint firstItem="8CD-7L-CWx" firstAttribute="leading" secondItem="PZY-LO-5K0" secondAttribute="trailing" constant="8" id="sgB-Kb-D0i"/>
                 <constraint firstItem="z3F-yU-X87" firstAttribute="centerY" secondItem="8CD-7L-CWx" secondAttribute="centerY" id="u07-yP-7Gq"/>
                 <constraint firstItem="z3F-yU-X87" firstAttribute="leading" secondItem="8CD-7L-CWx" secondAttribute="trailing" constant="8" id="vFY-U0-Y7f"/>
@@ -115,7 +102,6 @@
             <connections>
                 <outlet property="amountLabel" destination="8CD-7L-CWx" id="uXR-9n-amd"/>
                 <outlet property="footerLabel" destination="aqg-2P-exk" id="cRI-Y0-rn5"/>
-                <outlet property="gemsLabel" destination="iZt-Wf-rfp" id="qzD-z0-Hrh"/>
                 <outlet property="imageView" destination="aHI-TN-dVp" id="wbE-Wj-Ko4"/>
                 <outlet property="leftDecorationImageView" destination="PZY-LO-5K0" id="w5Q-Uk-qA9"/>
                 <outlet property="loadingIndicator" destination="aJz-UN-jEZ" id="Ha2-SB-c8c"/>
@@ -126,6 +112,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="21_gems" width="48" height="54"/>
+        <image name="21_gems" width="82" height="80"/>
     </resources>
 </document>

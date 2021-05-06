@@ -87,7 +87,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
             return UICollectionViewCell()
         }
         cell.setPrice(product.localizedPrice)
-        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        cell.backgroundColor = .purple400
 
         var amount = 0
         if product.productIdentifier == "com.habitrpg.ios.Habitica.4gems" {
@@ -142,10 +142,10 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
             }
             if let label = view.viewWithTag(4) as? UILabel {
                 label.text = L10n.gemsSupportDevelopers
-                label.textColor = ThemeService.shared.theme.quadTextColor
+                label.textColor = .white
             }
             if let view = view.viewWithTag(5) {
-                view.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                view.backgroundColor = .clear
             }
         } else if kind == UICollectionView.elementKindSectionHeader {
             if let headerImage = view.viewWithTag(1) as? UIImageView {

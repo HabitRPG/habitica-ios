@@ -1693,6 +1693,19 @@
                             <rect key="frame" x="0.0" y="257" width="414" height="317"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gem_purchase_footer" translatesAutoresizingMaskIntoConstraints="NO" id="JcU-dL-l4V">
+                                    <rect key="frame" x="0.0" y="165" width="414" height="152"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="152" id="VUK-Jo-Clg"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gem_purchase_footer_sparkles" translatesAutoresizingMaskIntoConstraints="NO" id="6Dq-sB-hdK">
+                                    <rect key="frame" x="58.5" y="32" width="297" height="126"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="297" id="6gc-zc-MT5"/>
+                                        <constraint firstAttribute="height" constant="126" id="seC-aK-ksM"/>
+                                    </constraints>
+                                </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="421-JA-vci">
                                     <rect key="frame" x="40" y="68" width="334" height="0.0"/>
                                     <constraints>
@@ -1722,7 +1735,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="svD-mO-hfn" secondAttribute="bottom" id="Ayl-di-e5v"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="svD-mO-hfn" secondAttribute="trailing" constant="60" id="Kzm-s7-agk"/>
@@ -1747,10 +1760,15 @@
                                 <constraint firstAttribute="trailing" secondItem="n8g-Us-K2Y" secondAttribute="trailing" id="1TW-Tw-Tew"/>
                                 <constraint firstItem="McX-fu-cEX" firstAttribute="top" secondItem="n9Z-3I-42b" secondAttribute="top" constant="32" id="46d-wB-Btr"/>
                                 <constraint firstItem="Lhc-vl-WcB" firstAttribute="centerX" secondItem="n9Z-3I-42b" secondAttribute="centerX" id="6OZ-rH-nEY"/>
+                                <constraint firstAttribute="trailing" secondItem="JcU-dL-l4V" secondAttribute="trailing" id="AXF-js-HA5"/>
                                 <constraint firstAttribute="bottom" secondItem="n8g-Us-K2Y" secondAttribute="bottom" id="FjW-Xv-oXh"/>
                                 <constraint firstItem="Lhc-vl-WcB" firstAttribute="top" secondItem="421-JA-vci" secondAttribute="bottom" constant="12" id="Py9-M7-am0"/>
+                                <constraint firstItem="6Dq-sB-hdK" firstAttribute="top" secondItem="McX-fu-cEX" secondAttribute="top" id="PyR-iD-vYr"/>
                                 <constraint firstItem="McX-fu-cEX" firstAttribute="centerX" secondItem="n9Z-3I-42b" secondAttribute="centerX" id="XbO-vb-H1m"/>
+                                <constraint firstItem="6Dq-sB-hdK" firstAttribute="centerX" secondItem="n9Z-3I-42b" secondAttribute="centerX" id="cm6-fK-4Mz"/>
                                 <constraint firstItem="n8g-Us-K2Y" firstAttribute="leading" secondItem="n9Z-3I-42b" secondAttribute="leading" id="fB8-AW-TGl"/>
+                                <constraint firstAttribute="bottom" secondItem="JcU-dL-l4V" secondAttribute="bottom" id="l3g-Ob-CKj"/>
+                                <constraint firstItem="JcU-dL-l4V" firstAttribute="leading" secondItem="n9Z-3I-42b" secondAttribute="leading" id="p5V-kV-Ik4"/>
                                 <constraint firstAttribute="trailingMargin" secondItem="421-JA-vci" secondAttribute="trailing" constant="32" id="q0P-MZ-G4a"/>
                                 <constraint firstItem="421-JA-vci" firstAttribute="top" secondItem="McX-fu-cEX" secondAttribute="bottom" id="qyP-IK-6jx"/>
                                 <constraint firstItem="421-JA-vci" firstAttribute="leading" secondItem="n9Z-3I-42b" secondAttribute="leadingMargin" constant="32" id="xfB-5j-3tx"/>
@@ -3668,13 +3686,13 @@ a matching subscription automatically after sending your gift.</string>
     <inferredMetricsTieBreakers>
         <segue reference="N8x-3a-QZ4"/>
         <segue reference="2vn-wQ-bqg"/>
-        <segue reference="FPm-Dv-Zos"/>
-        <segue reference="x0h-sG-Le1"/>
+        <segue reference="0lO-rm-fRj"/>
+        <segue reference="BqT-36-Icz"/>
         <segue reference="kXy-1V-RrM"/>
         <segue reference="Jy5-RC-gge"/>
         <segue reference="04Z-5H-zfF"/>
         <segue reference="ETz-qE-xC2"/>
-        <segue reference="jU9-l6-uQc"/>
+        <segue reference="mRM-bY-AV4"/>
         <segue reference="aPT-Gw-lJZ"/>
         <segue reference="j6y-gM-wIL"/>
         <segue reference="WX7-CS-CSr"/>
@@ -3687,6 +3705,8 @@ a matching subscription automatically after sending your gift.</string>
         <image name="filter_icon" width="22" height="17"/>
         <image name="g1g1_sparkles_left" width="70" height="22"/>
         <image name="g1g1_sparkles_right" width="71" height="22"/>
+        <image name="gem_purchase_footer" width="375" height="152"/>
+        <image name="gem_purchase_footer_sparkles" width="298" height="127"/>
         <image name="gem_purchase_header" width="254" height="68"/>
         <image name="gift_sub_gift" width="24" height="25"/>
         <image name="search_icon" width="20" height="20"/>

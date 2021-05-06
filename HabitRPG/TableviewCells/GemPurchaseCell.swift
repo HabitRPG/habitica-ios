@@ -12,7 +12,6 @@ class GemPurchaseCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var gemsLabel: UILabel!
     @IBOutlet weak var leftDecorationImageView: UIImageView!
     @IBOutlet weak var rightDecorationImageView: UIImageView!
     @IBOutlet weak var footerLabel: UILabel!
@@ -20,8 +19,9 @@ class GemPurchaseCell: UICollectionViewCell {
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     func setGemAmount(_ amount: Int) {
-        amountLabel.text = String(amount)
-        amountLabel.textColor = ThemeService.shared.theme.primaryTextColor
+        amountLabel.text = "\(amount) GEMS"
+        amountLabel.font = .systemFont(ofSize: 15)
+        amountLabel.textColor = .white
         switch amount {
         case 4:
             imageView.image = Asset._4Gems.image
@@ -34,14 +34,12 @@ class GemPurchaseCell: UICollectionViewCell {
         default:
             break
         }
-        gemsLabel.text = L10n.gems
-        gemsLabel.textColor = ThemeService.shared.theme.tintColor
     }
     
     func setPrice(_ price: String?) {
         priceLabel.text = price
-        priceLabel.backgroundColor = ThemeService.shared.theme.fixedTintColor
-        priceLabel.textColor = .white
+        priceLabel.backgroundColor = .white
+        priceLabel.textColor = .purple400
     }
     
     func setLoading(_ isLoading: Bool) {

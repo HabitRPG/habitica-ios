@@ -148,7 +148,6 @@ class FallExtraGemsPromotion: HabiticaPromotion {
             break
         }
         view.amountLabel.textColor = UIColor("#FEE2B6")
-        view.gemsLabel.textColor = UIColor("#FEE2B6")
     }
     
     func configureInfoView(_ viewController: PromotionInfoViewController) {
@@ -249,7 +248,6 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
             break
         }
         view.amountLabel.textColor = UIColor("#FEE2B6")
-        view.gemsLabel.textColor = UIColor("#FEE2B6")
     }
     
     func configureInfoView(_ viewController: PromotionInfoViewController) {
