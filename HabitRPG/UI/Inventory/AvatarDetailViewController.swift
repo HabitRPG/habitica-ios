@@ -64,7 +64,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
             }
         } else if let datasource = gearDataSource, let gear = datasource.item(at: indexPath) {
             if datasource.owns(gear: gear) {
-                inventoryRepository.equip(type: "equipped", key: gear.key ?? "").observeCompleted {}
+                inventoryRepository.equip(type: datasource.preferences?.useCostume == true ? "costume" : "equipped", key: gear.key ?? "").observeCompleted {}
             } else {
                 showPurchaseDialog(gear: gear, withSource: cell)
             }

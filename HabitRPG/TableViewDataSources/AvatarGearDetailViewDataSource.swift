@@ -20,7 +20,7 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
     
     private var equippedKey: String?
     
-    private var preferences: PreferencesProtocol?
+    var preferences: PreferencesProtocol?
     
     init(type: String) {
         gearType = type
