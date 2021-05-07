@@ -15,9 +15,9 @@ class TavernDetailViewController: GroupDetailViewController {
     @IBOutlet weak var tavernHeaderView: NPCBannerView!
     
     @IBOutlet weak var innButton: HabiticaButton!
-    @IBOutlet weak var guidelinesButton: UIButton!
-    @IBOutlet weak var faqButton: UIButton!
-    @IBOutlet weak var reportButton: UIButton!
+    @IBOutlet weak var guidelinesButton: HabiticaButton!
+    @IBOutlet weak var faqButton: HabiticaButton!
+    @IBOutlet weak var reportButton: HabiticaButton!
     @IBOutlet weak var worldBossStackView: CollapsibleStackView!
     @IBOutlet weak var innStackView: CollapsibleStackView!
     @IBOutlet weak var guidelinesStackView: CollapsibleStackView!
@@ -92,9 +92,12 @@ class TavernDetailViewController: GroupDetailViewController {
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         innButton.buttonColor = theme.warningColor
-        guidelinesButton.backgroundColor = theme.offsetBackgroundColor
-        faqButton.backgroundColor = theme.offsetBackgroundColor
-        reportButton.backgroundColor = theme.offsetBackgroundColor
+        guidelinesButton.buttonColor = theme.offsetBackgroundColor
+        guidelinesButton.setTitleColor(theme.tintColor, for: .normal)
+        faqButton.buttonColor = theme.offsetBackgroundColor
+        faqButton.setTitleColor(theme.tintColor, for: .normal)
+        reportButton.buttonColor = theme.offsetBackgroundColor
+        reportButton.setTitleColor(theme.tintColor, for: .normal)
         innTextView.textColor = theme.secondaryTextColor
         guidelinesTextView.textColor = theme.secondaryTextColor
         tavernHeaderView.applyTheme(backgroundColor: theme.windowBackgroundColor)

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8L7-b3-Q67">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8L7-b3-Q67">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -54,7 +54,7 @@
                                                                     <constraint firstAttribute="height" constant="8" id="X9l-0o-ZwU"/>
                                                                 </constraints>
                                                             </view>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sP7-Pb-q8N">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sP7-Pb-q8N" customClass="HabiticaButton" customModule="Habitica" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="88" width="390" height="38"/>
                                                                 <color key="backgroundColor" systemColor="systemPurpleColor"/>
                                                                 <constraints>
@@ -122,7 +122,7 @@
                                                                     <constraint firstAttribute="height" constant="8" id="7Jh-QQ-y2v"/>
                                                                 </constraints>
                                                             </view>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Af-JG-v9N">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Af-JG-v9N" customClass="HabiticaButton" customModule="Habitica" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="88" width="390" height="38"/>
                                                                 <color key="backgroundColor" systemColor="systemPurpleColor"/>
                                                                 <constraints>
@@ -190,7 +190,7 @@
                                                                     <constraint firstAttribute="height" constant="8" id="bod-fn-2H5"/>
                                                                 </constraints>
                                                             </view>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0GT-Gy-IXN">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0GT-Gy-IXN" customClass="HabiticaButton" customModule="Habitica" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="88" width="390" height="38"/>
                                                                 <color key="backgroundColor" systemColor="systemPurpleColor"/>
                                                                 <constraints>
@@ -230,7 +230,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C43-ej-L6d">
                                                 <rect key="frame" x="0.0" y="486" width="414" height="62"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oga-ls-XML">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oga-ls-XML" customClass="HabiticaButton" customModule="Habitica" customModuleProvider="target">
                                                         <rect key="frame" x="12" y="12" width="390" height="38"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <state key="normal" title="Button">
@@ -858,6 +858,20 @@
             <point key="canvasLocation" x="1132" y="760"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="0GT-Gy-IXN">
+            <size key="intrinsicContentSize" width="55" height="21"/>
+        </designable>
+        <designable name="6Af-JG-v9N">
+            <size key="intrinsicContentSize" width="55" height="21"/>
+        </designable>
+        <designable name="Oga-ls-XML">
+            <size key="intrinsicContentSize" width="54" height="33"/>
+        </designable>
+        <designable name="sP7-Pb-q8N">
+            <size key="intrinsicContentSize" width="55" height="21"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="hQh-5k-AfU"/>
     </inferredMetricsTieBreakers>

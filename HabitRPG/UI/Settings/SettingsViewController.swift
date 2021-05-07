@@ -11,6 +11,7 @@ import Eureka
 import MRProgress
 import ReactiveSwift
 import Habitica_Models
+import ColorPickerRow
 
 enum SettingsTags {
     static let authentication = "authentication"
@@ -24,6 +25,7 @@ enum SettingsTags {
     static let emailNotifications = "emailNotifications"
     static let disablePrivateMessages = "disablePrivateMessages"
     static let themeColor = "themeColor"
+    static let customColor = "customColor"
     static let themeMode = "themeMode"
     static let appIcon = "appIcon"
     static let soundTheme = "soundTheme"
@@ -116,6 +118,15 @@ enum ThemeName: String {
     case red
     case maroon
     case gray
+    case custom
+    
+    var customColor: UIColor {
+        let defaults = UserDefaults.standard
+        if let hexcode = defaults.string(forKey: "customColor") {
+            return UIColor(hexcode)
+        }
+        return .purple200
+    }
     
     var themeClass: Theme {
         if ThemeService.shared.isDarkTheme == true {
@@ -138,6 +149,8 @@ enum ThemeName: String {
                 return MaroonDarkTheme()
             case .gray:
                 return GrayDarkTheme()
+            case .custom:
+                return CustomDarkTheme(baseColor: customColor)
             }
         } else {
             switch self {
@@ -159,6 +172,8 @@ enum ThemeName: String {
                 return MaroonTheme()
             case .gray:
                 return GrayTheme()
+            case .custom:
+                return CustomTheme(baseColor: customColor)
             }
         }
     }
@@ -183,6 +198,8 @@ enum ThemeName: String {
             return "Maroon"
         case .gray:
             return "Plain Gray"
+        case .custom:
+            return "Custom Theme"
         }
     }
     
@@ -196,7 +213,8 @@ enum ThemeName: String {
             .orange,
             .red,
             .maroon,
-            .gray
+            .gray,
+            .custom
         ]
     }
 }
@@ -855,6 +873,31 @@ class SettingsViewController: FormViewController, Themeable {
                 row.onPresent({ (_, to) in
                     to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    }
+                })
+            }
+            <<< InlineColorPickerRow(SettingsTags.customColor) { row in
+                row.title = "Custom Theme Color"
+                let defaults = UserDefaults.standard
+                row.value = UIColor(defaults.string(forKey: "customColor") ?? UIColor.purple200.hexString())
+                row.cellUpdate { cell, _ in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                }
+                row.hidden = Condition.function([SettingsTags.themeColor], { (form) -> Bool in
+                    return (form.rowBy(tag: SettingsTags.themeColor) as? PushRow<LabeledFormValue<String>>)?.value?.value != "custom"
+                })
+                row.onChange({[weak self] (row) in
+                    if self?.isSettingUserData == true {
+                        return
+                    }
+                    guard let color = row.value else {
+                        return
+                    }
+                    let defaults = UserDefaults.standard
+                    if let newTheme = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") {
+                        defaults.set(color.hexString(), forKey: "customColor")
+                        ThemeService.shared.theme = newTheme.themeClass
                     }
                 })
             }

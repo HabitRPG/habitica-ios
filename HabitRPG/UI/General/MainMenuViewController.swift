@@ -66,7 +66,7 @@ class MenuItem {
     var isHidden = false
     var isDisabled = false
     
-    init(key: Key, title: String, subtitle: String? = nil, pillText: String? = nil, accessibilityLabel: String? = nil, segue: String? = nil, vcInstantiator: (() -> UIViewController?)? = nil, cellName: String = "Cell", showIndicator: Bool = false) {
+    init(key: Key, title: String, subtitle: String? = nil, pillText: String? = nil, accessibilityLabel: String? = nil, segue: String? = nil, vcInstantiator: (() -> UIViewController?)? = nil, cellName: String = "Cell", showIndicator: Bool = false, isHidden: Bool = false) {
         self.key = key
         self.title = title
         self.subtitle = subtitle
@@ -76,6 +76,7 @@ class MenuItem {
         self.vcInstantiator = vcInstantiator
         self.cellName = cellName
         self.showIndicator = showIndicator
+        self.isHidden = isHidden
     }
     
     static let allItems = [
@@ -84,12 +85,11 @@ class MenuItem {
         MenuItem(key: .todos, title: L10n.Tasks.todos, vcInstantiator: StoryboardScene.Main.todosViewController.instantiate),
         MenuItem(key: .rewards, title: L10n.Tasks.rewards, vcInstantiator: StoryboardScene.Main.rewardsViewController.instantiate),
         MenuItem(key: .skills, title: L10n.Menu.skills, segue: StoryboardSegue.Main.spellsSegue.rawValue),
-        //MenuItem(key: .selectClass, title: L10n.Menu.selectClass, segue: StoryboardSegue.Main.selectClassSegue.rawValue),
         MenuItem(key: .stats, title: L10n.Titles.stats, segue: StoryboardSegue.Main.statsSegue.rawValue),
         MenuItem(key: .achievements, title: L10n.Titles.achievements, segue: StoryboardSegue.Main.achievementsSegue.rawValue),
         MenuItem(key: .market, title: L10n.Locations.market, segue: StoryboardSegue.Main.showMarketSegue.rawValue),
         MenuItem(key: .questShop, title: L10n.Locations.questShop, segue: StoryboardSegue.Main.showQuestShopSegue.rawValue),
-        MenuItem(key: .seasonalShop, title: L10n.Locations.seasonalShop, segue: StoryboardSegue.Main.showSeasonalShopSegue.rawValue),
+        MenuItem(key: .seasonalShop, title: L10n.Locations.seasonalShop, segue: StoryboardSegue.Main.showSeasonalShopSegue.rawValue, isHidden: true),
         MenuItem(key: .timeTravelersShop, title: L10n.Locations.timeTravelersShop, segue: StoryboardSegue.Main.showTimeTravelersSegue.rawValue),
         MenuItem(key: .customizeAvatar, title: L10n.Menu.customizeAvatar, segue: StoryboardSegue.Main.customizationSegue.rawValue),
         MenuItem(key: .equipment, title: L10n.Titles.equipment, segue: StoryboardSegue.Main.equipmentSegue.rawValue),
@@ -386,7 +386,7 @@ class MainMenuViewController: BaseTableViewController {
         } else {
             menuItem(withKey: .seasonalShop).isHidden = true
         }
-        tableView.reloadSections(IndexSet([1]), with: .automatic)
+        tableView.reloadSections(IndexSet([1]), with: .none)
     }
     
     override func applyTheme(theme: Theme) {

@@ -14,7 +14,14 @@ class HabiticaButton: UIButton {
     @IBInspectable public var buttonColor: UIColor = UIColor.purple200 {
         didSet {
             backgroundColor = buttonColor
+            
+            updateLegibility()
         }
+    }
+    
+    override func setTitleColor(_ color: UIColor?, for state: UIControl.State) {
+        super.setTitleColor(color, for: state)
+        updateLegibility()
     }
     
     override open var isHighlighted: Bool {
@@ -57,8 +64,25 @@ class HabiticaButton: UIButton {
     func setupView() {
         cornerRadius = 6
         setTitleColor(.white, for: .normal)
-        setTitleColor(.white, for: .highlighted)
-        setTitleColor(.white, for: .selected)
         isPointerInteractionEnabled = true
+    }
+    
+    private func updateLegibility() {
+        // Calling super here since we don't want to accidentally create an infinite recursion
+        if (backgroundColor?.difference(between: currentTitleColor) ?? 1.0) < 1.0 {
+            if backgroundColor?.isLight() == true {
+                if currentTitleColor.brightness > 0.9 {
+                    super.setTitleColor(ThemeService.shared.theme.primaryTextColor, for: .normal)
+                } else {
+                    super.setTitleColor(ThemeService.shared.theme.backgroundTintColor, for: .normal)
+                }
+            } else {
+                if currentTitleColor.brightness < 0.2 {
+                    super.setTitleColor(ThemeService.shared.theme.lightTextColor, for: .normal)
+                } else {
+                    super.setTitleColor(currentTitleColor.lighter(by: 10), for: .normal)
+                }
+            }
+        }
     }
 }

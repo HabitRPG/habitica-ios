@@ -61,7 +61,7 @@ target 'Habitica' do
   pod 'PopupDialog'
   pod 'SwiftLint'
   pod 'Eureka'
-
+  pod 'ColorPickerRow' 
   pod 'RealmSwift', '4.4.1'
 
   pod 'Kingfisher', '~> 5.8.0'

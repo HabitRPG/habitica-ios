@@ -8,6 +8,9 @@ PODS:
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
+  - ColorPickerRow (1.3.3):
+    - Eureka (>= 5.0.0)
+    - UIColor_Hex_Swift (>= 3.0.0)
   - DateTools (2.0.0)
   - DeepLinkKit (1.5.1)
   - Down (0.10.0)
@@ -224,12 +227,14 @@ PODS:
   - SwiftLint (0.43.1)
   - SwiftyStoreKit (0.16.1)
   - TagListView (1.4.1)
+  - UIColor_Hex_Swift (5.1.0)
   - VTAcknowledgementsViewController (2.0.0)
 
 DEPENDENCIES:
   - Amplitude-iOS
   - AppAuth
   - Charts
+  - ColorPickerRow
   - DateTools
   - DeepLinkKit
   - Down
@@ -270,6 +275,7 @@ SPEC REPOS:
     - Amplitude-iOS
     - AppAuth
     - Charts
+    - ColorPickerRow
     - DateTools
     - DeepLinkKit
     - Down
@@ -316,6 +322,7 @@ SPEC REPOS:
     - SwiftLint
     - SwiftyStoreKit
     - TagListView
+    - UIColor_Hex_Swift
     - VTAcknowledgementsViewController
 
 EXTERNAL SOURCES:
@@ -326,6 +333,7 @@ SPEC CHECKSUMS:
   Amplitude-iOS: 7d8cdc3408ba35c2e68368fc7c692cd104606b94
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  ColorPickerRow: 409acc262ca04283eb56f54e813e775d2e99741e
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   DeepLinkKit: 9f300348cbb20ef8389a5018a57d8c9952b1831c
   Down: 01f155f9d7e99673c667efd2218709c3b9a8bc13
@@ -373,8 +381,9 @@ SPEC CHECKSUMS:
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
+  UIColor_Hex_Swift: 8be7432edacb7fa91c78aa05ef3c30b66e4f9415
   VTAcknowledgementsViewController: 0a1eb608fcc5948b6bd5d4ac2f3c7dffef4aa11d
 
-PODFILE CHECKSUM: f76003afba5bbc253f1e91eabf5180e85a0ccd5d
+PODFILE CHECKSUM: def50ddec0928b8956541f72dddc84dc8375dae4
 
 COCOAPODS: 1.10.1

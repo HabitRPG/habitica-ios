@@ -9,7 +9,7 @@
 import UIKit
 import PinLayout
 
-class AdventureGuideTableViewCell: UITableViewCell {
+class AdventureGuideTableViewCell: UITableViewCell, Themeable {
     
     var completedCount: Int = 0 {
         didSet {
@@ -25,9 +25,7 @@ class AdventureGuideTableViewCell: UITableViewCell {
     
     private let gradientView: GradientView = {
         let view = GradientView()
-        view.startColor = UIColor("#A9DCF6")
-        view.middleColor = UIColor("#925CF3")
-        view.endColor = UIColor("#FFB6B8")
+
         view.horizontalMode = true
         view.cornerRadius = 8
         return view
@@ -35,7 +33,6 @@ class AdventureGuideTableViewCell: UITableViewCell {
     
     private let overlayView: UIView = {
         let view = UIView()
-        view.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         view.cornerRadius = 5
         return view
     }()
@@ -57,22 +54,15 @@ class AdventureGuideTableViewCell: UITableViewCell {
         let view = UILabel()
         view.text = L10n.beginnerObjectives
         view.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
-        view.textColor = ThemeService.shared.theme.primaryTextColor
         view.textAlignment = .center
         return view
     }()
     
-    private let progressBar: ProgressBar = {
-        let view = ProgressBar()
-        view.barBackgroundColor = ThemeService.shared.theme.offsetBackgroundColor
-        view.barColor = ThemeService.shared.theme.tintColor
-        return view
-    }()
+    private let progressBar: ProgressBar = ProgressBar()
     
     private let progressText: UILabel = {
         let view = UILabel()
         view.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .bold)
-        view.textColor = ThemeService.shared.theme.tintColor
         return view
     }()
     
@@ -80,7 +70,6 @@ class AdventureGuideTableViewCell: UITableViewCell {
         let view = UILabel()
         view.text = "100"
         view.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
-        view.textColor = ThemeService.shared.theme.primaryTextColor
         return view
     }()
     
@@ -92,7 +81,6 @@ class AdventureGuideTableViewCell: UITableViewCell {
     
     private let rewardBackground: UIView = {
         let view = UIView()
-        view.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
         view.cornerRadius = 11
         return view
     }()
@@ -126,6 +114,29 @@ class AdventureGuideTableViewCell: UITableViewCell {
         contentView.addSubview(rewardBackground)
         contentView.addSubview(goldView)
         contentView.addSubview(goldText)
+        
+        ThemeService.shared.addThemeable(themable: self)
+    }
+    
+    func applyTheme(theme: Theme) {
+        titleView.textColor = ThemeService.shared.theme.primaryTextColor
+        goldText.textColor = ThemeService.shared.theme.primaryTextColor
+        progressBar.barBackgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+        progressBar.barColor = ThemeService.shared.theme.tintColor
+        progressText.textColor = ThemeService.shared.theme.tintColor
+        overlayView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        contentView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        rewardBackground.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+        
+        if theme.isDark {
+            gradientView.startColor = .blue100
+            gradientView.middleColor = .purple400
+            gradientView.endColor = .red100
+        } else {
+            gradientView.startColor = UIColor("#A9DCF6")
+            gradientView.middleColor = UIColor("#925CF3")
+            gradientView.endColor = UIColor("#FFB6B8")
+        }
     }
     
     override func layoutSubviews() {

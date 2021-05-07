@@ -52,12 +52,12 @@ struct IntroView: View {
     var finishIntro: (() -> Void)?
     
     var pages: [AnyView] = [
-        AnyView(IntroPage(startColor: Color(.purple400), endColor: Color(.purple100), title: VStack(spacing: 4) {
+        AnyView(IntroPage(startColor: Color(.purple400), endColor: Color(.purple300), title: VStack(spacing: 4) {
             Text(L10n.Intro.Card1.title)
             Image(Asset.introTitle.name)
         }, subtitle: Text(L10n.Intro.Card1.text), image: Image(Asset.introPage1.name))),
-        AnyView(IntroPage(startColor: Color(.blue100), endColor: Color(.blue1), title: Text(L10n.Intro.Card2.title), subtitle: Text(L10n.Intro.Card2.text), image: Image(Asset.introPage2.name))),
-        AnyView(IntroPage(startColor: Color(.red100), endColor: Color(.red1), title: Text(L10n.Intro.Card3.title), subtitle: Text(L10n.Intro.Card3.text), image: Image(Asset.introPage3.name)))
+        AnyView(IntroPage(startColor: Color(.blue100), endColor: Color(.blue50), title: Text(L10n.Intro.Card2.title), subtitle: Text(L10n.Intro.Card2.text), image: Image(Asset.introPage2.name))),
+        AnyView(IntroPage(startColor: Color(.red100), endColor: Color(.red50), title: Text(L10n.Intro.Card3.title), subtitle: Text(L10n.Intro.Card3.text), image: Image(Asset.introPage3.name)))
     ]
     @State private var currentPage = 0
     @State private var scrollOffset: CGFloat = 0

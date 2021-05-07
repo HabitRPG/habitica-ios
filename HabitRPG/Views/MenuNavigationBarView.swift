@@ -125,15 +125,20 @@ class MenuNavigationBarView: UIView, Themeable {
     }
     
     func applyTheme(theme: Theme) {
+        let textColor = theme.navbarHiddenColor.isLight() ? theme.primaryTextColor : theme.lightTextColor
+        let badgeTextColor = theme.badgeColor.isLight() ? theme.primaryTextColor : theme.lightTextColor
         backgroundColor = theme.navbarHiddenColor
-        displayNameLabel.textColor = theme.lightTextColor
-        usernameLabel.textColor = theme.lightTextColor
+        displayNameLabel.textColor = textColor
+        usernameLabel.textColor = textColor
         settingsBadge.backgroundColor = theme.badgeColor
-        settingsBadge.textColor = theme.lightTextColor
-        messagesBadge.textColor = theme.lightTextColor
-        notificationsBadge.backgroundColor = theme.fixedTintColor
-        messagesBadge.backgroundColor = theme.fixedTintColor
-        notificationsBadge.textColor = theme.lightTextColor
+        settingsBadge.textColor = badgeTextColor
+        settingsButton.tintColor = textColor
+        messagesBadge.backgroundColor = theme.badgeColor
+        messagesBadge.textColor = badgeTextColor
+        messagesButton.tintColor = textColor
+        notificationsBadge.backgroundColor = theme.badgeColor
+        notificationsBadge.textColor = badgeTextColor
+        notificationsButton.tintColor = textColor
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

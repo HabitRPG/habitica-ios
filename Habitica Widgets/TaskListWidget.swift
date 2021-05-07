@@ -79,6 +79,7 @@ struct TaskListWidgetView : View {
                 .background(Color.widgetBackground)
             }
         }
+        .widgetURL(URL(string: "/user/tasks/daily"))
     }
 }
 
@@ -153,7 +154,7 @@ struct TaskListItem: View {
                     .background(completedCount == task.checklist.count ? Color.checklistBackgroundDone : Color.checklistBackground)
                     .cornerRadius(4)
             }
-        }
+        }.frame(maxHeight: 30)
     }
 }
 
@@ -164,8 +165,8 @@ struct TaskListWidget: Widget {
         StaticConfiguration(kind: kind, provider: TaskListProvider()) { entry in
             TaskListWidgetView(entry: entry)
         }
-        .configurationDisplayName("Your Tasks")
-        .description("View your Habitica Tasks for the day")
+        .configurationDisplayName("Your Dailies")
+        .description("View your Habitica Dailies for the day")
         .supportedFamilies([.systemMedium, .systemLarge])
     }
 }
@@ -184,6 +185,8 @@ struct TaskListWidgetPreview: PreviewProvider {
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
                 .environment(\.colorScheme, .dark)
             TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks: [], needsCron: true))
+                .previewContext(WidgetPreviewContext(family: .systemLarge))
+            TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks:makePreviewTasks().dropLast(6), needsCron: false))
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
         }
 

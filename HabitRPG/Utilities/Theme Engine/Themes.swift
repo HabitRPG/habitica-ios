@@ -125,3 +125,35 @@ public struct GrayDarkTheme: DarkTheme {
     public var badgeColor: UIColor { return UIColor.gray100 }
     public var taskOverlayTint: UIColor { return UIColor.black.withAlphaComponent(0.30) }
 }
+
+public struct CustomTheme: Theme {
+    init(baseColor: UIColor) {
+        tintColor = baseColor
+        if baseColor.isLight() {
+            badgeColor = tintColor.darker()
+        } else {
+            badgeColor = tintColor.lighter()
+        }
+
+    }
+    public var navbarHiddenColor: UIColor { return tintColor }
+    public var backgroundTintColor: UIColor { return tintColor.darker(by: 15) }
+    public var tintColor: UIColor
+    public var dimmBackgroundColor: UIColor { return tintColor.darker(by: 20) }
+    public var badgeColor: UIColor
+}
+
+public struct CustomDarkTheme: DarkTheme {
+    init(baseColor: UIColor) {
+        tintColor = baseColor.darker(by: 10)
+        if baseColor.isLight() {
+            badgeColor = tintColor.darker()
+        } else {
+            badgeColor = tintColor.lighter()
+        }
+    }
+    public var backgroundTintColor: UIColor { return tintColor.darker(by: 30) }
+    public var tintColor: UIColor
+    public var dimmBackgroundColor: UIColor { return tintColor.darker(by: 20) }
+    public var badgeColor: UIColor
+}

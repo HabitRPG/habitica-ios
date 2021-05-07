@@ -104,7 +104,7 @@ extension DarkTheme {
     public var primaryTextColor: UIColor { return UIColor.gray700 }
     public var secondaryTextColor: UIColor { return UIColor.gray500 }
     public var ternaryTextColor: UIColor { return UIColor.gray400 }
-    public var quadTextColor: UIColor { return UIColor.gray200 }
+    public var quadTextColor: UIColor { return UIColor.gray300 }
     public var dimmedTextColor: UIColor { return UIColor.gray200 }
     public var lightTextColor: UIColor { return UIColor.gray500 }
     public var separatorColor: UIColor { return UIColor.gray10 }

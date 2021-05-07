@@ -279,10 +279,10 @@ func lighter(by percentage: CGFloat=30.0) -> UIColor {
         }
     }
     
-    func isLight() -> Bool {
+    var brightness: CGFloat {
         // algorithm from: http://www.w3.org/WAI/ER/WD-AERT/#color-contrast
         guard let components = self.cgColor.components else {
-            return false
+            return 0.0
         }
         var brightness: CGFloat = 0.0
         if components.count >= 3 {
@@ -291,11 +291,36 @@ func lighter(by percentage: CGFloat=30.0) -> UIColor {
             brightness = components[0]
         }
         
+        return brightness
+    }
+    
+    func isLight() -> Bool {
         if brightness < 0.65 {
             return false
         } else {
             return true
         }
+    }
+    
+    func difference(between otherColor: UIColor) -> CGFloat {
+        guard let components = self.cgColor.components else {
+            return 0.0
+        }
+        guard let otherComponents = otherColor.cgColor.components else {
+            return 0.0
+        }
+        let red = components[0]
+        let otherRed = otherComponents[0]
+        let green = components.count >= 3 ? components[1] : components[0]
+        let otherGreen = otherComponents.count >= 3 ? otherComponents[1] : otherComponents[0]
+        let blue = components.count >= 3 ? components[2] : components[0]
+        let otherBlue = otherComponents.count >= 3 ? otherComponents[2] : otherComponents[0]
+        
+        return (
+            (max(red, otherRed) - min(red, otherRed)) +
+            (max(green, otherGreen) - min(green, otherGreen)) +
+            (max(blue, otherBlue) - min(blue, otherBlue))
+        )
     }
     
     func blend(with infusion: UIColor, alpha: CGFloat) -> UIColor {

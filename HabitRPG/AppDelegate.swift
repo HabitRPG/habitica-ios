@@ -430,6 +430,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
         if #available(iOS 14.0, *) {
             WidgetCenter.shared.reloadTimelines(ofKind: "DailiesCountWidget")
             WidgetCenter.shared.reloadTimelines(ofKind: "StatsWidget")
+            WidgetCenter.shared.reloadTimelines(ofKind: "TaskListWidget")
             
             WidgetCenter.shared.getCurrentConfigurations { result in
                 switch result {
@@ -443,7 +444,6 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
         #endif
     }
 }
-
 
 //Maintenance
 extension HabiticaAppDelegate {

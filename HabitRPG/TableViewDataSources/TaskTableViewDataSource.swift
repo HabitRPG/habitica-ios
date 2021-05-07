@@ -135,6 +135,14 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
             return super.item(at: indexPath)
         }
     }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if showingAdventureGuide {
+            return super.tableView(tableView, numberOfRowsInSection: section) + 1
+        } else {
+            return super.tableView(tableView, numberOfRowsInSection: section)
+        }
+    }
 
     @objc
     func idForObject(at indexPath: IndexPath) -> String? {

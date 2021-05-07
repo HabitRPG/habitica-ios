@@ -19,17 +19,17 @@ class MainSupportViewController: BaseUIViewController {
     @IBOutlet weak var questionsContainer: UIView!
     @IBOutlet weak var questionsTitleLabel: UILabel!
     @IBOutlet weak var questionsDescriptionLabel: UILabel!
-    @IBOutlet weak var questionsButton: UIButton!
+    @IBOutlet weak var questionsButton: HabiticaButton!
     @IBOutlet weak var bugContainer: UIView!
     @IBOutlet weak var bugTitle: UILabel!
     @IBOutlet weak var bugDescription: UILabel!
-    @IBOutlet weak var bugButton: UIButton!
+    @IBOutlet weak var bugButton: HabiticaButton!
     @IBOutlet weak var suggestionsContainer: UIView!
     @IBOutlet weak var suggestionsTitle: UILabel!
     @IBOutlet weak var suggestionsDescription: UILabel!
-    @IBOutlet weak var suggestionsButton: UIButton!
+    @IBOutlet weak var suggestionsButton: HabiticaButton!
     @IBOutlet weak var resetTutorialContainer: UIView!
-    @IBOutlet weak var resetTutorialButton: UIButton!
+    @IBOutlet weak var resetTutorialButton: HabiticaButton!
     
     override func viewDidLoad() {
         topHeaderCoordinator?.hideHeader = true
@@ -59,20 +59,20 @@ class MainSupportViewController: BaseUIViewController {
         questionsContainer.backgroundColor = theme.windowBackgroundColor
         questionsTitleLabel.textColor = theme.primaryTextColor
         questionsDescriptionLabel.textColor = theme.ternaryTextColor
-        questionsButton.backgroundColor = buttonTintColor
+        questionsButton.buttonColor = buttonTintColor
         
         bugContainer.backgroundColor = theme.windowBackgroundColor
         bugTitle.textColor = theme.primaryTextColor
         bugDescription.textColor = theme.ternaryTextColor
-        bugButton.backgroundColor = buttonTintColor
+        bugButton.buttonColor = buttonTintColor
         
         suggestionsContainer.backgroundColor = theme.windowBackgroundColor
         suggestionsTitle.textColor = theme.primaryTextColor
         suggestionsDescription.textColor = theme.ternaryTextColor
-        suggestionsButton.backgroundColor = buttonTintColor
+        suggestionsButton.buttonColor = buttonTintColor
         
         resetTutorialContainer.backgroundColor = theme.windowBackgroundColor
-        resetTutorialButton.backgroundColor = theme.offsetBackgroundColor
+        resetTutorialButton.buttonColor = theme.offsetBackgroundColor
         resetTutorialButton.setTitleColor(theme.primaryTextColor, for: .normal)
     }
     
