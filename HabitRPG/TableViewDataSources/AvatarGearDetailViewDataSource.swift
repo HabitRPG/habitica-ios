@@ -48,6 +48,7 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
             default:
                 return
             }
+            self?.collectionView?.reloadData()
         }).start())
     }
     

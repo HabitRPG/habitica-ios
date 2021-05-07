@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_logo" translatesAutoresizingMaskIntoConstraints="NO" id="VYm-Tu-aaY">
-                        <rect key="frame" x="105" y="144" width="165" height="140"/>
+                        <rect key="frame" x="105" y="148" width="165" height="140"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="140" id="4Dq-1m-lqT"/>
                             <constraint firstAttribute="width" constant="165" id="71H-rT-Iw7"/>
@@ -36,7 +36,7 @@
                     <constraint firstItem="VYm-Tu-aaY" firstAttribute="centerX" secondItem="akb-tb-YfK" secondAttribute="centerX" id="8K6-bI-S0P"/>
                     <constraint firstAttribute="trailing" secondItem="zzf-Ms-aKz" secondAttribute="trailing" id="YEk-uW-krF"/>
                     <constraint firstItem="zzf-Ms-aKz" firstAttribute="leading" secondItem="akb-tb-YfK" secondAttribute="leading" id="d85-95-6Qm"/>
-                    <constraint firstItem="VYm-Tu-aaY" firstAttribute="top" secondItem="Cr3-tQ-hPU" secondAttribute="bottom" constant="100" id="nxQ-My-Hbs"/>
+                    <constraint firstItem="VYm-Tu-aaY" firstAttribute="top" secondItem="Cr3-tQ-hPU" secondAttribute="bottom" constant="104" id="nxQ-My-Hbs"/>
                 </constraints>
             </view>
             <point key="canvasLocation" x="543.5" y="-220"/>

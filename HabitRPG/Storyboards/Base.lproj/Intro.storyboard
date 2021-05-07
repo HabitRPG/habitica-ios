@@ -48,7 +48,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="GeH-AC-vCO" id="sHf-iF-90Q"/>
                         <outlet property="logoView" destination="56g-ur-5TX" id="9eB-RC-kUM"/>
-                        <segue destination="qul-kf-4Gi" kind="presentation" identifier="InitialSegue" customClass="MainVCSelectionSegue" customModule="Habitica" customModuleProvider="target" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Z2J-RM-J8b"/>
+                        <segue destination="qul-kf-4Gi" kind="presentation" identifier="InitialSegue" customClass="MainVCSelectionSegue" customModule="Habitica" customModuleProvider="target" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Z2J-RM-J8b"/>
                         <segue destination="v9W-i7-og5" kind="presentation" identifier="SetupSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Zxx-A1-MXZ"/>
                         <segue destination="8LU-Vl-QLq" kind="presentation" identifier="IntroSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Mt8-5R-p1l"/>
                         <segue destination="MVV-J1-w4Z" kind="presentation" identifier="LoginSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="TYz-5x-Fui"/>
