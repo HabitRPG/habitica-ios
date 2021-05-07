@@ -30,6 +30,7 @@ class InAppRewardCell: UICollectionViewCell {
                 infoLabel.text = String(describing: itemsLeft)
                 infoLabel.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
                 infoLabel.textColor = ThemeService.shared.theme.ternaryTextColor
+                infoImageView.isHidden = true
             } else {
                 infoImageView.isHidden = true
                 infoLabel.isHidden = true
