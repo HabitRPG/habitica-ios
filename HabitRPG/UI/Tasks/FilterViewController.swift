@@ -92,6 +92,8 @@ class FilterViewController: BaseTableViewController {
             showFormAlertFor(tag: tag)
         } else {
             dataSource.selectTag(at: indexPath)
+            (presentingViewController as? MainTabBarController)?.selectedTags = dataSource.selectedTagIds
+            NotificationCenter.default.post(name: Notification.Name("taskFilterChanged"), object: nil)
         }
     }
     
