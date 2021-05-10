@@ -121,7 +121,7 @@ public class TaskLocalRepository: BaseLocalRepository {
         }
         RealmTask.findBy(key: taskId).take(first: 1).skipNil().on(value: {[weak self] realmTask in
             self?.updateCall { _ in
-                if let delta = response.delta {
+                if realmTask.type != "reward", let delta = response.delta {
                     realmTask.value += delta
                 }
                 if realmTask.type != TaskType.habit {

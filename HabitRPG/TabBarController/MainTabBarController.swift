@@ -18,6 +18,7 @@ class MainTabBarController: UITabBarController, Themeable {
     
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
+    private let configRepository = ConfigRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
     @objc public var selectedTags = [String]()
@@ -124,7 +125,7 @@ class MainTabBarController: UITabBarController, Themeable {
                 }
                 
             }
-            self?.showAdventureGuideBadge = user.achievements?.hasCompletedOnboarding != true
+            self?.showAdventureGuideBadge = user.achievements?.hasCompletedOnboarding != true && self?.configRepository.bool(variable: .moveAdventureGuide) != true
             self?.setBadgeCount(index: 4, count: badgeCount)
             
             if let tutorials = user.flags?.tutorials {

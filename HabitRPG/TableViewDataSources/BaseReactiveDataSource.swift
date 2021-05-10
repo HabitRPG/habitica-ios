@@ -132,8 +132,12 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
         tableView?.reloadData()
     }
     
+    func isDataSourceEmpty() -> Bool {
+        return sections.filter({ $0.items.isEmpty == false }).isEmpty
+    }
+    
     func checkForEmpty() {
-        if sections.filter({ $0.items.isEmpty == false }).isEmpty {
+        if isDataSourceEmpty() {
             isEmpty = true
             emptyDelegate?.dataSourceIsEmpty()
             if emptyDataSource != nil {

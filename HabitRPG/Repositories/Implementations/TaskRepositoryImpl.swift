@@ -73,9 +73,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     func save(task: TaskProtocol) {
         localRepository.save(userID: currentUserId, task: task)
     }
-    
-    private var userLevel: Int?
-    
+        
     func score(task: TaskProtocol, direction: TaskScoringDirection) -> Signal<TaskResponseProtocol?, Never> {
         if !task.isValid {
             return Signal.empty
@@ -104,17 +102,16 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
             }
             let goldDiff = (response.gold ?? 0) - stats.gold
             let questDamage = (response.temp?.quest?.progressDelta ?? 0)
+            
+            if let taskId = task.id {
+                self?.localRepository.update(taskId: taskId, stats: stats, direction: direction, response: response)
+            }
             if task.type == "reward" {
                 let formatter = NumberFormatter()
                 formatter.minimumFractionDigits = 0
                 formatter.maximumFractionDigits = 2
                 ToastManager.show(text: L10n.buyReward(task.text ?? "", formatter.string(from: NSNumber(value: task.value)) ?? ""), color: .green)
-            } else if let taskId = task.id {
-                self?.localRepository.update(taskId: taskId, stats: stats, direction: direction, response: response)
-                if healthDiff + magicDiff + goldDiff + questDamage == 0 {
-                    return
-                }
-                
+            } else if healthDiff + magicDiff + goldDiff + questDamage != 0 {
                 let toastView = ToastView(healthDiff: healthDiff,
                                           magicDiff: magicDiff,
                                           expDiff: expDiff,
@@ -123,7 +120,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
                                           background: healthDiff >= 0 ? .green : .red)
                 ToastManager.show(toast: toastView)
             }
-
+            
             if let drop = response.temp?.drop {
                 var dialog = drop.dialog
                 if dialog == nil {
@@ -131,7 +128,6 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
                 }
                 ToastManager.show(text: dialog ?? "", color: .gray)
             }
-            self?.userLevel = stats.level
         }).map({ (response, _) in
             return response
         })

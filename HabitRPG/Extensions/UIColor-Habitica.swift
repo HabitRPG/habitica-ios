@@ -207,7 +207,7 @@ extension UIColor {
     }
 
     @nonobjc class var purple400: UIColor {
-      return UIColor(red: 154.0 / 255.0, green: 98.0 / 255.0, blue: 1.0, alpha: 1.0)
+        return UIColor(red: 146.0 / 255.0, green: 92.0 / 255.0, blue: 243.0 / 255.0, alpha: 1.0)
     }
 
     @nonobjc class var purple500: UIColor {

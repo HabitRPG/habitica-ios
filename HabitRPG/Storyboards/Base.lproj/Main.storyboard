@@ -395,10 +395,10 @@
                                 <rect key="frame" x="0.0" y="56" width="414" height="752"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="foh-Y5-euZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="195.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="209.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wYP-zx-dbe">
-                                                <rect key="frame" x="26" y="0.0" width="362" height="235.5"/>
+                                                <rect key="frame" x="26" y="0.0" width="362" height="249.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adventureGuideArt" translatesAutoresizingMaskIntoConstraints="NO" id="Eax-S2-1ke">
                                                         <rect key="frame" x="0.0" y="0.0" width="362" height="46"/>
@@ -413,7 +413,7 @@
                                                             <constraint firstAttribute="height" constant="1" id="ifP-cD-1sC"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Beginners Objectives" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaN-pI-O3a">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Beginner Objectives" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaN-pI-O3a">
                                                         <rect key="frame" x="0.0" y="63" width="362" height="20.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="500" constant="22" id="fQn-E8-VM0"/>
@@ -423,10 +423,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="WUa-Qe-rtA">
-                                                        <rect key="frame" x="0.0" y="91.5" width="362" height="36"/>
+                                                        <rect key="frame" x="0.0" y="91.5" width="362" height="50"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Complete these onboarding tasks and you’ll earn 5 Achievements and 100 Gold once you’re done!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXt-8h-VNr">
-                                                                <rect key="frame" x="12" y="0.0" width="338" height="36"/>
+                                                                <rect key="frame" x="12" y="0.0" width="338" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" priority="500" constant="22" id="bej-Uf-maR"/>
                                                                 </constraints>
@@ -444,14 +444,14 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPg-7O-j94">
-                                                        <rect key="frame" x="0.0" y="135.5" width="362" height="1"/>
+                                                        <rect key="frame" x="0.0" y="149.5" width="362" height="1"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="V3u-UV-9kz"/>
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="ul9-Fj-GrY">
-                                                        <rect key="frame" x="0.0" y="144.5" width="362" height="20"/>
+                                                        <rect key="frame" x="0.0" y="158.5" width="362" height="20"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGm-VS-bMz">
                                                                 <rect key="frame" x="0.0" y="0.0" width="85" height="20"/>
@@ -471,13 +471,13 @@
                                                         </constraints>
                                                     </stackView>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Dmz-r8-3Oe">
-                                                        <rect key="frame" x="0.0" y="172.5" width="362" height="5"/>
+                                                        <rect key="frame" x="0.0" y="186.5" width="362" height="5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="5" id="NWF-J9-OQN"/>
                                                         </constraints>
                                                     </progressView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eGa-gL-7SD">
-                                                        <rect key="frame" x="0.0" y="185.5" width="362" height="50"/>
+                                                        <rect key="frame" x="0.0" y="199.5" width="362" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="500" constant="20" id="pmU-Np-CQZ"/>
                                                         </constraints>
@@ -1573,26 +1573,26 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="s7W-cO-Mih">
-                                    <rect key="frame" x="20" y="0.0" width="374" height="233"/>
+                                    <rect key="frame" x="16" y="0.0" width="382" height="233"/>
                                     <subviews>
                                         <view hidden="YES" tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZ9-SA-Tk9" customClass="PromoBannerView" customModule="Habitica" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="-80" width="374" height="80"/>
+                                            <rect key="frame" x="0.0" y="-80" width="382" height="80"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="80" id="faj-GO-PfI"/>
                                             </constraints>
                                         </view>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gem_purchase_header" translatesAutoresizingMaskIntoConstraints="NO" id="dBL-Kl-l7v">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="84"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="84"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="84" id="HN6-9G-pMA"/>
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" tag="6" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="5i8-z2-1Et">
-                                            <rect key="frame" x="0.0" y="98" width="374" height="135"/>
+                                            <rect key="frame" x="0.0" y="98" width="382" height="135"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Gems allow you to buy fun extras for your account, including:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhA-8b-NmG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="41"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="41"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="500" constant="21" id="Myz-28-LqS"/>
                                                     </constraints>
@@ -1601,7 +1601,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="999" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmc-Sz-mph">
-                                                    <rect key="frame" x="0.0" y="55" width="374" height="80"/>
+                                                    <rect key="frame" x="0.0" y="55" width="382" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="500" constant="21" id="Ns1-9T-eqn"/>
                                                     </constraints>
@@ -1683,9 +1683,9 @@
                                 </stackView>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="s7W-cO-Mih" firstAttribute="leading" secondItem="Spt-Jl-ne3" secondAttribute="leading" constant="20" id="6Eo-Da-Ry7"/>
+                                <constraint firstItem="s7W-cO-Mih" firstAttribute="leading" secondItem="Spt-Jl-ne3" secondAttribute="leading" constant="16" id="6Eo-Da-Ry7"/>
                                 <constraint firstAttribute="bottom" secondItem="s7W-cO-Mih" secondAttribute="bottom" constant="24" id="c2B-ab-ZGQ"/>
-                                <constraint firstAttribute="trailing" secondItem="s7W-cO-Mih" secondAttribute="trailing" constant="20" id="lB8-K3-WeT"/>
+                                <constraint firstAttribute="trailing" secondItem="s7W-cO-Mih" secondAttribute="trailing" constant="16" id="lB8-K3-WeT"/>
                                 <constraint firstItem="s7W-cO-Mih" firstAttribute="top" secondItem="Spt-Jl-ne3" secondAttribute="top" id="lqH-aO-gsC"/>
                             </constraints>
                         </collectionReusableView>
@@ -1707,7 +1707,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="421-JA-vci">
-                                    <rect key="frame" x="40" y="72" width="334" height="0.0"/>
+                                    <rect key="frame" x="40" y="76" width="334" height="0.0"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="40" id="Glh-tL-HTw"/>
                                     </constraints>
@@ -1744,7 +1744,7 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lhc-vl-WcB">
-                                    <rect key="frame" x="171" y="84" width="72" height="30"/>
+                                    <rect key="frame" x="171" y="88" width="72" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="Hbu-zl-sxs"/>
                                         <constraint firstAttribute="width" priority="500" constant="60" id="s0O-s1-9M3"/>
@@ -1770,7 +1770,7 @@
                                 <constraint firstAttribute="bottom" secondItem="JcU-dL-l4V" secondAttribute="bottom" id="l3g-Ob-CKj"/>
                                 <constraint firstItem="JcU-dL-l4V" firstAttribute="leading" secondItem="n9Z-3I-42b" secondAttribute="leading" id="p5V-kV-Ik4"/>
                                 <constraint firstAttribute="trailingMargin" secondItem="421-JA-vci" secondAttribute="trailing" constant="32" id="q0P-MZ-G4a"/>
-                                <constraint firstItem="421-JA-vci" firstAttribute="top" secondItem="McX-fu-cEX" secondAttribute="bottom" constant="4" id="qyP-IK-6jx"/>
+                                <constraint firstItem="421-JA-vci" firstAttribute="top" secondItem="McX-fu-cEX" secondAttribute="bottom" constant="8" id="qyP-IK-6jx"/>
                                 <constraint firstItem="421-JA-vci" firstAttribute="leading" secondItem="n9Z-3I-42b" secondAttribute="leadingMargin" constant="32" id="xfB-5j-3tx"/>
                             </constraints>
                         </collectionReusableView>

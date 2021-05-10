@@ -19,8 +19,15 @@ class GemPurchaseCell: UICollectionViewCell {
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     func setGemAmount(_ amount: Int) {
-        amountLabel.text = "\(amount) GEMS"
-        amountLabel.font = .systemFont(ofSize: 15)
+        let attributedString = NSMutableAttributedString(string: "\(amount) GEMS")
+        attributedString.addAttributes([
+            .font: UIFont.systemFont(ofSize: 15),
+            .kern: 1.1
+        ], range: NSRange(location: 0, length: attributedString.length))
+        attributedString.addAttributesToSubstring(string: "\(amount)", attributes: [
+            .font: UIFont.systemFont(ofSize: 15, weight: .semibold)
+        ])
+        amountLabel.attributedText = attributedString
         amountLabel.textColor = .white
         switch amount {
         case 4:

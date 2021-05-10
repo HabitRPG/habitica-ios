@@ -214,7 +214,6 @@ enum ThemeName: String {
             .red,
             .maroon,
             .gray,
-            .custom
         ]
     }
 }
@@ -1043,6 +1042,10 @@ class SettingsViewController: FormViewController, Themeable {
         if user.contributor?.admin == true {
             let serverRow = (form.rowBy(tag: SettingsTags.server) as? AlertRow<LabeledFormValue<String>>)
             serverRow?.hidden = false
+            let themeRow = (form.rowBy(tag: SettingsTags.themeColor) as? PushRow<LabeledFormValue<String>>)
+            let customTheme = ThemeName.custom
+            themeRow?.options?.append(LabeledFormValue(value: customTheme.rawValue, label: customTheme.niceName))
+            themeRow?.updateCell()
             serverRow?.evaluateHidden()
         }
         isSettingUserData = false

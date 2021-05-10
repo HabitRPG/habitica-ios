@@ -37,12 +37,12 @@ private struct Indicator: View {
         ZStack(alignment: .leading) {
             HStack(spacing: 0) {
                 ForEach(0..<pageCount) { _ in
-                    Image(Asset.indicatorDiamondUnselected.name)
+                    Image(Asset.indicatorDiamondSelected.name).opacity(0.4)
                 }
             }
-            Image(Asset.indicatorDiamondSelected.name)
-                .rotationEffect(.degrees(Double(360 * currentPage)))
+            Image(uiImage: Asset.indicatorDiamondSelected.image.withRenderingMode(.alwaysTemplate))
                 .padding(.leading, 24 * CGFloat(currentPage))
+                .foregroundColor(.white)
                 .animation(.interactiveSpring())
         }
     }
@@ -89,8 +89,8 @@ ZStack(alignment: .bottom) {
                             }
                         }, label: {
                             Text(L10n.skip)
+                                .padding()
                         }).foregroundColor(.white)
-                        .padding()
                         .opacity(isLastPage ? 0 : 1)
                         .animation(.spring())
                     }.padding(.top, geometry.safeAreaInsets.top)

@@ -136,6 +136,22 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         }
     }
     
+    override func isDataSourceEmpty() -> Bool {
+        if showingAdventureGuide {
+            return false
+        } else {
+            return super.isDataSourceEmpty()
+        }
+    }
+    
+    override var visibleSections: [ItemSection<TaskProtocol>] {
+        if showingAdventureGuide {
+            return sections
+        } else {
+            return super.visibleSections
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if showingAdventureGuide {
             return super.tableView(tableView, numberOfRowsInSection: section) + 1

@@ -23,7 +23,7 @@ struct TaskListProvider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<TaskListEntry>) -> ()) {
         var entries: [TaskListEntry] = []
-        TaskManager.shared.getTasks(predicate: NSPredicate(format: "completed == false && (type == 'daily' && isDue == true)")).on(value: { tasks in
+        TaskManager.shared.getTasks(predicate: NSPredicate(format: "completed == false && type == 'daily' && isDue == true")).on(value: { tasks in
             let entry = TaskListEntry(widgetFamily: context.family, tasks: tasks.value)
             entries.append(entry)
 
@@ -45,7 +45,7 @@ struct TaskListWidgetView : View {
 
     var body: some View {
         GeometryReader { geometry in
-            let maxCount = (Int(geometry.size.height) - (entry.widgetFamily == .systemMedium ? 12 : 50)) / 30
+            let maxCount = (Int(geometry.size.height) - (entry.widgetFamily == .systemMedium ? 12 : 60)) / 30
             if entry.widgetFamily == .systemMedium {
                 HStack {
                     VStack(alignment: .leading) {
@@ -95,7 +95,7 @@ struct MainWidgetContent: View {
         } else if (entry.tasks.isEmpty) {
             VStack {
                 Image("Sparkles")
-                Text("All done today!").foregroundColor(.widgetText)
+                Text("All done today!").foregroundColor(.widgetText).font(.system(size: 13))
             }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             .background(Color.widgetBackgroundSecondary.opacity(0.1))
                 .cornerRadius(6)
@@ -115,10 +115,10 @@ struct TaskListView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            let last = (min(tasks.count-1, maxCount))
-            ForEach((1...last), id: \.self) { index in
+            let last = (min(tasks.count, maxCount))-1
+            ForEach((0...last), id: \.self) { index in
                 let task = tasks[index]
-                TaskListItem(task: task, showChecklistCount: isLarge)
+                TaskListItem(task: task, showChecklistCount: isLarge).frame(maxHeight: 30)
                 if (index != last || (tasks.count <= maxCount || isLarge)) {
                     Rectangle().fill(Color.widgetText.opacity(0.20)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1).padding(.leading, 12)
                 }
@@ -154,7 +154,7 @@ struct TaskListItem: View {
                     .background(completedCount == task.checklist.count ? Color.checklistBackgroundDone : Color.checklistBackground)
                     .cornerRadius(4)
             }
-        }.frame(maxHeight: 30)
+        }
     }
 }
 
@@ -166,7 +166,7 @@ struct TaskListWidget: Widget {
             TaskListWidgetView(entry: entry)
         }
         .configurationDisplayName("Your Dailies")
-        .description("View your Habitica Dailies for the day")
+        .description("View your Habitica Dailies due today")
         .supportedFamilies([.systemMedium, .systemLarge])
     }
 }
@@ -184,6 +184,8 @@ struct TaskListWidgetPreview: PreviewProvider {
             TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks: [], needsCron: false))
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
                 .environment(\.colorScheme, .dark)
+            TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemMedium, tasks: [], needsCron: false))
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
             TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks: [], needsCron: true))
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
             TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks:makePreviewTasks().dropLast(6), needsCron: false))
