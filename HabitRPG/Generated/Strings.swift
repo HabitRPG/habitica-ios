@@ -1960,6 +1960,8 @@ public enum L10n {
   public enum Skills {
     /// Can't cast a spell on a challenge task
     public static var cantCastOnChallengeTasks: String { return L10n.tr("Mainstrings", "skills.cant_cast_on_challenge_tasks") }
+    /// You caused damage to the boss
+    public static var causedDamage: String { return L10n.tr("Mainstrings", "skills.caused_damage") }
     /// Transformation Items
     public static var transformationItems: String { return L10n.tr("Mainstrings", "skills.transformation_items") }
     /// Unlocks at level %d

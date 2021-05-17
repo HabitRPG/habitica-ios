@@ -347,16 +347,23 @@ class MainMenuViewController: BaseTableViewController {
             view.onButtonTapped = { [weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.subscriptionSegue.rawValue, sender: self) }
             tableView.tableFooterView = view
         } else if let promo = activePromo {
-            let view = PromoMenuView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
-            promo.configurePromoMenuView(view: view)
-            view.onButtonTapped = { [weak self] in
-                if self?.activePromo?.isWebPromo == true {
-                    self?.perform(segue: StoryboardSegue.Main.showWebPromoSegue)
-                } else {
-                    self?.perform(segue: StoryboardSegue.Main.showPromoInfoSegue)
+            if !UserDefaults.standard.bool(forKey: "hide\(promo.identifier)") {
+                let view = PromoMenuView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
+                promo.configurePromoMenuView(view: view)
+                view.onButtonTapped = { [weak self] in
+                    if self?.activePromo?.isWebPromo == true {
+                        self?.perform(segue: StoryboardSegue.Main.showWebPromoSegue)
+                    } else {
+                        self?.perform(segue: StoryboardSegue.Main.showPromoInfoSegue)
+                    }
                 }
+                view.onCloseButtonTapped = { [weak self] in
+                    self?.tableView.tableFooterView = nil
+                    self?.tableView.reloadData()
+                    UserDefaults.standard.set(true, forKey: "hide\(promo.identifier)")
+                }
+                tableView.tableFooterView = view
             }
-            tableView.tableFooterView = view
         }
         
         disposable.inner.add(contentRepository.getWorldState()

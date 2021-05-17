@@ -51,6 +51,9 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         gestureRecognizer.cancelsTouchesInView = false
         subtitleLabel.addGestureRecognizer(gestureRecognizer)
         
+        titleLabel.delegate = self
+        subtitleLabel.delegate = self
+        
         contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(doNothing)))
         mainTaskWrapper.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openFormTapped)))
         

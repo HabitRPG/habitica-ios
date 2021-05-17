@@ -411,6 +411,7 @@ class Survey2021Promotion: HabiticaWebPromotion {
     }
     
     func configurePromoMenuView(view: PromoMenuView) {
+        view.canClose = true
         view.backgroundColor = backgroundColor()
         view.leftImageView.image = Asset.surveyArtLeft.image
         view.rightImageView.image = Asset.surveyArtRight.image
@@ -420,7 +421,8 @@ class Survey2021Promotion: HabiticaWebPromotion {
         view.descriptionView.textColor = .white
         view.actionButton.backgroundColor = .white
         view.actionButton.setTitle(L10n.Survey.button, for: .normal)
-        view.actionButton.setTitleColor(UIColor.blue10, for: .normal)
+        view.actionButton.setTitleColor(.blue10, for: .normal)
+        view.closeButton.tintColor = .blue100
     }
     
     func configurePurchaseBanner(view: PromoBannerView) {

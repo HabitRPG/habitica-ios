@@ -50,17 +50,15 @@ struct TaskListWidgetView : View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Dailies").font(.body).foregroundColor(.widgetTextSecondary)
-                        Text("\(entry.tasks.count)").font(Font.system(size: 41, weight: .semibold)).foregroundColor(.widgetText)
+                        Text("\(entry.tasks.count)").font(Font.system(size: 34, weight: .semibold)).foregroundColor(.widgetText)
                         Spacer()
                         Link(destination: URL(string: "/user/tasks/daily/add")!, label: {
                             Image("Add").font(.system(size: 20)).foregroundColor(.widgetText)
                         })
-                    }.frame(width: 70, alignment: .leading)
-                    VStack {
-                        MainWidgetContent(entry: entry, maxCount: maxCount)
-                    }
+                    }.frame(width: 60, alignment: .leading)
+                    MainWidgetContent(entry: entry, maxCount: maxCount)
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-                .padding()
+                .padding(16)
                 .background(Color.widgetBackground)
             } else {
                 VStack(alignment: .leading) {
@@ -114,12 +112,12 @@ struct TaskListView: View {
     var isLarge: Bool
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: 0) {
             let last = (min(tasks.count, maxCount))-1
             ForEach((0...last), id: \.self) { index in
                 let task = tasks[index]
-                TaskListItem(task: task, showChecklistCount: isLarge).frame(maxHeight: 30)
-                if (index != last || (tasks.count <= maxCount || isLarge)) {
+                TaskListItem(task: task, showChecklistCount: isLarge).frame(height: 30)
+                if (index != last || (tasks.count == maxCount && isLarge)) {
                     Rectangle().fill(Color.widgetText.opacity(0.20)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1).padding(.leading, 12)
                 }
             }
@@ -129,6 +127,7 @@ struct TaskListView: View {
                     .font(.system(size: 12))
                     .padding(.leading, 12)
             }
+            Spacer()
         }
     }
 }
@@ -141,7 +140,7 @@ struct TaskListItem: View {
         HStack {
             RoundedRectangle(cornerRadius: 2, style: .continuous)
                 .fill(Color(UIColor.forTaskValue(task.value)))
-                .frame(width: 4)
+                .frame(width: 4, height: 18)
             Text(task.text ?? "").font(.system(size: 13)).foregroundColor(Color.widgetText).lineLimit(2)
             let completedCount = task.checklist.filter { $0.completed }.count
             if showChecklistCount && task.checklist.count > 0 {
@@ -174,7 +173,7 @@ struct TaskListWidget: Widget {
 struct TaskListWidgetPreview: PreviewProvider {
     static var previews: some View {
         Group {
-            TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemMedium, tasks: makePreviewTasks(), needsCron: false))
+            TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemMedium, tasks: makePreviewTasks().dropLast(8), needsCron: false))
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemMedium, tasks: makePreviewTasks(), needsCron: false))
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
@@ -197,7 +196,7 @@ struct TaskListWidgetPreview: PreviewProvider {
 
 private func makePreviewTasks() -> [TaskProtocol] {
     var tasks = [TaskProtocol]()
-    for index in 0...10 {
+    for index in 1...10 {
         let task = PreviewTask()
         task.text = "Test task with a title \(String(repeating: "a", count: index))"
         task.id = "\(index)"

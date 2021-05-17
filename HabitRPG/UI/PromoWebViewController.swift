@@ -13,12 +13,18 @@ class PromoWebViewController: BaseUIViewController, WKNavigationDelegate {
     @IBOutlet private var newsWebView: WKWebView!
     @IBOutlet private var loadingIndicator: UIActivityIndicatorView!
     
+    private var userRepository = UserRepository()
     private var configRepository = ConfigRepository()
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let url = (configRepository.activePromotion() as? HabiticaWebPromotion)?.url {
+        if var url = (configRepository.activePromotion() as? HabiticaWebPromotion)?.url {
+            if url.absoluteString.contains("USER_ID") {
+                var urlString = url.absoluteString
+                urlString = urlString.replacingOccurrences(of: "USER_ID", with: userRepository.currentUserId ?? "")
+                url = URL(string: urlString) ?? url
+            }
             let request = URLRequest(url: url)
             newsWebView.navigationDelegate = self
             newsWebView.load(request)

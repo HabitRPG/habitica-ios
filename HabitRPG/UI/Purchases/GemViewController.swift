@@ -108,7 +108,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if activePromo != nil {
+        if activePromo != nil && (activePromo?.promoType == .gemsAmount || activePromo?.promoType == .gemsPrice || activePromo?.promoType == .subscription) {
             return CGSize(width: collectionView.frame.size.width, height: 382)
         } else {
             return CGSize(width: collectionView.frame.size.width, height: 302)
@@ -178,7 +178,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
                 stackView.isLayoutMarginsRelativeArrangement = true
             }
             
-            if let promo = activePromo {
+            if let promo = activePromo, promo.promoType == .gemsAmount || promo.promoType == .gemsPrice || promo.promoType == .subscription {
                 if let promoView = view.viewWithTag(5) as? PromoBannerView {
                     promoView.isHidden = false
                     promo.configurePurchaseBanner(view: promoView)

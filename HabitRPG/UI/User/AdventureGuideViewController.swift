@@ -17,7 +17,7 @@ class AdventureGuideViewController: BaseUIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var yourProgressLabel: UILabel!
     @IBOutlet weak var progressLabel: UILabel!
-    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var progressBar: ProgressBar!
     @IBOutlet weak var achievementsStackview: UIStackView!
     
     override func viewDidLoad() {
@@ -26,16 +26,13 @@ class AdventureGuideViewController: BaseUIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
-        
-        let transform = CGAffineTransform(scaleX: 1, y: 2)
-        progressView.transform = transform
-        progressView.cornerRadius = 2
-        
+
         userRepository.getUser().on(value: { user in
             if let achievements = user.achievements?.onboardingAchievements {
                 let earned = achievements.filter { $0.value }.count
                 let percentCompleted = Float(earned) / Float(achievements.count)
-                self.progressView.setProgress(percentCompleted, animated: false)
+                self.progressBar.value = CGFloat(earned)
+                self.progressBar.maxValue = CGFloat(achievements.count)
                 self.progressLabel.text = L10n.percentComplete(Int(percentCompleted * 100.0))
                 
                 self.setAchievements(keys: user.achievements?.onboardingAchievementKeys ?? [], achievements: achievements)
@@ -61,8 +58,8 @@ class AdventureGuideViewController: BaseUIViewController {
             NSAttributedString.Key.foregroundColor: UIColor.yellow10
         ])
         descriptionLabel.attributedText = attrString
-        progressView.trackTintColor = theme.offsetBackgroundColor
-        progressView.tintColor = .purple400
+        progressBar.barBackgroundColor = theme.offsetBackgroundColor
+        progressBar.barColor = .purple400
         progressLabel.textColor = .purple400
         yourProgressLabel.textColor = theme.secondaryTextColor
         navigationController?.navigationBar.tintColor = theme.tintColor

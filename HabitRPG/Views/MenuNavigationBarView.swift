@@ -125,8 +125,8 @@ class MenuNavigationBarView: UIView, Themeable {
     }
     
     func applyTheme(theme: Theme) {
-        let textColor = theme.navbarHiddenColor.isLight() ? theme.primaryTextColor : theme.lightTextColor
-        let badgeTextColor = theme.badgeColor.isLight() ? theme.primaryTextColor : theme.lightTextColor
+        let textColor = theme.navbarHiddenColor.isLight() ? UIColor.gray50 : theme.lightTextColor
+        let badgeTextColor = theme.badgeColor.isLight() ? UIColor.gray50 : theme.lightTextColor
         backgroundColor = theme.navbarHiddenColor
         displayNameLabel.textColor = textColor
         usernameLabel.textColor = textColor

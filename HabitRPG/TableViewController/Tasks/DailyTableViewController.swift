@@ -14,7 +14,7 @@ class DailyTableViewController: TaskTableViewController {
         readableName = L10n.Tasks.daily
         typeName = "daily"
         super.viewDidLoad()
-        dataSource?.emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.dailiesStyle)
+        dataSource?.emptyDataSource = TaskEmptyTableViewDataSource<EmptyTableViewCell>(tableView: tableView, cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.dailiesStyle)
         
         self.tutorialIdentifier = "dailies"
         configureTitle(L10n.Tasks.dailies)

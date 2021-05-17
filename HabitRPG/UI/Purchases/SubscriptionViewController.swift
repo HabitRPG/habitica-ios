@@ -114,7 +114,7 @@ class SubscriptionViewController: BaseTableViewController {
             self.mysteryGear = gear
         }).start())
         
-        if let promo = activePromo {
+        if let promo = activePromo, promo.promoType == .gemsAmount || promo.promoType == .gemsPrice || promo.promoType == .subscription {
             if let header = tableView.tableHeaderView {
                 header.frame = CGRect(x: header.frame.origin.x, y: header.frame.origin.y, width: header.frame.size.width, height: 205)
                 if let promoView = header.viewWithTag(2) as? PromoBannerView {

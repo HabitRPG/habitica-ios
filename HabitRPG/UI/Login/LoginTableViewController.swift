@@ -83,6 +83,8 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        viewModel.inputs.usernameChanged(username: nil)
+        viewModel.inputs.passwordChanged(password: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {

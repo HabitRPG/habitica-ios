@@ -72,18 +72,35 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func useSkill(skill: SkillProtocol, targetId: String? = nil) -> Signal<SkillResponseProtocol?, Never> {
-        return UseSkillCall(key: skill.key ?? "", target: skill.target ?? "", targetID: targetId).objectSignal.on(value: {[weak self] skillResponse in
-                if let response = skillResponse {
-                    self?.localRepository.save(userID: self?.currentUserId, skillResponse: response)
-                }
-            let toastView = ToastView(title: L10n.Skills.useSkill(skill.text ?? ""),
-                                      rightIcon: HabiticaIcons.imageOfMagic,
-                                      rightText: "-\(skill.mana)",
-                rightTextColor: UIColor.blue10,
-                background: .blue)
-                ToastManager.show(toast: toastView)
-                UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
-            })
+        return getUser().take(first: 1).startWithSignal { signal, _ in
+            return UseSkillCall(key: skill.key ?? "", target: skill.target ?? "", targetID: targetId).objectSignal
+                .zip(with: signal.flatMapError { _ in Signal.empty })
+                .on(value: {[weak self] values in
+                    guard let skillResponse = values.0 else {
+                        return
+                    }
+                    let toastView = ToastView(title: L10n.Skills.useSkill(skill.text ?? ""),
+                                              rightIcon: HabiticaIcons.imageOfMagic,
+                                              rightText: "-\(skill.mana)",
+                                            rightTextColor: UIColor.blue10,
+                                            background: .blue,
+                                            delay: 0.5)
+                    ToastManager.show(toast: toastView)
+                    let newDamage = skillResponse.user?.party?.quest?.progress?.up ?? 0
+                        let oldDamage = values.1.party?.quest?.progress?.up ?? 0
+                        if newDamage > oldDamage {
+                            ToastManager.show(toast: ToastView(title: L10n.Skills.causedDamage,
+                                                      rightIcon: HabiticaIcons.imageOfDamage,
+                                                      rightText: "+\(newDamage - oldDamage)",
+                                                      rightTextColor: UIColor.green10,
+                                                      background: .green,
+                                                      delay: 0.5))
+                        }
+                    self?.localRepository.save(userID: self?.currentUserId, skillResponse: skillResponse)
+                    UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
+                })
+                .map { $0.0 }
+        }
     }
     
     func useTransformationItem(item: SpecialItemProtocol, targetId: String) -> Signal<UserProtocol?, Never> {

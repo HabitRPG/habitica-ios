@@ -15,7 +15,7 @@ class HabitTableViewController: TaskTableViewController {
         readableName = L10n.Tasks.habit
         typeName = "habit"
         super.viewDidLoad()
-        dataSource?.emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.habitsStyle)
+        dataSource?.emptyDataSource = TaskEmptyTableViewDataSource<EmptyTableViewCell>(tableView: tableView, cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.habitsStyle)
                 
         self.tutorialIdentifier = "habits"
         configureTitle(L10n.Tasks.habits)

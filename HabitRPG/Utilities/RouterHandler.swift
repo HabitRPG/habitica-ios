@@ -9,6 +9,7 @@
 import Foundation
 import DeepLinkKit
 import Habitica_Models
+import Habitica_API_Client
 
 @objc
 class RouterHandler: NSObject {
@@ -34,6 +35,7 @@ class RouterHandler: NSObject {
             self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
         }
         router.register("/challenges/:challengeID") { link in
+            self.displayTab(index: 4)
             let viewController = StoryboardScene.Social.challengeDetailViewController.instantiate()
             let viewModel = ChallengeDetailViewModel(challengeID: (link?.routeParameters["challengeID"] as? String) ?? "")
             viewController.viewModel = viewModel
@@ -219,6 +221,9 @@ class RouterHandler: NSObject {
     @objc
     @discardableResult
     func handle(url: URL) -> Bool {
+        if url.host == AuthenticatedCall.defaultConfiguration.host {
+            return handle(urlString: url.relativePath)
+        }
         return router.handle(url) { (_, _) in
         }
     }

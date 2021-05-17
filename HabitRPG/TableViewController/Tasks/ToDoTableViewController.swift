@@ -14,7 +14,7 @@ class ToDoTableViewController: TaskTableViewController {
         readableName = L10n.Tasks.todo
         typeName = "todo"
         super.viewDidLoad()
-        dataSource?.emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.todoStyle)
+        dataSource?.emptyDataSource = TaskEmptyTableViewDataSource<EmptyTableViewCell>(tableView: tableView, cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.todoStyle)
         
         self.tutorialIdentifier = "todos"
         configureTitle(L10n.Tasks.todos)

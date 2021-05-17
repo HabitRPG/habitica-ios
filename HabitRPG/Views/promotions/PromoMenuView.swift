@@ -11,6 +11,13 @@ import Foundation
 class PromoMenuView: UIView {
     
     var onButtonTapped: (() -> Void)?
+    var onCloseButtonTapped: (() -> Void)?
+
+    var canClose = false {
+        didSet {
+            closeButton.isHidden = !canClose
+        }
+    }
     
     let titleView: UILabel = {
         let label = UILabel()
@@ -37,6 +44,15 @@ class PromoMenuView: UIView {
     }()
     let leftImageView = UIImageView()
     let rightImageView = UIImageView()
+    
+    let closeButton: UIButton = {
+        let view = UIButton()
+        view.setImage(Asset.close.image, for: .normal)
+        view.tintColor = ThemeService.shared.theme.dimmedTextColor
+        view.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        view.isHidden = true
+        return view
+    }()
     
     func setTitle(_ title: String) {
         titleView.isHidden = false
@@ -76,6 +92,7 @@ class PromoMenuView: UIView {
         addSubview(descriptionView)
         addSubview(descriptionImageView)
         addSubview(actionButton)
+        addSubview(closeButton)
         
         titleView.isHidden = true
         titleImageView.isHidden = true
@@ -109,6 +126,7 @@ class PromoMenuView: UIView {
             upperEdge = descriptionImageView.edge.bottom
         }
         actionButton.pin.top(to: upperEdge).minWidth(110).sizeToFit().marginTop(16).hCenter().height(32)
+        closeButton.pin.top(8).end(8).wrapContent(padding: 12)
     }
     
     override var intrinsicContentSize: CGSize {
@@ -125,6 +143,13 @@ class PromoMenuView: UIView {
     @objc
     private func actionButtonTapped() {
         if let action = onButtonTapped {
+            action()
+        }
+    }
+    
+    @objc
+    private func closeButtonTapped() {
+        if let action = onCloseButtonTapped {
             action()
         }
     }
