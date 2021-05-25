@@ -37,6 +37,7 @@ public protocol UserProtocol: AvatarProtocol {
     var invitations: [GroupInvitationProtocol] { get set }
     var pushDevices: [PushDeviceProtocol] { get set }
     var achievements: UserAchievementsProtocol? { get set }
+    var loginIncentives: Int { get set }
 }
 
 public extension UserProtocol {

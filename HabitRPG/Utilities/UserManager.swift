@@ -11,6 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 import Habitica_Database
 import PopupDialog
+import FirebaseAnalytics
 
 @objc
 class UserManager: NSObject {
@@ -135,6 +136,10 @@ class UserManager: NSObject {
                 }
             }
         }
+        
+        Analytics.setUserProperty(user.isSubscribed ? "true" : "false", forName: "is_subscribed")
+        Analytics.setUserProperty(user.party?.id != nil ? "true" : "false", forName: "has_party")
+        Analytics.setUserProperty("\(user.loginIncentives)", forName: "checkin_count")
     }
     
     private func handleQuestCompletion(_ user: UserProtocol) {

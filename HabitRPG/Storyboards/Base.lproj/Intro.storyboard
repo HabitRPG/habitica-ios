@@ -387,7 +387,7 @@
                         <outlet property="privacyPolicyLabel" destination="E6t-4E-ZNY" id="Mk6-AI-XL5"/>
                         <outlet property="registerBeginButton" destination="Ohf-iu-Phe" id="POZ-1N-6gG"/>
                         <outlet property="usernameField" destination="u44-DM-dLI" id="qp1-8m-KY5"/>
-                        <segue destination="qul-kf-4Gi" kind="presentation" identifier="MainSegue" customClass="MainVCSelectionSegue" customModule="Habitica" customModuleProvider="target" modalPresentationStyle="fullScreen" id="aKA-6e-Im9"/>
+                        <segue destination="qul-kf-4Gi" kind="presentation" identifier="MainSegue" customClass="MainVCSelectionSegue" customModule="Habitica" customModuleProvider="target" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="aKA-6e-Im9"/>
                         <segue destination="v9W-i7-og5" kind="presentation" identifier="SetupSegue" modalPresentationStyle="fullScreen" id="5Hb-dX-OsZ"/>
                     </connections>
                 </viewController>
@@ -1269,7 +1269,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Zxx-A1-MXZ"/>
+        <segue reference="5Hb-dX-OsZ"/>
         <segue reference="Z2J-RM-J8b"/>
         <segue reference="TYz-5x-Fui"/>
     </inferredMetricsTieBreakers>

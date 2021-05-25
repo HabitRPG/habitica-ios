@@ -45,35 +45,35 @@ struct TaskListWidgetView : View {
 
     var body: some View {
         GeometryReader { geometry in
-            let maxCount = (Int(geometry.size.height) - (entry.widgetFamily == .systemMedium ? 12 : 60)) / 30
+            let maxCount = min(8, (Int(geometry.size.height) - (entry.widgetFamily == .systemMedium ? 12 : 60)) / 30)
             if entry.widgetFamily == .systemMedium {
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("Dailies").font(.body).foregroundColor(.widgetTextSecondary)
-                        Text("\(entry.tasks.count)").font(Font.system(size: 34, weight: .semibold)).foregroundColor(.widgetText)
+                        Text("Dailies").font(.system(size: 13, weight: .semibold)).foregroundColor(.widgetTextSecondary).padding(.top, 4)
+                        Text("\(entry.tasks.count)").font(Font.system(size: 34)).foregroundColor(Color("taskListSecondaryText"))
                         Spacer()
                         Link(destination: URL(string: "/user/tasks/daily/add")!, label: {
-                            Image("Add").font(.system(size: 20)).foregroundColor(.widgetText)
-                        })
+                            Image("Add").foregroundColor(Color("taskListSecondaryText"))
+                        }).padding(.bottom, 12)
                     }.frame(width: 60, alignment: .leading)
                     MainWidgetContent(entry: entry, maxCount: maxCount)
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-                .padding(16)
+                .padding(14)
                 .background(Color.widgetBackground)
             } else {
                 VStack(alignment: .leading) {
                     HStack(alignment: .center) {
-                        Text("Today's Dailies").font(.headline).foregroundColor(.widgetText)
+                        Text("Today's Dailies").font(.system(size: 20, weight: .semibold)).foregroundColor(Color("taskListPrimaryText"))
                         Spacer()
                         Link(destination: URL(string: "/user/tasks/daily/add")!, label: {
-                            Image("Add").font(.system(size: 20)).foregroundColor(.widgetText)
+                            Image("Add").foregroundColor(Color("taskListSecondaryText"))
                         })
-                    }.padding(EdgeInsets(top: 0, leading: 0, bottom: 6, trailing: 0))
+                    }.padding(EdgeInsets(top: 0, leading: 0, bottom: 1, trailing: 0))
                     VStack {
                         MainWidgetContent(entry: entry, maxCount: maxCount)
                     }
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-                .padding()
+                .padding(20)
                 .background(Color.widgetBackground)
             }
         }
@@ -117,8 +117,8 @@ struct TaskListView: View {
             ForEach((0...last), id: \.self) { index in
                 let task = tasks[index]
                 TaskListItem(task: task, showChecklistCount: isLarge).frame(height: 30)
-                if (index != last || (tasks.count == maxCount && isLarge)) {
-                    Rectangle().fill(Color.widgetText.opacity(0.20)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1).padding(.leading, 12)
+                if (index != last || (tasks.count > maxCount && isLarge)) {
+                    Rectangle().fill(Color.separator.opacity(0.3)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1).padding(.leading, 12)
                 }
             }
             if tasks.count > maxCount && isLarge {
@@ -126,6 +126,7 @@ struct TaskListView: View {
                     .foregroundColor(.dailiesWidgetPurple)
                     .font(.system(size: 12))
                     .padding(.leading, 12)
+                    .padding(.top, 6)
             }
             Spacer()
         }

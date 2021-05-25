@@ -299,6 +299,7 @@ class RealmUser: Object, UserProtocol {
     
     var needsCron: Bool = false
     var lastCron: Date?
+    var loginIncentives: Int = 0
     
     var isValid: Bool {
         return !isInvalidated
@@ -334,5 +335,6 @@ class RealmUser: Object, UserProtocol {
         invitations = user.invitations
         pushDevices = user.pushDevices
         achievements = user.achievements
+        loginIncentives = user.loginIncentives
     }
 }

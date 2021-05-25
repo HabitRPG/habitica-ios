@@ -17,6 +17,7 @@ extension Color {
     static let progressBackground = Color("progressBackground")
     static let checklistBackground = Color("checklistBackground")
     static let checklistBackgroundDone = Color("checklistBackgroundDone")
+    static let separator = Color("separator")
     
     static let barRed = Color(red: 1.0, green: 97.0 / 255.0, blue: 101.0 / 255.0)
     static let barOrange = Color(red: 1.0, green: 148.0 / 255.0, blue: 76.0 / 255.0)

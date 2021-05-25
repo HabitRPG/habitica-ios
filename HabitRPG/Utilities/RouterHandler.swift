@@ -250,8 +250,12 @@ class RouterHandler: NSObject {
     }
     
     private func displayTab(index: Int) {
-        if let presentedController = UIApplication.shared.findKeyWindow()?.rootViewController?.presentedViewController as? MainTabBarController {
-            presentedController.selectedIndex = index
+        if let tabbarController = self.tabbarController {
+            tabbarController.selectedIndex = index
+        } else {
+            loadingController?.loadingFinishedAction = {[weak self] in
+                self?.tabbarController?.selectedIndex = index
+            }
         }
     }
     
@@ -286,7 +290,7 @@ class RouterHandler: NSObject {
             navigationController.pushViewController(viewController, animated: true)
         } else {
             loadingController?.loadingFinishedAction = {[weak self] in
-                self?.selectedNavigationController?.present(viewController, animated: true, completion: nil)
+                self?.selectedNavigationController?.pushViewController(viewController, animated: true)
             }
         }
     }

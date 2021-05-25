@@ -82,6 +82,12 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
         return wasHandled
     }
     
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        URLContexts.forEach { context in
+            RouterHandler.shared.handle(url: context.url)
+        }
+    }
+    
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         if shortcutItem.type == "com.habitrpg.habitica.ios.newhabit" {
             RouterHandler.shared.handle(urlString: "/user/tasks/habit/add")

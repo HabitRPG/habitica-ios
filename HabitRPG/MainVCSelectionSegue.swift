@@ -14,10 +14,12 @@ class MainVCSelectionSegue: UIStoryboardSegue {
         if #available(iOS 14.0, *), ConfigRepository().bool(variable: .enableIPadUI) {
             let viewController = StoryboardScene.Main.mainSplitViewController.instantiate()
             viewController.modalPresentationStyle = .fullScreen
+            viewController.modalTransitionStyle = .crossDissolve
             return viewController
         } else {
             let viewController = StoryboardScene.Main.mainTabBarController.instantiate()
             viewController.modalPresentationStyle = .fullScreen
+            viewController.modalTransitionStyle = .crossDissolve
             return viewController
         }
     }
