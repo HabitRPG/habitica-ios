@@ -54,7 +54,7 @@ struct TaskListWidgetView : View {
                         Spacer()
                         Link(destination: URL(string: "/user/tasks/daily/add")!, label: {
                             Image("Add").foregroundColor(Color("taskListSecondaryText"))
-                        }).padding(.bottom, 12)
+                        }).padding(.bottom, 7)
                     }.frame(width: 60, alignment: .leading)
                     MainWidgetContent(entry: entry, maxCount: maxCount)
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
@@ -111,18 +111,24 @@ struct TaskListView: View {
     var maxCount: Int
     var isLarge: Bool
     
+    var remaining: Int {
+        return tasks.count - maxCount
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             let last = (min(tasks.count, maxCount))-1
             ForEach((0...last), id: \.self) { index in
                 let task = tasks[index]
-                TaskListItem(task: task, showChecklistCount: isLarge).frame(height: 30)
+                TaskListItem(task: task, showChecklistCount: isLarge).frame(height: 29)
                 if (index != last || (tasks.count > maxCount && isLarge)) {
                     Rectangle().fill(Color.separator.opacity(0.3)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1).padding(.leading, 12)
                 }
             }
             if tasks.count > maxCount && isLarge {
-                Text("\(tasks.count - maxCount) more unfinished Dailies")
+                Text(remaining == 1 ?
+                    "1 more unfinished Daily" :
+                    "\(remaining) more unfinished Dailies")
                     .foregroundColor(.dailiesWidgetPurple)
                     .font(.system(size: 12))
                     .padding(.leading, 12)
@@ -142,7 +148,7 @@ struct TaskListItem: View {
             RoundedRectangle(cornerRadius: 2, style: .continuous)
                 .fill(Color(UIColor.forTaskValue(task.value)))
                 .frame(width: 4, height: 18)
-            Text(task.text ?? "").font(.system(size: 13)).foregroundColor(Color.widgetText).lineLimit(2)
+            Text(task.text ?? "").font(.system(size: 13)).foregroundColor(Color("taskListTaskText")).lineLimit(2)
             let completedCount = task.checklist.filter { $0.completed }.count
             if showChecklistCount && task.checklist.count > 0 {
                 Spacer()

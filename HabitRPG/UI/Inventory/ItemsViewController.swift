@@ -211,7 +211,7 @@ class ItemsViewController: BaseTableViewController {
             self?.inventoryRepository.equip(type: "pet", key: "\(egg.key ?? "")-\(potion.key ?? "")").observeCompleted {}
         }
         imageAlert.addAction(title: L10n.share) { (_) in
-            SharingManager.share(items: [
+            SharingManager.share(identifier: "hatchedPet", items: [
                     L10n.Inventory.hatchedSharing(egg.text ?? "", potion.text ?? "")
                 ], presentingViewController: imageAlert, sourceView: nil)
         }

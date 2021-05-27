@@ -66,7 +66,7 @@ enum ConfigVariable: Int {
         case .showSubscriptionBanner: return "showSubscriptionBanner"
         case .raiseShops: return "raiseShops"
         case .feedbackURL: return "feedbackURL"
-        case .moveAdventureGuide: return "enableAdventureGuide"
+        case .moveAdventureGuide: return "moveAdventureGuide"
         case .knownIssues: return "knownIssues"
         case .activePromotion: return "activePromo"
         case .customMenu: return "customMenu"

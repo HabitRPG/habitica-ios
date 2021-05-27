@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import FirebaseAnalytics
 
 class SharingManager {
-    static func share(items: [Any], presentingViewController: UIViewController, sourceView: UIView?) {
+    static func share(identifier: String, items: [Any], presentingViewController: UIViewController, sourceView: UIView?) {
         let avc = UIActivityViewController(activityItems: items, applicationActivities: nil)
         avc.popoverPresentationController?.sourceView = sourceView ?? presentingViewController.view
         presentingViewController.present(avc, animated: true, completion: nil)
+        Analytics.logEvent("shared", parameters: ["identifier": identifier])
     }
 }

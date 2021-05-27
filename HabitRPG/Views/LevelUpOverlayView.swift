@@ -43,7 +43,7 @@ class LevelUpOverlayView: HabiticaAlertController {
                 items.append(image)
             }
             if let weakSelf = self {
-                SharingManager.share(items: items, presentingViewController: weakSelf, sourceView: nil)
+                SharingManager.share(identifier: "levelup", items: items, presentingViewController: weakSelf, sourceView: nil)
             }
         }
         userRepository.getUser().on(value: { user in
