@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveSwift
-import Prelude
 
 open class NetworkCall {
     

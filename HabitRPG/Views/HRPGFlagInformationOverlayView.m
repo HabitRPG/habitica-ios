@@ -7,7 +7,6 @@
 //
 
 #import "HRPGFlagInformationOverlayView.h"
-#import "KLCPopup.h"
 #import "Habitica-Swift.h"
 
 static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_tl,
@@ -94,17 +93,6 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
 
 - (void)setMessage:(NSString *)message {
     self.messageTextView.text = message;
-}
-
-- (IBAction)cancelButtonTapped:(id)sender {
-    [self dismissPresentingPopup];
-}
-
-- (IBAction)flagButtonTapped:(id)sender {
-    if (self.flagAction) {
-        self.flagAction();
-    }
-    [self dismissPresentingPopup];
 }
 
 - (void)sizeToFit {

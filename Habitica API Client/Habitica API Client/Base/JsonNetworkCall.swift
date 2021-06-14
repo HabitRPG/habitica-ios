@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveSwift
-import Prelude
 
 open class JsonNetworkCall: StubbableNetworkCall {
     public lazy var jsonSignal: Signal<Any, Never> = self.dataSignal.skipNil().map {
@@ -19,7 +18,7 @@ open class JsonNetworkCall: StubbableNetworkCall {
                          networkErrorHandler: NetworkErrorHandler? = nil, stubHolder: StubHolderProtocol? = nil, ignoreEtag: Bool = false) {
         super.init(configuration: configuration,
                    httpMethod: httpMethod,
-                   httpHeaders: httpHeaders |> JsonNetworkCall.addJsonHeaders,
+                   httpHeaders: JsonNetworkCall.addJsonHeaders(httpHeaders),
                    endpoint: endpoint,
                    postData: postData,
                    networkErrorHandler: networkErrorHandler,

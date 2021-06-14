@@ -1,4 +1,5 @@
 PODS:
+  - AcknowList (2.0.1)
   - Amplitude-iOS (4.10.0)
   - AppAuth (1.4.0):
     - AppAuth/Core (= 1.4.0)
@@ -117,7 +118,6 @@ PODS:
     - FirebaseInstallations (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
     - "GoogleUtilities/NSData+zlib (~> 7.0)"
-  - FLEX (3.1.2)
   - GoogleAppMeasurement/AdIdSupport (7.11.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
     - GoogleUtilities/MethodSwizzler (~> 7.0)
@@ -158,7 +158,6 @@ PODS:
   - Kingfisher (5.8.3):
     - Kingfisher/Core (= 5.8.3)
   - Kingfisher/Core (5.8.3)
-  - KLCPopup (1.0)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
     - MRProgress/Blur (= 0.8.3)
@@ -228,9 +227,9 @@ PODS:
   - SwiftyStoreKit (0.16.1)
   - TagListView (1.4.1)
   - UIColor_Hex_Swift (5.1.0)
-  - VTAcknowledgementsViewController (2.0.0)
 
 DEPENDENCIES:
+  - AcknowList
   - Amplitude-iOS
   - AppAuth
   - Charts
@@ -246,12 +245,10 @@ DEPENDENCIES:
   - Firebase/Performance
   - Firebase/RemoteConfig
   - FirebaseCrashlytics
-  - FLEX (~> 3.0)
   - iOSSnapshotTestCase
   - KeychainAccess
   - Keys (from `Pods/CocoaPodsKeys`)
   - Kingfisher (~> 5.8.0)
-  - KLCPopup
   - MRProgress
   - Nimble
   - OHHTTPStubs/Swift
@@ -268,10 +265,10 @@ DEPENDENCIES:
   - SwiftLint
   - SwiftyStoreKit
   - TagListView (~> 1.0)
-  - VTAcknowledgementsViewController
 
 SPEC REPOS:
   trunk:
+    - AcknowList
     - Amplitude-iOS
     - AppAuth
     - Charts
@@ -294,14 +291,12 @@ SPEC REPOS:
     - FirebaseMessaging
     - FirebasePerformance
     - FirebaseRemoteConfig
-    - FLEX
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
     - iOSSnapshotTestCase
     - KeychainAccess
     - Kingfisher
-    - KLCPopup
     - MRProgress
     - nanopb
     - Nimble
@@ -323,13 +318,13 @@ SPEC REPOS:
     - SwiftyStoreKit
     - TagListView
     - UIColor_Hex_Swift
-    - VTAcknowledgementsViewController
 
 EXTERNAL SOURCES:
   Keys:
     :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
+  AcknowList: d5476fd33f5c4614c676933ab79d05775e5e20b7
   Amplitude-iOS: 7d8cdc3408ba35c2e68368fc7c692cd104606b94
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
@@ -352,7 +347,6 @@ SPEC CHECKSUMS:
   FirebaseMessaging: 163435fb6db065e3b6228f1e577b10ed2cc506d2
   FirebasePerformance: 3166d0c16b359b1ef92be774f46f2768b98c8993
   FirebaseRemoteConfig: 0ea30de5fb0231df8c1bdcdf3b6c23bdc5066131
-  FLEX: e13e805fc3eec8732cc227d1f7508770d46e9587
   GoogleAppMeasurement: fd19169c3034975cb934e865e5667bfdce59df7f
   GoogleDataTransport: cd9db2180fcecd8da1b561aea31e3e56cf834aa7
   GoogleUtilities: 284cddc7fffc14ae1907efb6f78ab95c1fccaedc
@@ -360,7 +354,6 @@ SPEC CHECKSUMS:
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   Kingfisher: b7e4cb65ff24c264bd2a1284b75b974d907afd94
-  KLCPopup: 76c5a19227977f1e53d85236f9ef42257c168d98
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   Nimble: 7bed62ffabd6dbfe05f5925cbc43722533248990
@@ -382,8 +375,7 @@ SPEC CHECKSUMS:
   SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   UIColor_Hex_Swift: 8be7432edacb7fa91c78aa05ef3c30b66e4f9415
-  VTAcknowledgementsViewController: 0a1eb608fcc5948b6bd5d4ac2f3c7dffef4aa11d
 
-PODFILE CHECKSUM: def50ddec0928b8956541f72dddc84dc8375dae4
+PODFILE CHECKSUM: da1c8c14b5264c29ae326c24484c8e3d2e1fdbfb
 
 COCOAPODS: 1.10.1

@@ -30,11 +30,8 @@ end
 target 'Habitica' do
   project 'Habitica.xcodeproj'
   pod 'KeychainAccess'
-  pod 'VTAcknowledgementsViewController'
   pod 'DateTools'
-  pod 'FLEX', '~> 3.0', :configurations => ['Debug']
   pod 'MRProgress'
-  pod 'KLCPopup'
   pod "SlackTextViewController"
   pod 'AppAuth'
 
@@ -72,7 +69,6 @@ target 'Habitica' do
 
   pod 'SimulatorStatusMagic', :configurations => ['Debug']
   pod 'OHHTTPStubs/Swift'
-  pod 'Prelude'
 
   pod 'TagListView', '~> 1.0'
 
@@ -114,7 +110,6 @@ target "Habitica API Client" do
   project 'Habitica API Client/Habitica API Client.xcodeproj'
   reactive_pods
   pod 'OHHTTPStubs/Swift'
-  pod 'Prelude'
 
   target 'Habitica API ClientTests' do
     inherit! :search_paths

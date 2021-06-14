@@ -8,7 +8,6 @@
 
 import UIKit
 import Realm
-import VTAcknowledgementsViewController
 import Habitica_Models
 import MessageUI
 
@@ -75,7 +74,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         } else if section == 3 {
             count = 3
         } else if section == 4 {
-            count = 2
+            count = 1
             if !HabiticaAppDelegate.isRunningLive() {
                 count += 1
             }
@@ -135,8 +134,6 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         } else if indexPath.section == 4 {
             if indexPath.item == 0 {
                 cell.textLabel?.text = L10n.About.viewSourceCode
-            } else if indexPath.item == 1 {
-                cell.textLabel?.text = L10n.About.acknowledgements
             } else if indexPath.item == 2 {
                 cell.textLabel?.text = L10n.About.exportDatabase
             }
@@ -178,10 +175,6 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
             if indexPath.item == 0 {
                 open(url: "https://github.com/habitRPG/habitica-ios")
             } else if indexPath.item == 1 {
-                let viewController = VTAcknowledgementsViewController.acknowledgementsViewController()
-                viewController.headerText = L10n.About.loveOpenSource
-                navigationController?.pushViewController(viewController, animated: true)
-            } else if indexPath.item == 2 {
                 if let url = RLMRealmConfiguration.default().fileURL {
                     let activityViewController = UIActivityViewController.init(activityItems: [url], applicationActivities: nil)
                     present(activityViewController, animated: true, completion: nil)

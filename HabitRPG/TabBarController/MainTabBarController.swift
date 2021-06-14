@@ -10,9 +10,6 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 import FirebaseAnalytics
-#if DEBUG
-import FLEX
-#endif
 
 class MainTabBarController: UITabBarController, Themeable {
     
@@ -221,16 +218,6 @@ class MainTabBarController: UITabBarController, Themeable {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         ThemeService.shared.updateInterfaceStyle(newStyle: traitCollection.userInterfaceStyle)
     }
-    
-    #if DEBUG
-    @objc
-    private func showDebugMenu(_ recognizer: UISwipeGestureRecognizer) {
-        if recognizer.state = .recognizer {
-            FLEXManager.sharedManager.showExplorer()
-        }
-    }
-    #endif
-
 }
 
 class MainTabBar: UITabBar, Themeable {

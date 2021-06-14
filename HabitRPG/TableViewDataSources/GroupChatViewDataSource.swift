@@ -9,7 +9,6 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
-import KLCPopup
 
 class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtocol> {
 
@@ -91,18 +90,16 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             }
             view.username = chatMessage.username
             view.message = chatMessage.text
-            view.flagAction = {
-                self?.socialRepository.flag(groupID: self?.groupID ?? "", chatMessage: chatMessage).observeCompleted {}
-            }
             view.sizeToFit()
             
-            let popup = KLCPopup(contentView: view,
-                                 showType: KLCPopupShowType.bounceIn,
-                                 dismissType: KLCPopupDismissType.bounceOut,
-                                 maskType: KLCPopupMaskType.dimmed,
-                                 dismissOnBackgroundTouch: true,
-                                 dismissOnContentTouch: false)
-            popup?.show()
+            let alert = HabiticaAlertController()
+            alert.contentView = view
+            alert.addCancelAction()
+            alert.addAction(title: L10n.report, style: .destructive, isMainAction: true) {[weak self] _ in
+                self?.socialRepository.flag(groupID: self?.groupID ?? "", chatMessage: chatMessage).observeCompleted {}
+            }
+            alert.containerViewSpacing = 8
+            alert.enqueue()
         }
         cell.replyAction = {[weak self] in
             self?.viewController?.configureReplyTo(chatMessage.username ?? chatMessage.displayName)
