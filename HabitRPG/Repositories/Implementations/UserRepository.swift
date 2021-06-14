@@ -145,7 +145,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             }).flatMap(.latest, { _ in
                 return self.retrieveUser()
             }).on(failed: { error in
-                RemoteLogger.shared.record(error: error)
+                logger.record(error: error)
             }).observeCompleted {
                 disposable?.dispose()
                 if #available(iOS 14.0, *) {
@@ -156,7 +156,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             disposable = RunCronCall().responseSignal.flatMap(.latest, { (_) in
                 return self.retrieveUser()
             }).on(failed: { error in
-                RemoteLogger.shared.record(error: error)
+                logger.record(error: error)
             }).observeCompleted {
                 disposable?.dispose()
                 if #available(iOS 14.0, *) {

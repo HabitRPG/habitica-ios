@@ -40,6 +40,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
     private let configRepository = ConfigRepository()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        logger = RemoteLogger()
         self.application = application
         handleLaunchArgs()
         setupLogging()
@@ -143,7 +144,8 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
     func setupLogging() {
         let userID = AuthenticationManager.shared.currentUserId
         FirebaseApp.configure()
-        RemoteLogger.shared.setUserID(userID)
+        (logger as? RemoteLogger)?.setUserID(userID)
+        logger.isProduction = HabiticaAppDelegate.isRunningLive()
     }
     
     @objc
@@ -232,7 +234,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
         if let url = fileUrl {
             config.fileURL = url
         }
-        print("Realm stored at:", config.fileURL ?? "")
+        logger.log("Realm stored at: \(config.fileURL?.absoluteString ?? "")")
         Realm.Configuration.defaultConfiguration = config
     }
     
@@ -414,7 +416,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
     }
     
     func messaging(_ messaging: MessagingDelegate, didReceiveRegistrationToken fcmToken: String) {
-        print("Firebase registration token: \(fcmToken)")
+        logger.log("Firebase registration token: \(fcmToken)")
         let dataDict: [String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
     }
@@ -443,7 +445,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
                 case let .success(info):
                     Analytics.setUserProperty(String(info.count), forName: "widgetCount")
                 case let .failure(error):
-                    print(error)
+                    logger.log(error)
                 }
             }
         }

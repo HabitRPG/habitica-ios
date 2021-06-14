@@ -39,7 +39,7 @@ class GroupDetailViewController: BaseUIViewController {
         
         disposable.inner.add(groupProperty.signal.skipNil()
             .on(failed: { error in
-                RemoteLogger.shared.record(error: error)
+                logger.record(error: error)
             })
             .observeValues({[weak self] group in
                 self?.updateData(group: group)

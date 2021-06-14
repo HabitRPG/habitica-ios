@@ -233,9 +233,9 @@ class GiftSubscriptionViewController: BaseTableViewController {
             case .success(let product):
                 self.displayConfirmationDialog()
                 self.userRepository.retrieveUser().observeCompleted {}
-                print("Purchase Success: \(product.productId)")
+                logger.log("Purchase Success: \(product.productId)")
             case .error(let error):
-                print("Purchase Failed: \(error)")
+                logger.log("Purchase Failed: \(error)", level: .error)
             }
         }
     }

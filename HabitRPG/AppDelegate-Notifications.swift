@@ -12,9 +12,10 @@ import UserNotifications
 extension HabiticaAppDelegate: UNUserNotificationCenterDelegate {
     
     func configureNotifications() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {(accepted, _) in
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) {(accepted, _) in
             if !accepted {
-                print("Notification access denied.")
+                logger.log("Notification access denied.")
             } else {
                 DispatchQueue.main.async {
                     self.application?.registerForRemoteNotifications()
@@ -22,7 +23,7 @@ extension HabiticaAppDelegate: UNUserNotificationCenterDelegate {
             }
         }
 
-        UNUserNotificationCenter.current().delegate = self
+        notificationCenter.delegate = self
         
         let completeAction = UNNotificationAction(identifier: "completeAction", title: L10n.complete, options: [])
         let taskCompleteCategory = UNNotificationCategory(identifier: "taskCompletion", actions: [completeAction], intentIdentifiers: [], options: [])
@@ -41,7 +42,6 @@ extension HabiticaAppDelegate: UNUserNotificationCenterDelegate {
               intentIdentifiers: [],
               hiddenPreviewsBodyPlaceholder: "",
               options: [])
-        let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.setNotificationCategories([taskCompleteCategory, questInviteCategory, privateMessageCategory])
     }
     
@@ -89,11 +89,16 @@ extension HabiticaAppDelegate: UNUserNotificationCenterDelegate {
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler(.alert)
+        completionHandler([.alert, .sound, .badge])
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         saveDeviceToken(deviceToken)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        displayNotificationInApp(title: userInfo["title"] as? String ?? "", text: userInfo["body"] as? String ?? "")
+        completionHandler(.newData)
     }
     
     func rescheduleDailyReminder() {
@@ -120,7 +125,7 @@ extension HabiticaAppDelegate: UNUserNotificationCenterDelegate {
                 let request = UNNotificationRequest(identifier: "dailyReminderNotification\(offset)", content: notification, trigger: trigger)
                 UNUserNotificationCenter.current().add(request) {(error) in
                     if let error = error {
-                        print("Uh oh! We had an error: \(error)")
+                        logger.log("Uh oh! We had an error: \(error)")
                     }
                 }
                 actualDate = calendar.date(byAdding: offsettter, to: actualDate) ?? Date()
@@ -136,7 +141,7 @@ extension HabiticaAppDelegate: UNUserNotificationCenterDelegate {
             let request = UNNotificationRequest(identifier: "dailyReminderNotification7", content: notification, trigger: trigger)
             UNUserNotificationCenter.current().add(request) {(error) in
                 if let error = error {
-                    print("Uh oh! We had an error: \(error)")
+                    logger.log("Uh oh! We had an error: \(error)")
                 }
             }
         }

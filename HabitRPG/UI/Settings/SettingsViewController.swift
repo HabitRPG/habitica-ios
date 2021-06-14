@@ -961,7 +961,7 @@ class SettingsViewController: FormViewController, Themeable {
                     DispatchQueue.main.async {
                         UIApplication.shared.setAlternateIconName(newAppIcon.fileName) { (error) in
                             if let error = error {
-                                print("error: \(error)")
+                                logger.log("error: \(error)", level: .error)
                             }
                         }
                     }

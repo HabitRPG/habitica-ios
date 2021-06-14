@@ -269,7 +269,7 @@ class ConfigRepository: NSObject {
             do {
                 try JSONSerialization.jsonObject(with: data, options: [])
             } catch let error {
-                print(error)
+                logger.log(error)
             }
             if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
                 if let jsonArray = json as? NSArray {

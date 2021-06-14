@@ -89,7 +89,7 @@ class UserManager: NSObject {
                 }
             })
             .on(failed: { error in
-                RemoteLogger.shared.record(error: error)
+                logger.log(error)
             })
             .start())
         disposable.add(taskRepository.getReminders()
@@ -197,20 +197,21 @@ class UserManager: NSObject {
     }
     
     private func updateReminderNotifications(reminders: [ReminderProtocol], changes: ReactiveChangeset) {
-        removeAllReminderNotifications()
-        for reminder in reminders {
-            scheduleNotifications(reminder: reminder)
-        }
+        removeAllReminderNotifications(reminders: reminders)
     }
-    
-    private func removeAllReminderNotifications() {
+    private func removeAllReminderNotifications(reminders: [ReminderProtocol]) {
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
             var toCancel = [String]()
-            for request in requests where UUID(uuidString: request.identifier) != nil {
+            for request in requests where request.identifier.starts(with: "task") {
                 toCancel.append(request.identifier)
             }
             notificationCenter.removePendingNotificationRequests(withIdentifiers: toCancel)
+            DispatchQueue.main.async {
+                for reminder in reminders {
+                    self.scheduleNotifications(reminder: reminder)
+                }
+            }
         })
     }
     
@@ -271,10 +272,15 @@ class UserManager: NSObject {
         } else {
             content.userInfo = [ "ID": reminder.id ?? "" ]
         }
-        content.categoryIdentifier = "completeCategory"
+        content.categoryIdentifier = "taskCompletion"
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
-        let request = UNNotificationRequest(identifier: "", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        let request = UNNotificationRequest(identifier: "task\(reminder.id ?? "")-\(components.month ?? 0)\(components.day ?? 0)", content: content, trigger: trigger)
+        logger.log("⏰ Notification \(request.identifier) for \(reminder.task?.text ?? "") at \(fireDate)")
+        UNUserNotificationCenter.current().add(request) {(error) in
+            if let error = error {
+                logger.log("Uh oh! We had an error: \(error)")
+            }
+        }
     }
     
     private func setTimezoneOffset(_ user: UserProtocol) {

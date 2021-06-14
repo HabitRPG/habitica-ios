@@ -89,7 +89,7 @@ public class AuthenticatedCall: JsonNetworkCall {
         queue.async {
             if self.needsAuthentication {
                 if NetworkAuthenticationManager.shared.currentUserId == nil {
-                    print("User ID is not set in authentication")
+                    logger.log("User ID is not set in authentication")
                     return
                 }
             }

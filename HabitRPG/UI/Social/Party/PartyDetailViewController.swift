@@ -85,7 +85,7 @@ class PartyDetailViewController: GroupDetailViewController {
             .flatMap(.latest, {[weak self] groupID in
             return self?.socialRepository.getGroupMembers(groupID: groupID) ?? SignalProducer.empty
             }).on(failed: { error in
-                RemoteLogger.shared.record(error: error)
+                logger.record(error: error)
             }, value: {[weak self] (members, _) in
             self?.set(members: members)
         }).start())

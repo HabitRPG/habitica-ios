@@ -175,7 +175,7 @@ class SoundManager {
             
             player.play()
         } catch let error {
-            print(error.localizedDescription)
+            logger.log(error.localizedDescription)
         }
     }
     
@@ -214,10 +214,10 @@ class SoundManager {
                 do {
                     try FileManager.default.moveItem(at: tempLocalUrl, to: localUrl)
                 } catch let writeError {
-                    print("error writing file \(localUrl) : \(writeError)")
+                    logger.log("error writing file \(localUrl) : \(writeError)")
                 }
             } else {
-                print("Failure: %@", error?.localizedDescription ?? "")
+                logger.log("Failure: \(error?.localizedDescription ?? "")")
             }
         }
         task.resume()

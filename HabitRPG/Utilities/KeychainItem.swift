@@ -138,7 +138,7 @@ struct KeychainItem {
         do {
             try KeychainItem(service: "com.habitrpg.ios.habitica", account: "userIdentifier").deleteItem()
         } catch {
-            print("Unable to delete userIdentifier from keychain")
+            logger.log("Unable to delete userIdentifier from keychain")
         }
     }
 }

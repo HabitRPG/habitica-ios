@@ -8,6 +8,7 @@
 
 import Foundation
 import ReactiveSwift
+import Habitica_Models
 
 class DebugOutputHandler {
     let disposable = ScopedDisposable(CompositeDisposable())
@@ -17,17 +18,17 @@ class DebugOutputHandler {
     
     func startNetworkCall() {
         #if DEBUG
-            print(Date().debugDescription, "API Client >>>>", httpMethod, url)
+        logger.log("\(httpMethod) \(url)")
         #endif
     }
     
     func observe(call: NetworkCall) {
         #if DEBUG
             disposable.inner.add(Signal<NSError, Never>.merge([call.errorSignal, call.serverErrorSignal]).observeValues({ error in
-                print(Date().debugDescription, "ERROR: ", error.localizedDescription)
+                logger.log(error)
             }))
             disposable.inner.add(call.httpResponseSignal.observeValues({[weak self] (response) in
-                print(Date().debugDescription, "API Client <<<<", self?.httpMethod ?? "", self?.url ?? "", response.statusCode, "\(response.expectedContentLength)bytes")
+                logger.log("<<< \(self?.httpMethod ?? "") \(self?.url ?? "") \(response.statusCode) \(response.expectedContentLength)bytes")
             }))
         #endif
     }

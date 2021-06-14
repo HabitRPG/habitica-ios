@@ -69,7 +69,7 @@ class PartyViewController: SplitSocialViewController {
                 }
             })
             .on(failed: { error in
-                RemoteLogger.shared.record(error: error)
+                logger.record(error: error)
             })
             .start()
     }

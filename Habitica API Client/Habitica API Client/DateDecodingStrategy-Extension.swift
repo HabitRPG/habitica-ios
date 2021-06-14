@@ -70,9 +70,7 @@ extension JSONDecoder {
             if let date = dateFormatter.date(from: dateStr) {
                 return date
             }
-            
-            // RemoteLogger.shared.record(name: "DateParserException", reason: "Date \(dateStr) could not be parsed")
-            
+                        
             return Date(timeIntervalSince1970: 0)
         })
     }

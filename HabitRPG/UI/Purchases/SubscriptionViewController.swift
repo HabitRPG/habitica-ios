@@ -184,7 +184,7 @@ class SubscriptionViewController: BaseTableViewController {
                     }
                 }
             case .error(let error):
-                print("Receipt verification failed: \(error)")
+                logger.log("Receipt verification failed: \(error)", level: .error)
             }
         }
     }
@@ -382,9 +382,9 @@ class SubscriptionViewController: BaseTableViewController {
             switch result {
             case .success(let product):
                 self.verifyAndSubscribe(product)
-                print("Purchase Success: \(product.productId)")
+                logger.log("Purchase Success: \(product.productId)")
             case .error(let error):
-                print("Purchase Failed: \(error)")
+                logger.log("Purchase Failed: \(error)", level: .error)
             }
         }
     }
@@ -404,7 +404,7 @@ class SubscriptionViewController: BaseTableViewController {
                     }
                 }
             case .error(let error):
-                print("Receipt verification failed: \(error)")
+                logger.log("Receipt verification failed: \(error)", level: .error)
             }
         }
     }

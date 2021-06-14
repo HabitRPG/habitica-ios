@@ -34,7 +34,7 @@
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
 		2908784A220210CF0010820A /* Strings-objcBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29087849220210CF0010820A /* Strings-objcBridge.swift */; };
 		2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */; };
-		2908E3512217255600D246CD /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		2908E3512217255600D246CD /* (null) in Resources */ = {isa = PBXBuildFile; };
 		290922F02242628600645D0E /* LanguageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290922EF2242628600645D0E /* LanguageHandler.swift */; };
 		290A405421FA175800A409BA /* Purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405221FA175700A409BA /* Purple@2x.png */; };
 		290A405521FA175800A409BA /* Purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405321FA175800A409BA /* Purple@3x.png */; };
@@ -149,6 +149,10 @@
 		293BB4A51FD078EC003B6F4F /* StatsSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB4A41FD078EC003B6F4F /* StatsSliderView.swift */; };
 		293BB4A91FD0806C003B6F4F /* BulkStatsAllocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB4A81FD0806C003B6F4F /* BulkStatsAllocationViewController.swift */; };
 		293DFE3C24F5647400E115FE /* UIImage-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293DFE3B24F5647400E115FE /* UIImage-Extensions.swift */; };
+		2942F8CF266DF9CB003F6500 /* TaskFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2942F8CE266DF9CB003F6500 /* TaskFormView.swift */; };
+		2942FAEF26777E00003F6500 /* HabiticaLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2942FAEE26777E00003F6500 /* HabiticaLogger.swift */; };
+		2942FAF0267783F7003F6500 /* HabiticaLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2942FAEE26777E00003F6500 /* HabiticaLogger.swift */; };
+		2942FAF1267783F8003F6500 /* HabiticaLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2942FAEE26777E00003F6500 /* HabiticaLogger.swift */; };
 		294973D2208118C100F02AC3 /* ImageOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973D1208118C100F02AC3 /* ImageOverlayView.swift */; };
 		294EB59D1FA0A7E4006083BD /* FixCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */; };
 		294FD5692064135500EABCC9 /* HabitControlsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294FD5682064135500EABCC9 /* HabitControlsRow.swift */; };
@@ -845,6 +849,8 @@
 		293BB4A41FD078EC003B6F4F /* StatsSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsSliderView.swift; sourceTree = "<group>"; };
 		293BB4A81FD0806C003B6F4F /* BulkStatsAllocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkStatsAllocationViewController.swift; sourceTree = "<group>"; };
 		293DFE3B24F5647400E115FE /* UIImage-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage-Extensions.swift"; sourceTree = "<group>"; };
+		2942F8CE266DF9CB003F6500 /* TaskFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormView.swift; sourceTree = "<group>"; };
+		2942FAEE26777E00003F6500 /* HabiticaLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HabiticaLogger.swift; path = "../../Habitica Models/Habitica Models/HabiticaLogger.swift"; sourceTree = "<group>"; };
 		294973D1208118C100F02AC3 /* ImageOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOverlayView.swift; sourceTree = "<group>"; };
 		294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixCharacterViewController.swift; sourceTree = "<group>"; };
 		294FD5682064135500EABCC9 /* HabitControlsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitControlsRow.swift; sourceTree = "<group>"; };
@@ -1940,6 +1946,7 @@
 				29C1B6B320599E6D0001D3EF /* TaskFormViewController.swift */,
 				291CE4B7231EC11E0001A243 /* FilterViewController.swift */,
 				299A556126402F800015EA5C /* TaskDetailView.swift */,
+				2942F8CE266DF9CB003F6500 /* TaskFormView.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -2462,6 +2469,7 @@
 				29A984D02547294E00F04665 /* HabiticaAnalytics.swift */,
 				29A98592254841C500F04665 /* KeyboardManager.swift */,
 				291424A0260CCE740069F792 /* EventHelper.swift */,
+				2942FAEE26777E00003F6500 /* HabiticaLogger.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -3190,7 +3198,7 @@
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
-				2908E3512217255600D246CD /* BuildFile in Resources */,
+				2908E3512217255600D246CD /* (null) in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
@@ -3660,6 +3668,7 @@
 				29BEE7B5252EE92D00D456F8 /* AddTaskWidget.swift in Sources */,
 				29BEE653252DD85600D456F8 /* TaskRepositoryProtocol.swift in Sources */,
 				29BEE6DC252E14F300D456F8 /* RemainingDailiesWidget.swift in Sources */,
+				2942FAF1267783F8003F6500 /* HabiticaLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3684,6 +3693,7 @@
 				7A84E1B42289968B0081E96F /* AuthenticationManager.swift in Sources */,
 				7A84E1B222898E9F0081E96F /* TaskManager.swift in Sources */,
 				7A84E194228928AC0081E96F /* IntentHandler.swift in Sources */,
+				2942FAF0267783F7003F6500 /* HabiticaLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3940,6 +3950,7 @@
 				298119AB1F50251300F9FB39 /* InventoryRepository.swift in Sources */,
 				29255E431F3DD2120094A3E3 /* TutorialStepView.swift in Sources */,
 				29BEEB2F253EFA7300D456F8 /* MaintenanceViewController.swift in Sources */,
+				2942FAEF26777E00003F6500 /* HabiticaLogger.swift in Sources */,
 				D9BB45DA1E79A02C0002AE2E /* LabeledCheckboxView.swift in Sources */,
 				29A1B9B91F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift in Sources */,
 				C85A68AF2527812400EED0D6 /* SpellTabBarController.swift in Sources */,
@@ -4022,6 +4033,7 @@
 				292DEE8D204F458B0086D5F7 /* HabitTableViewDataSource.swift in Sources */,
 				D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */,
 				29E48F0D22E89DB3005C4B45 /* BadgeView.swift in Sources */,
+				2942F8CF266DF9CB003F6500 /* TaskFormView.swift in Sources */,
 				D92A084B1D33FA08000F8B66 /* HRPGShopViewController.m in Sources */,
 				29066CF724FE6A6900A266EE /* PromoMenuView.swift in Sources */,
 				D9CE90471E4CDF3F00702578 /* Designable-Extensions.swift in Sources */,

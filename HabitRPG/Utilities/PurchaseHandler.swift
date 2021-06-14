@@ -56,14 +56,14 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         
         SwiftyStoreKit.restorePurchases(atomically: false) { results in
             if results.restoreFailedPurchases.isEmpty == false {
-                print("Restore Failed: \(results.restoreFailedPurchases)")
+                logger.log("Restore Failed: \(results.restoreFailedPurchases)", level: .error)
             } else if results.restoredPurchases.isEmpty == false {
                 for purchase in results.restoredPurchases {
                     SwiftyStoreKit.finishTransaction(purchase.transaction)
                 }
-                print("Restore Success: \(results.restoredPurchases)")
+                logger.log("Restore Success: \(results.restoredPurchases)")
             } else {
-                print("Nothing to Restore")
+                logger.log("Nothing to Restore")
             }
         }
     }
@@ -71,7 +71,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         if transactions.isEmpty == false {
             for product in transactions {
-                RemoteLogger.shared.log(format: "Purchase: %@", arguments: getVaList([product.payment.productIdentifier]))
+                logger.log(format: "Purchase: %@", level: .warning, arguments: getVaList([product.payment.productIdentifier]))
             }
         }
         SwiftyStoreKit.fetchReceipt(forceRefresh: false) { result in
@@ -155,7 +155,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                 }
             case .error(let error):
                 self.handle(error: error)
-                print("Receipt verification failed: \(error)")
+                logger.log("Receipt verification failed: \(error)", level: .error)
             }
         }
     }
@@ -277,10 +277,10 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     }
     
     private func handle(error: SKError) {
-        RemoteLogger.shared.record(error: error)
+        logger.record(error: error)
     }
     
     private func handle(error: ReceiptError) {
-        RemoteLogger.shared.record(error: error)
+        logger.record(error: error)
     }
 }

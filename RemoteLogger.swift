@@ -8,23 +8,17 @@
 
 import Foundation
 
-@objc
-public class RemoteLogger: NSObject {
-    public static let shared = RemoteLogger()
-    
-    public func record(error: Error) {
-        //pass
+class RemoteLogger: HabiticaLogger {    
+    override func record(error: Error) {
     }
     
-    public func record(name: String, reason: String) {
-        //pass
+    override func record(name: String, reason: String) {
     }
     
-    public func log(format: String, arguments: CVaListPointer) {
-        //pass
+    override func log(format: String, level: LogLevel = .debug, arguments: CVaListPointer) {
+
     }
     
     public func setUserID(_ userID: String?) {
-        //pass
     }
 }

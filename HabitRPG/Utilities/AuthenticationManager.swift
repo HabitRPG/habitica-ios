@@ -38,7 +38,7 @@ class AuthenticationManager: NSObject {
             NetworkAuthenticationManager.shared.currentUserId = newUserId
             currentUserIDProperty.value = newUserId
             if newUserId != nil {
-                RemoteLogger.shared.setUserID(newUserId ?? "")
+                //(logger as? RemoteLogger)?.setUserID(newUserId ?? "")
                 HabiticaAnalytics.shared.setUserID(newUserId)
             }
         }

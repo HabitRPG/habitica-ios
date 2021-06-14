@@ -129,7 +129,7 @@ extension Down {
                 }
             }
         } catch let error {
-            print("invalid regex: \(error.localizedDescription)")
+            logger.log("invalid regex: \(error.localizedDescription)", level: .error)
             return []
         }
     }
