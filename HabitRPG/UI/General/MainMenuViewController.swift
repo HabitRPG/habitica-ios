@@ -393,7 +393,7 @@ class MainMenuViewController: BaseTableViewController {
         } else {
             menuItem(withKey: .seasonalShop).isHidden = true
         }
-        tableView.reloadSections(IndexSet([1]), with: .none)
+        tableView.reloadData()
     }
     
     override func applyTheme(theme: Theme) {
