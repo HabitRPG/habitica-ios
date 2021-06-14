@@ -199,7 +199,11 @@ public class InventoryLocalRepository: ContentLocalRepository {
         return RealmGear.findBy(query: "set CONTAINS 'mystery-2'").sorted(key: "set", ascending: false)
         .reactive()
             .map { (result, _) in
-                return result.first
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyyMM"
+                return result.first { item in
+                    return item.key?.contains(dateFormatter.string(from: Date())) == true
+                }
         }
     }
     
