@@ -69,6 +69,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
     func applicationDidBecomeActive(_ application: UIApplication) {
         setupUserManager()
         setupTheme()
+        cleanAndRefresh()
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
@@ -293,7 +294,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
         let lastContentFetch = defaults.object(forKey: "lastContentFetch") as? NSDate
         let lastContentFetchVersion = defaults.object(forKey: "lastContentFetchVersion") as? String
         let currentBuildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
-        if lastContentFetch == nil || (lastContentFetch?.timeIntervalSinceNow ?? 0) < -300 || lastContentFetchVersion != currentBuildNumber {
+        if lastContentFetch == nil || (lastContentFetch?.timeIntervalSinceNow ?? 0) < -3600 || lastContentFetchVersion != currentBuildNumber {
             contentRepository.getFAQEntries()
                 .take(first: 1)
                 .flatMap(.latest) {[weak self] (entries) in
@@ -306,9 +307,11 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
                 .start()
         }
         
-        let lastWorldStateFetch = defaults.object(forKey: "lastContentFetch") as? NSDate
+        let lastWorldStateFetch = defaults.object(forKey: "lastWorldStateFetch") as? NSDate
         if lastWorldStateFetch == nil || (lastWorldStateFetch?.timeIntervalSinceNow ?? 0) < -1800 {
-            contentRepository.retrieveWorldState().observeCompleted {}
+            contentRepository.retrieveWorldState().observeCompleted {
+                defaults.setValue(Date(), forKey: "lastWorldStateFetch")
+            }
         }
     }
     
