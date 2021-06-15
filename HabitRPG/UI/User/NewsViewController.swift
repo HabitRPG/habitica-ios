@@ -28,6 +28,12 @@ class NewsViewController: BaseUIViewController, WKNavigationDelegate {
         loadingIndicator.startAnimating()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        userRepository.updateUser(key: "flags.newStuff", value: false).observeCompleted {
+        }
+    }
+    
     override func populateText() {
         navigationItem.title = L10n.Titles.news
     }
