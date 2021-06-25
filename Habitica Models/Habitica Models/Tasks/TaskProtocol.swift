@@ -78,3 +78,55 @@ extension TaskProtocol {
         return challengeID != nil
     }
 }
+
+public class PreviewTask: TaskProtocol {
+    public init() {}
+    public var challengeBroken: String?
+    
+    public var history: [TaskHistoryProtocol] = []
+    
+    public var isValid: Bool = true
+    
+    public var nextDue: [Date] = []
+    public var weeksOfMonth: [Int] = []
+    public var daysOfMonth: [Int] = []
+
+    public var isNewTask: Bool = false
+    public var isSynced: Bool = true
+    public var isSyncing: Bool = false
+    public var createdAt: Date?
+    public var updatedAt: Date?
+    public var startDate: Date?
+    public var yesterDaily: Bool = true
+    public var weekRepeat: WeekRepeatProtocol?
+    public var frequency: String?
+    public var everyX: Int = 1
+    public var tags: [TagProtocol] = []
+    public var checklist: [ChecklistItemProtocol] = []
+    public var reminders: [ReminderProtocol] = []
+    
+    public var id: String?
+    public var text: String?
+    public var notes: String?
+    public var type: String?
+    public var value: Float = 0
+    public var attribute: String?
+    public var completed: Bool = false
+    public var down: Bool = false
+    public var up: Bool = false
+    public var order: Int = 0
+    public var priority: Float = 1.0
+    public var counterUp: Int = 0
+    public var counterDown: Int = 0
+    public var duedate: Date?
+    public var isDue: Bool = false
+    public var streak: Int = 0
+    public var challengeID: String?
+}
+
+public class PreviewChecklistItem: ChecklistItemProtocol {
+    public init() {}
+    public var text: String?
+    public var completed: Bool = false
+    public var id: String?
+}

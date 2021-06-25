@@ -1,5 +1,4 @@
 PODS:
-  - AcknowList (2.0.1)
   - Amplitude-iOS (4.10.0)
   - AppAuth (1.4.0):
     - AppAuth/Core (= 1.4.0)
@@ -208,7 +207,6 @@ PODS:
   - PinLayout (1.9.3)
   - PopupDialog (1.1.1):
     - DynamicBlurView (~> 4.0)
-  - Prelude (3.0.0)
   - PromisesObjC (1.2.12)
   - Protobuf (3.15.8)
   - Quick (3.1.2)
@@ -229,7 +227,6 @@ PODS:
   - UIColor_Hex_Swift (5.1.0)
 
 DEPENDENCIES:
-  - AcknowList
   - Amplitude-iOS
   - AppAuth
   - Charts
@@ -254,7 +251,6 @@ DEPENDENCIES:
   - OHHTTPStubs/Swift
   - PinLayout
   - PopupDialog
-  - Prelude
   - Quick
   - ReactiveCocoa
   - ReactiveSwift
@@ -268,7 +264,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - AcknowList
     - Amplitude-iOS
     - AppAuth
     - Charts
@@ -303,7 +298,6 @@ SPEC REPOS:
     - OHHTTPStubs
     - PinLayout
     - PopupDialog
-    - Prelude
     - PromisesObjC
     - Protobuf
     - Quick
@@ -324,7 +318,6 @@ EXTERNAL SOURCES:
     :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
-  AcknowList: d5476fd33f5c4614c676933ab79d05775e5e20b7
   Amplitude-iOS: 7d8cdc3408ba35c2e68368fc7c692cd104606b94
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
@@ -360,7 +353,6 @@ SPEC CHECKSUMS:
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   PinLayout: 4d8733121f8687edcc8f00c19bf1379d12808767
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
-  Prelude: fe4cc0fd961d34edf48fe6b04d05c863449efb0a
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Protobuf: adb85cd18a15bd1a777c158af9fd6e612a0e6d69
   Quick: 60f0ea3b8e0cfc0df3259a5c06a238ad8b3c46e0
@@ -376,6 +368,6 @@ SPEC CHECKSUMS:
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   UIColor_Hex_Swift: 8be7432edacb7fa91c78aa05ef3c30b66e4f9415
 
-PODFILE CHECKSUM: da1c8c14b5264c29ae326c24484c8e3d2e1fdbfb
+PODFILE CHECKSUM: 9ec120d06b0a74dd4bd120d13113f80ad490924b
 
 COCOAPODS: 1.10.1

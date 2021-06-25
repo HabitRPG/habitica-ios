@@ -126,7 +126,6 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
                 self?.expandSelectedCell(path)
             }
         }
-        
         if let transform = self.tableView?.transform {
             cell.transform = transform
         }

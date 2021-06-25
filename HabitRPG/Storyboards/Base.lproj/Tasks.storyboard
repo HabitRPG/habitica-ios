@@ -1,68 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Themed Navigation Controller-->
         <scene sceneID="IN5-Kl-WPA">
             <objects>
-                <navigationController storyboardIdentifier="TaskFormViewController" id="cDd-au-UtJ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TaskFormViewController" id="cDd-au-UtJ" customClass="ThemedNavigationController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Ck-Th-UMf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="399-FC-7aE" kind="relationship" relationship="rootViewController" id="FST-XT-wYc"/>
+                        <segue destination="0wk-Ce-UVH" kind="relationship" relationship="rootViewController" id="fAT-Yw-wae"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nx6-8x-FWG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-9" y="151"/>
         </scene>
-        <!--Task Form View Controller-->
-        <scene sceneID="HMw-wT-QPG">
+        <!--Task Form Controller-->
+        <scene sceneID="zyx-sB-8md">
             <objects>
-                <viewController id="399-FC-7aE" customClass="TaskFormViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lDZ-IB-as8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="haE-a6-UQa">
-                                <rect key="frame" x="0.0" y="56" width="375" height="591"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lgt-RT-FEm">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <blurEffect style="systemThickMaterial"/>
-                            </visualEffectView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="8Fv-Js-MlT"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="haE-a6-UQa" firstAttribute="top" secondItem="8Fv-Js-MlT" secondAttribute="top" id="9AC-Bh-fGg"/>
-                            <constraint firstItem="8Fv-Js-MlT" firstAttribute="trailing" secondItem="haE-a6-UQa" secondAttribute="trailing" id="BH5-Ha-9zk"/>
-                            <constraint firstItem="8Fv-Js-MlT" firstAttribute="bottom" secondItem="haE-a6-UQa" secondAttribute="bottom" id="E4M-ve-ES2"/>
-                            <constraint firstItem="haE-a6-UQa" firstAttribute="leading" secondItem="8Fv-Js-MlT" secondAttribute="leading" id="hds-Xl-uEA"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="nws-lt-6bA">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="9T6-fG-nPi">
-                            <connections>
-                                <segue destination="mGG-Ct-bEF" kind="unwind" unwindAction="unwindToList:" id="osK-iy-KCu"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6d3-S3-tFI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="mGG-Ct-bEF" userLabel="Exit" sceneMemberID="exit"/>
+                <hostingController id="0wk-Ce-UVH" customClass="TaskFormController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hMm-WQ-6iY"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GDG-Jj-pCG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="743" y="151"/>
+            <point key="canvasLocation" x="742" y="151"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qdD-OM-FbU">

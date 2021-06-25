@@ -9,20 +9,21 @@
 import Foundation
 
 class ThemedNavigationController: UINavigationController, Themeable {
-    
+    var navigationBarColor: UIColor?
+    var textColor: UIColor?
     override func viewDidLoad() {
         super.viewDidLoad()
         ThemeService.shared.addThemeable(themable: self)
     }
     
     func applyTheme(theme: Theme) {
-        navigationBar.tintColor = theme.tintColor
+        navigationBar.tintColor = textColor ?? theme.tintColor
         navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: theme.primaryTextColor,
+            NSAttributedString.Key.foregroundColor: textColor ?? theme.primaryTextColor,
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .semibold),
             NSAttributedString.Key.kern: 0.6
         ]
-        navigationBar.backgroundColor = theme.contentBackgroundColor
-        navigationBar.barTintColor = theme.contentBackgroundColor
+        navigationBar.backgroundColor = navigationBarColor ?? theme.contentBackgroundColor
+        navigationBar.barTintColor = navigationBarColor ?? theme.contentBackgroundColor
     }
 }

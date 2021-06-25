@@ -60,9 +60,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
         application.findKeyWindow()?.rootViewController = StoryboardScene.Intro.initialScene.instantiate()
         
         handleInitialLaunch()
-        
-        cleanAndRefresh()
-        
+                
         return true
     }
     

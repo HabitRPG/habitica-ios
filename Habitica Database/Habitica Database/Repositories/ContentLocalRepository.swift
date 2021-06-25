@@ -79,9 +79,9 @@ public class ContentLocalRepository: BaseLocalRepository {
     }
     
     public func getWorldState() -> SignalProducer<WorldStateProtocol, ReactiveSwiftRealmError> {
-        return RealmWorldState.findBy(key: "habitica").skipNil().map({ (entry) -> WorldStateProtocol in
-            return entry
-        })
+        return RealmWorldState.findBy(query: "id == 'habitica'").reactive().map({ (entry) -> WorldStateProtocol? in
+            return entry.value.first
+        }).skipNil()
     }
     
     public func getFAQEntries(search searchText: String? = nil) -> SignalProducer<ReactiveResults<[FAQEntryProtocol]>, ReactiveSwiftRealmError> {

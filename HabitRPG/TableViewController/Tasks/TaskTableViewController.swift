@@ -373,7 +373,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FormSegue" {
             if let destinationVC = segue.destination as? UINavigationController {
-                guard let formController = destinationVC.topViewController as? TaskFormViewController else {
+                guard let formController = destinationVC.topViewController as? TaskFormController else {
                     return
                 }
                 if let typeName = self.typeName, let type = TaskType(rawValue: typeName) {
@@ -381,10 +381,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
                 }
                 if let task = dataSource?.taskToEdit {
                     dataSource?.taskToEdit = nil
-                    formController.taskId = task.id
-                    formController.isCreating = false
-                } else {
-                    formController.isCreating = true
+                    formController.editedTask = task
                 }
             }
         } else if segue.identifier == "DetailSegue" {
