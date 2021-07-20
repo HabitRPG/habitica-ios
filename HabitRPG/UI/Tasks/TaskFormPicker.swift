@@ -23,7 +23,6 @@ struct TaskFormPicker: View {
                         let index = options.firstIndex(of: option) ?? 0
                         Rectangle().foregroundColor(Color(ThemeService.shared.theme.quadTextColor)).frame(width: 1, height: 16).padding(.leading, itemWidth-1)
                             .opacity((selectedIndex == index || selectedIndex == index + 1) ? 0 : 1)
-                            .animation(.spring())
                     }
                 }
                 RoundedRectangle(cornerRadius: 7).foregroundColor(tintColor)
@@ -34,12 +33,13 @@ struct TaskFormPicker: View {
                     .animation(.spring())
                 HStack(spacing: 0) {
                     ForEach(options, id: \.value) { option in
-                        let isSelected = option.value == selection
+                        let isSelected = option.value == options[selectedIndex].value
                         Text(option.label)
                             .font(.system(size: 13, weight: isSelected ? .semibold : .medium))
                             .frame(width: itemWidth)
                             .foregroundColor(isSelected ? .white : Color(ThemeService.shared.theme.primaryTextColor))
                             .onTapGesture {
+                                UISelectionFeedbackGenerator.oneShotSelectionChanged()
                                 withAnimation {
                                     selection = option.value
                                 }

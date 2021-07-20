@@ -14,3 +14,11 @@ public protocol TagProtocol: BaseModelProtocol {
     @objc var text: String? { get set }
     @objc var order: Int { get set }
 }
+
+public class PreviewTag: TagProtocol {
+    public init() {}
+    public var id: String?
+    public var text: String?
+    public var order: Int = 0
+    public var isValid: Bool = true
+}

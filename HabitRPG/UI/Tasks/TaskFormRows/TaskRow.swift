@@ -9,7 +9,7 @@
 import Foundation
 import Eureka
 
-struct LabeledFormValue<V: Equatable>: Equatable, CustomStringConvertible {
+struct LabeledFormValue<V: Equatable>: Equatable, CustomStringConvertible, Identifiable {
     static func ==(lhs: LabeledFormValue<V>, rhs: LabeledFormValue<V>) -> Bool {
         return lhs.value == rhs.value
     }
@@ -21,6 +21,9 @@ struct LabeledFormValue<V: Equatable>: Equatable, CustomStringConvertible {
         return label
     }
     
+    var id: String {
+        return value as? String ?? ""
+    }
 }
 
 typealias CombinedCell = BaseCell & CellType

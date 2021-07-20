@@ -654,6 +654,10 @@
 "errors.user_not_found" = "User not found.";
 "never" = "Never";
 "never_lower_case" = "never";
+"day" = "day";
+"week" = "week";
+"month" = "month";
+"year" = "year";
 "days" = "days";
 "weeks" = "weeks";
 "months" = "months";

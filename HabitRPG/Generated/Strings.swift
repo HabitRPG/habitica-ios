@@ -212,6 +212,8 @@ public enum L10n {
   public static var damagePaused: String { return L10n.tr("Mainstrings", "damage_paused") }
   /// Dated
   public static var dated: String { return L10n.tr("Mainstrings", "dated") }
+  /// day
+  public static var day: String { return L10n.tr("Mainstrings", "day") }
   /// 21-Day Streaks
   public static var dayStreaks: String { return L10n.tr("Mainstrings", "day_streaks") }
   /// days
@@ -558,6 +560,8 @@ public enum L10n {
   public static var moderator: String { return L10n.tr("Mainstrings", "moderator") }
   /// Monday
   public static var monday: String { return L10n.tr("Mainstrings", "monday") }
+  /// month
+  public static var month: String { return L10n.tr("Mainstrings", "month") }
   /// Monthly
   public static var monthly: String { return L10n.tr("Mainstrings", "monthly") }
   /// Monthly Gem Cap Reached
@@ -1022,6 +1026,8 @@ public enum L10n {
   public static var `weak`: String { return L10n.tr("Mainstrings", "weak") }
   /// Wednesday
   public static var wednesday: String { return L10n.tr("Mainstrings", "wednesday") }
+  /// week
+  public static var week: String { return L10n.tr("Mainstrings", "week") }
   /// Breaks are healthy, but you can still earn points for simple activities to level up and get cool gear!
   public static var weekReminderBody: String { return L10n.tr("Mainstrings", "week_reminder_body") }
   /// How are your tasks going?
@@ -1062,6 +1068,8 @@ public enum L10n {
   public static func xToY(_ p1: String, _ p2: String) -> String {
     return L10n.tr("Mainstrings", "x_to_y", p1, p2)
   }
+  /// year
+  public static var year: String { return L10n.tr("Mainstrings", "year") }
   /// Yearly
   public static var yearly: String { return L10n.tr("Mainstrings", "yearly") }
   /// years

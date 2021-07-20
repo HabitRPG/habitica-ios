@@ -130,3 +130,11 @@ public class PreviewChecklistItem: ChecklistItemProtocol {
     public var completed: Bool = false
     public var id: String?
 }
+
+public class PreviewReminder: ReminderProtocol {
+    public var id: String?
+    public init() {}
+    public var startDate: Date?
+    public var time: Date?
+    public var task: TaskProtocol?
+}
