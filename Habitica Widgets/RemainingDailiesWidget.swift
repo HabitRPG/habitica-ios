@@ -37,7 +37,7 @@ struct DailiesCountProvider: IntentTimelineProvider {
                                             let date2 = calendar.startOfDay(for: Date())
                                             let components = calendar.dateComponents([.day], from: date1, to: date2)
 
-                                            needsCron = (components.day ?? 0) > 0
+                                            needsCron = (components.day ?? 0) > (user.preferences?.dayStart ?? 0)
                                         }
                                         let entry = DailiesCountWidgetEntry(date: Date(), widgetFamily: context.family, totalCount: tasks.value.count, completedCount: tasks.value.filter({ $0.completed }).count, displayRemaining: configuration.displayRemaining?.boolValue ?? false, needsCron: needsCron)
                                         entries.append(entry)
