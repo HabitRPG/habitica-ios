@@ -274,6 +274,11 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.item == 0 && indexPath.section == 0 {
+            if dataSource?.showingAdventureGuide {
+                return false
+            }
+        }
         if let task = dataSource?.item(at: indexPath) {
             if task.isValid {
                 return !task.isChallengeTask
