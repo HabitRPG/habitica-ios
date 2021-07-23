@@ -52,7 +52,7 @@ enum SoundTheme: String, EquatableStringEnumProtocol {
     case mafl = "maflTheme"
     case pizilden = "pizildenTheme"
     case rosstavo = "rosstavoTheme"
-    case spacePengiun = "spacePengiunTheme"
+    case spacePenguin = "spacePenguinTheme"
     case triumph = "triumphTheme"
     case watts = "wattsTheme"
     
@@ -71,7 +71,7 @@ enum SoundTheme: String, EquatableStringEnumProtocol {
             SoundTheme.mafl,
             SoundTheme.pizilden,
             SoundTheme.rosstavo,
-            SoundTheme.spacePengiun,
+            SoundTheme.spacePenguin,
             SoundTheme.triumph,
             SoundTheme.watts
         ]
@@ -105,7 +105,7 @@ enum SoundTheme: String, EquatableStringEnumProtocol {
             return "Pizilden's Theme"
         case .rosstavo:
             return "Rosstavo's Theme"
-        case .spacePengiun:
+        case .spacePenguin:
             return "SpacePenguin's Theme"
         case .triumph:
             return "Triumph's Theme"
