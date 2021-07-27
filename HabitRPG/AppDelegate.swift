@@ -457,7 +457,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
     }
 }
 
-//Maintenance
+// Maintenance
 extension HabiticaAppDelegate {
     @objc
     func handleMaintenanceScreen() -> Bool {

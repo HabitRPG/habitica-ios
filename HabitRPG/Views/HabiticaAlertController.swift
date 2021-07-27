@@ -33,7 +33,9 @@ class HabiticaAlertController: UIViewController, Themeable {
     private var buttons = [UIButton]()
     private var shouldCloseOnButtonTap = [Int: Bool]()
     
+    var buttonAxis: NSLayoutConstraint.Axis?
     var dismissOnBackgroundTap = true
+    var onKeyboardChange:  ((Bool) -> Void)?
 
     var contentView: UIView? {
         didSet {
@@ -222,6 +224,9 @@ class HabiticaAlertController: UIViewController, Themeable {
                 centerConstraint.isActive = false
             }
         }
+        if let action = onKeyboardChange {
+            action(true)
+        }
     }
     
     @objc
@@ -230,7 +235,9 @@ class HabiticaAlertController: UIViewController, Themeable {
         if !centerConstraint.isActive {
             centerConstraint.isActive = true
         }
-        
+        if let action = onKeyboardChange {
+            action(false)
+        }
     }
     
     @objc
@@ -243,7 +250,6 @@ class HabiticaAlertController: UIViewController, Themeable {
         button.titleLabel?.lineBreakMode = .byWordWrapping
         button.titleLabel?.textAlignment = .center
         button.setTitle(title, for: .normal)
-        button.contentEdgeInsets = UIEdgeInsets(top: 8, left: 24, bottom: 8, right: 24)
         var color = isMainAction ? ThemeService.shared.theme.fixedTintColor : ThemeService.shared.theme.tintColor
         if style == .destructive {
             color = ThemeService.shared.theme.errorColor
@@ -264,7 +270,13 @@ class HabiticaAlertController: UIViewController, Themeable {
             button.titleLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 17)
         }
         
-        button.addWidthConstraint(width: 150, relatedBy: NSLayoutConstraint.Relation.greaterThanOrEqual)
+        if buttonAxis == .horizontal {
+            button.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+            button.addWidthConstraint(width: 50, relatedBy: NSLayoutConstraint.Relation.greaterThanOrEqual)
+        } else {
+            button.contentEdgeInsets = UIEdgeInsets(top: 8, left: 24, bottom: 8, right: 24)
+            button.addWidthConstraint(width: 150, relatedBy: NSLayoutConstraint.Relation.greaterThanOrEqual)
+        }
         
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
     
@@ -278,7 +290,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         buttons.append(button)
         if buttonStackView != nil {
             buttonStackView.addArrangedSubview(button)
-            if buttonStackView.arrangedSubviews.count > 2 {
+            if buttonStackView.arrangedSubviews.count > 2 && buttonAxis == nil {
                 buttonStackView.axis = .vertical
             }
         }
@@ -361,10 +373,14 @@ class HabiticaAlertController: UIViewController, Themeable {
         for button in buttons {
             buttonStackView.addArrangedSubview(button)
         }
-        if buttons.count > 1 {
-            buttonStackView.axis = .vertical
+        if let axis = buttonAxis {
+            buttonStackView.axis = axis
         } else {
-            buttonStackView.axis = .horizontal
+            if buttons.count > 1 {
+                buttonStackView.axis = .vertical
+            } else {
+                buttonStackView.axis = .horizontal
+            }
         }
     }
     

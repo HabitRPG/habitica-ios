@@ -170,6 +170,8 @@ class AuthenticationSettingsViewController: BaseSettingsViewController, UITextFi
         stackView.addArrangedSubview(textField)
         alertController.contentView = stackView
         
+        alertController.buttonAxis = .horizontal
+        alertController.addCancelAction()
         alertController.addAction(title: L10n.Settings.deleteAccount, style: .destructive, isMainAction: true) {[weak self] _ in
             self?.userRepository.deleteAccount(password: textField.text ?? "").observeValues({ response in
                 if response.statusCode == 200 {
@@ -182,7 +184,9 @@ class AuthenticationSettingsViewController: BaseSettingsViewController, UITextFi
                 }
             })
         }
-        alertController.addCancelAction()
+        alertController.onKeyboardChange = { isVisible in
+            textView.isHidden = isVisible
+        }
         alertController.show()
     }
     
