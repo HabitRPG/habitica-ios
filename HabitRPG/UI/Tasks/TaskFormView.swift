@@ -56,14 +56,15 @@ struct DifficultyPicker: View {
 }
 
 struct HabitControlsFormView: View {
+    let taskColor: UIColor
     @Binding var isUp: Bool
     @Binding var isDown: Bool
     
     let theme = ThemeService.shared.theme
 
-    private func buildOption(text: String, icon: Image, isActive: Binding<Bool>) -> some View {
+    private func buildOption(text: String, icon: UIImage, isActive: Binding<Bool>) -> some View {
         return VStack(spacing: 12) {
-            icon
+            Image(uiImage: icon)
             Text(text)
                 .font(.system(size: 15, weight: isActive.wrappedValue ? .semibold : .regular))
                 .foregroundColor(isActive.wrappedValue ? .accentColor : Color(theme.ternaryTextColor))
@@ -78,8 +79,8 @@ struct HabitControlsFormView: View {
     
     var body: some View {
         HStack {
-            buildOption(text: L10n.Tasks.Form.positive, icon: Image(uiImage: HabiticaIcons.imageOfHabitControlPlus(taskTintColor: Color.accentColor.uiColor(), isActive: isUp)), isActive: $isUp)
-            buildOption(text: L10n.Tasks.Form.negative, icon: Image(uiImage: HabiticaIcons.imageOfHabitControlMinus(taskTintColor: Color.accentColor.uiColor(), isActive: isDown)), isActive: $isDown)
+            buildOption(text: L10n.Tasks.Form.positive, icon: HabiticaIcons.imageOfHabitControlPlus(taskTintColor: taskColor, isActive: isUp), isActive: $isUp)
+            buildOption(text: L10n.Tasks.Form.negative, icon: HabiticaIcons.imageOfHabitControlMinus(taskTintColor: taskColor, isActive: isDown), isActive: $isDown)
         }
     }
 }
@@ -534,7 +535,7 @@ class TaskFormViewModel: ObservableObject {
             _frequency = Published(initialValue: task?.frequency ?? "")
             _value = Published(initialValue: String(task?.value ?? 1))
             _up = Published(initialValue: task?.up ?? true)
-            _down = Published(initialValue: task?.down ?? true)
+            _down = Published(initialValue: task?.down ?? false)
             _everyX = Published(initialValue: String(task?.everyX ?? 1))
             _startDate = Published(initialValue: task?.startDate ?? Date())
             _selectedTags = Published(initialValue: task?.tags ?? [])
@@ -553,6 +554,76 @@ class TaskFormViewModel: ObservableObject {
             }
             _checklistItems = Published(initialValue: task?.checklist ?? [])
             _reminders = Published(initialValue: task?.reminders ?? [])
+        }
+    }
+}
+
+struct DailyProgressView: View {
+    let history: [TaskHistoryProtocol]
+    
+    private let theme = ThemeService.shared.theme
+    private let today = Date()
+    private let calendar = Calendar.current
+    
+    private let gray = Color(UIColor.gray400)
+    
+    @State private var dayItemHeight: CGFloat = 40
+    
+    @ViewBuilder
+    private func icon(wasCompleted: Bool, wasActive: Bool) -> some View {
+        if wasActive {
+            if wasCompleted {
+                Image(Asset.checkmarkSmall.name)
+            } else {
+                Image(Asset.close.name)
+            }
+        } else {
+            if wasCompleted {
+                Image(Asset.checkmarkSmall.name)
+            } else {
+                Text("")
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func dayItem(size: CGFloat, offset: Int, wasActive: Bool) -> some View {
+        let examinedDay = today.addingTimeInterval(-(Double(offset * 24 * 60 * 60)))
+        
+        let wasCompleted = history.contains { item in
+            return (item.timestamp?.distance(to: examinedDay) ?? 0) < 24 * 60 * 60
+        }
+        
+        let day = calendar.component(.day, from: examinedDay)
+        let color = wasCompleted ? Color(UIColor.green100) : Color(UIColor.red100)
+        let borderColor = wasActive ? color : gray
+        let width: CGFloat = wasActive ? 2 : 1
+        VStack(alignment: .center, spacing: 5) {
+            icon(wasCompleted: wasCompleted, wasActive: wasActive).frame(width: 8, height: 8).foregroundColor(color).padding(.top, 2)
+            Text(String(day)).font(.system(size: 11)).foregroundColor(borderColor)
+        }.frame(width: size, height: size, alignment: .center)
+        .overlay(
+            RoundedRectangle(cornerRadius: 5)
+                .stroke(borderColor, lineWidth: width)
+        )
+    }
+    
+    var body: some View {
+        VStack {
+            GeometryReader { reader in
+                let size = (reader.size.width - 62) / 7
+                HStack(spacing: 7) {
+                    ForEach(0..<7) { offset in
+                        dayItem(size: size, offset: 6 - offset, wasActive: false)
+                    }
+                }.padding(.horizontal, 10).padding(.vertical, 10).background(Color(theme.windowBackgroundColor).cornerRadius(8))
+                .background(GeometryReader { gp -> Color in
+                    DispatchQueue.main.async {
+                        self.dayItemHeight = size
+                    }
+                    return Color.clear
+                })
+            }.frame(height: dayItemHeight + 20)
         }
     }
 }
@@ -623,12 +694,22 @@ struct TaskFormView: View {
                     }.padding(.horizontal, 16)
                     .padding(.vertical, 12)
                     VStack(spacing: 25) {
+                        if taskType == .daily, let task = viewModel.task {
+                            TaskFormSection(header: Text(L10n.Tasks.Form.completion.uppercased()),
+                                            content: DailyProgressView(history: task.history), backgroundColor: .clear)
+                            
+                        } else
+                        if taskType == .habit, let task = viewModel.task {
+                            TaskFormSection(header: Text(L10n.Tasks.Form.completion.uppercased()),
+                                            content: HabitProgressView(history: task.history, up: viewModel.up, down: viewModel.down), backgroundColor: .clear)
+                            
+                        }
                         if taskType == .daily || taskType == .todo {
                             TaskFormChecklistItemView(items: $viewModel.checklistItems)
                         }
                         if taskType == .habit {
                             TaskFormSection(header: Text(L10n.Tasks.Form.controls.uppercased()),
-                                            content: HabitControlsFormView(isUp: $viewModel.up, isDown: $viewModel.down).padding(8))
+                                            content: HabitControlsFormView(taskColor: lightTaskTintColor.uiColor(), isUp: $viewModel.up, isDown: $viewModel.down).padding(8))
                         } else if taskType == .reward {
                             TaskFormSection(header: Text(L10n.Tasks.Form.difficulty.uppercased()),
                                             content: RewardAmountView(value: $viewModel.value), backgroundColor: .clear)
@@ -761,11 +842,17 @@ class TaskFormController: UIHostingController<TaskFormView> {
 
 struct TaskFormView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            TaskFormView(tags: [PreviewTag(), PreviewTag(), PreviewTag()], isCreating: false, taskType: .habit, viewModel: TaskFormViewModel())
-            TaskFormView(tags: [PreviewTag(), PreviewTag(), PreviewTag()], isCreating: false, taskType: .daily, viewModel: TaskFormViewModel())
+        let viewModel = TaskFormViewModel()
+        viewModel.task = PreviewTask()
+        return Group {
+            TaskFormView(tags: [PreviewTag(), PreviewTag(), PreviewTag()], isCreating: false, taskType: .habit, viewModel: viewModel)
+                .previewDisplayName("Habits")
+            TaskFormView(tags: [PreviewTag(), PreviewTag(), PreviewTag()], isCreating: false, taskType: .daily, viewModel: viewModel)
+                .previewDisplayName("Dailies")
             TaskFormView(tags: [PreviewTag(), PreviewTag(), PreviewTag()], isCreating: false, taskType: .todo, viewModel: TaskFormViewModel())
+                .previewDisplayName("Todos")
             TaskFormView(tags: [PreviewTag(), PreviewTag(), PreviewTag()], isCreating: false, taskType: .reward, viewModel: TaskFormViewModel())
+                .previewDisplayName("Rewards")
         }
     }
 }

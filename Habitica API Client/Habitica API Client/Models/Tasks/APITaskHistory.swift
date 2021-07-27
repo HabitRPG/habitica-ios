@@ -13,8 +13,8 @@ class APITaskHistory: Decodable, TaskHistoryProtocol {
     var taskID: String?
     var timestamp: Date?
     var value: Float = 0
-    var scoredUp: Bool = false
-    var scoredDown: Bool = false
+    var scoredUp: Int = 0
+    var scoredDown: Int = 0
     var isValid: Bool = false
     
     enum CodingKeys: String, CodingKey {
@@ -28,7 +28,7 @@ class APITaskHistory: Decodable, TaskHistoryProtocol {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         timestamp = Date(timeIntervalSince1970: ((try? values.decode(Double.self, forKey: .date)) ?? 0)/1000)
         value = (try? values.decode(Float.self, forKey: .value)) ?? 0
-        scoredUp = (try? values.decode(Bool.self, forKey: .scoredUp)) ?? false
-        scoredDown = (try? values.decode(Bool.self, forKey: .scoredDown)) ?? false
+        scoredUp = (try? values.decode(Int.self, forKey: .scoredUp)) ?? 0
+        scoredDown = (try? values.decode(Int.self, forKey: .scoredDown)) ?? 0
     }
 }

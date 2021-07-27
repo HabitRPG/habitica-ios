@@ -275,7 +275,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if indexPath.item == 0 && indexPath.section == 0 {
-            if dataSource?.showingAdventureGuide {
+            if dataSource?.showingAdventureGuide == true {
                 return false
             }
         }

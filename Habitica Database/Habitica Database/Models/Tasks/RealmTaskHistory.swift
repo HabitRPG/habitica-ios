@@ -15,8 +15,8 @@ class RealmTaskHistory: Object, TaskHistoryProtocol {
     @objc dynamic var taskID: String?
     @objc dynamic var timestamp: Date?
     @objc dynamic var value: Float = 0
-    @objc dynamic var scoredUp: Bool = false
-    @objc dynamic var scoredDown: Bool = false
+    @objc dynamic var scoredUp: Int = 0
+    @objc dynamic var scoredDown: Int = 0
     
     var isValid: Bool {
         return !isInvalidated

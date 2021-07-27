@@ -14,6 +14,6 @@ public protocol TaskHistoryProtocol: BaseModelProtocol {
     var taskID: String? { get set }
     var timestamp: Date? { get set }
     var value: Float { get set }
-    var scoredUp: Bool { get set }
-    var scoredDown: Bool { get set }
+    var scoredUp: Int { get set }
+    var scoredDown: Int { get set }
 }

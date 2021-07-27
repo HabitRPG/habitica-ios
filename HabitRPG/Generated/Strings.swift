@@ -2261,6 +2261,8 @@ public enum L10n {
       public static var checklist: String { return L10n.tr("Mainstrings", "tasks.form.checklist") }
       /// Clear
       public static var clear: String { return L10n.tr("Mainstrings", "tasks.form.clear") }
+      /// Completion
+      public static var completion: String { return L10n.tr("Mainstrings", "tasks.form.completion") }
       /// Completions
       public static var completions: String { return L10n.tr("Mainstrings", "tasks.form.completions") }
       /// Are you sure you want to delete this task?
@@ -2295,6 +2297,8 @@ public enum L10n {
       public static var habitTitlePlaceholder: String { return L10n.tr("Mainstrings", "tasks.form.habit_title_placeholder") }
       /// Hard
       public static var hard: String { return L10n.tr("Mainstrings", "tasks.form.hard") }
+      /// Last Scored
+      public static var lastScored: String { return L10n.tr("Mainstrings", "tasks.form.last_scored") }
       /// Medium
       public static var medium: String { return L10n.tr("Mainstrings", "tasks.form.medium") }
       /// Negative
@@ -2323,6 +2327,8 @@ public enum L10n {
       public static var startDate: String { return L10n.tr("Mainstrings", "tasks.form.start_date") }
       /// Tags
       public static var tags: String { return L10n.tr("Mainstrings", "tasks.form.tags") }
+      /// Times Scored
+      public static var timesScored: String { return L10n.tr("Mainstrings", "tasks.form.times_scored") }
       /// What do you want to complete once?
       public static var todosTitlePlaceholder: String { return L10n.tr("Mainstrings", "tasks.form.todos_title_placeholder") }
       /// Trivial
