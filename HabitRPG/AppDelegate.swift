@@ -24,6 +24,7 @@ import Down
 import WidgetKit
 import FBSDKCoreKit
 import AppAuth
+import FBSDKLoginKit
 
 class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIApplicationDelegate {
     var window: UIWindow?
@@ -42,6 +43,8 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         logger = RemoteLogger()
         self.application = application
+        
+        FBSDKCoreKit.ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         handleLaunchArgs()
         setupLogging()
         setupAnalytics()
