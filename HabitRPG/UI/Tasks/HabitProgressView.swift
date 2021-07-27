@@ -94,7 +94,7 @@ struct LineGraph: Shape {
             let xStep = rect.width / CGFloat(values.values.count - 1)
             let scale = getScale(height: rect.height, minValue: minValue(), maxValue: maxValue())
             var currentX: CGFloat = 0
-            path.move(to: CGPoint(x: 0, y: (rect.height * middle) - CGFloat(values.values.first ?? 0)))
+            path.move(to: CGPoint(x: 0, y: (rect.height * middle) - (scale * CGFloat(values.values.first ?? 0))))
             values.values.forEach {
                 path.addLine(to: CGPoint(x: currentX, y: (rect.height * middle) - (scale * CGFloat($0))))
                 currentX += xStep
@@ -107,15 +107,16 @@ struct HabitProgressView: View {
     let history: [TaskHistoryProtocol]
     let up: Bool
     let down: Bool
+    var numberOfDays = 7
     
     private let theme = ThemeService.shared.theme
     private let today = Date()
     private let calendar = Calendar.current
     
-    @State private var values: AnimatableVector = AnimatableVector(values: [0, 0, 0, 0, 0])
+    @State private var values: AnimatableVector = AnimatableVector(values: [0])
     
-    private var lastSevenDays: [TaskHistoryProtocol] {
-        let day = Date().addingTimeInterval(-7 * 24 * 60 * 60)
+    private var lastXDays: [TaskHistoryProtocol] {
+        let day = Date().addingTimeInterval(-Double(numberOfDays) * 24 * 60 * 60)
         let index = history.firstIndex { item in
             if let timestamp = item.timestamp {
                 return timestamp > day
@@ -126,7 +127,7 @@ struct HabitProgressView: View {
     }
     
     private func minValue() -> CGFloat {
-        var min = min(CGFloat(lastSevenDays.min { first, second in
+        var min = min(CGFloat(lastXDays.min { first, second in
             return first.value < second.value
         }?.value ?? -5), -5)
         if up && !down {
@@ -136,7 +137,7 @@ struct HabitProgressView: View {
     }
     
     private func maxValue() -> CGFloat {
-        var max = max(CGFloat(lastSevenDays.max { first, second in
+        var max = max(CGFloat(lastXDays.max { first, second in
             return first.value < second.value
         }?.value ?? 5), 5)
         if down && !up {
@@ -176,13 +177,16 @@ struct HabitProgressView: View {
         if let day = history.last(where: { calendar.isDate(day, inSameDayAs: $0.timestamp ?? Date()) }) {
             return Double(day.value)
         }
+        if let day = history.last(where: { day > ($0.timestamp ?? Date()) }) {
+            return Double(day.value)
+        }
         return 0
     }
     
     private func getValues() -> [Double] {
         var values = [Double]()
-        for offset in 0..<7 {
-            let examinedDay = today.addingTimeInterval(-(Double((6-offset) * 24 * 60 * 60)))
+        for offset in 0..<numberOfDays {
+            let examinedDay = today.addingTimeInterval(-(Double((numberOfDays-1-offset) * 24 * 60 * 60)))
             values.append(value(for: examinedDay))
         }
         return values
@@ -233,7 +237,7 @@ struct HabitProgressView: View {
                     .frame(maxWidth: .infinity)
                     .padding(.horizontal, 30)
                 HStack {
-                    ForEach(0..<7) { offset in
+                    ForEach(0..<numberOfDays) { offset in
                         let examinedDay = today.addingTimeInterval(-(Double((6-offset) * 24 * 60 * 60)))
                         let day = calendar.component(.day, from: examinedDay)
                         VStack {
