@@ -14,7 +14,7 @@ import Habitica_Models
 import Intents
 import RealmSwift
 
-class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
+class TaskManager: BaseRepository<TaskLocalRepository> {
     static let shared = TaskManager()
     let listSpokenPhraseMap = ["todo": ["todo", "to do", "to-do", "todos"],
                              "habit": ["habit", "habits"],

@@ -126,44 +126,44 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         }
     }
     
-    func runCron(tasks: [TaskProtocol]) {
+    func runCron(checklistItems: [(TaskProtocol, ChecklistItemProtocol)], tasks: [TaskProtocol]) {
         var disposable: Disposable?
         getUser().take(first: 1).on(value: {[weak self]user in
             self?.localRepository.updateCall { _ in
                 user.needsCron = false
             }
         }).start()
-        if tasks.isEmpty == false {
-            var signal = taskRepository.score(task: tasks[0], direction: .up)
-            for task in tasks.dropFirst() {
-                signal = signal.flatMap(.concat, {[weak self] _ in
-                    return self?.taskRepository.score(task: task, direction: .up) ?? Signal.empty
+        
+        var producer: SignalProducer<TaskResponseProtocol?, Never> = SignalProducer(value: nil)
+        if checklistItems.isEmpty == false {
+            for entry in checklistItems {
+                producer = producer.flatMap(.concat, { [weak self] _  in
+                    return self?.taskRepository.score(checklistItem: entry.1, task: entry.0).producer ?? SignalProducer.empty
+                }).map({ _ in
+                    return nil
                 })
             }
-            disposable = signal.flatMap(.latest, { _ in
-                return RunCronCall().responseSignal
-            }).flatMap(.latest, { _ in
-                return self.retrieveUser()
-            }).on(failed: { error in
-                logger.record(error: error)
-            }).observeCompleted {
-                disposable?.dispose()
-                if #available(iOS 14.0, *) {
-                    // WidgetCenter.shared.reloadAllTimelines()
-                }
-            }
-        } else {
-            disposable = RunCronCall().responseSignal.flatMap(.latest, { (_) in
-                return self.retrieveUser()
-            }).on(failed: { error in
-                logger.record(error: error)
-            }).observeCompleted {
-                disposable?.dispose()
-                if #available(iOS 14.0, *) {
-                    // WidgetCenter.shared.reloadAllTimelines()
-                }
+        }
+        if tasks.isEmpty == false {
+            for task in tasks {
+                producer = producer.flatMap(.concat, {[weak self] _ in
+                    return self?.taskRepository.score(task: task, direction: .up).producer ?? SignalProducer.empty
+                })
             }
         }
+        
+        disposable = producer.flatMap(.latest, { _ in
+            return RunCronCall().responseSignal.producer
+        }).flatMap(.latest, { _ in
+            return self.retrieveUser().producer
+        }).on(failed: { error in
+            logger.record(error: error)
+        }, completed: {
+            disposable?.dispose()
+            if #available(iOS 14.0, *) {
+                WidgetCenter.shared.reloadAllTimelines()
+            }
+        }).start()
     }
     
     func updateUser(_ updateDict: [String: Encodable]) -> Signal<UserProtocol?, Never> {

@@ -70,7 +70,7 @@ class UserManager: NSObject {
                 HabiticaAnalytics.shared.log("show cron", withEventProperties: eventProperties)
                 
                 if uncompletedTaskCount == 0 {
-                    self?.userRepository.runCron(tasks: [])
+                    self?.userRepository.runCron(checklistItems: [], tasks: [])
                     return
                 }
                 

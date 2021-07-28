@@ -12,7 +12,7 @@ import Habitica_Models
 import Habitica_API_Client
 import Habitica_Database
 
-class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
+class TaskRepository: BaseRepository<TaskLocalRepository> {
     
     func retrieveTasks(dueOnDay: Date? = nil) -> Signal<[TaskProtocol]?, Never> {
         let call = RetrieveTasksCall(dueOnDay: dueOnDay)

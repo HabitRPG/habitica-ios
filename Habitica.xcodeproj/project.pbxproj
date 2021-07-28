@@ -120,7 +120,6 @@
 		292DEE3A204D9D290086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; platformFilter = ios; };
 		292DEE3C204D9D360086D5F7 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; platformFilter = ios; };
 		292DEE4C204DA1830086D5F7 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */; platformFilter = ios; };
-		292DEE58204DA6E00086D5F7 /* TaskRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE57204DA6E00086D5F7 /* TaskRepositoryProtocol.swift */; };
 		292DEE70204DEB120086D5F7 /* TaskTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE6F204DEB120086D5F7 /* TaskTableViewDataSource.swift */; };
 		292DEE74204DECF60086D5F7 /* BaseReactiveDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE73204DECF60086D5F7 /* BaseReactiveDataSource.swift */; };
 		292DEE76204E053D0086D5F7 /* HabitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE75204E053D0086D5F7 /* HabitButton.swift */; };
@@ -344,7 +343,6 @@
 		29BEE632252CCFE100D456F8 /* StatsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE631252CCFE100D456F8 /* StatsWidget.swift */; };
 		29BEE634252CCFE300D456F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29BEE633252CCFE300D456F8 /* Assets.xcassets */; };
 		29BEE64D252DD3F400D456F8 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E1B122898E9F0081E96F /* TaskManager.swift */; };
-		29BEE653252DD85600D456F8 /* TaskRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE57204DA6E00086D5F7 /* TaskRepositoryProtocol.swift */; };
 		29BEE659252DD85C00D456F8 /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884D2010CCC2002B3D3F /* BaseRepository.swift */; };
 		29BEE65F252DD86200D456F8 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
 		29BEE6B4252DDA2800D456F8 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BEE6B3252DDA2800D456F8 /* Habitica_Models.framework */; };
@@ -507,7 +505,6 @@
 		7A84E1B222898E9F0081E96F /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E1B122898E9F0081E96F /* TaskManager.swift */; };
 		7A84E1B32289963E0081E96F /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884D2010CCC2002B3D3F /* BaseRepository.swift */; };
 		7A84E1B42289968B0081E96F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
-		7A84E1B5228996A90081E96F /* TaskRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE57204DA6E00086D5F7 /* TaskRepositoryProtocol.swift */; };
 		86E038E8AAE7FD7EDDD0AF1A /* Pods_Habitica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71A5FFE0E025A876FBD59636 /* Pods_Habitica.framework */; };
 		88C61741E2749C79C7573076 /* Pods_Habitica_Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E46B677D2A4BB73B690AD0B /* Pods_Habitica_Intents.framework */; };
 		92931D96E929A695602A2CEB /* Pods_Habitica_Snapshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B97B7126BD23C2034F0ECF3F /* Pods_Habitica_Snapshots.framework */; };
@@ -807,7 +804,6 @@
 		292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		292DEE57204DA6E00086D5F7 /* TaskRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepositoryProtocol.swift; sourceTree = "<group>"; };
 		292DEE6F204DEB120086D5F7 /* TaskTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewDataSource.swift; sourceTree = "<group>"; };
 		292DEE73204DECF60086D5F7 /* BaseReactiveDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseReactiveDataSource.swift; sourceTree = "<group>"; };
 		292DEE75204E053D0086D5F7 /* HabitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitButton.swift; sourceTree = "<group>"; };
@@ -2581,7 +2577,6 @@
 				D9BB45DC1E7AE5240002AE2E /* ConfigRepository.swift */,
 				29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */,
 				292DEE54204DA5D40086D5F7 /* Implementations */,
-				292DEE57204DA6E00086D5F7 /* TaskRepositoryProtocol.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -3749,7 +3744,6 @@
 				29BEE75A252E33AB00D456F8 /* Avatar.swift in Sources */,
 				29BEE81E252F101600D456F8 /* TaskListWidget.swift in Sources */,
 				29BEE7B5252EE92D00D456F8 /* AddTaskWidget.swift in Sources */,
-				29BEE653252DD85600D456F8 /* TaskRepositoryProtocol.swift in Sources */,
 				29BEE6DC252E14F300D456F8 /* RemainingDailiesWidget.swift in Sources */,
 				2942FAF1267783F8003F6500 /* HabiticaLogger.swift in Sources */,
 			);
@@ -3768,7 +3762,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A84E1B5228996A90081E96F /* TaskRepositoryProtocol.swift in Sources */,
 				2995F7FB25BAF3B600322CB3 /* RemoteLogger.swift in Sources */,
 				29A9857F25472D1600F04665 /* HabiticaAnalytics.swift in Sources */,
 				7A84E1B32289963E0081E96F /* BaseRepository.swift in Sources */,
@@ -4191,7 +4184,6 @@
 				D9BB45D41E7849B40002AE2E /* ChallengeTaskListView.swift in Sources */,
 				D9A63A361E1032BD0083ADC4 /* LoginViewModel.swift in Sources */,
 				2974BD91208DEFEA00EC1A25 /* CustomizationDetailCell.swift in Sources */,
-				292DEE58204DA6E00086D5F7 /* TaskRepositoryProtocol.swift in Sources */,
 				49A37A8020C0EBFF008C28F5 /* SingleItemTableViewDataSource.swift in Sources */,
 				29A984D32547294E00F04665 /* RemoteLogger.swift in Sources */,
 				49DCB7BC1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift in Sources */,
