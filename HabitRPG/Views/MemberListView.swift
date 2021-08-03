@@ -1,5 +1,5 @@
 //
-//  MemberLlistView.swift
+//  MemberListView.swift
 //  Habitica
 //
 //  Created by Phillip Thelen on 02.05.18.

@@ -88,7 +88,7 @@
 		2919FDDF2091D87A0096A53B /* FaintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDDE2091D87A0096A53B /* FaintViewController.swift */; };
 		291CE4B6231E828E0001A243 /* UIColor-Habitica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291CE4B5231E828D0001A243 /* UIColor-Habitica.swift */; };
 		291CE4B8231EC11E0001A243 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291CE4B7231EC11E0001A243 /* FilterViewController.swift */; };
-		291DE9762099D85D0073182A /* MemberLlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DE9752099D85D0073182A /* MemberLlistView.swift */; };
+		291DE9762099D85D0073182A /* MemberListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DE9752099D85D0073182A /* MemberListView.swift */; };
 		291E95AF20988025006EE585 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95AE20988025006EE585 /* NewsViewController.swift */; };
 		291E95B720988B85006EE585 /* PartyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95B620988B85006EE585 /* PartyDetailViewController.swift */; };
 		29205E352062DF710024E355 /* TextInputFormRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E342062DF710024E355 /* TextInputFormRow.swift */; };
@@ -775,7 +775,7 @@
 		2919FDDE2091D87A0096A53B /* FaintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaintViewController.swift; sourceTree = "<group>"; };
 		291CE4B5231E828D0001A243 /* UIColor-Habitica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Habitica.swift"; sourceTree = "<group>"; };
 		291CE4B7231EC11E0001A243 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
-		291DE9752099D85D0073182A /* MemberLlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberLlistView.swift; sourceTree = "<group>"; };
+		291DE9752099D85D0073182A /* MemberListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListView.swift; sourceTree = "<group>"; };
 		291E95AE20988025006EE585 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		291E95B620988B85006EE585 /* PartyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyDetailViewController.swift; sourceTree = "<group>"; };
 		29205E342062DF710024E355 /* TextInputFormRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputFormRow.swift; sourceTree = "<group>"; };
@@ -2607,7 +2607,7 @@
 				D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */,
 				29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */,
 				29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */,
-				291DE9752099D85D0073182A /* MemberLlistView.swift */,
+				291DE9752099D85D0073182A /* MemberListView.swift */,
 				29E1630E200E279900685640 /* MenuNavigationBarView.swift */,
 				49DCB7C11F40D7F00079FDD0 /* NPCBannerView.swift */,
 				49DCB7C31F40D80B0079FDD0 /* NPCBannerView.xib */,
@@ -3888,7 +3888,7 @@
 				D96BFC511E1930A500266EEF /* Signal-Extensions.swift in Sources */,
 				299328A924E57858003BCE0C /* FAQDetailViewController.swift in Sources */,
 				29E1631D200F62C100685640 /* TavernDetailViewController.swift in Sources */,
-				291DE9762099D85D0073182A /* MemberLlistView.swift in Sources */,
+				291DE9762099D85D0073182A /* MemberListView.swift in Sources */,
 				D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */,
 				29FC5A6520402EF6008E88C8 /* Theme.swift in Sources */,
 				295BC701226F677100DDDF1A /* NewsNotificationCell.swift in Sources */,

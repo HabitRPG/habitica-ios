@@ -330,6 +330,10 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         let isLightColor = self.upperBackgroundView.backgroundColor?.isLight() ?? true
+        if upperBackgroundView.backgroundColor == .white && ThemeService.shared.theme.isDark {
+            //For some reason when forcing dark mode, the statusbar style is requested before the theme is applied
+            return .lightContent
+        }
         if !isLightColor {
             return .lightContent
         } else {
