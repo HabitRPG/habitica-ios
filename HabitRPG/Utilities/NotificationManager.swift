@@ -21,14 +21,14 @@ class NotificationManager {
         }.forEach { notification in
             var notificationDisplayed: Bool? = false
             switch notification.type {
-            case HabiticaNotificationType.achievementPartyUp,
-                 HabiticaNotificationType.achievementPartyOn,
-                HabiticaNotificationType.achievementBeastMaster,
-                HabiticaNotificationType.achievementTriadBingo,
-                HabiticaNotificationType.achievementGuildJoined,
-                HabiticaNotificationType.achievementMountMaster,
-                HabiticaNotificationType.achievementInvitedFriend,
-                HabiticaNotificationType.achievementChallengeJoined,
+            case .achievementPartyUp,
+                 .achievementPartyOn,
+                .achievementBeastMaster,
+                .achievementTriadBingo,
+                .achievementGuildJoined,
+                .achievementMountMaster,
+                .achievementInvitedFriend,
+                .achievementChallengeJoined,
                 HabiticaNotificationType.achievementOnboardingComplete,
                 HabiticaNotificationType.achievementAllYourBase,
                  HabiticaNotificationType.achievementBackToBasics,
@@ -55,6 +55,8 @@ class NotificationManager {
                 notificationDisplayed = NotificationManager.displayAchievement(notification: notification, isOnboarding: true, isLastOnboardingAchievement: notifications.contains {
                     return $0.type == HabiticaNotificationType.achievementOnboardingComplete
                 })
+            case HabiticaNotificationType.loginIncentive:
+                notificationDisplayed = NotificationManager.displayLoginIncentive(notification: notification)
             case HabiticaNotificationType.firstDrop:
                 notificationDisplayed = NotificationManager.displayFirstDrop(notification: notification)
             default:
@@ -145,6 +147,26 @@ class NotificationManager {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             // add a slight delay to make sure that any running VC transitions are done
             alert.enqueue()
+        }
+        return true
+    }
+    
+    static func displayLoginIncentive(notification: NotificationProtocol) -> Bool {
+        guard let loginIncentiveNotification = notification as? NotificationLoginIncentiveProtocol else {
+            return false
+        }
+        let nextRewardAt = loginIncentiveNotification.nextRewardAt
+        if let rewardKey = loginIncentiveNotification.rewardKey {
+            var imageName = rewardKey
+            if imageName.contains("armor") {
+                imageName = "slim_\(imageName)"
+            }
+            let alert = ImageOverlayView(imageName: imageName,
+                                         title: loginIncentiveNotification.message,
+                                         message: L10n.checkinPrizeEarned(loginIncentiveNotification.rewardText ?? ""))
+            alert.show()
+        } else {
+            ToastManager.show(toast: ToastView(title: loginIncentiveNotification.message ?? "", subtitle: L10n.nextCheckinPrizeXDays(nextRewardAt), background: .blue))
         }
         return true
     }

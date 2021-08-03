@@ -113,6 +113,7 @@
 		29A06E1323EB3340003BADE9 /* EmailNotificationsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A06E1223EB3340003BADE9 /* EmailNotificationsProtocol.swift */; };
 		29A62B03216CC66F00D4BD90 /* VerifyUsernameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B02216CC66F00D4BD90 /* VerifyUsernameResponse.swift */; };
 		29A6B86A20690D470086B2A6 /* WeekRepeatProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B86920690D470086B2A6 /* WeekRepeatProtocol.swift */; };
+		29A7E79126B17A6A009F0C4D /* NotificationLoginIncentive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A7E79026B17A6A009F0C4D /* NotificationLoginIncentive.swift */; };
 		29A984CD2547293E00F04665 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A984CC2547293E00F04665 /* Constants.swift */; };
 		29ACED6C25DD35A700E1263D /* GroupCategoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ACED6B25DD35A700E1263D /* GroupCategoryProtocol.swift */; };
 		29B478BF20C5304F00B6123F /* BuyResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B478BE20C5304F00B6123F /* BuyResponseProtocol.swift */; };
@@ -248,6 +249,7 @@
 		29A06E1223EB3340003BADE9 /* EmailNotificationsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailNotificationsProtocol.swift; sourceTree = "<group>"; };
 		29A62B02216CC66F00D4BD90 /* VerifyUsernameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUsernameResponse.swift; sourceTree = "<group>"; };
 		29A6B86920690D470086B2A6 /* WeekRepeatProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekRepeatProtocol.swift; sourceTree = "<group>"; };
+		29A7E79026B17A6A009F0C4D /* NotificationLoginIncentive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLoginIncentive.swift; sourceTree = "<group>"; };
 		29A984CC2547293E00F04665 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		29ACED6B25DD35A700E1263D /* GroupCategoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCategoryProtocol.swift; sourceTree = "<group>"; };
 		29B478BE20C5304F00B6123F /* BuyResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyResponseProtocol.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				295BC6E6226F0FF700DDDF1A /* NotificationProtocol.swift */,
+				29A7E79026B17A6A009F0C4D /* NotificationLoginIncentive.swift */,
 				295BC6EA226F111B00DDDF1A /* NotificationNewsProtocol.swift */,
 				295BC6EC226F113400DDDF1A /* NotificationNewChatProtocol.swift */,
 				295BC6EE226F117400DDDF1A /* NotificationUnallocatedStatsProtocol.swift */,
@@ -678,6 +681,7 @@
 				29DBFEF920CAD7C200DF9CF2 /* SpecialItemProtocol.swift in Sources */,
 				290B625D207B945A007287C4 /* AuthenticationTimestampsProtocol.swift in Sources */,
 				290B624E2073D74B007287C4 /* InboxProtocol.swift in Sources */,
+				29A7E79126B17A6A009F0C4D /* NotificationLoginIncentive.swift in Sources */,
 				299FB28E20849E0B00422522 /* OwnedMountProtocol.swift in Sources */,
 				2902797720580E87006DACB9 /* BaseStatsProtocol.swift in Sources */,
 				2970B62A24A4BADA008CD068 /* NotificationFirstDropProtocol.swift in Sources */,

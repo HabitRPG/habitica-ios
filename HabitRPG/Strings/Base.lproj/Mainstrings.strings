@@ -843,6 +843,7 @@
 "earned_achievement_share" = "I earned a new achievement in Habitica!";
 "next_checkin_prize_1_day" = "Your next prize unlocks in 1 Check-In.";
 "next_checkin_prize_x_days" = "Your next prize unlocks in %d Check-Ins";
+"checkin_prize_earned" = "You earned a %s as a reward for your devotion to improving your life.";
 "recipient" = "Recipient";
 "invalid_recipient_message" = "You have to specify a valid Habitica Username as recipient.";
 "invalid_recipient_title" = "Invalid Habitica Username";

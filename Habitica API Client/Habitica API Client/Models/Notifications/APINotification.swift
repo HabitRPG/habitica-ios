@@ -15,7 +15,7 @@ private class APINotificationAchievementData: Decodable {
     var modalText: String?
 }
 
-public class APINotification: NotificationProtocol, NotificationNewsProtocol, NotificationNewChatProtocol, NotificationUnallocatedStatsProtocol, NotificationFirstDropProtocol, Decodable {
+public class APINotification: NotificationProtocol, NotificationNewsProtocol, NotificationNewChatProtocol, NotificationUnallocatedStatsProtocol, NotificationFirstDropProtocol, NotificationLoginIncentiveProtocol, Decodable {
     public var isValid: Bool = true
     
     public var id: String = ""
@@ -31,6 +31,10 @@ public class APINotification: NotificationProtocol, NotificationNewsProtocol, No
     public var achievementModalText: String?
     public var egg: String?
     public var hatchingPotion: String?
+    public var nextRewardAt: Int = 0
+    public var message: String?
+    public var rewardKey: String?
+    public var rewardText: String?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -59,6 +63,12 @@ public class APINotification: NotificationProtocol, NotificationNewsProtocol, No
             let data = try? values.decode(APINotificationFirstDropData.self, forKey: .data)
             egg = data?.egg
             hatchingPotion = data?.hatchingPotion
+        case .loginIncentive:
+            let data = try? values.decode(APILoginIncentiveData.self, forKey: .data)
+            nextRewardAt = data?.nextRewardAt ?? 0
+            message = data?.message
+            rewardKey = data?.rewardKey
+            rewardText = data?.rewardText
         default:
             break
         }

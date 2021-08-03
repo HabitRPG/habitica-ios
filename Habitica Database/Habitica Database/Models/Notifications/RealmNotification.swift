@@ -17,6 +17,7 @@ class RealmNotification: Object,
     NotificationQuestInviteProtocol,
     NotificationGroupInviteProtocol,
     NotificationNewMysteryItemProtocol,
+    NotificationLoginIncentiveProtocol,
 NotificationFirstDropProtocol {
     @objc dynamic var id: String = ""
     @objc dynamic var realmType: String = ""
@@ -48,6 +49,11 @@ NotificationFirstDropProtocol {
     @objc dynamic var egg: String?
     @objc dynamic var hatchingPotion: String?
     
+    @objc dynamic var nextRewardAt: Int = -1
+    @objc dynamic var message: String?
+    @objc dynamic var rewardKey: String?
+    @objc dynamic var rewardText: String?
+    
     var isValid: Bool {
         return !isInvalidated
     }
@@ -77,6 +83,13 @@ NotificationFirstDropProtocol {
         }
         if let notification = protocolObject as? NotificationNewsProtocol {
             title = notification.title
+        }
+        if let notification = protocolObject as? NotificationLoginIncentiveProtocol {
+            nextRewardAt = notification.nextRewardAt
+            message = notification.message
+            rewardKey = notification.rewardKey
+            rewardText = notification.rewardText
+
         }
         achievementKey = protocolObject.achievementKey
         achievementMessage = protocolObject.achievementMessage

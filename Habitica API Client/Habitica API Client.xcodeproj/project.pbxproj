@@ -215,6 +215,7 @@
 		29A6B870206940F80086B2A6 /* CreateTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B86F206940F80086B2A6 /* CreateTaskCall.swift */; };
 		29A6B872206941210086B2A6 /* UpdateTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B871206941210086B2A6 /* UpdateTaskCall.swift */; };
 		29A77B2122EED56400FE41E4 /* NetworkIndicatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A77B2022EED56400FE41E4 /* NetworkIndicatorController.swift */; };
+		29A7E79326B17C61009F0C4D /* APILoginIncentiveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A7E79226B17C61009F0C4D /* APILoginIncentiveData.swift */; };
 		29A9B05C22817DBE0049291E /* JsonDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B05822817DBC0049291E /* JsonDataHandler.swift */; };
 		29A9B05D22817DBE0049291E /* NetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B05922817DBD0049291E /* NetworkCall.swift */; };
 		29A9B05E22817DBE0049291E /* JsonNetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B05A22817DBD0049291E /* JsonNetworkCall.swift */; };
@@ -463,6 +464,7 @@
 		29A6B86F206940F80086B2A6 /* CreateTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskCall.swift; sourceTree = "<group>"; };
 		29A6B871206941210086B2A6 /* UpdateTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTaskCall.swift; sourceTree = "<group>"; };
 		29A77B2022EED56400FE41E4 /* NetworkIndicatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkIndicatorController.swift; sourceTree = "<group>"; };
+		29A7E79226B17C61009F0C4D /* APILoginIncentiveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILoginIncentiveData.swift; sourceTree = "<group>"; };
 		29A9B05822817DBC0049291E /* JsonDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonDataHandler.swift; sourceTree = "<group>"; };
 		29A9B05922817DBD0049291E /* NetworkCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCall.swift; sourceTree = "<group>"; };
 		29A9B05A22817DBD0049291E /* JsonNetworkCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonNetworkCall.swift; sourceTree = "<group>"; };
@@ -699,6 +701,7 @@
 				2912C3BC22CB5CE000BC485F /* APINotificationNewStuffData.swift */,
 				2912C3BE22CB5CF300BC485F /* APINotificationUnallocatedStatsData.swift */,
 				2970B62B24A4BB32008CD068 /* APINotificationFirstDrop.swift */,
+				29A7E79226B17C61009F0C4D /* APILoginIncentiveData.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -1353,6 +1356,7 @@
 				290B6293207E3E24007287C4 /* JoinGroupCall.swift in Sources */,
 				290B6279207BA8C3007287C4 /* LocalLoginCall.swift in Sources */,
 				29A9B06422817DCF0049291E /* StubbableNetworkCall.swift in Sources */,
+				29A7E79326B17C61009F0C4D /* APILoginIncentiveData.swift in Sources */,
 				29B478C320C5330600B6123F /* APIBuyResponse.swift in Sources */,
 				292D6C992101F5660078288A /* InviteToGroupCall.swift in Sources */,
 				294973D02081039300F02AC3 /* InviteToQuestCall.swift in Sources */,

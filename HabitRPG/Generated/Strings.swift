@@ -106,6 +106,10 @@ public enum L10n {
   public static var characterLevel: String { return L10n.tr("Mainstrings", "character_level") }
   /// Chat
   public static var chat: String { return L10n.tr("Mainstrings", "chat") }
+  /// You earned a %s as a reward for your devotion to improving your life.
+  public static func checkinPrizeEarned(_ p1: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "checkin_prize_earned", p1)
+  }
   /// Check off any Dailies you did yesterday:
   public static var checkinYesterdaysDalies: String { return L10n.tr("Mainstrings", "checkin_yesterdays_dalies") }
   /// Choose Task
