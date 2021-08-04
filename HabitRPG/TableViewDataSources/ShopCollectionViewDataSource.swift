@@ -96,7 +96,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             let sectionCount = self?.sections.count ?? 0
             if sectionCount >= 2 {
                 self?.sections.removeLast(sectionCount - 1)
-            }            
+            }
             self?.loadCategories(shop?.categories ?? [], isSubscribed: user.isSubscribed)
             self?.delegate?.updateShopHeader(shop: shop)
             
@@ -228,12 +228,12 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             headerView.otherClassDisclaimer.isHidden = true
             if indexPath.section == 0 && needsGearSection {
                 headerView.titleLabel.text = L10n.Equipment.classEquipment
-                headerView.gearCategoryLabel.text = selectedGearCategory?.capitalized
+                headerView.gearCategoryLabel.text = ifWizardConvertToMage(selectedGearCategory)?.capitalized
                 headerView.gearCategoryButton.isHidden = false
                 headerView.onGearCategoryLabelTapped = {[weak self] in
                     self?.delegate?.showGearSelection(sourceView: headerView.gearCategoryButton)
                 }
-                 headerView.otherClassDisclaimer.isHidden = userClass == selectedInternalGearCategory || selectedInternalGearCategory == "none"
+                headerView.otherClassDisclaimer.isHidden = userClass == selectedInternalGearCategory || selectedInternalGearCategory == "none"
                 headerView.otherClassDisclaimer.text = L10n.Shops.otherClassDisclaimer
             } else {
                 headerView.titleLabel.text = titleFor(section: indexPath.section)
@@ -243,6 +243,10 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             return headerView
         }
         return UICollectionReusableView()
+    }
+
+    private func ifWizardConvertToMage(_ category: String?) -> String? {
+        return category == "wizard" ? "mage" : category
     }
    
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
