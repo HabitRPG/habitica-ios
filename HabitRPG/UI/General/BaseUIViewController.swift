@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BaseUIViewController: HRPGTutorialUIViewController, Themeable {
+class BaseUIViewController: UIViewController, Themeable {
     
     lazy var topHeaderCoordinator: TopHeaderCoordinator? = {
         if hrpgTopHeaderNavigationController() != nil {
@@ -31,7 +31,6 @@ class BaseUIViewController: HRPGTutorialUIViewController, Themeable {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        displayTutorialStep()
         topHeaderCoordinator?.viewDidAppear()
         HabiticaAnalytics.shared.logNavigationEvent(String(describing: self))
     }

@@ -14,7 +14,5 @@
 #import "HRPGLabeledProgressBar.h"
 #import "HRPGSpellViewController.h"
 #import "HRPGSearchDataManager.h"
-#import "HRPGCoachmarkFrameProvider.h"
 #import "NSString+Emoji.h"
 #import "UIViewController+TutorialSteps.h"
-#import "HRPGTutorialUIViewController.h"

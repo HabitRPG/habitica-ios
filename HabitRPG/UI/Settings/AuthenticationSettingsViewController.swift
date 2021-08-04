@@ -227,6 +227,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController, UITextFi
         emailTextField.autocapitalizationType = .none
         emailTextField.spellCheckingType = .no
         emailTextField.text = user?.authentication?.local?.email
+        emailTextField.addHeightConstraint(height: 50)
         stackView.addArrangedSubview(emailTextField)
         let passwordTextField = PaddedTextField()
         passwordTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.oldPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
@@ -259,6 +260,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController, UITextFi
         loginNameTextField.spellCheckingType = .no
         loginNameTextField.text = user?.username
         loginNameTextField.delegate = self
+        loginNameTextField.addHeightConstraint(height: 50)
         stackView.addArrangedSubview(loginNameTextField)
         alertController.contentView = stackView
         

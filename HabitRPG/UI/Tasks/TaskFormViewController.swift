@@ -239,18 +239,6 @@ class TaskFormViewController: FormViewController, Themeable {
         setupTags()
         
         if !isCreating {
-            if (taskType == .habit || taskType == .daily) && false {
-            form +++ Section { section in
-                 section.tag = TaskFormTags.historySection
-             }
-             <<< ButtonRow(TaskFormTags.historyButton) { row in
-                 row.title = L10n.taskHistory
-                 row.onCellSelection({ (_, _) in
-                     self.historyButtonTapped()
-                 })
-                 row.hidden = Condition(booleanLiteral: HabiticaAppDelegate.isRunningLive())
-             }
-            }
             form +++ Section()
                 <<< ButtonRow(TaskFormTags.delete) { row in
                     row.title = L10n.delete
@@ -935,14 +923,6 @@ class TaskFormViewController: FormViewController, Themeable {
         }
         alertController.addCancelAction()
         alertController.show()
-    }
-        
-    private func historyButtonTapped() {
-        let nc = StoryboardScene.Tasks.taskHistoryNavigationController.instantiate()
-        if let historyViewController = nc.topViewController as? TaskHistoryViewController {
-            historyViewController.taskID = taskId
-        }
-        present(nc, animated: true, completion: nil)
     }
     
     private func showChallengeTaskDeleteDialog() {

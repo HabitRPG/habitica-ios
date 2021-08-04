@@ -8,12 +8,6 @@
 
 import UIKit
 
-enum PillStyle {
-    case cornered
-    case rounded
-    case circular
-}
-
 @IBDesignable
 class PillView: UIView {
 

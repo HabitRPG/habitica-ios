@@ -181,19 +181,6 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         return NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
     }
     
-    override func getFrameForCoachmark(_ coachMarkIdentifier: String!) -> CGRect {
-        let provider = HRPGCoachmarkFrameProvider()
-        provider.view = view
-        provider.tableView = tableView
-        provider.navigationItem = navigationItem
-        provider.parentViewController = parent
-        return provider.getFrameForCoachmark(coachMarkIdentifier)
-    }
-    
-    override func getDefinitonForTutorial(_ tutorialIdentifier: String!) -> [AnyHashable: Any]! {
-        return HRPGCoachmarkFrameProvider().getDefinitonForTutorial(tutorialIdentifier)
-    }
-    
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
