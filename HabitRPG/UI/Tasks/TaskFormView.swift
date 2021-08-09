@@ -629,6 +629,7 @@ struct DailyProgressView: View {
 }
 
 struct TaskFormView: View {
+    private let configRepository = ConfigRepository()
     @Environment(\.presentationMode) var presentationMode
     @State private var isEditingText = false
     @State private var isEditingNotes = false
@@ -642,6 +643,7 @@ struct TaskFormView: View {
     var lightTaskTintColor: Color = Color(.purple400)
     var darkestTaskTintColor: Color = Color(UIColor(white: 1, alpha: 0.7))
     var showStatAllocation = false
+    var showTaskGraphs = false
     @ObservedObject var viewModel: TaskFormViewModel
     
     private let dateFormatter: DateFormatter = {
@@ -694,12 +696,12 @@ struct TaskFormView: View {
                     }.padding(.horizontal, 16)
                     .padding(.vertical, 12)
                     VStack(spacing: 25) {
-                        if taskType == .daily, let task = viewModel.task {
+                        if taskType == .daily && false, let task = viewModel.task {
                             TaskFormSection(header: Text(L10n.Tasks.Form.completion.uppercased()),
                                             content: DailyProgressView(history: task.history), backgroundColor: .clear)
                             
                         } else
-                        if taskType == .habit, let task = viewModel.task {
+                        if taskType == .habit && showTaskGraphs, let task = viewModel.task {
                             TaskFormSection(header: Text(L10n.Tasks.Form.completion.uppercased()),
                                             content: HabitProgressView(history: task.history, up: viewModel.up, down: viewModel.down), backgroundColor: .clear)
                             
@@ -749,6 +751,7 @@ struct TaskFormView: View {
 
 class TaskFormController: UIHostingController<TaskFormView> {
     private let taskRepository = TaskRepository()
+    private let configRepository = ConfigRepository()
     
     private let viewModel = TaskFormViewModel()
     
@@ -771,6 +774,8 @@ class TaskFormController: UIHostingController<TaskFormView> {
         rootView.taskTintColor = Color(editedTask != nil ? .forTaskValue(editedTask?.value ?? 0) : .purple300)
         rootView.lightTaskTintColor = Color(editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple400)
         rootView.darkTaskTintColor = Color(color)
+        
+        rootView.showTaskGraphs = configRepository.bool(variable: .showTaskGraphs)
 
         rootView.darkestTaskTintColor = Color(editedTask != nil ? .forTaskValueDarkest(editedTask?.value ?? 0) : UIColor(white: 1, alpha: 0.7))
         if let controller = navigationController as? ThemedNavigationController {

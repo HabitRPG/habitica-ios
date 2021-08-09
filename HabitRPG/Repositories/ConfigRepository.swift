@@ -45,6 +45,8 @@ enum ConfigVariable: Int {
     case showQuestInMenu
     case disableIntroSlides
     case showTaskDetailScreen
+    case showTaskGraphs
+    case advertiseTaskGraphs
 
     // swiftlint:disable cyclomatic_complexity
     func name() -> String {
@@ -79,6 +81,8 @@ enum ConfigVariable: Int {
         case .showTaskDetailScreen: return "showTaskDetailScreen"
         case .activePromo: return "activePromo"
         case .surveyURL: return "surveyURL"
+        case .showTaskGraphs: return "showTaskGraphs"
+        case .advertiseTaskGraphs: return "advertiseTaskGraphs"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -143,6 +147,10 @@ enum ConfigVariable: Int {
             return "" as NSString
         case .surveyURL:
             return "" as NSString
+        case .showTaskGraphs:
+            return false as NSNumber
+        case .advertiseTaskGraphs:
+            return false as NSNumber
         }
     }
     
@@ -174,7 +182,9 @@ enum ConfigVariable: Int {
             .showQuestInMenu,
             .disableIntroSlides,
             .activePromo,
-            .surveyURL
+            .surveyURL,
+            .showTaskGraphs,
+            .advertiseTaskGraphs
         ]
     }
     // swiftlint:enable cyclomatic_complexity
@@ -230,10 +240,8 @@ class ConfigRepository: NSObject {
     @objc
     func string(variable: ConfigVariable) -> String? {
         if variable == .shopSpriteSuffix {
-            for event in worldState?.events ?? [] {
-                if event.npcImageSuffix?.isEmpty == false {
-                    return event.npcImageSuffix
-                }
+            for event in worldState?.events ?? [] where event.npcImageSuffix?.isEmpty == false {
+                return event.npcImageSuffix
             }
         }
         return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).stringValue
