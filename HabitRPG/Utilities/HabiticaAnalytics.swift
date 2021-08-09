@@ -18,12 +18,12 @@ public class HabiticaAnalytics {
     
     public func logNavigationEvent(_ pageName: String) {
         let properties = [
-            "eventAction": "navigate",
+            "eventAction": "navigated",
             "eventCategory": "navigation",
             "hitType": "pageview",
             "page": pageName
         ]
-        Amplitude.instance()?.logEvent("navigate", withEventProperties: properties)
+        Amplitude.instance()?.logEvent("navigated", withEventProperties: properties)
     }
     
     public func log(_ eventName: String, withEventProperties properties: [AnyHashable: Any]) {

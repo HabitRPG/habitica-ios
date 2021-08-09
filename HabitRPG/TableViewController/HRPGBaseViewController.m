@@ -22,8 +22,6 @@
     [super viewDidLoad];
     [self populateText];
 
-    [ObjcHabiticaAnalytics logNavigationEventWithPageName:NSStringFromClass([self class])];
-
     [self.topHeaderCoordinator viewDidLoad];
     
     self.viewWidth = self.view.frame.size.width;

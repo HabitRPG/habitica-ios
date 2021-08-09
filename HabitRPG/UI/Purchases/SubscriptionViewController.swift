@@ -124,6 +124,8 @@ class SubscriptionViewController: BaseTableViewController {
                 }
             }
         }
+        
+        HabiticaAnalytics.shared.logNavigationEvent("subscription screen")
     }
         
     override func applyTheme(theme: Theme) {

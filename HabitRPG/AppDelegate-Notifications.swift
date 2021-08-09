@@ -70,6 +70,10 @@ extension HabiticaAppDelegate: UNUserNotificationCenterDelegate {
     }
     
     func handlePushnotification(identifier: String?, userInfo: [AnyHashable: Any]) {
+        if let sendToAnalytics = userInfo["sendAnalytics"] as? Bool {
+            HabiticaAnalytics.shared.log("open notification", withEventProperties: [
+                                            "identifier": identifier ?? ""])
+        }
         if let url = userInfo["openURL"] as? String {
             RouterHandler.shared.handle(urlString: url)
         } else if let identifier = identifier ?? userInfo["identifier"] as? String {

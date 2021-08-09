@@ -19,9 +19,7 @@
     self.topHeaderCoordinator = [[TopHeaderCoordinator alloc] initWithTopHeaderNavigationController:self.topHeaderNavigationController scrollView:self.collectionView];
     [super viewDidLoad];
     [self populateText];
-    
-    [ObjcHabiticaAnalytics logNavigationEventWithPageName:NSStringFromClass([self class])];
-    
+        
     [self.topHeaderCoordinator viewDidLoad];
 }
 

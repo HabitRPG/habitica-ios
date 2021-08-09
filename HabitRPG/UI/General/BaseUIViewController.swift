@@ -32,7 +32,6 @@ class BaseUIViewController: UIViewController, Themeable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         topHeaderCoordinator?.viewDidAppear()
-        HabiticaAnalytics.shared.logNavigationEvent(String(describing: self))
     }
     
     override func viewWillDisappear(_ animated: Bool) {

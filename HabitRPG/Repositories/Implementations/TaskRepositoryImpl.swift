@@ -176,6 +176,12 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
             if let returnedTask = returnedTask {
                 self?.localRepository.save(userID: self?.currentUserId, task: returnedTask)
             }
+            
+            let defaults = UserDefaults.standard
+            if !Calendar.current.isDateInToday(Date(timeIntervalSince1970: defaults.double(forKey: "last_task_create_report"))) {
+                HabiticaAnalytics.shared.log("task created", withEventProperties: [:])
+                defaults.set(Date().timeIntervalSince1970, forKey: "last_task_create_report")
+            }
         })
     }
     

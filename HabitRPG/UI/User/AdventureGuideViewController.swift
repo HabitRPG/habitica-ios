@@ -38,6 +38,7 @@ class AdventureGuideViewController: BaseUIViewController {
                 self.setAchievements(keys: user.achievements?.onboardingAchievementKeys ?? [], achievements: achievements)
             }
             }).start()
+        HabiticaAnalytics.shared.logNavigationEvent("adventure guide screen")
     }
     
     override func applyTheme(theme: Theme) {

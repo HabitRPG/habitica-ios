@@ -315,6 +315,12 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
                 if response?.temp?.drop?.key != nil {
                     self?.disposable.add(self?.userRepository.retrieveUser().observeCompleted {})
                 }
+                
+                let defaults = UserDefaults.standard
+                if !Calendar.current.isDateInToday(Date(timeIntervalSince1970: defaults.double(forKey: "last_task_score_report"))) {
+                    HabiticaAnalytics.shared.log("task scored", withEventProperties: [:])
+                    defaults.set(Date().timeIntervalSince1970, forKey: "last_task_score_report")
+                }
             })
             .observeCompleted {
                 SoundManager.shared.play(effect: soundEffect)
