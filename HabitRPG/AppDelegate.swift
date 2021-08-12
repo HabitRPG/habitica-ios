@@ -25,6 +25,7 @@ import WidgetKit
 import FBSDKCoreKit
 import AppAuth
 import FBSDKLoginKit
+import AdServices
 
 class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIApplicationDelegate {
     var window: UIWindow?
@@ -157,7 +158,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
         Amplitude.instance().setUserId(AuthenticationManager.shared.currentUserId)
         let userDefaults = UserDefaults.standard
         Amplitude.instance()?.setUserProperties(["iosTimezoneOffset": -(NSTimeZone.local.secondsFromGMT() / 60),
-                                                 "appLaunchScreen": userDefaults.string(forKey: "initialScreenURL") ?? ""
+                                                 "launch_screen": userDefaults.string(forKey: "initialScreenURL") ?? ""
         ])
     }
     
@@ -408,6 +409,98 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
             return true
         }
         #endif
+    }
+    
+    static func applySearchAdAttribution() {
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "userWasAttributed") {
+            return
+        }
+        if #available(iOS 14.3, *) {
+            DispatchQueue.global(qos: .background).async {
+                let token = try? AAAttribution.attributionToken()
+                if let attributionToken = token, let url = URL(string: "https://api-adservices.apple.com/api/v1/") {
+                    let request = NSMutableURLRequest(url: url)
+                    request.httpMethod = "POST"
+                    request.setValue("text/plain", forKey: "Content-Type")
+                    request.httpBody = Data(attributionToken.utf8)
+                    let task = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
+                        if error != nil {
+                            return
+                        }
+                        guard let data = data else {
+                            return
+                        }
+                        defaults.set(true, forKey: "userWasAttributed")
+                        do {
+                            guard let data = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+                                return
+                            }
+                            if let campaignId = data["campaignId"] as? Int {
+                                if campaignId != 1234567890 {
+                                    var analyticsData = [String: Any]()
+                                    analyticsData["attribution"] = data["iad-attribution"]
+                                    if analyticsData["attribution"] as? String != "true" {
+                                        return
+                                    }
+                                    analyticsData["campaignID"] = campaignId
+                                    analyticsData["campaignName"] = data["iad-campaign-name"]
+                                    analyticsData["purchaseDate"] = data["iad-purchase-date"]
+                                    analyticsData["conversionDate"] = data["iad-conversion-date"]
+                                    analyticsData["conversionType"] = data["iad-conversion-type"]
+                                    analyticsData["clickDate"] = data["iad-click-date"]
+                                    analyticsData["keyword"] = data["iad-keyword"]
+                                    analyticsData["keywordMatchtype"] = data["iad-keyword-matchtype"]
+                                    HabiticaAnalytics.shared.log("adAttribution", withEventProperties: analyticsData)
+                                    Amplitude.instance().setUserProperties([
+                                        "clickedSearchAd": data["iad-attribution"] ?? "",
+                                        "searchAdName": data["iad-campaign-name"] ?? "",
+                                        "searchAdConversionDate": data["iad-conversion-date"] ?? ""
+                                    ])
+                                }
+                            }
+                        } catch {
+                            print(error)
+                        }
+                    }
+                    task.resume()
+                }
+            }
+        } else {
+            ADClient.shared().requestAttributionDetails({ (attributionDetails, error) in
+                guard let attributionDetails = attributionDetails else {
+                    return
+                }
+                for (_, adDictionary) in attributionDetails {
+                        if let data = adDictionary as? Dictionary<String, Any> {
+                            if let campaignId = data["iad-campaign-id"] as? String {
+                            if campaignId != "1234567890" {
+                                defaults.set(true, forKey: "userWasAttributed")
+                                var analyticsData = [String: Any]()
+                                analyticsData["attribution"] = data["iad-attribution"]
+                                if analyticsData["attribution"] as? String != "true" {
+                                    return
+                                }
+                                analyticsData["campaignID"] = campaignId
+                                analyticsData["campaignName"] = data["iad-campaign-name"]
+                                analyticsData["purchaseDate"] = data["iad-purchase-date"]
+                                analyticsData["conversionDate"] = data["iad-conversion-date"]
+                                analyticsData["conversionType"] = data["iad-conversion-type"]
+                                analyticsData["clickDate"] = data["iad-click-date"]
+                                analyticsData["keyword"] = data["iad-keyword"]
+                                analyticsData["keywordMatchtype"] = data["iad-keyword-matchtype"]
+                                HabiticaAnalytics.shared.log("adAttribution", withEventProperties: analyticsData)
+                                Amplitude.instance().setUserProperties([
+                                    "clickedSearchAd": data["iad-attribution"] ?? "",
+                                    "searchAdName": data["iad-campaign-name"] ?? "",
+                                    "searchAdConversionDate": data["iad-conversion-date"] ?? ""
+                                ])
+                            }
+                        }
+                    }
+                }
+            })
+        }
     }
     
     @objc

@@ -43,7 +43,8 @@ class ImageManager: NSObject {
         "quest_windup": "gif",
         "Pet-HatchingPotion_Windup": "gif",
         "Pet_HatchingPotion_Windup": "gif",
-        "Pet-HatchingPotion-Windup": "gif"
+        "Pet-HatchingPotion-Windup": "gif",
+        "quest_solarSystem": "gif"
     ]
     
     @objc
