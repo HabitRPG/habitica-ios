@@ -124,8 +124,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     }
     
     var statusBarHeight: CGFloat {
-        let statusBarSize = view.window?.windowScene?.statusBarManager?.statusBarFrame
-        return min(statusBarSize?.width ?? 0, statusBarSize?.height ?? 0)
+        return UIApplication.shared.findKeyWindow()?.safeAreaInsets.top ?? 0
     }
     
      @objc public var contentInset: CGFloat {
