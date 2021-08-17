@@ -148,7 +148,7 @@ enum ConfigVariable: Int {
         case .surveyURL:
             return "" as NSString
         case .showTaskGraphs:
-            return false as NSNumber
+            return true as NSNumber
         case .advertiseTaskGraphs:
             return false as NSNumber
         }

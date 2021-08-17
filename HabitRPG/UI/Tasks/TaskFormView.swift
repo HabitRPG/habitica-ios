@@ -504,7 +504,7 @@ class TaskFormViewModel: ObservableObject {
     @Published var notes: String = ""
     @Published var priority: Float = 1.0
     @Published var frequency: String = "daily"
-    @Published var value: String = "1|"
+    @Published var value: String = "1"
     @Published var stat: String = "strength"
     @Published var up: Bool = true
     @Published var down: Bool = false
@@ -532,7 +532,7 @@ class TaskFormViewModel: ObservableObject {
             _text = Published(initialValue: task?.text ?? "")
             _notes = Published(initialValue: task?.notes ?? "")
             _priority = Published(initialValue: task?.priority ?? 1.0)
-            _frequency = Published(initialValue: task?.frequency ?? "")
+            _frequency = Published(initialValue: task?.frequency ?? "daily")
             _value = Published(initialValue: String(task?.value ?? 1))
             _up = Published(initialValue: task?.up ?? true)
             _down = Published(initialValue: task?.down ?? false)
@@ -587,12 +587,17 @@ struct DailyProgressView: View {
     }
     
     @ViewBuilder
-    private func dayItem(size: CGFloat, offset: Int, wasActive: Bool) -> some View {
+    private func dayItem(size: CGFloat, offset: Int) -> some View {
         let examinedDay = today.addingTimeInterval(-(Double(offset * 24 * 60 * 60)))
         
-        let wasCompleted = history.contains { item in
-            return (item.timestamp?.distance(to: examinedDay) ?? 0) < 24 * 60 * 60
+        let historyEntry = history.last { item in
+            if let timestamp = item.timestamp {
+                return Calendar.current.isDate(timestamp, inSameDayAs: examinedDay)
+            }
+            return false
         }
+        let wasActive = historyEntry?.isDue ?? false
+        let wasCompleted = historyEntry?.completed ?? false
         
         let day = calendar.component(.day, from: examinedDay)
         let color = wasCompleted ? Color(UIColor.green100) : Color(UIColor.red100)
@@ -614,7 +619,7 @@ struct DailyProgressView: View {
                 let size = (reader.size.width - 62) / 7
                 HStack(spacing: 7) {
                     ForEach(0..<7) { offset in
-                        dayItem(size: size, offset: 6 - offset, wasActive: false)
+                        dayItem(size: size, offset: 6 - offset)
                     }
                 }.padding(.horizontal, 10).padding(.vertical, 10).background(Color(theme.windowBackgroundColor).cornerRadius(8))
                 .background(GeometryReader { gp -> Color in
@@ -696,7 +701,7 @@ struct TaskFormView: View {
                     }.padding(.horizontal, 16)
                     .padding(.vertical, 12)
                     VStack(spacing: 25) {
-                        if taskType == .daily && false, let task = viewModel.task {
+                        if taskType == .daily && showTaskGraphs, let task = viewModel.task {
                             TaskFormSection(header: Text(L10n.Tasks.Form.completion.uppercased()),
                                             content: DailyProgressView(history: task.history), backgroundColor: .clear)
                             
@@ -813,6 +818,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
     
     private func save() {
         let task = taskRepository.getEditableTask(id: editedTask?.id ?? "") ?? taskRepository.getNewTask()
+        task.type = taskType.rawValue
         task.text = viewModel.text
         task.notes = viewModel.notes
         task.priority = viewModel.priority

@@ -76,13 +76,8 @@ open class NetworkCall {
         dataSignal = dataProperty.signal
         
         errorDataSignal = errorDataProperty.signal.skipNil()
-        if networkErrorHandler != nil {
-            errorSignal = errorProperty.signal.skipNil()
-            serverErrorSignal = httpResponseSignal.filter({ $0.statusCode > 300 }).map({ NSError(domain: "Server", code: $0.statusCode, userInfo: ["url": $0.url?.absoluteString as Any]) })
-        } else {
-            errorSignal = errorProperty.signal.skipNil()
-            serverErrorSignal = httpResponseSignal.filter({ $0.statusCode > 300 }).map({ NSError(domain: "Server", code: $0.statusCode, userInfo: ["url": $0.url?.absoluteString as Any]) })
-        }
+        errorSignal = errorProperty.signal.skipNil()
+        serverErrorSignal = httpResponseSignal.filter({ $0.statusCode > 300 }).map({ NSError(domain: "Server", code: $0.statusCode, userInfo: ["url": $0.url?.absoluteString as Any]) })
         
         dataTaskSignal.observeValues { task in
             task.resume()

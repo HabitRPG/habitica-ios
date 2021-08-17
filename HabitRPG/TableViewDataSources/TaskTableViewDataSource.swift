@@ -120,7 +120,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
             disposable.dispose()
         }
         fetchTasksDisposable = repository.getTasks(predicate: predicate, sortKey: sortKey).on(failed: {[weak self] error in
-            logger.record(error: error)
+                logger.record(error: error)
                 self?.fetchTasks()
             }, value: {[weak self] (tasks, changes) in
                 self?.sections[0].items = tasks

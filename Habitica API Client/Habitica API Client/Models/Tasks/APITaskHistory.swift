@@ -15,6 +15,8 @@ class APITaskHistory: Decodable, TaskHistoryProtocol {
     var value: Float = 0
     var scoredUp: Int = 0
     var scoredDown: Int = 0
+    var isDue: Bool = false
+    var completed: Bool = false
     var isValid: Bool = false
     
     enum CodingKeys: String, CodingKey {
@@ -22,6 +24,8 @@ class APITaskHistory: Decodable, TaskHistoryProtocol {
         case value
         case scoredUp
         case scoredDown
+        case isDue
+        case completed
     }
     
     public required init(from decoder: Decoder) throws {
@@ -30,5 +34,7 @@ class APITaskHistory: Decodable, TaskHistoryProtocol {
         value = (try? values.decode(Float.self, forKey: .value)) ?? 0
         scoredUp = (try? values.decode(Int.self, forKey: .scoredUp)) ?? 0
         scoredDown = (try? values.decode(Int.self, forKey: .scoredDown)) ?? 0
+        isDue = (try? values.decode(Bool.self, forKey: .isDue)) ?? false
+        completed = (try? values.decode(Bool.self, forKey: .completed)) ?? false
     }
 }

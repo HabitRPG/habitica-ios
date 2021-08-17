@@ -17,6 +17,8 @@ class RealmTaskHistory: Object, TaskHistoryProtocol {
     @objc dynamic var value: Float = 0
     @objc dynamic var scoredUp: Int = 0
     @objc dynamic var scoredDown: Int = 0
+    @objc dynamic var isDue = false
+    @objc dynamic var completed = false
     
     var isValid: Bool {
         return !isInvalidated
@@ -34,5 +36,7 @@ class RealmTaskHistory: Object, TaskHistoryProtocol {
         value = historyProtocol.value
         scoredUp = historyProtocol.scoredUp
         scoredDown = historyProtocol.scoredDown
+        isDue = historyProtocol.isDue
+        completed = historyProtocol.completed
     }
 }

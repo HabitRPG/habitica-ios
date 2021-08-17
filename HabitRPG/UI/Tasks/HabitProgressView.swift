@@ -310,4 +310,6 @@ private class PreviewTaskHistory: TaskHistoryProtocol {
     var taskID: String?
     var scoredUp: Int = 0
     var scoredDown: Int = 0
+    var isDue: Bool = false
+    var completed: Bool = false
 }
