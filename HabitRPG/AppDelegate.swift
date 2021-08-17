@@ -26,6 +26,7 @@ import FBSDKCoreKit
 import AppAuth
 import FBSDKLoginKit
 import AdServices
+import iAd
 
 class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIApplicationDelegate {
     var window: UIWindow?

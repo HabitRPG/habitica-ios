@@ -304,7 +304,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             self.loadingIndicatorVisibilityObserver.send(value: true)
             if authValues.authType == .login {
                 userRepository.login(username: authValues.username ?? "", password: authValues.password ?? "")
-                    .on(completed: {
+                    .on(failed: { _ in
                         self.loadingIndicatorVisibilityObserver.send(value: false)
                     })
                     .observeValues { loginResult in
@@ -317,7 +317,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                                         password: authValues.password ?? "",
                                         confirmPassword: authValues.passwordRepeat ?? "",
                                         email: authValues.email ?? "")
-                    .on(completed: {
+                    .on(failed: { _ in
                         self.loadingIndicatorVisibilityObserver.send(value: false)
                     })
                     .observeValues { loginResult in
@@ -418,6 +418,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     private let onSuccessfulLoginProperty = MutableProperty(())
     func onSuccessfulLogin() {
         userRepository.retrieveUser().observeCompleted {[weak self] in
+            self?.loadingIndicatorVisibilityObserver.send(value: false)
             self?.onSuccessfulLoginProperty.value = ()
         }
     }
