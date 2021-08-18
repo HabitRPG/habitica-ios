@@ -6,7 +6,7 @@
 import Foundation
 
 @objc
-public protocol PreferencesProtocol {
+public protocol PreferencesProtocol: BaseModelProtocol {
     var skin: String? { get set }
     var language: String? { get set }
     var automaticAllocation: Bool { get set }

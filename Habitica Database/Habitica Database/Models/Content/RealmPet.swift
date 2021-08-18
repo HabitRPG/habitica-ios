@@ -21,6 +21,10 @@ class RealmPet: Object, PetProtocol {
         return "key"
     }
     
+    var isValid: Bool {
+        return !isInvalidated
+    }
+    
     convenience init(_ petProtocol: PetProtocol) {
         self.init()
         key = petProtocol.key

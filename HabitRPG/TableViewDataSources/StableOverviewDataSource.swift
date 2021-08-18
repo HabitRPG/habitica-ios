@@ -70,6 +70,7 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
     internal func mapData(owned: [String], animals: [AnimalProtocol], items: [String: String]) -> [String: [StableOverviewItem]] {
         var data = ["drop": [StableOverviewItem](), "quest": [StableOverviewItem](), "special": [StableOverviewItem](), "wacky": [StableOverviewItem]()]
         animals.forEach { (animal) in
+            if !animal.isValid { return }
             let type = (animal.type == "premium" ? "drop" : animal.type) ?? ""
             var item = data[type]?.last
             let isOwned = owned.contains(animal.key ?? "")

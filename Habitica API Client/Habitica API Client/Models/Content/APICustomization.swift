@@ -15,6 +15,7 @@ class APICustomization: CustomizationProtocol, Decodable {
     var group: String?
     var price: Float
     var set: CustomizationSetProtocol?
+    var isValid: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case key

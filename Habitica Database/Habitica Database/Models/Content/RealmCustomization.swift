@@ -34,6 +34,10 @@ class RealmCustomization: Object, CustomizationProtocol {
         return "combinedKey"
     }
     
+    var isValid: Bool {
+        return !isInvalidated
+    }
+    
     convenience init(_ customizationProtocol: CustomizationProtocol) {
         self.init()
         key = customizationProtocol.key

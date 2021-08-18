@@ -21,6 +21,10 @@ class RealmMount: Object, MountProtocol {
         return "key"
     }
     
+    var isValid: Bool {
+        return !isInvalidated
+    }
+    
     convenience init(_ mountProtocol: MountProtocol) {
         self.init()
         key = mountProtocol.key

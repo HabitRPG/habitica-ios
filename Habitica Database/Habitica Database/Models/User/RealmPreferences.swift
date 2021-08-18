@@ -80,6 +80,10 @@ class RealmPreferences: Object, PreferencesProtocol {
         return "id"
     }
     
+    var isValid: Bool {
+        return !isInvalidated
+    }
+    
     override static func ignoredProperties() -> [String] {
         return ["pushNotifications"]
     }

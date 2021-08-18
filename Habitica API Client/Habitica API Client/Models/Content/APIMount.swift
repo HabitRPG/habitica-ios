@@ -15,4 +15,5 @@ class APIMount: MountProtocol, Decodable {
     var potion: String?
     var type: String?
     var text: String?
+    var isValid: Bool
 }

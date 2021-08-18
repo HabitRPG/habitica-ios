@@ -163,6 +163,7 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
     @objc
     private func dismissAll() {
         let dismissableNotifications = sections[0].items.filter { (notification) -> Bool in
+            if !notification.isValid { return false }
             return notification.isDismissable
         }
         disposable.add(userRepository.readNotifications(notifications: dismissableNotifications).observeCompleted {})

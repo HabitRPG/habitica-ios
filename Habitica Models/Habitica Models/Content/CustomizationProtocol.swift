@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public protocol CustomizationProtocol {
+public protocol CustomizationProtocol: BaseModelProtocol {
     var key: String? { get set }
     var type: String? { get set }
     var group: String? { get set }

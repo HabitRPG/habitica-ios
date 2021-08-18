@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public protocol AnimalProtocol {
+public protocol AnimalProtocol: BaseModelProtocol {
     var key: String? { get set }
     var egg: String? { get set }
     var potion: String? { get set }
