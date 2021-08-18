@@ -97,6 +97,7 @@
 "tasks.habits" = "Habits";
 "tasks.dailies" = "Dailies";
 "tasks.rewards" = "Rewards";
+"tasks.tasks" = "Tasks";
 "tasks.todos" = "To Do's";
 "tasks.form.create" = "New %@";
 "tasks.form.edit" = "Edit %@";

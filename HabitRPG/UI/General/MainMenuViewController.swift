@@ -80,6 +80,7 @@ class MenuItem {
     }
     
     static let allItems = [
+        MenuItem(key: .habits, title: L10n.Tasks.tasks, segue: StoryboardSegue.Main.tasksBoardSegue.rawValue),
         MenuItem(key: .habits, title: L10n.Tasks.habits, vcInstantiator: StoryboardScene.Main.habitsViewController.instantiate),
         MenuItem(key: .dailies, title: L10n.Tasks.dailies, vcInstantiator: StoryboardScene.Main.dailiesViewController.instantiate),
         MenuItem(key: .todos, title: L10n.Tasks.todos, vcInstantiator: StoryboardScene.Main.todosViewController.instantiate),
@@ -288,9 +289,11 @@ class MainMenuViewController: BaseTableViewController {
             RouterHandler.shared.handle(urlString: "/profile/\(self?.user?.id ?? "")")
         }
         
+        #if !targetEnvironment(macCatalyst)
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         self.refreshControl = refreshControl
+        #endif
         
         setupMenu()
         
@@ -518,7 +521,11 @@ class MainMenuViewController: BaseTableViewController {
             if let nc = vc as? UINavigationController {
                 nc.present(vc, animated: true, completion: nil)
             } else {
-                navigationController?.pushViewController(vc, animated: true)
+                if splitViewController != nil {
+                    splitViewController?.showDetailViewController(vc, sender: self)
+                } else {
+                    navigationController?.pushViewController(vc, animated: true)
+                }
             }
         } else {
             performSegue(withIdentifier: item.segue, sender: self)

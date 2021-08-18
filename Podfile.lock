@@ -1,151 +1,158 @@
 PODS:
+  - ACKReactiveExtensions/Core (5.3.1):
+    - ReactiveCocoa (~> 11.1)
+    - ReactiveSwift (~> 6.5)
+  - ACKReactiveExtensions/Realm (5.3.1):
+    - ACKReactiveExtensions/Core
+    - ReactiveCocoa (~> 11.1)
+    - ReactiveSwift (~> 6.5)
+    - RealmSwift (~> 10.6)
   - Amplitude-iOS (4.10.0)
   - AppAuth (1.4.0):
     - AppAuth/Core (= 1.4.0)
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
-  - Charts (3.6.0):
-    - Charts/Core (= 3.6.0)
-  - Charts/Core (3.6.0)
   - ColorPickerRow (1.3.3):
     - Eureka (>= 5.0.0)
     - UIColor_Hex_Swift (>= 3.0.0)
   - DateTools (2.0.0)
   - DeepLinkKit (1.5.1)
-  - Down (0.10.0)
+  - Down (0.11.0)
   - DynamicBlurView (4.1.0)
   - Eureka (5.3.3)
-  - FBSDKCoreKit (9.2.0):
-    - FBSDKCoreKit/Basics (= 9.2.0)
-    - FBSDKCoreKit/Core (= 9.2.0)
-  - FBSDKCoreKit/Basics (9.2.0)
-  - FBSDKCoreKit/Core (9.2.0):
-    - FBSDKCoreKit/Basics
-  - FBSDKLoginKit (9.2.0):
-    - FBSDKLoginKit/Login (= 9.2.0)
-  - FBSDKLoginKit/Login (9.2.0):
-    - FBSDKCoreKit (~> 9.2.0)
-  - Firebase/Core (7.11.0):
+  - FBAEMKit (11.1.0):
+    - FBAEMKit/AEM (= 11.1.0)
+  - FBAEMKit/AEM (11.1.0):
+    - FBSDKCoreKit_Basics (~> 11.1.0)
+  - FBSDKCoreKit (11.1.0):
+    - FBSDKCoreKit/Core (= 11.1.0)
+  - FBSDKCoreKit/Core (11.1.0):
+    - FBAEMKit (~> 11.1.0)
+    - FBSDKCoreKit_Basics (~> 11.1.0)
+  - FBSDKCoreKit_Basics (11.1.0):
+    - FBSDKCoreKit_Basics/Basics (= 11.1.0)
+  - FBSDKCoreKit_Basics/Basics (11.1.0)
+  - FBSDKLoginKit (11.1.0):
+    - FBSDKLoginKit/Login (= 11.1.0)
+  - FBSDKLoginKit/Login (11.1.0):
+    - FBSDKCoreKit (~> 11.1.0)
+    - FBSDKCoreKit_Basics (~> 11.1.0)
+  - Firebase/Core (8.6.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (~> 7.11.0)
-  - Firebase/CoreOnly (7.11.0):
-    - FirebaseCore (= 7.11.0)
-  - Firebase/Messaging (7.11.0):
+    - FirebaseAnalytics (~> 8.6.0)
+  - Firebase/CoreOnly (8.6.0):
+    - FirebaseCore (= 8.6.0)
+  - Firebase/Messaging (8.6.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (~> 7.11.0)
-  - Firebase/Performance (7.11.0):
+    - FirebaseMessaging (~> 8.6.0)
+  - Firebase/Performance (8.6.0):
     - Firebase/CoreOnly
-    - FirebasePerformance (~> 7.11.0)
-  - Firebase/RemoteConfig (7.11.0):
+    - FirebasePerformance (~> 8.6.0)
+  - Firebase/RemoteConfig (8.6.0):
     - Firebase/CoreOnly
-    - FirebaseRemoteConfig (~> 7.11.0)
-  - FirebaseABTesting (7.11.0):
-    - FirebaseCore (~> 7.0)
-  - FirebaseAnalytics (7.11.0):
-    - FirebaseAnalytics/AdIdSupport (= 7.11.0)
-    - FirebaseCore (~> 7.0)
-    - FirebaseInstallations (~> 7.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
-    - GoogleUtilities/MethodSwizzler (~> 7.0)
-    - GoogleUtilities/Network (~> 7.0)
-    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+    - FirebaseRemoteConfig (~> 8.6.0)
+  - FirebaseABTesting (8.6.0):
+    - FirebaseCore (~> 8.0)
+  - FirebaseAnalytics (8.6.0):
+    - FirebaseAnalytics/AdIdSupport (= 8.6.0)
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
+    - GoogleUtilities/MethodSwizzler (~> 7.4)
+    - GoogleUtilities/Network (~> 7.4)
+    - "GoogleUtilities/NSData+zlib (~> 7.4)"
     - nanopb (~> 2.30908.0)
-  - FirebaseAnalytics/AdIdSupport (7.11.0):
-    - FirebaseAnalytics/Base (= 7.11.0)
-    - FirebaseCore (~> 7.0)
-    - FirebaseInstallations (~> 7.0)
-    - GoogleAppMeasurement/AdIdSupport (= 7.11.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
-    - GoogleUtilities/MethodSwizzler (~> 7.0)
-    - GoogleUtilities/Network (~> 7.0)
-    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+  - FirebaseAnalytics/AdIdSupport (8.6.0):
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleAppMeasurement (= 8.6.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
+    - GoogleUtilities/MethodSwizzler (~> 7.4)
+    - GoogleUtilities/Network (~> 7.4)
+    - "GoogleUtilities/NSData+zlib (~> 7.4)"
     - nanopb (~> 2.30908.0)
-  - FirebaseAnalytics/Base (7.11.0):
-    - FirebaseCore (~> 7.0)
-    - FirebaseInstallations (~> 7.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
-    - GoogleUtilities/MethodSwizzler (~> 7.0)
-    - GoogleUtilities/Network (~> 7.0)
-    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+  - FirebaseCore (8.6.0):
+    - FirebaseCoreDiagnostics (~> 8.0)
+    - GoogleUtilities/Environment (~> 7.4)
+    - GoogleUtilities/Logger (~> 7.4)
+  - FirebaseCoreDiagnostics (8.6.0):
+    - GoogleDataTransport (~> 9.0)
+    - GoogleUtilities/Environment (~> 7.4)
+    - GoogleUtilities/Logger (~> 7.4)
     - nanopb (~> 2.30908.0)
-  - FirebaseCore (7.11.0):
-    - FirebaseCoreDiagnostics (~> 7.4)
-    - GoogleUtilities/Environment (~> 7.0)
-    - GoogleUtilities/Logger (~> 7.0)
-  - FirebaseCoreDiagnostics (7.11.0):
-    - GoogleDataTransport (~> 8.4)
-    - GoogleUtilities/Environment (~> 7.0)
-    - GoogleUtilities/Logger (~> 7.0)
+  - FirebaseCrashlytics (8.6.0):
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleDataTransport (~> 9.0)
+    - GoogleUtilities/Environment (~> 7.4)
     - nanopb (~> 2.30908.0)
-  - FirebaseCrashlytics (7.11.0):
-    - FirebaseCore (~> 7.0)
-    - FirebaseInstallations (~> 7.0)
-    - GoogleDataTransport (~> 8.4)
+    - PromisesObjC (< 3.0, >= 1.2)
+  - FirebaseInstallations (8.6.0):
+    - FirebaseCore (~> 8.0)
+    - GoogleUtilities/Environment (~> 7.4)
+    - GoogleUtilities/UserDefaults (~> 7.4)
+    - PromisesObjC (< 3.0, >= 1.2)
+  - FirebaseMessaging (8.6.0):
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleDataTransport (~> 9.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
+    - GoogleUtilities/Environment (~> 7.4)
+    - GoogleUtilities/Reachability (~> 7.4)
+    - GoogleUtilities/UserDefaults (~> 7.4)
     - nanopb (~> 2.30908.0)
-    - PromisesObjC (~> 1.2)
-  - FirebaseInstallations (7.11.0):
-    - FirebaseCore (~> 7.0)
-    - GoogleUtilities/Environment (~> 7.0)
-    - GoogleUtilities/UserDefaults (~> 7.0)
-    - PromisesObjC (~> 1.2)
-  - FirebaseInstanceID (7.11.0):
-    - FirebaseCore (~> 7.0)
-    - FirebaseInstallations (~> 7.0)
-    - GoogleUtilities/Environment (~> 7.0)
-    - GoogleUtilities/UserDefaults (~> 7.0)
-  - FirebaseMessaging (7.11.0):
-    - FirebaseCore (~> 7.0)
-    - FirebaseInstallations (~> 7.0)
-    - FirebaseInstanceID (~> 7.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
-    - GoogleUtilities/Environment (~> 7.0)
-    - GoogleUtilities/Reachability (~> 7.0)
-    - GoogleUtilities/UserDefaults (~> 7.0)
-  - FirebasePerformance (7.11.0):
-    - FirebaseCore (~> 7.0)
-    - FirebaseInstallations (~> 7.0)
-    - FirebaseRemoteConfig (~> 7.0)
-    - GoogleDataTransport (~> 8.4)
-    - GoogleUtilities/Environment (~> 7.0)
-    - GoogleUtilities/ISASwizzler (~> 7.0)
-    - GoogleUtilities/MethodSwizzler (~> 7.0)
-    - Protobuf (~> 3.12)
-  - FirebaseRemoteConfig (7.11.0):
-    - FirebaseABTesting (~> 7.0)
-    - FirebaseCore (~> 7.0)
-    - FirebaseInstallations (~> 7.0)
-    - GoogleUtilities/Environment (~> 7.0)
-    - "GoogleUtilities/NSData+zlib (~> 7.0)"
-  - GoogleAppMeasurement/AdIdSupport (7.11.0):
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
-    - GoogleUtilities/MethodSwizzler (~> 7.0)
-    - GoogleUtilities/Network (~> 7.0)
-    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+  - FirebasePerformance (8.6.0):
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - FirebaseRemoteConfig (~> 8.0)
+    - GoogleDataTransport (~> 9.0)
+    - GoogleUtilities/Environment (~> 7.4)
+    - GoogleUtilities/ISASwizzler (~> 7.4)
+    - GoogleUtilities/MethodSwizzler (~> 7.4)
     - nanopb (~> 2.30908.0)
-  - GoogleDataTransport (8.4.0):
+  - FirebaseRemoteConfig (8.6.0):
+    - FirebaseABTesting (~> 8.0)
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleUtilities/Environment (~> 7.4)
+    - "GoogleUtilities/NSData+zlib (~> 7.4)"
+  - GoogleAppMeasurement (8.6.0):
+    - GoogleAppMeasurement/AdIdSupport (= 8.6.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
+    - GoogleUtilities/MethodSwizzler (~> 7.4)
+    - GoogleUtilities/Network (~> 7.4)
+    - "GoogleUtilities/NSData+zlib (~> 7.4)"
+    - nanopb (~> 2.30908.0)
+  - GoogleAppMeasurement/AdIdSupport (8.6.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
+    - GoogleUtilities/MethodSwizzler (~> 7.4)
+    - GoogleUtilities/Network (~> 7.4)
+    - "GoogleUtilities/NSData+zlib (~> 7.4)"
+    - nanopb (~> 2.30908.0)
+  - GoogleDataTransport (9.1.0):
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
-    - PromisesObjC (~> 1.2)
-  - GoogleUtilities/AppDelegateSwizzler (7.4.0):
+    - PromisesObjC (< 3.0, >= 1.2)
+  - GoogleUtilities/AppDelegateSwizzler (7.5.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (7.4.0):
-    - PromisesObjC (~> 1.2)
-  - GoogleUtilities/ISASwizzler (7.4.0)
-  - GoogleUtilities/Logger (7.4.0):
+  - GoogleUtilities/Environment (7.5.1):
+    - PromisesObjC (< 3.0, >= 1.2)
+  - GoogleUtilities/ISASwizzler (7.5.1)
+  - GoogleUtilities/Logger (7.5.1):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (7.4.0):
+  - GoogleUtilities/MethodSwizzler (7.5.1):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (7.4.0):
+  - GoogleUtilities/Network (7.5.1):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (7.4.0)"
-  - GoogleUtilities/Reachability (7.4.0):
+  - "GoogleUtilities/NSData+zlib (7.5.1)"
+  - GoogleUtilities/Reachability (7.5.1):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (7.4.0):
+  - GoogleUtilities/UserDefaults (7.5.1):
     - GoogleUtilities/Logger
   - iOSSnapshotTestCase (6.2.0):
     - iOSSnapshotTestCase/SwiftSupport (= 6.2.0)
@@ -154,9 +161,7 @@ PODS:
     - iOSSnapshotTestCase/Core
   - KeychainAccess (4.2.2)
   - Keys (1.0.1)
-  - Kingfisher (5.8.3):
-    - Kingfisher/Core (= 5.8.3)
-  - Kingfisher/Core (5.8.3)
+  - Kingfisher (6.3.1)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
     - MRProgress/Blur (= 0.8.3)
@@ -190,7 +195,7 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
-  - Nimble (9.0.1)
+  - Nimble (9.2.0)
   - OHHTTPStubs/Core (9.1.0)
   - OHHTTPStubs/Default (9.1.0):
     - OHHTTPStubs/Core
@@ -204,21 +209,20 @@ PODS:
   - OHHTTPStubs/OHPathHelpers (9.1.0)
   - OHHTTPStubs/Swift (9.1.0):
     - OHHTTPStubs/Default
-  - PinLayout (1.9.3)
+  - PinLayout (1.10.0)
   - PopupDialog (1.1.1):
     - DynamicBlurView (~> 4.0)
-  - PromisesObjC (1.2.12)
-  - Protobuf (3.15.8)
-  - Quick (3.1.2)
+  - PromisesObjC (2.0.0)
+  - Quick (4.0.0)
   - ReactiveCocoa (11.2.1):
     - ReactiveSwift (~> 6.6)
-  - ReactiveSwift (6.6.0)
-  - Realm (4.4.1):
-    - Realm/Headers (= 4.4.1)
-  - Realm/Headers (4.4.1)
-  - RealmSwift (4.4.1):
-    - Realm (= 4.4.1)
-  - SimulatorStatusMagic (2.5)
+  - ReactiveSwift (6.6.1)
+  - Realm (10.12.0):
+    - Realm/Headers (= 10.12.0)
+  - Realm/Headers (10.12.0)
+  - RealmSwift (10.12.0):
+    - Realm (= 10.12.0)
+  - SimulatorStatusMagic (2.6)
   - SlackTextViewController (1.9.6)
   - SwiftGen (6.4.0)
   - SwiftLint (0.43.1)
@@ -227,9 +231,9 @@ PODS:
   - UIColor_Hex_Swift (5.1.0)
 
 DEPENDENCIES:
+  - ACKReactiveExtensions/Realm
   - Amplitude-iOS
   - AppAuth
-  - Charts
   - ColorPickerRow
   - DateTools
   - DeepLinkKit
@@ -245,7 +249,7 @@ DEPENDENCIES:
   - iOSSnapshotTestCase
   - KeychainAccess
   - Keys (from `Pods/CocoaPodsKeys`)
-  - Kingfisher (~> 5.8.0)
+  - Kingfisher
   - MRProgress
   - Nimble
   - OHHTTPStubs/Swift
@@ -254,26 +258,28 @@ DEPENDENCIES:
   - Quick
   - ReactiveCocoa
   - ReactiveSwift
-  - RealmSwift (= 4.4.1)
+  - RealmSwift
   - SimulatorStatusMagic
   - SlackTextViewController
   - SwiftGen
   - SwiftLint
   - SwiftyStoreKit
-  - TagListView (~> 1.0)
+  - TagListView
 
 SPEC REPOS:
   trunk:
+    - ACKReactiveExtensions
     - Amplitude-iOS
     - AppAuth
-    - Charts
     - ColorPickerRow
     - DateTools
     - DeepLinkKit
     - Down
     - DynamicBlurView
     - Eureka
+    - FBAEMKit
     - FBSDKCoreKit
+    - FBSDKCoreKit_Basics
     - FBSDKLoginKit
     - Firebase
     - FirebaseABTesting
@@ -282,7 +288,6 @@ SPEC REPOS:
     - FirebaseCoreDiagnostics
     - FirebaseCrashlytics
     - FirebaseInstallations
-    - FirebaseInstanceID
     - FirebaseMessaging
     - FirebasePerformance
     - FirebaseRemoteConfig
@@ -299,7 +304,6 @@ SPEC REPOS:
     - PinLayout
     - PopupDialog
     - PromisesObjC
-    - Protobuf
     - Quick
     - ReactiveCocoa
     - ReactiveSwift
@@ -318,49 +322,49 @@ EXTERNAL SOURCES:
     :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
+  ACKReactiveExtensions: 7d38e3f83d72ee610642fab7af2cbbeca6f076d2
   Amplitude-iOS: 7d8cdc3408ba35c2e68368fc7c692cd104606b94
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
-  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   ColorPickerRow: 409acc262ca04283eb56f54e813e775d2e99741e
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   DeepLinkKit: 9f300348cbb20ef8389a5018a57d8c9952b1831c
-  Down: 01f155f9d7e99673c667efd2218709c3b9a8bc13
+  Down: b6ba1bc985c9d2f4e15e3b293d2207766fa12612
   DynamicBlurView: 58e18fae80bb614e34681a4486870e7d257b62e8
   Eureka: e6d720290c56bb23333ad1a0e020b2a98a0e9a43
-  FBSDKCoreKit: dace5abafc2fd9272733e6d027bcf18102712117
-  FBSDKLoginKit: 43f377b451d391f5bc9dd774f51a391db1072029
-  Firebase: c121feb35e4126c0b355e3313fa9b487d47319fd
-  FirebaseABTesting: e66f1f80747792630d9b292966de206d5df9853b
-  FirebaseAnalytics: cd3bd84d722a24a8923918af8af8e5236f615d77
-  FirebaseCore: 907447d8917a4d3eb0cce2829c5a0ad21d90b432
-  FirebaseCoreDiagnostics: 68ad972f99206cef818230f3f3179d52ccfb7f8c
-  FirebaseCrashlytics: 272b675aa9d1e9bae1f9e1449fcc1f2cf6042806
-  FirebaseInstallations: a58d4f72ec5861840b84df489f2668d970df558a
-  FirebaseInstanceID: ad5135045a498d7775903efd39762d2cdfa1be27
-  FirebaseMessaging: 163435fb6db065e3b6228f1e577b10ed2cc506d2
-  FirebasePerformance: 3166d0c16b359b1ef92be774f46f2768b98c8993
-  FirebaseRemoteConfig: 0ea30de5fb0231df8c1bdcdf3b6c23bdc5066131
-  GoogleAppMeasurement: fd19169c3034975cb934e865e5667bfdce59df7f
-  GoogleDataTransport: cd9db2180fcecd8da1b561aea31e3e56cf834aa7
-  GoogleUtilities: 284cddc7fffc14ae1907efb6f78ab95c1fccaedc
+  FBAEMKit: 5c8a8d08e5b2c79628490784883e0fcc75b12615
+  FBSDKCoreKit: 7ccb8b4bb2b5ee2ad94327b774dc23f03509675d
+  FBSDKCoreKit_Basics: 8f978bce195845f609b0ec6b425949d0d24f525b
+  FBSDKLoginKit: d65eb587a9eaa89295338fb0bb3b358bde0b7ae4
+  Firebase: 21ac9f28b09a8bdfc005f34c984fca84e7e8786d
+  FirebaseABTesting: c3e48ebf5e7e5c674c5a131c68e941d7921d83dc
+  FirebaseAnalytics: 8f32ae54ad42754f503354782575c4ddfc1425c3
+  FirebaseCore: 620b677f70f5470a8e59cb77f3ddc666f6f09785
+  FirebaseCoreDiagnostics: 3721920bde3a9a6d5aa093c1d25e9d3e47f694af
+  FirebaseCrashlytics: 58f8ecea7c799c61c50e8111d2e438424a8a1d2e
+  FirebaseInstallations: 0ede6ffcd215b8f93c19d9b06c1c54e2d4107e98
+  FirebaseMessaging: ce0a5ee974f7bfe83b6cc5acce88c2d969e37c41
+  FirebasePerformance: 868249ceda5e3399f581b5b53454d963feaa8164
+  FirebaseRemoteConfig: 9ee4672d4eacf646256e26cfac61021b3a390ea4
+  GoogleAppMeasurement: 2c0c6e2a7ab3fe730ade6379f732bdefb46f50b0
+  GoogleDataTransport: 85fd18ff3019bb85d3f2c551d04c481dedf71fc9
+  GoogleUtilities: 3df19e3c24f7bbc291d8b5809aa6b0d41e642437
   iOSSnapshotTestCase: 9ab44cb5aa62b84d31847f40680112e15ec579a6
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
-  Kingfisher: b7e4cb65ff24c264bd2a1284b75b974d907afd94
+  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
-  Nimble: 7bed62ffabd6dbfe05f5925cbc43722533248990
+  Nimble: 4f4a345c80b503b3ea13606a4f98405974ee4d0b
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
-  PinLayout: 4d8733121f8687edcc8f00c19bf1379d12808767
+  PinLayout: e50e9a748b632905fca6e67043ea4b05d6c92186
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
-  PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
-  Protobuf: adb85cd18a15bd1a777c158af9fd6e612a0e6d69
-  Quick: 60f0ea3b8e0cfc0df3259a5c06a238ad8b3c46e0
+  PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  Quick: 6473349e43b9271a8d43839d9ba1c442ed1b7ac4
   ReactiveCocoa: 194289e7069037d40c59cb4ae9230f4b1ec05fa8
-  ReactiveSwift: be9407e2aaf8a11e53a5229255693cffd9a63ccf
-  Realm: 4eb04d7487bd43c0581256f40b424eafb711deff
-  RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
-  SimulatorStatusMagic: 71cfcea1df017e8f0fa8e48bc182d86976376f84
+  ReactiveSwift: fab34244ad908808dc822bae352a058c8837c4ca
+  Realm: 32488213acb44660539c619d620cec1bac046166
+  RealmSwift: 0abdca6231d5ff8a4f84cef9c1121ef95a483faf
+  SimulatorStatusMagic: 9f5294c12ca99c6cadb243a60362a66000df540c
   SlackTextViewController: b854e62c1c156336bc4fd409c6ca79b5773e8f9d
   SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
@@ -368,6 +372,6 @@ SPEC CHECKSUMS:
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   UIColor_Hex_Swift: 8be7432edacb7fa91c78aa05ef3c30b66e4f9415
 
-PODFILE CHECKSUM: 9ec120d06b0a74dd4bd120d13113f80ad490924b
+PODFILE CHECKSUM: 7d70b24fb06b163bd159247e62fb267e2f2ab82a
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.10.2

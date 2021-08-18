@@ -24,8 +24,10 @@ class InboxOverviewViewController: BaseTableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60
         
+        #if !targetEnvironment(macCatalyst)
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        #endif
     }
     
     override func applyTheme(theme: Theme) {

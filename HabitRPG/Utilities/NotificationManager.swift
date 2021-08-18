@@ -8,7 +8,9 @@
 
 import Foundation
 import Habitica_Models
+#if !targetEnvironment(macCatalyst)
 import FirebaseAnalytics
+#endif
 
 class NotificationManager {
     private static var seenNotifications = Set<String>()
@@ -135,6 +137,7 @@ class NotificationManager {
     static func displayAchievement(notification: NotificationProtocol, isOnboarding: Bool, isLastOnboardingAchievement: Bool) -> Bool {
         userRepository.retrieveUser().observeCompleted {}
         userRepository.readNotification(notification: notification).observeCompleted {}
+        #if !targetEnvironment(macCatalyst)
         if isOnboarding {
             Analytics.logEvent(notification.achievementKey ?? "", parameters: nil)
         }
@@ -142,6 +145,7 @@ class NotificationManager {
             Analytics.logEvent(notification.type.rawValue, parameters: nil)
             Analytics.setUserProperty("true", forName: "completedOnboarding")
         }
+        #endif
         let alert = AchievementAlertController()
         alert.setNotification(notification: notification, isOnboarding: isOnboarding, isLastOnboardingAchievement: isLastOnboardingAchievement)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {

@@ -16,7 +16,9 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
     
     let dataSource = RewardViewDataSource()
 
+    #if !targetEnvironment(macCatalyst)
     let refreshControl = UIRefreshControl()
+    #endif
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +31,10 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
         collectionView?.register(inAppRewardNib, forCellWithReuseIdentifier: "InAppRewardCell")
         
         collectionView?.alwaysBounceVertical = true
+        #if !targetEnvironment(macCatalyst)
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         collectionView?.addSubview(refreshControl)
+        #endif
         
         tutorialIdentifier = "rewards"
         navigationItem.title = L10n.Tasks.rewards
@@ -65,7 +69,9 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
                 return self?.userRepository.retrieveInAppRewards() ?? Signal.empty
             })
             .observeCompleted {[weak self] in
-            self?.refreshControl.endRefreshing()
+                #if !targetEnvironment(macCatalyst)
+                self?.refreshControl.endRefreshing()
+                #endif
         }
     }
     

@@ -9,7 +9,9 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
+#if !targetEnvironment(macCatalyst)
 import FirebaseAnalytics
+#endif
 
 class BulkStatsAllocationViewController: UIViewController, Themeable {
     private let disposable = ScopedDisposable(CompositeDisposable())
@@ -54,7 +56,9 @@ class BulkStatsAllocationViewController: UIViewController, Themeable {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        #if !targetEnvironment(macCatalyst)
         Analytics.logEvent("open_bulk_stats", parameters: nil)
+        #endif
     }
     
     func applyTheme(theme: Theme) {

@@ -2164,6 +2164,8 @@ public enum L10n {
     public static var rewards: String { return L10n.tr("Mainstrings", "tasks.rewards") }
     /// School
     public static var school: String { return L10n.tr("Mainstrings", "tasks.school") }
+    /// Tasks
+    public static var tasks: String { return L10n.tr("Mainstrings", "tasks.tasks") }
     /// Team
     public static var team: String { return L10n.tr("Mainstrings", "tasks.team") }
     /// To Do

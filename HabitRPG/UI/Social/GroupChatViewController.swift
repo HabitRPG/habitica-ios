@@ -50,8 +50,10 @@ class GroupChatViewController: SLKTextViewController, Themeable {
         tableView?.rowHeight = UITableView.automaticDimension
         tableView?.estimatedRowHeight = 90
 
+        #if !targetEnvironment(macCatalyst)
         tableView?.refreshControl = UIRefreshControl()
         tableView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        #endif
         
         textView.registerMarkdownFormattingSymbol("**", withTitle: "Bold")
         textView.registerMarkdownFormattingSymbol("*", withTitle: "Italics")

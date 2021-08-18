@@ -11,7 +11,7 @@ import Foundation
 class MainVCSelectionSegue: UIStoryboardSegue {
     
     override var destination: UIViewController {
-        if #available(iOS 14.0, *), ConfigRepository().bool(variable: .enableIPadUI) {
+        if #available(iOS 14.0, *), ConfigRepository().enableIPadUI() {
             let viewController = StoryboardScene.Main.mainSplitViewController.instantiate()
             viewController.modalPresentationStyle = .fullScreen
             viewController.modalTransitionStyle = .crossDissolve

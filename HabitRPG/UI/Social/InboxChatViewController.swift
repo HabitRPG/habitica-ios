@@ -18,7 +18,9 @@ class InboxChatViewController: SLKTextViewController, Themeable {
         return InboxMessagesDataSource(otherUserID: userID, otherUsername: username)
     }()
     private var configRepository = ConfigRepository()
+    #if !targetEnvironment(macCatalyst)
     private let refreshControl = UIRefreshControl()
+    #endif
 
     @IBOutlet var profileBarButton: UIBarButtonItem!
     @IBOutlet var doneBarButton: UIBarButtonItem!
@@ -62,8 +64,10 @@ class InboxChatViewController: SLKTextViewController, Themeable {
         hrpgTopHeaderNavigationController()?.shouldHideTopHeader = true
         hrpgTopHeaderNavigationController()?.hideNavbar = false
                 
+        #if !targetEnvironment(macCatalyst)
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView?.refreshControl = refreshControl
+        #endif
         
         ThemeService.shared.addThemeable(themable: self)
         
@@ -82,7 +86,9 @@ class InboxChatViewController: SLKTextViewController, Themeable {
     @objc
     private func refresh() {
         dataSource.retrieveData(forced: true) {[weak self] in
+            #if !targetEnvironment(macCatalyst)
             self?.refreshControl.endRefreshing()
+            #endif
         }
     }
     
@@ -127,7 +133,9 @@ class InboxChatViewController: SLKTextViewController, Themeable {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.item == dataSource.tableView(tableView, numberOfRowsInSection: indexPath.section)-1 {
             dataSource.retrieveData(forced: false) {
+                #if !targetEnvironment(macCatalyst)
                 self.refreshControl.endRefreshing()
+                #endif
             }
         }
     }

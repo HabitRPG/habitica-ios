@@ -76,7 +76,9 @@ public class ThemeService: NSObject {
         UIToolbar.appearance().tintColor = theme.tintColor
         UIToolbar.appearance().backgroundColor = theme.contentBackgroundColor
         UIToolbar.appearance().barTintColor = theme.contentBackgroundColor
+        #if !targetEnvironment(macCatalyst)
         UIRefreshControl.appearance().tintColor = theme.tintColor
+        #endif
         UISegmentedControl.appearance().tintColor = theme.segmentedTintColor
         UISwitch.appearance().onTintColor = theme.backgroundTintColor
         // UIButton.appearance().tintColor = theme.tintColor

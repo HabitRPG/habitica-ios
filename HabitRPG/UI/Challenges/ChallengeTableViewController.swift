@@ -54,9 +54,11 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         topHeaderCoordinator.followScrollView = false
         layoutHeader()
         
+        #if !targetEnvironment(macCatalyst)
         self.tableView?.refreshControl = UIRefreshControl()
         self.tableView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-
+        #endif
+        
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)

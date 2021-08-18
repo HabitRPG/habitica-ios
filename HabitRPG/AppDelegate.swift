@@ -15,7 +15,9 @@ import Habitica_Models
 import RealmSwift
 import ReactiveSwift
 import Firebase
+#if !targetEnvironment(macCatalyst)
 import FirebaseAnalytics
+#endif
 import SwiftyStoreKit
 import StoreKit
 import UserNotifications
@@ -129,9 +131,11 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
         Messaging.messaging().delegate = self
         
         let userDefaults = UserDefaults.standard
+        #if !targetEnvironment(macCatalyst)
         Analytics.setUserProperty(LanguageHandler.getAppLanguage().code, forName: "app_language")
         Analytics.setUserProperty(UIApplication.shared.alternateIconName, forName: "app_icon")
         Analytics.setUserProperty(userDefaults.string(forKey: "initialScreenURL"), forName: "launch_screen")
+        #endif
     }
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
@@ -247,7 +251,9 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
         ThemeService.shared.updateDarkMode()
         let defaults = UserDefaults.standard
         let themeName = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") ?? ThemeName.defaultTheme
+        #if !targetEnvironment(macCatalyst)
         Analytics.setUserProperty(themeName.rawValue, forName: "theme")
+        #endif
     }
     
     @objc
@@ -541,7 +547,9 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
             WidgetCenter.shared.getCurrentConfigurations { result in
                 switch result {
                 case let .success(info):
+                    #if !targetEnvironment(macCatalyst)
                     Analytics.setUserProperty(String(info.count), forName: "widgetCount")
+                    #endif
                 case let .failure(error):
                     logger.log(error)
                 }

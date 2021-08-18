@@ -40,9 +40,11 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         let nib = UINib(nibName: getCellNibName() ?? "", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
                 
+        #if !targetEnvironment(macCatalyst)
         let refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
         refreshControl = refresher
+        #endif
         
         searchBar.placeholder = L10n.search
         searchBar.delegate = self

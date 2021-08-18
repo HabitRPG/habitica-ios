@@ -12,7 +12,9 @@ import AppAuth
 import Keys
 import FBSDKLoginKit
 import AuthenticationServices
+#if !targetEnvironment(macCatalyst)
 import FirebaseAnalytics
+#endif
 
 enum LoginViewAuthType {
     case none
@@ -322,7 +324,9 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                     })
                     .observeValues { loginResult in
                     if loginResult != nil {
+                        #if !targetEnvironment(macCatalyst)
                         Analytics.logEvent("register", parameters: nil)
+                        #endif
                         self.onSuccessfulLogin()
                     }
                 }

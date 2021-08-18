@@ -302,4 +302,12 @@ class ConfigRepository: NSObject {
             return nil
         }
     }
+    
+    func enableIPadUI() -> Bool {
+        #if targetEnvironment(macCatalyst)
+        return true
+        #else
+        return bool(variable: .enableIPadUI)
+        #endif
+    }
 }

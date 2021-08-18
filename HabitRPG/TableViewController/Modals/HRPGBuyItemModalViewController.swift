@@ -376,7 +376,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     // swiftlint:disable cyclomatic_complexity
     @objc
     func buyPressed() {
-        if !reward?.isValid {
+        if reward?.isValid != true {
             dismiss(animated: true, completion: nil)
             return
         }
