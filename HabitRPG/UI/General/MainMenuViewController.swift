@@ -80,7 +80,7 @@ class MenuItem {
     }
     
     static let allItems = [
-        MenuItem(key: .habits, title: L10n.Tasks.tasks, segue: StoryboardSegue.Main.tasksBoardSegue.rawValue),
+        MenuItem(key: .tasks, title: L10n.Tasks.tasks, segue: StoryboardSegue.Main.tasksBoardSegue.rawValue),
         MenuItem(key: .habits, title: L10n.Tasks.habits, vcInstantiator: StoryboardScene.Main.habitsViewController.instantiate),
         MenuItem(key: .dailies, title: L10n.Tasks.dailies, vcInstantiator: StoryboardScene.Main.dailiesViewController.instantiate),
         MenuItem(key: .todos, title: L10n.Tasks.todos, vcInstantiator: StoryboardScene.Main.todosViewController.instantiate),
@@ -264,10 +264,7 @@ class MainMenuViewController: BaseTableViewController {
         tableView.register(UINib(nibName: "MainTableviewCell", bundle: nil), forCellReuseIdentifier: "Cell")
 
         topHeaderCoordinator?.hideNavBar = true
-        topHeaderCoordinator?.alternativeHeader = navbarView
-        topHeaderCoordinator?.navbarVisibleColor = navbarColor
         topHeaderCoordinator?.followScrollView = false
-        navbarView.backgroundColor = navbarColor
         
         navbarView.messagesAction = {[weak self] in
             self?.perform(segue: StoryboardSegue.Main.inboxSegue)
@@ -408,6 +405,8 @@ class MainMenuViewController: BaseTableViewController {
     private func setupMenu() {
         menuSections = [
             MenuSection(key: .user, title: L10n.Settings.user, iconAsset: nil, items: [
+                menuItem(withKey: .tasks),
+                menuItem(withKey: .notifications),
                 menuItem(withKey: .skills),
                 menuItem(withKey: .stats),
                 menuItem(withKey: .achievements)
@@ -429,16 +428,25 @@ class MainMenuViewController: BaseTableViewController {
             MenuSection(key: .social, title: L10n.Menu.social, iconAsset: Asset.iconSocial, items: [
                 menuItem(withKey: .tavern),
                 menuItem(withKey: .party),
+                menuItem(withKey: .messages),
                 menuItem(withKey: .guilds),
                 menuItem(withKey: .challenges)
                 ]),
             MenuSection(key: .about, title: L10n.Titles.about, iconAsset: Asset.iconHelp, items: [
+                menuItem(withKey: .settings),
                 menuItem(withKey: .news),
                 menuItem(withKey: .support),
                 menuItem(withKey: .about)
                 ])
         ]
         menuItem(withKey: .tavern).subtitleColor = UIColor.orange10
+        
+        if !configRepository.enableIPadUI() {
+            menuItem(withKey: .tasks).isHidden = true
+            menuItem(withKey: .settings).isHidden = true
+            menuItem(withKey: .messages).isHidden = true
+            menuItem(withKey: .notifications).isHidden = true
+        }
     }
     
     private func menuSection(withKey key: MenuSection.Key) -> MenuSection? {
@@ -519,7 +527,7 @@ class MainMenuViewController: BaseTableViewController {
         }
         if let instantiator = item.vcInstantiator, let vc = instantiator() {
             if let nc = vc as? UINavigationController {
-                nc.present(vc, animated: true, completion: nil)
+                present(vc, animated: true, completion: nil)
             } else {
                 if splitViewController != nil {
                     splitViewController?.showDetailViewController(vc, sender: self)

@@ -207,16 +207,16 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         super.viewWillLayoutSubviews()
         let parentFrame = view.frame
         let topHeaderHeight = self.topHeaderHeight
-        backgroundView.frame = CGRect(x: 0.0, y: headerYPosition, width: parentFrame.size.width, height: topHeaderHeight + 2)
-        upperBackgroundView.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: bgViewOffset)
-        bottomBorderView.frame = CGRect(x: 0, y: backgroundView.frame.size.height - 2, width: parentFrame.size.width, height: 2)
-        bottomBorderView.frame = CGRect(x: 0, y: backgroundView.frame.size.height - 2, width: parentFrame.size.width, height: 2)
-        headerView?.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: defaultHeaderHeight)
+        let width = parentFrame.size.width + parentFrame.origin.x
+        backgroundView.frame = CGRect(x: -parentFrame.origin.x, y: headerYPosition, width: width, height: topHeaderHeight + 2)
+        upperBackgroundView.frame = CGRect(x: -parentFrame.origin.x, y: 0, width: width, height: bgViewOffset)
+        bottomBorderView.frame = CGRect(x: 0, y: backgroundView.frame.size.height - 2, width: width, height: 2)
+        headerView?.frame = CGRect(x: 0, y: 0, width: width, height: defaultHeaderHeight)
         if let header = alternativeHeaderView {
             if topHeaderHeight <= 0 {
-                header.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: header.frame.size.height)
+                header.frame = CGRect(x: -parentFrame.origin.x, y: 0, width: width, height: header.frame.size.height)
             } else {
-                header.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: topHeaderHeight)
+                header.frame = CGRect(x: -parentFrame.origin.x, y: 0, width: width, height: topHeaderHeight)
             }
         }
         

@@ -726,7 +726,7 @@ struct TaskFormView: View {
                                             content: DifficultyPicker(selectedDifficulty: $viewModel.priority).padding(8))
                         }
                         if taskType == .habit {
-                            TaskFormSection(header: Text(L10n.Tasks.Form.resetStreak.uppercased()),
+                            TaskFormSection(header: Text(L10n.Tasks.Form.resetCounter.uppercased()),
                                             content: TaskFormPicker(options: TaskFormView.habitResetStreakOptions, selection: $viewModel.frequency, tintColor: lightTaskTintColor))
                         }
                         if taskType == .daily {

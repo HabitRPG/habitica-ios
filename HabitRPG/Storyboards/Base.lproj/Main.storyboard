@@ -12,16 +12,32 @@
         <!--Split View Controller-->
         <scene sceneID="Yhu-PL-0XV">
             <objects>
-                <splitViewController storyboardIdentifier="MainSplitViewController" allowDoubleColumnStyle="YES" id="CB1-dr-Ach" sceneMemberID="viewController">
+                <splitViewController storyboardIdentifier="MainSplitViewController" allowDoubleColumnStyle="YES" maximumPrimaryColumnWidth="400" id="CB1-dr-Ach" sceneMemberID="viewController">
                     <connections>
                         <segue destination="8YX-ce-x5E" kind="relationship" relationship="compactViewController" id="pNv-om-HTC"/>
                         <segue destination="JSb-MY-Gwo" kind="relationship" relationship="masterViewController" id="ScC-Xo-JyG"/>
-                        <segue destination="44F-EE-hFM" kind="relationship" relationship="detailViewController" id="Tk2-hO-FGs"/>
+                        <segue destination="bGZ-io-tp2" kind="relationship" relationship="detailViewController" id="Wb7-my-gM2"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pt9-79-oUU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-484" y="224"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lUQ-XC-36g">
+            <objects>
+                <navigationController id="bGZ-io-tp2" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OOn-l3-ewn">
+                        <rect key="frame" x="0.0" y="0.0" width="478.5" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="44F-EE-hFM" kind="relationship" relationship="rootViewController" id="P7Z-lc-x4T"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sN4-gz-gEm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-754" y="-704"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="oeq-2A-hsJ">
@@ -32,26 +48,35 @@
                         <viewControllerLayoutGuide type="bottom" id="wBG-mV-WYQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zhT-ue-qs7">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="478.5" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h8s-BH-yQ1">
-                                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                                <rect key="frame" x="0.0" y="50" width="478.5" height="550"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TGt-TH-E9J">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="119" height="550"/>
                                         <connections>
                                             <segue destination="9wT-fg-nmz" kind="embed" id="zf0-3c-Xzo"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dBO-TT-qO9">
-                                        <rect key="frame" x="200" y="0.0" width="200" height="600"/>
+                                        <rect key="frame" x="120" y="0.0" width="119" height="550"/>
+                                        <connections>
+                                            <segue destination="YnE-7V-tix" kind="embed" id="dho-1x-ad8"/>
+                                        </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5JM-Kl-7pf">
-                                        <rect key="frame" x="400" y="0.0" width="200" height="600"/>
+                                        <rect key="frame" x="239" y="0.0" width="119" height="550"/>
+                                        <connections>
+                                            <segue destination="sPQ-za-Ji6" kind="embed" id="j9F-en-5nH"/>
+                                        </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QjK-Uu-pq6">
-                                        <rect key="frame" x="600" y="0.0" width="200" height="600"/>
+                                        <rect key="frame" x="359" y="0.0" width="119" height="550"/>
+                                        <connections>
+                                            <segue destination="wkr-0z-ZYr" kind="embed" id="zgD-BU-MQh"/>
+                                        </connections>
                                     </containerView>
                                 </subviews>
                                 <constraints>
@@ -79,12 +104,13 @@
                         <constraints>
                             <constraint firstItem="wBG-mV-WYQ" firstAttribute="top" secondItem="h8s-BH-yQ1" secondAttribute="bottom" id="Aif-0h-5qK"/>
                             <constraint firstItem="h8s-BH-yQ1" firstAttribute="top" secondItem="zQk-vw-GYw" secondAttribute="bottom" id="MeA-tN-NSp"/>
-                            <constraint firstItem="TGt-TH-E9J" firstAttribute="height" secondItem="zhT-ue-qs7" secondAttribute="height" id="Orn-fF-ex2"/>
+                            <constraint firstItem="TGt-TH-E9J" firstAttribute="height" secondItem="h8s-BH-yQ1" secondAttribute="height" id="Orn-fF-ex2"/>
                             <constraint firstItem="h8s-BH-yQ1" firstAttribute="leading" secondItem="zhT-ue-qs7" secondAttribute="leading" id="ZpN-L4-W4V"/>
                             <constraint firstItem="TGt-TH-E9J" firstAttribute="width" secondItem="zhT-ue-qs7" secondAttribute="width" multiplier="0.25" id="adn-cc-2ZX"/>
                             <constraint firstAttribute="trailing" secondItem="h8s-BH-yQ1" secondAttribute="trailing" id="h8b-2z-TPf"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="f7u-cF-EoU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uhk-yY-21B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -118,7 +144,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="HabitsViewController" id="9wT-fg-nmz" customClass="HabitTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="72" sectionHeaderHeight="22" sectionFooterHeight="22" id="fvC-jm-ZX5">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="119" height="550"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -141,7 +167,7 @@
                         </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" image="add_icon" id="eoD-0q-22r">
                             <connections>
-                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" modalPresentationStyle="automatic" modalTransitionStyle="coverVertical" id="PHp-cT-md6"/>
+                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" modalPresentationStyle="pageSheet" modalTransitionStyle="coverVertical" id="PHp-cT-md6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -150,7 +176,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                     <connections>
-                        <segue destination="U3p-ZD-vpg" kind="presentation" identifier="DetailSegue" id="yNZ-LP-06T"/>
+                        <segue destination="U3p-ZD-vpg" kind="presentation" identifier="DetailSegue" modalPresentationStyle="pageSheet" id="yNZ-LP-06T"/>
                         <segue destination="WTd-tE-eOd" kind="presentation" identifier="showAdventureGuide" id="u8W-Xm-nze"/>
                     </connections>
                 </tableViewController>
@@ -171,7 +197,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="DailiesViewController" id="YnE-7V-tix" customClass="DailyTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" id="Plb-DG-Ly3">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="119" height="550"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections/>
@@ -193,7 +219,7 @@
                         </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" image="add_icon" id="QMS-gq-G3V">
                             <connections>
-                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" modalPresentationStyle="automatic" modalTransitionStyle="coverVertical" id="WX7-CS-CSr"/>
+                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" modalPresentationStyle="pageSheet" modalTransitionStyle="coverVertical" id="WX7-CS-CSr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -202,7 +228,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                     <connections>
-                        <segue destination="U3p-ZD-vpg" kind="presentation" identifier="DetailSegue" id="N8x-3a-QZ4"/>
+                        <segue destination="U3p-ZD-vpg" kind="presentation" identifier="DetailSegue" modalPresentationStyle="pageSheet" id="N8x-3a-QZ4"/>
                         <segue destination="WTd-tE-eOd" kind="presentation" identifier="showAdventureGuide" id="j6y-gM-wIL"/>
                     </connections>
                 </tableViewController>
@@ -215,7 +241,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="TodosViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sPQ-za-Ji6" customClass="ToDoTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" id="PdM-ko-TYf">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="119" height="550"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections/>
@@ -238,7 +264,7 @@
                         </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" image="add_icon" id="txM-DJ-1EC">
                             <connections>
-                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" modalPresentationStyle="automatic" modalTransitionStyle="coverVertical" id="6tw-63-M3K"/>
+                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" modalPresentationStyle="pageSheet" modalTransitionStyle="coverVertical" id="6tw-63-M3K"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -247,7 +273,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                     <connections>
-                        <segue destination="U3p-ZD-vpg" kind="presentation" identifier="DetailSegue" id="FI8-Gh-C6n"/>
+                        <segue destination="U3p-ZD-vpg" kind="presentation" identifier="DetailSegue" modalPresentationStyle="pageSheet" id="FI8-Gh-C6n"/>
                         <segue destination="WTd-tE-eOd" kind="presentation" identifier="showAdventureGuide" id="1Wb-WL-WiI"/>
                     </connections>
                 </tableViewController>
@@ -266,7 +292,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="hnF-ml-Qfo"/>
                     <connections>
-                        <segue destination="sS8-cF-myv" kind="show" identifier="ItemSegue" id="ETz-qE-xC2"/>
+                        <segue destination="sS8-cF-myv" kind="showDetail" identifier="ItemSegue" id="ETz-qE-xC2"/>
                         <segue destination="rxD-1b-YpQ" kind="showDetail" identifier="NewsSegue" id="A1v-Vl-4j8"/>
                         <segue destination="r5L-RV-Ig6" kind="showDetail" identifier="AboutSegue" id="V5t-v4-xQG"/>
                         <segue destination="6X4-ER-0VC" kind="presentation" identifier="SettingsSegue" modalPresentationStyle="formSheet" id="iEJ-Rx-jir"/>
@@ -436,7 +462,7 @@
             <objects>
                 <navigationController storyboardIdentifier="AdventureGuideNavigationViewController" id="WTd-tE-eOd" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GDi-dP-m8t">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="119" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -456,33 +482,33 @@
                         <viewControllerLayoutGuide type="bottom" id="grl-y6-BoW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PSh-Sr-xnO">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="119" height="550"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fK-nl-DsM">
-                                <rect key="frame" x="0.0" y="50" width="800" height="550"/>
+                                <rect key="frame" x="0.0" y="50" width="119" height="500"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="foh-Y5-euZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="800" height="181"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="119" height="209"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wYP-zx-dbe">
-                                                <rect key="frame" x="26" y="0.0" width="748" height="221"/>
+                                                <rect key="frame" x="26" y="0.0" width="67" height="249"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adventureGuideArt" translatesAutoresizingMaskIntoConstraints="NO" id="Eax-S2-1ke">
-                                                        <rect key="frame" x="0.0" y="0.0" width="748" height="46"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="67" height="46"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="46" id="xVs-7j-18d"/>
                                                         </constraints>
                                                     </imageView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m7O-ZS-KOh">
-                                                        <rect key="frame" x="0.0" y="54" width="748" height="1"/>
+                                                        <rect key="frame" x="0.0" y="54" width="67" height="1"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="ifP-cD-1sC"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Beginner Objectives" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaN-pI-O3a">
-                                                        <rect key="frame" x="0.0" y="63" width="748" height="20"/>
+                                                        <rect key="frame" x="0.0" y="63" width="67" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="500" constant="22" id="fQn-E8-VM0"/>
                                                         </constraints>
@@ -491,10 +517,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="WUa-Qe-rtA">
-                                                        <rect key="frame" x="0.0" y="91" width="748" height="22"/>
+                                                        <rect key="frame" x="0.0" y="91" width="67" height="50"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Complete these onboarding tasks and you’ll earn 5 Achievements and 100 Gold once you’re done!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXt-8h-VNr">
-                                                                <rect key="frame" x="12" y="0.0" width="724" height="22"/>
+                                                                <rect key="frame" x="12" y="0.0" width="43" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" priority="500" constant="22" id="bej-Uf-maR"/>
                                                                 </constraints>
@@ -512,23 +538,23 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPg-7O-j94">
-                                                        <rect key="frame" x="0.0" y="121" width="748" height="1"/>
+                                                        <rect key="frame" x="0.0" y="149" width="67" height="1"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="V3u-UV-9kz"/>
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="ul9-Fj-GrY">
-                                                        <rect key="frame" x="0.0" y="130" width="748" height="20"/>
+                                                        <rect key="frame" x="0.0" y="158" width="67" height="20"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGm-VS-bMz">
-                                                                <rect key="frame" x="0.0" y="0.0" width="85" height="20"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Your Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGm-VS-bMz">
+                                                                <rect key="frame" x="0.0" y="0.0" width="67" height="20"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANP-hf-wbL">
-                                                                <rect key="frame" x="717" y="0.0" width="31" height="20"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANP-hf-wbL">
+                                                                <rect key="frame" x="67" y="0.0" width="0.0" height="20"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -539,14 +565,14 @@
                                                         </constraints>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hqi-5C-p2F" customClass="ProgressBar" customModule="Habitica" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="158" width="748" height="5"/>
+                                                        <rect key="frame" x="0.0" y="186" width="67" height="5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="5" id="sHS-eo-snW"/>
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eGa-gL-7SD">
-                                                        <rect key="frame" x="0.0" y="171" width="748" height="50"/>
+                                                        <rect key="frame" x="0.0" y="199" width="67" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="500" constant="20" id="pmU-Np-CQZ"/>
                                                         </constraints>
@@ -2208,25 +2234,25 @@
             <objects>
                 <tableViewController storyboardIdentifier="ItemsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sS8-cF-myv" customClass="ItemsViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="10" sectionFooterHeight="10" id="bMx-6c-VyS">
-                        <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="LcD-ad-91z">
-                                <rect key="frame" x="0.0" y="31" width="420" height="44"/>
+                                <rect key="frame" x="0.0" y="31" width="800" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LcD-ad-91z" id="kL2-IK-3rM">
-                                    <rect key="frame" x="100" y="0.0" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="800" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNO-h3-rFn">
-                                            <rect key="frame" x="76" y="22" width="216" height="0.0"/>
+                                            <rect key="frame" x="76" y="22" width="696" height="0.0"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpp-1Z-h1u">
-                                            <rect key="frame" x="300" y="22" width="0.0" height="0.0"/>
+                                            <rect key="frame" x="780" y="22" width="0.0" height="0.0"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="500" constant="42" id="Z1j-V0-rSd"/>
                                                 <constraint firstAttribute="height" priority="500" constant="21" id="bi6-ly-5Zd"/>
@@ -2804,7 +2830,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="RewardsViewController" id="wkr-0z-ZYr" customClass="RewardViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="gUo-Ev-aot">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="119" height="550"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SF4-0s-DyZ">
@@ -2831,7 +2857,7 @@
                     <navigationItem key="navigationItem" id="HHL-mH-FJc">
                         <barButtonItem key="rightBarButtonItem" image="add_icon" id="NiR-ou-IuB">
                             <connections>
-                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" animates="NO" modalPresentationStyle="automatic" modalTransitionStyle="coverVertical" id="tO1-JH-hWy"/>
+                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" modalPresentationStyle="pageSheet" modalTransitionStyle="coverVertical" id="tO1-JH-hWy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -3753,19 +3779,22 @@ a matching subscription automatically after sending your gift.</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="N8x-3a-QZ4"/>
+        <segue reference="FI8-Gh-C6n"/>
         <segue reference="2vn-wQ-bqg"/>
         <segue reference="FPm-Dv-Zos"/>
         <segue reference="x0h-sG-Le1"/>
+        <segue reference="zgD-BU-MQh"/>
         <segue reference="ScC-Xo-JyG"/>
         <segue reference="04Z-5H-zfF"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="jU9-l6-uQc"/>
         <segue reference="aPT-Gw-lJZ"/>
-        <segue reference="gXQ-dZ-OGd"/>
-        <segue reference="WX7-CS-CSr"/>
+        <segue reference="u8W-Xm-nze"/>
+        <segue reference="j9F-en-5nH"/>
+        <segue reference="dho-1x-ad8"/>
+        <segue reference="6tw-63-M3K"/>
         <segue reference="zf0-3c-Xzo"/>
-        <segue reference="Nkz-Sr-H0i"/>
+        <segue reference="P7Z-lc-x4T"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>

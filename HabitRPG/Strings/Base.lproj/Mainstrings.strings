@@ -108,6 +108,7 @@
 "tasks.form.controls" = "Controls";
 "tasks.form.difficulty" = "Difficulty";
 "tasks.form.reset_streak" = "Reset Streak";
+"tasks.form.reset_counter" = "Reset Counter";
 "tasks.form.tags" = "Tags";
 "tasks.form.scheduling" = "Scheduling";
 "tasks.form.reminders" = "Reminders";
@@ -142,6 +143,7 @@
 "tasks.form.accessibility.set_attribute" = "Change attribute to %@";
 "tasks.form.accessibility.attribute" = "Attribute is %@";
 "tasks.form.adjust_streak" = "Adjust Streak";
+"tasks.form.adjust_counter" = "Adjust Counter";
 "tasks.form.positive" = "Positive";
 "tasks.form.negative" = "Negative";
 "tasks.form.completions" = "Completions";

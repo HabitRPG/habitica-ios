@@ -61,8 +61,10 @@ class InboxChatViewController: SLKTextViewController, Themeable {
         textInputbar.textView.placeholderFont = CustomFontMetrics.scaledSystemFont(ofSize: 13)
         textInputbar.textView.font = CustomFontMetrics.scaledSystemFont(ofSize: 13)
         
-        hrpgTopHeaderNavigationController()?.shouldHideTopHeader = true
-        hrpgTopHeaderNavigationController()?.hideNavbar = false
+        if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
+            topHeaderNavigationController.shouldHideTopHeader = true
+            topHeaderNavigationController.hideNavbar = false
+        }
                 
         #if !targetEnvironment(macCatalyst)
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -94,8 +96,8 @@ class InboxChatViewController: SLKTextViewController, Themeable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if hrpgTopHeaderNavigationController() != nil {
-            hrpgTopHeaderNavigationController()?.scrollView(scrollView, scrolledToPosition: 0)
+        if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
+            topHeaderNavigationController.scrollView(scrollView, scrolledToPosition: 0)
         }
     }
     

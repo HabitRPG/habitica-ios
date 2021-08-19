@@ -127,11 +127,11 @@ class AttributePointsViewController: BaseUIViewController {
         perceptionTextLabel.text = L10n.Stats.perceptionText
     }
     
-    override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]? {
+    override func getDefinitionFor(tutorial: String) -> [String] {
         if tutorialIdentifier == "stats" {
-            return ["text": L10n.Tutorials.stats]
+            return [L10n.Tutorials.stats]
         }
-        return nil
+        return []
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -29,7 +29,9 @@ class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topHeaderCoordinator = TopHeaderCoordinator(topHeaderNavigationController: hrpgTopHeaderNavigationController(), scrollView: scrollView)
+        if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
+            topHeaderCoordinator = TopHeaderCoordinator(topHeaderNavigationController: topHeaderNavigationController, scrollView: scrollView)
+        }
         scrollView.delegate = self
         
         gearView.title = L10n.Equipment.battleGear

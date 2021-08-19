@@ -21,7 +21,7 @@
     self.navigationItem.title = objcL10n.titleSkills;    
     
     [self setupTableView];
-    self.tutorialIdentifier = @"skills";
+    //self.tutorialIdentifier = @"skills";
 }
 
 - (void) setupTableView {

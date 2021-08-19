@@ -53,13 +53,11 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
         collectionView.backgroundColor = theme.contentBackgroundColor
     }
     
-    override func getDefinitonForTutorial(_ tutorialIdentifier: String!) -> [AnyHashable: Any] {
-        if tutorialIdentifier == "rewards" {
-            return [
-                "textList": NSArray.init(array: [L10n.Tutorials.rewards1, L10n.Tutorials.rewards2])
-            ]
+    override func getDefinitionFor(tutorial: String) -> [String] {
+        if tutorial == self.tutorialIdentifier {
+            return [L10n.Tutorials.rewards1, L10n.Tutorials.rewards2]
         }
-        return [:]
+        return []
     }
     
     @objc

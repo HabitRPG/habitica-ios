@@ -7,7 +7,6 @@
 //
 
 #import "HRPGCollectionViewController.h"
-#import "UIViewController+HRPGTopHeaderNavigationController.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGCollectionViewController ()
@@ -49,10 +48,6 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self.topHeaderCoordinator scrollViewDidScroll];
-}
-
-- (TopHeaderViewController *)topHeaderNavigationController {
-    return [self hrpgTopHeaderNavigationController];
 }
     
 - (void)populateText {

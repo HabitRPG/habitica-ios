@@ -8,7 +8,16 @@
 
 import Foundation
 
-class BaseCollectionViewController: HRPGBaseCollectionViewController, Themeable {
+class BaseCollectionViewController: HRPGBaseCollectionViewController, Themeable, TutorialStepsProtocol {
+    var tutorialIdentifier: String?
+    
+    var displayedTutorialStep: Bool = false
+    
+    var activeTutorial: TutorialStepView?
+    
+    func getDefinitionFor(tutorial: String) -> [String] {
+        return []
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,5 +34,15 @@ class BaseCollectionViewController: HRPGBaseCollectionViewController, Themeable 
         }
         collectionView.backgroundColor = theme.windowBackgroundColor
         collectionView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        displayTutorialStep()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        displayedTutorialStep = false
     }
 }

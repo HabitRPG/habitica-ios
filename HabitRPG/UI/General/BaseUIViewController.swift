@@ -8,14 +8,23 @@
 
 import Foundation
 
-class BaseUIViewController: UIViewController, Themeable {
+class BaseUIViewController: UIViewController, Themeable, TutorialStepsProtocol {
+    var displayedTutorialStep: Bool = false
+    
+    var activeTutorial: TutorialStepView?
+    
+    func getDefinitionFor(tutorial: String) -> [String] {
+        return []
+    }
     
     lazy var topHeaderCoordinator: TopHeaderCoordinator? = {
-        if hrpgTopHeaderNavigationController() != nil {
-            return TopHeaderCoordinator(topHeaderNavigationController: hrpgTopHeaderNavigationController())
+        if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
+            return TopHeaderCoordinator(topHeaderNavigationController: topHeaderNavigationController)
         }
         return nil
     }()
+    
+    var tutorialIdentifier: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +40,18 @@ class BaseUIViewController: UIViewController, Themeable {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        displayTutorialStep()
         topHeaderCoordinator?.viewDidAppear()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         topHeaderCoordinator?.viewWillDisappear()
         super.viewWillDisappear(animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        displayedTutorialStep = false
     }
     
     func populateText() {

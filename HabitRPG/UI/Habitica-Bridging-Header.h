@@ -5,7 +5,6 @@
 #import "HRPGBaseViewController.h"
 #import "OnePasswordExtension.h"
 #import "HRPGTypingLabel.h"
-#import "UIViewController+HRPGTopHeaderNavigationController.h"
 #import "HRPGBaseCollectionViewController.h"
 #import "HRPGShopViewController.h"
 #import "HRPGCopyTableViewCell.h"
@@ -15,4 +14,3 @@
 #import "HRPGSpellViewController.h"
 #import "HRPGSearchDataManager.h"
 #import "NSString+Emoji.h"
-#import "UIViewController+TutorialSteps.h"

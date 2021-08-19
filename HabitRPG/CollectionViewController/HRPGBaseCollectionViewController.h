@@ -7,17 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TutorialStepsProtocol.h"
 #import "HRPGCollectionViewController.h"
 
-@interface HRPGBaseCollectionViewController : HRPGCollectionViewController<TutorialStepsProtocol>
+@interface HRPGBaseCollectionViewController : HRPGCollectionViewController
 
 @property CGFloat screenWidth;
 @property BOOL hidesTopBar;
-
-@property NSString *tutorialIdentifier;
-@property BOOL displayedTutorialStep;
-@property TutorialStepView *activeTutorialView;
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
 

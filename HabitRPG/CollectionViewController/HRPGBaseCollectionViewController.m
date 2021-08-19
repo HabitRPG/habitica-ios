@@ -7,8 +7,6 @@
 //
 
 #import "HRPGBaseCollectionViewController.h"
-#import "UIViewcontroller+TutorialSteps.h"
-#import "UIViewController+HRPGTopHeaderNavigationController.h"
 
 @interface HRPGBaseCollectionViewController ()
 
@@ -29,11 +27,6 @@
                                              selector:@selector(preferredContentSizeChanged:)
                                                  name:UIContentSizeCategoryDidChangeNotification
                                                object:nil];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self displayTutorialStep];
 }
 
 - (void)dealloc {

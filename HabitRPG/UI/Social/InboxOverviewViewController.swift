@@ -48,13 +48,11 @@ class InboxOverviewViewController: BaseTableViewController {
         }
     }
     
-    override func getDefinitonForTutorial(_ tutorialIdentifier: String!) -> [AnyHashable: Any]! {
-        if tutorialIdentifier == self.tutorialIdentifier {
-            return [
-                "text": L10n.Tutorials.inbox
-            ]
+    override func getDefinitionFor(tutorial: String) -> [String] {
+        if tutorial == self.tutorialIdentifier {
+            return [L10n.Tutorials.inbox]
         }
-        return nil
+        return []
     }
     
        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
