@@ -264,6 +264,11 @@ class MainMenuViewController: BaseTableViewController {
         tableView.register(UINib(nibName: "MainTableviewCell", bundle: nil), forCellReuseIdentifier: "Cell")
 
         topHeaderCoordinator?.hideNavBar = true
+        if !configRepository.enableIPadUI() {
+            topHeaderCoordinator?.alternativeHeader = navbarView
+            topHeaderCoordinator?.navbarVisibleColor = navbarColor
+            navbarView.backgroundColor = navbarColor
+        }
         topHeaderCoordinator?.followScrollView = false
         
         navbarView.messagesAction = {[weak self] in
@@ -629,16 +634,20 @@ class MainMenuViewController: BaseTableViewController {
             let giftSubscriptionController = navigationController?.topViewController as? GiftSubscriptionViewController
             giftSubscriptionController?.giftRecipientUsername = giftRecipientUsername
         } else if segue.identifier == StoryboardSegue.Main.showMarketSegue.rawValue {
-            (segue.destination as? HRPGShopViewController)?.shopIdentifier = Constants.MarketKey
+            (segue.destination as? ShopViewController)?.shopIdentifier = Constants.MarketKey
         } else if segue.identifier == StoryboardSegue.Main.showQuestShopSegue.rawValue {
-            (segue.destination as? HRPGShopViewController)?.shopIdentifier = Constants.QuestShopKey
+            (segue.destination as? ShopViewController)?.shopIdentifier = Constants.QuestShopKey
         } else if segue.identifier == StoryboardSegue.Main.showSeasonalShopSegue.rawValue {
-            (segue.destination as? HRPGShopViewController)?.shopIdentifier = Constants.SeasonalShopKey
+            (segue.destination as? ShopViewController)?.shopIdentifier = Constants.SeasonalShopKey
         } else if segue.identifier == StoryboardSegue.Main.showTimeTravelersSegue.rawValue {
-            (segue.destination as? HRPGShopViewController)?.shopIdentifier = Constants.TimeTravelersShopKey
+            (segue.destination as? ShopViewController)?.shopIdentifier = Constants.TimeTravelersShopKey
         } else if segue.identifier == StoryboardSegue.Main.showUserProfileSegue.rawValue {
             (segue.destination as? UserProfileViewController)?.username = user?.username
             (segue.destination as? UserProfileViewController)?.userID = user?.id
         }
+    }
+    
+    override func showDetailViewController(_ vc: UIViewController, sender: Any?) {
+        show(vc, sender: sender)
     }
 }

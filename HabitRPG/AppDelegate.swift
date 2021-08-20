@@ -429,7 +429,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
                 if let attributionToken = token, let url = URL(string: "https://api-adservices.apple.com/api/v1/") {
                     let request = NSMutableURLRequest(url: url)
                     request.httpMethod = "POST"
-                    request.setValue("text/plain", forKey: "Content-Type")
+                    request.setValue("text/plain", forHTTPHeaderField: "Content-Type")
                     request.httpBody = Data(attributionToken.utf8)
                     let task = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
                         if error != nil {

@@ -15,5 +15,13 @@ class APIMount: MountProtocol, Decodable {
     var potion: String?
     var type: String?
     var text: String?
-    var isValid: Bool
+    var isValid: Bool = true
+    
+    enum CodingKeys: String, CodingKey {
+        case key
+        case egg
+        case potion
+        case type
+        case text
+    }
 }

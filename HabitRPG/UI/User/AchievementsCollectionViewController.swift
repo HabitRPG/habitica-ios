@@ -16,7 +16,7 @@ class AchievementsCollectionViewController: BaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator?.hideHeader = true
-        topHeaderCoordinator.followScrollView = false
+        topHeaderCoordinator?.followScrollView = false
         dataSource = AchievementsViewDataSource()
         collectionView.register(AchievementCell.self, forCellWithReuseIdentifier: "Cell")
         collectionView.register(AchievementHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SectionHeader")

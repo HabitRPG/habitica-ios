@@ -5,8 +5,6 @@
 #import "HRPGBaseViewController.h"
 #import "OnePasswordExtension.h"
 #import "HRPGTypingLabel.h"
-#import "HRPGBaseCollectionViewController.h"
-#import "HRPGShopViewController.h"
 #import "HRPGCopyTableViewCell.h"
 #import <SlackTextViewController/SLKTextViewController.h>
 #import "HRPGFlagInformationOverlayView.h"

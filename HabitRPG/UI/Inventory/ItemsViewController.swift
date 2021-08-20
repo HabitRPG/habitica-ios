@@ -99,7 +99,7 @@ class ItemsViewController: BaseTableViewController {
     @objc
     func openMarket() {
         let storyboard = UIStoryboard(name: "Shop", bundle: nil)
-        if let viewController = storyboard.instantiateInitialViewController() as? HRPGShopViewController {
+        if let viewController = storyboard.instantiateInitialViewController() as? ShopViewController {
             viewController.shopIdentifier = Constants.MarketKey
             self.navigationController?.pushViewController(viewController, animated: true)
         }

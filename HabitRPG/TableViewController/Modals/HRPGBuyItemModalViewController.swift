@@ -35,7 +35,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @IBOutlet weak var buttonSeparatorView: UIView!
     @IBOutlet weak var centerConstraint: NSLayoutConstraint!
     
-    @objc public weak var shopViewController: HRPGShopViewController?
+    @objc public weak var shopViewController: ShopViewController?
     
     private var bulkView: HRPGBulkPurchaseView?
     var itemView: HRPGSimpleShopItemView?

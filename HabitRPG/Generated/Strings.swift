@@ -2261,6 +2261,8 @@ public enum L10n {
     }
 
     public enum Form {
+      /// Adjust Counter
+      public static var adjustCounter: String { return L10n.tr("Mainstrings", "tasks.form.adjust_counter") }
       /// Adjust Streak
       public static var adjustStreak: String { return L10n.tr("Mainstrings", "tasks.form.adjust_streak") }
       /// Checklist
@@ -2323,6 +2325,8 @@ public enum L10n {
       public static var reminders: String { return L10n.tr("Mainstrings", "tasks.form.reminders") }
       /// Repeats
       public static var repeats: String { return L10n.tr("Mainstrings", "tasks.form.repeats") }
+      /// Reset Counter
+      public static var resetCounter: String { return L10n.tr("Mainstrings", "tasks.form.reset_counter") }
       /// Reset Streak
       public static var resetStreak: String { return L10n.tr("Mainstrings", "tasks.form.reset_streak") }
       /// How do you want to reward yourself?
