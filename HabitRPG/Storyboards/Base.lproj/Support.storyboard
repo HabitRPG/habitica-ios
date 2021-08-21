@@ -497,11 +497,8 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" contentInsetAdjustmentBehavior="never" editable="NO" text="werqwerqwer" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="U5U-nR-j47" customClass="MarkdownTextView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="500"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="36.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="500" id="qKJ-JZ-Bi8"/>
-                                        </constraints>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
