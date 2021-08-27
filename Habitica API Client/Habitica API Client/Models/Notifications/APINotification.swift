@@ -33,7 +33,7 @@ public class APINotification: NotificationProtocol, NotificationNewsProtocol, No
     public var hatchingPotion: String?
     public var nextRewardAt: Int = 0
     public var message: String?
-    public var rewardKey: String?
+    public var rewardKey: [String] = []
     public var rewardText: String?
     
     enum CodingKeys: String, CodingKey {
@@ -67,7 +67,7 @@ public class APINotification: NotificationProtocol, NotificationNewsProtocol, No
             let data = try? values.decode(APILoginIncentiveData.self, forKey: .data)
             nextRewardAt = data?.nextRewardAt ?? 0
             message = data?.message
-            rewardKey = data?.rewardKey
+            rewardKey = data?.rewardKey ?? []
             rewardText = data?.rewardText
         default:
             break

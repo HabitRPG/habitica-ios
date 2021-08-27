@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PopupDialog
 import Keys
 import Amplitude_iOS
 import Habitica_API_Client

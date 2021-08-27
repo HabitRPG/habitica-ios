@@ -114,15 +114,12 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
             guard let destinationController = segue.destination as? UINavigationController else {
                 return
             }
-            guard let formController = destinationController.topViewController as? TaskFormViewController else {
+            guard let formController = destinationController.topViewController as? TaskFormController else {
                 return
             }
             formController.taskType = .reward
-            if let editedReward = self.editedReward {
-                formController.taskId = editedReward.id
-                formController.isCreating = false
-            } else {
-                formController.isCreating = true
+            if let task = editedReward {
+                formController.editedTask = task
             }
             editedReward = nil
         }

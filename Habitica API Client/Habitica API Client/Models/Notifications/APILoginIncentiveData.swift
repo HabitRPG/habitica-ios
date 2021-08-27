@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import Habitica_Models
 
 class APILoginIncentiveData: Decodable {
     var message: String?
-    var rewardKey: String?
+    var rewardKey: [String]
     var rewardText: String?
     var nextRewardAt: Int = 0
     
@@ -24,7 +25,7 @@ class APILoginIncentiveData: Decodable {
     required public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         message = try? values.decode(String.self, forKey: .message)
-        rewardKey = try? values.decode(String.self, forKey: .rewardKey)
+        rewardKey = (try? values.decode([String].self, forKey: .rewardKey)) ?? []
         rewardText = try? values.decode(String.self, forKey: .rewardText)
         nextRewardAt = (try? values.decode(Int.self, forKey: .nextRewardAt)) ?? 0
     }

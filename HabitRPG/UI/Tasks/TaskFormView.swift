@@ -526,6 +526,16 @@ class TaskFormViewModel: ObservableObject {
     @Published var checklistItems: [ChecklistItemProtocol] = []
     @Published var reminders: [ReminderProtocol] = []
     
+    @Published var isCreating: Bool = false
+    @Published var taskType: TaskType = .habit
+    @Published var taskTintColor: Color = Color(.purple300)
+    @Published var darkTaskTintColor: Color = Color(.purple200)
+    @Published var lightTaskTintColor: Color = Color(.purple400)
+    @Published var darkestTaskTintColor: Color = Color(UIColor(white: 1, alpha: 0.7))
+    @Published var showStatAllocation = false
+    @Published var showTaskGraphs = false
+    
+    var onTaskDelete: (() -> Void)?
     
     var task: TaskProtocol? {
         didSet {
@@ -634,21 +644,12 @@ struct DailyProgressView: View {
 }
 
 struct TaskFormView: View {
-    private let configRepository = ConfigRepository()
     @Environment(\.presentationMode) var presentationMode
     @State private var isEditingText = false
     @State private var isEditingNotes = false
     
     var tags: [TagProtocol] = []
     
-    var isCreating: Bool
-    var taskType: TaskType
-    var taskTintColor: Color = Color(.purple300)
-    var darkTaskTintColor: Color = Color(.purple200)
-    var lightTaskTintColor: Color = Color(.purple400)
-    var darkestTaskTintColor: Color = Color(UIColor(white: 1, alpha: 0.7))
-    var showStatAllocation = false
-    var showTaskGraphs = false
     @ObservedObject var viewModel: TaskFormViewModel
     
     private let dateFormatter: DateFormatter = {
@@ -671,11 +672,54 @@ struct TaskFormView: View {
     ]
     
     private var navigationTitle: String {
-        if isCreating {
-            return L10n.Tasks.Form.create(taskType.prettyName())
+        if viewModel.isCreating {
+            return L10n.Tasks.Form.create(viewModel.taskType.prettyName())
         } else {
-            return L10n.Tasks.Form.edit(taskType.prettyName())
+            return L10n.Tasks.Form.edit(viewModel.taskType.prettyName())
         }
+    }
+    
+    private var textFields: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(L10n.title).foregroundColor(viewModel.darkestTaskTintColor).font(.body).padding(.leading, 8)
+            TextField("", text: $viewModel.text)
+                .padding(8)
+                .frame(minHeight: 40)
+                .foregroundColor(isEditingText ? .white : viewModel.darkestTaskTintColor)
+                .background(viewModel.darkTaskTintColor)
+                .cornerRadius(12)
+            Text(L10n.notes).foregroundColor(viewModel.darkestTaskTintColor).font(.body).padding(.leading, 8).padding(.top, 10)
+            TextField("", text: $viewModel.notes)
+                .padding(8)
+                .frame(minHeight: 40)
+                .foregroundColor(isEditingNotes ? .white : viewModel.darkestTaskTintColor)
+                .background(viewModel.darkTaskTintColor)
+                .cornerRadius(12)
+        }.padding(.horizontal, 16)
+        .padding(.vertical, 12)
+    }
+    
+    @ViewBuilder
+    private var graphs: some View {
+        if viewModel.taskType == .daily && viewModel.showTaskGraphs, let task = viewModel.task {
+            TaskFormSection(header: Text(L10n.Tasks.Form.completion.uppercased()),
+                            content: DailyProgressView(history: task.history), backgroundColor: .clear)
+            
+        } else if viewModel.taskType == .habit && viewModel.showTaskGraphs, let task = viewModel.task {
+            TaskFormSection(header: Text(L10n.Tasks.Form.completion.uppercased()),
+                            content: HabitProgressView(history: task.history, up: viewModel.up, down: viewModel.down), backgroundColor: .clear)
+        }
+    }
+    
+    private var deleteButton: some View {
+        Button(action: {
+            viewModel.onTaskDelete?()
+        }, label: {
+            Text(L10n.delete).frame(height: 45)
+                .foregroundColor(Color(ThemeService.shared.theme.errorColor))
+                .padding(.horizontal, 14)
+                .frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
+        })
     }
     
     var body: some View {
@@ -683,71 +727,46 @@ struct TaskFormView: View {
         ScrollView {
             VStack {
                 VStack {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(L10n.title).foregroundColor(darkestTaskTintColor).font(.body).padding(.leading, 8)
-                        TextField("", text: $viewModel.text)
-                            .padding(8)
-                            .frame(minHeight: 40)
-                            .foregroundColor(isEditingText ? .white : darkestTaskTintColor)
-                            .background(darkTaskTintColor)
-                            .cornerRadius(12)
-                        Text(L10n.notes).foregroundColor(darkestTaskTintColor).font(.body).padding(.leading, 8).padding(.top, 10)
-                        TextField("", text: $viewModel.notes)
-                            .padding(8)
-                            .frame(minHeight: 40)
-                            .foregroundColor(isEditingNotes ? .white : darkestTaskTintColor)
-                            .background(darkTaskTintColor)
-                            .cornerRadius(12)
-                    }.padding(.horizontal, 16)
-                    .padding(.vertical, 12)
+                    textFields
                     VStack(spacing: 25) {
-                        if taskType == .daily && showTaskGraphs, let task = viewModel.task {
-                            TaskFormSection(header: Text(L10n.Tasks.Form.completion.uppercased()),
-                                            content: DailyProgressView(history: task.history), backgroundColor: .clear)
-                            
-                        } else
-                        if taskType == .habit && showTaskGraphs, let task = viewModel.task {
-                            TaskFormSection(header: Text(L10n.Tasks.Form.completion.uppercased()),
-                                            content: HabitProgressView(history: task.history, up: viewModel.up, down: viewModel.down), backgroundColor: .clear)
-                            
-                        }
-                        if taskType == .daily || taskType == .todo {
+                        graphs
+                        if viewModel.taskType == .daily || viewModel.taskType == .todo {
                             TaskFormChecklistItemView(items: $viewModel.checklistItems)
                         }
-                        if taskType == .habit {
+                        if viewModel.taskType == .habit {
                             TaskFormSection(header: Text(L10n.Tasks.Form.controls.uppercased()),
-                                            content: HabitControlsFormView(taskColor: lightTaskTintColor.uiColor(), isUp: $viewModel.up, isDown: $viewModel.down).padding(8))
-                        } else if taskType == .reward {
+                                            content: HabitControlsFormView(taskColor: viewModel.lightTaskTintColor.uiColor(), isUp: $viewModel.up, isDown: $viewModel.down).padding(8))
+                            TaskFormSection(header: Text(L10n.Tasks.Form.resetCounter.uppercased()),
+                                            content: TaskFormPicker(options: TaskFormView.habitResetStreakOptions, selection: $viewModel.frequency, tintColor: viewModel.lightTaskTintColor))
+                        } else if viewModel.taskType == .reward {
                             TaskFormSection(header: Text(L10n.Tasks.Form.difficulty.uppercased()),
                                             content: RewardAmountView(value: $viewModel.value), backgroundColor: .clear)
-                        }
-                        if taskType != .reward {
-                            TaskFormSection(header: Text(L10n.Tasks.Form.difficulty.uppercased()),
-                                            content: DifficultyPicker(selectedDifficulty: $viewModel.priority).padding(8))
-                        }
-                        if taskType == .habit {
-                            TaskFormSection(header: Text(L10n.Tasks.Form.resetCounter.uppercased()),
-                                            content: TaskFormPicker(options: TaskFormView.habitResetStreakOptions, selection: $viewModel.frequency, tintColor: lightTaskTintColor))
-                        }
-                        if taskType == .daily {
+                        } else if viewModel.taskType == .daily {
                             TaskFormSection(header: Text(L10n.Tasks.Form.scheduling.uppercased()),
                                             content: DailySchedulingView(startDate: $viewModel.startDate, frequency: $viewModel.frequency, everyX: $viewModel.everyX, monday: $viewModel.monday, tuesday: $viewModel.tuesday, wednesday: $viewModel.wednesday, thursday: $viewModel.thursday, friday: $viewModel.friday, saturday: $viewModel.saturday, sunday: $viewModel.sunday, daysOfMonth: $viewModel.daysOfMonth, weeksOfMonth: $viewModel.weeksOfMonth, dayOrWeekMonth: $viewModel.dayOrWeekMonth
                                                                          ))
                         }
-                        if taskType == .daily || taskType == .todo {
+                        if viewModel.taskType != .reward {
+                            TaskFormSection(header: Text(L10n.Tasks.Form.difficulty.uppercased()),
+                                            content: DifficultyPicker(selectedDifficulty: $viewModel.priority).padding(8))
+                        }
+                        if viewModel.taskType == .daily || viewModel.taskType == .todo {
                             TaskFormReminderView(items: $viewModel.reminders)
                             }
-                        if showStatAllocation {
+                        if viewModel.showStatAllocation {
                             TaskFormSection(header: Text(L10n.statAllocation.uppercased()),
-                                            content: TaskFormPicker(options: TaskFormView.statAllocationOptions, selection: $viewModel.stat, tintColor: lightTaskTintColor))
+                                            content: TaskFormPicker(options: TaskFormView.statAllocationOptions, selection: $viewModel.stat, tintColor: viewModel.lightTaskTintColor))
                         }
                         TaskFormSection(header: Text(L10n.Tasks.Form.tags.uppercased()),
-                                        content: TagList(selectedTags: $viewModel.selectedTags, allTags: tags, taskColor: taskTintColor))
+                                        content: TagList(selectedTags: $viewModel.selectedTags, allTags: tags, taskColor: viewModel.taskTintColor))
+                        if viewModel.task?.id != nil {
+                            deleteButton
+                        }
                     }.padding(16).background(Color(theme.contentBackgroundColor).edgesIgnoringSafeArea(.bottom)).cornerRadius(8)
-                }.background(taskTintColor.cornerRadius(12).edgesIgnoringSafeArea(.bottom))
+                }.background(viewModel.taskTintColor.cornerRadius(12).edgesIgnoringSafeArea(.bottom))
             }
         }
-        .accentColor(lightTaskTintColor)
+        .accentColor(viewModel.lightTaskTintColor)
         .frame(maxHeight: .infinity)
         .background(Color(theme.contentBackgroundColor).edgesIgnoringSafeArea(.bottom).padding(.top, 40))
         .navigationBarTitle(navigationTitle)
@@ -763,26 +782,31 @@ class TaskFormController: UIHostingController<TaskFormView> {
     var taskType: TaskType = .habit
     var editedTask: TaskProtocol?
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder, rootView: TaskFormView(isCreating: editedTask != nil,
-                                                           taskType: taskType,
-                                                           taskTintColor: Color(editedTask != nil ? .forTaskValue(editedTask?.value ?? 0) : .purple300),
-                                                           lightTaskTintColor: Color(editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple400),
-                                                           darkestTaskTintColor: Color(editedTask != nil ? .forTaskValueDarkest(editedTask?.value ?? 0) : UIColor(white: 1, alpha: 0.7)), viewModel: viewModel))
+        super.init(coder: aDecoder, rootView: TaskFormView(viewModel: viewModel))
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let color = editedTask != nil ? UIColor.forTaskValueDark(editedTask?.value ?? 0) : .purple200
-        rootView.isCreating = editedTask == nil
-        rootView.taskType = taskType
-        rootView.viewModel.task = editedTask
-        rootView.taskTintColor = Color(editedTask != nil ? .forTaskValue(editedTask?.value ?? 0) : .purple300)
-        rootView.lightTaskTintColor = Color(editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple400)
-        rootView.darkTaskTintColor = Color(color)
+        viewModel.isCreating = editedTask == nil
+        viewModel.taskType = taskType
+        viewModel.task = editedTask
         
-        rootView.showTaskGraphs = configRepository.bool(variable: .showTaskGraphs)
+        viewModel.onTaskDelete = {[weak self] in
+            if let task = self?.editedTask {
+                self?.taskRepository.deleteTask(task).observeCompleted {
+                }
+            }
+            self?.dismiss(animated: true, completion: nil)
+        }
+        
+        viewModel.taskTintColor = Color(editedTask != nil ? .forTaskValue(editedTask?.value ?? 0) : .purple300)
+        viewModel.lightTaskTintColor = Color(editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple400)
+        viewModel.darkTaskTintColor = Color(color)
+        
+        viewModel.showTaskGraphs = configRepository.bool(variable: .showTaskGraphs)
 
-        rootView.darkestTaskTintColor = Color(editedTask != nil ? .forTaskValueDarkest(editedTask?.value ?? 0) : UIColor(white: 1, alpha: 0.7))
+        viewModel.darkestTaskTintColor = Color(editedTask != nil ? .forTaskValueDarkest(editedTask?.value ?? 0) : UIColor(white: 1, alpha: 0.7))
         if let controller = navigationController as? ThemedNavigationController {
             controller.navigationBarColor = color
             controller.textColor = .white
@@ -818,6 +842,13 @@ class TaskFormController: UIHostingController<TaskFormView> {
     
     private func save() {
         let task = taskRepository.getEditableTask(id: editedTask?.id ?? "") ?? taskRepository.getNewTask()
+        if task.id == nil {
+            task.id = UUID().uuidString
+        }
+        if task.createdAt == nil {
+            task.createdAt = Date()
+            task.order = -1
+        }
         task.type = taskType.rawValue
         task.text = viewModel.text
         task.notes = viewModel.notes
@@ -856,13 +887,13 @@ struct TaskFormView_Previews: PreviewProvider {
         let viewModel = TaskFormViewModel()
         viewModel.task = PreviewTask()
         return Group {
-            TaskFormView(tags: [PreviewTag(), PreviewTag(), PreviewTag()], isCreating: false, taskType: .habit, viewModel: viewModel)
+            TaskFormView(tags: [PreviewTag(), PreviewTag(), PreviewTag()], viewModel: viewModel)
                 .previewDisplayName("Habits")
-            TaskFormView(tags: [PreviewTag(), PreviewTag(), PreviewTag()], isCreating: false, taskType: .daily, viewModel: viewModel)
+            TaskFormView(tags: [PreviewTag(), PreviewTag(), PreviewTag()], viewModel: viewModel)
                 .previewDisplayName("Dailies")
-            TaskFormView(tags: [PreviewTag(), PreviewTag(), PreviewTag()], isCreating: false, taskType: .todo, viewModel: TaskFormViewModel())
+            TaskFormView(tags: [PreviewTag(), PreviewTag(), PreviewTag()], viewModel: TaskFormViewModel())
                 .previewDisplayName("Todos")
-            TaskFormView(tags: [PreviewTag(), PreviewTag(), PreviewTag()], isCreating: false, taskType: .reward, viewModel: TaskFormViewModel())
+            TaskFormView(tags: [PreviewTag(), PreviewTag(), PreviewTag()], viewModel: TaskFormViewModel())
                 .previewDisplayName("Rewards")
         }
     }

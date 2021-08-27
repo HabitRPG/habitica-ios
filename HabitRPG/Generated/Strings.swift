@@ -802,6 +802,8 @@ public enum L10n {
   public static var search: String { return L10n.tr("Mainstrings", "search") }
   /// Seasonal items available
   public static var seasonalPotionsAvailable: String { return L10n.tr("Mainstrings", "seasonal_potions_available") }
+  /// See you tomorrow
+  public static var seeYouTomorrow: String { return L10n.tr("Mainstrings", "see_you_tomorrow") }
   /// Sell for %d Gold
   public static func sell(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "sell", p1)
