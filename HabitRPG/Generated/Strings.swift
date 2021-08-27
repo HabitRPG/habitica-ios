@@ -618,6 +618,10 @@ public enum L10n {
   public static func nextCheckinPrizeXDays(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "next_checkin_prize_x_days", p1)
   }
+  /// Next prize in %d Check-Ins
+  public static func nextPrizeInXCheckins(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "next_prize_in_x_checkins", p1)
+  }
   /// No Benefit
   public static var noBenefit: String { return L10n.tr("Mainstrings", "no_benefit") }
   /// No Camera available
