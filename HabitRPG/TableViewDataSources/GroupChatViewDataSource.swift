@@ -94,10 +94,10 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             
             let alert = HabiticaAlertController()
             alert.contentView = view
-            alert.addCancelAction()
             alert.addAction(title: L10n.report, style: .destructive, isMainAction: true) {[weak self] _ in
                 self?.socialRepository.flag(groupID: self?.groupID ?? "", chatMessage: chatMessage).observeCompleted {}
             }
+            alert.addCancelAction()
             alert.containerViewSpacing = 8
             alert.enqueue()
         }

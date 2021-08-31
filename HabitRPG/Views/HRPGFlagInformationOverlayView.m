@@ -89,10 +89,12 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
                                            range:subStringRange];
                          }];
     self.titleLabel.attributedText = title;
+    [self setNeedsLayout];
 }
 
 - (void)setMessage:(NSString *)message {
     self.messageTextView.text = message;
+    [self setNeedsLayout];
 }
 
 - (void)sizeToFit {
@@ -104,7 +106,6 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
         width = 500;
     }
 
-    [self setFrame:CGRectMake(0, 0, width, 300)];
     // top margin, title-message margin, message-explanation margin, explanation-buttons margin,
     // button height
     CGFloat height = 20 + 12 + 12 + 8 + 30 + 40;
@@ -139,9 +140,7 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
                                                 context:nil]
             .size.height;
 
-    if (height > screenRect.size.height - 60) {
-        height = screenRect.size.height - 60;
-    }
+    height = screenRect.size.height - 60;
 
     self.frame = CGRectMake(0, 0, width, height);
     UIImage *mask = MTDContextCreateRoundedMask(self.bounds, 8.0, 8.0, 8.0, 8.0);
@@ -149,6 +148,18 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
     layerMask.frame = self.bounds;
     layerMask.contents = (id)mask.CGImage;
     self.layer.mask = layerMask;
+}
+
+- (CGSize)intrinsicContentSize {
+    return CGSizeMake(self.bounds.size.width,  [[UIScreen mainScreen] bounds].size.height - 60);
+}
+
+- (CGSize)sizeThatFits:(CGSize)size {
+    return size;
+}
+
+- (CGSize)systemLayoutSizeFittingSize:(CGSize)targetSize {
+    return CGSizeMake(targetSize.width, targetSize.height - 300);
 }
 
 @end

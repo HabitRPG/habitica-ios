@@ -779,51 +779,56 @@ class TaskFormController: UIHostingController<TaskFormView> {
     
     private let viewModel = TaskFormViewModel()
     
-    var taskType: TaskType = .habit
-    var editedTask: TaskProtocol?
+    var taskType: TaskType = .habit {
+        didSet {
+            viewModel.taskType = taskType
+        }
+    }
+    var editedTask: TaskProtocol? {
+        didSet {
+            let color = editedTask != nil ? UIColor.forTaskValueDark(editedTask?.value ?? 0) : .purple200
+            viewModel.isCreating = editedTask == nil
+            viewModel.task = editedTask
+            
+            viewModel.onTaskDelete = {[weak self] in
+                if let task = self?.editedTask {
+                    self?.taskRepository.deleteTask(task).observeCompleted {
+                    }
+                }
+                self?.dismiss(animated: true, completion: nil)
+            }
+            
+            viewModel.taskTintColor = Color(editedTask != nil ? .forTaskValue(editedTask?.value ?? 0) : .purple300)
+            viewModel.lightTaskTintColor = Color(editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple400)
+            viewModel.darkTaskTintColor = Color(color)
+            
+            viewModel.showTaskGraphs = configRepository.bool(variable: .showTaskGraphs)
+
+            viewModel.darkestTaskTintColor = Color(editedTask != nil ? .forTaskValueDarkest(editedTask?.value ?? 0) : UIColor(white: 1, alpha: 0.7))
+            
+            if let controller = navigationController as? ThemedNavigationController {
+                controller.navigationBarColor = color
+                controller.textColor = .white
+                controller.navigationBar.isTranslucent = false
+                controller.navigationBar.shadowImage = UIImage()
+            }
+            view.backgroundColor = color
+            
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: L10n.cancel, style: .plain, target: self, action: #selector(leftButtonTapped))
+
+            if editedTask != nil {
+                navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.save, style: .plain, target: self, action: #selector(rightButtonTapped))
+            } else {
+                navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.create, style: .plain, target: self, action: #selector(rightButtonTapped))
+            }
+        }
+    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder, rootView: TaskFormView(viewModel: viewModel))
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let color = editedTask != nil ? UIColor.forTaskValueDark(editedTask?.value ?? 0) : .purple200
-        viewModel.isCreating = editedTask == nil
-        viewModel.taskType = taskType
-        viewModel.task = editedTask
-        
-        viewModel.onTaskDelete = {[weak self] in
-            if let task = self?.editedTask {
-                self?.taskRepository.deleteTask(task).observeCompleted {
-                }
-            }
-            self?.dismiss(animated: true, completion: nil)
-        }
-        
-        viewModel.taskTintColor = Color(editedTask != nil ? .forTaskValue(editedTask?.value ?? 0) : .purple300)
-        viewModel.lightTaskTintColor = Color(editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple400)
-        viewModel.darkTaskTintColor = Color(color)
-        
-        viewModel.showTaskGraphs = configRepository.bool(variable: .showTaskGraphs)
-
-        viewModel.darkestTaskTintColor = Color(editedTask != nil ? .forTaskValueDarkest(editedTask?.value ?? 0) : UIColor(white: 1, alpha: 0.7))
-        if let controller = navigationController as? ThemedNavigationController {
-            controller.navigationBarColor = color
-            controller.textColor = .white
-            controller.navigationBar.isTranslucent = false
-            controller.navigationBar.shadowImage = UIImage()
-        }
-        view.backgroundColor = color
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: L10n.cancel, style: .plain, target: self, action: #selector(leftButtonTapped))
-
-        if editedTask != nil {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.save, style: .plain, target: self, action: #selector(rightButtonTapped))
-        } else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.create, style: .plain, target: self, action: #selector(rightButtonTapped))
-
-        }
-        
         taskRepository.getTags().on(value: {[weak self] tags in
             self?.rootView.tags = tags.value
         }).start()
