@@ -78,8 +78,14 @@ class GiftSubscriptionViewController: BaseTableViewController {
         avatarView.ignoreSleeping = true
         
         if let username = giftRecipientUsername {
-            disposable.inner.add(socialRepository.retrieveMemberWithUsername(username).observeValues({ member in
-                self.giftedUser = member
+            let signal: Signal<MemberProtocol?, Never>
+            if UUID(uuidString: username) != nil {
+                signal = socialRepository.retrieveMember(userID: username)
+            } else {
+                signal = socialRepository.retrieveMemberWithUsername(username)
+            }
+            disposable.inner.add(signal.observeValues({[weak self] member in
+                self?.giftedUser = member
             }))
         }
 

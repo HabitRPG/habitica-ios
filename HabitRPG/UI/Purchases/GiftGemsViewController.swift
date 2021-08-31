@@ -93,7 +93,13 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
         navigationController?.navigationBar.shadowImage = UIImage(named: "")
         
         if let username = giftRecipientUsername {
-            disposable.inner.add(socialRepository.retrieveMemberWithUsername(username).observeValues({[weak self] member in
+            let signal: Signal<MemberProtocol?, Never>
+            if UUID(uuidString: username) != nil {
+                signal = socialRepository.retrieveMember(userID: username)
+            } else {
+                signal = socialRepository.retrieveMemberWithUsername(username)
+            }
+            disposable.inner.add(signal.observeValues({[weak self] member in
                 self?.giftedUser = member
             }))
         }
