@@ -100,7 +100,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         view.rightImageView.image = Asset.fallPromoMenuRight.image
         view.setTitleImage(Asset.fallPromoTitle.image)
         view.setDescriptionImage(Asset.fallPromoMenuDescription.image)
-        view.actionButton.backgroundColor = UIColor.gray1
+        view.actionButton.backgroundColor = UIColor.gray10
         view.actionButton.setTitle(L10n.learnMore, for: .normal)
     }
     
@@ -209,7 +209,7 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         view.rightImageView.image = Asset.spookyPromoMenuRight.image
         view.setTitleImage(Asset.spookyPromoTitle.image)
         view.setDescriptionImage(Asset.spookyPromoMenuDescription.image)
-        view.actionButton.backgroundColor = UIColor.gray1
+        view.actionButton.backgroundColor = UIColor.gray10
         view.actionButton.setTitle(L10n.learnMore, for: .normal)
     }
     

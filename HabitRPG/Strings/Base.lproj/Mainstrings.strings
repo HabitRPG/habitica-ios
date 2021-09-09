@@ -518,7 +518,7 @@
 "inactive" = "Inactive";
 "one_month" = "1 Month";
 "x_months" = "%d Months";
-"unsubscribe_itunes" = "No longer want to subscribe? You can manage your subscription from iTunes.";
+"unsubscribe_itunes" = "No longer want to subscribe? You can manage your subscription through your Apple ID in your device's Settings.";
 "open_itunes" = "Open Apple ID Subscriptions";
 "open_app_store" = "Open App Store Page";
 "unsubscribe_website" = "No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.";

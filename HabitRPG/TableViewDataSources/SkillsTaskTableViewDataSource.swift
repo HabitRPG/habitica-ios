@@ -33,7 +33,7 @@ class SkillsTaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtoco
             cell.textLabel?.textColor = UIColor.forTaskValue(task.value)
             if task.challengeID != nil {
                 cell.detailTextLabel?.text = L10n.Skills.cantCastOnChallengeTasks
-                cell.backgroundColor = .lightGray
+                cell.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
             } else {
                 cell.detailTextLabel?.text = nil
             }

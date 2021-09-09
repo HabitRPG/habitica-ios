@@ -982,7 +982,7 @@ public enum L10n {
   public static var unlocksSelectingClassPrompt: String { return L10n.tr("Mainstrings", "unlocks_selecting_class_prompt") }
   /// Unpin
   public static var unpin: String { return L10n.tr("Mainstrings", "unpin") }
-  /// No longer want to subscribe? You can manage your subscription from iTunes.
+  /// No longer want to subscribe? You can manage your subscription through your Apple ID in your device's Settings.
   public static var unsubscribeItunes: String { return L10n.tr("Mainstrings", "unsubscribe_itunes") }
   /// No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.
   public static var unsubscribeWebsite: String { return L10n.tr("Mainstrings", "unsubscribe_website") }

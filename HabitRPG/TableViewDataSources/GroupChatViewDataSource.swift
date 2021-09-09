@@ -85,14 +85,14 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             self?.viewController?.navigationController?.pushViewController(profileViewController, animated: true)
         }
         cell.reportAction = {[weak self] in
-            guard let view = Bundle.main.loadNibNamed("HRPGFlagInformationOverlayView", owner: self, options: nil)?.first as? HRPGFlagInformationOverlayView else {
+            guard let view = Bundle.main.loadNibNamed("HRPGFlagInformationOverlayView", owner: self, options: nil)?.first as? FlagInformationOverlayView else {
                 return
             }
-            view.username = chatMessage.username
             view.message = chatMessage.text
             view.sizeToFit()
             
             let alert = HabiticaAlertController()
+            alert.title = L10n.reportXViolation(chatMessage.username ?? "")
             alert.contentView = view
             alert.addAction(title: L10n.report, style: .destructive, isMainAction: true) {[weak self] _ in
                 self?.socialRepository.flag(groupID: self?.groupID ?? "", chatMessage: chatMessage).observeCompleted {}

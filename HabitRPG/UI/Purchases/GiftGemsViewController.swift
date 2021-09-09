@@ -192,7 +192,7 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
             return UICollectionViewCell()
         }
         cell.setPrice(product.localizedPrice)
-        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        cell.backgroundColor = .purple400
         
         var amount = 0
         if product.productIdentifier == "com.habitrpg.ios.Habitica.4gems" {

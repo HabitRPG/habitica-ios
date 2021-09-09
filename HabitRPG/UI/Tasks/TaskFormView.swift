@@ -109,7 +109,6 @@ struct TagList: View {
                         Image(Asset.checkmarkSmall.name).foregroundColor(.accentColor)
                     }
                 }.frame(height: 45).padding(.horizontal, 14)
-                .background(Color(ThemeService.shared.theme.windowBackgroundColor))
                 .onTapGesture {
                     UISelectionFeedbackGenerator.oneShotSelectionChanged()
                     if isSelected {
@@ -526,12 +525,13 @@ class TaskFormViewModel: ObservableObject {
     @Published var checklistItems: [ChecklistItemProtocol] = []
     @Published var reminders: [ReminderProtocol] = []
     
-    @Published var isCreating: Bool = false
+    @Published var isCreating: Bool = true
     @Published var taskType: TaskType = .habit
     @Published var taskTintColor: Color = Color(.purple300)
     @Published var darkTaskTintColor: Color = Color(.purple200)
     @Published var lightTaskTintColor: Color = Color(.purple400)
     @Published var darkestTaskTintColor: Color = Color(UIColor(white: 1, alpha: 0.7))
+    @Published var lightestTaskTintColor: Color = Color(.purple500)
     @Published var showStatAllocation = false
     @Published var showTaskGraphs = false
     
@@ -681,19 +681,23 @@ struct TaskFormView: View {
     
     private var textFields: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(L10n.title).foregroundColor(viewModel.darkestTaskTintColor).font(.body).padding(.leading, 8)
-            TextField("", text: $viewModel.text)
+            Text(L10n.title).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingText ? .semibold : .regular)).padding(.leading, 8)
+            TextField("", text: $viewModel.text, onEditingChanged: { isEditing in
+                isEditingText = isEditing
+            })
                 .padding(8)
                 .frame(minHeight: 40)
-                .foregroundColor(isEditingText ? .white : viewModel.darkestTaskTintColor)
-                .background(viewModel.darkTaskTintColor)
+                .foregroundColor(isEditingText ? viewModel.darkestTaskTintColor : viewModel.darkestTaskTintColor.opacity(0.75))
+                .background(viewModel.lightestTaskTintColor)
                 .cornerRadius(12)
-            Text(L10n.notes).foregroundColor(viewModel.darkestTaskTintColor).font(.body).padding(.leading, 8).padding(.top, 10)
-            TextField("", text: $viewModel.notes)
+            Text(L10n.notes).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingNotes ? .semibold : .regular)).padding(.leading, 8).padding(.top, 10)
+            TextField("", text: $viewModel.notes, onEditingChanged: { isEditing in
+                isEditingNotes = isEditing
+            })
                 .padding(8)
                 .frame(minHeight: 40)
-                .foregroundColor(isEditingNotes ? .white : viewModel.darkestTaskTintColor)
-                .background(viewModel.darkTaskTintColor)
+                .foregroundColor(isEditingNotes ? viewModel.darkestTaskTintColor : viewModel.darkestTaskTintColor.opacity(0.75))
+                .background(viewModel.lightestTaskTintColor)
                 .cornerRadius(12)
         }.padding(.horizontal, 16)
         .padding(.vertical, 12)
@@ -766,7 +770,7 @@ struct TaskFormView: View {
                 }.background(viewModel.taskTintColor.cornerRadius(12).edgesIgnoringSafeArea(.bottom))
             }
         }
-        .accentColor(viewModel.lightTaskTintColor)
+        .accentColor(viewModel.taskTintColor)
         .frame(maxHeight: .infinity)
         .background(Color(theme.contentBackgroundColor).edgesIgnoringSafeArea(.bottom).padding(.top, 40))
         .navigationBarTitle(navigationTitle)
@@ -786,7 +790,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
     }
     var editedTask: TaskProtocol? {
         didSet {
-            let color = editedTask != nil ? UIColor.forTaskValueDark(editedTask?.value ?? 0) : .purple200
+            let color = editedTask != nil ? UIColor.forTaskValue(editedTask?.value ?? 0) : .purple200
             viewModel.isCreating = editedTask == nil
             viewModel.task = editedTask
             
@@ -798,24 +802,24 @@ class TaskFormController: UIHostingController<TaskFormView> {
                 self?.dismiss(animated: true, completion: nil)
             }
             
-            viewModel.taskTintColor = Color(editedTask != nil ? .forTaskValue(editedTask?.value ?? 0) : .purple300)
+            viewModel.taskTintColor = Color(editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple300)
             viewModel.lightTaskTintColor = Color(editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple400)
             viewModel.darkTaskTintColor = Color(color)
-            
-            viewModel.showTaskGraphs = configRepository.bool(variable: .showTaskGraphs)
+            viewModel.lightestTaskTintColor = Color(editedTask != nil ? .forTaskValueExtraLight(editedTask?.value ?? 0) : .purple500)
 
-            viewModel.darkestTaskTintColor = Color(editedTask != nil ? .forTaskValueDarkest(editedTask?.value ?? 0) : UIColor(white: 1, alpha: 0.7))
+            viewModel.showTaskGraphs = configRepository.bool(variable: .showTaskGraphs)
+            let darkestColor: UIColor = editedTask != nil ? .forTaskValueDarkest(editedTask?.value ?? 0) : .white
+            viewModel.darkestTaskTintColor = Color(darkestColor)
             
             if let controller = navigationController as? ThemedNavigationController {
                 controller.navigationBarColor = color
-                controller.textColor = .white
+                controller.textColor = darkestColor
+                controller.navigationBar.tintColor = darkestColor
                 controller.navigationBar.isTranslucent = false
                 controller.navigationBar.shadowImage = UIImage()
             }
             view.backgroundColor = color
             
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: L10n.cancel, style: .plain, target: self, action: #selector(leftButtonTapped))
-
             if editedTask != nil {
                 navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.save, style: .plain, target: self, action: #selector(rightButtonTapped))
             } else {
@@ -832,6 +836,18 @@ class TaskFormController: UIHostingController<TaskFormView> {
         taskRepository.getTags().on(value: {[weak self] tags in
             self?.rootView.tags = tags.value
         }).start()
+        view.backgroundColor = .purple200
+        
+        if let controller = navigationController as? ThemedNavigationController, editedTask == nil {
+            controller.navigationBarColor = .purple200
+            controller.textColor = .white
+            controller.navigationBar.isTranslucent = false
+            controller.navigationBar.shadowImage = UIImage()
+        }
+        
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: L10n.cancel, style: .plain, target: self, action: #selector(leftButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.save, style: .plain, target: self, action: #selector(rightButtonTapped))
     }
     
     @objc

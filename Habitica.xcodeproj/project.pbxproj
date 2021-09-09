@@ -308,6 +308,7 @@
 		29A6B86420644BFE0086B2A6 /* WeekdayFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A6B86320644BFE0086B2A6 /* WeekdayFormCell.xib */; };
 		29A6B86620644CA40086B2A6 /* WeekdayFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B86520644CA40086B2A6 /* WeekdayFormCell.swift */; };
 		29A77B1F22EED4CE00FE41E4 /* NetworkIndicatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A77B1E22EED4CE00FE41E4 /* NetworkIndicatorController.swift */; };
+		29A9038826EA33A400442B93 /* FlagInformationOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9038726EA33A400442B93 /* FlagInformationOverlayView.swift */; };
 		29A984D22547294E00F04665 /* HabiticaAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A984D02547294E00F04665 /* HabiticaAnalytics.swift */; };
 		29A984D32547294E00F04665 /* RemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A984D12547294E00F04665 /* RemoteLogger.swift */; };
 		29A9857F25472D1600F04665 /* HabiticaAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A984D02547294E00F04665 /* HabiticaAnalytics.swift */; };
@@ -552,7 +553,6 @@
 		D984D58F1E4A2F41006E84F8 /* SubscriptionOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D984D58E1E4A2F41006E84F8 /* SubscriptionOptionView.xib */; };
 		D98768F51AFFB85100336978 /* blade-equipResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = D98768F41AFFB85100336978 /* blade-equipResponse.json */; };
 		D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98F5DC21C6A34540035CBEC /* ChatMessageCell.xib */; };
-		D98F5DCD1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */; };
 		D98F5DD11C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */; };
 		D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D99BC43019D4C34A006DC132 /* 1Password.xcassets */; };
 		D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */; };
@@ -1018,6 +1018,7 @@
 		29A6B86320644BFE0086B2A6 /* WeekdayFormCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekdayFormCell.xib; sourceTree = "<group>"; };
 		29A6B86520644CA40086B2A6 /* WeekdayFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayFormCell.swift; sourceTree = "<group>"; };
 		29A77B1E22EED4CE00FE41E4 /* NetworkIndicatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkIndicatorController.swift; sourceTree = "<group>"; };
+		29A9038726EA33A400442B93 /* FlagInformationOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagInformationOverlayView.swift; sourceTree = "<group>"; };
 		29A984D02547294E00F04665 /* HabiticaAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabiticaAnalytics.swift; sourceTree = "<group>"; };
 		29A984D12547294E00F04665 /* RemoteLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteLogger.swift; sourceTree = "<group>"; };
 		29A98592254841C500F04665 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
@@ -1305,8 +1306,6 @@
 		D984D58E1E4A2F41006E84F8 /* SubscriptionOptionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscriptionOptionView.xib; sourceTree = "<group>"; };
 		D98768F41AFFB85100336978 /* blade-equipResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "blade-equipResponse.json"; path = "HabiticaTests/Fixtures/blade-equipResponse.json"; sourceTree = SOURCE_ROOT; };
 		D98F5DC21C6A34540035CBEC /* ChatMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMessageCell.xib; sourceTree = "<group>"; };
-		D98F5DCB1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGFlagInformationOverlayView.h; sourceTree = "<group>"; };
-		D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGFlagInformationOverlayView.m; sourceTree = "<group>"; };
 		D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGFlagInformationOverlayView.xib; sourceTree = "<group>"; };
 		D99B82171BD9545800E770B7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D99B82181BD9545800E770B7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1677,8 +1676,7 @@
 				29C38C8A24A48F9D00F219A1 /* AchievementAlertController.swift */,
 				29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */,
 				29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */,
-				D98F5DCB1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.h */,
-				D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */,
+				29A9038726EA33A400442B93 /* FlagInformationOverlayView.swift */,
 				D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */,
 				294973D1208118C100F02AC3 /* ImageOverlayView.swift */,
 				29E30DE520D935AF00F74ECB /* LevelUpOverlayView.swift */,
@@ -2197,7 +2195,6 @@
 				D99F15BE191027D90081836E /* HRPGBaseViewController.h */,
 				D99F15BF191027D90081836E /* HRPGBaseViewController.m */,
 				49DCECE71F9A843E00982E99 /* MultiModelTableViewController.swift */,
-				D9C3D01C19509E3800D22A4A /* Inventory */,
 				D9E3654F1930D45500C056F1 /* Modals */,
 				D9E3654E1930D44300C056F1 /* Spells */,
 				D9E365511930D59D00C056F1 /* Tasks */,
@@ -2637,13 +2634,6 @@
 			);
 			name = Cells;
 			path = TableviewCells;
-			sourceTree = "<group>";
-		};
-		D9C3D01C19509E3800D22A4A /* Inventory */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Inventory;
 			sourceTree = "<group>";
 		};
 		D9E02EC41E5E02E7002CFCE2 /* Challenges */ = {
@@ -3752,6 +3742,7 @@
 				29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */,
 				29B4788420BD6DED00B6123F /* SkillsUserTableViewController.swift in Sources */,
 				49E3784F200912BA00E0DA3D /* ResizableTableViewCell.swift in Sources */,
+				29A9038826EA33A400442B93 /* FlagInformationOverlayView.swift in Sources */,
 				29FC8866201B7B5B002B3D3F /* QuestMenuHeader.swift in Sources */,
 				290922F02242628600645D0E /* LanguageHandler.swift in Sources */,
 				29A98593254841C500F04665 /* KeyboardManager.swift in Sources */,
@@ -3850,7 +3841,6 @@
 				49A37A8320C0FA49008C28F5 /* EmptyTableViewCell.swift in Sources */,
 				290C302A206BA0B50066AF5B /* SkillTableViewCell.swift in Sources */,
 				290458D02021D6C60032BC5E /* TopHeaderCoordinator.swift in Sources */,
-				D98F5DCD1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m in Sources */,
 				D96BFC4C1E181B4A00266EEF /* IntroViewController.swift in Sources */,
 				2902799720583D82006DACB9 /* LoadingViewController.swift in Sources */,
 				291448642084EE6D00F3A6B5 /* PetDetailViewController.swift in Sources */,
@@ -4509,7 +4499,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 612;
+				CURRENT_PROJECT_VERSION = 616;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4556,7 +4546,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 612;
+				CURRENT_PROJECT_VERSION = 616;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4595,7 +4585,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 612;
+				CURRENT_PROJECT_VERSION = 616;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4634,7 +4624,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 612;
+				CURRENT_PROJECT_VERSION = 616;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4671,7 +4661,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 612;
+				CURRENT_PROJECT_VERSION = 616;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4712,7 +4702,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 612;
+				CURRENT_PROJECT_VERSION = 616;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4751,7 +4741,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 612;
+				CURRENT_PROJECT_VERSION = 616;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4794,7 +4784,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 612;
+				CURRENT_PROJECT_VERSION = 616;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -5071,7 +5061,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 612;
+				CURRENT_PROJECT_VERSION = 616;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -5127,7 +5117,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 612;
+				CURRENT_PROJECT_VERSION = 616;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -5157,7 +5147,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 612;
+				CURRENT_PROJECT_VERSION = 616;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -5253,7 +5243,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 612;
+				CURRENT_PROJECT_VERSION = 616;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";
