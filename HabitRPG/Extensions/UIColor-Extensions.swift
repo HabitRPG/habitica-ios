@@ -342,3 +342,24 @@ func lighter(by percentage: CGFloat=30.0) -> UIColor {
         return self
     }
 }
+
+extension UIColor {
+  static func == (left: UIColor, right: UIColor) -> Bool {
+    var r1: CGFloat = 0
+    var g1: CGFloat = 0
+    var b1: CGFloat = 0
+    var a1: CGFloat = 0
+    left.getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
+    var r2: CGFloat = 0
+    var g2: CGFloat = 0
+    var b2: CGFloat = 0
+    var a2: CGFloat = 0
+    right.getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
+    return r1 == r2 && g1 == g2 && b1 == b2 && a1 == a2
+  }
+}
+func == (left: UIColor?, right: UIColor?) -> Bool {
+  let left = left ?? .clear
+  let right = right ?? .clear
+  return left == right
+}

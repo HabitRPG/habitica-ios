@@ -108,7 +108,9 @@ struct TagList: View {
                     if isSelected {
                         Image(Asset.checkmarkSmall.name).foregroundColor(.accentColor)
                     }
-                }.frame(height: 45).padding(.horizontal, 14)
+                }
+                .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
+                .frame(height: 45).padding(.horizontal, 14)
                 .onTapGesture {
                     UISelectionFeedbackGenerator.oneShotSelectionChanged()
                     if isSelected {
@@ -528,6 +530,7 @@ class TaskFormViewModel: ObservableObject {
     @Published var isCreating: Bool = true
     @Published var taskType: TaskType = .habit
     @Published var taskTintColor: Color = Color(.purple300)
+    @Published var backgroundTintColor: Color = Color(.purple300)
     @Published var darkTaskTintColor: Color = Color(.purple200)
     @Published var lightTaskTintColor: Color = Color(.purple400)
     @Published var darkestTaskTintColor: Color = Color(UIColor(white: 1, alpha: 0.7))
@@ -741,7 +744,7 @@ struct TaskFormView: View {
                             TaskFormSection(header: Text(L10n.Tasks.Form.controls.uppercased()),
                                             content: HabitControlsFormView(taskColor: viewModel.lightTaskTintColor.uiColor(), isUp: $viewModel.up, isDown: $viewModel.down).padding(8))
                             TaskFormSection(header: Text(L10n.Tasks.Form.resetCounter.uppercased()),
-                                            content: TaskFormPicker(options: TaskFormView.habitResetStreakOptions, selection: $viewModel.frequency, tintColor: viewModel.lightTaskTintColor))
+                                            content: TaskFormPicker(options: TaskFormView.habitResetStreakOptions, selection: $viewModel.frequency))
                         } else if viewModel.taskType == .reward {
                             TaskFormSection(header: Text(L10n.Tasks.Form.difficulty.uppercased()),
                                             content: RewardAmountView(value: $viewModel.value), backgroundColor: .clear)
@@ -767,7 +770,7 @@ struct TaskFormView: View {
                             deleteButton
                         }
                     }.padding(16).background(Color(theme.contentBackgroundColor).edgesIgnoringSafeArea(.bottom)).cornerRadius(8)
-                }.background(viewModel.taskTintColor.cornerRadius(12).edgesIgnoringSafeArea(.bottom))
+                }.background(viewModel.backgroundTintColor.cornerRadius(12).edgesIgnoringSafeArea(.bottom))
             }
         }
         .accentColor(viewModel.taskTintColor)
@@ -801,8 +804,15 @@ class TaskFormController: UIHostingController<TaskFormView> {
                 }
                 self?.dismiss(animated: true, completion: nil)
             }
-            
-            viewModel.taskTintColor = Color(editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple300)
+            var tintColor: UIColor = editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple300
+            if tintColor == .yellow100 {
+                tintColor = .yellow50
+            }
+            if ThemeService.shared.theme.isDark && tintColor == .purple300 {
+                tintColor = .purple500
+            }
+            viewModel.taskTintColor = Color(tintColor)
+            viewModel.backgroundTintColor = Color(editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple300)
             viewModel.lightTaskTintColor = Color(editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple400)
             viewModel.darkTaskTintColor = Color(color)
             viewModel.lightestTaskTintColor = Color(editedTask != nil ? .forTaskValueExtraLight(editedTask?.value ?? 0) : .purple500)
@@ -837,6 +847,9 @@ class TaskFormController: UIHostingController<TaskFormView> {
             self?.rootView.tags = tags.value
         }).start()
         view.backgroundColor = .purple200
+        if ThemeService.shared.theme.isDark {
+            viewModel.taskTintColor = Color(.purple500)
+        }
         
         if let controller = navigationController as? ThemedNavigationController, editedTask == nil {
             controller.navigationBarColor = .purple200
@@ -844,7 +857,6 @@ class TaskFormController: UIHostingController<TaskFormView> {
             controller.navigationBar.isTranslucent = false
             controller.navigationBar.shadowImage = UIImage()
         }
-        
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: L10n.cancel, style: .plain, target: self, action: #selector(leftButtonTapped))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.save, style: .plain, target: self, action: #selector(rightButtonTapped))
