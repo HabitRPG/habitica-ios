@@ -38,6 +38,7 @@ public protocol UserProtocol: AvatarProtocol {
     var pushDevices: [PushDeviceProtocol] { get set }
     var achievements: UserAchievementsProtocol? { get set }
     var loginIncentives: Int { get set }
+    var pinnedItemsOrder: [String] { get set }
 }
 
 public extension UserProtocol {

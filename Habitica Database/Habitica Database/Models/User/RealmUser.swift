@@ -300,6 +300,17 @@ class RealmUser: Object, UserProtocol {
     var needsCron: Bool = false
     var lastCron: Date?
     var loginIncentives: Int = 0
+
+    var pinnedItemsOrder: [String] {
+        get {
+            return Array(realmPinnedItemsOrder)
+        }
+        set {
+            realmPinnedItemsOrder.removeAll()
+            newValue.forEach { realmPinnedItemsOrder.append($0) }
+        }
+    }
+    var realmPinnedItemsOrder = List<String>()
     
     var isValid: Bool {
         return !isInvalidated
@@ -310,7 +321,7 @@ class RealmUser: Object, UserProtocol {
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["flags", "preferences", "stats", "profile", "contributor", "backer", "tasksOrder", "items", "tags", "inbox", "authentication", "purchased", "party", "invitations", "pushDevices"]
+        return ["flags", "preferences", "stats", "profile", "contributor", "backer", "tasksOrder", "items", "tags", "inbox", "authentication", "purchased", "party", "invitations", "pushDevices", "pinnedItemsOrder"]
     }
     
     convenience init(_ user: UserProtocol) {
@@ -336,5 +347,6 @@ class RealmUser: Object, UserProtocol {
         pushDevices = user.pushDevices
         achievements = user.achievements
         loginIncentives = user.loginIncentives
+        pinnedItemsOrder = user.pinnedItemsOrder
     }
 }

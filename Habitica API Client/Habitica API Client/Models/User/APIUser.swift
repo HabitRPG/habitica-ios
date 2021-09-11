@@ -35,6 +35,7 @@ public class APIUser: UserProtocol, Decodable {
     public var isValid: Bool { return true }
     public var achievements: UserAchievementsProtocol?
     public var loginIncentives: Int
+    public var pinnedItemsOrder: [String]
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -60,6 +61,7 @@ public class APIUser: UserProtocol, Decodable {
         case pushDevices
         case achievements
         case loginIncentives
+        case pinnedItemsOrder
     }
     
     public required init(from decoder: Decoder) throws {
@@ -102,5 +104,6 @@ public class APIUser: UserProtocol, Decodable {
         pushDevices = (try? values.decode([APIPushDevice].self, forKey: .pushDevices)) ?? []
         achievements = try? values.decode(APIUserAchievements.self, forKey: .achievements)
         loginIncentives = (try? values.decode(Int.self, forKey: .loginIncentives)) ?? 0
+        pinnedItemsOrder = (try? values.decode([String].self, forKey: .pinnedItemsOrder)) ?? []
     }
 }
