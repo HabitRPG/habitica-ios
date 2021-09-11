@@ -11,6 +11,10 @@ import Habitica_Models
 import ReactiveSwift
 
 class RewardViewController: BaseCollectionViewController, UICollectionViewDelegateFlowLayout {
+    private struct DragWrapper {
+        let sourceIndexPath: IndexPath
+        let item: BaseRewardProtocol
+    }
     
     let userRepository = UserRepository()
     
@@ -27,6 +31,10 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
         collectionView?.register(customRewardNib, forCellWithReuseIdentifier: "CustomRewardCell")
         let inAppRewardNib = UINib.init(nibName: "InAppRewardCell", bundle: .main)
         collectionView?.register(inAppRewardNib, forCellWithReuseIdentifier: "InAppRewardCell")
+
+        collectionView.dragDelegate = self
+        collectionView.dropDelegate = self
+        collectionView.dragInteractionEnabled = true
         
         collectionView?.alwaysBounceVertical = true
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -122,5 +130,50 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
             }
             editedReward = nil
         }
+    }
+}
+
+extension RewardViewController: UICollectionViewDropDelegate {
+    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
+        if collectionView.hasActiveDrag,
+           let dragWrapper = session.items.first?.localObject as? DragWrapper,
+           dragWrapper.sourceIndexPath.section == destinationIndexPath?.section
+        {
+            return UICollectionViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+        }
+        return UICollectionViewDropProposal(operation: .forbidden)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+        guard coordinator.proposal.operation == .move,
+              let destinationIndexPath = coordinator.destinationIndexPath,
+              let item = coordinator.items.first,
+              let sourceIndexPath = item.sourceIndexPath,
+              let dragWrapper = item.dragItem.localObject as? DragWrapper else {
+            return
+        }
+        collectionView.performBatchUpdates {
+            dataSource.moveReward(
+                reward: dragWrapper.item,
+                fromPosition: sourceIndexPath.item,
+                toPosition: destinationIndexPath.item
+            )
+            collectionView.deleteItems(at: [sourceIndexPath])
+            collectionView.insertItems(at: [destinationIndexPath])
+        }
+
+        coordinator.drop(item.dragItem, toItemAt: destinationIndexPath)
+    }
+}
+
+extension RewardViewController: UICollectionViewDragDelegate {
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        guard let item = dataSource.item(at: indexPath) else {
+            return []
+        }
+        let itemProvider = NSItemProvider(object: (item.text ?? "") as NSString)
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        dragItem.localObject = DragWrapper(sourceIndexPath: indexPath, item: item)
+        return [dragItem]
     }
 }

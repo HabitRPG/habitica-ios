@@ -79,4 +79,24 @@ class RewardViewDataSource: BaseReactiveCollectionViewDataSource<BaseRewardProto
             return cell
         }
     }
+
+    @objc
+    func moveReward(reward: BaseRewardProtocol, fromPosition: Int, toPosition: Int, completion: (() -> Void)? = nil) {
+        var section: Int?
+        if let task = reward as? TaskProtocol {
+            section = 0
+            taskRepository.moveTask(task, toPosition: toPosition).observeCompleted {
+                completion?()
+            }
+        } else if let reward = reward as? InAppRewardProtocol {
+            section = 1
+            // TODO: call endpoint
+        }
+
+        if let section = section {
+            // Update local array for smooth animation
+            sections[section].items.remove(at: fromPosition)
+            sections[section].items.insert(reward, at: toPosition)
+        }
+    }
 }
