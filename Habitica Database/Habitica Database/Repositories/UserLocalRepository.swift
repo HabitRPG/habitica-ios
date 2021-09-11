@@ -403,4 +403,12 @@ public class UserLocalRepository: BaseLocalRepository {
             }
         }
     }
+
+    public func updatePinnedItemsOrder(userID: String, order: [String]) {
+        if let user = getRealm()?.object(ofType: RealmUser.self, forPrimaryKey: userID) {
+            updateCall { _ in
+                // TODO: Save new order
+            }
+        }
+    }
 }

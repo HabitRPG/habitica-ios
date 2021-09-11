@@ -90,7 +90,9 @@ class RewardViewDataSource: BaseReactiveCollectionViewDataSource<BaseRewardProto
             }
         } else if let reward = reward as? InAppRewardProtocol {
             section = 1
-            // TODO: call endpoint
+            userRepository.movePinnedItem(reward, toPosition: toPosition).observeCompleted {
+                completion?()
+            }
         }
 
         if let section = section {
