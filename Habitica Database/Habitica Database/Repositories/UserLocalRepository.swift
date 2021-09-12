@@ -287,9 +287,22 @@ public class UserLocalRepository: BaseLocalRepository {
     }
     
     public func getInAppRewards(userID: String) -> SignalProducer<ReactiveResults<[InAppRewardProtocol]>, ReactiveSwiftRealmError> {
-        return RealmInAppReward.findBy(query: "userID == '\(userID)'").reactive().map({ (value, changeset) -> ReactiveResults<[InAppRewardProtocol]> in
-            return (value.map({ (reward) -> InAppRewardProtocol in return reward }), changeset)
-        })
+        return SignalProducer.combineLatest(
+            RealmUser.findBy(key: userID).take(first: 1),
+            RealmInAppReward.findBy(query: "userID == '\(userID)'").reactive()
+        ).map { (user, rewardsResult) -> ReactiveResults<[InAppRewardProtocol]> in
+            let pinnedItemsOrder = user?.pinnedItemsOrder ?? []
+            let (rewards, changeset) = rewardsResult
+            let unorderedItems: [InAppRewardProtocol] = Array(rewards.filter("NOT path IN %@", pinnedItemsOrder))
+            var orderedItems = [InAppRewardProtocol]()
+            for orderedItem in pinnedItemsOrder {
+                if let item = rewards.filter("path == %@", orderedItem).first {
+                    orderedItems.append(item)
+                }
+            }
+            orderedItems.append(contentsOf: unorderedItems)
+            return (orderedItems, changeset)
+        }
     }
     
     public func getTags(userID: String) -> SignalProducer<ReactiveResults<[TagProtocol]>, ReactiveSwiftRealmError> {
