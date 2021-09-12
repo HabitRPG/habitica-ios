@@ -175,3 +175,13 @@ class InAppRewardCell: UICollectionViewCell {
         accessibilityLabel = "\(itemName), \(currencyView.accessibilityLabel ?? "")"
     }
 }
+
+extension InAppRewardCell: PathTraceable {
+    func visiblePath() -> UIBezierPath {
+        let path = UIBezierPath(roundedRect: containerView.frame, cornerRadius: containerView.cornerRadius)
+        if isLocked {
+            path.append(UIBezierPath(ovalIn: infoImageView.frame))
+        }
+        return path
+    }
+}

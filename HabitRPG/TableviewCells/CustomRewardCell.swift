@@ -76,3 +76,9 @@ class CustomRewardCell: UICollectionViewCell {
         }
     }
 }
+
+extension CustomRewardCell: PathTraceable {
+    func visiblePath() -> UIBezierPath {
+        return UIBezierPath(roundedRect: mainRewardWrapper.frame, cornerRadius: mainRewardWrapper.cornerRadius)
+    }
+}

@@ -174,6 +174,37 @@ extension RewardViewController: UICollectionViewDragDelegate {
         let itemProvider = NSItemProvider(object: (item.text ?? "") as NSString)
         let dragItem = UIDragItem(itemProvider: itemProvider)
         dragItem.localObject = DragWrapper(sourceIndexPath: indexPath, item: item)
+        dragItem.previewProvider = { [weak self] in
+            if let preview = self?.dragPreviewFor(indexPath: indexPath),
+               let view = preview.view,
+               let parameters = preview.parameters
+            {
+                return UIDragPreview(view: view, parameters: parameters)
+            }
+            return nil
+        }
         return [dragItem]
+    }
+
+    func collectionView(_ collectionView: UICollectionView, dragPreviewParametersForItemAt indexPath: IndexPath) -> UIDragPreviewParameters? {
+        return dragPreviewFor(indexPath: indexPath).parameters
+    }
+
+    func collectionView(_ collectionView: UICollectionView, dropPreviewParametersForItemAt indexPath: IndexPath) -> UIDragPreviewParameters? {
+        return dragPreviewFor(indexPath: indexPath).parameters
+    }
+
+    private func dragPreviewFor(indexPath: IndexPath) -> (parameters: UIDragPreviewParameters?, view: UIView?) {
+        guard let cell = collectionView.cellForItem(at: indexPath) else {
+            return (nil, nil)
+        }
+        let parameters = UIDragPreviewParameters()
+        parameters.backgroundColor = .clear
+
+        if let cell = cell as? PathTraceable {
+            parameters.visiblePath = cell.visiblePath()
+        }
+
+        return (parameters, cell)
     }
 }
