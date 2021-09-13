@@ -222,7 +222,7 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
         guard let user = self.giftedUser else {
             return
         }
-        PurchaseHandler.shared.purchaseGems(identifier, applicationUsername: String(user.id?.hashValue ?? 0)) { success in
+        PurchaseHandler.shared.giftGems(identifier, applicationUsername: String(user.id?.hashValue ?? 0), recipientID: user.id ?? "") { success in
             if success {
                 self.showConfirmationDialog(gemCount: amount)
             }
