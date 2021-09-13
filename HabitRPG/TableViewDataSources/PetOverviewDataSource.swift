@@ -48,7 +48,7 @@ class PetOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                 }
                 return self?.mapData(owned: pets.0, animals: pets.1.value, items: sortedItems) ?? [:]
             })
-            .on(value: {[weak self]overviewItems in
+            .on(value: {[weak self] overviewItems in
                 self?.sections[0].items.removeAll()
                 self?.sections[0].items.append(contentsOf: overviewItems["drop"] ?? [])
                 self?.sections[1].items.removeAll()

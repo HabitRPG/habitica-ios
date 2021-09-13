@@ -25,12 +25,11 @@ class HabitTableViewController: TaskTableViewController {
         dataSource = HabitTableViewDataSource(predicate: self.getPredicate())
     }
     
-    override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]? {
-        if tutorialIdentifier == "habits" {
-            let localizedStringArray = [L10n.Tutorials.habits1, L10n.Tutorials.habits2, L10n.Tutorials.habits3, L10n.Tutorials.habits4]
-            return ["textList": localizedStringArray]
+    override func getDefinitionFor(tutorial: String) -> [String] {
+        if tutorial == tutorialIdentifier {
+            return [L10n.Tutorials.habits1, L10n.Tutorials.habits2, L10n.Tutorials.habits3, L10n.Tutorials.habits4]
         }
-        return super.getDefinitonForTutorial(tutorialIdentifier)
+        return super.getDefinitionFor(tutorial: tutorial)
     }
     
     override func getCellNibName() -> String {

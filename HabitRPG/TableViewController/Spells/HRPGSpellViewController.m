@@ -16,12 +16,13 @@
 @implementation HRPGSpellViewController
 
 - (void)viewDidLoad {
+    self.topHeaderCoordinator = [[TopHeaderCoordinator alloc] initWithTopHeaderNavigationController:self.navigationController scrollView:self.tableView];
     [super viewDidLoad];
     
     self.navigationItem.title = objcL10n.titleSkills;    
     
     [self setupTableView];
-    self.tutorialIdentifier = @"skills";
+    //self.tutorialIdentifier = @"skills";
 }
 
 - (void) setupTableView {

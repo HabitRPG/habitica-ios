@@ -24,12 +24,11 @@ class ToDoTableViewController: TaskTableViewController {
         dataSource = TodoTableViewDataSource(predicate: self.getPredicate())
     }
     
-    override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]? {
-        if tutorialIdentifier == "todos" {
-            let localizedStringArray = [L10n.Tutorials.todos1, L10n.Tutorials.todos2]
-            return ["textList": localizedStringArray]
+    override func getDefinitionFor(tutorial: String) -> [String] {
+        if tutorial == tutorialIdentifier {
+            return [L10n.Tutorials.todos1, L10n.Tutorials.todos2]
         }
-        return super.getDefinitonForTutorial(tutorialIdentifier)
+        return super.getDefinitionFor(tutorial: tutorial)
     }
     
     override func getCellNibName() -> String {

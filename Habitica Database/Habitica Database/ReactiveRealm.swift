@@ -360,7 +360,7 @@ public extension SignalProducerProtocol where Value: NotificationEmitter, Error 
         return producer.flatMap(.latest) { results -> SignalProducer<ReactiveResults, ReactiveSwiftRealmError> in
             return SignalProducer { observer, lifetime in
                 let dispatchQueue = OperationQueue.current?.underlyingQueue ?? DispatchQueue.main
-                let notificationToken = results.observe { (changes: RealmCollectionChange) in
+                let notificationToken = results.observe(on: nil) { (changes: RealmCollectionChange) in
                     dispatchQueue.async {
                         switch changes {
                         case .initial:
@@ -396,11 +396,11 @@ public extension SignalProducerProtocol where Value: ObjectNotificationEmitter, 
             return SignalProducer { observer, lifetime in
                 observer.send(value: (value: realmObject, changes: nil))
                 let dispatchQueue = OperationQueue.current?.underlyingQueue ?? DispatchQueue.main
-                let notificationToken = realmObject.observe { change in
+                let notificationToken = realmObject.observe(keyPaths: nil, on: nil) { change in
                     dispatchQueue.async {
                     switch change {
                     case .change(let properties):
-                        observer.send(value: (value: realmObject, changes: ReactiveChange(deleted: false, properties: properties)))
+                        observer.send(value: (value: realmObject, changes: ReactiveChange(deleted: false, properties: properties.1)))
                     case .error(let error):
                         fatalError("\(error)")
                     case .deleted:
@@ -453,26 +453,19 @@ public  protocol ReactiveRealmOperable: ThreadConfined {}
 
 public protocol NotificationEmitter {
     
-    /**
-     Returns a `NotificationToken`, which while retained enables change notifications for the current collection.
-     
-     - returns: `NotificationToken` - retain this value to keep notifications being emitted for the current collection.
-     */
-    func observe(_ block: @escaping (RealmSwift.RealmCollectionChange<Self>) -> Swift.Void) -> NotificationToken
+    func observe(on queue: DispatchQueue?,
+                        _ block: @escaping (RealmCollectionChange<Self>) -> Void) -> NotificationToken
     
     var count: Int { get }
 }
 
-extension Results: NotificationEmitter {}
+extension Results: NotificationEmitter {
+}
 
 public protocol ObjectNotificationEmitter {
-    
-    /**
-     Returns a `NotificationToken`, which while retained enables change notifications for the current collection.
-     
-     - returns: `NotificationToken` - retain this value to keep notifications being emitted for the current collection.
-     */
-    func observe(_ block: @escaping (RealmSwift.ObjectChange) -> Swift.Void) -> NotificationToken
+    func observe<T: ObjectBase>(keyPaths: [String]?,
+                                          on queue: DispatchQueue?,
+                                          _ block: @escaping (ObjectChange<T>) -> Void) -> NotificationToken
 }
 
 extension Object: ObjectNotificationEmitter {}

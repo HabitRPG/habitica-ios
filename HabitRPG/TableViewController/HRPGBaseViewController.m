@@ -7,8 +7,6 @@
 //
 
 #import "HRPGBaseViewController.h"
-#import "UIViewController+TutorialSteps.h"
-#import "UIViewController+HRPGTopHeaderNavigationController.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGBaseViewController ()
@@ -18,7 +16,6 @@
 @implementation HRPGBaseViewController
 
 - (void)viewDidLoad {
-    self.topHeaderCoordinator = [[TopHeaderCoordinator alloc] initWithTopHeaderNavigationController:self.topHeaderNavigationController scrollView:self.tableView];
     [super viewDidLoad];
     [self populateText];
 
@@ -72,7 +69,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
-    [self displayTutorialStep];
     [self.topHeaderCoordinator viewDidAppear];
 }
 
@@ -89,11 +85,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIContentSizeCategoryDidChangeNotification object:nil];
     [super viewWillDisappear:animated];
     [self.topHeaderCoordinator viewWillDisappear];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    self.displayedTutorialStep = NO;
 }
 
 - (void)dealloc {
@@ -122,7 +113,4 @@
     return NO;
 }
 
-- (UINavigationController<TopHeaderNavigationControllerProtocol> *)topHeaderNavigationController {
-    return [self hrpgTopHeaderNavigationController];
-}
 @end

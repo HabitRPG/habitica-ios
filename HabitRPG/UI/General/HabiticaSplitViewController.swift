@@ -48,8 +48,8 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let navController = self.hrpgTopHeaderNavigationController() {
-            scrollViewTopConstraint.constant = navController.contentInset
+        if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
+            scrollViewTopConstraint.constant = topHeaderNavigationController.contentInset
         }
     }
     

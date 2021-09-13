@@ -97,6 +97,7 @@
 "tasks.habits" = "Habits";
 "tasks.dailies" = "Dailies";
 "tasks.rewards" = "Rewards";
+"tasks.tasks" = "Tasks";
 "tasks.todos" = "To Do's";
 "tasks.form.create" = "New %@";
 "tasks.form.edit" = "Edit %@";
@@ -107,6 +108,7 @@
 "tasks.form.controls" = "Controls";
 "tasks.form.difficulty" = "Difficulty";
 "tasks.form.reset_streak" = "Reset Streak";
+"tasks.form.reset_counter" = "Reset Counter";
 "tasks.form.tags" = "Tags";
 "tasks.form.scheduling" = "Scheduling";
 "tasks.form.reminders" = "Reminders";
@@ -141,6 +143,7 @@
 "tasks.form.accessibility.set_attribute" = "Change attribute to %@";
 "tasks.form.accessibility.attribute" = "Attribute is %@";
 "tasks.form.adjust_streak" = "Adjust Streak";
+"tasks.form.adjust_counter" = "Adjust Counter";
 "tasks.form.positive" = "Positive";
 "tasks.form.negative" = "Negative";
 "tasks.form.completions" = "Completions";
@@ -515,7 +518,7 @@
 "inactive" = "Inactive";
 "one_month" = "1 Month";
 "x_months" = "%d Months";
-"unsubscribe_itunes" = "No longer want to subscribe? You can manage your subscription from iTunes.";
+"unsubscribe_itunes" = "No longer want to subscribe? You can manage your subscription through your Apple ID in your device's Settings.";
 "open_itunes" = "Open Apple ID Subscriptions";
 "open_app_store" = "Open App Store Page";
 "unsubscribe_website" = "No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.";
@@ -836,13 +839,14 @@
 "staff" = "Staff";
 "sale" = "Sale";
 "get_more_habitica" = "Get more out of Habitica";
-"report_x_violation" = "Report %@ for violation?";
+"report_x_violation" = "Report @@%@ for violation?";
 "not_getting_drops" = "Not getting the right drops? Check out the Market to buy just the things you need!";
 "streak_achievement_title" = "You earned a streak achievement!";
 "streak_achievement_description" = "You've completed your Daily for 21 days in a row! Amazing job. Don't break the streak!";
 "earned_achievement_share" = "I earned a new achievement in Habitica!";
 "next_checkin_prize_1_day" = "Your next prize unlocks in 1 Check-In.";
 "next_checkin_prize_x_days" = "Your next prize unlocks in %d Check-Ins";
+"next_prize_in_x_checkins" = "Next prize in %d Check-Ins";
 "checkin_prize_earned" = "You earned a %s as a reward for your devotion to improving your life.";
 "recipient" = "Recipient";
 "invalid_recipient_message" = "You have to specify a valid Habitica Username as recipient.";
@@ -1098,3 +1102,4 @@
 "seasonal_potions_available" = "Seasonal items available";
 "open_for" = "Open for %@";
 "report" = "Report";
+"see_you_tomorrow" = "See you tomorrow";

@@ -1,9 +1,10 @@
+require 'cocoapods-catalyst-support'
+
 platform :ios, '13.6'
 use_frameworks!
 inhibit_all_warnings!
 
 workspace 'Habitica'
-
 
 plugin 'cocoapods-keys', {
   :project => "Habitica",
@@ -59,9 +60,10 @@ target 'Habitica' do
   pod 'SwiftLint'
   pod 'Eureka'
   pod 'ColorPickerRow' 
-  pod 'RealmSwift', '4.4.1'
+  pod 'RealmSwift'
+  pod 'ACKReactiveExtensions/Realm'
 
-  pod 'Kingfisher', '~> 5.8.0'
+  pod 'Kingfisher'
 
   pod 'SwiftGen'
 
@@ -70,9 +72,7 @@ target 'Habitica' do
   pod 'SimulatorStatusMagic', :configurations => ['Debug']
   pod 'OHHTTPStubs/Swift'
 
-  pod 'TagListView', '~> 1.0'
-
-  pod 'Charts'
+  pod 'TagListView'
   
   target 'HabiticaTests' do
     inherit! :search_paths
@@ -82,7 +82,8 @@ end
 
 target 'Habitica Intents' do
   pod 'Amplitude-iOS'
-  pod 'RealmSwift', '4.4.1'
+  pod 'RealmSwift'
+  pod 'ACKReactiveExtensions/Realm'
   reactive_pods
   pod 'KeychainAccess'
   inherit! :search_paths
@@ -90,7 +91,8 @@ end
 
 target 'Habitica WidgetsExtension' do
   pod 'Amplitude-iOS'
-  pod 'RealmSwift', '4.4.1'
+  pod 'RealmSwift'
+  pod 'ACKReactiveExtensions/Realm'
   reactive_pods
   pod 'KeychainAccess'
   inherit! :search_paths
@@ -120,8 +122,9 @@ end
 
 target "Habitica Database" do
   project 'Habitica Database/Habitica Database.xcodeproj'
-  pod "RealmSwift", '4.4.1'
-
+  pod "RealmSwift"
+  pod 'ACKReactiveExtensions/Realm'
+  
   reactive_pods
 
   target 'Habitica DatabaseTests' do
@@ -130,10 +133,17 @@ target "Habitica Database" do
   end
 end
 
+catalyst_configuration do
+  verbose!
+
+  ios 'Firebase/Performance'
+end
+
 post_install do |installer|
  installer.pods_project.targets.each do |target|
   target.build_configurations.each do |config|
    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.6'
   end
  end
+ installer.configure_catalyst
 end

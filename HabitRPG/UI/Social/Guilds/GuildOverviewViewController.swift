@@ -36,14 +36,16 @@ class GuildOverviewViewController: BaseTableViewController, UISearchBarDelegate 
         segmentedWrapper.addSubview(segmentedFilterControl)
         layoutHeader()
         topHeaderCoordinator?.alternativeHeader = segmentedWrapper
-        topHeaderCoordinator.hideHeader = false
-        topHeaderCoordinator.followScrollView = false
+        topHeaderCoordinator?.hideHeader = false
+        topHeaderCoordinator?.followScrollView = false
         
         searchBar.placeholder = L10n.search
         searchBar.delegate = self
         
+        #if !targetEnvironment(macCatalyst)
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        #endif
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100

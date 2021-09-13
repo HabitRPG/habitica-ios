@@ -618,6 +618,10 @@ public enum L10n {
   public static func nextCheckinPrizeXDays(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "next_checkin_prize_x_days", p1)
   }
+  /// Next prize in %d Check-Ins
+  public static func nextPrizeInXCheckins(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "next_prize_in_x_checkins", p1)
+  }
   /// No Benefit
   public static var noBenefit: String { return L10n.tr("Mainstrings", "no_benefit") }
   /// No Camera available
@@ -774,7 +778,7 @@ public enum L10n {
   public static var reply: String { return L10n.tr("Mainstrings", "reply") }
   /// Report
   public static var report: String { return L10n.tr("Mainstrings", "report") }
-  /// Report %@ for violation?
+  /// Report @@%@ for violation?
   public static func reportXViolation(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "report_x_violation", p1)
   }
@@ -802,6 +806,8 @@ public enum L10n {
   public static var search: String { return L10n.tr("Mainstrings", "search") }
   /// Seasonal items available
   public static var seasonalPotionsAvailable: String { return L10n.tr("Mainstrings", "seasonal_potions_available") }
+  /// See you tomorrow
+  public static var seeYouTomorrow: String { return L10n.tr("Mainstrings", "see_you_tomorrow") }
   /// Sell for %d Gold
   public static func sell(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "sell", p1)
@@ -976,7 +982,7 @@ public enum L10n {
   public static var unlocksSelectingClassPrompt: String { return L10n.tr("Mainstrings", "unlocks_selecting_class_prompt") }
   /// Unpin
   public static var unpin: String { return L10n.tr("Mainstrings", "unpin") }
-  /// No longer want to subscribe? You can manage your subscription from iTunes.
+  /// No longer want to subscribe? You can manage your subscription through your Apple ID in your device's Settings.
   public static var unsubscribeItunes: String { return L10n.tr("Mainstrings", "unsubscribe_itunes") }
   /// No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.
   public static var unsubscribeWebsite: String { return L10n.tr("Mainstrings", "unsubscribe_website") }
@@ -2164,6 +2170,8 @@ public enum L10n {
     public static var rewards: String { return L10n.tr("Mainstrings", "tasks.rewards") }
     /// School
     public static var school: String { return L10n.tr("Mainstrings", "tasks.school") }
+    /// Tasks
+    public static var tasks: String { return L10n.tr("Mainstrings", "tasks.tasks") }
     /// Team
     public static var team: String { return L10n.tr("Mainstrings", "tasks.team") }
     /// To Do
@@ -2259,6 +2267,8 @@ public enum L10n {
     }
 
     public enum Form {
+      /// Adjust Counter
+      public static var adjustCounter: String { return L10n.tr("Mainstrings", "tasks.form.adjust_counter") }
       /// Adjust Streak
       public static var adjustStreak: String { return L10n.tr("Mainstrings", "tasks.form.adjust_streak") }
       /// Checklist
@@ -2321,6 +2331,8 @@ public enum L10n {
       public static var reminders: String { return L10n.tr("Mainstrings", "tasks.form.reminders") }
       /// Repeats
       public static var repeats: String { return L10n.tr("Mainstrings", "tasks.form.repeats") }
+      /// Reset Counter
+      public static var resetCounter: String { return L10n.tr("Mainstrings", "tasks.form.reset_counter") }
       /// Reset Streak
       public static var resetStreak: String { return L10n.tr("Mainstrings", "tasks.form.reset_streak") }
       /// How do you want to reward yourself?

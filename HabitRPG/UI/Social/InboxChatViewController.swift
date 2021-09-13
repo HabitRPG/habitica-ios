@@ -18,7 +18,9 @@ class InboxChatViewController: SLKTextViewController, Themeable {
         return InboxMessagesDataSource(otherUserID: userID, otherUsername: username)
     }()
     private var configRepository = ConfigRepository()
+    #if !targetEnvironment(macCatalyst)
     private let refreshControl = UIRefreshControl()
+    #endif
 
     @IBOutlet var profileBarButton: UIBarButtonItem!
     @IBOutlet var doneBarButton: UIBarButtonItem!
@@ -59,11 +61,15 @@ class InboxChatViewController: SLKTextViewController, Themeable {
         textInputbar.textView.placeholderFont = CustomFontMetrics.scaledSystemFont(ofSize: 13)
         textInputbar.textView.font = CustomFontMetrics.scaledSystemFont(ofSize: 13)
         
-        hrpgTopHeaderNavigationController()?.shouldHideTopHeader = true
-        hrpgTopHeaderNavigationController()?.hideNavbar = false
+        if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
+            topHeaderNavigationController.shouldHideTopHeader = true
+            topHeaderNavigationController.hideNavbar = false
+        }
                 
+        #if !targetEnvironment(macCatalyst)
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView?.refreshControl = refreshControl
+        #endif
         
         ThemeService.shared.addThemeable(themable: self)
         
@@ -82,14 +88,16 @@ class InboxChatViewController: SLKTextViewController, Themeable {
     @objc
     private func refresh() {
         dataSource.retrieveData(forced: true) {[weak self] in
+            #if !targetEnvironment(macCatalyst)
             self?.refreshControl.endRefreshing()
+            #endif
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if hrpgTopHeaderNavigationController() != nil {
-            hrpgTopHeaderNavigationController()?.scrollView(scrollView, scrolledToPosition: 0)
+        if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
+            topHeaderNavigationController.scrollView(scrollView, scrolledToPosition: 0)
         }
     }
     
@@ -127,7 +135,9 @@ class InboxChatViewController: SLKTextViewController, Themeable {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.item == dataSource.tableView(tableView, numberOfRowsInSection: indexPath.section)-1 {
             dataSource.retrieveData(forced: false) {
+                #if !targetEnvironment(macCatalyst)
                 self.refreshControl.endRefreshing()
+                #endif
             }
         }
     }

@@ -206,10 +206,9 @@ class RouterHandler: NSObject {
                 return
             }
             let navigationController = StoryboardScene.Tasks.taskFormViewController.instantiate()
-            guard let formController = navigationController.topViewController as? TaskFormViewController else {
+            guard let formController = navigationController.topViewController as? TaskFormController else {
                 return
             }
-            formController.isCreating = true
             formController.taskType = TaskType(rawValue: link?.routeParameters["taskType"] as? String ?? "habit") ?? TaskType.habit
             self.present(navigationController)
         }

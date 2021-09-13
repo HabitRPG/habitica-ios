@@ -90,6 +90,11 @@ class HRPGCurrencyCountView: UIView {
         configureViews()
     }
     
+    convenience init(currency: Currency) {
+        self.init()
+        self.currency = currency
+    }
+    
     internal func configureViews() {
         translatesAutoresizingMaskIntoConstraints = false
         currencyImageView.translatesAutoresizingMaskIntoConstraints = false

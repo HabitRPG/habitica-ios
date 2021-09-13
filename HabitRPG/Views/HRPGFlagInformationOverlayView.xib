@@ -4,138 +4,106 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HRPGFlagInformationOverlayView">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FlagInformationOverlayView" customModule="Habitica" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DOA-az-E9d">
-                    <rect key="frame" x="20" y="20" width="335" height="0.0"/>
-                    <constraints>
-                        <constraint firstAttribute="height" priority="500" constant="21" id="RMS-3m-hlK"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cMa-Mu-pHb">
-                    <rect key="frame" x="30" y="32" width="315" height="383"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="textColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WyJ-ot-CTH">
-                    <rect key="frame" x="20" y="419" width="335" height="240"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" priority="500" constant="240" id="w1I-ic-E02"/>
-                    </constraints>
-                    <attributedString key="attributedText">
-                        <fragment>
-                            <string key="content">Are you sure you want to report this post? You should ONLY report a post that violates the Community Guidelines and/or Terms of Service. Inappropriately reporting a post is a violation of the Community Guidelines and may give you an infraction. Appropriate reasons to flag a post include but are not limited to:
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="999" verticalCompressionResistancePriority="999" translatesAutoresizingMaskIntoConstraints="NO" id="h94-Ja-fZ2">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="beF-oX-rd4">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="290"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="1uQ-Ft-1Hs">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipy-NF-fuf">
+                                            <rect key="frame" x="12" y="12" width="351" height="40"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" priority="500" constant="40" id="nnf-2O-llW"/>
+                                            </constraints>
+                                            <color key="textColor" systemColor="labelColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="Ipy-NF-fuf" firstAttribute="leading" secondItem="1uQ-Ft-1Hs" secondAttribute="leading" constant="12" id="Ccx-hO-ij3"/>
+                                        <constraint firstItem="Ipy-NF-fuf" firstAttribute="top" secondItem="1uQ-Ft-1Hs" secondAttribute="top" constant="12" id="GVN-NR-KVR"/>
+                                        <constraint firstAttribute="bottom" secondItem="Ipy-NF-fuf" secondAttribute="bottom" constant="12" id="Iv8-CM-Rd6"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ipy-NF-fuf" secondAttribute="trailing" constant="12" id="ZhR-kd-JV8"/>
+                                        <constraint firstAttribute="height" priority="500" constant="24" id="vIf-V1-vCv"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="8"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                            <real key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fv8-PV-ljT">
+                                    <rect key="frame" x="0.0" y="75" width="375" height="215"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="500" constant="40" id="5gb-QL-Y7e"/>
+                                    </constraints>
+                                    <string key="text">Are you sure you want to report this post? You should ONLY report a post that violates the Community Guidelines and/or Terms of Service. Inappropriately reporting a post is a violation of the Community Guidelines and may give you an infraction. Appropriate reasons to flag a post include but are not limited to:
 
-</string>
-                            <attributes>
-                                <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                            </attributes>
-                        </fragment>
-                        <fragment content="• ">
-                            <attributes>
-                                <font key="NSFont" size="14" name="LucidaGrande"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="8" tighteningFactorForTruncation="0.0"/>
-                            </attributes>
-                        </fragment>
-                        <fragment>
-                            <string key="content">swearing, religous oaths
-</string>
-                            <attributes>
-                                <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="8" tighteningFactorForTruncation="0.0"/>
-                            </attributes>
-                        </fragment>
-                        <fragment content="• ">
-                            <attributes>
-                                <font key="NSFont" size="14" name="LucidaGrande"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="8" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                            </attributes>
-                        </fragment>
-                        <fragment>
-                            <string key="content">bigotry, slurs
-</string>
-                            <attributes>
-                                <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="8" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                            </attributes>
-                        </fragment>
-                        <fragment content="• ">
-                            <attributes>
-                                <font key="NSFont" size="14" name="LucidaGrande"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="8" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                            </attributes>
-                        </fragment>
-                        <fragment>
-                            <string key="content">adult topics
-</string>
-                            <attributes>
-                                <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="8" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                            </attributes>
-                        </fragment>
-                        <fragment content="• ">
-                            <attributes>
-                                <font key="NSFont" size="14" name="LucidaGrande"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="8" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                            </attributes>
-                        </fragment>
-                        <fragment>
-                            <string key="content">violence, including as a joke
-</string>
-                            <attributes>
-                                <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="8" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                            </attributes>
-                        </fragment>
-                        <fragment content="• ">
-                            <attributes>
-                                <font key="NSFont" size="14" name="LucidaGrande"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="8" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                            </attributes>
-                        </fragment>
-                        <fragment content="spam, nonsensical messages">
-                            <attributes>
-                                <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="8" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                            </attributes>
-                        </fragment>
-                    </attributedString>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
-                </textView>
+• swearing, religous oaths
+• bigotry, slurs
+• adult topics
+• violence, including as a joke
+• spam, nonsensical messages</string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" priority="500" constant="600" id="P6R-l1-HBQ"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="beF-oX-rd4" firstAttribute="leading" secondItem="h94-Ja-fZ2" secondAttribute="leading" id="ECv-xc-IHb"/>
+                        <constraint firstAttribute="trailing" secondItem="beF-oX-rd4" secondAttribute="trailing" id="Ume-aT-FgM"/>
+                        <constraint firstItem="beF-oX-rd4" firstAttribute="height" relation="lessThanOrEqual" secondItem="h94-Ja-fZ2" secondAttribute="height" priority="999" id="bhX-2K-reX"/>
+                        <constraint firstItem="beF-oX-rd4" firstAttribute="top" secondItem="h94-Ja-fZ2" secondAttribute="top" id="eUe-Go-qJ2"/>
+                        <constraint firstAttribute="bottom" secondItem="beF-oX-rd4" secondAttribute="bottom" id="xhy-2c-ore"/>
+                    </constraints>
+                </scrollView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="cMa-Mu-pHb" secondAttribute="trailing" constant="30" id="2Uu-gh-PnV"/>
-                <constraint firstItem="WyJ-ot-CTH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="PIH-3q-0dP"/>
-                <constraint firstItem="DOA-az-E9d" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="bDc-Si-JIm"/>
-                <constraint firstItem="cMa-Mu-pHb" firstAttribute="top" secondItem="DOA-az-E9d" secondAttribute="bottom" constant="12" id="bTb-qp-Pp8"/>
-                <constraint firstItem="cMa-Mu-pHb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="e1o-3z-7uU"/>
-                <constraint firstAttribute="trailing" secondItem="DOA-az-E9d" secondAttribute="trailing" constant="20" id="wou-Xt-ca8"/>
-                <constraint firstItem="WyJ-ot-CTH" firstAttribute="top" secondItem="cMa-Mu-pHb" secondAttribute="bottom" constant="4" id="xQI-if-a6I"/>
-                <constraint firstAttribute="bottom" secondItem="WyJ-ot-CTH" secondAttribute="bottom" constant="8" id="xZF-vo-AS2"/>
-                <constraint firstAttribute="trailing" secondItem="WyJ-ot-CTH" secondAttribute="trailing" constant="20" id="xba-li-8tO"/>
-                <constraint firstItem="DOA-az-E9d" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="yi9-VK-5UP"/>
+                <constraint firstAttribute="trailing" secondItem="h94-Ja-fZ2" secondAttribute="trailing" id="4ZG-NM-huo"/>
+                <constraint firstItem="beF-oX-rd4" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="BbX-cu-HO6"/>
+                <constraint firstItem="h94-Ja-fZ2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="I0S-rf-2cW"/>
+                <constraint firstAttribute="bottom" secondItem="h94-Ja-fZ2" secondAttribute="bottom" id="n4g-a4-VyC"/>
+                <constraint firstItem="h94-Ja-fZ2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="pNm-wG-1Kq"/>
             </constraints>
             <connections>
-                <outlet property="explanationTextView" destination="WyJ-ot-CTH" id="2TV-3Q-fQj"/>
-                <outlet property="messageTextView" destination="cMa-Mu-pHb" id="SKM-ND-H2Q"/>
-                <outlet property="titleLabel" destination="DOA-az-E9d" id="mYG-lk-M6n"/>
+                <outlet property="explanationView" destination="Fv8-PV-ljT" id="HIa-HC-AkC"/>
+                <outlet property="messageContainerView" destination="1uQ-Ft-1Hs" id="g7l-Q4-xwc"/>
+                <outlet property="messageView" destination="Ipy-NF-fuf" id="m8E-yH-WWk"/>
             </connections>
             <point key="canvasLocation" x="458" y="335"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

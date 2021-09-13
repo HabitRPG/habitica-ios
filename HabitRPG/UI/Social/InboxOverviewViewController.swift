@@ -24,8 +24,10 @@ class InboxOverviewViewController: BaseTableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60
         
+        #if !targetEnvironment(macCatalyst)
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        #endif
     }
     
     override func applyTheme(theme: Theme) {
@@ -46,13 +48,11 @@ class InboxOverviewViewController: BaseTableViewController {
         }
     }
     
-    override func getDefinitonForTutorial(_ tutorialIdentifier: String!) -> [AnyHashable: Any]! {
-        if tutorialIdentifier == self.tutorialIdentifier {
-            return [
-                "text": L10n.Tutorials.inbox
-            ]
+    override func getDefinitionFor(tutorial: String) -> [String] {
+        if tutorial == self.tutorialIdentifier {
+            return [L10n.Tutorials.inbox]
         }
-        return nil
+        return []
     }
     
        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

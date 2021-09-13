@@ -573,7 +573,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>605</string>
+	<string>619</string>
 	<key>CustomDomain</key>
 	<string>${CUSTOM_DOMAIN}</string>
 	<key>DisableSSL</key>

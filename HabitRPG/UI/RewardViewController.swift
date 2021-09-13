@@ -20,7 +20,9 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
     
     let dataSource = RewardViewDataSource()
 
+    #if !targetEnvironment(macCatalyst)
     let refreshControl = UIRefreshControl()
+    #endif
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +39,10 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
         collectionView.dragInteractionEnabled = true
         
         collectionView?.alwaysBounceVertical = true
+        #if !targetEnvironment(macCatalyst)
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         collectionView?.addSubview(refreshControl)
+        #endif
         
         tutorialIdentifier = "rewards"
         navigationItem.title = L10n.Tasks.rewards
@@ -57,13 +61,11 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
         collectionView.backgroundColor = theme.contentBackgroundColor
     }
     
-    override func getDefinitonForTutorial(_ tutorialIdentifier: String!) -> [AnyHashable: Any] {
-        if tutorialIdentifier == "rewards" {
-            return [
-                "textList": NSArray.init(array: [L10n.Tutorials.rewards1, L10n.Tutorials.rewards2])
-            ]
+    override func getDefinitionFor(tutorial: String) -> [String] {
+        if tutorial == self.tutorialIdentifier {
+            return [L10n.Tutorials.rewards1, L10n.Tutorials.rewards2]
         }
-        return [:]
+        return []
     }
     
     @objc
@@ -73,7 +75,9 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
                 return self?.userRepository.retrieveInAppRewards() ?? Signal.empty
             })
             .observeCompleted {[weak self] in
-            self?.refreshControl.endRefreshing()
+                #if !targetEnvironment(macCatalyst)
+                self?.refreshControl.endRefreshing()
+                #endif
         }
     }
     
@@ -118,15 +122,12 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
             guard let destinationController = segue.destination as? UINavigationController else {
                 return
             }
-            guard let formController = destinationController.topViewController as? TaskFormViewController else {
+            guard let formController = destinationController.topViewController as? TaskFormController else {
                 return
             }
             formController.taskType = .reward
-            if let editedReward = self.editedReward {
-                formController.taskId = editedReward.id
-                formController.isCreating = false
-            } else {
-                formController.isCreating = true
+            if let task = editedReward {
+                formController.editedTask = task
             }
             editedReward = nil
         }

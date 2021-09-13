@@ -35,7 +35,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @IBOutlet weak var buttonSeparatorView: UIView!
     @IBOutlet weak var centerConstraint: NSLayoutConstraint!
     
-    @objc public weak var shopViewController: HRPGShopViewController?
+    @objc public weak var shopViewController: ShopViewController?
     
     private var bulkView: HRPGBulkPurchaseView?
     var itemView: HRPGSimpleShopItemView?
@@ -376,7 +376,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     // swiftlint:disable cyclomatic_complexity
     @objc
     func buyPressed() {
-        if !reward?.isValid {
+        if reward?.isValid != true {
             dismiss(animated: true, completion: nil)
             return
         }

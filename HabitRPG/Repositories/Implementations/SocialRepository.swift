@@ -119,6 +119,11 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             .objectSignal
     }
     
+    func flag(message: InboxMessageProtocol) -> Signal<EmptyResponseProtocol?, Never> {
+        return FlagInboxMessageCall(message: message)
+            .objectSignal
+    }
+    
     func delete(groupID: String, chatMessage: ChatMessageProtocol) -> Signal<EmptyResponseProtocol?, Never> {
         if !chatMessage.isValid {
             return Signal.empty

@@ -7,24 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TutorialStepsProtocol.h"
 @class TopHeaderCoordinator;
 @protocol TopHeaderNavigationControllerProtocol;
 
-@interface HRPGBaseViewController : UITableViewController<TutorialStepsProtocol>
+@interface HRPGBaseViewController : UITableViewController
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property CGFloat viewWidth;
 @property NSString *readableScreenName;
 
-@property NSString *tutorialIdentifier;
-@property BOOL displayedTutorialStep;
-@property TutorialStepView *activeTutorialView;
-
 @property BOOL isVisible;
 
 @property TopHeaderCoordinator *topHeaderCoordinator;
-@property (nonatomic, readonly) UINavigationController<TopHeaderNavigationControllerProtocol> *topHeaderNavigationController;
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
 

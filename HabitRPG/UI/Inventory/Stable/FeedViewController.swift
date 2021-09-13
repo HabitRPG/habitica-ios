@@ -51,7 +51,7 @@ class FeedViewController: BaseTableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardSegue.Main.showShopSegue.rawValue {
-            let shopViewController = segue.destination as? HRPGShopViewController
+            let shopViewController = segue.destination as? ShopViewController
             shopViewController?.shopIdentifier = Constants.MarketKey
         }
     }

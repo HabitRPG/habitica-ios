@@ -50,8 +50,10 @@ class GroupChatViewController: SLKTextViewController, Themeable {
         tableView?.rowHeight = UITableView.automaticDimension
         tableView?.estimatedRowHeight = 90
 
+        #if !targetEnvironment(macCatalyst)
         tableView?.refreshControl = UIRefreshControl()
         tableView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        #endif
         
         textView.registerMarkdownFormattingSymbol("**", withTitle: "Bold")
         textView.registerMarkdownFormattingSymbol("*", withTitle: "Italics")
@@ -62,6 +64,7 @@ class GroupChatViewController: SLKTextViewController, Themeable {
         textInputbar.charCountLabelWarningColor = UIColor.red50
         textInputbar.charCountLabel.font = UIFont.systemFont(ofSize: 11, weight: .bold)
         textInputbar.textView.placeholderFont = CustomFontMetrics.scaledSystemFont(ofSize: 14)
+        textInputbar.textView.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.checkGuidelinesAccepted(user: user)

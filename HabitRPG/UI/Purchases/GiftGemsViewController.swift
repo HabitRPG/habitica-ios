@@ -93,7 +93,13 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
         navigationController?.navigationBar.shadowImage = UIImage(named: "")
         
         if let username = giftRecipientUsername {
-            disposable.inner.add(socialRepository.retrieveMemberWithUsername(username).observeValues({[weak self] member in
+            let signal: Signal<MemberProtocol?, Never>
+            if UUID(uuidString: username) != nil {
+                signal = socialRepository.retrieveMember(userID: username)
+            } else {
+                signal = socialRepository.retrieveMemberWithUsername(username)
+            }
+            disposable.inner.add(signal.observeValues({[weak self] member in
                 self?.giftedUser = member
             }))
         }
@@ -186,7 +192,7 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
             return UICollectionViewCell()
         }
         cell.setPrice(product.localizedPrice)
-        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        cell.backgroundColor = .purple400
         
         var amount = 0
         if product.productIdentifier == "com.habitrpg.ios.Habitica.4gems" {
@@ -216,7 +222,7 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
         guard let user = self.giftedUser else {
             return
         }
-        PurchaseHandler.shared.purchaseGems(identifier, applicationUsername: String(user.id?.hashValue ?? 0)) { success in
+        PurchaseHandler.shared.giftGems(identifier, applicationUsername: String(user.id?.hashValue ?? 0), recipientID: user.id ?? "") { success in
             if success {
                 self.showConfirmationDialog(gemCount: amount)
             }

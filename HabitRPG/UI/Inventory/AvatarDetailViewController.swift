@@ -124,7 +124,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         let alertController = HabiticaAlertController(title: L10n.purchaseCustomization, message: L10n.purchaseFromTimeTravelersShop)
         alertController.addAction(title: L10n.goShopping, isMainAction: true) { _ in
             let storyboard = UIStoryboard(name: "Shop", bundle: nil)
-            if let viewController = storyboard.instantiateInitialViewController() as? HRPGShopViewController {
+            if let viewController = storyboard.instantiateInitialViewController() as? ShopViewController {
                 viewController.shopIdentifier = Constants.TimeTravelersShopKey
                 self.navigationController?.pushViewController(viewController, animated: true)
             }

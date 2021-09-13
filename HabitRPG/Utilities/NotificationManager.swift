@@ -8,7 +8,9 @@
 
 import Foundation
 import Habitica_Models
+#if !targetEnvironment(macCatalyst)
 import FirebaseAnalytics
+#endif
 
 class NotificationManager {
     private static var seenNotifications = Set<String>()
@@ -135,6 +137,7 @@ class NotificationManager {
     static func displayAchievement(notification: NotificationProtocol, isOnboarding: Bool, isLastOnboardingAchievement: Bool) -> Bool {
         userRepository.retrieveUser().observeCompleted {}
         userRepository.readNotification(notification: notification).observeCompleted {}
+        #if !targetEnvironment(macCatalyst)
         if isOnboarding {
             Analytics.logEvent(notification.achievementKey ?? "", parameters: nil)
         }
@@ -142,6 +145,7 @@ class NotificationManager {
             Analytics.logEvent(notification.type.rawValue, parameters: nil)
             Analytics.setUserProperty("true", forName: "completedOnboarding")
         }
+        #endif
         let alert = AchievementAlertController()
         alert.setNotification(notification: notification, isOnboarding: isOnboarding, isLastOnboardingAchievement: isLastOnboardingAchievement)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
@@ -156,18 +160,30 @@ class NotificationManager {
             return false
         }
         let nextRewardAt = loginIncentiveNotification.nextRewardAt
-        if let rewardKey = loginIncentiveNotification.rewardKey {
-            var imageName = rewardKey
+        if let reward = loginIncentiveNotification.rewardKey.first {
+            userRepository.retrieveUser().observeCompleted {}
+            var imageName = reward
             if imageName.contains("armor") {
                 imageName = "slim_\(imageName)"
             }
             let alert = ImageOverlayView(imageName: imageName,
                                          title: loginIncentiveNotification.message,
-                                         message: L10n.checkinPrizeEarned(loginIncentiveNotification.rewardText ?? ""))
-            alert.show()
+                                         message: nil)
+            let mutableString = NSMutableAttributedString(string: L10n.checkinPrizeEarned(loginIncentiveNotification.rewardText ?? ""))
+            mutableString.append(NSAttributedString(string: "\n\n"))
+            mutableString.append(NSAttributedString(string: L10n.nextPrizeInXCheckins(nextRewardAt), attributes: [
+                .font: UIFont.systemFont(ofSize: 14, weight: .semibold)
+            ]))
+            alert.attributedMessage = mutableString
+            alert.addAction(title: L10n.seeYouTomorrow, isMainAction: true)
+            alert.arrangeMessageLast = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                alert.show()
+            }
         } else {
             ToastManager.show(toast: ToastView(title: loginIncentiveNotification.message ?? "", subtitle: L10n.nextCheckinPrizeXDays(nextRewardAt), background: .blue))
         }
+        userRepository.readNotification(notification: notification).observeCompleted {}
         return true
     }
 }

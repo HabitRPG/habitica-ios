@@ -51,7 +51,20 @@ NotificationFirstDropProtocol {
     
     @objc dynamic var nextRewardAt: Int = -1
     @objc dynamic var message: String?
-    @objc dynamic var rewardKey: String?
+    @objc dynamic var rewardKey: [String] {
+        get {
+            return realmRewardKey.map({ (key) -> String in
+                return key
+            })
+        }
+        set {
+            realmRewardKey.removeAll()
+            newValue.forEach { (key) in
+                realmRewardKey.append(key)
+            }
+        }
+    }
+    var realmRewardKey = List<String>()
     @objc dynamic var rewardText: String?
     
     var isValid: Bool {

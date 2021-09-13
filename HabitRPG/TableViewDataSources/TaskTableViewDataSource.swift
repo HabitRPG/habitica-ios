@@ -168,10 +168,25 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.item == 0 && indexPath.section == 0 {
+            if showingAdventureGuide {
+                return false
+            }
+        }
+        if let task = item(at: indexPath) {
+            if task.isValid {
+                return !task.isChallengeTask
+            }
+        }
         return true
     }
     
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.item == 0 && indexPath.section == 0 {
+            if showingAdventureGuide {
+                return false
+            }
+        }
         return true
     }
     

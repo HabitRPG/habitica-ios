@@ -118,6 +118,23 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             let toastView = ToastView(title: L10n.copiedMessage, background: .green)
             ToastManager.show(toast: toastView)
         }
+        cell.reportAction = {[weak self] in
+            guard let view = Bundle.main.loadNibNamed("HRPGFlagInformationOverlayView", owner: self, options: nil)?.first as? FlagInformationOverlayView else {
+                return
+            }
+            view.message = message.text
+            view.sizeToFit()
+            
+            let alert = HabiticaAlertController()
+            alert.title = L10n.reportXViolation(message.username ?? "")
+            alert.contentView = view
+            alert.addCancelAction()
+            alert.addAction(title: L10n.report, style: .destructive, isMainAction: true) {[weak self] _ in
+                self?.socialRepository.flag(message: message).observeCompleted {}
+            }
+            alert.containerViewSpacing = 8
+            alert.enqueue()
+        }
         cell.deleteAction = {[weak self] in
             self?.socialRepository.delete(message: message).observeCompleted {}
         }
