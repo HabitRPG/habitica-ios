@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,31 +14,32 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="h94-Ja-fZ2">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="999" verticalCompressionResistancePriority="999" translatesAutoresizingMaskIntoConstraints="NO" id="h94-Ja-fZ2">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="beF-oX-rd4">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="276"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="290"/>
                             <subviews>
                                 <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="1uQ-Ft-1Hs">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7t-tL-CGS">
-                                            <rect key="frame" x="12" y="12" width="351" height="26"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipy-NF-fuf">
+                                            <rect key="frame" x="12" y="12" width="351" height="40"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" priority="500" constant="40" id="H8E-wJ-Rup"/>
+                                                <constraint firstAttribute="height" priority="500" constant="40" id="nnf-2O-llW"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                            <color key="textColor" systemColor="labelColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="j7t-tL-CGS" secondAttribute="bottom" constant="12" id="3ZL-Qp-Mty"/>
-                                        <constraint firstItem="j7t-tL-CGS" firstAttribute="top" secondItem="1uQ-Ft-1Hs" secondAttribute="top" constant="12" id="QVw-nF-eOU"/>
-                                        <constraint firstAttribute="trailing" secondItem="j7t-tL-CGS" secondAttribute="trailing" constant="12" id="V54-KV-bFK"/>
-                                        <constraint firstItem="j7t-tL-CGS" firstAttribute="leading" secondItem="1uQ-Ft-1Hs" secondAttribute="leading" constant="12" id="oOL-d7-4vl"/>
+                                        <constraint firstItem="Ipy-NF-fuf" firstAttribute="leading" secondItem="1uQ-Ft-1Hs" secondAttribute="leading" constant="12" id="Ccx-hO-ij3"/>
+                                        <constraint firstItem="Ipy-NF-fuf" firstAttribute="top" secondItem="1uQ-Ft-1Hs" secondAttribute="top" constant="12" id="GVN-NR-KVR"/>
+                                        <constraint firstAttribute="bottom" secondItem="Ipy-NF-fuf" secondAttribute="bottom" constant="12" id="Iv8-CM-Rd6"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ipy-NF-fuf" secondAttribute="trailing" constant="12" id="ZhR-kd-JV8"/>
                                         <constraint firstAttribute="height" priority="500" constant="24" id="vIf-V1-vCv"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
@@ -50,7 +52,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fv8-PV-ljT">
-                                    <rect key="frame" x="0.0" y="61" width="375" height="215"/>
+                                    <rect key="frame" x="0.0" y="75" width="375" height="215"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="40" id="5gb-QL-Y7e"/>
                                     </constraints>
@@ -91,9 +93,17 @@
             <connections>
                 <outlet property="explanationView" destination="Fv8-PV-ljT" id="HIa-HC-AkC"/>
                 <outlet property="messageContainerView" destination="1uQ-Ft-1Hs" id="g7l-Q4-xwc"/>
-                <outlet property="messageView" destination="j7t-tL-CGS" id="n8C-6i-opn"/>
+                <outlet property="messageView" destination="Ipy-NF-fuf" id="m8E-yH-WWk"/>
             </connections>
             <point key="canvasLocation" x="458" y="335"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

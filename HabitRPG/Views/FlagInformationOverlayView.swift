@@ -12,12 +12,13 @@ import Down
 class FlagInformationOverlayView: UIView {
     
     @IBOutlet weak var messageContainerView: UIView!
-    @IBOutlet weak var messageView: UILabel!
+    @IBOutlet weak var messageView: UITextView!
     @IBOutlet weak var explanationView: UILabel!
     
     var message: String? {
         didSet {
-            messageView.attributedText = try? Down(markdownString: message?.unicodeEmoji ?? "").toHabiticaAttributedString(baseSize: 15, textColor: ThemeService.shared.theme.primaryTextColor)
+            messageView.tintColor = ThemeService.shared.theme.tintColor
+            messageView.attributedText = try? Down(markdownString: message?.unicodeEmoji ?? "").toHabiticaAttributedString(baseSize: 13, highlightUsernames: true)
             explanationView.textColor = ThemeService.shared.theme.secondaryTextColor
             messageContainerView.borderColor = ThemeService.shared.theme.separatorColor
             setNeedsLayout()

@@ -778,7 +778,7 @@ public enum L10n {
   public static var reply: String { return L10n.tr("Mainstrings", "reply") }
   /// Report
   public static var report: String { return L10n.tr("Mainstrings", "report") }
-  /// Report %@ for violation?
+  /// Report @@%@ for violation?
   public static func reportXViolation(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "report_x_violation", p1)
   }

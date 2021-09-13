@@ -533,6 +533,7 @@ class TaskFormViewModel: ObservableObject {
     @Published var backgroundTintColor: Color = Color(.purple300)
     @Published var darkTaskTintColor: Color = Color(.purple200)
     @Published var lightTaskTintColor: Color = Color(.purple400)
+    @Published var pickerTintColor: Color = Color(.purple400)
     @Published var darkestTaskTintColor: Color = Color(UIColor(white: 1, alpha: 0.7))
     @Published var lightestTaskTintColor: Color = Color(.purple500)
     @Published var showStatAllocation = false
@@ -744,7 +745,7 @@ struct TaskFormView: View {
                             TaskFormSection(header: Text(L10n.Tasks.Form.controls.uppercased()),
                                             content: HabitControlsFormView(taskColor: viewModel.lightTaskTintColor.uiColor(), isUp: $viewModel.up, isDown: $viewModel.down).padding(8))
                             TaskFormSection(header: Text(L10n.Tasks.Form.resetCounter.uppercased()),
-                                            content: TaskFormPicker(options: TaskFormView.habitResetStreakOptions, selection: $viewModel.frequency))
+                                            content: TaskFormPicker(options: TaskFormView.habitResetStreakOptions, selection: $viewModel.frequency, tintColor: viewModel.lightTaskTintColor))
                         } else if viewModel.taskType == .reward {
                             TaskFormSection(header: Text(L10n.Tasks.Form.difficulty.uppercased()),
                                             content: RewardAmountView(value: $viewModel.value), backgroundColor: .clear)
@@ -804,16 +805,18 @@ class TaskFormController: UIHostingController<TaskFormView> {
                 }
                 self?.dismiss(animated: true, completion: nil)
             }
+            viewModel.lightTaskTintColor = Color(editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple400)
             var tintColor: UIColor = editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple300
             if tintColor == .yellow100 {
                 tintColor = .yellow50
+            } else {
+                viewModel.pickerTintColor = viewModel.lightTaskTintColor
             }
             if ThemeService.shared.theme.isDark && tintColor == .purple300 {
                 tintColor = .purple500
             }
             viewModel.taskTintColor = Color(tintColor)
             viewModel.backgroundTintColor = Color(editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple300)
-            viewModel.lightTaskTintColor = Color(editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple400)
             viewModel.darkTaskTintColor = Color(color)
             viewModel.lightestTaskTintColor = Color(editedTask != nil ? .forTaskValueExtraLight(editedTask?.value ?? 0) : .purple500)
 
@@ -847,7 +850,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
             self?.rootView.tags = tags.value
         }).start()
         view.backgroundColor = .purple200
-        if ThemeService.shared.theme.isDark {
+        if ThemeService.shared.theme.isDark && viewModel.taskTintColor.uiColor() == .purple300 {
             viewModel.taskTintColor = Color(.purple500)
         }
         
