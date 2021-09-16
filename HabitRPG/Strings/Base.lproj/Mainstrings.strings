@@ -839,7 +839,7 @@
 "staff" = "Staff";
 "sale" = "Sale";
 "get_more_habitica" = "Get more out of Habitica";
-"report_x_violation" = "Report @@%@ for violation?";
+"report_x_violation" = "Report @%@ for violation?";
 "not_getting_drops" = "Not getting the right drops? Check out the Market to buy just the things you need!";
 "streak_achievement_title" = "You earned a streak achievement!";
 "streak_achievement_description" = "You've completed your Daily for 21 days in a row! Amazing job. Don't break the streak!";

@@ -17,9 +17,21 @@ class APIReminder: ReminderProtocol, Codable {
         return nil
     }
     
+    enum CodingKeys: String, CodingKey {
+        case id
+        case startDate
+        case time
+    }
+    
     init(_ reminderProtocol: ReminderProtocol) {
         id = reminderProtocol.id
         startDate = reminderProtocol.startDate
         time = reminderProtocol.time
     }
+    
+    func detached() -> ReminderProtocol {
+        return self
+    }
+    
+    var isValid: Bool = true
 }

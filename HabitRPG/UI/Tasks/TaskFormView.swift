@@ -332,47 +332,54 @@ struct DailySchedulingView: View {
 }
 
 struct TaskFormChecklistItemView: View {
-    private let taskRepository = TaskRepository()
-    @Binding var items: [ChecklistItemProtocol] {
+    var item: ChecklistItemProtocol {
         didSet {
-            for item in items where itemTexts[item.id ?? ""] == nil {
-                itemTexts[item.id ?? ""] = item.text ?? ""
-            }
+            text = item.text ?? ""
         }
     }
+    let onDelete: () -> Void
     
-    init(items: Binding<[ChecklistItemProtocol]>) {
-        _items = items
-        var texts = [String: String]()
-        for item in items.wrappedValue {
-            texts[item.id ?? ""] = item.text ?? ""
-        }
-        _itemTexts = State(initialValue: texts)
+    init(item: ChecklistItemProtocol, onDelete: @escaping () -> Void) {
+        self.item = item
+        self.onDelete = onDelete
+        _text = State(initialValue: item.text ?? "")
     }
     
-    @State private var itemTexts: [String: String] = [:]
+    @State private var text: String = ""
+    
+    var body: some View {
+        HStack {
+            Button(action: {
+                onDelete()
+            }, label: {
+                Rectangle().fill(Color.white).frame(width: 9, height: 2)
+                    .background(Circle().fill(Color.accentColor).frame(width: 21, height: 21))
+                    .frame(width: 48, height: 48)
+            })
+            TextField("Enter your checklist line", text: $text, onEditingChanged: { _ in
+                item.text = text
+            })
+        }.frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
+        .transition(.opacity)
+    }
+}
+
+struct TaskFormChecklistView: View {
+    private let taskRepository = TaskRepository()
+    @Binding var items: [ChecklistItemProtocol]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(L10n.Tasks.Form.checklist.uppercased()).font(.system(size: 13, weight: .semibold)).foregroundColor(Color(ThemeService.shared.theme.quadTextColor)).padding(.leading, 14)
             VStack(spacing: 8) {
                 ForEach(items, id: \.id) { item in
-                    HStack {
-                        Button(action: {
-                            withAnimation {
-                                if let index = items.firstIndex(where: { $0.id == item.id }) {
-                                    items.remove(at: index)
-                                }
+                    TaskFormChecklistItemView(item: item, onDelete: {
+                        withAnimation {
+                            if let index = items.firstIndex(where: { $0.id == item.id }) {
+                                items.remove(at: index)
                             }
-                        }, label: {
-                            Rectangle().fill(Color.white).frame(width: 9, height: 2)
-                                .background(Circle().fill(Color.accentColor).frame(width: 21, height: 21))
-                                .frame(width: 48, height: 48)
-                        })
-                        let index = itemTexts.index(forKey: item.id ?? "") ?? itemTexts.startIndex
-                        TextField("Enter your checklist line", text: $itemTexts.values[index])
-                    }.frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
-                    .transition(.opacity)
+                        }
+                    })
                 }
                 Button(action: {
                     let item = taskRepository.getNewChecklistItem()
@@ -501,6 +508,8 @@ struct RewardAmountView: View {
 }
 
 class TaskFormViewModel: ObservableObject {
+    private let taskRepository = TaskRepository()
+
     @Published var text: String = ""
     @Published var notes: String = ""
     @Published var priority: Float = 1.0
@@ -566,8 +575,12 @@ class TaskFormViewModel: ObservableObject {
             if !weeksOfMonth.isEmpty {
                 _dayOrWeekMonth = Published(initialValue: "week")
             }
-            _checklistItems = Published(initialValue: task?.checklist ?? [])
-            _reminders = Published(initialValue: task?.reminders ?? [])
+            _checklistItems = Published(initialValue: task?.checklist.map({ item in
+                return item.detached()
+            }) ?? [])
+            _reminders = Published(initialValue: task?.reminders.map({ item in
+                return item.detached()
+            }) ?? [])
         }
     }
 }
@@ -739,13 +752,13 @@ struct TaskFormView: View {
                     VStack(spacing: 25) {
                         graphs
                         if viewModel.taskType == .daily || viewModel.taskType == .todo {
-                            TaskFormChecklistItemView(items: $viewModel.checklistItems)
+                            TaskFormChecklistView(items: $viewModel.checklistItems)
                         }
                         if viewModel.taskType == .habit {
                             TaskFormSection(header: Text(L10n.Tasks.Form.controls.uppercased()),
                                             content: HabitControlsFormView(taskColor: viewModel.lightTaskTintColor.uiColor(), isUp: $viewModel.up, isDown: $viewModel.down).padding(8))
                             TaskFormSection(header: Text(L10n.Tasks.Form.resetCounter.uppercased()),
-                                            content: TaskFormPicker(options: TaskFormView.habitResetStreakOptions, selection: $viewModel.frequency, tintColor: viewModel.lightTaskTintColor))
+                                            content: TaskFormPicker(options: TaskFormView.habitResetStreakOptions, selection: $viewModel.frequency, tintColor: viewModel.pickerTintColor))
                         } else if viewModel.taskType == .reward {
                             TaskFormSection(header: Text(L10n.Tasks.Form.difficulty.uppercased()),
                                             content: RewardAmountView(value: $viewModel.value), backgroundColor: .clear)
@@ -763,7 +776,7 @@ struct TaskFormView: View {
                             }
                         if viewModel.showStatAllocation {
                             TaskFormSection(header: Text(L10n.statAllocation.uppercased()),
-                                            content: TaskFormPicker(options: TaskFormView.statAllocationOptions, selection: $viewModel.stat, tintColor: viewModel.lightTaskTintColor))
+                                            content: TaskFormPicker(options: TaskFormView.statAllocationOptions, selection: $viewModel.stat, tintColor: viewModel.pickerTintColor))
                         }
                         TaskFormSection(header: Text(L10n.Tasks.Form.tags.uppercased()),
                                         content: TagList(selectedTags: $viewModel.selectedTags, allTags: tags, taskColor: viewModel.taskTintColor))
@@ -808,7 +821,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
             viewModel.lightTaskTintColor = Color(editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple400)
             var tintColor: UIColor = editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple300
             if tintColor == .yellow100 {
-                tintColor = .yellow50
+                tintColor = .yellow10
             } else {
                 viewModel.pickerTintColor = viewModel.lightTaskTintColor
             }

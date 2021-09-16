@@ -9,8 +9,10 @@
 import Foundation
 
 @objc
-public protocol ChecklistItemProtocol {
+public protocol ChecklistItemProtocol: BaseModelProtocol {
     var id: String? { get set }
     var text: String? { get set }
     var completed: Bool { get set }
+    
+    func detached() -> ChecklistItemProtocol
 }

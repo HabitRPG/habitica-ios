@@ -20,10 +20,18 @@ class RealmChecklistItem: Object, ChecklistItemProtocol {
         return "id"
     }
     
+    var isValid: Bool {
+        return !isInvalidated
+    }
+    
     convenience init(_ checklistItemProtocol: ChecklistItemProtocol) {
         self.init()
         id = checklistItemProtocol.id
         text = checklistItemProtocol.text
         completed = checklistItemProtocol.completed
+    }
+    
+    func detached() -> ChecklistItemProtocol {
+        return RealmChecklistItem(value: self)
     }
 }

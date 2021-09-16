@@ -125,16 +125,26 @@ public class PreviewTask: TaskProtocol {
 }
 
 public class PreviewChecklistItem: ChecklistItemProtocol {
+    public var isValid: Bool = true
+    
     public init() {}
     public var text: String?
     public var completed: Bool = false
     public var id: String?
+    
+    public func detached() -> ChecklistItemProtocol {
+        return self
+    }
 }
 
 public class PreviewReminder: ReminderProtocol {
+    public var isValid: Bool = true
     public var id: String?
     public init() {}
     public var startDate: Date?
     public var time: Date?
     public var task: TaskProtocol?
+    @objc public func detached() -> ReminderProtocol {
+        return self
+    }
 }
