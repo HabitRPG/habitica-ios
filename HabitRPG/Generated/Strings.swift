@@ -2321,6 +2321,8 @@ public enum L10n {
       public static var newChecklistItem: String { return L10n.tr("Mainstrings", "tasks.form.new_checklist_item") }
       /// New reminder
       public static var newReminder: String { return L10n.tr("Mainstrings", "tasks.form.new_reminder") }
+      /// None
+      public static var `none`: String { return L10n.tr("Mainstrings", "tasks.form.none") }
       /// Include any notes to help you out
       public static var notesPlaceholder: String { return L10n.tr("Mainstrings", "tasks.form.notes_placeholder") }
       /// Positive

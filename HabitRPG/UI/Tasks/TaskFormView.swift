@@ -210,13 +210,13 @@ struct FormDatePicker<TitleView: View>: View {
         if let date = value {
             return dateFormatter.string(from: date)
         } else {
-            return ""
+            return L10n.Tasks.Form.none
         }
     }
     
     var body: some View {
         VStack {
-            FormRow(title: title, valueLabel: Text(valueText)) {
+            FormRow(title: title, valueLabel: Text(valueText).foregroundColor(value != nil ? .accentColor : Color(ThemeService.shared.theme.dimmedTextColor))) {
                 withAnimation {
                     isOpen.toggle()
                 }
@@ -569,6 +569,7 @@ class TaskFormViewModel: ObservableObject {
     @Published var lightTaskTintColor: Color = Color(.purple400)
     @Published var pickerTintColor: Color = Color(.purple400)
     @Published var darkestTaskTintColor: Color = Color(UIColor(white: 1, alpha: 0.7))
+    @Published var textFieldTintColor: Color = Color(.purple50)
     @Published var lightestTaskTintColor: Color = Color(.purple500)
     @Published var showStatAllocation = false
     @Published var showTaskGraphs = false
@@ -731,7 +732,7 @@ struct TaskFormView: View {
             })
                 .padding(8)
                 .frame(minHeight: 40)
-                .foregroundColor(isEditingText ? viewModel.darkestTaskTintColor : viewModel.darkestTaskTintColor.opacity(0.75))
+                .foregroundColor(isEditingText ? viewModel.textFieldTintColor : viewModel.textFieldTintColor.opacity(0.75))
                 .background(viewModel.lightestTaskTintColor)
                 .cornerRadius(12)
             Text(L10n.notes).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingNotes ? .semibold : .regular)).padding(.leading, 8).padding(.top, 10)
@@ -740,7 +741,7 @@ struct TaskFormView: View {
             })
                 .padding(8)
                 .frame(minHeight: 40)
-                .foregroundColor(isEditingNotes ? viewModel.darkestTaskTintColor : viewModel.darkestTaskTintColor.opacity(0.75))
+                .foregroundColor(isEditingNotes ? viewModel.textFieldTintColor : viewModel.textFieldTintColor.opacity(0.75))
                 .background(viewModel.lightestTaskTintColor)
                 .cornerRadius(12)
         }.padding(.horizontal, 16)
@@ -871,6 +872,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
             viewModel.showTaskGraphs = configRepository.bool(variable: .showTaskGraphs)
             let darkestColor: UIColor = editedTask != nil ? .forTaskValueDarkest(editedTask?.value ?? 0) : .white
             viewModel.darkestTaskTintColor = Color(darkestColor)
+            viewModel.textFieldTintColor = viewModel.darkestTaskTintColor
             
             if let controller = navigationController as? ThemedNavigationController {
                 controller.navigationBarColor = color

@@ -14,12 +14,16 @@ struct DueDateFormView: View {
     var body: some View {
         VStack(spacing: 0) {
             FormDatePicker(title: Text(L10n.Tasks.Form.dueDate), value: $date)
-            Separator()
-            Button(action: {
-                date = nil
-            }, label: {
-                Text(L10n.Tasks.Form.clear).font(.system(size: 15, weight: .semibold)).foregroundColor(.accentColor)
-            }).frame(maxWidth: .infinity).frame(height: 48).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
+            if date != nil {
+                Separator()
+                Button(action: {
+                    withAnimation {
+                        date = nil
+                    }
+                }, label: {
+                    Text(L10n.Tasks.Form.clear).font(.system(size: 15, weight: .semibold)).foregroundColor(.accentColor)
+                }).frame(maxWidth: .infinity).frame(height: 48).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
+            }
         }
     }
 }
