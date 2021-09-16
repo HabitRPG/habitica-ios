@@ -23,6 +23,7 @@
 		29028C3E203701B900B7F704 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29028C3D203701B900B7F704 /* ChatTableViewCell.swift */; };
 		29028C422037131C00B7F704 /* SystemMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29028C412037131C00B7F704 /* SystemMessageTableViewCell.swift */; };
 		29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29028C432037132A00B7F704 /* SystemMessageTableViewCell.xib */; };
+		29038F2126F33CDB005CA2D3 /* DueDateFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29038F2026F33CDB005CA2D3 /* DueDateFormView.swift */; };
 		290458D02021D6C60032BC5E /* TopHeaderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */; };
 		29066CF424FE62E700A266EE /* HabiticaPromotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29066CF324FE62E700A266EE /* HabiticaPromotions.swift */; };
 		29066CF724FE6A6900A266EE /* PromoMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29066CF624FE6A6900A266EE /* PromoMenuView.swift */; };
@@ -693,6 +694,7 @@
 		29028C3D203701B900B7F704 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		29028C412037131C00B7F704 /* SystemMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessageTableViewCell.swift; sourceTree = "<group>"; };
 		29028C432037132A00B7F704 /* SystemMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SystemMessageTableViewCell.xib; sourceTree = "<group>"; };
+		29038F2026F33CDB005CA2D3 /* DueDateFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DueDateFormView.swift; sourceTree = "<group>"; };
 		290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderCoordinator.swift; sourceTree = "<group>"; };
 		29066CF324FE62E700A266EE /* HabiticaPromotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaPromotions.swift; sourceTree = "<group>"; };
 		29066CF624FE6A6900A266EE /* PromoMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoMenuView.swift; sourceTree = "<group>"; };
@@ -1931,6 +1933,7 @@
 				2942F8CE266DF9CB003F6500 /* TaskFormView.swift */,
 				29A4FE6226A9B3DB00F0FE30 /* HabitProgressView.swift */,
 				29AA79C62685B71100871541 /* TaskFormPicker.swift */,
+				29038F2026F33CDB005CA2D3 /* DueDateFormView.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -3805,6 +3808,7 @@
 				D9525F9F1E65A18300C529B8 /* EmojifiedString.swift in Sources */,
 				2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */,
 				29E30DE620D935AF00F74ECB /* LevelUpOverlayView.swift in Sources */,
+				29038F2126F33CDB005CA2D3 /* DueDateFormView.swift in Sources */,
 				49DCB7B61F3F64B40079FDD0 /* HRPGShopModalBgView.swift in Sources */,
 				29E1631B200E84AC00685640 /* TavernViewController.swift in Sources */,
 				291448822087A13100F3A6B5 /* EquipmentDetailViewController.swift in Sources */,

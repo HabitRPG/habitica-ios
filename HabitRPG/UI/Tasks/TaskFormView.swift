@@ -181,7 +181,7 @@ struct FormSheetSelector<TYPE: Equatable>: View {
 
 struct FormDatePicker<TitleView: View>: View {
     let title: TitleView
-    @Binding var value: Date
+    @Binding var value: Date?
 
     @State var isOpen = false
     
@@ -191,18 +191,32 @@ struct FormDatePicker<TitleView: View>: View {
         return formatter
     }()
     
+    private var dateProxy: Binding<Date> {
+        Binding<Date>(get: { self.value ?? Date() }, set: {
+            self.value = $0
+        })
+    }
+    
     @ViewBuilder
     private var picker: some View {
-        DatePicker(selection: $value,
+        DatePicker(selection: dateProxy,
                           displayedComponents: [.date],
                           label: {
                    title
                           })
     }
     
+    private var valueText: String {
+        if let date = value {
+            return dateFormatter.string(from: date)
+        } else {
+            return ""
+        }
+    }
+    
     var body: some View {
         VStack {
-            FormRow(title: title, valueLabel: Text(dateFormatter.string(from: value))) {
+            FormRow(title: title, valueLabel: Text(valueText)) {
                 withAnimation {
                     isOpen.toggle()
                 }
@@ -219,7 +233,7 @@ struct FormDatePicker<TitleView: View>: View {
 }
 
 struct DailySchedulingView: View {
-    @Binding var startDate: Date
+    @Binding var startDate: Date?
     @Binding var frequency: String
     @Binding var everyX: String
     
@@ -456,7 +470,6 @@ struct TaskFormReminderView: View {
     
     @State private var expandedItem: ReminderProtocol?
 
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(L10n.Tasks.Form.reminders.uppercased()).font(.system(size: 13, weight: .semibold)).foregroundColor(Color(ThemeService.shared.theme.quadTextColor)).padding(.leading, 14)
@@ -530,7 +543,8 @@ class TaskFormViewModel: ObservableObject {
     @Published var up: Bool = true
     @Published var down: Bool = false
     @Published var everyX: String = "1"
-    @Published var startDate: Date = Date()
+    @Published var startDate: Date? = Date()
+    @Published var dueDate: Date?
     @Published var selectedTags: [TagProtocol] = []
     
     @Published var monday: Bool = true
@@ -572,6 +586,8 @@ class TaskFormViewModel: ObservableObject {
             _down = Published(initialValue: task?.down ?? false)
             _everyX = Published(initialValue: String(task?.everyX ?? 1))
             _startDate = Published(initialValue: task?.startDate ?? Date())
+            _dueDate = Published(initialValue: task?.duedate)
+
             _selectedTags = Published(initialValue: task?.tags ?? [])
             
             _monday = Published(initialValue: task?.weekRepeat?.monday ?? true)
@@ -754,6 +770,26 @@ struct TaskFormView: View {
         })
     }
     
+    @ViewBuilder
+    private var dynamicFormPart: some View {
+        if viewModel.taskType == .habit {
+            TaskFormSection(header: Text(L10n.Tasks.Form.controls.uppercased()),
+                            content: HabitControlsFormView(taskColor: viewModel.lightTaskTintColor.uiColor(), isUp: $viewModel.up, isDown: $viewModel.down).padding(8))
+            TaskFormSection(header: Text(L10n.Tasks.Form.resetCounter.uppercased()),
+                            content: TaskFormPicker(options: TaskFormView.habitResetStreakOptions, selection: $viewModel.frequency, tintColor: viewModel.pickerTintColor))
+        } else if viewModel.taskType == .reward {
+            TaskFormSection(header: Text(L10n.Tasks.Form.difficulty.uppercased()),
+                            content: RewardAmountView(value: $viewModel.value), backgroundColor: .clear)
+        } else if viewModel.taskType == .daily {
+            TaskFormSection(header: Text(L10n.Tasks.Form.scheduling.uppercased()),
+                            content: DailySchedulingView(startDate: $viewModel.startDate, frequency: $viewModel.frequency, everyX: $viewModel.everyX, monday: $viewModel.monday, tuesday: $viewModel.tuesday, wednesday: $viewModel.wednesday, thursday: $viewModel.thursday, friday: $viewModel.friday, saturday: $viewModel.saturday, sunday: $viewModel.sunday, daysOfMonth: $viewModel.daysOfMonth, weeksOfMonth: $viewModel.weeksOfMonth, dayOrWeekMonth: $viewModel.dayOrWeekMonth
+                                                         ))
+        } else if viewModel.taskType == .todo {
+            TaskFormSection(header: Text(L10n.Tasks.Form.scheduling.uppercased()),
+                            content: DueDateFormView(date: $viewModel.dueDate))
+        }
+    }
+    
     var body: some View {
         let theme = ThemeService.shared.theme
         ScrollView {
@@ -765,19 +801,7 @@ struct TaskFormView: View {
                         if viewModel.taskType == .daily || viewModel.taskType == .todo {
                             TaskFormChecklistView(items: $viewModel.checklistItems)
                         }
-                        if viewModel.taskType == .habit {
-                            TaskFormSection(header: Text(L10n.Tasks.Form.controls.uppercased()),
-                                            content: HabitControlsFormView(taskColor: viewModel.lightTaskTintColor.uiColor(), isUp: $viewModel.up, isDown: $viewModel.down).padding(8))
-                            TaskFormSection(header: Text(L10n.Tasks.Form.resetCounter.uppercased()),
-                                            content: TaskFormPicker(options: TaskFormView.habitResetStreakOptions, selection: $viewModel.frequency, tintColor: viewModel.pickerTintColor))
-                        } else if viewModel.taskType == .reward {
-                            TaskFormSection(header: Text(L10n.Tasks.Form.difficulty.uppercased()),
-                                            content: RewardAmountView(value: $viewModel.value), backgroundColor: .clear)
-                        } else if viewModel.taskType == .daily {
-                            TaskFormSection(header: Text(L10n.Tasks.Form.scheduling.uppercased()),
-                                            content: DailySchedulingView(startDate: $viewModel.startDate, frequency: $viewModel.frequency, everyX: $viewModel.everyX, monday: $viewModel.monday, tuesday: $viewModel.tuesday, wednesday: $viewModel.wednesday, thursday: $viewModel.thursday, friday: $viewModel.friday, saturday: $viewModel.saturday, sunday: $viewModel.sunday, daysOfMonth: $viewModel.daysOfMonth, weeksOfMonth: $viewModel.weeksOfMonth, dayOrWeekMonth: $viewModel.dayOrWeekMonth
-                                                                         ))
-                        }
+                        dynamicFormPart
                         if viewModel.taskType != .reward {
                             TaskFormSection(header: Text(L10n.Tasks.Form.difficulty.uppercased()),
                                             content: DifficultyPicker(selectedDifficulty: $viewModel.priority).padding(8))
@@ -919,6 +943,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
         task.down = viewModel.down
         task.everyX = Int(viewModel.everyX) ?? 1
         task.startDate = viewModel.startDate
+        task.duedate = viewModel.dueDate
         task.tags = viewModel.selectedTags
         
         task.weekRepeat?.monday = viewModel.monday
