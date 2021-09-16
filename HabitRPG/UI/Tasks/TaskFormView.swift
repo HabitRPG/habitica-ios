@@ -393,27 +393,12 @@ struct TaskFormChecklistView: View {
     }
 }
 
-struct TaskFormReminderView: View {
-    private let taskRepository = TaskRepository()
-    @Binding var items: [ReminderProtocol] {
-        didSet {
-            for item in items where itemTimes[item.id ?? ""] == nil {
-                itemTimes[item.id ?? ""] = item.time ?? Date()
-            }
-        }
-    }
+struct TaskFormReminderItemView: View {
+    var item: ReminderProtocol
+    var isExpanded: Bool
+    var onDelete: () -> Void
     
-    init(items: Binding<[ReminderProtocol]>) {
-        _items = items
-        var times = [String: Date]()
-        for item in items.wrappedValue {
-            times[item.id ?? ""] = item.time ?? Date()
-        }
-        _itemTimes = State(initialValue: times)
-    }
-    
-    @State var itemTimes: [String: Date] = [:]
-    @State private var expandedItem: String?
+    @State private var time: Date
     
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -427,45 +412,71 @@ struct TaskFormReminderView: View {
                    displayedComponents: [.hourAndMinute],
                           label: {
                    Text("")
+                          })
+    }
+    
+    init(item: ReminderProtocol, isExpanded: Bool, onDelete: @escaping () -> Void) {
+        self.item = item
+        self.isExpanded = isExpanded
+        self.onDelete = onDelete
+        _time = State(initialValue: item.time ?? Date())
+    }
+    
+    private var timeProxy: Binding<Date> {
+        Binding<Date>(get: { self.time }, set: {
+            self.time = $0
+            self.item.time = $0
         })
     }
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Button(action: {
+                    onDelete()
+                }, label: {
+                    Rectangle().fill(Color.white).frame(width: 9, height: 2)
+                        .background(Circle().fill(Color.accentColor).frame(width: 21, height: 21))
+                        .frame(width: 48, height: 48)
+                })
+                Text(dateFormatter.string(from: time))
+                Spacer()
+            }
+            if isExpanded {
+                buildPicker(value: timeProxy).datePickerStyle(WheelDatePickerStyle())
+            }
+        }.frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
+        .transition(.opacity)
+    }
+}
+
+struct TaskFormReminderView: View {
+    private let taskRepository = TaskRepository()
+    @Binding var items: [ReminderProtocol]
+    
+    @State private var expandedItem: ReminderProtocol?
+
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(L10n.Tasks.Form.reminders.uppercased()).font(.system(size: 13, weight: .semibold)).foregroundColor(Color(ThemeService.shared.theme.quadTextColor)).padding(.leading, 14)
             VStack(spacing: 8) {
                 ForEach(items, id: \.id) { item in
-                    let index = itemTimes.index(forKey: item.id ?? "") ?? itemTimes.startIndex
-                    VStack {
-                        HStack {
-                            Button(action: {
-                                withAnimation {
-                                    if let index = items.firstIndex(where: { $0.id == item.id }) {
-                                        items.remove(at: index)
-                                    }
-                                }
-                            }, label: {
-                                Rectangle().fill(Color.white).frame(width: 9, height: 2)
-                                    .background(Circle().fill(Color.accentColor).frame(width: 21, height: 21))
-                                    .frame(width: 48, height: 48)
-                            })
-                            Text(dateFormatter.string(from: itemTimes.values[index]))
-                            Spacer()
-                        }.onTapGesture {
-                            withAnimation {
-                                if expandedItem == item.id {
-                                    expandedItem = nil
-
-                                } else {
-                                    expandedItem = item.id
-                                }
+                    TaskFormReminderItemView(item: item, isExpanded: item.id == expandedItem?.id) {
+                        withAnimation {
+                            if let index = items.firstIndex(where: { $0.id == item.id }) {
+                                items.remove(at: index)
                             }
                         }
-                        if expandedItem == item.id {
-                            buildPicker(value: $itemTimes.values[index]).datePickerStyle(WheelDatePickerStyle())
+                    }.onTapGesture {
+                        withAnimation {
+                            if expandedItem?.id == item.id {
+                                expandedItem = nil
+                            } else {
+                                expandedItem = item
+                            }
                         }
-                    }.frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
-                    .transition(.opacity)
+                    }
                 }
                 Button(action: {
                     let item = taskRepository.getNewReminder()
