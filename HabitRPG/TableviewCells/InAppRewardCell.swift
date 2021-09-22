@@ -179,7 +179,7 @@ class InAppRewardCell: UICollectionViewCell {
 extension InAppRewardCell: PathTraceable {
     func visiblePath() -> UIBezierPath {
         let path = UIBezierPath(roundedRect: containerView.frame, cornerRadius: containerView.cornerRadius)
-        if isLocked {
+        if isLocked || availableUntil != nil {
             path.append(UIBezierPath(ovalIn: infoImageView.frame))
         }
         return path
