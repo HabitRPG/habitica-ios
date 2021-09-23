@@ -422,7 +422,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
         if defaults.bool(forKey: "userWasAttributed") {
             return
         }
-        if #available(iOS 14.3, *) {
+        if #available(iOS 14.5, *) {
             DispatchQueue.global(qos: .background).async {
                 let token = try? AAAttribution.attributionToken()
                 if let attributionToken = token, let url = URL(string: "https://api-adservices.apple.com/api/v1/") {

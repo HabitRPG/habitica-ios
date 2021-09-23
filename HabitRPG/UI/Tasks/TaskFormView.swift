@@ -360,7 +360,12 @@ struct TaskFormChecklistItemView: View {
     }
     
     @State private var text: String = ""
-    
+    private var textProxy: Binding<String> {
+        Binding<String>(get: { self.text }, set: {
+            self.text = $0
+            self.item.text = $0
+        })
+    }
     var body: some View {
         HStack {
             Button(action: {
@@ -370,9 +375,7 @@ struct TaskFormChecklistItemView: View {
                     .background(Circle().fill(Color.accentColor).frame(width: 21, height: 21))
                     .frame(width: 48, height: 48)
             })
-            TextField("Enter your checklist line", text: $text, onEditingChanged: { _ in
-                item.text = text
-            })
+            TextField("Enter your checklist line", text: textProxy)
         }.frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
         .transition(.opacity)
     }
@@ -400,8 +403,11 @@ struct TaskFormChecklistView: View {
                     item.id = UUID().uuidString
                     items.append(item)
                 }, label: {
-                    Text(L10n.Tasks.Form.newChecklistItem).font(.system(size: 15, weight: .semibold)).foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
-                }).frame(maxWidth: .infinity).frame(height: 48).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
+                    Text(L10n.Tasks.Form.newChecklistItem).font(.system(size: 15, weight: .semibold))
+                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                        .frame(maxWidth: .infinity).frame(height: 48)
+                        .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
+                })
             }.animation(.easeInOut)
         }
     }
@@ -416,7 +422,7 @@ struct TaskFormReminderItemView: View {
     
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.timeStyle = .medium
+        formatter.timeStyle = .short
         return formatter
     }()
     
@@ -433,7 +439,7 @@ struct TaskFormReminderItemView: View {
         self.item = item
         self.isExpanded = isExpanded
         self.onDelete = onDelete
-        _time = State(initialValue: item.time ?? Date())
+        _time = State(initialValue: item.time ?? Calendar.current.date(bySetting: .second, value: 0, of: Date()) ?? Date())
     }
     
     private var timeProxy: Binding<Date> {
@@ -496,8 +502,11 @@ struct TaskFormReminderView: View {
                     item.id = UUID().uuidString
                     items.append(item)
                 }, label: {
-                    Text(L10n.Tasks.Form.newReminder).font(.system(size: 15, weight: .semibold)).foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
-                }).frame(maxWidth: .infinity).frame(height: 48).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
+                    Text(L10n.Tasks.Form.newReminder).font(.system(size: 15, weight: .semibold))
+                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                        .frame(maxWidth: .infinity).frame(height: 48)
+                        .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
+                })
             }.animation(.easeInOut)
         }
     }
@@ -831,6 +840,7 @@ struct TaskFormView: View {
 }
 
 class TaskFormController: UIHostingController<TaskFormView> {
+    private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
     private let configRepository = ConfigRepository()
     
@@ -858,6 +868,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
             var tintColor: UIColor = editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple300
             if tintColor == .yellow100 {
                 tintColor = .yellow10
+                viewModel.pickerTintColor = Color(.yellow10)
             } else {
                 viewModel.pickerTintColor = viewModel.lightTaskTintColor
             }
@@ -903,7 +914,9 @@ class TaskFormController: UIHostingController<TaskFormView> {
         if ThemeService.shared.theme.isDark && viewModel.taskTintColor.uiColor() == .purple300 {
             viewModel.taskTintColor = Color(.purple500)
         }
-        
+        userRepository.getUser().on(value: {[weak self] user in
+            self?.viewModel.showStatAllocation = user.preferences?.allocationMode == "taskbased"
+        }).start()
         if let controller = navigationController as? ThemedNavigationController, editedTask == nil {
             controller.navigationBarColor = .purple200
             controller.textColor = .white
@@ -949,14 +962,22 @@ class TaskFormController: UIHostingController<TaskFormView> {
         task.tags = viewModel.selectedTags
         
         task.weekRepeat?.monday = viewModel.monday
-        task.weekRepeat?.monday = viewModel.tuesday
-        task.weekRepeat?.monday = viewModel.wednesday
-        task.weekRepeat?.monday = viewModel.thursday
-        task.weekRepeat?.monday = viewModel.friday
-        task.weekRepeat?.monday = viewModel.saturday
-        task.weekRepeat?.monday = viewModel.sunday
-        task.daysOfMonth = viewModel.daysOfMonth
-        task.weeksOfMonth = viewModel.weeksOfMonth
+        task.weekRepeat?.tuesday = viewModel.tuesday
+        task.weekRepeat?.wednesday = viewModel.wednesday
+        task.weekRepeat?.thursday = viewModel.thursday
+        task.weekRepeat?.friday = viewModel.friday
+        task.weekRepeat?.saturday = viewModel.saturday
+        task.weekRepeat?.sunday = viewModel.sunday
+        task.daysOfMonth = []
+        task.weeksOfMonth = []
+        
+        if let startDate = task.startDate {
+            if viewModel.dayOrWeekMonth == "week" {
+                task.weeksOfMonth.append(Calendar.current.component(.weekOfMonth, from: startDate))
+            } else {
+                task.daysOfMonth.append(Calendar.current.component(.day, from: startDate))
+            }
+        }
         
         task.checklist = viewModel.checklistItems
         task.reminders = viewModel.reminders
