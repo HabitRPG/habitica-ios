@@ -217,6 +217,9 @@ struct FormDatePicker<TitleView: View>: View {
     var body: some View {
         VStack {
             FormRow(title: title, valueLabel: Text(valueText).foregroundColor(value != nil ? .accentColor : Color(ThemeService.shared.theme.dimmedTextColor))) {
+                if value == nil {
+                    value = Date()
+                }
                 withAnimation {
                     isOpen.toggle()
                 }
