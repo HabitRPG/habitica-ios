@@ -54,7 +54,7 @@ public protocol TaskProtocol: BaseRewardProtocol {
     var nextDue: [Date] { get set }
     var weeksOfMonth: [Int] { get set }
     var daysOfMonth: [Int] { get set }
-    
+        
     var isSynced: Bool { get set }
     var isSyncing: Bool { get set }
     var isNewTask: Bool { get set }
@@ -144,7 +144,9 @@ public class PreviewReminder: ReminderProtocol {
     public var startDate: Date?
     public var time: Date?
     public var task: TaskProtocol?
-    @objc public func detached() -> ReminderProtocol {
+    
+    @objc
+    public func detached() -> ReminderProtocol {
         return self
     }
 }

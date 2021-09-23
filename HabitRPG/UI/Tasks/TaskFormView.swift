@@ -551,7 +551,7 @@ class TaskFormViewModel: ObservableObject {
     @Published var priority: Float = 1.0
     @Published var frequency: String = "daily"
     @Published var value: String = "1"
-    @Published var stat: String = "strength"
+    @Published var stat: String = "str"
     @Published var up: Bool = true
     @Published var down: Bool = false
     @Published var everyX: String = "1"
@@ -594,6 +594,7 @@ class TaskFormViewModel: ObservableObject {
             _notes = Published(initialValue: task?.notes ?? "")
             _priority = Published(initialValue: task?.priority ?? 1.0)
             _frequency = Published(initialValue: task?.frequency ?? "daily")
+            _stat = Published(initialValue: task?.attribute ?? "str")
             _value = Published(initialValue: String(task?.value ?? 1))
             _up = Published(initialValue: task?.up ?? true)
             _down = Published(initialValue: task?.down ?? false)
@@ -722,10 +723,10 @@ struct TaskFormView: View {
         LabeledFormValue<String>(value: "monthly", label: L10n.monthly)
     ]
     private static let statAllocationOptions = [
-        LabeledFormValue<String>(value: "strength", label: "STR"),
-        LabeledFormValue<String>(value: "intelligence", label: "INT"),
-        LabeledFormValue<String>(value: "perception", label: "PER"),
-            LabeledFormValue<String>(value: "constitution", label: "CON")
+        LabeledFormValue<String>(value: "str", label: "STR"),
+        LabeledFormValue<String>(value: "int", label: "INT"),
+        LabeledFormValue<String>(value: "per", label: "PER"),
+            LabeledFormValue<String>(value: "con", label: "CON")
     ]
     
     private var navigationTitle: String {
@@ -963,6 +964,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
         task.startDate = viewModel.startDate
         task.duedate = viewModel.dueDate
         task.tags = viewModel.selectedTags
+        task.attribute = viewModel.stat
         
         task.weekRepeat?.monday = viewModel.monday
         task.weekRepeat?.tuesday = viewModel.tuesday
