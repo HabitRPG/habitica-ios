@@ -43,7 +43,7 @@ class UserProfileViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator?.hideHeader = true
-        topHeaderCoordinator.followScrollView = false
+        topHeaderCoordinator?.followScrollView = false
         
         refresh()
         
