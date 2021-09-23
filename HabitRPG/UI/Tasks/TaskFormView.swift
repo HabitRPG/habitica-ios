@@ -379,6 +379,10 @@ struct TaskFormChecklistItemView: View {
                     .frame(width: 48, height: 48)
             })
             TextField("Enter your checklist line", text: textProxy)
+            if #available(iOS 14.0, *) {
+                Image(uiImage: Asset.grabIndicator.image).foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor))
+                    .padding(.trailing, 13)
+            }
         }.frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
         .transition(.opacity)
     }
@@ -387,31 +391,92 @@ struct TaskFormChecklistItemView: View {
 struct TaskFormChecklistView: View {
     private let taskRepository = TaskRepository()
     @Binding var items: [ChecklistItemProtocol]
-    
+        
+    var addButton: some View { Button(action: {
+        let item = taskRepository.getNewChecklistItem()
+            item.id = UUID().uuidString
+            items.append(item)
+        }, label: {
+            Text(L10n.Tasks.Form.newChecklistItem).font(.system(size: 15, weight: .semibold))
+                .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                .frame(maxWidth: .infinity).frame(height: 48)
+                .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
+        })
+    }
+    @State var draggedItem: ChecklistItemProtocol?
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(L10n.Tasks.Form.checklist.uppercased()).font(.system(size: 13, weight: .semibold)).foregroundColor(Color(ThemeService.shared.theme.quadTextColor)).padding(.leading, 14)
-            VStack(spacing: 8) {
-                ForEach(items, id: \.id) { item in
-                    TaskFormChecklistItemView(item: item, onDelete: {
-                        withAnimation {
-                            if let index = items.firstIndex(where: { $0.id == item.id }) {
-                                items.remove(at: index)
+            if #available(iOS 14.0, *) {
+                LazyVStack {
+                    ForEach(items, id: \.id) { item in
+                        TaskFormChecklistItemView(item: item, onDelete: {
+                            withAnimation {
+                                if let index = items.firstIndex(where: { $0.id == item.id }) {
+                                    items.remove(at: index)
+                                }
                             }
-                        }
-                    })
+                        }).onDrag({
+                            self.draggedItem = item
+                            return NSItemProvider(item: nil, typeIdentifier: "checklistitem")
+                        }) .onDrop(of: ["checklistitem"], delegate: ChecklistDropDelegate(item: item, items: $items, draggedItem: $draggedItem))
+                    }
+                    .onMove { source, destination in
+                        items.move(fromOffsets: source, toOffset: destination)
+                    }
+                    addButton
+                }.animation(.easeInOut)
+            } else {
+                VStack {
+                    ForEach(items, id: \.id) { item in
+                        TaskFormChecklistItemView(item: item, onDelete: {
+                            withAnimation {
+                                if let index = items.firstIndex(where: { $0.id == item.id }) {
+                                    items.remove(at: index)
+                                }
+                            }
+                        })
+                    }
+                    .onMove { source, destination in
+                        items.move(fromOffsets: source, toOffset: destination)
+                    }
+                    addButton
                 }
-                Button(action: {
-                    let item = taskRepository.getNewChecklistItem()
-                    item.id = UUID().uuidString
-                    items.append(item)
-                }, label: {
-                    Text(L10n.Tasks.Form.newChecklistItem).font(.system(size: 15, weight: .semibold))
-                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
-                        .frame(maxWidth: .infinity).frame(height: 48)
-                        .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
-                })
-            }.animation(.easeInOut)
+            }
+        }
+    }
+}
+
+struct ChecklistDropDelegate : DropDelegate {
+
+    let item : ChecklistItemProtocol
+    @Binding var items : [ChecklistItemProtocol]
+    @Binding var draggedItem : ChecklistItemProtocol?
+
+    func performDrop(info: DropInfo) -> Bool {
+        return true
+    }
+
+    func dropEntered(info: DropInfo) {
+        guard let draggedItem = self.draggedItem else {
+            return
+        }
+
+        if draggedItem.id != item.id {
+            guard let from = items.firstIndex(where: { thisItem in
+                return thisItem.id == draggedItem.id
+            }) else {
+                return
+            }
+            guard let to = items.firstIndex(where: { thisItem in
+                return thisItem.id == item.id
+            }) else {
+                return
+            }
+            withAnimation(.default) {
+                self.items.move(fromOffsets: IndexSet(integer: from), toOffset: to > from ? to + 1 : to)
+            }
         }
     }
 }
