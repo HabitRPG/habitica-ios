@@ -10,7 +10,7 @@ import UIKit
 
 class AuthenticationSettingsViewController: BaseSettingsViewController, UITextFieldDelegate {
     
-    private var configRepository = ConfigRepository()
+    private var configRepository = ConfigRepository.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()

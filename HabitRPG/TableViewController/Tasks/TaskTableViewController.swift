@@ -12,7 +12,7 @@ import Habitica_Models
 class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UITableViewDragDelegate, UITableViewDropDelegate {
     public var dataSource: TaskTableViewDataSource?
     public var filterType: Int = 0
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     @objc public var scrollToTaskAfterLoading: String?
     var readableName: String?
     var typeName: String?

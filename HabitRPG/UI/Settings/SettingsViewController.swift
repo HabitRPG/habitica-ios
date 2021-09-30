@@ -407,7 +407,7 @@ class SettingsViewController: FormViewController, Themeable {
     private let userRepository = UserRepository()
     private let contentRepository = ContentRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     
     private var user: UserProtocol?
     private var isSettingUserData = false
@@ -468,7 +468,9 @@ class SettingsViewController: FormViewController, Themeable {
                 })
             <<< AlertRow<LabeledFormValue<String>>(SettingsTags.server) { row in
                 row.title = L10n.Settings.server
+                #if !targetEnvironment(simulator)
                 row.hidden = true
+                #endif
                 row.options = Servers.allServers.map({ (server) -> LabeledFormValue<String> in
                     return LabeledFormValue(value: server.rawValue, label: server.niceName)
                 })
@@ -1039,6 +1041,7 @@ class SettingsViewController: FormViewController, Themeable {
             classRow.evaluateHidden()
         }
         
+        #if !targetEnvironment(simulator)
         if user.contributor?.admin == true {
             let serverRow = (form.rowBy(tag: SettingsTags.server) as? AlertRow<LabeledFormValue<String>>)
             serverRow?.hidden = false
@@ -1048,6 +1051,7 @@ class SettingsViewController: FormViewController, Themeable {
             themeRow?.updateCell()
             serverRow?.evaluateHidden()
         }
+        #endif
         isSettingUserData = false
     }
     

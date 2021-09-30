@@ -40,7 +40,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     var createdTags = [SetupTaskCategory: TagProtocol]()
     var tagsToCreate = [SetupTaskCategory: TagProtocol]()
     
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()

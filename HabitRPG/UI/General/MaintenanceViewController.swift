@@ -11,7 +11,7 @@ import PinLayout
 
 class MaintenanceViewController: UIViewController, Themeable {
     
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     
     private let titleLabel: UILabel = {
         let label = UILabel()

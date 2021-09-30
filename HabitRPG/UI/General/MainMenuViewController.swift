@@ -149,7 +149,7 @@ class MainMenuViewController: BaseTableViewController {
     private var socialRepository = SocialRepository()
     private var inventoryRepository = InventoryRepository()
     private let contentRepository = ContentRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     
     private var disposable = ScopedDisposable(CompositeDisposable())
     private var seasonalShopTimer: Timer?

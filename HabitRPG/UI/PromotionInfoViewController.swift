@@ -10,7 +10,7 @@ import Foundation
 
 class PromotionInfoViewController: BaseUIViewController {
     
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     
     var promotion: HabiticaPromotion?
     

@@ -11,7 +11,7 @@ import MessageUI
 import Habitica_Models
 
 class ReportBugViewController: BaseUIViewController, MFMailComposeViewControllerDelegate {
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     private let userRepository = UserRepository()
     
     private let versionString = Bundle.main.infoDictionary?["CFBundleShortVersionString"]

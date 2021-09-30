@@ -24,7 +24,7 @@ class SubscriptionViewController: BaseTableViewController {
     private let userRepository = UserRepository()
     private let inventoryRepository = InventoryRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     
     @IBOutlet weak var giftSubscriptionExplanationLabel: UILabel!
     @IBOutlet weak var giftSubscriptionButton: UIButton!

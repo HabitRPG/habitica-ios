@@ -20,7 +20,7 @@ class InviteMembersViewController: FormViewController {
     
     var groupID: String?
     
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     private let socialRepository = SocialRepository()
     
     @IBOutlet weak var doneButton: UIBarButtonItem!

@@ -911,7 +911,7 @@ struct TaskFormView: View {
 class TaskFormController: UIHostingController<TaskFormView> {
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     
     private let viewModel = TaskFormViewModel()
     

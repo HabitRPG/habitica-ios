@@ -23,7 +23,7 @@ class UserManager: NSObject {
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
     private let disposable = CompositeDisposable()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     
     private weak var faintViewController: FaintViewController?
     private weak var classSelectionViewController: ClassSelectionViewController?

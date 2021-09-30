@@ -14,7 +14,7 @@ class MainTabBarController: UITabBarController, Themeable {
     
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     private let disposable = ScopedDisposable(CompositeDisposable())
     
     @objc public var selectedTags = [String]()
