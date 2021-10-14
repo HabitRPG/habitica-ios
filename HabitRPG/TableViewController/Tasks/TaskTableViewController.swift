@@ -186,6 +186,9 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
+        if searchBar.text?.isEmpty == true {
+            hideSearchBar()
+        }
     }
     
     @IBAction func unwindFilterChanged(segue: UIStoryboardSegue?) {
