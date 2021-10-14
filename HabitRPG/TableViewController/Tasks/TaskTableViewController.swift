@@ -315,7 +315,15 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     }
     
     // MARK: - Search
-    
+
+    private func hideSearchBar() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.searchBar.alpha = 0
+        }, completion: { _ in
+            self.searchBar.removeFromSuperview()
+        })
+    }
+
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
     }
@@ -340,11 +348,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         searchBar.setShowsCancelButton(false, animated: true)
         
         HRPGSearchDataManager.shared().searchString = nil
-        UIView.animate(withDuration: 0.3, animations: {
-            self.searchBar.alpha = 0
-        }) { _ in
-            self.searchBar.removeFromSuperview()
-        }
+        hideSearchBar()
         tableView.reloadData()
     }
     
