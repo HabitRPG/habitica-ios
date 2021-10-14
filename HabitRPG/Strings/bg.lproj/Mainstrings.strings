@@ -121,43 +121,17 @@
 /* (No Comment) */
 "member.member_since" = "Потребител от";
 /* (No Comment) */
-"menu.about" = "Относно";
-/* (No Comment) */
-"menu.cast_spells" = "Изпълняване на заклинания";
-/* (No Comment) */
-"menu.challenges" = "Предизвикателства";
-/* (No Comment) */
 "menu.customize_avatar" = "Персонализиране на героя";
-/* (No Comment) */
-"menu.equipment" = "Екипировка";
-/* (No Comment) */
-"menu.gems_subscriptions" = "Диаманти и абонаменти";
-/* (No Comment) */
-"menu.guilds" = "Гилдии";
 /* (No Comment) */
 "menu.help_faq" = "Помощ и ЧЗВ";
 /* (No Comment) */
 "menu.inventory" = "Инвентар";
-/* (No Comment) */
-"menu.items" = "Предмети";
-/* (No Comment) */
-"menu.news" = "Новини";
-/* (No Comment) */
-"menu.party" = "Група";
 /* (No Comment) */
 "menu.select_class" = "Изберете клас";
 /* (No Comment) */
 "menu.shops" = "Магазини";
 /* (No Comment) */
 "menu.social" = "Общност";
-/* (No Comment) */
-"menu.stable" = "Конюшня";
-/* (No Comment) */
-"menu.stats" = "Показатели";
-/* (No Comment) */
-"menu.tavern" = "Кръчма";
-/* (No Comment) */
-"menu.use_skills" = "Използване на умения";
 /* (No Comment) */
 "monthly" = "Месечно";
 /* (No Comment) */
@@ -238,8 +212,6 @@
 "settings.notification_badge" = "Значка за известия";
 /* (No Comment) */
 "settings.profile" = "Профил";
-/* (No Comment) */
-"settings.push_notifications" = "Известия";
 /* (No Comment) */
 "settings.reload_content" = "Презареждане на съдържанието";
 /* (No Comment) */
@@ -365,7 +337,6 @@
 "titles.faq" = "ЧЗВ";
 "titles.about" = "Относно";
 "titles.news" = "Новини";
-"titles.stable" = "Конюшня";
 "titles.pets" = "Любимци";
 "titles.mounts" = "Превози";
 "titles.tavern" = "Кръчма";
@@ -440,7 +411,7 @@
 "tasks.examples.exercise_todo_notes" = "Докоснете за добавяне на списък от подзадачи!";
 "tasks.examples.health_habit" = "Да ям полезна/вредна храна";
 "tasks.examples.health_daily_text" = "Да изчистя зъбите си с конец";
-"tasks.examples.health_daily_notes" = "Докоснете за промяна";
+"tasks.examples.health_daily_notes" = "Докоснете за да направите промяна!";
 "tasks.examples.health_todo_text" = "Да нахвърляме идеи за здравословна промяна";
 "tasks.examples.health_todo_notes" = "Докоснете за добавяне на списъци от подзадачи!";
 "tasks.examples.school_habit" = "Учене/отлагане";
@@ -506,9 +477,8 @@
 "userID" = "Потребителски идентификатор";
 "api_key" = "Ключ за ППИ";
 "email" = "Е-поща";
-"groups.invite.add_userid" = "Добавяне на потр. ид.";
+"groups.invite.add_userid" = "Добавяне на Потребителски Идентификатор";
 "groups.invite.add_email" = "Добавяне на е-поща";
-"scan_QR_code" = "Сканиране на QR-код";
 "username" = "Потребителско име";
 "password" = "Парола";
 "confirm_username" = "Потвърждаване на потребителското име";
@@ -632,8 +602,6 @@
 "subscription_info_4_description" = "Двойното ограничение за падане на предмети ще Ви позволи да получавате повече предмети от завършените си задачи за всеки ден, спомагайки да попълните конюшнята си по-бързо!";
 "subscription_benefits_title" = "Станете абонат и ще получите следните предимства:";
 "gem_benefits_title" = "Диамантите Ви позволяват да купувате забавни неща за профила си, като:";
-"unpin_from_rewards" = "Откачане от наградите";
-"pin_to_rewards" = "Закачане в наградите";
 "moderator" = "Модератор";
 "staff" = "Екип";
 "report_x_violation" = "Докладване на %@ за нарушение?";
@@ -644,8 +612,6 @@
 "next_checkin_prize_x_days" = "Следващата Ви награда ще се отключи след %d отчитания";
 "recipient" = "Получател";
 "no_camera" = "Няма налична камера";
-"qr_invalid_id_title" = "Грешен потребителски ид.";
-"qr_invalid_id_message" = "Сканираният QR-код не съдържа правилен потребителски идентификатор за Хабитика.";
 "not_enough_gems" = "Нямате достатъчно диаманти";
 "not_enough_hourglasses" = "Нямате достатъчно Пясъчни часовници";
 "subscribe_for_hourglasses" = "Абонирайте се за Пясъчни часовници";

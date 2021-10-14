@@ -99,7 +99,7 @@
 /* (No Comment) */
 "leave" = "Odejít";
 /* (No Comment) */
-"levelup_title" = "Dostal/a ses na další úroveň!";
+"levelup_title" = "Dostal/a ses na úroveň %ld!";
 /* (No Comment) */
 "mana" = "Mana";
 /* (No Comment) */
@@ -107,41 +107,17 @@
 /* (No Comment) */
 "member.member_since" = "Členem od";
 /* (No Comment) */
-"menu.about" = "Popis";
-/* (No Comment) */
-"menu.cast_spells" = "Seslat kouzla";
-/* (No Comment) */
-"menu.challenges" = "Výzvy";
-/* (No Comment) */
 "menu.customize_avatar" = "Upravit postavu";
-/* (No Comment) */
-"menu.equipment" = "Vybavení";
-/* (No Comment) */
-"menu.guilds" = "Cechy";
 /* (No Comment) */
 "menu.help_faq" = "Nápověda a často kladené dotazy";
 /* (No Comment) */
 "menu.inventory" = "Inventář";
-/* (No Comment) */
-"menu.items" = "Předměty";
-/* (No Comment) */
-"menu.news" = "Novinky";
-/* (No Comment) */
-"menu.party" = "Družina";
 /* (No Comment) */
 "menu.select_class" = "Vybrat povolání";
 /* (No Comment) */
 "menu.shops" = "Obchody";
 /* (No Comment) */
 "menu.social" = "Komunita";
-/* (No Comment) */
-"menu.stable" = "Stáj";
-/* (No Comment) */
-"menu.stats" = "Statistiky";
-/* (No Comment) */
-"menu.tavern" = "Krčma";
-/* (No Comment) */
-"menu.use_skills" = "Použít dovednosti";
 /* (No Comment) */
 "monthly" = "Měsíčně";
 /* (No Comment) */
@@ -177,7 +153,7 @@
 /* (No Comment) */
 "quests.rejected" = "Odmítnuto";
 /* (No Comment) */
-"reset_tips" = "Obnovit Justinovy tipy";
+"reset_tips" = "Obnovit tutoriál";
 /* (No Comment) */
 "resetStreak" = "Obnovit sérii úspěšnosti";
 /* (No Comment) */
@@ -323,7 +299,6 @@
 "titles.faq" = "FAQ";
 "titles.about" = "Popis";
 "titles.news" = "Novinky";
-"titles.stable" = "Stáj";
 "titles.pets" = "Mazlíčci";
 "titles.mounts" = "Zvířata";
 "titles.tavern" = "Krčma";
@@ -347,7 +322,7 @@
 "tasks.habits" = "Zvyky";
 "tasks.dailies" = "Denní úkoly";
 "tasks.rewards" = "Odměny";
-"tasks.todos" = "úkoly";
+"tasks.todos" = "Úkoly";
 "tasks.work" = "Práce";
 "tasks.exercise" = "Cvičení";
 "tasks.health" = "Zdraví";
@@ -391,7 +366,7 @@
 "settings.login_methods" = "Metody přihlášení";
 "settings.reset_account" = "Resetovat účet";
 "settings.delete_account" = "Smazat účet";
-"settings.delete_account_description" = "Jsi si jist? Tímto smažeš svůj účet navždy a již nebude moci být obnoven! Budeš se muset znovu registrovat a vytvořit nový účet. Zakoupené a použité drahokamy nebudou proplaceny a budou ztraceny. Pokud si jsi absolutně jist, napiš tvé heslo do řádku níže.";
+"settings.delete_account_description" = "Tímto smažeš svůj účet navždy a již nebude moci být obnoven! Zakoupené a použité drahokamy nebudou proplaceny a budou ztraceny. Pokud si jsi absolutně jist, napiš tvé heslo do řádku níže.";
 "settings.change_email" = "Změnit email";
 "settings.new_email" = "Nový email";
 "settings.change_username" = "Změnit uživatelské jméno";
@@ -428,7 +403,6 @@
 "email" = "E-mail";
 "groups.invite.add_userid" = "Přidat uživatelské ID";
 "groups.invite.add_email" = "Přidat E-mail";
-"scan_QR_code" = "Naskenovat QR kód";
 "username" = "Uživatelské jméno";
 "password" = "Heslo";
 "confirm_username" = "Potvrdit uživatelské jméno";
@@ -457,7 +431,7 @@
 "broad" = "Široký";
 "errors.error" = "Chyba";
 "leave_challenge_title" = "Opustit výzvu?";
-"leave_challenge_prompt" = "Chceš opustit tuto výzvu a ponechat nebo ostranit její úkoly?";
+"leave_challenge_prompt" = "Chceš opustit tuto výzvu a ponechat nebo odstranit její úkoly?";
 "locations.market" = "Trh";
 "locations.tavern" = "Krčma";
 "locations.quest_shop" = "Obchod s výpravami";
@@ -510,16 +484,15 @@
 "create_tag" = "Vytvořit tag";
 "subscription_info_1_title" = "Drahokamy za zlato";
 "subscription_info_2_title" = "Mystické přesýpací hodiny";
-"subscription_info_3_title" = "Ponech si další položky historie";
-"subscription_info_3_description" = "Umožňuje vidět splněné úkoly po delší dobu.";
-"subscription_info_4_title" = "Denně získáš dvakrát více předmětů";
+"subscription_info_3_title" = "Tajemné předměty každý měsíc";
+"subscription_info_3_description" = "Staň se předplatitelem/kou nyní a získej exkluzivní sadu a každý měsíc obdržíš nové předměty!";
+"subscription_info_4_title" = "Tajemné předměty každý měsíc";
 "moderator" = "Moderátor";
 "staff" = "Hůl";
 "report_x_violation" = "Nahlásit %@ za porušení?";
 "streak_achievement_title" = "Získal jsi ocenění za sérii!";
 "recipient" = "Příjemce";
 "no_camera" = "Není dostupná kamera";
-"qr_invalid_id_title" = "Neplatné ID obyvatele země Habitica";
 "not_enough_gems" = "Nedostatek drahokamů";
 "choose_task" = "Vybrat úkol";
 "shops.purchased_all_gear" = "Už máš všechno vybavení tvého povolání! Více bude vypuštěno během Velké Slavnosti, blízko slunovratů a rovnodenností.";
@@ -542,7 +515,7 @@
 "stats.distribute_class" = "Rozdělit na základě třídy";
 "stats.distribute_tasks" = "Rozdělit na základě úkolů";
 "stats.stat_guide" = "Průvodce statistikami";
-"stats.strength_text" = "Zvyšuje pravděpodobnost a bonus kritických zásahů, když splníš úkol. Kromě toho zvýší škody proti bossům. ";
+"stats.strength_text" = "Zvyšuje pravděpodobnost a bonus kritických zásahů, když splníš úkol. Kromě toho zvýší škody proti bossům.";
 "stats.intelligence_text" = "Získáš více zkušeností skrze splněné úkoly. Kromě toho se zvýší tvůj limi many a bude se rychleji regenerovat.";
 "stats.constitution_text" = "Snižuje škody za nesplněné úkoly. Škody způsobené bossem sníženy nebudou.";
 "stats.perception_text" = "Zvýší pravděpodobnost, že najdeš kořist, když splníš úkol. Kromě toho se zvýší tvůj denní limit kořisti, bonusu za řadu úkolů a množství zlata za splněné úkoly.";
@@ -561,8 +534,8 @@
 "tasks.form.every" = "Každý";
 "tasks.form.day_of_month" = "Den měsíce";
 "tasks.form.day_of_week" = "Den týdne";
-"tasks.form.accessibility.positive_and_negative_enabled" = "Positivní a negativní působení zvyku jsou aktivovány.";
-"tasks.form.accessibility.positive_enabled" = "Positivní působení zvyku je aktivováno.";
+"tasks.form.accessibility.positive_and_negative_enabled" = "Pozitivní a negativní působení zvyku jsou aktivovány.";
+"tasks.form.accessibility.positive_enabled" = "Pozitivní působení zvyku je aktivováno.";
 "tasks.form.accessibility.negative_enabled" = "Negativní působení zvyku je aktivováno.";
 "tasks.form.accessibility.enable_positive" = "Aktivuj pozitivní působení zvyku.";
 "tasks.form.accessibility.disable_positive" = "Deaktivuj pozitivní působení zvyku.";
@@ -573,9 +546,9 @@
 "tasks.form.accessibility.enable" = "Aktivuj %@";
 "tasks.form.accessibility.disable" = "Deaktivuj %@";
 "tasks.team" = "Tým";
-"tasks.due_today" = "Splněno do dneška";
-"tasks.due_tomorrow" = "Splněno do zítra";
-"tasks.due_in_x_days" = "má být splněno za %d  dní";
+"tasks.due_today" = "Splnit do dneška";
+"tasks.due_tomorrow" = "Splnit do zítra";
+"tasks.due_in_x_days" = "Splnit do %d dní";
 "tasks.due_x" = "Do %@";
 "tasks.every_x" = "každý %d %@";
 "tasks.repeats.repeats_every_on" = "Opakuj %@ v %@";
@@ -611,13 +584,12 @@
 "resync" = "Synchronizovat";
 "resync_all" = "Synchronizovat všechno";
 "resync_task" = "Synchronizovat tento úkol";
-"menu.gems_subscriptions" = "Drahokamy & předplatné";
-"skills.unlocks_at" = "Zpřístupněno od levelu %d";
+"skills.unlocks_at" = "Zpřístupněno od úrovně %d";
 "skills.use_skill" = "Používáš %@";
 "skills.cant_cast_on_challenge_tasks" = "Schopnosti nemůžou být použity na úkoly z challenge";
 "skills.transformation_items" = "Transformační předměty";
 "skills.used_transformation_item" = "Použil/a jsi %@";
-"level_number" = "Level %d";
+"level_number" = "Úroveň %d";
 "last_activity" = "Poslední aktivita %@";
 "settings.change_class" = "Změň třídu";
 "settings.every_day" = "Každý den v";
@@ -648,14 +620,14 @@
 "avatar.extras" = "Doplňky";
 "purchase_for_gems" = "Nakoupit za drahokamy";
 "classes.warrior_description" = "Válečníci způsobují více \"kritických zásahů\", které náhodně dávají bonusy v podobě zlata, zkušenostních bodů a umožňují ukončení úkolu. Také způsobují více škod boss monstrům. Hraj jako válečník, pokud tě motivují nepředvídatelné odměny ve stylu rulety, nebo pokud chceš hodně uškodit bosům!";
-"classes.mage_description" = "Mágové se učí rychle, získávají zkušenosti a levely vysokým tempem. Navíc mají velké množství many, skrze niž mohou aktivovat speciální dovednosti. Staň se mágem, pokud miluješ taktické aspekty Habitica, nebo pokud tě motivuje levelování a odemykání nových, lepších dodatků! ";
+"classes.mage_description" = "Mágové se učí rychle, získávají zkušenosti a úrovně vysokým tempem. Navíc mají velké množství many, skrze niž mohou aktivovat speciální dovednosti. Staň se mágem, pokud miluješ taktické aspekty Habitica, nebo pokud tě motivuje levelování a odemykání pokročilých funkcí!";
 "classes.class_header" = "%@ Třída";
 "party.invited_to_quest" = "%@ tě pozval na výpravu";
 "party.quest_number_responded" = "%d/%d členové odpověděli";
 "party.invitation_no_invitername" = "Někdo tě pozval, aby ses stal členem jeho/její skupiny";
 "party.invitation_invitername" = "%@ tě pozval(a), aby ses stal členem jeho/její skupiny";
 "party.create_party_title" = "Hraj Habitica ve skupině";
-"party.create_party_description" = "Zúčastni se questů s kamarády, nebo sám. Bojuj s monstry, vytvářej challenge a pomož ostatním zůstat odpovědný skrze skupiny. ";
+"party.create_party_description" = "Zúčastni se výprav s kamarády, nebo sám. Bojuj s monstry, vytvářej výzvy a pomoz ostatním zůstat odpovědný skrze skupiny.";
 "party.create_party_button" = "Vytvoř novou skupinu";
 "party.join_party_title" = "Chceš se stát členem skupiny?";
 "party.join_party_description" = "Dej členovi skupiny své uživatelské jméno, aby tě mohli pozvat";
@@ -670,7 +642,7 @@
 "quests.boss_battle" = "Boj s bossem";
 "quests.collection_quest" = "Sběratelská výprava";
 "quests.confirm_force_start" = "Jsi si jistý/á? Někteří členové skupiny se výpravy neúčastní! Výprava začne automaticky, když všichni členové přijmou nebo odmítnou pozvání.";
-"inventory.no_gems_left" = "Na tento měsíc už nemáš žádné drahokamy. Více jich dostaneš v prvních třech dnech každého měsíce.";
+"inventory.no_gems_left" = "Tento měsíc jsi už koupil veškeré drahokamy, které můžeš. Další budou k dispozici v prvních třech dnech každého měsíce. Díky za to že jsi předplatitel!";
 "inventory.number_gems_left" = "Měsíční drahokamy: %d/%d zbývá";
 "inventory.wrong_class" = "Dostupné pouze pro %@s. V nastavení můžeš změnit svou třídu";
 "inventory.available_until" = "Dostupné do %@";
@@ -698,12 +670,12 @@
 "settings.push_notifications.important_announcement" = "Důležitá oznámení";
 "settings.push_notifications.invited_guid" = "Pozván do cechů";
 "settings.searchable_private_spaces" = "Pouze soukromé prostory";
-"settings.change_about_message" = "Změna zprávy";
+"settings.change_about_message" = "Změnit informace";
 "settings.sound_theme" = "Zvukové téma";
-"settings.theme_color" = "Barva motivu";
-"settings.disable_all_notifications" = "Zakázat všechna oznámení Push";
-"settings.display_notification_badge" = "Zobrazit odznak oznámení";
-"settings.notification_badge" = "Odznak oznámení";
+"settings.theme_color" = "Barevný motiv";
+"settings.disable_all_notifications" = "Vypnout všechna oznámení Push";
+"settings.display_notification_badge" = "Zobrazit odznak za oznámení";
+"settings.notification_badge" = "Odznak za oznámení";
 "tasks.examples.team_todo_notes" = "Klepnutím určíte svůj nejdůležitější úkol";
 "tasks.examples.team_daily_notes" = "Klepnutím určíte svůj nejdůležitější úkol";
 "username_prompt_title" = "Je na čase nastavit své uživatelské jméno!";
@@ -717,16 +689,16 @@
 "open" = "Otevřít";
 "copied_to_clipboard" = "Zkopírováno do schránky";
 "levelup_share" = "V Habitica jsem dosáhl úrovně %ld zlepšením mých návyků v reálném životě!";
-"levelup_description" = "Splněním vašich skutečných cílů jste se posunuli na úroveň %ld!";
+"levelup_description" = "Splněním svých skutečných cílů jsi se dostal/a na další úroveň a jsi nyní zcela vyléčen/a!";
 "plain_backgrounds" = "Obyčejné pozadí";
-"open_website" = "Otevřete web Habitica";
+"open_website" = "Otevřít webovou stránku Habitica";
 "unsubscribe_website" = "Už se nechcete přihlásit k odběru? Z důvodu vašeho způsobu platby se můžete odhlásit pouze prostřednictvím webu.";
 "open_app_store" = "Otevřít App Store";
 "open_itunes" = "Otevřete předplatné Apple ID";
 "groups.guild_invitation_no_invitername" = "Někdo vás pozval, abyste se připojili k Cechu: %@";
 "groups.assign_new_leader" = "Přiřaďte nového vůdce";
 "groups.leader_challenges" = "Výzvy mohou vytvářet pouze vedoucí";
-"quests.rage_attack" = "Zuřivost útok:% @";
+"quests.rage_attack" = "Zuřivý útok: %@";
 "quests.reward_gold" = "%d zlata";
 "quests.reward_experience" = "%d bodů zkušenosti";
 "quests.started_by" = "Založil %@";
@@ -747,7 +719,7 @@
 "stable.standard_mounts" = "Standardní zvířata";
 "stable.wacky_pets" = "Šílení mazlíčci";
 "stable.standard_pets" = "Standardní mazlíčci";
-"hatch_egg" = "Vysedět vejce";
+"hatch_egg" = "použít na vejce";
 "sell" = "Prodat za %d zlata";
 "specialItems" = "Speciální předmět";
 "guilds.guild_leader" = "Vedoucí cechu";
@@ -774,7 +746,7 @@
 "twoHanded" = "Obouručný";
 "intro.lets_go" = "Začněme!";
 "intro.card3.subtitle" = "Bojujte s monstry";
-"intro.card2.text" = "Odemkněte funkce ve hře odškrtnutím svých skutečných životních úkolů. Vydělávejte na zbroj, domácí zvířata a další, jako odměny za splnění vašich cílů. ";
+"intro.card2.text" = "Odemkni funkce ve hře za plněním svých skutečných životních úkolů. Vydělávej na zbroj, domácí mazlíčky a další, jako odměny za splnění tvých cílů.";
 "intro.card2.subtitle" = "Pokrok v životě";
 "intro.card2.title" = "Pokrok ve hře";
 "intro.card1.text" = "Je čas se pobavit, až se všechno podaří. Připojte se k více než 2 milionům dalších a zlepšujte svůj život jeden úkol najednou.";
@@ -792,8 +764,8 @@
 "login.login_google" = "Přihlaste se pomocí Google";
 "login.login_facebook" = "Přihlásit se pomocí Facebooku";
 "login.email_username" = "E-mail / uživatelské jméno";
-"login.authentication_error" = "Při ověřování došlo k chybě. Zkuste to později";
-"login.password_confirm_error" = "Heslo a potvrzení hesla se musí shodovat.";
+"login.authentication_error" = "Při ověřování došlo k chybě. Zkus to později";
+"login.password_confirm_error" = "Heslo a potvrzení hesla se musí shodovat a musí být delší než 8 znaků.";
 "damage_paused" = "Poškození pozastaveno";
 "about.no_email_title" = "Váš e-mail ještě není nastaven";
 "about.love_open_source" = "Web miluje open source software.";
@@ -816,17 +788,15 @@
 "invalid_recipient_message" = "Jako příjemce musíte zadat platné uživatelské jméno Habitica.";
 "next_checkin_prize_x_days" = "Vaše další cena se odemkne za %d přihlášení";
 "next_checkin_prize_1_day" = "Vaše další cena se odemkne za 1 přihlášení.";
-"earned_achievement_share" = "Získal jsem nový úspěch v Habitica! ";
+"earned_achievement_share" = "Získal jsem nový úspěch v Habitica!";
 "buy_for_x" = "Koupit pro %@";
-"pin_to_rewards" = "Připnout odměny";
-"unpin_from_rewards" = "Odepnout z odměn";
 "gem_benefits_title" = "Drahokamy vám umožní koupit zábavné doplňky pro váš účet, včetně:";
-"gift_one_get_one_description" = "I když je tato akce aktivní, obdržíte odpovídající předplatné automaticky po odeslání dárku.";
+"gift_one_get_one_description" = "Daruj předplatné nyní a obdržíš stejné pro sebe zdarma!";
 "send_gift" = "Poslat dárek";
 "subscribe" = "Předplatit";
 "subscription_gift_button" = "Darujte předplatné";
 "subscription_gift_explanation" = "Chcete dát výhody předplatného někomu jinému?";
-"subscription_benefits_title" = "Staňte se předplatitelem a získáte tyto užitečné výhody:";
+"subscription_benefits_title" = "Staň se předplatitelem/kou a získáš tyto užitečné výhody";
 "end_challenge" = "Ukončit výzvu";
 "view_participant_progress" = "Zobrazit pokrok účastníka";
 "publish_challenge" = "Publikovat výzvu";
@@ -895,12 +865,12 @@
 "get_more_habitica" = "Získejte více z Habitica";
 "sale" = "Sleva";
 "cancelled" = "Zrušeno";
-"duration_12month" = "12 měsíců";
-"duration_6month" = "6 měsíců";
-"duration_3month" = "3 měsíce";
-"duration_month" = "měsíc";
-"subscription_support_developers" = "Předplatné podporuje vývojáře\na pomáhá udržovat Habitica v chodu";
-"subscription_benefits_title_subscribed" = "Jako odběratel získáte tyto výhody";
+"duration_12month" = "každých 12 měsíců";
+"duration_6month" = "každých 6 měsíců";
+"duration_3month" = "každé 3 měsíce";
+"duration_month" = "každý měsíc";
+"subscription_support_developers" = "Předplatné podporuje náš malý tým a pomáhá udržovat Habitica v chodu";
+"subscription_benefits_title_subscribed" = "Jako předplatitel/ka získáš tyto výhody";
 "subscription_info_1_description" = "Budete si moci koupit drahokamy z trhu za 20 zlatých!";
 "unlockDropsDescription" = "Odemkli jste Drop System! Nyní, když dokončíte úkoly, máte malou šanci najít položku, včetně vajec, lektvarů a jídla!";
 "unlockDropsTitle" = "Odemkli jste drop systém!";
@@ -913,3 +883,102 @@
 "settings.api_disclaimer" = "Zkopírujte pro použití v aplikacích třetích stran. Představte si však svůj token API jako heslo a nesdělujte jej veřejně. Můžete být občas požádáni o ID uživatele, ale nikdy nezveřejňujte svůj token API tam, kde jej mohou ostatní vidět, a to i na Githubu.";
 "menu.subscription" = "Předplatné";
 "menu.gems" = "Nákup drahokamů";
+"settings.disable_all_emails" = "Deaktivovat všechny emaily";
+"quest_completed_title" = "Výprava dokončena!";
+"time_travel_backgrounds" = "pozadí cestujících v čase";
+"groups.guild_invitation_invitername" = "%@ vás pozval/a, abyste se připojili k Cechu %@";
+"quests.unlock_previous_short" = "Dokonči výpravu %d";
+"quests.unlock_previous" = "Odemkni dokončením výpravy %d";
+"quests.unlock_level_short" = "Úroveň %d";
+"quests.unlock_level" = "Odemkni tím, že dosáhneš %d. levelu";
+"quests.unlock_invite_short" = "Pozvi přátele";
+"quests.unlock_invite" = "Odemkni tím, že pozveš přátele do své skupiny";
+"party.quest_not_participating" = "Neúčastníš se";
+"more_options" = "více možností";
+"hatch_potion" = "Vylíhnout lektvarem";
+"quest" = "Výprava";
+"food_singular" = "Jídlo";
+"hatching_potion" = "Líhnoucí lektvar";
+"egg" = "Vejce";
+"settings.email_notifications.banned_group" = "Vykopnut ze skupiny";
+"settings.email_notifications.title" = "E-maily";
+"titles.pets_and_mounts" = "Mazlíčci a zvířata";
+"tasks.form.accessibility.attribute" = "Vlastnost je %@";
+"tasks.form.accessibility.set_attribute" = "Změnit vlastnost na %@";
+"settings.delete_account_description_social" = "Tento úkon permanentně smaže tvůj účet, a nikdy již nemůže být obnoven! Peníze za uložené, nebo utracené drahokamy nebudou vráceny. Pokud si jsi absolutně jistý/á, napiš DELETE do textového pole níže.";
+"settings.add_email_and_password" = "Zadej e-mail a ověř heslo";
+"settings.email_notifications.subscription_reminders" = "Upozornění k předplatnému";
+"settings.added_local_auth" = "Úspěšně jsi přidal/a e-mail a heslo";
+"intro.card3.title" = "Socializuj se";
+"intro.welcome_prompt" = "Jak ti máme říkat?";
+"hourglass_count" = "+%d Mystických přesýpacích hodin";
+"intro.welcome_speechbubble" = "Ha, ty tu budeš nový/á. Já jsem Justin, tvůj průvodce po Habitica.\n\nNejprve, jak ti máme říkat? Nezdráhej se změnit, co jsem vybral. Jakmile budeš mít vše nastaveno, tak se pustíme do vytvoření tvého avataru!";
+"onwards" = "Kupředu";
+"copied_x_to_clipboard" = "„%@“ zkopírováno do schránky";
+"renew_subscription_description" = "Chceš si udržet své výhody? Můžeš nastartovat nové předplatné ještě předtím než tohle skončí a tím zajistíš své výhody aktivní.";
+"cancel_subscription" = "Zrušit předplatné";
+"not_recurring" = "Neopakující se";
+"ending_on" = "Končící k %@";
+"resubscribe" = "Opakuj předplatné";
+"renew_subscription" = "Obnov předplatné";
+"subscription_duration" = "Opakující se %@";
+"subscription_info_4_description" = "Získáš královského fialového Zajdalena jako mazlíčka, jakmile se staneš novým/ou předplatitelem/kou.";
+"subscription_info_3_description_new" = "Staň se předplatitelem/kou nyní a získej tuto sadu: %@, a každý měsíc obdržíš nové předměty!";
+"subscription_info_5_description" = "Objev ještě více předmětů v Habitica s 2x větším denním limitem na kořist.";
+"subscription_info_5_title" = "Zdvojnásob kořist";
+"subscription_options_title" = "Zvol si takovou délku předplatného, jaká ti bude vyhovovat";
+"triadBingoDescription" = "Získal jsi ocenění \"Bingo trojice\" za nalezení všech mazlíčků, zkrocení všech zvířat, a znovunalezení všech mazlíčku ještě jednou!";
+"menu.support" = "Podpora";
+"titles.basics" = "Základy";
+"titles.hall_of_patrons" = "Síň patronů";
+"titles.hall_of_contributors" = "Síň přispěvatelů";
+"titles.hall_of_heroes" = "Síň hrdinů";
+"first_drop_title" = "Objevil/a jsi nový předmět!";
+"go_to_items" = "Jdi do předmětů";
+"first_drop_explanation2" = "Jdi do tvých předmětů a zkus kombinovat tvá nová vejce a líhnoucí lektvary!";
+"first_drop_explanation1" = "Plněním úkolů získáváš šanci nalézt vejce, líhnoucí lektvary nebo jídlo pro mazlíčky.";
+"view_achievements" = "Prohlédnout úspěchy";
+"rage_meter" = "Ukazatel zuřivosti";
+"login.social_register" = "Registrovat se přes %@";
+"login.register_error" = "V požadavku se vyskytl nějaký problém. Prosím, zkontroluj pečlivě všechny hodnoty.";
+"login.email_invalid" = "Prosím, zadej platný email.";
+"locations.time_travelers_shop" = "Obchod cestovatelů časem";
+"login.social_login" = "Přihlásit se přes %@";
+"username_prompt_disclaimer" = "Uživatelská jména by měla splňovat naše #<ts>podmínky užívání# a #<cg>zásady komunity#. Jestliže jsi si předtím přihlašovací jméno nenastavil/a, bylo ti automaticky vygenerováno.";
+"username_prompt_wiki" = "Jestliže se chceš dozvědět více o této změně, #<wk>navštiv naši wiki.#";
+"username_prompt_body" = "Tvé zobrazované jméno se nezměnilo, ale tvůj starý login je nyní uživatelské jméno, které se používá pro pozvánky, chat @zmínky a zprávy.";
+"whats_world_boss" = "Co je to světový boss?";
+"NPCs.seasonalSorceress" = "Sezónní čarodějka";
+"errors.user_not_found" = "Uživatel/ka nenalezen/a.";
+"gift_confirmation_body_g1g1" = "Poslal/a jsi %@ %@ měsíců Habitica předplatného a stejné předplatné bylo připsáno i na tvůj účet v rámci naší akce \"Daruj jedno, dostaň jedno\"!";
+"about.no_email_message" = "Jejda, vypadá to, že jsi si zatím nenastavil/a svůj email na tomto telefonu. Nastav si účet v iOS mailové aplikaci, aby jsi mohl/a používat tuto volbu rychlého hlášení, nebo nás kontaktuj rovnou emailem na @%";
+"settings.confirm_username_description" = "Potvrzením tvého uživatelského jména se stane veřejným pro pozvánky, @označení a zprávy. Své uživatelské jméno můžeš kdykoliv změnit v nastavení.";
+"pet_accessibility_label_mount_owned" = "%@, zvířat vlastněno";
+"add" = "přidat";
+"five_achievements" = "5 úspěchů";
+"hundred_gold" = "100 zlaťáků";
+"mystic_hourglasses" = "Mystické přesýpací hodiny";
+"unlocks_selecting_class_prompt" = "Nyní, když jsi dosáhl/a 10. úrovně, si můžeš vybrat své povolání!";
+"unlocks_selecting_class_description" = "Dovednosti budou odemčeny jakmile dosáhneš 10. úrovně a vybereš si povolání";
+"empty.dailies.description" = "Denní úkoly jsou úkoly, které se opakují pravidelně. Naplánuj si je tak, jak ti to bude vyhovovat!";
+"invitedFriendDescription" = "Pozval/a jsi kamaráda/ku (či kamarády/ky), kteří se připojili k tvému dobrodružství!";
+"you_got_achievement" = "Získáváš úspěch!";
+"created_at" = "Vytvořeno v";
+"tasks.form.last_scored" = "Naposledy zabodováno";
+"menu.skills" = "Dovednosti";
+"tasks.form.adjust_streak" = "Upravit sérii";
+"tasks.form.positive" = "Pozitivní";
+"streak" = "Série";
+"update" = "Aktualizovat";
+"tasks.form.completion" = "Dokončení";
+"total_completions" = "Celkem dokončeno";
+"tasks.form.times_scored" = "krát zabodováno";
+"tasks.form.negative" = "Negativní";
+"tasks.form.completions" = "Dokončení";
+"settings.launch_screen" = "Spouštěcí obrazovka";
+"tasks.edit_details" = "Upravit podrobnosti";
+"tasks.tasks" = "Úkoly";
+"tasks.form.reset_counter" = "Vynulovat počítadlo";
+"tasks.form.adjust_counter" = "Upravit počítadlo";
+"skills.caused_damage" = "Způsobyl jsi bossovi zranění";
+"tasks.form.none" = "Žádný";
