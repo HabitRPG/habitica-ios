@@ -854,10 +854,9 @@
 "stats.total" = "Total";
 "stats.strength_text" = "Aumenta o bônus de acertos críticos e os torna mais prováveis ao marcar uma tarefa. Também aumenta o dano causado aos chefes. ";
 "tasks.team" = "Time";
-"tasks.due_today" = "Devido hoje";
-"tasks.due_tomorrow" = "Amanha";
-"tasks.due_in_x_days" = "Prazo em %d dias";
-"tasks.due_x" = "Vencimento %@";
+"tasks.due_today" = "Hoje";
+"tasks.due_tomorrow" = "Amanhã";
+"tasks.due_in_x_days" = "Em %d dias";
 "tasks.every_x" = "cada %@";
 "tasks.repeats.repeats_every_on" = "Repete %@ em %@";
 "tasks.repeats.repeats_every" = "Repete %@";

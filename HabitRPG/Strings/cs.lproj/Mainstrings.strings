@@ -576,7 +576,6 @@
 "tasks.due_today" = "Splněno do dneška";
 "tasks.due_tomorrow" = "Splněno do zítra";
 "tasks.due_in_x_days" = "má být splněno za %d  dní";
-"tasks.due_x" = "Do %@";
 "tasks.every_x" = "každý %d %@";
 "tasks.repeats.repeats_every_on" = "Opakuj %@ v %@";
 "tasks.repeats.repeats_every" = "Opakuj %@";

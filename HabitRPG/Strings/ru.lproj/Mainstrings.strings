@@ -928,7 +928,6 @@
 "invalid_recipient_title" = "Неверное имя пользователя";
 "filter_by_tags" = "Фильтровать по тегам";
 "purchased" = "Вы купили %@";
-"tasks.due_x" = "Выполнить к";
 "stats.total" = "Общий";
 "tasks.due_tomorrow" = "Истекает завтра";
 "settings.change_about_message" = "Редактировать информацию о себе";

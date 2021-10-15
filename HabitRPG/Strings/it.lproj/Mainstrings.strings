@@ -771,10 +771,9 @@
 "stats.total" = "Totale";
 "stats.strength_text" = "Aumenta la possibilità di colpi critici e li rende più probabili quando una attività viene completata. Inoltre aumenta il danno inflitto ai boss. ";
 "tasks.team" = "Squadra";
-"tasks.due_today" = "Scade oggi";
-"tasks.due_tomorrow" = "Scade domani";
-"tasks.due_in_x_days" = "Scade tra %d giorni";
-"tasks.due_x" = "Scade %@";
+"tasks.due_today" = "Oggi";
+"tasks.due_tomorrow" = "Domani";
+"tasks.due_in_x_days" = "Tra %d giorni";
 "tasks.every_x" = "ogni %@";
 "titles.avatar" = "Avatar";
 "tasks.examples.team_todo_text" = "Completa il progetto della squadra";

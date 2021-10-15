@@ -12,14 +12,14 @@ import Habitica_Models
 
 @IBDesignable
 class TaskDetailLineView: UIView {
-
+    
     private let reminderFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .none
         formatter.timeStyle = .short
         return formatter
     }()
-
+    
     @IBOutlet weak var calendarIconView: UIImageView!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var streakIconView: UIImageView!
@@ -41,24 +41,25 @@ class TaskDetailLineView: UIView {
         return ThemeService.shared.theme.quadTextColor
     }
     var contentView: UIView?
-
-    @objc var dateFormatter: DateFormatter?
-
+    
+    @objc var monthDayFormatter: DateFormatter?
+    @objc var shortLocalizedFormatter: DateFormatter?
+    
     var hasContent = true
     
     var checklistIndicatorTapped: (() -> Void)?
     var onChallengeIconTapped: (() -> Void)?
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         xibSetup()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         xibSetup()
     }
-
+    
     func xibSetup() {
         if let view = loadViewFromNib() {
             self.contentView = view
@@ -75,22 +76,22 @@ class TaskDetailLineView: UIView {
             challengeIconView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(challengeTapped)))
         }
     }
-
+    
     func loadViewFromNib() -> UIView? {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as? UIView
-
+        
         return view
     }
-
+    
     @objc
     public func configure(task: TaskProtocol) {
         hasContent = false
         setReminder(task: task, reminders: task.reminders)
         setChallenge(enabled: task.isChallengeTask, broken: task.challengeBroken)
         setStreak(count: task.streak)
-
+        
         if task.type == "habit" {
             setCalendarIcon(enabled: false)
             detailLabel.isHidden = true
@@ -101,16 +102,16 @@ class TaskDetailLineView: UIView {
         } else if task.type == "todo" {
             setDueDate(task: task)
         }
-
+        
         hasContent = !reminderIconView.isHidden || !challengeIconView.isHidden || !streakIconView.isHidden || !detailLabel.isHidden
-
+        
         self.invalidateIntrinsicContentSize()
     }
-
+    
     private func setCalendarIcon(enabled: Bool) {
         setCalendarIcon(enabled: enabled, isUrgent: false)
     }
-
+    
     private func setCalendarIcon(enabled: Bool, isUrgent: Bool) {
         calendarIconView.isHidden = !enabled
         if enabled {
@@ -122,24 +123,32 @@ class TaskDetailLineView: UIView {
             calendarIconView.tintColor = iconColor
         }
     }
-
+    
     private func setDueDate(task: TaskProtocol?) {
         if let duedate = task?.duedate {
             detailLabel.isHidden = false
             let calendar = Calendar.current
             var components = calendar.dateComponents([.year, .month, .day], from: Date())
             components.hour = 0
-            guard let today = calendar.date(from: components) else {
+            guard let today = calendar.date(from: components), let thisYear = components.year else {
                 return
             }
-            guard let formatter = dateFormatter else {
+            guard let dueDateYear = calendar.dateComponents([.year], from: duedate).year else {
                 return
             }
-
+            
+            guard let monthDayFormatter = monthDayFormatter, let shortLocalizedFormatter = shortLocalizedFormatter else {
+                return
+            }
+            
             if duedate.compare(today) == .orderedAscending {
                 setCalendarIcon(enabled: true, isUrgent: true)
                 self.detailLabel.textColor = ThemeService.shared.theme.errorColor
-                self.detailLabel.text = L10n.Tasks.dueX(formatter.string(from: duedate))
+                if (thisYear - dueDateYear) < 1 {
+                    self.detailLabel.text = monthDayFormatter.string(from: duedate)
+                } else {
+                    self.detailLabel.text = shortLocalizedFormatter.string(from: duedate)
+                }
             } else {
                 detailLabel.textColor = textColor
                 guard let differenceInDays = calendar.dateComponents([.day], from: today, to: duedate).day else {
@@ -157,9 +166,11 @@ class TaskDetailLineView: UIView {
                         setCalendarIcon(enabled: true)
                         detailLabel.text = L10n.Tasks.dueInXDays(differenceInDays)
                     }
+                } else if (dueDateYear - thisYear) < 1 {
+                    self.detailLabel.text = monthDayFormatter.string(from: duedate)
                 } else {
                     setCalendarIcon(enabled: true)
-                    self.detailLabel.text = L10n.Tasks.dueX(formatter.string(from: duedate))
+                    self.detailLabel.text = shortLocalizedFormatter.string(from: duedate)
                 }
             }
         } else {
@@ -168,7 +179,7 @@ class TaskDetailLineView: UIView {
             setCalendarIcon(enabled: false)
         }
     }
-
+    
     private func setStreak(count: Int) {
         // swiftlint:disable:next empty_count
         if count > 0 {
@@ -181,7 +192,7 @@ class TaskDetailLineView: UIView {
             streakIconView.isHidden = true
         }
     }
-
+    
     private func setLastCompleted(task: TaskProtocol) {
         var counterString = ""
         
@@ -205,7 +216,7 @@ class TaskDetailLineView: UIView {
             streakIconView.isHidden = true
         }
     }
-
+    
     private func setChallenge(enabled: Bool, broken: String?) {
         challengeIconView.isHidden = !enabled
         if enabled {
@@ -219,7 +230,7 @@ class TaskDetailLineView: UIView {
             challengeIconView.tintColor = iconColor
         }
     }
-
+    
     private func setReminder(task: TaskProtocol, reminders: [ReminderProtocol]) {
         reminderIconView.isHidden = reminders.isEmpty
         if reminderIconView.isHidden {
@@ -255,16 +266,16 @@ class TaskDetailLineView: UIView {
             }
         }
     }
-
+    
     override public var intrinsicContentSize: CGSize {
         var size = super.intrinsicContentSize
-
+        
         if hasContent {
             size.height = detailLabel.font.lineHeight
         } else {
             size.height = 0
         }
-
+        
         return size
     }
     

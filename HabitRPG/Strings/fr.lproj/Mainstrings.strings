@@ -807,10 +807,9 @@
 "titles.avatar" = "Avatar";
 "titles.gift_subscription" = "Offrir un Abonnement";
 "stats.strength_text" = "Augmente le bonus des coups critiques et les rend plus probable lorsqu'une tâche est validée. Augmente aussi les dégâts infligés aux boss. ";
-"tasks.due_today" = "Échéance aujourd'hui";
-"tasks.due_tomorrow" = "Échéance demain";
-"tasks.due_in_x_days" = "Échéance dans %d jours";
-"tasks.due_x" = "Échéance %@";
+"tasks.due_today" = "Aujourd'hui";
+"tasks.due_tomorrow" = "Demain";
+"tasks.due_in_x_days" = "Dans %d jours";
 "tasks.every_x" = "chaque %@";
 "tasks.repeats.repeats_every_on" = "Se répète %@ le %@";
 "tasks.repeats.repeats_every" = "Se répète %@";

@@ -2138,18 +2138,14 @@ public enum L10n {
     public static var dailies: String { return L10n.tr("Mainstrings", "tasks.dailies") }
     /// Daily
     public static var daily: String { return L10n.tr("Mainstrings", "tasks.daily") }
-    /// Due in %d days
+    /// In %d days
     public static func dueInXDays(_ p1: Int) -> String {
       return L10n.tr("Mainstrings", "tasks.due_in_x_days", p1)
     }
-    /// Due today
+    /// Today
     public static var dueToday: String { return L10n.tr("Mainstrings", "tasks.due_today") }
-    /// Due tomorrow
+    /// Tomorrow
     public static var dueTomorrow: String { return L10n.tr("Mainstrings", "tasks.due_tomorrow") }
-    /// Due %@
-    public static func dueX(_ p1: String) -> String {
-      return L10n.tr("Mainstrings", "tasks.due_x", p1)
-    }
     /// Edit Details
     public static var editDetails: String { return L10n.tr("Mainstrings", "tasks.edit_details") }
     /// every %d %@
