@@ -8,6 +8,7 @@
 
 import UIKit
 import Habitica_Models
+import Down
 
 class CheckmarkLayer: CALayer {
     var drawPercentage: CGFloat = 0
@@ -162,12 +163,15 @@ class CheckboxView: UIView {
             if label.superview == nil {
                 self.addSubview(label)
             }
+            guard let attributedString = try? Down(markdownString: checklistItem.text?.unicodeEmoji ?? "").toHabiticaAttributedString(baseSize: 15, textColor: ThemeService.shared.theme.primaryTextColor) else {
+                    return
+            }
             if checked {
-                let attributedString = NSMutableAttributedString(string: checklistItem.text ?? "")
-                attributedString.addAttribute(.strikethroughStyle, value: NSNumber(value: 2), range: NSRange(location: 0, length: attributedString.length))
+                let strLength = attributedString.string.count
+                attributedString.addAttribute(.strikethroughStyle, value: NSNumber(value: 2), range: NSRange(location: 0, length: strLength))
                 label.attributedText = attributedString
             } else {
-                label.text = checklistItem.text
+                label.attributedText = attributedString
             }
         }
         let theme = ThemeService.shared.theme

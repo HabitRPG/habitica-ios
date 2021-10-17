@@ -79,7 +79,7 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         self.titleLabel.textContainerInset = UIEdgeInsets.zero
         self.subtitleLabel.textContainerInset = UIEdgeInsets.zero
         if let text = task.text {
-            let mutableString = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString(baseSize: 15, textColor: ThemeService.shared.theme.primaryTextColor)
+            let mutableString = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString(baseSize: 15, textColor: ThemeService.shared.theme.primaryTextColor, useAST: false)
             let strLength = mutableString?.string.count ?? 0
             let style = NSMutableParagraphStyle()
             style.lineSpacing = 2
