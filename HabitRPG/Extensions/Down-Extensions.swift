@@ -27,7 +27,7 @@ extension Down {
                                     textColor: UIColor = ThemeService.shared.theme.primaryTextColor, useAST: Bool = true, highlightUsernames: Bool = true) throws -> NSMutableAttributedString {
         let mentions = matchUsernames(text: markdownString)
         
-        if markdownString.range(of: "[*_#\\[<>`]", options: .regularExpression, range: nil, locale: nil) == nil {
+        if markdownString.range(of: "[*_#\\[<>`]|\\A\\d+[\\.\\)]", options: .regularExpression, range: nil, locale: nil) == nil {
             let string = NSMutableAttributedString(string: markdownString,
                                                    attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: baseSize),
                                                                 .foregroundColor: textColor])
@@ -203,10 +203,20 @@ private class HabiticaStyler: DownStyler {
         paragraphStyle.paragraphSpacing = 7
         str.addAttribute(.paragraphStyle, value: paragraphStyle)
     }
+    
     override func style(listItemPrefix str: NSMutableAttributedString) {
         str.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: baseSize))
         str.addAttribute(.foregroundColor, value: textColor)
-        str.replaceCharacters(in: NSRange(location: 1, length: 1), with: " ")
+        
+        var listDotLocation = 0
+
+        for char in str.string {
+            if Int(String(char)) == nil {
+                break
+            }
+            listDotLocation += 1
+        }
+        str.replaceCharacters(in: NSRange(location: listDotLocation, length: 1), with: " ")
     }
 
     override func style(text str: NSMutableAttributedString) {
