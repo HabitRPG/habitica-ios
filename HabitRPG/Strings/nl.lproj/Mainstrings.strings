@@ -481,7 +481,7 @@
 /* (No Comment) */
 "unequip" = "Uittrekken";
 /* (No Comment) */
-"unsubscribe_itunes" = "Wil je niet langer abonneren? Je kan je abonnement beheren via iTunes.";
+"unsubscribe_itunes" = "Wil je niet langer abonneren? Je kan je abonnement beheren met je Apple-ID in de Instellingen van je apparaat.";
 /* (No Comment) */
 "unsubscribe_website" = "Wil je niet langer abonneren? Vanwege je betaalmethode, kan je alleen je abonnement afzeggen via de website.";
 /* (No Comment) */
@@ -601,7 +601,7 @@
 "tasks.examples.team_todo_notes" = "Tik om je belangrijkste taak aan te geven";
 "tasks.examples.chores_habit" = "10 minuten schoonmaken";
 "tasks.examples.chores_daily_text" = "Afwassen";
-"tasks.examples.chores_daily_notes" = "Tik om je routine  te kiezen!";
+"tasks.examples.chores_daily_notes" = "Tik om je routine te kiezen!";
 "tasks.examples.chores_todo_text" = "Ruim spullen op";
 "tasks.examples.chores_todo_notes" = "Tik om de rommelige plek te bepalen!";
 "tasks.examples.creativity_habit" = "Geoefend met een nieuwe creatieve techniek";
@@ -806,12 +806,12 @@
 "gem_benefits_title" = "Edelstenen staan je toe om leuke extra's te kopen voor je account, waaronder:";
 "moderator" = "Beheerder";
 "staff" = "Medewerkers";
-"report_x_violation" = "%@ rapporteren wegens overtreding?";
+"report_x_violation" = "@%@ rapporteren wegens overtreding?";
 "not_getting_drops" = "Vind je niet de gewenste drops? Check de Markt om precies de dingen te kopen die je nodig hebt!";
 "streak_achievement_title" = "Je hebt een serie prestatie verdiend!";
 "streak_achievement_description" = "Je hebt je dagelijkse taak 21 dagen op rij voltooid! Uitstekend. Behoud deze serie!";
 "next_checkin_prize_1_day" = "De volgende prijs wordt vrijgespeeld over 1 check-in.";
-"next_checkin_prize_x_days" = "De volgende prijs wordt vrijgespeeld over %dcheck-ins";
+"next_checkin_prize_x_days" = "De volgende prijs wordt vrijgespeeld over %d check-ins";
 "recipient" = "Ontvanger";
 "no_camera" = "Geen Camera beschikbaar";
 "not_enough_gems" = "Niet genoeg Edelstenen";
@@ -834,7 +834,7 @@
 "never_lower_case" = "nooit";
 "never" = "Nooit";
 "intro.card2.text" = "Als je taken in het echte leven volbrengt, speel je nieuwe dingen vrij in de game. Je kunt wapens verdienen, maar ook huisdieren en andere beloningen omdat je je doelen hebt gehaald.";
-"intro.task_setup_speechbubble" = "Wauw, goed bezig! Nou, waar zou je  aan willen werken tijdens dit avontuur?";
+"intro.task_setup_speechbubble" = "Wauw, goed bezig! Nou, waar zou je aan willen werken tijdens dit avontuur?";
 "intro.avatar_setup_speechbubble" = "Hoe wil je eruit zien? Wees niet bang: je kunt dit later altijd nog veranderen.";
 "intro.welcome_speechbubble" = "Oh, volgens mij ben jij nieuw hier! Ik ben Justin, en ik leid je rond in Habitica! .\n\nMaar eerst, hoe zullen we jou noemen? Ik heb iets gekozen, maar dat mag je gewoon veranderen. Als je daarmee klaar bent, gaan we je avatar maken!";
 "intro.welcome_prompt" = "Hoe zullen we jou noemen?";
@@ -861,7 +861,7 @@
 "settings.searchable_username" = "Stel mijn gebruikersnaam voor";
 "settings.display_name_length_error" = "Je weergegeven naam moet tussen 1 en 30 karakters zijn.";
 "settings.confirm_username_description" = "Als je je gebruikersnaam bevestigt, kan deze worden gebruikt voor uitnodigingen, @meldingen en berichten. Je kunt je gebruikersnaam altijd veranderen via Instellingen.";
-"username_prompt_disclaimer" = "Gebruikersnamen moeten voldoen aan onze  #<ts>Gebruiksvoorwaarden# and #<cg>Community Richtlijnen#. Als je nog geen aanmeldnaam had ingesteld, heb je nu een automatisch gegenereerde gebruikersnaam.";
+"username_prompt_disclaimer" = "Gebruikersnamen moeten voldoen aan onze #<ts>Gebruiksvoorwaarden# and #<cg>Community Richtlijnen#. Als je nog geen aanmeldnaam had ingesteld, heb je nu een automatisch gegenereerde gebruikersnaam.";
 "username_prompt_wiki" = "Als je meer wilt weten over deze verandering, kun je erover #<wk>lezen in onze wiki.#";
 "username_prompt_body" = "Je weergegeven naam is niet veranderd maar je oude loginnaam wordt nu je gebruikersnaam, gebruikt voor uitnodigingen, schatmeldingen en berichten.";
 "repeat_password" = "Herhaal wachtwoord";
@@ -944,7 +944,7 @@
 "faint.title" = "Je hebt geen Gezondheid meer!";
 "tutorials.spells" = "Vaardigheden zorgen ervoor dat je machine dingen kunt doen! Klik op een vaardigheid om hem te gebruiken. Het kost Mana (de blauwe balk), die je kunt verdienen door elke dag in te checken en je taken te volbrengen. Meer informatie vind je in de FAQ in het menu!";
 "about.no_email_message" = "Oeps, het lijkt erop dat je nog geen e-mail heb ingesteld op deze telefoon. Stel een account in in de iOS mail app om de optie van direct rapporteren te gebruiken, of email ons gewoon direct op %@";
-"settings.reset_account_description" = "LET OP! Dit reset een heleboel onderdelen van je account! Dit wordt sterk ontmoedigd, maar sommige mensen doen dit in het begin als ze voor een korte termijn hebben gespeeld. \n\nJe verliest al je levels, goud en ervaringspunten. Alle taken (behalve die van uitdagingen) worden permanent verwijderd en je verliest alle gegevens van je geschiedenis. Je verliest je volledige uitrusting, maar het is mogelijk om dit allemaal terug te kopen, inclusief alle limited edition uitrusting of mysterieuze voorwerpen van de abonnementen (je moet wel in de juiste klasse zitten om klasse-specifieke voorwerpen terug te kopen). \nJe behoudt je huidige klasse en ook je huis- en rijdieren. In plaats van dit kun je misschien beter de orb van wedergeboorte gebruiken. Dat is een veel veiligere optie en daardoor behoud je al je taken en uitrusting.";
+"settings.reset_account_description" = "LET OP! Dit reset een heleboel onderdelen van je account! Dit wordt sterk ontmoedigd, maar sommige mensen doen dit in het begin als ze voor een korte termijn hebben gespeeld. \n\nJe verliest al je levels, goud en ervaringspunten. Alle taken (behalve die van uitdagingen) worden permanent verwijderd en je verliest alle gegevens van je geschiedenis. Je verliest je volledige uitrusting, maar het is mogelijk om dit allemaal terug te kopen, inclusief alle limited edition uitrusting of mysterieuze voorwerpen van de abonnementen (je moet wel in de juiste klasse zitten om klasse-specifieke voorwerpen terug te kopen). Je behoudt je huidige klasse en ook je huis- en rijdieren. In plaats van dit kun je misschien beter de orb van wedergeboorte gebruiken. Dat is een veel veiligere optie en daardoor behoud je al je taken en uitrusting.";
 "invalid_recipient_message" = "Je moet bij ontvanger een geldige Habitica gebruikersnaam invullen.";
 "world_boss.fourth_bullet" = "Kijk in de taverne om te zien hoe het gaat met de eindbaas en de woedeaanvallen";
 "world_boss.second_bullet" = "De eindbaas doet je geen kwaad als je taken mist, maar zijn woedemeter gaat om hoog. Als de hele meter vol is, valt de baas een van de winkeliers aan!";
@@ -1294,7 +1294,7 @@
 "broken_challenge_description" = "Dit is een van de % d taken die deel uitmaken van een uitdaging die niet langer bestaat. Wat zou je willen doen met deze overgebleven taken?";
 "block_description" = "Een geblokkeerde gebruiker kan je geen privéberichten sturen, maar je zult zijn of haar berichten nog steeds in de herberg of gilde zien. Dit heeft geen effect als de persoon nu of in de toekomst moderator is.";
 "adventure_guide_description" = "Voltooi deze begintaken en je verdient 5 prestaties en 100 goud als je klaar bent!";
-"seasonal_potions_available" = "Seizoensdrankjes beschikbaar";
+"seasonal_potions_available" = "Seizoensvoorwerpen beschikbaar";
 "experience_description" = "Ervaringspunten geven je voortgang weer, en zorgen ervoor dat je een level omhoog gaat. Je zult hoofdzakelijk **EXP krijgen** door het voltooien van taken of queestes, maar er zijn ook klasse-vaardigheden die EXP geven.\n\nMoeilijkere taken, of roodgekleurde taken geven je **meer EXP**. De **Intelligentie stat** zorgt ook voor snellere EXP stijging.";
 "health_description" = "Dit stelt je avatar's leven voor. Een dagelijkse taak missen, of een negatieve gewoonte naleven **reduceert je HP**.\n\n**Herstel HP** door een level omhoog te gaan, een genezingsdrank te gebruiken, of een vaardigheid die geneest in te zetten.\n\nAls je **HP 0 bereikt** verlies je één level, al je Goud, en één voorwerp. Verloren voorwerpen kunnen teruggekocht worden.";
 "more_questions_text" = "Plaats een bericht in de [Habitica Hulp Gilde](https://habitica.com/groups/guild/5481ccf3-5d2d-48a9-a871-70a7380cee5a) om je vragen door een medespeler te laten beantwoorden";
@@ -1327,3 +1327,15 @@
 "spooky_promo.info_instructions" = "Koop je tussen %s en %s een edelsteenbundel zoals gewoonlijk dan word je account opgewaardeerd met het promotie aantal aan edelstenen. Meer edelstenen om uit te geven, te delen of te sparen voor toekomstige releases!";
 "spooky_promo.info_prompt" = "De edelsteen uitverkoop is terug om het einde van het herfstgala van dit jaar te achtervolgen! Dit is een laatste kans om meer edelstenen te krijgen dan ooit, dus sla je voorraad in zolang het duurt!";
 "skills.caused_damage" = "Je hebt de baas schade toegebracht";
+"day" = "dag";
+"tasks.form.completion" = "Voltooiing";
+"tasks.tasks" = "Taken";
+"tasks.form.reset_counter" = "Teller resetten";
+"tasks.form.adjust_counter" = "Tellen aanpassen";
+"week" = "week";
+"month" = "maand";
+"year" = "jaar";
+"next_prize_in_x_checkins" = "Volgende prijs over %d check-ins";
+"checkin_prize_earned" = "Je hebt een %s verdiend als een beloning voor je toewijding aan het verbeteren van je leven.";
+"tasks.form.none" = "Geen";
+"see_you_tomorrow" = "Tot morgen";
