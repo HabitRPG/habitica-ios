@@ -894,7 +894,7 @@
 "username_prompt_wiki" = "Wenn Du mehr über diese Änderung wissen möchtest, #<wk>besuche unser Wiki.#";
 "buy_reward" = "Du hast '%@' für %@ Gold gekauft";
 "tasks.due_x" = "Fällig %@";
-"tasks.every_x" = "jeden %@";
+"tasks.every_x" = "jeden %d %@";
 "tasks.repeats.repeats_every_on" = "Wiederholt %@ am %@";
 "tasks.repeats.repeats_every" = "Wiederholt %@";
 "tasks.examples.team_habit" = "Checke mit dem Team ein";

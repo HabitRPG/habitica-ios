@@ -775,7 +775,7 @@
 "tasks.due_tomorrow" = "Scade domani";
 "tasks.due_in_x_days" = "Scade tra %d giorni";
 "tasks.due_x" = "Scade %@";
-"tasks.every_x" = "ogni %@";
+"tasks.every_x" = "ogni %d %@";
 "titles.avatar" = "Avatar";
 "tasks.examples.team_todo_text" = "Completa il progetto della squadra";
 "settings.app_icon" = "Icona dell'App";
