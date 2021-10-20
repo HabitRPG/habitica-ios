@@ -61,7 +61,7 @@
 /* (No Comment) */
 "equipment.eyewear" = "面部装备";
 /* (No Comment) */
-"equipment.head_accessory" = "头饰";
+"equipment.head_accessory" = "头部饰品";
 /* (No Comment) */
 "equipment.nothing_equipped" = "无装备";
 /* (No Comment) */
@@ -474,8 +474,8 @@
 "equipment.equipment" = "装备";
 "equipment.off_hand" = "副手";
 "equipment.head" = "头部装备";
-"equipment.body" = "身体配件";
-"equipment.back" = "背部配件";
+"equipment.body" = "身体饰品";
+"equipment.back" = "背部饰品";
 "equipment.auto_equip" = "自动装备新物品";
 "equipment.use_costume" = "穿上服装";
 "equipment.class_equipment" = "职业装备";
