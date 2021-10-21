@@ -839,7 +839,7 @@
 "tasks.team" = "Команда";
 "tasks.due_today" = "Истекает сегодня";
 "tasks.due_in_x_days" = "Через %d день";
-"tasks.every_x" = "каждый %@";
+"tasks.every_x" = "каждый %d %@";
 "tasks.repeats.repeats_every_on" = "Повторять %@ по %@";
 "tasks.repeats.repeats_every" = "Повторять %@";
 "tasks.repeats.monthly_the" = "%@";

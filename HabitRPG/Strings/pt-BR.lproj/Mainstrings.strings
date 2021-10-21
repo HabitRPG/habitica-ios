@@ -858,7 +858,7 @@
 "tasks.due_tomorrow" = "Amanha";
 "tasks.due_in_x_days" = "Prazo em %d dias";
 "tasks.due_x" = "Vencimento %@";
-"tasks.every_x" = "cada %@";
+"tasks.every_x" = "cada %d %@";
 "tasks.repeats.repeats_every_on" = "Repete %@ em %@";
 "tasks.repeats.repeats_every" = "Repete %@";
 "tasks.repeats.monthly_the" = "a %@";
