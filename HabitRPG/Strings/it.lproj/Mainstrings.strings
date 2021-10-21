@@ -542,7 +542,7 @@
 "inactive" = "Inattivo";
 "one_month" = "1 Mese";
 "x_months" = "%d Mesi";
-"unsubscribe_itunes" = "Non vuoi più avere l'abbonamento? Puoi gestire il tuo abbonamento da iTunes.";
+"unsubscribe_itunes" = "Non vuoi più avere l'abbonamento? Puoi gestire il tuo abbonamento tramite il tuo ID Apple nelle Impostazioni del tuo dispositivo.";
 "open_itunes" = "Apri gli Abbonamenti Apple ID";
 "unsubscribe_website" = "Non vuoi più avere l'abbonamento? A causa del tuo metodo di pagamento, puoi gestire il tuo abbonamento solo dal sito web.";
 "open_website" = "Apri il Sito Web di Habitica";
@@ -713,7 +713,7 @@
 "gem_benefits_title" = "Le gemme ti permettono di comprare divertenti extra per il tuo account, fra cui:";
 "moderator" = "Moderatore";
 "staff" = "Staff";
-"report_x_violation" = "Segnalare %@ per violazione?";
+"report_x_violation" = "Segnalare @%@ per violazione?";
 "not_getting_drops" = "Non ricevi i drop giusti? Controlla il mercato per comprare solo quello che ti serve!";
 "streak_achievement_title" = "Hai ottenuto una Medaglia Serie!";
 "streak_achievement_description" = "Hai completato la tua Attività Giornaliera per 21 giorni di fila! Ottimo lavoro. Non interrompere questa serie!";
@@ -1250,3 +1250,9 @@
 "tasks.form.last_scored" = "Completata l'ultima volta";
 "tasks.form.times_scored" = "Volte completata";
 "tasks.form.completion" = "Completamento";
+"tasks.tasks" = "Attività";
+"tasks.form.reset_counter" = "Azzera contatore";
+"tasks.form.adjust_counter" = "Regola contatore";
+"see_you_tomorrow" = "Ci vediamo domani";
+"tasks.form.none" = "Nessuna";
+"next_prize_in_x_checkins" = "Prossimo premio tra %d accessi";
