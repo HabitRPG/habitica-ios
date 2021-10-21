@@ -271,8 +271,16 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         if let movedTask = movedTask, let destIndexPath = coordinator.destinationIndexPath {
             let order = movedTask.order
             let sourceIndexPath = IndexPath(row: order, section: 0)
-            dataSource?.fixTaskOrder(movedTask: movedTask, toPosition: destIndexPath.item)
-            dataSource?.moveTask(task: movedTask, toPosition: destIndexPath.item, completion: {[weak self] in
+            var newPosition = destIndexPath.item
+            if true {
+                if (newPosition + 1) == dataSource?.tableView(tableView, numberOfRowsInSection: 0) {
+                    newPosition = dataSource?.item(at: IndexPath(row: newPosition - 1, section: 0))?.order ?? newPosition
+                } else {
+                    newPosition = (dataSource?.item(at: IndexPath(row: newPosition + 1, section: 0))?.order ?? newPosition) - 1
+                }
+            }
+            dataSource?.fixTaskOrder(movedTask: movedTask, toPosition: newPosition)
+            dataSource?.moveTask(task: movedTask, toPosition: newPosition, completion: {[weak self] in
                 self?.dataSource?.userDrivenDataUpdate = false
             })
             if tableView.numberOfRows(inSection: 0) <= order && tableView.numberOfRows(inSection: 0) <= destIndexPath.item {
