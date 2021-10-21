@@ -568,6 +568,7 @@ struct TaskFormReminderView: View {
                 Button(action: {
                     let item = taskRepository.getNewReminder()
                     item.id = UUID().uuidString
+                    item.time = Date()
                     items.append(item)
                 }, label: {
                     Text(L10n.Tasks.Form.newReminder).font(.system(size: 15, weight: .semibold))
