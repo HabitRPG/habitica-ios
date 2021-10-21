@@ -369,6 +369,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
                 if let task = dataSource?.taskToEdit {
                     dataSource?.taskToEdit = nil
                     formController.editedTask = task
+                } else {
+                    formController.editedTask = nil
                 }
             }
         } else if segue.identifier == "DetailSegue" {
