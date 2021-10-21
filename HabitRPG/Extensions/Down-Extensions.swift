@@ -9,6 +9,7 @@
 import Foundation
 import Down
 import ReactiveSwift
+import UIKit
 
 extension Down {
 
@@ -26,7 +27,7 @@ extension Down {
                                     textColor: UIColor = ThemeService.shared.theme.primaryTextColor, useAST: Bool = true, highlightUsernames: Bool = true) throws -> NSMutableAttributedString {
         let mentions = matchUsernames(text: markdownString)
         
-        if markdownString.range(of: "[*_#\\[<`]", options: .regularExpression, range: nil, locale: nil) == nil {
+        if markdownString.range(of: "[*_#\\[<>`]|\\A\\d+[\\.\\)]", options: .regularExpression, range: nil, locale: nil) == nil {
             let string = NSMutableAttributedString(string: markdownString,
                                                    attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: baseSize),
                                                                 .foregroundColor: textColor])
@@ -146,22 +147,14 @@ class HabiticaMarkdownHelper: NSObject {
     }
 }
 
-private class HabiticaStyler: Styler {
-    func style(blockQuote str: NSMutableAttributedString, nestDepth: Int) {
-        
-    }
-    
-    func style(list str: NSMutableAttributedString, nestDepth: Int) {
-        
-    }
-    
-    func style(item str: NSMutableAttributedString, prefixLength: Int) {
+private class HabiticaStyler: DownStyler {    
+    override func style(item str: NSMutableAttributedString, prefixLength: Int) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.headIndent = CGFloat(prefixLength * 12)
         str.addAttribute(.paragraphStyle, value: paragraphStyle)
     }
     
-    func style(heading str: NSMutableAttributedString, level: Int) {
+    override func style(heading str: NSMutableAttributedString, level: Int) {
         switch level {
         case 1:
             str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 27))
@@ -197,58 +190,62 @@ private class HabiticaStyler: Styler {
             .foregroundColor: ThemeService.shared.theme.primaryTextColor
         ]
     }
-    func style(document str: NSMutableAttributedString) {}
-    func style(blockQuote str: NSMutableAttributedString) {}
-    func style(list str: NSMutableAttributedString) {}
-    func style(item str: NSMutableAttributedString) {}
-    func style(codeBlock str: NSMutableAttributedString, fenceInfo: String?) {
+    
+    override func style(codeBlock str: NSMutableAttributedString, fenceInfo: String?) {
         str.addAttributes([
             .font: CustomFontMetrics.scaledFont(for: UIFont(name: "Menlo", size: baseSize) ?? UIFont.systemFont(ofSize: baseSize))
             ], range: NSRange(location: 0, length: str.length))
     }
-    func style(htmlBlock str: NSMutableAttributedString) {}
-    func style(customBlock str: NSMutableAttributedString) {}
-    func style(paragraph str: NSMutableAttributedString) {
+
+    override func style(paragraph str: NSMutableAttributedString) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 3
         paragraphStyle.paragraphSpacing = 7
         str.addAttribute(.paragraphStyle, value: paragraphStyle)
     }
-    func style(listItemPrefix str: NSMutableAttributedString) {
+    
+    override func style(listItemPrefix str: NSMutableAttributedString) {
         str.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: baseSize))
         str.addAttribute(.foregroundColor, value: textColor)
-        str.replaceCharacters(in: NSRange(location: 1, length: 1), with: " ")
+        
+        var listDotLocation = 0
+
+        for char in str.string {
+            if Int(String(char)) == nil {
+                break
+            }
+            listDotLocation += 1
+        }
+        str.replaceCharacters(in: NSRange(location: listDotLocation, length: 1), with: " ")
     }
-    func style(thematicBreak str: NSMutableAttributedString) {}
-    func style(text str: NSMutableAttributedString) {
+
+    override func style(text str: NSMutableAttributedString) {
         str.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: baseSize))
         str.addAttribute(.foregroundColor, value: textColor)
     }
-    func style(softBreak str: NSMutableAttributedString) {}
-    func style(lineBreak str: NSMutableAttributedString) {}
-    func style(code str: NSMutableAttributedString) {
+
+    override func style(code str: NSMutableAttributedString) {
         str.addAttributes([
                 .foregroundColor: UIColor.red50,
                 .font: CustomFontMetrics.scaledFont(for: UIFont(name: "Menlo", size: baseSize) ?? UIFont.systemFont(ofSize: baseSize))
             ], range: NSRange(location: 0, length: str.length))
     }
-    func style(htmlInline str: NSMutableAttributedString) {}
-    func style(customInline str: NSMutableAttributedString) {}
-    func style(emphasis str: NSMutableAttributedString) {
+
+    override func style(emphasis str: NSMutableAttributedString) {
         if (str.attribute(.font, at: 0, effectiveRange: nil) as? UIFont)?.isBold == true {
             str.addAttribute(.font, value: CustomFontMetrics.scaledBoldItalicSystemFont(ofSize: baseSize))
         } else {
             str.addAttribute(.font, value: CustomFontMetrics.scaledItalicSystemFont(ofSize: baseSize))
         }
     }
-    func style(strong str: NSMutableAttributedString) {
+    override func style(strong str: NSMutableAttributedString) {
         if (str.attribute(.font, at: 0, effectiveRange: nil) as? UIFont)?.isItalic == true {
             str.addAttribute(.font, value: CustomFontMetrics.scaledBoldItalicSystemFont(ofSize: baseSize))
         } else {
             str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: baseSize))
         }
     }
-    func style(link str: NSMutableAttributedString, title: String?, url: String?) {
+    override func style(link str: NSMutableAttributedString, title: String?, url: String?) {
         guard let url = url else {
             return
         }
@@ -259,7 +256,7 @@ private class HabiticaStyler: Styler {
         }
         str.addAttribute(.link, value: url, range: range)
     }
-    func style(image str: NSMutableAttributedString, title: String?, url: String?) {
+    override func style(image str: NSMutableAttributedString, title: String?, url: String?) {
         if let imageURL = URL(string: url ?? ""), let data = try? Data(contentsOf: imageURL) {
             let attachment = NSTextAttachment()
             attachment.image = UIImage(data: data)
@@ -269,7 +266,7 @@ private class HabiticaStyler: Styler {
     }
 }
 
-private extension NSMutableAttributedString {
+extension NSMutableAttributedString {
     func addAttribute(_ name: NSAttributedString.Key, value: Any) {
         addAttribute(name, value: value, range: NSRange(location: 0, length: length))
     }

@@ -144,7 +144,6 @@ class ParticipantsButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
                 return challenge?.isOwner(userID) == true && challenge?.isPublished() == true
             })
             // Eventually remove this once viewing participants actually works
-            .filter({ _ -> Bool in return false })
             .map { _ in ChallengeButtonState.viewParticipants }
         
         buttonStateSignal = participantsViewableSignal.sample(on: triggerStyleProperty.signal)

@@ -14,7 +14,7 @@ class PromoWebViewController: BaseUIViewController, WKNavigationDelegate {
     @IBOutlet private var loadingIndicator: UIActivityIndicatorView!
     
     private var userRepository = UserRepository()
-    private var configRepository = ConfigRepository()
+    private var configRepository = ConfigRepository.shared
         
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -115,7 +115,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     }
     
     public func update(taskId: String, stats: StatsProtocol, direction: TaskScoringDirection, response: TaskResponseProtocol) {
-        if (response.level == 0) {
+        if response.level == 0 || response.level == nil {
             //This can happen for team tasks that require approval.
             return
         }

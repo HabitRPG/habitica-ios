@@ -810,7 +810,7 @@
 "tasks.due_today" = "Aujourd'hui";
 "tasks.due_tomorrow" = "Demain";
 "tasks.due_in_x_days" = "Dans %d jours";
-"tasks.every_x" = "chaque %@";
+"tasks.every_x" = "chaque %d %@";
 "tasks.repeats.repeats_every_on" = "Se répète %@ le %@";
 "tasks.repeats.repeats_every" = "Se répète %@";
 "tasks.repeats.monthly_the" = "le %@";

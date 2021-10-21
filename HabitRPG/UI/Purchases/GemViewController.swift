@@ -21,7 +21,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     
     private let userRepository = UserRepository()
     private let socialRepository = SocialRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     private let disposable = ScopedDisposable(CompositeDisposable())
     
     private var activePromo: HabiticaPromotion?
@@ -118,7 +118,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 160, height: 190)
+        return CGSize(width: 160, height: 212)
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

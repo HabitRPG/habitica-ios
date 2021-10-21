@@ -111,7 +111,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
                 formatter.minimumFractionDigits = 0
                 formatter.maximumFractionDigits = 2
                 ToastManager.show(text: L10n.buyReward(task.text ?? "", formatter.string(from: NSNumber(value: task.value)) ?? ""), color: .green)
-            } else if healthDiff + magicDiff + goldDiff + questDamage != 0 {
+            } else if healthDiff + magicDiff + goldDiff + questDamage != 0 && (response.level ?? 0) > 0 {
                 let toastView = ToastView(healthDiff: healthDiff,
                                           magicDiff: magicDiff,
                                           expDiff: expDiff,

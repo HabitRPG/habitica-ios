@@ -17,7 +17,7 @@ class InboxChatViewController: SLKTextViewController, Themeable {
     private lazy var dataSource: InboxMessagesDataSource = {
         return InboxMessagesDataSource(otherUserID: userID, otherUsername: username)
     }()
-    private var configRepository = ConfigRepository()
+    private var configRepository = ConfigRepository.shared
     #if !targetEnvironment(macCatalyst)
     private let refreshControl = UIRefreshControl()
     #endif

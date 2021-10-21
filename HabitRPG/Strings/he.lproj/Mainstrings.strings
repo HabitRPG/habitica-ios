@@ -496,7 +496,7 @@
 "tasks.due_today" = "מסתיימים היום";
 "tasks.due_tomorrow" = "מסתיימים מחר";
 "tasks.due_in_x_days" = "מסתיימים ב%d ימים";
-"tasks.every_x" = "כל %@";
+"tasks.every_x" = "כל %d %@";
 "tasks.repeats.repeats_every_on" = "חזור על %@ ב %@";
 "tasks.repeats.repeats_every" = "חוזר שוב  %@";
 "tasks.repeats.daily" = "יום יומי";

@@ -568,6 +568,7 @@ struct TaskFormReminderView: View {
                 Button(action: {
                     let item = taskRepository.getNewReminder()
                     item.id = UUID().uuidString
+                    item.time = Date()
                     items.append(item)
                 }, label: {
                     Text(L10n.Tasks.Form.newReminder).font(.system(size: 15, weight: .semibold))
@@ -911,7 +912,7 @@ struct TaskFormView: View {
 class TaskFormController: UIHostingController<TaskFormView> {
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     
     private let viewModel = TaskFormViewModel()
     
@@ -986,15 +987,20 @@ class TaskFormController: UIHostingController<TaskFormView> {
         userRepository.getUser().on(value: {[weak self] user in
             self?.viewModel.showStatAllocation = user.preferences?.allocationMode == "taskbased"
         }).start()
-        if let controller = navigationController as? ThemedNavigationController, editedTask == nil {
-            controller.navigationBarColor = .purple200
-            controller.textColor = .white
-            controller.navigationBar.isTranslucent = false
-            controller.navigationBar.shadowImage = UIImage()
-        }
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: L10n.cancel, style: .plain, target: self, action: #selector(leftButtonTapped))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.save, style: .plain, target: self, action: #selector(rightButtonTapped))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let controller = navigationController as? ThemedNavigationController, editedTask == nil {
+            controller.navigationBarColor = .purple200
+            controller.textColor = .white
+            controller.navigationBar.tintColor = .white
+            controller.navigationBar.isTranslucent = false
+            controller.navigationBar.shadowImage = UIImage()
+        }
     }
     
     @objc

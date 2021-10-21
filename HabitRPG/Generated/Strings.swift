@@ -1396,7 +1396,7 @@ public enum L10n {
     public static func infoInstructions(_ p1: UnsafePointer<CChar>, _ p2: UnsafePointer<CChar>) -> String {
       return L10n.tr("Mainstrings", "fall_promo.info_instructions", p1, p2)
     }
-    /// The Fall Gala is in full swing so we thought it was the perfect time to introduce our first ever Gem Sale! Now you will get more Gems with each purchase than ever before.
+    /// The Fall Gala is in full swing so we thought it was the perfect time to have a Gem Sale! Now you will get more Gems with each purchase than ever before.
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "fall_promo.info_prompt") }
   }
 
@@ -2625,7 +2625,7 @@ extension L10n {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
     var format = NSLocalizedString(key, tableName: table, bundle: bundle ?? Bundle(for: BundleToken.self), comment: "")
     let value = String(format: format, locale: Locale.current, arguments: args)
-    if value != key || NSLocale.preferredLanguages.first == "en" {
+    if value != key || Locale.current.identifier == "en" {
         return value
     }
     // Fall back to en

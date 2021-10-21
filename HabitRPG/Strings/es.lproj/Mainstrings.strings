@@ -858,6 +858,7 @@
 "tasks.due_tomorrow" = "Mañana";
 "tasks.due_in_x_days" = "En %d días";
 "tasks.every_x" = "cada %@";
+"tasks.every_x" = "cada %d %@";
 "tasks.repeats.repeats_every_on" = "Se repite %@ de %@";
 "tasks.repeats.repeats_every" = "Se repite %@";
 "tasks.repeats.monthly_the" = "El %@";

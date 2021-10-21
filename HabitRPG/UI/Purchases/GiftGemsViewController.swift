@@ -30,7 +30,7 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
     
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     private let disposable = ScopedDisposable(CompositeDisposable())
     
     private var activePromo: HabiticaPromotion?

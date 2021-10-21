@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -54,6 +54,10 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="teB-5y-AcR">
+                        <rect key="frame" x="12" y="162" width="136" height="38"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2h-et-1tI">
                         <rect key="frame" x="12" y="162" width="136" height="38"/>
                         <constraints>
@@ -64,7 +68,7 @@
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="6"/>
+                                <real key="value" value="8"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </label>
@@ -76,9 +80,12 @@
             <constraints>
                 <constraint firstItem="8CD-7L-CWx" firstAttribute="top" secondItem="aHI-TN-dVp" secondAttribute="bottom" id="07d-TX-fQv"/>
                 <constraint firstItem="I2h-et-1tI" firstAttribute="leading" secondItem="XB3-4A-WOm" secondAttribute="leading" constant="12" id="3n4-Ly-SGT"/>
+                <constraint firstItem="teB-5y-AcR" firstAttribute="bottom" secondItem="I2h-et-1tI" secondAttribute="bottom" id="4RP-LV-3I1"/>
                 <constraint firstItem="PZY-LO-5K0" firstAttribute="centerY" secondItem="8CD-7L-CWx" secondAttribute="centerY" id="67V-EJ-dhX"/>
                 <constraint firstItem="8CD-7L-CWx" firstAttribute="centerX" secondItem="XB3-4A-WOm" secondAttribute="centerX" id="9AQ-ai-1qF"/>
+                <constraint firstItem="teB-5y-AcR" firstAttribute="trailing" secondItem="I2h-et-1tI" secondAttribute="trailing" id="C3X-hS-onL"/>
                 <constraint firstItem="aqg-2P-exk" firstAttribute="top" secondItem="I2h-et-1tI" secondAttribute="bottom" constant="6" id="EbC-Zl-x3L"/>
+                <constraint firstItem="teB-5y-AcR" firstAttribute="leading" secondItem="I2h-et-1tI" secondAttribute="leading" id="G7l-uR-rbj"/>
                 <constraint firstItem="aHI-TN-dVp" firstAttribute="top" secondItem="XB3-4A-WOm" secondAttribute="top" constant="16" id="Ggk-wq-lk4"/>
                 <constraint firstAttribute="trailing" secondItem="I2h-et-1tI" secondAttribute="trailing" constant="12" id="PLk-tH-rnD"/>
                 <constraint firstAttribute="trailing" secondItem="aqg-2P-exk" secondAttribute="trailing" constant="8" id="RaV-tR-ylE"/>
@@ -91,6 +98,7 @@
                 <constraint firstItem="z3F-yU-X87" firstAttribute="centerY" secondItem="8CD-7L-CWx" secondAttribute="centerY" id="u07-yP-7Gq"/>
                 <constraint firstItem="z3F-yU-X87" firstAttribute="leading" secondItem="8CD-7L-CWx" secondAttribute="trailing" constant="8" id="vFY-U0-Y7f"/>
                 <constraint firstItem="aHI-TN-dVp" firstAttribute="leading" secondItem="XB3-4A-WOm" secondAttribute="leading" id="xiw-nf-llb"/>
+                <constraint firstItem="teB-5y-AcR" firstAttribute="top" secondItem="I2h-et-1tI" secondAttribute="top" id="yTk-yM-OYb"/>
                 <constraint firstItem="aJz-UN-jEZ" firstAttribute="centerX" secondItem="XB3-4A-WOm" secondAttribute="centerX" id="yWM-Zh-Euy"/>
             </constraints>
             <size key="customSize" width="290" height="261"/>
@@ -106,6 +114,7 @@
                 <outlet property="leftDecorationImageView" destination="PZY-LO-5K0" id="w5Q-Uk-qA9"/>
                 <outlet property="loadingIndicator" destination="aJz-UN-jEZ" id="Ha2-SB-c8c"/>
                 <outlet property="priceLabel" destination="I2h-et-1tI" id="lML-5w-2g8"/>
+                <outlet property="priceLabelBackground" destination="teB-5y-AcR" id="3yM-jp-zbI"/>
                 <outlet property="rightDecorationImageView" destination="z3F-yU-X87" id="9C8-uQ-N5s"/>
             </connections>
             <point key="canvasLocation" x="154" y="599.5"/>

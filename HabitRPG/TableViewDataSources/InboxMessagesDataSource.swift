@@ -16,7 +16,7 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
     
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     private var user: UserProtocol?
     private var otherUserID: String?
     internal var otherUsername: String?
