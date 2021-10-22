@@ -24,6 +24,7 @@ class SkillsTaskTableViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureTableViewBackgroundColor()
         
         if let taskType = self.taskType {
             dataSource = SkillsTaskTableViewDataSource(taskType: taskType)
@@ -38,4 +39,9 @@ class SkillsTaskTableViewController: UITableViewController {
             tabBarController?.castSpell()
         }
     }
+
+    private func configureTableViewBackgroundColor() {
+        self.tableView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+    }
+
 }
