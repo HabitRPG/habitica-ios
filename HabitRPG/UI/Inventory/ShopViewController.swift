@@ -46,8 +46,8 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
             dataSource?.selectedGearCategory = selectedGearCategory
         }
     }
-    private var gemView = HRPGCurrencyCountView(currency: .gem)
-    private var goldView = HRPGCurrencyCountView(currency: .gold)
+    private var gemView = CurrencyCountView(currency: .gem)
+    private var goldView = CurrencyCountView(currency: .gold)
     
     override func viewDidLoad() {
         super.viewDidLoad()

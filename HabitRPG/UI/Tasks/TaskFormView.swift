@@ -806,7 +806,7 @@ struct TaskFormView: View {
     private var textFields: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(L10n.title).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingText ? .semibold : .regular)).padding(.leading, 8)
-            TextField("", text: $viewModel.text, onEditingChanged: { isEditing in
+            MultilineTextField("", text: $viewModel.text, onEditingChanged: { isEditing in
                 isEditingText = isEditing
             })
                 .padding(8)
@@ -815,7 +815,7 @@ struct TaskFormView: View {
                 .background(viewModel.lightestTaskTintColor)
                 .cornerRadius(12)
             Text(L10n.notes).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingNotes ? .semibold : .regular)).padding(.leading, 8).padding(.top, 10)
-            TextField("", text: $viewModel.notes, onEditingChanged: { isEditing in
+            MultilineTextField("", text: $viewModel.notes, onEditingChanged: { isEditing in
                 isEditingNotes = isEditing
             })
                 .padding(8)

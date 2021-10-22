@@ -12,7 +12,7 @@ import Habitica_Models
 class CustomizationHeaderView: UICollectionReusableView {
     
     @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var currencyView: HRPGCurrencyCountView!
+    @IBOutlet weak var currencyView: CurrencyCountView!
     @IBOutlet weak var purchaseButton: UIView!
     @IBOutlet weak var buyAllLabel: UILabel!
     

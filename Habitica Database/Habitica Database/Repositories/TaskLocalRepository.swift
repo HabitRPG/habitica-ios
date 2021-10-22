@@ -102,8 +102,8 @@ public class TaskLocalRepository: BaseLocalRepository {
         })
     }
     
-    public func getTags() -> SignalProducer<ReactiveResults<[TagProtocol]>, ReactiveSwiftRealmError> {
-        return RealmTag.findAll().sorted(key: "order").reactive().map({ (value, changeset) -> ReactiveResults<[TagProtocol]> in
+    public func getTags(userID: String) -> SignalProducer<ReactiveResults<[TagProtocol]>, ReactiveSwiftRealmError> {
+        return RealmTag.findBy(query: "userID == '\(userID)'").sorted(key: "order").reactive().map({ (value, changeset) -> ReactiveResults<[TagProtocol]> in
             return (value.map({ (tag) -> TagProtocol in return tag }), changeset)
         })
     }
@@ -116,7 +116,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     
     public func update(taskId: String, stats: StatsProtocol, direction: TaskScoringDirection, response: TaskResponseProtocol) {
         if response.level == 0 || response.level == nil {
-            //This can happen for team tasks that require approval.
+            // This can happen for team tasks that require approval.
             return
         }
         RealmTask.findBy(key: taskId).take(first: 1).skipNil().on(value: {[weak self] realmTask in

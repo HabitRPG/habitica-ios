@@ -122,6 +122,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         })
     }
     
+    private var filterCount = 0
+    
     @objc
     func didChangeFilter() {
         let defaults = UserDefaults.standard
@@ -135,7 +137,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         }
         tableView.reloadData()
         
-        var filterCount = 0
+        filterCount = 0
         if filterType != 0 {
             filterCount += 1
         }
@@ -272,7 +274,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
             let order = movedTask.order
             let sourceIndexPath = IndexPath(row: order, section: 0)
             var newPosition = destIndexPath.item
-            if true {
+            if filterCount > 0 {
                 if (newPosition + 1) == dataSource?.tableView(tableView, numberOfRowsInSection: 0) {
                     newPosition = dataSource?.item(at: IndexPath(row: newPosition - 1, section: 0))?.order ?? newPosition
                 } else {

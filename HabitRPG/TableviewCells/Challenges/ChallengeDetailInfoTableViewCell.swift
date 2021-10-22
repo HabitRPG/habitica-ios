@@ -12,7 +12,7 @@ import Habitica_Models
 class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
     @IBOutlet weak var challengeTitleLabel: UILabel!
     @IBOutlet weak var expirationLabel: UILabel!
-    @IBOutlet weak var rewardCurrencyCountView: HRPGCurrencyCountView!
+    @IBOutlet weak var rewardCurrencyCountView: CurrencyCountView!
     @IBOutlet weak var participantsLabel: UILabel!
     @IBOutlet weak var tagHolderView: UIView!
     @IBOutlet weak var participantsWrapper: UIView!

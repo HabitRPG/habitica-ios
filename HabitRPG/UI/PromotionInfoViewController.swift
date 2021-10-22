@@ -22,6 +22,7 @@ class PromotionInfoViewController: BaseUIViewController {
     @IBOutlet private weak var instructionsDescriptionLabel: UILabel!
     @IBOutlet private weak var limitationsTitleLabel: UILabel!
     @IBOutlet private weak var limitationsDescriptionLabel: UILabel!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     var promptText: String? {
         get {
@@ -67,6 +68,7 @@ class PromotionInfoViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        doneButton.title = L10n.done
         promotion = configRepository.activePromotion()
         
         instructionsTitleLabel.text = L10n.promoInfoInstructionsTitle
