@@ -259,7 +259,8 @@ private class HabiticaStyler: DownStyler {
     override func style(image str: NSMutableAttributedString, title: String?, url: String?) {
         if let imageURL = URL(string: url ?? ""), let data = try? Data(contentsOf: imageURL) {
             let attachment = NSTextAttachment()
-            attachment.image = UIImage(data: data)
+            let resizableImage = UIImage(data: data)
+            attachment.image = resizableImage?.resize(maxWidthHeight: 200)
             let addedString = NSAttributedString(attachment: attachment)
             str.replaceCharacters(in: NSRange(location: 0, length: str.length), with: addedString)
         }
