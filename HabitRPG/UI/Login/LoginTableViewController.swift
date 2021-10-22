@@ -36,12 +36,15 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logoHeight: NSLayoutConstraint!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var privacyPolicyLabel: UITextView!
+    @IBOutlet weak var socialLoginStackView: UIStackView!
     
     @IBOutlet weak var logoView: UIImageView!
     @IBOutlet weak private var loginActivityIndicator: UIActivityIndicatorView!
 
     private let viewModel = LoginViewModel()
     private let userRepository = UserRepository()
+    
+    private var socialLoginStackViewWidthConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -238,9 +241,23 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
             if value {
                 weakSelf.emailField.isHidden = false
                 weakSelf.emailField.entryView.isEnabled = true
+                // Hide Facebook button on Register screen
+                weakSelf.facebookLoginButton.isHidden = true
+                if let socialLoginStackViewWidthConstraint = weakSelf.socialLoginStackViewWidthConstraint {
+                    weakSelf.socialLoginStackView.removeConstraint(socialLoginStackViewWidthConstraint)
+                }
+                weakSelf.socialLoginStackViewWidthConstraint = weakSelf.socialLoginStackView.widthAnchor.constraint(equalToConstant: 120)
+                weakSelf.socialLoginStackViewWidthConstraint.isActive = true
             } else {
                 weakSelf.emailField.isHidden = true
                 weakSelf.emailField.entryView.isEnabled = false
+                // Show Facebook button on Login screen
+                weakSelf.facebookLoginButton.isHidden = false
+                if let socialLoginStackViewWidthConstraint = weakSelf.socialLoginStackViewWidthConstraint {
+                    weakSelf.socialLoginStackView.removeConstraint(socialLoginStackViewWidthConstraint)
+                }
+                weakSelf.socialLoginStackViewWidthConstraint = weakSelf.socialLoginStackView.widthAnchor.constraint(equalToConstant: 190)
+                weakSelf.socialLoginStackViewWidthConstraint.isActive = true
             }
         }
         self.viewModel.outputs.passwordRepeatFieldVisibility.observeValues {[weak self] value in
