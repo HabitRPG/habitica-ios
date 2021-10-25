@@ -771,7 +771,8 @@ struct TaskFormView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var isEditingText = false
     @State private var isEditingNotes = false
-    
+    @State private var scrollViewContentOffset = CGFloat(0)
+
     var tags: [TagProtocol] = []
     
     @ObservedObject var viewModel: TaskFormViewModel
@@ -806,9 +807,10 @@ struct TaskFormView: View {
     private var textFields: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(L10n.title).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingText ? .semibold : .regular)).padding(.leading, 8)
-            MultilineTextField("", text: $viewModel.text, onEditingChanged: { isEditing in
+            MultilineTextField("", text: $viewModel.text, onCommit: {
+            }, onEditingChanged: { isEditing in
                 isEditingText = isEditing
-            })
+            }, giveInitialResponder: viewModel.isCreating)
                 .padding(8)
                 .frame(minHeight: 40)
                 .foregroundColor(isEditingText ? viewModel.textFieldTintColor : viewModel.textFieldTintColor.opacity(0.75))
@@ -872,7 +874,10 @@ struct TaskFormView: View {
     
     var body: some View {
         let theme = ThemeService.shared.theme
-        ScrollView {
+        TrackableScrollView(contentOffset: $scrollViewContentOffset.onChange { value in
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+
+        }) {
             VStack {
                 VStack {
                     textFields

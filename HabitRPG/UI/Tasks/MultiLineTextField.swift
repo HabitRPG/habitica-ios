@@ -16,6 +16,7 @@ fileprivate struct UITextViewWrapper: UIViewRepresentable {
     @Binding var calculatedHeight: CGFloat
     var onDone: (() -> Void)? = nil
     var onEditingChanged: ((Bool) -> Void)? = nil
+    var giveInitialResponder = false
 
     func makeUIView(context: UIViewRepresentableContext<UITextViewWrapper>) -> UITextView {
         let textField = UITextView()
@@ -29,15 +30,26 @@ fileprivate struct UITextViewWrapper: UIViewRepresentable {
         textField.backgroundColor = UIColor.clear
         if nil != onDone {
             textField.returnKeyType = .done
+            textField.enablesReturnKeyAutomatically = true
+        }
+        
+        if giveInitialResponder {
+            textField.becomeFirstResponder()
         }
 
         textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return textField
     }
 
+    @State private var wasAssignedResponder = false
+    
     func updateUIView(_ uiView: UITextView, context: UIViewRepresentableContext<UITextViewWrapper>) {
         if uiView.text != self.text {
             uiView.text = self.text
+        }
+        if giveInitialResponder && uiView.isFirstResponder && !wasAssignedResponder {
+            uiView.becomeFirstResponder()
+            wasAssignedResponder = true
         }
         UITextViewWrapper.recalculateHeight(view: uiView, result: $calculatedHeight)
     }
@@ -101,6 +113,7 @@ struct MultilineTextField: View {
     private var placeholder: String
     private var onCommit: (() -> Void)? = nil
     private var onEditingChanged: ((Bool) -> Void)? = nil
+    private var giveInitialResponder = false
 
     @Binding private var text: String
     private var internalText: Binding<String> {
@@ -111,15 +124,16 @@ struct MultilineTextField: View {
 
     @State private var dynamicHeight: CGFloat = 40
 
-    init (_ placeholder: String = "", text: Binding<String>, onCommit: (() -> Void)? = nil, onEditingChanged: ((Bool) -> Void)? = nil) {
+    init (_ placeholder: String = "", text: Binding<String>, onCommit: (() -> Void)? = nil, onEditingChanged: ((Bool) -> Void)? = nil, giveInitialResponder: Bool = false) {
         self.placeholder = placeholder
         self.onCommit = onCommit
         self.onEditingChanged = onEditingChanged
+        self.giveInitialResponder = giveInitialResponder
         self._text = text
     }
 
     var body: some View {
-        UITextViewWrapper(text: self.internalText, calculatedHeight: $dynamicHeight, onDone: onCommit, onEditingChanged: onEditingChanged)
+        UITextViewWrapper(text: self.internalText, calculatedHeight: $dynamicHeight, onDone: onCommit, onEditingChanged: onEditingChanged, giveInitialResponder: giveInitialResponder)
             .frame(minHeight: dynamicHeight, maxHeight: dynamicHeight)
     }
 }
