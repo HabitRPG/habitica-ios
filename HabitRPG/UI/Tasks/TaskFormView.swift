@@ -235,6 +235,15 @@ struct FormDatePicker<TitleView: View>: View {
     }
 }
 
+public struct FormTextFieldStyle : TextFieldStyle {
+    // swiftlint:disable:next identifier_name
+    public func _body(configuration: TextField<Self._Label>) -> some View {
+        configuration
+            .padding(.horizontal, 8)
+            .padding(.vertical, 4)
+    }
+}
+
 struct DailySchedulingView: View {
     @Binding var startDate: Date?
     @Binding var frequency: String
@@ -310,8 +319,8 @@ struct DailySchedulingView: View {
             Separator()
             FormSheetSelector(title: Text(L10n.Tasks.Form.repeats), value: $frequency, options: DailySchedulingView.dailyRepeatOptions)
             Separator()
-            FormRow(title: Text(L10n.Tasks.Form.every), valueLabel: HStack {
-                TextField("", text: $everyX).multilineTextAlignment(.trailing)
+            FormRow(title: Text(L10n.Tasks.Form.every), valueLabel: HStack(spacing: 0) {
+                TextField("", text: $everyX).textFieldStyle(FormTextFieldStyle()).multilineTextAlignment(.trailing)
                 Text(suffix.localizedCapitalized)
             })
             if frequency == "weekly" {
