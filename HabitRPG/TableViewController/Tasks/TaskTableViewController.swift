@@ -18,6 +18,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     var typeName: String?
     var extraCellSpacing: Int = 0
     var searchBar = UISearchBar()
+    var searchBarWrapper = UIView()
+    var searchBarCancelButton = UIButton()
     var scrollTimer: Timer?
     var autoScrollSpeed: CGFloat = 0.0
     var movedTask: TaskProtocol?
@@ -48,6 +50,11 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         
         searchBar.placeholder = L10n.search
         searchBar.delegate = self
+        searchBar.showsCancelButton = false
+        searchBarCancelButton.setTitle(L10n.cancel, for: .normal)
+        searchBarCancelButton.addTarget(self, action: #selector(searchBarCancelButtonClicked), for: .touchUpInside)
+        searchBarWrapper.addSubview(searchBar)
+        searchBarWrapper.addSubview(searchBarCancelButton)
         
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeFilter), name: NSNotification.Name(rawValue: "taskFilterChanged"), object: nil)
         didChangeFilter()
@@ -81,6 +88,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         searchBar.backgroundColor = theme.contentBackgroundColor
         tableView.backgroundColor = theme.contentBackgroundColor
         tableView.separatorColor = theme.contentBackgroundColor
+        searchBarWrapper.backgroundColor = theme.contentBackgroundColor
+        searchBarCancelButton.setTitleColor(theme.tintColor, for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -331,9 +340,9 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
 
     private func hideSearchBar() {
         UIView.animate(withDuration: 0.3, animations: {
-            self.searchBar.alpha = 0
+            self.searchBarWrapper.alpha = 0
         }, completion: { _ in
-            self.searchBar.removeFromSuperview()
+            self.searchBarWrapper.removeFromSuperview()
         })
     }
 
@@ -356,9 +365,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
-        searchBar.setShowsCancelButton(false, animated: true)
+        self.searchBar.text = ""
+        self.searchBar.resignFirstResponder()
         
         HRPGSearchDataManager.shared().searchString = nil
         hideSearchBar()
@@ -439,12 +447,14 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     }
     
     @IBAction func searchButtonTapped(_ sender: Any) {
-        navigationController?.navigationBar.addSubview(searchBar)
-        searchBar.frame = CGRect(x: 12, y: 0, width: tableView.bounds.size.width - 24, height: navigationController?.navigationBar.frame.size.height ?? 48)
+        navigationController?.navigationBar.addSubview(searchBarWrapper)
+        searchBarWrapper.frame = CGRect(x: 12, y: 0, width: tableView.bounds.size.width - 24, height: navigationController?.navigationBar.frame.size.height ?? 48)
+        searchBarCancelButton.pin.top().end().bottom().sizeToFit(.height)
+        searchBar.pin.start().before(of: searchBarCancelButton).top().bottom()
         searchBar.becomeFirstResponder()
-        searchBar.alpha = 0
+        searchBarWrapper.alpha = 0
         UIView.animate(withDuration: 0.3) {
-            self.searchBar.alpha = 1
+            self.searchBarWrapper.alpha = 1
         }
     }
 }
