@@ -16,7 +16,6 @@ class PetDetailCell: UICollectionViewCell {
     
     func configure(petItem: PetStableItem) {
         backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        imageView.tintColor = ThemeService.shared.theme.dimmedColor
         let percentage = Float(petItem.trained) / 50.0
         if let key = petItem.pet?.key {
             if petItem.trained != 0 {
@@ -28,7 +27,12 @@ class PetDetailCell: UICollectionViewCell {
                 }
             } else {
                 ImageManager.getImage(name: "stable_Pet-\(key)") {[weak self] (image, _) in
-                    self?.imageView.image = image?.withRenderingMode(.alwaysTemplate)
+                    DispatchQueue.main.async {
+                        if let sprite = image?.withRenderingMode(.alwaysTemplate) {
+                            self?.imageView.image = sprite
+                            self?.imageView.tintColor = ThemeService.shared.theme.dimmedColor
+                        }
+                    }
                 }
                 accessibilityLabel = L10n.Accessibility.unknownPet
             }
