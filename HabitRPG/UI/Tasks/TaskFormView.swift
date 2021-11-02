@@ -247,7 +247,7 @@ public struct FormTextFieldStyle : TextFieldStyle {
 struct DailySchedulingView: View {
     @Binding var startDate: Date?
     @Binding var frequency: String
-    @Binding var everyX: String
+    @Binding var everyX: Int
     
     @Binding var monday: Bool
     @Binding var tuesday: Bool
@@ -270,25 +270,25 @@ struct DailySchedulingView: View {
     private var suffix: String {
         switch frequency {
         case "daily":
-            if everyX == "1" {
+            if everyX == 1 {
                 return L10n.day
             } else {
                 return L10n.days
             }
         case "weekly":
-            if everyX == "1" {
+            if everyX == 1 {
                 return L10n.week
             } else {
                 return L10n.weeks
             }
         case "monthly":
-            if everyX == "1" {
+            if everyX == 1 {
                 return L10n.month
             } else {
                 return L10n.months
             }
         case "yearly":
-            if everyX == "1" {
+            if everyX == 1 {
                 return L10n.year
             } else {
                 return L10n.years
@@ -319,9 +319,8 @@ struct DailySchedulingView: View {
             Separator()
             FormSheetSelector(title: Text(L10n.Tasks.Form.repeats), value: $frequency, options: DailySchedulingView.dailyRepeatOptions)
             Separator()
-            FormRow(title: Text(L10n.Tasks.Form.every), valueLabel: HStack(spacing: 0) {
-                TextField("", text: $everyX).textFieldStyle(FormTextFieldStyle()).multilineTextAlignment(.trailing)
-                Text(suffix.localizedCapitalized)
+            NumberPickerFormView(title: Text(L10n.Tasks.Form.every), value: $everyX, minValue: 1, maxValue: 400, formatter: { value in
+                return "\(value) \(suffix.localizedCapitalized)"
             })
             if frequency == "weekly" {
                 Separator()
@@ -346,7 +345,7 @@ struct DailySchedulingView: View {
                 .transition(.move(edge: .top).combined(with: .opacity))
                 .padding(.horizontal, 12).padding(.top, 10)
             }
-            Text(TaskRepeatablesSummaryInteractor().repeatablesSummary(frequency: frequency, everyX: Int(everyX), monday: monday, tuesday: tuesday, wednesday: wednesday, thursday: thursday, friday: friday, saturday: saturday, sunday: sunday, startDate: startDate, daysOfMonth: nil, weeksOfMonth: nil))
+            Text(TaskRepeatablesSummaryInteractor().repeatablesSummary(frequency: frequency, everyX: everyX, monday: monday, tuesday: tuesday, wednesday: wednesday, thursday: thursday, friday: friday, saturday: saturday, sunday: sunday, startDate: startDate, daysOfMonth: nil, weeksOfMonth: nil))
                 .padding(.horizontal, 14)
                 .padding(.vertical, 8)
                 .font(.caption)
@@ -629,7 +628,7 @@ class TaskFormViewModel: ObservableObject {
     @Published var stat: String = "str"
     @Published var up: Bool = true
     @Published var down: Bool = false
-    @Published var everyX: String = "1"
+    @Published var everyX: Int = 1
     @Published var startDate: Date? = Date()
     @Published var dueDate: Date?
     @Published var selectedTags: [TagProtocol] = []
@@ -673,7 +672,7 @@ class TaskFormViewModel: ObservableObject {
             _value = Published(initialValue: String(task?.value ?? 1))
             _up = Published(initialValue: task?.up ?? true)
             _down = Published(initialValue: task?.down ?? false)
-            _everyX = Published(initialValue: String(task?.everyX ?? 1))
+            _everyX = Published(initialValue: task?.everyX ?? 1)
             _startDate = Published(initialValue: task?.startDate ?? Date())
             _dueDate = Published(initialValue: task?.duedate)
 
@@ -1045,7 +1044,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
         task.value = Float(viewModel.value) ?? 1
         task.up = viewModel.up
         task.down = viewModel.down
-        task.everyX = Int(viewModel.everyX) ?? 1
+        task.everyX = viewModel.everyX
         task.startDate = viewModel.startDate
         task.duedate = viewModel.dueDate
         task.tags = viewModel.selectedTags
