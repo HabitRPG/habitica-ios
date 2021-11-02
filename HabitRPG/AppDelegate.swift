@@ -41,7 +41,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
     private let contentRepository = ContentRepository()
     private let taskRepository = TaskRepository()
     private let socialRepository = SocialRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         logger = RemoteLogger()
@@ -202,7 +202,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
         if let chosenServer = UserDefaults().string(forKey: "chosenServer") {
             switch chosenServer {
             case "production":
-                let configRepository = ConfigRepository()
+                let configRepository = ConfigRepository.shared
                 if let host = configRepository.string(variable: .prodHost), let apiVersion = configRepository.string(variable: .apiVersion) {
                     let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion)")
                     AuthenticatedCall.defaultConfiguration = config
@@ -221,7 +221,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
                 AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.localhost
             }
         } else {
-            let configRepository = ConfigRepository()
+            let configRepository = ConfigRepository.shared
             if let host = configRepository.string(variable: .prodHost), let apiVersion = configRepository.string(variable: .apiVersion), !host.isEmpty, !apiVersion.isEmpty {
                 let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion)")
                 AuthenticatedCall.defaultConfiguration = config

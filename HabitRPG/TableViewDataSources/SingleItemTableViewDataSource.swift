@@ -38,7 +38,7 @@ class TaskEmptyTableViewDataSource<T>: NSObject, UITableViewDataSource where T: 
     internal let userRepository = UserRepository()
     internal let repository = TaskRepository()
     internal let socialRepository = SocialRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     
     var showingAdventureGuide = false
     private var adventureGuideCompletedCount = 0

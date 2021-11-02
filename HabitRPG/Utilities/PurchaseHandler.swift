@@ -172,6 +172,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                         self?.pendingGifts.removeValue(forKey: identifier)
                     }
                     completion(true)
+                    self?.userRepository.retrieveUser().observeCompleted {}
                 } else {
                     completion(false)
                 }
@@ -190,6 +191,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
             if result != nil {
                 self?.pendingGifts.removeValue(forKey: identifier)
                 completion(true)
+                self?.userRepository.retrieveUser().observeCompleted {}
             } else {
                 completion(false)
             }

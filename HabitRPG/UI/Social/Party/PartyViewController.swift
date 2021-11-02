@@ -12,7 +12,7 @@ import ReactiveSwift
 class PartyViewController: SplitSocialViewController {
     
     private let userRepository = UserRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     
     @IBOutlet weak var noPartyContainerView: UIView!
     @IBOutlet weak var userIDButton: UIButton!

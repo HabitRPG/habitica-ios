@@ -12,12 +12,14 @@ import Habitica_Models
 class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UITableViewDragDelegate, UITableViewDropDelegate {
     public var dataSource: TaskTableViewDataSource?
     public var filterType: Int = 0
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     @objc public var scrollToTaskAfterLoading: String?
     var readableName: String?
     var typeName: String?
     var extraCellSpacing: Int = 0
     var searchBar = UISearchBar()
+    var searchBarWrapper = UIView()
+    var searchBarCancelButton = UIButton()
     var scrollTimer: Timer?
     var autoScrollSpeed: CGFloat = 0.0
     var movedTask: TaskProtocol?
@@ -48,6 +50,11 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         
         searchBar.placeholder = L10n.search
         searchBar.delegate = self
+        searchBar.showsCancelButton = false
+        searchBarCancelButton.setTitle(L10n.cancel, for: .normal)
+        searchBarCancelButton.addTarget(self, action: #selector(searchBarCancelButtonClicked), for: .touchUpInside)
+        searchBarWrapper.addSubview(searchBar)
+        searchBarWrapper.addSubview(searchBarCancelButton)
         
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeFilter), name: NSNotification.Name(rawValue: "taskFilterChanged"), object: nil)
         didChangeFilter()
@@ -81,6 +88,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         searchBar.backgroundColor = theme.contentBackgroundColor
         tableView.backgroundColor = theme.contentBackgroundColor
         tableView.separatorColor = theme.contentBackgroundColor
+        searchBarWrapper.backgroundColor = theme.contentBackgroundColor
+        searchBarCancelButton.setTitleColor(theme.tintColor, for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -122,6 +131,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         })
     }
     
+    private var filterCount = 0
+    
     @objc
     func didChangeFilter() {
         let defaults = UserDefaults.standard
@@ -135,7 +146,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         }
         tableView.reloadData()
         
-        var filterCount = 0
+        filterCount = 0
         if filterType != 0 {
             filterCount += 1
         }
@@ -186,6 +197,9 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
+        if searchBar.text?.isEmpty == true {
+            hideSearchBar()
+        }
     }
     
     @IBAction func unwindFilterChanged(segue: UIStoryboardSegue?) {
@@ -268,8 +282,16 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         if let movedTask = movedTask, let destIndexPath = coordinator.destinationIndexPath {
             let order = movedTask.order
             let sourceIndexPath = IndexPath(row: order, section: 0)
-            dataSource?.fixTaskOrder(movedTask: movedTask, toPosition: destIndexPath.item)
-            dataSource?.moveTask(task: movedTask, toPosition: destIndexPath.item, completion: {[weak self] in
+            var newPosition = destIndexPath.item
+            if filterCount > 0 {
+                if (newPosition + 1) == dataSource?.tableView(tableView, numberOfRowsInSection: 0) {
+                    newPosition = dataSource?.item(at: IndexPath(row: newPosition - 1, section: 0))?.order ?? newPosition
+                } else {
+                    newPosition = (dataSource?.item(at: IndexPath(row: newPosition + 1, section: 0))?.order ?? newPosition) - 1
+                }
+            }
+            dataSource?.fixTaskOrder(movedTask: movedTask, toPosition: newPosition)
+            dataSource?.moveTask(task: movedTask, toPosition: newPosition, completion: {[weak self] in
                 self?.dataSource?.userDrivenDataUpdate = false
             })
             if tableView.numberOfRows(inSection: 0) <= order && tableView.numberOfRows(inSection: 0) <= destIndexPath.item {
@@ -315,7 +337,15 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     }
     
     // MARK: - Search
-    
+
+    private func hideSearchBar() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.searchBarWrapper.alpha = 0
+        }, completion: { _ in
+            self.searchBarWrapper.removeFromSuperview()
+        })
+    }
+
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
     }
@@ -335,16 +365,11 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
-        searchBar.setShowsCancelButton(false, animated: true)
+        self.searchBar.text = ""
+        self.searchBar.resignFirstResponder()
         
         HRPGSearchDataManager.shared().searchString = nil
-        UIView.animate(withDuration: 0.3, animations: {
-            self.searchBar.alpha = 0
-        }) { _ in
-            self.searchBar.removeFromSuperview()
-        }
+        hideSearchBar()
         tableView.reloadData()
     }
     
@@ -362,6 +387,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
                 if let task = dataSource?.taskToEdit {
                     dataSource?.taskToEdit = nil
                     formController.editedTask = task
+                } else {
+                    formController.editedTask = nil
                 }
             }
         } else if segue.identifier == "DetailSegue" {
@@ -420,12 +447,14 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     }
     
     @IBAction func searchButtonTapped(_ sender: Any) {
-        navigationController?.navigationBar.addSubview(searchBar)
-        searchBar.frame = CGRect(x: 12, y: 0, width: tableView.bounds.size.width - 24, height: navigationController?.navigationBar.frame.size.height ?? 48)
+        navigationController?.navigationBar.addSubview(searchBarWrapper)
+        searchBarWrapper.frame = CGRect(x: 12, y: 0, width: tableView.bounds.size.width - 24, height: navigationController?.navigationBar.frame.size.height ?? 48)
+        searchBarCancelButton.pin.top().end().bottom().sizeToFit(.height)
+        searchBar.pin.start().before(of: searchBarCancelButton).top().bottom()
         searchBar.becomeFirstResponder()
-        searchBar.alpha = 0
+        searchBarWrapper.alpha = 0
         UIView.animate(withDuration: 0.3) {
-            self.searchBar.alpha = 1
+            self.searchBarWrapper.alpha = 1
         }
     }
 }

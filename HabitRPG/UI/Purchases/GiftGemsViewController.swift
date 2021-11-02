@@ -21,16 +21,17 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
     @IBOutlet weak var giftingExplanationLabel: UILabel!
     @IBOutlet weak var giftingDisclaimerLabel: UITextView!
     @IBOutlet weak var balanceWrapperView: UIStackView!
-    @IBOutlet weak var gemBalanceCountView: HRPGCurrencyCountView!
+    @IBOutlet weak var gemBalanceCountView: CurrencyCountView!
     @IBOutlet weak var sendGiftBalanceButton: UIButton!
     @IBOutlet weak var balanceAmountView: HRPGBulkPurchaseView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var bottomSpacing: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     private let disposable = ScopedDisposable(CompositeDisposable())
     
     private var activePromo: HabiticaPromotion?
@@ -73,6 +74,7 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cancelButton.title = L10n.cancel
         
         balanceAmountView.onValueChanged = {[weak self] value in
             self?.balanceAmount = value

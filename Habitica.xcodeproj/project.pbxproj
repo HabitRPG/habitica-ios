@@ -38,6 +38,14 @@
 		2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */; };
 		2908E3512217255600D246CD /* (null) in Resources */ = {isa = PBXBuildFile; };
 		290922F02242628600645D0E /* LanguageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290922EF2242628600645D0E /* LanguageHandler.swift */; };
+		2909D41F272199BE00FF2B29 /* MultiLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D41E272199BE00FF2B29 /* MultiLineTextField.swift */; };
+		2909D4222722C20A00FF2B29 /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D4212722C20A00FF2B29 /* Servers.swift */; };
+		2909D4242722C22500FF2B29 /* InitialScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D4232722C22500FF2B29 /* InitialScreens.swift */; };
+		2909D4262722C23300FF2B29 /* ThemeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D4252722C23300FF2B29 /* ThemeName.swift */; };
+		2909D4282722C24700FF2B29 /* ThemeMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D4272722C24700FF2B29 /* ThemeMode.swift */; };
+		2909D42A2722C25800FF2B29 /* AppIconName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D4292722C25800FF2B29 /* AppIconName.swift */; };
+		2909D42C2726AA2500FF2B29 /* TrackableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D42B2726AA2500FF2B29 /* TrackableScrollView.swift */; };
+		2909D42E2726ACBD00FF2B29 /* Binding-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D42D2726ACBD00FF2B29 /* Binding-Extensions.swift */; };
 		290A405421FA175800A409BA /* Purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405221FA175700A409BA /* Purple@2x.png */; };
 		290A405521FA175800A409BA /* Purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405321FA175800A409BA /* Purple@3x.png */; };
 		290B623F20727113007287C4 /* MyGuildCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B623E20727113007287C4 /* MyGuildCell.swift */; };
@@ -276,7 +284,7 @@
 		2995F7FB25BAF3B600322CB3 /* RemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2995F7FA25BAF3B600322CB3 /* RemoteLogger.swift */; };
 		2995F7FC25BAF3B600322CB3 /* RemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2995F7FA25BAF3B600322CB3 /* RemoteLogger.swift */; };
 		2996AA1F22EB157800033D92 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2996AA2122EB157800033D92 /* AppIntentVocabulary.plist */; };
-		29995A6126CBCB0B0063D4C9 /* AdServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29995A6026CBCB0B0063D4C9 /* AdServices.framework */; };
+		29995A6126CBCB0B0063D4C9 /* AdServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29995A6026CBCB0B0063D4C9 /* AdServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		299A556226402F800015EA5C /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299A556126402F800015EA5C /* TaskDetailView.swift */; };
 		299B12492642D2AB00498025 /* PromoWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299B12482642D2AB00498025 /* PromoWebViewController.swift */; };
 		299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6211F505DFA00E22935 /* PaddedLabel.swift */; };
@@ -438,7 +446,7 @@
 		29FEB27A202B4F0400EA245A /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FEB279202B4F0400EA245A /* AvatarView.swift */; };
 		328C951E24A2C13100293E16 /* LinksOnlyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328C951D24A2C13100293E16 /* LinksOnlyTextView.swift */; };
 		32C71C6725507E65007E48C5 /* Habitica WidgetsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		49005B721F180589004830D9 /* HRPGCurrencyCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */; };
+		49005B721F180589004830D9 /* CurrencyCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B711F180588004830D9 /* CurrencyCountView.swift */; };
 		49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */; };
 		49005B7E1F183775004830D9 /* HRPGShopUserHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */; };
 		4904C7401F1ED87400F80723 /* GradientImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904C73F1F1ED87400F80723 /* GradientImageView.swift */; };
@@ -709,6 +717,14 @@
 		2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		2908E3502217245500D246CD /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		290922EF2242628600645D0E /* LanguageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageHandler.swift; sourceTree = "<group>"; };
+		2909D41E272199BE00FF2B29 /* MultiLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineTextField.swift; sourceTree = "<group>"; };
+		2909D4212722C20A00FF2B29 /* Servers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Servers.swift; sourceTree = "<group>"; };
+		2909D4232722C22500FF2B29 /* InitialScreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreens.swift; sourceTree = "<group>"; };
+		2909D4252722C23300FF2B29 /* ThemeName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeName.swift; sourceTree = "<group>"; };
+		2909D4272722C24700FF2B29 /* ThemeMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeMode.swift; sourceTree = "<group>"; };
+		2909D4292722C25800FF2B29 /* AppIconName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconName.swift; sourceTree = "<group>"; };
+		2909D42B2726AA2500FF2B29 /* TrackableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackableScrollView.swift; sourceTree = "<group>"; };
+		2909D42D2726ACBD00FF2B29 /* Binding-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding-Extensions.swift"; sourceTree = "<group>"; };
 		290A2AD020F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/OnePasswordExtension.strings"; sourceTree = "<group>"; };
 		290A2AD220F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Mainstrings.strings"; sourceTree = "<group>"; };
 		290A405221FA175700A409BA /* Purple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Purple@2x.png"; sourceTree = "<group>"; };
@@ -1159,7 +1175,7 @@
 		328C951D24A2C13100293E16 /* LinksOnlyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksOnlyTextView.swift; sourceTree = "<group>"; };
 		3E46B677D2A4BB73B690AD0B /* Pods_Habitica_Intents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Intents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		413C740A78F5BEC964FFA7C8 /* Pods-Habitica Intents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Intents.debug.xcconfig"; path = "Target Support Files/Pods-Habitica Intents/Pods-Habitica Intents.debug.xcconfig"; sourceTree = "<group>"; };
-		49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGCurrencyCountView.swift; sourceTree = "<group>"; };
+		49005B711F180588004830D9 /* CurrencyCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyCountView.swift; sourceTree = "<group>"; };
 		49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopUserHeaderView.swift; sourceTree = "<group>"; };
 		49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGShopUserHeaderView.xib; sourceTree = "<group>"; };
 		4904C73F1F1ED87400F80723 /* GradientImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientImageView.swift; sourceTree = "<group>"; };
@@ -1531,6 +1547,18 @@
 				29066CFA24FE83D300A266EE /* PromoBannerView.swift */,
 			);
 			path = promotions;
+			sourceTree = "<group>";
+		};
+		2909D4202722C1FF00FF2B29 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				2909D4212722C20A00FF2B29 /* Servers.swift */,
+				2909D4232722C22500FF2B29 /* InitialScreens.swift */,
+				2909D4252722C23300FF2B29 /* ThemeName.swift */,
+				2909D4272722C24700FF2B29 /* ThemeMode.swift */,
+				2909D4292722C25800FF2B29 /* AppIconName.swift */,
+			);
+			path = settings;
 			sourceTree = "<group>";
 		};
 		290B6296207E3F1F007287C4 /* Groups */ = {
@@ -1934,6 +1962,8 @@
 				29A4FE6226A9B3DB00F0FE30 /* HabitProgressView.swift */,
 				29AA79C62685B71100871541 /* TaskFormPicker.swift */,
 				29038F2026F33CDB005CA2D3 /* DueDateFormView.swift */,
+				2909D41E272199BE00FF2B29 /* MultiLineTextField.swift */,
+				2909D42B2726AA2500FF2B29 /* TrackableScrollView.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -2289,6 +2319,7 @@
 				D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */,
 				29D50A6725F66F760009CF55 /* UIWindowScene-Extensions.swift */,
 				29D50AD025F769520009CF55 /* Alignment-Extensions.swift */,
+				2909D42D2726ACBD00FF2B29 /* Binding-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2482,6 +2513,7 @@
 		D9B5C0EB18D6321400C8D1B7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2909D4202722C1FF00FF2B29 /* settings */,
 				29066CF224FE62A600A266EE /* promotions */,
 				493ECBC91F4DD7DD0099B1FC /* View Models */,
 				D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */,
@@ -2538,7 +2570,7 @@
 				292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */,
 				292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */,
 				29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */,
-				49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */,
+				49005B711F180588004830D9 /* CurrencyCountView.swift */,
 				D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */,
 				D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */,
 				29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */,
@@ -3727,10 +3759,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2909D42E2726ACBD00FF2B29 /* Binding-Extensions.swift in Sources */,
 				493ECBB31F47A1100099B1FC /* HRPGItemStatsView.swift in Sources */,
 				29D50AD125F769520009CF55 /* Alignment-Extensions.swift in Sources */,
 				29084B3326CF97F500AD9966 /* ShopViewController.swift in Sources */,
 				498E4CFF1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.swift in Sources */,
+				2909D4242722C22500FF2B29 /* InitialScreens.swift in Sources */,
 				297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */,
 				2914485B2084E61400F3A6B5 /* MountOverviewDataSource.swift in Sources */,
 				291E95AF20988025006EE585 /* NewsViewController.swift in Sources */,
@@ -3763,6 +3797,7 @@
 				2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */,
 				292F9662206E363000804151 /* GroupChatViewDataSource.swift in Sources */,
 				C897F63F218CE054002907C2 /* Storyboard Scenes.swift in Sources */,
+				2909D42A2722C25800FF2B29 /* AppIconName.swift in Sources */,
 				295BC6E4226F0F9500DDDF1A /* NotificationsTableViewController.swift in Sources */,
 				29A06E1D23ED4125003BADE9 /* InAppRewardProtocol-Extensions.swift in Sources */,
 				D984D58B1E4A1F59006E84F8 /* SubscriptionViewController.swift in Sources */,
@@ -3800,6 +3835,7 @@
 				29E1631D200F62C100685640 /* TavernDetailViewController.swift in Sources */,
 				291DE9762099D85D0073182A /* MemberListView.swift in Sources */,
 				D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */,
+				2909D4262722C23300FF2B29 /* ThemeName.swift in Sources */,
 				29FC5A6520402EF6008E88C8 /* Theme.swift in Sources */,
 				295BC701226F677100DDDF1A /* NewsNotificationCell.swift in Sources */,
 				296AC81420AC85C200885682 /* RewardViewDataSource.swift in Sources */,
@@ -3811,6 +3847,7 @@
 				29038F2126F33CDB005CA2D3 /* DueDateFormView.swift in Sources */,
 				49DCB7B61F3F64B40079FDD0 /* HRPGShopModalBgView.swift in Sources */,
 				29E1631B200E84AC00685640 /* TavernViewController.swift in Sources */,
+				2909D42C2726AA2500FF2B29 /* TrackableScrollView.swift in Sources */,
 				291448822087A13100F3A6B5 /* EquipmentDetailViewController.swift in Sources */,
 				29C135FE24EACA7B00DBC6B3 /* MarkdownTextView.swift in Sources */,
 				2927024A24E303CB00BCAA77 /* HallOfPatronsViewController.swift in Sources */,
@@ -3845,6 +3882,7 @@
 				49A37A8320C0FA49008C28F5 /* EmptyTableViewCell.swift in Sources */,
 				290C302A206BA0B50066AF5B /* SkillTableViewCell.swift in Sources */,
 				290458D02021D6C60032BC5E /* TopHeaderCoordinator.swift in Sources */,
+				2909D4282722C24700FF2B29 /* ThemeMode.swift in Sources */,
 				D96BFC4C1E181B4A00266EEF /* IntroViewController.swift in Sources */,
 				2902799720583D82006DACB9 /* LoadingViewController.swift in Sources */,
 				291448642084EE6D00F3A6B5 /* PetDetailViewController.swift in Sources */,
@@ -3864,7 +3902,7 @@
 				D97ED0B01E6DBC87006C2A26 /* Interactor.swift in Sources */,
 				29B3FEAC1F9A3395000B12CF /* ProfileSettingsViewController.swift in Sources */,
 				295D42F820922BA700948E7E /* ClassSelectionOptionView.swift in Sources */,
-				49005B721F180589004830D9 /* HRPGCurrencyCountView.swift in Sources */,
+				49005B721F180589004830D9 /* CurrencyCountView.swift in Sources */,
 				299FB29F2084A8FD00422522 /* StableSplitViewController.swift in Sources */,
 				295D42F620921F4200948E7E /* ClassSelectionViewController.swift in Sources */,
 				C897F640218CE054002907C2 /* Storyboard Segues.swift in Sources */,
@@ -3918,6 +3956,7 @@
 				29066CFB24FE83D300A266EE /* PromoBannerView.swift in Sources */,
 				29AAE55724508FC600220DB1 /* HRPGBulkPurchaseView.swift in Sources */,
 				29DBFF0120CE6FFF00DF9CF2 /* SoundManager.swift in Sources */,
+				2909D4222722C20A00FF2B29 /* Servers.swift in Sources */,
 				49FA9FF720DC47AD0086C478 /* TaskTableViewController.swift in Sources */,
 				299F93F1246D9C49008DB702 /* PaddedTextField.swift in Sources */,
 				C897F63C218CCF51002907C2 /* RouterHandler.swift in Sources */,
@@ -4044,6 +4083,7 @@
 				299FB2A72084B44000422522 /* PetOverviewDataSource.swift in Sources */,
 				29A6B85D20641C9B0086B2A6 /* TaskDifficultyRow.swift in Sources */,
 				2927024624E2D8AB00BCAA77 /* HallOfContributorsDataSource.swift in Sources */,
+				2909D41F272199BE00FF2B29 /* MultiLineTextField.swift in Sources */,
 				D9E02EC61E5E0458002CFCE2 /* ChallengeTableViewController.swift in Sources */,
 				D96BFC4F1E191D7200266EEF /* UIAlertController-Extensions.swift in Sources */,
 				29144896208A270800F3A6B5 /* AvatarDetailViewController.swift in Sources */,
@@ -4423,6 +4463,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -4461,6 +4502,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -4503,7 +4545,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 624;
+				CURRENT_PROJECT_VERSION = 633;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4517,7 +4559,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.4.1;
+				MARKETING_VERSION = 3.4.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4550,7 +4592,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 624;
+				CURRENT_PROJECT_VERSION = 633;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4564,7 +4606,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.4.1;
+				MARKETING_VERSION = 3.4.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4589,7 +4631,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 624;
+				CURRENT_PROJECT_VERSION = 633;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4602,7 +4644,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.4.1;
+				MARKETING_VERSION = 3.4.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Notifications";
@@ -4628,7 +4670,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 624;
+				CURRENT_PROJECT_VERSION = 633;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4641,7 +4683,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.4.1;
+				MARKETING_VERSION = 3.4.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Notifications";
@@ -4665,7 +4707,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 624;
+				CURRENT_PROJECT_VERSION = 633;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4678,7 +4720,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.4.1;
+				MARKETING_VERSION = 3.4.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -4706,7 +4748,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 624;
+				CURRENT_PROJECT_VERSION = 633;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4719,7 +4761,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.4.1;
+				MARKETING_VERSION = 3.4.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -4745,7 +4787,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 624;
+				CURRENT_PROJECT_VERSION = 633;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4758,7 +4800,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.4.1;
+				MARKETING_VERSION = 3.4.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4788,7 +4830,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 624;
+				CURRENT_PROJECT_VERSION = 633;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4801,7 +4843,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.4.1;
+				MARKETING_VERSION = 3.4.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -5065,7 +5107,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 623;
+				CURRENT_PROJECT_VERSION = 633;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -5121,7 +5163,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 623;
+				CURRENT_PROJECT_VERSION = 633;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -5151,7 +5193,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 624;
+				CURRENT_PROJECT_VERSION = 633;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -5198,7 +5240,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.4.1;
+				MARKETING_VERSION = 3.4.3;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -5247,7 +5289,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 624;
+				CURRENT_PROJECT_VERSION = 633;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";
@@ -5294,7 +5336,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.4.1;
+				MARKETING_VERSION = 3.4.3;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",

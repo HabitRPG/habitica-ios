@@ -60,7 +60,7 @@ extension {{enumName}} {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
     var format = NSLocalizedString(key, tableName: table, bundle: bundle ?? Bundle(for: BundleToken.self), comment: "")
     let value = String(format: format, locale: Locale.current, arguments: args)
-    if value != key || NSLocale.preferredLanguages.first == "en" {
+    if value != key || Locale.current.identifier == "en" {
         return value
     }
     

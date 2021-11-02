@@ -13,7 +13,7 @@ import MessageUI
 
 class AboutViewController: BaseTableViewController, MFMailComposeViewControllerDelegate {
     
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     private let userRepository = UserRepository()
     
     private var selectedIndexPath: IndexPath?

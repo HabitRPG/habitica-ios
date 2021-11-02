@@ -20,11 +20,12 @@ class GiftSubscriptionViewController: BaseTableViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var explanationTitle: UILabel!
     @IBOutlet weak var giftOneGetOneTitleLabel: UILabel!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var giftOneGetOneDescriptionLabel: UILabel!
     
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     private let disposable = ScopedDisposable(CompositeDisposable())
     
     private var activePromo: HabiticaPromotion?
@@ -67,6 +68,7 @@ class GiftSubscriptionViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cancelButton.title = L10n.cancel
         
         let optionNib = UINib.init(nibName: "SubscriptionOptionView", bundle: nil)
         self.tableView.register(optionNib, forCellReuseIdentifier: "OptionCell")

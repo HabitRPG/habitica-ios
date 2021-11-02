@@ -13,9 +13,9 @@ import ReactiveSwift
 class HRPGShopUserHeaderView: UIView {
     @IBOutlet weak var userClassImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var hourglassCountView: HRPGCurrencyCountView!
-    @IBOutlet weak var gemCountView: HRPGCurrencyCountView!
-    @IBOutlet weak var goldCountView: HRPGCurrencyCountView!
+    @IBOutlet weak var hourglassCountView: CurrencyCountView!
+    @IBOutlet weak var gemCountView: CurrencyCountView!
+    @IBOutlet weak var goldCountView: CurrencyCountView!
     
     private let userRepository = UserRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())

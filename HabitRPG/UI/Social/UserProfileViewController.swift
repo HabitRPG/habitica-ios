@@ -16,7 +16,7 @@ class UserProfileViewController: BaseTableViewController {
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
     private let inventoryRepository = InventoryRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     @IBOutlet weak var moreButton: UIBarButtonItem!
     
     var interactor = CalculateUserStatsInteractor()

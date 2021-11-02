@@ -772,7 +772,7 @@
 "tasks.due_tomorrow" = "期限　明日";
 "tasks.due_in_x_days" = "期限　%d日後";
 "tasks.due_x" = "期限　%@";
-"tasks.every_x" = "毎%@";
+"tasks.every_x" = "毎 %d %@";
 "tasks.repeats.repeats_every_on" = "%@を%@ごとにくり返す";
 "tasks.repeats.repeats_every" = "%@くり返す";
 "tasks.repeats.monthly_the" = "%@";

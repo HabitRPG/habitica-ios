@@ -37,341 +37,6 @@ enum SettingsTags {
     static let initialTaskBoard = "initialTaskBoard"
 }
 
-enum Servers: String {
-    case production
-    case staging
-    case beta
-    case gamma
-    case delta
-    
-    var niceName: String {
-        switch self {
-        case .production:
-            return "Production"
-        case .staging:
-            return "Staging"
-        case .beta:
-            return "Beta"
-        case.gamma:
-            return "Gamma"
-        case.delta:
-            return "Delta"
-        }
-    }
-    
-    static var allServers: [Servers] {
-        return [
-            .production,
-            .staging,
-            .beta,
-            .gamma,
-            .delta
-        ]
-    }
-}
-
-enum InitialScreens: String {
-    case habits = "/user/tasks/habit"
-    case dailies = "/user/tasks/daily"
-    case todos = "/user/tasks/todo"
-    case rewards = "/user/tasks/reward"
-    case menu = "/menu"
-    case party = "/party"
-    
-    var niceName: String {
-        switch self {
-        case .habits:
-            return L10n.Tasks.habits
-        case .dailies:
-            return L10n.Tasks.dailies
-        case .todos:
-            return L10n.Tasks.todos
-        case .rewards:
-            return L10n.Tasks.rewards
-        case .menu:
-            return L10n.menu
-        case .party:
-            return L10n.Titles.party
-        }
-    }
-    
-    static var allScreens: [InitialScreens] {
-        return [
-            .habits,
-            .dailies,
-            .todos,
-            .rewards,
-            .menu,
-            .party
-        ]
-    }
-}
-
-
-enum ThemeName: String {
-    case defaultTheme
-    case blue
-    case teal
-    case green
-    case yellow
-    case orange
-    case red
-    case maroon
-    case gray
-    case custom
-    
-    var customColor: UIColor {
-        let defaults = UserDefaults.standard
-        if let hexcode = defaults.string(forKey: "customColor") {
-            return UIColor(hexcode)
-        }
-        return .purple200
-    }
-    
-    var themeClass: Theme {
-        if ThemeService.shared.isDarkTheme == true {
-            switch self {
-            case .defaultTheme:
-                return DefaultDarkTheme()
-            case .blue:
-                return BlueDarkTheme()
-            case .teal:
-                return TealDarkTheme()
-            case .green:
-                return GreenDarkTheme()
-            case .yellow:
-                return YellowDarkTheme()
-            case .orange:
-                return OrangeDarkTheme()
-            case .red:
-                return RedDarkTheme()
-            case .maroon:
-                return MaroonDarkTheme()
-            case .gray:
-                return GrayDarkTheme()
-            case .custom:
-                return CustomDarkTheme(baseColor: customColor)
-            }
-        } else {
-            switch self {
-            case .defaultTheme:
-                return DefaultTheme()
-            case .blue:
-                return BlueTheme()
-            case .teal:
-                return TealTheme()
-            case .green:
-                return GreenTheme()
-            case .yellow:
-                return YellowTheme()
-            case .orange:
-                return OrangeTheme()
-            case .red:
-                return RedTheme()
-            case .maroon:
-                return MaroonTheme()
-            case .gray:
-                return GrayTheme()
-            case .custom:
-                return CustomTheme(baseColor: customColor)
-            }
-        }
-    }
-    
-    var niceName: String {
-        switch self {
-        case .defaultTheme:
-            return "Royal Purple (Default)"
-        case .blue:
-            return "Blue Task Group"
-        case .teal:
-            return "The real Teal"
-        case .green:
-            return "Against the Green"
-        case .yellow:
-            return "Yellow Subtask"
-        case .orange:
-            return "Orange you glad"
-        case .red:
-            return "Red Task Redemption"
-        case .maroon:
-            return "Maroon"
-        case .gray:
-            return "Plain Gray"
-        case .custom:
-            return "Custom Theme"
-        }
-    }
-    
-    static var allNames: [ThemeName] {
-        return [
-            .defaultTheme,
-            .blue,
-            .teal,
-            .green,
-            .yellow,
-            .orange,
-            .red,
-            .maroon,
-            .gray,
-        ]
-    }
-}
-
-enum ThemeMode: String {
-    case light
-    case dark
-    case system
-    
-    var niceName: String {
-        switch self {
-        case .light:
-            return L10n.Theme.alwaysLight
-        case .dark:
-            return L10n.Theme.alwaysDark
-        case .system:
-            return L10n.Theme.followSystem
-        }
-    }
-    
-    static var allModes: [ThemeMode] {
-        return [.system, .light, .dark]
-    }
-}
-
-enum AppIconName: String {
-    case defaultTheme = "Purple (Default)"
-    case purpleAlt = "Purple Alternative"
-    case maroon = "Maroon"
-    case red = "Red"
-    case orange = "Orange"
-    case yellow = "Yellow"
-    case blue = "Blue"
-    case green = "Green"
-    case teal = "Teal"
-    case black = "Black"
-    case maroonAlt = "Maroon Alternative"
-    case redAlt = "Red Alternative"
-    case orangeAlt = "Orange Alternative"
-    case yellowAlt = "Yellow Alternative"
-    case blueAlt = "Blue Alternative"
-    case greenAlt = "Green Alternative"
-    case tealAlt = "Teal Alternative"
-    case blackAlt = "Black Alternative"
-    case purpleAltBlack = "Purple Alternative Black"
-    case maroonAltBlack = "Maroon Alternative Black"
-    case redAltBlack = "Red Alternative Black"
-    case orangeAltBlack = "Orange Alternative Black"
-    case yellowAltBlack = "Yellow Alternative Black"
-    case blueAltBlack = "Blue Alternative Black"
-    case greenAltBlack = "Green Alternative Black"
-    case tealAltBlack = "Teal Alternative Black"
-    case blackAltBlack = "Black Alternative Black"
-    case prideHabitica = "Pride"
-    case prideHabiticaAlt = "Pride Alternative"
-    case prideHabiticaAltBlack = "Pride Alternative Black"
-
-    var fileName: String? {
-        switch self {
-        case .defaultTheme:
-            return nil
-        case.purpleAlt:
-            return "PurpleAlt"
-        case .prideHabitica:
-            return "PrideHabitica"
-        case .prideHabiticaAlt:
-            return "PrideHabiticaAlt"
-        case .prideHabiticaAltBlack:
-            return "PrideHabiticaAltBlack"
-        case .maroon:
-            return "Maroon"
-        case .red:
-            return "Red"
-        case .orange:
-            return "Orange"
-        case .yellow:
-            return "Yellow"
-        case .blue:
-            return "Blue"
-        case .teal:
-            return "Teal"
-        case .green:
-            return "Green"
-        case .black:
-            return "Black"
-        case .maroonAlt:
-            return "MaroonAlt"
-        case .redAlt:
-            return "RedAlt"
-        case .orangeAlt:
-            return "OrangeAlt"
-        case .yellowAlt:
-            return "YellowAlt"
-        case .blueAlt:
-            return "BlueAlt"
-        case .tealAlt:
-            return "TealAlt"
-        case .greenAlt:
-            return "GreenAlt"
-        case .blackAlt:
-            return "BlackAlt"
-        case.purpleAltBlack:
-            return "PurpleAltBlack"
-        case .maroonAltBlack:
-            return "MaroonAltBlack"
-        case .redAltBlack:
-            return "RedAltBlack"
-        case .orangeAltBlack:
-            return "OrangeAltBlack"
-        case .yellowAltBlack:
-            return "YellowAltBlack"
-        case .blueAltBlack:
-            return "BlueAltBlack"
-        case .tealAltBlack:
-            return "TealAltBlack"
-        case .greenAltBlack:
-            return "GreenAltBlack"
-        case .blackAltBlack:
-            return "BlackAltBlack"
-        }
-    }
-    
-    static var allNames: [AppIconName] {
-        return [
-            .defaultTheme,
-            .purpleAlt,
-            .purpleAltBlack,
-            .maroon,
-            .maroonAlt,
-            .maroonAltBlack,
-            .red,
-            .redAlt,
-            .redAltBlack,
-            .orange,
-            .orangeAlt,
-            .orangeAltBlack,
-            .yellow,
-            .yellowAlt,
-            .yellowAltBlack,
-            .blue,
-            .blueAlt,
-            .blueAltBlack,
-            .teal,
-            .tealAlt,
-            .tealAltBlack,
-            .green,
-            .greenAlt,
-            .greenAltBlack,
-            .black,
-            .blackAlt,
-            .blackAltBlack,
-            .prideHabitica,
-            .prideHabiticaAlt,
-            .prideHabiticaAltBlack
-        ]
-    }
-}
-
 private let pushNotificationsMapping = [
     L10n.Settings.PushNotifications.giftedGems: "giftedGems",
     L10n.Settings.PushNotifications.giftedSubscription: "giftedSubscription",
@@ -407,7 +72,8 @@ class SettingsViewController: FormViewController, Themeable {
     private let userRepository = UserRepository()
     private let contentRepository = ContentRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     private var user: UserProtocol?
     private var isSettingUserData = false
@@ -418,6 +84,7 @@ class SettingsViewController: FormViewController, Themeable {
         tableView.cellLayoutMarginsFollowReadableWidth = false
         super.viewDidLoad()
         navigationItem.title = L10n.Titles.settings
+        doneButton.title = L10n.done
         setupForm()
         loadSettingsFromUserDefaults()
         
@@ -468,7 +135,9 @@ class SettingsViewController: FormViewController, Themeable {
                 })
             <<< AlertRow<LabeledFormValue<String>>(SettingsTags.server) { row in
                 row.title = L10n.Settings.server
+                #if !targetEnvironment(simulator)
                 row.hidden = true
+                #endif
                 row.options = Servers.allServers.map({ (server) -> LabeledFormValue<String> in
                     return LabeledFormValue(value: server.rawValue, label: server.niceName)
                 })
@@ -1039,6 +708,7 @@ class SettingsViewController: FormViewController, Themeable {
             classRow.evaluateHidden()
         }
         
+        #if !targetEnvironment(simulator)
         if user.contributor?.admin == true {
             let serverRow = (form.rowBy(tag: SettingsTags.server) as? AlertRow<LabeledFormValue<String>>)
             serverRow?.hidden = false
@@ -1048,6 +718,7 @@ class SettingsViewController: FormViewController, Themeable {
             themeRow?.updateCell()
             serverRow?.evaluateHidden()
         }
+        #endif
         isSettingUserData = false
     }
     

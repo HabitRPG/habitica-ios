@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -36,7 +34,7 @@
                                 <constraint firstAttribute="width" constant="36" id="ehs-7W-t4k"/>
                             </constraints>
                         </imageView>
-                        <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="NYA-2D-ZUB" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
+                        <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="NYA-2D-ZUB" customClass="CurrencyCountView" customModule="Habitica" customModuleProvider="target">
                             <rect key="frame" x="572" y="6.5" width="20" height="36"/>
                             <color key="backgroundColor" red="0.97592383623123169" green="0.97666221857070923" blue="0.97603815793991089" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -83,7 +81,7 @@
                                 <constraint firstItem="v7A-NB-rwz" firstAttribute="top" secondItem="J68-ym-ngp" secondAttribute="top" id="laC-K2-chz"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="diH-Q0-CAQ" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
+                        <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="diH-Q0-CAQ" customClass="CurrencyCountView" customModule="Habitica" customModuleProvider="target">
                             <rect key="frame" x="542" y="6.5" width="20" height="36"/>
                             <color key="backgroundColor" red="0.97592383623123169" green="0.97666221857070923" blue="0.97603815793991089" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -91,7 +89,7 @@
                                 <constraint firstAttribute="width" priority="500" constant="20" id="zUC-1N-sUK"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="ay5-5r-reE" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
+                        <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="ay5-5r-reE" customClass="CurrencyCountView" customModule="Habitica" customModuleProvider="target">
                             <rect key="frame" x="512" y="6.5" width="20" height="36"/>
                             <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>

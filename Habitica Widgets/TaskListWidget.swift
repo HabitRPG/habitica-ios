@@ -166,6 +166,14 @@ struct TaskListItem: View {
 
 struct TaskListWidget: Widget {
     let kind: String = "TaskListWidget"
+    
+    private var families: [WidgetFamily] = {
+        var families: [WidgetFamily] = [.systemMedium, .systemLarge]
+        if #available(iOSApplicationExtension 15.0, *) {
+            // families.append(.systemExtraLarge)
+        }
+        return families
+    }()
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: TaskListProvider()) { entry in
@@ -173,7 +181,7 @@ struct TaskListWidget: Widget {
         }
         .configurationDisplayName("Your Dailies")
         .description("View your Habitica Dailies due today")
-        .supportedFamilies([.systemMedium, .systemLarge])
+        .supportedFamilies(families)
     }
 }
 
@@ -196,6 +204,10 @@ struct TaskListWidgetPreview: PreviewProvider {
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
             TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks:makePreviewTasks().dropLast(6), needsCron: false))
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
+            if #available(iOSApplicationExtension 15.0, *) {
+                TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks:makePreviewTasks().dropLast(6), needsCron: false))
+                    .previewContext(WidgetPreviewContext(family: .systemExtraLarge))
+            }
         }
 
     }

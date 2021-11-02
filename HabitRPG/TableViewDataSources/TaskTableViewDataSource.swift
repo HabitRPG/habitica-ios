@@ -80,7 +80,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
     internal let userRepository = UserRepository()
     internal let repository = TaskRepository()
     internal let socialRepository = SocialRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     
     @objc var taskToEdit: TaskProtocol?
     private var expandedIndexPath: IndexPath?

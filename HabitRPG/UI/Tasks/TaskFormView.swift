@@ -235,6 +235,15 @@ struct FormDatePicker<TitleView: View>: View {
     }
 }
 
+public struct FormTextFieldStyle : TextFieldStyle {
+    // swiftlint:disable:next identifier_name
+    public func _body(configuration: TextField<Self._Label>) -> some View {
+        configuration
+            .padding(.horizontal, 8)
+            .padding(.vertical, 4)
+    }
+}
+
 struct DailySchedulingView: View {
     @Binding var startDate: Date?
     @Binding var frequency: String
@@ -310,8 +319,8 @@ struct DailySchedulingView: View {
             Separator()
             FormSheetSelector(title: Text(L10n.Tasks.Form.repeats), value: $frequency, options: DailySchedulingView.dailyRepeatOptions)
             Separator()
-            FormRow(title: Text(L10n.Tasks.Form.every), valueLabel: HStack {
-                TextField("", text: $everyX).multilineTextAlignment(.trailing)
+            FormRow(title: Text(L10n.Tasks.Form.every), valueLabel: HStack(spacing: 0) {
+                TextField("", text: $everyX).textFieldStyle(FormTextFieldStyle()).multilineTextAlignment(.trailing)
                 Text(suffix.localizedCapitalized)
             })
             if frequency == "weekly" {
@@ -568,6 +577,7 @@ struct TaskFormReminderView: View {
                 Button(action: {
                     let item = taskRepository.getNewReminder()
                     item.id = UUID().uuidString
+                    item.time = Date()
                     items.append(item)
                 }, label: {
                     Text(L10n.Tasks.Form.newReminder).font(.system(size: 15, weight: .semibold))
@@ -770,7 +780,8 @@ struct TaskFormView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var isEditingText = false
     @State private var isEditingNotes = false
-    
+    @State private var scrollViewContentOffset = CGFloat(0)
+
     var tags: [TagProtocol] = []
     
     @ObservedObject var viewModel: TaskFormViewModel
@@ -805,16 +816,17 @@ struct TaskFormView: View {
     private var textFields: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(L10n.title).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingText ? .semibold : .regular)).padding(.leading, 8)
-            TextField("", text: $viewModel.text, onEditingChanged: { isEditing in
+            MultilineTextField("", text: $viewModel.text, onCommit: {
+            }, onEditingChanged: { isEditing in
                 isEditingText = isEditing
-            })
+            }, giveInitialResponder: viewModel.isCreating)
                 .padding(8)
                 .frame(minHeight: 40)
                 .foregroundColor(isEditingText ? viewModel.textFieldTintColor : viewModel.textFieldTintColor.opacity(0.75))
                 .background(viewModel.lightestTaskTintColor)
                 .cornerRadius(12)
             Text(L10n.notes).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingNotes ? .semibold : .regular)).padding(.leading, 8).padding(.top, 10)
-            TextField("", text: $viewModel.notes, onEditingChanged: { isEditing in
+            MultilineTextField("", text: $viewModel.notes, onEditingChanged: { isEditing in
                 isEditingNotes = isEditing
             })
                 .padding(8)
@@ -871,7 +883,10 @@ struct TaskFormView: View {
     
     var body: some View {
         let theme = ThemeService.shared.theme
-        ScrollView {
+        TrackableScrollView(contentOffset: $scrollViewContentOffset.onChange { value in
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+
+        }) {
             VStack {
                 VStack {
                     textFields
@@ -911,7 +926,7 @@ struct TaskFormView: View {
 class TaskFormController: UIHostingController<TaskFormView> {
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     
     private let viewModel = TaskFormViewModel()
     
@@ -986,15 +1001,20 @@ class TaskFormController: UIHostingController<TaskFormView> {
         userRepository.getUser().on(value: {[weak self] user in
             self?.viewModel.showStatAllocation = user.preferences?.allocationMode == "taskbased"
         }).start()
-        if let controller = navigationController as? ThemedNavigationController, editedTask == nil {
-            controller.navigationBarColor = .purple200
-            controller.textColor = .white
-            controller.navigationBar.isTranslucent = false
-            controller.navigationBar.shadowImage = UIImage()
-        }
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: L10n.cancel, style: .plain, target: self, action: #selector(leftButtonTapped))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.save, style: .plain, target: self, action: #selector(rightButtonTapped))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let controller = navigationController as? ThemedNavigationController, editedTask == nil {
+            controller.navigationBarColor = .purple200
+            controller.textColor = .white
+            controller.navigationBar.tintColor = .white
+            controller.navigationBar.isTranslucent = false
+            controller.navigationBar.shadowImage = UIImage()
+        }
     }
     
     @objc

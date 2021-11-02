@@ -13,7 +13,7 @@ import Habitica_Models
 class ChallengeRewardTableViewCell: UITableViewCell {
     @IBOutlet weak var rewardLabel: UILabel!
     @IBOutlet weak var rewardSubtitleLabel: UILabel!
-    @IBOutlet weak var currencyCount: HRPGCurrencyCountView!
+    @IBOutlet weak var currencyCount: CurrencyCountView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

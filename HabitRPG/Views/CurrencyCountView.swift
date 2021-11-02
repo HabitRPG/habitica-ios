@@ -20,7 +20,7 @@ enum CurrencyCountViewOrientation {
     case vertical, horizontal
 }
 
-class HRPGCurrencyCountView: UIView {
+class CurrencyCountView: UIView {
     
     @objc public var amount = 0 {
         didSet {

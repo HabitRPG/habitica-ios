@@ -30,7 +30,7 @@ class GroupChatViewController: SLKTextViewController, Themeable {
     
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     private let disposable = ScopedDisposable(CompositeDisposable())
     private var autocompleteUsernamesObserver: Signal<String, Never>.Observer?
     private var autocompleteUsernames: [MemberProtocol] = []
@@ -59,7 +59,7 @@ class GroupChatViewController: SLKTextViewController, Themeable {
         textView.registerMarkdownFormattingSymbol("*", withTitle: "Italics")
         textView.registerMarkdownFormattingSymbol("~~", withTitle: "Strike")
         textView.placeholder = L10n.writeMessage
-        textInputbar.maxCharCount = UInt(ConfigRepository().integer(variable: .maxChatLength))
+        textInputbar.maxCharCount = UInt(ConfigRepository.shared.integer(variable: .maxChatLength))
         textInputbar.charCountLabelNormalColor = UIColor.gray400
         textInputbar.charCountLabelWarningColor = UIColor.red50
         textInputbar.charCountLabel.font = UIFont.systemFont(ofSize: 11, weight: .bold)

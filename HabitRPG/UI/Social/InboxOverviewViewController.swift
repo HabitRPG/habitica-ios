@@ -11,6 +11,7 @@ import Foundation
 class InboxOverviewViewController: BaseTableViewController {
     
     private let dataSource = InboxOverviewDataSource()
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     private let socialRepository = SocialRepository()
     
@@ -19,6 +20,7 @@ class InboxOverviewViewController: BaseTableViewController {
     override func viewDidLoad() {
         tutorialIdentifier = "inbox"
         super.viewDidLoad()
+        doneButton.title = L10n.done
         dataSource.tableView = tableView
         clearsSelectionOnViewWillAppear = false
         tableView.rowHeight = UITableView.automaticDimension

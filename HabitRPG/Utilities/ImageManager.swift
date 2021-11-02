@@ -106,5 +106,5 @@ class ImageManager: NSObject {
         return name
     }
     
-    static var substitutions = ConfigRepository().dictionary(variable: .spriteSubstitutions)
+    static var substitutions = ConfigRepository.shared.dictionary(variable: .spriteSubstitutions)
 }

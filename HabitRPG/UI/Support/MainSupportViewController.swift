@@ -11,7 +11,7 @@ import ReactiveSwift
 import Habitica_Models
 
 class MainSupportViewController: BaseUIViewController {
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     private let userRepository = UserRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     

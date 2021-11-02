@@ -24,13 +24,14 @@ class SubscriptionViewController: BaseTableViewController {
     private let userRepository = UserRepository()
     private let inventoryRepository = InventoryRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     
     @IBOutlet weak var giftSubscriptionExplanationLabel: UILabel!
     @IBOutlet weak var giftSubscriptionButton: UIButton!
     @IBOutlet weak var subscriptionSupportLabel: UILabel!
     @IBOutlet weak var headerImage: UIImageView!
     @IBOutlet weak var promoBannerView: PromoBannerView!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     private var activePromo: HabiticaPromotion?
 
@@ -79,6 +80,7 @@ class SubscriptionViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        doneButton.title = L10n.done
         
         activePromo = configRepository.activePromotion()
         
