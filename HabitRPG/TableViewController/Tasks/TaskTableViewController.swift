@@ -283,20 +283,25 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
             let order = movedTask.order
             let sourceIndexPath = IndexPath(row: order, section: 0)
             var newPosition = destIndexPath.item
+
+            let taskCount = tableView.numberOfRows(inSection: 0)
             if filterCount > 0 {
-                if (newPosition + 1) == dataSource?.tableView(tableView, numberOfRowsInSection: 0) {
-                    newPosition = dataSource?.item(at: IndexPath(row: newPosition - 1, section: 0))?.order ?? newPosition
+                if (newPosition + 1) == taskCount {
+                    newPosition = dataSource?.item(at: IndexPath(row: newPosition, section: 0))?.order ?? newPosition + 1
                 } else {
                     newPosition = (dataSource?.item(at: IndexPath(row: newPosition + 1, section: 0))?.order ?? newPosition) - 1
                 }
+            } else {
+                if dataSource?.showingAdventureGuide == true {
+                    newPosition -= 1
+                }
             }
+            newPosition = min(max(0, newPosition), taskCount - 1)
             dataSource?.fixTaskOrder(movedTask: movedTask, toPosition: newPosition)
             dataSource?.moveTask(task: movedTask, toPosition: newPosition, completion: {[weak self] in
                 self?.dataSource?.userDrivenDataUpdate = false
             })
-            if tableView.numberOfRows(inSection: 0) <= order && tableView.numberOfRows(inSection: 0) <= destIndexPath.item {
-                tableView.moveRow(at: sourceIndexPath, to: destIndexPath)
-            } else {
+            if taskCount <= sourceIndexPath.item || taskCount <= destIndexPath.item {
                 tableView.reloadData()
             }
         }

@@ -435,7 +435,7 @@ struct TaskFormChecklistView: View {
                         items.move(fromOffsets: source, toOffset: destination)
                     }
                     addButton
-                }.animation(.easeInOut)
+                }
             } else {
                 VStack {
                     ForEach(items, id: \.id) { item in
@@ -453,7 +453,7 @@ struct TaskFormChecklistView: View {
                     addButton
                 }
             }
-        }
+        }.animation(.easeInOut)
     }
 }
 
@@ -585,8 +585,8 @@ struct TaskFormReminderView: View {
                         .frame(maxWidth: .infinity).frame(height: 48)
                         .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
                 })
-            }.animation(.easeInOut)
-        }
+            }
+        }.animation(.easeInOut)
     }
 }
 
@@ -819,19 +819,19 @@ struct TaskFormView: View {
             MultilineTextField("", text: $viewModel.text, onCommit: {
             }, onEditingChanged: { isEditing in
                 isEditingText = isEditing
-            }, giveInitialResponder: viewModel.isCreating)
+            }, giveInitialResponder: viewModel.isCreating,
+                               textColor: isEditingText ? viewModel.textFieldTintColor : viewModel.textFieldTintColor.opacity(0.75))
                 .padding(8)
                 .frame(minHeight: 40)
-                .foregroundColor(isEditingText ? viewModel.textFieldTintColor : viewModel.textFieldTintColor.opacity(0.75))
                 .background(viewModel.lightestTaskTintColor)
                 .cornerRadius(12)
             Text(L10n.notes).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingNotes ? .semibold : .regular)).padding(.leading, 8).padding(.top, 10)
             MultilineTextField("", text: $viewModel.notes, onEditingChanged: { isEditing in
                 isEditingNotes = isEditing
-            })
+            },
+                               textColor: isEditingNotes ? viewModel.textFieldTintColor : viewModel.textFieldTintColor.opacity(0.75))
                 .padding(8)
                 .frame(minHeight: 40)
-                .foregroundColor(isEditingNotes ? viewModel.textFieldTintColor : viewModel.textFieldTintColor.opacity(0.75))
                 .background(viewModel.lightestTaskTintColor)
                 .cornerRadius(12)
         }.padding(.horizontal, 16)

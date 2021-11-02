@@ -237,12 +237,11 @@ public class TaskLocalRepository: BaseLocalRepository {
         guard let tasks = realm?.objects(RealmTask.self).filter("type == %@", movedTask.type ?? "").sorted(byKeyPath: "order") else {
             return
         }
+        var taskArray = Array(tasks)
+        taskArray.move(fromOffsets: IndexSet(integer: movedTask.order), toOffset: toPosition)
+        
         updateCall { _ in
-            for task in tasks {
-                if task.id == movedTask.id {
-                    task.order = toPosition
-                    break
-                }
+            for task in taskArray {
                 task.order = taskOrder
                 taskOrder += 1
             }

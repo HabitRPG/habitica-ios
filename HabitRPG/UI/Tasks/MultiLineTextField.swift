@@ -17,6 +17,7 @@ fileprivate struct UITextViewWrapper: UIViewRepresentable {
     var onDone: (() -> Void)? = nil
     var onEditingChanged: ((Bool) -> Void)? = nil
     var giveInitialResponder = false
+    var textColor = UIColor.black
 
     func makeUIView(context: UIViewRepresentableContext<UITextViewWrapper>) -> UITextView {
         let textField = UITextView()
@@ -28,6 +29,7 @@ fileprivate struct UITextViewWrapper: UIViewRepresentable {
         textField.isUserInteractionEnabled = true
         textField.isScrollEnabled = false
         textField.backgroundColor = UIColor.clear
+        textField.textColor = textColor
         if nil != onDone {
             textField.returnKeyType = .done
             textField.enablesReturnKeyAutomatically = true
@@ -114,6 +116,7 @@ struct MultilineTextField: View {
     private var onCommit: (() -> Void)? = nil
     private var onEditingChanged: ((Bool) -> Void)? = nil
     private var giveInitialResponder = false
+    private var textColor: Color
 
     @Binding private var text: String
     private var internalText: Binding<String> {
@@ -124,16 +127,17 @@ struct MultilineTextField: View {
 
     @State private var dynamicHeight: CGFloat = 40
 
-    init (_ placeholder: String = "", text: Binding<String>, onCommit: (() -> Void)? = nil, onEditingChanged: ((Bool) -> Void)? = nil, giveInitialResponder: Bool = false) {
+    init (_ placeholder: String = "", text: Binding<String>, onCommit: (() -> Void)? = nil, onEditingChanged: ((Bool) -> Void)? = nil, giveInitialResponder: Bool = false, textColor: Color) {
         self.placeholder = placeholder
         self.onCommit = onCommit
         self.onEditingChanged = onEditingChanged
         self.giveInitialResponder = giveInitialResponder
+        self.textColor = textColor
         self._text = text
     }
 
     var body: some View {
-        UITextViewWrapper(text: self.internalText, calculatedHeight: $dynamicHeight, onDone: onCommit, onEditingChanged: onEditingChanged, giveInitialResponder: giveInitialResponder)
+        UITextViewWrapper(text: self.internalText, calculatedHeight: $dynamicHeight, onDone: onCommit, onEditingChanged: onEditingChanged, giveInitialResponder: giveInitialResponder, textColor: textColor.uiColor())
             .frame(minHeight: dynamicHeight, maxHeight: dynamicHeight)
     }
 }

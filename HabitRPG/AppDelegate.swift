@@ -443,45 +443,6 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
                                 return
                             }
                             if let campaignId = data["campaignId"] as? Int {
-                                if campaignId != 1234567890 {
-                                    var analyticsData = [String: Any]()
-                                    analyticsData["attribution"] = data["iad-attribution"]
-                                    if analyticsData["attribution"] as? String != "true" {
-                                        return
-                                    }
-                                    analyticsData["campaignID"] = campaignId
-                                    analyticsData["campaignName"] = data["iad-campaign-name"]
-                                    analyticsData["purchaseDate"] = data["iad-purchase-date"]
-                                    analyticsData["conversionDate"] = data["iad-conversion-date"]
-                                    analyticsData["conversionType"] = data["iad-conversion-type"]
-                                    analyticsData["clickDate"] = data["iad-click-date"]
-                                    analyticsData["keyword"] = data["iad-keyword"]
-                                    analyticsData["keywordMatchtype"] = data["iad-keyword-matchtype"]
-                                    HabiticaAnalytics.shared.log("adAttribution", withEventProperties: analyticsData)
-                                    Amplitude.instance().setUserProperties([
-                                        "clickedSearchAd": data["iad-attribution"] ?? "",
-                                        "searchAdName": data["iad-campaign-name"] ?? "",
-                                        "searchAdConversionDate": data["iad-conversion-date"] ?? ""
-                                    ])
-                                }
-                            }
-                        } catch {
-                            print(error)
-                        }
-                    }
-                    task.resume()
-                }
-            }
-        } else {
-            ADClient.shared().requestAttributionDetails({ (attributionDetails, error) in
-                guard let attributionDetails = attributionDetails else {
-                    return
-                }
-                for (_, adDictionary) in attributionDetails {
-                        if let data = adDictionary as? Dictionary<String, Any> {
-                            if let campaignId = data["iad-campaign-id"] as? String {
-                            if campaignId != "1234567890" {
-                                defaults.set(true, forKey: "userWasAttributed")
                                 var analyticsData = [String: Any]()
                                 analyticsData["attribution"] = data["iad-attribution"]
                                 if analyticsData["attribution"] as? String != "true" {
@@ -502,6 +463,41 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
                                     "searchAdConversionDate": data["iad-conversion-date"] ?? ""
                                 ])
                             }
+                        } catch {
+                            print(error)
+                        }
+                    }
+                    task.resume()
+                }
+            }
+        } else {
+            ADClient.shared().requestAttributionDetails({ (attributionDetails, error) in
+                guard let attributionDetails = attributionDetails else {
+                    return
+                }
+                for (_, adDictionary) in attributionDetails {
+                    if let data = adDictionary as? Dictionary<String, Any> {
+                        if let campaignId = data["iad-campaign-id"] as? String {
+                            defaults.set(true, forKey: "userWasAttributed")
+                            var analyticsData = [String: Any]()
+                            analyticsData["attribution"] = data["iad-attribution"]
+                            if analyticsData["attribution"] as? String != "true" {
+                                return
+                            }
+                            analyticsData["campaignID"] = campaignId
+                            analyticsData["campaignName"] = data["iad-campaign-name"]
+                            analyticsData["purchaseDate"] = data["iad-purchase-date"]
+                            analyticsData["conversionDate"] = data["iad-conversion-date"]
+                            analyticsData["conversionType"] = data["iad-conversion-type"]
+                            analyticsData["clickDate"] = data["iad-click-date"]
+                            analyticsData["keyword"] = data["iad-keyword"]
+                            analyticsData["keywordMatchtype"] = data["iad-keyword-matchtype"]
+                            HabiticaAnalytics.shared.log("adAttribution", withEventProperties: analyticsData)
+                            Amplitude.instance().setUserProperties([
+                                "clickedSearchAd": data["iad-attribution"] ?? "",
+                                "searchAdName": data["iad-campaign-name"] ?? "",
+                                "searchAdConversionDate": data["iad-conversion-date"] ?? ""
+                            ])
                         }
                     }
                 }
