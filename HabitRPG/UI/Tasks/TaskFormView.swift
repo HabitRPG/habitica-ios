@@ -456,7 +456,7 @@ struct TaskFormChecklistView: View {
                     addButton
                 }
             }
-        }.animation(.easeInOut)
+        }
     }
 }
 

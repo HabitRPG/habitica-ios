@@ -55,6 +55,9 @@ class ImageManager: NSObject {
         }
         imageView.loadedImageName = name
         getImage(name: name, extension: fileExtension) { (image, error) in
+            if let error = error {
+                logger.record(error: error)
+            }
             if imageView.loadedImageName == name {
                 imageView.image = image
                 if let action = completion {

@@ -228,6 +228,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.dailyReminder
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 }.onChange({[weak self] (row) in
@@ -247,6 +248,7 @@ class SettingsViewController: FormViewController, Themeable {
                 })
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 }.onChange({[weak self] (row) in
@@ -264,6 +266,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.displayNotificationBadge
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 }.onChange({[weak self] (row) in
@@ -278,6 +281,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.customDayStart
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 }.onCellHighlightChanged({[weak self] (_, row) in
@@ -300,6 +304,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.searchableUsername
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 row.options = [LabeledFormValue(value: true, label: L10n.Settings.searchableEverywhere),
@@ -320,6 +325,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.disableAllNotifications
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 row.onChange({[weak self] (row) in
@@ -355,6 +361,7 @@ class SettingsViewController: FormViewController, Themeable {
                 })
                 row.cellUpdate { (cell, _) in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 row.onPresent({ (_, to) in
@@ -375,6 +382,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.disableAllEmails
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 row.onChange({[weak self] (row) in
@@ -406,6 +414,7 @@ class SettingsViewController: FormViewController, Themeable {
                 })
                 row.cellUpdate { (cell, _) in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 row.onPresent({ (_, to) in
@@ -426,6 +435,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.disablePm
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 row.onChange({[weak self] (row) in
@@ -445,6 +455,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.language
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 row.options = AppLanguage.allLanguages().map({ language -> LabeledFormValue<Int> in
@@ -470,6 +481,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.launchScreen
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 row.options = InitialScreens.allScreens.map({ screen -> LabeledFormValue<String> in
@@ -491,6 +503,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.soundTheme
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 row.options = SoundTheme.allThemes.map({ (theme) -> LabeledFormValue<String> in
@@ -517,6 +530,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.themeColor
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 row.options = ThemeName.allNames.map({ (theme) -> LabeledFormValue<String> in
@@ -550,6 +564,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.value = UIColor(defaults.string(forKey: "customColor") ?? UIColor.purple200.hexString())
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 row.hidden = Condition.function([SettingsTags.themeColor], { (form) -> Bool in
@@ -573,6 +588,7 @@ class SettingsViewController: FormViewController, Themeable {
             row.title = L10n.Settings.themeMode
             row.cellUpdate { cell, _ in
                 cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                 cell.tintColor = ThemeService.shared.theme.tintColor
             }
             row.options = ThemeMode.allModes.map({ (theme) -> LabeledFormValue<String> in
@@ -605,6 +621,7 @@ class SettingsViewController: FormViewController, Themeable {
             row.title = L10n.Settings.appIcon
             row.cellUpdate { cell, _ in
                 cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                 cell.tintColor = ThemeService.shared.theme.tintColor
             }
             row.options = AppIconName.allNames.map({ (name) -> String in
