@@ -573,7 +573,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>637</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CustomDomain</key>
 	<string>${CUSTOM_DOMAIN}</string>
 	<key>DisableSSL</key>
@@ -680,20 +680,20 @@
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<true/>
-        <key>UISceneConfigurations</key>
-        <dict>
-          <key>UIWindowSceneSessionRoleApplication</key>
-          <array>
-            <dict>
-              <key>UILaunchStoryboardName</key>
-              <string>Launch Screen</string>
-              <key>UISceneConfigurationName</key>
-              <string>Default Configuration</string>
-              <key>UISceneDelegateClassName</key>
-              <string>Habitica.SceneDelegate</string>
-            </dict>
-          </array>
-        </dict>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UILaunchStoryboardName</key>
+					<string>Launch Screen</string>
+					<key>UISceneConfigurationName</key>
+					<string>Default Configuration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>Habitica.SceneDelegate</string>
+				</dict>
+			</array>
+		</dict>
 	</dict>
 	<key>UIApplicationShortcutItems</key>
 	<array>

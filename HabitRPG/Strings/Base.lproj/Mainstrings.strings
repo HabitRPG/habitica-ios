@@ -335,6 +335,16 @@
 "settings.add_email_and_password" = "Add Email and Password authentication";
 "settings.added_local_auth" = "Successfully added email and password";
 "settings.launch_screen" = "Launch screen";
+"settings.account_info" = "Account Info";
+"settings.login_methods" = "Login Methods";
+"settings.public_profile" = "Public Profile";
+"settings.password" = "Password";
+"settings.email" = "Email";
+"settings.not_set" = "Not Set";
+"settings.my_account" = "My Account";
+"settings.connect" = "Cconnect";
+"settings.disconnect" = "Disconnect";
+"settings.add_password" = "Add Password";
 "theme.default_theme" = "Default";
 "theme.blue" = "Blue";
 "theme.teal" = "Teal";

@@ -354,7 +354,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
 
         let request = OIDAuthorizationRequest.init(configuration: configuration,
                                                    clientId: keys.googleClient,
-                                                   scopes: [OIDScopeOpenID, OIDScopeProfile],
+                                                   scopes: [OIDScopeOpenID, OIDScopeProfile, OIDScopeEmail],
                                                    redirectURL: redirectUrl,
                                                    responseType: OIDResponseTypeCode,
                                                    additionalParameters: nil)

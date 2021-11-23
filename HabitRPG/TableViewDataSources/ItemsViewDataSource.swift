@@ -157,7 +157,7 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         if let ownedItem = item(at: indexPath) {
             let theme = ThemeService.shared.theme
-            cell.backgroundColor = theme.contentBackgroundColor
+            cell.backgroundColor = theme.windowBackgroundColor
             let label = cell.viewWithTag(1) as? UILabel
             label?.text = ownedItem.text
             label?.textColor = theme.primaryTextColor

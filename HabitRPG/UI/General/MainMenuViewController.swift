@@ -404,6 +404,7 @@ class MainMenuViewController: BaseTableViewController {
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         navbarColor = theme.navbarHiddenColor
+        tableView.backgroundColor = theme.contentBackgroundColor
         tableView.reloadData()
     }
     
@@ -548,7 +549,7 @@ class MainMenuViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = visibleItemAt(indexPath: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: item?.cellName ?? "Cell", for: indexPath)
-        cell.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         
         if item?.accessibilityLabel?.isEmpty != true {
             cell.accessibilityLabel = accessibilityLabel

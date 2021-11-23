@@ -231,6 +231,8 @@
 		29B586FC204D92CF00301955 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B586F2204D92CF00301955 /* Habitica_API_Client.framework */; };
 		29B58703204D92CF00301955 /* Habitica_API_Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B586F5204D92CF00301955 /* Habitica_API_Client.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		29C38C8124A232A300F219A1 /* APIUserAchievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8024A232A300F219A1 /* APIUserAchievements.swift */; };
+		29DBDE4C274CFEC3008F6777 /* SocialDisconnectCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE4B274CFEC3008F6777 /* SocialDisconnectCall.swift */; };
+		29DBDE52274D0126008F6777 /* APISocialAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE51274D0126008F6777 /* APISocialAuthentication.swift */; };
 		29DBFEFD20CADBC900DF9CF2 /* APISpecialItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEFC20CADBC900DF9CF2 /* APISpecialItem.swift */; };
 		29DBFEFF20CE6D7F00DF9CF2 /* Decoding-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEFE20CE6D7F00DF9CF2 /* Decoding-Extensions.swift */; };
 		29DBFF0320CE91A500DF9CF2 /* UseTransformationItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0220CE91A500DF9CF2 /* UseTransformationItemCall.swift */; };
@@ -483,6 +485,8 @@
 		29B586FB204D92CF00301955 /* Habitica API ClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica API ClientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B58702204D92CF00301955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29C38C8024A232A300F219A1 /* APIUserAchievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserAchievements.swift; sourceTree = "<group>"; };
+		29DBDE4B274CFEC3008F6777 /* SocialDisconnectCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialDisconnectCall.swift; sourceTree = "<group>"; };
+		29DBDE51274D0126008F6777 /* APISocialAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISocialAuthentication.swift; sourceTree = "<group>"; };
 		29DBFEFC20CADBC900DF9CF2 /* APISpecialItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISpecialItem.swift; sourceTree = "<group>"; };
 		29DBFEFE20CE6D7F00DF9CF2 /* Decoding-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoding-Extensions.swift"; sourceTree = "<group>"; };
 		29DBFF0220CE91A500DF9CF2 /* UseTransformationItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseTransformationItemCall.swift; sourceTree = "<group>"; };
@@ -586,6 +590,7 @@
 				290B62512073D91C007287C4 /* APIInbox.swift */,
 				2974BDB120908E4600EC1A25 /* APIInboxMessages.swift */,
 				290B6262207B9707007287C4 /* APILocalAuthentication.swift */,
+				29DBDE51274D0126008F6777 /* APISocialAuthentication.swift */,
 				290B6282207BAAA2007287C4 /* APILoginResponse.swift */,
 				29323E542052F7C400AC6D6F /* APIOutfit.swift */,
 				2974BD9C208E120200EC1A25 /* APIOwnedCustomization.swift */,
@@ -819,6 +824,7 @@
 				29DBFF0220CE91A500DF9CF2 /* UseTransformationItemCall.swift */,
 				29A62B06216CC6CC00D4BD90 /* VerifyUsernameCall.swift */,
 				299F93EE246D75A8008DB702 /* SendGemsCall.swift */,
+				29DBDE4B274CFEC3008F6777 /* SocialDisconnectCall.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1184,6 +1190,7 @@
 				29323E4720521B5000AC6D6F /* APIContributor.swift in Sources */,
 				290C300F206A779E0066AF5B /* DeleteTaskCall.swift in Sources */,
 				291E1A22209B701D00BA1FFB /* AcceptQuestInvitationCall.swift in Sources */,
+				29DBDE4C274CFEC3008F6777 /* SocialDisconnectCall.swift in Sources */,
 				295E9DCA20B2DFB700D58D45 /* PurchaseHourglassItemCall.swift in Sources */,
 				290B6295207E3E6C007287C4 /* LeaveGroupCall.swift in Sources */,
 				290B626F207BA6FB007287C4 /* DeleteAccountCall.swift in Sources */,
@@ -1352,6 +1359,7 @@
 				29323E23205099FF00AC6D6F /* HabiticaResponseCall.swift in Sources */,
 				291E1A20209B6FAB00BA1FFB /* RejectQuestInvitationCall.swift in Sources */,
 				292726AC20B70329009DD08A /* LeaveChallengeCall.swift in Sources */,
+				29DBDE52274D0126008F6777 /* APISocialAuthentication.swift in Sources */,
 				292DEE7E204E37670086D5F7 /* APITag.swift in Sources */,
 				290B6293207E3E24007287C4 /* JoinGroupCall.swift in Sources */,
 				290B6279207BA8C3007287C4 /* LocalLoginCall.swift in Sources */,

@@ -1798,8 +1798,12 @@ public enum L10n {
   }
 
   public enum Settings {
+    /// Account Info
+    public static var accountInfo: String { return L10n.tr("Mainstrings", "settings.account_info") }
     /// Add Email and Password authentication
     public static var addEmailAndPassword: String { return L10n.tr("Mainstrings", "settings.add_email_and_password") }
+    /// Add Password
+    public static var addPassword: String { return L10n.tr("Mainstrings", "settings.add_password") }
     /// Successfully added email and password
     public static var addedLocalAuth: String { return L10n.tr("Mainstrings", "settings.added_local_auth") }
     /// API
@@ -1836,6 +1840,8 @@ public enum L10n {
     public static var confirmUsernameDescription: String { return L10n.tr("Mainstrings", "settings.confirm_username_description") }
     /// Are you sure you want to confirm your current username?
     public static var confirmUsernamePrompt: String { return L10n.tr("Mainstrings", "settings.confirm_username_prompt") }
+    /// Cconnect
+    public static var connect: String { return L10n.tr("Mainstrings", "settings.connect") }
     /// Custom Day Start
     public static var customDayStart: String { return L10n.tr("Mainstrings", "settings.custom_day_start") }
     /// Daily Reminder
@@ -1856,10 +1862,14 @@ public enum L10n {
     public static var disableAllNotifications: String { return L10n.tr("Mainstrings", "settings.disable_all_notifications") }
     /// Disable Private Messages
     public static var disablePm: String { return L10n.tr("Mainstrings", "settings.disable_pm") }
+    /// Disconnect
+    public static var disconnect: String { return L10n.tr("Mainstrings", "settings.disconnect") }
     /// Your display name has to be between 1 and 30 characters.
     public static var displayNameLengthError: String { return L10n.tr("Mainstrings", "settings.display_name_length_error") }
     /// Display Notification Badge
     public static var displayNotificationBadge: String { return L10n.tr("Mainstrings", "settings.display_notification_badge") }
+    /// Email
+    public static var email: String { return L10n.tr("Mainstrings", "settings.email") }
     /// Enable Class System
     public static var enableClassSystem: String { return L10n.tr("Mainstrings", "settings.enable_class_system") }
     /// Every day at
@@ -1882,20 +1892,28 @@ public enum L10n {
     public static var maintenance: String { return L10n.tr("Mainstrings", "settings.maintenance") }
     /// Mentions
     public static var mentions: String { return L10n.tr("Mainstrings", "settings.mentions") }
+    /// My Account
+    public static var myAccount: String { return L10n.tr("Mainstrings", "settings.my_account") }
     /// New Email
     public static var newEmail: String { return L10n.tr("Mainstrings", "settings.new_email") }
     /// New Password
     public static var newPassword: String { return L10n.tr("Mainstrings", "settings.new_password") }
     /// New Username
     public static var newUsername: String { return L10n.tr("Mainstrings", "settings.new_username") }
+    /// Not Set
+    public static var notSet: String { return L10n.tr("Mainstrings", "settings.not_set") }
     /// Notification Badge
     public static var notificationBadge: String { return L10n.tr("Mainstrings", "settings.notification_badge") }
     /// Old Password
     public static var oldPassword: String { return L10n.tr("Mainstrings", "settings.old_password") }
+    /// Password
+    public static var password: String { return L10n.tr("Mainstrings", "settings.password") }
     /// Preferences
     public static var preferences: String { return L10n.tr("Mainstrings", "settings.preferences") }
     /// Profile
     public static var profile: String { return L10n.tr("Mainstrings", "settings.profile") }
+    /// Public Profile
+    public static var publicProfile: String { return L10n.tr("Mainstrings", "settings.public_profile") }
     /// Reload Content
     public static var reloadContent: String { return L10n.tr("Mainstrings", "settings.reload_content") }
     /// Reminder

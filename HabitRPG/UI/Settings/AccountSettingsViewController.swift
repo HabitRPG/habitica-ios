@@ -1,141 +1,272 @@
 //
-//  AuthenticationSettingsViewController.swift
+//  AccountSettingsViewController.swift
 //  Habitica
 //
-//  Created by Phillip on 20.10.17.
-//  Copyright © 2017 HabitRPG Inc. All rights reserved.
+//  Created by Phillip Thelen on 22.11.21.
+//  Copyright © 2021 HabitRPG Inc. All rights reserved.
 //
 
+import Foundation
+import Eureka
+import ReactiveSwift
+import Habitica_Models
 import UIKit
 
-class AuthenticationSettingsViewController: BaseSettingsViewController, UITextFieldDelegate {
+class AccountSettingsViewController: FormViewController, Themeable, UITextFieldDelegate {
     
-    private var configRepository = ConfigRepository.shared
+    let userRepository = UserRepository()
+    private let contentRepository = ContentRepository()
+    private let disposable = ScopedDisposable(CompositeDisposable())
+    private let configRepository = ConfigRepository.shared
+    
+    private var user: UserProtocol?
+    private var isSettingUserData = false
     
     override func viewDidLoad() {
+        tableView = UITableView(frame: view.bounds, style: .insetGrouped)
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        tableView.cellLayoutMarginsFollowReadableWidth = false
         super.viewDidLoad()
-        navigationItem.title = L10n.Titles.authentication
+        navigationItem.title = L10n.Titles.settings
+        setupForm()
+        
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+            self?.user = user
+            self?.setUser(user)
+        }).start())
+        
+        LabelRow.defaultCellUpdate = { cell, _ in
+            cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+            cell.detailTextLabel?.textColor = ThemeService.shared.theme.ternaryTextColor
+            cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        }
+        ButtonRow.defaultCellUpdate = { cell, _ in
+            cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+            cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        }
+        TimeRow.defaultCellUpdate = { cell, _ in
+            cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+        }
+        
+        ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+    func applyTheme(theme: Theme) {
+        tableView.backgroundColor = theme.contentBackgroundColor
+        tableView.reloadData()
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            if user?.flags?.verifiedUsername != true {
-                return 5
-            } else {
-                return 4
+    func setupForm() {
+        buildAccountInfoSection()
+        buildLoginMethodsSection()
+        buildPublicProfileSection()
+        buildApiSection()
+        buildDangerSection()
+    }
+    
+    func buildAccountInfoSection() {
+        form +++ Section(L10n.Settings.accountInfo)
+        <<< LabelRow { row in
+            row.title = L10n.username
+            row.cellStyle = .subtitle
+            row.cellUpdate {[weak self] cell, _ in
+                cell.detailTextLabel?.text = self?.user?.authentication?.local?.username ?? L10n.Settings.notSet
+            }.onCellSelection { _, _ in
+                self.showLoginNameChangeAlert()
             }
-        } else {
-            return 2
+        }
+        <<< LabelRow { row in
+            row.title = L10n.Settings.email
+            row.cellStyle = .subtitle
+            row.cellUpdate {[weak self] cell, _ in
+                cell.detailTextLabel?.text = self?.user?.authentication?.local?.email ?? L10n.Settings.notSet
+            }.onCellSelection { _, _ in
+                self.showEmailChangeAlert()
+            }
         }
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return L10n.Settings.authentication
-        } else {
-            return L10n.Settings.dangerZone
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cellName = "Cell"
-        var cellTitle = ""
-        var cellTitleColor = ThemeService.shared.theme.primaryTextColor
-        var cellDetailText: String?
-        var confirmOffset = 0
-        if user?.flags?.verifiedUsername != true {
-            confirmOffset = 1
-        }
-        if indexPath.section == 0 {
-            if indexPath.item == 0 {
-                cellTitle = L10n.username
-                cellDetailText = user?.username
-            } else if indexPath.item == 1 && confirmOffset > 0 {
-                cellName = "ButtonCell"
-                cellTitle = L10n.confirmUsername
-                cellTitleColor = ThemeService.shared.theme.successColor
-            } else if indexPath.item == 1 + confirmOffset {
-                cellTitle = L10n.email
-                if let email = user?.authentication?.local?.email {
-                    cellDetailText = email
+    func buildLoginMethodsSection() {
+        form +++ Section(L10n.Settings.loginMethods)
+        <<< LabelRow { row in
+            row.title = L10n.Settings.password
+            row.cellStyle = .subtitle
+            row.cellUpdate {[weak self] cell, _ in
+                cell.detailTextLabel?.text = self?.user?.authentication?.local?.email != nil ? "ᐧᐧᐧᐧᐧᐧᐧᐧᐧᐧ" : L10n.Settings.notSet
+                let label = UILabel()
+                if self?.user?.authentication?.hasLocalAuth == true {
+                    label.text = L10n.Settings.changePassword
                 } else {
-                    cellDetailText = "No Email set"
+                    label.text = L10n.Settings.addPassword
                 }
-            } else if indexPath.item == 2 + confirmOffset {
-                cellName = "ButtonCell"
-                if user?.authentication?.local?.email != nil {
-                    cellTitle = L10n.Settings.changePassword
+                label.textColor = ThemeService.shared.theme.ternaryTextColor
+                label.font = .systemFont(ofSize: 17)
+                cell.accessoryView = label
+            }.onCellSelection { _, _ in
+                self.showPasswordChangeAlert()
+            }
+        }
+        <<< LabelRow { row in
+            row.title = "Google"
+            row.cellStyle = .subtitle
+            row.cellUpdate {[weak self] cell, _ in
+                self?.configureSocialCell(cell: cell, email: self?.user?.authentication?.google?.emails.first, isConnected: self?.user?.authentication?.hasGoogleAuth)
+            }
+            row.onCellSelection { _, _ in
+                if self.user?.authentication?.hasGoogleAuth == true {
+                    self.disconnectSocial("google")
                 } else {
-                    cellTitle = L10n.Settings.addEmailAndPassword
+                    self.googleLoginButtonPressed()
                 }
-            } else if indexPath.item == 3 + confirmOffset {
-                cellTitle = L10n.Settings.loginMethods
-                var loginMethods = [String]()
-                if user?.authentication?.hasLocalAuth == true {
-                    loginMethods.append(L10n.Settings.local)
-                }
-                if user?.authentication?.facebookID != nil {
-                    loginMethods.append("Facebook")
-                }
-                if user?.authentication?.googleID != nil {
-                    loginMethods.append("Google")
-                }
-                if user?.authentication?.appleID != nil {
-                    loginMethods.append("Apple")
-                }
-                cellDetailText = loginMethods.joined(separator: ", ")
-            }
-        } else {
-            cellTitleColor = UIColor.red50
-            cellName = "ButtonCell"
-            if indexPath.item == 0 {
-                cellTitle = L10n.Settings.resetAccount
-            } else {
-                cellTitle = L10n.Settings.deleteAccount
             }
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellName, for: indexPath)
-        let textLabel = cell.viewWithTag(1) as? UILabel
-        textLabel?.text = cellTitle
-        textLabel?.textColor = cellTitleColor
-        if let text = cellDetailText {
-            cell.detailTextLabel?.text = text
-            cell.detailTextLabel?.textColor = ThemeService.shared.theme.secondaryTextColor
+        <<< LabelRow("facebookRow") { row in
+            row.title = "Facebook"
+            row.cellStyle = .subtitle
+            row.hidden = true
+            row.cellUpdate {[weak self] cell, _ in
+                self?.configureSocialCell(cell: cell, email: self?.user?.authentication?.facebook?.emails.first, isConnected: self?.user?.authentication?.hasFacebookAuth)
+            }
+            row.onCellSelection { _, _ in
+                if self.user?.authentication?.hasFacebookAuth == true {
+                    self.disconnectSocial("facebook")
+                }
+            }
         }
-        return cell
+        <<< LabelRow { row in
+            row.title = "Apple"
+            row.cellStyle = .subtitle
+            row.cellUpdate {[weak self] cell, _ in
+                self?.configureSocialCell(cell: cell, email: self?.user?.authentication?.apple?.emails.first, isConnected: self?.user?.authentication?.hasAppleAuth)
+            }
+            row.onCellSelection { _, _ in
+                if self.user?.authentication?.hasAppleAuth == true {
+                    self.disconnectSocial("apple")
+                } else {
+                    self.appleLoginButtonPressed()
+                }
+            }
+        }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        var confirmOffset = 0
-        if user?.flags?.verifiedUsername != true {
-            confirmOffset = 1
-        }
-        if indexPath.section == 0 {
-            if indexPath.item == 0 {
-                showLoginNameChangeAlert()
-            } else if indexPath.item == 1 && confirmOffset > 0 {
-                showConfirmUsernameAlert()
-            } else if indexPath.item == 1 + confirmOffset {
-                showEmailChangeAlert()
-            } else if indexPath.item == 2 + confirmOffset {
-                if user?.authentication?.hasLocalAuth == true {
-                    showPasswordChangeAlert()
-                } else {
-                    showAddLocalAuthAlert()
-                }
-            }
-        } else if indexPath.section == 1 {
-            if indexPath.item == 0 {
-                showResetAccountAlert()
-            } else {
-                showDeleteAccountAlert()
+    func buildPublicProfileSection() {
+        form +++ Section(L10n.Settings.publicProfile)
+        <<< LabelRow { row in
+            row.title = L10n.displayName
+            row.cellStyle = .subtitle
+            row.cellUpdate {[weak self] cell, _ in
+                cell.detailTextLabel?.text = self?.user?.profile?.name
+            }.onCellSelection { _, _ in
+                self.showEditAlert(title: L10n.Settings.changeDisplayName, message: "", value: self.user?.profile?.name, path: "profile.name")
             }
         }
+        <<< LabelRow { row in
+            row.title = L10n.aboutText
+            row.cellStyle = .subtitle
+            row.cellUpdate {[weak self] cell, _ in
+                cell.detailTextLabel?.text = self?.user?.profile?.blurb
+            }.onCellSelection { _, _ in
+                self.showEditAlert(title: L10n.Settings.changeAboutMessage, message: "", value: self.user?.profile?.blurb, path: "profile.blurb")
+            }
+        }
+        <<< LabelRow { row in
+            row.title = L10n.photoUrl
+            row.cellStyle = .subtitle
+            row.cellUpdate {[weak self] cell, _ in
+                cell.detailTextLabel?.text = self?.user?.profile?.photoUrl
+            }.onCellSelection { _, _ in
+                self.showEditAlert(title: L10n.Settings.changePhotoUrl, message: "", value: self.user?.profile?.photoUrl, path: "profile.url")
+            }
+        }
+    }
+    
+    func buildApiSection() {
+        form +++ Section(L10n.Settings.api)
+        <<< LabelRow { row in
+            row.title = L10n.userID
+            row.cellStyle = .subtitle
+            row.cellUpdate {[weak self] cell, _ in
+                cell.detailTextLabel?.text = self?.user?.id
+            }.onCellSelection { _, _ in
+                self.copyToClipboard(L10n.userID, value: self.user?.id)
+            }
+        }
+        <<< LabelRow { row in
+            row.title = L10n.apiKey
+            row.cellStyle = .subtitle
+            row.cellUpdate { cell, _ in
+                cell.detailTextLabel?.text = L10n.Settings.apiDisclaimer
+            }.onCellSelection { _, _ in
+                self.copyToClipboard(L10n.apiKey, value: AuthenticationManager.shared.currentUserKey)
+            }
+        }
+            <<< ButtonRow { row in
+                row.title = L10n.Settings.fixCharacterValues
+                row.presentationMode = .segueName(segueName: StoryboardSegue.Settings.fixValuesSegue.rawValue, onDismiss: nil)
+                row.cellUpdate({ (cell, _) in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.textLabel?.textAlignment = .natural
+                    cell.accessoryType = .disclosureIndicator
+                })
+            }
+        }
+    
+    func buildDangerSection() {
+        form +++ Section(L10n.Settings.dangerZone)
+        <<< ButtonRow { row in
+            row.title = L10n.Settings.resetAccount
+            row.cellUpdate({ (cell, _) in
+                cell.textLabel?.textColor = UIColor.red50
+            }).onCellSelection({ (_, _) in
+                self.showResetAccountAlert()
+            })
+        }
+        <<< ButtonRow { row in
+            row.title = L10n.Settings.deleteAccount
+            row.cellUpdate({ (cell, _) in
+                cell.textLabel?.textColor = UIColor.red50
+            }).onCellSelection({ (_, _) in
+                self.showDeleteAccountAlert()
+            })
+        }
+    }
+
+
+private func setUser(_ user: UserProtocol) {
+    isSettingUserData = true
+    if user.authentication?.hasFacebookAuth == true {
+        form.rowBy(tag: "facebookRow")?.hidden = false
+    } else {
+        form.rowBy(tag: "facebookRow")?.hidden = true
+    }
+    form.rowBy(tag: "facebookRow")?.evaluateHidden()
+    self.tableView.reloadData()
+    isSettingUserData = false
+}
+
+    private func copyToClipboard(_ name: String, value: String?) {
+        let pasteboard = UIPasteboard.general
+        pasteboard.string = value
+        ToastManager.show(text: L10n.copiedToClipboard, color: .blue)
+    }
+    
+    private func showEditAlert(title: String, message: String, value: String?, path: String) {
+        let alertController = HabiticaAlertController(title: title, message: message)
+        let textField = PaddedTextField()
+        configureTextField(textField)
+        textField.autocapitalizationType = .none
+        textField.spellCheckingType = .no
+        textField.text = value
+        textField.delegate = self
+        textField.addHeightConstraint(height: 50)
+        alertController.contentView = textField
+        alertController.addAction(title: L10n.change, isMainAction: true) {[weak self] _ in
+            if textField.text != value {
+                self?.userRepository.updateUser(key: path, value: textField.text).observeCompleted {}
+            }
+        }
+        alertController.addCancelAction()
+        alertController.show()
     }
     
     private func showDeleteAccountAlert() {
@@ -189,7 +320,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController, UITextFi
         }
         alertController.show()
     }
-    
+
     private func showResetAccountAlert() {
         let alertController = HabiticaAlertController(title: L10n.Settings.resetAccount)
         
@@ -210,7 +341,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController, UITextFi
         alertController.addCancelAction()
         alertController.show()
     }
-    
+
     private func showEmailChangeAlert() {
         if user?.authentication?.local?.email == nil {
             return
@@ -245,14 +376,10 @@ class AuthenticationSettingsViewController: BaseSettingsViewController, UITextFi
         alertController.addCancelAction()
         alertController.show()
     }
-    
+
     private func showLoginNameChangeAlert() {
         let title = L10n.Settings.changeUsername
         let alertController = HabiticaAlertController(title: title)
-        
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 16
         let loginNameTextField = PaddedTextField()
         loginNameTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.newUsername, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
         configureTextField(loginNameTextField)
@@ -261,8 +388,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController, UITextFi
         loginNameTextField.text = user?.username
         loginNameTextField.delegate = self
         loginNameTextField.addHeightConstraint(height: 50)
-        stackView.addArrangedSubview(loginNameTextField)
-        alertController.contentView = stackView
+        alertController.contentView = loginNameTextField
         
         alertController.addAction(title: L10n.change, isMainAction: true) {[weak self] _ in
             if let username = loginNameTextField.text {
@@ -272,7 +398,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController, UITextFi
         alertController.addCancelAction()
         alertController.show()
     }
-    
+
     private func showPasswordChangeAlert() {
         let alertController = HabiticaAlertController(title: L10n.Settings.changePassword)
         
@@ -305,7 +431,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController, UITextFi
         alertController.addCancelAction()
         alertController.show()
     }
-    
+
     private func showAddLocalAuthAlert() {
         let alertController = HabiticaAlertController(title: L10n.Settings.addEmailAndPassword)
         
@@ -380,7 +506,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController, UITextFi
         alertController.addCancelAction()
         alertController.show()
     }
-    
+
     private func showConfirmUsernameAlert() {
         let alertController = HabiticaAlertController(title: L10n.Settings.confirmUsernamePrompt, message: L10n.Settings.confirmUsernameDescription)
         alertController.addAction(title: L10n.confirm, isMainAction: true) {[weak self] _ in
@@ -391,7 +517,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController, UITextFi
         alertController.addCancelAction()
         alertController.show()
     }
-    
+
     private func configureTextField(_ textField: PaddedTextField) {
         textField.borderStyle = .none
         textField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
@@ -401,10 +527,9 @@ class AuthenticationSettingsViewController: BaseSettingsViewController, UITextFi
         textField.textInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         textField.textColor = ThemeService.shared.theme.secondaryTextColor
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
 }
-

@@ -68,10 +68,8 @@ internal enum StoryboardSegue {
     case unwindToList
   }
   internal enum Settings: String, SegueType {
-    case apiSegue = "APISegue"
-    case authenticationSegue = "AuthenticationSegue"
     case fixValuesSegue = "FixValuesSegue"
-    case profileSegue = "ProfileSegue"
+    case accountSegue
   }
   internal enum Shop: String, SegueType {
     case buyModal

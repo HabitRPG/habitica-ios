@@ -41,9 +41,48 @@ class RealmAuthentication: Object, AuthenticationProtocol {
     @objc dynamic var realmLocal: RealmLocalAuthentication?
     
     @objc dynamic var id: String?
-    @objc dynamic var facebookID: String?
-    @objc dynamic var googleID: String?
-    @objc dynamic var appleID: String?
+    var google: SocialAuthenticationProtocol? {
+        get {
+            return realmGoogle
+        }
+        set {
+            if let value = newValue as? RealmSocialAuthentication {
+                realmGoogle = value
+            }
+            if let value = newValue {
+                realmGoogle = RealmSocialAuthentication(userID: id, protocolObject: value)
+            }
+        }
+    }
+    @objc dynamic var realmGoogle: RealmSocialAuthentication?
+    var apple: SocialAuthenticationProtocol? {
+        get {
+            return realmApple
+        }
+        set {
+            if let value = newValue as? RealmSocialAuthentication {
+                realmApple = value
+            }
+            if let value = newValue {
+                realmApple = RealmSocialAuthentication(userID: id, protocolObject: value)
+            }
+        }
+    }
+    @objc dynamic var realmApple: RealmSocialAuthentication?
+    var facebook: SocialAuthenticationProtocol? {
+        get {
+            return realmFacebook
+        }
+        set {
+            if let value = newValue as? RealmSocialAuthentication {
+                realmFacebook = value
+            }
+            if let value = newValue {
+                realmFacebook = RealmSocialAuthentication(userID: id, protocolObject: value)
+            }
+        }
+    }
+    @objc dynamic var realmFacebook: RealmSocialAuthentication?
     override static func primaryKey() -> String {
         return "id"
     }
@@ -53,8 +92,8 @@ class RealmAuthentication: Object, AuthenticationProtocol {
         self.id = userID
         timestamps = protocolObject.timestamps
         local = protocolObject.local
-        facebookID = protocolObject.facebookID
-        googleID = protocolObject.googleID
-        appleID = protocolObject.appleID
+        facebook = protocolObject.facebook
+        google = protocolObject.google
+        apple = protocolObject.apple
     }
 }

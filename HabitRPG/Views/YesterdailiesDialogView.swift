@@ -12,7 +12,6 @@ import ReactiveSwift
 
 class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableViewDataSource, Themeable {
 
-    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var yesterdailiesHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var yesterdailiesTableView: UITableView!
     @IBOutlet weak var checkinCountView: UILabel!
@@ -72,9 +71,8 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         if let window = view.window {
-            heightConstraint.constant = window.frame.size.height - 300
+            yesterdailiesHeightConstraint.constant = window.frame.size.height - 300
         }
-            yesterdailiesHeightConstraint.constant = yesterdailiesTableView.contentSize.height
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {

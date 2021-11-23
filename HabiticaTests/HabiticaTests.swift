@@ -1,0 +1,14 @@
+//
+//  HabiticaTests.swift
+//  HabiticaTests
+//
+//  Created by Phillip Thelen on 22.11.21.
+//  Copyright © 2021 HabitRPG Inc. All rights reserved.
+//
+
+import Foundation
+import FBSnapshotTestCase
+
+class HabiticaTests: FBSnapshotTestCase {
+    
+}

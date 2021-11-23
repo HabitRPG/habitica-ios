@@ -41,7 +41,6 @@ class TaskDetailLineViewTests: HabiticaTests {
     func testDefaultEmpty() {
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
-        expect(self.taskDetailLine.tagIconView.isHidden) == true
         expect(self.taskDetailLine.reminderIconView.isHidden) == true
         expect(self.taskDetailLine.streakIconView.isHidden) == true
         expect(self.taskDetailLine.hasContent) == false
@@ -51,7 +50,6 @@ class TaskDetailLineViewTests: HabiticaTests {
         task.tags = [MockTag()]
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
-        expect(self.taskDetailLine.tagIconView.isHidden) == false
         expect(self.taskDetailLine.reminderIconView.isHidden) == true
         expect(self.taskDetailLine.streakIconView.isHidden) == true
     }
@@ -60,7 +58,6 @@ class TaskDetailLineViewTests: HabiticaTests {
         task.challengeID = "challengeId"
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == false
-        expect(self.taskDetailLine.tagIconView.isHidden) == true
         expect(self.taskDetailLine.reminderIconView.isHidden) == true
         expect(self.taskDetailLine.streakIconView.isHidden) == true
     }
@@ -69,7 +66,6 @@ class TaskDetailLineViewTests: HabiticaTests {
         task.reminders = [MockReminder()]
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
-        expect(self.taskDetailLine.tagIconView.isHidden) == true
         expect(self.taskDetailLine.reminderIconView.isHidden) == false
         expect(self.taskDetailLine.streakIconView.isHidden) == true
     }
@@ -79,7 +75,6 @@ class TaskDetailLineViewTests: HabiticaTests {
         task.type = "daily"
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
-        expect(self.taskDetailLine.tagIconView.isHidden) == true
         expect(self.taskDetailLine.reminderIconView.isHidden) == true
         expect(self.taskDetailLine.streakIconView.isHidden) == false
         expect(self.taskDetailLine.streakLabel.text) == "2"
@@ -89,7 +84,6 @@ class TaskDetailLineViewTests: HabiticaTests {
         task.streak = 0
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
-        expect(self.taskDetailLine.tagIconView.isHidden) == true
         expect(self.taskDetailLine.reminderIconView.isHidden) == true
         expect(self.taskDetailLine.streakIconView.isHidden) == true
     }
@@ -99,7 +93,6 @@ class TaskDetailLineViewTests: HabiticaTests {
         task.type = "todo"
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
-        expect(self.taskDetailLine.tagIconView.isHidden) == true
         expect(self.taskDetailLine.reminderIconView.isHidden) == true
         expect(self.taskDetailLine.streakIconView.isHidden) == true
         expect(self.taskDetailLine.calendarIconView.isHidden) == false
@@ -111,7 +104,6 @@ class TaskDetailLineViewTests: HabiticaTests {
         task.type = "todo"
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
-        expect(self.taskDetailLine.tagIconView.isHidden) == true
         expect(self.taskDetailLine.reminderIconView.isHidden) == true
         expect(self.taskDetailLine.streakIconView.isHidden) == true
         expect(self.taskDetailLine.calendarIconView.isHidden) == false
@@ -123,7 +115,6 @@ class TaskDetailLineViewTests: HabiticaTests {
         task.type = "todo"
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
-        expect(self.taskDetailLine.tagIconView.isHidden) == true
         expect(self.taskDetailLine.reminderIconView.isHidden) == true
         expect(self.taskDetailLine.streakIconView.isHidden) == true
         expect(self.taskDetailLine.calendarIconView.isHidden) == false
@@ -132,6 +123,10 @@ class TaskDetailLineViewTests: HabiticaTests {
 }
 
 class TestTask: TaskProtocol {
+    var challengeBroken: String?
+    
+    var history: [TaskHistoryProtocol] = []
+    
     var isValid: Bool = true
     
     var nextDue: [Date] = []
@@ -172,12 +167,20 @@ class TestTask: TaskProtocol {
 }
 
 class MockTag: TagProtocol {
+    var isValid: Bool = true
+    
     var id: String?
     var text: String?
     var order: Int = 0
 }
 
 class MockReminder: ReminderProtocol {
+    func detached() -> ReminderProtocol {
+        return self
+    }
+    
+    var isValid: Bool = true
+    
     var id: String?
     var startDate: Date?
     var time: Date?

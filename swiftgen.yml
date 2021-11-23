@@ -17,8 +17,3 @@ ib:
       output: HabitRPG/Generated/Storyboard Scenes.swift
     - templateName: segues-swift4
       output: HabitRPG/Generated/Storyboard Segues.swift
-files:
-  inputs: HabitRPG/sprites
-  outputs:
-    templateName: flat-swift5
-    output: HabitRPG/Generated/Sprites.swift

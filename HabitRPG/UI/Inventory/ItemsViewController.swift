@@ -47,6 +47,11 @@ class ItemsViewController: BaseTableViewController {
         }
     }
     
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        tableView.backgroundColor = theme.contentBackgroundColor
+    }
+    
     override func populateText() {
         navigationItem.title = L10n.Titles.items
     }

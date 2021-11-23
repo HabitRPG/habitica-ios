@@ -14,7 +14,7 @@ import Habitica_Models
 import ColorPickerRow
 
 enum SettingsTags {
-    static let authentication = "authentication"
+    static let myAccount = "myAccount"
     static let dailyReminder = "dailyReminder"
     static let dailyReminderTime = "dailyReminderTime"
     static let displayNotificationsBadge = "displayNotificationsBadge"
@@ -93,18 +93,33 @@ class SettingsViewController: FormViewController, Themeable {
             self?.setUser(user)
         }).start())
         
+        LabelRow.defaultCellUpdate = { cell, _ in
+            cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+            cell.detailTextLabel?.textColor = ThemeService.shared.theme.ternaryTextColor
+            cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        }
         ButtonRow.defaultCellUpdate = { cell, _ in
+            cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
             cell.tintColor = ThemeService.shared.theme.tintColor
+            cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         }
         TimeRow.defaultCellUpdate = { cell, _ in
             cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+            cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
+            cell.tintColor = ThemeService.shared.theme.tintColor
+            cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        }
+        SwitchRow.defaultCellUpdate = { cell, _ in
+            cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+            cell.tintColor = ThemeService.shared.theme.tintColor
+            cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         }
         
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
     }
     
     func applyTheme(theme: Theme) {
-        tableView.backgroundColor = theme.windowBackgroundColor
+        tableView.backgroundColor = theme.contentBackgroundColor
         tableView.reloadData()
     }
     
@@ -147,6 +162,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.cellUpdate({ (cell, _) in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.textLabel?.textAlignment = .natural
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 })
                 row.onChange({ (row) in
                     UserDefaults().set(row.value?.value, forKey: "chosenServer")
@@ -158,21 +174,11 @@ class SettingsViewController: FormViewController, Themeable {
     
     private func setupUserSection() {
         form +++ Section(L10n.Settings.user)
-            <<< ButtonRow { row in
-                row.title = L10n.Settings.profile
-                row.presentationMode = .segueName(segueName: StoryboardSegue.Settings.profileSegue.rawValue, onDismiss: nil)
-                row.cellUpdate({ (cell, _) in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.textLabel?.textAlignment = .natural
-                    cell.accessoryType = .disclosureIndicator
-                })
-            }
-            <<< ButtonRow(SettingsTags.authentication) { row in
-                row.title = L10n.Settings.authentication
-                row.presentationMode = .segueName(segueName: StoryboardSegue.Settings.authenticationSegue.rawValue, onDismiss: nil)
+            <<< ButtonRow(SettingsTags.myAccount) { row in
+                row.title = L10n.Settings.myAccount
+                row.presentationMode = .segueName(segueName: StoryboardSegue.Settings.accountSegue.rawValue, onDismiss: nil)
                 row.cellStyle = UITableViewCell.CellStyle.subtitle
                 row.cellUpdate({[weak self] (cell, _) in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.textLabel?.textAlignment = .natural
                     cell.accessoryType = .disclosureIndicator
                     if self?.user?.isValid == true && self?.user?.flags?.verifiedUsername == false {
@@ -183,36 +189,19 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
             }
-            <<< ButtonRow { row in
-                row.title = L10n.Settings.api
-                row.presentationMode = .segueName(segueName: StoryboardSegue.Settings.apiSegue.rawValue, onDismiss: nil)
-                row.cellUpdate({ (cell, _) in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.textLabel?.textAlignment = .natural
-                    cell.accessoryType = .disclosureIndicator
-                })
-            }
-            <<< ButtonRow { row in
-                row.title = L10n.Settings.fixCharacterValues
-                row.presentationMode = .segueName(segueName: StoryboardSegue.Settings.fixValuesSegue.rawValue, onDismiss: nil)
-                row.cellUpdate({ (cell, _) in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.textLabel?.textAlignment = .natural
-                    cell.accessoryType = .disclosureIndicator
-                })
-            }
             <<< ButtonRow(SettingsTags.changeClass) { row in
                 row.title = L10n.Settings.changeClass
                 row.cellUpdate({ (cell, _) in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.textLabel?.textAlignment = .justified
+                    cell.accessoryType = .disclosureIndicator
                 }).onCellSelection({[weak self] (_, _) in
                     self?.classSelectionButtonTapped()
                 })
             }
             <<< ButtonRow { row in
                 row.title = L10n.Settings.logOut
-                row.cellSetup({ (cell, _) in
-                    cell.tintColor = UIColor.red50
+                row.cellUpdate({ (cell, _) in
+                    cell.textLabel?.textColor = UIColor.red50
                 }).onCellSelection({ (_, _) in
                     self.userRepository.logoutAccount()
                     self.contentRepository.retrieveContent(force: true).observeCompleted {}
@@ -226,11 +215,6 @@ class SettingsViewController: FormViewController, Themeable {
         form +++ Section(L10n.Settings.reminder)
             <<< SwitchRow(SettingsTags.dailyReminder) { row in
                 row.title = L10n.Settings.dailyReminder
-                row.cellUpdate { cell, _ in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                }
                 }.onChange({[weak self] (row) in
                     if self?.isSettingUserData == true {
                         return
@@ -246,11 +230,6 @@ class SettingsViewController: FormViewController, Themeable {
                 row.hidden = Condition.function([SettingsTags.dailyReminder], { (form) -> Bool in
                     return (form.rowBy(tag: SettingsTags.dailyReminder) as? SwitchRow)?.value == false
                 })
-                row.cellUpdate { cell, _ in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                }
                 }.onChange({[weak self] (row) in
                     if self?.isSettingUserData == true {
                         return
@@ -264,11 +243,6 @@ class SettingsViewController: FormViewController, Themeable {
             +++ Section(L10n.Settings.notificationBadge)
             <<< SwitchRow(SettingsTags.displayNotificationsBadge) { row in
                 row.title = L10n.Settings.displayNotificationBadge
-                row.cellUpdate { cell, _ in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                }
                 }.onChange({[weak self] (row) in
                 if self?.isSettingUserData == true {
                     return
@@ -279,11 +253,6 @@ class SettingsViewController: FormViewController, Themeable {
             +++ Section(L10n.Settings.dayStart)
             <<< TimeRow(SettingsTags.customDayStart) { row in
                 row.title = L10n.Settings.customDayStart
-                row.cellUpdate { cell, _ in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                }
                 }.onCellHighlightChanged({[weak self] (_, row) in
                 if self?.isSettingUserData == true {
                     return
@@ -306,6 +275,7 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.options = [LabeledFormValue(value: true, label: L10n.Settings.searchableEverywhere),
                                LabeledFormValue(value: false, label: L10n.Settings.searchablePrivateSpaces)
@@ -323,11 +293,6 @@ class SettingsViewController: FormViewController, Themeable {
             +++ Section(L10n.Settings.social)
             <<< SwitchRow(SettingsTags.disableAllNotifications) { row in
                 row.title = L10n.Settings.disableAllNotifications
-                row.cellUpdate { cell, _ in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                }
                 row.onChange({[weak self] (row) in
                 if self?.isSettingUserData == true {
                     return
@@ -363,6 +328,7 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.onPresent({ (_, to) in
                     to.selectableRowCellUpdate = { cell, _ in
@@ -380,11 +346,6 @@ class SettingsViewController: FormViewController, Themeable {
             }
             <<< SwitchRow(SettingsTags.disableAllEmails) { row in
                 row.title = L10n.Settings.disableAllEmails
-                row.cellUpdate { cell, _ in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                }
                 row.onChange({[weak self] (row) in
                     if self?.isSettingUserData == true {
                         return
@@ -416,6 +377,7 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.onPresent({ (_, to) in
                     to.selectableRowCellUpdate = { cell, _ in
@@ -433,11 +395,6 @@ class SettingsViewController: FormViewController, Themeable {
             }
             <<< SwitchRow(SettingsTags.disablePrivateMessages) { row in
                 row.title = L10n.Settings.disablePm
-                row.cellUpdate { cell, _ in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                }
                 row.onChange({[weak self] (row) in
                     if row.value == self?.user?.inbox?.optOut {
                         return
@@ -457,6 +414,7 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.options = AppLanguage.allLanguages().map({ language -> LabeledFormValue<Int> in
                     return LabeledFormValue(value: language.rawValue, label: language.name)
@@ -483,6 +441,7 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.options = InitialScreens.allScreens.map({ screen -> LabeledFormValue<String> in
                     return LabeledFormValue(value: screen.rawValue, label: screen.niceName)
@@ -505,6 +464,7 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.options = SoundTheme.allThemes.map({ (theme) -> LabeledFormValue<String> in
                     return LabeledFormValue(value: theme.rawValue, label: theme.niceName)
@@ -532,6 +492,7 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.options = ThemeName.allNames.map({ (theme) -> LabeledFormValue<String> in
                     return LabeledFormValue(value: theme.rawValue, label: theme.niceName)
@@ -566,6 +527,7 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.hidden = Condition.function([SettingsTags.themeColor], { (form) -> Bool in
                     return (form.rowBy(tag: SettingsTags.themeColor) as? PushRow<LabeledFormValue<String>>)?.value?.value != "custom"
@@ -590,6 +552,7 @@ class SettingsViewController: FormViewController, Themeable {
                 cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                 cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                 cell.tintColor = ThemeService.shared.theme.tintColor
+                cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
             }
             row.options = ThemeMode.allModes.map({ (theme) -> LabeledFormValue<String> in
                 return LabeledFormValue(value: theme.rawValue, label: theme.niceName)
@@ -623,6 +586,7 @@ class SettingsViewController: FormViewController, Themeable {
                 cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                 cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                 cell.tintColor = ThemeService.shared.theme.tintColor
+                cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
             }
             row.options = AppIconName.allNames.map({ (name) -> String in
                 return name.rawValue
@@ -702,11 +666,6 @@ class SettingsViewController: FormViewController, Themeable {
         }) {
             (form.rowBy(tag: SettingsTags.soundTheme) as? PushRow<LabeledFormValue<String>>)?.value = LabeledFormValue(value: theme.rawValue, label: theme.niceName)
         }
-        
-        let authenticationRow = form.rowBy(tag: SettingsTags.authentication)
-        tableView.beginUpdates()
-        authenticationRow?.updateCell()
-        tableView.endUpdates()
         
         if let classRow = form.rowBy(tag: SettingsTags.changeClass) as? ButtonRow {
             if (user.stats?.level ?? 0) < 10 {

@@ -98,6 +98,7 @@
 		29A6B86C20690DF00086B2A6 /* RealmWeekRepeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B86B20690DF00086B2A6 /* RealmWeekRepeat.swift */; };
 		29ACED7425DD36FE00E1263D /* RealmGroupCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ACED7325DD36FE00E1263D /* RealmGroupCategory.swift */; };
 		29C38C8324A2339300F219A1 /* RealmUserAchievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8224A2339300F219A1 /* RealmUserAchievements.swift */; };
+		29DBDE50274D0048008F6777 /* RealmSocialAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE4F274D0048008F6777 /* RealmSocialAuthentication.swift */; };
 		29DBFEFB20CADB4100DF9CF2 /* RealmSpecialItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEFA20CADB4100DF9CF2 /* RealmSpecialItem.swift */; };
 		29DBFF0D20D15B0500DF9CF2 /* RealmUserNewMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0C20D15B0500DF9CF2 /* RealmUserNewMessages.swift */; };
 		29EBDA7C23290E7A006611E3 /* RealmInboxConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA7B23290E7A006611E3 /* RealmInboxConversation.swift */; };
@@ -210,6 +211,7 @@
 		29A6B86B20690DF00086B2A6 /* RealmWeekRepeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmWeekRepeat.swift; sourceTree = "<group>"; };
 		29ACED7325DD36FE00E1263D /* RealmGroupCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmGroupCategory.swift; sourceTree = "<group>"; };
 		29C38C8224A2339300F219A1 /* RealmUserAchievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUserAchievements.swift; sourceTree = "<group>"; };
+		29DBDE4F274D0048008F6777 /* RealmSocialAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSocialAuthentication.swift; sourceTree = "<group>"; };
 		29DBFEFA20CADB4100DF9CF2 /* RealmSpecialItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSpecialItem.swift; sourceTree = "<group>"; };
 		29DBFF0C20D15B0500DF9CF2 /* RealmUserNewMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUserNewMessages.swift; sourceTree = "<group>"; };
 		29EBDA7B23290E7A006611E3 /* RealmInboxConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInboxConversation.swift; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 				290B62552073D99E007287C4 /* RealmInbox.swift */,
 				2974BDAF20908BE500EC1A25 /* RealmInboxMessage.swift */,
 				290B6268207B9987007287C4 /* RealmLocalAuthentication.swift */,
+				29DBDE4F274D0048008F6777 /* RealmSocialAuthentication.swift */,
 				29323E592052F8C200AC6D6F /* RealmOutfit.swift */,
 				2974BDA4208E180100EC1A25 /* RealmOwnedCustomization.swift */,
 				290B629D207F7F34007287C4 /* RealmOwnedGear.swift */,
@@ -696,6 +699,7 @@
 				29323E5A2052F8C200AC6D6F /* RealmOutfit.swift in Sources */,
 				29323E3D205213EF00AC6D6F /* RealmFlags.swift in Sources */,
 				295E9DEE20B3331500D58D45 /* RealmShopCategory.swift in Sources */,
+				29DBDE50274D0048008F6777 /* RealmSocialAuthentication.swift in Sources */,
 				292F965E206E306E00804151 /* RealmGroup.swift in Sources */,
 				29323E312051FA8000AC6D6F /* RealmUser.swift in Sources */,
 				290279602057E957006DACB9 /* RealmFAQEntry.swift in Sources */,
