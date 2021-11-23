@@ -18,6 +18,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     var products: [SKProduct]?
     var user: UserProtocol?
     var expandedList = [Bool](repeating: false, count: 4)
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     private let userRepository = UserRepository()
     private let socialRepository = SocialRepository()
@@ -30,7 +31,8 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        doneButton.title = L10n.done
+
         let nib = UINib.init(nibName: "GemPurchaseView", bundle: nil)
         self.collectionView?.register(nib, forCellWithReuseIdentifier: "Cell")
         retrieveProductList()

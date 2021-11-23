@@ -91,7 +91,8 @@ public class TaskLocalRepository: BaseLocalRepository {
     }
     
     public func getTasks(userID: String, predicate: NSPredicate, sortKey: String) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
-        return RealmTask.findBy(predicate: NSCompoundPredicate(andPredicateWithSubpredicates: [NSPredicate(format: "ownerID == %@", userID), predicate])).sorted(key: sortKey).reactive().map({ (value, changeset) -> ReactiveResults<[TaskProtocol]> in
+        let sortProperties = [RealmSwift.SortDescriptor(keyPath: sortKey, ascending: true), RealmSwift.SortDescriptor(keyPath: "createdAt", ascending: false)]
+        return RealmTask.findBy(predicate: NSCompoundPredicate(andPredicateWithSubpredicates: [NSPredicate(format: "ownerID == %@", userID), predicate])).sorted(by: sortProperties).reactive().map({ (value, changeset) -> ReactiveResults<[TaskProtocol]> in
             return (value.map({ (task) -> TaskProtocol in return task }), changeset)
         })
     }
@@ -102,8 +103,8 @@ public class TaskLocalRepository: BaseLocalRepository {
         })
     }
     
-    public func getTags() -> SignalProducer<ReactiveResults<[TagProtocol]>, ReactiveSwiftRealmError> {
-        return RealmTag.findAll().sorted(key: "order").reactive().map({ (value, changeset) -> ReactiveResults<[TagProtocol]> in
+    public func getTags(userID: String) -> SignalProducer<ReactiveResults<[TagProtocol]>, ReactiveSwiftRealmError> {
+        return RealmTag.findBy(query: "userID == '\(userID)'").sorted(key: "order").reactive().map({ (value, changeset) -> ReactiveResults<[TagProtocol]> in
             return (value.map({ (tag) -> TagProtocol in return tag }), changeset)
         })
     }
@@ -116,7 +117,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     
     public func update(taskId: String, stats: StatsProtocol, direction: TaskScoringDirection, response: TaskResponseProtocol) {
         if response.level == 0 || response.level == nil {
-            //This can happen for team tasks that require approval.
+            // This can happen for team tasks that require approval.
             return
         }
         RealmTask.findBy(key: taskId).take(first: 1).skipNil().on(value: {[weak self] realmTask in
@@ -236,12 +237,11 @@ public class TaskLocalRepository: BaseLocalRepository {
         guard let tasks = realm?.objects(RealmTask.self).filter("type == %@", movedTask.type ?? "").sorted(byKeyPath: "order") else {
             return
         }
+        var taskArray = Array(tasks)
+        taskArray.move(fromOffsets: IndexSet(integer: movedTask.order), toOffset: toPosition)
+        
         updateCall { _ in
-            for task in tasks {
-                if task.id == movedTask.id {
-                    task.order = toPosition
-                    break
-                }
+            for task in taskArray {
                 task.order = taskOrder
                 taskOrder += 1
             }

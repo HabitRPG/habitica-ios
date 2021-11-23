@@ -235,10 +235,19 @@ struct FormDatePicker<TitleView: View>: View {
     }
 }
 
+public struct FormTextFieldStyle : TextFieldStyle {
+    // swiftlint:disable:next identifier_name
+    public func _body(configuration: TextField<Self._Label>) -> some View {
+        configuration
+            .padding(.horizontal, 8)
+            .padding(.vertical, 4)
+    }
+}
+
 struct DailySchedulingView: View {
     @Binding var startDate: Date?
     @Binding var frequency: String
-    @Binding var everyX: String
+    @Binding var everyX: Int
     
     @Binding var monday: Bool
     @Binding var tuesday: Bool
@@ -261,25 +270,25 @@ struct DailySchedulingView: View {
     private var suffix: String {
         switch frequency {
         case "daily":
-            if everyX == "1" {
+            if everyX == 1 {
                 return L10n.day
             } else {
                 return L10n.days
             }
         case "weekly":
-            if everyX == "1" {
+            if everyX == 1 {
                 return L10n.week
             } else {
                 return L10n.weeks
             }
         case "monthly":
-            if everyX == "1" {
+            if everyX == 1 {
                 return L10n.month
             } else {
                 return L10n.months
             }
         case "yearly":
-            if everyX == "1" {
+            if everyX == 1 {
                 return L10n.year
             } else {
                 return L10n.years
@@ -310,9 +319,8 @@ struct DailySchedulingView: View {
             Separator()
             FormSheetSelector(title: Text(L10n.Tasks.Form.repeats), value: $frequency, options: DailySchedulingView.dailyRepeatOptions)
             Separator()
-            FormRow(title: Text(L10n.Tasks.Form.every), valueLabel: HStack {
-                TextField("", text: $everyX).multilineTextAlignment(.trailing)
-                Text(suffix.localizedCapitalized)
+            NumberPickerFormView(title: Text(L10n.Tasks.Form.every), value: $everyX, minValue: 1, maxValue: 400, formatter: { value in
+                return "\(value) \(suffix.localizedCapitalized)"
             })
             if frequency == "weekly" {
                 Separator()
@@ -337,7 +345,7 @@ struct DailySchedulingView: View {
                 .transition(.move(edge: .top).combined(with: .opacity))
                 .padding(.horizontal, 12).padding(.top, 10)
             }
-            Text(TaskRepeatablesSummaryInteractor().repeatablesSummary(frequency: frequency, everyX: Int(everyX), monday: monday, tuesday: tuesday, wednesday: wednesday, thursday: thursday, friday: friday, saturday: saturday, sunday: sunday, startDate: startDate, daysOfMonth: nil, weeksOfMonth: nil))
+            Text(TaskRepeatablesSummaryInteractor().repeatablesSummary(frequency: frequency, everyX: everyX, monday: monday, tuesday: tuesday, wednesday: wednesday, thursday: thursday, friday: friday, saturday: saturday, sunday: sunday, startDate: startDate, daysOfMonth: nil, weeksOfMonth: nil))
                 .padding(.horizontal, 14)
                 .padding(.vertical, 8)
                 .font(.caption)
@@ -426,7 +434,7 @@ struct TaskFormChecklistView: View {
                         items.move(fromOffsets: source, toOffset: destination)
                     }
                     addButton
-                }.animation(.easeInOut)
+                }
             } else {
                 VStack {
                     ForEach(items, id: \.id) { item in
@@ -444,7 +452,7 @@ struct TaskFormChecklistView: View {
                     addButton
                 }
             }
-        }
+        }.animation(.easeInOut)
     }
 }
 
@@ -576,8 +584,8 @@ struct TaskFormReminderView: View {
                         .frame(maxWidth: .infinity).frame(height: 48)
                         .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
                 })
-            }.animation(.easeInOut)
-        }
+            }
+        }.animation(.easeInOut)
     }
 }
 
@@ -620,7 +628,7 @@ class TaskFormViewModel: ObservableObject {
     @Published var stat: String = "str"
     @Published var up: Bool = true
     @Published var down: Bool = false
-    @Published var everyX: String = "1"
+    @Published var everyX: Int = 1
     @Published var startDate: Date? = Date()
     @Published var dueDate: Date?
     @Published var selectedTags: [TagProtocol] = []
@@ -664,7 +672,7 @@ class TaskFormViewModel: ObservableObject {
             _value = Published(initialValue: String(task?.value ?? 1))
             _up = Published(initialValue: task?.up ?? true)
             _down = Published(initialValue: task?.down ?? false)
-            _everyX = Published(initialValue: String(task?.everyX ?? 1))
+            _everyX = Published(initialValue: task?.everyX ?? 1)
             _startDate = Published(initialValue: task?.startDate ?? Date())
             _dueDate = Published(initialValue: task?.duedate)
 
@@ -771,7 +779,8 @@ struct TaskFormView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var isEditingText = false
     @State private var isEditingNotes = false
-    
+    @State private var scrollViewContentOffset = CGFloat(0)
+
     var tags: [TagProtocol] = []
     
     @ObservedObject var viewModel: TaskFormViewModel
@@ -806,21 +815,22 @@ struct TaskFormView: View {
     private var textFields: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(L10n.title).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingText ? .semibold : .regular)).padding(.leading, 8)
-            TextField("", text: $viewModel.text, onEditingChanged: { isEditing in
+            MultilineTextField("", text: $viewModel.text, onCommit: {
+            }, onEditingChanged: { isEditing in
                 isEditingText = isEditing
-            })
+            }, giveInitialResponder: viewModel.isCreating,
+                               textColor: isEditingText ? viewModel.textFieldTintColor : viewModel.textFieldTintColor.opacity(0.75))
                 .padding(8)
                 .frame(minHeight: 40)
-                .foregroundColor(isEditingText ? viewModel.textFieldTintColor : viewModel.textFieldTintColor.opacity(0.75))
                 .background(viewModel.lightestTaskTintColor)
                 .cornerRadius(12)
             Text(L10n.notes).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingNotes ? .semibold : .regular)).padding(.leading, 8).padding(.top, 10)
-            TextField("", text: $viewModel.notes, onEditingChanged: { isEditing in
+            MultilineTextField("", text: $viewModel.notes, onEditingChanged: { isEditing in
                 isEditingNotes = isEditing
-            })
+            },
+                               textColor: isEditingNotes ? viewModel.textFieldTintColor : viewModel.textFieldTintColor.opacity(0.75))
                 .padding(8)
                 .frame(minHeight: 40)
-                .foregroundColor(isEditingNotes ? viewModel.textFieldTintColor : viewModel.textFieldTintColor.opacity(0.75))
                 .background(viewModel.lightestTaskTintColor)
                 .cornerRadius(12)
         }.padding(.horizontal, 16)
@@ -872,7 +882,10 @@ struct TaskFormView: View {
     
     var body: some View {
         let theme = ThemeService.shared.theme
-        ScrollView {
+        TrackableScrollView(contentOffset: $scrollViewContentOffset.onChange { value in
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+
+        }) {
             VStack {
                 VStack {
                     textFields
@@ -1031,7 +1044,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
         task.value = Float(viewModel.value) ?? 1
         task.up = viewModel.up
         task.down = viewModel.down
-        task.everyX = Int(viewModel.everyX) ?? 1
+        task.everyX = viewModel.everyX
         task.startDate = viewModel.startDate
         task.duedate = viewModel.dueDate
         task.tags = viewModel.selectedTags

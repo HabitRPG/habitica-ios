@@ -31,6 +31,7 @@ class ItemsViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cancelButton.title = L10n.cancel
         
         dataSource.tableView = tableView
         dataSource.itemType = itemType

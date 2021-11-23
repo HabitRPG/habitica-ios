@@ -12,13 +12,15 @@ class PromoWebViewController: BaseUIViewController, WKNavigationDelegate {
     
     @IBOutlet private var newsWebView: WKWebView!
     @IBOutlet private var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     private var userRepository = UserRepository()
     private var configRepository = ConfigRepository.shared
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        doneButton.title = L10n.done
+
         if var url = (configRepository.activePromotion() as? HabiticaWebPromotion)?.url {
             if url.absoluteString.contains("USER_ID") {
                 var urlString = url.absoluteString

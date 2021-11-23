@@ -63,7 +63,9 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
     }
     
     func getTags() -> SignalProducer<ReactiveResults<[TagProtocol]>, ReactiveSwiftRealmError> {
-        return localRepository.getTags()
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
+            return self?.localRepository.getTags(userID: userID) ?? SignalProducer.empty
+        })
     }
     
     func save(_ tasks: [TaskProtocol], order: [String: [String]]) {

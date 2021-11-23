@@ -16,10 +16,12 @@ class SkillsUserTableViewController: UITableViewController {
     @objc var selectedUserID: String?
     @objc var skill: SkillProtocol?
     @objc var item: ItemProtocol?
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         datasource.tableView = tableView
+        cancelButton.title = L10n.cancel
         
         navigationItem.title = L10n.Titles.chooseUser
     }

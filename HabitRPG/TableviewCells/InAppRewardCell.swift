@@ -12,7 +12,7 @@ import Habitica_Models
 class InAppRewardCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: NetworkImageView!
-    @IBOutlet weak var currencyView: HRPGCurrencyCountView!
+    @IBOutlet weak var currencyView: CurrencyCountView!
     @IBOutlet weak var infoImageView: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var pinnedIndicatorView: UIImageView!

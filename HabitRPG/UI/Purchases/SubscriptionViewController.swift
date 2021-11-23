@@ -31,6 +31,7 @@ class SubscriptionViewController: BaseTableViewController {
     @IBOutlet weak var subscriptionSupportLabel: UILabel!
     @IBOutlet weak var headerImage: UIImageView!
     @IBOutlet weak var promoBannerView: PromoBannerView!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     private var activePromo: HabiticaPromotion?
 
@@ -79,6 +80,7 @@ class SubscriptionViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        doneButton.title = L10n.done
         
         activePromo = configRepository.activePromotion()
         

@@ -29,9 +29,9 @@ class UserTopHeader: UIView, Themeable {
     @IBOutlet weak var classImageViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var classImageViewLabelSpacing: NSLayoutConstraint!
     
-    @IBOutlet weak var gemView: HRPGCurrencyCountView!
-    @IBOutlet weak var goldView: HRPGCurrencyCountView!
-    @IBOutlet weak var hourglassView: HRPGCurrencyCountView!
+    @IBOutlet weak var gemView: CurrencyCountView!
+    @IBOutlet weak var goldView: CurrencyCountView!
+    @IBOutlet weak var hourglassView: CurrencyCountView!
     
     private var contributorTier: Int = 0 {
         didSet {

@@ -13,12 +13,15 @@ import Habitica_Models
 
 import Habitica_Database
 
-class VerifyUsernameModalViewController: UIViewController {
+class VerifyUsernameModalViewController: UIViewController, Themeable {
     
     private let userRepository = UserRepository()
     private var currentUsername: String?
     
+    @IBOutlet weak var usernamePromptLabel: UILabel!
+    @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var displayNameTextField: UITextField!
+    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var displayNameIconView: UIImageView!
     @IBOutlet weak var usernameIconView: UIImageView!
@@ -27,6 +30,12 @@ class VerifyUsernameModalViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var footerTextView: UITextView!
+    
+    @IBOutlet weak var nameContainer: UIView!
+    @IBOutlet weak var displayNameContainer: UIView!
+    @IBOutlet weak var usernameContainer: UIView!
+    @IBOutlet weak var nameHorizontalSeparator: UIView!
+    @IBOutlet weak var nameVerticalSeparator: UIView!
     
     private var displaynameProperty = MutableProperty<String?>(nil)
     private var usernameProperty = MutableProperty<String?>(nil)
@@ -40,8 +49,9 @@ class VerifyUsernameModalViewController: UIViewController {
         usernameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50, percentage: 100)
         
         displayNameTextField.addTarget(self, action: #selector(displayNameChanged), for: .editingChanged)
-        usernameTextField.addTarget(self, action: #selector(usernameChanged), for: .editingChanged)
         
+        usernameTextField.addTarget(self, action: #selector(usernameChanged), for: .editingChanged)
+
         SignalProducer.combineLatest(displayNameChangeProducer(), usernameChangeProducer()).on(value: {[weak self] (displayNameUsable, usernameUsable) in
             self?.confirmButton.isEnabled = usernameUsable.isUsable && displayNameUsable
             var issues = usernameUsable.issues ?? []
@@ -58,6 +68,7 @@ class VerifyUsernameModalViewController: UIViewController {
         paragraphStyle.alignment = .center
         descriptionString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: descriptionString.length))
         descriptionTextView.attributedText = descriptionString
+        
         footerTextView.attributedText = formattedFooterString()
         
         userRepository.getUser().take(first: 1) .on(value: { user in
@@ -67,6 +78,28 @@ class VerifyUsernameModalViewController: UIViewController {
             self.usernameProperty.value = user.username
             self.currentUsername = user.username
         }).start()
+        
+        ThemeService.shared.addThemeable(themable: self)
+    }
+    
+    func applyTheme(theme: Theme) {
+        usernamePromptLabel.textColor = theme.backgroundTintColor
+        view.backgroundColor = theme.windowBackgroundColor
+        
+        errorLabel.textColor = theme.errorColor
+
+        displayNameLabel.textColor = theme.secondaryTextColor
+        usernameLabel.textColor = theme.secondaryTextColor
+        displayNameTextField.textColor = theme.primaryTextColor
+        usernameTextField.textColor = theme.primaryTextColor
+        displayNameIconView.tintColor = theme.successColor
+        usernameIconView.tintColor = theme.successColor
+        nameContainer.backgroundColor = theme.offsetBackgroundColor
+        nameContainer.borderColor = theme.tableviewSeparatorColor
+        displayNameContainer.backgroundColor = theme.contentBackgroundColor
+        usernameContainer.backgroundColor = theme.contentBackgroundColor
+        nameVerticalSeparator.backgroundColor = theme.tableviewSeparatorColor
+        nameHorizontalSeparator.backgroundColor = theme.tableviewSeparatorColor
     }
     
     private func displayNameChangeProducer() -> SignalProducer<Bool, Never> {

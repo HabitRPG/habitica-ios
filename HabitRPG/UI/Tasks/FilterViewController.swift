@@ -20,6 +20,7 @@ class FilterViewController: BaseTableViewController {
     @IBOutlet var clearButton: UIBarButtonItem!
     @IBOutlet var doneButton: UIBarButtonItem!
     @IBOutlet var toolBarSpace: UIBarButtonItem!
+    @IBOutlet weak var doneNavbarButton: UIBarButtonItem!
     
     private let headerView = UIView()
     private var filterTypeControl = UISegmentedControl()
@@ -28,6 +29,9 @@ class FilterViewController: BaseTableViewController {
         super.viewDidLoad()
         self.navigationItem.title = L10n.filter
         self.clearButton.title = L10n.clear
+        self.editButton.title = L10n.edit
+        self.doneButton.title = L10n.done
+        self.doneNavbarButton.title = L10n.done
         
         dataSource.tableView = tableView
         dataSource.selectedTagIds = selectedTags

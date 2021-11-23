@@ -65,8 +65,6 @@ internal enum StoryboardSegue {
     case showWebPromoSegue
     case subscriptionSegue
     case tasksBoardSegue
-    case unwindSaveSegue
-    case unwindSegue
     case unwindToList
   }
   internal enum Settings: String, SegueType {

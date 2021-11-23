@@ -41,7 +41,7 @@
 /* (No Comment) */
 "classes.mage" = "Čarobnjak";
 /* (No Comment) */
-"classes.mage_description" = "Čarobnjaci brzo uče te dobivajući na Iskustvu i Levelima brže od ostalih klasa. Također dobivaju jako puno Mane za korištenje svojih posebnih vještina. Igraj Čarobnjaka ako uživaš u taktičkim igračim aspektima Habitice ili ako ti podizanje levela i otključavanje naprednih mogućnosti daje jaku motivaciju! ";
+"classes.mage_description" = "Čarobnjaci brzo uče te dobivajući na Iskustvu i Levelima brže od ostalih klasa. Također dobivaju jako puno Mane za korištenje svojih posebnih vještina. Igraj Čarobnjaka ako uživaš u taktičkim igračim aspektima Habitice ili ako ti podizanje levela i otključavanje naprednih mogućnosti daje jaku motivaciju!";
 /* (No Comment) */
 "classes.rogue" = "Lupež";
 /* (No Comment) */
@@ -145,8 +145,6 @@
 /* (No Comment) */
 "inventory.hatched" = "Izlegao/la si novog ljubimca!";
 /* (No Comment) */
-"inventory.hatchedSharing" = "Upravo sam izvršavajući svoje zadatke u stvarnom životu izlegao/la ljubimca %@ %@ u Habitici!";
-/* (No Comment) */
 "inventory.no_gems_left" = "Ovaj mjesec nemaš više dostupnih Dragulja. Više ih postane dostupno unutar prva 3 dana svakog mjeseca.";
 /* (No Comment) */
 "inventory.number_gems_left" = "Preostalo mjesečnih Dragulja: %d/%d";
@@ -175,43 +173,17 @@
 /* (No Comment) */
 "member.member_since" = "Član od";
 /* (No Comment) */
-"menu.about" = "Više o";
-/* (No Comment) */
-"menu.cast_spells" = "Bacaj Čarolije";
-/* (No Comment) */
-"menu.challenges" = "Izazovi";
-/* (No Comment) */
 "menu.customize_avatar" = "Uredi Avatara";
-/* (No Comment) */
-"menu.equipment" = "Oprema";
-/* (No Comment) */
-"menu.gems_subscriptions" = "Dragulji & Pretplate";
-/* (No Comment) */
-"menu.guilds" = "Cehovi";
 /* (No Comment) */
 "menu.help_faq" = "Pomoć & ČPP";
 /* (No Comment) */
 "menu.inventory" = "Inventar";
-/* (No Comment) */
-"menu.items" = "Artikli";
-/* (No Comment) */
-"menu.news" = "Vijesti";
-/* (No Comment) */
-"menu.party" = "Družina";
 /* (No Comment) */
 "menu.select_class" = "Odaberi Klasu";
 /* (No Comment) */
 "menu.shops" = "Dućani";
 /* (No Comment) */
 "menu.social" = "Društvene mreže";
-/* (No Comment) */
-"menu.stable" = "Staja";
-/* (No Comment) */
-"menu.stats" = "Statistike";
-/* (No Comment) */
-"menu.tavern" = "Krčma";
-/* (No Comment) */
-"menu.use_skills" = "Koristi Vještine";
 /* (No Comment) */
 "monthly" = "Mjesečno";
 /* (No Comment) */
@@ -335,8 +307,6 @@
 /* (No Comment) */
 "settings.profile" = "Profil";
 /* (No Comment) */
-"settings.push_notifications" = "Push notifikacije";
-/* (No Comment) */
 "settings.reload_content" = "Ponovno učitaj sadržaj";
 /* (No Comment) */
 "settings.reminder" = "Podsjetnik";
@@ -402,10 +372,6 @@
 "stats.points_to_allocate" = "%d bodova za raspodjelu";
 /* (No Comment) */
 "summary" = "Sažetak";
-/* (No Comment) */
-"sync_error" = "Greška u sinkroniziranju";
-/* (No Comment) */
-"sync_error_message" = "Došlo je do greške prilikom sinkroniziranja nekih promjena.";
 /* (No Comment) */
 "tags" = "Oznake";
 /* (No Comment) */
@@ -548,7 +514,6 @@
 "titles.faq" = "Pitanja";
 "titles.about" = "Otprilike u";
 "titles.news" = "Novosti";
-"titles.stable" = "Staja";
 "titles.pets" = "Kućni ljubimci";
 "titles.mounts" = "Nosači";
 "titles.tavern" = "Taverna";
@@ -577,4 +542,4 @@
 "stats.character_build_text" = "Svaka razina zarađuje jednu točku za dodjeljivanje atributa po vašem izboru. To možete učiniti ručno ili pustiti da se igra odluči za vas koristeći jednu od opcija automatske alokacije.";
 "stats.stat_guide" = "Statistički vodič";
 "stats.strength_title" = "Sila";
-"stats.strength_text" = "Povećava bonus kritičnih udaraca i čini ih vjerojatnijim kada se postigne zadatak. Također povećava štete koje se isplaćuju šefovima. ";
+"stats.strength_text" = "Povećava bonus kritičnih udaraca i čini ih vjerojatnijim kada se postigne zadatak. Također povećava štete koje se isplaćuju šefovima.";
