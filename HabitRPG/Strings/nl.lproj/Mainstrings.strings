@@ -919,7 +919,6 @@
 "tasks.repeats.repeats_every" = "Herhaalt elke %@";
 "tasks.repeats.repeats_every_on" = "Herhaalt elke %@ op %@";
 "tasks.every_x" = "elke %d %@";
-"tasks.due_x" = "Moet %@ gedaan zijn";
 "tasks.due_in_x_days" = "Moet over %d dagen gedaan zijn";
 "tasks.due_tomorrow" = "Moet morgen gedaan zijn";
 "tasks.due_today" = "Moet vandaag gedaan zijn";

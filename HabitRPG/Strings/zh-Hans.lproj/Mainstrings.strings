@@ -358,7 +358,6 @@
 "tasks.due_today" = "今天到期";
 "tasks.due_tomorrow" = "明天到期";
 "tasks.due_in_x_days" = "%d天后到期";
-"tasks.due_x" = "%@ 到期";
 "tasks.every_x" = "每 %d %@";
 "tasks.repeats.repeats_every_on" = "重复 %@ 在 %@";
 "tasks.repeats.repeats_every" = "%@ 重复";

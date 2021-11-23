@@ -814,10 +814,10 @@
 "stats.total" = "Total";
 "stats.strength_text" = "Aumenta el bonus de golpes críticos y los hace más probables cuando completas una tarea. También aumenta el daño infligido a los jefes.";
 "tasks.team" = "Equipo";
-"tasks.due_today" = "Vence hoy";
-"tasks.due_tomorrow" = "Vence mañana";
-"tasks.due_in_x_days" = "Vence en %d días";
-"tasks.due_x" = "Vence %@";
+"tasks.due_today" = "Hoy";
+"tasks.due_tomorrow" = "Mañana";
+"tasks.due_in_x_days" = "En %d días";
+"tasks.every_x" = "cada %@";
 "tasks.every_x" = "cada %d %@";
 "tasks.repeats.repeats_every_on" = "Se repite %@ de %@";
 "tasks.repeats.repeats_every" = "Se repite %@";

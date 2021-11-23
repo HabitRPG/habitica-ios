@@ -159,10 +159,9 @@
 "tasks.chores" = "Chores";
 "tasks.creativity" = "Creativity";
 "tasks.add_x" = "Add %@";
-"tasks.due_today" = "Due today";
-"tasks.due_tomorrow" = "Due tomorrow";
-"tasks.due_in_x_days" = "Due in %d days";
-"tasks.due_x" = "Due %@";
+"tasks.due_today" = "Today";
+"tasks.due_tomorrow" = "Tomorrow";
+"tasks.due_in_x_days" = "In %d days";
 "tasks.every_x" =  "every %d %@";
 "tasks.repeats.repeats_every_on" = "Repeats %@ on %@";
 "tasks.repeats.repeats_every" = "Repeats %@";

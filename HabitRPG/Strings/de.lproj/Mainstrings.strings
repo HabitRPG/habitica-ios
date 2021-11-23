@@ -827,10 +827,10 @@
 "titles.skills" = "Fähigkeiten";
 "titles.gift_subscription" = "Abonnement verschenken";
 "tasks.team" = "Team";
-"tasks.due_tomorrow" = "Morgen fällig";
-"tasks.due_in_x_days" = "in %d Tagen fällig";
-"stats.strength_text" = "Erhöht die Wahrscheinlichkeit und den Bonus von kritischen Treffern, wenn Du eine Aufgabe erledigst. Außerdem wird der Schaden gegen Bosse erhöht.";
-"tasks.due_today" = "Heute fällig";
+"tasks.due_tomorrow" = "Morgen";
+"tasks.due_in_x_days" = "in %d Tagen";
+"stats.strength_text" = "Erhöht die Wahrscheinlichkeit und den Bonus von kritischen Treffen wenn Du eine Aufgabe erledigst. Außerdem wird der Schaden gegen Bosse erhöht. ";
+"tasks.due_today" = "Heute";
 "settings.change_about_message" = "Info ändern";
 "settings.reset_account_description" = "ACHTUNG! Diese Funktion setzt große Teile Deines Kontos zurück. Es ist wirklich nicht zu empfehlen, aber manche Leute finden es praktisch, nachdem sie sich etwas in Habitica umgeschaut haben.\n\nDu wirst alle Deine Levels, Dein Gold und Deine Erfahrungspunkte verlieren. Alle Deine Aufgaben (außer diejenigen von Herausforderungen) und alle gespeicherten Daten in den Aufgaben werden dauerhaft gelöscht. Du wirst Deine gesamte Ausrüstung verlieren aber Du kannst sie erneut kaufen. Das schließt auch die limitierte Ausrüstung und die mysteriösen Gegenstände von Abonnenten ein, die Du bereits besitzt (Du musst allerdings die richtige Klasse haben, um klassen-spezifische Gegenstände erneut zu kaufen). Du wirst Deine aktuelle Klasse und Deine Haus- und Reittiere behalten. Statt Dein Konto zurückzusetzen kannst Du auch eine Kugel der Wiedergeburt einsetzen; das ist eine sicherere Option, bei der Du Deine Aufgaben und Deine Ausrüstung behältst.";
 "settings.confirm_new_password" = "Neues Passwort bestätigen";
@@ -853,7 +853,6 @@
 "repeat_password" = "Passwort wiederholen";
 "username_prompt_wiki" = "Wenn Du mehr über diese Änderung wissen möchtest, #<wk>besuche unser Wiki.#";
 "buy_reward" = "Du hast '%@' für %@ Gold gekauft";
-"tasks.due_x" = "Fällig %@";
 "tasks.every_x" = "jeden %d %@";
 "tasks.repeats.repeats_every_on" = "Wiederholt %@ am %@";
 "tasks.repeats.repeats_every" = "Wiederholt %@";

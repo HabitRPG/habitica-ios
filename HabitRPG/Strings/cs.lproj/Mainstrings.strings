@@ -546,10 +546,9 @@
 "tasks.form.accessibility.enable" = "Aktivuj %@";
 "tasks.form.accessibility.disable" = "Deaktivuj %@";
 "tasks.team" = "Tým";
-"tasks.due_today" = "Splnit do dneška";
-"tasks.due_tomorrow" = "Splnit do zítra";
-"tasks.due_in_x_days" = "Splnit do %d dní";
-"tasks.due_x" = "Do %@";
+"tasks.due_today" = "Splněno do dneška";
+"tasks.due_tomorrow" = "Splněno do zítra";
+"tasks.due_in_x_days" = "má být splněno za %d  dní";
 "tasks.every_x" = "každý %d %@";
 "tasks.repeats.repeats_every_on" = "Opakuj %@ v %@";
 "tasks.repeats.repeats_every" = "Opakuj %@";

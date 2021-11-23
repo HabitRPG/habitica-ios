@@ -11,18 +11,30 @@ import Habitica_Models
 
 class TodoTableViewDataSource: TaskTableViewDataSource {
     
-    let dateFormatter = DateFormatter()
+    let monthDayFormatter = DateFormatter()
+    let shortLocalizedFormatter = DateFormatter()
     
     init(predicate: NSPredicate) {
         super.init(predicate: predicate, taskType: TaskType.todo)
         
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
+        monthDayFormatter.dateStyle = .none
+        monthDayFormatter.timeStyle = .none
+        monthDayFormatter.setLocalizedDateFormatFromTemplate("MMMd")
+        
+        guard let preferredLocale = Locale.preferredLanguages.first else {
+            return
+        }
+        shortLocalizedFormatter.dateStyle = .none
+        shortLocalizedFormatter.timeStyle = .none
+        shortLocalizedFormatter.locale = Locale.init(identifier: preferredLocale)
+        shortLocalizedFormatter.setLocalizedDateFormatFromTemplate("yy-MM-dd")
     }
     
     override func configure(cell: TaskTableViewCell, indexPath: IndexPath, task: TaskProtocol) {
         if let todocell = cell as? ToDoTableViewCell {
-            todocell.taskDetailLine.dateFormatter = dateFormatter
+            todocell.taskDetailLine.monthDayFormatter = monthDayFormatter
+            todocell.taskDetailLine.shortLocalizedFormatter = shortLocalizedFormatter
+            
             todocell.checkboxTouched = {[weak self] in
                 if !task.isValid {
                     return
