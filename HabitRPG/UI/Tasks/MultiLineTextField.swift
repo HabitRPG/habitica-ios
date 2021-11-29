@@ -14,8 +14,8 @@ fileprivate struct UITextViewWrapper: UIViewRepresentable {
 
     @Binding var text: String
     @Binding var calculatedHeight: CGFloat
-    var onDone: (() -> Void)? = nil
-    var onEditingChanged: ((Bool) -> Void)? = nil
+    var onDone: (() -> Void)?
+    var onEditingChanged: ((Bool) -> Void)?
     var giveInitialResponder = false
     var textColor = UIColor.black
 
@@ -113,14 +113,14 @@ fileprivate struct UITextViewWrapper: UIViewRepresentable {
 struct MultilineTextField: View {
 
     private var placeholder: String
-    private var onCommit: (() -> Void)? = nil
-    private var onEditingChanged: ((Bool) -> Void)? = nil
+    private var onCommit: (() -> Void)?
+    private var onEditingChanged: ((Bool) -> Void)?
     private var giveInitialResponder = false
     private var textColor: Color
 
     @Binding private var text: String
     private var internalText: Binding<String> {
-        Binding<String>(get: { self.text } ) {
+        Binding<String>(get: { self.text }) {
             self.text = $0
         }
     }
@@ -144,10 +144,10 @@ struct MultilineTextField: View {
 
 #if DEBUG
 struct MultilineTextField_Previews: PreviewProvider {
-    static var test:String = ""//some very very very long description string to be initially wider than screen"
+    static var test: String = ""// some very very very long description string to be initially wider than screen"
     static var testBinding = Binding<String>(get: { test }, set: {
 //        print("New value: \($0)")
-        test = $0 } )
+        test = $0 })
 
     static var previews: some View {
         VStack(alignment: .leading) {

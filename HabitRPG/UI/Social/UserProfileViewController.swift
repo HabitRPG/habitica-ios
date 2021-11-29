@@ -446,11 +446,11 @@ class UserProfileViewController: BaseTableViewController {
         } else if segue.identifier == StoryboardSegue.Social.giftSubscriptionSegue.rawValue {
             let navigationController = segue.destination as? UINavigationController
             let giftViewController = navigationController?.topViewController as? GiftSubscriptionViewController
-            giftViewController?.giftRecipientUsername = username
+            giftViewController?.giftRecipientUsername = username ?? userID
         } else if segue.identifier == StoryboardSegue.Social.giftGemsSegue.rawValue {
                    let navigationController = segue.destination as? UINavigationController
                    let giftViewController = navigationController?.topViewController as? GiftGemsViewController
-                   giftViewController?.giftRecipientUsername = username
+                   giftViewController?.giftRecipientUsername = username ?? userID
                }
     }
     @IBAction func showOverflowMenu(_ sender: Any) {
