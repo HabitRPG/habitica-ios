@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 
-class RealmUserStyle: Object, UserStyleProtocol {
+class RealmUserStyle: BaseModel, UserStyleProtocol {
     @objc dynamic var id: String?
     var items: UserItemsProtocol? {
         get {
@@ -57,11 +57,7 @@ class RealmUserStyle: Object, UserStyleProtocol {
         }
     }
     @objc dynamic var realmStats: RealmStats?
-    
-    var isValid: Bool {
-        return !isInvalidated
-    }
-    
+
     override static func primaryKey() -> String {
         return "id"
     }

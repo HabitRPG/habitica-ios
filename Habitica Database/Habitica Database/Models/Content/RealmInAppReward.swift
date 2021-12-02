@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 
-class RealmInAppReward: Object, InAppRewardProtocol {
+class RealmInAppReward: BaseModel, InAppRewardProtocol {
     @objc dynamic var combinedKey: String?
     @objc dynamic var userID: String?
     @objc dynamic var key: String?
@@ -39,11 +39,7 @@ class RealmInAppReward: Object, InAppRewardProtocol {
         return realmCategory.first
     }
     var realmCategory = LinkingObjects(fromType: RealmShopCategory.self, property: "realmItems")
-    
-    var isValid: Bool {
-        return !isInvalidated
-    }
-    
+
     override static func primaryKey() -> String {
         return "combinedKey"
     }

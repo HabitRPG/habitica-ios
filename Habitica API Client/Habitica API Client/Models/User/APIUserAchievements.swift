@@ -12,6 +12,7 @@ import Habitica_Models
 class APIUserAchievements: UserAchievementsProtocol, Decodable {
     
     var isValid: Bool = true
+    var isManaged: Bool = false
     
     var quests: [AchievementProtocol]
     var challenges: [AchievementProtocol]

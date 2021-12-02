@@ -42,6 +42,7 @@ public protocol TaskProtocol: BaseRewardProtocol {
     var everyX: Int { get set }
     var challengeID: String? { get set }
     var challengeBroken: String? { get set }
+    var groupID: String? { get set }
     var createdAt: Date? { get set }
     var updatedAt: Date? { get set }
     var startDate: Date? { get set }
@@ -77,6 +78,14 @@ extension TaskProtocol {
     public var isChallengeTask: Bool {
         return challengeID != nil
     }
+    
+    public var isGroupTask: Bool {
+        return groupID != nil
+    }
+    
+    public var isEditable: Bool {
+        return !(isChallengeTask || isGroupTask)
+    }
 }
 
 public class PreviewTask: TaskProtocol {
@@ -86,6 +95,7 @@ public class PreviewTask: TaskProtocol {
     public var history: [TaskHistoryProtocol] = []
     
     public var isValid: Bool = true
+    public var isManaged: Bool = false
     
     public var nextDue: [Date] = []
     public var weeksOfMonth: [Int] = []
@@ -122,10 +132,12 @@ public class PreviewTask: TaskProtocol {
     public var isDue: Bool = false
     public var streak: Int = 0
     public var challengeID: String?
+    public var groupID: String?
 }
 
 public class PreviewChecklistItem: ChecklistItemProtocol {
     public var isValid: Bool = true
+    public var isManaged: Bool = false
     
     public init() {}
     public var text: String?
@@ -139,6 +151,7 @@ public class PreviewChecklistItem: ChecklistItemProtocol {
 
 public class PreviewReminder: ReminderProtocol {
     public var isValid: Bool = true
+    public var isManaged: Bool = false
     public var id: String?
     public init() {}
     public var startDate: Date?

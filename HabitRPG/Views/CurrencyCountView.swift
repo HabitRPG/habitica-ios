@@ -98,7 +98,9 @@ class CurrencyCountView: UIView {
     internal func configureViews() {
         translatesAutoresizingMaskIntoConstraints = false
         currencyImageView.translatesAutoresizingMaskIntoConstraints = false
+        currencyImageView.accessibilityIgnoresInvertColors = true
         countLabel.translatesAutoresizingMaskIntoConstraints = false
+        countLabel.accessibilityIgnoresInvertColors = true
         
         currencyImageView.contentMode = UIView.ContentMode.scaleAspectFit
         

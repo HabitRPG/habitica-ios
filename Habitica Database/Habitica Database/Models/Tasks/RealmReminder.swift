@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import Habitica_Models
 
-class RealmReminder: Object, ReminderProtocol {
+class RealmReminder: BaseModel, ReminderProtocol {
     func detached() -> ReminderProtocol {
         return RealmReminder(value: self)
     }
@@ -27,11 +27,7 @@ class RealmReminder: Object, ReminderProtocol {
     override static func primaryKey() -> String {
         return "id"
     }
-    
-    var isValid: Bool {
-        return !isInvalidated
-    }
-    
+
     convenience init(userID: String?, reminderProtocol: ReminderProtocol) {
         self.init()
         id = reminderProtocol.id

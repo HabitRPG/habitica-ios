@@ -15,6 +15,7 @@ private struct LeaderObject: Decodable {
 
 public class APIGroup: GroupProtocol, Codable {
     public var isValid: Bool = true
+    public var isManaged: Bool = false
     
     public var id: String?
     public var name: String?

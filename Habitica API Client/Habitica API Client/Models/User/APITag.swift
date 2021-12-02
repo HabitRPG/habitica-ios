@@ -14,6 +14,7 @@ public class APITag: TagProtocol, Codable {
     public var text: String?
     public var order: Int = 0
     public var isValid: Bool { return true }
+    public var isManaged: Bool = false
 
     enum CodingKeys: String, CodingKey {
         case id

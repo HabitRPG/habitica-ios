@@ -17,9 +17,8 @@ public class APIInboxConversation: InboxConversationProtocol, Codable {
     public var username: String?
     public var contributor: ContributorProtocol?
     public var userStyles: UserStyleProtocol?
-    public var isValid: Bool {
-        return true
-    }
+    public var isValid: Bool { return true }
+    public var isManaged: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case uuid

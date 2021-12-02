@@ -11,7 +11,7 @@ import Habitica_Models
 import RealmSwift
 
 @objc
-class RealmUser: Object, UserProtocol {
+class RealmUser: BaseModel, UserProtocol {
 
     @objc dynamic var id: String?
     @objc dynamic var balance: Float = 0
@@ -300,10 +300,6 @@ class RealmUser: Object, UserProtocol {
     var needsCron: Bool = false
     var lastCron: Date?
     var loginIncentives: Int = 0
-    
-    var isValid: Bool {
-        return !isInvalidated
-    }
     
     override static func primaryKey() -> String {
         return "id"

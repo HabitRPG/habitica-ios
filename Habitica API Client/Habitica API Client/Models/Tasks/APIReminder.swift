@@ -34,4 +34,5 @@ class APIReminder: ReminderProtocol, Codable {
     }
     
     var isValid: Bool = true
+    var isManaged: Bool = false
 }

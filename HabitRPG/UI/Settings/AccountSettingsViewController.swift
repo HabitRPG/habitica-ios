@@ -230,7 +230,9 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             })
         }
     }
-
+    
+    @IBAction func unwindToListSave(_ segue: UIStoryboardSegue) {
+    }
 
 private func setUser(_ user: UserProtocol) {
     isSettingUserData = true
@@ -361,7 +363,7 @@ private func setUser(_ user: UserProtocol) {
         emailTextField.addHeightConstraint(height: 50)
         stackView.addArrangedSubview(emailTextField)
         let passwordTextField = PaddedTextField()
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.oldPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.password, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
         configureTextField(passwordTextField)
         passwordTextField.isSecureTextEntry = true
         passwordTextField.delegate = self

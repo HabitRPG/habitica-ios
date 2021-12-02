@@ -172,6 +172,7 @@ class AvatarView: UIView {
     private func setupSubviews() {
         AvatarView.viewOrder.forEach({ (_) in
             let imageView = NetworkImageView()
+            imageView.accessibilityIgnoresInvertColors = true
             addSubview(imageView)
             imageViews.append(imageView)
         })

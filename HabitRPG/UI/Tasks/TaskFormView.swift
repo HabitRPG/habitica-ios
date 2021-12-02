@@ -245,6 +245,7 @@ public struct FormTextFieldStyle : TextFieldStyle {
 }
 
 struct DailySchedulingView: View {
+    var isEditable: Bool
     @Binding var startDate: Date?
     @Binding var frequency: String
     @Binding var everyX: Int
@@ -315,35 +316,37 @@ struct DailySchedulingView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            FormDatePicker(title: Text(L10n.Tasks.Form.startDate), value: $startDate)
-            Separator()
-            FormSheetSelector(title: Text(L10n.Tasks.Form.repeats), value: $frequency, options: DailySchedulingView.dailyRepeatOptions)
-            Separator()
-            NumberPickerFormView(title: Text(L10n.Tasks.Form.every), value: $everyX, minValue: 1, maxValue: 400, formatter: { value in
-                return "\(value) \(suffix.localizedCapitalized)"
-            })
-            if frequency == "weekly" {
+            if isEditable {
+                FormDatePicker(title: Text(L10n.Tasks.Form.startDate), value: $startDate)
                 Separator()
-                HStack {
-                    weekOption(initial: "M", isEnabled: $monday)
-                    weekOption(initial: "T", isEnabled: $tuesday)
-                    weekOption(initial: "W", isEnabled: $wednesday)
-                    weekOption(initial: "T", isEnabled: $thursday)
-                    weekOption(initial: "F", isEnabled: $friday)
-                    weekOption(initial: "S", isEnabled: $saturday)
-                    weekOption(initial: "S", isEnabled: $sunday)
+                FormSheetSelector(title: Text(L10n.Tasks.Form.repeats), value: $frequency, options: DailySchedulingView.dailyRepeatOptions)
+                Separator()
+                NumberPickerFormView(title: Text(L10n.Tasks.Form.every), value: $everyX, minValue: 0, maxValue: 400, formatter: { value in
+                    return "\(value) \(suffix.localizedCapitalized)"
+                })
+                if frequency == "weekly" {
+                    Separator()
+                    HStack {
+                        weekOption(initial: "M", isEnabled: $monday)
+                        weekOption(initial: "T", isEnabled: $tuesday)
+                        weekOption(initial: "W", isEnabled: $wednesday)
+                        weekOption(initial: "T", isEnabled: $thursday)
+                        weekOption(initial: "F", isEnabled: $friday)
+                        weekOption(initial: "S", isEnabled: $saturday)
+                        weekOption(initial: "S", isEnabled: $sunday)
+                    }
+                    .transition(.move(edge: .top).combined(with: .opacity))
+                    .padding(.horizontal, 14).padding(.top, 10)
                 }
-                .transition(.move(edge: .top).combined(with: .opacity))
-                .padding(.horizontal, 14).padding(.top, 10)
-            }
-            if frequency == "monthly" {
-                Separator()
-                TaskFormPicker(options: [
-                    LabeledFormValue(value: "day", label: L10n.Tasks.Form.dayOfMonth),
-                    LabeledFormValue(value: "week", label: L10n.Tasks.Form.dayOfWeek)
-                ], selection: $dayOrWeekMonth)
-                .transition(.move(edge: .top).combined(with: .opacity))
-                .padding(.horizontal, 12).padding(.top, 10)
+                if frequency == "monthly" {
+                    Separator()
+                    TaskFormPicker(options: [
+                        LabeledFormValue(value: "day", label: L10n.Tasks.Form.dayOfMonth),
+                        LabeledFormValue(value: "week", label: L10n.Tasks.Form.dayOfWeek)
+                    ], selection: $dayOrWeekMonth)
+                    .transition(.move(edge: .top).combined(with: .opacity))
+                    .padding(.horizontal, 12).padding(.top, 10)
+                }
             }
             Text(TaskRepeatablesSummaryInteractor().repeatablesSummary(frequency: frequency, everyX: everyX, monday: monday, tuesday: tuesday, wednesday: wednesday, thursday: thursday, friday: friday, saturday: saturday, sunday: sunday, startDate: startDate, daysOfMonth: nil, weeksOfMonth: nil))
                 .padding(.horizontal, 14)
@@ -376,7 +379,9 @@ struct TaskFormChecklistItemView: View {
     private var textProxy: Binding<String> {
         Binding<String>(get: { self.text }, set: {
             self.text = $0
-            self.item.text = $0
+            if !self.item.isManaged {
+                self.item.text = $0
+            }
         })
     }
     var body: some View {
@@ -460,11 +465,11 @@ struct TaskFormChecklistView: View {
     }
 }
 
-struct ChecklistDropDelegate : DropDelegate {
+struct ChecklistDropDelegate: DropDelegate {
 
-    let item : ChecklistItemProtocol
-    @Binding var items : [ChecklistItemProtocol]
-    @Binding var draggedItem : ChecklistItemProtocol?
+    let item: ChecklistItemProtocol
+    @Binding var items: [ChecklistItemProtocol]
+    @Binding var draggedItem: ChecklistItemProtocol?
 
     func performDrop(info: DropInfo) -> Bool {
         return true
@@ -525,7 +530,9 @@ struct TaskFormReminderItemView: View {
     private var timeProxy: Binding<Date> {
         Binding<Date>(get: { self.time }, set: {
             self.time = $0
-            self.item.time = $0
+            if !self.item.isManaged {
+                self.item.time = $0
+            }
         })
     }
     
@@ -623,6 +630,8 @@ struct RewardAmountView: View {
 
 class TaskFormViewModel: ObservableObject {
     private let taskRepository = TaskRepository()
+    
+    @Published var isTaskEditable: Bool = true
 
     @Published var text: String = ""
     @Published var notes: String = ""
@@ -700,6 +709,8 @@ class TaskFormViewModel: ObservableObject {
             _reminders = Published(initialValue: task?.reminders.map({ item in
                 return item.detached()
             }) ?? [])
+            
+            _isTaskEditable = Published(initialValue: task?.isEditable == true)
         }
     }
 }
@@ -818,7 +829,10 @@ struct TaskFormView: View {
     
     private var textFields: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(L10n.title).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingText ? .semibold : .regular)).padding(.leading, 8)
+            HStack {
+                Text(L10n.title).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingText ? .semibold : .regular)).padding(.leading, 8)
+                Image(uiImage: HabiticaIcons.imageOfLocked().withRenderingMode(.alwaysTemplate)).foregroundColor(viewModel.darkestTaskTintColor)
+            }
             MultilineTextField("", text: $viewModel.text, onCommit: {
             }, onEditingChanged: { isEditing in
                 isEditingText = isEditing
@@ -828,6 +842,8 @@ struct TaskFormView: View {
                 .frame(minHeight: 40)
                 .background(viewModel.lightestTaskTintColor)
                 .cornerRadius(12)
+                .disabled(!viewModel.isTaskEditable)
+                .opacity(viewModel.isTaskEditable ? 1.0 : 0.6)
             Text(L10n.notes).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingNotes ? .semibold : .regular)).padding(.leading, 8).padding(.top, 10)
             MultilineTextField("", text: $viewModel.notes, onEditingChanged: { isEditing in
                 isEditingNotes = isEditing
@@ -846,7 +862,6 @@ struct TaskFormView: View {
         if viewModel.taskType == .daily && viewModel.showTaskGraphs, let task = viewModel.task {
             TaskFormSection(header: Text(L10n.Tasks.Form.completion.uppercased()),
                             content: DailyProgressView(history: task.history), backgroundColor: .clear)
-            
         } else if viewModel.taskType == .habit && viewModel.showTaskGraphs, let task = viewModel.task {
             TaskFormSection(header: Text(L10n.Tasks.Form.completion.uppercased()),
                             content: HabitProgressView(history: task.history, up: viewModel.up, down: viewModel.down), backgroundColor: .clear)
@@ -866,19 +881,19 @@ struct TaskFormView: View {
     
     @ViewBuilder
     private var dynamicFormPart: some View {
-        if viewModel.taskType == .habit {
+        if viewModel.taskType == .habit && viewModel.isTaskEditable {
             TaskFormSection(header: Text(L10n.Tasks.Form.controls.uppercased()),
                             content: HabitControlsFormView(taskColor: viewModel.lightTaskTintColor.uiColor(), isUp: $viewModel.up, isDown: $viewModel.down).padding(8))
             TaskFormSection(header: Text(L10n.Tasks.Form.resetCounter.uppercased()),
                             content: TaskFormPicker(options: TaskFormView.habitResetStreakOptions, selection: $viewModel.frequency, tintColor: viewModel.pickerTintColor))
-        } else if viewModel.taskType == .reward {
+        } else if viewModel.taskType == .reward && viewModel.isTaskEditable {
             TaskFormSection(header: Text(L10n.Tasks.Form.difficulty.uppercased()),
                             content: RewardAmountView(value: $viewModel.value), backgroundColor: .clear)
         } else if viewModel.taskType == .daily {
             TaskFormSection(header: Text(L10n.Tasks.Form.scheduling.uppercased()),
-                            content: DailySchedulingView(startDate: $viewModel.startDate, frequency: $viewModel.frequency, everyX: $viewModel.everyX, monday: $viewModel.monday, tuesday: $viewModel.tuesday, wednesday: $viewModel.wednesday, thursday: $viewModel.thursday, friday: $viewModel.friday, saturday: $viewModel.saturday, sunday: $viewModel.sunday, daysOfMonth: $viewModel.daysOfMonth, weeksOfMonth: $viewModel.weeksOfMonth, dayOrWeekMonth: $viewModel.dayOrWeekMonth
+                            content: DailySchedulingView(isEditable: viewModel.isTaskEditable, startDate: $viewModel.startDate, frequency: $viewModel.frequency, everyX: $viewModel.everyX, monday: $viewModel.monday, tuesday: $viewModel.tuesday, wednesday: $viewModel.wednesday, thursday: $viewModel.thursday, friday: $viewModel.friday, saturday: $viewModel.saturday, sunday: $viewModel.sunday, daysOfMonth: $viewModel.daysOfMonth, weeksOfMonth: $viewModel.weeksOfMonth, dayOrWeekMonth: $viewModel.dayOrWeekMonth
                                                          ))
-        } else if viewModel.taskType == .todo {
+        } else if viewModel.taskType == .todo && viewModel.isTaskEditable {
             TaskFormSection(header: Text(L10n.Tasks.Form.scheduling.uppercased()),
                             content: DueDateFormView(date: $viewModel.dueDate))
         }
@@ -895,18 +910,18 @@ struct TaskFormView: View {
                     textFields
                     VStack(spacing: 25) {
                         graphs
-                        if viewModel.taskType == .daily || viewModel.taskType == .todo {
+                        if (viewModel.taskType == .daily || viewModel.taskType == .todo) && viewModel.isTaskEditable {
                             TaskFormChecklistView(items: $viewModel.checklistItems)
                         }
                         dynamicFormPart
-                        if viewModel.taskType != .reward {
+                        if viewModel.taskType != .reward && viewModel.isTaskEditable {
                             TaskFormSection(header: Text(L10n.Tasks.Form.difficulty.uppercased()),
                                             content: DifficultyPicker(selectedDifficulty: $viewModel.priority).padding(8))
                         }
                         if viewModel.taskType == .daily || viewModel.taskType == .todo {
                             TaskFormReminderView(items: $viewModel.reminders)
                             }
-                        if viewModel.showStatAllocation {
+                        if viewModel.showStatAllocation && viewModel.isTaskEditable {
                             TaskFormSection(header: Text(L10n.statAllocation.uppercased()),
                                             content: TaskFormPicker(options: TaskFormView.statAllocationOptions, selection: $viewModel.stat, tintColor: viewModel.pickerTintColor))
                         }
@@ -914,6 +929,14 @@ struct TaskFormView: View {
                                         content: TagList(selectedTags: $viewModel.selectedTags, allTags: tags, taskColor: viewModel.taskTintColor))
                         if viewModel.task?.id != nil {
                             deleteButton
+                        }
+                        if !viewModel.isTaskEditable {
+                            Text(L10n.Tasks.Form.notEditableDisclaimer)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal, 16)
+                                .foregroundColor(Color(ThemeService.shared.theme.quadTextColor))
+                                .font(.caption)
                         }
                     }.padding(16).background(Color(theme.contentBackgroundColor).edgesIgnoringSafeArea(.bottom)).cornerRadius(8)
                 }.background(viewModel.backgroundTintColor.cornerRadius(12).edgesIgnoringSafeArea(.bottom))
@@ -1019,7 +1042,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
             controller.navigationBar.shadowImage = UIImage()
         }
     }
-    
+        
     @objc
     func rightButtonTapped() {
         self.save()
@@ -1107,92 +1130,5 @@ extension Binding {
             set: { newValue in
                 source.wrappedValue = newValue
         })
-    }
-}
-
-extension Color {
- 
-    func uiColor() -> UIColor {
-        if #available(iOS 14.0, *) {
-            return UIColor(self)
-        }
-
-        let components = self.components()
-        return UIColor(red: components.r, green: components.g, blue: components.b, alpha: components.a)
-    }
-
-    private func components() -> (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
-        let scanner = Scanner(string: self.description.trimmingCharacters(in: CharacterSet.alphanumerics.inverted))
-        var hexNumber: UInt64 = 0
-        var red: CGFloat = 0.0, green: CGFloat = 0.0, blue: CGFloat = 0.0, alpha: CGFloat = 0.0
-
-        let result = scanner.scanHexInt64(&hexNumber)
-        if result {
-            red = CGFloat((hexNumber & 0xff000000) >> 24) / 255
-            green = CGFloat((hexNumber & 0x00ff0000) >> 16) / 255
-            blue = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
-            alpha = CGFloat(hexNumber & 0x000000ff) / 255
-        }
-        return (red, green, blue, alpha)
-    }
-}
-
-// Use for TextField to become first Responder
-// Source: https://stackoverflow.com/questions/56507839/swiftui-how-to-make-textfield-become-first-responder
-struct FocusableTextField: UIViewRepresentable {
-    @Binding public var isFirstResponder: Bool
-    @Binding public var text: String
-    public var placeholder: String
-    
-    public var configuration = { (view: UITextField) in }
-
-    public init(placeholder: String, text: Binding<String>, isFirstResponder: Binding<Bool>, configuration: @escaping (UITextField) -> () = { _ in }) {
-        self.configuration = configuration
-        self._text = text
-        self.placeholder = placeholder
-        self._isFirstResponder = isFirstResponder
-    }
-
-    public func makeUIView(context: Context) -> UITextField {
-        let view = UITextField()
-        view.addTarget(context.coordinator, action: #selector(Coordinator.textViewDidChange), for: .editingChanged)
-        view.delegate = context.coordinator
-        return view
-    }
-
-    public func updateUIView(_ uiView: UITextField, context: Context) {
-        uiView.placeholder = placeholder
-        uiView.text = text
-        configuration(uiView)
-        switch isFirstResponder {
-        case true: uiView.becomeFirstResponder()
-        case false: uiView.resignFirstResponder()
-        }
-    }
-
-    public func makeCoordinator() -> Coordinator {
-        Coordinator($text, isFirstResponder: $isFirstResponder)
-    }
-
-    public class Coordinator: NSObject, UITextFieldDelegate {
-        var text: Binding<String>
-        var isFirstResponder: Binding<Bool>
-
-        init(_ text: Binding<String>, isFirstResponder: Binding<Bool>) {
-            self.text = text
-            self.isFirstResponder = isFirstResponder
-        }
-
-        @objc public func textViewDidChange(_ textField: UITextField) {
-            self.text.wrappedValue = textField.text ?? ""
-        }
-
-        public func textFieldDidBeginEditing(_ textField: UITextField) {
-            self.isFirstResponder.wrappedValue = true
-        }
-
-        public func textFieldDidEndEditing(_ textField: UITextField) {
-            self.isFirstResponder.wrappedValue = false
-        }
     }
 }

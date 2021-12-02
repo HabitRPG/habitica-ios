@@ -21,4 +21,5 @@ public class PreviewTag: TagProtocol {
     public var text: String?
     public var order: Int = 0
     public var isValid: Bool = true
+    public var isManaged: Bool = false
 }

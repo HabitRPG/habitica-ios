@@ -14,6 +14,7 @@ class APIUserStyle: UserStyleProtocol, Decodable {
     var preferences: PreferencesProtocol?
     var stats: StatsProtocol?
     public var isValid: Bool { return true }
+    public var isManaged: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case stats

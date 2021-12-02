@@ -251,15 +251,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             
             rescheduleDailyReminder()
-        } else {
-            guard let url = defaults.string(forKey: "initialScreenURL") else {
-                return
-            }
-            if let loadingViewcontroller = UIApplication.shared.findKeyWindow()?.rootViewController as? LoadingViewController, loadingViewcontroller.loadingFinishedAction == nil {
-                loadingViewcontroller.loadingFinishedAction = {
-                    RouterHandler.shared.handle(urlString: url)
-                }
-            }
         }
     }
     

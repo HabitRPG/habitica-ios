@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 
-class RealmInboxConversation: Object, InboxConversationProtocol {
+class RealmInboxConversation: BaseModel, InboxConversationProtocol {
     @objc dynamic var combinedID: String?
     @objc dynamic var uuid: String = ""
     @objc dynamic var userID: String = ""
@@ -49,11 +49,7 @@ class RealmInboxConversation: Object, InboxConversationProtocol {
         }
     }
     @objc dynamic var realmUserStyles: RealmUserStyle?
-    
-    var isValid: Bool {
-        return !isInvalidated
-    }
-    
+
     override static func primaryKey() -> String {
         return "combinedID"
     }

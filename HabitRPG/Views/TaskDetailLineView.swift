@@ -120,7 +120,6 @@ class TaskDetailLineView: UIView {
             } else {
                 calendarIconView.tintColor = iconColor
             }
-            calendarIconView.tintColor = iconColor
         }
     }
     

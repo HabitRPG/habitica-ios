@@ -1808,7 +1808,7 @@ public enum L10n {
     public static var addedLocalAuth: String { return L10n.tr("Mainstrings", "settings.added_local_auth") }
     /// API
     public static var api: String { return L10n.tr("Mainstrings", "settings.api") }
-    /// Copy these for use in third party applications. However, think of your API Token like a password, and do not share it publicly. You may occasionally be asked for your User ID, but never post your API Token where others can see it, including on Github.
+    /// Copy Token. Be careful, this is a password!
     public static var apiDisclaimer: String { return L10n.tr("Mainstrings", "settings.api_disclaimer") }
     /// App Icon
     public static var appIcon: String { return L10n.tr("Mainstrings", "settings.app_icon") }
@@ -1840,7 +1840,7 @@ public enum L10n {
     public static var confirmUsernameDescription: String { return L10n.tr("Mainstrings", "settings.confirm_username_description") }
     /// Are you sure you want to confirm your current username?
     public static var confirmUsernamePrompt: String { return L10n.tr("Mainstrings", "settings.confirm_username_prompt") }
-    /// Cconnect
+    /// Connect
     public static var connect: String { return L10n.tr("Mainstrings", "settings.connect") }
     /// Custom Day Start
     public static var customDayStart: String { return L10n.tr("Mainstrings", "settings.custom_day_start") }
@@ -1900,6 +1900,8 @@ public enum L10n {
     public static var newPassword: String { return L10n.tr("Mainstrings", "settings.new_password") }
     /// New Username
     public static var newUsername: String { return L10n.tr("Mainstrings", "settings.new_username") }
+    /// No Email
+    public static var noEmail: String { return L10n.tr("Mainstrings", "settings.no_email") }
     /// Not Set
     public static var notSet: String { return L10n.tr("Mainstrings", "settings.not_set") }
     /// Notification Badge
@@ -2337,6 +2339,8 @@ public enum L10n {
       public static var newReminder: String { return L10n.tr("Mainstrings", "tasks.form.new_reminder") }
       /// None
       public static var `none`: String { return L10n.tr("Mainstrings", "tasks.form.none") }
+      /// Challenge and Group tasks have limited editing options compared to your regular tasks
+      public static var notEditableDisclaimer: String { return L10n.tr("Mainstrings", "tasks.form.not_editable_disclaimer") }
       /// Include any notes to help you out
       public static var notesPlaceholder: String { return L10n.tr("Mainstrings", "tasks.form.notes_placeholder") }
       /// Positive

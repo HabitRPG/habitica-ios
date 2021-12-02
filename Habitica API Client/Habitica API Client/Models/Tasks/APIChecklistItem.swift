@@ -31,4 +31,5 @@ class APIChecklistItem: ChecklistItemProtocol, Codable {
     }
     
     var isValid: Bool = true
+    public var isManaged: Bool = false
 }

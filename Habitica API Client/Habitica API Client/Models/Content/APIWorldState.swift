@@ -46,6 +46,7 @@ public class APIWorldState: WorldStateProtocol, Decodable {
     public var currentEvent: WorldStateEventProtocol?
     public var events: [WorldStateEventProtocol]
     public var isValid: Bool = true
+    public var isManaged: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case worldBoss

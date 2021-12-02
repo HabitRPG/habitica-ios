@@ -151,6 +151,7 @@
 "tasks.form.times_scored" = "Times Scored";
 "tasks.form.last_scored" = "Last Scored";
 "tasks.form.none" = "None";
+"tasks.form.not_editable_disclaimer" = "Challenge and Group tasks have limited editing options compared to your regular tasks";
 "tasks.work" = "Work";
 "tasks.exercise" = "Exercise";
 "tasks.health" = "Health";
@@ -309,7 +310,7 @@
 "settings.new_password" = "New Password";
 "settings.old_password" = "Old Password";
 "settings.confirm_new_password" = "Confirm new Password";
-"settings.api_disclaimer" = "Copy these for use in third party applications. However, think of your API Token like a password, and do not share it publicly. You may occasionally be asked for your User ID, but never post your API Token where others can see it, including on Github.";
+"settings.api_disclaimer" = "Copy Token. Be careful, this is a password!";
 "settings.local" = "Local";
 "settings.searchable_everywhere" = "Everywhere";
 "settings.searchable_private_spaces" = "Only Private Spaces";
@@ -341,8 +342,9 @@
 "settings.password" = "Password";
 "settings.email" = "Email";
 "settings.not_set" = "Not Set";
+"settings.no_email" = "No Email";
 "settings.my_account" = "My Account";
-"settings.connect" = "Cconnect";
+"settings.connect" = "Connect";
 "settings.disconnect" = "Disconnect";
 "settings.add_password" = "Add Password";
 "theme.default_theme" = "Default";

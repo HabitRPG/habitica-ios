@@ -17,6 +17,7 @@ private class APINotificationAchievementData: Decodable {
 
 public class APINotification: NotificationProtocol, NotificationNewsProtocol, NotificationNewChatProtocol, NotificationUnallocatedStatsProtocol, NotificationFirstDropProtocol, NotificationLoginIncentiveProtocol, Decodable {
     public var isValid: Bool = true
+    public var isManaged: Bool = false
     
     public var id: String = ""
     public var type: HabiticaNotificationType = .generic

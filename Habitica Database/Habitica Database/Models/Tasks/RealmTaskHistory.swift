@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 
-class RealmTaskHistory: Object, TaskHistoryProtocol {
+class RealmTaskHistory: BaseModel, TaskHistoryProtocol {
     @objc dynamic var combinedID: String?
     @objc dynamic var taskID: String?
     @objc dynamic var timestamp: Date?
@@ -19,11 +19,7 @@ class RealmTaskHistory: Object, TaskHistoryProtocol {
     @objc dynamic var scoredDown: Int = 0
     @objc dynamic var isDue = false
     @objc dynamic var completed = false
-    
-    var isValid: Bool {
-        return !isInvalidated
-    }
-    
+
     override static func primaryKey() -> String {
         return "combinedID"
     }

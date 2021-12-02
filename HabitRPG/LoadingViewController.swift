@@ -38,6 +38,13 @@ class LoadingViewController: UIViewController {
                         self?.segueForLoggedInUser()
                     }
             }
+            
+            if let url = UserDefaults.standard.string(forKey: "initialScreenURL") {
+                loadingFinishedAction = {
+                    RouterHandler.shared.handle(urlString: url)
+                }
+            }
+            
         }
     }
     

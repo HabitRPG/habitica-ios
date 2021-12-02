@@ -33,6 +33,7 @@ public class APIUser: UserProtocol, Decodable {
     public var invitations: [GroupInvitationProtocol]
     public var pushDevices: [PushDeviceProtocol]
     public var isValid: Bool { return true }
+    public var isManaged: Bool = false
     public var achievements: UserAchievementsProtocol?
     public var loginIncentives: Int
     

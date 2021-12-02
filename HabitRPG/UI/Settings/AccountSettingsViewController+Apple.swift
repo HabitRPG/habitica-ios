@@ -26,16 +26,18 @@ extension AccountSettingsViewController: ASAuthorizationControllerDelegate {
     }
     
     func configureSocialCell(cell: UITableViewCell, email: String?, isConnected: Bool?) {
-        cell.detailTextLabel?.text = email ?? L10n.Settings.notSet
         let label = UILabel()
         if isConnected == true {
+            cell.detailTextLabel?.text = email ?? L10n.Settings.noEmail
             label.text = L10n.Settings.disconnect
             label.textColor = ThemeService.shared.theme.errorColor
         } else {
+            cell.detailTextLabel?.text = L10n.Settings.notSet
             label.text = L10n.Settings.connect
             label.textColor = ThemeService.shared.theme.ternaryTextColor
         }
         label.font = .systemFont(ofSize: 17)
+        label.sizeToFit()
         cell.accessoryView = label
     }
     

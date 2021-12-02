@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 P.D.Q. All rights reserved.
 //
 import UIKit
+import SwiftUI
 
 /**
  MissingHashMarkAsPrefix:   "Invalid RGB string, missing '#' as prefix"
@@ -362,4 +363,31 @@ func == (left: UIColor?, right: UIColor?) -> Bool {
   let left = left ?? .clear
   let right = right ?? .clear
   return left == right
+}
+
+extension Color {
+ 
+    func uiColor() -> UIColor {
+        if #available(iOS 14.0, *) {
+            return UIColor(self)
+        }
+
+        let components = self.components()
+        return UIColor(red: components.r, green: components.g, blue: components.b, alpha: components.a)
+    }
+
+    private func components() -> (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
+        let scanner = Scanner(string: self.description.trimmingCharacters(in: CharacterSet.alphanumerics.inverted))
+        var hexNumber: UInt64 = 0
+        var red: CGFloat = 0.0, green: CGFloat = 0.0, blue: CGFloat = 0.0, alpha: CGFloat = 0.0
+
+        let result = scanner.scanHexInt64(&hexNumber)
+        if result {
+            red = CGFloat((hexNumber & 0xff000000) >> 24) / 255
+            green = CGFloat((hexNumber & 0x00ff0000) >> 16) / 255
+            blue = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
+            alpha = CGFloat(hexNumber & 0x000000ff) / 255
+        }
+        return (red, green, blue, alpha)
+    }
 }
