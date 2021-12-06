@@ -295,7 +295,7 @@ class ConfigRepository: NSObject {
     
     func activePromotion() -> HabiticaPromotion? {
         var promo: HabiticaPromotion?
-        for event in worldState?.events ?? [] where HabiticaPromotionType.getPromoFromKey(key: event.eventKey ?? "", startDate: event.start, endDate: event.end) != nil {
+        for event in worldState?.events ?? [] where HabiticaPromotionType.getPromoFromKey(key: event.promo ?? event.eventKey ?? "", startDate: event.start, endDate: event.end) != nil {
             promo = HabiticaPromotionType.getPromoFromKey(key: event.promo ?? event.eventKey ?? "", startDate: event.start, endDate: event.end)
         }
         if promo == nil, let key = string(variable: .activePromo), key.isEmpty == false {

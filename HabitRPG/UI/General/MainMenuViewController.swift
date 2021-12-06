@@ -610,23 +610,11 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     func giftSubscriptionButtonTapped() {
-        let alertController = HabiticaAlertController(title: L10n.giftRecipientTitle, message: L10n.giftRecipientSubtitle)
-        let textField = UITextField()
-        textField.autocorrectionType = .no
-        textField.autocapitalizationType = .none
-        textField.borderColor = UIColor.gray300
-        textField.borderWidth = 1
-        textField.tintColor = ThemeService.shared.theme.tintColor
-        alertController.contentView = textField
-        alertController.addCancelAction()
-        alertController.addAction(title: L10n.continue, style: .default, isMainAction: true, closeOnTap: true, handler: { _ in
-            if let username = textField.text, username.isEmpty == false {
-                self.giftRecipientUsername = username
-                self.perform(segue: StoryboardSegue.Main.openGiftSubscriptionDialog)
-            }
-        })
-        alertController.containerViewSpacing = 4
-        alertController.show()
+        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, onSave: { username in
+            self.giftRecipientUsername = username
+            self.perform(segue: StoryboardSegue.Main.openGiftSubscriptionDialog)
+        }, saveButtonTitle: L10n.continue)
+        present(navController, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

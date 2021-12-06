@@ -3322,7 +3322,7 @@
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="EFR-9W-xCA">
-                            <rect key="frame" x="0.0" y="307.33333206176758" width="428" height="129"/>
+                            <rect key="frame" x="0.0" y="273.33333206176758" width="428" height="129"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="4I1-1S-2ac">
@@ -3385,13 +3385,16 @@ a matching subscription automatically after sending your gift.</string>
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubscribeButtonCell" rowHeight="70" id="vN3-lc-K1M">
-                                <rect key="frame" x="0.0" y="214.66666603088379" width="428" height="70"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubscribeButtonCell" rowHeight="36" id="vN3-lc-K1M">
+                                <rect key="frame" x="0.0" y="214.66666603088379" width="428" height="36"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vN3-lc-K1M" id="NTC-7R-KQH">
-                                    <rect key="frame" x="0.0" y="0.0" width="428" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="428" height="36"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <activityIndicatorView opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="GIH-6x-c38">
+                                            <rect key="frame" x="204" y="8" width="20" height="20"/>
+                                        </activityIndicatorView>
                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hf5-hq-Cbp">
                                             <rect key="frame" x="16" y="0.0" width="396" height="36"/>
                                             <color key="backgroundColor" red="0.60365134480000004" green="0.38511508700000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3415,7 +3418,9 @@ a matching subscription automatically after sending your gift.</string>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstItem="GIH-6x-c38" firstAttribute="centerY" secondItem="NTC-7R-KQH" secondAttribute="centerY" id="1i7-Vl-jgb"/>
                                         <constraint firstItem="Hf5-hq-Cbp" firstAttribute="leading" secondItem="NTC-7R-KQH" secondAttribute="leading" constant="16" id="3J2-7W-ros"/>
+                                        <constraint firstItem="GIH-6x-c38" firstAttribute="centerX" secondItem="NTC-7R-KQH" secondAttribute="centerX" id="KN3-fp-llx"/>
                                         <constraint firstItem="Hf5-hq-Cbp" firstAttribute="top" secondItem="NTC-7R-KQH" secondAttribute="top" id="ocA-UC-qhr"/>
                                         <constraint firstAttribute="trailing" secondItem="Hf5-hq-Cbp" secondAttribute="trailing" constant="16" id="rie-w6-dcN"/>
                                     </constraints>

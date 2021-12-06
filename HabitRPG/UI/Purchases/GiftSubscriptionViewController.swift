@@ -213,6 +213,8 @@ class GiftSubscriptionViewController: BaseTableViewController {
         } else if indexPath.section == tableView.numberOfSections-1 {
             returnedCell = tableView.dequeueReusableCell(withIdentifier: "SubscribeButtonCell", for: indexPath)
             (returnedCell?.viewWithTag(1) as? UIButton)?.setTitle(L10n.sendGift, for: .normal)
+            returnedCell?.viewWithTag(1)?.isHidden = isSubscribing
+            returnedCell?.viewWithTag(2)?.isHidden = !isSubscribing
         }
         returnedCell?.selectionStyle = .none
         return returnedCell ?? UITableViewCell()
@@ -226,6 +228,9 @@ class GiftSubscriptionViewController: BaseTableViewController {
         if isSubscribing {
             return
         }
+        tableView.beginUpdates()
+        tableView.reloadSections(IndexSet(integer: tableView.numberOfSections - 1), with: .automatic)
+        tableView.endUpdates()
         self.subscribeToPlan()
     }
     
@@ -245,6 +250,9 @@ class GiftSubscriptionViewController: BaseTableViewController {
             case .error(let error):
                 logger.log("Purchase Failed: \(error)", level: .error)
             }
+            self.tableView.beginUpdates()
+            self.tableView.reloadSections(IndexSet(integer: self.tableView.numberOfSections - 1), with: .automatic)
+            self.tableView.endUpdates()
         }
     }
     

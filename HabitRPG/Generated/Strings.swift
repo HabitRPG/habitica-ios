@@ -1358,8 +1358,16 @@ public enum L10n {
   }
 
   public enum Errors {
+    /// Please enter a valid Email address
+    public static var enterValidEmail: String { return L10n.tr("Mainstrings", "errors.enter_valid_email") }
     /// Error
     public static var error: String { return L10n.tr("Mainstrings", "errors.error") }
+    /// Password must be %d characters or more
+    public static func passwordLength(_ p1: Int) -> String {
+      return L10n.tr("Mainstrings", "errors.password_length", p1)
+    }
+    /// Passwords must match
+    public static var passwordNotMatching: String { return L10n.tr("Mainstrings", "errors.password_not_matching") }
     /// There was an error accepting the quest invitation
     public static var questInviteAccept: String { return L10n.tr("Mainstrings", "errors.quest_invite_accept") }
     /// There was an error rejecting the quest invitation
@@ -1800,6 +1808,8 @@ public enum L10n {
   public enum Settings {
     /// Account Info
     public static var accountInfo: String { return L10n.tr("Mainstrings", "settings.account_info") }
+    /// Add Email
+    public static var addEmail: String { return L10n.tr("Mainstrings", "settings.add_email") }
     /// Add Email and Password authentication
     public static var addEmailAndPassword: String { return L10n.tr("Mainstrings", "settings.add_email_and_password") }
     /// Add Password
@@ -1816,6 +1826,8 @@ public enum L10n {
     public static var areYouSure: String { return L10n.tr("Mainstrings", "settings.are_you_sure") }
     /// Authentication
     public static var authentication: String { return L10n.tr("Mainstrings", "settings.authentication") }
+    /// Change
+    public static var change: String { return L10n.tr("Mainstrings", "settings.change") }
     /// Change About Message
     public static var changeAboutMessage: String { return L10n.tr("Mainstrings", "settings.change_about_message") }
     /// Change Class
@@ -1942,6 +1954,10 @@ public enum L10n {
     public static var themeColor: String { return L10n.tr("Mainstrings", "settings.theme_color") }
     /// Theme Mode
     public static var themeMode: String { return L10n.tr("Mainstrings", "settings.theme_mode") }
+    /// Email updated
+    public static var updatedEmail: String { return L10n.tr("Mainstrings", "settings.updated_email") }
+    /// Password updated
+    public static var updatedPassword: String { return L10n.tr("Mainstrings", "settings.updated_password") }
     /// User
     public static var user: String { return L10n.tr("Mainstrings", "settings.user") }
     /// Username not confirmed
