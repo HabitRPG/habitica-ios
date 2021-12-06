@@ -144,7 +144,11 @@ class SettingsViewController: FormViewController, Themeable {
                 }.onCellSelection({[weak self] (_, _) in
                     let progressView = MRProgressOverlayView.showOverlayAdded(to: self?.view, animated: true)
                     progressView?.tintColor = ThemeService.shared.theme.tintColor
-                    self?.contentRepository.retrieveContent(force: true).observeCompleted {
+                    self?.contentRepository.retrieveContent(force: true)
+                        .flatMap(.latest, { _ in
+                            return self?.contentRepository.retrieveWorldState() ?? Signal.empty
+                        })
+                        .observeCompleted {
                         progressView?.dismiss(true)
                     }
                 })

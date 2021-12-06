@@ -80,8 +80,23 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             row.cellStyle = .subtitle
             row.cellUpdate {[weak self] cell, _ in
                 cell.detailTextLabel?.text = self?.user?.authentication?.local?.email ?? L10n.Settings.notSet
+                
+                if self?.user?.authentication?.hasLocalAuth != true {
+                    let label = UILabel()
+                    label.text = L10n.Settings.addEmail
+                    label.textColor = ThemeService.shared.theme.ternaryTextColor
+                    label.font = .systemFont(ofSize: 17)
+                    label.sizeToFit()
+                    cell.accessoryView = label
+                } else {
+                    cell.accessoryView = nil
+                }
             }.onCellSelection { _, _ in
-                self.showEmailChangeAlert()
+                if self.user?.authentication?.hasLocalAuth == true {
+                    self.showEmailChangeAlert()
+                } else {
+                    self.showAddLocalAuthAlert()
+                }
             }
         }
     }
@@ -95,15 +110,20 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
                 cell.detailTextLabel?.text = self?.user?.authentication?.local?.email != nil ? "ᐧᐧᐧᐧᐧᐧᐧᐧᐧᐧ" : L10n.Settings.notSet
                 let label = UILabel()
                 if self?.user?.authentication?.hasLocalAuth == true {
-                    label.text = L10n.Settings.changePassword
+                    label.text = L10n.Settings.change
                 } else {
                     label.text = L10n.Settings.addPassword
                 }
                 label.textColor = ThemeService.shared.theme.ternaryTextColor
                 label.font = .systemFont(ofSize: 17)
+                label.sizeToFit()
                 cell.accessoryView = label
             }.onCellSelection { _, _ in
-                self.showPasswordChangeAlert()
+                if self.user?.authentication?.hasLocalAuth == true {
+                    self.showPasswordChangeAlert()
+                } else {
+                    self.showAddLocalAuthAlert()
+                }
             }
         }
         <<< LabelRow { row in
@@ -157,7 +177,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             row.cellUpdate {[weak self] cell, _ in
                 cell.detailTextLabel?.text = self?.user?.profile?.name
             }.onCellSelection { _, _ in
-                self.showEditAlert(title: L10n.Settings.changeDisplayName, message: "", value: self.user?.profile?.name, path: "profile.name")
+                self.showEditAlert(title: L10n.Settings.changeDisplayName, name: L10n.displayName, value: self.user?.profile?.name, path: "profile.name")
             }
         }
         <<< LabelRow { row in
@@ -166,7 +186,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             row.cellUpdate {[weak self] cell, _ in
                 cell.detailTextLabel?.text = self?.user?.profile?.blurb
             }.onCellSelection { _, _ in
-                self.showEditAlert(title: L10n.Settings.changeAboutMessage, message: "", value: self.user?.profile?.blurb, path: "profile.blurb")
+                self.showEditAlert(title: L10n.Settings.changeAboutMessage, name: L10n.aboutText, value: self.user?.profile?.blurb, path: "profile.blurb")
             }
         }
         <<< LabelRow { row in
@@ -175,7 +195,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             row.cellUpdate {[weak self] cell, _ in
                 cell.detailTextLabel?.text = self?.user?.profile?.photoUrl
             }.onCellSelection { _, _ in
-                self.showEditAlert(title: L10n.Settings.changePhotoUrl, message: "", value: self.user?.profile?.photoUrl, path: "profile.url")
+                self.showEditAlert(title: L10n.Settings.changePhotoUrl, name: L10n.photoUrl, value: self.user?.profile?.photoUrl, path: "profile.url")
             }
         }
     }
@@ -252,23 +272,17 @@ private func setUser(_ user: UserProtocol) {
         ToastManager.show(text: L10n.copiedToClipboard, color: .blue)
     }
     
-    private func showEditAlert(title: String, message: String, value: String?, path: String) {
-        let alertController = HabiticaAlertController(title: title, message: message)
-        let textField = PaddedTextField()
-        configureTextField(textField)
-        textField.autocapitalizationType = .none
-        textField.spellCheckingType = .no
-        textField.text = value
-        textField.delegate = self
-        textField.addHeightConstraint(height: 50)
-        alertController.contentView = textField
-        alertController.addAction(title: L10n.change, isMainAction: true) {[weak self] _ in
-            if textField.text != value {
-                self?.userRepository.updateUser(key: path, value: textField.text).observeCompleted {}
+    private func showEditAlert(title: String, name: String, value: String?, path: String) {
+        let controller = EditingFormViewController()
+        controller.formTitle = title
+        controller.fields.append(EditingTextField(key: "value", title: name, type: .name, value: value))
+        controller.onSave = {[weak self] values in
+            if let value = values["value"] {
+                self?.userRepository.updateUser(key: path, value: value).observeCompleted {}
             }
         }
-        alertController.addCancelAction()
-        alertController.show()
+        let navController = UINavigationController(rootViewController: controller)
+        present(navController, animated: true, completion: nil)
     }
     
     private func showDeleteAccountAlert() {
@@ -348,150 +362,80 @@ private func setUser(_ user: UserProtocol) {
         if user?.authentication?.local?.email == nil {
             return
         }
-        let alertController = HabiticaAlertController(title: L10n.Settings.changeEmail)
-        
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 16
-        let emailTextField = PaddedTextField()
-        emailTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.newEmail, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        configureTextField(emailTextField)
-        emailTextField.keyboardType = .emailAddress
-        emailTextField.autocapitalizationType = .none
-        emailTextField.spellCheckingType = .no
-        emailTextField.text = user?.authentication?.local?.email
-        emailTextField.addHeightConstraint(height: 50)
-        stackView.addArrangedSubview(emailTextField)
-        let passwordTextField = PaddedTextField()
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.password, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        configureTextField(passwordTextField)
-        passwordTextField.isSecureTextEntry = true
-        passwordTextField.delegate = self
-        stackView.addArrangedSubview(passwordTextField)
-        alertController.contentView = stackView
-        
-        alertController.addAction(title: L10n.change, isMainAction: true) {[weak self] _ in
-            if let email = emailTextField.text, let password = passwordTextField.text {
-                self?.userRepository.updateEmail(newEmail: email, password: password).observeCompleted {}
+        let controller = EditingFormViewController()
+        controller.formTitle = L10n.Settings.changeEmail
+        controller.fields.append(EditingTextField(key: "email", title: L10n.email, type: .email, value: user?.authentication?.local?.email))
+        controller.fields.append(EditingTextField(key: "password", title: L10n.password, type: .password))
+        controller.onSave = {[weak self] values in
+            if let email = values["email"], let password = values["password"] {
+                self?.userRepository.updateEmail(newEmail: email, password: password).observeCompleted {
+                    ToastManager.show(text: L10n.Settings.updatedEmail, color: .green)
+                }
             }
         }
-        alertController.addCancelAction()
-        alertController.show()
+        let navController = UINavigationController(rootViewController: controller)
+        present(navController, animated: true, completion: nil)
     }
 
     private func showLoginNameChangeAlert() {
-        let title = L10n.Settings.changeUsername
-        let alertController = HabiticaAlertController(title: title)
-        let loginNameTextField = PaddedTextField()
-        loginNameTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.newUsername, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        configureTextField(loginNameTextField)
-        loginNameTextField.autocapitalizationType = .none
-        loginNameTextField.spellCheckingType = .no
-        loginNameTextField.text = user?.username
-        loginNameTextField.delegate = self
-        loginNameTextField.addHeightConstraint(height: 50)
-        alertController.contentView = loginNameTextField
-        
-        alertController.addAction(title: L10n.change, isMainAction: true) {[weak self] _ in
-            if let username = loginNameTextField.text {
+        let controller = EditingFormViewController()
+        controller.formTitle = L10n.Settings.changeUsername
+        controller.fields.append(EditingTextField(key: "username", title: L10n.username, type: .name, value: user?.username))
+        controller.onSave = {[weak self] values in
+            if let username = values["username"] {
                 self?.userRepository.updateUsername(newUsername: username).observeCompleted {}
             }
         }
-        alertController.addCancelAction()
-        alertController.show()
+        let navController = UINavigationController(rootViewController: controller)
+        present(navController, animated: true, completion: nil)
     }
 
     private func showPasswordChangeAlert() {
-        let alertController = HabiticaAlertController(title: L10n.Settings.changePassword)
+        let controller = EditingFormViewController()
+        controller.formTitle = L10n.Settings.changePassword
+        controller.fields.append(EditingTextField(key: "oldPassword", title: L10n.Settings.oldPassword, type: .password))
+        controller.fields.append(EditingTextField(key: "password", title: L10n.Settings.newPassword, type: .password))
+        controller.fields.append(EditingTextField(key: "passwordRepeat", title: L10n.Settings.confirmNewPassword, type: .password))
+
+        controller.onCrossValidation = { values in
+            var errors = [String: String]()
+            if values["password"] != values["passwordRepeat"] {
+                errors["passwordRepeat"] = L10n.Errors.passwordNotMatching
+            }
+            return errors
+        }
         
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 16
-        let oldPasswordTextField = PaddedTextField()
-        oldPasswordTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.oldPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        configureTextField(oldPasswordTextField)
-        oldPasswordTextField.isSecureTextEntry = true
-        stackView.addArrangedSubview(oldPasswordTextField)
-        let newPasswordTextField = PaddedTextField()
-        newPasswordTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.newPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        configureTextField(newPasswordTextField)
-        newPasswordTextField.isSecureTextEntry = true
-        stackView.addArrangedSubview(newPasswordTextField)
-        let confirmTextField = PaddedTextField()
-        confirmTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.confirmNewPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        configureTextField(confirmTextField)
-        confirmTextField.isSecureTextEntry = true
-        confirmTextField.delegate = self
-        stackView.addArrangedSubview(confirmTextField)
-        alertController.contentView = stackView
-        
-        alertController.addAction(title: L10n.change, isMainAction: true) {[weak self] _ in
-            if let newPassword = newPasswordTextField.text, let password = oldPasswordTextField.text, let confirmPassword = confirmTextField.text {
-                self?.userRepository.updatePassword(newPassword: newPassword, password: password, confirmPassword: confirmPassword).observeCompleted {}
+        controller.onSave = {[weak self] values in
+            if let oldPassword = values["oldPassword"], let password = values["password"], let passwordRepeat = values["passwordRepeat"] {
+                self?.userRepository.updatePassword(newPassword: password, password: oldPassword, confirmPassword: passwordRepeat).observeCompleted {
+                    ToastManager.show(text: L10n.Settings.updatedPassword, color: .green)
+                }
             }
         }
-        alertController.addCancelAction()
-        alertController.show()
+        let navController = UINavigationController(rootViewController: controller)
+        present(navController, animated: true, completion: nil)
     }
 
     private func showAddLocalAuthAlert() {
-        let alertController = HabiticaAlertController(title: L10n.Settings.addEmailAndPassword)
+        let controller = EditingFormViewController()
+        controller.formTitle = L10n.Settings.changePassword
+        controller.fields.append(EditingTextField(key: "email", title: L10n.Settings.email, type: .email))
+        controller.fields.append(EditingTextField(key: "password", title: L10n.Settings.newPassword, type: .password))
+        controller.fields.append(EditingTextField(key: "passwordRepeat", title: L10n.Settings.confirmNewPassword, type: .password))
+
+        controller.onCrossValidation = { values in
+            var errors = [String: String]()
+            if values["password"] != values["passwordRepeat"] {
+                errors["passwordRepeat"] = L10n.Errors.passwordNotMatching
+            }
+            return errors
+        }
         
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 16
-        let emailTextField = PaddedTextField()
-        emailTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.newEmail, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        configureTextField(emailTextField)
-        emailTextField.keyboardType = .emailAddress
-        stackView.addArrangedSubview(emailTextField)
-        let passwordTextField = PaddedTextField()
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.newPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        configureTextField(passwordTextField)
-        passwordTextField.isSecureTextEntry = true
-        stackView.addArrangedSubview(passwordTextField)
-        let confirmTextField = PaddedTextField()
-        confirmTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.confirmNewPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        configureTextField(confirmTextField)
-        confirmTextField.isSecureTextEntry = true
-        confirmTextField.delegate = self
-        stackView.addArrangedSubview(confirmTextField)
-        alertController.contentView = stackView
-        
-        let errorView = UILabel()
-        errorView.textColor = ThemeService.shared.theme.errorColor
-        errorView.numberOfLines = 0
-        errorView.isHidden = true
-        stackView.addArrangedSubview(errorView)
-        
-        let loadingView = UIActivityIndicatorView()
-        loadingView.color = ThemeService.shared.theme.tintColor
-        loadingView.isHidden = true
-        stackView.addArrangedSubview(loadingView)
-        
-        alertController.addAction(title: L10n.add, isMainAction: true, closeOnTap: false) {[weak self] _ in
-            errorView.isHidden = true
-            if let password = passwordTextField.text, let email = emailTextField.text, let confirmPassword = confirmTextField.text {
-                if password != confirmPassword || password.count < 8 {
-                    errorView.text = L10n.Login.passwordConfirmError
-                    errorView.isHidden = false
-                    return
-                }
-                if email.isEmpty {
-                    errorView.text = L10n.Login.emailInvalid
-                    errorView.isHidden = false
-                    return
-                }
-                loadingView.isHidden = false
-                loadingView.startAnimating()
-                emailTextField.resignFirstResponder()
-                passwordTextField.resignFirstResponder()
-                confirmTextField.resignFirstResponder()
-                self?.userRepository.register(username: self?.user?.username ?? "", password: password, confirmPassword: confirmPassword, email: email).observeResult { result in
-                    loadingView.isHidden = true
+        controller.onSave = {[weak self] values in
+            if let email = values["email"], let password = values["password"], let passwordRepeat = values["passwordRepeat"] {
+                self?.userRepository.register(username: self?.user?.username ?? "", password: password, confirmPassword: passwordRepeat, email: email).observeResult { result in
                     switch result {
                     case .success:
-                        alertController.dismiss(animated: true, completion: nil)
                         self?.userRepository.retrieveUser().observeValues { user in
                             if user?.authentication?.local?.email != nil {
                                 ToastManager.show(text: L10n.Settings.addedLocalAuth, color: .green)
@@ -499,14 +443,13 @@ private func setUser(_ user: UserProtocol) {
                             self?.tableView.reloadData()
                         }
                     case .failure:
-                        errorView.text = L10n.Login.registerError
-                        errorView.isHidden = false
+                        return
                     }
                 }
             }
         }
-        alertController.addCancelAction()
-        alertController.show()
+        let navController = UINavigationController(rootViewController: controller)
+        present(navController, animated: true, completion: nil)
     }
 
     private func showConfirmUsernameAlert() {
