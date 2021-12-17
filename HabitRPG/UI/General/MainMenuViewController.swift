@@ -153,7 +153,8 @@ class MainMenuViewController: BaseTableViewController {
     
     private var disposable = ScopedDisposable(CompositeDisposable())
     private var seasonalShopTimer: Timer?
-    
+    private var promoTimer: Timer?
+
     private var menuSections = [MenuSection]()
     var visibleSections: [MenuSection] {
         return menuSections.filter { (section) in (!section.isHidden && !section.visibleItems.isEmpty) }
@@ -200,7 +201,7 @@ class MainMenuViewController: BaseTableViewController {
             }
             if user?.isSubscribed == true {
                 menuItem(withKey: .subscription).subtitle = nil
-            } else {
+            } else if menuItem(withKey: .subscription).pillText != L10n.sale {
                 menuItem(withKey: .subscription).subtitle = L10n.getMoreHabitica
             }
             if user?.achievements?.hasCompletedOnboarding == true || configRepository.bool(variable: .moveAdventureGuide) {
@@ -214,17 +215,6 @@ class MainMenuViewController: BaseTableViewController {
                     view.setProgress(earned: achievements.filter({ $0.value }).count, total: achievements.count)
                 }
                 tableView.tableHeaderView = view
-            }
-            
-            if let promo = activePromo {
-                if promo.promoType == .gemsPrice || promo.promoType == .gemsAmount {
-                    menuItem(withKey: .gems).pillText = L10n.sale
-                    menuItem(withKey: .gems).pillBuilder = promo.configurePill
-                }
-                if promo.promoType == .subscription {
-                    menuItem(withKey: .subscription).pillText = L10n.sale
-                    menuItem(withKey: .subscription).pillBuilder = promo.configurePill
-                }
             }
             
             let customMenu = configRepository.array(variable: .customMenu)
@@ -380,6 +370,37 @@ class MainMenuViewController: BaseTableViewController {
                 self?.updateSeasonalEntries(worldState: worldState, items: items)
             })
         }).start())
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updatePromoCells()
+        
+        if activePromo != nil {
+                promoTimer?.invalidate()
+                promoTimer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true, block: {[weak self] _ in
+                    self?.updatePromoCells()
+                })
+        }
+    }
+    
+    private func updatePromoCells() {
+        if (activePromo?.endDate.timeIntervalSince1970 ?? 0) < Date().timeIntervalSince1970 {
+            menuItem(withKey: .gems).pillText = nil
+            menuItem(withKey: .subscription).pillText = nil
+            return
+        }
+        if let promo = activePromo {
+            var promoItem: MenuItem?
+            if promo.promoType == .gemsPrice || promo.promoType == .gemsAmount {
+                promoItem = menuItem(withKey: .gems)
+            } else if promo.promoType == .subscription {
+                promoItem = menuItem(withKey: .subscription)
+            }
+            promoItem?.pillText = L10n.sale
+            promoItem?.pillBuilder = promo.configurePill
+            promoItem?.subtitle = L10n.saleEndsIn(promo.endDate.getShortRemainingString())
+        }
     }
     
     private func updateSeasonalEntries(worldState: WorldStateProtocol, items: [ItemProtocol]) {
@@ -610,7 +631,7 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     func giftSubscriptionButtonTapped() {
-        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, onSave: { username in
+        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
             self.giftRecipientUsername = username
             self.perform(segue: StoryboardSegue.Main.openGiftSubscriptionDialog)
         }, saveButtonTitle: L10n.continue)

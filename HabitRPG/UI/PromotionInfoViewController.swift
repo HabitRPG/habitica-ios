@@ -122,7 +122,7 @@ class PromotionInfoViewController: BaseUIViewController {
     private var giftRecipientUsername = ""
 
     private func showGiftSubscriptionAlert() {
-        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, onSave: { username in
+        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
             let navigationController = StoryboardScene.Main.giftSubscriptionNavController.instantiate()
             if let giftViewController = navigationController.topViewController as? GiftSubscriptionViewController {
                 giftViewController.giftRecipientUsername = username

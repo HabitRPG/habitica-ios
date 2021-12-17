@@ -63,7 +63,7 @@ class EditingTextField: UIStackView, UITextFieldDelegate {
         return view
     }()
     
-    private let textField: PaddedTextField = {
+    let textField: PaddedTextField = {
         let view = PaddedTextField()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.autocapitalizationType = .none
@@ -124,12 +124,13 @@ class EditingTextField: UIStackView, UITextFieldDelegate {
     let key: String
     private let type: EditingTextFieldType
     
-    init(key: String, title: String, type: EditingTextFieldType, value: String? = nil) {
+    init(key: String, title: String, type: EditingTextFieldType, submitOnEnter: Bool = false, placeholder: String? = nil, value: String? = nil) {
         self.key = key
         self.type = type
         super.init(frame: CGRect.zero)
         textField.delegate = self
         textField.text = value
+        textField.placeholder = placeholder
         axis = .vertical
         spacing = 6
         addArrangedSubview(titleView)
@@ -138,6 +139,10 @@ class EditingTextField: UIStackView, UITextFieldDelegate {
         titleView.text =  title
         errorView.text = type.errorText()
         type.configure(textField: textField)
+        
+        if submitOnEnter {
+            textField.returnKeyType = .continue
+        }
     }
     
     required init(coder: NSCoder) {
@@ -178,6 +183,7 @@ class EditingTextField: UIStackView, UITextFieldDelegate {
 class EditingFormViewController: UIViewController, Themeable {
     var formTitle: String?
     var saveButtonTitle: String?
+    var autoFocusFirstField = true
     var onSave: (([String: String]) -> Void)?
     var onCrossValidation: (([String: String]) -> [String: String])?
     var asyncValidation: (([String: String], ([String: String]) -> Void) -> Void)?
@@ -232,6 +238,13 @@ class EditingFormViewController: UIViewController, Themeable {
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         for field in fields {
             stackView.addArrangedSubview(field)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if autoFocusFirstField {
+            fields.first?.textField.becomeFirstResponder()
         }
     }
     

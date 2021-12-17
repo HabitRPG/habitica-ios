@@ -95,7 +95,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
                 if self.user?.authentication?.hasLocalAuth == true {
                     self.showEmailChangeAlert()
                 } else {
-                    self.showAddLocalAuthAlert()
+                    self.showAddLocalAuthAlert(title: L10n.Settings.addEmail)
                 }
             }
         }
@@ -122,7 +122,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
                 if self.user?.authentication?.hasLocalAuth == true {
                     self.showPasswordChangeAlert()
                 } else {
-                    self.showAddLocalAuthAlert()
+                    self.showAddLocalAuthAlert(title: L10n.Settings.addPassword)
                 }
             }
         }
@@ -416,9 +416,9 @@ private func setUser(_ user: UserProtocol) {
         present(navController, animated: true, completion: nil)
     }
 
-    private func showAddLocalAuthAlert() {
+    private func showAddLocalAuthAlert(title: String) {
         let controller = EditingFormViewController()
-        controller.formTitle = L10n.Settings.changePassword
+        controller.formTitle = title
         controller.fields.append(EditingTextField(key: "email", title: L10n.Settings.email, type: .email))
         controller.fields.append(EditingTextField(key: "password", title: L10n.Settings.newPassword, type: .password))
         controller.fields.append(EditingTextField(key: "passwordRepeat", title: L10n.Settings.confirmNewPassword, type: .password))

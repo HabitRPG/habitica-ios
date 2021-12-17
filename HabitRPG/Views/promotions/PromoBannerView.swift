@@ -121,7 +121,7 @@ class PromoBannerView: UIView {
             upperEdge = descriptionImageView.edge.bottom
         }
         if !durationLabel.isHidden {
-            durationLabel.pin.top(to: upperEdge).start(34).end(34).marginTop(16).maxWidth(400).sizeToFit(.width)
+            durationLabel.pin.top(to: upperEdge).start(34).end(34).marginTop(8).maxWidth(400).sizeToFit(.width)
             upperEdge = durationLabel.edge.bottom
         }
     

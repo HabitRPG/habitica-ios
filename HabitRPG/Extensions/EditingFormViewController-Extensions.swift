@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 extension EditingFormViewController {
-    static func buildWithUsernameField(title: String, onSave: @escaping (String) -> Void, saveButtonTitle: String? = nil) -> UINavigationController {
+    static func buildWithUsernameField(title: String, subtitle: String, onSave: @escaping (String) -> Void, saveButtonTitle: String? = nil) -> UINavigationController {
         let controller = EditingFormViewController()
         controller.formTitle = title
         controller.saveButtonTitle = saveButtonTitle
-        controller.fields.append(EditingTextField(key: "username", title: L10n.username, type: .name))
+        controller.fields.append(EditingTextField(key: "username", title: subtitle, type: .name, placeholder: L10n.username))
         controller.onSave = {values in
             if let username = values["username"] {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {

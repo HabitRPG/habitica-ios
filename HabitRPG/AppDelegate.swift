@@ -355,6 +355,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         }
         if #available(iOS 14.5, *) {
             DispatchQueue.global(qos: .background).async {
+                Analytics.logEvent("Attribution Attempt", parameters: nil)
                 let token = try? AAAttribution.attributionToken()
                 if let attributionToken = token, let url = URL(string: "https://api-adservices.apple.com/api/v1/") {
                     let request = NSMutableURLRequest(url: url)
@@ -362,23 +363,25 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                     request.setValue("text/plain", forHTTPHeaderField: "Content-Type")
                     request.httpBody = Data(attributionToken.utf8)
                     let task = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
-                        if error != nil {
+                        Analytics.logEvent("Attribution Data collected", parameters: nil)
+                        if let error = error {
+                            Crashlytics.crashlytics().record(error: error)
+                            Analytics.logEvent("Attribution Failed", parameters: ["point": error.localizedDescription])
                             return
                         }
                         guard let data = data else {
+                            Analytics.logEvent("Attribution Failed", parameters: ["point": "no data"])
                             return
                         }
                         defaults.set(true, forKey: "userWasAttributed")
                         do {
                             guard let data = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+                                Analytics.logEvent("Attribution Failed", parameters: ["point": "no data"])
                                 return
                             }
                             if let campaignId = data["campaignId"] as? Int {
                                 var analyticsData = [String: Any]()
                                 analyticsData["attribution"] = data["iad-attribution"]
-                                if analyticsData["attribution"] as? String != "true" {
-                                    return
-                                }
                                 analyticsData["campaignID"] = campaignId
                                 analyticsData["campaignName"] = data["iad-campaign-name"]
                                 analyticsData["purchaseDate"] = data["iad-purchase-date"]
@@ -387,6 +390,11 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                                 analyticsData["clickDate"] = data["iad-click-date"]
                                 analyticsData["keyword"] = data["iad-keyword"]
                                 analyticsData["keywordMatchtype"] = data["iad-keyword-matchtype"]
+                                if analyticsData["attribution"] as? String != "true" {
+                                    analyticsData["point"] = "not attributed"
+                                    Analytics.logEvent("Attribution Failed", parameters: analyticsData)
+                                    return
+                                }
                                 HabiticaAnalytics.shared.log("adAttribution", withEventProperties: analyticsData)
                                 Amplitude.instance().setUserProperties([
                                     "clickedSearchAd": data["iad-attribution"] ?? "",
@@ -395,10 +403,13 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                                 ])
                             }
                         } catch {
-                            print(error)
+                            Crashlytics.crashlytics().record(error: error)
+                            Analytics.logEvent("Attribution Failed", parameters: ["point": error.localizedDescription])
                         }
                     }
                     task.resume()
+                } else {
+                    Analytics.logEvent("Attribution Failed", parameters: ["point": "No token"])
                 }
             }
         } else {

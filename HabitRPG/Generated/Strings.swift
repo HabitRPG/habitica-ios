@@ -390,7 +390,7 @@ public enum L10n {
   public static var giftOneGetOneTitle: String { return L10n.tr("Mainstrings", "gift_one_get_one_title") }
   /// Enter recipient's @ username
   public static var giftRecipientSubtitle: String { return L10n.tr("Mainstrings", "gift_recipient_subtitle") }
-  /// Who would you like to gift to?
+  /// Send gift
   public static var giftRecipientTitle: String { return L10n.tr("Mainstrings", "gift_recipient_title") }
   /// Your gift was sent!
   public static var giftSentConfirmation: String { return L10n.tr("Mainstrings", "gift_sent_confirmation") }
@@ -798,6 +798,10 @@ public enum L10n {
   public static var resyncTask: String { return L10n.tr("Mainstrings", "resync_task") }
   /// Sale
   public static var sale: String { return L10n.tr("Mainstrings", "sale") }
+  /// Sale ends in %@
+  public static func saleEndsIn(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "sale_ends_in", p1)
+  }
   /// Saturday
   public static var saturday: String { return L10n.tr("Mainstrings", "saturday") }
   /// Save

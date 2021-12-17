@@ -50,6 +50,7 @@ class SubscriptionViewController: BaseTableViewController {
                 }
             }
             hasTerminationDate = user?.purchased?.subscriptionPlan?.dateTerminated != nil
+            tableView.reloadData()
         }
     }
     var mysteryGear: GearProtocol?
@@ -196,6 +197,8 @@ class SubscriptionViewController: BaseTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         if isSubscribed && hasTerminationDate {
             return 4
+        } else if isSubscribed && !hasTerminationDate {
+            return 2
         } else {
             return 3
         }
@@ -455,11 +458,12 @@ class SubscriptionViewController: BaseTableViewController {
     private var giftRecipientUsername = ""
     
     @IBAction func giftSubscriptionButtonTapped(_ sender: Any) {
-        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, onSave: { username in
+        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
             self.giftRecipientUsername = username
             self.perform(segue: StoryboardSegue.Main.openGiftSubscriptionDialog)
         }, saveButtonTitle: L10n.continue)
         present(navController, animated: true, completion: nil)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

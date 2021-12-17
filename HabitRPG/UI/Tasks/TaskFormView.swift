@@ -710,7 +710,7 @@ class TaskFormViewModel: ObservableObject {
                 return item.detached()
             }) ?? [])
             
-            _isTaskEditable = Published(initialValue: task?.isEditable == true)
+            _isTaskEditable = Published(initialValue: task?.isEditable != false)
         }
     }
 }
@@ -831,7 +831,9 @@ struct TaskFormView: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(L10n.title).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingText ? .semibold : .regular)).padding(.leading, 8)
+                if !viewModel.isTaskEditable {
                 Image(uiImage: HabiticaIcons.imageOfLocked().withRenderingMode(.alwaysTemplate)).foregroundColor(viewModel.darkestTaskTintColor)
+                }
             }
             MultilineTextField("", text: $viewModel.text, onCommit: {
             }, onEditingChanged: { isEditing in
@@ -903,7 +905,6 @@ struct TaskFormView: View {
         let theme = ThemeService.shared.theme
         TrackableScrollView(contentOffset: $scrollViewContentOffset.onChange { value in
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-
         }) {
             VStack {
                 VStack {

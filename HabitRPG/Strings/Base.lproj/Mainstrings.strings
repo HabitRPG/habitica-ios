@@ -626,7 +626,7 @@
 "login.enter_email" = "Enter the email address you used to register your Habitica account.";
 "login.reset_password_response" = "If we have your email on file, instructions for setting a new password have been sent to your email.";
 "groups.error_name_required" = "Name may not be empty.";
-"gift_recipient_title" = "Who would you like to gift to?";
+"gift_recipient_title" = "Send gift";
 "gift_recipient_subtitle" = "Enter recipient's @ username";
 "continue" = "Continue";
 "gift_confirmation_title" = "Your gift was sent!";
@@ -857,6 +857,7 @@
 "moderator" = "Moderator";
 "staff" = "Staff";
 "sale" = "Sale";
+"sale_ends_in" = "Sale ends in %@";
 "get_more_habitica" = "Get more out of Habitica";
 "report_x_violation" = "Report @%@ for violation?";
 "not_getting_drops" = "Not getting the right drops? Check out the Market to buy just the things you need!";

@@ -9,15 +9,19 @@
 import Foundation
 import Habitica_Models
 
+class EmailCodable: Decodable {
+    var value: String?
+}
+
 class SocialAuth: Decodable {
-    var emails: [[String: String]]?
+    var emails: [EmailCodable]?
     var id: String?
     
     func toSocialAuthenticationObject() -> SocialAuthenticationProtocol {
         let object  = APISocialAuthentication()
         object.id = id
         emails?.forEach({ email in
-            if let emailValue = email["value"] {
+            if let emailValue = email.value {
                 object.emails.append(emailValue)
             }
         })
