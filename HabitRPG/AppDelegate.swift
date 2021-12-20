@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Keys
 import Amplitude_iOS
 import Habitica_API_Client
 import Habitica_Models
@@ -141,8 +140,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     
     @objc
     func setupAnalytics() {
-        let keys = HabiticaKeys()
-        Amplitude.instance().initializeApiKey(keys.amplitudeApiKey)
+        Amplitude.instance().initializeApiKey(Secrets.amplitudeApiKey)
         Amplitude.instance().setUserId(AuthenticationManager.shared.currentUserId)
         let userDefaults = UserDefaults.standard
         Amplitude.instance()?.setUserProperties(["iosTimezoneOffset": -(NSTimeZone.local.secondsFromGMT() / 60),

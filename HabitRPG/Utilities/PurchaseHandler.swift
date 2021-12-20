@@ -9,7 +9,6 @@
 import Foundation
 import SwiftyStoreKit
 import StoreKit
-import Keys
 
 class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     @objc static let shared = PurchaseHandler()
@@ -24,7 +23,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                                           "com.habitrpg.ios.habitica.norenew_subscription.6month", "com.habitrpg.ios.habitica.norenew_subscription.12month"
     ]
     
-    private let itunesSharedSecret = HabiticaKeys().itunesSharedSecret
+    private let itunesSharedSecret = Secrets.itunesSharedSecret
     private let appleValidator: AppleReceiptValidator
     private let userRepository = UserRepository()
     

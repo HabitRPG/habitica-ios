@@ -158,7 +158,6 @@ PODS:
   - iOSSnapshotTestCase/SwiftSupport (8.0.0):
     - iOSSnapshotTestCase/Core
   - KeychainAccess (4.2.2)
-  - Keys (1.0.1)
   - Kingfisher (7.1.1)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
@@ -246,7 +245,6 @@ DEPENDENCIES:
   - FirebaseCrashlytics
   - iOSSnapshotTestCase
   - KeychainAccess
-  - Keys (from `Pods/CocoaPodsKeys`)
   - Kingfisher
   - MRProgress
   - Nimble
@@ -315,10 +313,6 @@ SPEC REPOS:
     - TagListView
     - UIColor_Hex_Swift
 
-EXTERNAL SOURCES:
-  Keys:
-    :path: Pods/CocoaPodsKeys
-
 SPEC CHECKSUMS:
   ACKReactiveExtensions: 28681e996e7c175006b2a05009e14e13079b24d8
   Amplitude-iOS: 7d8cdc3408ba35c2e68368fc7c692cd104606b94
@@ -348,7 +342,6 @@ SPEC CHECKSUMS:
   GoogleUtilities: 684ee790a24f73ebb2d1d966e9711c203f2a4237
   iOSSnapshotTestCase: a670511f9ee3829c2b9c23e6e68f315fd7b6790f
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
-  Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   Kingfisher: f738f9c4a3415823b8e2985d10aa2d6a9f37bc4d
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
@@ -370,6 +363,6 @@ SPEC CHECKSUMS:
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   UIColor_Hex_Swift: 31cd3e47440f07a20d2503a36bb0437a445b3c29
 
-PODFILE CHECKSUM: 7d70b24fb06b163bd159247e62fb267e2f2ab82a
+PODFILE CHECKSUM: d0ac99fa0e6097761d39c659a5f70c8a1c7dd98e
 
 COCOAPODS: 1.11.2

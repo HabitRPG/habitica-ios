@@ -9,7 +9,6 @@
 import Foundation
 import SwiftyStoreKit
 import StoreKit
-import Keys
 import ReactiveSwift
 import Habitica_Models
 
@@ -49,28 +48,8 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
             }
         }
     }
-    let appleValidator: AppleReceiptValidator
-    let itunesSharedSecret = HabiticaKeys().itunesSharedSecret
     var expandedList = [Bool](repeating: false, count: 4)
     private var balanceAmount = 1
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        #if DEBUG
-            appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
-        #else
-            appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
-        #endif
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        #if DEBUG
-            appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
-        #else
-            appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
-        #endif
-        super.init(coder: aDecoder)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

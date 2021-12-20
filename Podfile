@@ -1,21 +1,8 @@
-require 'cocoapods-catalyst-support'
-
 platform :ios, '13.6'
 use_frameworks!
 inhibit_all_warnings!
 
 workspace 'Habitica'
-
-plugin 'cocoapods-keys', {
-  :project => "Habitica",
-  :keys => [
-    "GoogleClient",
-    "GoogleRedirectUrl",
-    "AmplitudeApiKey",
-    "ItunesSharedSecret",
-    "StagingKey",
-  ]
-}
 
 def reactive_pods
   pod 'ReactiveCocoa'
@@ -133,17 +120,10 @@ target "Habitica Database" do
   end
 end
 
-catalyst_configuration do
-  verbose!
-
-  ios 'Firebase/Performance'
-end
-
 post_install do |installer|
  installer.pods_project.targets.each do |target|
   target.build_configurations.each do |config|
    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.6'
   end
  end
- installer.configure_catalyst
 end

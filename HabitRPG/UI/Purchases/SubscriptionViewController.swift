@@ -9,7 +9,6 @@
 import UIKit
 import SwiftyStoreKit
 import StoreKit
-import Keys
 import ReactiveSwift
 import Habitica_Models
 import PinLayout
@@ -55,7 +54,7 @@ class SubscriptionViewController: BaseTableViewController {
     }
     var mysteryGear: GearProtocol?
     let appleValidator: AppleReceiptValidator
-    let itunesSharedSecret = HabiticaKeys().itunesSharedSecret
+    let itunesSharedSecret = Secrets.itunesSharedSecret
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         #if DEBUG

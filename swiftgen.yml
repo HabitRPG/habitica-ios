@@ -17,3 +17,8 @@ ib:
       output: HabitRPG/Generated/Storyboard Scenes.swift
     - templateName: segues-swift4
       output: HabitRPG/Generated/Storyboard Segues.swift
+yaml:
+  inputs: secrets.yml
+  outputs:
+    - templatePath: swiftgen-templates/secrets.stencil
+      output: HabitRPG/Generated/Secrets.swift

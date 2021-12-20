@@ -9,7 +9,6 @@
 import UIKit
 import SwiftyStoreKit
 import StoreKit
-import Keys
 import ReactiveSwift
 import Habitica_Models
 

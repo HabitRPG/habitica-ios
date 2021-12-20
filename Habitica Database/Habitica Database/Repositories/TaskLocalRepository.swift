@@ -44,7 +44,7 @@ public class TaskLocalRepository: BaseLocalRepository {
         if let order = order {
             taskOrder = order
         } else {
-            getRealm()?.objects(RealmTask.self).sorted(byKeyPath: "order").forEach({ (task) in
+            getRealm()?.objects(RealmTask.self).sorted(byKeyPath: "order", ascending: true).forEach({ (task) in
                 taskOrder[(task.type ?? "")+"s"]?.append(task.id ?? "")
             })
         }
@@ -234,7 +234,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     public func fixTaskOrder(movedTask: TaskProtocol, toPosition: Int) {
         var taskOrder = 0
         let realm = getRealm()
-        guard let tasks = realm?.objects(RealmTask.self).filter("type == %@", movedTask.type ?? "").sorted(byKeyPath: "order") else {
+        guard let tasks = realm?.objects(RealmTask.self).filter("type == %@", movedTask.type ?? "").sorted(byKeyPath: "order", ascending: true) else {
             return
         }
         var taskArray = Array(tasks)

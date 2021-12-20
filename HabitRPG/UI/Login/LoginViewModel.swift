@@ -9,7 +9,6 @@
 import ReactiveCocoa
 import ReactiveSwift
 import AppAuth
-import Keys
 import FBSDKLoginKit
 import AuthenticationServices
 #if !targetEnvironment(macCatalyst)
@@ -346,14 +345,13 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         guard let tokenEndpoint = URL(string: "https://www.googleapis.com/oauth2/v4/token") else {
             return
         }
-        let keys = HabiticaKeys()
-        guard let redirectUrl = URL(string: keys.googleRedirectUrl) else {
+        guard let redirectUrl = URL(string: Secrets.googleRedirectUrl) else {
             return
         }
         let configuration = OIDServiceConfiguration(authorizationEndpoint: authorizationEndpoint, tokenEndpoint: tokenEndpoint)
 
         let request = OIDAuthorizationRequest.init(configuration: configuration,
-                                                   clientId: keys.googleClient,
+                                                   clientId: Secrets.googleClient,
                                                    scopes: [OIDScopeOpenID, OIDScopeProfile, OIDScopeEmail],
                                                    redirectURL: redirectUrl,
                                                    responseType: OIDResponseTypeCode,
