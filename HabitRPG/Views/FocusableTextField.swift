@@ -29,6 +29,7 @@ struct FocusableTextField: UIViewRepresentable {
         let view = UITextField()
         view.addTarget(context.coordinator, action: #selector(Coordinator.textViewDidChange), for: .editingChanged)
         view.delegate = context.coordinator
+        view.textColor = ThemeService.shared.theme.primaryTextColor
         return view
     }
 

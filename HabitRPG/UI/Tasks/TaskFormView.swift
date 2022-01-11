@@ -103,7 +103,7 @@ struct TagList: View {
                     return selectedTag.id == tag.id
                 }
                 HStack {
-                    Text(tag.text ?? "TagName").font(.body).foregroundColor(isSelected ? .accentColor : .primary)
+                    Text(tag.text ?? "TagName").font(.body).foregroundColor(isSelected ? .accentColor : Color(ThemeService.shared.theme.primaryTextColor))
                     Spacer()
                     if isSelected {
                         Image(Asset.checkmarkSmall.name).foregroundColor(.accentColor)
@@ -227,8 +227,10 @@ struct FormDatePicker<TitleView: View>: View {
             if isOpen {
                 if #available(iOS 14.0, *) {
                     picker.datePickerStyle(GraphicalDatePickerStyle())
+                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
                 } else {
                     picker.datePickerStyle(WheelDatePickerStyle())
+                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
                 }
             }
         }
@@ -518,6 +520,7 @@ struct TaskFormReminderItemView: View {
                           label: {
                    Text("")
                           })
+            .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
     }
     
     init(item: ReminderProtocol, isExpanded: Bool, onDelete: @escaping () -> Void) {
@@ -547,6 +550,7 @@ struct TaskFormReminderItemView: View {
                         .frame(width: 48, height: 48)
                 })
                 Text(dateFormatter.string(from: time))
+                    .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
                 Spacer()
             }
             if isExpanded {
@@ -857,6 +861,7 @@ struct TaskFormView: View {
                 .cornerRadius(12)
         }.padding(.horizontal, 16)
         .padding(.vertical, 12)
+        .preferredColorScheme(ThemeService.shared.theme.isDark ? .dark : .light)
     }
     
     @ViewBuilder
@@ -994,7 +999,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
             viewModel.showTaskGraphs = configRepository.bool(variable: .showTaskGraphs)
             let darkestColor: UIColor = editedTask != nil ? .forTaskValueDarkest(editedTask?.value ?? 0) : .white
             viewModel.darkestTaskTintColor = Color(darkestColor)
-            viewModel.textFieldTintColor = viewModel.darkestTaskTintColor
+            viewModel.textFieldTintColor = editedTask != nil ? viewModel.darkestTaskTintColor : Color(.gray50)
             
             if let controller = navigationController as? ThemedNavigationController {
                 controller.navigationBarColor = color
