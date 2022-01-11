@@ -120,6 +120,8 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
             formController.taskType = .reward
             if let task = editedReward {
                 formController.editedTask = task
+            } else {
+                formController.editedTask = nil
             }
             editedReward = nil
         }
