@@ -309,10 +309,21 @@ class ConfigRepository: NSObject {
     }
     
     func enableIPadUI() -> Bool {
-        #if targetEnvironment(macCatalyst)
         return true
-        #else
+        if isOnMac {
+            return true
+        }
         return bool(variable: .enableIPadUI)
-        #endif
     }
+    
+    let isOnMac: Bool = {
+        #if targetEnvironment(macCatalyst)
+            return true
+        #else
+        if #available(iOS 14.0, *) {
+            return ProcessInfo.processInfo.isiOSAppOnMac
+        }
+        return false
+        #endif
+    }()
 }

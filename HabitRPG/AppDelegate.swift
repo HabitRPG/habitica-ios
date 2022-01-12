@@ -42,7 +42,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     private let socialRepository = SocialRepository()
     private let configRepository = ConfigRepository.shared
     
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         logger = RemoteLogger()
         self.application = application
@@ -63,11 +62,11 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         }
         
         handleInitialLaunch()
-                
+        applySearchAdAttribution()
+        
         return true
     }
 
-    
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         if currentAuthorizationFlow?.resumeExternalUserAgentFlow(with: url) == true {
             currentAuthorizationFlow = nil
@@ -346,7 +345,10 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         #endif
     }
     
-    static func applySearchAdAttribution() {
+    func applySearchAdAttribution() {
+        if configRepository.isOnMac {
+            return
+        }
         let defaults = UserDefaults.standard
         if defaults.bool(forKey: "userWasAttributed") {
             return

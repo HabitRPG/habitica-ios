@@ -80,34 +80,34 @@ class MenuItem {
     }
     
     static let allItems = [
-        MenuItem(key: .tasks, title: L10n.Tasks.tasks, segue: StoryboardSegue.Main.tasksBoardSegue.rawValue),
+        MenuItem(key: .tasks, title: L10n.Tasks.tasks, vcInstantiator: StoryboardScene.Main.taskBoardViewController.instantiate),
         MenuItem(key: .habits, title: L10n.Tasks.habits, vcInstantiator: StoryboardScene.Main.habitsViewController.instantiate),
         MenuItem(key: .dailies, title: L10n.Tasks.dailies, vcInstantiator: StoryboardScene.Main.dailiesViewController.instantiate),
         MenuItem(key: .todos, title: L10n.Tasks.todos, vcInstantiator: StoryboardScene.Main.todosViewController.instantiate),
         MenuItem(key: .rewards, title: L10n.Tasks.rewards, vcInstantiator: StoryboardScene.Main.rewardsViewController.instantiate),
-        MenuItem(key: .skills, title: L10n.Menu.skills, segue: StoryboardSegue.Main.spellsSegue.rawValue),
-        MenuItem(key: .stats, title: L10n.Titles.stats, segue: StoryboardSegue.Main.statsSegue.rawValue),
-        MenuItem(key: .achievements, title: L10n.Titles.achievements, segue: StoryboardSegue.Main.achievementsSegue.rawValue),
+        MenuItem(key: .skills, title: L10n.Menu.skills, vcInstantiator: StoryboardScene.User.spellsViewController.instantiate),
+        MenuItem(key: .stats, title: L10n.Titles.stats, vcInstantiator: StoryboardScene.User.attributePointsViewController.instantiate),
+        MenuItem(key: .achievements, title: L10n.Titles.achievements, vcInstantiator: StoryboardScene.User.achievementsCollectionViewController.instantiate),
         MenuItem(key: .market, title: L10n.Locations.market, segue: StoryboardSegue.Main.showMarketSegue.rawValue),
         MenuItem(key: .questShop, title: L10n.Locations.questShop, segue: StoryboardSegue.Main.showQuestShopSegue.rawValue),
         MenuItem(key: .seasonalShop, title: L10n.Locations.seasonalShop, segue: StoryboardSegue.Main.showSeasonalShopSegue.rawValue, isHidden: true),
         MenuItem(key: .timeTravelersShop, title: L10n.Locations.timeTravelersShop, segue: StoryboardSegue.Main.showTimeTravelersSegue.rawValue),
-        MenuItem(key: .customizeAvatar, title: L10n.Menu.customizeAvatar, segue: StoryboardSegue.Main.customizationSegue.rawValue),
-        MenuItem(key: .equipment, title: L10n.Titles.equipment, segue: StoryboardSegue.Main.equipmentSegue.rawValue),
-        MenuItem(key: .items, title: L10n.Titles.items, segue: StoryboardSegue.Main.itemSegue.rawValue),
-        MenuItem(key: .stable, title: L10n.Titles.petsAndMounts, segue: StoryboardSegue.Main.stableSegue.rawValue),
-        MenuItem(key: .gems, title: L10n.Menu.gems, segue: StoryboardSegue.Main.purchaseGemsSegue.rawValue),
-        MenuItem(key: .subscription, title: L10n.Menu.subscription, segue: StoryboardSegue.Main.subscriptionSegue.rawValue),
-        MenuItem(key: .tavern, title: L10n.Titles.tavern, segue: StoryboardSegue.Main.tavernSegue.rawValue),
-        MenuItem(key: .party, title: L10n.Titles.party, segue: StoryboardSegue.Main.partySegue.rawValue),
+        MenuItem(key: .customizeAvatar, title: L10n.Menu.customizeAvatar, vcInstantiator: StoryboardScene.Main.avatarOverviewViewController.instantiate),
+        MenuItem(key: .equipment, title: L10n.Titles.equipment, vcInstantiator: StoryboardScene.Main.equipmentOverviewViewController.instantiate),
+        MenuItem(key: .items, title: L10n.Titles.items, vcInstantiator: StoryboardScene.Main.itemsViewController.instantiate),
+        MenuItem(key: .stable, title: L10n.Titles.petsAndMounts, vcInstantiator: StoryboardScene.Main.stableViewController.instantiate),
+        MenuItem(key: .gems, title: L10n.Menu.gems, vcInstantiator: StoryboardScene.Main.purchaseGemNavController.instantiate),
+        MenuItem(key: .subscription, title: L10n.Menu.subscription, vcInstantiator: StoryboardScene.Main.subscriptionNavController.instantiate),
+        MenuItem(key: .tavern, title: L10n.Titles.tavern, vcInstantiator: StoryboardScene.Social.tavernViewController.instantiate),
+        MenuItem(key: .party, title: L10n.Titles.party, vcInstantiator: StoryboardScene.Social.partyViewController.instantiate),
         MenuItem(key: .questDetail, title: L10n.quest, vcInstantiator: StoryboardScene.Social.questDetailViewController.instantiate),
-        MenuItem(key: .guilds, title: L10n.Titles.guilds, segue: StoryboardSegue.Main.guildsSegue.rawValue),
-        MenuItem(key: .challenges, title: L10n.Titles.challenges, segue: StoryboardSegue.Main.challengesSegue.rawValue),
-        MenuItem(key: .news, title: L10n.Titles.news, segue: StoryboardSegue.Main.newsSegue.rawValue),
-        MenuItem(key: .support, title: L10n.Menu.support, segue: StoryboardSegue.Main.showSupportSegue.rawValue),
-        MenuItem(key: .about, title: L10n.Titles.about, segue: StoryboardSegue.Main.aboutSegue.rawValue),
-        MenuItem(key: .settings, title: L10n.Titles.settings, segue: StoryboardSegue.Main.settingsSegue.rawValue),
-        MenuItem(key: .messages, title: L10n.Titles.messages, segue: StoryboardSegue.Main.inboxSegue.rawValue),
+        MenuItem(key: .guilds, title: L10n.Titles.guilds, vcInstantiator: StoryboardScene.Social.guildsOverviewViewController.instantiate),
+        MenuItem(key: .challenges, title: L10n.Titles.challenges, vcInstantiator: StoryboardScene.Social.challengeTableViewController.instantiate),
+        MenuItem(key: .news, title: L10n.Titles.news, vcInstantiator: StoryboardScene.Main.newsViewController.instantiate),
+        MenuItem(key: .support, title: L10n.Menu.support, vcInstantiator: StoryboardScene.Support.initialScene.instantiate),
+        MenuItem(key: .about, title: L10n.Titles.about, vcInstantiator: StoryboardScene.Main.aboutViewController.instantiate),
+        MenuItem(key: .settings, title: L10n.Titles.settings, vcInstantiator: StoryboardScene.Settings.initialScene.instantiate),
+        MenuItem(key: .messages, title: L10n.Titles.messages, vcInstantiator: StoryboardScene.Social.inboxNavigationViewController.instantiate),
         MenuItem(key: .notifications, title: L10n.Titles.notifications, vcInstantiator: StoryboardScene.Main.notificationsNavigationController.instantiate)
     ]
 }
@@ -253,11 +253,13 @@ class MainMenuViewController: BaseTableViewController {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "MainTableviewCell", bundle: nil), forCellReuseIdentifier: "Cell")
 
-        topHeaderCoordinator?.hideNavBar = true
+        topHeaderCoordinator?.hideNavBar = !configRepository.enableIPadUI()
         if !configRepository.enableIPadUI() {
             topHeaderCoordinator?.alternativeHeader = navbarView
             topHeaderCoordinator?.navbarVisibleColor = navbarColor
             navbarView.backgroundColor = navbarColor
+        } else {
+            navbarColor = ThemeService.shared.theme.contentBackgroundColor
         }
         topHeaderCoordinator?.followScrollView = false
         
@@ -370,6 +372,11 @@ class MainMenuViewController: BaseTableViewController {
                 self?.updateSeasonalEntries(worldState: worldState, items: items)
             })
         }).start())
+        
+        if #available(iOS 14.5, *) {
+            splitViewController?.displayModeButtonVisibility = .always
+            splitViewController?.showsSecondaryOnlyButton = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -546,6 +553,8 @@ class MainMenuViewController: BaseTableViewController {
         }
     }
     
+    private var currentSecondaryIndexPath: IndexPath = IndexPath(item: 0, section: 0)
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = visibleSections[indexPath.section].visibleItems[indexPath.item]
         if item.isDisabled {
@@ -557,6 +566,12 @@ class MainMenuViewController: BaseTableViewController {
                 present(vc, animated: true, completion: nil)
             } else {
                 if splitViewController != nil {
+                    let oldIndexPath = currentSecondaryIndexPath
+                    currentSecondaryIndexPath = indexPath
+                    tableView.beginUpdates()
+                    tableView.reloadRows(at: [indexPath, oldIndexPath], with: .automatic)
+                    tableView.endUpdates()
+                    vc.navigationItem.setHidesBackButton(true, animated: false)
                     splitViewController?.showDetailViewController(vc, sender: self)
                 } else {
                     navigationController?.pushViewController(vc, animated: true)
@@ -570,8 +585,6 @@ class MainMenuViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = visibleItemAt(indexPath: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: item?.cellName ?? "Cell", for: indexPath)
-        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        
         if item?.accessibilityLabel?.isEmpty != true {
             cell.accessibilityLabel = accessibilityLabel
         } else {
@@ -581,10 +594,16 @@ class MainMenuViewController: BaseTableViewController {
         let label = cell.viewWithTag(1) as? UILabel
         label?.text = item?.title
         label?.font = CustomFontMetrics.scaledSystemFont(ofSize: 17)
-        if item?.isDisabled == true {
-            label?.textColor = ThemeService.shared.theme.dimmedTextColor
+        if indexPath == tableView.indexPathForSelectedRow || indexPath == currentSecondaryIndexPath {
+            cell.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+            label?.textColor = ThemeService.shared.theme.tintColor
         } else {
-            label?.textColor = ThemeService.shared.theme.primaryTextColor
+            cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+            if item?.isDisabled == true {
+                label?.textColor = ThemeService.shared.theme.dimmedTextColor
+            } else {
+                label?.textColor = ThemeService.shared.theme.primaryTextColor
+            }
         }
         label?.backgroundColor = .clear
 
@@ -655,9 +674,5 @@ class MainMenuViewController: BaseTableViewController {
             (segue.destination as? UserProfileViewController)?.username = user?.username
             (segue.destination as? UserProfileViewController)?.userID = user?.id
         }
-    }
-    
-    override func showDetailViewController(_ vc: UIViewController, sender: Any?) {
-        show(vc, sender: sender)
     }
 }

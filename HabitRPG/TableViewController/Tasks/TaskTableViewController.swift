@@ -175,11 +175,11 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     
     func getPredicate() -> NSPredicate {
         var predicates = [NSPredicate]()
-        
-        if let tabBarController = tabBarController as? MainTabBarController {
-            if let dataSource = dataSource {
-                predicates.append(contentsOf: dataSource.predicates(filterType: filterType))
-                
+    
+        if let dataSource = dataSource {
+            predicates.append(contentsOf: dataSource.predicates(filterType: filterType))
+            if let tabBarController = tabBarController as? MainTabBarController {
+
                 let selectedTags = tabBarController.selectedTags
                 if selectedTags.isEmpty == false {
                     predicates.append(NSPredicate(format: "SUBQUERY(realmTags, $tag, $tag.id IN %@).@count = %d", selectedTags, selectedTags.count))

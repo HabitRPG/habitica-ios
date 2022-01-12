@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +12,7 @@
         <!--Split View Controller-->
         <scene sceneID="Yhu-PL-0XV">
             <objects>
-                <splitViewController storyboardIdentifier="MainSplitViewController" allowDoubleColumnStyle="YES" maximumPrimaryColumnWidth="400" id="CB1-dr-Ach" sceneMemberID="viewController">
+                <splitViewController storyboardIdentifier="MainSplitViewController" modalPresentationStyle="fullScreen" allowDoubleColumnStyle="YES" maximumPrimaryColumnWidth="400" preferredDisplayMode="beside" behavior="tile" presentsWithGesture="NO" id="CB1-dr-Ach" sceneMemberID="viewController">
                     <connections>
                         <segue destination="8YX-ce-x5E" kind="relationship" relationship="compactViewController" id="pNv-om-HTC"/>
                         <segue destination="JSb-MY-Gwo" kind="relationship" relationship="masterViewController" id="ScC-Xo-JyG"/>
@@ -39,10 +39,10 @@
             </objects>
             <point key="canvasLocation" x="-754" y="-704"/>
         </scene>
-        <!--View Controller-->
+        <!--Tasks-->
         <scene sceneID="oeq-2A-hsJ">
             <objects>
-                <viewController id="44F-EE-hFM" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaskBoardViewController" id="44F-EE-hFM" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zQk-vw-GYw"/>
                         <viewControllerLayoutGuide type="bottom" id="wBG-mV-WYQ"/>
@@ -110,7 +110,7 @@
                             <constraint firstAttribute="trailing" secondItem="h8s-BH-yQ1" secondAttribute="trailing" id="h8b-2z-TPf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="f7u-cF-EoU"/>
+                    <navigationItem key="navigationItem" title="Tasks" id="f7u-cF-EoU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uhk-yY-21B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -425,7 +425,7 @@
                                 <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="55.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wUa-lU-7eK" id="qCK-hL-d2w">
-                                    <rect key="frame" x="0.0" y="0.0" width="398.33333333333331" height="55.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="399.33333333333331" height="55.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W6t-di-qmS">
@@ -3674,7 +3674,7 @@ a matching subscription automatically after sending your gift.</string>
                                 <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="55.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dch-Fc-8p9" id="PUI-0c-ZdD">
-                                    <rect key="frame" x="0.0" y="0.0" width="398.33333333333331" height="55.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="399.33333333333331" height="55.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JY6-A2-baf">
