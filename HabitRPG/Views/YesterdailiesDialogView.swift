@@ -62,6 +62,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         startDayButton.setTitleColor(.white, for: .normal)
         startDayButton.backgroundColor = theme.fixedTintColor
         tableViewWrapper.backgroundColor = theme.windowBackgroundColor
+        yesterdailiesTableView.backgroundColor = theme.windowBackgroundColor
         checkinCountView.textColor = theme.primaryTextColor
         nextCheckinCountView.textColor = theme.secondaryTextColor
         startDayButton.layer.shadowColor = ThemeService.shared.theme.buttonShadowColor.cgColor

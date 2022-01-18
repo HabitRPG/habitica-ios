@@ -309,7 +309,6 @@ class ConfigRepository: NSObject {
     }
     
     func enableIPadUI() -> Bool {
-        return true
         if isOnMac {
             return true
         }
