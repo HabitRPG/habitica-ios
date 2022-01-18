@@ -98,6 +98,8 @@ public class ThemeService: NSObject {
         UITableView.appearance().separatorColor = theme.tableviewSeparatorColor
         UICollectionView.appearance().backgroundColor = theme.windowBackgroundColor
         
+        UIScrollView.appearance().keyboardDismissMode = .onDrag
+        
         let appearance = PopupDialogOverlayView.appearance()
         appearance.color = theme.dimmBackgroundColor
         appearance.opacity = 0.6

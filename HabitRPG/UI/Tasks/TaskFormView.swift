@@ -909,7 +909,6 @@ struct TaskFormView: View {
     var body: some View {
         let theme = ThemeService.shared.theme
         TrackableScrollView(contentOffset: $scrollViewContentOffset.onChange { value in
-            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }) {
             VStack {
                 VStack {
