@@ -117,6 +117,7 @@ public class ThemeService: NSObject {
         // The tintColor will trickle down to each view
         UIApplication.shared.windows.forEach { window in
             window.tintColor = theme.tintColor
+            window.overrideUserInterfaceStyle = theme.isDark ? .dark : .light
         }
         
         // Update each listener. The type cast is needed because allObjects returns [AnyObject]

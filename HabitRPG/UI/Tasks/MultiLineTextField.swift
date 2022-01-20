@@ -30,6 +30,7 @@ fileprivate struct UITextViewWrapper: UIViewRepresentable {
         textField.isScrollEnabled = false
         textField.backgroundColor = UIColor.clear
         textField.textColor = textColor
+        textField.tintColor = textColor
         if nil != onDone {
             textField.returnKeyType = .done
             textField.enablesReturnKeyAutomatically = true

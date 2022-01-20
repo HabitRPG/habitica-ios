@@ -52,6 +52,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
     }
     
     func applyTheme(theme: Theme) {
+        overrideUserInterfaceStyle = theme.isDark ? .dark : .light
         tableView.backgroundColor = theme.contentBackgroundColor
         tableView.reloadData()
     }

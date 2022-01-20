@@ -1906,6 +1906,8 @@ public enum L10n {
     public static var loginMethods: String { return L10n.tr("Mainstrings", "settings.login_methods") }
     /// Maintenance
     public static var maintenance: String { return L10n.tr("Mainstrings", "settings.maintenance") }
+    /// Manually Restart Day
+    public static var manuallyRestartDay: String { return L10n.tr("Mainstrings", "settings.manually_restart_day") }
     /// Mentions
     public static var mentions: String { return L10n.tr("Mainstrings", "settings.mentions") }
     /// My Account

@@ -672,7 +672,7 @@ class TaskFormViewModel: ObservableObject {
     @Published var lightTaskTintColor: Color = Color(.purple400)
     @Published var pickerTintColor: Color = Color(.purple400)
     @Published var darkestTaskTintColor: Color = Color(UIColor(white: 1, alpha: 0.7))
-    @Published var textFieldTintColor: Color = Color(.purple50)
+    @Published var textFieldTintColor: Color = Color(.purple10)
     @Published var lightestTaskTintColor: Color = Color(.purple500)
     @Published var showStatAllocation = false
     @Published var showTaskGraphs = false
@@ -998,7 +998,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
             viewModel.showTaskGraphs = configRepository.bool(variable: .showTaskGraphs)
             let darkestColor: UIColor = editedTask != nil ? .forTaskValueDarkest(editedTask?.value ?? 0) : .white
             viewModel.darkestTaskTintColor = Color(darkestColor)
-            viewModel.textFieldTintColor = editedTask != nil ? viewModel.darkestTaskTintColor : Color(.gray50)
+            viewModel.textFieldTintColor = editedTask != nil ? viewModel.darkestTaskTintColor : Color(.purple10)
             
             if let controller = navigationController as? ThemedNavigationController {
                 controller.navigationBarColor = color
@@ -1029,6 +1029,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
         if ThemeService.shared.theme.isDark && viewModel.taskTintColor.uiColor() == .purple300 {
             viewModel.taskTintColor = Color(.purple500)
         }
+        overrideUserInterfaceStyle = ThemeService.shared.theme.isDark ? .dark : .light
         userRepository.getUser().on(value: {[weak self] user in
             self?.viewModel.showStatAllocation = user.preferences?.allocationMode == "taskbased"
         }).start()

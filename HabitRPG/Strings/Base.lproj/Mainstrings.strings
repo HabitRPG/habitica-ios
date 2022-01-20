@@ -351,6 +351,7 @@
 "settings.connect" = "Connect";
 "settings.disconnect" = "Disconnect";
 "settings.add_password" = "Add Password";
+"settings.manually_restart_day" = "Manually Restart Day";
 "theme.default_theme" = "Default";
 "theme.blue" = "Blue";
 "theme.teal" = "Teal";

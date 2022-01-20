@@ -35,6 +35,7 @@ enum SettingsTags {
     static let appLanguage = "appLanguage"
     static let initialAppScreen = "initialAppScreen"
     static let initialTaskBoard = "initialTaskBoard"
+    static let manuallyRestartDay = "manuallyRestartDay"
 }
 
 private let pushNotificationsMapping = [
@@ -119,6 +120,7 @@ class SettingsViewController: FormViewController, Themeable {
     }
     
     func applyTheme(theme: Theme) {
+        overrideUserInterfaceStyle = theme.isDark ? .dark : .light
         tableView.backgroundColor = theme.contentBackgroundColor
         tableView.reloadData()
     }
@@ -152,6 +154,16 @@ class SettingsViewController: FormViewController, Themeable {
                         progressView?.dismiss(true)
                     }
                 })
+        <<< ButtonRow(SettingsTags.manuallyRestartDay) { row in
+            row.title = L10n.Settings.manuallyRestartDay
+            }.onCellSelection({[weak self] (_, _) in
+                let progressView = MRProgressOverlayView.showOverlayAdded(to: self?.view, animated: true)
+                progressView?.tintColor = ThemeService.shared.theme.tintColor
+                self?.userRepository.runCron(checklistItems: [], tasks: [])
+                DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {
+                    progressView?.dismiss(true)
+                })
+            })
             <<< AlertRow<LabeledFormValue<String>>(SettingsTags.server) { row in
                 row.title = L10n.Settings.server
                 #if !targetEnvironment(simulator)
@@ -699,6 +711,11 @@ class SettingsViewController: FormViewController, Themeable {
             serverRow?.evaluateHidden()
         }
         #endif
+        
+        if let row = form.rowBy(tag: SettingsTags.manuallyRestartDay) {
+            // Only show if no cron in last 24 hours
+            row.hidden = Condition(booleanLiteral: (user.lastCron?.timeIntervalSinceNow ?? 0) > -86400)
+            row.evaluateHidden()        }
         isSettingUserData = false
     }
     
