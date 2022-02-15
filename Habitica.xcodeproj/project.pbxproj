@@ -451,6 +451,7 @@
 		29FEB278202B491600EA245A /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FEB277202B491600EA245A /* Avatar.swift */; };
 		29FEB27A202B4F0400EA245A /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FEB279202B4F0400EA245A /* AvatarView.swift */; };
 		328C951E24A2C13100293E16 /* LinksOnlyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328C951D24A2C13100293E16 /* LinksOnlyTextView.swift */; };
+		32C6FFF226ED896400C8F682 /* PathTraceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6FFF126ED896400C8F682 /* PathTraceable.swift */; };
 		32C71C6725507E65007E48C5 /* Habitica WidgetsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		49005B721F180589004830D9 /* CurrencyCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B711F180588004830D9 /* CurrencyCountView.swift */; };
 		49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */; };
@@ -1182,6 +1183,7 @@
 		29FEB279202B4F0400EA245A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		29FFB19320F5080D0031D914 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
 		328C951D24A2C13100293E16 /* LinksOnlyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksOnlyTextView.swift; sourceTree = "<group>"; };
+		32C6FFF126ED896400C8F682 /* PathTraceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTraceable.swift; sourceTree = "<group>"; };
 		3E46B677D2A4BB73B690AD0B /* Pods_Habitica_Intents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Intents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		413C740A78F5BEC964FFA7C8 /* Pods-Habitica Intents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Intents.debug.xcconfig"; path = "Target Support Files/Pods-Habitica Intents/Pods-Habitica Intents.debug.xcconfig"; sourceTree = "<group>"; };
 		49005B711F180588004830D9 /* CurrencyCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyCountView.swift; sourceTree = "<group>"; };
@@ -2672,6 +2674,7 @@
 				2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */,
 				298FAB0124BF5BF30084CB0D /* MainTableviewCell.xib */,
 				29CEA8552641A2B500101C0A /* AdventureGuideTableViewCell.swift */,
+				32C6FFF126ED896400C8F682 /* PathTraceable.swift */,
 			);
 			name = Cells;
 			path = TableviewCells;
@@ -4014,6 +4017,7 @@
 				291CE4B8231EC11E0001A243 /* FilterViewController.swift in Sources */,
 				29C1360024EAE07E00DBC6B3 /* SharingManager.swift in Sources */,
 				295BC6FD226F5E3700DDDF1A /* UnallocatedPointsNotificationCell.swift in Sources */,
+				32C6FFF226ED896400C8F682 /* PathTraceable.swift in Sources */,
 				29FC8862201A300B002B3D3F /* ProgressBar.swift in Sources */,
 				29ACB3AC26404496009B059C /* CalendarView.swift in Sources */,
 				29FD8AA3203D7D010094322E /* PartyViewController.swift in Sources */,
