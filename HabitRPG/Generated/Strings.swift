@@ -664,6 +664,8 @@ public enum L10n {
   public static func openFor(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "open_for", p1)
   }
+  /// Open Google Play Store
+  public static var openGooglePlay: String { return L10n.tr("Mainstrings", "open_google_play") }
   /// Open Apple ID Subscriptions
   public static var openItunes: String { return L10n.tr("Mainstrings", "open_itunes") }
   /// Open Website
@@ -986,6 +988,8 @@ public enum L10n {
   public static var unlocksSelectingClassPrompt: String { return L10n.tr("Mainstrings", "unlocks_selecting_class_prompt") }
   /// Unpin
   public static var unpin: String { return L10n.tr("Mainstrings", "unpin") }
+  /// No longer want to subscribe? Due to your payment method, you can only unsubscribe through the Google Play Store.
+  public static var unsubscribeGoogle: String { return L10n.tr("Mainstrings", "unsubscribe_google") }
   /// No longer want to subscribe? You can manage your subscription through your Apple ID in your device's Settings.
   public static var unsubscribeItunes: String { return L10n.tr("Mainstrings", "unsubscribe_itunes") }
   /// No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.

@@ -539,9 +539,11 @@
 "open_itunes" = "Open Apple ID Subscriptions";
 "open_app_store" = "Open App Store Page";
 "unsubscribe_website" = "No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.";
+"unsubscribe_google" = "No longer want to subscribe? Due to your payment method, you can only unsubscribe through the Google Play Store.";
 "group_plan" = "Group Plan";
 "member_group_plan" = "Member of a Group Plan";
 "open_website" = "Open Habitica Website";
+"open_google_play" = "Open Google Play Store";
 "plain_backgrounds" = "Plain Backgrounds";
 "time_travel_backgrounds" = "Time Travelers Backgrounds";
 "glasses" = "Glasses";

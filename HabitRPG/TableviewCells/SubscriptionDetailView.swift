@@ -120,6 +120,9 @@ class SubscriptionDetailView: UITableViewCell {
         if plan.paymentMethod == "Apple" {
             cancelDescriptionLabel.text = L10n.unsubscribeItunes
             cancelDescriptionButton.setTitle(L10n.openItunes, for: .normal)
+        } else if plan.paymentMethod == "Google" {
+            cancelDescriptionLabel.text = L10n.unsubscribeGoogle
+            cancelDescriptionButton.setTitle(L10n.openGooglePlay, for: .normal)
         } else if plan.paymentMethod != nil {
             cancelDescriptionLabel.text = L10n.unsubscribeWebsite
             cancelDescriptionButton.setTitle(L10n.openWebsite, for: .normal)

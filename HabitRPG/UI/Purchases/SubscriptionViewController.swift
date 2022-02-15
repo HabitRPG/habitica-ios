@@ -338,7 +338,7 @@ class SubscriptionViewController: BaseTableViewController {
             if let subscriptionPlan = self.user?.purchased?.subscriptionPlan {
                 cell.setPlan(subscriptionPlan)
                 cell.cancelSubscriptionAction = {[weak self] in
-                    if (self?.hasTerminationDate == true) {
+                    if self?.hasTerminationDate == true {
                         self?.showSubscribeOptions = true
                         tableView.reloadData()
                         tableView.scrollToRow(at: IndexPath(row: 0, section: 2), at: .top, animated: true)
@@ -346,6 +346,8 @@ class SubscriptionViewController: BaseTableViewController {
                         var url: URL?
                         if subscriptionPlan.paymentMethod == "Apple" {
                             url = URL(string: "https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions")
+                        } else if subscriptionPlan.paymentMethod == "Google" {
+                            url = URL(string: "http://support.google.com/googleplay?p=cancelsubsawf")
                         } else {
                             url = URL(string: "https://habitica.com")
                         }
