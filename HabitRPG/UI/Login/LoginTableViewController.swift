@@ -304,7 +304,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
                 weakSelf.beginButtonContainer.isHidden = false
             }
             if weakSelf.viewModel.currentAuthType == .login {
-                weakSelf.facebookLoginButton.isHidden = false
+                weakSelf.facebookLoginButton.isHidden = ConfigRepository.shared.bool(variable: .hideFacebook)
                 UIView.animate(withDuration: 0.4, delay: 0.6, options: [], animations: {
                     weakSelf.beginButtonContainer.arrangedSubviews[1].alpha = 0
                 }, completion: { (_) in

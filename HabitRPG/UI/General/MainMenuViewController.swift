@@ -594,7 +594,7 @@ class MainMenuViewController: BaseTableViewController {
         let label = cell.viewWithTag(1) as? UILabel
         label?.text = item?.title
         label?.font = CustomFontMetrics.scaledSystemFont(ofSize: 17)
-        if indexPath == tableView.indexPathForSelectedRow || indexPath == currentSecondaryIndexPath {
+        if indexPath == tableView.indexPathForSelectedRow || (indexPath == currentSecondaryIndexPath && splitViewController != nil) {
             cell.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
             label?.textColor = ThemeService.shared.theme.tintColor
         } else {

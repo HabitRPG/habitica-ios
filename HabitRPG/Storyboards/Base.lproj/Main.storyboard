@@ -311,10 +311,10 @@
                         <segue destination="hEH-25-nQA" kind="showDetail" identifier="AchievementsSegue" id="ZL6-DZ-Nc4"/>
                         <segue destination="fhb-Uo-Rnv" kind="presentation" identifier="purchaseGemsSegue" id="2vn-wQ-bqg"/>
                         <segue destination="KOH-m5-9hA" kind="presentation" identifier="openGiftSubscriptionDialog" id="FPm-Dv-Zos"/>
-                        <segue destination="s9t-re-NbM" kind="showDetail" identifier="showMarketSegue" id="qTg-hC-uiS"/>
-                        <segue destination="s9t-re-NbM" kind="showDetail" identifier="showQuestShopSegue" id="aPT-Gw-lJZ"/>
-                        <segue destination="s9t-re-NbM" kind="showDetail" identifier="showSeasonalShopSegue" id="QQ7-lc-iLm"/>
-                        <segue destination="s9t-re-NbM" kind="showDetail" identifier="showTimeTravelersSegue" id="GNu-1J-ZVK"/>
+                        <segue destination="s9t-re-NbM" kind="show" identifier="showMarketSegue" id="qTg-hC-uiS"/>
+                        <segue destination="s9t-re-NbM" kind="show" identifier="showQuestShopSegue" id="aPT-Gw-lJZ"/>
+                        <segue destination="s9t-re-NbM" kind="show" identifier="showSeasonalShopSegue" id="QQ7-lc-iLm"/>
+                        <segue destination="s9t-re-NbM" kind="show" identifier="showTimeTravelersSegue" id="GNu-1J-ZVK"/>
                         <segue destination="WTd-tE-eOd" kind="showDetail" identifier="showAdventureGuide" id="gXQ-dZ-OGd"/>
                         <segue destination="x5n-fS-qd9" kind="presentation" identifier="showUserProfileSegue" id="K1h-r2-aQe"/>
                         <segue destination="A14-ZR-jzj" kind="showDetail" identifier="showSupportSegue" id="aRB-2U-UuU"/>
@@ -3794,7 +3794,7 @@ a matching subscription automatically after sending your gift.</string>
         <segue reference="iSa-66-Wjc"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="0lJ-Wy-mKC"/>
-        <segue reference="V6b-ej-qnx"/>
+        <segue reference="GNu-1J-ZVK"/>
         <segue reference="u8W-Xm-nze"/>
         <segue reference="j9F-en-5nH"/>
         <segue reference="dho-1x-ad8"/>

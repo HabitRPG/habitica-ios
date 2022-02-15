@@ -47,6 +47,9 @@ enum ConfigVariable: Int {
     case showTaskDetailScreen
     case showTaskGraphs
     case advertiseTaskGraphs
+    
+    case enableCronButton
+    case hideFacebook
 
     // swiftlint:disable cyclomatic_complexity
     func name() -> String {
@@ -83,6 +86,8 @@ enum ConfigVariable: Int {
         case .surveyURL: return "surveyURL"
         case .showTaskGraphs: return "showTaskGraphs"
         case .advertiseTaskGraphs: return "advertiseTaskGraphs"
+        case .enableCronButton: return "enableCronButton"
+        case .hideFacebook: return "hideFacebook"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -151,6 +156,10 @@ enum ConfigVariable: Int {
             return true as NSNumber
         case .advertiseTaskGraphs:
             return false as NSNumber
+        case .enableCronButton:
+            return false as NSNumber
+        case .hideFacebook:
+            return false as NSNumber
         }
     }
     
@@ -184,7 +193,9 @@ enum ConfigVariable: Int {
             .activePromo,
             .surveyURL,
             .showTaskGraphs,
-            .advertiseTaskGraphs
+            .advertiseTaskGraphs,
+            .enableCronButton,
+            .hideFacebook
         ]
     }
     // swiftlint:enable cyclomatic_complexity
