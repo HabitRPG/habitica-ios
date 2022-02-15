@@ -44,7 +44,8 @@ class ImageManager: NSObject {
         "Pet-HatchingPotion_Windup": "gif",
         "Pet_HatchingPotion_Windup": "gif",
         "Pet-HatchingPotion-Windup": "gif",
-        "quest_solarSystem": "gif"
+        "quest_solarSystem": "gif",
+        "quest_lostMasterclasser4": "gif"
     ]
     
     @objc
@@ -54,6 +55,9 @@ class ImageManager: NSObject {
         }
         imageView.loadedImageName = name
         getImage(name: name, extension: fileExtension) { (image, error) in
+            if let error = error {
+                logger.record(error: error)
+            }
             if imageView.loadedImageName == name {
                 imageView.image = image
                 if let action = completion {
@@ -105,5 +109,5 @@ class ImageManager: NSObject {
         return name
     }
     
-    static var substitutions = ConfigRepository().dictionary(variable: .spriteSubstitutions)
+    static var substitutions = ConfigRepository.shared.dictionary(variable: .spriteSubstitutions)
 }

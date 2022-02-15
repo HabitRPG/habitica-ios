@@ -16,6 +16,13 @@ private struct ChallengeHelper: Decodable {
     var broken: String?
 }
 
+private struct GroupHelper: Decodable {
+    var id: String?
+    var taskId: String?
+    var assignedDate: Date?
+    var broken: String?
+}
+
 public class APITask: TaskProtocol, Codable {
     public var id: String?
     public var text: String?
@@ -37,6 +44,7 @@ public class APITask: TaskProtocol, Codable {
     public var everyX: Int = 0
     public var challengeID: String?
     public var challengeBroken: String?
+    public var groupID: String?
     public var tags: [TagProtocol] = []
     public var checklist: [ChecklistItemProtocol] = []
     public var reminders: [ReminderProtocol] = []
@@ -55,6 +63,7 @@ public class APITask: TaskProtocol, Codable {
     public var isValid: Bool {
         return true
     }
+    public var isManaged: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -76,6 +85,7 @@ public class APITask: TaskProtocol, Codable {
         case frequency
         case everyX
         case challenge
+        case group
         case createdAt
         case updatedAt
         case startDate
@@ -114,6 +124,8 @@ public class APITask: TaskProtocol, Codable {
         let challengeHelper = try? values.decode(ChallengeHelper.self, forKey: .challenge)
         challengeID = challengeHelper?.id
         challengeBroken = challengeHelper?.broken
+        let groupHelper = try? values.decode(GroupHelper.self, forKey: .group)
+        groupID = groupHelper?.id
         createdAt = try? values.decode(Date.self, forKey: .createdAt)
         updatedAt = try? values.decode(Date.self, forKey: .updatedAt)
         startDate = try? values.decode(Date.self, forKey: .startDate)
@@ -151,6 +163,7 @@ public class APITask: TaskProtocol, Codable {
         frequency = taskProtocol.frequency
         everyX = taskProtocol.everyX
         challengeID = taskProtocol.challengeID
+        groupID = taskProtocol.groupID
         startDate = taskProtocol.startDate
         createdAt = taskProtocol.createdAt
         updatedAt = taskProtocol.updatedAt

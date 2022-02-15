@@ -231,6 +231,10 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
+    func disconnectSocial(_ network: String) -> Signal<EmptyResponseProtocol?, Never> {
+        return SocialDisconnectCall(network: network).objectSignal
+    }
+    
     func resetAccount() -> Signal<UserProtocol?, Never> {
         return ResetAccountCall().objectSignal.flatMap(.latest, {[weak self] (_) in
             return self?.retrieveUser() ?? Signal.empty

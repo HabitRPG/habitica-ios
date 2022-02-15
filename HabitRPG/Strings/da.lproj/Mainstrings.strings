@@ -105,41 +105,17 @@
 /* (No Comment) */
 "member.member_since" = "Medlem siden";
 /* (No Comment) */
-"menu.about" = "Om";
-/* (No Comment) */
-"menu.cast_spells" = "Kast Fortryllelser";
-/* (No Comment) */
-"menu.challenges" = "Udfordringer";
-/* (No Comment) */
 "menu.customize_avatar" = "Tilpas Avatar";
-/* (No Comment) */
-"menu.equipment" = "Udstyr";
-/* (No Comment) */
-"menu.guilds" = "Klaner";
 /* (No Comment) */
 "menu.help_faq" = "Hjælp & OSS";
 /* (No Comment) */
 "menu.inventory" = "Inventar";
-/* (No Comment) */
-"menu.items" = "Genstande";
-/* (No Comment) */
-"menu.news" = "Nyheder";
-/* (No Comment) */
-"menu.party" = "Gruppe";
 /* (No Comment) */
 "menu.select_class" = "Vælg Klasse";
 /* (No Comment) */
 "menu.shops" = "Markeder";
 /* (No Comment) */
 "menu.social" = "Social";
-/* (No Comment) */
-"menu.stable" = "Stald";
-/* (No Comment) */
-"menu.stats" = "Egenskaber";
-/* (No Comment) */
-"menu.tavern" = "Værtshus";
-/* (No Comment) */
-"menu.use_skills" = "Brug Evner";
 /* (No Comment) */
 "monthly" = "Månedlig";
 /* (No Comment) */
@@ -212,8 +188,6 @@
 "settings.maintenance" = "Vedligeholdelse";
 /* (No Comment) */
 "settings.profile" = "Profil";
-/* (No Comment) */
-"settings.push_notifications" = "Push notificationer";
 /* (No Comment) */
 "settings.reload_content" = "Genindlæs Indhold";
 /* (No Comment) */
@@ -324,7 +298,6 @@
 "titles.faq" = "OSS";
 "titles.about" = "Om";
 "titles.news" = "Nyheder";
-"titles.stable" = "Stald";
 "titles.pets" = "Kæledyr";
 "titles.mounts" = "Ridedyr";
 "titles.tavern" = "Værtshus";
@@ -409,7 +382,6 @@
 "email" = "Email";
 "groups.invite.add_userid" = "Tilføj et BrugerID";
 "groups.invite.add_email" = "Tilføj en E-mail";
-"scan_QR_code" = "Scan QR Kode";
 "username" = "Brugernavn";
 "password" = "Kodeord";
 "about.website" = "Hjemmeside";
@@ -471,7 +443,5 @@
 "report_x_violation" = "Anmeld %@ for overtrædelse?";
 "streak_achievement_title" = "Du har optjent en stribe-præstation!";
 "recipient" = "Modtager";
-"qr_invalid_id_title" = "Ugyldig Habitica Bruger ID";
-"qr_invalid_id_message" = "Den scannede QR-kode indeholdte ikke en gyldig Habitica Bruger ID.";
 "not_enough_gems" = "Ikke nok Ædelsten";
 "choose_task" = "Vælg Opgave";

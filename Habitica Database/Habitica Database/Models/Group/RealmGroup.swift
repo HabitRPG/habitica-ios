@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 
-class RealmGroup: Object, GroupProtocol {
+class RealmGroup: BaseModel, GroupProtocol {
     @objc dynamic var id: String?
     @objc dynamic var name: String?
     @objc dynamic var groupDescription: String?
@@ -53,11 +53,7 @@ class RealmGroup: Object, GroupProtocol {
         }
     }
     var realmCategories = List<RealmGroupCategory>()
-    
-    var isValid: Bool {
-        return !isInvalidated
-    }
-    
+
     override static func primaryKey() -> String {
         return "id"
     }

@@ -18,7 +18,7 @@ class LoadingViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var userRepository: UserRepository?
-    private var configRepository = ConfigRepository()
+    private var configRepository = ConfigRepository.shared
     private let disposable = CompositeDisposable()
     
     private var wasDismissed = false
@@ -38,6 +38,13 @@ class LoadingViewController: UIViewController {
                         self?.segueForLoggedInUser()
                     }
             }
+            
+            if let url = UserDefaults.standard.string(forKey: "initialScreenURL") {
+                loadingFinishedAction = {
+                    RouterHandler.shared.handle(urlString: url)
+                }
+            }
+            
         }
     }
     

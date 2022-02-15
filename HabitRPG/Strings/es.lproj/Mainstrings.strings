@@ -41,7 +41,7 @@
 /* (No Comment) */
 "classes.mage" = "Mago";
 /* (No Comment) */
-"classes.mage_description" = "Los magos aprenden rápidamente ganando Experiencia y Niveles con mayor rapidez que otras clases. También disponen de una gran cantidad de Maná para usar habilidades especiales. ¡Juega como Mago si disfrutas de los aspectos tácticos de Habitica, o si te motiva enormemente subir de nivel y desbloquear características avanzadas! ";
+"classes.mage_description" = "Los magos aprenden rápidamente ganando Experiencia y Niveles con mayor rapidez que otras clases. También disponen de una gran cantidad de Maná para usar habilidades especiales. ¡Juega como Mago si disfrutas de los aspectos tácticos de Habitica, o si te motiva enormemente subir de nivel y desbloquear características avanzadas!";
 /* (No Comment) */
 "classes.rogue" = "Pícaro";
 /* (No Comment) */
@@ -123,7 +123,7 @@
 /* (No Comment) */
 "guilds.leave_guild_title" = "¿Abandonar gremio?";
 /* (No Comment) */
-"hatch_egg" = "Eclosionar huevo";
+"hatch_egg" = "Usar en huevo";
 /* (No Comment) */
 "hatch_potion" = "Eclosionar con poción";
 /* (No Comment) */
@@ -139,15 +139,13 @@
 /* (No Comment) */
 "inventory.hatched" = "¡Has eclosionado una nueva mascota!";
 /* (No Comment) */
-"inventory.hatchedSharing" = "¡Acabo de eclosionar una mascota %@ %@ en Habitica completando tareas de mi vida real!";
-/* (No Comment) */
-"inventory.no_gems_left" = "No hay más gemas disponibles este mes. Habrá más disponibles entre los primeros tres días de cada mes.";
+"inventory.no_gems_left" = "Has comprado todas las Gemas que podías este mes. Habrá más disponibles a partir de los primeros tres días de cada mes. ¡Gracias por suscribirte!";
 /* (No Comment) */
 "inventory.number_gems_left" = "Gemas mensuales: Quedan %d/%d";
 /* (No Comment) */
 "inventory.wrong_class" = "Solo disponible para %@s. Puedes cambiar tu clase en Ajustes";
 /* (No Comment) */
-"invite_party" = "Invitar al grupo";
+"invite_party" = "Invita a una fiesta";
 /* (No Comment) */
 "last_activity" = "Última actividad %@";
 /* (No Comment) */
@@ -157,11 +155,11 @@
 /* (No Comment) */
 "level_number" = "Nivel %d";
 /* (No Comment) */
-"levelup_description" = "¡Por completar tus metas de la vida real, has subido al nivel %ld!";
+"levelup_description" = "¡Por completar tus metas en la vida real, has subido de nivel y ahora estás completamente curado!";
 /* (No Comment) */
 "levelup_share" = "¡He subido al nivel %ld en Habitica al mejorar mis hábitos en la vida real!";
 /* (No Comment) */
-"levelup_title" = "¡Has subido de nivel!";
+"levelup_title" = "¡Has alcanzado el Nivel %ld!";
 /* (No Comment) */
 "mana" = "Maná";
 /* (No Comment) */
@@ -169,43 +167,17 @@
 /* (No Comment) */
 "member.member_since" = "Miembro desde";
 /* (No Comment) */
-"menu.about" = "Acerca de";
-/* (No Comment) */
-"menu.cast_spells" = "Lanzar hechizos";
-/* (No Comment) */
-"menu.challenges" = "Desafíos";
-/* (No Comment) */
 "menu.customize_avatar" = "Personalizar Avatar";
-/* (No Comment) */
-"menu.equipment" = "Equipamiento";
-/* (No Comment) */
-"menu.gems_subscriptions" = "Gemas y Suscripciones";
-/* (No Comment) */
-"menu.guilds" = "Gremios";
 /* (No Comment) */
 "menu.help_faq" = "Ayuda y preguntas frecuentes";
 /* (No Comment) */
 "menu.inventory" = "Inventario";
-/* (No Comment) */
-"menu.items" = "Objetos";
-/* (No Comment) */
-"menu.news" = "Noticias";
-/* (No Comment) */
-"menu.party" = "Equipo";
 /* (No Comment) */
 "menu.select_class" = "Elegir clase";
 /* (No Comment) */
 "menu.shops" = "Tiendas";
 /* (No Comment) */
 "menu.social" = "Social";
-/* (No Comment) */
-"menu.stable" = "Establo";
-/* (No Comment) */
-"menu.stats" = "Estadísticas";
-/* (No Comment) */
-"menu.tavern" = "Taberna";
-/* (No Comment) */
-"menu.use_skills" = "Usar habilidades";
 /* (No Comment) */
 "monthly" = "Mensualmente";
 /* (No Comment) */
@@ -267,7 +239,7 @@
 /* (No Comment) */
 "quests.started_by" = "Empezado por %@";
 /* (No Comment) */
-"reset_tips" = "Restablecer consejos de Justin";
+"reset_tips" = "Restablecer el tutorial";
 /* (No Comment) */
 "resetStreak" = "Reiniciar Racha";
 /* (No Comment) */
@@ -323,8 +295,6 @@
 /* (No Comment) */
 "settings.profile" = "Perfil";
 /* (No Comment) */
-"settings.push_notifications" = "Notificaciones Push";
-/* (No Comment) */
 "settings.reload_content" = "Volver a cargar el contenido";
 /* (No Comment) */
 "settings.reminder" = "Recordatorio";
@@ -341,7 +311,7 @@
 /* (No Comment) */
 "settings.wrong_password" = "Contraseña incorrecta";
 /* (No Comment) */
-"share" = "Comparte";
+"share" = "Compartir";
 /* (No Comment) */
 "skills.cant_cast_on_challenge_tasks" = "No puedes lanzar un hechizo a una tarea de un desafío";
 /* (No Comment) */
@@ -388,10 +358,6 @@
 "stats.points_to_allocate" = "%d puntos para colocar";
 /* (No Comment) */
 "summary" = "Resumen";
-/* (No Comment) */
-"sync_error" = "Error de sincronización";
-/* (No Comment) */
-"sync_error_message" = "Ha habido un error al sincronizar algunos cambios";
 /* (No Comment) */
 "tags" = "Etiquetas";
 /* (No Comment) */
@@ -483,7 +449,7 @@
 /* (No Comment) */
 "unequip" = "Quitar";
 /* (No Comment) */
-"unsubscribe_itunes" = "¿Ya no quieres estar suscrito? Puedes administrar tu suscripción desde iTunes.";
+"unsubscribe_itunes" = "¿Ya no quieres seguir suscrito? Puedes administrar tu suscripción desde tu Apple ID en la configuración de tu dispositivo.";
 /* (No Comment) */
 "unsubscribe_website" = "¿Ya no quieres estar suscrito? Debido al método de pago, solo puedes desuscribirte desde el sitio web.";
 /* (No Comment) */
@@ -515,7 +481,6 @@
 "titles.faq" = "Preguntas Frecuentes";
 "titles.about" = "Acerca de";
 "titles.news" = "Noticias";
-"titles.stable" = "Establo";
 "titles.pets" = "Mascotas";
 "titles.mounts" = "Monturas";
 "titles.tavern" = "Taberna";
@@ -684,7 +649,6 @@
 "email" = "Correo electrónico";
 "groups.invite.add_userid" = "Añadir un n.º de usuario";
 "groups.invite.add_email" = "Añadir correo";
-"scan_QR_code" = "Escaneo de Código QR";
 "users_invited" = "Invitación enviada a los usuarios.";
 "username" = "Nombre de usuario";
 "password" = "Contraseña";
@@ -821,14 +785,12 @@
 "subscription_info_3_title" = "Artículos Misteriosos Mensuales";
 "subscription_info_3_description" = "¡Suscríbete ahora para conseguir un set exclusivo y recibir nuevos objetos cada mes!";
 "subscription_info_4_title" = "Objetos misteriosos mensualmente";
-"subscription_info_4_description" = "¡El doble de botín te permite recibir más objetos por tus tareas completadas cada día, lo que te ayuda a completar tu establo más rápido!";
+"subscription_info_4_description" = "Recibe como mascota al Jackalope Púrpura Real cuando te conviertas en suscriptor.";
 "subscription_benefits_title" = "Conviértete en un suscriptor y tendrás todos estos beneficios";
 "gem_benefits_title" = "Las Gemas te permiten comprar cosas extra divertidas para tu cuenta, incluyendo:";
-"unpin_from_rewards" = "Quitar de Recompensas";
-"pin_to_rewards" = "Fijar en Recompensas";
 "moderator" = "Moderador";
 "staff" = "Personal";
-"report_x_violation" = "¿Informar de %@ por infracción?";
+"report_x_violation" = "¿Reportar a @%@ por infracción?";
 "not_getting_drops" = "¿No recibes las recompensas adecuadas? ¡Ve al mercado para comprar justo las cosas que necesitas!";
 "streak_achievement_title" = "¡Has obtenido un logro de racha!";
 "streak_achievement_description" = "¡Has completado tus tareas diarias durante 21 días seguidos! Excelente trabajo. ¡No rompas la racha!";
@@ -836,8 +798,6 @@
 "next_checkin_prize_x_days" = "Tu próximo premio se desbloqueará en %d Registros";
 "recipient" = "Receptor";
 "no_camera" = "No hay ninguna cámara disponible";
-"qr_invalid_id_title" = "ID de usuario habitica incorrecto";
-"qr_invalid_id_message" = "El código QR escaneado no contiene un ID de usuario correcto.";
 "not_enough_gems" = "No hay suficientes Gemas";
 "not_enough_hourglasses" = "No hay suficientes Relojes de Arena";
 "subscribe_for_hourglasses" = "Suscribirse a cambio de Relojes de Arena";
@@ -852,13 +812,13 @@
 "titles.avatar" = "Avatar";
 "titles.gift_subscription" = "Regalo de suscripción";
 "stats.total" = "Total";
-"stats.strength_text" = "Aumenta el bonus de golpes críticos y los hace más probables cuando completas una tarea. También aumenta el daño a los jefes. ";
+"stats.strength_text" = "Aumenta el bonus de golpes críticos y los hace más probables cuando completas una tarea. También aumenta el daño infligido a los jefes.";
 "tasks.team" = "Equipo";
-"tasks.due_today" = "Vence hoy";
-"tasks.due_tomorrow" = "Vence mañana";
-"tasks.due_in_x_days" = "Vence en %d días";
-"tasks.due_x" = "Vence %@";
+"tasks.due_today" = "Hoy";
+"tasks.due_tomorrow" = "Mañana";
+"tasks.due_in_x_days" = "En %d días";
 "tasks.every_x" = "cada %@";
+"tasks.every_x" = "cada %d %@";
 "tasks.repeats.repeats_every_on" = "Se repite %@ de %@";
 "tasks.repeats.repeats_every" = "Se repite %@";
 "tasks.repeats.monthly_the" = "El %@";
@@ -881,7 +841,7 @@
 "avatar.body" = "Cuerpo";
 "avatar.hair" = "Pelo";
 "avatar.extras" = "Extras";
-"party.create_party_description" = "Realiza misiones con amigos o por tu cuenta. Lucha contra los monstruos, crea desafíos y ayúdate a ti mismo a ser responsable a través de las Partes. ";
+"party.create_party_description" = "Realiza misiones con amigos o por tu cuenta. Lucha contra los monstruos, crea desafíos y ayúdate a ti mismo a ser responsable a través de las Partes.";
 "party.join_party_description" = "Dele a un miembro de Party el nombre de usuario que se encuentra a continuación y le pueden enviar una invitación";
 "party.party_description" = "Descripción del Equipo";
 "quests.reward_gold" = "%d de oro";
@@ -905,7 +865,7 @@
 "about.love_open_source" = "Software código abierto.";
 "about.no_email_message" = "Oops, parece que aún no has configurado tu correo en este teléfono. Agrega una cuenta en la aplicación de correo iOS para usar esta opción de contacto, o envíanos un mail directamente a %@";
 "damage_paused" = "Daño pausado";
-"login.password_confirm_error" = "La contraseña y la confirmación de la misma deben coincidir.";
+"login.password_confirm_error" = "La contraseña y la confirmación de la misma deben coincidir y deben superar los 8 caracteres.";
 "login.authentication_error" = "Hubo un error con la autenticación. Intenta más tarde";
 "login.email_username" = "Correo / Nombre de usuario";
 "login.forgot_password" = "Olvidé mi contraseña";
@@ -923,7 +883,7 @@
 "intro.welcome_speechbubble" = "Ah, debes ser nuevo por aquí. Soy Justin, tu guía en Habitica.\n\nAntes que nada, ¿cómo deberíamos llamarte? Sé libre de cambiar lo que he escogido. Cuando estés listo, ¡vamos a crear tu avatar!";
 "intro.avatar_setup_speechbubble" = "Entonces, ¿cómo te gustaría verte? No te preocupes, puedes cambiar esto luego.";
 "intro.task_setup_speechbubble" = "¡Genial! Ahora, ¿en qué te interesa trabajar a lo largo de esta aventura?";
-"intro.card2.text" = "Desbloquea aspectos del juego tachando tus tareas de la vida real. Consigue armaduras, mascotas y más como recompensas por alcanzar tus objetivos. ";
+"intro.card2.text" = "Desbloquea aspectos del juego tachando tus tareas de la vida real. Consigue armaduras, mascotas y más como recompensas por alcanzar tus objetivos.";
 "never" = "Nunca";
 "keep_tasks" = "Mantener Tareas";
 "delete_tasks" = "Borrar Tareas";
@@ -949,7 +909,7 @@
 "world_boss.rage_strike_warning" = "Ten cuidado...\nEl Jefe Mundial arremeterá contra uno de nuestros simpáticos vendedores una vez que su barra de Furia se llene. ¡Cumple con tus Tareas Diarias para intentar prevenir que suceda!";
 "world_boss.rage_strike_title" = "¡%@ ha sido atacado!";
 "world_boss.rage_strike_damaged" = "¡%@ tiene el corazón partido!\nNuestro querido %@ se vió devastado cuando %@ destrozó el %@. ¡Rápido, supera tus tareas para derrotar al monstruo y ayudar a reconstruir!";
-"world_boss.rage_strike_explanation" = "Existen 3 posibles Ataques de Furia\n\nEste medidor se llena cuando Habíticos no realizan sus Tareas Diarias. Si se llena por completo, el Descorazonador desatará su ataque Destrozador de Corazones en uno de los vendedores de Habitica, ¡por lo que asegúrate de completar tus tareas!";
+"world_boss.rage_strike_explanation" = "Existen 3 posibles Ataques de Furia\nEste medidor se llena cuando los habiticanos no realizan sus Tareas Diarias. Si se llena por completo, el Descorazonador desatará su ataque Desgarracorazones sobre uno de los vendedores de Habitica, ¡por lo que asegúrate de completar tus tareas!";
 "checkin_yesterdays_dalies" = "Tacha las Tareas Diarias que hayas realizado ayer:";
 "start_my_day" = "Comenzar mi día";
 "force_start" = "Forzar inicio";
@@ -968,22 +928,22 @@
 "view_participant_progress" = "Ver Progreso del Participante";
 "end_challenge" = "Finalizar Desafío";
 "subscription_info_1_description" = "¡Podrás comprar gemas del mercado por 20 oros cada una!";
-"subscription_info_2_description" = "¡Cada mes recibirás un artículo cosmético único para tu avatar!\n\nAdemás, por cada tres meses de suscripción consecutiva, los Misteriosos Viajeros del Tiempo te otorgarán acceso a artículos cosméticos históricos (¡y futuristas!).";
+"subscription_info_2_description" = "¡Consigue Relojes de Arena Místicos para comprar artículos en La Tienda de los Viajeros del Tiempo!";
 "subscription_gift_explanation" = "¿Quieres darle los beneficios de una suscripción a alguien más?";
 "subscription_gift_button" = "Regalar una Suscripción";
-"subscription_support_developers" = "Suscribirse sirve para apoyar a los desarrolladores\ny ayuda a mantener Habitica";
+"subscription_support_developers" = "Suscribirse sirve para apoyar a nuestro pequeño equipo y ayuda a mantener Habitica";
 "subscribe" = "Suscribirse";
 "send_gift" = "Enviar Regalo";
 "gift_one_get_one_title" = "Regala uno, obtén uno";
 "gift_one_get_one_description" = "¡Regala una suscripción ahora y tú tendrás la misma suscripción para ti gratis!";
-"gems_support_developers" = "Comprar gemas sirve para apoyar a los desarrolladores\ny ayuda a mantener Habitica";
+"gems_support_developers" = "Adquirir gemas sirve para apoyar nuestro pequeño equipo y ayuda a mantener Habitica";
 "buy_for_x" = "Comprar por %@";
-"earned_achievement_share" = "¡Conseguí un nuevo logro en Habitica! ";
+"earned_achievement_share" = "¡Conseguí un nuevo logro en Habitica!";
 "invalid_recipient_message" = "Debes especificar un Nombre de Usuario válido como receptor.";
 "invalid_recipient_title" = "Nombre de Usuario inválido";
 "filter_by_tags" = "Filtrar por Etiquetas";
 "purchased" = "Compraste %@";
-"buy_reward" = "Compraste '%@' a cambio de %@ de oro";
+"buy_reward" = "Compraste '%@' a cambio de %@ piezas de oro";
 "stable.type" = "Tipo";
 "stable.color" = "Color";
 "guilds.left_guild" = "Dejaste el gremio";
@@ -1059,7 +1019,7 @@
 "subscribe_for_task_history" = "¿Quieres más de dos semanas de datos?";
 "subscription_promo_title" = "¿Necesitas gemas?";
 "sale" = "Oferta";
-"cancel_subscription_group_plan" = "Tienes una suscripción gratis porque eres miembro de un grupo o gremio que tiene un plan grupal. Acabará si lo abandonas o si el propietario cancela el plan grupal. Cualquier mes de suscripción extra  que ya tengas será aplicado cuando termine el plan grupal.";
+"cancel_subscription_group_plan" = "Tienes una suscripción gratis porque eres miembro de un grupo o gremio que tiene un plan grupal. Acabará si lo abandonas o si el propietario cancela el plan grupal. Cualquier mes de suscripción extra que ya tengas será aplicado cuando termine el plan grupal.";
 "renew_subscription_gifted_description" = "¿Quieres continuar con tus ventajas? Puedes comenzar una nueva suscripción antes de que la regalada termine para conservar tus ventajas activas.";
 "renew_subscription_description" = "¿Quieres continuar con tus ventajas? Puedes comenzar una nueva suscripción antes de que esta termine para conservar tus ventajas activas.";
 "cancel_subscription" = "Cancelar suscripción";
@@ -1079,17 +1039,294 @@
 "menu.gems" = "Comprar gemas";
 "titles.pets_and_mounts" = "Mascotas y monturas";
 "subscription_options_title" = "Elige la duración de suscripción que te convenga";
-"subscription_promo_description" = "Suscríbete para comprar Gemas con oro, conseguir Artículos Misteriosos mensuales e incrementar los límites de tu botín.";
+"subscription_promo_description" = "Suscríbete para comprar gemas con oro, conseguir artículos misteriosos mensuales, obtener bonus de botín adicionales ¡y mucho más!";
 "get_more_habitica" = "Aprovecha Habitica a tope";
 "not_recurring" = "Que no se repite";
 "subscription_duration" = "Repitiéndose cada %@";
 "go_shopping" = "Ir de compras";
 "purchase_from_time_travelers_shop" = "Puedes comprar ésta personalización en la tienda de los viajeros del tiempo";
 "purchase_customization" = "Comprar personalización";
-"subscription_info_5_description" = "¡Descubre aún más objetos en Habitica con un tope de botín duplicado!";
+"subscription_info_5_description" = "Descubre aún más objetos en Habitica con un bonus de recompensa duplicado.";
 "subscription_info_5_title" = "Duplica tu botín";
 "time_travel_backgrounds" = "Fondos para viajeros del tiempo";
 "more_options" = "Más opciones";
 "gift_one_get_one" = "¡El evento Regala una suscripción y obtén una gratis está sucediendo!";
 "tasks.form.accessibility.attribute" = "Atributo es %@";
 "tasks.form.accessibility.set_attribute" = "Cambiar atributo a %@";
+"quest" = "Busqueda";
+"food_singular" = "Comida";
+"hatching_potion" = "Poción para incubar";
+"egg" = "Huevo";
+"settings.added_local_auth" = "Correo electrónico y contraseña agregados correctamente";
+"settings.add_email_and_password" = "Agregar autenticación de correo electrónico y contraseña";
+"settings.email_notifications.subscription_reminders" = "Recordatorios de suscripción";
+"settings.email_notifications.banned_group" = "Expulsado del grupo";
+"settings.email_notifications.title" = "Correos electrónicos";
+"settings.delete_account_description_social" = "Esto eliminará su cuenta para siempre y nunca podrá ser restaurada. Las gemas almacenadas o gastadas no serán reembolsadas. Si está absolutamente seguro, escriba ELIMINAR en el cuadro de texto a continuación.";
+"settings.disable_all_emails" = "Deshabilitar todos los correos electrónicos";
+"menu.support" = "Soporte";
+"titles.basics" = "Básico";
+"titles.hall_of_patrons" = "Salón de los patrocinadores";
+"titles.hall_of_contributors" = "Salón de Contribuyentes";
+"titles.hall_of_heroes" = "Salón de los héroes";
+"party.quest_not_participating" = "No estas participando";
+"quests.unlock_previous_short" = "Terminar la misión %d";
+"quests.unlock_previous" = "Se desbloquea al terminar la misión %d";
+"quests.unlock_level_short" = "Nivel %d";
+"quests.unlock_level" = "Se desbloquea al llegar al nivel %d";
+"quests.unlock_invite" = "Desbloquéalo invitando amigos a tu grupo";
+"quests.unlock_invite_short" = "Invitar amigos";
+"gift_gems_explanation_purchase" = "Elige cuántas Gemas regalar debajo o cambia pestañas para regalar Gemas desde tu balance actual";
+"gift_gems_disclaimer" = "Habitica nunca requerirá que le envíes Gemas a otros jugadores. Pedirle Gemas a los demás es una violación de los Lineamientos de la Comunidad y debe de ser reportado a admin@habitica.com.";
+"gift_gems_alert_title" = "¿A quién quisieras enviarle este regalo?";
+"add" = "Añadir";
+"show_details" = "Mostrar Detalles";
+"empty.inbox.description" = "¡Empieza a chatear debajo! Recuerda ser amigable y seguir los Lineamientos de la Comunidad.";
+"pin" = "Fijar";
+"unpin" = "Dejar de Fijar";
+"accessibility.unknown" = "Desconocido";
+"accessibility.unknown_mount" = "Montura desconocida";
+"accessibility.unknown_pet" = "Mascota desconocida";
+"errors.user_not_found" = "Usuario no encontrado.";
+"login.register_error" = "Ha habido un problema con la petición. Por favor revisa la información cuidadosamente.";
+"login.email_invalid" = "Por favor ingresa un email válido.";
+"copied_x_to_clipboard" = "%@ copiado al Portapapeles";
+"quest_completed_title" = "¡Misión Completada!";
+"edit_challenge_tasks" = "Las Tareas de desafío sólo ofrecen una edición limitada.";
+"login.social_register" = "Registrate con %@";
+"locations.time_travelers_shop" = "Tienda de los Viajeros del Tiempo";
+"accessibility.xofx" = "%d de %d";
+"accessibility.viewX" = "Vista %@";
+"new_message" = "Nuevo Mensaje";
+"hatch_pet_description" = "¡Completa tareas para obtener una poción para incubar y un huevo y luego incubar a tu mascota!";
+"complete_task_description" = "Marquá cualquiera de tus tareas para ganar recompensas";
+"create_task_description" = "Agrega una tarea para algo que te gustaría lograr esta semana";
+"purchase_equipment_title" = "Compra equipamiento";
+"complete_to_earn_gold" = "¡Completa para ganar 100 de oro!";
+"excess_items" = "Exceso de artículos";
+"learn_more" = "Aprende más";
+"more_gems_message" = "¡Necesitarás más gemas para comprar este artículo!";
+"complete_more_tasks" = "¡Necesitas completar más tareas antes de poder pagar este artículo!";
+"gift_sent_confirmation" = "¡Tu regalo fue enviado!";
+"gift_gems_explanation_balance" = "Ingresa cuántas de tus gemas te gustaría regalar o cambia de pestaña para comprar gemas para regalar";
+"onwards" = "Adelante";
+"accessibility.notOwned" = "No adquirido";
+"accessibility.owned" = "Adquirido";
+"gift_gems_prompt" = "¿Quieres regalar una brillante cantidad de gemas a otra persona?";
+"login.social_login" = "Iniciar sesión con %@";
+"menu.skills" = "Habilidades";
+"tasks.form.negative" = "Negativo";
+"tasks.form.positive" = "Positivo";
+"streak" = "Racha";
+"tasks.form.adjust_streak" = "Ajustar racha";
+"total_completions" = "Logros totales";
+"gift_one_get_one_event" = "Evento \"Regala uno, consigue otro\"";
+"tasks.edit_details" = "Editar detalles";
+"created_at" = "Creado el";
+"update" = "Actualizar";
+"gift_gems_alert_prompt" = "Introduce el @username del destinatario";
+"insufficient_hourglasses_message" = "¡Necesitarás más Relojes de arena Místicos para comprar este artículo! Los relojes de arena son recompensados por estar suscritos durante meses consecutivos.";
+"insufficient_hourglasses_message_subscriber" = "¡Necesitarás más Relojes de arena Místicos para comprar este artículo! Manténgase suscrito para seguir recibiendo sus relojes de arena.";
+"feedPet_description" = "¡Completa tareas para conseguir comida! Puedes dárselo a tu mascota desde el menú \"Mascotas y Monturas\"";
+"view_achievements" = "Ver Logros";
+"you_got_achievement" = "¡Obtuviste un logro!";
+"purchase_equipment_description" = "El equipamiento es una forma de personalizar tu avatar y mejorar tus estadísticas";
+"first_drop_explanation1" = "Completar tareas te da la oportunidad de encontrar huevos, pociones de eclosión y comida para mascotas.";
+"support.questions_description" = "Te explicaremos lo básico y daremos respuesta a preguntas frecuentes para que cojas el ritmo";
+"block_user" = "Bloquear";
+"fedPetDescription" = "¡Cada mascota tiene una comida favorita! Experimenta para descubrir cuál la hace crecer más rápido";
+"hundred_gold" = "100 piezas de oro";
+"triadBingoTitle" = "Tríada de bingo";
+"partyOnDescription" = "¡Tu equipo creció hasta los 4 miembros!";
+"onboardingCompleteTitle" = "Obtuviste 5 logros y 100 piezas de oro por tus esfuerzos.";
+"month" = "mes";
+"delete_challenge_task_description" = "Esta es una de las %d tareas que son partes del reto \"%s\". Debes abandonar el reto para poder borrar la tarea.";
+"invitedFriendTitle" = "Invitaste a un amigo";
+"skills.caused_damage" = "Dañaste al jefe";
+"excess_no_items_left" = "Ya tienes todo lo que necesitas para todas tus %@ mascotas. ¿Seguro que quieres comprar %d %@s?";
+"tasks.form.last_scored" = "Última marca";
+"percent_complete" = "%d%% completado";
+"createdTaskTitle" = "Creaste tu primera tarea";
+"delete_x_tasks" = "Borrar %d tareas";
+"purchasedEquipmentTitle" = "Compraste equipamiento";
+"complete_task_title" = "Completa una tarea";
+"block_username" = "¿Bloquear a %@?";
+"quests.unlock_incentive_short" = "%d conexiones";
+"beginner_objectives" = "Objetivos de principiante";
+"mountMasterDescription" = "¡Obtuviste el logro de \"Maestro de monturas\" por amaestrar todas las monturas!";
+"hatch_pet_title" = "Eclosiona una mascota";
+"beastMasterDescription" = "¡Obtuviste el logro de \"Maestro de bestias\" por coleccionar todas las mascotas!";
+"beastMasterTitle" = "Maestro de bestias";
+"hatchedPetDescription" = "Hay tantas mascotas que coleccionar, pero estás condenado a que alguna sea tu favorita. Si las alimentas, puede que crezcan…";
+"pending_items" = "Elementos pendientes";
+"quests.confirm_leave_nostart" = "¿Seguro que quieres abandonar la misión? No podrás volver a unirte.";
+"completedTaskTitle" = "Completaste una tarea";
+"year" = "año";
+"tasks.form.completion" = "Conseguido";
+"block_description" = "Un usuario bloqueado no puede enviarte mensajes privados, pero seguirás viendo sus mensajes en la taberna o los gremios. Si el usuario es moderador o lo es en el futuro, bloquearle no tendrá ningún efecto.";
+"backer_tier" = "Nivel de patrocinador: %d";
+"onboardingComplete_achievement_title" = "¡Completaste todas tus tareas de incorporación!";
+"block" = "Bloquear";
+"mountMasterTitle" = "Maestro de monturas";
+"quests.unlock_incentive" = "Desbloquea marcando %d veces";
+"leave_and_delete_x_tasks" = "Abandonar y borrar %d tareas";
+"onboardingCompleteDescription" = "¡Si quieres conseguir aún más, comprueba los logros que existen y empieza a coleccionarlos!";
+"broken_challenge_description" = "Esta es una de las %d tareas que forman parte de un desafío que ya no existe. ¿Qué te gustaría hacer con estas tareas sobrantes?";
+"achievements.onboarding" = "Logros de incorporación";
+"go_to_items" = "Ve a tus objetos";
+"create_task_title" = "Crea una tarea";
+"tasks.form.times_scored" = "Veces marcadas";
+"gift_gems" = "Regala gemas";
+"user_was_blocked" = "Bloqueaste a %s.";
+"keep_x_tasks" = "Mantener %d tareas";
+"onboarding_tasks" = "Tareas de incorporación";
+"first_drop_title" = "¡Encontraste nuevos objetos!";
+"checkin_prize_earned" = "Ganaste un %s como premio por tu compromiso de mejorar tu vida.";
+"tasks.form.completions" = "Conseguidos";
+"challengeJoinedDescription" = "¡Os pusisteis a prueba uniéndoos a un reto!";
+"support.questions_button" = "Leer más";
+"leave_and_delete_tasks" = "Abandonar y borrar tareas";
+"week" = "semana";
+"unblock_user" = "Desbloquear";
+"challengeJoinedTitle" = "Te uniste a un reto";
+"leave_and_keep_tasks" = "Abandonar y mantener tareas";
+"settings.launch_screen" = "Abrir pantalla";
+"partyOnTitle" = "Agrúpate";
+"inventory.no_longer_available" = "Ya no está disponible";
+"view_onboarding_tasks" = "Mira la tareas de incorporación";
+"purchase_x" = "Comprar %d";
+"achievements.challenges" = "Retos ganados";
+"leave_and_delete_task" = "Abandonar y borrar tarea";
+"adventure_guide_description" = "¡Completa estas tareas de incorporación y obtendrás 5 logros y 100 piezas de oro cuando acabes!";
+"inventory.hatched_sharing" = "¡Acabo de eclosionar la mascota %@ %@ en Habitica completando mis tareas de la vida real!";
+"five_achievements" = "5 logros";
+"first_drop_explanation2" = "¡Dirígete a tus objetos para tratar de combinar tu nuevo huevo con una poción de eclosión!";
+"triadBingoDescription" = "¡Obtuviste el logro \"Tríada de bingo\" por encontrar todas las mascotas, amaestrar todas las monturas y encontrar todas las mascotas otra vez!";
+"quests.confirm_leave" = "¿Seguro que quieres abandonar la misión? Todo tu progreso se perderá.";
+"completedTaskDescription" = "Una tarea puede ser un hábito, tarea diaria o tarea pendiente. ¡Continúa completándolos todos para recibir todo tipo de recompensas!";
+"partyUpTitle" = "Agrúpate";
+"day" = "día";
+"user_was_unblocked" = "Desbloqueaste a %s.";
+"gift_sent_to" = "Enviaste a %@:";
+"hatchedPetTitle" = "Eclosionaste una mascota";
+"broken_challenge" = "Reto estropeado";
+"support.questions_title" = "Preguntas sobre Habitica";
+"is_open" = "Abrir";
+"tasks.tasks" = "Tareas";
+"tasks.form.reset_counter" = "Resetear contador";
+"tasks.form.adjust_counter" = "Ajustar contador";
+"next_prize_in_x_checkins" = "Siguiente premio en %d conexiones";
+"excess_x_items_left" = "Solo necesitas %d %@s para eclosionar todas las mascotas posibles. ¿Seguro que quieres %d?";
+"fedPetTitle" = "Alimentaste una mascota";
+"partyUpDescription" = "¡Te uniste con un miembro del grupo!";
+"guildJoinedTitle" = "Te uniste a un gremio";
+"guildJoinedDescription" = "¡Aventúrate en la parte social de Habitica uniéndote a un gremio!";
+"invitedFriendDescription" = "¡Invitaste a un amigo (o amigos) a unirse contigo a tu aventura!";
+"feedPet_title" = "Alimenta una mascota";
+"gift_subscription" = "Regala un suscripción";
+"delete_challenge_task" = "¿Borrar tarea del reto?";
+"purchasedEquipmentDescription" = "El equipamiento puede ser práctico o simplemente tener estilo. Sube tus estadísticas para conseguir todo tipo de beneficios para tu personaje";
+"createdTaskDescription" = "¡Sigue así! Si necesitas ayuda planeando tareas, intenta pensar en lo que te gustaría hace a una hora concreta del día";
+"tasks.form.none" = "Ningún";
+"inventory.available_for" = "Disponible durante %@";
+"support.bug_fixes_description" = "¿Algo salió mal? Busca respuestas aquí o comunícate con nosotros para obtener ayuda";
+"support.bug_fixes_title" = "Errores y correcciones";
+"support.suggestions_title" = "Sugerencias y comentarios";
+"support.suggestions_description" = "¿Tienes comentarios sobre cómo las características podrían funcionar mejor o se te ha ocurrido incorporar alguna nueva? ¡Cuéntanoslo!";
+"support.bug_fixes_button" = "Consigue ayuda";
+"health_description" = "Esto representa la vida de tu personaje. Olvidarte una tarea diaria o cometer un hábito negativo **reduce tus puntos de vida **reduce tu PS**.\n\n**Recupera PS** subiendo de nivel, usando pociones de salud o usando una habilidad de curación.\n\nSi tu **PS llega a 0** perderás un nivel, todo el oro y una pieza de tu equipamiento. El equipamiento perdido puede volver a ser comprado.";
+"more_help_description" = "¡Envíanos un informe y nos pondremos en contacto contigo!";
+"x_items_found" = "%d objetos encontrados";
+"suggest_pet_hatch_missing_both" = "Necesitas un %d y una poción de %@ para eclosionar esta mascota";
+"spooky_promo.info_prompt" = "¡La venta de gemas ha vuelto para eclipsar el final de la Gala de Otoño de este año! Esta es la última oportunidad de obtener más gemas que de costumbre, ¡así que aprovéchalo mientras puedas!";
+"survey.title" = "Cuestionario de jugador de Habitica";
+"fall_promo.info_prompt" = "¡La Gala de Otoño está en pleno apogeo, así que pensamos que era el momento perfecto para presentar nuestra primera venta de gemas! Ahora obtendrás más gemas que nunca con cada compra.";
+"class_system_disabled" = "Sistema de clases desactivado.";
+"create_guild_description" = "Para crear un gremio, inicia sesión en Habitica y luego pulsa sobre el botón \"Crear\" de la pantalla \"Mis gremios\".";
+"week_reminder_title" = "¿Cómo te va con tus tareas?";
+"create_challenge" = "Crear reto";
+"daily_tip_0" = "¿Quieres probar algo nuevo? ¡Únete a un reto para aumentar tu lista de tareas y ganar algunas gemas!";
+"currency" = "Divisas";
+"stat_description" = "Todos los personajes de Habitica tienen cuatro estadísticas que afectan los aspectos del juego.\n\nLa **Fuerza (FUE)** afecta los golpes críticos y aumenta el daño infligido a los jefes de misión. Los guerreros y pícaros obtienen FUE de su equipo de clase.\n\nLa **Constitución (CON)** aumenta tu PS y te hace sufrir menos daño. Los sanadores y guerreros obtienen CON de su equipo de clase.\n\nLa **Inteligencia (INT)** aumenta la cantidad de EXP que ganas y te da más maná. Los magos y sanadores obtienen INT de su equipo de clase.\n\nLa **percepción (PER)** aumenta las piezas de oro que ganas y el índice de objetos conseguidos. Los pícaros y magos obtienen PER de su equipo de clase.\n\nDespués del nivel 10, obtienes 1 punto de estadística por cada nivel que ganes, que puedes añadir a cualquier estadística que desees. También puedes equiparte objetos que aumenten tus estadísticas.";
+"usually_x_gems" = "Generalmente %d gemas";
+"seasonal_potions_available" = "Objetos estacionales disponibles";
+"mystic_hourglasses" = "Relojes de arena místicos";
+"experience_description" = "Los puntos de experiencia representan tu progreso y te ayuda a subir de nivel. **Ganas EXP** eminentemente completando tareas o misiones, pero también hay algunas habilidades que proporcionan EXP.\n\nLas tareas de mayor dificultad o de color rojo, te proporcionan **mayor EXP**. La **estadística INTELIGENCIA** también aumenta tu índice de obtención de experiencia.";
+"daily_tip_4" = "Revisar tus tareas ocasionalmente puede ayudarte a seguir el camino correcto.";
+"common_fixes" = "Soluciones frecuentes";
+"manual_sync_title" = "Sincronización manual y reinicio forzoso";
+"promo_info_instructions_title" = "Cómo funciona";
+"gift_one_get_one_data.info_instructions" = "Pulsa sobre \"Regalar una suscripción\" y escribe el nombre de usuario a quien te gustaría regalársela. Luego, elige la duración de la suscripción que te gustaría regalar y pasa por caja. Tu cuenta será recompensada automáticamente con la misma suscripción que acabas de regalar.";
+"survey.button" = "Ir a la encuesta";
+"update_app_description" = "Sacamos constantemente nuevas versiones con arreglos, así que asegúrate de comprobar el Apple Store para ver si hay actualizaciones disponibles";
+"update_app_title" = "Actualizar aplicación";
+"game_mechanics" = "Mecánica del juego";
+"gift_one_get_one_data.purchase_banner_title" = "Regala una suscripción y reciba una gratis hasta el %@";
+"can_hatch_pet" = "¡Combina tu huevo de %@ y una poción de %@ para eclosionar esta mascota!";
+"more_help_title" = "¿Necesitas más ayuda?";
+"magic_potions" = "Pociones mágicas";
+"unlocks_selecting_class_prompt" = "¡Ahora que estás en el nivel 10, puedes elegir una clase!";
+"hourglasses_description" = "Los relojes de arena místicos son un tipo de divisa extremadamente raro que solo puedes recibir por suscribirse a Habitica durante tres o más meses consecutivos. Se utilizan en la tienda del Viajero del Tiempo para conjuntos de equipo, mascotas, monturas, fondos animados o incluso misiones especiales de años pasados.\n\nPuedes recibir hasta cuatro relojes de arena místicos al año. El tiempo en se recibe esta recompensa se basa en la fecha de renovación de tu suscripción. Se reciben el primer día del mes posterior al pago de la suscripción que te hizo merecedor de un reloj. Consulta la página [Suscripción] para obtener más detalles.";
+"gold_description" = "El oro es la **moneda principal** de Habitica y te permite comprar ciertos equipamientos, misiones, artículos o incluso recompensas personalizadas que te marques.\n\n**Gana oro** completando tareas o misiones, o mediante algunas habilidades de clase. ** La estadística PERCEPCIÓN** modifica el índice e oro que ganas.\n\nSi te suscribes a Habitica, también podrás usar el oro para comprar una cierta cantidad de gemas en función del tiempo que lleves suscrito.";
+"gems_description" = "Las gemas son una divisa comprada con dinero real que te permite comprar contenido adicional en Habitica y junto con las suscripciones, son una de las principales fuentes de apoyo financiero para el equipo desarrollador de Habitica.\n\nTodo el contenido comprado con gemas es puramente estético o se puede obtenerse gratis con el tiempo.\n\nTambién puedes recibir gemas como regalo de otros jugadores, premios de desafío, contribuyendo a Habitica o suscribiéndote.";
+"week_reminder_body" = "Descansar está bien, ¡pero realizando en su lugar algunas tareas sencillas, podrás seguir ganando puntos para subir de nivel y conseguir equipo molón!";
+"survey.description" = "¡Completa esta encuesta de 5 minutos para ayudarnos a crecer y recibirás un logro!";
+"gems_promo.info_limitations" = "Esta promoción solo se aplica durante el evento de tiempo limitado. Este evento comienza el %s (12:00 UTC) y terminará el %s (00:00 UTC). La oferta promocional solo está disponible al comprar gemas para ti.";
+"joined_challenge" = "Te uniste a un reto";
+"daily_tip_2" = "Puedes cambiar con qué frecuencia se repiten las tareas diarias. Se pueden programar incluso tareas pocos frecuentes.";
+"known_issues" = "Problemas conocidos";
+"mana_description" = "Los puntos de maná se desbloquean con el sistema de clases en el nivel 10 y te permiten **usar habilidades** una vez que comiences a aprenderlas en el nivel 11.\n\nCuando se reinicia tu día **restauras algunos PM**, pero puedes recuperar más completando tareas o usando habilidades de la clase mago.";
+"could_not_gift_gems" = "No se pudieron regalar las gemas. Por favor, inténtalo más tarde.";
+"report" = "Reportar";
+"open_for" = "Abrir durante %@";
+"more_help_button" = "Reportar un error";
+"premium_currency" = "Divisas premium";
+"suggest_pet_hatch_again_missing_egg" = "Todavía necesitas un %@ para eclosionar esta mascota de nuevo";
+"hatch" = "Eclosionar";
+"left_challenge" = "Abandonaste un reto";
+"daily_tip_3" = "También puedes programar recordatorios específicos para tus tareas diarias.";
+"clear_cache_description" = "Para hacer esto, ve a Menú > Ajustes y luego dirígete abajo del todo para encontrar los botones";
+"daily_tip_8" = "¡Puedes cambiar la dificultad de tus tareas para obtener premios más elevados por las más difíciles!";
+"unhatched_pet" = "Mascota no eclosionada";
+"use_immediately_disclaimer" = "¡Su efecto se producirá inmediatamente después de su compra!";
+"gift_one_get_one_data.infoPrompt" = "En honor a la temporada de donaciones, traemos de vuelta una promoción muy especial. Ahora, cuando regales una suscripción a otra persona, ¡obtendrás gratis para ti esa misma suscripción!";
+"class_system_enable_instructions" = "Puedes habilitar el sistema de clases desde los ajustes de la aplicación.";
+"create_challenge_description" = "Para crear un reto, inicia sesión en Habitica y luego pulsa sobre el botón \"Crear\" de la pantalla \"Mis retos\".";
+"daily_tip_1" = "¡Añade listas a tus tareas pendientes para multiplicar sus recompensas!";
+"magic_potion" = "Poción mágica";
+"experience_points" = "Puntos de experiencia";
+"x_to_y" = "%@ a %@";
+"limited_event" = "Evento limitado";
+"create_guild" = "Crear gremio";
+"promo_info_limitations_title" = "Limitaciones";
+"suggest_pet_hatch_missing_egg" = "Todavía necesitas un huevo de %@ para obtener esta mascota";
+"manual_sync_description" = "Algunas veces la aplicación no sincroniza automáticamente el contenido o se queda bloqueada con algún comportamiento extraño. Arrastra hacia abajo la pantalla o cierra y reabre la aplicación para ver si se soluciona";
+"more_questions_title" = "¿Aún tienes dudas?";
+"common_questions" = "Preguntas frecuentes";
+"gift_confirmation_body_g1_g1" = "¡Enviaste a %@ una suscripción de %@ meses a Habitica y esa misma suscripción se aplicó a tu cuenta por la promoción Regala Una Consigue Otra!";
+"hatch_pet_again" = "Eclosionar mascota de nuevo";
+"stat_allocation" = "Asignación de estadísticas";
+"fall_promo.info_instructions" = "Entre %s y %s, simplemente compra cualquier paquete de gemas como de costumbre y tu cuenta recibirá el plus promocional de gemas. ¡Más gemas para gastar, compartir o guardar para futuros eventos!";
+"subscriber_currency" = "Divisas de suscriptor";
+"clear_cache_title" = "Borrar caché y recargar contenido";
+"gift_one_get_one_data.info_limitations" = "Este es un evento de duración limitada que comienza el %@ (13:00 UTC) y terminará el %@ (01:00 UTC). Esta promoción solo se aplica cuando se regala a otro Habiticano. Si tú o el destinatario del regalo ya tenéis una suscripción, la suscripción de regalada se iniciará una vez finalice o se cancele la actual.";
+"hatch_pet" = "Eclosionar mascota";
+"daily_tip_5" = "Respira profundamente varias veces para ayudarte a concentrarte. ¡Puedes con esto!";
+"pet_accessibility_label_raised" = "%@, subió %d%%";
+"daily_tip_7" = "¡Prueba a marcar objetos del mercado entre tus recompensas para motivarte a conseguirlos!";
+"new" = "Nuevo";
+"support.suggestions_button" = "Enviar comentarios";
+"more_questions_text" = "Publica un mensaje en el gremio [Habitica Help Guild](https://habitica.com/groups/guild/5481ccf3-5d2d-48a9-a871-70a7380cee5a) para que otro jugador te eche un cable con tus preguntas";
+"health_points" = "Puntos de salud";
+"view_gem_bundles" = "Ver los lotes de gemas";
+"suggest_pet_hatch_missing_potion" = "Todavía necesitas una poción de %d para eclosionar esta mascota";
+"suggest_pet_hatch_again_missing_potion" = "Todavía necesitas un %@ para eclosionar esta mascota de nuevo";
+"suggest_pet_hatch_again_missing_both" = "Necesitas un %@ y una poción de %@ para eclosionar esta mascota de nuevo";
+"end_challenge_description" = "Para finalizar un reto, inicia sesión en Habitica y pulsa sobre el botón \"Terminar reto\" del lado derecho de la pantalla del reto.";
+"unlocks_selecting_class_description" = "Las habilidades se desbloquean una vez alcances el nivel 10 y hayas elegido una clase";
+"pet_accessibility_label_mount_owned" = "%@, mascotas poseídas";
+"get_started" = "Empezar";
+"daily_tip_6" = "¡Prueba a poner un temporizador de 10 minutos y ver cuánto puedes avanzar en ese tiempo!";
+"daily_tip_9" = "Si lo estás pasando mal, intenta dividir tus tareas en otras más pequeñas.";
+"see_you_tomorrow" = "Hasta mañana";
+"spooky_promo.info_instructions" = "Entre %s y %s, simplemente compra cualquier paquete de gemas como de costumbre y tu cuenta recibirá el plus promocional. ¡Más gemas para gastar, compartir o guardar para futuros eventos!";

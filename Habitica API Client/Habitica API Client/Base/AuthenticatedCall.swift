@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveSwift
-import Keys
 import Habitica_Models
 
 enum HTTPMethod: String {
@@ -79,7 +78,6 @@ public class AuthenticatedCall: JsonNetworkCall {
                 headers[AuthenticatedCall.apiKeyHeader] = apiKey
                 headers[AuthenticatedCall.apiUserIdHeader] = userId
             }
-            headers["Authorization"] = "Basic \(HabiticaKeys().stagingKey)"
             headers[AuthenticatedCall.clientHeader] = "habitica-ios"
             return headers
         

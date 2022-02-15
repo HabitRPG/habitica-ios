@@ -119,6 +119,7 @@
 		29B478BF20C5304F00B6123F /* BuyResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B478BE20C5304F00B6123F /* BuyResponseProtocol.swift */; };
 		29B478C120C531B000B6123F /* ArmoireResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B478C020C531B000B6123F /* ArmoireResponseProtocol.swift */; };
 		29C38C7F24A2321400F219A1 /* UserAchievementsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C7E24A2321400F219A1 /* UserAchievementsProtocol.swift */; };
+		29DBDE4E274D0003008F6777 /* SocialAuthenticationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE4D274D0003008F6777 /* SocialAuthenticationProtocol.swift */; };
 		29DBFEF920CAD7C200DF9CF2 /* SpecialItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEF820CAD7C200DF9CF2 /* SpecialItemProtocol.swift */; };
 		29DBFF0920D1336000DF9CF2 /* EquatableStringEnumProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0820D1336000DF9CF2 /* EquatableStringEnumProtocol.swift */; };
 		29DBFF0B20D15A4A00DF9CF2 /* UserNewMessagesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0A20D15A4A00DF9CF2 /* UserNewMessagesProtocol.swift */; };
@@ -255,6 +256,7 @@
 		29B478BE20C5304F00B6123F /* BuyResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyResponseProtocol.swift; sourceTree = "<group>"; };
 		29B478C020C531B000B6123F /* ArmoireResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmoireResponseProtocol.swift; sourceTree = "<group>"; };
 		29C38C7E24A2321400F219A1 /* UserAchievementsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAchievementsProtocol.swift; sourceTree = "<group>"; };
+		29DBDE4D274D0003008F6777 /* SocialAuthenticationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialAuthenticationProtocol.swift; sourceTree = "<group>"; };
 		29DBFEF820CAD7C200DF9CF2 /* SpecialItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialItemProtocol.swift; sourceTree = "<group>"; };
 		29DBFF0820D1336000DF9CF2 /* EquatableStringEnumProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquatableStringEnumProtocol.swift; sourceTree = "<group>"; };
 		29DBFF0A20D15A4A00DF9CF2 /* UserNewMessagesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNewMessagesProtocol.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				290B624F2073D82A007287C4 /* InboxMessageProtocol.swift */,
 				290B624D2073D74B007287C4 /* InboxProtocol.swift */,
 				290B625E207B947A007287C4 /* LocalAuthenticationProtocol.swift */,
+				29DBDE4D274D0003008F6777 /* SocialAuthenticationProtocol.swift */,
 				29323E4C2052F4E400AC6D6F /* OutfitProtocol.swift */,
 				2974BD92208E0C7B00EC1A25 /* OwnedCustomizationProtocol.swift */,
 				290B6299207F7DCC007287C4 /* OwnedGearProtocol.swift */,
@@ -631,14 +634,12 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Habitica ModelsTests/Pods-Habitica ModelsTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
@@ -739,6 +740,7 @@
 				298FB9EB204D940E004DDACC /* TaskProtocol.swift in Sources */,
 				290C3039206D3BAD0066AF5B /* ChatMessageProtocol.swift in Sources */,
 				290B624C2073D73A007287C4 /* PushNotificationsProtocol.swift in Sources */,
+				29DBDE4E274D0003008F6777 /* SocialAuthenticationProtocol.swift in Sources */,
 				295BC6EF226F117400DDDF1A /* NotificationUnallocatedStatsProtocol.swift in Sources */,
 				299FB27E208494E200422522 /* MountProtocol.swift in Sources */,
 				29027985205833EA006DACB9 /* QuestStateProtocol.swift in Sources */,

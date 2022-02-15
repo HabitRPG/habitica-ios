@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 
-class RealmUserAchievements: Object, UserAchievementsProtocol {
+class RealmUserAchievements: BaseModel, UserAchievementsProtocol {
     @objc dynamic var userID: String?
 
     var quests: [AchievementProtocol] {
@@ -59,10 +59,7 @@ class RealmUserAchievements: Object, UserAchievementsProtocol {
     override static func primaryKey() -> String {
         return "userID"
     }
-    
-    var isValid: Bool {
-        return !isInvalidated
-    }
+
     override static func ignoredProperties() -> [String] {
         return ["quests"]
     }

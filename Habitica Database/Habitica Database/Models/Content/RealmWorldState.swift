@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 
-class RealmWorldState: Object, WorldStateProtocol {
+class RealmWorldState: BaseModel, WorldStateProtocol {
     @objc dynamic var id: String?
     @objc dynamic var worldBoss: QuestStateProtocol? {
         get {
@@ -65,10 +65,6 @@ class RealmWorldState: Object, WorldStateProtocol {
     
     override static func primaryKey() -> String {
         return "id"
-    }
-    
-    var isValid: Bool {
-        return !isInvalidated
     }
 
     convenience init(id: String?, state: WorldStateProtocol) {

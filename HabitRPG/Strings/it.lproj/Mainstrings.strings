@@ -29,13 +29,13 @@
 /* (No Comment) */
 "classes.healer" = "Guaritore";
 /* (No Comment) */
-"classes.healer_description" = "I Guaritori si stagliano impavidi contro i danni, ed estendono la propria protezione agli altri. Le Daily mancate e le cattive abitudini non li turbano molto, ed hanno diversi modi per recuperare la Salute persa a causa dei fallimenti. Diventa un Guaritore se ti piace assistere gli altri nella tua squadra, o se l'idea di giocare con la morte attraverso il duro lavoro ti ispira!";
+"classes.healer_description" = "I Guaritori si stagliano impavidi contro i danni, ed estendono la propria protezione agli altri. Le Attività Giornaliere non completate e le cattive abitudini non li turbano molto, ed hanno diversi modi per recuperare la Salute persa a causa dei fallimenti. Diventa un Guaritore se ti piace assistere gli altri nella tua squadra, o se l'idea di giocare con la morte attraverso il duro lavoro ti ispira!";
 /* (No Comment) */
 "classes.mage" = "Mago";
 /* (No Comment) */
-"classes.rogue" = "Assassino";
+"classes.rogue" = "Ladro";
 /* (No Comment) */
-"classes.rogue_description" = "Gli Assassini amano accumulare ricchezza: guadagnano più Oro di chiunque altro, e sono inclini al trovare oggetti casuali. La loro iconica abilità Furtività li rende in grado di prendersi gioco delle conseguenze delle Daily mancate. Diventa un Assassino se trovi una forte motivazione nelle Ricompense e nelle Medaglie, lottando per un bottino e dei riconoscimenti!";
+"classes.rogue_description" = "I Ladri amano accumulare ricchezza: guadagnano più Oro di chiunque altro, e sono inclini al trovare oggetti casuali. La loro iconica abilità Furtività li rende in grado di prendersi gioco delle conseguenze delle Attività Giornaliere non completate. Diventa un Assassino se trovi una forte motivazione nelle Ricompense e nelle Medaglie, lottando per un bottino e dei riconoscimenti!";
 /* (No Comment) */
 "classes.warrior" = "Guerriero";
 /* (No Comment) */
@@ -45,7 +45,7 @@
 /* (No Comment) */
 "create" = "Crea";
 /* (No Comment) */
-"daily" = "Daily";
+"daily" = "Attività Giornaliera";
 /* (No Comment) */
 "delete" = "Elimina";
 /* (No Comment) */
@@ -93,13 +93,13 @@
 /* (No Comment) */
 "glasses" = "Occhiali";
 /* (No Comment) */
-"hatching_potions" = "Pozioni di schiusura";
+"hatching_potions" = "Pozioni di Schiusa";
 /* (No Comment) */
 "health" = "Salute";
 /* (No Comment) */
 "inventory.hatched" = "Hai fatto nascere un nuovo animale!";
 /* (No Comment) */
-"inventory.no_gems_left" = "Niente più gemme disponibili questo mese. Altre saranno disponibili entro i primi 3 giorni del mese prossimo.";
+"inventory.no_gems_left" = "Hai comprato tutte le Gemme a disposizione per questo mese. Altre saranno disponibili entro i primi tre giorni del mese prossimo. Grazie per esserti abbonato!";
 /* (No Comment) */
 "invite_party" = "Invita squadra";
 /* (No Comment) */
@@ -107,11 +107,11 @@
 /* (No Comment) */
 "leave" = "Abbandona";
 /* (No Comment) */
-"levelup_description" = "Raggiungendo i tuoi obiettivi nella vita reale, ora sei al Livello %ld!";
+"levelup_description" = "Raggiungendo obiettivi nella vita reale, sei salito di livello e la tua Salute è stata ripristinata!";
 /* (No Comment) */
 "levelup_share" = "Sono salito di livello in Habitica migliorando le mie abitudini nella vita reale!";
 /* (No Comment) */
-"levelup_title" = "Nuovo livello!";
+"levelup_title" = "Hai raggiunto il livello %ld!";
 /* (No Comment) */
 "mana" = "Mana";
 /* (No Comment) */
@@ -119,43 +119,17 @@
 /* (No Comment) */
 "member.member_since" = "Membro dal";
 /* (No Comment) */
-"menu.about" = "Info";
-/* (No Comment) */
-"menu.cast_spells" = "Lancia incantesimi";
-/* (No Comment) */
-"menu.challenges" = "Sfide";
-/* (No Comment) */
 "menu.customize_avatar" = "Personalizza Avatar";
-/* (No Comment) */
-"menu.equipment" = "Equipaggiamento";
-/* (No Comment) */
-"menu.gems_subscriptions" = "Gemme & Abbonamenti";
-/* (No Comment) */
-"menu.guilds" = "Gilde";
 /* (No Comment) */
 "menu.help_faq" = "Aiuto & FAQ";
 /* (No Comment) */
 "menu.inventory" = "Inventario";
-/* (No Comment) */
-"menu.items" = "Oggetti";
-/* (No Comment) */
-"menu.news" = "Novità";
-/* (No Comment) */
-"menu.party" = "Squadra";
 /* (No Comment) */
 "menu.select_class" = "Seleziona Classe";
 /* (No Comment) */
 "menu.shops" = "Negozi";
 /* (No Comment) */
 "menu.social" = "Social";
-/* (No Comment) */
-"menu.stable" = "Scuderia";
-/* (No Comment) */
-"menu.stats" = "Statistiche";
-/* (No Comment) */
-"menu.tavern" = "Taverna";
-/* (No Comment) */
-"menu.use_skills" = "Usa abilità";
 /* (No Comment) */
 "monthly" = "Mensile";
 /* (No Comment) */
@@ -193,7 +167,7 @@
 /* (No Comment) */
 "quests.rejected" = "Rifiutata";
 /* (No Comment) */
-"reset_tips" = "Resetta i consigli di Justin";
+"reset_tips" = "Ripristina i Tutorial";
 /* (No Comment) */
 "resetStreak" = "Reset serie";
 /* (No Comment) */
@@ -236,8 +210,6 @@
 "settings.notification_badge" = "Badge notifica";
 /* (No Comment) */
 "settings.profile" = "Profilo";
-/* (No Comment) */
-"settings.push_notifications" = "Notifiche Push";
 /* (No Comment) */
 "settings.reload_content" = "Ricarica i contenuti";
 /* (No Comment) */
@@ -287,7 +259,7 @@
 /* (No Comment) */
 "tags" = "Etichette";
 /* (No Comment) */
-"tasks.daily" = "Daily";
+"tasks.daily" = "Attività Giornaliere";
 /* (No Comment) */
 "tasks.form.checklist" = "Checklist";
 /* (No Comment) */
@@ -323,7 +295,7 @@
 /* (No Comment) */
 "tasks.reward" = "Ricompensa";
 /* (No Comment) */
-"tasks.todo" = "Cose Da Fare";
+"tasks.todo" = "Cose da Fare";
 /* (No Comment) */
 "theme.blue" = "Blu";
 /* (No Comment) */
@@ -363,7 +335,6 @@
 "titles.faq" = "FAQ";
 "titles.about" = "Info";
 "titles.news" = "Novità";
-"titles.stable" = "Scuderia";
 "titles.pets" = "Animali";
 "titles.mounts" = "Cavalcature";
 "titles.tavern" = "Taverna";
@@ -398,7 +369,7 @@
 "stats.perception_text" = "Aumenta la probabilità di ottenere oggetti quando si completano le attività, aumenta il numero massimo di oggetti per giorno, i bonus dati dagli streak, e l'oro guadagnato per ogni attività completata.";
 "controls" = "Controlli";
 "tasks.habits" = "Abitudini";
-"tasks.dailies" = "Daily";
+"tasks.dailies" = "Attività Giornaliere";
 "tasks.rewards" = "Ricompense";
 "tasks.todos" = "Cose Da Fare";
 "tasks.form.create" = "Nuova %@";
@@ -419,9 +390,9 @@
 "tasks.form.accessibility.positive_enabled" = "Azione positiva dell'abitudine attivata.";
 "tasks.form.accessibility.negative_enabled" = "Azione begativa attivata.";
 "tasks.form.accessibility.enable_positive" = "Abilita azione positiva.";
-"tasks.form.accessibility.disable_positive" = "Disattiva azione positiva";
+"tasks.form.accessibility.disable_positive" = "Disattiva azione positiva.";
 "tasks.form.accessibility.enable_negative" = "Abilita azione negativa.";
-"tasks.form.accessibility.disable_negative" = "Disattiva azione negativa";
+"tasks.form.accessibility.disable_negative" = "Disattiva azione negativa.";
 "tasks.form.accessibility.task_difficulty" = "La difficoltà è %@";
 "tasks.form.accessibility.set_task_difficulty" = "Cambia difficoltà a %@";
 "tasks.form.accessibility.enable" = "Abilita %@";
@@ -450,7 +421,7 @@
 "tasks.examples.habit_text" = "Premi qui per trasformarlo in una cattiva abitudine che vorresti abbandonare";
 "tasks.examples.habit_notes" = "O cancellalo scorrendo verso sinistra";
 "tasks.examples.todo_text" = "Iscriversi ad Habitica (Spuntami!)";
-"tasks.examples.todo_notes" = "Puoi completare questa cosa da fare, modificarla o rimuoverla.";
+"tasks.examples.todo_notes" = "Puoi completare questa Cosa da Fare, modificarla o rimuoverla.";
 "tasks.examples.reward_text" = "Premiati";
 "tasks.examples.reward_notes" = "Guarda la Tv, gioca a un gioco, mangia un dolce, è una tua scelta!";
 "tasks.examples.work_habit" = "Controlla le e-mail";
@@ -465,7 +436,7 @@
 "tasks.examples.exercise_todo_notes" = "Premi per aggiungere una checklist!";
 "tasks.examples.health_habit" = "Mangia cibo sano/cibo spazzatura";
 "tasks.examples.health_daily_text" = "Passa il filo interdentale";
-"tasks.examples.health_daily_notes" = "Premi per apportare dei cambiamenti";
+"tasks.examples.health_daily_notes" = "Premi per apportare dei cambiamenti!";
 "tasks.examples.health_todo_text" = "Pensa a un cambiamento positivo";
 "tasks.examples.health_todo_notes" = "Premi per aggiungere una checklist!";
 "tasks.examples.school_habit" = "Studio/Procrastinazione";
@@ -494,7 +465,7 @@
 "resync_all" = "Sincronizza tutto";
 "resync_task" = "Sincronizza questa attività";
 "skills.unlocks_at" = "Sblocca al livello %d";
-"skills.cant_cast_on_challenge_tasks" = "Non puoi lanciare incantesimi sulle attività delle sfide.";
+"skills.cant_cast_on_challenge_tasks" = "Non puoi lanciare incantesimi sulle attività delle sfide";
 "skills.transformation_items" = "Oggetti di Trasfomrazione";
 "level_number" = "Livello %d";
 "last_activity" = "Ultima Attività %@";
@@ -510,7 +481,7 @@
 "settings.login_methods" = "Metodi d'accesso";
 "settings.reset_account" = "Resetta account";
 "settings.delete_account" = "Elimina l’account";
-"settings.delete_account_description" = "Sei sicuro? Questo cancellerà il tuo account per sempre, e non potrà essere recuperato! Dovrai registrarti nuovamente per usare Habitica di nuovo. Le gemme spese o depositate non saranno rimborsate. Se sei assolutamente sicuro, digita la tua password nella casella di testo qua sotto.";
+"settings.delete_account_description" = "Questo cancellerà per sempre il tuo account, e non potrà mai essere ripristinato! Le Gemme che possiedi e quelle spese non verranno rimborsate. Se sei assolutamente certo/a, digita la tua password nella casella di testo qui sotto.";
 "settings.change_email" = "Cambia l’E-mail";
 "settings.new_email" = "Nuova Email";
 "settings.change_username" = "Modifica il nome utente";
@@ -531,10 +502,9 @@
 "guilds.invite_to_guild" = "Invita alla Gilda";
 "join" = "Partecipa";
 "specialItems" = "Oggetto Speciale";
-"sell" = "Vendi per %d oro";
-"hatch_egg" = "Schiudi un uovo";
+"sell" = "Vendi per %d Oro";
+"hatch_egg" = "Usa su un uovo";
 "hatch_potion" = "Schiudi con una pozione";
-"inventory.hatchedSharing" = "Ho appena ottenuto un %@ %@ in Habitica completando i miei obbiettivi nella vita reale!";
 "stable.standard_pets" = "Animali Base";
 "stable.standard_mounts" = "Cavalcature Base";
 "equipment.equipment" = "Equipaggiamento";
@@ -567,13 +537,13 @@
 "groups.guild_invitation_no_invitername" = "Qualcuno ti ha invitato ad unirti alla Gilda: %@";
 "groups.guild_invitation_invitername" = "%@ ti ha invitato ad unirti alla Gilda: %@";
 "inventory.number_gems_left" = "Gemme Mensili: %d/%d Rimanenti";
-"inventory.wrong_class" = "Disponibile solo per %@. Puoi cambiare la tua classe nelle Impostazioni.";
+"inventory.wrong_class" = "Disponibile solo per %@. Puoi cambiare la tua classe nelle Impostazioni";
 "inventory.available_until" = "Disponibile fino al %@";
 "inactive" = "Inattivo";
 "one_month" = "1 Mese";
 "x_months" = "%d Mesi";
-"unsubscribe_itunes" = "Non vuoi più avere l'abbonamento? Puoi gestire il tuo abbonamento da iTunes.";
-"open_itunes" = "Apri iTunes";
+"unsubscribe_itunes" = "Non vuoi più avere l'abbonamento? Puoi gestire il tuo abbonamento tramite il tuo ID Apple nelle Impostazioni del tuo dispositivo.";
+"open_itunes" = "Apri gli Abbonamenti Apple ID";
 "unsubscribe_website" = "Non vuoi più avere l'abbonamento? A causa del tuo metodo di pagamento, puoi gestire il tuo abbonamento solo dal sito web.";
 "open_website" = "Apri il Sito Web di Habitica";
 "plain_backgrounds" = "Sfondi colore unico";
@@ -602,7 +572,6 @@
 "email" = "E-mail";
 "groups.invite.add_userid" = "Aggiungi un ID utente";
 "groups.invite.add_email" = "Aggiungi un'E-mail";
-"scan_QR_code" = "Acquisisci Codice QR";
 "users_invited" = "L'invito è stato mandato agli utenti.";
 "username" = "Nome utente";
 "password" = "Password";
@@ -622,7 +591,7 @@
 "login.login" = "Accedi";
 "login.login_facebook" = "Accedi con Facebook";
 "login.login_google" = "Accedi con Google";
-"login.email_password_link" = "Ricevi per e-mail il link per reimpostare la password.";
+"login.email_password_link" = "Ricevi per e-mail il link per reimpostare la password";
 "login.enter_email" = "Inserisci l'indirizzo e-mail che hai usato per registrare il tuo account Habitica.";
 "login.reset_password_response" = "Se abbiamo il tuo indirizzo e-mail in archivio, abbiamo inviato a quell'indirizzo le istruzioni per creare una nuova password.";
 "intro.card1.title" = "Benvenuto in";
@@ -652,7 +621,7 @@
 "no_benefit" = "Nessun Vantaggio";
 "errors.error" = "Errore";
 "errors.sync" = "Errore di sincronizzazione";
-"errors.sync_message" = "Si è verificato un errore sincronizzando alcuni cambiamenti";
+"errors.sync_message" = "Si è verificato un errore sincronizzando alcuni cambiamenti.";
 "errors.quest_invite_accept" = "Si è verificato un errore durante l'accettazione dell'invito alla sfida";
 "errors.quest_invite_reject" = "C'è stato un errore rifiutando l'invito alla missione";
 "errors.reply" = "Non è stato possibile inviare il tuo messaggio.";
@@ -662,7 +631,7 @@
 "months" = "mesi";
 "years" = "anni";
 "leave_challenge_title" = "Vuoi abbandonare la sfida?";
-"leave_challenge_prompt" = "Vuoi abbandonare la sfida e tenere o eliminare le attività?";
+"leave_challenge_prompt" = "Vuoi abbandonare la Sfida e tenere o eliminare le attività?";
 "locations.market" = "Mercato";
 "locations.tavern" = "Taverna";
 "locations.quest_shop" = "Negozio Missioni";
@@ -686,14 +655,14 @@
 "tutorials.habits_2" = "Ogni volte che fai un'Abitudine positiva, premi il + per ricevere punti esperienza e oro!";
 "tutorials.habits_3" = "Se sbagli e fai un'Abitudine negativa, premere il - ridurrà la salute del tuo avatar per aiutarti ad essere responsabile.";
 "tutorials.habits_4" = "Prova! Puoi esplorare gli altri tipi di attività dai pulsanti in basso.";
-"tutorials.dailies_1" = "Crea Daily per attività sensibili al fattore tempo che vanno completate regolarmente.";
+"tutorials.dailies_1" = "Crea Attività Giornaliere per attività sensibili al fattore tempo che vanno completate regolarmente.";
 "tutorials.dailies_2" = "Sii prudente — se non ne completi uno, il tuo avatar subirà danni durante la notte. Completarli costantemente porterà grandi ricompense!";
-"tutorials.todos_1" = "Usa le cose da fare per tenere traccia della attività che hai bisogno di fare solo una volta.";
+"tutorials.todos_1" = "Usa le Cose da Fare per tenere traccia della attività che hai bisogno di fare solo una volta.";
 "tutorials.todos_2" = "Se la tua Cosa da Fare deve essere completata entro un certo tempo, imposta una scadenza. sembra che tu possa spuntarne una — avanti così!";
 "tutorials.rewards_1" = "Compra attrezzatura per il tuo avatar con l'oro che guadagni!";
 "tutorials.rewards_2" = "Puoi anche creare delle ricompense nel mondo reale basate su ciò che ti motiva.";
 "tutorials.add_task" = "Tocca per aggiungere una nuova attività.";
-"tutorials.edit_task" = "Digita un compito per correggere e aggiungere promemoria. Swipe a sinistra per cancellarli";
+"tutorials.edit_task" = "Digita un compito per correggere e aggiungere promemoria. Swipe a sinistra per cancellarli.";
 "tutorials.filter_task" = "Tocca per filtrare le attività.";
 "tutorials.reorder_task" = "Tieni premuto su una attività per trascinarla in giro.";
 "tutorials.inbox" = "Qui è dove puoi leggere e rispondere ai messaggi privati! Puoi mandare messaggi alle persone anche dai loro profili privati.";
@@ -734,28 +703,24 @@
 "create_tag" = "Crea etichetta";
 "unlockDropsTitle" = "Hai sbloccato il sistema di drop!";
 "unlockDropsDescription" = "Hai sbloccato il sistema di drop! Ora, quando completi un'attività, hai una piccola probabilità di trovare un oggetto, tra cui uova, pozioni e cibo!";
-"subscription_info_1_title" = "Acquista gemme usando l'oro";
-"subscription_info_2_title" = "Oggetti mensili esclusivi";
-"subscription_info_3_title" = "Conserva più dati nella cronologia";
-"subscription_info_3_description" = "Rende la cronologia delle To-Do completate e delle altre attività disponibili più a lungo.";
-"subscription_info_4_title" = "Numero massimo di drop giornalieri raddoppiato";
-"subscription_info_4_description" = "I copricapi di doppio drop permettono di ricevere più oggetti dalle attività completate ogni giorno, aiutandoti a sviluppare il personaggio più velocemente!";
-"subscription_benefits_title" = "Diventa un abbonato e otterrai i seguenti utili benefici:";
+"subscription_info_1_title" = "Oro per gemme";
+"subscription_info_2_title" = "Clessidre Mistiche";
+"subscription_info_3_title" = "Oggetti Misteriosi Mensili";
+"subscription_info_3_description" = "Abbonati ora per ottenere un set esclusivo subito e ricevere nuovi oggetti ogni mese!";
+"subscription_info_4_title" = "Oggetti Misteriosi Mensili";
+"subscription_info_4_description" = "Riceverai il Lepronte Porpora quando diventerai un nuovo abbonato.";
+"subscription_benefits_title" = "Diventa un abbonato e otterrai i seguenti utili vantaggi";
 "gem_benefits_title" = "Le gemme ti permettono di comprare divertenti extra per il tuo account, fra cui:";
-"unpin_from_rewards" = "Togli dai preferiti";
-"pin_to_rewards" = "Aggiungi ai preferiti";
 "moderator" = "Moderatore";
 "staff" = "Staff";
-"report_x_violation" = "Segnalare %@ per violazione?";
+"report_x_violation" = "Segnalare @%@ per violazione?";
 "not_getting_drops" = "Non ricevi i drop giusti? Controlla il mercato per comprare solo quello che ti serve!";
 "streak_achievement_title" = "Hai ottenuto una Medaglia Serie!";
-"streak_achievement_description" = "Hai completato la tua Daily per 21 giorni di fila! Ottimo lavoro. Non interrompere questa serie!";
-"next_checkin_prize_1_day" = "Il prossimo premio verrà sbloccato tra 1 accesso";
+"streak_achievement_description" = "Hai completato la tua Attività Giornaliera per 21 giorni di fila! Ottimo lavoro. Non interrompere questa serie!";
+"next_checkin_prize_1_day" = "Il prossimo premio verrà sbloccato tra 1 accesso.";
 "next_checkin_prize_x_days" = "Il prossimo premio verrà sbloccato tra %d accessi";
 "recipient" = "Destinatario";
 "no_camera" = "Nessuna Fotocamera disponibile";
-"qr_invalid_id_title" = "ID Utente non valido";
-"qr_invalid_id_message" = "Il Codice QR acquisito non conteneva un ID Utente valido per Habitica.";
 "not_enough_gems" = "Non hai abbastanza Gemme";
 "not_enough_hourglasses" = "Non hai abbastanza Clessidre";
 "subscribe_for_hourglasses" = "Abbonati per ricevere Clessidre";
@@ -769,14 +734,524 @@
 "titles.skills" = "Abilità";
 "titles.gift_subscription" = "Regala un Abbonamento";
 "stats.total" = "Totale";
-"stats.strength_text" = "Aumenta la possibilità di colpi critici e li rende più probabili quando una attività viene completata. Inoltre aumenta il danno inflitto ai boss. ";
+"stats.strength_text" = "Aumenta la possibilità di colpi critici e li rende più probabili quando una attività viene completata. Inoltre aumenta il danno inflitto ai boss.";
 "tasks.team" = "Squadra";
-"tasks.due_today" = "Scade oggi";
-"tasks.due_tomorrow" = "Scade domani";
-"tasks.due_in_x_days" = "Scade tra %d giorni";
-"tasks.due_x" = "Scade %@";
-"tasks.every_x" = "ogni %@";
+"tasks.due_today" = "Oggi";
+"tasks.due_tomorrow" = "Domani";
+"tasks.due_in_x_days" = "Tra %d giorni";
+"tasks.every_x" = "ogni %d %@";
 "titles.avatar" = "Avatar";
 "tasks.examples.team_todo_text" = "Completa il progetto della squadra";
 "settings.app_icon" = "Icona dell'App";
 "settings.server" = "Server";
+"subscription_info_3_description_new" = "Abbonati ora per ottenere il set %@ subito e ricevere nuovi oggetti ogni mese!";
+"party.transfer_ownership_description" = "Ciò renderà %s il nuovo leader della Squadra";
+"party.transfer_ownership_title" = "Vuoi trasferire la Leadership?";
+"party.leave_party_description" = "Vuoi lasciare la Squadra e mantenere o lasciare le sfide?";
+"party.party_description" = "Descrizione squadra";
+"party.create_party_description" = "Affronta fantastiche missioni con i tuoi amici o per conto tuo. Combatti mostri, crea Sfide e responsabilizzati attraverso le Squadre.";
+"classes.mage_description" = "I Maghi imparano rapidamente, guadagnando Esperienza e Livelli più velocemente delle altre classi. Hanno anche un'ottima riserva di Mana per usare le proprie abilità speciali. Diventa un Mago se ti piace l'aspetto tattico di Habitica, o se sei fortemente motivato dal salire di livello e sbloccare funzionalità avanzate!";
+"classes.warrior_description" = "I Guerrieri possono eseguire un gran numero di \"colpi critici\" molto potenti, che forniscono un bonus di Oro ed Esperienza (e a volte degli oggetti) casualmente al completamento di una attività. Inoltre, infliggono ingenti danni ai mostri boss. Diventa un Guerriero se trovi accattivanti le imprevedibili ricompense in stile jackpot, o se vuoi dimenticarti del dolore durante le missioni boss!";
+"avatar.extras" = "Extra";
+"avatar.skin" = "Pelle";
+"avatar.hair" = "Capelli";
+"avatar.body" = "Corpo";
+"stable.type" = "Tipo";
+"stable.color" = "Colore";
+"stable.wacky_mounts" = "Calvacature Stravaganti";
+"stable.wacky_pets" = "Animali Stravaganti";
+"quest" = "Missione";
+"food_singular" = "Cibo";
+"hatching_potion" = "Pozioni di Schiusa";
+"egg" = "Uovo";
+"guilds.guild_leader" = "Leader della Gilda";
+"guilds.join_guild" = "Unisciti alla Gilda";
+"guilds.guild_description" = "Descrizione della Gilda";
+"guilds.guild_members" = "Membri della Gilda";
+"guilds.left_guild" = "Hai abbandonato la Gilda";
+"guilds.joined_guild" = "Ti sei unito alla Gilda";
+"guilds.leave_guild_title" = "Abbandonare la Gilda?";
+"settings.push_notifications.mention_unjoined_guild" = "@Mensioni nelle altre Gilde";
+"settings.push_notifications.mention_joined_guild" = "@Menzioni nelle tue Gilde";
+"settings.push_notifications.mention_party" = "@Menzioni nella Squadra";
+"settings.push_notifications.party_activity" = "Attività della Squadra";
+"settings.push_notifications.important_announcement" = "Annunci Importanti";
+"settings.push_notifications.invited_quest" = "Invito ad una Missione";
+"settings.push_notifications.quest_begun" = "La tua missione è cominciata";
+"settings.push_notifications.invited_guid" = "Invito Gilda";
+"settings.push_notifications.invited_party" = "Invito in una Squadra";
+"settings.push_notifications.gifted_subscription" = "Abbonamento regalato";
+"settings.push_notifications.gifted_gems" = "Gemme regalate";
+"settings.push_notifications.won_challenge" = "Hai vinto una Sfida!";
+"settings.push_notifications.received_pm" = "Hai ricevuto un messaggio privato";
+"settings.push_notifications.title" = "Notifiche Push";
+"settings.email_notifications.subscription_reminders" = "Promemoria Abbonamento";
+"settings.email_notifications.banned_group" = "Espulso dal gruppo";
+"settings.email_notifications.title" = "Email";
+"settings.language" = "Lingua";
+"settings.mentions" = "Menzioni";
+"settings.searchable_private_spaces" = "Solo negli spazi privati";
+"settings.searchable_everywhere" = "Ovunque";
+"settings.api_disclaimer" = "Copia questi valori per utilizzarli in applicazioni di terze parti. Ad ogni modo, pensa alla tua Chiave API come ad una password: tienila segreta. Occasionalmente potrebbe venirti richiesto l'ID Utente, ma non scrivere mai la tua Chiave API dove può essere vista da altre persone, nemmeno su GitHub.";
+"settings.confirm_new_password" = "Conferma la nuova password";
+"settings.delete_account_description_social" = "Così cancellerai per sempre il tuo account, e non potrai ripristinarlo! Le gemme conservate o spese non verranno rimborsate. Se ne sei assolutamente sicuro, scrivi CANCELLA sulla casella qui sotto.";
+"settings.reset_account_description" = "ATTENZIONE! Questo resetterà diversi aspetti del tuo account. È altamente sconsigliato, ma qualcuno trova questa opzione utile all'inizio, dopo aver provato il sito per un po' di tempo.\n\nPerderai tutti i tuoi livelli, l'oro e i punti esperienza. Tutte le tue attività (eccetto quelle delle sfide) verranno cancellate in modo permanente, insieme alla loro cronologia dei progressi. Perderai inoltre tutto il tuo equipaggiamento, ma potrai recuperare ogni cosa, compresi gli oggetti in edizione limitata e gli Oggetti Misteriosi che già possiedi (alcuni oggetti potrebbero richiedere l'appartenenza ad una determinata classe per essere acquistati). Manterrai la tua classe, i tuoi animali e le cavalcature. Potresti forse preferire la Sfera della Rinascita, un'alternativa molto più sicura che ti permette di tenere le tue attività e il tuo equipaggiamento.";
+"settings.disable_all_emails" = "Disabilita tutte le Email";
+"menu.subscription" = "Abbonamento";
+"menu.gems" = "Acquista Gemme";
+"tasks.examples.team_daily_text" = "Aggiorna il team sullo stato del progetto";
+"tasks.examples.team_habit" = "Contatta il team";
+"tasks.repeats.monthly_the" = "il %@";
+"tasks.form.accessibility.set_attribute" = "Cambia attributo in %@";
+"titles.achievements" = "Medaglie";
+"titles.notifications" = "Notifiche";
+"titles.messages" = "Messaggi";
+"titles.pets_and_mounts" = "Animali e Cavalcature";
+"tasks.repeats.repeats_every" = "Ripeti %@";
+"tasks.repeats.repeats_every_on" = "Ripeti %@ su %@";
+"invitedFriendTitle" = "Invitato un amico";
+"invitedFriendDescription" = "Hai invitato un amico (o amici) che si sono uniti a te in questa avventura!";
+"triadBingoDescription" = "Hai ottenuto la medaglia “Triplo Bingo” per aver collezionato tutti gli animali, domato tutte le cavalcature e trovato nuovamente tutti gli animali!";
+"triadBingoTitle" = "Triplo Bingo";
+"beastMasterTitle" = "Re delle Bestie";
+"partyOnDescription" = "La tua squadra ha raggiunto i 4 membri!";
+"partyUpDescription" = "Hai collaborato con un membro della squadra!";
+"onboardingComplete_achievement_title" = "Hai completato le attività introduttive!";
+"onboardingCompleteDescription" = "Se ne vuoi di più, dai un'occhiata alle Medaglie ed inizia a collezionarle!";
+"first_drop_title" = "Hai trovato nuovi oggetti!";
+"first_drop_explanation1" = "Completare delle attività ti dà la possibilità di trovare oggetti, come Uova, Pozioni di Schiusa e Cibo per Animali.";
+"view_achievements" = "Visualizza le tue Medaglie";
+"you_got_achievement" = "Hai ricevuto una Medaglia!";
+"fedPetTitle" = "Dai da mangiare a un Animale";
+"hatchedPetTitle" = "Schiudi un Animale";
+"completedTaskTitle" = "Completa una attività";
+"createdTaskTitle" = "Crea la tua prima attività";
+"purchase_equipment_description" = "L'equipaggiamento è un modo per personalizzare il tuo avatar e migliorare le tue statistiche";
+"complete_task_description" = "Spunta le tue attività per guadagnare premi";
+"create_task_description" = "Aggiungi un'attività per qualcosa che vorresti realizzare questa settimana";
+"learn_more" = "Per saperne di più";
+"more_gems_message" = "Ti servono più Gemme per comprare questo oggetto!";
+"complete_more_tasks" = "Hai bisogno di completare più attività per comprare questo oggetto!";
+"gift_sent_confirmation" = "Il tuo regalo è stato inviato!";
+"gift_gems_explanation_balance" = "Inserisci qui di seguito il numero di Gemme che desideri inviare o cambia scheda per acquistare Gemme da regalare";
+"gift_gems_disclaimer" = "Habitica non ti chiederà mai di regalare gemme ad altri giocatori. Chiedere gemme è una violazione delle Norme della Community e deve essere segnalato a admin@habitica.com.";
+"gift_gems_alert_prompt" = "Inserisci @username del destinatario";
+"gift_gems_alert_title" = "A chi vorresti inviare un regalo?";
+"add" = "Aggiungi";
+"go_shopping" = "Vai a fare shopping";
+"purchase_from_time_travelers_shop" = "Puoi acquistare questa personalizzazione nel negozio Viaggiatori del tempo";
+"purchase_customization" = "Compra personalizzazione";
+"subscription_promo_description" = "Diventa un abbonato per acquistare Gemme con l'oro, ottenere oggetti misteriosi ogni mese, aumentare il limite del bottino e molto altro!";
+"subscription_promo_title" = "Hai bisogno di Gemme?";
+"achievements.quests" = "Missioni completate";
+"achievements.special" = "Medaglie Speciali";
+"achievements.seasonal" = "Medaglie Stagionali";
+"achievements.basic" = "Medaglie di base";
+"achievements.onboarding" = "Medaglie Iniziali";
+"empty.notifications.description" = "Le fate delle notifche ti danno un rauco turno di applausi! Ben fatto!";
+"empty.notifications.title" = "Sei in pari!";
+"empty.rewards.description" = "Le Ricompense sono un ottimo modo per usare Habitica e completare le tue attività. Prova ad aggiungerne qualcuna oggi!";
+"empty.todos.description" = "Le Cose da Fare vanno completate solo una volta. Aggiungi un elenco per aumentarne il valore.";
+"empty.dailies.description" = "Le Attività Giornaliere sono delle attività che vanno svolte regolarmente. Scegli la frequenza migliore per te!";
+"empty.habits.description" = "Abitudini non hanno una programmazione rigida. Puoi completarle più volte al giorno.";
+"notifications.dismiss_all" = "Nascondi tutto";
+"notifications.quest_invite" = "Hai ricevuto un invito per la missione **%s**";
+"notifications.private_guild_invite" = "Hai ricevuto un invito per unirti alla Gilda privata **%s**";
+"notifications.party_invite" = "Hai ricevuto un invito per unirti alla Squadra **%s**";
+"notifications.new_mystery_item" = "Hai dei nuovi **Oggetti Misteriosi**";
+"notifications.new_bailey" = "Nuovo aggiornamento da Bailey!";
+"notifications.unallocated_stat_points" = "Hai **%d Punti Statistica non allocati**";
+"earned_achievement_share" = "Ho ottenuto una nuova medaglia su Habitica!";
+"get_more_habitica" = "Ottieni di più da Habitica";
+"sale" = "Vendita";
+"pin" = "Fissa";
+"unpin" = "Rimuovi";
+"gift_one_get_one_description" = "Regala subito un abbonamento e ne otterrai uno anche tu gratis!";
+"gift_one_get_one_title" = "Regalane uno, Ricevine Uno";
+"gift_one_get_one" = "Evento Regala un Abbonamento e Ricevi un Abbonamento Gratuito in corso ora!";
+"send_gift" = "Invia un regalo";
+"cancel_subscription_group_plan" = "Hai un abbonamento gratuito perché sei un membro di una Squadra o di una Gilda che ha un Piano di gruppo. Questo terminerà se si esce dalla gilda o se il Piano di gruppo viene annullato dal proprietario. Eventuali mesi di credito aggiuntivo per l'abbonamento verranno applicati alla fine del Piano di Gruppo.";
+"renew_subscription_gifted_description" = "Vuoi continuare ad avere i tuoi vantaggi? Puoi iniziare un nuovo abbonamento prima che questo scada per mantenerli attivi.";
+"renew_subscription_description" = "Vuoi continuare ad avere i tuoi vantaggi? Puoi iniziare un nuovo abbonamento prima che questo scada per mantenerli attivi.";
+"cancel_subscription" = "Annulla abbonamento";
+"cancelled" = "Annullato";
+"not_recurring" = "Non ricorrente";
+"ending_on" = "Termina il %s";
+"renew_subscription" = "Rinnova l'Abbonamento";
+"resubscribe" = "Riabbonati";
+"subscription_duration" = "Ricorrente ogni %s";
+"duration_12month" = "12 mesi";
+"duration_6month" = "6 mesi";
+"duration_3month" = "3 mesi";
+"duration_month" = "mese";
+"subscribe" = "Abbonati";
+"subscription_gift_button" = "Regala un Abbonamento";
+"subscription_gift_explanation" = "Vuoi regalare i vantaggi di un abbonamento a qualcuno?";
+"subscription_options_title" = "Scegli la durata dell'abbonamento che fa per te";
+"subscription_benefits_title_subscribed" = "Otterrai questi vantaggi abbonandoti";
+"subscription_info_5_description" = "Scopri ancora più oggetti in Habitica con un bonus 2x sul limite di bottini giornalieri.";
+"subscription_info_5_title" = "Raddoppia il Bottino";
+"subscription_info_2_description" = "Guadagna Clessidre Mistiche per comprare oggetti nel Negozio dei Viaggiatori del Tempo!";
+"subscription_info_1_description" = "Potrai acquistare gemme al Mercato per 20 Oro ciascuna!";
+"end_challenge" = "Fine Sfida";
+"publish_challenge" = "Sfida pubblica";
+"join_challenge" = "Unisciti alla sfida";
+"leave_challenge" = "Abbandona sfida";
+"accessibility.notOwned" = "Non posseduto";
+"accessibility.owned" = "Posseduto";
+"accessibility.expand_checklist" = "Espandi checklist";
+"accessibility.collapse_checklist" = "Nascondi checklist";
+"accessibility.not_due" = "Inattive";
+"accessibility.not_completed_x" = "Non completato %@";
+"start_my_day" = "Inizia la mia giornata";
+"checkin_yesterdays_dalies" = "Metti la spunta sulle Attività Giornaliere che hai completato ieri:";
+"world_boss.rage_strike_explanation" = "Ci sono 3 potenziali Attacchi Furia\nL'indicatore dell'Attacco Furia si riempie quando gli Habitichiani non completano le proprie Attività Giornaliere. Se si riempie, il Dysheartener rilascerà il suo attacco Dirompente Spezzacuori su uno dei negozianti di Habitica, quindi assicurati di completare le tue attività!";
+"world_boss.rage_strike_damaged" = "%@ è distrutto!\nIl nostro beneamato %@ era devastato quando il %s frantumò il %@. In fretta, finisci le tue attività per sconfiggere il mostro e aiutare la ricostruzione !!";
+"world_boss.rage_strike_title" = "%s è stato attaccato!";
+"world_boss.fourth_bullet" = "Vai nella Taverna per vedere i progressi con il Boss Mondiale e gli attacchi Furia";
+"world_boss.third_bullet" = "Puoi continuare con le normali Missioni con Boss, i danni saranno applicati a entrambi";
+"world_boss.second_bullet" = "Il Boss Mondiale non ti danneggerà per le attività non completate, ma la sua Furia aumenterà. Se la barra della Furia si riempie, il Boss attaccherà uno dei negozianti!";
+"world_boss.first_bullet" = "Completa delle attività per danneggiare il Boss";
+"world_boss.description" = "Un Boss Mondiale è un evento speciale che unisce tutta la community di Habitica per sconfiggere un potente mostro con le loro attività!";
+"world_boss.action_prompt" = "Sconfiggi il Boss per ottenere delle ricompense speciali e salvare Habitica dal terrore di %s!";
+"world_boss.world_boss" = "Boss Mondiale";
+"rage_meter" = "Indicatore Furia";
+"agree_guidelines_prompt" = "Accetto di attenermi alle linee guida";
+"faint.button" = "Ripristina salute e riprovaci";
+"faint.dont_despair" = "Non disperarti!";
+"faint.description" = "Hai perso un livello, il tuo oro e un oggetto del tuo equipaggiamento, ma potrai recuperare tutto lavorando sodo!";
+"faint.title" = "Hai finito i punti salute!";
+"tutorials.spells" = "Le Abilità sono dei poteri con straordinari effetti! Tocca un'abilità per utilizzarla. Costerà punti Mana (la barra blu), che puoi ottenere usando Habitica ogni giorno e completando le attività. Dai un'occhiata alle FAQ nel menù per avere maggiori informazioni!";
+"whats_world_boss" = "Cos'è un Boss Mondiale?";
+"welcome_back" = "Bentornato!";
+"keep_tasks" = "Tieni attività";
+"errors.user_not_found" = "Utente non trovato.";
+"intro.card2.text" = "Sblocca nuovi elementi nel gioco portando a termine gli impegni della vita reale. Ottieni armature, animali e altro come ricompensa per aver raggiunto i tuoi obiettivi.";
+"intro.task_setup_speechbubble" = "Splendido! Ora dimmi, su cosa vorresti lavorare durante questo viaggio?";
+"intro.avatar_setup_speechbubble" = "Quindi, che aspetto ti piacerebbe avere? Non preoccuparti, lo potrai cambiare in seguito.";
+"intro.welcome_speechbubble" = "Oh, devi essere nuovo qui. Sono Justin, sarò la tua guida in Habitica.\n\nInnanzi tutto, come vorresti chiamarti? Non esitare a cambiare quello che ho selezionato per te. Quando sei pronto, crea il tuo avatar!";
+"intro.welcome_prompt" = "Come dovremmo chiamarti?";
+"hourglass_count" = "+%d Clessidra Mistica";
+"gift_gems_prompt" = "Ti piacerebbe regalare un gruzzolo di Gemme brillanti e luccicose a qualcuno?";
+"gift_subscription_prompt" = "Scegli l'abbonamento che vorresti regalare qua sotto! Questo acquisto non si rinnoverà automaticamente.";
+"gift_confirmation_body" = "Hai inviato a %s un abbonamento Habitica per %s mesi.";
+"gift_confirmation_body_g1g1" = "Hai inviato a %s un abbonamento Habitica per %s mesi e lo stesso abbonamento è stato aggiunto al tuo account per la nostra promozione Regalane uno Prendine Uno!";
+"gift_confirmation_title" = "Il tuo regalo è stato inviato!";
+"continue" = "Continua";
+"gift_recipient_subtitle" = "Inserisci @username del destinatario";
+"gift_recipient_title" = "A chi vorresti regalarlo?";
+"login.forgot_password" = "Password dimenticata";
+"login.login_apple" = "Accedi con Apple";
+"login.email_username" = "E-mail o nome utente";
+"damage_paused" = "Danni sospesi";
+"about.whats_new" = "Guarda le novità";
+"settings.searchable_username" = "Suggerisci il mio nome utente";
+"settings.confirm_username_description" = "Confermando il tuo nome utente, lo renderai pubblico per gli inviti, le @menzioni e i messaggi. Puoi cambiare il tuo nome utente andando nei parametri quando vuoi.";
+"repeat_password" = "Ripeti la nuova Password";
+"display_name" = "Nome pubblico";
+"copied_x_to_clipboard" = "Copiato %@ negli Appunti";
+"quest_completed_title" = "Missione completata!";
+"member_group_plan" = "Membro di un Piano di Gruppo";
+"group_plan" = "Piano di gruppo";
+"quests.unlock_previous_short" = "Termina la Missione %d";
+"quests.unlock_previous" = "Sbloccalo completando la Sfida %d";
+"quests.unlock_level_short" = "Livello %d";
+"quests.unlock_level" = "Sbloccalo raggiungendo il livello %d";
+"quests.unlock_invite_short" = "Invita degli Amici";
+"quests.rage_attack" = "Attacco Furia: %@";
+"quests.reward_gold" = "%d Oro";
+"quests.reward_experience" = "%d Punti esperienza";
+"groups.invite_member" = "Invita membri";
+"groups.members" = "Membri";
+"remove" = "Elimina";
+"transfer" = "Trasferire";
+"transfer_ownership" = "Trasferisci Leadership";
+"party.quest_not_participating" = "Non stai partecipando";
+"party.remove_member_title" = "Vuoi veramente rimuovere %s dal gruppo?";
+"party.leave_party_title" = "Abbandonare la squadra?";
+"party.join_party_description" = "Dai a un membro squadra il nome utente che troverai sotto e potranno mandarti un invito";
+"theme.followSystem" = "Usa le impostazioni di sistema";
+"settings.change_about_message" = "Cambia Messaggio Informazioni";
+"purchasedEquipmentDescription" = "L'equipaggiamento può essere pratico o semplicemente alla moda. Aumenta le tue statistiche per ottenere tutti i tipi di vantaggi per il tuo avatar";
+"fedPetDescription" = "Ogni animale ha un cibo specifico che gli piace! Sperimenta per scoprire quale lo farà crescere più velocemente";
+"hatchedPetDescription" = "Ci sono così tanti animali da collezionare, ma ne avrai sicuramente uno preferito. Dagli da mangiare e potrebbe crescere…";
+"completedTaskDescription" = "Un'attività può essere un'Abitudine, Attività Giornaliera o una Cosa da Fare. Continua a completarli per ricevere ricompense diverse!";
+"createdTaskDescription" = "Continua così! Se hai bisogno di aiuto per pianificare le attività, prova a pensare a cosa ti piacerebbe fare durante una determinata ora del giorno";
+"challengeJoinedDescription" = "Ti metti alla prova partecipando a una Sfida!";
+"challengeJoinedTitle" = "Partecipa a una sfida";
+"guildJoinedDescription" = "Avventurati nel lato sociale di Habitica entrando a far parte di una Gilda!";
+"guildJoinedTitle" = "È entrato a far parte di una gilda";
+"mountMasterDescription" = "Hai ottenuto la medaglia \"Domatore di Cavalcature\" per aver domato tutte le cavalcature!";
+"mountMasterTitle" = "Domatore di Bestie";
+"beastMasterDescription" = "Hai ottenuto la Medaglia \"Domatore id Bestie\" per aver collezionato tutti gli animali!";
+"partyUpTitle" = "La Squadra Festante";
+"partyOnTitle" = "La Squadra continua";
+"onboardingCompleteTitle" = "Hai guadagnato 5 Medaglie e 100 Oro per i tuoi sforzi.";
+"view_onboarding_tasks" = "Visualizza le attività introduttive";
+"go_to_items" = "Vai agli Oggetti";
+"first_drop_explanation2" = "Vai ai tuoi oggetti e prova a combinare la tua nuova pozione di schiusa con un uovo!";
+"purchasedEquipmentTitle" = "Attrezzatura acquistata";
+"feedPet_description" = "Completa le attività per ottenere cibo! Puoi dar da mangiare al tuo animale da Animali e Cavalcature";
+"hatch_pet_description" = "Completa le attività per ottenere una Pozione di Schiusa ed un uovo, quindi fai schiudere il tuo animale!";
+"purchase_equipment_title" = "Acquista attrezzatura";
+"percent_complete" = "%d%% Completo";
+"complete_to_earn_gold" = "Completa per guadagnare 100 monete d'oro!";
+"onboarding_tasks" = "Attività introduttive";
+"purchase_x" = "Acquista %d";
+"excess_x_items_left" = "Hai solo bisogno di %d %@ per schiudere tutti i possibili animali. Sei sicuro di voler acquistare %d?";
+"excess_no_items_left" = "Hai già tutto il necessario per tutti gli animali %@. Sei sicuro di voler acquistare %d %@s?";
+"excess_items" = "Articoli in eccesso";
+"insufficient_hourglasses_message_subscriber" = "Hai bisogna di più clessidre mistiche per acquistare questo articolo! Resta iscritto per continuare a ricevere le tue clessidre.";
+"insufficient_hourglasses_message" = "Devi possedere più Clessidre Mistiche per acquistare questo articolo! Le clessidre vengono donate a agli Abbonati per più mesi consecutivi.";
+"gift_sent_to" = "Hai inviato %@:";
+"gift_gems_explanation_purchase" = "Scegli di seguito il numero di Gemme da regalare o cambia scheda per regalare gemme dal tuo saldo corrente";
+"onwards" = "Inoltrare";
+"edit_challenge_tasks" = "Le attività di sfida offrono solo modifiche limitate.";
+"new_message" = "Nuovo messaggio";
+"show_details" = "Mostra dettagli";
+"subscribe_for_task_history" = "Desideri più di 2 settimane di dati?";
+"task_history" = "Cronologia delle attività (molto sperimentale)";
+"organize_by" = "Organizza per";
+"empty.inbox.description" = "Inizia a chattare qui sotto! Ricorda di essere amichevole e di seguire le Norme della community.";
+"empty.rewards.title" = "Queste sono le tue Ricompense";
+"empty.todos.title" = "Queste sono le tue Cose da Fare";
+"empty.dailies.title" = "Queste sono le tue Attività Giornaliere";
+"empty.habits.title" = "Queste sono le tue Abitudini";
+"notifications.public_guild_invite" = "Sei stato invitato a far parte della gilda pubblica **%s**";
+"notifications.unread_party_message" = "La tua squadra, **%@**, ha nuovi messaggi.";
+"notifications.unread_guild_message" = "**%@** ha nuovi messaggi.";
+"buy_reward" = "Hai acquistato \"%@\" per %@ oro";
+"purchased" = "Hai comprato %@";
+"filter_by_tags" = "Filtra per tag";
+"invalid_recipient_title" = "Nome utente Habitica non valido";
+"invalid_recipient_message" = "Devi specificare come destinatario un nome utente Habitica valido.";
+"buy_for_x" = "Copra per %@";
+"gems_support_developers" = "Comprando Gemme supporti il nostro piccolo team e aiuti a mantenere attivo Habitica";
+"subscription_support_developers" = "Abbonandoti supporti il nostro piccolo team e aiuti a mantenere attivo Habitica";
+"view_participant_progress" = "Visualizza i progressi dei partecipanti";
+"great" = "Super";
+"defeat" = "Sconfitta";
+"accessibility.viewX" = "Vedi %@";
+"accessibility.unknown" = "Sconosciuta";
+"accessibility.unknown_mount" = "Cavalcatura sconosciuta";
+"accessibility.unknown_pet" = "Animale sconosciuto";
+"accessibility.xofx" = "%d di %d";
+"accessibility.not_completed" = "Non completato";
+"accessibility.score_habit_down" = "Punteggio Abitudine Negativa";
+"accessibility.score_habit_up" = "Punteggio Abitudine Positiva";
+"accessibility.world_boss_pending_damage" = "%@, Boss mondiale, danno in sospeso: %@";
+"force_start" = "Forza l'avvio";
+"decline" = "Declina";
+"world_boss.rage_strike_warning" = "Stai attento...\nIl boss mondiale si scatenerà ed attaccherà una volta riempita la barra della rabbia uno dei nostri negozianti . Resta al passo con le tue Attività Giornaliere per evitare che ciò accada!";
+"world_boss.title" = "%@ attacca!";
+"faint.good_luck" = "Buona fortuna, andrai benissimo.";
+"write_a_message" = "Scrivi un messaggio";
+"locations.time_travelers_shop" = "Negozio dei Viaggiatori Del Tempo";
+"delete_tasks" = "Elimina attività";
+"never_lower_case" = "mai";
+"never" = "Mai";
+"gem_cap" = "%d limite gemme";
+"groups.error_name_required" = "Il nome non può essere vuoto.";
+"login.social_login" = "Entra con %@";
+"login.social_register" = "Registrati con %@";
+"login.authentication_error" = "Si è verificato un errore con l'autenticazione. Riprovare più tardi";
+"login.register_error" = "Si è verificato un problema con la richiesta. Si prega di ricontrollare attentamente tutti i dati.";
+"login.email_invalid" = "Inserisci una email valida.";
+"login.password_confirm_error" = "La password e la conferma della password devono corrispondere e contenere più di 8 caratteri.";
+"about.no_email_message" = "Spiacenti, sembra che tu non abbia ancora impostato la tua e-mail su questo telefono. Configura un account nell'app di posta iOS per utilizzare questa opzione di segnalazione rapida o inviaci un'e-mail direttamente a %@";
+"about.love_open_source" = "Il Web ama il software open source.";
+"about.leave_review" = "Lascia una recensione";
+"about.send_feedback" = "Invia feedback";
+"about.new_version" = "Aggiornamento disponibile: %@";
+"settings.display_name_length_error" = "Il nome visualizzato deve contenere da 1 a 30 caratteri.";
+"username_prompt_disclaimer" = "I nomi utente devono essere conformi ai nostri #<ts>Termini di servizio# e #<cg>Norme della community#. Se non hai impostato un nome di accesso, il tuo nome utente è stato generato automaticamente.";
+"username_prompt_wiki" = "Se vuoi saperne di più su questa modifica, #<wk>visita la nostra wiki.#";
+"username_prompt_body" = "Il nome visualizzato non è cambiato ma il vecchio nome di accesso ora sarà il nome utente utilizzato per inviti, @menzioni chat e messaggistica.";
+"groups.invite.add_username" = "Aggiungi un nome utente";
+"tap_to_show" = "Tocca per vedere";
+"time_travel_backgrounds" = "Sfondi dei Viaggiatori del Tempo";
+"open_app_store" = "Apri la pagina dell'App Store";
+"quests.unlock_invite" = "Sblocca invitando gli amici nella tua squadra";
+"party.remove_from_party" = "Rimuovi dalla Squadra";
+"more_options" = "Altre opzioni";
+"theme.alwaysDark" = "Sempre scuro";
+"theme.alwaysLight" = "Sempre chiaro";
+"theme.dark" = "Scuro";
+"theme.light" = "Chiaro";
+"settings.added_local_auth" = "Email e password aggiunte correttamente";
+"settings.add_email_and_password" = "Aggiungi autenticazione email e password";
+"settings.theme_mode" = "Tipo di Tema";
+"tasks.form.accessibility.attribute" = "L'attributo è %@";
+"adventure_guide_description" = "Completa queste attività iniziali ed otterrai 5 Medaglie e 100 Oro una volta terminate!";
+"five_achievements" = "5 Medaglie";
+"hundred_gold" = "100 Oro";
+"feedPet_title" = "Dai da mangiare ad un Animale";
+"hatch_pet_title" = "Schiudi un Animale";
+"complete_task_title" = "Completa una attività";
+"create_task_title" = "Crea una Attività";
+"gift_subscription" = "Regala un Abbonamento";
+"gift_gems" = "Regala Gemme";
+"user_was_unblocked" = "Hai sbloccato %s.";
+"user_was_blocked" = "Hai bloccato %s.";
+"block_description" = "Un utente bloccato non può inviarti messaggi privati ma vedrai comunque i suoi post nella Taverna o nelle Gilde. Non avrà alcun effetto se la persona è un moderatore o lo sarà in futuro.";
+"block_username" = "Bloccare %@?";
+"unblock_user" = "Sblocca";
+"block_user" = "Blocca";
+"block" = "Blocca";
+"leave_and_delete_x_tasks" = "Lascia e rimuovi le %d attività";
+"leave_and_delete_task" = "Lascia e rimuovi le attività";
+"delete_challenge_task_description" = "Questa è una delle %d attività che fanno parte della sfida \"%s\". Devi abbandonare la sfida per eliminare questa attività.";
+"delete_challenge_task" = "Eliminare le attività della sfida?";
+"delete_x_tasks" = "Elimina %d attività";
+"keep_x_tasks" = "Tieni %d attività";
+"broken_challenge_description" = "Questa è una delle %d attività che fanno parte di una Sfida che non esiste più. Cosa vorresti fare con queste attività orfane?";
+"broken_challenge" = "Sfida mancante";
+"common_questions" = "Domande frequenti";
+"support.bug_fixes_button" = "Ottieni Aiuto";
+"support.bug_fixes_title" = "Bug & Correzioni";
+"support.questions_button" = "Mostra di più";
+"support.questions_description" = "Ti spiegheremo le basi e risponderemo alle domande più comuni per metterti in carreggiata";
+"game_mechanics" = "Meccaniche del gioco";
+"support.suggestions_button" = "Invia Feedback";
+"support.suggestions_description" = "Hai suggerimenti su dei miglioramenti o su un'idea per qualcosa di nuovo? Raccontacelo!";
+"support.suggestions_title" = "Suggerimenti & Feedback";
+"support.bug_fixes_description" = "Qualcosa non va? Controlla qui le risposte o contattaci per ricevere aiuto";
+"support.questions_title" = "Domande su Habitica";
+"backer_tier" = "Livello Sostenitore: %d";
+"menu.support" = "Supporto";
+"titles.basics" = "Nozioni di base";
+"titles.hall_of_patrons" = "Sala dei Sostenitori";
+"titles.hall_of_contributors" = "Sala dei Contributori";
+"titles.hall_of_heroes" = "Sala degli Eroi";
+"update_app_description" = "Siamo costantemente alla ricerca di nuove soluzioni, quindi assicurati di controllare l'App Store per controllare se ci sono aggiornamenti disponibili";
+"update_app_title" = "Aggiorna l'App";
+"manual_sync_description" = "A volte l'app non sincronizza automaticamente i contenuti o si blocca con un comportamento strano. Scrolla per aggiornare o forza la chiusura dell'app e riaprirla per vedere se risolve il problema";
+"manual_sync_title" = "Sincronizzazione manuale e riavvio forzato";
+"clear_cache_description" = "Per fare ciò, apri Menu > Impostazioni e quindi scorri verso il basso per trovare i pulsanti";
+"clear_cache_title" = "Cancella cache e ricarica i contenuti";
+"more_help_button" = "Segnala un problema";
+"more_help_description" = "Inviaci una segnalazione di un bug e ti risponderemo!";
+"more_help_title" = "Hai bisogno di aiuto?";
+"common_fixes" = "Correzioni comuni";
+"known_issues" = "Problemi noti";
+"more_questions_text" = "Pubblica un messaggio nella [gilda d'aiuto di Habitica](https://habitica.com/groups/guild/5481ccf3-5d2d-48a9-a871-70a7380cee5a) per ricevere risposte alle tue domande dagli altri utenti";
+"more_questions_title" = "Hai altre domande?";
+"left_challenge" = "Lascia la Sfida";
+"joined_challenge" = "Partecipato ad una Sfida";
+"hourglasses_description" = "Le Clessidre Mistiche sono una forma di valuta estremamente rara che puoi ricevere solo con un abbonamento a Habitica per tre mesi consecutivi o di più. Vengono utilizzati nel negozio del Viaggiatore del Tempo per acquistare equipaggiamenti, animali, cavalcature, sfondi animati o anche missioni speciali. \n \nPuoi ricevere fino a quattro Clessidre Mistiche all'anno. Ti vengono donate in base alla data del rinnovo dell'abbonamento. Vengono inviate il primo giorno di un nuovo mese dopo l'ultimo pagamento dell'abbonamento che ha diritto ad una clessidra. Vedi la pagina [Abbonamento] per maggiori dettagli.";
+"mystic_hourglasses" = "Clessidre Mistiche";
+"subscriber_currency" = "Valuta dell'Abbonato";
+"gems_description" = "Le Gemme sono una valuta acquistata con denaro reale che ti consente di acquistare contenuti extra all'interno di Habitica e sono una delle principali fonti di supporto finanziario per il team di Habitica oltre che agli abbonamenti. \n \nTutto ciò che si acquista con le Gemme è puramente estetico o può essere ottenuto gratuitamente con il tempo. \n \nPuoi anche ricevere gemme attraverso regali di altri giocatori, premi Sfida, contribuire ad Habitica o iscriverti.";
+"currency" = "Valuta";
+"premium_currency" = "Valuta Premium";
+"stat_description" = "Tutti i personaggi di Habitica hanno quattro statistiche che influenzano gli aspetti del gioco. \n \n**Forza (STR) ** influenza colpi critici e aumenta i danni inflitti al Boss di una Missione. Guerrieri e Ladri ottengono STR dalla loro equipaggiamento di classe. \n \n**Costituzione (CON)** aumenta i tuoi HP e ti fa subire meno danni. Guaritori e Guerrieri ottengono CON dal loro equipaggiamento di classe. \n \n**Intelligenza (INT)** aumenta la quantità di EXP che guadagni e ti dà più Mana. Maghi e Guaritori ottengono INT dal loro equipaggiamento di classe. \n \n**Percezione (PER)** aumenta l'Oro che guadagni e la probabilità di trovare oggetti. I Ladri e i Maghi guadagnano il PER dal loro equipaggiamento di classe. \n \nDopo il livello 10, guadagni 1 Punto Stat per ogni aumento di livello e lo puoi assegnare in qualsiasi Stat tu desideri. Puoi anche indossare equipaggiamento con diverse combinazioni per aumentare le tue statistiche.";
+"stat_allocation" = "Allocazione statistiche";
+"mana_description" = "I punti mana (MP) vengono sbloccati con il sistema di classe al livello 10 e ti consentono di **usare le Abilità** una volta imparate al livello 11. \n \nAlcuni **MP vengono ripristinati** allo scadere di ogni giorno, ma puoi riguadagnarne di più completando le attività o usando un'abilità della classe Mago.";
+"gold_description" = "L'Oro è la **principale forma di valuta** all'interno di Habitica e ti consente di acquistare determinati equipaggiamenti, missioni, oggetti o persino premi personalizzati che puoi crearti da solo. \n \n**Guadagna Oro** completando attività, missioni o attraverso alcune abilità di classe. Le **statistiche di percezione** aumentano la quantità di oro che guadagni. \n \nSe ti abboni ad Habitica, puoi persino usare l'Oro per acquistare un numero di Gemme in base al periodo di abbonamento.";
+"experience_description" = "I punti esperienza (EXP) rappresentano i tuoi progressi e ti consentono di salire di livello. Principalmente ** otterrai EXP ** completando compiti o missioni, ma ci sono anche alcune abilità di classe che danno EXP. \n \nAttività più difficili o attività di colore rosso ti daranno ** più EXP**. La **statistica dell'Intelligenza** aumenta anche la quantita di EXP guadagnata.";
+"experience_points" = "Punti esperienza";
+"health_description" = "Rappresentano la vita del tuo avatar. Una Attività giornaliera non completata o un'abitudine negativa ** riducono i tuoi HP **. \n \n** Riacquista HP ** aumentando di livello, usando una Pozione di salute o un'abilità di classe con abilità curativa. \n \nSe il tuo ** HP raggiunge lo 0 ** perderai un livello, tutto l'oro e un pezzo di equipaggiamento. Le attrezzature perse possono essere riacquistate.";
+"health_points" = "Punti salute";
+"leave_and_delete_tasks" = "Lascia e rimuovi le attività";
+"leave_and_keep_tasks" = "Lascia e mantieni attività";
+"fall_promo.info_prompt" = "Il Gala Autunnale è in pieno svolgimento, quindi abbiamo pensato che fosse il momento perfetto per presentare la nostra prima vendita di Gemme in assoluto! Ora otterrai più gemme ogni acquisto più che mai.";
+"x_to_y" = "%@ a %@";
+"gems_promo.info_limitations" = "Questa promozione si applica solo durante l'evento a tempo limitato. Questo evento inizia il %s alle 14:00 ora italiana (12:00 UTC) e terminerà il %s alle 2:00 di mattina ora italiana (00:00 UTC). L'offerta promozionale è disponibile solo se acquisti Gemme per te stesso.";
+"spooky_promo.info_instructions" = "Tra il %s e il %s, acquista semplicemente un pacchetto di gemme e sul tuo account verrà accreditato l'importo promozionale di gemme. Più gemme da spendere, condividere o risparmiare per eventuali oggetti futuri!";
+"spooky_promo.info_prompt" = "La vendita di Gemme è tornata per infestare la fine del Gala Autunnale di quest'anno! Questa è l'ultima possibilità per ottenere più gemme che mai, quindi fanne scorta finché dura!";
+"fall_promo.info_instructions" = "Tra il %s e il %s, acquista semplicemente un pacchetto di gemme e sul tuo account verrà accreditato l'importo promozionale di gemme. Più gemme da spendere, condividere o risparmiare per eventuali oggetti futuri!";
+"promo_info_limitations_title" = "Limitazioni";
+"promo_info_instructions_title" = "Come funziona";
+"view_gem_bundles" = "Visualizza pacchetti di gemme";
+"usually_x_gems" = "Solitamente %d Gemme";
+"limited_event" = "Evento limitato";
+"hatch" = "Schiudi";
+"magic_potion" = "Pozione Magica";
+"magic_potions" = "Pozioni magiche";
+"hatch_pet_again" = "Schiudi di nuovo un animale";
+"unhatched_pet" = "Animali non schiusi";
+"hatch_pet" = "Schiudi un Animale";
+"can_hatch_pet" = "Combina il tuo uovo %@ e la tua pozione %@ per schiudere questo animale!";
+"suggest_pet_hatch_again_missing_both" = "Hai ancora bisogno di %@ ed una pozione %@ per poter schiudere di nuovo questo animale";
+"suggest_pet_hatch_again_missing_potion" = "Hai ancora bisogno di una pozione %@ per poter schiudere di nuovo questo animale";
+"suggest_pet_hatch_again_missing_egg" = "Hai ancora bisogno di un uovo %@ per poter schiudere di nuovo questo animale";
+"suggest_pet_hatch_missing_both" = "Hai bisogno di %@ e una pozione %@ per poter schiudere questo animale";
+"suggest_pet_hatch_missing_potion" = "Hai bisogno di una pozione %@ per poter schiudere questo animale";
+"suggest_pet_hatch_missing_egg" = "Hai bisogno di un uovo %@ per poter schiudere questo animale";
+"use_immediately_disclaimer" = "Avrà effetto immediatamente dopo l'acquisto!";
+"unlocks_selecting_class_prompt" = "Ora che hai raggiunto il livello 10 puoi scegliere una classe!";
+"unlocks_selecting_class_description" = "Le abilità vengono sbloccate una volta raggiunto il livello 10 e dopo aver selezionato una classe";
+"class_system_enable_instructions" = "Puoi abilitare il sistema di classi dalle impostazioni dell'app.";
+"class_system_disabled" = "Sistema di classi disabilitato.";
+"could_not_gift_gems" = "Impossibile regalare gemme. Per favore riprova più tardi.";
+"end_challenge_description" = "Per terminare una Sfida accedi al sito di Habitica e clicca su \"Fine Sfida\" nella schermata delle Sfide.";
+"create_guild_description" = "Per creare una gilda accedi al sito di Habitica e clicca sul pulsante \"Crea\" nella schermata \"Le mie gilde\".";
+"create_guild" = "Crea una gilda";
+"pet_accessibility_label_mount_owned" = "%@, cavalcatura posseduta";
+"pet_accessibility_label_raised" = "%@, Aumentato di %d%%";
+"gift_confirmation_body_g1_g1" = "Hai inviato a %@ un abbonamento Habitica per %@ mesi e lo stesso abbonamento è stato aggiunto al tuo account per la nostra promozione Regalane uno Ricevine Uno!";
+"gift_one_get_one_data.purchase_banner_title" = "Regala un abbonamento e ne riceverai uno gratis fino a %@";
+"gift_one_get_one_data.info_limitations" = "Questo è un evento a tempo limitato che inizia il %@ alle 14:00 ora italiana (13:00 UTC) e terminerà il %@ alle 2:00 ora italiana (1:00 UTC). Questa promozione si applica solo quando fai un regalo a un altro Habitante. Se tu o il destinatario del regalo avete già un abbonamento, l'abbonamento in regalo aggiungerà mesi di credito che verranno utilizzati solo dopo l'annullamento o la scadenza dell'abbonamento corrente.";
+"gift_one_get_one_data.info_instructions" = "Tocca \"Regala un abbonamento\" e digita il nome utente dell'account a cui lo desideri regalare. Da lì, scegli la durata che desideri regalare e prosegui. Il tuo account verrà automaticamente ricompensato con lo stesso livello di abbonamento che hai appena regalato.";
+"gift_one_get_one_data.infoPrompt" = "In onore della stagione dei regali, stiamo riproponendo una promozione molto speciale. Ora, quando regali a qualcuno un abbonamento ne riceverai uno identico anche tu gratuitamente!";
+"gift_one_get_one_event" = "Evento Regalane uno, Ricevine Uno";
+"create_challenge_description" = "Per creare una Sfida accedi al sito di Habitica e clicca su \"Crea\" nella schermata delle Sfide.";
+"create_challenge" = "Crea Sfida";
+"achievements.challenges" = "Sfide vinte";
+"settings.launch_screen" = "Schermata iniziale";
+"menu.skills" = "Abilità";
+"x_items_found" = "%d oggetti trovati";
+"week_reminder_body" = "Una pausa fa bene, ma puoi comunque guadagnare punti su attività semplici per salire di livello e ottenere equipaggamenti fortissimi!";
+"week_reminder_title" = "Come sta andando con le tue attività?";
+"daily_tip_9" = "Se stai vivendo un momento difficile, prova a dividere le tue attività in parti più piccole.";
+"daily_tip_8" = "Puoi regolare la difficoltà di un'attività per ricompensarti dopo un'attività impegnativa!";
+"daily_tip_7" = "Prova ad appuntare articoli del Mercato alle tue Ricompense per motivarti a guadagnarle!";
+"daily_tip_6" = "Prova ad impostare un timer per dieci minuti e a vedere quanto riesci a fare!";
+"daily_tip_5" = "Fai dei respiri profondi per concentrarti meglio. Puoi farcela!";
+"daily_tip_4" = "Rivalutare occasionalmente le tue attività può aiutarti a mantenere la giusta strada.";
+"daily_tip_3" = "Puoi impostare dei promemoria specifici anche per le Attività Giornaliere.";
+"daily_tip_2" = "Puoi regolare la frequenza di ripetizione di ogni Attività Giornaliera. Perfino la data delle attività infrequenti può essere programmata.";
+"daily_tip_1" = "Aggiungi delle checklist alle tue Cose da Fare perché le tue ricompense si moltiplichino!";
+"daily_tip_0" = "Vuoi provare qualcosa di nuovo? Unisciti ad una Sfida per espandere la tua lista delle attività e vincere qualche Gemma!";
+"get_started" = "Iniziamo";
+"quests.confirm_leave_nostart" = "Sei sicuro di voler lasciare la missione? Non potrai partecipare.";
+"quests.confirm_leave" = "Vuoi davvero abbandonare la missione attiva? Tutti i tuoi progressi nella missione andranno persi.";
+"seasonal_potions_available" = "Oggetti stagionali disponibili";
+"new" = "Nuovo";
+"is_open" = "Aperto";
+"inventory.available_for" = "Disponibile per %@";
+"pending_items" = "Oggetti in sospeso";
+"tasks.form.completions" = "Completamenti";
+"tasks.form.negative" = "Negativa";
+"tasks.form.positive" = "Positiva";
+"tasks.form.adjust_streak" = "Sistema la serie";
+"quests.unlock_incentive" = "Sblocca facendo accedendo %d volte";
+"inventory.no_longer_available" = "Non più disponibile";
+"inventory.hatched_sharing" = "Ho appena ottenuto un %@ %@ in Habitica completando i miei obbiettivi nella vita reale!";
+"update" = "Aggiorna";
+"tasks.edit_details" = "Modifica dettagli";
+"created_at" = "Creato il";
+"total_completions" = "Compimenti totali";
+"streak" = "Serie";
+"open_for" = "Apri per %@";
+"survey.button" = "Vai al sondaggio";
+"survey.description" = "Compila questo sondaggio di 5 minuti per aiutarci a crescere e riceverai una medaglia!";
+"survey.title" = "Indagine sui giocatori di Habitica";
+"beginner_objectives" = "Obiettivi per principianti";
+"quests.unlock_incentive_short" = "%d accessi";
+"skills.caused_damage" = "Hai provocato dei danni al boss";
+"year" = "anno";
+"month" = "mese";
+"week" = "settimana";
+"day" = "giorno";
+"report" = "Segnala";
+"checkin_prize_earned" = "Hai ottenuto un %s come ricomenza per la tua devozione a migliorare la tua vita.";
+"tasks.form.last_scored" = "Completata l'ultima volta";
+"tasks.form.times_scored" = "Volte completata";
+"tasks.form.completion" = "Completamento";
+"tasks.tasks" = "Attività";
+"tasks.form.reset_counter" = "Azzera contatore";
+"tasks.form.adjust_counter" = "Regola contatore";
+"see_you_tomorrow" = "Ci vediamo domani";
+"tasks.form.none" = "Nessuna";
+"next_prize_in_x_checkins" = "Prossimo premio tra %d accessi";

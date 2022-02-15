@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 
-class RealmItem: Object, ItemProtocol {
+class RealmItem: BaseModel, ItemProtocol {
     @objc dynamic var key: String?
     @objc dynamic var text: String?
     @objc dynamic var notes: String?
@@ -23,11 +23,7 @@ class RealmItem: Object, ItemProtocol {
     override static func primaryKey() -> String {
         return "key"
     }
-    
-    var isValid: Bool {
-        return !isInvalidated
-    }
-    
+
     convenience init(item: ItemProtocol) {
         self.init()
         key = item.key

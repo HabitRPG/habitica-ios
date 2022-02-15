@@ -9,7 +9,6 @@
 import UIKit
 import SwiftyStoreKit
 import StoreKit
-import Keys
 import ReactiveSwift
 import Habitica_Models
 import PinLayout
@@ -24,13 +23,14 @@ class SubscriptionViewController: BaseTableViewController {
     private let userRepository = UserRepository()
     private let inventoryRepository = InventoryRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     
     @IBOutlet weak var giftSubscriptionExplanationLabel: UILabel!
     @IBOutlet weak var giftSubscriptionButton: UIButton!
     @IBOutlet weak var subscriptionSupportLabel: UILabel!
     @IBOutlet weak var headerImage: UIImageView!
     @IBOutlet weak var promoBannerView: PromoBannerView!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     private var activePromo: HabiticaPromotion?
 
@@ -49,11 +49,12 @@ class SubscriptionViewController: BaseTableViewController {
                 }
             }
             hasTerminationDate = user?.purchased?.subscriptionPlan?.dateTerminated != nil
+            tableView.reloadData()
         }
     }
     var mysteryGear: GearProtocol?
     let appleValidator: AppleReceiptValidator
-    let itunesSharedSecret = HabiticaKeys().itunesSharedSecret
+    let itunesSharedSecret = Secrets.itunesSharedSecret
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         #if DEBUG
@@ -79,6 +80,7 @@ class SubscriptionViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        doneButton.title = L10n.done
         
         activePromo = configRepository.activePromotion()
         
@@ -194,6 +196,8 @@ class SubscriptionViewController: BaseTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         if isSubscribed && hasTerminationDate {
             return 4
+        } else if isSubscribed && !hasTerminationDate {
+            return 2
         } else {
             return 3
         }
@@ -213,7 +217,7 @@ class SubscriptionViewController: BaseTableViewController {
         } else if isDetailSection(section) {
             return 1
         } else {
-            if (isSubscribed && !hasTerminationDate) || (isSubscribed && hasTerminationDate && !showSubscribeOptions) || self.products == nil || self.products?.isEmpty == true {
+            if (isSubscribed && !hasTerminationDate) || (isSubscribed && hasTerminationDate && !showSubscribeOptions) || products?.isEmpty != false {
                 return 0
             } else {
                 return 1
@@ -453,24 +457,12 @@ class SubscriptionViewController: BaseTableViewController {
     private var giftRecipientUsername = ""
     
     @IBAction func giftSubscriptionButtonTapped(_ sender: Any) {
-        let alertController = HabiticaAlertController(title: L10n.giftRecipientTitle, message: L10n.giftRecipientSubtitle)
-        let textField = UITextField()
-        textField.autocorrectionType = .no
-        textField.autocapitalizationType = .none
-        textField.borderColor = UIColor.gray300
-        textField.borderWidth = 1
-        textField.tintColor = ThemeService.shared.theme.tintColor
-        alertController.contentView = textField
-        alertController.addAction(title: L10n.continue, style: .default, isMainAction: true, closeOnTap: true, handler: { _ in
-            if let username = textField.text, username.isEmpty == false {
-                self.giftRecipientUsername = username
-                self.perform(segue: StoryboardSegue.Main.openGiftSubscriptionDialog)
-            }
-        })
-        alertController.addCancelAction()
-        alertController.containerViewSpacing = 8
-        alertController.show()
-        textField.becomeFirstResponder()
+        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
+            self.giftRecipientUsername = username
+            self.perform(segue: StoryboardSegue.Main.openGiftSubscriptionDialog)
+        }, saveButtonTitle: L10n.continue)
+        present(navController, animated: true, completion: nil)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -14,7 +14,7 @@ import Habitica_Models
 import ColorPickerRow
 
 enum SettingsTags {
-    static let authentication = "authentication"
+    static let myAccount = "myAccount"
     static let dailyReminder = "dailyReminder"
     static let dailyReminderTime = "dailyReminderTime"
     static let displayNotificationsBadge = "displayNotificationsBadge"
@@ -35,341 +35,6 @@ enum SettingsTags {
     static let appLanguage = "appLanguage"
     static let initialAppScreen = "initialAppScreen"
     static let initialTaskBoard = "initialTaskBoard"
-}
-
-enum Servers: String {
-    case production
-    case staging
-    case beta
-    case gamma
-    case delta
-    
-    var niceName: String {
-        switch self {
-        case .production:
-            return "Production"
-        case .staging:
-            return "Staging"
-        case .beta:
-            return "Beta"
-        case.gamma:
-            return "Gamma"
-        case.delta:
-            return "Delta"
-        }
-    }
-    
-    static var allServers: [Servers] {
-        return [
-            .production,
-            .staging,
-            .beta,
-            .gamma,
-            .delta
-        ]
-    }
-}
-
-enum InitialScreens: String {
-    case habits = "/user/tasks/habit"
-    case dailies = "/user/tasks/daily"
-    case todos = "/user/tasks/todo"
-    case rewards = "/user/tasks/reward"
-    case menu = "/menu"
-    case party = "/party"
-    
-    var niceName: String {
-        switch self {
-        case .habits:
-            return L10n.Tasks.habits
-        case .dailies:
-            return L10n.Tasks.dailies
-        case .todos:
-            return L10n.Tasks.todos
-        case .rewards:
-            return L10n.Tasks.rewards
-        case .menu:
-            return L10n.menu
-        case .party:
-            return L10n.Titles.party
-        }
-    }
-    
-    static var allScreens: [InitialScreens] {
-        return [
-            .habits,
-            .dailies,
-            .todos,
-            .rewards,
-            .menu,
-            .party
-        ]
-    }
-}
-
-
-enum ThemeName: String {
-    case defaultTheme
-    case blue
-    case teal
-    case green
-    case yellow
-    case orange
-    case red
-    case maroon
-    case gray
-    case custom
-    
-    var customColor: UIColor {
-        let defaults = UserDefaults.standard
-        if let hexcode = defaults.string(forKey: "customColor") {
-            return UIColor(hexcode)
-        }
-        return .purple200
-    }
-    
-    var themeClass: Theme {
-        if ThemeService.shared.isDarkTheme == true {
-            switch self {
-            case .defaultTheme:
-                return DefaultDarkTheme()
-            case .blue:
-                return BlueDarkTheme()
-            case .teal:
-                return TealDarkTheme()
-            case .green:
-                return GreenDarkTheme()
-            case .yellow:
-                return YellowDarkTheme()
-            case .orange:
-                return OrangeDarkTheme()
-            case .red:
-                return RedDarkTheme()
-            case .maroon:
-                return MaroonDarkTheme()
-            case .gray:
-                return GrayDarkTheme()
-            case .custom:
-                return CustomDarkTheme(baseColor: customColor)
-            }
-        } else {
-            switch self {
-            case .defaultTheme:
-                return DefaultTheme()
-            case .blue:
-                return BlueTheme()
-            case .teal:
-                return TealTheme()
-            case .green:
-                return GreenTheme()
-            case .yellow:
-                return YellowTheme()
-            case .orange:
-                return OrangeTheme()
-            case .red:
-                return RedTheme()
-            case .maroon:
-                return MaroonTheme()
-            case .gray:
-                return GrayTheme()
-            case .custom:
-                return CustomTheme(baseColor: customColor)
-            }
-        }
-    }
-    
-    var niceName: String {
-        switch self {
-        case .defaultTheme:
-            return "Royal Purple (Default)"
-        case .blue:
-            return "Blue Task Group"
-        case .teal:
-            return "The real Teal"
-        case .green:
-            return "Against the Green"
-        case .yellow:
-            return "Yellow Subtask"
-        case .orange:
-            return "Orange you glad"
-        case .red:
-            return "Red Task Redemption"
-        case .maroon:
-            return "Maroon"
-        case .gray:
-            return "Plain Gray"
-        case .custom:
-            return "Custom Theme"
-        }
-    }
-    
-    static var allNames: [ThemeName] {
-        return [
-            .defaultTheme,
-            .blue,
-            .teal,
-            .green,
-            .yellow,
-            .orange,
-            .red,
-            .maroon,
-            .gray,
-        ]
-    }
-}
-
-enum ThemeMode: String {
-    case light
-    case dark
-    case system
-    
-    var niceName: String {
-        switch self {
-        case .light:
-            return L10n.Theme.alwaysLight
-        case .dark:
-            return L10n.Theme.alwaysDark
-        case .system:
-            return L10n.Theme.followSystem
-        }
-    }
-    
-    static var allModes: [ThemeMode] {
-        return [.system, .light, .dark]
-    }
-}
-
-enum AppIconName: String {
-    case defaultTheme = "Purple (Default)"
-    case purpleAlt = "Purple Alternative"
-    case maroon = "Maroon"
-    case red = "Red"
-    case orange = "Orange"
-    case yellow = "Yellow"
-    case blue = "Blue"
-    case green = "Green"
-    case teal = "Teal"
-    case black = "Black"
-    case maroonAlt = "Maroon Alternative"
-    case redAlt = "Red Alternative"
-    case orangeAlt = "Orange Alternative"
-    case yellowAlt = "Yellow Alternative"
-    case blueAlt = "Blue Alternative"
-    case greenAlt = "Green Alternative"
-    case tealAlt = "Teal Alternative"
-    case blackAlt = "Black Alternative"
-    case purpleAltBlack = "Purple Alternative Black"
-    case maroonAltBlack = "Maroon Alternative Black"
-    case redAltBlack = "Red Alternative Black"
-    case orangeAltBlack = "Orange Alternative Black"
-    case yellowAltBlack = "Yellow Alternative Black"
-    case blueAltBlack = "Blue Alternative Black"
-    case greenAltBlack = "Green Alternative Black"
-    case tealAltBlack = "Teal Alternative Black"
-    case blackAltBlack = "Black Alternative Black"
-    case prideHabitica = "Pride"
-    case prideHabiticaAlt = "Pride Alternative"
-    case prideHabiticaAltBlack = "Pride Alternative Black"
-
-    var fileName: String? {
-        switch self {
-        case .defaultTheme:
-            return nil
-        case.purpleAlt:
-            return "PurpleAlt"
-        case .prideHabitica:
-            return "PrideHabitica"
-        case .prideHabiticaAlt:
-            return "PrideHabiticaAlt"
-        case .prideHabiticaAltBlack:
-            return "PrideHabiticaAltBlack"
-        case .maroon:
-            return "Maroon"
-        case .red:
-            return "Red"
-        case .orange:
-            return "Orange"
-        case .yellow:
-            return "Yellow"
-        case .blue:
-            return "Blue"
-        case .teal:
-            return "Teal"
-        case .green:
-            return "Green"
-        case .black:
-            return "Black"
-        case .maroonAlt:
-            return "MaroonAlt"
-        case .redAlt:
-            return "RedAlt"
-        case .orangeAlt:
-            return "OrangeAlt"
-        case .yellowAlt:
-            return "YellowAlt"
-        case .blueAlt:
-            return "BlueAlt"
-        case .tealAlt:
-            return "TealAlt"
-        case .greenAlt:
-            return "GreenAlt"
-        case .blackAlt:
-            return "BlackAlt"
-        case.purpleAltBlack:
-            return "PurpleAltBlack"
-        case .maroonAltBlack:
-            return "MaroonAltBlack"
-        case .redAltBlack:
-            return "RedAltBlack"
-        case .orangeAltBlack:
-            return "OrangeAltBlack"
-        case .yellowAltBlack:
-            return "YellowAltBlack"
-        case .blueAltBlack:
-            return "BlueAltBlack"
-        case .tealAltBlack:
-            return "TealAltBlack"
-        case .greenAltBlack:
-            return "GreenAltBlack"
-        case .blackAltBlack:
-            return "BlackAltBlack"
-        }
-    }
-    
-    static var allNames: [AppIconName] {
-        return [
-            .defaultTheme,
-            .purpleAlt,
-            .purpleAltBlack,
-            .maroon,
-            .maroonAlt,
-            .maroonAltBlack,
-            .red,
-            .redAlt,
-            .redAltBlack,
-            .orange,
-            .orangeAlt,
-            .orangeAltBlack,
-            .yellow,
-            .yellowAlt,
-            .yellowAltBlack,
-            .blue,
-            .blueAlt,
-            .blueAltBlack,
-            .teal,
-            .tealAlt,
-            .tealAltBlack,
-            .green,
-            .greenAlt,
-            .greenAltBlack,
-            .black,
-            .blackAlt,
-            .blackAltBlack,
-            .prideHabitica,
-            .prideHabiticaAlt,
-            .prideHabiticaAltBlack
-        ]
-    }
 }
 
 private let pushNotificationsMapping = [
@@ -407,7 +72,8 @@ class SettingsViewController: FormViewController, Themeable {
     private let userRepository = UserRepository()
     private let contentRepository = ContentRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     private var user: UserProtocol?
     private var isSettingUserData = false
@@ -418,6 +84,7 @@ class SettingsViewController: FormViewController, Themeable {
         tableView.cellLayoutMarginsFollowReadableWidth = false
         super.viewDidLoad()
         navigationItem.title = L10n.Titles.settings
+        doneButton.title = L10n.done
         setupForm()
         loadSettingsFromUserDefaults()
         
@@ -426,18 +93,33 @@ class SettingsViewController: FormViewController, Themeable {
             self?.setUser(user)
         }).start())
         
+        LabelRow.defaultCellUpdate = { cell, _ in
+            cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+            cell.detailTextLabel?.textColor = ThemeService.shared.theme.ternaryTextColor
+            cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        }
         ButtonRow.defaultCellUpdate = { cell, _ in
+            cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
             cell.tintColor = ThemeService.shared.theme.tintColor
+            cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         }
         TimeRow.defaultCellUpdate = { cell, _ in
             cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+            cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
+            cell.tintColor = ThemeService.shared.theme.tintColor
+            cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        }
+        SwitchRow.defaultCellUpdate = { cell, _ in
+            cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+            cell.tintColor = ThemeService.shared.theme.tintColor
+            cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         }
         
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
     }
     
     func applyTheme(theme: Theme) {
-        tableView.backgroundColor = theme.windowBackgroundColor
+        tableView.backgroundColor = theme.contentBackgroundColor
         tableView.reloadData()
     }
     
@@ -462,13 +144,19 @@ class SettingsViewController: FormViewController, Themeable {
                 }.onCellSelection({[weak self] (_, _) in
                     let progressView = MRProgressOverlayView.showOverlayAdded(to: self?.view, animated: true)
                     progressView?.tintColor = ThemeService.shared.theme.tintColor
-                    self?.contentRepository.retrieveContent(force: true).observeCompleted {
+                    self?.contentRepository.retrieveContent(force: true)
+                        .flatMap(.latest, { _ in
+                            return self?.contentRepository.retrieveWorldState() ?? Signal.empty
+                        })
+                        .observeCompleted {
                         progressView?.dismiss(true)
                     }
                 })
             <<< AlertRow<LabeledFormValue<String>>(SettingsTags.server) { row in
                 row.title = L10n.Settings.server
+                #if !targetEnvironment(simulator)
                 row.hidden = true
+                #endif
                 row.options = Servers.allServers.map({ (server) -> LabeledFormValue<String> in
                     return LabeledFormValue(value: server.rawValue, label: server.niceName)
                 })
@@ -478,6 +166,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.cellUpdate({ (cell, _) in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.textLabel?.textAlignment = .natural
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 })
                 row.onChange({ (row) in
                     UserDefaults().set(row.value?.value, forKey: "chosenServer")
@@ -489,21 +178,11 @@ class SettingsViewController: FormViewController, Themeable {
     
     private func setupUserSection() {
         form +++ Section(L10n.Settings.user)
-            <<< ButtonRow { row in
-                row.title = L10n.Settings.profile
-                row.presentationMode = .segueName(segueName: StoryboardSegue.Settings.profileSegue.rawValue, onDismiss: nil)
-                row.cellUpdate({ (cell, _) in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.textLabel?.textAlignment = .natural
-                    cell.accessoryType = .disclosureIndicator
-                })
-            }
-            <<< ButtonRow(SettingsTags.authentication) { row in
-                row.title = L10n.Settings.authentication
-                row.presentationMode = .segueName(segueName: StoryboardSegue.Settings.authenticationSegue.rawValue, onDismiss: nil)
+            <<< ButtonRow(SettingsTags.myAccount) { row in
+                row.title = L10n.Settings.myAccount
+                row.presentationMode = .segueName(segueName: StoryboardSegue.Settings.accountSegue.rawValue, onDismiss: nil)
                 row.cellStyle = UITableViewCell.CellStyle.subtitle
                 row.cellUpdate({[weak self] (cell, _) in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.textLabel?.textAlignment = .natural
                     cell.accessoryType = .disclosureIndicator
                     if self?.user?.isValid == true && self?.user?.flags?.verifiedUsername == false {
@@ -514,36 +193,19 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
             }
-            <<< ButtonRow { row in
-                row.title = L10n.Settings.api
-                row.presentationMode = .segueName(segueName: StoryboardSegue.Settings.apiSegue.rawValue, onDismiss: nil)
-                row.cellUpdate({ (cell, _) in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.textLabel?.textAlignment = .natural
-                    cell.accessoryType = .disclosureIndicator
-                })
-            }
-            <<< ButtonRow { row in
-                row.title = L10n.Settings.fixCharacterValues
-                row.presentationMode = .segueName(segueName: StoryboardSegue.Settings.fixValuesSegue.rawValue, onDismiss: nil)
-                row.cellUpdate({ (cell, _) in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.textLabel?.textAlignment = .natural
-                    cell.accessoryType = .disclosureIndicator
-                })
-            }
             <<< ButtonRow(SettingsTags.changeClass) { row in
                 row.title = L10n.Settings.changeClass
                 row.cellUpdate({ (cell, _) in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.textLabel?.textAlignment = .justified
+                    cell.accessoryType = .disclosureIndicator
                 }).onCellSelection({[weak self] (_, _) in
                     self?.classSelectionButtonTapped()
                 })
             }
             <<< ButtonRow { row in
                 row.title = L10n.Settings.logOut
-                row.cellSetup({ (cell, _) in
-                    cell.tintColor = UIColor.red50
+                row.cellUpdate({ (cell, _) in
+                    cell.textLabel?.textColor = UIColor.red50
                 }).onCellSelection({ (_, _) in
                     self.userRepository.logoutAccount()
                     self.contentRepository.retrieveContent(force: true).observeCompleted {}
@@ -557,10 +219,6 @@ class SettingsViewController: FormViewController, Themeable {
         form +++ Section(L10n.Settings.reminder)
             <<< SwitchRow(SettingsTags.dailyReminder) { row in
                 row.title = L10n.Settings.dailyReminder
-                row.cellUpdate { cell, _ in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                }
                 }.onChange({[weak self] (row) in
                     if self?.isSettingUserData == true {
                         return
@@ -576,10 +234,6 @@ class SettingsViewController: FormViewController, Themeable {
                 row.hidden = Condition.function([SettingsTags.dailyReminder], { (form) -> Bool in
                     return (form.rowBy(tag: SettingsTags.dailyReminder) as? SwitchRow)?.value == false
                 })
-                row.cellUpdate { cell, _ in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                }
                 }.onChange({[weak self] (row) in
                     if self?.isSettingUserData == true {
                         return
@@ -593,10 +247,6 @@ class SettingsViewController: FormViewController, Themeable {
             +++ Section(L10n.Settings.notificationBadge)
             <<< SwitchRow(SettingsTags.displayNotificationsBadge) { row in
                 row.title = L10n.Settings.displayNotificationBadge
-                row.cellUpdate { cell, _ in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                }
                 }.onChange({[weak self] (row) in
                 if self?.isSettingUserData == true {
                     return
@@ -607,10 +257,6 @@ class SettingsViewController: FormViewController, Themeable {
             +++ Section(L10n.Settings.dayStart)
             <<< TimeRow(SettingsTags.customDayStart) { row in
                 row.title = L10n.Settings.customDayStart
-                row.cellUpdate { cell, _ in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                }
                 }.onCellHighlightChanged({[weak self] (_, row) in
                 if self?.isSettingUserData == true {
                     return
@@ -631,7 +277,9 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.searchableUsername
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.options = [LabeledFormValue(value: true, label: L10n.Settings.searchableEverywhere),
                                LabeledFormValue(value: false, label: L10n.Settings.searchablePrivateSpaces)
@@ -649,10 +297,6 @@ class SettingsViewController: FormViewController, Themeable {
             +++ Section(L10n.Settings.social)
             <<< SwitchRow(SettingsTags.disableAllNotifications) { row in
                 row.title = L10n.Settings.disableAllNotifications
-                row.cellUpdate { cell, _ in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                }
                 row.onChange({[weak self] (row) in
                 if self?.isSettingUserData == true {
                     return
@@ -686,7 +330,9 @@ class SettingsViewController: FormViewController, Themeable {
                 })
                 row.cellUpdate { (cell, _) in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.onPresent({ (_, to) in
                     to.selectableRowCellUpdate = { cell, _ in
@@ -704,10 +350,6 @@ class SettingsViewController: FormViewController, Themeable {
             }
             <<< SwitchRow(SettingsTags.disableAllEmails) { row in
                 row.title = L10n.Settings.disableAllEmails
-                row.cellUpdate { cell, _ in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                }
                 row.onChange({[weak self] (row) in
                     if self?.isSettingUserData == true {
                         return
@@ -737,7 +379,9 @@ class SettingsViewController: FormViewController, Themeable {
                 })
                 row.cellUpdate { (cell, _) in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.onPresent({ (_, to) in
                     to.selectableRowCellUpdate = { cell, _ in
@@ -755,10 +399,6 @@ class SettingsViewController: FormViewController, Themeable {
             }
             <<< SwitchRow(SettingsTags.disablePrivateMessages) { row in
                 row.title = L10n.Settings.disablePm
-                row.cellUpdate { cell, _ in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                }
                 row.onChange({[weak self] (row) in
                     if row.value == self?.user?.inbox?.optOut {
                         return
@@ -776,7 +416,9 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.language
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.options = AppLanguage.allLanguages().map({ language -> LabeledFormValue<Int> in
                     return LabeledFormValue(value: language.rawValue, label: language.name)
@@ -801,7 +443,9 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.launchScreen
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.options = InitialScreens.allScreens.map({ screen -> LabeledFormValue<String> in
                     return LabeledFormValue(value: screen.rawValue, label: screen.niceName)
@@ -822,7 +466,9 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.soundTheme
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.options = SoundTheme.allThemes.map({ (theme) -> LabeledFormValue<String> in
                     return LabeledFormValue(value: theme.rawValue, label: theme.niceName)
@@ -848,7 +494,9 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.themeColor
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.options = ThemeName.allNames.map({ (theme) -> LabeledFormValue<String> in
                     return LabeledFormValue(value: theme.rawValue, label: theme.niceName)
@@ -881,7 +529,9 @@ class SettingsViewController: FormViewController, Themeable {
                 row.value = UIColor(defaults.string(forKey: "customColor") ?? UIColor.purple200.hexString())
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.hidden = Condition.function([SettingsTags.themeColor], { (form) -> Bool in
                     return (form.rowBy(tag: SettingsTags.themeColor) as? PushRow<LabeledFormValue<String>>)?.value?.value != "custom"
@@ -904,7 +554,9 @@ class SettingsViewController: FormViewController, Themeable {
             row.title = L10n.Settings.themeMode
             row.cellUpdate { cell, _ in
                 cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                 cell.tintColor = ThemeService.shared.theme.tintColor
+                cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
             }
             row.options = ThemeMode.allModes.map({ (theme) -> LabeledFormValue<String> in
                 return LabeledFormValue(value: theme.rawValue, label: theme.niceName)
@@ -936,7 +588,9 @@ class SettingsViewController: FormViewController, Themeable {
             row.title = L10n.Settings.appIcon
             row.cellUpdate { cell, _ in
                 cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
                 cell.tintColor = ThemeService.shared.theme.tintColor
+                cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
             }
             row.options = AppIconName.allNames.map({ (name) -> String in
                 return name.rawValue
@@ -1017,11 +671,6 @@ class SettingsViewController: FormViewController, Themeable {
             (form.rowBy(tag: SettingsTags.soundTheme) as? PushRow<LabeledFormValue<String>>)?.value = LabeledFormValue(value: theme.rawValue, label: theme.niceName)
         }
         
-        let authenticationRow = form.rowBy(tag: SettingsTags.authentication)
-        tableView.beginUpdates()
-        authenticationRow?.updateCell()
-        tableView.endUpdates()
-        
         if let classRow = form.rowBy(tag: SettingsTags.changeClass) as? ButtonRow {
             if (user.stats?.level ?? 0) < 10 {
                 classRow.hidden = true
@@ -1039,6 +688,7 @@ class SettingsViewController: FormViewController, Themeable {
             classRow.evaluateHidden()
         }
         
+        #if !targetEnvironment(simulator)
         if user.contributor?.admin == true {
             let serverRow = (form.rowBy(tag: SettingsTags.server) as? AlertRow<LabeledFormValue<String>>)
             serverRow?.hidden = false
@@ -1048,6 +698,7 @@ class SettingsViewController: FormViewController, Themeable {
             themeRow?.updateCell()
             serverRow?.evaluateHidden()
         }
+        #endif
         isSettingUserData = false
     }
     

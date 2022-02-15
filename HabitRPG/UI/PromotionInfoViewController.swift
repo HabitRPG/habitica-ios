@@ -10,7 +10,7 @@ import Foundation
 
 class PromotionInfoViewController: BaseUIViewController {
     
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     
     var promotion: HabiticaPromotion?
     
@@ -22,6 +22,7 @@ class PromotionInfoViewController: BaseUIViewController {
     @IBOutlet private weak var instructionsDescriptionLabel: UILabel!
     @IBOutlet private weak var limitationsTitleLabel: UILabel!
     @IBOutlet private weak var limitationsDescriptionLabel: UILabel!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     var promptText: String? {
         get {
@@ -67,6 +68,7 @@ class PromotionInfoViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        doneButton.title = L10n.done
         promotion = configRepository.activePromotion()
         
         instructionsTitleLabel.text = L10n.promoInfoInstructionsTitle
@@ -120,27 +122,14 @@ class PromotionInfoViewController: BaseUIViewController {
     private var giftRecipientUsername = ""
 
     private func showGiftSubscriptionAlert() {
-        let alertController = HabiticaAlertController(title: L10n.giftRecipientTitle, message: L10n.giftRecipientSubtitle)
-        let textField = UITextField()
-        textField.autocorrectionType = .no
-        textField.autocapitalizationType = .none
-        textField.borderColor = UIColor.gray300
-        textField.borderWidth = 1
-        textField.tintColor = ThemeService.shared.theme.tintColor
-        alertController.contentView = textField
-        alertController.addAction(title: L10n.continue, style: .default, isMainAction: true, closeOnTap: true, handler: { _ in
-            if let username = textField.text, username.isEmpty == false {
-                let navigationController = StoryboardScene.Main.giftSubscriptionNavController.instantiate()
-                if let giftViewController = navigationController.topViewController as? GiftSubscriptionViewController {
-                    giftViewController.giftRecipientUsername = username
-                }
-                self.present(navigationController, animated: true, completion: nil)
+        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
+            let navigationController = StoryboardScene.Main.giftSubscriptionNavController.instantiate()
+            if let giftViewController = navigationController.topViewController as? GiftSubscriptionViewController {
+                giftViewController.giftRecipientUsername = username
             }
-        })
-        alertController.addCancelAction()
-        alertController.containerViewSpacing = 8
-        alertController.show()
-        textField.becomeFirstResponder()
+            self.present(navigationController, animated: true, completion: nil)
+        }, saveButtonTitle: L10n.continue)
+        present(navController, animated: true, completion: nil)
     }
 
 }

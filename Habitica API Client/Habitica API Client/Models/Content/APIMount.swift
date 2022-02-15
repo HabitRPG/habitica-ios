@@ -16,6 +16,7 @@ class APIMount: MountProtocol, Decodable {
     var type: String?
     var text: String?
     var isValid: Bool = true
+    var isManaged: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case key

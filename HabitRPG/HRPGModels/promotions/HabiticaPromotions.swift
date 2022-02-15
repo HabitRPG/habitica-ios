@@ -23,7 +23,7 @@ public enum HabiticaPromotionType {
         case "g1g1":
             return GiftOneGetOnePromotion(startDate: startDate, endDate: endDate)
         case "survey2021":
-            let url = ConfigRepository().string(variable: .surveyURL)
+            let url = ConfigRepository.shared.string(variable: .surveyURL)
             return Survey2021Promotion(url: url)
         default:
             return nil
@@ -100,7 +100,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         view.rightImageView.image = Asset.fallPromoMenuRight.image
         view.setTitleImage(Asset.fallPromoTitle.image)
         view.setDescriptionImage(Asset.fallPromoMenuDescription.image)
-        view.actionButton.backgroundColor = UIColor.gray10
+        view.actionButton.backgroundColor = UIColor.gray50
         view.actionButton.setTitle(L10n.learnMore, for: .normal)
     }
     
@@ -117,33 +117,28 @@ class FallExtraGemsPromotion: HabiticaPromotion {
     
     func configureGemView(view: GemPurchaseCell, regularAmount: Int) {
         view.backgroundColor = backgroundColor()
-        let colors = [
-            UIColor.red10,
-            UIColor.blue50,
-            UIColor.green50,
-            UIColor.purple400,
-            UIColor.yellow50
-        ].shuffled()
-        let decorationImage = HabiticaIcons.imageOfFallGemPromoBG(redGemColor: colors[0], greenGemColor: colors[1], blueGemColor: colors[2], purpleGemColor: colors[3])
-        view.leftDecorationImageView.image = decorationImage
-        view.rightDecorationImageView.image = decorationImage
         view.priceLabel.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: view.priceLabel)
         gradientLayer.cornerRadius = 8
-        view.priceLabel.layer.insertSublayer(gradientLayer, at: 0)
+        view.priceLabel.backgroundColor = .clear
+        view.priceLabelBackground.layer.insertSublayer(gradientLayer, at: 0)
+        view.priceLabel.textColor = .white
         view.footerLabel.text = L10n.usuallyXGems(regularAmount)
         view.footerLabel.textColor = UIColor("#CAC7CE")
         view.footerLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
-        
         switch regularAmount {
         case 4:
             view.setGemAmount(5)
+            view.imageView.image = Asset._4GemsFall.image
         case 21:
             view.setGemAmount(30)
+            view.imageView.image = Asset._21GemsFall.image
         case 42:
             view.setGemAmount(60)
+            view.imageView.image = Asset._42GemsFall.image
         case 84:
             view.setGemAmount(125)
+            view.imageView.image = Asset._84GemsFall.image
         default:
             break
         }
@@ -227,9 +222,7 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
     
     func configureGemView(view: GemPurchaseCell, regularAmount: Int) {
         view.backgroundColor = backgroundColor()
-        let decorationImage = HabiticaIcons.imageOfSpookyGemPromoBG
-        view.leftDecorationImageView.image = decorationImage
-        view.rightDecorationImageView.image = decorationImage
+        view.priceLabel.textColor = .white
         view.priceLabel.backgroundColor = buttonBackground()
         view.footerLabel.text = L10n.usuallyXGems(regularAmount)
         view.footerLabel.textColor = UIColor("#CAC7CE")
@@ -238,12 +231,16 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         switch regularAmount {
         case 4:
             view.setGemAmount(5)
+            view.imageView.image = Asset._4GemsSpooky.image
         case 21:
             view.setGemAmount(30)
+            view.imageView.image = Asset._21GemsSpooky.image
         case 42:
             view.setGemAmount(60)
+            view.imageView.image = Asset._42GemsSpooky.image
         case 84:
             view.setGemAmount(125)
+            view.imageView.image = Asset._84GemsSpooky.image
         default:
             break
         }

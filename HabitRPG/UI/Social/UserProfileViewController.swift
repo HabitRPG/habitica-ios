@@ -16,7 +16,7 @@ class UserProfileViewController: BaseTableViewController {
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
     private let inventoryRepository = InventoryRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     @IBOutlet weak var moreButton: UIBarButtonItem!
     
     var interactor = CalculateUserStatsInteractor()
@@ -43,7 +43,7 @@ class UserProfileViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator?.hideHeader = true
-        topHeaderCoordinator.followScrollView = false
+        topHeaderCoordinator?.followScrollView = false
         
         refresh()
         
@@ -446,11 +446,11 @@ class UserProfileViewController: BaseTableViewController {
         } else if segue.identifier == StoryboardSegue.Social.giftSubscriptionSegue.rawValue {
             let navigationController = segue.destination as? UINavigationController
             let giftViewController = navigationController?.topViewController as? GiftSubscriptionViewController
-            giftViewController?.giftRecipientUsername = username
+            giftViewController?.giftRecipientUsername = username ?? userID
         } else if segue.identifier == StoryboardSegue.Social.giftGemsSegue.rawValue {
                    let navigationController = segue.destination as? UINavigationController
                    let giftViewController = navigationController?.topViewController as? GiftGemsViewController
-                   giftViewController?.giftRecipientUsername = username
+                   giftViewController?.giftRecipientUsername = username ?? userID
                }
     }
     @IBAction func showOverflowMenu(_ sender: Any) {

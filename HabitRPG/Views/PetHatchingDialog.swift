@@ -94,11 +94,9 @@ class PetHatchingAlertController: HabiticaAlertController {
         eggView.setImagewith(name: "Pet_Egg_\(item.pet?.egg ?? "")")
         potionView.setImagewith(name: "Pet_HatchingPotion_\(item.pet?.potion ?? "")")
         petTitleLabel.text = item.pet?.text
-        if item.canRaise {
+        if item.canRaise || item.pet?.type == "special" {
             title = L10n.hatchPet
-            ImageManager.getImage(name: "stable_Pet-\(item.pet?.key ?? "")") {[weak self] (image, _) in
-                self?.petView.image = image?.withRenderingMode(.alwaysTemplate)
-            }
+            petView.setImagewith(name: "stable_Pet-\(item.pet?.key ?? "")-outline")
             if eggCount == 0 && potionCount == 0 {
                 descriptionlabel.text = L10n.suggestPetHatchMissingBoth(item.pet?.egg ?? "", item.pet?.potion ?? "")
             } else if eggCount == 0 {

@@ -13,9 +13,11 @@ class FeedViewController: BaseTableViewController {
     private let dataSource = FeedViewDataSource()
     var selectedFood: FoodProtocol?
     
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource.tableView = tableView
+        cancelButton.title = L10n.cancel
     }
     
     override func populateText() {

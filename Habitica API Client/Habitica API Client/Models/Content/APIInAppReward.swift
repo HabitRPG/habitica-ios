@@ -35,6 +35,7 @@ public class APIInAppReward: InAppRewardProtocol, Decodable {
     public var value: Float = 0
     public var isSubscriberItem: Bool = false
     public var isValid: Bool { return true }
+    public var isManaged: Bool { return false }
     public var unlockConditionReason: String?
     public var unlockConditionText: String?
     public var unlockConditionIncentiveThreshold: Int = 0

@@ -113,11 +113,11 @@ class PromoBannerView: UIView {
             upperEdge = titleImageView.edge.bottom
         }
         if !descriptionLabel.isHidden {
-            descriptionLabel.pin.top(to: upperEdge).marginTop(4).start(60).end(60).sizeToFit(.width)
+            descriptionLabel.pin.top(to: upperEdge).marginTop(12).start(60).end(60).sizeToFit(.width)
             upperEdge = descriptionLabel.edge.bottom
         }
         if !descriptionImageView.isHidden {
-            descriptionImageView.pin.top(to: upperEdge).marginTop(4).sizeToFit().hCenter()
+            descriptionImageView.pin.top(to: upperEdge).marginTop(8).sizeToFit().hCenter()
             upperEdge = descriptionImageView.edge.bottom
         }
         if !durationLabel.isHidden {

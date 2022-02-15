@@ -150,6 +150,8 @@
 "tasks.form.completion" = "Completion";
 "tasks.form.times_scored" = "Times Scored";
 "tasks.form.last_scored" = "Last Scored";
+"tasks.form.none" = "None";
+"tasks.form.not_editable_disclaimer" = "Challenge and Group tasks have limited editing options compared to your regular tasks";
 "tasks.work" = "Work";
 "tasks.exercise" = "Exercise";
 "tasks.health" = "Health";
@@ -158,10 +160,9 @@
 "tasks.chores" = "Chores";
 "tasks.creativity" = "Creativity";
 "tasks.add_x" = "Add %@";
-"tasks.due_today" = "Due today";
-"tasks.due_tomorrow" = "Due tomorrow";
-"tasks.due_in_x_days" = "Due in %d days";
-"tasks.due_x" = "Due %@";
+"tasks.due_today" = "Today";
+"tasks.due_tomorrow" = "Tomorrow";
+"tasks.due_in_x_days" = "In %d days";
 "tasks.every_x" =  "every %d %@";
 "tasks.repeats.repeats_every_on" = "Repeats %@ on %@";
 "tasks.repeats.repeats_every" = "Repeats %@";
@@ -295,9 +296,13 @@
 "settings.change_photo_url" = "Change Photo URL";
 "settings.change_about_message" = "Change About Message";
 "settings.change_password" = "Change Password";
+"settings.change" = "Change";
+"settings.add_email" = "Add Email";
 "settings.danger_zone" = "Danger Zone";
 "settings.login_methods" = "Login Methods";
 "settings.reset_account" = "Reset Account";
+"settings.updated_email" = "Email updated";
+"settings.updated_password" = "Password updated";
 "settings.reset_account_description" = "WARNING! This resets many parts of your account. This is highly discouraged, but some people find it useful in the beginning after playing with the site for a short time.\n\nYou will lose all your levels, gold, and experience points. All your tasks (except those from challenges) will be deleted permanently and you will lose all of their historical data. You will lose all your equipment but you will be able to buy it all back, including all limited edition equipment or subscriber Mystery items that you already own (you will need to be in the correct class to re-buy class-specific gear). You will keep your current class and your pets and mounts. You might prefer to use an Orb of Rebirth instead, which is a much safer option and which will preserve your tasks and equipment.";
 "settings.delete_account" = "Delete Account";
 "settings.delete_account_description" = "This will delete your account forever, and it can never be restored! Banked or spent Gems will not be refunded. If you’re absolutely certain, type your password into the text box below.";
@@ -309,7 +314,7 @@
 "settings.new_password" = "New Password";
 "settings.old_password" = "Old Password";
 "settings.confirm_new_password" = "Confirm new Password";
-"settings.api_disclaimer" = "Copy these for use in third party applications. However, think of your API Token like a password, and do not share it publicly. You may occasionally be asked for your User ID, but never post your API Token where others can see it, including on Github.";
+"settings.api_disclaimer" = "Copy Token. Be careful, this is a password!";
 "settings.local" = "Local";
 "settings.searchable_everywhere" = "Everywhere";
 "settings.searchable_private_spaces" = "Only Private Spaces";
@@ -335,6 +340,17 @@
 "settings.add_email_and_password" = "Add Email and Password authentication";
 "settings.added_local_auth" = "Successfully added email and password";
 "settings.launch_screen" = "Launch screen";
+"settings.account_info" = "Account Info";
+"settings.login_methods" = "Login Methods";
+"settings.public_profile" = "Public Profile";
+"settings.password" = "Password";
+"settings.email" = "Email";
+"settings.not_set" = "Not Set";
+"settings.no_email" = "No Email";
+"settings.my_account" = "My Account";
+"settings.connect" = "Connect";
+"settings.disconnect" = "Disconnect";
+"settings.add_password" = "Add Password";
 "theme.default_theme" = "Default";
 "theme.blue" = "Blue";
 "theme.teal" = "Teal";
@@ -610,7 +626,7 @@
 "login.enter_email" = "Enter the email address you used to register your Habitica account.";
 "login.reset_password_response" = "If we have your email on file, instructions for setting a new password have been sent to your email.";
 "groups.error_name_required" = "Name may not be empty.";
-"gift_recipient_title" = "Who would you like to gift to?";
+"gift_recipient_title" = "Send gift";
 "gift_recipient_subtitle" = "Enter recipient's @ username";
 "continue" = "Continue";
 "gift_confirmation_title" = "Your gift was sent!";
@@ -658,6 +674,9 @@
 "errors.reply" = "Your message could not be sent.";
 "errors.request" = "There was an error with your request: %@";
 "errors.user_not_found" = "User not found.";
+"errors.enter_valid_email" = "Please enter a valid Email address";
+"errors.password_length" = "Password must be %d characters or more";
+"errors.password_not_matching" = "Passwords must match";
 "never" = "Never";
 "never_lower_case" = "never";
 "day" = "day";
@@ -838,8 +857,9 @@
 "moderator" = "Moderator";
 "staff" = "Staff";
 "sale" = "Sale";
+"sale_ends_in" = "Sale ends in %@";
 "get_more_habitica" = "Get more out of Habitica";
-"report_x_violation" = "Report @@%@ for violation?";
+"report_x_violation" = "Report @%@ for violation?";
 "not_getting_drops" = "Not getting the right drops? Check out the Market to buy just the things you need!";
 "streak_achievement_title" = "You earned a streak achievement!";
 "streak_achievement_description" = "You've completed your Daily for 21 days in a row! Amazing job. Don't break the streak!";
@@ -1042,7 +1062,7 @@
 "promo_info_instructions_title" = "How it works";
 "promo_info_limitations_title" = "Limitations";
 
-"fall_promo.info_prompt" = "The Fall Gala is in full swing so we thought it was the perfect time to introduce our first ever Gem Sale! Now you will get more Gems with each purchase than ever before.";
+"fall_promo.info_prompt" = "The Fall Gala is in full swing so we thought it was the perfect time to have a Gem Sale! Now you will get more Gems with each purchase than ever before.";
 "fall_promo.info_instructions" = "Between %s and %s, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!";
 
 "spooky_promo.info_prompt" = "The Gem Sale is back to haunt the very end of this year’s Fall Gala! This is one last chance to get more Gems than ever, so stock up while it lasts!";

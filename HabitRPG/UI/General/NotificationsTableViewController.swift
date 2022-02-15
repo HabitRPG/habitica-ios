@@ -11,12 +11,14 @@ import Habitica_Models
 
 class NotificationsTableViewController: BaseTableViewController {
 
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     private let dataSource = NotificationsDataSource()
     private var selectedIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = L10n.Titles.notifications
+        doneButton.title = L10n.done
         
         dataSource.tableView = tableView
         dataSource.viewController = self

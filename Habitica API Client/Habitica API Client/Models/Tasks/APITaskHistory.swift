@@ -18,6 +18,7 @@ class APITaskHistory: Decodable, TaskHistoryProtocol {
     var isDue: Bool = false
     var completed: Bool = false
     var isValid: Bool = false
+    public var isManaged: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case date

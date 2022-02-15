@@ -9,16 +9,32 @@
 import Foundation
 import Habitica_Models
 
+class EmailCodable: Decodable {
+    var value: String?
+}
+
 class SocialAuth: Decodable {
+    var emails: [EmailCodable]?
     var id: String?
+    
+    func toSocialAuthenticationObject() -> SocialAuthenticationProtocol {
+        let object  = APISocialAuthentication()
+        object.id = id
+        emails?.forEach({ email in
+            if let emailValue = email.value {
+                object.emails.append(emailValue)
+            }
+        })
+        return object
+    }
 }
 
 class APIAuthentication: AuthenticationProtocol, Decodable {
     var timestamps: AuthenticationTimestampsProtocol?
     var local: LocalAuthenticationProtocol?
-    var facebookID: String?
-    var googleID: String?
-    var appleID: String?
+    var facebook: SocialAuthenticationProtocol?
+    var google: SocialAuthenticationProtocol?
+    var apple: SocialAuthenticationProtocol?
     
     enum CodingKeys: String, CodingKey {
         case timestamps
@@ -32,8 +48,8 @@ class APIAuthentication: AuthenticationProtocol, Decodable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         timestamps = try? values.decode(APIAuthenticationTimestamps.self, forKey: .timestamps)
         local = try? values.decode(APILocalAuthentication.self, forKey: .local)
-        facebookID = (try? values.decode(SocialAuth.self, forKey: .facebook))?.id
-        googleID = (try? values.decode(SocialAuth.self, forKey: .google))?.id
-        appleID = (try? values.decode(SocialAuth.self, forKey: .apple))?.id
+        facebook = (try? values.decode(SocialAuth.self, forKey: .facebook))?.toSocialAuthenticationObject()
+        google = (try? values.decode(SocialAuth.self, forKey: .google))?.toSocialAuthenticationObject()
+        apple = (try? values.decode(SocialAuth.self, forKey: .apple))?.toSocialAuthenticationObject()
     }
 }

@@ -19,9 +19,17 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
+  internal static let _21GemsFall = ImageAsset(name: "21GemsFall")
+  internal static let _21GemsSpooky = ImageAsset(name: "21GemsSpooky")
   internal static let _21Gems = ImageAsset(name: "21_gems")
+  internal static let _42GemsFall = ImageAsset(name: "42GemsFall")
+  internal static let _42GemsSpooky = ImageAsset(name: "42GemsSpooky")
   internal static let _42Gems = ImageAsset(name: "42_gems")
+  internal static let _4GemsFall = ImageAsset(name: "4GemsFall")
+  internal static let _4GemsSpooky = ImageAsset(name: "4GemsSpooky")
   internal static let _4Gems = ImageAsset(name: "4_gems")
+  internal static let _84GemsFall = ImageAsset(name: "84GemsFall")
+  internal static let _84GemsSpooky = ImageAsset(name: "84GemsSpooky")
   internal static let _84Gems = ImageAsset(name: "84_gems")
   internal static let adventureGuideBackground = ImageAsset(name: "AdventureGuideBackground")
   internal static let adventureGuideStars = ImageAsset(name: "AdventureGuideStars")
@@ -162,6 +170,7 @@ internal enum Asset {
   internal static let gemPurchaseHeader = ImageAsset(name: "gem_purchase_header")
   internal static let gemPurchaseHeaderDark = ImageAsset(name: "gem_purchase_header_dark")
   internal static let giftSubGift = ImageAsset(name: "gift_sub_gift")
+  internal static let grabIndicator = ImageAsset(name: "grab_indicator")
   internal static let gryphon = ImageAsset(name: "gryphon")
   internal static let icChevronRightWhite = ImageAsset(name: "ic_chevron_right_white")
   internal static let iconHelp = ImageAsset(name: "icon_help")
@@ -283,6 +292,7 @@ internal struct ImageAsset {
   internal typealias Image = UIImage
   #endif
 
+  @available(iOS 8.0, tvOS 9.0, watchOS 2.0, macOS 10.7, *)
   internal var image: Image {
     let bundle = BundleToken.bundle
     #if os(iOS) || os(tvOS)
@@ -294,13 +304,25 @@ internal struct ImageAsset {
     let image = Image(named: name)
     #endif
     guard let result = image else {
-      fatalError("Unable to load image named \(name).")
+      fatalError("Unable to load image asset named \(name).")
     }
     return result
   }
+
+  #if os(iOS) || os(tvOS)
+  @available(iOS 8.0, tvOS 9.0, *)
+  internal func image(compatibleWith traitCollection: UITraitCollection) -> Image {
+    let bundle = BundleToken.bundle
+    guard let result = Image(named: name, in: bundle, compatibleWith: traitCollection) else {
+      fatalError("Unable to load image asset named \(name).")
+    }
+    return result
+  }
+  #endif
 }
 
 internal extension ImageAsset.Image {
+  @available(iOS 8.0, tvOS 9.0, watchOS 2.0, *)
   @available(macOS, deprecated,
     message: "This initializer is unsafe on macOS, please use the ImageAsset.image property")
   convenience init!(asset: ImageAsset) {

@@ -306,6 +306,7 @@ struct HabitProgressView_Previews: PreviewProvider {
 private class PreviewTaskHistory: TaskHistoryProtocol {
     var value: Float = 0
     var isValid: Bool = true
+    var isManaged: Bool = false
     var timestamp: Date?
     var taskID: String?
     var scoredUp: Int = 0

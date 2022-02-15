@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Keys
 import Amplitude_iOS
 import Habitica_API_Client
 import Habitica_Models
@@ -29,7 +28,7 @@ import FBSDKLoginKit
 import AdServices
 import iAd
 
-class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIApplicationDelegate {
+class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate {
     var window: UIWindow?
     var currentAuthorizationFlow: OIDExternalUserAgentSession?
     
@@ -41,7 +40,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
     private let contentRepository = ContentRepository()
     private let taskRepository = TaskRepository()
     private let socialRepository = SocialRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         logger = RemoteLogger()
@@ -54,7 +53,6 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
         setupRouter()
         setupPurchaseHandling()
         setupNetworkClient()
-        setupTheme()
         setupDatabase()
         setupFirebase()
         configureNotifications()
@@ -63,19 +61,12 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
             handlePushnotification(identifier: nil, userInfo: userInfo)
         }
         
-        application.findKeyWindow()?.rootViewController = StoryboardScene.Intro.initialScene.instantiate()
-        
         handleInitialLaunch()
-                
+        applySearchAdAttribution()
+        
         return true
     }
-    
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        setupUserManager()
-        setupTheme()
-        cleanAndRefresh()
-    }
-    
+
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         if currentAuthorizationFlow?.resumeExternalUserAgentFlow(with: url) == true {
             currentAuthorizationFlow = nil
@@ -104,16 +95,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
         }
         completionHandler(true)
     }
-    
-    func applicationWillResignActive(_ application: UIApplication) {
-        reloadWidgetData()
-    }
-    
-    private func cleanAndRefresh() {
-        retrieveContent()
-        configRepository.fetchremoteConfig()
-    }
-    
+
     @objc
     func handleLaunchArgs() {
         let launchArgs = ProcessInfo.processInfo.environment
@@ -157,8 +139,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
     
     @objc
     func setupAnalytics() {
-        let keys = HabiticaKeys()
-        Amplitude.instance().initializeApiKey(keys.amplitudeApiKey)
+        Amplitude.instance().initializeApiKey(Secrets.amplitudeApiKey)
         Amplitude.instance().setUserId(AuthenticationManager.shared.currentUserId)
         let userDefaults = UserDefaults.standard
         Amplitude.instance()?.setUserProperties(["iosTimezoneOffset": -(NSTimeZone.local.secondsFromGMT() / 60),
@@ -202,7 +183,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
         if let chosenServer = UserDefaults().string(forKey: "chosenServer") {
             switch chosenServer {
             case "production":
-                let configRepository = ConfigRepository()
+                let configRepository = ConfigRepository.shared
                 if let host = configRepository.string(variable: .prodHost), let apiVersion = configRepository.string(variable: .apiVersion) {
                     let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion)")
                     AuthenticatedCall.defaultConfiguration = config
@@ -221,7 +202,7 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
                 AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.localhost
             }
         } else {
-            let configRepository = ConfigRepository()
+            let configRepository = ConfigRepository.shared
             if let host = configRepository.string(variable: .prodHost), let apiVersion = configRepository.string(variable: .apiVersion), !host.isEmpty, !apiVersion.isEmpty {
                 let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion)")
                 AuthenticatedCall.defaultConfiguration = config
@@ -246,23 +227,6 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
     }
     
     @objc
-    func setupTheme() {
-        ThemeService.shared.updateDarkMode()
-        let defaults = UserDefaults.standard
-        let themeName = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") ?? ThemeName.defaultTheme
-        #if !targetEnvironment(macCatalyst)
-        Analytics.setUserProperty(themeName.rawValue, forName: "theme")
-        #endif
-    }
-    
-    @objc
-    func setupUserManager() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            UserManager.shared.beginListening()
-        }
-    }
-    
-    @objc
     func setupRouter() {
         RouterHandler.shared.register()
     }
@@ -284,42 +248,6 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             
             rescheduleDailyReminder()
-        } else {
-            guard let url = defaults.string(forKey: "initialScreenURL") else {
-                return
-            }
-            if let loadingViewcontroller = UIApplication.shared.findKeyWindow()?.rootViewController as? LoadingViewController, loadingViewcontroller.loadingFinishedAction == nil {
-                loadingViewcontroller.loadingFinishedAction = {
-                    RouterHandler.shared.handle(urlString: url)
-                }
-            }
-        }
-    }
-    
-    @objc
-    func retrieveContent() {
-        let defaults = UserDefaults.standard
-        let lastContentFetch = defaults.object(forKey: "lastContentFetch") as? NSDate
-        let lastContentFetchVersion = defaults.object(forKey: "lastContentFetchVersion") as? String
-        let currentBuildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
-        if lastContentFetch == nil || (lastContentFetch?.timeIntervalSinceNow ?? 0) < -3600 || lastContentFetchVersion != currentBuildNumber {
-            contentRepository.getFAQEntries()
-                .take(first: 1)
-                .flatMap(.latest) {[weak self] (entries) in
-                    return self?.contentRepository.retrieveContent(force: entries.value.isEmpty) ?? Signal.empty
-                }
-                .on(completed: {
-                    defaults.setValue(Date(), forKey: "lastContentFetch")
-                    defaults.setValue(currentBuildNumber, forKey: "lastContentFetchVersion")
-                })
-                .start()
-        }
-        
-        let lastWorldStateFetch = defaults.object(forKey: "lastWorldStateFetch") as? NSDate
-        if lastWorldStateFetch == nil || (lastWorldStateFetch?.timeIntervalSinceNow ?? 0) < -1800 {
-            contentRepository.retrieveWorldState().observeCompleted {
-                defaults.setValue(Date(), forKey: "lastWorldStateFetch")
-            }
         }
     }
     
@@ -417,13 +345,17 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
         #endif
     }
     
-    static func applySearchAdAttribution() {
+    func applySearchAdAttribution() {
+        if configRepository.isOnMac {
+            return
+        }
         let defaults = UserDefaults.standard
         if defaults.bool(forKey: "userWasAttributed") {
             return
         }
-        if #available(iOS 14.3, *) {
+        if #available(iOS 14.5, *) {
             DispatchQueue.global(qos: .background).async {
+                Analytics.logEvent("Attribution Attempt", parameters: nil)
                 let token = try? AAAttribution.attributionToken()
                 if let attributionToken = token, let url = URL(string: "https://api-adservices.apple.com/api/v1/") {
                     let request = NSMutableURLRequest(url: url)
@@ -431,62 +363,25 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
                     request.setValue("text/plain", forHTTPHeaderField: "Content-Type")
                     request.httpBody = Data(attributionToken.utf8)
                     let task = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
-                        if error != nil {
+                        Analytics.logEvent("Attribution Data collected", parameters: nil)
+                        if let error = error {
+                            Crashlytics.crashlytics().record(error: error)
+                            Analytics.logEvent("Attribution Failed", parameters: ["point": error.localizedDescription])
                             return
                         }
                         guard let data = data else {
+                            Analytics.logEvent("Attribution Failed", parameters: ["point": "no data"])
                             return
                         }
                         defaults.set(true, forKey: "userWasAttributed")
                         do {
                             guard let data = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+                                Analytics.logEvent("Attribution Failed", parameters: ["point": "no data"])
                                 return
                             }
                             if let campaignId = data["campaignId"] as? Int {
-                                if campaignId != 1234567890 {
-                                    var analyticsData = [String: Any]()
-                                    analyticsData["attribution"] = data["iad-attribution"]
-                                    if analyticsData["attribution"] as? String != "true" {
-                                        return
-                                    }
-                                    analyticsData["campaignID"] = campaignId
-                                    analyticsData["campaignName"] = data["iad-campaign-name"]
-                                    analyticsData["purchaseDate"] = data["iad-purchase-date"]
-                                    analyticsData["conversionDate"] = data["iad-conversion-date"]
-                                    analyticsData["conversionType"] = data["iad-conversion-type"]
-                                    analyticsData["clickDate"] = data["iad-click-date"]
-                                    analyticsData["keyword"] = data["iad-keyword"]
-                                    analyticsData["keywordMatchtype"] = data["iad-keyword-matchtype"]
-                                    HabiticaAnalytics.shared.log("adAttribution", withEventProperties: analyticsData)
-                                    Amplitude.instance().setUserProperties([
-                                        "clickedSearchAd": data["iad-attribution"] ?? "",
-                                        "searchAdName": data["iad-campaign-name"] ?? "",
-                                        "searchAdConversionDate": data["iad-conversion-date"] ?? ""
-                                    ])
-                                }
-                            }
-                        } catch {
-                            print(error)
-                        }
-                    }
-                    task.resume()
-                }
-            }
-        } else {
-            ADClient.shared().requestAttributionDetails({ (attributionDetails, error) in
-                guard let attributionDetails = attributionDetails else {
-                    return
-                }
-                for (_, adDictionary) in attributionDetails {
-                        if let data = adDictionary as? Dictionary<String, Any> {
-                            if let campaignId = data["iad-campaign-id"] as? String {
-                            if campaignId != "1234567890" {
-                                defaults.set(true, forKey: "userWasAttributed")
                                 var analyticsData = [String: Any]()
                                 analyticsData["attribution"] = data["iad-attribution"]
-                                if analyticsData["attribution"] as? String != "true" {
-                                    return
-                                }
                                 analyticsData["campaignID"] = campaignId
                                 analyticsData["campaignName"] = data["iad-campaign-name"]
                                 analyticsData["purchaseDate"] = data["iad-purchase-date"]
@@ -495,6 +390,11 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
                                 analyticsData["clickDate"] = data["iad-click-date"]
                                 analyticsData["keyword"] = data["iad-keyword"]
                                 analyticsData["keywordMatchtype"] = data["iad-keyword-matchtype"]
+                                if analyticsData["attribution"] as? String != "true" {
+                                    analyticsData["point"] = "not attributed"
+                                    Analytics.logEvent("Attribution Failed", parameters: analyticsData)
+                                    return
+                                }
                                 HabiticaAnalytics.shared.log("adAttribution", withEventProperties: analyticsData)
                                 Amplitude.instance().setUserProperties([
                                     "clickedSearchAd": data["iad-attribution"] ?? "",
@@ -502,6 +402,44 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
                                     "searchAdConversionDate": data["iad-conversion-date"] ?? ""
                                 ])
                             }
+                        } catch {
+                            Crashlytics.crashlytics().record(error: error)
+                            Analytics.logEvent("Attribution Failed", parameters: ["point": error.localizedDescription])
+                        }
+                    }
+                    task.resume()
+                } else {
+                    Analytics.logEvent("Attribution Failed", parameters: ["point": "No token"])
+                }
+            }
+        } else {
+            ADClient.shared().requestAttributionDetails({ (attributionDetails, error) in
+                guard let attributionDetails = attributionDetails else {
+                    return
+                }
+                for (_, adDictionary) in attributionDetails {
+                    if let data = adDictionary as? Dictionary<String, Any> {
+                        if let campaignId = data["iad-campaign-id"] as? String {
+                            defaults.set(true, forKey: "userWasAttributed")
+                            var analyticsData = [String: Any]()
+                            analyticsData["attribution"] = data["iad-attribution"]
+                            if analyticsData["attribution"] as? String != "true" {
+                                return
+                            }
+                            analyticsData["campaignID"] = campaignId
+                            analyticsData["campaignName"] = data["iad-campaign-name"]
+                            analyticsData["purchaseDate"] = data["iad-purchase-date"]
+                            analyticsData["conversionDate"] = data["iad-conversion-date"]
+                            analyticsData["conversionType"] = data["iad-conversion-type"]
+                            analyticsData["clickDate"] = data["iad-click-date"]
+                            analyticsData["keyword"] = data["iad-keyword"]
+                            analyticsData["keywordMatchtype"] = data["iad-keyword-matchtype"]
+                            HabiticaAnalytics.shared.log("adAttribution", withEventProperties: analyticsData)
+                            Amplitude.instance().setUserProperties([
+                                "clickedSearchAd": data["iad-attribution"] ?? "",
+                                "searchAdName": data["iad-campaign-name"] ?? "",
+                                "searchAdConversionDate": data["iad-conversion-date"] ?? ""
+                            ])
                         }
                     }
                 }
@@ -533,28 +471,6 @@ class HabiticaAppDelegate: UIResponder, UISceneDelegate, MessagingDelegate, UIAp
         alertController.addCloseAction()
         alertController.enqueue()
         UINotificationFeedbackGenerator.oneShotNotificationOccurred(.warning)
-    }
-    
-    @objc
-    func reloadWidgetData() {
-        #if arch(arm64) || arch(i386) || arch(x86_64)
-        if #available(iOS 14.0, *) {
-            WidgetCenter.shared.reloadTimelines(ofKind: "DailiesCountWidget")
-            WidgetCenter.shared.reloadTimelines(ofKind: "StatsWidget")
-            WidgetCenter.shared.reloadTimelines(ofKind: "TaskListWidget")
-            
-            WidgetCenter.shared.getCurrentConfigurations { result in
-                switch result {
-                case let .success(info):
-                    #if !targetEnvironment(macCatalyst)
-                    Analytics.setUserProperty(String(info.count), forName: "widgetCount")
-                    #endif
-                case let .failure(error):
-                    logger.log(error)
-                }
-            }
-        }
-        #endif
     }
 }
 

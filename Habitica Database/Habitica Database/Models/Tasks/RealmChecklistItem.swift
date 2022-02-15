@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import Habitica_Models
 
-class RealmChecklistItem: Object, ChecklistItemProtocol {
+class RealmChecklistItem: BaseModel, ChecklistItemProtocol {
     
     @objc dynamic var id: String?
     @objc dynamic var text: String?
@@ -19,11 +19,15 @@ class RealmChecklistItem: Object, ChecklistItemProtocol {
     override static func primaryKey() -> String {
         return "id"
     }
-    
+
     convenience init(_ checklistItemProtocol: ChecklistItemProtocol) {
         self.init()
         id = checklistItemProtocol.id
         text = checklistItemProtocol.text
         completed = checklistItemProtocol.completed
+    }
+    
+    func detached() -> ChecklistItemProtocol {
+        return RealmChecklistItem(value: self)
     }
 }

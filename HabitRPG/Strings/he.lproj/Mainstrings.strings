@@ -99,41 +99,17 @@
 /* (No Comment) */
 "member.member_since" = "חבר מאז";
 /* (No Comment) */
-"menu.about" = "אודות";
-/* (No Comment) */
-"menu.cast_spells" = "הטל קסמים";
-/* (No Comment) */
-"menu.challenges" = "אתגרים";
-/* (No Comment) */
 "menu.customize_avatar" = "התאם דמות";
-/* (No Comment) */
-"menu.equipment" = "ציוד";
-/* (No Comment) */
-"menu.guilds" = "גילדות";
 /* (No Comment) */
 "menu.help_faq" = "עזרה ושאלות נפוצות";
 /* (No Comment) */
 "menu.inventory" = "מלאי";
-/* (No Comment) */
-"menu.items" = "פריטים";
-/* (No Comment) */
-"menu.news" = "חדשות";
-/* (No Comment) */
-"menu.party" = "חבורה";
 /* (No Comment) */
 "menu.select_class" = "בחר מקצוע";
 /* (No Comment) */
 "menu.shops" = "חנויות";
 /* (No Comment) */
 "menu.social" = "חברה";
-/* (No Comment) */
-"menu.stable" = "אורווה";
-/* (No Comment) */
-"menu.stats" = "נתונים";
-/* (No Comment) */
-"menu.tavern" = "פונדק";
-/* (No Comment) */
-"menu.use_skills" = "השתמש במיומנות";
 /* (No Comment) */
 "monthly" = "חודשי";
 /* (No Comment) */
@@ -300,7 +276,6 @@
 "titles.faq" = "שאלות נפוצות";
 "titles.about" = "אודות";
 "titles.news" = "חדשות";
-"titles.stable" = "אורווה";
 "titles.pets" = "חיות מחמד";
 "titles.mounts" = "חיות רכיבה";
 "titles.tavern" = "פונדק";
@@ -457,7 +432,7 @@
 "stats.distribute_class" = "פיזור המבוסס על העבודה שבחרת";
 "stats.distribute_tasks" = "פיזור המבוסס על פעילותך במשימות";
 "stats.stat_guide" = "מדריך לנקודות";
-"stats.strength_text" = "מגדיל את הבונוס על \"מכות קריטיות\" ומעלה את סיכויהן בעקבות משימה שהושלמה. בנוסף גם מגדיל את הנזק שנגרם לבוסים. ";
+"stats.strength_text" = "מגדיל את הבונוס על \"מכות קריטיות\" ומעלה את סיכויהן בעקבות משימה שהושלמה. בנוסף גם מגדיל את הנזק שנגרם לבוסים.";
 "stats.intelligence_text" = "מעלה את נקודות הניסיון המתקבלות מהשלמת משימות. בנוסף, מעלה את מכסת האנרגיה וכמה מהר האנרגיה משתחזרת לאורך זמן.";
 "stats.constitution_text" = "מוריד את כמות הנזק מהמשימות. לא מוריד את כמות הנזק הנגרמת מבוסים.";
 "stats.perception_text" = "מעלה את ההסתברות להשיג פריטים כאשר משלימים משימה, כמות הפריטים המקסימלית היומית, בונוס \"סטרייק\" (רציפות) ואת כמות הזהב שמשיגים ממשימה שהושלמה.";
@@ -496,8 +471,7 @@
 "tasks.due_today" = "מסתיימים היום";
 "tasks.due_tomorrow" = "מסתיימים מחר";
 "tasks.due_in_x_days" = "מסתיימים ב%d ימים";
-"tasks.due_x" = "מסתיימים ב %@";
-"tasks.every_x" = "כל %@";
+"tasks.every_x" = "כל %d %@";
 "tasks.repeats.repeats_every_on" = "חזור על %@ ב %@";
 "tasks.repeats.repeats_every" = "חוזר שוב  %@";
 "tasks.repeats.daily" = "יום יומי";
@@ -549,7 +523,6 @@
 "resync" = "סנכרון מחדש";
 "resync_all" = "סנכרון כללי מחדש";
 "resync_task" = "סנכרון משימה זו";
-"menu.gems_subscriptions" = "יהלומים & מינויים";
 "skills.unlocks_at" = "נפתח ברמה %d";
 "skills.use_skill" = "השתמשת ב %@";
 "skills.cant_cast_on_challenge_tasks" = "היכולת הזו לא יכולה להתבצע על משימות כאלו (משימות אתגר)";
@@ -562,7 +535,6 @@
 "settings.notification_badge" = "תג התראות";
 "settings.display_notification_badge" = "הצג את תג ההתראות";
 "settings.disable_all_notifications" = "בטל את כל התראות ה\"פוש\"";
-"settings.push_notifications" = "התראות \"פוש\"";
 "settings.disable_pm" = "בטל הודעות פרטיות";
 "settings.preferences" = "העדפות";
 "settings.theme_color" = "צבע ערכת נושא";
@@ -583,3 +555,5 @@
 "settings.searchable_private_spaces" = "רק אזורים פרטיים";
 "settings.mentions" = "איזכורים";
 "theme.default_theme" = "ברירת מחדל";
+"stable.premium" = "תֶקֶן";
+"stable.standard" = "תֶקֶ";

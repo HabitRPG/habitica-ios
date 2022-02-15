@@ -22,6 +22,7 @@ class APISpecialItem: SpecialItemProtocol, Decodable {
     var eventStart: Date?
     var eventEnd: Date?
     var isValid: Bool = true
+    public var isManaged: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case key

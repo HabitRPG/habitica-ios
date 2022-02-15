@@ -10,10 +10,7 @@ import Foundation
 import RealmSwift
 import Habitica_Models
 
-class RealmGroupCategory: Object, GroupCategoryProtocol {
-    var isValid: Bool {
-        return !isInvalidated
-    }
+class RealmGroupCategory: BaseModel, GroupCategoryProtocol {
     @objc dynamic var id: String?
     @objc dynamic var slug: String?
     @objc dynamic var name: String?

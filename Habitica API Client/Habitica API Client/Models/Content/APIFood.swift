@@ -21,6 +21,7 @@ class APIFood: FoodProtocol, Decodable {
     var eventStart: Date?
     var eventEnd: Date?
     var isValid: Bool = true
+    var isManaged: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case key

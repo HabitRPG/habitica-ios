@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina3_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +18,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SkillCell" rowHeight="117" id="uuD-z5-FBP" customClass="SkillTableViewCell" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="320" height="117"/>
+                                <rect key="frame" x="0.0" y="49.5" width="320" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uuD-z5-FBP" id="D2A-8v-Y4F">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="117"/>
@@ -123,7 +123,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SkillLockedCell" rowHeight="117" id="ue0-WX-SDJ" customClass="SkillTableViewCell" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="172.5" width="320" height="117"/>
+                                <rect key="frame" x="0.0" y="166.5" width="320" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ue0-WX-SDJ" id="U7a-PF-E19">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="117"/>
@@ -202,7 +202,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TransformationItemCell" rowHeight="117" id="NDw-sS-4h2" customClass="SkillTableViewCell" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="289.5" width="320" height="117"/>
+                                <rect key="frame" x="0.0" y="283.5" width="320" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NDw-sS-4h2" id="aeC-Fw-5Gf">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="117"/>
@@ -313,7 +313,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InformationCell" rowHeight="117" id="tZU-t8-ro3">
-                                <rect key="frame" x="0.0" y="406.5" width="320" height="117"/>
+                                <rect key="frame" x="0.0" y="400.5" width="320" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tZU-t8-ro3" id="Ift-OV-3bc">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="117"/>
@@ -395,7 +395,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2xD-rf-HIY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HelloHabitican" translatesAutoresizingMaskIntoConstraints="NO" id="8IW-iy-JrG">
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HelloHabiticanOnboarding" translatesAutoresizingMaskIntoConstraints="NO" id="8IW-iy-JrG">
                                         <rect key="frame" x="0.0" y="46" width="320" height="127"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="127" id="Y19-HZ-vmt"/>
@@ -415,7 +415,6 @@
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ges-4G-1HD">
                                                 <rect key="frame" x="16" y="51" width="288" height="33"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" red="0.60365134477615356" green="0.38511508703231812" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="500" constant="128" id="6v7-8S-kRl"/>
@@ -603,7 +602,6 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="JM6-20-ryq" firstAttribute="leading" secondItem="Q54-kS-gFu" secondAttribute="leading" constant="32" id="8Yw-Bp-FMa"/>
                                             <constraint firstAttribute="trailing" secondItem="CqQ-x9-BSL" secondAttribute="trailing" constant="16" id="8fA-ri-pdq"/>
@@ -669,12 +667,20 @@
                     <connections>
                         <outlet property="confirmButton" destination="CqQ-x9-BSL" id="xVk-Ql-vaL"/>
                         <outlet property="descriptionTextView" destination="ges-4G-1HD" id="eb4-Kf-upI"/>
+                        <outlet property="displayNameContainer" destination="FUD-46-523" id="223-Rb-A6n"/>
                         <outlet property="displayNameIconView" destination="0Yt-T5-thI" id="3Np-sV-lqQ"/>
+                        <outlet property="displayNameLabel" destination="afD-jg-Yro" id="qIh-Ec-sRR"/>
                         <outlet property="displayNameTextField" destination="zyp-9h-rAj" id="ica-Cj-geF"/>
                         <outlet property="errorLabel" destination="BVH-dn-2fc" id="Zhf-wS-b2y"/>
                         <outlet property="footerTextView" destination="1YA-cD-2uz" id="TWa-H5-bzV"/>
+                        <outlet property="nameContainer" destination="Myv-DG-bvd" id="11m-5c-GHj"/>
+                        <outlet property="nameHorizontalSeparator" destination="nPi-jo-wjg" id="rSM-aF-gZp"/>
+                        <outlet property="nameVerticalSeparator" destination="7qC-Su-Qdw" id="weZ-7o-f3P"/>
                         <outlet property="scrollView" destination="2xD-rf-HIY" id="9gj-x6-N93"/>
+                        <outlet property="usernameContainer" destination="LF4-r9-oG9" id="H41-Mi-nxJ"/>
                         <outlet property="usernameIconView" destination="eXq-X3-TB9" id="mMo-dz-O1m"/>
+                        <outlet property="usernameLabel" destination="f5Y-px-WL6" id="KLu-Dp-3lL"/>
+                        <outlet property="usernamePromptLabel" destination="NZ1-ez-cWG" id="j6d-7O-BK7"/>
                         <outlet property="usernameTextField" destination="SDV-EC-LPB" id="slN-ZC-zNf"/>
                     </connections>
                 </viewController>
@@ -1218,7 +1224,7 @@
         </designable>
     </designables>
     <resources>
-        <image name="HelloHabitican" width="221" height="91"/>
+        <image name="HelloHabiticanOnboarding" width="287" height="117"/>
         <image name="VeteranPets" width="121" height="31"/>
     </resources>
 </document>

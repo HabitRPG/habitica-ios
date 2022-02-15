@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 
-class RealmTag: Object, TagProtocol {
+class RealmTag: BaseModel, TagProtocol {
     @objc dynamic var id: String?
     @objc dynamic var userID: String?
     @objc dynamic var text: String?
@@ -18,10 +18,6 @@ class RealmTag: Object, TagProtocol {
     
     override static func primaryKey() -> String {
         return "id"
-    }
-    
-    var isValid: Bool {
-        return !isInvalidated
     }
     
     convenience init(userID: String?, tagProtocol: TagProtocol) {

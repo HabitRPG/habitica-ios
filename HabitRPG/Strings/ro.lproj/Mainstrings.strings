@@ -145,8 +145,6 @@
 /* (No Comment) */
 "inventory.hatched" = "Ai clocit un nou animal de companie!";
 /* (No Comment) */
-"inventory.hatchedSharing" = "Tocmai am clocit un animalul de companie %@ %@ în Habitica, completându-mi sarcinile din viața reală!";
-/* (No Comment) */
 "inventory.no_gems_left" = "Nu mai există Nestemate disponibile luna aceasta. Mai multe vor fi disponibile în primele 3 zile ale fiecărei luni.";
 /* (No Comment) */
 "inventory.number_gems_left" = "Nestemate lunare: %d/%d Rămase";
@@ -175,43 +173,17 @@
 /* (No Comment) */
 "member.member_since" = "Membru din";
 /* (No Comment) */
-"menu.about" = "Despre noi";
-/* (No Comment) */
-"menu.cast_spells" = "Fă Vrăji";
-/* (No Comment) */
-"menu.challenges" = "Chemări";
-/* (No Comment) */
 "menu.customize_avatar" = "Personalizează Avatarul";
-/* (No Comment) */
-"menu.equipment" = "Echipament";
-/* (No Comment) */
-"menu.gems_subscriptions" = "Nestemate & Abonări";
-/* (No Comment) */
-"menu.guilds" = "Bresle";
 /* (No Comment) */
 "menu.help_faq" = "Ajutor & FAQ";
 /* (No Comment) */
 "menu.inventory" = "Inventar";
-/* (No Comment) */
-"menu.items" = "Obiecte";
-/* (No Comment) */
-"menu.news" = "Noutăți";
-/* (No Comment) */
-"menu.party" = "Grup";
 /* (No Comment) */
 "menu.select_class" = "Selectează Clasa";
 /* (No Comment) */
 "menu.shops" = "Magazine";
 /* (No Comment) */
 "menu.social" = "Social";
-/* (No Comment) */
-"menu.stable" = "Grajd";
-/* (No Comment) */
-"menu.stats" = "Statistici";
-/* (No Comment) */
-"menu.tavern" = "Tavernă";
-/* (No Comment) */
-"menu.use_skills" = "Utilizează-ți Abilitățile";
 /* (No Comment) */
 "monthly" = "Lunar";
 /* (No Comment) */
@@ -265,7 +237,7 @@
 /* (No Comment) */
 "quests.confirm_cancel_invitation" = "Ești sigur că vrei să anulezi această expediție? Toate invitațiile acceptate vor fi pierdute. Posesorul aventurii va păstra răvașul expediției.";
 /* (No Comment) */
-"quests.confirm_force_start" = "Ești sigur(ă)? Nu toți membrii cetei s-au alăturat acestei expediții! Expedițiile încep automat când toți jucătorii au acceptat sau refuzat invitația. ";
+"quests.confirm_force_start" = "Ești sigur(ă)? Nu toți membrii cetei s-au alăturat acestei expediții! Expedițiile încep automat când toți jucătorii au acceptat sau refuzat invitația.";
 /* (No Comment) */
 "quests.invitations_header" = "Invitations";
 /* (No Comment) */
@@ -303,7 +275,7 @@
 /* (No Comment) */
 "settings.change_class" = "Schimbă-ți Clasa";
 /* (No Comment) */
-"settings.change_class_disclaimer" = "Asta îți va reseta clasa personajului și punctele alocate (le vei primi înapoi pentru a le realoca), și va costa 3 nestemate. ";
+"settings.change_class_disclaimer" = "Asta îți va reseta clasa personajului și punctele alocate (le vei primi înapoi pentru a le realoca), și va costa 3 nestemate.";
 /* (No Comment) */
 "settings.clear_cache" = "Curăță Arhiva";
 /* (No Comment) */
@@ -319,7 +291,7 @@
 /* (No Comment) */
 "settings.display_notification_badge" = "Afișează Insigna de Notificare";
 /* (No Comment) */
-"settings.enable_class_system" = "Activează Sistemul de Clase.";
+"settings.enable_class_system" = "Activează Sistemul de Clase";
 /* (No Comment) */
 "settings.every_day" = "Zilnic la ora";
 /* (No Comment) */
@@ -334,8 +306,6 @@
 "settings.preferences" = "Preferințe";
 /* (No Comment) */
 "settings.profile" = "Profil";
-/* (No Comment) */
-"settings.push_notifications" = "Notificări Push";
 /* (No Comment) */
 "settings.reload_content" = "Reîncarcă Conținutul";
 /* (No Comment) */
@@ -402,10 +372,6 @@
 "stats.points_to_allocate" = "%d Puncte de Alocat";
 /* (No Comment) */
 "summary" = "Rezumat";
-/* (No Comment) */
-"sync_error" = "Eroare de Sincronizare";
-/* (No Comment) */
-"sync_error_message" = "A apărut o eroare de sincronizare a unor modificări";
 /* (No Comment) */
 "tags" = "Etichete";
 /* (No Comment) */
@@ -517,7 +483,7 @@
 /* (No Comment) */
 "unsubscribe_itunes" = "Nu vrei să mai fii abonat? Poți gestiona abonările în iTunes.";
 /* (No Comment) */
-"unsubscribe_website" = "Nu vrei să mai fii abonat? Datorită metodei tale de plată, te poți dezabona numai prin intermediul site-ului. ";
+"unsubscribe_website" = "Nu vrei să mai fii abonat? Datorită metodei tale de plată, te poți dezabona numai prin intermediul site-ului.";
 /* (No Comment) */
 "weekly" = "Săptămânal";
 /* (No Comment) */
@@ -547,7 +513,6 @@
 "titles.faq" = "Întrebări frecvente";
 "titles.about" = "Despre noi";
 "titles.news" = "Noutăți";
-"titles.stable" = "Grajd";
 "titles.pets" = "Animale de companie";
 "titles.mounts" = "Animale de călărit";
 "titles.tavern" = "Tavernă";
@@ -604,7 +569,7 @@
 "tasks.quality.good" = "Bun";
 "tasks.quality.better" = "Mai bun";
 "tasks.quality.best" = "Cel mai bun";
-"tasks.examples.habit_text" = "Apasă aici pentru a schimba asta într-un obicei negativ la care îți dorești să renunți.";
+"tasks.examples.habit_text" = "Apasă aici pentru a schimba asta într-un obicei negativ la care îți dorești să renunți";
 "tasks.examples.habit_notes" = "Sau șterge-l prin a da swipe la stânga";
 "tasks.examples.todo_text" = "Alătură-te la Habitica (Bifează-mă!)";
 "tasks.examples.todo_notes" = "Poți îndeplini această Sarcină, o poți edita sau elimina.";
@@ -696,7 +661,6 @@
 "email" = "Email";
 "groups.invite.add_userid" = "Adaugă un User ID";
 "groups.invite.add_email" = "Adaugă o adresă de Email";
-"scan_QR_code" = "Scanează Codul QR";
 "username" = "Nume de utilizator";
 "password" = "Parolă";
 "about.website" = "Website";
@@ -705,13 +669,13 @@
 "about.acknowledgements" = "Recunoașteri";
 "about.version" = "Versiune";
 "about.export_database" = "Export bazei de date";
-"about.no_email_title" = "Nu ți-ai setat încă o adresă de email.";
+"about.no_email_title" = "Nu ți-ai setat încă o adresă de email";
 "login.register" = "Înregistrează-te";
 "login.login" = "Autentifică-te";
 "login.login_facebook" = "Login cu Facebook";
 "login.login_google" = "Login cu Google";
 "login.email_password_link" = "Trimite email cu link-ul de resetare a Parolei";
-"login.enter_email" = "Introdu adresa de email utilizată la înregistrarea contului Habitica";
+"login.enter_email" = "Introdu adresa de email utilizată la înregistrarea contului Habitica.";
 "login.reset_password_response" = "Dacă avem adresa ta de email la dosar, ți-am trimis instrucțiuni pentru a-ți seta o parolă nouă.";
 "intro.card1.title" = "Bine ai venit la";
 "intro.card1.text" = "E timpul să te distrezi în timp ce rezolvi lucrurile pe care le ai de făcut. Alătură-te celor peste 2 milioane de jucători care își îmbunătățesc viața cu fiecare sarcină.";
@@ -740,7 +704,7 @@
 "no_benefit" = "Niciun Beneficiu";
 "errors.error" = "Eroare";
 "errors.sync" = "Eroare de Sincronizare";
-"errors.sync_message" = "A apărut o eroare de sincronizare a unor modificări";
+"errors.sync_message" = "A apărut o eroare de sincronizare a unor modificări.";
 "errors.quest_invite_accept" = "A apărut o eroare la acceptarea invitației în Expediție";
 "errors.quest_invite_reject" = "A apărut o eroare la refuzul invitației în expediție";
 "errors.reply" = "Mesajul tău nu a putut fi trimis.";
@@ -829,8 +793,6 @@
 "subscription_info_4_description" = "Dublul obiectelor căzute îți va permite să primești mai mult pentru fiecare sarcină completată zilnic, astfel încât să-ți poți completa grajdul mai rapid.";
 "subscription_benefits_title" = "Abonează-te și primește următoarele beneficii utile:";
 "gem_benefits_title" = "Nestematele îți permit să cumperi lucruri extra pentru contul tău, incluzând:";
-"unpin_from_rewards" = "Înlătură de la Recompense";
-"pin_to_rewards" = "Fixează la Recompense";
 "moderator" = "Moderator";
 "staff" = "Staff";
 "report_x_violation" = "Reclami pe %@ pentru încălcarea regulilor?";
@@ -841,8 +803,6 @@
 "next_checkin_prize_x_days" = "Următorul tău premiu se deblochează în %d Check-In-uri";
 "recipient" = "Destinatar";
 "no_camera" = "Cameră foto indisponibilă";
-"qr_invalid_id_title" = "ID Utilizator Habitica invalid";
-"qr_invalid_id_message" = "Codul-QR scanat nu conține un ID de Utilizator Habitica valid.";
 "not_enough_gems" = "Nu ai destule Nestemate";
 "not_enough_hourglasses" = "Clepsidre insuficiente";
 "subscribe_for_hourglasses" = "Abonează-te pentru a primi Clepsidre";
@@ -857,15 +817,15 @@
 "titles.avatar" = "Iconiță";
 "titles.gift_subscription" = "Trimite cadou";
 "stats.total" = "Total";
-"stats.strength_text" = "Sporește bonusul loviturilor critice și le face mai frecvente la terminarea unei sarcini. De asemenea, sporește loviturile către monștrii de tip \"Boss\" ";
+"stats.strength_text" = "Sporește bonusul loviturilor critice și le face mai frecvente la terminarea unei sarcini. De asemenea, sporește loviturile către monștrii de tip \"Boss\".";
 "tasks.form.accessibility.enable" = "Activează %@";
 "tasks.form.accessibility.disable" = "Dezactivează %@";
 "tasks.team" = "Echipă";
 "tasks.due_today" = "Termen limită azi";
 "tasks.due_tomorrow" = "Termen limită mâine";
 "tasks.due_in_x_days" = "Termen limită în %@ zile";
-"tasks.due_x" = "Termen limită %@";
 "tasks.every_x" = "la fiecare %@";
+"tasks.every_x" = "la fiecare %d %@";
 "tasks.repeats.repeats_every_on" = "Se repetă din %@ în %@";
 "tasks.repeats.repeats_every" = "Se repetă %@";
 "tasks.repeats.monthly_the" = "%@ul\n%@a";
@@ -886,7 +846,7 @@
 "avatar.body" = "Corp";
 "avatar.hair" = "Păr";
 "avatar.extras" = "Adiționale";
-"party.create_party_description" = "Începe aventuri cu prietenii sau pe cont propriu. Luptă cu monștri, creează Provocări, și reușește să rămâi responsabil prin Grupuri. ";
+"party.create_party_description" = "Începe aventuri cu prietenii sau pe cont propriu. Luptă cu monștri, creează Provocări, și reușește să rămâi responsabil prin Grupuri.";
 "party.join_party_description" = "Trimite unui membru din Grup numele de utilizator de mai jos și îți vor putea trimite o invitație";
 "party.party_description" = "Descrierea Grupului";
 "groups.members" = "Membri";

@@ -14,9 +14,22 @@ class APIChecklistItem: ChecklistItemProtocol, Codable {
     var text: String?
     var completed: Bool = false
     
+    enum CodingKeys: String, CodingKey {
+        case id
+        case text
+        case completed
+    }
+    
     init(_ itemProtocol: ChecklistItemProtocol) {
         id = itemProtocol.id
         text = itemProtocol.text
         completed = itemProtocol.completed
     }
+    
+    func detached() -> ChecklistItemProtocol {
+        return self
+    }
+    
+    var isValid: Bool = true
+    public var isManaged: Bool = false
 }

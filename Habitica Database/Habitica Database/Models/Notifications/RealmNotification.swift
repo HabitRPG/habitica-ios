@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 
-class RealmNotification: Object,
+class RealmNotification: BaseModel,
     NotificationNewsProtocol,
     NotificationUnallocatedStatsProtocol,
     NotificationNewChatProtocol,
@@ -66,11 +66,7 @@ NotificationFirstDropProtocol {
     }
     var realmRewardKey = List<String>()
     @objc dynamic var rewardText: String?
-    
-    var isValid: Bool {
-        return !isInvalidated
-    }
-    
+
     override static func primaryKey() -> String {
         return "id"
     }

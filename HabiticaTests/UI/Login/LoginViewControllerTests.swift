@@ -24,7 +24,6 @@ class LoginViewControllerTests: HabiticaTests {
         //need this to properly initialize view
         let _ = self.loginViewController?.view
         self.loginViewController?.bindViewModel()
-        self.isDeviceAgnostic = true
         self.recordMode = false
     }
     

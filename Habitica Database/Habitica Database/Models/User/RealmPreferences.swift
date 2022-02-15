@@ -11,7 +11,7 @@ import RealmSwift
 import Habitica_Models
 
 @objc
-class RealmPreferences: Object, PreferencesProtocol {
+class RealmPreferences: BaseModel, PreferencesProtocol {
     @objc dynamic var id: String?
     @objc dynamic var skin: String?
     @objc dynamic var language: String?
@@ -78,10 +78,6 @@ class RealmPreferences: Object, PreferencesProtocol {
     
     override static func primaryKey() -> String {
         return "id"
-    }
-    
-    var isValid: Bool {
-        return !isInvalidated
     }
     
     override static func ignoredProperties() -> [String] {

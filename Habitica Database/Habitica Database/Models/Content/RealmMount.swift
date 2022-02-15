@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 
-class RealmMount: Object, MountProtocol {
+class RealmMount: BaseModel, MountProtocol {
     @objc dynamic var key: String?
     @objc dynamic var egg: String?
     @objc dynamic var potion: String?
@@ -20,11 +20,7 @@ class RealmMount: Object, MountProtocol {
     override static func primaryKey() -> String {
         return "key"
     }
-    
-    var isValid: Bool {
-        return !isInvalidated
-    }
-    
+
     convenience init(_ mountProtocol: MountProtocol) {
         self.init()
         key = mountProtocol.key

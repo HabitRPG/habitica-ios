@@ -304,6 +304,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
                 weakSelf.beginButtonContainer.isHidden = false
             }
             if weakSelf.viewModel.currentAuthType == .login {
+                weakSelf.facebookLoginButton.isHidden = false
                 UIView.animate(withDuration: 0.4, delay: 0.6, options: [], animations: {
                     weakSelf.beginButtonContainer.arrangedSubviews[1].alpha = 0
                 }, completion: { (_) in
@@ -313,6 +314,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
                     weakSelf.beginButtonContainer.arrangedSubviews[0].alpha = 0
                 })
             } else if weakSelf.viewModel.currentAuthType == .register {
+                weakSelf.facebookLoginButton.isHidden = true
                 UIView.animate(withDuration: 0.4, delay: 0.6, options: [], animations: {
                     weakSelf.beginButtonContainer.arrangedSubviews[0].alpha = 0
                 }, completion: { (_) in

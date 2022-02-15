@@ -1,5 +1,5 @@
 //
-//  HRPGServerConfig.swift
+//  HabiticaServerConfig.swift
 //  Habitica
 //
 //  Created by Elliot Schrock on 9/20/17.

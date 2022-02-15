@@ -42,7 +42,7 @@ class AvatarViewTests: HabiticaTests {
                                 size: "broad"
                                 )
         
-        waitUntil(timeout: 5) { (done) in
+        waitUntil(timeout: .seconds(5)) { (done) in
             self.avatarView.onRenderingFinished = {
                 self.FBSnapshotVerifyView(self.avatarView, overallTolerance: 0.13)
                 done()
@@ -73,7 +73,7 @@ class AvatarViewTests: HabiticaTests {
                                 size: "broad"
         )
         
-        waitUntil(timeout: 5) { (done) in
+        waitUntil(timeout: .seconds(5)) { (done) in
             self.avatarView.onRenderingFinished = {
                 self.FBSnapshotVerifyView(self.avatarView, overallTolerance: 0.13)
                 done()
@@ -104,7 +104,7 @@ class AvatarViewTests: HabiticaTests {
                                 size: "broad"
         )
         
-        waitUntil(timeout: 5) { (done) in
+        waitUntil(timeout: .seconds(5)) { (done) in
             self.avatarView.onRenderingFinished = {
                 self.FBSnapshotVerifyView(self.avatarView, overallTolerance: 0.13)
                 done()
@@ -138,7 +138,7 @@ class AvatarViewTests: HabiticaTests {
                                 size: "broad"
         )
         
-        waitUntil(timeout: 5) { (done) in
+        waitUntil(timeout: .seconds(5)) { (done) in
             self.avatarView.onRenderingFinished = {
                 self.FBSnapshotVerifyView(self.avatarView, overallTolerance: 0.13)
                 done()
@@ -162,7 +162,7 @@ class AvatarViewTests: HabiticaTests {
                                 size: "broad"
         )
         
-        waitUntil(timeout: 5) { (done) in
+        waitUntil(timeout: .seconds(5)) { (done) in
             self.avatarView.onRenderingFinished = {
                 self.FBSnapshotVerifyView(self.avatarView, overallTolerance: 0.13)
                 done()
@@ -190,7 +190,7 @@ class AvatarViewTests: HabiticaTests {
                                 size: "broad"
         )
         
-        waitUntil(timeout: 5) { (done) in
+        waitUntil(timeout: .seconds(5)) { (done) in
             self.avatarView.onRenderingFinished = {
                 self.FBSnapshotVerifyView(self.avatarView, overallTolerance: 0.13)
                 done()
@@ -215,7 +215,7 @@ class AvatarViewTests: HabiticaTests {
                                 size: "broad"
         )
         
-        waitUntil(timeout: 5) { (done) in
+        waitUntil(timeout: .seconds(5)) { (done) in
             self.avatarView.onRenderingFinished = {
                 self.FBSnapshotVerifyView(self.avatarView, overallTolerance: 0.13)
                 done()
@@ -249,7 +249,7 @@ class AvatarViewTests: HabiticaTests {
                                 size: "broad"
         )
         
-        waitUntil(timeout: 5) { (done) in
+        waitUntil(timeout: .seconds(5)) { (done) in
             self.avatarView.onRenderingFinished = {
                 self.FBSnapshotVerifyView(self.avatarView, overallTolerance: 0.13)
                 done()
@@ -280,7 +280,7 @@ class AvatarViewTests: HabiticaTests {
                                 size: "broad"
         )
         
-        waitUntil(timeout: 5) { (done) in
+        waitUntil(timeout: .seconds(5)) { (done) in
             self.avatarView.onRenderingFinished = {
                 self.FBSnapshotVerifyView(self.avatarView, overallTolerance: 0.13)
                 done()

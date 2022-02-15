@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 
-class RealmCustomization: Object, CustomizationProtocol {
+class RealmCustomization: BaseModel, CustomizationProtocol {
     @objc dynamic var combinedKey: String?
     @objc dynamic var key: String?
     @objc dynamic var type: String?
@@ -33,11 +33,7 @@ class RealmCustomization: Object, CustomizationProtocol {
     override static func primaryKey() -> String {
         return "combinedKey"
     }
-    
-    var isValid: Bool {
-        return !isInvalidated
-    }
-    
+
     convenience init(_ customizationProtocol: CustomizationProtocol) {
         self.init()
         key = customizationProtocol.key

@@ -101,7 +101,7 @@
 /* (No Comment) */
 "inventory.hatched" = "Wyklułeś nowego Chowańca!";
 /* (No Comment) */
-"inventory.no_gems_left" = "Nie ma więcej dostępnych Klejnotów w tym miesiącu. Więcej będzie dostępne w ciągu pierwszych 3 dni każdego miesiąca.";
+"inventory.no_gems_left" = "Wykupiłeś(-aś) już wszystkie Klejnoty dostępne w tym miesiącu. Kolejne staną się dostępne w ciągu pierwszych trzech dni każdego miesiąca. Dziękujemy za korzystanie z subskrypcji!";
 /* (No Comment) */
 "invite_party" = "Zaproś Drużynę";
 /* (No Comment) */
@@ -121,43 +121,17 @@
 /* (No Comment) */
 "member.member_since" = "Członek od";
 /* (No Comment) */
-"menu.about" = "O nas";
-/* (No Comment) */
-"menu.cast_spells" = "Rzuć zaklęcie";
-/* (No Comment) */
-"menu.challenges" = "Wyzwania";
-/* (No Comment) */
 "menu.customize_avatar" = "Dostosuj Awatara";
-/* (No Comment) */
-"menu.equipment" = "Wyposażenie";
-/* (No Comment) */
-"menu.gems_subscriptions" = "Klejnoty i Abonament";
-/* (No Comment) */
-"menu.guilds" = "Gildie";
 /* (No Comment) */
 "menu.help_faq" = "Pomoc i FAQ";
 /* (No Comment) */
 "menu.inventory" = "Inwentarz";
-/* (No Comment) */
-"menu.items" = "Przedmioty";
-/* (No Comment) */
-"menu.news" = "Aktualności";
-/* (No Comment) */
-"menu.party" = "Drużyna";
 /* (No Comment) */
 "menu.select_class" = "Wybierz Klasę";
 /* (No Comment) */
 "menu.shops" = "Sklepy";
 /* (No Comment) */
 "menu.social" = "Społeczne";
-/* (No Comment) */
-"menu.stable" = "Stajnia";
-/* (No Comment) */
-"menu.stats" = "Statystyki";
-/* (No Comment) */
-"menu.tavern" = "Karczma";
-/* (No Comment) */
-"menu.use_skills" = "Użyj umiejętności";
 /* (No Comment) */
 "monthly" = "Miesięczny";
 /* (No Comment) */
@@ -195,7 +169,7 @@
 /* (No Comment) */
 "quests.rejected" = "Odrzucono";
 /* (No Comment) */
-"reset_tips" = "Zresetuj podpowiedzi Justina";
+"reset_tips" = "Zresetuj podpowiedzi";
 /* (No Comment) */
 "resetStreak" = "Zresetuj serię";
 /* (No Comment) */
@@ -238,8 +212,6 @@
 "settings.notification_badge" = "Ikonka Powiadomienia";
 /* (No Comment) */
 "settings.profile" = "Profil";
-/* (No Comment) */
-"settings.push_notifications" = "Powiadomienia push";
 /* (No Comment) */
 "settings.reload_content" = "Wczytaj zawartość ponownie";
 /* (No Comment) */
@@ -325,7 +297,7 @@
 /* (No Comment) */
 "tasks.reward" = "Nagroda";
 /* (No Comment) */
-"tasks.todo" = "Do-Zrobienia";
+"tasks.todo" = "Do Zrobienia";
 /* (No Comment) */
 "theme.blue" = "Błękitny";
 /* (No Comment) */
@@ -365,7 +337,6 @@
 "titles.faq" = "FAQ (często zadawane pytania)";
 "titles.about" = "O nas";
 "titles.news" = "Aktualności";
-"titles.stable" = "Stajnia";
 "titles.pets" = "Chowańce";
 "titles.mounts" = "Wierzchowce";
 "titles.tavern" = "Karczma";
@@ -392,7 +363,7 @@
 "tasks.habits" = "Nawyki";
 "tasks.dailies" = "Codzienne";
 "tasks.rewards" = "Nagrody";
-"tasks.todos" = "Do-Zrobienia";
+"tasks.todos" = "Do Zrobienia";
 "tasks.work" = "Praca";
 "tasks.exercise" = "Ćwiczenia";
 "tasks.health" = "Zdrowie";
@@ -499,7 +470,6 @@
 "email" = "E-mail";
 "groups.invite.add_userid" = "Dodaj ID Użytkownika";
 "groups.invite.add_email" = "Dodaj e-mail";
-"scan_QR_code" = "Zeskanuj kod QR";
 "username" = "Nazwa użytkownika";
 "password" = "Hasło";
 "confirm_username" = "Potwierdź nazwę użytkownika";
@@ -609,8 +579,6 @@
 "subscription_info_4_description" = "Podwojone limity zdobyczy pozwolą ci zdobyć więcej przedmiotów z wykonanych zadań każdego dnia, pozwalając ci uzupełnić swoją stajnie szybciej!";
 "subscription_benefits_title" = "Zostań subskrybentem, aby dostać te przydatne nagrody";
 "gem_benefits_title" = "Klejnoty pozwalają Ci kupować dodatkowe atrybuty takie jak:";
-"unpin_from_rewards" = "Odepnij z Nagród";
-"pin_to_rewards" = "Przypnij do Nagród";
 "moderator" = "Moderator";
 "staff" = "Personel";
 "report_x_violation" = "Zgłosić naruszenie zasad przez %@ ?";
@@ -621,8 +589,6 @@
 "next_checkin_prize_x_days" = "Twoja następna nagroda zostanie odblokowana za %dwizyt";
 "recipient" = "Odbiorca";
 "no_camera" = "Kamera jest niedostępna";
-"qr_invalid_id_title" = "Nieprawidłowy ID użytkownika Habitica";
-"qr_invalid_id_message" = "Zeskanowany kod QR nie zawiera poprawnego ID użytkownika Habitica.";
 "not_enough_gems" = "Niewystarczająca liczba Klejnotów";
 "choose_task" = "Wybierz Zadanie";
 "shops.purchased_all_gear" = "Już posiadasz wszystkie przedmioty dla swojej klasy. Więcej zostanie dodanych podczas Wielkich Gali zaczynających się w okolicach równonocy i przesileń.";
@@ -670,3 +636,26 @@
 "tasks.due_today" = "Do dzisiaj";
 "renew_subscription" = "Odnów subskrypcję";
 "titles.pets_and_mounts" = "Chowańce i Wierzchowce";
+"stats.strength_text" = "Zwiększa premię za trafienia krytyczne i zwiększa ich prawdopodobieństwo wystąpienia przy zaliczaniu zadania. Zwiększa także obrażenia zadawane bossom.";
+"titles.basics" = "Główne";
+"titles.hall_of_patrons" = "Sala chwały patronów";
+"titles.hall_of_contributors" = "Sala chwały wspierających";
+"titles.hall_of_heroes" = "Sala bohaterów";
+"stats.constitution_text" = "Zmniejsza ilość obrażeń otrzymywanych z twoich zadań. Nie zmniejsza obrażeń otrzymywanych od bosów.";
+"stats.stat_guide" = "Przewodnik po statystykach";
+"tasks.form.controls" = "Sterowanie";
+"tasks.form.habit_title_placeholder" = "Jakie nawyki chcesz kultywować albo z nimi zerwać?";
+"tasks.form.create" = "Nowy %@";
+"controls" = "Sterowanie";
+"stats.perception_text" = "Zwiększa szansę na drop podczas: wykonywania zadań, dziennego dropu, bonusy za ciągłość oraz ilość złota przyznawaną za zadania.";
+"tasks.form.due_date" = "Termin wykonania";
+"tasks.form.start_date" = "Data rozpoczęcia";
+"tasks.form.scheduling" = "Planowanie";
+"tasks.form.todos_title_placeholder" = "Co chcesz raz ukończyć?";
+"tasks.form.accessibility.disable_positive" = "Wyłącz pozytwyną akcję.";
+"tasks.form.accessibility.enable_positive" = "Włącz pozytywną akcję.";
+"tasks.form.accessibility.negative_enabled" = "Akcja negatywnego nawyku włączona.";
+"tasks.form.accessibility.positive_enabled" = "Akcja pozytywnego nawyku włączona.";
+"tasks.form.accessibility.positive_and_negative_enabled" = "Akcje pozytywnych i negatywnych zwyczajów włączone.";
+"tasks.form.every" = "Każdy";
+"tasks.form.accessibility.enable_negative" = "Włącz działanie negatywne.";

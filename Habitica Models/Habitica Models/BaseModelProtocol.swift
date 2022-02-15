@@ -11,4 +11,5 @@ import Foundation
 @objc
 public protocol BaseModelProtocol {
     var isValid: Bool { get }
+    var isManaged: Bool { get }
 }

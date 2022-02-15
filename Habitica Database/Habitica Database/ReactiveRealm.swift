@@ -431,6 +431,12 @@ public  extension SignalProducerProtocol where Value: SortableRealmResults, Erro
         }
     }
     
+    func sorted(by: [RealmSwift.SortDescriptor]) -> SignalProducer<Self.Value, ReactiveSwiftRealmError> {
+        return producer.flatMap(.latest) { results in
+            return SignalProducer(value: results.sorted(by: by) as Self.Value) as SignalProducer<Self.Value, ReactiveSwiftRealmError>
+        }
+    }
+    
     func distinct(by sequence: [String]) -> SignalProducer<Self.Value, ReactiveSwiftRealmError> {
         return producer.map({ (results) in
             return results.distinct(by: sequence) as Self.Value
@@ -515,6 +521,7 @@ public protocol SortableRealmResults {
      */
     
     func sorted(byKeyPath keyPath: String, ascending: Bool) -> Self
+    func sorted(by: [RealmSwift.SortDescriptor]) -> Self
     // swiftlint:disable:next identifier_name
     func distinct(by: [String]) -> Self
 }

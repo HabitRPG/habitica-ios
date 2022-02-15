@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 
-class RealmPet: Object, PetProtocol {
+class RealmPet: BaseModel, PetProtocol {
     @objc dynamic var key: String?
     @objc dynamic var egg: String?
     @objc dynamic var potion: String?
@@ -20,11 +20,7 @@ class RealmPet: Object, PetProtocol {
     override static func primaryKey() -> String {
         return "key"
     }
-    
-    var isValid: Bool {
-        return !isInvalidated
-    }
-    
+
     convenience init(_ petProtocol: PetProtocol) {
         self.init()
         key = petProtocol.key

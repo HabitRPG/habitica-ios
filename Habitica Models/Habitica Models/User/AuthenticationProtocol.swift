@@ -12,14 +12,24 @@ import Foundation
 public protocol AuthenticationProtocol {
     var timestamps: AuthenticationTimestampsProtocol? { get set }
     var local: LocalAuthenticationProtocol? { get set }
-    var facebookID: String? { get set }
-    var googleID: String? { get set }
-    var appleID: String? { get set }
+    var facebook: SocialAuthenticationProtocol? { get set }
+    var google: SocialAuthenticationProtocol? { get set }
+    var apple: SocialAuthenticationProtocol? { get set }
     
 }
 
 public extension AuthenticationProtocol {
     var hasLocalAuth: Bool {
         return local?.email != nil
+    }
+    
+    var hasAppleAuth: Bool {
+        return apple?.id != nil || apple?.emails.isEmpty == false
+    }
+    var hasGoogleAuth: Bool {
+        return google?.id != nil || google?.emails.isEmpty == false
+    }
+    var hasFacebookAuth: Bool {
+        return facebook?.id != nil || facebook?.emails.isEmpty == false
     }
 }

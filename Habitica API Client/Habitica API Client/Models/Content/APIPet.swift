@@ -16,6 +16,7 @@ class APIPet: PetProtocol, Decodable {
     var type: String?
     var text: String?
     var isValid: Bool = true
+    public var isManaged: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case key

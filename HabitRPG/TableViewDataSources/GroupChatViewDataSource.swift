@@ -18,7 +18,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
 
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     private var user: UserProtocol?
     private let groupID: String
     

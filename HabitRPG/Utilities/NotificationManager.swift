@@ -14,7 +14,7 @@ import FirebaseAnalytics
 
 class NotificationManager {
     private static var seenNotifications = Set<String>()
-    private static let configRepository = ConfigRepository()
+    private static let configRepository = ConfigRepository.shared
     private static let userRepository = UserRepository()
     
     static func handle(notifications: [NotificationProtocol]) -> [NotificationProtocol] {

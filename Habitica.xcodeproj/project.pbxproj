@@ -23,6 +23,7 @@
 		29028C3E203701B900B7F704 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29028C3D203701B900B7F704 /* ChatTableViewCell.swift */; };
 		29028C422037131C00B7F704 /* SystemMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29028C412037131C00B7F704 /* SystemMessageTableViewCell.swift */; };
 		29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29028C432037132A00B7F704 /* SystemMessageTableViewCell.xib */; };
+		29038F2126F33CDB005CA2D3 /* DueDateFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29038F2026F33CDB005CA2D3 /* DueDateFormView.swift */; };
 		290458D02021D6C60032BC5E /* TopHeaderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */; };
 		29066CF424FE62E700A266EE /* HabiticaPromotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29066CF324FE62E700A266EE /* HabiticaPromotions.swift */; };
 		29066CF724FE6A6900A266EE /* PromoMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29066CF624FE6A6900A266EE /* PromoMenuView.swift */; };
@@ -37,6 +38,14 @@
 		2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */; };
 		2908E3512217255600D246CD /* (null) in Resources */ = {isa = PBXBuildFile; };
 		290922F02242628600645D0E /* LanguageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290922EF2242628600645D0E /* LanguageHandler.swift */; };
+		2909D41F272199BE00FF2B29 /* MultiLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D41E272199BE00FF2B29 /* MultiLineTextField.swift */; };
+		2909D4222722C20A00FF2B29 /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D4212722C20A00FF2B29 /* Servers.swift */; };
+		2909D4242722C22500FF2B29 /* InitialScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D4232722C22500FF2B29 /* InitialScreens.swift */; };
+		2909D4262722C23300FF2B29 /* ThemeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D4252722C23300FF2B29 /* ThemeName.swift */; };
+		2909D4282722C24700FF2B29 /* ThemeMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D4272722C24700FF2B29 /* ThemeMode.swift */; };
+		2909D42A2722C25800FF2B29 /* AppIconName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D4292722C25800FF2B29 /* AppIconName.swift */; };
+		2909D42C2726AA2500FF2B29 /* TrackableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D42B2726AA2500FF2B29 /* TrackableScrollView.swift */; };
+		2909D42E2726ACBD00FF2B29 /* Binding-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D42D2726ACBD00FF2B29 /* Binding-Extensions.swift */; };
 		290A405421FA175800A409BA /* Purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405221FA175700A409BA /* Purple@2x.png */; };
 		290A405521FA175800A409BA /* Purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405321FA175800A409BA /* Purple@3x.png */; };
 		290B623F20727113007287C4 /* MyGuildCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B623E20727113007287C4 /* MyGuildCell.swift */; };
@@ -84,6 +93,8 @@
 		29144896208A270800F3A6B5 /* AvatarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29144895208A270800F3A6B5 /* AvatarDetailViewController.swift */; };
 		29144898208A271C00F3A6B5 /* AvatarDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29144897208A271C00F3A6B5 /* AvatarDetailViewDataSource.swift */; };
 		291448A8208A3DD200F3A6B5 /* CustomizationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448A7208A3DD200F3A6B5 /* CustomizationRepository.swift */; };
+		2914943A2731553300DF2153 /* NumberPickerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291494392731553300DF2153 /* NumberPickerFormView.swift */; };
+		2914943C273163AF00DF2153 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914943B273163AF00DF2153 /* SceneDelegate.swift */; };
 		2919FDD52090CF900096A53B /* InboxMessagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDD42090CF900096A53B /* InboxMessagesDataSource.swift */; };
 		2919FDDD2091D5370096A53B /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDDC2091D5370096A53B /* UserManager.swift */; };
 		2919FDDF2091D87A0096A53B /* FaintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDDE2091D87A0096A53B /* FaintViewController.swift */; };
@@ -183,6 +194,7 @@
 		2959815E224118A100819029 /* MaroonAltBlack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2959814C224118A100819029 /* MaroonAltBlack@2x.png */; };
 		2959815F224118A100819029 /* GreenAltBlack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2959814D224118A100819029 /* GreenAltBlack@2x.png */; };
 		29598160224118A100819029 /* BlueAltBlack@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2959814E224118A100819029 /* BlueAltBlack@3x.png */; };
+		2959BC84275E1BDE005EE62D /* EditingFormViewController-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2959BC83275E1BDE005EE62D /* EditingFormViewController-Extensions.swift */; };
 		295BC6E4226F0F9500DDDF1A /* NotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295BC6E3226F0F9500DDDF1A /* NotificationsTableViewController.swift */; };
 		295BC6F6226F4BC600DDDF1A /* NotificationsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295BC6F5226F4BC600DDDF1A /* NotificationsDataSource.swift */; };
 		295BC6F9226F5B6400DDDF1A /* BaseNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295BC6F8226F5B6400DDDF1A /* BaseNotificationCell.swift */; };
@@ -275,7 +287,7 @@
 		2995F7FB25BAF3B600322CB3 /* RemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2995F7FA25BAF3B600322CB3 /* RemoteLogger.swift */; };
 		2995F7FC25BAF3B600322CB3 /* RemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2995F7FA25BAF3B600322CB3 /* RemoteLogger.swift */; };
 		2996AA1F22EB157800033D92 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2996AA2122EB157800033D92 /* AppIntentVocabulary.plist */; };
-		29995A6126CBCB0B0063D4C9 /* AdServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29995A6026CBCB0B0063D4C9 /* AdServices.framework */; };
+		29995A6126CBCB0B0063D4C9 /* AdServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29995A6026CBCB0B0063D4C9 /* AdServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		299A556226402F800015EA5C /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299A556126402F800015EA5C /* TaskDetailView.swift */; };
 		299B12492642D2AB00498025 /* PromoWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299B12482642D2AB00498025 /* PromoWebViewController.swift */; };
 		299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6211F505DFA00E22935 /* PaddedLabel.swift */; };
@@ -328,10 +340,7 @@
 		29AAE5592450934C00220DB1 /* HRPGBulkPurchaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29AAE5582450934C00220DB1 /* HRPGBulkPurchaseView.xib */; };
 		29ACB3AC26404496009B059C /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ACB3AB26404496009B059C /* CalendarView.swift */; };
 		29B388E11EF2BB7600A72950 /* YesterdailyChecklistItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */; };
-		29B3FEAC1F9A3395000B12CF /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEAB1F9A3395000B12CF /* ProfileSettingsViewController.swift */; };
-		29B3FEAF1F9A33AB000B12CF /* APISettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEAE1F9A33AB000B12CF /* APISettingsViewController.swift */; };
 		29B3FEB11F9A37E3000B12CF /* BaseSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEB01F9A37E3000B12CF /* BaseSettingsViewController.swift */; };
-		29B3FEBA1F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEB91F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift */; };
 		29B3FEBC1F9E3B17000B12CF /* HabiticaAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */; };
 		29B3FEBE1F9E3DC3000B12CF /* HabiticaAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */; };
 		29B4788420BD6DED00B6123F /* SkillsUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4788320BD6DED00B6123F /* SkillsUserTableViewController.swift */; };
@@ -341,6 +350,8 @@
 		29B478BD20C1378100B6123F /* ChallengeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B478BC20C1378100B6123F /* ChallengeTableViewCell.xib */; };
 		29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */; };
 		29B6AD4C1F2A0DBE00AC8878 /* LoginEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */; };
+		29BD3EB327590731003AD251 /* FocusableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BD3EB227590730003AD251 /* FocusableTextField.swift */; };
+		29BD3EB527591FBE003AD251 /* EditingFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BD3EB427591FBE003AD251 /* EditingFormViewController.swift */; };
 		29BEE62D252CCFE100D456F8 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BEE62C252CCFE100D456F8 /* WidgetKit.framework */; platformFilter = ios; };
 		29BEE62F252CCFE100D456F8 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BEE62E252CCFE100D456F8 /* SwiftUI.framework */; };
 		29BEE632252CCFE100D456F8 /* StatsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE631252CCFE100D456F8 /* StatsWidget.swift */; };
@@ -384,6 +395,9 @@
 		29D50B7B25F9037A0009CF55 /* AppDelegate-Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D50B7A25F9037A0009CF55 /* AppDelegate-Notifications.swift */; };
 		29D50B9225F92E460009CF55 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D50B9125F92E460009CF55 /* NotificationService.swift */; };
 		29D50BA025F92ED10009CF55 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902796A2057F2C5006DACB9 /* Strings.swift */; };
+		29DBDE48274BCDA2008F6777 /* HabiticaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE47274BCDA2008F6777 /* HabiticaTests.swift */; };
+		29DBDE4A274BE745008F6777 /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE49274BE745008F6777 /* AccountSettingsViewController.swift */; };
+		29DBDE54274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE53274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift */; };
 		29DBFEF720C997D100DF9CF2 /* CalculateUserStatsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEF620C997D100DF9CF2 /* CalculateUserStatsInteractor.swift */; };
 		29DBFF0120CE6FFF00DF9CF2 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */; };
 		29DBFF0520CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0420CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift */; };
@@ -412,6 +426,7 @@
 		29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */; };
 		29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */; };
 		29EFF94E25AC750700D73F55 /* AchievementNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EFF94D25AC750700D73F55 /* AchievementNotificationCell.swift */; };
+		29F808922770B0D900BAF854 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F808912770B0D900BAF854 /* Secrets.swift */; };
 		29F89F1A1F47882A004E5B84 /* String-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89F191F47882A004E5B84 /* String-Extensions.swift */; };
 		29F9761822DDFDA50079B945 /* AchievementHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F9761722DDFDA50079B945 /* AchievementHeaderReusableView.swift */; };
 		29FC5A6520402EF6008E88C8 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC5A6420402EF6008E88C8 /* Theme.swift */; };
@@ -437,8 +452,8 @@
 		29FEB27A202B4F0400EA245A /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FEB279202B4F0400EA245A /* AvatarView.swift */; };
 		328C951E24A2C13100293E16 /* LinksOnlyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328C951D24A2C13100293E16 /* LinksOnlyTextView.swift */; };
 		32C6FFF226ED896400C8F682 /* PathTraceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6FFF126ED896400C8F682 /* PathTraceable.swift */; };
-		32C71C6725507E65007E48C5 /* Habitica WidgetsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		49005B721F180589004830D9 /* HRPGCurrencyCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */; };
+		32C71C6725507E65007E48C5 /* Habitica WidgetsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		49005B721F180589004830D9 /* CurrencyCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B711F180588004830D9 /* CurrencyCountView.swift */; };
 		49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */; };
 		49005B7E1F183775004830D9 /* HRPGShopUserHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */; };
 		4904C7401F1ED87400F80723 /* GradientImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904C73F1F1ED87400F80723 /* GradientImageView.swift */; };
@@ -471,7 +486,6 @@
 		49A4646B1FCD18FD00E14A5D /* HRPGButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A4646A1FCD18FD00E14A5D /* HRPGButtonViewModel.swift */; };
 		49A84FB21F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A84FB01F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift */; };
 		49A84FB31F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49A84FB11F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib */; };
-		49B87D96201BBF3800CA1A75 /* HabiticaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B87D95201BBF3800CA1A75 /* HabiticaTests.m */; };
 		49DCB79B1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB79A1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift */; };
 		49DCB7AC1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7AB1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift */; };
 		49DCB7B01F3923F20079FDD0 /* HRPGSimpleShopItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7AF1F3923F20079FDD0 /* HRPGSimpleShopItemView.xib */; };
@@ -517,7 +531,6 @@
 		D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */; };
 		D90576851BD83240009BB7BC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D90576871BD83240009BB7BC /* InfoPlist.strings */; };
 		D91CCAD01BCF11CC001C6A0C /* UserTopHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */; };
-		D92C0C411B8745DF000AF799 /* HRPGAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C0C401B8745DF000AF799 /* HRPGAPITests.m */; };
 		D92C60FC1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C60FB1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m */; };
 		D92D26161D58EF00001FD977 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D92D26151D58EF00001FD977 /* AVFoundation.framework */; };
 		D942B5381CAAE6B1009AB756 /* Social.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D942B53A1CAAE6B1009AB756 /* Social.storyboard */; };
@@ -559,7 +572,6 @@
 		D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */; };
 		D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D99DEC88190842CA00FFD2B9 /* Placeholder.png */; };
 		D99E42681D6B1FD500811B6D /* FaintViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D99E42671D6B1FD500811B6D /* FaintViewController.xib */; };
-		D99EA7421B8667C90048BF6A /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D99EA7411B8667C90048BF6A /* libOCMock.a */; };
 		D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99F15BF191027D90081836E /* HRPGBaseViewController.m */; };
 		D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9A50E991A868DE400FC8B1A /* Launch Screen.xib */; };
 		D9A63A341E10328A0083ADC4 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A63A331E10328A0083ADC4 /* LoginTableViewController.swift */; };
@@ -694,6 +706,7 @@
 		29028C3D203701B900B7F704 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		29028C412037131C00B7F704 /* SystemMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessageTableViewCell.swift; sourceTree = "<group>"; };
 		29028C432037132A00B7F704 /* SystemMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SystemMessageTableViewCell.xib; sourceTree = "<group>"; };
+		29038F2026F33CDB005CA2D3 /* DueDateFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DueDateFormView.swift; sourceTree = "<group>"; };
 		290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderCoordinator.swift; sourceTree = "<group>"; };
 		29066CF324FE62E700A266EE /* HabiticaPromotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaPromotions.swift; sourceTree = "<group>"; };
 		29066CF624FE6A6900A266EE /* PromoMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoMenuView.swift; sourceTree = "<group>"; };
@@ -708,6 +721,14 @@
 		2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		2908E3502217245500D246CD /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		290922EF2242628600645D0E /* LanguageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageHandler.swift; sourceTree = "<group>"; };
+		2909D41E272199BE00FF2B29 /* MultiLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineTextField.swift; sourceTree = "<group>"; };
+		2909D4212722C20A00FF2B29 /* Servers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Servers.swift; sourceTree = "<group>"; };
+		2909D4232722C22500FF2B29 /* InitialScreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreens.swift; sourceTree = "<group>"; };
+		2909D4252722C23300FF2B29 /* ThemeName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeName.swift; sourceTree = "<group>"; };
+		2909D4272722C24700FF2B29 /* ThemeMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeMode.swift; sourceTree = "<group>"; };
+		2909D4292722C25800FF2B29 /* AppIconName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconName.swift; sourceTree = "<group>"; };
+		2909D42B2726AA2500FF2B29 /* TrackableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackableScrollView.swift; sourceTree = "<group>"; };
+		2909D42D2726ACBD00FF2B29 /* Binding-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding-Extensions.swift"; sourceTree = "<group>"; };
 		290A2AD020F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/OnePasswordExtension.strings"; sourceTree = "<group>"; };
 		290A2AD220F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Mainstrings.strings"; sourceTree = "<group>"; };
 		290A405221FA175700A409BA /* Purple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Purple@2x.png"; sourceTree = "<group>"; };
@@ -761,6 +782,8 @@
 		29144895208A270800F3A6B5 /* AvatarDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarDetailViewController.swift; sourceTree = "<group>"; };
 		29144897208A271C00F3A6B5 /* AvatarDetailViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarDetailViewDataSource.swift; sourceTree = "<group>"; };
 		291448A7208A3DD200F3A6B5 /* CustomizationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationRepository.swift; sourceTree = "<group>"; };
+		291494392731553300DF2153 /* NumberPickerFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerFormView.swift; sourceTree = "<group>"; };
+		2914943B273163AF00DF2153 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = Utilities/SceneDelegate.swift; sourceTree = "<group>"; };
 		2919FDD42090CF900096A53B /* InboxMessagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxMessagesDataSource.swift; sourceTree = "<group>"; };
 		2919FDDC2091D5370096A53B /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		2919FDDE2091D87A0096A53B /* FaintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaintViewController.swift; sourceTree = "<group>"; };
@@ -871,6 +894,7 @@
 		2959814C224118A100819029 /* MaroonAltBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MaroonAltBlack@2x.png"; sourceTree = "<group>"; };
 		2959814D224118A100819029 /* GreenAltBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GreenAltBlack@2x.png"; sourceTree = "<group>"; };
 		2959814E224118A100819029 /* BlueAltBlack@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueAltBlack@3x.png"; sourceTree = "<group>"; };
+		2959BC83275E1BDE005EE62D /* EditingFormViewController-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditingFormViewController-Extensions.swift"; sourceTree = "<group>"; };
 		295BC6E3226F0F9500DDDF1A /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewController.swift; sourceTree = "<group>"; };
 		295BC6F5226F4BC600DDDF1A /* NotificationsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsDataSource.swift; sourceTree = "<group>"; };
 		295BC6F8226F5B6400DDDF1A /* BaseNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNotificationCell.swift; sourceTree = "<group>"; };
@@ -1035,10 +1059,7 @@
 		29AAE5582450934C00220DB1 /* HRPGBulkPurchaseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HRPGBulkPurchaseView.xib; sourceTree = "<group>"; };
 		29ACB3AB26404496009B059C /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailyChecklistItem.xib; sourceTree = "<group>"; };
-		29B3FEAB1F9A3395000B12CF /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
-		29B3FEAE1F9A33AB000B12CF /* APISettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISettingsViewController.swift; sourceTree = "<group>"; };
 		29B3FEB01F9A37E3000B12CF /* BaseSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingsViewController.swift; sourceTree = "<group>"; };
-		29B3FEB91F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSettingsViewController.swift; sourceTree = "<group>"; };
 		29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaAlertController.swift; sourceTree = "<group>"; };
 		29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabiticaAlertController.xib; sourceTree = "<group>"; };
 		29B4788320BD6DED00B6123F /* SkillsUserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsUserTableViewController.swift; sourceTree = "<group>"; };
@@ -1055,6 +1076,8 @@
 		29B77C5E20F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
 		29B77C6020F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29B77C6120F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		29BD3EB227590730003AD251 /* FocusableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusableTextField.swift; sourceTree = "<group>"; };
+		29BD3EB427591FBE003AD251 /* EditingFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingFormViewController.swift; sourceTree = "<group>"; };
 		29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Habitica WidgetsExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BEE62C252CCFE100D456F8 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		29BEE62E252CCFE100D456F8 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -1102,6 +1125,9 @@
 		29D5AD5C20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
 		29D5AD5E20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29D5AD5F20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		29DBDE47274BCDA2008F6777 /* HabiticaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaTests.swift; sourceTree = "<group>"; };
+		29DBDE49274BE745008F6777 /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
+		29DBDE53274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountSettingsViewController+Apple.swift"; sourceTree = "<group>"; };
 		29DBFEF620C997D100DF9CF2 /* CalculateUserStatsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateUserStatsInteractor.swift; sourceTree = "<group>"; };
 		29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		29DBFF0420CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarGearDetailViewDataSource.swift; sourceTree = "<group>"; };
@@ -1131,6 +1157,7 @@
 		29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomization.swift; sourceTree = "<group>"; };
 		29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Extensions.swift"; sourceTree = "<group>"; };
 		29EFF94D25AC750700D73F55 /* AchievementNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementNotificationCell.swift; sourceTree = "<group>"; };
+		29F808912770B0D900BAF854 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		29F89F191F47882A004E5B84 /* String-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Extensions.swift"; sourceTree = "<group>"; };
 		29F9761722DDFDA50079B945 /* AchievementHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementHeaderReusableView.swift; sourceTree = "<group>"; };
 		29FC5A6420402EF6008E88C8 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -1159,7 +1186,7 @@
 		32C6FFF126ED896400C8F682 /* PathTraceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTraceable.swift; sourceTree = "<group>"; };
 		3E46B677D2A4BB73B690AD0B /* Pods_Habitica_Intents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Intents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		413C740A78F5BEC964FFA7C8 /* Pods-Habitica Intents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Intents.debug.xcconfig"; path = "Target Support Files/Pods-Habitica Intents/Pods-Habitica Intents.debug.xcconfig"; sourceTree = "<group>"; };
-		49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGCurrencyCountView.swift; sourceTree = "<group>"; };
+		49005B711F180588004830D9 /* CurrencyCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyCountView.swift; sourceTree = "<group>"; };
 		49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopUserHeaderView.swift; sourceTree = "<group>"; };
 		49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGShopUserHeaderView.xib; sourceTree = "<group>"; };
 		4904C73F1F1ED87400F80723 /* GradientImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientImageView.swift; sourceTree = "<group>"; };
@@ -1192,8 +1219,6 @@
 		49A4646A1FCD18FD00E14A5D /* HRPGButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRPGButtonViewModel.swift; sourceTree = "<group>"; };
 		49A84FB01F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailInfoTableViewCell.swift; sourceTree = "<group>"; };
 		49A84FB11F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeDetailInfoTableViewCell.xib; sourceTree = "<group>"; };
-		49B87D94201BBF3800CA1A75 /* HabiticaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HabiticaTests.h; sourceTree = "<group>"; };
-		49B87D95201BBF3800CA1A75 /* HabiticaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabiticaTests.m; sourceTree = "<group>"; };
 		49DCB79A1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGBuyItemModalViewController.swift; sourceTree = "<group>"; };
 		49DCB7AB1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGSimpleShopItemView.swift; sourceTree = "<group>"; };
 		49DCB7AF1F3923F20079FDD0 /* HRPGSimpleShopItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGSimpleShopItemView.xib; sourceTree = "<group>"; };
@@ -1257,7 +1282,6 @@
 		D915F8621915BEE50037D04D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D915F8641915BF0D0037D04D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTopHeader.xib; sourceTree = "<group>"; };
-		D92C0C401B8745DF000AF799 /* HRPGAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGAPITests.m; sourceTree = "<group>"; };
 		D92C60FA1BD3FAC1005F68CC /* HRPGCopyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCopyTableViewCell.h; sourceTree = "<group>"; };
 		D92C60FB1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCopyTableViewCell.m; sourceTree = "<group>"; };
 		D92D26151D58EF00001FD977 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -1316,7 +1340,6 @@
 		D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
 		D99DEC88190842CA00FFD2B9 /* Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder.png; sourceTree = "<group>"; };
 		D99E42671D6B1FD500811B6D /* FaintViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FaintViewController.xib; sourceTree = "<group>"; };
-		D99EA7411B8667C90048BF6A /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = OCMock/libOCMock.a; sourceTree = "<group>"; };
 		D99F15BE191027D90081836E /* HRPGBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGBaseViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D99F15BF191027D90081836E /* HRPGBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGBaseViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9A50E991A868DE400FC8B1A /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "Launch Screen.xib"; path = "HabitRPG/Launch Screen.xib"; sourceTree = SOURCE_ROOT; };
@@ -1450,7 +1473,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D99EA7421B8667C90048BF6A /* libOCMock.a in Frameworks */,
 				E5131EDFE139A4F0F61436A5 /* Pods_HabiticaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1496,6 +1518,7 @@
 				C897F63E218CE052002907C2 /* Storyboard Segues.swift */,
 				2902796A2057F2C5006DACB9 /* Strings.swift */,
 				29087849220210CF0010820A /* Strings-objcBridge.swift */,
+				29F808912770B0D900BAF854 /* Secrets.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -1531,6 +1554,18 @@
 				29066CFA24FE83D300A266EE /* PromoBannerView.swift */,
 			);
 			path = promotions;
+			sourceTree = "<group>";
+		};
+		2909D4202722C1FF00FF2B29 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				2909D4212722C20A00FF2B29 /* Servers.swift */,
+				2909D4232722C22500FF2B29 /* InitialScreens.swift */,
+				2909D4252722C23300FF2B29 /* ThemeName.swift */,
+				2909D4272722C24700FF2B29 /* ThemeMode.swift */,
+				2909D4292722C25800FF2B29 /* AppIconName.swift */,
+			);
+			path = settings;
 			sourceTree = "<group>";
 		};
 		290B6296207E3F1F007287C4 /* Groups */ = {
@@ -1887,12 +1922,12 @@
 		29B3FEAD1F9A339B000B12CF /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				29B3FEAB1F9A3395000B12CF /* ProfileSettingsViewController.swift */,
 				29B3FEB01F9A37E3000B12CF /* BaseSettingsViewController.swift */,
 				294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */,
-				29B3FEAE1F9A33AB000B12CF /* APISettingsViewController.swift */,
-				29B3FEB91F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift */,
 				290B62492073C37A007287C4 /* SettingsViewController.swift */,
+				29DBDE49274BE745008F6777 /* AccountSettingsViewController.swift */,
+				29DBDE53274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift */,
+				29BD3EB427591FBE003AD251 /* EditingFormViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1933,6 +1968,10 @@
 				2942F8CE266DF9CB003F6500 /* TaskFormView.swift */,
 				29A4FE6226A9B3DB00F0FE30 /* HabitProgressView.swift */,
 				29AA79C62685B71100871541 /* TaskFormPicker.swift */,
+				29038F2026F33CDB005CA2D3 /* DueDateFormView.swift */,
+				291494392731553300DF2153 /* NumberPickerFormView.swift */,
+				2909D41E272199BE00FF2B29 /* MultiLineTextField.swift */,
+				2909D42B2726AA2500FF2B29 /* TrackableScrollView.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -2218,17 +2257,15 @@
 		D94461841AB34F5C0015215E /* HabiticaTests */ = {
 			isa = PBXGroup;
 			children = (
-				49B87D94201BBF3800CA1A75 /* HabiticaTests.h */,
-				49B87D95201BBF3800CA1A75 /* HabiticaTests.m */,
 				D9709A551E80536A0005F35B /* Interactors */,
 				D957043F1E152576004F6804 /* TestHelpers */,
 				D957043C1E151C1C004F6804 /* HabiticaTests-Bridging-Header.h */,
 				D957043A1E151BE5004F6804 /* UI */,
 				D946E5BF1B30A7D200806BE6 /* Mocks */,
 				D9B967CB1AB33BD0001D84F7 /* Fixtures */,
-				D92C0C401B8745DF000AF799 /* HRPGAPITests.m */,
 				D94461851AB34F5C0015215E /* Supporting Files */,
 				2970CB51227B1A8600FACCB7 /* MarkdownTests.swift */,
+				29DBDE47274BCDA2008F6777 /* HabiticaTests.swift */,
 			);
 			path = HabiticaTests;
 			sourceTree = "<group>";
@@ -2288,6 +2325,8 @@
 				D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */,
 				29D50A6725F66F760009CF55 /* UIWindowScene-Extensions.swift */,
 				29D50AD025F769520009CF55 /* Alignment-Extensions.swift */,
+				2909D42D2726ACBD00FF2B29 /* Binding-Extensions.swift */,
+				2959BC83275E1BDE005EE62D /* EditingFormViewController-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2481,6 +2520,7 @@
 		D9B5C0EB18D6321400C8D1B7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2909D4202722C1FF00FF2B29 /* settings */,
 				29066CF224FE62A600A266EE /* promotions */,
 				493ECBC91F4DD7DD0099B1FC /* View Models */,
 				D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */,
@@ -2537,7 +2577,7 @@
 				292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */,
 				292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */,
 				29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */,
-				49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */,
+				49005B711F180588004830D9 /* CurrencyCountView.swift */,
 				D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */,
 				D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */,
 				29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */,
@@ -2568,6 +2608,7 @@
 				29323E342052008800AC6D6F /* UserTopHeader.swift */,
 				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
 				29ACB3AB26404496009B059C /* CalendarView.swift */,
+				29BD3EB227590730003AD251 /* FocusableTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2724,7 +2765,6 @@
 				292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */,
 				D92D26151D58EF00001FD977 /* AVFoundation.framework */,
 				D9CD2DBD1BC7FBB500B1304B /* CoreSpotlight.framework */,
-				D99EA7411B8667C90048BF6A /* libOCMock.a */,
 				D90576701BD80275009BB7BC /* FBSDKCoreKit.framework */,
 				D90576711BD80275009BB7BC /* FBSDKLoginKit.framework */,
 				D9C89CF81B1F0E6C00A599B0 /* StoreKit.framework */,
@@ -2767,6 +2807,7 @@
 				D987393919687E46002A2426 /* Utilities */,
 				29255E461F3E14920094A3E3 /* AppDelegate.swift */,
 				29D50B7A25F9037A0009CF55 /* AppDelegate-Notifications.swift */,
+				2914943B273163AF00DF2153 /* SceneDelegate.swift */,
 				29A77B1E22EED4CE00FE41E4 /* NetworkIndicatorController.swift */,
 				29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */,
 				29951A212327E94F00918FC8 /* ThemedNavigationController.swift */,
@@ -3419,7 +3460,6 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Habitica/Pods-Habitica-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
 				"${BUILT_PRODUCTS_DIR}/ACKReactiveExtensions/ACKReactiveExtensions.framework",
 				"${BUILT_PRODUCTS_DIR}/Amplitude-iOS/Amplitude_iOS.framework",
 				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
@@ -3429,10 +3469,6 @@
 				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
 				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
-				"${BUILT_PRODUCTS_DIR}/FBAEMKit/FBAEMKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit_Basics/FBSDKCoreKit_Basics.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseABTesting/FirebaseABTesting.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
@@ -3460,10 +3496,13 @@
 				"${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework",
 				"${BUILT_PRODUCTS_DIR}/UIColor_Hex_Swift/UIColor_Hex_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBAEMKit/FBAEMKit.framework/FBAEMKit",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework/FBSDKCoreKit",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKCoreKit_Basics/FBSDKCoreKit_Basics.framework/FBSDKCoreKit_Basics",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework/FBSDKLoginKit",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ACKReactiveExtensions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Amplitude_iOS.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
@@ -3473,10 +3512,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBAEMKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit_Basics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseABTesting.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
@@ -3504,6 +3539,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TagListView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIColor_Hex_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBAEMKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit_Basics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3597,7 +3636,6 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
@@ -3605,7 +3643,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
@@ -3711,11 +3748,10 @@
 				2970CB52227B1A8600FACCB7 /* MarkdownTests.swift in Sources */,
 				D9709A581E8053A00005F35B /* TaskRepeatablesSummaryInteractorTests.swift in Sources */,
 				D957043E1E151C1C004F6804 /* LoginViewModelTests.swift in Sources */,
-				49B87D96201BBF3800CA1A75 /* HabiticaTests.m in Sources */,
 				D95704471E153767004F6804 /* TestObserver.swift in Sources */,
 				496C1C871FA54E0F0058771A /* ChallengeDetailsSpecs.swift in Sources */,
 				D946E5C21B30A89500806BE6 /* NSDate+NSDateMock.m in Sources */,
-				D92C0C411B8745DF000AF799 /* HRPGAPITests.m in Sources */,
+				29DBDE48274BCDA2008F6777 /* HabiticaTests.swift in Sources */,
 				298409CD203C3283003AD202 /* AvatarViewTests.swift in Sources */,
 				D9709A501E7F17150005F35B /* TaskDetailLineViewTests.swift in Sources */,
 				D9709A4E1E7F13330005F35B /* ChallengeTableViewControllerTests.swift in Sources */,
@@ -3727,10 +3763,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2909D42E2726ACBD00FF2B29 /* Binding-Extensions.swift in Sources */,
 				493ECBB31F47A1100099B1FC /* HRPGItemStatsView.swift in Sources */,
 				29D50AD125F769520009CF55 /* Alignment-Extensions.swift in Sources */,
 				29084B3326CF97F500AD9966 /* ShopViewController.swift in Sources */,
 				498E4CFF1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.swift in Sources */,
+				2909D4242722C22500FF2B29 /* InitialScreens.swift in Sources */,
 				297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */,
 				2914485B2084E61400F3A6B5 /* MountOverviewDataSource.swift in Sources */,
 				291E95AF20988025006EE585 /* NewsViewController.swift in Sources */,
@@ -3763,6 +3801,7 @@
 				2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */,
 				292F9662206E363000804151 /* GroupChatViewDataSource.swift in Sources */,
 				C897F63F218CE054002907C2 /* Storyboard Scenes.swift in Sources */,
+				2909D42A2722C25800FF2B29 /* AppIconName.swift in Sources */,
 				295BC6E4226F0F9500DDDF1A /* NotificationsTableViewController.swift in Sources */,
 				29A06E1D23ED4125003BADE9 /* InAppRewardProtocol-Extensions.swift in Sources */,
 				D984D58B1E4A1F59006E84F8 /* SubscriptionViewController.swift in Sources */,
@@ -3781,6 +3820,7 @@
 				29FD8AA0203D753F0094322E /* SplitSocialViewController.swift in Sources */,
 				291448862088E87F00F3A6B5 /* EquipmentCell.swift in Sources */,
 				299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */,
+				29BD3EB527591FBE003AD251 /* EditingFormViewController.swift in Sources */,
 				291448622084ED6F00F3A6B5 /* StableDetailViewController.swift in Sources */,
 				295611162056ED8000D9711A /* ContentRepository.swift in Sources */,
 				29ED1AFB1F338E5D005A3895 /* SetupCustomizationRepository.swift in Sources */,
@@ -3800,6 +3840,7 @@
 				29E1631D200F62C100685640 /* TavernDetailViewController.swift in Sources */,
 				291DE9762099D85D0073182A /* MemberListView.swift in Sources */,
 				D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */,
+				2909D4262722C23300FF2B29 /* ThemeName.swift in Sources */,
 				29FC5A6520402EF6008E88C8 /* Theme.swift in Sources */,
 				295BC701226F677100DDDF1A /* NewsNotificationCell.swift in Sources */,
 				296AC81420AC85C200885682 /* RewardViewDataSource.swift in Sources */,
@@ -3808,8 +3849,10 @@
 				D9525F9F1E65A18300C529B8 /* EmojifiedString.swift in Sources */,
 				2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */,
 				29E30DE620D935AF00F74ECB /* LevelUpOverlayView.swift in Sources */,
+				29038F2126F33CDB005CA2D3 /* DueDateFormView.swift in Sources */,
 				49DCB7B61F3F64B40079FDD0 /* HRPGShopModalBgView.swift in Sources */,
 				29E1631B200E84AC00685640 /* TavernViewController.swift in Sources */,
+				2909D42C2726AA2500FF2B29 /* TrackableScrollView.swift in Sources */,
 				291448822087A13100F3A6B5 /* EquipmentDetailViewController.swift in Sources */,
 				29C135FE24EACA7B00DBC6B3 /* MarkdownTextView.swift in Sources */,
 				2927024A24E303CB00BCAA77 /* HallOfPatronsViewController.swift in Sources */,
@@ -3820,6 +3863,7 @@
 				D9F1E3E81E55DCEC0034D0F4 /* SubscriptionInformationCell.swift in Sources */,
 				290279732057FB4E006DACB9 /* FAQTableViewDataSource.swift in Sources */,
 				29FC884E2010CCC2002B3D3F /* BaseRepository.swift in Sources */,
+				29BD3EB327590731003AD251 /* FocusableTextField.swift in Sources */,
 				297517B41F30EBD100B5BCB9 /* AvatarSetupViewController.swift in Sources */,
 				2957B8C41F4D922C00E836EF /* CustomRewardCell.swift in Sources */,
 				D9BB45DD1E7AE5240002AE2E /* ConfigRepository.swift in Sources */,
@@ -3844,6 +3888,7 @@
 				49A37A8320C0FA49008C28F5 /* EmptyTableViewCell.swift in Sources */,
 				290C302A206BA0B50066AF5B /* SkillTableViewCell.swift in Sources */,
 				290458D02021D6C60032BC5E /* TopHeaderCoordinator.swift in Sources */,
+				2909D4282722C24700FF2B29 /* ThemeMode.swift in Sources */,
 				D96BFC4C1E181B4A00266EEF /* IntroViewController.swift in Sources */,
 				2902799720583D82006DACB9 /* LoadingViewController.swift in Sources */,
 				291448642084EE6D00F3A6B5 /* PetDetailViewController.swift in Sources */,
@@ -3854,6 +3899,7 @@
 				292AA72420FE15090022CC5F /* UIFont-Extensions.swift in Sources */,
 				295E9DF420B456F100D58D45 /* FilterTableviewDataSource.swift in Sources */,
 				29FC885420175C70002B3D3F /* RageStrikeView.swift in Sources */,
+				2914943C273163AF00DF2153 /* SceneDelegate.swift in Sources */,
 				293DFE3C24F5647400E115FE /* UIImage-Extensions.swift in Sources */,
 				2975F00323881D05005DBF2E /* FlagView.swift in Sources */,
 				292844EF20DD1D630011DC43 /* GroupInvitationListView.swift in Sources */,
@@ -3861,9 +3907,8 @@
 				29FD8AA7203DA42A0094322E /* NSLayoutConstraint-Extensions.swift in Sources */,
 				291448702085EC0F00F3A6B5 /* MountDetailViewController.swift in Sources */,
 				D97ED0B01E6DBC87006C2A26 /* Interactor.swift in Sources */,
-				29B3FEAC1F9A3395000B12CF /* ProfileSettingsViewController.swift in Sources */,
 				295D42F820922BA700948E7E /* ClassSelectionOptionView.swift in Sources */,
-				49005B721F180589004830D9 /* HRPGCurrencyCountView.swift in Sources */,
+				49005B721F180589004830D9 /* CurrencyCountView.swift in Sources */,
 				299FB29F2084A8FD00422522 /* StableSplitViewController.swift in Sources */,
 				295D42F620921F4200948E7E /* ClassSelectionViewController.swift in Sources */,
 				C897F640218CE054002907C2 /* Storyboard Segues.swift in Sources */,
@@ -3893,11 +3938,13 @@
 				29028C392034ABAF00B7F704 /* TaskRepositoryImpl.swift in Sources */,
 				299B12492642D2AB00498025 /* PromoWebViewController.swift in Sources */,
 				D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */,
+				29F808922770B0D900BAF854 /* Secrets.swift in Sources */,
 				29C38C8524A2466400F219A1 /* AdventureGuidePromoView.swift in Sources */,
 				294FD5692064135500EABCC9 /* HabitControlsRow.swift in Sources */,
 				29FEB27A202B4F0400EA245A /* AvatarView.swift in Sources */,
 				D97ED0B21E6DE3BF006C2A26 /* LeaveChallengeInteractor.swift in Sources */,
 				29FC88602018DB64002B3D3F /* WorldBossDescriptionView.swift in Sources */,
+				29DBDE4A274BE745008F6777 /* AccountSettingsViewController.swift in Sources */,
 				49391ED120C9C898002B2BB5 /* HabitTableViewController.swift in Sources */,
 				29028C3E203701B900B7F704 /* ChatTableViewCell.swift in Sources */,
 				29066CF424FE62E700A266EE /* HabiticaPromotions.swift in Sources */,
@@ -3909,14 +3956,17 @@
 				29D16C7725A336E8001D9A61 /* MainSplitViewController.swift in Sources */,
 				D984D5861E48E5CF006E84F8 /* TaskDetailLineView.swift in Sources */,
 				299A556226402F800015EA5C /* TaskDetailView.swift in Sources */,
+				2914943A2731553300DF2153 /* NumberPickerFormView.swift in Sources */,
 				2980E60B1EEA39B1005B7100 /* YesterdailyTaskCell.swift in Sources */,
 				296E480821BE86F800D15E4A /* GiftSubscriptionViewController.swift in Sources */,
 				4904C7401F1ED87400F80723 /* GradientImageView.swift in Sources */,
 				2957B8CA1F4ED7C800E836EF /* Currency.swift in Sources */,
 				2974BDB62090C03E00EC1A25 /* InboxOverviewDataSource.swift in Sources */,
+				2959BC84275E1BDE005EE62D /* EditingFormViewController-Extensions.swift in Sources */,
 				29066CFB24FE83D300A266EE /* PromoBannerView.swift in Sources */,
 				29AAE55724508FC600220DB1 /* HRPGBulkPurchaseView.swift in Sources */,
 				29DBFF0120CE6FFF00DF9CF2 /* SoundManager.swift in Sources */,
+				2909D4222722C20A00FF2B29 /* Servers.swift in Sources */,
 				49FA9FF720DC47AD0086C478 /* TaskTableViewController.swift in Sources */,
 				299F93F1246D9C49008DB702 /* PaddedTextField.swift in Sources */,
 				C897F63C218CCF51002907C2 /* RouterHandler.swift in Sources */,
@@ -3929,6 +3979,7 @@
 				296D6F1D20A0908B00D9CAB5 /* PartyQuestView.swift in Sources */,
 				29A9B057228082BF0049291E /* BaseCollectionViewController.swift in Sources */,
 				298119AB1F50251300F9FB39 /* InventoryRepository.swift in Sources */,
+				29DBDE54274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift in Sources */,
 				29255E431F3DD2120094A3E3 /* TutorialStepView.swift in Sources */,
 				29BEEB2F253EFA7300D456F8 /* MaintenanceViewController.swift in Sources */,
 				2942FAEF26777E00003F6500 /* HabiticaLogger.swift in Sources */,
@@ -4024,7 +4075,6 @@
 				299FB29A2084A30400422522 /* StableRepository.swift in Sources */,
 				29951A1E2326670500918FC8 /* InboxOverviewViewController.swift in Sources */,
 				29028C422037131C00B7F704 /* SystemMessageTableViewCell.swift in Sources */,
-				29B3FEBA1F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift in Sources */,
 				290279632057EC03006DACB9 /* FAQTableViewController.swift in Sources */,
 				29AA79C72685B71100871541 /* TaskFormPicker.swift in Sources */,
 				29B4788620BD6E2E00B6123F /* SkillsUserTableViewDataSource.swift in Sources */,
@@ -4036,7 +4086,6 @@
 				2902796C2057F2C5006DACB9 /* Assets-Images.swift in Sources */,
 				29323E1F2050563700AC6D6F /* NetworkErrorHandler.swift in Sources */,
 				299BD6371F5457E100E22935 /* HabiticaIcons.swift in Sources */,
-				29B3FEAF1F9A33AB000B12CF /* APISettingsViewController.swift in Sources */,
 				498E4CFB1FA17B9E006933FF /* ChallengeCreatorTableViewCell.swift in Sources */,
 				D984D58D1E4A2F2D006E84F8 /* SubscriptionOptionView.swift in Sources */,
 				29C38C8B24A48F9D00F219A1 /* AchievementAlertController.swift in Sources */,
@@ -4044,6 +4093,7 @@
 				299FB2A72084B44000422522 /* PetOverviewDataSource.swift in Sources */,
 				29A6B85D20641C9B0086B2A6 /* TaskDifficultyRow.swift in Sources */,
 				2927024624E2D8AB00BCAA77 /* HallOfContributorsDataSource.swift in Sources */,
+				2909D41F272199BE00FF2B29 /* MultiLineTextField.swift in Sources */,
 				D9E02EC61E5E0458002CFCE2 /* ChallengeTableViewController.swift in Sources */,
 				D96BFC4F1E191D7200266EEF /* UIAlertController-Extensions.swift in Sources */,
 				29144896208A270800F3A6B5 /* AvatarDetailViewController.swift in Sources */,
@@ -4423,6 +4473,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -4461,6 +4512,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -4503,7 +4555,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 619;
+				CURRENT_PROJECT_VERSION = 651;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4517,7 +4569,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.4;
+				MARKETING_VERSION = 3.4.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4550,7 +4602,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 619;
+				CURRENT_PROJECT_VERSION = 651;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4564,7 +4616,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.4;
+				MARKETING_VERSION = 3.4.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4589,7 +4641,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 619;
+				CURRENT_PROJECT_VERSION = 651;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4602,7 +4654,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.4;
+				MARKETING_VERSION = 3.4.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Notifications";
@@ -4628,7 +4680,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 619;
+				CURRENT_PROJECT_VERSION = 651;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4641,7 +4693,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.4;
+				MARKETING_VERSION = 3.4.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Notifications";
@@ -4665,7 +4717,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 619;
+				CURRENT_PROJECT_VERSION = 651;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4678,7 +4730,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.4;
+				MARKETING_VERSION = 3.4.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -4706,7 +4758,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 619;
+				CURRENT_PROJECT_VERSION = 651;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4719,7 +4771,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.4;
+				MARKETING_VERSION = 3.4.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -4745,7 +4797,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 619;
+				CURRENT_PROJECT_VERSION = 651;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4758,7 +4810,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.4;
+				MARKETING_VERSION = 3.4.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4788,7 +4840,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 619;
+				CURRENT_PROJECT_VERSION = 651;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4801,7 +4853,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.4;
+				MARKETING_VERSION = 3.4.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4832,7 +4884,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Snapshots/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4869,7 +4921,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Snapshots/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4945,7 +4997,7 @@
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
 				INFOPLIST_FILE = HabiticaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5018,7 +5070,7 @@
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
 				INFOPLIST_FILE = HabiticaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5065,7 +5117,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 619;
+				CURRENT_PROJECT_VERSION = 651;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -5121,7 +5173,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 619;
+				CURRENT_PROJECT_VERSION = 651;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -5151,7 +5203,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 619;
+				CURRENT_PROJECT_VERSION = 651;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -5198,7 +5250,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.4;
+				MARKETING_VERSION = 3.4.5;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -5247,7 +5299,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 619;
+				CURRENT_PROJECT_VERSION = 651;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";
@@ -5294,7 +5346,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.4;
+				MARKETING_VERSION = 3.4.5;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",

@@ -9,7 +9,6 @@
 import UIKit
 import SwiftyStoreKit
 import StoreKit
-import Keys
 import ReactiveSwift
 import Habitica_Models
 
@@ -20,11 +19,12 @@ class GiftSubscriptionViewController: BaseTableViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var explanationTitle: UILabel!
     @IBOutlet weak var giftOneGetOneTitleLabel: UILabel!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var giftOneGetOneDescriptionLabel: UILabel!
     
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     private let disposable = ScopedDisposable(CompositeDisposable())
     
     private var activePromo: HabiticaPromotion?
@@ -43,30 +43,11 @@ class GiftSubscriptionViewController: BaseTableViewController {
             }
         }
     }
-    let appleValidator: AppleReceiptValidator
-    let itunesSharedSecret = HabiticaKeys().itunesSharedSecret
     var expandedList = [Bool](repeating: false, count: 4)
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        #if DEBUG
-            appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
-        #else
-            appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
-        #endif
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        #if DEBUG
-            appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
-        #else
-            appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
-        #endif
-        super.init(coder: aDecoder)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cancelButton.title = L10n.cancel
         
         let optionNib = UINib.init(nibName: "SubscriptionOptionView", bundle: nil)
         self.tableView.register(optionNib, forCellReuseIdentifier: "OptionCell")
@@ -211,6 +192,8 @@ class GiftSubscriptionViewController: BaseTableViewController {
         } else if indexPath.section == tableView.numberOfSections-1 {
             returnedCell = tableView.dequeueReusableCell(withIdentifier: "SubscribeButtonCell", for: indexPath)
             (returnedCell?.viewWithTag(1) as? UIButton)?.setTitle(L10n.sendGift, for: .normal)
+            returnedCell?.viewWithTag(1)?.isHidden = isSubscribing
+            returnedCell?.viewWithTag(2)?.isHidden = !isSubscribing
         }
         returnedCell?.selectionStyle = .none
         return returnedCell ?? UITableViewCell()
@@ -224,6 +207,9 @@ class GiftSubscriptionViewController: BaseTableViewController {
         if isSubscribing {
             return
         }
+        tableView.beginUpdates()
+        tableView.reloadSections(IndexSet(integer: tableView.numberOfSections - 1), with: .automatic)
+        tableView.endUpdates()
         self.subscribeToPlan()
     }
     
@@ -243,6 +229,9 @@ class GiftSubscriptionViewController: BaseTableViewController {
             case .error(let error):
                 logger.log("Purchase Failed: \(error)", level: .error)
             }
+            self.tableView.beginUpdates()
+            self.tableView.reloadSections(IndexSet(integer: self.tableView.numberOfSections - 1), with: .automatic)
+            self.tableView.endUpdates()
         }
     }
     

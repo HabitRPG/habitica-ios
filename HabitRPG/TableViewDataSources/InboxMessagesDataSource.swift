@@ -16,7 +16,7 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
     
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
-    private let configRepository = ConfigRepository()
+    private let configRepository = ConfigRepository.shared
     private var user: UserProtocol?
     private var otherUserID: String?
     internal var otherUsername: String?
@@ -128,10 +128,10 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             let alert = HabiticaAlertController()
             alert.title = L10n.reportXViolation(message.username ?? "")
             alert.contentView = view
-            alert.addCancelAction()
             alert.addAction(title: L10n.report, style: .destructive, isMainAction: true) {[weak self] _ in
                 self?.socialRepository.flag(message: message).observeCompleted {}
             }
+            alert.addCancelAction()
             alert.containerViewSpacing = 8
             alert.enqueue()
         }

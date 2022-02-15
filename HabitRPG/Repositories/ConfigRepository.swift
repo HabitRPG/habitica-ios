@@ -192,6 +192,11 @@ enum ConfigVariable: Int {
 
 @objc
 class ConfigRepository: NSObject {
+    @objc public static let shared = ConfigRepository()
+    
+    private override init() {
+        super.init()
+    }
 
     private static let remoteConfig = RemoteConfig.remoteConfig()
     private let userConfig = UserDefaults.standard
@@ -290,8 +295,8 @@ class ConfigRepository: NSObject {
     
     func activePromotion() -> HabiticaPromotion? {
         var promo: HabiticaPromotion?
-        for event in worldState?.events ?? [] where event.promo != nil {
-            promo = HabiticaPromotionType.getPromoFromKey(key: event.promo ?? "", startDate: event.start, endDate: event.end)
+        for event in worldState?.events ?? [] where HabiticaPromotionType.getPromoFromKey(key: event.promo ?? event.eventKey ?? "", startDate: event.start, endDate: event.end) != nil {
+            promo = HabiticaPromotionType.getPromoFromKey(key: event.promo ?? event.eventKey ?? "", startDate: event.start, endDate: event.end)
         }
         if promo == nil, let key = string(variable: .activePromo), key.isEmpty == false {
             promo = HabiticaPromotionType.getPromoFromKey(key: key, startDate: nil, endDate: nil)
@@ -304,10 +309,20 @@ class ConfigRepository: NSObject {
     }
     
     func enableIPadUI() -> Bool {
-        #if targetEnvironment(macCatalyst)
-        return true
-        #else
+        if isOnMac {
+            return true
+        }
         return bool(variable: .enableIPadUI)
-        #endif
     }
+    
+    let isOnMac: Bool = {
+        #if targetEnvironment(macCatalyst)
+            return true
+        #else
+        if #available(iOS 14.0, *) {
+            return ProcessInfo.processInfo.isiOSAppOnMac
+        }
+        return false
+        #endif
+    }()
 }

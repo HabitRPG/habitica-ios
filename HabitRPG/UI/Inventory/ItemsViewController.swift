@@ -31,6 +31,7 @@ class ItemsViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cancelButton.title = L10n.cancel
         
         dataSource.tableView = tableView
         dataSource.itemType = itemType
@@ -44,6 +45,11 @@ class ItemsViewController: BaseTableViewController {
         } else {
             isPresentedModally = true
         }
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        tableView.backgroundColor = theme.contentBackgroundColor
     }
     
     override func populateText() {

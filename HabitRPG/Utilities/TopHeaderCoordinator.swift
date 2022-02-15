@@ -48,7 +48,7 @@ class TopHeaderCoordinator: NSObject {
     
     @objc
     func viewDidLoad() {
-        guard let navController = topHeaderNavigationController else {
+        guard let navController = topHeaderNavigationController as? TopHeaderViewController else {
             return
         }
         let insets = UIEdgeInsets(top: navController.contentInset, left: 0, bottom: 0, right: 0)
@@ -62,7 +62,7 @@ class TopHeaderCoordinator: NSObject {
     @objc
     func viewWillAppear() {
         didAppear = false
-        guard let navController = topHeaderNavigationController else {
+        guard let navController = topHeaderNavigationController as? TopHeaderViewController else {
             return
         }
         navController.hideNavbar = hideNavBar
@@ -106,7 +106,7 @@ class TopHeaderCoordinator: NSObject {
     
     @objc
     func viewDidAppear() {
-        guard let navController = topHeaderNavigationController else {
+        guard let navController = topHeaderNavigationController as? TopHeaderViewController else {
             return
         }
         guard let scrollView = self.scrollView else {
@@ -123,7 +123,7 @@ class TopHeaderCoordinator: NSObject {
     
     @objc
     func viewWillDisappear() {
-        guard let navController = topHeaderNavigationController else {
+        guard let navController = topHeaderNavigationController as? TopHeaderViewController else {
             return
         }
         navController.stopFollowingScrollView()
@@ -132,7 +132,7 @@ class TopHeaderCoordinator: NSObject {
     
     @objc
     func scrollViewDidScroll() {
-        guard let navController = topHeaderNavigationController else {
+        guard let navController = topHeaderNavigationController as? TopHeaderViewController else {
             return
         }
         guard let scrollView = self.scrollView else {
@@ -143,7 +143,7 @@ class TopHeaderCoordinator: NSObject {
     
     @objc
     func showHideHeader(show: Bool, animated: Bool = true) {
-        guard let navController = topHeaderNavigationController else {
+        guard let navController = topHeaderNavigationController as? TopHeaderViewController else {
             return
         }
         if show {

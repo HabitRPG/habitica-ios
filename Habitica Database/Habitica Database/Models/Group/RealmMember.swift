@@ -11,7 +11,7 @@ import Habitica_Models
 import RealmSwift
 
 @objc
-class RealmMember: Object, MemberProtocol {
+class RealmMember: BaseModel, MemberProtocol {
     
     @objc dynamic var id: String?
     var stats: StatsProtocol? {
@@ -154,11 +154,7 @@ class RealmMember: Object, MemberProtocol {
         }
     }
     @objc dynamic var realmAuthentication: RealmAuthentication?
-    
-    var isValid: Bool {
-        return !isInvalidated
-    }
-    
+
     override static func primaryKey() -> String {
         return "id"
     }

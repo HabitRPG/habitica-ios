@@ -23,12 +23,12 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @IBOutlet weak var topContentView: UIView!
     @IBOutlet weak var bottomButtons: UIView!
     
-    @IBOutlet weak var hourglassCountView: HRPGCurrencyCountView!
-    @IBOutlet weak var gemCountView: HRPGCurrencyCountView!
-    @IBOutlet weak var goldCountView: HRPGCurrencyCountView!
+    @IBOutlet weak var hourglassCountView: CurrencyCountView!
+    @IBOutlet weak var gemCountView: CurrencyCountView!
+    @IBOutlet weak var goldCountView: CurrencyCountView!
     @IBOutlet weak var buyButton: UIView!
     @IBOutlet weak var buyLabel: UILabel!
-    @IBOutlet weak var currencyCountView: HRPGCurrencyCountView!
+    @IBOutlet weak var currencyCountView: CurrencyCountView!
     @IBOutlet weak var closableShopModal: HRPGCloseableShopModalView!
     @IBOutlet weak var pinButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!

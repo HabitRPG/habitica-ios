@@ -573,7 +573,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>619</string>
+	<string>651</string>
 	<key>CustomDomain</key>
 	<string>${CUSTOM_DOMAIN}</string>
 	<key>DisableSSL</key>
@@ -670,12 +670,6 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>In order to scan a QR Code, Habitica will need access to the devices camera.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Habitica needs access to the microphone to be able to attach voice notes</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>In order to scan a QR Code, Habitica will need access to the devices camera.</string>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>HRPGAddTaskIntent</string>
@@ -685,7 +679,21 @@
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
-		<false/>
+		<true/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UILaunchStoryboardName</key>
+					<string>Launch Screen</string>
+					<key>UISceneConfigurationName</key>
+					<string>Default Configuration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>Habitica.SceneDelegate</string>
+				</dict>
+			</array>
+		</dict>
 	</dict>
 	<key>UIApplicationShortcutItems</key>
 	<array>

@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import Habitica_Models
 
-class RealmTask: Object, TaskProtocol {
+class RealmTask: BaseModel, TaskProtocol {
     @objc dynamic var id: String?
     @objc dynamic var ownerID: String?
     @objc dynamic var text: String?
@@ -32,6 +32,7 @@ class RealmTask: Object, TaskProtocol {
     @objc dynamic var everyX: Int = 1
     @objc dynamic var challengeID: String?
     @objc dynamic var challengeBroken: String?
+    @objc dynamic var groupID: String?
     @objc dynamic var createdAt: Date?
     @objc dynamic var updatedAt: Date?
     @objc dynamic var startDate: Date?
@@ -186,11 +187,7 @@ class RealmTask: Object, TaskProtocol {
         }
     }
     var realmWeeksOfMonth = List<Int>()
-    
-    var isValid: Bool {
-        return !isInvalidated
-    }
-    
+
     override static func primaryKey() -> String {
         return "id"
     }
@@ -222,6 +219,7 @@ class RealmTask: Object, TaskProtocol {
         everyX = taskProtocol.everyX
         challengeID = taskProtocol.challengeID
         challengeBroken = taskProtocol.challengeBroken
+        groupID = taskProtocol.groupID
         startDate = taskProtocol.startDate
         createdAt = taskProtocol.createdAt
         updatedAt = taskProtocol.updatedAt

@@ -11,6 +11,7 @@ import Habitica_Models
 
 class APIGroupCategory: GroupCategoryProtocol, Codable {
     var isValid: Bool = true
+    public var isManaged: Bool = false
     
     var id: String?
     var slug: String?

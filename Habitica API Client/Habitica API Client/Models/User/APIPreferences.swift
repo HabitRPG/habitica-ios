@@ -31,6 +31,7 @@ class APIPreferences: PreferencesProtocol, Decodable {
     var hair: HairProtocol?
     var searchableUsername: Bool = false
     var isValid: Bool = true
+    public var isManaged: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case skin

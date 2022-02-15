@@ -24,14 +24,14 @@ class YesterdailyTaskCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
         wrapperView.layer.borderWidth = 1
-        
-        let theme = ThemeService.shared.theme
-        wrapperView.layer.borderColor = theme.separatorColor.cgColor
-        wrapperView.backgroundColor = theme.contentBackgroundColor
     }
 
     func configure(task: TaskProtocol) {
-        backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        let theme = ThemeService.shared.theme
+        backgroundColor = theme.windowBackgroundColor
+        wrapperView.layer.borderColor = theme.separatorColor.cgColor
+        wrapperView.backgroundColor = theme.contentBackgroundColor
+        
         checkbox.configure(task: task)
         titleTextView.attributedText = try? Down(markdownString: task.text?.unicodeEmoji ?? "").toHabiticaAttributedString()
 
@@ -42,13 +42,13 @@ class YesterdailyTaskCell: UITableViewCell {
 
         var checkColor = UIColor.white
         if task.completed {
-            checkColor = ThemeService.shared.theme.quadTextColor
+            checkColor = theme.quadTextColor
         } else {
             checkColor = UIColor.forTaskValueDarkest(task.value)
         }
         var checkboxColor = UIColor.white
         if task.completed {
-            checkboxColor = ThemeService.shared.theme.separatorColor
+            checkboxColor = theme.separatorColor
         } else {
             checkboxColor = UIColor.forTaskValueLight(task.value)
         }
@@ -56,7 +56,7 @@ class YesterdailyTaskCell: UITableViewCell {
         for checklistItem in task.checklist {
             if let view = UIView.fromNib(nibName: "YesterdailyChecklistItem") {
                 view.isUserInteractionEnabled = true
-                view.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+                view.backgroundColor = theme.contentBackgroundColor
                 let label = view.viewWithTag(2) as? UILabel
                 label?.attributedText = try? Down(markdownString: checklistItem.text?.unicodeEmoji ?? "").toHabiticaAttributedString()
                 let checkbox = view.viewWithTag(1) as? CheckboxView

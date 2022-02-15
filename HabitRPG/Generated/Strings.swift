@@ -390,7 +390,7 @@ public enum L10n {
   public static var giftOneGetOneTitle: String { return L10n.tr("Mainstrings", "gift_one_get_one_title") }
   /// Enter recipient's @ username
   public static var giftRecipientSubtitle: String { return L10n.tr("Mainstrings", "gift_recipient_subtitle") }
-  /// Who would you like to gift to?
+  /// Send gift
   public static var giftRecipientTitle: String { return L10n.tr("Mainstrings", "gift_recipient_title") }
   /// Your gift was sent!
   public static var giftSentConfirmation: String { return L10n.tr("Mainstrings", "gift_sent_confirmation") }
@@ -778,7 +778,7 @@ public enum L10n {
   public static var reply: String { return L10n.tr("Mainstrings", "reply") }
   /// Report
   public static var report: String { return L10n.tr("Mainstrings", "report") }
-  /// Report @@%@ for violation?
+  /// Report @%@ for violation?
   public static func reportXViolation(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "report_x_violation", p1)
   }
@@ -798,6 +798,10 @@ public enum L10n {
   public static var resyncTask: String { return L10n.tr("Mainstrings", "resync_task") }
   /// Sale
   public static var sale: String { return L10n.tr("Mainstrings", "sale") }
+  /// Sale ends in %@
+  public static func saleEndsIn(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "sale_ends_in", p1)
+  }
   /// Saturday
   public static var saturday: String { return L10n.tr("Mainstrings", "saturday") }
   /// Save
@@ -1358,8 +1362,16 @@ public enum L10n {
   }
 
   public enum Errors {
+    /// Please enter a valid Email address
+    public static var enterValidEmail: String { return L10n.tr("Mainstrings", "errors.enter_valid_email") }
     /// Error
     public static var error: String { return L10n.tr("Mainstrings", "errors.error") }
+    /// Password must be %d characters or more
+    public static func passwordLength(_ p1: Int) -> String {
+      return L10n.tr("Mainstrings", "errors.password_length", p1)
+    }
+    /// Passwords must match
+    public static var passwordNotMatching: String { return L10n.tr("Mainstrings", "errors.password_not_matching") }
     /// There was an error accepting the quest invitation
     public static var questInviteAccept: String { return L10n.tr("Mainstrings", "errors.quest_invite_accept") }
     /// There was an error rejecting the quest invitation
@@ -1396,7 +1408,7 @@ public enum L10n {
     public static func infoInstructions(_ p1: UnsafePointer<CChar>, _ p2: UnsafePointer<CChar>) -> String {
       return L10n.tr("Mainstrings", "fall_promo.info_instructions", p1, p2)
     }
-    /// The Fall Gala is in full swing so we thought it was the perfect time to introduce our first ever Gem Sale! Now you will get more Gems with each purchase than ever before.
+    /// The Fall Gala is in full swing so we thought it was the perfect time to have a Gem Sale! Now you will get more Gems with each purchase than ever before.
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "fall_promo.info_prompt") }
   }
 
@@ -1798,13 +1810,19 @@ public enum L10n {
   }
 
   public enum Settings {
+    /// Account Info
+    public static var accountInfo: String { return L10n.tr("Mainstrings", "settings.account_info") }
+    /// Add Email
+    public static var addEmail: String { return L10n.tr("Mainstrings", "settings.add_email") }
     /// Add Email and Password authentication
     public static var addEmailAndPassword: String { return L10n.tr("Mainstrings", "settings.add_email_and_password") }
+    /// Add Password
+    public static var addPassword: String { return L10n.tr("Mainstrings", "settings.add_password") }
     /// Successfully added email and password
     public static var addedLocalAuth: String { return L10n.tr("Mainstrings", "settings.added_local_auth") }
     /// API
     public static var api: String { return L10n.tr("Mainstrings", "settings.api") }
-    /// Copy these for use in third party applications. However, think of your API Token like a password, and do not share it publicly. You may occasionally be asked for your User ID, but never post your API Token where others can see it, including on Github.
+    /// Copy Token. Be careful, this is a password!
     public static var apiDisclaimer: String { return L10n.tr("Mainstrings", "settings.api_disclaimer") }
     /// App Icon
     public static var appIcon: String { return L10n.tr("Mainstrings", "settings.app_icon") }
@@ -1812,6 +1830,8 @@ public enum L10n {
     public static var areYouSure: String { return L10n.tr("Mainstrings", "settings.are_you_sure") }
     /// Authentication
     public static var authentication: String { return L10n.tr("Mainstrings", "settings.authentication") }
+    /// Change
+    public static var change: String { return L10n.tr("Mainstrings", "settings.change") }
     /// Change About Message
     public static var changeAboutMessage: String { return L10n.tr("Mainstrings", "settings.change_about_message") }
     /// Change Class
@@ -1836,6 +1856,8 @@ public enum L10n {
     public static var confirmUsernameDescription: String { return L10n.tr("Mainstrings", "settings.confirm_username_description") }
     /// Are you sure you want to confirm your current username?
     public static var confirmUsernamePrompt: String { return L10n.tr("Mainstrings", "settings.confirm_username_prompt") }
+    /// Connect
+    public static var connect: String { return L10n.tr("Mainstrings", "settings.connect") }
     /// Custom Day Start
     public static var customDayStart: String { return L10n.tr("Mainstrings", "settings.custom_day_start") }
     /// Daily Reminder
@@ -1856,10 +1878,14 @@ public enum L10n {
     public static var disableAllNotifications: String { return L10n.tr("Mainstrings", "settings.disable_all_notifications") }
     /// Disable Private Messages
     public static var disablePm: String { return L10n.tr("Mainstrings", "settings.disable_pm") }
+    /// Disconnect
+    public static var disconnect: String { return L10n.tr("Mainstrings", "settings.disconnect") }
     /// Your display name has to be between 1 and 30 characters.
     public static var displayNameLengthError: String { return L10n.tr("Mainstrings", "settings.display_name_length_error") }
     /// Display Notification Badge
     public static var displayNotificationBadge: String { return L10n.tr("Mainstrings", "settings.display_notification_badge") }
+    /// Email
+    public static var email: String { return L10n.tr("Mainstrings", "settings.email") }
     /// Enable Class System
     public static var enableClassSystem: String { return L10n.tr("Mainstrings", "settings.enable_class_system") }
     /// Every day at
@@ -1882,20 +1908,30 @@ public enum L10n {
     public static var maintenance: String { return L10n.tr("Mainstrings", "settings.maintenance") }
     /// Mentions
     public static var mentions: String { return L10n.tr("Mainstrings", "settings.mentions") }
+    /// My Account
+    public static var myAccount: String { return L10n.tr("Mainstrings", "settings.my_account") }
     /// New Email
     public static var newEmail: String { return L10n.tr("Mainstrings", "settings.new_email") }
     /// New Password
     public static var newPassword: String { return L10n.tr("Mainstrings", "settings.new_password") }
     /// New Username
     public static var newUsername: String { return L10n.tr("Mainstrings", "settings.new_username") }
+    /// No Email
+    public static var noEmail: String { return L10n.tr("Mainstrings", "settings.no_email") }
+    /// Not Set
+    public static var notSet: String { return L10n.tr("Mainstrings", "settings.not_set") }
     /// Notification Badge
     public static var notificationBadge: String { return L10n.tr("Mainstrings", "settings.notification_badge") }
     /// Old Password
     public static var oldPassword: String { return L10n.tr("Mainstrings", "settings.old_password") }
+    /// Password
+    public static var password: String { return L10n.tr("Mainstrings", "settings.password") }
     /// Preferences
     public static var preferences: String { return L10n.tr("Mainstrings", "settings.preferences") }
     /// Profile
     public static var profile: String { return L10n.tr("Mainstrings", "settings.profile") }
+    /// Public Profile
+    public static var publicProfile: String { return L10n.tr("Mainstrings", "settings.public_profile") }
     /// Reload Content
     public static var reloadContent: String { return L10n.tr("Mainstrings", "settings.reload_content") }
     /// Reminder
@@ -1922,6 +1958,10 @@ public enum L10n {
     public static var themeColor: String { return L10n.tr("Mainstrings", "settings.theme_color") }
     /// Theme Mode
     public static var themeMode: String { return L10n.tr("Mainstrings", "settings.theme_mode") }
+    /// Email updated
+    public static var updatedEmail: String { return L10n.tr("Mainstrings", "settings.updated_email") }
+    /// Password updated
+    public static var updatedPassword: String { return L10n.tr("Mainstrings", "settings.updated_password") }
     /// User
     public static var user: String { return L10n.tr("Mainstrings", "settings.user") }
     /// Username not confirmed
@@ -2138,18 +2178,14 @@ public enum L10n {
     public static var dailies: String { return L10n.tr("Mainstrings", "tasks.dailies") }
     /// Daily
     public static var daily: String { return L10n.tr("Mainstrings", "tasks.daily") }
-    /// Due in %d days
+    /// In %d days
     public static func dueInXDays(_ p1: Int) -> String {
       return L10n.tr("Mainstrings", "tasks.due_in_x_days", p1)
     }
-    /// Due today
+    /// Today
     public static var dueToday: String { return L10n.tr("Mainstrings", "tasks.due_today") }
-    /// Due tomorrow
+    /// Tomorrow
     public static var dueTomorrow: String { return L10n.tr("Mainstrings", "tasks.due_tomorrow") }
-    /// Due %@
-    public static func dueX(_ p1: String) -> String {
-      return L10n.tr("Mainstrings", "tasks.due_x", p1)
-    }
     /// Edit Details
     public static var editDetails: String { return L10n.tr("Mainstrings", "tasks.edit_details") }
     /// every %d %@
@@ -2321,6 +2357,10 @@ public enum L10n {
       public static var newChecklistItem: String { return L10n.tr("Mainstrings", "tasks.form.new_checklist_item") }
       /// New reminder
       public static var newReminder: String { return L10n.tr("Mainstrings", "tasks.form.new_reminder") }
+      /// None
+      public static var `none`: String { return L10n.tr("Mainstrings", "tasks.form.none") }
+      /// Challenge and Group tasks have limited editing options compared to your regular tasks
+      public static var notEditableDisclaimer: String { return L10n.tr("Mainstrings", "tasks.form.not_editable_disclaimer") }
       /// Include any notes to help you out
       public static var notesPlaceholder: String { return L10n.tr("Mainstrings", "tasks.form.notes_placeholder") }
       /// Positive
@@ -2627,7 +2667,7 @@ extension L10n {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
     var format = NSLocalizedString(key, tableName: table, bundle: bundle ?? Bundle(for: BundleToken.self), comment: "")
     let value = String(format: format, locale: Locale.current, arguments: args)
-    if value != key || NSLocale.preferredLanguages.first == "en" {
+    if value != key || Locale.current.identifier == "en" {
         return value
     }
     // Fall back to en
