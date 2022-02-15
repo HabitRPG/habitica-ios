@@ -300,13 +300,24 @@ class RealmUser: BaseModel, UserProtocol {
     var needsCron: Bool = false
     var lastCron: Date?
     var loginIncentives: Int = 0
+
+    var pinnedItemsOrder: [String] {
+        get {
+            return Array(realmPinnedItemsOrder)
+        }
+        set {
+            realmPinnedItemsOrder.removeAll()
+            newValue.forEach { realmPinnedItemsOrder.append($0) }
+        }
+    }
+    var realmPinnedItemsOrder = List<String>()
     
     override static func primaryKey() -> String {
         return "id"
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["flags", "preferences", "stats", "profile", "contributor", "backer", "tasksOrder", "items", "tags", "inbox", "authentication", "purchased", "party", "invitations", "pushDevices"]
+        return ["flags", "preferences", "stats", "profile", "contributor", "backer", "tasksOrder", "items", "tags", "inbox", "authentication", "purchased", "party", "invitations", "pushDevices", "pinnedItemsOrder"]
     }
     
     convenience init(_ user: UserProtocol) {
@@ -332,5 +343,6 @@ class RealmUser: BaseModel, UserProtocol {
         pushDevices = user.pushDevices
         achievements = user.achievements
         loginIncentives = user.loginIncentives
+        pinnedItemsOrder = user.pinnedItemsOrder
     }
 }

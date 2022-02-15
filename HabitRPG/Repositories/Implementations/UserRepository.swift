@@ -337,6 +337,17 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     func buyCustomReward(reward: TaskProtocol) -> Signal<TaskResponseProtocol?, Never> {
         return taskRepository.score(task: reward, direction: .down)
     }
+
+    func movePinnedItem(_ item: InAppRewardProtocol, toPosition: Int) -> Signal<[String]?, Never> {
+        let call = MovePinnedItemCall(item: item, toPosition: toPosition)
+
+        return call.arraySignal.on(value: {[weak self] itemsOrder in
+            guard let userID = self?.currentUserId, let itemsOrder = itemsOrder else {
+                return
+            }
+            self?.localRepository.updatePinnedItemsOrder(userID: userID, order: itemsOrder)
+        })
+    }
     
     func disableClassSystem() -> Signal<UserProtocol?, Never> {
         if (lastClassSelection?.timeIntervalSinceNow ?? -31) > -30 {

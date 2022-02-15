@@ -171,7 +171,7 @@ class NotificationManager {
                                          message: nil)
             let mutableString = NSMutableAttributedString(string: L10n.checkinPrizeEarned(loginIncentiveNotification.rewardText ?? ""))
             mutableString.append(NSAttributedString(string: "\n\n"))
-            mutableString.append(NSAttributedString(string: L10n.nextPrizeInXCheckins(nextRewardAt), attributes: [
+            mutableString.append(NSAttributedString(string: L10n.nextPrizeAtXCheckins(nextRewardAt), attributes: [
                 .font: UIFont.systemFont(ofSize: 14, weight: .semibold)
             ]))
             alert.attributedMessage = mutableString
