@@ -41,6 +41,9 @@ extension UIImage {
     func resize(maxWidthHeight: Double) -> UIImage? {
         let actualHeight = Double(size.height)
         let actualWidth = Double(size.width)
+        if actualWidth < maxWidthHeight && actualHeight < maxWidthHeight {
+            return self
+        }
         var maxWidth = 0.0
         var maxHeight = 0.0
 
