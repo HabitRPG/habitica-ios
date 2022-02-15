@@ -64,6 +64,8 @@ class GuildDetailViewController: GroupDetailViewController {
         }).start())
         
         guildLeaderWrapper.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openGuildLeaderProfile)))
+        
+        guildChallengesButton.isHidden = true
     }
     
     override func applyTheme(theme: Theme) {
