@@ -139,7 +139,10 @@ class PartyDetailViewController: GroupDetailViewController {
             view.moreButtonTapped = {[weak self] in
                 let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
                 actionSheet.addAction(UIAlertAction(title: L10n.writeMessage, style: .default, handler: { _ in
-                    
+                    let viewController = StoryboardScene.Social.inboxChatNavigationController.instantiate()
+                    (viewController.topViewController as? InboxChatViewController)?.userID = member.id
+                    (viewController.topViewController as? InboxChatViewController)?.username = member.username
+                    self?.present(viewController, animated: true, completion: nil)
                 }))
                 if self?.groupProperty.value?.leaderID == self?.userRepository.currentUserId && self?.groupProperty.value?.leaderID != member.id {
                     actionSheet.addAction(UIAlertAction(title: L10n.transferOwnership, style: .default, handler: { _ in

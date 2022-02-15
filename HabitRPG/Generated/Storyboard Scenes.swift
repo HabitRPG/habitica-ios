@@ -124,6 +124,8 @@ internal enum StoryboardScene {
 
     internal static let guildsOverviewViewController = SceneType<Habitica.GuildOverviewViewController>(storyboard: Social.self, identifier: "GuildsOverviewViewController")
 
+    internal static let inboxChatNavigationController = SceneType<Habitica.ThemedNavigationController>(storyboard: Social.self, identifier: "InboxChatNavigationController")
+
     internal static let inboxChatViewController = SceneType<Habitica.InboxChatViewController>(storyboard: Social.self, identifier: "InboxChatViewController")
 
     internal static let inboxNavigationViewController = SceneType<Habitica.ThemedNavigationController>(storyboard: Social.self, identifier: "InboxNavigationViewController")
