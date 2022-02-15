@@ -50,7 +50,7 @@ enum AppLanguage: Int {
         case .portugueseBrazil:
             return "Português Brasileiro"
         case .hebrew:
-            return "he"
+            return "עברית"
         case .polish:
             return "Polski"
         case .russian:
