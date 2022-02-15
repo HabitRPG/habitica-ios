@@ -168,6 +168,12 @@ class RouterHandler: NSObject {
         router.register("/user/onboarding") { _ in
             self.present(StoryboardScene.Main.adventureGuideNavigationViewController.instantiate())
         }
+        router.register("/promo/info") { _ in
+            self.present(StoryboardScene.Main.promotionInfoNavController.instantiate())
+        }
+        router.register("/promo/web") { _ in
+            self.present(StoryboardScene.Main.promoWebNavController.instantiate())
+        }
         router.register("/profile/:userID") { link in
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Social.userProfileViewController.instantiate()

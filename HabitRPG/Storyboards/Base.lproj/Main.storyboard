@@ -3717,7 +3717,7 @@ a matching subscription automatically after sending your gift.</string>
         <!--Promo Web View Controller-->
         <scene sceneID="7uA-Br-BG8">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="PrT-43-uFK" customClass="PromoWebViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PromoWebViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PrT-43-uFK" customClass="PromoWebViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pAg-y9-Rb2"/>
                         <viewControllerLayoutGuide type="bottom" id="zju-uU-NGz"/>
@@ -3770,7 +3770,7 @@ a matching subscription automatically after sending your gift.</string>
         <!--Navigation Controller-->
         <scene sceneID="naT-rF-NWC">
             <objects>
-                <navigationController id="anC-LE-PSB" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PromoWebNavController" id="anC-LE-PSB" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RNS-zX-Zih">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

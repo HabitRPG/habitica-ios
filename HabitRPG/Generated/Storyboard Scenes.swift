@@ -71,6 +71,10 @@ internal enum StoryboardScene {
 
     internal static let petsOverviewViewController = SceneType<Habitica.PetOverviewViewController>(storyboard: Main.self, identifier: "PetsOverviewViewController")
 
+    internal static let promoWebNavController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "PromoWebNavController")
+
+    internal static let promoWebViewController = SceneType<Habitica.PromoWebViewController>(storyboard: Main.self, identifier: "PromoWebViewController")
+
     internal static let promotionInfoNavController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "PromotionInfoNavController")
 
     internal static let promotionInfoViewController = SceneType<Habitica.PromotionInfoViewController>(storyboard: Main.self, identifier: "PromotionInfoViewController")
