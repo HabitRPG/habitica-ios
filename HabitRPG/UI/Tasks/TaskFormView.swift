@@ -831,6 +831,15 @@ struct TaskFormView: View {
         }
     }
     
+    private var shouldShowKeyboardInitially: Bool {
+        // iOS 13 crashes when presenting otherwise
+        if #available(iOS 14.0, *) {
+            return viewModel.isCreating
+        } else {
+            return false
+        }
+    }
+    
     private var textFields: some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
@@ -842,7 +851,7 @@ struct TaskFormView: View {
             MultilineTextField("", text: $viewModel.text, onCommit: {
             }, onEditingChanged: { isEditing in
                 isEditingText = isEditing
-            }, giveInitialResponder: viewModel.isCreating,
+            }, giveInitialResponder: shouldShowKeyboardInitially,
                                textColor: isEditingText ? viewModel.textFieldTintColor : viewModel.textFieldTintColor.opacity(0.75))
                 .padding(8)
                 .frame(minHeight: 40)
