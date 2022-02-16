@@ -34,6 +34,15 @@ class NewsViewController: BaseUIViewController, WKNavigationDelegate {
         }
     }
     
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+            if navigationAction.navigationType == WKNavigationType.linkActivated, let url = navigationAction.request.url {
+                RouterHandler.shared.handle(url: url)
+                decisionHandler(WKNavigationActionPolicy.cancel)
+                return
+            }
+            decisionHandler(WKNavigationActionPolicy.allow)
+     }
+    
     override func populateText() {
         navigationItem.title = L10n.Titles.news
     }
