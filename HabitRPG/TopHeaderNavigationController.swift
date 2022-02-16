@@ -108,11 +108,14 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     }
     
     var defaultHeaderHeight: CGFloat {
+        var height: CGFloat
         if UIDevice.current.userInterfaceIdiom == .pad {
-            return 190
+            height = 190
         } else {
-            return 152
+            height = 152
         }
+        let actualSize = CustomFontMetrics.default.scaledValue(for: 11)
+        return height + (actualSize - 11) * 5
     }
     
     var bgViewOffset: CGFloat {

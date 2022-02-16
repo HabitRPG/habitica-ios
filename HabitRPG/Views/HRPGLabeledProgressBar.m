@@ -98,7 +98,6 @@
     
     // labelView and typeView placement (horizontal):
     [self.labelView.leadingAnchor constraintEqualToAnchor:self.progressBar.leadingAnchor constant:1.0].active = YES;
-    [self.labelView.trailingAnchor constraintGreaterThanOrEqualToAnchor:self.typeView.leadingAnchor constant:-4.0].active = YES;
     [self.typeView.trailingAnchor constraintEqualToAnchor:self.progressBar.trailingAnchor constant:-1.0].active = YES;
     
     // Keep labelView to smallest possible size, this prevents need for alignment

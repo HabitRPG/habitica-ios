@@ -23,15 +23,18 @@ class UserTopHeader: UIView, Themeable {
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var buffIconView: UIImageView!
-    @IBOutlet weak var bottomView: UIView!
     
     @IBOutlet weak var classImageView: UIImageView!
-    @IBOutlet weak var classImageViewWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var classImageViewLabelSpacing: NSLayoutConstraint!
     
     @IBOutlet weak var gemView: CurrencyCountView!
     @IBOutlet weak var goldView: CurrencyCountView!
     @IBOutlet weak var hourglassView: CurrencyCountView!
+    
+    @IBOutlet weak var healthLabelAvatarSpacing: NSLayoutConstraint!
+    @IBOutlet weak var experienceLabelAvatarSpacing: NSLayoutConstraint!
+    @IBOutlet weak var magicLabelAvatarSpacing: NSLayoutConstraint!
+    
+    @IBOutlet weak var avatarLeadingSpacing: NSLayoutConstraint!
     
     private var contributorTier: Int = 0 {
         didSet {
@@ -52,13 +55,8 @@ class UserTopHeader: UIView, Themeable {
         super.awakeFromNib()
     
         healthLabel.icon = HabiticaIcons.imageOfHeartLightBg
-        healthLabel.type = L10n.health
-        
         experienceLabel.icon = HabiticaIcons.imageOfExperience
-        experienceLabel.type = L10n.experience
-        
         magicLabel.icon = HabiticaIcons.imageOfMagic
-        magicLabel.type = L10n.mana
         
         if UIDevice.current.userInterfaceIdiom == .pad {
             healthLabel.fontSize = 13
@@ -69,6 +67,8 @@ class UserTopHeader: UIView, Themeable {
             experienceLabel.fontSize = 11
             magicLabel.fontSize = 11
         }
+        
+        configureAccessibilitySizing()
         
         buffIconView.image = HabiticaIcons.imageOfBuffIcon
         
@@ -90,10 +90,53 @@ class UserTopHeader: UIView, Themeable {
         ThemeService.shared.addThemeable(themable: self)
     }
     
+    override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
+        NotificationCenter.default.addObserver(self, selector: #selector(preferredContentSizeChanged(_:)), name: UIContentSizeCategory.didChangeNotification, object: nil)
+    }
+    
+    override func removeFromSuperview() {
+        NotificationCenter.default.removeObserver(self)
+        super.removeFromSuperview()
+    }
+    
+    @objc
+    func preferredContentSizeChanged(_ notification: Notification) {
+        configureAccessibilitySizing()
+        
+        goldView.invalidateIntrinsicContentSize()
+        gemView.invalidateIntrinsicContentSize()
+        hourglassView.invalidateIntrinsicContentSize()
+        setNeedsLayout()
+    }
+    
+    private func configureAccessibilitySizing() {
+        if traitCollection.preferredContentSizeCategory.isAccessibilityCategory && healthLabel.type != "Hp" {
+            healthLabel.type = "Hp"
+            experienceLabel.type = "Exp"
+            magicLabel.type = "Mp"
+        } else if !traitCollection.preferredContentSizeCategory.isAccessibilityCategory && healthLabel.type != L10n.health {
+            healthLabel.type = L10n.health
+            experienceLabel.type = L10n.experience
+            magicLabel.type = L10n.mana
+        }
+        
+        if traitCollection.preferredContentSizeCategory.isAccessibilityCategory && healthLabelAvatarSpacing.constant != 10 {
+            healthLabelAvatarSpacing.constant = 10
+            experienceLabelAvatarSpacing.constant = 10
+            magicLabelAvatarSpacing.constant = 10
+            avatarLeadingSpacing.constant = 12
+        } else if !traitCollection.preferredContentSizeCategory.isAccessibilityCategory && healthLabelAvatarSpacing.constant != 25 {
+            healthLabelAvatarSpacing.constant = 25
+            experienceLabelAvatarSpacing.constant = 25
+            magicLabelAvatarSpacing.constant = 25
+            avatarLeadingSpacing.constant = 22
+        }
+    }
+    
     func applyTheme(theme: Theme) {
         theme.applyBackgroundColor(views: [
             self,
-            bottomView,
             classImageView,
             usernameLabel,
             levelLabel,
@@ -188,16 +231,13 @@ class UserTopHeader: UIView, Themeable {
                 default:
                     classImageView.image = nil
                 }
-                classImageViewWidthConstraint.constant = 36
-                classImageViewLabelSpacing.constant = 8
+                classImageView.isHidden = false
             } else {
                 classImageView.image = nil
-                classImageViewWidthConstraint.constant = 0
-                classImageViewLabelSpacing.constant = 0
+                classImageView.isHidden = true
                 levelLabel.text = nil
             }
-            
-            goldView.amount = Int(stats.gold)
+                        goldView.amount = Int(stats.gold)
             
             buffIconView.isHidden = stats.buffs?.isBuffed != true
             layoutBuffIcon()
