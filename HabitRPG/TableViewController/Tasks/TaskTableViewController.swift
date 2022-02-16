@@ -155,7 +155,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
             filterCount += tabBarController.selectedTags.count
         }
         
-        navigationItem.leftBarButtonItem?.image = HabiticaIcons.imageOfTaskFilterIcon(filter_active: filterCount > 0)
+        navigationItem.leftBarButtonItem?.image = filterCount > 0 ? Asset.filterIconActive.image : Asset.filterIconActive.image
     }
     
     func configureTitle(_ title: String) {
