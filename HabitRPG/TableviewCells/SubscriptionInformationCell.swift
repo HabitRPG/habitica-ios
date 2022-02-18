@@ -17,10 +17,10 @@ class SubscriptionInformationCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
+        titleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
         titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
         
-        descriptionTextView.font = CustomFontMetrics.scaledSystemFont(ofSize: 13)
+        descriptionTextView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 13)
         descriptionTextView.textColor = ThemeService.shared.theme.secondaryTextColor
     }
     

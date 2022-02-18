@@ -15,13 +15,13 @@ class MaintenanceViewController: UIViewController, Themeable {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 20, ofWeight: .semibold)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 20, ofWeight: .semibold)
         label.textAlignment = .center
         return label
     }()
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
         label.textAlignment = .center
         return label
     }()

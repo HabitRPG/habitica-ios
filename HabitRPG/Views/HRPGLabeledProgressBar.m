@@ -163,7 +163,7 @@
 }
 
 - (void)setFontSize:(NSInteger)fontSize {
-    UIFont *scaledFont = [CustomFontMetrics scaledSystemFontOfSize:fontSize compatibleWith:nil];
+    UIFont *scaledFont = [[UIFontMetrics defaultMetrics] scaledSystemFontOfSize:fontSize compatibleWith:nil];
     _fontSize = (NSInteger) scaledFont.pointSize;
     self.typeView.font = scaledFont;
     self.labelView.font = scaledFont;

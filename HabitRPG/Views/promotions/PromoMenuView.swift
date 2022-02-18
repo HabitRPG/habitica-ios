@@ -21,13 +21,13 @@ class PromoMenuView: UIView {
     
     let titleView: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
         return label
     }()
     let titleImageView = UIImageView()
     let descriptionView: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 13)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 13)
         label.numberOfLines = 0
         label.textAlignment = .center
         return label

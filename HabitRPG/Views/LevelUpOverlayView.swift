@@ -29,7 +29,7 @@ class LevelUpOverlayView: HabiticaAlertController {
     
     override init() {
         super.init()
-        messageFont = CustomFontMetrics.scaledSystemFont(ofSize: 15)
+        messageFont = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
         messageColor = ThemeService.shared.theme.ternaryTextColor
         message = L10n.levelupDescription
         arrangeMessageLast = true

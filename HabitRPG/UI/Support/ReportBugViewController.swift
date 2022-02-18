@@ -116,7 +116,7 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
             stackView.spacing = 8
             stackView.layoutMargins = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 15)
             let title = UILabel()
-            title.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
+            title.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
             title.text = issueDict["title"] as? String
             title.numberOfLines = 0
             title.textColor = ThemeService.shared.theme.primaryTextColor

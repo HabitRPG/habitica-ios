@@ -85,10 +85,10 @@ class QuestProgressView: UIView {
             carretIconView.tintColor = .white
             carretIconView.image = #imageLiteral(resourceName: "carret_down").withRenderingMode(.alwaysTemplate)
             
-            bossArtTitleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .semibold)
-            descriptionTitle.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .semibold)
-            rageStrikeCountLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .semibold)
-            bossArtCreditLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+            bossArtTitleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14, ofWeight: .semibold)
+            descriptionTitle.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14, ofWeight: .semibold)
+            rageStrikeCountLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14, ofWeight: .semibold)
+            bossArtCreditLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12)
             
             let userDefaults = UserDefaults()
             if userDefaults.bool(forKey: "worldBossArtCollapsed") {
@@ -234,9 +234,9 @@ class QuestProgressView: UIView {
         let string = L10n.WorldBoss.rageStrikeExplanation
         let attributedString = NSMutableAttributedString(string: string)
         let firstLineRange = NSRange(location: 0, length: string.components(separatedBy: "\n")[0].count)
-        attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 17), range: firstLineRange)
+        attributedString.addAttribute(.font, value: UIFontMetrics.default.scaledSystemFont(ofSize: 17), range: firstLineRange)
         attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: firstLineRange)
-        attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 15), range: NSRange.init(location: firstLineRange.length, length: string.count - firstLineRange.length))
+        attributedString.addAttribute(.font, value: UIFontMetrics.default.scaledSystemFont(ofSize: 15), range: NSRange.init(location: firstLineRange.length, length: string.count - firstLineRange.length))
         let alertController = HabiticaAlertController.alert(title: L10n.WorldBoss.rageStrikeExplanationButton, attributedMessage: attributedString)
         alertController.addCloseAction()
         alertController.show()

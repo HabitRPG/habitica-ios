@@ -53,7 +53,7 @@ class AdventureGuideTableViewCell: UITableViewCell, Themeable {
     private let titleView: UILabel = {
         let view = UILabel()
         view.text = L10n.beginnerObjectives
-        view.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
+        view.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
         view.textAlignment = .center
         return view
     }()
@@ -62,14 +62,14 @@ class AdventureGuideTableViewCell: UITableViewCell, Themeable {
     
     private let progressText: UILabel = {
         let view = UILabel()
-        view.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .bold)
+        view.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
         return view
     }()
     
     private let goldText: UILabel = {
         let view = UILabel()
         view.text = "100"
-        view.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
+        view.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
         return view
     }()
     

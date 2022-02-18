@@ -78,8 +78,8 @@ class UserTopHeader: UIView, Themeable {
         
         gemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showGemView)))
         
-        usernameLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
-        levelLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 11)
+        usernameLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
+        levelLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 11)
         usernameLabel.adjustsFontForContentSizeCategory = true
         levelLabel.adjustsFontForContentSizeCategory = true
         

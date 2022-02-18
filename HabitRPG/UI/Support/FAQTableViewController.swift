@@ -78,8 +78,8 @@ class FAQViewController: BaseUIViewController {
             let stackView = CollapsibleStackView()
             stackView.titleView?.text = entry["title"] as? String
             stackView.titleView?.subtitle = entry["subtitle"] as? String
-            stackView.titleView?.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
-            stackView.titleView?.subtitleFont = CustomFontMetrics.scaledSystemFont(ofSize: 15)
+            stackView.titleView?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
+            stackView.titleView?.subtitleFont = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
             stackView.titleView?.icon = entry["icon"] as? UIImage
             stackView.titleView?.showCarret = false
             stackView.titleView?.insets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
@@ -92,7 +92,7 @@ class FAQViewController: BaseUIViewController {
             textView.setMarkdownString(entry["text"] as? String)
             textView.backgroundColor = .clear
             textView.textContainerInset = UIEdgeInsets(top: 4, left: 12, bottom: 16, right: 12)
-            textView.font = CustomFontMetrics.scaledSystemFont(ofSize: 13)
+            textView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 13)
             textView.textColor = ThemeService.shared.theme.secondaryTextColor
             stackView.addArrangedSubview(textView)
             mechanicsStackView.addArrangedSubview(stackView)
@@ -109,7 +109,7 @@ class FAQViewController: BaseUIViewController {
             stackView.spacing = 8
             stackView.layoutMargins = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 15)
             let title = UILabel()
-            title.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
+            title.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
             title.text = question.question
             title.numberOfLines = 0
             title.textColor = ThemeService.shared.theme.primaryTextColor

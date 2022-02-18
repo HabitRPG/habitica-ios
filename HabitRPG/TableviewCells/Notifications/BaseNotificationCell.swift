@@ -15,13 +15,13 @@ class BaseNotificationCell<NP>: UITableViewCell {
     let iconView = NetworkImageView()
     internal let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
         label.numberOfLines = 0
         return label
     }()
     internal let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
         label.numberOfLines = 0
         return label
     }()
@@ -34,7 +34,7 @@ class BaseNotificationCell<NP>: UITableViewCell {
     let declineButton: UIButton = {
         let button = UIButton()
         button.setTitle(L10n.decline, for: .normal)
-        button.titleLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 12, ofWeight: .medium)
+        button.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12, ofWeight: .medium)
         button.cornerRadius = 4
         button.setTitleColor(.white, for: .normal)
         button.isPointerInteractionEnabled = true
@@ -43,7 +43,7 @@ class BaseNotificationCell<NP>: UITableViewCell {
     let acceptButton: UIButton = {
         let button = UIButton()
         button.setTitle(L10n.accept, for: .normal)
-        button.titleLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 12, ofWeight: .medium)
+        button.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12, ofWeight: .medium)
         button.cornerRadius = 4
         button.setTitleColor(.white, for: .normal)
         button.isPointerInteractionEnabled = true
@@ -73,10 +73,10 @@ class BaseNotificationCell<NP>: UITableViewCell {
         set {
             descriptionLabel.text = newValue
             if newValue?.isEmpty == false {
-                titleLabel.font = CustomFontMetrics.scaledBoldSystemFont(ofSize: 14)
+                titleLabel.font = UIFontMetrics.default.scaledBoldSystemFont(ofSize: 14)
                 contentView.addSubview(descriptionLabel)
             } else {
-                titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
+                titleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
                 descriptionLabel.removeFromSuperview()
             }
         }

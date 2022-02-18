@@ -246,7 +246,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         stackView.spacing = 12
         let label = UILabel()
         label.text = L10n.giftGemsAlertPrompt
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
         label.textColor = ThemeService.shared.theme.ternaryTextColor
         label.textAlignment = .center
         stackView.addArrangedSubview(label)
@@ -273,7 +273,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         errorView.textColor = ThemeService.shared.theme.errorColor
         errorView.text = L10n.Errors.userNotFound
         errorView.textAlignment = .center
-        errorView.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+        errorView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12)
         stackView.addArrangedSubview(errorView)
 
         var foundUser = false

@@ -68,11 +68,11 @@ class EmptyTableViewCell: UITableViewCell, Themeable {
         return { cell in
             cell.secondParagraphLabel.text = displayName
             cell.secondParagraphLabel.textColor = UIColor.contributorColor(forTier: contributorTier ?? 0)
-            cell.secondParagraphLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
+            cell.secondParagraphLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 16)
             cell.firstParagraphLabel.text = "@\(username)"
-            cell.firstParagraphLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+            cell.firstParagraphLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12)
             cell.titleLabel.text = L10n.Empty.Inbox.description
-            cell.titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
+            cell.titleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
             cell.titleLabel.numberOfLines = 0
             cell.secondParagraphLabel.transform = CGAffineTransform(scaleX: 1, y: -1)
             cell.firstParagraphLabel.transform = CGAffineTransform(scaleX: 1, y: -1)

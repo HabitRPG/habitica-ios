@@ -14,13 +14,13 @@ class SubscriptionPromoView: UIView, Themeable {
     
     let titleView: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledBoldSystemFont(ofSize: 14)
+        label.font = UIFontMetrics.default.scaledBoldSystemFont(ofSize: 14)
         label.text = L10n.subscriptionPromoTitle
         return label
     }()
     let descriptionView: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12)
         label.text = L10n.subscriptionPromoDescription
         label.numberOfLines = 0
         label.textAlignment = .center

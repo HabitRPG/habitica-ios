@@ -58,8 +58,8 @@ class InboxChatViewController: SLKTextViewController, Themeable {
         textInputbar.maxCharCount = UInt(configRepository.integer(variable: .maxChatLength))
         textInputbar.charCountLabel.font = UIFont.systemFont(ofSize: 11, weight: .bold)
         textInputbar.textView.isDynamicTypeEnabled = true
-        textInputbar.textView.placeholderFont = CustomFontMetrics.scaledSystemFont(ofSize: 13)
-        textInputbar.textView.font = CustomFontMetrics.scaledSystemFont(ofSize: 13)
+        textInputbar.textView.placeholderFont = UIFontMetrics.default.scaledSystemFont(ofSize: 13)
+        textInputbar.textView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 13)
         
         if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
             topHeaderNavigationController.shouldHideTopHeader = true

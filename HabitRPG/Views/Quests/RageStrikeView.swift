@@ -121,9 +121,9 @@ class RageStrikeView: UIView {
             let string = L10n.WorldBoss.rageStrikeDamaged(getNPCName(), getLongNPCName(), bossName, getLocationName())
             let attributedString = NSMutableAttributedString(string: string)
             let firstLineRange = NSRange(location: 0, length: string.components(separatedBy: "\n")[0].count)
-            attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 17), range: firstLineRange)
+            attributedString.addAttribute(.font, value: UIFontMetrics.default.scaledSystemFont(ofSize: 17), range: firstLineRange)
             attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: firstLineRange)
-            attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 15), range: NSRange.init(location: firstLineRange.length, length: string.count - firstLineRange.length))
+            attributedString.addAttribute(.font, value: UIFontMetrics.default.scaledSystemFont(ofSize: 15), range: NSRange.init(location: firstLineRange.length, length: string.count - firstLineRange.length))
             let alertController = HabiticaAlertController.alert(title: L10n.WorldBoss.rageStrikeTitle(locationName))
             alertController.contentViewInsets = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
             alertController.containerViewSpacing = 0
@@ -150,9 +150,9 @@ class RageStrikeView: UIView {
             let string = L10n.WorldBoss.rageStrikeWarning
             let attributedString = NSMutableAttributedString(string: string)
             let firstLineRange = NSRange(location: 0, length: string.components(separatedBy: "\n")[0].count)
-            attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 17), range: firstLineRange)
+            attributedString.addAttribute(.font, value: UIFontMetrics.default.scaledSystemFont(ofSize: 17), range: firstLineRange)
             attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: firstLineRange)
-            attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 15), range: NSRange.init(location: firstLineRange.length, length: string.count - firstLineRange.length))
+            attributedString.addAttribute(.font, value: UIFontMetrics.default.scaledSystemFont(ofSize: 15), range: NSRange.init(location: firstLineRange.length, length: string.count - firstLineRange.length))
             let alertController = HabiticaAlertController.alert(title: L10n.WorldBoss.pendingStrike, attributedMessage: attributedString)
             alertController.addCloseAction()
             alertController.show()

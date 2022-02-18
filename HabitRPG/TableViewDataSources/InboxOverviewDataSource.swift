@@ -33,7 +33,7 @@ class InboxOverviewDataSource: BaseReactiveTableViewDataSource<InboxConversation
             let displayNameLabel = cell.viewWithTag(1) as? UsernameLabel
             displayNameLabel?.text = message.displayName
             displayNameLabel?.contributorLevel = message.contributor?.level ?? 0
-            displayNameLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 17)
+            displayNameLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17)
             let textLabel = cell.viewWithTag(2) as? UILabel
             textLabel?.text = message.text
             textLabel?.textColor = ThemeService.shared.theme.secondaryTextColor

@@ -148,7 +148,7 @@ class ItemsViewController: BaseTableViewController {
                     let textView = UITextView()
                     textView.isScrollEnabled = false
                     textView.attributedText = try? HabiticaMarkdownHelper.toHabiticaAttributedString(quest.notes ?? "")
-                    textView.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
+                    textView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
                     textView.textColor = ThemeService.shared.theme.primaryTextColor
                     textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                     let stackView = UIStackView(arrangedSubviews: [imageView, detailView, textView])

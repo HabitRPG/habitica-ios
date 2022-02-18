@@ -13,7 +13,7 @@ import UIKit
 
 extension Down {
 
-    func toHabiticaAttributedStringAsync(baseFont: UIFont = CustomFontMetrics.scaledSystemFont(ofSize: 15),
+    func toHabiticaAttributedStringAsync(baseFont: UIFont = UIFontMetrics.default.scaledSystemFont(ofSize: 15),
                                          textColor: UIColor = UIColor.gray100, onComplete: @escaping ((NSMutableAttributedString?) -> Void)) {
         DispatchQueue.global(qos: .background).async {
             let string = try? self.toHabiticaAttributedString()
@@ -29,7 +29,7 @@ extension Down {
         
         if markdownString.range(of: "[*_#\\[<>`]|\\A\\d+[\\.\\)]", options: .regularExpression, range: nil, locale: nil) == nil {
             let string = NSMutableAttributedString(string: markdownString,
-                                                   attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: baseSize),
+                                                   attributes: [.font: UIFontMetrics.default.scaledSystemFont(ofSize: baseSize),
                                                                 .foregroundColor: textColor])
             applyParagraphStyling(string)
             applyCustomChanges(string, mentions: mentions, highlightUsernames: highlightUsernames, baseSize: baseSize)
@@ -37,14 +37,14 @@ extension Down {
         }
         guard let string = try? (useAST ? toAttributedString(styler: HabiticaStyler(ofSize: baseSize, textColor: textColor)) : toAttributedString()).mutableCopy() as? NSMutableAttributedString else {
             let string = NSMutableAttributedString(string: markdownString,
-                                                  attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: baseSize),
+                                                  attributes: [.font: UIFontMetrics.default.scaledSystemFont(ofSize: baseSize),
                                                                .foregroundColor: textColor])
             applyParagraphStyling(string)
             applyCustomChanges(string, mentions: mentions, highlightUsernames: highlightUsernames, baseSize: baseSize)
             return string
         }
         if !useAST {
-            let scaledBaseSize = CustomFontMetrics.scaledSystemFont(ofSize: baseSize).pointSize
+            let scaledBaseSize = UIFontMetrics.default.scaledSystemFont(ofSize: baseSize).pointSize
             string.enumerateAttribute(NSAttributedString.Key.font,
                                       in: NSRange(location: 0, length: string.length),
                                       options: NSAttributedString.EnumerationOptions.longestEffectiveRangeNotRequired,
@@ -157,17 +157,17 @@ private class HabiticaStyler: DownStyler {
     override func style(heading str: NSMutableAttributedString, level: Int) {
         switch level {
         case 1:
-            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 27))
+            str.addAttribute(.font, value: UIFontMetrics.default.scaledBoldSystemFont(ofSize: 27))
         case 2:
-            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 21))
+            str.addAttribute(.font, value: UIFontMetrics.default.scaledBoldSystemFont(ofSize: 21))
         case 3:
-            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 17))
+            str.addAttribute(.font, value: UIFontMetrics.default.scaledBoldSystemFont(ofSize: 17))
         case 4:
-            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 15))
+            str.addAttribute(.font, value: UIFontMetrics.default.scaledBoldSystemFont(ofSize: 15))
         case 5:
-            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 13))
+            str.addAttribute(.font, value: UIFontMetrics.default.scaledBoldSystemFont(ofSize: 13))
         case 6:
-            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 12))
+            str.addAttribute(.font, value: UIFontMetrics.default.scaledBoldSystemFont(ofSize: 12))
         default:
             return
         }
@@ -193,7 +193,7 @@ private class HabiticaStyler: DownStyler {
     
     override func style(codeBlock str: NSMutableAttributedString, fenceInfo: String?) {
         str.addAttributes([
-            .font: CustomFontMetrics.scaledFont(for: UIFont(name: "Menlo", size: baseSize) ?? UIFont.systemFont(ofSize: baseSize))
+            .font: UIFontMetrics.default.scaledFont(for: UIFont(name: "Menlo", size: baseSize) ?? UIFont.systemFont(ofSize: baseSize))
             ], range: NSRange(location: 0, length: str.length))
     }
 
@@ -205,7 +205,7 @@ private class HabiticaStyler: DownStyler {
     }
     
     override func style(listItemPrefix str: NSMutableAttributedString) {
-        str.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: baseSize))
+        str.addAttribute(.font, value: UIFontMetrics.default.scaledSystemFont(ofSize: baseSize))
         str.addAttribute(.foregroundColor, value: textColor)
         
         var listDotLocation = 0
@@ -220,29 +220,29 @@ private class HabiticaStyler: DownStyler {
     }
 
     override func style(text str: NSMutableAttributedString) {
-        str.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: baseSize))
+        str.addAttribute(.font, value: UIFontMetrics.default.scaledSystemFont(ofSize: baseSize))
         str.addAttribute(.foregroundColor, value: textColor)
     }
 
     override func style(code str: NSMutableAttributedString) {
         str.addAttributes([
                 .foregroundColor: UIColor.red50,
-                .font: CustomFontMetrics.scaledFont(for: UIFont(name: "Menlo", size: baseSize) ?? UIFont.systemFont(ofSize: baseSize))
+                .font: UIFontMetrics.default.scaledFont(for: UIFont(name: "Menlo", size: baseSize) ?? UIFont.systemFont(ofSize: baseSize))
             ], range: NSRange(location: 0, length: str.length))
     }
 
     override func style(emphasis str: NSMutableAttributedString) {
         if (str.attribute(.font, at: 0, effectiveRange: nil) as? UIFont)?.isBold == true {
-            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldItalicSystemFont(ofSize: baseSize))
+            str.addAttribute(.font, value: UIFontMetrics.default.scaledBoldItalicSystemFont(ofSize: baseSize))
         } else {
-            str.addAttribute(.font, value: CustomFontMetrics.scaledItalicSystemFont(ofSize: baseSize))
+            str.addAttribute(.font, value: UIFontMetrics.default.scaledItalicSystemFont(ofSize: baseSize))
         }
     }
     override func style(strong str: NSMutableAttributedString) {
         if (str.attribute(.font, at: 0, effectiveRange: nil) as? UIFont)?.isItalic == true {
-            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldItalicSystemFont(ofSize: baseSize))
+            str.addAttribute(.font, value: UIFontMetrics.default.scaledBoldItalicSystemFont(ofSize: baseSize))
         } else {
-            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: baseSize))
+            str.addAttribute(.font, value: UIFontMetrics.default.scaledBoldSystemFont(ofSize: baseSize))
         }
     }
     override func style(link str: NSMutableAttributedString, title: String?, url: String?) {

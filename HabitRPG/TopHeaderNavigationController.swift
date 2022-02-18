@@ -114,7 +114,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         } else {
             height = 152
         }
-        let actualSize = CustomFontMetrics.default.scaledValue(for: 11)
+        let actualSize = UIFontMetrics.default.scaledValue(for: 11)
         return height + (actualSize - 11) * 5
     }
     

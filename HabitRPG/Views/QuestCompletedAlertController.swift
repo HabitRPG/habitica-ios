@@ -48,7 +48,7 @@ class QuestCompletedAlertController: HabiticaAlertController {
             }
             let endTextView = UITextView()
             endTextView.attributedText = try? HabiticaMarkdownHelper.toHabiticaAttributedString(quest.completion ?? "")
-            endTextView.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
+            endTextView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
             endTextView.textAlignment = .center
             endTextView.textColor = ThemeService.shared.theme.primaryTextColor
             endTextView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor

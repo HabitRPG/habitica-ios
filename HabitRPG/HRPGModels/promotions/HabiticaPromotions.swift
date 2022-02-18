@@ -125,7 +125,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         view.priceLabel.textColor = .white
         view.footerLabel.text = L10n.usuallyXGems(regularAmount)
         view.footerLabel.textColor = UIColor("#CAC7CE")
-        view.footerLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+        view.footerLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12)
         switch regularAmount {
         case 4:
             view.setGemAmount(5)
@@ -153,7 +153,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         viewController.promoBanner.setDescription(L10n.limitedEvent.uppercased())
         viewController.promoBanner.descriptionLabel.textColor = UIColor("#FEE2B6")
         viewController.promoBanner.durationLabel.textColor = .white
-        viewController.promoBanner.durationLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
+        viewController.promoBanner.durationLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d"
         viewController.promoBanner.setDuration(L10n.xToY(formatter.string(from: startDate), formatter.string(from: endDate)))
@@ -226,7 +226,7 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         view.priceLabel.backgroundColor = buttonBackground()
         view.footerLabel.text = L10n.usuallyXGems(regularAmount)
         view.footerLabel.textColor = UIColor("#CAC7CE")
-        view.footerLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+        view.footerLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12)
         
         switch regularAmount {
         case 4:
@@ -255,7 +255,7 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         viewController.promoBanner.setDescription(L10n.limitedEvent.uppercased())
         viewController.promoBanner.descriptionLabel.textColor = UIColor("#FEE2B6")
         viewController.promoBanner.durationLabel.textColor = .white
-        viewController.promoBanner.durationLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
+        viewController.promoBanner.durationLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d"
         viewController.promoBanner.setDuration(L10n.xToY(formatter.string(from: startDate), formatter.string(from: endDate)))
@@ -362,7 +362,7 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
         viewController.promoBanner.setDescription(L10n.limitedEvent.uppercased())
         viewController.promoBanner.descriptionLabel.textColor = .white
         viewController.promoBanner.durationLabel.textColor = .white
-        viewController.promoBanner.durationLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
+        viewController.promoBanner.durationLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d"
         viewController.promoBanner.setDuration(L10n.xToY(formatter.string(from: startDate), formatter.string(from: endDate)))

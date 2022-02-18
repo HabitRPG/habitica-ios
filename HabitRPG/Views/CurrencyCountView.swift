@@ -105,7 +105,7 @@ class CurrencyCountView: UIView {
         currencyImageView.contentMode = UIView.ContentMode.scaleAspectFit
         
         countLabel.text = "0"
-        countLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
+        countLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
         countLabel.adjustsFontForContentSizeCategory = true
         
         addSubview(countLabel)

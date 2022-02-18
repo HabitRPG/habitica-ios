@@ -526,7 +526,7 @@ class MainMenuViewController: BaseTableViewController {
         
         let view = UIView()
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
         label.textColor = ThemeService.shared.theme.primaryTextColor
         label.text = self.tableView(tableView, titleForHeaderInSection: section)
         view.addSubview(label)
@@ -548,7 +548,7 @@ class MainMenuViewController: BaseTableViewController {
         if section == 0 {
             return 20
         } else {
-            let font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
+            let font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
             return 20 + font.lineHeight
         }
     }
@@ -593,7 +593,7 @@ class MainMenuViewController: BaseTableViewController {
         
         let label = cell.viewWithTag(1) as? UILabel
         label?.text = item?.title
-        label?.font = CustomFontMetrics.scaledSystemFont(ofSize: 17)
+        label?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17)
         if indexPath == tableView.indexPathForSelectedRow || (indexPath == currentSecondaryIndexPath && splitViewController != nil) {
             cell.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
             label?.textColor = ThemeService.shared.theme.tintColor
@@ -624,7 +624,7 @@ class MainMenuViewController: BaseTableViewController {
         let subtitleLabel = cell.viewWithTag(4) as? UILabel
         subtitleLabel?.text = item?.subtitle
         subtitleLabel?.isHidden = item?.subtitle == nil
-        subtitleLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 11)
+        subtitleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 11)
         subtitleLabel?.textColor = item?.subtitleColor ?? ThemeService.shared.theme.secondaryTextColor
         
         cell.selectionStyle = item?.isDisabled == true ? .default : .none

@@ -101,7 +101,7 @@ class InboxOverviewViewController: BaseTableViewController {
         errorView.textColor = ThemeService.shared.theme.errorColor
         errorView.text = L10n.Errors.userNotFound
         errorView.textAlignment = .center
-        errorView.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+        errorView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12)
         stackView.addArrangedSubview(errorView)
 
         var foundUser = false

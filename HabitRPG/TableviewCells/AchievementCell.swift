@@ -35,14 +35,14 @@ class AchievementCell: UICollectionViewCell {
     
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .medium)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14, ofWeight: .medium)
         label.cornerRadius = 6
         label.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         return label
     }()
     private var descriptionlabel: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12)
         label.numberOfLines = 0
         return label
     }()
@@ -57,9 +57,9 @@ class AchievementCell: UICollectionViewCell {
     private var isRegularAchievement: Bool = false {
         didSet {
             if isRegularAchievement {
-                countBadge.font = CustomFontMetrics.scaledSystemFont(ofSize: 13)
+                countBadge.font = UIFontMetrics.default.scaledSystemFont(ofSize: 13)
             } else {
-                countBadge.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .medium)
+                countBadge.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14, ofWeight: .medium)
             }
         }
     }

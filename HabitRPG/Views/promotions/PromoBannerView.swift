@@ -14,7 +14,7 @@ class PromoBannerView: UIView {
     
     let titleView: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 20, ofWeight: .semibold)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 20, ofWeight: .semibold)
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -23,14 +23,14 @@ class PromoBannerView: UIView {
     let descriptionImageView = UIImageView()
     let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 10, ofWeight: .semibold)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 10, ofWeight: .semibold)
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
     }()
     let durationLabel: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
         label.numberOfLines = 0
         label.textAlignment = .center
         return label

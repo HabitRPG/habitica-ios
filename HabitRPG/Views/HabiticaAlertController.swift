@@ -79,7 +79,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         }
     }
     
-    var messageFont = CustomFontMetrics.scaledSystemFont(ofSize: 17)
+    var messageFont = UIFontMetrics.default.scaledSystemFont(ofSize: 17)
     var messageColor: UIColor?
     
     var messageView: UILabel?
@@ -257,7 +257,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         
         if isMainAction {
             button.setTitleColor(UIColor.white, for: .normal)
-            button.titleLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
+            button.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
             button.backgroundColor = color
             button.cornerRadius = 8
             button.layer.shadowColor = ThemeService.shared.theme.buttonShadowColor.cgColor
@@ -267,7 +267,7 @@ class HabiticaAlertController: UIViewController, Themeable {
             button.layer.masksToBounds = false
         } else {
             button.setTitleColor(color, for: .normal)
-            button.titleLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 17)
+            button.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17)
         }
         
         if buttonAxis == .horizontal {

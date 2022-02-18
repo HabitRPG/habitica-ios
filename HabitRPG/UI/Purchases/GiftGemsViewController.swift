@@ -253,7 +253,7 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
         innerStackView.addArrangedSubview(iconView)
         let label = UILabel()
         label.textColor = UIColor.green10
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 20, ofWeight: .semibold)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 20, ofWeight: .semibold)
         label.text = "\(gemCount)"
         innerStackView.addArrangedSubview(label)
         mainView.addSubview(view)

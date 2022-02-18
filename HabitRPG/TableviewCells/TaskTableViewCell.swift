@@ -75,7 +75,7 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         if !task.isValid {
             return
         }
-        self.titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
+        self.titleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
         self.titleLabel.textContainerInset = UIEdgeInsets.zero
         self.subtitleLabel.textContainerInset = UIEdgeInsets.zero
         if let text = task.text {
@@ -89,7 +89,7 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         }
 
         if let trimmedNotes = task.notes?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedNotes.isEmpty == false {
-            self.subtitleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 11)
+            self.subtitleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 11)
             self.subtitleLabel.attributedText = try? Down(markdownString: trimmedNotes.unicodeEmoji).toHabiticaAttributedString(baseSize: 11, textColor: ThemeService.shared.theme.ternaryTextColor)
             self.subtitleLabel.isHidden = false
         } else {

@@ -45,13 +45,13 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
             return view
         }
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
         label.textColor = ThemeService.shared.theme.secondaryTextColor
         label.text = L10n.Titles.notifications.uppercased()
         view.addSubview(label)
         label.pin.start(16).sizeToFit().vCenter()
         let pillLabel = UILabel()
-        pillLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+        pillLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12)
         pillLabel.textColor = ThemeService.shared.theme.secondaryTextColor
         pillLabel.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
         pillLabel.textAlignment = .center

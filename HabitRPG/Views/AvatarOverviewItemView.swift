@@ -19,7 +19,7 @@ class AvatarOverviewItemView: UIView {
     var label: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.gray400
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 11)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 11)
         label.textAlignment = .center
         return label
     }()

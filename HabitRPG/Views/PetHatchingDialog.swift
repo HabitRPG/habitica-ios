@@ -69,14 +69,14 @@ class PetHatchingAlertController: HabiticaAlertController {
     
     private let petTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 16)
         label.textAlignment = .center
         label.addHeightConstraint(height: 21)
         return label
     }()
     private let descriptionlabel: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
         label.numberOfLines = 3
         label.addHeightConstraint(height: 60)
         label.textAlignment = .center

@@ -159,7 +159,7 @@ class CheckboxView: UIView {
             layer.drawPercentage = checked ? 1 : 0
         }
         if withTitle {
-            label.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
+            label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
             if label.superview == nil {
                 self.addSubview(label)
             }

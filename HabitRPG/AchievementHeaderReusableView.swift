@@ -12,7 +12,7 @@ import Habitica_Models
 class AchievementHeaderReusableView: UICollectionReusableView {
     var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 12, ofWeight: .medium)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12, ofWeight: .medium)
         label.textColor = ThemeService.shared.theme.secondaryTextColor
         return label
     }()

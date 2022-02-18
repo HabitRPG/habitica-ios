@@ -583,7 +583,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         alert.contentView = imageView
         alert.containerViewSpacing = 20
         alert.arrangeMessageLast = true
-        alert.messageFont = CustomFontMetrics.scaledSystemFont(ofSize: 15)
+        alert.messageFont = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
         return alert
     }
     

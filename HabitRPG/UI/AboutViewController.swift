@@ -91,7 +91,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         let cell = UITableViewCell(style: cellStyle, reuseIdentifier: "Cell")
         cell.accessoryType = .none
         cell.selectionStyle = .default
-        cell.textLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: cell.textLabel?.font.pointSize ?? 14)
+        cell.textLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: cell.textLabel?.font.pointSize ?? 14)
         let theme = ThemeService.shared.theme
         cell.textLabel?.textColor = theme.primaryTextColor
         cell.detailTextLabel?.textColor = theme.secondaryTextColor
@@ -99,7 +99,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
             if needsUpdate() && indexPath.item == 1 {
                 cell.textLabel?.text = L10n.About.newVersion(configRepository.string(variable: .lastVersionNumber) ?? "")
                 cell.textLabel?.textColor = theme.tintColor
-                cell.textLabel?.font = CustomFontMetrics.scaledBoldSystemFont(ofSize: cell.textLabel?.font.pointSize ?? 14)
+                cell.textLabel?.font = UIFontMetrics.default.scaledBoldSystemFont(ofSize: cell.textLabel?.font.pointSize ?? 14)
                 cell.detailTextLabel?.text = L10n.About.whatsNew
                 cell.detailTextLabel?.textColor = theme.tintColor
             } else if indexPath.item == 0 {

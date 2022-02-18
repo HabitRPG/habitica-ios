@@ -63,8 +63,8 @@ class GroupChatViewController: SLKTextViewController, Themeable {
         textInputbar.charCountLabelNormalColor = UIColor.gray400
         textInputbar.charCountLabelWarningColor = UIColor.red50
         textInputbar.charCountLabel.font = UIFont.systemFont(ofSize: 11, weight: .bold)
-        textInputbar.textView.placeholderFont = CustomFontMetrics.scaledSystemFont(ofSize: 14)
-        textInputbar.textView.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
+        textInputbar.textView.placeholderFont = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
+        textInputbar.textView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.checkGuidelinesAccepted(user: user)

@@ -238,7 +238,7 @@ class SubscriptionViewController: BaseTableViewController {
             } else {
                 titleView.textColor = ThemeService.shared.theme.backgroundTintColor
             }
-            titleView.font = CustomFontMetrics.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
+            titleView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
             titleView.textAlignment = .center
             if isSubscribed {
                 titleView.text = L10n.subscriptionBenefitsTitleSubscribed
@@ -260,7 +260,7 @@ class SubscriptionViewController: BaseTableViewController {
             } else {
                 titleView.textColor = ThemeService.shared.theme.backgroundTintColor
             }
-            titleView.font = CustomFontMetrics.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
+            titleView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
             titleView.textAlignment = .center
             titleView.text = L10n.subscriptionOptionsTitle
             view.addSubview(titleView)

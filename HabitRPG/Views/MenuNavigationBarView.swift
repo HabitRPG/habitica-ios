@@ -34,7 +34,7 @@ class MenuNavigationBarView: UIView, Themeable {
     }()
     private lazy var displayNameLabel: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
         label.adjustsFontForContentSizeCategory = true
         label.isUserInteractionEnabled = true
         label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(profileAreaTapped)))
@@ -42,7 +42,7 @@ class MenuNavigationBarView: UIView, Themeable {
     }()
     private lazy var usernameLabel: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
         label.adjustsFontForContentSizeCategory = true
         label.isUserInteractionEnabled = true
         label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(profileAreaTapped)))

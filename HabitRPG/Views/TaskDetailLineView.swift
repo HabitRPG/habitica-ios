@@ -67,7 +67,7 @@ class TaskDetailLineView: UIView {
             view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
             addSubview(view)
             
-            let font = CustomFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.systemFont(ofSize: 11))
+            let font = UIFontMetrics.default.scaledSystemFont(ofSize: 11)
             self.detailLabel.font = font
             self.streakLabel.font = font
             self.reminderLabel.font = font

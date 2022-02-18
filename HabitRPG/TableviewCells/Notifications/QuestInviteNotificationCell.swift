@@ -13,17 +13,17 @@ class QuestInviteNotificationCell: BaseNotificationCell<NotificationQuestInviteP
     
     private let goalTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledBoldSystemFont(ofSize: 12)
+        label.font = UIFontMetrics.default.scaledBoldSystemFont(ofSize: 12)
         return label
     }()
     private let goalDetailLabel: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12)
         return label
     }()
     private let difficultyTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = CustomFontMetrics.scaledBoldSystemFont(ofSize: 12)
+        label.font = UIFontMetrics.default.scaledBoldSystemFont(ofSize: 12)
         label.text = "\(L10n.difficulty):"
         return label
     }()

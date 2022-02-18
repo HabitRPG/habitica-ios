@@ -114,7 +114,7 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
         
         reportView.setImage(#imageLiteral(resourceName: "ChatReport").withRenderingMode(.alwaysTemplate), for: .normal)
         
-        messageTextView.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .regular)
+        messageTextView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .regular)
     }
     
     func configure(chatMessage: ChatMessageProtocol, previousMessage: ChatMessageProtocol?, nextMessage: ChatMessageProtocol?, userID: String, username: String, isModerator: Bool, isExpanded: Bool) {

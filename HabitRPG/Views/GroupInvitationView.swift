@@ -28,7 +28,7 @@ class GroupInvitationView: UIView {
     private let label: UILabel = {
         let view = UILabel()
         view.textColor = .white
-        view.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
+        view.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
         view.numberOfLines = 3
         return view
     }()
