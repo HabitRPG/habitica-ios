@@ -47,6 +47,8 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
                 
         let nextGesture = UITapGestureRecognizer(target: self, action: #selector(scrollToNextPage))
         nextButtonView.addGestureRecognizer(nextGesture)
+        nextButtonView.accessibilityTraits = .button
+        nextButtonView.accessibilityLabel = L10n.next
         let previousGesture = UITapGestureRecognizer(target: self, action: #selector(scrollToPreviousPage))
         previousButtonView.addGestureRecognizer(previousGesture)
         views = [welcomeView, avatarSetupView, taskSetupView]
