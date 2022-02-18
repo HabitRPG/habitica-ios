@@ -266,22 +266,46 @@ class SettingsViewController: FormViewController, Themeable {
                     let defaults = UserDefaults()
                     defaults.set(row.value ?? false, forKey: "appBadgeActive")
                 })
-            +++ Section(L10n.Settings.dayStart)
-            <<< TimeRow(SettingsTags.customDayStart) { row in
-                row.title = L10n.Settings.customDayStart
-                }.onCellHighlightChanged({[weak self] (_, row) in
-                if self?.isSettingUserData == true {
-                    return
+            +++ Section(L10n.Settings.dayStartAdjustment)
+            <<< PushRow<LabeledFormValue<Int>>(SettingsTags.customDayStart) { row in
+                row.title = L10n.Settings.adjustment
+                row.cellUpdate { cell, _ in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
-                    if let date = row.value {
-                        let calendar = Calendar.current
-                        let hour = calendar.component(.hour, from: date)
-                        if hour == self?.user?.preferences?.dayStart {
-                            return
-                        }
-                        self?.userRepository.updateDayStartTime(hour).observeCompleted {}
+                let timeFormatter = DateFormatter()
+                timeFormatter.dateStyle = .none
+                timeFormatter.timeStyle = .short
+                let calendar = Calendar.current
+                let now = Date()
+                row.options = (0..<13).map({ adjustment -> LabeledFormValue<Int> in
+                    if let date = calendar.date(bySettingHour: adjustment, minute: 0, second: 0, of: now) {
+                        return LabeledFormValue(value: adjustment, label: "+\(adjustment) hours (\(timeFormatter.string(from: date)))")
+                    } else {
+                        return LabeledFormValue(value: adjustment, label: "")
                     }
                 })
+                let currentValue = user?.preferences?.dayStart ?? 0
+                if let date = calendar.date(bySettingHour: currentValue, minute: 0, second: 0, of: now) {
+                    row.value = LabeledFormValue(value: currentValue, label: "+\(currentValue) hours (\(timeFormatter.string(from: date)))")
+                }
+                row.onChange({[weak self] (row) in
+                    if self?.isSettingUserData == true {
+                        return
+                    }
+                    if row.value?.value == self?.user?.preferences?.dayStart {
+                        return
+                    }
+                    self?.userRepository.updateDayStartTime(row.value?.value ?? 0).observeCompleted {}
+                })
+                row.onPresent({ (_, to) in
+                    to.selectableRowCellUpdate = { cell, _ in
+                        cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    }
+                })
+            }
             +++ Section(L10n.Settings.mentions) { section in
                 section.hidden = true
             }

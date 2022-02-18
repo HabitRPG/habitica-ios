@@ -273,6 +273,8 @@
 "settings.display_notification_badge" = "Display Notification Badge";
 "settings.day_start" = "Day Start";
 "settings.custom_day_start" = "Custom Day Start";
+"settings.day_start_adjustment" = "Day Start Adjustment";
+"settings.adjustment" = "Adjustment";
 "settings.social" = "Social";
 "settings.disable_all_notifications" = "Disable all Push Notifications";
 "settings.disable_all_emails" = "Disable all Emails";

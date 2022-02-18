@@ -354,10 +354,12 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             return
         }
         if #available(iOS 14.5, *) {
-            DispatchQueue.global(qos: .background).async {
+            Analytics.logEvent("Attribution begin", parameters: nil)
+            DispatchQueue.global(qos: .default).async {
                 Analytics.logEvent("Attribution Attempt", parameters: nil)
-                let token = try? AAAttribution.attributionToken()
-                if let attributionToken = token, let url = URL(string: "https://api-adservices.apple.com/api/v1/") {
+                do {
+                let attributionToken = try AAAttribution.attributionToken()
+                if let url = URL(string: "https://api-adservices.apple.com/api/v1/") {
                     let request = NSMutableURLRequest(url: url)
                     request.httpMethod = "POST"
                     request.setValue("text/plain", forHTTPHeaderField: "Content-Type")
@@ -410,6 +412,10 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                     task.resume()
                 } else {
                     Analytics.logEvent("Attribution Failed", parameters: ["point": "No token"])
+                }
+                } catch {
+                    Analytics.logEvent("Attribution Failed", parameters: ["error": error.localizedDescription])
+
                 }
             }
         } else {
