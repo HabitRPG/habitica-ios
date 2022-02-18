@@ -390,6 +390,9 @@ class HabiticaAlertController: UIViewController, Themeable {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }
+            while let parent = topController.parent {
+                topController = parent
+            }
             modalTransitionStyle = .crossDissolve
             modalPresentationStyle = .overCurrentContext
             topController.present(self, animated: true) {

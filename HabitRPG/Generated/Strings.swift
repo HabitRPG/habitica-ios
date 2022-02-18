@@ -614,7 +614,7 @@ public enum L10n {
   public static var next: String { return L10n.tr("Mainstrings", "next") }
   /// Your next prize unlocks in 1 Check-In.
   public static var nextCheckinPrize1Day: String { return L10n.tr("Mainstrings", "next_checkin_prize_1_day") }
-  /// Your next prize unlocks in %d Check-Ins
+  /// Your next prize unlocks at %d Check-Ins
   public static func nextCheckinPrizeXDays(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "next_checkin_prize_x_days", p1)
   }

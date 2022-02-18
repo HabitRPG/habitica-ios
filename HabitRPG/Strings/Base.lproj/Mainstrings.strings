@@ -870,7 +870,7 @@
 "streak_achievement_description" = "You've completed your Daily for 21 days in a row! Amazing job. Don't break the streak!";
 "earned_achievement_share" = "I earned a new achievement in Habitica!";
 "next_checkin_prize_1_day" = "Your next prize unlocks in 1 Check-In.";
-"next_checkin_prize_x_days" = "Your next prize unlocks in %d Check-Ins";
+"next_checkin_prize_x_days" = "Your next prize unlocks at %d Check-Ins";
 "next_prize_at_x_checkins" = "Next prize at %d Check-Ins";
 "checkin_prize_earned" = "You earned a %s as a reward for your devotion to improving your life.";
 "recipient" = "Recipient";
