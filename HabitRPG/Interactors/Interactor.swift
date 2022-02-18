@@ -23,7 +23,6 @@ class Interactor<Input, Output> {
 
     func configure(signal: Signal<Input, NSError>) -> Signal<Output, NSError> {
         fatalError("Subclasses need to implement the `configure(signal:)` method.")
-        return Signal<Output, NSError>.never
     }
 
     func run(with: Input) {
