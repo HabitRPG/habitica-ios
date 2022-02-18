@@ -125,6 +125,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
             }, value: {[weak self] (tasks, changes) in
                 self?.sections[0].items = tasks
                 self?.notify(changes: changes)
+                self?.isProcessingDeletion = false
         }).start()
     }
     
@@ -195,8 +196,10 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
             && tableView != nil
     }
     
+    private var isProcessingDeletion = false
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete && isStillAliveAndConnected {
+        if editingStyle == .delete && isStillAliveAndConnected && !isProcessingDeletion {
             if let task = self.item(at: indexPath) {
                 if task.isChallengeTask {
                     if task.challengeBroken == nil {
@@ -206,6 +209,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
                     }
                     return
                 }
+                isProcessingDeletion = true
                 repository.deleteTask(task).observeCompleted {
                     self.fetchTasks()
                 }
