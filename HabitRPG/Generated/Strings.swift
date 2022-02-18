@@ -1824,6 +1824,8 @@ public enum L10n {
     public static var addPassword: String { return L10n.tr("Mainstrings", "settings.add_password") }
     /// Successfully added email and password
     public static var addedLocalAuth: String { return L10n.tr("Mainstrings", "settings.added_local_auth") }
+    /// Adjustment
+    public static var adjustment: String { return L10n.tr("Mainstrings", "settings.adjustment") }
     /// API
     public static var api: String { return L10n.tr("Mainstrings", "settings.api") }
     /// Copy Token. Be careful, this is a password!
@@ -1870,6 +1872,8 @@ public enum L10n {
     public static var dangerZone: String { return L10n.tr("Mainstrings", "settings.danger_zone") }
     /// Day Start
     public static var dayStart: String { return L10n.tr("Mainstrings", "settings.day_start") }
+    /// Day Start Adjustment
+    public static var dayStartAdjustment: String { return L10n.tr("Mainstrings", "settings.day_start_adjustment") }
     /// Delete Account
     public static var deleteAccount: String { return L10n.tr("Mainstrings", "settings.delete_account") }
     /// This will delete your account forever, and it can never be restored! Banked or spent Gems will not be refunded. If you’re absolutely certain, type your password into the text box below.
