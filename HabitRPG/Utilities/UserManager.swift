@@ -200,30 +200,30 @@ class UserManager: NSObject {
     }
     
     private func updateReminderNotifications(reminders: [ReminderProtocol], changes: ReactiveChangeset) {
-        removeAllReminderNotifications(reminders: reminders)
+        scheduleAllReminderNotifications(reminders: reminders)
     }
-    private func removeAllReminderNotifications(reminders: [ReminderProtocol]) {
+    private func scheduleAllReminderNotifications(reminders: [ReminderProtocol]) {
         let notificationCenter = UNUserNotificationCenter.current()
+        var scheduledReminderKeys = [String]()
+        for reminder in reminders {
+            scheduledReminderKeys.append(contentsOf: self.scheduleNotifications(reminder: reminder))
+        }
         notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
             var toCancel = [String]()
-            for request in requests where request.identifier.starts(with: "task") {
+            for request in requests where !scheduledReminderKeys.contains(request.identifier) {
                 toCancel.append(request.identifier)
             }
             notificationCenter.removePendingNotificationRequests(withIdentifiers: toCancel)
-            DispatchQueue.main.async {
-                for reminder in reminders {
-                    self.scheduleNotifications(reminder: reminder)
-                }
-            }
         })
     }
     
-    private func scheduleNotifications(reminder: ReminderProtocol) {
+    private func scheduleNotifications(reminder: ReminderProtocol) -> [String] {
+        var keys = [String]()
         guard let task = reminder.task else {
-            return
+            return keys
         }
         if reminder.id == nil || reminder.id?.isEmpty == true {
-            return
+            return keys
         }
         if task.type == TaskType.daily {
             let calendar = Calendar(identifier: .gregorian)
@@ -233,17 +233,22 @@ class UserManager: NSObject {
                 }
                 let checkedDate = Date(timeIntervalSinceNow: TimeInterval(day * 86400))
                 if (task.isDue && day == 0) || task.dueOn(date: checkedDate, calendar: calendar) {
-                    scheduleForDay(reminder: reminder, date: checkedDate, atTime: reminder.time)
+                    if let key = scheduleForDay(reminder: reminder, date: checkedDate, atTime: reminder.time) {
+                        keys.append(key)
+                    }
                 }
             }
         } else if task.type == TaskType.todo, let time = reminder.time {
             if time > Date() {
-                scheduleForDay(reminder: reminder, date: task.duedate ?? time, atTime: time)
+                if let key = scheduleForDay(reminder: reminder, date: task.duedate ?? time, atTime: time) {
+                    keys.append(key)
+                }
             }
         }
+        return keys
     }
     
-    private func scheduleForDay(reminder: ReminderProtocol, date: Date, atTime: Date? = nil) {
+    private func scheduleForDay(reminder: ReminderProtocol, date: Date, atTime: Date? = nil) -> String? {
         var fireDate = date
         let calendar = Calendar(identifier: .gregorian)
         var components = calendar.dateComponents([.year, .month, .day], from: date)
@@ -258,7 +263,7 @@ class UserManager: NSObject {
         }
         
         if fireDate < Date() {
-            return
+            return nil
         }
         
         let taskText = reminder.task?.text?.unicodeEmoji
@@ -277,13 +282,15 @@ class UserManager: NSObject {
         }
         content.categoryIdentifier = "taskCompletion"
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
-        let request = UNNotificationRequest(identifier: "task\(reminder.id ?? "")-\(components.month ?? 0)\(components.day ?? 0)", content: content, trigger: trigger)
+        let notificationIdentifier = "task\(reminder.id ?? "")-\(components.month ?? 0)\(components.day ?? 0)"
+        let request = UNNotificationRequest(identifier: notificationIdentifier, content: content, trigger: trigger)
         logger.log("⏰ Notification \(request.identifier) for \(reminder.task?.text ?? "") at \(fireDate)")
         UNUserNotificationCenter.current().add(request) {(error) in
             if let error = error {
                 logger.log("Uh oh! We had an error: \(error)")
             }
         }
+        return notificationIdentifier
     }
     
     private func setTimezoneOffset(_ user: UserProtocol) {
