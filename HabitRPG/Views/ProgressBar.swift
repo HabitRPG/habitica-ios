@@ -7,6 +7,32 @@
 //
 
 import UIKit
+import SwiftUI
+
+struct ProgressBarUI<V>: View where V: BinaryFloatingPoint {
+    let value: V
+    
+    
+    init(value: V, maxValue: V = 1.0) {
+        self.value = value / maxValue
+    }
+    
+    var body: some View {
+        GeometryReader { reader in
+            let radius = reader.size.height / 2
+            ZStack(alignment: .leading) {
+                RoundedRectangle(cornerRadius: radius)
+                    .frame(width: reader.size.width, height: reader.size.height)
+                    .foregroundColor(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                
+                RoundedRectangle(cornerRadius: radius)
+                    .size(width: reader.size.width * CGFloat(value), height: reader.size.height)
+            }
+        }
+        
+    }
+    
+}
 
 class ProgressBar: UIView {
     

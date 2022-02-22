@@ -9,6 +9,7 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
+import SwiftUI
 
 class PartyDetailViewController: GroupDetailViewController {
     
@@ -122,44 +123,41 @@ class PartyDetailViewController: GroupDetailViewController {
 
     private func set(members: [MemberProtocol]) {
         for view in membersStackview.arrangedSubviews {
-            if let memberView = view as? MemberListView {
-                memberView.removeFromSuperview()
+            if view.tag == 1000 {
+                view.removeFromSuperview()
             }
         }
-        for member in members {
-            if !member.isValid {
-                continue
-            }
-            let view = MemberListView()
-            view.configure(member: member, isLeader: member.id == groupProperty.value?.leaderID)
-            view.viewTapped = {[weak self] in
-                self?.selectedMember = member
-                self?.perform(segue: StoryboardSegue.Social.userProfileSegue)
-            }
-            view.moreButtonTapped = {[weak self] in
-                let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-                actionSheet.addAction(UIAlertAction(title: L10n.writeMessage, style: .default, handler: { _ in
-                    let viewController = StoryboardScene.Social.inboxChatNavigationController.instantiate()
-                    (viewController.topViewController as? InboxChatViewController)?.userID = member.id
-                    (viewController.topViewController as? InboxChatViewController)?.username = member.username
-                    self?.present(viewController, animated: true, completion: nil)
+        let memberListView = MemberList(members: members, onTap: {[weak self] member in
+            self?.selectedMember = member
+            self?.perform(segue: StoryboardSegue.Social.userProfileSegue)
+            
+        }, onMoreTap: {[weak self] member in
+            let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            actionSheet.addAction(UIAlertAction(title: L10n.writeMessage, style: .default, handler: { _ in
+                let viewController = StoryboardScene.Social.inboxChatNavigationController.instantiate()
+                (viewController.topViewController as? InboxChatViewController)?.userID = member.id
+                (viewController.topViewController as? InboxChatViewController)?.username = member.username
+                self?.present(viewController, animated: true, completion: nil)
+            }))
+            if self?.groupProperty.value?.leaderID == self?.userRepository.currentUserId && self?.groupProperty.value?.leaderID != member.id {
+                actionSheet.addAction(UIAlertAction(title: L10n.transferOwnership, style: .default, handler: { _ in
+                    self?.showTransferOwnershipDialog(memberID: member.id ?? "", displayName: member.profile?.name ?? "")
                 }))
-                if self?.groupProperty.value?.leaderID == self?.userRepository.currentUserId && self?.groupProperty.value?.leaderID != member.id {
-                    actionSheet.addAction(UIAlertAction(title: L10n.transferOwnership, style: .default, handler: { _ in
-                        self?.showTransferOwnershipDialog(memberID: member.id ?? "", displayName: member.profile?.name ?? "")
-                    }))
-                    actionSheet.addAction(UIAlertAction(title: L10n.Party.removeFromParty, style: .default, handler: { _ in
-                        self?.showRemoveMemberDialog(memberID: member.id ?? "", displayName: member.profile?.name ?? "")
-                    }))
-                }
-                actionSheet.addAction(UIAlertAction.cancelAction())
-                actionSheet.popoverPresentationController?.sourceView = view
-                actionSheet.popoverPresentationController?.sourceRect = view.bounds
-
-                self?.present(actionSheet, animated: true, completion: nil)
+                actionSheet.addAction(UIAlertAction(title: L10n.Party.removeFromParty, style: .default, handler: { _ in
+                    self?.showRemoveMemberDialog(memberID: member.id ?? "", displayName: member.profile?.name ?? "")
+                }))
             }
-            membersStackview.addArrangedSubview(view)
-        }
+            actionSheet.addAction(UIAlertAction.cancelAction())
+            actionSheet.popoverPresentationController?.sourceView = self?.view
+            actionSheet.popoverPresentationController?.sourceRect = self?.view?.bounds ?? CGRect.zero
+
+            self?.present(actionSheet, animated: true, completion: nil)
+        })
+        let controller = UIHostingController(rootView: memberListView)
+        addChild(controller)
+        controller.view.tag = 1000
+        membersStackview.addArrangedSubview(controller.view)
+        controller.didMove(toParent: self)
     }
     
     override func updateData(group: GroupProtocol) {

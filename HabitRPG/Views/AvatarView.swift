@@ -9,6 +9,7 @@
 import UIKit
 import PinLayout
 import Kingfisher
+import SwiftUI
 
 @objc
 enum AvatarViewSize: Int {
@@ -261,5 +262,18 @@ class AvatarView: UIView {
         } else {
             constraintsDictionary[type]?(self, imageView, size, offset)
         }
+    }
+}
+
+struct AvatarViewUI: UIViewRepresentable {
+    var avatar: Avatar
+    
+    func makeUIView(context: Context) -> AvatarView {
+        let avatarView = AvatarView()
+        return avatarView
+    }
+    
+    func updateUIView(_ uiView: AvatarView, context: Context) {
+        uiView.avatar = avatar
     }
 }
