@@ -9,9 +9,13 @@
 import Foundation
 import FirebaseCrashlytics
 import Habitica_Models
+import Kingfisher
 
 class RemoteLogger: HabiticaLogger {    
     override func record(error: Error) {
+        if error is KingfisherError {
+            return
+        }
         Crashlytics.crashlytics().record(error: error)
     }
     

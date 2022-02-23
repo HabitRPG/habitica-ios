@@ -367,7 +367,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                     let task = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
                         Analytics.logEvent("Attribution Data collected", parameters: nil)
                         if let error = error {
-                            Crashlytics.crashlytics().record(error: error)
+                            logger.log(error)
                             Analytics.logEvent("Attribution Failed", parameters: ["point": error.localizedDescription])
                             return
                         }
@@ -405,7 +405,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                                 ])
                             }
                         } catch {
-                            Crashlytics.crashlytics().record(error: error)
+                            logger.log(error)
                             Analytics.logEvent("Attribution Failed", parameters: ["point": error.localizedDescription])
                         }
                     }

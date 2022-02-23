@@ -823,7 +823,7 @@
 "tasks.team" = "Echipă";
 "tasks.due_today" = "Termen limită azi";
 "tasks.due_tomorrow" = "Termen limită mâine";
-"tasks.due_in_x_days" = "Termen limită în %@ zile";
+"tasks.due_in_x_days" = "Termen limită în %d zile";
 "tasks.every_x" = "la fiecare %@";
 "tasks.every_x" = "la fiecare %d %@";
 "tasks.repeats.repeats_every_on" = "Se repetă din %@ în %@";
