@@ -110,6 +110,12 @@ class SettingsViewController: FormViewController, Themeable {
             cell.tintColor = ThemeService.shared.theme.tintColor
             cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         }
+        TimePickerRow.defaultCellUpdate = { cell, _ in
+            cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+            cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
+            cell.tintColor = ThemeService.shared.theme.tintColor
+            cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        }
         SwitchRow.defaultCellUpdate = { cell, _ in
             cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
             cell.tintColor = ThemeService.shared.theme.tintColor
@@ -241,8 +247,11 @@ class SettingsViewController: FormViewController, Themeable {
                         appDelegate.rescheduleDailyReminder()
                     }
                 })
-            <<< TimeRow(SettingsTags.dailyReminderTime) { row in
+            <<< TimePickerRow(SettingsTags.dailyReminderTime) { row in
                 row.title = L10n.Settings.everyDay
+                row.cellUpdate { cell, _ in
+                    cell.textLabel?.text = L10n.Settings.everyDay
+                }
                 row.hidden = Condition.function([SettingsTags.dailyReminder], { (form) -> Bool in
                     return (form.rowBy(tag: SettingsTags.dailyReminder) as? SwitchRow)?.value == false
                 })

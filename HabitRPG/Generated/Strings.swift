@@ -892,7 +892,7 @@ public enum L10n {
   public static var subscriptionInfo3Title: String { return L10n.tr("Mainstrings", "subscription_info_3_title") }
   /// Receive the Royal Purple Jackalope pet when you become a new subscriber.
   public static var subscriptionInfo4Description: String { return L10n.tr("Mainstrings", "subscription_info_4_description") }
-  /// Monthly Mystery Items
+  /// Special Subscriber Pet
   public static var subscriptionInfo4Title: String { return L10n.tr("Mainstrings", "subscription_info_4_title") }
   /// Discover even more items in Habitica with a 2x bonus daily drop cap.
   public static var subscriptionInfo5Description: String { return L10n.tr("Mainstrings", "subscription_info_5_description") }

@@ -47,7 +47,7 @@ target 'Habitica' do
   pod 'SwiftLint'
   pod 'Eureka'
   pod 'ColorPickerRow' 
-  pod 'RealmSwift'
+  pod 'RealmSwift', '10.18.0'
   pod 'ACKReactiveExtensions/Realm'
 
   pod 'Kingfisher'
@@ -69,7 +69,7 @@ end
 
 target 'Habitica Intents' do
   pod 'Amplitude-iOS'
-  pod 'RealmSwift'
+  pod 'RealmSwift', '10.18.0'
   pod 'ACKReactiveExtensions/Realm'
   reactive_pods
   pod 'KeychainAccess'
@@ -78,7 +78,7 @@ end
 
 target 'Habitica WidgetsExtension' do
   pod 'Amplitude-iOS'
-  pod 'RealmSwift'
+  pod 'RealmSwift', '10.18.0'
   pod 'ACKReactiveExtensions/Realm'
   reactive_pods
   pod 'KeychainAccess'
@@ -109,7 +109,7 @@ end
 
 target "Habitica Database" do
   project 'Habitica Database/Habitica Database.xcodeproj'
-  pod "RealmSwift"
+  pod "RealmSwift", '10.18.0'
   pod 'ACKReactiveExtensions/Realm'
   
   reactive_pods
