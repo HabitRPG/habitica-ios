@@ -346,9 +346,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     }
     
     func applySearchAdAttribution() {
-        if configRepository.isOnMac {
-            return
-        }
         let defaults = UserDefaults.standard
         if defaults.bool(forKey: "userWasAttributed") {
             return
@@ -359,6 +356,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                 Analytics.logEvent("Attribution Attempt", parameters: nil)
                 do {
                 let attributionToken = try AAAttribution.attributionToken()
+                Analytics.logEvent("Attribution token collected", parameters: nil)
                 if let url = URL(string: "https://api-adservices.apple.com/api/v1/") {
                     let request = NSMutableURLRequest(url: url)
                     request.httpMethod = "POST"
