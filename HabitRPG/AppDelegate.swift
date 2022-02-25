@@ -348,6 +348,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     func applySearchAdAttribution() {
         let defaults = UserDefaults.standard
         if defaults.bool(forKey: "userWasAttributed") {
+            Analytics.logEvent("Attribution already done", parameters: nil)
             return
         }
         if #available(iOS 14.5, *) {
