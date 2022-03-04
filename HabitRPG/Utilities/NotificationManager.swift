@@ -160,28 +160,42 @@ class NotificationManager {
             return false
         }
         let nextRewardAt = loginIncentiveNotification.nextRewardAt
-        if let reward = loginIncentiveNotification.rewardKey.first {
-            userRepository.retrieveUser().observeCompleted {}
-            var imageName = reward
-            if imageName.contains("armor") {
-                imageName = "slim_\(imageName)"
+        userRepository.retrieveUser().observeValues { user in
+            if let reward = loginIncentiveNotification.rewardKey.first {
+                    var imageName = reward
+                    if imageName.contains("armor") {
+                        imageName = "slim_\(imageName)"
+                    }
+                    let alert = ImageOverlayView(imageName: imageName,
+                                                 title: loginIncentiveNotification.message,
+                                                 message: nil)
+                    let mutableString = NSMutableAttributedString(string: L10n.checkinPrizeEarned(loginIncentiveNotification.rewardText ?? ""))
+                    mutableString.append(NSAttributedString(string: "\n\n"))
+                    if let loginIncentives = user?.loginIncentives {
+                        let nextRewardIn = nextRewardAt - loginIncentives
+                        mutableString.append(NSAttributedString(string: L10n.nextPrizeInXCheckins(nextRewardIn), attributes: [
+                            .font: UIFont.systemFont(ofSize: 14, weight: .semibold)
+                        ]))
+                    } else {
+                        mutableString.append(NSAttributedString(string: L10n.nextPrizeAtXCheckins(nextRewardAt), attributes: [
+                            .font: UIFont.systemFont(ofSize: 14, weight: .semibold)
+                        ]))
+                    }
+                    
+                    alert.attributedMessage = mutableString
+                    alert.addAction(title: L10n.seeYouTomorrow, isMainAction: true)
+                    alert.arrangeMessageLast = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        alert.show()
+                    }
+            } else {
+                if let loginIncentives = user?.loginIncentives {
+                    let nextRewardIn = nextRewardAt - loginIncentives
+                    ToastManager.show(toast: ToastView(title: loginIncentiveNotification.message ?? "", subtitle: L10n.nextCheckinPrizeInXDays(nextRewardIn), background: .blue))
+                } else {
+                    ToastManager.show(toast: ToastView(title: loginIncentiveNotification.message ?? "", subtitle: L10n.nextCheckinPrizeXDays(nextRewardAt), background: .blue))
+                }
             }
-            let alert = ImageOverlayView(imageName: imageName,
-                                         title: loginIncentiveNotification.message,
-                                         message: nil)
-            let mutableString = NSMutableAttributedString(string: L10n.checkinPrizeEarned(loginIncentiveNotification.rewardText ?? ""))
-            mutableString.append(NSAttributedString(string: "\n\n"))
-            mutableString.append(NSAttributedString(string: L10n.nextPrizeAtXCheckins(nextRewardAt), attributes: [
-                .font: UIFont.systemFont(ofSize: 14, weight: .semibold)
-            ]))
-            alert.attributedMessage = mutableString
-            alert.addAction(title: L10n.seeYouTomorrow, isMainAction: true)
-            alert.arrangeMessageLast = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                alert.show()
-            }
-        } else {
-            ToastManager.show(toast: ToastView(title: loginIncentiveNotification.message ?? "", subtitle: L10n.nextCheckinPrizeXDays(nextRewardAt), background: .blue))
         }
         userRepository.readNotification(notification: notification).observeCompleted {}
         return true

@@ -131,6 +131,10 @@ class SettingsViewController: FormViewController, Themeable {
         tableView.reloadData()
     }
     
+    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        (view as? UITableViewHeaderFooterView)?.textLabel?.textColor = ThemeService.shared.theme.quadTextColor
+    }
+    
     private func setupForm() {
         setupUserSection()
         setupSettingsSections()
@@ -275,7 +279,9 @@ class SettingsViewController: FormViewController, Themeable {
                     let defaults = UserDefaults()
                     defaults.set(row.value ?? false, forKey: "appBadgeActive")
                 })
-            +++ Section(L10n.Settings.dayStartAdjustment)
+        +++ Section(L10n.Settings.dayStartAdjustment) { section in
+            section.footer = HeaderFooterView(title: L10n.Settings.customDayStartDescription)
+        }
             <<< PushRow<LabeledFormValue<Int>>(SettingsTags.customDayStart) { row in
                 row.title = L10n.Settings.adjustment
                 row.cellUpdate { cell, _ in
@@ -284,22 +290,8 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.tintColor = ThemeService.shared.theme.tintColor
                     cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
-                let timeFormatter = DateFormatter()
-                timeFormatter.dateStyle = .none
-                timeFormatter.timeStyle = .short
-                let calendar = Calendar.current
-                let now = Date()
-                row.options = (0..<13).map({ adjustment -> LabeledFormValue<Int> in
-                    if let date = calendar.date(bySettingHour: adjustment, minute: 0, second: 0, of: now) {
-                        return LabeledFormValue(value: adjustment, label: "+\(adjustment) hours (\(timeFormatter.string(from: date)))")
-                    } else {
-                        return LabeledFormValue(value: adjustment, label: "")
-                    }
-                })
-                let currentValue = user?.preferences?.dayStart ?? 0
-                if let date = calendar.date(bySettingHour: currentValue, minute: 0, second: 0, of: now) {
-                    row.value = LabeledFormValue(value: currentValue, label: "+\(currentValue) hours (\(timeFormatter.string(from: date)))")
-                }
+                row.options = (0..<13).map(makeCDSValue)
+                row.value = makeCDSValue(user?.preferences?.dayStart ?? 0)
                 row.onChange({[weak self] (row) in
                     if self?.isSettingUserData == true {
                         return
@@ -310,6 +302,7 @@ class SettingsViewController: FormViewController, Themeable {
                     self?.userRepository.updateDayStartTime(row.value?.value ?? 0).observeCompleted {}
                 })
                 row.onPresent({ (_, to) in
+                    to.enableDeselection = false
                     to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     }
@@ -670,10 +663,12 @@ class SettingsViewController: FormViewController, Themeable {
     }
     
     private func loadSettingsFromUserDefaults() {
+        isSettingUserData = true
         let defaults = UserDefaults()
         (form.rowBy(tag: SettingsTags.dailyReminder) as? SwitchRow)?.value = defaults.bool(forKey: "dailyReminderActive")
-        (form.rowBy(tag: SettingsTags.dailyReminderTime) as? TimeRow)?.value = defaults.value(forKey: "dailyReminderTime") as? Date
+        (form.rowBy(tag: SettingsTags.dailyReminderTime) as? TimePickerRow)?.value = defaults.value(forKey: "dailyReminderTime") as? Date
         (form.rowBy(tag: SettingsTags.displayNotificationsBadge) as? SwitchRow)?.value = defaults.bool(forKey: "appBadgeActive")
+        isSettingUserData = false
     }
     
     private func setUser(_ user: UserProtocol) {
@@ -684,8 +679,8 @@ class SettingsViewController: FormViewController, Themeable {
         components.hour = user.preferences?.dayStart ?? 0
         components.minute = 0
         components.second = 0
-        let timeRow = (form.rowBy(tag: SettingsTags.customDayStart) as? TimeRow)
-        timeRow?.value = calendar.date(from: components)
+        let timeRow = (form.rowBy(tag: SettingsTags.customDayStart) as? PushRow<LabeledFormValue<Int>>)
+        timeRow?.value = makeCDSValue(user.preferences?.dayStart ?? 0)
         timeRow?.updateCell()
         
         let searchableUsernameRow = (form.rowBy(tag: SettingsTags.searchableUsername) as? AlertRow<LabeledFormValue<Bool>>)
@@ -893,5 +888,22 @@ class SettingsViewController: FormViewController, Themeable {
         dismiss(animated: true, completion: {
             UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
         })
+    }
+    
+    private func makeCDSValue(_ adjustment: Int) -> LabeledFormValue<Int> {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateStyle = .none
+        timeFormatter.timeStyle = .short
+        let calendar = Calendar.current
+        let now = Date()
+        if let date = calendar.date(bySettingHour: adjustment, minute: 0, second: 0, of: now) {
+            if adjustment == 0 {
+                return LabeledFormValue(value: adjustment, label: "Default (\(timeFormatter.string(from: date)))")
+            } else {
+                return LabeledFormValue(value: adjustment, label: "+\(adjustment) hours (\(timeFormatter.string(from: date)))")
+            }
+        } else {
+            return LabeledFormValue(value: adjustment, label: "+\(adjustment) (\(adjustment):00)")
+        }
     }
 }

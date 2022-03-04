@@ -63,19 +63,18 @@ class EditingTextField: UIStackView, UITextFieldDelegate {
         return view
     }()
     
-    let textField: PaddedTextField = {
+    let textField: UITextField = {
         let view = PaddedTextField()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.autocapitalizationType = .none
         view.spellCheckingType = .no
-        view.addHeightConstraint(height: 40)
         view.borderStyle = .none
         view.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor.withAlphaComponent(0.75)
+        view.textColor = ThemeService.shared.theme.primaryTextColor
         view.cornerRadius = 8
         view.borderWidth = 1
         view.borderColor = .clear
         view.textInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        view.textColor = ThemeService.shared.theme.secondaryTextColor
         return view
     }()
     
@@ -94,7 +93,7 @@ class EditingTextField: UIStackView, UITextFieldDelegate {
             textField.placeholder
         }
         set(value) {
-            textField.attributedPlaceholder = NSAttributedString(string: value ?? "", attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
+            textField.placeholder = value
         }
     }
     
@@ -288,7 +287,7 @@ class EditingFormViewController: UIViewController, Themeable {
         scrollView.frame = view.bounds
         stackView.pin.start().end().marginHorizontal(12).top()
         for field in stackView.arrangedSubviews {
-            field.pin.sizeToFit(.width)
+            field.pin.height(70)
         }
         stackView.pin.sizeToFit(.width)
         scrollView.contentSize = stackView.frame.size

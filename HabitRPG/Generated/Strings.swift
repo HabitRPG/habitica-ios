@@ -612,8 +612,12 @@ public enum L10n {
   public static var newMessage: String { return L10n.tr("Mainstrings", "new_message") }
   /// Next
   public static var next: String { return L10n.tr("Mainstrings", "next") }
-  /// Your next prize unlocks in 1 Check-In.
+  /// Your next prize unlocks in 1 Check-In
   public static var nextCheckinPrize1Day: String { return L10n.tr("Mainstrings", "next_checkin_prize_1_day") }
+  /// Your next prize unlocks in %d Check-Ins
+  public static func nextCheckinPrizeInXDays(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "next_checkin_prize_in_x_days", p1)
+  }
   /// Your next prize unlocks at %d Check-Ins
   public static func nextCheckinPrizeXDays(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "next_checkin_prize_x_days", p1)
@@ -621,6 +625,10 @@ public enum L10n {
   /// Next prize at %d Check-Ins
   public static func nextPrizeAtXCheckins(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "next_prize_at_x_checkins", p1)
+  }
+  /// Next prize in %d Check-Ins
+  public static func nextPrizeInXCheckins(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "next_prize_in_x_checkins", p1)
   }
   /// No Benefit
   public static var noBenefit: String { return L10n.tr("Mainstrings", "no_benefit") }
@@ -1866,6 +1874,8 @@ public enum L10n {
     public static var connect: String { return L10n.tr("Mainstrings", "settings.connect") }
     /// Custom Day Start
     public static var customDayStart: String { return L10n.tr("Mainstrings", "settings.custom_day_start") }
+    /// Shift when your day switches over past the default time of 12:00 AM
+    public static var customDayStartDescription: String { return L10n.tr("Mainstrings", "settings.custom_day_start_description") }
     /// Daily Reminder
     public static var dailyReminder: String { return L10n.tr("Mainstrings", "settings.daily_reminder") }
     /// Danger Zone

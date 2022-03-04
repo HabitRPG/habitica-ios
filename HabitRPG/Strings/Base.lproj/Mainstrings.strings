@@ -273,6 +273,7 @@
 "settings.display_notification_badge" = "Display Notification Badge";
 "settings.day_start" = "Day Start";
 "settings.custom_day_start" = "Custom Day Start";
+"settings.custom_day_start_description" = "Shift when your day switches over past the default time of 12:00 AM";
 "settings.day_start_adjustment" = "Day Start Adjustment";
 "settings.adjustment" = "Adjustment";
 "settings.social" = "Social";
@@ -869,9 +870,11 @@
 "streak_achievement_title" = "You earned a streak achievement!";
 "streak_achievement_description" = "You've completed your Daily for 21 days in a row! Amazing job. Don't break the streak!";
 "earned_achievement_share" = "I earned a new achievement in Habitica!";
-"next_checkin_prize_1_day" = "Your next prize unlocks in 1 Check-In.";
+"next_checkin_prize_1_day" = "Your next prize unlocks in 1 Check-In";
 "next_checkin_prize_x_days" = "Your next prize unlocks at %d Check-Ins";
+"next_checkin_prize_in_x_days" = "Your next prize unlocks in %d Check-Ins";
 "next_prize_at_x_checkins" = "Next prize at %d Check-Ins";
+"next_prize_in_x_checkins" = "Next prize in %d Check-Ins";
 "checkin_prize_earned" = "You earned a %s as a reward for your devotion to improving your life.";
 "recipient" = "Recipient";
 "invalid_recipient_message" = "You have to specify a valid Habitica Username as recipient.";

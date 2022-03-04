@@ -10,7 +10,7 @@ import Foundation
 import Eureka
 
 struct LabeledFormValue<V: Equatable>: Equatable, CustomStringConvertible, Identifiable {
-    static func ==(lhs: LabeledFormValue<V>, rhs: LabeledFormValue<V>) -> Bool {
+    static func == (lhs: LabeledFormValue<V>, rhs: LabeledFormValue<V>) -> Bool {
         return lhs.value == rhs.value
     }
     

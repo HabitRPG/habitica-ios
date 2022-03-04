@@ -421,6 +421,10 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     func onSuccessfulLogin() {
         userRepository.retrieveUser().observeCompleted {[weak self] in
             self?.loadingIndicatorVisibilityObserver.send(value: false)
+            self?.prefillEmailProperty.value = ""
+            self?.prefillUsernameProperty.value = ""
+            self?.prefillPasswordProperty.value = ""
+            self?.prefillPasswordRepeatProperty.value = ""
             self?.onSuccessfulLoginProperty.value = ()
         }
     }
