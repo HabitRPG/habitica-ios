@@ -95,7 +95,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let searchString = HRPGSearchDataManager.shared().searchString, searchString.isEmpty == false {
+        if let searchString = (tabBarController as? MainTabBarController)?.searchString, searchString.isEmpty == false {
             searchBar.text = searchString
         } else {
             searchBar.text = ""
@@ -179,16 +179,15 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         if let dataSource = dataSource {
             predicates.append(contentsOf: dataSource.predicates(filterType: filterType))
             if let tabBarController = tabBarController as? MainTabBarController {
-
                 let selectedTags = tabBarController.selectedTags
                 if selectedTags.isEmpty == false {
                     predicates.append(NSPredicate(format: "SUBQUERY(realmTags, $tag, $tag.id IN %@).@count = %d", selectedTags, selectedTags.count))
                 }
+                
+                if let search = tabBarController.searchString {
+                    predicates.append(NSPredicate(format: "(text CONTAINS[cd] %@) OR (notes CONTAINS[cd] %@)", search, search))
+                }
             }
-        }
-        
-        if let search = HRPGSearchDataManager.shared().searchString {
-            predicates.append(NSPredicate(format: "(text CONTAINS[cd] %@) OR (notes CONTAINS[cd] %@)", search, search))
         }
         
         return NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
@@ -356,10 +355,10 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        HRPGSearchDataManager.shared().searchString = searchText
+        (tabBarController as? MainTabBarController)?.searchString = searchText
         
         if searchText.isEmpty {
-            HRPGSearchDataManager.shared().searchString = nil
+            (tabBarController as? MainTabBarController)?.searchString = nil
         }
         
         dataSource?.predicate = getPredicate()
@@ -373,7 +372,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         self.searchBar.text = ""
         self.searchBar.resignFirstResponder()
         
-        HRPGSearchDataManager.shared().searchString = nil
+        (tabBarController as? MainTabBarController)?.searchString = nil
         hideSearchBar()
         tableView.reloadData()
     }

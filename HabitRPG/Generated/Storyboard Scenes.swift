@@ -179,7 +179,7 @@ internal enum StoryboardScene {
 
     internal static let attributePointsViewController = SceneType<Habitica.AttributePointsViewController>(storyboard: User.self, identifier: "AttributePointsViewController")
 
-    internal static let spellsViewController = SceneType<HRPGSpellViewController>(storyboard: User.self, identifier: "SpellsViewController")
+    internal static let spellsViewController = SceneType<Habitica.SpellViewController>(storyboard: User.self, identifier: "SpellsViewController")
 
     internal static let verifyUsernameModalViewController = SceneType<Habitica.VerifyUsernameModalViewController>(storyboard: User.self, identifier: "VerifyUsernameModalViewController")
   }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14835.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14790.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -36,10 +36,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u1H-w9-Ufk">
-                    <rect key="frame" x="175.5" y="174.5" width="24" height="318"/>
+                    <rect key="frame" x="187.5" y="174.5" width="0.0" height="318"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFL-KP-98R">
-                            <rect key="frame" x="0.0" y="0.0" width="24" height="21"/>
+                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="21" id="QjQ-5h-OTg"/>
                             </constraints>
@@ -48,7 +48,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niM-hg-PSf">
-                            <rect key="frame" x="0.0" y="260" width="24" height="21"/>
+                            <rect key="frame" x="0.0" y="260" width="0.0" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="21" id="Yyt-UU-ssP"/>
                                 <constraint firstAttribute="width" priority="500" constant="500" id="wai-O5-SnV"/>
@@ -58,7 +58,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1G-bQ-a4O">
-                            <rect key="frame" x="0.0" y="223" width="24" height="21"/>
+                            <rect key="frame" x="0.0" y="223" width="0.0" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="21" id="FdJ-OQ-B5V"/>
                             </constraints>
@@ -66,15 +66,15 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="g8Q-Ba-epA" customClass="HRPGLabeledProgressBar">
-                            <rect key="frame" x="0.0" y="53" width="24" height="40"/>
+                        <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="g8Q-Ba-epA" customClass="LabeledProgressBar" customModule="Habitica" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="53" width="0.0" height="40"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="w6l-Mb-1Le"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BiN-OV-Veq" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
-                            <rect key="frame" x="-63" y="109" width="120" height="90"/>
+                            <rect key="frame" x="-75" y="109" width="120" height="90"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="120" id="igV-qV-Zbi"/>
@@ -82,7 +82,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3j-0V-V9N">
-                            <rect key="frame" x="0.0" y="297" width="24" height="21"/>
+                            <rect key="frame" x="0.0" y="297" width="0.0" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="21" id="upM-gc-Lx0"/>
                             </constraints>

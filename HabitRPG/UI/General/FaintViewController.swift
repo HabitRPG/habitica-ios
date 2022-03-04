@@ -16,7 +16,7 @@ class FaintViewController: UIViewController {
     @IBOutlet weak var dontDespairLabel: UILabel!
     @IBOutlet weak var goodLuckLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var healthView: HRPGLabeledProgressBar!
+    @IBOutlet weak var healthView: LabeledProgressBar!
     @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var tryAgainLabel: UILabel!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -48,8 +48,8 @@ class FaintViewController: UIViewController {
         healthView.color = UIColor.red100
         healthView.icon = HabiticaIcons.imageOfHeartLightBg
         healthView.type = L10n.health
-        healthView.value = NSNumber(value: 0)
-        healthView.maxValue = NSNumber(value: 50)
+        healthView.value = 0
+        healthView.maxValue = 50
         
         avatarView.showBackground = false
         avatarView.showMount = false

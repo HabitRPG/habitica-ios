@@ -29,8 +29,8 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topHeaderCoordinator.hideHeader = true
-        topHeaderCoordinator.followScrollView = false
+        topHeaderCoordinator?.hideHeader = true
+        topHeaderCoordinator?.followScrollView = false
         let headerImageView = UIImageView(frame: CGRect(x: 0, y: 10, width: view.frame.size.width, height: 130))
         headerImageView.image = Asset.gryphon.image.withRenderingMode(.alwaysTemplate)
         headerImageView.tintColor = ThemeService.shared.theme.backgroundTintColor

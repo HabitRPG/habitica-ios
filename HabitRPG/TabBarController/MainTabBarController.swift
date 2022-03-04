@@ -18,6 +18,7 @@ class MainTabBarController: UITabBarController, Themeable {
     private let disposable = ScopedDisposable(CompositeDisposable())
     
     @objc public var selectedTags = [String]()
+    public var searchString: String?
     
     private var dueDailiesCount = 0
     private var dueToDosCount = 0

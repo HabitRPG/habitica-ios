@@ -13,15 +13,15 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="151"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tP1-9i-M3A" customClass="HRPGLabeledProgressBar">
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tP1-9i-M3A" customClass="LabeledProgressBar" customModule="Habitica" customModuleProvider="target">
                     <rect key="frame" x="141" y="0.0" width="451" height="31.5"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEm-of-HXC" customClass="HRPGLabeledProgressBar">
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEm-of-HXC" customClass="LabeledProgressBar" customModule="Habitica" customModuleProvider="target">
                     <rect key="frame" x="141" y="33.5" width="451" height="32"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkr-YH-kSX" customClass="HRPGLabeledProgressBar">
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkr-YH-kSX" customClass="LabeledProgressBar" customModule="Habitica" customModuleProvider="target">
                     <rect key="frame" x="141" y="67.5" width="451" height="31.5"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>

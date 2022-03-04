@@ -8,12 +8,12 @@ import XCTest
 @testable import Habitica
 import Nimble
 
-class HRPGLabeledProgressBarTests: HabiticaTests {
+class LabeledProgressBarTests: HabiticaTests {
 
-    var progressBar = HRPGLabeledProgressBar()
+    var progressBar = LabeledProgressBar()
 
     override func setUp() {
-        progressBar = HRPGLabeledProgressBar()
+        progressBar = LabeledProgressBar()
         progressBar.maxValue = 50
     }
 

@@ -16,8 +16,8 @@ class HallOfContributorsViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topHeaderCoordinator.hideHeader = true
-        topHeaderCoordinator.followScrollView = false
+        topHeaderCoordinator?.hideHeader = true
+        topHeaderCoordinator?.followScrollView = false
         navigationItem.title = L10n.Titles.hallOfContributors
         
         dataSource.tableView = tableView

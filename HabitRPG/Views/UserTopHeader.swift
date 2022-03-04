@@ -16,9 +16,9 @@ class UserTopHeader: UIView, Themeable {
     
     @IBOutlet weak var avatarView: AvatarView!
     
-    @IBOutlet weak var healthLabel: HRPGLabeledProgressBar!
-    @IBOutlet weak var experienceLabel: HRPGLabeledProgressBar!
-    @IBOutlet weak var magicLabel: HRPGLabeledProgressBar!
+    @IBOutlet weak var healthLabel: LabeledProgressBar!
+    @IBOutlet weak var experienceLabel: LabeledProgressBar!
+    @IBOutlet weak var magicLabel: LabeledProgressBar!
     
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -184,19 +184,19 @@ class UserTopHeader: UIView, Themeable {
         }
         avatarView.avatar = AvatarViewModel(avatar: user)
         if let stats = user.stats {
-            healthLabel.value = NSNumber(value: stats.health)
+            healthLabel.value = stats.health
             if stats.maxHealth > 0 {
-                healthLabel.maxValue = NSNumber(value: stats.maxHealth)
+                healthLabel.maxValue = stats.maxHealth
             }
-            experienceLabel.value = NSNumber(value: stats.experience)
+            experienceLabel.value = stats.experience
             if stats.toNextLevel > 0 {
-                experienceLabel.maxValue = NSNumber(value: stats.toNextLevel)
+                experienceLabel.maxValue = stats.toNextLevel
             }
             
             if stats.level >= 10 && user.preferences?.disableClasses != true {
-                magicLabel.value = NSNumber(value: stats.mana)
+                magicLabel.value = stats.mana
                 if stats.maxMana > 0 {
-                    magicLabel.maxValue = NSNumber(value: stats.maxMana)
+                    magicLabel.maxValue = stats.maxMana
                 }
                 magicLabel.isActive = true
                 magicLabel.isHidden = false
@@ -206,7 +206,7 @@ class UserTopHeader: UIView, Themeable {
                 } else {
                     magicLabel.isHidden = false
                     magicLabel.isActive = false
-                    magicLabel.value = NSNumber(value: 0)
+                    magicLabel.value = 0
                     if stats.level >= 10 {
                         magicLabel.labelView.text = L10n.unlocksSelectingClass
                     } else {

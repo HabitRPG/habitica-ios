@@ -246,7 +246,7 @@ class UserProfileViewController: BaseTableViewController {
             levelLabel?.text = L10n.levelNumber(stats.level)
         }
         
-        let healthLabel = cell.viewWithTag(2) as? HRPGLabeledProgressBar
+        let healthLabel = cell.viewWithTag(2) as? LabeledProgressBar
         if ThemeService.shared.theme.isDark {
             healthLabel?.color = UIColor.red50.withAlphaComponent(0.75)
             healthLabel?.iconView.alpha = 0.8
@@ -256,10 +256,10 @@ class UserProfileViewController: BaseTableViewController {
         }
         healthLabel?.icon = HabiticaIcons.imageOfHeartLightBg
         healthLabel?.type = L10n.health
-        healthLabel?.value = NSNumber(value: stats.health)
-        healthLabel?.maxValue = NSNumber(value: stats.maxHealth)
+        healthLabel?.value = stats.health
+        healthLabel?.maxValue = stats.maxHealth
         
-        let experienceLabel = cell.viewWithTag(3) as? HRPGLabeledProgressBar
+        let experienceLabel = cell.viewWithTag(3) as? LabeledProgressBar
         if ThemeService.shared.theme.isDark {
             experienceLabel?.color = UIColor.yellow50.withAlphaComponent(0.75)
             experienceLabel?.iconView.alpha = 0.8
@@ -269,10 +269,10 @@ class UserProfileViewController: BaseTableViewController {
         }
         experienceLabel?.icon = HabiticaIcons.imageOfExperience
         experienceLabel?.type = L10n.experience
-        experienceLabel?.value = NSNumber(value: stats.experience)
-        experienceLabel?.maxValue = NSNumber(value: stats.toNextLevel)
+        experienceLabel?.value = stats.experience
+        experienceLabel?.maxValue = stats.toNextLevel
         
-        let magicLabel = cell.viewWithTag(4) as? HRPGLabeledProgressBar
+        let magicLabel = cell.viewWithTag(4) as? LabeledProgressBar
         if stats.level >= 10 {
             if ThemeService.shared.theme.isDark {
                 magicLabel?.color = UIColor.blue50.withAlphaComponent(0.75)
@@ -283,8 +283,8 @@ class UserProfileViewController: BaseTableViewController {
             }
             magicLabel?.icon = HabiticaIcons.imageOfMagic
             magicLabel?.type = L10n.mana
-            magicLabel?.value = NSNumber(value: stats.mana)
-            magicLabel?.maxValue = NSNumber(value: stats.maxMana)
+            magicLabel?.value = stats.mana
+            magicLabel?.maxValue = stats.maxMana
             magicLabel?.isHidden = false
         } else {
             magicLabel?.isHidden = true

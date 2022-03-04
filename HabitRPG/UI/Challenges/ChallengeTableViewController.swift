@@ -50,8 +50,8 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         self.segmentedFilterControl.addTarget(self, action: #selector(ChallengeTableViewController.switchFilter(_:)), for: .valueChanged)
         segmentedWrapper.addSubview(self.segmentedFilterControl)
         topHeaderCoordinator?.alternativeHeader = segmentedWrapper
-        topHeaderCoordinator.hideHeader = false
-        topHeaderCoordinator.followScrollView = false
+        topHeaderCoordinator?.hideHeader = false
+        topHeaderCoordinator?.followScrollView = false
         layoutHeader()
         
         #if !targetEnvironment(macCatalyst)
@@ -114,8 +114,8 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     
     private func layoutHeader() {
         let size = segmentedFilterControl.intrinsicContentSize
-        segmentedFilterControl.frame = CGRect(x: 8, y: 4, width: viewWidth-16, height: size.height)
-        segmentedWrapper.frame = CGRect(x: 0, y: 0, width: viewWidth, height: 8+size.height)
+        segmentedFilterControl.frame = CGRect(x: 8, y: 4, width: view.frame.width-16, height: size.height)
+        segmentedWrapper.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 8+size.height)
     }
     
     @objc

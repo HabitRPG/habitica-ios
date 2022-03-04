@@ -135,7 +135,7 @@ class MainMenuViewController: BaseTableViewController {
     
     private var navbarColor = ThemeService.shared.theme.navbarHiddenColor {
         didSet {
-            topHeaderCoordinator.navbarVisibleColor = navbarColor
+            topHeaderCoordinator?.navbarVisibleColor = navbarColor
             if isVisible {
                 navbarView.backgroundColor = navbarColor
             }

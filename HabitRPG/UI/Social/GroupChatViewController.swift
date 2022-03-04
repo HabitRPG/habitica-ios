@@ -108,7 +108,9 @@ class GroupChatViewController: SLKTextViewController, Themeable {
             .filter { emoji -> Bool in return !emoji.isEmpty }
             .throttle(0.5, on: QueueScheduler.main)
             .observeValues({[weak self] emoji in
-                self?.autocompleteEmojis = NSString.emojiCheatCodes(matching: emoji)
+            self?.autocompleteEmojis = Emoji.allCases.flatMap { $0.shortnames }.filter({ name in
+                return name.contains(emoji)
+            })
                 self?.showAutoCompletionView(self?.autocompleteEmojis.isEmpty == false)
             })
         )
