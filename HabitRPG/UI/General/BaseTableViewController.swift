@@ -73,4 +73,10 @@ class BaseTableViewController: UITableViewController, Themeable, TutorialStepsPr
     func populateText() {
         
     }
+    
+    @IBAction func unwindToList(_ segue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func unwindToListSave(_ segue: UIStoryboardSegue) {
+    }
 }

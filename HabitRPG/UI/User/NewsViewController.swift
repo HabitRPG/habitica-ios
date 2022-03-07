@@ -6,7 +6,8 @@
 //  Copyright © 2018 HabitRPG Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import WebKit
 import Habitica_Models
 
 class NewsViewController: BaseUIViewController, WKNavigationDelegate {

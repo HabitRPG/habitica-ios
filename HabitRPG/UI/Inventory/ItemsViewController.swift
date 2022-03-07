@@ -233,7 +233,7 @@ class ItemsViewController: BaseTableViewController {
 		dismissIfNeeded()
     }
     
-    @IBAction func unwindToListSave(_ segue: UIStoryboardSegue) {
+    @IBAction override func unwindToListSave(_ segue: UIStoryboardSegue) {
         if segue.identifier == "CastUserSpellSegue" {
             guard let userViewController = segue.source as? SkillsUserTableViewController else {
                 return

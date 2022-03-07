@@ -8,6 +8,8 @@
 
 import UIKit
 import Habitica_Models
+import UniformTypeIdentifiers
+import MobileCoreServices
 
 class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UITableViewDragDelegate, UITableViewDropDelegate {
     public var dataSource: TaskTableViewDataSource?
@@ -315,7 +317,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         if let taskName = movedTask?.text {
             let data = taskName.data(using: .utf16)
             
-            itemProvider.registerDataRepresentation(forTypeIdentifier: String(kUTTypeUTF16PlainText), visibility: .ownProcess, loadHandler: { (completionHandler) -> Progress? in
+            itemProvider.registerDataRepresentation(forTypeIdentifier: String(kUTTypePlainText), visibility: .ownProcess, loadHandler: { (completionHandler) -> Progress? in
                 completionHandler(data, nil)
                 return nil
             })

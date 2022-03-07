@@ -260,6 +260,8 @@
 		29706C8727D22CF3006EC139 /* LabeledProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29706C8627D22CF3006EC139 /* LabeledProgressBar.swift */; };
 		29706C8927D23C82006EC139 /* SpellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29706C8827D23C82006EC139 /* SpellViewController.swift */; };
 		29706C8B27D27893006EC139 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29706C8A27D27893006EC139 /* Emoji.swift */; };
+		29706C8D27D600D4006EC139 /* CopyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29706C8C27D600D4006EC139 /* CopyTableViewCell.swift */; };
+		29706C8F27D60307006EC139 /* TypingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29706C8E27D60307006EC139 /* TypingLabel.swift */; };
 		2970CB52227B1A8600FACCB7 /* MarkdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2970CB51227B1A8600FACCB7 /* MarkdownTests.swift */; };
 		2974BD91208DEFEA00EC1A25 /* CustomizationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */; };
 		2974BDAD208F68A800EC1A25 /* CustomizationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */; };
@@ -533,7 +535,6 @@
 		D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */; };
 		D90576851BD83240009BB7BC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D90576871BD83240009BB7BC /* InfoPlist.strings */; };
 		D91CCAD01BCF11CC001C6A0C /* UserTopHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */; };
-		D92C60FC1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C60FB1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m */; };
 		D92D26161D58EF00001FD977 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D92D26151D58EF00001FD977 /* AVFoundation.framework */; };
 		D942B5381CAAE6B1009AB756 /* Social.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D942B53A1CAAE6B1009AB756 /* Social.storyboard */; };
 		D94461911AB355940015215E /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = D94461901AB355940015215E /* user.json */; };
@@ -568,8 +569,6 @@
 		D98768F51AFFB85100336978 /* blade-equipResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = D98768F41AFFB85100336978 /* blade-equipResponse.json */; };
 		D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98F5DC21C6A34540035CBEC /* ChatMessageCell.xib */; };
 		D98F5DD11C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */; };
-		D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D99BC43019D4C34A006DC132 /* 1Password.xcassets */; };
-		D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */; };
 		D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D99DEC88190842CA00FFD2B9 /* Placeholder.png */; };
 		D99E42681D6B1FD500811B6D /* FaintViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D99E42671D6B1FD500811B6D /* FaintViewController.xib */; };
 		D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9A50E991A868DE400FC8B1A /* Launch Screen.xib */; };
@@ -614,7 +613,6 @@
 		D9F1E3E81E55DCEC0034D0F4 /* SubscriptionInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F1E3E71E55DCEB0034D0F4 /* SubscriptionInformationCell.swift */; };
 		D9F1E3EA1E55DCFB0034D0F4 /* SubscriptionInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9F1E3E91E55DCFB0034D0F4 /* SubscriptionInformationCell.xib */; };
 		D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */; };
-		D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */; };
 		DC2C41815D97E02EF9D3BEF9 /* HRPGLabeledProgressBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */; };
 		E5131EDFE139A4F0F61436A5 /* Pods_HabiticaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB10D1D9F24896DC5089BEA /* Pods_HabiticaTests.framework */; };
 /* End PBXBuildFile section */
@@ -961,6 +959,8 @@
 		29706C8627D22CF3006EC139 /* LabeledProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledProgressBar.swift; sourceTree = "<group>"; };
 		29706C8827D23C82006EC139 /* SpellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellViewController.swift; sourceTree = "<group>"; };
 		29706C8A27D27893006EC139 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
+		29706C8C27D600D4006EC139 /* CopyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyTableViewCell.swift; sourceTree = "<group>"; };
+		29706C8E27D60307006EC139 /* TypingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingLabel.swift; sourceTree = "<group>"; };
 		2970CB51227B1A8600FACCB7 /* MarkdownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTests.swift; sourceTree = "<group>"; };
 		2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationDetailCell.swift; sourceTree = "<group>"; };
 		2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationHeaderView.swift; sourceTree = "<group>"; };
@@ -1281,8 +1281,6 @@
 		D915F8621915BEE50037D04D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D915F8641915BF0D0037D04D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTopHeader.xib; sourceTree = "<group>"; };
-		D92C60FA1BD3FAC1005F68CC /* HRPGCopyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCopyTableViewCell.h; sourceTree = "<group>"; };
-		D92C60FB1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCopyTableViewCell.m; sourceTree = "<group>"; };
 		D92D26151D58EF00001FD977 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D939B5EF1BD832B20015AEB6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D939B5F01BD832B30015AEB6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1331,9 +1329,6 @@
 		D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGFlagInformationOverlayView.xib; sourceTree = "<group>"; };
 		D99B82171BD9545800E770B7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D99B82181BD9545800E770B7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D99BC43019D4C34A006DC132 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = 1Password.xcassets; sourceTree = "<group>"; };
-		D99BC43119D4C34A006DC132 /* OnePasswordExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordExtension.h; sourceTree = "<group>"; };
-		D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
 		D99DEC88190842CA00FFD2B9 /* Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder.png; sourceTree = "<group>"; };
 		D99E42671D6B1FD500811B6D /* FaintViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FaintViewController.xib; sourceTree = "<group>"; };
 		D9A50E991A868DE400FC8B1A /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "Launch Screen.xib"; path = "HabitRPG/Launch Screen.xib"; sourceTree = SOURCE_ROOT; };
@@ -1393,8 +1388,6 @@
 		D9F1E3E71E55DCEB0034D0F4 /* SubscriptionInformationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionInformationCell.swift; sourceTree = "<group>"; };
 		D9F1E3E91E55DCFB0034D0F4 /* SubscriptionInformationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscriptionInformationCell.xib; sourceTree = "<group>"; };
 		D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionInformation.swift; sourceTree = "<group>"; };
-		D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTypingLabel.h; sourceTree = "<group>"; };
-		D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTypingLabel.m; sourceTree = "<group>"; };
 		DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGLabeledProgressBarTests.swift; sourceTree = "<group>"; };
 		E0E6C1E1641121506917A9CB /* Pods-HabiticaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiticaTests.release.xcconfig"; path = "Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests.release.xcconfig"; sourceTree = "<group>"; };
 		E7AC89013C9525B9998BC12F /* Pods-Habitica WidgetsExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica WidgetsExtension.debug.xcconfig"; path = "Target Support Files/Pods-Habitica WidgetsExtension/Pods-Habitica WidgetsExtension.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2432,15 +2425,12 @@
 		D987393919687E46002A2426 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				D99BC43019D4C34A006DC132 /* 1Password.xcassets */,
 				299BD6391F557FE700E22935 /* AuthenticationManager.swift */,
 				29E162E11FFC21E100685640 /* CustomFontMetrics.swift */,
 				299BD6361F5457E100E22935 /* HabiticaIcons.swift */,
 				29C135FF24EAE07E00DBC6B3 /* SharingManager.swift */,
 				292F967F20723A4D00804151 /* ImageManager.swift */,
 				29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */,
-				D99BC43119D4C34A006DC132 /* OnePasswordExtension.h */,
-				D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */,
 				29FC885120134A8F002B3D3F /* PurchaseHandler.swift */,
 				29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */,
 				29FC5A6320402EE2008E88C8 /* Theme Engine */,
@@ -2546,6 +2536,7 @@
 		D9C000311928F85E003D4E4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				29706C8E27D60307006EC139 /* TypingLabel.swift */,
 				29C1360124EBD12E00DBC6B3 /* AbbreviatedNumberLabel.swift */,
 				29C38C8424A2466400F219A1 /* AdventureGuidePromoView.swift */,
 				2967CF7E252479C400F366DF /* Alerts */,
@@ -2565,8 +2556,6 @@
 				292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */,
 				29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */,
 				49005B711F180588004830D9 /* CurrencyCountView.swift */,
-				D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */,
-				D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */,
 				29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */,
 				29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */,
 				291DE9752099D85D0073182A /* MemberListView.swift */,
@@ -2640,8 +2629,6 @@
 				29066CF824FE7C9200A266EE /* GemPurchaseCell.swift */,
 				D9BB45621E71CE910002AE2E /* HabitTableViewCell.swift */,
 				D9D17CD11E6898E400AD9232 /* HabitTableViewCell.xib */,
-				D92C60FA1BD3FAC1005F68CC /* HRPGCopyTableViewCell.h */,
-				D92C60FB1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m */,
 				2957B8BB1F4B4DDE00E836EF /* InAppRewardCell.swift */,
 				2957B8B91F4B4B3300E836EF /* InAppRewardCell.xib */,
 				299FB2A82084BA5A00422522 /* Inventory */,
@@ -2662,6 +2649,7 @@
 				298FAB0124BF5BF30084CB0D /* MainTableviewCell.xib */,
 				29CEA8552641A2B500101C0A /* AdventureGuideTableViewCell.swift */,
 				32C6FFF126ED896400C8F682 /* PathTraceable.swift */,
+				29706C8C27D600D4006EC139 /* CopyTableViewCell.swift */,
 			);
 			name = Cells;
 			path = TableviewCells;
@@ -3236,7 +3224,6 @@
 				29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */,
 				2914486C208512ED00F3A6B5 /* StableSectionHeader.xib in Resources */,
 				4924314F202CD19A00288278 /* ChallengeRewardTableViewCell.xib in Resources */,
-				D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */,
 				29A6B86420644BFE0086B2A6 /* WeekdayFormCell.xib in Resources */,
 				29598158224118A100819029 /* MaroonAltBlack@3x.png in Resources */,
 				296E4BD421AEFE6100DB3602 /* Blue@2x.png in Resources */,
@@ -3853,7 +3840,6 @@
 				29706C8B27D27893006EC139 /* Emoji.swift in Sources */,
 				29B4788A20BD752C00B6123F /* SkillsTaskTableViewController.swift in Sources */,
 				294EB59D1FA0A7E4006083BD /* FixCharacterViewController.swift in Sources */,
-				D92C60FC1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m in Sources */,
 				29E1630F200E279900685640 /* MenuNavigationBarView.swift in Sources */,
 				29205E352062DF710024E355 /* TextInputFormRow.swift in Sources */,
 				49E6F57D1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.swift in Sources */,
@@ -4036,7 +4022,6 @@
 				292DEEA5204F6F6C0086D5F7 /* DailyTableViewDataSource.swift in Sources */,
 				29C38C8724A256F800F219A1 /* AdventureGuideViewController.swift in Sources */,
 				292DEE8D204F458B0086D5F7 /* HabitTableViewDataSource.swift in Sources */,
-				D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */,
 				29E48F0D22E89DB3005C4B45 /* BadgeView.swift in Sources */,
 				2942F8CF266DF9CB003F6500 /* TaskFormView.swift in Sources */,
 				29066CF724FE6A6900A266EE /* PromoMenuView.swift in Sources */,
@@ -4046,11 +4031,11 @@
 				29DC5ACB20A20A6C00993400 /* QuestTitleView.swift in Sources */,
 				299FB2AA2084BA6200422522 /* StableOverviewCell.swift in Sources */,
 				299FB2A52084B40700422522 /* StableOverviewDataSource.swift in Sources */,
-				D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */,
 				299FB29A2084A30400422522 /* StableRepository.swift in Sources */,
 				29951A1E2326670500918FC8 /* InboxOverviewViewController.swift in Sources */,
 				29028C422037131C00B7F704 /* SystemMessageTableViewCell.swift in Sources */,
 				290279632057EC03006DACB9 /* FAQTableViewController.swift in Sources */,
+				29706C8F27D60307006EC139 /* TypingLabel.swift in Sources */,
 				29AA79C72685B71100871541 /* TaskFormPicker.swift in Sources */,
 				29B4788620BD6E2E00B6123F /* SkillsUserTableViewDataSource.swift in Sources */,
 				493ECBB71F47D7E10099B1FC /* HRPGGearSetItem.swift in Sources */,
@@ -4093,6 +4078,7 @@
 				29B4788820BD732A00B6123F /* SkillsTaskTableViewDataSource.swift in Sources */,
 				494E54221F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift in Sources */,
 				498E4D071FA17DB9006933FF /* ChallengeActionsTableViewCell.swift in Sources */,
+				29706C8D27D600D4006EC139 /* CopyTableViewCell.swift in Sources */,
 				29FC885A2017C039002B3D3F /* CollapsibleStackView.swift in Sources */,
 				49DCB79B1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift in Sources */,
 				290B6289207CF248007287C4 /* StackView.swift in Sources */,

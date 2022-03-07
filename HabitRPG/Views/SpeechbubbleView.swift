@@ -18,7 +18,7 @@ class SpeechbubbleView: UIView, Themeable {
     
     @IBInspectable var text: String? {
         didSet {
-            textView.setText(text, startAnimating: false)
+            textView.text = text
         }
     }
     
@@ -45,7 +45,7 @@ class SpeechbubbleView: UIView, Themeable {
     }
     
     @IBOutlet weak var namePlateView: UILabel!
-    @IBOutlet weak var textView: HRPGTypingLabel!
+    @IBOutlet weak var textView: TypingLabel!
     @IBOutlet weak var namePlateBackgroundView: UIImageView!
     @IBOutlet weak var npcImageView: UIImageView!
     @IBOutlet weak var caretView: UIImageView!
