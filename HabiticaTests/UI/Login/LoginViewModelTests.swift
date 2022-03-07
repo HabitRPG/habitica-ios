@@ -21,7 +21,6 @@ class LoginViewModelTests: HabiticaTests {
     private let loginButtonTitleObserver = TestObserver<String, Never>()
     private let usernameFieldTitleObserver = TestObserver<String, Never>()
     private let authTypeButtonTitleObserver = TestObserver<String, Never>()
-    private let onePasswordHiddenObserver = TestObserver<Bool, Never>()
     
     override func setUp() {
         super.setUp()
@@ -33,7 +32,6 @@ class LoginViewModelTests: HabiticaTests {
         self.viewModel.outputs.loginButtonTitle.observe(self.loginButtonTitleObserver.observer)
         self.viewModel.outputs.usernameFieldTitle.observe(self.usernameFieldTitleObserver.observer)
         self.viewModel.outputs.authTypeButtonTitle.observe(self.authTypeButtonTitleObserver.observer)
-        self.viewModel.outputs.onePasswordButtonHidden.observe(self.onePasswordHiddenObserver.observer)
     }
     
     func testShowsEmptyLoginForm() {
@@ -79,13 +77,5 @@ class LoginViewModelTests: HabiticaTests {
         self.viewModel.inputs.passwordRepeatChanged(passwordRepeat: "test2")
         
         self.isFormValidObserver.assertLastValue(value: false)
-    }
-    
-    func testOnePasswordButtonVisibility() {
-        self.viewModel.inputs.setAuthType(authType: .login)
-        self.viewModel.inputs.onePassword(isAvailable: true)
-        self.onePasswordHiddenObserver.assertLastValue(value: false)
-        self.viewModel.inputs.onePassword(isAvailable: false)
-        self.onePasswordHiddenObserver.assertLastValue(value: true)
     }
 }

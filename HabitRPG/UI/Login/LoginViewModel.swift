@@ -38,9 +38,6 @@ protocol  LoginViewModelInputs {
     func passwordChanged(password: String?)
     func passwordRepeatChanged(passwordRepeat: String?)
 
-    func onePassword(isAvailable: Bool)
-    func onePasswordTapped()
-
     func loginButtonPressed()
     func googleLoginButtonPressed()
     func facebookLoginButtonPressed()
@@ -63,9 +60,6 @@ protocol LoginViewModelOutputs {
     var passwordRepeatFieldVisibility: Signal<Bool, Never> { get }
     var passwordFieldReturnButtonIsDone: Signal<Bool, Never> { get }
     var passwordRepeatFieldReturnButtonIsDone: Signal<Bool, Never> { get }
-
-    var onePasswordButtonHidden: Signal<Bool, Never> { get }
-    var onePasswordFindLogin: Signal<(), Never> { get }
 
     var emailText: Signal<String, Never> { get }
     var usernameText: Signal<String, Never> { get }
@@ -188,13 +182,6 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         passwordText = self.prefillPasswordProperty.signal
         passwordRepeatText = self.prefillPasswordRepeatProperty.signal
 
-        onePasswordButtonHidden = onePasswordAvailable.signal
-            .combineLatest(with: authTypeProperty.signal)
-            .map { (isAvailable, authType) in
-            return !isAvailable || authType == .none
-        }
-        onePasswordFindLogin = onePasswordTappedProperty.signal
-
         let (showNextViewControllerSignal, showNextViewControllerObserver) = Signal<(), Never>.pipe()
         self.showNextViewControllerObserver = showNextViewControllerObserver
         showNextViewController = Signal.merge(
@@ -271,25 +258,10 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         }
     }
 
-    private let onePasswordAvailable = MutableProperty<Bool>(false)
-    func onePassword(isAvailable: Bool) {
-        self.onePasswordAvailable.value = isAvailable
-    }
-
-    private let onePasswordTappedProperty = MutableProperty(())
-    func onePasswordTapped() {
-        self.onePasswordTappedProperty.value = ()
-    }
-
     private let prefillUsernameProperty = MutableProperty<String>("")
     private let prefillEmailProperty = MutableProperty<String>("")
     private let prefillPasswordProperty = MutableProperty<String>("")
     private let prefillPasswordRepeatProperty = MutableProperty<String>("")
-    public func onePasswordFoundLogin(username: String, password: String) {
-        self.prefillUsernameProperty.value = username
-        self.prefillPasswordProperty.value = password
-        self.prefillPasswordRepeatProperty.value = password
-    }
 
     private let authValuesProperty: Property<AuthValues?>
     func loginButtonPressed() {
@@ -463,11 +435,9 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     internal var passwordRepeatFieldVisibility: Signal<Bool, Never>
     internal var passwordFieldReturnButtonIsDone: Signal<Bool, Never>
     internal var passwordRepeatFieldReturnButtonIsDone: Signal<Bool, Never>
-    internal var onePasswordButtonHidden: Signal<Bool, Never>
     internal var showError: Signal<String, Never>
     internal var showNextViewController: Signal<String, Never>
     internal var loadingIndicatorVisibility: Signal<Bool, Never>
-    internal var onePasswordFindLogin: Signal<(), Never>
     internal var arePasswordsSame: Signal<Bool, Never>
     
     internal var formVisibility: Signal<Bool, Never>

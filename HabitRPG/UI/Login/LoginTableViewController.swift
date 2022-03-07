@@ -20,7 +20,6 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak private var passwordField: LoginEntryView!
     @IBOutlet weak private var passwordRepeatField: LoginEntryView!
     @IBOutlet weak private var loginButton: UIButton!
-    @IBOutlet weak private var onePasswordButton: UIButton!
     @IBOutlet weak private var googleLoginButton: UIButton!
     @IBOutlet weak private var facebookLoginButton: UIButton!
     @IBOutlet weak private var appleLoginButton: UIButton!
@@ -68,13 +67,9 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         facebookLoginButton.addTarget(self, action: #selector(facebookLoginButtonPressed), for: .touchUpInside)
         forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonPressed), for: .touchUpInside)
 
-        onePasswordButton.addTarget(self, action: #selector(onePasswordButtonPressed), for: .touchUpInside)
         
         self.viewModel.setAuthType(authType: LoginViewAuthType.none)
         bindViewModel()
-        self.viewModel.inputs.onePassword(
-            isAvailable: OnePasswordExtension.shared().isAppExtensionAvailable()
-        )
         
         initialUISetup()
     }
@@ -179,7 +174,6 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         setupDecorations()
         setupReturnTypes()
         setupTextInput()
-        setupOnePassword()
 
         self.viewModel.outputs.usernameFieldTitle.observeValues {[weak self] value in
             self?.usernameField.placeholderText = value
@@ -385,24 +379,12 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
             self.passwordRepeatField.hasError = !areSame
         }
     }
-
-    func setupOnePassword() {
-        self.onePasswordButton.reactive.isHidden <~ self.viewModel.outputs.onePasswordButtonHidden
-        self.viewModel.outputs.onePasswordFindLogin.observeValues {[weak self] _ in
-            guard let weakSelf = self else {
-                return
-            }
-            OnePasswordExtension.shared().findLogin(forURLString: "https://habitica.com", for: weakSelf, sender: self?.onePasswordButton, completion: { (data, _) in
-                guard let loginData = data else {
-                    return
-                }
-                let username = loginData[AppExtensionUsernameKey] as? String ?? ""
-                let password = loginData[AppExtensionPasswordKey] as? String ?? ""
-
-                self?.viewModel.onePasswordFoundLogin(username: username, password: password)
-            })
-
-        }
+    
+    func setupTextTypes(isLogin: Bool) {
+        usernameField.entryView.textContentType = .username
+        emailField.entryView.textContentType = .emailAddress
+        passwordField.entryView.textContentType = isLogin ? .password : .newPassword
+        passwordRepeatField.entryView.textContentType = .newPassword
     }
 
     @objc
@@ -453,11 +435,6 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     @objc
     func appleLoginButtonPressed() {
         self.viewModel.inputs.appleLoginButtonPressed()
-    }
-
-    @objc
-    func onePasswordButtonPressed() {
-        self.viewModel.inputs.onePasswordTapped()
     }
 
     @objc
