@@ -20,7 +20,7 @@ PODS:
   - DeepLinkKit (1.5.1)
   - Down (0.11.0)
   - DynamicBlurView (4.1.0)
-  - Eureka (5.3.4)
+  - Eureka (5.3.5)
   - FBAEMKit (12.3.2):
     - FBSDKCoreKit_Basics (= 12.3.2)
   - FBSDKCoreKit (12.3.2):
@@ -158,7 +158,7 @@ PODS:
   - iOSSnapshotTestCase/SwiftSupport (8.0.0):
     - iOSSnapshotTestCase/Core
   - KeychainAccess (4.2.2)
-  - Kingfisher (7.1.2)
+  - Kingfisher (7.2.0)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
     - MRProgress/Blur (= 0.8.3)
@@ -220,7 +220,6 @@ PODS:
   - RealmSwift (10.18.0):
     - Realm (= 10.18.0)
   - SimulatorStatusMagic (2.6)
-  - SlackTextViewController (1.9.6)
   - SwiftGen (6.5.1)
   - SwiftLint (0.46.3)
   - SwiftyStoreKit (0.16.1)
@@ -236,8 +235,8 @@ DEPENDENCIES:
   - DeepLinkKit
   - Down
   - Eureka
-  - FBSDKCoreKit
-  - FBSDKLoginKit
+  - FBSDKCoreKit (= 12.3.2)
+  - FBSDKLoginKit (= 12.3.2)
   - Firebase/Core
   - Firebase/Messaging
   - Firebase/Performance
@@ -256,7 +255,6 @@ DEPENDENCIES:
   - ReactiveSwift
   - RealmSwift (= 10.18.0)
   - SimulatorStatusMagic
-  - SlackTextViewController
   - SwiftGen
   - SwiftLint
   - SwiftyStoreKit
@@ -306,7 +304,6 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - SimulatorStatusMagic
-    - SlackTextViewController
     - SwiftGen
     - SwiftLint
     - SwiftyStoreKit
@@ -322,7 +319,7 @@ SPEC CHECKSUMS:
   DeepLinkKit: 9f300348cbb20ef8389a5018a57d8c9952b1831c
   Down: b6ba1bc985c9d2f4e15e3b293d2207766fa12612
   DynamicBlurView: 58e18fae80bb614e34681a4486870e7d257b62e8
-  Eureka: 60cf058f86a8fb3ed26165ba5292b9850361b0a6
+  Eureka: 7b39a479d074620d43028a0e2bfc3e0d667724df
   FBAEMKit: 955ca52eba8219c20f90774e8c6ff8bc7b3192a3
   FBSDKCoreKit: 678f64eda3f0ff25c189c2ebbfe87b1d96a85a6d
   FBSDKCoreKit_Basics: 6bee7c1f0932432901781203fa5e587ec5099148
@@ -342,7 +339,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   iOSSnapshotTestCase: a670511f9ee3829c2b9c23e6e68f315fd7b6790f
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
-  Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
+  Kingfisher: 3ac0b75b155cabc0e544877d1a4deea29feece92
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
@@ -356,13 +353,12 @@ SPEC CHECKSUMS:
   Realm: b8b0a36bf48c39c50fd8cee7ac34005e6d887ddd
   RealmSwift: fe2f33d731f47aaf4c3618930f9f7cf7b935c33f
   SimulatorStatusMagic: 9f5294c12ca99c6cadb243a60362a66000df540c
-  SlackTextViewController: b854e62c1c156336bc4fd409c6ca79b5773e8f9d
   SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
   SwiftLint: ae76d82f056734f853c8cd0371503252c606c482
   SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   UIColor_Hex_Swift: 31cd3e47440f07a20d2503a36bb0437a445b3c29
 
-PODFILE CHECKSUM: d4b486ffa6665af21b1849e1fecf19cff386ab8e
+PODFILE CHECKSUM: 19ecab70c8a69c7c7b1e3bce19f0f4f3c58ff9fd
 
 COCOAPODS: 1.11.2

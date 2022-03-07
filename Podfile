@@ -20,12 +20,10 @@ target 'Habitica' do
   pod 'KeychainAccess'
   pod 'DateTools'
   pod 'MRProgress'
-  pod "SlackTextViewController"
   pod 'AppAuth'
 
-  pod 'FBSDKCoreKit'  
-  pod 'FBSDKLoginKit'
-
+  pod 'FBSDKCoreKit', '12.3.2'
+  pod 'FBSDKLoginKit', '12.3.2'
 
   pod 'Firebase/Core'
   pod 'FirebaseCrashlytics'

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		175E06DDF89F66BE894D1E3E /* Pods_Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D821314C12B6448718FD4120 /* Pods_Habitica_Database.framework */; };
+		23BBE4F99D45D5F03AD7566A /* Pods_Habitica_DatabaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD9E7DA3195A5C58B24B128 /* Pods_Habitica_DatabaseTests.framework */; };
 		290279602057E957006DACB9 /* RealmFAQEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902795F2057E957006DACB9 /* RealmFAQEntry.swift */; };
 		2902797B2058107E006DACB9 /* RealmBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902797A2058107E006DACB9 /* RealmBuff.swift */; };
 		2902797D2058134D006DACB9 /* InventoryLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902797C2058134D006DACB9 /* InventoryLocalRepository.swift */; };
@@ -103,7 +103,7 @@
 		29DBFEFB20CADB4100DF9CF2 /* RealmSpecialItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEFA20CADB4100DF9CF2 /* RealmSpecialItem.swift */; };
 		29DBFF0D20D15B0500DF9CF2 /* RealmUserNewMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0C20D15B0500DF9CF2 /* RealmUserNewMessages.swift */; };
 		29EBDA7C23290E7A006611E3 /* RealmInboxConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA7B23290E7A006611E3 /* RealmInboxConversation.swift */; };
-		EFA96FFA3536BF094D7B36B3 /* Pods_Habitica_DatabaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930CE9895A927708C0C96A90 /* Pods_Habitica_DatabaseTests.framework */; };
+		E0A4B05301C44BEEC57D75B5 /* Pods_Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0DCBD60D5351ED7A97E4EFE /* Pods_Habitica_Database.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,9 +218,9 @@
 		29DBFF0C20D15B0500DF9CF2 /* RealmUserNewMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUserNewMessages.swift; sourceTree = "<group>"; };
 		29EBDA7B23290E7A006611E3 /* RealmInboxConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInboxConversation.swift; sourceTree = "<group>"; };
 		46F1FDA07144B10D37712F09 /* Pods-Habitica DatabaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica DatabaseTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests.debug.xcconfig"; sourceTree = "<group>"; };
-		930CE9895A927708C0C96A90 /* Pods_Habitica_DatabaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_DatabaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BD9E7DA3195A5C58B24B128 /* Pods_Habitica_DatabaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_DatabaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0DCBD60D5351ED7A97E4EFE /* Pods_Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C83802F2251DE9A800AE90ED /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D821314C12B6448718FD4120 /* Pods_Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBC613B665533F6D81509FD4 /* Pods-Habitica Database.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Database.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica Database/Pods-Habitica Database.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,7 +231,7 @@
 			files = (
 				292DEE41204D9D860086D5F7 /* Habitica_Models.framework in Frameworks */,
 				292DEE3F204D9D810086D5F7 /* Habitica_API_Client.framework in Frameworks */,
-				175E06DDF89F66BE894D1E3E /* Pods_Habitica_Database.framework in Frameworks */,
+				E0A4B05301C44BEEC57D75B5 /* Pods_Habitica_Database.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,7 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				298FB9B6204D9338004DDACC /* Habitica_Database.framework in Frameworks */,
-				EFA96FFA3536BF094D7B36B3 /* Pods_Habitica_DatabaseTests.framework in Frameworks */,
+				23BBE4F99D45D5F03AD7566A /* Pods_Habitica_DatabaseTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,8 +253,8 @@
 				C83802F2251DE9A800AE90ED /* Shared.framework */,
 				292DEE42204D9D860086D5F7 /* Habitica_Models.framework */,
 				292DEE40204D9D810086D5F7 /* Habitica_API_Client.framework */,
-				D821314C12B6448718FD4120 /* Pods_Habitica_Database.framework */,
-				930CE9895A927708C0C96A90 /* Pods_Habitica_DatabaseTests.framework */,
+				B0DCBD60D5351ED7A97E4EFE /* Pods_Habitica_Database.framework */,
+				8BD9E7DA3195A5C58B24B128 /* Pods_Habitica_DatabaseTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -503,7 +503,7 @@
 				298FB9B1204D9338004DDACC /* Sources */,
 				298FB9B2204D9338004DDACC /* Frameworks */,
 				298FB9B3204D9338004DDACC /* Resources */,
-				983C9FA03B70C3B601E33E84 /* [CP] Embed Pods Frameworks */,
+				7CCDB4633EA7AED5F38871AC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -590,7 +590,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		983C9FA03B70C3B601E33E84 /* [CP] Embed Pods Frameworks */ = {
+		7CCDB4633EA7AED5F38871AC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
