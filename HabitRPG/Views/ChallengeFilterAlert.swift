@@ -6,7 +6,7 @@
 //  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import PopupDialog
 import Habitica_Models
 import ReactiveSwift

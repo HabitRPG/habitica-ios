@@ -6,7 +6,7 @@
 //  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ToDoTableViewCell: CheckedTableViewCell {
 

@@ -6,7 +6,7 @@
 //  Copyright © 2018 HabitRPG Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class AvatarOverviewItemView: UIView {
     var imageView: NetworkImageView = {

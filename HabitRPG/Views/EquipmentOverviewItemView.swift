@@ -6,7 +6,7 @@
 //  Copyright © 2018 HabitRPG Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class EquipmentOverviewItemView: UIView {
     @IBOutlet weak var imageView: NetworkImageView!

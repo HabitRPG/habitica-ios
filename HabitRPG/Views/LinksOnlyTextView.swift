@@ -6,7 +6,7 @@
 //  Copyright © 2020 HabitRPG Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class LinksOnlyTextView: UITextView {
     // Only allow interactions directly on top of a link

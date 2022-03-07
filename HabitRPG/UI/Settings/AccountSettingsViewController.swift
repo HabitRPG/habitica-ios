@@ -6,7 +6,7 @@
 //  Copyright © 2021 HabitRPG Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Eureka
 import ReactiveSwift
 import Habitica_Models

@@ -6,7 +6,7 @@
 //  Copyright © 2019 HabitRPG Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class QuestCompletedAlertController: HabiticaAlertController {
 

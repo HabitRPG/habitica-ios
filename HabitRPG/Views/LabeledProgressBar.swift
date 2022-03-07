@@ -6,7 +6,7 @@
 //  Copyright © 2022 HabitRPG Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import PinLayout
 import UIKit
 

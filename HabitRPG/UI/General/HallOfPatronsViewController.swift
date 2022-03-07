@@ -6,7 +6,7 @@
 //  Copyright © 2020 HabitRPG Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Habitica_Models
 
 class HallOfPatronsViewController: BaseTableViewController {

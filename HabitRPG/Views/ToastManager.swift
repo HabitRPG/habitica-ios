@@ -5,7 +5,7 @@
 //  Created by Phillip on 11.08.17.
 //  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
-import Foundation
+import UIKit
 import UIKit
 
 // swiftlint:disable:next attributes
