@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class RetrieveMemberUsernameCall: ResponseObjectCall<MemberProtocol, APIMember> {
-    public init(username: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "member.json")) {
-        super.init(httpMethod: .GET, endpoint: "members/username/\(username)", stubHolder: stubHolder)
+    public init(username: String) {
+        super.init(httpMethod: .GET, endpoint: "members/username/\(username)")
     }
 }

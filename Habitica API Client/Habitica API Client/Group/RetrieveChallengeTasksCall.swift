@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class RetrieveChallengeTasksCall: ResponseArrayCall<TaskProtocol, APITask> {
-    public init(challengeID: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
-        super.init(httpMethod: .GET, endpoint: "tasks/challenge/\(challengeID)", stubHolder: stubHolder)
+    public init(challengeID: String) {
+        super.init(httpMethod: .GET, endpoint: "tasks/challenge/\(challengeID)")
     }
 }

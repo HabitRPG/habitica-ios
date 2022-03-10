@@ -11,8 +11,8 @@ import Habitica_Models
 import ReactiveSwift
 
 public class DeleteAccountCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(password: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+    public init(password: String) {
         let json = try? JSONSerialization.data(withJSONObject: ["password": password], options: .prettyPrinted)
-        super.init(httpMethod: .DELETE, endpoint: "user", postData: json, stubHolder: stubHolder)
+        super.init(httpMethod: .DELETE, endpoint: "user", postData: json)
     }
 }

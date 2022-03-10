@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class BulkAllocateAttributePointsCall: ResponseObjectCall<StatsProtocol, APIStats> {
-    public init(strength: Int, intelligence: Int, constitution: Int, perception: Int, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+    public init(strength: Int, intelligence: Int, constitution: Int, perception: Int) {
         let updateDict = ["stats": [
             "str": strength,
             "int": intelligence,
@@ -20,6 +20,6 @@ public class BulkAllocateAttributePointsCall: ResponseObjectCall<StatsProtocol, 
             ]
         ]
         let json = try? JSONSerialization.data(withJSONObject: updateDict, options: .prettyPrinted)
-        super.init(httpMethod: .POST, endpoint: "user/allocate-bulk", postData: json, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: "user/allocate-bulk", postData: json)
     }
 }

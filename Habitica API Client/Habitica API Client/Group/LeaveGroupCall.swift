@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class LeaveGroupCall: ResponseObjectCall<GroupProtocol, APIGroup> {
-    public init(groupID: String, leaveChallenges: Bool, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
+    public init(groupID: String, leaveChallenges: Bool) {
         var data = [String: String]()
         if leaveChallenges {
             data["keepChallenges"] = "leave-challenges"
@@ -19,6 +19,6 @@ public class LeaveGroupCall: ResponseObjectCall<GroupProtocol, APIGroup> {
             data["keepChallenges"] = "remain-in-challenge"
         }
         let json = try? JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
-        super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/leave", postData: json, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/leave", postData: json)
     }
 }

@@ -11,8 +11,8 @@ import Habitica_Models
 import ReactiveSwift
 
 public class InviteToGroupCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(groupID: String, members: [String: Any], stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
+    public init(groupID: String, members: [String: Any]) {
         let json = try? JSONSerialization.data(withJSONObject: members, options: .prettyPrinted)
-        super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/invite", postData: json, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/invite", postData: json)
     }
 }

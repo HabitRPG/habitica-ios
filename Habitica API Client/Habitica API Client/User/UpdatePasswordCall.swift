@@ -11,8 +11,8 @@ import Habitica_Models
 import ReactiveSwift
 
 public class UpdatePasswordCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(newPassword: String, oldPassword: String, confirmPassword: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+    public init(newPassword: String, oldPassword: String, confirmPassword: String) {
         let json = try? JSONSerialization.data(withJSONObject: ["newPassword": newPassword, "password": oldPassword, "confirmPassword": confirmPassword], options: .prettyPrinted)
-        super.init(httpMethod: .PUT, endpoint: "user/auth/update-password", postData: json, stubHolder: stubHolder)
+        super.init(httpMethod: .PUT, endpoint: "user/auth/update-password", postData: json)
     }
 }

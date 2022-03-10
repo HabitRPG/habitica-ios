@@ -11,12 +11,12 @@ import Habitica_Models
 import ReactiveSwift
 
 public class PostInboxMessageCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(userID: String, inboxMessage: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
+    public init(userID: String, inboxMessage: String) {
         let updateDict = [
             "message": inboxMessage,
             "toUserId": userID
         ]
         let json = try? JSONSerialization.data(withJSONObject: updateDict, options: .prettyPrinted)
-        super.init(httpMethod: .POST, endpoint: "members/send-private-message", postData: json, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: "members/send-private-message", postData: json)
     }
 }

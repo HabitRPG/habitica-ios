@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class SleepCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
-        super.init(httpMethod: .POST, endpoint: "user/sleep", postData: nil, stubHolder: stubHolder)
+    public init() {
+        super.init(httpMethod: .POST, endpoint: "user/sleep", postData: nil)
     }
 }

@@ -7,12 +7,11 @@
 //
 
 import UIKit
-import SlackTextViewController
 import Down
 import Habitica_Models
 import ReactiveSwift
 
-class GroupChatViewController: SLKTextViewController, Themeable {
+class GroupChatViewController: MessagesViewController {
     
     @objc public var groupID: String? {
         didSet {
@@ -24,124 +23,11 @@ class GroupChatViewController: SLKTextViewController, Themeable {
             }
         }
     }
-    @objc public var autocompleteContext = "guild"
     private var dataSource: GroupChatViewDataSource?
-    var isScrolling = false
-    
-    private let socialRepository = SocialRepository()
-    private let userRepository = UserRepository()
-    private let configRepository = ConfigRepository.shared
-    private let disposable = ScopedDisposable(CompositeDisposable())
-    private var autocompleteUsernamesObserver: Signal<String, Never>.Observer?
-    private var autocompleteUsernames: [MemberProtocol] = []
-    private var autocompleteEmojisObserver: Signal<String, Never>.Observer?
-    private var autocompleteEmojis: [String] = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        hidesBottomBarWhenPushed = true
-               
-        let nib = UINib(nibName: "ChatMessageCell", bundle: nil)
-        tableView?.register(nib, forCellReuseIdentifier: "ChatMessageCell")
-        let systemNib = UINib(nibName: "SystemMessageTableViewCell", bundle: nil)
-        tableView?.register(systemNib, forCellReuseIdentifier: "SystemMessageCell")
-        
-        tableView?.separatorStyle = .none
-        tableView?.rowHeight = UITableView.automaticDimension
-        tableView?.estimatedRowHeight = 90
 
-        #if !targetEnvironment(macCatalyst)
-        tableView?.refreshControl = UIRefreshControl()
-        tableView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        #endif
-        
-        textView.registerMarkdownFormattingSymbol("**", withTitle: "Bold")
-        textView.registerMarkdownFormattingSymbol("*", withTitle: "Italics")
-        textView.registerMarkdownFormattingSymbol("~~", withTitle: "Strike")
-        textView.placeholder = L10n.writeMessage
-        textInputbar.maxCharCount = UInt(ConfigRepository.shared.integer(variable: .maxChatLength))
-        textInputbar.charCountLabelNormalColor = UIColor.gray400
-        textInputbar.charCountLabelWarningColor = UIColor.red50
-        textInputbar.charCountLabel.font = UIFont.systemFont(ofSize: 11, weight: .bold)
-        textInputbar.textView.placeholderFont = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
-        textInputbar.textView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
-        
-        disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
-            self?.checkGuidelinesAccepted(user: user)
-        }).start())
-        
-        self.registerPrefixes(forAutoCompletion: ["@", ":"])
-        let (signal, observer) = Signal<String, Never>.pipe()
-        autocompleteUsernamesObserver = observer
-        
-        if configRepository.bool(variable: .enableUsernameAutocomplete) {
-            disposable.inner.add(signal
-                .filter({ username -> Bool in return !username.isEmpty })
-                .throttle(2, on: QueueScheduler.main)
-                .flatMap(.latest, {[weak self] username in
-                    self?.socialRepository.findUsernames(username, context: self?.autocompleteContext, id: self?.groupID) ?? Signal.empty
-                })
-                .observeValues({[weak self] members in
-                    self?.autocompleteUsernames = members
-                    if self?.foundWord != nil {
-                        self?.showAutoCompletionView(self?.autocompleteUsernames.isEmpty == false)
-                    }
-                })
-            )
-        } else {
-            disposable.inner.add(signal
-                .filter({ username -> Bool in return !username.isEmpty })
-                .flatMap(.latest, {[weak self] username in
-                    self?.socialRepository.findUsernamesLocally(username, id: self?.groupID) ?? SignalProducer.empty
-                })
-                .observeValues({[weak self] (members) in
-                    self?.autocompleteUsernames = members
-                    if self?.foundWord != nil {
-                        self?.showAutoCompletionView(self?.autocompleteUsernames.isEmpty == false)
-                    }
-                }))
-        }
-        
-        let (emojiSignal, emojiObserver) = Signal<String, Never>.pipe()
-        autocompleteEmojisObserver = emojiObserver
-        disposable.inner.add(emojiSignal
-            .filter { emoji -> Bool in return !emoji.isEmpty }
-            .throttle(0.5, on: QueueScheduler.main)
-            .observeValues({[weak self] emoji in
-            self?.autocompleteEmojis = Emoji.allCases.flatMap { $0.shortnames }.filter({ name in
-                return name.contains(emoji)
-            })
-                self?.showAutoCompletionView(self?.autocompleteEmojis.isEmpty == false)
-            })
-        )
-        
-        ThemeService.shared.addThemeable(themable: self)
-    }
-    
-    func applyTheme(theme: Theme) {
-        textInputbar.backgroundColor = theme.windowBackgroundColor
-        textInputbar.textView.backgroundColor = theme.contentBackgroundColor
-        textInputbar.textView.placeholderColor = theme.dimmedTextColor
-        textInputbar.textView.textColor = theme.primaryTextColor
-        tableView?.backgroundColor = theme.windowBackgroundColor
-        tableView?.reloadData()
-    }
-    
-    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        if scrollView != autoCompletionView {
-            dismissKeyboard(true)
-            isScrolling = true
-        }
-    }
-    
-    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        super.scrollViewDidEndDecelerating(scrollView)
-        if scrollView != autoCompletionView {
-            isScrolling = false
-        }
-    }
-    
+
     override func viewWillAppear(_ animated: Bool) {
+        autocompleteContext = "guild"
         super.viewWillAppear(animated)
         
         if let groupID = self.groupID {
@@ -153,17 +39,7 @@ class GroupChatViewController: SLKTextViewController, Themeable {
         dataSource = nil
         super.viewDidDisappear(animated)
     }
-    
-    override func textViewDidChange(_ textView: UITextView) {
-        super.textViewDidChange(textView)
-        let textLength = textView.text.count
-        if textLength > Int(Double(textInputbar.maxCharCount) * 0.95) {
-            textInputbar.charCountLabelNormalColor = UIColor.yellow10
-        } else {
-            textInputbar.charCountLabelNormalColor = UIColor.gray400
-        }
-    }
-    
+
     private func setupDataSource(groupID: String) {
         dataSource = GroupChatViewDataSource(groupID: groupID)
         dataSource?.tableView = tableView
@@ -187,13 +63,13 @@ class GroupChatViewController: SLKTextViewController, Themeable {
     }
     
     @objc
-    func refresh() {
+    override func refresh() {
         dataSource?.retrieveData(completed: {[weak self] in
             self?.tableView?.refreshControl?.endRefreshing()
         })
     }
     
-    override func didPressRightButton(_ sender: Any?) {
+    /*override func didPressRightButton(_ sender: Any?) {
         self.textView.refreshFirstResponder()
         let message = textView.text
         if let message = message, let groupID = self.groupID {
@@ -223,10 +99,7 @@ class GroupChatViewController: SLKTextViewController, Themeable {
             autocompleteEmojisObserver?.send(value: word)
         }
     }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if foundPrefix == "@" {
@@ -302,42 +175,6 @@ class GroupChatViewController: SLKTextViewController, Themeable {
         }
     }
     
-    private func checkGuidelinesAccepted(user: UserProtocol) {
-        let acceptView = view.viewWithTag(999)
-        if !(user.flags?.communityGuidelinesAccepted ?? false) {
-            if acceptView != nil {
-                return
-            }
-            guard let acceptView = Bundle.main.loadNibNamed("GuidelinesPromptView", owner: self, options: nil)?[0] as? UIView else {
-                return
-            }
-            let acceptButton = acceptView.viewWithTag(1) as? UIButton
-            acceptButton?.setTitle(L10n.accept, for: .normal)
-            acceptButton?.addTarget(self, action: #selector(acceptGuidelines), for: .touchUpInside)
-            let descriptionButton = acceptView.viewWithTag(2) as? UIButton
-            descriptionButton?.addTarget(self, action: #selector(openGuidelinesView), for: .touchUpInside)
-            acceptView.frame = CGRect(x: 0, y: view.frame.size.height-90, width: view.frame.size.width, height: 90)
-            acceptView.tag = 999
-            view.addSubview(acceptView)
-        } else {
-            acceptView?.removeFromSuperview()
-        }
-    }
-    
-    @objc
-    private func openGuidelinesView() {
-        performSegue(withIdentifier: "GuidelinesSegue", sender: self)
-    }
-    
-    @IBAction func unwindToAcceptGuidelines(_ segue: UIStoryboardSegue) {
-        acceptGuidelines()
-    }
-    
-    @objc
-    private func acceptGuidelines() {
-        userRepository.updateUser(key: "flags.communityGuidelinesAccepted", value: true).observeCompleted {}
-    }
-    
     func configureReplyTo(_ username: String?) {
         if textView.text.isEmpty == false {
             textView.text = "\(textView.text ?? "") @\(username ?? "") "
@@ -346,6 +183,6 @@ class GroupChatViewController: SLKTextViewController, Themeable {
         }
         textView.becomeFirstResponder()
         textView.selectedRange = NSRange(location: textView.text.count, length: 0)
-    }
+    }*/
 
 }

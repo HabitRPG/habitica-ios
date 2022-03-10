@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 
 public class ScoreTaskCall: ResponseObjectCall<TaskResponseProtocol, TaskResponse> {
-    public init(task: TaskProtocol, direction: TaskScoringDirection, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
-        super.init(httpMethod: .POST, endpoint: "tasks/\(task.id ?? "")/score/\(direction.rawValue)", stubHolder: stubHolder)
+    public init(task: TaskProtocol, direction: TaskScoringDirection) {
+        super.init(httpMethod: .POST, endpoint: "tasks/\(task.id ?? "")/score/\(direction.rawValue)")
     }
 }

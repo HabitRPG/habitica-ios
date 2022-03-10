@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class JoinChallengeCall: ResponseObjectCall<ChallengeProtocol, APIChallenge> {
-    public init(challengeID: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
-        super.init(httpMethod: .POST, endpoint: "challenges/\(challengeID)/join", postData: nil, stubHolder: stubHolder)
+    public init(challengeID: String) {
+        super.init(httpMethod: .POST, endpoint: "challenges/\(challengeID)/join", postData: nil)
     }
 }

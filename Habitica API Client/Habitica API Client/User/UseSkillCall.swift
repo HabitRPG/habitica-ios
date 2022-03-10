@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class UseSkillCall: ResponseObjectCall<SkillResponseProtocol, APISkillResponse> {
-    public init(key: String, target: String? = nil, targetID: String? = nil, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+    public init(key: String, target: String? = nil, targetID: String? = nil) {
         var url = "user/class/cast/\(key)"
         if let target = target {
             url += "?targetType=\(target)"
@@ -19,6 +19,6 @@ public class UseSkillCall: ResponseObjectCall<SkillResponseProtocol, APISkillRes
         if let targetId = targetID {
             url += "&targetId=\(targetId)"
         }
-        super.init(httpMethod: .POST, endpoint: url, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: url)
     }
 }

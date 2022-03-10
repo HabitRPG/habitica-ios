@@ -8,7 +8,6 @@
 
 import UIKit
 import PinLayout
-import UIKit
 
 class LabeledProgressBar: UIView {
     var isActive: Bool = true {
@@ -98,7 +97,7 @@ class LabeledProgressBar: UIView {
         if value > 1 || value < 0 {
             currentValue = floor(value)
         } else {
-            currentValue = ceil((value * 10) / 10)
+            currentValue = ceil(value * 10) / 10
         }
         labelView.text = "\(numberFormatter.string(from: NSNumber(value: currentValue)) ?? "0") / \(numberFormatter.string(from: NSNumber(value: maxValue)) ?? "0")"
         applyAccessibility()

@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class BlockMemberCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(userID: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "member.json")) {
-        super.init(httpMethod: .POST, endpoint: "user/block/\(userID)", stubHolder: stubHolder)
+    public init(userID: String) {
+        super.init(httpMethod: .POST, endpoint: "user/block/\(userID)")
     }
 }

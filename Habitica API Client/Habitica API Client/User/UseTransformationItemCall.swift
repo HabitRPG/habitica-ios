@@ -11,8 +11,8 @@ import Habitica_Models
 import ReactiveSwift
 
 public class UseTransformationItemCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(item: SpecialItemProtocol, target: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+    public init(item: SpecialItemProtocol, target: String) {
         let url = "user/class/cast/\(item.key ?? "")?targetType=user&targetId=\(target)"
-        super.init(httpMethod: .POST, endpoint: url, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: url)
     }
 }

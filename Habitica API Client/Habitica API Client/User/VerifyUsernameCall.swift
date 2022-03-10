@@ -11,9 +11,9 @@ import Habitica_Models
 import ReactiveSwift
 
 public class VerifyUsernameCall: ResponseObjectCall<VerifyUsernameResponse, APIVerifyUsernameResponse> {
-    public init(username: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+    public init(username: String) {
         let obj = ["username": username]
         let json = try? JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
-        super.init(httpMethod: .POST, endpoint: "user/auth/verify-username", postData: json, stubHolder: stubHolder, needsAuthentication: false)
+        super.init(httpMethod: .POST, endpoint: "user/auth/verify-username", postData: json, needsAuthentication: false)
     }
 }

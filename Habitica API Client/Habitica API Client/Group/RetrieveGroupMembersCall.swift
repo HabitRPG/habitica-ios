@@ -8,7 +8,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class RetrieveGroupMembersCall: ResponseArrayCall<MemberProtocol, APIMember> {
-    public init(groupID: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "member.json")) {
-        super.init(httpMethod: .GET, endpoint: "groups/\(groupID)/members?includeAllPublicFields=true", stubHolder: stubHolder)
+    public init(groupID: String) {
+        super.init(httpMethod: .GET, endpoint: "groups/\(groupID)/members?includeAllPublicFields=true")
     }
 }

@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class RetrieveTasksCall: ResponseArrayCall<TaskProtocol, APITask> {
-    public init(dueOnDay: Date? = nil, type: String? = nil, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
+    public init(dueOnDay: Date? = nil, type: String? = nil) {
         var url = "tasks/user"
         if let date = dueOnDay {
             let formatter = DateFormatter()
@@ -25,6 +25,6 @@ public class RetrieveTasksCall: ResponseArrayCall<TaskProtocol, APITask> {
         if let type = type {
             url = "\(url)?type=\(type)"
         }
-        super.init(httpMethod: .GET, endpoint: url, stubHolder: stubHolder)
+        super.init(httpMethod: .GET, endpoint: url)
     }
 }

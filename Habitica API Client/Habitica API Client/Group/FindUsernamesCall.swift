@@ -11,11 +11,11 @@ import Habitica_Models
 import ReactiveSwift
 
 public class FindUsernamesCall: ResponseArrayCall<MemberProtocol, APIMember> {
-    public init(username: String, context: String?, id: String?, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "member.json")) {
+    public init(username: String, context: String?, id: String?) {
         var url = "members/find/\(username)"
         if let context = context, let id = id {
             url += "?context=\(context)&id=\(id)"
         }
-        super.init(httpMethod: .GET, endpoint: url, stubHolder: stubHolder)
+        super.init(httpMethod: .GET, endpoint: url)
     }
 }

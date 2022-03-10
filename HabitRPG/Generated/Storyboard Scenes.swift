@@ -120,6 +120,8 @@ internal enum StoryboardScene {
 
     internal static let challengeTableViewController = SceneType<Habitica.ChallengeTableViewController>(storyboard: Social.self, identifier: "ChallengeTableViewController")
 
+    internal static let groupChatViewController = SceneType<Habitica.GroupChatViewController>(storyboard: Social.self, identifier: "GroupChatViewController")
+
     internal static let groupTableViewController = SceneType<Habitica.SplitSocialViewController>(storyboard: Social.self, identifier: "GroupTableViewController")
 
     internal static let guidelinesNavigationViewController = SceneType<Habitica.ThemedNavigationController>(storyboard: Social.self, identifier: "GuidelinesNavigationViewController")
@@ -141,8 +143,6 @@ internal enum StoryboardScene {
     internal static let partyViewController = SceneType<Habitica.PartyViewController>(storyboard: Social.self, identifier: "PartyViewController")
 
     internal static let questDetailViewController = SceneType<Habitica.QuestDetailViewController>(storyboard: Social.self, identifier: "QuestDetailViewController")
-
-    internal static let tavernChatViewController = SceneType<Habitica.GroupChatViewController>(storyboard: Social.self, identifier: "TavernChatViewController")
 
     internal static let tavernNavigationViewController = SceneType<Habitica.ThemedNavigationController>(storyboard: Social.self, identifier: "TavernNavigationViewController")
 

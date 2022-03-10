@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class DeleteInboxMessageCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(message: InboxMessageProtocol, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
-        super.init(httpMethod: .DELETE, endpoint: "user/messages/\(message.id ?? "")", stubHolder: stubHolder)
+    public init(message: InboxMessageProtocol) {
+        super.init(httpMethod: .DELETE, endpoint: "user/messages/\(message.id ?? "")")
     }
 }

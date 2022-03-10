@@ -11,11 +11,11 @@ import Habitica_Models
 import ReactiveSwift
 
 public class RetrieveChallengesCall: ResponseArrayCall<ChallengeProtocol, APIChallenge> {
-    public init(page: Int, memberOnly: Bool, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
+    public init(page: Int, memberOnly: Bool) {
         var url = "challenges/user?page=\(page)"
         if memberOnly {
             url += "&member=true"
         }
-        super.init(httpMethod: .GET, endpoint: url, stubHolder: stubHolder)
+        super.init(httpMethod: .GET, endpoint: url)
     }
 }

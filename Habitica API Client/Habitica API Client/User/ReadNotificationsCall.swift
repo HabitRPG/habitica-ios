@@ -11,9 +11,9 @@ import Habitica_Models
 import ReactiveSwift
 
 public class ReadNotificationsCall: ResponseArrayCall<NotificationProtocol, APINotification> {
-    public init(notificationIDs: [String], stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+    public init(notificationIDs: [String]) {
         let obj = ["notificationIds": notificationIDs]
         let json = try? JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
-        super.init(httpMethod: .POST, endpoint: "notifications/read", postData: json, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: "notifications/read", postData: json)
     }
 }

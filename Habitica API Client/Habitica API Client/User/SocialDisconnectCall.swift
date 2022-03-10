@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class SocialDisconnectCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(network: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
-        super.init(httpMethod: .DELETE, endpoint: "user/auth/social/\(network)", stubHolder: stubHolder)
+    public init(network: String) {
+        super.init(httpMethod: .DELETE, endpoint: "user/auth/social/\(network)")
     }
 }

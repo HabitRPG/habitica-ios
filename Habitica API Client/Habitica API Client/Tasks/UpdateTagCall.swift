@@ -10,10 +10,10 @@ import Foundation
 import Habitica_Models
 
 public class UpdateTagCall: ResponseObjectCall<TagProtocol, APITag> {
-    public init(tag: TagProtocol, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
+    public init(tag: TagProtocol) {
         let encoder = JSONEncoder()
         encoder.setHabiticaDateEncodingStrategy()
         let json = try? encoder.encode(APITag(tag))
-        super.init(httpMethod: .PUT, endpoint: "tags/\(tag.id ?? "")", postData: json, stubHolder: stubHolder)
+        super.init(httpMethod: .PUT, endpoint: "tags/\(tag.id ?? "")", postData: json)
     }
 }

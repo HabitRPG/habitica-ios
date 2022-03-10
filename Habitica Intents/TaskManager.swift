@@ -35,9 +35,6 @@ class TaskManager: BaseRepository<TaskLocalRepository> {
         super.init()
         self.setupNetworkClient()
         setupDatabase()
-        if let cid = AuthenticationManager.shared.currentUserId {
-            AuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.localKeychain[cid]
-        }
     }
 
     func getValidTaskListFromSpokenPhrase(spokenPhrase: String) -> String? {

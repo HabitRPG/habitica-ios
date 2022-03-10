@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class RetrieveHallOfPatronsCall: ResponseArrayCall<MemberProtocol, APIMember> {
-    public init(stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "content.json")) {
-        super.init(httpMethod: .GET, endpoint: "hall/patrons", stubHolder: stubHolder, needsAuthentication: false, ignoreEtag: true)
+    public init() {
+        super.init(httpMethod: .GET, endpoint: "hall/patrons", needsAuthentication: false, ignoreEtag: true)
     }
 }

@@ -11,8 +11,8 @@ import Habitica_Models
 import ReactiveSwift
 
 public class RetrieveInAppRewardsCall: ResponseArrayCall<InAppRewardProtocol, APIInAppReward> {
-    public init(language: String? = nil, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+    public init(language: String? = nil) {
         let url = language != nil ? "user/in-app-rewards?language=\(language ?? "")" : "user/in-app-rewards"
-        super.init(httpMethod: .GET, endpoint: url, stubHolder: stubHolder)
+        super.init(httpMethod: .GET, endpoint: url)
     }
 }

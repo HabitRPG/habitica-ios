@@ -11,8 +11,8 @@ import Habitica_Models
 import ReactiveSwift
 
 public class UpdateEmailCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(newEmail: String, password: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+    public init(newEmail: String, password: String) {
         let json = try? JSONSerialization.data(withJSONObject: ["newEmail": newEmail, "password": password], options: .prettyPrinted)
-        super.init(httpMethod: .PUT, endpoint: "user/auth/update-email", postData: json, stubHolder: stubHolder)
+        super.init(httpMethod: .PUT, endpoint: "user/auth/update-email", postData: json)
     }
 }

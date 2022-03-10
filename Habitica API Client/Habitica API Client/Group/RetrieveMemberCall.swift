@@ -11,11 +11,11 @@ import Habitica_Models
 import ReactiveSwift
 
 public class RetrieveMemberCall: ResponseObjectCall<MemberProtocol, APIMember> {
-    public init(userID: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "member.json")) {
+    public init(userID: String) {
         if UUID(uuidString: userID) != nil {
-            super.init(httpMethod: .GET, endpoint: "members/\(userID)", stubHolder: stubHolder)
+            super.init(httpMethod: .GET, endpoint: "members/\(userID)")
         } else {
-            super.init(httpMethod: .GET, endpoint: "members/username/\(userID)", stubHolder: stubHolder)
+            super.init(httpMethod: .GET, endpoint: "members/username/\(userID)")
         }
     }
 }

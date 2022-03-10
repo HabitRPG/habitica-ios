@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class MarkInboxAsSeenCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
-        super.init(httpMethod: .POST, endpoint: "user/mark-pms-read", stubHolder: stubHolder)
+    public init() {
+        super.init(httpMethod: .POST, endpoint: "user/mark-pms-read")
     }
 }

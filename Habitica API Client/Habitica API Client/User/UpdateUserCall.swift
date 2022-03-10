@@ -11,8 +11,8 @@ import Habitica_Models
 import ReactiveSwift
 
 public class UpdateUserCall: ResponseObjectCall<UserProtocol, APIUser> {
-    public init(_ updateDict: [String: Encodable], stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+    public init(_ updateDict: [String: Encodable]) {
         let json = try? JSONSerialization.data(withJSONObject: updateDict, options: .prettyPrinted)
-        super.init(httpMethod: .PUT, endpoint: "user", postData: json, stubHolder: stubHolder)
+        super.init(httpMethod: .PUT, endpoint: "user", postData: json)
     }
 }

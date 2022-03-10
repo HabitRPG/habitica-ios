@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 
 public class MovePinnedItemCall: ResponseArrayCall<String, String> {
-    public init(item: InAppRewardProtocol, toPosition: Int, stubHolder: StubHolderProtocol? = nil) {
-        super.init(httpMethod: .POST, endpoint: "user/move-pinned-item/\(item.path ?? "")/move/to/\(toPosition)", stubHolder: stubHolder)
+    public init(item: InAppRewardProtocol, toPosition: Int) {
+        super.init(httpMethod: .POST, endpoint: "user/move-pinned-item/\(item.path ?? "")/move/to/\(toPosition)")
     }
 }

@@ -223,7 +223,6 @@
 		29A9B05F22817DBE0049291E /* NetworkErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B05B22817DBD0049291E /* NetworkErrorHandler.swift */; };
 		29A9B06322817DCF0049291E /* ServerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B06022817DCE0049291E /* ServerConfiguration.swift */; };
 		29A9B06422817DCF0049291E /* StubbableNetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B06122817DCF0049291E /* StubbableNetworkCall.swift */; };
-		29A9B06522817DCF0049291E /* StubHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B06222817DCF0049291E /* StubHolder.swift */; };
 		29ACED7825DD38BD00E1263D /* APIGroupCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ACED7725DD38BD00E1263D /* APIGroupCategory.swift */; };
 		29B4788C20BEFBDC00B6123F /* ScoreChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4788B20BEFBDC00B6123F /* ScoreChecklistItem.swift */; };
 		29B478BB20C0360E00B6123F /* UpdateDayStartTimeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B478BA20C0360E00B6123F /* UpdateDayStartTimeCall.swift */; };
@@ -475,7 +474,6 @@
 		29A9B05B22817DBD0049291E /* NetworkErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkErrorHandler.swift; sourceTree = "<group>"; };
 		29A9B06022817DCE0049291E /* ServerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConfiguration.swift; sourceTree = "<group>"; };
 		29A9B06122817DCF0049291E /* StubbableNetworkCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubbableNetworkCall.swift; sourceTree = "<group>"; };
-		29A9B06222817DCF0049291E /* StubHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubHolder.swift; sourceTree = "<group>"; };
 		29ACED7725DD38BD00E1263D /* APIGroupCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGroupCategory.swift; sourceTree = "<group>"; };
 		29B4788B20BEFBDC00B6123F /* ScoreChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreChecklistItem.swift; sourceTree = "<group>"; };
 		29B478BA20C0360E00B6123F /* UpdateDayStartTimeCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDayStartTimeCall.swift; sourceTree = "<group>"; };
@@ -739,7 +737,6 @@
 				292DEE94204F4A510086D5F7 /* ResponseObjectCall.swift */,
 				29A9B06022817DCE0049291E /* ServerConfiguration.swift */,
 				29A9B06122817DCF0049291E /* StubbableNetworkCall.swift */,
-				29A9B06222817DCF0049291E /* StubHolder.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1311,7 +1308,6 @@
 				290B623D207267AA007287C4 /* RetrieveGroupsCall.swift in Sources */,
 				29990DCA20E65D38001ADD8B /* APITaskResponseTemp.swift in Sources */,
 				292726A420B6FFF5009DD08A /* APIChallengeCategory.swift in Sources */,
-				29A9B06522817DCF0049291E /* StubHolder.swift in Sources */,
 				2912C3BB22CB5CB100BC485F /* APINotificationNewChatData.swift in Sources */,
 				2902797920580EFD006DACB9 /* APIBuff.swift in Sources */,
 				290B629C207F7E84007287C4 /* APIOwnedGear.swift in Sources */,

@@ -11,8 +11,8 @@ import Habitica_Models
 import ReactiveSwift
 
 public class LocalRegisterCall: ResponseObjectCall<LoginResponseProtocol, APILoginResponse> {
-    public init(username: String, password: String, confirmPassword: String, email: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+    public init(username: String, password: String, confirmPassword: String, email: String) {
         let json = try? JSONSerialization.data(withJSONObject: ["username": username, "password": password, "confirmPassword": confirmPassword, "email": email], options: .prettyPrinted)
-        super.init(httpMethod: .POST, endpoint: "user/auth/local/register", postData: json, stubHolder: stubHolder, needsAuthentication: false)
+        super.init(httpMethod: .POST, endpoint: "user/auth/local/register", postData: json, needsAuthentication: false)
     }
 }

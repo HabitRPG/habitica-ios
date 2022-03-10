@@ -25,13 +25,6 @@ class MarkdownTests: XCTestCase {
         }
     }
     
-    func testASTMarkdownReference() throws {
-        let down = Down(markdownString: refMarkdown)
-        let result = try! down.toHabiticaAttributedString()
-        let ref = try! down.toHabiticaAttributedString(useAST: false)
-        XCTAssertEqual(result, ref)
-    }
-    
     let refMarkdown = """
     # Heading
     ## Heading2

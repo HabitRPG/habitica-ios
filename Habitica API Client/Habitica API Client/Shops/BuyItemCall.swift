@@ -11,10 +11,10 @@ import Habitica_Models
 import ReactiveSwift
 
 public class BuyObjectCall: ResponseObjectCall<BuyResponseProtocol, APIBuyResponse> {
-    public init(key: String, quantity: Int, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+    public init(key: String, quantity: Int) {
         let updateDict = ["quantity": quantity
         ]
         let json = try? JSONSerialization.data(withJSONObject: updateDict, options: .prettyPrinted)
-        super.init(httpMethod: .POST, endpoint: "user/buy/\(key)", postData: json, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: "user/buy/\(key)", postData: json)
     }
 }

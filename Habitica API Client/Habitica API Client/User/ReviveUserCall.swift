@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class ReviveUserCall: ResponseObjectCall<UserProtocol, APIUser> {
-    public init(stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
-        super.init(httpMethod: .POST, endpoint: "user/revive", stubHolder: stubHolder)
+    public init() {
+        super.init(httpMethod: .POST, endpoint: "user/revive")
     }
 }

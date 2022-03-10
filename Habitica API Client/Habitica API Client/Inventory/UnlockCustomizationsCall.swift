@@ -11,10 +11,10 @@ import Habitica_Models
 import ReactiveSwift
 
 public class UnlockCustomizationsCall: ResponseObjectCall<UserProtocol, APIUser> {
-    public init(customizations: [CustomizationProtocol], stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+    public init(customizations: [CustomizationProtocol]) {
         let path = customizations.map({ (customization) -> String in
             return customization.path
         }).joined(separator: ",")
-        super.init(httpMethod: .POST, endpoint: "user/unlock/?path=\(path)", postData: nil, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: "user/unlock/?path=\(path)", postData: nil)
     }
 }

@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class PurchaseQuestCall: ResponseObjectCall<UserProtocol, APIUser> {
-    public init(key: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
-        super.init(httpMethod: .POST, endpoint: "user/buy-quest/\(key)", postData: nil, stubHolder: stubHolder)
+    public init(key: String) {
+        super.init(httpMethod: .POST, endpoint: "user/buy-quest/\(key)", postData: nil)
     }
 }

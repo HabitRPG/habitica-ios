@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class RetrieveGroupsCall: ResponseArrayCall<GroupProtocol, APIGroup> {
-    public init(_ groupType: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
-        super.init(httpMethod: .GET, endpoint: "groups/?type=\(groupType)", stubHolder: stubHolder)
+    public init(_ groupType: String) {
+        super.init(httpMethod: .GET, endpoint: "groups/?type=\(groupType)")
     }
 }

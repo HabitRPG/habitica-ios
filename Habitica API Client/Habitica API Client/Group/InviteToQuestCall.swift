@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class InviteToQuestCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(groupID: String, quest: QuestProtocol, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
-        super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/quests/invite/\(quest.key ?? "")", postData: nil, stubHolder: stubHolder)
+    public init(groupID: String, quest: QuestProtocol) {
+        super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/quests/invite/\(quest.key ?? "")", postData: nil)
     }
 }

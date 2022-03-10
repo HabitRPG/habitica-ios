@@ -7,6 +7,7 @@
 //
 
 @testable import Habitica
+import UIKit
 
 class LoginViewControllerTests: HabiticaTests {
 

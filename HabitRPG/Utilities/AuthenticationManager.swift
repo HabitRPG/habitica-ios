@@ -11,17 +11,20 @@ import ReactiveSwift
 import KeychainAccess
 import Habitica_API_Client
 
-class AuthenticationManager: NSObject {
+protocol AuthenticationStorage {
+    var userID: String? { get set }
+    var apiKey: String? { get set }
+}
 
-    @objc static let shared = AuthenticationManager()
-    let localKeychain = Keychain(service: "com.habitrpg.ios.Habitica", accessGroup: "group.habitrpg.habitica")
+class KeychainAuthenticationStorage: AuthenticationStorage {
+    private let localKeychain = Keychain(service: "com.habitrpg.ios.Habitica", accessGroup: "group.habitrpg.habitica")
 
     private var keychain: Keychain {
         return Keychain(server: "https://habitica.com", protocolType: .https)
             .accessibility(.afterFirstUnlock)
     }
-
-    @objc var currentUserId: String? {
+    
+    var userID: String? {
         get {
             // using this to bootstrap identification so user's don't have to re-log in
             guard let cuid = localKeychain["currentUserId"] else {
@@ -34,65 +37,97 @@ class AuthenticationManager: NSObject {
 
         set(newUserId) {
             localKeychain["currentUserId"] = newUserId
-            UserDefaults.standard.set(newUserId, forKey: "currentUserId")
-            NetworkAuthenticationManager.shared.currentUserId = newUserId
-            currentUserIDProperty.value = newUserId
-            if newUserId != nil {
-                //(logger as? RemoteLogger)?.setUserID(newUserId ?? "")
-                HabiticaAnalytics.shared.setUserID(newUserId)
-            }
         }
     }
-
-    var currentUserIDProperty = MutableProperty<String?>(nil)
-
-    @objc var currentUserKey: String? {
+    
+    var apiKey: String? {
         get {
-            if let userId = currentUserId {
-                let userKey = keychain[userId]
+            if let userID = userID {
+                let userKey = keychain[userID]
                 if userKey != nil {
-                    localKeychain[userId] = userKey
+                    localKeychain[userID] = userKey
                     return userKey
                 } else {
-                    return localKeychain[userId]
+                    return localKeychain[userID]
                 }
             }
             return nil
         }
 
         set(newKey) {
-            if let userId = currentUserId {
-                keychain[userId] = newKey
-                localKeychain[userId] = newKey
+            if let userID = userID {
+                keychain[userID] = newKey
+                localKeychain[userID] = newKey
             }
-            NetworkAuthenticationManager.shared.currentUserKey = newKey
+        }
+    }
+}
+
+class MemoryAuthenticationStorage: AuthenticationStorage {
+    var userID: String?
+    var apiKey: String?
+}
+
+class AuthenticationManager {
+
+    func initialize(withStorage storage: AuthenticationStorage) {
+        self.storage = storage
+        // This is to properly run the setters so that the app is correctly configured
+        currentUserId = storage.userID
+        currentUserKey = storage.apiKey
+    }
+    
+    static let shared = AuthenticationManager()
+    var storage: AuthenticationStorage?
+
+    var currentUserId: String? {
+        get {
+            return storage?.userID
+        }
+        
+        set(newValue) {
+            storage?.userID = newValue
+            currentUserIDProperty.value = newValue
+            UserDefaults.standard.set(newValue, forKey: "currentUserId")
+            NetworkAuthenticationManager.shared.currentUserId = newValue
+            if let newID = newValue {
+                (logger as? RemoteLogger)?.setUserID(newID)
+                HabiticaAnalytics.shared.setUserID(newID)
+            }
         }
     }
 
-    override init() {
-        super.init()
+    var currentUserIDProperty = MutableProperty<String?>(nil)
+
+    var currentUserKey: String? {
+        get {
+            return storage?.apiKey
+        }
+        
+        set(newValue) {
+            storage?.apiKey = newValue
+            NetworkAuthenticationManager.shared.currentUserKey = newValue
+        }
+    }
+
+    private init() {
         currentUserIDProperty.value = currentUserId
     }
 
-    @objc
     func hasAuthentication() -> Bool {
         return currentUserId?.isEmpty == false && currentUserKey?.isEmpty == false
     }
 
-    @objc
     func setAuthentication(userId: String, key: String) {
         currentUserId = userId
         currentUserKey = key
-        localKeychain[userId] = key
     }
 
-    @objc
     func clearAuthenticationForAllUsers() {
         currentUserId = nil
         currentUserKey = nil
     }
 
-    @objc
     func clearAuthentication(userId: String) {
         // Will be used once we support multiple users
         clearAuthenticationForAllUsers()

@@ -11,8 +11,8 @@ import Habitica_Models
 import ReactiveSwift
 
 public class SendPasswordResetEmailCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(email: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+    public init(email: String) {
         let json = try? JSONSerialization.data(withJSONObject: ["email": email ], options: .prettyPrinted)
-        super.init(httpMethod: .POST, endpoint: "user/reset-password", postData: json, stubHolder: stubHolder, needsAuthentication: false)
+        super.init(httpMethod: .POST, endpoint: "user/reset-password", postData: json, needsAuthentication: false)
     }
 }

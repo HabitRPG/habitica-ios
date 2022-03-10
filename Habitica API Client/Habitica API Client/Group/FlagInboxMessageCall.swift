@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class FlagInboxMessageCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(message: InboxMessageProtocol, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
-        super.init(httpMethod: .POST, endpoint: "/flag-private-message/\(message.id ?? "")/flag", stubHolder: stubHolder)
+    public init(message: InboxMessageProtocol) {
+        super.init(httpMethod: .POST, endpoint: "/flag-private-message/\(message.id ?? "")/flag")
     }
 }

@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class RetrieveInboxMessagesCall: ResponseArrayCall<InboxMessageProtocol, APIInboxMessage> {
-    public init(uuid: String, page: Int, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
-        super.init(httpMethod: .GET, endpoint: "inbox/messages?conversation=\(uuid)&page=\(page)", stubHolder: stubHolder)
+    public init(uuid: String, page: Int) {
+        super.init(httpMethod: .GET, endpoint: "inbox/messages?conversation=\(uuid)&page=\(page)")
     }
 }

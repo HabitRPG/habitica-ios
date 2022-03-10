@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class EquipCall: ResponseObjectCall<UserItemsProtocol, APIUserItems> {
-    public init(type: String, itemKey: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
-        super.init(httpMethod: .POST, endpoint: "user/equip/\(type)/\(itemKey)", postData: nil, stubHolder: stubHolder)
+    public init(type: String, itemKey: String) {
+        super.init(httpMethod: .POST, endpoint: "user/equip/\(type)/\(itemKey)", postData: nil)
     }
 }

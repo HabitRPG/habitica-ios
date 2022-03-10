@@ -11,8 +11,8 @@ import Habitica_Models
 import ReactiveSwift
 
 public class RetrieveContentCall: ResponseObjectCall<ContentProtocol, APIContent> {
-    public init(language: String? = nil, forceLoading: Bool = false, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "content.json")) {
+    public init(language: String? = nil, forceLoading: Bool = false) {
         let url = language != nil ? "content?language=\(language ?? "")" : "content"
-        super.init(httpMethod: .GET, endpoint: url, stubHolder: stubHolder, needsAuthentication: false, ignoreEtag: forceLoading)
+        super.init(httpMethod: .GET, endpoint: url, needsAuthentication: false, ignoreEtag: forceLoading)
     }
 }

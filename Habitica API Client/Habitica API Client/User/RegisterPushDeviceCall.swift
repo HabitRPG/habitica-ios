@@ -11,8 +11,8 @@ import Habitica_Models
 import ReactiveSwift
 
 public class RegisterPushDeviceCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(regID: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
+    public init(regID: String) {
         let json = try? JSONSerialization.data(withJSONObject: ["regId": regID, "type": "ios"], options: .prettyPrinted)
-        super.init(httpMethod: .POST, endpoint: "user/push-devices", postData: json, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: "user/push-devices", postData: json)
     }
 }

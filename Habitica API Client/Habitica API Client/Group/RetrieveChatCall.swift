@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class RetrieveChatCall: ResponseArrayCall<ChatMessageProtocol, APIChatMessage> {
-    public init(groupID: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
-        super.init(httpMethod: .GET, endpoint: "groups/\(groupID)/chat", stubHolder: stubHolder)
+    public init(groupID: String) {
+        super.init(httpMethod: .GET, endpoint: "groups/\(groupID)/chat")
     }
 }

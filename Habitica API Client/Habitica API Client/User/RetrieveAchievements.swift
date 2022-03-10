@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class RetrieveAchievementsCall: ResponseObjectCall<AchievementListProtocol, APIAchievementList> {
-    public init(userID: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
-        super.init(httpMethod: .GET, endpoint: "members/\(userID)/achievements", stubHolder: stubHolder)
+    public init(userID: String) {
+        super.init(httpMethod: .GET, endpoint: "members/\(userID)/achievements")
     }
 }

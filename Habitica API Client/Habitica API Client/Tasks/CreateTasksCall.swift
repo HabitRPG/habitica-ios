@@ -10,12 +10,12 @@ import Foundation
 import Habitica_Models
 
 public class CreateTasksCall: ResponseArrayCall<TaskProtocol, APITask> {
-    public init(tasks: [TaskProtocol], stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
+    public init(tasks: [TaskProtocol]) {
         let encoder = JSONEncoder()
         encoder.setHabiticaDateEncodingStrategy()
         let json = try? encoder.encode(tasks.map({ (task) in
             return APITask(task)
         }))
-        super.init(httpMethod: .POST, endpoint: "tasks/user", postData: json, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: "tasks/user", postData: json)
     }
 }

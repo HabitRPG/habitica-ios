@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class MarkChatSeenCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(groupID: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
-        super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/chat/seen", stubHolder: stubHolder)
+    public init(groupID: String) {
+        super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/chat/seen")
     }
 }

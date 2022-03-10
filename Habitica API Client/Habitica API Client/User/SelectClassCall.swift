@@ -11,11 +11,11 @@ import Habitica_Models
 import ReactiveSwift
 
 public class SelectClassCall: ResponseObjectCall<UserProtocol, APIUser> {
-    public init(class habiticaClass: HabiticaClass?, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+    public init(class habiticaClass: HabiticaClass?) {
         var url = "user/change-class"
         if let habiticaClass = habiticaClass {
             url += "?class=\(habiticaClass.rawValue)"
         }
-        super.init(httpMethod: .POST, endpoint: url, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: url)
     }
 }

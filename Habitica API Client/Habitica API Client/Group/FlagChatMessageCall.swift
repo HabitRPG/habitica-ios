@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class FlagChatMessageCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(groupID: String, chatMessage: ChatMessageProtocol, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
-        super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/chat/\(chatMessage.id ?? "")/flag", stubHolder: stubHolder)
+    public init(groupID: String, chatMessage: ChatMessageProtocol) {
+        super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/chat/\(chatMessage.id ?? "")/flag")
     }
 }

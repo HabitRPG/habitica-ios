@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 
 public class MoveTaskCall: ResponseArrayCall<String, String> {
-    public init(task: TaskProtocol, toPosition: Int, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
-        super.init(httpMethod: .POST, endpoint: "tasks/\(task.id ?? "")/move/to/\(toPosition)", stubHolder: stubHolder)
+    public init(task: TaskProtocol, toPosition: Int) {
+        super.init(httpMethod: .POST, endpoint: "tasks/\(task.id ?? "")/move/to/\(toPosition)")
     }
 }

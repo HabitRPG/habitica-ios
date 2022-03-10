@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class LeaveChallengeCall: ResponseObjectCall<ChallengeProtocol, APIChallenge> {
-    public init(challengeID: String, keepTasks: Bool, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
+    public init(challengeID: String, keepTasks: Bool) {
         var data = [String: String]()
         if keepTasks {
             data["keep"] = "keep-all"
@@ -19,6 +19,6 @@ public class LeaveChallengeCall: ResponseObjectCall<ChallengeProtocol, APIChalle
             data["keep"] = "remove-all"
         }
         let json = try? JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
-        super.init(httpMethod: .POST, endpoint: "challenges/\(challengeID)/leave", postData: json, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: "challenges/\(challengeID)/leave", postData: json)
     }
 }

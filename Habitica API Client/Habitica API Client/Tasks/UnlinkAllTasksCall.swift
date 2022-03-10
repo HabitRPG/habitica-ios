@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class UnlinkAllTasksCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(challengeID: String, keepOption: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
-        super.init(httpMethod: .POST, endpoint: "tasks/unlink-all/\(challengeID)?keep=\(keepOption)", stubHolder: stubHolder)
+    public init(challengeID: String, keepOption: String) {
+        super.init(httpMethod: .POST, endpoint: "tasks/unlink-all/\(challengeID)?keep=\(keepOption)")
     }
 }

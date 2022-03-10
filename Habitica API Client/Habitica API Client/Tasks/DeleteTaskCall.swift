@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 
 public class DeleteTaskCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(task: TaskProtocol, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "task.json")) {
-        super.init(httpMethod: .DELETE, endpoint: "tasks/\(task.id ?? "")", stubHolder: stubHolder)
+    public init(task: TaskProtocol) {
+        super.init(httpMethod: .DELETE, endpoint: "tasks/\(task.id ?? "")")
     }
 }

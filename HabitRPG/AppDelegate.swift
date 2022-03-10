@@ -31,9 +31,8 @@ import iAd
 class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate {
     var window: UIWindow?
     var currentAuthorizationFlow: OIDExternalUserAgentSession?
-    
-    static let possibleLaunchArgs = ["userid", "apikey"]
-    
+    var isBeingTested = false
+        
     var application: UIApplication?
     
     private let userRepository = UserRepository()
@@ -48,13 +47,15 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         
         FBSDKCoreKit.ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         handleLaunchArgs()
-        setupLogging()
-        setupAnalytics()
         setupRouter()
-        setupPurchaseHandling()
+        if !isBeingTested {
+            setupLogging()
+            setupAnalytics()
+            setupPurchaseHandling()
+            setupFirebase()
+        }
         setupNetworkClient()
         setupDatabase()
-        setupFirebase()
         configureNotifications()
         
         if let userInfo = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
@@ -98,12 +99,23 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
 
     @objc
     func handleLaunchArgs() {
-        let launchArgs = ProcessInfo.processInfo.environment
-        if launchArgs["userid"] != nil {
-            AuthenticationManager.shared.currentUserId = launchArgs["userid"]
+        if ProcessInfo.processInfo.arguments.contains("UI_TESTING") {
+            isBeingTested = true
+            AuthenticationManager.shared.initialize(withStorage: MemoryAuthenticationStorage())
+        } else {
+            AuthenticationManager.shared.initialize(withStorage: KeychainAuthenticationStorage())
         }
-        if launchArgs["apikey"] != nil {
-            AuthenticationManager.shared.currentUserKey = launchArgs["apikey"]
+        let launchEnvironment = ProcessInfo.processInfo.environment
+        if let userID = launchEnvironment["userid"] {
+            AuthenticationManager.shared.currentUserId = userID
+        }
+        if let apiKey = launchEnvironment["apikey"] {
+            AuthenticationManager.shared.currentUserKey = apiKey
+        }
+        
+        if let stubs = launchEnvironment["STUB_DATA"]?.data(using: .utf8) {
+            // swiftlint:disable:next force_try
+            HabiticaServerConfig.stubs = try! JSONDecoder().decode([String: String].self, from: stubs)
         }
     }
     
@@ -180,6 +192,10 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     }
     
     func updateServer() {
+        if isBeingTested {
+            AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.stub
+            return
+        }
         if let chosenServer = UserDefaults().string(forKey: "chosenServer") {
             switch chosenServer {
             case "production":
@@ -216,13 +232,18 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     func setupDatabase() {
         var config = Realm.Configuration.defaultConfiguration
         config.deleteRealmIfMigrationNeeded = true
-        let fileUrl = FileManager.default
-            .containerURL(forSecurityApplicationGroupIdentifier: "group.habitrpg.habitica")?
-            .appendingPathComponent("habitica.realm")
-        if let url = fileUrl {
-            config.fileURL = url
+        if isBeingTested {
+            // when running tests use a fresh in-memory database on each launch
+            config.inMemoryIdentifier = String(Date().timeIntervalSince1970)
+        } else {
+            let fileUrl = FileManager.default
+                .containerURL(forSecurityApplicationGroupIdentifier: "group.habitrpg.habitica")?
+                .appendingPathComponent("habitica.realm")
+            if let url = fileUrl {
+                config.fileURL = url
+            }
+            logger.log("Realm stored at: \(config.fileURL?.absoluteString ?? "")")
         }
-        logger.log("Realm stored at: \(config.fileURL?.absoluteString ?? "")")
         Realm.Configuration.defaultConfiguration = config
     }
     

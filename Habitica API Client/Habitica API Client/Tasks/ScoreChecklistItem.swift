@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 
 public class ScoreChecklistItem: ResponseObjectCall<TaskProtocol, APITask> {
-    public init(item: ChecklistItemProtocol, task: TaskProtocol, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
-        super.init(httpMethod: .POST, endpoint: "tasks/\(task.id ?? "")/checklist/\(item.id ?? "")/score", stubHolder: stubHolder)
+    public init(item: ChecklistItemProtocol, task: TaskProtocol) {
+        super.init(httpMethod: .POST, endpoint: "tasks/\(task.id ?? "")/checklist/\(item.id ?? "")/score")
     }
 }

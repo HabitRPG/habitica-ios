@@ -21,4 +21,6 @@ public class HabiticaServerConfig {
     public static var current = production
         
     public static var etags: [String: String] = [:]
+    
+    public static var stubs = [String: String]()
 }

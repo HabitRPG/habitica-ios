@@ -63,6 +63,12 @@ target 'Habitica' do
     inherit! :search_paths
     test_pods
   end
+  
+  target 'Habitica UI Tests' do
+    use_frameworks!
+    inherit! :complete
+    test_pods
+  end
 end
 
 target 'Habitica Intents' do

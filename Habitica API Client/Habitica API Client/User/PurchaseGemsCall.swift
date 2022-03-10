@@ -11,12 +11,12 @@ import Habitica_Models
 import ReactiveSwift
 
 public class PurchaseGemsCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(receipt: [String: Any], recipient: String?, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+    public init(receipt: [String: Any], recipient: String?) {
         var data = ["transaction": receipt]
         if let recipient = recipient {
             data["gift"] = ["uuid": recipient]
         }
         let json = try? JSONSerialization.data(withJSONObject: data, options: [])
-        super.init(httpMethod: .POST, endpoint: "iap/ios/verify", postData: json, stubHolder: stubHolder, errorHandler: PrintNetworkErrorHandler())
+        super.init(httpMethod: .POST, endpoint: "iap/ios/verify", postData: json, errorHandler: PrintNetworkErrorHandler())
     }
 }

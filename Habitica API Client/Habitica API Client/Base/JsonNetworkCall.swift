@@ -15,14 +15,13 @@ open class JsonNetworkCall: StubbableNetworkCall {
     }
 
     public override init(configuration: ServerConfigurationProtocol, httpMethod: String, httpHeaders: [String: String]? = nil, endpoint: String, postData: Data?,
-                         networkErrorHandler: NetworkErrorHandler? = nil, stubHolder: StubHolderProtocol? = nil, ignoreEtag: Bool = false) {
+                         networkErrorHandler: NetworkErrorHandler? = nil, ignoreEtag: Bool = false) {
         super.init(configuration: configuration,
                    httpMethod: httpMethod,
                    httpHeaders: JsonNetworkCall.addJsonHeaders(httpHeaders),
                    endpoint: endpoint,
                    postData: postData,
-                   networkErrorHandler: networkErrorHandler,
-                   stubHolder: stubHolder, ignoreEtag: ignoreEtag)
+                   networkErrorHandler: networkErrorHandler, ignoreEtag: ignoreEtag)
     }
     
     open class func jsonHeaders() -> [String: String] {

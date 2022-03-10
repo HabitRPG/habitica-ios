@@ -20,10 +20,19 @@ class TaskDetailLineViewTests: HabiticaTests {
     override func setUp() {
         super.setUp()
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        taskDetailLine.dateFormatter = dateFormatter
+        taskDetailLine.monthDayFormatter = DateFormatter()
+        taskDetailLine.monthDayFormatter?.dateStyle = .none
+        taskDetailLine.monthDayFormatter?.timeStyle = .none
+        taskDetailLine.monthDayFormatter?.setLocalizedDateFormatFromTemplate("MMMd")
+        
+        guard let preferredLocale = Locale.preferredLanguages.first else {
+            return
+        }
+        taskDetailLine.shortLocalizedFormatter = DateFormatter()
+        taskDetailLine.shortLocalizedFormatter?.dateStyle = .none
+        taskDetailLine.shortLocalizedFormatter?.timeStyle = .none
+        taskDetailLine.shortLocalizedFormatter?.locale = Locale.init(identifier: preferredLocale)
+        taskDetailLine.shortLocalizedFormatter?.setLocalizedDateFormatFromTemplate("yy-MM-dd")
         
         self.task = TestTask()
         task.text = "Task Title"
@@ -96,7 +105,7 @@ class TaskDetailLineViewTests: HabiticaTests {
         expect(self.taskDetailLine.reminderIconView.isHidden) == true
         expect(self.taskDetailLine.streakIconView.isHidden) == true
         expect(self.taskDetailLine.calendarIconView.isHidden) == false
-        expect(self.taskDetailLine.detailLabel.text) == "Due today"
+        expect(self.taskDetailLine.detailLabel.text) == "Today"
     }
     
     func testTodoDueTomorrow() {
@@ -107,7 +116,7 @@ class TaskDetailLineViewTests: HabiticaTests {
         expect(self.taskDetailLine.reminderIconView.isHidden) == true
         expect(self.taskDetailLine.streakIconView.isHidden) == true
         expect(self.taskDetailLine.calendarIconView.isHidden) == false
-        expect(self.taskDetailLine.detailLabel.text) == "Due tomorrow"
+        expect(self.taskDetailLine.detailLabel.text) == "Tomorrow"
     }
     
     func testTodoDueIn3Days() {
@@ -118,11 +127,14 @@ class TaskDetailLineViewTests: HabiticaTests {
         expect(self.taskDetailLine.reminderIconView.isHidden) == true
         expect(self.taskDetailLine.streakIconView.isHidden) == true
         expect(self.taskDetailLine.calendarIconView.isHidden) == false
-        expect(self.taskDetailLine.detailLabel.text) == "Due in 3 days"
+        expect(self.taskDetailLine.detailLabel.text) == "In 3 days"
     }
 }
 
 class TestTask: TaskProtocol {
+    var groupID: String?
+    var isManaged: Bool = false
+    
     var challengeBroken: String?
     
     var history: [TaskHistoryProtocol] = []
@@ -167,6 +179,7 @@ class TestTask: TaskProtocol {
 }
 
 class MockTag: TagProtocol {
+    var isManaged: Bool = false
     var isValid: Bool = true
     
     var id: String?
@@ -174,11 +187,12 @@ class MockTag: TagProtocol {
     var order: Int = 0
 }
 
+
 class MockReminder: ReminderProtocol {
     func detached() -> ReminderProtocol {
         return self
     }
-    
+    var isManaged: Bool = false
     var isValid: Bool = true
     
     var id: String?
