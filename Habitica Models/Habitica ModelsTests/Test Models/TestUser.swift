@@ -10,6 +10,38 @@ import Foundation
 @testable import Habitica_Models
 
 class TestUser: UserProtocol {
+    var backer: BackerProtocol?
+    
+    var needsCron: Bool = false
+    
+    var lastCron: Date?
+    
+    var inbox: InboxProtocol?
+    
+    var authentication: AuthenticationProtocol?
+    
+    var purchased: PurchasedProtocol?
+    
+    var party: UserPartyProtocol?
+    
+    var challenges: [ChallengeMembershipProtocol] = []
+    
+    var hasNewMessages: [UserNewMessagesProtocol] = []
+    
+    var invitations: [GroupInvitationProtocol] = []
+    
+    var pushDevices: [PushDeviceProtocol] = []
+    
+    var achievements: UserAchievementsProtocol?
+    
+    var loginIncentives: Int = 0
+    
+    var pinnedItemsOrder: [String] = []
+    
+    var isValid: Bool = true
+    
+    var isManaged: Bool = false
+    
     var id: String?
     var stats: StatsProtocol?
     var flags: FlagsProtocol?

@@ -11,7 +11,7 @@ import XCTest
 @testable import ReactiveCocoa
 @testable import ReactiveSwift
 
-class LoginViewModelTests: HabiticaTests {
+class LoginViewModelTests: XCTestCase {
     
     var viewModel = LoginViewModel()
     

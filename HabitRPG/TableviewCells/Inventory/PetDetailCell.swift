@@ -21,8 +21,10 @@ class PetDetailCell: UICollectionViewCell {
         if let key = petItem.pet?.key {
             if petItem.trained != 0 {
                 imageView.setImagewith(name: "stable_Pet-\(key)")
-                if petItem.trained > 0 {
+                if petItem.trained > 0 && petItem.canRaise {
                     accessibilityLabel = L10n.petAccessibilityLabelRaised(petItem.pet?.text ?? "", Int(percentage*100))
+                } else if !petItem.canRaise {
+                    accessibilityLabel = L10n.petAccessibilityLabelMountOwned(petItem.pet?.text ?? "")
                 } else {
                     accessibilityLabel = L10n.petAccessibilityLabelMountOwned(petItem.pet?.text ?? "")
                 }

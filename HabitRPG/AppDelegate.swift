@@ -46,8 +46,8 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         self.application = application
         
         FBSDKCoreKit.ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        handleLaunchArgs()
         setupRouter()
+        handleLaunchArgs()
         if !isBeingTested {
             setupLogging()
             setupAnalytics()
@@ -101,6 +101,10 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     func handleLaunchArgs() {
         if ProcessInfo.processInfo.arguments.contains("UI_TESTING") {
             isBeingTested = true
+            contentRepository.retrieveContent(force: true).observeCompleted {
+            }
+            UIView.setAnimationsEnabled(false)
+            self.window?.layer.speed = 100
             AuthenticationManager.shared.initialize(withStorage: MemoryAuthenticationStorage())
         } else {
             AuthenticationManager.shared.initialize(withStorage: KeychainAuthenticationStorage())
@@ -115,7 +119,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         
         if let stubs = launchEnvironment["STUB_DATA"]?.data(using: .utf8) {
             // swiftlint:disable:next force_try
-            HabiticaServerConfig.stubs = try! JSONDecoder().decode([String: String].self, from: stubs)
+            HabiticaServerConfig.stubs = try! JSONDecoder().decode([String: CallStub].self, from: stubs)
         }
     }
     

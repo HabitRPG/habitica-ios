@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import XCTest
 @testable import Habitica
 import Habitica_Models
 import Nimble
 
-class TaskRepeatablesSummaryInteractorTests: HabiticaTests {
+class TaskRepeatablesSummaryInteractorTests: XCTestCase {
     
     let interactor = TaskRepeatablesSummaryInteractor()
     

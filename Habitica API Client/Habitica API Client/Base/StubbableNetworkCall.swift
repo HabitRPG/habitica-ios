@@ -9,6 +9,7 @@
 import Foundation
 import OHHTTPStubs
 import ReactiveSwift
+import Habitica_Models
 
 open class StubbableNetworkCall: NetworkCall {
     
@@ -17,7 +18,18 @@ open class StubbableNetworkCall: NetworkCall {
             if let stubData = HabiticaServerConfig.stubs[endpoint] {
                 let stubDesc = stub(condition: stubCondition()) { _ in
                     // swiftlint:disable:next force_unwrapping
-                    return HTTPStubsResponse(data: stubData.data(using: .utf8)!, statusCode: 200, headers: nil)
+                    return HTTPStubsResponse(data: stubData.takeNextResponse().data(using: .utf8)!, statusCode: 200, headers: nil)
+                }
+                self.responseProperty.signal.observeValues({ _ in
+                    HTTPStubs.removeStub(stubDesc)
+                })
+                if let validation = stubData.takeNextValidation() {
+                    postData
+                }
+            } else if endpoint == "content" {
+                let stubDesc = stub(condition: stubCondition()) { _ in
+                    // swiftlint:disable:next force_unwrapping
+                    return HTTPStubsResponse(fileAtPath: Bundle.main.path(forResource: "content", ofType: "json")!, statusCode: 200, headers: nil)
                 }
                 self.responseProperty.signal.observeValues({ _ in
                     HTTPStubs.removeStub(stubDesc)

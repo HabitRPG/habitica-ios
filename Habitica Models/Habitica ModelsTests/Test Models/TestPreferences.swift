@@ -10,6 +10,20 @@ import Foundation
 @testable import Habitica_Models
 
 class TestPreferences: PreferencesProtocol {
+    var autoEquip: Bool = true
+    
+    var pushNotifications: PushNotificationsProtocol?
+    
+    var emailNotifications: EmailNotificationsProtocol?
+    
+    var hair: HairProtocol?
+    
+    var searchableUsername: Bool  = true
+    
+    var isValid: Bool =  true
+    
+    var isManaged: Bool = false
+    
     var skin: String?
     var language: String?
     var automaticAllocation: Bool = false

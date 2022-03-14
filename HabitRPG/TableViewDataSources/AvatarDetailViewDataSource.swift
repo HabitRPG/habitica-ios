@@ -141,9 +141,9 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
         if let customization = item(at: indexPath), let customizationCell = cell as? CustomizationDetailCell {
-            customizationCell.configure(customization: customization, preferences: preferences)
             customizationCell.isCustomizationSelected = customization.key == equippedKey
             customizationCell.currencyView.isHidden = customization.isPurchasable == false || owns(customization: customization)
+            customizationCell.configure(customization: customization, preferences: preferences)
             if customization.set?.key?.contains("incentive") == true {
                 customizationCell.imageView.alpha = owns(customization: customization) ? 1.0 : 0.3
             } else {

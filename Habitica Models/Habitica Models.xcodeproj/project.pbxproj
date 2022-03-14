@@ -34,6 +34,7 @@
 		290C3030206CEED20066AF5B /* SkillResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C302F206CEED20066AF5B /* SkillResponseProtocol.swift */; };
 		290C3037206D36740066AF5B /* GroupProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3036206D36740066AF5B /* GroupProtocol.swift */; };
 		290C3039206D3BAD0066AF5B /* ChatMessageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3038206D3BAD0066AF5B /* ChatMessageProtocol.swift */; };
+		290FF8B627DF5FB900F1DE45 /* CallStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290FF8B527DF5FB900F1DE45 /* CallStub.swift */; };
 		2912C3C122CB912B00BC485F /* NotificationQuestInviteProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912C3C022CB912B00BC485F /* NotificationQuestInviteProtocol.swift */; };
 		2912C3C322CB913500BC485F /* NotificationGroupInviteProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912C3C222CB913500BC485F /* NotificationGroupInviteProtocol.swift */; };
 		29144890208A1B1500F3A6B5 /* HairProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914488F208A1B1500F3A6B5 /* HairProtocol.swift */; };
@@ -167,6 +168,7 @@
 		290C302F206CEED20066AF5B /* SkillResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillResponseProtocol.swift; sourceTree = "<group>"; };
 		290C3036206D36740066AF5B /* GroupProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupProtocol.swift; sourceTree = "<group>"; };
 		290C3038206D3BAD0066AF5B /* ChatMessageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageProtocol.swift; sourceTree = "<group>"; };
+		290FF8B527DF5FB900F1DE45 /* CallStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallStub.swift; sourceTree = "<group>"; };
 		2912C3C022CB912B00BC485F /* NotificationQuestInviteProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationQuestInviteProtocol.swift; sourceTree = "<group>"; };
 		2912C3C222CB913500BC485F /* NotificationGroupInviteProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationGroupInviteProtocol.swift; sourceTree = "<group>"; };
 		2914488F208A1B1500F3A6B5 /* HairProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HairProtocol.swift; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 				29DBFF0820D1336000DF9CF2 /* EquatableStringEnumProtocol.swift */,
 				2981849F20F8AC3E00F06D3D /* BaseModelProtocol.swift */,
 				29A984CC2547293E00F04665 /* Constants.swift */,
+				290FF8B527DF5FB900F1DE45 /* CallStub.swift */,
 			);
 			path = "Habitica Models";
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				290FF8B627DF5FB900F1DE45 /* CallStub.swift in Sources */,
 				29323E4F2052F68A00AC6D6F /* UserGearProtocol.swift in Sources */,
 				2927025024E3060600BCAA77 /* BackerProtocol.swift in Sources */,
 				292DEE7A204E36F60086D5F7 /* TagProtocol.swift in Sources */,

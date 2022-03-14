@@ -85,7 +85,6 @@
 		298CB21320AF0B22006DA349 /* RealmQuestDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CB21220AF0B22006DA349 /* RealmQuestDrop.swift */; };
 		298CB21520AF0B3A006DA349 /* RealmQuestDropItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CB21420AF0B3A006DA349 /* RealmQuestDropItem.swift */; };
 		298FB9B6204D9338004DDACC /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 298FB9AC204D9338004DDACC /* Habitica_Database.framework */; };
-		298FB9BB204D9338004DDACC /* Habitica_DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298FB9BA204D9338004DDACC /* Habitica_DatabaseTests.swift */; };
 		298FB9BD204D9338004DDACC /* Habitica_Database.h in Headers */ = {isa = PBXBuildFile; fileRef = 298FB9AF204D9338004DDACC /* Habitica_Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		29990DAE20E3E6DE001ADD8B /* RealmQuestProgressCollect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DAD20E3E6DE001ADD8B /* RealmQuestProgressCollect.swift */; };
 		29990DB820E51DFF001ADD8B /* RealmPushDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DB720E51DFF001ADD8B /* RealmPushDevice.swift */; };
@@ -199,7 +198,6 @@
 		298FB9AF204D9338004DDACC /* Habitica_Database.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Habitica_Database.h; sourceTree = "<group>"; };
 		298FB9B0204D9338004DDACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		298FB9B5204D9338004DDACC /* Habitica DatabaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica DatabaseTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		298FB9BA204D9338004DDACC /* Habitica_DatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitica_DatabaseTests.swift; sourceTree = "<group>"; };
 		298FB9BC204D9338004DDACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29990DAD20E3E6DE001ADD8B /* RealmQuestProgressCollect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmQuestProgressCollect.swift; sourceTree = "<group>"; };
 		29990DB720E51DFF001ADD8B /* RealmPushDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPushDevice.swift; sourceTree = "<group>"; };
@@ -437,7 +435,6 @@
 		298FB9B9204D9338004DDACC /* Habitica DatabaseTests */ = {
 			isa = PBXGroup;
 			children = (
-				298FB9BA204D9338004DDACC /* Habitica_DatabaseTests.swift */,
 				298FB9BC204D9338004DDACC /* Info.plist */,
 			);
 			path = "Habitica DatabaseTests";
@@ -734,7 +731,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				298FB9BB204D9338004DDACC /* Habitica_DatabaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

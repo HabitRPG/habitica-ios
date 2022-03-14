@@ -38,6 +38,7 @@ class CustomizationDetailCell: UICollectionViewCell {
             currencyView.currency = .gem
         }
         currencyView.amount = Int(customization.price)
+        updateAccessibility(label: "\(customization.type ?? "") \(customization.key ?? "")")
         applyTheme()
     }
     
@@ -47,7 +48,15 @@ class CustomizationDetailCell: UICollectionViewCell {
             currencyView.amount = 2
             currencyView.currency = .gem
         }
+        updateAccessibility(label: gear.text ?? "")
         applyTheme()
+    }
+    
+    func updateAccessibility(label: String) {
+        isAccessibilityElement = true
+        accessibilityTraits = (isCustomizationSelected ? [.button, .selected] : .button)
+        shouldGroupAccessibilityChildren = true
+        accessibilityLabel = label + (isCustomizationSelected ? ", selected" : "")
     }
     
     private func applyTheme() {

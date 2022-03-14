@@ -60,7 +60,7 @@ target 'Habitica' do
   pod 'TagListView'
   
   target 'HabiticaTests' do
-    inherit! :search_paths
+    inherit! :complete
     test_pods
   end
   

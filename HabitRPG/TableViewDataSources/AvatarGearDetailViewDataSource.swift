@@ -62,9 +62,9 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
         if let gear = item(at: indexPath), let customizationCell = cell as? CustomizationDetailCell {
-            customizationCell.configure(gear: gear)
             customizationCell.isCustomizationSelected = gear.key == equippedKey
             customizationCell.currencyView.isHidden = owns(gear: gear)
+            customizationCell.configure(gear: gear)
         }
         
         return cell

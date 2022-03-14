@@ -98,14 +98,18 @@ class RouterHandler: NSObject {
             self.push(StoryboardScene.Main.stableViewController.instantiate())
             let viewController = StoryboardScene.Main.petDetailViewController.instantiate()
             viewController.searchKey = (link?.routeParameters["petType"] as? String) ?? ""
-            self.push(viewController)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.push(viewController)
+            }
         }
         router.register("/inventory/stable/mounts/:mountType") { link in
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.stableViewController.instantiate())
             let viewController = StoryboardScene.Main.mountDetailViewController.instantiate()
             viewController.searchKey = (link?.routeParameters["mountType"] as? String) ?? ""
-            self.push(viewController)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.push(viewController)
+            }
         }
         router.register("/static/new-stuff") { _ in
             self.displayTab(index: 4)

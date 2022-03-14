@@ -12,7 +12,7 @@ import Habitica_Models
 import Nimble
 
 
-class TaskDetailLineViewTests: HabiticaTests {
+class TaskDetailLineViewTests: XCTestCase {
     
     let taskDetailLine = TaskDetailLineView(frame: CGRect(x: 0, y: 0, width: 350, height: 21))
     var task = TestTask()
@@ -38,8 +38,6 @@ class TaskDetailLineViewTests: HabiticaTests {
         task.text = "Task Title"
         task.notes = "Task notes"
         task.type = "habit"
-        
-        self.recordMode = true
     }
     
     override func tearDown() {

@@ -1,0 +1,56 @@
+{
+  "configurations" : [
+    {
+      "id" : "6294EFB5-0A06-43F0-8973-F984D80A7C24",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:Habitica.xcodeproj",
+          "identifier" : "D9EB4E8A18CB4A9400BB2094",
+          "name" : "Habitica"
+        },
+        {
+          "containerPath" : "container:Habitica API Client\/Habitica API Client.xcodeproj",
+          "identifier" : "29B586F1204D92CF00301955",
+          "name" : "Habitica API Client"
+        },
+        {
+          "containerPath" : "container:Habitica Database\/Habitica Database.xcodeproj",
+          "identifier" : "298FB9AB204D9338004DDACC",
+          "name" : "Habitica Database"
+        },
+        {
+          "containerPath" : "container:Habitica Models\/Habitica Models.xcodeproj",
+          "identifier" : "298FB9CF204D9403004DDACC",
+          "name" : "Habitica Models"
+        }
+      ]
+    },
+    "language" : "en",
+    "region" : "US",
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Habitica.xcodeproj",
+      "identifier" : "29706CA227D8B797006EC139",
+      "name" : "Habitica UI Tests"
+    },
+    "testExecutionOrdering" : "random",
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Habitica.xcodeproj",
+        "identifier" : "29706CA227D8B797006EC139",
+        "name" : "Habitica UI Tests"
+      }
+    }
+  ],
+  "version" : 1
+}

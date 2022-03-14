@@ -13,6 +13,19 @@
    <FileRef
       location = "group:Habitica.xcodeproj">
    </FileRef>
+   <Group
+      location = "container:"
+      name = "Test Plans">
+      <FileRef
+         location = "group:/Users/phillip/Code/habitica-ios/UI Tests.xctestplan">
+      </FileRef>
+      <FileRef
+         location = "group:/Users/phillip/Code/habitica-ios/Unit Tests.xctestplan">
+      </FileRef>
+      <FileRef
+         location = "group:Full Tests.xctestplan">
+      </FileRef>
+   </Group>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>

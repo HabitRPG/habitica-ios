@@ -87,6 +87,9 @@ class LoadingViewController: UIViewController {
         if let action = loadingFinishedAction {
             action()
         }
+        if let targetUrl = ProcessInfo.processInfo.environment["TARGET_URL"] {
+            RouterHandler.shared.handle(urlString: targetUrl)
+        }
         if !disposable.isDisposed {
             disposable.dispose()
         }

@@ -10,6 +10,12 @@ import Foundation
 @testable import Habitica_Models
 
 class TestFlags: FlagsProtocol {
+    var tutorials: [TutorialStepProtocol] =  []
+    
+    var verifiedUsername: Bool = true
+    
+    var welcomed: Bool = true
+    
     var armoireEmpty: Bool = false
     var cronCount: Int = 0
     var rebirthEnabled: Bool = false

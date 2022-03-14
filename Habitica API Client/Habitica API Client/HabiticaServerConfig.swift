@@ -22,5 +22,5 @@ public class HabiticaServerConfig {
         
     public static var etags: [String: String] = [:]
     
-    public static var stubs = [String: String]()
+    public static var stubs = [String: CallStub]()
 }

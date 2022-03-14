@@ -6,10 +6,11 @@
 //  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
 
+import XCTest
 @testable import Habitica
 import UIKit
 
-class LoginViewControllerTests: HabiticaTests {
+class LoginViewControllerTests: XCTestCase {
 
     var navigationController: UINavigationController?
     var loginViewController: LoginTableViewController?
@@ -25,7 +26,6 @@ class LoginViewControllerTests: HabiticaTests {
         //need this to properly initialize view
         let _ = self.loginViewController?.view
         self.loginViewController?.bindViewModel()
-        self.recordMode = false
     }
     
     override func tearDown() {

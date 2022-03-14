@@ -8,7 +8,7 @@ import XCTest
 @testable import Habitica
 import Nimble
 
-class LabeledProgressBarTests: HabiticaTests {
+class LabeledProgressBarTests: XCTestCase {
 
     var progressBar = LabeledProgressBar()
 
