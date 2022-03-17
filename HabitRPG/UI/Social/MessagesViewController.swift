@@ -72,6 +72,7 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         inputBar.inputTextView.textColor = theme.primaryTextColor
         inputBar.inputTextView.tintColor = theme.tintColor
         inputBar.sendButton.tintColor = theme.tintColor
+        inputBar.sendButton.setTitleColor(theme.tintColor, for: .normal)
         tableView.backgroundColor = theme.windowBackgroundColor
         tableView.reloadData()
     }
