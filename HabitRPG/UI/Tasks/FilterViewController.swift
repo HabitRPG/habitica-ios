@@ -39,9 +39,9 @@ class FilterViewController: BaseTableViewController {
         if taskType == "habit" {
             filterTypeControl = UISegmentedControl(items: [L10n.all, L10n.weak, L10n.strong])
         } else if taskType == "daily" {
-            filterTypeControl = UISegmentedControl(items: [L10n.all, L10n.due, L10n.grey])
+            filterTypeControl = UISegmentedControl(items: [L10n.all, L10n.due, L10n.notDue])
         } else if taskType == "todo" {
-            filterTypeControl = UISegmentedControl(items: [L10n.active, L10n.dated, L10n.done])
+            filterTypeControl = UISegmentedControl(items: [L10n.active, L10n.scheduled, L10n.completed])
         }
         let defaults = UserDefaults.standard
         filterTypeControl.selectedSegmentIndex = defaults.integer(forKey: "\(taskType ?? "")Filter")
@@ -108,6 +108,7 @@ class FilterViewController: BaseTableViewController {
 
 	private func resetFilterTypeControl() {
 	    filterTypeControl.selectedSegmentIndex = 0
+        filterTypeChanged()
 	}
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

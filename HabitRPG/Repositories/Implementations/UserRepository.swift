@@ -177,7 +177,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     func updateDayStartTime(_ time: Int) -> Signal<UserProtocol?, Never> {
         let call = UpdateDayStartTimeCall(time)
         
-        return call.objectSignal.on(value: handleUserUpdate())
+        return call.objectSignal.flatMap(.latest, { _ in return self.retrieveUser() })
     }
     
     func sleep() -> Signal<EmptyResponseProtocol?, Never> {

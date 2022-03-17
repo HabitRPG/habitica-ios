@@ -9,8 +9,11 @@
 import UIKit
 import ReactiveSwift
 import Habitica_Models
+import InputBarAccessoryView
 
-class MessagesViewController: BaseTableViewController {
+class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrollViewDelegate {
+    let inputBar: InputBarAccessoryView = InputBarAccessoryView()
+
     let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
     private let configRepository = ConfigRepository.shared
@@ -23,9 +26,12 @@ class MessagesViewController: BaseTableViewController {
     private var autocompleteEmojis: [String] = []
     
     var isScrolling = false
+    let tableView = UITableView()
 
     override func loadView() {
-        view = UITableView()
+        view = UIView()
+        view.addSubview(tableView)
+        view.addSubview(inputBar)
     }
     
     override func viewDidLoad() {
@@ -33,93 +39,64 @@ class MessagesViewController: BaseTableViewController {
         hidesBottomBarWhenPushed = true
 
         let nib = UINib(nibName: "ChatMessageCell", bundle: nil)
-        tableView?.register(nib, forCellReuseIdentifier: "ChatMessageCell")
+        tableView.register(nib, forCellReuseIdentifier: "ChatMessageCell")
         let systemNib = UINib(nibName: "SystemMessageTableViewCell", bundle: nil)
-        tableView?.register(systemNib, forCellReuseIdentifier: "SystemMessageCell")
+        tableView.register(systemNib, forCellReuseIdentifier: "SystemMessageCell")
         
-        tableView?.transform = CGAffineTransform(scaleX: 1, y: -1)
-        tableView?.separatorStyle = .none
-        tableView?.rowHeight = UITableView.automaticDimension
-        tableView?.estimatedRowHeight = 90
+        tableView.delegate = self
+        tableView.transform = CGAffineTransform(scaleX: 1, y: -1)
+        tableView.separatorStyle = .none
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 90
+        tableView.keyboardDismissMode = .interactive
         #if !targetEnvironment(macCatalyst)
-        tableView?.refreshControl = UIRefreshControl()
-        tableView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         #endif
-
-        let (signal, observer) = Signal<String, Never>.pipe()
-        autocompleteUsernamesObserver = observer
         
-        /*if configRepository.bool(variable: .enableUsernameAutocomplete) {
-            disposable.inner.add(signal
-                .filter({ username -> Bool in return !username.isEmpty })
-                .throttle(2, on: QueueScheduler.main)
-                .flatMap(.latest, {[weak self] username in
-                    self?.socialRepository.findUsernames(username, context: self?.autocompleteContext, id: self?.groupID) ?? Signal.empty
-                })
-                .observeValues({[weak self] members in
-                    self?.autocompleteUsernames = members
-                    if self?.foundWord != nil {
-                    }
-                })
-            )
-        } else {
-            disposable.inner.add(signal
-                .filter({ username -> Bool in return !username.isEmpty })
-                .flatMap(.latest, {[weak self] username in
-                    self?.socialRepository.findUsernamesLocally(username, id: self?.groupID) ?? SignalProducer.empty
-                })
-                .observeValues({[weak self] (members) in
-                    self?.autocompleteUsernames = members
-                    if self?.foundWord != nil {
-                    }
-                }))
-        }*/
-        
-        let (emojiSignal, emojiObserver) = Signal<String, Never>.pipe()
-        autocompleteEmojisObserver = emojiObserver
-        disposable.inner.add(emojiSignal
-            .filter { emoji -> Bool in return !emoji.isEmpty }
-            .throttle(0.5, on: QueueScheduler.main)
-            .observeValues({[weak self] emoji in
-            self?.autocompleteEmojis = Emoji.allCases.flatMap { $0.shortnames }.filter({ name in
-                return name.contains(emoji)
-            })
-            })
-        )
-        
+        inputBar.delegate = self
+        inputBar.inputTextView.keyboardType = .twitter
+        inputBar.inputTextView.placeholder = L10n.writeMessage
+        inputBar.bottomStackView.isHidden = true
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.checkGuidelinesAccepted(user: user)
         }).start())
+        }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        KeyboardManager.addObservingView(view)
     }
     
     override func applyTheme(theme: Theme) {
-        tableView?.backgroundColor = theme.windowBackgroundColor
-        tableView?.reloadData()
+        inputBar.inputTextView.textColor = theme.primaryTextColor
+        inputBar.inputTextView.tintColor = theme.tintColor
+        inputBar.sendButton.tintColor = theme.tintColor
+        tableView.backgroundColor = theme.windowBackgroundColor
+        tableView.reloadData()
     }
     
-    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         //dismissKeyboard(true)
         isScrolling = true
     }
     
-    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        super.scrollViewDidEndDecelerating(scrollView)
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         isScrolling = false
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+        tableView.pin.top().start().end().bottom()
+        let keyboardOffset = KeyboardManager.height > 0 ? KeyboardManager.height - (view.window?.safeAreaInsets.bottom ?? 0) - 40 : 0
+        tableView.contentInset.top = inputBar.intrinsicContentSize.height + keyboardOffset
+        inputBar.pin.start().end().height(inputBar.intrinsicContentSize.height).bottom(keyboardOffset)
         let acceptView = view.viewWithTag(999)
         acceptView?.frame = CGRect(x: 0, y: view.frame.size.height-90, width: view.frame.size.width, height: 90)
     }
     
     @objc
     func refresh() {
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
     }
     
     private func checkGuidelinesAccepted(user: UserProtocol) {
@@ -157,4 +134,20 @@ class MessagesViewController: BaseTableViewController {
     private func acceptGuidelines() {
         userRepository.updateUser(key: "flags.communityGuidelinesAccepted", value: true).observeCompleted {}
     }
+}
+
+extension MessagesViewController: InputBarAccessoryViewDelegate {
+    
+    @objc func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        
+    }
+    
+    func inputBar(_ inputBar: InputBarAccessoryView, didChangeIntrinsicContentTo size: CGSize) {
+        view.setNeedsLayout()
+    }
+    
+    @objc func inputBar(_ inputBar: InputBarAccessoryView, textViewTextDidChangeTo text: String) {
+        
+    }
+    
 }

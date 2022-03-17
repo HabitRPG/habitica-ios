@@ -144,6 +144,8 @@ public enum L10n {
   public static var completeTaskTitle: String { return L10n.tr("Mainstrings", "complete_task_title") }
   /// Complete to earn 100 Gold!
   public static var completeToEarnGold: String { return L10n.tr("Mainstrings", "complete_to_earn_gold") }
+  /// Completed
+  public static var completed: String { return L10n.tr("Mainstrings", "completed") }
   /// A task can be a Habit, Daily, or To Do. Continue completing them to receive all sorts of rewards!
   public static var completedTaskDescription: String { return L10n.tr("Mainstrings", "completedTaskDescription") }
   /// Completed a task
@@ -414,8 +416,6 @@ public enum L10n {
   public static var goldDescription: String { return L10n.tr("Mainstrings", "gold_description") }
   /// Great
   public static var great: String { return L10n.tr("Mainstrings", "great") }
-  /// Grey
-  public static var grey: String { return L10n.tr("Mainstrings", "grey") }
   /// Group By
   public static var groupBy: String { return L10n.tr("Mainstrings", "group_by") }
   /// Group Plan
@@ -636,6 +636,8 @@ public enum L10n {
   public static var noCamera: String { return L10n.tr("Mainstrings", "no_camera") }
   /// no days
   public static var noDays: String { return L10n.tr("Mainstrings", "no_days") }
+  /// Not Due
+  public static var notDue: String { return L10n.tr("Mainstrings", "not_due") }
   /// Not enough Gems
   public static var notEnoughGems: String { return L10n.tr("Mainstrings", "not_enough_gems") }
   /// Not enough Gold
@@ -816,6 +818,8 @@ public enum L10n {
   public static var saturday: String { return L10n.tr("Mainstrings", "saturday") }
   /// Save
   public static var save: String { return L10n.tr("Mainstrings", "save") }
+  /// Scheduled
+  public static var scheduled: String { return L10n.tr("Mainstrings", "scheduled") }
   /// Search
   public static var search: String { return L10n.tr("Mainstrings", "search") }
   /// Seasonal items available

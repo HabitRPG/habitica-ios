@@ -25,7 +25,7 @@ class InboxChatViewController: MessagesViewController {
         dataSource.tableView = tableView
         dataSource.viewController = self
         
-        tableView?.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "emptyCell")
+        tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "emptyCell")
         dataSource.emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.inboxChatStyle)
         
         if isPresentedModally {
@@ -33,12 +33,7 @@ class InboxChatViewController: MessagesViewController {
         } else {
             navigationItem.setRightBarButtonItems([profileBarButton], animated: false)
         }
-        
-        tableView?.separatorStyle = .none
-        tableView?.rowHeight = UITableView.automaticDimension
-        tableView?.estimatedRowHeight = 90
-        tableView?.delegate = self
-        
+                
         if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
             topHeaderNavigationController.shouldHideTopHeader = true
             topHeaderNavigationController.hideNavbar = false
@@ -82,7 +77,7 @@ class InboxChatViewController: MessagesViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.item == dataSource.tableView(tableView, numberOfRowsInSection: indexPath.section)-1 {
             dataSource.retrieveData(forced: false) {
                 #if !targetEnvironment(macCatalyst)

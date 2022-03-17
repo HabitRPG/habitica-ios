@@ -7,9 +7,11 @@
 "weak" = "Weak";
 "strong" = "Strong";
 "due" = "Due";
-"grey" = "Grey";
+"not_due" = "Not Due";
 "dated" = "Dated";
+"scheduled" = "Scheduled";
 "done" = "Done";
+"completed" = "Completed";
 "name" = "Name";
 "change" = "Change";
 "description" = "Description";

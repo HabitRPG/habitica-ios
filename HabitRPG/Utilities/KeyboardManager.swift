@@ -28,17 +28,26 @@ class KeyboardManager: NSObject {
 
     private func observeKeyboardNotifications() {
         let center = NotificationCenter.default
-        center.addObserver(self, selector: #selector(self.keyboardChange), name: UIResponder.keyboardDidShowNotification, object: nil)
-        center.addObserver(self, selector: #selector(self.keyboardChange), name: UIResponder.keyboardDidHideNotification, object: nil)
+        center.addObserver(self, selector: #selector(self.keyboardShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        center.addObserver(self, selector: #selector(self.keyboardHide), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
 
     @objc
-    private func keyboardChange(_ notification: Notification) {
+    private func keyboardShow(_ notification: Notification) {
         guard measuredSize == CGRect.zero, let info = notification.userInfo,
               let value = info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
             else { return }
 
         measuredSize = value.cgRectValue
+        
+        for view in viewsToUpdate {
+            view.value?.setNeedsLayout()
+        }
+    }
+    
+    @objc
+    private func keyboardHide(_ notification: Notification) {
+        measuredSize = .zero
         
         for view in viewsToUpdate {
             view.value?.setNeedsLayout()

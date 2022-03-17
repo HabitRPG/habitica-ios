@@ -549,12 +549,8 @@ struct TaskFormReminderItemView: View {
                         .background(Circle().fill(Color.accentColor).frame(width: 21, height: 21))
                         .frame(width: 48, height: 48)
                 })
-                Text(dateFormatter.string(from: time))
-                    .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
                 Spacer()
-            }
-            if isExpanded {
-                buildPicker(value: timeProxy).datePickerStyle(WheelDatePickerStyle())
+                buildPicker(value: timeProxy)
             }
         }.frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
         .transition(.opacity)

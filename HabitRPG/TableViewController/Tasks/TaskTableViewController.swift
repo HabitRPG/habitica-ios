@@ -382,6 +382,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        dataSource?.userDrivenDataUpdate = false
         if segue.identifier == "FormSegue" {
             if let destinationVC = segue.destination as? UINavigationController {
                 guard let formController = destinationVC.topViewController as? TaskFormController else {
