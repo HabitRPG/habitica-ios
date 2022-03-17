@@ -56,9 +56,9 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     
     func bulkAllocate(strength: Int, intelligence: Int, constitution: Int, perception: Int) -> Signal<StatsProtocol?, Never> {
         return BulkAllocateAttributePointsCall(strength: strength, intelligence: intelligence, constitution: constitution, perception: perception)
-            .objectSignal.on(value: {[weak self] stats in
-            if let userId = self?.currentUserId, let stats = stats {
-                self?.localRepository.save(userId, stats: stats)
+            .objectSignal.on(value: { stats in
+            if let userId = self.currentUserId, let stats = stats {
+                self.localRepository.save(userId, stats: stats)
             }
         })
     }
