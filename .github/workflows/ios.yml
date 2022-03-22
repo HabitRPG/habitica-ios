@@ -43,14 +43,18 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        destination:
-          - "platform=iOS Simulator,name=iPhone 8,OS=13.7"
-          - "platform=iOS Simulator,name=iPhone 11,OS=14.5"
-          - "platform=iOS Simulator,name=iPhone 12,OS=15.2"
+        name:
+          - "iPhone 8"
+          - "iPhone 11"
+          - "iPad Pro (9.7-inch)"
+        os-version:
+          - "13.7"
+          - "14.5"
+          - "15.2"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Prepare
         run: ./.github/prepare-workflow
       - name: Build
-        run: xcodebuild clean test -scheme 'Habitica' -destination '${{ matrix.destination }}' -testPlan "UI Tests" -showBuildTimingSummary
+        run: xcodebuild clean test -scheme 'Habitica' -destination 'platform=iOS Simulator,name=${{ matrix.name }},OS=${{ matrix.os-version }}' -testPlan "UI Tests" -showBuildTimingSummary
