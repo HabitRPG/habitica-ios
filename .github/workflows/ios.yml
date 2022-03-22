@@ -6,28 +6,6 @@ on:
   pull_request:
 
 jobs:
-  build:
-    runs-on: macos-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Prepare
-        run: ./.github/prepare-workflow
-      - name: Set Default Scheme
-        run: |
-          scheme_list=$(xcodebuild -list -json | tr -d "\n")
-          default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
-          echo $default | cat >default
-          echo Using default scheme: $default
-      - name: Build
-        env:
-          scheme: ${{ 'default' }}
-        run: |
-          if [ $scheme = default ]; then scheme=$(cat default); fi
-          if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
-          file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
-          xcodebuild clean build analyze -scheme "$scheme" -"$filetype_parameter" "$file_to_build" | xcpretty && exit ${PIPESTATUS[0]}
-
   lint:
     runs-on: macos-latest
         steps:
@@ -37,3 +15,42 @@ jobs:
         run: ./.github/prepare-workflow
       - name: Run lint
         run: swiftlint --reporter "emoji"
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Prepare
+        run: ./.github/prepare-workflow
+      - name: Build
+        run: xcodebuild build -scheme Habitica
+  unit-tests:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        destination:
+          - "platform=iOS Simulator,name=iPhone 8,OS=13.7"
+          - "platform=iOS Simulator,name=iPhone 11,OS=14.5"
+          - "platform=iOS Simulator,name=iPhone 12,OS=15.2"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Prepare
+        run: ./.github/prepare-workflow
+      - name: Build
+        run: xcodebuild clean test -scheme 'Habitica' -destination '${{ matrix.destination }}' -testPlan "Unit Tests" -showBuildTimingSummary
+  ui-tests:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        destination:
+          - "platform=iOS Simulator,name=iPhone 8,OS=13.7"
+          - "platform=iOS Simulator,name=iPhone 11,OS=14.5"
+          - "platform=iOS Simulator,name=iPhone 12,OS=15.2"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Prepare
+        run: ./.github/prepare-workflow
+      - name: Build
+        run: xcodebuild clean test -scheme 'Habitica' -destination '${{ matrix.destination }}' -testPlan "UI Tests" -showBuildTimingSummary
