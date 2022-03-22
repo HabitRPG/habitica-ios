@@ -23,14 +23,12 @@ jobs:
       - name: Prepare
         run: ./.github/prepare-workflow
       - name: Build
-        run: xcodebuild build -scheme Habitica
+        run: xcodebuild build -scheme Habitica -destination "platform=iOS Simulator,name=iPhone 12,OS=15.2"
   unit-tests:
     runs-on: macos-latest
     strategy:
       matrix:
         destination:
-          - "platform=iOS Simulator,name=iPhone 8,OS=13.7"
-          - "platform=iOS Simulator,name=iPhone 11,OS=14.5"
           - "platform=iOS Simulator,name=iPhone 12,OS=15.2"
     steps:
       - name: Checkout
@@ -46,10 +44,9 @@ jobs:
         name:
           - "iPhone 8"
           - "iPhone 11"
+          - "iPhone 13 Pro Max"
           - "iPad Pro (9.7-inch)"
         os-version:
-          - "13.7"
-          - "14.5"
           - "15.2"
     steps:
       - name: Checkout
