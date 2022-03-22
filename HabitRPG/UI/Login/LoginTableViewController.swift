@@ -67,7 +67,6 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         facebookLoginButton.addTarget(self, action: #selector(facebookLoginButtonPressed), for: .touchUpInside)
         forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonPressed), for: .touchUpInside)
 
-        
         self.viewModel.setAuthType(authType: LoginViewAuthType.none)
         bindViewModel()
         

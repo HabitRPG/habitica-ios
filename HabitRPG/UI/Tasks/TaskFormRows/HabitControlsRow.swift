@@ -41,7 +41,9 @@ class HabitControlsCell: Cell<HabitControlsValue>, CellType {
 
     @objc
     private func plusTapped() {
-        if row.isDisabled { return }
+        if row.isDisabled {
+            return
+        }
         row.value?.positive = !(row.value?.positive ?? false)
         row.updateCell()
         UISelectionFeedbackGenerator.oneShotSelectionChanged()
@@ -49,7 +51,9 @@ class HabitControlsCell: Cell<HabitControlsValue>, CellType {
     
     @objc
     private func minusTapped() {
-        if row.isDisabled { return }
+        if row.isDisabled {
+            return
+        }
         row.value?.negative = !(row.value?.negative ?? false)
         row.updateCell()
         UISelectionFeedbackGenerator.oneShotSelectionChanged()

@@ -317,7 +317,8 @@ class RealmUser: BaseModel, UserProtocol {
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["flags", "preferences", "stats", "profile", "contributor", "backer", "tasksOrder", "items", "tags", "inbox", "authentication", "purchased", "party", "invitations", "pushDevices", "pinnedItemsOrder"]
+        return ["flags", "preferences", "stats", "profile", "contributor", "backer", "tasksOrder", "items", "tags",
+                "inbox", "authentication", "purchased", "party", "invitations", "pushDevices", "pinnedItemsOrder"]
     }
     
     convenience init(_ user: UserProtocol) {

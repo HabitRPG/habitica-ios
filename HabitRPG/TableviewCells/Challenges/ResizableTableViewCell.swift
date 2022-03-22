@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ResizableTableViewCellDelegate: class {
+protocol ResizableTableViewCellDelegate: AnyObject {
     func cellResized()
 }
 

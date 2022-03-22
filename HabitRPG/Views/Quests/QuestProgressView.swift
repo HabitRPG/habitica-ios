@@ -236,7 +236,8 @@ class QuestProgressView: UIView {
         let firstLineRange = NSRange(location: 0, length: string.components(separatedBy: "\n")[0].count)
         attributedString.addAttribute(.font, value: UIFontMetrics.default.scaledSystemFont(ofSize: 17), range: firstLineRange)
         attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: firstLineRange)
-        attributedString.addAttribute(.font, value: UIFontMetrics.default.scaledSystemFont(ofSize: 15), range: NSRange.init(location: firstLineRange.length, length: string.count - firstLineRange.length))
+        attributedString.addAttribute(.font, value: UIFontMetrics.default.scaledSystemFont(ofSize: 15),
+                                      range: NSRange.init(location: firstLineRange.length, length: string.count - firstLineRange.length))
         let alertController = HabiticaAlertController.alert(title: L10n.WorldBoss.rageStrikeExplanationButton, attributedMessage: attributedString)
         alertController.addCloseAction()
         alertController.show()

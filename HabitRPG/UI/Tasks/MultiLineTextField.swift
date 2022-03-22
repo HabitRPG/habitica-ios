@@ -9,7 +9,7 @@
 import SwiftUI
 import UIKit
 
-fileprivate struct UITextViewWrapper: UIViewRepresentable {
+private struct UITextViewWrapper: UIViewRepresentable {
     typealias UIViewType = UITextView
 
     @Binding var text: String

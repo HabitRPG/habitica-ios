@@ -50,19 +50,24 @@ public class InventoryLocalRepository: ContentLocalRepository {
         ReactiveResults<[SpecialItemProtocol]>,
         ReactiveResults<[QuestProtocol]>), ReactiveSwiftRealmError> {
         return SignalProducer.combineLatest(
-            RealmEgg.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.eggs] ?? [])).sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[EggProtocol]> in
+            RealmEgg.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.eggs] ?? []))
+                .sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[EggProtocol]> in
                 return (value.map({ (item) -> EggProtocol in return item }), changeset)
             }),
-            RealmFood.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.food] ?? [])).sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[FoodProtocol]> in
+            RealmFood.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.food] ?? []))
+                .sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[FoodProtocol]> in
                 return (value.map({ (item) -> FoodProtocol in return item }), changeset)
             }),
-            RealmHatchingPotion.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.hatchingPotions] ?? [])).sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[HatchingPotionProtocol]> in
+            RealmHatchingPotion.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.hatchingPotions] ?? []))
+                .sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[HatchingPotionProtocol]> in
                 return (value.map({ (item) -> HatchingPotionProtocol in return item }), changeset)
             }),
-            RealmSpecialItem.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.special] ?? [])).sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[SpecialItemProtocol]> in
+            RealmSpecialItem.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.special] ?? []))
+                .sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[SpecialItemProtocol]> in
                 return (value.map({ (item) -> SpecialItemProtocol in return item }), changeset)
             }),
-            RealmQuest.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.quests] ?? [])).sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[QuestProtocol]> in
+            RealmQuest.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.quests] ?? []))
+                .sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[QuestProtocol]> in
                 return (value.map({ (item) -> QuestProtocol in return item }), changeset)
             }))
     }

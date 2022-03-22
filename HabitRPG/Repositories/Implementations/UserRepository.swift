@@ -156,9 +156,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             return RunCronCall().responseSignal.producer
         }).flatMap(.latest, { _ in
             return self.retrieveUser().producer
-        }).on(failed: { error in
-            logger.record(error: error)
-        }, completed: {
+        }).on(completed: {
             disposable?.dispose()
             if #available(iOS 14.0, *) {
                 WidgetCenter.shared.reloadAllTimelines()
@@ -516,5 +514,4 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             }
         }
     }
-
 }

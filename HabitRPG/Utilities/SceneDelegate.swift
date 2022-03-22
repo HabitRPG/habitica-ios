@@ -21,7 +21,9 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     private let contentRepository = ContentRepository()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else {
+            return
+        }
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = StoryboardScene.Intro.initialScene.instantiate()
         window?.makeKeyAndVisible()
@@ -53,7 +55,6 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         Analytics.setUserProperty(themeName.rawValue, forName: "theme")
         #endif
     }
-    
     
     private func cleanAndRefresh() {
         retrieveContent()

@@ -38,9 +38,6 @@ class GroupDetailViewController: BaseUIViewController {
         groupDescriptionStackView?.isLayoutMarginsRelativeArrangement = true
         
         disposable.inner.add(groupProperty.signal.skipNil()
-            .on(failed: { error in
-                logger.record(error: error)
-            })
             .observeValues({[weak self] group in
                 self?.updateData(group: group)
         }))

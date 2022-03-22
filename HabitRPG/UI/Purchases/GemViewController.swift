@@ -296,7 +296,6 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
                         errorView.isHidden = false
                     }
                 }
-                
             }
         }
         alertController.addCancelAction()

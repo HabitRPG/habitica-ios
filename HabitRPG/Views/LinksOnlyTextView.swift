@@ -15,7 +15,9 @@ class LinksOnlyTextView: UITextView {
         guard let pos = closestPosition(to: point), pos != endOfDocument else {
             return false
         }
-        guard let range = tokenizer.rangeEnclosingPosition(pos, with: .character, inDirection: .layout(.left)) else { return false }
+        guard let range = tokenizer.rangeEnclosingPosition(pos, with: .character, inDirection: .layout(.left)) else {
+            return false
+        }
         let startIndex = offset(from: beginningOfDocument, to: range.start)
 
         return attributedText.attribute(.link, at: startIndex, effectiveRange: nil) != nil

@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-
 // Use for TextField to become first Responder
 // Source: https://stackoverflow.com/questions/56507839/swiftui-how-to-make-textfield-become-first-responder
 struct FocusableTextField: UIViewRepresentable {
@@ -16,9 +15,9 @@ struct FocusableTextField: UIViewRepresentable {
     @Binding public var text: String
     public var placeholder: String
     
-    public var configuration = { (view: UITextField) in }
+    public var configuration = { (_: UITextField) in }
 
-    public init(placeholder: String, text: Binding<String>, isFirstResponder: Binding<Bool>, configuration: @escaping (UITextField) -> () = { _ in }) {
+    public init(placeholder: String, text: Binding<String>, isFirstResponder: Binding<Bool>, configuration: @escaping (UITextField) -> Void = { _ in }) {
         self.configuration = configuration
         self._text = text
         self.placeholder = placeholder
@@ -38,8 +37,10 @@ struct FocusableTextField: UIViewRepresentable {
         uiView.text = text
         configuration(uiView)
         switch isFirstResponder {
-        case true: uiView.becomeFirstResponder()
-        case false: uiView.resignFirstResponder()
+        case true:
+            uiView.becomeFirstResponder()
+        case false:
+            uiView.resignFirstResponder()
         }
     }
 
@@ -56,7 +57,8 @@ struct FocusableTextField: UIViewRepresentable {
             self.isFirstResponder = isFirstResponder
         }
 
-        @objc public func textViewDidChange(_ textField: UITextField) {
+        @objc
+        public func textViewDidChange(_ textField: UITextField) {
             self.text.wrappedValue = textField.text ?? ""
         }
 

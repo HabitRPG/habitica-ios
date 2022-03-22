@@ -9,11 +9,11 @@
 import UIKit
 import ReactiveSwift
 
-protocol HRPGButtonModelInputs: class {
+protocol HRPGButtonModelInputs: AnyObject {
     func hrpgButtonPressed()
 }
 
-protocol HRPGButtonAttributeProvider: class {
+protocol HRPGButtonAttributeProvider: AnyObject {
     var bgColorSignal: Signal<UIColor, Never> { get }
     var titleSignal: Signal<String, Never> { get }
     var enabledSignal: Signal<Bool, Never> { get }

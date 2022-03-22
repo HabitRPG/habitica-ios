@@ -37,7 +37,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     
     private let userRepository = UserRepository()
     private let contentRepository = ContentRepository()
-    private let taskRepository = TaskRepository()
+    let taskRepository = TaskRepository()
     private let socialRepository = SocialRepository()
     private let configRepository = ConfigRepository.shared
     
@@ -436,20 +436,19 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                     }
                     task.resume()
                 } else {
-                    Analytics.logEvent("attribution_failed", parameters: ["point": "No token"])
+                    Analytics.logEvent("attribution_failed_no_token", parameters: ["point": "No token"])
                 }
                 } catch {
                     Analytics.logEvent("attribution_failed", parameters: ["error": error.localizedDescription])
-
                 }
             }
         } else {
-            ADClient.shared().requestAttributionDetails({ (attributionDetails, error) in
+            ADClient.shared().requestAttributionDetails({ (attributionDetails, _) in
                 guard let attributionDetails = attributionDetails else {
                     return
                 }
                 for (_, adDictionary) in attributionDetails {
-                    if let data = adDictionary as? Dictionary<String, Any> {
+                    if let data = adDictionary as? [String: Any] {
                         if let campaignId = data["iad-campaign-id"] as? String {
                             defaults.set(true, forKey: "userWasAttributed")
                             var analyticsData = [String: Any]()

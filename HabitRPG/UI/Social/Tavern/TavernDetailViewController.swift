@@ -106,7 +106,7 @@ class TavernDetailViewController: GroupDetailViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //workaround to get the view to size correctly.
+        // workaround to get the view to size correctly.
         worldBossStackView.isCollapsed = worldBossStackView.isCollapsed
     }
     

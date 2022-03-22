@@ -122,10 +122,8 @@ class PartyDetailViewController: GroupDetailViewController {
     }
 
     private func set(members: [MemberProtocol]) {
-        for view in membersStackview.arrangedSubviews {
-            if view.tag == 1000 {
-                view.removeFromSuperview()
-            }
+        for view in membersStackview.arrangedSubviews where view.tag == 1000 {
+            view.removeFromSuperview()
         }
         let memberListView = MemberList(members: members, onTap: {[weak self] member in
             self?.selectedMember = member

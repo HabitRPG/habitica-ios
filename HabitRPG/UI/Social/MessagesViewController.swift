@@ -78,7 +78,6 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        //dismissKeyboard(true)
         isScrolling = true
     }
     
@@ -139,7 +138,8 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
 
 extension MessagesViewController: InputBarAccessoryViewDelegate {
     
-    @objc func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+    @objc
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         
     }
     
@@ -147,7 +147,8 @@ extension MessagesViewController: InputBarAccessoryViewDelegate {
         view.setNeedsLayout()
     }
     
-    @objc func inputBar(_ inputBar: InputBarAccessoryView, textViewTextDidChangeTo text: String) {
+    @objc
+    func inputBar(_ inputBar: InputBarAccessoryView, textViewTextDidChangeTo text: String) {
         
     }
     

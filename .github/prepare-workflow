@@ -1,0 +1,8 @@
+gem install bundler
+bundle update
+bundle install
+brew update
+brew install swiftlint || true
+brew upgrade swiftlint || true
+bundle exec pod repo update
+bundle exec pod install

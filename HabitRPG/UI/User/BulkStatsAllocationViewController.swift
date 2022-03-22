@@ -21,14 +21,12 @@ class BulkStatsAllocationViewController: UIViewController, Themeable {
     private var pointsToAllocate: Int = 0
     
     var pointsAllocated: Int {
-        get {
-            var value = 0
-            value += strengthSliderView.value
-            value += intelligenceSliderView.value
-            value += constitutionSliderView.value
-            value += perceptionSliderView.value
-            return value
-        }
+        var value = 0
+        value += strengthSliderView.value
+        value += intelligenceSliderView.value
+        value += constitutionSliderView.value
+        value += perceptionSliderView.value
+        return value
     }
     
     @IBOutlet weak var headerWrapper: UIView!

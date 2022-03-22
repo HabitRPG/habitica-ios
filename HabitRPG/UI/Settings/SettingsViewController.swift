@@ -378,7 +378,9 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
                 row.onChange({[weak self] (row) in
-                    if self?.isSettingUserData == true { return }
+                    if self?.isSettingUserData == true {
+                        return
+                    }
                     var updateDict = [String: Encodable]()
                     for (key, value) in pushNotificationsMapping {
                         updateDict["preferences.pushNotifications.\(value)"] = row.value?.contains(key)
@@ -427,7 +429,9 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
                 row.onChange({[weak self] (row) in
-                    if self?.isSettingUserData == true { return }
+                    if self?.isSettingUserData == true {
+                        return
+                    }
                     var updateDict = [String: Encodable]()
                     for (key, value) in emailNotificationsMapping {
                         updateDict["preferences.emailNotifications.\(value)"] = row.value?.contains(key)

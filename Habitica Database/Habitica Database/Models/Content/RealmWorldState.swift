@@ -44,13 +44,17 @@ class RealmWorldState: BaseModel, WorldStateProtocol {
     @objc dynamic var realmCurrentEvent: RealmWorldStateEvent?
     var events: [WorldStateEventProtocol] {
         get {
-            if realmEvents.isInvalidated { return [] }
+            if realmEvents.isInvalidated {
+                return []
+            }
             return realmEvents.map({ event -> WorldStateEventProtocol in
                 return event
             })
         }
         set {
-            if realmEvents.isInvalidated { return }
+            if realmEvents.isInvalidated {
+                return
+            }
             realmEvents.removeAll()
             newValue.forEach { event in
                 if let realmEvent = event as? RealmWorldStateEvent {

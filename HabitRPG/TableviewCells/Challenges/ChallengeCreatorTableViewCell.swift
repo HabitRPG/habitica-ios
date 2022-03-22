@@ -9,7 +9,7 @@
 import UIKit
 import Habitica_Models
 
-protocol ChallengeCreatorCellDelegate: class {
+protocol ChallengeCreatorCellDelegate: AnyObject {
     func userPressed(_ member: MemberProtocol)
     func messagePressed(member: MemberProtocol)
 }

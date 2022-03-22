@@ -33,7 +33,7 @@ class PromotionInfoViewController: BaseUIViewController {
             paragraphStyle.lineSpacing = 3
             paragraphStyle.alignment = .center
             let attrString = NSMutableAttributedString(string: newValue ?? "")
-            attrString.addAttribute(.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+            attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attrString.length))
             promptLabel.attributedText = attrString
         }
     }
@@ -47,7 +47,7 @@ class PromotionInfoViewController: BaseUIViewController {
             paragraphStyle.lineSpacing = 3
             paragraphStyle.alignment = .center
             let attrString = NSMutableAttributedString(string: newValue ?? "")
-            attrString.addAttribute(.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+            attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attrString.length))
             instructionsDescriptionLabel.attributedText = attrString
         }
     }
@@ -61,7 +61,7 @@ class PromotionInfoViewController: BaseUIViewController {
             paragraphStyle.lineSpacing = 3
             paragraphStyle.alignment = .center
             let attrString = NSMutableAttributedString(string: newValue ?? "")
-            attrString.addAttribute(.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+            attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attrString.length))
             limitationsDescriptionLabel.attributedText = attrString
         }
     }

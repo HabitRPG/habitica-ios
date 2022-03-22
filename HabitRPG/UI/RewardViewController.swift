@@ -140,8 +140,7 @@ extension RewardViewController: UICollectionViewDropDelegate {
     func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
         if collectionView.hasActiveDrag,
            let dragWrapper = session.items.first?.localObject as? DragWrapper,
-           dragWrapper.sourceIndexPath.section == destinationIndexPath?.section
-        {
+           dragWrapper.sourceIndexPath.section == destinationIndexPath?.section {
             return UICollectionViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
         }
         return UICollectionViewDropProposal(operation: .forbidden)
@@ -180,8 +179,7 @@ extension RewardViewController: UICollectionViewDragDelegate {
         dragItem.previewProvider = { [weak self] in
             if let preview = self?.dragPreviewFor(indexPath: indexPath),
                let view = preview.view,
-               let parameters = preview.parameters
-            {
+               let parameters = preview.parameters {
                 return UIDragPreview(view: view, parameters: parameters)
             }
             return nil

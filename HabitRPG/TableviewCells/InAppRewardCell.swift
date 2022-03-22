@@ -55,7 +55,7 @@ class InAppRewardCell: UICollectionViewCell {
         }
     }
     
-    private var availableUntil: Date? = nil {
+    private var availableUntil: Date? {
         didSet {
             if availableUntil != nil {
                 infoImageView.image = HabiticaIcons.imageOfItemIndicatorLimited()

@@ -38,7 +38,6 @@ class PromoMenuView: UIView {
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 14)
         button.cornerRadius = 8
-        button.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
         button.isPointerInteractionEnabled = true
         return button
     }()
@@ -49,7 +48,6 @@ class PromoMenuView: UIView {
         let view = UIButton()
         view.setImage(Asset.close.image, for: .normal)
         view.tintColor = ThemeService.shared.theme.dimmedTextColor
-        view.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         view.isHidden = true
         return view
     }()
@@ -98,6 +96,9 @@ class PromoMenuView: UIView {
         titleImageView.isHidden = true
         descriptionView.isHidden = true
         descriptionImageView.isHidden = true
+        
+        actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
     }
     
     override func layoutSubviews() {

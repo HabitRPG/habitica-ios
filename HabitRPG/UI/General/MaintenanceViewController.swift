@@ -31,7 +31,6 @@ class MaintenanceViewController: UIViewController, Themeable {
         button.cornerRadius = 6
         button.setTitle(L10n.openAppStore, for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(appstoreButtonTapped), for: .touchUpInside)
         button.isPointerInteractionEnabled = true
         return button
     }()
@@ -42,7 +41,8 @@ class MaintenanceViewController: UIViewController, Themeable {
         view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
         view.addSubview(appstoreButton)
-        
+        appstoreButton.addTarget(self, action: #selector(appstoreButtonTapped), for: .touchUpInside)
+
         ThemeService.shared.addThemeable(themable: self)
     }
     

@@ -12,7 +12,6 @@ import SwiftUI
 struct ProgressBarUI<V>: View where V: BinaryFloatingPoint {
     let value: V
     
-    
     init(value: V, maxValue: V = 1.0) {
         self.value = value / maxValue
     }

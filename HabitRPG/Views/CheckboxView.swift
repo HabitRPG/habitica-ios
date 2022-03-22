@@ -163,7 +163,8 @@ class CheckboxView: UIView {
             if label.superview == nil {
                 self.addSubview(label)
             }
-            guard let attributedString = try? Down(markdownString: checklistItem.text?.unicodeEmoji ?? "").toHabiticaAttributedString(baseSize: 15, textColor: ThemeService.shared.theme.primaryTextColor) else {
+            guard let attributedString = try? Down(markdownString: checklistItem.text?.unicodeEmoji ?? "")
+                    .toHabiticaAttributedString(baseSize: 15, textColor: ThemeService.shared.theme.primaryTextColor) else {
                     return
             }
             if checked {

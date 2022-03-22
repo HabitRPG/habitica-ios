@@ -132,7 +132,7 @@ struct TagList: View {
 struct FormRow<TitleView: View, LabelView: View>: View {
     let title: TitleView
     let valueLabel: LabelView
-    var action: (() -> Void)? = nil
+    var action: (() -> Void)?
     
     var body: some View {
         if let action = action {
@@ -779,7 +779,7 @@ struct DailyProgressView: View {
                         dayItem(size: size, offset: 6 - offset)
                     }
                 }.padding(.horizontal, 10).padding(.vertical, 10).background(Color(theme.windowBackgroundColor).cornerRadius(8))
-                .background(GeometryReader { gp -> Color in
+                .background(GeometryReader { _ -> Color in
                     DispatchQueue.main.async {
                         self.dayItemHeight = size
                     }
@@ -913,7 +913,7 @@ struct TaskFormView: View {
     
     var body: some View {
         let theme = ThemeService.shared.theme
-        TrackableScrollView(contentOffset: $scrollViewContentOffset.onChange { value in
+        TrackableScrollView(contentOffset: $scrollViewContentOffset.onChange { _ in
         }) {
             VStack {
                 VStack {

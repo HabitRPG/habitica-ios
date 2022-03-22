@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class SubscriptionOptionView: UITableViewCell {
 
@@ -21,6 +22,28 @@ class SubscriptionOptionView: UITableViewCell {
     // swiftlint:enable private_outlet
     
     private var isAlreadySelected = false
+    
+    func set(product: SKProduct?) {
+        priceLabel.text = product?.localizedPrice
+        titleLabel.text = product?.localizedTitle
+
+        flagView.isHidden = true
+        switch product?.productIdentifier {
+        case PurchaseHandler.subscriptionIdentifiers[0]:
+            setMonthCount(1)
+        case PurchaseHandler.subscriptionIdentifiers[1]:
+            setMonthCount(3)
+        case PurchaseHandler.subscriptionIdentifiers[2]:
+            setMonthCount(6)
+        case PurchaseHandler.subscriptionIdentifiers[3]:
+            setMonthCount(12)
+            flagView.text = "Save 20%"
+            flagView.textColor = .white
+            flagView.isHidden = false
+        default:
+            break
+        }
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

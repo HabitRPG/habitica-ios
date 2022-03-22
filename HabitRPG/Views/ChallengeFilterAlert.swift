@@ -11,7 +11,7 @@ import PopupDialog
 import Habitica_Models
 import ReactiveSwift
 
-protocol ChallengeFilterChangedDelegate: class {
+protocol ChallengeFilterChangedDelegate: AnyObject {
     func challengeFilterChanged(showOwned: Bool, showNotOwned: Bool, shownGuilds: [String])
 }
 

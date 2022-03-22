@@ -11,7 +11,7 @@ import FirebaseCrashlytics
 import Habitica_Models
 import Kingfisher
 
-class RemoteLogger: HabiticaLogger {    
+class RemoteLogger: HabiticaLogger {
     override func record(error: Error) {
         if error is KingfisherError {
             return
@@ -45,8 +45,6 @@ class RemoteLogger: HabiticaLogger {
     }
     
     override func log(_ error: Error) {
-        let message = error.localizedDescription
-        let level = LogLevel.error
         if isProduction {
             Crashlytics.crashlytics().record(error: error)
         } else {

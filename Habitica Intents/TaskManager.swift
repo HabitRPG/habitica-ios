@@ -33,6 +33,7 @@ class TaskManager: BaseRepository<TaskLocalRepository> {
                               modifiedDateComponents: nil,
                               identifier: "com.habitica."+$0)}
         super.init()
+        AuthenticationManager.shared.initialize(withStorage: KeychainAuthenticationStorage())
         self.setupNetworkClient()
         setupDatabase()
     }

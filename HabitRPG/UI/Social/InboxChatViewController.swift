@@ -68,7 +68,6 @@ class InboxChatViewController: MessagesViewController {
         }
     }
 
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardSegue.Social.userProfileSegue.rawValue {
             let profileViewController = segue.destination as? UserProfileViewController

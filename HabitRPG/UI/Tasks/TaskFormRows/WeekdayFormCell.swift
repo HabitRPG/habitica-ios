@@ -10,7 +10,7 @@ import UIKit
 import Eureka
 
 struct WeekdaysValue: Equatable {
-    static func ==(lhs: WeekdaysValue, rhs: WeekdaysValue) -> Bool {
+    static func == (lhs: WeekdaysValue, rhs: WeekdaysValue) -> Bool {
         return false
     }
     

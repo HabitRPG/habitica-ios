@@ -298,6 +298,4 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
             return self?.retrieveTasks() ?? Signal.empty
         }
     }
-    
-    
 }

@@ -96,9 +96,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     func markChatAsSeen(groupID: String) -> Signal<EmptyResponseProtocol?, Never> {
-        return MarkChatSeenCall(groupID: groupID).objectSignal.on(failed: { error in
-            logger.log(error)
-        }, value: {[weak self] response in
+        return MarkChatSeenCall(groupID: groupID).objectSignal.on(value: {[weak self] response in
             if response != nil, let userID = self?.currentUserId {
                 self?.localRepository.setNoNewMessages(userID: userID, groupID: groupID)
             }

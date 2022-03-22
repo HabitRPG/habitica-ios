@@ -44,10 +44,13 @@ type_name:
     - iPhone
     - id
     - up
+    - Key
 identifier_name:
   excluded:
     - id
     - up
+    - by
+    - to
 empty_string: error
 contains_over_first_not_nil: error
 first_where: error

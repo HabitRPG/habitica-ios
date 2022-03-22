@@ -193,51 +193,12 @@ class UserTopHeader: UIView, Themeable {
                 experienceLabel.maxValue = stats.toNextLevel
             }
             
-            if stats.level >= 10 && user.preferences?.disableClasses != true {
-                magicLabel.value = stats.mana
-                if stats.maxMana > 0 {
-                    magicLabel.maxValue = stats.maxMana
-                }
-                magicLabel.isActive = true
-                magicLabel.isHidden = false
-            } else {
-                if user.preferences?.disableClasses == true && user.flags?.classSelected != false {
-                    magicLabel.isHidden = true
-                } else {
-                    magicLabel.isHidden = false
-                    magicLabel.isActive = false
-                    magicLabel.value = 0
-                    if stats.level >= 10 {
-                        magicLabel.labelView.text = L10n.unlocksSelectingClass
-                    } else {
-                        magicLabel.labelView.text = L10n.unlocksLevelTen
-                    }
-                }
-            }
+            configureMagicBar(user: user)
             
             let levelString = L10n.level
             usernameLabel.text = "\(levelString) \(stats.level)"
-            if user.preferences?.disableClasses != true && stats.level >= 10 {
-                levelLabel.text = stats.habitClassNice?.capitalized
-                switch stats.habitClass ?? "" {
-                case "warrior":
-                    classImageView.image = HabiticaIcons.imageOfWarriorLightBg
-                case "wizard":
-                    classImageView.image = HabiticaIcons.imageOfMageLightBg
-                case "healer":
-                    classImageView.image = HabiticaIcons.imageOfHealerLightBg
-                case "rogue":
-                    classImageView.image = HabiticaIcons.imageOfRogueLightBg
-                default:
-                    classImageView.image = nil
-                }
-                classImageView.isHidden = false
-            } else {
-                classImageView.image = nil
-                classImageView.isHidden = true
-                levelLabel.text = nil
-            }
-                        goldView.amount = Int(stats.gold)
+            configureClassDisplay(user: user)
+            goldView.amount = Int(stats.gold)
             
             buffIconView.isHidden = stats.buffs?.isBuffed != true
             layoutBuffIcon()
@@ -255,6 +216,56 @@ class UserTopHeader: UIView, Themeable {
         setNeedsLayout()
     }
  
+    private func configureMagicBar(user: UserProtocol) {
+        guard let stats = user.stats else {
+            return
+        }
+        if stats.level >= 10 && user.preferences?.disableClasses != true {
+            magicLabel.value = stats.mana
+            if stats.maxMana > 0 {
+                magicLabel.maxValue = stats.maxMana
+            }
+            magicLabel.isActive = true
+            magicLabel.isHidden = false
+        } else {
+            if user.preferences?.disableClasses == true && user.flags?.classSelected != false {
+                magicLabel.isHidden = true
+            } else {
+                magicLabel.isHidden = false
+                magicLabel.isActive = false
+                magicLabel.value = 0
+                if stats.level >= 10 {
+                    magicLabel.labelView.text = L10n.unlocksSelectingClass
+                } else {
+                    magicLabel.labelView.text = L10n.unlocksLevelTen
+                }
+            }
+        }
+    }
+    
+    private func configureClassDisplay(user: UserProtocol) {
+        if user.preferences?.disableClasses != true && (user.stats?.level ?? 0) >= 10 {
+            levelLabel.text = user.stats?.habitClassNice?.capitalized
+            switch user.stats?.habitClass ?? "" {
+            case "warrior":
+                classImageView.image = HabiticaIcons.imageOfWarriorLightBg
+            case "wizard":
+                classImageView.image = HabiticaIcons.imageOfMageLightBg
+            case "healer":
+                classImageView.image = HabiticaIcons.imageOfHealerLightBg
+            case "rogue":
+                classImageView.image = HabiticaIcons.imageOfRogueLightBg
+            default:
+                classImageView.image = nil
+            }
+            classImageView.isHidden = false
+        } else {
+            classImageView.image = nil
+            classImageView.isHidden = true
+            levelLabel.text = nil
+        }
+    }
+    
     @objc
     private func showGemView() {
         

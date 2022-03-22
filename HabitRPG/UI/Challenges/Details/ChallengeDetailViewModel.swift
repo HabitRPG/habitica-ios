@@ -265,7 +265,6 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
                 return challenge.isPublished()
             }).observeValues {[weak self] _ in
                 self?.mainButtonItemProperty.value = nil
-            //self?.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self?.participantsStyleProvider, inputs: self?.participantsStyleProvider, identifier: "mainButton")
         }
         ownedChallengeSignal
             .filter({ (challenge) -> Bool in

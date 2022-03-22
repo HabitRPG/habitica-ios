@@ -88,9 +88,9 @@ extension UIColor {
         }
         
         let hexString: String = String(rgba.dropFirst())
-        var hexValue: UInt32 = 0
+        var hexValue: UInt64 = 0
         
-        guard Scanner(string: hexString).scanHexInt32(&hexValue) else {
+        guard Scanner(string: hexString).scanHexInt64(&hexValue) else {
             throw UIColorInputError.unableToScanHexValue
         }
         
@@ -100,9 +100,9 @@ extension UIColor {
         case 4:
             self.init(hex4: UInt16(hexValue))
         case 6:
-            self.init(hex6: hexValue)
+            self.init(hex6: UInt32(hexValue))
         case 8:
-            self.init(hex8: hexValue)
+            self.init(hex8: UInt32(hexValue))
         default:
             throw UIColorInputError.mismatchedHexStringLength
         }
@@ -325,19 +325,19 @@ func lighter(by percentage: CGFloat=30.0) -> UIColor {
     }
     
     func blend(with infusion: UIColor, alpha: CGFloat) -> UIColor {
-        let alpha2 = min(1.0, max(0, alpha))
-        let beta = 1.0 - alpha2
+        let alphaFinal = min(1.0, max(0, alpha))
+        let beta = 1.0 - alphaFinal
 
-        var r1: CGFloat = 0, r2: CGFloat = 0
-        var g1: CGFloat = 0, g2: CGFloat = 0
-        var b1: CGFloat = 0, b2: CGFloat = 0
-        var a1: CGFloat = 0, a2: CGFloat = 0
-        if getRed(&r1, green: &g1, blue: &b1, alpha: &a1) &&
-            infusion.getRed(&r2, green: &g2, blue: &b2, alpha: &a2) {
-            let red     = r1 * beta + r2 * alpha2
-            let green   = g1 * beta + g2 * alpha2
-            let blue    = b1 * beta + b2 * alpha2
-            let alpha   = a1 * beta + a2 * alpha2
+        var red1: CGFloat = 0, red2: CGFloat = 0
+        var green1: CGFloat = 0, green2: CGFloat = 0
+        var blue1: CGFloat = 0, blue2: CGFloat = 0
+        var alpha1: CGFloat = 0, alpha2: CGFloat = 0
+        if getRed(&red1, green: &green1, blue: &blue1, alpha: &alpha1) &&
+            infusion.getRed(&red2, green: &green2, blue: &blue2, alpha: &alpha2) {
+            let red     = red1 * beta + red2 * alphaFinal
+            let green   = green1 * beta + green2 * alphaFinal
+            let blue    = blue1 * beta + blue2 * alphaFinal
+            let alpha   = alpha1 * beta + alpha2 * alphaFinal
             return UIColor(red: red, green: green, blue: blue, alpha: alpha)
         }
         return self
@@ -346,17 +346,17 @@ func lighter(by percentage: CGFloat=30.0) -> UIColor {
 
 extension UIColor {
   static func == (left: UIColor, right: UIColor) -> Bool {
-    var r1: CGFloat = 0
-    var g1: CGFloat = 0
-    var b1: CGFloat = 0
-    var a1: CGFloat = 0
-    left.getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
-    var r2: CGFloat = 0
-    var g2: CGFloat = 0
-    var b2: CGFloat = 0
-    var a2: CGFloat = 0
-    right.getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
-    return r1 == r2 && g1 == g2 && b1 == b2 && a1 == a2
+    var red1: CGFloat = 0
+    var green1: CGFloat = 0
+    var blue1: CGFloat = 0
+    var alpha1: CGFloat = 0
+    left.getRed(&red1, green: &green1, blue: &blue1, alpha: &alpha1)
+    var red2: CGFloat = 0
+    var green2: CGFloat = 0
+    var blue2: CGFloat = 0
+    var alpha2: CGFloat = 0
+    right.getRed(&red2, green: &green2, blue: &blue2, alpha: &alpha2)
+    return red1 == red2 && green1 == green2 && blue1 == blue2 && alpha1 == alpha2
   }
 }
 func == (left: UIColor?, right: UIColor?) -> Bool {
@@ -373,10 +373,10 @@ extension Color {
         }
 
         let components = self.components()
-        return UIColor(red: components.r, green: components.g, blue: components.b, alpha: components.a)
+        return UIColor(red: components.red, green: components.green, blue: components.blue, alpha: components.alpha)
     }
 
-    private func components() -> (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
+    private func components() -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         let scanner = Scanner(string: self.description.trimmingCharacters(in: CharacterSet.alphanumerics.inverted))
         var hexNumber: UInt64 = 0
         var red: CGFloat = 0.0, green: CGFloat = 0.0, blue: CGFloat = 0.0, alpha: CGFloat = 0.0

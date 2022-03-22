@@ -460,7 +460,7 @@ public  protocol ReactiveRealmOperable: ThreadConfined {}
 public protocol NotificationEmitter {
     
     func observe(on queue: DispatchQueue?,
-                        _ block: @escaping (RealmCollectionChange<Self>) -> Void) -> NotificationToken
+                 _ block: @escaping (RealmCollectionChange<Self>) -> Void) -> NotificationToken
     
     var count: Int { get }
 }
@@ -470,8 +470,8 @@ extension Results: NotificationEmitter {
 
 public protocol ObjectNotificationEmitter {
     func observe<T: ObjectBase>(keyPaths: [String]?,
-                                          on queue: DispatchQueue?,
-                                          _ block: @escaping (ObjectChange<T>) -> Void) -> NotificationToken
+                                on queue: DispatchQueue?,
+                                _ block: @escaping (ObjectChange<T>) -> Void) -> NotificationToken
 }
 
 extension Object: ObjectNotificationEmitter {}
@@ -522,7 +522,6 @@ public protocol SortableRealmResults {
     
     func sorted(byKeyPath keyPath: String, ascending: Bool) -> Self
     func sorted(by: [RealmSwift.SortDescriptor]) -> Self
-    // swiftlint:disable:next identifier_name
     func distinct(by: [String]) -> Self
 }
 

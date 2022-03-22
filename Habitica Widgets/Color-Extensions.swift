@@ -9,7 +9,7 @@
 import SwiftUI
 
 extension Color {
-    static let widgetBackground = Color("widgetBackground")
+    static let widgetBackground = Color("WidgetBackground")
     static let widgetBackgroundSecondary = Color("widgetBackgroundSecondary")
     static let widgetText = Color("widgetText")
     static let widgetTextSecondary = Color("widgetTextSecondary")

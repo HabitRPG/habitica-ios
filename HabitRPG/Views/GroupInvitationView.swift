@@ -37,7 +37,6 @@ class GroupInvitationView: UIView {
         view.backgroundColor = .white
         view.cornerRadius = 16
         view.setImage(HabiticaIcons.imageOfDeclineIcon, for: .normal)
-        view.addTarget(self, action: #selector(declineInvitation), for: .touchUpInside)
         view.isPointerInteractionEnabled = true
         return view
     }()
@@ -46,7 +45,6 @@ class GroupInvitationView: UIView {
         view.backgroundColor = .white
         view.cornerRadius = 16
         view.setImage(HabiticaIcons.imageOfAcceptIcon, for: .normal)
-        view.addTarget(self, action: #selector(acceptInvitation), for: .touchUpInside)
         view.isPointerInteractionEnabled = true
         return view
     }()
@@ -95,6 +93,9 @@ class GroupInvitationView: UIView {
         }
         acceptButton.backgroundColor = theme.contentBackgroundColor
         declineButton.backgroundColor = theme.contentBackgroundColor
+        
+        declineButton.addTarget(self, action: #selector(declineInvitation), for: .touchUpInside)
+        acceptButton.addTarget(self, action: #selector(acceptInvitation), for: .touchUpInside)
     }
     
     func set(invitation: GroupInvitationProtocol) {

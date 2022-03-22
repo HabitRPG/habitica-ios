@@ -66,7 +66,8 @@ class MenuItem {
     var isHidden = false
     var isDisabled = false
     
-    init(key: Key, title: String, subtitle: String? = nil, pillText: String? = nil, accessibilityLabel: String? = nil, segue: String? = nil, vcInstantiator: (() -> UIViewController?)? = nil, cellName: String = "Cell", showIndicator: Bool = false, isHidden: Bool = false) {
+    init(key: Key, title: String, subtitle: String? = nil, pillText: String? = nil, accessibilityLabel: String? = nil, segue: String? = nil,
+         vcInstantiator: (() -> UIViewController?)? = nil, cellName: String = "Cell", showIndicator: Bool = false, isHidden: Bool = false) {
         self.key = key
         self.title = title
         self.subtitle = subtitle
@@ -561,9 +562,9 @@ class MainMenuViewController: BaseTableViewController {
             tableView.deselectRow(at: indexPath, animated: true)
             return
         }
-        if let instantiator = item.vcInstantiator, let vc = instantiator() {
-            if let nc = vc as? UINavigationController {
-                present(vc, animated: true, completion: nil)
+        if let instantiator = item.vcInstantiator, let viewController = instantiator() {
+            if let navigationController = viewController as? UINavigationController {
+                present(navigationController, animated: true, completion: nil)
             } else {
                 if splitViewController != nil {
                     let oldIndexPath = currentSecondaryIndexPath
@@ -571,10 +572,10 @@ class MainMenuViewController: BaseTableViewController {
                     tableView.beginUpdates()
                     tableView.reloadRows(at: [indexPath, oldIndexPath], with: .automatic)
                     tableView.endUpdates()
-                    vc.navigationItem.setHidesBackButton(true, animated: false)
-                    splitViewController?.showDetailViewController(vc, sender: self)
+                    viewController.navigationItem.setHidesBackButton(true, animated: false)
+                    splitViewController?.showDetailViewController(viewController, sender: self)
                 } else {
-                    navigationController?.pushViewController(vc, animated: true)
+                    navigationController?.pushViewController(viewController, animated: true)
                 }
             }
         } else {

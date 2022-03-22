@@ -16,7 +16,7 @@ enum TopHeaderState: Int {
 }
 
 @objc
-protocol TopHeaderNavigationControllerProtocol: class {
+protocol TopHeaderNavigationControllerProtocol: AnyObject {
     @objc var state: TopHeaderState { get set }
     @objc var defaultNavbarVisibleColor: UIColor { get }
     @objc var navbarVisibleColor: UIColor { get set }

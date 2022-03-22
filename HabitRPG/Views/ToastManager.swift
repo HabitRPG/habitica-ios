@@ -6,7 +6,6 @@
 //  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
 import UIKit
-import UIKit
 
 // swiftlint:disable:next attributes
 @objc public enum ToastColor: Int {

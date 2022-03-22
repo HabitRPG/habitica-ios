@@ -113,7 +113,7 @@ enum ThemeName: String {
             .orange,
             .red,
             .maroon,
-            .gray,
+            .gray
         ]
     }
 }

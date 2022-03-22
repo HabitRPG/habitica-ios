@@ -10,7 +10,6 @@ import UIKit
 import Eureka
 import ReactiveSwift
 import Habitica_Models
-import UIKit
 
 class AccountSettingsViewController: FormViewController, Themeable, UITextFieldDelegate {
     
@@ -321,16 +320,9 @@ private func setUser(_ user: UserProtocol) {
         alertController.buttonAxis = .horizontal
         alertController.addCancelAction()
         alertController.addAction(title: L10n.Settings.deleteAccount, style: .destructive, isMainAction: true) {[weak self] _ in
-            self?.userRepository.deleteAccount(password: textField.text ?? "").observeValues({ response in
-                if response.statusCode == 200 {
-                    self?.navigationController?.dismiss(animated: true, completion: nil)
-                    self?.presentingViewController?.dismiss(animated: true, completion: nil)
-                } else if response.statusCode == 401 {
-                    let alertView = HabiticaAlertController(title: L10n.Settings.wrongPassword)
-                    alertView.addCloseAction()
-                    alertView.show()
-                }
-            })
+            if let password = textField.text {
+                self?.deleteAccount(password: password)
+            }
         }
         alertController.onKeyboardChange = { isVisible in
             textView.isHidden = isVisible
@@ -338,6 +330,19 @@ private func setUser(_ user: UserProtocol) {
         alertController.show()
     }
 
+    private func deleteAccount(password: String) {
+        userRepository.deleteAccount(password: password).observeValues({[weak self] response in
+            if response.statusCode == 200 {
+                self?.navigationController?.dismiss(animated: true, completion: nil)
+                self?.presentingViewController?.dismiss(animated: true, completion: nil)
+            } else if response.statusCode == 401 {
+                let alertView = HabiticaAlertController(title: L10n.Settings.wrongPassword)
+                alertView.addCloseAction()
+                alertView.show()
+            }
+        })
+    }
+    
     private func showResetAccountAlert() {
         let alertController = HabiticaAlertController(title: L10n.Settings.resetAccount)
         

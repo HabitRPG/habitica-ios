@@ -15,7 +15,8 @@ private class APINotificationAchievementData: Decodable {
     var modalText: String?
 }
 
-public class APINotification: NotificationProtocol, NotificationNewsProtocol, NotificationNewChatProtocol, NotificationUnallocatedStatsProtocol, NotificationFirstDropProtocol, NotificationLoginIncentiveProtocol, Decodable {
+public class APINotification: NotificationProtocol, NotificationNewsProtocol, NotificationNewChatProtocol,
+                              NotificationUnallocatedStatsProtocol, NotificationFirstDropProtocol, NotificationLoginIncentiveProtocol, Decodable {
     public var isValid: Bool = true
     public var isManaged: Bool = false
     

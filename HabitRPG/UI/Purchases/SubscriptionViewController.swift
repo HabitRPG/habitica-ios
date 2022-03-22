@@ -309,24 +309,7 @@ class SubscriptionViewController: BaseTableViewController {
             }
 
             let product = self.products?[indexPath.item]
-            cell.priceLabel.text = product?.localizedPrice
-            cell.titleLabel.text = product?.localizedTitle
-
-            cell.flagView.isHidden = true
-            switch product?.productIdentifier {
-            case PurchaseHandler.subscriptionIdentifiers[0]:
-                cell.setMonthCount(1)
-            case PurchaseHandler.subscriptionIdentifiers[1]:
-                cell.setMonthCount(3)
-            case PurchaseHandler.subscriptionIdentifiers[2]:
-                cell.setMonthCount(6)
-            case PurchaseHandler.subscriptionIdentifiers[3]:
-                cell.setMonthCount(12)
-                cell.flagView.text = "Save 20%"
-                cell.flagView.textColor = .white
-                cell.flagView.isHidden = false
-            default: break
-            }
+            cell.set(product: product)
             DispatchQueue.main.async {
                 cell.setSelected(product?.productIdentifier == self.selectedSubscriptionPlan?.productIdentifier, animated: true)
             }
@@ -338,23 +321,7 @@ class SubscriptionViewController: BaseTableViewController {
             if let subscriptionPlan = self.user?.purchased?.subscriptionPlan {
                 cell.setPlan(subscriptionPlan)
                 cell.cancelSubscriptionAction = {[weak self] in
-                    if self?.hasTerminationDate == true {
-                        self?.showSubscribeOptions = true
-                        tableView.reloadData()
-                        tableView.scrollToRow(at: IndexPath(row: 0, section: 2), at: .top, animated: true)
-                    } else {
-                        var url: URL?
-                        if subscriptionPlan.paymentMethod == "Apple" {
-                            url = URL(string: "https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions")
-                        } else if subscriptionPlan.paymentMethod == "Google" {
-                            url = URL(string: "http://support.google.com/googleplay?p=cancelsubsawf")
-                        } else {
-                            url = URL(string: "https://habitica.com")
-                        }
-                        if let applicationUrl = url {
-                            UIApplication.shared.open(applicationUrl, options: [:], completionHandler: nil)
-                        }
-                    }
+                    self?.cancelSubscription(subscriptionPlan: subscriptionPlan)
                 }
             }
             returnedCell = cell
@@ -413,6 +380,26 @@ class SubscriptionViewController: BaseTableViewController {
                 }
             case .error(let error):
                 logger.log("Receipt verification failed: \(error)", level: .error)
+            }
+        }
+    }
+    
+    func cancelSubscription(subscriptionPlan: SubscriptionPlanProtocol) {
+        if hasTerminationDate == true {
+            showSubscribeOptions = true
+            tableView.reloadData()
+            tableView.scrollToRow(at: IndexPath(row: 0, section: 2), at: .top, animated: true)
+        } else {
+            var url: URL?
+            if subscriptionPlan.paymentMethod == "Apple" {
+                url = URL(string: "https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions")
+            } else if subscriptionPlan.paymentMethod == "Google" {
+                url = URL(string: "http://support.google.com/googleplay?p=cancelsubsawf")
+            } else {
+                url = URL(string: "https://habitica.com")
+            }
+            if let applicationUrl = url {
+                UIApplication.shared.open(applicationUrl, options: [:], completionHandler: nil)
             }
         }
     }

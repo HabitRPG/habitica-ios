@@ -126,6 +126,18 @@ class ItemsViewController: BaseTableViewController {
             break
         }
         let alertController = UIAlertController(title: "\(item.text ?? "") \(type)", message: nil, preferredStyle: .actionSheet)
+        configureAlertActions(alertController, item: item)
+        alertController.addAction(UIAlertAction.cancelAction())
+        if let sourceView = sourceView {
+            alertController.popoverPresentationController?.sourceView = sourceView
+            alertController.popoverPresentationController?.sourceRect = sourceView.bounds
+        } else {
+            alertController.setSourceInCenter(view)
+        }
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    private func configureAlertActions(_ alertController: UIAlertController, item: ItemProtocol) {
         if item.itemType == ItemType.eggs {
             alertController.addAction(UIAlertAction(title: L10n.hatchPotion, style: .default, handler: {[weak self] (_) in
                 self?.dataSource.hatchingItem = item
@@ -139,29 +151,7 @@ class ItemsViewController: BaseTableViewController {
         } else if item.itemType == ItemType.quests {
             alertController.addAction(UIAlertAction(title: L10n.showDetails, style: .default, handler: {[weak self] (_) in
                 if let quest = item as? QuestProtocol {
-                    let alertController = HabiticaAlertController(title: quest.text)
-                    let detailView = QuestDetailView(frame: CGRect.zero)
-                    detailView.configure(quest: quest)
-                    let imageView = NetworkImageView()
-                    imageView.contentMode = .center
-                    ImageManager.setImage(on: imageView, name: "quest_" + (quest.key ?? ""))
-                    let textView = UITextView()
-                    textView.isScrollEnabled = false
-                    textView.attributedText = try? HabiticaMarkdownHelper.toHabiticaAttributedString(quest.notes ?? "")
-                    textView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
-                    textView.textColor = ThemeService.shared.theme.primaryTextColor
-                    textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
-                    let stackView = UIStackView(arrangedSubviews: [imageView, detailView, textView])
-                    stackView.axis = .vertical
-                    stackView.spacing = 12
-                    alertController.contentView = stackView
-                    alertController.addAction(title: L10n.inviteParty, style: .default, isMainAction: true) {[weak self] _ in
-                        self?.inventoryRepository.inviteToQuest(quest: quest).observeCompleted {
-                            self?.dismissIfNeeded()
-                        }
-                    }
-                    alertController.addCloseAction()
-                    alertController.show()
+                    self?.showQuestDialog(quest: quest)
                 }
             }))
             alertController.addAction(UIAlertAction(title: L10n.inviteParty, style: .default, handler: {[weak self] (_) in
@@ -195,14 +185,6 @@ class ItemsViewController: BaseTableViewController {
                 })
             }))
         }
-        alertController.addAction(UIAlertAction.cancelAction())
-        if let sourceView = sourceView {
-            alertController.popoverPresentationController?.sourceView = sourceView
-            alertController.popoverPresentationController?.sourceRect = sourceView.bounds
-        } else {
-            alertController.setSourceInCenter(view)
-        }
-        present(alertController, animated: true, completion: nil)
     }
     
     private func dismissIfNeeded() {
@@ -228,6 +210,32 @@ class ItemsViewController: BaseTableViewController {
         imageAlert.enqueue()
     }
 
+    private func showQuestDialog(quest: QuestProtocol) {
+        let alertController = HabiticaAlertController(title: quest.text)
+        let detailView = QuestDetailView(frame: CGRect.zero)
+        detailView.configure(quest: quest)
+        let imageView = NetworkImageView()
+        imageView.contentMode = .center
+        ImageManager.setImage(on: imageView, name: "quest_" + (quest.key ?? ""))
+        let textView = UITextView()
+        textView.isScrollEnabled = false
+        textView.attributedText = try? HabiticaMarkdownHelper.toHabiticaAttributedString(quest.notes ?? "")
+        textView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
+        textView.textColor = ThemeService.shared.theme.primaryTextColor
+        textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        let stackView = UIStackView(arrangedSubviews: [imageView, detailView, textView])
+        stackView.axis = .vertical
+        stackView.spacing = 12
+        alertController.contentView = stackView
+        alertController.addAction(title: L10n.inviteParty, style: .default, isMainAction: true) {[weak self] _ in
+            self?.inventoryRepository.inviteToQuest(quest: quest).observeCompleted {
+                self?.dismissIfNeeded()
+            }
+        }
+        alertController.addCloseAction()
+        alertController.show()
+    }
+    
     @IBAction func cancelButtonTapped(_ sender: Any) {
 		isHatching = false
 		dismissIfNeeded()

@@ -147,7 +147,7 @@ class HabiticaMarkdownHelper: NSObject {
     }
 }
 
-private class HabiticaStyler: DownStyler {    
+private class HabiticaStyler: DownStyler {
     override func style(item str: NSMutableAttributedString, prefixLength: Int) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.headIndent = CGFloat(prefixLength * 12)

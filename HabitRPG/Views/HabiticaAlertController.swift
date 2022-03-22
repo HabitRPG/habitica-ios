@@ -35,7 +35,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     
     var buttonAxis: NSLayoutConstraint.Axis?
     var dismissOnBackgroundTap = true
-    var onKeyboardChange:  ((Bool) -> Void)?
+    var onKeyboardChange: ((Bool) -> Void)?
 
     var contentView: UIView? {
         didSet {
