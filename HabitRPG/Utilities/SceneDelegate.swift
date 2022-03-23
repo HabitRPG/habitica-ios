@@ -27,6 +27,16 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = StoryboardScene.Intro.initialScene.instantiate()
         window?.makeKeyAndVisible()
+        
+        connectionOptions.urlContexts.forEach { context in
+            RouterHandler.shared.handle(url: context.url)
+        }
+    }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        URLContexts.forEach { context in
+            RouterHandler.shared.handle(url: context.url)
+        }
     }
     
     func sceneWillEnterForeground(_ scene: UIScene) {

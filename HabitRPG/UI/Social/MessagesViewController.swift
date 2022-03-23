@@ -88,7 +88,13 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.pin.top().start().end().bottom()
-        let keyboardOffset = KeyboardManager.height > 0 ? KeyboardManager.height - (view.window?.safeAreaInsets.bottom ?? 0) - 40 : 0
+        var tabbarOffset: CGFloat = (view.window?.safeAreaInsets.bottom ?? 0) + 40
+        var safearea: CGFloat = 0
+        if tabBarController == nil {
+            tabbarOffset = 0
+            safearea = (view.window?.safeAreaInsets.bottom ?? 0)
+        }
+        let keyboardOffset = KeyboardManager.height > 0 ? KeyboardManager.height - tabbarOffset : safearea
         tableView.contentInset.top = inputBar.intrinsicContentSize.height + keyboardOffset
         inputBar.pin.start().end().height(inputBar.intrinsicContentSize.height).bottom(keyboardOffset)
         let acceptView = view.viewWithTag(999)
