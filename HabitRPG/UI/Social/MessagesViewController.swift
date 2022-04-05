@@ -140,6 +140,17 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
     private func acceptGuidelines() {
         userRepository.updateUser(key: "flags.communityGuidelinesAccepted", value: true).observeCompleted {}
     }
+    
+    func configureReplyTo(name: String?) {
+        let textView = inputBar.inputTextView
+        if textView.text.isEmpty == false {
+            textView.text = "\(textView.text ?? "") @\(name ?? "") "
+        } else {
+            textView.text = "@\(name ?? "") "
+        }
+        textView.becomeFirstResponder()
+        textView.selectedRange = NSRange(location: textView.text.count, length: 0)
+    }
 }
 
 extension MessagesViewController: InputBarAccessoryViewDelegate {
