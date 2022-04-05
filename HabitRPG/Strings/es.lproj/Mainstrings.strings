@@ -984,10 +984,10 @@
 "empty.habits.description" = "Los Hábitos no tienen una programación rígida. Puedes marcarlos múltiples veces al día.";
 "empty.habits.title" = "Estos son tus Hábitos";
 "notifications.dismiss_all" = "Descartar todos";
-"notifications.quest_invite" = "Has sido invitado a la Misión **%s**";
-"notifications.private_guild_invite" = "Has sido invitado a entrar al gremio privado **%s**";
-"notifications.public_guild_invite" = "Has sido invitado a entrar al gremio público **%s**";
-"notifications.party_invite" = "Has sido invitado a entrar al Equipo **%s**";
+"notifications.quest_invite" = "Has sido invitado a la Misión **%@**";
+"notifications.private_guild_invite" = "Has sido invitado a entrar al gremio privado **%@**";
+"notifications.public_guild_invite" = "Has sido invitado a entrar al gremio público **%@**";
+"notifications.party_invite" = "Has sido invitado a entrar al Equipo **%@**";
 "notifications.unread_party_message" = "Tu equipo, **%@**, tiene nuevos mensajes.";
 "notifications.unread_guild_message" = "**%@** tiene nuevos mensajes.";
 "notifications.new_mystery_item" = "Tienes nuevos **Objetos Misteriosos**";
@@ -1140,7 +1140,7 @@
 "partyOnDescription" = "¡Tu equipo creció hasta los 4 miembros!";
 "onboardingCompleteTitle" = "Obtuviste 5 logros y 100 piezas de oro por tus esfuerzos.";
 "month" = "mes";
-"delete_challenge_task_description" = "Esta es una de las %d tareas que son partes del reto \"%s\". Debes abandonar el reto para poder borrar la tarea.";
+"delete_challenge_task_description" = "Esta es una de las %d tareas que son partes del reto \"%@\". Debes abandonar el reto para poder borrar la tarea.";
 "invitedFriendTitle" = "Invitaste a un amigo";
 "skills.caused_damage" = "Dañaste al jefe";
 "excess_no_items_left" = "Ya tienes todo lo que necesitas para todas tus %@ mascotas. ¿Seguro que quieres comprar %d %@s?";
@@ -1177,11 +1177,11 @@
 "create_task_title" = "Crea una tarea";
 "tasks.form.times_scored" = "Veces marcadas";
 "gift_gems" = "Regala gemas";
-"user_was_blocked" = "Bloqueaste a %s.";
+"user_was_blocked" = "Bloqueaste a %@.";
 "keep_x_tasks" = "Mantener %d tareas";
 "onboarding_tasks" = "Tareas de incorporación";
 "first_drop_title" = "¡Encontraste nuevos objetos!";
-"checkin_prize_earned" = "Ganaste un %s como premio por tu compromiso de mejorar tu vida.";
+"checkin_prize_earned" = "Ganaste un %@ como premio por tu compromiso de mejorar tu vida.";
 "tasks.form.completions" = "Conseguidos";
 "challengeJoinedDescription" = "¡Os pusisteis a prueba uniéndoos a un reto!";
 "support.questions_button" = "Leer más";
@@ -1206,7 +1206,7 @@
 "completedTaskDescription" = "Una tarea puede ser un hábito, tarea diaria o tarea pendiente. ¡Continúa completándolos todos para recibir todo tipo de recompensas!";
 "partyUpTitle" = "Agrúpate";
 "day" = "día";
-"user_was_unblocked" = "Desbloqueaste a %s.";
+"user_was_unblocked" = "Desbloqueaste a %@.";
 "gift_sent_to" = "Enviaste a %@:";
 "hatchedPetTitle" = "Eclosionaste una mascota";
 "broken_challenge" = "Reto estropeado";
@@ -1271,7 +1271,7 @@
 "gems_description" = "Las gemas son una divisa comprada con dinero real que te permite comprar contenido adicional en Habitica y junto con las suscripciones, son una de las principales fuentes de apoyo financiero para el equipo desarrollador de Habitica.\n\nTodo el contenido comprado con gemas es puramente estético o se puede obtenerse gratis con el tiempo.\n\nTambién puedes recibir gemas como regalo de otros jugadores, premios de desafío, contribuyendo a Habitica o suscribiéndote.";
 "week_reminder_body" = "Descansar está bien, ¡pero realizando en su lugar algunas tareas sencillas, podrás seguir ganando puntos para subir de nivel y conseguir equipo molón!";
 "survey.description" = "¡Completa esta encuesta de 5 minutos para ayudarnos a crecer y recibirás un logro!";
-"gems_promo.info_limitations" = "Esta promoción solo se aplica durante el evento de tiempo limitado. Este evento comienza el %s (12:00 UTC) y terminará el %s (00:00 UTC). La oferta promocional solo está disponible al comprar gemas para ti.";
+"gems_promo.info_limitations" = "Esta promoción solo se aplica durante el evento de tiempo limitado. Este evento comienza el %@ (12:00 UTC) y terminará el %@ (00:00 UTC). La oferta promocional solo está disponible al comprar gemas para ti.";
 "joined_challenge" = "Te uniste a un reto";
 "daily_tip_2" = "Puedes cambiar con qué frecuencia se repiten las tareas diarias. Se pueden programar incluso tareas pocos frecuentes.";
 "known_issues" = "Problemas conocidos";
@@ -1306,7 +1306,7 @@
 "gift_confirmation_body_g1_g1" = "¡Enviaste a %@ una suscripción de %@ meses a Habitica y esa misma suscripción se aplicó a tu cuenta por la promoción Regala Una Consigue Otra!";
 "hatch_pet_again" = "Eclosionar mascota de nuevo";
 "stat_allocation" = "Asignación de estadísticas";
-"fall_promo.info_instructions" = "Entre %s y %s, simplemente compra cualquier paquete de gemas como de costumbre y tu cuenta recibirá el plus promocional de gemas. ¡Más gemas para gastar, compartir o guardar para futuros eventos!";
+"fall_promo.info_instructions" = "Entre %@ y %@, simplemente compra cualquier paquete de gemas como de costumbre y tu cuenta recibirá el plus promocional de gemas. ¡Más gemas para gastar, compartir o guardar para futuros eventos!";
 "subscriber_currency" = "Divisas de suscriptor";
 "clear_cache_title" = "Borrar caché y recargar contenido";
 "gift_one_get_one_data.info_limitations" = "Este es un evento de duración limitada que comienza el %@ (13:00 UTC) y terminará el %@ (01:00 UTC). Esta promoción solo se aplica cuando se regala a otro Habiticano. Si tú o el destinatario del regalo ya tenéis una suscripción, la suscripción de regalada se iniciará una vez finalice o se cancele la actual.";
@@ -1329,4 +1329,4 @@
 "daily_tip_6" = "¡Prueba a poner un temporizador de 10 minutos y ver cuánto puedes avanzar en ese tiempo!";
 "daily_tip_9" = "Si lo estás pasando mal, intenta dividir tus tareas en otras más pequeñas.";
 "see_you_tomorrow" = "Hasta mañana";
-"spooky_promo.info_instructions" = "Entre %s y %s, simplemente compra cualquier paquete de gemas como de costumbre y tu cuenta recibirá el plus promocional. ¡Más gemas para gastar, compartir o guardar para futuros eventos!";
+"spooky_promo.info_instructions" = "Entre %@ y %@, simplemente compra cualquier paquete de gemas como de costumbre y tu cuenta recibirá el plus promocional. ¡Más gemas para gastar, compartir o guardar para futuros eventos!";

@@ -129,6 +129,8 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         
         let userDefaults = UserDefaults.standard
         #if !targetEnvironment(macCatalyst)
+        Crashlytics.crashlytics().setCustomValue(-(NSTimeZone.local.secondsFromGMT() / 60), forKey: "timesoze_offset")
+        Crashlytics.crashlytics().setCustomValue(LanguageHandler.getAppLanguage().code, forKey: "app_language")
         Analytics.setUserProperty(LanguageHandler.getAppLanguage().code, forName: "app_language")
         Analytics.setUserProperty(UIApplication.shared.alternateIconName, forName: "app_icon")
         Analytics.setUserProperty(userDefaults.string(forKey: "initialScreenURL"), forName: "launch_screen")

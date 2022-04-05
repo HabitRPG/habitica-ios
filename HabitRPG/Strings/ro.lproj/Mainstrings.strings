@@ -828,7 +828,6 @@
 "tasks.every_x" = "la fiecare %d %@";
 "tasks.repeats.repeats_every_on" = "Se repetă din %@ în %@";
 "tasks.repeats.repeats_every" = "Se repetă %@";
-"tasks.repeats.monthly_the" = "%@ul\n%@a";
 "tasks.examples.team_habit" = "Interacționează cu echipa";
 "tasks.examples.team_daily_text" = "Actualizează echipa cu privire la statut";
 "tasks.examples.team_todo_text" = "Termină proiectul de echipă";

@@ -990,12 +990,12 @@
 "notifications.unallocated_stat_points" = "Je hebt **%d onverdeelde eigenschapspunten";
 "notifications.new_bailey" = "Nieuws van Baily!";
 "notifications.new_mystery_item" = "Je hebt nieuwe **Mysterieuze Items**";
-"notifications.unread_guild_message" = "Er zijn nieuwe berichten in **%s**.";
-"notifications.unread_party_message" = "Er zijn nieuwe berichten in je groep, **%s**.";
-"notifications.party_invite" = "Je bent uitgenodigd voor de groep **%s**";
-"notifications.public_guild_invite" = "Je bent uitgenodigd voor het openbare gilde **%s**";
-"notifications.private_guild_invite" = "Je bent uitgenodigd voor het privé gilde **%s**";
-"notifications.quest_invite" = "Je bent uitgenodigd voor de queeste **%s**";
+"notifications.unread_guild_message" = "Er zijn nieuwe berichten in **%@**.";
+"notifications.unread_party_message" = "Er zijn nieuwe berichten in je groep, **%@**.";
+"notifications.party_invite" = "Je bent uitgenodigd voor de groep **%@**";
+"notifications.public_guild_invite" = "Je bent uitgenodigd voor het openbare gilde **%@**";
+"notifications.private_guild_invite" = "Je bent uitgenodigd voor het privé gilde **%@**";
+"notifications.quest_invite" = "Je bent uitgenodigd voor de queeste **%@**";
 "notifications.dismiss_all" = "Alles verwijderen";
 "empty.habits.title" = "Dit zijn je Gewoontes";
 "empty.habits.description" = "Gewoontes hebben geen vast ritme. Je kunt ze meerdere keren per dag afvinken.";
@@ -1094,7 +1094,7 @@
 "cancel_subscription" = "Abonnement stopzetten";
 "cancelled" = "Geannuleerd";
 "not_recurring" = "Niet terugkerend";
-"ending_on" = "Eindigend op %s";
+"ending_on" = "Eindigend op %@";
 "renew_subscription" = "Abonnement vernieuwen";
 "resubscribe" = "Opnieuw abonneren";
 "subscription_duration" = "Keert iedere %@ terug";
@@ -1195,8 +1195,8 @@
 "invitedFriendTitle" = "Een vriend uitgenodigd";
 "purchasedEquipmentDescription" = "Uitrusting kan praktisch of gewoon modieus zijn. Verhoog je statistieken om allerlei voordelen voor uw avatar te krijgen";
 "gift_gems" = "Geef edelstenen cadeau";
-"user_was_unblocked" = "Je hebt %s gedeblokkeerd.";
-"user_was_blocked" = "Je hebt %s geblokkeerd.";
+"user_was_unblocked" = "Je hebt %@ gedeblokkeerd.";
+"user_was_blocked" = "Je hebt %@ geblokkeerd.";
 "block_username" = "%@ blokkeren?";
 "unblock_user" = "Deblokkeren";
 "block_user" = "Blokkeren";
@@ -1259,7 +1259,7 @@
 "suggest_pet_hatch_again_missing_potion" = "Je hebt nog een %@ uitbroeddrank nodig om dit huisdier opnieuw uit te broeden";
 "suggest_pet_hatch_again_missing_egg" = "Je hebt nog een %@ ei nodig om dit huisdier opnieuw uit te broeden";
 "suggest_pet_hatch_missing_both" = "Je hebt nog een %@ en een %@ uitbroeddrank nodig om dit huisdier uit te broeden";
-"suggest_pet_hatch_missing_potion" = "Je hebt nog een %s uitbroeddrank nodig om dit huisdier uit te broeden";
+"suggest_pet_hatch_missing_potion" = "Je hebt nog een %@ uitbroeddrank nodig om dit huisdier uit te broeden";
 "class_system_disabled" = "Klassensysteem uitgeschakeld.";
 "could_not_gift_gems" = "Het edelstenen schenken is niet gelukt. Probeer het later nog eens.";
 "end_challenge_description" = "Om een uitdaging te beëindigen, log je in op de Habitica-website en tik je op de knop 'Uitdaging beëindigen' aan de rechterkant van het scherm van de uitdaging.";
@@ -1289,7 +1289,7 @@
 "week_reminder_body" = "Pauzes zijn gezond, maar je kan nog steeds punten krijgen voor simpele activiteiten om levels omhoog te gaan en een coole uitrusting te krijgen!";
 "week_reminder_title" = "Hoe gaat het met je taken?";
 "daily_tip_9" = "Als je het moeilijk hebt, probeer dan je taken in kleinere delen op te splitsen.";
-"delete_challenge_task_description" = "Dit is een van de %d taken die deel uitmaken van de “%s” uitdaging. Je moet de uitdaging verlaten om deze taak te verwijderen.";
+"delete_challenge_task_description" = "Dit is een van de %d taken die deel uitmaken van de “%@” uitdaging. Je moet de uitdaging verlaten om deze taak te verwijderen.";
 "broken_challenge_description" = "Dit is een van de % d taken die deel uitmaken van een uitdaging die niet langer bestaat. Wat zou je willen doen met deze overgebleven taken?";
 "block_description" = "Een geblokkeerde gebruiker kan je geen privéberichten sturen, maar je zult zijn of haar berichten nog steeds in de herberg of gilde zien. Dit heeft geen effect als de persoon nu of in de toekomst moderator is.";
 "adventure_guide_description" = "Voltooi deze begintaken en je verdient 5 prestaties en 100 goud als je klaar bent!";
@@ -1313,7 +1313,7 @@
 "created_at" = "Aangemaakt op";
 "stat_description" = "Alle Habitica-personages hebben vier eigenschappen die invloed hebben op de spelaspecten van Habitica.\n\n**Kracht (KRA)** heeft invloed op voltreffers en verhoogt de schade die aan Eindbazen van Queesten gedaan wordt. Krijgers en Dieven ontvangen KRA van hun klasse-uitrusting.\n\n**Weerbaarheid (WBH)** verhoogt je gezondheid en zorgt ervoor dat je minder schade krijgt. Helers en Krijgers ontvangen WBH van hun klasse-uitrusting.\n\n**Intelligentie (INT)** verhoogt de hoeveelheid ERV die je verdient en geeft je meer Mana. Magiërs en Helers ontvangen INT van hun klasse-uitrusting.\n\n**Perceptie (PER)** verhoogt de hoeveelheid goud die je verdient en de mate waarin je voorwerpen vindt. Dieven en Magiërs ontvangen PER van hun klasse-uitrusting.\n\nNa level 10 krijg je 1 Eigenschapspunt voor ieder level dat je omhooggaat. Deze punten kun je naar keuze in een Eigenschap stoppen. Er zijn ook uitrustingen die bonussen op eigenschappen geven.";
 "beginner_objectives" = "Begindoelen";
-"fall_promo.info_instructions" = "Koop je tussen %s en %s een edelsteenbundel zoals gewoonlijk dan word je account opgewaardeerd met het promotie aantal aan edelstenen. Meer edelstenen om uit te geven, te delen of te sparen voor toekomstige releases!";
+"fall_promo.info_instructions" = "Koop je tussen %@ en %@ een edelsteenbundel zoals gewoonlijk dan word je account opgewaardeerd met het promotie aantal aan edelstenen. Meer edelstenen om uit te geven, te delen of te sparen voor toekomstige releases!";
 "fall_promo.info_prompt" = "Het herfstgala is in volle gang, dus we dachten dat dit het perfecte moment was om onze allereerste edelsteen uitverkoop te introduceren! Nu krijg je bij elke aankoop meer edelstenen dan ooit tevoren.";
 "hourglasses_description" = "Mystieke zandlopers zijn een uiterst zeldzame vorm van valuta die u alleen kunt ontvangen als u zich gedurende drie opeenvolgende maanden of langer op Habitica abonneert. Ze worden gebruikt in de winkel van de tijdreiziger om eerdere uitrustingssets, huisdieren, rijdieren, geanimeerde achtergronden of zelfs speciale speurtochten te kopen.\n\nJe kunt maximaal vier mystieke zandlopers per jaar ontvangen. De tijd dat ze worden beloond, is gebaseerd op het verlengingsschema van uw abonnement. Ze worden verzonden op de eerste dag van een nieuwe maand na uw laatste abonnementsbetaling die jou kwalificeerde voor een zandloper. Zie de pagina [Abonnement] voor meer details.";
 "gems_description" = "Edelstenen zijn een valuta die met echt geld wordt gekocht en waarmee je extra inhoud binnen Habitica kunt kopen, en zijn naast abonnementen een van de belangrijkste bronnen van financiële steun voor het Habitica-team.\n\nAlle inhoud die je via edelstenen koopt, is puur cosmetisch of kan na verloop van tijd gratis worden verkregen.\n\nJe kunt ook edelstenen ontvangen via geschenken van andere spelers, uitdagingsprijzen, bijdragen aan Habitica of door te abonneren.";
@@ -1322,8 +1322,8 @@
 "survey.button" = "Ga naar enquête";
 "survey.description" = "Vul deze 5 minuten durende enquête in om ons te helpen groeien en een prestatie te ontvangen!";
 "survey.title" = "Habitica spelersenquête";
-"gems_promo.info_limitations" = "Deze promotie is alleen geldig tijdens het tijdelijke evenement. Dit evenement begint op %s (12:00 UTC) en eindigt op %s (00:00 UTC). De promo-aanbieding is alleen beschikbaar als je edelstenen voor jezelf koopt.";
-"spooky_promo.info_instructions" = "Koop je tussen %s en %s een edelsteenbundel zoals gewoonlijk dan word je account opgewaardeerd met het promotie aantal aan edelstenen. Meer edelstenen om uit te geven, te delen of te sparen voor toekomstige releases!";
+"gems_promo.info_limitations" = "Deze promotie is alleen geldig tijdens het tijdelijke evenement. Dit evenement begint op %@ (12:00 UTC) en eindigt op %@ (00:00 UTC). De promo-aanbieding is alleen beschikbaar als je edelstenen voor jezelf koopt.";
+"spooky_promo.info_instructions" = "Koop je tussen %@ en %@ een edelsteenbundel zoals gewoonlijk dan word je account opgewaardeerd met het promotie aantal aan edelstenen. Meer edelstenen om uit te geven, te delen of te sparen voor toekomstige releases!";
 "spooky_promo.info_prompt" = "De edelsteen uitverkoop is terug om het einde van het herfstgala van dit jaar te achtervolgen! Dit is een laatste kans om meer edelstenen te krijgen dan ooit, dus sla je voorraad in zolang het duurt!";
 "skills.caused_damage" = "Je hebt de baas schade toegebracht";
 "day" = "dag";
@@ -1335,6 +1335,6 @@
 "month" = "maand";
 "year" = "jaar";
 "next_prize_in_x_checkins" = "Volgende prijs over %d check-ins";
-"checkin_prize_earned" = "Je hebt een %s verdiend als een beloning voor je toewijding aan het verbeteren van je leven.";
+"checkin_prize_earned" = "Je hebt een %@ verdiend als een beloning voor je toewijding aan het verbeteren van je leven.";
 "tasks.form.none" = "Geen";
 "see_you_tomorrow" = "Tot morgen";

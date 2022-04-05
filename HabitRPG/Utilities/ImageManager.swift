@@ -11,6 +11,7 @@ import Kingfisher
 
 @objc
 class ImageManager: NSObject {
+    static var kingfisher = KingfisherManager.shared
     static let baseURL = "https://habitica-assets.s3.amazonaws.com/mobileApp/images/"
     
     private static let formatDictionary = [
@@ -50,7 +51,6 @@ class ImageManager: NSObject {
         "Pet_HatchingPotion_VirtualPet": "gif"
     ]
     
-    @objc
     static func setImage(on imageView: NetworkImageView, name: String, extension fileExtension: String = "", completion: ((UIImage?, NSError?) -> Void)? = nil) {
         if imageView.loadedImageName != name {
             imageView.image = nil
@@ -69,17 +69,11 @@ class ImageManager: NSObject {
         }
     }
     
-    @objc
     static func getImage(name: String, extension fileExtension: String = "", completion: @escaping (UIImage?, NSError?) -> Void) {
-        getImage(url: "\(baseURL)\(name).\(getFormat(name: name, format: fileExtension))", completion: completion)
-    }
-    
-    @objc
-    static func getImage(url urlString: String, completion: @escaping (UIImage?, NSError?) -> Void) {
-        guard let url = URL(string: urlString) else {
+        guard let url = URL(string: "\(baseURL)\(substituteSprite(name: name)).\(getFormat(name: name, format: fileExtension))") else {
             return
         }
-        KingfisherManager.shared.retrieveImage(with: url) { result in
+        kingfisher.retrieveImage(with: url) { result in
             switch result {
             case .success(let imageResult):
                 completion(imageResult.image, nil)
@@ -102,10 +96,10 @@ class ImageManager: NSObject {
         return formatDictionary[name] ?? "png"
     }
     
-    private static func substituteSprite(name: String?) -> String? {
+    private static func substituteSprite(name: String) -> String {
         for (key, value) in substitutions {
-            if let keyString = key as? String, name?.contains(keyString) == true {
-                return value as? String
+            if let keyString = key as? String, name.contains(keyString) == true {
+                return value as? String ?? name
             }
         }
         return name

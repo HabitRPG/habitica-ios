@@ -990,10 +990,10 @@
 "empty.habits.description" = "Hábitos não possuem uma frequência rígida. Você pode marcá-los várias vezes por dia.";
 "empty.habits.title" = "Aqui estão seus Hábitos";
 "notifications.dismiss_all" = "Dispensar tudo";
-"notifications.quest_invite" = "Você foi convidado(a) para a Missão **%s**";
-"notifications.private_guild_invite" = "Você foi convidado(a) para participar da guilda privada **%s**";
-"notifications.public_guild_invite" = "Você foi convidado para participar da guilda pública **%s**";
-"notifications.party_invite" = "Você foi convidado(a) para participar do Grupo **%s**";
+"notifications.quest_invite" = "Você foi convidado(a) para a Missão **%@**";
+"notifications.private_guild_invite" = "Você foi convidado(a) para participar da guilda privada **%@**";
+"notifications.public_guild_invite" = "Você foi convidado para participar da guilda pública **%@**";
+"notifications.party_invite" = "Você foi convidado(a) para participar do Grupo **%@**";
 "notifications.unread_party_message" = "Seu Grupo, **%@**, tem novas postagens.";
 "notifications.unread_guild_message" = "**%@** tem novas postagens.";
 "notifications.new_mystery_item" = "Você tem novos **Itens Misteriosos**";
@@ -1165,8 +1165,8 @@
 "create_task_title" = "Crie uma Tarefa";
 "gift_subscription" = "Presentear uma assinatura";
 "gift_gems" = "Presentear Gemas";
-"user_was_unblocked" = "Você desbloqueou %s.";
-"user_was_blocked" = "Você bloqueou %s.";
+"user_was_unblocked" = "Você desbloqueou %@.";
+"user_was_blocked" = "Você bloqueou %@.";
 "block_description" = "Um usuário bloqueado não pode te mandar Mensagens Privadas, mas você ainda verá os posts dele(a) na Taverna ou em Guildas. Isso não terá efeito se a pessoa for um(a) moderador(a) atualmente ou tornar-se um(a) no futuro.";
 "block_username" = "Bloquear %@?";
 "unblock_user" = "Desbloquear";
@@ -1174,7 +1174,7 @@
 "block" = "Bloquear";
 "leave_and_delete_x_tasks" = "Sair e Remover %d Tarefas";
 "leave_and_delete_task" = "Sair e Remover Tarefa";
-"delete_challenge_task_description" = "Esta é uma de %d tarefas que são parte do Desafio “%s”. Você precisa sair do Desafio para remover essa tarefa.";
+"delete_challenge_task_description" = "Esta é uma de %d tarefas que são parte do Desafio “%@”. Você precisa sair do Desafio para remover essa tarefa.";
 "delete_challenge_task" = "Remover Tarefa do Desafio?";
 "delete_x_tasks" = "Remover %d Tarefas";
 "keep_x_tasks" = "Manter %d Tarefas";
@@ -1228,8 +1228,8 @@
 "left_challenge" = "Deixou o Desafio";
 "joined_challenge" = "Aderiu ao Desafio";
 "hourglasses_description" = "Ampulhetas Místicas são uma forma extremamente rara de moeda que você só pode receber ao se inscrever no Habitica por três meses consecutivos ou mais. Eles são usados na loja do Viajante do Tempo para comprar conjuntos de equipamentos anteriores, animais de estimação, montarias, planos de fundo animados ou até mesmo missões especiais.\n\nVocê pode receber até quatro Ampulhetas Místicas por ano. O tempo que eles são recompensados é baseado em sua programação de renovação de assinatura. Eles são enviados no primeiro dia de um novo mês após o último pagamento da assinatura que o qualificou para uma ampulheta. Veja a página [Assinatura] para mais detalhes.";
-"fall_promo.info_instructions" = "Entre %s e %s, adquira qualquer pacote de Gemas como de costume e sua conta será creditada com o valor promocional das Gemas. Mais Gemas para gastar, compartilhar ou economizar para qualquer lançamentos futuros!";
-"spooky_promo.info_instructions" = "Entre %s e %s, adquira qualquer pacote de Gemas, como de costume, e sua conta será creditada com o valor promocional das Gemas. Mais Gemas para gastar, compartilhar ou economizar para qualquer lançamentos futuros!";
+"fall_promo.info_instructions" = "Entre %@ e %@, adquira qualquer pacote de Gemas como de costume e sua conta será creditada com o valor promocional das Gemas. Mais Gemas para gastar, compartilhar ou economizar para qualquer lançamentos futuros!";
+"spooky_promo.info_instructions" = "Entre %@ e %@, adquira qualquer pacote de Gemas, como de costume, e sua conta será creditada com o valor promocional das Gemas. Mais Gemas para gastar, compartilhar ou economizar para qualquer lançamentos futuros!";
 "spooky_promo.info_prompt" = "A Promoção de Gemas está de volta para assombrar o final da Gala de Outono deste ano! Esta é uma última chance de conseguir mais Gemas do que nunca, então estoquem enquanto durar!";
 "fall_promo.info_prompt" = "A Gala de Outono está a todo vapor, então julgamos que esse era o momento perfeito para apresentar nossa primeira Promoção de Gemas! Agora você receberá a cada compra mais Gemas do que nunca.";
 "promo_info_limitations_title" = "Limitações";
@@ -1238,7 +1238,7 @@
 "usually_x_gems" = "Normalmente %d Gemas";
 "x_to_y" = "%@ para %@";
 "limited_event" = "Evento Limitado";
-"gems_promo.info_limitations" = "Esta promoção só se aplica durante o evento de tempo limitado. Este evento começa em %s (12:00 UTC / 15:00 Horário de Brasília) e terminará em %s (00:00 UTC / 03:00 Horário de Brasília). A oferta promocional está disponível apenas na compra de Gemas para si mesmo(a).";
+"gems_promo.info_limitations" = "Esta promoção só se aplica durante o evento de tempo limitado. Este evento começa em %@ (12:00 UTC / 15:00 Horário de Brasília) e terminará em %@ (00:00 UTC / 03:00 Horário de Brasília). A oferta promocional está disponível apenas na compra de Gemas para si mesmo(a).";
 "magic_potion" = "Poção Mágica";
 "magic_potions" = "Poções Mágicas";
 "hatch_pet_again" = "Eclodir Mascote de novo";
@@ -1322,7 +1322,7 @@
 "tasks.form.last_scored" = "Última marcação";
 "tasks.form.completion" = "Conclusão";
 "tasks.form.times_scored" = "Vezes marcadas";
-"checkin_prize_earned" = "Você ganhou uma %s como recompensa por sua devoção em melhorar sua vida.";
+"checkin_prize_earned" = "Você ganhou uma %@ como recompensa por sua devoção em melhorar sua vida.";
 "tasks.tasks" = "Afazeres";
 "next_prize_in_x_checkins" = "Próximo prêmio em %d Check-Ins";
 "see_you_tomorrow" = "Até amanhã";

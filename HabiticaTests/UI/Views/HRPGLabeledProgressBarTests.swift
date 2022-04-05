@@ -10,6 +10,7 @@ import Nimble
 
 class LabeledProgressBarTests: XCTestCase {
 
+    let separator = Locale.current.decimalSeparator
     var progressBar = LabeledProgressBar()
 
     override func setUp() {
@@ -30,14 +31,14 @@ class LabeledProgressBarTests: XCTestCase {
         progressBar.value = 0.99
         expect(self.progressBar.labelView.text) == "1 / 50"
         progressBar.value = 0.11
-        expect(self.progressBar.labelView.text) == "0.2 / 50"
+        expect(self.progressBar.labelView.text) == "0\(separator)2 / 50"
     }
 
     func testValueRoundingDecimals() {
         progressBar.value = 0.09
-        expect(self.progressBar.labelView.text) == "0.1 / 50"
+        expect(self.progressBar.labelView.text) == "0\(separator)1 / 50"
         progressBar.value = 0.0001
-        expect(self.progressBar.labelView.text) == "0.1 / 50"
+        expect(self.progressBar.labelView.text) == "0\(separator)1 / 50"
     }
 
     func testValueRoundingNegative() {
@@ -53,7 +54,7 @@ class LabeledProgressBarTests: XCTestCase {
         progressBar.value = 0
         expect(self.progressBar.labelView.text) == "0 / 50"
         progressBar.value = 0.9
-        expect(self.progressBar.labelView.text) == "0.9 / 50"
+        expect(self.progressBar.labelView.text) == "0\(separator)9 / 50"
     }
 
 }

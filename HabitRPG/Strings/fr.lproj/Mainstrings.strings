@@ -909,10 +909,10 @@
 "empty.habits.description" = "Les habitudes n'ont pas une planification rigide. Vous pouvez les valider plusieurs fois par jour.";
 "empty.habits.title" = "Voici vos habitudes";
 "notifications.dismiss_all" = "Tout effacer";
-"notifications.quest_invite" = "Vous avez été invité à la quête **%s**";
-"notifications.private_guild_invite" = "Vous avez reçu une invitation de la guilde privée **%s**";
-"notifications.public_guild_invite" = "Vous avez reçu une invitation de la guilde publique **%s**";
-"notifications.party_invite" = "Vous avez reçu une invitation pour l'équipe **%s**";
+"notifications.quest_invite" = "Vous avez été invité à la quête **%@**";
+"notifications.private_guild_invite" = "Vous avez reçu une invitation de la guilde privée **%@**";
+"notifications.public_guild_invite" = "Vous avez reçu une invitation de la guilde publique **%@**";
+"notifications.party_invite" = "Vous avez reçu une invitation pour l'équipe **%@**";
 "notifications.unread_party_message" = "Votre équipe, **%@**, a de nouveaux messages.";
 "notifications.unread_guild_message" = "**%@** a de nouveaux messages.";
 "notifications.new_mystery_item" = "Vous avez de nouveaux **objets mystère**";
@@ -1115,8 +1115,8 @@
 "create_task_title" = "Créer une tâche";
 "gift_subscription" = "Offrir un Abonnement";
 "gift_gems" = "Offrir des gemmes";
-"user_was_unblocked" = "Vous avez débloqué %s.";
-"user_was_blocked" = "Vous avez bloqué %s.";
+"user_was_unblocked" = "Vous avez débloqué %@.";
+"user_was_blocked" = "Vous avez bloqué %@.";
 "block_description" = "Une personne bloquée ne peut vous envoyer de messages privés mais vous verrez malgré tout leurs messages dans la taverne ou les guildes. Cela n'a aucun effet si la personne fait partie de l'équipe de modération, maintenant ou dans le futur.";
 "block_username" = "Bloquer %@ ?";
 "unblock_user" = "Ne plus bloquer";
@@ -1125,7 +1125,7 @@
 "leave_and_delete_task" = "Quitter et supprimer la tâche";
 "delete_challenge_task" = "Supprimer la tâche de défi ?";
 "leave_and_delete_x_tasks" = "Quitter & supprimer %d tâches";
-"delete_challenge_task_description" = "Cette tâche appartient aux %d tâches qui composent le défi “%s”. Vous devez quitter ce défi pour supprimer cette tâche.";
+"delete_challenge_task_description" = "Cette tâche appartient aux %d tâches qui composent le défi “%@”. Vous devez quitter ce défi pour supprimer cette tâche.";
 "delete_x_tasks" = "Supprimer %d tâches";
 "keep_x_tasks" = "Conserver %d tâches";
 "broken_challenge_description" = "Cette tâche est l'une des %d tâches qui composent un défi qui n'existe plus. Que voudriez-vous faire des tâches restantes ?";
@@ -1178,10 +1178,10 @@
 "subscriber_currency" = "Devise de souscription";
 "hourglasses_description" = "Les sabliers mystiques sont une forme de monnaie extrêmement rare que vous ne recevrez qu'en vous abonnant à Habitica pour trois mois consécutifs ou plus. Ils sont utilisables à la boutique des voyageurs temporels pour acheter d'anciens équipements, familiers, montures, arrière-plans animés ou même des quêtes spéciales.\n\nVous pouvez recevoir jusqu'à quatre sabliers mystiques par an. Vous les recevrez au moment où votre abonnement se renouvelle. Ils vous sont envoyés le premier jour du mois qui suit votre dernier paiement d'abonnement vous qualifiant pour un sablier. Lisez la page d'[abonnement] pour plus de détails.";
 "left_challenge" = "A quitté le défi";
-"gems_promo.info_limitations" = "Cette promotion est limitée à la durée de l'événement. Cet événement démarrera le %s (12:00 UTC) et se terminera le %s (00:00 UTC). Cette promotion n'est disponible que si vous achetez des gemmes pour vous-même.";
-"spooky_promo.info_instructions" = "Entre le %s et le %s, achetez simplement n'importe quel paquet de gemmes comme d'habitude, et votre compte sera crédité du nombre de gemmes promotionnelles. Cela vous fera plus de gemmes à dépenser, partager, ou économiser pour de futurs objets !";
+"gems_promo.info_limitations" = "Cette promotion est limitée à la durée de l'événement. Cet événement démarrera le %@ (12:00 UTC) et se terminera le %@ (00:00 UTC). Cette promotion n'est disponible que si vous achetez des gemmes pour vous-même.";
+"spooky_promo.info_instructions" = "Entre le %@ et le %@, achetez simplement n'importe quel paquet de gemmes comme d'habitude, et votre compte sera crédité du nombre de gemmes promotionnelles. Cela vous fera plus de gemmes à dépenser, partager, ou économiser pour de futurs objets !";
 "spooky_promo.info_prompt" = "La vente de gemmes est de retour pour hanter cette fin de gala d'automne ! C'est votre dernière chance d'obtenir plus de gemmes que jamais, alors faites le plein tant que ça dure !";
-"fall_promo.info_instructions" = "Entre le %s et le %s, achetez simplement n'importe quel paquet de gemmes comme d'habitude, et votre compte sera crédité du nombre de gemmes promotionnelles. Cela vous fera plus de gemmes à dépenser, partager, ou économiser pour de futurs objets !";
+"fall_promo.info_instructions" = "Entre le %@ et le %@, achetez simplement n'importe quel paquet de gemmes comme d'habitude, et votre compte sera crédité du nombre de gemmes promotionnelles. Cela vous fera plus de gemmes à dépenser, partager, ou économiser pour de futurs objets !";
 "fall_promo.info_prompt" = "Le gala d'automne bat son plein, alors nous avons pensé que ce serait le moment idéal pour proposer notre toute première vente de gemmes ! Dès à présent, vous recevrez plus de gemmes qu'auparavant pour chaque achat.";
 "promo_info_limitations_title" = "Limitations";
 "promo_info_instructions_title" = "Comment ça marche";
@@ -1265,7 +1265,7 @@
 "streak" = "Combo";
 "skills.caused_damage" = "Vous avez infligé des dégâts au boss";
 "report" = "Signaler";
-"checkin_prize_earned" = "Vous avez mérité cette récompense : %s pour votre dévotion à améliorer votre vie.";
+"checkin_prize_earned" = "Vous avez mérité cette récompense : %@ pour votre dévotion à améliorer votre vie.";
 "year" = "année";
 "month" = "mois";
 "week" = "semaine";

@@ -939,10 +939,10 @@
 "about.whats_new" = "新着情報を見る";
 "theme.followSystem" = "システム設定に従う";
 "notifications.dismiss_all" = "すべて閉じる";
-"notifications.quest_invite" = "クエスト「**%s**」に招待されました";
-"notifications.private_guild_invite" = "プライベートギルド「**%s**」に招待されました";
-"notifications.public_guild_invite" = "公共ギルド「**%s**」に招待されました";
-"notifications.party_invite" = "パーティー「**%s**」に招待されました";
+"notifications.quest_invite" = "クエスト「**%@**」に招待されました";
+"notifications.private_guild_invite" = "プライベートギルド「**%@**」に招待されました";
+"notifications.public_guild_invite" = "公共ギルド「**%@**」に招待されました";
+"notifications.party_invite" = "パーティー「**%@**」に招待されました";
 "notifications.unread_guild_message" = "**%@**に新しい投稿があります。";
 "notifications.new_mystery_item" = "新しい**ミステリーアイテム**があります";
 "party.remove_member_title" = "%@をパーティーから解雇して本当によろしいですか？";
@@ -1145,7 +1145,7 @@
 "leave_and_delete_tasks" = "やめる、タスクも削除する";
 "leave_and_keep_tasks" = "やめる、タスクはこのまま";
 "leave_and_delete_x_tasks" = "やめる、%dタスクを削除する";
-"delete_challenge_task_description" = "このタスクは「%s」チャレンジの%dタスクの一部です。このタスクを削除するにはチャレンジをやめてください。";
+"delete_challenge_task_description" = "このタスクは「%2$@」チャレンジの%1$dタスクの一部です。このタスクを削除するにはチャレンジをやめてください。";
 "leave_and_delete_task" = "やめる、タスクも削除する";
 "delete_challenge_task" = "チャレンジのタスクを削除しますか？";
 "delete_x_tasks" = "%dのタスクを削除する";
@@ -1154,8 +1154,8 @@
 "broken_challenge" = "チャレンジのリンク切れ";
 "gift_subscription" = "有料プランをプレゼントする";
 "gift_gems" = "ジェムを送る";
-"user_was_unblocked" = "%sのブロックを解除しました。";
-"user_was_blocked" = "%sをブロックしました。";
+"user_was_unblocked" = "%@のブロックを解除しました。";
+"user_was_blocked" = "%@をブロックしました。";
 "block_description" = "ブロックしたユーザーはあなたにプライベートメッセージを送ることができません。ですが、ブロックしたユーザーがキャンプ場やギルドに書き込んだ書き込みはいままでどおり見ることができます。ブロックはモデレーターや将来モデレーターになるユーザーに対しては使えません。";
 "joined_challenge" = "チャレンジに参加しました";
 "hourglasses_description" = "神秘の砂時計は極めてレアなゲーム内通貨で、Habiticaの有料会員を3ヶ月以上継続することで受け取れます。タイムトラベラーの店で神秘の砂時計を使って、過去の装備セット・ペット・乗騎・動く背景・特別なクエストなどを購入できます。\n\nあなたは神秘の砂時計を年に4つ受け取れます。入手のタイミングは有料会員の更新スケジュールに基づいています。砂時計を入手できる期間の有料プランを支払うと、その翌月の最初の日に配布されます。詳しくは [有料プラン] のページをご覧ください。";
@@ -1217,10 +1217,10 @@
 "unlocks_selecting_class_description" = "スキルはレベル10になりクラスを選択するとアンロックされます";
 "class_system_enable_instructions" = "アプリの設定からクラスシステムを有効にできます。";
 "class_system_disabled" = "クラスシステムが無効になっています。";
-"gems_promo.info_limitations" = "このキャンペーンは季節限定イベントの間のみの実施です。このイベントはの%sの21:00時(12:00 UTC)に始まり、%sの09:00時(00:00 UTC)に終了します。キャンペーンの対象は自分へのジェムを購入したときにのみ適用されます。";
-"spooky_promo.info_instructions" = "%sから%sの間、いつものようにジェムセットを買うだけであなたのアカウントにキャンペーンのジェムが贈られます。もっとジェムを使ったりシェアしたり新しい機能のリリースに備えてたくわえておいたりしましょう！";
+"gems_promo.info_limitations" = "このキャンペーンは季節限定イベントの間のみの実施です。このイベントはの%@の21:00時(12:00 UTC)に始まり、%@の09:00時(00:00 UTC)に終了します。キャンペーンの対象は自分へのジェムを購入したときにのみ適用されます。";
+"spooky_promo.info_instructions" = "%@から%@の間、いつものようにジェムセットを買うだけであなたのアカウントにキャンペーンのジェムが贈られます。もっとジェムを使ったりシェアしたり新しい機能のリリースに備えてたくわえておいたりしましょう！";
 "spooky_promo.info_prompt" = "ジェムのセールが今年の秋の大祭に出没するために戻ってきました！いつもよりもジェムを多く手に入れるラストチャンスです。キャンペーンの間にジェムをストックしておきましょう！";
-"fall_promo.info_instructions" = "%sから%sの間、いつものようにジェムセットを買うだけであなたのアカウントにキャンペーンのジェムが贈られます。もっとジェムを使ったりシェアしたり新しい機能のリリースに備えてたくわえておいたりしましょう！";
+"fall_promo.info_instructions" = "%@から%@の間、いつものようにジェムセットを買うだけであなたのアカウントにキャンペーンのジェムが贈られます。もっとジェムを使ったりシェアしたり新しい機能のリリースに備えてたくわえておいたりしましょう！";
 "left_challenge" = "チャレンジをやめました";
 "pet_accessibility_label_mount_owned" = "%@の乗騎を所有しています";
 "gift_confirmation_body_g1_g1" = "%@に%@ヶ月のHabiticaの有料プランを贈りました。そしてギフトワンゲットワンキャンペーンにより同じプランがあなたのアカウントにも適用されました！";
@@ -1275,7 +1275,7 @@
 "week" = "週";
 "day" = "日";
 "report" = "報告";
-"checkin_prize_earned" = "生活を向上させる努力をしたごぼうびとして %s を獲得しました。";
+"checkin_prize_earned" = "生活を向上させる努力をしたごぼうびとして %@ を獲得しました。";
 "tasks.form.completion" = "完了";
 "tasks.form.last_scored" = "最新の完了";
 "tasks.form.times_scored" = "完了した回数";

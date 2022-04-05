@@ -220,6 +220,7 @@ class RouterHandler: NSObject {
                 return
             }
             formController.taskType = TaskType(rawValue: link?.routeParameters["taskType"] as? String ?? "habit") ?? TaskType.habit
+            formController.editedTask = nil
             self.present(navigationController)
         }
         router.register("/menu") { _ in

@@ -103,7 +103,7 @@ class TaskDetailLineViewTests: XCTestCase {
         expect(self.taskDetailLine.reminderIconView.isHidden) == true
         expect(self.taskDetailLine.streakIconView.isHidden) == true
         expect(self.taskDetailLine.calendarIconView.isHidden) == false
-        expect(self.taskDetailLine.detailLabel.text) == "Today"
+        expect(self.taskDetailLine.detailLabel.text) == L10n.Tasks.dueToday
     }
     
     func testTodoDueTomorrow() {
@@ -114,7 +114,7 @@ class TaskDetailLineViewTests: XCTestCase {
         expect(self.taskDetailLine.reminderIconView.isHidden) == true
         expect(self.taskDetailLine.streakIconView.isHidden) == true
         expect(self.taskDetailLine.calendarIconView.isHidden) == false
-        expect(self.taskDetailLine.detailLabel.text) == "Tomorrow"
+        expect(self.taskDetailLine.detailLabel.text) == L10n.Tasks.dueTomorrow
     }
     
     func testTodoDueIn3Days() {
@@ -125,7 +125,7 @@ class TaskDetailLineViewTests: XCTestCase {
         expect(self.taskDetailLine.reminderIconView.isHidden) == true
         expect(self.taskDetailLine.streakIconView.isHidden) == true
         expect(self.taskDetailLine.calendarIconView.isHidden) == false
-        expect(self.taskDetailLine.detailLabel.text) == "In 3 days"
+        expect(self.taskDetailLine.detailLabel.text) == L10n.Tasks.dueInXDays(3)
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import InputBarAccessoryView
 
 class InboxChatViewController: MessagesViewController {
     @objc var userID: String?
@@ -90,4 +91,25 @@ class InboxChatViewController: MessagesViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    override func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        guard let message = inputBar.inputTextView.text else {
+            return
+        }
+
+        inputBar.inputTextView.text = String()
+        inputBar.invalidatePlugins()
+
+        // Send button activity animation
+        inputBar.sendButton.startAnimating()
+        UIImpactFeedbackGenerator.oneShotImpactOccurred(.light)
+        socialRepository.post(inboxMessage: message, toUserID: userID ?? "").observeResult { (result) in
+            inputBar.sendButton.stopAnimating()
+            switch result {
+            case .failure:
+                inputBar.inputTextView.text = message
+            case .success:
+                return
+            }
+        }
+    }
 }
