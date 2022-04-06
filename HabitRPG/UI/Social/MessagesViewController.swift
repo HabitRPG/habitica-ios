@@ -88,14 +88,28 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.pin.top().start().end().bottom()
-        var tabbarOffset: CGFloat = (view.window?.safeAreaInsets.bottom ?? 0) + 40
         var safearea: CGFloat = 0
+        var tabbarOffset: CGFloat = (view.window?.safeAreaInsets.bottom ?? 0) + 40
         if tabBarController == nil {
             tabbarOffset = 0
             safearea = (view.window?.safeAreaInsets.bottom ?? 0)
         }
-        let keyboardOffset = KeyboardManager.height > 0 ? KeyboardManager.height - tabbarOffset : safearea
-        tableView.contentInset.top = inputBar.intrinsicContentSize.height + keyboardOffset
+        var keyboardOffset = KeyboardManager.height > 0 ? KeyboardManager.height - tabbarOffset : safearea
+        if (modalPresentationStyle == .pageSheet || modalPresentationStyle == .formSheet) && traitCollection.isIPadFullSize {
+            safearea = 0
+            if (view.window?.bounds.size.height ?? 0) - KeyboardManager.height > view.bounds.size.height {
+                keyboardOffset = 0
+            } else {
+                keyboardOffset = KeyboardManager.height - ((view.window?.bounds.height ?? 0) -  (abs(view?.window?.convert(CGPoint(x: 0, y: 0), to: view).y ?? 0) + view.bounds.height))
+            }
+        }
+        var inputBarOffset = keyboardOffset
+        if tabBarController != nil {
+            inputBarOffset += inputBar.intrinsicContentSize.height
+        } else {
+            inputBarOffset -= 4
+        }
+        tableView.contentInset.top = inputBarOffset
         inputBar.pin.start().end().height(inputBar.intrinsicContentSize.height).bottom(keyboardOffset)
         let acceptView = view.viewWithTag(999)
         acceptView?.frame = CGRect(x: 0, y: view.frame.size.height-90, width: view.frame.size.width, height: 90)

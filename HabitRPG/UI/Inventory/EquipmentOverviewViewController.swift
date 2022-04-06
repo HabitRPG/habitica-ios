@@ -77,7 +77,7 @@ class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegat
     }
     
     override func viewWillLayoutSubviews() {
-        if traitCollection.isIPad {
+        if traitCollection.isIPadFullSize {
             if view.window?.windowScene?.isLandscape == true {
                 stackView.axis = .horizontal
             } else {
