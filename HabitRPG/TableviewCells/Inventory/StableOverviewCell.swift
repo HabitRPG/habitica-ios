@@ -41,9 +41,7 @@ class StableOverviewCell: UICollectionViewCell {
             if item.numberOwned != 0 || ownsItem {
                 imageView.setImagewith(name: item.imageName)
             } else {
-                ImageManager.getImage(name: item.imageName) {[weak self] (image, _) in
-                    self?.imageView.image = image?.withRenderingMode(.alwaysTemplate)
-                }
+                imageView.setImagewith(name: "\(item.imageName)-outline")
             }
         } else {
             textLabel?.numberOfLines = 1
