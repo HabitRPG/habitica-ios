@@ -688,7 +688,11 @@ class SettingsViewController: FormViewController, Themeable {
         timeRow?.updateCell()
         
         let searchableUsernameRow = (form.rowBy(tag: SettingsTags.searchableUsername) as? AlertRow<LabeledFormValue<Bool>>)
-        searchableUsernameRow?.value = user.preferences?.searchableUsername == true ? LabeledFormValue(value: true, label: L10n.Settings.searchableEverywhere) : LabeledFormValue(value: false, label: L10n.Settings.searchablePrivateSpaces)
+        if user.preferences?.searchableUsername == true {
+            searchableUsernameRow?.value = LabeledFormValue(value: true, label: L10n.Settings.searchableEverywhere)
+        } else {
+            searchableUsernameRow?.value = LabeledFormValue(value: false, label: L10n.Settings.searchablePrivateSpaces)
+        }
         searchableUsernameRow?.updateCell()
         
         let disableNotificationsRow = (form.rowBy(tag: SettingsTags.disableAllNotifications) as? SwitchRow)

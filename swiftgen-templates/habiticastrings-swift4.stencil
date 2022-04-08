@@ -4,8 +4,7 @@
 {% set accessModifier %}{% if param.publicAccess %}public{% else %}internal{% endif %}{% endset %}
 import Foundation
 
-// swiftlint:disable superfluous_disable_command
-// swiftlint:disable file_length
+// swiftlint:disable all
 {% macro parametersBlock types %}{% filter removeNewlines:"leading" %}
   {% for type in types %}
     _ p{{forloop.counter}}: {{type}}{% if not forloop.last %}, {% endif %}
@@ -38,7 +37,6 @@ import Foundation
 {{sp}}  {% endfor %}
 {% endmacro %}
 
-// swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 {% set enumName %}{{param.enumName|default:"L10n"}}{% endset %}
 {{accessModifier}} enum {{enumName}} {
   /// Update bundle if you need to change app language
@@ -54,7 +52,6 @@ import Foundation
   {% call recursiveBlock tables.first.name tables.first.levels "" %}
   {% endif %}
 }
-// swiftlint:enable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 
 extension {{enumName}} {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {

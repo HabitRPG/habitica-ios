@@ -257,8 +257,11 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         })
         
         ownedChallengeSignal.observeValues {[weak self] _ in
-            self?.doubleEndButtonItemProperty.value = DoubleButtonMultiModelDataSourceItem(identifier: "endButton", leftAttributeProvider: self?.joinLeaveStyleProvider, leftInputs: self?.joinLeaveStyleProvider,
-                                                                                         rightAttributeProvider: self?.endChallengeStyleProvider, rightInputs: self?.endChallengeStyleProvider)
+            self?.doubleEndButtonItemProperty.value = DoubleButtonMultiModelDataSourceItem(identifier: "endButton",
+                                                                                           leftAttributeProvider: self?.joinLeaveStyleProvider,
+                                                                                           leftInputs: self?.joinLeaveStyleProvider,
+                                                                                           rightAttributeProvider: self?.endChallengeStyleProvider,
+                                                                                           rightInputs: self?.endChallengeStyleProvider)
         }
         ownedChallengeSignal
             .filter({ (challenge) -> Bool in

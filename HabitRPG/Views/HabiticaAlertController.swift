@@ -242,7 +242,12 @@ class HabiticaAlertController: UIViewController, Themeable {
     
     @objc
     @discardableResult
-    func addAction(title: String, style: UIAlertAction.Style = .default, isMainAction: Bool = false, closeOnTap: Bool = true, identifier: String? = nil, handler: ((UIButton) -> Swift.Void)? = nil) -> UIButton {
+    func addAction(title: String,
+                   style: UIAlertAction.Style = .default,
+                   isMainAction: Bool = false,
+                   closeOnTap: Bool = true,
+                   identifier: String? = nil,
+                   handler: ((UIButton) -> Swift.Void)? = nil) -> UIButton {
         let button = UIButton()
         if let identifier = identifier {
             button.accessibilityIdentifier = identifier

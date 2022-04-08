@@ -38,7 +38,11 @@ class DoubleButtonMultiModelDataSourceItem: ConcreteMultiModelDataSourceItem<Dou
     let rightAttributeProvider: HRPGButtonAttributeProvider?
     let rightInputs: HRPGButtonModelInputs?
     
-    init(identifier: String, leftAttributeProvider: HRPGButtonAttributeProvider?, leftInputs: HRPGButtonModelInputs?, rightAttributeProvider: HRPGButtonAttributeProvider?, rightInputs: HRPGButtonModelInputs?) {
+    init(identifier: String,
+         leftAttributeProvider: HRPGButtonAttributeProvider?,
+         leftInputs: HRPGButtonModelInputs?,
+         rightAttributeProvider: HRPGButtonAttributeProvider?,
+         rightInputs: HRPGButtonModelInputs?) {
         self.leftAttributeProvider = leftAttributeProvider
         self.leftInputs = leftInputs
         self.rightAttributeProvider = rightAttributeProvider

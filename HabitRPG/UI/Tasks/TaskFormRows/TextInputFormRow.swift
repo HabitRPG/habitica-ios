@@ -35,7 +35,6 @@ public class TaskTextInputCell: Cell<String>, CellType, UITextViewDelegate {
         
         if let taskRow = row as? TaskTextInputRow {
             textField.keyboardAppearance = ThemeService.shared.theme.isDark ? .dark : .default
-            //textField.attributedPlaceholder = NSAttributedString(string: taskRow.placeholder ?? "", attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.5)])
             topSpacing = taskRow.topSpacing
             bottomSpacing = taskRow.bottomSpacing
         }

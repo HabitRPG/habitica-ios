@@ -2,10 +2,8 @@
 
 import Foundation
 
-// swiftlint:disable superfluous_disable_command
-// swiftlint:disable file_length
+// swiftlint:disable all
 
-// swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 public enum L10n {
   /// Update bundle if you need to change app language
   static var bundle: Bundle?
@@ -2685,7 +2683,6 @@ public enum L10n {
     public static var worldBoss: String { return L10n.tr("Mainstrings", "world_boss.world_boss") }
   }
 }
-// swiftlint:enable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 
 extension L10n {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {

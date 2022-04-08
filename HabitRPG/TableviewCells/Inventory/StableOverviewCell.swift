@@ -38,7 +38,7 @@ class StableOverviewCell: UICollectionViewCell {
             textLabel?.numberOfLines = 2
             countLabel?.isHidden = true
             countLabelHeightConstraint.constant = 0
-            if item.numberOwned != 0 || ownsItem {
+            if item.numberOwned != 0 {
                 imageView.setImagewith(name: item.imageName)
             } else {
                 imageView.setImagewith(name: "\(item.imageName)-outline")

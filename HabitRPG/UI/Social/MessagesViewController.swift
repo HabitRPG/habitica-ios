@@ -95,7 +95,7 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
             safearea = (view.window?.safeAreaInsets.bottom ?? 0)
         }
         var keyboardOffset = KeyboardManager.height > 0 ? KeyboardManager.height - tabbarOffset : safearea
-        if (modalPresentationStyle == .pageSheet || modalPresentationStyle == .formSheet) && traitCollection.isIPadFullSize {
+        if (modalPresentationStyle == .pageSheet || modalPresentationStyle == .formSheet) && view.window?.traitCollection.isIPadFullSize == true {
             safearea = 0
             if (view.window?.bounds.size.height ?? 0) - KeyboardManager.height > view.bounds.size.height {
                 keyboardOffset = 0

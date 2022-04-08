@@ -44,7 +44,9 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             }
             self?.tableView?.reloadData()
             self?.viewController?.setTitleWith(username: member?.profile?.name)
-            (self?.emptyDataSource as? SingleItemTableViewDataSource)?.styleFunction = EmptyTableViewCell.inboxChatStyleUsername(displayName: member?.profile?.name ?? "", contributorTier: member?.contributor?.level, username: member?.username ?? "")
+            (self?.emptyDataSource as? SingleItemTableViewDataSource)?.styleFunction = EmptyTableViewCell.inboxChatStyleUsername(displayName: member?.profile?.name ?? "",
+                                                                                                                                 contributorTier: member?.contributor?.level,
+                                                                                                                                 username: member?.username ?? "")
             self?.tableView?.reloadData()
         }).start())
         loadMessages()
@@ -100,17 +102,7 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
                        user: self.user, isExpanded: isExpanded)
         
         cell.profileAction = {[weak self] in
-            guard let profileViewController = self?.viewController?.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? UserProfileViewController else {
-                return
-            }
-            if message.sent {
-                profileViewController.userID = self?.user?.id
-                profileViewController.username = self?.user?.username
-            } else {
-                profileViewController.userID = message.userID
-                profileViewController.username = message.username
-            }
-            self?.viewController?.navigationController?.pushViewController(profileViewController, animated: true)
+            self?.showProfile(message: message)
         }
         cell.copyAction = {
             let pasteboard = UIPasteboard.general
@@ -119,21 +111,7 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             ToastManager.show(toast: toastView)
         }
         cell.reportAction = {[weak self] in
-            guard let view = Bundle.main.loadNibNamed("HRPGFlagInformationOverlayView", owner: self, options: nil)?.first as? FlagInformationOverlayView else {
-                return
-            }
-            view.message = message.text
-            view.sizeToFit()
-            
-            let alert = HabiticaAlertController()
-            alert.title = L10n.reportXViolation(message.username ?? "")
-            alert.contentView = view
-            alert.addAction(title: L10n.report, style: .destructive, isMainAction: true) {[weak self] _ in
-                self?.socialRepository.flag(message: message).observeCompleted {}
-            }
-            alert.addCancelAction()
-            alert.containerViewSpacing = 8
-            alert.enqueue()
+            self?.showReportView(message: message)
         }
         cell.deleteAction = {[weak self] in
             self?.socialRepository.delete(message: message).observeCompleted {}
@@ -206,5 +184,37 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
     override func checkForEmpty() {
         super.checkForEmpty()
         tableView?.separatorStyle = .none
+    }
+    
+    private func showReportView(message: InboxMessageProtocol) {
+        guard let view = Bundle.main.loadNibNamed("HRPGFlagInformationOverlayView", owner: self, options: nil)?.first as? FlagInformationOverlayView else {
+            return
+        }
+        view.message = message.text
+        view.sizeToFit()
+        
+        let alert = HabiticaAlertController()
+        alert.title = L10n.reportXViolation(message.username ?? "")
+        alert.contentView = view
+        alert.addAction(title: L10n.report, style: .destructive, isMainAction: true) {[weak self] _ in
+            self?.socialRepository.flag(message: message).observeCompleted {}
+        }
+        alert.addCancelAction()
+        alert.containerViewSpacing = 8
+        alert.enqueue()
+    }
+    
+    private func showProfile(message: InboxMessageProtocol) {
+        guard let profileViewController = viewController?.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? UserProfileViewController else {
+            return
+        }
+        if message.sent {
+            profileViewController.userID = user?.id
+            profileViewController.username = user?.username
+        } else {
+            profileViewController.userID = message.userID
+            profileViewController.username = message.username
+        }
+        viewController?.navigationController?.pushViewController(profileViewController, animated: true)
     }
 }

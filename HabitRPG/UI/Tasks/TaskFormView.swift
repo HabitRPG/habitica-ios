@@ -237,7 +237,7 @@ struct FormDatePicker<TitleView: View>: View {
     }
 }
 
-public struct FormTextFieldStyle : TextFieldStyle {
+public struct FormTextFieldStyle: TextFieldStyle {
     // swiftlint:disable:next identifier_name
     public func _body(configuration: TextField<Self._Label>) -> some View {
         configuration

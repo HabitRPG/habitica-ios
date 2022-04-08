@@ -63,7 +63,7 @@ extension HabiticaAppDelegate: UNUserNotificationCenterDelegate {
                 completionHandler()
             }
         case "completeAction":
-            ""
+            return
         default:
             handlePushnotification(identifier: response.notification.request.identifier, userInfo: response.notification.request.content.userInfo)
         }
