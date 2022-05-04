@@ -276,6 +276,7 @@
 "settings.day_start" = "Day Start";
 "settings.custom_day_start" = "Custom Day Start";
 "settings.custom_day_start_description" = "Shift when your day switches over past the default time of 12:00 AM";
+"settings.next_cron_run" = "Next day reset: %@";
 "settings.day_start_adjustment" = "Day Start Adjustment";
 "settings.adjustment" = "Adjustment";
 "settings.social" = "Social";
