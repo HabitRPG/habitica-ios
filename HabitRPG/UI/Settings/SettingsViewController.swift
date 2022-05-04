@@ -304,7 +304,7 @@ class SettingsViewController: FormViewController, Themeable {
                         let nextCron = self?.calculateNextCron(dayStart: self?.user?.preferences?.dayStart)
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "MM/dd/yyyy @ hh:mm a"
-                        ToastManager.show(text: L10n.Settings.nextCronRun(dateFormatter.string(from: nextCron ?? Date())), color: .green, duration: 3.0)
+                        ToastManager.show(text: L10n.Settings.nextCronRun(dateFormatter.string(from: nextCron ?? Date())), color: .green, duration: 4.0)
                     }
                 })
                 row.onPresent({ (_, to) in
