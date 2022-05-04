@@ -652,7 +652,7 @@
 "errors.quest_invite_accept" = "Nastala chyba během přijímání pozvánky na výpravu";
 "errors.quest_invite_reject" = "Nastala chyba během odmítnutí pozvánky na výpravu";
 "world_boss.third_bullet" = "Můžeš pokračovat s normálními výpravami, škody se započítají oběma";
-"notifications.quest_invite" = "Byl/a jsi pozván/a na výpravu **%s**";
+"notifications.quest_invite" = "Byl/a jsi pozván/a na výpravu **%@**";
 "organize_by" = "Zorganizovat podle";
 "tasks.examples.school_todo_notes" = "Klikni sem, abys upřesnil tvůj nejdůležitější úkol";
 "discover" = "Objev";
@@ -855,8 +855,8 @@
 "empty.dailies.title" = "Toto jsou vaše denní úkoly";
 "empty.habits.title" = "To jsou vaše návyky";
 "notifications.dismiss_all" = "Všechno zruš";
-"notifications.public_guild_invite" = "Byli jste pozváni k účasti ve veřejném cechu **%s**";
-"notifications.party_invite" = "Byli jste pozváni, abyste se připojili k družině **%s**";
+"notifications.public_guild_invite" = "Byli jste pozváni k účasti ve veřejném cechu **%@**";
+"notifications.party_invite" = "Byli jste pozváni, abyste se připojili k družině **%@**";
 "notifications.new_bailey" = "Nová aktualizace od Bailey!";
 "purchased" = "Zakoupili jste %@";
 "shops.other_class_disclaimer" = "Můžete si koupit pouze vybavení pro vaši třídu";

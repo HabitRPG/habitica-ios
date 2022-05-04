@@ -129,6 +129,8 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         
         let userDefaults = UserDefaults.standard
         #if !targetEnvironment(macCatalyst)
+        Crashlytics.crashlytics().setCustomValue(-(NSTimeZone.local.secondsFromGMT() / 60), forKey: "timesoze_offset")
+        Crashlytics.crashlytics().setCustomValue(LanguageHandler.getAppLanguage().code, forKey: "app_language")
         Analytics.setUserProperty(LanguageHandler.getAppLanguage().code, forName: "app_language")
         Analytics.setUserProperty(UIApplication.shared.alternateIconName, forName: "app_icon")
         Analytics.setUserProperty(userDefaults.string(forKey: "initialScreenURL"), forName: "launch_screen")
@@ -371,10 +373,8 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     }
     
     func applySearchAdAttribution() {
-        Analytics.logEvent("attribution_called", parameters: nil)
         let defaults = UserDefaults.standard
         if defaults.bool(forKey: "userWasAttributed") {
-            Analytics.logEvent("attribution_already_done", parameters: nil)
             return
         }
         if #available(iOS 14.5, *) {
@@ -397,13 +397,12 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                             return
                         }
                         guard let data = data else {
-                            Analytics.logEvent("attribution_failed", parameters: ["point": "no data"])
+                            Analytics.logEvent("attribution_failed_no_data", parameters: ["point": "no data"])
                             return
                         }
-                        defaults.set(true, forKey: "userWasAttributed")
                         do {
                             guard let data = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
-                                Analytics.logEvent("attribution_failed", parameters: ["point": "no data"])
+                                Analytics.logEvent("attribution_failed_json", parameters: ["point": "no data"])
                                 return
                             }
                             if let campaignId = data["campaignId"] as? Int {
@@ -417,17 +416,15 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                                 analyticsData["clickDate"] = data["iad-click-date"]
                                 analyticsData["keyword"] = data["iad-keyword"]
                                 analyticsData["keywordMatchtype"] = data["iad-keyword-matchtype"]
-                                if analyticsData["attribution"] as? String != "true" {
-                                    analyticsData["point"] = "not attributed"
-                                    Analytics.logEvent("attribution_failed", parameters: analyticsData)
-                                    return
-                                }
+                                defaults.set(true, forKey: "userWasAttributed")
                                 HabiticaAnalytics.shared.log("adAttribution", withEventProperties: analyticsData)
                                 Amplitude.instance().setUserProperties([
                                     "clickedSearchAd": data["iad-attribution"] ?? "",
                                     "searchAdName": data["iad-campaign-name"] ?? "",
                                     "searchAdConversionDate": data["iad-conversion-date"] ?? ""
                                 ])
+                            } else {
+                                Analytics.logEvent("attribution_failed_cid", parameters: ["point": "no campaignId"])
                             }
                         } catch {
                             logger.log(error)

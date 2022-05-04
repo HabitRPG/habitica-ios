@@ -210,6 +210,7 @@
 		295BC6F9226F5B6400DDDF1A /* BaseNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295BC6F8226F5B6400DDDF1A /* BaseNotificationCell.swift */; };
 		295BC6FD226F5E3700DDDF1A /* UnallocatedPointsNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295BC6FC226F5E3700DDDF1A /* UnallocatedPointsNotificationCell.swift */; };
 		295BC701226F677100DDDF1A /* NewsNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295BC700226F677100DDDF1A /* NewsNotificationCell.swift */; };
+		295D2ADF27FB2F18006FBB3C /* ImageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D2ADE27FB2F18006FBB3C /* ImageManagerTests.swift */; };
 		295D42F620921F4200948E7E /* ClassSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D42F520921F4200948E7E /* ClassSelectionViewController.swift */; };
 		295D42F820922BA700948E7E /* ClassSelectionOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D42F720922BA700948E7E /* ClassSelectionOptionView.swift */; };
 		295E9DF420B456F100D58D45 /* FilterTableviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DF320B456F100D58D45 /* FilterTableviewDataSource.swift */; };
@@ -314,7 +315,6 @@
 		2995F7FC25BAF3B600322CB3 /* RemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2995F7FA25BAF3B600322CB3 /* RemoteLogger.swift */; };
 		2996AA1F22EB157800033D92 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2996AA2122EB157800033D92 /* AppIntentVocabulary.plist */; };
 		29995A6126CBCB0B0063D4C9 /* AdServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29995A6026CBCB0B0063D4C9 /* AdServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		299A556226402F800015EA5C /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299A556126402F800015EA5C /* TaskDetailView.swift */; };
 		299B12492642D2AB00498025 /* PromoWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299B12482642D2AB00498025 /* PromoWebViewController.swift */; };
 		299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6211F505DFA00E22935 /* PaddedLabel.swift */; };
 		299BD6351F54346F00E22935 /* QuestDetailRewardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */; };
@@ -335,6 +335,7 @@
 		29A06E1D23ED4125003BADE9 /* InAppRewardProtocol-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A06E1C23ED4125003BADE9 /* InAppRewardProtocol-Extensions.swift */; };
 		29A0FD81203DF49900590BDE /* GuidelinesPromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */; };
 		29A1B9B91F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */; };
+		29A23E1027F48C7E00713FC0 /* StringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A23E0F27F48C7E00713FC0 /* StringsTests.swift */; };
 		29A4CB71257FF3150013F0B3 /* String-SafeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4CB70257FF3150013F0B3 /* String-SafeExtensions.swift */; };
 		29A4CB77257FF31F0013F0B3 /* String-SafeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4CB70257FF3150013F0B3 /* String-SafeExtensions.swift */; };
 		29A4FE6326A9B3DB00F0FE30 /* HabitProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4FE6226A9B3DB00F0FE30 /* HabitProgressView.swift */; };
@@ -926,6 +927,7 @@
 		295BC6F8226F5B6400DDDF1A /* BaseNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNotificationCell.swift; sourceTree = "<group>"; };
 		295BC6FC226F5E3700DDDF1A /* UnallocatedPointsNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnallocatedPointsNotificationCell.swift; sourceTree = "<group>"; };
 		295BC700226F677100DDDF1A /* NewsNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsNotificationCell.swift; sourceTree = "<group>"; };
+		295D2ADE27FB2F18006FBB3C /* ImageManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManagerTests.swift; sourceTree = "<group>"; };
 		295D42F520921F4200948E7E /* ClassSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassSelectionViewController.swift; sourceTree = "<group>"; };
 		295D42F720922BA700948E7E /* ClassSelectionOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassSelectionOptionView.swift; sourceTree = "<group>"; };
 		295E9DF320B456F100D58D45 /* FilterTableviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableviewDataSource.swift; sourceTree = "<group>"; };
@@ -1048,7 +1050,6 @@
 		2996AA3222EB159E00033D92 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = zh; path = zh.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		2996AA3322EB159F00033D92 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = fr; path = fr.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		29995A6026CBCB0B0063D4C9 /* AdServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdServices.framework; path = System/Library/Frameworks/AdServices.framework; sourceTree = SDKROOT; };
-		299A556126402F800015EA5C /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
 		299B12482642D2AB00498025 /* PromoWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoWebViewController.swift; sourceTree = "<group>"; };
 		299BD6211F505DFA00E22935 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestDetailRewardView.xib; sourceTree = "<group>"; };
@@ -1069,6 +1070,7 @@
 		29A06E1C23ED4125003BADE9 /* InAppRewardProtocol-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InAppRewardProtocol-Extensions.swift"; sourceTree = "<group>"; };
 		29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuidelinesPromptView.xib; sourceTree = "<group>"; };
 		29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction-Extensions.swift"; sourceTree = "<group>"; };
+		29A23E0F27F48C7E00713FC0 /* StringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsTests.swift; sourceTree = "<group>"; };
 		29A4CB70257FF3150013F0B3 /* String-SafeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-SafeExtensions.swift"; sourceTree = "<group>"; };
 		29A4FE6226A9B3DB00F0FE30 /* HabitProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitProgressView.swift; sourceTree = "<group>"; };
 		29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUsernameModalViewController.swift; sourceTree = "<group>"; };
@@ -1753,6 +1755,14 @@
 			path = Notifications;
 			sourceTree = "<group>";
 		};
+		295D2ADD27FB2EF1006FBB3C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				295D2ADE27FB2F18006FBB3C /* ImageManagerTests.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		2967CF7E252479C400F366DF /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
@@ -2034,7 +2044,6 @@
 			children = (
 				29205E332062DF620024E355 /* TaskFormRows */,
 				291CE4B7231EC11E0001A243 /* FilterViewController.swift */,
-				299A556126402F800015EA5C /* TaskDetailView.swift */,
 				2942F8CE266DF9CB003F6500 /* TaskFormView.swift */,
 				29A4FE6226A9B3DB00F0FE30 /* HabitProgressView.swift */,
 				29AA79C62685B71100871541 /* TaskFormPicker.swift */,
@@ -2331,6 +2340,7 @@
 		D94461841AB34F5C0015215E /* HabiticaTests */ = {
 			isa = PBXGroup;
 			children = (
+				295D2ADD27FB2EF1006FBB3C /* Utilities */,
 				D9709A551E80536A0005F35B /* Interactors */,
 				D957043F1E152576004F6804 /* TestHelpers */,
 				D957043C1E151C1C004F6804 /* HabiticaTests-Bridging-Header.h */,
@@ -2340,6 +2350,7 @@
 				D94461851AB34F5C0015215E /* Supporting Files */,
 				2970CB51227B1A8600FACCB7 /* MarkdownTests.swift */,
 				29DBDE47274BCDA2008F6777 /* HabiticaTests.swift */,
+				29A23E0F27F48C7E00713FC0 /* StringsTests.swift */,
 			);
 			path = HabiticaTests;
 			sourceTree = "<group>";
@@ -4064,6 +4075,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D957044B1E1585DB004F6804 /* LoginViewControllerTests.swift in Sources */,
+				295D2ADF27FB2F18006FBB3C /* ImageManagerTests.swift in Sources */,
 				D95704431E1528F2004F6804 /* Event-Extensions.swift in Sources */,
 				D957044D1E1589AB004F6804 /* TraitController.swift in Sources */,
 				2970CB52227B1A8600FACCB7 /* MarkdownTests.swift in Sources */,
@@ -4073,6 +4085,7 @@
 				D946E5C21B30A89500806BE6 /* NSDate+NSDateMock.m in Sources */,
 				29DBDE48274BCDA2008F6777 /* HabiticaTests.swift in Sources */,
 				298409CD203C3283003AD202 /* AvatarViewTests.swift in Sources */,
+				29A23E1027F48C7E00713FC0 /* StringsTests.swift in Sources */,
 				D9709A501E7F17150005F35B /* TaskDetailLineViewTests.swift in Sources */,
 				DC2C41815D97E02EF9D3BEF9 /* HRPGLabeledProgressBarTests.swift in Sources */,
 			);
@@ -4269,7 +4282,6 @@
 				29E162E21FFC21E100685640 /* CustomFontMetrics.swift in Sources */,
 				29D16C7725A336E8001D9A61 /* MainSplitViewController.swift in Sources */,
 				D984D5861E48E5CF006E84F8 /* TaskDetailLineView.swift in Sources */,
-				299A556226402F800015EA5C /* TaskDetailView.swift in Sources */,
 				2914943A2731553300DF2153 /* NumberPickerFormView.swift in Sources */,
 				2980E60B1EEA39B1005B7100 /* YesterdailyTaskCell.swift in Sources */,
 				296E480821BE86F800D15E4A /* GiftSubscriptionViewController.swift in Sources */,
@@ -4846,7 +4858,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 671;
+				CURRENT_PROJECT_VERSION = 677;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4880,7 +4892,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 671;
+				CURRENT_PROJECT_VERSION = 677;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4917,7 +4929,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 671;
+				CURRENT_PROJECT_VERSION = 677;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4931,7 +4943,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.5.1;
+				MARKETING_VERSION = 3.5.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4964,7 +4976,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 671;
+				CURRENT_PROJECT_VERSION = 677;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4978,7 +4990,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.5.1;
+				MARKETING_VERSION = 3.5.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -5003,7 +5015,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 671;
+				CURRENT_PROJECT_VERSION = 677;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -5016,7 +5028,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.5.1;
+				MARKETING_VERSION = 3.5.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Notifications";
@@ -5042,7 +5054,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 671;
+				CURRENT_PROJECT_VERSION = 677;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -5055,7 +5067,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.5.1;
+				MARKETING_VERSION = 3.5.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Notifications";
@@ -5079,7 +5091,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 671;
+				CURRENT_PROJECT_VERSION = 677;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -5092,7 +5104,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.5.1;
+				MARKETING_VERSION = 3.5.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -5120,7 +5132,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 671;
+				CURRENT_PROJECT_VERSION = 677;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -5133,7 +5145,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.5.1;
+				MARKETING_VERSION = 3.5.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -5159,7 +5171,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 671;
+				CURRENT_PROJECT_VERSION = 677;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -5172,7 +5184,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.5.1;
+				MARKETING_VERSION = 3.5.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -5202,7 +5214,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 671;
+				CURRENT_PROJECT_VERSION = 677;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -5215,7 +5227,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.5.1;
+				MARKETING_VERSION = 3.5.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -5479,7 +5491,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 671;
+				CURRENT_PROJECT_VERSION = 677;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -5535,7 +5547,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 671;
+				CURRENT_PROJECT_VERSION = 677;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -5565,7 +5577,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 671;
+				CURRENT_PROJECT_VERSION = 677;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
@@ -5612,7 +5624,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.5.1;
+				MARKETING_VERSION = 3.5.3;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -5662,7 +5674,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 671;
+				CURRENT_PROJECT_VERSION = 677;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
@@ -5709,7 +5721,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.5.1;
+				MARKETING_VERSION = 3.5.3;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",

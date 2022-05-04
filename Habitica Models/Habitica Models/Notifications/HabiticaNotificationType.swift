@@ -8,6 +8,7 @@
 
 import Foundation
 
+// swiftlint:disable inclusive_language
 public enum HabiticaNotificationType: String, EquatableStringEnumProtocol {
     case generic = ""
     case newStuff = "NEW_STUFF"
@@ -73,3 +74,4 @@ public enum HabiticaNotificationType: String, EquatableStringEnumProtocol {
         }
     }
 }
+// swiftlint:enable inclusive_language

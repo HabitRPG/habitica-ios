@@ -51,7 +51,7 @@ struct MemberListItem: View {
                             Text("\(Int(stats.mana)) / \(Int(stats.maxMana))").font(.system(size: 12)).foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor)).frame(height: 16)
                         }
                     }
-                }.frame(width: .infinity)
+                }.frame(maxWidth: .infinity)
             }
         }.padding(.vertical, 8).background(Color(ThemeService.shared.theme.contentBackgroundColor)).onTapGesture {
             onTap(member)

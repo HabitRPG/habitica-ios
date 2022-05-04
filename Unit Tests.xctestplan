@@ -22,6 +22,118 @@
       "options" : {
         "undefinedBehaviorSanitizerEnabled" : true
       }
+    },
+    {
+      "id" : "51282E9D-A23D-41D0-AA05-0C9372C41D13",
+      "name" : "German",
+      "options" : {
+        "language" : "de"
+      }
+    },
+    {
+      "id" : "5E50EE02-78E8-4513-B50C-7AEA4CCB2E19",
+      "name" : "English",
+      "options" : {
+        "language" : "en"
+      }
+    },
+    {
+      "id" : "312E8EDA-CF18-4A48-A963-7573957CAE21",
+      "name" : "Czech",
+      "options" : {
+        "language" : "cs"
+      }
+    },
+    {
+      "id" : "A248DCFD-70B7-4426-A079-D7E2D13BB83F",
+      "name" : "Danish",
+      "options" : {
+        "language" : "da"
+      }
+    },
+    {
+      "id" : "EC0907AB-36EB-4822-A4C9-F1B8C0F833C1",
+      "name" : "Spanish",
+      "options" : {
+        "language" : "es"
+      }
+    },
+    {
+      "id" : "82DD6425-E80A-43DE-82EF-35896911263B",
+      "name" : "French",
+      "options" : {
+        "language" : "fr"
+      }
+    },
+    {
+      "id" : "CCC3AB44-5D8B-475E-8EAE-64E8980C6C9E",
+      "name" : "Hebrew",
+      "options" : {
+        "language" : "he"
+      }
+    },
+    {
+      "id" : "A72455F9-F35C-481C-8BDE-B26B5A0BD6C6",
+      "name" : "Croatian",
+      "options" : {
+        "language" : "hr"
+      }
+    },
+    {
+      "id" : "CC7E96FD-37BF-446F-BAFA-FAE20E3BF66E",
+      "name" : "Polish",
+      "options" : {
+        "language" : "pl"
+      }
+    },
+    {
+      "id" : "16E2EDA4-5C5A-4524-976D-380C88FAABFF",
+      "name" : "Portuguese",
+      "options" : {
+        "language" : "pt-BR"
+      }
+    },
+    {
+      "id" : "644F59E3-E469-4DF0-ACBA-09B7B54A347A",
+      "name" : "Romanian",
+      "options" : {
+        "language" : "ro"
+      }
+    },
+    {
+      "id" : "FD9B416C-666A-4FF4-B3DC-6C28F7CF5A6D",
+      "name" : "Russian",
+      "options" : {
+        "language" : "ru"
+      }
+    },
+    {
+      "id" : "0A75615F-9503-4B51-8C17-D09EFB557F60",
+      "name" : "Chinese Simplified",
+      "options" : {
+        "language" : "zh-Hans"
+      }
+    },
+    {
+      "id" : "8F039370-5936-4A16-8110-C01FE39B0976",
+      "name" : "Italian",
+      "options" : {
+        "language" : "it"
+      }
+    },
+    {
+      "id" : "F690C093-1DBF-46F0-8C08-1B0AD11BB238",
+      "name" : "Japanese",
+      "options" : {
+        "language" : "ja"
+      }
+    },
+    {
+      "id" : "1FEFB7A7-63CE-4D4A-9CBA-11BF9E3A61C0",
+      "name" : "Dutch",
+      "options" : {
+        "language" : "nl"
+      }
     }
   ],
   "defaultOptions" : {
@@ -70,6 +182,9 @@
   },
   "testTargets" : [
     {
+      "skippedTests" : [
+        "TaskRepeatablesSummaryInteractorTests"
+      ],
       "target" : {
         "containerPath" : "container:Habitica.xcodeproj",
         "identifier" : "D94461821AB34F5C0015215E",

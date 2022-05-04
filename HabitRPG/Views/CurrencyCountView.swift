@@ -80,13 +80,11 @@ class CurrencyCountView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         configureViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
         configureViews()
     }
     
@@ -177,22 +175,6 @@ class CurrencyCountView: UIView {
         countLabel.pin.vertically().sizeToFit(.height)
         pin.width(requiredWidth).height(28)
         layout()
-    }
-    
-    // Helper methods since objc can't access swift enums
-    @objc
-    public func setAsGold() {
-        currency = .gold
-    }
-    
-    @objc
-    public func setAsGems() {
-        currency = .gem
-    }
-    
-    @objc
-    public func setAsHourglasses() {
-        currency = .hourglass
     }
     
     private func applyAccesibility() {

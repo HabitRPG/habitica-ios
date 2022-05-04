@@ -398,16 +398,6 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
                     formController.editedTask = nil
                 }
             }
-        } else if segue.identifier == "DetailSegue" {
-            if let destinationVC = segue.destination as? UINavigationController {
-                guard let detailController = destinationVC.topViewController as? TaskDetailViewController else {
-                    return
-                }
-                if let task = dataSource?.repository.getEditableTask(id: dataSource?.taskToEdit?.id ?? "") {
-                    dataSource?.taskToEdit = nil
-                    detailController.task = task
-                }
-            }
         } else if segue.identifier == "FilterSegue" {
             if let tabVC = tabBarController as? MainTabBarController,
                 let navVC = segue.destination as? UINavigationController,

@@ -274,7 +274,8 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func getGroups(predicate: NSPredicate) -> SignalProducer<ReactiveResults<[GroupProtocol]>, ReactiveSwiftRealmError> {
-        return RealmGroup.findBy(predicate: NSCompoundPredicate.init(andPredicateWithSubpredicates: [NSPredicate(format: "id != 'habitrpg'"), predicate])).sorted(key: "memberCount", ascending: false).reactive().map({ (value, changeset) -> ReactiveResults<[GroupProtocol]> in
+        return RealmGroup.findBy(predicate: NSCompoundPredicate.init(andPredicateWithSubpredicates: [NSPredicate(format: "id != 'habitrpg'"), predicate]))
+            .sorted(key: "memberCount", ascending: false).reactive().map({ (value, changeset) -> ReactiveResults<[GroupProtocol]> in
             return (value.map({ (group) -> GroupProtocol in return group }), changeset)
         })
     }
@@ -395,7 +396,13 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func findUsernames(_ username: String, id: String?) -> SignalProducer<[MemberProtocol], ReactiveSwiftRealmError> {
-        return RealmChatMessage.findBy(query: "groupID == '\(id ?? "")' && username BEGINSWITH[c] '\(username)'")
+        let query: String
+        if let id = id {
+            query = "groupID == '\(id)' && username BEGINSWITH[c] '\(username)'"
+        } else {
+            query = "username BEGINSWITH[c] '\(username)'"
+        }
+        return RealmChatMessage.findBy(query: query)
             .distinct(by: ["username"])
             .sorted(key: "timestamp", ascending: false)
             .reactive()

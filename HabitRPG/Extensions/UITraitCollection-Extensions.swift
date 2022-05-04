@@ -9,7 +9,7 @@
 import UIKit
 
 extension UITraitCollection {
-    var isIPad: Bool {
+    var isIPadFullSize: Bool {
         return horizontalSizeClass == .regular && verticalSizeClass == .regular
     }
 }

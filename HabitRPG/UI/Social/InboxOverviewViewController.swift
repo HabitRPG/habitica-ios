@@ -16,7 +16,8 @@ class InboxOverviewViewController: BaseTableViewController {
     private let socialRepository = SocialRepository()
     
     private var newMessageUsername: String?
-    
+    private var newMessageUserID: String?
+
     override func viewDidLoad() {
         tutorialIdentifier = "inbox"
         super.viewDidLoad()
@@ -62,7 +63,9 @@ class InboxOverviewViewController: BaseTableViewController {
                if let chatViewController = segue.destination as? InboxChatViewController {
                    if let username = newMessageUsername {
                        chatViewController.username = username
+                       chatViewController.userID = newMessageUserID
                        newMessageUsername = nil
+                       newMessageUserID = nil
                    } else {
                        if let cell = sender as? UITableViewCell {
                          guard let indexPath = tableView.indexPath(for: cell) else {
@@ -111,8 +114,10 @@ class InboxOverviewViewController: BaseTableViewController {
             activityIndicator.startAnimating()
             if let username = usernameTextField.text {
                 self?.socialRepository.retrieveMember(userID: username).on(
-                    value: { _ in
+                    value: { member in
                         foundUser = true
+                        self?.newMessageUsername = username
+                        self?.newMessageUserID = member?.id
                         alertController.dismiss(animated: true, completion: {
                             self?.perform(segue: StoryboardSegue.Social.chatSegue)
                         })
@@ -123,7 +128,6 @@ class InboxOverviewViewController: BaseTableViewController {
                         errorView.isHidden = false
                     }
                 }
-                self?.newMessageUsername = username
                 
             }
         }

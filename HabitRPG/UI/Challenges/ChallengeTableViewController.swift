@@ -62,7 +62,7 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        tableView.keyboardDismissMode = .onDrag
+        tableView.keyboardDismissMode = .interactive
         
         dataSource.initialDataLoad()
         dataSource.tableView = self.tableView
@@ -146,10 +146,10 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? ChallengeDetailsTableViewController {
+        if let viewController = segue.destination as? ChallengeDetailsTableViewController {
             if let selectedChallenge = self.selectedChallenge {
                 let viewModel = ChallengeDetailViewModel(challenge: selectedChallenge)
-                vc.viewModel = viewModel
+                viewController.viewModel = viewModel
             }
         }
     }
@@ -209,7 +209,7 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     }
     
     @IBAction func addChallengeAction(_ sender: Any) {
-        let alert = HabiticaAlertController(title: L10n.createChallenge, message:  L10n.createChallengeDescription)
+        let alert = HabiticaAlertController(title: L10n.createChallenge, message: L10n.createChallengeDescription)
         alert.addAction(title: L10n.openWebsite, style: .default, isMainAction: true) { _ in
             guard let url = URL(string: "https://habitica.com/challenges/myChallenges") else {
                 return

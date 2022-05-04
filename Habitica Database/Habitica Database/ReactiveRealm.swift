@@ -248,7 +248,7 @@ public extension Array where Element: Object {
                 let safeReferences = self.filter { $0.realm != nil }.map { ThreadSafeReference(to: $0) }
                 DispatchQueue(label: "background").async {
                     let threadRealm = try! Realm()
-                    let safeObjects = safeReferences.flatMap({ safeObject in
+                    let safeObjects = safeReferences.compactMap({ safeObject in
                         return threadRealm.resolve(safeObject)
                     })
                     if safeObjects.count != self.count {
@@ -283,7 +283,7 @@ public extension Array where Element: Object {
                 let safeReferences = self.filter { $0.realm != nil }.map { ThreadSafeReference(to: $0) }
                 DispatchQueue(label: "background").async {
                     let threadRealm = try! Realm()
-                    let safeObjects = safeReferences.flatMap({ safeObject in
+                    let safeObjects = safeReferences.compactMap({ safeObject in
                         return threadRealm.resolve(safeObject)
                     })
                     if safeObjects.count != self.count {
@@ -399,8 +399,8 @@ public extension SignalProducerProtocol where Value: ObjectNotificationEmitter, 
                 let notificationToken = realmObject.observe(keyPaths: nil, on: nil) { change in
                     dispatchQueue.async {
                     switch change {
-                    case .change(let properties):
-                        observer.send(value: (value: realmObject, changes: ReactiveChange(deleted: false, properties: properties.1)))
+                    case .change( _, let properties):
+                        observer.send(value: (value: realmObject, changes: ReactiveChange(deleted: false, properties: properties)))
                     case .error(let error):
                         fatalError("\(error)")
                     case .deleted:

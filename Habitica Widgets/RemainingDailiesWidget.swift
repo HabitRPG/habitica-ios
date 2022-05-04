@@ -68,13 +68,12 @@ struct DailiesCountWidgetView : View {
             if entry.needsCron {
                 StartDayView()
             } else if entry.completedCount == entry.totalCount {
-                CompletedView(totalCount: entry.totalCount)
+                CompletedView(totalCount: entry.totalCount).padding(.bottom, 17)
             } else {
                 let displayCount = entry.displayRemaining ? (entry.totalCount - entry.completedCount) : entry.completedCount
-                CountView(completedCount: entry.completedCount, totalCount: entry.totalCount, displayCount: displayCount, displayRemaining: entry.displayRemaining)
+                CountView(completedCount: entry.completedCount, totalCount: entry.totalCount, displayCount: displayCount, displayRemaining: entry.displayRemaining).padding(.bottom, 17)
             }
         }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 17, trailing: 0))
                 .background(Color.widgetBackground)
         .widgetURL(URL(string: "/user/tasks/daily"))
     }
@@ -145,7 +144,6 @@ struct StartDayView: View {
     var showSpacer = true
     var body: some View {
         VStack(alignment: .center, spacing: 12) {
-            if showSpacer { Spacer() }
             Image("StartDayIcon")
             Text("Start a new day").foregroundColor(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center)
         }

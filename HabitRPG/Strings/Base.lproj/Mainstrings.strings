@@ -878,7 +878,7 @@
 "next_checkin_prize_in_x_days" = "Your next prize unlocks in %d Check-Ins";
 "next_prize_at_x_checkins" = "Next prize at %d Check-Ins";
 "next_prize_in_x_checkins" = "Next prize in %d Check-Ins";
-"checkin_prize_earned" = "You earned a %s as a reward for your devotion to improving your life.";
+"checkin_prize_earned" = "You earned a %@ as a reward for your devotion to improving your life.";
 "recipient" = "Recipient";
 "invalid_recipient_message" = "You have to specify a valid Habitica Username as recipient.";
 "invalid_recipient_title" = "Invalid Habitica Username";
@@ -901,10 +901,10 @@
 "notifications.new_mystery_item" = "You have new **Mystery Items**";
 "notifications.unread_guild_message" = "**%@** has new posts.";
 "notifications.unread_party_message" = "Your party, **%@**, has new posts.";
-"notifications.party_invite" = "You were invited to join the Party **%s**";
-"notifications.public_guild_invite" = "You were invited to join the public guild **%s**";
-"notifications.private_guild_invite" = "You were invited to join the private guild **%s**";
-"notifications.quest_invite" = "You were invited to the Quest **%s**";
+"notifications.party_invite" = "You were invited to join the Party **%@**";
+"notifications.public_guild_invite" = "You were invited to join the public guild **%@**";
+"notifications.private_guild_invite" = "You were invited to join the private guild **%@**";
+"notifications.quest_invite" = "You were invited to the Quest **%@**";
 "notifications.dismiss_all" = "Dismiss all";
 "empty.habits.title" = "These are your Habits";
 "empty.habits.description" = "Habits don't have a rigid schedule. You can check them off multiple times per day.";
@@ -1010,8 +1010,8 @@
 "unblock_user" = "Un-block";
 "block_username" = "Block %@?";
 "block_description" = "A blocked user cannot send you Private Messages but you will still see their posts in Tavern or Guilds. This will have no effect if the person is a moderator now or in the future.";
-"user_was_blocked" = "You blocked %s.";
-"user_was_unblocked" = "You unblocked %s.";
+"user_was_blocked" = "You blocked %@.";
+"user_was_unblocked" = "You unblocked %@.";
 "gift_gems" = "Gift Gems";
 "gift_subscription" = "Gift a Subscription";
 "broken_challenge" = "Broken Challenge";
@@ -1019,7 +1019,7 @@
 "keep_x_tasks" = "Keep %d Tasks";
 "delete_x_tasks" = "Delete %d Tasks";
 "delete_challenge_task" = "Delete Challenge Task?";
-"delete_challenge_task_description" = "This is one of %d tasks that are part of the “%s” Challenge. You must leave the Challenge to delete this task.";
+"delete_challenge_task_description" = "This is one of %d tasks that are part of the “%@” Challenge. You must leave the Challenge to delete this task.";
 "leave_and_delete_task" = "Leave & Delete Task";
 "leave_and_delete_x_tasks" = "Leave & Delete %d Tasks";
 "leave_and_keep_tasks" = "Leave & Keep Tasks";
@@ -1074,11 +1074,11 @@
 "promo_info_limitations_title" = "Limitations";
 
 "fall_promo.info_prompt" = "The Fall Gala is in full swing so we thought it was the perfect time to have a Gem Sale! Now you will get more Gems with each purchase than ever before.";
-"fall_promo.info_instructions" = "Between %s and %s, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!";
+"fall_promo.info_instructions" = "Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!";
 
 "spooky_promo.info_prompt" = "The Gem Sale is back to haunt the very end of this year’s Fall Gala! This is one last chance to get more Gems than ever, so stock up while it lasts!";
-"spooky_promo.info_instructions" = "Between %s and %s, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!";
-"gems_promo.info_limitations" = "This promotion only applies during the limited time event. This event starts on %s (12:00 UTC) and will end %s (00:00 UTC). The promo offer is only available when buying Gems for yourself.";
+"spooky_promo.info_instructions" = "Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!";
+"gems_promo.info_limitations" = "This promotion only applies during the limited time event. This event starts on %@ (12:00 UTC) and will end %@ (00:00 UTC). The promo offer is only available when buying Gems for yourself.";
 "survey.title" = "Habitica player survey";
 "survey.description" = "Fill out this 5 minute survey to help us grow and receive an achievement!";
 "survey.button" = "Go to Survey";

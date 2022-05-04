@@ -102,7 +102,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             alert.enqueue()
         }
         cell.replyAction = {[weak self] in
-            //self?.viewController?.configureReplyTo(chatMessage.username ?? chatMessage.displayName)
+            self?.viewController?.configureReplyTo(name: chatMessage.username ?? chatMessage.displayName)
         }
         cell.plusOneAction = {[weak self] in
             self?.socialRepository.like(groupID: self?.groupID ?? "", chatMessage: chatMessage).observeCompleted {}

@@ -23,8 +23,9 @@ struct TaskListProvider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<TaskListEntry>) -> ()) {
         var entries: [TaskListEntry] = []
-        TaskManager.shared.getTasks(predicate: NSPredicate(format: "completed == false && type == 'daily' && isDue == true")).on(value: { tasks in
-            let entry = TaskListEntry(widgetFamily: context.family, tasks: tasks.value)
+        TaskManager.shared.getUser().zip(with: TaskManager.shared.getTasks(predicate: NSPredicate(format: "completed == false && type == 'daily' && isDue == true")))
+        .on(value: { (user, tasks) in
+            let entry = TaskListEntry(widgetFamily: context.family, tasks: tasks.value, needsCron: user.needsCron)
             entries.append(entry)
 
             let timeline = Timeline(entries: entries, policy: .atEnd)
@@ -188,6 +189,8 @@ struct TaskListWidget: Widget {
 struct TaskListWidgetPreview: PreviewProvider {
     static var previews: some View {
         Group {
+            TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemMedium, tasks: makePreviewTasks().dropLast(8), needsCron: true))
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
             TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemMedium, tasks: makePreviewTasks().dropLast(8), needsCron: false))
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemMedium, tasks: makePreviewTasks(), needsCron: false))

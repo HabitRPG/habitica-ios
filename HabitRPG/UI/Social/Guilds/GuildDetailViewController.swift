@@ -54,8 +54,11 @@ class GuildDetailViewController: GroupDetailViewController {
             self?.leaveButtonWrapper?.isHidden = !isMember
         }).start())
         
-        disposable.inner.add(groupProperty.producer.skipNil().flatMap(.latest, {[weak self] group in
-                return self?.socialRepository.getMember(userID: group.leaderID ?? "", retrieveIfNotFound: true).skipNil() ?? SignalProducer.empty
+        disposable.inner.add(groupProperty.producer.skipNil()
+                                .map { $0.leaderID }
+                                .skipNil()
+                                .flatMap(.latest, {[weak self] leaderID in
+                return self?.socialRepository.getMember(userID: leaderID, retrieveIfNotFound: true).skipNil() ?? SignalProducer.empty
         }).on(value: {[weak self] guildLeader in
             self?.guildLeaderID = guildLeader.id
             self?.guildLeaderNameLabel.text = guildLeader.profile?.name

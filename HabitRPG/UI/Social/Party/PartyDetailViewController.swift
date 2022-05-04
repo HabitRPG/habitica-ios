@@ -277,7 +277,7 @@ class PartyDetailViewController: GroupDetailViewController {
         } else if segue.identifier == StoryboardSegue.Social.userProfileSegue.rawValue {
             if let destination = segue.destination as? UserProfileViewController {
                 destination.userID = selectedMember?.id
-                destination.username = selectedMember?.profile?.name
+                destination.username = selectedMember?.username
             }
         }
         super.prepare(for: segue, sender: sender)

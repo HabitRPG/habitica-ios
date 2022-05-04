@@ -69,7 +69,13 @@ class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
                 tagHolderView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[tag]", options: .init(rawValue: 0), metrics: nil, views: ["tag": tag]))
             } else {
                 let previousTag = tags[index-1]
-                tagHolderView.addConstraint(NSLayoutConstraint(item: tag, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: .equal, toItem: previousTag, attribute: .trailing, multiplier: 1.0, constant: 8))
+                tagHolderView.addConstraint(NSLayoutConstraint(item: tag,
+                                                               attribute: NSLayoutConstraint.Attribute.leading,
+                                                               relatedBy: .equal,
+                                                               toItem: previousTag,
+                                                               attribute: .trailing,
+                                                               multiplier: 1.0,
+                                                               constant: 8))
             }
             
             tagHolderView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[tag]-0-|", options: .init(rawValue: 0), metrics: nil, views: ["tag": tag]))

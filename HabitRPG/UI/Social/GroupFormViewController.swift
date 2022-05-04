@@ -55,9 +55,9 @@ class GroupFormViewController: FormViewController {
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.textView?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
-
                 }
-                row.textAreaHeight = TextAreaHeight.fixed(cellHeight: 200)
+                row.onChange { _ in self.view.layoutIfNeeded() }
+                row.textAreaHeight = TextAreaHeight.dynamic(initialTextViewHeight: 80)
                 row.hidden = Condition.function([], { (_) -> Bool in
                     return self.isParty
                 })
@@ -70,7 +70,8 @@ class GroupFormViewController: FormViewController {
                     cell.textView.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                 }
-                row.textAreaHeight = TextAreaHeight.fixed(cellHeight: 350)
+                row.onChange { _ in self.view.layoutIfNeeded() }
+                row.textAreaHeight = TextAreaHeight.dynamic(initialTextViewHeight: 80)
             }
             <<< SwitchRow(GroupFormTags.leaderChallenges) { row in
                 row.title = L10n.Groups.leaderChallenges
@@ -148,7 +149,9 @@ class GroupFormViewController: FormViewController {
         }
         group.groupDescription = values[GroupFormTags.groupDescription] as? String
         group.leaderOnlyChallenges = (values[GroupFormTags.leaderChallenges] as? Bool) ?? false
-        group.leaderID = (values[GroupFormTags.newLeader] as? LabeledFormValue<String>)?.value
+        if let leaderID = (values[GroupFormTags.newLeader] as? LabeledFormValue<String>)?.value {
+            group.leaderID = leaderID
+        }
         if isParty {
             group.type = "party"
             group.privacy = "private"

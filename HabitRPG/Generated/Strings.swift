@@ -2,10 +2,8 @@
 
 import Foundation
 
-// swiftlint:disable superfluous_disable_command
-// swiftlint:disable file_length
+// swiftlint:disable all
 
-// swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 public enum L10n {
   /// Update bundle if you need to change app language
   static var bundle: Bundle?
@@ -106,8 +104,8 @@ public enum L10n {
   public static var characterLevel: String { return L10n.tr("Mainstrings", "character_level") }
   /// Chat
   public static var chat: String { return L10n.tr("Mainstrings", "chat") }
-  /// You earned a %s as a reward for your devotion to improving your life.
-  public static func checkinPrizeEarned(_ p1: UnsafePointer<CChar>) -> String {
+  /// You earned a %@ as a reward for your devotion to improving your life.
+  public static func checkinPrizeEarned(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "checkin_prize_earned", p1)
   }
   /// Check off any Dailies you did yesterday:
@@ -232,8 +230,8 @@ public enum L10n {
   public static var delete: String { return L10n.tr("Mainstrings", "delete") }
   /// Delete Challenge Task?
   public static var deleteChallengeTask: String { return L10n.tr("Mainstrings", "delete_challenge_task") }
-  /// This is one of %d tasks that are part of the “%s” Challenge. You must leave the Challenge to delete this task.
-  public static func deleteChallengeTaskDescription(_ p1: Int, _ p2: UnsafePointer<CChar>) -> String {
+  /// This is one of %d tasks that are part of the “%@” Challenge. You must leave the Challenge to delete this task.
+  public static func deleteChallengeTaskDescription(_ p1: Int, _ p2: String) -> String {
     return L10n.tr("Mainstrings", "delete_challenge_task_description", p1, p2)
   }
   /// Delete Tasks
@@ -1016,12 +1014,12 @@ public enum L10n {
   public static var use: String { return L10n.tr("Mainstrings", "use") }
   /// This will take effect immediately after buying!
   public static var useImmediatelyDisclaimer: String { return L10n.tr("Mainstrings", "use_immediately_disclaimer") }
-  /// You blocked %s.
-  public static func userWasBlocked(_ p1: UnsafePointer<CChar>) -> String {
+  /// You blocked %@.
+  public static func userWasBlocked(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "user_was_blocked", p1)
   }
-  /// You unblocked %s.
-  public static func userWasUnblocked(_ p1: UnsafePointer<CChar>) -> String {
+  /// You unblocked %@.
+  public static func userWasUnblocked(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "user_was_unblocked", p1)
   }
   /// User ID
@@ -1420,8 +1418,8 @@ public enum L10n {
   }
 
   public enum FallPromo {
-    /// Between %s and %s, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!
-    public static func infoInstructions(_ p1: UnsafePointer<CChar>, _ p2: UnsafePointer<CChar>) -> String {
+    /// Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!
+    public static func infoInstructions(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "fall_promo.info_instructions", p1, p2)
     }
     /// The Fall Gala is in full swing so we thought it was the perfect time to have a Gem Sale! Now you will get more Gems with each purchase than ever before.
@@ -1429,8 +1427,8 @@ public enum L10n {
   }
 
   public enum GemsPromo {
-    /// This promotion only applies during the limited time event. This event starts on %s (12:00 UTC) and will end %s (00:00 UTC). The promo offer is only available when buying Gems for yourself.
-    public static func infoLimitations(_ p1: UnsafePointer<CChar>, _ p2: UnsafePointer<CChar>) -> String {
+    /// This promotion only applies during the limited time event. This event starts on %@ (12:00 UTC) and will end %@ (00:00 UTC). The promo offer is only available when buying Gems for yourself.
+    public static func infoLimitations(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "gems_promo.info_limitations", p1, p2)
     }
   }
@@ -1669,20 +1667,20 @@ public enum L10n {
     public static var newBailey: String { return L10n.tr("Mainstrings", "notifications.new_bailey") }
     /// You have new **Mystery Items**
     public static var newMysteryItem: String { return L10n.tr("Mainstrings", "notifications.new_mystery_item") }
-    /// You were invited to join the Party **%s**
-    public static func partyInvite(_ p1: UnsafePointer<CChar>) -> String {
+    /// You were invited to join the Party **%@**
+    public static func partyInvite(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "notifications.party_invite", p1)
     }
-    /// You were invited to join the private guild **%s**
-    public static func privateGuildInvite(_ p1: UnsafePointer<CChar>) -> String {
+    /// You were invited to join the private guild **%@**
+    public static func privateGuildInvite(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "notifications.private_guild_invite", p1)
     }
-    /// You were invited to join the public guild **%s**
-    public static func publicGuildInvite(_ p1: UnsafePointer<CChar>) -> String {
+    /// You were invited to join the public guild **%@**
+    public static func publicGuildInvite(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "notifications.public_guild_invite", p1)
     }
-    /// You were invited to the Quest **%s**
-    public static func questInvite(_ p1: UnsafePointer<CChar>) -> String {
+    /// You were invited to the Quest **%@**
+    public static func questInvite(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "notifications.quest_invite", p1)
     }
     /// You have **%d unallocated Stat Points**
@@ -2067,8 +2065,8 @@ public enum L10n {
   }
 
   public enum SpookyPromo {
-    /// Between %s and %s, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!
-    public static func infoInstructions(_ p1: UnsafePointer<CChar>, _ p2: UnsafePointer<CChar>) -> String {
+    /// Between %@ and %@, simply purchase any Gem bundle like usual and your account will be credited with the promotional amount of Gems. More Gems to spend, share, or save for any future releases!
+    public static func infoInstructions(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "spooky_promo.info_instructions", p1, p2)
     }
     /// The Gem Sale is back to haunt the very end of this year’s Fall Gala! This is one last chance to get more Gems than ever, so stock up while it lasts!
@@ -2689,7 +2687,6 @@ public enum L10n {
     public static var worldBoss: String { return L10n.tr("Mainstrings", "world_boss.world_boss") }
   }
 }
-// swiftlint:enable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 
 extension L10n {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {

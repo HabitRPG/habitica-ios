@@ -46,6 +46,7 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
             dataSource?.selectedGearCategory = selectedGearCategory
         }
     }
+    private var hourglassView = CurrencyCountView(currency: .hourglass)
     private var gemView = CurrencyCountView(currency: .gem)
     private var goldView = CurrencyCountView(currency: .gold)
     
@@ -67,12 +68,19 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
     }
     
     private func setupNavBar() {
-        gemView.currency = .gem
-        goldView.currency = .gold
-        navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(customView: gemView),
-            UIBarButtonItem(customView: goldView)
-        ]
+        if shopIdentifier == "timeTravelersShop" {
+            hourglassView.currency = .hourglass
+            navigationItem.rightBarButtonItems = [
+                UIBarButtonItem(customView: hourglassView)
+            ]
+        } else {
+            gemView.currency = .gem
+            goldView.currency = .gold
+            navigationItem.rightBarButtonItems = [
+                UIBarButtonItem(customView: gemView),
+                UIBarButtonItem(customView: goldView)
+            ]
+        }
     }
     
     private func setupCollectionView() {

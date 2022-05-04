@@ -104,13 +104,6 @@ class PublishButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButtonMod
         bgColorSignal = publishSignal.map { _ in UIColor.purple300 }
         titleSignal = publishSignal.signal.map { _ in L10n.publishChallenge }
         enabledSignal = buttonStateSignal.map { $0 != .publishDisabled }
-        
-        buttonStateSignal.sample(on: buttonPressedProperty.signal).observeValues { (state) in
-            if state == .publishEnabled {
-                // TODO: publish challenge
-            }
-        }
-        
         challengeProperty.value = challenge
     }
     

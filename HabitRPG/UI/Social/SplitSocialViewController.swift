@@ -68,7 +68,6 @@ class SplitSocialViewController: HabiticaSplitViewController {
                 chatViewController = viewController
             }
         }
-        navigationItem.rightBarButtonItem = nil
     }
     
     deinit {
@@ -106,7 +105,9 @@ class SplitSocialViewController: HabiticaSplitViewController {
             DispatchQueue.main.async {
                 self?.set(group: group)
             }
-            self?.isGroupOwner = group.leaderID == self?.socialRepository.currentUserId
+            if let leaderID = group.leaderID {
+                self?.isGroupOwner = leaderID == self?.socialRepository.currentUserId
+            }
         }).start()
     }
     

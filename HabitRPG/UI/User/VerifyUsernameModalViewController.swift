@@ -178,7 +178,7 @@ class VerifyUsernameModalViewController: UIViewController, Themeable {
     
     @objc
     func keyboardWasShown(notification: NSNotification) {
-        //Need to calculate keyboard exact size due to Apple suggestions
+        // Need to calculate keyboard exact size due to Apple suggestions
         if let info = notification.userInfo {
             let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
             let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize?.height ?? 0, right: 0)
@@ -190,7 +190,7 @@ class VerifyUsernameModalViewController: UIViewController, Themeable {
     
     @objc
     func keyboardWillBeHidden(notification: NSNotification) {
-        //Once keyboard disappears, restore original positions
+        // Once keyboard disappears, restore original positions
         if let info = notification.userInfo {
             let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
             let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: -(keyboardSize?.height ?? 0), right: 0.0)

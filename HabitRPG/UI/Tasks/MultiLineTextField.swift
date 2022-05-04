@@ -121,9 +121,7 @@ struct MultilineTextField: View {
 
     @Binding private var text: String
     private var internalText: Binding<String> {
-        Binding<String>(get: { self.text }) {
-            self.text = $0
-        }
+        Binding<String>(get: { self.text}, set: { self.text = $0 })
     }
 
     @State private var dynamicHeight: CGFloat = 40
@@ -138,7 +136,12 @@ struct MultilineTextField: View {
     }
 
     var body: some View {
-        UITextViewWrapper(text: self.internalText, calculatedHeight: $dynamicHeight, onDone: onCommit, onEditingChanged: onEditingChanged, giveInitialResponder: giveInitialResponder, textColor: textColor.uiColor())
+        UITextViewWrapper(text: self.internalText,
+                          calculatedHeight: $dynamicHeight,
+                          onDone: onCommit,
+                          onEditingChanged: onEditingChanged,
+                          giveInitialResponder: giveInitialResponder,
+                          textColor: textColor.uiColor())
             .frame(minHeight: dynamicHeight, maxHeight: dynamicHeight)
     }
 }

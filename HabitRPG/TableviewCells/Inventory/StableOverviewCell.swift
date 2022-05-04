@@ -38,12 +38,10 @@ class StableOverviewCell: UICollectionViewCell {
             textLabel?.numberOfLines = 2
             countLabel?.isHidden = true
             countLabelHeightConstraint.constant = 0
-            if item.numberOwned != 0 || ownsItem {
+            if item.numberOwned != 0 {
                 imageView.setImagewith(name: item.imageName)
             } else {
-                ImageManager.getImage(name: item.imageName) {[weak self] (image, _) in
-                    self?.imageView.image = image?.withRenderingMode(.alwaysTemplate)
-                }
+                imageView.setImagewith(name: "\(item.imageName)-outline")
             }
         } else {
             textLabel?.numberOfLines = 1
