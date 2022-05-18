@@ -41,7 +41,7 @@ class ShopCollectionViewDataSourceInstantiator: NSObject {
     func scrollViewDidScroll(_ scrollView: UIScrollView)
     func showGearSelection(sourceView: UIView)
     func updateShopHeader(shop: ShopProtocol?)
-    func updateNavBar(gold: Int, gems: Int)
+    func updateNavBar(gold: Int, gems: Int, hourglasses: Int)
 }
 
 class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRewardProtocol>, ShopCollectionViewDataSourceProtocol {
@@ -104,7 +104,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             if self?.selectedGearCategory == nil {
                 self?.selectedGearCategory = self?.userClass
             }
-            self?.delegate?.updateNavBar(gold: Int(user.stats?.gold ?? 0), gems: user.gemCount)
+            self?.delegate?.updateNavBar(gold: Int(user.stats?.gold ?? 0), gems: user.gemCount, hourglasses: user.purchased?.subscriptionPlan?.consecutive?.hourglasses ?? 0)
         }).start())
         
         disposable.add(userRepository.getInAppRewards()

@@ -28,9 +28,10 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         bannerView.shop = shop
     }
     
-    func updateNavBar(gold: Int, gems: Int) {
+    func updateNavBar(gold: Int, gems: Int, hourglasses: Int) {
         goldView.amount = gold
         gemView.amount = gems
+        hourglassView.amount = hourglasses
     }
     
     var shopIdentifier: String?

@@ -152,8 +152,14 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             }
         }
         
-        disposable = producer.flatMap(.latest, { _ in
-            return RunCronCall().responseSignal.producer
+        disposable = producer.flatMap(.latest, { _ -> SignalProducer<URLResponse, Never> in
+            let call = RunCronCall()
+            call.serverErrorSignal.on(value: { error in
+                HabiticaAnalytics.shared.log("cron_failed", withEventProperties: [
+                    "error": error.localizedDescription
+                ])
+            }).observeCompleted {}
+            return call.responseSignal.producer
         }).flatMap(.latest, { _ in
             return self.retrieveUser().producer
         }).on(completed: {

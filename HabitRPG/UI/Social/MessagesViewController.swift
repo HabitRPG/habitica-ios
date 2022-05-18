@@ -29,7 +29,6 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         let manager = AutocompleteManager(for: self.inputBar.inputTextView)
         manager.delegate = self
         manager.dataSource = self
-        manager.maxSpaceCountDuringCompletion = 1
         return manager
     }()
     
@@ -37,8 +36,7 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         view = UIView()
         view.addSubview(tableView)
         view.addSubview(inputBar)
-    }
-    
+    }    
     override func viewDidLoad() {
         super.viewDidLoad()
         hidesBottomBarWhenPushed = true

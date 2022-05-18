@@ -20,7 +20,7 @@ public protocol AuthenticationProtocol {
 
 public extension AuthenticationProtocol {
     var hasLocalAuth: Bool {
-        return local?.email != nil
+        return local?.hasPassword == true
     }
     
     var hasAppleAuth: Bool {

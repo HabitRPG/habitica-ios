@@ -13,4 +13,5 @@ public protocol LocalAuthenticationProtocol {
     var email: String? { get set }
     var username: String? { get set }
     var lowerCaseUsername: String? { get set }
+    var hasPassword: Bool { get set }
 }

@@ -81,7 +81,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             row.cellUpdate {[weak self] cell, _ in
                 cell.detailTextLabel?.text = self?.user?.authentication?.local?.email ?? L10n.Settings.notSet
                 
-                if self?.user?.authentication?.hasLocalAuth != true {
+                if self?.user?.authentication?.local?.email == nil {
                     let label = UILabel()
                     label.text = L10n.Settings.addEmail
                     label.textColor = ThemeService.shared.theme.ternaryTextColor
@@ -92,11 +92,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
                     cell.accessoryView = nil
                 }
             }.onCellSelection { _, _ in
-                if self.user?.authentication?.hasLocalAuth == true {
-                    self.showEmailChangeAlert()
-                } else {
-                    self.showAddLocalAuthAlert(title: L10n.Settings.addEmail)
-                }
+                self.showEmailChangeAlert()
             }
         }
     }
@@ -107,7 +103,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             row.title = L10n.Settings.password
             row.cellStyle = .subtitle
             row.cellUpdate {[weak self] cell, _ in
-                cell.detailTextLabel?.text = self?.user?.authentication?.local?.email != nil ? "ᐧᐧᐧᐧᐧᐧᐧᐧᐧᐧ" : L10n.Settings.notSet
+                cell.detailTextLabel?.text = self?.user?.authentication?.hasLocalAuth == true ? "ᐧᐧᐧᐧᐧᐧᐧᐧᐧᐧ" : L10n.Settings.notSet
                 let label = UILabel()
                 if self?.user?.authentication?.hasLocalAuth == true {
                     label.text = L10n.Settings.change
@@ -262,8 +258,11 @@ private func setUser(_ user: UserProtocol) {
         form.rowBy(tag: "facebookRow")?.hidden = true
     }
     form.rowBy(tag: "facebookRow")?.evaluateHidden()
-    self.tableView.reloadData()
     isSettingUserData = false
+    self.tableView.reloadData()
+    form.allRows.forEach { row in
+        row.updateCell()
+    }
 }
 
     private func copyToClipboard(_ name: String, value: String?) {
@@ -371,10 +370,12 @@ private func setUser(_ user: UserProtocol) {
         let controller = EditingFormViewController()
         controller.formTitle = L10n.Settings.changeEmail
         controller.fields.append(EditingTextField(key: "email", title: L10n.email, type: .email, value: user?.authentication?.local?.email))
-        controller.fields.append(EditingTextField(key: "password", title: L10n.password, type: .password))
+        if user?.authentication?.hasLocalAuth == true {
+            controller.fields.append(EditingTextField(key: "password", title: L10n.password, type: .password))
+        }
         controller.onSave = {[weak self] values in
-            if let email = values["email"], let password = values["password"] {
-                self?.userRepository.updateEmail(newEmail: email, password: password).observeCompleted {
+            if let email = values["email"] {
+                self?.userRepository.updateEmail(newEmail: email, password: values["password"] ?? "").observeCompleted {
                     ToastManager.show(text: L10n.Settings.updatedEmail, color: .green)
                 }
             }
@@ -423,9 +424,12 @@ private func setUser(_ user: UserProtocol) {
     }
 
     private func showAddLocalAuthAlert(title: String) {
+        let hasEmail = user?.authentication?.local?.email != nil
         let controller = EditingFormViewController()
         controller.formTitle = title
-        controller.fields.append(EditingTextField(key: "email", title: L10n.Settings.email, type: .email))
+        if !hasEmail {
+            controller.fields.append(EditingTextField(key: "email", title: L10n.Settings.email, type: .email))
+        }
         controller.fields.append(EditingTextField(key: "password", title: L10n.Settings.newPassword, type: .password))
         controller.fields.append(EditingTextField(key: "passwordRepeat", title: L10n.Settings.confirmNewPassword, type: .password))
 
@@ -438,7 +442,7 @@ private func setUser(_ user: UserProtocol) {
         }
         
         controller.onSave = {[weak self] values in
-            if let email = values["email"], let password = values["password"], let passwordRepeat = values["passwordRepeat"] {
+            if let email = values["email"] ?? self?.user?.authentication?.local?.email, let password = values["password"], let passwordRepeat = values["passwordRepeat"] {
                 self?.userRepository.register(username: self?.user?.username ?? "", password: password, confirmPassword: passwordRepeat, email: email).observeResult { result in
                     switch result {
                     case .success:
