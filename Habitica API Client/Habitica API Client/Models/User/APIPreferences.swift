@@ -31,6 +31,7 @@ class APIPreferences: PreferencesProtocol, Decodable {
     var hair: HairProtocol?
     var searchableUsername: Bool = false
     var isValid: Bool = true
+    var dateFormat: String?
     public var isManaged: Bool = false
     
     enum CodingKeys: String, CodingKey {
@@ -54,6 +55,7 @@ class APIPreferences: PreferencesProtocol, Decodable {
         case emailNotifications
         case hair
         case searchableUsername
+        case dateFormat
     }
     
     public required init(from decoder: Decoder) throws {
@@ -78,5 +80,6 @@ class APIPreferences: PreferencesProtocol, Decodable {
         emailNotifications = try? values.decode(APIEmailNotifications.self, forKey: .emailNotifications)
         hair = try? values.decode(APIHair.self, forKey: .hair)
         searchableUsername = (try? values.decode(Bool.self, forKey: .searchableUsername)) ?? false
+        dateFormat = try? values.decode(String.self, forKey: .dateFormat)
     }
 }

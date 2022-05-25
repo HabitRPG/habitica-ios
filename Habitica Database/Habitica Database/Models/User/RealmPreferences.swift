@@ -30,6 +30,7 @@ class RealmPreferences: BaseModel, PreferencesProtocol {
     @objc dynamic var sound: String?
     @objc dynamic var autoEquip: Bool = false
     @objc dynamic var searchableUsername: Bool = false
+    @objc dynamic var dateFormat: String?
     var pushNotifications: PushNotificationsProtocol? {
         get {
             return realmPushNotifications
@@ -107,5 +108,6 @@ class RealmPreferences: BaseModel, PreferencesProtocol {
         emailNotifications = preferences.emailNotifications
         hair = preferences.hair
         searchableUsername = preferences.searchableUsername
+        dateFormat = preferences.dateFormat
     }
 }

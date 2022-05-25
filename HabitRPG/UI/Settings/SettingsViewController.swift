@@ -303,7 +303,8 @@ class SettingsViewController: FormViewController, Themeable {
                     self?.userRepository.updateDayStartTime(row.value?.value ?? 0).observeCompleted {
                         let nextCron = self?.calculateNextCron(dayStart: self?.user?.preferences?.dayStart)
                         let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "MM/dd/yyyy @ hh:mm a"
+                        let format = "\(self?.user?.preferences?.dateFormat ?? "MM/dd/yyyy") @hh:mm a"
+                        dateFormatter.dateFormat = format
                         ToastManager.show(text: L10n.Settings.nextCronRun(dateFormatter.string(from: nextCron ?? Date())), color: .green, duration: 4.0)
                     }
                 })
