@@ -478,9 +478,9 @@
 			buildConfigurationList = 298FB9C0204D9338004DDACC /* Build configuration list for PBXNativeTarget "Habitica Database" */;
 			buildPhases = (
 				A8001DCFA0AD202CB6AC8AD1 /* [CP] Check Pods Manifest.lock */,
+				298FB9A9204D9338004DDACC /* Headers */,
 				298FB9A7204D9338004DDACC /* Sources */,
 				298FB9A8204D9338004DDACC /* Frameworks */,
-				298FB9A9204D9338004DDACC /* Headers */,
 				298FB9AA204D9338004DDACC /* Resources */,
 			);
 			buildRules = (
@@ -884,7 +884,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-Database";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ericmiddelhove.habitrpg.ios.habitica.Habitica-Database";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -910,7 +910,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-Database";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ericmiddelhove.habitrpg.ios.habitica.Habitica-Database";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -924,7 +924,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				DEVELOPMENT_TEAM = 947BCU3P9W;
 				INFOPLIST_FILE = "Habitica DatabaseTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-DatabaseTests";
@@ -940,7 +940,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				DEVELOPMENT_TEAM = 947BCU3P9W;
 				INFOPLIST_FILE = "Habitica DatabaseTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-DatabaseTests";

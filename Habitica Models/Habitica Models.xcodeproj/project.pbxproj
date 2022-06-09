@@ -539,9 +539,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 298FB9E4204D9404004DDACC /* Build configuration list for PBXNativeTarget "Habitica Models" */;
 			buildPhases = (
+				298FB9CD204D9403004DDACC /* Headers */,
 				298FB9CB204D9403004DDACC /* Sources */,
 				298FB9CC204D9403004DDACC /* Frameworks */,
-				298FB9CD204D9403004DDACC /* Headers */,
 				298FB9CE204D9403004DDACC /* Resources */,
 			);
 			buildRules = (
@@ -947,7 +947,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				DEVELOPMENT_TEAM = 947BCU3P9W;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -955,7 +955,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-Models";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ericmiddelhove.habitrpg.ios.habitica.Habitica-Models";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -973,7 +973,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				DEVELOPMENT_TEAM = 947BCU3P9W;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -981,7 +981,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-Models";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ericmiddelhove.habitrpg.ios.habitica.Habitica-Models";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -995,7 +995,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				DEVELOPMENT_TEAM = 947BCU3P9W;
 				INFOPLIST_FILE = "Habitica ModelsTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-ModelsTests";
@@ -1011,7 +1011,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				DEVELOPMENT_TEAM = 947BCU3P9W;
 				INFOPLIST_FILE = "Habitica ModelsTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-ModelsTests";
