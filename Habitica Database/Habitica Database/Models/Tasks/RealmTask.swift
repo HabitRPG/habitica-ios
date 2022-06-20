@@ -38,9 +38,9 @@ class RealmTask: BaseModel, TaskProtocol {
     @objc dynamic var startDate: Date?
     @objc dynamic var yesterDaily: Bool = true
     
-    @objc dynamic var isSynced: Bool = true
+    @objc dynamic var isSynced: Bool = false
     @objc dynamic var isSyncing: Bool = false
-    @objc dynamic var isNewTask: Bool = false
+    @objc dynamic var isNewTask: Bool = true
     
     var tags: [TagProtocol] {
         get {
