@@ -176,7 +176,6 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
         let call = CreateTaskCall(task: task)
         
         return call.objectSignal.on(value: {[weak self]returnedTask in
-            print(returnedTask)
             
             if let returnedTask = returnedTask {
                 let adjustedTask = returnedTask
