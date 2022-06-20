@@ -35,4 +35,8 @@ class HabitTableViewController: TaskTableViewController {
     override func getCellNibName() -> String {
         return "HabitTableViewCell"
     }
+    
+    override func refresh() {
+        super.refresh()
+    }
 }
