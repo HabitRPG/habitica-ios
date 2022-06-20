@@ -40,12 +40,21 @@ class ToDoTableViewController: TaskTableViewController {
     }
     
     override func refresh() {
-        dataSource?.retrieveData(completed: { [weak self] in
-            self?.refreshControl?.endRefreshing()
-            if self?.filterType == 2 {
-                self?.dataSource?.fetchCompletedTodos()
+        if let dataSource = dataSource {
+            let taskRepository = TaskRepository()
+            let tasks = dataSource.tasks
+            for task in tasks {
+                 taskRepository.syncTask(task).observeCompleted {}
             }
-        })
+            
+            dataSource.retrieveData(completed: { [weak self] in
+                self?.refreshControl?.endRefreshing()
+                if self?.filterType == 2 {
+                    self?.dataSource?.fetchCompletedTodos()
+                }
+            })
+        }
+        
     }
     
     override func didChangeFilter() {
