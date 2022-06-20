@@ -172,10 +172,17 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
     func createTask(_ task: TaskProtocol) -> Signal<TaskProtocol?, Never> {
         localRepository.save(userID: currentUserId, task: task)
         localRepository.setTaskSyncing(userID: currentUserId, task: task, isSyncing: true)
+        
         let call = CreateTaskCall(task: task)
         
         return call.objectSignal.on(value: {[weak self]returnedTask in
+            print(returnedTask)
+            
             if let returnedTask = returnedTask {
+                let adjustedTask = returnedTask
+                adjustedTask.isNewTask = false
+                adjustedTask.isSynced = true
+                
                 self?.localRepository.save(userID: self?.currentUserId, task: returnedTask)
             }
             
@@ -215,6 +222,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
         } else {
             return self.updateTask(task)
         }
+        
     }
     
     func deleteTask(_ task: TaskProtocol) -> Signal<EmptyResponseProtocol?, Never> {

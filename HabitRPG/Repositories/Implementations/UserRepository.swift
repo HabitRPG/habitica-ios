@@ -27,6 +27,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             }
         })
         if withTasks {
+            print("fetching tasks")
             let taskCall = RetrieveTasksCall()
             return signal.combineLatest(with: taskCall.arraySignal).on(value: { (user, tasks) in
                 if let tasks = tasks, let order = user?.tasksOrder {
