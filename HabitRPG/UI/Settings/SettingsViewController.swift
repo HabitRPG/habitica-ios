@@ -79,6 +79,8 @@ class SettingsViewController: FormViewController, Themeable {
     private var user: UserProtocol?
     private var isSettingUserData = false
     
+    private let changeClassCosts = 3;
+    
     override func viewDidLoad() {
         tableView = UITableView(frame: view.bounds, style: .insetGrouped)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -844,6 +846,7 @@ class SettingsViewController: FormViewController, Themeable {
         guard let user = self.user else {
             assertionFailure("Attempting to change class but there is no user!"); return
         }
+        print(user.canChooseClassForFree)
         if user.canChooseClassForFree == true {
             if user.needsToChooseClass {
                 showClassSelectionViewController()
@@ -852,8 +855,10 @@ class SettingsViewController: FormViewController, Themeable {
             }
         } else {
             let alertController = HabiticaAlertController(title: L10n.Settings.areYouSure, message: L10n.Settings.changeClassDisclaimer)
-            alertController.addAction(title: L10n.Settings.changeClass) {[weak self] _ in
-                self?.showClassSelectionViewController()
+            if user.gemCount >= changeClassCosts {
+                alertController.addAction(title: L10n.Settings.changeClass) {[weak self] _ in
+                    self?.showClassSelectionViewController()
+                }
             }
             alertController.addCancelAction()
             alertController.show()
