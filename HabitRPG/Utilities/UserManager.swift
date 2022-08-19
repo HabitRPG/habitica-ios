@@ -49,7 +49,7 @@ class UserManager: NSObject {
                 return self?.taskRepository.retrieveTasks(dueOnDay: self?.getYesterday()).skipNil()
                     .map({ tasks in
                         return tasks.filter({ task in
-                            return task.isDue && !task.completed
+                            return task.isDue && !task.completed && !task.isGroupTask
                         })
                     }).withLatest(from: SignalProducer<UserProtocol, Never>(value: user)) ?? Signal<([TaskProtocol], UserProtocol), Never>.empty
             }).on(value: {[weak self] (tasks, user) in

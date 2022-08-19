@@ -33,7 +33,7 @@ class RealmPushNotifications: Object, PushNotificationsProtocol {
     
     convenience init(id: String?, pnProtocol: PushNotificationsProtocol) {
         self.init()
-        self.id = id
+        self.id = (id ?? "") + "push"
         giftedGems = pnProtocol.giftedGems
         giftedSubscription = pnProtocol.giftedSubscription
         invitedGuild = pnProtocol.invitedGuild

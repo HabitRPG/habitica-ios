@@ -1,16 +1,14 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "InputBarAccessoryView",
-        "repositoryURL": "https://github.com/nathantannar4/InputBarAccessoryView.git",
-        "state": {
-          "branch": null,
-          "revision": "6d3d205f29b80f8fa9a9616ad801c488293242bf",
-          "version": "5.4.0"
-        }
+  "pins" : [
+    {
+      "identity" : "inputbaraccessoryview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nathantannar4/InputBarAccessoryView.git",
+      "state" : {
+        "revision" : "6d3d205f29b80f8fa9a9616ad801c488293242bf",
+        "version" : "5.4.0"
       }
-    ]
-  },
-  "version": 1
+    }
+  ],
+  "version" : 2
 }

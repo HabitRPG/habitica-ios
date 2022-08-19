@@ -54,19 +54,6 @@ private let pushNotificationsMapping = [
     L10n.Settings.PushNotifications.mentionUnjoinedGuild: "mentionUnjoinedGuild"
 ]
 
-private let emailNotificationsMapping = [
-    L10n.Settings.PushNotifications.giftedGems: "giftedGems",
-    L10n.Settings.PushNotifications.giftedSubscription: "giftedSubscription",
-    L10n.Settings.PushNotifications.receivedPm: "newPM",
-    L10n.Settings.PushNotifications.wonChallenge: "wonChallenge",
-    L10n.Settings.PushNotifications.invitedQuest: "invitedQuest",
-    L10n.Settings.PushNotifications.invitedParty: "invitedParty",
-    L10n.Settings.PushNotifications.invitedGuid: "invitedGuild",
-    L10n.Settings.PushNotifications.importantAnnouncement: "majorUpdates",
-    L10n.Settings.PushNotifications.questBegun: "questStarted",
-    L10n.Settings.EmailNotifications.bannedGroup: "kickedGroup"
-]
-
 // swiftlint:disable:next type_body_length
 class SettingsViewController: FormViewController, Themeable {
     
@@ -402,18 +389,19 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
             }
-            <<< MultipleSelectorRow<String>(SettingsTags.emailNotifications) { row in
+            <<< MultipleSelectorRow<LabeledFormValue<String>>(SettingsTags.emailNotifications) { row in
                 row.title = L10n.Settings.EmailNotifications.title
-                row.options = [L10n.Settings.PushNotifications.receivedPm,
-                L10n.Settings.PushNotifications.wonChallenge,
-                L10n.Settings.PushNotifications.giftedGems,
-                L10n.Settings.PushNotifications.giftedSubscription,
-                L10n.Settings.PushNotifications.invitedParty,
-                L10n.Settings.PushNotifications.invitedGuid,
-                L10n.Settings.PushNotifications.invitedQuest,
-                L10n.Settings.PushNotifications.questBegun,
-                L10n.Settings.PushNotifications.importantAnnouncement,
-                L10n.Settings.EmailNotifications.bannedGroup]
+                row.options = [LabeledFormValue(value: "newPM", label: L10n.Settings.PushNotifications.receivedPm),
+                               LabeledFormValue(value: "wonChallenge", label: L10n.Settings.PushNotifications.wonChallenge),
+                               LabeledFormValue(value: "giftedGems", label: L10n.Settings.PushNotifications.giftedGems),
+                               LabeledFormValue(value: "giftedSubscription", label: L10n.Settings.PushNotifications.giftedSubscription),
+                               LabeledFormValue(value: "invitedParty", label: L10n.Settings.PushNotifications.invitedParty),
+                               LabeledFormValue(value: "invitedGuild", label: L10n.Settings.PushNotifications.invitedGuid),
+                               LabeledFormValue(value: "invitedQuest", label: L10n.Settings.PushNotifications.invitedQuest),
+                               LabeledFormValue(value: "questStarted", label: L10n.Settings.PushNotifications.questBegun),
+                               LabeledFormValue(value: "majorUpdates", label: L10n.Settings.PushNotifications.importantAnnouncement),
+                               LabeledFormValue(value: "kickedGroup", label: L10n.Settings.EmailNotifications.bannedGroup)]
+                
                 row.disabled = Condition.function([SettingsTags.disableAllEmails], { (form) -> Bool in
                     return (form.rowBy(tag: SettingsTags.disableAllEmails) as? SwitchRow)?.value == true
                 })
@@ -433,8 +421,10 @@ class SettingsViewController: FormViewController, Themeable {
                         return
                     }
                     var updateDict = [String: Encodable]()
-                    for (key, value) in emailNotificationsMapping {
-                        updateDict["preferences.emailNotifications.\(value)"] = row.value?.contains(key)
+                    for option in row.options ?? [] {
+                        updateDict["preferences.emailNotifications.\(option.value)"] = row.value?.contains(where: { selectedValue in
+                            selectedValue.value == option.value
+                        })
                     }
                     self?.userRepository.updateUser(updateDict).observeCompleted {}
                 })
@@ -703,7 +693,7 @@ class SettingsViewController: FormViewController, Themeable {
         pushNotificationsRow?.value = getPushNotificationSet(forUser: user)
         
         let disableEmailsRow = (form.rowBy(tag: SettingsTags.disableAllEmails) as? SwitchRow)
-        disableEmailsRow?.value = user.preferences?.pushNotifications?.unsubscribeFromAll
+        disableEmailsRow?.value = user.preferences?.emailNotifications?.unsubscribeFromAll
         disableEmailsRow?.updateCell()
         
         let emailNotificationsRow = (form.rowBy(tag: SettingsTags.emailNotifications) as? MultipleSelectorRow<String>)

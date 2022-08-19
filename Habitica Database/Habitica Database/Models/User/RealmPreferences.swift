@@ -45,6 +45,7 @@ class RealmPreferences: BaseModel, PreferencesProtocol {
         }
     }
     @objc dynamic var realmPushNotifications: RealmPushNotifications?
+    
     var emailNotifications: EmailNotificationsProtocol? {
         get {
             return realmEmailNotifications
@@ -60,6 +61,7 @@ class RealmPreferences: BaseModel, PreferencesProtocol {
         }
     }
     @objc dynamic var realmEmailNotifications: RealmEmailNotifications?
+    
     var hair: HairProtocol? {
         get {
             return realmHair
@@ -81,7 +83,7 @@ class RealmPreferences: BaseModel, PreferencesProtocol {
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["pushNotifications"]
+        return ["pushNotifications", "emailNotifications"]
     }
     
     convenience init(id: String?, preferences: PreferencesProtocol) {

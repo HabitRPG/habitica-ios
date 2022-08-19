@@ -153,7 +153,7 @@ struct FormRow<TitleView: View, LabelView: View>: View {
     }
 }
 
-struct FormSheetSelector<TYPE: Equatable>: View {
+struct FormSheetSelector<TYPE: Equatable & Hashable>: View {
     let title: Text
     @Binding var value: TYPE
     let options: [LabeledFormValue<TYPE>]

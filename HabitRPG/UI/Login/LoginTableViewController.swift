@@ -83,7 +83,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewModel.performExistingAccountSetupFlows()
+        // viewModel.performExistingAccountSetupFlows()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

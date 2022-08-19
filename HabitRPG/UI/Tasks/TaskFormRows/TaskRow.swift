@@ -9,7 +9,7 @@
 import UIKit
 import Eureka
 
-struct LabeledFormValue<V: Equatable>: Equatable, CustomStringConvertible, Identifiable {
+struct LabeledFormValue<V: Equatable & Hashable>: Equatable, CustomStringConvertible, Identifiable, Hashable {
     static func == (lhs: LabeledFormValue<V>, rhs: LabeledFormValue<V>) -> Bool {
         return lhs.value == rhs.value
     }
@@ -23,6 +23,10 @@ struct LabeledFormValue<V: Equatable>: Equatable, CustomStringConvertible, Ident
     
     var id: String {
         return value as? String ?? ""
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(value)
     }
 }
 
