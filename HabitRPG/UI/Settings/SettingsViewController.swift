@@ -270,7 +270,14 @@ class SettingsViewController: FormViewController, Themeable {
                     if row.value?.value == self?.user?.preferences?.dayStart {
                         return
                     }
-                    self?.userRepository.updateDayStartTime(row.value?.value ?? 0).observeCompleted {}
+                    
+                    self?.userRepository.updateDayStartTime(row.value?.value ?? 0).observeCompleted {
+                        let nextCron = self?.calculateNextCron(dayStart: self?.user?.preferences?.dayStart)
+                        let dateFormatter = DateFormatter()
+                        let format = "\(self?.user?.preferences?.dateFormat ?? "MM/dd/yyyy") @hh:mm a"
+                        dateFormatter.dateFormat = format
+                        ToastManager.show(text: L10n.Settings.nextCronRun(dateFormatter.string(from: nextCron ?? Date())), color: .green, duration: 4.0)
+                    }
                 })
                 row.onPresent({ (_, to) in
                     to.enableDeselection = false
@@ -889,5 +896,22 @@ class SettingsViewController: FormViewController, Themeable {
         } else {
             return LabeledFormValue(value: adjustment, label: "+\(adjustment) (\(adjustment):00)")
         }
+    }
+    
+    private func calculateNextCron(dayStart: Int?) -> Date {
+        let date = Date()
+        let currentHour = Calendar.current.component(.hour, from: date)
+        let currentYear = Calendar.current.component(.year, from: date)
+        let currentMonth = Calendar.current.component(.month, from: date)
+        let currentDay = Calendar.current.component(.day, from: date)
+        var day: Int
+        if (currentHour >= dayStart ?? 0) {
+            day = currentDay + 1
+        } else {
+            day = currentDay
+        }
+        let components = DateComponents(year: currentYear, month: currentMonth, day: day, hour: dayStart ?? 0, minute: 0, second: 0)
+        let calendar = Calendar(identifier: Locale.current.calendar.identifier)
+        return calendar.date(from: components) ?? Date()
     }
 }
