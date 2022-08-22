@@ -101,7 +101,10 @@ class NPCBannerView: UIView {
 
     @objc
     func setSprites(identifier: String) {
-        let spriteSuffix = ConfigRepository.shared.string(variable: .shopSpriteSuffix, defaultValue: "")
+        var spriteSuffix = ConfigRepository.shared.string(variable: .shopSpriteSuffix, defaultValue: "")
+        if (!spriteSuffix.starts(with: "_")) {
+            spriteSuffix = "_" + spriteSuffix
+        }
         ImageManager.getImage(name: identifier + "_background"+spriteSuffix) { (image, _) in
             self.bgImageView.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImage.ResizingMode.tile)
         }
