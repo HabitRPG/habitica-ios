@@ -1938,6 +1938,10 @@ public enum L10n {
     public static var newPassword: String { return L10n.tr("Mainstrings", "settings.new_password") }
     /// New Username
     public static var newUsername: String { return L10n.tr("Mainstrings", "settings.new_username") }
+    /// Next day reset: %@
+    public static func nextCronRun(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "settings.next_cron_run", p1)
+    }
     /// No Email
     public static var noEmail: String { return L10n.tr("Mainstrings", "settings.no_email") }
     /// Not Set
