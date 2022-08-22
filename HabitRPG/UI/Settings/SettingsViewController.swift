@@ -38,22 +38,6 @@ enum SettingsTags {
     static let manuallyRestartDay = "manuallyRestartDay"
 }
 
-private let pushNotificationsMapping = [
-    L10n.Settings.PushNotifications.giftedGems: "giftedGems",
-    L10n.Settings.PushNotifications.giftedSubscription: "giftedSubscription",
-    L10n.Settings.PushNotifications.receivedPm: "newPM",
-    L10n.Settings.PushNotifications.wonChallenge: "wonChallenge",
-    L10n.Settings.PushNotifications.invitedQuest: "invitedQuest",
-    L10n.Settings.PushNotifications.invitedParty: "invitedParty",
-    L10n.Settings.PushNotifications.invitedGuid: "invitedGuild",
-    L10n.Settings.PushNotifications.importantAnnouncement: "majorUpdates",
-    L10n.Settings.PushNotifications.questBegun: "questStarted",
-    L10n.Settings.PushNotifications.partyActivity: "partyActivity",
-    L10n.Settings.PushNotifications.mentionParty: "mentionParty",
-    L10n.Settings.PushNotifications.mentionJoinedGuild: "mentionJoinedGuild",
-    L10n.Settings.PushNotifications.mentionUnjoinedGuild: "mentionUnjoinedGuild"
-]
-
 // swiftlint:disable:next type_body_length
 class SettingsViewController: FormViewController, Themeable {
     
@@ -334,21 +318,21 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
             }
-            <<< MultipleSelectorRow<String>(SettingsTags.pushNotifications) { row in
+            <<< MultipleSelectorRow<LabeledFormValue<String>>(SettingsTags.pushNotifications) { row in
                 row.title = L10n.Settings.PushNotifications.title
-                row.options = [L10n.Settings.PushNotifications.receivedPm,
-                L10n.Settings.PushNotifications.wonChallenge,
-                L10n.Settings.PushNotifications.giftedGems,
-                L10n.Settings.PushNotifications.giftedSubscription,
-                L10n.Settings.PushNotifications.invitedParty,
-                L10n.Settings.PushNotifications.invitedGuid,
-                L10n.Settings.PushNotifications.invitedQuest,
-                L10n.Settings.PushNotifications.questBegun,
-                L10n.Settings.PushNotifications.importantAnnouncement,
-                L10n.Settings.PushNotifications.partyActivity,
-                L10n.Settings.PushNotifications.mentionParty,
-                L10n.Settings.PushNotifications.mentionJoinedGuild,
-                L10n.Settings.PushNotifications.mentionUnjoinedGuild
+                row.options = [LabeledFormValue(value: "newPM", label: L10n.Settings.PushNotifications.receivedPm),
+                               LabeledFormValue(value: "wonChallenge", label: L10n.Settings.PushNotifications.wonChallenge),
+                               LabeledFormValue(value: "giftedGems", label: L10n.Settings.PushNotifications.giftedGems),
+                               LabeledFormValue(value: "giftedSubscription", label: L10n.Settings.PushNotifications.giftedSubscription),
+                               LabeledFormValue(value: "invitedParty", label: L10n.Settings.PushNotifications.invitedParty),
+                               LabeledFormValue(value: "invitedGuild", label: L10n.Settings.PushNotifications.invitedGuid),
+                               LabeledFormValue(value: "invitedQuest", label: L10n.Settings.PushNotifications.invitedQuest),
+                               LabeledFormValue(value: "questStarted", label: L10n.Settings.PushNotifications.questBegun),
+                               LabeledFormValue(value: "majorUpdates", label: L10n.Settings.PushNotifications.importantAnnouncement),
+                               LabeledFormValue(value: "partyActivity", label: L10n.Settings.PushNotifications.partyActivity),
+                               LabeledFormValue(value: "mentionParty", label: L10n.Settings.PushNotifications.mentionParty),
+                               LabeledFormValue(value: "mentionJoinedGuild", label: L10n.Settings.PushNotifications.mentionJoinedGuild),
+                               LabeledFormValue(value: "mentionUnjoinedGuild", label: L10n.Settings.PushNotifications.mentionUnjoinedGuild)
                 ]
                 row.disabled = Condition.function([SettingsTags.disableAllNotifications], { (form) -> Bool in
                     return (form.rowBy(tag: SettingsTags.disableAllNotifications) as? SwitchRow)?.value == true
@@ -369,8 +353,10 @@ class SettingsViewController: FormViewController, Themeable {
                         return
                     }
                     var updateDict = [String: Encodable]()
-                    for (key, value) in pushNotificationsMapping {
-                        updateDict["preferences.pushNotifications.\(value)"] = row.value?.contains(key)
+                    for option in row.options ?? [] {
+                        updateDict["preferences.pushNotifications.\(option.value)"] = row.value?.contains(where: { selectedValue in
+                            selectedValue.value == option.value
+                        })
                     }
                     self?.userRepository.updateUser(updateDict).observeCompleted {}
                 })

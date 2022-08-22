@@ -10,7 +10,8 @@ import UIKit
 
 // MARK: - Storyboard Scenes
 
-// swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
+// swiftlint:disable explicit_type_interface identifier_name line_length prefer_self_in_static_references
+// swiftlint:disable type_body_length type_name
 internal enum StoryboardScene {
   internal enum BuyModal: StoryboardType {
     internal static let storyboardName = "BuyModal"
@@ -184,7 +185,8 @@ internal enum StoryboardScene {
     internal static let verifyUsernameModalViewController = SceneType<Habitica.VerifyUsernameModalViewController>(storyboard: User.self, identifier: "VerifyUsernameModalViewController")
   }
 }
-// swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
+// swiftlint:enable explicit_type_interface identifier_name line_length prefer_self_in_static_references
+// swiftlint:enable type_body_length type_name
 
 // MARK: - Implementation Details
 
