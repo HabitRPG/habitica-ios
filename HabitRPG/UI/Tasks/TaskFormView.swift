@@ -503,6 +503,7 @@ struct ChecklistDropDelegate: DropDelegate {
 struct TaskFormReminderItemView: View {
     var item: ReminderProtocol
     var isExpanded: Bool
+    var showDate: Bool
     var onDelete: () -> Void
     
     @State private var time: Date
@@ -516,16 +517,17 @@ struct TaskFormReminderItemView: View {
     @ViewBuilder
     private func buildPicker(value: Binding<Date>) -> some View {
         DatePicker(selection: value,
-                   displayedComponents: [.hourAndMinute],
+                   displayedComponents: showDate ? [.date, .hourAndMinute] : [.hourAndMinute],
                           label: {
                    Text("")
                           })
             .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
     }
     
-    init(item: ReminderProtocol, isExpanded: Bool, onDelete: @escaping () -> Void) {
+    init(item: ReminderProtocol, isExpanded: Bool, showDate: Bool, onDelete: @escaping () -> Void) {
         self.item = item
         self.isExpanded = isExpanded
+        self.showDate = showDate
         self.onDelete = onDelete
         _time = State(initialValue: item.time ?? Calendar.current.date(bySetting: .second, value: 0, of: Date()) ?? Date())
     }
@@ -558,6 +560,7 @@ struct TaskFormReminderItemView: View {
 }
 
 struct TaskFormReminderView: View {
+    var showDate: Bool
     private let taskRepository = TaskRepository()
     @Binding var items: [ReminderProtocol]
     
@@ -568,7 +571,7 @@ struct TaskFormReminderView: View {
             Text(L10n.Tasks.Form.reminders.uppercased()).font(.system(size: 13, weight: .semibold)).foregroundColor(Color(ThemeService.shared.theme.quadTextColor)).padding(.leading, 14)
             VStack(spacing: 8) {
                 ForEach(items, id: \.id) { item in
-                    TaskFormReminderItemView(item: item, isExpanded: item.id == expandedItem?.id) {
+                    TaskFormReminderItemView(item: item, isExpanded: item.id == expandedItem?.id, showDate: showDate) {
                         withAnimation {
                             if let index = items.firstIndex(where: { $0.id == item.id }) {
                                 items.remove(at: index)
@@ -929,7 +932,7 @@ struct TaskFormView: View {
                                             content: DifficultyPicker(selectedDifficulty: $viewModel.priority).padding(8))
                         }
                         if viewModel.taskType == .daily || viewModel.taskType == .todo {
-                            TaskFormReminderView(items: $viewModel.reminders)
+                            TaskFormReminderView(showDate: viewModel.taskType == .todo, items: $viewModel.reminders)
                             }
                         if viewModel.showStatAllocation && viewModel.isTaskEditable {
                             TaskFormSection(header: Text(L10n.statAllocation.uppercased()),
