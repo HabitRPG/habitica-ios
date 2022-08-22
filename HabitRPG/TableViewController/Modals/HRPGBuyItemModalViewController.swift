@@ -528,14 +528,18 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         }
     }
     
-    private static func displayInsufficientGemsModal() {
+    static func displayInsufficientGemsModal(delayDisplay: Bool = true) {
         let alert = prepareInsufficientModal(title: L10n.notEnoughGems, message: L10n.moreGemsMessage, image: Asset.insufficientGems.image)
         alert.addAction(title: L10n.purchaseGems, isMainAction: true, handler: { _ in
             
         })
         alert.addCloseAction()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            // delay a bit to give the buying modal a chance to disappear
+        if delayDisplay {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                // delay a bit to give the buying modal a chance to disappear
+                alert.enqueue()
+            }
+        } else {
             alert.enqueue()
         }
     }

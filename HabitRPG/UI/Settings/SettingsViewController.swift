@@ -44,18 +44,18 @@ class SettingsViewController: FormViewController, Themeable {
     private let contentRepository = ContentRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     private let configRepository = ConfigRepository.shared
+    private let changeClassCosts = 3
+
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
     private var user: UserProtocol?
     private var isSettingUserData = false
     
-    private let changeClassCosts = 3;
-    
     private let groupPlanSection = Section(L10n.Groups.groupPlanSettings) { section in
         section.hidden = true
         section.footer = HeaderFooterView(title: L10n.Groups.copySharedTasksDescription)
     }
-    
+
     override func viewDidLoad() {
         tableView = UITableView(frame: view.bounds, style: .insetGrouped)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -852,10 +852,15 @@ class SettingsViewController: FormViewController, Themeable {
             }
         } else {
             let alertController = HabiticaAlertController(title: L10n.Settings.areYouSure, message: L10n.Settings.changeClassDisclaimer)
-            if user.gemCount >= changeClassCosts {
-                alertController.addAction(title: L10n.Settings.changeClass) {[weak self] _ in
-                    self?.showClassSelectionViewController()
+            let changeClassCosts = changeClassCosts
+            
+            alertController.addAction(title: L10n.Settings.changeClass) {[weak self] _ in
+                if user.gemCount < changeClassCosts {
+                    print("Not enogh gems")
+                    HRPGBuyItemModalViewController.displayInsufficientGemsModal(delayDisplay: false)
+                    return
                 }
+                self?.showClassSelectionViewController()
             }
             alertController.addCancelAction()
             alertController.show()
