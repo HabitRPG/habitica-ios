@@ -1,13 +1,12 @@
 //
-//  File.swift
+//  LabeledFormValue.swift
 //  Habitica
 //
-//  Created by Phillip Thelen on 21.03.18.
-//  Copyright © 2018 HabitRPG Inc. All rights reserved.
+//  Created by Phillip Thelen on 23.08.22.
+//  Copyright © 2022 HabitRPG Inc. All rights reserved.
 //
 
-import UIKit
-import Eureka
+import Foundation
 
 struct LabeledFormValue<V: Equatable & Hashable>: Equatable, CustomStringConvertible, Identifiable, Hashable {
     static func == (lhs: LabeledFormValue<V>, rhs: LabeledFormValue<V>) -> Bool {
@@ -27,15 +26,5 @@ struct LabeledFormValue<V: Equatable & Hashable>: Equatable, CustomStringConvert
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(value)
-    }
-}
-
-typealias CombinedCell = BaseCell & CellType
-
-class TaskRow<C: CombinedCell>: Row<C> {
-    var tintColor: UIColor = UIColor.purple300
-    
-    func updateTintColor(_ newTint: UIColor) {
-        self.tintColor = newTint
     }
 }

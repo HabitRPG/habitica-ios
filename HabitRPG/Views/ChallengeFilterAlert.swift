@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PopupDialog
 import Habitica_Models
 import ReactiveSwift
 

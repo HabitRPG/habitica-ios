@@ -649,6 +649,10 @@ class TaskFormViewModel: ObservableObject {
     @Published var dueDate: Date?
     @Published var selectedTags: [TagProtocol] = []
     
+    @Published var streak: String = "0"
+    @Published var counterUp: String = "0"
+    @Published var counterDown: String = "0"
+    
     @Published var monday: Bool = true
     @Published var tuesday: Bool = true
     @Published var wednesday: Bool = true
@@ -691,6 +695,10 @@ class TaskFormViewModel: ObservableObject {
             _everyX = Published(initialValue: task?.everyX ?? 1)
             _startDate = Published(initialValue: task?.startDate ?? Date())
             _dueDate = Published(initialValue: task?.duedate)
+            
+            _streak = Published(initialValue: String(task?.streak ?? 0))
+            _counterUp = Published(initialValue: String(task?.counterUp ?? 0))
+            _counterDown = Published(initialValue: String(task?.counterDown ?? 0))
 
             _selectedTags = Published(initialValue: task?.tags ?? [])
             
@@ -938,6 +946,23 @@ struct TaskFormView: View {
                             TaskFormSection(header: Text(L10n.statAllocation.uppercased()),
                                             content: TaskFormPicker(options: TaskFormView.statAllocationOptions, selection: $viewModel.stat, tintColor: viewModel.pickerTintColor))
                         }
+                        if viewModel.taskType == .daily && viewModel.task?.id != nil {
+                            TaskFormSection(header: Text(L10n.Tasks.Form.adjustStreak.uppercased()),
+                                            content: FormRow(title: Text(L10n.streak), valueLabel: TextField(L10n.streak, text: $viewModel.streak)
+                                                .multilineTextAlignment(.trailing)
+                                                .keyboardType(.numberPad)))
+                            
+                        } else if viewModel.taskType == .habit && viewModel.task?.id != nil {
+                            TaskFormSection(header: Text(L10n.Tasks.Form.adjustCounter.uppercased()),
+                                            content: VStack {
+                                FormRow(title: Text(L10n.Tasks.Form.positive), valueLabel: TextField(L10n.Tasks.Form.positive, text: $viewModel.counterUp)
+                                    .multilineTextAlignment(.trailing)
+                                    .keyboardType(.numberPad))
+                                FormRow(title: Text(L10n.Tasks.Form.negative), valueLabel: TextField(L10n.Tasks.Form.negative, text: $viewModel.counterDown)
+                                    .multilineTextAlignment(.trailing)
+                                    .keyboardType(.numberPad))
+                            })
+                        }
                         TaskFormSection(header: Text(L10n.Tasks.Form.tags.uppercased()),
                                         content: TagList(selectedTags: $viewModel.selectedTags, allTags: tags, taskColor: viewModel.taskTintColor))
                         if viewModel.task?.id != nil {
@@ -1090,6 +1115,10 @@ class TaskFormController: UIHostingController<TaskFormView> {
         task.duedate = viewModel.dueDate
         task.tags = viewModel.selectedTags
         task.attribute = viewModel.stat
+        
+        task.streak = Int(string: viewModel.streak) ?? 0
+        task.counterUp = Int(string: viewModel.counterUp) ?? 0
+        task.counterDown = Int(string: viewModel.counterDown) ?? 0
         
         task.weekRepeat?.monday = viewModel.monday
         task.weekRepeat?.tuesday = viewModel.tuesday
