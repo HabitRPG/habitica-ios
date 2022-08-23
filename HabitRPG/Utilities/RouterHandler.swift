@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import DeepLinkKit
 import Habitica_Models
 import Habitica_API_Client
 
@@ -16,177 +15,186 @@ class RouterHandler: NSObject {
     
     @objc public static let shared = RouterHandler()
 
-    private let router = DPLDeepLinkRouter()
+    private var directRoutes = [String:(() -> Void)]()
+    private var parameterRoutes = [String:(([String: String]) -> Void)]()
+    
+    private func register(_ route: String, call: @escaping (() -> Void)) {
+        directRoutes[route] = call
+    }
+    
+    private func register(_ route: String, call: @escaping (([String: String]) -> Void)) {
+        parameterRoutes[route] = call
+    }
     
     // swiftlint:disable:next function_body_length
     func register() {
-        router.register("/groups/guild/:groupID") { link in
+        register("/groups/guild/:groupID") { link in
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Social.groupTableViewController.instantiate()
-            viewController.groupID = link?.routeParameters["groupID"] as? String
+            viewController.groupID = link["groupID"]
             self.push(viewController)
         }
-        router.register("/groups/myGuilds") { _ in
+        register("/groups/myGuilds") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
         }
-        router.register("/groups/discovery") { _ in
+        register("/groups/discovery") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
         }
-        router.register("/challenges/:challengeID") { link in
+        register("/challenges/:challengeID") { link in
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Social.challengeDetailViewController.instantiate()
-            let viewModel = ChallengeDetailViewModel(challengeID: (link?.routeParameters["challengeID"] as? String) ?? "")
+            let viewModel = ChallengeDetailViewModel(challengeID: (link["challengeID"]) ?? "")
             viewController.viewModel = viewModel
             self.push(viewController)
         }
-        router.register("/challenges/myChallenges") { _ in
+        register("/challenges/myChallenges") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
         }
-        router.register("/challenges/findChallenges") { _ in
+        register("/challenges/findChallenges") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
         }
-        router.register("/tavern") { _ in
+        register("/tavern") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Social.tavernViewController.instantiate())
         }
-        router.register("/party") { _ in
+        register("/party") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Social.partyViewController.instantiate())
         }
-        router.register("/inventory/market") { _ in
+        register("/inventory/market") {
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Shop.initialScene.instantiate()
             viewController.shopIdentifier = Constants.MarketKey
             self.push(viewController)
         }
-        router.register("/inventory/quests") { _ in
+        register("/inventory/quests") {
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Shop.initialScene.instantiate()
             viewController.shopIdentifier = Constants.QuestShopKey
             self.push(viewController)
         }
-        router.register("/inventory/seasonal") { _ in
+        register("/inventory/seasonal") {
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Shop.initialScene.instantiate()
             viewController.shopIdentifier = Constants.SeasonalShopKey
             self.push(viewController)
         }
-        router.register("/inventory/time") { _ in
+        register("/inventory/time") {
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Shop.initialScene.instantiate()
             viewController.shopIdentifier = Constants.TimeTravelersShopKey
             self.push(viewController)
         }
-        router.register("/inventory/items") { _ in
+        register("/inventory/items") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.itemsViewController.instantiate())
         }
-        router.register("/inventory/equipment") { _ in
+        register("/inventory/equipment") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.equipmentOverviewViewController.instantiate())
         }
-        router.register("/inventory/stable") { _ in
+        register("/inventory/stable") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.stableViewController.instantiate())
         }
-        router.register("/inventory/stable/pets/:petType") { link in
+        register("/inventory/stable/pets/:petType") { link in
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.stableViewController.instantiate())
             let viewController = StoryboardScene.Main.petDetailViewController.instantiate()
-            viewController.searchKey = (link?.routeParameters["petType"] as? String) ?? ""
+            viewController.searchKey = link["petType"] ?? ""
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.push(viewController)
             }
         }
-        router.register("/inventory/stable/mounts/:mountType") { link in
+        register("/inventory/stable/mounts/:mountType") { link in
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.stableViewController.instantiate())
             let viewController = StoryboardScene.Main.mountDetailViewController.instantiate()
-            viewController.searchKey = (link?.routeParameters["mountType"] as? String) ?? ""
+            viewController.searchKey = link["mountType"] ?? ""
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.push(viewController)
             }
         }
-        router.register("/static/new-stuff") { _ in
+        register("/static/new-stuff") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.newsViewController.instantiate())
         }
-        router.register("/static/faq") { _ in
+        register("/static/faq") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Support.mainSupportViewController.instantiate())
         }
-        router.register("/static/about") { _ in
+        register("/static/about") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.aboutViewController.instantiate())
         }
-        router.register("/static/faq/:index") { link in
+        register("/static/faq/:index") { link in
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Support.faqDetailViewController.instantiate()
-            viewController.index = Int(string: (link?.routeParameters["index"] as? String) ?? "0") ?? 0
+            viewController.index = Int(string: link["index"] ?? "0") ?? 0
             self.push(viewController)
         }
-        router.register("/user/settings.*") { _ in
+        register("/user/settings.*") {
             self.displayTab(index: 4)
             self.present(StoryboardScene.Settings.initialScene.instantiate())
         }
-        router.register("/user/settings/subscription") { _ in
+        register("/user/settings/subscription") {
             self.displayTab(index: 4)
             self.present(StoryboardScene.Main.subscriptionNavController.instantiate())
         }
-        router.register("/user/settings/gems") { _ in
+        register("/user/settings/gems") {
             self.displayTab(index: 4)
             self.present(StoryboardScene.Main.purchaseGemNavController.instantiate())
         }
-        router.register("/promo") { _ in
+        register("/promo") {
             self.displayTab(index: 4)
             self.present(StoryboardScene.Main.promotionInfoNavController.instantiate())
         }
-        router.register("/private-messages") { _ in
+        register("/private-messages") {
             self.displayTab(index: 4)
             self.present(StoryboardScene.Social.inboxNavigationViewController.instantiate())
         }
-        router.register("/user/notifications") { _ in
+        register("/user/notifications") {
             self.displayTab(index: 4)
             self.present(StoryboardScene.Main.notificationsNavigationController.instantiate())
         }
-        router.register("/user/stats") { _ in
+        register("/user/stats") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.User.attributePointsViewController.instantiate())
         }
-        router.register("/user/skills") { _ in
+        register("/user/skills") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.User.spellsViewController.instantiate())
         }
-        router.register("/user/achievements") { _ in
+        register("/user/achievements") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.User.achievementsCollectionViewController.instantiate())
         }
-        router.register("/user/avatar") { _ in
+        register("/user/avatar") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.avatarOverviewViewController.instantiate())
         }
-        router.register("/user/onboarding") { _ in
+        register("/user/onboarding") {
             self.present(StoryboardScene.Main.adventureGuideNavigationViewController.instantiate())
         }
-        router.register("/promo/info") { _ in
+        register("/promo/info") {
             self.present(StoryboardScene.Main.promotionInfoNavController.instantiate())
         }
-        router.register("/promo/web") { _ in
+        register("/promo/web") {
             self.present(StoryboardScene.Main.promoWebNavController.instantiate())
         }
-        router.register("/profile/:userID") { link in
+        register("/profile/:userID") { link in
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Social.userProfileViewController.instantiate()
-            viewController.userID = link?.routeParameters["userID"] as? String
+            viewController.userID = link["userID"]
             self.push(viewController)
         }
         
-        router.register("/user/tasks/:taskType") { link in
-            let type = link?.routeParameters["taskType"] as? String ?? ""
+        register("/user/tasks/:taskType") { link in
+            let type = link["taskType"] ?? ""
             switch type {
             case "habit", "habits":
                 self.displayTab(index: 0)
@@ -201,8 +209,8 @@ class RouterHandler: NSObject {
             }
         }
         
-        router.register("/user/tasks/:taskType/add") { link in
-            let type = link?.routeParameters["taskType"] as? String ?? ""
+        register("/user/tasks/:taskType/add") { link in
+            let type = link["taskType"] ?? ""
             switch type {
             case "habit", "habits":
                 self.displayTab(index: 0)
@@ -219,11 +227,11 @@ class RouterHandler: NSObject {
             guard let formController = navigationController.topViewController as? TaskFormController else {
                 return
             }
-            formController.taskType = TaskType(rawValue: link?.routeParameters["taskType"] as? String ?? "habit") ?? TaskType.habit
+            formController.taskType = TaskType(rawValue: link["taskType"] ?? "habit") ?? TaskType.habit
             formController.editedTask = nil
             self.present(navigationController)
         }
-        router.register("/menu") { _ in
+        register("/menu") {
             self.displayTab(index: 4)
         }
     }
@@ -234,8 +242,12 @@ class RouterHandler: NSObject {
         if url.host == AuthenticatedCall.defaultConfiguration.host {
             return handle(urlString: url.relativePath)
         }
-        return router.handle(url) { (_, _) in
+        let path = url.relativePath
+        if let call = directRoutes[path] {
+            call()
+            return true
         }
+        return false
     }
     
     @objc
@@ -255,8 +267,10 @@ class RouterHandler: NSObject {
     
     @objc
     func handle(userActivity: NSUserActivity) -> Bool {
-        return router.handle(userActivity, withCompletion: { (_, _) in
-        })
+        if userActivity.activityType == NSUserActivityTypeBrowsingWeb, let url = userActivity.webpageURL {
+            return handle(url: url)
+        }
+        return false
     }
     
     private func displayTab(index: Int) {

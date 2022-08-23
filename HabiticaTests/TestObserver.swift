@@ -1,5 +1,4 @@
 import XCTest
-import ReactiveCocoa
 import ReactiveSwift
 
 /**

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Amplitude_iOS
+import Amplitude
 
 public class HabiticaAnalytics {
     public static let shared = HabiticaAnalytics()
@@ -23,10 +23,10 @@ public class HabiticaAnalytics {
             "hitType": "pageview",
             "page": pageName
         ]
-        Amplitude.instance()?.logEvent("navigated", withEventProperties: properties)
+        Amplitude.instance().logEvent("navigated", withEventProperties: properties)
     }
     
     public func log(_ eventName: String, withEventProperties properties: [AnyHashable: Any]) {
-        Amplitude.instance()?.logEvent(eventName, withEventProperties: properties)
+        Amplitude.instance().logEvent(eventName, withEventProperties: properties)
     }
 }

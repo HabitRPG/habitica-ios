@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Amplitude_iOS
+import Amplitude
 import Habitica_API_Client
 import Habitica_Models
 import RealmSwift
@@ -160,7 +160,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         Amplitude.instance().initializeApiKey(Secrets.amplitudeApiKey)
         Amplitude.instance().setUserId(AuthenticationManager.shared.currentUserId)
         let userDefaults = UserDefaults.standard
-        Amplitude.instance()?.setUserProperties(["iosTimezoneOffset": -(NSTimeZone.local.secondsFromGMT() / 60),
+        Amplitude.instance().setUserProperties(["iosTimezoneOffset": -(NSTimeZone.local.secondsFromGMT() / 60),
                                                  "launch_screen": userDefaults.string(forKey: "initialScreenURL") ?? ""
         ])
     }

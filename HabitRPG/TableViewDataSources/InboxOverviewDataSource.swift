@@ -8,15 +8,16 @@
 
 import Foundation
 import Habitica_Models
-import DateTools
 
 class InboxOverviewDataSource: BaseReactiveTableViewDataSource<InboxConversationProtocol> {
+    let formatter = RelativeDateTimeFormatter()
     
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
     
     override init() {
         super.init()
+        formatter.unitsStyle = .full
         sections.append(ItemSection<InboxConversationProtocol>())
         
         disposable.add(socialRepository.getMessagesThreads().on(value: {[weak self](messages, changes) in
@@ -38,7 +39,9 @@ class InboxOverviewDataSource: BaseReactiveTableViewDataSource<InboxConversation
             textLabel?.text = message.text
             textLabel?.textColor = ThemeService.shared.theme.secondaryTextColor
             let timeLabel = cell.viewWithTag(3) as? UILabel
-            timeLabel?.text = (message.timestamp as NSDate?)?.timeAgoSinceNow()
+            if let timestamp = message.timestamp {
+                timeLabel?.text = formatter.localizedString(for: timestamp, relativeTo: Date())
+            }
             timeLabel?.textColor = ThemeService.shared.theme.secondaryTextColor
             let usernameLabel = cell.viewWithTag(4) as? UILabel
             if let username = message.username {

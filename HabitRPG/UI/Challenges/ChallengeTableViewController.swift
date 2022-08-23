@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PopupDialog
 import ReactiveSwift
 import ReactiveCocoa
 import Habitica_Models
@@ -197,8 +196,9 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
             viewController.shownGuilds = dataSource.shownGuilds ?? [String]()
         }
         viewController.delegate = self
-        let popup = PopupDialog(viewController: viewController)
-        self.present(popup, animated: true, completion: nil)
+        let alert = HabiticaAlertController()
+        alert.contentView = viewController.view
+        alert.show()
     }
 
     func challengeFilterChanged(showOwned: Bool, showNotOwned: Bool, shownGuilds: [String]) {

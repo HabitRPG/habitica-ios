@@ -137,6 +137,14 @@
 		2929AAB322E9E58E00DF9463 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2929AAB222E9E58E00DF9463 /* Habitica_Database.framework */; };
 		2929AAB522E9E59A00DF9463 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2929AAB422E9E59A00DF9463 /* Habitica_Models.framework */; };
 		292AA72420FE15090022CC5F /* UIFont-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292AA72320FE15090022CC5F /* UIFont-Extensions.swift */; };
+		292BD89C28B4EA4F006447EF /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 292BD89B28B4EA4F006447EF /* KeychainAccess */; };
+		292BD89F28B4EA85006447EF /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 292BD89E28B4EA85006447EF /* AppAuth */; };
+		292BD8A228B4EAC4006447EF /* Amplitude in Frameworks */ = {isa = PBXBuildFile; productRef = 292BD8A128B4EAC4006447EF /* Amplitude */; };
+		292BD8A528B4EAE9006447EF /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = 292BD8A428B4EAE9006447EF /* Down */; };
+		292BD8A828B4EB10006447EF /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 292BD8A728B4EB10006447EF /* PinLayout */; };
+		292BD8AB28B4EB42006447EF /* Eureka in Frameworks */ = {isa = PBXBuildFile; productRef = 292BD8AA28B4EB42006447EF /* Eureka */; };
+		292BD8AE28B4EB81006447EF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 292BD8AD28B4EB81006447EF /* Kingfisher */; };
+		292BD8B128B4EC36006447EF /* TagListView in Frameworks */ = {isa = PBXBuildFile; productRef = 292BD8B028B4EC36006447EF /* TagListView */; };
 		292D6C9B2101FF080078288A /* InviteMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D6C9A2101FF080078288A /* InviteMembersViewController.swift */; };
 		292DEE3A204D9D290086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; };
 		292DEE3C204D9D360086D5F7 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; };
@@ -162,6 +170,21 @@
 		293282161F389DBB00D42961 /* SetupCustomizationItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */; };
 		293282181F39E1A400D42961 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282171F39E1A400D42961 /* WelcomeViewController.swift */; };
 		2932821A1F39E28000D42961 /* TypingTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282191F39E28000D42961 /* TypingTextViewController.swift */; };
+		2938ED2B28B4ED2200E995A2 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED2A28B4ED2200E995A2 /* FacebookLogin */; };
+		2938ED2E28B4EDC700E995A2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED2D28B4EDC700E995A2 /* FirebaseAnalytics */; };
+		2938ED3028B4EDC700E995A2 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED2F28B4EDC700E995A2 /* FirebaseCrashlytics */; };
+		2938ED3228B4EDC700E995A2 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED3128B4EDC700E995A2 /* FirebaseMessaging */; };
+		2938ED3428B4EDC700E995A2 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED3328B4EDC700E995A2 /* FirebasePerformance */; };
+		2938ED3628B4EDC700E995A2 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED3528B4EDC700E995A2 /* FirebaseRemoteConfig */; };
+		2938ED3828B4EDC700E995A2 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED3728B4EDC700E995A2 /* FirebaseRemoteConfigSwift */; };
+		2938ED3A28B4EE5C00E995A2 /* Amplitude in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED3928B4EE5C00E995A2 /* Amplitude */; };
+		2938ED3C28B4EE6B00E995A2 /* Amplitude in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED3B28B4EE6B00E995A2 /* Amplitude */; };
+		2938ED3E28B4EEB200E995A2 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED3D28B4EEB200E995A2 /* KeychainAccess */; };
+		2938ED4028B4EEBC00E995A2 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED3F28B4EEBC00E995A2 /* KeychainAccess */; };
+		2938ED4328B4EF5D00E995A2 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED4228B4EF5D00E995A2 /* SwiftyStoreKit */; };
+		2938ED4F28B5043700E995A2 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED4E28B5043700E995A2 /* Nimble */; };
+		2938ED5828B504D100E995A2 /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED5728B504D100E995A2 /* ReactiveSwift */; };
+		2938ED6628B50D2E00E995A2 /* DeepLinkKit in Resources */ = {isa = PBXBuildFile; fileRef = 2938ED6528B50D2E00E995A2 /* DeepLinkKit */; };
 		293BB49A1FCD7DC0003B6F4F /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB4991FCD7DC0003B6F4F /* StatsView.swift */; };
 		293BB49C1FCD7DC8003B6F4F /* StatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293BB49B1FCD7DC8003B6F4F /* StatsView.xib */; };
 		293BB4A11FD06E7E003B6F4F /* BulkStatsAllocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293BB4A01FD06E7E003B6F4F /* BulkStatsAllocationView.xib */; };
@@ -175,6 +198,9 @@
 		2942FAF1267783F8003F6500 /* HabiticaLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2942FAEE26777E00003F6500 /* HabiticaLogger.swift */; };
 		294973D2208118C100F02AC3 /* ImageOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973D1208118C100F02AC3 /* ImageOverlayView.swift */; };
 		294EB59D1FA0A7E4006083BD /* FixCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */; };
+		2953D83B28B51F9E00DC456E /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2953D83A28B51F9E00DC456E /* ReactiveSwift */; };
+		2953D83D28B51FA700DC456E /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2953D83C28B51FA700DC456E /* ReactiveSwift */; };
+		2953D84028B5215400DC456E /* ReactiveCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 2953D83F28B5215400DC456E /* ReactiveCocoa */; };
 		295611162056ED8000D9711A /* ContentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611152056ED7F00D9711A /* ContentRepository.swift */; };
 		2957B8B31F4B2D5A00E836EF /* RewardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8B21F4B2D5A00E836EF /* RewardViewController.swift */; };
 		2957B8B81F4B2F6A00E836EF /* CustomRewardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2957B8B71F4B2F6A00E836EF /* CustomRewardCell.xib */; };
@@ -417,8 +443,6 @@
 		29D50A6825F66F760009CF55 /* UIWindowScene-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D50A6725F66F760009CF55 /* UIWindowScene-Extensions.swift */; };
 		29D50AD125F769520009CF55 /* Alignment-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D50AD025F769520009CF55 /* Alignment-Extensions.swift */; };
 		29D50B7B25F9037A0009CF55 /* AppDelegate-Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D50B7A25F9037A0009CF55 /* AppDelegate-Notifications.swift */; };
-		29D50B9225F92E460009CF55 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D50B9125F92E460009CF55 /* NotificationService.swift */; };
-		29D50BA025F92ED10009CF55 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902796A2057F2C5006DACB9 /* Strings.swift */; };
 		29DBDE48274BCDA2008F6777 /* HabiticaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE47274BCDA2008F6777 /* HabiticaTests.swift */; };
 		29DBDE4A274BE745008F6777 /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE49274BE745008F6777 /* AccountSettingsViewController.swift */; };
 		29DBDE54274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE53274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift */; };
@@ -537,9 +561,6 @@
 		7A84E1B222898E9F0081E96F /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E1B122898E9F0081E96F /* TaskManager.swift */; };
 		7A84E1B32289963E0081E96F /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884D2010CCC2002B3D3F /* BaseRepository.swift */; };
 		7A84E1B42289968B0081E96F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
-		9BEDF45AF6DCD5C1B2CCA430 /* Pods_Habitica_HabiticaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0DDF7AB2942F1543420F7DC /* Pods_Habitica_HabiticaTests.framework */; };
-		B6C82C8547C40C08E52600B2 /* Pods_Habitica_Snapshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72B93F7C7C9A19652598328 /* Pods_Habitica_Snapshots.framework */; };
-		B8FBCE17B477669F6FC40EC1 /* Pods_Habitica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3431C146EA182C1A6783ABE /* Pods_Habitica.framework */; };
 		C8415994225F8B7800989FB8 /* Habitica_Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */; };
 		C841599C225F8C2A00989FB8 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C841599B225F8C2900989FB8 /* SnapshotHelper.swift */; };
 		C85A68AF2527812400EED0D6 /* SpellTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85A68AE2527812400EED0D6 /* SpellTabBarController.swift */; };
@@ -549,7 +570,6 @@
 		C8FA550B22C5425E0017DD65 /* PrideHabiticaAltBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = C8FA550822C5425D0017DD65 /* PrideHabiticaAltBlack.png */; };
 		C8FA550C22C5425E0017DD65 /* PrideHabiticaAltBlack@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8FA550922C5425E0017DD65 /* PrideHabiticaAltBlack@3x.png */; };
 		C8FA550D22C5425E0017DD65 /* PrideHabiticaAltBlack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8FA550A22C5425E0017DD65 /* PrideHabiticaAltBlack@2x.png */; };
-		CA2218BBDBB5A420A2EF2CF7 /* Pods_Habitica_WidgetsExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07C0FEAF334F742FFED3862 /* Pods_Habitica_WidgetsExtension.framework */; };
 		D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */; };
 		D90576851BD83240009BB7BC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D90576871BD83240009BB7BC /* InfoPlist.strings */; };
 		D91CCAD01BCF11CC001C6A0C /* UserTopHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */; };
@@ -627,8 +647,6 @@
 		D9F1E3EA1E55DCFB0034D0F4 /* SubscriptionInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9F1E3E91E55DCFB0034D0F4 /* SubscriptionInformationCell.xib */; };
 		D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */; };
 		DC2C41815D97E02EF9D3BEF9 /* HRPGLabeledProgressBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */; };
-		EA9390758CCBD8E18C2B272F /* Pods_Habitica_Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636D14F9056CA4BFCF0FEA3B /* Pods_Habitica_Intents.framework */; };
-		FCD2D45D8BADC49CE333EF14 /* Pods_Habitica_Habitica_UI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43477D9A53EA3C5F00FC187B /* Pods_Habitica_Habitica_UI_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -706,8 +724,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		17C85B4BC713334EBDD1C0A8 /* Pods-Habitica-HabiticaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-HabiticaTests.release.xcconfig"; path = "Target Support Files/Pods-Habitica-HabiticaTests/Pods-Habitica-HabiticaTests.release.xcconfig"; sourceTree = "<group>"; };
-		1F4B938372B0868259644596 /* Pods-HabiticaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiticaTests.debug.xcconfig"; path = "Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		290279622057EC03006DACB9 /* FAQTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQTableViewController.swift; sourceTree = "<group>"; };
 		290279692057F2C4006DACB9 /* Assets-Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Assets-Images.swift"; sourceTree = "<group>"; };
 		2902796A2057F2C5006DACB9 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -870,6 +886,7 @@
 		2936527320F5064400261740 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		2936527D20F5071900261740 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		2936528720F5076700261740 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		2938ED6528B50D2E00E995A2 /* DeepLinkKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DeepLinkKit; sourceTree = "<group>"; };
 		293A683B20F5083400685945 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		293BB4991FCD7DC0003B6F4F /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		293BB49B1FCD7DC8003B6F4F /* StatsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsView.xib; sourceTree = "<group>"; };
@@ -1137,7 +1154,6 @@
 		29D50A6725F66F760009CF55 /* UIWindowScene-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindowScene-Extensions.swift"; sourceTree = "<group>"; };
 		29D50AD025F769520009CF55 /* Alignment-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alignment-Extensions.swift"; sourceTree = "<group>"; };
 		29D50B7A25F9037A0009CF55 /* AppDelegate-Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate-Notifications.swift"; sourceTree = "<group>"; };
-		29D50B8F25F92E460009CF55 /* Habitica Notifications.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Habitica Notifications.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29D50B9125F92E460009CF55 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		29D50B9325F92E460009CF55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29D5AD5B20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1197,12 +1213,8 @@
 		29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint-Extensions.swift"; sourceTree = "<group>"; };
 		29FEB277202B491600EA245A /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		29FEB279202B4F0400EA245A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
-		30F57A2E0A59F0376AFA5924 /* Pods-Habitica-Habitica UI Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-Habitica UI Tests.debug.xcconfig"; path = "Target Support Files/Pods-Habitica-Habitica UI Tests/Pods-Habitica-Habitica UI Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		328C951D24A2C13100293E16 /* LinksOnlyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksOnlyTextView.swift; sourceTree = "<group>"; };
 		32C6FFF126ED896400C8F682 /* PathTraceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTraceable.swift; sourceTree = "<group>"; };
-		3B346B63F78199D91C07BBF7 /* Pods-Habitica UI Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica UI Tests.debug.xcconfig"; path = "Target Support Files/Pods-Habitica UI Tests/Pods-Habitica UI Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		413C740A78F5BEC964FFA7C8 /* Pods-Habitica Intents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Intents.debug.xcconfig"; path = "Target Support Files/Pods-Habitica Intents/Pods-Habitica Intents.debug.xcconfig"; sourceTree = "<group>"; };
-		43477D9A53EA3C5F00FC187B /* Pods_Habitica_Habitica_UI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Habitica_UI_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49005B711F180588004830D9 /* CurrencyCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyCountView.swift; sourceTree = "<group>"; };
 		49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopUserHeaderView.swift; sourceTree = "<group>"; };
 		49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGShopUserHeaderView.xib; sourceTree = "<group>"; };
@@ -1255,10 +1267,6 @@
 		49E6F57C1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoubleButtonTableViewCell.xib; sourceTree = "<group>"; };
 		49EE3FD7201908AB00CD7608 /* ChallengeButtonStyleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeButtonStyleProvider.swift; sourceTree = "<group>"; };
 		49FA9FF620DC47AD0086C478 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
-		636D14F9056CA4BFCF0FEA3B /* Pods_Habitica_Intents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Intents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		72D2B5DE9FCC2113C9E0B609 /* Pods-Habitica Snapshots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Snapshots.release.xcconfig"; path = "Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots.release.xcconfig"; sourceTree = "<group>"; };
-		735D92F9CA51C1ADB6BEDFDB /* Pods-Habitica Snapshots.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Snapshots.debug.xcconfig"; path = "Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots.debug.xcconfig"; sourceTree = "<group>"; };
-		74414C0E83574D9E8858A301 /* Pods-Habitica UI Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica UI Tests.release.xcconfig"; path = "Target Support Files/Pods-Habitica UI Tests/Pods-Habitica UI Tests.release.xcconfig"; sourceTree = "<group>"; };
 		7A84E191228928AC0081E96F /* Habitica Intents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Habitica Intents.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A84E193228928AC0081E96F /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		7A84E195228928AC0081E96F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1269,11 +1277,6 @@
 		7A84E1A3228928AD0081E96F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A84E1B122898E9F0081E96F /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		7A84E1B6228A5CB40081E96F /* Habitica Intents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Habitica Intents.entitlements"; sourceTree = "<group>"; };
-		99896483D367E0284A4847B3 /* Pods-Habitica-Habitica UI Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-Habitica UI Tests.release.xcconfig"; path = "Target Support Files/Pods-Habitica-Habitica UI Tests/Pods-Habitica-Habitica UI Tests.release.xcconfig"; sourceTree = "<group>"; };
-		99A45C72BFFB2EDEB27F6440 /* Pods-Habitica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.release.xcconfig"; path = "Target Support Files/Pods-Habitica/Pods-Habitica.release.xcconfig"; sourceTree = "<group>"; };
-		B262A725702202F0105832C7 /* Pods-Habitica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.debug.xcconfig"; path = "Target Support Files/Pods-Habitica/Pods-Habitica.debug.xcconfig"; sourceTree = "<group>"; };
-		C042D7DA0D68A5E143A647E2 /* Pods-Habitica WidgetsExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica WidgetsExtension.release.xcconfig"; path = "Target Support Files/Pods-Habitica WidgetsExtension/Pods-Habitica WidgetsExtension.release.xcconfig"; sourceTree = "<group>"; };
-		C7104AE3E8282E422AE00020 /* Pods-Habitica Intents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Intents.release.xcconfig"; path = "Target Support Files/Pods-Habitica Intents/Pods-Habitica Intents.release.xcconfig"; sourceTree = "<group>"; };
 		C83802FA251DEA0F00AE90ED /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8415991225F8B7800989FB8 /* Habitica Snapshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica Snapshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitica_Snapshots.swift; sourceTree = "<group>"; };
@@ -1286,7 +1289,6 @@
 		C8FA550822C5425D0017DD65 /* PrideHabiticaAltBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PrideHabiticaAltBlack.png; sourceTree = "<group>"; };
 		C8FA550922C5425E0017DD65 /* PrideHabiticaAltBlack@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideHabiticaAltBlack@3x.png"; sourceTree = "<group>"; };
 		C8FA550A22C5425E0017DD65 /* PrideHabiticaAltBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideHabiticaAltBlack@2x.png"; sourceTree = "<group>"; };
-		D07C0FEAF334F742FFED3862 /* Pods_Habitica_WidgetsExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_WidgetsExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D90576701BD80275009BB7BC /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		D90576711BD80275009BB7BC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -1400,12 +1402,6 @@
 		D9F1E3E91E55DCFB0034D0F4 /* SubscriptionInformationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscriptionInformationCell.xib; sourceTree = "<group>"; };
 		D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionInformation.swift; sourceTree = "<group>"; };
 		DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGLabeledProgressBarTests.swift; sourceTree = "<group>"; };
-		E0DDF7AB2942F1543420F7DC /* Pods_Habitica_HabiticaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_HabiticaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E0E6C1E1641121506917A9CB /* Pods-HabiticaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiticaTests.release.xcconfig"; path = "Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests.release.xcconfig"; sourceTree = "<group>"; };
-		E3431C146EA182C1A6783ABE /* Pods_Habitica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E72B93F7C7C9A19652598328 /* Pods_Habitica_Snapshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Snapshots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E7AC89013C9525B9998BC12F /* Pods-Habitica WidgetsExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica WidgetsExtension.debug.xcconfig"; path = "Target Support Files/Pods-Habitica WidgetsExtension/Pods-Habitica WidgetsExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		F0C091AB8F23801A9F1F921E /* Pods-Habitica-HabiticaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-HabiticaTests.debug.xcconfig"; path = "Target Support Files/Pods-Habitica-HabiticaTests/Pods-Habitica-HabiticaTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1427,7 +1423,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCD2D45D8BADC49CE333EF14 /* Pods_Habitica_Habitica_UI_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1435,18 +1430,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2938ED3C28B4EE6B00E995A2 /* Amplitude in Frameworks */,
+				2953D83D28B51FA700DC456E /* ReactiveSwift in Frameworks */,
 				29BEE62F252CCFE100D456F8 /* SwiftUI.framework in Frameworks */,
+				2938ED3E28B4EEB200E995A2 /* KeychainAccess in Frameworks */,
 				29BEE6BC252DDA3100D456F8 /* Habitica_Database.framework in Frameworks */,
 				29BEE6B4252DDA2800D456F8 /* Habitica_Models.framework in Frameworks */,
 				29BEE62D252CCFE100D456F8 /* WidgetKit.framework in Frameworks */,
-				CA2218BBDBB5A420A2EF2CF7 /* Pods_Habitica_WidgetsExtension.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		29D50B8C25F92E460009CF55 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1455,8 +1445,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2929AAB522E9E59A00DF9463 /* Habitica_Models.framework in Frameworks */,
+				2953D83B28B51F9E00DC456E /* ReactiveSwift in Frameworks */,
 				2929AAB322E9E58E00DF9463 /* Habitica_Database.framework in Frameworks */,
-				EA9390758CCBD8E18C2B272F /* Pods_Habitica_Intents.framework in Frameworks */,
+				2938ED3A28B4EE5C00E995A2 /* Amplitude in Frameworks */,
+				2938ED4028B4EEBC00E995A2 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1472,7 +1464,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6C82C8547C40C08E52600B2 /* Pods_Habitica_Snapshots.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1480,7 +1471,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BEDF45AF6DCD5C1B2CCA430 /* Pods_Habitica_HabiticaTests.framework in Frameworks */,
+				2938ED4F28B5043700E995A2 /* Nimble in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1488,22 +1479,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				292BD89F28B4EA85006447EF /* AppAuth in Frameworks */,
 				292DEE4C204DA1830086D5F7 /* Habitica_API_Client.framework in Frameworks */,
 				29AE771A27E3521800CC9646 /* InputBarAccessoryView in Frameworks */,
+				292BD8A228B4EAC4006447EF /* Amplitude in Frameworks */,
+				2938ED3428B4EDC700E995A2 /* FirebasePerformance in Frameworks */,
+				2938ED2E28B4EDC700E995A2 /* FirebaseAnalytics in Frameworks */,
 				292DEE3C204D9D360086D5F7 /* Habitica_Database.framework in Frameworks */,
 				292DEE3A204D9D290086D5F7 /* Habitica_Models.framework in Frameworks */,
+				2938ED3828B4EDC700E995A2 /* FirebaseRemoteConfigSwift in Frameworks */,
+				2938ED4328B4EF5D00E995A2 /* SwiftyStoreKit in Frameworks */,
 				D92D26161D58EF00001FD977 /* AVFoundation.framework in Frameworks */,
+				2938ED3628B4EDC700E995A2 /* FirebaseRemoteConfig in Frameworks */,
+				292BD8AB28B4EB42006447EF /* Eureka in Frameworks */,
 				D9CD2DBE1BC7FBB500B1304B /* CoreSpotlight.framework in Frameworks */,
 				29995A6126CBCB0B0063D4C9 /* AdServices.framework in Frameworks */,
 				D958E2B11915D41D00186A08 /* SystemConfiguration.framework in Frameworks */,
+				2953D84028B5215400DC456E /* ReactiveCocoa in Frameworks */,
 				D958E2B01915D41400186A08 /* Security.framework in Frameworks */,
+				292BD89C28B4EA4F006447EF /* KeychainAccess in Frameworks */,
+				292BD8A828B4EB10006447EF /* PinLayout in Frameworks */,
+				292BD8B128B4EC36006447EF /* TagListView in Frameworks */,
+				2938ED3228B4EDC700E995A2 /* FirebaseMessaging in Frameworks */,
+				292BD8A528B4EAE9006447EF /* Down in Frameworks */,
 				D958E2AE1915D40F00186A08 /* QuartzCore.framework in Frameworks */,
 				D958E2AD1915D40600186A08 /* CoreText.framework in Frameworks */,
 				D9EB4E9118CB4A9400BB2094 /* CoreGraphics.framework in Frameworks */,
+				2938ED5828B504D100E995A2 /* ReactiveSwift in Frameworks */,
 				D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */,
+				2938ED2B28B4ED2200E995A2 /* FacebookLogin in Frameworks */,
+				292BD8AE28B4EB81006447EF /* Kingfisher in Frameworks */,
 				D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */,
+				2938ED3028B4EDC700E995A2 /* FirebaseCrashlytics in Frameworks */,
 				D9C89CF91B1F0E6C00A599B0 /* StoreKit.framework in Frameworks */,
-				B8FBCE17B477669F6FC40EC1 /* Pods_Habitica.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2245,29 +2253,6 @@
 			path = "Habitica IntentsUI";
 			sourceTree = "<group>";
 		};
-		C2CC6C72831C3578E8CE2B30 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B262A725702202F0105832C7 /* Pods-Habitica.debug.xcconfig */,
-				99A45C72BFFB2EDEB27F6440 /* Pods-Habitica.release.xcconfig */,
-				413C740A78F5BEC964FFA7C8 /* Pods-Habitica Intents.debug.xcconfig */,
-				C7104AE3E8282E422AE00020 /* Pods-Habitica Intents.release.xcconfig */,
-				735D92F9CA51C1ADB6BEDFDB /* Pods-Habitica Snapshots.debug.xcconfig */,
-				72D2B5DE9FCC2113C9E0B609 /* Pods-Habitica Snapshots.release.xcconfig */,
-				E7AC89013C9525B9998BC12F /* Pods-Habitica WidgetsExtension.debug.xcconfig */,
-				C042D7DA0D68A5E143A647E2 /* Pods-Habitica WidgetsExtension.release.xcconfig */,
-				1F4B938372B0868259644596 /* Pods-HabiticaTests.debug.xcconfig */,
-				E0E6C1E1641121506917A9CB /* Pods-HabiticaTests.release.xcconfig */,
-				3B346B63F78199D91C07BBF7 /* Pods-Habitica UI Tests.debug.xcconfig */,
-				74414C0E83574D9E8858A301 /* Pods-Habitica UI Tests.release.xcconfig */,
-				30F57A2E0A59F0376AFA5924 /* Pods-Habitica-Habitica UI Tests.debug.xcconfig */,
-				99896483D367E0284A4847B3 /* Pods-Habitica-Habitica UI Tests.release.xcconfig */,
-				F0C091AB8F23801A9F1F921E /* Pods-Habitica-HabiticaTests.debug.xcconfig */,
-				17C85B4BC713334EBDD1C0A8 /* Pods-Habitica-HabiticaTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		C8415992225F8B7800989FB8 /* Habitica Snapshots */ = {
 			isa = PBXGroup;
 			children = (
@@ -2760,7 +2745,6 @@
 				29706CA427D8B797006EC139 /* Habitica UI Tests */,
 				D9EB4E8D18CB4A9400BB2094 /* Frameworks */,
 				D9EB4E8C18CB4A9400BB2094 /* Products */,
-				C2CC6C72831C3578E8CE2B30 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2773,7 +2757,6 @@
 				7A84E191228928AC0081E96F /* Habitica Intents.appex */,
 				7A84E19A228928AD0081E96F /* Habitica IntentsUI.appex */,
 				29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */,
-				29D50B8F25F92E460009CF55 /* Habitica Notifications.appex */,
 				2932F41826A70FE700E1C11F /* Habitica Admin.app */,
 				2932F41F26A70FE700E1C11F /* Habitica Admin.app */,
 				29706CA327D8B797006EC139 /* Habitica UI Tests.xctest */,
@@ -2811,12 +2794,6 @@
 				7A84E19B228928AD0081E96F /* IntentsUI.framework */,
 				29BEE62C252CCFE100D456F8 /* WidgetKit.framework */,
 				29BEE62E252CCFE100D456F8 /* SwiftUI.framework */,
-				E3431C146EA182C1A6783ABE /* Pods_Habitica.framework */,
-				636D14F9056CA4BFCF0FEA3B /* Pods_Habitica_Intents.framework */,
-				E72B93F7C7C9A19652598328 /* Pods_Habitica_Snapshots.framework */,
-				D07C0FEAF334F742FFED3862 /* Pods_Habitica_WidgetsExtension.framework */,
-				E0DDF7AB2942F1543420F7DC /* Pods_Habitica_HabiticaTests.framework */,
-				43477D9A53EA3C5F00FC187B /* Pods_Habitica_Habitica_UI_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2848,6 +2825,7 @@
 				2902799620583D82006DACB9 /* LoadingViewController.swift */,
 				29D16C7625A336E8001D9A61 /* MainSplitViewController.swift */,
 				29D16C7D25A33F70001D9A61 /* MainVCSelectionSegue.swift */,
+				2938ED6528B50D2E00E995A2 /* DeepLinkKit */,
 				290279AC20583EE8006DACB9 /* Storyboards */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
 				290279672057F0B7006DACB9 /* Generated */,
@@ -2922,11 +2900,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 29706CAB27D8B797006EC139 /* Build configuration list for PBXNativeTarget "Habitica UI Tests" */;
 			buildPhases = (
-				249D95DAB999CC089886FE94 /* [CP] Check Pods Manifest.lock */,
 				29706C9F27D8B797006EC139 /* Sources */,
 				29706CA027D8B797006EC139 /* Frameworks */,
 				29706CA127D8B797006EC139 /* Resources */,
-				5F1731288F9801F5130D83C7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2942,7 +2918,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 29BEE63C252CCFE300D456F8 /* Build configuration list for PBXNativeTarget "Habitica WidgetsExtension" */;
 			buildPhases = (
-				9C36435C8D4D408626D7192B /* [CP] Check Pods Manifest.lock */,
 				29BEE627252CCFE100D456F8 /* Sources */,
 				29BEE628252CCFE100D456F8 /* Frameworks */,
 				29BEE629252CCFE100D456F8 /* Resources */,
@@ -2952,32 +2927,19 @@
 			dependencies = (
 			);
 			name = "Habitica WidgetsExtension";
+			packageProductDependencies = (
+				2938ED3B28B4EE6B00E995A2 /* Amplitude */,
+				2938ED3D28B4EEB200E995A2 /* KeychainAccess */,
+				2953D83C28B51FA700DC456E /* ReactiveSwift */,
+			);
 			productName = "Habitica WidgetsExtension";
 			productReference = 29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
-		29D50B8E25F92E460009CF55 /* Habitica Notifications */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 29D50B9725F92E460009CF55 /* Build configuration list for PBXNativeTarget "Habitica Notifications" */;
-			buildPhases = (
-				29D50B8B25F92E460009CF55 /* Sources */,
-				29D50B8C25F92E460009CF55 /* Frameworks */,
-				29D50B8D25F92E460009CF55 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Habitica Notifications";
-			productName = "Habitica Notifications";
-			productReference = 29D50B8F25F92E460009CF55 /* Habitica Notifications.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		7A84E190228928AC0081E96F /* Habitica Intents */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A84E1AD228928AD0081E96F /* Build configuration list for PBXNativeTarget "Habitica Intents" */;
 			buildPhases = (
-				2168BCE727F15CC0ACC28176 /* [CP] Check Pods Manifest.lock */,
 				7A84E18F228928AC0081E96F /* Resources */,
 				7A84E18D228928AC0081E96F /* Sources */,
 				7A84E18E228928AC0081E96F /* Frameworks */,
@@ -2987,6 +2949,11 @@
 			dependencies = (
 			);
 			name = "Habitica Intents";
+			packageProductDependencies = (
+				2938ED3928B4EE5C00E995A2 /* Amplitude */,
+				2938ED3F28B4EEBC00E995A2 /* KeychainAccess */,
+				2953D83A28B51F9E00DC456E /* ReactiveSwift */,
+			);
 			productName = "Habitica Intents";
 			productReference = 7A84E191228928AC0081E96F /* Habitica Intents.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -3012,11 +2979,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8415998225F8B7800989FB8 /* Build configuration list for PBXNativeTarget "Habitica Snapshots" */;
 			buildPhases = (
-				CEAC92C07A966486A0DBFBC6 /* [CP] Check Pods Manifest.lock */,
 				C841598D225F8B7800989FB8 /* Sources */,
 				C841598E225F8B7800989FB8 /* Frameworks */,
 				C841598F225F8B7800989FB8 /* Resources */,
-				090800239926D89FA783E4DA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3032,11 +2997,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D944618B1AB34F5C0015215E /* Build configuration list for PBXNativeTarget "HabiticaTests" */;
 			buildPhases = (
-				5EA6639F5F9E4A7673F52A24 /* [CP] Check Pods Manifest.lock */,
 				D944617F1AB34F5C0015215E /* Sources */,
 				D94461801AB34F5C0015215E /* Frameworks */,
 				D94461811AB34F5C0015215E /* Resources */,
-				F34F07F64457421D1604E9F4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3044,6 +3007,9 @@
 				D944618A1AB34F5C0015215E /* PBXTargetDependency */,
 			);
 			name = HabiticaTests;
+			packageProductDependencies = (
+				2938ED4E28B5043700E995A2 /* Nimble */,
+			);
 			productName = HabiticaTests;
 			productReference = D94461831AB34F5C0015215E /* HabiticaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -3052,15 +3018,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9EB4EC318CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "Habitica" */;
 			buildPhases = (
-				78091C6A3B87B3F5A8524223 /* [CP] Check Pods Manifest.lock */,
-				290279682057F179006DACB9 /* Run SwiftGen */,
 				D9EB4E8718CB4A9400BB2094 /* Sources */,
 				D9EB4E8818CB4A9400BB2094 /* Frameworks */,
 				D9EB4E8918CB4A9400BB2094 /* Resources */,
-				D97AEBC81E7D7622007FD4A2 /* Lint */,
 				29265896206A4E84006C8B54 /* Embed Frameworks */,
 				7A84E1B0228928AD0081E96F /* Embed App Extensions */,
-				61FAB2C3DC040E5AFD87B060 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3072,6 +3034,24 @@
 			name = Habitica;
 			packageProductDependencies = (
 				29AE771927E3521800CC9646 /* InputBarAccessoryView */,
+				292BD89B28B4EA4F006447EF /* KeychainAccess */,
+				292BD89E28B4EA85006447EF /* AppAuth */,
+				292BD8A128B4EAC4006447EF /* Amplitude */,
+				292BD8A428B4EAE9006447EF /* Down */,
+				292BD8A728B4EB10006447EF /* PinLayout */,
+				292BD8AA28B4EB42006447EF /* Eureka */,
+				292BD8AD28B4EB81006447EF /* Kingfisher */,
+				292BD8B028B4EC36006447EF /* TagListView */,
+				2938ED2A28B4ED2200E995A2 /* FacebookLogin */,
+				2938ED2D28B4EDC700E995A2 /* FirebaseAnalytics */,
+				2938ED2F28B4EDC700E995A2 /* FirebaseCrashlytics */,
+				2938ED3128B4EDC700E995A2 /* FirebaseMessaging */,
+				2938ED3328B4EDC700E995A2 /* FirebasePerformance */,
+				2938ED3528B4EDC700E995A2 /* FirebaseRemoteConfig */,
+				2938ED3728B4EDC700E995A2 /* FirebaseRemoteConfigSwift */,
+				2938ED4228B4EF5D00E995A2 /* SwiftyStoreKit */,
+				2938ED5728B504D100E995A2 /* ReactiveSwift */,
+				2953D83F28B5215400DC456E /* ReactiveCocoa */,
 			);
 			productName = HabitRPG;
 			productReference = D9EB4E8B18CB4A9400BB2094 /* Habitica.app */;
@@ -3100,9 +3080,6 @@
 					};
 					29BEE62A252CCFE100D456F8 = {
 						CreatedOnToolsVersion = 12.0.1;
-					};
-					29D50B8E25F92E460009CF55 = {
-						CreatedOnToolsVersion = 12.4;
 					};
 					7A84E190228928AC0081E96F = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -3189,6 +3166,20 @@
 			mainGroup = D9EB4E8218CB4A9400BB2094;
 			packageReferences = (
 				29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */,
+				292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
+				292BD8A028B4EAC4006447EF /* XCRemoteSwiftPackageReference "Amplitude-iOS" */,
+				292BD8A328B4EAE9006447EF /* XCRemoteSwiftPackageReference "Down" */,
+				292BD8A628B4EB10006447EF /* XCRemoteSwiftPackageReference "PinLayout" */,
+				292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka" */,
+				292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				292BD8AF28B4EC36006447EF /* XCRemoteSwiftPackageReference "TagListView" */,
+				2938ED2928B4ED2100E995A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				2938ED2C28B4EDC700E995A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				2938ED4128B4EF5D00E995A2 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
+				2938ED4D28B5043700E995A2 /* XCRemoteSwiftPackageReference "Nimble" */,
+				2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */,
+				2953D83E28B5215400DC456E /* XCRemoteSwiftPackageReference "Reactivecocoa" */,
 			);
 			productRefGroup = D9EB4E8C18CB4A9400BB2094 /* Products */;
 			projectDirPath = "";
@@ -3200,7 +3191,6 @@
 				7A84E190228928AC0081E96F /* Habitica Intents */,
 				7A84E199228928AD0081E96F /* Habitica IntentsUI */,
 				29BEE62A252CCFE100D456F8 /* Habitica WidgetsExtension */,
-				29D50B8E25F92E460009CF55 /* Habitica Notifications */,
 				2932F41726A70FE700E1C11F /* Habitica Admin (iOS) */,
 				2932F41E26A70FE700E1C11F /* Habitica Admin (macOS) */,
 				29706CA227D8B797006EC139 /* Habitica UI Tests */,
@@ -3242,13 +3232,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				29BEE634252CCFE300D456F8 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		29D50B8D25F92E460009CF55 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3301,6 +3284,7 @@
 				296E4BC121AEFE6100DB3602 /* RedAlt@2x.png in Resources */,
 				298FAB0224BF5BF30084CB0D /* MainTableviewCell.xib in Resources */,
 				296E4BBD21AEFE6100DB3602 /* BlackAlt@2x.png in Resources */,
+				2938ED6628B50D2E00E995A2 /* DeepLinkKit in Resources */,
 				29B3FEBE1F9E3DC3000B12CF /* HabiticaAlertController.xib in Resources */,
 				29B478BD20C1378100B6123F /* ChallengeTableViewCell.xib in Resources */,
 				298119B51F5048C000F9FB39 /* QuestGoalView.xib in Resources */,
@@ -3441,493 +3425,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		090800239926D89FA783E4DA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2168BCE727F15CC0ACC28176 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Habitica Intents-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		249D95DAB999CC089886FE94 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Habitica-Habitica UI Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		290279682057F179006DACB9 /* Run SwiftGen */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run SwiftGen";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Pods/SwiftGen/bin/swiftgen\n";
-		};
-		5EA6639F5F9E4A7673F52A24 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Habitica-HabiticaTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5F1731288F9801F5130D83C7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Habitica-Habitica UI Tests/Pods-Habitica-Habitica UI Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ACKReactiveExtensions/ACKReactiveExtensions.framework",
-				"${BUILT_PRODUCTS_DIR}/Amplitude-iOS/Amplitude_iOS.framework",
-				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/ColorPickerRow/ColorPickerRow.framework",
-				"${BUILT_PRODUCTS_DIR}/DateTools/DateTools.framework",
-				"${BUILT_PRODUCTS_DIR}/DeepLinkKit/DeepLinkKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
-				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
-				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseABTesting/FirebaseABTesting.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCrashlytics/FirebaseCrashlytics.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebasePerformance/FirebasePerformance.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseRemoteConfig/FirebaseRemoteConfig.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework",
-				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
-				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
-				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework",
-				"${BUILT_PRODUCTS_DIR}/UIColor_Hex_Swift/UIColor_Hex_Swift.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBAEMKit/FBAEMKit.framework/FBAEMKit",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework/FBSDKCoreKit",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKCoreKit_Basics/FBSDKCoreKit_Basics.framework/FBSDKCoreKit_Basics",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework/FBSDKLoginKit",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ACKReactiveExtensions.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Amplitude_iOS.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ColorPickerRow.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateTools.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeepLinkKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseABTesting.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreInternal.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCrashlytics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseMessaging.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebasePerformance.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseRemoteConfig.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRProgress.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinLayout.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimulatorStatusMagic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TagListView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIColor_Hex_Swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBAEMKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit_Basics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habitica-Habitica UI Tests/Pods-Habitica-Habitica UI Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		61FAB2C3DC040E5AFD87B060 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Habitica/Pods-Habitica-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ACKReactiveExtensions/ACKReactiveExtensions.framework",
-				"${BUILT_PRODUCTS_DIR}/Amplitude-iOS/Amplitude_iOS.framework",
-				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/ColorPickerRow/ColorPickerRow.framework",
-				"${BUILT_PRODUCTS_DIR}/DateTools/DateTools.framework",
-				"${BUILT_PRODUCTS_DIR}/DeepLinkKit/DeepLinkKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
-				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
-				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseABTesting/FirebaseABTesting.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCrashlytics/FirebaseCrashlytics.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebasePerformance/FirebasePerformance.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseRemoteConfig/FirebaseRemoteConfig.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework",
-				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
-				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
-				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework",
-				"${BUILT_PRODUCTS_DIR}/UIColor_Hex_Swift/UIColor_Hex_Swift.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBAEMKit/FBAEMKit.framework/FBAEMKit",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework/FBSDKCoreKit",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKCoreKit_Basics/FBSDKCoreKit_Basics.framework/FBSDKCoreKit_Basics",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework/FBSDKLoginKit",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ACKReactiveExtensions.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Amplitude_iOS.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ColorPickerRow.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateTools.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeepLinkKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseABTesting.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreInternal.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCrashlytics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseMessaging.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebasePerformance.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseRemoteConfig.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRProgress.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinLayout.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimulatorStatusMagic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TagListView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIColor_Hex_Swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBAEMKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit_Basics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habitica/Pods-Habitica-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		78091C6A3B87B3F5A8524223 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Habitica-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9C36435C8D4D408626D7192B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Habitica WidgetsExtension-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CEAC92C07A966486A0DBFBC6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Habitica Snapshots-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D97AEBC81E7D7622007FD4A2 /* Lint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Lint;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  ./Pods/SwiftLint/swiftlint\nfi\n";
-		};
-		F34F07F64457421D1604E9F4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Habitica-HabiticaTests/Pods-Habitica-HabiticaTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ACKReactiveExtensions/ACKReactiveExtensions.framework",
-				"${BUILT_PRODUCTS_DIR}/Amplitude-iOS/Amplitude_iOS.framework",
-				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/ColorPickerRow/ColorPickerRow.framework",
-				"${BUILT_PRODUCTS_DIR}/DateTools/DateTools.framework",
-				"${BUILT_PRODUCTS_DIR}/DeepLinkKit/DeepLinkKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
-				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
-				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseABTesting/FirebaseABTesting.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCrashlytics/FirebaseCrashlytics.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebasePerformance/FirebasePerformance.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseRemoteConfig/FirebaseRemoteConfig.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework",
-				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
-				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
-				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework",
-				"${BUILT_PRODUCTS_DIR}/UIColor_Hex_Swift/UIColor_Hex_Swift.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBAEMKit/FBAEMKit.framework/FBAEMKit",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework/FBSDKCoreKit",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKCoreKit_Basics/FBSDKCoreKit_Basics.framework/FBSDKCoreKit_Basics",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework/FBSDKLoginKit",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ACKReactiveExtensions.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Amplitude_iOS.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ColorPickerRow.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateTools.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeepLinkKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseABTesting.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreInternal.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCrashlytics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseMessaging.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebasePerformance.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseRemoteConfig.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRProgress.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinLayout.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimulatorStatusMagic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TagListView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIColor_Hex_Swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBAEMKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit_Basics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habitica-HabiticaTests/Pods-Habitica-HabiticaTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		2932F41426A70FE700E1C11F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -3989,15 +3486,6 @@
 				29BEE7B5252EE92D00D456F8 /* AddTaskWidget.swift in Sources */,
 				29BEE6DC252E14F300D456F8 /* RemainingDailiesWidget.swift in Sources */,
 				2942FAF1267783F8003F6500 /* HabiticaLogger.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		29D50B8B25F92E460009CF55 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				29D50BA025F92ED10009CF55 /* Strings.swift in Sources */,
-				29D50B9225F92E460009CF55 /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4807,7 +4295,6 @@
 		};
 		29706CAC27D8B797006EC139 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30F57A2E0A59F0376AFA5924 /* Pods-Habitica-Habitica UI Tests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4840,7 +4327,6 @@
 		};
 		29706CAD27D8B797006EC139 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 99896483D367E0284A4847B3 /* Pods-Habitica-Habitica UI Tests.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4872,8 +4358,8 @@
 		};
 		29BEE63A252CCFE300D456F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7AC89013C9525B9998BC12F /* Pods-Habitica WidgetsExtension.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -4918,8 +4404,8 @@
 		};
 		29BEE63B252CCFE300D456F8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C042D7DA0D68A5E143A647E2 /* Pods-Habitica WidgetsExtension.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -4961,81 +4447,6 @@
 			};
 			name = Release;
 		};
-		29D50B9825F92E460009CF55 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 695;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "Habitica Notifications/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 3.5.5;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Notifications";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		29D50B9925F92E460009CF55 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 695;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "Habitica Notifications/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 3.5.5;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Notifications";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		7A84E1AB228928AD0081E96F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -5052,6 +4463,7 @@
 				CURRENT_PROJECT_VERSION = 695;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				EXCLUDED_ARCHS = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -5093,6 +4505,7 @@
 				CURRENT_PROJECT_VERSION = 695;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				EXCLUDED_ARCHS = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -5117,8 +4530,8 @@
 		};
 		7A84E1AE228928AD0081E96F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 413C740A78F5BEC964FFA7C8 /* Pods-Habitica Intents.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -5159,8 +4572,8 @@
 		};
 		7A84E1AF228928AD0081E96F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C7104AE3E8282E422AE00020 /* Pods-Habitica Intents.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -5200,7 +4613,6 @@
 		};
 		C8415999225F8B7800989FB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 735D92F9CA51C1ADB6BEDFDB /* Pods-Habitica Snapshots.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -5236,7 +4648,6 @@
 		};
 		C841599A225F8B7800989FB8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 72D2B5DE9FCC2113C9E0B609 /* Pods-Habitica Snapshots.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -5271,7 +4682,6 @@
 		};
 		D944618C1AB34F5C0015215E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F0C091AB8F23801A9F1F921E /* Pods-Habitica-HabiticaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -5292,40 +4702,7 @@
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/CRToast\"",
-					"\"${PODS_ROOT}/Headers/Public/CargoBay\"",
-					"\"${PODS_ROOT}/Headers/Public/DTCoreText\"",
-					"\"${PODS_ROOT}/Headers/Public/DTFoundation\"",
-					"\"${PODS_ROOT}/Headers/Public/DateTools\"",
-					"\"${PODS_ROOT}/Headers/Public/EAIntroView\"",
-					"\"${PODS_ROOT}/Headers/Public/FLEX\"",
-					"\"${PODS_ROOT}/Headers/Public/FontAwesomeIconFactory\"",
-					"\"${PODS_ROOT}/Headers/Public/Google\"",
-					"\"${PODS_ROOT}/Headers/Public/Google/Google\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleNetworkingUtilities\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleSymbolUtilities\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleUtilities\"",
-					"\"${PODS_ROOT}/Headers/Public/ISO8601DateFormatterValueTransformer\"",
-					"\"${PODS_ROOT}/Headers/Public/MCSwipeTableViewCell\"",
 					"\"${PODS_ROOT}/Headers/Public/MRProgress\"",
-					"\"${PODS_ROOT}/Headers/Public/NSString+Emoji\"",
-					"\"${PODS_ROOT}/Headers/Public/OHHTTPStubs\"",
-					"\"${PODS_ROOT}/Headers/Public/PDKeychainBindingsController\"",
-					"\"${PODS_ROOT}/Headers/Public/RKValueTransformers\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit/CoreData\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit/Network\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit/ObjectMapping\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit/Support\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit/Testing\"",
-					"\"${PODS_ROOT}/Headers/Public/SOCKit\"",
-					"\"${PODS_ROOT}/Headers/Public/TransitionKit\"",
-					"\"${PODS_ROOT}/Headers/Public/VTAcknowledgementsViewController\"",
-					"\"${PODS_ROOT}/Headers/Public/Vendor/LibComponentLogging/Core\"",
-					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
-					"\"${PODS_ROOT}/Headers/Public/pop\"",
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
 				INFOPLIST_FILE = HabiticaTests/Info.plist;
@@ -5348,7 +4725,6 @@
 		};
 		D944618D1AB34F5C0015215E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 17C85B4BC713334EBDD1C0A8 /* Pods-Habitica-HabiticaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -5365,40 +4741,7 @@
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/CRToast\"",
-					"\"${PODS_ROOT}/Headers/Public/CargoBay\"",
-					"\"${PODS_ROOT}/Headers/Public/DTCoreText\"",
-					"\"${PODS_ROOT}/Headers/Public/DTFoundation\"",
-					"\"${PODS_ROOT}/Headers/Public/DateTools\"",
-					"\"${PODS_ROOT}/Headers/Public/EAIntroView\"",
-					"\"${PODS_ROOT}/Headers/Public/FLEX\"",
-					"\"${PODS_ROOT}/Headers/Public/FontAwesomeIconFactory\"",
-					"\"${PODS_ROOT}/Headers/Public/Google\"",
-					"\"${PODS_ROOT}/Headers/Public/Google/Google\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleNetworkingUtilities\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleSymbolUtilities\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleUtilities\"",
-					"\"${PODS_ROOT}/Headers/Public/ISO8601DateFormatterValueTransformer\"",
-					"\"${PODS_ROOT}/Headers/Public/MCSwipeTableViewCell\"",
 					"\"${PODS_ROOT}/Headers/Public/MRProgress\"",
-					"\"${PODS_ROOT}/Headers/Public/NSString+Emoji\"",
-					"\"${PODS_ROOT}/Headers/Public/OHHTTPStubs\"",
-					"\"${PODS_ROOT}/Headers/Public/PDKeychainBindingsController\"",
-					"\"${PODS_ROOT}/Headers/Public/RKValueTransformers\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit/CoreData\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit/Network\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit/ObjectMapping\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit/Support\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit/Testing\"",
-					"\"${PODS_ROOT}/Headers/Public/SOCKit\"",
-					"\"${PODS_ROOT}/Headers/Public/TransitionKit\"",
-					"\"${PODS_ROOT}/Headers/Public/VTAcknowledgementsViewController\"",
-					"\"${PODS_ROOT}/Headers/Public/Vendor/LibComponentLogging/Core\"",
-					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
-					"\"${PODS_ROOT}/Headers/Public/pop\"",
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
 				INFOPLIST_FILE = HabiticaTests/Info.plist;
@@ -5527,9 +4870,8 @@
 		};
 		D9EB4EC418CB4A9400BB2094 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B262A725702202F0105832C7 /* Pods-Habitica.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
@@ -5538,44 +4880,13 @@
 				CURRENT_PROJECT_VERSION = 695;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
-				EXCLUDED_ARCHS = "";
 				EXCLUDED_SOURCE_FILE_NAMES = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/CRToast\"",
-					"\"${PODS_ROOT}/Headers/Public/EAIntroView\"",
-					"\"${PODS_ROOT}/Headers/Public/FLEX\"",
-					"\"${PODS_ROOT}/Headers/Public/FontAwesomeIconFactory\"",
-					"\"${PODS_ROOT}/Headers/Public/HockeyKit\"",
-					"\"${PODS_ROOT}/Headers/Public/ISO8601DateFormatterValueTransformer\"",
-					"\"${PODS_ROOT}/Headers/Public/MCSwipeTableViewCell\"",
-					"\"${PODS_ROOT}/Headers/Public/NSDate+TimeAgo\"",
-					"\"${PODS_ROOT}/Headers/Public/NSString+Emoji\"",
-					"\"${PODS_ROOT}/Headers/Public/PDKeychainBindingsController\"",
-					"\"${PODS_ROOT}/Headers/Public/RFKeyboardToolbar\"",
-					"\"${PODS_ROOT}/Headers/Public/RFMarkdownTextView\"",
-					"\"${PODS_ROOT}/Headers/Public/RKValueTransformers\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit/CoreData\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit/Network\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit/ObjectMapping\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit/Support\"",
-					"\"${PODS_ROOT}/Headers/Public/SOCKit\"",
-					"\"${PODS_ROOT}/Headers/Public/TransitionKit\"",
-					"\"${PODS_ROOT}/Headers/Public/VTAcknowledgementsViewController\"",
-					"\"${PODS_ROOT}/Headers/Public/Vendor/LibComponentLogging/Core\"",
-					"\"${PODS_ROOT}/Headers/Public/Vendor/LibComponentLogging/NSLog\"",
-					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
-					"\"${PODS_ROOT}/Headers/Public/pop\"",
-					"\"${PODS_ROOT}/Headers/Public/uservoice-iphone-sdk\"",
-					"$(inherited)",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5624,9 +4935,8 @@
 		};
 		D9EB4EC518CB4A9400BB2094 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 99A45C72BFFB2EDEB27F6440 /* Pods-Habitica.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
@@ -5635,44 +4945,13 @@
 				CURRENT_PROJECT_VERSION = 695;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
-				EXCLUDED_ARCHS = "";
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/CRToast\"",
-					"\"${PODS_ROOT}/Headers/Public/EAIntroView\"",
-					"\"${PODS_ROOT}/Headers/Public/FLEX\"",
-					"\"${PODS_ROOT}/Headers/Public/FontAwesomeIconFactory\"",
-					"\"${PODS_ROOT}/Headers/Public/HockeyKit\"",
-					"\"${PODS_ROOT}/Headers/Public/ISO8601DateFormatterValueTransformer\"",
-					"\"${PODS_ROOT}/Headers/Public/MCSwipeTableViewCell\"",
-					"\"${PODS_ROOT}/Headers/Public/NSDate+TimeAgo\"",
-					"\"${PODS_ROOT}/Headers/Public/NSString+Emoji\"",
-					"\"${PODS_ROOT}/Headers/Public/PDKeychainBindingsController\"",
-					"\"${PODS_ROOT}/Headers/Public/RFKeyboardToolbar\"",
-					"\"${PODS_ROOT}/Headers/Public/RFMarkdownTextView\"",
-					"\"${PODS_ROOT}/Headers/Public/RKValueTransformers\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit/CoreData\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit/Network\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit/ObjectMapping\"",
-					"\"${PODS_ROOT}/Headers/Public/RestKit/Support\"",
-					"\"${PODS_ROOT}/Headers/Public/SOCKit\"",
-					"\"${PODS_ROOT}/Headers/Public/TransitionKit\"",
-					"\"${PODS_ROOT}/Headers/Public/VTAcknowledgementsViewController\"",
-					"\"${PODS_ROOT}/Headers/Public/Vendor/LibComponentLogging/Core\"",
-					"\"${PODS_ROOT}/Headers/Public/Vendor/LibComponentLogging/NSLog\"",
-					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
-					"\"${PODS_ROOT}/Headers/Public/pop\"",
-					"\"${PODS_ROOT}/Headers/Public/uservoice-iphone-sdk\"",
-					"$(inherited)",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5757,15 +5036,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		29D50B9725F92E460009CF55 /* Build configuration list for PBXNativeTarget "Habitica Notifications" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				29D50B9825F92E460009CF55 /* Debug */,
-				29D50B9925F92E460009CF55 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		7A84E1AA228928AD0081E96F /* Build configuration list for PBXNativeTarget "Habitica IntentsUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -5823,6 +5093,118 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/openid/AppAuth-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		292BD8A028B4EAC4006447EF /* XCRemoteSwiftPackageReference "Amplitude-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/amplitude/Amplitude-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+		292BD8A328B4EAE9006447EF /* XCRemoteSwiftPackageReference "Down" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/johnxnguyen/Down";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		292BD8A628B4EB10006447EF /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/PinLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/xmartlabs/Eureka.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		292BD8AF28B4EC36006447EF /* XCRemoteSwiftPackageReference "TagListView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ElaWorkshop/TagListView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		2938ED2928B4ED2100E995A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		2938ED2C28B4EDC700E995A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		2938ED4128B4EF5D00E995A2 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bizz84/SwiftyStoreKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.3;
+			};
+		};
+		2938ED4D28B5043700E995A2 /* XCRemoteSwiftPackageReference "Nimble" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Nimble";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+		2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveCocoa/ReactiveSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		2953D83E28B5215400DC456E /* XCRemoteSwiftPackageReference "Reactivecocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveCocoa/Reactivecocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.0.0;
+			};
+		};
 		29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nathantannar4/InputBarAccessoryView.git";
@@ -5834,6 +5216,131 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		292BD89B28B4EA4F006447EF /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		292BD89E28B4EA85006447EF /* AppAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuth;
+		};
+		292BD8A128B4EAC4006447EF /* Amplitude */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 292BD8A028B4EAC4006447EF /* XCRemoteSwiftPackageReference "Amplitude-iOS" */;
+			productName = Amplitude;
+		};
+		292BD8A428B4EAE9006447EF /* Down */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 292BD8A328B4EAE9006447EF /* XCRemoteSwiftPackageReference "Down" */;
+			productName = Down;
+		};
+		292BD8A728B4EB10006447EF /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 292BD8A628B4EB10006447EF /* XCRemoteSwiftPackageReference "PinLayout" */;
+			productName = PinLayout;
+		};
+		292BD8AA28B4EB42006447EF /* Eureka */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka" */;
+			productName = Eureka;
+		};
+		292BD8AD28B4EB81006447EF /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		292BD8B028B4EC36006447EF /* TagListView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 292BD8AF28B4EC36006447EF /* XCRemoteSwiftPackageReference "TagListView" */;
+			productName = TagListView;
+		};
+		2938ED2A28B4ED2200E995A2 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2938ED2928B4ED2100E995A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		2938ED2D28B4EDC700E995A2 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2938ED2C28B4EDC700E995A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		2938ED2F28B4EDC700E995A2 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2938ED2C28B4EDC700E995A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		2938ED3128B4EDC700E995A2 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2938ED2C28B4EDC700E995A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		2938ED3328B4EDC700E995A2 /* FirebasePerformance */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2938ED2C28B4EDC700E995A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebasePerformance;
+		};
+		2938ED3528B4EDC700E995A2 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2938ED2C28B4EDC700E995A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		2938ED3728B4EDC700E995A2 /* FirebaseRemoteConfigSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2938ED2C28B4EDC700E995A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfigSwift;
+		};
+		2938ED3928B4EE5C00E995A2 /* Amplitude */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 292BD8A028B4EAC4006447EF /* XCRemoteSwiftPackageReference "Amplitude-iOS" */;
+			productName = Amplitude;
+		};
+		2938ED3B28B4EE6B00E995A2 /* Amplitude */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 292BD8A028B4EAC4006447EF /* XCRemoteSwiftPackageReference "Amplitude-iOS" */;
+			productName = Amplitude;
+		};
+		2938ED3D28B4EEB200E995A2 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		2938ED3F28B4EEBC00E995A2 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		2938ED4228B4EF5D00E995A2 /* SwiftyStoreKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2938ED4128B4EF5D00E995A2 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
+			productName = SwiftyStoreKit;
+		};
+		2938ED4E28B5043700E995A2 /* Nimble */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2938ED4D28B5043700E995A2 /* XCRemoteSwiftPackageReference "Nimble" */;
+			productName = Nimble;
+		};
+		2938ED5728B504D100E995A2 /* ReactiveSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */;
+			productName = ReactiveSwift;
+		};
+		2953D83A28B51F9E00DC456E /* ReactiveSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */;
+			productName = ReactiveSwift;
+		};
+		2953D83C28B51FA700DC456E /* ReactiveSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */;
+			productName = ReactiveSwift;
+		};
+		2953D83F28B5215400DC456E /* ReactiveCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2953D83E28B5215400DC456E /* XCRemoteSwiftPackageReference "Reactivecocoa" */;
+			productName = ReactiveCocoa;
+		};
 		29AE771927E3521800CC9646 /* InputBarAccessoryView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */;

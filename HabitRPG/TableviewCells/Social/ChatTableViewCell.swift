@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import DateTools
 import PinLayout
 import Habitica_Models
 import Down
 
 class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
+    let formatter = RelativeDateTimeFormatter()
     
     @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var avatarWrapper: UIView!
@@ -127,8 +127,9 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
         contributorLevel = chatMessage.contributor?.level ?? 0
         
         stylePlusOneButton(likes: chatMessage.likes, userID: userID)
-        
-        setSubline(username: chatMessage.username, date: chatMessage.timestamp)
+        if let date = chatMessage.timestamp {
+            setSubline(username: chatMessage.username, date: date)
+        }
         
         if let text = chatMessage.text {
             setMessageText(text)
@@ -177,11 +178,15 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
         if inboxMessage.sent {
             displaynameLabel.text = user?.profile?.name?.unicodeEmoji
             contributorLevel = user?.contributor?.level ?? 0
-            setSubline(username: user?.username, date: inboxMessage.timestamp)
+            if let date = inboxMessage.timestamp {
+                setSubline(username: user?.username, date: date)
+            }
         } else {
             displaynameLabel.text = inboxMessage.displayName?.unicodeEmoji
             contributorLevel = inboxMessage.contributor?.level ?? 0
-            setSubline(username: inboxMessage.username, date: inboxMessage.timestamp)
+            if let date = inboxMessage.timestamp {
+                setSubline(username: inboxMessage.username, date: date)
+            }
         }
         displaynameLabel.contributorLevel = contributorLevel
         
@@ -223,8 +228,8 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
         }
     }
     
-    private func setSubline(username: String?, date: Date?) {
-        let date = (date as NSDate?)?.timeAgoSinceNow() ?? ""
+    private func setSubline(username: String?, date: Date) {
+        let date = formatter.localizedString(for: date, relativeTo: Date())
         if let username = username {
             sublineLabel.text = "@\(username) · \(date)"
         } else {

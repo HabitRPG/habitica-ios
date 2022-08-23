@@ -8,10 +8,8 @@
 
 import UIKit
 import Eureka
-import MRProgress
 import ReactiveSwift
 import Habitica_Models
-import ColorPickerRow
 
 enum SettingsTags {
     static let myAccount = "myAccount"
@@ -113,37 +111,26 @@ class SettingsViewController: FormViewController, Themeable {
             <<< ButtonRow { row in
                 row.title = L10n.Settings.clearCache
                 row.onCellSelection({[weak self] (_, _) in
-                    let progressView = MRProgressOverlayView.showOverlayAdded(to: self?.view, animated: true)
-                    progressView?.setTintColor(ThemeService.shared.theme.tintColor)
                     self?.contentRepository.clearDatabase()
                     self?.contentRepository.retrieveContent(force: true).withLatest(from: self?.userRepository.retrieveUser() ?? Signal.empty)
                         .observeCompleted {
-                            progressView?.dismiss(true)
                     }
                 })
             }
             <<< ButtonRow { row in
                 row.title = L10n.Settings.reloadContent
                 }.onCellSelection({[weak self] (_, _) in
-                    let progressView = MRProgressOverlayView.showOverlayAdded(to: self?.view, animated: true)
-                    progressView?.tintColor = ThemeService.shared.theme.tintColor
                     self?.contentRepository.retrieveContent(force: true)
                         .flatMap(.latest, { _ in
                             return self?.contentRepository.retrieveWorldState() ?? Signal.empty
                         })
                         .observeCompleted {
-                        progressView?.dismiss(true)
                     }
                 })
         <<< ButtonRow(SettingsTags.manuallyRestartDay) { row in
             row.title = L10n.Settings.manuallyRestartDay
             }.onCellSelection({[weak self] (_, _) in
-                let progressView = MRProgressOverlayView.showOverlayAdded(to: self?.view, animated: true)
-                progressView?.tintColor = ThemeService.shared.theme.tintColor
                 self?.userRepository.runCron(checklistItems: [], tasks: [])
-                DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {
-                    progressView?.dismiss(true)
-                })
             })
             <<< AlertRow<LabeledFormValue<String>>(SettingsTags.server) { row in
                 row.title = L10n.Settings.server
@@ -548,33 +535,6 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
             }
-            <<< InlineColorPickerRow(SettingsTags.customColor) { row in
-                row.title = "Custom Theme Color"
-                let defaults = UserDefaults.standard
-                row.value = UIColor(defaults.string(forKey: "customColor") ?? UIColor.purple200.hexString())
-                row.cellUpdate { cell, _ in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-                }
-                row.hidden = Condition.function([SettingsTags.themeColor], { (form) -> Bool in
-                    return (form.rowBy(tag: SettingsTags.themeColor) as? PushRow<LabeledFormValue<String>>)?.value?.value != "custom"
-                })
-                row.onChange({[weak self] (row) in
-                    if self?.isSettingUserData == true {
-                        return
-                    }
-                    guard let color = row.value else {
-                        return
-                    }
-                    let defaults = UserDefaults.standard
-                    if let newTheme = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") {
-                        defaults.set(color.hexString(), forKey: "customColor")
-                        ThemeService.shared.theme = newTheme.themeClass
-                    }
-                })
-            }
         <<< PushRow<LabeledFormValue<String>>(SettingsTags.themeMode) { row in
             row.title = L10n.Settings.themeMode
             row.cellUpdate { cell, _ in
@@ -859,9 +819,6 @@ class SettingsViewController: FormViewController, Themeable {
     }
     
     private func update(language: AppLanguage) {
-        let progressView = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
-        progressView?.tintColor = ThemeService.shared.theme.tintColor
-
         let defaults = UserDefaults.standard
         defaults.set(language.rawValue, forKey: "ChosenLanguage")
         LanguageHandler.setAppLanguage(language)
@@ -870,7 +827,6 @@ class SettingsViewController: FormViewController, Themeable {
                 return self?.contentRepository.retrieveContent(force: true) ?? Signal.empty
             })
             .observeCompleted {[weak self] in
-                progressView?.dismiss(true)
                 self?.relaunchMainApp()
         }
     }

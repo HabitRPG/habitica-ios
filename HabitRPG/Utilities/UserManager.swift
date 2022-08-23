@@ -10,7 +10,6 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 import Habitica_Database
-import PopupDialog
 #if !targetEnvironment(macCatalyst)
 import FirebaseAnalytics
 #endif
@@ -78,17 +77,9 @@ class UserManager: NSObject {
                 
                 let viewController = YesterdailiesDialogView()
                 viewController.tasks = tasks
-                let popup = PopupDialog(viewController: viewController)
-                if var topController = UIApplication.shared.findKeyWindow()?.rootViewController {
-                    while let presentedViewController = topController.presentedViewController {
-                        topController = presentedViewController
-                    }
-                    if let controller = topController as? MainTabBarController {
-                        controller.present(popup, animated: true) {
-                        }
-                        self?.yesterdailiesDialog = viewController
-                    }
-                }
+                let alert = HabiticaAlertController()
+                alert.contentView = viewController.view
+                alert.show()
             })
             .on(failed: { error in
                 logger.log(error)

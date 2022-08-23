@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import DateTools
 import Habitica_Models
 
 @IBDesignable
