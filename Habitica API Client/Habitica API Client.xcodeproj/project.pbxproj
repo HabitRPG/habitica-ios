@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		121A8B33E22D058DEBB07EE9 /* Pods_Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 173203935D664BB3FFC8451F /* Pods_Habitica_API_Client.framework */; };
 		2902795E2057E858006DACB9 /* APIFAQEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902795D2057E858006DACB9 /* APIFAQEntry.swift */; };
 		2902797920580EFD006DACB9 /* APIBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902797820580EFD006DACB9 /* APIBuff.swift */; };
 		2902797F20581CF0006DACB9 /* AllocateAttributePointCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902797E20581CF0006DACB9 /* AllocateAttributePointCall.swift */; };
@@ -89,7 +88,6 @@
 		292AA72020FDF6A30022CC5F /* APIPinResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292AA71F20FDF6A30022CC5F /* APIPinResponse.swift */; };
 		292AA72220FDF6C40022CC5F /* APIPinResponseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292AA72120FDF6C40022CC5F /* APIPinResponseItem.swift */; };
 		292D6C992101F5660078288A /* InviteToGroupCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D6C982101F5660078288A /* InviteToGroupCall.swift */; };
-		292DEE44204D9D8D0086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */; };
 		292DEE4B204DA1220086D5F7 /* NetworkAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */; };
 		292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */; };
 		292DEE51204DA3A30086D5F7 /* APITask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE50204DA3A30086D5F7 /* APITask.swift */; };
@@ -239,7 +237,6 @@
 		29EBDA81232912AF006611E3 /* RetrieveInboxConversationsCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA80232912AF006611E3 /* RetrieveInboxConversationsCall.swift */; };
 		29EBDA85232A8BE0006611E3 /* AppleLoginCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA84232A8BE0006611E3 /* AppleLoginCall.swift */; };
 		32C6FFEF26ED5DEF00C8F682 /* MovePinnedItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6FFEE26ED5DEF00C8F682 /* MovePinnedItemCall.swift */; };
-		3A4C2BB784B902D278DE3220 /* Pods_Habitica_API_ClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E6C61E728EBDB3FA8CF905 /* Pods_Habitica_API_ClientTests.framework */; };
 		DC2C4A0476068E29973DB0CD /* RetrieveGroupMembersCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C420658EE5D517E37D97D /* RetrieveGroupMembersCall.swift */; };
 /* End PBXBuildFile section */
 
@@ -254,7 +251,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		173203935D664BB3FFC8451F /* Pods_Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		191CE8102BC4FC651F95BBBA /* Pods-Habitica API Client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica API Client.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica API Client/Pods-Habitica API Client.release.xcconfig"; sourceTree = "<group>"; };
 		2902795D2057E858006DACB9 /* APIFAQEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFAQEntry.swift; sourceTree = "<group>"; };
 		2902797820580EFD006DACB9 /* APIBuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBuff.swift; sourceTree = "<group>"; };
@@ -336,7 +332,6 @@
 		292AA71F20FDF6A30022CC5F /* APIPinResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPinResponse.swift; sourceTree = "<group>"; };
 		292AA72120FDF6C40022CC5F /* APIPinResponseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPinResponseItem.swift; sourceTree = "<group>"; };
 		292D6C982101F5660078288A /* InviteToGroupCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteToGroupCall.swift; sourceTree = "<group>"; };
-		292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthenticationManager.swift; sourceTree = "<group>"; };
 		292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveTasksCall.swift; sourceTree = "<group>"; };
 		292DEE50204DA3A30086D5F7 /* APITask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITask.swift; sourceTree = "<group>"; };
@@ -491,8 +486,6 @@
 		32C6FFEE26ED5DEF00C8F682 /* MovePinnedItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovePinnedItemCall.swift; sourceTree = "<group>"; };
 		589C92345817498D7AFD83FC /* Pods-Habitica API ClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica API ClientTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9202171462D0CA0F8120FBAE /* Pods-Habitica API ClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica API ClientTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests.release.xcconfig"; sourceTree = "<group>"; };
-		95E6C61E728EBDB3FA8CF905 /* Pods_Habitica_API_ClientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_API_ClientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C83802F6251DE9C200AE90ED /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC2C420658EE5D517E37D97D /* RetrieveGroupMembersCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrieveGroupMembersCall.swift; sourceTree = "<group>"; };
 		E7EF6D46CDBA4E678D7467CD /* Pods-Habitica API Client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica API Client.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica API Client/Pods-Habitica API Client.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -502,8 +495,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				292DEE44204D9D8D0086D5F7 /* Habitica_Models.framework in Frameworks */,
-				121A8B33E22D058DEBB07EE9 /* Pods_Habitica_API_Client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,7 +503,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				29B586FC204D92CF00301955 /* Habitica_API_Client.framework in Frameworks */,
-				3A4C2BB784B902D278DE3220 /* Pods_Habitica_API_ClientTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,17 +695,6 @@
 			path = Notifications;
 			sourceTree = "<group>";
 		};
-		292DEE43204D9D8D0086D5F7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C83802F6251DE9C200AE90ED /* Shared.framework */,
-				292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */,
-				173203935D664BB3FFC8451F /* Pods_Habitica_API_Client.framework */,
-				95E6C61E728EBDB3FA8CF905 /* Pods_Habitica_API_ClientTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		292DEE46204D9D9E0086D5F7 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -887,7 +866,6 @@
 			isa = PBXGroup;
 			children = (
 				29B586F4204D92CF00301955 /* Habitica API Client */,
-				292DEE43204D9D8D0086D5F7 /* Frameworks */,
 				29B586FF204D92CF00301955 /* Habitica API ClientTests */,
 				29B586F3204D92CF00301955 /* Products */,
 				71321DB618F6CFEC29FE5222 /* Pods */,
