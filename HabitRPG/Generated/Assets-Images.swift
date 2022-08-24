@@ -151,6 +151,8 @@ internal enum Asset {
   internal static let creatorSlimShirtYellow = ImageAsset(name: "creator_slim_shirt_yellow")
   internal static let crown = ImageAsset(name: "crown")
   internal static let downIcon = ImageAsset(name: "down_icon")
+  internal static let faintGhost = ImageAsset(name: "faint_ghost")
+  internal static let faintHeart = ImageAsset(name: "faint_heart")
   internal static let fallPromoBannerLeft = ImageAsset(name: "fall_promo_banner_left")
   internal static let fallPromoBannerRight = ImageAsset(name: "fall_promo_banner_right")
   internal static let fallPromoInfoLeft = ImageAsset(name: "fall_promo_info_left")

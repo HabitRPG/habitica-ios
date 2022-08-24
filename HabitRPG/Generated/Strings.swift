@@ -1407,12 +1407,16 @@ public enum L10n {
   public enum Faint {
     /// Refill Health & Try Again
     public static var button: String { return L10n.tr("Mainstrings", "faint.button") }
-    /// You lost a Level, your Gold, and a piece of Equipment, but you can get them all back with hard work!
-    public static var description: String { return L10n.tr("Mainstrings", "faint.description") }
+    /// Broken equipment can be repurchased from Rewards
+    public static var disclaimer: String { return L10n.tr("Mainstrings", "faint.disclaimer") }
     /// Don't despair!
     public static var dontDespair: String { return L10n.tr("Mainstrings", "faint.dont_despair") }
-    /// Good luck--you'll do great.
-    public static var goodLuck: String { return L10n.tr("Mainstrings", "faint.good_luck") }
+    /// But you can get them all back with hard work! Good luck—you’ll do great. 
+    public static var goodLuckText: String { return L10n.tr("Mainstrings", "faint.good_luck_text") }
+    /// You’ll drop to level %s, lose %s Gold, and break a piece of Equipment…
+    public static func subtitle(_ p1: UnsafePointer<CChar>, _ p2: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "faint.subtitle", p1, p2)
+    }
     /// You ran out of Health!
     public static var title: String { return L10n.tr("Mainstrings", "faint.title") }
   }

@@ -184,7 +184,6 @@
 		2938ED4328B4EF5D00E995A2 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED4228B4EF5D00E995A2 /* SwiftyStoreKit */; };
 		2938ED4F28B5043700E995A2 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED4E28B5043700E995A2 /* Nimble */; };
 		2938ED5828B504D100E995A2 /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED5728B504D100E995A2 /* ReactiveSwift */; };
-		2938ED6628B50D2E00E995A2 /* DeepLinkKit in Resources */ = {isa = PBXBuildFile; fileRef = 2938ED6528B50D2E00E995A2 /* DeepLinkKit */; };
 		293BB49A1FCD7DC0003B6F4F /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB4991FCD7DC0003B6F4F /* StatsView.swift */; };
 		293BB49C1FCD7DC8003B6F4F /* StatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293BB49B1FCD7DC8003B6F4F /* StatsView.xib */; };
 		293BB4A11FD06E7E003B6F4F /* BulkStatsAllocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293BB4A01FD06E7E003B6F4F /* BulkStatsAllocationView.xib */; };
@@ -605,7 +604,6 @@
 		D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98F5DC21C6A34540035CBEC /* ChatMessageCell.xib */; };
 		D98F5DD11C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */; };
 		D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D99DEC88190842CA00FFD2B9 /* Placeholder.png */; };
-		D99E42681D6B1FD500811B6D /* FaintViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D99E42671D6B1FD500811B6D /* FaintViewController.xib */; };
 		D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9A50E991A868DE400FC8B1A /* Launch Screen.xib */; };
 		D9A63A341E10328A0083ADC4 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A63A331E10328A0083ADC4 /* LoginTableViewController.swift */; };
 		D9A63A361E1032BD0083ADC4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A63A351E1032BD0083ADC4 /* LoginViewModel.swift */; };
@@ -886,7 +884,6 @@
 		2936527320F5064400261740 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		2936527D20F5071900261740 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		2936528720F5076700261740 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Mainstrings.strings; sourceTree = "<group>"; };
-		2938ED6528B50D2E00E995A2 /* DeepLinkKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DeepLinkKit; sourceTree = "<group>"; };
 		293A683B20F5083400685945 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		293BB4991FCD7DC0003B6F4F /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		293BB49B1FCD7DC8003B6F4F /* StatsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsView.xib; sourceTree = "<group>"; };
@@ -1347,7 +1344,6 @@
 		D99B82171BD9545800E770B7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D99B82181BD9545800E770B7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D99DEC88190842CA00FFD2B9 /* Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder.png; sourceTree = "<group>"; };
-		D99E42671D6B1FD500811B6D /* FaintViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FaintViewController.xib; sourceTree = "<group>"; };
 		D9A50E991A868DE400FC8B1A /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "Launch Screen.xib"; path = "HabitRPG/Launch Screen.xib"; sourceTree = SOURCE_ROOT; };
 		D9A63A331E10328A0083ADC4 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
 		D9A63A351E1032BD0083ADC4 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = HabitRPG/UI/Login/LoginViewModel.swift; sourceTree = SOURCE_ROOT; };
@@ -1609,7 +1605,6 @@
 			isa = PBXGroup;
 			children = (
 				2919FDDE2091D87A0096A53B /* FaintViewController.swift */,
-				D99E42671D6B1FD500811B6D /* FaintViewController.xib */,
 				290C3016206A963D0066AF5B /* MainMenuViewController.swift */,
 				299FB2A02084A93100422522 /* HabiticaSplitViewController.swift */,
 				2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */,
@@ -2825,7 +2820,6 @@
 				2902799620583D82006DACB9 /* LoadingViewController.swift */,
 				29D16C7625A336E8001D9A61 /* MainSplitViewController.swift */,
 				29D16C7D25A33F70001D9A61 /* MainVCSelectionSegue.swift */,
-				2938ED6528B50D2E00E995A2 /* DeepLinkKit */,
 				290279AC20583EE8006DACB9 /* Storyboards */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
 				290279672057F0B7006DACB9 /* Generated */,
@@ -3284,7 +3278,6 @@
 				296E4BC121AEFE6100DB3602 /* RedAlt@2x.png in Resources */,
 				298FAB0224BF5BF30084CB0D /* MainTableviewCell.xib in Resources */,
 				296E4BBD21AEFE6100DB3602 /* BlackAlt@2x.png in Resources */,
-				2938ED6628B50D2E00E995A2 /* DeepLinkKit in Resources */,
 				29B3FEBE1F9E3DC3000B12CF /* HabiticaAlertController.xib in Resources */,
 				29B478BD20C1378100B6123F /* ChallengeTableViewCell.xib in Resources */,
 				298119B51F5048C000F9FB39 /* QuestGoalView.xib in Resources */,
@@ -3402,7 +3395,6 @@
 				D9C31DB31C6501090096F4EC /* Main.storyboard in Resources */,
 				296E4BBB21AEFE6100DB3602 /* Green@2x.png in Resources */,
 				29598157224118A100819029 /* BlackAltBlack@3x.png in Resources */,
-				D99E42681D6B1FD500811B6D /* FaintViewController.xib in Resources */,
 				D98F5DD11C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib in Resources */,
 				D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */,
 				29598160224118A100819029 /* BlueAltBlack@3x.png in Resources */,

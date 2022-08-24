@@ -741,10 +741,11 @@
 "tutorials.stats" = "Tap the gray button to allocate lots of your stats at once, or tap the arrows to add them one point at a time.";
 "tutorials.spells" = "Skills are special abilities that have powerful effects! Tap on a skill to use it. It will cost Mana (the blue bar), which you earn by checking in every day and by completing your real-life tasks. Check out the FAQ in the menu for more info!";
 "faint.title" = "You ran out of Health!";
-"faint.description" = "You lost a Level, your Gold, and a piece of Equipment, but you can get them all back with hard work!";
+"faint.subtitle" = "You’ll drop to level %s, lose %s Gold, and break a piece of Equipment…";
 "faint.dont_despair" = "Don't despair!";
-"faint.good_luck" = "Good luck--you'll do great.";
+"faint.good_luck_text" = "But you can get them all back with hard work! Good luck—you’ll do great. ";
 "faint.button" = "Refill Health & Try Again";
+"faint.disclaimer" = "Broken equipment can be repurchased from Rewards";
 "agree_guidelines_prompt" = "I agree to follow the guidelines";
 "rage_meter" = "Rage Meter";
 "world_boss.world_boss" = "World Boss";
