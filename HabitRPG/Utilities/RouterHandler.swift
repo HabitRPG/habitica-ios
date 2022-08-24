@@ -10,20 +10,57 @@ import Foundation
 import Habitica_Models
 import Habitica_API_Client
 
-@objc
-class RouterHandler: NSObject {
+private struct RouteMatch {
+    let matches: Bool
+    let parameters: [String: String]
+}
+
+private struct RegexRoute {
+    static private let parameterURLRegex = ":[a-zA-Z0-9-_]+"
+    static private let defaultURLRegex = "([^/]+)";
     
-    @objc public static let shared = RouterHandler()
+    let call: (([String: String]) -> Void)
+    let regex: NSRegularExpression
+    let groupNames: [String]
+    
+    init(route: String, call: @escaping (([String: String]) -> Void)) {
+        self.call = call
+        let expression = try? NSRegularExpression(pattern: RegexRoute.parameterURLRegex)
+        let range = NSRange(location: 0, length: route.count)
+        self.regex = try! NSRegularExpression(pattern: expression?.stringByReplacingMatches(in: route, range: range, withTemplate: RegexRoute.defaultURLRegex) ?? route)
+        groupNames = expression?.matches(in: route, range: range).map({ result in
+            return String((route as NSString).substring(with: result.range).dropFirst())
+        }) ?? []
+    }
+    
+    func matches(_ path: String) -> RouteMatch? {
+        let matches = regex.matches(in: path, range: NSRange(location: 0, length: path.count))
+        if matches.count == 1 && (matches.first!.numberOfRanges - 1) == groupNames.count {
+            let match = matches.first!
+            var parameters = [String:String]()
+            for rangeIndex in 1..<match.numberOfRanges {
+                parameters[groupNames[rangeIndex-1]] = (path as NSString).substring(with: match.range(at: rangeIndex))
+            }
+            return RouteMatch(matches: true, parameters: parameters)
+        }
+        return nil
+    }
+}
+
+class RouterHandler {
+    
+    public static let shared = RouterHandler()
+
 
     private var directRoutes = [String:(() -> Void)]()
-    private var parameterRoutes = [String:(([String: String]) -> Void)]()
+    private var parameterRoutes = [RegexRoute]()
     
     private func register(_ route: String, call: @escaping (() -> Void)) {
         directRoutes[route] = call
     }
     
     private func register(_ route: String, call: @escaping (([String: String]) -> Void)) {
-        parameterRoutes[route] = call
+        parameterRoutes.append(RegexRoute(route: route, call: call))
     }
     
     // swiftlint:disable:next function_body_length
@@ -58,6 +95,10 @@ class RouterHandler: NSObject {
             self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
         }
         register("/tavern") {
+            self.displayTab(index: 4)
+            self.push(StoryboardScene.Social.tavernViewController.instantiate())
+        }
+        register("/groups/tavern") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Social.tavernViewController.instantiate())
         }
@@ -246,6 +287,11 @@ class RouterHandler: NSObject {
         if let call = directRoutes[path] {
             call()
             return true
+        }
+        for route in parameterRoutes {
+            if let match = route.matches(path) {
+                route.call(match.parameters)
+            }
         }
         return false
     }
