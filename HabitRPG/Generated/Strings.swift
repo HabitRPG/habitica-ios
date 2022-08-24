@@ -1235,6 +1235,11 @@ public enum L10n {
     public static var special: String { return L10n.tr("Mainstrings", "achievements.special") }
   }
 
+  public enum Armoire {
+    /// Armoire Drop rates
+    public static var dropRate: String { return L10n.tr("Mainstrings", "armoire.drop_rate") }
+  }
+
   public enum Avatar {
     /// Background
     public static var background: String { return L10n.tr("Mainstrings", "avatar.background") }

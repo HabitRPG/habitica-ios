@@ -19,7 +19,7 @@ struct HabiticaButtonUI<Label: View>: View {
         Button(action: onTap, label: {
             label
         })
-        .foregroundColor(.white)
+        .foregroundColor(color == .white ? Color(UIColor.purple400) : .white)
         .font(.system(size: 16, weight: .bold))
         .frame(height: 60)
         .frame(maxWidth: .infinity)

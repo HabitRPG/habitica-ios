@@ -746,6 +746,7 @@
 "faint.good_luck_text" = "But you can get them all back with hard work! Good luck—you’ll do great. ";
 "faint.button" = "Refill Health & Try Again";
 "faint.disclaimer" = "Broken equipment can be repurchased from Rewards";
+"armoire.drop_rate" = "Armoire Drop rates";
 "agree_guidelines_prompt" = "I agree to follow the guidelines";
 "rage_meter" = "Rage Meter";
 "world_boss.world_boss" = "World Boss";

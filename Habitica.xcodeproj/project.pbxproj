@@ -200,6 +200,7 @@
 		2953D83B28B51F9E00DC456E /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2953D83A28B51F9E00DC456E /* ReactiveSwift */; };
 		2953D83D28B51FA700DC456E /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2953D83C28B51FA700DC456E /* ReactiveSwift */; };
 		2953D84028B5215400DC456E /* ReactiveCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 2953D83F28B5215400DC456E /* ReactiveCocoa */; };
+		2953D84228B6564A00DC456E /* ArmoireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2953D84128B6564A00DC456E /* ArmoireViewController.swift */; };
 		295611162056ED8000D9711A /* ContentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611152056ED7F00D9711A /* ContentRepository.swift */; };
 		2957B8B31F4B2D5A00E836EF /* RewardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8B21F4B2D5A00E836EF /* RewardViewController.swift */; };
 		2957B8B81F4B2F6A00E836EF /* CustomRewardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2957B8B71F4B2F6A00E836EF /* CustomRewardCell.xib */; };
@@ -896,6 +897,7 @@
 		2942FAEE26777E00003F6500 /* HabiticaLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HabiticaLogger.swift; path = "../../Habitica Models/Habitica Models/HabiticaLogger.swift"; sourceTree = "<group>"; };
 		294973D1208118C100F02AC3 /* ImageOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOverlayView.swift; sourceTree = "<group>"; };
 		294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixCharacterViewController.swift; sourceTree = "<group>"; };
+		2953D84128B6564A00DC456E /* ArmoireViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmoireViewController.swift; sourceTree = "<group>"; };
 		295611152056ED7F00D9711A /* ContentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRepository.swift; sourceTree = "<group>"; };
 		2957B8B21F4B2D5A00E836EF /* RewardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardViewController.swift; sourceTree = "<group>"; };
 		2957B8B71F4B2F6A00E836EF /* CustomRewardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomRewardCell.xib; sourceTree = "<group>"; };
@@ -1605,6 +1607,7 @@
 			isa = PBXGroup;
 			children = (
 				2919FDDE2091D87A0096A53B /* FaintViewController.swift */,
+				2953D84128B6564A00DC456E /* ArmoireViewController.swift */,
 				290C3016206A963D0066AF5B /* MainMenuViewController.swift */,
 				299FB2A02084A93100422522 /* HabiticaSplitViewController.swift */,
 				2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */,
@@ -3709,6 +3712,7 @@
 				29C38C8524A2466400F219A1 /* AdventureGuidePromoView.swift in Sources */,
 				29FEB27A202B4F0400EA245A /* AvatarView.swift in Sources */,
 				D97ED0B21E6DE3BF006C2A26 /* LeaveChallengeInteractor.swift in Sources */,
+				2953D84228B6564A00DC456E /* ArmoireViewController.swift in Sources */,
 				29FC88602018DB64002B3D3F /* WorldBossDescriptionView.swift in Sources */,
 				29DBDE4A274BE745008F6777 /* AccountSettingsViewController.swift in Sources */,
 				49391ED120C9C898002B2BB5 /* HabitTableViewController.swift in Sources */,
