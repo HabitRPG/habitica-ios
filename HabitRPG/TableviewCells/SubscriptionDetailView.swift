@@ -107,7 +107,13 @@ class SubscriptionDetailView: UITableViewCell {
         }
 
         gemCapPill.text = String(plan.gemCapTotal)
-        hourGlassCountPill.text = String(plan.consecutive?.hourglasses ?? 0)
+        var months = DateComponents()
+        months.month = plan.monthsUntilNextHourglass
+        if let nextDate = Calendar.current.date(byAdding: months, to: Date()) {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMMM"
+            hourGlassCountPill.text = formatter.string(from: nextDate)
+        }
 
         setCancelDescription(plan)
         

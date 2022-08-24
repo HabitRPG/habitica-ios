@@ -47,4 +47,12 @@ public extension SubscriptionPlanProtocol {
     var gemsRemaining: Int {
         return gemCapTotal - gemsBought
     }
+    
+    var monthsUntilNextHourglass: Int {
+        if consecutive?.offset == 0 {
+            return (3 - (((consecutive?.count ?? 0)) % 3))
+        } else {
+            return consecutive?.offset ?? 0
+        }
+    }
 }
