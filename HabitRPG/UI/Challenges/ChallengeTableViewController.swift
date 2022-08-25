@@ -96,6 +96,7 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
 
     override func viewWillDisappear(_ animated: Bool) {
         disposable.dispose()
+        removeSearchBar(isAnimated: false)
         super.viewWillDisappear(animated)
     }
     
@@ -116,6 +117,24 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         let size = segmentedFilterControl.intrinsicContentSize
         segmentedFilterControl.frame = CGRect(x: 8, y: 4, width: view.frame.width-16, height: size.height)
         segmentedWrapper.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 8+size.height)
+    }
+    
+    private func removeSearchBar(isAnimated: Bool) {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
+        
+        dataSource.searchText = nil
+        if isAnimated {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.searchBar.alpha = 0
+            }) { _ in
+                self.searchBar.removeFromSuperview()
+            }
+        } else {
+            self.searchBar.removeFromSuperview()
+        }
+        tableView.reloadData()
     }
     
     @objc
@@ -173,18 +192,10 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
-        searchBar.setShowsCancelButton(false, animated: true)
-        
-        dataSource.searchText = nil
-        UIView.animate(withDuration: 0.3, animations: {
-            self.searchBar.alpha = 0
-        }) { _ in
-            self.searchBar.removeFromSuperview()
-        }
-        tableView.reloadData()
+        removeSearchBar(isAnimated: true)
     }
+    
+    
     
     @objc
     func filterTapped(_ sender: UIButton!) {

@@ -539,9 +539,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 298FB9E4204D9404004DDACC /* Build configuration list for PBXNativeTarget "Habitica Models" */;
 			buildPhases = (
+				298FB9CD204D9403004DDACC /* Headers */,
 				298FB9CB204D9403004DDACC /* Sources */,
 				298FB9CC204D9403004DDACC /* Frameworks */,
-				298FB9CD204D9403004DDACC /* Headers */,
 				298FB9CE204D9403004DDACC /* Resources */,
 			);
 			buildRules = (

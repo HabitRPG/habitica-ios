@@ -478,9 +478,9 @@
 			buildConfigurationList = 298FB9C0204D9338004DDACC /* Build configuration list for PBXNativeTarget "Habitica Database" */;
 			buildPhases = (
 				A8001DCFA0AD202CB6AC8AD1 /* [CP] Check Pods Manifest.lock */,
+				298FB9A9204D9338004DDACC /* Headers */,
 				298FB9A7204D9338004DDACC /* Sources */,
 				298FB9A8204D9338004DDACC /* Frameworks */,
-				298FB9A9204D9338004DDACC /* Headers */,
 				298FB9AA204D9338004DDACC /* Resources */,
 			);
 			buildRules = (
