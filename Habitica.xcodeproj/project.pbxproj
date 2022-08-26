@@ -201,6 +201,9 @@
 		2953D83D28B51FA700DC456E /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2953D83C28B51FA700DC456E /* ReactiveSwift */; };
 		2953D84028B5215400DC456E /* ReactiveCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 2953D83F28B5215400DC456E /* ReactiveCocoa */; };
 		2953D84228B6564A00DC456E /* ArmoireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2953D84128B6564A00DC456E /* ArmoireViewController.swift */; };
+		2953D84528B7772B00DC456E /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 2953D84428B7772B00DC456E /* BottomSheet */; };
+		2953D84728B7790800DC456E /* HabiticaBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2953D84628B7790800DC456E /* HabiticaBottomSheet.swift */; };
+		2953D84A28B77E4900DC456E /* BottomSheetMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2953D84928B77E4900DC456E /* BottomSheetMenu.swift */; };
 		295611162056ED8000D9711A /* ContentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611152056ED7F00D9711A /* ContentRepository.swift */; };
 		2957B8B31F4B2D5A00E836EF /* RewardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8B21F4B2D5A00E836EF /* RewardViewController.swift */; };
 		2957B8B81F4B2F6A00E836EF /* CustomRewardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2957B8B71F4B2F6A00E836EF /* CustomRewardCell.xib */; };
@@ -898,6 +901,8 @@
 		294973D1208118C100F02AC3 /* ImageOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOverlayView.swift; sourceTree = "<group>"; };
 		294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixCharacterViewController.swift; sourceTree = "<group>"; };
 		2953D84128B6564A00DC456E /* ArmoireViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmoireViewController.swift; sourceTree = "<group>"; };
+		2953D84628B7790800DC456E /* HabiticaBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaBottomSheet.swift; sourceTree = "<group>"; };
+		2953D84928B77E4900DC456E /* BottomSheetMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetMenu.swift; sourceTree = "<group>"; };
 		295611152056ED7F00D9711A /* ContentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRepository.swift; sourceTree = "<group>"; };
 		2957B8B21F4B2D5A00E836EF /* RewardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardViewController.swift; sourceTree = "<group>"; };
 		2957B8B71F4B2F6A00E836EF /* CustomRewardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomRewardCell.xib; sourceTree = "<group>"; };
@@ -1506,6 +1511,7 @@
 				2938ED5828B504D100E995A2 /* ReactiveSwift in Frameworks */,
 				D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */,
 				2938ED2B28B4ED2200E995A2 /* FacebookLogin in Frameworks */,
+				2953D84528B7772B00DC456E /* BottomSheet in Frameworks */,
 				292BD8AE28B4EB81006447EF /* Kingfisher in Frameworks */,
 				D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */,
 				2938ED3028B4EDC700E995A2 /* FirebaseCrashlytics in Frameworks */,
@@ -1698,6 +1704,15 @@
 				290B6284207BD531007287C4 /* GuildDetailViewController.swift */,
 			);
 			path = Guilds;
+			sourceTree = "<group>";
+		};
+		2953D84828B77E3800DC456E /* BottomSheets */ = {
+			isa = PBXGroup;
+			children = (
+				2953D84628B7790800DC456E /* HabiticaBottomSheet.swift */,
+				2953D84928B77E4900DC456E /* BottomSheetMenu.swift */,
+			);
+			name = BottomSheets;
 			sourceTree = "<group>";
 		};
 		2957B8B41F4B2DF900E836EF /* Rewards */ = {
@@ -2630,6 +2645,7 @@
 				29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */,
 				29323E342052008800AC6D6F /* UserTopHeader.swift */,
 				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
+				2953D84828B77E3800DC456E /* BottomSheets */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3049,6 +3065,7 @@
 				2938ED4228B4EF5D00E995A2 /* SwiftyStoreKit */,
 				2938ED5728B504D100E995A2 /* ReactiveSwift */,
 				2953D83F28B5215400DC456E /* ReactiveCocoa */,
+				2953D84428B7772B00DC456E /* BottomSheet */,
 			);
 			productName = HabitRPG;
 			productReference = D9EB4E8B18CB4A9400BB2094 /* Habitica.app */;
@@ -3177,6 +3194,7 @@
 				2938ED4D28B5043700E995A2 /* XCRemoteSwiftPackageReference "Nimble" */,
 				2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */,
 				2953D83E28B5215400DC456E /* XCRemoteSwiftPackageReference "Reactivecocoa" */,
+				2953D84328B7772A00DC456E /* XCRemoteSwiftPackageReference "BottomSheet" */,
 			);
 			productRefGroup = D9EB4E8C18CB4A9400BB2094 /* Products */;
 			projectDirPath = "";
@@ -3612,6 +3630,7 @@
 				29323E1B2050532D00AC6D6F /* UserRepository.swift in Sources */,
 				29FEB278202B491600EA245A /* Avatar.swift in Sources */,
 				D96BFC511E1930A500266EEF /* Signal-Extensions.swift in Sources */,
+				2953D84728B7790800DC456E /* HabiticaBottomSheet.swift in Sources */,
 				299328A924E57858003BCE0C /* FAQDetailViewController.swift in Sources */,
 				29E1631D200F62C100685640 /* TavernDetailViewController.swift in Sources */,
 				29706C9427D64516006EC139 /* main.swift in Sources */,
@@ -3672,6 +3691,7 @@
 				292AA72420FE15090022CC5F /* UIFont-Extensions.swift in Sources */,
 				295E9DF420B456F100D58D45 /* FilterTableviewDataSource.swift in Sources */,
 				29FC885420175C70002B3D3F /* RageStrikeView.swift in Sources */,
+				2953D84A28B77E4900DC456E /* BottomSheetMenu.swift in Sources */,
 				29267FF328B4BDFA00E756ED /* LabeledFormValue.swift in Sources */,
 				2914943C273163AF00DF2153 /* SceneDelegate.swift in Sources */,
 				293DFE3C24F5647400E115FE /* UIImage-Extensions.swift in Sources */,
@@ -5201,6 +5221,14 @@
 				minimumVersion = 12.0.0;
 			};
 		};
+		2953D84328B7772A00DC456E /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/joomcode/BottomSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nathantannar4/InputBarAccessoryView.git";
@@ -5336,6 +5364,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2953D83E28B5215400DC456E /* XCRemoteSwiftPackageReference "Reactivecocoa" */;
 			productName = ReactiveCocoa;
+		};
+		2953D84428B7772B00DC456E /* BottomSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2953D84328B7772A00DC456E /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			productName = BottomSheet;
 		};
 		29AE771927E3521800CC9646 /* InputBarAccessoryView */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -398,6 +398,7 @@
 "quests" = "Quests";
 "specialItems" = "Special Items";
 "sell" = "Sell for %d Gold";
+"sell_no_currency" = "Sell for %d";
 "hatch_egg" = "Use on Egg";
 "hatch_potion" = "Hatch with potion";
 "invite_party" = "Invite Party";
@@ -457,6 +458,7 @@
 "avatar.skin" = "Skin";
 "avatar.extras" = "Extras";
 "purchase_for_gems" = "Purchase for %d Gems";
+"purchase_for_without_currency" = "Purchase for %d";
 "purchase_gems" = "Purchase Gems";
 "more_options" = "More Options";
 "health" = "Health";

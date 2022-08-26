@@ -736,6 +736,10 @@ public enum L10n {
   public static func purchaseForGems(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "purchase_for_gems", p1)
   }
+  /// Purchase for %d
+  public static func purchaseForWithoutCurrency(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "purchase_for_without_currency", p1)
+  }
   /// You can purchase this customization from the Time Travelers shop
   public static var purchaseFromTimeTravelersShop: String { return L10n.tr("Mainstrings", "purchase_from_time_travelers_shop") }
   /// Purchase Gems
@@ -827,6 +831,10 @@ public enum L10n {
   /// Sell for %d Gold
   public static func sell(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "sell", p1)
+  }
+  /// Sell for %d
+  public static func sellNoCurrency(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "sell_no_currency", p1)
   }
   /// Send
   public static var send: String { return L10n.tr("Mainstrings", "send") }

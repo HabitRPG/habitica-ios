@@ -175,6 +175,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     }
     
     override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         var maximumSize = view.frame.size
         let guide = view.safeAreaLayoutGuide
         maximumSize = guide.layoutFrame.size
@@ -211,7 +212,6 @@ class HabiticaAlertController: UIViewController, Themeable {
         }
         containerViewHeightConstraint.constant = height
         contentView?.updateConstraints()
-        super.viewWillLayoutSubviews()
     }
     
     @objc

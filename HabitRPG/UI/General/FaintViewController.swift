@@ -12,16 +12,21 @@ import SwiftUI
 import ReactiveSwift
 
 struct HabiticaButtonUI<Label: View>: View {
+    enum Size {
+        case compact
+        case normal
+    }
     let label: Label
     let color: Color
-    let onTap: (() -> Void)
+    var size: Size = .normal
+    var onTap: (() -> Void)
     var body: some View {
         Button(action: onTap, label: {
             label
         })
         .foregroundColor(color == .white ? Color(UIColor.purple400) : .white)
         .font(.system(size: 16, weight: .bold))
-        .frame(height: 60)
+        .frame(height: size == .normal ? 60 : 44)
         .frame(maxWidth: .infinity)
         .background(color)
         .cornerRadius(8)
@@ -62,12 +67,12 @@ struct FaintView: View {
                 .font(.system(size: 30, weight: .bold))
                 .multilineTextAlignment(.center)
             Text(viewModel.lossText)
-                .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                .foregroundColor(.primaryTextColor)
                 .font(.system(size: 20))
                 .multilineTextAlignment(.center)
                 .padding(.top, 12)
             Text(L10n.Faint.goodLuckText)
-                .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                .foregroundColor(.primaryTextColor)
                 .font(.system(size: 20))
                 .multilineTextAlignment(.center)
                 .padding(.top, 12)
@@ -92,7 +97,7 @@ struct FaintView: View {
                     }
             }
             Text(L10n.Faint.disclaimer)
-                .foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor))
+                .foregroundColor(.ternaryTextColor)
                 .font(.system(size: 14))
                 .multilineTextAlignment(.center)
                 .padding(.top, 12)

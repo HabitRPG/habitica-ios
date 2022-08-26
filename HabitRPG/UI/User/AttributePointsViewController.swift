@@ -345,6 +345,13 @@ class AttributePointsViewController: BaseUIViewController {
         let viewController = BulkStatsAllocationViewController(nibName: "BulkStatsAllocationView", bundle: Bundle.main)
         let alert = HabiticaAlertController()
         alert.contentView = viewController.view
+        alert.contentViewInsets = .zero
+        alert.addCancelAction()
+        alert.addAction(title: L10n.save, isMainAction: true) { _ in
+            viewController.save()
+        }
+        alert.buttonAxis = .horizontal
+        alert.containerViewSpacing = 0
         alert.show()
     }
 }

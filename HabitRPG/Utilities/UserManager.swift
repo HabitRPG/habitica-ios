@@ -78,7 +78,13 @@ class UserManager: NSObject {
                 let viewController = YesterdailiesDialogView()
                 viewController.tasks = tasks
                 let alert = HabiticaAlertController()
+                alert.title = L10n.welcomeBack
+                alert.message = L10n.checkinYesterdaysDalies
                 alert.contentView = viewController.view
+                alert.contentViewInsets = .zero
+                alert.addAction(title: L10n.startMyDay, style: .default, isMainAction: true, closeOnTap: true) { _ in
+                    viewController.runCron()
+                }
                 alert.show()
             })
             .on(failed: { error in

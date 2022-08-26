@@ -8,6 +8,7 @@
 
 import UIKit
 import Habitica_Models
+import SwiftUI
 
 class AvatarDetailViewController: BaseCollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -72,52 +73,47 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     }
     
     private func showPurchaseDialog(customization: CustomizationProtocol, withSource sourceView: UIView?) {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alertController.addAction(UIAlertAction.cancelAction())
-        alertController.addAction(UIAlertAction(title: L10n.purchaseForGems(Int(customization.price)), style: .default, handler: {[weak self] (_) in
-            self?.customizationRepository.unlock(customization: customization, value: customization.price).observeCompleted {}
-        }))
-        if let sourceView = sourceView {
-            alertController.popoverPresentationController?.sourceView = sourceView
-            alertController.popoverPresentationController?.sourceRect = sourceView.bounds
-        } else {
-            alertController.setSourceInCenter(view)
-        }
-        present(alertController, animated: true, completion: nil)
+        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(iconName: customization.imageName(forUserPreferences: nil) ?? "", menuItems: {
+            BottomSheetMenuitem(title: HStack {
+                Text(L10n.purchaseForWithoutCurrency(Int(customization.price)))
+                Image(uiImage: HabiticaIcons.imageOfGem)
+            }) {[weak self] in
+                self?.customizationRepository.unlock(customization: customization, value: customization.price).observeCompleted {}
+                
+            }
+            })
+        )
+        present(sheet, animated: true)
     }
     
     private func showPurchaseDialog(gear: GearProtocol, withSource sourceView: UIView?) {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alertController.addAction(UIAlertAction.cancelAction())
         var value = Int(gear.value)
         if gear.gearSet == "animal" {
             value = 2
         }
-        alertController.addAction(UIAlertAction(title: L10n.purchaseForGems(value), style: .default, handler: {[weak self] (_) in
-            self?.customizationRepository.unlock(gear: gear, value: value).observeCompleted {}
-        }))
-        if let sourceView = sourceView {
-            alertController.popoverPresentationController?.sourceView = sourceView
-            alertController.popoverPresentationController?.sourceRect = sourceView.bounds
-        } else {
-            alertController.setSourceInCenter(view)
-        }
-        present(alertController, animated: true, completion: nil)
+        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(menuItems: {
+            BottomSheetMenuitem(title: HStack {
+                Text(L10n.purchaseForWithoutCurrency(value))
+                Image(uiImage: HabiticaIcons.imageOfGem)
+            }) {[weak self] in
+                self?.customizationRepository.unlock(gear: gear, value: value).observeCompleted {}
+            }
+            })
+        )
+        present(sheet, animated: true)
     }
     
     private func showPurchaseDialog(customizationSet: CustomizationSetProtocol, withSource sourceView: UIView?) {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alertController.addAction(UIAlertAction.cancelAction())
-        alertController.addAction(UIAlertAction(title: L10n.purchaseForGems(Int(customizationSet.setPrice)), style: .default, handler: {[weak self] (_) in
-            self?.customizationRepository.unlock(customizationSet: customizationSet, value: customizationSet.setPrice).observeCompleted {}
-        }))
-        if let sourceView = sourceView {
-            alertController.popoverPresentationController?.sourceView = sourceView
-            alertController.popoverPresentationController?.sourceRect = sourceView.bounds
-        } else {
-            alertController.setSourceInCenter(view)
-        }
-        present(alertController, animated: true, completion: nil)
+        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(menuItems: {
+            BottomSheetMenuitem(title: HStack {
+                Text(L10n.purchaseForWithoutCurrency(Int(customizationSet.setPrice)))
+                Image(uiImage: HabiticaIcons.imageOfGem)
+            }) {[weak self] in
+                self?.customizationRepository.unlock(customizationSet: customizationSet, value: customizationSet.setPrice).observeCompleted {}
+            }
+            })
+        )
+        present(sheet, animated: true)
     }
     
     private func showTimeTravelDialog() {

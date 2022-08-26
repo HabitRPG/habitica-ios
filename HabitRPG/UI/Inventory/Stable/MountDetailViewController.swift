@@ -8,6 +8,7 @@
 
 import UIKit
 import Habitica_Models
+import SwiftUI
 
 class MountDetailViewController: StableDetailViewController<MountDetailDataSource> {
 
@@ -42,21 +43,11 @@ class MountDetailViewController: StableDetailViewController<MountDetailDataSourc
     }
     
     private func showActionSheet(forStableItem stableItem: MountStableItem, withSource sourceView: UIView?) {
-        let actionSheet = UIAlertController(title: stableItem.mount?.text, message: nil, preferredStyle: .actionSheet)
-        var equipString = L10n.equip
-        if user?.items?.currentMount == stableItem.mount?.key {
-            equipString = L10n.unequip
-        }
-        actionSheet.addAction(UIAlertAction(title: equipString, style: .default, handler: {[weak self] (_) in
-            self?.inventoryRepository.equip(type: "mount", key: stableItem.mount?.key ?? "").observeCompleted {}
+        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(Text(stableItem.mount?.text ?? ""), iconName: "stable_Mount-Icon-\(stableItem.mount?.key ?? "")",  menuItems: {
+            BottomSheetMenuitem(title: user?.items?.currentMount == stableItem.mount?.key ? L10n.unequip : L10n.equip) {[weak self] in
+                self?.inventoryRepository.equip(type: "mount", key: stableItem.mount?.key ?? "").observeCompleted {}
+            }
         }))
-        actionSheet.addAction(UIAlertAction.cancelAction())
-        if let sourceView = sourceView {
-            actionSheet.popoverPresentationController?.sourceView = sourceView
-            actionSheet.popoverPresentationController?.sourceRect = sourceView.bounds
-        } else {
-            actionSheet.setSourceInCenter(view)
-        }
-        present(actionSheet, animated: true, completion: nil)
+        present(sheet, animated: true)
     }
 }
