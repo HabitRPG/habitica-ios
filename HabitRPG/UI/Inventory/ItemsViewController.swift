@@ -163,7 +163,15 @@ class ItemsViewController: BaseTableViewController {
             }
             if item.key == "inventory_present" {
                 BottomSheetMenuitem(title: L10n.open) {[weak self] in
-                    self?.inventoryRepository.openMysteryItem().observeCompleted {
+                    self?.inventoryRepository.openMysteryItem()
+                        .on(value: { item in
+                            if let item = item {
+                                DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                                    self?.showMysteryitemDialog(item: item)
+                                }
+                            }
+                        })
+                        .observeCompleted {
                         self?.dismissIfNeeded()
                     }
                 }
@@ -196,6 +204,18 @@ class ItemsViewController: BaseTableViewController {
             SharingManager.share(identifier: "hatchedPet", items: [
                     L10n.Inventory.hatchedSharing(egg.text ?? "", potion.text ?? "")
                 ], presentingViewController: imageAlert, sourceView: nil)
+        }
+        imageAlert.arrangeMessageLast = true
+        imageAlert.containerViewSpacing = 12
+        imageAlert.setCloseAction(title: L10n.close, handler: {})
+        imageAlert.imageHeight = 99
+        imageAlert.enqueue()
+    }
+    
+    private func showMysteryitemDialog(item: GearProtocol) {
+        let imageAlert = ImageOverlayView(imageName: "shop_\(item.key ?? "")", title: L10n.receivedMysteryItem(item.text ?? ""), message: nil)
+        imageAlert.addAction(title: L10n.equip, isMainAction: true) {[weak self] _ in
+            self?.inventoryRepository.equip(type: "equipped", key: item.key ?? "").observeCompleted {}
         }
         imageAlert.arrangeMessageLast = true
         imageAlert.containerViewSpacing = 12

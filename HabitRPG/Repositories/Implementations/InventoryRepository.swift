@@ -195,9 +195,6 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
             .on(value: {[weak self] gear in
                 if let key = gear?.key {
                     self?.localRepository.receiveMysteryItem(userID: self?.currentUserId ?? "", key: key)
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
-                        ToastManager.show(text: L10n.receivedMysteryItem(gear?.text ?? ""), color: .green)
-                    }
                 }
             })
     }
