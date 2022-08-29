@@ -302,7 +302,6 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     
     func verifyUsername(_ newUsername: String) -> Signal<VerifyUsernameResponse?, Never> {
         let call = VerifyUsernameCall(username: newUsername)
-        
         return call.objectSignal
     }
     
@@ -407,11 +406,25 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     
     func retrieveInboxMessages(conversationID: String, page: Int) -> Signal<[InboxMessageProtocol]?, Never> {
         let call = RetrieveInboxMessagesCall(uuid: conversationID, page: page)
-        
         return call.arraySignal.on(value: {[weak self] messages in
             if let messages = messages, let userID = self?.currentUserId {
                 self?.localRepository.save(userID: userID, messages: messages)
             }
+        })
+    }
+    
+    func retrieveGroupPlans() -> Signal<[GroupPlanProtocol]?, Never> {
+        let call = RetrieveGroupPlansCall()
+        return call.arraySignal.on(value: {[weak self] plans in
+            if let plans = plans, let userID = self?.currentUserId {
+                self?.localRepository.save(userID: userID, plans: plans)
+            }
+        })
+    }
+    
+    func getGroupPlans() -> SignalProducer<ReactiveResults<[GroupPlanProtocol]>, ReactiveSwiftRealmError> {
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
+            return self?.localRepository.getGroupPlans(userID: userID) ?? SignalProducer.empty
         })
     }
     

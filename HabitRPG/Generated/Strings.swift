@@ -1468,8 +1468,16 @@ public enum L10n {
   public enum Groups {
     /// Assign new Leader
     public static var assignNewLeader: String { return L10n.tr("Mainstrings", "groups.assign_new_leader") }
+    /// Copy shared tasks
+    public static var copySharedTasks: String { return L10n.tr("Mainstrings", "groups.copy_shared_tasks") }
+    /// Show assigned and open tasks on your personal task lists
+    public static var copySharedTasksDescription: String { return L10n.tr("Mainstrings", "groups.copy_shared_tasks_description") }
     /// Name may not be empty.
     public static var errorNameRequired: String { return L10n.tr("Mainstrings", "groups.error_name_required") }
+    /// Group
+    public static var group: String { return L10n.tr("Mainstrings", "groups.group") }
+    /// Groups
+    public static var groups: String { return L10n.tr("Mainstrings", "groups.groups") }
     /// %@ invited you to join Guild: %@
     public static func guildInvitationInvitername(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "groups.guild_invitation_invitername", p1, p2)

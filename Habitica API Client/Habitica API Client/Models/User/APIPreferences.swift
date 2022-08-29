@@ -32,6 +32,7 @@ class APIPreferences: PreferencesProtocol, Decodable {
     var searchableUsername: Bool = false
     var isValid: Bool = true
     var dateFormat: String?
+    var tasks: TaskPreferencesProtocol?
     public var isManaged: Bool = false
     
     enum CodingKeys: String, CodingKey {
@@ -56,6 +57,7 @@ class APIPreferences: PreferencesProtocol, Decodable {
         case hair
         case searchableUsername
         case dateFormat
+        case tasks
     }
     
     public required init(from decoder: Decoder) throws {
@@ -81,5 +83,6 @@ class APIPreferences: PreferencesProtocol, Decodable {
         hair = try? values.decode(APIHair.self, forKey: .hair)
         searchableUsername = (try? values.decode(Bool.self, forKey: .searchableUsername)) ?? false
         dateFormat = try? values.decode(String.self, forKey: .dateFormat)
+        tasks = try? values.decode(APITaskPreferences.self, forKey: .tasks)
     }
 }

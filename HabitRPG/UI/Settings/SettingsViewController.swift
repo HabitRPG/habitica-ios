@@ -40,6 +40,7 @@ enum SettingsTags {
 class SettingsViewController: FormViewController, Themeable {
     
     private let userRepository = UserRepository()
+    private let taskRepository = TaskRepository()
     private let contentRepository = ContentRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     private let configRepository = ConfigRepository.shared
@@ -47,6 +48,11 @@ class SettingsViewController: FormViewController, Themeable {
     
     private var user: UserProtocol?
     private var isSettingUserData = false
+    
+    private let groupPlanSection = Section(L10n.Groups.groups) { section in
+        section.hidden = true
+        section.footer = HeaderFooterView(title: L10n.Groups.copySharedTasksDescription)
+    }
     
     override func viewDidLoad() {
         tableView = UITableView(frame: view.bounds, style: .insetGrouped)
@@ -61,6 +67,42 @@ class SettingsViewController: FormViewController, Themeable {
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             self?.user = user
             self?.setUser(user)
+        }).start())
+        
+        disposable.inner.add(userRepository.retrieveGroupPlans().observeCompleted {})
+        disposable.inner.add(userRepository.getGroupPlans().on(value: {[weak self] plans in
+            if plans.value.isEmpty {
+                self?.groupPlanSection.hidden = Condition(booleanLiteral: true)
+            } else {
+                self?.groupPlanSection.hidden = Condition(booleanLiteral: false)
+                self?.groupPlanSection.removeAll()
+                if let section = self?.groupPlanSection {
+                    for plan in plans.value {
+                        section <<< SwitchRow { row in
+                            let name = plan.name
+                            row.title = name
+                            row.cellStyle = UITableViewCell.CellStyle.subtitle
+                            row.value = self?.user?.preferences?.tasks?.mirrorGroupTasks?.contains(plan.id ?? "") == true
+                            row.updateCell()
+                        }.cellUpdate({ cell, row in
+                            cell.detailTextLabel?.text = L10n.Groups.copySharedTasks
+                        }).onChange({ row in
+                            guard let id = plan.id else {
+                                return
+                            }
+                            var currentSetting = self?.user?.preferences?.tasks?.mirrorGroupTasks ?? []
+                            if row.value == true && !currentSetting.contains(id) {
+                                currentSetting.append(id)
+                                self?.userRepository.updateUser(key: "preferences.tasks.mirrorGroupTasks", value: currentSetting).observeCompleted {}
+                            } else if row.value == false, let index = currentSetting.firstIndex(of: id) {
+                                currentSetting.remove(at: index)
+                                self?.userRepository.updateUser(key: "preferences.tasks.mirrorGroupTasks", value: currentSetting).observeCompleted {}
+                            }
+                        })
+                    }
+                }
+            }
+            self?.groupPlanSection.evaluateHidden()
         }).start())
         
         LabelRow.defaultCellUpdate = { cell, _ in
@@ -423,6 +465,7 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
         }
+        +++ groupPlanSection
         let section = Section(L10n.Settings.preferences)
             <<< PushRow<LabeledFormValue<Int>>(SettingsTags.appLanguage) { row in
                 row.title = L10n.Settings.language

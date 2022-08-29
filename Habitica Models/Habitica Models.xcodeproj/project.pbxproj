@@ -65,6 +65,8 @@
 		29323E4D2052F4E500AC6D6F /* OutfitProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E4C2052F4E400AC6D6F /* OutfitProtocol.swift */; };
 		29323E4F2052F68A00AC6D6F /* UserGearProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E4E2052F68A00AC6D6F /* UserGearProtocol.swift */; };
 		2942FAF7267790F8003F6500 /* HabiticaLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2942FAF6267790F8003F6500 /* HabiticaLogger.swift */; };
+		2953D84C28BCDF8C00DC456E /* GroupPlanProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2953D84B28BCDF8C00DC456E /* GroupPlanProtocol.swift */; };
+		2953D85428BCE7C600DC456E /* TaskPreferencesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2953D85328BCE7C600DC456E /* TaskPreferencesProtocol.swift */; };
 		295610E72056C5BF00D9711A /* ContentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295610E62056C5BF00D9711A /* ContentProtocol.swift */; };
 		295610E92056C65A00D9711A /* ItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295610E82056C65A00D9711A /* ItemProtocol.swift */; };
 		295610ED2056C72000D9711A /* FoodProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295610EC2056C72000D9711A /* FoodProtocol.swift */; };
@@ -198,6 +200,8 @@
 		29323E4C2052F4E400AC6D6F /* OutfitProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitProtocol.swift; sourceTree = "<group>"; };
 		29323E4E2052F68A00AC6D6F /* UserGearProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGearProtocol.swift; sourceTree = "<group>"; };
 		2942FAF6267790F8003F6500 /* HabiticaLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaLogger.swift; sourceTree = "<group>"; };
+		2953D84B28BCDF8C00DC456E /* GroupPlanProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupPlanProtocol.swift; sourceTree = "<group>"; };
+		2953D85328BCE7C600DC456E /* TaskPreferencesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPreferencesProtocol.swift; sourceTree = "<group>"; };
 		295610E62056C5BF00D9711A /* ContentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentProtocol.swift; sourceTree = "<group>"; };
 		295610E82056C65A00D9711A /* ItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemProtocol.swift; sourceTree = "<group>"; };
 		295610EC2056C72000D9711A /* FoodProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodProtocol.swift; sourceTree = "<group>"; };
@@ -371,6 +375,8 @@
 				29DBFF0A20D15A4A00DF9CF2 /* UserNewMessagesProtocol.swift */,
 				291E95B020988706006EE585 /* UserPartyProtocol.swift */,
 				29323E0F20504DA600AC6D6F /* UserProtocol.swift */,
+				2953D84B28BCDF8C00DC456E /* GroupPlanProtocol.swift */,
+				2953D85328BCE7C600DC456E /* TaskPreferencesProtocol.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -639,6 +645,7 @@
 				296AC81820AC898D00885682 /* InAppRewardProtocol.swift in Sources */,
 				29C38C7F24A2321400F219A1 /* UserAchievementsProtocol.swift in Sources */,
 				290B62452073976B007287C4 /* GroupMembershipProtocol.swift in Sources */,
+				2953D85428BCE7C600DC456E /* TaskPreferencesProtocol.swift in Sources */,
 				29323E4B2052F4CF00AC6D6F /* UserItemsProtocol.swift in Sources */,
 				29B478BF20C5304F00B6123F /* BuyResponseProtocol.swift in Sources */,
 				291DE978209B43920073182A /* QuestParticipantProtocol.swift in Sources */,
@@ -712,6 +719,7 @@
 				29990DAC20E3E5B2001ADD8B /* QuestProgressCollectProtocol.swift in Sources */,
 				298CB20D20AF0696006DA349 /* QuestBossRageProtocol.swift in Sources */,
 				DC2C4767C68C2D9F295C7804 /* ProfileProtocol.swift in Sources */,
+				2953D84C28BCDF8C00DC456E /* GroupPlanProtocol.swift in Sources */,
 				2914489A208A32B400F3A6B5 /* CustomizationProtocol.swift in Sources */,
 				29865F37233AB4530041FAA4 /* TsakHistoryProtocol.swift in Sources */,
 				295BC6ED226F113400DDDF1A /* NotificationNewChatProtocol.swift in Sources */,

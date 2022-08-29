@@ -79,12 +79,28 @@ class RealmPreferences: BaseModel, PreferencesProtocol {
     }
     @objc dynamic var realmHair: RealmHair?
     
+    var tasks: TaskPreferencesProtocol? {
+        get {
+            return realmTasks
+        }
+        set {
+            if let newPreferences = newValue as? RealmTaskPreferences {
+                realmTasks = newPreferences
+                return
+            }
+            if let newPreferences = newValue {
+                realmTasks = RealmTaskPreferences(id: id, protocolObject: newPreferences)
+            }
+        }
+    }
+    @objc dynamic var realmTasks: RealmTaskPreferences?
+    
     override static func primaryKey() -> String {
         return "id"
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["pushNotifications", "emailNotifications"]
+        return ["pushNotifications", "emailNotifications", "tasks"]
     }
     
     convenience init(id: String?, preferences: PreferencesProtocol) {
@@ -111,5 +127,6 @@ class RealmPreferences: BaseModel, PreferencesProtocol {
         hair = preferences.hair
         searchableUsername = preferences.searchableUsername
         dateFormat = preferences.dateFormat
+        tasks = preferences.tasks
     }
 }

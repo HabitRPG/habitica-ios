@@ -531,6 +531,10 @@
 "groups.assign_new_leader" = "Assign new Leader";
 "groups.guild_invitation_no_invitername" = "Someone invited you to join Guild: %@";
 "groups.guild_invitation_invitername" = "%@ invited you to join Guild: %@";
+"groups.groups" = "Groups";
+"groups.group" = "Group";
+"groups.copy_shared_tasks" = "Copy shared tasks";
+"groups.copy_shared_tasks_description" = "Show assigned and open tasks on your personal task lists";
 "confirm" = "Confirm";
 "inventory.no_gems_left" = "You have bought all the Gems you can this month. More become available within the first three days of each month. Thanks for subscribing!";
 "inventory.number_gems_left" = "Monthly Gems: %d/%d Remaining";
