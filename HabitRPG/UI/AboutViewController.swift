@@ -47,6 +47,11 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         }).start()
     }
     
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        tableView.backgroundColor = theme.contentBackgroundColor
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.backgroundColor = .clear
@@ -95,6 +100,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         let theme = ThemeService.shared.theme
         cell.textLabel?.textColor = theme.primaryTextColor
         cell.detailTextLabel?.textColor = theme.secondaryTextColor
+        cell.backgroundColor = theme.windowBackgroundColor
         if indexPath.section == 0 {
             if needsUpdate() && indexPath.item == 1 {
                 cell.textLabel?.text = L10n.About.newVersion(configRepository.string(variable: .lastVersionNumber) ?? "")
@@ -134,7 +140,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         } else if indexPath.section == 4 {
             if indexPath.item == 0 {
                 cell.textLabel?.text = L10n.About.viewSourceCode
-            } else if indexPath.item == 2 {
+            } else if indexPath.item == 1 {
                 cell.textLabel?.text = L10n.About.exportDatabase
             }
         }
