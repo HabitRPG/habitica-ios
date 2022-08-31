@@ -137,9 +137,9 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
             }
             
             if let mustache = user.preferences?.hair?.mustache, mustache != 0 {
-                hairBeardView.configure("Icon_hair_mustache_\(mustache)_\(hairColor)")
+                hairMustacheView.configure("Icon_hair_mustache_\(mustache)_\(hairColor)")
             } else {
-                hairBeardView.configure(nil)
+                hairMustacheView.configure(nil)
             }
         }
         
