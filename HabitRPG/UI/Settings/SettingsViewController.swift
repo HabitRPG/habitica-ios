@@ -79,13 +79,12 @@ class SettingsViewController: FormViewController, Themeable {
                 if let section = self?.groupPlanSection {
                     for plan in plans.value {
                         section <<< SwitchRow { row in
-                            let name = plan.name
-                            row.title = name
+                            row.title = L10n.Groups.copySharedTasks
                             row.cellStyle = UITableViewCell.CellStyle.subtitle
                             row.value = self?.user?.preferences?.tasks?.mirrorGroupTasks?.contains(plan.id ?? "") == true
                             row.updateCell()
                         }.cellUpdate({ cell, row in
-                            cell.detailTextLabel?.text = L10n.Groups.copySharedTasks
+                            cell.detailTextLabel?.text = plan.name
                         }).onChange({ row in
                             guard let id = plan.id else {
                                 return
