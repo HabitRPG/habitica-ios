@@ -16,6 +16,7 @@ import ReactiveSwift
 
 class SceneDelegate: NSObject, UIWindowSceneDelegate {
     var window: UIWindow?
+    var savedShortcutItem: UIApplicationShortcutItem?
 
     private let configRepository = ConfigRepository.shared
     private let contentRepository = ContentRepository()
@@ -31,6 +32,26 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         connectionOptions.urlContexts.forEach { context in
             RouterHandler.shared.handle(url: context.url)
         }
+        
+        if let shortcutItem = connectionOptions.shortcutItem {
+            savedShortcutItem = shortcutItem
+        }
+    }
+    
+    func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem) async -> Bool {
+        let handled = handleShortcutItem(shortcutItem: shortcutItem)
+        return handled
+    }
+    
+    private func handleShortcutItem(shortcutItem: UIApplicationShortcutItem) -> Bool {
+        if shortcutItem.type == "com.habitrpg.habitica.ios.newhabit" {
+            return RouterHandler.shared.handle(urlString: "/user/tasks/habit/add")
+        } else if shortcutItem.type == "com.habitrpg.habitica.ios.newdaily" {
+            return RouterHandler.shared.handle(urlString: "/user/tasks/daily/add")
+        } else if shortcutItem.type == "com.habitrpg.habitica.ios.newtodo" {
+            return RouterHandler.shared.handle(urlString: "/user/tasks/todo/add")
+        }
+        return false
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -43,6 +64,13 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         setupUserManager()
         setupTheme()
         cleanAndRefresh()
+    }
+    
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        if let shortcutItem = savedShortcutItem {
+            let _ = handleShortcutItem(shortcutItem: shortcutItem)
+            savedShortcutItem = nil
+        }
     }
     
     func sceneDidEnterBackground(_ scene: UIScene) {

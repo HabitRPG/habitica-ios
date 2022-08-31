@@ -85,17 +85,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             RouterHandler.shared.handle(url: context.url)
         }
     }
-    
-    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        if shortcutItem.type == "com.habitrpg.habitica.ios.newhabit" {
-            RouterHandler.shared.handle(urlString: "/user/tasks/habit/add")
-        } else if shortcutItem.type == "com.habitrpg.habitica.ios.newdaily" {
-            RouterHandler.shared.handle(urlString: "/user/tasks/daily/add")
-        } else if shortcutItem.type == "com.habitrpg.habitica.ios.newtodo" {
-            RouterHandler.shared.handle(urlString: "/user/tasks/todo/add")
-        }
-        completionHandler(true)
-    }
 
     @objc
     func handleLaunchArgs() {
