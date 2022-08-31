@@ -99,7 +99,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         cell.textLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: cell.textLabel?.font.pointSize ?? 14)
         let theme = ThemeService.shared.theme
         cell.textLabel?.textColor = theme.primaryTextColor
-        cell.detailTextLabel?.textColor = theme.secondaryTextColor
+        cell.detailTextLabel?.textColor = theme.ternaryTextColor
         cell.backgroundColor = theme.windowBackgroundColor
         if indexPath.section == 0 {
             if needsUpdate() && indexPath.item == 1 {

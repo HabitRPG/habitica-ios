@@ -106,6 +106,8 @@ class UserProfileViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
+        case 0:
+            return member?.contributor?.text
         case 1:
             return L10n.Equipment.battleGear
         case 2:
@@ -169,7 +171,7 @@ class UserProfileViewController: BaseTableViewController {
                 configureUserStatsCell(cell)
             case 1:
                 cell.textLabel?.text = L10n.username
-                cell.detailTextLabel?.text = member?.authentication?.local?.username
+                cell.detailTextLabel?.text = member?.authentication?.local?.username ?? username
             case 2:
                 cell.textLabel?.text = L10n.userID
                 cell.detailTextLabel?.text = member?.id

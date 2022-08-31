@@ -22,4 +22,11 @@ class APILocalAuthentication: LocalAuthenticationProtocol, Decodable {
         case hasPassword = "has_password"
     }
     
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        email = try? values.decode(String.self, forKey: .email)
+        username = try? values.decode(String.self, forKey: .username)
+        lowerCaseUsername = try? values.decode(String.self, forKey: .lowerCaseUsername)
+        hasPassword = (try? values.decode(Bool.self, forKey: .hasPassword)) ?? false
+    }
 }
