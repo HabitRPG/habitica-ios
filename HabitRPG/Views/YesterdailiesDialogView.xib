@@ -21,10 +21,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgP-Ii-oSg">
+                <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="dgP-Ii-oSg">
                     <rect key="frame" x="16" y="0.0" width="343" height="667"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8bJ-eN-LzI">
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8bJ-eN-LzI">
                             <rect key="frame" x="15" y="15" width="313" height="637"/>
                             <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -37,9 +37,8 @@
                         <constraint firstItem="8bJ-eN-LzI" firstAttribute="leading" secondItem="dgP-Ii-oSg" secondAttribute="leading" constant="15" id="15t-zg-po5"/>
                         <constraint firstAttribute="bottom" secondItem="8bJ-eN-LzI" secondAttribute="bottom" constant="15" id="Q4o-1H-uO3"/>
                         <constraint firstItem="8bJ-eN-LzI" firstAttribute="top" secondItem="dgP-Ii-oSg" secondAttribute="top" constant="15" id="XL7-1T-PLr"/>
-                        <constraint firstAttribute="height" priority="500" constant="430" id="epK-Vt-2Dh"/>
+                        <constraint firstAttribute="height" priority="500" constant="480" id="epK-Vt-2Dh"/>
                         <constraint firstAttribute="trailing" secondItem="8bJ-eN-LzI" secondAttribute="trailing" constant="15" id="hwO-ob-HYa"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="350" id="q69-fH-fcW"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

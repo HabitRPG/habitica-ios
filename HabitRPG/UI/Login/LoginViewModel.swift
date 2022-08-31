@@ -277,12 +277,11 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             self.loadingIndicatorVisibilityObserver.send(value: true)
             if authValues.authType == .login {
                 userRepository.login(username: authValues.username ?? "", password: authValues.password ?? "")
-                    .on(failed: { _ in
-                        self.loadingIndicatorVisibilityObserver.send(value: false)
-                    })
                     .observeValues { loginResult in
                     if loginResult != nil {
                         self.onSuccessfulLogin()
+                    } else {
+                        self.loadingIndicatorVisibilityObserver.send(value: false)
                     }
                 }
             } else {
@@ -290,15 +289,14 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                                         password: authValues.password ?? "",
                                         confirmPassword: authValues.passwordRepeat ?? "",
                                         email: authValues.email ?? "")
-                    .on(failed: { _ in
-                        self.loadingIndicatorVisibilityObserver.send(value: false)
-                    })
                     .observeValues { loginResult in
                     if loginResult != nil {
                         #if !targetEnvironment(macCatalyst)
                         Analytics.logEvent("register", parameters: nil)
                         #endif
                         self.onSuccessfulLogin()
+                    } else {
+                        self.loadingIndicatorVisibilityObserver.send(value: false)
                     }
                 }
             }

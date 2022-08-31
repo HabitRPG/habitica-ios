@@ -228,7 +228,7 @@ class GiftSubscriptionViewController: BaseTableViewController {
                 logger.log("Purchase Success: \(product.productId)")
             case .error(let error):
                 logger.log("Purchase Failed: \(error)", level: .error)
-            case .deferred(let purchase):
+            case .deferred(_):
                 return
             }
             self.tableView.beginUpdates()

@@ -39,7 +39,7 @@ class UserManager: NSObject {
     
     func beginListening() {
         disposable.add(userRepository.getUser()
-            .throttle(1, on: QueueScheduler.main)
+            .throttle(0.5, on: QueueScheduler.main)
             .on(value: {[weak self]user in
                 self?.onUserUpdated(user: user)
             }).filter({[weak self] (user) -> Bool in
@@ -82,9 +82,13 @@ class UserManager: NSObject {
                 alert.message = L10n.checkinYesterdaysDalies
                 alert.contentView = viewController.view
                 alert.contentViewInsets = .zero
+                alert.dismissOnBackgroundTap = false
+                alert.maxAlertWidth = 400
                 alert.addAction(title: L10n.startMyDay, style: .default, isMainAction: true, closeOnTap: true) { _ in
                     viewController.runCron()
+                    self?.yesterdailiesDialog = nil
                 }
+                self?.yesterdailiesDialog = viewController
                 alert.show()
             })
             .on(failed: { error in

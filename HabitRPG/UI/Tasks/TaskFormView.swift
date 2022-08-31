@@ -1132,7 +1132,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
         
         if let startDate = task.startDate {
             if viewModel.dayOrWeekMonth == "week" {
-                task.weeksOfMonth.append(Calendar.current.component(.weekOfMonth, from: startDate))
+                task.weeksOfMonth.append(Calendar.current.component(.weekOfMonth, from: startDate)-1)
             } else {
                 task.daysOfMonth.append(Calendar.current.component(.day, from: startDate))
             }

@@ -48,7 +48,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     }
 
     override func viewWillLayoutSubviews() {
-        view.frame = CGRect(x: 0, y: view.frame.origin.y, width: view.superview?.frame.width ?? 0, height: view.frame.height + 16)
+        view.frame = CGRect(x: 0, y: view.frame.origin.y, width: view.superview?.frame.width ?? 0, height: 480)
         super.viewWillLayoutSubviews()
     }
 
