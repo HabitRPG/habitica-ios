@@ -204,21 +204,24 @@ class UserManager: NSObject {
         scheduleAllReminderNotifications(reminders: reminders)
     }
     private func scheduleAllReminderNotifications(reminders: [ReminderProtocol]) {
+        let daysPerReminder = max(1, min(6, Int(64.0 / Double(reminders.count))))
         let notificationCenter = UNUserNotificationCenter.current()
         var scheduledReminderKeys = [String]()
         for reminder in reminders {
-            scheduledReminderKeys.append(contentsOf: self.scheduleNotifications(reminder: reminder))
+            scheduledReminderKeys.append(contentsOf: self.scheduleNotifications(reminder: reminder, daysPerReminder: daysPerReminder))
         }
         notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
             var toCancel = [String]()
-            for request in requests where !scheduledReminderKeys.contains(request.identifier) {
+            for request in requests where !scheduledReminderKeys.contains(request.identifier) && request.identifier.starts(with: "task") {
                 toCancel.append(request.identifier)
             }
-            notificationCenter.removePendingNotificationRequests(withIdentifiers: toCancel)
+            if !toCancel.isEmpty {
+                notificationCenter.removePendingNotificationRequests(withIdentifiers: toCancel)
+            }
         })
     }
     
-    private func scheduleNotifications(reminder: ReminderProtocol) -> [String] {
+    private func scheduleNotifications(reminder: ReminderProtocol, daysPerReminder: Int) -> [String] {
         var keys = [String]()
         guard let task = reminder.task else {
             return keys
@@ -228,7 +231,7 @@ class UserManager: NSObject {
         }
         if task.type == TaskType.daily {
             let calendar = Calendar(identifier: .gregorian)
-            for day in 0...6 {
+            for day in 0...daysPerReminder {
                 if day == 0 && task.completed {
                     continue
                 }
@@ -262,6 +265,8 @@ class UserManager: NSObject {
                 fireDate = newDate
             }
         }
+        components.second = 0
+        components.calendar = calendar
         
         if fireDate < Date() {
             return nil
@@ -285,7 +290,7 @@ class UserManager: NSObject {
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
         let notificationIdentifier = "task\(reminder.id ?? "")-\(components.month ?? 0)\(components.day ?? 0)"
         let request = UNNotificationRequest(identifier: notificationIdentifier, content: content, trigger: trigger)
-        logger.log("⏰ Notification \(request.identifier) for \(reminder.task?.text ?? "") at \(fireDate)")
+        logger.log("⏰ Notification \(request.identifier) for \(taskText ?? "") at \(trigger.dateComponents)")
         UNUserNotificationCenter.current().add(request) {(error) in
             if let error = error {
                 logger.log("Uh oh! We had an error: \(error)")
