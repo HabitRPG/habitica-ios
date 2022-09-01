@@ -49,7 +49,7 @@ class SettingsViewController: FormViewController, Themeable {
     private var user: UserProtocol?
     private var isSettingUserData = false
     
-    private let groupPlanSection = Section(L10n.Groups.groups) { section in
+    private let groupPlanSection = Section(L10n.Groups.groupPlanSettings) { section in
         section.hidden = true
         section.footer = HeaderFooterView(title: L10n.Groups.copySharedTasksDescription)
     }
@@ -92,10 +92,18 @@ class SettingsViewController: FormViewController, Themeable {
                             var currentSetting = self?.user?.preferences?.tasks?.mirrorGroupTasks ?? []
                             if row.value == true && !currentSetting.contains(id) {
                                 currentSetting.append(id)
-                                self?.userRepository.updateUser(key: "preferences.tasks.mirrorGroupTasks", value: currentSetting).observeCompleted {}
+                                self?.userRepository.updateUser(key: "preferences.tasks.mirrorGroupTasks", value: currentSetting)
+                                    .flatMap(.latest, { _ in
+                                        self?.taskRepository.retrieveTasks() ?? Signal.empty
+                                    })
+                                    .observeCompleted {}
                             } else if row.value == false, let index = currentSetting.firstIndex(of: id) {
                                 currentSetting.remove(at: index)
-                                self?.userRepository.updateUser(key: "preferences.tasks.mirrorGroupTasks", value: currentSetting).observeCompleted {}
+                                self?.userRepository.updateUser(key: "preferences.tasks.mirrorGroupTasks", value: currentSetting)
+                                    .flatMap(.latest, { _ in
+                                        self?.taskRepository.retrieveTasks() ?? Signal.empty
+                                    })
+                                    .observeCompleted {}
                             }
                         })
                     }

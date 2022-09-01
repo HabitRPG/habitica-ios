@@ -1476,6 +1476,8 @@ public enum L10n {
     public static var errorNameRequired: String { return L10n.tr("Mainstrings", "groups.error_name_required") }
     /// Group
     public static var group: String { return L10n.tr("Mainstrings", "groups.group") }
+    /// Group Plan Settings
+    public static var groupPlanSettings: String { return L10n.tr("Mainstrings", "groups.group_plan_settings") }
     /// Groups
     public static var groups: String { return L10n.tr("Mainstrings", "groups.groups") }
     /// %@ invited you to join Guild: %@
