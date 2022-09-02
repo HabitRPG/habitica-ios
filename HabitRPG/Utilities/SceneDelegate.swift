@@ -68,7 +68,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     
     func sceneDidBecomeActive(_ scene: UIScene) {
         if let shortcutItem = savedShortcutItem {
-            let _ = handleShortcutItem(shortcutItem: shortcutItem)
+            _ = handleShortcutItem(shortcutItem: shortcutItem)
             savedShortcutItem = nil
         }
     }

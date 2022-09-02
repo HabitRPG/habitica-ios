@@ -180,7 +180,6 @@ public class UserLocalRepository: BaseLocalRepository {
     
     private func removeNotification(_ id: String) {
         let realm = getRealm()
-        // swiftlint:disable:next first_where
         if let notification = realm?.objects(RealmNotification.self).filter("id == '\(id)'").first {
             realm?.refresh()
             try? realm?.write {

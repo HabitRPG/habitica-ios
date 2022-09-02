@@ -33,23 +33,30 @@ public extension CustomizationProtocol {
         case "chair":
             return "chair_\(key)"
         case "hair":
-            let hairColor = preferences?.hair?.color ?? ""
-            switch group {
-            case "bangs":
-                return "hair_bangs_\(key)_\(hairColor)"
-            case "base":
-                return "hair_base_\(key)_\(hairColor)"
-            case "mustache":
-                return "hair_mustache_\(key)_\(hairColor)"
-            case "beard":
-                return "hair_beard_\(key)_\(hairColor)"
-            case "color":
-                return "hair_bangs_1_\(key)"
-            case "flower":
-                return "hair_flower_\(key)"
-            default:
-                return nil
-            }
+            return hairImageName(forUserPreferences: preferences)
+        default:
+            return nil
+        }
+    }
+    
+    private func hairImageName(forUserPreferences preferences: PreferencesProtocol?) -> String? {
+        guard let key = key else {
+            return nil
+        }
+        let hairColor = preferences?.hair?.color ?? ""
+        switch group {
+        case "bangs":
+            return "hair_bangs_\(key)_\(hairColor)"
+        case "base":
+            return "hair_base_\(key)_\(hairColor)"
+        case "mustache":
+            return "hair_mustache_\(key)_\(hairColor)"
+        case "beard":
+            return "hair_beard_\(key)_\(hairColor)"
+        case "color":
+            return "hair_bangs_1_\(key)"
+        case "flower":
+            return "hair_flower_\(key)"
         default:
             return nil
         }

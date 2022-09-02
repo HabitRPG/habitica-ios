@@ -3031,6 +3031,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9EB4EC318CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "Habitica" */;
 			buildPhases = (
+				294F5D5D28C1EEB400760F6C /* Run SwiftGen */,
+				294F5D5E28C1F32300760F6C /* Run SwiftLint */,
 				D9EB4E8718CB4A9400BB2094 /* Sources */,
 				D9EB4E8818CB4A9400BB2094 /* Frameworks */,
 				D9EB4E8918CB4A9400BB2094 /* Resources */,
@@ -3437,6 +3439,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		294F5D5D28C1EEB400760F6C /* Run SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftGen";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftgen >/dev/null; then\n  swiftgen\nelif [[ -f \"/opt/homebrew/bin/swiftgen\" ]]; then\n  /opt/homebrew/bin/swiftgen\nelse\n  echo \"warning: swiftgen is not installed.\"\nfi\n";
+		};
+		294F5D5E28C1F32300760F6C /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint lint --config .swiftlint.yml\nelif [[ -f \"/opt/homebrew/bin/swiftlint\" ]]; then\n  /opt/homebrew/bin/swiftlint lint --config .swiftlint.yml\nelse\n  echo \"warning: swiftlint is not installed.\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2932F41426A70FE700E1C11F /* Sources */ = {

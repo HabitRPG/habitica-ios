@@ -36,12 +36,10 @@ class ConfigRepository: NSObject {
     func fetchremoteConfig() {
         Alamofire.request(ConfigRepository.configUrl).responseJSON { response in
             if let JSON = response.result.value as? [String: Any] {
-                for variable in ConfigRepository.configVariables {
-                    if JSON.contains(where: { (key, _) -> Bool in
-                        return key == variable.name()
-                    }) {
-                        self.userConfig.set(JSON[variable.name()], forKey: variable.name())
-                    }
+                for variable in ConfigRepository.configVariables where JSON.contains(where: { (key, _) -> Bool in
+                    return key == variable.name()
+                }) {
+                    self.userConfig.set(JSON[variable.name()], forKey: variable.name())
                 }
             }
         }

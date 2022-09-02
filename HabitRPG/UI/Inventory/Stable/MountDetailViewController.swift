@@ -43,7 +43,7 @@ class MountDetailViewController: StableDetailViewController<MountDetailDataSourc
     }
     
     private func showActionSheet(forStableItem stableItem: MountStableItem, withSource sourceView: UIView?) {
-        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(Text(stableItem.mount?.text ?? ""), iconName: "stable_Mount-Icon-\(stableItem.mount?.key ?? "")",  menuItems: {
+        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(Text(stableItem.mount?.text ?? ""), iconName: "stable_Mount-Icon-\(stableItem.mount?.key ?? "")", menuItems: {
             BottomSheetMenuitem(title: user?.items?.currentMount == stableItem.mount?.key ? L10n.unequip : L10n.equip) {[weak self] in
                 self?.inventoryRepository.equip(type: "mount", key: stableItem.mount?.key ?? "").observeCompleted {}
             }

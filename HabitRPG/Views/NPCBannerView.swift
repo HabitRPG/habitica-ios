@@ -102,7 +102,7 @@ class NPCBannerView: UIView {
     @objc
     func setSprites(identifier: String) {
         var spriteSuffix = ConfigRepository.shared.string(variable: .shopSpriteSuffix, defaultValue: "")
-        if (!spriteSuffix.starts(with: "_")) {
+        if !spriteSuffix.starts(with: "_") {
             spriteSuffix = "_" + spriteSuffix
         }
         ImageManager.getImage(name: identifier + "_background"+spriteSuffix) { (image, _) in

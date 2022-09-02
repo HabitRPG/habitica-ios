@@ -34,15 +34,20 @@ class HostingBottomSheetController<ContentView: View>: UIHostingController<Conte
     }
     
     func disableSafeArea() {
-            guard let viewClass = object_getClass(view) else { return }
+            guard let viewClass = object_getClass(view) else {
+                return
+            }
             
             let viewSubclassName = String(cString: class_getName(viewClass)).appending("_IgnoreSafeArea")
             if let viewSubclass = NSClassFromString(viewSubclassName) {
                 object_setClass(view, viewSubclass)
-            }
-            else {
-                guard let viewClassNameUtf8 = (viewSubclassName as NSString).utf8String else { return }
-                guard let viewSubclass = objc_allocateClassPair(viewClass, viewClassNameUtf8, 0) else { return }
+            } else {
+                guard let viewClassNameUtf8 = (viewSubclassName as NSString).utf8String else {
+                    return
+                }
+                guard let viewSubclass = objc_allocateClassPair(viewClass, viewClassNameUtf8, 0) else {
+                    return
+                }
                 
                 if let method = class_getInstanceMethod(UIView.self, #selector(getter: UIView.safeAreaInsets)) {
                     let safeAreaInsets: @convention(block) (AnyObject) -> UIEdgeInsets = { _ in
@@ -314,7 +319,8 @@ final class BottomSheetPresentationController: UIPresentationController {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
     }
 
-    @objc private func onTap(_ gestureRecognizer: UITapGestureRecognizer) {
+    @objc
+    private func onTap(_ gestureRecognizer: UITapGestureRecognizer) {
         guard
             let presentedView = presentedView,
             let containerView = containerView,
@@ -326,7 +332,8 @@ final class BottomSheetPresentationController: UIPresentationController {
         presentingViewController.dismiss(animated: true)
     }
 
-    @objc private func onPan(_ gestureRecognizer: UIPanGestureRecognizer) {
+    @objc
+    private func onPan(_ gestureRecognizer: UIPanGestureRecognizer) {
         guard let presentedView = presentedView else {
             return
         }
@@ -391,7 +398,7 @@ final class BottomSheetPresentationController: UIPresentationController {
             ),
             backdropView.bottomAnchor.constraint(
                 equalTo: containerView.bottomAnchor
-            ),
+            )
         ])
 
         containerView.addSubview(presentedView)
@@ -440,7 +447,7 @@ final class BottomSheetPresentationController: UIPresentationController {
             return
         }
 
-        transitionCoordinator.animate { context in
+        transitionCoordinator.animate { _ in
             self.backdropView.alpha = 0.3
         }
     }
@@ -458,7 +465,7 @@ final class BottomSheetPresentationController: UIPresentationController {
             return
         }
 
-        transitionCoordinator.animate { context in
+        transitionCoordinator.animate { _ in
             self.backdropView.alpha = 0
         }
     }
@@ -473,7 +480,7 @@ final class BottomSheetPresentationController: UIPresentationController {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         panGestureRecognizer.isEnabled = false // This will cancel any ongoing pan gesture
-        coordinator.animate(alongsideTransition: nil) { context in
+        coordinator.animate(alongsideTransition: nil) { _ in
             self.panGestureRecognizer.isEnabled = true
         }
     }
@@ -629,7 +636,7 @@ extension BottomSheetInteractiveDismissalTransition: UIViewControllerAnimatedTra
         let offset = presentedView.frame.height
         let offsetAnimator = createOffsetAnimator(animating: presentedView, to: offset)
 
-        offsetAnimator.addCompletion { position in
+        offsetAnimator.addCompletion { _ in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
 
@@ -665,7 +672,7 @@ extension BottomSheetInteractiveDismissalTransition: UIViewControllerInteractive
         let offset = presentedView.frame.height
         let offsetAnimator = createOffsetAnimator(animating: presentedView, to: offset)
 
-        offsetAnimator.addCompletion { position in
+        offsetAnimator.addCompletion { _ in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
 

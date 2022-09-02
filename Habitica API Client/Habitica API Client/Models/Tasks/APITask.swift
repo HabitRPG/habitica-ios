@@ -106,7 +106,7 @@ public class APITask: TaskProtocol, Codable {
         text = try? values.decode(String.self, forKey: .text)
         notes = try? values.decode(String.self, forKey: .notes)
         type = try? values.decode(String.self, forKey: .type)
-        value = try values.decode(Float.self, forKey: .value)
+        value = (try? values.decode(Float.self, forKey: .value)) ?? 0
         attribute = try? values.decode(String.self, forKey: .attribute)
         completed = (try? values.decode(Bool.self, forKey: .completed)) ?? false
         down = (try? values.decode(Bool.self, forKey: .down)) ?? false

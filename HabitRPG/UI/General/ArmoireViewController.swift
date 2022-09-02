@@ -20,7 +20,6 @@ struct ArmoireView: View {
     var onDismiss: (() -> Void) = {}
     @State private var viewModel = ViewModel()
 
-    
     var body: some View {
         VStack(spacing: 0) {
             HStack {

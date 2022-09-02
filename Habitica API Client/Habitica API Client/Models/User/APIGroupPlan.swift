@@ -9,7 +9,6 @@
 import Foundation
 import Habitica_Models
 
-
 public class APIGroupPlan: Decodable, GroupPlanProtocol {
     public var id: String?
     public var name: String?

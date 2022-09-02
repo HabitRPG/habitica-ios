@@ -62,7 +62,7 @@ extension Avatar {
             "body": hasNoVisualBuff && isValid(body) && isAvailableGear(body),
             "head_0": hasNoVisualBuff,
             "hair-base": hasNoVisualBuff && isValid(hairBase) && hairBase != "0",
-            "hair-bangs": hasNoVisualBuff && isValid(hairBangs) && hairBangs != "0" ,
+            "hair-bangs": hasNoVisualBuff && isValid(hairBangs) && hairBangs != "0",
             "hair-mustache": hasNoVisualBuff && isValid(hairMustache) && hairMustache != "0",
             "hair-beard": hasNoVisualBuff && isValid(hairBeard) && hairBeard != "0",
             "eyewear": hasNoVisualBuff && isValid(eyewear) && isAvailableGear(eyewear),

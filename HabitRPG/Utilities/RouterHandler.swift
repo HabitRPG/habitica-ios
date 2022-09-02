@@ -17,7 +17,7 @@ private struct RouteMatch {
 
 private struct RegexRoute {
     static private let parameterURLRegex = ":[a-zA-Z0-9-_]+"
-    static private let defaultURLRegex = "([^/]+)";
+    static private let defaultURLRegex = "([^/]+)"
     
     let call: (([String: String]) -> Void)
     let regex: NSRegularExpression
@@ -27,6 +27,7 @@ private struct RegexRoute {
         self.call = call
         let expression = try? NSRegularExpression(pattern: RegexRoute.parameterURLRegex)
         let range = NSRange(location: 0, length: route.count)
+        // swiftlint:disable:next force_try
         self.regex = try! NSRegularExpression(pattern: expression?.stringByReplacingMatches(in: route, range: range, withTemplate: RegexRoute.defaultURLRegex) ?? route)
         groupNames = expression?.matches(in: route, range: range).map({ result in
             return String((route as NSString).substring(with: result.range).dropFirst())
@@ -35,9 +36,11 @@ private struct RegexRoute {
     
     func matches(_ path: String) -> RouteMatch? {
         let matches = regex.matches(in: path, range: NSRange(location: 0, length: path.count))
-        if matches.count == 1 && (matches.first!.numberOfRanges - 1) == groupNames.count {
-            let match = matches.first!
-            var parameters = [String:String]()
+        guard let match = matches.first else {
+            return nil
+        }
+        if matches.count == 1 && (match.numberOfRanges - 1) == groupNames.count {
+            var parameters = [String: String]()
             for rangeIndex in 1..<match.numberOfRanges {
                 parameters[groupNames[rangeIndex-1]] = (path as NSString).substring(with: match.range(at: rangeIndex))
             }
@@ -51,8 +54,7 @@ class RouterHandler {
     
     public static let shared = RouterHandler()
 
-
-    private var directRoutes = [String:(() -> Void)]()
+    private var directRoutes = [String: (() -> Void)]()
     private var parameterRoutes = [RegexRoute]()
     
     private func register(_ route: String, call: @escaping (() -> Void)) {
@@ -63,7 +65,7 @@ class RouterHandler {
         parameterRoutes.append(RegexRoute(route: route, call: call))
     }
     
-    // swiftlint:disable:next function_body_length
+    // swiftlint:disable:next function_body_length cyclomatic_complexity
     func register() {
         register("/groups/guild/:groupID") { link in
             self.displayTab(index: 4)

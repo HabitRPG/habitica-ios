@@ -958,7 +958,7 @@ struct TaskFormView: View {
                                 FormRow(title: Text(L10n.Tasks.Form.positive), valueLabel: TextField(L10n.Tasks.Form.positive, text: $viewModel.counterUp)
                                     .multilineTextAlignment(.trailing)
                                     .keyboardType(.numberPad))
-                                FormRow(title: Text(L10n.Tasks.Form.negative), valueLabel:TextField(L10n.Tasks.Form.negative, text: $viewModel.counterDown)
+                                FormRow(title: Text(L10n.Tasks.Form.negative), valueLabel: TextField(L10n.Tasks.Form.negative, text: $viewModel.counterDown)
                                     .multilineTextAlignment(.trailing)
                                     .keyboardType(.numberPad))
                             })

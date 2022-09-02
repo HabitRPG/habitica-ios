@@ -101,9 +101,9 @@ class GuildOverviewViewController: BaseTableViewController, UISearchBarDelegate 
         if isAnimated {
             UIView.animate(withDuration: 0.3, animations: {
                 self.searchBar.alpha = 0
-            }) { _ in
+            }, completion: { _ in
                 self.searchBar.removeFromSuperview()
-            }
+            })
         } else {
             self.searchBar.removeFromSuperview()
         }

@@ -78,20 +78,17 @@ struct FaintView: View {
                 .padding(.top, 12)
             Spacer()
             HabiticaButtonUI(label: Group {
-                if (isReviving) {
+                if isReviving {
                     Text("Reviving...")
                 } else {
                     Text(L10n.Faint.button)
                 }
             }, color: Color(UIColor.maroon100)) {
-                if (isReviving) {
+                if isReviving {
                     return
                 }
                 isReviving = true
                 viewModel.userRepository.revive()
-                    .on(failed: { _ in
-                        isReviving = false
-                    })
                     .observeResult { _ in
                         onDismiss()
                     }
@@ -139,7 +136,6 @@ class FaintViewController: UIHostingController<FaintView> {
         })
     }
     
-    
     func show() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             if var topController = UIApplication.topViewController() {
@@ -163,7 +159,7 @@ class FaintViewController: UIHostingController<FaintView> {
     }
 }
 
-struct FaintView_Preview: PreviewProvider {
+struct FaintViewPreview: PreviewProvider {
     static var previews: some View {
         FaintView()
     }

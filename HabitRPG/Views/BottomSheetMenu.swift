@@ -55,7 +55,7 @@ extension BottomSheetMenuitem where Title == Text {
 
 struct BottomSheetMenu<Title: View, MenuItems: View>: View {
     var title: Title
-    var iconURL: URL? = nil
+    var iconURL: URL?
     let menuItems: MenuItems
     
     init(_ title: Title, iconURL: String? = nil, @ViewBuilder menuItems: () -> MenuItems) {
@@ -104,28 +104,18 @@ extension BottomSheetMenu where Title == EmptyView {
 
 extension Color {
     static var primaryTextColor: Color {
-        get {
             return Color(ThemeService.shared.theme.primaryTextColor)
-        }
     }
     static var secondaryTextColor: Color {
-        get {
             return Color(ThemeService.shared.theme.secondaryTextColor)
-        }
     }
     static var ternaryTextColor: Color {
-        get {
             return Color(ThemeService.shared.theme.ternaryTextColor)
-        }
     }
     static var tintColor: Color {
-        get {
             return Color(ThemeService.shared.theme.tintColor)
-        }
     }
     static var windowBackgroundColor: Color {
-        get {
             return Color(ThemeService.shared.theme.windowBackgroundColor)
-        }
     }
 }

@@ -662,10 +662,8 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 }
                 return self.stableRepository.getOwnedPets()
             }.flatMap(.latest) { pets -> SignalProducer<ReactiveResults<[OwnedMountProtocol]>, ReactiveSwiftRealmError> in
-                for pet in pets.value {
-                    if pet.key?.contains(self.reward?.key ?? "") == true {
-                        ownedCount += 1
-                    }
+                for pet in pets.value where pet.key?.contains(self.reward?.key ?? "") == true {
+                    ownedCount += 1
                 }
                 return self.stableRepository.getOwnedMounts()
                 }.take(first: 1)
@@ -677,10 +675,8 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     let remaining = 20 - ownedCount
                     onResult(max(0, remaining))
                 }, value: { mounts in
-                    for mount in mounts.value {
-                        if mount.key?.contains(self.reward?.key ?? "") == true {
-                            ownedCount += 1
-                        }
+                    for mount in mounts.value where mount.key?.contains(self.reward?.key ?? "") == true {
+                        ownedCount += 1
                     }
                 })
                 .start()
@@ -699,10 +695,8 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 }
                 return self.stableRepository.getOwnedPets()
             }.flatMap(.latest) { pets -> SignalProducer<ReactiveResults<[OwnedMountProtocol]>, ReactiveSwiftRealmError> in
-                for pet in pets.value {
-                    if pet.key?.contains(self.reward?.key ?? "") == true {
-                        ownedCount += 1
-                    }
+                for pet in pets.value where pet.key?.contains(self.reward?.key ?? "") == true {
+                    ownedCount += 1
                 }
                 return self.stableRepository.getOwnedMounts()
                 }.take(first: 1)
@@ -714,10 +708,8 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     let remaining = (hasNoMounts ? 9 : 18) - ownedCount
                     onResult(max(0, remaining))
                 }, value: { mounts in
-                    for mount in mounts.value {
-                        if mount.key?.contains(self.reward?.key ?? "") == true {
-                            ownedCount += 1
-                        }
+                    for mount in mounts.value where mount.key?.contains(self.reward?.key ?? "") == true {
+                        ownedCount += 1
                     }
                 })
                 .start()

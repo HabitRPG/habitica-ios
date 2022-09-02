@@ -63,33 +63,7 @@ class UserManager: NSObject {
                     return
                 }
                 
-                var eventProperties = [AnyHashable: Any]()
-                eventProperties["eventAction"] = "show cron"
-                eventProperties["eventCategory"] = "behaviour"
-                eventProperties["event"] = "event"
-                eventProperties["task count"] = uncompletedTaskCount
-                HabiticaAnalytics.shared.log("show cron", withEventProperties: eventProperties)
-                
-                if uncompletedTaskCount == 0 {
-                    self?.userRepository.runCron(checklistItems: [], tasks: [])
-                    return
-                }
-                
-                let viewController = YesterdailiesDialogView()
-                viewController.tasks = tasks
-                let alert = HabiticaAlertController()
-                alert.title = L10n.welcomeBack
-                alert.message = L10n.checkinYesterdaysDalies
-                alert.contentView = viewController.view
-                alert.contentViewInsets = .zero
-                alert.dismissOnBackgroundTap = false
-                alert.maxAlertWidth = 400
-                alert.addAction(title: L10n.startMyDay, style: .default, isMainAction: true, closeOnTap: true) { _ in
-                    viewController.runCron()
-                    self?.yesterdailiesDialog = nil
-                }
-                self?.yesterdailiesDialog = viewController
-                alert.show()
+                self?.runCron(tasks: tasks, uncompletedTaskCount: uncompletedTaskCount)
             })
             .on(failed: { error in
                 logger.log(error)
@@ -102,6 +76,36 @@ class UserManager: NSObject {
                 self?.updateReminderNotifications(reminders: reminders, changes: changes)
             }
         }).start())
+    }
+    
+    private func runCron(tasks: [TaskProtocol], uncompletedTaskCount: Int) {
+        var eventProperties = [AnyHashable: Any]()
+        eventProperties["eventAction"] = "show cron"
+        eventProperties["eventCategory"] = "behaviour"
+        eventProperties["event"] = "event"
+        eventProperties["task count"] = uncompletedTaskCount
+        HabiticaAnalytics.shared.log("show cron", withEventProperties: eventProperties)
+        
+        if uncompletedTaskCount == 0 {
+            userRepository.runCron(checklistItems: [], tasks: [])
+            return
+        }
+        
+        let viewController = YesterdailiesDialogView()
+        viewController.tasks = tasks
+        let alert = HabiticaAlertController()
+        alert.title = L10n.welcomeBack
+        alert.message = L10n.checkinYesterdaysDalies
+        alert.contentView = viewController.view
+        alert.contentViewInsets = .zero
+        alert.dismissOnBackgroundTap = false
+        alert.maxAlertWidth = 400
+        alert.addAction(title: L10n.startMyDay, style: .default, isMainAction: true, closeOnTap: true) {[weak self] _ in
+            viewController.runCron()
+            self?.yesterdailiesDialog = nil
+        }
+        yesterdailiesDialog = viewController
+        alert.show()
     }
     
     private func onUserUpdated(user: UserProtocol) {
@@ -204,7 +208,7 @@ class UserManager: NSObject {
         scheduleAllReminderNotifications(reminders: reminders)
     }
     private func scheduleAllReminderNotifications(reminders: [ReminderProtocol]) {
-        let daysPerReminder = max(1, min(6, Int(64.0 / Double(reminders.count))))
+        let daysPerReminder = max(1, min(6, Int(64.0 / max(1, Double(reminders.count)))))
         let notificationCenter = UNUserNotificationCenter.current()
         var scheduledReminderKeys = [String]()
         for reminder in reminders {

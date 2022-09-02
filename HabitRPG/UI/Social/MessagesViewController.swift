@@ -36,7 +36,7 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         view = UIView()
         view.addSubview(tableView)
         view.addSubview(inputBar)
-    }    
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         hidesBottomBarWhenPushed = true

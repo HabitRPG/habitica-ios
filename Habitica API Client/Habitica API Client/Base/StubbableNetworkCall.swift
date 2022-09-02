@@ -16,7 +16,6 @@ open class StubbableNetworkCall: NetworkCall {
         if configuration.shouldStub {
             if let stubData = HabiticaServerConfig.stubs[endpoint] {
                 let stubDesc = stub(condition: stubCondition()) { _ in
-                    // swiftlint:disable:next force_unwrapping
                     return fixture
                     return HTTPStubsResponse(data: stubData.takeNextResponse().data(using: .utf8)!, statusCode: 200, headers: nil)
                 }
@@ -28,7 +27,6 @@ open class StubbableNetworkCall: NetworkCall {
                 }
             } else if endpoint == "content" {
                 let stubDesc = stub(condition: stubCondition()) { _ in
-                    // swiftlint:disable:next force_unwrapping
                     return HTTPStubsResponse(fileAtPath: Bundle.main.path(forResource: "content", ofType: "json")!, statusCode: 200, headers: nil)
                 }
                 self.responseProperty.signal.observeValues({ _ in

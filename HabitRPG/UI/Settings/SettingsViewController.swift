@@ -69,48 +69,7 @@ class SettingsViewController: FormViewController, Themeable {
             self?.setUser(user)
         }).start())
         
-        disposable.inner.add(userRepository.retrieveGroupPlans().observeCompleted {})
-        disposable.inner.add(userRepository.getGroupPlans().on(value: {[weak self] plans in
-            if plans.value.isEmpty {
-                self?.groupPlanSection.hidden = Condition(booleanLiteral: true)
-            } else {
-                self?.groupPlanSection.hidden = Condition(booleanLiteral: false)
-                self?.groupPlanSection.removeAll()
-                if let section = self?.groupPlanSection {
-                    for plan in plans.value {
-                        section <<< SwitchRow { row in
-                            row.title = L10n.Groups.copySharedTasks
-                            row.cellStyle = UITableViewCell.CellStyle.subtitle
-                            row.value = self?.user?.preferences?.tasks?.mirrorGroupTasks?.contains(plan.id ?? "") == true
-                            row.updateCell()
-                        }.cellUpdate({ cell, row in
-                            cell.detailTextLabel?.text = plan.name
-                        }).onChange({ row in
-                            guard let id = plan.id else {
-                                return
-                            }
-                            var currentSetting = self?.user?.preferences?.tasks?.mirrorGroupTasks ?? []
-                            if row.value == true && !currentSetting.contains(id) {
-                                currentSetting.append(id)
-                                self?.userRepository.updateUser(key: "preferences.tasks.mirrorGroupTasks", value: currentSetting)
-                                    .flatMap(.latest, { _ in
-                                        self?.taskRepository.retrieveTasks() ?? Signal.empty
-                                    })
-                                    .observeCompleted {}
-                            } else if row.value == false, let index = currentSetting.firstIndex(of: id) {
-                                currentSetting.remove(at: index)
-                                self?.userRepository.updateUser(key: "preferences.tasks.mirrorGroupTasks", value: currentSetting)
-                                    .flatMap(.latest, { _ in
-                                        self?.taskRepository.retrieveTasks() ?? Signal.empty
-                                    })
-                                    .observeCompleted {}
-                            }
-                        })
-                    }
-                }
-            }
-            self?.groupPlanSection.evaluateHidden()
-        }).start())
+        handleGroupPlans()
         
         LabelRow.defaultCellUpdate = { cell, _ in
             cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
@@ -141,6 +100,51 @@ class SettingsViewController: FormViewController, Themeable {
         }
         
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
+    }
+    
+    private func handleGroupPlans() {
+        disposable.inner.add(userRepository.retrieveGroupPlans().observeCompleted {})
+        disposable.inner.add(userRepository.getGroupPlans().on(value: {[weak self] plans in
+            if plans.value.isEmpty {
+                self?.groupPlanSection.hidden = Condition(booleanLiteral: true)
+            } else {
+                self?.groupPlanSection.hidden = Condition(booleanLiteral: false)
+                self?.groupPlanSection.removeAll()
+                if let section = self?.groupPlanSection {
+                    for plan in plans.value {
+                        section <<< SwitchRow { row in
+                            row.title = L10n.Groups.copySharedTasks
+                            row.cellStyle = UITableViewCell.CellStyle.subtitle
+                            row.value = self?.user?.preferences?.tasks?.mirrorGroupTasks?.contains(plan.id ?? "") == true
+                            row.updateCell()
+                        }.cellUpdate({ cell, _ in
+                            cell.detailTextLabel?.text = plan.name
+                        }).onChange({ row in
+                            guard let id = plan.id else {
+                                return
+                            }
+                            var currentSetting = self?.user?.preferences?.tasks?.mirrorGroupTasks ?? []
+                            if row.value == true && !currentSetting.contains(id) {
+                                currentSetting.append(id)
+                                self?.userRepository.updateUser(key: "preferences.tasks.mirrorGroupTasks", value: currentSetting)
+                                    .flatMap(.latest, { _ in
+                                        self?.taskRepository.retrieveTasks() ?? Signal.empty
+                                    })
+                                    .observeCompleted {}
+                            } else if row.value == false, let index = currentSetting.firstIndex(of: id) {
+                                currentSetting.remove(at: index)
+                                self?.userRepository.updateUser(key: "preferences.tasks.mirrorGroupTasks", value: currentSetting)
+                                    .flatMap(.latest, { _ in
+                                        self?.taskRepository.retrieveTasks() ?? Signal.empty
+                                    })
+                                    .observeCompleted {}
+                            }
+                        })
+                    }
+                }
+            }
+            self?.groupPlanSection.evaluateHidden()
+        }).start())
     }
     
     func applyTheme(theme: Theme) {
@@ -911,7 +915,7 @@ class SettingsViewController: FormViewController, Themeable {
         let currentMonth = Calendar.current.component(.month, from: date)
         let currentDay = Calendar.current.component(.day, from: date)
         var day: Int
-        if (currentHour >= dayStart ?? 0) {
+        if currentHour >= dayStart ?? 0 {
             day = currentDay + 1
         } else {
             day = currentDay

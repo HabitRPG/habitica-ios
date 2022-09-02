@@ -279,10 +279,9 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         }
     }
     
-    @objc
-    func scoreTask(_ taskId: String, direction: String, completed: @escaping (() -> Void)) {
-        if let task = taskRepository.getEditableTask(id: taskId), let scoringDirection = TaskScoringDirection(rawValue: direction) {
-            taskRepository.score(task: task, direction: scoringDirection).observeCompleted {
+    func scoreTask(_ taskId: String, direction: TaskScoringDirection, completed: @escaping (() -> Void)) {
+        if let task = taskRepository.getEditableTask(id: taskId) {
+            taskRepository.score(task: task, direction: direction).observeCompleted {
                 completed()
             }
         } else {
@@ -482,7 +481,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     func displayInAppNotification(taskID: String, text: String) {
         let alertController = HabiticaAlertController(title: text)
         alertController.addAction(title: L10n.complete, style: .default, isMainAction: true, closeOnTap: true, identifier: nil) {[weak self] _ in
-            self?.scoreTask(taskID, direction: "up") {}
+            self?.scoreTask(taskID, direction: .up) {}
         }
         alertController.addCloseAction()
         alertController.enqueue()
