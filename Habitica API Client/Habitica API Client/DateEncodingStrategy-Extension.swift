@@ -16,5 +16,4 @@ extension JSONEncoder {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         dateEncodingStrategy = .formatted(dateFormatter)
     }
-    
 }

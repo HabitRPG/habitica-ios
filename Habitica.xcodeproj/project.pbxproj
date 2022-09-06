@@ -3038,6 +3038,7 @@
 				D9EB4E8918CB4A9400BB2094 /* Resources */,
 				29265896206A4E84006C8B54 /* Embed Frameworks */,
 				7A84E1B0228928AD0081E96F /* Embed App Extensions */,
+				294F5D5F28C75CDE00760F6C /* Upload DSYM */,
 			);
 			buildRules = (
 			);
@@ -3476,6 +3477,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint lint --config .swiftlint.yml\nelif [[ -f \"/opt/homebrew/bin/swiftlint\" ]]; then\n  /opt/homebrew/bin/swiftlint lint --config .swiftlint.yml\nelse\n  echo \"warning: swiftlint is not installed.\"\nfi\n";
+		};
+		294F5D5F28C75CDE00760F6C /* Upload DSYM */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+			);
+			name = "Upload DSYM";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${BUILD_DIR%Build/*}SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run -gsp ${PROJECT_DIR}/HabitRPG/GoogleService-Info.plist -p ios\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

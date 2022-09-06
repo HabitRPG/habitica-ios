@@ -211,8 +211,8 @@ class UserManager: NSObject {
         let daysPerReminder = max(1, min(6, Int(64.0 / max(1, Double(reminders.count)))))
         let notificationCenter = UNUserNotificationCenter.current()
         var scheduledReminderKeys = [String]()
-        for reminder in reminders {
-            scheduledReminderKeys.append(contentsOf: self.scheduleNotifications(reminder: reminder, daysPerReminder: daysPerReminder))
+        for reminder in reminders where reminder.isValid {
+                scheduledReminderKeys.append(contentsOf: self.scheduleNotifications(reminder: reminder, daysPerReminder: daysPerReminder))
         }
         notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
             var toCancel = [String]()

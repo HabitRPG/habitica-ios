@@ -22,6 +22,8 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     private var disposable: CompositeDisposable = CompositeDisposable()
     private var filterButton = UIButton()
     var searchBar = UISearchBar()
+    var searchBarWrapper = UIView()
+    var searchBarCancelButton = UIButton()
 
     @objc var showOnlyUserChallenges = true
 
@@ -39,6 +41,11 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         
         searchBar.placeholder = L10n.search
         searchBar.delegate = self
+        searchBar.showsCancelButton = false
+        searchBarCancelButton.setTitle(L10n.cancel, for: .normal)
+        searchBarCancelButton.addTarget(self, action: #selector(searchBarCancelButtonClicked), for: .touchUpInside)
+        searchBarWrapper.addSubview(searchBar)
+        searchBarWrapper.addSubview(searchBarCancelButton)
                 
         filterButton.setImage(HabiticaIcons.imageOfFilterIcon().withRenderingMode(.alwaysTemplate), for: .normal)
         filterButton.addTarget(self, action: #selector(filterTapped(_:)), for: .touchUpInside)
@@ -80,6 +87,8 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         }
         searchBar.backgroundColor = theme.contentBackgroundColor
         navigationItem.rightBarButtonItem?.tintColor = theme.tintColor
+        searchBarWrapper.backgroundColor = theme.contentBackgroundColor
+        searchBarCancelButton.setTitleColor(theme.tintColor, for: .normal)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -126,12 +135,12 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         dataSource.searchText = nil
         if isAnimated {
             UIView.animate(withDuration: 0.3, animations: {
-                self.searchBar.alpha = 0
+                self.searchBarWrapper.alpha = 0
             }, completion: { _ in
-                self.searchBar.removeFromSuperview()
+                self.searchBarWrapper.removeFromSuperview()
             })
         } else {
-            self.searchBar.removeFromSuperview()
+            self.searchBarWrapper.removeFromSuperview()
         }
         tableView.reloadData()
     }
@@ -173,7 +182,7 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(true, animated: true)
+        searchBar.setShowsCancelButton(false, animated: true)
     }
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -191,7 +200,12 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.text = ""
+        self.searchBar.resignFirstResponder()
+        
+        dataSource.searchText = nil
         removeSearchBar(isAnimated: true)
+        tableView.reloadData()
     }
     
     @objc
@@ -230,12 +244,14 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     }
     
     @IBAction func searchButtonTapped(_ sender: Any) {
-        navigationController?.navigationBar.addSubview(searchBar)
-        searchBar.frame = CGRect(x: 12, y: 0, width: tableView.bounds.size.width - 24, height: navigationController?.navigationBar.frame.size.height ?? 48)
+        navigationController?.navigationBar.addSubview(searchBarWrapper)
+        searchBarWrapper.frame = CGRect(x: 12, y: 0, width: tableView.bounds.size.width - 24, height: navigationController?.navigationBar.frame.size.height ?? 48)
+        searchBarCancelButton.pin.top().end().bottom().sizeToFit(.height)
+        searchBar.pin.start().before(of: searchBarCancelButton).top().bottom()
         searchBar.becomeFirstResponder()
-        searchBar.alpha = 0
+        searchBarWrapper.alpha = 0
         UIView.animate(withDuration: 0.3) {
-            self.searchBar.alpha = 1
+            self.searchBarWrapper.alpha = 1
         }
     }
 }
