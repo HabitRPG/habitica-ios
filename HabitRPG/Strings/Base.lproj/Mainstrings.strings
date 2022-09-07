@@ -754,6 +754,9 @@
 "faint.button" = "Refill Health & Try Again";
 "faint.disclaimer" = "Broken equipment can be repurchased from Rewards";
 "armoire.drop_rate" = "Armoire Drop rates";
+"armoire.equipment" = "You find a piece of rare Equipment in the Armoire!";
+"armoire.food" = "You rummage in the Armoire and find food. What's that doing in here?";
+"armoire.experience" = "You wrestle with the Armoire and gain Experience. Take that!";
 "agree_guidelines_prompt" = "I agree to follow the guidelines";
 "rage_meter" = "Rage Meter";
 "world_boss.world_boss" = "World Boss";

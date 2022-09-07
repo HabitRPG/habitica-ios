@@ -1246,6 +1246,12 @@ public enum L10n {
   public enum Armoire {
     /// Armoire Drop rates
     public static var dropRate: String { return L10n.tr("Mainstrings", "armoire.drop_rate") }
+    /// You find a piece of rare Equipment in the Armoire!
+    public static var equipment: String { return L10n.tr("Mainstrings", "armoire.equipment") }
+    /// You wrestle with the Armoire and gain Experience. Take that!
+    public static var experience: String { return L10n.tr("Mainstrings", "armoire.experience") }
+    /// You rummage in the Armoire and find food. What's that doing in here?
+    public static var food: String { return L10n.tr("Mainstrings", "armoire.food") }
   }
 
   public enum Avatar {

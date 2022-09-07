@@ -23,13 +23,13 @@ struct HabiticaButtonUI<Label: View>: View {
     var body: some View {
         Button(action: onTap, label: {
             label
+                .foregroundColor(color == .white ? Color(UIColor.purple400) : .white)
+                .font(.system(size: 16, weight: .bold))
+                .frame(height: size == .normal ? 60 : 44)
+                .frame(maxWidth: .infinity)
+                .background(color)
+                .cornerRadius(8)
         })
-        .foregroundColor(color == .white ? Color(UIColor.purple400) : .white)
-        .font(.system(size: 16, weight: .bold))
-        .frame(height: size == .normal ? 60 : 44)
-        .frame(maxWidth: .infinity)
-        .background(color)
-        .cornerRadius(8)
     }
 }
 
@@ -57,6 +57,7 @@ struct FaintView: View {
     
     var body: some View {
         VStack(spacing: 0) {
+            Spacer()
             HStack {
                 Image(Asset.faintGhost.name)
                     .offset(x: 0, y: appear ? -10 : 0)
@@ -98,8 +99,8 @@ struct FaintView: View {
                 .font(.system(size: 14))
                 .multilineTextAlignment(.center)
                 .padding(.top, 12)
-        }.padding(.horizontal, 16)
-            .padding(.vertical, 16)
+        }.padding(.horizontal, 24)
+            .padding(.vertical, 24)
     }
 }
 
