@@ -122,6 +122,8 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
             case .error(let error):
                 self.handle(error: error)
                 completion(false)
+            case .deferred(let purchase):
+                return
             }
         }
     }
@@ -136,6 +138,8 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
             case .error(let error):
                 self.handle(error: error)
                 completion(false)
+            case .deferred(let purchase):
+                return
             }
         }
     }

@@ -63,76 +63,84 @@ class PartyQuestView: UIView {
             self?.invalidateIntrinsicContentSize()
         }
         if let boss = quest.boss {
-            isBossQuest = true
-            let bossView = progressBarViews.first ?? QuestProgressBarView()
-            var newProgressBars = [bossView]
-            if progressBarViews.isEmpty {
-                addSubview(bossView)
-                progressBarViews.append(bossView)
-            }
-            bossView.titleTextColor = ThemeService.shared.theme.primaryTextColor
-            bossView.valueTextColor = ThemeService.shared.theme.secondaryTextColor
-            bossView.barBackgroundColor = ThemeService.shared.theme.dimmedColor
-            bossView.title = boss.name
-            bossView.maxValue = Float(boss.health)
-            bossView.barColor = UIColor.red100
-            bossView.currentValue = state.progress?.health ?? 0
-            bossView.bigIcon = nil
-            
-            if let rage = boss.rage, rage.value > 0 {
-                let rageView = progressBarViews.count >= 2 ? progressBarViews[1] : QuestProgressBarView()
-                newProgressBars.append(rageView)
-                if progressBarViews.count < 2 {
-                    addSubview(rageView)
-                    progressBarViews.append(rageView)
-                }
-                
-                rageView.titleTextColor = ThemeService.shared.theme.primaryTextColor
-                rageView.valueTextColor = ThemeService.shared.theme.ternaryTextColor
-                rageView.barBackgroundColor = ThemeService.shared.theme.dimmedColor
-                rageView.title = rage.title
-                rageView.maxValue = Float(rage.value)
-                rageView.barColor = UIColor.orange100
-                rageView.currentValue = state.progress?.rage ?? 0
-                rageView.bigIcon = nil
-            }
-            
-            if progressBarViews.count > newProgressBars.count {
-                progressBarViews.forEach { (view) in
-                    if view != bossView {
-                        view.removeFromSuperview()
-                    }
-                }
-                progressBarViews = newProgressBars
-            }
+            configureBossQuest(boss: boss, state: state)
         } else {
-            progressBarViews.forEach { (view) in
-                view.removeFromSuperview()
-            }
-            progressBarViews.removeAll()
-            isBossQuest = false
-            quest.collect?.forEach { (questCollect) in
-                let collectView = QuestProgressBarView()
-                collectView.titleTextColor = ThemeService.shared.theme.primaryTextColor
-                collectView.valueTextColor = ThemeService.shared.theme.ternaryTextColor
-                collectView.barBackgroundColor = ThemeService.shared.theme.dimmedColor
-                collectView.title = questCollect.text
-                collectView.maxValue = Float(questCollect.count)
-                let value = state.progress?.collect.first(where: { (collect) -> Bool in
-                    return collect.key == questCollect.key
-                })?.count
-                collectView.currentValue = Float(value ?? 0)
-                collectView.barColor = UIColor.green100
-                ImageManager.getImage(name: "quest_\(quest.key ?? "")_\(questCollect.key ?? "")", completion: { (image, _) in
-                    collectView.bigIcon = image
-                })
-                addSubview(collectView)
-                progressBarViews.append(collectView)
-            }
+            configureCollectionQuest(quest: quest, state: state)
         }
         backgroundView.isHidden = false
         setNeedsLayout()
         invalidateIntrinsicContentSize()
+    }
+    
+    private func configureBossQuest(boss: QuestBossProtocol, state: QuestStateProtocol) {
+        isBossQuest = true
+        let bossView = progressBarViews.first ?? QuestProgressBarView()
+        var newProgressBars = [bossView]
+        if progressBarViews.isEmpty {
+            addSubview(bossView)
+            progressBarViews.append(bossView)
+        }
+        bossView.titleTextColor = ThemeService.shared.theme.primaryTextColor
+        bossView.valueTextColor = ThemeService.shared.theme.secondaryTextColor
+        bossView.barBackgroundColor = ThemeService.shared.theme.dimmedColor
+        bossView.title = boss.name
+        bossView.maxValue = Float(boss.health)
+        bossView.barColor = UIColor.red100
+        bossView.currentValue = state.progress?.health ?? 0
+        bossView.bigIcon = nil
+        
+        if let rage = boss.rage, rage.value > 0 {
+            let rageView = progressBarViews.count >= 2 ? progressBarViews[1] : QuestProgressBarView()
+            newProgressBars.append(rageView)
+            if progressBarViews.count < 2 {
+                addSubview(rageView)
+                progressBarViews.append(rageView)
+            }
+            
+            rageView.titleTextColor = ThemeService.shared.theme.primaryTextColor
+            rageView.valueTextColor = ThemeService.shared.theme.ternaryTextColor
+            rageView.barBackgroundColor = ThemeService.shared.theme.dimmedColor
+            rageView.title = rage.title
+            rageView.maxValue = Float(rage.value)
+            rageView.barColor = UIColor.orange100
+            rageView.currentValue = state.progress?.rage ?? 0
+            rageView.bigIcon = nil
+        }
+        
+        if progressBarViews.count > newProgressBars.count {
+            progressBarViews.forEach { (view) in
+                if view != bossView {
+                    view.removeFromSuperview()
+                }
+            }
+            progressBarViews = newProgressBars
+        }
+    }
+    
+    func configureCollectionQuest(quest: QuestProtocol, state: QuestStateProtocol) {
+        progressBarViews.forEach { (view) in
+            view.removeFromSuperview()
+        }
+        progressBarViews.removeAll()
+        isBossQuest = false
+        quest.collect?.forEach { (questCollect) in
+            let collectView = QuestProgressBarView()
+            collectView.titleTextColor = ThemeService.shared.theme.primaryTextColor
+            collectView.valueTextColor = ThemeService.shared.theme.ternaryTextColor
+            collectView.barBackgroundColor = ThemeService.shared.theme.dimmedColor
+            collectView.title = questCollect.text
+            collectView.maxValue = Float(questCollect.count)
+            let value = state.progress?.collect.first(where: { (collect) -> Bool in
+                return collect.key == questCollect.key
+            })?.count
+            collectView.currentValue = Float(value ?? 0)
+            collectView.barColor = UIColor.green100
+            ImageManager.getImage(name: "quest_\(quest.key ?? "")_\(questCollect.key ?? "")", completion: { (image, _) in
+                collectView.bigIcon = image
+            })
+            addSubview(collectView)
+            progressBarViews.append(collectView)
+        }
     }
     
     func setPendingDamage(_ pending: Float) {

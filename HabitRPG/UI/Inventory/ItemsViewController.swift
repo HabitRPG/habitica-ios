@@ -8,6 +8,7 @@
 
 import UIKit
 import Habitica_Models
+import SwiftUI
 
 class ItemsViewController: BaseTableViewController {
     
@@ -125,66 +126,67 @@ class ItemsViewController: BaseTableViewController {
         default:
             break
         }
-        let alertController = UIAlertController(title: "\(item.text ?? "") \(type)", message: nil, preferredStyle: .actionSheet)
-        configureAlertActions(alertController, item: item)
-        alertController.addAction(UIAlertAction.cancelAction())
-        if let sourceView = sourceView {
-            alertController.popoverPresentationController?.sourceView = sourceView
-            alertController.popoverPresentationController?.sourceRect = sourceView.bounds
-        } else {
-            alertController.setSourceInCenter(view)
-        }
-        present(alertController, animated: true, completion: nil)
-    }
-    
-    private func configureAlertActions(_ alertController: UIAlertController, item: ItemProtocol) {
-        if item.itemType == ItemType.eggs {
-            alertController.addAction(UIAlertAction(title: L10n.hatchPotion, style: .default, handler: {[weak self] (_) in
-                self?.dataSource.hatchingItem = item
-                self?.isHatching = true
-            }))
-        } else if item.itemType == ItemType.hatchingPotions {
-            alertController.addAction(UIAlertAction(title: L10n.hatchEgg, style: .default, handler: {[weak self] (_) in
-                self?.dataSource.hatchingItem = item
-                self?.isHatching = true
-            }))
-        } else if item.itemType == ItemType.quests {
-            alertController.addAction(UIAlertAction(title: L10n.showDetails, style: .default, handler: {[weak self] (_) in
-                if let quest = item as? QuestProtocol {
-                    self?.showQuestDialog(quest: quest)
+        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(Text("\(item.text ?? "") \(type)"), iconName: item.imageName) {
+            if item.itemType == ItemType.eggs {
+                BottomSheetMenuitem(title: L10n.hatchPotion) {[weak self] in
+                    self?.dataSource.hatchingItem = item
+                    self?.isHatching = true
                 }
-            }))
-            alertController.addAction(UIAlertAction(title: L10n.inviteParty, style: .default, handler: {[weak self] (_) in
-                if let quest = item as? QuestProtocol {
-                    self?.inventoryRepository.inviteToQuest(quest: quest).observeCompleted {
+            } else if item.itemType == ItemType.hatchingPotions {
+                BottomSheetMenuitem(title: L10n.hatchEgg) {[weak self] in
+                    self?.dataSource.hatchingItem = item
+                    self?.isHatching = true
+                }
+            } else if item.itemType == ItemType.quests {
+                BottomSheetMenuitem(title: L10n.showDetails) {[weak self] in
+                    if let quest = item as? QuestProtocol {
+                        self?.showQuestDialog(quest: quest)
+                    }
+                }
+                BottomSheetMenuitem(title: L10n.inviteParty) {[weak self] in
+                    if let quest = item as? QuestProtocol {
+                        self?.inventoryRepository.inviteToQuest(quest: quest).observeCompleted {
+                            self?.dismissIfNeeded()
+                        }
+                    }
+                }
+            }
+            if item.key != "Saddle" && item.itemType != ItemType.quests && item.itemType != ItemType.special {
+                BottomSheetMenuitem(title: HStack(spacing: 4) {
+                    Text(L10n.sellNoCurrency(Int(item.value)))
+                    Image(uiImage: HabiticaIcons.imageOfGold)
+                }) {[weak self] in
+                    self?.inventoryRepository.sell(item: item).observeCompleted {
                         self?.dismissIfNeeded()
                     }
                 }
-            }))
-        }
-        if item.key != "Saddle" && item.itemType != ItemType.quests && item.itemType != ItemType.special {
-            alertController.addAction(UIAlertAction(title: L10n.sell(Int(item.value)), style: .destructive, handler: {[weak self] (_) in
-                self?.inventoryRepository.sell(item: item).observeCompleted {
-                    self?.dismissIfNeeded()
+            }
+            if item.key == "inventory_present" {
+                BottomSheetMenuitem(title: L10n.open) {[weak self] in
+                    self?.inventoryRepository.openMysteryItem()
+                        .on(value: { item in
+                            if let item = item {
+                                DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                                    self?.showMysteryitemDialog(item: item)
+                                }
+                            }
+                        })
+                        .observeCompleted {
+                        self?.dismissIfNeeded()
+                    }
                 }
-            }))
-        }
-        if item.key == "inventory_present" {
-            alertController.addAction(UIAlertAction(title: L10n.open, style: .default, handler: {[weak self] (_) in
-                self?.inventoryRepository.openMysteryItem().observeCompleted {
-                    self?.dismissIfNeeded()
+            }
+            if item.key != "inventory_present" && item.itemType == ItemType.special {
+                BottomSheetMenuitem(title: L10n.use) {[weak self] in
+                    let navigationController = StoryboardScene.Main.spellUserNavigationController.instantiate()
+                    self?.present(navigationController, animated: true, completion: {
+                        let controller = navigationController.topViewController as? SkillsUserTableViewController
+                        controller?.item = item
+                    })
                 }
-            }))
-        }
-        if item.key != "inventory_present" && item.itemType == ItemType.special {
-            alertController.addAction(UIAlertAction(title: L10n.use, style: .default, handler: {[weak self] _ in
-                let navigationController = StoryboardScene.Main.spellUserNavigationController.instantiate()
-                self?.present(navigationController, animated: true, completion: {
-                    let controller = navigationController.topViewController as? SkillsUserTableViewController
-                    controller?.item = item
-                })
-            }))
-        }
+            }
+        })
+        present(sheet, animated: true)
     }
     
     private func dismissIfNeeded() {
@@ -202,6 +204,18 @@ class ItemsViewController: BaseTableViewController {
             SharingManager.share(identifier: "hatchedPet", items: [
                     L10n.Inventory.hatchedSharing(egg.text ?? "", potion.text ?? "")
                 ], presentingViewController: imageAlert, sourceView: nil)
+        }
+        imageAlert.arrangeMessageLast = true
+        imageAlert.containerViewSpacing = 12
+        imageAlert.setCloseAction(title: L10n.close, handler: {})
+        imageAlert.imageHeight = 99
+        imageAlert.enqueue()
+    }
+    
+    private func showMysteryitemDialog(item: GearProtocol) {
+        let imageAlert = ImageOverlayView(imageName: "shop_\(item.key ?? "")", title: L10n.receivedMysteryItem(item.text ?? ""), message: nil)
+        imageAlert.addAction(title: L10n.equip, isMainAction: true) {[weak self] _ in
+            self?.inventoryRepository.equip(type: "equipped", key: item.key ?? "").observeCompleted {}
         }
         imageAlert.arrangeMessageLast = true
         imageAlert.containerViewSpacing = 12

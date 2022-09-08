@@ -228,6 +228,8 @@ class GiftSubscriptionViewController: BaseTableViewController {
                 logger.log("Purchase Success: \(product.productId)")
             case .error(let error):
                 logger.log("Purchase Failed: \(error)", level: .error)
+            case .deferred:
+                return
             }
             self.tableView.beginUpdates()
             self.tableView.reloadSections(IndexSet(integer: self.tableView.numberOfSections - 1), with: .automatic)

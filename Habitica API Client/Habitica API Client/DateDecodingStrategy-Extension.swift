@@ -10,6 +10,16 @@ import Foundation
 
 extension JSONDecoder {
     
+    private static let formats = [
+        "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+        "yyyy-MM-dd'T'HH:mmzzz",
+        "yyyy-MM-dd",
+        "MM/dd/yyyy",
+        "dd/MM/yyyy",
+        "yyyy-MM-dd'T'HH:mm:ss'Z'",
+        "dd MMM yyyy HH:mm zzz"
+    ]
+    
     func setHabiticaDateDecodingStrategy() {
         dateDecodingStrategy = .custom({ dateDecoder -> Date in
             let container = try dateDecoder.singleValueContainer()
@@ -27,14 +37,11 @@ extension JSONDecoder {
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.timeZone = TimeZone(identifier: "UTC")
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-            if let date = dateFormatter.date(from: dateStr) {
-                return date
-            }
-            
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mmzzz"
-            if let date = dateFormatter.date(from: dateStr) {
-                return date
+            for format in JSONDecoder.formats {
+                dateFormatter.dateFormat = format
+                if let date = dateFormatter.date(from: dateStr) {
+                    return date
+                }
             }
             
             // This is sometimes used for the `nextDue` dates
@@ -45,30 +52,6 @@ extension JSONDecoder {
                 if let date = dateFormatter.date(from: splitString.joined(separator: " ")) {
                     return date
                 }
-            }
-            
-            // Various formats for just the day
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            if let date = dateFormatter.date(from: dateStr) {
-                return date
-            }
-            dateFormatter.dateFormat = "MM/dd/yyyy"
-            if let date = dateFormatter.date(from: dateStr) {
-                return date
-            }
-            dateFormatter.dateFormat = "dd/MM/yyyy"
-            if let date = dateFormatter.date(from: dateStr) {
-                return date
-            }
-            
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-            if let date = dateFormatter.date(from: dateStr) {
-                return date
-            }
-            
-            dateFormatter.dateFormat = "dd MMM yyyy HH:mm zzz"
-            if let date = dateFormatter.date(from: dateStr) {
-                return date
             }
                         
             return Date(timeIntervalSince1970: 0)

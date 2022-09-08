@@ -14,6 +14,7 @@ class RealmLocalAuthentication: Object, LocalAuthenticationProtocol {
     @objc dynamic var email: String?
     @objc dynamic var username: String?
     @objc dynamic var lowerCaseUsername: String?
+    @objc dynamic var hasPassword: Bool = false
     
     @objc dynamic var id: String?
     override static func primaryKey() -> String {
@@ -26,5 +27,6 @@ class RealmLocalAuthentication: Object, LocalAuthenticationProtocol {
         email = protocolObject.email
         username = protocolObject.username
         lowerCaseUsername = protocolObject.lowerCaseUsername
+        hasPassword = protocolObject.hasPassword
     }
 }

@@ -31,7 +31,7 @@ class RealmEmailNotifications: Object, EmailNotificationsProtocol {
     
     convenience init(id: String?, pnProtocol: EmailNotificationsProtocol) {
         self.init()
-        self.id = id
+        self.id = (id ?? "") + "email"
         giftedGems = pnProtocol.giftedGems
         giftedSubscription = pnProtocol.giftedSubscription
         invitedGuild = pnProtocol.invitedGuild

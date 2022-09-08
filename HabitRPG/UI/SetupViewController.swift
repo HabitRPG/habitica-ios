@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MRProgress
 import Habitica_Models
 import ReactiveSwift
 
@@ -189,9 +188,6 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     func completeSetup() {
         UserDefaults.standard.set(false, forKey: "isInSetup")
         UserDefaults.standard.set(0, forKey: "currentSetupStep")
-        let overlayView = MRProgressOverlayView.showOverlayAdded(to: self.view, title: L10n.teleportingHabitica, mode: .indeterminate, animated: true)
-        overlayView?.setTintColor(ThemeService.shared.theme.tintColor)
-        overlayView?.backgroundColor = ThemeService.shared.theme.backgroundTintColor.withAlphaComponent(0.6)
         if let viewController = taskSetupViewController {
             for taskCategory in viewController.selectedCategories {
                 tagsToCreate[taskCategory] = taskCategory.getTag(taskRepository: taskRepository)
@@ -260,7 +256,6 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func showMainView() {
-        MRProgressOverlayView.dismissOverlay(for: view, animated: true)
         performSegue(withIdentifier: "MainSegue", sender: self)
     }
     

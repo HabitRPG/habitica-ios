@@ -91,6 +91,15 @@ public class UserLocalRepository: BaseLocalRepository {
         })
     }
     
+    public func save(userID: String, plans: [GroupPlanProtocol]) {
+        save(objects: plans.map { (plan) in
+            if let realmPlan = plan as? RealmGroupPlan {
+                return realmPlan
+            }
+            return RealmGroupPlan(userID: userID, plan: plan)
+        })
+    }
+    
     public func save(userID: String, notifications: [NotificationProtocol]?) {
         save(objects: notifications?.map { (notification) in
             if let realmNotification = notification as? RealmNotification {
@@ -171,7 +180,6 @@ public class UserLocalRepository: BaseLocalRepository {
     
     private func removeNotification(_ id: String) {
         let realm = getRealm()
-        // swiftlint:disable:next first_where
         if let notification = realm?.objects(RealmNotification.self).filter("id == '\(id)'").first {
             realm?.refresh()
             try? realm?.write {
@@ -311,6 +319,12 @@ public class UserLocalRepository: BaseLocalRepository {
     public func getTags(userID: String) -> SignalProducer<ReactiveResults<[TagProtocol]>, ReactiveSwiftRealmError> {
         return RealmTag.findBy(query: "userID == '\(userID)'").sorted(key: "order").reactive().map({ (value, changeset) -> ReactiveResults<[TagProtocol]> in
             return (value.map({ (tag) -> TagProtocol in return tag }), changeset)
+        })
+    }
+    
+    public func getGroupPlans(userID: String) -> SignalProducer<ReactiveResults<[GroupPlanProtocol]>, ReactiveSwiftRealmError> {
+        return RealmGroupPlan.findBy(query: "userID == '\(userID)'").reactive().map({ (value, changeset) -> ReactiveResults<[GroupPlanProtocol]> in
+            return (value.map({ (plan) -> GroupPlanProtocol in return plan }), changeset)
         })
     }
     

@@ -8,7 +8,6 @@
 
 import UIKit
 import Habitica_Models
-import DateTools
 
 class MyGuildCell: UITableViewCell {
     
@@ -20,13 +19,8 @@ class MyGuildCell: UITableViewCell {
     
     func configure(group: GroupProtocol) {
         titleLabel.text = group.name
-        /*if let lastActivity = (group.chat.first?.timestamp as NSDate?)?.timeAgoSinceNow() {
-            lastActivityLabel.text = L10n.lastActivity(lastActivity)
-            labelSpacing.constant = 4
-        } else {*/
-            lastActivityLabel.text = nil
-            labelSpacing.constant = 0
-        // }
+        lastActivityLabel.text = nil
+        labelSpacing.constant = 0
         var countText = String(describing: group.memberCount).stringWithAbbreviatedNumber(maximumFractionDigits: 1)
         if group.memberCount > 10000 {
             countText = String(describing: group.memberCount).stringWithAbbreviatedNumber(maximumFractionDigits: 0)

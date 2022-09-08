@@ -8,65 +8,120 @@
 
 import UIKit
 import Habitica_Models
+import SwiftUI
 import ReactiveSwift
 
-class FaintViewController: UIViewController {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var dontDespairLabel: UILabel!
-    @IBOutlet weak var goodLuckLabel: UILabel!
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var healthView: LabeledProgressBar!
-    @IBOutlet weak var avatarView: AvatarView!
-    @IBOutlet weak var tryAgainLabel: UILabel!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+struct HabiticaButtonUI<Label: View>: View {
+    enum Size {
+        case compact
+        case normal
+    }
+    let label: Label
+    let color: Color
+    var size: Size = .normal
+    var onTap: (() -> Void)
+    var body: some View {
+        Button(action: onTap, label: {
+            label
+                .foregroundColor(color == .white ? Color(UIColor.purple400) : .white)
+                .font(.system(size: 16, weight: .bold))
+                .frame(height: size == .normal ? 60 : 44)
+                .frame(maxWidth: .infinity)
+                .background(color)
+                .cornerRadius(8)
+        })
+    }
+}
+
+private class ViewModel: ObservableObject {
+    let userRepository = UserRepository()
+    @Published var lossText: String = ""
+    
+    init() {
+        userRepository.getUser().on(value: { user in
+            self.lossText = L10n.Faint.subtitle(String((user.stats?.level ?? 1) - 1), String(Int(user.stats?.gold ?? 0)))
+        }).start()
+    }
+}
+
+struct FaintView: View {
+    var onDismiss: (() -> Void)
+    
+    init() {
+        self.onDismiss = {}
+    }
+    
+    @State var appear = false
+    @State var isReviving = false
+    @ObservedObject private var viewModel = ViewModel()
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            Spacer()
+            HStack {
+                Image(Asset.faintGhost.name)
+                    .offset(x: 0, y: appear ? -10 : 0)
+                    .animation(.easeInOut(duration: 2.5).repeatForever(autoreverses: true))
+                    .onAppear { appear = true }
+            }
+            Text(L10n.Faint.title)
+                .font(.system(size: 30, weight: .bold))
+                .multilineTextAlignment(.center)
+            Text(viewModel.lossText)
+                .foregroundColor(.primaryTextColor)
+                .font(.system(size: 20))
+                .multilineTextAlignment(.center)
+                .padding(.top, 12)
+            Text(L10n.Faint.goodLuckText)
+                .foregroundColor(.primaryTextColor)
+                .font(.system(size: 20))
+                .multilineTextAlignment(.center)
+                .padding(.top, 12)
+            Spacer()
+            HabiticaButtonUI(label: Group {
+                if isReviving {
+                    Text("Reviving...")
+                } else {
+                    Text(L10n.Faint.button)
+                }
+            }, color: Color(UIColor.maroon100)) {
+                if isReviving {
+                    return
+                }
+                isReviving = true
+                viewModel.userRepository.revive()
+                    .observeResult { _ in
+                        onDismiss()
+                    }
+            }
+            Text(L10n.Faint.disclaimer)
+                .foregroundColor(.ternaryTextColor)
+                .font(.system(size: 14))
+                .multilineTextAlignment(.center)
+                .padding(.top, 12)
+        }.padding(.horizontal, 24)
+            .padding(.vertical, 24)
+    }
+}
+
+class FaintViewController: UIHostingController<FaintView> {
     
     private let userRepository = UserRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
-    private var reviveGestureRecognizer: UITapGestureRecognizer?
-    
     init() {
-        super.init(nibName: "FaintViewController", bundle: Bundle.main)
+        super.init(rootView: FaintView())
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder, rootView: FaintView())
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        populateText()
-        
-        reviveGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(revive))
-        
-        if let gestureRecognizer = reviveGestureRecognizer {
-            view.addGestureRecognizer(gestureRecognizer)
+        rootView.onDismiss = {[weak self] in
+            self?.dismiss()
         }
-        
-        healthView.color = UIColor.red100
-        healthView.icon = HabiticaIcons.imageOfHeartLightBg
-        healthView.type = L10n.health
-        healthView.value = 0
-        healthView.maxValue = 50
-        
-        avatarView.showBackground = false
-        avatarView.showMount = false
-        avatarView.showPet = false
-        avatarView.isFainted = true
-        
-        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
-            self?.avatarView.avatar = AvatarViewModel(avatar: user)
-        }).start())
-    }
-    
-    func populateText() {
-        titleLabel.text = L10n.Faint.title
-        descriptionLabel.text = L10n.Faint.description
-        dontDespairLabel.text = L10n.Faint.dontDespair
-        goodLuckLabel.text = L10n.Faint.goodLuck
-        tryAgainLabel.text = L10n.Faint.button
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -82,42 +137,15 @@ class FaintViewController: UIViewController {
         })
     }
     
-    @objc
-    private func revive() {
-        if let gestureRecognizer = reviveGestureRecognizer {
-            view.removeGestureRecognizer(gestureRecognizer)
-        }
-        self.loadingIndicator.startAnimating()
-        UIView.animate(withDuration: 0.3) {
-            self.loadingIndicator.alpha = 1
-            self.tryAgainLabel.alpha = 0
-        }
-        userRepository.revive().observeCompleted {
-            self.dismiss()
-        }
-    }
-    
     func show() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             if var topController = UIApplication.topViewController() {
-                while let presentedViewController = topController.presentedViewController {
-                    topController = presentedViewController
+                if let tabBarController = topController.tabBarController {
+                    topController = tabBarController
                 }
                 self.modalTransitionStyle = .crossDissolve
                 self.modalPresentationStyle = .overCurrentContext
                 topController.present(self, animated: true) {
-                    UIView.animate(withDuration: 1.0, animations: {
-                        self.view.backgroundColor = .white
-                    }, completion: { (_) in
-                        UIView.animate(withDuration: 1.0, animations: {
-                            self.containerView.alpha = 1
-                        })
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-                            UIView.animate(withDuration: 1.0, animations: {
-                                self.tryAgainLabel.alpha = 1
-                            })
-                        })
-                    })
                 }
             }
         }
@@ -129,5 +157,11 @@ class FaintViewController: UIViewController {
         } else {
             return .default
         }
+    }
+}
+
+struct FaintViewPreview: PreviewProvider {
+    static var previews: some View {
+        FaintView()
     }
 }

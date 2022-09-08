@@ -14,13 +14,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
 
     @IBOutlet weak var yesterdailiesHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var yesterdailiesTableView: UITableView!
-    @IBOutlet weak var checkinCountView: UILabel!
-    @IBOutlet weak var nextCheckinCountView: UILabel!
-    @IBOutlet weak var headerWrapperView: UIView!
-    
     @IBOutlet weak var tableViewWrapper: UIView!
-    @IBOutlet weak var checkinYesterdaysDailiesLabel: UILabel!
-    @IBOutlet weak var startDayButton: UIButton!
     
     let taskRepository = TaskRepository()
     private let userRepository = UserRepository()
@@ -37,11 +31,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         yesterdailiesTableView.register(nib, forCellReuseIdentifier: "Cell")
         yesterdailiesTableView.rowHeight = UITableView.automaticDimension
         yesterdailiesTableView.estimatedRowHeight = 60
-
-        updateTitleBanner()
-        
-        startDayButton.setTitle(L10n.startMyDay, for: .normal)
-        
+                
         ThemeService.shared.addThemeable(themable: self)
     }
     
@@ -49,31 +39,17 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         super.viewWillAppear(animated)
         
         view.cornerRadius = 16
-        view.superview?.superview?.cornerRadius = 16
-        
-        startDayButton.layer.shadowRadius = 2
-        startDayButton.layer.shadowOffset = CGSize(width: 1, height: 1)
-        startDayButton.layer.shadowOpacity = 0.5
-        startDayButton.layer.masksToBounds = false
     }
     
     func applyTheme(theme: Theme) {
         view.backgroundColor = theme.contentBackgroundColor
-        startDayButton.setTitleColor(.white, for: .normal)
-        startDayButton.backgroundColor = theme.fixedTintColor
-        tableViewWrapper.backgroundColor = theme.windowBackgroundColor
         yesterdailiesTableView.backgroundColor = theme.windowBackgroundColor
-        checkinCountView.textColor = theme.primaryTextColor
-        nextCheckinCountView.textColor = theme.secondaryTextColor
-        startDayButton.layer.shadowColor = ThemeService.shared.theme.buttonShadowColor.cgColor
         yesterdailiesTableView.reloadData()
     }
 
     override func viewWillLayoutSubviews() {
+        view.frame = CGRect(x: 0, y: view.frame.origin.y, width: view.superview?.frame.width ?? 0, height: 480)
         super.viewWillLayoutSubviews()
-        if let window = view.window {
-            yesterdailiesHeightConstraint.constant = window.frame.size.height - 300
-        }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -114,14 +90,8 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         yesterdailiesTableView.reloadRows(at: [indexPath], with: .fade)
     }
 
-    func updateTitleBanner() {
-        checkinCountView.text = L10n.welcomeBack
-        nextCheckinCountView.text = L10n.checkinYesterdaysDalies
-    }
-
-    @IBAction func allDoneTapped(_ sender: Any) {
+    func runCron() {
         handleDismiss()
-        dismiss(animated: true) {}
     }
     
     func handleDismiss() {

@@ -8,10 +8,8 @@
 
 import UIKit
 import Eureka
-import MRProgress
 import ReactiveSwift
 import Habitica_Models
-import ColorPickerRow
 
 enum SettingsTags {
     static let myAccount = "myAccount"
@@ -38,39 +36,11 @@ enum SettingsTags {
     static let manuallyRestartDay = "manuallyRestartDay"
 }
 
-private let pushNotificationsMapping = [
-    L10n.Settings.PushNotifications.giftedGems: "giftedGems",
-    L10n.Settings.PushNotifications.giftedSubscription: "giftedSubscription",
-    L10n.Settings.PushNotifications.receivedPm: "newPM",
-    L10n.Settings.PushNotifications.wonChallenge: "wonChallenge",
-    L10n.Settings.PushNotifications.invitedQuest: "invitedQuest",
-    L10n.Settings.PushNotifications.invitedParty: "invitedParty",
-    L10n.Settings.PushNotifications.invitedGuid: "invitedGuild",
-    L10n.Settings.PushNotifications.importantAnnouncement: "majorUpdates",
-    L10n.Settings.PushNotifications.questBegun: "questStarted",
-    L10n.Settings.PushNotifications.partyActivity: "partyActivity",
-    L10n.Settings.PushNotifications.mentionParty: "mentionParty",
-    L10n.Settings.PushNotifications.mentionJoinedGuild: "mentionJoinedGuild",
-    L10n.Settings.PushNotifications.mentionUnjoinedGuild: "mentionUnjoinedGuild"
-]
-
-private let emailNotificationsMapping = [
-    L10n.Settings.PushNotifications.giftedGems: "giftedGems",
-    L10n.Settings.PushNotifications.giftedSubscription: "giftedSubscription",
-    L10n.Settings.PushNotifications.receivedPm: "newPM",
-    L10n.Settings.PushNotifications.wonChallenge: "wonChallenge",
-    L10n.Settings.PushNotifications.invitedQuest: "invitedQuest",
-    L10n.Settings.PushNotifications.invitedParty: "invitedParty",
-    L10n.Settings.PushNotifications.invitedGuid: "invitedGuild",
-    L10n.Settings.PushNotifications.importantAnnouncement: "majorUpdates",
-    L10n.Settings.PushNotifications.questBegun: "questStarted",
-    L10n.Settings.EmailNotifications.bannedGroup: "kickedGroup"
-]
-
 // swiftlint:disable:next type_body_length
 class SettingsViewController: FormViewController, Themeable {
     
     private let userRepository = UserRepository()
+    private let taskRepository = TaskRepository()
     private let contentRepository = ContentRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     private let configRepository = ConfigRepository.shared
@@ -80,8 +50,12 @@ class SettingsViewController: FormViewController, Themeable {
     
     private var user: UserProtocol?
     private var isSettingUserData = false
-    
 
+    private let groupPlanSection = Section(L10n.Groups.groupPlanSettings) { section in
+        section.hidden = true
+        section.footer = HeaderFooterView(title: L10n.Groups.copySharedTasksDescription)
+    }
+    
     override func viewDidLoad() {
         tableView = UITableView(frame: view.bounds, style: .insetGrouped)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -96,6 +70,8 @@ class SettingsViewController: FormViewController, Themeable {
             self?.user = user
             self?.setUser(user)
         }).start())
+        
+        handleGroupPlans()
         
         LabelRow.defaultCellUpdate = { cell, _ in
             cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
@@ -128,6 +104,51 @@ class SettingsViewController: FormViewController, Themeable {
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
     }
     
+    private func handleGroupPlans() {
+        disposable.inner.add(userRepository.retrieveGroupPlans().observeCompleted {})
+        disposable.inner.add(userRepository.getGroupPlans().on(value: {[weak self] plans in
+            if plans.value.isEmpty {
+                self?.groupPlanSection.hidden = Condition(booleanLiteral: true)
+            } else {
+                self?.groupPlanSection.hidden = Condition(booleanLiteral: false)
+                self?.groupPlanSection.removeAll()
+                if let section = self?.groupPlanSection {
+                    for plan in plans.value {
+                        section <<< SwitchRow { row in
+                            row.title = L10n.Groups.copySharedTasks
+                            row.cellStyle = UITableViewCell.CellStyle.subtitle
+                            row.value = self?.user?.preferences?.tasks?.mirrorGroupTasks?.contains(plan.id ?? "") == true
+                            row.updateCell()
+                        }.cellUpdate({ cell, _ in
+                            cell.detailTextLabel?.text = plan.name
+                        }).onChange({ row in
+                            guard let id = plan.id else {
+                                return
+                            }
+                            var currentSetting = self?.user?.preferences?.tasks?.mirrorGroupTasks ?? []
+                            if row.value == true && !currentSetting.contains(id) {
+                                currentSetting.append(id)
+                                self?.userRepository.updateUser(key: "preferences.tasks.mirrorGroupTasks", value: currentSetting)
+                                    .flatMap(.latest, { _ in
+                                        self?.taskRepository.retrieveTasks() ?? Signal.empty
+                                    })
+                                    .observeCompleted {}
+                            } else if row.value == false, let index = currentSetting.firstIndex(of: id) {
+                                currentSetting.remove(at: index)
+                                self?.userRepository.updateUser(key: "preferences.tasks.mirrorGroupTasks", value: currentSetting)
+                                    .flatMap(.latest, { _ in
+                                        self?.taskRepository.retrieveTasks() ?? Signal.empty
+                                    })
+                                    .observeCompleted {}
+                            }
+                        })
+                    }
+                }
+            }
+            self?.groupPlanSection.evaluateHidden()
+        }).start())
+    }
+    
     func applyTheme(theme: Theme) {
         overrideUserInterfaceStyle = theme.isDark ? .dark : .light
         tableView.backgroundColor = theme.contentBackgroundColor
@@ -145,37 +166,26 @@ class SettingsViewController: FormViewController, Themeable {
             <<< ButtonRow { row in
                 row.title = L10n.Settings.clearCache
                 row.onCellSelection({[weak self] (_, _) in
-                    let progressView = MRProgressOverlayView.showOverlayAdded(to: self?.view, animated: true)
-                    progressView?.setTintColor(ThemeService.shared.theme.tintColor)
                     self?.contentRepository.clearDatabase()
                     self?.contentRepository.retrieveContent(force: true).withLatest(from: self?.userRepository.retrieveUser() ?? Signal.empty)
                         .observeCompleted {
-                            progressView?.dismiss(true)
                     }
                 })
             }
             <<< ButtonRow { row in
                 row.title = L10n.Settings.reloadContent
                 }.onCellSelection({[weak self] (_, _) in
-                    let progressView = MRProgressOverlayView.showOverlayAdded(to: self?.view, animated: true)
-                    progressView?.tintColor = ThemeService.shared.theme.tintColor
                     self?.contentRepository.retrieveContent(force: true)
                         .flatMap(.latest, { _ in
                             return self?.contentRepository.retrieveWorldState() ?? Signal.empty
                         })
                         .observeCompleted {
-                        progressView?.dismiss(true)
                     }
                 })
         <<< ButtonRow(SettingsTags.manuallyRestartDay) { row in
             row.title = L10n.Settings.manuallyRestartDay
             }.onCellSelection({[weak self] (_, _) in
-                let progressView = MRProgressOverlayView.showOverlayAdded(to: self?.view, animated: true)
-                progressView?.tintColor = ThemeService.shared.theme.tintColor
                 self?.userRepository.runCron(checklistItems: [], tasks: [])
-                DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {
-                    progressView?.dismiss(true)
-                })
             })
             <<< AlertRow<LabeledFormValue<String>>(SettingsTags.server) { row in
                 row.title = L10n.Settings.server
@@ -302,7 +312,14 @@ class SettingsViewController: FormViewController, Themeable {
                     if row.value?.value == self?.user?.preferences?.dayStart {
                         return
                     }
-                    self?.userRepository.updateDayStartTime(row.value?.value ?? 0).observeCompleted {}
+                    
+                    self?.userRepository.updateDayStartTime(row.value?.value ?? 0).observeCompleted {
+                        let nextCron = self?.calculateNextCron(dayStart: self?.user?.preferences?.dayStart)
+                        let dateFormatter = DateFormatter()
+                        let format = "\(self?.user?.preferences?.dateFormat ?? "MM/dd/yyyy") @hh:mm a"
+                        dateFormatter.dateFormat = format
+                        ToastManager.show(text: L10n.Settings.nextCronRun(dateFormatter.string(from: nextCron ?? Date())), color: .green, duration: 4.0)
+                    }
                 })
                 row.onPresent({ (_, to) in
                     to.enableDeselection = false
@@ -350,21 +367,21 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
             }
-            <<< MultipleSelectorRow<String>(SettingsTags.pushNotifications) { row in
+            <<< MultipleSelectorRow<LabeledFormValue<String>>(SettingsTags.pushNotifications) { row in
                 row.title = L10n.Settings.PushNotifications.title
-                row.options = [L10n.Settings.PushNotifications.receivedPm,
-                L10n.Settings.PushNotifications.wonChallenge,
-                L10n.Settings.PushNotifications.giftedGems,
-                L10n.Settings.PushNotifications.giftedSubscription,
-                L10n.Settings.PushNotifications.invitedParty,
-                L10n.Settings.PushNotifications.invitedGuid,
-                L10n.Settings.PushNotifications.invitedQuest,
-                L10n.Settings.PushNotifications.questBegun,
-                L10n.Settings.PushNotifications.importantAnnouncement,
-                L10n.Settings.PushNotifications.partyActivity,
-                L10n.Settings.PushNotifications.mentionParty,
-                L10n.Settings.PushNotifications.mentionJoinedGuild,
-                L10n.Settings.PushNotifications.mentionUnjoinedGuild
+                row.options = [LabeledFormValue(value: "newPM", label: L10n.Settings.PushNotifications.receivedPm),
+                               LabeledFormValue(value: "wonChallenge", label: L10n.Settings.PushNotifications.wonChallenge),
+                               LabeledFormValue(value: "giftedGems", label: L10n.Settings.PushNotifications.giftedGems),
+                               LabeledFormValue(value: "giftedSubscription", label: L10n.Settings.PushNotifications.giftedSubscription),
+                               LabeledFormValue(value: "invitedParty", label: L10n.Settings.PushNotifications.invitedParty),
+                               LabeledFormValue(value: "invitedGuild", label: L10n.Settings.PushNotifications.invitedGuid),
+                               LabeledFormValue(value: "invitedQuest", label: L10n.Settings.PushNotifications.invitedQuest),
+                               LabeledFormValue(value: "questStarted", label: L10n.Settings.PushNotifications.questBegun),
+                               LabeledFormValue(value: "majorUpdates", label: L10n.Settings.PushNotifications.importantAnnouncement),
+                               LabeledFormValue(value: "partyActivity", label: L10n.Settings.PushNotifications.partyActivity),
+                               LabeledFormValue(value: "mentionParty", label: L10n.Settings.PushNotifications.mentionParty),
+                               LabeledFormValue(value: "mentionJoinedGuild", label: L10n.Settings.PushNotifications.mentionJoinedGuild),
+                               LabeledFormValue(value: "mentionUnjoinedGuild", label: L10n.Settings.PushNotifications.mentionUnjoinedGuild)
                 ]
                 row.disabled = Condition.function([SettingsTags.disableAllNotifications], { (form) -> Bool in
                     return (form.rowBy(tag: SettingsTags.disableAllNotifications) as? SwitchRow)?.value == true
@@ -385,8 +402,10 @@ class SettingsViewController: FormViewController, Themeable {
                         return
                     }
                     var updateDict = [String: Encodable]()
-                    for (key, value) in pushNotificationsMapping {
-                        updateDict["preferences.pushNotifications.\(value)"] = row.value?.contains(key)
+                    for option in row.options ?? [] {
+                        updateDict["preferences.pushNotifications.\(option.value)"] = row.value?.contains(where: { selectedValue in
+                            selectedValue.value == option.value
+                        })
                     }
                     self?.userRepository.updateUser(updateDict).observeCompleted {}
                 })
@@ -405,18 +424,19 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
             }
-            <<< MultipleSelectorRow<String>(SettingsTags.emailNotifications) { row in
+            <<< MultipleSelectorRow<LabeledFormValue<String>>(SettingsTags.emailNotifications) { row in
                 row.title = L10n.Settings.EmailNotifications.title
-                row.options = [L10n.Settings.PushNotifications.receivedPm,
-                L10n.Settings.PushNotifications.wonChallenge,
-                L10n.Settings.PushNotifications.giftedGems,
-                L10n.Settings.PushNotifications.giftedSubscription,
-                L10n.Settings.PushNotifications.invitedParty,
-                L10n.Settings.PushNotifications.invitedGuid,
-                L10n.Settings.PushNotifications.invitedQuest,
-                L10n.Settings.PushNotifications.questBegun,
-                L10n.Settings.PushNotifications.importantAnnouncement,
-                L10n.Settings.EmailNotifications.bannedGroup]
+                row.options = [LabeledFormValue(value: "newPM", label: L10n.Settings.PushNotifications.receivedPm),
+                               LabeledFormValue(value: "wonChallenge", label: L10n.Settings.PushNotifications.wonChallenge),
+                               LabeledFormValue(value: "giftedGems", label: L10n.Settings.PushNotifications.giftedGems),
+                               LabeledFormValue(value: "giftedSubscription", label: L10n.Settings.PushNotifications.giftedSubscription),
+                               LabeledFormValue(value: "invitedParty", label: L10n.Settings.PushNotifications.invitedParty),
+                               LabeledFormValue(value: "invitedGuild", label: L10n.Settings.PushNotifications.invitedGuid),
+                               LabeledFormValue(value: "invitedQuest", label: L10n.Settings.PushNotifications.invitedQuest),
+                               LabeledFormValue(value: "questStarted", label: L10n.Settings.PushNotifications.questBegun),
+                               LabeledFormValue(value: "majorUpdates", label: L10n.Settings.PushNotifications.importantAnnouncement),
+                               LabeledFormValue(value: "kickedGroup", label: L10n.Settings.EmailNotifications.bannedGroup)]
+                
                 row.disabled = Condition.function([SettingsTags.disableAllEmails], { (form) -> Bool in
                     return (form.rowBy(tag: SettingsTags.disableAllEmails) as? SwitchRow)?.value == true
                 })
@@ -436,8 +456,10 @@ class SettingsViewController: FormViewController, Themeable {
                         return
                     }
                     var updateDict = [String: Encodable]()
-                    for (key, value) in emailNotificationsMapping {
-                        updateDict["preferences.emailNotifications.\(value)"] = row.value?.contains(key)
+                    for option in row.options ?? [] {
+                        updateDict["preferences.emailNotifications.\(option.value)"] = row.value?.contains(where: { selectedValue in
+                            selectedValue.value == option.value
+                        })
                     }
                     self?.userRepository.updateUser(updateDict).observeCompleted {}
                 })
@@ -456,6 +478,7 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
         }
+        +++ groupPlanSection
         let section = Section(L10n.Settings.preferences)
             <<< PushRow<LabeledFormValue<Int>>(SettingsTags.appLanguage) { row in
                 row.title = L10n.Settings.language
@@ -565,33 +588,6 @@ class SettingsViewController: FormViewController, Themeable {
                 row.onPresent({ (_, to) in
                     to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    }
-                })
-            }
-            <<< InlineColorPickerRow(SettingsTags.customColor) { row in
-                row.title = "Custom Theme Color"
-                let defaults = UserDefaults.standard
-                row.value = UIColor(defaults.string(forKey: "customColor") ?? UIColor.purple200.hexString())
-                row.cellUpdate { cell, _ in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-                }
-                row.hidden = Condition.function([SettingsTags.themeColor], { (form) -> Bool in
-                    return (form.rowBy(tag: SettingsTags.themeColor) as? PushRow<LabeledFormValue<String>>)?.value?.value != "custom"
-                })
-                row.onChange({[weak self] (row) in
-                    if self?.isSettingUserData == true {
-                        return
-                    }
-                    guard let color = row.value else {
-                        return
-                    }
-                    let defaults = UserDefaults.standard
-                    if let newTheme = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") {
-                        defaults.set(color.hexString(), forKey: "customColor")
-                        ThemeService.shared.theme = newTheme.themeClass
                     }
                 })
             }
@@ -706,7 +702,7 @@ class SettingsViewController: FormViewController, Themeable {
         pushNotificationsRow?.value = getPushNotificationSet(forUser: user)
         
         let disableEmailsRow = (form.rowBy(tag: SettingsTags.disableAllEmails) as? SwitchRow)
-        disableEmailsRow?.value = user.preferences?.pushNotifications?.unsubscribeFromAll
+        disableEmailsRow?.value = user.preferences?.emailNotifications?.unsubscribeFromAll
         disableEmailsRow?.updateCell()
         
         let emailNotificationsRow = (form.rowBy(tag: SettingsTags.emailNotifications) as? MultipleSelectorRow<String>)
@@ -887,9 +883,6 @@ class SettingsViewController: FormViewController, Themeable {
     }
     
     private func update(language: AppLanguage) {
-        let progressView = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
-        progressView?.tintColor = ThemeService.shared.theme.tintColor
-
         let defaults = UserDefaults.standard
         defaults.set(language.rawValue, forKey: "ChosenLanguage")
         LanguageHandler.setAppLanguage(language)
@@ -898,7 +891,6 @@ class SettingsViewController: FormViewController, Themeable {
                 return self?.contentRepository.retrieveContent(force: true) ?? Signal.empty
             })
             .observeCompleted {[weak self] in
-                progressView?.dismiss(true)
                 self?.relaunchMainApp()
         }
     }
@@ -924,5 +916,22 @@ class SettingsViewController: FormViewController, Themeable {
         } else {
             return LabeledFormValue(value: adjustment, label: "+\(adjustment) (\(adjustment):00)")
         }
+    }
+    
+    private func calculateNextCron(dayStart: Int?) -> Date {
+        let date = Date()
+        let currentHour = Calendar.current.component(.hour, from: date)
+        let currentYear = Calendar.current.component(.year, from: date)
+        let currentMonth = Calendar.current.component(.month, from: date)
+        let currentDay = Calendar.current.component(.day, from: date)
+        var day: Int
+        if currentHour >= dayStart ?? 0 {
+            day = currentDay + 1
+        } else {
+            day = currentDay
+        }
+        let components = DateComponents(year: currentYear, month: currentMonth, day: day, hour: dayStart ?? 0, minute: 0, second: 0)
+        let calendar = Calendar(identifier: Locale.current.calendar.identifier)
+        return calendar.date(from: components) ?? Date()
     }
 }

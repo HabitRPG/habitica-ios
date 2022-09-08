@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Amplitude_iOS
+import Amplitude
 import Habitica_API_Client
 import Habitica_Models
 import RealmSwift
@@ -85,17 +85,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             RouterHandler.shared.handle(url: context.url)
         }
     }
-    
-    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        if shortcutItem.type == "com.habitrpg.habitica.ios.newhabit" {
-            RouterHandler.shared.handle(urlString: "/user/tasks/habit/add")
-        } else if shortcutItem.type == "com.habitrpg.habitica.ios.newdaily" {
-            RouterHandler.shared.handle(urlString: "/user/tasks/daily/add")
-        } else if shortcutItem.type == "com.habitrpg.habitica.ios.newtodo" {
-            RouterHandler.shared.handle(urlString: "/user/tasks/todo/add")
-        }
-        completionHandler(true)
-    }
 
     @objc
     func handleLaunchArgs() {
@@ -160,7 +149,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         Amplitude.instance().initializeApiKey(Secrets.amplitudeApiKey)
         Amplitude.instance().setUserId(AuthenticationManager.shared.currentUserId)
         let userDefaults = UserDefaults.standard
-        Amplitude.instance()?.setUserProperties(["iosTimezoneOffset": -(NSTimeZone.local.secondsFromGMT() / 60),
+        Amplitude.instance().setUserProperties(["iosTimezoneOffset": -(NSTimeZone.local.secondsFromGMT() / 60),
                                                  "launch_screen": userDefaults.string(forKey: "initialScreenURL") ?? ""
         ])
     }
@@ -290,10 +279,9 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         }
     }
     
-    @objc
-    func scoreTask(_ taskId: String, direction: String, completed: @escaping (() -> Void)) {
-        if let task = taskRepository.getEditableTask(id: taskId), let scoringDirection = TaskScoringDirection(rawValue: direction) {
-            taskRepository.score(task: task, direction: scoringDirection).observeCompleted {
+    func scoreTask(_ taskId: String, direction: TaskScoringDirection, completed: @escaping (() -> Void)) {
+        if let task = taskRepository.getEditableTask(id: taskId) {
+            taskRepository.score(task: task, direction: direction).observeCompleted {
                 completed()
             }
         } else {
@@ -493,7 +481,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     func displayInAppNotification(taskID: String, text: String) {
         let alertController = HabiticaAlertController(title: text)
         alertController.addAction(title: L10n.complete, style: .default, isMainAction: true, closeOnTap: true, identifier: nil) {[weak self] _ in
-            self?.scoreTask(taskID, direction: "up") {}
+            self?.scoreTask(taskID, direction: .up) {}
         }
         alertController.addCloseAction()
         alertController.enqueue()

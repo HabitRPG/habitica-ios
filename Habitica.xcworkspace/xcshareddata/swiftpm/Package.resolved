@@ -1,16 +1,293 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "InputBarAccessoryView",
-        "repositoryURL": "https://github.com/nathantannar4/InputBarAccessoryView.git",
-        "state": {
-          "branch": null,
-          "revision": "6d3d205f29b80f8fa9a9616ad801c488293242bf",
-          "version": "5.4.0"
-        }
+  "pins" : [
+    {
+      "identity" : "abseil-cpp-swiftpm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/firebase/abseil-cpp-SwiftPM.git",
+      "state" : {
+        "revision" : "583de9bd60f66b40e78d08599cc92036c2e7e4e1",
+        "version" : "0.20220203.2"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "amplitude-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/amplitude/Amplitude-iOS",
+      "state" : {
+        "revision" : "f07749967fb8e628f9f2c743fab2ba6600574d85",
+        "version" : "8.12.0"
+      }
+    },
+    {
+      "identity" : "analytics-connector-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/amplitude/analytics-connector-ios.git",
+      "state" : {
+        "revision" : "b44981119e2efc0edd1d2e26831c3c4c0e0264e6",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "appauth-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/openid/AppAuth-iOS.git",
+      "state" : {
+        "revision" : "33660c271c961f8ce1084cc13f2ea8195e864f7d",
+        "version" : "1.5.0"
+      }
+    },
+    {
+      "identity" : "boringssl-swiftpm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/firebase/boringssl-SwiftPM.git",
+      "state" : {
+        "revision" : "dd3eda2b05a3f459fc3073695ad1b28659066eab",
+        "version" : "0.9.1"
+      }
+    },
+    {
+      "identity" : "bottomsheet",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/joomcode/BottomSheet",
+      "state" : {
+        "revision" : "1c02adf0ba7857ab5779545dd3df7e3244523e77",
+        "version" : "2.0.0"
+      }
+    },
+    {
+      "identity" : "cwlcatchexception",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mattgallagher/CwlCatchException.git",
+      "state" : {
+        "revision" : "35f9e770f54ce62dd8526470f14c6e137cef3eea",
+        "version" : "2.1.1"
+      }
+    },
+    {
+      "identity" : "cwlpreconditiontesting",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mattgallagher/CwlPreconditionTesting.git",
+      "state" : {
+        "revision" : "c21f7bab5ca8eee0a9998bbd17ca1d0eb45d4688",
+        "version" : "2.1.0"
+      }
+    },
+    {
+      "identity" : "down",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/johnxnguyen/Down",
+      "state" : {
+        "branch" : "master",
+        "revision" : "e754ab1c80920dd51a8e08290c912ac1c2ac8b58"
+      }
+    },
+    {
+      "identity" : "eureka",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/xmartlabs/Eureka.git",
+      "state" : {
+        "revision" : "a7523afdfe38478c6d5706a8ac01d26590835493",
+        "version" : "5.3.6"
+      }
+    },
+    {
+      "identity" : "facebook-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/facebook/facebook-ios-sdk",
+      "state" : {
+        "revision" : "c3d367656ae8ced1149c2c6a5e6b5dd91ecad63c",
+        "version" : "9.3.0"
+      }
+    },
+    {
+      "identity" : "firebase-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/firebase/firebase-ios-sdk",
+      "state" : {
+        "revision" : "cbaa7ce7063d5ab22414962ec63366ccbba26034",
+        "version" : "9.4.1"
+      }
+    },
+    {
+      "identity" : "googleappmeasurement",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/google/GoogleAppMeasurement.git",
+      "state" : {
+        "revision" : "f54f60d0164d887e1174fa51ab2efe48a8e9d178",
+        "version" : "9.3.0"
+      }
+    },
+    {
+      "identity" : "googledatatransport",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/google/GoogleDataTransport.git",
+      "state" : {
+        "revision" : "5056b15c5acbb90cd214fe4d6138bdf5a740e5a8",
+        "version" : "9.2.0"
+      }
+    },
+    {
+      "identity" : "googleutilities",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/google/GoogleUtilities.git",
+      "state" : {
+        "revision" : "f4abe56ce62a779e64b525eb133c8fc2a84bbc1f",
+        "version" : "7.7.1"
+      }
+    },
+    {
+      "identity" : "grpc-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/grpc/grpc-ios.git",
+      "state" : {
+        "revision" : "8440b914756e0d26d4f4d054a1c1581daedfc5b6",
+        "version" : "1.44.3-grpc"
+      }
+    },
+    {
+      "identity" : "gtm-session-fetcher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/google/gtm-session-fetcher.git",
+      "state" : {
+        "revision" : "d4289da23e978f37c344ea6a386e5546e2466294",
+        "version" : "2.1.0"
+      }
+    },
+    {
+      "identity" : "inputbaraccessoryview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nathantannar4/InputBarAccessoryView.git",
+      "state" : {
+        "revision" : "6d3d205f29b80f8fa9a9616ad801c488293242bf",
+        "version" : "5.4.0"
+      }
+    },
+    {
+      "identity" : "keychainaccess",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kishikawakatsumi/KeychainAccess.git",
+      "state" : {
+        "revision" : "8d33ffd6f74b3bcfc99af759d4204c6395a3f918",
+        "version" : "3.2.1"
+      }
+    },
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
+      "state" : {
+        "revision" : "be1a1acb283a702b99b630f586877ba02234b4cb",
+        "version" : "7.3.2"
+      }
+    },
+    {
+      "identity" : "leveldb",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/firebase/leveldb.git",
+      "state" : {
+        "revision" : "0706abcc6b0bd9cedfbb015ba840e4a780b5159b",
+        "version" : "1.22.2"
+      }
+    },
+    {
+      "identity" : "nanopb",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/firebase/nanopb.git",
+      "state" : {
+        "revision" : "819d0a2173aff699fb8c364b6fb906f7cdb1a692",
+        "version" : "2.30909.0"
+      }
+    },
+    {
+      "identity" : "nimble",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Quick/Nimble",
+      "state" : {
+        "revision" : "1f3bde57bde12f5e7b07909848c071e9b73d6edc",
+        "version" : "10.0.0"
+      }
+    },
+    {
+      "identity" : "pinlayout",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/layoutBox/PinLayout",
+      "state" : {
+        "revision" : "75c88c5c374c7bc78a154ffdf963cd362f38258a",
+        "version" : "1.10.3"
+      }
+    },
+    {
+      "identity" : "promises",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/google/promises.git",
+      "state" : {
+        "revision" : "3e4e743631e86c8c70dbc6efdc7beaa6e90fd3bb",
+        "version" : "2.1.1"
+      }
+    },
+    {
+      "identity" : "reactivecocoa",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactiveCocoa/Reactivecocoa",
+      "state" : {
+        "revision" : "8a5b07b18c6abb8e12fb845bf742675dc4914ed8",
+        "version" : "12.0.0"
+      }
+    },
+    {
+      "identity" : "reactiveswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactiveCocoa/ReactiveSwift",
+      "state" : {
+        "branch" : "master",
+        "revision" : "efb2f0a6f6c8739cce8fb14148a5bd3c83f2f91d"
+      }
+    },
+    {
+      "identity" : "realm-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-core",
+      "state" : {
+        "revision" : "23f60515a00f076a9e3f2dc672fe1ae07601ee90",
+        "version" : "11.4.1"
+      }
+    },
+    {
+      "identity" : "realm-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-swift.git",
+      "state" : {
+        "revision" : "9f43d0da902c55b493d6c8bb63203764caa8acbe",
+        "version" : "10.18.0"
+      }
+    },
+    {
+      "identity" : "swift-protobuf",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-protobuf.git",
+      "state" : {
+        "revision" : "fa0fcd43f272a260e7f734f23e6dc55e16fcae0a",
+        "version" : "1.19.1"
+      }
+    },
+    {
+      "identity" : "swiftystorekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/bizz84/SwiftyStoreKit",
+      "state" : {
+        "revision" : "9ce911639680113dac9b554d6243e406a9758ebe",
+        "version" : "0.16.4"
+      }
+    },
+    {
+      "identity" : "taglistview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ElaWorkshop/TagListView",
+      "state" : {
+        "revision" : "b30b61826736f4d9ec04aef5df891f3914423f16",
+        "version" : "1.4.1"
+      }
+    }
+  ],
+  "version" : 2
 }

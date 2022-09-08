@@ -7,17 +7,16 @@
 //
 
 import Foundation
-import OHHTTPStubs
 import ReactiveSwift
 import Habitica_Models
 
 open class StubbableNetworkCall: NetworkCall {
     
-    open override func fire() {
+    /*open override func fire() {
         if configuration.shouldStub {
             if let stubData = HabiticaServerConfig.stubs[endpoint] {
                 let stubDesc = stub(condition: stubCondition()) { _ in
-                    // swiftlint:disable:next force_unwrapping
+                    return fixture
                     return HTTPStubsResponse(data: stubData.takeNextResponse().data(using: .utf8)!, statusCode: 200, headers: nil)
                 }
                 self.responseProperty.signal.observeValues({ _ in
@@ -28,7 +27,6 @@ open class StubbableNetworkCall: NetworkCall {
                 }
             } else if endpoint == "content" {
                 let stubDesc = stub(condition: stubCondition()) { _ in
-                    // swiftlint:disable:next force_unwrapping
                     return HTTPStubsResponse(fileAtPath: Bundle.main.path(forResource: "content", ofType: "json")!, statusCode: 200, headers: nil)
                 }
                 self.responseProperty.signal.observeValues({ _ in
@@ -38,7 +36,7 @@ open class StubbableNetworkCall: NetworkCall {
         }
         
         super.fire()
-    }
+    }*/
     
     open func stubCondition() -> ((URLRequest) -> Bool) {
         return {[weak self] in

@@ -396,13 +396,13 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func findUsernames(_ username: String, id: String?) -> SignalProducer<[MemberProtocol], ReactiveSwiftRealmError> {
-        let query: String
+        let predicate: NSPredicate
         if let id = id {
-            query = "groupID == '\(id)' && username BEGINSWITH[c] '\(username)'"
+            predicate = NSPredicate(format: "groupID == %@ && username BEGINSWITH[c] %@", id, username)
         } else {
-            query = "username BEGINSWITH[c] '\(username)'"
+            predicate = NSPredicate(format: "username BEGINSWITH[c] %@", username)
         }
-        return RealmChatMessage.findBy(query: query)
+        return RealmChatMessage.findBy(predicate: predicate)
             .distinct(by: ["username"])
             .sorted(key: "timestamp", ascending: false)
             .reactive()

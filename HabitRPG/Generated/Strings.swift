@@ -736,6 +736,10 @@ public enum L10n {
   public static func purchaseForGems(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "purchase_for_gems", p1)
   }
+  /// Purchase for %d
+  public static func purchaseForWithoutCurrency(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "purchase_for_without_currency", p1)
+  }
   /// You can purchase this customization from the Time Travelers shop
   public static var purchaseFromTimeTravelersShop: String { return L10n.tr("Mainstrings", "purchase_from_time_travelers_shop") }
   /// Purchase Gems
@@ -827,6 +831,10 @@ public enum L10n {
   /// Sell for %d Gold
   public static func sell(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "sell", p1)
+  }
+  /// Sell for %d
+  public static func sellNoCurrency(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "sell_no_currency", p1)
   }
   /// Send
   public static var send: String { return L10n.tr("Mainstrings", "send") }
@@ -1235,6 +1243,17 @@ public enum L10n {
     public static var special: String { return L10n.tr("Mainstrings", "achievements.special") }
   }
 
+  public enum Armoire {
+    /// Armoire Drop rates
+    public static var dropRate: String { return L10n.tr("Mainstrings", "armoire.drop_rate") }
+    /// You find a piece of rare Equipment in the Armoire!
+    public static var equipment: String { return L10n.tr("Mainstrings", "armoire.equipment") }
+    /// You wrestle with the Armoire and gain Experience. Take that!
+    public static var experience: String { return L10n.tr("Mainstrings", "armoire.experience") }
+    /// You rummage in the Armoire and find food. What's that doing in here?
+    public static var food: String { return L10n.tr("Mainstrings", "armoire.food") }
+  }
+
   public enum Avatar {
     /// Background
     public static var background: String { return L10n.tr("Mainstrings", "avatar.background") }
@@ -1407,12 +1426,16 @@ public enum L10n {
   public enum Faint {
     /// Refill Health & Try Again
     public static var button: String { return L10n.tr("Mainstrings", "faint.button") }
-    /// You lost a Level, your Gold, and a piece of Equipment, but you can get them all back with hard work!
-    public static var description: String { return L10n.tr("Mainstrings", "faint.description") }
+    /// Broken equipment can be repurchased from Rewards
+    public static var disclaimer: String { return L10n.tr("Mainstrings", "faint.disclaimer") }
     /// Don't despair!
     public static var dontDespair: String { return L10n.tr("Mainstrings", "faint.dont_despair") }
-    /// Good luck--you'll do great.
-    public static var goodLuck: String { return L10n.tr("Mainstrings", "faint.good_luck") }
+    /// But you can get them all back with hard work! Good luck—you’ll do great. 
+    public static var goodLuckText: String { return L10n.tr("Mainstrings", "faint.good_luck_text") }
+    /// You’ll drop to level %s, lose %s Gold, and break a piece of Equipment…
+    public static func subtitle(_ p1: UnsafePointer<CChar>, _ p2: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "faint.subtitle", p1, p2)
+    }
     /// You ran out of Health!
     public static var title: String { return L10n.tr("Mainstrings", "faint.title") }
   }
@@ -1451,8 +1474,18 @@ public enum L10n {
   public enum Groups {
     /// Assign new Leader
     public static var assignNewLeader: String { return L10n.tr("Mainstrings", "groups.assign_new_leader") }
+    /// Copy shared tasks
+    public static var copySharedTasks: String { return L10n.tr("Mainstrings", "groups.copy_shared_tasks") }
+    /// Show assigned and open tasks on your personal task lists
+    public static var copySharedTasksDescription: String { return L10n.tr("Mainstrings", "groups.copy_shared_tasks_description") }
     /// Name may not be empty.
     public static var errorNameRequired: String { return L10n.tr("Mainstrings", "groups.error_name_required") }
+    /// Group
+    public static var group: String { return L10n.tr("Mainstrings", "groups.group") }
+    /// Group Plan Settings
+    public static var groupPlanSettings: String { return L10n.tr("Mainstrings", "groups.group_plan_settings") }
+    /// Groups
+    public static var groups: String { return L10n.tr("Mainstrings", "groups.groups") }
     /// %@ invited you to join Guild: %@
     public static func guildInvitationInvitername(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "groups.guild_invitation_invitername", p1, p2)
@@ -1938,6 +1971,10 @@ public enum L10n {
     public static var newPassword: String { return L10n.tr("Mainstrings", "settings.new_password") }
     /// New Username
     public static var newUsername: String { return L10n.tr("Mainstrings", "settings.new_username") }
+    /// Next day reset: %@
+    public static func nextCronRun(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "settings.next_cron_run", p1)
+    }
     /// No Email
     public static var noEmail: String { return L10n.tr("Mainstrings", "settings.no_email") }
     /// Not Set

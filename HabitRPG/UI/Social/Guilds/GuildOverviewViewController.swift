@@ -16,6 +16,8 @@ class GuildOverviewViewController: BaseTableViewController, UISearchBarDelegate 
     let segmentedWrapper = UIView()
     let segmentedFilterControl = UISegmentedControl(items: [L10n.myGuilds, L10n.discover])
     var searchBar = UISearchBar()
+    var searchBarWrapper = UIView()
+    var searchBarCancelButton = UIButton()
 
     var dataSource = GuildsOverviewDataSource()
     
@@ -41,6 +43,11 @@ class GuildOverviewViewController: BaseTableViewController, UISearchBarDelegate 
         
         searchBar.placeholder = L10n.search
         searchBar.delegate = self
+        searchBar.showsCancelButton = false
+        searchBarCancelButton.setTitle(L10n.cancel, for: .normal)
+        searchBarCancelButton.addTarget(self, action: #selector(searchBarCancelButtonClicked), for: .touchUpInside)
+        searchBarWrapper.addSubview(searchBar)
+        searchBarWrapper.addSubview(searchBarCancelButton)
         
         #if !targetEnvironment(macCatalyst)
         refreshControl = UIRefreshControl()
@@ -77,6 +84,8 @@ class GuildOverviewViewController: BaseTableViewController, UISearchBarDelegate 
         }
         searchBar.backgroundColor = theme.contentBackgroundColor
         tableView.backgroundColor = theme.contentBackgroundColor
+        searchBarWrapper.backgroundColor = theme.contentBackgroundColor
+        searchBarCancelButton.setTitleColor(theme.tintColor, for: .normal)
     }
     
     override func viewWillLayoutSubviews() {
@@ -100,12 +109,12 @@ class GuildOverviewViewController: BaseTableViewController, UISearchBarDelegate 
         dataSource.searchText = nil
         if isAnimated {
             UIView.animate(withDuration: 0.3, animations: {
-                self.searchBar.alpha = 0
-            }) { _ in
-                self.searchBar.removeFromSuperview()
-            }
+                self.searchBarWrapper.alpha = 0
+            }, completion: { _ in
+                self.searchBarWrapper.removeFromSuperview()
+            })
         } else {
-            self.searchBar.removeFromSuperview()
+            self.searchBarWrapper.removeFromSuperview()
         }
         tableView.reloadData()
     }
@@ -124,7 +133,7 @@ class GuildOverviewViewController: BaseTableViewController, UISearchBarDelegate 
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(true, animated: true)
+        searchBar.setShowsCancelButton(false, animated: true)
     }
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -141,7 +150,12 @@ class GuildOverviewViewController: BaseTableViewController, UISearchBarDelegate 
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.text = ""
+        self.searchBar.resignFirstResponder()
+        
+        dataSource.searchText = nil
         removeSearchBar(isAnimated: true)
+        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -165,12 +179,14 @@ class GuildOverviewViewController: BaseTableViewController, UISearchBarDelegate 
     }
     
     @IBAction func searchButtonTapped(_ sender: Any) {
-        navigationController?.navigationBar.addSubview(searchBar)
-        searchBar.frame = CGRect(x: 12, y: 0, width: tableView.bounds.size.width - 24, height: navigationController?.navigationBar.frame.size.height ?? 48)
+        navigationController?.navigationBar.addSubview(searchBarWrapper)
+        searchBarWrapper.frame = CGRect(x: 12, y: 0, width: tableView.bounds.size.width - 24, height: navigationController?.navigationBar.frame.size.height ?? 48)
+        searchBarCancelButton.pin.top().end().bottom().sizeToFit(.height)
+        searchBar.pin.start().before(of: searchBarCancelButton).top().bottom()
         searchBar.becomeFirstResponder()
-        searchBar.alpha = 0
+        searchBarWrapper.alpha = 0
         UIView.animate(withDuration: 0.3) {
-            self.searchBar.alpha = 1
+            self.searchBarWrapper.alpha = 1
         }
     }
 }

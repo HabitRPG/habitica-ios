@@ -130,26 +130,25 @@ class PartyDetailViewController: GroupDetailViewController {
             self?.perform(segue: StoryboardSegue.Social.userProfileSegue)
             
         }, onMoreTap: {[weak self] member in
-            let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            actionSheet.addAction(UIAlertAction(title: L10n.writeMessage, style: .default, handler: { _ in
-                let viewController = StoryboardScene.Social.inboxChatNavigationController.instantiate()
-                (viewController.topViewController as? InboxChatViewController)?.userID = member.id
-                (viewController.topViewController as? InboxChatViewController)?.username = member.username
-                self?.present(viewController, animated: true, completion: nil)
-            }))
-            if self?.groupProperty.value?.leaderID == self?.userRepository.currentUserId && self?.groupProperty.value?.leaderID != member.id {
-                actionSheet.addAction(UIAlertAction(title: L10n.transferOwnership, style: .default, handler: { _ in
-                    self?.showTransferOwnershipDialog(memberID: member.id ?? "", displayName: member.profile?.name ?? "")
-                }))
-                actionSheet.addAction(UIAlertAction(title: L10n.Party.removeFromParty, style: .default, handler: { _ in
-                    self?.showRemoveMemberDialog(memberID: member.id ?? "", displayName: member.profile?.name ?? "")
-                }))
-            }
-            actionSheet.addAction(UIAlertAction.cancelAction())
-            actionSheet.popoverPresentationController?.sourceView = self?.view
-            actionSheet.popoverPresentationController?.sourceRect = self?.view?.bounds ?? CGRect.zero
+            let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(Text(member.profile?.name ?? ""), menuItems: {
+                BottomSheetMenuitem(title: L10n.writeMessage) {
+                    let viewController = StoryboardScene.Social.inboxChatNavigationController.instantiate()
+                    (viewController.topViewController as? InboxChatViewController)?.userID = member.id
+                    (viewController.topViewController as? InboxChatViewController)?.username = member.username
+                    self?.present(viewController, animated: true, completion: nil)
+                }
+                if self?.groupProperty.value?.leaderID == self?.userRepository.currentUserId && self?.groupProperty.value?.leaderID != member.id {
+                    BottomSheetMenuitem(title: L10n.transferOwnership) {
+                        self?.showTransferOwnershipDialog(memberID: member.id ?? "", displayName: member.profile?.name ?? "")
 
-            self?.present(actionSheet, animated: true, completion: nil)
+                    }
+                    BottomSheetMenuitem(title: L10n.Party.removeFromParty) {
+                        self?.showRemoveMemberDialog(memberID: member.id ?? "", displayName: member.profile?.name ?? "")
+
+                    }
+                }
+            }))
+            self?.present(sheet, animated: true)
         })
         let controller = UIHostingController(rootView: memberListView)
         addChild(controller)

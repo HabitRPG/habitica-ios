@@ -128,7 +128,6 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
             stackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(knownIssueTapped)))
             knownIssuesStackView.addArrangedSubview(stackView)
         }
-        knownIssuesStackView.arrangedSubviews.last?.removeFromSuperview()
     }
     
     private func sendEmail(subject: String) {

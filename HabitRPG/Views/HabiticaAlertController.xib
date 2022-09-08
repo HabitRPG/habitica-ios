@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,6 +28,7 @@
                 <outlet property="titleLabelBottomMargin" destination="YJA-Rv-kd6" id="2sv-ym-Ja4"/>
                 <outlet property="titleLabelTopMargin" destination="4Bo-fP-jHi" id="5R2-Bw-gOQ"/>
                 <outlet property="view" destination="bkQ-it-OYY" id="YXh-Fa-C34"/>
+                <outlet property="widthConstraint" destination="gvr-HL-F82" id="OgY-aE-khQ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -36,19 +37,19 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="hIR-Qr-gyg">
-                    <rect key="frame" x="47" y="184" width="320" height="368"/>
+                    <rect key="frame" x="57" y="184" width="300" height="368"/>
                     <subviews>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cq5-lH-VwH">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="368"/>
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="368"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TfL-K4-Ks4">
-                                    <rect key="frame" x="0.0" y="30" width="320" height="338"/>
+                                    <rect key="frame" x="0.0" y="30" width="300" height="338"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gtQ-qL-FhW">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="36"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="36"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iMp-sa-Osx">
-                                                    <rect key="frame" x="37" y="12" width="246" height="24"/>
+                                                    <rect key="frame" x="30" y="12" width="240" height="24"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="246" id="SfM-zI-a3W"/>
@@ -69,10 +70,10 @@
                                             </constraints>
                                         </view>
                                         <scrollView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RtW-7X-FcT">
-                                            <rect key="frame" x="0.0" y="36" width="320" height="200"/>
+                                            <rect key="frame" x="0.0" y="36" width="300" height="200"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Rl-Cu-kD9">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="300" id="QJ9-ne-weE"/>
@@ -88,10 +89,10 @@
                                             </constraints>
                                         </scrollView>
                                         <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="NTK-Ff-M86">
-                                            <rect key="frame" x="0.0" y="236" width="320" height="102"/>
+                                            <rect key="frame" x="0.0" y="236" width="300" height="102"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="q8R-qq-vxV">
-                                                    <rect key="frame" x="40" y="18" width="240" height="56"/>
+                                                    <rect key="frame" x="40" y="18" width="220" height="56"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="2Ez-bt-cFW"/>
                                                     </constraints>
@@ -129,7 +130,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TbI-aA-bqR">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="5sM-4R-vXw"/>
@@ -148,8 +149,7 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="height" priority="500" constant="50" id="FF9-h9-hV6"/>
-                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="340" id="Uci-qm-Xpi"/>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="gvr-HL-F82"/>
+                        <constraint firstAttribute="width" constant="300" id="gvr-HL-F82"/>
                     </constraints>
                 </stackView>
             </subviews>

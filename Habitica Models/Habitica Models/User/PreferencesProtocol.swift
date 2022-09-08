@@ -27,4 +27,6 @@ public protocol PreferencesProtocol: BaseModelProtocol {
     var emailNotifications: EmailNotificationsProtocol? { get set }
     var hair: HairProtocol? { get set }
     var searchableUsername: Bool { get set }
+    var dateFormat: String? { get set }
+    var tasks: TaskPreferencesProtocol? { get set }
 }

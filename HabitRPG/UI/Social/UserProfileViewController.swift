@@ -106,6 +106,8 @@ class UserProfileViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
+        case 0:
+            return member?.contributor?.text
         case 1:
             return L10n.Equipment.battleGear
         case 2:
@@ -169,7 +171,7 @@ class UserProfileViewController: BaseTableViewController {
                 configureUserStatsCell(cell)
             case 1:
                 cell.textLabel?.text = L10n.username
-                cell.detailTextLabel?.text = member?.authentication?.local?.username
+                cell.detailTextLabel?.text = member?.authentication?.local?.username ?? username
             case 2:
                 cell.textLabel?.text = L10n.userID
                 cell.detailTextLabel?.text = member?.id
@@ -350,6 +352,7 @@ class UserProfileViewController: BaseTableViewController {
             detailTextLabel?.textColor = ThemeService.shared.theme.primaryTextColor
             attributeLabel?.text = gear?.statsText
         } else {
+            imageView?.setImagewith(name: "")
             detailTextLabel?.text = L10n.Equipment.nothingEquipped
             detailTextLabel?.textColor = ThemeService.shared.theme.dimmedTextColor
             attributeLabel?.text = nil
@@ -456,30 +459,28 @@ class UserProfileViewController: BaseTableViewController {
     @IBAction func showOverflowMenu(_ sender: Any) {
         userRepository.getUser().take(first: 1).on(
             value: {[weak self] user in
-                let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-                if user.id != self?.userID {
-                    if user.inbox?.blocks.contains(self?.userID ?? "") == true {
-                        controller.addAction(UIAlertAction(title: L10n.unblockUser, style: .destructive, handler: {[weak self] _ in
-                            self?.socialRepository.blockMember(userID: self?.userID ?? self?.username ?? "").observeCompleted {
-                                ToastManager.show(text: L10n.userWasUnblocked(self?.username ?? ""), color: .red)
+                let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(menuItems: {
+                        if user.id != self?.userID {
+                            if user.inbox?.blocks.contains(self?.userID ?? "") == true {
+                                BottomSheetMenuitem(title: L10n.unblockUser, style: .destructive) {
+                                    self?.socialRepository.blockMember(userID: self?.userID ?? self?.username ?? "").observeCompleted {
+                                        ToastManager.show(text: L10n.userWasUnblocked(self?.username ?? ""), color: .red)
+                                    }
+                                }
+                            } else {
+                                BottomSheetMenuitem(title: L10n.block, style: .destructive) {
+                                    self?.showBlockDialog()
+                                }
                             }
-                        }))
-                    } else {
-                        controller.addAction(UIAlertAction(title: L10n.blockUser, style: .destructive, handler: {[weak self] _ in
-                            self?.showBlockDialog()
-                        }))
+                        }
+                    BottomSheetMenuitem(title: L10n.giftGems) {[weak self] in
+                        self?.perform(segue: StoryboardSegue.Social.giftGemsSegue)
                     }
-                }
-                controller.addAction(UIAlertAction(title: L10n.giftGems, style: .default, handler: {[weak self] _ in
-                    self?.perform(segue: StoryboardSegue.Social.giftGemsSegue)
+                    BottomSheetMenuitem(title: L10n.giftSubscription) {[weak self] in
+                        self?.perform(segue: StoryboardSegue.Social.giftSubscriptionSegue)
+                    }
                 }))
-                controller.addAction(UIAlertAction(title: L10n.giftSubscription, style: .default, handler: {[weak self] _ in
-                    self?.perform(segue: StoryboardSegue.Social.giftSubscriptionSegue)
-                }))
-                controller.addAction(UIAlertAction(title: L10n.cancel, style: .cancel, handler: nil))
-                controller.popoverPresentationController?.barButtonItem = self?.moreButton
-                
-                self?.present(controller, animated: true, completion: nil)
+                self?.present(sheet, animated: true)
         }
         ).start()
     }

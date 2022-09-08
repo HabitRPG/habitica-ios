@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PopupDialog
 import Habitica_Models
 import ReactiveSwift
 
@@ -344,8 +343,15 @@ class AttributePointsViewController: BaseUIViewController {
     @objc
     func openBulkAssignView() {
         let viewController = BulkStatsAllocationViewController(nibName: "BulkStatsAllocationView", bundle: Bundle.main)
-        let popup = PopupDialog(viewController: viewController)
-    
-        present(popup, animated: true, completion: nil)
+        let alert = HabiticaAlertController()
+        alert.contentView = viewController.view
+        alert.contentViewInsets = .zero
+        alert.addCancelAction()
+        alert.addAction(title: L10n.save, isMainAction: true) { _ in
+            viewController.save()
+        }
+        alert.buttonAxis = .horizontal
+        alert.containerViewSpacing = 0
+        alert.show()
     }
 }

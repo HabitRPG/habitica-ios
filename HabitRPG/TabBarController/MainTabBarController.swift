@@ -249,8 +249,6 @@ class MainTabBar: UITabBar, Themeable {
         backgroundImage = UIImage.from(color: theme.contentBackgroundColor)
         shadowImage = UIImage.from(color: theme.contentBackgroundColor)
         barStyle = .black
-        
-        unselectedItemTintColor = theme.dimmedTextColor
     }
     
     override func layoutSubviews() {

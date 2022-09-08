@@ -28,6 +28,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var buttonUpperSpacing: NSLayoutConstraint!
     @IBOutlet weak var buttonLowerSpacing: NSLayoutConstraint!
+    @IBOutlet weak var widthConstraint: NSLayoutConstraint!
     
     private var buttonHandlers = [Int: ((UIButton) -> Swift.Void)]()
     private var buttons = [UIButton]()
@@ -35,6 +36,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     
     var buttonAxis: NSLayoutConstraint.Axis?
     var dismissOnBackgroundTap = true
+    var maxAlertWidth: CGFloat = 340
     var onKeyboardChange: ((Bool) -> Void)?
 
     var contentView: UIView? {
@@ -164,6 +166,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         configureMessageView()
         configureCloseButton()
         configureButtons()
+        scrollView.alwaysBounceVertical = false
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -175,10 +178,12 @@ class HabiticaAlertController: UIViewController, Themeable {
     }
     
     override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         var maximumSize = view.frame.size
         let guide = view.safeAreaLayoutGuide
         maximumSize = guide.layoutFrame.size
-        maximumSize.width = min(300, maximumSize.width - 24)
+        maximumSize.width = min(maxAlertWidth, maximumSize.width - 32)
+        widthConstraint.constant = maximumSize.width
         maximumSize.width -= contentViewInsets.left + contentViewInsets.right
         maximumSize.height -= contentViewInsets.top + contentViewInsets.bottom
         let maximumHeight = maximumSize.height - (32 + 140) - buttonUpperSpacing.constant - buttonLowerSpacing.constant - KeyboardManager.height - CGFloat(buttons.count * 40)
@@ -211,7 +216,6 @@ class HabiticaAlertController: UIViewController, Themeable {
         }
         containerViewHeightConstraint.constant = height
         contentView?.updateConstraints()
-        super.viewWillLayoutSubviews()
     }
     
     @objc

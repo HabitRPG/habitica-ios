@@ -36,9 +36,6 @@ class BulkStatsAllocationViewController: UIViewController, Themeable {
     @IBOutlet weak var intelligenceSliderView: StatsSliderView!
     @IBOutlet weak var constitutionSliderView: StatsSliderView!
     @IBOutlet weak var perceptionSliderView: StatsSliderView!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var buttonSeparator: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,14 +60,6 @@ class BulkStatsAllocationViewController: UIViewController, Themeable {
         view.backgroundColor = theme.contentBackgroundColor
         headerWrapper.backgroundColor = theme.windowBackgroundColor
         allocatedLabel.textColor = theme.secondaryTextColor
-        cancelButton.tintColor = theme.tintColor
-        buttonSeparator.backgroundColor = theme.separatorColor
-        
-        saveButton.layer.shadowColor = ThemeService.shared.theme.buttonShadowColor.cgColor
-        saveButton.layer.shadowRadius = 2
-        saveButton.layer.shadowOffset = CGSize(width: 1, height: 1)
-        saveButton.layer.shadowOpacity = 0.5
-        saveButton.layer.masksToBounds = false
         
         updateUI()
     }
@@ -144,23 +133,9 @@ class BulkStatsAllocationViewController: UIViewController, Themeable {
     
     private func updateAllocatedCountLabel() {
         allocatedCountLabel.text = "\(pointsAllocated)/\(pointsToAllocate)"
-        if pointsAllocated > 0 {
-            allocatedCountLabel.textColor = ThemeService.shared.theme.tintColor
-            saveButton.backgroundColor = ThemeService.shared.theme.tintColor
-            saveButton.setTitleColor(.white, for: .normal)
-        } else {
-            allocatedCountLabel.textColor = ThemeService.shared.theme.secondaryTextColor
-            saveButton.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-            saveButton.setTitleColor(ThemeService.shared.theme.quadTextColor, for: .normal)
-        }
     }
 
-    @IBAction func cancelButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func saveButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    func save() {
         userRepository.bulkAllocate(strength: strengthSliderView.value,
                                     intelligence: intelligenceSliderView.value,
                                     constitution: constitutionSliderView.value,

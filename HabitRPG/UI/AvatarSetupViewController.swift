@@ -197,11 +197,11 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController, The
             return ""
         }
         if weighFirstOption {
-            if Int(arc4random_uniform(10)) > 3 {
+            if Int.random(in: 0..<10) > 3 {
                 return items[0].key
             }
         }
-        return items[Int(arc4random_uniform(UInt32(items.count)))].key
+        return items[Int.random(in: 0..<items.count)].key
     }
 
     private func setSubCategories(_ subcategories: [AvatarCustomizationSubcategory]) {
@@ -430,7 +430,9 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController, The
             case .glasses:
                 return customization.key == user.items?.gear?.equipped?.eyewear ?? ""
             case .wheelchair:
-                return "chair_"+customization.key == user.preferences?.chair ?? "" || customization.key == user.preferences?.chair ?? "" || (customization.key == "none" && user.preferences?.chair == nil)
+                return "chair_"+customization.key == user.preferences?.chair ?? ""
+                || customization.key == user.preferences?.chair ?? ""
+                || (customization.key == "none" && user.preferences?.chair == nil)
             default:
                 return false
             }

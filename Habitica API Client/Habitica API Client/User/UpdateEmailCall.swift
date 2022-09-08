@@ -12,7 +12,11 @@ import ReactiveSwift
 
 public class UpdateEmailCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
     public init(newEmail: String, password: String) {
-        let json = try? JSONSerialization.data(withJSONObject: ["newEmail": newEmail, "password": password], options: .prettyPrinted)
+        var data = ["newEmail": newEmail]
+        if !password.isEmpty {
+            data["password"] = password
+        }
+        let json = try? JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
         super.init(httpMethod: .PUT, endpoint: "user/auth/update-email", postData: json)
     }
 }

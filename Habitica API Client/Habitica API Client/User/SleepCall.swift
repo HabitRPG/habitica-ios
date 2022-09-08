@@ -12,6 +12,6 @@ import ReactiveSwift
 
 public class SleepCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
     public init() {
-        super.init(httpMethod: .POST, endpoint: "user/sleep", postData: nil)
+        super.init(httpMethod: .POST, endpoint: "user/sleep")
     }
 }

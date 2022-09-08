@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import Habitica_Models
 
 extension HabiticaAppDelegate: UNUserNotificationCenterDelegate {
     
@@ -63,7 +64,10 @@ extension HabiticaAppDelegate: UNUserNotificationCenterDelegate {
                 completionHandler()
             }
         case "completeAction":
-            return
+            let taskID = response.notification.request.content.userInfo["taskID"] as? String
+            scoreTask(taskID ?? "", direction: .up) {
+                completionHandler()
+            }
         default:
             handlePushnotification(identifier: response.notification.request.identifier, userInfo: response.notification.request.content.userInfo)
         }
@@ -92,7 +96,9 @@ extension HabiticaAppDelegate: UNUserNotificationCenterDelegate {
         }
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound, .badge])
     }
     

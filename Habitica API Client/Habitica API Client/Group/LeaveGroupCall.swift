@@ -16,7 +16,7 @@ public class LeaveGroupCall: ResponseObjectCall<GroupProtocol, APIGroup> {
         if leaveChallenges {
             data["keepChallenges"] = "leave-challenges"
         } else {
-            data["keepChallenges"] = "remain-in-challenge"
+            data["keepChallenges"] = "remain-in-challenges"
         }
         let json = try? JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
         super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/leave", postData: json)

@@ -117,7 +117,7 @@ public extension ReactiveRealmOperable where Self: Object {
         }
     }
     
-    func update(realm: Realm? = nil, thread: ReactiveSwiftRealmThread = .main, operation:@escaping UpdateClosure<Self>) -> SignalProducer<(), ReactiveSwiftRealmError> {
+    func update(realm: Realm? = nil, thread: ReactiveSwiftRealmThread = .main, operation: @escaping UpdateClosure<Self>) -> SignalProducer<(), ReactiveSwiftRealmError> {
         return SignalProducer {[weak self] observer, _ in
             guard let thisSelf = self else {
                 return
@@ -228,7 +228,7 @@ public extension Array where Element: Object {
         }
     }
     
-    func update(realm: Realm? = nil, thread: ReactiveSwiftRealmThread = .main, operation:@escaping UpdateClosure<Array.Element>) -> SignalProducer<(), ReactiveSwiftRealmError> {
+    func update(realm: Realm? = nil, thread: ReactiveSwiftRealmThread = .main, operation: @escaping UpdateClosure<Array.Element>) -> SignalProducer<(), ReactiveSwiftRealmError> {
         return SignalProducer { observer, _ in
             if !Thread.isMainThread {
                 observer.send(error: .wrongThread)

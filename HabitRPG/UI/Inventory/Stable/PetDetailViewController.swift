@@ -8,6 +8,7 @@
 
 import UIKit
 import Habitica_Models
+import SwiftUI
 
 class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
     private let userRepository = UserRepository()
@@ -46,30 +47,20 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
     }
     
     private func showActionSheet(forStableItem stableItem: PetStableItem, withSource sourceView: UIView?) {
-        let actionSheet = UIAlertController(title: stableItem.pet?.text, message: nil, preferredStyle: .actionSheet)
-        if stableItem.trained > 0 && stableItem.pet?.type != "special" && stableItem.canRaise {
-            actionSheet.addAction(UIAlertAction(title: L10n.Stable.feed, style: .default, handler: {[weak self] (_) in
-                self?.selectedPet = stableItem.pet
-                self?.perform(segue: StoryboardSegue.Main.feedSegue)
-            }))
-        }
-        if stableItem.trained > 0 {
-            var equipString = L10n.equip
-            if user?.items?.currentPet == stableItem.pet?.key {
-                equipString = L10n.unequip
+        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(Text(stableItem.pet?.text ?? ""), iconName: "stable_Pet-\(stableItem.pet?.key ?? "")", menuItems: {
+            if stableItem.trained > 0 && stableItem.pet?.type != "special" && stableItem.canRaise {
+                BottomSheetMenuitem(title: L10n.Stable.feed) {[weak self] in
+                    self?.selectedPet = stableItem.pet
+                    self?.perform(segue: StoryboardSegue.Main.feedSegue)
+                }
             }
-            actionSheet.addAction(UIAlertAction(title: equipString, style: .default, handler: {[weak self] (_) in
-                self?.inventoryRepository.equip(type: "pet", key: stableItem.pet?.key ?? "").observeCompleted {}
-            }))
-        }
-        actionSheet.addAction(UIAlertAction.cancelAction())
-        if let sourceView = sourceView {
-            actionSheet.popoverPresentationController?.sourceView = sourceView
-            actionSheet.popoverPresentationController?.sourceRect = sourceView.bounds
-        } else {
-            actionSheet.setSourceInCenter(view)
-        }
-        present(actionSheet, animated: true, completion: nil)
+            if stableItem.trained > 0 {
+                BottomSheetMenuitem(title: L10n.equip) {[weak self] in
+                    self?.inventoryRepository.equip(type: "pet", key: stableItem.pet?.key ?? "").observeCompleted {}
+                }
+            }
+        }))
+        present(sheet, animated: true)
     }
     
     private func showHatchingDialog(forStableItem item: PetStableItem) {

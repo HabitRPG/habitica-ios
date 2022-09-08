@@ -153,7 +153,7 @@ struct FormRow<TitleView: View, LabelView: View>: View {
     }
 }
 
-struct FormSheetSelector<TYPE: Equatable>: View {
+struct FormSheetSelector<TYPE: Equatable & Hashable>: View {
     let title: Text
     @Binding var value: TYPE
     let options: [LabeledFormValue<TYPE>]
@@ -503,6 +503,7 @@ struct ChecklistDropDelegate: DropDelegate {
 struct TaskFormReminderItemView: View {
     var item: ReminderProtocol
     var isExpanded: Bool
+    var showDate: Bool
     var onDelete: () -> Void
     
     @State private var time: Date
@@ -516,16 +517,17 @@ struct TaskFormReminderItemView: View {
     @ViewBuilder
     private func buildPicker(value: Binding<Date>) -> some View {
         DatePicker(selection: value,
-                   displayedComponents: [.hourAndMinute],
+                   displayedComponents: showDate ? [.date, .hourAndMinute] : [.hourAndMinute],
                           label: {
                    Text("")
                           })
             .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
     }
     
-    init(item: ReminderProtocol, isExpanded: Bool, onDelete: @escaping () -> Void) {
+    init(item: ReminderProtocol, isExpanded: Bool, showDate: Bool, onDelete: @escaping () -> Void) {
         self.item = item
         self.isExpanded = isExpanded
+        self.showDate = showDate
         self.onDelete = onDelete
         _time = State(initialValue: item.time ?? Calendar.current.date(bySetting: .second, value: 0, of: Date()) ?? Date())
     }
@@ -558,6 +560,7 @@ struct TaskFormReminderItemView: View {
 }
 
 struct TaskFormReminderView: View {
+    var showDate: Bool
     private let taskRepository = TaskRepository()
     @Binding var items: [ReminderProtocol]
     
@@ -568,7 +571,7 @@ struct TaskFormReminderView: View {
             Text(L10n.Tasks.Form.reminders.uppercased()).font(.system(size: 13, weight: .semibold)).foregroundColor(Color(ThemeService.shared.theme.quadTextColor)).padding(.leading, 14)
             VStack(spacing: 8) {
                 ForEach(items, id: \.id) { item in
-                    TaskFormReminderItemView(item: item, isExpanded: item.id == expandedItem?.id) {
+                    TaskFormReminderItemView(item: item, isExpanded: item.id == expandedItem?.id, showDate: showDate) {
                         withAnimation {
                             if let index = items.firstIndex(where: { $0.id == item.id }) {
                                 items.remove(at: index)
@@ -646,6 +649,10 @@ class TaskFormViewModel: ObservableObject {
     @Published var dueDate: Date?
     @Published var selectedTags: [TagProtocol] = []
     
+    @Published var streak: String = "0"
+    @Published var counterUp: String = "0"
+    @Published var counterDown: String = "0"
+    
     @Published var monday: Bool = true
     @Published var tuesday: Bool = true
     @Published var wednesday: Bool = true
@@ -688,6 +695,10 @@ class TaskFormViewModel: ObservableObject {
             _everyX = Published(initialValue: task?.everyX ?? 1)
             _startDate = Published(initialValue: task?.startDate ?? Date())
             _dueDate = Published(initialValue: task?.duedate)
+            
+            _streak = Published(initialValue: String(task?.streak ?? 0))
+            _counterUp = Published(initialValue: String(task?.counterUp ?? 0))
+            _counterDown = Published(initialValue: String(task?.counterDown ?? 0))
 
             _selectedTags = Published(initialValue: task?.tags ?? [])
             
@@ -929,11 +940,28 @@ struct TaskFormView: View {
                                             content: DifficultyPicker(selectedDifficulty: $viewModel.priority).padding(8))
                         }
                         if viewModel.taskType == .daily || viewModel.taskType == .todo {
-                            TaskFormReminderView(items: $viewModel.reminders)
+                            TaskFormReminderView(showDate: viewModel.taskType == .todo, items: $viewModel.reminders)
                             }
                         if viewModel.showStatAllocation && viewModel.isTaskEditable {
                             TaskFormSection(header: Text(L10n.statAllocation.uppercased()),
                                             content: TaskFormPicker(options: TaskFormView.statAllocationOptions, selection: $viewModel.stat, tintColor: viewModel.pickerTintColor))
+                        }
+                        if viewModel.taskType == .daily && viewModel.task?.id != nil {
+                            TaskFormSection(header: Text(L10n.Tasks.Form.adjustStreak.uppercased()),
+                                            content: FormRow(title: Text(L10n.streak), valueLabel: TextField(L10n.streak, text: $viewModel.streak)
+                                                .multilineTextAlignment(.trailing)
+                                                .keyboardType(.numberPad)))
+                            
+                        } else if viewModel.taskType == .habit && viewModel.task?.id != nil {
+                            TaskFormSection(header: Text(L10n.Tasks.Form.adjustCounter.uppercased()),
+                                            content: VStack {
+                                FormRow(title: Text(L10n.Tasks.Form.positive), valueLabel: TextField(L10n.Tasks.Form.positive, text: $viewModel.counterUp)
+                                    .multilineTextAlignment(.trailing)
+                                    .keyboardType(.numberPad))
+                                FormRow(title: Text(L10n.Tasks.Form.negative), valueLabel: TextField(L10n.Tasks.Form.negative, text: $viewModel.counterDown)
+                                    .multilineTextAlignment(.trailing)
+                                    .keyboardType(.numberPad))
+                            })
                         }
                         TaskFormSection(header: Text(L10n.Tasks.Form.tags.uppercased()),
                                         content: TagList(selectedTags: $viewModel.selectedTags, allTags: tags, taskColor: viewModel.taskTintColor))
@@ -1088,6 +1116,10 @@ class TaskFormController: UIHostingController<TaskFormView> {
         task.tags = viewModel.selectedTags
         task.attribute = viewModel.stat
         
+        task.streak = Int(string: viewModel.streak) ?? 0
+        task.counterUp = Int(string: viewModel.counterUp) ?? 0
+        task.counterDown = Int(string: viewModel.counterDown) ?? 0
+        
         task.weekRepeat?.monday = viewModel.monday
         task.weekRepeat?.tuesday = viewModel.tuesday
         task.weekRepeat?.wednesday = viewModel.wednesday
@@ -1100,7 +1132,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
         
         if let startDate = task.startDate {
             if viewModel.dayOrWeekMonth == "week" {
-                task.weeksOfMonth.append(Calendar.current.component(.weekOfMonth, from: startDate))
+                task.weeksOfMonth.append(Calendar.current.component(.weekOfMonth, from: startDate)-1)
             } else {
                 task.daysOfMonth.append(Calendar.current.component(.day, from: startDate))
             }

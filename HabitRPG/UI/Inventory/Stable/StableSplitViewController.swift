@@ -54,14 +54,15 @@ class StableSplitViewController: HabiticaSplitViewController {
     }
     
     @IBAction func changeOrganizeBy(_ sender: Any) {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: L10n.Stable.color, style: .default, handler: {[weak self] _ in
-            self?.organizeByColor = true
+        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(menuItems: {
+            BottomSheetMenuitem(title: L10n.Stable.color, onTap: {[weak self] in
+                self?.organizeByColor = true
+            })
+            BottomSheetMenuitem(title: L10n.Stable.type, onTap: {[weak self] in
+                self?.organizeByColor = false
+            })
         }))
-        actionSheet.addAction(UIAlertAction(title: L10n.Stable.type, style: .default, handler: {[weak self] _ in
-            self?.organizeByColor = false
-        }))
-        actionSheet.popoverPresentationController?.barButtonItem = organizeByButton
-        present(actionSheet, animated: true, completion: nil)
+        sheet.preferredSheetSizing = .large
+        present(sheet, animated: true)
     }
 }

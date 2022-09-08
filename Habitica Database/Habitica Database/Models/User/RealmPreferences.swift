@@ -30,6 +30,7 @@ class RealmPreferences: BaseModel, PreferencesProtocol {
     @objc dynamic var sound: String?
     @objc dynamic var autoEquip: Bool = false
     @objc dynamic var searchableUsername: Bool = false
+    @objc dynamic var dateFormat: String?
     var pushNotifications: PushNotificationsProtocol? {
         get {
             return realmPushNotifications
@@ -45,6 +46,7 @@ class RealmPreferences: BaseModel, PreferencesProtocol {
         }
     }
     @objc dynamic var realmPushNotifications: RealmPushNotifications?
+    
     var emailNotifications: EmailNotificationsProtocol? {
         get {
             return realmEmailNotifications
@@ -60,6 +62,7 @@ class RealmPreferences: BaseModel, PreferencesProtocol {
         }
     }
     @objc dynamic var realmEmailNotifications: RealmEmailNotifications?
+    
     var hair: HairProtocol? {
         get {
             return realmHair
@@ -76,12 +79,28 @@ class RealmPreferences: BaseModel, PreferencesProtocol {
     }
     @objc dynamic var realmHair: RealmHair?
     
+    var tasks: TaskPreferencesProtocol? {
+        get {
+            return realmTasks
+        }
+        set {
+            if let newPreferences = newValue as? RealmTaskPreferences {
+                realmTasks = newPreferences
+                return
+            }
+            if let newPreferences = newValue {
+                realmTasks = RealmTaskPreferences(id: id, protocolObject: newPreferences)
+            }
+        }
+    }
+    @objc dynamic var realmTasks: RealmTaskPreferences?
+    
     override static func primaryKey() -> String {
         return "id"
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["pushNotifications"]
+        return ["pushNotifications", "emailNotifications", "tasks"]
     }
     
     convenience init(id: String?, preferences: PreferencesProtocol) {
@@ -107,5 +126,7 @@ class RealmPreferences: BaseModel, PreferencesProtocol {
         emailNotifications = preferences.emailNotifications
         hair = preferences.hair
         searchableUsername = preferences.searchableUsername
+        dateFormat = preferences.dateFormat
+        tasks = preferences.tasks
     }
 }

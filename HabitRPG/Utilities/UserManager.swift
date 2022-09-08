@@ -10,7 +10,6 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 import Habitica_Database
-import PopupDialog
 #if !targetEnvironment(macCatalyst)
 import FirebaseAnalytics
 #endif
@@ -40,7 +39,7 @@ class UserManager: NSObject {
     
     func beginListening() {
         disposable.add(userRepository.getUser()
-            .throttle(1, on: QueueScheduler.main)
+            .throttle(0.5, on: QueueScheduler.main)
             .on(value: {[weak self]user in
                 self?.onUserUpdated(user: user)
             }).filter({[weak self] (user) -> Bool in
@@ -49,7 +48,7 @@ class UserManager: NSObject {
                 return self?.taskRepository.retrieveTasks(dueOnDay: self?.getYesterday()).skipNil()
                     .map({ tasks in
                         return tasks.filter({ task in
-                            return task.isDue && !task.completed
+                            return task.isDue && !task.completed && !task.isGroupTask
                         })
                     }).withLatest(from: SignalProducer<UserProtocol, Never>(value: user)) ?? Signal<([TaskProtocol], UserProtocol), Never>.empty
             }).on(value: {[weak self] (tasks, user) in
@@ -64,31 +63,7 @@ class UserManager: NSObject {
                     return
                 }
                 
-                var eventProperties = [AnyHashable: Any]()
-                eventProperties["eventAction"] = "show cron"
-                eventProperties["eventCategory"] = "behaviour"
-                eventProperties["event"] = "event"
-                eventProperties["task count"] = uncompletedTaskCount
-                HabiticaAnalytics.shared.log("show cron", withEventProperties: eventProperties)
-                
-                if uncompletedTaskCount == 0 {
-                    self?.userRepository.runCron(checklistItems: [], tasks: [])
-                    return
-                }
-                
-                let viewController = YesterdailiesDialogView()
-                viewController.tasks = tasks
-                let popup = PopupDialog(viewController: viewController)
-                if var topController = UIApplication.shared.findKeyWindow()?.rootViewController {
-                    while let presentedViewController = topController.presentedViewController {
-                        topController = presentedViewController
-                    }
-                    if let controller = topController as? MainTabBarController {
-                        controller.present(popup, animated: true) {
-                        }
-                        self?.yesterdailiesDialog = viewController
-                    }
-                }
+                self?.runCron(tasks: tasks, uncompletedTaskCount: uncompletedTaskCount)
             })
             .on(failed: { error in
                 logger.log(error)
@@ -101,6 +76,36 @@ class UserManager: NSObject {
                 self?.updateReminderNotifications(reminders: reminders, changes: changes)
             }
         }).start())
+    }
+    
+    private func runCron(tasks: [TaskProtocol], uncompletedTaskCount: Int) {
+        var eventProperties = [AnyHashable: Any]()
+        eventProperties["eventAction"] = "show cron"
+        eventProperties["eventCategory"] = "behaviour"
+        eventProperties["event"] = "event"
+        eventProperties["task count"] = uncompletedTaskCount
+        HabiticaAnalytics.shared.log("show cron", withEventProperties: eventProperties)
+        
+        if uncompletedTaskCount == 0 {
+            userRepository.runCron(checklistItems: [], tasks: [])
+            return
+        }
+        
+        let viewController = YesterdailiesDialogView()
+        viewController.tasks = tasks
+        let alert = HabiticaAlertController()
+        alert.title = L10n.welcomeBack
+        alert.message = L10n.checkinYesterdaysDalies
+        alert.contentView = viewController.view
+        alert.contentViewInsets = .zero
+        alert.dismissOnBackgroundTap = false
+        alert.maxAlertWidth = 400
+        alert.addAction(title: L10n.startMyDay, style: .default, isMainAction: true, closeOnTap: true) {[weak self] _ in
+            viewController.runCron()
+            self?.yesterdailiesDialog = nil
+        }
+        yesterdailiesDialog = viewController
+        alert.show()
     }
     
     private func onUserUpdated(user: UserProtocol) {
@@ -203,21 +208,24 @@ class UserManager: NSObject {
         scheduleAllReminderNotifications(reminders: reminders)
     }
     private func scheduleAllReminderNotifications(reminders: [ReminderProtocol]) {
+        let daysPerReminder = max(1, min(6, Int(64.0 / max(1, Double(reminders.count)))))
         let notificationCenter = UNUserNotificationCenter.current()
         var scheduledReminderKeys = [String]()
-        for reminder in reminders {
-            scheduledReminderKeys.append(contentsOf: self.scheduleNotifications(reminder: reminder))
+        for reminder in reminders where reminder.isValid {
+                scheduledReminderKeys.append(contentsOf: self.scheduleNotifications(reminder: reminder, daysPerReminder: daysPerReminder))
         }
         notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
             var toCancel = [String]()
-            for request in requests where !scheduledReminderKeys.contains(request.identifier) {
+            for request in requests where !scheduledReminderKeys.contains(request.identifier) && request.identifier.starts(with: "task") {
                 toCancel.append(request.identifier)
             }
-            notificationCenter.removePendingNotificationRequests(withIdentifiers: toCancel)
+            if !toCancel.isEmpty {
+                notificationCenter.removePendingNotificationRequests(withIdentifiers: toCancel)
+            }
         })
     }
     
-    private func scheduleNotifications(reminder: ReminderProtocol) -> [String] {
+    private func scheduleNotifications(reminder: ReminderProtocol, daysPerReminder: Int) -> [String] {
         var keys = [String]()
         guard let task = reminder.task else {
             return keys
@@ -227,7 +235,7 @@ class UserManager: NSObject {
         }
         if task.type == TaskType.daily {
             let calendar = Calendar(identifier: .gregorian)
-            for day in 0...6 {
+            for day in 0...daysPerReminder {
                 if day == 0 && task.completed {
                     continue
                 }
@@ -261,6 +269,8 @@ class UserManager: NSObject {
                 fireDate = newDate
             }
         }
+        components.second = 0
+        components.calendar = calendar
         
         if fireDate < Date() {
             return nil
@@ -284,7 +294,7 @@ class UserManager: NSObject {
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
         let notificationIdentifier = "task\(reminder.id ?? "")-\(components.month ?? 0)\(components.day ?? 0)"
         let request = UNNotificationRequest(identifier: notificationIdentifier, content: content, trigger: trigger)
-        logger.log("⏰ Notification \(request.identifier) for \(reminder.task?.text ?? "") at \(fireDate)")
+        logger.log("⏰ Notification \(request.identifier) for \(taskText ?? "") at \(trigger.dateComponents)")
         UNUserNotificationCenter.current().add(request) {(error) in
             if let error = error {
                 logger.log("Uh oh! We had an error: \(error)")

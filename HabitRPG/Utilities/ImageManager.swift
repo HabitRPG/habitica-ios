@@ -6,13 +6,17 @@
 //  Copyright © 2018 HabitRPG Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Kingfisher
 
 @objc
 class ImageManager: NSObject {
     static var kingfisher = KingfisherManager.shared
     static let baseURL = "https://habitica-assets.s3.amazonaws.com/mobileApp/images/"
+    
+    static func buildImageUrl(name: String, extension fileExtension: String = "") -> URL? {
+        return URL(string: "\(baseURL)\(substituteSprite(name: name)).\(getFormat(name: name, format: fileExtension))")
+    }
     
     private static let formatDictionary = [
         "head_special_0": "gif",
@@ -70,7 +74,7 @@ class ImageManager: NSObject {
     }
     
     static func getImage(name: String, extension fileExtension: String = "", completion: @escaping (UIImage?, NSError?) -> Void) {
-        guard let url = URL(string: "\(baseURL)\(substituteSprite(name: name)).\(getFormat(name: name, format: fileExtension))") else {
+        guard let url = ImageManager.buildImageUrl(name: name, extension: fileExtension) else {
             return
         }
         kingfisher.retrieveImage(with: url) { result in

@@ -115,17 +115,10 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 self?.localUserRepository.updateUser(id: userID, price: price, buyResponse: buyResponse)
                 
                 if let armoire = buyResponse.armoire {
-                    guard let text = habiticaResponse?.message?.stripHTML().trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) else {
-                        return
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
-                        if armoire.type == "experience" {
-                            ToastManager.show(text: text, color: .yellow, duration: 4.0)
-                        } else if armoire.type == "food" {
-                            ToastManager.show(text: text, color: .gray, duration: 4.0)
-                        } else if armoire.type == "gear" {
-                            ToastManager.show(text: text, color: .gray, duration: 4.0)
-                        }
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
+                        let viewController = ArmoireViewController()
+                        viewController.configure(type: armoire.type ?? "", text: armoire.dropText ?? "", key: armoire.dropKey, value: armoire.value)
+                        viewController.show()
                     }
                 } else {
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
@@ -195,9 +188,6 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
             .on(value: {[weak self] gear in
                 if let key = gear?.key {
                     self?.localRepository.receiveMysteryItem(userID: self?.currentUserId ?? "", key: key)
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
-                        ToastManager.show(text: L10n.receivedMysteryItem(gear?.text ?? ""), color: .green)
-                    }
                 }
             })
     }
