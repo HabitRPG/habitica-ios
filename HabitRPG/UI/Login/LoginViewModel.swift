@@ -9,7 +9,6 @@
 import ReactiveCocoa
 import ReactiveSwift
 import AppAuth
-import FBSDKLoginKit
 import AuthenticationServices
 #if !targetEnvironment(macCatalyst)
 import FirebaseAnalytics
@@ -40,7 +39,6 @@ protocol  LoginViewModelInputs {
 
     func loginButtonPressed()
     func googleLoginButtonPressed()
-    func facebookLoginButtonPressed()
     func appleLoginButtonPressed()
 
     func onSuccessfulLogin()
@@ -396,26 +394,6 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             self?.prefillPasswordProperty.value = ""
             self?.prefillPasswordRepeatProperty.value = ""
             self?.onSuccessfulLoginProperty.value = ()
-        }
-    }
-
-    private let facebookLoginButtonPressedProperty = MutableProperty(())
-    func facebookLoginButtonPressed() {
-        let fbManager = LoginManager()
-        fbManager.logIn(permissions: ["public_profile", "email"], from: viewController) { [weak self] (result, error) in
-            if error != nil || result?.isCancelled == true {
-                // If there is an error or the user cancelled login
-
-            } else if let userId = result?.token?.userID, let token = result?.token?.tokenString {
-                self?.userRepository.login(userID: userId, network: "facebook", accessToken: token).observeResult { (result) in
-                    switch result {
-                    case .success:
-                        self?.onSuccessfulLogin()
-                    case .failure:
-                        self?.showErrorObserver.send(value: L10n.Login.authenticationError)
-                    }
-                }
-            }
         }
     }
 

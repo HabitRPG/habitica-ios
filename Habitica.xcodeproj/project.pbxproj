@@ -170,7 +170,6 @@
 		293282161F389DBB00D42961 /* SetupCustomizationItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */; };
 		293282181F39E1A400D42961 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282171F39E1A400D42961 /* WelcomeViewController.swift */; };
 		2932821A1F39E28000D42961 /* TypingTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282191F39E28000D42961 /* TypingTextViewController.swift */; };
-		2938ED2B28B4ED2200E995A2 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED2A28B4ED2200E995A2 /* FacebookLogin */; };
 		2938ED2E28B4EDC700E995A2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED2D28B4EDC700E995A2 /* FirebaseAnalytics */; };
 		2938ED3028B4EDC700E995A2 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED2F28B4EDC700E995A2 /* FirebaseCrashlytics */; };
 		2938ED3228B4EDC700E995A2 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED3128B4EDC700E995A2 /* FirebaseMessaging */; };
@@ -1510,7 +1509,6 @@
 				D9EB4E9118CB4A9400BB2094 /* CoreGraphics.framework in Frameworks */,
 				2938ED5828B504D100E995A2 /* ReactiveSwift in Frameworks */,
 				D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */,
-				2938ED2B28B4ED2200E995A2 /* FacebookLogin in Frameworks */,
 				2953D84528B7772B00DC456E /* BottomSheet in Frameworks */,
 				292BD8AE28B4EB81006447EF /* Kingfisher in Frameworks */,
 				D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */,
@@ -3058,7 +3056,6 @@
 				292BD8AA28B4EB42006447EF /* Eureka */,
 				292BD8AD28B4EB81006447EF /* Kingfisher */,
 				292BD8B028B4EC36006447EF /* TagListView */,
-				2938ED2A28B4ED2200E995A2 /* FacebookLogin */,
 				2938ED2D28B4EDC700E995A2 /* FirebaseAnalytics */,
 				2938ED2F28B4EDC700E995A2 /* FirebaseCrashlytics */,
 				2938ED3128B4EDC700E995A2 /* FirebaseMessaging */,
@@ -3191,7 +3188,6 @@
 				292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka" */,
 				292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				292BD8AF28B4EC36006447EF /* XCRemoteSwiftPackageReference "TagListView" */,
-				2938ED2928B4ED2100E995A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 				2938ED2C28B4EDC700E995A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				2938ED4128B4EF5D00E995A2 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
 				2938ED4D28B5043700E995A2 /* XCRemoteSwiftPackageReference "Nimble" */,
@@ -5232,14 +5228,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		2938ED2928B4ED2100E995A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
 		2938ED2C28B4EDC700E995A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -5338,11 +5326,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 292BD8AF28B4EC36006447EF /* XCRemoteSwiftPackageReference "TagListView" */;
 			productName = TagListView;
-		};
-		2938ED2A28B4ED2200E995A2 /* FacebookLogin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2938ED2928B4ED2100E995A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookLogin;
 		};
 		2938ED2D28B4EDC700E995A2 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

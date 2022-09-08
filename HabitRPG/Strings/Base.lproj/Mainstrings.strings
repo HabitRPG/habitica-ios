@@ -634,7 +634,6 @@
 "login.login" = "Login";
 "login.social_login" = "Login with %@";
 "login.email_username" = "Email / Username";
-"login.login_facebook" = "Login with Facebook";
 "login.login_google" = "Login with Google";
 "login.login_apple" = "Sign in with Apple";
 "login.forgot_password" = "Forgot Password";

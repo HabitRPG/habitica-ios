@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="upQ-EI-E3w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="upQ-EI-E3w">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -220,15 +220,9 @@
                                                                         <state key="normal" image="login_apple"/>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYX-yC-fON">
-                                                                        <rect key="frame" x="70" y="0.0" width="50" height="50"/>
+                                                                        <rect key="frame" x="140" y="0.0" width="50" height="50"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                         <state key="normal" image="login_google"/>
-                                                                    </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xka-dX-nD0">
-                                                                        <rect key="frame" x="140" y="0.0" width="50" height="50"/>
-                                                                        <state key="normal" image="login_facebook">
-                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                        </state>
                                                                     </button>
                                                                 </subviews>
                                                                 <constraints>
@@ -360,7 +354,6 @@
                         <outlet property="backgroundScrollView" destination="VHc-yB-sBi" id="ovg-gY-4Rc"/>
                         <outlet property="beginButtonContainer" destination="fnm-XO-uKx" id="6yB-WU-gX9"/>
                         <outlet property="emailField" destination="5b1-2A-EzA" id="NNz-T1-geX"/>
-                        <outlet property="facebookLoginButton" destination="xka-dX-nD0" id="VU0-3b-KRN"/>
                         <outlet property="forgotPasswordButton" destination="2Ld-qT-Xe8" id="16V-hN-omO"/>
                         <outlet property="formBottomConstraint" destination="XXd-A0-FqZ" id="BC7-xV-AeF"/>
                         <outlet property="formContainer" destination="QC8-Jd-4Uw" id="7wE-HR-0yI"/>
@@ -1287,7 +1280,6 @@
         <image name="launch_logo" width="165" height="140"/>
         <image name="login_apple" width="50" height="50"/>
         <image name="login_email" width="20" height="20"/>
-        <image name="login_facebook" width="50" height="50"/>
         <image name="login_google" width="50" height="50"/>
         <image name="login_password" width="20" height="20"/>
         <image name="login_username" width="20" height="20"/>

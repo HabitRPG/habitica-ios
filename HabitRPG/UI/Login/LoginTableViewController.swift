@@ -21,7 +21,6 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak private var passwordRepeatField: LoginEntryView!
     @IBOutlet weak private var loginButton: UIButton!
     @IBOutlet weak private var googleLoginButton: UIButton!
-    @IBOutlet weak private var facebookLoginButton: UIButton!
     @IBOutlet weak private var appleLoginButton: UIButton!
     @IBOutlet weak private var registerBeginButton: UIButton!
     @IBOutlet weak private var loginBeginButton: UIButton!
@@ -64,7 +63,6 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         googleLoginButton.addTarget(self, action: #selector(googleLoginButtonPressed), for: .touchUpInside)
         appleLoginButton.addTarget(self, action: #selector(appleLoginButtonPressed), for: .touchUpInside)
-        facebookLoginButton.addTarget(self, action: #selector(facebookLoginButtonPressed), for: .touchUpInside)
         forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonPressed), for: .touchUpInside)
 
         self.viewModel.setAuthType(authType: LoginViewAuthType.none)
@@ -298,7 +296,6 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
                 weakSelf.beginButtonContainer.isHidden = false
             }
             if weakSelf.viewModel.currentAuthType == .login {
-                weakSelf.facebookLoginButton.isHidden = ConfigRepository.shared.bool(variable: .hideFacebook)
                 UIView.animate(withDuration: 0.4, delay: 0.6, options: [], animations: {
                     weakSelf.beginButtonContainer.arrangedSubviews[1].alpha = 0
                 }, completion: { (_) in
@@ -308,7 +305,6 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
                     weakSelf.beginButtonContainer.arrangedSubviews[0].alpha = 0
                 })
             } else if weakSelf.viewModel.currentAuthType == .register {
-                weakSelf.facebookLoginButton.isHidden = true
                 UIView.animate(withDuration: 0.4, delay: 0.6, options: [], animations: {
                     weakSelf.beginButtonContainer.arrangedSubviews[0].alpha = 0
                 }, completion: { (_) in
@@ -437,11 +433,6 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         self.viewModel.inputs.appleLoginButtonPressed()
     }
 
-    @objc
-    func facebookLoginButtonPressed() {
-        self.viewModel.inputs.facebookLoginButtonPressed()
-    }
-    
     @objc
     func forgotPasswordButtonPressed() {
         let alertController = HabiticaAlertController(title: L10n.Login.emailPasswordLink)
