@@ -127,20 +127,18 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     
     func reloadWidgetData() {
         #if arch(arm64) || arch(i386) || arch(x86_64)
-        if #available(iOS 14.0, *) {
-            WidgetCenter.shared.reloadTimelines(ofKind: "DailiesCountWidget")
-            WidgetCenter.shared.reloadTimelines(ofKind: "StatsWidget")
-            WidgetCenter.shared.reloadTimelines(ofKind: "TaskListWidget")
-            
-            WidgetCenter.shared.getCurrentConfigurations { result in
-                switch result {
-                case let .success(info):
-                    #if !targetEnvironment(macCatalyst)
-                    Analytics.setUserProperty(String(info.count), forName: "widgetCount")
-                    #endif
-                case let .failure(error):
-                    logger.log(error)
-                }
+        WidgetCenter.shared.reloadTimelines(ofKind: "DailiesCountWidget")
+        WidgetCenter.shared.reloadTimelines(ofKind: "StatsWidget")
+        WidgetCenter.shared.reloadTimelines(ofKind: "TaskListWidget")
+        
+        WidgetCenter.shared.getCurrentConfigurations { result in
+            switch result {
+            case let .success(info):
+                #if !targetEnvironment(macCatalyst)
+                Analytics.setUserProperty(String(info.count), forName: "widgetCount")
+                #endif
+            case let .failure(error):
+                logger.log(error)
             }
         }
         #endif

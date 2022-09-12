@@ -196,6 +196,7 @@
 		2942FAF1267783F8003F6500 /* HabiticaLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2942FAEE26777E00003F6500 /* HabiticaLogger.swift */; };
 		294973D2208118C100F02AC3 /* ImageOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973D1208118C100F02AC3 /* ImageOverlayView.swift */; };
 		294EB59D1FA0A7E4006083BD /* FixCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */; };
+		294F5D6628CA1DCB00760F6C /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 294F5D6528CA1DCB00760F6C /* ConfettiSwiftUI */; settings = {ATTRIBUTES = (Weak, ); }; };
 		2953D83B28B51F9E00DC456E /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2953D83A28B51F9E00DC456E /* ReactiveSwift */; };
 		2953D83D28B51FA700DC456E /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2953D83C28B51FA700DC456E /* ReactiveSwift */; };
 		2953D84028B5215400DC456E /* ReactiveCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 2953D83F28B5215400DC456E /* ReactiveCocoa */; };
@@ -1489,6 +1490,7 @@
 				2938ED2E28B4EDC700E995A2 /* FirebaseAnalytics in Frameworks */,
 				292DEE3C204D9D360086D5F7 /* Habitica_Database.framework in Frameworks */,
 				292DEE3A204D9D290086D5F7 /* Habitica_Models.framework in Frameworks */,
+				294F5D6628CA1DCB00760F6C /* ConfettiSwiftUI in Frameworks */,
 				2938ED3828B4EDC700E995A2 /* FirebaseRemoteConfigSwift in Frameworks */,
 				2938ED4328B4EF5D00E995A2 /* SwiftyStoreKit in Frameworks */,
 				D92D26161D58EF00001FD977 /* AVFoundation.framework in Frameworks */,
@@ -3066,6 +3068,7 @@
 				2938ED5728B504D100E995A2 /* ReactiveSwift */,
 				2953D83F28B5215400DC456E /* ReactiveCocoa */,
 				2953D84428B7772B00DC456E /* BottomSheet */,
+				294F5D6528CA1DCB00760F6C /* ConfettiSwiftUI */,
 			);
 			productName = HabitRPG;
 			productReference = D9EB4E8B18CB4A9400BB2094 /* Habitica.app */;
@@ -3194,6 +3197,7 @@
 				2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */,
 				2953D83E28B5215400DC456E /* XCRemoteSwiftPackageReference "Reactivecocoa" */,
 				2953D84328B7772A00DC456E /* XCRemoteSwiftPackageReference "BottomSheet" */,
+				294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 			);
 			productRefGroup = D9EB4E8C18CB4A9400BB2094 /* Products */;
 			projectDirPath = "";
@@ -4376,7 +4380,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 711;
+				CURRENT_PROJECT_VERSION = 714;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4409,7 +4413,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 711;
+				CURRENT_PROJECT_VERSION = 714;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4446,7 +4450,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 711;
+				CURRENT_PROJECT_VERSION = 714;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4493,7 +4497,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 711;
+				CURRENT_PROJECT_VERSION = 714;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4533,7 +4537,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 711;
+				CURRENT_PROJECT_VERSION = 714;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4574,7 +4578,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 711;
+				CURRENT_PROJECT_VERSION = 714;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4613,7 +4617,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 711;
+				CURRENT_PROJECT_VERSION = 714;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4656,7 +4660,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 711;
+				CURRENT_PROJECT_VERSION = 714;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4863,7 +4867,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 711;
+				CURRENT_PROJECT_VERSION = 714;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4919,7 +4923,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 711;
+				CURRENT_PROJECT_VERSION = 714;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4948,7 +4952,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 711;
+				CURRENT_PROJECT_VERSION = 714;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -4959,7 +4963,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5013,7 +5017,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 711;
+				CURRENT_PROJECT_VERSION = 714;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";
@@ -5024,7 +5028,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5260,6 +5264,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		2953D83E28B5215400DC456E /* XCRemoteSwiftPackageReference "Reactivecocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveCocoa/Reactivecocoa";
@@ -5391,6 +5403,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */;
 			productName = ReactiveSwift;
+		};
+		294F5D6528CA1DCB00760F6C /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
 		};
 		2953D83A28B51F9E00DC456E /* ReactiveSwift */ = {
 			isa = XCSwiftPackageProductDependency;

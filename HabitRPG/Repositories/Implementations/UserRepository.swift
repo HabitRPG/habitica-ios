@@ -165,9 +165,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             return self.retrieveUser().producer
         }).on(completed: {
             disposable?.dispose()
-            if #available(iOS 14.0, *) {
-                WidgetCenter.shared.reloadAllTimelines()
-            }
+            WidgetCenter.shared.reloadAllTimelines()
         }).start()
     }
     

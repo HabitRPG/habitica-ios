@@ -22,9 +22,7 @@ import UserNotifications
 import FirebaseMessaging
 import Down
 import WidgetKit
-import FBSDKCoreKit
 import AppAuth
-import FBSDKLoginKit
 import AdServices
 import iAd
 
@@ -45,7 +43,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         logger = RemoteLogger()
         self.application = application
         
-        FBSDKCoreKit.ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         setupRouter()
         handleLaunchArgs()
         if !isBeingTested {
@@ -73,11 +70,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             currentAuthorizationFlow = nil
             return true
         }
-        let wasHandled = ApplicationDelegate.shared.application(app, open: url, options: options)
-        if !wasHandled {
-            return RouterHandler.shared.handle(url: url)
-        }
-        return wasHandled
+        return RouterHandler.shared.handle(url: url)
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -365,82 +358,36 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         if defaults.bool(forKey: "userWasAttributed") {
             return
         }
-        if #available(iOS 14.5, *) {
-            Analytics.logEvent("attribution_begin", parameters: nil)
-            DispatchQueue.global(qos: .default).async {
-                Analytics.logEvent("attribution_attempt", parameters: nil)
-                do {
-                let attributionToken = try AAAttribution.attributionToken()
-                Analytics.logEvent("attribution_token_collected", parameters: nil)
-                if let url = URL(string: "https://api-adservices.apple.com/api/v1/") {
-                    let request = NSMutableURLRequest(url: url)
-                    request.httpMethod = "POST"
-                    request.setValue("text/plain", forHTTPHeaderField: "Content-Type")
-                    request.httpBody = Data(attributionToken.utf8)
-                    let task = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
-                        Analytics.logEvent("attribution_data_collected", parameters: nil)
-                        if let error = error {
-                            logger.log(error)
-                            Analytics.logEvent("attribution_failed", parameters: ["point": error.localizedDescription])
-                            return
-                        }
-                        guard let data = data else {
-                            Analytics.logEvent("attribution_failed_no_data", parameters: ["point": "no data"])
-                            return
-                        }
-                        do {
-                            guard let data = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
-                                Analytics.logEvent("attribution_failed_json", parameters: ["point": "no data"])
-                                return
-                            }
-                            if let campaignId = data["campaignId"] as? Int {
-                                var analyticsData = [String: Any]()
-                                analyticsData["attribution"] = data["iad-attribution"]
-                                analyticsData["campaignID"] = campaignId
-                                analyticsData["campaignName"] = data["iad-campaign-name"]
-                                analyticsData["purchaseDate"] = data["iad-purchase-date"]
-                                analyticsData["conversionDate"] = data["iad-conversion-date"]
-                                analyticsData["conversionType"] = data["iad-conversion-type"]
-                                analyticsData["clickDate"] = data["iad-click-date"]
-                                analyticsData["keyword"] = data["iad-keyword"]
-                                analyticsData["keywordMatchtype"] = data["iad-keyword-matchtype"]
-                                defaults.set(true, forKey: "userWasAttributed")
-                                HabiticaAnalytics.shared.log("adAttribution", withEventProperties: analyticsData)
-                                Amplitude.instance().setUserProperties([
-                                    "clickedSearchAd": data["iad-attribution"] ?? "",
-                                    "searchAdName": data["iad-campaign-name"] ?? "",
-                                    "searchAdConversionDate": data["iad-conversion-date"] ?? ""
-                                ])
-                            } else {
-                                Analytics.logEvent("attribution_failed_cid", parameters: ["point": "no campaignId"])
-                            }
-                        } catch {
-                            logger.log(error)
-                            Analytics.logEvent("attribution_failed", parameters: ["point": error.localizedDescription])
-                        }
+        Analytics.logEvent("attribution_begin", parameters: nil)
+        DispatchQueue.global(qos: .default).async {
+            Analytics.logEvent("attribution_attempt", parameters: nil)
+            do {
+            let attributionToken = try AAAttribution.attributionToken()
+            Analytics.logEvent("attribution_token_collected", parameters: nil)
+            if let url = URL(string: "https://api-adservices.apple.com/api/v1/") {
+                let request = NSMutableURLRequest(url: url)
+                request.httpMethod = "POST"
+                request.setValue("text/plain", forHTTPHeaderField: "Content-Type")
+                request.httpBody = Data(attributionToken.utf8)
+                let task = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
+                    Analytics.logEvent("attribution_data_collected", parameters: nil)
+                    if let error = error {
+                        logger.log(error)
+                        Analytics.logEvent("attribution_failed", parameters: ["point": error.localizedDescription])
+                        return
                     }
-                    task.resume()
-                } else {
-                    Analytics.logEvent("attribution_failed_no_token", parameters: ["point": "No token"])
-                }
-                } catch {
-                    Analytics.logEvent("attribution_failed", parameters: ["error": error.localizedDescription])
-                }
-            }
-        } else {
-            ADClient.shared().requestAttributionDetails({ (attributionDetails, _) in
-                guard let attributionDetails = attributionDetails else {
-                    return
-                }
-                for (_, adDictionary) in attributionDetails {
-                    if let data = adDictionary as? [String: Any] {
-                        if let campaignId = data["iad-campaign-id"] as? String {
-                            defaults.set(true, forKey: "userWasAttributed")
+                    guard let data = data else {
+                        Analytics.logEvent("attribution_failed_no_data", parameters: ["point": "no data"])
+                        return
+                    }
+                    do {
+                        guard let data = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+                            Analytics.logEvent("attribution_failed_json", parameters: ["point": "no data"])
+                            return
+                        }
+                        if let campaignId = data["campaignId"] as? Int {
                             var analyticsData = [String: Any]()
                             analyticsData["attribution"] = data["iad-attribution"]
-                            if analyticsData["attribution"] as? String != "true" {
-                                return
-                            }
                             analyticsData["campaignID"] = campaignId
                             analyticsData["campaignName"] = data["iad-campaign-name"]
                             analyticsData["purchaseDate"] = data["iad-purchase-date"]
@@ -449,16 +396,28 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                             analyticsData["clickDate"] = data["iad-click-date"]
                             analyticsData["keyword"] = data["iad-keyword"]
                             analyticsData["keywordMatchtype"] = data["iad-keyword-matchtype"]
+                            defaults.set(true, forKey: "userWasAttributed")
                             HabiticaAnalytics.shared.log("adAttribution", withEventProperties: analyticsData)
                             Amplitude.instance().setUserProperties([
                                 "clickedSearchAd": data["iad-attribution"] ?? "",
                                 "searchAdName": data["iad-campaign-name"] ?? "",
                                 "searchAdConversionDate": data["iad-conversion-date"] ?? ""
                             ])
+                        } else {
+                            Analytics.logEvent("attribution_failed_cid", parameters: ["point": "no campaignId"])
                         }
+                    } catch {
+                        logger.log(error)
+                        Analytics.logEvent("attribution_failed", parameters: ["point": error.localizedDescription])
                     }
                 }
-            })
+                task.resume()
+            } else {
+                Analytics.logEvent("attribution_failed_no_token", parameters: ["point": "No token"])
+            }
+            } catch {
+                Analytics.logEvent("attribution_failed", parameters: ["error": error.localizedDescription])
+            }
         }
     }
     

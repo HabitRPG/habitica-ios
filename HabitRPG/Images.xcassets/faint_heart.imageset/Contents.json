@@ -1,14 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "broken_heart.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "broken_heart@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "broken_heart@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

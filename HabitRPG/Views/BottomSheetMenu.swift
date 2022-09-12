@@ -76,11 +76,9 @@ struct BottomSheetMenu<Title: View, MenuItems: View>: View {
             title
                 .font(.headline)
                 .foregroundColor(.primaryTextColor)
-            if #available(iOS 14.0, *) {
                 if let url = iconURL {
                     KFImage(url).frame(width: 70, height: 70)
                 }
-            }
             menuItems
         }.padding(.horizontal, 24)
             .padding(.top, 20)

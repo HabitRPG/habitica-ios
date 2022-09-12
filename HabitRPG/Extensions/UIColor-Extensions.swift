@@ -368,12 +368,7 @@ func == (left: UIColor?, right: UIColor?) -> Bool {
 extension Color {
  
     func uiColor() -> UIColor {
-        if #available(iOS 14.0, *) {
-            return UIColor(self)
-        }
-
-        let components = self.components()
-        return UIColor(red: components.red, green: components.green, blue: components.blue, alpha: components.alpha)
+        return UIColor(self)
     }
 
     private func components() -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {

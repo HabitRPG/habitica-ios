@@ -374,10 +374,8 @@ class MainMenuViewController: BaseTableViewController {
             })
         }).start())
         
-        if #available(iOS 14.5, *) {
-            splitViewController?.displayModeButtonVisibility = .always
-            splitViewController?.showsSecondaryOnlyButton = true
-        }
+        splitViewController?.displayModeButtonVisibility = .always
+        splitViewController?.showsSecondaryOnlyButton = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

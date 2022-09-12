@@ -225,13 +225,8 @@ struct FormDatePicker<TitleView: View>: View {
                 }
             }
             if isOpen {
-                if #available(iOS 14.0, *) {
                     picker.datePickerStyle(GraphicalDatePickerStyle())
                         .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
-                } else {
-                    picker.datePickerStyle(WheelDatePickerStyle())
-                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
-                }
             }
         }
     }
@@ -396,10 +391,8 @@ struct TaskFormChecklistItemView: View {
                     .frame(width: 48, height: 48)
             })
             FocusableTextField(placeholder: "Enter your checklist line", text: textProxy, isFirstResponder: $isFirstResponder)
-            if #available(iOS 14.0, *) {
                 Image(uiImage: Asset.grabIndicator.image).foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor))
                     .padding(.trailing, 13)
-            }
         }.frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
         .transition(.opacity)
     }
@@ -427,7 +420,6 @@ struct TaskFormChecklistView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(L10n.Tasks.Form.checklist.uppercased()).font(.system(size: 13, weight: .semibold)).foregroundColor(Color(ThemeService.shared.theme.quadTextColor)).padding(.leading, 14)
-            if #available(iOS 14.0, *) {
                 LazyVStack {
                     ForEach(items, id: \.id) { item in
                         TaskFormChecklistItemView(item: item, onDelete: {
@@ -446,23 +438,6 @@ struct TaskFormChecklistView: View {
                     }
                     addButton
                 }
-            } else {
-                VStack {
-                    ForEach(items, id: \.id) { item in
-                        TaskFormChecklistItemView(item: item, onDelete: {
-                            withAnimation {
-                                if let index = items.firstIndex(where: { $0.id == item.id }) {
-                                    items.remove(at: index)
-                                }
-                            }
-                        }, focusItemId: focusItemId)
-                    }
-                    .onMove { source, destination in
-                        items.move(fromOffsets: source, toOffset: destination)
-                    }
-                    addButton
-                }
-            }
         }
     }
 }
@@ -839,12 +814,7 @@ struct TaskFormView: View {
     }
     
     private var shouldShowKeyboardInitially: Bool {
-        // iOS 13 crashes when presenting otherwise
-        if #available(iOS 14.0, *) {
-            return viewModel.isCreating
-        } else {
-            return false
-        }
+        return viewModel.isCreating
     }
     
     private var textFields: some View {

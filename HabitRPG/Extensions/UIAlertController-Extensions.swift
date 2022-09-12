@@ -1,7 +1,6 @@
 // https://github.com/kickstarter/ios-oss/blob/master/Library/UIAlertController.swift
 
 import UIKit
-import FBSDKLoginKit
 
 public extension UIAlertController {
 

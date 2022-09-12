@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/amplitude/Amplitude-iOS",
       "state" : {
-        "revision" : "f07749967fb8e628f9f2c743fab2ba6600574d85",
-        "version" : "8.12.0"
+        "revision" : "9e3081af2f3d45931b5404c4276c6c2e21ecd671",
+        "version" : "8.13.0"
       }
     },
     {
@@ -52,6 +52,15 @@
       "state" : {
         "revision" : "1c02adf0ba7857ab5779545dd3df7e3244523e77",
         "version" : "2.0.0"
+      }
+    },
+    {
+      "identity" : "confettiswiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/simibac/ConfettiSwiftUI.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "2a5797c5ada9aaca77338e7df1b1913cea909994"
       }
     },
     {
@@ -95,8 +104,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
-        "revision" : "cbaa7ce7063d5ab22414962ec63366ccbba26034",
-        "version" : "9.4.1"
+        "revision" : "7f31a43f8c49bd4a1723bc9fecdfaa4411dd9f36",
+        "version" : "9.5.0"
       }
     },
     {
@@ -140,8 +149,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/gtm-session-fetcher.git",
       "state" : {
-        "revision" : "d4289da23e978f37c344ea6a386e5546e2466294",
-        "version" : "2.1.0"
+        "revision" : "19605024d59eaefdb1f6a2cb11ebe75df4421126",
+        "version" : "2.0.0"
       }
     },
     {
@@ -149,8 +158,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/nathantannar4/InputBarAccessoryView.git",
       "state" : {
-        "revision" : "6d3d205f29b80f8fa9a9616ad801c488293242bf",
-        "version" : "5.4.0"
+        "revision" : "2843b4454cfb6de5b4d1e5939fef2dd6257b69ee",
+        "version" : "5.5.0"
       }
     },
     {
@@ -257,8 +266,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",
       "state" : {
-        "revision" : "fa0fcd43f272a260e7f734f23e6dc55e16fcae0a",
-        "version" : "1.19.1"
+        "revision" : "b8230909dedc640294d7324d37f4c91ad3dcf177",
+        "version" : "1.20.1"
       }
     },
     {

@@ -1246,12 +1246,30 @@ public enum L10n {
   public enum Armoire {
     /// Armoire Drop rates
     public static var dropRate: String { return L10n.tr("Mainstrings", "armoire.drop_rate") }
+    /// Enchanted Armoire Drop Rates
+    public static var enchantedArmoireDropRates: String { return L10n.tr("Mainstrings", "armoire.enchanted_armoire_drop_rates") }
     /// You find a piece of rare Equipment in the Armoire!
     public static var equipment: String { return L10n.tr("Mainstrings", "armoire.equipment") }
+    /// Equipment Remaining: %d
+    public static func equipmentRemaining(_ p1: Int) -> String {
+      return L10n.tr("Mainstrings", "armoire.equipment_remaining", p1)
+    }
     /// You wrestle with the Armoire and gain Experience. Take that!
     public static var experience: String { return L10n.tr("Mainstrings", "armoire.experience") }
     /// You rummage in the Armoire and find food. What's that doing in here?
     public static var food: String { return L10n.tr("Mainstrings", "armoire.food") }
+    /// New Equipment pieces are added every month. If you own all pieces of equipment, then you'll get Food or Experience, 50/50 odds.
+    public static var rateEquipmentDescription: String { return L10n.tr("Mainstrings", "armoire.rate_equipment_description") }
+    /// 60%% Piece of Equipment
+    public static var rateEquipmentTitle: String { return L10n.tr("Mainstrings", "armoire.rate_equipment_title") }
+    /// The amount gained varies randomly from 10 to 50
+    public static var rateExperienceDescription: String { return L10n.tr("Mainstrings", "armoire.rate_experience_description") }
+    /// 20%% Experience points
+    public static var rateExperienceTitle: String { return L10n.tr("Mainstrings", "armoire.rate_experience_title") }
+    /// You’ll receive one of the ten types of Food. During special events, normal foods will change to their cake or candy counterparts.
+    public static var rateFoodDescription: String { return L10n.tr("Mainstrings", "armoire.rate_food_description") }
+    /// 20%% Piece of Food
+    public static var rateFoodTitle: String { return L10n.tr("Mainstrings", "armoire.rate_food_title") }
   }
 
   public enum Avatar {
@@ -1641,8 +1659,6 @@ public enum L10n {
     public static var login: String { return L10n.tr("Mainstrings", "login.login") }
     /// Sign in with Apple
     public static var loginApple: String { return L10n.tr("Mainstrings", "login.login_apple") }
-    /// Login with Facebook
-    public static var loginFacebook: String { return L10n.tr("Mainstrings", "login.login_facebook") }
     /// Login with Google
     public static var loginGoogle: String { return L10n.tr("Mainstrings", "login.login_google") }
     /// Password and password confirmation have to match and be longer than 8 characters.

@@ -272,4 +272,10 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     func getCurrentTimeLimitedItems() -> SignalProducer<[ItemProtocol], ReactiveSwiftRealmError> {
         return localRepository.getCurrentTimeLimitedItems()
     }
+    
+    func getArmoireRemainingCount() -> SignalProducer<ReactiveResults<[GearProtocol]>, ReactiveSwiftRealmError> {
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (currentUserID) in
+            return self?.localRepository.getArmoireRemainingCount(userID: currentUserID) ?? SignalProducer.empty
+        })
+    }
 }

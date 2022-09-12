@@ -239,4 +239,18 @@ public class InventoryLocalRepository: ContentLocalRepository {
                 return allItems
             }
     }
+    
+    public func getArmoireRemainingCount(userID: String) -> SignalProducer<ReactiveResults<[GearProtocol]>, ReactiveSwiftRealmError> {
+        return RealmOwnedGear.findBy(query: "isOwned == true")
+            .map { gear in
+                return gear.map { item in
+                    item.key
+                }
+            }
+            .flatMap(.latest) { keys in
+                return RealmGear.findBy(predicate: NSPredicate(format: "habitClass == 'armoire' && NOT key IN %@", keys)).reactive()
+            }.map({ (value, changeset) -> ReactiveResults<[GearProtocol]> in
+                return (value.map({ (item) -> GearProtocol in return item }), changeset)
+            })
+    }
 }

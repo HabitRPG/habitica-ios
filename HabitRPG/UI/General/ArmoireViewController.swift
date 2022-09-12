@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Kingfisher
+import ConfettiSwiftUI
 
 struct AnimatableNumberModifier: AnimatableModifier {
     var number: Double
@@ -31,6 +32,45 @@ extension View {
     }
 }
 
+private struct ArmoirePlus: View {
+    var thickness: CGFloat = 6
+    var length: CGFloat = 12
+    var maxSpacing: CGFloat = 4
+    var color = Color(ThemeService.shared.theme.tintColor)
+    
+    @State private var isAnimating = false
+    var body: some View {
+        VStack(alignment: .center, spacing: 0) {
+            color
+                .frame(width: thickness, height: length)
+                .cornerRadius(thickness/2)
+                .offset(x: 0, y: isAnimating ? -maxSpacing : 0)
+            HStack(spacing: 0) {
+                color
+                    .frame(width: length, height: thickness)
+                    .cornerRadius(thickness/2)
+                    .offset(x: isAnimating ? -maxSpacing : 0, y: 0)
+                Spacer()
+                    .frame(width: thickness)
+                color
+                    .frame(width: length, height: thickness)
+                    .cornerRadius(thickness/2)
+                    .offset(x: isAnimating ? maxSpacing : 0, y: 0)
+            }
+            color
+                .frame(width: thickness, height: length)
+                .cornerRadius(thickness/2)
+                .offset(x: 0, y: isAnimating ? maxSpacing : 0)
+        }
+        .animation(.easeInOut(duration: Double.random(in: 3...4)).repeatForever(autoreverses: true))
+        .onAppear {
+            withAnimation {
+                isAnimating = true
+            }
+        }
+    }
+}
+
 private class ViewModel: ObservableObject {
     let userRepository = UserRepository()
     let inventoryRepository = InventoryRepository()
@@ -40,12 +80,17 @@ private class ViewModel: ObservableObject {
     @Published var type: String = ""
     @Published var key: String = ""
     @Published var value: String = ""
+    @Published var remainingCount = 0
     
     init() {
         userRepository.getUser().on(value: { user in
             if self.gold == 0 {
                 self.gold = Double(user.stats?.gold ?? 0)
             }
+        }).start()
+        
+        inventoryRepository.getArmoireRemainingCount().on(value: {gear in
+            self.remainingCount = gear.value.count
         }).start()
     }
     
@@ -110,8 +155,10 @@ struct ArmoireView: View {
     var onDismiss: (() -> Void) = {}
     fileprivate var viewModel: ViewModel
     
-    @State var isAnimating = false
-
+    @State var isBobbing = false
+    @State var confettiCounter = 0
+    @State var showArmoireAlert = false
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack {
@@ -119,13 +166,14 @@ struct ArmoireView: View {
                 Text("\(Int(viewModel.gold))")
                     .foregroundColor(Color.clear)
                     .animatingOverlay(for: viewModel.gold)
-                    .animation(.linear(duration: 1))
+                    .animation(.linear(duration: 2))
                     .foregroundColor(Color(UIColor.yellow1))
                     .font(.system(size: 20, weight: .bold))
                     .onAppear {
-                        withAnimation {
-                            viewModel.gold -= 100
-                            isAnimating = true
+                        viewModel.gold -= 100
+                        confettiCounter = 1
+                        withAnimation(.easeInOut(duration: 2.5).repeatForever(autoreverses: true)) {
+                            isBobbing = true
                         }
                     }
             }
@@ -135,16 +183,27 @@ struct ArmoireView: View {
             .cornerRadius(16)
             .padding(.top, 24)
             Spacer()
-            if #available(iOS 14.0, *) {
-                Group {
+            
+            ZStack {
                     KFImage(source: viewModel.icon)
                         .resizable()
-                        .animation(.easeOut)
                         .frame(width: viewModel.iconWidth, height: viewModel.iconHeight)
-                }
                     .frame(width: 158, height: 158)
                     .background(Color(UIColor.gray700))
                     .cornerRadius(79)
+                    .offset(y: isBobbing ? 5 : -5)
+                    .confettiCannon(counter: $confettiCounter,
+                                    num: 5,
+                                    confettis: [.shape(.slimRectangle)],
+                                    colors: [Color(UIColor.yellow100), Color(UIColor.red100), Color(UIColor.blue100), Color(UIColor.purple400)],
+                                    rainHeight: 800,
+                                    radius: 400,
+                                    repetitions: 20,
+                                    repetitionInterval: 0.1)
+                ArmoirePlus()
+                    .offset(x: -70, y: -60)
+                ArmoirePlus()
+                    .offset(x: 60, y: 70)
             }
             Text(viewModel.title)
                 .foregroundColor(.primaryTextColor)
@@ -161,6 +220,9 @@ struct ArmoireView: View {
                 .padding(.horizontal, 32)
             Spacer()
             VStack {
+                Text(L10n.Armoire.equipmentRemaining(viewModel.remainingCount))
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundColor(.white)
                 HStack {
                     if viewModel.type == "gear" {
                         HabiticaButtonUI(label: Text(L10n.equip), color: .white) {
@@ -177,13 +239,56 @@ struct ArmoireView: View {
                     .foregroundColor(Color(UIColor.purple600))
                     .font(.system(size: 14))
                     .padding(.top, 12)
+                    .onTapGesture {
+                        showArmoireAlert = true
+                    }
             }
             .padding(.horizontal, 50)
             .padding(.top, 30)
             .frame(minHeight: 300, alignment: .center)
             .frame(maxWidth: .infinity)
             .background(Image(uiImage: Asset.armoireBackground.image).resizable().edgesIgnoringSafeArea(.bottom))
+        }.sheet(isPresented: $showArmoireAlert) {
+            NavigationView {
+                VStack(alignment: .leading) {
+                    Text(L10n.Armoire.enchantedArmoireDropRates)
+                        .font(.system(size: 16, weight: .semibold))
+                        .padding(.bottom, 18)
+                    Text(L10n.Armoire.rateEquipmentTitle)
+                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                        .font(.system(size: 16))
+                    Text(L10n.Armoire.rateEquipmentDescription)
+                        .font(.system(size: 12))
+                        .padding(.bottom, 18)
+                    Text(L10n.Armoire.rateFoodTitle)
+                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                        .font(.system(size: 16))
+                    Text(L10n.Armoire.rateFoodDescription)
+                        .font(.system(size: 12))
+                        .padding(.bottom, 18)
+                    Text(L10n.Armoire.rateExperienceTitle)
+                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                        .font(.system(size: 16))
+                    Text(L10n.Armoire.rateExperienceDescription)
+                        .font(.system(size: 12))
+                    Spacer()
+                }
+                .foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor))
+                .padding(.horizontal, 30)
+                .padding(.vertical, 16)
+                .toolbar {
+                    ToolbarItem {
+                        Button {
+                            showArmoireAlert = false
+                        } label: {
+                            Text(L10n.close)
+                        }
+
+                    }
+                }
+            }
         }
+
     }
 }
 
