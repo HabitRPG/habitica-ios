@@ -58,11 +58,13 @@ struct FaintView: View {
     var body: some View {
         VStack(spacing: 0) {
             Spacer()
-            HStack {
+            ZStack {
                 Image(Asset.faintGhost.name)
                     .offset(x: 0, y: appear ? -10 : 0)
                     .animation(.easeInOut(duration: 2.5).repeatForever(autoreverses: true))
                     .onAppear { appear = true }
+                Image(Asset.faintHeart.name)
+                    .offset(y: 17)
             }
             Text(L10n.Faint.title)
                 .font(.system(size: 30, weight: .bold))
@@ -80,7 +82,10 @@ struct FaintView: View {
             Spacer()
             HabiticaButtonUI(label: Group {
                 if isReviving {
-                    Text("Reviving...")
+                    HStack {
+                        ProgressView().progressViewStyle(CircularProgressViewStyle())
+                        Text("Reviving...")
+                    }
                 } else {
                     Text(L10n.Faint.button)
                 }
