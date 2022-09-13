@@ -60,7 +60,7 @@ struct FaintView: View {
             Spacer()
             ZStack {
                 Image(Asset.faintGhost.name)
-                    .offset(x: 0, y: appear ? -10 : 0)
+                    .offset(x: 0, y: appear ? -7 : 3)
                     .animation(.easeInOut(duration: 2.5).repeatForever(autoreverses: true))
                     .onAppear { appear = true }
                 Image(Asset.faintHeart.name)
@@ -69,16 +69,19 @@ struct FaintView: View {
             Text(L10n.Faint.title)
                 .font(.system(size: 30, weight: .bold))
                 .multilineTextAlignment(.center)
+                .padding(.horizontal, 24)
             Text(viewModel.lossText)
                 .foregroundColor(.primaryTextColor)
                 .font(.system(size: 20))
                 .multilineTextAlignment(.center)
                 .padding(.top, 12)
+                .padding(.horizontal, 24)
             Text(L10n.Faint.goodLuckText)
                 .foregroundColor(.primaryTextColor)
                 .font(.system(size: 20))
                 .multilineTextAlignment(.center)
                 .padding(.top, 12)
+                .padding(.horizontal, 24)
             Spacer()
             HabiticaButtonUI(label: Group {
                 if isReviving {
@@ -104,6 +107,7 @@ struct FaintView: View {
                 .font(.system(size: 14))
                 .multilineTextAlignment(.center)
                 .padding(.top, 12)
+                .padding(.horizontal, 16)
         }.padding(.horizontal, 24)
             .padding(.vertical, 24)
     }
