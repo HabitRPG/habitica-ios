@@ -130,14 +130,14 @@ class SettingsViewController: FormViewController, Themeable {
                                 currentSetting.append(id)
                                 self?.userRepository.updateUser(key: "preferences.tasks.mirrorGroupTasks", value: currentSetting)
                                     .flatMap(.latest, { _ in
-                                        self?.taskRepository.retrieveTasks() ?? Signal.empty
+                                        self?.userRepository.retrieveUser(withTasks: true) ?? Signal.empty
                                     })
                                     .observeCompleted {}
                             } else if row.value == false, let index = currentSetting.firstIndex(of: id) {
                                 currentSetting.remove(at: index)
                                 self?.userRepository.updateUser(key: "preferences.tasks.mirrorGroupTasks", value: currentSetting)
                                     .flatMap(.latest, { _ in
-                                        self?.taskRepository.retrieveTasks() ?? Signal.empty
+                                        self?.userRepository.retrieveUser(withTasks: true) ?? Signal.empty
                                     })
                                     .observeCompleted {}
                             }

@@ -1077,7 +1077,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
         task.notes = viewModel.notes
         task.priority = viewModel.priority
         task.frequency = viewModel.frequency
-        task.value = Float(viewModel.value) ?? 1
+        task.value = Float(viewModel.value) ?? 0
         task.up = viewModel.up
         task.down = viewModel.down
         task.everyX = viewModel.everyX
