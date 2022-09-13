@@ -76,22 +76,29 @@ private class ViewModel: ObservableObject {
     let inventoryRepository = InventoryRepository()
     
     @Published var gold: Double = 0
+    @Published var initialGold: Double = 0
     @Published var text: String = ""
     @Published var type: String = ""
     @Published var key: String = ""
     @Published var value: String = ""
     @Published var remainingCount = 0
     
-    init() {
-        userRepository.getUser().on(value: { user in
-            if self.gold == 0 {
-                self.gold = Double(user.stats?.gold ?? 0)
-            }
-        }).start()
-        
-        inventoryRepository.getArmoireRemainingCount().on(value: {gear in
-            self.remainingCount = gear.value.count
-        }).start()
+    init(gold: Double? = nil) {
+        if let gold = gold {
+            self.gold = gold
+            self.initialGold = gold
+        } else {
+            userRepository.getUser().on(value: { user in
+                if self.gold == 0 {
+                    self.initialGold = Double(user.stats?.gold ?? 0)
+                    self.gold = Double(user.stats?.gold ?? 0)
+                }
+            }).start()
+            
+            inventoryRepository.getArmoireRemainingCount().on(value: {gear in
+                self.remainingCount = gear.value.count
+            }).start()
+        }
     }
     
     var icon: Source? {
@@ -115,7 +122,7 @@ private class ViewModel: ObservableObject {
     var title: String {
         switch type {
         case "experience":
-            return "+\(value) \(text)"
+            return "+\(Int(value) ?? 0) Experience"
         default:
             return text
         }
@@ -161,9 +168,11 @@ struct ArmoireView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            HStack {
+            Spacer()
+            HStack(spacing: 0) {
                 Image(uiImage: HabiticaIcons.imageOfGold)
-                Text("\(Int(viewModel.gold))")
+                Text("\(Int(viewModel.initialGold))")
+                    .padding(.horizontal, 12)
                     .foregroundColor(Color.clear)
                     .animatingOverlay(for: viewModel.gold)
                     .animation(.linear(duration: 2))
@@ -178,20 +187,21 @@ struct ArmoireView: View {
                     }
             }
             .frame(height: 32)
-            .padding(.horizontal, 10)
+            .padding(.leading, 12)
             .background(Color(UIColor.yellow100).opacity(0.4))
             .cornerRadius(16)
             .padding(.top, 24)
+            .padding(.bottom, 16)
             Spacer()
             
             ZStack {
                     KFImage(source: viewModel.icon)
                         .resizable()
                         .frame(width: viewModel.iconWidth, height: viewModel.iconHeight)
+                        .offset(y: isBobbing ? 5 : -5)
                     .frame(width: 158, height: 158)
                     .background(Color(UIColor.gray700))
                     .cornerRadius(79)
-                    .offset(y: isBobbing ? 5 : -5)
                     .confettiCannon(counter: $confettiCounter,
                                     num: 5,
                                     confettis: [.shape(.slimRectangle)],
@@ -209,13 +219,14 @@ struct ArmoireView: View {
                 .foregroundColor(.primaryTextColor)
                 .font(.system(size: 28, weight: .bold))
                 .multilineTextAlignment(.center)
-                .padding(.vertical, 16)
+                .padding(.top, 24)
+                .padding(.bottom, 8)
                 .frame(maxWidth: 310)
                 .padding(.horizontal, 32)
             Text(viewModel.subtitle)
                 .foregroundColor(.ternaryTextColor)
                 .multilineTextAlignment(.center)
-                .font(.system(size: 20))
+                .font(.system(size: 22))
                 .frame(maxWidth: 310)
                 .padding(.horizontal, 32)
             Spacer()
@@ -237,7 +248,7 @@ struct ArmoireView: View {
                 }
                 Text(L10n.Armoire.dropRate)
                     .foregroundColor(Color(UIColor.purple600))
-                    .font(.system(size: 14))
+                    .font(.system(size: 15, weight: .semibold))
                     .padding(.top, 12)
                     .onTapGesture {
                         showArmoireAlert = true
@@ -245,7 +256,7 @@ struct ArmoireView: View {
             }
             .padding(.horizontal, 50)
             .padding(.top, 30)
-            .frame(minHeight: 300, alignment: .center)
+            .frame(minHeight: UIScreen.main.bounds.height > 700 ? 300 : 220, alignment: .center)
             .frame(maxWidth: .infinity)
             .background(Image(uiImage: Asset.armoireBackground.image).resizable().edgesIgnoringSafeArea(.bottom))
         }.sheet(isPresented: $showArmoireAlert) {
@@ -335,7 +346,19 @@ class ArmoireViewController: UIHostingController<ArmoireView> {
 }
 
 struct ArmoireView_Previews: PreviewProvider {
+    
+    private static func makeViewModel(type: String) -> ViewModel {
+        let model = ViewModel(gold: 5000)
+        model.type = type
+        model.text = "Meat"
+        model.key = "Meat"
+        return model
+    }
+    
     static var previews: some View {
-        ArmoireView(viewModel: ViewModel())
+        ArmoireView(viewModel: makeViewModel(type: "experience"))
+            .previewDevice("iPhone 13 Pro")
+        ArmoireView(viewModel: makeViewModel(type: "food"))
+            .previewDevice("iPhone SE (3rd generation)")
     }
 }
