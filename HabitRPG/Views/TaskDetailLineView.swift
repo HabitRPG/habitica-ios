@@ -26,6 +26,7 @@ class TaskDetailLineView: UIView {
     @IBOutlet weak var challengeIconView: UIImageView!
     @IBOutlet weak var reminderIconView: UIImageView!
     @IBOutlet weak var reminderLabel: UILabel!
+    @IBOutlet weak var teamIconView: UIImageView!
     
     var challengeTapArea: UIView = {
         let view = UIView()
@@ -102,7 +103,14 @@ class TaskDetailLineView: UIView {
             setDueDate(task: task)
         }
         
-        hasContent = !reminderIconView.isHidden || !challengeIconView.isHidden || !streakIconView.isHidden || !detailLabel.isHidden
+        if task.isGroupTask {
+            teamIconView.isHidden = false
+            teamIconView.tintColor = iconColor
+        } else {
+            teamIconView.isHidden = true
+        }
+        
+        hasContent = !reminderIconView.isHidden || !challengeIconView.isHidden || !streakIconView.isHidden || !detailLabel.isHidden || !teamIconView.isHidden
         
         self.invalidateIntrinsicContentSize()
     }

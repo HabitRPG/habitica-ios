@@ -292,7 +292,7 @@ class UserManager: NSObject {
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
         let notificationIdentifier = "task\(reminder.id ?? "")-\(components.month ?? 0)\(components.day ?? 0)"
         let request = UNNotificationRequest(identifier: notificationIdentifier, content: content, trigger: trigger)
-        logger.log("⏰ Notification \(request.identifier) for \(taskText ?? "") at \(trigger.dateComponents)")
+        logger.log("⏰ Notification \(request.identifier) for \(taskText ?? "") at \(components.date?.description ?? "")")
         UNUserNotificationCenter.current().add(request) {(error) in
             if let error = error {
                 logger.log("Uh oh! We had an error: \(error)")
