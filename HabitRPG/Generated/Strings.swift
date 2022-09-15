@@ -676,6 +676,8 @@ public enum L10n {
   public static var openGooglePlay: String { return L10n.tr("Mainstrings", "open_google_play") }
   /// Open Apple ID Subscriptions
   public static var openItunes: String { return L10n.tr("Mainstrings", "open_itunes") }
+  /// You open the Mystery Box and find...
+  public static var openMysteryItem: String { return L10n.tr("Mainstrings", "open_mystery_item") }
   /// Open Website
   public static var openWebsite: String { return L10n.tr("Mainstrings", "open_website") }
   /// Organize By
@@ -766,10 +768,6 @@ public enum L10n {
   public static var rageMeter: String { return L10n.tr("Mainstrings", "rage_meter") }
   /// Randomize
   public static var randomize: String { return L10n.tr("Mainstrings", "randomize") }
-  /// You open the box and receive %@
-  public static func receivedMysteryItem(_ p1: String) -> String {
-    return L10n.tr("Mainstrings", "received_mystery_item", p1)
-  }
   /// Recipient
   public static var recipient: String { return L10n.tr("Mainstrings", "recipient") }
   /// Reject

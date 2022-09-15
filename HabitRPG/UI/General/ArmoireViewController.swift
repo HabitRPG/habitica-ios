@@ -80,7 +80,7 @@ private class ViewModel: ObservableObject {
     @Published var text: String = ""
     @Published var type: String = ""
     @Published var key: String = ""
-    @Published var value: String = ""
+    @Published var value: Float = 0
     @Published var remainingCount = 0
     
     init(gold: Double? = nil) {
@@ -122,7 +122,7 @@ private class ViewModel: ObservableObject {
     var title: String {
         switch type {
         case "experience":
-            return "+\(Int(value) ?? 0) Experience"
+            return "+\(Int(value)) Experience"
         default:
             return text
         }
@@ -326,7 +326,7 @@ class ArmoireViewController: UIHostingController<ArmoireView> {
         viewModel.text = text
         viewModel.key = key ?? ""
         if let value = value {
-            viewModel.value = "\(value)"
+            viewModel.value = value
         }
     }
     

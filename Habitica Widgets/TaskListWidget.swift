@@ -171,7 +171,7 @@ struct TaskListWidget: Widget {
     private var families: [WidgetFamily] = {
         var families: [WidgetFamily] = [.systemMedium, .systemLarge]
         if #available(iOSApplicationExtension 15.0, *) {
-            // families.append(.systemExtraLarge)
+            families.append(.systemExtraLarge)
         }
         return families
     }()

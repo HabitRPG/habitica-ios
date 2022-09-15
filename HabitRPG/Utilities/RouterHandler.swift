@@ -279,7 +279,6 @@ class RouterHandler {
         }
     }
     
-    @objc
     @discardableResult
     func handle(url: URL) -> Bool {
         if url.host == AuthenticatedCall.defaultConfiguration.host {
@@ -298,7 +297,6 @@ class RouterHandler {
         return false
     }
     
-    @objc
     @discardableResult
     func handle(urlString: String) -> Bool {
         if let url = URL(string: urlString) {
@@ -313,7 +311,6 @@ class RouterHandler {
         }
     }
     
-    @objc
     func handle(userActivity: NSUserActivity) -> Bool {
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb, let url = userActivity.webpageURL {
             return handle(url: url)

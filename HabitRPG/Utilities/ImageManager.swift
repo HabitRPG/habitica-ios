@@ -9,8 +9,7 @@
 import UIKit
 import Kingfisher
 
-@objc
-class ImageManager: NSObject {
+class ImageManager {
     static var kingfisher = KingfisherManager.shared
     static let baseURL = "https://habitica-assets.s3.amazonaws.com/mobileApp/images/"
     
@@ -87,7 +86,6 @@ class ImageManager: NSObject {
         }
     }
     
-    @objc
     static func clearImageCache() {
         ImageCache.default.clearDiskCache()
         ImageCache.default.clearMemoryCache()

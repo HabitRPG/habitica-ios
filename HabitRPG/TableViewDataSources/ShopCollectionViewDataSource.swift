@@ -10,32 +10,6 @@ import UIKit
 import Habitica_Models
 import ReactiveSwift
 
-@objc
-protocol ShopCollectionViewDataSourceProtocol: UICollectionViewDelegateFlowLayout {
-    @objc weak var delegate: ShopCollectionViewDataSourceDelegate? { get set }
-    
-    @objc var needsGearSection: Bool { get set }
-    @objc var selectedGearCategory: String? { get set }
-    @objc var collectionView: UICollectionView? { get set }
-    @objc
-    func retrieveShopInventory(_ completed: (() -> Void)?)
-    @objc
-    func dispose()
-}
-
-@objc
-class ShopCollectionViewDataSourceInstantiator: NSObject {
-    @objc
-    static func instantiate(identifier: String, delegate: ShopCollectionViewDataSourceDelegate) -> ShopCollectionViewDataSourceProtocol {
-        return ShopCollectionViewDataSource(identifier: identifier, delegate: delegate)
-    }
-    
-    @objc
-    static func instantiateTimeTravelers(delegate: ShopCollectionViewDataSourceDelegate) -> ShopCollectionViewDataSourceProtocol {
-        return TimeTravelersCollectionViewDataSource(identifier: "timeTravelersShop", delegate: delegate)
-    }
-}
-
 @objc protocol ShopCollectionViewDataSourceDelegate {
     func didSelectItem(_ item: InAppRewardProtocol?)
     func scrollViewDidScroll(_ scrollView: UIScrollView)
@@ -44,7 +18,7 @@ class ShopCollectionViewDataSourceInstantiator: NSObject {
     func updateNavBar(gold: Int, gems: Int, hourglasses: Int)
 }
 
-class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRewardProtocol>, ShopCollectionViewDataSourceProtocol {
+class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRewardProtocol> {
     @objc weak var delegate: ShopCollectionViewDataSourceDelegate?
     
     private var userRepository = UserRepository()

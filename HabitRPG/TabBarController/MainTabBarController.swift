@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 
-class MainTabBarController: UITabBarController, Themeable {
+class MainTabBarController: UITabBarController {
     
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
@@ -82,19 +82,8 @@ class MainTabBarController: UITabBarController, Themeable {
         tabBar.items?[3].accessibilityLabel = L10n.Tasks.rewards
         tabBar.items?[4].accessibilityLabel = L10n.menu
 
-        ThemeService.shared.addThemeable(themable: self)
         if let mainTabBar = tabBar as? MainTabBar {
             ThemeService.shared.addThemeable(themable: mainTabBar)
-        }
-    }
-    
-    func applyTheme(theme: Theme) {
-        if ThemeService.shared.themeMode == "dark" {
-            self.overrideUserInterfaceStyle = .dark
-        } else if ThemeService.shared.themeMode == "light" {
-            self.overrideUserInterfaceStyle = .light
-        } else {
-            self.overrideUserInterfaceStyle = .unspecified
         }
     }
     

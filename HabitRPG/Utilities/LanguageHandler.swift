@@ -8,7 +8,6 @@
 
 import Foundation
 
-@objc
 enum AppLanguage: Int {
     case english
     case danish
@@ -144,10 +143,8 @@ enum AppLanguage: Int {
     }
 }
 
-@objc
-class LanguageHandler: NSObject {
+class LanguageHandler {
     
-    @objc
     static func getAppLanguage() -> AppLanguage {
         let languageCodes = UserDefaults.standard.array(forKey: "AppleLanguages") as? [String]
         for code in languageCodes ?? [] {
@@ -161,7 +158,6 @@ class LanguageHandler: NSObject {
         return AppLanguage.english
     }
     
-    @objc
     static func setAppLanguage(_ language: AppLanguage) {
         let defaults = UserDefaults.standard
         defaults.set([language.code, "en"], forKey: "AppleLanguages")

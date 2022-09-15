@@ -577,7 +577,7 @@
 "copied_x_to_clipboard" = "Copied %@ to Clipboard";
 "open" = "Open";
 "is_open" = "Open";
-"received_mystery_item" = "You open the box and receive %@";
+"open_mystery_item" = "You open the Mystery Box and find...";
 "monday" = "Monday";
 "tuesday" = "Tuesday";
 "wednesday" = "Wednesday";

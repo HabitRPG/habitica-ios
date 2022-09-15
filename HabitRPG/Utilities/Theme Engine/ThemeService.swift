@@ -9,7 +9,6 @@
 import UIKit
 import Eureka
 
-@objc
 public class ThemeService: NSObject {
     private let defaults = UserDefaults.standard
 
@@ -25,7 +24,6 @@ public class ThemeService: NSObject {
     }
     
     private var listeners = NSHashTable<AnyObject>.weakObjects()
-    private var objcListeners = NSHashTable<AnyObject>.weakObjects()
     
     public func addThemeable(themable: Themeable, applyImmediately: Bool = true) {
         guard !listeners.contains(themable) else {
@@ -38,25 +36,12 @@ public class ThemeService: NSObject {
         }
     }
     
-    public func addThemeable(themable: ObjcThemeable, applyImmediately: Bool = true) {
-        guard !listeners.contains(themable) else {
-            return
-        }
-        objcListeners.add(themable)
-        
-        if applyImmediately {
-            themable.applyTheme()
-        }
-    }
-    
     private func applyTheme() {
-        UINavigationBar.appearance().tintColor = theme.primaryTextColor
         UINavigationBar.appearance().titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: theme.primaryTextColor
         ]
         UINavigationBar.appearance().backgroundColor = theme.contentBackgroundColor
         UINavigationBar.appearance().barTintColor = theme.contentBackgroundColor
-        UITabBar.appearance().tintColor = theme.tintColor
         UITabBar.appearance().barTintColor = theme.contentBackgroundColor
         UITabBar.appearance().backgroundColor = theme.contentBackgroundColor
         UITabBar.appearance().backgroundImage = UIImage.from(color: theme.contentBackgroundColor)
@@ -72,33 +57,20 @@ public class ThemeService: NSObject {
             UITextField.appearance().keyboardAppearance = .default
         }
 
-        UIToolbar.appearance().tintColor = theme.tintColor
         UIToolbar.appearance().backgroundColor = theme.contentBackgroundColor
         UIToolbar.appearance().barTintColor = theme.contentBackgroundColor
-        #if !targetEnvironment(macCatalyst)
-        UIRefreshControl.appearance().tintColor = theme.tintColor
-        #endif
-        UISegmentedControl.appearance().tintColor = theme.segmentedTintColor
         UISwitch.appearance().onTintColor = theme.backgroundTintColor
-        // UIButton.appearance().tintColor = theme.tintColor
         UISearchBar.appearance().backgroundColor = theme.windowBackgroundColor
-        UISearchBar.appearance().tintColor = theme.tintColor
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = theme.contentBackgroundColor
-        UITextView.appearance().tintColor = theme.tintColor
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = theme.primaryTextColor
 
         UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).textColor = theme.primaryTextColor
         UILabel.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).textColor = theme.primaryTextColor
-        UIButton.appearance(whenContainedInInstancesOf: [UITableView.self]).tintColor = theme.tintColor
-        UIButton.appearance(whenContainedInInstancesOf: [UICollectionView.self]).tintColor = theme.tintColor
-        UIButton.appearance(whenContainedInInstancesOf: [UIScrollView.self]).tintColor = theme.tintColor
         UITableViewCell.appearance().backgroundColor = theme.contentBackgroundColor
         UITableView.appearance().backgroundColor = theme.windowBackgroundColor
         UITableView.appearance().separatorColor = theme.tableviewSeparatorColor
         UICollectionView.appearance().backgroundColor = theme.windowBackgroundColor
-        
-        let view = UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self])
-        view.tintColor = theme.tintColor
+
         // Update styles via UIAppearance
         UITabBarItem.appearance().badgeColor = theme.badgeColor
         UITabBar.appearance().unselectedItemTintColor = theme.ternaryTextColor
@@ -113,9 +85,6 @@ public class ThemeService: NSObject {
         listeners.allObjects
             .compactMap { $0 as? Themeable }
             .forEach { $0.applyTheme(theme: theme) }
-        objcListeners.allObjects
-            .compactMap { $0 as? ObjcThemeable }
-            .forEach { $0.applyTheme() }
     }
     
     func updateInterfaceStyle(newStyle: UIUserInterfaceStyle) {
@@ -138,24 +107,23 @@ public class ThemeService: NSObject {
             let themeName = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") ?? ThemeName.defaultTheme
             ThemeService.shared.theme = themeName.themeClass
             
-            if let window = UIApplication.shared.delegate?.window {
-                if ThemeService.shared.themeMode == "dark" {
-                        window?.overrideUserInterfaceStyle = .dark
-                } else if ThemeService.shared.themeMode == "light" {
-                    window?.overrideUserInterfaceStyle = .light
-                } else {
-                    window?.overrideUserInterfaceStyle = .unspecified
+            UIApplication.shared.connectedScenes.map({ scene in
+                return (scene as? UIWindowScene)?.windows ?? []
+            }).forEach({ windows in
+                for window in windows {
+                    if ThemeService.shared.themeMode == "dark" {
+                            window.overrideUserInterfaceStyle = .dark
+                    } else if ThemeService.shared.themeMode == "light" {
+                        window.overrideUserInterfaceStyle = .light
+                    } else {
+                        window.overrideUserInterfaceStyle = .unspecified
+                    }
                 }
-            }
+            })
         }
     }
 }
 
 public protocol Themeable: AnyObject {
     func applyTheme(theme: Theme)
-}
-
-@objc
-public protocol ObjcThemeable {
-    func applyTheme()
 }

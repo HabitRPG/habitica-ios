@@ -194,12 +194,10 @@ class UserManager: NSObject {
         return false
     }
     
-    @objc
     func shouldDisplayTutorialStep(key: String) -> Bool {
         return !(tutorialSteps[key] ?? true)
     }
     
-    @objc
     func markTutorialAsSeen(type: String, key: String) {
         disposable.add(userRepository.updateUser(key: "flags.tutorial.\(type).\(key)", value: true).observeCompleted {})
     }

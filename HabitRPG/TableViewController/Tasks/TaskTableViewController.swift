@@ -130,18 +130,12 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     }
     
     @objc
-    func refresh() {
-        print("will refresh")
-        
+    func refresh() {        
         if let dataSource = dataSource {
             let taskRepository = TaskRepository()
             let tasks = dataSource.tasks
-            for task in tasks {
-                print(task.isSynced)
-//                print(task.text)
+            for task in tasks where !task.isSynced && !task.isSyncing {
                  taskRepository.syncTask(task).observeCompleted {}
-                print("issynced: " + String(task.isSynced))
-                print("newtask: " + String(task.isNewTask)) 
             }
             
             dataSource.retrieveData(completed: { [weak self] in

@@ -12,17 +12,17 @@ class TopHeaderCoordinator: NSObject {
     
     weak var scrollView: UIScrollView?
     private weak var topHeaderNavigationController: (UINavigationController & TopHeaderNavigationControllerProtocol)?
-    @objc weak var alternativeHeader: UIView?
-    @objc var hideNavBar = false
-    @objc var hideHeader = false {
+    weak var alternativeHeader: UIView?
+    var hideNavBar = false
+    var hideHeader = false {
         didSet {
             if didAppear {
                 topHeaderNavigationController?.shouldHideTopHeader = hideHeader
             }
         }
     }
-    @objc var followScrollView = true
-    @objc var navbarVisibleColor: UIColor? {
+    var followScrollView = true
+    var navbarVisibleColor: UIColor? {
         didSet {
             if isVisible {
                 if let navbarVisibleColor = self.navbarVisibleColor ?? topHeaderNavigationController?.defaultNavbarVisibleColor {
@@ -35,18 +35,15 @@ class TopHeaderCoordinator: NSObject {
     private var didAppear = false
     private var isVisible = false
     
-    @objc
     init(topHeaderNavigationController: UINavigationController & TopHeaderNavigationControllerProtocol) {
         self.topHeaderNavigationController = topHeaderNavigationController
     }
     
-    @objc
     init(topHeaderNavigationController: UINavigationController & TopHeaderNavigationControllerProtocol, scrollView: UIScrollView) {
         self.topHeaderNavigationController = topHeaderNavigationController
         self.scrollView = scrollView
     }
     
-    @objc
     func viewDidLoad() {
         guard let navController = topHeaderNavigationController as? TopHeaderViewController else {
             return
@@ -59,7 +56,6 @@ class TopHeaderCoordinator: NSObject {
         }
     }
     
-    @objc
     func viewWillAppear() {
         didAppear = false
         guard let navController = topHeaderNavigationController as? TopHeaderViewController else {
@@ -104,7 +100,6 @@ class TopHeaderCoordinator: NSObject {
         isVisible = true
     }
     
-    @objc
     func viewDidAppear() {
         guard let navController = topHeaderNavigationController as? TopHeaderViewController else {
             return
@@ -121,7 +116,6 @@ class TopHeaderCoordinator: NSObject {
         }
     }
     
-    @objc
     func viewWillDisappear() {
         guard let navController = topHeaderNavigationController as? TopHeaderViewController else {
             return
@@ -130,7 +124,6 @@ class TopHeaderCoordinator: NSObject {
         isVisible = false
     }
     
-    @objc
     func scrollViewDidScroll() {
         guard let navController = topHeaderNavigationController as? TopHeaderViewController else {
             return
@@ -141,7 +134,6 @@ class TopHeaderCoordinator: NSObject {
         navController.scrollView(scrollView, scrolledToPosition: scrollView.contentOffset.y)
     }
     
-    @objc
     func showHideHeader(show: Bool, animated: Bool = true) {
         guard let navController = topHeaderNavigationController as? TopHeaderViewController else {
             return

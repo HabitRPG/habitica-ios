@@ -120,35 +120,3 @@ extension DarkTheme {
     public var segmentedTintColor: UIColor { return backgroundTintColor }
     public var buttonShadowColor: UIColor { return UIColor.black }
 }
-
-@objc
-class ObjcThemeWrapper: NSObject {
-    
-    @objc public static var contentBackgroundColor: UIColor { return ThemeService.shared.theme.contentBackgroundColor }
-    @objc public static var contentBackgroundColorDimmed: UIColor { return ThemeService.shared.theme.contentBackgroundColor }
-    @objc public static var windowBackgroundColor: UIColor { return ThemeService.shared.theme.windowBackgroundColor }
-    @objc public static var backgroundTintColor: UIColor { return ThemeService.shared.theme.backgroundTintColor }
-    @objc public static var dimmBackgroundColor: UIColor { return ThemeService.shared.theme.dimmBackgroundColor }
-    @objc public static var tintColor: UIColor { return ThemeService.shared.theme.tintColor }
-    @objc public static var errorColor: UIColor { return ThemeService.shared.theme.errorColor }
-    @objc public static var warningColor: UIColor { return ThemeService.shared.theme.warningColor }
-    
-    @objc public static var primaryTextColor: UIColor { return ThemeService.shared.theme.primaryTextColor }
-    @objc public static var secondaryTextColor: UIColor { return ThemeService.shared.theme.secondaryTextColor }
-    @objc public static var dimmedTextColor: UIColor { return ThemeService.shared.theme.dimmedTextColor }
-    @objc public static var lightTextColor: UIColor { return ThemeService.shared.theme.lightTextColor }
-    @objc public static var themeIsDark: Bool { return ThemeService.shared.theme.isDark }
-    @objc public static var tableviewSeparatorColor: UIColor { return ThemeService.shared.theme.tableviewSeparatorColor }
-    
-    @objc public static var buttonShadowColor: UIColor { return ThemeService.shared.theme.buttonShadowColor }
-    
-    @objc
-    public static func updateUserInterfaceStyle(_ newStyle: UIUserInterfaceStyle) { ThemeService.shared.updateInterfaceStyle(newStyle: newStyle) }
-    
-    @objc
-    public static func addObjcThemeable(_ themeable: ObjcThemeable) {
-        ThemeService.shared.addThemeable(themable: themeable)
-    }
-    
-    @objc public static var themeMode: String { return ThemeService.shared.themeMode }
-}

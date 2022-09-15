@@ -73,15 +73,15 @@ struct StatsWidgetView : View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            ValueBar(title: "Health", value: entry.health, maxValue: entry.maxHealth, color: Color.barRed, iconName: "Heart", showLabels: entry.widgetFamily != .systemSmall)
+            ValueBar(title: L10n.health, value: entry.health, maxValue: entry.maxHealth, color: Color.barRed, iconName: "Heart", showLabels: entry.widgetFamily != .systemSmall)
             Spacer()
-            ValueBar(title: "Experience", value: entry.experience, maxValue: entry.maxExperience, color: Color.barYellow, iconName: "Experience", showLabels: entry.widgetFamily != .systemSmall)
+            ValueBar(title: L10n.experience, value: entry.experience, maxValue: entry.maxExperience, color: Color.barYellow, iconName: "Experience", showLabels: entry.widgetFamily != .systemSmall)
             Spacer()
             ValueBar(title: "Mana", value: entry.mana, maxValue: entry.maxMana, color: Color.barBlue, iconName: "Mana", showLabels: entry.widgetFamily != .systemSmall)
             if entry.widgetFamily != .systemSmall {
                 Spacer()
                 HStack {
-                    Text("Level \(entry.level)").font(.footnote).foregroundColor(Color.widgetText)
+                    Text(L10n.levelNumber(entry.level)).font(.footnote).foregroundColor(Color.widgetText)
                     Spacer()
                     Image("Gold")
                     Text("\(entry.gold)".stringWithAbbreviatedNumber()).font(.footnote).foregroundColor(Color.widgetText)

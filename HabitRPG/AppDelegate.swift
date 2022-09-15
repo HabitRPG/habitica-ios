@@ -79,7 +79,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         }
     }
 
-    @objc
     func handleLaunchArgs() {
         if ProcessInfo.processInfo.arguments.contains("UI_TESTING") {
             isBeingTested = true
@@ -105,7 +104,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         }
     }
     
-    @objc
     func setupFirebase() {
         Messaging.messaging().delegate = self
         
@@ -123,13 +121,11 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         
     }
     
-    @objc
     func saveDeviceToken(_ deviceToken: Data) {
         let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
         UserDefaults.standard.set(token, forKey: "PushNotificationDeviceToken")
     }
     
-    @objc
     func setupLogging() {
         let userID = AuthenticationManager.shared.currentUserId
         FirebaseApp.configure()
@@ -137,7 +133,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         logger.isProduction = HabiticaAppDelegate.isRunningLive()
     }
     
-    @objc
     func setupAnalytics() {
         Amplitude.instance().initializeApiKey(Secrets.amplitudeApiKey)
         Amplitude.instance().setUserId(AuthenticationManager.shared.currentUserId)
@@ -147,14 +142,12 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         ])
     }
     
-    @objc
     func setupPurchaseHandling() {
         #if !targetEnvironment(simulator)
             PurchaseHandler.shared.completionHandler()
         #endif
     }
     
-    @objc
     func setupNetworkClient() {
         NetworkAuthenticationManager.shared.currentUserId = AuthenticationManager.shared.currentUserId
         NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey
@@ -216,7 +209,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         }
     }
     
-    @objc
     func setupDatabase() {
         var config = Realm.Configuration.defaultConfiguration
         config.deleteRealmIfMigrationNeeded = true
@@ -235,12 +227,10 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         Realm.Configuration.defaultConfiguration = config
     }
     
-    @objc
     func setupRouter() {
         RouterHandler.shared.register()
     }
     
-    @objc
     func handleInitialLaunch() {
         let defaults = UserDefaults.standard
         if !defaults.bool(forKey: "wasLaunchedBefore") {
@@ -260,7 +250,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         }
     }
     
-    @objc
     func retrieveTasks(_ completed: @escaping ((Bool) -> Void)) {
         taskRepository.retrieveTasks().observeResult { (result) in
             switch result {
@@ -282,7 +271,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         }
     }
     
-    @objc
     func acceptQuestInvitation(_ completed: @escaping ((Bool) -> Void)) {
         userRepository.getUser().take(first: 1)
             .map({ (user) -> String? in
@@ -298,7 +286,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             }).start()
     }
     
-    @objc
     func rejectQuestInvitation(_ completed: @escaping ((Bool) -> Void)) {
         userRepository.getUser().take(first: 1)
             .map({ (user) -> String? in
@@ -314,7 +301,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             }).start()
     }
     
-    @objc
     func sendPrivateMessage(toUserID: String, message: String, completed: @escaping ((Bool) -> Void)) {
         socialRepository.post(inboxMessage: message, toUserID: toUserID).observeResult({ (result) in
             switch result {
@@ -326,19 +312,16 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         })
     }
     
-    @objc
     func displayNotificationInApp(text: String) {
         ToastManager.show(text: text, color: .purple)
         UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
     }
     
-    @objc
     func displayNotificationInApp(title: String, text: String) {
         ToastManager.show(text: "\(title)\n\(text)", color: .purple)
         UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
     }
     
-    @objc
     static func isRunningLive() -> Bool {
         #if targetEnvironment(simulator)
         return false
@@ -421,7 +404,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         }
     }
     
-    @objc
     static func isRunningScreenshots() -> Bool {
         #if !targetEnvironment(simulator)
         return false
@@ -436,7 +418,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
     }
     
-    @objc
     func displayInAppNotification(taskID: String, text: String) {
         let alertController = HabiticaAlertController(title: text)
         alertController.addAction(title: L10n.complete, style: .default, isMainAction: true, closeOnTap: true, identifier: nil) {[weak self] _ in
@@ -450,7 +431,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
 
 // Maintenance
 extension HabiticaAppDelegate {
-    @objc
     func handleMaintenanceScreen() -> Bool {
         let maintenanceData = configRepository.dictionary(variable: .maintenanceData)
         if let title = maintenanceData["title"] as? String, let descriptionString = maintenanceData["description"] as? String {
@@ -462,7 +442,6 @@ extension HabiticaAppDelegate {
         return false
     }
     
-    @objc
     func displayMaintenanceScreen(title: String, descriptionString: String) {
         if findMaintenanceScreen() == nil {
             let maintenanceController = MaintenanceViewController()
@@ -473,7 +452,6 @@ extension HabiticaAppDelegate {
         }
     }
     
-    @objc
     func hideMaintenanceScreen() {
         findMaintenanceScreen()?.dismiss(animated: true, completion: nil)
     }

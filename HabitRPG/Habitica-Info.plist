@@ -573,25 +573,11 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>718</string>
+	<string>719</string>
 	<key>CustomDomain</key>
 	<string>${CUSTOM_DOMAIN}</string>
 	<key>DisableSSL</key>
 	<string>${DISABLE_SSL}</string>
-	<key>Fabric</key>
-	<dict>
-		<key>APIKey</key>
-		<string>2eb3b3edb3b0f4722d37d649a5af366656e46ddd</string>
-		<key>Kits</key>
-		<array>
-			<dict>
-				<key>KitInfo</key>
-				<dict/>
-				<key>KitName</key>
-				<string>Crashlytics</string>
-			</dict>
-		</array>
-	</dict>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>

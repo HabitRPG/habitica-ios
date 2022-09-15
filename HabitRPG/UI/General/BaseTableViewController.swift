@@ -31,13 +31,6 @@ class BaseTableViewController: UITableViewController, Themeable, TutorialStepsPr
     }
     
     func applyTheme(theme: Theme) {
-        if ThemeService.shared.themeMode == "dark" {
-            self.overrideUserInterfaceStyle = .dark
-        } else if ThemeService.shared.themeMode == "light" {
-            self.overrideUserInterfaceStyle = .light
-        } else {
-            self.overrideUserInterfaceStyle = .unspecified
-        }
         tableView.backgroundColor = theme.windowBackgroundColor
         tableView.separatorColor = theme.tableviewSeparatorColor
         tableView.reloadData()
