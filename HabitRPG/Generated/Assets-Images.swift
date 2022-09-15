@@ -281,6 +281,7 @@ internal enum Asset {
   internal static let taskLockDark = ImageAsset(name: "task_lock_dark")
   internal static let taskLockDisabled = ImageAsset(name: "task_lock_disabled")
   internal static let taskLockLight = ImageAsset(name: "task_lock_light")
+  internal static let teamPlan = ImageAsset(name: "team_plan")
   internal static let wonChallengeIcon = ImageAsset(name: "won_challenge_icon")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
