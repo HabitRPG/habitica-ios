@@ -931,6 +931,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				INFOPLIST_FILE = "Habitica ModelsTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-ModelsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -946,6 +947,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				INFOPLIST_FILE = "Habitica ModelsTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-ModelsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
