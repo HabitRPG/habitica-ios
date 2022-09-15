@@ -53,7 +53,6 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     private var headerView: UIView?
     private var alternativeHeaderView: UIView?
     private let backgroundView = UIView()
-    private let bottomBorderView = UIView()
     private let upperBackgroundView = UIView()
     
     private var scrollableView: UIScrollView?
@@ -130,12 +129,15 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         return UIApplication.shared.findKeyWindow()?.safeAreaInsets.top ?? 0
     }
     
-     @objc public var contentInset: CGFloat {
+    @objc public var contentInset: CGFloat {
         if self.shouldHideTopHeader {
-            return 0
+           return 0
         }
-        return self.topHeaderHeight + self.bottomBorderView.frame.size.height
-    }
+        if statusBarHeight == 59 {
+            return topHeaderHeight + 10
+        }
+        return self.topHeaderHeight
+   }
     
      @objc public var contentOffset: CGFloat {
         if (self.backgroundView.frame.origin.y + self.backgroundView.frame.size.height) < self.bgViewOffset {
@@ -177,7 +179,6 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         if let headerView = headerView {
             backgroundView.addSubview(headerView)
         }
-        backgroundView.addSubview(bottomBorderView)
         
         view.insertSubview(upperBackgroundView, belowSubview: navigationBar)
         view.insertSubview(backgroundView, belowSubview: upperBackgroundView)
@@ -199,7 +200,6 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         defaultNavbarHiddenColor = theme.navbarHiddenColor
         defaultNavbarVisibleColor = theme.contentBackgroundColor
         visibleTintColor = theme.primaryTextColor
-        bottomBorderView.backgroundColor = theme.contentBackgroundColor
         backgroundView.backgroundColor = theme.contentBackgroundColor
         upperBackgroundView.backgroundColor = theme.contentBackgroundColor
         setNavigationBarColors()
@@ -211,9 +211,8 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         let parentFrame = view.frame
         let topHeaderHeight = self.topHeaderHeight
         let width = parentFrame.size.width + parentFrame.origin.x
-        backgroundView.frame = CGRect(x: -parentFrame.origin.x, y: headerYPosition, width: width, height: topHeaderHeight + 2)
+        backgroundView.frame = CGRect(x: -parentFrame.origin.x, y: headerYPosition, width: width, height: topHeaderHeight)
         upperBackgroundView.frame = CGRect(x: -parentFrame.origin.x, y: 0, width: width, height: bgViewOffset)
-        bottomBorderView.frame = CGRect(x: 0, y: backgroundView.frame.size.height - 2, width: width, height: 2)
         headerView?.frame = CGRect(x: 0, y: 0, width: width, height: defaultHeaderHeight)
         if let header = alternativeHeaderView {
             if topHeaderHeight <= 0 {
@@ -350,7 +349,6 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         self.headerView?.removeFromSuperview()
         if let header = self.alternativeHeaderView {
             self.backgroundView.addSubview(header)
-            self.bottomBorderView.isHidden = true
             header.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: alternativeHeaderHeight)
             header.alpha = 1
             header.layoutSubviews()
@@ -367,7 +365,6 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         self.alternativeHeaderView = nil
         if let header = self.headerView {
             self.backgroundView.addSubview(header)
-            self.bottomBorderView.isHidden = false
         }
         viewWillLayoutSubviews()
     }
