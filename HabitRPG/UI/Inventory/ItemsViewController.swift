@@ -163,17 +163,7 @@ class ItemsViewController: BaseTableViewController {
             }
             if item.key == "inventory_present" {
                 BottomSheetMenuitem(title: L10n.open) {[weak self] in
-                    self?.inventoryRepository.openMysteryItem()
-                        .on(value: { item in
-                            if let item = item {
-                                DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-                                    self?.showMysteryitemDialog(item: item)
-                                }
-                            }
-                        })
-                        .observeCompleted {
-                        self?.dismissIfNeeded()
-                    }
+                    self?.openMysteryItem()
                 }
             }
             if item.key != "inventory_present" && item.itemType == ItemType.special {
@@ -187,6 +177,20 @@ class ItemsViewController: BaseTableViewController {
             }
         })
         present(sheet, animated: true)
+    }
+    
+    private func openMysteryItem() {
+        inventoryRepository.openMysteryItem()
+            .on(value: {[weak self] item in
+                if let item = item {
+                    DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                        self?.showMysteryitemDialog(item: item)
+                    }
+                }
+            })
+            .observeCompleted {[weak self] in
+            self?.dismissIfNeeded()
+        }
     }
     
     private func dismissIfNeeded() {
@@ -213,13 +217,20 @@ class ItemsViewController: BaseTableViewController {
     }
     
     private func showMysteryitemDialog(item: GearProtocol) {
-        let imageAlert = ImageOverlayView(imageName: "shop_\(item.key ?? "")", title: L10n.receivedMysteryItem(item.text ?? ""), message: nil)
+        let imageAlert = ImageOverlayView(imageName: "shop_\(item.key ?? "")", title: L10n.openMysteryItem, message: nil)
+        let text = NSMutableAttributedString(string: item.text ?? "")
+        text.addAttribute(.font, value: UIFont.systemFont(ofSize: 16, weight: .semibold))
+        text.addAttribute(.foregroundColor, value: ThemeService.shared.theme.primaryTextColor)
+        let notes = NSMutableAttributedString(string: item.notes ?? "")
+        notes.addAttribute(.font, value: UIFont.systemFont(ofSize: 14))
+        notes.addAttribute(.foregroundColor, value: ThemeService.shared.theme.secondaryTextColor)
+        imageAlert.attributedMessage = text + NSAttributedString(string: "\n\n") + notes
         imageAlert.addAction(title: L10n.equip, isMainAction: true) {[weak self] _ in
             self?.inventoryRepository.equip(type: "equipped", key: item.key ?? "").observeCompleted {}
         }
+        imageAlert.addAction(title: L10n.close)
         imageAlert.arrangeMessageLast = true
         imageAlert.containerViewSpacing = 12
-        imageAlert.setCloseAction(title: L10n.close, handler: {})
         imageAlert.imageHeight = 99
         imageAlert.enqueue()
     }

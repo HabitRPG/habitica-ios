@@ -615,7 +615,7 @@ class TaskFormViewModel: ObservableObject {
     @Published var notes: String = ""
     @Published var priority: Float = 1.0
     @Published var frequency: String = "daily"
-    @Published var value: String = "1"
+    @Published var value: String = "0"
     @Published var stat: String = "str"
     @Published var up: Bool = true
     @Published var down: Bool = false
@@ -664,7 +664,7 @@ class TaskFormViewModel: ObservableObject {
             _priority = Published(initialValue: task?.priority ?? 1.0)
             _frequency = Published(initialValue: task?.frequency ?? "daily")
             _stat = Published(initialValue: task?.attribute ?? "str")
-            _value = Published(initialValue: String(task?.value ?? 1))
+            _value = Published(initialValue: String(task?.value ?? 0))
             _up = Published(initialValue: task?.up ?? true)
             _down = Published(initialValue: task?.down ?? false)
             _everyX = Published(initialValue: task?.everyX ?? 1)
@@ -1032,7 +1032,6 @@ class TaskFormController: UIHostingController<TaskFormView> {
         if ThemeService.shared.theme.isDark && viewModel.taskTintColor.uiColor() == .purple300 {
             viewModel.taskTintColor = Color(.purple500)
         }
-        overrideUserInterfaceStyle = ThemeService.shared.theme.isDark ? .dark : .light
         userRepository.getUser().on(value: {[weak self] user in
             self?.viewModel.showStatAllocation = user.preferences?.allocationMode == "taskbased"
         }).start()

@@ -58,6 +58,8 @@ struct BottomSheetMenu<Title: View, MenuItems: View>: View {
     var iconURL: URL?
     let menuItems: MenuItems
     
+    @State private var isAppeared = false
+    
     init(_ title: Title, iconURL: String? = nil, @ViewBuilder menuItems: () -> MenuItems) {
         self.title = title
         if let url = iconURL {
@@ -79,9 +81,17 @@ struct BottomSheetMenu<Title: View, MenuItems: View>: View {
                 if let url = iconURL {
                     KFImage(url).frame(width: 70, height: 70)
                 }
-            menuItems
+                menuItems
+                .offset(y: isAppeared ? 0 : 35)
+                .animation(.interpolatingSpring(stiffness: 300, damping: 15).delay(0.2), value: isAppeared)
+                .opacity(isAppeared ? 1 : 0)
+                .animation(.easeInOut.delay(0.1), value: isAppeared)
         }.padding(.horizontal, 24)
             .padding(.top, 20)
+            .padding(.bottom, 12)
+            .onAppear {
+                isAppeared = true
+            }
     }
 }
 

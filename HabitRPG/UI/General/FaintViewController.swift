@@ -38,7 +38,9 @@ private class ViewModel: ObservableObject {
     @Published var lossText: String = ""
     
     init() {
-        userRepository.getUser().on(value: { user in
+        userRepository.getUser()
+            .take(first: 1)
+            .on(value: { user in
             self.lossText = L10n.Faint.subtitle(String((user.stats?.level ?? 1) - 1), String(Int(user.stats?.gold ?? 0)))
         }).start()
     }
@@ -54,17 +56,32 @@ struct FaintView: View {
     @State var appear = false
     @State var isReviving = false
     @ObservedObject private var viewModel = ViewModel()
+    private let positions = (0..<5).map { _ in Int.random(in: 5...50) }
     
     var body: some View {
         VStack(spacing: 0) {
             Spacer()
             ZStack {
+                ForEach(0..<6, id: \.self) { index in
+                    Image(uiImage: HabiticaIcons.imageOfGoldReward)
+                        .offset(x: CGFloat(-90 + (((index % 2 == 0) ? -1 : 1) * positions[index])), y: appear ? -90 : 0)
+                        .scaleEffect(appear ? 1.0 : 0.1)
+                        .opacity(appear ? 0 : 1.0)
+                        .animation(.easeOut(duration: 4).delay(Double(index)).repeatForever(autoreverses: false), value: appear)
+                }.offset(y: 20)
+                ForEach(0..<6, id: \.self) { index in
+                    Image(uiImage: HabiticaIcons.imageOfGoldReward)
+                        .offset(x: CGFloat(90 + (((index % 2 == 0) ? -1 : 1) * positions[index])), y: appear ? -90 : 0)
+                        .scaleEffect(appear ? 1.0 : 0.1)
+                        .opacity(appear ? 0 : 1.0)
+                        .animation(.easeOut(duration: 4).delay(Double(index)).repeatForever(autoreverses: false), value: appear)
+                }.offset(y: 20)
                 Image(Asset.faintGhost.name)
-                    .offset(x: 0, y: appear ? -7 : 3)
-                    .animation(.easeInOut(duration: 2.5).repeatForever(autoreverses: true))
+                    .offset(y: appear ? -10 : 0)
+                    .animation(.easeInOut(duration: 4).repeatForever(autoreverses: true))
                     .onAppear { appear = true }
                 Image(Asset.faintHeart.name)
-                    .offset(y: 17)
+                    .offset(y: 25)
             }
             Text(L10n.Faint.title)
                 .font(.system(size: 30, weight: .bold))
