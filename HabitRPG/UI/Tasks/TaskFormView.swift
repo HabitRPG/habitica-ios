@@ -58,7 +58,10 @@ struct DifficultyPicker: View {
                 difficultyOption(text: L10n.Tasks.Form.hard, value: 2.0)
                     .accessibilityLabel("Difficulty Hard")
             } else {
-                // Fallback on earlier versions
+                difficultyOption(text: L10n.Tasks.Form.trivial, value: 0.1)
+                difficultyOption(text: L10n.Tasks.Form.easy, value: 1.0)
+                difficultyOption(text: L10n.Tasks.Form.medium, value: 1.5)
+                difficultyOption(text: L10n.Tasks.Form.hard, value: 2.0)
             }
         }
     }
@@ -97,7 +100,8 @@ struct HabitControlsFormView: View {
                 buildOption(text: L10n.Tasks.Form.negative, icon: HabiticaIcons.imageOfHabitControlMinus(taskTintColor: taskColor, isActive: isDown), isActive: $isDown)
                     .accessibilityLabel("Negtive." + isNegativeActive)
             } else {
-                // Fallback on earlier versions
+                buildOption(text: L10n.Tasks.Form.positive, icon: HabiticaIcons.imageOfHabitControlPlus(taskTintColor: taskColor, isActive: isUp), isActive: $isUp)
+                buildOption(text: L10n.Tasks.Form.negative, icon: HabiticaIcons.imageOfHabitControlMinus(taskTintColor: taskColor, isActive: isDown), isActive: $isDown)
             }
         }
     }
