@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Habitica_Models.h"
+#import "Habitica_Models-Swift.h"
 
 
 @interface Test: NSObject
