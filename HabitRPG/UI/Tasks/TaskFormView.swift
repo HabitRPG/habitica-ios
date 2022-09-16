@@ -27,7 +27,6 @@ struct DifficultyPicker: View {
     
     private let theme = ThemeService.shared.theme
     
-    @available(iOS 14.0, *)
     @ViewBuilder
     func difficultyOption(text: String, value: Float) -> some View {
         let color: Color = .accentColor
