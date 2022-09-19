@@ -35,13 +35,13 @@ struct HabiticaButtonUI<Label: View>: View {
 
 private class ViewModel: ObservableObject {
     let userRepository = UserRepository()
-    @Published var lossText: String = ""
+    @Published var lossText: LocalizedStringKey = ""
     
     init() {
         userRepository.getUser()
             .take(first: 1)
             .on(value: { user in
-            self.lossText = L10n.Faint.subtitle(String((user.stats?.level ?? 1) - 1), String(Int(user.stats?.gold ?? 0)))
+            self.lossText = LocalizedStringKey(L10n.Faint.subtitle(String((user.stats?.level ?? 1) - 1), String(Int(user.stats?.gold ?? 0))))
         }).start()
     }
 }
@@ -56,7 +56,7 @@ struct FaintView: View {
     @State var appear = false
     @State var isReviving = false
     @ObservedObject private var viewModel = ViewModel()
-    private let positions = (0..<5).map { _ in Int.random(in: 5...50) }
+    private let positions = (0..<6).map { _ in Int.random(in: 5...50) }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -67,7 +67,7 @@ struct FaintView: View {
                         .offset(x: CGFloat(-90 + (((index % 2 == 0) ? -1 : 1) * positions[index])), y: appear ? -90 : 0)
                         .scaleEffect(appear ? 1.0 : 0.1)
                         .opacity(appear ? 0 : 1.0)
-                        .animation(.easeOut(duration: 4).delay(Double(index)).repeatForever(autoreverses: false), value: appear)
+                        .animation(.easeOut(duration: 4).delay(4 / Double(index+1)).repeatForever(autoreverses: false), value: appear)
                 }.offset(y: 20)
                 ForEach(0..<6, id: \.self) { index in
                     Image(uiImage: HabiticaIcons.imageOfGoldReward)

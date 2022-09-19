@@ -124,7 +124,7 @@ private class ViewModel: ObservableObject {
         case "experience":
             return "+\(Int(value)) Experience"
         default:
-            return text
+            return text.localizedCapitalized
         }
     }
     
@@ -176,7 +176,7 @@ struct ArmoireView: View {
                     .foregroundColor(Color.clear)
                     .animatingOverlay(for: viewModel.gold)
                     .animation(.linear(duration: 2))
-                    .foregroundColor(Color(UIColor.yellow1))
+                    .foregroundColor(Color(ThemeService.shared.theme.isDark ? UIColor.yellow500 : UIColor.yellow1))
                     .font(.system(size: 20, weight: .bold))
                     .onAppear {
                         viewModel.gold -= 100
