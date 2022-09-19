@@ -31,8 +31,6 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     var sourceIndexPath: IndexPath?
     var snapshot: UIView?
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -122,6 +120,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
             scrollToTask(with: taskId)
             scrollToTaskAfterLoading = nil
         }
+        Measurements.stop(identifier: "task list loaded")
     }
     
     override func viewDidLayoutSubviews() {

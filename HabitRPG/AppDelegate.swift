@@ -40,6 +40,8 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     private let configRepository = ConfigRepository.shared
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        Measurements.start(identifier: "didFinishLaunchingWithOptions")
+        Measurements.start(identifier: "task list loaded")
         logger = RemoteLogger()
         self.application = application
         
@@ -61,7 +63,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         
         handleInitialLaunch()
         applySearchAdAttribution()
-        
+        Measurements.stop(identifier: "didFinishLaunchingWithOptions")
         return true
     }
 
@@ -341,31 +343,24 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         if defaults.bool(forKey: "userWasAttributed") {
             return
         }
-        Analytics.logEvent("attribution_begin", parameters: nil)
-        DispatchQueue.global(qos: .default).async {
-            Analytics.logEvent("attribution_attempt", parameters: nil)
+        DispatchQueue.global(qos: .background).async {
             do {
             let attributionToken = try AAAttribution.attributionToken()
-            Analytics.logEvent("attribution_token_collected", parameters: nil)
             if let url = URL(string: "https://api-adservices.apple.com/api/v1/") {
                 let request = NSMutableURLRequest(url: url)
                 request.httpMethod = "POST"
                 request.setValue("text/plain", forHTTPHeaderField: "Content-Type")
                 request.httpBody = Data(attributionToken.utf8)
                 let task = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
-                    Analytics.logEvent("attribution_data_collected", parameters: nil)
                     if let error = error {
                         logger.log(error)
-                        Analytics.logEvent("attribution_failed", parameters: ["point": error.localizedDescription])
                         return
                     }
                     guard let data = data else {
-                        Analytics.logEvent("attribution_failed_no_data", parameters: ["point": "no data"])
                         return
                     }
                     do {
                         guard let data = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
-                            Analytics.logEvent("attribution_failed_json", parameters: ["point": "no data"])
                             return
                         }
                         if let campaignId = data["campaignId"] as? Int {
@@ -380,26 +375,21 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                             analyticsData["keyword"] = data["iad-keyword"]
                             analyticsData["keywordMatchtype"] = data["iad-keyword-matchtype"]
                             defaults.set(true, forKey: "userWasAttributed")
-                            HabiticaAnalytics.shared.log("adAttribution", withEventProperties: analyticsData)
                             Amplitude.instance().setUserProperties([
                                 "clickedSearchAd": data["iad-attribution"] ?? "",
                                 "searchAdName": data["iad-campaign-name"] ?? "",
                                 "searchAdConversionDate": data["iad-conversion-date"] ?? ""
                             ])
                         } else {
-                            Analytics.logEvent("attribution_failed_cid", parameters: ["point": "no campaignId"])
                         }
                     } catch {
                         logger.log(error)
-                        Analytics.logEvent("attribution_failed", parameters: ["point": error.localizedDescription])
                     }
                 }
                 task.resume()
-            } else {
-                Analytics.logEvent("attribution_failed_no_token", parameters: ["point": "No token"])
             }
             } catch {
-                Analytics.logEvent("attribution_failed", parameters: ["error": error.localizedDescription])
+                // pass
             }
         }
     }

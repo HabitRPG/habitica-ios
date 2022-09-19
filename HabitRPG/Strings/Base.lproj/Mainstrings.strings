@@ -747,7 +747,7 @@
 "tutorials.stats" = "Tap the gray button to allocate lots of your stats at once, or tap the arrows to add them one point at a time.";
 "tutorials.spells" = "Skills are special abilities that have powerful effects! Tap on a skill to use it. It will cost Mana (the blue bar), which you earn by checking in every day and by completing your real-life tasks. Check out the FAQ in the menu for more info!";
 "faint.title" = "You ran out of Health!";
-"faint.subtitle" = "You’ll drop to level %s, lose %s Gold, and break a piece of Equipment…";
+"faint.subtitle" = "You’ll drop to **level %s**, lose **%s Gold**, and break a **piece of Equipment**…";
 "faint.dont_despair" = "Don't despair!";
 "faint.good_luck_text" = "But you can get them all back with hard work! Good luck—you’ll do great. ";
 "faint.button" = "Refill Health & Try Again";
@@ -762,7 +762,7 @@
 "armoire.rate_food_title" = "20%% Piece of Food";
 "armoire.rate_food_description" = "You’ll receive one of the ten types of Food. During special events, normal foods will change to their cake or candy counterparts.";
 "armoire.rate_experience_title" = "20%% Experience points";
-"armoire.rate_experience_description" = "The amount gained varies randomly from 10 to 50";
+"armoire.rate_experience_description" = "The amount gained varies randomly from 10 to 50.";
 "armoire.equipment_remaining" = "Equipment Remaining: %d";
 "agree_guidelines_prompt" = "I agree to follow the guidelines";
 "rage_meter" = "Rage Meter";

@@ -1260,7 +1260,7 @@ public enum L10n {
     public static var rateEquipmentDescription: String { return L10n.tr("Mainstrings", "armoire.rate_equipment_description") }
     /// 60%% Piece of Equipment
     public static var rateEquipmentTitle: String { return L10n.tr("Mainstrings", "armoire.rate_equipment_title") }
-    /// The amount gained varies randomly from 10 to 50
+    /// The amount gained varies randomly from 10 to 50.
     public static var rateExperienceDescription: String { return L10n.tr("Mainstrings", "armoire.rate_experience_description") }
     /// 20%% Experience points
     public static var rateExperienceTitle: String { return L10n.tr("Mainstrings", "armoire.rate_experience_title") }
@@ -1448,7 +1448,7 @@ public enum L10n {
     public static var dontDespair: String { return L10n.tr("Mainstrings", "faint.dont_despair") }
     /// But you can get them all back with hard work! Good luck—you’ll do great. 
     public static var goodLuckText: String { return L10n.tr("Mainstrings", "faint.good_luck_text") }
-    /// You’ll drop to level %s, lose %s Gold, and break a piece of Equipment…
+    /// You’ll drop to **level %s**, lose **%s Gold**, and break a **piece of Equipment**…
     public static func subtitle(_ p1: UnsafePointer<CChar>, _ p2: UnsafePointer<CChar>) -> String {
       return L10n.tr("Mainstrings", "faint.subtitle", p1, p2)
     }

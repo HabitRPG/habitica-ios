@@ -250,39 +250,49 @@ class MainMenuViewController: BaseTableViewController {
         tableView.reloadData()
     }
     
+    private static let subscriptionFooterTag = 11111
+    
+    fileprivate func setupFooter() {
+        if configRepository.bool(variable: .showSubscriptionBanner) {
+            if tableView.tableFooterView?.tag == MainMenuViewController.subscriptionFooterTag {
+                return
+            }
+            let view = SubscriptionPromoView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
+            view.onButtonTapped = { [weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.subscriptionSegue.rawValue, sender: self) }
+            view.tag = MainMenuViewController.subscriptionFooterTag
+            tableView.tableFooterView = view
+        } else if let promo = activePromo {
+            if !UserDefaults.standard.bool(forKey: "hide\(promo.identifier)") {
+                let promoTag = promo.identifier.hashValue
+                if tableView.tableFooterView?.tag == promoTag {
+                    return
+                }
+                let view = PromoMenuView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
+                promo.configurePromoMenuView(view: view)
+                view.onButtonTapped = { [weak self] in
+                    if self?.activePromo?.isWebPromo == true {
+                        self?.perform(segue: StoryboardSegue.Main.showWebPromoSegue)
+                    } else {
+                        self?.perform(segue: StoryboardSegue.Main.showPromoInfoSegue)
+                    }
+                }
+                view.onCloseButtonTapped = { [weak self] in
+                    self?.tableView.tableFooterView = nil
+                    self?.tableView.reloadData()
+                    UserDefaults.standard.set(true, forKey: "hide\(promo.identifier)")
+                }
+                view.tag = promoTag
+                tableView.tableFooterView = view
+            } else {
+                tableView.tableFooterView = nil
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "MainTableviewCell", bundle: nil), forCellReuseIdentifier: "Cell")
-
-        topHeaderCoordinator?.hideNavBar = !configRepository.enableIPadUI()
-        if !configRepository.enableIPadUI() {
-            topHeaderCoordinator?.alternativeHeader = navbarView
-            topHeaderCoordinator?.navbarVisibleColor = navbarColor
-            navbarView.backgroundColor = navbarColor
-        } else {
-            navbarColor = ThemeService.shared.theme.contentBackgroundColor
-        }
-        topHeaderCoordinator?.followScrollView = false
-        
-        navbarView.messagesAction = {[weak self] in
-            self?.perform(segue: StoryboardSegue.Main.inboxSegue)
-        }
-        navbarView.settingsAction = {[weak self] in
-            self?.perform(segue: StoryboardSegue.Main.settingsSegue)
-        }
-        navbarView.notificationsAction = {[weak self] in
-            let viewController = StoryboardScene.Main.notificationsNavigationController.instantiate()
-            viewController.modalPresentationStyle = .popover
-            guard let popover = viewController.popoverPresentationController else {
-                return
-            }
-            popover.sourceView = self?.navbarView
-            popover.sourceRect = self?.navbarView.notificationsButton.frame ?? CGRect.zero
-            self?.present(viewController, animated: true, completion: nil)
-        }
-        navbarView.profileAction = {[weak self] in
-            RouterHandler.shared.handle(urlString: "/profile/\(self?.user?.id ?? "")")
-        }
+        setupHeader()
         
         #if !targetEnvironment(macCatalyst)
         let refreshControl = UIRefreshControl()
@@ -291,9 +301,7 @@ class MainMenuViewController: BaseTableViewController {
         #endif
         
         setupMenu()
-        
-        activePromo = configRepository.activePromotion()
-        
+                
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
         })
@@ -336,34 +344,7 @@ class MainMenuViewController: BaseTableViewController {
                 self?.navbarView.notificationsBadge.isHidden = true
             }
         }).start())
-        
-        tableView.estimatedRowHeight = 44
-        tableView.rowHeight = UITableView.automaticDimension
-        
-        if configRepository.bool(variable: .showSubscriptionBanner) {
-            let view = SubscriptionPromoView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
-            view.onButtonTapped = { [weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.subscriptionSegue.rawValue, sender: self) }
-            tableView.tableFooterView = view
-        } else if let promo = activePromo {
-            if !UserDefaults.standard.bool(forKey: "hide\(promo.identifier)") {
-                let view = PromoMenuView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
-                promo.configurePromoMenuView(view: view)
-                view.onButtonTapped = { [weak self] in
-                    if self?.activePromo?.isWebPromo == true {
-                        self?.perform(segue: StoryboardSegue.Main.showWebPromoSegue)
-                    } else {
-                        self?.perform(segue: StoryboardSegue.Main.showPromoInfoSegue)
-                    }
-                }
-                view.onCloseButtonTapped = { [weak self] in
-                    self?.tableView.tableFooterView = nil
-                    self?.tableView.reloadData()
-                    UserDefaults.standard.set(true, forKey: "hide\(promo.identifier)")
-                }
-                tableView.tableFooterView = view
-            }
-        }
-        
+                
         disposable.inner.add(contentRepository.getWorldState()
                                 .combineLatest(with: inventoryRepository.getCurrentTimeLimitedItems())
                                 .on(value: {[weak self] (worldState, items) in
@@ -380,7 +361,9 @@ class MainMenuViewController: BaseTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        activePromo = configRepository.activePromotion()
         updatePromoCells()
+        setupFooter()
         
         if activePromo != nil {
                 promoTimer?.invalidate()
@@ -433,6 +416,38 @@ class MainMenuViewController: BaseTableViewController {
         navbarColor = theme.navbarHiddenColor
         tableView.backgroundColor = theme.contentBackgroundColor
         tableView.reloadData()
+    }
+    
+    private func setupHeader() {
+        topHeaderCoordinator?.hideNavBar = !configRepository.enableIPadUI()
+        if !configRepository.enableIPadUI() {
+            topHeaderCoordinator?.alternativeHeader = navbarView
+            topHeaderCoordinator?.navbarVisibleColor = navbarColor
+            navbarView.backgroundColor = navbarColor
+        } else {
+            navbarColor = ThemeService.shared.theme.contentBackgroundColor
+        }
+        topHeaderCoordinator?.followScrollView = false
+        
+        navbarView.messagesAction = {[weak self] in
+            self?.perform(segue: StoryboardSegue.Main.inboxSegue)
+        }
+        navbarView.settingsAction = {[weak self] in
+            self?.perform(segue: StoryboardSegue.Main.settingsSegue)
+        }
+        navbarView.notificationsAction = {[weak self] in
+            let viewController = StoryboardScene.Main.notificationsNavigationController.instantiate()
+            viewController.modalPresentationStyle = .popover
+            guard let popover = viewController.popoverPresentationController else {
+                return
+            }
+            popover.sourceView = self?.navbarView
+            popover.sourceRect = self?.navbarView.notificationsButton.frame ?? CGRect.zero
+            self?.present(viewController, animated: true, completion: nil)
+        }
+        navbarView.profileAction = {[weak self] in
+            RouterHandler.shared.handle(urlString: "/profile/\(self?.user?.id ?? "")")
+        }
     }
     
     private func setupMenu() {
