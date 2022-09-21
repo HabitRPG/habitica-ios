@@ -1244,7 +1244,7 @@ public enum L10n {
   public enum Armoire {
     /// Armoire Drop rates
     public static var dropRate: String { return L10n.tr("Mainstrings", "armoire.drop_rate") }
-    /// Enchanted Armoire Drop Rates
+    /// Enchanted Armoire drop rates
     public static var enchantedArmoireDropRates: String { return L10n.tr("Mainstrings", "armoire.enchanted_armoire_drop_rates") }
     /// You find a piece of rare Equipment in the Armoire!
     public static var equipment: String { return L10n.tr("Mainstrings", "armoire.equipment") }

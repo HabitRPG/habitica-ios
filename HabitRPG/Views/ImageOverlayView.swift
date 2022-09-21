@@ -27,6 +27,7 @@ class ImageOverlayView: HabiticaAlertController {
         }
         set {
             imageHeightConstraint?.constant = newValue ?? 0
+            updateViewConstraints()
         }
     }
     

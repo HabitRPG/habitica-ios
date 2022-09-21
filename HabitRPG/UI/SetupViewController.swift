@@ -186,6 +186,9 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func completeSetup() {
+        if !tagsToCreate.isEmpty || !createdTags.isEmpty {
+            return
+        }
         UserDefaults.standard.set(false, forKey: "isInSetup")
         UserDefaults.standard.set(0, forKey: "currentSetupStep")
         if let viewController = taskSetupViewController {

@@ -29,6 +29,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @IBOutlet weak var buyButton: UIView!
     @IBOutlet weak var buyLabel: UILabel!
     @IBOutlet weak var currencyCountView: CurrencyCountView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var closableShopModal: HRPGCloseableShopModalView!
     @IBOutlet weak var pinButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
@@ -39,6 +40,12 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     
     private var bulkView: HRPGBulkPurchaseView?
     var itemView: HRPGSimpleShopItemView?
+    
+    private var isPurchasing = false {
+        didSet {
+            updateBuyButton()
+        }
+    }
 
     private var user: UserProtocol? {
         didSet {
@@ -226,6 +233,18 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         if reward?.isValid == false {
             return
         }
+        UIView.animate(withDuration: 0.2) {
+            if self.isPurchasing {
+                self.currencyCountView.isHidden = true
+                self.buyLabel.isHidden = true
+                self.activityIndicator.isHidden = false
+            } else {
+                self.currencyCountView.isHidden = false
+                self.buyLabel.isHidden = false
+                self.activityIndicator.isHidden = true
+            }
+        }
+        
         var isLocked = itemIsLocked()
         if let reward = self.reward {
             let totalValue = Int(reward.value) * purchaseQuantity
@@ -386,7 +405,6 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         }
         
         if reward?.key?.isEmpty == false {
-            self.dismiss(animated: true, completion: nil)
             var currency = Currency.gold
             if let currencyString = reward?.currency, let thisCurrency = Currency(rawValue: currencyString) {
                 currency = thisCurrency
@@ -413,6 +431,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         return
                     }
                 }
+                self.isPurchasing = true
                 self.buyItem(quantity: self.purchaseQuantity)
             }
         }
@@ -426,6 +445,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         var value = 0
         var successBlock = {}
         var text = ""
+        var failureBlock = {[weak self] in
+            self?.isPurchasing = false
+        }
         if let inAppReward = reward {
             key = inAppReward.key ?? ""
             purchaseType = inAppReward.purchaseType ?? ""
@@ -436,8 +458,8 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 currency = thisCurrency
             }
             successBlock = {
+                self.dismiss(animated: true, completion: nil)
                 self.userRepository.retrieveInAppRewards().observeCompleted {
-                    
                 }
             }
         }
@@ -451,6 +473,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     case .success:
                         successBlock()
                     case .failure:
+                        failureBlock()
                         HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: self?.user)
                     }
                 })
@@ -463,6 +486,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     case .success:
                         successBlock()
                     case .failure:
+                        failureBlock()
                         HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: self?.user)
                     }
                 })
@@ -473,6 +497,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             case .success:
                 successBlock()
             case .failure:
+                failureBlock()
                 HRPGBuyItemModalViewController.displayInsufficientGemsModal()
                 }
             })
@@ -485,6 +510,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             case .success:
                 successBlock()
             case .failure:
+                failureBlock()
                     if key == "gem" {
                         HRPGBuyItemModalViewController.displayGemCapReachedModal()
                     } else {
@@ -503,6 +529,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 case .success:
                     successBlock()
                 case .failure:
+                    failureBlock()
                     HRPGBuyItemModalViewController.displayInsufficientGoldModal()
                     }
                 })
@@ -512,6 +539,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     case .success:
                         successBlock()
                     case .failure:
+                        failureBlock()
                         HRPGBuyItemModalViewController.displayInsufficientGoldModal()
                         }
                     }
@@ -521,6 +549,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 case .success:
                     successBlock()
                 case .failure:
+                    failureBlock()
                     HRPGBuyItemModalViewController.displayInsufficientGoldModal()
                     }
                 })
@@ -535,8 +564,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         })
         alert.addCloseAction()
         if delayDisplay {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                // delay a bit to give the buying modal a chance to disappear
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
                 alert.enqueue()
             }
         } else {
@@ -547,8 +575,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     private static func displayInsufficientGoldModal() {
         let alert = prepareInsufficientModal(title: L10n.notEnoughGold, message: L10n.completeMoreTasks, image: Asset.insufficientGold.image)
         alert.addAction(title: L10n.takeMeBack, isMainAction: true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            // delay a bit to give the buying modal a chance to disappear
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
             alert.enqueue()
         }
     }
@@ -566,8 +593,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             })
             alert.addCloseAction()
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            // delay a bit to give the buying modal a chance to disappear
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
             alert.enqueue()
         }
     }
@@ -575,8 +601,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     private static func displayGemCapReachedModal() {
         let alert = prepareInsufficientModal(title: L10n.monthlyGemCapReached, message: L10n.Inventory.noGemsLeft, image: Asset.insufficientGems.image)
         alert.addAction(title: L10n.takeMeBack, isMainAction: true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            // delay a bit to give the buying modal a chance to disappear
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
             alert.enqueue()
         }
     }

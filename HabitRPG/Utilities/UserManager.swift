@@ -246,7 +246,7 @@ class UserManager: NSObject {
             }
         } else if task.type == TaskType.todo, let time = reminder.time {
             if time > Date() {
-                if let key = scheduleForDay(reminder: reminder, date: task.duedate ?? time, atTime: time) {
+                if let key = scheduleForDay(reminder: reminder, date: reminder.startDate ?? time, atTime: time) {
                     keys.append(key)
                 }
             }

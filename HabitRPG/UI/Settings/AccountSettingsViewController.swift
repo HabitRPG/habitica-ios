@@ -250,6 +250,9 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
     }
 
 private func setUser(_ user: UserProtocol) {
+    if !user.isValid {
+        return
+    }
     isSettingUserData = true
     if user.authentication?.hasFacebookAuth == true {
         form.rowBy(tag: "facebookRow")?.hidden = false

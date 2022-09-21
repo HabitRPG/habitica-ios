@@ -99,7 +99,15 @@ extension HabiticaAppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.banner, .sound, .badge])
+        let alert = HabiticaAlertController(title: notification.request.content.title, message: notification.request.content.body)
+        alert.addAction(title: L10n.complete, isMainAction: true) {[weak self] _ in
+            if let taskID = notification.request.content.userInfo["taskID"] as? String {
+                self?.scoreTask(taskID, direction: .up) {}
+            }
+        }
+        alert.addCloseAction()
+        alert.show()
+        completionHandler([])
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

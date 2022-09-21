@@ -26,6 +26,7 @@ struct FocusableTextField: UIViewRepresentable {
 
     public func makeUIView(context: Context) -> UITextField {
         let view = UITextField()
+        view.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         view.addTarget(context.coordinator, action: #selector(Coordinator.textViewDidChange), for: .editingChanged)
         view.delegate = context.coordinator
         view.textColor = ThemeService.shared.theme.primaryTextColor
@@ -68,6 +69,14 @@ struct FocusableTextField: UIViewRepresentable {
 
         public func textFieldDidEndEditing(_ textField: UITextField) {
             self.isFirstResponder.wrappedValue = false
+        }
+    }
+}
+
+struct FocusableTextFieldPreview: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            FocusableTextField(placeholder: "Placeholder", text: .constant("This is a long overflowing textfield that will stay the right width hopefully"), isFirstResponder: .constant(false)).background(Color.red).padding()
         }
     }
 }

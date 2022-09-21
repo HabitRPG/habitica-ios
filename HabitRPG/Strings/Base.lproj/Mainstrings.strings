@@ -756,7 +756,7 @@
 "armoire.equipment" = "You find a piece of rare Equipment in the Armoire!";
 "armoire.food" = "You rummage in the Armoire and find food. What's that doing in here?";
 "armoire.experience" = "You wrestle with the Armoire and gain Experience. Take that!";
-"armoire.enchanted_armoire_drop_rates" = "Enchanted Armoire Drop Rates";
+"armoire.enchanted_armoire_drop_rates" = "Enchanted Armoire drop rates";
 "armoire.rate_equipment_description" = "New Equipment pieces are added every month. If you own all pieces of equipment, then you\'ll get Food or Experience, 50/50 odds.";
 "armoire.rate_equipment_title" = "60%% Piece of Equipment";
 "armoire.rate_food_title" = "20%% Piece of Food";

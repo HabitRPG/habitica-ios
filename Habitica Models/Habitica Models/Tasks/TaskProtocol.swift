@@ -145,6 +145,10 @@ public class PreviewChecklistItem: ChecklistItemProtocol {
     public func detached() -> ChecklistItemProtocol {
         return self
     }
+    
+    init(text: String) {
+        self.text = text
+    }
 }
 
 public class PreviewReminder: ReminderProtocol {

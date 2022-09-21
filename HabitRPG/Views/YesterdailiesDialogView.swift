@@ -45,6 +45,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         view.backgroundColor = theme.contentBackgroundColor
         yesterdailiesTableView.backgroundColor = theme.windowBackgroundColor
         yesterdailiesTableView.reloadData()
+        yesterdailiesTableView.superview?.backgroundColor = theme.windowBackgroundColor
     }
 
     override func viewWillLayoutSubviews() {

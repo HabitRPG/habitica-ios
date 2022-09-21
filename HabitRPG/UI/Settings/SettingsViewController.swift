@@ -134,6 +134,7 @@ class SettingsViewController: FormViewController, Themeable {
                                 return
                             }
                             self?.userRepository.updateUser(key: "preferences.tasks.mirrorGroupTasks", value: currentSetting)
+                                .delay(3, on: QueueScheduler.main)
                                 .flatMap(.latest, { _ in
                                     self?.userRepository.retrieveUser(withTasks: true) ?? Signal.empty
                                 })
