@@ -32,12 +32,30 @@ struct DifficultyPicker: View {
         let color: Color = .accentColor
         VStack {
             let isActive = value == selectedDifficulty
-            Image(uiImage: HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: .white, difficulty: value == 0.1 ? 0.1 : CGFloat(value), isActive: true).withRenderingMode(.alwaysTemplate))
-                .foregroundColor(isActive ? .accentColor : Color(ThemeService.shared.theme.dimmedColor))
-            Text(text)
-                .font(.system(size: 15, weight: isActive ? .semibold : .regular))
-                .foregroundColor(isActive ? color : Color(theme.ternaryTextColor))
-                .frame(maxWidth: .infinity)
+            let accessibilityText = "Difficulty " + text + ", \(isActive ? "on" : "off")"
+            if #available(iOS 14.0, *) {
+                Group{
+                    Image(uiImage: HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: .white, difficulty: value == 0.1 ? 0.1 : CGFloat(value), isActive: true).withRenderingMode(.alwaysTemplate))
+                        .foregroundColor(isActive ? .accentColor : Color(ThemeService.shared.theme.dimmedColor))
+                    Text(text)
+                        .font(.system(size: 15, weight: isActive ? .semibold : .regular))
+                        .foregroundColor(isActive ? color : Color(theme.ternaryTextColor))
+                        .frame(maxWidth: .infinity)
+                }
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel(accessibilityText)
+                .accessibilityRemoveTraits(.isImage)
+            }else{
+                Group{
+                    Image(uiImage: HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: .white, difficulty: value == 0.1 ? 0.1 : CGFloat(value), isActive: true).withRenderingMode(.alwaysTemplate))
+                        .foregroundColor(isActive ? .accentColor : Color(ThemeService.shared.theme.dimmedColor))
+                    Text(text)
+                        .font(.system(size: 15, weight: isActive ? .semibold : .regular))
+                        .foregroundColor(isActive ? color : Color(theme.ternaryTextColor))
+                        .frame(maxWidth: .infinity)
+                }
+            }
+            
         }.onTapGesture {
             UISelectionFeedbackGenerator.oneShotSelectionChanged()
             selectedDifficulty = value
@@ -47,21 +65,10 @@ struct DifficultyPicker: View {
     
     var body: some View {
         HStack {
-            if #available(iOS 14.0, *) {
-                difficultyOption(text: L10n.Tasks.Form.trivial, value: 0.1)
-                    .accessibilityLabel("Difficulty Trivial")
-                difficultyOption(text: L10n.Tasks.Form.easy, value: 1.0)
-                    .accessibilityLabel("Difficulty Easy")
-                difficultyOption(text: L10n.Tasks.Form.medium, value: 1.5)
-                    .accessibilityLabel("Difficulty Medium")
-                difficultyOption(text: L10n.Tasks.Form.hard, value: 2.0)
-                    .accessibilityLabel("Difficulty Hard")
-            } else {
-                difficultyOption(text: L10n.Tasks.Form.trivial, value: 0.1)
-                difficultyOption(text: L10n.Tasks.Form.easy, value: 1.0)
-                difficultyOption(text: L10n.Tasks.Form.medium, value: 1.5)
-                difficultyOption(text: L10n.Tasks.Form.hard, value: 2.0)
-            }
+            difficultyOption(text: L10n.Tasks.Form.trivial, value: 0.1)
+            difficultyOption(text: L10n.Tasks.Form.easy, value: 1.0)
+            difficultyOption(text: L10n.Tasks.Form.medium, value: 1.5)
+            difficultyOption(text: L10n.Tasks.Form.hard, value: 2.0)
         }
     }
 }
@@ -75,10 +82,26 @@ struct HabitControlsFormView: View {
 
     private func buildOption(text: String, icon: UIImage, isActive: Binding<Bool>) -> some View {
         return VStack(spacing: 12) {
-            Image(uiImage: icon)
-            Text(text)
-                .font(.system(size: 15, weight: isActive.wrappedValue ? .semibold : .regular))
-                .foregroundColor(isActive.wrappedValue ? .accentColor : Color(theme.ternaryTextColor))
+            if #available(iOS 14.0, *) {
+                Group{
+                    Image(uiImage: icon)
+                        .accessibilityHidden(true)
+                    Text(text)
+                        .accessibilityHidden(true)
+                        .font(.system(size: 15, weight: isActive.wrappedValue ? .semibold : .regular))
+                        .foregroundColor(isActive.wrappedValue ? .accentColor : Color(theme.ternaryTextColor))
+                }
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel(text + " control, " + "\( isActive.wrappedValue ? "on": "off")")
+                .accessibilityRemoveTraits(.isImage)
+            }else{
+                Group{
+                    Image(uiImage: icon)
+                    Text(text)
+                        .font(.system(size: 15, weight: isActive.wrappedValue ? .semibold : .regular))
+                        .foregroundColor(isActive.wrappedValue ? .accentColor : Color(theme.ternaryTextColor))
+                }
+            }
         }
         .padding(.top, 4)
         .frame(maxWidth: .infinity)
@@ -90,18 +113,8 @@ struct HabitControlsFormView: View {
     
     var body: some View {
         HStack {
-            if #available(iOS 14.0, *) {
-                let isPositiveActive: String  = isUp ? " is active" : ""
-                let isNegativeActive: String  = isDown ? " is active" : ""
-
-                buildOption(text: L10n.Tasks.Form.positive, icon: HabiticaIcons.imageOfHabitControlPlus(taskTintColor: taskColor, isActive: isUp), isActive: $isUp)
-                    .accessibilityLabel("Positive." + isPositiveActive)
-                buildOption(text: L10n.Tasks.Form.negative, icon: HabiticaIcons.imageOfHabitControlMinus(taskTintColor: taskColor, isActive: isDown), isActive: $isDown)
-                    .accessibilityLabel("Negtive." + isNegativeActive)
-            } else {
-                buildOption(text: L10n.Tasks.Form.positive, icon: HabiticaIcons.imageOfHabitControlPlus(taskTintColor: taskColor, isActive: isUp), isActive: $isUp)
-                buildOption(text: L10n.Tasks.Form.negative, icon: HabiticaIcons.imageOfHabitControlMinus(taskTintColor: taskColor, isActive: isDown), isActive: $isDown)
-            }
+            buildOption(text: L10n.Tasks.Form.positive, icon: HabiticaIcons.imageOfHabitControlPlus(taskTintColor: taskColor, isActive: isUp), isActive: $isUp)
+            buildOption(text: L10n.Tasks.Form.negative, icon: HabiticaIcons.imageOfHabitControlMinus(taskTintColor: taskColor, isActive: isDown), isActive: $isDown)
         }
     }
 }
