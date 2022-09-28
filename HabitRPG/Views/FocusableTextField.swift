@@ -65,6 +65,8 @@ struct FocusableTextField: UIViewRepresentable {
 
         public func textFieldDidBeginEditing(_ textField: UITextField) {
             self.isFirstResponder.wrappedValue = true
+            let newPosition = textField.endOfDocument
+            textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
         }
 
         public func textFieldDidEndEditing(_ textField: UITextField) {
@@ -76,7 +78,9 @@ struct FocusableTextField: UIViewRepresentable {
 struct FocusableTextFieldPreview: PreviewProvider {
     static var previews: some View {
         VStack {
-            FocusableTextField(placeholder: "Placeholder", text: .constant("This is a long overflowing textfield that will stay the right width hopefully"), isFirstResponder: .constant(false)).background(Color.red).padding()
+            FocusableTextField(placeholder: "Placeholder",
+                               text: .constant("This is a long overflowing textfield that will stay the right width hopefully"),
+                               isFirstResponder: .constant(false)).background(Color.red).padding()
         }
     }
 }

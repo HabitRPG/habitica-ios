@@ -122,7 +122,6 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
         if let headerView = view as? CustomizationHeaderView {
             headerView.label.text = section.title
             headerView.label.textColor = ThemeService.shared.theme.primaryTextColor
-            headerView.purchaseButton.isHidden = true
         }
         
         return view

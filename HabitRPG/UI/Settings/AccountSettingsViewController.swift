@@ -30,8 +30,10 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         setupForm()
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
-            self?.user = user
-            self?.setUser(user)
+            if user.isValid {
+                self?.user = user
+                self?.setUser(user)
+            }
         }).start())
         
         LabelRow.defaultCellUpdate = { cell, _ in
@@ -78,6 +80,9 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             row.title = L10n.Settings.email
             row.cellStyle = .subtitle
             row.cellUpdate {[weak self] cell, _ in
+                if self?.user?.isValid != true {
+                    return
+                }
                 cell.detailTextLabel?.text = self?.user?.authentication?.local?.email ?? L10n.Settings.notSet
                 
                 if self?.user?.authentication?.local?.email == nil {
@@ -102,6 +107,9 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             row.title = L10n.Settings.password
             row.cellStyle = .subtitle
             row.cellUpdate {[weak self] cell, _ in
+                if self?.user?.isValid != true {
+                    return
+                }
                 cell.detailTextLabel?.text = self?.user?.authentication?.hasLocalAuth == true ? "ᐧᐧᐧᐧᐧᐧᐧᐧᐧᐧ" : L10n.Settings.notSet
                 let label = UILabel()
                 if self?.user?.authentication?.hasLocalAuth == true {
@@ -125,6 +133,9 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             row.title = "Google"
             row.cellStyle = .subtitle
             row.cellUpdate {[weak self] cell, _ in
+                if self?.user?.isValid != true {
+                    return
+                }
                 self?.configureSocialCell(cell: cell, email: self?.user?.authentication?.google?.emails.first, isConnected: self?.user?.authentication?.hasGoogleAuth)
             }
             row.onCellSelection { _, _ in
@@ -140,6 +151,9 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             row.cellStyle = .subtitle
             row.hidden = true
             row.cellUpdate {[weak self] cell, _ in
+                if self?.user?.isValid != true {
+                    return
+                }
                 self?.configureSocialCell(cell: cell, email: self?.user?.authentication?.facebook?.emails.first, isConnected: self?.user?.authentication?.hasFacebookAuth)
             }
             row.onCellSelection { _, _ in
@@ -152,6 +166,9 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             row.title = "Apple"
             row.cellStyle = .subtitle
             row.cellUpdate {[weak self] cell, _ in
+                if self?.user?.isValid != true {
+                    return
+                }
                 self?.configureSocialCell(cell: cell, email: self?.user?.authentication?.apple?.emails.first, isConnected: self?.user?.authentication?.hasAppleAuth)
             }
             row.onCellSelection { _, _ in
@@ -170,6 +187,9 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             row.title = L10n.displayName
             row.cellStyle = .subtitle
             row.cellUpdate {[weak self] cell, _ in
+                if self?.user?.isValid != true {
+                    return
+                }
                 cell.detailTextLabel?.text = self?.user?.profile?.name
             }.onCellSelection { _, _ in
                 self.showEditAlert(title: L10n.Settings.changeDisplayName, name: L10n.displayName, value: self.user?.profile?.name, path: "profile.name")
@@ -179,6 +199,9 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             row.title = L10n.aboutText
             row.cellStyle = .subtitle
             row.cellUpdate {[weak self] cell, _ in
+                if self?.user?.isValid != true {
+                    return
+                }
                 cell.detailTextLabel?.text = self?.user?.profile?.blurb
             }.onCellSelection { _, _ in
                 self.showEditAlert(title: L10n.Settings.changeAboutMessage, name: L10n.aboutText, value: self.user?.profile?.blurb, path: "profile.blurb")
@@ -188,6 +211,9 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             row.title = L10n.photoUrl
             row.cellStyle = .subtitle
             row.cellUpdate {[weak self] cell, _ in
+                if self?.user?.isValid != true {
+                    return
+                }
                 cell.detailTextLabel?.text = self?.user?.profile?.photoUrl
             }.onCellSelection { _, _ in
                 self.showEditAlert(title: L10n.Settings.changePhotoUrl, name: L10n.photoUrl, value: self.user?.profile?.photoUrl, path: "profile.url")
@@ -201,6 +227,9 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             row.title = L10n.userID
             row.cellStyle = .subtitle
             row.cellUpdate {[weak self] cell, _ in
+                if self?.user?.isValid != true {
+                    return
+                }
                 cell.detailTextLabel?.text = self?.user?.id
             }.onCellSelection { _, _ in
                 self.copyToClipboard(L10n.userID, value: self.user?.id)
@@ -251,6 +280,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
 
 private func setUser(_ user: UserProtocol) {
     if !user.isValid {
+        self.user = nil
         return
     }
     isSettingUserData = true
@@ -452,7 +482,6 @@ private func setUser(_ user: UserProtocol) {
                             if user?.authentication?.local?.email != nil {
                                 ToastManager.show(text: L10n.Settings.addedLocalAuth, color: .green)
                             }
-                            self?.tableView.reloadData()
                         }
                     case .failure:
                         return

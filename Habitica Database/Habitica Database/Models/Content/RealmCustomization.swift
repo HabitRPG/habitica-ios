@@ -14,6 +14,8 @@ class RealmCustomization: BaseModel, CustomizationProtocol {
     @objc dynamic var combinedKey: String?
     @objc dynamic var key: String?
     @objc dynamic var type: String?
+    @objc dynamic var text: String?
+    @objc dynamic var notes: String?
     @objc dynamic var group: String?
     @objc dynamic var price: Float = 0
     var set: CustomizationSetProtocol? {
@@ -38,6 +40,8 @@ class RealmCustomization: BaseModel, CustomizationProtocol {
         self.init()
         key = customizationProtocol.key
         type = customizationProtocol.type
+        text = customizationProtocol.text
+        notes = customizationProtocol.notes
         group = customizationProtocol.group
         combinedKey = (key ?? "") + (type ?? "") + (group ?? "")
         price = customizationProtocol.price

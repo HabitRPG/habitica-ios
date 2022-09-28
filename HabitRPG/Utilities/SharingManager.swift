@@ -12,10 +12,13 @@ import FirebaseAnalytics
 #endif
 
 class SharingManager {
-    static func share(identifier: String, items: [Any], presentingViewController: UIViewController, sourceView: UIView?) {
+    static func share(identifier: String, items: [Any], presentingViewController: UIViewController?, sourceView: UIView?) {
+        guard let viewController = presentingViewController ?? UIApplication.topViewController() else {
+            return
+        }
         let avc = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        avc.popoverPresentationController?.sourceView = sourceView ?? presentingViewController.view
-        presentingViewController.present(avc, animated: true, completion: nil)
+        avc.popoverPresentationController?.sourceView = sourceView ?? viewController.view
+        viewController.present(avc, animated: true, completion: nil)
         #if !targetEnvironment(macCatalyst)
         Analytics.logEvent("shared", parameters: ["identifier": identifier])
         #endif

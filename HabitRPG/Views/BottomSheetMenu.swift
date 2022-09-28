@@ -38,9 +38,9 @@ struct BottomSheetMenuitem<Title: View>: View {
     }
     
     var body: some View {
-        HabiticaButtonUI(label: title, color: style == .normal ? .tintColor : style == .destructive ? Color(UIColor.red100) : .windowBackgroundColor, size: .compact) {
-            onTap()
+        HabiticaButtonUI(label: title, color: style == .normal ? Color(ThemeService.shared.theme.fixedTintColor) : style == .destructive ? Color(UIColor.red100) : .windowBackgroundColor, size: .compact) {
             presentationMode.wrappedValue.dismiss()
+            onTap()
         }
     }
 }

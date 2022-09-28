@@ -51,7 +51,9 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
             if stableItem.trained > 0 && stableItem.pet?.type != "special" && stableItem.canRaise {
                 BottomSheetMenuitem(title: L10n.Stable.feed) {[weak self] in
                     self?.selectedPet = stableItem.pet
-                    self?.perform(segue: StoryboardSegue.Main.feedSegue)
+                    DispatchQueue.main.async {
+                        self?.perform(segue: StoryboardSegue.Main.feedSegue)
+                    }
                 }
             }
             if stableItem.trained > 0 {

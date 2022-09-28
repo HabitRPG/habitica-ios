@@ -408,6 +408,13 @@
 "inventory.hatched" = "You hatched a new pet!";
 "inventory.hatched_sharing" = "I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!";
 "inventory.no_longer_available" = "No Longer Available";
+"inventory.avatar_skin_customization" = "Avatar Skin Customization";
+"inventory.avatar_shirt_customization" = "Avatar Shirt Customization";
+"inventory.avatar_beard_customization" = "Avatar Beard Customization";
+"inventory.avatar_mustache_customization" = "Avatar Mustache Customization";
+"inventory.avatar_bangs_customization" = "Avatar Bangs Customization";
+"inventory.avatar_hair_color_customization" = "Avatar Hair Color Customization";
+"inventory.avatar_hair_style_customization" = "Avatar Hair Style Customization";
 "pets" = "Pets";
 "mounts" = "Mounts";
 "stable.standard_pets" = "Standard Pets";
@@ -752,7 +759,7 @@
 "faint.good_luck_text" = "But you can get them all back with hard work! Good luck—you’ll do great. ";
 "faint.button" = "Refill Health & Try Again";
 "faint.disclaimer" = "Broken equipment can be repurchased from Rewards";
-"armoire.drop_rate" = "Armoire Drop rates";
+"armoire.drop_rate" = "Armoire drop rates";
 "armoire.equipment" = "You find a piece of rare Equipment in the Armoire!";
 "armoire.food" = "You rummage in the Armoire and find food. What's that doing in here?";
 "armoire.experience" = "You wrestle with the Armoire and gain Experience. Take that!";

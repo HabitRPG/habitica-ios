@@ -20,14 +20,14 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     var lastClassSelection: Date?
     var taskRepository = TaskRepository()
     
-    func retrieveUser(withTasks: Bool = true) -> Signal<UserProtocol?, Never> {
-        let signal = RetrieveUserCall().objectSignal.on(value: { user in
+    func retrieveUser(withTasks: Bool = true, forced: Bool = false) -> Signal<UserProtocol?, Never> {
+        let signal = RetrieveUserCall(forceLoading: forced).objectSignal.on(value: { user in
             if let user = user {
                 self.localRepository.save(user)
             }
         })
         if withTasks {
-            let taskCall = RetrieveTasksCall()
+            let taskCall = RetrieveTasksCall(forceLoading: forced)
             return signal.combineLatest(with: taskCall.arraySignal).on(value: { (user, tasks) in
                 if let tasks = tasks, let order = user?.tasksOrder {
                     self.taskRepository.save(tasks, order: order)

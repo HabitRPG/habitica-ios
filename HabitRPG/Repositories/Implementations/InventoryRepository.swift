@@ -115,11 +115,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 self?.localUserRepository.updateUser(id: userID, price: price, buyResponse: buyResponse)
                 
                 if let armoire = buyResponse.armoire {
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
                         let viewController = ArmoireViewController()
                         viewController.configure(type: armoire.type ?? "", text: armoire.dropText ?? "", key: armoire.dropKey, value: armoire.value)
                         viewController.show()
-                    }
                 } else {
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
                         ToastManager.show(text: L10n.purchased(text), color: .green)

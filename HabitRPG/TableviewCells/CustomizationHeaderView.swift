@@ -12,20 +12,8 @@ import Habitica_Models
 class CustomizationHeaderView: UICollectionReusableView {
     
     @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var currencyView: CurrencyCountView!
-    @IBOutlet weak var purchaseButton: UIView!
-    @IBOutlet weak var buyAllLabel: UILabel!
     
     var purchaseButtonTapped: (() -> Void)?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        currencyView.currency = .gem
-        
-        purchaseButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buttonTapped)))
-        
-        buyAllLabel.text = L10n.buyAll
-    }
     
     func configure(customizationSet: CustomizationSetProtocol, isBackground: Bool) {
         if isBackground {
@@ -42,13 +30,9 @@ class CustomizationHeaderView: UICollectionReusableView {
                 label.text = "\(monthName) \(year)"
             }
         } else {
-            label.text = customizationSet.text
+            label.text = customizationSet.text?.uppercased()
         }
-        label.textColor = ThemeService.shared.theme.primaryTextColor
-        currencyView.amount = Int(customizationSet.setPrice)
-        
-        purchaseButton.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        purchaseButton.borderColor = ThemeService.shared.theme.tintColor
+        label.textColor = ThemeService.shared.theme.quadTextColor
     }
     
     @objc

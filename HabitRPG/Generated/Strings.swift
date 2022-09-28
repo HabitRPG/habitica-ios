@@ -1242,7 +1242,7 @@ public enum L10n {
   }
 
   public enum Armoire {
-    /// Armoire Drop rates
+    /// Armoire drop rates
     public static var dropRate: String { return L10n.tr("Mainstrings", "armoire.drop_rate") }
     /// Enchanted Armoire drop rates
     public static var enchantedArmoireDropRates: String { return L10n.tr("Mainstrings", "armoire.enchanted_armoire_drop_rates") }
@@ -1605,6 +1605,20 @@ public enum L10n {
     public static func availableUntil(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "inventory.available_until", p1)
     }
+    /// Avatar Bangs Customization
+    public static var avatarBangsCustomization: String { return L10n.tr("Mainstrings", "inventory.avatar_bangs_customization") }
+    /// Avatar Beard Customization
+    public static var avatarBeardCustomization: String { return L10n.tr("Mainstrings", "inventory.avatar_beard_customization") }
+    /// Avatar Hair Color Customization
+    public static var avatarHairColorCustomization: String { return L10n.tr("Mainstrings", "inventory.avatar_hair_color_customization") }
+    /// Avatar Hair Style Customization
+    public static var avatarHairStyleCustomization: String { return L10n.tr("Mainstrings", "inventory.avatar_hair_style_customization") }
+    /// Avatar Mustache Customization
+    public static var avatarMustacheCustomization: String { return L10n.tr("Mainstrings", "inventory.avatar_mustache_customization") }
+    /// Avatar Shirt Customization
+    public static var avatarShirtCustomization: String { return L10n.tr("Mainstrings", "inventory.avatar_shirt_customization") }
+    /// Avatar Skin Customization
+    public static var avatarSkinCustomization: String { return L10n.tr("Mainstrings", "inventory.avatar_skin_customization") }
     /// You hatched a new pet!
     public static var hatched: String { return L10n.tr("Mainstrings", "inventory.hatched") }
     /// I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!

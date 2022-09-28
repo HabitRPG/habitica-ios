@@ -331,7 +331,7 @@ class ArmoireViewController: UIHostingController<ArmoireView> {
     }
     
     func show() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             if var topController = UIApplication.topViewController() {
                 if let tabBarController = topController.tabBarController {
                     topController = tabBarController
@@ -357,7 +357,7 @@ struct ArmoireView_Previews: PreviewProvider {
     
     static var previews: some View {
         ArmoireView(viewModel: makeViewModel(type: "experience"))
-            .previewDevice("iPhone 13 Pro")
+            .previewDevice("iPhone 14 Pro")
         ArmoireView(viewModel: makeViewModel(type: "food"))
             .previewDevice("iPhone SE (3rd generation)")
     }

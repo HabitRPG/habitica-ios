@@ -58,6 +58,7 @@ class QuestGoalView: UIView {
         bottomView.backgroundColor = theme.windowBackgroundColor
         difficultyLabel.textColor = theme.primaryTextColor
         if let bossHealth = quest.boss?.health, bossHealth > 0 {
+            healthIcon.image = HabiticaIcons.imageOfHeartDarkBg
             healthIcon.isHidden = false
             typeLabel.text = L10n.health
             goalDetailLabel.text = "\(bossHealth)"

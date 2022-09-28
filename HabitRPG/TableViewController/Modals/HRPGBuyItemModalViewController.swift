@@ -560,7 +560,8 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     static func displayInsufficientGemsModal(delayDisplay: Bool = true) {
         let alert = prepareInsufficientModal(title: L10n.notEnoughGems, message: L10n.moreGemsMessage, image: Asset.insufficientGems.image)
         alert.addAction(title: L10n.purchaseGems, isMainAction: true, handler: { _ in
-            
+            let navigationController = StoryboardScene.Main.purchaseGemNavController.instantiate()
+            UIApplication.topViewController()?.present(navigationController, animated: true, completion: nil)
         })
         alert.addCloseAction()
         if delayDisplay {

@@ -31,6 +31,12 @@ class ImageOverlayView: HabiticaAlertController {
         }
     }
     
+    var image: UIImage? {
+        get {
+            return imageView.image
+        }
+    }
+    
     init(imageName: String, title: String?, message: String?) {
         super.init()
         self.title = title

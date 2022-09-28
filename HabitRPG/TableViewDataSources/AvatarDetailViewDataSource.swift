@@ -26,6 +26,8 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
     
     private var preferences: PreferencesProtocol?
     
+    private var gemCount = 0
+    
     init(type: String, group: String?) {
         self.customizationType = type
         self.customizationGroup = group
@@ -39,10 +41,15 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         }).start())
         disposable.add(userRepository.getUser().on(value: {[weak self]user in
             self?.preferences = user.preferences
+            self?.gemCount = user.gemCount
             
             self?.updateEquippedKey(user: user)
             self?.collectionView?.reloadData()
         }).start())
+    }
+    
+    func canAfford(price: Float) -> Bool {
+        return Float(gemCount) >= price
     }
     
     func updateEquippedKey(user: UserProtocol) {
@@ -53,6 +60,8 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
             equippedKey = user.preferences?.skin
         case "chair":
             equippedKey = user.preferences?.chair
+        case "background":
+            equippedKey = user.preferences?.background
         case "hair":
             switch customizationGroup {
             case "bangs":
@@ -158,17 +167,9 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         
         if let customization = item(at: indexPath) {
             if customization.isPurchasable == true && !owns(customization: customization) {
-                if customization.type == "background" {
-                    return CGSize(width: 106, height: 138)
-                } else {
-                    return CGSize(width: 80, height: 108)
-                }
+                return CGSize(width: 80, height: 108)
             } else {
-                if customization.type == "background" {
-                    return CGSize(width: 106, height: 106)
-                } else {
-                    return CGSize(width: 80, height: 108)
-                }
+                return CGSize(width: 80, height: 80)
             }
         }
         return CGSize.zero
@@ -178,26 +179,30 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         let view = super.collectionView(collectionView, viewForSupplementaryElementOfKind: kind, at: indexPath)
         let section = sections[indexPath.section]
         
-        if let headerView = view as? CustomizationHeaderView {
+        if let footerView = view as? CustomizationFooterView {
             if let set = customizationSets[section.key ?? ""] {
-                headerView.configure(customizationSet: set, isBackground: customizationType == "background")
-                if set.setItems?.contains(where: { (customization) -> Bool in
+                footerView.configure(customizationSet: set)
+                let individualPrice = set.setItems?.filter { (customization) -> Bool in
                     return !self.owns(customization: customization)
-                }) == true && set.setPrice != 0 && set.key?.contains("timeTravel") != true && set.key?.contains("incentive") != true {
-                    headerView.purchaseButton.isHidden = false
+                }.map { $0.price }.reduce(0, +) ?? 0
+                if individualPrice >= set.setPrice && set.setPrice != 0 && set.key?.contains("timeTravel") != true && set.key?.contains("incentive") != true {
+                    footerView.purchaseButton.isHidden = false
                 } else {
-                    headerView.purchaseButton.isHidden = true
+                    footerView.purchaseButton.isHidden = true
                 }
                 
-                headerView.purchaseButtonTapped = {
+                footerView.purchaseButtonTapped = {
                     if let action = self.purchaseSet {
                         action(set)
                     }
                 }
             } else {
-                headerView.purchaseButton.isHidden = true
+                footerView.purchaseButton.isHidden = true
             }
-            
+        } else if let headerView = view as? CustomizationHeaderView {
+            if let set = customizationSets[section.key ?? ""] {
+                headerView.configure(customizationSet: set, isBackground: customizationType == "background")
+            }
         }
         
         return view

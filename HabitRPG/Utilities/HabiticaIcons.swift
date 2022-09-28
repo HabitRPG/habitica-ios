@@ -19,91 +19,48 @@ public class HabiticaIcons : NSObject {
 
     private struct Cache {
         static var imageOfExperience: UIImage?
-        static var experienceTargets: [AnyObject]?
         static var imageOfMagic: UIImage?
-        static var magicTargets: [AnyObject]?
         static var imageOfGold: UIImage?
-        static var goldTargets: [AnyObject]?
         static var imageOfGem: UIImage?
-        static var gemTargets: [AnyObject]?
         static var imageOfHourglass: UIImage?
-        static var hourglassTargets: [AnyObject]?
         static var imageOfExperienceReward: UIImage?
-        static var experienceRewardTargets: [AnyObject]?
         static var imageOfGoldReward: UIImage?
-        static var goldRewardTargets: [AnyObject]?
         static var imageOfHeartDarkBg: UIImage?
-        static var heartDarkBgTargets: [AnyObject]?
         static var imageOfHeartLightBg: UIImage?
-        static var heartLightBgTargets: [AnyObject]?
         static var imageOfHeartLarge: UIImage?
-        static var heartLargeTargets: [AnyObject]?
         static var imageOfStarSmall: UIImage?
-        static var starSmallTargets: [AnyObject]?
         static var imageOfStarLarge: UIImage?
-        static var starLargeTargets: [AnyObject]?
         static var imageOfStarMedium: UIImage?
-        static var starMediumTargets: [AnyObject]?
         static var imageOfPinnedItem: UIImage?
-        static var pinnedItemTargets: [AnyObject]?
         static var imageOfPinItem: UIImage?
-        static var pinItemTargets: [AnyObject]?
         static var imageOfUnpinItem: UIImage?
-        static var unpinItemTargets: [AnyObject]?
         static var imageOfGem_36: UIImage?
-        static var gem_36Targets: [AnyObject]?
         static var imageOfWarriorLightBg: UIImage?
-        static var warriorLightBgTargets: [AnyObject]?
         static var imageOfWarriorDarkBg: UIImage?
-        static var warriorDarkBgTargets: [AnyObject]?
         static var imageOfRogueLightBg: UIImage?
-        static var rogueLightBgTargets: [AnyObject]?
         static var imageOfRogueDarkBg: UIImage?
-        static var rogueDarkBgTargets: [AnyObject]?
         static var imageOfHealerLightBg: UIImage?
-        static var healerLightBgTargets: [AnyObject]?
         static var imageOfHealerDarkBg: UIImage?
-        static var healerDarkBgTargets: [AnyObject]?
         static var imageOfMageDarkBg: UIImage?
-        static var mageDarkBgTargets: [AnyObject]?
         static var imageOfMageLightBg: UIImage?
-        static var mageLightBgTargets: [AnyObject]?
         static var imageOfHourglassShop: UIImage?
-        static var hourglassShopTargets: [AnyObject]?
         static var imageOfAttributeSparklesLeft: UIImage?
-        static var attributeSparklesLeftTargets: [AnyObject]?
         static var imageOfAttributeSparklesRight: UIImage?
-        static var attributeSparklesRightTargets: [AnyObject]?
         static var imageOfAttributeAllocateButton: UIImage?
-        static var attributeAllocateButtonTargets: [AnyObject]?
         static var imageOfDamage: UIImage?
-        static var damageTargets: [AnyObject]?
         static var imageOfRageStrikeInactive: UIImage?
-        static var rageStrikeInactiveTargets: [AnyObject]?
         static var imageOfRage: UIImage?
-        static var rageTargets: [AnyObject]?
         static var imageOfTwoHandedIcon: UIImage?
-        static var twoHandedIconTargets: [AnyObject]?
         static var imageOfBlankAvatarIcon: UIImage?
-        static var blankAvatarIconTargets: [AnyObject]?
         static var imageOfDisclosureArrow: UIImage?
-        static var disclosureArrowTargets: [AnyObject]?
         static var imageOfDeclineIcon: UIImage?
-        static var declineIconTargets: [AnyObject]?
         static var imageOfAcceptIcon: UIImage?
-        static var acceptIconTargets: [AnyObject]?
         static var imageOfBuffIcon: UIImage?
-        static var buffIconTargets: [AnyObject]?
         static var imageOfAlertIcon: UIImage?
-        static var alertIconTargets: [AnyObject]?
         static var imageOfBuffIconDark: UIImage?
-        static var buffIconDarkTargets: [AnyObject]?
         static var imageOfStats: UIImage?
-        static var statsTargets: [AnyObject]?
         static var imageOfDashBorder: UIImage?
-        static var dashBorderTargets: [AnyObject]?
         static var imageOfSpookyGemPromoBG: UIImage?
-        static var spookyGemPromoBGTargets: [AnyObject]?
     }
 
     //// Drawing Methods

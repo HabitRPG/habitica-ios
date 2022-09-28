@@ -22,6 +22,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        topHeaderCoordinator?.followScrollView = false
         if let type = customizationType {
             if type == "eyewear" || type == "headAccessory" {
                 gearDataSource = AvatarGearDetailViewDataSource(type: type)
@@ -51,6 +52,18 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         return CGSize.zero
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let width = 80
+        let viewWidth = Int(collectionView.frame.size.width)
+        var count = viewWidth / width
+        if customizationType == "background" {
+            count = 3
+        }
+        let totalWidth = width * count + (10 * (count-1))
+        let spacing = CGFloat(viewWidth - totalWidth) / 2
+        return UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         if let datasource = customizationDataSource, let customization = datasource.item(at: indexPath) {
@@ -73,13 +86,18 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     }
     
     private func showPurchaseDialog(customization: CustomizationProtocol, withSource sourceView: UIView?) {
-        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(iconName: customization.imageName(forUserPreferences: nil) ?? "", menuItems: {
+        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(Text(customization.titleText), iconName: customization.imageName(forUserPreferences: nil) ?? "", menuItems: {
             BottomSheetMenuitem(title: HStack {
                 Text(L10n.purchaseForWithoutCurrency(Int(customization.price)))
                 Image(uiImage: HabiticaIcons.imageOfGem)
             }) {[weak self] in
+                if self?.customizationDataSource?.canAfford(price: customization.price) != true {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
+                        HRPGBuyItemModalViewController.displayInsufficientGemsModal(delayDisplay: false)
+                    })
+                    return
+                }
                 self?.customizationRepository.unlock(customization: customization, value: customization.price).observeCompleted {}
-                
             }
             })
         )
@@ -104,11 +122,26 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     }
     
     private func showPurchaseDialog(customizationSet: CustomizationSetProtocol, withSource sourceView: UIView?) {
-        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(menuItems: {
+        var text = customizationSet.text ?? ""
+        if customizationType == "background", let key = customizationSet.key?.replacingOccurrences(of: "backgrounds", with: "") {
+            let index = key.index(key.startIndex, offsetBy: 2)
+            let month = Int(key[..<index]) ?? 0
+            let year = Int(key[index...]) ?? 0
+            let dateFormatter = DateFormatter()
+            let monthName = month > 0 ? dateFormatter.monthSymbols[month-1] : ""
+            text = "\(monthName) \(year) Backgrounds"
+        }
+        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(Text(text), menuItems: {
             BottomSheetMenuitem(title: HStack {
                 Text(L10n.purchaseForWithoutCurrency(Int(customizationSet.setPrice)))
                 Image(uiImage: HabiticaIcons.imageOfGem)
             }) {[weak self] in
+                if self?.customizationDataSource?.canAfford(price: customizationSet.setPrice) != true {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
+                        HRPGBuyItemModalViewController.displayInsufficientGemsModal(delayDisplay: false)
+                    })
+                    return
+                }
                 self?.customizationRepository.unlock(customizationSet: customizationSet, value: customizationSet.setPrice).observeCompleted {}
             }
             })
@@ -127,5 +160,30 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         }
         alertController.addCancelAction()
         alertController.show()
+    }
+}
+
+extension CustomizationProtocol {
+    var titleText: String {
+        if type == "background" {
+            return text ?? ""
+        } else {
+            if path.contains("skin") {
+                return L10n.Inventory.avatarSkinCustomization
+            } else if path.contains("shirt") {
+                return L10n.Inventory.avatarShirtCustomization
+            } else if path.contains("color") {
+                return L10n.Inventory.avatarHairColorCustomization
+            } else if path.contains("base") {
+                return L10n.Inventory.avatarHairStyleCustomization
+            } else if path.contains("bangs") {
+                return L10n.Inventory.avatarBangsCustomization
+            } else if path.contains("beard") {
+                return L10n.Inventory.avatarBeardCustomization
+            } else if path.contains("mustache") {
+                return L10n.Inventory.avatarMustacheCustomization
+            }
+        }
+        return ""
     }
 }

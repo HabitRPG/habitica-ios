@@ -12,6 +12,8 @@ import Foundation
 public protocol CustomizationProtocol: BaseModelProtocol {
     var key: String? { get set }
     var type: String? { get set }
+    var text: String? { get set }
+    var notes: String? { get set }
     var group: String? { get set }
     var price: Float { get set }
     var set: CustomizationSetProtocol? { get set }

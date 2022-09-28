@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class RetrieveUserCall: ResponseObjectCall<UserProtocol, APIUser> {
-    public init() {
-        super.init(httpMethod: .GET, endpoint: "user")
+    public init(forceLoading: Bool = false) {
+        super.init(httpMethod: .GET, endpoint: "user", ignoreEtag: forceLoading)
     }
 }

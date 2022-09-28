@@ -43,7 +43,7 @@ class ToDoTableViewController: TaskTableViewController {
         if let dataSource = dataSource {
             let taskRepository = TaskRepository()
             let tasks = dataSource.tasks
-            for task in tasks {
+            for task in tasks where !task.isSynced && !task.isSyncing {
                  taskRepository.syncTask(task).observeCompleted {}
             }
             
