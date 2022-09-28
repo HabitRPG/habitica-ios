@@ -32,12 +32,30 @@ struct DifficultyPicker: View {
         let color: Color = .accentColor
         VStack {
             let isActive = value == selectedDifficulty
-            Image(uiImage: HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: .white, difficulty: value == 0.1 ? 0.1 : CGFloat(value), isActive: true).withRenderingMode(.alwaysTemplate))
-                .foregroundColor(isActive ? .accentColor : Color(ThemeService.shared.theme.dimmedColor))
-            Text(text)
-                .font(.system(size: 15, weight: isActive ? .semibold : .regular))
-                .foregroundColor(isActive ? color : Color(theme.ternaryTextColor))
-                .frame(maxWidth: .infinity)
+            let accessibilityText = "Difficulty " + text + ", \(isActive ? "on" : "off")"
+            if #available(iOS 14.0, *) {
+                Group{
+                    Image(uiImage: HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: .white, difficulty: value == 0.1 ? 0.1 : CGFloat(value), isActive: true).withRenderingMode(.alwaysTemplate))
+                        .foregroundColor(isActive ? .accentColor : Color(ThemeService.shared.theme.dimmedColor))
+                    Text(text)
+                        .font(.system(size: 15, weight: isActive ? .semibold : .regular))
+                        .foregroundColor(isActive ? color : Color(theme.ternaryTextColor))
+                        .frame(maxWidth: .infinity)
+                }
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel(accessibilityText)
+                .accessibilityRemoveTraits(.isImage)
+            }else{
+                Group{
+                    Image(uiImage: HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: .white, difficulty: value == 0.1 ? 0.1 : CGFloat(value), isActive: true).withRenderingMode(.alwaysTemplate))
+                        .foregroundColor(isActive ? .accentColor : Color(ThemeService.shared.theme.dimmedColor))
+                    Text(text)
+                        .font(.system(size: 15, weight: isActive ? .semibold : .regular))
+                        .foregroundColor(isActive ? color : Color(theme.ternaryTextColor))
+                        .frame(maxWidth: .infinity)
+                }
+            }
+            
         }.onTapGesture {
             UISelectionFeedbackGenerator.oneShotSelectionChanged()
             selectedDifficulty = value
@@ -75,10 +93,26 @@ struct HabitControlsFormView: View {
 
     private func buildOption(text: String, icon: UIImage, isActive: Binding<Bool>) -> some View {
         return VStack(spacing: 12) {
-            Image(uiImage: icon)
-            Text(text)
-                .font(.system(size: 15, weight: isActive.wrappedValue ? .semibold : .regular))
-                .foregroundColor(isActive.wrappedValue ? .accentColor : Color(theme.ternaryTextColor))
+            if #available(iOS 14.0, *) {
+                Group{
+                    Image(uiImage: icon)
+                        .accessibilityHidden(true)
+                    Text(text)
+                        .accessibilityHidden(true)
+                        .font(.system(size: 15, weight: isActive.wrappedValue ? .semibold : .regular))
+                        .foregroundColor(isActive.wrappedValue ? .accentColor : Color(theme.ternaryTextColor))
+                }
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel(text + " control, " + "\( isActive.wrappedValue ? "on": "off")")
+                .accessibilityRemoveTraits(.isImage)
+            }else{
+                Group{
+                    Image(uiImage: icon)
+                    Text(text)
+                        .font(.system(size: 15, weight: isActive.wrappedValue ? .semibold : .regular))
+                        .foregroundColor(isActive.wrappedValue ? .accentColor : Color(theme.ternaryTextColor))
+                }
+            }
         }
         .padding(.top, 4)
         .frame(maxWidth: .infinity)
