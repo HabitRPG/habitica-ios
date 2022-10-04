@@ -176,9 +176,9 @@ class ClassSelectionViewController: UIViewController, Themeable {
                 selectedView = rogueOptionView
             }
             showLoadingSelection()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {[weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {[weak self] in
                 self?.userRepository.selectClass(selectedClass)
-                    .observeCompleted {
+                    .observeValues { _ in
                  self?.dismiss(animated: true, completion: nil)
                  }
             }

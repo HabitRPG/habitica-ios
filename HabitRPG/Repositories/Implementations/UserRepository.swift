@@ -363,7 +363,11 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             return Signal.empty
         }
         lastClassSelection = Date()
-        return SelectClassCall(class: habiticaClass).objectSignal.on(value: handleUserUpdate())
+        return SelectClassCall(class: habiticaClass).habiticaResponseSignal
+            .flatMap(.latest, {[weak self] _ in
+                return self?.retrieveUser() ?? .empty
+            })
+            .on(value: handleUserUpdate())
     }
     
     func reroll() -> Signal<UserProtocol?, Never> {

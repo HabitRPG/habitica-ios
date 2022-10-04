@@ -118,7 +118,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         }
         
         let lastWorldStateFetch = defaults.object(forKey: "lastWorldStateFetch") as? NSDate
-        if lastWorldStateFetch == nil || (lastWorldStateFetch?.timeIntervalSinceNow ?? 0) < -1800 {
+        if lastWorldStateFetch == nil || (lastWorldStateFetch?.timeIntervalSinceNow ?? 0) < -600 {
             contentRepository.retrieveWorldState().observeCompleted {
                 defaults.setValue(Date(), forKey: "lastWorldStateFetch")
             }

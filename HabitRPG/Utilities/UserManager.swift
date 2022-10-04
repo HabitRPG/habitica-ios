@@ -28,6 +28,7 @@ class UserManager: NSObject {
     private weak var classSelectionViewController: ClassSelectionViewController?
     private var lastClassSelectionDisplayed: Date?
     private var lastQuestCompletionDisplayed: Date?
+    private var lastYesterdailyDialog: Date?
     weak var yesterdailiesDialog: YesterdailiesDialogView?
     
     private var tutorialSteps = [String: Bool]()
@@ -43,7 +44,7 @@ class UserManager: NSObject {
             .on(value: {[weak self]user in
                 self?.onUserUpdated(user: user)
             }).filter({[weak self] (user) -> Bool in
-                return user.needsCron && self?.yesterdailiesDialog == nil
+                return user.needsCron && self?.yesterdailiesDialog == nil && (self?.lastYesterdailyDialog?.timeIntervalSinceNow ?? -600) <= -600
             }).flatMap(.latest, {[weak self] user in
                 return self?.taskRepository.retrieveTasks(dueOnDay: self?.getYesterday()).skipNil()
                     .map({ tasks in
@@ -105,6 +106,7 @@ class UserManager: NSObject {
             self?.yesterdailiesDialog = nil
         }
         yesterdailiesDialog = viewController
+        lastYesterdailyDialog = Date()
         alert.show()
     }
     
@@ -152,12 +154,12 @@ class UserManager: NSObject {
     
     private func handleQuestCompletion(_ user: UserProtocol) {
         if let questKey = user.party?.quest?.completed, !questKey.isEmpty {
-            if let lastCompletion = lastQuestCompletionDisplayed, lastCompletion.timeIntervalSinceNow > -5000 {
+            if let lastCompletion = lastQuestCompletionDisplayed, lastCompletion.timeIntervalSinceNow > -360 {
                 return
             }
             lastQuestCompletionDisplayed = Date()
             let completionView = QuestCompletedAlertController(questKey: questKey)
-            completionView.show()
+            completionView.enqueue()
             userRepository.updateUser(key: "party.quest.completed", value: "").observeCompleted {}
         }
     }
@@ -171,24 +173,27 @@ class UserManager: NSObject {
         return faintViewController
     }
     
-    private func checkClassSelection(user: UserProtocol) -> Bool {
+    func checkClassSelection(user: UserProtocol) -> Bool {
         if user.flags?.classSelected == false && user.preferences?.disableClasses == false && (user.stats?.level ?? 0) >= 10 {
-            if let lastSelection = lastClassSelectionDisplayed, lastSelection.timeIntervalSinceNow > -300 {
-                return false
-            }
-            if classSelectionViewController == nil {
-                let classSelectionController = StoryboardScene.Settings.classSelectionNavigationController.instantiate()
-                if var topController = UIApplication.shared.findKeyWindow()?.rootViewController {
-                    while let presentedViewController = topController.presentedViewController {
-                        topController = presentedViewController
-                    }
-                    classSelectionController.modalTransitionStyle = .crossDissolve
-                    classSelectionController.modalPresentationStyle = .overCurrentContext
-                    topController.present(classSelectionController, animated: true) {
-                    }
-                    lastClassSelectionDisplayed = Date()
-                    return true
+            return showClassSelection(user: user)
+        }
+        return false
+    }
+    
+    func showClassSelection(user: UserProtocol) -> Bool {
+        if let lastSelection = lastClassSelectionDisplayed, lastSelection.timeIntervalSinceNow > -300 {
+            return false
+        }
+        if classSelectionViewController == nil {
+            let classSelectionController = StoryboardScene.Settings.classSelectionNavigationController.instantiate()
+            if let topController = UIApplication.topViewController() {
+                self.classSelectionViewController = classSelectionController.topViewController as? ClassSelectionViewController
+                lastClassSelectionDisplayed = Date()
+                classSelectionController.modalTransitionStyle = .crossDissolve
+                classSelectionController.modalPresentationStyle = .overCurrentContext
+                topController.present(classSelectionController, animated: true) {
                 }
+                return true
             }
         }
         return false

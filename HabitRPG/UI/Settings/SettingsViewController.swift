@@ -840,43 +840,22 @@ class SettingsViewController: FormViewController, Themeable {
         guard let user = self.user else {
             assertionFailure("Attempting to change class but there is no user!"); return
         }
-        print(user.canChooseClassForFree)
         if user.canChooseClassForFree == true {
-            if user.needsToChooseClass {
-                showClassSelectionViewController()
-            } else {
-                enableClassSystemAndShowClassSelection()
-            }
+            let _ = UserManager.shared.showClassSelection(user: user)
         } else {
             let alertController = HabiticaAlertController(title: L10n.Settings.areYouSure, message: L10n.Settings.changeClassDisclaimer)
             let changeClassCosts = changeClassCosts
             
-            alertController.addAction(title: L10n.Settings.changeClass) {[weak self] _ in
+            alertController.addAction(title: L10n.Settings.changeClass) { _ in
                 if user.gemCount < changeClassCosts {
-                    print("Not enogh gems")
                     HRPGBuyItemModalViewController.displayInsufficientGemsModal(delayDisplay: false)
                     return
                 }
-                self?.showClassSelectionViewController()
+                let _ = UserManager.shared.showClassSelection(user: user)
             }
             alertController.addCancelAction()
             alertController.show()
         }
-    }
-    
-    private func enableClassSystemAndShowClassSelection() {
-        disposable.inner.add(userRepository.selectClass(nil)
-                .observe(on: UIScheduler())
-                .observeCompleted { [weak self] in
-                    self?.showClassSelectionViewController()
-            }
-        )
-    }
-    
-    private func showClassSelectionViewController() {
-        let viewController = StoryboardScene.Settings.classSelectionNavigationController.instantiate()
-        viewController.modalPresentationStyle = .fullScreen
-        present(viewController, animated: true, completion: nil)
     }
     
     private func update(language: AppLanguage) {
