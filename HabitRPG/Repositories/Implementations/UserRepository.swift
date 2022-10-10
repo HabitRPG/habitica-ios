@@ -351,21 +351,24 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func disableClassSystem() -> Signal<UserProtocol?, Never> {
-        if (lastClassSelection?.timeIntervalSinceNow ?? -31) > -30 {
+        if (lastClassSelection?.timeIntervalSinceNow ?? -3) > -2 {
             return Signal.empty
         }
         lastClassSelection = Date()
-        return DisableClassesCall().objectSignal.on(value: handleUserUpdate())
+        return DisableClassesCall().responseSignal
+            .flatMap(.latest, {[weak self] _ in
+                return self?.retrieveUser() ?? .empty
+            }).on(value: handleUserUpdate())
     }
     
     func selectClass(_ habiticaClass: HabiticaClass? = nil) -> Signal<UserProtocol?, Never> {
-        if (lastClassSelection?.timeIntervalSinceNow ?? -31) > -30 {
+        if (lastClassSelection?.timeIntervalSinceNow ?? -3) > -2 {
             return Signal.empty
         }
         lastClassSelection = Date()
-        return SelectClassCall(class: habiticaClass).habiticaResponseSignal
+        return SelectClassCall(class: habiticaClass).responseSignal
             .flatMap(.latest, {[weak self] _ in
-                return self?.retrieveUser() ?? .empty
+                return self?.retrieveUser(withTasks: false, forced: true) ?? .empty
             })
             .on(value: handleUserUpdate())
     }

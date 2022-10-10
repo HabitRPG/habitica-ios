@@ -24,6 +24,7 @@ class SplitSocialViewController: HabiticaSplitViewController {
     @objc var groupID: String? {
         didSet {
             DispatchQueue.main.async { [weak self] in
+                self?.viewDidLayoutSubviews()
                 self?.chatViewController?.groupID = self?.groupID
                 self?.detailViewController?.groupID = self?.groupID
                 self?.retrieveGroup()

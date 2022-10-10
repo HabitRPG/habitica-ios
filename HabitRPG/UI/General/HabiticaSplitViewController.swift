@@ -61,12 +61,12 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        if isInitialSetup {
+        if isInitialSetup && viewID != nil {
             isInitialSetup = false
             setupSplitView(traitCollection)
             if !showAsSplitView {
                 let userDefaults = UserDefaults()
-                let lastPage = userDefaults.integer(forKey: viewID ?? "" + "lastOpenedSegment")
+                let lastPage = userDefaults.integer(forKey: (viewID ?? "") + "lastOpenedSegment")
                 segmentedControl.selectedSegmentIndex = lastPage
                 scrollTo(page: lastPage, animated: false)
             }
@@ -75,7 +75,8 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         let userDefaults = UserDefaults()
-        userDefaults.set(segmentedControl.selectedSegmentIndex, forKey: viewID ?? "" + "lastOpenedSegment")
+        userDefaults.set(segmentedControl.selectedSegmentIndex, forKey: (viewID ?? "") + "lastOpenedSegment")
+        userDefaults.synchronize()
         super.viewWillDisappear(animated)
     }
     

@@ -176,10 +176,10 @@ class ClassSelectionViewController: UIViewController, Themeable {
                 selectedView = rogueOptionView
             }
             showLoadingSelection()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {[weak self] in
-                self?.userRepository.selectClass(selectedClass)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.userRepository.selectClass(selectedClass)
                     .observeValues { _ in
-                 self?.dismiss(animated: true, completion: nil)
+                 self.dismiss(animated: true, completion: nil)
                  }
             }
             
@@ -217,8 +217,15 @@ class ClassSelectionViewController: UIViewController, Themeable {
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         if !isSelecting {
-            self.userRepository.disableClassSystem().observeCompleted {}
+            isSelecting = true
+            self.userRepository.disableClassSystem().observeValues {[weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
+            }
         }
-        dismiss(animated: true, completion: nil)
+    }
+    
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        UserManager.shared.classSelectionViewController = nil
+        super.dismiss(animated: flag, completion: completion)
     }
 }

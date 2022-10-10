@@ -241,13 +241,18 @@ class ItemsViewController: BaseTableViewController {
 
     private func showQuestDialog(quest: QuestProtocol) {
         let alertController = HabiticaAlertController(title: quest.text)
+        alertController.contentViewInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
         let detailView = QuestDetailView(frame: CGRect.zero)
         detailView.configure(quest: quest)
+        detailView.translatesAutoresizingMaskIntoConstraints = false
         let imageView = NetworkImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .center
-        ImageManager.setImage(on: imageView, name: "quest_" + (quest.key ?? ""))
+
         let textView = UITextView()
+        textView.translatesAutoresizingMaskIntoConstraints = false
         textView.isScrollEnabled = false
+        textView.isSelectable = false
         textView.attributedText = try? HabiticaMarkdownHelper.toHabiticaAttributedString(quest.notes ?? "")
         textView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
         textView.textColor = ThemeService.shared.theme.primaryTextColor
@@ -255,6 +260,14 @@ class ItemsViewController: BaseTableViewController {
         let stackView = UIStackView(arrangedSubviews: [imageView, detailView, textView])
         stackView.axis = .vertical
         stackView.spacing = 12
+        ImageManager.getImage(name: "quest_" + (quest.key ?? "")) { (image, _) in
+            imageView.image = image
+            imageView.addHeightConstraint(height: image?.size.height ?? 0)
+            imageView.updateConstraints()
+            textView.addHeightConstraint(height: textView.sizeThatFits(CGSize(width: stackView.bounds.width, height: .infinity)).height)
+            textView.updateConstraints()
+            alertController.view.setNeedsLayout()
+        }
         alertController.contentView = stackView
         alertController.addAction(title: L10n.inviteParty, style: .default, isMainAction: true) {[weak self] _ in
             self?.inventoryRepository.inviteToQuest(quest: quest).observeCompleted {

@@ -25,7 +25,7 @@ class UserManager: NSObject {
     private let configRepository = ConfigRepository.shared
     
     private weak var faintViewController: FaintViewController?
-    private weak var classSelectionViewController: ClassSelectionViewController?
+    weak var classSelectionViewController: ClassSelectionViewController?
     private var lastClassSelectionDisplayed: Date?
     private var lastQuestCompletionDisplayed: Date?
     private var lastYesterdailyDialog: Date?
@@ -44,7 +44,7 @@ class UserManager: NSObject {
             .on(value: {[weak self]user in
                 self?.onUserUpdated(user: user)
             }).filter({[weak self] (user) -> Bool in
-                return user.needsCron && self?.yesterdailiesDialog == nil && (self?.lastYesterdailyDialog?.timeIntervalSinceNow ?? -600) <= -600
+                return user.needsCron && self?.yesterdailiesDialog == nil
             }).flatMap(.latest, {[weak self] user in
                 return self?.taskRepository.retrieveTasks(dueOnDay: self?.getYesterday()).skipNil()
                     .map({ tasks in
@@ -80,6 +80,10 @@ class UserManager: NSObject {
     }
     
     private func runCron(tasks: [TaskProtocol], uncompletedTaskCount: Int) {
+        if (lastYesterdailyDialog?.timeIntervalSinceNow ?? -600) > -600 {
+            return
+        }
+        lastYesterdailyDialog = Date()
         var eventProperties = [AnyHashable: Any]()
         eventProperties["eventAction"] = "show cron"
         eventProperties["eventCategory"] = "behaviour"
@@ -106,8 +110,7 @@ class UserManager: NSObject {
             self?.yesterdailiesDialog = nil
         }
         yesterdailiesDialog = viewController
-        lastYesterdailyDialog = Date()
-        alert.show()
+        alert.enqueue()
     }
     
     private func onUserUpdated(user: UserProtocol) {
@@ -181,7 +184,7 @@ class UserManager: NSObject {
     }
     
     func showClassSelection(user: UserProtocol) -> Bool {
-        if let lastSelection = lastClassSelectionDisplayed, lastSelection.timeIntervalSinceNow > -300 {
+        if let lastSelection = lastClassSelectionDisplayed, lastSelection.timeIntervalSinceNow > -10 {
             return false
         }
         if classSelectionViewController == nil {

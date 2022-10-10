@@ -41,6 +41,7 @@ class QuestCompletedAlertController: HabiticaAlertController {
                 ImageManager.getImage(name: "quest_" + key) { (image, _) in
                     imageView.image = image
                     imageView.addHeightConstraint(height: image?.size.height ?? 0)
+                    imageView.setNeedsLayout()
                     stackView.setNeedsLayout()
                     self?.view.setNeedsLayout()
                 }
@@ -53,7 +54,7 @@ class QuestCompletedAlertController: HabiticaAlertController {
             endTextView.textColor = ThemeService.shared.theme.primaryTextColor
             endTextView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
             endTextView.isScrollEnabled = false
-            endTextView.addHeightConstraint(height: endTextView.sizeThatFits(CGSize(width: 240, height: 1000)).height)
+            endTextView.addHeightConstraint(height: endTextView.sizeThatFits(CGSize(width: 240, height: 1500)).height)
             stackView.addArrangedSubview(endTextView)
             stackView.setNeedsLayout()
             self?.view.setNeedsLayout()

@@ -41,10 +41,7 @@ class PartyViewController: SplitSocialViewController {
         gradient.locations =  [0, 0.4, 1]
         noPartyHeaderBackground.gradient = gradient
         chatViewController?.autocompleteContext = "party"
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         userDisposable = userRepository.getUser()
             .on(value: {[weak self] user in
                 self?.userIDButton.setTitle("@\(user.username ?? "")", for: .normal)

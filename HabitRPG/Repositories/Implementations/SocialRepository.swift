@@ -396,16 +396,22 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             .objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
     }
     
-    public func abortQuest(groupID: String) -> Signal<QuestStateProtocol?, Never> {
+    public func abortQuest(groupID: String) -> Signal<GroupProtocol?, Never> {
         UISelectionFeedbackGenerator.oneShotSelectionChanged()
         return AbortQuestCall(groupID: groupID)
             .objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
+            .flatMap(.latest) { _ in
+                return self.retrieveGroup(groupID: groupID)
+            }
     }
     
-    public func forceStartQuest(groupID: String) -> Signal<QuestStateProtocol?, Never> {
+    public func forceStartQuest(groupID: String) -> Signal<GroupProtocol?, Never> {
         UISelectionFeedbackGenerator.oneShotSelectionChanged()
         return ForceStartQuestCall(groupID: groupID)
             .objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
+            .flatMap(.latest) { _ in
+                return self.retrieveGroup(groupID: groupID)
+            }
     }
     
     public func leaveQuest(groupID: String) -> Signal<EmptyResponseProtocol?, Never> {

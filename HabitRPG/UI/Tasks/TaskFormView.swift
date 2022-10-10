@@ -82,26 +82,17 @@ struct HabitControlsFormView: View {
 
     private func buildOption(text: String, icon: UIImage, isActive: Binding<Bool>) -> some View {
         return VStack(spacing: 12) {
-            if #available(iOS 14.0, *) {
-                Group {
-                    Image(uiImage: icon)
-                        .accessibilityHidden(true)
-                    Text(text)
-                        .accessibilityHidden(true)
-                        .font(.system(size: 15, weight: isActive.wrappedValue ? .semibold : .regular))
-                        .foregroundColor(isActive.wrappedValue ? .accentColor : Color(theme.ternaryTextColor))
-                }
-                .accessibilityElement(children: .ignore)
-                .accessibilityLabel(text + " control, " + "\( isActive.wrappedValue ? "on": "off")")
-                .accessibilityRemoveTraits(.isImage)
-            } else {
-                Group {
-                    Image(uiImage: icon)
-                    Text(text)
-                        .font(.system(size: 15, weight: isActive.wrappedValue ? .semibold : .regular))
-                        .foregroundColor(isActive.wrappedValue ? .accentColor : Color(theme.ternaryTextColor))
-                }
+            Group {
+                Image(uiImage: icon)
+                    .accessibilityHidden(true)
+                Text(text)
+                    .accessibilityHidden(true)
+                    .font(.system(size: 15, weight: isActive.wrappedValue ? .semibold : .regular))
+                    .foregroundColor(isActive.wrappedValue ? .accentColor : Color(theme.ternaryTextColor))
             }
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(text + " control, " + "\( isActive.wrappedValue ? "on": "off")")
+            .accessibilityRemoveTraits(.isImage)
         }
         .padding(.top, 4)
         .frame(maxWidth: .infinity)
@@ -113,18 +104,8 @@ struct HabitControlsFormView: View {
     
     var body: some View {
         HStack {
-            if #available(iOS 14.0, *) {
-                let isPositiveActive: String  = isUp ? " is active" : ""
-                let isNegativeActive: String  = isDown ? " is active" : ""
-
-                buildOption(text: L10n.Tasks.Form.positive, icon: HabiticaIcons.imageOfHabitControlPlus(taskTintColor: taskColor, isActive: isUp), isActive: $isUp)
-                    .accessibilityLabel("Positive." + isPositiveActive)
-                buildOption(text: L10n.Tasks.Form.negative, icon: HabiticaIcons.imageOfHabitControlMinus(taskTintColor: taskColor, isActive: isDown), isActive: $isDown)
-                    .accessibilityLabel("Negtive." + isNegativeActive)
-            } else {
-                buildOption(text: L10n.Tasks.Form.positive, icon: HabiticaIcons.imageOfHabitControlPlus(taskTintColor: taskColor, isActive: isUp), isActive: $isUp)
-                buildOption(text: L10n.Tasks.Form.negative, icon: HabiticaIcons.imageOfHabitControlMinus(taskTintColor: taskColor, isActive: isDown), isActive: $isDown)
-            }
+            buildOption(text: L10n.Tasks.Form.positive, icon: HabiticaIcons.imageOfHabitControlPlus(taskTintColor: taskColor, isActive: isUp), isActive: $isUp)
+            buildOption(text: L10n.Tasks.Form.negative, icon: HabiticaIcons.imageOfHabitControlMinus(taskTintColor: taskColor, isActive: isDown), isActive: $isDown)
         }
     }
 }
