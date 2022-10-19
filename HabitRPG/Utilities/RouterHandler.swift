@@ -292,6 +292,7 @@ class RouterHandler {
         for route in parameterRoutes {
             if let match = route.matches(path) {
                 route.call(match.parameters)
+                return true
             }
         }
         return false

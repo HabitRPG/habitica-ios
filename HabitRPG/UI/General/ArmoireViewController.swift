@@ -331,7 +331,7 @@ class ArmoireViewController: UIHostingController<ArmoireView> {
     }
     
     func show() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             if var topController = UIApplication.topViewController() {
                 if let tabBarController = topController.tabBarController {
                     topController = tabBarController

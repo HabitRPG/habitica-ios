@@ -9,9 +9,26 @@
 import UIKit
 import SwiftUI
 
+protocol Dismissable {
+    var dismisser: Dismisser { get set }
+}
+
 class HostingBottomSheetController<ContentView: View>: UIHostingController<ContentView> {
     private var bottomInset: CGFloat = 0
-
+        
+    override init(rootView: ContentView) {
+        super.init(rootView: rootView)
+        if let root = rootView as? Dismissable {
+            root.dismisser.dismiss = {
+                self.dismiss(animated: true)
+            }
+        }
+    }
+    
+    @MainActor required dynamic init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     enum PreferredSheetSizing: CGFloat {
         case fit = 0 // Fit, based on the view's constraints
         case small = 0.25

@@ -135,8 +135,6 @@
 		292726B620B7094B009DD08A /* ChallengeTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726B520B7094A009DD08A /* ChallengeTableViewDataSource.swift */; };
 		292844ED20DD1D4B0011DC43 /* GroupInvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */; };
 		292844EF20DD1D630011DC43 /* GroupInvitationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */; };
-		2929AAB322E9E58E00DF9463 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2929AAB222E9E58E00DF9463 /* Habitica_Database.framework */; };
-		2929AAB522E9E59A00DF9463 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2929AAB422E9E59A00DF9463 /* Habitica_Models.framework */; };
 		292AA72420FE15090022CC5F /* UIFont-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292AA72320FE15090022CC5F /* UIFont-Extensions.swift */; };
 		292BD89C28B4EA4F006447EF /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 292BD89B28B4EA4F006447EF /* KeychainAccess */; };
 		292BD89F28B4EA85006447EF /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 292BD89E28B4EA85006447EF /* AppAuth */; };
@@ -337,6 +335,12 @@
 		298FAB0224BF5BF30084CB0D /* MainTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 298FAB0124BF5BF30084CB0D /* MainTableviewCell.xib */; };
 		299328A924E57858003BCE0C /* FAQDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299328A824E57858003BCE0C /* FAQDetailViewController.swift */; };
 		299328AB24E5985B003BCE0C /* UIStackview-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299328AA24E5985B003BCE0C /* UIStackview-Extensions.swift */; };
+		2994A8AE28FE945E00CEDED7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; };
+		2994A8AF28FE945F00CEDED7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; };
+		2994A8B028FE946800CEDED7 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; };
+		2994A8B128FE946A00CEDED7 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; };
+		2994A8B228FE947800CEDED7 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */; };
+		2994A8B328FE947800CEDED7 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */; };
 		29951A1E2326670500918FC8 /* InboxOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29951A1D2326670500918FC8 /* InboxOverviewViewController.swift */; };
 		29951A20232669C600918FC8 /* InboxChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29951A1F232669C500918FC8 /* InboxChatViewController.swift */; };
 		29951A222327E94F00918FC8 /* ThemedNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29951A212327E94F00918FC8 /* ThemedNavigationController.swift */; };
@@ -417,8 +421,6 @@
 		29BEE64D252DD3F400D456F8 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E1B122898E9F0081E96F /* TaskManager.swift */; };
 		29BEE659252DD85C00D456F8 /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884D2010CCC2002B3D3F /* BaseRepository.swift */; };
 		29BEE65F252DD86200D456F8 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
-		29BEE6B4252DDA2800D456F8 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BEE6B3252DDA2800D456F8 /* Habitica_Models.framework */; };
-		29BEE6BC252DDA3100D456F8 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BEE6BB252DDA3100D456F8 /* Habitica_Database.framework */; };
 		29BEE6D7252E14F000D456F8 /* HabiticaWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE6C7252E144F00D456F8 /* HabiticaWidgets.swift */; };
 		29BEE6DC252E14F300D456F8 /* RemainingDailiesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE6CD252E14C000D456F8 /* RemainingDailiesWidget.swift */; };
 		29BEE6E7252E1B7700D456F8 /* Color-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE6E1252E1B3600D456F8 /* Color-Extensions.swift */; };
@@ -858,8 +860,6 @@
 		292726B520B7094A009DD08A /* ChallengeTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewDataSource.swift; sourceTree = "<group>"; };
 		292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInvitationView.swift; sourceTree = "<group>"; };
 		292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInvitationListView.swift; sourceTree = "<group>"; };
-		2929AAB222E9E58E00DF9463 /* Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2929AAB422E9E59A00DF9463 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292AA72320FE15090022CC5F /* UIFont-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont-Extensions.swift"; sourceTree = "<group>"; };
 		292D6C9A2101FF080078288A /* InviteMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteMembersViewController.swift; sourceTree = "<group>"; };
 		292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1134,8 +1134,6 @@
 		29BEE633252CCFE300D456F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29BEE635252CCFE300D456F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29BEE639252CCFE300D456F8 /* Habitica WidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Habitica WidgetsExtension.entitlements"; sourceTree = "<group>"; };
-		29BEE6B3252DDA2800D456F8 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		29BEE6BB252DDA3100D456F8 /* Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BEE6C7252E144F00D456F8 /* HabiticaWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaWidgets.swift; sourceTree = "<group>"; };
 		29BEE6CD252E14C000D456F8 /* RemainingDailiesWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingDailiesWidget.swift; sourceTree = "<group>"; };
 		29BEE6E1252E1B3600D456F8 /* Color-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Extensions.swift"; sourceTree = "<group>"; };
@@ -1289,7 +1287,6 @@
 		7A84E1A3228928AD0081E96F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A84E1B122898E9F0081E96F /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		7A84E1B6228A5CB40081E96F /* Habitica Intents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Habitica Intents.entitlements"; sourceTree = "<group>"; };
-		C83802FA251DEA0F00AE90ED /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8415991225F8B7800989FB8 /* Habitica Snapshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica Snapshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitica_Snapshots.swift; sourceTree = "<group>"; };
 		C8415995225F8B7800989FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1302,8 +1299,6 @@
 		C8FA550922C5425E0017DD65 /* PrideHabiticaAltBlack@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideHabiticaAltBlack@3x.png"; sourceTree = "<group>"; };
 		C8FA550A22C5425E0017DD65 /* PrideHabiticaAltBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideHabiticaAltBlack@2x.png"; sourceTree = "<group>"; };
 		D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D90576701BD80275009BB7BC /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		D90576711BD80275009BB7BC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		D90576821BD8323F009BB7BC /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D90576861BD83240009BB7BC /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D90576931BD83258009BB7BC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1443,10 +1438,9 @@
 			files = (
 				2938ED3C28B4EE6B00E995A2 /* Amplitude in Frameworks */,
 				2953D83D28B51FA700DC456E /* ReactiveSwift in Frameworks */,
+				2994A8B128FE946A00CEDED7 /* Habitica_Database.framework in Frameworks */,
 				29BEE62F252CCFE100D456F8 /* SwiftUI.framework in Frameworks */,
 				2938ED3E28B4EEB200E995A2 /* KeychainAccess in Frameworks */,
-				29BEE6BC252DDA3100D456F8 /* Habitica_Database.framework in Frameworks */,
-				29BEE6B4252DDA2800D456F8 /* Habitica_Models.framework in Frameworks */,
 				29BEE62D252CCFE100D456F8 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1455,11 +1449,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2929AAB522E9E59A00DF9463 /* Habitica_Models.framework in Frameworks */,
 				2953D83B28B51F9E00DC456E /* ReactiveSwift in Frameworks */,
-				2929AAB322E9E58E00DF9463 /* Habitica_Database.framework in Frameworks */,
+				2994A8B028FE946800CEDED7 /* Habitica_Database.framework in Frameworks */,
 				2938ED3A28B4EE5C00E995A2 /* Amplitude in Frameworks */,
 				2938ED4028B4EEBC00E995A2 /* KeychainAccess in Frameworks */,
+				2994A8AE28FE945E00CEDED7 /* Habitica_Models.framework in Frameworks */,
+				2994A8B228FE947800CEDED7 /* Habitica_API_Client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1468,6 +1463,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A84E19C228928AD0081E96F /* IntentsUI.framework in Frameworks */,
+				2994A8AF28FE945F00CEDED7 /* Habitica_Models.framework in Frameworks */,
+				2994A8B328FE947800CEDED7 /* Habitica_API_Client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2793,18 +2790,11 @@
 			isa = PBXGroup;
 			children = (
 				29995A6026CBCB0B0063D4C9 /* AdServices.framework */,
-				C83802FA251DEA0F00AE90ED /* Shared.framework */,
-				29BEE6BB252DDA3100D456F8 /* Habitica_Database.framework */,
-				29BEE6B3252DDA2800D456F8 /* Habitica_Models.framework */,
-				2929AAB422E9E59A00DF9463 /* Habitica_Models.framework */,
-				2929AAB222E9E58E00DF9463 /* Habitica_Database.framework */,
 				292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */,
 				292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */,
 				292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */,
 				D92D26151D58EF00001FD977 /* AVFoundation.framework */,
 				D9CD2DBD1BC7FBB500B1304B /* CoreSpotlight.framework */,
-				D90576701BD80275009BB7BC /* FBSDKCoreKit.framework */,
-				D90576711BD80275009BB7BC /* FBSDKLoginKit.framework */,
 				D9C89CF81B1F0E6C00A599B0 /* StoreKit.framework */,
 				D940A7E11B0CF80100370F2E /* Fabric.framework */,
 				D940A7E21B0CF80100370F2E /* Crashlytics.framework */,
@@ -4399,7 +4389,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 742;
+				CURRENT_PROJECT_VERSION = 745;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4432,7 +4422,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 742;
+				CURRENT_PROJECT_VERSION = 745;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4469,7 +4459,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 742;
+				CURRENT_PROJECT_VERSION = 745;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4483,7 +4473,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.6.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4516,7 +4506,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 742;
+				CURRENT_PROJECT_VERSION = 745;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4530,7 +4520,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.6.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4556,7 +4546,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 742;
+				CURRENT_PROJECT_VERSION = 745;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4570,7 +4560,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.6.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -4598,7 +4588,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 742;
+				CURRENT_PROJECT_VERSION = 745;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4612,7 +4602,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.6.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -4638,7 +4628,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 742;
+				CURRENT_PROJECT_VERSION = 745;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4652,7 +4642,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.6.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4682,7 +4672,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 742;
+				CURRENT_PROJECT_VERSION = 745;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4696,7 +4686,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.6.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4890,7 +4880,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 742;
+				CURRENT_PROJECT_VERSION = 745;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4946,7 +4936,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 742;
+				CURRENT_PROJECT_VERSION = 745;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4975,7 +4965,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 742;
+				CURRENT_PROJECT_VERSION = 745;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -4986,12 +4976,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -5040,7 +5030,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 742;
+				CURRENT_PROJECT_VERSION = 745;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";
@@ -5051,12 +5041,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",

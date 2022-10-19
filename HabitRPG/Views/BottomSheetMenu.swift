@@ -11,15 +11,11 @@ import SwiftUI
 import Kingfisher
 
 class Dismisser: ObservableObject {
-    let dismiss: () -> Void
-    
-    init(dismiss: @escaping () -> Void) {
-        self.dismiss = dismiss
-    }
+    var dismiss: (() -> Void)?
 }
 
 struct BottomSheetMenuitem<Title: View>: View {
-    @Environment(\.presentationMode) private var presentationMode
+    @EnvironmentObject private var dismisser: Dismisser
     
     enum Style {
         case normal
@@ -41,7 +37,7 @@ struct BottomSheetMenuitem<Title: View>: View {
         HabiticaButtonUI(label: title,
                          color: style == .normal ? Color(ThemeService.shared.theme.fixedTintColor) : style == .destructive ? Color(UIColor.red100) : .windowBackgroundColor,
                          size: .compact) {
-            presentationMode.wrappedValue.dismiss()
+            dismisser.dismiss?()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 onTap()
             }
@@ -57,7 +53,8 @@ extension BottomSheetMenuitem where Title == Text {
     }
 }
 
-struct BottomSheetMenu<Title: View, MenuItems: View>: View {
+struct BottomSheetMenu<Title: View, MenuItems: View>: View, Dismissable {
+    var dismisser: Dismisser = Dismisser()
     var title: Title
     var iconURL: URL?
     let menuItems: MenuItems
@@ -86,6 +83,7 @@ struct BottomSheetMenu<Title: View, MenuItems: View>: View {
                     KFImage(url).frame(width: 70, height: 70)
                 }
                 menuItems
+                .environmentObject(dismisser)
                 .offset(y: isAppeared ? 0 : 35)
                 .animation(.interpolatingSpring(stiffness: 300, damping: 15).delay(0.2), value: isAppeared)
                 .opacity(isAppeared ? 1 : 0)
