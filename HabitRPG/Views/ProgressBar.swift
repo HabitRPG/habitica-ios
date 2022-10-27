@@ -13,7 +13,8 @@ struct ProgressBarUI<V>: View where V: BinaryFloatingPoint {
     let value: V
     
     init(value: V, maxValue: V = 1.0) {
-        self.value = value / maxValue
+        // Cap progressBar value at maxValue to avoid overflow
+        self.value = min(value, maxValue) / maxValue
     }
     
     var body: some View {
