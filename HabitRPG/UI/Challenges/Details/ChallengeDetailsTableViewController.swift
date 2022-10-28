@@ -37,6 +37,7 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
             }))
             
             disposable.inner.add(viewModel.nextViewControllerSignal.observeValues({[weak self] viewController in
+                viewController.modalPresentationStyle = .formSheet
                 self?.navigationController?.pushViewController(viewController, animated: true)
             }))
             

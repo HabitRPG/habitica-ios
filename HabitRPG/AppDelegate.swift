@@ -145,9 +145,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     }
     
     func setupPurchaseHandling() {
-        #if !targetEnvironment(simulator)
-            PurchaseHandler.shared.completionHandler()
-        #endif
+        PurchaseHandler.shared.completionHandler()
     }
     
     func setupNetworkClient() {

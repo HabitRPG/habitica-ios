@@ -93,7 +93,6 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     
     func inviteToQuest(quest: QuestProtocol) -> Signal<EmptyResponseProtocol?, Never> {
         let call = InviteToQuestCall(groupID: "party", quest: quest)
-        
         return call.objectSignal
     }
     

@@ -394,6 +394,18 @@ class SubscriptionViewController: BaseTableViewController {
         } else {
             var url: URL?
             if subscriptionPlan.paymentMethod == "Apple" {
+                if #available(iOS 15.0, *) {
+                    if let window = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                        Task {
+                            do {
+                                try await AppStore.showManageSubscriptions(in: window)
+                            } catch {
+                                
+                            }
+                        }
+                        return
+                    }
+                }
                 url = URL(string: "https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions")
             } else if subscriptionPlan.paymentMethod == "Google" {
                 url = URL(string: "http://support.google.com/googleplay?p=cancelsubsawf")

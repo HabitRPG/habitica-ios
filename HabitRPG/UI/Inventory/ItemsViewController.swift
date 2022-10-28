@@ -27,6 +27,7 @@ class ItemsViewController: BaseTableViewController {
     var itemType: String?
     
     private let inventoryRepository = InventoryRepository()
+    private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
     private var isPresentedModally = false
     
@@ -145,7 +146,11 @@ class ItemsViewController: BaseTableViewController {
                 }
                 BottomSheetMenuitem(title: L10n.inviteParty) {[weak self] in
                     if let quest = item as? QuestProtocol {
-                        self?.inventoryRepository.inviteToQuest(quest: quest).observeCompleted {
+                        self?.inventoryRepository.inviteToQuest(quest: quest)
+                            .flatMap(.latest, { _ in
+                                return self?.socialRepository.retrieveGroup(groupID: "party") ?? .empty
+                            })
+                            .observeCompleted {
                             self?.dismissIfNeeded()
                         }
                     }
@@ -270,7 +275,11 @@ class ItemsViewController: BaseTableViewController {
         }
         alertController.contentView = stackView
         alertController.addAction(title: L10n.inviteParty, style: .default, isMainAction: true) {[weak self] _ in
-            self?.inventoryRepository.inviteToQuest(quest: quest).observeCompleted {
+            self?.inventoryRepository.inviteToQuest(quest: quest)
+                .flatMap(.latest, { _ in
+                    return self?.socialRepository.retrieveGroup(groupID: "party") ?? .empty
+                })
+                .observeCompleted {
                 self?.dismissIfNeeded()
             }
         }

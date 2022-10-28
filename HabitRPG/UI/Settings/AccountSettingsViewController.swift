@@ -345,6 +345,7 @@ private func setUser(_ user: UserProtocol) {
         textField.isSecureTextEntry = true
         textField.returnKeyType = .done
         textField.delegate = self
+        textField.addHeightConstraint(height: 44)
         stackView.addArrangedSubview(textField)
         alertController.contentView = stackView
         

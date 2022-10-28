@@ -695,14 +695,14 @@ class SettingsViewController: FormViewController, Themeable {
         disableNotificationsRow?.value = user.preferences?.pushNotifications?.unsubscribeFromAll
         disableNotificationsRow?.updateCell()
         
-        let pushNotificationsRow = (form.rowBy(tag: SettingsTags.pushNotifications) as? MultipleSelectorRow<String>)
+        let pushNotificationsRow = (form.rowBy(tag: SettingsTags.pushNotifications) as? MultipleSelectorRow<LabeledFormValue<String>>)
         pushNotificationsRow?.value = getPushNotificationSet(forUser: user)
         
         let disableEmailsRow = (form.rowBy(tag: SettingsTags.disableAllEmails) as? SwitchRow)
         disableEmailsRow?.value = user.preferences?.emailNotifications?.unsubscribeFromAll
         disableEmailsRow?.updateCell()
         
-        let emailNotificationsRow = (form.rowBy(tag: SettingsTags.emailNotifications) as? MultipleSelectorRow<String>)
+        let emailNotificationsRow = (form.rowBy(tag: SettingsTags.emailNotifications) as? MultipleSelectorRow<LabeledFormValue<String>>)
         emailNotificationsRow?.value = getEmailNotificationSet(forUser: user)
         
         let disablePMRow = (form.rowBy(tag: SettingsTags.disablePrivateMessages) as? SwitchRow)
@@ -751,87 +751,87 @@ class SettingsViewController: FormViewController, Themeable {
         isSettingUserData = false
     }
     
-    private func getPushNotificationSet(forUser user: UserProtocol) -> Set<String> {
-        var pushNotifications = Set<String>()
+    private func getPushNotificationSet(forUser user: UserProtocol) -> Set<LabeledFormValue<String>> {
+        var pushNotifications = Set<LabeledFormValue<String>>()
         guard let notificationPreferences = user.preferences?.pushNotifications else {
             return pushNotifications
         }
         if notificationPreferences.giftedGems {
-            pushNotifications.insert(L10n.Settings.PushNotifications.giftedGems)
+            pushNotifications.insert(LabeledFormValue(value: "giftedGems", label: L10n.Settings.PushNotifications.giftedGems))
         }
         if notificationPreferences.giftedSubscription {
-            pushNotifications.insert(L10n.Settings.PushNotifications.giftedSubscription)
+            pushNotifications.insert(LabeledFormValue(value: "giftedSubscription", label: L10n.Settings.PushNotifications.giftedSubscription))
         }
         if notificationPreferences.hasNewPM {
-            pushNotifications.insert(L10n.Settings.PushNotifications.receivedPm)
+            pushNotifications.insert(LabeledFormValue(value: "hasNewPM", label: L10n.Settings.PushNotifications.receivedPm))
         }
         if notificationPreferences.invitedGuild {
-            pushNotifications.insert(L10n.Settings.PushNotifications.invitedGuid)
+            pushNotifications.insert(LabeledFormValue(value: "invitedGuild", label: L10n.Settings.PushNotifications.invitedGuid))
         }
         if notificationPreferences.invitedParty {
-            pushNotifications.insert(L10n.Settings.PushNotifications.invitedParty)
+            pushNotifications.insert(LabeledFormValue(value: "invitedParty", label: L10n.Settings.PushNotifications.invitedParty))
         }
         if notificationPreferences.invitedQuest {
-            pushNotifications.insert(L10n.Settings.PushNotifications.invitedQuest)
+            pushNotifications.insert(LabeledFormValue(value: "invitedQuest", label: L10n.Settings.PushNotifications.invitedQuest))
         }
         if notificationPreferences.questStarted {
-            pushNotifications.insert(L10n.Settings.PushNotifications.questBegun)
+            pushNotifications.insert(LabeledFormValue(value: "questStarted", label: L10n.Settings.PushNotifications.questBegun))
         }
         if notificationPreferences.majorUpdates {
-            pushNotifications.insert(L10n.Settings.PushNotifications.importantAnnouncement)
+            pushNotifications.insert(LabeledFormValue(value: "majorUpdates", label: L10n.Settings.PushNotifications.importantAnnouncement))
         }
         if notificationPreferences.wonChallenge {
-            pushNotifications.insert(L10n.Settings.PushNotifications.wonChallenge)
+            pushNotifications.insert(LabeledFormValue(value: "wonChallenge", label: L10n.Settings.PushNotifications.wonChallenge))
         }
         if notificationPreferences.partyActivity {
-            pushNotifications.insert(L10n.Settings.PushNotifications.partyActivity)
+            pushNotifications.insert(LabeledFormValue(value: "partyActivity", label: L10n.Settings.PushNotifications.partyActivity))
         }
         if notificationPreferences.mentionParty {
-            pushNotifications.insert(L10n.Settings.PushNotifications.mentionParty)
+            pushNotifications.insert(LabeledFormValue(value: "mentionParty", label: L10n.Settings.PushNotifications.mentionParty))
         }
         if notificationPreferences.mentionJoinedGuild {
-            pushNotifications.insert(L10n.Settings.PushNotifications.mentionJoinedGuild)
+            pushNotifications.insert(LabeledFormValue(value: "mentionJoinedGuild", label: L10n.Settings.PushNotifications.mentionJoinedGuild))
         }
         if notificationPreferences.mentionUnjoinedGuild {
-            pushNotifications.insert(L10n.Settings.PushNotifications.mentionUnjoinedGuild)
+            pushNotifications.insert(LabeledFormValue(value: "mentionUnjoinedGuild", label: L10n.Settings.PushNotifications.mentionUnjoinedGuild))
         }
         return pushNotifications
     }
     
-    private func getEmailNotificationSet(forUser user: UserProtocol) -> Set<String> {
-        var pushNotifications = Set<String>()
+    private func getEmailNotificationSet(forUser user: UserProtocol) -> Set<LabeledFormValue<String>> {
+        var pushNotifications = Set<LabeledFormValue<String>>()
         guard let notificationPreferences = user.preferences?.emailNotifications else {
             return pushNotifications
         }
         if notificationPreferences.giftedGems {
-            pushNotifications.insert(L10n.Settings.PushNotifications.giftedGems)
+            pushNotifications.insert(LabeledFormValue(value: "giftedGems", label: L10n.Settings.PushNotifications.giftedGems))
         }
         if notificationPreferences.giftedSubscription {
-            pushNotifications.insert(L10n.Settings.PushNotifications.giftedSubscription)
+            pushNotifications.insert(LabeledFormValue(value: "giftedSubscription", label: L10n.Settings.PushNotifications.giftedSubscription))
         }
         if notificationPreferences.hasNewPM {
-            pushNotifications.insert(L10n.Settings.PushNotifications.receivedPm)
+            pushNotifications.insert(LabeledFormValue(value: "hasNewPM", label: L10n.Settings.PushNotifications.receivedPm))
         }
         if notificationPreferences.invitedGuild {
-            pushNotifications.insert(L10n.Settings.PushNotifications.invitedGuid)
+            pushNotifications.insert(LabeledFormValue(value: "invitedGuild", label: L10n.Settings.PushNotifications.invitedGuid))
         }
         if notificationPreferences.invitedParty {
-            pushNotifications.insert(L10n.Settings.PushNotifications.invitedParty)
+            pushNotifications.insert(LabeledFormValue(value: "invitedParty", label: L10n.Settings.PushNotifications.invitedParty))
         }
         if notificationPreferences.invitedQuest {
-            pushNotifications.insert(L10n.Settings.PushNotifications.invitedQuest)
+            pushNotifications.insert(LabeledFormValue(value: "invitedQuest", label: L10n.Settings.PushNotifications.invitedQuest))
         }
         if notificationPreferences.questStarted {
-            pushNotifications.insert(L10n.Settings.PushNotifications.questBegun)
+            pushNotifications.insert(LabeledFormValue(value: "questStarted", label: L10n.Settings.PushNotifications.questBegun))
         }
         if notificationPreferences.majorUpdates {
-            pushNotifications.insert(L10n.Settings.PushNotifications.importantAnnouncement)
+            pushNotifications.insert(LabeledFormValue(value: "majorUpdates", label: L10n.Settings.PushNotifications.importantAnnouncement))
         }
         if notificationPreferences.wonChallenge {
-            pushNotifications.insert(L10n.Settings.PushNotifications.wonChallenge)
+            pushNotifications.insert(LabeledFormValue(value: "wonChallenge", label: L10n.Settings.PushNotifications.wonChallenge))
         }
         if notificationPreferences.kickedGroup {
-            pushNotifications.insert(L10n.Settings.EmailNotifications.bannedGroup)
+            pushNotifications.insert(LabeledFormValue(value: "kickedGroup", label: L10n.Settings.EmailNotifications.bannedGroup))
         }
         return pushNotifications
     }
@@ -841,7 +841,7 @@ class SettingsViewController: FormViewController, Themeable {
             assertionFailure("Attempting to change class but there is no user!"); return
         }
         if user.canChooseClassForFree == true {
-            let _ = UserManager.shared.showClassSelection(user: user)
+            _ = UserManager.shared.showClassSelection(user: user)
         } else {
             let alertController = HabiticaAlertController(title: L10n.Settings.areYouSure, message: L10n.Settings.changeClassDisclaimer)
             let changeClassCosts = changeClassCosts
