@@ -60,4 +60,4 @@ last_where: error
 sorted_first_last: error
 overridden_super_call:
   severity: error
-reporter: 'xcode'
+reporter: "xcode"
