@@ -53,9 +53,11 @@ struct TaskListWidgetView : View {
                         Text("Dailies").font(.system(size: 13, weight: .semibold)).foregroundColor(.widgetTextSecondary).padding(.top, 4)
                         Text("\(entry.tasks.count)").font(Font.system(size: 34)).foregroundColor(Color("taskListSecondaryText"))
                         Spacer()
-                        Link(destination: URL(string: "/user/tasks/daily/add")!, label: {
-                            Image("Add").foregroundColor(Color("taskListSecondaryText"))
-                        }).padding(.bottom, 7)
+                        if let dailyURL = URL(string: "/user/tasks/daily/add") {
+                            Link(destination: dailyURL, label: {
+                                Image("Add").foregroundColor(Color("taskListSecondaryText"))
+                            }).padding(.bottom, 7)
+                        }
                     }.frame(width: 60, alignment: .leading)
                     MainWidgetContent(entry: entry, maxCount: maxCount)
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
@@ -66,9 +68,12 @@ struct TaskListWidgetView : View {
                     HStack(alignment: .center) {
                         Text("Today's Dailies").font(.system(size: 20, weight: .semibold)).foregroundColor(Color("taskListPrimaryText"))
                         Spacer()
-                        Link(destination: URL(string: "/user/tasks/daily/add")!, label: {
-                            Image("Add").foregroundColor(Color("taskListSecondaryText"))
-                        })
+                        
+                        if let dailyURL = URL(string: "/user/tasks/daily/add") {
+                            Link(destination: dailyURL, label: {
+                                Image("Add").foregroundColor(Color("taskListSecondaryText"))
+                            })
+                        }
                     }.padding(EdgeInsets(top: 0, leading: 0, bottom: 1, trailing: 0))
                     VStack {
                         MainWidgetContent(entry: entry, maxCount: maxCount)
@@ -151,7 +156,7 @@ struct TaskListItem: View {
                 .frame(width: 4, height: 18)
             Text(task.text ?? "").font(.system(size: 13)).foregroundColor(Color("taskListTaskText")).lineLimit(2)
             let completedCount = task.checklist.filter { $0.completed }.count
-            if showChecklistCount && task.checklist.count > 0 {
+            if showChecklistCount && !task.checklist.isEmpty {
                 Spacer()
                 Text("\(completedCount)/\(task.checklist.count)")
                     .font(.system(size: 11))
