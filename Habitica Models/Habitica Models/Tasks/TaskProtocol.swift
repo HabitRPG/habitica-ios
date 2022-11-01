@@ -43,6 +43,7 @@ public protocol TaskProtocol: BaseRewardProtocol {
     var challengeID: String? { get set }
     var challengeBroken: String? { get set }
     var groupID: String? { get set }
+    var groupAssignedDetails: [AssignedDetailsProtocol] { get set }
     var createdAt: Date? { get set }
     var updatedAt: Date? { get set }
     var startDate: Date? { get set }
@@ -84,9 +85,30 @@ extension TaskProtocol {
     public var isEditable: Bool {
         return !(isChallengeTask || isGroupTask)
     }
+    
+    public func completed(by userID: String?) -> Bool {
+        if !isGroupTask {
+            return completed
+        } else {
+            return groupAssignedDetails.first(where: { $0.assignedUserID == userID })?.completed ?? completed
+        }
+    }
+    
+    public func complete(forUser userID: String?, completed: Bool) {
+        if isGroupTask && !groupAssignedDetails.isEmpty {
+            groupAssignedDetails.first(where: { $0.assignedUserID == userID })?.completed = completed
+            if groupAssignedDetails.filter({ $0.completed != completed }).isEmpty {
+                self.completed = completed
+            }
+        } else {
+            self.completed = completed
+        }
+    }
 }
 
 public class PreviewTask: TaskProtocol {
+    public var groupAssignedDetails: [AssignedDetailsProtocol] = []
+    
     public init() {}
     public var challengeBroken: String?
     

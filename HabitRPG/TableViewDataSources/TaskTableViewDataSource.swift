@@ -252,6 +252,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         if let checkedCell = cell as? CheckedTableViewCell {
             checkedCell.isExpanded = self.expandedIndexPath?.item == indexPath.item
         }
+        cell.userID = userRepository.currentUserId
         cell.configure(task: task)
         cell.syncErrorTouched = {[weak self] in
             if !task.isValid {

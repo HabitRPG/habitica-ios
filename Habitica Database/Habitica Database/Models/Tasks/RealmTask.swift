@@ -187,13 +187,35 @@ class RealmTask: BaseModel, TaskProtocol {
         }
     }
     var realmWeeksOfMonth = List<Int>()
+    
+    var groupAssignedDetails: [AssignedDetailsProtocol] {
+        get {
+            if realmGroupAssignedDetails.isInvalidated {
+                return []
+            }
+            return realmGroupAssignedDetails.map({ (tag) -> AssignedDetailsProtocol in
+                return tag
+            })
+        }
+        set {
+            realmGroupAssignedDetails.removeAll()
+            newValue.forEach { (details) in
+                if let realmDetails = details as? RealmAssignedDetails {
+                    realmGroupAssignedDetails.append(realmDetails)
+                } else {
+                    realmGroupAssignedDetails.append(RealmAssignedDetails(taskID: id, objectProtocol: details))
+                }
+            }
+        }
+    }
+    var realmGroupAssignedDetails = List<RealmAssignedDetails>()
 
     override static func primaryKey() -> String {
         return "id"
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["tags", "checklist", "reminders", "history"]
+        return ["tags", "checklist", "reminders", "history", "groupAssignedDetails"]
     }
     
     convenience init(ownerID: String?, taskProtocol: TaskProtocol, tags: Results<RealmTag>?) {
@@ -220,6 +242,7 @@ class RealmTask: BaseModel, TaskProtocol {
         challengeID = taskProtocol.challengeID
         challengeBroken = taskProtocol.challengeBroken
         groupID = taskProtocol.groupID
+        groupAssignedDetails = taskProtocol.groupAssignedDetails
         startDate = taskProtocol.startDate
         createdAt = taskProtocol.createdAt
         updatedAt = taskProtocol.updatedAt

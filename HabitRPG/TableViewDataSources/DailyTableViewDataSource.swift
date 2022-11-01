@@ -22,7 +22,7 @@ class DailyTableViewDataSource: TaskTableViewDataSource {
                 if task.isValid == false {
                     return
                 }
-                self?.scoreTask(task: task, direction: task.completed ? .down : .up, soundEffect: .dailyCompleted)
+                self?.scoreTask(task: task, direction: task.completed(by: self?.userRepository.currentUserId ?? "") ? .down : .up, soundEffect: .dailyCompleted)
             }
             dailycell.checklistItemTouched = {[weak self] checklistItem in
                 if task.isValid == false {

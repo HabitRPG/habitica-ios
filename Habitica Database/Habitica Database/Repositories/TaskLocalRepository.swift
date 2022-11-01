@@ -116,18 +116,18 @@ public class TaskLocalRepository: BaseLocalRepository {
         }).skipNil()
     }
     
-    public func update(taskId: String, stats: StatsProtocol, direction: TaskScoringDirection, response: TaskResponseProtocol) {
+    public func update(taskID: String, userID: String, stats: StatsProtocol, direction: TaskScoringDirection, response: TaskResponseProtocol) {
         if response.level == 0 || response.level == nil {
             // This can happen for team tasks that require approval.
             return
         }
-        RealmTask.findBy(key: taskId).take(first: 1).skipNil().on(value: {[weak self] realmTask in
+        RealmTask.findBy(key: taskID).take(first: 1).skipNil().on(value: {[weak self] realmTask in
             self?.updateCall { _ in
                 if realmTask.type != "reward", let delta = response.delta {
                     realmTask.value += delta
                 }
                 if realmTask.type != TaskType.habit {
-                    realmTask.completed = direction == .up
+                    realmTask.complete(forUser: userID, completed: direction == .up)
                     if direction == .up {
                         realmTask.streak += 1
                     }

@@ -235,23 +235,6 @@ class RouterHandler {
             viewController.userID = link["userID"]
             self.push(viewController)
         }
-        
-        register("/user/tasks/:taskType") { link in
-            let type = link["taskType"] ?? ""
-            switch type {
-            case "habit", "habits":
-                self.displayTab(index: 0)
-            case "daily", "dailies":
-                self.displayTab(index: 1)
-            case "todo", "todos":
-                self.displayTab(index: 2)
-            case "reward", "rewards":
-                self.displayTab(index: 3)
-            default:
-                return
-            }
-        }
-        
         register("/user/tasks/:taskType/add") { link in
             let type = link["taskType"] ?? ""
             switch type {
@@ -268,12 +251,29 @@ class RouterHandler {
             }
             let navigationController = StoryboardScene.Tasks.taskFormViewController.instantiate()
             guard let formController = navigationController.topViewController as? TaskFormController else {
+                print(navigationController.topViewController)
                 return
             }
             formController.taskType = TaskType(rawValue: link["taskType"] ?? "habit") ?? TaskType.habit
             formController.editedTask = nil
             self.present(navigationController)
         }
+        register("/user/tasks/:taskType") { link in
+            let type = link["taskType"] ?? ""
+            switch type {
+            case "habit", "habits":
+                self.displayTab(index: 0)
+            case "daily", "dailies":
+                self.displayTab(index: 1)
+            case "todo", "todos":
+                self.displayTab(index: 2)
+            case "reward", "rewards":
+                self.displayTab(index: 3)
+            default:
+                return
+            }
+        }
+        
         register("/menu") {
             self.displayTab(index: 4)
         }

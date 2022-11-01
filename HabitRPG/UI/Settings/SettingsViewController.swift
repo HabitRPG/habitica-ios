@@ -763,7 +763,7 @@ class SettingsViewController: FormViewController, Themeable {
             pushNotifications.insert(LabeledFormValue(value: "giftedSubscription", label: L10n.Settings.PushNotifications.giftedSubscription))
         }
         if notificationPreferences.hasNewPM {
-            pushNotifications.insert(LabeledFormValue(value: "hasNewPM", label: L10n.Settings.PushNotifications.receivedPm))
+            pushNotifications.insert(LabeledFormValue(value: "newPM", label: L10n.Settings.PushNotifications.receivedPm))
         }
         if notificationPreferences.invitedGuild {
             pushNotifications.insert(LabeledFormValue(value: "invitedGuild", label: L10n.Settings.PushNotifications.invitedGuid))
@@ -810,7 +810,7 @@ class SettingsViewController: FormViewController, Themeable {
             pushNotifications.insert(LabeledFormValue(value: "giftedSubscription", label: L10n.Settings.PushNotifications.giftedSubscription))
         }
         if notificationPreferences.hasNewPM {
-            pushNotifications.insert(LabeledFormValue(value: "hasNewPM", label: L10n.Settings.PushNotifications.receivedPm))
+            pushNotifications.insert(LabeledFormValue(value: "newPM", label: L10n.Settings.PushNotifications.receivedPm))
         }
         if notificationPreferences.invitedGuild {
             pushNotifications.insert(LabeledFormValue(value: "invitedGuild", label: L10n.Settings.PushNotifications.invitedGuid))

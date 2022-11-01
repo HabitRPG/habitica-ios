@@ -19,7 +19,7 @@
 			<array>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>unknown</string>
+					<string>Unknown</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>6qBJTc</string>
 					<key>INEnumValueName</key>
@@ -65,6 +65,16 @@
 					<key>INEnumValueName</key>
 					<string>reward</string>
 				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>None</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>ydgm54</string>
+					<key>INEnumValueIndex</key>
+					<integer>5</integer>
+					<key>INEnumValueName</key>
+					<string>none</string>
+				</dict>
 			</array>
 		</dict>
 	</array>
@@ -73,11 +83,11 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>fLm7kx</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>20C69</string>
+	<string>21G115</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>12C33</string>
+	<string>14B47b</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>12.3</string>
+	<string>14.1</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
@@ -178,12 +188,24 @@
 			<string>9zHJpn</string>
 			<key>INIntentEligibleForWidgets</key>
 			<true/>
-			<key>INIntentIneligibleForSuggestions</key>
-			<true/>
 			<key>INIntentLastParameterTag</key>
 			<integer>2</integer>
 			<key>INIntentName</key>
 			<string>AddTaskSingle</string>
+			<key>INIntentParameterCombinations</key>
+			<dict>
+				<key>taskType</key>
+				<dict>
+					<key>INIntentParameterCombinationIsPrimary</key>
+					<true/>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<false/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Add Task to Habitica</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>KG2P7p</string>
+				</dict>
+			</dict>
 			<key>INIntentParameters</key>
 			<array>
 				<dict>
@@ -202,7 +224,7 @@
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
-						<string>unknown</string>
+						<string>none</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>taskType</string>

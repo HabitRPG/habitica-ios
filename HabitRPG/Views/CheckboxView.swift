@@ -103,8 +103,8 @@ class CheckboxView: UIView {
         addSubview(dimmOverlayView)
     }
     
-    func configure(task: TaskProtocol) {
-        checked = task.completed
+    func configure(task: TaskProtocol, completed: Bool) {
+        checked = completed
         checkView.image = Asset.checkmarkSmall.image
         if let layer = self.layer as? CheckmarkLayer {
             layer.drawPercentage = checked ? 1 : 0
@@ -115,7 +115,7 @@ class CheckboxView: UIView {
         
         if task.type == "daily" {
             boxCornerRadius = 3
-            if task.completed {
+            if checked {
                 backgroundColor = theme.windowBackgroundColor
                 checkColor = theme.dimmedTextColor
                 boxFillColor = theme.offsetBackgroundColor
@@ -131,7 +131,7 @@ class CheckboxView: UIView {
             }
         } else {
             boxCornerRadius = size/2
-            if task.completed {
+            if checked {
                 backgroundColor = theme.windowBackgroundColor
                 boxFillColor = theme.offsetBackgroundColor
                 checkColor = theme.dimmedTextColor

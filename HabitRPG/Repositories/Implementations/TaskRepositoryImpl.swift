@@ -106,7 +106,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
             let questDamage = (response.temp?.quest?.progressDelta ?? 0)
             
             if let taskId = task.id {
-                self?.localRepository.update(taskId: taskId, stats: stats, direction: direction, response: response)
+                self?.localRepository.update(taskID: taskId, userID: self?.currentUserId ?? "", stats: stats, direction: direction, response: response)
             }
             if task.type == "reward" {
                 let formatter = NumberFormatter()

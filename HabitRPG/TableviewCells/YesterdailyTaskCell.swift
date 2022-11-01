@@ -32,7 +32,7 @@ class YesterdailyTaskCell: UITableViewCell {
         wrapperView.layer.borderColor = theme.separatorColor.cgColor
         wrapperView.backgroundColor = theme.contentBackgroundColor
         
-        checkbox.configure(task: task)
+        checkbox.configure(task: task, completed: task.completed)
         titleTextView.attributedText = try? Down(markdownString: task.text?.unicodeEmoji ?? "").toHabiticaAttributedString()
 
         checklistItems.forEach({ (view, _) in

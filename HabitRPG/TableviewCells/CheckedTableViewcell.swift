@@ -45,14 +45,14 @@ class CheckedTableViewCell: TaskTableViewCell {
     override func configure(task: TaskProtocol) {
         self.task = task
         super.configure(task: task)
-        self.checkBox.configure(task: task)
+        self.checkBox.configure(task: task, completed: task.completed(by: userID) )
         self.checkBox.wasTouched = {[weak self] in
             self?.checkTask()
         }
         
         handleChecklist(task)
         
-        if task.completed {
+        if task.completed(by: userID)  {
             titleLabel.textColor = ThemeService.shared.theme.quadTextColor
             subtitleLabel.textColor = ThemeService.shared.theme.quadTextColor
         }
@@ -120,13 +120,13 @@ class CheckedTableViewCell: TaskTableViewCell {
     
     private func addChecklistViews(task: TaskProtocol) {
         var checkColor = UIColor.white
-        if task.completed || (task.type == TaskType.daily.rawValue && !task.isDue) {
+        if task.completed(by: userID)  || (task.type == TaskType.daily.rawValue && !task.isDue) {
             checkColor = ThemeService.shared.theme.quadTextColor
         } else {
             checkColor = UIColor.forTaskValueDarkest(task.value)
         }
         var checkboxColor = UIColor.white
-        if task.completed || (task.type == TaskType.daily.rawValue && !task.isDue) {
+        if task.completed(by: userID)  || (task.type == TaskType.daily.rawValue && !task.isDue) {
             checkboxColor = ThemeService.shared.theme.separatorColor
         } else {
             checkboxColor = UIColor.forTaskValueLight(task.value)
@@ -166,7 +166,7 @@ class CheckedTableViewCell: TaskTableViewCell {
         } else {
             stateText = L10n.Accessibility.notCompleted
         }
-        if task.completed {
+        if task.completed(by: userID) {
             stateText = L10n.Accessibility.completed
         }
         self.accessibilityWrapper?.accessibilityLabel = "\(stateText), \(accessibilityWrapper.accessibilityLabel ?? "")"

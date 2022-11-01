@@ -37,8 +37,9 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
             }))
             
             disposable.inner.add(viewModel.nextViewControllerSignal.observeValues({[weak self] viewController in
-                viewController.modalPresentationStyle = .formSheet
-                self?.navigationController?.pushViewController(viewController, animated: true)
+                let navController = UINavigationController(rootViewController: viewController)
+                navController.modalPresentationStyle = .pageSheet
+                self?.navigationController?.present(navController, animated: true)
             }))
             
             disposable.inner.add(viewModel.joinLeaveStyleProvider.promptProperty.signal.observeValues({[weak self] prompt in

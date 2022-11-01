@@ -16,11 +16,27 @@ private struct ChallengeHelper: Decodable {
     var broken: String?
 }
 
+public class APIAssignedDetails: AssignedDetailsProtocol, Decodable {
+    public var isValid: Bool {
+        return true
+    }
+    public var isManaged: Bool {
+        return false
+    }
+    
+    public var assignedUserID: String?
+    public var assignedDate: Date?
+    public var assignedUsername: String?
+    public var assigningUsername: String?
+    public var completed: Bool
+}
+
 private struct GroupHelper: Decodable {
     var id: String?
     var taskId: String?
     var assignedDate: Date?
     var broken: String?
+    var assignedUsersDetail: [String: APIAssignedDetails]?
 }
 
 public class APITask: TaskProtocol, Codable {
@@ -45,6 +61,7 @@ public class APITask: TaskProtocol, Codable {
     public var challengeID: String?
     public var challengeBroken: String?
     public var groupID: String?
+    public var groupAssignedDetails: [AssignedDetailsProtocol] = []
     public var tags: [TagProtocol] = []
     public var checklist: [ChecklistItemProtocol] = []
     public var reminders: [ReminderProtocol] = []
@@ -125,7 +142,13 @@ public class APITask: TaskProtocol, Codable {
         challengeID = challengeHelper?.id
         challengeBroken = challengeHelper?.broken
         let groupHelper = try? values.decode(GroupHelper.self, forKey: .group)
+        groupHelper?.assignedUsersDetail?.forEach({ key, details in
+            details.assignedUserID = key
+        })
         groupID = groupHelper?.id
+        if let details = groupHelper?.assignedUsersDetail {
+            groupAssignedDetails = Array(details.values)
+        }
         createdAt = try? values.decode(Date.self, forKey: .createdAt)
         updatedAt = try? values.decode(Date.self, forKey: .updatedAt)
         startDate = try? values.decode(Date.self, forKey: .startDate)

@@ -96,7 +96,8 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                 }
             } else if self.isSubscription(productIdentifier) {
                 self.userRepository.getUser().take(first: 1).on(value: {[weak self] user in
-                    if !user.isSubscribed || user.purchased?.subscriptionPlan?.dateCreated == nil {
+                    if !user.isSubscribed || user.purchased?.subscriptionPlan?.dateCreated == nil ||
+                        (user.purchased?.subscriptionPlan?.customerId == transaction.original?.transactionIdentifier && transaction.original?.transactionIdentifier != transaction.transactionIdentifier) {
                         self?.applySubscription(transaction: transaction)
                     }
                 }).start()
@@ -122,7 +123,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
             case .error(let error):
                 self.handle(error: error)
                 completion(false)
-            case .deferred(let purchase):
+            case .deferred(_):
                 return
             }
         }
@@ -138,7 +139,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
             case .error(let error):
                 self.handle(error: error)
                 completion(false)
-            case .deferred(let purchase):
+            case .deferred(_):
                 return
             }
         }

@@ -31,6 +31,7 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     
     @objc public var isLocked: Bool = false
+    var userID: String?
 
     @objc var syncErrorTouched: (() -> Void)?
     @objc var openForm: (() -> Void)?

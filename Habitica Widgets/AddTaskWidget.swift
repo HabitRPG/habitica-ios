@@ -11,7 +11,7 @@ import SwiftUI
 
 struct AddTaskSingleProvider: IntentTimelineProvider {
     func placeholder(in context: Context) -> AddTaskEntry {
-        AddTaskEntry(widgetFamily: context.family, taskType: HRPGTaskType.todo)
+        AddTaskEntry(widgetFamily: context.family, taskType: HRPGTaskType.none)
     }
 
     func getSnapshot(for configuration: HRPGAddTaskSingleIntent, in context: Context, completion: @escaping (AddTaskEntry) -> ()) {
@@ -30,7 +30,7 @@ struct AddTaskSingleProvider: IntentTimelineProvider {
 
 struct AddTaskProvider: IntentTimelineProvider {
     func placeholder(in context: Context) -> AddTaskEntry {
-        AddTaskEntry(widgetFamily: context.family, taskType: HRPGTaskType.todo)
+        AddTaskEntry(widgetFamily: context.family, taskType: HRPGTaskType.none)
     }
 
     func getSnapshot(for configuration: HRPGAddTaskIntent, in context: Context, completion: @escaping (AddTaskEntry) -> ()) {
@@ -77,7 +77,7 @@ struct AddTaskWidgetView : View {
         HStack(spacing: 12) {
             if (entry.widgetFamily == .systemSmall) {
                 if let identifier = taskIdentifier {
-                    AddView(taskType: entry.taskType ?? HRPGTaskType.todo, isSingle: true, showLabel: true).widgetURL(URL(string: "/user/tasks/\(identifier)/add"))
+                    AddView(taskType: entry.taskType ?? HRPGTaskType.none, isSingle: true, showLabel: true).widgetURL(URL(string: "/user/tasks/\(identifier)/add"))
                 } else {
                     AddView(taskType: nil, isSingle: true, showLabel: true)
                 }
