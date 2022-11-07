@@ -9,6 +9,7 @@
 import Foundation
 import Habitica_Models
 
+
 public class CreateTaskCall: ResponseObjectCall<TaskProtocol, APITask> {
     public init(task: TaskProtocol) {
         let encoder = JSONEncoder()

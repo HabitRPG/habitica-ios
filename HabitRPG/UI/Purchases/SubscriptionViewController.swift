@@ -12,6 +12,7 @@ import StoreKit
 import ReactiveSwift
 import Habitica_Models
 import PinLayout
+import FirebaseAnalytics
 
 class SubscriptionViewController: BaseTableViewController {
 
@@ -36,6 +37,7 @@ class SubscriptionViewController: BaseTableViewController {
 
     var products: [SKProduct]?
     var selectedSubscriptionPlan: SKProduct?
+    var isSubscribing = false
     var user: UserProtocol? {
         didSet {
             if user?.purchased?.subscriptionPlan?.isActive == true {
@@ -283,7 +285,11 @@ class SubscriptionViewController: BaseTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedSubscriptionPlan = (self.products?[indexPath.item])
+        if self.isOptionSection(indexPath.section) {
+            self.selectedSubscriptionPlan = (self.products?[indexPath.item])
+        } else if indexPath.section == tableView.numberOfSections-1 {
+            subscribeToPlan()
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -328,6 +334,8 @@ class SubscriptionViewController: BaseTableViewController {
         } else if indexPath.section == tableView.numberOfSections-1 {
             returnedCell = tableView.dequeueReusableCell(withIdentifier: "SubscribeButtonCell", for: indexPath)
             (returnedCell?.viewWithTag(1) as? UIButton)?.setTitle(L10n.subscribe, for: .normal)
+            returnedCell?.viewWithTag(1)?.isHidden = isSubscribing
+            returnedCell?.viewWithTag(2)?.isHidden = !isSubscribing
         }
         returnedCell?.selectionStyle = .none
         return returnedCell ?? UITableViewCell()
@@ -350,15 +358,21 @@ class SubscriptionViewController: BaseTableViewController {
     }
 
     func subscribeToPlan() {
+        isSubscribing = true
+        tableView.reloadSections(IndexSet(integer: tableView.numberOfSections-1), with: .fade)
         guard let identifier = self.selectedSubscriptionPlan?.productIdentifier else {
             return
         }
         SwiftyStoreKit.purchaseProduct(identifier, atomically: false) { result in
+            self.isSubscribing = false
+            self.tableView.reloadSections(IndexSet(integer: self.tableView.numberOfSections-1), with: .fade)
             switch result {
             case .success(let product):
                 self.verifyAndSubscribe(product)
                 logger.log("Purchase Success: \(product.productId)")
             case .error(let error):
+                Analytics.logEvent("purchase_failed", parameters: ["error": error.localizedDescription, "code": error.errorCode])
+
                 logger.log("Purchase Failed: \(error)", level: .error)
             case .deferred:
                 return

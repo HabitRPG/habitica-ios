@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyStoreKit
 import StoreKit
+import Habitica_Models
 
 class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     @objc static let shared = PurchaseHandler()
@@ -21,6 +22,13 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     ]
     static let noRenewSubscriptionIdentifiers = ["com.habitrpg.ios.habitica.norenew_subscription.1month", "com.habitrpg.ios.habitica.norenew_subscription.3month",
                                           "com.habitrpg.ios.habitica.norenew_subscription.6month", "com.habitrpg.ios.habitica.norenew_subscription.12month"
+    ]
+    
+    static let habiticaSubMapping = [
+        "subscription1month": "basic_earned",
+        "com.habitrpg.ios.habitica.subscription.3month": "basic_3mo",
+        "com.habitrpg.ios.habitica.subscription.6month": "basic_6mo",
+        "com.habitrpg.ios.habitica.subscription.12month": "basic_12mo"
     ]
     
     private let itunesSharedSecret = Secrets.itunesSharedSecret
@@ -56,6 +64,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         SwiftyStoreKit.restorePurchases(atomically: false) { results in
             if results.restoreFailedPurchases.isEmpty == false {
                 logger.log("Restore Failed: \(results.restoreFailedPurchases)", level: .error)
+                return
             } else if results.restoredPurchases.isEmpty == false {
                 for purchase in results.restoredPurchases {
                     SwiftyStoreKit.finishTransaction(purchase.transaction)
@@ -64,6 +73,13 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
             } else {
                 logger.log("Nothing to Restore")
             }
+            self.userRepository.getUser().take(first: 1)
+                .on(value: { user in
+                    if user.isSubscribed && user.purchased?.subscriptionPlan?.dateTerminated == nil && user.purchased?.subscriptionPlan?.paymentMethod == "Apple" {
+                        self.checkForCancellation(user: user)
+                    }
+                })
+                .start()
         }
     }
     
@@ -76,16 +92,18 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         SwiftyStoreKit.fetchReceipt(forceRefresh: false) { result in
             switch result {
             case .success(let receiptData):
-                for transaction in transactions {
-                    self.handleUnfinished(transaction: transaction, receiptData: receiptData)
-                }
+                self.userRepository.getUser().take(first: 1).on(value: {[weak self] user in
+                    for transaction in transactions {
+                        self?.handleUnfinished(transaction: transaction, user: user, receiptData: receiptData)
+                    }
+                }).start()
             case .error(let error):
                 self.handle(error: error)
             }
         }
     }
     
-    func handleUnfinished(transaction: SKPaymentTransaction, receiptData: Data) {
+    func handleUnfinished(transaction: SKPaymentTransaction, user: UserProtocol, receiptData: Data) {
         let productIdentifier = transaction.payment.productIdentifier
         if transaction.transactionState == .purchased || transaction.transactionState == .restored {
             if self.isInAppPurchase(productIdentifier) {
@@ -95,12 +113,12 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                     }
                 }
             } else if self.isSubscription(productIdentifier) {
-                self.userRepository.getUser().take(first: 1).on(value: {[weak self] user in
-                    if !user.isSubscribed || user.purchased?.subscriptionPlan?.dateCreated == nil ||
-                        (user.purchased?.subscriptionPlan?.customerId == transaction.original?.transactionIdentifier && transaction.original?.transactionIdentifier != transaction.transactionIdentifier) {
-                        self?.applySubscription(transaction: transaction)
-                    }
-                }).start()
+                if !user.isSubscribed || user.purchased?.subscriptionPlan?.dateCreated == nil ||
+                    (user.purchased?.subscriptionPlan?.customerId == transaction.original?.transactionIdentifier
+                     && transaction.original?.transactionIdentifier != transaction.transactionIdentifier
+                     && PurchaseHandler.habiticaSubMapping[transaction.payment.productIdentifier] != user.purchased?.subscriptionPlan?.planId) {
+                    applySubscription(transaction: transaction)
+                }
             } else if self.isNoRenewSubscription(productIdentifier) {
                 self.activateNoRenewSubscription(productIdentifier, receipt: receiptData, recipientID: self.pendingGifts[productIdentifier]) { status in
                     if status {
@@ -123,7 +141,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
             case .error(let error):
                 self.handle(error: error)
                 completion(false)
-            case .deferred(_):
+            case .deferred:
                 return
             }
         }
@@ -139,7 +157,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
             case .error(let error):
                 self.handle(error: error)
                 completion(false)
-            case .deferred(_):
+            case .deferred:
                 return
             }
         }
@@ -280,6 +298,35 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                 self?.handle(error: error)
             }
         })
+    }
+    
+    private func cancelSubscription() {
+        userRepository.cancelSubscription().observeCompleted {}
+    }
+    
+    private func checkForCancellation(user: UserProtocol) {
+        let searchedID = user.purchased?.subscriptionPlan?.customerId
+        let now = Date()
+        SwiftyStoreKit.verifyReceipt(using: self.appleValidator) { result in
+            switch result {
+            case .success(let receipt):
+                let verifyResult = SwiftyStoreKit.verifySubscription(ofType: .autoRenewable, productId: "", inReceipt: receipt)
+                switch verifyResult {
+                case .expired(expiryDate: _, items: let items):
+                    for item in items where (item.originalTransactionId == searchedID || item.transactionId == searchedID) && (item.subscriptionExpirationDate ?? now) < now {
+                            self.cancelSubscription()
+                        }
+                case .purchased(expiryDate: _, items: let items):
+                    for item in items where (item.originalTransactionId == searchedID || item.transactionId == searchedID) && (item.subscriptionExpirationDate ?? now) < now {
+                        self.cancelSubscription()
+                    }
+                default:
+                    return
+                }
+            case .error:
+                return
+            }
+        }
     }
     
     private func handle(error: SKError) {

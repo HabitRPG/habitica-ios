@@ -63,19 +63,76 @@ struct DailiesCountWidgetEntry: TimelineEntry {
 struct DailiesCountWidgetView : View {
     var entry: DailiesCountProvider.Entry
 
+    private var isLockscreenWidget: Bool {
+        if #available(iOSApplicationExtension 16.0, *) {
+            return entry.widgetFamily == .accessoryInline || entry.widgetFamily == .accessoryCircular
+        } else {
+            return false
+        }
+    }
+    
+    private var inlineLockScreenContent: some View {
+        var text = ""
+        if entry.needsCron {
+            text = "Start a new day"
+        } else if entry.completedCount == entry.totalCount {
+            text = "\(entry.totalCount) Dailies done"
+        } else {
+            let displayCount = entry.displayRemaining ? (entry.totalCount - entry.completedCount) : entry.completedCount
+            text = "\(displayCount)/\(entry.totalCount) \(entry.displayRemaining ? "Dailies left" : "Dailies done")"
+        }
+        return Text(text)
+    }
+    
     var body: some View {
-        VStack() {
-            if entry.needsCron {
-                StartDayView()
-            } else if entry.completedCount == entry.totalCount {
-                CompletedView(totalCount: entry.totalCount).padding(.bottom, 17)
+            if isLockscreenWidget {
+                if #available(iOSApplicationExtension 16.0, *) {
+                    if entry.widgetFamily == .accessoryInline {
+                        Label {
+                            inlineLockScreenContent
+                        } icon: {
+                            Image("gryphon").resizable()
+                        }
+                    } else {
+                        if entry.needsCron {
+                            VStack(spacing: 2) {
+                                Image("StartDayIcon").resizable().frame(width: 12, height: 12)
+                                Text("Start day").font(.caption)
+                            }
+                            .padding(.bottom, 2)
+                            .foregroundColor(Color.widgetText)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .multilineTextAlignment(.center).background(Color.widgetBackground)
+                            
+                        } else if entry.completedCount == entry.totalCount {
+                            Gauge(value: Float(entry.completedCount) / Float(entry.totalCount)) {
+                                Image("Sparkles").resizable().frame(width: 16, height: 16)
+                            } currentValueLabel: {
+                                Text("\(entry.completedCount) / \(entry.totalCount)")
+                            }.gaugeStyle(.accessoryCircular)
+                        } else {
+                            Gauge(value: Float(entry.completedCount) / Float(entry.totalCount)) {
+                                Image("gryphon")
+                            } currentValueLabel: {
+                                Text("\(entry.completedCount) / \(entry.totalCount)")
+                            }.gaugeStyle(.accessoryCircular)
+                        }
+                    }
+                }
             } else {
-                let displayCount = entry.displayRemaining ? (entry.totalCount - entry.completedCount) : entry.completedCount
-                CountView(completedCount: entry.completedCount, totalCount: entry.totalCount, displayCount: displayCount, displayRemaining: entry.displayRemaining).padding(.bottom, 17)
+                Group {
+                    if entry.needsCron {
+                        StartDayView()
+                    } else if entry.completedCount == entry.totalCount {
+                        CompletedView(totalCount: entry.totalCount).padding(.bottom, 17)
+                    } else {
+                        let displayCount = entry.displayRemaining ? (entry.totalCount - entry.completedCount) : entry.completedCount
+                        CountView(completedCount: entry.completedCount, totalCount: entry.totalCount, displayCount: displayCount, displayRemaining: entry.displayRemaining).padding(.bottom, 17)
+                    }
+                }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+                    .background(Color.widgetBackground)
+                    .widgetURL(URL(string: "/user/tasks/daily"))
             }
-        }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
-                .background(Color.widgetBackground)
-        .widgetURL(URL(string: "/user/tasks/daily"))
     }
 }
 
@@ -153,6 +210,15 @@ struct StartDayView: View {
 
 struct DailiesCountWidget: Widget {
     let kind: String = "DailiesCountWidget"
+    
+    private var families: [WidgetFamily] {
+        var families: [WidgetFamily] = [.systemSmall]
+        if #available(iOSApplicationExtension 16.0, *) {
+            families.append(.accessoryInline)
+            families.append(.accessoryCircular)
+        }
+        return families
+    }
 
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind,
@@ -163,7 +229,7 @@ struct DailiesCountWidget: Widget {
         }
         .configurationDisplayName("Daily Count")
         .description("View how many dailies you completed today or how many are still left")
-        .supportedFamilies([.systemSmall])
+        .supportedFamilies(families)
     }
 }
 
@@ -175,5 +241,21 @@ struct DailiesCountWidgetPreview: PreviewProvider {
             .previewContext(WidgetPreviewContext(family: .systemSmall))
         DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .systemSmall, totalCount: 42, completedCount: 10, needsCron: true))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
+        if #available(iOSApplicationExtension 16.0, *) {
+            DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryInline, totalCount: 42, completedCount: 10))
+                .previewContext(WidgetPreviewContext(family: .accessoryInline))
+            DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryInline, totalCount: 42, completedCount: 42))
+                .previewContext(WidgetPreviewContext(family: .accessoryInline))
+            DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryInline, totalCount: 42, completedCount: 10, needsCron: true))
+                .previewContext(WidgetPreviewContext(family: .accessoryInline))
+            
+            
+                DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryCircular, totalCount: 42, completedCount: 10))
+                    .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+                DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryCircular, totalCount: 42, completedCount: 42))
+                    .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+                DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryCircular, totalCount: 42, completedCount: 10, needsCron: true))
+                    .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+        }
     }
 }

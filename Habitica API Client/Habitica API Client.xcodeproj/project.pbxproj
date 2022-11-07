@@ -228,6 +228,7 @@
 		29B478C520C54E6200B6123F /* APIArmoireResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B478C420C54E6200B6123F /* APIArmoireResponse.swift */; };
 		29B586FC204D92CF00301955 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B586F2204D92CF00301955 /* Habitica_API_Client.framework */; };
 		29B58703204D92CF00301955 /* Habitica_API_Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B586F5204D92CF00301955 /* Habitica_API_Client.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29C2889229153A8400B361B5 /* CancelSubscribeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C2889129153A8400B361B5 /* CancelSubscribeCall.swift */; };
 		29C38C8124A232A300F219A1 /* APIUserAchievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8024A232A300F219A1 /* APIUserAchievements.swift */; };
 		29DBDE4C274CFEC3008F6777 /* SocialDisconnectCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE4B274CFEC3008F6777 /* SocialDisconnectCall.swift */; };
 		29DBDE52274D0126008F6777 /* APISocialAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE51274D0126008F6777 /* APISocialAuthentication.swift */; };
@@ -476,6 +477,7 @@
 		29B586F6204D92CF00301955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29B586FB204D92CF00301955 /* Habitica API ClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica API ClientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B58702204D92CF00301955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29C2889129153A8400B361B5 /* CancelSubscribeCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelSubscribeCall.swift; sourceTree = "<group>"; };
 		29C38C8024A232A300F219A1 /* APIUserAchievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserAchievements.swift; sourceTree = "<group>"; };
 		29DBDE4B274CFEC3008F6777 /* SocialDisconnectCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialDisconnectCall.swift; sourceTree = "<group>"; };
 		29DBDE51274D0126008F6777 /* APISocialAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISocialAuthentication.swift; sourceTree = "<group>"; };
@@ -761,6 +763,7 @@
 		29323E1320504F1A00AC6D6F /* User */ = {
 			isa = PBXGroup;
 			children = (
+				29C2889129153A8400B361B5 /* CancelSubscribeCall.swift */,
 				2902797E20581CF0006DACB9 /* AllocateAttributePointCall.swift */,
 				2902798020581DE3006DACB9 /* BulkAllocateAttributePointsCall.swift */,
 				290B626E207BA6FB007287C4 /* DeleteAccountCall.swift */,
@@ -1247,6 +1250,7 @@
 				292DEEA9204F71290086D5F7 /* ScoreTaskCall.swift in Sources */,
 				292AA72020FDF6A30022CC5F /* APIPinResponse.swift in Sources */,
 				295D43022097395800948E7E /* APITutorialStep.swift in Sources */,
+				29C2889229153A8400B361B5 /* CancelSubscribeCall.swift in Sources */,
 				292DEE95204F4A510086D5F7 /* ResponseObjectCall.swift in Sources */,
 				295FE2C220A4501500C97BA4 /* CreateGroupCall.swift in Sources */,
 				295E9DDE20B3065100D58D45 /* SubscribeCall.swift in Sources */,

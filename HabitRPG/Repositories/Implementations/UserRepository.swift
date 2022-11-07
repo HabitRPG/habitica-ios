@@ -399,8 +399,16 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return PurchaseNoRenewSubscriptionCall(identifier: identifier, receipt: receipt, recipient: recipient).objectSignal
     }
     
-    func subscribe(sku: String, receipt: String) -> Signal<EmptyResponseProtocol?, Never> {
-        return SubscribeCall(sku: sku, receipt: receipt).objectSignal
+    func subscribe(sku: String, receipt: String) -> Signal<UserProtocol?, Never> {
+        return SubscribeCall(sku: sku, receipt: receipt).objectSignal.flatMap(.latest) {[weak self] _ in
+            return self?.retrieveUser(withTasks: false, forced: true) ?? Signal.empty
+        }
+    }
+    
+    func cancelSubscription() -> Signal<UserProtocol?, Never> {
+        return CancelSubscribeCall().objectSignal.flatMap(.latest) {[weak self] _ in
+            return self?.retrieveUser(withTasks: false, forced: true) ?? Signal.empty
+        }
     }
     
     func getTags() -> SignalProducer<ReactiveResults<[TagProtocol]>, ReactiveSwiftRealmError> {
