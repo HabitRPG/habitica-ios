@@ -1160,3 +1160,17 @@
 "open_for" = "Open for %@";
 "report" = "Report";
 "see_you_tomorrow" = "See you tomorrow";
+
+"ban_user" = "Ban User";
+"unban_user" = "Unban User";
+"shadow_mute_user" = "Shadow Mute User";
+"unshadow_mute_user" = "Remove Shadow Mute";
+"mute_user" = "Mute User";
+"unmute_user" = "Unmute User";
+
+"ban_user_confirm" = "Do you want to ban this user?";
+"unban_user_confirm" = "Do you want to unban this user?";
+"shadow_mute_user_confirm" = "Do you want to shadow mute this user?";
+"unshadow_mute_user_confirm" = "Do you want to remove the shadow ban from this user?";
+"mute_user_confirm" = "Do you want to mute this user?";
+"unmute_user_confirm" = "Do you want to unmute this user?";

@@ -222,8 +222,8 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
-    public func retrieveMember(userID: String) -> Signal<MemberProtocol?, Never> {
-        return RetrieveMemberCall(userID: userID).objectSignal.on(value: {[weak self] member in
+    public func retrieveMember(userID: String, fromHall: Bool = false) -> Signal<MemberProtocol?, Never> {
+        return RetrieveMemberCall(userID: userID, fromHall: fromHall).objectSignal.on(value: {[weak self] member in
             if let member = member {
                 self?.localRepository.save(member)
             }
@@ -236,6 +236,14 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
                 self?.localRepository.save(member)
             }
         })
+    }
+    
+    func updateMember(userID: String, updateDict: [String: Encodable]) -> Signal<MemberProtocol?, Never> {
+        return UpdateMemberCall(userID: userID, updateDict: updateDict).objectSignal
+    }
+    
+    func updateMember(userID: String, key: String, value: Encodable) -> Signal<MemberProtocol?, Never> {
+        return updateMember(userID: userID, updateDict: [key: value])
     }
     
     public func findUsernames(_ username: String, context: String?, id: String?) -> Signal<[MemberProtocol], Never> {

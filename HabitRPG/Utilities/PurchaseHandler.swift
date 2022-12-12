@@ -31,6 +31,13 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         "com.habitrpg.ios.habitica.subscription.12month": "basic_12mo"
     ]
     
+    static let habiticaSubMappingReversed = [
+        "basic_earned": "subscription1month",
+        "basic_3mo": "com.habitrpg.ios.habitica.subscription.3month",
+        "basic_6mo": "com.habitrpg.ios.habitica.subscription.6month",
+        "basic_12mo": "com.habitrpg.ios.habitica.subscription.12month"
+    ]
+    
     private let itunesSharedSecret = Secrets.itunesSharedSecret
     private let appleValidator: AppleReceiptValidator
     private let userRepository = UserRepository()
@@ -133,6 +140,9 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     }
     
     func purchaseGems(_ identifier: String, applicationUsername: String, completion: @escaping (Bool) -> Void) {
+        if !isAllowedToMakePurchases() {
+            return
+        }
         SwiftyStoreKit.purchaseProduct(identifier, quantity: 1, atomically: false, applicationUsername: applicationUsername) { (result) in
             switch result {
             case .success(let product):
@@ -148,6 +158,9 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     }
     
     func giftGems(_ identifier: String, applicationUsername: String, recipientID: String, completion: @escaping (Bool) -> Void) {
+        if !isAllowedToMakePurchases() {
+            return
+        }
         pendingGifts[identifier] = recipientID
         SwiftyStoreKit.purchaseProduct(identifier, quantity: 1, atomically: false, applicationUsername: applicationUsername) { (result) in
             switch result {
@@ -224,19 +237,6 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         return PurchaseHandler.IAPIdentifiers.contains(identifier)
     }
     
-    func isValidPurchase(_ identifier: String, receipt: ReceiptInfo) -> Bool {
-        if !isInAppPurchase(identifier) {
-            return false
-        }
-        let purchaseResult = SwiftyStoreKit.verifyPurchase(productId: identifier, inReceipt: receipt)
-        switch purchaseResult {
-        case .purchased:
-            return true
-        case .notPurchased:
-            return false
-        }
-    }
-    
     func activateSubscription(_ identifier: String, receipt: ReceiptInfo, completion: @escaping (Bool) -> Void) {
         if let lastReceipt = receipt["latest_receipt"] as? String {
             userRepository.subscribe(sku: identifier, receipt: lastReceipt).observeResult { (result) in
@@ -252,6 +252,14 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     
     func isSubscription(_ identifier: String) -> Bool {
         return  PurchaseHandler.subscriptionIdentifiers.contains(identifier)
+    }
+    
+    func isAllowedToMakePurchases() -> Bool {
+        let testinglevel = ConfigRepository.shared.testingLevel
+        if HabiticaAppDelegate.isRunningLive() || testinglevel.isTrustworthy {
+            return true
+        }
+        return false
     }
     
     func isNoRenewSubscription(_ identifier: String) -> Bool {
@@ -306,18 +314,17 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     
     private func checkForCancellation(user: UserProtocol) {
         let searchedID = user.purchased?.subscriptionPlan?.customerId
-        let now = Date()
         SwiftyStoreKit.verifyReceipt(using: self.appleValidator) { result in
             switch result {
             case .success(let receipt):
-                let verifyResult = SwiftyStoreKit.verifySubscription(ofType: .autoRenewable, productId: "", inReceipt: receipt)
+                let verifyResult = SwiftyStoreKit.verifySubscription(ofType: .autoRenewable, productId: PurchaseHandler.habiticaSubMappingReversed[searchedID ?? ""] ?? "", inReceipt: receipt)
                 switch verifyResult {
                 case .expired(expiryDate: _, items: let items):
-                    for item in items where (item.originalTransactionId == searchedID || item.transactionId == searchedID) && (item.subscriptionExpirationDate ?? now) < now {
+                    for item in items where (item.originalTransactionId == searchedID || item.transactionId == searchedID) && item.subscriptionExpirationDate != nil {
                             self.cancelSubscription()
                         }
                 case .purchased(expiryDate: _, items: let items):
-                    for item in items where (item.originalTransactionId == searchedID || item.transactionId == searchedID) && (item.subscriptionExpirationDate ?? now) < now {
+                    for item in items where (item.originalTransactionId == searchedID || item.transactionId == searchedID) && item.subscriptionExpirationDate != nil {
                         self.cancelSubscription()
                     }
                 default:

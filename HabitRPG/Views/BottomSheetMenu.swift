@@ -53,6 +53,12 @@ extension BottomSheetMenuitem where Title == Text {
     }
 }
 
+struct BottomSheetMenuSeparator: View {
+    var body: some View {
+        Separator()
+    }
+}
+
 struct BottomSheetMenu<Title: View, MenuItems: View>: View, Dismissable {
     var dismisser: Dismisser = Dismisser()
     var title: Title

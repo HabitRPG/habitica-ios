@@ -15,6 +15,7 @@ public class APIUser: UserProtocol, Decodable {
     public var id: String?
     public var stats: StatsProtocol?
     public var flags: FlagsProtocol?
+    public var permissions: PermissionsProtocol?
     public var preferences: PreferencesProtocol?
     public var profile: ProfileProtocol?
     public var contributor: ContributorProtocol?
@@ -42,6 +43,7 @@ public class APIUser: UserProtocol, Decodable {
         case id
         case stats
         case flags
+        case permissions
         case preferences
         case profile
         case contributor
@@ -70,6 +72,7 @@ public class APIUser: UserProtocol, Decodable {
         id = try? values.decode(String.self, forKey: .id)
         stats = (try? values.decode(APIStats.self, forKey: .stats))
         flags = (try? values.decode(APIFlags.self, forKey: .flags))
+        permissions = (try? values.decode(APIPermissions.self, forKey: .permissions))
         preferences = (try? values.decode(APIPreferences.self, forKey: .preferences))
         profile = (try? values.decode(APIProfile.self, forKey: .profile))
         contributor = (try? values.decode(APIContributor.self, forKey: .contributor))

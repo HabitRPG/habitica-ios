@@ -83,6 +83,9 @@ class RealmAuthentication: Object, AuthenticationProtocol {
         }
     }
     @objc dynamic var realmFacebook: RealmSocialAuthentication?
+    
+    dynamic var blocked: Bool = false
+    
     override static func primaryKey() -> String {
         return "id"
     }
@@ -95,5 +98,6 @@ class RealmAuthentication: Object, AuthenticationProtocol {
         facebook = protocolObject.facebook
         google = protocolObject.google
         apple = protocolObject.apple
+        blocked = protocolObject.blocked
     }
 }

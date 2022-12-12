@@ -111,7 +111,11 @@ class SubscriptionDetailView: UITableViewCell {
         months.month = plan.monthsUntilNextHourglass
         if let nextDate = Calendar.current.date(byAdding: months, to: Date()) {
             let formatter = DateFormatter()
-            formatter.dateFormat = "MMMM"
+            if Calendar.current.compare(nextDate, to: Date(), toGranularity: .year) != .orderedSame {
+                formatter.dateFormat = "MMMM YYYY"
+            } else {
+                formatter.dateFormat = "MMMM"
+            }
             hourGlassCountPill.text = formatter.string(from: nextDate)
         }
 

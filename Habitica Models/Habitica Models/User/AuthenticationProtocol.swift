@@ -16,6 +16,7 @@ public protocol AuthenticationProtocol {
     var google: SocialAuthenticationProtocol? { get set }
     var apple: SocialAuthenticationProtocol? { get set }
     
+    var blocked: Bool { get set }
 }
 
 public extension AuthenticationProtocol {

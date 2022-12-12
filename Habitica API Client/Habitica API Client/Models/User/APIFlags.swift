@@ -17,6 +17,7 @@ class APIFlags: FlagsProtocol, Decodable {
     var hasNewStuff: Bool = false
     var armoireOpened: Bool = false
     var chatRevoked: Bool = false
+    var chatShadowMuted: Bool = false
     var classSelected: Bool = false
     var itemsEnabled: Bool = false
     var verifiedUsername: Bool = false
@@ -31,6 +32,7 @@ class APIFlags: FlagsProtocol, Decodable {
         case hasNewStuff = "newStuff"
         case armoireOpened
         case chatRevoked
+        case chatShadowMuted
         case classSelected
         case itemsEnabled
         case verifiedUsername
@@ -47,6 +49,7 @@ class APIFlags: FlagsProtocol, Decodable {
         hasNewStuff = (try? values.decode(Bool.self, forKey: .hasNewStuff)) ?? false
         armoireOpened = (try? values.decode(Bool.self, forKey: .armoireOpened)) ?? false
         chatRevoked = (try? values.decode(Bool.self, forKey: .chatRevoked)) ?? false
+        chatShadowMuted = (try? values.decode(Bool.self, forKey: .chatShadowMuted)) ?? false
         classSelected = (try? values.decode(Bool.self, forKey: .classSelected)) ?? false
         itemsEnabled = (try? values.decode(Bool.self, forKey: .itemsEnabled)) ?? false
         verifiedUsername = (try? values.decode(Bool.self, forKey: .verifiedUsername)) ?? false

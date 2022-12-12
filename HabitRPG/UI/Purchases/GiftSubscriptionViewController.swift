@@ -214,6 +214,9 @@ class GiftSubscriptionViewController: BaseTableViewController {
     }
     
     func subscribeToPlan() {
+        if !PurchaseHandler.shared.isAllowedToMakePurchases() {
+            return
+        }
         guard let identifier = self.selectedSubscriptionPlan?.productIdentifier else {
             return
         }

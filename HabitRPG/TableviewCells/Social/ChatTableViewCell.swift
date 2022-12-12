@@ -155,9 +155,9 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
             bottomSpacing = 4
         }
         
-        if isModerator && chatMessage.flags.isEmpty == false {
+        if isModerator && chatMessage.flagCount > 0 {
             reportView.isHidden = false
-            reportView.setTitle("\(chatMessage.flags.count)", for: .normal)
+            reportView.setTitle("\(chatMessage.flagCount)", for: .normal)
         } else {
             reportView.isHidden = true
         }

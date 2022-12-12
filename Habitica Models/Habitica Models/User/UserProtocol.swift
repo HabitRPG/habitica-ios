@@ -30,6 +30,7 @@ public protocol UserProtocol: AvatarProtocol {
     var lastCron: Date? { get set }
     var inbox: InboxProtocol? { get set }
     var authentication: AuthenticationProtocol? { get set }
+    var permissions: PermissionsProtocol? { get set }
     var purchased: PurchasedProtocol? { get set }
     var party: UserPartyProtocol? { get set }
     var challenges: [ChallengeMembershipProtocol] { get set }
@@ -81,5 +82,17 @@ public extension UserProtocol {
     
     var isSubscribed: Bool {
         return purchased?.subscriptionPlan?.isActive == true
+    }
+    
+    func hasPermission(_ permission: Permissions) -> Bool {
+        if permissions?.fullAccess == true {
+            return true
+        }
+        switch permission {
+        case .moderator:
+            return permissions?.moderator == true
+        case .userSupport:
+            return permissions?.userSupport == true
+        }
     }
 }

@@ -1939,7 +1939,7 @@
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="0ge-iM-ebO">
-                            <rect key="frame" x="0.0" y="264.33333015441895" width="428" height="490"/>
+                            <rect key="frame" x="0.0" y="267.33333015441895" width="428" height="490"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qWw-qV-Dif" customClass="NetworkImageView" customModule="Habitica" customModuleProvider="target">
@@ -2026,18 +2026,21 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubscribeButtonCell" rowHeight="61" id="gBX-7d-nGt">
-                                <rect key="frame" x="0.0" y="185.33333206176758" width="428" height="61"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubscribeButtonCell" rowHeight="64" id="gBX-7d-nGt">
+                                <rect key="frame" x="0.0" y="185.33333206176758" width="428" height="64"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gBX-7d-nGt" id="wdr-8P-A8u">
-                                    <rect key="frame" x="0.0" y="0.0" width="428" height="61"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="428" height="64"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <activityIndicatorView opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="K6I-6U-lf9">
+                                            <rect key="frame" x="195.66666666666666" y="13.666666666666664" width="37" height="37"/>
+                                        </activityIndicatorView>
                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ubx-Z1-yyq">
-                                            <rect key="frame" x="16" y="8" width="396" height="36"/>
+                                            <rect key="frame" x="16" y="8" width="396" height="48"/>
                                             <color key="backgroundColor" red="0.60365134480000004" green="0.38511508700000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="36" id="zIr-J0-Xja"/>
+                                                <constraint firstAttribute="height" constant="48" id="zIr-J0-Xja"/>
                                             </constraints>
                                             <color key="tintColor" red="0.9686274528503418" green="0.93725490570068359" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <state key="normal">
@@ -2054,9 +2057,12 @@
                                         </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="K6I-6U-lf9" firstAttribute="centerX" secondItem="wdr-8P-A8u" secondAttribute="centerX" id="4Kn-C5-cA3"/>
                                         <constraint firstItem="ubx-Z1-yyq" firstAttribute="top" secondItem="wdr-8P-A8u" secondAttribute="top" constant="8" id="cwQ-4A-6Z5"/>
+                                        <constraint firstAttribute="bottom" secondItem="ubx-Z1-yyq" secondAttribute="bottom" constant="8" id="kbW-HT-PhK"/>
                                         <constraint firstAttribute="trailing" secondItem="ubx-Z1-yyq" secondAttribute="trailing" constant="16" id="nxP-N0-uSE"/>
                                         <constraint firstItem="ubx-Z1-yyq" firstAttribute="leading" secondItem="wdr-8P-A8u" secondAttribute="leading" constant="16" id="ruu-wj-YJn"/>
+                                        <constraint firstItem="K6I-6U-lf9" firstAttribute="centerY" secondItem="wdr-8P-A8u" secondAttribute="centerY" id="yFa-4N-dp1"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -3782,8 +3788,8 @@ a matching subscription automatically after sending your gift.</string>
     <inferredMetricsTieBreakers>
         <segue reference="FI8-Gh-C6n"/>
         <segue reference="9d2-gY-n53"/>
-        <segue reference="0lO-rm-fRj"/>
-        <segue reference="BqT-36-Icz"/>
+        <segue reference="ImE-mD-NfV"/>
+        <segue reference="gXN-6g-Ete"/>
         <segue reference="zgD-BU-MQh"/>
         <segue reference="ScC-Xo-JyG"/>
         <segue reference="iSa-66-Wjc"/>

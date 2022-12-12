@@ -24,7 +24,12 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     private let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"]
     
     private lazy var appVersionString: String = {
-        return "\(versionString ?? "") (\(buildNumber ?? ""))"
+        let testingLevel = configRepository.testingLevel
+        if testingLevel != .production {
+            return "\(versionString ?? "") (\(buildNumber ?? "")) \(testingLevel.rawValue)"
+        } else {
+            return "\(versionString ?? "") (\(buildNumber ?? ""))"
+        }
     }()
     
     override func viewDidLoad() {
@@ -80,7 +85,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
             count = 3
         } else if section == 4 {
             count = 1
-            if !HabiticaAppDelegate.isRunningLive() {
+            if configRepository.testingLevel != .production {
                 count += 1
             }
         }

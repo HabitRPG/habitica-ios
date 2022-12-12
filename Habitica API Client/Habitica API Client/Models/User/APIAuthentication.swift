@@ -36,12 +36,15 @@ class APIAuthentication: AuthenticationProtocol, Decodable {
     var google: SocialAuthenticationProtocol?
     var apple: SocialAuthenticationProtocol?
     
+    var blocked: Bool = false
+    
     enum CodingKeys: String, CodingKey {
         case timestamps
         case local
         case facebook
         case google
         case apple
+        case blocked
     }
     
     required init(from decoder: Decoder) throws {
@@ -51,5 +54,6 @@ class APIAuthentication: AuthenticationProtocol, Decodable {
         facebook = (try? values.decode(SocialAuth.self, forKey: .facebook))?.toSocialAuthenticationObject()
         google = (try? values.decode(SocialAuth.self, forKey: .google))?.toSocialAuthenticationObject()
         apple = (try? values.decode(SocialAuth.self, forKey: .apple))?.toSocialAuthenticationObject()
+        blocked = (try? values.decode(Bool.self, forKey: .blocked)) ?? false
     }
 }

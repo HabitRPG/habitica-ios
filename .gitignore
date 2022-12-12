@@ -37,3 +37,6 @@ fastlane/Preview.html
 /fastlane/Appfile
 /HabitRPG/Generated/Secrets.swift
 /secrets.yml
+/Habitica-Staff
+*.zip
+*.ipa

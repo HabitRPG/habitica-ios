@@ -13,10 +13,12 @@ public protocol FlagsProtocol {
     var communityGuidelinesAccepted: Bool { get set }
     var hasNewStuff: Bool { get set }
     var armoireOpened: Bool { get set }
-    var chatRevoked: Bool { get set }
     var classSelected: Bool { get set }
     var itemsEnabled: Bool { get set }
     var tutorials: [TutorialStepProtocol] { get set }
     var verifiedUsername: Bool { get set }
     var welcomed: Bool { get set }
+    
+    var chatRevoked: Bool { get set }
+    var chatShadowMuted: Bool { get set }
 }

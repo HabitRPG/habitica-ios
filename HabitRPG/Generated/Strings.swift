@@ -40,6 +40,10 @@ public enum L10n {
   public static func backerTier(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "backer_tier", p1)
   }
+  /// Ban User
+  public static var banUser: String { return L10n.tr("Mainstrings", "ban_user") }
+  /// Do you want to ban this user?
+  public static var banUserConfirm: String { return L10n.tr("Mainstrings", "ban_user_confirm") }
   /// Bangs
   public static var bangs: String { return L10n.tr("Mainstrings", "bangs") }
   /// You have earned the “Beast Master” Achievement for collecting all the pets!
@@ -590,6 +594,10 @@ public enum L10n {
   public static var mountMasterTitle: String { return L10n.tr("Mainstrings", "mountMasterTitle") }
   /// Mounts
   public static var mounts: String { return L10n.tr("Mainstrings", "mounts") }
+  /// Mute User
+  public static var muteUser: String { return L10n.tr("Mainstrings", "mute_user") }
+  /// Do you want to mute this user?
+  public static var muteUserConfirm: String { return L10n.tr("Mainstrings", "mute_user_confirm") }
   /// My Challenges
   public static var myChallenges: String { return L10n.tr("Mainstrings", "my_challenges") }
   /// My Guilds
@@ -838,6 +846,10 @@ public enum L10n {
   public static var send: String { return L10n.tr("Mainstrings", "send") }
   /// Send Gift
   public static var sendGift: String { return L10n.tr("Mainstrings", "send_gift") }
+  /// Shadow Mute User
+  public static var shadowMuteUser: String { return L10n.tr("Mainstrings", "shadow_mute_user") }
+  /// Do you want to shadow mute this user?
+  public static var shadowMuteUserConfirm: String { return L10n.tr("Mainstrings", "shadow_mute_user_confirm") }
   /// Share
   public static var share: String { return L10n.tr("Mainstrings", "share") }
   /// Shirt
@@ -984,6 +996,10 @@ public enum L10n {
   public static var tuesday: String { return L10n.tr("Mainstrings", "tuesday") }
   /// Two-Handed
   public static var twoHanded: String { return L10n.tr("Mainstrings", "twoHanded") }
+  /// Unban User
+  public static var unbanUser: String { return L10n.tr("Mainstrings", "unban_user") }
+  /// Do you want to unban this user?
+  public static var unbanUserConfirm: String { return L10n.tr("Mainstrings", "unban_user_confirm") }
   /// Un-block
   public static var unblockUser: String { return L10n.tr("Mainstrings", "unblock_user") }
   /// Unequip
@@ -1002,8 +1018,16 @@ public enum L10n {
   public static var unlocksSelectingClassDescription: String { return L10n.tr("Mainstrings", "unlocks_selecting_class_description") }
   /// Now that you reached level 10, you can choose a class!
   public static var unlocksSelectingClassPrompt: String { return L10n.tr("Mainstrings", "unlocks_selecting_class_prompt") }
+  /// Unmute User
+  public static var unmuteUser: String { return L10n.tr("Mainstrings", "unmute_user") }
+  /// Do you want to unmute this user?
+  public static var unmuteUserConfirm: String { return L10n.tr("Mainstrings", "unmute_user_confirm") }
   /// Unpin
   public static var unpin: String { return L10n.tr("Mainstrings", "unpin") }
+  /// Remove Shadow Mute
+  public static var unshadowMuteUser: String { return L10n.tr("Mainstrings", "unshadow_mute_user") }
+  /// Do you want to remove the shadow ban from this user?
+  public static var unshadowMuteUserConfirm: String { return L10n.tr("Mainstrings", "unshadow_mute_user_confirm") }
   /// No longer want to subscribe? Due to your payment method, you can only unsubscribe through the Google Play Store.
   public static var unsubscribeGoogle: String { return L10n.tr("Mainstrings", "unsubscribe_google") }
   /// No longer want to subscribe? You can manage your subscription through your Apple ID in your device's Settings.

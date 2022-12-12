@@ -201,6 +201,30 @@ enum ConfigVariable: Int {
     // swiftlint:enable cyclomatic_complexity
 }
 
+enum TestingLevel: String {
+    case production
+    case beta
+    case staff
+    case debug
+    case simulator
+    
+    var isTrustworthy: Bool {
+        if self == .production || self == .beta {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    var isDeveloper: Bool {
+        if self == .debug || self == .simulator {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
 @objc
 class ConfigRepository: NSObject {
     @objc public static let shared = ConfigRepository()
@@ -248,6 +272,23 @@ class ConfigRepository: NSObject {
         }).start()
     }
 
+    var testingLevel: TestingLevel {
+        #if targetEnvironment(simulator)
+            return .simulator
+        #endif
+        let value = Bundle.main.infoDictionary?["TESTING_LEVEL"] as? String
+        switch value {
+        case "debug":
+            return .debug
+        case "staff":
+            return .staff
+        case "beta":
+            return .beta
+        default:
+            return .production
+        }
+    }
+    
     @objc
     func bool(variable: ConfigVariable) -> Bool {
         return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).boolValue

@@ -19,6 +19,7 @@ class RealmFlags: Object, FlagsProtocol {
     @objc dynamic var hasNewStuff: Bool = false
     @objc dynamic var armoireOpened: Bool = false
     @objc dynamic var chatRevoked: Bool = false
+    @objc dynamic var chatShadowMuted: Bool = false
     @objc dynamic var classSelected: Bool = false
     @objc dynamic var itemsEnabled: Bool = false
     @objc dynamic var verifiedUsername: Bool = false
@@ -57,6 +58,7 @@ class RealmFlags: Object, FlagsProtocol {
         hasNewStuff = flags.hasNewStuff
         armoireOpened = flags.armoireOpened
         chatRevoked = flags.chatRevoked
+        chatShadowMuted = flags.chatShadowMuted
         classSelected = flags.classSelected
         itemsEnabled = flags.itemsEnabled
         tutorials = flags.tutorials

@@ -11,11 +11,15 @@ import Habitica_Models
 import ReactiveSwift
 
 public class RetrieveMemberCall: ResponseObjectCall<MemberProtocol, APIMember> {
-    public init(userID: String) {
-        if UUID(uuidString: userID) != nil {
-            super.init(httpMethod: .GET, endpoint: "members/\(userID)")
+    public init(userID: String, fromHall: Bool = false) {
+        if fromHall {
+            super.init(httpMethod: .GET, endpoint: "hall/heroes/\(userID)")
         } else {
-            super.init(httpMethod: .GET, endpoint: "members/username/\(userID)")
+            if UUID(uuidString: userID) != nil {
+                super.init(httpMethod: .GET, endpoint: "members/\(userID)")
+            } else {
+                super.init(httpMethod: .GET, endpoint: "members/username/\(userID)")
+            }
         }
     }
 }

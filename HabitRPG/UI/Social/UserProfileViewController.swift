@@ -11,7 +11,10 @@ import Habitica_Models
 import ReactiveSwift
 import Down
 
+// swiftlint:disable type_body_length
 class UserProfileViewController: BaseTableViewController {
+    
+    private var isModerator = false
     
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
@@ -45,8 +48,6 @@ class UserProfileViewController: BaseTableViewController {
         topHeaderCoordinator?.hideHeader = true
         topHeaderCoordinator?.followScrollView = false
         
-        refresh()
-        
         navigationItem.title = username
         
         let subscriber = Signal<CalculatedUserStats, NSError>.Observer(value: {[weak self] stats in
@@ -54,6 +55,19 @@ class UserProfileViewController: BaseTableViewController {
         })
         
         disposable.inner.add(interactor.reactive.take(during: lifetime).observe(subscriber))
+        
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
+            self?.isModerator = user.hasPermission(.userSupport)
+            if self?.member == nil {
+                self?.refresh()
+            }
+            self?.tableView.reloadData()
+            if self?.isModerator == true {
+                self?.disposable.inner.add(self?.socialRepository.retrieveMember(userID: self?.userID ?? "", fromHall: true).observeValues({ member in
+                    self?.member = member
+                }))
+            }
+        }).start())
         
         disposable.inner.add(inventoryRepository.getGear().on(value: {[weak self]gear in
             self?.gearDictionary.removeAll()
@@ -92,7 +106,7 @@ class UserProfileViewController: BaseTableViewController {
     
     private func refresh() {
         if let userID = self.userID {
-            socialRepository.retrieveMember(userID: userID).observeCompleted {}
+            socialRepository.retrieveMember(userID: userID, fromHall: isModerator).observeCompleted {}
         }
     }
     
@@ -120,6 +134,9 @@ class UserProfileViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
+            if isModerator {
+                return 8
+            }
             return 7
         case 1, 2:
             return 8
@@ -146,7 +163,7 @@ class UserProfileViewController: BaseTableViewController {
                 cellname = "ImageCell"
             case 3:
                 cellname = "TextCell"
-            case 1, 2, 5, 6:
+            case 1, 2, 5, 6, 7:
                 cellname = "SubtitleCell"
             default:
                 break
@@ -164,6 +181,7 @@ class UserProfileViewController: BaseTableViewController {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellname, for: indexPath)
+        cell.detailTextLabel?.textColor = ThemeService.shared.theme.primaryTextColor
         switch indexPath.section {
         case 0:
             switch indexPath.item {
@@ -192,6 +210,25 @@ class UserProfileViewController: BaseTableViewController {
                 cell.textLabel?.text = L10n.Member.lastLoggedIn
                 if let date = member?.authentication?.timestamps?.loggedIn {
                     cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
+                }
+            case 7:
+                cell.textLabel?.text = "Status"
+                var entries = [String]()
+                if member?.authentication?.blocked == true {
+                    entries.append("Blocked")
+                }
+                if member?.flags?.chatShadowMuted == true {
+                    entries.append("Shadow Muted")
+                }
+                if member?.flags?.chatRevoked == true {
+                    entries.append("Muted")
+                }
+                if entries.isEmpty {
+                    cell.detailTextLabel?.text = "Normal Access"
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.successColor
+                } else {
+                    cell.detailTextLabel?.text = String(entries.joined(separator: ", "))
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.errorColor
                 }
             default:
                 break
@@ -479,6 +516,20 @@ class UserProfileViewController: BaseTableViewController {
                     BottomSheetMenuitem(title: L10n.giftSubscription) {[weak self] in
                         self?.perform(segue: StoryboardSegue.Social.giftSubscriptionSegue)
                     }
+                    if user.hasPermission(.userSupport) {
+                        BottomSheetMenuSeparator()
+                        BottomSheetMenuitem(title: self?.member?.authentication?.blocked == true ? L10n.unbanUser : L10n.banUser, style: .destructive) {[weak self] in
+                            self?.showBanDialog()
+                        }
+                        
+                        BottomSheetMenuitem(title: self?.member?.flags?.chatShadowMuted == true ? L10n.unshadowMuteUser : L10n.shadowMuteUser, style: .destructive) {[weak self] in
+                            self?.showShadowMuteDialog()
+                        }
+                        
+                        BottomSheetMenuitem(title: self?.member?.flags?.chatRevoked == true ? L10n.unmuteUser : L10n.muteUser, style: .destructive) {[weak self] in
+                            self?.showMuteDialog()
+                        }
+                    }
                 }))
                 self?.present(sheet, animated: true)
         }
@@ -490,6 +541,41 @@ class UserProfileViewController: BaseTableViewController {
         alert.addAction(title: L10n.block, style: .destructive, isMainAction: true) {[weak self] _ in
             self?.socialRepository.blockMember(userID: self?.userID ?? self?.username ?? "").observeCompleted {
                 ToastManager.show(text: L10n.userWasBlocked(self?.username ?? ""), color: .red)
+            }
+        }
+        alert.addCancelAction()
+        alert.show()
+    }
+        private func showBanDialog() {
+        let isBanned = member?.authentication?.blocked == true
+        let alert = HabiticaAlertController(title: isBanned ? L10n.unbanUserConfirm : L10n.banUserConfirm)
+        alert.addAction(title: L10n.block, style: .destructive, isMainAction: true) {[weak self] _ in
+            self?.socialRepository.updateMember(userID: self?.userID ?? "", key: "auth.blocked", value: !isBanned).observeCompleted {
+                ToastManager.show(text: L10n.completed, color: .green)
+            }
+        }
+        alert.addCancelAction()
+        alert.show()
+    }
+    
+    private func showShadowMuteDialog() {
+        let isShadowMuted = member?.flags?.chatShadowMuted == true
+        let alert = HabiticaAlertController(title: isShadowMuted ? L10n.unshadowMuteUserConfirm : L10n.shadowMuteUserConfirm)
+        alert.addAction(title: L10n.block, style: .destructive, isMainAction: true) {[weak self] _ in
+            self?.socialRepository.updateMember(userID: self?.userID ?? "", key: "flags.chatShadowMuted", value: !isShadowMuted).observeCompleted {
+                ToastManager.show(text: L10n.completed, color: .green)
+            }
+        }
+        alert.addCancelAction()
+        alert.show()
+    }
+    
+    private func showMuteDialog() {
+        let isMuted = member?.authentication?.blocked == true
+        let alert = HabiticaAlertController(title: isMuted ? L10n.unmuteUserConfirm : L10n.muteUserConfirm)
+        alert.addAction(title: L10n.block, style: .destructive, isMainAction: true) {[weak self] _ in
+            self?.socialRepository.updateMember(userID: self?.userID ?? "", key: "flags.chatRevoked", value: !isMuted).observeCompleted {
+                ToastManager.show(text: L10n.completed, color: .green)
             }
         }
         alert.addCancelAction()

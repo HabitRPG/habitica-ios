@@ -29,6 +29,7 @@ enum SettingsTags {
     static let soundTheme = "soundTheme"
     static let changeClass = "changeClass"
     static let server = "server"
+    static let cancelSubscription = "cancelSubscription"
     static let searchableUsername = "searchableUsername"
     static let appLanguage = "appLanguage"
     static let initialAppScreen = "initialAppScreen"
@@ -186,9 +187,7 @@ class SettingsViewController: FormViewController, Themeable {
             })
             <<< AlertRow<LabeledFormValue<String>>(SettingsTags.server) { row in
                 row.title = L10n.Settings.server
-                #if !targetEnvironment(simulator)
                 row.hidden = true
-                #endif
                 row.options = Servers.allServers.map({ (server) -> LabeledFormValue<String> in
                     return LabeledFormValue(value: server.rawValue, label: server.niceName)
                 })
@@ -206,6 +205,12 @@ class SettingsViewController: FormViewController, Themeable {
                     appDelegate?.updateServer()
                 })
         }
+        <<< ButtonRow(SettingsTags.cancelSubscription) { row in
+            row.title = L10n.cancelSubscription
+            row.hidden = true
+            }.onCellSelection({[weak self] (_, _) in
+                self?.userRepository.cancelSubscription()
+            })
     }
     
     private func setupUserSection() {
@@ -732,17 +737,18 @@ class SettingsViewController: FormViewController, Themeable {
             classRow.evaluateHidden()
         }
         
-        #if !targetEnvironment(simulator)
-        if user.contributor?.admin == true {
+        if configRepository.testingLevel.isTrustworthy {
             let serverRow = (form.rowBy(tag: SettingsTags.server) as? AlertRow<LabeledFormValue<String>>)
             serverRow?.hidden = false
+            let cancelSubRow = (form.rowBy(tag: SettingsTags.cancelSubscription))
+            cancelSubRow?.hidden = false
             let themeRow = (form.rowBy(tag: SettingsTags.themeColor) as? PushRow<LabeledFormValue<String>>)
             let customTheme = ThemeName.custom
             themeRow?.options?.append(LabeledFormValue(value: customTheme.rawValue, label: customTheme.niceName))
             themeRow?.updateCell()
             serverRow?.evaluateHidden()
+            cancelSubRow?.evaluateHidden()
         }
-        #endif
         
         if let row = form.rowBy(tag: SettingsTags.manuallyRestartDay) {
             // Only show if no cron in last 24 hours

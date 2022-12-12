@@ -48,11 +48,19 @@ public extension SubscriptionPlanProtocol {
         return gemCapTotal - gemsBought
     }
     
+    private var isMonthlyRenewal: Bool {
+        if planId == "basic_earned" || planId == "group_monthly" {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     var monthsUntilNextHourglass: Int {
-        if consecutive?.offset == 0 {
+        if isMonthlyRenewal {
             return (3 - (((consecutive?.count ?? 0)) % 3))
         } else {
-            return consecutive?.offset ?? 0
+            return (consecutive?.offset ?? 0) + 1
         }
     }
 }

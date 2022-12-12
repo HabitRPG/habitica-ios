@@ -167,7 +167,9 @@ class SubscriptionViewController: BaseTableViewController {
             })
             self.selectedSubscriptionPlan = self.products?.first
             self.tableView.reloadData()
-            self.tableView.selectRow(at: IndexPath(item: 0, section: self.isSubscribed ? 2 : 1), animated: true, scrollPosition: .none)
+            DispatchQueue.main.async {
+                self.tableView.selectRow(at: IndexPath(item: 0, section: self.optionSectionIndex()), animated: false, scrollPosition: .none)
+            }
         }
     }
 
@@ -345,8 +347,12 @@ class SubscriptionViewController: BaseTableViewController {
         return (section == 0 && !isSubscribed) || (section == 1 && isSubscribed)
     }
 
+    func optionSectionIndex() -> Int {
+        return isSubscribed ? 2 : 1
+    }
+    
     func isOptionSection(_ section: Int) -> Bool {
-        return (isSubscribed && section == 2) || (!isSubscribed && section == 1)
+        return section == optionSectionIndex()
     }
 
     func isDetailSection(_ section: Int) -> Bool {
@@ -358,6 +364,9 @@ class SubscriptionViewController: BaseTableViewController {
     }
 
     func subscribeToPlan() {
+        if !PurchaseHandler.shared.isAllowedToMakePurchases() {
+            return
+        }
         isSubscribing = true
         tableView.reloadSections(IndexSet(integer: tableView.numberOfSections-1), with: .fade)
         guard let identifier = self.selectedSubscriptionPlan?.productIdentifier else {

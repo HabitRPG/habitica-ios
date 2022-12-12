@@ -94,6 +94,22 @@ class RealmUser: BaseModel, UserProtocol {
             }
         }
     }
+    
+    @objc dynamic var realmPermissions: RealmPermissions?
+    var permissions: PermissionsProtocol? {
+        get {
+            return realmPermissions
+        }
+        set {
+            if let value = newValue as? RealmPermissions {
+                realmPermissions = value
+                return
+            }
+            if let value = newValue {
+                realmPermissions = RealmPermissions(userID: id, protocolObject: value)
+            }
+        }
+    }
     @objc dynamic var realmContributor: RealmContributor?
     
     var backer: BackerProtocol? {
@@ -327,6 +343,7 @@ class RealmUser: BaseModel, UserProtocol {
         stats = user.stats
         flags = user.flags
         preferences = user.preferences
+        permissions = user.permissions
         profile = user.profile
         contributor = user.contributor
         balance = user.balance
