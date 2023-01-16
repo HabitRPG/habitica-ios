@@ -374,4 +374,11 @@ class ConfigRepository: NSObject {
             return ProcessInfo.processInfo.isiOSAppOnMac
         #endif
     }()
+    
+    func getBirthdayEvent() -> WorldStateEventProtocol? {
+        for event in worldState?.events ?? [] where event.eventKey == "birthday10" {
+            return event
+        }
+        return nil
+    }
 }

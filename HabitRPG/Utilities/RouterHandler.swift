@@ -229,6 +229,9 @@ class RouterHandler {
         register("/promo/web") {
             self.present(StoryboardScene.Main.promoWebNavController.instantiate())
         }
+        register("/promo/birthday") {
+            self.present(BirthdayViewController())
+        }
         register("/profile/:userID") { link in
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Social.userProfileViewController.instantiate()
@@ -251,7 +254,6 @@ class RouterHandler {
             }
             let navigationController = StoryboardScene.Tasks.taskFormViewController.instantiate()
             guard let formController = navigationController.topViewController as? TaskFormController else {
-                print(navigationController.topViewController)
                 return
             }
             formController.taskType = TaskType(rawValue: link["taskType"] ?? "habit") ?? TaskType.habit

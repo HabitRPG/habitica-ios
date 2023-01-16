@@ -51,7 +51,9 @@ class ImageManager {
         "quest_solarSystem": "gif",
         "quest_lostMasterclasser4": "gif",
         "quest_virtualpet": "gif",
-        "Pet_HatchingPotion_VirtualPet": "gif"
+        "Pet_HatchingPotion_VirtualPet": "gif",
+        "Pet-Gryphatrice-Jubilant": "gif",
+        "stable_Pet-Gryphatrice-Jubilant": "gif"
     ]
     
     static func setImage(on imageView: NetworkImageView, name: String, extension fileExtension: String = "", completion: ((UIImage?, NSError?) -> Void)? = nil) {

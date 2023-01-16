@@ -155,7 +155,11 @@ class GiftSubscriptionViewController: BaseTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedSubscriptionPlan = (self.products?[indexPath.item])
+        if indexPath.section == tableView.numberOfSections-1 {
+            subscribeToPlan()
+        } else {
+            self.selectedSubscriptionPlan = (self.products?[indexPath.item])
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -214,13 +218,15 @@ class GiftSubscriptionViewController: BaseTableViewController {
     }
     
     func subscribeToPlan() {
-        if !PurchaseHandler.shared.isAllowedToMakePurchases() {
+        if !PurchaseHandler.shared.isAllowedToMakePurchases() || isSubscribing {
             return
         }
         guard let identifier = self.selectedSubscriptionPlan?.productIdentifier else {
             return
         }
         isSubscribing = true
+        tableView.reloadSections(IndexSet(integer: tableView.numberOfSections-1), with: .fade)
+
         PurchaseHandler.shared.pendingGifts[identifier] = self.giftedUser?.id
         SwiftyStoreKit.purchaseProduct(identifier, atomically: false) { result in
             self.isSubscribing = false

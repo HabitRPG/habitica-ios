@@ -119,9 +119,9 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
             sections = sections.filter({ section -> Bool in
                 return section.items.isEmpty == false
             }).sorted { (firstSection, secondSection) -> Bool in
-                if firstSection.key?.contains("incentive") == true || firstSection.key?.contains("timeTravel") == true {
+                if firstSection.key?.contains("incentive") == true || firstSection.key?.contains("timeTravel") == true || firstSection.key?.contains("event") == true {
                     return true
-                } else if secondSection.key?.contains("incentive") == true || secondSection.key?.contains("timeTravel") == true {
+                } else if secondSection.key?.contains("incentive") == true || secondSection.key?.contains("timeTravel") == true || secondSection.key?.contains("event") == true {
                     return false
                 }
                 

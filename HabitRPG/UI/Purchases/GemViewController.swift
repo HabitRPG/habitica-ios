@@ -11,6 +11,7 @@ import SwiftyStoreKit
 import StoreKit
 import ReactiveSwift
 import Habitica_Models
+import SwiftUIX
 
 class GemViewController: BaseCollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -25,6 +26,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     private let disposable = ScopedDisposable(CompositeDisposable())
     
     private var activePromo: HabiticaPromotion?
+    private var birthdayEvent: WorldStateEventProtocol?
     
     var isSubscribed = false
     
@@ -46,6 +48,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         HabiticaAnalytics.shared.logNavigationEvent("gem screen")
         
         activePromo = configRepository.activePromotion()
+        birthdayEvent = configRepository.getBirthdayEvent()
     }
     
     override func applyTheme(theme: Theme) {
@@ -186,6 +189,17 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
                     promoView.isHidden = false
                     promo.configurePurchaseBanner(view: promoView)
                     promoView.onTapped = { [weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.showPromoInfoSegue.rawValue, sender: self) }
+                }
+            }
+            if let birthdayEvent = birthdayEvent {
+                if let wrapperView = view.viewWithTag(7) {
+                    let width: CGFloat = view.bounds.width - 36
+                    wrapperView.isHidden = false
+                    let hostingView = UIHostingView(rootView: BirthdayBannerview(width: width, endDate: birthdayEvent.end).onTapGesture {[weak self] in
+                        self?.present(BirthdayViewController(), animated: true)
+                    })
+                    wrapperView.addSubview(hostingView)
+                    hostingView.frame = CGRect(x: 6, y: 0, width: width, height: 100)
                 }
             }
         }

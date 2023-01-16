@@ -73,7 +73,7 @@ public class ThemeService: NSObject {
 
         // Update styles via UIAppearance
         UITabBarItem.appearance().badgeColor = theme.badgeColor
-        UITabBar.appearance().unselectedItemTintColor = theme.ternaryTextColor
+        UITabBar.appearance().unselectedItemTintColor = theme.quadTextColor
                         
         // The tintColor will trickle down to each view
         UIApplication.shared.windows.forEach { window in

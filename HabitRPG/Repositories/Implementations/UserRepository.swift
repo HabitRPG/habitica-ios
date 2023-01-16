@@ -11,9 +11,9 @@ import Habitica_Models
 import Habitica_Database
 import Habitica_API_Client
 import ReactiveSwift
-
 import WidgetKit
 
+// swiftlint:disable:next type_body_length
 class UserRepository: BaseRepository<UserLocalRepository> {
     
     var lastPushDeviceSync: Date?

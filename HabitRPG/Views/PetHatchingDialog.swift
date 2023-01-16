@@ -83,6 +83,7 @@ class PetHatchingAlertController: HabiticaAlertController {
         return label
     }()
     
+    // swiftlint:disable:next function_body_length
     convenience init(item: PetStableItem, ownedEggs: OwnedItemProtocol?, ownedPotions: OwnedItemProtocol?) {
         self.init()
         let eggCount = ownedEggs?.numberOwned ?? 0

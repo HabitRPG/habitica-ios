@@ -21,6 +21,8 @@ class CustomizationHeaderView: UICollectionReusableView {
                 label.text = L10n.plainBackgrounds
             } else if customizationSet.key?.contains("timeTravel") == true {
                 label.text = L10n.timeTravelBackgrounds
+            } else if customizationSet.key?.contains("event") == true {
+                label.text = L10n.eventBackgrounds
             } else if let key = customizationSet.key?.replacingOccurrences(of: "backgrounds", with: "") {
                 let index = key.index(key.startIndex, offsetBy: 2)
                 let month = Int(key[..<index]) ?? 0

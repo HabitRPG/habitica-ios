@@ -24,6 +24,8 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                                           "com.habitrpg.ios.habitica.norenew_subscription.6month", "com.habitrpg.ios.habitica.norenew_subscription.12month"
     ]
     
+    static let gryphatriceIdentifier = "com.habitrpg.ios.Habitica.pets.Gryphatrice_Jubilant"
+    
     static let habiticaSubMapping = [
         "subscription1month": "basic_earned",
         "com.habitrpg.ios.habitica.subscription.3month": "basic_3mo",

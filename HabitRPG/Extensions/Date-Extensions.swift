@@ -9,7 +9,7 @@
 import Foundation
 
 extension Date {
-    static func with(year: Int, month: Int, day: Int, timezone: TimeZone?) -> Date {
+    static func with(year: Int, month: Int, day: Int, timezone: TimeZone? = nil) -> Date {
         var dateComponents = DateComponents()
         dateComponents.year = year
         dateComponents.month = month
@@ -23,7 +23,7 @@ extension Date {
         return userCalendar.date(from: dateComponents) ?? Date()
     }
     
-    func getShortRemainingString() -> String {
+func getShortRemainingString() -> String {
         let diff = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: Date(), to: self)
         var string = "\(diff.minute ?? 0)m"
         if let hours = diff.hour, hours > 0 {

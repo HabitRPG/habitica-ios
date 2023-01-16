@@ -40,6 +40,8 @@ public enum L10n {
   public static func backerTier(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "backer_tier", p1)
   }
+  /// Background
+  public static var background: String { return L10n.tr("Mainstrings", "background") }
   /// Ban User
   public static var banUser: String { return L10n.tr("Mainstrings", "ban_user") }
   /// Do you want to ban this user?
@@ -52,6 +54,12 @@ public enum L10n {
   public static var beastMasterTitle: String { return L10n.tr("Mainstrings", "beastMasterTitle") }
   /// Beginner Objectives
   public static var beginnerObjectives: String { return L10n.tr("Mainstrings", "beginner_objectives") }
+  /// Celebrate Habitica’s 10th birthday with gifts and exclusive items below!
+  public static var birthdayHeaderDescription: String { return L10n.tr("Mainstrings", "birthday_header_description") }
+  /// This is a limited time event that starts on January 23rd at 8:00 AM ET (13:00 UTC) and will end February 1st at 11:59 PM ET (04:59 UTC). The Limited Edition Jubilant Gryphatrice and ten Magic Hatching Potions will be available to buy during this time. The other Gifts listed in the Four for Free section will be automatically delivered to all accounts that were active in the 30 days prior to day the gift is sent. Accounts created after the gifts are sent will not be able to claim them.
+  public static var birthdayLimitationsDescription: String { return L10n.tr("Mainstrings", "birthday_limitations_description") }
+  /// Birthday Set
+  public static var birthdaySet: String { return L10n.tr("Mainstrings", "birthday_set") }
   /// Block
   public static var block: String { return L10n.tr("Mainstrings", "block") }
   /// A blocked user cannot send you Private Messages but you will still see their posts in Tavern or Guilds. This will have no effect if the person is a moderator now or in the future.
@@ -78,6 +86,8 @@ public enum L10n {
   public static var buy: String { return L10n.tr("Mainstrings", "buy") }
   /// Buy All
   public static var buyAll: String { return L10n.tr("Mainstrings", "buy_all") }
+  /// Buy for
+  public static var buyFor: String { return L10n.tr("Mainstrings", "buy_for") }
   /// Buy for %@
   public static func buyForX(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "buy_for_x", p1)
@@ -224,6 +234,10 @@ public enum L10n {
   public static var day: String { return L10n.tr("Mainstrings", "day") }
   /// 21-Day Streaks
   public static var dayStreaks: String { return L10n.tr("Mainstrings", "day_streaks") }
+  /// Day %d
+  public static func dayX(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "day_x", p1)
+  }
   /// days
   public static var days: String { return L10n.tr("Mainstrings", "days") }
   /// Decline
@@ -288,8 +302,18 @@ public enum L10n {
   public static func endingOn(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "ending_on", p1)
   }
+  /// ends in %s
+  public static func endsInX(_ p1: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "ends_in_x", p1)
+  }
   /// Equip
   public static var equip: String { return L10n.tr("Mainstrings", "equip") }
+  /// You Equipped %s
+  public static func equippedX(_ p1: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "equipped_x", p1)
+  }
+  /// Event Backgrounds
+  public static var eventBackgrounds: String { return L10n.tr("Mainstrings", "event_backgrounds") }
   /// Excess Items
   public static var excessItems: String { return L10n.tr("Mainstrings", "excess_items") }
   /// You already have everything you need for all %@ pets. Are you sure you want to purchase %d %@s?
@@ -300,6 +324,8 @@ public enum L10n {
   public static func excessXItemsLeft(_ p1: Int, _ p2: String, _ p3: Int) -> String {
     return L10n.tr("Mainstrings", "excess_x_items_left", p1, p2, p3)
   }
+  /// Exclusive items and gifts await
+  public static var exclusiveItemsAwait: String { return L10n.tr("Mainstrings", "exclusive_items_await") }
   /// Experience
   public static var experience: String { return L10n.tr("Mainstrings", "experience") }
   /// Experience points represent your progress and allow you to level up. You’ll mainly **gain EXP** from completing tasks or quests, but there are also some class skills that give EXP.\n\nTasks of higher difficulty, or red-colored tasks will give you **more EXP**. The **Intelligence stat** also raises your rate of EXP gain.
@@ -336,6 +362,10 @@ public enum L10n {
   public static var foodSingular: String { return L10n.tr("Mainstrings", "food_singular") }
   /// Force Start
   public static var forceStart: String { return L10n.tr("Mainstrings", "force_start") }
+  /// Four for Free
+  public static var fourForFree: String { return L10n.tr("Mainstrings", "four_for_free") }
+  /// To keep the party going, we’ll be giving away Party Robes, 20 Gems, and a limited edition Cape set and Background!
+  public static var fourForFreeDescription: String { return L10n.tr("Mainstrings", "four_for_free_description") }
   /// Friday
   public static var friday: String { return L10n.tr("Mainstrings", "friday") }
   /// Game Mechanics
@@ -422,6 +452,8 @@ public enum L10n {
   public static var groupBy: String { return L10n.tr("Mainstrings", "group_by") }
   /// Group Plan
   public static var groupPlan: String { return L10n.tr("Mainstrings", "group_plan") }
+  /// The rare Jubilant Gryphatrice joins the birthday bash! Don’t miss your chance to own this exclusive animated Pet.
+  public static var gryphatriceDescription: String { return L10n.tr("Mainstrings", "gryphatrice_description") }
   /// Ventured into the social side of Habitica by joining a Guild!
   public static var guildJoinedDescription: String { return L10n.tr("Mainstrings", "guildJoinedDescription") }
   /// Joined a Guild
@@ -490,6 +522,8 @@ public enum L10n {
   public static var joinChallenge: String { return L10n.tr("Mainstrings", "join_challenge") }
   /// Joined Challenge
   public static var joinedChallenge: String { return L10n.tr("Mainstrings", "joined_challenge") }
+  /// Jubilant Gryphatrice
+  public static var jubilantGryphatrice: String { return L10n.tr("Mainstrings", "jubilant_gryphatrice") }
   /// Keep Tasks
   public static var keepTasks: String { return L10n.tr("Mainstrings", "keep_tasks") }
   /// Keep %d Tasks
@@ -542,6 +576,10 @@ public enum L10n {
   public static func levelupTitle(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "levelup_title", p1)
   }
+  /// Limitations
+  public static var limitations: String { return L10n.tr("Mainstrings", "limitations") }
+  /// Limited Edition
+  public static var limitedEdition: String { return L10n.tr("Mainstrings", "limited_edition") }
   /// Limited Event
   public static var limitedEvent: String { return L10n.tr("Mainstrings", "limited_event") }
   /// Magic Potion
@@ -690,6 +728,12 @@ public enum L10n {
   public static var openWebsite: String { return L10n.tr("Mainstrings", "open_website") }
   /// Organize By
   public static var organizeBy: String { return L10n.tr("Mainstrings", "organize_by") }
+  /// Own it today for %s or %d Gems
+  public static func ownTodayFor(_ p1: UnsafePointer<CChar>, _ p2: Int) -> String {
+    return L10n.tr("Mainstrings", "own_today_for", p1, p2)
+  }
+  /// A Party Robe
+  public static var partyRobe: String { return L10n.tr("Mainstrings", "party_robe") }
   /// Your party grew to 4 members!
   public static var partyOnDescription: String { return L10n.tr("Mainstrings", "partyOnDescription") }
   /// Party On
@@ -726,6 +770,10 @@ public enum L10n {
   public static var pin: String { return L10n.tr("Mainstrings", "pin") }
   /// Plain Backgrounds
   public static var plainBackgrounds: String { return L10n.tr("Mainstrings", "plain_backgrounds") }
+  /// Plenty of Potions
+  public static var plentyOfPotions: String { return L10n.tr("Mainstrings", "plenty_of_potions") }
+  /// We’re bringing back 10 of the community’s favorite Magic Hatching Potions. Head over to the Market to fill out your collection!
+  public static var plentyOfPotionsDescription: String { return L10n.tr("Mainstrings", "plenty_of_potions_description") }
   /// Ponytail
   public static var ponytail: String { return L10n.tr("Mainstrings", "ponytail") }
   /// Premium Currency
@@ -754,6 +802,10 @@ public enum L10n {
   public static var purchaseFromTimeTravelersShop: String { return L10n.tr("Mainstrings", "purchase_from_time_travelers_shop") }
   /// Purchase Gems
   public static var purchaseGems: String { return L10n.tr("Mainstrings", "purchase_gems") }
+  /// Purchase the Jubilant Gryphatrice for %d Gems?
+  public static func purchaseGryphatriceConfirmation(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "purchase_gryphatrice_confirmation", p1)
+  }
   /// Purchase %d
   public static func purchaseX(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "purchase_x", p1)
@@ -976,6 +1028,8 @@ public enum L10n {
   public static var tavernIntroHeader: String { return L10n.tr("Mainstrings", "tavern_intro_header") }
   /// Teleporting to Habitica
   public static var teleportingHabitica: String { return L10n.tr("Mainstrings", "teleporting_habitica") }
+  /// Thanks for your support!
+  public static var thanksForYourSupport: String { return L10n.tr("Mainstrings", "thanks_for_your_support") }
   /// Thursday
   public static var thursday: String { return L10n.tr("Mainstrings", "thursday") }
   /// Time Travelers Backgrounds
@@ -1080,6 +1134,8 @@ public enum L10n {
   public static var viewOnboardingTasks: String { return L10n.tr("Mainstrings", "view_onboarding_tasks") }
   /// View Participant Progress
   public static var viewParticipantProgress: String { return L10n.tr("Mainstrings", "view_participant_progress") }
+  /// Visit the Market
+  public static var visitTheMarket: String { return L10n.tr("Mainstrings", "visit_the_market") }
   /// Weak
   public static var `weak`: String { return L10n.tr("Mainstrings", "weak") }
   /// Wednesday
@@ -1113,6 +1169,10 @@ public enum L10n {
   /// %ld Filters
   public static func xFilters(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "x_filters", p1)
+  }
+  /// %d Gems
+  public static func xGems(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "x_gems", p1)
   }
   /// %d Items found
   public static func xItemsFound(_ p1: Int) -> String {

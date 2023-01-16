@@ -25,7 +25,7 @@ struct HabiticaButtonUI<Label: View>: View {
             label
                 .foregroundColor(color == .white ? Color(UIColor.purple400) : .white)
                 .font(.system(size: 16, weight: .bold))
-                .frame(height: size == .normal ? 60 : 44)
+                .frame(height: size == .normal ? 60 : 48)
                 .frame(maxWidth: .infinity)
                 .background(color)
                 .cornerRadius(8)

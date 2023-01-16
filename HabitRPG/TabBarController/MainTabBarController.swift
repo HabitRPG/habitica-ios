@@ -14,6 +14,7 @@ class MainTabBarController: UITabBarController {
     
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
+    private let contentRepository = ContentRepository()
     private let configRepository = ConfigRepository.shared
     private let disposable = ScopedDisposable(CompositeDisposable())
     
@@ -24,6 +25,26 @@ class MainTabBarController: UITabBarController {
     private var dueToDosCount = 0
     private var tutorialDailyCount = 0
     private var tutorialToDoCount = 0
+    
+    private var _displayBirthdayIcon: Bool = false {
+        didSet {
+            if _displayBirthdayIcon {
+                tabBar.items?[4].image = Asset.birthdayIconUnselected.image.withRenderingMode(.alwaysOriginal)
+                tabBar.items?[4].selectedImage = Asset.birthdayIconSelected.image.withRenderingMode(.alwaysOriginal)
+            } else {
+                tabBar.items?[4].image = Asset.tabbarMenu.image
+                tabBar.items?[4].selectedImage = nil
+            }
+        }
+    }
+    var displayBirthdayIcon: Bool {
+        get { return _displayBirthdayIcon }
+        set {
+            if _displayBirthdayIcon != newValue {
+                _displayBirthdayIcon = newValue
+            }
+        }
+    }
     
     private var badges: [Int: PaddedView]? {
         get {
@@ -136,6 +157,11 @@ class MainTabBarController: UITabBarController {
             self?.updateToDoBadge()
             self?.updateAppBadge()
         }).start())
+        disposable.inner.add(contentRepository.getWorldState()
+            .on(value: {[weak self] state in
+                self?.displayBirthdayIcon = self?.configRepository.getBirthdayEvent() != nil
+            })
+            .start())
     }
     
     private func updateTutorialSteps(_ tutorials: [TutorialStepProtocol]) {

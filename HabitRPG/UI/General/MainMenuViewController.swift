@@ -8,8 +8,8 @@
 
 import UIKit
 import Habitica_Models
-import Eureka
 import ReactiveSwift
+import SwiftUIX
 
 class MenuItem {
     enum Key: String {
@@ -132,6 +132,7 @@ struct MenuSection {
     }
 }
 
+// swiftlint:disable:next type_body_length
 class MainMenuViewController: BaseTableViewController {
     
     private var navbarColor = ThemeService.shared.theme.navbarHiddenColor {
@@ -204,18 +205,6 @@ class MainMenuViewController: BaseTableViewController {
                 menuItem(withKey: .subscription).subtitle = nil
             } else if menuItem(withKey: .subscription).pillText != L10n.sale {
                 menuItem(withKey: .subscription).subtitle = L10n.getMoreHabitica
-            }
-            if user?.achievements?.hasCompletedOnboarding == true || configRepository.bool(variable: .moveAdventureGuide) {
-                tableView.tableHeaderView = nil
-            } else {
-                let view = AdventureGuideBannerView(frame: CGRect(x: 0, y: -10, width: tableView.frame.size.width, height: 103))
-                view.onTapped = { [weak self] in
-                    self?.perform(segue: StoryboardSegue.Main.showAdventureGuide)
-                }
-                if let achievements = user?.achievements?.onboardingAchievements {
-                    view.setProgress(earned: achievements.filter({ $0.value }).count, total: achievements.count)
-                }
-                tableView.tableHeaderView = view
             }
             
             let customMenu = configRepository.array(variable: .customMenu)
@@ -320,7 +309,7 @@ class MainMenuViewController: BaseTableViewController {
                     self?.questHeaderView?.configure(user: user)
                 }
                 self?.tableView?.tableHeaderView = self?.questHeaderView
-            } else {
+            } else if self?.tableView.tableHeaderView == self?.questHeaderView {
                 self?.tableView.tableHeaderView = nil
             }
         })
@@ -330,8 +319,8 @@ class MainMenuViewController: BaseTableViewController {
         })
         .on(value: {[weak self] quest in
             if quest.isBossQuest {
-            self?.questHeaderView?.configure(quest: quest)
-            } else {
+                self?.questHeaderView?.configure(quest: quest)
+            } else if self?.tableView.tableHeaderView == self?.questHeaderView {
                 self?.tableView.tableHeaderView = nil
             }
         })
@@ -348,6 +337,16 @@ class MainMenuViewController: BaseTableViewController {
         disposable.inner.add(contentRepository.getWorldState()
                                 .combineLatest(with: inventoryRepository.getCurrentTimeLimitedItems())
                                 .on(value: {[weak self] (worldState, items) in
+                                    if let event = self?.configRepository.getBirthdayEvent(), (event.end?.timeIntervalSince1970 ?? 0) > Date().timeIntervalSince1970 {
+                                        let width: CGFloat = (self?.view.bounds.width ?? 300) - 40
+                                        let view = UIHostingView(rootView: BirthdayBannerview(width: width, endDate: event.end).onTapGesture {
+                                            self?.present(BirthdayViewController(), animated: true)
+                                        })
+                                        let container = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 110))
+                                        container.addSubview(view)
+                                        view.frame = CGRect(x: 20, y: 10, width: width, height: 110)
+                                        self?.tableView.tableHeaderView = container
+                                    }
             self?.seasonalShopTimer?.invalidate()
                                     self?.updateSeasonalEntries(worldState: worldState, items: items)
             self?.seasonalShopTimer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true, block: {[weak self] _ in

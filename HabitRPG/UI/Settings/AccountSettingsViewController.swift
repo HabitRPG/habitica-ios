@@ -11,6 +11,7 @@ import Eureka
 import ReactiveSwift
 import Habitica_Models
 
+// swiftlint:disable:next type_body_length
 class AccountSettingsViewController: FormViewController, Themeable, UITextFieldDelegate {
     
     let userRepository = UserRepository()

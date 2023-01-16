@@ -13,7 +13,9 @@ import ReactiveSwift
 import Habitica_Models
 import PinLayout
 import FirebaseAnalytics
+import SwiftUIX
 
+// swiftlint:disable:next type_body_length
 class SubscriptionViewController: BaseTableViewController {
 
     @IBOutlet weak private var restorePurchaseButton: UIButton!
@@ -117,16 +119,37 @@ class SubscriptionViewController: BaseTableViewController {
         disposable.inner.add(inventoryRepository.getLatestMysteryGear().on(value: { gear in
             self.mysteryGear = gear
         }).start())
-        
+        let width: CGFloat = view.bounds.width - 32
+
         if let promo = activePromo, promo.promoType == .gemsAmount || promo.promoType == .gemsPrice || promo.promoType == .subscription {
             if let header = tableView.tableHeaderView {
                 header.frame = CGRect(x: header.frame.origin.x, y: header.frame.origin.y, width: header.frame.size.width, height: 205)
                 if let promoView = header.viewWithTag(2) as? PromoBannerView {
-                        promoView.isHidden = false
-                        promo.configurePurchaseBanner(view: promoView)
-                        promoView.onTapped = { [weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.showPromoInfoSegue.rawValue, sender: self) }
+                    promoView.isHidden = false
+                    promo.configurePurchaseBanner(view: promoView)
+                    promoView.onTapped = { [weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.showPromoInfoSegue.rawValue, sender: self) }
+                    header.frame = CGRect(x: 0, y: 0, width: width, height: 188)
+
                 }
             }
+        }
+        
+        if let birthdayEvent = configRepository.getBirthdayEvent() {
+            if let header = tableView.tableHeaderView, let wrapperView = header.viewWithTag(7) {
+                header.translatesAutoresizingMaskIntoConstraints = false
+                wrapperView.isHidden = false
+                let hostingView = UIHostingView(rootView: BirthdayBannerview(width: width, endDate: birthdayEvent.end).onTapGesture {[weak self] in
+                    self?.present(BirthdayViewController(), animated: true)
+                })
+                wrapperView.addSubview(hostingView)
+                hostingView.frame = CGRect(x: 0, y: 0, width: width, height: 100)
+                wrapperView.frame = CGRect(x: 0, y: 0, width: wrapperView.bounds.width, height: 100)
+                header.frame = CGRect(x: 0, y: 0, width: width, height: 208)
+            }
+        }
+        if let header = tableView.tableHeaderView, let stackView = header.viewWithTag(6) {
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+            stackView.pin.left(16).top().right(16).height(header.bounds.height)
         }
         
         HabiticaAnalytics.shared.logNavigationEvent("subscription screen")
@@ -153,6 +176,14 @@ class SubscriptionViewController: BaseTableViewController {
         subscriptionSupportLabel.text = L10n.subscriptionSupportDevelopers
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let header = tableView.tableHeaderView, let stackView = header.viewWithTag(6) {
+            header.pin.height(208)
+            stackView.pin.left(16).top().right(16).height(208)
+        }
+    }
+    
     func retrieveProductList() {
         SwiftyStoreKit.retrieveProductsInfo(Set(PurchaseHandler.subscriptionIdentifiers)) { (result) in
             self.products = Array(result.retrievedProducts)
