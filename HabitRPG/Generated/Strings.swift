@@ -56,8 +56,10 @@ public enum L10n {
   public static var beginnerObjectives: String { return L10n.tr("Mainstrings", "beginner_objectives") }
   /// Celebrate Habitica’s 10th birthday with gifts and exclusive items below!
   public static var birthdayHeaderDescription: String { return L10n.tr("Mainstrings", "birthday_header_description") }
-  /// This is a limited time event that starts on January 23rd at 8:00 AM ET (13:00 UTC) and will end February 1st at 11:59 PM ET (04:59 UTC). The Limited Edition Jubilant Gryphatrice and ten Magic Hatching Potions will be available to buy during this time. The other Gifts listed in the Four for Free section will be automatically delivered to all accounts that were active in the 30 days prior to day the gift is sent. Accounts created after the gifts are sent will not be able to claim them.
-  public static var birthdayLimitationsDescription: String { return L10n.tr("Mainstrings", "birthday_limitations_description") }
+  /// This is a limited time event that starts on %s and will end %s. The Limited Edition Jubilant Gryphatrice and ten Magic Hatching Potions will be available to buy during this time. The other Gifts listed in the Four for Free section will be automatically delivered to all accounts that were active in the 30 days prior to day the gift is sent. Accounts created after the gifts are sent will not be able to claim them.
+  public static func birthdayLimitationsDescription(_ p1: UnsafePointer<CChar>, _ p2: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "birthday_limitations_description", p1, p2)
+  }
   /// Birthday Set
   public static var birthdaySet: String { return L10n.tr("Mainstrings", "birthday_set") }
   /// Block

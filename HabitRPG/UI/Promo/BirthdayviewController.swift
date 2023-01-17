@@ -106,6 +106,12 @@ struct BirthdayView: View {
         formatter.dateFormat = "MMM dd"
         return formatter
     }()
+    private let complexDateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        formatter.timeStyle = .full
+        return formatter
+    }()
     @ObservedObject var viewModel: BirthdayViewModel
     
     var body: some View {
@@ -209,7 +215,7 @@ struct BirthdayView: View {
                 VStack(spacing: 7) {
                     Text(L10n.limitations)
                         .font(.system(size: 15, weight: .semibold))
-                    Text(L10n.birthdayLimitationsDescription)
+                    Text(L10n.birthdayLimitationsDescription(complexDateFormatter.string(from: viewModel.startDate), complexDateFormatter.string(from: viewModel.endDate)))
                         .font(.system(size: 15))
                         .lineSpacing(3)
                         .padding(.horizontal, 20)
@@ -217,6 +223,7 @@ struct BirthdayView: View {
                 .foregroundColor(.purple600)
                 .padding(.top, 20)
                 .padding(.bottom, 40)
+                .padding(.horizontal, 16)
                 .frame(maxWidth: .infinity)
                 .background(Color.purple50)
             }

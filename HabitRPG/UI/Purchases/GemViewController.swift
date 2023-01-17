@@ -116,6 +116,8 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if activePromo != nil && (activePromo?.promoType == .gemsAmount || activePromo?.promoType == .gemsPrice || activePromo?.promoType == .subscription) {
             return CGSize(width: collectionView.frame.size.width, height: 382)
+        } else if birthdayEvent != nil {
+            return CGSize(width: collectionView.frame.size.width, height: 402)
         } else {
             return CGSize(width: collectionView.frame.size.width, height: 302)
         }
