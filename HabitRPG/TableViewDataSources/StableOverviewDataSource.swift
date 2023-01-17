@@ -82,8 +82,11 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
             }
             
             var displayText = (organizeByColor ? animal.potion : animal.egg) ?? ""
-            if animal.type == "special" {
-                displayText = animal.key ?? ""
+            if animal.type == "special" && animal.text?.isEmpty != false {
+                let split = animal.key?.split(separator: "-")
+                displayText = split?.reversed().joined(separator: " ") ?? ""
+            } else if animal.type == "special", let text = animal.text {
+                displayText = text
             } else if animal.type == "wacky" {
                 displayText = "\(items["potion-" + (animal.potion ?? "")] ?? "") \(items["egg-" + (animal.egg ?? "")] ?? "")"
             } else if let text = items[(organizeByColor ? "potion-\(animal.potion ?? "")" : "egg-\(animal.egg ?? "")")] {
