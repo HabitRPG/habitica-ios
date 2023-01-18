@@ -158,8 +158,18 @@ class MainTabBarController: UITabBarController {
             self?.updateAppBadge()
         }).start())
         disposable.inner.add(contentRepository.getWorldState()
-            .on(value: {[weak self] state in
-                self?.displayBirthdayIcon = self?.configRepository.getBirthdayEvent() != nil
+            .on(value: {[weak self] _ in
+                let event = self?.configRepository.getBirthdayEvent()
+                if event != nil && self?.displayBirthdayIcon == false {
+                    self?.displayBirthdayIcon = true
+                    if let date = event?.end, date.timeIntervalSinceNow < 3600 {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + date.timeIntervalSinceNow) {
+                            self?.displayBirthdayIcon = false
+                        }
+                    }
+                } else if event == nil && self?.displayBirthdayIcon == true {
+                    self?.displayBirthdayIcon = false
+                }
             })
             .start())
     }

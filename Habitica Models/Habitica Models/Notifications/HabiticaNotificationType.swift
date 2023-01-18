@@ -17,6 +17,7 @@ public enum HabiticaNotificationType: String, EquatableStringEnumProtocol {
     case unallocatedStatsPoints = "UNALLOCATED_STATS_POINTS"
     case questInvite = "QUEST_INVITE"
     case groupInvite = "GROUP_INVITE"
+    case itemReceived = "ITEM_RECEIVED"
     
     // Achievements
     case achievementPartyUp = "ACHIEVEMENT_PARTY_UP"

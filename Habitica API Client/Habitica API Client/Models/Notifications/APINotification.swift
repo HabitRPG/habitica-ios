@@ -15,8 +15,15 @@ private class APINotificationAchievementData: Decodable {
     var modalText: String?
 }
 
+private class APIItemReceivedData: Decodable {
+    var title: String
+    var icon: String
+    var destination: String
+    var text: String
+}
+
 public class APINotification: NotificationProtocol, NotificationNewsProtocol, NotificationNewChatProtocol,
-                              NotificationUnallocatedStatsProtocol, NotificationFirstDropProtocol, NotificationLoginIncentiveProtocol, Decodable {
+                              NotificationUnallocatedStatsProtocol, NotificationFirstDropProtocol, NotificationLoginIncentiveProtocol, NotificationItemReceivedProtocol, Decodable {
     public var isValid: Bool = true
     public var isManaged: Bool = false
     
@@ -37,6 +44,9 @@ public class APINotification: NotificationProtocol, NotificationNewsProtocol, No
     public var message: String?
     public var rewardKey: [String] = []
     public var rewardText: String?
+    
+    public var icon: String?
+    public var openDestination: String?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -71,6 +81,12 @@ public class APINotification: NotificationProtocol, NotificationNewsProtocol, No
             message = data?.message
             rewardKey = data?.rewardKey ?? []
             rewardText = data?.rewardText
+        case .itemReceived:
+            let data = try? values.decode(APIItemReceivedData.self, forKey: .data)
+            title = data?.title
+            message = data?.text
+            icon = data?.icon
+            openDestination = data?.destination
         default:
             break
         }

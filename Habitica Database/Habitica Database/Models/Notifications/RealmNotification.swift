@@ -18,7 +18,8 @@ class RealmNotification: BaseModel,
     NotificationGroupInviteProtocol,
     NotificationNewMysteryItemProtocol,
     NotificationLoginIncentiveProtocol,
-NotificationFirstDropProtocol {
+    NotificationFirstDropProtocol,
+    NotificationItemReceivedProtocol {
     @objc dynamic var id: String = ""
     @objc dynamic var realmType: String = ""
     var type: HabiticaNotificationType {
@@ -66,6 +67,9 @@ NotificationFirstDropProtocol {
     }
     var realmRewardKey = List<String>()
     @objc dynamic var rewardText: String?
+    
+    @objc dynamic var openDestination: String?
+    @objc dynamic var icon: String?
 
     override static func primaryKey() -> String {
         return "id"
@@ -98,7 +102,12 @@ NotificationFirstDropProtocol {
             message = notification.message
             rewardKey = notification.rewardKey
             rewardText = notification.rewardText
-
+        }
+        if let notification = protocolObject as? NotificationItemReceivedProtocol {
+            title = notification.title
+            message = notification.message
+            icon = notification.icon
+            openDestination = notification.openDestination
         }
         achievementKey = protocolObject.achievementKey
         achievementMessage = protocolObject.achievementMessage

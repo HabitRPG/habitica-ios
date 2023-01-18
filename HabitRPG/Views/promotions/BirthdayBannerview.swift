@@ -38,9 +38,14 @@ struct BirthdayBannerview: View {
                     .padding(.leading, 8)
                 }.height(67)
                 HStack(alignment: .center) {
-                    Text(L10n.endsInX(endDate?.getShortRemainingString() ?? "").uppercased())
-                        .foregroundColor(.yellow50)
-                        .font(.system(size: 12, weight: .bold))
+                    if let endDate = endDate {
+                        CountdownView(endDate: endDate, stringBuilder: { remaining in
+                            L10n.endsInX(remaining).uppercased()
+                            
+                        })
+                            .foregroundColor(.yellow50)
+                            .font(.system(size: 12, weight: .bold))
+                    }
                     Spacer()
                     Text("SEE DETAILS")
                         .foregroundColor(.white)

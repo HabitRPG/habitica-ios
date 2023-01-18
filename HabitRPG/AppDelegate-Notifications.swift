@@ -78,7 +78,7 @@ extension HabiticaAppDelegate: UNUserNotificationCenterDelegate {
             HabiticaAnalytics.shared.log("open notification", withEventProperties: [
                                             "identifier": identifier ?? ""])
         }
-        var aps = userInfo["aps"] as? [AnyHashable: Any]
+        let aps = userInfo["aps"] as? [AnyHashable: Any]
         if let url = userInfo["openURL"] as? String ?? aps?["openURL"] as? String {
             RouterHandler.shared.handle(urlString: url)
         } else if let identifier = identifier ?? userInfo["identifier"] as? String ?? aps?["identifier"] as? String {

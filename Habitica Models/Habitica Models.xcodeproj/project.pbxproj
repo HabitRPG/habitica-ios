@@ -64,6 +64,7 @@
 		29323E4B2052F4CF00AC6D6F /* UserItemsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E4A2052F4CF00AC6D6F /* UserItemsProtocol.swift */; };
 		29323E4D2052F4E500AC6D6F /* OutfitProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E4C2052F4E400AC6D6F /* OutfitProtocol.swift */; };
 		29323E4F2052F68A00AC6D6F /* UserGearProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E4E2052F68A00AC6D6F /* UserGearProtocol.swift */; };
+		29397EE02977EB68009EFD20 /* NotificationItemReceivedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29397EDF2977EB68009EFD20 /* NotificationItemReceivedProtocol.swift */; };
 		2942FAF7267790F8003F6500 /* HabiticaLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2942FAF6267790F8003F6500 /* HabiticaLogger.swift */; };
 		2953D84C28BCDF8C00DC456E /* GroupPlanProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2953D84B28BCDF8C00DC456E /* GroupPlanProtocol.swift */; };
 		2953D85428BCE7C600DC456E /* TaskPreferencesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2953D85328BCE7C600DC456E /* TaskPreferencesProtocol.swift */; };
@@ -201,6 +202,7 @@
 		29323E4A2052F4CF00AC6D6F /* UserItemsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserItemsProtocol.swift; sourceTree = "<group>"; };
 		29323E4C2052F4E400AC6D6F /* OutfitProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitProtocol.swift; sourceTree = "<group>"; };
 		29323E4E2052F68A00AC6D6F /* UserGearProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGearProtocol.swift; sourceTree = "<group>"; };
+		29397EDF2977EB68009EFD20 /* NotificationItemReceivedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationItemReceivedProtocol.swift; sourceTree = "<group>"; };
 		2942FAF6267790F8003F6500 /* HabiticaLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaLogger.swift; sourceTree = "<group>"; };
 		2953D84B28BCDF8C00DC456E /* GroupPlanProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupPlanProtocol.swift; sourceTree = "<group>"; };
 		2953D85328BCE7C600DC456E /* TaskPreferencesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPreferencesProtocol.swift; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 				2912C3C022CB912B00BC485F /* NotificationQuestInviteProtocol.swift */,
 				2912C3C222CB913500BC485F /* NotificationGroupInviteProtocol.swift */,
 				2970B62924A4BADA008CD068 /* NotificationFirstDropProtocol.swift */,
+				29397EDF2977EB68009EFD20 /* NotificationItemReceivedProtocol.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -636,6 +639,7 @@
 				29323E4320521A7900AC6D6F /* ContributorProtocol.swift in Sources */,
 				29990DB620E51C4B001ADD8B /* PushDeviceProtocol.swift in Sources */,
 				290279872058341F006DACB9 /* QuestProgressProtocol.swift in Sources */,
+				29397EE02977EB68009EFD20 /* NotificationItemReceivedProtocol.swift in Sources */,
 				295BC6FF226F607F00DDDF1A /* NotificationNewMysteryItemProtocol.swift in Sources */,
 				292DEE86204E48A80086D5F7 /* ReminderProtocol.swift in Sources */,
 				292DEE7C204E372E0086D5F7 /* ChecklistItemProtocol.swift in Sources */,

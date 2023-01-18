@@ -95,7 +95,8 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         sections.removeAll()
         sections.append(ItemSection<CustomizationProtocol>())
         for customization in customizations {
-            if customization.price > 0 && !customization.isPurchasable {
+            if (customization.price > 0 && !customization.isPurchasable)
+                || customization.key?.lowercased().contains("birthday_bash") == true {
                 if !owns(customization: customization) {
                     continue
                 }

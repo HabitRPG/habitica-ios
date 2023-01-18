@@ -35,6 +35,7 @@ class NotificationsTableViewController: BaseTableViewController {
         tableView.register(NewMysteryItemNotificationCell.self, forCellReuseIdentifier: HabiticaNotificationType.newMysteryItem.rawValue)
         tableView.register(QuestInviteNotificationCell.self, forCellReuseIdentifier: HabiticaNotificationType.questInvite.rawValue)
         tableView.register(GroupInviteNotificationCell.self, forCellReuseIdentifier: HabiticaNotificationType.groupInvite.rawValue)
+        tableView.register(ItemReceivedNotificationCell.self, forCellReuseIdentifier: HabiticaNotificationType.itemReceived.rawValue)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

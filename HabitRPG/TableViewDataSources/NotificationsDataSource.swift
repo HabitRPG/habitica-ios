@@ -137,6 +137,10 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
                     }
                 }
             }
+        case .itemReceived:
+            if let cell = cell as? ItemReceivedNotificationCell,  let notif = notification as? NotificationItemReceivedProtocol {
+                cell.configureFor(notification: notif)
+            }
         default:
             if notification.achievementKey != nil {
                 if let cell = cell as? AchievementNotificationCell {
@@ -202,6 +206,16 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
             url = "/inventory/items"
         case .newStuff:
             url = "/static/new-stuff"
+        case .itemReceived:
+            let itemReceivedNotification = notification as? NotificationItemReceivedProtocol
+            switch itemReceivedNotification?.openDestination {
+            case "equipment":
+                url = "/inventory/equipment"
+            case "customization":
+                url = "/user/avatar"
+            default:
+                url = "/inventory/items"
+            }
         default:
             break
         }

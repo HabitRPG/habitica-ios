@@ -377,7 +377,10 @@ class ConfigRepository: NSObject {
     
     func getBirthdayEvent() -> WorldStateEventProtocol? {
         for event in worldState?.events ?? [] where event.eventKey == "birthday10" {
-            return event
+            if let end = event.end, end > Date() {
+                return event
+            }
+            break
         }
         return nil
     }
