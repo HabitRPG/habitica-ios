@@ -196,11 +196,7 @@ class SubscriptionViewController: BaseTableViewController {
                 }
                 return firstIndex < secondIndex
             })
-            self.selectedSubscriptionPlan = self.products?.first
             self.tableView.reloadData()
-            DispatchQueue.main.async {
-                self.tableView.selectRow(at: IndexPath(item: 0, section: self.optionSectionIndex()), animated: false, scrollPosition: .none)
-            }
         }
     }
 
@@ -318,8 +314,8 @@ class SubscriptionViewController: BaseTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.isOptionSection(indexPath.section) {
-            self.selectedSubscriptionPlan = (self.products?[indexPath.item])
+        if self.isOptionSection(indexPath.section), let product = (self.products?[indexPath.item]) {
+            self.selectedSubscriptionPlan = product
         } else if indexPath.section == tableView.numberOfSections-1 {
             subscribeToPlan()
         }
@@ -349,9 +345,7 @@ class SubscriptionViewController: BaseTableViewController {
 
             let product = self.products?[indexPath.item]
             cell.set(product: product)
-            DispatchQueue.main.async {
-                cell.setSelected(product?.productIdentifier == self.selectedSubscriptionPlan?.productIdentifier, animated: true)
-            }
+            cell.setSelected(product?.productIdentifier == self.selectedSubscriptionPlan?.productIdentifier, animated: true)
             returnedCell = cell
         } else if self.isDetailSection(indexPath.section) {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as? SubscriptionDetailView else {
