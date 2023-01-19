@@ -61,7 +61,7 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        if isInitialSetup && viewID != nil {
+        if isViewLoaded && isInitialSetup && viewID != nil {
             isInitialSetup = false
             setupSplitView(traitCollection)
             if !showAsSplitView {
