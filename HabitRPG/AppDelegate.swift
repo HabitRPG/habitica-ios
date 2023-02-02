@@ -200,6 +200,8 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                 AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.gamma
             case "delta":
                 AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.delta
+            case "mobile":
+                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.mobile
             default:
                 AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.localhost
             }

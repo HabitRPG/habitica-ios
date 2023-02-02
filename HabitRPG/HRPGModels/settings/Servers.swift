@@ -14,6 +14,7 @@ enum Servers: String {
     case beta
     case gamma
     case delta
+    case mobile
     
     var niceName: String {
         switch self {
@@ -27,6 +28,8 @@ enum Servers: String {
             return "Gamma"
         case.delta:
             return "Delta"
+        case .mobile
+            return "Mobile"
         }
     }
     
@@ -36,7 +39,8 @@ enum Servers: String {
             .staging,
             .beta,
             .gamma,
-            .delta
+            .delta,
+            .mobile
         ]
     }
 }
