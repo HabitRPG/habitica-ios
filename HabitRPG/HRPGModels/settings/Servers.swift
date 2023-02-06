@@ -28,7 +28,7 @@ enum Servers: String {
             return "Gamma"
         case.delta:
             return "Delta"
-        case .mobile
+        case .mobile:
             return "Mobile"
         }
     }
