@@ -245,7 +245,7 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     
     @IBAction func searchButtonTapped(_ sender: Any) {
         navigationController?.navigationBar.addSubview(searchBarWrapper)
-        searchBarWrapper.frame = CGRect(x: 12, y: 0, width: tableView.bounds.size.width - 24, height: navigationController?.navigationBar.frame.size.height ?? 48)
+        searchBarWrapper.frame = CGRect(x: 28, y: 0, width: tableView.bounds.size.width - 40, height: navigationController?.navigationBar.frame.size.height ?? 48)
         searchBarCancelButton.pin.top().end().bottom().sizeToFit(.height)
         searchBar.pin.start().before(of: searchBarCancelButton).top().bottom()
         searchBar.becomeFirstResponder()
