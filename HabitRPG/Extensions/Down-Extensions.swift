@@ -193,7 +193,7 @@ private class HabiticaStyler: DownStyler {
     
     override func style(codeBlock str: NSMutableAttributedString, fenceInfo: String?) {
         str.addAttributes([
-            .font: UIFontMetrics.default.scaledFont(for: UIFont(name: "Menlo", size: baseSize) ?? UIFont.systemFont(ofSize: baseSize))
+            .font: UIFontMetrics.default.scaledFont(for: UIFont(name: "Menlo", size: baseSize) ?? UIFont.systemFont(ofSize: baseSize)),            .foregroundColor: ThemeService.shared.theme.primaryTextColor
             ], range: NSRange(location: 0, length: str.length))
     }
 
