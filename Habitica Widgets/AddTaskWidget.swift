@@ -83,20 +83,30 @@ struct AddTaskWidgetView : View {
                 }
             } else {
                 VStack(alignment: .center) {
-                    Link(destination: URL(string: "/user/tasks/habit/add")!, label: {
-                        AddView(taskType: .habit, showLabel: entry.showLabels).padding(EdgeInsets(top: 0, leading: 0, bottom: 9, trailing: 0))
-                    })
-                    Link(destination: URL(string: "/user/tasks/todo/add")!, label: {
-                        AddView(taskType: .todo, showLabel: entry.showLabels)
-                    })
+                    if let habitURL = URL(string: "/user/tasks/habit/add") {
+                        Link(destination: habitURL, label: {
+                            AddView(taskType: .habit, showLabel: entry.showLabels).padding(EdgeInsets(top: 0, leading: 0, bottom: 9, trailing: 0))
+                        })
+                    }
+                    
+                    if let todoURL = URL(string: "/user/tasks/todo/add") {
+                        Link(destination: todoURL, label: {
+                            AddView(taskType: .todo, showLabel: entry.showLabels)
+                        })
+                    }
                 }.padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 0))
                 VStack(alignment: .center) {
-                    Link(destination: URL(string: "/user/tasks/daily/add")!, label: {
-                        AddView(taskType: .daily, showLabel: entry.showLabels).padding(EdgeInsets(top: 0, leading: 0, bottom: 9, trailing: 0))
-                    })
-                    Link(destination: URL(string: "/user/tasks/reward/add")!, label: {
-                        AddView(taskType: .reward, showLabel: entry.showLabels)
-                    })
+                    if let dailyURL = URL(string: "/user/tasks/daily/add") {
+                        Link(destination: dailyURL, label: {
+                            AddView(taskType: .daily, showLabel: entry.showLabels).padding(EdgeInsets(top: 0, leading: 0, bottom: 9, trailing: 0))
+                        })
+                    }
+                    
+                    if let rewardURL = URL(string: "/user/tasks/reward/add") {
+                        Link(destination: rewardURL, label: {
+                            AddView(taskType: .reward, showLabel: entry.showLabels)
+                        })
+                    }
                 }.padding(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 12))
             }
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)

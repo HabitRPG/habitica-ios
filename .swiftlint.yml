@@ -19,6 +19,8 @@ included: # paths to include during linting. `--path` is ignored if present.
   - Habitica Models
   - Habitica Database
   - Habitica API Client
+  - Habitica Intents
+  - Habitica Widgets
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
   - HabitRPG/Utilities/HabiticaIcons.swift
