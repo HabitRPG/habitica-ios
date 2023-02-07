@@ -29,7 +29,7 @@ jobs:
     strategy:
       matrix:
         destination:
-          - "platform=iOS Simulator,name=iPhone 12,OS=15.2"
+          - "platform=iOS Simulator,name=iPhone 14,OS=16.2"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -47,7 +47,7 @@ jobs:
           - "iPhone 13 Pro Max"
           - "iPad Pro (9.7-inch)"
         os-version:
-          - "15.2"
+          - "16.2"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
