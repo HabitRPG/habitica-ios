@@ -23,7 +23,7 @@ jobs:
       - name: Prepare
         run: ./.github/prepare-workflow
       - name: Build
-        run: xcodebuild build -scheme Habitica -destination "platform=iOS Simulator,name=iPhone 12,OS=15.2"
+        run: xcodebuild build -scheme Habitica -destination "platform=iOS Simulator,name=iPhone 12,OS=\16.2"
   unit-tests:
     runs-on: macos-latest
     strategy:

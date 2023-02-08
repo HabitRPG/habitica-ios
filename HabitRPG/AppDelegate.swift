@@ -372,7 +372,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                         self?.handleCampaign(data)
                     } catch {
                         if (error as NSError).code == 3840 {
-                            defaults.set(true, forKey: "userWasAttributed")
+                            UserDefaults.standard.set(true, forKey: "userWasAttributed")
                             return
                         }
                         logger.log(error)
