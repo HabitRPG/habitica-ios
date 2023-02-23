@@ -41,7 +41,7 @@ protocol  LoginViewModelInputs {
     func googleLoginButtonPressed()
     func appleLoginButtonPressed()
 
-    func onSuccessfulLogin()
+    func onSuccessfulLogin(_ isNewUser: Bool)
 
     func setViewController(viewController: LoginTableViewController)
 }
@@ -180,14 +180,9 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         passwordText = self.prefillPasswordProperty.signal
         passwordRepeatText = self.prefillPasswordRepeatProperty.signal
 
-        let (showNextViewControllerSignal, showNextViewControllerObserver) = Signal<(), Never>.pipe()
-        self.showNextViewControllerObserver = showNextViewControllerObserver
-        showNextViewController = Signal.merge(
-            showNextViewControllerSignal,
-            self.onSuccessfulLoginProperty.signal
-            ).combineLatest(with: authTypeProperty.signal)
-        .map({ (_, authType) -> String in
-            if authType == .login {
+        showNextViewController = onSuccessfulLoginProperty.signal.combineLatest(with: authTypeProperty.signal)
+        .map({ (isNewUser, authType) -> String in
+            if authType == .login && !isNewUser {
                 return "MainSegue"
             } else {
                 return "SetupSegue"
@@ -277,7 +272,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                 userRepository.login(username: authValues.username ?? "", password: authValues.password ?? "")
                     .observeValues { loginResult in
                     if loginResult != nil {
-                        self.onSuccessfulLogin()
+                        self.onSuccessfulLogin(false)
                     } else {
                         self.loadingIndicatorVisibilityObserver.send(value: false)
                     }
@@ -292,7 +287,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                         #if !targetEnvironment(macCatalyst)
                         Analytics.logEvent("register", parameters: nil)
                         #endif
-                        self.onSuccessfulLogin()
+                        self.onSuccessfulLogin(true)
                     } else {
                         self.loadingIndicatorVisibilityObserver.send(value: false)
                     }
@@ -334,8 +329,8 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                 if authState != nil {
                     self?.userRepository.login(userID: "", network: "google", accessToken: authState?.lastTokenResponse?.accessToken ?? "").observeResult { (result) in
                         switch result {
-                        case .success:
-                            self?.onSuccessfulLogin()
+                        case .success(let response):
+                            self?.onSuccessfulLogin(response?.newUser == true)
                         case .failure:
                             self?.showErrorObserver.send(value: L10n.Login.authenticationError)
                         }
@@ -377,23 +372,23 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     func performAppleLogin(identityToken: String, name: String) {
         userRepository.loginApple(identityToken: identityToken, name: name).observeResult {[weak self] (result) in
             switch result {
-            case .success:
-                self?.onSuccessfulLogin()
+            case .success(let response):
+                self?.onSuccessfulLogin(response?.newUser == true)
             case .failure:
                 self?.showErrorObserver.send(value: L10n.Login.authenticationError)
             }
         }
     }
 
-    private let onSuccessfulLoginProperty = MutableProperty(())
-    func onSuccessfulLogin() {
+    private let onSuccessfulLoginProperty = MutableProperty(false)
+    func onSuccessfulLogin(_ isNewUser: Bool) {
         userRepository.retrieveUser().observeCompleted {[weak self] in
             self?.loadingIndicatorVisibilityObserver.send(value: false)
             self?.prefillEmailProperty.value = ""
             self?.prefillUsernameProperty.value = ""
             self?.prefillPasswordProperty.value = ""
             self?.prefillPasswordRepeatProperty.value = ""
-            self?.onSuccessfulLoginProperty.value = ()
+            self?.onSuccessfulLoginProperty.value = isNewUser
         }
     }
 
@@ -426,7 +421,6 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     internal var passwordText: Signal<String, Never>
     internal var passwordRepeatText: Signal<String, Never>
 
-    private var showNextViewControllerObserver: Signal<(), Never>.Observer
     private var showErrorObserver: Signal<String, Never>.Observer
     private var loadingIndicatorVisibilityObserver: Signal<Bool, Never>.Observer
 

@@ -165,7 +165,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.clearCache
                 row.onCellSelection({[weak self] (_, _) in
                     self?.contentRepository.clearDatabase()
-                    self?.contentRepository.retrieveContent(force: true).withLatest(from: self?.userRepository.retrieveUser() ?? Signal.empty)
+                    self?.contentRepository.retrieveContent(force: true).withLatest(from: self?.userRepository.retrieveUser(withTasks: true, forced: true) ?? Signal.empty)
                         .observeCompleted {
                     }
                 })

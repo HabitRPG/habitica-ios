@@ -12,6 +12,7 @@ import Foundation
 public protocol SubscriptionPlanProtocol {
     var quantity: Int { get set }
     var gemsBought: Int { get set }
+    var perkMonthCount: Int { get set }
     var dateTerminated: Date? { get set }
     var dateUpdated: Date? { get set }
     var dateCreated: Date? { get set }
@@ -58,7 +59,7 @@ public extension SubscriptionPlanProtocol {
     
     var monthsUntilNextHourglass: Int {
         if isMonthlyRenewal {
-            return (3 - (((consecutive?.count ?? 0)) % 3))
+            return 3 - perkMonthCount
         } else {
             return (consecutive?.offset ?? 0) + 1
         }

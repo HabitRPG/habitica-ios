@@ -13,6 +13,7 @@ import RealmSwift
 class RealmSubscriptionPlan: Object, SubscriptionPlanProtocol {
     @objc dynamic var quantity: Int = 0
     @objc dynamic var gemsBought: Int = 0
+    @objc dynamic var perkMonthCount: Int = 0
     @objc dynamic var dateTerminated: Date?
     @objc dynamic var dateUpdated: Date?
     @objc dynamic var dateCreated: Date?
@@ -60,6 +61,7 @@ class RealmSubscriptionPlan: Object, SubscriptionPlanProtocol {
         self.id = userID
         quantity = protocolObject.quantity
         gemsBought = protocolObject.gemsBought
+        perkMonthCount = protocolObject.perkMonthCount
         dateTerminated = protocolObject.dateTerminated
         dateUpdated = protocolObject.dateUpdated
         dateCreated = protocolObject.dateCreated

@@ -352,7 +352,7 @@ class SubscriptionViewController: BaseTableViewController {
                 fatalError()
             }
             if let subscriptionPlan = self.user?.purchased?.subscriptionPlan {
-                cell.setPlan(subscriptionPlan)
+                cell.setPlan(subscriptionPlan, wasAlreadyCancelled: PurchaseHandler.shared.wasSubscriptionCancelled == true)
                 cell.cancelSubscriptionAction = {[weak self] in
                     self?.cancelSubscription(subscriptionPlan: subscriptionPlan)
                 }

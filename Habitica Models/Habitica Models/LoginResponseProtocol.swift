@@ -11,4 +11,5 @@ import Foundation
 public protocol LoginResponseProtocol {
     var id: String { get set }
     var apiToken: String { get set }
+    var newUser: Bool { get set }
 }

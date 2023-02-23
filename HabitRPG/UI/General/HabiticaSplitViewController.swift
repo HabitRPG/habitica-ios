@@ -72,7 +72,7 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
             }
         }
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         let userDefaults = UserDefaults()
         userDefaults.set(segmentedControl.selectedSegmentIndex, forKey: (viewID ?? "") + "lastOpenedSegment")

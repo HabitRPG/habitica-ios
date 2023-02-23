@@ -12,6 +12,6 @@ import ReactiveSwift
 
 public class FlagInboxMessageCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
     public init(message: InboxMessageProtocol) {
-        super.init(httpMethod: .POST, endpoint: "/flag-private-message/\(message.id ?? "")/flag")
+        super.init(httpMethod: .POST, endpoint: "members/flag-private-message/\(message.id ?? "")")
     }
 }

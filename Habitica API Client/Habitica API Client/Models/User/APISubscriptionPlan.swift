@@ -12,6 +12,7 @@ import Habitica_Models
 class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
     var quantity: Int
     var gemsBought: Int
+    var perkMonthCount: Int
     var dateTerminated: Date?
     var dateUpdated: Date?
     var dateCreated: Date?
@@ -27,6 +28,7 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
         case dateUpdated
         case dateCreated
         case gemsBought
+        case perkMonthCount
         case planId
         case customerId
         case paymentMethod
@@ -38,6 +40,7 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         quantity = (try? values.decode(Int.self, forKey: .quantity)) ?? 0
         gemsBought = (try? values.decode(Int.self, forKey: .gemsBought)) ?? 0
+        perkMonthCount = (try? values.decode(Int.self, forKey: .perkMonthCount)) ?? 0
         dateTerminated = try? values.decode(Date.self, forKey: .dateTerminated)
         dateUpdated = try? values.decode(Date.self, forKey: .dateUpdated)
         dateCreated = try? values.decode(Date.self, forKey: .dateCreated)

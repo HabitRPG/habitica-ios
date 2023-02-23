@@ -45,6 +45,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     private let userRepository = UserRepository()
     
     var pendingGifts = [String: String]()
+    var wasSubscriptionCancelled: Bool?
 
     private var hasCompletionHandler = false
     override private init() {
@@ -310,8 +311,11 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         })
     }
     
-    private func cancelSubscription() {
-        userRepository.cancelSubscription().observeCompleted {}
+    private func cancelSubscription(purchaseItem: ReceiptItem) {
+        if let expirationDate = purchaseItem.subscriptionExpirationDate, expirationDate < Date() {
+            userRepository.cancelSubscription().observeCompleted {}
+        }
+        wasSubscriptionCancelled = true
     }
     
     private func checkForCancellation(user: UserProtocol) {
@@ -319,22 +323,32 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         SwiftyStoreKit.verifyReceipt(using: self.appleValidator) { result in
             switch result {
             case .success(let receipt):
-                let verifyResult = SwiftyStoreKit.verifySubscription(ofType: .autoRenewable, productId: PurchaseHandler.habiticaSubMappingReversed[searchedID ?? ""] ?? "", inReceipt: receipt)
+                let sku = PurchaseHandler.habiticaSubMappingReversed[user.purchased?.subscriptionPlan?.planId ?? ""] ?? ""
+                let verifyResult = SwiftyStoreKit.verifySubscription(ofType: .autoRenewable, productId: sku, inReceipt: receipt)
                 switch verifyResult {
                 case .expired(expiryDate: _, items: let items):
-                    for item in items where (item.originalTransactionId == searchedID || item.transactionId == searchedID) && item.subscriptionExpirationDate != nil {
-                            self.cancelSubscription()
-                        }
+                    self.processItemsForCancellation(items: items, searchedID: searchedID)
                 case .purchased(expiryDate: _, items: let items):
-                    for item in items where (item.originalTransactionId == searchedID || item.transactionId == searchedID) && item.subscriptionExpirationDate != nil {
-                        self.cancelSubscription()
-                    }
+                    self.processItemsForCancellation(items: items, searchedID: searchedID)
                 default:
                     return
                 }
             case .error:
                 return
             }
+        }
+    }
+    
+    private func processItemsForCancellation(items: [ReceiptItem], searchedID: String?) {
+        var latestItem: ReceiptItem?
+        for item in items where (item.originalTransactionId == searchedID || item.transactionId == searchedID) && item.subscriptionExpirationDate != nil {
+            if let latest = latestItem?.subscriptionExpirationDate, let thisExpiration = item.subscriptionExpirationDate, latest > thisExpiration {
+                continue
+            }
+            latestItem = item
+        }
+        if let item = latestItem {
+            self.cancelSubscription(purchaseItem: item)
         }
     }
     

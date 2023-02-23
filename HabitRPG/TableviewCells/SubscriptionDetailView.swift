@@ -34,7 +34,7 @@ class SubscriptionDetailView: UITableViewCell {
     var cancelSubscriptionAction: (() -> Void)?
 
     // swiftlint:disable:next cyclomatic_complexity
-    public func setPlan(_ plan: SubscriptionPlanProtocol) {
+    public func setPlan(_ plan: SubscriptionPlanProtocol, wasAlreadyCancelled: Bool) {
         if plan.isActive {
             if plan.isGifted {
                 statusPill.text = L10n.notRecurring
@@ -42,7 +42,7 @@ class SubscriptionDetailView: UITableViewCell {
             } else if plan.isGroupPlanSub {
                 statusPill.text = L10n.groupPlan
                 statusPill.pillColor = .purple300
-            } else if plan.dateTerminated != nil {
+            } else if plan.dateTerminated != nil || wasAlreadyCancelled {
                 statusPill.text = L10n.cancelled
                 statusPill.pillColor = .red10
             } else {
