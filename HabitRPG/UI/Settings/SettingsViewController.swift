@@ -167,6 +167,7 @@ class SettingsViewController: FormViewController, Themeable {
                     self?.contentRepository.clearDatabase()
                     self?.contentRepository.retrieveContent(force: true).withLatest(from: self?.userRepository.retrieveUser(withTasks: true, forced: true) ?? Signal.empty)
                         .observeCompleted {
+                            ToastManager.show(text: L10n.Settings.clearedCache, color: .green, duration: 4.0)
                     }
                 })
             }
@@ -178,6 +179,7 @@ class SettingsViewController: FormViewController, Themeable {
                             return self?.contentRepository.retrieveWorldState() ?? Signal.empty
                         })
                         .observeCompleted {
+                            ToastManager.show(text: L10n.Settings.reloadedContent, color: .green, duration: 4.0)
                     }
                 })
         <<< ButtonRow(SettingsTags.manuallyRestartDay) { row in

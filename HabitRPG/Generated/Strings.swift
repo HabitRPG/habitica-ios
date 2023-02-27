@@ -2013,6 +2013,8 @@ public enum L10n {
     public static var changeUsername: String { return L10n.tr("Mainstrings", "settings.change_username") }
     /// Clear Cache
     public static var clearCache: String { return L10n.tr("Mainstrings", "settings.clear_cache") }
+    /// Cleared Cache
+    public static var clearedCache: String { return L10n.tr("Mainstrings", "settings.cleared_cache") }
     /// Confirm new Password
     public static var confirmNewPassword: String { return L10n.tr("Mainstrings", "settings.confirm_new_password") }
     /// Confirming your username will make it public for invitations, @mentions and messaging. You can change your username from settings at any time.
@@ -2107,6 +2109,8 @@ public enum L10n {
     public static var publicProfile: String { return L10n.tr("Mainstrings", "settings.public_profile") }
     /// Reload Content
     public static var reloadContent: String { return L10n.tr("Mainstrings", "settings.reload_content") }
+    /// Reloaded Content
+    public static var reloadedContent: String { return L10n.tr("Mainstrings", "settings.reloaded_content") }
     /// Reminder
     public static var reminder: String { return L10n.tr("Mainstrings", "settings.reminder") }
     /// Reset Account

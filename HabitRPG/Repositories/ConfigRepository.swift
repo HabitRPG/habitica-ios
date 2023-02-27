@@ -39,7 +39,6 @@ enum ConfigVariable: Int {
     // A/B Tests
     case moveAdventureGuide
     case enableUsernameAutocomplete
-    case disableChallenges
     case reorderMenu
     case enableIPadUI
     case showQuestInMenu
@@ -78,7 +77,6 @@ enum ConfigVariable: Int {
         case .knownIssues: return "knownIssues"
         case .activePromotion: return "activePromo"
         case .customMenu: return "customMenu"
-        case .disableChallenges: return "disableChallenges"
         case .maintenanceData: return "maintenanceData"
         case .reorderMenu: return "reorderMenu"
         case .enableIPadUI: return "enableIpadUI"
@@ -137,8 +135,6 @@ enum ConfigVariable: Int {
             return "" as NSString
         case .customMenu:
             return "[]" as NSString
-        case .disableChallenges:
-            return false as NSNumber
         case .showSubscriptionBanner:
             return false as NSNumber
         case .maintenanceData:
@@ -193,7 +189,6 @@ enum ConfigVariable: Int {
             .knownIssues,
             .activePromotion,
             .customMenu,
-            .disableChallenges,
             .maintenanceData,
             .reorderMenu,
             .enableIPadUI,

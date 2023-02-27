@@ -67,42 +67,49 @@ class RouterHandler {
     
     // swiftlint:disable:next function_body_length cyclomatic_complexity
     func register() {
-        register("/groups/guild/:groupID") { link in
-            self.displayTab(index: 4)
-            let viewController = StoryboardScene.Social.groupTableViewController.instantiate()
-            viewController.groupID = link["groupID"]
-            self.push(viewController)
+        let configRepository = ConfigRepository.shared
+        if !configRepository.bool(variable: .hideGuilds) {
+            register("/groups/guild/:groupID") { link in
+                self.displayTab(index: 4)
+                let viewController = StoryboardScene.Social.groupTableViewController.instantiate()
+                viewController.groupID = link["groupID"]
+                self.push(viewController)
+            }
+            register("/groups/myGuilds") {
+                self.displayTab(index: 4)
+                self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
+            }
+            register("/groups/discovery") {
+                self.displayTab(index: 4)
+                self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
+            }
         }
-        register("/groups/myGuilds") {
-            self.displayTab(index: 4)
-            self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
+        if !configRepository.bool(variable: .hideChallenges) {
+            register("/challenges/:challengeID") { link in
+                self.displayTab(index: 4)
+                let viewController = StoryboardScene.Social.challengeDetailViewController.instantiate()
+                let viewModel = ChallengeDetailViewModel(challengeID: (link["challengeID"]) ?? "")
+                viewController.viewModel = viewModel
+                self.push(viewController)
+            }
+            register("/challenges/myChallenges") {
+                self.displayTab(index: 4)
+                self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
+            }
+            register("/challenges/findChallenges") {
+                self.displayTab(index: 4)
+                self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
+            }
         }
-        register("/groups/discovery") {
-            self.displayTab(index: 4)
-            self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
-        }
-        register("/challenges/:challengeID") { link in
-            self.displayTab(index: 4)
-            let viewController = StoryboardScene.Social.challengeDetailViewController.instantiate()
-            let viewModel = ChallengeDetailViewModel(challengeID: (link["challengeID"]) ?? "")
-            viewController.viewModel = viewModel
-            self.push(viewController)
-        }
-        register("/challenges/myChallenges") {
-            self.displayTab(index: 4)
-            self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
-        }
-        register("/challenges/findChallenges") {
-            self.displayTab(index: 4)
-            self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
-        }
-        register("/tavern") {
-            self.displayTab(index: 4)
-            self.push(StoryboardScene.Social.tavernViewController.instantiate())
-        }
-        register("/groups/tavern") {
-            self.displayTab(index: 4)
-            self.push(StoryboardScene.Social.tavernViewController.instantiate())
+        if !configRepository.bool(variable: .hideTavern) {
+            register("/tavern") {
+                self.displayTab(index: 4)
+                self.push(StoryboardScene.Social.tavernViewController.instantiate())
+            }
+            register("/groups/tavern") {
+                self.displayTab(index: 4)
+                self.push(StoryboardScene.Social.tavernViewController.instantiate())
+            }
         }
         register("/party") {
             self.displayTab(index: 4)

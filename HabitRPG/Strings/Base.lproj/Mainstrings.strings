@@ -286,6 +286,8 @@
 "settings.maintenance" = "Maintenance";
 "settings.clear_cache" = "Clear Cache";
 "settings.reload_content" = "Reload Content";
+"settings.cleared_cache" = "Cleared Cache";
+"settings.reloaded_content" = "Reloaded Content";
 "settings.preferences" = "Preferences";
 "settings.theme_color" = "Theme Color";
 "settings.theme_mode" = "Theme Mode";

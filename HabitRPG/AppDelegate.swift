@@ -45,14 +45,14 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         logger = RemoteLogger()
         self.application = application
         
-        setupRouter()
-        handleLaunchArgs()
         if !isBeingTested {
             setupLogging()
             setupAnalytics()
             setupPurchaseHandling()
             setupFirebase()
         }
+        setupRouter()
+        handleLaunchArgs()
         setupNetworkClient()
         setupDatabase()
         configureNotifications()

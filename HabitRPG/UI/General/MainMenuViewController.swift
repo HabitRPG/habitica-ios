@@ -213,7 +213,9 @@ class MainMenuViewController: BaseTableViewController {
                 reorderMenu(customMenu)
             }
             
-            menuItem(withKey: .challenges).isHidden = configRepository.bool(variable: .disableChallenges)
+            menuItem(withKey: .tavern).isHidden = configRepository.bool(variable: .hideTavern)
+            menuItem(withKey: .guilds).isHidden = configRepository.bool(variable: .hideGuilds)
+            menuItem(withKey: .challenges).isHidden = configRepository.bool(variable: .hideChallenges)
         }
     }
     
