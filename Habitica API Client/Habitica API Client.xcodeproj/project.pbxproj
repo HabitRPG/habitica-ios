@@ -215,7 +215,6 @@
 		29A6B86E20690F0C0086B2A6 /* APIWeekRepeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B86D20690F0C0086B2A6 /* APIWeekRepeat.swift */; };
 		29A6B870206940F80086B2A6 /* CreateTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B86F206940F80086B2A6 /* CreateTaskCall.swift */; };
 		29A6B872206941210086B2A6 /* UpdateTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B871206941210086B2A6 /* UpdateTaskCall.swift */; };
-		29A77B2122EED56400FE41E4 /* NetworkIndicatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A77B2022EED56400FE41E4 /* NetworkIndicatorController.swift */; };
 		29A7E79326B17C61009F0C4D /* APILoginIncentiveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A7E79226B17C61009F0C4D /* APILoginIncentiveData.swift */; };
 		29A9B05C22817DBE0049291E /* JsonDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B05822817DBC0049291E /* JsonDataHandler.swift */; };
 		29A9B05D22817DBE0049291E /* NetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B05922817DBD0049291E /* NetworkCall.swift */; };
@@ -464,7 +463,6 @@
 		29A6B86D20690F0C0086B2A6 /* APIWeekRepeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWeekRepeat.swift; sourceTree = "<group>"; };
 		29A6B86F206940F80086B2A6 /* CreateTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskCall.swift; sourceTree = "<group>"; };
 		29A6B871206941210086B2A6 /* UpdateTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTaskCall.swift; sourceTree = "<group>"; };
-		29A77B2022EED56400FE41E4 /* NetworkIndicatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkIndicatorController.swift; sourceTree = "<group>"; };
 		29A7E79226B17C61009F0C4D /* APILoginIncentiveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILoginIncentiveData.swift; sourceTree = "<group>"; };
 		29A9B05822817DBC0049291E /* JsonDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonDataHandler.swift; sourceTree = "<group>"; };
 		29A9B05922817DBD0049291E /* NetworkCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCall.swift; sourceTree = "<group>"; };
@@ -923,7 +921,6 @@
 				294973C42080F91300F02AC3 /* Inventory */,
 				290C303A206D3D610066AF5B /* Models */,
 				292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */,
-				29A77B2022EED56400FE41E4 /* NetworkIndicatorController.swift */,
 				295E9DC020B2DE6600D58D45 /* Shops */,
 				292DEE47204D9DA20086D5F7 /* Tasks */,
 				29323E1320504F1A00AC6D6F /* User */,
@@ -1150,7 +1147,6 @@
 				292DEE8F204F49D50086D5F7 /* AuthenticatedCall.swift in Sources */,
 				299FB28A2084988500422522 /* APIMount.swift in Sources */,
 				29A9B06322817DCF0049291E /* ServerConfiguration.swift in Sources */,
-				29A77B2122EED56400FE41E4 /* NetworkIndicatorController.swift in Sources */,
 				295E9DDC20B3060200D58D45 /* PurchaseGemsCall.swift in Sources */,
 				292DEE93204F4A430086D5F7 /* ResponseArrayCall.swift in Sources */,
 				292F966A206E4FD100804151 /* PostChatMessageCall.swift in Sources */,

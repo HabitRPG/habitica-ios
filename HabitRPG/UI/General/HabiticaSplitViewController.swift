@@ -100,7 +100,7 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
             leftViewWidthConstraint = leftViewWidthConstraint.setMultiplier(multiplier: 1)
             rightViewWidthConstraint = rightViewWidthConstraint.setMultiplier(multiplier: 1)
         }
-        view.setNeedsLayout()
+        view.layoutIfNeeded()
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

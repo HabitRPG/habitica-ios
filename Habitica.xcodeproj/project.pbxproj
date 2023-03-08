@@ -379,7 +379,6 @@
 		29A62B012167D55200D4BD90 /* VerifyUsernameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */; };
 		29A62B09216CE5D700D4BD90 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B08216CE5D700D4BD90 /* AboutViewController.swift */; };
 		29A62B0B216CF4E200D4BD90 /* UIDevice-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B0A216CF4E200D4BD90 /* UIDevice-Extensions.swift */; };
-		29A77B1F22EED4CE00FE41E4 /* NetworkIndicatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A77B1E22EED4CE00FE41E4 /* NetworkIndicatorController.swift */; };
 		29A9038826EA33A400442B93 /* FlagInformationOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9038726EA33A400442B93 /* FlagInformationOverlayView.swift */; };
 		29A984D22547294E00F04665 /* HabiticaAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A984D02547294E00F04665 /* HabiticaAnalytics.swift */; };
 		29A984D32547294E00F04665 /* RemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A984D12547294E00F04665 /* RemoteLogger.swift */; };
@@ -464,7 +463,6 @@
 		29DBFEF720C997D100DF9CF2 /* CalculateUserStatsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEF620C997D100DF9CF2 /* CalculateUserStatsInteractor.swift */; };
 		29DBFF0120CE6FFF00DF9CF2 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */; };
 		29DBFF0520CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0420CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift */; };
-		29DC5AC020A1B81C00993400 /* CALayer-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5ABF20A1B81C00993400 /* CALayer-Extensions.swift */; };
 		29DC5AC220A1C63000993400 /* SeparatedStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5AC120A1C63000993400 /* SeparatedStackView.swift */; };
 		29DC5AC320A1D85300993400 /* Mainstrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29DC5AC520A1D85300993400 /* Mainstrings.strings */; };
 		29DC5AC720A1E52400993400 /* QuestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5AC620A1E52400993400 /* QuestDetailViewController.swift */; };
@@ -605,7 +603,6 @@
 		D958E2B11915D41D00186A08 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D915F8641915BF0D0037D04D /* SystemConfiguration.framework */; platformFilter = ios; };
 		D96BFC4C1E181B4A00266EEF /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96BFC4B1E181B4A00266EEF /* IntroViewController.swift */; };
 		D96BFC4F1E191D7200266EEF /* UIAlertController-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96BFC4E1E191D7200266EEF /* UIAlertController-Extensions.swift */; };
-		D96BFC511E1930A500266EEF /* Signal-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96BFC501E1930A500266EEF /* Signal-Extensions.swift */; };
 		D9709A501E7F17150005F35B /* TaskDetailLineViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9709A4F1E7F17150005F35B /* TaskDetailLineViewTests.swift */; };
 		D9709A541E8051DC0005F35B /* TaskRepeatablesSummaryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9709A531E8051DC0005F35B /* TaskRepeatablesSummaryInteractor.swift */; };
 		D9709A581E8053A00005F35B /* TaskRepeatablesSummaryInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9709A571E8053A00005F35B /* TaskRepeatablesSummaryInteractorTests.swift */; };
@@ -1096,7 +1093,6 @@
 		29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUsernameModalViewController.swift; sourceTree = "<group>"; };
 		29A62B08216CE5D700D4BD90 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		29A62B0A216CF4E200D4BD90 /* UIDevice-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice-Extensions.swift"; sourceTree = "<group>"; };
-		29A77B1E22EED4CE00FE41E4 /* NetworkIndicatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkIndicatorController.swift; sourceTree = "<group>"; };
 		29A9038726EA33A400442B93 /* FlagInformationOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagInformationOverlayView.swift; sourceTree = "<group>"; };
 		29A984D02547294E00F04665 /* HabiticaAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabiticaAnalytics.swift; sourceTree = "<group>"; };
 		29A984D12547294E00F04665 /* RemoteLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteLogger.swift; sourceTree = "<group>"; };
@@ -1182,7 +1178,6 @@
 		29DBFEF620C997D100DF9CF2 /* CalculateUserStatsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateUserStatsInteractor.swift; sourceTree = "<group>"; };
 		29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		29DBFF0420CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarGearDetailViewDataSource.swift; sourceTree = "<group>"; };
-		29DC5ABF20A1B81C00993400 /* CALayer-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer-Extensions.swift"; sourceTree = "<group>"; };
 		29DC5AC120A1C63000993400 /* SeparatedStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatedStackView.swift; sourceTree = "<group>"; };
 		29DC5AC620A1E52400993400 /* QuestDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDetailViewController.swift; sourceTree = "<group>"; };
 		29DC5AC820A1F6C100993400 /* QuestParticipantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestParticipantView.swift; sourceTree = "<group>"; };
@@ -1338,7 +1333,6 @@
 		D958E2AF1915D41400186A08 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D96BFC4B1E181B4A00266EEF /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		D96BFC4E1E191D7200266EEF /* UIAlertController-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController-Extensions.swift"; sourceTree = "<group>"; };
-		D96BFC501E1930A500266EEF /* Signal-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Signal-Extensions.swift"; sourceTree = "<group>"; };
 		D9709A4F1E7F17150005F35B /* TaskDetailLineViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailLineViewTests.swift; sourceTree = "<group>"; };
 		D9709A531E8051DC0005F35B /* TaskRepeatablesSummaryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRepeatablesSummaryInteractor.swift; sourceTree = "<group>"; };
 		D9709A571E8053A00005F35B /* TaskRepeatablesSummaryInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRepeatablesSummaryInteractorTests.swift; sourceTree = "<group>"; };
@@ -2349,7 +2343,6 @@
 		D95704371E106BF3004F6804 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				29DC5ABF20A1B81C00993400 /* CALayer-Extensions.swift */,
 				29255E4C1F3E25910094A3E3 /* CGRect-Extensions.swift */,
 				491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */,
 				29323E4820521FD500AC6D6F /* ContributorProtocol-Extensions.swift */,
@@ -2361,7 +2354,6 @@
 				291448872088F3F700F3A6B5 /* NSAttributedString.swift */,
 				29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */,
 				29FC885B2018D47D002B3D3F /* Quest-Extensions.swift */,
-				D96BFC501E1930A500266EEF /* Signal-Extensions.swift */,
 				29F89F191F47882A004E5B84 /* String-Extensions.swift */,
 				29A4CB70257FF3150013F0B3 /* String-SafeExtensions.swift */,
 				29646DE0205C18FA0050886C /* TaskType-Extensions.swift */,
@@ -2837,7 +2829,6 @@
 				29D50B7A25F9037A0009CF55 /* AppDelegate-Notifications.swift */,
 				29706C9527D64547006EC139 /* HabiticaApplication.swift */,
 				2914943B273163AF00DF2153 /* SceneDelegate.swift */,
-				29A77B1E22EED4CE00FE41E4 /* NetworkIndicatorController.swift */,
 				29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */,
 				29951A212327E94F00918FC8 /* ThemedNavigationController.swift */,
 				29FC5A6A20406932008E88C8 /* GuidelinesViewController.swift */,
@@ -3632,7 +3623,6 @@
 				29AAA15F1F2B596900029737 /* SpeechbubbleView.swift in Sources */,
 				29323E1B2050532D00AC6D6F /* UserRepository.swift in Sources */,
 				29FEB278202B491600EA245A /* Avatar.swift in Sources */,
-				D96BFC511E1930A500266EEF /* Signal-Extensions.swift in Sources */,
 				2953D84728B7790800DC456E /* HabiticaBottomSheet.swift in Sources */,
 				299328A924E57858003BCE0C /* FAQDetailViewController.swift in Sources */,
 				29E1631D200F62C100685640 /* TavernDetailViewController.swift in Sources */,
@@ -3669,7 +3659,6 @@
 				29FC5A6920403011008E88C8 /* ThemeService.swift in Sources */,
 				29255E491F3E1B0F0094A3E3 /* ToastView.swift in Sources */,
 				290C3017206A963D0066AF5B /* MainMenuViewController.swift in Sources */,
-				29DC5AC020A1B81C00993400 /* CALayer-Extensions.swift in Sources */,
 				D9BB45611E71CD850002AE2E /* DailyTableViewCell.swift in Sources */,
 				291448882088F3F700F3A6B5 /* NSAttributedString.swift in Sources */,
 				29AAA15D1F2A3AA600029737 /* GradientView.swift in Sources */,
@@ -3894,7 +3883,6 @@
 				D96BFC4F1E191D7200266EEF /* UIAlertController-Extensions.swift in Sources */,
 				29144896208A270800F3A6B5 /* AvatarDetailViewController.swift in Sources */,
 				49DCECE81F9A843E00982E99 /* MultiModelTableViewController.swift in Sources */,
-				29A77B1F22EED4CE00FE41E4 /* NetworkIndicatorController.swift in Sources */,
 				293282181F39E1A400D42961 /* WelcomeViewController.swift in Sources */,
 				2931150622D745A700E4A9E3 /* AchievementsViewDataSource.swift in Sources */,
 				29144876208648D500F3A6B5 /* EquipmentOverviewViewController.swift in Sources */,
@@ -4199,7 +4187,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4229,7 +4217,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4376,7 +4364,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4417,7 +4405,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4461,7 +4449,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4499,7 +4487,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4550,7 +4538,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4580,7 +4568,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4727,7 +4715,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4768,7 +4756,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4812,7 +4800,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4850,7 +4838,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4880,7 +4868,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4913,7 +4901,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4950,7 +4938,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4997,7 +4985,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -5037,7 +5025,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -5079,7 +5067,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -5119,7 +5107,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -5163,7 +5151,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -5371,7 +5359,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -5427,7 +5415,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -5456,7 +5444,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -5524,7 +5512,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 839;
+				CURRENT_PROJECT_VERSION = 841;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

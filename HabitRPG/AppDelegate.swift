@@ -162,7 +162,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         }
         let configuration = URLSessionConfiguration.default
         AuthenticatedCall.defaultConfiguration.urlConfiguration = configuration
-        AuthenticatedCall.indicatorController = IOSNetworkIndicatorController()
         
         let userDefaults = UserDefaults.standard
         for (key, etag) in userDefaults.dictionaryRepresentation().filter({ (key, _) -> Bool in

@@ -74,7 +74,6 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         SwiftyStoreKit.restorePurchases(atomically: false) { results in
             if results.restoreFailedPurchases.isEmpty == false {
                 logger.log("Restore Failed: \(results.restoreFailedPurchases)", level: .error)
-                return
             } else if results.restoredPurchases.isEmpty == false {
                 for purchase in results.restoredPurchases {
                     SwiftyStoreKit.finishTransaction(purchase.transaction)
