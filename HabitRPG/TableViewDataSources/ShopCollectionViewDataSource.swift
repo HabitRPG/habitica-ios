@@ -242,7 +242,6 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         if indexPath.section == 0 && needsGearSection && !hasGearSection() {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyGearCell", for: indexPath)
             (cell.viewWithTag(1) as? UILabel)?.text = L10n.Shops.purchasedAllGear

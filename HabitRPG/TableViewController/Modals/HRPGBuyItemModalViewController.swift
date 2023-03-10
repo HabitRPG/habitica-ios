@@ -15,6 +15,7 @@ import Habitica_Database
 class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @objc var reward: InAppRewardProtocol?
     @objc var shopIdentifier: String?
+    var onInventoryRefresh: (() -> Void)?
     private let inventoryRepository = InventoryRepository()
     private let userRepository = UserRepository()
     private let stableRepository = StableRepository()
@@ -443,7 +444,11 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         var currency = Currency.gold
         var setIdentifier = ""
         var value = 0
-        var successBlock = {}
+        var successBlock = {
+            if let action = self.onInventoryRefresh {
+                action()
+            }
+        }
         var text = ""
         var failureBlock = {[weak self] in
             self?.isPurchasing = false

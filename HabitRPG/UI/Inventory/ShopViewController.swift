@@ -117,6 +117,9 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         let viewController = StoryboardScene.BuyModal.hrpgBuyItemModalViewController.instantiate()
         viewController.reward = item
         viewController.shopIdentifier = shopIdentifier
+        viewController.onInventoryRefresh = {[weak self] in
+            self?.dataSource?.retrieveShopInventory(nil)
+        }
         viewController.modalTransitionStyle = .crossDissolve
         viewController.modalPresentationStyle = .overFullScreen
         viewController.shopViewController = self
