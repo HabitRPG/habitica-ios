@@ -59,6 +59,23 @@ struct BottomSheetMenuSeparator: View {
     }
 }
 
+struct BottomSheetView<Title: View, Content: View>: View, Dismissable {
+    var dismisser: Dismisser = Dismisser()
+    var title: Title
+    let content: Content
+
+    var body: some View {
+        Group {
+            title
+                .font(.headline)
+                .foregroundColor(.primaryTextColor)
+            content
+        }.padding(.horizontal, 24)
+            .padding(.top, 20)
+            .padding(.bottom, 12)
+    }
+}
+
 struct BottomSheetMenu<Title: View, MenuItems: View>: View, Dismissable {
     var dismisser: Dismisser = Dismisser()
     var title: Title
@@ -81,10 +98,7 @@ struct BottomSheetMenu<Title: View, MenuItems: View>: View, Dismissable {
       }
     
     var body: some View {
-        VStack(spacing: 16) {
-            title
-                .font(.headline)
-                .foregroundColor(.primaryTextColor)
+        BottomSheetView(dismisser: dismisser, title: title, content: VStack(spacing: 16) {
                 if let url = iconURL {
                     KFImage(url).frame(width: 70, height: 70)
                 }
@@ -94,12 +108,10 @@ struct BottomSheetMenu<Title: View, MenuItems: View>: View, Dismissable {
                 .animation(.interpolatingSpring(stiffness: 300, damping: 15).delay(0.2), value: isAppeared)
                 .opacity(isAppeared ? 1 : 0)
                 .animation(.easeInOut.delay(0.1), value: isAppeared)
-        }.padding(.horizontal, 24)
-            .padding(.top, 20)
-            .padding(.bottom, 12)
-            .onAppear {
-                isAppeared = true
-            }
+        })
+        .onAppear {
+            isAppeared = true
+        }
     }
 }
 

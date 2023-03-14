@@ -10,6 +10,7 @@ import UIKit
 import Eureka
 import ReactiveSwift
 import Habitica_Models
+import SwiftUI
 
 enum SettingsTags {
     static let myAccount = "myAccount"
