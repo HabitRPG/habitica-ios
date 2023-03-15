@@ -466,6 +466,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 self.dismiss(animated: true, completion: nil)
                 self.userRepository.retrieveInAppRewards().observeCompleted {
                 }
+                if let action = self.onInventoryRefresh {
+                    action()
+                }
             }
         }
         if currency == .hourglass {

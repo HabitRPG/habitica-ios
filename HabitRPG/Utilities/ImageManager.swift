@@ -14,7 +14,8 @@ class ImageManager {
     static let baseURL = "https://habitica-assets.s3.amazonaws.com/mobileApp/images/"
     
     static func buildImageUrl(name: String, extension fileExtension: String = "") -> URL? {
-        return URL(string: "\(baseURL)\(substituteSprite(name: name)).\(getFormat(name: name, format: fileExtension))")
+        let actualName = substituteSprite(name: name)
+        return URL(string: "\(baseURL)\(actualName).\(getFormat(name: actualName, format: fileExtension))")
     }
     
     private static let formatDictionary = [
@@ -83,6 +84,7 @@ class ImageManager {
             case .success(let imageResult):
                 completion(imageResult.image, nil)
             case .failure(let error):
+                logger.log("Error \(error.errorCode) loading \(url))", level: .error)
                 completion(nil, error as NSError)
             }
         }
@@ -101,10 +103,8 @@ class ImageManager {
     }
     
     private static func substituteSprite(name: String) -> String {
-        for (key, value) in substitutions {
-            if let keyString = key as? String, name.contains(keyString) == true {
-                return value as? String ?? name
-            }
+        if let value = substitutions[name] {
+            return (value as? String) ?? name
         }
         return name
     }

@@ -360,6 +360,10 @@
 "settings.disconnect" = "Disconnect";
 "settings.add_password" = "Add Password";
 "settings.manually_restart_day" = "Manually Restart Day";
+"settings.pause_damage" = "Pause Damage";
+"settings.resume_damage" = "Resume Damage";
+"settings.pause_damage_subtitle" = "Damage is currently active. Learn more.";
+"settings.resume_damage_subtitle" = "Damage is currently paused.";
 "theme.default_theme" = "Default";
 "theme.blue" = "Blue";
 "theme.teal" = "Teal";

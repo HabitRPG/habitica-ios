@@ -2101,6 +2101,10 @@ public enum L10n {
     public static var oldPassword: String { return L10n.tr("Mainstrings", "settings.old_password") }
     /// Password
     public static var password: String { return L10n.tr("Mainstrings", "settings.password") }
+    /// Pause Damage
+    public static var pauseDamage: String { return L10n.tr("Mainstrings", "settings.pause_damage") }
+    /// Damage is currently active. Learn more.
+    public static var pauseDamageSubtitle: String { return L10n.tr("Mainstrings", "settings.pause_damage_subtitle") }
     /// Preferences
     public static var preferences: String { return L10n.tr("Mainstrings", "settings.preferences") }
     /// Profile
@@ -2117,6 +2121,10 @@ public enum L10n {
     public static var resetAccount: String { return L10n.tr("Mainstrings", "settings.reset_account") }
     /// WARNING! This resets many parts of your account. This is highly discouraged, but some people find it useful in the beginning after playing with the site for a short time.\n\nYou will lose all your levels, gold, and experience points. All your tasks (except those from challenges) will be deleted permanently and you will lose all of their historical data. You will lose all your equipment but you will be able to buy it all back, including all limited edition equipment or subscriber Mystery items that you already own (you will need to be in the correct class to re-buy class-specific gear). You will keep your current class and your pets and mounts. You might prefer to use an Orb of Rebirth instead, which is a much safer option and which will preserve your tasks and equipment.
     public static var resetAccountDescription: String { return L10n.tr("Mainstrings", "settings.reset_account_description") }
+    /// Resume Damage
+    public static var resumeDamage: String { return L10n.tr("Mainstrings", "settings.resume_damage") }
+    /// Damage is currently paused.
+    public static var resumeDamageSubtitle: String { return L10n.tr("Mainstrings", "settings.resume_damage_subtitle") }
     /// Everywhere
     public static var searchableEverywhere: String { return L10n.tr("Mainstrings", "settings.searchable_everywhere") }
     /// Only Private Spaces

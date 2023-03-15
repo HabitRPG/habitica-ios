@@ -96,6 +96,8 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         if let identifier = shopIdentifier {
             if identifier == "timeTravelersShop" {
                 dataSource = TimeTravelersCollectionViewDataSource(identifier: identifier, delegate: self)
+            } else if identifier == "seasonalShop" {
+                dataSource = SeasonalShopCollectionViewDataSource(identifier: identifier, delegate: self)
             } else {
                 dataSource = ShopCollectionViewDataSource(identifier: identifier, delegate: self)
             }

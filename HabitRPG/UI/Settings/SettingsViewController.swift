@@ -35,6 +35,7 @@ enum SettingsTags {
     static let initialAppScreen = "initialAppScreen"
     static let initialTaskBoard = "initialTaskBoard"
     static let manuallyRestartDay = "manuallyRestartDay"
+    static let pauseDamage = "pauseDamage"
 }
 
 // swiftlint:disable:next type_body_length
@@ -229,6 +230,22 @@ class SettingsViewController: FormViewController, Themeable {
                         cell.detailTextLabel?.textColor = UIColor.red50
                     } else {
                         cell.detailTextLabel?.text = nil
+                    }
+                })
+            }
+        <<< ButtonRow(SettingsTags.pauseDamage) { row in
+            row.cellStyle = .subtitle
+            row.cellUpdate { cell, row in
+                cell.textLabel?.textAlignment = .natural
+                if (cell.textLabel?.text == L10n.Settings.pauseDamage) {
+                    cell.detailTextLabel?.text = L10n.Settings.pauseDamageSubtitle
+                } else {
+                    cell.detailTextLabel?.text = L10n.Settings.resumeDamageSubtitle
+                }
+                cell.detailTextLabel?.textColor = ThemeService.shared.theme.ternaryTextColor
+            }
+                row.onCellSelection({[weak self] (_, _) in
+                    self?.userRepository.sleep().observeCompleted {
                     }
                 })
             }
@@ -689,6 +706,10 @@ class SettingsViewController: FormViewController, Themeable {
         let timeRow = (form.rowBy(tag: SettingsTags.customDayStart) as? PushRow<LabeledFormValue<Int>>)
         timeRow?.value = makeCDSValue(user.preferences?.dayStart ?? 0)
         timeRow?.updateCell()
+        
+        let pauseDamageRow = form.rowBy(tag: SettingsTags.pauseDamage)
+        pauseDamageRow?.title = user.preferences?.sleep == true ? L10n.Settings.resumeDamage : L10n.Settings.pauseDamage
+        pauseDamageRow?.updateCell()
         
         let searchableUsernameRow = (form.rowBy(tag: SettingsTags.searchableUsername) as? AlertRow<LabeledFormValue<Bool>>)
         if user.preferences?.searchableUsername == true {
