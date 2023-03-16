@@ -2163,6 +2163,33 @@ public enum L10n {
       public static var title: String { return L10n.tr("Mainstrings", "settings.email_notifications.title") }
     }
 
+    public enum PauseDamage {
+      /// Bosses will still do damage caused by other Party member’s missed Dailies
+      public static var pauseDamageDescription1: String { return L10n.tr("Mainstrings", "settings.pauseDamage.pause_damage_description1") }
+      /// Daily streaks and Habit counters will only count up while this is on
+      public static var pauseDamageDescription2: String { return L10n.tr("Mainstrings", "settings.pauseDamage.pause_damage_description2") }
+      /// Damage to a boss or found collection items will be stored until you resume damage
+      public static var pauseDamageDescription3: String { return L10n.tr("Mainstrings", "settings.pauseDamage.pause_damage_description3") }
+      /// Your missed Dailies won’t damage you
+      public static var pauseDamageTitle1: String { return L10n.tr("Mainstrings", "settings.pauseDamage.pause_damage_title1") }
+      /// Your streaks and counters will not reset
+      public static var pauseDamageTitle2: String { return L10n.tr("Mainstrings", "settings.pauseDamage.pause_damage_title2") }
+      /// Your Quest progress will stay pending
+      public static var pauseDamageTitle3: String { return L10n.tr("Mainstrings", "settings.pauseDamage.pause_damage_title3") }
+      /// Bosses will also damage Party members for your missed Dailies again
+      public static var resumeDamageDescription1: String { return L10n.tr("Mainstrings", "settings.pauseDamage.resume_damage_description1") }
+      /// Missing a Daily will reset your streak and Habit counters will reset normally
+      public static var resumeDamageDescription2: String { return L10n.tr("Mainstrings", "settings.pauseDamage.resume_damage_description2") }
+      /// Any pending damage or collection items will apply on your next day reset
+      public static var resumeDamageDescription3: String { return L10n.tr("Mainstrings", "settings.pauseDamage.resume_damage_description3") }
+      /// Your missed Dailies will damage you 
+      public static var resumeDamageTitle1: String { return L10n.tr("Mainstrings", "settings.pauseDamage.resume_damage_title1") }
+      /// Your streaks and counters will reset
+      public static var resumeDamageTitle2: String { return L10n.tr("Mainstrings", "settings.pauseDamage.resume_damage_title2") }
+      /// Your Quest progress will apply again
+      public static var resumeDamageTitle3: String { return L10n.tr("Mainstrings", "settings.pauseDamage.resume_damage_title3") }
+    }
+
     public enum PushNotifications {
       /// Gifted Gems
       public static var giftedGems: String { return L10n.tr("Mainstrings", "settings.push_notifications.gifted_gems") }

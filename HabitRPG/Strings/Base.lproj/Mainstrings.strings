@@ -364,6 +364,20 @@
 "settings.resume_damage" = "Resume Damage";
 "settings.pause_damage_subtitle" = "Damage is currently active. Learn more.";
 "settings.resume_damage_subtitle" = "Damage is currently paused.";
+"settings.pauseDamage.pause_damage_title1" = "Your missed Dailies won’t damage you";
+"settings.pauseDamage.pause_damage_description1" = "Bosses will still do damage caused by other Party member’s missed Dailies";
+"settings.pauseDamage.pause_damage_title2" = "Your streaks and counters will not reset";
+"settings.pauseDamage.pause_damage_description2" = "Daily streaks and Habit counters will only count up while this is on";
+"settings.pauseDamage.pause_damage_title3" = "Your Quest progress will stay pending";
+"settings.pauseDamage.pause_damage_description3" = "Damage to a boss or found collection items will be stored until you resume damage";
+
+"settings.pauseDamage.resume_damage_title1" = "Your missed Dailies will damage you ";
+"settings.pauseDamage.resume_damage_description1" = "Bosses will also damage Party members for your missed Dailies again";
+"settings.pauseDamage.resume_damage_title2" = "Your streaks and counters will reset";
+"settings.pauseDamage.resume_damage_description2" = "Missing a Daily will reset your streak and Habit counters will reset normally";
+"settings.pauseDamage.resume_damage_title3" = "Your Quest progress will apply again";
+"settings.pauseDamage.resume_damage_description3" = "Any pending damage or collection items will apply on your next day reset";
+
 "theme.default_theme" = "Default";
 "theme.blue" = "Blue";
 "theme.teal" = "Teal";

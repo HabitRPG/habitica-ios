@@ -940,4 +940,45 @@ class SettingsViewController: FormViewController, Themeable {
         let calendar = Calendar(identifier: Locale.current.calendar.identifier)
         return calendar.date(from: components) ?? Date()
     }
+    
+    private func showPauseDamageSheet() {
+        let theme = ThemeService.shared.theme
+        let isPaused = user?.preferences?.sleep == true
+        let sheet = HostingBottomSheetController(rootView: BottomSheetView(title: Text(isPaused ? L10n.resumeDamage : L10n.pauseDamage), content: VStack(alignment: .leading) {
+            if isPaused {
+                Text(L10n.Settings.PauseDamage.resumeDamageTitle1).foregroundColor(Color(theme.primaryTextColor))
+                    .font(.system(size: 16))
+                Text(L10n.Settings.PauseDamage.resumeDamageDescription1).foregroundColor(Color(theme.secondaryTextColor))
+                    .font(.system(size: 14))
+                Text(L10n.Settings.PauseDamage.resumeDamageTitle2).foregroundColor(Color(theme.primaryTextColor))
+                    .font(.system(size: 16))
+                Text(L10n.Settings.PauseDamage.resumeDamageDescription2).foregroundColor(Color(theme.secondaryTextColor))
+                    .font(.system(size: 14))
+                Text(L10n.Settings.PauseDamage.resumeDamageTitle3).foregroundColor(Color(theme.primaryTextColor))
+                    .font(.system(size: 16))
+                Text(L10n.Settings.PauseDamage.resumeDamageDescription3).foregroundColor(Color(theme.secondaryTextColor))
+                    .font(.system(size: 14))
+                HabiticaButtonUI(label: Text(L10n.resumeDamage), color: .yellow100) {
+                    self.userRepository.sleep().observeCompleted {}
+                }
+            } else {
+                Text(L10n.Settings.PauseDamage.pauseDamageTitle1).foregroundColor(Color(theme.primaryTextColor))
+                    .font(.system(size: 16))
+                Text(L10n.Settings.PauseDamage.pauseDamageDescription1).foregroundColor(Color(theme.secondaryTextColor))
+                    .font(.system(size: 14))
+                Text(L10n.Settings.PauseDamage.pauseDamageTitle2).foregroundColor(Color(theme.primaryTextColor))
+                    .font(.system(size: 16))
+                Text(L10n.Settings.PauseDamage.pauseDamageDescription2).foregroundColor(Color(theme.secondaryTextColor))
+                    .font(.system(size: 14))
+                Text(L10n.Settings.PauseDamage.pauseDamageTitle3).foregroundColor(Color(theme.primaryTextColor))
+                    .font(.system(size: 16))
+                Text(L10n.Settings.PauseDamage.pauseDamageDescription3).foregroundColor(Color(theme.secondaryTextColor))
+                    .font(.system(size: 14))
+                HabiticaButtonUI(label: Text(L10n.resumeDamage), color: .yellow100) {
+                    self.userRepository.sleep().observeCompleted {}
+                }
+            }
+        }))
+        present(sheet, animated: true)
+    }
 }
