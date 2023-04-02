@@ -246,8 +246,7 @@ class SettingsViewController: FormViewController, Themeable {
                 cell.detailTextLabel?.textColor = ThemeService.shared.theme.ternaryTextColor
             }
                 row.onCellSelection({[weak self] (_, _) in
-                    self?.userRepository.sleep().observeCompleted {
-                    }
+                    self?.showPauseDamageSheet()
                 })
             }
             <<< ButtonRow(SettingsTags.changeClass) { row in
@@ -942,43 +941,58 @@ class SettingsViewController: FormViewController, Themeable {
     }
     
     private func showPauseDamageSheet() {
-        let theme = ThemeService.shared.theme
         let isPaused = user?.preferences?.sleep == true
-        let sheet = HostingBottomSheetController(rootView: BottomSheetView(title: Text(isPaused ? L10n.resumeDamage : L10n.pauseDamage), content: VStack(alignment: .leading) {
+        let sheet = HostingBottomSheetController(rootView: PauseDamageView(isPaused: isPaused, tappedButton: {
+            self.userRepository.sleep().observeCompleted {}
+        }))
+        present(sheet, animated: true)
+    }
+}
+
+struct PauseDamageView: View, Dismissable {
+    var dismisser = Dismisser()
+    let isPaused: Bool
+    let tappedButton: (() -> Void)
+    
+    var body: some View {
+        let theme = ThemeService.shared.theme
+
+        BottomSheetView(title: Text(isPaused ? L10n.resumeDamage : L10n.pauseDamage).padding(.bottom, 18), content: VStack(alignment: .leading, spacing: 0) {
             if isPaused {
                 Text(L10n.Settings.PauseDamage.resumeDamageTitle1).foregroundColor(Color(theme.primaryTextColor))
-                    .font(.system(size: 16))
+                    .font(.system(size: 16)).padding(.bottom, 2)
                 Text(L10n.Settings.PauseDamage.resumeDamageDescription1).foregroundColor(Color(theme.secondaryTextColor))
-                    .font(.system(size: 14))
+                    .font(.system(size: 14)).padding(.bottom, 12)
                 Text(L10n.Settings.PauseDamage.resumeDamageTitle2).foregroundColor(Color(theme.primaryTextColor))
-                    .font(.system(size: 16))
+                    .font(.system(size: 16)).padding(.bottom, 2)
                 Text(L10n.Settings.PauseDamage.resumeDamageDescription2).foregroundColor(Color(theme.secondaryTextColor))
-                    .font(.system(size: 14))
+                    .font(.system(size: 14)).padding(.bottom, 12)
                 Text(L10n.Settings.PauseDamage.resumeDamageTitle3).foregroundColor(Color(theme.primaryTextColor))
-                    .font(.system(size: 16))
+                    .font(.system(size: 16)).padding(.bottom, 2)
                 Text(L10n.Settings.PauseDamage.resumeDamageDescription3).foregroundColor(Color(theme.secondaryTextColor))
-                    .font(.system(size: 14))
-                HabiticaButtonUI(label: Text(L10n.resumeDamage), color: .yellow100) {
-                    self.userRepository.sleep().observeCompleted {}
+                    .font(.system(size: 14)).padding(.bottom, 19)
+                HabiticaButtonUI(label: Text(L10n.resumeDamage).foregroundColor(.yellow1), color: .yellow100) {
+                    tappedButton()
+                    dismisser.dismiss?()
                 }
             } else {
                 Text(L10n.Settings.PauseDamage.pauseDamageTitle1).foregroundColor(Color(theme.primaryTextColor))
-                    .font(.system(size: 16))
+                    .font(.system(size: 16)).padding(.bottom, 2)
                 Text(L10n.Settings.PauseDamage.pauseDamageDescription1).foregroundColor(Color(theme.secondaryTextColor))
-                    .font(.system(size: 14))
+                    .font(.system(size: 14)).padding(.bottom, 12)
                 Text(L10n.Settings.PauseDamage.pauseDamageTitle2).foregroundColor(Color(theme.primaryTextColor))
-                    .font(.system(size: 16))
+                    .font(.system(size: 16)).padding(.bottom, 2)
                 Text(L10n.Settings.PauseDamage.pauseDamageDescription2).foregroundColor(Color(theme.secondaryTextColor))
-                    .font(.system(size: 14))
+                    .font(.system(size: 14)).padding(.bottom, 12)
                 Text(L10n.Settings.PauseDamage.pauseDamageTitle3).foregroundColor(Color(theme.primaryTextColor))
-                    .font(.system(size: 16))
+                    .font(.system(size: 16)).padding(.bottom, 2)
                 Text(L10n.Settings.PauseDamage.pauseDamageDescription3).foregroundColor(Color(theme.secondaryTextColor))
-                    .font(.system(size: 14))
-                HabiticaButtonUI(label: Text(L10n.resumeDamage), color: .yellow100) {
-                    self.userRepository.sleep().observeCompleted {}
+                    .font(.system(size: 14)).padding(.bottom, 19)
+                HabiticaButtonUI(label: Text(L10n.pauseDamage).foregroundColor(.yellow1), color: .yellow100) {
+                    tappedButton()
+                    dismisser.dismiss?()
                 }
             }
-        }))
-        present(sheet, animated: true)
+        })
     }
 }

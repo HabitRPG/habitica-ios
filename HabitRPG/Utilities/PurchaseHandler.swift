@@ -314,6 +314,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         if let expirationDate = purchaseItem.subscriptionExpirationDate, expirationDate < Date() {
             userRepository.cancelSubscription().observeCompleted {}
         }
+        Purchases.shared
         wasSubscriptionCancelled = true
     }
     
@@ -323,11 +324,9 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
             switch result {
             case .success(let receipt):
                 let sku = PurchaseHandler.habiticaSubMappingReversed[user.purchased?.subscriptionPlan?.planId ?? ""] ?? ""
-                let verifyResult = SwiftyStoreKit.verifySubscriptions(productIds: Set(PurchaseHandler.subscriptionIdentifiers), inReceipt: receipt)
+                let verifyResult = SwiftyStoreKit.verifySubscriptions(productIds: Set(sku), inReceipt: receipt)
                 switch verifyResult {
                 case .expired(expiryDate: _, items: let items):
-                    self.processItemsForCancellation(items: items, searchedID: searchedID)
-                case .purchased(expiryDate: _, items: let items):
                     self.processItemsForCancellation(items: items, searchedID: searchedID)
                 default:
                     return

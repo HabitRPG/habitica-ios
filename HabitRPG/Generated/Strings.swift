@@ -2184,7 +2184,7 @@ public enum L10n {
       public static var resumeDamageDescription3: String { return L10n.tr("Mainstrings", "settings.pauseDamage.resume_damage_description3") }
       /// Your missed Dailies will damage you 
       public static var resumeDamageTitle1: String { return L10n.tr("Mainstrings", "settings.pauseDamage.resume_damage_title1") }
-      /// Your streaks and counters will reset
+      /// Your streaks and counters can reset
       public static var resumeDamageTitle2: String { return L10n.tr("Mainstrings", "settings.pauseDamage.resume_damage_title2") }
       /// Your Quest progress will apply again
       public static var resumeDamageTitle3: String { return L10n.tr("Mainstrings", "settings.pauseDamage.resume_damage_title3") }

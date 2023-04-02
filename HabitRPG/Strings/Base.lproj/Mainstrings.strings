@@ -373,7 +373,7 @@
 
 "settings.pauseDamage.resume_damage_title1" = "Your missed Dailies will damage you ";
 "settings.pauseDamage.resume_damage_description1" = "Bosses will also damage Party members for your missed Dailies again";
-"settings.pauseDamage.resume_damage_title2" = "Your streaks and counters will reset";
+"settings.pauseDamage.resume_damage_title2" = "Your streaks and counters can reset";
 "settings.pauseDamage.resume_damage_description2" = "Missing a Daily will reset your streak and Habit counters will reset normally";
 "settings.pauseDamage.resume_damage_title3" = "Your Quest progress will apply again";
 "settings.pauseDamage.resume_damage_description3" = "Any pending damage or collection items will apply on your next day reset";
