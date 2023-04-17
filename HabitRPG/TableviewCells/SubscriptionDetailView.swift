@@ -109,7 +109,7 @@ class SubscriptionDetailView: UITableViewCell {
         gemCapPill.text = String(plan.gemCapTotal)
         var months = DateComponents()
         months.month = plan.monthsUntilNextHourglass
-        if let nextDate = Calendar.current.date(byAdding: months, to: Date()) {
+        if plan.isActive && !plan.isGifted, let nextDate = Calendar.current.date(byAdding: months, to: Date()) {
             let formatter = DateFormatter()
             if Calendar.current.compare(nextDate, to: Date(), toGranularity: .year) != .orderedSame {
                 formatter.dateFormat = "MMMM YYYY"
@@ -117,6 +117,8 @@ class SubscriptionDetailView: UITableViewCell {
                 formatter.dateFormat = "MMMM"
             }
             hourGlassCountPill.text = formatter.string(from: nextDate)
+        } else {
+            hourGlassCountPill.text = "--"
         }
 
         setCancelDescription(plan)

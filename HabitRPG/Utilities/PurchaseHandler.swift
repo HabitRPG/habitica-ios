@@ -239,7 +239,11 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         return PurchaseHandler.IAPIdentifiers.contains(identifier)
     }
     
+    private var lastSubscriptionCall: Date?
     func activateSubscription(_ identifier: String, receipt: ReceiptInfo, completion: @escaping (Bool) -> Void) {
+        if let lastCall = lastSubscriptionCall, lastCall.timeIntervalSinceNow > -15 {
+            return
+        }
         if let lastReceipt = receipt["latest_receipt"] as? String {
             userRepository.subscribe(sku: identifier, receipt: lastReceipt).observeResult { (result) in
                 switch result {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="qqo-j0-vAA">
-                        <rect key="frame" x="16" y="11" width="343" height="74"/>
+                        <rect key="frame" x="16" y="11" width="343" height="67"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUI-EY-fp6" customClass="PillView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="335" y="37" width="0.0" height="0.0"/>
+                                <rect key="frame" x="335" y="33.5" width="0.0" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="500" constant="42" id="3HB-gE-e5C"/>
                                     <constraint firstAttribute="height" priority="500" constant="21" id="eWH-wr-hQg"/>
@@ -30,10 +30,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="MSO-HL-HIC">
-                                <rect key="frame" x="8" y="12" width="319" height="50"/>
+                                <rect key="frame" x="8" y="12" width="319" height="43"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Subscription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpY-Fh-gfY">
-                                        <rect key="frame" x="0.0" y="0.0" width="319" height="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="319" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="500" constant="21" id="b1J-WV-a6C"/>
                                         </constraints>
@@ -42,7 +42,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oo1-hg-RlW">
-                                        <rect key="frame" x="0.0" y="21" width="319" height="29"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="319" height="18.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="500" constant="21" id="cka-bB-Yjk"/>
                                         </constraints>
@@ -76,10 +76,10 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="K4a-jL-0Rf">
-                        <rect key="frame" x="16" y="101" width="343" height="49"/>
+                        <rect key="frame" x="16" y="94" width="343" height="52.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Payment method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pre-7I-P8D">
-                                <rect key="frame" x="8" y="16" width="255" height="17"/>
+                                <rect key="frame" x="8" y="16" width="255" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="21" id="MPk-oM-RDO"/>
                                 </constraints>
@@ -88,7 +88,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tN3-sW-rJ8">
-                                <rect key="frame" x="271" y="5.5" width="60" height="38"/>
+                                <rect key="frame" x="271" y="7.5" width="60" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="MyX-rb-gMQ"/>
                                     <constraint firstAttribute="width" constant="60" id="acC-GH-aDI"/>
@@ -107,10 +107,10 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="qHc-g1-oMW">
-                        <rect key="frame" x="16" y="166" width="343" height="140"/>
+                        <rect key="frame" x="16" y="162.5" width="343" height="143.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Current Bonuses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIq-Y7-W8V">
-                                <rect key="frame" x="8" y="12" width="113" height="17"/>
+                                <rect key="frame" x="8" y="12" width="133.5" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="21" id="ntd-tx-i2g"/>
                                 </constraints>
@@ -119,7 +119,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="dE1-Dt-Y1B">
-                                <rect key="frame" x="8" y="29" width="327" height="29"/>
+                                <rect key="frame" x="8" y="32.5" width="327" height="29"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Months subscribed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yh5-nl-ZNE">
                                         <rect key="frame" x="0.0" y="4" width="319" height="21"/>
@@ -159,7 +159,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="J8e-ql-IBs">
-                                <rect key="frame" x="8" y="66" width="327" height="29"/>
+                                <rect key="frame" x="8" y="69.5" width="327" height="29"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Months gem cap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVA-l8-UYK">
                                         <rect key="frame" x="0.0" y="4" width="319" height="21"/>
@@ -199,7 +199,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="9GG-mJ-fXm">
-                                <rect key="frame" x="8" y="103" width="327" height="29"/>
+                                <rect key="frame" x="8" y="106.5" width="327" height="29"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Next Mystic Hourglass" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umo-Eu-qyG">
                                         <rect key="frame" x="0.0" y="4" width="319" height="21"/>
