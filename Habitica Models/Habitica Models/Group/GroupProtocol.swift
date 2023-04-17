@@ -22,11 +22,15 @@ public protocol GroupProtocol: BaseModelProtocol {
     var leaderOnlyChallenges: Bool { get set }
     var quest: QuestStateProtocol? { get set }
     var categories: [GroupCategoryProtocol] { get set }
+    var purchased: PurchasedProtocol? { get set }
 }
 
 public extension GroupProtocol {
-        
     var gemCount: Int {
         return Int(balance * 4.0)
+    }
+    
+    var isGroupPlan: Bool {
+        return purchased?.subscriptionPlan?.customerId != nil
     }
 }

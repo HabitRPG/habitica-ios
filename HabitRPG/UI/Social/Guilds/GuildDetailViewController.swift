@@ -28,7 +28,8 @@ class GuildDetailViewController: GroupDetailViewController {
     @IBOutlet weak var guildLeaderTitleLabel: UILabel!
     @IBOutlet weak var guildChallengesButton: UIButton!
     @IBOutlet weak var guildDescriptionTitleLabel: CollapsibleTitle!
-    @IBOutlet weak var buttonsBackgorundView: UIView!
+    
+    @IBOutlet weak var invitationWrapperView: UIStackView!
     
     let numberFormatter = NumberFormatter()
 
@@ -73,15 +74,16 @@ class GuildDetailViewController: GroupDetailViewController {
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        guildMembersWrapper.backgroundColor = theme.contentBackgroundColor
+        guildMembersWrapper.backgroundColor = theme.windowBackgroundColor
         guildMembersLabel.textColor = theme.primaryTextColor
         guildMembersTitleLabel.textColor = theme.primaryTextColor
-        guildGemWrapper.backgroundColor = theme.contentBackgroundColor
+        guildGemWrapper.backgroundColor = theme.windowBackgroundColor
         guildGemCountLabel.textColor = theme.primaryTextColor
         guildGemTitleLabel.textColor = theme.primaryTextColor
-        buttonsBackgorundView.backgroundColor = theme.contentBackgroundColor
         guildLeaderTitleLabel.textColor = theme.secondaryTextColor
-        guildChallengesButton.backgroundColor = theme.contentBackgroundColor
+        guildChallengesButton.backgroundColor = theme.windowBackgroundColor
+        guildLeaderWrapper.backgroundColor = theme.windowBackgroundColor
+        groupDescriptionStackView?.backgroundColor = theme.windowBackgroundColor
     }
     
     override func populateText() {
@@ -99,6 +101,11 @@ class GuildDetailViewController: GroupDetailViewController {
         guildMembersCrestIcon.image = HabiticaIcons.imageOfGuildCrestMedium(memberCount: CGFloat(group.memberCount))
         guildMembersLabel.text = numberFormatter.string(from: NSNumber(value: group.memberCount))
         guildGemCountLabel.text = numberFormatter.string(from: NSNumber(value: group.gemCount))
+        if group.isGroupPlan {
+            invitationWrapperView.isHidden = true
+        } else {
+            invitationWrapperView.isHidden = false
+        }
     }
     
     @IBAction func guildLeaderMessageButtonTapped(_ sender: Any) {

@@ -50,7 +50,7 @@ class GroupDetailViewController: BaseUIViewController {
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         groupNameLabel?.textColor = theme.primaryTextColor
-        scrollView?.backgroundColor = theme.windowBackgroundColor
+        scrollView?.backgroundColor = theme.contentBackgroundColor
         groupDescriptionStackView?.applyTheme(theme: theme)
     }
     

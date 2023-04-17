@@ -47,7 +47,6 @@ class NPCBannerView: UIView {
             addSubview(view)
             
             plaqueImageView.image = UIImage(named: "Nameplate")?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 21, bottom: 0, right: 21))
-            
         }
     }
     

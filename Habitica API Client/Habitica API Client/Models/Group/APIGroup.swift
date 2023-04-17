@@ -29,6 +29,7 @@ public class APIGroup: GroupProtocol, Codable {
     public var leaderOnlyChallenges: Bool = false
     public var quest: QuestStateProtocol?
     public var categories: [GroupCategoryProtocol] = []
+    public var purchased: PurchasedProtocol?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -43,6 +44,7 @@ public class APIGroup: GroupProtocol, Codable {
         case leaderOnlyChallenges = "leaderOnly"
         case quest
         case categories
+        case purchased
     }
     
     public required init(from decoder: Decoder) throws {
@@ -65,6 +67,7 @@ public class APIGroup: GroupProtocol, Codable {
         })?.value == true) ?? false
         quest = try? values.decode(APIQuestState.self, forKey: .quest)
         categories = (try? values.decode([APIGroupCategory].self, forKey: .categories)) ?? []
+        purchased = (try? values.decode(APIPurchased.self, forKey: .purchased))
     }
     
     public init(_ group: GroupProtocol) {
@@ -77,6 +80,7 @@ public class APIGroup: GroupProtocol, Codable {
         leaderID = group.leaderID
         leaderOnlyChallenges = group.leaderOnlyChallenges
         categories = group.categories
+        purchased = group.purchased
     }
     
     public func encode(to encoder: Encoder) throws {

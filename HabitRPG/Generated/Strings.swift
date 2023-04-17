@@ -1789,6 +1789,8 @@ public enum L10n {
     public static var customizeAvatar: String { return L10n.tr("Mainstrings", "menu.customize_avatar") }
     /// Purchase Gems
     public static var gems: String { return L10n.tr("Mainstrings", "menu.gems") }
+    /// Groups
+    public static var groupPlans: String { return L10n.tr("Mainstrings", "menu.group_plans") }
     /// Help & FAQ
     public static var helpFaq: String { return L10n.tr("Mainstrings", "menu.help_faq") }
     /// Inventory

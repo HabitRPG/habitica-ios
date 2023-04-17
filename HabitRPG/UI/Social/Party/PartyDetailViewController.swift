@@ -35,8 +35,6 @@ class PartyDetailViewController: GroupDetailViewController {
     @IBOutlet weak var partyQuestView: PartyQuestView!
     @IBOutlet weak var mainStackviewOffset: NSLayoutConstraint!
     @IBOutlet weak var partyChallengesButton: UIButton!
-    @IBOutlet weak var partyChallengesBorder: UIView!
-    @IBOutlet weak var partyChallengesBorderBottom: UIView!
     
     @IBOutlet weak var membersTitleView: CollapsibleTitle!
     @IBOutlet weak var descriptionTitleView: CollapsibleTitle!
@@ -57,10 +55,8 @@ class PartyDetailViewController: GroupDetailViewController {
         let margins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         membersStackview.layoutMargins = margins
         membersStackview.isLayoutMarginsRelativeArrangement = true
-        membersStackview.separatorBetweenItems = true
         questContentStackView.layoutMargins = margins
         questContentStackView.isLayoutMarginsRelativeArrangement = true
-        questContentStackView.separatorBetweenItems = true
         questContentStackView.separatorInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
         questStackViewTitle.insets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         questContentStackView.separatorColor = .clear
@@ -94,9 +90,7 @@ class PartyDetailViewController: GroupDetailViewController {
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        partyChallengesButton.backgroundColor = theme.contentBackgroundColor
-        partyChallengesBorder.backgroundColor = theme.separatorColor
-        partyChallengesBorderBottom.backgroundColor = theme.separatorColor
+        partyChallengesButton.backgroundColor = theme.windowBackgroundColor
         membersStackview.applyTheme(theme: theme)
         questContentStackView.applyTheme(theme: theme)
         questStackView.applyTheme(theme: theme)
@@ -151,6 +145,7 @@ class PartyDetailViewController: GroupDetailViewController {
             self?.present(sheet, animated: true)
         })
         let controller = UIHostingController(rootView: memberListView)
+        controller.view.backgroundColor = .clear
         addChild(controller)
         controller.view.tag = 1000
         membersStackview.addArrangedSubview(controller.view)

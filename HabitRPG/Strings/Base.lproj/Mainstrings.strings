@@ -240,6 +240,7 @@
 "resync" = "Resync";
 "resync_all" = "Resync all";
 "resync_task" = "Resync this task";
+"menu.group_plans" = "Groups";
 "menu.social" = "Social";
 "menu.inventory" = "Inventory";
 "menu.select_class" = "Select Class";

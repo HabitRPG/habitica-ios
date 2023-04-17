@@ -53,6 +53,19 @@ class RealmGroup: BaseModel, GroupProtocol {
         }
     }
     var realmCategories = List<RealmGroupCategory>()
+    @objc dynamic var purchased: PurchasedProtocol? {
+        get {
+            return realmPurchased
+        }
+        set {
+            if let newPurchased = newValue as? RealmPurchased {
+                realmPurchased = newPurchased
+            } else if let newPurchased = newValue {
+                realmPurchased = RealmPurchased(userID: id, protocolObject: newPurchased)
+            }
+        }
+    }
+    @objc dynamic var realmPurchased: RealmPurchased?
 
     override static func primaryKey() -> String {
         return "id"
@@ -76,5 +89,6 @@ class RealmGroup: BaseModel, GroupProtocol {
         leaderOnlyChallenges = groupProtocol.leaderOnlyChallenges
         quest = groupProtocol.quest
         categories = groupProtocol.categories
+        purchased = groupProtocol.purchased
     }
 }

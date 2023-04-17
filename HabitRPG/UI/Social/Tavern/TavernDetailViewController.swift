@@ -100,7 +100,7 @@ class TavernDetailViewController: GroupDetailViewController {
         reportButton.setTitleColor(theme.tintColor, for: .normal)
         innTextView.textColor = theme.secondaryTextColor
         guidelinesTextView.textColor = theme.secondaryTextColor
-        tavernHeaderView.applyTheme(backgroundColor: theme.windowBackgroundColor)
+        tavernHeaderView.applyTheme(backgroundColor: theme.contentBackgroundColor)
     }
     
     override func viewWillAppear(_ animated: Bool) {

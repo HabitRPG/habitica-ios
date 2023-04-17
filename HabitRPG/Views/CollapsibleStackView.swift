@@ -13,8 +13,6 @@ class CollapsibleStackView: SeparatedStackView {
     
     var titleView: CollapsibleTitle?
     
-    private var topBorder: CALayer?
-    private var bottomBorder: CALayer?
     private var titleBottomBorder: CALayer?
     
     @IBInspectable var identifier: String?
@@ -41,7 +39,6 @@ class CollapsibleStackView: SeparatedStackView {
                     subview.alpha = self.isCollapsed ? 0 : 1
                     }, completion: nil)
             }
-            
         }
     }
     
@@ -80,6 +77,7 @@ class CollapsibleStackView: SeparatedStackView {
     
     private func setupView() {
         axis = .vertical
+        cornerRadius = 6
         if arrangedSubviews.isEmpty == false, let subView = arrangedSubviews[0] as? CollapsibleTitle {
             titleView = subView
         } else {
@@ -100,8 +98,6 @@ class CollapsibleStackView: SeparatedStackView {
     override func layoutSublayers(of layer: CALayer) {
         super.layoutSublayers(of: layer)
         
-        topBorder?.frame = CGRect(x: 0, y: 0, width: layer.frame.size.width, height: 1)
-        bottomBorder?.frame = CGRect(x: 0, y: layer.frame.size.height-1, width: layer.frame.size.width, height: 1)
         titleBottomBorder?.frame = CGRect(x: 0, y: (titleView?.layer.frame.size.height ?? 0) - 1, width: layer.frame.size.width, height: 1)
     }
     
@@ -121,11 +117,13 @@ class CollapsibleStackView: SeparatedStackView {
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         let separatorColor = showSeparators ? theme.separatorColor : .clear
-        topBorder = addTopBorderWithColor(color: separatorColor, width: 1)
-        bottomBorder = addBottomBorderWithColor(color: separatorColor, width: 1)
-        titleBottomBorder = addBottomBorderWithColor(color: separatorColor, width: 1)
+        if titleBottomBorder == nil {
+            titleBottomBorder = addBottomBorderWithColor(color: separatorColor, width: 1)
+        } else {
+            titleBottomBorder?.backgroundColor = separatorColor.cgColor
+        }
         
-        backgroundColor = theme.contentBackgroundColor
+        backgroundColor = theme.windowBackgroundColor
         titleView?.textColor = theme.primaryTextColor
         titleView?.subtitleColor = theme.secondaryTextColor
     }

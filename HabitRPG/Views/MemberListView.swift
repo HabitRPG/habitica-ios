@@ -30,7 +30,6 @@ struct MemberListItem: View {
                         } label: {
                             Image(uiImage: Asset.moreInteractionsIcon.image)
                         }
-
                     }
                     HStack {
                         Text("@\(member.username ?? "") · Lvl \(member.stats?.level ?? 0)").font(.subheadline).foregroundColor(.secondary)
@@ -53,7 +52,7 @@ struct MemberListItem: View {
                     }
                 }.frame(maxWidth: .infinity)
             }
-        }.padding(.vertical, 8).background(Color(ThemeService.shared.theme.contentBackgroundColor)).onTapGesture {
+        }.padding(.vertical, 8).background(Color(ThemeService.shared.theme.windowBackgroundColor)).onTapGesture {
             onTap(member)
         }
     }

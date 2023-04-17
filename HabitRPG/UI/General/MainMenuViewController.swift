@@ -116,6 +116,7 @@ class MenuItem {
 struct MenuSection {
     enum Key: String {
         case user
+        case groupPlans
         case inventory
         case shops
         case social
@@ -327,14 +328,33 @@ class MainMenuViewController: BaseTableViewController {
             }
         })
         .start())
+        disposable.inner.add(userRepository.getGroupPlans().on(value: { value in
+            let plans = value.value
+            let index = self.menuSections.firstIndex { searched in
+                searched.key == .groupPlans
+            }
+            var section = self.menuSections[index ?? 1]
+            section.isHidden = plans.isEmpty
+            section.items.removeAll()
+            for plan in plans {
+                section.items.append(MenuItem(key: MenuItem.Key(rawValue: plan.id ?? "") ?? .about, title: plan.name ?? plan.summary ?? "", vcInstantiator: {
+                    let viewController = StoryboardScene.Social.groupTableViewController.instantiate()
+                    viewController.groupID = plan.id
+                    return viewController
+                }))
+            }
+            if let index = index {
+                self.menuSections[index] = section
+                self.tableView.reloadData()
+            }
+        }).start())
         disposable.inner.add(userRepository.getUnreadNotificationCount().on(value: {[weak self] notificationCount in
             if notificationCount > 0 {
                 self?.navbarView.notificationsBadge.text = String(notificationCount)
                 self?.navbarView.notificationsBadge.isHidden = false
             } else {
                 self?.navbarView.notificationsBadge.isHidden = true
-            }
-        }).start())
+            }        }).start())
                 
         disposable.inner.add(contentRepository.getWorldState()
                                 .combineLatest(with: inventoryRepository.getCurrentTimeLimitedItems())
@@ -460,6 +480,8 @@ class MainMenuViewController: BaseTableViewController {
                 menuItem(withKey: .stats),
                 menuItem(withKey: .achievements)
                 ]),
+            MenuSection(key: .groupPlans, title: L10n.Menu.groupPlans, iconAsset: Asset.iconSocial, items: [
+            ]),
             MenuSection(key: .shops, title: L10n.Menu.shops, iconAsset: Asset.iconInventory, items: [
                 menuItem(withKey: .market),
                 menuItem(withKey: .questShop),

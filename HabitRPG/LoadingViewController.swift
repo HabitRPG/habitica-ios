@@ -30,6 +30,9 @@ class LoadingViewController: UIViewController {
             let hasUserData = userRepository?.hasUserData() ?? false
             userRepository?.retrieveUser()
                 .flatMap(.latest, {[weak self] (_) in
+                    return self?.userRepository?.retrieveGroupPlans() ?? Signal.empty
+                })
+                .flatMap(.latest, {[weak self] (_) in
                     return self?.userRepository?.retrieveInboxConversations() ?? Signal.empty
                 })
                 .observeCompleted { [weak self] in
