@@ -165,9 +165,11 @@ class SettingsViewController: FormViewController, Themeable {
         form +++ Section(L10n.Settings.maintenance)
             <<< ButtonRow { row in
                 row.title = L10n.Settings.clearCache
-                row.onCellSelection({[weak self] (_, _) in
-                    self?.contentRepository.clearDatabase()
-                    self?.contentRepository.retrieveContent(force: true).withLatest(from: self?.userRepository.retrieveUser(withTasks: true, forced: true) ?? Signal.empty)
+                row.onCellSelection({ (_, _) in
+                    self.contentRepository.clearDatabase()
+                    self.contentRepository.retrieveContent(force: true)
+                        .combineLatest(with: self.userRepository.retrieveUser(withTasks: true, forced: true))
+                        .flatMap(.latest, { _ in return self.userRepository.retrieveGroupPlans() })
                         .observeCompleted {
                             ToastManager.show(text: L10n.Settings.clearedCache, color: .green, duration: 4.0)
                     }
