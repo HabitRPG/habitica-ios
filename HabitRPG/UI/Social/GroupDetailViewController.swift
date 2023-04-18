@@ -25,7 +25,6 @@ class GroupDetailViewController: BaseUIViewController {
     @IBOutlet weak var groupDescriptionStackView: CollapsibleStackView?
     @IBOutlet weak var groupDescriptionTextView: UITextView?
     @IBOutlet weak var leaveButton: UIButton?
-    @IBOutlet weak var leaveButtonWrapper: UIView?
     
     var leaveInteractor: LeaveGroupInteractor?
     private let (lifetime, token) = Lifetime.make()

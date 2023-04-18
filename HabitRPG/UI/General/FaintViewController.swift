@@ -46,6 +46,11 @@ private class ViewModel: ObservableObject {
     }
 }
 
+extension View {
+    var idiom: UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
+    var isPortrait: Bool { UIDevice.current.orientation.isPortrait }
+}
+
 struct FaintView: View {
     var onDismiss: (() -> Void)
     
@@ -91,18 +96,20 @@ struct FaintView: View {
                 .foregroundColor(.primaryTextColor)
                 .font(.system(size: 20))
                 .multilineTextAlignment(.center)
+                .frame(maxWidth: 380)
                 .padding(.top, 12)
                 .padding(.horizontal, 24)
             Text(L10n.Faint.goodLuckText)
                 .foregroundColor(.primaryTextColor)
                 .font(.system(size: 20))
+                .frame(maxWidth: 380)
                 .multilineTextAlignment(.center)
                 .padding(.top, 12)
                 .padding(.horizontal, 24)
             Spacer()
             HabiticaButtonUI(label: Group {
                 if isReviving {
-                    HStack {
+                    HStack(spacing: 6) {
                         ProgressView().progressViewStyle(CircularProgressViewStyle())
                         Text("Reviving...")
                     }
@@ -118,7 +125,7 @@ struct FaintView: View {
                     .observeResult { _ in
                         onDismiss()
                     }
-            }
+            }.frame(maxWidth: 600)
             Text(L10n.Faint.disclaimer)
                 .foregroundColor(.ternaryTextColor)
                 .font(.system(size: 14))
@@ -126,7 +133,7 @@ struct FaintView: View {
                 .padding(.top, 12)
                 .padding(.horizontal, 16)
         }.padding(.horizontal, 24)
-            .padding(.vertical, 24)
+            .padding(.vertical, idiom == .pad ? 64 : 24)
     }
 }
 

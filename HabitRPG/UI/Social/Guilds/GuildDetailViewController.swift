@@ -34,6 +34,7 @@ class GuildDetailViewController: GroupDetailViewController {
     let numberFormatter = NumberFormatter()
 
     var guildLeaderID: String?
+    private var isGroupPlan = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +53,7 @@ class GuildDetailViewController: GroupDetailViewController {
             return self?.socialRepository.isUserGuildMember(groupID: groupID) ?? SignalProducer.empty
         }).on(value: {[weak self] isMember in
             self?.joinButton.isHidden = isMember
-            self?.leaveButtonWrapper?.isHidden = !isMember
+            self?.leaveButton?.isHidden = !isMember && self?.isGroupPlan != true
         }).start())
         
         disposable.inner.add(groupProperty.producer.skipNil()
@@ -87,12 +88,13 @@ class GuildDetailViewController: GroupDetailViewController {
     }
     
     override func populateText() {
-        guildMembersTitleLabel.text = L10n.Guilds.guildMembers
-        guildGemTitleLabel.text = L10n.Guilds.guildBank
         joinButton.setTitle(L10n.Guilds.joinGuild, for: .normal)
         inviteButton.setTitle(L10n.Guilds.inviteToGuild, for: .normal)
-        guildLeaderTitleLabel.text = L10n.Guilds.guildLeader
-        guildDescriptionTitleLabel.text = L10n.Guilds.guildDescription
+        let typeName = isGroupPlan ? L10n.groupPlan : L10n.Titles.guild
+        guildLeaderTitleLabel.text = L10n.Social.xLeader(typeName)
+        guildDescriptionTitleLabel.text = L10n.Social.xDescription(typeName)
+        guildMembersTitleLabel.text = L10n.Social.xMembers(typeName)
+        guildGemTitleLabel.text = L10n.Social.xBank(typeName)
         guildChallengesButton.setTitle(L10n.Guilds.guildChallenges, for: .normal)
     }
     
@@ -103,9 +105,12 @@ class GuildDetailViewController: GroupDetailViewController {
         guildGemCountLabel.text = numberFormatter.string(from: NSNumber(value: group.gemCount))
         if group.isGroupPlan {
             invitationWrapperView.isHidden = true
+            leaveButton?.isHidden = true
+            isGroupPlan = true
         } else {
             invitationWrapperView.isHidden = false
         }
+        populateText()
     }
     
     @IBAction func guildLeaderMessageButtonTapped(_ sender: Any) {

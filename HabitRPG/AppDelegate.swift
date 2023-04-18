@@ -67,6 +67,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         return true
     }
 
+    
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         if currentAuthorizationFlow?.resumeExternalUserAgentFlow(with: url) == true {
             currentAuthorizationFlow = nil

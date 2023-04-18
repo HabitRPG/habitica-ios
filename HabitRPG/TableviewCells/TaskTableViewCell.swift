@@ -47,10 +47,14 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         gestureRecognizer.delegate = self
         gestureRecognizer.cancelsTouchesInView = false
         titleLabel.addGestureRecognizer(gestureRecognizer)
+        titleLabel.showsVerticalScrollIndicator = false
+        titleLabel.showsHorizontalScrollIndicator = false
         gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openFormTapped))
         gestureRecognizer.delegate = self
         gestureRecognizer.cancelsTouchesInView = false
         subtitleLabel.addGestureRecognizer(gestureRecognizer)
+        subtitleLabel.showsVerticalScrollIndicator = false
+        subtitleLabel.showsHorizontalScrollIndicator = false
         
         titleLabel.delegate = self
         subtitleLabel.delegate = self

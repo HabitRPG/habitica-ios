@@ -1616,16 +1616,8 @@ public enum L10n {
   }
 
   public enum Guilds {
-    /// Guild Bank
-    public static var guildBank: String { return L10n.tr("Mainstrings", "guilds.guild_bank") }
     /// Guild Challenges
     public static var guildChallenges: String { return L10n.tr("Mainstrings", "guilds.guild_challenges") }
-    /// Guild Description
-    public static var guildDescription: String { return L10n.tr("Mainstrings", "guilds.guild_description") }
-    /// Guild Leader
-    public static var guildLeader: String { return L10n.tr("Mainstrings", "guilds.guild_leader") }
-    /// Guild Members
-    public static var guildMembers: String { return L10n.tr("Mainstrings", "guilds.guild_members") }
     /// Invite to Guild
     public static var inviteToGuild: String { return L10n.tr("Mainstrings", "guilds.invite_to_guild") }
     /// Join Guild
@@ -2249,6 +2241,25 @@ public enum L10n {
     /// You used %@
     public static func usedTransformationItem(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "skills.used_transformation_item", p1)
+    }
+  }
+
+  public enum Social {
+    /// %s Bank
+    public static func xBank(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "social.x_bank", p1)
+    }
+    /// %s Description
+    public static func xDescription(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "social.x_description", p1)
+    }
+    /// %s Leader
+    public static func xLeader(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "social.x_leader", p1)
+    }
+    /// %s Members
+    public static func xMembers(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "social.x_members", p1)
     }
   }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -311,10 +311,10 @@
                         <segue destination="hEH-25-nQA" kind="showDetail" identifier="AchievementsSegue" id="ZL6-DZ-Nc4"/>
                         <segue destination="fhb-Uo-Rnv" kind="presentation" identifier="purchaseGemsSegue" id="2vn-wQ-bqg"/>
                         <segue destination="KOH-m5-9hA" kind="presentation" identifier="openGiftSubscriptionDialog" id="FPm-Dv-Zos"/>
-                        <segue destination="s9t-re-NbM" kind="show" identifier="showMarketSegue" id="qTg-hC-uiS"/>
-                        <segue destination="s9t-re-NbM" kind="show" identifier="showQuestShopSegue" id="aPT-Gw-lJZ"/>
-                        <segue destination="s9t-re-NbM" kind="show" identifier="showSeasonalShopSegue" id="QQ7-lc-iLm"/>
-                        <segue destination="s9t-re-NbM" kind="show" identifier="showTimeTravelersSegue" id="GNu-1J-ZVK"/>
+                        <segue destination="s9t-re-NbM" kind="showDetail" identifier="showMarketSegue" id="qTg-hC-uiS"/>
+                        <segue destination="s9t-re-NbM" kind="showDetail" identifier="showQuestShopSegue" id="aPT-Gw-lJZ"/>
+                        <segue destination="s9t-re-NbM" kind="showDetail" identifier="showSeasonalShopSegue" id="QQ7-lc-iLm"/>
+                        <segue destination="s9t-re-NbM" kind="showDetail" identifier="showTimeTravelersSegue" id="GNu-1J-ZVK"/>
                         <segue destination="WTd-tE-eOd" kind="showDetail" identifier="showAdventureGuide" id="gXQ-dZ-OGd"/>
                         <segue destination="x5n-fS-qd9" kind="presentation" identifier="showUserProfileSegue" id="K1h-r2-aQe"/>
                         <segue destination="A14-ZR-jzj" kind="showDetail" identifier="showSupportSegue" id="aRB-2U-UuU"/>
@@ -482,11 +482,11 @@
                         <viewControllerLayoutGuide type="bottom" id="grl-y6-BoW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PSh-Sr-xnO">
-                        <rect key="frame" x="0.0" y="0.0" width="107" height="744"/>
+                        <rect key="frame" x="0.0" y="0.0" width="107" height="791"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fK-nl-DsM">
-                                <rect key="frame" x="0.0" y="56" width="107" height="688"/>
+                                <rect key="frame" x="0.0" y="56" width="107" height="735"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="foh-Y5-euZ">
                                         <rect key="frame" x="0.0" y="0.0" width="107" height="460"/>
@@ -645,7 +645,7 @@
             <objects>
                 <tableViewController id="pMX-Jf-kyX" customClass="NotificationsTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wVG-yt-pY6">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="916"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -1148,7 +1148,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="MountDetailViewController" autoresizesArchivedViewToFullSize="NO" id="LGJ-iF-vTZ" customClass="MountDetailViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="Jyn-1Y-gwc">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="744"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="791"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="Lf1-Aa-zJn">
@@ -1287,7 +1287,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="PetDetailViewController" autoresizesArchivedViewToFullSize="NO" id="OMM-QF-DNw" customClass="PetDetailViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="0NF-w0-Ru8">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="744"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="791"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="HL5-tx-L50">
@@ -1410,7 +1410,7 @@
             <objects>
                 <tableViewController id="cVq-Fh-1Yu" customClass="FeedViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="mJC-fk-DDR">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="744"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="791"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -1660,7 +1660,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="GemPurchaseViewController" id="0F5-C1-rPv" customClass="GemViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" id="CgT-fS-CrK">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="916"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="18" minimumInteritemSpacing="18" id="VJm-WU-tp7">
@@ -1912,7 +1912,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="SubscriptionViewController" id="32f-nw-z2z" customClass="SubscriptionViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="61" sectionHeaderHeight="18" sectionFooterHeight="18" id="uHA-ok-e4Z">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="916"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="2y3-dE-HOI">
@@ -2591,7 +2591,7 @@
             <objects>
                 <tableViewController id="CZc-T4-a1C" customClass="FilterViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ub3-f1-o3K">
-                        <rect key="frame" x="0.0" y="0.0" width="107" height="744"/>
+                        <rect key="frame" x="0.0" y="0.0" width="107" height="791"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -3032,7 +3032,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Zsl-fp-0gc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZSn-9B-UNd">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="916"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lcf-yP-12X">
@@ -3049,7 +3049,7 @@
                                 </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vIw-NX-YTf">
-                                <rect key="frame" x="0.0" y="102" width="428" height="733"/>
+                                <rect key="frame" x="0.0" y="102" width="428" height="814"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJC-jA-n9n">
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="421.66666666666669"/>
@@ -3264,7 +3264,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="GiftSubscriptionViewController" id="fI8-Sl-MPA" customClass="GiftSubscriptionViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="71" sectionHeaderHeight="28" sectionFooterHeight="28" id="YuZ-Eb-iNX">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="916"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="0xr-mh-PES">
@@ -3493,11 +3493,11 @@ a matching subscription automatically after sending your gift.</string>
                         <viewControllerLayoutGuide type="bottom" id="WaS-jq-SUQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Io1-HB-nAL">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="916"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5P-ER-Ol8">
-                                <rect key="frame" x="0.0" y="56" width="428" height="779"/>
+                                <rect key="frame" x="0.0" y="56" width="428" height="860"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="CWi-0Z-cNn">
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="325"/>
@@ -3742,7 +3742,7 @@ a matching subscription automatically after sending your gift.</string>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5h-f0-DhF">
-                                <rect key="frame" x="0.0" y="91" width="428" height="835"/>
+                                <rect key="frame" x="0.0" y="44" width="428" height="882"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -3783,7 +3783,7 @@ a matching subscription automatically after sending your gift.</string>
             <objects>
                 <navigationController storyboardIdentifier="PromoWebNavController" id="anC-LE-PSB" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RNS-zX-Zih">
-                        <rect key="frame" x="0.0" y="47" width="428" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -3802,7 +3802,7 @@ a matching subscription automatically after sending your gift.</string>
         <segue reference="gXN-6g-Ete"/>
         <segue reference="zgD-BU-MQh"/>
         <segue reference="ScC-Xo-JyG"/>
-        <segue reference="iSa-66-Wjc"/>
+        <segue reference="04Z-5H-zfF"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="mRM-bY-AV4"/>
         <segue reference="GNu-1J-ZVK"/>
