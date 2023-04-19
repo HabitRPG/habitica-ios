@@ -91,7 +91,7 @@ public class APINotification: NotificationProtocol, NotificationNewsProtocol, No
             break
         }
         
-        if type.rawValue.contains("ACHIEVEMENT") {
+        if type.rawValue.contains("ACHIEVEMENT") || type == .loginIncentive {
             let data = try? values.decode(APINotificationAchievementData.self, forKey: .data)
             achievementKey = data?.achievement
             achievementMessage = data?.message
