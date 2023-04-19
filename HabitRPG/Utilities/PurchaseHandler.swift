@@ -241,7 +241,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     
     private var lastSubscriptionCall: Date?
     func activateSubscription(_ identifier: String, receipt: ReceiptInfo, completion: @escaping (Bool) -> Void) {
-        if let lastCall = lastSubscriptionCall, lastCall.timeIntervalSinceNow > -15 {
+        if let lastCall = lastSubscriptionCall, lastCall.timeIntervalSinceNow < -15 {
             return
         }
         if let lastReceipt = receipt["latest_receipt"] as? String {
