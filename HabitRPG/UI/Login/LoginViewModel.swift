@@ -382,7 +382,9 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
 
     private let onSuccessfulLoginProperty = MutableProperty(false)
     func onSuccessfulLogin(_ isNewUser: Bool) {
-        userRepository.retrieveUser().observeCompleted {[weak self] in
+        userRepository.retrieveUser()
+            .combineLatest(with: userRepository.retrieveGroupPlans())
+            .observeCompleted {[weak self] in
             self?.loadingIndicatorVisibilityObserver.send(value: false)
             self?.prefillEmailProperty.value = ""
             self?.prefillUsernameProperty.value = ""
