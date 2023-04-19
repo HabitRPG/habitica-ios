@@ -111,19 +111,21 @@ class GroupInvitationView: UIView {
     }
     
     private func setLabel() {
+        var text = ""
         if isPartyInvitation {
             if let inviterName = inviterName {
-                label.text = L10n.Party.invitationInvitername(inviterName)
+                text = L10n.Party.invitationInvitername(inviterName, name ?? "")
             } else {
-                label.text = L10n.Party.invitationNoInvitername
+                text = L10n.Party.invitationNoInvitername(name ?? "")
             }
         } else {
             if let inviterName = inviterName {
-                label.text = L10n.Groups.guildInvitationInvitername(inviterName, name ?? "")
+                text = L10n.Groups.guildInvitationInvitername(inviterName, name ?? "")
             } else {
-                label.text = L10n.Groups.guildInvitationNoInvitername(name ?? "")
+                text = L10n.Groups.guildInvitationNoInvitername(name ?? "")
             }
         }
+        label.text = (try? HabiticaMarkdownHelper.toHabiticaAttributedString(text))?.string
     }
     
     override func layoutSubviews() {
@@ -134,8 +136,14 @@ class GroupInvitationView: UIView {
     private func layout() {
         acceptButton.pin.end(16).vCenter().size(32)
         declineButton.pin.before(of: acceptButton).marginEnd(20).size(32).vCenter()
-        avatarWrapper.pin.start(16).vCenter().size(40)
-        label.pin.after(of: avatarView).before(of: declineButton).marginHorizontal(16).top().bottom()
+        if bounds.width > 300 {
+            avatarWrapper.isHidden = false
+            avatarWrapper.pin.start(16).vCenter().size(40)
+            label.pin.after(of: avatarView).before(of: declineButton).marginHorizontal(16).top().bottom()
+        } else {
+            avatarWrapper.isHidden = true
+            label.pin.start(16).before(of: declineButton).marginHorizontal(16).top().bottom()
+        }
         separatorView.pin.top().horizontally().height(1)
     }
     

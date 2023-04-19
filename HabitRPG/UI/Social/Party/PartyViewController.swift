@@ -61,8 +61,9 @@ class PartyViewController: SplitSocialViewController {
                 } else {
                     self?.scrollView.isHidden = false
                     self?.noPartyContainerView?.isHidden = true
-                    self?.topHeaderCoordinator?.hideHeader = false
-                    self?.topHeaderCoordinator?.showHideHeader(show: true)
+                    let showTabs = !(self?.traitCollection.horizontalSizeClass == .regular && self?.traitCollection.verticalSizeClass == .regular)
+                    self?.topHeaderCoordinator?.hideHeader = !showTabs
+                    self?.topHeaderCoordinator?.showHideHeader(show: showTabs)
                 }
             })
             .on(failed: { error in

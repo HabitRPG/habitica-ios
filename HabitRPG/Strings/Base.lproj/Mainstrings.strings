@@ -508,8 +508,8 @@
 "party.invited_to_quest" = "%@ invited you to participate in a quest";
 "party.quest_number_responded" = "%d/%d Members responded";
 "party.quest_participant_count" = "%d Participants";
-"party.invitation_no_invitername" = "Someone invited you to join their party";
-"party.invitation_invitername" = "%@ invited you to join their party";
+"party.invitation_no_invitername" = "Someone invited you to join the Party **%@**";
+"party.invitation_invitername" = "**@%@** invited you to join the Party **%@**";
 "party.create_party_title" = "Play Habitica in a Party";
 "party.create_party_description" = "Take on quests with friends or on your own. Battle monsters, create Challenges, and help yourself stay accountable through Parties.";
 "party.create_party_button" = "Create a new Party";
@@ -558,8 +558,8 @@
 "quests.unlock_previous_short" = "Finish Quest %d";
 "groups.leader_challenges" = "Only leader can create Challenges";
 "groups.assign_new_leader" = "Assign new Leader";
-"groups.guild_invitation_no_invitername" = "Someone invited you to join Guild: %@";
-"groups.guild_invitation_invitername" = "%@ invited you to join Guild: %@";
+"groups.guild_invitation_no_invitername" = "Someone invited you to join the Guild: **%@**";
+"groups.guild_invitation_invitername" = "**@%@** invited you to join the Guild: **%@**";
 "groups.groups" = "Groups";
 "groups.group" = "Group";
 "groups.group_plan_settings" = "Group Plan Settings";

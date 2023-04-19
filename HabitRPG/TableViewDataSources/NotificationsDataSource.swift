@@ -136,6 +136,11 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
                     self?.dismiss(notification: notification)
                     }
                 }
+                disposable.add(socialRepository.getMember(userID: notif.inviterID ?? "", retrieveIfNotFound: true)
+                    .on(value: { member in
+                        cell.setTitleFor(groupName: notif.groupName ?? "", inviterName: member?.username, isPartyInvitation: notif.isParty)
+                    })
+                    .start())
             }
         case .itemReceived:
             if let cell = cell as? ItemReceivedNotificationCell,  let notif = notification as? NotificationItemReceivedProtocol {

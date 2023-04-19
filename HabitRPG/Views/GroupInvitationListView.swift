@@ -42,7 +42,7 @@ class GroupInvitationListView: UIView {
             }
             if let inviterID = invitation.inviterID {
                 DispatchQueue.main.async {[weak self] in
-                    self?.disposable.add(self?.socialRepository.getMember(userID: inviterID).skipNil().on(value: { member in
+                    self?.disposable.add(self?.socialRepository.getMember(userID: inviterID, retrieveIfNotFound: true).skipNil().on(value: { member in
                         view.set(inviter: member)
                     }).start())
                 }

@@ -17,17 +17,25 @@ class GroupInviteNotificationCell: BaseNotificationCell<NotificationGroupInviteP
         isClosable = false
         
         let groupName = notification.groupName ?? ""
+        setTitleFor(groupName: groupName, inviterName: nil, isPartyInvitation: notification.isParty)
+    }
+    
+    
+    func setTitleFor(groupName: String, inviterName: String?, isPartyInvitation: Bool) {
         var unformattedString = ""
-        if notification.isParty {
-            unformattedString = L10n.Notifications.partyInvite(groupName)
-        } else {
-            if notification.isPublicGuild {
-                unformattedString = L10n.Notifications.publicGuildInvite(groupName)
+        if isPartyInvitation {
+            if let inviterName = inviterName {
+                unformattedString = L10n.Party.invitationInvitername(inviterName, groupName)
             } else {
-                unformattedString = L10n.Notifications.privateGuildInvite(groupName)
+                unformattedString = L10n.Party.invitationNoInvitername(groupName)
+            }
+        } else {
+            if let inviterName = inviterName {
+                unformattedString = L10n.Groups.guildInvitationInvitername(inviterName, groupName)
+            } else {
+                unformattedString = L10n.Groups.guildInvitationNoInvitername(groupName)
             }
         }
         attributedTitle = try? HabiticaMarkdownHelper.toHabiticaAttributedString(unformattedString)
     }
-    
 }

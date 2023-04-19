@@ -1845,12 +1845,14 @@ public enum L10n {
     public static var createPartyDescription: String { return L10n.tr("Mainstrings", "party.create_party_description") }
     /// Play Habitica in a Party
     public static var createPartyTitle: String { return L10n.tr("Mainstrings", "party.create_party_title") }
-    /// %@ invited you to join their party
-    public static func invitationInvitername(_ p1: String) -> String {
-      return L10n.tr("Mainstrings", "party.invitation_invitername", p1)
+    /// %@ invited you to join the Party %@
+    public static func invitationInvitername(_ p1: String, _ p2: String) -> String {
+      return L10n.tr("Mainstrings", "party.invitation_invitername", p1, p2)
     }
-    /// Someone invited you to join their party
-    public static var invitationNoInvitername: String { return L10n.tr("Mainstrings", "party.invitation_no_invitername") }
+    /// Someone invited you to join the Party %@
+    public static func invitationNoInvitername(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "party.invitation_no_invitername", p1)
+    }
     /// %@ invited you to participate in a quest
     public static func invitedToQuest(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "party.invited_to_quest", p1)
