@@ -1588,11 +1588,11 @@ public enum L10n {
     public static var groupPlanSettings: String { return L10n.tr("Mainstrings", "groups.group_plan_settings") }
     /// Groups
     public static var groups: String { return L10n.tr("Mainstrings", "groups.groups") }
-    /// %@ invited you to join Guild: %@
+    /// **@%@** invited you to join the Guild: **%@**
     public static func guildInvitationInvitername(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "groups.guild_invitation_invitername", p1, p2)
     }
-    /// Someone invited you to join Guild: %@
+    /// Someone invited you to join the Guild: **%@**
     public static func guildInvitationNoInvitername(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "groups.guild_invitation_no_invitername", p1)
     }
@@ -1845,11 +1845,11 @@ public enum L10n {
     public static var createPartyDescription: String { return L10n.tr("Mainstrings", "party.create_party_description") }
     /// Play Habitica in a Party
     public static var createPartyTitle: String { return L10n.tr("Mainstrings", "party.create_party_title") }
-    /// %@ invited you to join the Party %@
+    /// **@%@** invited you to join the Party **%@**
     public static func invitationInvitername(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "party.invitation_invitername", p1, p2)
     }
-    /// Someone invited you to join the Party %@
+    /// Someone invited you to join the Party **%@**
     public static func invitationNoInvitername(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "party.invitation_no_invitername", p1)
     }

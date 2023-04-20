@@ -108,7 +108,6 @@ class SettingsViewController: FormViewController, Themeable {
     }
     
     private func handleGroupPlans() {
-        disposable.inner.add(userRepository.retrieveGroupPlans().observeCompleted {})
         disposable.inner.add(userRepository.getGroupPlans().on(value: {[weak self] plans in
             if plans.value.isEmpty {
                 self?.groupPlanSection.hidden = Condition(booleanLiteral: true)
@@ -120,7 +119,9 @@ class SettingsViewController: FormViewController, Themeable {
                         section <<< SwitchRow { row in
                             row.title = L10n.Groups.copySharedTasks
                             row.cellStyle = UITableViewCell.CellStyle.subtitle
-                            row.value = self?.user?.preferences?.tasks?.mirrorGroupTasks?.contains(plan.id ?? "") == true
+                            if (self?.user?.isValid == true) {
+                                row.value = self?.user?.preferences?.tasks?.mirrorGroupTasks?.contains(plan.id ?? "") == true
+                            }
                             row.updateCell()
                         }.cellUpdate({ cell, _ in
                             cell.detailTextLabel?.text = plan.name

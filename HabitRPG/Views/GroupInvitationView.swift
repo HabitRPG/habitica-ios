@@ -62,6 +62,7 @@ class GroupInvitationView: UIView {
     }
     
     private var inviterName: String?
+    private var inviterId: String?
     private var name: String?
     private var isPartyInvitation = false
     
@@ -96,6 +97,8 @@ class GroupInvitationView: UIView {
         
         declineButton.addTarget(self, action: #selector(declineInvitation), for: .touchUpInside)
         acceptButton.addTarget(self, action: #selector(acceptInvitation), for: .touchUpInside)
+        
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTap)))
     }
     
     func set(invitation: GroupInvitationProtocol) {
@@ -105,7 +108,8 @@ class GroupInvitationView: UIView {
     }
     
     func set(inviter: MemberProtocol) {
-        inviterName = inviter.profile?.name
+        inviterName = inviter.username
+        inviterId = inviter.id
         setLabel()
         avatarView.avatar = AvatarViewModel(avatar: inviter)
     }
@@ -159,5 +163,10 @@ class GroupInvitationView: UIView {
         if let action = responseAction {
             action(true)
         }
+    }
+    
+    @objc
+    private func onTap() {
+        RouterHandler.shared.handle(urlString: "/profile/\(inviterId ?? "")")
     }
 }

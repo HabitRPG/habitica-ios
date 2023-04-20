@@ -186,14 +186,8 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
         switch notification.type {
         case .groupInvite:
             if let notif = notification as? NotificationGroupInviteProtocol {
-                if notif.isParty {
-                    url = "/party"
-                } else {
-                    if !notif.isPublicGuild {
-                        return
-                    }
-                    url = "/groups/guild/\(notif.groupID ?? "")"
-                }
+                url = "/profile/\(notif.inviterID ?? "")"
+
             }
         case .newChatMessage:
             if let notif = notification as? NotificationNewChatProtocol {
