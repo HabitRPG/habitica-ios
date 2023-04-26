@@ -12,6 +12,7 @@ import ReactiveSwift
 
 class AttributePointsViewController: BaseUIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pointsToAllocateLabel: PaddedLabel!
     @IBOutlet weak var pointsToAllocateRightView: UIImageView!
     @IBOutlet weak var pointsToAllocateLeftView: UIImageView!
@@ -78,6 +79,7 @@ class AttributePointsViewController: BaseUIViewController {
     var interactor = CalculateUserStatsInteractor()
     private let (lifetime, token) = Lifetime.make()
     private let disposable = ScopedDisposable(CompositeDisposable())
+    var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +104,8 @@ class AttributePointsViewController: BaseUIViewController {
         }).start())
         
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
+        
+        setupRefreshControl()
     }
     
     override func populateText() {
@@ -187,6 +191,11 @@ class AttributePointsViewController: BaseUIViewController {
             perceptionStatsView.tintColor = UIColor.purple300
             perceptionTitleLabel.textColor = UIColor.purple300
         }
+    }
+    
+    private func setupRefreshControl() {
+        self.refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        scrollView.addSubview(self.refreshControl)
     }
     
     private func allocate(_ attribute: String) {
@@ -327,6 +336,13 @@ class AttributePointsViewController: BaseUIViewController {
     @objc
     func distributeTaskHelpTapped() {
         showHelpView(L10n.Stats.distributeTasksHelp)
+    }
+    
+    @objc
+    private func refresh() {
+        disposable.inner.add(userRepository.retrieveUser().observeCompleted {
+            self.refreshControl.endRefreshing()
+        })
     }
     
     func showHelpView(_ message: String) {
