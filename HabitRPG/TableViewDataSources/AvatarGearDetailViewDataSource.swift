@@ -123,6 +123,9 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
             headerView.label.text = section.title
             headerView.label.textColor = ThemeService.shared.theme.primaryTextColor
         }
+        if let footerView = view as? CustomizationFooterView {
+            footerView.isHidden = true
+        }
         
         return view
     }

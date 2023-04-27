@@ -399,7 +399,12 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return PurchaseNoRenewSubscriptionCall(identifier: identifier, receipt: receipt, recipient: recipient).objectSignal
     }
     
+    private var lastSubscriptionCall: Date?
     func subscribe(sku: String, receipt: String) -> Signal<UserProtocol?, Never> {
+        if let lastCall = lastSubscriptionCall, lastCall.timeIntervalSinceNow < -15 {
+            return Signal.empty
+        }
+        lastSubscriptionCall = Date()
         return SubscribeCall(sku: sku, receipt: receipt).objectSignal.flatMap(.latest) {[weak self] _ in
             return self?.retrieveUser(withTasks: false, forced: true) ?? Signal.empty
         }

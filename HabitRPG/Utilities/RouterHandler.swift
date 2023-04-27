@@ -117,25 +117,25 @@ class RouterHandler {
         }
         register("/inventory/market") {
             self.displayTab(index: 4)
-            let viewController = StoryboardScene.Shop.initialScene.instantiate()
+            let viewController = StoryboardScene.Shop.shopViewController.instantiate()
             viewController.shopIdentifier = Constants.MarketKey
             self.push(viewController)
         }
         register("/inventory/quests") {
             self.displayTab(index: 4)
-            let viewController = StoryboardScene.Shop.initialScene.instantiate()
+            let viewController = StoryboardScene.Shop.shopViewController.instantiate()
             viewController.shopIdentifier = Constants.QuestShopKey
             self.push(viewController)
         }
         register("/inventory/seasonal") {
             self.displayTab(index: 4)
-            let viewController = StoryboardScene.Shop.initialScene.instantiate()
+            let viewController = StoryboardScene.Shop.shopViewController.instantiate()
             viewController.shopIdentifier = Constants.SeasonalShopKey
             self.push(viewController)
         }
         register("/inventory/time") {
             self.displayTab(index: 4)
-            let viewController = StoryboardScene.Shop.initialScene.instantiate()
+            let viewController = StoryboardScene.Shop.shopViewController.instantiate()
             viewController.shopIdentifier = Constants.TimeTravelersShopKey
             self.push(viewController)
         }

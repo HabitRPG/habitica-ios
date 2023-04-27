@@ -11,8 +11,8 @@ import UIKit
 class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet var leftViewWidthConstraint: NSLayoutConstraint!
-    @IBOutlet var rightViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var leftViewWidthConstraint: NSLayoutConstraint?
+    @IBOutlet weak var rightViewWidthConstraint: NSLayoutConstraint?
     @IBOutlet weak var separatorView: UIView!
     
     private let segmentedWrapper = PaddedView()
@@ -93,12 +93,12 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
         separatorView.isHidden = !showAsSplitView
         scrollView.isScrollEnabled = !showAsSplitView
         topHeaderCoordinator?.hideHeader = showAsSplitView
-        if showAsSplitView {
-            leftViewWidthConstraint = leftViewWidthConstraint.setMultiplier(multiplier: 0.333)
-            rightViewWidthConstraint = rightViewWidthConstraint.setMultiplier(multiplier: 0.666)
-        } else {
-            leftViewWidthConstraint = leftViewWidthConstraint.setMultiplier(multiplier: 1)
-            rightViewWidthConstraint = rightViewWidthConstraint.setMultiplier(multiplier: 1)
+        if showAsSplitView && leftViewWidthConstraint?.multiplier != 0.333 {
+            leftViewWidthConstraint = leftViewWidthConstraint?.setMultiplier(multiplier: 0.333)
+            rightViewWidthConstraint = rightViewWidthConstraint?.setMultiplier(multiplier: 0.666)
+        } else if leftViewWidthConstraint?.multiplier != 1 {
+            leftViewWidthConstraint = leftViewWidthConstraint?.setMultiplier(multiplier: 1)
+            rightViewWidthConstraint = rightViewWidthConstraint?.setMultiplier(multiplier: 1)
         }
         view.layoutIfNeeded()
     }

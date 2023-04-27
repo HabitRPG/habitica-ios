@@ -311,10 +311,10 @@
                         <segue destination="hEH-25-nQA" kind="showDetail" identifier="AchievementsSegue" id="ZL6-DZ-Nc4"/>
                         <segue destination="fhb-Uo-Rnv" kind="presentation" identifier="purchaseGemsSegue" id="2vn-wQ-bqg"/>
                         <segue destination="KOH-m5-9hA" kind="presentation" identifier="openGiftSubscriptionDialog" id="FPm-Dv-Zos"/>
-                        <segue destination="s9t-re-NbM" kind="showDetail" identifier="showMarketSegue" id="qTg-hC-uiS"/>
-                        <segue destination="s9t-re-NbM" kind="showDetail" identifier="showQuestShopSegue" id="aPT-Gw-lJZ"/>
-                        <segue destination="s9t-re-NbM" kind="showDetail" identifier="showSeasonalShopSegue" id="QQ7-lc-iLm"/>
-                        <segue destination="s9t-re-NbM" kind="showDetail" identifier="showTimeTravelersSegue" id="GNu-1J-ZVK"/>
+                        <segue destination="s9t-re-NbM" kind="show" identifier="showMarketSegue" id="qTg-hC-uiS"/>
+                        <segue destination="s9t-re-NbM" kind="show" identifier="showQuestShopSegue" id="aPT-Gw-lJZ"/>
+                        <segue destination="s9t-re-NbM" kind="show" identifier="showSeasonalShopSegue" id="QQ7-lc-iLm"/>
+                        <segue destination="s9t-re-NbM" kind="show" identifier="showTimeTravelersSegue" id="GNu-1J-ZVK"/>
                         <segue destination="WTd-tE-eOd" kind="showDetail" identifier="showAdventureGuide" id="gXQ-dZ-OGd"/>
                         <segue destination="x5n-fS-qd9" kind="presentation" identifier="showUserProfileSegue" id="K1h-r2-aQe"/>
                         <segue destination="A14-ZR-jzj" kind="showDetail" identifier="showSupportSegue" id="aRB-2U-UuU"/>
@@ -462,7 +462,7 @@
             <objects>
                 <navigationController storyboardIdentifier="AdventureGuideNavigationViewController" id="WTd-tE-eOd" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GDi-dP-m8t">
-                        <rect key="frame" x="0.0" y="0.0" width="107" height="56"/>
+                        <rect key="frame" x="0.0" y="47" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -482,33 +482,33 @@
                         <viewControllerLayoutGuide type="bottom" id="grl-y6-BoW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PSh-Sr-xnO">
-                        <rect key="frame" x="0.0" y="0.0" width="107" height="791"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fK-nl-DsM">
-                                <rect key="frame" x="0.0" y="56" width="107" height="735"/>
+                                <rect key="frame" x="0.0" y="91" width="428" height="801"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="foh-Y5-euZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="107" height="460"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="428" height="195.33333333333334"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wYP-zx-dbe">
-                                                <rect key="frame" x="26" y="0.0" width="55" height="500"/>
+                                                <rect key="frame" x="26" y="0.0" width="376" height="235.33333333333334"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adventureGuideArt" translatesAutoresizingMaskIntoConstraints="NO" id="Eax-S2-1ke">
-                                                        <rect key="frame" x="0.0" y="0.0" width="55" height="46"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="376" height="46"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="46" id="xVs-7j-18d"/>
                                                         </constraints>
                                                     </imageView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m7O-ZS-KOh">
-                                                        <rect key="frame" x="0.0" y="54" width="55" height="1"/>
+                                                        <rect key="frame" x="0.0" y="54" width="376" height="1"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="ifP-cD-1sC"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Beginner Objectives" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaN-pI-O3a">
-                                                        <rect key="frame" x="0.0" y="63.000000000000007" width="55" height="20.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="63.000000000000007" width="376" height="20.333333333333336"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="500" constant="22" id="fQn-E8-VM0"/>
                                                         </constraints>
@@ -517,10 +517,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="WUa-Qe-rtA">
-                                                        <rect key="frame" x="0.0" y="91.333333333333343" width="55" height="300.66666666666663"/>
+                                                        <rect key="frame" x="0.0" y="91.333333333333343" width="376" height="36"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Complete these onboarding tasks and you’ll earn 5 Achievements and 100 Gold once you’re done!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXt-8h-VNr">
-                                                                <rect key="frame" x="12" y="0.0" width="31" height="300.66666666666669"/>
+                                                                <rect key="frame" x="12" y="0.0" width="352" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" priority="500" constant="22" id="bej-Uf-maR"/>
                                                                 </constraints>
@@ -538,23 +538,23 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPg-7O-j94">
-                                                        <rect key="frame" x="0.0" y="400" width="55" height="1"/>
+                                                        <rect key="frame" x="0.0" y="135.33333333333337" width="376" height="1"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="V3u-UV-9kz"/>
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="ul9-Fj-GrY">
-                                                        <rect key="frame" x="0.0" y="409" width="55" height="20"/>
+                                                        <rect key="frame" x="0.0" y="144.33333333333337" width="376" height="19.999999999999972"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Your Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGm-VS-bMz">
-                                                                <rect key="frame" x="0.0" y="0.0" width="55" height="20"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGm-VS-bMz">
+                                                                <rect key="frame" x="0.0" y="0.0" width="85" height="20"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANP-hf-wbL">
-                                                                <rect key="frame" x="55" y="0.0" width="0.0" height="20"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANP-hf-wbL">
+                                                                <rect key="frame" x="345" y="0.0" width="31" height="20"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -565,14 +565,14 @@
                                                         </constraints>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hqi-5C-p2F" customClass="ProgressBar" customModule="Habitica" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="437" width="55" height="5"/>
+                                                        <rect key="frame" x="0.0" y="172.33333333333331" width="376" height="5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="5" id="sHS-eo-snW"/>
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eGa-gL-7SD">
-                                                        <rect key="frame" x="0.0" y="450" width="55" height="50"/>
+                                                        <rect key="frame" x="0.0" y="185.33333333333331" width="376" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="500" constant="20" id="pmU-Np-CQZ"/>
                                                         </constraints>
@@ -630,10 +630,10 @@
             </objects>
             <point key="canvasLocation" x="6871" y="927"/>
         </scene>
-        <!--Shop-->
+        <!--ShopViewController-->
         <scene sceneID="aqJ-C4-dAk">
             <objects>
-                <viewControllerPlaceholder storyboardName="Shop" id="s9t-re-NbM" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Shop" referencedIdentifier="ShopViewController" id="s9t-re-NbM" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Doo-ws-W9y"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pz5-my-WUA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3806,7 +3806,7 @@ a matching subscription automatically after sending your gift.</string>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="mRM-bY-AV4"/>
         <segue reference="GNu-1J-ZVK"/>
-        <segue reference="u8W-Xm-nze"/>
+        <segue reference="gXQ-dZ-OGd"/>
         <segue reference="j9F-en-5nH"/>
         <segue reference="dho-1x-ad8"/>
         <segue reference="6tw-63-M3K"/>

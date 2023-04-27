@@ -110,7 +110,7 @@ internal enum StoryboardScene {
   internal enum Shop: StoryboardType {
     internal static let storyboardName = "Shop"
 
-    internal static let initialScene = InitialSceneType<Habitica.ShopViewController>(storyboard: Shop.self)
+    internal static let shopViewController = SceneType<Habitica.ShopViewController>(storyboard: Shop.self, identifier: "ShopViewController")
   }
   internal enum Social: StoryboardType {
     internal static let storyboardName = "Social"
