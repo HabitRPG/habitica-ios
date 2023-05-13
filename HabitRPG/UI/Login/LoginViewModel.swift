@@ -12,6 +12,7 @@ import AppAuth
 import AuthenticationServices
 #if !targetEnvironment(macCatalyst)
 import FirebaseAnalytics
+import Network
 #endif
 
 enum LoginViewAuthType {
@@ -267,7 +268,23 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                    username: authValues.username,
                    password: authValues.password,
                    passwordRepeat: authValues.passwordRepeat) {
-            self.loadingIndicatorVisibilityObserver.send(value: true)
+            let monitor = NWPathMonitor()
+            let queue = DispatchQueue(label: "InternetConnectionMonitor")
+
+            var isReachable = false
+            monitor.start(queue: queue)
+
+            monitor.pathUpdateHandler = { path in
+                if path.status == .satisfied {
+                    isReachable = true
+                } else {
+                    isReachable = false
+                }
+            }
+
+            if isReachable {
+                loadingIndicatorVisibilityObserver.send(value: true)
+            }
             if authValues.authType == .login {
                 userRepository.login(username: authValues.username ?? "", password: authValues.password ?? "")
                     .observeValues { loginResult in
