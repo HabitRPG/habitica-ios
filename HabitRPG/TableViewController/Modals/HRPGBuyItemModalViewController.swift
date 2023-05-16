@@ -10,6 +10,7 @@ import UIKit
 import Habitica_Models
 import ReactiveSwift
 import Habitica_Database
+import Network
 
 // swiftlint:disable:next type_body_length
 class HRPGBuyItemModalViewController: UIViewController, Themeable {
@@ -20,7 +21,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     private let userRepository = UserRepository()
     private let stableRepository = StableRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
-        
+    
     @IBOutlet weak var topContentView: UIView!
     @IBOutlet weak var bottomButtons: UIView!
     
@@ -47,7 +48,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             updateBuyButton()
         }
     }
-
+    
     private var user: UserProtocol? {
         didSet {
             refreshBalances()
@@ -60,7 +61,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             }
         }
     }
-
+    
     private var isPinned: Bool = false {
         didSet {
             if isPinned {
@@ -85,7 +86,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         topContentView.superview?.bringSubviewToFront(topContentView)
         bottomButtons.superview?.bringSubviewToFront(bottomButtons)
         styleViews()
@@ -95,7 +96,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         buyButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buyPressed)))
         let inAppReward = reward
         pinButton.isHidden = inAppReward?.pinType == "armoire" || inAppReward?.pinType == "potion"
-
+        
         ThemeService.shared.addThemeable(themable: self)
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backgroundTapped)))
@@ -114,10 +115,10 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-         super.viewWillDisappear(animated)
-         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-     }
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
     
     func populateText() {
         closeButton.setTitle(L10n.close, for: .normal)
@@ -367,7 +368,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             if reward?.key != "gem" {
                 bulkView.hideGemIcon(isHidden: true)
             }
-
+            
             contentView.addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(bulkView))
             contentView.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[itemView]-0-[bulkView]-20-|", ["itemView": itemView, "bulkView": bulkView]))
         } else {
@@ -376,7 +377,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     }
     
     // MARK: actions
-
+    
     @IBAction func pinPressed() {
         var path = ""
         var pinType = ""
@@ -397,44 +398,64 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     // swiftlint:disable cyclomatic_complexity
     @objc
     func buyPressed() {
-        if reward?.isValid != true {
-            dismiss(animated: true, completion: nil)
-            return
-        }
-        if itemIsLocked() {
-            return
-        }
+        let monitor = NWPathMonitor()
+        let queue = DispatchQueue(label: "InternetConnectionMonitor")
         
-        if reward?.key?.isEmpty == false {
-            var currency = Currency.gold
-            if let currencyString = reward?.currency, let thisCurrency = Currency(rawValue: currencyString) {
-                currency = thisCurrency
+        var internetConnection = false
+        
+        monitor.start(queue: queue)
+        
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                internetConnection = true
             }
-            if !canBuy() {
-                if reward?.key == "gem" {
-                    HRPGBuyItemModalViewController.displayGemCapReachedModal()
-                } else if !canAfford() {
-                    if currency == .hourglass {
-                        HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: user)
-                    } else if currency == .gem {
-                        HRPGBuyItemModalViewController.displayInsufficientGemsModal()
-                    } else {
-                        HRPGBuyItemModalViewController.displayInsufficientGoldModal()
-                    }
-                }
+        }
+        if internetConnection{
+            if reward?.isValid != true {
+                dismiss(animated: true, completion: nil)
                 return
             }
-            remainingPurchaseQuantity { remainingQuantity in
-                if remainingQuantity >= 0 {
-                    if remainingQuantity < self.purchaseQuantity {
-                        self.displayPurchaseConfirmationDialog(quantity: remainingQuantity)
-                        self.dismiss(animated: true, completion: nil)
-                        return
-                    }
-                }
-                self.isPurchasing = true
-                self.buyItem(quantity: self.purchaseQuantity)
+            if itemIsLocked() {
+                return
             }
+            
+            if reward?.key?.isEmpty == false {
+                var currency = Currency.gold
+                if let currencyString = reward?.currency, let thisCurrency = Currency(rawValue: currencyString) {
+                    currency = thisCurrency
+                }
+                if !canBuy() {
+                    if reward?.key == "gem" {
+                        HRPGBuyItemModalViewController.displayGemCapReachedModal()
+                    } else if !canAfford() {
+                        if currency == .hourglass {
+                            HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: user)
+                        } else if currency == .gem {
+                            HRPGBuyItemModalViewController.displayInsufficientGemsModal()
+                        } else {
+                            HRPGBuyItemModalViewController.displayInsufficientGoldModal()
+                        }
+                    }
+                    return
+                }
+                remainingPurchaseQuantity { remainingQuantity in
+                    if remainingQuantity >= 0 {
+                        if remainingQuantity < self.purchaseQuantity {
+                            self.displayPurchaseConfirmationDialog(quantity: remainingQuantity)
+                            self.dismiss(animated: true, completion: nil)
+                            return
+                        }
+                    }
+                    self.isPurchasing = true
+                    self.buyItem(quantity: self.purchaseQuantity)
+                }
+            }
+        } else{
+            HabiticaNetworkErrorHandler.notify(message: DefaultOfflineErrorMessage().message, code: DefaultOfflineErrorMessage().forCode)
+            buyLabel.textColor = .white
+            currencyCountView.textColor = .white
+            buyButton.backgroundColor = ThemeService.shared.theme.dimmedTextColor
+            currencyCountView.state = .normal
         }
     }
     
@@ -474,58 +495,58 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         if currency == .hourglass {
             if purchaseType == "gear" || purchaseType == "mystery_set" {
                 inventoryRepository.purchaseMysterySet(identifier: setIdentifier, text: text)
-                .flatMap(.latest, { _ in
-                    return self.userRepository.retrieveUser()
-                }).observeResult({[weak self] (result) in
-                    switch result {
-                    case .success:
-                        successBlock()
-                    case .failure:
-                        failureBlock()
-                        HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: self?.user)
-                    }
-                })
+                    .flatMap(.latest, { _ in
+                        return self.userRepository.retrieveUser()
+                    }).observeResult({[weak self] (result) in
+                        switch result {
+                        case .success:
+                            successBlock()
+                        case .failure:
+                            failureBlock()
+                            HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: self?.user)
+                        }
+                    })
             } else {
                 inventoryRepository.purchaseHourglassItem(purchaseType: purchaseType, key: key, text: text)
-                .flatMap(.latest, { _ in
-                    return self.userRepository.retrieveUser()
-                }).observeResult({[weak self] (result) in
-                    switch result {
-                    case .success:
-                        successBlock()
-                    case .failure:
-                        failureBlock()
-                        HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: self?.user)
-                    }
-                })
+                    .flatMap(.latest, { _ in
+                        return self.userRepository.retrieveUser()
+                    }).observeResult({[weak self] (result) in
+                        switch result {
+                        case .success:
+                            successBlock()
+                        case .failure:
+                            failureBlock()
+                            HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: self?.user)
+                        }
+                    })
             }
         } else if purchaseType == "fortify" {
             userRepository.reroll().observeResult({ (result) in
-            switch result {
-            case .success:
-                successBlock()
-            case .failure:
-                failureBlock()
-                HRPGBuyItemModalViewController.displayInsufficientGemsModal()
+                switch result {
+                case .success:
+                    successBlock()
+                case .failure:
+                    failureBlock()
+                    HRPGBuyItemModalViewController.displayInsufficientGemsModal()
                 }
             })
         } else if currency == .gem || purchaseType == "gems" {
             inventoryRepository.purchaseItem(purchaseType: purchaseType, key: key, value: value, quantity: quantity, text: text)
-            .flatMap(.latest, { _ in
-                return self.userRepository.retrieveUser()
-            }).observeResult({ (result) in
-            switch result {
-            case .success:
-                successBlock()
-            case .failure:
-                failureBlock()
-                    if key == "gem" {
-                        HRPGBuyItemModalViewController.displayGemCapReachedModal()
-                    } else {
-                        HRPGBuyItemModalViewController.displayInsufficientGemsModal()
+                .flatMap(.latest, { _ in
+                    return self.userRepository.retrieveUser()
+                }).observeResult({ (result) in
+                    switch result {
+                    case .success:
+                        successBlock()
+                    case .failure:
+                        failureBlock()
+                        if key == "gem" {
+                            HRPGBuyItemModalViewController.displayGemCapReachedModal()
+                        } else {
+                            HRPGBuyItemModalViewController.displayInsufficientGemsModal()
+                        }
                     }
-                }
-            })
+                })
         } else {
             if currency == .gold && purchaseType == "quests" {
                 inventoryRepository.purchaseQuest(key: key, text: text)
@@ -533,14 +554,14 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         return self.userRepository.retrieveUser()
                     })
                     .observeResult({ (result) in
-                switch result {
-                case .success:
-                    successBlock()
-                case .failure:
-                    failureBlock()
-                    HRPGBuyItemModalViewController.displayInsufficientGoldModal()
-                    }
-                })
+                        switch result {
+                        case .success:
+                            successBlock()
+                        case .failure:
+                            failureBlock()
+                            HRPGBuyItemModalViewController.displayInsufficientGoldModal()
+                        }
+                    })
             } else if purchaseType == "debuffPotion" {
                 userRepository.useDebuffItem(key: key).observeResult { (result) in
                     switch result {
@@ -549,16 +570,16 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     case .failure:
                         failureBlock()
                         HRPGBuyItemModalViewController.displayInsufficientGoldModal()
-                        }
                     }
+                }
             } else {
                 inventoryRepository.buyObject(key: key, quantity: quantity, price: value, text: text).observeResult({ (result) in
-                switch result {
-                case .success:
-                    successBlock()
-                case .failure:
-                    failureBlock()
-                    HRPGBuyItemModalViewController.displayInsufficientGoldModal()
+                    switch result {
+                    case .success:
+                        successBlock()
+                    case .failure:
+                        failureBlock()
+                        HRPGBuyItemModalViewController.displayInsufficientGoldModal()
                     }
                 })
             }
@@ -704,7 +725,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     ownedCount += 1
                 }
                 return self.stableRepository.getOwnedMounts()
-                }.take(first: 1)
+            }.take(first: 1)
                 .on(completed: {
                     if !shouldWarn {
                         onResult(-1)
@@ -720,11 +741,11 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 .start()
         } else if reward?.purchaseType == "hatchingPotions" {
             stableRepository.getPets(query: "(type == 'premium' || type == 'wacky') && potion == '\(reward?.key ?? "")'").take(first: 1).filter { pets -> Bool in
-            shouldWarn = !pets.value.isEmpty
+                shouldWarn = !pets.value.isEmpty
                 if pets.value.first?.type == "wacky" {
                     hasNoMounts = true
                 }
-            return shouldWarn
+                return shouldWarn
             }.flatMap(.latest) { _ in
                 return self.inventoryRepository.getOwnedItems(userID: nil, itemType: "hatchingPotions")
             }.flatMap(.latest) { potions -> SignalProducer<ReactiveResults<[OwnedPetProtocol]>, ReactiveSwiftRealmError> in
@@ -737,7 +758,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     ownedCount += 1
                 }
                 return self.stableRepository.getOwnedMounts()
-                }.take(first: 1)
+            }.take(first: 1)
                 .on(completed: {
                     if !shouldWarn {
                         onResult(-1)
