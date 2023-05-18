@@ -34,6 +34,11 @@ class ChallengeTableViewCell: UITableViewCell {
         summaryLabel.textColor = ThemeService.shared.theme.secondaryTextColor
         memberCountLabel.textColor = ThemeService.shared.theme.secondaryTextColor
         
+        prizeLabel.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        nameLabel.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        summaryLabel.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        memberCountLabel.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        
         officialBadge.textColor = UIColor.white
         participatingBadge.textColor = UIColor.white
         ownerBadge.textColor = UIColor.white
