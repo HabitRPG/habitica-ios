@@ -10,6 +10,7 @@ import UIKit
 import Realm
 import Habitica_Models
 import MessageUI
+import Network
 
 class AboutViewController: BaseTableViewController, MFMailComposeViewControllerDelegate {
     
@@ -196,7 +197,23 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     
     private func open(url urlString: String) {
         if let url = URL(string: urlString) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            let monitor = NWPathMonitor()
+            let queue = DispatchQueue(label: "InternetConnectionMonitor")
+            
+            monitor.pathUpdateHandler = { path in
+                if path.status == .satisfied {
+                    DispatchQueue.main.async {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                } else {
+                    let defaultOfflineErrorMessage = DefaultOfflineErrorMessage()
+                    DispatchQueue.main.async {
+                        HabiticaNetworkErrorHandler.notify(message: defaultOfflineErrorMessage.message, code: defaultOfflineErrorMessage.forCode)
+                    }
+                }
+            }
+            
+            monitor.start(queue: queue)
         }
     }
     
