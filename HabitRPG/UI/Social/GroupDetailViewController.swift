@@ -71,7 +71,7 @@ class GroupDetailViewController: BaseUIViewController {
     func updateData(group: GroupProtocol) {
         groupNameLabel?.text = group.name
         groupDescriptionTextView?.text = group.groupDescription
-        Down(markdownString: group.groupDescription ?? "").toHabiticaAttributedStringAsync {[weak self] markDownString in
+        Down(markdownString: group.groupDescription?.unicodeEmoji ?? "").toHabiticaAttributedStringAsync {[weak self] markDownString in
             self?.groupDescriptionTextView?.attributedText = markDownString
         }
     }
