@@ -250,8 +250,9 @@ class RealmTask: BaseModel, TaskProtocol {
         
         if tags != nil {
             realmTags.removeAll()
+            var foundTag: RealmTag?
             for tag in taskProtocol.tags {
-                let foundTag = tags?.first(where: { (realmTag) -> Bool in
+                foundTag = tags?.first(where: { (realmTag) -> Bool in
                     return realmTag.id == tag.id
                 })
                 if let foundTag = foundTag {
