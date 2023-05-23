@@ -10,6 +10,17 @@ import Foundation
 
 extension String {
     
+    private static let abbreviationLookup: [Int: String] = [
+        1: "k",
+        2: "m",
+        3: "b",
+        4: "t",
+        5: "p",
+        6: "e",
+        7: "z",
+        8: "s"
+    ]
+    
     func stringWithAbbreviatedNumber(maximumFractionDigits: Int = 2) -> String {
         guard var value = Double(self) else {
             return ""
@@ -23,29 +34,12 @@ extension String {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = maximumFractionDigits
         formatter.numberStyle = .decimal
-        return "\(formatter.string(from: NSNumber(value: value)) ?? "")\(abbreviationFor(counter: counter))"
-    }
-    
-    private func abbreviationFor(counter: Int) -> String {
-        switch counter {
-        case 1:
-            return "k"
-        case 2:
-            return "m"
-        case 3:
-            return "b"
-        case 4:
-            return "t"
-        case 5:
-            return "p"
-        case 6:
-            return "e"
-        case 7:
-            return "z"
-        case 8:
-            return "s"
-        default:
-            return ""
+        let formattedValue = formatter.string(from: NSNumber(value: value)) ?? ""
+        
+        if let abbreviation = String.abbreviationLookup[counter] {
+            return formattedValue + abbreviation
+        } else {
+            return formattedValue
         }
     }
     
