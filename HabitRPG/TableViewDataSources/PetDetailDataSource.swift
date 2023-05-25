@@ -20,9 +20,15 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
     
     private let stableRepsository = StableRepository()
     private let inventoryRepository = InventoryRepository()
+    private let userRepository = UserRepository()
     var types = ["drop", "premium"]
     
     private var ownedItems = [String: OwnedItemProtocol]()
+    private var currentPet: String? {
+        didSet {
+            collectionView?.reloadData()
+        }
+    }
     
     init(searchEggs: Bool, searchKey: String) {
         super.init()
@@ -94,6 +100,13 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
                             self.ownedItems = ownedItems
                             self.collectionView?.reloadData()
                         }).start())
+        disposable.add(userRepository.getUser().map { $0.items?.currentPet }
+            .on(value: {[weak self] pet in
+                if self?.currentPet != pet {
+                    self?.currentPet = pet
+                }
+            })
+            .start())
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -111,7 +124,7 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
                 cell?.viewWithTag(2)?.tintColor = ThemeService.shared.theme.tintColor
             } else {
                 cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-                (cell as? PetDetailCell)?.configure(petItem: petItem)
+                (cell as? PetDetailCell)?.configure(petItem: petItem, currentPet: currentPet)
             }
         }
         

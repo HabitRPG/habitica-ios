@@ -14,7 +14,7 @@ class PetDetailCell: UICollectionViewCell {
     @IBOutlet weak var imageView: NetworkImageView!
     @IBOutlet weak var progressView: UIProgressView!
     
-    func configure(petItem: PetStableItem) {
+    func configure(petItem: PetStableItem, currentPet: String?) {
         backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         let percentage = Float(petItem.trained) / 50.0
         if let key = petItem.pet?.key {

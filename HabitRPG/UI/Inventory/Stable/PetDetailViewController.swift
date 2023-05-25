@@ -57,7 +57,7 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
                 }
             }
             if stableItem.trained > 0 {
-                BottomSheetMenuitem(title: L10n.equip) {[weak self] in
+                BottomSheetMenuitem(title: user?.items?.currentPet == stableItem.pet?.key ? L10n.unequip : L10n.equip) {[weak self] in
                     self?.inventoryRepository.equip(type: "pet", key: stableItem.pet?.key ?? "").observeCompleted {}
                 }
             }
