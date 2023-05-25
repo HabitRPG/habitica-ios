@@ -17,7 +17,6 @@
 
 import Intents
 
-
 class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookItemsIntentHandling {
     
     override func handler(for intent: INIntent) -> Any {

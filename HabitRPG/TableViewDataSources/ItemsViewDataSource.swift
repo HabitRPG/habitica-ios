@@ -180,14 +180,10 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
     }
     
     func canHatch(_ firstItem: ItemProtocol, otherItem: ItemProtocol) -> Bool {
-        if let egg = firstItem as? EggProtocol, let potion = otherItem as? HatchingPotionProtocol {
-            if ownedPets.contains("\(egg.key ?? "")-\(potion.key ?? "")") {
-                return false
-            }
-        } else if let egg = otherItem as? EggProtocol, let potion = firstItem as? HatchingPotionProtocol {
-            if ownedPets.contains("\(egg.key ?? "")-\(potion.key ?? "")") {
-                return false
-            }
+        guard let egg = firstItem as? EggProtocol ?? otherItem as? EggProtocol else { return false }
+        guard let potion = firstItem as? HatchingPotionProtocol ?? otherItem as? HatchingPotionProtocol else { return false }
+        if ownedPets.contains("\(egg.key ?? "")-\(potion.key ?? "")") || (egg.key == "Gryphon" && potion.key == "RoyalPurple") {
+            return false
         }
         if let egg = firstItem as? EggProtocol, let potion = otherItem as? HatchingPotionProtocol {
             return pets.contains("\(egg.key ?? "")-\(potion.key ?? "")")
