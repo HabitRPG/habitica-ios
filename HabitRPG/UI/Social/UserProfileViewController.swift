@@ -43,6 +43,18 @@ class UserProfileViewController: BaseTableViewController {
     private var gearDictionary: [String: GearProtocol] = [:]
     private var isAttributesExpanded = true
     
+    private var user: UserProtocol? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    private var isBlocked: Bool {
+        get {
+            return user?.inbox?.blocks.contains(userID ?? "") == true
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator?.hideHeader = true
@@ -91,6 +103,11 @@ class UserProfileViewController: BaseTableViewController {
             }).start())
         }
         
+        disposable.inner.add( userRepository.getUser().take(first: 1).on(
+            value: {[weak self] user in
+                self?.user = user
+            }).start())
+        
         if needsDoneButton {
             navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped))
         }
@@ -114,12 +131,21 @@ class UserProfileViewController: BaseTableViewController {
         if member == nil {
             return 0
         } else {
+            if isBlocked {
+                return 5
+            }
             return 4
         }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
+        var actualSection = section
+        if isBlocked && actualSection > 0 {
+            actualSection -= 1
+        } else if isBlocked && actualSection == 0 {
+            return nil
+        }
+        switch actualSection {
         case 0:
             return member?.contributor?.text
         case 1:
@@ -132,6 +158,12 @@ class UserProfileViewController: BaseTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var actualSection = section
+        if isBlocked && actualSection > 0 {
+            actualSection -= 1
+        } else if isBlocked && actualSection == 0 {
+            return 1
+        }
         switch section {
         case 0:
             if isModerator {
@@ -151,10 +183,19 @@ class UserProfileViewController: BaseTableViewController {
         }
     }
     
-    // swiftlint:disable:next cyclomatic_complexity
+    // swiftlint:disable:next cyclomatic_complexity function_body_length
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cellname = "Cell"
-        switch indexPath.section {
+        var section = indexPath.section
+        if isBlocked && section > 0 {
+            section -= 1
+        } else if isBlocked && section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BlockedCell", for: indexPath)
+            cell.contentView.backgroundColor = ThemeService.shared.theme.errorColor
+            cell.textLabel?.textColor = .white
+            return cell
+        }
+        switch section {
         case 0:
             switch indexPath.item {
             case 0:
@@ -182,7 +223,7 @@ class UserProfileViewController: BaseTableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellname, for: indexPath)
         cell.detailTextLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-        switch indexPath.section {
+        switch section {
         case 0:
             switch indexPath.item {
             case 0:
@@ -215,7 +256,7 @@ class UserProfileViewController: BaseTableViewController {
                 cell.textLabel?.text = "Status"
                 var entries = [String]()
                 if member?.authentication?.blocked == true {
-                    entries.append("Blocked")
+                    entries.append("Banned")
                 }
                 if member?.flags?.chatShadowMuted == true {
                     entries.append("Shadow Muted")
@@ -253,6 +294,10 @@ class UserProfileViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        var section = indexPath.section
+        if isBlocked && section > 0 {
+            section -= 1
+        }
         if indexPath.section == 0 {
             if indexPath.item == 1 || indexPath.item == 2 {
                 let cell = tableView.cellForRow(at: indexPath)
@@ -494,59 +539,57 @@ class UserProfileViewController: BaseTableViewController {
                }
     }
     @IBAction func showOverflowMenu(_ sender: Any) {
-        userRepository.getUser().take(first: 1).on(
-            value: {[weak self] user in
-                let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(menuItems: {
-                        if user.id != self?.userID {
-                            if user.inbox?.blocks.contains(self?.userID ?? "") == true {
-                                BottomSheetMenuitem(title: L10n.unblockUser, style: .destructive) {
-                                    self?.socialRepository.blockMember(userID: self?.userID ?? self?.username ?? "").observeCompleted {
-                                        ToastManager.show(text: L10n.userWasUnblocked(self?.username ?? ""), color: .red)
-                                    }
-                                }
-                            } else {
-                                BottomSheetMenuitem(title: L10n.block, style: .destructive) {
-                                    self?.showBlockDialog()
-                                }
+        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(menuItems: {
+                if user?.id != userID {
+                    if isBlocked {
+                        BottomSheetMenuitem(title: L10n.unblockUser, style: .destructive) {[weak self] in
+                            self?.socialRepository.blockMember(userID: self?.userID ?? self?.username ?? "").observeCompleted {
+                                ToastManager.show(text: L10n.userWasUnblocked(self?.username ?? ""), color: .red)
                             }
                         }
-                    BottomSheetMenuitem(title: L10n.giftGems) {[weak self] in
-                        self?.perform(segue: StoryboardSegue.Social.giftGemsSegue)
-                    }
-                    BottomSheetMenuitem(title: L10n.giftSubscription) {[weak self] in
-                        self?.perform(segue: StoryboardSegue.Social.giftSubscriptionSegue)
-                    }
-                    if user.hasPermission(.userSupport) {
-                        BottomSheetMenuSeparator()
-                        BottomSheetMenuitem(title: self?.member?.authentication?.blocked == true ? L10n.unbanUser : L10n.banUser, style: .destructive) {[weak self] in
-                            self?.showBanDialog()
-                        }
-                        
-                        BottomSheetMenuitem(title: self?.member?.flags?.chatShadowMuted == true ? L10n.unshadowMuteUser : L10n.shadowMuteUser, style: .destructive) {[weak self] in
-                            self?.showShadowMuteDialog()
-                        }
-                        
-                        BottomSheetMenuitem(title: self?.member?.flags?.chatRevoked == true ? L10n.unmuteUser : L10n.muteUser, style: .destructive) {[weak self] in
-                            self?.showMuteDialog()
+                    } else {
+                        BottomSheetMenuitem(title: L10n.block, style: .destructive) {[weak self] in
+                            self?.showBlockDialog()
                         }
                     }
-                }))
-                self?.present(sheet, animated: true)
-        }
-        ).start()
+                }
+            BottomSheetMenuitem(title: L10n.giftGems) {[weak self] in
+                self?.perform(segue: StoryboardSegue.Social.giftGemsSegue)
+            }
+            BottomSheetMenuitem(title: L10n.giftSubscription) {[weak self] in
+                self?.perform(segue: StoryboardSegue.Social.giftSubscriptionSegue)
+            }
+            if user?.hasPermission(.userSupport) == true {
+                BottomSheetMenuSeparator()
+                BottomSheetMenuitem(title: member?.authentication?.blocked == true ? L10n.unbanUser : L10n.banUser, style: .destructive) {[weak self] in
+                    self?.showBanDialog()
+                }
+                
+                BottomSheetMenuitem(title: member?.flags?.chatShadowMuted == true ? L10n.unshadowMuteUser : L10n.shadowMuteUser, style: .destructive) {[weak self] in
+                    self?.showShadowMuteDialog()
+                }
+                
+                BottomSheetMenuitem(title: member?.flags?.chatRevoked == true ? L10n.unmuteUser : L10n.muteUser, style: .destructive) {[weak self] in
+                    self?.showMuteDialog()
+                }
+            }
+        }))
+        present(sheet, animated: true)
     }
     
     private func showBlockDialog() {
         let alert = HabiticaAlertController(title: L10n.blockUsername(username ?? member?.profile?.name ?? userID ?? ""), message: L10n.blockDescription)
+        let confirmationText = L10n.userWasBlocked(username ?? "")
         alert.addAction(title: L10n.block, style: .destructive, isMainAction: true) {[weak self] _ in
             self?.socialRepository.blockMember(userID: self?.userID ?? self?.username ?? "").observeCompleted {
-                ToastManager.show(text: L10n.userWasBlocked(self?.username ?? ""), color: .red)
+                ToastManager.show(text: confirmationText, color: .red)
             }
         }
         alert.addCancelAction()
         alert.show()
     }
-        private func showBanDialog() {
+    
+    private func showBanDialog() {
         let isBanned = member?.authentication?.blocked == true
         let alert = HabiticaAlertController(title: isBanned ? L10n.unbanUserConfirm : L10n.banUserConfirm)
         alert.addAction(title: L10n.block, style: .destructive, isMainAction: true) {[weak self] _ in
