@@ -124,7 +124,7 @@ class ToastView: UIView {
     public convenience init(goldDiff: Float, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
         self.init(frame: CGRect.zero)
         accessibilityLabel = "You received "
-        addStatsView(HabiticaIcons.imageOfGold, diff: goldDiff, label: "Gold")
+        addStatsView(HabiticaIcons.imageOfGold, diff: goldDiff, label: L10n.gold)
         options.backgroundColor = background
         loadOptions()
     }
