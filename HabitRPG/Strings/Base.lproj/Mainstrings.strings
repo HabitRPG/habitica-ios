@@ -1056,9 +1056,9 @@
 "adventure_guide_description" = "Complete these onboarding tasks and you’ll earn 5 Achievements and 100 Gold once you’re done!";
 "block" = "Block";
 "block_user" = "Block";
-"unblock_user" = "Un-block";
+"unblock_user" = "Unblock";
 "block_username" = "Block %@?";
-"block_description" = "A blocked user cannot send you Private Messages but you will still see their posts in Tavern or Guilds. This will have no effect if the person is a moderator now or in the future.";
+"block_description" = "A blocked player cannot send you private messages but you will still see their posts.";
 "user_was_blocked" = "You blocked %@.";
 "user_was_unblocked" = "You unblocked %@.";
 "gift_gems" = "Gift Gems";
