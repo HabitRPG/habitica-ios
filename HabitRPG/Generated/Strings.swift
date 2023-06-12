@@ -64,7 +64,7 @@ public enum L10n {
   public static var birthdaySet: String { return L10n.tr("Mainstrings", "birthday_set") }
   /// Block
   public static var block: String { return L10n.tr("Mainstrings", "block") }
-  /// A blocked user cannot send you Private Messages but you will still see their posts in Tavern or Guilds. This will have no effect if the person is a moderator now or in the future.
+  /// A blocked player cannot send you private messages but you will still see their posts.
   public static var blockDescription: String { return L10n.tr("Mainstrings", "block_description") }
   /// Block
   public static var blockUser: String { return L10n.tr("Mainstrings", "block_user") }
@@ -1056,7 +1056,7 @@ public enum L10n {
   public static var unbanUser: String { return L10n.tr("Mainstrings", "unban_user") }
   /// Do you want to unban this user?
   public static var unbanUserConfirm: String { return L10n.tr("Mainstrings", "unban_user_confirm") }
-  /// Un-block
+  /// Unblock
   public static var unblockUser: String { return L10n.tr("Mainstrings", "unblock_user") }
   /// Unequip
   public static var unequip: String { return L10n.tr("Mainstrings", "unequip") }
