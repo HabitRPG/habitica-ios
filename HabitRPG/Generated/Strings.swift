@@ -334,6 +334,8 @@ public enum L10n {
   public static var experienceDescription: String { return L10n.tr("Mainstrings", "experience_description") }
   /// Experience Points
   public static var experiencePoints: String { return L10n.tr("Mainstrings", "experience_points") }
+  /// Failed
+  public static var failed: String { return L10n.tr("Mainstrings", "failed") }
   /// Every Pet has a specific food they enjoy! Experiment to find out which will grow your Pet the fastest
   public static var fedPetDescription: String { return L10n.tr("Mainstrings", "fedPetDescription") }
   /// Fed a Pet
@@ -1576,12 +1578,20 @@ public enum L10n {
   public enum Groups {
     /// Assign new Leader
     public static var assignNewLeader: String { return L10n.tr("Mainstrings", "groups.assign_new_leader") }
+    /// By Invite
+    public static var byInvite: String { return L10n.tr("Mainstrings", "groups.by_invite") }
+    /// Cancel Invite
+    public static var cancelInvite: String { return L10n.tr("Mainstrings", "groups.cancel_invite") }
     /// Copy shared tasks
     public static var copySharedTasks: String { return L10n.tr("Mainstrings", "groups.copy_shared_tasks") }
     /// Show assigned and open tasks on your personal task lists
     public static var copySharedTasksDescription: String { return L10n.tr("Mainstrings", "groups.copy_shared_tasks_description") }
     /// Name may not be empty.
     public static var errorNameRequired: String { return L10n.tr("Mainstrings", "groups.error_name_required") }
+    /// Find Members
+    public static var findMembers: String { return L10n.tr("Mainstrings", "groups.find_members") }
+    /// Find more members
+    public static var findMoreMembers: String { return L10n.tr("Mainstrings", "groups.find_more_members") }
     /// Group
     public static var group: String { return L10n.tr("Mainstrings", "groups.group") }
     /// Group Plan Settings
@@ -1598,10 +1608,16 @@ public enum L10n {
     }
     /// Invite a Member
     public static var inviteMember: String { return L10n.tr("Mainstrings", "groups.invite_member") }
+    /// Invited!
+    public static var invited: String { return L10n.tr("Mainstrings", "groups.invited") }
     /// Only leader can create Challenges
     public static var leaderChallenges: String { return L10n.tr("Mainstrings", "groups.leader_challenges") }
+    /// List
+    public static var list: String { return L10n.tr("Mainstrings", "groups.list") }
     /// Members
     public static var members: String { return L10n.tr("Mainstrings", "groups.members") }
+    /// Send Invite
+    public static var sendInvite: String { return L10n.tr("Mainstrings", "groups.send_invite") }
 
     public enum Invite {
       /// Add an Email
@@ -1612,6 +1628,13 @@ public enum L10n {
       public static var addUsername: String { return L10n.tr("Mainstrings", "groups.invite.add_username") }
       /// Invitation Type
       public static var invitationType: String { return L10n.tr("Mainstrings", "groups.invite.invitation_type") }
+    }
+
+    public enum Lfp {
+      /// Here's a list of players looking to join a Party
+      public static var subtitle: String { return L10n.tr("Mainstrings", "groups.lfp.subtitle") }
+      /// There’s no one looking for a Party right now. You can check back later!
+      public static var subtitleEmpty: String { return L10n.tr("Mainstrings", "groups.lfp.subtitle_empty") }
     }
   }
 

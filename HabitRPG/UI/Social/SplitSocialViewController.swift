@@ -131,11 +131,6 @@ class SplitSocialViewController: HabiticaSplitViewController {
             if let formViewController = destination?.topViewController as? GroupFormViewController {
                 formViewController.groupID = groupID
             }
-        } else if segue.identifier == StoryboardSegue.Social.invitationSegue.rawValue {
-            let destination = segue.destination as? UINavigationController
-            if let invitationViewController = destination?.topViewController as? InviteMembersViewController {
-                invitationViewController.groupID = groupID
-            }
         }
     }
     

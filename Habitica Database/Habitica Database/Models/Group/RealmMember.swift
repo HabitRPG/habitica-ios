@@ -154,6 +154,7 @@ class RealmMember: BaseModel, MemberProtocol {
         }
     }
     @objc dynamic var realmAuthentication: RealmAuthentication?
+    @objc dynamic var loginIncentives: Int = 0
 
     override static func primaryKey() -> String {
         return "id"
@@ -174,5 +175,6 @@ class RealmMember: BaseModel, MemberProtocol {
         party = member.party
         flags = member.flags
         authentication = member.authentication
+        loginIncentives = member.loginIncentives
     }
 }

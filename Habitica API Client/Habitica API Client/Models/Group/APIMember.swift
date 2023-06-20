@@ -20,6 +20,7 @@ public class APIMember: MemberProtocol, Decodable {
     public var party: UserPartyProtocol?
     public var flags: FlagsProtocol?
     public var authentication: AuthenticationProtocol?
+    public var loginIncentives: Int
     public var isValid: Bool { return true }
     public var isManaged: Bool = false
     
@@ -34,6 +35,7 @@ public class APIMember: MemberProtocol, Decodable {
         case backer
         case items
         case party
+        case loginIncentives
         case authentication = "auth"
     }
     
@@ -51,6 +53,7 @@ public class APIMember: MemberProtocol, Decodable {
         items = (try? values.decode(APIMemberItems.self, forKey: .items))
         party = try? values.decode(APIUserParty.self, forKey: .party)
         flags = try? values.decode(APIFlags.self, forKey: .flags)
+        loginIncentives = (try? values.decode(Int.self, forKey: .loginIncentives)) ?? 0
         authentication = try? values.decode(APIAuthentication.self, forKey: .authentication)
     }
 }

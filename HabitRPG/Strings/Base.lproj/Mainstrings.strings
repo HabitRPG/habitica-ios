@@ -530,6 +530,15 @@
 "party.remove_from_party" = "Remove from Party";
 "groups.members" = "Members";
 "groups.invite_member" = "Invite a Member";
+"groups.find_members" = "Find Members";
+"groups.list" = "List";
+"groups.by_invite" = "By Invite";
+"groups.send_invite" = "Send Invite";
+"groups.cancel_invite" = "Cancel Invite";
+"groups.invited" = "Invited!";
+"groups.find_more_members" = "Find more members";
+"groups.lfp.subtitle" = "Here's a list of players looking to join a Party";
+"groups.lfp.subtitle_empty" = "There’s no one looking for a Party right now. You can check back later!";
 "pending_damage" = "Pending damage";
 "pending_items" = "Pending items";
 "quests.boss_battle" = "Boss Battle";
@@ -1220,3 +1229,4 @@
 "x_gems" = "%d Gems";
 "birthday_set" = "Birthday Set";
 "background" = "Background";
+"failed" = "Failed";

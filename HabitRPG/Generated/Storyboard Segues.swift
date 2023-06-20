@@ -79,7 +79,6 @@ internal enum StoryboardSegue {
     case chatSegue = "ChatSegue"
     case formSegue = "FormSegue"
     case guidelinesSegue = "GuidelinesSegue"
-    case invitationSegue = "InvitationSegue"
     case questDetailSegue = "QuestDetailSegue"
     case selectedRecipientSegue = "SelectedRecipientSegue"
     case sendMessageSegue = "SendMessageSegue"
@@ -87,6 +86,7 @@ internal enum StoryboardSegue {
     case userProfileSegue = "UserProfileSegue"
     case writeMessageSegue = "WriteMessageSegue"
     case challengeDetailsSegue
+    case findMembersSegue
     case giftGemsSegue
     case giftSubscriptionSegue
   }

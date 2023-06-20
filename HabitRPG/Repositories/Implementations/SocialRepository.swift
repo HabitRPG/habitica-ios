@@ -88,11 +88,19 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
 
     func retrieveGroupMembers(groupID: String) -> Signal<[MemberProtocol]?, Never> {
-        return RetrieveGroupMembersCall(groupID: groupID).arraySignal.on(value: {[weak self]members in
+        return RetrieveGroupMembersCall(groupID: groupID).arraySignal.on(value: {[weak self] members in
             if let members = members {
                 self?.localRepository.save(members)
             }
         })
+    }
+    
+    func retrieveLookingForParty() -> Signal<[MemberProtocol]?, Never> {
+        return LookingForPartyCall().arraySignal
+    }
+    
+    func retrieveGroupInvites(groupID: String) -> Signal<[MemberProtocol]?, Never> {
+        return RetrieveGroupInvitesCall(groupID: groupID).arraySignal
     }
     
     func markChatAsSeen(groupID: String) -> Signal<EmptyResponseProtocol?, Never> {
