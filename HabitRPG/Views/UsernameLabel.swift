@@ -9,7 +9,6 @@
 import UIKit
 
 class UsernameLabel: UILabel {
-    
     @objc public var contributorLevel: Int = 0 {
         didSet {
             if ThemeService.shared.theme.isDark {

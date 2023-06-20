@@ -41,6 +41,9 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
         
         scrollView.delegate = self
         scrollView.bounces = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.isPagingEnabled = true
         
         ThemeService.shared.addThemeable(themable: self)
     }

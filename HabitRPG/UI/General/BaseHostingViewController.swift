@@ -1,14 +1,15 @@
 //
-//  BaseUIViewController.swift
+//  BaseHostingViewController.swift
 //  Habitica
 //
-//  Created by Phillip Thelen on 06.05.19.
-//  Copyright © 2019 HabitRPG Inc. All rights reserved.
+//  Created by Phillip Thelen on 14.06.23.
+//  Copyright © 2023 HabitRPG Inc. All rights reserved.
 //
 
-import UIKit
+import Foundation
+import SwiftUI
 
-class BaseUIViewController: UIViewController, Themeable, TutorialStepsProtocol {
+class BaseHostingViewController<Content: View>: UIHostingController<Content>, Themeable, TutorialStepsProtocol {
     var displayedTutorialStep: Bool = false
     
     var activeTutorial: TutorialStepView?

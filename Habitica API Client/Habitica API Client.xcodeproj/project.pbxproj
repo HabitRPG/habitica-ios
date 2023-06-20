@@ -232,6 +232,7 @@
 		29C0AEAD291945D20076BC6B /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C0AEAC291945D20076BC6B /* Habitica_Models.framework */; };
 		29C2889229153A8400B361B5 /* CancelSubscribeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C2889129153A8400B361B5 /* CancelSubscribeCall.swift */; };
 		29C38C8124A232A300F219A1 /* APIUserAchievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8024A232A300F219A1 /* APIUserAchievements.swift */; };
+		29CAC3C72A3A0CA6006DF74D /* LookingForPartyCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CAC3C62A3A0CA6006DF74D /* LookingForPartyCall.swift */; };
 		29DBDE4C274CFEC3008F6777 /* SocialDisconnectCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE4B274CFEC3008F6777 /* SocialDisconnectCall.swift */; };
 		29DBDE52274D0126008F6777 /* APISocialAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE51274D0126008F6777 /* APISocialAuthentication.swift */; };
 		29DBFEFD20CADBC900DF9CF2 /* APISpecialItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEFC20CADBC900DF9CF2 /* APISpecialItem.swift */; };
@@ -242,6 +243,7 @@
 		29EBDA7F232910FD006611E3 /* APIInboxConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA7E232910FD006611E3 /* APIInboxConversation.swift */; };
 		29EBDA81232912AF006611E3 /* RetrieveInboxConversationsCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA80232912AF006611E3 /* RetrieveInboxConversationsCall.swift */; };
 		29EBDA85232A8BE0006611E3 /* AppleLoginCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA84232A8BE0006611E3 /* AppleLoginCall.swift */; };
+		29F272A82A40B14100F3B50F /* RetrieveGroupInvitesCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F272A72A40B14100F3B50F /* RetrieveGroupInvitesCall.swift */; };
 		32C6FFEF26ED5DEF00C8F682 /* MovePinnedItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6FFEE26ED5DEF00C8F682 /* MovePinnedItemCall.swift */; };
 		DC2C4A0476068E29973DB0CD /* RetrieveGroupMembersCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C420658EE5D517E37D97D /* RetrieveGroupMembersCall.swift */; };
 /* End PBXBuildFile section */
@@ -483,6 +485,7 @@
 		29C0AEAC291945D20076BC6B /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29C2889129153A8400B361B5 /* CancelSubscribeCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelSubscribeCall.swift; sourceTree = "<group>"; };
 		29C38C8024A232A300F219A1 /* APIUserAchievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserAchievements.swift; sourceTree = "<group>"; };
+		29CAC3C62A3A0CA6006DF74D /* LookingForPartyCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookingForPartyCall.swift; sourceTree = "<group>"; };
 		29DBDE4B274CFEC3008F6777 /* SocialDisconnectCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialDisconnectCall.swift; sourceTree = "<group>"; };
 		29DBDE51274D0126008F6777 /* APISocialAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISocialAuthentication.swift; sourceTree = "<group>"; };
 		29DBFEFC20CADBC900DF9CF2 /* APISpecialItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISpecialItem.swift; sourceTree = "<group>"; };
@@ -493,6 +496,7 @@
 		29EBDA7E232910FD006611E3 /* APIInboxConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIInboxConversation.swift; sourceTree = "<group>"; };
 		29EBDA80232912AF006611E3 /* RetrieveInboxConversationsCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveInboxConversationsCall.swift; sourceTree = "<group>"; };
 		29EBDA84232A8BE0006611E3 /* AppleLoginCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginCall.swift; sourceTree = "<group>"; };
+		29F272A72A40B14100F3B50F /* RetrieveGroupInvitesCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveGroupInvitesCall.swift; sourceTree = "<group>"; };
 		32C6FFEE26ED5DEF00C8F682 /* MovePinnedItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovePinnedItemCall.swift; sourceTree = "<group>"; };
 		DC2C420658EE5D517E37D97D /* RetrieveGroupMembersCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrieveGroupMembersCall.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -685,12 +689,14 @@
 				292F965A206E2AE300804151 /* RetrieveChatCall.swift */,
 				290C3045206D44670066AF5B /* RetrieveGroupCall.swift */,
 				DC2C420658EE5D517E37D97D /* RetrieveGroupMembersCall.swift */,
+				29F272A72A40B14100F3B50F /* RetrieveGroupInvitesCall.swift */,
 				290B623C207267AA007287C4 /* RetrieveGroupsCall.swift */,
 				290B6290207E1E76007287C4 /* RetrieveMemberCall.swift */,
 				296E480921BEBC0600D15E4A /* RetrieveMemberUsernameCall.swift */,
 				295FE2C320A4505B00C97BA4 /* UpdateGroupCall.swift */,
 				297F19D4260E0A2D00385C5C /* LeaveQuestCall.swift */,
 				295EEFF226D4028D005CB813 /* FlagInboxMessageCall.swift */,
+				29CAC3C62A3A0CA6006DF74D /* LookingForPartyCall.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -1107,6 +1113,7 @@
 				290C302E206BD2020066AF5B /* UseSkillCall.swift in Sources */,
 				291448A0208A34D100F3A6B5 /* APICustomizationSet.swift in Sources */,
 				290B6275207BA805007287C4 /* UpdatePasswordCall.swift in Sources */,
+				29CAC3C72A3A0CA6006DF74D /* LookingForPartyCall.swift in Sources */,
 				29027995205836A8006DACB9 /* RetrieveWorldStateCall.swift in Sources */,
 				292F965B206E2AE300804151 /* RetrieveChatCall.swift in Sources */,
 				29323E4720521B5000AC6D6F /* APIContributor.swift in Sources */,
@@ -1180,6 +1187,7 @@
 				2931150C22D747F100E4A9E3 /* APIAchievement.swift in Sources */,
 				29A9B05F22817DBE0049291E /* NetworkErrorHandler.swift in Sources */,
 				295E9DD420B2EA4100D58D45 /* TogglePinnedItemCall.swift in Sources */,
+				29F272A82A40B14100F3B50F /* RetrieveGroupInvitesCall.swift in Sources */,
 				292844EB20DD18380011DC43 /* APIGroupInvitation.swift in Sources */,
 				2931150E22D74ECA00E4A9E3 /* RetrieveAchievements.swift in Sources */,
 				295611012056D20B00D9711A /* APISkill.swift in Sources */,

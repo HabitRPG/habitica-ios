@@ -16,18 +16,33 @@ struct HabiticaButtonUI<Label: View>: View {
         case compact
         case normal
     }
+    enum ButtonType {
+        case solid
+        case bordered
+    }
     let label: Label
     let color: Color
     var size: Size = .normal
+    var type: ButtonType = .solid
     var onTap: (() -> Void)
+    
+    private func getForegroundColor() -> Color {
+        if type == .solid {
+            return color == .white ? Color(UIColor.purple400) : .white
+        } else {
+            return color
+        }
+    }
     var body: some View {
         Button(action: onTap, label: {
             label
-                .foregroundColor(color == .white ? Color(UIColor.purple400) : .white)
-                .font(.system(size: 16, weight: .bold))
-                .frame(height: size == .normal ? 60 : 48)
+                .foregroundColor(getForegroundColor())
+                .font(.headline)
+                .padding(.vertical, 6)
+                .frame(minHeight: size == .normal ? 60 : 40)
                 .frame(maxWidth: .infinity)
-                .background(color)
+                .background(type == .bordered ? Color.clear : color)
+                .overlay(RoundedRectangle(cornerRadius: 8).stroke(color, lineWidth: type == .bordered ? 3 : 0))
                 .cornerRadius(8)
         })
     }

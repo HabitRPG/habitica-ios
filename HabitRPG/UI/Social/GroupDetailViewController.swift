@@ -90,11 +90,6 @@ class GroupDetailViewController: BaseUIViewController {
                 destination?.dataSource.isShowingJoinedChallenges = false
                 destination?.segmentedFilterControl.selectedSegmentIndex = 1
             }
-        } else if segue.identifier == StoryboardSegue.Social.invitationSegue.rawValue {
-            let destination = segue.destination as? UINavigationController
-            if let invitationViewController = destination?.topViewController as? InviteMembersViewController {
-                invitationViewController.groupID = groupID
-            }
         }
     }
 }

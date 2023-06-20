@@ -59,15 +59,41 @@ struct MemberListItem: View {
 }
 
 struct MemberList: View {
-    
     let members: [MemberProtocol]
+    @State var invites: [MemberProtocol]
     let onTap: (MemberProtocol) -> Void
     let onMoreTap: (MemberProtocol) -> Void
+    
+    init(members: [MemberProtocol], invites: [MemberProtocol]?, onTap: @escaping (MemberProtocol) -> Void, onMoreTap: @escaping (MemberProtocol) -> Void) {
+        self.members = members
+        _invites = State(initialValue: invites ?? [])
+        self.onTap = onTap
+        self.onMoreTap = onMoreTap
+    }
+    
+    let socialRepository = SocialRepository()
+    
+    @State var inviteStates = [String: LoadingButtonState]()
     
     var body: some View {
         VStack(alignment: .leading) {
             ForEach(members, id: \.id) { member in
                 MemberListItem(member: member, onTap: onTap, onMoreTap: onMoreTap)
+            }
+            ForEach(invites, id: \.id) { invite in
+                if let id = invite.id {
+                    PartyInviteView(member: invite, inviteButtonState: inviteStates[id] ?? .content, isInvited: true) {
+                        inviteStates[id] = .loading
+                        socialRepository.removeMember(groupID: "party", userID: id).observeCompleted {
+                            invites.removeAll { check in
+                                return check.id == invite.id
+                            }
+                        }
+                    }
+                    .padding(.top, 8)
+                    .padding(.bottom, 12)
+                    .cornerRadius(8)
+                }
             }
         }
     }

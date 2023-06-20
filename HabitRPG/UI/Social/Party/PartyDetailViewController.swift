@@ -10,6 +10,7 @@ import UIKit
 import Habitica_Models
 import ReactiveSwift
 import SwiftUI
+import Habitica_Database
 
 class PartyDetailViewController: GroupDetailViewController {
     
@@ -80,11 +81,11 @@ class PartyDetailViewController: GroupDetailViewController {
             .skipRepeats()
             .observe(on: QueueScheduler.main)
             .flatMap(.latest, {[weak self] groupID in
-            return self?.socialRepository.getGroupMembers(groupID: groupID) ?? SignalProducer.empty
-            }).on(failed: { error in
-                logger.record(error: error)
-            }, value: {[weak self] (members, _) in
-            self?.set(members: members)
+                return self?.socialRepository.getGroupMembers(groupID: groupID).flatMapError({ (_) -> SignalProducer<ReactiveResults<[MemberProtocol]>, Never> in
+                    return SignalProducer.empty
+                }).combineLatest(with: self?.socialRepository.retrieveGroupInvites(groupID: groupID) ?? Signal.empty) ?? SignalProducer.empty
+            }).on(value: {[weak self] (members, invites) in
+                self?.set(members: members.value, invites: invites)
         }).start())
     }
     
@@ -100,7 +101,7 @@ class PartyDetailViewController: GroupDetailViewController {
         descriptionTitleView.text = L10n.Party.partyDescription
         membersTitleView.text = L10n.Groups.members
         partyChallengesButton.setTitle(L10n.Party.partyChallenges, for: .normal)
-        inviteMemberButton.setTitle(L10n.Groups.inviteMember, for: .normal)
+        inviteMemberButton.setTitle(L10n.Groups.findMembers, for: .normal)
         startQuestButton.setTitle(L10n.Party.startQuest, for: .normal)
         questInvitationAcceptButton.setTitle(L10n.accept, for: .normal)
         questInvitationRejectButton.setTitle(L10n.reject, for: .normal)
@@ -115,14 +116,13 @@ class PartyDetailViewController: GroupDetailViewController {
         }
     }
 
-    private func set(members: [MemberProtocol]) {
+    private func set(members: [MemberProtocol], invites: [MemberProtocol]?) {
         for view in membersStackview.arrangedSubviews where view.tag == 1000 {
             view.removeFromSuperview()
         }
-        let memberListView = MemberList(members: members, onTap: {[weak self] member in
+        let memberListView = MemberList(members: members, invites: invites, onTap: {[weak self] member in
             self?.selectedMember = member
             self?.perform(segue: StoryboardSegue.Social.userProfileSegue)
-            
         }, onMoreTap: {[weak self] member in
             let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(Text(member.profile?.name ?? ""), menuItems: {
                 BottomSheetMenuitem(title: L10n.writeMessage) {
@@ -291,6 +291,10 @@ class PartyDetailViewController: GroupDetailViewController {
         }
         alert.addCancelAction()
         alert.show()
+    }
+    
+    @IBAction func openInviteView(_ sender: Any) {
+        parent?.perform(segue: StoryboardSegue.Social.findMembersSegue)
     }
     
     private func showRemoveMemberDialog(memberID: String, displayName: String) {
