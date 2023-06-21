@@ -53,8 +53,10 @@ class LookingForPartyViewModel: ObservableObject {
             }
         }).observeValues { result in
             if result != nil {
+                if let index = self.invitedMembers.firstIndex(of: uuid) {
+                    self.invitedMembers.remove(at: index)
+                }
                 self.inviteStates[uuid] = .success
-                self.invitedMembers.append(uuid)
             } else {
                 self.inviteStates[uuid] = .failed
             }
@@ -69,9 +71,7 @@ class LookingForPartyViewModel: ObservableObject {
         socialRepository.invite(toGroup: "party", members: ["uuids": [uuid]]).observeValues { result in
             if result != nil {
                 self.inviteStates[uuid] = .success
-                if let index = self.invitedMembers.firstIndex(of: uuid) {
-                    self.invitedMembers.remove(at: index)
-                }
+                self.invitedMembers.append(uuid)
             } else {
                 self.inviteStates[uuid] = .failed
             }
@@ -90,7 +90,7 @@ struct ClassLabel: View {
         switch className {
         case "warrior":
             return HabiticaIcons.imageOfWarriorLightBg
-        case "wizard":
+        case "mage":
             return HabiticaIcons.imageOfMageLightBg
         case "healer":
             return HabiticaIcons.imageOfHealerLightBg
@@ -105,7 +105,7 @@ struct ClassLabel: View {
         switch className {
         case "warrior":
             return UIColor.maroon10
-        case "wizard":
+        case "mage":
             return UIColor.blue10
         case "healer":
             return UIColor.yellow10
@@ -152,7 +152,7 @@ struct PartyInviteView: View {
                     HStack {
                         Text(L10n.levelNumber(member.stats?.level ?? 0))
                         Spacer()
-                        ClassLabel(className: member.stats?.habitClass ?? "warrior", selectedClass: member.flags?.classSelected ?? false)
+                        ClassLabel(className: member.stats?.habitClassNice ?? "warrior", selectedClass: member.flags?.classSelected ?? false)
                     }
                     Text("\(member.loginIncentives) Check-ins")
                     if let language = Locale.current.localizedString(forLanguageCode: member.preferences?.language ?? "en") {
@@ -162,15 +162,15 @@ struct PartyInviteView: View {
                 .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
                 .font(.system(size: 14, weight: .semibold))
             }
-            if let id = member.id {
-                LoadingButton(state: .constant(inviteButtonState),
-                              type: isInvited ? .destructive : .normal,
-                              onTap: {
-                    onInvite()
-                },
-                              content: Text(isInvited ? L10n.Groups.cancelInvite : L10n.Groups.sendInvite),
-                              successContent: Text(isInvited ? L10n.Groups.invited : L10n.cancelled))
-            }
+            LoadingButton(state: .constant(inviteButtonState),
+                          type: isInvited ? .destructive : .normal,
+                          onTap: {
+                onInvite()
+            },
+                          content: Text(isInvited ? L10n.Groups.cancelInvite : L10n.Groups.sendInvite),
+                          successContent: Text(isInvited ? L10n.Groups.invited : L10n.cancelled))
+        }.onTapGesture {
+            RouterHandler.shared.handle(urlString: "/profile/\(member.id ?? "")")
         }
     }
 }

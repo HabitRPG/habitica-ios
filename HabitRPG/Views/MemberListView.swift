@@ -82,11 +82,14 @@ struct MemberList: View {
             }
             ForEach(invites, id: \.id) { invite in
                 if let id = invite.id {
-                    PartyInviteView(member: invite, inviteButtonState: inviteStates[id] ?? .content, isInvited: true) {
+                    PartyInviteView(member: invite, inviteButtonState: inviteStates[id] ?? .content, isInvited: inviteStates[id] != .success) {
                         inviteStates[id] = .loading
                         socialRepository.removeMember(groupID: "party", userID: id).observeCompleted {
-                            invites.removeAll { check in
-                                return check.id == invite.id
+                            inviteStates[id] = .success
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                invites.removeAll { check in
+                                    return check.id == invite.id
+                                }
                             }
                         }
                     }

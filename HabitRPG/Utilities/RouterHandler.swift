@@ -374,6 +374,12 @@ class RouterHandler {
         }
     }
     
+    func pop() {
+        if let navigationController = selectedNavigationController {
+            navigationController.popViewController(animated: true)
+        }
+    }
+    
     private func push(_ viewControllers: [UIViewController]) {
         if let navigationController = selectedNavigationController {
             var existingControllers = navigationController.viewControllers
