@@ -2588,7 +2588,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Q2f-jL-AaR">
-                                        <rect key="frame" x="16" y="16" width="343" height="782"/>
+                                        <rect key="frame" x="16" y="16" width="343" height="792"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="GE4-Cj-uin" customClass="GroupInvitationListView" customModule="Habitica" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
@@ -2814,8 +2814,12 @@
                                                 </userDefinedRuntimeAttributes>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qRK-ar-9GJ">
-                                                <rect key="frame" x="0.0" y="752" width="343" height="30"/>
+                                                <rect key="frame" x="0.0" y="752" width="343" height="40"/>
                                                 <color key="backgroundColor" red="0.95870476959999995" green="0.36744427680000002" blue="0.37960040569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="U55-1Y-RvX"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <state key="normal" title="Leave Party">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>

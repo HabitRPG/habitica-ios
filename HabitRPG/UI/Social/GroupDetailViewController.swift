@@ -50,6 +50,7 @@ class GroupDetailViewController: BaseUIViewController {
         super.applyTheme(theme: theme)
         groupNameLabel?.textColor = theme.primaryTextColor
         scrollView?.backgroundColor = theme.contentBackgroundColor
+        leaveButton?.backgroundColor = theme.errorColor
         groupDescriptionStackView?.applyTheme(theme: theme)
     }
     
