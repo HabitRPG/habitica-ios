@@ -317,7 +317,6 @@
 "weak" = "Deboli";
 "strong" = "Forti";
 "due" = "Da fare";
-"grey" = "Grigio";
 "dated" = "Con scadenza";
 "done" = "Fatto";
 "change" = "Cambia";
@@ -497,7 +496,6 @@
 "guilds.leave_guild_description" = "Vuoi abbandonare la sfida e tenere o eliminare le attività?";
 "guilds.keep_challenges" = "Tieni sfide";
 "guilds.leave_challenges" = "Abbandona le Sfide";
-"guilds.guild_bank" = "Banca Gilda";
 "guilds.guild_challenges" = "Sfide della Gilda";
 "guilds.invite_to_guild" = "Invita alla Gilda";
 "join" = "Partecipa";
@@ -556,7 +554,6 @@
 "wheelchair" = "Sedia a rotelle";
 "headband" = "Fascia per Capelli";
 "copied_to_clipboard" = "Copiato negli Appunti";
-"received_mystery_item" = "Apri la cassa e ricevi %@";
 "monday" = "Lunedì";
 "tuesday" = "Martedì";
 "wednesday" = "Mercoledì";
@@ -589,7 +586,6 @@
 "about.no_email_title" = "La tua email non è ancora stata impostata";
 "login.register" = "Registrati";
 "login.login" = "Accedi";
-"login.login_facebook" = "Accedi con Facebook";
 "login.login_google" = "Accedi con Google";
 "login.email_password_link" = "Ricevi per e-mail il link per reimpostare la password";
 "login.enter_email" = "Inserisci l'indirizzo e-mail che hai usato per registrare il tuo account Habitica.";
@@ -764,10 +760,7 @@
 "food_singular" = "Cibo";
 "hatching_potion" = "Pozioni di Schiusa";
 "egg" = "Uovo";
-"guilds.guild_leader" = "Leader della Gilda";
 "guilds.join_guild" = "Unisciti alla Gilda";
-"guilds.guild_description" = "Descrizione della Gilda";
-"guilds.guild_members" = "Membri della Gilda";
 "guilds.left_guild" = "Hai abbandonato la Gilda";
 "guilds.joined_guild" = "Ti sei unito alla Gilda";
 "guilds.leave_guild_title" = "Abbandonare la Gilda?";
@@ -919,7 +912,6 @@
 "agree_guidelines_prompt" = "Accetto di attenermi alle linee guida";
 "faint.button" = "Ripristina salute e riprovaci";
 "faint.dont_despair" = "Non disperarti!";
-"faint.description" = "Hai perso un livello, il tuo oro e un oggetto del tuo equipaggiamento, ma potrai recuperare tutto lavorando sodo!";
 "faint.title" = "Hai finito i punti salute!";
 "tutorials.spells" = "Le Abilità sono dei poteri con straordinari effetti! Tocca un'abilità per utilizzarla. Costerà punti Mana (la barra blu), che puoi ottenere usando Habitica ogni giorno e completando le attività. Dai un'occhiata alle FAQ nel menù per avere maggiori informazioni!";
 "whats_world_boss" = "Cos'è un Boss Mondiale?";
@@ -1044,7 +1036,6 @@
 "decline" = "Declina";
 "world_boss.rage_strike_warning" = "Stai attento...\nIl boss mondiale si scatenerà ed attaccherà una volta riempita la barra della rabbia uno dei nostri negozianti . Resta al passo con le tue Attività Giornaliere per evitare che ciò accada!";
 "world_boss.title" = "%@ attacca!";
-"faint.good_luck" = "Buona fortuna, andrai benissimo.";
 "write_a_message" = "Scrivi un messaggio";
 "locations.time_travelers_shop" = "Negozio dei Viaggiatori Del Tempo";
 "delete_tasks" = "Elimina attività";

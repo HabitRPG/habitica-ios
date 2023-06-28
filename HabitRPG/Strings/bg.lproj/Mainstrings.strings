@@ -319,7 +319,6 @@
 "weak" = "Неустойчиви";
 "strong" = "Устойчиви";
 "due" = "За изпълнение";
-"grey" = "Неактивни / сиви";
 "dated" = "С краен срок";
 "done" = "Готово";
 "change" = "Промяна";
@@ -451,7 +450,6 @@
 "settings.new_password" = "Нова парола";
 "settings.old_password" = "Стара парола";
 "settings.local" = "Местно";
-"guilds.guild_bank" = "Банка на гилдията";
 "guilds.invite_to_guild" = "Покана в гилдията";
 "join" = "Присъединяване";
 "equipment.equipment" = "Екипировка";
@@ -490,7 +488,6 @@
 "about.no_email_title" = "Е-пощата Ви все още не е зададена";
 "login.register" = "Регистрирация";
 "login.login" = "Вход";
-"login.login_facebook" = "Вписване чрез Фейсбук";
 "login.login_google" = "Вписване чрез Гугъл";
 "login.email_password_link" = "Изпращане на е-писмо с връзка за подновяване на паролата";
 "login.enter_email" = "Въведете е-пощата, с която сте се регистрирали в Хабитика.";

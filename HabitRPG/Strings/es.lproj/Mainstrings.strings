@@ -463,7 +463,6 @@
 "weak" = "Débiles";
 "strong" = "Fuertes";
 "due" = "Por hacer";
-"grey" = "Grises";
 "dated" = "Con fecha";
 "done" = "Hecho";
 "change" = "Cambiar";
@@ -606,7 +605,6 @@
 "settings.new_password" = "Nueva contraseña";
 "settings.old_password" = "Contraseña antigua";
 "settings.local" = "Local";
-"guilds.guild_bank" = "Banco de la hermandad";
 "guilds.guild_challenges" = "Desafíos del gremio";
 "guilds.invite_to_guild" = "Invita a la hermandad";
 "join" = "Unirse";
@@ -633,7 +631,6 @@
 "flower" = "Flor";
 "wheelchair" = "Silla de ruedas";
 "copied_to_clipboard" = "Copiado al portapapeles";
-"received_mystery_item" = "Abres la caja y recibes %@";
 "monday" = "lunes";
 "tuesday" = "martes";
 "wednesday" = "miércoles";
@@ -666,7 +663,6 @@
 "about.no_email_title" = "Tu correo electrónico aún no está configurado";
 "login.register" = "Registrarse";
 "login.login" = "Acceder";
-"login.login_facebook" = "Acceder con Facebook";
 "login.login_google" = "Acceder con Google";
 "login.email_password_link" = "Enviar un mail con un Link para Reiniciar la Contraseña";
 "login.enter_email" = "Introduce la dirección de email que utilizaste para registrar tu cuenta de Habitica.";
@@ -834,10 +830,7 @@
 "settings.searchable_everywhere" = "En todas partes";
 "settings.searchable_private_spaces" = "Solo lugares privados";
 "settings.mentions" = "Menciones";
-"guilds.guild_members" = "Miembros de Gremio";
-"guilds.guild_description" = "Descripción de Gremio";
 "guilds.join_guild" = "Juntar Gremios";
-"guilds.guild_leader" = "Líder de Gremio";
 "avatar.body" = "Cuerpo";
 "avatar.hair" = "Pelo";
 "avatar.extras" = "Extras";
@@ -892,9 +885,7 @@
 "whats_world_boss" = "¿Qué es un World Boss?";
 "tutorials.spells" = "¡Las habilidades son competencias especiales con poderosos efectos! Pulsa una habilidad para usarla. Consumirá maná (la barra azul), que puedes conseguir entrando todos los días y completando tus tareas de la vida real. ¡Revisa la sección de preguntas frecuentes en el menú para más información!";
 "faint.title" = "¡Te has quedado sin vida!";
-"faint.description" = "Perdiste un nivel, tu oro y una pieza de equipamiento, ¡pero puedes recuperarlo todo con trabajo duro!";
 "faint.dont_despair" = "¡No desesperes!";
-"faint.good_luck" = "Buena suerte -- lo harás genial.";
 "faint.button" = "Recargar tu salud y volver a intentar";
 "agree_guidelines_prompt" = "Acepto seguir las normas";
 "rage_meter" = "Medidor de furia";

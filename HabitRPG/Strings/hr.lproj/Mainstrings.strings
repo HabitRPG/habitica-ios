@@ -249,8 +249,6 @@
 /* (No Comment) */
 "quests.started_by" = "Započeo/la je %@";
 /* (No Comment) */
-"received_mystery_item" = "Otvaraš kutiju i dobivaš %@";
-/* (No Comment) */
 "reset_tips" = "Resetiraj Justinove savjete";
 /* (No Comment) */
 "resetStreak" = "Resetiraj broj ponavljanja";
@@ -495,7 +493,6 @@
 "weak" = "Slab";
 "strong" = "Silan";
 "due" = "Dužan";
-"grey" = "Siva";
 "dated" = "Datiran";
 "done" = "Gotovo";
 "change" = "Izmijeniti";

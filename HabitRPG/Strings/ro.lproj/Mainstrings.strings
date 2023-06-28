@@ -249,9 +249,7 @@
 /* (No Comment) */
 "quests.started_by" = "Început de %@";
 /* (No Comment) */
-"received_mystery_item" = "Deschizi cutia și primești %@";
-/* (No Comment) */
-"reset_tips" = "Resetează Sfaturile lui Justin";
+"reset_tips" = "Resetează tutorialele";
 /* (No Comment) */
 "resetStreak" = "Resetează Șirul";
 /* (No Comment) */
@@ -459,7 +457,7 @@
 /* (No Comment) */
 "tasks.reward" = "Recompensă";
 /* (No Comment) */
-"tasks.todo" = "Sarcină";
+"tasks.todo" = "A face";
 /* (No Comment) */
 "theme.blue" = "Albastru";
 /* (No Comment) */
@@ -495,7 +493,6 @@
 "weak" = "Slab";
 "strong" = "Puternic";
 "due" = "Scadente";
-"grey" = "Gri";
 "dated" = "Dated";
 "done" = "Gata";
 "change" = "Schimbă";
@@ -547,7 +544,7 @@
 "tasks.habits" = "Obiceiuri";
 "tasks.dailies" = "Cotidiene";
 "tasks.rewards" = "Recompense";
-"tasks.todos" = "Sarcini";
+"tasks.todos" = "A face";
 "tasks.work" = "Muncă";
 "tasks.exercise" = "Fă exerciții";
 "tasks.health" = "Sănătate";
@@ -627,7 +624,6 @@
 "settings.new_password" = "Parola nouă";
 "settings.old_password" = "Parola veche";
 "settings.local" = "Local";
-"guilds.guild_bank" = "Banca ghildei";
 "guilds.guild_challenges" = "Provocările Breslei";
 "guilds.invite_to_guild" = "Invită în Breaslă";
 "join" = "Participă";
@@ -672,7 +668,6 @@
 "about.no_email_title" = "Nu ți-ai setat încă o adresă de email";
 "login.register" = "Înregistrează-te";
 "login.login" = "Autentifică-te";
-"login.login_facebook" = "Login cu Facebook";
 "login.login_google" = "Login cu Google";
 "login.email_password_link" = "Trimite email cu link-ul de resetare a Parolei";
 "login.enter_email" = "Introdu adresa de email utilizată la înregistrarea contului Habitica.";
@@ -838,10 +833,7 @@
 "settings.searchable_everywhere" = "Oriunde";
 "settings.searchable_private_spaces" = "Doar Spații Private";
 "settings.mentions" = "Mențiuni";
-"guilds.guild_members" = "Membrii Breslei";
-"guilds.guild_description" = "Descrierea Breslei";
 "guilds.join_guild" = "Alătură-te Breslelor";
-"guilds.guild_leader" = "Liderul Breslei";
 "avatar.body" = "Corp";
 "avatar.hair" = "Păr";
 "avatar.extras" = "Adiționale";
@@ -852,3 +844,21 @@
 "groups.invite_member" = "Invită un Membru";
 "quests.reward_experience" = "%d Puncte de Experiență";
 "quests.reward_gold" = "%d Aur";
+"total_completions" = "Completări totale";
+"created_at" = "Creat în";
+"completed" = "Completat(ă)";
+"titles.pets_and_mounts" = "Animale de companie și monturi";
+"titles.hall_of_heroes" = "Panoul eroilor";
+"titles.hall_of_patrons" = "Panoul sponsorilor";
+"titles.achievements" = "Realizări";
+"tasks.form.accessibility.attribute" = "Atributul este %@";
+"tasks.form.adjust_streak" = "Ajustare serie";
+"titles.basics" = "De bază";
+"tasks.form.accessibility.set_attribute" = "Schimbare atributul la %@";
+"streak" = "Serie";
+"tasks.tasks" = "Sarcini";
+"tasks.form.reset_counter" = "Resetare contor";
+"tasks.form.adjust_counter" = "Ajustare contor";
+"titles.messages" = "Mesaje";
+"titles.notifications" = "Notificări";
+"titles.hall_of_contributors" = "Panoul colaboratorilor";

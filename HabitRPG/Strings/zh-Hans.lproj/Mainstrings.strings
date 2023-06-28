@@ -324,7 +324,6 @@
 "titles.profile" = "资料";
 "strong" = "强壮";
 "due" = "到期";
-"grey" = "灰色";
 "dated" = "日期";
 "stats.no_points_to_allocate" = "可分配的点数为0";
 "stats.one_point_to_allocate" = "1个点数可分配";
@@ -449,13 +448,9 @@
 "guilds.leave_guild_description" = "您想退出公会并保留或删除挑战吗？";
 "guilds.keep_challenges" = "保留挑战";
 "guilds.leave_challenges" = "终止挑战";
-"guilds.guild_members" = "公会成员";
-"guilds.guild_bank" = "公会银行";
 "guilds.guild_challenges" = "公会挑战";
-"guilds.guild_description" = "公会描述";
 "guilds.invite_to_guild" = "邀请加入公会";
 "guilds.join_guild" = "加入公会";
-"guilds.guild_leader" = "公会会长";
 "join" = "加入";
 "food" = "食物";
 "eggs" = "蛋";
@@ -540,7 +535,6 @@
 "wheelchair" = "轮椅";
 "headband" = "头带";
 "copied_to_clipboard" = "已复制到剪贴板";
-"received_mystery_item" = "你打开了宝箱，找到了 %@";
 "monday" = "周一";
 "tuesday" = "周二";
 "wednesday" = "周三";
@@ -587,7 +581,6 @@
 "login.register" = "注册";
 "login.login" = "登录";
 "login.email_username" = "邮件地址 / 用户名";
-"login.login_facebook" = "Facebook登录";
 "login.login_google" = "Google登录";
 "login.forgot_password" = "忘记密码";
 "login.email_password_link" = "发送密码重设链接";
@@ -715,9 +708,7 @@
 "tutorials.stats" = "点击灰色按钮，自动分配全部属性。点击箭头，一次加一点属性。";
 "tutorials.spells" = "技能是强大的特殊能力！点击技能即可释放。使用技能需消耗魔法值(蓝色条)。魔法值可由每日签到和完成任务获得。更多信息请查询FAQ！";
 "faint.title" = "你失去了所有生命值！";
-"faint.description" = "你降级了，也损失了所有金币和一件装备。但是你能努力把这些都挣回来！";
 "faint.dont_despair" = "不要绝望！";
-"faint.good_luck" = "祝你好运！你很棒。";
 "faint.button" = "回满生命值&再次尝试";
 "agree_guidelines_prompt" = "我同意遵守规则";
 "rage_meter" = "怒气值";
@@ -1203,3 +1194,11 @@
 "streak" = "连续打卡";
 "skills.caused_damage" = "你对boss造成了伤害";
 "tasks.form.completion" = "完成";
+"not_due" = "未到期";
+"completed" = "已完成";
+"background" = "背景";
+"scheduled" = "计划";
+"armoire.drop_rate" = "魔法衣柜掉落几率";
+"armoire.food" = "你翻了魔法衣柜，并在里面发现了食物…它怎么在这里？";
+"armoire.enchanted_armoire_drop_rates" = "魔法衣橱掉落物品几率";
+"armoire.equipment" = "你在魔法衣柜里发现了一件稀有装备！";

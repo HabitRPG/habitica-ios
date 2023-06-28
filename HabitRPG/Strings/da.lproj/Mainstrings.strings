@@ -281,7 +281,6 @@
 "weak" = "Svag";
 "strong" = "Stærk";
 "due" = "Forfaldne";
-"grey" = "Grå";
 "dated" = "Dateret";
 "done" = "Færdig";
 "clear" = "Ryd";
@@ -357,7 +356,6 @@
 "settings.new_password" = "Nyt Kodeord";
 "settings.old_password" = "Gammelt Kodeord";
 "settings.local" = "Lokal";
-"guilds.guild_bank" = "Klanbank";
 "join" = "Deltag";
 "equipment.equipment" = "Udstyr";
 "purchase_gems" = "Køb Ædelsten";
