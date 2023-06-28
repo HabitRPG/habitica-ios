@@ -281,7 +281,6 @@
 "weak" = "Slabé";
 "strong" = "Silné";
 "due" = "Do";
-"grey" = "Šedý";
 "dated" = "Datováno";
 "done" = "Hotovo";
 "change" = "Změnit";
@@ -375,7 +374,6 @@
 "settings.new_password" = "Nové heslo";
 "settings.old_password" = "Staré heslo";
 "settings.local" = "Lokální";
-"guilds.guild_bank" = "Banka cechu";
 "join" = "Přidat se";
 "equipment.equipment" = "Vybavení";
 "equipment.costume_explanation" = "Vyber \"Použít kostým\", abys vybavil/a svého avatara, aniž bys nějak ovlivnil/a statistiky tvé Bojové výzbroje! To znamená, že můžeš obléct svého avatara do jakéhokoliv vybavení chceš a stále mít tvojí nejlepší Bojovou výzbroj na sobě.";
@@ -721,12 +719,9 @@
 "hatch_egg" = "použít na vejce";
 "sell" = "Prodat za %d zlata";
 "specialItems" = "Speciální předmět";
-"guilds.guild_leader" = "Vedoucí cechu";
 "guilds.join_guild" = "Přidat se do cechu";
 "guilds.invite_to_guild" = "Pozvat do cechu";
-"guilds.guild_description" = "Popis cechu";
 "guilds.guild_challenges" = "Cechové výzvy";
-"guilds.guild_members" = "Členové cechu";
 "guilds.left_guild" = "Opustil jsi Cech";
 "theme.alwaysDark" = "Vždy temný";
 "theme.alwaysLight" = "Vždy světlý";
@@ -761,7 +756,6 @@
 "login.forgot_password" = "Zapomenuté heslo";
 "login.login_apple" = "Přihlaste se pomocí Apple";
 "login.login_google" = "Přihlaste se pomocí Google";
-"login.login_facebook" = "Přihlásit se pomocí Facebooku";
 "login.email_username" = "E-mail / uživatelské jméno";
 "login.authentication_error" = "Při ověřování došlo k chybě. Zkus to později";
 "login.password_confirm_error" = "Heslo a potvrzení hesla se musí shodovat a musí být delší než 8 znaků.";
@@ -819,9 +813,7 @@
 "world_boss.world_boss" = "Světový Boss";
 "agree_guidelines_prompt" = "Souhlasím s dodržováním pokynů";
 "faint.button" = "Doplňte zdraví a zkuste to znovu";
-"faint.good_luck" = "Hodně štěstí.";
 "faint.dont_despair" = "Nezoufejte!";
-"faint.description" = "Ztratili jste úroveň, své zlato a kus vybavení, ale můžete je získat zpět tvrdou prací!";
 "faint.title" = "Došlo ti zdraví!";
 "tutorials.stats" = "Klepnutím na šedé tlačítko přidělte mnoho bodů najednou, nebo klepnutím na šipky přidejte jednotlivé body.";
 "tutorials.inbox" = "Zde můžete číst soukromé zprávy a odpovídat na ně! Můžete také posílat zprávy lidem z jejich profilů.";
@@ -875,7 +867,6 @@
 "unlockDropsTitle" = "Odemkli jste drop systém!";
 "accessibility.not_due" = "Není splatné";
 "tavern_intro_header" = "Vítejte v Krčmě! Vytáhněte židli a povídejte si nebo si udělejte pauzu od svých úkolů.";
-"received_mystery_item" = "Otevřete truhlu a obdržíte %@";
 "member_group_plan" = "Člen Skupiny";
 "group_plan" = "Skupina";
 "party.transfer_ownership_description" = "Tím se %@ stane novým vůdcem Družiny";

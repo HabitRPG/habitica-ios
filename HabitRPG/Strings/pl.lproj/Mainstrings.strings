@@ -319,7 +319,6 @@
 "weak" = "Słabe";
 "strong" = "Mocne";
 "due" = "Zaplanowane";
-"grey" = "Szare";
 "dated" = "Z datą";
 "done" = "Gotowe";
 "change" = "Zmień";
@@ -443,7 +442,6 @@
 "settings.new_password" = "Nowe hasło";
 "settings.old_password" = "Stare hasło";
 "settings.local" = "Lokalne";
-"guilds.guild_bank" = "Bank gildii";
 "guilds.invite_to_guild" = "Zaproś do Gildii";
 "join" = "Dołącz";
 "equipment.equipment" = "Wyposażenie";

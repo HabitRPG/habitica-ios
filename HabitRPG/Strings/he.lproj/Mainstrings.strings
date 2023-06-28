@@ -259,7 +259,6 @@
 "weak" = "חלש";
 "strong" = "חזק";
 "due" = "פעיל";
-"grey" = "אפור";
 "dated" = "מיושן";
 "done" = "בוצע";
 "clear" = "נקה";
@@ -333,7 +332,6 @@
 "settings.new_password" = "סיסמה חדשה";
 "settings.old_password" = "סיסמה ישנה";
 "settings.local" = "מקומי";
-"guilds.guild_bank" = "בנק הגילדה";
 "join" = "הצטרפו";
 "food" = "אוכל";
 "share" = "שתף";

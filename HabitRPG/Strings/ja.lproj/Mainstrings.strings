@@ -375,7 +375,6 @@
 "weak" = "苦手";
 "strong" = "得意";
 "due" = "期限";
-"grey" = "グレー";
 "dated" = "期限付き";
 "done" = "完了";
 "change" = "変更";
@@ -548,7 +547,6 @@
 "theme.teal" = "青緑";
 "theme.orange" = "オレンジ";
 "theme.maroon" = "海老茶";
-"guilds.guild_bank" = "ギルド口座";
 "guilds.guild_challenges" = "ギルドで開催中のチャレンジ";
 "guilds.invite_to_guild" = "ギルドに招待する";
 "join" = "参加する";
@@ -587,7 +585,6 @@
 "wheelchair" = "車いす";
 "headband" = "ヘッドバンド";
 "copied_to_clipboard" = "クリップボードにコピーしました";
-"received_mystery_item" = "宝箱を開け、%@を見つけました";
 "monday" = "月曜日";
 "tuesday" = "火曜日";
 "wednesday" = "水曜日";
@@ -620,7 +617,6 @@
 "about.no_email_title" = "メールアドレスが未だ設定されていません";
 "login.register" = "登録";
 "login.login" = "ログイン";
-"login.login_facebook" = "Facebookでログイン";
 "login.login_google" = "Google でログイン";
 "login.email_password_link" = "パスワードリセット用のリンクをメールで送信";
 "login.enter_email" = "Habiticaのアカウント登録に使ったメールアドレスを入力してください。";
@@ -768,9 +764,9 @@
 "stats.strength_text" = "タスクを完了したときの会心の一撃のボーナスや発生率が増加します。また、ボスへ与えるダメージも増加します。";
 "tasks.team" = "チーム";
 "titles.gift_subscription" = "有料プランをプレゼントする";
-"tasks.due_today" = "期限　今日";
-"tasks.due_tomorrow" = "期限　明日";
-"tasks.due_in_x_days" = "期限　%d日後";
+"tasks.due_today" = "今日";
+"tasks.due_tomorrow" = "明日";
+"tasks.due_in_x_days" = "%d日後";
 "tasks.every_x" = "毎 %d %@";
 "tasks.repeats.repeats_every_on" = "%@を%@ごとにくり返す";
 "tasks.repeats.repeats_every" = "%@くり返す";
@@ -787,10 +783,7 @@
 "settings.searchable_everywhere" = "どこでも";
 "settings.searchable_private_spaces" = "プライベートスペースのみ";
 "settings.mentions" = "返信";
-"guilds.guild_members" = "ギルドメンバー";
-"guilds.guild_description" = "ギルドの説明";
 "guilds.join_guild" = "ギルドに加入する";
-"guilds.guild_leader" = "ギルドリーダー";
 "avatar.body" = "体";
 "avatar.hair" = "髪";
 "avatar.extras" = "その他";
@@ -847,9 +840,7 @@
 "whats_world_boss" = "ワールドボスとは何ですか？";
 "tutorials.spells" = "スキルは、強力な効果を持つ特殊能力です！ スキルをタップして使いましょう。スキルを使うとマナ (青いバー) が減ります。マナは、毎日チェックして現実のタスクを達成することで獲得できます。詳しくは、メニューの「よくある質問」をチェックしましょう！";
 "faint.title" = "体力がなくなった！";
-"faint.description" = "レベル、ゴールド、装備の一部を失ってしまいました。しかし、がんばればすべてを取り戻せます！";
 "faint.dont_despair" = "がっかりしないで！";
-"faint.good_luck" = "あなたなら、きっとやれる――幸あらんことを。";
 "faint.button" = "体力を復活させて、もう一度やってみよう";
 "agree_guidelines_prompt" = "ガイドラインに従うことに同意します";
 "rage_meter" = "怒りメーター";
@@ -1285,3 +1276,6 @@
 "tasks.form.reset_counter" = "カウンターをリセット";
 "next_prize_in_x_checkins" = "次に賞品が受け取れるのは計%d日目のログインです";
 "tasks.form.none" = "なし";
+"scheduled" = "期限付き";
+"not_due" = "期限なし";
+"completed" = "完了";

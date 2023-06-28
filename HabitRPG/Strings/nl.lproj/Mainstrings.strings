@@ -249,8 +249,6 @@
 /* (No Comment) */
 "quests.started_by" = "Gestart door %@";
 /* (No Comment) */
-"received_mystery_item" = "Je opent de kist en vindt %@";
-/* (No Comment) */
 "reset_tips" = "Reset de Tutorials";
 /* (No Comment) */
 "resetStreak" = "Serie resetten";
@@ -495,7 +493,6 @@
 "weak" = "Zwak";
 "strong" = "Sterk";
 "due" = "Onvoltooid";
-"grey" = "Grijs";
 "dated" = "Gedateerd";
 "done" = "Gedaan";
 "change" = "Verander";
@@ -629,7 +626,6 @@
 "settings.new_password" = "Nieuw wachtwoord";
 "settings.old_password" = "Oud wachtwoord";
 "settings.local" = "Lokaal";
-"guilds.guild_bank" = "Gildebank";
 "guilds.guild_challenges" = "gildeuitdagingen";
 "guilds.invite_to_guild" = "Uitnodigen voor gilde";
 "join" = "Deelnemen";
@@ -682,7 +678,6 @@
 "about.no_email_title" = "Je e-mail is nog niet toegevoegd";
 "login.register" = "Registreren";
 "login.login" = "Inloggen";
-"login.login_facebook" = "Inloggen met Facebook";
 "login.login_google" = "Inloggen met Google";
 "login.email_password_link" = "E-mail een wachtwoord reset link";
 "login.enter_email" = "Voer je e-mailadres in die gebruikt is voor het registreten van je Habitica-account.";
@@ -886,10 +881,7 @@
 "stable.color" = "Kleur";
 "stable.wacky_mounts" = "Idiote rijdieren";
 "stable.wacky_pets" = "Idiote huisdieren";
-"guilds.guild_leader" = "Gildeleider";
 "guilds.join_guild" = "Wordt lid van deze gilde";
-"guilds.guild_description" = "Gilde-omschrijving";
-"guilds.guild_members" = "Gildeleden";
 "guilds.left_guild" = "Je hebt de gilde verlaten";
 "guilds.joined_guild" = "Je bent toegetreden tot de gilde";
 "settings.push_notifications.important_announcement" = "Belangrijke Aankondigingen";
@@ -937,9 +929,7 @@
 "rage_meter" = "Woedemeter";
 "agree_guidelines_prompt" = "Ik hou me aan de richtlijnen";
 "faint.button" = "Gezondheid bijvullen en opnieuw proberen";
-"faint.good_luck" = "Veel succes - je kunt het.";
 "faint.dont_despair" = "Niet opgeven!";
-"faint.description" = "Je bent een leven, je goud en een voorwerp verloren, maar je kunt met hard werken alles terugverdienen!";
 "faint.title" = "Je hebt geen Gezondheid meer!";
 "tutorials.spells" = "Vaardigheden zorgen ervoor dat je machine dingen kunt doen! Klik op een vaardigheid om hem te gebruiken. Het kost Mana (de blauwe balk), die je kunt verdienen door elke dag in te checken en je taken te volbrengen. Meer informatie vind je in de FAQ in het menu!";
 "about.no_email_message" = "Oeps, het lijkt erop dat je nog geen e-mail heb ingesteld op deze telefoon. Stel een account in in de iOS mail app om de optie van direct rapporteren te gebruiken, of email ons gewoon direct op %@";
@@ -1069,7 +1059,7 @@
 "titles.basics" = "Basis";
 "menu.support" = "Ondersteuning";
 "settings.launch_screen" = "Startscherm";
-"settings.theme_mode" = "Thema Modus";
+"settings.theme_mode" = "Thema mode";
 "new_message" = "Nieuw bericht";
 "show_details" = "Toon details";
 "go_shopping" = "Ga winkelen";
@@ -1307,9 +1297,9 @@
 "update" = "Update";
 "quests.unlock_incentive_short" = "%d ingecheckt";
 "quests.unlock_incentive" = "Ontgrendel door %d in te checken";
-"inventory.no_longer_available" = "Niet langer beschikbaar";
+"inventory.no_longer_available" = "Niet Meer Berijkbaar";
 "inventory.hatched_sharing" = "Ik heb net een %@ %@ huisdier uitgebroed in Habitica door het voltooien van taken in het echte leven!";
-"tasks.edit_details" = "Details aanpassen";
+"tasks.edit_details" = "Details Bewerken";
 "created_at" = "Aangemaakt op";
 "stat_description" = "Alle Habitica-personages hebben vier eigenschappen die invloed hebben op de spelaspecten van Habitica.\n\n**Kracht (KRA)** heeft invloed op voltreffers en verhoogt de schade die aan Eindbazen van Queesten gedaan wordt. Krijgers en Dieven ontvangen KRA van hun klasse-uitrusting.\n\n**Weerbaarheid (WBH)** verhoogt je gezondheid en zorgt ervoor dat je minder schade krijgt. Helers en Krijgers ontvangen WBH van hun klasse-uitrusting.\n\n**Intelligentie (INT)** verhoogt de hoeveelheid ERV die je verdient en geeft je meer Mana. Magiërs en Helers ontvangen INT van hun klasse-uitrusting.\n\n**Perceptie (PER)** verhoogt de hoeveelheid goud die je verdient en de mate waarin je voorwerpen vindt. Dieven en Magiërs ontvangen PER van hun klasse-uitrusting.\n\nNa level 10 krijg je 1 Eigenschapspunt voor ieder level dat je omhooggaat. Deze punten kun je naar keuze in een Eigenschap stoppen. Er zijn ook uitrustingen die bonussen op eigenschappen geven.";
 "beginner_objectives" = "Begindoelen";
@@ -1338,3 +1328,8 @@
 "checkin_prize_earned" = "Je hebt een %@ verdiend als een beloning voor je toewijding aan het verbeteren van je leven.";
 "tasks.form.none" = "Geen";
 "see_you_tomorrow" = "Tot morgen";
+"menu.group_plans" = "Groepen";
+"settings.adjustment" = "Aanpassing";
+"open_for" = "Open voor %@";
+"report" = "Raporteer";
+"tasks.form.last_scored" = "Laatste keer gescoord";

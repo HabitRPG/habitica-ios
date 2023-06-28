@@ -249,8 +249,6 @@
 /* (No Comment) */
 "quests.started_by" = "Angefangen von %@";
 /* (No Comment) */
-"received_mystery_item" = "Du öffnest die Kiste und erhältst %@";
-/* (No Comment) */
 "reset_tips" = "Tutorials zurücksetzen";
 /* (No Comment) */
 "resetStreak" = "Strähne zurücksetzen";
@@ -491,7 +489,6 @@
 "weak" = "Schwach";
 "strong" = "Stark";
 "due" = "Fällig";
-"grey" = "Grau";
 "dated" = "Datiert";
 "done" = "Erledigt";
 "change" = "Ändern";
@@ -625,7 +622,6 @@
 "settings.new_password" = "Neues Passwort";
 "settings.old_password" = "Altes Passwort";
 "settings.local" = "Lokal";
-"guilds.guild_bank" = "Gildenbankkonto";
 "guilds.guild_challenges" = "Gildenwettbewerbe";
 "guilds.invite_to_guild" = "In Gilde einladen";
 "join" = "Beitreten";
@@ -680,7 +676,6 @@
 "about.no_email_title" = "Deine E-Mail-Adresse ist noch nicht eingerichtet";
 "login.register" = "Registrieren";
 "login.login" = "Anmelden";
-"login.login_facebook" = "Mit Facebook anmelden";
 "login.login_google" = "Sich mit Google anmelden";
 "login.email_password_link" = "Einen Link per E-Mail senden, um das Passwort zurückzusetzen";
 "login.enter_email" = "Trage die E-Mail-Adresse ein, mit der Du Deinen Habitica-Account aktiviert hast.";
@@ -835,8 +830,6 @@
 "settings.reset_account_description" = "ACHTUNG! Diese Funktion setzt große Teile Deines Kontos zurück. Es ist wirklich nicht zu empfehlen, aber manche Leute finden es praktisch, nachdem sie sich etwas in Habitica umgeschaut haben.\n\nDu wirst alle Deine Levels, Dein Gold und Deine Erfahrungspunkte verlieren. Alle Deine Aufgaben (außer diejenigen von Herausforderungen) und alle gespeicherten Daten in den Aufgaben werden dauerhaft gelöscht. Du wirst Deine gesamte Ausrüstung verlieren aber Du kannst sie erneut kaufen. Das schließt auch die limitierte Ausrüstung und die mysteriösen Gegenstände von Abonnenten ein, die Du bereits besitzt (Du musst allerdings die richtige Klasse haben, um klassen-spezifische Gegenstände erneut zu kaufen). Du wirst Deine aktuelle Klasse und Deine Haus- und Reittiere behalten. Statt Dein Konto zurückzusetzen kannst Du auch eine Kugel der Wiedergeburt einsetzen; das ist eine sicherere Option, bei der Du Deine Aufgaben und Deine Ausrüstung behältst.";
 "settings.confirm_new_password" = "Neues Passwort bestätigen";
 "settings.searchable_everywhere" = "Überall";
-"guilds.guild_members" = "Gildenmitglieder";
-"guilds.guild_description" = "Gildenbeschreibung";
 "avatar.body" = "Körper";
 "avatar.hair" = "Haare";
 "avatar.extras" = "Extras";
@@ -864,7 +857,6 @@
 "settings.searchable_private_spaces" = "Nur private Räume";
 "settings.mentions" = "Erwähnungen";
 "guilds.join_guild" = "Trete den Gilden bei";
-"guilds.guild_leader" = "Gildenleiter";
 "tasks.repeats.monthly_the" = "am %@";
 "settings.push_notifications.invited_guid" = "In Gilde eingeladen";
 "settings.push_notifications.invited_party" = "In Party eingeladen";
@@ -945,8 +937,6 @@
 "achievements.basic" = "Basis-Errungenschaften";
 "faint.dont_despair" = "Nicht verzweifeln!";
 "faint.title" = "Dir ist die Gesundheit ausgegangen!";
-"faint.description" = "Du hast bereits die maximale Anzahl möglicher Edelsteine in diesem Monat gekauft. Neue Edelsteine werden innerhalb der ersten drei Tage jedes neuen Monats verfügbar. Danke für Dein Abonnement!";
-"faint.good_luck" = "Viel Glück – du wirst es schaffen.";
 "agree_guidelines_prompt" = "Ich akzeptiere die Richtlinien";
 "faint.button" = "Gesundheit wiederherstellen & erneut versuchen";
 "tutorials.spells" = "Fertigkeiten sind Spezialfähigkeiten mit mächtigen Effekten! Tippe auf eine Fertigkeit, um sie zu benutzen. Das wird Mana (blauer Balken) verbrauchen, welches Du durch tägliches Log-In und das Abschließen von Aufgaben erhältst. Schau in die FAQ im Menü für weitere Informationen!";

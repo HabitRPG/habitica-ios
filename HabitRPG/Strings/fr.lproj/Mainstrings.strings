@@ -363,7 +363,6 @@
 "weak" = "Faibles";
 "strong" = "Fort";
 "due" = "Restantes";
-"grey" = "Grisées";
 "dated" = "Datées";
 "done" = "Fait";
 "change" = "Changer";
@@ -540,7 +539,6 @@
 "theme.orange" = "Orange";
 "theme.maroon" = "Maron";
 "guilds.keep_challenges" = "Conserver les Défis";
-"guilds.guild_bank" = "Banque de la guilde";
 "guilds.guild_challenges" = "Défis de guilde";
 "guilds.invite_to_guild" = "Inviter dans la guilde";
 "join" = "Rejoindre";
@@ -582,7 +580,6 @@
 "flower" = "Fleur";
 "wheelchair" = "Fauteuil roulant";
 "copied_to_clipboard" = "Copié vers le presse-papiers";
-"received_mystery_item" = "Vous ouvrez le boit et recevez %@";
 "monday" = "Lundi";
 "tuesday" = "Mardi";
 "wednesday" = "Mercredi";
@@ -615,7 +612,6 @@
 "about.no_email_title" = "Votre email n'est pas encore enregistré";
 "login.register" = "S'inscrire";
 "login.login" = "Se connecter";
-"login.login_facebook" = "Se connecter avec Facebook";
 "login.login_google" = "Se connecter avec Google";
 "login.email_password_link" = "Envoyer un lien pour réinitialiser le mot de passe par e-mail";
 "login.enter_email" = "Entrez l'adresse courriel que vous avez utilisé pour créer votre compte Habitica.";
@@ -790,10 +786,7 @@
 "settings.searchable_private_spaces" = "Seulement les espaces privés";
 "settings.mentions" = "Mentions";
 "guilds.leave_guild_title" = "Quitter la guilde ?";
-"guilds.guild_members" = "Membres de la guilde";
-"guilds.guild_description" = "Description de la guilde";
 "guilds.join_guild" = "Rejoindre la guilde";
-"guilds.guild_leader" = "Responsable de la guilde";
 "avatar.body" = "Corps";
 "avatar.extras" = "Extras";
 "party.create_party_description" = "Partez en quête avec des amis ou en solitaire. Combattez des monstres, créez des défis et aidez vous à vous rendre responsable dans l'équipe.";
@@ -844,9 +837,7 @@
 "whats_world_boss" = "Qu'est ce qu'un boss mondial ?";
 "tutorials.spells" = "Les compétences sont des capacités spéciales qui ont des effets puissants ! Tapez une compétence pour l'utiliser. Cela vous coûtera du mana (la barre bleue), que vous gagnez chaque jour et en complétant vos tâches. Lisez la FAQ dans le menu pour plus d'informations !";
 "faint.title" = "Vous êtes à court de point de santé !";
-"faint.description" = "Vous avez perdu un niveau, votre or et une pièce d'équipement, mais vous pouvez les récupérer avec des efforts !";
 "faint.dont_despair" = "Ne désespérez pas !";
-"faint.good_luck" = "Bonne chance -- vous allez très bien vous débrouiller.";
 "faint.button" = "Récupérez des points de santé et réessayez";
 "agree_guidelines_prompt" = "J'accepte de suivre les règles";
 "rage_meter" = "Barre de Rage";
