@@ -431,6 +431,9 @@ public class UserLocalRepository: BaseLocalRepository {
             if let newPurchaseed = newUser.purchased {
                 realm.add(RealmPurchased(userID: oldUser.id, protocolObject: newPurchaseed), update: .modified)
             }
+            if let newParty = newUser.party {
+                realm.add(RealmUserParty(userID: oldUser.id, protocolObject: newParty), update: .modified)
+            }
         }
     }
 

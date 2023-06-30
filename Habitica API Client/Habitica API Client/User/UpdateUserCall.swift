@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class UpdateUserCall: ResponseObjectCall<UserProtocol, APIUser> {
-    public init(_ updateDict: [String: Encodable]) {
+    public init(_ updateDict: [String: Encodable?]) {
         let json = try? JSONSerialization.data(withJSONObject: updateDict, options: .prettyPrinted)
         super.init(httpMethod: .PUT, endpoint: "user", postData: json)
     }

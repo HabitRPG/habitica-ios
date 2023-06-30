@@ -221,6 +221,7 @@ internal enum Asset {
   internal static let onboardingGoldRight = ImageAsset(name: "onboardingGoldRight")
   internal static let participantsDetails = ImageAsset(name: "participants_details")
   internal static let participantsList = ImageAsset(name: "participants_list")
+  internal static let partySeeking = ImageAsset(name: "party_seeking")
   internal static let paymentAmazon = ImageAsset(name: "payment_amazon")
   internal static let paymentApple = ImageAsset(name: "payment_apple")
   internal static let paymentGift = ImageAsset(name: "payment_gift")

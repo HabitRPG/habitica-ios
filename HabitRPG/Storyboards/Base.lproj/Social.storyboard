@@ -1653,7 +1653,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hLu-EM-YaS" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="128" width="343" height="838"/>
+                                                                <rect key="frame" x="0.0" y="128" width="343" height="444"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UW-Ua-O5N" customClass="CollapsibleTitle" customModule="Habitica" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
@@ -1681,7 +1681,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIu-ci-16d">
-                                                                        <rect key="frame" x="0.0" y="120" width="343" height="718"/>
+                                                                        <rect key="frame" x="0.0" y="120" width="343" height="324"/>
                                                                         <string key="text">Need a break? Check into Daniel’s Inn to pause some of Habitica’s more difficult game mechanics:  ∙ Your missed Dailies won't damage you (bosses will still do damage caused by other Party member's missed Dailies) ∙ Your Task streaks and Habit counters will not reset ∙ Bosses won’t do damage for your missed Dailies ∙ Your damage to the Quest boss or found collection items will remain pending until you check out of the Inn</string>
                                                                         <color key="textColor" red="0.40768876669999998" green="0.3832124174" blue="0.4558907747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -1693,7 +1693,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="cJ1-Nq-YSk" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="978" width="343" height="246"/>
+                                                                <rect key="frame" x="0.0" y="584" width="343" height="246"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="egA-r8-ZMu" customClass="CollapsibleTitle" customModule="Habitica" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
@@ -1731,7 +1731,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Qwk-6P-BZe" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="1236" width="343" height="170"/>
+                                                                <rect key="frame" x="0.0" y="842" width="343" height="564"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yha-wF-baf" customClass="CollapsibleTitle" customModule="Habitica" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
@@ -1740,7 +1740,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1kC-MI-SIq" customClass="HabiticaButton" customModule="Habitica" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="66" width="343" height="38"/>
+                                                                        <rect key="frame" x="0.0" y="66" width="343" height="432"/>
                                                                         <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38" id="aH1-Nc-Ggb"/>
@@ -1757,7 +1757,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eyY-8s-QaF">
-                                                                        <rect key="frame" x="0.0" y="120" width="343" height="50"/>
+                                                                        <rect key="frame" x="0.0" y="514" width="343" height="50"/>
                                                                         <subviews>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2o-0k-TlN" customClass="HabiticaButton" customModule="Habitica" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="38"/>
@@ -1859,7 +1859,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Sur-1o-ymQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OFX-9b-U2U" customClass="UITableView" customModule="Habitica" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -1964,7 +1964,7 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="RBw-nb-5kd">
-                                                <rect key="frame" x="16" y="166" width="343" height="308"/>
+                                                <rect key="frame" x="16" y="166" width="343" height="472.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="l6J-yB-veD">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="150"/>
@@ -2014,13 +2014,19 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="tBJ-xP-Ydp">
-                                                        <rect key="frame" x="0.0" y="200" width="343" height="108"/>
+                                                        <rect key="frame" x="0.0" y="200" width="343" height="272.5"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Fip-ob-Bxm">
-                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="54"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="102"/>
                                                                 <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="party_seeking" translatesAutoresizingMaskIntoConstraints="NO" id="v6i-RH-cCW">
+                                                                        <rect key="frame" x="21" y="0.0" width="301" height="44"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="44" id="A6P-LF-rvA"/>
+                                                                        </constraints>
+                                                                    </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiF-86-NSA">
-                                                                        <rect key="frame" x="21" y="0.0" width="301" height="50"/>
+                                                                        <rect key="frame" x="21" y="48" width="301" height="50"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" priority="500" constant="20" id="kdN-gR-PsC"/>
                                                                         </constraints>
@@ -2029,7 +2035,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuF-gH-2mn">
-                                                                        <rect key="frame" x="21" y="54" width="301" height="0.0"/>
+                                                                        <rect key="frame" x="21" y="102" width="301" height="0.0"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" priority="500" constant="16" id="hTc-wW-aMF"/>
                                                                         </constraints>
@@ -2041,7 +2047,7 @@
                                                                 <edgeInsets key="layoutMargins" top="0.0" left="21" bottom="0.0" right="21"/>
                                                             </stackView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ftp-vm-loC">
-                                                                <rect key="frame" x="0.0" y="70" width="343" height="38"/>
+                                                                <rect key="frame" x="0.0" y="118" width="343" height="38"/>
                                                                 <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="38" id="nPi-Ad-O5m"/>
@@ -2053,6 +2059,20 @@
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="userIDButtonTapped:" destination="Ux3-MZ-30T" eventType="touchUpInside" id="kPv-FW-DXp"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54n-ge-ETZ">
+                                                                <rect key="frame" x="0.0" y="172" width="343" height="50"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKb-Fe-ihU">
+                                                                <rect key="frame" x="0.0" y="238" width="343" height="34.5"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" title="Leave"/>
+                                                                <connections>
+                                                                    <action selector="leaveLookingButtonTapped:" destination="Ux3-MZ-30T" eventType="touchUpInside" id="Jt4-Kk-El2"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -2115,7 +2135,9 @@
                         <outlet property="groupInvitationListView" destination="8vw-l0-30Z" id="ugq-CH-uub"/>
                         <outlet property="joinPartyDescriptionLabel" destination="xuF-gH-2mn" id="ln0-2v-3Mb"/>
                         <outlet property="joinPartyTitle" destination="QiF-86-NSA" id="Rdr-uG-sEc"/>
+                        <outlet property="leaveLookingForPartyButton" destination="kKb-Fe-ihU" id="SXQ-fs-5q9"/>
                         <outlet property="leftViewWidthConstraint" destination="nVI-R5-aFv" id="iTW-Sn-jDi"/>
+                        <outlet property="lookingForPartySubtitleLabel" destination="54n-ge-ETZ" id="KHk-63-qx8"/>
                         <outlet property="noPartyContainerView" destination="fUh-bv-IOV" id="GUo-RG-z0P"/>
                         <outlet property="noPartyHeaderBackground" destination="41A-LO-60S" id="RuY-UF-dha"/>
                         <outlet property="rightViewWidthConstraint" destination="stf-nJ-K0j" id="YWw-9P-YVA"/>
@@ -2588,7 +2610,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Q2f-jL-AaR">
-                                        <rect key="frame" x="16" y="16" width="343" height="792"/>
+                                        <rect key="frame" x="16" y="16" width="343" height="796"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="GE4-Cj-uin" customClass="GroupInvitationListView" customModule="Habitica" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
@@ -2624,6 +2646,11 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="49" id="8fM-IR-4sT"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="6"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="startQuestButtonTapped:" destination="J2Y-h9-GJa" eventType="touchUpInside" id="Dwg-3w-7O4"/>
                                                                 </connections>
@@ -2751,7 +2778,8 @@
                                                     </stackView>
                                                 </subviews>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="identifier" value="groupDescription"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="identifier" value="partyQuest"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="canCollapse" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="TZS-wu-zNt" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
@@ -2773,6 +2801,7 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="color">
                                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="canCollapse" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e0g-qd-d5g">
@@ -2790,31 +2819,37 @@
                                                     <segue destination="BE2-xn-Wwl" kind="show" identifier="ChallengesSegue" id="lgk-R4-zXr"/>
                                                 </connections>
                                             </button>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jxu-is-rhK" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="545" width="343" height="177"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="jxu-is-rhK" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="545" width="343" height="181"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NXk-Bv-dAg" customClass="CollapsibleTitle" customModule="Habitica" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="128"/>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kHV-xM-rcF">
-                                                        <rect key="frame" x="0.0" y="128" width="343" height="49"/>
+                                                        <rect key="frame" x="0.0" y="132" width="343" height="49"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="49" id="wKJ-4X-JoS"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="6"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="openInviteView:" destination="J2Y-h9-GJa" eventType="touchUpInside" id="uJG-gT-GmK"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="identifier" value="groupDescription"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="identifier" value="partyMembers"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="color">
                                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="canCollapse" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qRK-ar-9GJ">
-                                                <rect key="frame" x="0.0" y="752" width="343" height="40"/>
+                                                <rect key="frame" x="0.0" y="756" width="343" height="40"/>
                                                 <color key="backgroundColor" red="0.95870476959999995" green="0.36744427680000002" blue="0.37960040569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="U55-1Y-RvX"/>
@@ -2938,10 +2973,10 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="71z-UW-WBb"/>
-        <segue reference="gAH-Zh-PJ3"/>
+        <segue reference="xLb-S3-ALp"/>
         <segue reference="lgk-R4-zXr"/>
         <segue reference="9hs-wq-6bn"/>
-        <segue reference="jXp-j5-lvy"/>
+        <segue reference="MnH-ar-sz7"/>
         <segue reference="ypV-Mu-tgU"/>
         <segue reference="wif-V9-Mcy"/>
         <segue reference="rs9-Lf-2VQ"/>
@@ -2951,6 +2986,7 @@
         <image name="MoreInteractionsIcon" width="20" height="4"/>
         <image name="NoPartyBanner" width="332" height="146"/>
         <image name="messages" width="24" height="24"/>
+        <image name="party_seeking" width="135" height="44"/>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

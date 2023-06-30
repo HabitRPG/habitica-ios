@@ -16,6 +16,7 @@ struct MemberListItem: View {
     let member: MemberProtocol
     let onTap: (MemberProtocol) -> Void
     let onMoreTap: (MemberProtocol) -> Void
+    let isCurrentUser: Bool
     
     var body: some View {
         HStack {
@@ -25,10 +26,19 @@ struct MemberListItem: View {
                     HStack {
                         Text(member.profile?.name ?? "").font(.headline)
                         Spacer()
-                        Button {
-                            onMoreTap(member)
-                        } label: {
-                            Image(uiImage: Asset.moreInteractionsIcon.image)
+                        if !isCurrentUser {
+                            Button {
+                                onMoreTap(member)
+                            } label: {
+                                Image(uiImage: Asset.moreInteractionsIcon.image)
+                            }.overlay {
+                                Rectangle().foregroundColor(.clear)
+                                    .frame(width: 40, height: 40)
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        onMoreTap(member)
+                                    }
+                            }
                         }
                     }
                     HStack {
@@ -45,28 +55,30 @@ struct MemberListItem: View {
                             ProgressBarUI(value: stats.mana / stats.maxMana).foregroundColor(Color(UIColor.blue100)).frame(height: 8)
                         }
                         VStack(alignment: .leading, spacing: 0) {
-                            Text("\(Int(stats.health)) / \(Int(stats.maxHealth))").font(.system(size: 12)).foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor)).frame(height: 16)
-                            Text("\(Int(stats.experience)) / \(Int(stats.toNextLevel))").font(.system(size: 12)).foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor)).frame(height: 16)
-                            Text("\(Int(stats.mana)) / \(Int(stats.maxMana))").font(.system(size: 12)).foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor)).frame(height: 16)
+                            Text("\(stats.health.rounded()) / \(stats.maxHealth.rounded())").font(.system(size: 12)).foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor)).frame(height: 16)
+                            Text("\(stats.experience.rounded()) / \(stats.toNextLevel.rounded())").font(.system(size: 12)).foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor)).frame(height: 16)
+                            Text("\(stats.mana.rounded()) / \(stats.maxMana.rounded())").font(.system(size: 12)).foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor)).frame(height: 16)
                         }
                     }
                 }.frame(maxWidth: .infinity)
             }
-        }.padding(.vertical, 8).background(Color(ThemeService.shared.theme.windowBackgroundColor)).onTapGesture {
+        }.padding(16).background(Color(ThemeService.shared.theme.windowBackgroundColor)).onTapGesture {
             onTap(member)
-        }
+        }.padding(.vertical, 2)
     }
 }
 
 struct MemberList: View {
     let members: [MemberProtocol]
     @State var invites: [MemberProtocol]
+    let isLeader: Bool
     let onTap: (MemberProtocol) -> Void
     let onMoreTap: (MemberProtocol) -> Void
     
-    init(members: [MemberProtocol], invites: [MemberProtocol]?, onTap: @escaping (MemberProtocol) -> Void, onMoreTap: @escaping (MemberProtocol) -> Void) {
+    init(members: [MemberProtocol], invites: [MemberProtocol]?, isLeader: Bool, onTap: @escaping (MemberProtocol) -> Void, onMoreTap: @escaping (MemberProtocol) -> Void) {
         self.members = members
         _invites = State(initialValue: invites ?? [])
+        self.isLeader = isLeader
         self.onTap = onTap
         self.onMoreTap = onMoreTap
     }
@@ -78,24 +90,27 @@ struct MemberList: View {
     var body: some View {
         VStack(alignment: .leading) {
             ForEach(members, id: \.id) { member in
-                MemberListItem(member: member, onTap: onTap, onMoreTap: onMoreTap)
+                MemberListItem(member: member, onTap: onTap, onMoreTap: onMoreTap, isCurrentUser: member.id == socialRepository.currentUserId)
             }
-            ForEach(invites, id: \.id) { invite in
-                if let id = invite.id {
-                    PartyInviteView(member: invite, inviteButtonState: inviteStates[id] ?? .content, isInvited: inviteStates[id] != .success) {
-                        inviteStates[id] = .loading
-                        socialRepository.removeMember(groupID: "party", userID: id).observeCompleted {
-                            inviteStates[id] = .success
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                invites.removeAll { check in
-                                    return check.id == invite.id
+            if isLeader {
+                ForEach(invites, id: \.id) { invite in
+                    if let id = invite.id {
+                        PartyInviteView(member: invite, inviteButtonState: inviteStates[id] ?? .content, isInvited: inviteStates[id] != .success) {
+                            inviteStates[id] = .loading
+                            socialRepository.removeMember(groupID: "party", userID: id).observeCompleted {
+                                ToastManager.show(text: L10n.Groups.removed(invite.profile?.name ?? "player"), color: .red)
+                                inviteStates[id] = .failed
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                    invites.removeAll { check in
+                                        return check.id == invite.id
+                                    }
                                 }
                             }
                         }
+                        .padding(.top, 8)
+                        .padding(.bottom, 12)
+                        .cornerRadius(8)
                     }
-                    .padding(.top, 8)
-                    .padding(.bottom, 12)
-                    .cornerRadius(8)
                 }
             }
         }

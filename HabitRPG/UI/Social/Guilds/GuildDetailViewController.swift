@@ -89,7 +89,6 @@ class GuildDetailViewController: GroupDetailViewController {
     
     override func populateText() {
         joinButton.setTitle(L10n.Guilds.joinGuild, for: .normal)
-        inviteButton.setTitle(L10n.Guilds.inviteToGuild, for: .normal)
         let typeName = isGroupPlan ? L10n.groupPlan : L10n.Titles.guild
         guildLeaderTitleLabel.text = L10n.Social.xLeader(typeName)
         guildDescriptionTitleLabel.text = L10n.Social.xDescription(typeName)

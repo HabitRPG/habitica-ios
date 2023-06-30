@@ -33,6 +33,7 @@ class StackView: UIStackView {
         self.layer.insertSublayer(layer, at: 0)
         return layer
     }()
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         backgroundLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: backgroundLayer.cornerRadius).cgPath

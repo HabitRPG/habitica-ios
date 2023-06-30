@@ -1610,14 +1610,28 @@ public enum L10n {
     public static var inviteMember: String { return L10n.tr("Mainstrings", "groups.invite_member") }
     /// Invited!
     public static var invited: String { return L10n.tr("Mainstrings", "groups.invited") }
+    /// Invited @%@
+    public static func invitedX(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "groups.invited_x", p1)
+    }
     /// Only leader can create Challenges
     public static var leaderChallenges: String { return L10n.tr("Mainstrings", "groups.leader_challenges") }
     /// List
     public static var list: String { return L10n.tr("Mainstrings", "groups.list") }
     /// Members
     public static var members: String { return L10n.tr("Mainstrings", "groups.members") }
+    /// Removed %@
+    public static func removed(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "groups.removed", p1)
+    }
+    /// Rescinded
+    public static var rescinded: String { return L10n.tr("Mainstrings", "groups.rescinded") }
     /// Send Invite
     public static var sendInvite: String { return L10n.tr("Mainstrings", "groups.send_invite") }
+    /// Transferred ownership to %@
+    public static func transferredTo(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "groups.transferred_to", p1)
+    }
 
     public enum Invite {
       /// Add an Email
@@ -1880,14 +1894,20 @@ public enum L10n {
     public static func invitedToQuest(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "party.invited_to_quest", p1)
     }
-    /// Give a Party member the username found below and they can send you an invite
+    /// Want to join a Party with others but don’t know any other players? Let Party leaders know you’re looking for an invite!
     public static var joinPartyDescription: String { return L10n.tr("Mainstrings", "party.join_party_description") }
-    /// Want to join a party?
+    /// Looking for a Party?
     public static var joinPartyTitle: String { return L10n.tr("Mainstrings", "party.join_party_title") }
     /// Do you want to leave the party and keep or leave the challenges?
     public static var leavePartyDescription: String { return L10n.tr("Mainstrings", "party.leave_party_description") }
     /// Leave Party?
     public static var leavePartyTitle: String { return L10n.tr("Mainstrings", "party.leave_party_title") }
+    /// Look for a Party
+    public static var lookForParty: String { return L10n.tr("Mainstrings", "party.look_for_party") }
+    /// You’re looking for a Party!
+    public static var lookingForParty: String { return L10n.tr("Mainstrings", "party.looking_for_party") }
+    /// Keep an eye out for an invite or start your own Party at any time
+    public static var lookingForPartySubtitle: String { return L10n.tr("Mainstrings", "party.looking_for_party_subtitle") }
     /// Party Challenges
     public static var partyChallenges: String { return L10n.tr("Mainstrings", "party.party_challenges") }
     /// Party Description
@@ -1902,9 +1922,9 @@ public enum L10n {
     public static func questParticipantCount(_ p1: Int) -> String {
       return L10n.tr("Mainstrings", "party.quest_participant_count", p1)
     }
-    /// Remove from Party
+    /// Remove Member
     public static var removeFromParty: String { return L10n.tr("Mainstrings", "party.remove_from_party") }
-    /// Are you sure you want to remove %@ from the party?
+    /// Are you sure you want to remove %@ from the Party?
     public static func removeMemberTitle(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "party.remove_member_title", p1)
     }

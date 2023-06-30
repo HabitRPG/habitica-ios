@@ -19,7 +19,7 @@ class SendPartyInviteViewModel: ObservableObject {
     }
 
     @Published var buttonState = LoadingButtonState.content
-    @Published var invites = [""]
+    @Published var invites = [String]()
     
     var hasValidInvites: Bool {
         return invites.contains(where: { invite in
@@ -57,6 +57,7 @@ class SendPartyInviteViewModel: ObservableObject {
         }).observeValues { result in
             if result != nil {
                 self.buttonState = .success
+                ToastManager.show(text: L10n.usersInvited, color: .green)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.onInvited()
                 }

@@ -14,4 +14,5 @@ public protocol UserPartyProtocol {
     var order: String? { get set }
     var orderAscending: Bool { get set }
     var quest: QuestStateProtocol? { get set }
+    var seeking: Date? { get set }
 }

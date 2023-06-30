@@ -25,8 +25,10 @@ class PartyViewController: SplitSocialViewController {
     @IBOutlet weak var joinPartyTitle: UILabel!
     @IBOutlet weak var joinPartyDescriptionLabel: UILabel!
     
+    @IBOutlet weak var lookingForPartySubtitleLabel: UILabel!
+    @IBOutlet weak var leaveLookingForPartyButton: UIButton!
     var userDisposable: Disposable?
-    
+    private var isSeekingParty = false
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,7 +46,23 @@ class PartyViewController: SplitSocialViewController {
         
         userDisposable = userRepository.getUser()
             .on(value: {[weak self] user in
-                self?.userIDButton.setTitle("@\(user.username ?? "")", for: .normal)
+                self?.isSeekingParty = user.party?.seeking != nil
+                if self?.isSeekingParty == true {
+                    self?.userIDButton?.setTitle(L10n.Party.lookingForParty, for: .normal)
+                    self?.userIDButton?.backgroundColor = .clear
+                    self?.userIDButton?.setTitleColor(ThemeService.shared.theme.successColor, for: .normal)
+                    self?.userIDButton?.borderColor = ThemeService.shared.theme.successColor
+                    self?.userIDButton?.borderWidth = 2
+                    self?.lookingForPartySubtitleLabel.isHidden = false
+                    self?.leaveLookingForPartyButton.isHidden = false
+                } else {
+                    self?.userIDButton?.setTitle(L10n.Party.lookForParty, for: .normal)
+                    self?.userIDButton?.backgroundColor = ThemeService.shared.theme.backgroundTintColor
+                    self?.userIDButton?.setTitleColor(.white, for: .normal)
+                    self?.userIDButton?.borderColor = nil
+                    self?.lookingForPartySubtitleLabel.isHidden = true
+                    self?.leaveLookingForPartyButton.isHidden = true
+                }
                 self?.groupInvitationListView.set(invitations: user.invitations)
             })
             .map({ (user) -> String? in
@@ -84,6 +102,8 @@ class PartyViewController: SplitSocialViewController {
         createPartyButton.backgroundColor = theme.windowBackgroundColor
         userIDButton.backgroundColor = theme.windowBackgroundColor
         view.backgroundColor = theme.contentBackgroundColor
+        lookingForPartySubtitleLabel.textColor = theme.secondaryTextColor
+        leaveLookingForPartyButton.tintColor = theme.errorColor
     }
     
     override func populateText() {
@@ -105,9 +125,12 @@ class PartyViewController: SplitSocialViewController {
     }
     
     @IBAction func userIDButtonTapped(_ sender: UIButton) {
-        let pasteboard = UIPasteboard.general
-        pasteboard.string = sender.title(for: .normal)?.replacingOccurrences(of: "@", with: "")
-        ToastManager.show(text: L10n.copiedToClipboard, color: .blue)
+        if !isSeekingParty {
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+            disposable.inner.add(userRepository.updateUser(key: "party.seeking", value: dateFormatter.string(from: Date())).observeCompleted {})
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -117,5 +140,10 @@ class PartyViewController: SplitSocialViewController {
             formViewController?.isParty = true
         }
         super.prepare(for: segue, sender: sender)
+    }
+    
+    @IBAction func leaveLookingButtonTapped(_ sender: Any) {
+        disposable.inner.add(userRepository.updateUser(key: "party.seeking", value: nil)
+            .observeCompleted {})
     }
 }

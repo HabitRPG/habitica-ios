@@ -110,7 +110,7 @@ class LabeledProgressBar: UIView {
         labelView.isAccessibilityElement = false
         typeView.isAccessibilityElement = false
         
-        accessibilityLabel = "\(typeView.text ?? "") \(Int(value)) of \(Int(maxValue))"
+        accessibilityLabel = "\(typeView.text ?? "") \(value) of \(maxValue)"
     }
     
     override func layoutSubviews() {
