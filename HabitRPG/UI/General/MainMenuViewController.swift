@@ -287,7 +287,7 @@ class MainMenuViewController: BaseTableViewController {
         setupHeader()
         
         #if !targetEnvironment(macCatalyst)
-        let refreshControl = UIRefreshControl()
+        let refreshControl = HabiticaRefresControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         self.refreshControl = refreshControl
         #endif

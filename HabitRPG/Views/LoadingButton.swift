@@ -21,12 +21,13 @@ enum LoadingButtonType {
     case destructive
 }
 
-struct LoadingButton<Content: View, SuccessContent: View>: View {
+struct LoadingButton<Content: View, SuccessContent: View, ErrorContent: View>: View {
     @Binding var state: LoadingButtonState
     var type: LoadingButtonType = .normal
     let onTap: () -> Void
     let content: Content
     var successContent: SuccessContent
+    var errorContent: ErrorContent
     var contentPadding: EdgeInsets = .zero
     
     private func getBackgroundColor() -> UIColor {
@@ -50,9 +51,16 @@ struct LoadingButton<Content: View, SuccessContent: View>: View {
     @ViewBuilder
     private func getContent() -> some View {
         if state == .loading {
-            ProgressView().progressViewStyle(CircularProgressViewStyle(tint: Color.white)).padding(4)
+            ProgressView().progressViewStyle(HabiticaProgressStyle(strokeWidth: 6)).frame(width: 24, height: 24).overlay(ZStack {
+                Circle().stroke().foregroundColor(.white).frame(width: 17, height: 17)
+                Circle().stroke().foregroundColor(.white).frame(width: 29, height: 29)
+            })
         } else if state == .failed {
-            Text(L10n.failed)
+            if successContent is EmptyView {
+                Text(L10n.failed)
+            } else {
+                successContent
+            }
         } else if state == .success {
             if successContent is EmptyView {
                 content
@@ -70,8 +78,20 @@ struct LoadingButton<Content: View, SuccessContent: View>: View {
 }
 
 extension LoadingButton where SuccessContent == EmptyView {
+    init(state: Binding<LoadingButtonState>, onTap: @escaping () -> Void, content: Content, errorContent: ErrorContent) {
+        self.init(state: state, onTap: onTap, content: content, successContent: EmptyView(), errorContent: errorContent)
+    }
+}
+
+extension LoadingButton where SuccessContent == EmptyView, ErrorContent == EmptyView {
     init(state: Binding<LoadingButtonState>, onTap: @escaping () -> Void, content: Content) {
-        self.init(state: state, onTap: onTap, content: content, successContent: EmptyView())
+        self.init(state: state, onTap: onTap, content: content, successContent: EmptyView(), errorContent: EmptyView())
+    }
+}
+
+extension LoadingButton where ErrorContent == EmptyView {
+    init(state: Binding<LoadingButtonState>, onTap: @escaping () -> Void, content: Content, successContent: SuccessContent) {
+        self.init(state: state, onTap: onTap, content: content, successContent: successContent, errorContent: EmptyView())
     }
 }
 

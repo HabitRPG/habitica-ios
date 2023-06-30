@@ -61,7 +61,7 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         layoutHeader()
         
         #if !targetEnvironment(macCatalyst)
-        self.tableView?.refreshControl = UIRefreshControl()
+        self.tableView?.refreshControl = HabiticaRefresControl()
         self.tableView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         #endif
         
