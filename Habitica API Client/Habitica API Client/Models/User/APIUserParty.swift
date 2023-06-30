@@ -14,6 +14,7 @@ class APIUserParty: UserPartyProtocol, Decodable {
     var order: String?
     var orderAscending: Bool = false
     var quest: QuestStateProtocol?
+    var seeking: Date?
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -21,6 +22,7 @@ class APIUserParty: UserPartyProtocol, Decodable {
         case order
         case orderAscending
         case quest
+        case seeking
     }
     
     required init(from decoder: Decoder) throws {
@@ -32,5 +34,6 @@ class APIUserParty: UserPartyProtocol, Decodable {
         order = try? values.decode(String.self, forKey: .order)
         orderAscending = (try? values.decode(Bool.self, forKey: .orderAscending)) ?? false
         quest = try? values.decode(APIQuestState.self, forKey: .quest)
+        seeking = try? values.decode(Date.self, forKey: .seeking)
     }
 }

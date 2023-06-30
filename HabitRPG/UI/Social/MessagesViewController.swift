@@ -53,7 +53,7 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         tableView.estimatedRowHeight = 90
         tableView.keyboardDismissMode = .interactive
         #if !targetEnvironment(macCatalyst)
-        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl = HabiticaRefresControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         #endif
         

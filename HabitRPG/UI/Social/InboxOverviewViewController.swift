@@ -28,7 +28,7 @@ class InboxOverviewViewController: BaseTableViewController {
         tableView.estimatedRowHeight = 60
         
         #if !targetEnvironment(macCatalyst)
-        refreshControl = UIRefreshControl()
+        refreshControl = HabiticaRefresControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         #endif
     }

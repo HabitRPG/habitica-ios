@@ -28,6 +28,7 @@ class RealmUserParty: Object, UserPartyProtocol {
         }
     }
     @objc dynamic var realmQuest: RealmQuestState?
+    @objc dynamic var seeking: Date?
     @objc dynamic var userID: String?
     
     dynamic var id: String?
@@ -46,5 +47,6 @@ class RealmUserParty: Object, UserPartyProtocol {
         order = protocolObject.order
         orderAscending = protocolObject.orderAscending
         quest = protocolObject.quest
+        seeking = protocolObject.seeking
     }
 }

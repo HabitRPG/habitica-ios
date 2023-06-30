@@ -39,6 +39,10 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func save(_ member: MemberProtocol) {
+        let existingMember = getRealm()?.object(ofType: RealmMember.self, forPrimaryKey: member.id)
+        if let existingParty = existingMember?.party, member.party?.id != existingParty.id {
+            member.party = existingParty
+        }
         if let realmMember = member as? RealmMember {
             save(object: realmMember)
             return

@@ -64,9 +64,18 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        if isBeingDismissed {
+            return
+        }
+
         if isViewLoaded && isInitialSetup && viewID != nil {
             isInitialSetup = false
-            setupSplitView(traitCollection)
+            
+            if canShowAsSplitView {
+                setupSplitView(traitCollection)
+            } else {
+                topHeaderCoordinator?.hideHeader = false
+            }
             if !showAsSplitView {
                 let userDefaults = UserDefaults()
                 let lastPage = userDefaults.integer(forKey: (viewID ?? "") + "lastOpenedSegment")
@@ -92,13 +101,19 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
     }
     
     private func setupSplitView(_ collection: UITraitCollection) {
+        if !canShowAsSplitView {
+            return
+        }
         showAsSplitView = canShowAsSplitView && (collection.horizontalSizeClass == .regular && collection.verticalSizeClass == .regular)
         separatorView.isHidden = !showAsSplitView
         scrollView.isScrollEnabled = !showAsSplitView
         topHeaderCoordinator?.hideHeader = showAsSplitView
-        if showAsSplitView && leftViewWidthConstraint?.multiplier != 0.333 {
-            leftViewWidthConstraint = leftViewWidthConstraint?.setMultiplier(multiplier: 0.333)
-            rightViewWidthConstraint = rightViewWidthConstraint?.setMultiplier(multiplier: 0.666)
+        if showAsSplitView {
+            let leftMultiplier = max(0.333, 375 / scrollView.frame.width)
+            if leftViewWidthConstraint?.multiplier != leftMultiplier {
+                leftViewWidthConstraint = leftViewWidthConstraint?.setMultiplier(multiplier: leftMultiplier)
+                rightViewWidthConstraint = rightViewWidthConstraint?.setMultiplier(multiplier: 1-leftMultiplier)
+            }
         } else if leftViewWidthConstraint?.multiplier != 1 {
             leftViewWidthConstraint = leftViewWidthConstraint?.setMultiplier(multiplier: 1)
             rightViewWidthConstraint = rightViewWidthConstraint?.setMultiplier(multiplier: 1)

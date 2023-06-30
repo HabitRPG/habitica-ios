@@ -66,12 +66,13 @@ class LookingForPartyViewModel: ObservableObject {
         }
     }
     
-    func invite(uuid: String) {
+    func invite(uuid: String, username: String) {
         inviteStates[uuid] = .loading
         socialRepository.invite(toGroup: "party", members: ["uuids": [uuid]]).observeValues { result in
             if result != nil {
                 self.inviteStates[uuid] = .success
                 self.invitedMembers.append(uuid)
+                ToastManager.show(text: L10n.Groups.invitedX(username), color: .green)
             } else {
                 self.inviteStates[uuid] = .failed
             }
@@ -168,7 +169,8 @@ struct PartyInviteView: View {
                 onInvite()
             },
                           content: Text(isInvited ? L10n.Groups.cancelInvite : L10n.Groups.sendInvite),
-                          successContent: Text(isInvited ? L10n.Groups.invited : L10n.cancelled))
+                          successContent: Text(isInvited ? L10n.Groups.invited : L10n.Groups.rescinded),
+                          errorContent: Text(L10n.Groups.rescinded))
         }.onTapGesture {
             RouterHandler.shared.handle(urlString: "/profile/\(member.id ?? "")")
         }
@@ -192,7 +194,7 @@ struct LookingForPartyView: View {
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 6)
                 if !viewModel.hasLoadedInitialData {
-                    ProgressView().progressViewStyle(.circular)
+                    ProgressView().progressViewStyle(HabiticaProgressStyle(strokeWidth: 12)).frame(width: 100, height: 100)
                 } else {
                     ForEach(viewModel.members, id: \.id) { member in
                         if let id = member.id {
@@ -200,7 +202,7 @@ struct LookingForPartyView: View {
                                 if viewModel.invitedMembers.contains(id) {
                                     viewModel.cancelInvite(uuid: id)
                                 } else {
-                                    viewModel.invite(uuid: id)
+                                    viewModel.invite(uuid: id, username: member.username ?? "")
                                 }
                             }
                             .padding(.top, 8)

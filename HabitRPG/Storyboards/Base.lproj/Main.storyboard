@@ -3,7 +3,7 @@
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -538,14 +538,14 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPg-7O-j94">
-                                                        <rect key="frame" x="0.0" y="135.33333333333337" width="376" height="1"/>
+                                                        <rect key="frame" x="0.0" y="135.33333333333334" width="376" height="1"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="V3u-UV-9kz"/>
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="ul9-Fj-GrY">
-                                                        <rect key="frame" x="0.0" y="144.33333333333337" width="376" height="19.999999999999972"/>
+                                                        <rect key="frame" x="0.0" y="144.33333333333334" width="376" height="20"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGm-VS-bMz">
                                                                 <rect key="frame" x="0.0" y="0.0" width="85" height="20"/>
@@ -3797,21 +3797,21 @@ a matching subscription automatically after sending your gift.</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="FI8-Gh-C6n"/>
-        <segue reference="9d2-gY-n53"/>
-        <segue reference="ImE-mD-NfV"/>
-        <segue reference="gXN-6g-Ete"/>
+        <segue reference="2vn-wQ-bqg"/>
+        <segue reference="FPm-Dv-Zos"/>
+        <segue reference="x0h-sG-Le1"/>
         <segue reference="zgD-BU-MQh"/>
         <segue reference="ScC-Xo-JyG"/>
         <segue reference="04Z-5H-zfF"/>
         <segue reference="ETz-qE-xC2"/>
-        <segue reference="mRM-bY-AV4"/>
+        <segue reference="jU9-l6-uQc"/>
         <segue reference="GNu-1J-ZVK"/>
         <segue reference="gXQ-dZ-OGd"/>
         <segue reference="j9F-en-5nH"/>
         <segue reference="dho-1x-ad8"/>
         <segue reference="6tw-63-M3K"/>
         <segue reference="zf0-3c-Xzo"/>
-        <segue reference="P7Z-lc-x4T"/>
+        <segue reference="Nkz-Sr-H0i"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>

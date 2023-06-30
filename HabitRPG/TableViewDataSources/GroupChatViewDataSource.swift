@@ -36,8 +36,14 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             self?.sections[0].items = chatMessages
             self?.notify(changes: changes)
         }).start())
-        let timerSignal: SignalProducer<Date, Never> = SignalProducer.timer(interval: .seconds(30), on: QueueScheduler.main)
-        disposable.add(timerSignal.on(value: { [weak self] _ in self?.retrieveData(completed: nil) }).start())
+        disposable.add(socialRepository.getGroupMembers(groupID: groupID).take(first: 1).on(value: { [weak self] members in
+            if members.value.count > 1 {
+                let timerSignal: SignalProducer<Date, Never> = SignalProducer.timer(interval: .seconds(30), on: QueueScheduler.main)
+                self?.disposable.add(timerSignal.on(value: { _ in
+                    self?.retrieveData(completed: nil)
+                }).start())
+            }
+        }).start())
         
         retrieveData(completed: nil)
     }
@@ -128,6 +134,9 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
     }
     
     override func retrieveData(completed: (() -> Void)?) {
+        if user?.party?.id == nil {
+            return
+        }
         disposable.add(socialRepository.retrieveChat(groupID: groupID).observeCompleted {
             completed?()
         })

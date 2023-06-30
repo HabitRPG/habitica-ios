@@ -333,7 +333,6 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
                     ToastManager.show(text: error, color: .red)
                     UINotificationFeedbackGenerator.oneShotNotificationOccurred(.error)
                 } else if response != nil {
-                    ToastManager.show(text: L10n.usersInvited, color: .green)
                     UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
                 }
             }

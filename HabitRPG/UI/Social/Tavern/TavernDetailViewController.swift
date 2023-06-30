@@ -102,14 +102,7 @@ class TavernDetailViewController: GroupDetailViewController {
         guidelinesTextView.textColor = theme.secondaryTextColor
         tavernHeaderView.applyTheme(backgroundColor: theme.contentBackgroundColor)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // workaround to get the view to size correctly.
-        worldBossStackView.isCollapsed = worldBossStackView.isCollapsed
-    }
-    
+
     override func updateData(group: GroupProtocol) {
         super.updateData(group: group)
         questProgressView.configure(group: group)

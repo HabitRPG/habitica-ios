@@ -12,10 +12,13 @@ import UIKit
 class CollapsibleStackView: SeparatedStackView {
     
     var titleView: CollapsibleTitle?
-    
-    private var titleBottomBorder: CALayer?
-    
+        
     @IBInspectable var identifier: String?
+    @IBInspectable var canCollapse: Bool = true {
+        didSet {
+            titleView?.showCarret = canCollapse
+        }
+    }
     
     private var disableAnimations = false
     
@@ -86,19 +89,13 @@ class CollapsibleStackView: SeparatedStackView {
             insertArrangedSubview(view, at: 0)
         }
         titleView?.tapAction = {[weak self] in
-            guard let weakSelf = self else {
+            guard let weakSelf = self, weakSelf.canCollapse else {
                 return
             }
             weakSelf.isCollapsed = !weakSelf.isCollapsed
         }
         titleView?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 16)
         applyTheme(theme: ThemeService.shared.theme)
-    }
-    
-    override func layoutSublayers(of layer: CALayer) {
-        super.layoutSublayers(of: layer)
-        
-        titleBottomBorder?.frame = CGRect(x: 0, y: (titleView?.layer.frame.size.height ?? 0) - 1, width: layer.frame.size.width, height: 1)
     }
     
     override func awakeFromNib() {
@@ -116,15 +113,9 @@ class CollapsibleStackView: SeparatedStackView {
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        let separatorColor = showSeparators ? theme.separatorColor : .clear
-        if titleBottomBorder == nil {
-            titleBottomBorder = addBottomBorderWithColor(color: separatorColor, width: 1)
-        } else {
-            titleBottomBorder?.backgroundColor = separatorColor.cgColor
-        }
         
         backgroundColor = theme.windowBackgroundColor
-        titleView?.textColor = theme.primaryTextColor
-        titleView?.subtitleColor = theme.secondaryTextColor
+        titleView?.textColor = theme.secondaryTextColor
+        titleView?.subtitleColor = theme.ternaryTextColor
     }
 }

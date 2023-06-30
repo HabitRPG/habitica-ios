@@ -50,7 +50,7 @@ class GuildOverviewViewController: BaseTableViewController, UISearchBarDelegate 
         searchBarWrapper.addSubview(searchBarCancelButton)
         
         #if !targetEnvironment(macCatalyst)
-        refreshControl = UIRefreshControl()
+        refreshControl = HabiticaRefresControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         #endif
         

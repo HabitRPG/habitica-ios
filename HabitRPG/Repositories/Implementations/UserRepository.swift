@@ -168,11 +168,11 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         }).start()
     }
     
-    func updateUser(_ updateDict: [String: Encodable]) -> Signal<UserProtocol?, Never> {
+    func updateUser(_ updateDict: [String: Encodable?]) -> Signal<UserProtocol?, Never> {
         return UpdateUserCall(updateDict).objectSignal.on(value: handleUserUpdate())
     }
     
-    func updateUser(key: String, value: Encodable) -> Signal<UserProtocol?, Never> {
+    func updateUser(key: String, value: Encodable?) -> Signal<UserProtocol?, Never> {
         return updateUser([key: value])
     }
     
