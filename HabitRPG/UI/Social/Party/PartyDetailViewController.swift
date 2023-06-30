@@ -44,8 +44,15 @@ class PartyDetailViewController: GroupDetailViewController {
     var fetchMembersDisposable: Disposable?
     var questStateDisposable: CompositeDisposable?
     
+    private var members: [MemberProtocol] = []
+    private var invitations: [MemberProtocol] = []
+    private var finishedInitialLoad = false
     private var selectedMember: MemberProtocol?
 
+    private var isLeader: Bool {
+        return groupProperty.value?.leaderID == userRepository.currentUserId
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,13 +60,6 @@ class PartyDetailViewController: GroupDetailViewController {
             mainStackView.setCustomSpacing(16, after: groupNameLabel)
         }
         
-        let margins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        membersStackview.layoutMargins = margins
-        membersStackview.isLayoutMarginsRelativeArrangement = true
-        questContentStackView.layoutMargins = margins
-        questContentStackView.isLayoutMarginsRelativeArrangement = true
-        questContentStackView.separatorInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
-        questStackViewTitle.insets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         questContentStackView.separatorColor = .clear
         
         questInvitationUserAvatarView.showPet = false
@@ -85,16 +85,54 @@ class PartyDetailViewController: GroupDetailViewController {
                     return SignalProducer.empty
                 }).combineLatest(with: self?.socialRepository.retrieveGroupInvites(groupID: groupID) ?? Signal.empty) ?? SignalProducer.empty
             }).on(value: {[weak self] (members, invites) in
+                self?.members = members.value
+                self?.invitations = invites ?? []
                 self?.set(members: members.value, invites: invites)
+                self?.finishedInitialLoad = true
         }).start())
+        
+        #if !targetEnvironment(macCatalyst)
+        let refreshControl = HabiticaRefresControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        #endif
+    }
+    
+    @objc
+    private func refresh() {
+        disposable.inner.add(socialRepository.retrieveGroup(groupID: groupID ?? "party")
+            .flatMap(.latest, { _ in
+                return self.socialRepository.retrieveGroupMembers(groupID: self.groupID ?? "party")
+            })
+            .observeCompleted {
+                self.scrollView?.refreshControl?.endRefreshing()
+            })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if finishedInitialLoad {
+            socialRepository.retrieveGroupInvites(groupID: groupID ?? "").observeValues { invites in
+                self.invitations = invites ?? []
+                self.set(members: self.members, invites: invites)
+            }
+        }
     }
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
+        
         partyChallengesButton.backgroundColor = theme.windowBackgroundColor
+        questTitleContentView.backgroundColor = theme.windowBackgroundColor
+        inviteMemberButton.backgroundColor = theme.windowBackgroundColor
+        startQuestButton.backgroundColor = theme.windowBackgroundColor
+        
         membersStackview.applyTheme(theme: theme)
         questContentStackView.applyTheme(theme: theme)
         questStackView.applyTheme(theme: theme)
+        
+        questStackView.backgroundColor = theme.contentBackgroundColor
+        groupDescriptionStackView?.backgroundColor = theme.contentBackgroundColor
+        membersStackview.backgroundColor = theme.contentBackgroundColor
     }
     
     override func populateText() {
@@ -117,10 +155,11 @@ class PartyDetailViewController: GroupDetailViewController {
     }
 
     private func set(members: [MemberProtocol], invites: [MemberProtocol]?) {
+        inviteMemberButton.isHidden = !isLeader
         for view in membersStackview.arrangedSubviews where view.tag == 1000 {
             view.removeFromSuperview()
         }
-        let memberListView = MemberList(members: members, invites: invites, onTap: {[weak self] member in
+        let memberListView = MemberList(members: members, invites: invites, isLeader: isLeader, onTap: {[weak self] member in
             self?.selectedMember = member
             self?.perform(segue: StoryboardSegue.Social.userProfileSegue)
         }, onMoreTap: {[weak self] member in
@@ -131,7 +170,7 @@ class PartyDetailViewController: GroupDetailViewController {
                     (viewController.topViewController as? InboxChatViewController)?.username = member.username
                     self?.present(viewController, animated: true, completion: nil)
                 }
-                if self?.groupProperty.value?.leaderID == self?.userRepository.currentUserId && self?.groupProperty.value?.leaderID != member.id {
+                if self?.isLeader == true && self?.groupProperty.value?.leaderID != member.id {
                     BottomSheetMenuitem(title: L10n.transferOwnership) {
                         self?.showTransferOwnershipDialog(memberID: member.id ?? "", displayName: member.profile?.name ?? "")
 
@@ -287,7 +326,11 @@ class PartyDetailViewController: GroupDetailViewController {
     private func showTransferOwnershipDialog(memberID: String, displayName: String) {
         let alert = HabiticaAlertController(title: L10n.Party.transferOwnershipTitle, message: L10n.Party.transferOwnershipDescription(displayName))
         alert.addAction(title: L10n.transfer, style: .default, isMainAction: true) {[weak self] _ in
-            self?.socialRepository.transferOwnership(groupID: self?.groupID ?? "", userID: memberID).start()
+            self?.socialRepository.transferOwnership(groupID: self?.groupID ?? "", userID: memberID)
+                .on(completed: {
+                    ToastManager.show(text: L10n.Groups.transferredTo(displayName), color: .green)
+                })
+                .start()
         }
         alert.addCancelAction()
         alert.show()
@@ -300,7 +343,13 @@ class PartyDetailViewController: GroupDetailViewController {
     private func showRemoveMemberDialog(memberID: String, displayName: String) {
         let alert = HabiticaAlertController(title: L10n.Party.removeMemberTitle(displayName))
         alert.addAction(title: L10n.remove, style: .destructive, isMainAction: true) {[weak self] _ in
-            self?.socialRepository.removeMember(groupID: self?.groupID ?? "", userID: memberID).observeCompleted {}
+            self?.socialRepository.removeMember(groupID: self?.groupID ?? "", userID: memberID)
+                .flatMap(.latest, { _ in
+                    return self?.socialRepository.retrieveGroupMembers(groupID: self?.groupID ?? "") ?? Signal.empty
+                })
+                .observeCompleted {
+                    ToastManager.show(text: L10n.Groups.removed(displayName), color: .red)
+                }
         }
         alert.addCancelAction()
         alert.show()

@@ -46,7 +46,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         tableView.register(nib, forCellReuseIdentifier: "Cell")
                 
         #if !targetEnvironment(macCatalyst)
-        let refresher = UIRefreshControl()
+        let refresher = HabiticaRefresControl()
         refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
         refreshControl = refresher
         #endif

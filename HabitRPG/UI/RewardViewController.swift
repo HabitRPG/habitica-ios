@@ -21,7 +21,7 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
     let dataSource = RewardViewDataSource()
 
     #if !targetEnvironment(macCatalyst)
-    let refreshControl = UIRefreshControl()
+    let refreshControl = HabiticaRefresControl()
     #endif
     
     override func viewDidLoad() {

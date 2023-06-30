@@ -125,7 +125,7 @@ struct FaintView: View {
             HabiticaButtonUI(label: Group {
                 if isReviving {
                     HStack(spacing: 6) {
-                        ProgressView().progressViewStyle(CircularProgressViewStyle())
+                        ProgressView().progressViewStyle(HabiticaProgressStyle(strokeWidth: 8)).frame(width: 28, height: 28)
                         Text("Reviving...")
                     }
                 } else {
