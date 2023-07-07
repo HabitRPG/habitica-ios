@@ -400,6 +400,8 @@
 "guilds.leave_challenges" = "Leave Challenges";
 "guilds.joined_guild" = "You joined the guild";
 "guilds.left_guild" = "You left the guild";
+"guilds.joined_party" = "You joined the party";
+"guilds.left_party" = "You left the party";
 "guilds.guild_challenges" = "Guild Challenges";
 "guilds.invite_to_guild" = "Invite to Guild";
 "guilds.join_guild" = "Join Guild";
@@ -527,6 +529,7 @@
 "party.transfer_ownership_description" = "This will make %@ the new Party leader";
 "party.remove_member_title" = "Are you sure you want to remove %@ from the Party?";
 "party.quest_not_participating" = "You are not participating";
+"party.leave_looking_for_party_subtitle" = "Keep an eye out for an invite or start your own Party at any time";
 "transfer_ownership" = "Transfer Leadership";
 "transfer" = "Transfer";
 "remove" = "Remove";

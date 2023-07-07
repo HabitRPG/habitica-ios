@@ -55,10 +55,15 @@ struct MemberListItem: View {
                             ProgressBarUI(value: stats.mana / stats.maxMana).foregroundColor(Color(UIColor.blue100)).frame(height: 8)
                         }
                         VStack(alignment: .leading, spacing: 0) {
-                            Text("\(stats.health.rounded()) / \(stats.maxHealth.rounded())").font(.system(size: 12)).foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor)).frame(height: 16)
-                            Text("\(stats.experience.rounded()) / \(stats.toNextLevel.rounded())").font(.system(size: 12)).foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor)).frame(height: 16)
-                            Text("\(stats.mana.rounded()) / \(stats.maxMana.rounded())").font(.system(size: 12)).foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor)).frame(height: 16)
+                            Text("\(stats.health.rounded()) / \(stats.maxHealth.rounded())")
+                                .frame(height: 16)
+                            Text("\(stats.experience.rounded()) / \(stats.toNextLevel.rounded())")
+                                .frame(height: 16)
+                            Text("\(stats.mana.rounded()) / \(stats.maxMana.rounded())")
+                                .frame(height: 16)
                         }
+                        .font(.system(size: 12))
+                        .foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor))
                     }
                 }.frame(maxWidth: .infinity)
             }
@@ -92,25 +97,23 @@ struct MemberList: View {
             ForEach(members, id: \.id) { member in
                 MemberListItem(member: member, onTap: onTap, onMoreTap: onMoreTap, isCurrentUser: member.id == socialRepository.currentUserId)
             }
-            if isLeader {
-                ForEach(invites, id: \.id) { invite in
-                    if let id = invite.id {
-                        PartyInviteView(member: invite, inviteButtonState: inviteStates[id] ?? .content, isInvited: inviteStates[id] != .success) {
-                            inviteStates[id] = .loading
-                            socialRepository.removeMember(groupID: "party", userID: id).observeCompleted {
-                                ToastManager.show(text: L10n.Groups.removed(invite.profile?.name ?? "player"), color: .red)
-                                inviteStates[id] = .failed
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                    invites.removeAll { check in
-                                        return check.id == invite.id
-                                    }
+            ForEach(invites, id: \.id) { invite in
+                if let id = invite.id {
+                    PartyInviteView(member: invite, inviteButtonState: inviteStates[id] ?? .content, isInvited: inviteStates[id] != .success, canInvite: isLeader, onInvite:  {
+                        inviteStates[id] = .loading
+                        socialRepository.removeMember(groupID: "party", userID: id).observeCompleted {
+                            ToastManager.show(text: L10n.Groups.removed(invite.profile?.name ?? "player"), color: .red)
+                            inviteStates[id] = .failed
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                invites.removeAll { check in
+                                    return check.id == invite.id
                                 }
                             }
                         }
-                        .padding(.top, 8)
-                        .padding(.bottom, 12)
-                        .cornerRadius(8)
-                    }
+                    })
+                    .padding(.top, 8)
+                    .padding(.bottom, 12)
+                    .cornerRadius(8)
                 }
             }
         }

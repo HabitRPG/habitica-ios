@@ -103,17 +103,32 @@ struct ClassLabel: View {
     }
     
     private func classColor() -> UIColor? {
-        switch className {
-        case "warrior":
-            return UIColor.maroon10
-        case "mage":
-            return UIColor.blue10
-        case "healer":
-            return UIColor.yellow10
-        case "rogue":
-            return UIColor.purple300
-        default:
-            return nil
+        if ThemeService.shared.theme.isDark {
+            switch className {
+            case "warrior":
+                return UIColor.maroon500
+            case "mage":
+                return UIColor.blue500
+            case "healer":
+                return UIColor.yellow500
+            case "rogue":
+                return UIColor.purple600
+            default:
+                return nil
+            }
+        } else {
+            switch className {
+            case "warrior":
+                return UIColor.maroon10
+            case "mage":
+                return UIColor.blue10
+            case "healer":
+                return UIColor.yellow10
+            case "rogue":
+                return UIColor.purple300
+            default:
+                return nil
+            }
         }
     }
     
@@ -121,9 +136,11 @@ struct ClassLabel: View {
         if selectedClass {
             HStack {
                 if let classImage = classImage() {
-                    Image(uiImage: classImage)
+                    Image(uiImage: classImage).frame(width: 21, height: 21)
                 }
-                Text(className).foregroundColor(Color(classColor() ?? ThemeService.shared.theme.primaryTextColor)).font(.subheadline)
+                Text(className.localizedCapitalized)
+                    .foregroundColor(Color(classColor() ?? ThemeService.shared.theme.primaryTextColor))
+                    .font(.system(size: 14, weight: .semibold))
             }
         }
         
@@ -135,6 +152,7 @@ struct PartyInviteView: View {
     let inviteButtonState: LoadingButtonState
     let isInvited: Bool
     let onInvite: () -> Void
+    var canInvite = true
     
     var body: some View {
         VStack( spacing: 12) {
@@ -163,14 +181,16 @@ struct PartyInviteView: View {
                 .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
                 .font(.system(size: 14, weight: .semibold))
             }
-            LoadingButton(state: .constant(inviteButtonState),
-                          type: isInvited ? .destructive : .normal,
-                          onTap: {
-                onInvite()
-            },
-                          content: Text(isInvited ? L10n.Groups.cancelInvite : L10n.Groups.sendInvite),
-                          successContent: Text(isInvited ? L10n.Groups.invited : L10n.Groups.rescinded),
-                          errorContent: Text(L10n.Groups.rescinded))
+            if canInvite {
+                LoadingButton(state: .constant(inviteButtonState),
+                              type: isInvited ? .destructive : .normal,
+                              onTap: {
+                    onInvite()
+                },
+                              content: Text(isInvited ? L10n.Groups.cancelInvite : L10n.Groups.sendInvite),
+                              successContent: Text(isInvited ? L10n.Groups.invited : L10n.Groups.rescinded),
+                              errorContent: Text(L10n.Groups.rescinded))
+            }
         }.onTapGesture {
             RouterHandler.shared.handle(urlString: "/profile/\(member.id ?? "")")
         }
@@ -194,7 +214,7 @@ struct LookingForPartyView: View {
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 6)
                 if !viewModel.hasLoadedInitialData {
-                    ProgressView().progressViewStyle(HabiticaProgressStyle(strokeWidth: 12)).frame(width: 100, height: 100)
+                    ProgressView().progressViewStyle(HabiticaProgressStyle(strokeWidth: 12)).frame(width: 80, height: 80).padding(.top, 20)
                 } else {
                     ForEach(viewModel.members, id: \.id) { member in
                         if let id = member.id {

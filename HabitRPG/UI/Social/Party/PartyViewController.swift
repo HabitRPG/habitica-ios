@@ -27,6 +27,7 @@ class PartyViewController: SplitSocialViewController {
     
     @IBOutlet weak var lookingForPartySubtitleLabel: UILabel!
     @IBOutlet weak var leaveLookingForPartyButton: UIButton!
+    @IBOutlet weak var leaveLookingForPartySubtitle: UILabel!
     var userDisposable: Disposable?
     private var isSeekingParty = false
     override func viewDidLoad() {
@@ -55,6 +56,7 @@ class PartyViewController: SplitSocialViewController {
                     self?.userIDButton?.borderWidth = 2
                     self?.lookingForPartySubtitleLabel.isHidden = false
                     self?.leaveLookingForPartyButton.isHidden = false
+                    self?.leaveLookingForPartySubtitle.isHidden = false
                 } else {
                     self?.userIDButton?.setTitle(L10n.Party.lookForParty, for: .normal)
                     self?.userIDButton?.backgroundColor = ThemeService.shared.theme.backgroundTintColor
@@ -62,6 +64,7 @@ class PartyViewController: SplitSocialViewController {
                     self?.userIDButton?.borderColor = nil
                     self?.lookingForPartySubtitleLabel.isHidden = true
                     self?.leaveLookingForPartyButton.isHidden = true
+                    self?.leaveLookingForPartySubtitle.isHidden = true
                 }
                 self?.groupInvitationListView.set(invitations: user.invitations)
             })
@@ -104,6 +107,7 @@ class PartyViewController: SplitSocialViewController {
         view.backgroundColor = theme.contentBackgroundColor
         lookingForPartySubtitleLabel.textColor = theme.secondaryTextColor
         leaveLookingForPartyButton.tintColor = theme.errorColor
+        leaveLookingForPartySubtitle.textColor = theme.successColor
     }
     
     override func populateText() {
@@ -113,6 +117,7 @@ class PartyViewController: SplitSocialViewController {
         createPartyButton.setTitle(L10n.Party.createPartyButton, for: .normal)
         joinPartyTitle.text = L10n.Party.joinPartyTitle
         joinPartyDescriptionLabel.text = L10n.Party.joinPartyDescription
+        leaveLookingForPartySubtitle.text = L10n.Party.leaveLookingForPartySubtitle
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -144,6 +149,6 @@ class PartyViewController: SplitSocialViewController {
     
     @IBAction func leaveLookingButtonTapped(_ sender: Any) {
         disposable.inner.add(userRepository.updateUser(key: "party.seeking", value: nil)
-            .observeCompleted {})
+            `.observeCompleted {})
     }
 }
