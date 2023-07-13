@@ -94,7 +94,7 @@ class CollapsibleStackView: SeparatedStackView {
             }
             weakSelf.isCollapsed = !weakSelf.isCollapsed
         }
-        titleView?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 16)
+        titleView?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 13, ofWeight: .semibold)
         applyTheme(theme: ThemeService.shared.theme)
     }
     
@@ -115,7 +115,7 @@ class CollapsibleStackView: SeparatedStackView {
         super.applyTheme(theme: theme)
         
         backgroundColor = theme.windowBackgroundColor
-        titleView?.textColor = theme.secondaryTextColor
-        titleView?.subtitleColor = theme.ternaryTextColor
+        titleView?.textColor = theme.ternaryTextColor
+        titleView?.subtitleColor = theme.quadTextColor
     }
 }

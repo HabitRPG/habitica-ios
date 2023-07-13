@@ -24,7 +24,7 @@ class QuestProgressBarView: UIView {
     }()
     private let valueLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12)
+        view.font = UIFontMetrics.default.scaledSystemFont(ofSize: 13, ofWeight: .medium)
         return view
     }()
     private let iconView: UIImageView = {
@@ -39,7 +39,7 @@ class QuestProgressBarView: UIView {
     }()
     private let pendingLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12)
+        view.font = UIFontMetrics.default.scaledSystemFont(ofSize: 13, ofWeight: .medium)
         return view
     }()
     private let pendingIconView: UIImageView = {

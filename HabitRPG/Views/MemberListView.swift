@@ -12,7 +12,6 @@ import PinLayout
 import SwiftUI
 
 struct MemberListItem: View {
-    
     let member: MemberProtocol
     let onTap: (MemberProtocol) -> Void
     let onMoreTap: (MemberProtocol) -> Void
@@ -24,7 +23,8 @@ struct MemberListItem: View {
                 AvatarViewUI(avatar: AvatarViewModel(avatar: member)).frame(width: 97, height: 99)
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
-                        Text(member.profile?.name ?? "").font(.headline)
+                        UsernameLabelUI(name: member.profile?.name ?? "", level: member.contributor?.level ?? 0)
+                            .font(.headline)
                         Spacer()
                         if !isCurrentUser {
                             Button {
@@ -55,11 +55,11 @@ struct MemberListItem: View {
                             ProgressBarUI(value: stats.mana / stats.maxMana).foregroundColor(Color(UIColor.blue100)).frame(height: 8)
                         }
                         VStack(alignment: .leading, spacing: 0) {
-                            Text("\(stats.health.rounded()) / \(stats.maxHealth.rounded())")
+                            Text("\(stats.health, specifier: "%.0f") / \(stats.maxHealth, specifier: "%.0f")")
                                 .frame(height: 16)
-                            Text("\(stats.experience.rounded()) / \(stats.toNextLevel.rounded())")
+                            Text("\(stats.experience, specifier: "%.0f") / \(stats.toNextLevel, specifier: "%.0f")")
                                 .frame(height: 16)
-                            Text("\(stats.mana.rounded()) / \(stats.maxMana.rounded())")
+                            Text("\(stats.mana, specifier: "%.0f") / \(stats.maxMana, specifier: "%.0f")")
                                 .frame(height: 16)
                         }
                         .font(.system(size: 12))
@@ -67,9 +67,13 @@ struct MemberListItem: View {
                     }
                 }.frame(maxWidth: .infinity)
             }
-        }.padding(16).background(Color(ThemeService.shared.theme.windowBackgroundColor)).onTapGesture {
+        }
+        .padding(16)
+        .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+        .cornerRadius(12)
+        .onTapGesture {
             onTap(member)
-        }.padding(.vertical, 2)
+        }
     }
 }
 
@@ -93,13 +97,13 @@ struct MemberList: View {
     @State var inviteStates = [String: LoadingButtonState]()
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 4) {
             ForEach(members, id: \.id) { member in
                 MemberListItem(member: member, onTap: onTap, onMoreTap: onMoreTap, isCurrentUser: member.id == socialRepository.currentUserId)
             }
             ForEach(invites, id: \.id) { invite in
                 if let id = invite.id {
-                    PartyInviteView(member: invite, inviteButtonState: inviteStates[id] ?? .content, isInvited: inviteStates[id] != .success, canInvite: isLeader, onInvite:  {
+                    PartyInviteView(member: invite, inviteButtonState: inviteStates[id] ?? .content, isInvited: inviteStates[id] != .success, onInvite: {
                         inviteStates[id] = .loading
                         socialRepository.removeMember(groupID: "party", userID: id).observeCompleted {
                             ToastManager.show(text: L10n.Groups.removed(invite.profile?.name ?? "player"), color: .red)
@@ -110,10 +114,10 @@ struct MemberList: View {
                                 }
                             }
                         }
-                    })
-                    .padding(.top, 8)
-                    .padding(.bottom, 12)
-                    .cornerRadius(8)
+                    }, canInvite: isLeader, isPending: true)
+                    .padding(16)
+                    .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+                    .cornerRadius(12)
                 }
             }
         }

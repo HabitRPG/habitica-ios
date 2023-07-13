@@ -10,8 +10,9 @@ import UIKit
 import Habitica_Models
 import ReactiveSwift
 import Down
+import MessageUI
 
-class FAQViewController: BaseUIViewController {
+class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelegate {
     
     private let searchBar = UISearchBar()
     
@@ -20,6 +21,7 @@ class FAQViewController: BaseUIViewController {
     
     private let userRepository = UserRepository()
     private let contentRepository = ContentRepository()
+    private let configRepository = ConfigRepository.shared
     private let disposable = ScopedDisposable(CompositeDisposable())
     
     @IBOutlet private var mainStackView: UIStackView!
@@ -31,6 +33,14 @@ class FAQViewController: BaseUIViewController {
     @IBOutlet weak var moreQuestionsStackView: UIStackView!
     @IBOutlet weak var moreQuestionsTitle: UILabel!
     @IBOutlet weak var moreQuestionsText: MarkdownTextView!
+    
+    private let versionString = Bundle.main.infoDictionary?["CFBundleShortVersionString"]
+    private let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"]
+    private lazy var appVersionString: String = {
+        return "\(versionString ?? "") (\(buildNumber ?? ""))"
+    }()
+    private var supportEmail = ""
+    private var user: UserProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,9 +57,17 @@ class FAQViewController: BaseUIViewController {
         commonQuestionsStackView.separatorInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         
         populateMechanics()
-        contentRepository.getFAQEntries().on(value: {[weak self] entries in
+        disposable.inner.add(contentRepository.getFAQEntries().on(value: {[weak self] entries in
             self?.populateFAQ(questions: entries.value)
-            }).start()
+            }).start())
+        
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
+            self?.user = user
+        }).start())
+        
+        moreQuestionsText.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moreQuestionsTapped)))
+        supportEmail = configRepository.string(variable: .supportEmail, defaultValue: "admin@habitica.com")
+
     }
     
     override func populateText() {
@@ -148,4 +166,61 @@ class FAQViewController: BaseUIViewController {
         ["title": L10n.mysticHourglasses, "subtitle": L10n.premiumCurrency, "icon": HabiticaIcons.imageOfHourglass, "text": L10n.hourglassesDescription],
         ["title": L10n.statAllocation, "subtitle": "STR, CON, INT, PER", "icon": HabiticaIcons.imageOfStats, "text": L10n.statDescription]
     ]
+    
+    @objc
+    private func moreQuestionsTapped() {
+        if MFMailComposeViewController.canSendMail() {
+            let composeViewController = MFMailComposeViewController(nibName: nil, bundle: nil)
+            composeViewController.mailComposeDelegate = self
+            composeViewController.setToRecipients([supportEmail])
+            composeViewController.setSubject("[iOS] Question")
+            composeViewController.setMessageBody(createDeviceInformationString(), isHTML: false)
+            present(composeViewController, animated: true, completion: nil)
+        } else {
+            showNoEmailAlert()
+        }
+    }
+    
+    private func showNoEmailAlert() {
+        let alert = HabiticaAlertController(title: L10n.About.noEmailTitle, message: L10n.About.noEmailMessage(supportEmail))
+        alert.addCloseAction()
+        alert.show()
+    }
+    
+    private func createDeviceInformationString() -> String {
+        var informationString = "Please describe the bug you encountered:\n\n\n\n\n\n\n\n\n\n\n\n"
+        informationString.append("The following lines help us find and squash the Bug you encountered. Please do not delete/change them.\n")
+        informationString.append("iOS Version: \(UIDevice.current.systemVersion)\n")
+        informationString.append("Device: \(UIDevice.modelName)\n")
+        informationString.append("App Version: \(appVersionString)\n")
+        informationString.append("User ID: \(AuthenticationManager.shared.currentUserId ?? "")\n")
+        if let user = self.user {
+            if let level = user.stats?.level {
+                informationString.append("Level: \(level)\n")
+            }
+            if let disableClass = user.preferences?.disableClasses {
+                if disableClass {
+                    informationString.append("Class: Disabled\n")
+                } else {
+                    if let habitClass = user.stats?.habitClassNice {
+                        informationString.append("Class: \(habitClass)\n")
+                    }
+                }
+            }
+            if let sleep = user.preferences?.sleep {
+                informationString.append("Is in Inn: \(sleep)\n")
+            }
+            if let useCostume = user.preferences?.useCostume {
+                informationString.append("Uses Costume: \(useCostume)\n")
+            }
+            if let cds = user.preferences?.dayStart {
+                informationString.append("Custom Day Start: \(cds)\n")
+            }
+        }
+        return informationString
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        dismiss(animated: true, completion: nil)
+    }
 }

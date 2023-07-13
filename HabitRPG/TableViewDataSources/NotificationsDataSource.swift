@@ -132,7 +132,7 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
                     self?.dismiss(notification: notification)
                     }
                 }
-                cell.acceptAction = { [weak self] in self?.socialRepository.joinGroup(groupID: notif.groupID ?? "").observeCompleted {
+                cell.acceptAction = { [weak self] in self?.socialRepository.joinGroup(groupID: notif.groupID ?? "", isParty: notif.isParty).observeCompleted {
                     self?.dismiss(notification: notification)
                     }
                 }

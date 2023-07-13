@@ -105,11 +105,11 @@ private class ViewModel: ObservableObject {
         switch type {
         case "gear":
             if let url = ImageManager.buildImageUrl(name: "shop_\(key)") {
-                return Source.network(ImageResource(downloadURL: url))
+                return Source.network(KF.ImageResource(downloadURL: url))
             }
         case "food":
             if let url = ImageManager.buildImageUrl(name: "Pet_Food_\(key)") {
-                return Source.network(ImageResource(downloadURL: url))
+                return Source.network(KF.ImageResource(downloadURL: url))
             }
         default:
             if let data = Asset.armoireExperience.image.pngData() {

@@ -123,7 +123,7 @@ class UserProfileViewController: BaseTableViewController {
     
     private func refresh() {
         if let userID = self.userID {
-            socialRepository.retrieveMember(userID: userID, fromHall: isModerator).observeCompleted {}
+            socialRepository.retrieveMember(userID: userID, fromHall: false).observeCompleted {}
         }
     }
     

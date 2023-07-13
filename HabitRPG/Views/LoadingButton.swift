@@ -32,13 +32,12 @@ struct LoadingButton<Content: View, SuccessContent: View, ErrorContent: View>: V
     
     private func getBackgroundColor() -> UIColor {
         let theme = ThemeService.shared.theme
+        if type == .destructive {
+            return theme.errorColor
+        }
         switch state {
         case .content, .loading:
-            if type == .destructive {
-                return theme.errorColor
-            } else {
-                return theme.backgroundTintColor
-            }
+            return theme.backgroundTintColor
         case .disabled:
             return theme.dimmedColor
         case .failed:

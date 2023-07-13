@@ -35,7 +35,7 @@ class GroupInvitationListView: UIView {
                     return
                 }
                 if didAccept {
-                    self?.socialRepository.joinGroup(groupID: groupID).observeCompleted {}
+                    self?.socialRepository.joinGroup(groupID: groupID, isParty: invitation.isPartyInvitation).observeCompleted {}
                 } else {
                     self?.socialRepository.rejectGroupInvitation(groupID: groupID).observeCompleted {}
                 }

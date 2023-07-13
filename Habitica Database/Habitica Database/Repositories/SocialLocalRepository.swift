@@ -50,13 +50,14 @@ public class SocialLocalRepository: BaseLocalRepository {
         save(object: RealmMember(member))
     }
 
-    public func save(_ members: [MemberProtocol]) {
+    public func save(groupID: String?, members: [MemberProtocol]) {
         save(objects: members.map { (member) in
             if let realmMember = member as? RealmMember {
                 return realmMember
             }
             return RealmMember(member)
         })
+        removeOldPartyMembers(groupID: groupID, newMembers: members)
     }
     
     public func save(_ challenge: ChallengeProtocol) {
@@ -249,6 +250,23 @@ public class SocialLocalRepository: BaseLocalRepository {
         if messagesToRemove.isEmpty == false {
             updateCall { realm in
                 realm.delete(messagesToRemove)
+            }
+        }
+    }
+    
+    private func removeOldPartyMembers(groupID: String?, newMembers: [MemberProtocol]) {
+        let oldMembers = getRealm()?.objects(RealmMember.self).filter("realmParty.id == %@", groupID ?? "")
+        var membersToRemove = [RealmMember]()
+        oldMembers?.forEach({ (member) in
+            if !newMembers.contains(where: { (newMember) -> Bool in
+                return newMember.id == member.id
+            }) {
+                membersToRemove.append(member)
+            }
+        })
+        if membersToRemove.isEmpty == false {
+            updateCall { realm in
+                realm.delete(membersToRemove)
             }
         }
     }

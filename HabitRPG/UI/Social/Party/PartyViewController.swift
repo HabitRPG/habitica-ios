@@ -25,7 +25,6 @@ class PartyViewController: SplitSocialViewController {
     @IBOutlet weak var joinPartyTitle: UILabel!
     @IBOutlet weak var joinPartyDescriptionLabel: UILabel!
     
-    @IBOutlet weak var lookingForPartySubtitleLabel: UILabel!
     @IBOutlet weak var leaveLookingForPartyButton: UIButton!
     @IBOutlet weak var leaveLookingForPartySubtitle: UILabel!
     var userDisposable: Disposable?
@@ -51,18 +50,16 @@ class PartyViewController: SplitSocialViewController {
                 if self?.isSeekingParty == true {
                     self?.userIDButton?.setTitle(L10n.Party.lookingForParty, for: .normal)
                     self?.userIDButton?.backgroundColor = .clear
-                    self?.userIDButton?.setTitleColor(ThemeService.shared.theme.successColor, for: .normal)
-                    self?.userIDButton?.borderColor = ThemeService.shared.theme.successColor
+                    self?.userIDButton?.setTitleColor(ThemeService.shared.theme.successTextColor, for: .normal)
+                    self?.userIDButton?.borderColor = ThemeService.shared.theme.successTextColor
                     self?.userIDButton?.borderWidth = 2
-                    self?.lookingForPartySubtitleLabel.isHidden = false
                     self?.leaveLookingForPartyButton.isHidden = false
                     self?.leaveLookingForPartySubtitle.isHidden = false
                 } else {
                     self?.userIDButton?.setTitle(L10n.Party.lookForParty, for: .normal)
-                    self?.userIDButton?.backgroundColor = ThemeService.shared.theme.backgroundTintColor
+                    self?.userIDButton?.backgroundColor = ThemeService.shared.theme.fixedTintColor
                     self?.userIDButton?.setTitleColor(.white, for: .normal)
                     self?.userIDButton?.borderColor = nil
-                    self?.lookingForPartySubtitleLabel.isHidden = true
                     self?.leaveLookingForPartyButton.isHidden = true
                     self?.leaveLookingForPartySubtitle.isHidden = true
                 }
@@ -79,12 +76,18 @@ class PartyViewController: SplitSocialViewController {
                     self?.noPartyContainerView.isHidden = false
                     self?.topHeaderCoordinator?.hideHeader = true
                     self?.topHeaderCoordinator?.showHideHeader(show: false)
+                    if #available(iOS 16.0, *) {
+                        self?.editGroupButton?.isHidden = true
+                    }
                 } else {
                     self?.scrollView.isHidden = false
                     self?.noPartyContainerView?.isHidden = true
                     let showTabs = !(self?.traitCollection.horizontalSizeClass == .regular && self?.traitCollection.verticalSizeClass == .regular)
                     self?.topHeaderCoordinator?.hideHeader = !showTabs
                     self?.topHeaderCoordinator?.showHideHeader(show: showTabs)
+                    if #available(iOS 16.0, *) {
+                        self?.editGroupButton?.isHidden = false
+                    }
                 }
             })
             .on(failed: { error in
@@ -102,12 +105,15 @@ class PartyViewController: SplitSocialViewController {
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        createPartyButton.backgroundColor = theme.windowBackgroundColor
+        createPartyTitleLabel.textColor = theme.primaryTextColor
+        createPartyDescriptionLabel.textColor = theme.secondaryTextColor
+        joinPartyTitle.textColor = theme.primaryTextColor
+        joinPartyDescriptionLabel.textColor = theme.secondaryTextColor
+        createPartyButton.backgroundColor = theme.fixedTintColor
         userIDButton.backgroundColor = theme.windowBackgroundColor
         view.backgroundColor = theme.contentBackgroundColor
-        lookingForPartySubtitleLabel.textColor = theme.secondaryTextColor
         leaveLookingForPartyButton.tintColor = theme.errorColor
-        leaveLookingForPartySubtitle.textColor = theme.successColor
+        leaveLookingForPartySubtitle.textColor = theme.successTextColor
     }
     
     override func populateText() {
@@ -149,6 +155,6 @@ class PartyViewController: SplitSocialViewController {
     
     @IBAction func leaveLookingButtonTapped(_ sender: Any) {
         disposable.inner.add(userRepository.updateUser(key: "party.seeking", value: nil)
-            `.observeCompleted {})
+            .observeCompleted {})
     }
 }

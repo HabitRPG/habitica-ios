@@ -161,7 +161,7 @@ struct SendPartyInviteView: View {
     }
 }
 
-class SendPartyInviteViewController: UIHostingController<SendPartyInviteView> {
+class SendPartyInviteViewController: BaseHostingViewController<SendPartyInviteView> {
     let viewModel = SendPartyInviteViewModel {
         RouterHandler.shared.pop()
     }
@@ -172,5 +172,10 @@ class SendPartyInviteViewController: UIHostingController<SendPartyInviteView> {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder, rootView: SendPartyInviteView(viewModel: viewModel))
+    }
+    
+    override func viewDidLoad() {
+        topHeaderCoordinator?.hideHeader = true
+        super.viewDidLoad()
     }
 }

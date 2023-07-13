@@ -35,6 +35,7 @@ public protocol Theme {
     var badgeColor: UIColor { get }
     var secondaryBadgeColor: UIColor { get }
     var successColor: UIColor { get }
+    var successTextColor: UIColor { get }
     var errorColor: UIColor { get }
     var warningColor: UIColor { get }
     var taskOverlayTint: UIColor { get }
@@ -73,6 +74,7 @@ extension Theme {
     public var badgeColor: UIColor { return tintColor }
     public var secondaryBadgeColor: UIColor { return UIColor.gray200 }
     public var successColor: UIColor { return UIColor.green100 }
+    public var successTextColor: UIColor { return UIColor.green1 }
     public var errorColor: UIColor { return UIColor.maroon100 }
     public var warningColor: UIColor { return UIColor.yellow100 }
     public var taskOverlayTint: UIColor { return UIColor.white.withAlphaComponent(0) }
@@ -115,6 +117,7 @@ extension DarkTheme {
     public var badgeColor: UIColor { return tintColor }
     public var taskOverlayTint: UIColor { return UIColor.blackPurple50.withAlphaComponent(0.30) }
     public var successColor: UIColor { return UIColor.green10.withAlphaComponent(0.7) }
+    public var successTextColor: UIColor { return UIColor.green500 }
     public var errorColor: UIColor { return UIColor.red10 }
     public var warningColor: UIColor { return UIColor.yellow10.withAlphaComponent(0.7) }
     public var segmentedTintColor: UIColor { return backgroundTintColor }

@@ -37,7 +37,7 @@ class CollapsibleTitle: UIView, UIGestureRecognizerDelegate {
             return label.text
         }
         set {
-            label.text = newValue
+            label.text = newValue?.uppercased()
             setNeedsLayout()
         }
     }
@@ -198,6 +198,6 @@ class CollapsibleTitle: UIView, UIGestureRecognizerDelegate {
     }
 
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: super.intrinsicContentSize.width, height: subtitle != nil ? 60 : 48)
+        return CGSize(width: super.intrinsicContentSize.width, height: subtitle != nil ? 42 : 30)
     }
 }

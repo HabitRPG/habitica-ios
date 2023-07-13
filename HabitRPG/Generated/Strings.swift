@@ -626,7 +626,7 @@ public enum L10n {
   public static var moreHelpTitle: String { return L10n.tr("Mainstrings", "more_help_title") }
   /// More Options
   public static var moreOptions: String { return L10n.tr("Mainstrings", "more_options") }
-  /// Post a message in the [Habitica Help Guild](https://habitica.com/groups/guild/5481ccf3-5d2d-48a9-a871-70a7380cee5a) to have your questions answered by a fellow player
+  /// You can [contact us](mailto:admin@habitica.com?subject=%%5BiOS%%5D%%20Question) and a member of our team will do their best to help!
   public static var moreQuestionsText: String { return L10n.tr("Mainstrings", "more_questions_text") }
   /// Still have a question?
   public static var moreQuestionsTitle: String { return L10n.tr("Mainstrings", "more_questions_title") }
@@ -710,6 +710,8 @@ public enum L10n {
   public static var onboardingCompleteTitle: String { return L10n.tr("Mainstrings", "onboardingCompleteTitle") }
   /// 1 Filter
   public static var oneFilter: String { return L10n.tr("Mainstrings", "one_filter") }
+  /// 1 Item pending
+  public static var oneItemFound: String { return L10n.tr("Mainstrings", "one_item_found") }
   /// 1 Month
   public static var oneMonth: String { return L10n.tr("Mainstrings", "one_month") }
   /// Onwards
@@ -1178,7 +1180,7 @@ public enum L10n {
   public static func xGems(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "x_gems", p1)
   }
-  /// %d Items found
+  /// %d Items pending
   public static func xItemsFound(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "x_items_found", p1)
   }
@@ -1608,6 +1610,8 @@ public enum L10n {
     }
     /// Invite a Member
     public static var inviteMember: String { return L10n.tr("Mainstrings", "groups.invite_member") }
+    /// Invite Pending
+    public static var invitePending: String { return L10n.tr("Mainstrings", "groups.invite_pending") }
     /// Invited!
     public static var invited: String { return L10n.tr("Mainstrings", "groups.invited") }
     /// Invited @%@
@@ -1661,6 +1665,8 @@ public enum L10n {
     public static var joinGuild: String { return L10n.tr("Mainstrings", "guilds.join_guild") }
     /// You joined the guild
     public static var joinedGuild: String { return L10n.tr("Mainstrings", "guilds.joined_guild") }
+    /// You joined the Party
+    public static var joinedParty: String { return L10n.tr("Mainstrings", "guilds.joined_party") }
     /// Keep challenges
     public static var keepChallenges: String { return L10n.tr("Mainstrings", "guilds.keep_challenges") }
     /// Leave Challenges
@@ -1671,6 +1677,8 @@ public enum L10n {
     public static var leaveGuildTitle: String { return L10n.tr("Mainstrings", "guilds.leave_guild_title") }
     /// You left the guild
     public static var leftGuild: String { return L10n.tr("Mainstrings", "guilds.left_guild") }
+    /// You left the Party
+    public static var leftParty: String { return L10n.tr("Mainstrings", "guilds.left_party") }
   }
 
   public enum Intro {
@@ -1898,6 +1906,8 @@ public enum L10n {
     public static var joinPartyDescription: String { return L10n.tr("Mainstrings", "party.join_party_description") }
     /// Looking for a Party?
     public static var joinPartyTitle: String { return L10n.tr("Mainstrings", "party.join_party_title") }
+    /// Keep an eye out for an invite or start your own Party at any time
+    public static var leaveLookingForPartySubtitle: String { return L10n.tr("Mainstrings", "party.leave_looking_for_party_subtitle") }
     /// Do you want to leave the party and keep or leave the challenges?
     public static var leavePartyDescription: String { return L10n.tr("Mainstrings", "party.leave_party_description") }
     /// Leave Party?

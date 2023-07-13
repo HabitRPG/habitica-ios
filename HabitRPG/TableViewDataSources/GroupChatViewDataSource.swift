@@ -36,7 +36,9 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             self?.sections[0].items = chatMessages
             self?.notify(changes: changes)
         }).start())
-        disposable.add(socialRepository.getGroupMembers(groupID: groupID).take(first: 1).on(value: { [weak self] members in
+        disposable.add(socialRepository.getGroupMembers(groupID: groupID).filter({ members in
+            return !members.value.isEmpty
+        }).take(first: 1).on(value: { [weak self] members in
             if members.value.count > 1 {
                 let timerSignal: SignalProducer<Date, Never> = SignalProducer.timer(interval: .seconds(30), on: QueueScheduler.main)
                 self?.disposable.add(timerSignal.on(value: { _ in

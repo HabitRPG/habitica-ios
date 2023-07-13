@@ -81,7 +81,7 @@ class PartyQuestView: UIView {
             progressBarViews.append(bossView)
         }
         bossView.titleTextColor = ThemeService.shared.theme.primaryTextColor
-        bossView.valueTextColor = ThemeService.shared.theme.secondaryTextColor
+        bossView.valueTextColor = ThemeService.shared.theme.ternaryTextColor
         bossView.barBackgroundColor = ThemeService.shared.theme.dimmedColor
         bossView.title = boss.name
         bossView.maxValue = Float(boss.health)
@@ -153,7 +153,11 @@ class PartyQuestView: UIView {
     
     func setCollectedItems(_ pending: Int) {
         if !isBossQuest {
-            pendingLabel.text = L10n.xItemsFound(pending)
+            if pending == 1 {
+                pendingLabel.text = L10n.oneItemFound
+            } else {
+                pendingLabel.text = L10n.xItemsFound(pending)
+            }
             pendingLabel.isHidden = false
         }
     }
