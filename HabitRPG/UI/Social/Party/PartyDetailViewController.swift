@@ -33,12 +33,15 @@ class PartyDetailViewController: GroupDetailViewController {
     @IBOutlet weak var questTitleView: UIView!
     @IBOutlet weak var questTitleContentView: QuestTitleView!
     @IBOutlet weak var questTitleDisclosureView: UIImageView!
+    @IBOutlet weak var questTitleSeparator: UIView!
+    @IBOutlet weak var challengesStackView: CollapsibleStackView!
     @IBOutlet weak var partyQuestView: PartyQuestView!
     @IBOutlet weak var mainStackviewOffset: NSLayoutConstraint!
     @IBOutlet weak var partyChallengesButton: UIButton!
     
     @IBOutlet weak var membersTitleView: CollapsibleTitle!
     @IBOutlet weak var descriptionTitleView: CollapsibleTitle!
+    @IBOutlet weak var challengesTitleView: CollapsibleTitle!
     @IBOutlet weak var inviteMemberButton: UIButton!
     
     var fetchMembersDisposable: Disposable?
@@ -68,7 +71,7 @@ class PartyDetailViewController: GroupDetailViewController {
         
         questTitleDisclosureView.image = HabiticaIcons.imageOfDisclosureArrow
         questTitleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openQuestDetailView)))
-        
+                
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.update(user: user)
         }).start())
@@ -123,23 +126,29 @@ class PartyDetailViewController: GroupDetailViewController {
         
         partyChallengesButton.backgroundColor = theme.windowBackgroundColor
         partyChallengesButton.setTitleColor(theme.tintColor, for: .normal)
-        questTitleContentView.backgroundColor = theme.windowBackgroundColor
+        questContentStackView.backgroundColor = theme.windowBackgroundColor
+        questContentStackView.cornerRadius = 12
         inviteMemberButton.backgroundColor = theme.windowBackgroundColor
         inviteMemberButton.setTitleColor(theme.tintColor, for: .normal)
         startQuestButton.backgroundColor = theme.windowBackgroundColor
         startQuestButton.setTitleColor(theme.tintColor, for: .normal)
+        groupDescriptionTextView?.backgroundColor = theme.windowBackgroundColor
+        questTitleSeparator.backgroundColor = theme.separatorColor
         
+        challengesStackView.applyTheme(theme: theme)
         membersStackview.applyTheme(theme: theme)
         questContentStackView.applyTheme(theme: theme)
         questStackView.applyTheme(theme: theme)
         
         questStackView.backgroundColor = theme.contentBackgroundColor
         groupDescriptionStackView?.backgroundColor = theme.contentBackgroundColor
+        challengesStackView.backgroundColor = theme.contentBackgroundColor
         membersStackview.backgroundColor = theme.contentBackgroundColor
     }
     
     override func populateText() {
         descriptionTitleView.text = L10n.Party.partyDescription
+        challengesTitleView.text = L10n.Titles.challenges
         membersTitleView.text = L10n.Groups.members
         partyChallengesButton.setTitle(L10n.Party.partyChallenges, for: .normal)
         inviteMemberButton.setTitle(L10n.Groups.findMembers, for: .normal)
@@ -158,7 +167,6 @@ class PartyDetailViewController: GroupDetailViewController {
     }
 
     private func set(members: [MemberProtocol], invites: [MemberProtocol]?) {
-        inviteMemberButton.isHidden = !isLeader
         for view in membersStackview.arrangedSubviews where view.tag == 1000 {
             view.removeFromSuperview()
         }
@@ -340,7 +348,11 @@ class PartyDetailViewController: GroupDetailViewController {
     }
     
     @IBAction func openInviteView(_ sender: Any) {
-        parent?.perform(segue: StoryboardSegue.Social.findMembersSegue)
+        if isLeader {
+            parent?.perform(segue: StoryboardSegue.Social.findMembersSegue)
+        } else {
+            parent?.perform(segue: StoryboardSegue.Social.inviteMembersSegue)
+        }
     }
     
     private func showRemoveMemberDialog(memberID: String, displayName: String) {

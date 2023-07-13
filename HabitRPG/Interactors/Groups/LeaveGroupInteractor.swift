@@ -20,31 +20,31 @@ class LeaveGroupInteractor: Interactor<GroupProtocol, GroupProtocol?> {
     }
     
     override func configure(signal: Signal<GroupProtocol, NSError>) -> Signal<GroupProtocol?, NSError> {
-        return signal.flatMap(.concat) {[weak self] group -> Signal<(Bool, Bool, String), NSError> in
-            let (signal, observer) = Signal<(Bool, Bool, String), NSError>.pipe()
+        return signal.flatMap(.concat) {[weak self] group -> Signal<(Bool, Bool, GroupProtocol), NSError> in
+            let (signal, observer) = Signal<(Bool, Bool, GroupProtocol), NSError>.pipe()
             self?.createConfirmationAlert(group: group, observer: observer)
             return signal
             }.filter { (shouldLeave, _, _) in
                 return shouldLeave
-            }.flatMap(.concat) {[weak self] (_, keepChallenges, groupID) -> Signal<GroupProtocol?, NSError> in
-                return self?.socialRepository.leaveGroup(groupID: groupID, leaveChallenges: !keepChallenges)
+            }.flatMap(.concat) {[weak self] (_, keepChallenges, group) -> Signal<GroupProtocol?, NSError> in
+                return self?.socialRepository.leaveGroup(groupID: group.id ?? "", leaveChallenges: !keepChallenges, isParty: group.type == "party")
                     .promoteError() ?? Signal.empty
         }
     }
     
-    private func createConfirmationAlert(group: GroupProtocol, observer: Signal<(Bool, Bool, String), NSError>.Observer) {
+    private func createConfirmationAlert(group: GroupProtocol, observer: Signal<(Bool, Bool, GroupProtocol), NSError>.Observer) {
         let title = group.type == "party" ? L10n.Party.leavePartyTitle : L10n.Guilds.leaveGuildTitle
         let message = group.type == "party" ? L10n.Party.leavePartyDescription : L10n.Guilds.leaveGuildDescription
         let alert = HabiticaAlertController(title: title,
                                             message: message)
         alert.addAction(title: L10n.Guilds.keepChallenges, isMainAction: true, handler: { (_) in
-            observer.send(value: (true, true, group.id ?? ""))
+            observer.send(value: (true, true, group))
         })
         alert.addAction(title: L10n.Guilds.leaveChallenges, style: .destructive, handler: { (_) in
-            observer.send(value: (true, false, group.id ?? ""))
+            observer.send(value: (true, false, group))
         })
         alert.setCloseAction(title: L10n.close, handler: {
-            observer.send(value: (false, false, group.id ?? ""))
+            observer.send(value: (false, false, group))
         })
         alert.show()
     }

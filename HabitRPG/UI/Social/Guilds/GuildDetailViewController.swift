@@ -135,7 +135,7 @@ class GuildDetailViewController: GroupDetailViewController {
 
     @IBAction func joinButtonTapped(_ sender: Any) {
         if let groupID = self.groupProperty.value?.id {
-            socialRepository.joinGroup(groupID: groupID).observeCompleted {}
+            socialRepository.joinGroup(groupID: groupID, isParty: false).observeCompleted {}
         }
     }
     

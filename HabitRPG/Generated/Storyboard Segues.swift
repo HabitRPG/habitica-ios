@@ -89,6 +89,7 @@ internal enum StoryboardSegue {
     case findMembersSegue
     case giftGemsSegue
     case giftSubscriptionSegue
+    case inviteMembersSegue
   }
   internal enum Support: String, SegueType {
     case showFAQDetailSegue

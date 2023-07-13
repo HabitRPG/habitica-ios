@@ -400,8 +400,8 @@
 "guilds.leave_challenges" = "Leave Challenges";
 "guilds.joined_guild" = "You joined the guild";
 "guilds.left_guild" = "You left the guild";
-"guilds.joined_party" = "You joined the party";
-"guilds.left_party" = "You left the party";
+"guilds.joined_party" = "You joined the Party";
+"guilds.left_party" = "You left the Party";
 "guilds.guild_challenges" = "Guild Challenges";
 "guilds.invite_to_guild" = "Invite to Guild";
 "guilds.join_guild" = "Join Guild";
@@ -543,6 +543,7 @@
 "groups.cancel_invite" = "Cancel Invite";
 "groups.invited" = "Invited!";
 "groups.invited_x" = "Invited @%@";
+"groups.invite_pending" = "Invite Pending";
 "groups.rescinded" = "Rescinded";
 "groups.removed" = "Removed %@";
 "groups.transferred_to" = "Transferred ownership to %@";
@@ -1105,7 +1106,7 @@
 "game_mechanics" = "Game Mechanics";
 "common_questions" = "Common Questions";
 "more_questions_title" = "Still have a question?";
-"more_questions_text" = "Post a message in the [Habitica Help Guild](https://habitica.com/groups/guild/5481ccf3-5d2d-48a9-a871-70a7380cee5a) to have your questions answered by a fellow player";
+"more_questions_text" = "You can [contact us](mailto:admin@habitica.com?subject=%%5BiOS%%5D%%20Question) and a member of our team will do their best to help!";
 "known_issues" = "Known Issues";
 "common_fixes" = "Common Fixes";
 "more_help_title" = "Need more help?";
@@ -1196,7 +1197,8 @@
 "daily_tip_9" = "If you\'re having a tough time, try breaking your tasks down into smaller parts.";
 "week_reminder_title" = "How are your tasks going?";
 "week_reminder_body" = "Breaks are healthy, but you can still earn points for simple activities to level up and get cool gear!";
-"x_items_found" = "%d Items found";
+"x_items_found" = "%d Items pending";
+"one_item_found" = "1 Item pending";
 "new" = "New";
 "seasonal_potions_available" = "Seasonal items available";
 "open_for" = "Open for %@";

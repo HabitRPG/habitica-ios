@@ -31,10 +31,6 @@ class GroupDetailViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        let margins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        groupDescriptionStackView?.layoutMargins = margins
-        groupDescriptionStackView?.isLayoutMarginsRelativeArrangement = true
         
         disposable.inner.add(groupProperty.signal.skipNil()
             .observeValues({[weak self] group in
@@ -65,7 +61,7 @@ class GroupDetailViewController: BaseUIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        groupDescriptionTextView?.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
+        groupDescriptionTextView?.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         groupDescriptionTextView?.textContainer.lineFragmentPadding = 0
     }
     

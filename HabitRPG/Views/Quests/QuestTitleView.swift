@@ -19,19 +19,19 @@ class QuestTitleView: UIView {
     }()
     let titleLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17)
+        view.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
         view.textColor = UIColor.gray10
         view.numberOfLines = 2
         return view
     }()
     lazy var detailLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
+        view.font = UIFontMetrics.default.scaledSystemFont(ofSize: 13, ofWeight: .medium)
         view.textColor = UIColor.gray300
         return view
     }()
     
-    var insets = UIEdgeInsets.zero
+    var insets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     
     init() {
         super.init(frame: CGRect.zero)
@@ -54,9 +54,9 @@ class QuestTitleView: UIView {
         addSubview(detailLabel)
         
         let theme = ThemeService.shared.theme
-        backgroundColor = theme.contentBackgroundColor
+        imageView.backgroundColor = theme.contentBackgroundColor
         titleLabel.textColor = theme.primaryTextColor
-        detailLabel.textColor = theme.secondaryTextColor
+        detailLabel.textColor = theme.ternaryTextColor
     }
     
     override func layoutSubviews() {

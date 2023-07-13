@@ -90,7 +90,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     func retrieveGroupMembers(groupID: String) -> Signal<[MemberProtocol]?, Never> {
         return RetrieveGroupMembersCall(groupID: groupID).arraySignal.on(value: {[weak self] members in
             if let members = members {
-                self?.localRepository.save(members)
+                self?.localRepository.save(groupID: groupID, members: members)
             }
         })
     }
@@ -232,7 +232,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     
     public func retrieveMember(userID: String, fromHall: Bool = false) -> Signal<MemberProtocol?, Never> {
         return RetrieveMemberCall(userID: userID, fromHall: fromHall).objectSignal.on(value: {[weak self] member in
-            if let member = member {
+            if let member = member, !fromHall {
                 self?.localRepository.save(member)
             }
         })
@@ -293,23 +293,23 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
-    public func joinGroup(groupID: String) -> Signal<GroupProtocol?, Never> {
+    public func joinGroup(groupID: String, isParty: Bool) -> Signal<GroupProtocol?, Never> {
         UISelectionFeedbackGenerator.oneShotSelectionChanged()
         return JoinGroupCall(groupID: groupID).objectSignal.on(value: {[weak self]group in
             if let userID = AuthenticationManager.shared.currentUserId {
-                ToastManager.show(text: L10n.Guilds.joinedGuild, color: .green)
+                ToastManager.show(text: isParty ? L10n.Guilds.joinedParty : L10n.Guilds.joinedGuild, color: .green)
                 self?.localRepository.joinGroup(userID: userID, groupID: groupID, group: group)
                 self?.localRepository.deleteGroupInvitation(userID: userID, groupID: groupID)
             }
         })
     }
     
-    public func leaveGroup(groupID: String, leaveChallenges: Bool) -> Signal<GroupProtocol?, Never> {
+    public func leaveGroup(groupID: String, leaveChallenges: Bool, isParty: Bool) -> Signal<GroupProtocol?, Never> {
         UISelectionFeedbackGenerator.oneShotSelectionChanged()
         return LeaveGroupCall(groupID: groupID, leaveChallenges: leaveChallenges)
             .objectSignal.on(value: {[weak self]group in
             if let userID = AuthenticationManager.shared.currentUserId {
-                ToastManager.show(text: L10n.Guilds.leftGuild, color: .green)
+                ToastManager.show(text: isParty ? L10n.Guilds.leftParty : L10n.Guilds.leftGuild, color: .green)
                 self?.localRepository.leaveGroup(userID: userID, groupID: groupID, group: group)
             }
         })
@@ -491,11 +491,8 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         }
     }
     
-    func removeMember(groupID: String, userID: String) -> Signal<GroupProtocol?, Never> {
+    func removeMember(groupID: String, userID: String) -> Signal<EmptyResponseProtocol?, Never> {
         return RemoveMemberCall(groupID: groupID, userID: userID).objectSignal
-            .flatMap(.latest) { _ in
-                return self.retrieveGroup(groupID: groupID)
-        }
     }
     
     func blockMember(userID: String) -> Signal<UserProtocol?, Never> {

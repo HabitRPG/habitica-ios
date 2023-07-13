@@ -62,7 +62,7 @@ class HabiticaButton: UIButton {
     }
     
     func setupView() {
-        cornerRadius = 6
+        cornerRadius = 12
         setTitleColor(.white, for: .normal)
         isPointerInteractionEnabled = true
     }

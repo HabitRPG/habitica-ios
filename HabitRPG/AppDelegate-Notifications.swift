@@ -87,6 +87,8 @@ extension HabiticaAppDelegate: UNUserNotificationCenterDelegate {
             } else if ["invitedParty", "questStarted", "invitedQuest"].contains(identifier) {
                 RouterHandler.shared.handle(urlString: "/party")
             } else if ["invitedGuild"].contains(identifier) {
+            } else if identifier == "invitedParty" {
+                RouterHandler.shared.handle(urlString: "/party")
             } else if ["groupActivity", "chatMention"].contains(identifier) {
                 if userInfo["type"] as? String == "party" {
                     RouterHandler.shared.handle(urlString: "/party")

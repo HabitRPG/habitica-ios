@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class UsernameLabel: UILabel {
     @objc public var contributorLevel: Int = 0 {
@@ -67,5 +68,27 @@ class UsernameLabel: UILabel {
             newSize.width += 18
         }
         return newSize
+    }
+}
+
+struct UsernameLabelUI: View {
+    let name: String
+    var level: Int = 0
+    
+    private var textColor: UIColor {
+        if ThemeService.shared.theme.isDark {
+            return UIColor.lightContributorColor(forTier: level)
+        } else {
+            return UIColor.contributorColor(forTier: level)
+        }
+    }
+    
+    var body: some View {
+        HStack(alignment: .center, spacing: 2) {
+            Text(name).foregroundColor(Color(textColor))
+            if level > 0 {
+                Image(uiImage: HabiticaIcons.imageOfContributorBadge(_1: CGFloat(level), isNPC: false)).frame(width: 16, height: 16)
+            }
+        }
     }
 }

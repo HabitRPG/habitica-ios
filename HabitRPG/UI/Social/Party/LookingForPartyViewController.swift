@@ -153,13 +153,23 @@ struct PartyInviteView: View {
     let isInvited: Bool
     let onInvite: () -> Void
     var canInvite = true
+    var isPending = false
     
     var body: some View {
         VStack( spacing: 12) {
             HStack(alignment: .top, spacing: 14) {
-                AvatarViewUI(avatar: AvatarViewModel(avatar: member)).frame(width: 97, height: 99).padding(.top, 4)
+                AvatarViewUI(avatar: AvatarViewModel(avatar: member))
+                    .frame(width: 97, height: 99)
+                    .padding(.top, 4)
+                    .opacity(isPending ? 0.5 : 1.0)
                 VStack(alignment: .leading, spacing: 1) {
-                    Text(member.profile?.name ?? "")
+                    if isPending {
+                        Text(L10n.Groups.invitePending.uppercased())
+                            .font(Font.system(size: 14, weight: .medium))
+                            .kerning(0.75)
+                            .foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor))
+                    }
+                    UsernameLabelUI(name: member.profile?.name ?? "", level: member.contributor?.level ?? 0)
                         .font(.headline)
                     Text("@\(member.username ?? "")")
                         .font(.system(size: 14))
@@ -173,9 +183,11 @@ struct PartyInviteView: View {
                         Spacer()
                         ClassLabel(className: member.stats?.habitClassNice ?? "warrior", selectedClass: member.flags?.classSelected ?? false)
                     }
-                    Text("\(member.loginIncentives) Check-ins")
-                    if let language = Locale.current.localizedString(forLanguageCode: member.preferences?.language ?? "en") {
-                        Text(language)
+                    if !isPending {
+                        Text("\(member.loginIncentives) Check-ins")
+                        if let language = Locale.current.localizedString(forLanguageCode: member.preferences?.language ?? "en") {
+                            Text(language)
+                        }
                     }
                 }
                 .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
@@ -183,12 +195,12 @@ struct PartyInviteView: View {
             }
             if canInvite {
                 LoadingButton(state: .constant(inviteButtonState),
-                              type: isInvited ? .destructive : .normal,
+                              type: ((isInvited && inviteButtonState == .content) || (!isInvited && inviteButtonState == .success)) ? .destructive : .normal,
                               onTap: {
                     onInvite()
                 },
                               content: Text(isInvited ? L10n.Groups.cancelInvite : L10n.Groups.sendInvite),
-                              successContent: Text(isInvited ? L10n.Groups.invited : L10n.Groups.rescinded),
+                              successContent: Text(isInvited && !isPending ? L10n.Groups.invited : L10n.Groups.rescinded),
                               errorContent: Text(L10n.Groups.rescinded))
             }
         }.onTapGesture {

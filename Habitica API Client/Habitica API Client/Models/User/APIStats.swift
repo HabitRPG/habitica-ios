@@ -46,8 +46,8 @@ public class APIStats: StatsProtocol, Decodable {
     
     public required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        health = (try? values.decode(Float.self, forKey: .health)) ?? 0
-        maxHealth = (try? values.decode(Float.self, forKey: .maxHealth)) ?? 0
+        health = (try? values.decode(Float.self, forKey: .health)) ?? 1
+        maxHealth = (try? values.decode(Float.self, forKey: .maxHealth)) ?? 50
         mana = (try? values.decode(Float.self, forKey: .mana)) ?? 0
         maxMana = (try? values.decode(Float.self, forKey: .maxMana)) ?? 0
         experience = (try? values.decode(Float.self, forKey: .experience)) ?? 0
