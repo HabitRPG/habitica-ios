@@ -34,21 +34,6 @@ class RewardViewDataSource: BaseReactiveCollectionViewDataSource<BaseRewardProto
         }).start())
     }
     
-    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if isCustomRewardsSection(indexPath.section) {
-            return CGSize(width: self.collectionView?.frame.size.width ?? 0, height: 70)
-        } else {
-            return CGSize(width: 90, height: 120)
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if isCustomRewardsSection(section) {
-            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        } else {
-            return UIEdgeInsets(top: 10, left: 4, bottom: 10, right: 4)        }
-    }
-    
     func isCustomRewardsSection(_ section: Int) -> Bool {
         if let item = item(at: IndexPath(row: 0, section: section)) {
             if item as? TaskProtocol != nil {
