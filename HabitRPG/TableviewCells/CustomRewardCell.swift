@@ -67,6 +67,7 @@ class CustomRewardCell: UICollectionViewCell {
         mainRewardWrapper.backgroundColor = theme.windowBackgroundColor
         titleLabel.textColor = theme.primaryTextColor
         notesLabel.textColor = theme.ternaryTextColor
+        notesLabel.numberOfLines = 0
     }
     
     @objc

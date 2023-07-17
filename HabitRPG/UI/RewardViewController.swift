@@ -10,6 +10,38 @@ import UIKit
 import Habitica_Models
 import ReactiveSwift
 
+enum RewardSectionType {
+    case custom
+    case inApp
+    
+    var itemHeight: NSCollectionLayoutDimension {
+        switch self {
+        case .custom:
+            return .estimated(70)
+        case .inApp:
+            return .absolute(120)
+        }
+    }
+    
+    var itemWidth: NSCollectionLayoutDimension {
+        switch self {
+        case .custom:
+            return .fractionalWidth(1)
+        case .inApp:
+            return .estimated(90)
+        }
+    }
+
+    var sectionInset: NSDirectionalEdgeInsets  {
+        switch self {
+        case .custom:
+            return .zero
+        case .inApp:
+            return .init(top: 0, leading: 4, bottom: 0, trailing: 4)
+        }
+    }
+}
+
 class RewardViewController: BaseCollectionViewController, UICollectionViewDelegateFlowLayout {
     private struct DragWrapper {
         let sourceIndexPath: IndexPath
@@ -38,6 +70,8 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
         collectionView.dropDelegate = self
         collectionView.dragInteractionEnabled = true
         
+        collectionView.collectionViewLayout = createCollectionViewLayout()
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView?.alwaysBounceVertical = true
         #if !targetEnvironment(macCatalyst)
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -101,22 +135,6 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return dataSource.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return dataSource.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: section)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FormSegue" {
             guard let destinationController = segue.destination as? UINavigationController else {
@@ -133,6 +151,24 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
             }
             editedReward = nil
         }
+    }
+    
+    private func createCollectionViewLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout { [self] sectionIndex, _ in
+            let isCustomRewardsSection = self.dataSource.isCustomRewardsSection(sectionIndex)
+            let sectionType: RewardSectionType = isCustomRewardsSection ? .custom : .inApp
+            let itemSize = NSCollectionLayoutSize(widthDimension: sectionType.itemWidth,
+                                                  heightDimension: sectionType.itemHeight)
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                   heightDimension: sectionType.itemHeight)
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            group.interItemSpacing = .flexible(1)
+            let section = NSCollectionLayoutSection(group: group)
+            section.contentInsets = sectionType.sectionInset
+            return section
+        }
+        return layout
     }
 }
 
