@@ -1910,7 +1910,7 @@ public enum L10n {
     public static var leave: String { return L10n.tr("Mainstrings", "party.leave") }
     /// Keep an eye out for an invite or start your own Party at any time
     public static var leaveLookingForPartySubtitle: String { return L10n.tr("Mainstrings", "party.leave_looking_for_party_subtitle") }
-    /// If you’re participating in any Party Challenges, leaving will not remove you those Challenges.
+    /// Leaving your Party will not remove you from any Party Challenges you are participating in.
     public static var leavePartyDescription: String { return L10n.tr("Mainstrings", "party.leave_party_description") }
     /// Are you sure you want to leave the Party?
     public static var leavePartyTitle: String { return L10n.tr("Mainstrings", "party.leave_party_title") }
