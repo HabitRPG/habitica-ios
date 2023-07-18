@@ -144,6 +144,8 @@ class PartyDetailViewController: GroupDetailViewController {
         groupDescriptionStackView?.backgroundColor = theme.contentBackgroundColor
         challengesStackView.backgroundColor = theme.contentBackgroundColor
         membersStackview.backgroundColor = theme.contentBackgroundColor
+        
+        leaveButton?.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
     }
     
     override func populateText() {
@@ -232,6 +234,7 @@ class PartyDetailViewController: GroupDetailViewController {
             
             partyQuestView.alpha = 1.0
             if questState.active {
+                questTitleSeparator.isHidden = false
                 questInvitationUserView.isHidden = true
                 if questState.members.contains(where: { participant -> Bool in
                     return participant.userID == inventoryRepository.currentUserId
@@ -244,6 +247,7 @@ class PartyDetailViewController: GroupDetailViewController {
                     partyQuestView.alpha = 0.5
                 }
             } else {
+                questTitleSeparator.isHidden = true
                 let numberResponded = questState.members.filter { (participant) -> Bool in
                     return participant.responded
                 }.count

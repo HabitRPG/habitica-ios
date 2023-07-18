@@ -1906,11 +1906,13 @@ public enum L10n {
     public static var joinPartyDescription: String { return L10n.tr("Mainstrings", "party.join_party_description") }
     /// Looking for a Party?
     public static var joinPartyTitle: String { return L10n.tr("Mainstrings", "party.join_party_title") }
+    /// Leave Party
+    public static var leave: String { return L10n.tr("Mainstrings", "party.leave") }
     /// Keep an eye out for an invite or start your own Party at any time
     public static var leaveLookingForPartySubtitle: String { return L10n.tr("Mainstrings", "party.leave_looking_for_party_subtitle") }
-    /// Do you want to leave the party and keep or leave the challenges?
+    /// If you’re participating in any Party Challenges, leaving will not remove you those Challenges.
     public static var leavePartyDescription: String { return L10n.tr("Mainstrings", "party.leave_party_description") }
-    /// Leave Party?
+    /// Are you sure you want to leave the Party?
     public static var leavePartyTitle: String { return L10n.tr("Mainstrings", "party.leave_party_title") }
     /// Look for a Party
     public static var lookForParty: String { return L10n.tr("Mainstrings", "party.look_for_party") }

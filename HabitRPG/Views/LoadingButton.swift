@@ -37,7 +37,7 @@ struct LoadingButton<Content: View, SuccessContent: View, ErrorContent: View>: V
         }
         switch state {
         case .content, .loading:
-            return theme.backgroundTintColor
+            return theme.fixedTintColor
         case .disabled:
             return theme.dimmedColor
         case .failed:

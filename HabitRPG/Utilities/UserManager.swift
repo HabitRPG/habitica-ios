@@ -53,6 +53,12 @@ class UserManager: NSObject {
                         })
                     }).withLatest(from: SignalProducer<UserProtocol, Never>(value: user)) ?? Signal<([TaskProtocol], UserProtocol), Never>.empty
             }).on(value: {[weak self] (tasks, user) in
+                
+                if UserDefaults.standard.bool(forKey: "isInSetup") && user.flags?.welcomed == false {
+                    self?.userRepository.updateUser(key: "flags.welcomed", value: true).observeCompleted {
+                    }
+                }
+                
                 var uncompletedTaskCount = 0
                 for task in tasks {
                     if task.type == "daily" && !task.completed {

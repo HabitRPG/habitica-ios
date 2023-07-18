@@ -523,8 +523,9 @@
 "party.party_description" = "Party Description";
 "party.party_challenges" = "Party Challenges";
 "party.start_quest" = "Start a Quest";
-"party.leave_party_title" = "Leave Party?";
-"party.leave_party_description" = "Do you want to leave the party and keep or leave the challenges?";
+"party.leave_party_title" = "Are you sure you want to leave the Party?";
+"party.leave_party_description" = "If you’re participating in any Party Challenges, leaving will not remove you those Challenges.";
+"party.leave" = "Leave Party";
 "party.transfer_ownership_title" = "Transfer Leadership?";
 "party.transfer_ownership_description" = "This will make %@ the new Party leader";
 "party.remove_member_title" = "Are you sure you want to remove %@ from the Party?";

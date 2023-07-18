@@ -51,7 +51,7 @@ class PartyViewController: SplitSocialViewController {
                     self?.userIDButton?.setTitle(L10n.Party.lookingForParty, for: .normal)
                     self?.userIDButton?.backgroundColor = .clear
                     self?.userIDButton?.setTitleColor(ThemeService.shared.theme.successTextColor, for: .normal)
-                    self?.userIDButton?.borderColor = ThemeService.shared.theme.successTextColor
+                    self?.userIDButton?.borderColor = .green100
                     self?.userIDButton?.borderWidth = 2
                     self?.leaveLookingForPartyButton.isHidden = false
                     self?.leaveLookingForPartySubtitle.isHidden = false
@@ -114,6 +114,7 @@ class PartyViewController: SplitSocialViewController {
         view.backgroundColor = theme.contentBackgroundColor
         leaveLookingForPartyButton.tintColor = theme.errorColor
         leaveLookingForPartySubtitle.textColor = theme.successTextColor
+        
     }
     
     override func populateText() {
