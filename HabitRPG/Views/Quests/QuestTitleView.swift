@@ -54,7 +54,7 @@ class QuestTitleView: UIView {
         addSubview(detailLabel)
         
         let theme = ThemeService.shared.theme
-        imageView.backgroundColor = theme.contentBackgroundColor
+        imageView.backgroundColor = theme.windowBackgroundColor
         titleLabel.textColor = theme.primaryTextColor
         detailLabel.textColor = theme.ternaryTextColor
     }

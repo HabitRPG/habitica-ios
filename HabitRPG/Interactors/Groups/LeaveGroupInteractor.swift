@@ -14,13 +14,15 @@ class LeaveGroupInteractor: Interactor<GroupProtocol, GroupProtocol?> {
     weak var presentingController: UIViewController?
     
     private let socialRepository = SocialRepository()
+    private let userRepository = UserRepository()
     
     init(presentingViewController: UIViewController) {
         self.presentingController = presentingViewController
     }
     
     override func configure(signal: Signal<GroupProtocol, NSError>) -> Signal<GroupProtocol?, NSError> {
-        return signal.flatMap(.concat) {[weak self] group -> Signal<(Bool, Bool, GroupProtocol), NSError> in
+        return signal
+            .flatMap(.concat) {[weak self] group -> Signal<(Bool, Bool, GroupProtocol), NSError> in
             let (signal, observer) = Signal<(Bool, Bool, GroupProtocol), NSError>.pipe()
             self?.createConfirmationAlert(group: group, observer: observer)
             return signal
@@ -37,12 +39,18 @@ class LeaveGroupInteractor: Interactor<GroupProtocol, GroupProtocol?> {
         let message = group.type == "party" ? L10n.Party.leavePartyDescription : L10n.Guilds.leaveGuildDescription
         let alert = HabiticaAlertController(title: title,
                                             message: message)
-        alert.addAction(title: L10n.Guilds.keepChallenges, isMainAction: true, handler: { (_) in
-            observer.send(value: (true, true, group))
-        })
-        alert.addAction(title: L10n.Guilds.leaveChallenges, style: .destructive, handler: { (_) in
-            observer.send(value: (true, false, group))
-        })
+        if group.type == "party" {
+            alert.addAction(title: L10n.Party.leave, isMainAction: true, handler: { (_) in
+                observer.send(value: (true, true, group))
+            })
+        } else {
+            alert.addAction(title: L10n.Guilds.keepChallenges, isMainAction: true, handler: { (_) in
+                observer.send(value: (true, true, group))
+            })
+            alert.addAction(title: L10n.Guilds.leaveChallenges, style: .destructive, handler: { (_) in
+                observer.send(value: (true, false, group))
+            })
+        }
         alert.setCloseAction(title: L10n.close, handler: {
             observer.send(value: (false, false, group))
         })

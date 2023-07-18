@@ -188,8 +188,8 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
     }
     
     private func createDeviceInformationString() -> String {
-        var informationString = "Please describe the bug you encountered:\n\n\n\n\n\n\n\n\n\n\n\n"
-        informationString.append("The following lines help us find and squash the Bug you encountered. Please do not delete/change them.\n")
+        var informationString = "Ask your question here!\n\n\n\n\n\n\n\n\n\n\n\n"
+        informationString.append("The following lines help us answer your questions. Please do not delete or change them.\n")
         informationString.append("iOS Version: \(UIDevice.current.systemVersion)\n")
         informationString.append("Device: \(UIDevice.modelName)\n")
         informationString.append("App Version: \(appVersionString)\n")

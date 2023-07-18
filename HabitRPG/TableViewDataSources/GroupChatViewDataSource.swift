@@ -29,8 +29,12 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
         tableView?.reloadData()
         
         disposable.add(userRepository.getUser().on(value: {[weak self] user in
+            let isFirstLoad = self?.user == nil
             self?.user = user
             self?.tableView?.reloadData()
+            if isFirstLoad {
+                self?.retrieveData(completed: nil)
+            }
         }).start())
         disposable.add(socialRepository.getChatMessages(groupID: groupID).on(value: {[weak self] (chatMessages, changes) in
             self?.sections[0].items = chatMessages
@@ -46,8 +50,6 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
                 }).start())
             }
         }).start())
-        
-        retrieveData(completed: nil)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
