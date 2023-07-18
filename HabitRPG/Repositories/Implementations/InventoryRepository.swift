@@ -69,8 +69,10 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     
     func sell(item: ItemProtocol) -> Signal<UserProtocol?, Never> {
         let call = SellItemCall(item: item)
+        let toastView = ToastView(goldDiff: item.value, background: .green, delay: 0.5)
         
         return call.objectSignal.on(value: {[weak self]user in
+            ToastManager.show(toast: toastView)
             if let user = user, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, updateUser: user)
             }
