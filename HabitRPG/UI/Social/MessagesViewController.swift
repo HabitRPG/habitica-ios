@@ -94,7 +94,11 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
     }
     
     override func viewDidLayoutSubviews() {
-        tableView.pin.top().start().end().bottom()
+        if view.frame.height > (parent?.view.frame.height ?? 0) {
+            super.viewDidLayoutSubviews()
+            return
+        }
+        tableView.frame = view.frame
         var safearea: CGFloat = 0
         var tabbarOffset: CGFloat = (view.window?.safeAreaInsets.bottom ?? 0) + 40
         if tabBarController == nil {
@@ -127,8 +131,13 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         }
         tableView.contentInset.top = inputBarOffset
         inputBar.pin.start().end().height(inputBarHeight + autocompleteHeight).bottom(keyboardOffset)
-        let acceptView = view.viewWithTag(999)
-        acceptView?.frame = CGRect(x: 0, y: view.frame.size.height-90, width: view.frame.size.width, height: 90)
+        if let acceptView = view.viewWithTag(999) {
+            let yPos: CGFloat = view.frame.size.height-90
+            let height: CGFloat = 90
+            if acceptView.frame.origin.y != yPos || acceptView.frame.height != height {
+                acceptView.frame = CGRect(x: 0, y: yPos, width: view.frame.size.width, height: height)
+            }
+        }
         super.viewDidLayoutSubviews()
     }
     

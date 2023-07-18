@@ -268,6 +268,7 @@ class PartyDetailViewController: GroupDetailViewController {
         } else {
             startQuestButton.isHidden = false
             questTitleView.isHidden = true
+            questTitleSeparator.isHidden = true
             partyQuestView.isHidden = true
             questInvitationUserView.isHidden = true
         }
