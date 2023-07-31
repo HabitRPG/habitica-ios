@@ -22,6 +22,10 @@ class KeyboardManager: NSObject {
         return size.height
     }
     
+    static func dismiss() {
+        UIApplication.shared.windows.first(where: {$0.isKeyWindow})?.endEditing(true)
+    }
+    
     static func addObservingView(_ view: UIView) {
         shared.viewsToUpdate.append(ObservingView(value: view))
     }

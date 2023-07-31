@@ -148,6 +148,7 @@ struct SendPartyInviteView: View {
                 }
                 addButton
                 LoadingButton(state: .constant((viewModel.hasValidInvites ? viewModel.buttonState : .disabled)), onTap: {
+                    KeyboardManager.dismiss()
                     viewModel.invite()
                 }, content: Text(L10n.Groups.sendInvite), successContent: Text(L10n.Groups.invited))
                 Text("If an email isn't registered yet, we'll invite them to join Habitica.")

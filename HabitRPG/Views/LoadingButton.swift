@@ -55,10 +55,10 @@ struct LoadingButton<Content: View, SuccessContent: View, ErrorContent: View>: V
                 Circle().stroke().foregroundColor(.white).frame(width: 29, height: 29)
             })
         } else if state == .failed {
-            if successContent is EmptyView {
+            if errorContent is EmptyView {
                 Text(L10n.failed)
             } else {
-                successContent
+                errorContent
             }
         } else if state == .success {
             if successContent is EmptyView {

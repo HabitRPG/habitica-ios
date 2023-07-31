@@ -1230,7 +1230,7 @@
 "tasks.form.adjust_streak" = "連続実行回数を修正";
 "seasonal_potions_available" = "季節のアイテムが購入可能です";
 "new" = "Ｎｅｗ";
-"x_items_found" = "個のアイテムを見つけました";
+"x_items_found" = "%d 個のアイテムを見つけました";
 "week_reminder_body" = "休憩は健康によいです。しかし、簡単な活動でまだまだポイントを稼げますから、レベルアップしたりかっこいい装備を手に入れたりできますよ！";
 "week_reminder_title" = "タスクの進み具合はどうですか？";
 "daily_tip_9" = "もしもあなたが苦労しているなら、タスクを小さく分解してみましょう。";

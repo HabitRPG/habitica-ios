@@ -228,27 +228,31 @@ struct LookingForPartyView: View {
                 if !viewModel.hasLoadedInitialData {
                     ProgressView().progressViewStyle(HabiticaProgressStyle(strokeWidth: 12)).frame(width: 80, height: 80).padding(.top, 20)
                 } else {
-                    ForEach(viewModel.members, id: \.id) { member in
-                        if let id = member.id {
-                            PartyInviteView(member: member, inviteButtonState: viewModel.inviteStates[id] ?? .content, isInvited: viewModel.invitedMembers.contains(id)) {
-                                if viewModel.invitedMembers.contains(id) {
-                                    viewModel.cancelInvite(uuid: id)
-                                } else {
-                                    viewModel.invite(uuid: id, username: member.username ?? "")
+                    if viewModel.members.isEmpty {
+                        Image(uiImage: Asset.partySeekingEmpty.image).padding(.top, 24)
+                    } else {
+                        ForEach(viewModel.members, id: \.id) { member in
+                            if let id = member.id {
+                                PartyInviteView(member: member, inviteButtonState: viewModel.inviteStates[id] ?? .content, isInvited: viewModel.invitedMembers.contains(id)) {
+                                    if viewModel.invitedMembers.contains(id) {
+                                        viewModel.cancelInvite(uuid: id)
+                                    } else {
+                                        viewModel.invite(uuid: id, username: member.username ?? "")
+                                    }
                                 }
+                                .padding(.top, 8)
+                                .padding(.horizontal, 12)
+                                .padding(.bottom, 12)
+                                .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+                                .cornerRadius(8)
                             }
-                            .padding(.top, 8)
-                            .padding(.horizontal, 12)
-                            .padding(.bottom, 12)
-                            .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-                            .cornerRadius(8)
                         }
                     }
                 }
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
             .padding(14)
-        }
+        }.background(Color(ThemeService.shared.theme.contentBackgroundColor))
     }
     
     var body: some View {
