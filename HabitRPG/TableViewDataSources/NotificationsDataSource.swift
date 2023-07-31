@@ -212,6 +212,8 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
                 url = "/inventory/equipment"
             case "customization":
                 url = "/user/avatar"
+            case "stable", "pets", "mounts":
+                url = "/inventory/stable"
             default:
                 url = "/inventory/items"
             }

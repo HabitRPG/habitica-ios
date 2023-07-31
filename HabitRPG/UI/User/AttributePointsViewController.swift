@@ -79,7 +79,7 @@ class AttributePointsViewController: BaseUIViewController {
     var interactor = CalculateUserStatsInteractor()
     private let (lifetime, token) = Lifetime.make()
     private let disposable = ScopedDisposable(CompositeDisposable())
-    var refreshControl = UIRefreshControl()
+    var refreshControl = HabiticaRefresControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()

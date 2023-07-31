@@ -37,10 +37,9 @@ struct FocusableTextField: UIViewRepresentable {
         uiView.placeholder = placeholder
         uiView.text = text
         configuration(uiView)
-        switch isFirstResponder {
-        case true:
+        if isFirstResponder && !uiView.isFirstResponder {
             uiView.becomeFirstResponder()
-        case false:
+        } else if !isFirstResponder && uiView.isFirstResponder {
             uiView.resignFirstResponder()
         }
     }

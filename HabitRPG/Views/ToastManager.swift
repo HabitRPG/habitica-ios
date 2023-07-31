@@ -52,7 +52,8 @@ class ToastManager: NSObject {
             contentView.setNeedsLayout()
             contentView.alpha = 0
             viewController.view.addSubview(contentView)
-            viewController.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|",
+            let bottomOffset = KeyboardManager.height > 0 ? KeyboardManager.height - 44 : 0
+            viewController.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-\(bottomOffset)-|",
                                                                               options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                                                                               metrics: nil, views: ["view": contentView]))
             viewController.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|",
