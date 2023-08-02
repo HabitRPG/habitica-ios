@@ -207,6 +207,10 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
             url = "/static/new-stuff"
         case .itemReceived:
             let itemReceivedNotification = notification as? NotificationItemReceivedProtocol
+            if itemReceivedNotification?.openDestination?.starts(with: "/") == true {
+                url = itemReceivedNotification?.openDestination
+                break
+            }
             switch itemReceivedNotification?.openDestination {
             case "equipment":
                 url = "/inventory/equipment"

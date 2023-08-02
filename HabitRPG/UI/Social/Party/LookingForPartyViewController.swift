@@ -276,4 +276,12 @@ class LookingForPartyViewController: UIHostingController<LookingForPartyView> {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder, rootView: LookingForPartyView(viewModel: viewModel))
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        HabiticaAnalytics.shared.log("View Find Members", withEventProperties: [
+            "eventCategory": "navigation",
+            "hitType": "event",
+        ])
+    }
 }
