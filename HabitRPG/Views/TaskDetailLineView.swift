@@ -34,6 +34,10 @@ class TaskDetailLineView: UIView {
         return view
     }()
     
+    var accessibilityText: String {
+        streakLabel.text?.replacingOccurrences(of: " | ", with: ", ") ?? ""
+    }
+    
     private var iconColor: UIColor {
         return ThemeService.shared.theme.ternaryTextColor
     }

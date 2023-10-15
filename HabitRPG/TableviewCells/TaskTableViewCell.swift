@@ -128,7 +128,7 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         self.accessibilityWrapper.shouldGroupAccessibilityChildren = true
         self.accessibilityWrapper.isAccessibilityElement = true
         self.accessibilityWrapper.accessibilityHint = L10n.Accessibility.doubleTapToEdit
-        self.accessibilityWrapper.accessibilityLabel = "\(task.text ?? ""), Value: \(String.forTaskQuality(task: task))"
+        self.accessibilityWrapper.accessibilityLabel = "\(task.text ?? ""), Value: \(String.forTaskQuality(task: task)), Streak: \(taskDetailLine.accessibilityText)"
         if let notes = task.notes, !notes.isEmpty {
             self.accessibilityWrapper.accessibilityLabel = "\(self.accessibilityWrapper.accessibilityLabel ?? ""), \(notes)"
         }
