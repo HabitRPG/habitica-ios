@@ -11,6 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 import Habitica_Database
 import PinLayout
+import SwiftUI
 
 class UserTopHeader: UIView, Themeable {
     
@@ -48,6 +49,9 @@ class UserTopHeader: UIView, Themeable {
         }
     }
     
+    private var displayName = ""
+    private var userID = ""
+    
     private let repository = UserRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
@@ -76,6 +80,8 @@ class UserTopHeader: UIView, Themeable {
         gemView.currency = .gem
         hourglassView.currency = .hourglass
         
+        avatarView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showUserBottomSheetMenu)))
+        avatarView.isUserInteractionEnabled = true
         gemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showGemView)))
         
         usernameLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
@@ -182,6 +188,8 @@ class UserTopHeader: UIView, Themeable {
         if !user.isValid {
             return
         }
+        userID = user.id ?? ""
+        displayName = user.profile?.name ?? ""
         avatarView.avatar = AvatarViewModel(avatar: user)
         if let stats = user.stats {
             healthLabel.value = stats.health
@@ -269,6 +277,22 @@ class UserTopHeader: UIView, Themeable {
     @objc
     private func showGemView() {
         
+    }
+    
+    @objc
+    private func showUserBottomSheetMenu() {
+        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(Text(""), menuItems: {
+            BottomSheetMenuitem(title: L10n.openProfile) {
+                RouterHandler.shared.handle(urlString: "/profile/" + self.userID)
+            }
+            BottomSheetMenuitem(title: L10n.Menu.customizeAvatar) {
+                RouterHandler.shared.handle(urlString: "/user/avatar")
+            }
+            BottomSheetMenuitem(title: L10n.shareAvatar) {
+                
+            }
+        }))
+        nearestNavigationController?.present(sheet, animated: true)
     }
     
     override func layoutSubviews() {

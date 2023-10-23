@@ -43,10 +43,14 @@ class MountDetailViewController: StableDetailViewController<MountDetailDataSourc
     }
     
     private func showActionSheet(forStableItem stableItem: MountStableItem, withSource sourceView: UIView?) {
-        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(Text(stableItem.mount?.text ?? ""), iconName: "stable_Mount-Icon-\(stableItem.mount?.key ?? "")", menuItems: {
-            BottomSheetMenuitem(title: user?.items?.currentMount == stableItem.mount?.key ? L10n.unequip : L10n.equip) {[weak self] in
-                self?.inventoryRepository.equip(type: "mount", key: stableItem.mount?.key ?? "").observeCompleted {}
-            }
+        guard let mount = stableItem.mount else {
+            return
+        }
+        let sheet = HostingBottomSheetController(rootView: MountBottomSheetView(mount: mount,
+                                                                                owned: stableItem.owned,
+                                                                                isCurrentMount: user?.items?.currentMount == stableItem.mount?.key,
+                                                                                onEquip: {[weak self] in
+            self?.inventoryRepository.equip(type: "mount", key: mount.key ?? "").observeCompleted {}
         }))
         present(sheet, animated: true)
     }

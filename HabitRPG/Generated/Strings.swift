@@ -730,6 +730,8 @@ public enum L10n {
   public static var openItunes: String { return L10n.tr("Mainstrings", "open_itunes") }
   /// You open the Mystery Box and find...
   public static var openMysteryItem: String { return L10n.tr("Mainstrings", "open_mystery_item") }
+  /// Open Profile
+  public static var openProfile: String { return L10n.tr("Mainstrings", "open_profile") }
   /// Open Website
   public static var openWebsite: String { return L10n.tr("Mainstrings", "open_website") }
   /// Organize By
@@ -910,6 +912,8 @@ public enum L10n {
   public static var shadowMuteUserConfirm: String { return L10n.tr("Mainstrings", "shadow_mute_user_confirm") }
   /// Share
   public static var share: String { return L10n.tr("Mainstrings", "share") }
+  /// Share Avatar
+  public static var shareAvatar: String { return L10n.tr("Mainstrings", "share_avatar") }
   /// Shirt
   public static var shirt: String { return L10n.tr("Mainstrings", "shirt") }
   /// Show Details
@@ -2352,6 +2356,8 @@ public enum L10n {
     public static var standardPets: String { return L10n.tr("Mainstrings", "stable.standard_pets") }
     /// Type
     public static var type: String { return L10n.tr("Mainstrings", "stable.type") }
+    /// Use Saddle
+    public static var useSaddle: String { return L10n.tr("Mainstrings", "stable.use_saddle") }
     /// Wacky Mounts
     public static var wackyMounts: String { return L10n.tr("Mainstrings", "stable.wacky_mounts") }
     /// Wacky Pets

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -337,6 +337,7 @@
 		2988EFC528D3583E00D703BC /* Measurements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2988EFC428D3583E00D703BC /* Measurements.swift */; };
 		298F20B72A4ECC66004AABE5 /* HabiticaProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298F20B62A4ECC66004AABE5 /* HabiticaProgressIndicator.swift */; };
 		298FAB0224BF5BF30084CB0D /* MainTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 298FAB0124BF5BF30084CB0D /* MainTableviewCell.xib */; };
+		2990EAE32AB9FB7900916A67 /* FeedSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990EAE22AB9FB7900916A67 /* FeedSheetView.swift */; };
 		299328A924E57858003BCE0C /* FAQDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299328A824E57858003BCE0C /* FAQDetailViewController.swift */; };
 		299328AB24E5985B003BCE0C /* UIStackview-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299328AA24E5985B003BCE0C /* UIStackview-Extensions.swift */; };
 		2994A8AE28FE945E00CEDED7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; };
@@ -490,6 +491,9 @@
 		29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */; };
 		29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */; };
 		29EFF94E25AC750700D73F55 /* AchievementNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EFF94D25AC750700D73F55 /* AchievementNotificationCell.swift */; };
+		29F177F92AB85D52008B8F0C /* PetBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F177F82AB85D52008B8F0C /* PetBottomSheetView.swift */; };
+		29F177FB2AB85D66008B8F0C /* StableBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F177FA2AB85D66008B8F0C /* StableBackgroundView.swift */; };
+		29F177FD2AB89AA4008B8F0C /* MountBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F177FC2AB89AA4008B8F0C /* MountBottomSheetView.swift */; };
 		29F272A62A404F8600F3B50F /* SendPartyInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F272A52A404F8600F3B50F /* SendPartyInviteViewController.swift */; };
 		29F808922770B0D900BAF854 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F808912770B0D900BAF854 /* Secrets.swift */; };
 		29F89F1A1F47882A004E5B84 /* String-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89F191F47882A004E5B84 /* String-Extensions.swift */; };
@@ -1048,6 +1052,7 @@
 		2988EFC428D3583E00D703BC /* Measurements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurements.swift; sourceTree = "<group>"; };
 		298F20B62A4ECC66004AABE5 /* HabiticaProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaProgressIndicator.swift; sourceTree = "<group>"; };
 		298FAB0124BF5BF30084CB0D /* MainTableviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTableviewCell.xib; sourceTree = "<group>"; };
+		2990EAE22AB9FB7900916A67 /* FeedSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSheetView.swift; sourceTree = "<group>"; };
 		299328A824E57858003BCE0C /* FAQDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQDetailViewController.swift; sourceTree = "<group>"; };
 		299328AA24E5985B003BCE0C /* UIStackview-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackview-Extensions.swift"; sourceTree = "<group>"; };
 		29951A1D2326670500918FC8 /* InboxOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InboxOverviewViewController.swift; path = HabitRPG/UI/Social/InboxOverviewViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -1212,6 +1217,9 @@
 		29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomization.swift; sourceTree = "<group>"; };
 		29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Extensions.swift"; sourceTree = "<group>"; };
 		29EFF94D25AC750700D73F55 /* AchievementNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementNotificationCell.swift; sourceTree = "<group>"; };
+		29F177F82AB85D52008B8F0C /* PetBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetBottomSheetView.swift; sourceTree = "<group>"; };
+		29F177FA2AB85D66008B8F0C /* StableBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableBackgroundView.swift; sourceTree = "<group>"; };
+		29F177FC2AB89AA4008B8F0C /* MountBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountBottomSheetView.swift; sourceTree = "<group>"; };
 		29F272A52A404F8600F3B50F /* SendPartyInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPartyInviteViewController.swift; sourceTree = "<group>"; };
 		29F808912770B0D900BAF854 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		29F89F191F47882A004E5B84 /* String-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Extensions.swift"; sourceTree = "<group>"; };
@@ -2095,6 +2103,17 @@
 			path = Tavern;
 			sourceTree = "<group>";
 		};
+		29F177F72AB85D39008B8F0C /* Stable */ = {
+			isa = PBXGroup;
+			children = (
+				29F177F82AB85D52008B8F0C /* PetBottomSheetView.swift */,
+				2990EAE22AB9FB7900916A67 /* FeedSheetView.swift */,
+				29F177FC2AB89AA4008B8F0C /* MountBottomSheetView.swift */,
+				29F177FA2AB85D66008B8F0C /* StableBackgroundView.swift */,
+			);
+			path = Stable;
+			sourceTree = "<group>";
+		};
 		29FC5A6320402EE2008E88C8 /* Theme Engine */ = {
 			isa = PBXGroup;
 			children = (
@@ -2617,6 +2636,7 @@
 		D9C000311928F85E003D4E4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				29F177F72AB85D39008B8F0C /* Stable */,
 				29C1360124EBD12E00DBC6B3 /* AbbreviatedNumberLabel.swift */,
 				29C38C8424A2466400F219A1 /* AdventureGuidePromoView.swift */,
 				2967CF7E252479C400F366DF /* Alerts */,
@@ -2624,11 +2644,13 @@
 				29FEB279202B4F0400EA245A /* AvatarView.swift */,
 				29E48F0C22E89DB3005C4B45 /* BadgeView.swift */,
 				2967CF80252479FA00F366DF /* Basic */,
+				2953D84828B77E3800DC456E /* BottomSheets */,
 				293BB4A01FD06E7E003B6F4F /* BulkStatsAllocationView.xib */,
 				29ACB3AB26404496009B059C /* CalendarView.swift */,
 				299BD6311F5420A300E22935 /* Challenges */,
 				292DEE77204E1FFD0086D5F7 /* CheckboxView.swift */,
 				295D42F720922BA700948E7E /* ClassSelectionOptionView.swift */,
+				29397EE32977FBA4009EFD20 /* CountdownView.swift */,
 				49005B711F180588004830D9 /* CurrencyCountView.swift */,
 				2967CF7F252479D600F366DF /* Equipment */,
 				2975F00223881D05005DBF2E /* FlagView.swift */,
@@ -2638,6 +2660,8 @@
 				292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */,
 				292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */,
 				29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */,
+				298F20B62A4ECC66004AABE5 /* HabiticaProgressIndicator.swift */,
+				290E56E22A1FAB14000269C0 /* LoadingButton.swift */,
 				29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */,
 				29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */,
 				291DE9752099D85D0073182A /* MemberListView.swift */,
@@ -2666,10 +2690,6 @@
 				29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */,
 				29323E342052008800AC6D6F /* UserTopHeader.swift */,
 				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
-				2953D84828B77E3800DC456E /* BottomSheets */,
-				29397EE32977FBA4009EFD20 /* CountdownView.swift */,
-				290E56E22A1FAB14000269C0 /* LoadingButton.swift */,
-				298F20B62A4ECC66004AABE5 /* HabiticaProgressIndicator.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3577,6 +3597,7 @@
 				297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */,
 				2914485B2084E61400F3A6B5 /* MountOverviewDataSource.swift in Sources */,
 				2988EFC528D3583E00D703BC /* Measurements.swift in Sources */,
+				29F177F92AB85D52008B8F0C /* PetBottomSheetView.swift in Sources */,
 				291E95AF20988025006EE585 /* NewsViewController.swift in Sources */,
 				29FC5A6B20406932008E88C8 /* GuidelinesViewController.swift in Sources */,
 				290B623F20727113007287C4 /* MyGuildCell.swift in Sources */,
@@ -3653,6 +3674,7 @@
 				295BC701226F677100DDDF1A /* NewsNotificationCell.swift in Sources */,
 				296AC81420AC85C200885682 /* RewardViewDataSource.swift in Sources */,
 				290B6285207BD531007287C4 /* GuildDetailViewController.swift in Sources */,
+				29F177FD2AB89AA4008B8F0C /* MountBottomSheetView.swift in Sources */,
 				299F93ED246960A1008DB702 /* GiftGemsViewController.swift in Sources */,
 				2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */,
 				29E30DE620D935AF00F74ECB /* LevelUpOverlayView.swift in Sources */,
@@ -3684,6 +3706,7 @@
 				29706C8B27D27893006EC139 /* Emoji.swift in Sources */,
 				29B4788A20BD752C00B6123F /* SkillsTaskTableViewController.swift in Sources */,
 				294EB59D1FA0A7E4006083BD /* FixCharacterViewController.swift in Sources */,
+				2990EAE32AB9FB7900916A67 /* FeedSheetView.swift in Sources */,
 				29E1630F200E279900685640 /* MenuNavigationBarView.swift in Sources */,
 				49E6F57D1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.swift in Sources */,
 				D9BB45631E71CE910002AE2E /* HabitTableViewCell.swift in Sources */,
@@ -3896,6 +3919,7 @@
 				D984D58D1E4A2F2D006E84F8 /* SubscriptionOptionView.swift in Sources */,
 				29C38C8B24A48F9D00F219A1 /* AchievementAlertController.swift in Sources */,
 				292726B620B7094B009DD08A /* ChallengeTableViewDataSource.swift in Sources */,
+				29F177FB2AB85D66008B8F0C /* StableBackgroundView.swift in Sources */,
 				299FB2A72084B44000422522 /* PetOverviewDataSource.swift in Sources */,
 				2927024624E2D8AB00BCAA77 /* HallOfContributorsDataSource.swift in Sources */,
 				290E56E32A1FAB14000269C0 /* LoadingButton.swift in Sources */,

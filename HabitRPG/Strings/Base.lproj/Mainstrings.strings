@@ -451,6 +451,7 @@
 "stable.standard" = "Standard";
 "stable.premium" = "Magic Potion";
 "stable.feed" = "Feed";
+"stable.use_saddle" = "Use Saddle";
 "stable.color" = "Color";
 "stable.type" = "Type";
 "equip" = "Equip";
@@ -1243,3 +1244,5 @@
 "birthday_set" = "Birthday Set";
 "background" = "Background";
 "failed" = "Failed";
+"open_profile" = "Open Profile";
+"share_avatar" = "Share Avatar";

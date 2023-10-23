@@ -244,7 +244,11 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         return localRepository.getShops()
     }
     
-    func feed(pet: PetProtocol, food: FoodProtocol) -> Signal<Int?, Never> {
+    func feed(pet: PetProtocol, food: FoodProtocol) -> Signal<HabiticaResponse<Int>?, Never> {
+        feed(pet: pet.key ?? "", food: food.key ?? "")
+    }
+    
+    func feed(pet: String, food: String) -> Signal<HabiticaResponse<Int>?, Never> {
         let call = FeedPetCall(pet: pet, food: food)
         
         call.habiticaResponseSignal.observeValues { response in
@@ -253,9 +257,13 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 ToastManager.show(toast: toastView)
             }
         }
-        return call.objectSignal.on(value: {[weak self]petValue in
-            if let userID = self?.currentUserId, let key = pet.key, let trained = petValue, let foodKey = food.key {
-                self?.localRepository.updatePetTrained(userID: userID, key: key, trained: trained, consumedFood: foodKey)
+        return call.habiticaResponseSignal.on(value: {[weak self] response in
+            if let message = response?.message {
+                let toastView = ToastView(title: message, background: .green, delay: 1.0)
+                ToastManager.show(toast: toastView)
+            }
+            if let userID = self?.currentUserId, let trained = response?.data {
+                self?.localRepository.updatePetTrained(userID: userID, key: pet, trained: trained, consumedFood: food)
             }
         })
     }
