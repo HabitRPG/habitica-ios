@@ -51,13 +51,37 @@ struct HabiticaButtonUI<Label: View>: View {
 private class ViewModel: ObservableObject {
     let userRepository = UserRepository()
     @Published var lossText: LocalizedStringKey = ""
+    @Published var enableSubBenefit = false
+    @Published var isSubscribed = false
+    @Published var nextPerkUsage: Date?
     
     init() {
+        enableSubBenefit = ConfigRepository.shared.bool(variable: .enableFaintSubs)
+        if enableSubBenefit {
+            let defaults = UserDefaults()
+            let lastUsage = defaults.value(forKey: "lastFaintSubBenefit")
+            let calendar = Calendar.current
+            if let usage = lastUsage as? Date, calendar.isDate(usage, inSameDayAs: Date()) {
+                let tomorrow = calendar.date(byAdding: .day, value: 1, to: Date()) ?? Date()
+                nextPerkUsage = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: tomorrow)
+            }
+        }
+        
         userRepository.getUser()
             .take(first: 1)
             .on(value: { user in
-            self.lossText = LocalizedStringKey(L10n.Faint.subtitle(String((user.stats?.level ?? 1) - 1), String(Int(user.stats?.gold ?? 0))))
+                self.isSubscribed = user.isSubscribed
+                self.lossText = LocalizedStringKey(L10n.Faint.subtitle(String((user.stats?.level ?? 1) - 1), String(Int(user.stats?.gold ?? 0))))
         }).start()
+    }
+    
+    func useSubBenefit(_ onCompleted: @escaping () -> Void) {
+        userRepository.updateUser(key: "stats.hp", value: 1).observeResult { _ in
+            let defaults = UserDefaults.standard
+            defaults.set(Date(), forKey: "lastFaintSubBenefit")
+            ToastManager.show(text: L10n.Faint.perkSuccess, color: .green)
+            onCompleted()
+        }
     }
 }
 
@@ -73,9 +97,15 @@ struct FaintView: View {
         self.onDismiss = {}
     }
     
+    fileprivate init(viewModel: ViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
+    
     @State var appear = false
     @State var isReviving = false
-    @ObservedObject private var viewModel = ViewModel()
+    @State var isUsingPerk = false
+    @ObservedObject fileprivate var viewModel = ViewModel()
     private let positions = (0..<6).map { _ in Int.random(in: 5...50) }
     
     var body: some View {
@@ -103,28 +133,28 @@ struct FaintView: View {
                 Image(Asset.faintHeart.name)
                     .offset(y: 25)
             }
+            .padding(.horizontal, 24)
             Text(L10n.Faint.title)
                 .font(.system(size: 30, weight: .bold))
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, 24)
+                .padding(.horizontal, 48)
             Text(viewModel.lossText)
                 .foregroundColor(.primaryTextColor)
                 .font(.system(size: 20))
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 380)
                 .padding(.top, 12)
-                .padding(.horizontal, 24)
-            Text(L10n.Faint.goodLuckText)
-                .foregroundColor(.primaryTextColor)
-                .font(.system(size: 20))
-                .frame(maxWidth: 380)
+                .padding(.horizontal, 48)
+            Text(L10n.Faint.disclaimer)
+                .foregroundColor(.ternaryTextColor)
+                .font(.system(size: 14))
                 .multilineTextAlignment(.center)
                 .padding(.top, 12)
-                .padding(.horizontal, 24)
+                .padding(.horizontal, 48)
             Spacer()
             HabiticaButtonUI(label: Group {
                 if isReviving {
-                    HStack(spacing: 6) {
+                    HStack(spacing: 12) {
                         ProgressView().progressViewStyle(HabiticaProgressStyle(strokeWidth: 8)).frame(width: 28, height: 28)
                         Text("Reviving...")
                     }
@@ -141,14 +171,77 @@ struct FaintView: View {
                         onDismiss()
                     }
             }.frame(maxWidth: 600)
-            Text(L10n.Faint.disclaimer)
-                .foregroundColor(.ternaryTextColor)
-                .font(.system(size: 14))
-                .multilineTextAlignment(.center)
-                .padding(.top, 12)
-                .padding(.horizontal, 16)
-        }.padding(.horizontal, 24)
-            .padding(.vertical, idiom == .pad ? 64 : 24)
+                .padding(.horizontal, 24)
+                .padding(.bottom, viewModel.enableSubBenefit ? 15 : 42)
+            if viewModel.enableSubBenefit {
+                let gradientColors: [Color] = [Color(hexadecimal: "72CFFF"),
+                                      Color(hexadecimal: "77F4C7")
+                                     ]
+                if viewModel.isSubscribed {
+                    if let nextUsage = viewModel.nextPerkUsage {
+                        Text(L10n.Faint.subbedUsed(nextUsage.getShortRemainingString()))
+                            .foregroundColor(Color(UIColor.teal1))
+                            .font(.system(size: 15, weight: .semibold))
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 36)
+                            .padding(.bottom, 38)
+                    } else {
+                        Button(action: {
+                            if isUsingPerk {
+                                return
+                            }
+                            isUsingPerk = true
+                            viewModel.useSubBenefit {
+                                onDismiss()
+                            }
+                        }, label: {
+                            Group {
+                                if isUsingPerk {
+                                    ProgressView().progressViewStyle(HabiticaProgressStyle(strokeWidth: 8)).frame(width: 28, height: 28)
+                                } else {
+                                    Text(L10n.Faint.subbedButtonPrompt)
+                                }
+                            }
+                                .foregroundColor(Color(UIColor.green1))
+                                .font(.headline)
+                                .padding(.vertical, 6)
+                                .frame(minHeight: 60)
+                                .frame(maxWidth: .infinity)
+                                .background(LinearGradient(colors: gradientColors, startPoint: .leading, endPoint: .trailing))
+                                .overlay(RoundedRectangle(cornerRadius: 8).stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
+                                .cornerRadius(8)
+                        })
+                        .padding(.horizontal, 24)
+                        .padding(.bottom, 8)
+                        Text(L10n.Faint.subbedFooter)
+                            .foregroundColor(Color(UIColor.teal1))
+                            .font(.system(size: 15, weight: .semibold))
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 36)
+                            .padding(.bottom, 38)
+                    }
+                } else {
+                    VStack(alignment: .center, spacing: 8) {
+                        HabiticaButtonUI(label: Text(L10n.Faint.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white) {
+                            
+                        }.frame(maxWidth: 600)
+                        Text(L10n.Faint.unsubbedFooter)
+                            .foregroundColor(Color(UIColor.teal1))
+                            .font(.system(size: 15, weight: .semibold))
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 16)
+                    }
+                    .padding(.horizontal, 24)
+                    .padding(.top, 16)
+                    .padding(.bottom, 38)
+                    .frame(maxWidth: .infinity)
+                    .background(LinearGradient(colors: gradientColors, startPoint: .leading, endPoint: .trailing))
+                    .cornerRadius([.topLeading, .topTrailing], 24)
+                }
+            }
+        }
+        .ignoresSafeArea(.all)
+            .padding(.top, idiom == .pad ? 64 : 24)
     }
 }
 
@@ -209,7 +302,31 @@ class FaintViewController: UIHostingController<FaintView> {
 }
 
 struct FaintViewPreview: PreviewProvider {
+    private static var unsubbedViewModel: ViewModel = {
+        let unsubbedViewModel = ViewModel()
+        unsubbedViewModel.enableSubBenefit = true
+        return unsubbedViewModel
+    }()
+    
+    private static var subbedViewModel: ViewModel = {
+        let subbedViewModel = ViewModel()
+        subbedViewModel.enableSubBenefit = true
+        subbedViewModel.isSubscribed = true
+        return subbedViewModel
+    }()
+    
+    private static var subbedUsedViewModel: ViewModel = {
+        let subbedViewModel = ViewModel()
+        subbedViewModel.enableSubBenefit = true
+        subbedViewModel.isSubscribed = true
+        subbedViewModel.nextPerkUsage = Calendar.current.date(byAdding: .day, value: 1, to: Date())
+        return subbedViewModel
+    }()
+    
     static var previews: some View {
-        FaintView()
+        FaintView().previewDisplayName("Sub Benefits Disabled")
+        FaintView(viewModel: unsubbedViewModel).previewDisplayName("Unsubscribed")
+        FaintView(viewModel: subbedViewModel).previewDisplayName("Subscribed")
+        FaintView(viewModel: subbedUsedViewModel).previewDisplayName("Subscribed Used")
     }
 }

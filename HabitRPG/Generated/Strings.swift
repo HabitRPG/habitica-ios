@@ -942,6 +942,8 @@ public enum L10n {
   public static var streakAchievementTitle: String { return L10n.tr("Mainstrings", "streak_achievement_title") }
   /// Strong
   public static var strong: String { return L10n.tr("Mainstrings", "strong") }
+  /// sub perk
+  public static var subPerk: String { return L10n.tr("Mainstrings", "sub_perk") }
   /// Subscribe
   public static var subscribe: String { return L10n.tr("Mainstrings", "subscribe") }
   /// Subscribe for Hourglasses
@@ -1542,12 +1544,26 @@ public enum L10n {
     public static var dontDespair: String { return L10n.tr("Mainstrings", "faint.dont_despair") }
     /// But you can get them all back with hard work! Good luck—you’ll do great. 
     public static var goodLuckText: String { return L10n.tr("Mainstrings", "faint.good_luck_text") }
-    /// You’ll drop to **level %s**, lose **%s Gold**, and break a **piece of Equipment**…
+    /// You got a second chance with 1 HP!
+    public static var perkSuccess: String { return L10n.tr("Mainstrings", "faint.perk_success") }
+    /// Second chance: Hold on with 1HP!
+    public static var subbedButtonPrompt: String { return L10n.tr("Mainstrings", "faint.subbed_button_prompt") }
+    /// Your subscription lets you have a second chance each day if you run out of HP
+    public static var subbedFooter: String { return L10n.tr("Mainstrings", "faint.subbed_footer") }
+    /// You already used your second chance today. It’s available again in %s.
+    public static func subbedUsed(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "faint.subbed_used", p1)
+    }
+    /// You’ll drop to **level %s, lose %s Gold, and break a piece of gear**…\nYou can earn them all back with hard work!
     public static func subtitle(_ p1: UnsafePointer<CChar>, _ p2: UnsafePointer<CChar>) -> String {
       return L10n.tr("Mainstrings", "faint.subtitle", p1, p2)
     }
     /// You ran out of Health!
     public static var title: String { return L10n.tr("Mainstrings", "faint.title") }
+    /// Subscribe to hold on with 1HP!
+    public static var unsubbedButtonPrompt: String { return L10n.tr("Mainstrings", "faint.unsubbed_button_prompt") }
+    /// Get a second chance each day to avoid running out of HP with a subscription
+    public static var unsubbedFooter: String { return L10n.tr("Mainstrings", "faint.unsubbed_footer") }
   }
 
   public enum FallPromo {
