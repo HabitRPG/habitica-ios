@@ -250,13 +250,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     
     func feed(pet: String, food: String) -> Signal<HabiticaResponse<Int>?, Never> {
         let call = FeedPetCall(pet: pet, food: food)
-        
-        call.habiticaResponseSignal.observeValues { response in
-            if let message = response?.message {
-                let toastView = ToastView(title: message, background: .green, delay: 1.0)
-                ToastManager.show(toast: toastView)
-            }
-        }
+
         return call.habiticaResponseSignal.on(value: {[weak self] response in
             if let message = response?.message {
                 let toastView = ToastView(title: message, background: .green, delay: 1.0)

@@ -68,21 +68,11 @@ class RouterHandler {
     // swiftlint:disable:next function_body_length cyclomatic_complexity
     func register() {
         let configRepository = ConfigRepository.shared
-        if !configRepository.bool(variable: .hideGuilds) {
-            register("/groups/guild/:groupID") { link in
-                self.displayTab(index: 4)
-                let viewController = StoryboardScene.Social.groupTableViewController.instantiate()
-                viewController.groupID = link["groupID"]
-                self.push(viewController)
-            }
-            register("/groups/myGuilds") {
-                self.displayTab(index: 4)
-                self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
-            }
-            register("/groups/discovery") {
-                self.displayTab(index: 4)
-                self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
-            }
+        register("/groups/guild/:groupID") { link in
+            self.displayTab(index: 4)
+            let viewController = StoryboardScene.Social.groupTableViewController.instantiate()
+            viewController.groupID = link["groupID"]
+            self.push(viewController)
         }
         if !configRepository.bool(variable: .hideChallenges) {
             register("/challenges/:challengeID") { link in
@@ -99,16 +89,6 @@ class RouterHandler {
             register("/challenges/findChallenges") {
                 self.displayTab(index: 4)
                 self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
-            }
-        }
-        if !configRepository.bool(variable: .hideTavern) {
-            register("/tavern") {
-                self.displayTab(index: 4)
-                self.push(StoryboardScene.Social.tavernViewController.instantiate())
-            }
-            register("/groups/tavern") {
-                self.displayTab(index: 4)
-                self.push(StoryboardScene.Social.tavernViewController.instantiate())
             }
         }
         register("/party") {

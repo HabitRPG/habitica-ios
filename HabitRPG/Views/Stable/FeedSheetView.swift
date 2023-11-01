@@ -39,8 +39,9 @@ struct FeedSheetView: View {
                 ForEach(viewModel.food, id: \.key) { foodItem in
                     HStack {
                         KFImage(ImageManager.buildImageUrl(name: "Pet_Food_\(foodItem.key ?? "")")).frame(width: 44, height: 44)
-                        Text(foodItem.text ?? "").font(.system(.headline))
-                            .frame(maxWidth: .infinity)
+                        Text(foodItem.text ?? "")
+                            .font(.system(.headline))
+                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     .padding(.horizontal, 16)
                     .padding(.vertical, 8)

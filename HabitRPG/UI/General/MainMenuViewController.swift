@@ -36,10 +36,8 @@ class MenuItem {
         case seasonalShop
         case timeTravelersShop
         
-        case tavern
         case party
         case questDetail
-        case guilds
         case challenges
         
         case support
@@ -99,10 +97,8 @@ class MenuItem {
         MenuItem(key: .stable, title: L10n.Titles.petsAndMounts, vcInstantiator: StoryboardScene.Main.stableViewController.instantiate),
         MenuItem(key: .gems, title: L10n.Menu.gems, vcInstantiator: StoryboardScene.Main.purchaseGemNavController.instantiate),
         MenuItem(key: .subscription, title: L10n.Menu.subscription, vcInstantiator: StoryboardScene.Main.subscriptionNavController.instantiate),
-        MenuItem(key: .tavern, title: L10n.Titles.tavern, vcInstantiator: StoryboardScene.Social.tavernViewController.instantiate),
         MenuItem(key: .party, title: L10n.Titles.party, vcInstantiator: StoryboardScene.Social.partyViewController.instantiate),
         MenuItem(key: .questDetail, title: L10n.quest, vcInstantiator: StoryboardScene.Social.questDetailViewController.instantiate),
-        MenuItem(key: .guilds, title: L10n.Titles.guilds, vcInstantiator: StoryboardScene.Social.guildsOverviewViewController.instantiate),
         MenuItem(key: .challenges, title: L10n.Titles.challenges, vcInstantiator: StoryboardScene.Social.challengeTableViewController.instantiate),
         MenuItem(key: .news, title: L10n.Titles.news, vcInstantiator: StoryboardScene.Main.newsViewController.instantiate),
         MenuItem(key: .support, title: L10n.Menu.support, vcInstantiator: StoryboardScene.Support.initialScene.instantiate),
@@ -194,9 +190,7 @@ class MainMenuViewController: BaseTableViewController {
             } else {
                 menuItem(withKey: .party).showIndicator = false
             }
-            
-            menuItem(withKey: .tavern).subtitle = user?.preferences?.sleep == true ? L10n.damagePaused : nil
-            
+                        
             tableView.reloadData()
             
             if user?.isSubscribed == true && activePromo == nil {
@@ -208,14 +202,14 @@ class MainMenuViewController: BaseTableViewController {
                 menuItem(withKey: .subscription).subtitle = L10n.getMoreHabitica
             }
             
-            let customMenu = configRepository.array(variable: .customMenu)
-            // swiftlint:disable:next empty_count
-            if customMenu.count > 0 {
-                reorderMenu(customMenu)
+            if !configRepository.enableIPadUI() {
+                let customMenu = configRepository.array(variable: .customMenu)
+                // swiftlint:disable:next empty_count
+                if customMenu.count > 0 {
+                    reorderMenu(customMenu)
+                }
             }
             
-            menuItem(withKey: .tavern).isHidden = configRepository.bool(variable: .hideTavern)
-            menuItem(withKey: .guilds).isHidden = configRepository.bool(variable: .hideGuilds)
             menuItem(withKey: .challenges).isHidden = configRepository.bool(variable: .hideChallenges)
         }
     }
@@ -497,10 +491,8 @@ class MainMenuViewController: BaseTableViewController {
                 menuItem(withKey: .subscription)
                 ]),
             MenuSection(key: .social, title: L10n.Menu.social, iconAsset: Asset.iconSocial, items: [
-                menuItem(withKey: .tavern),
                 menuItem(withKey: .party),
                 menuItem(withKey: .messages),
-                menuItem(withKey: .guilds),
                 menuItem(withKey: .challenges)
                 ]),
             MenuSection(key: .about, title: L10n.Titles.about, iconAsset: Asset.iconHelp, items: [
@@ -510,13 +502,17 @@ class MainMenuViewController: BaseTableViewController {
                 menuItem(withKey: .about)
                 ])
         ]
-        menuItem(withKey: .tavern).subtitleColor = UIColor.orange10
         
         if !configRepository.enableIPadUI() {
             menuItem(withKey: .tasks).isHidden = true
             menuItem(withKey: .settings).isHidden = true
             menuItem(withKey: .messages).isHidden = true
             menuItem(withKey: .notifications).isHidden = true
+        } else {
+            menuItem(withKey: .tasks).isHidden = false
+            menuItem(withKey: .settings).isHidden = false
+            menuItem(withKey: .messages).isHidden = false
+            menuItem(withKey: .notifications).isHidden = false
         }
     }
     

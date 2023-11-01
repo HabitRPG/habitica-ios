@@ -53,7 +53,7 @@ struct PetBottomSheetView: View, Dismissable {
             StableBackgroundView(content: KFImage(ImageManager.buildImageUrl(name: "stable_Pet-\(pet.key ?? "")")).frame(width: 70, height: 70).padding(.top, 40), animateFlying: false)
                 .clipShape(.rect(cornerRadius: 12))
             if trained > 0 && pet.type != "special" && canRaise {
-                let buttonBackground = Color(theme.isDark ? UIColor.blackPurple100 : UIColor.purple5060)
+                let buttonBackground = Color(theme.tintedSubtleUI)
                 HStack(spacing: 16) {
                     Button(action: {
                         inventoryRepository.feed(pet: pet.key ?? "", food: "Saddle").observeCompleted {
@@ -63,7 +63,7 @@ struct PetBottomSheetView: View, Dismissable {
                     }, label: {
                         VStack {
                             Image(Asset.feedSaddle.name)
-                            Text(L10n.Stable.useSaddle).font(.system(size: 16, weight: .semibold))
+                            Text(L10n.Stable.useSaddle).font(.system(size: 16, weight: .semibold)).foregroundColor(Color(theme.tintedMainText))
                         }
                         .frame(height: 101)
                         .maxWidth(.infinity)
@@ -75,7 +75,7 @@ struct PetBottomSheetView: View, Dismissable {
                     }, label: {
                         VStack {
                             Image(getFoodName())
-                            Text(L10n.Stable.feed).font(.system(size: 16, weight: .semibold))
+                            Text(L10n.Stable.feed).font(.system(size: 16, weight: .semibold)).foregroundColor(Color(theme.tintedMainText))
                         }
                         .frame(height: 101)
                         .maxWidth(.infinity)
@@ -97,16 +97,29 @@ struct PetBottomSheetView: View, Dismissable {
         )
         .sheet(isPresented: $isShowingFeeding, content: {
             NavigationView {
-                if #available(macCatalyst 16.0, *) {
-                    FeedSheetView { food in
-                        self.feedPet(food: food)
-                    }.presentationDetents([.medium, .large])
-                        .presentationDragIndicator(.visible)
-                } else {
-                    FeedSheetView { food in
-                        self.feedPet(food: food)
+                Group {
+                    if #available(macCatalyst 16.0, iOS 16.0, *) {
+                        FeedSheetView { food in
+                            self.feedPet(food: food)
+                        }.presentationDetents([.medium, .large])
+                            .presentationDragIndicator(.visible)
+                    } else {
+                        FeedSheetView { food in
+                            self.feedPet(food: food)
+                        }
                     }
-                }
+                }.navigationTitle(L10n.Titles.feedPet)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar(content: {
+                        ToolbarItem(placement: .automatic) {
+                            Button {
+                                isShowingFeeding = false
+                            } label: {
+                                Text(L10n.cancel)
+                            }
+
+                        }
+                    })
             }
         })
     }

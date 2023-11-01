@@ -41,6 +41,14 @@ public protocol Theme {
     var taskOverlayTint: UIColor { get }
     var segmentedTintColor: UIColor { get }
     var buttonShadowColor: UIColor { get }
+    
+    var tintedBackgroundColor: UIColor { get }
+    var tintedSubtleUI: UIColor { get }
+    var tintedMainText: UIColor { get }
+    var tintedSubText: UIColor { get }
+    var tintedMainUI: UIColor { get }
+    var tintedSubUI: UIColor { get }
+    var tintedDetailsUI: UIColor { get }
 }
 
 public protocol DarkTheme: Theme {
@@ -80,6 +88,14 @@ extension Theme {
     public var taskOverlayTint: UIColor { return UIColor.white.withAlphaComponent(0) }
     public var segmentedTintColor: UIColor { return backgroundTintColor }
     public var buttonShadowColor: UIColor { return UIColor.gray400 }
+    
+    public var tintedBackgroundColor: UIColor { return UIColor.purple600 }
+    public var tintedSubtleUI: UIColor { return UIColor.purple500.withAlphaComponent(0.15) }
+    public var tintedMainText: UIColor { return UIColor.purple100 }
+    public var tintedSubText: UIColor { return UIColor.purple100.withAlphaComponent(0.7) }
+    public var tintedMainUI: UIColor { return UIColor.purple500 }
+    public var tintedSubUI: UIColor { return UIColor.purple400 }
+    public var tintedDetailsUI: UIColor { return UIColor.purple100 }
     
     public func applyContentBackgroundColor(views: [UIView]) {
         applyBackgroundColor(views: views, color: contentBackgroundColor)
@@ -122,4 +138,9 @@ extension DarkTheme {
     public var warningColor: UIColor { return UIColor.yellow10.withAlphaComponent(0.7) }
     public var segmentedTintColor: UIColor { return backgroundTintColor }
     public var buttonShadowColor: UIColor { return UIColor.black }
+    
+    public var tintedBackgroundColor: UIColor { return UIColor.purple600 }
+    public var tintedSubtleUI: UIColor { return UIColor.purple500.withAlphaComponent(0.12) }
+    public var tintedMainText: UIColor { return UIColor.purple500 }
+    public var tintedSubText: UIColor { return UIColor.purple500 }
 }

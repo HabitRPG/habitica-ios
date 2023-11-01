@@ -44,8 +44,8 @@ struct StableBackgroundView<Content: View>: View {
         }
     }
     
-    @State var bounceHeight: CGFloat? = nil
-    @State var animationTask: Task<(), Never>? = nil
+    @State var bounceHeight: CGFloat?
+    @State var animationTask: Task<(), Never>?
     
     func bounceAnimation(totalHeight: CGFloat) {
         withAnimation(Animation.easeOut(duration: 0.2).delay(0)) {
@@ -81,13 +81,11 @@ struct StableBackgroundView<Content: View>: View {
                 try? await Task.sleep(nanoseconds: 1000000000)
                 while true {
                     self.bounceAnimation(totalHeight: -24)
-                    // swiftlint:disable:next force_try
                     try? await Task.sleep(nanoseconds: 2400000000)
                     self.bounceAnimation(totalHeight: -5)
                     try? await Task.sleep(nanoseconds: 700000000)
                     self.bounceAnimation(totalHeight: -9)
                     try? await Task.sleep(nanoseconds: 3000000000)
-                    print("One Bounce")
                 }
             }
         }
