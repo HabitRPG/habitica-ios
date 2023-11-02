@@ -78,17 +78,22 @@ private class ViewModel: ObservableObject {
     @Published var gold: Double = 0
     @Published var initialGold: Double = 0
     @Published var text: String = ""
-    @Published var type: String = ""
+    @Published var type: String?
     @Published var key: String = ""
     @Published var value: Float = 0
     @Published var remainingCount = 0
+    @Published var enableSubBenefit = false
+    @Published var isSubscribed = false
     
     init(gold: Double? = nil) {
+        enableSubBenefit = ConfigRepository.shared.bool(variable: .enableArmoireSubs)
+
         if let gold = gold {
             self.gold = gold
             self.initialGold = gold
         } else {
             userRepository.getUser().on(value: { user in
+                self.isSubscribed = user.isSubscribed
                 if self.gold == 0 {
                     self.initialGold = Double(user.stats?.gold ?? 0)
                     self.gold = Double(user.stats?.gold ?? 0)
@@ -156,6 +161,20 @@ private class ViewModel: ObservableObject {
             return 136
         }
     }
+    
+    func useSubBenefit(_ onCompleted: @escaping () -> Void) {
+        type = nil
+        userRepository.updateUser(key: "stats.gp", value: gold + 100)
+            .flatMap(.latest, { _ in
+                return self.inventoryRepository.buyObject(key: "armoire", quantity: 1, price: 0, text: "")
+            })
+            .observeValues({ response in
+                self.type = response?.armoire?.type
+                self.text = response?.armoire?.dropText ?? ""
+                self.text = response?.armoire?.dropKey ?? ""
+                onCompleted()
+            })
+    }
 }
 
 struct ArmoireView: View {
@@ -165,6 +184,9 @@ struct ArmoireView: View {
     @State var isBobbing = false
     @State var confettiCounter = 0
     @State var showArmoireAlert = false
+    @State var isUsingPerk = false
+    @State var hideGold = false
+    @State var usedPerk = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -189,6 +211,8 @@ struct ArmoireView: View {
             .frame(height: 32)
             .padding(.leading, 12)
             .background(Color(UIColor.yellow100).opacity(0.4))
+            .opacity(hideGold ? 0.0 : 1.0)
+            .animation(.linear, value: usedPerk)
             .cornerRadius(16)
             .padding(.top, 24)
             .padding(.bottom, 16)
@@ -214,7 +238,8 @@ struct ArmoireView: View {
                     .offset(x: -70, y: -60)
                 ArmoirePlus()
                     .offset(x: 60, y: 70)
-            }
+            }.opacity(viewModel.type != nil ? 1.0 : 0.0)
+                .animation(.linear, value: viewModel.type)
             Text(viewModel.title)
                 .foregroundColor(.primaryTextColor)
                 .font(.system(size: 28, weight: .bold))
@@ -223,12 +248,16 @@ struct ArmoireView: View {
                 .padding(.bottom, 8)
                 .frame(maxWidth: 310)
                 .padding(.horizontal, 32)
+                .opacity(viewModel.type != nil ? 1.0 : 0.0)
+                    .animation(.linear, value: viewModel.type)
             Text(viewModel.subtitle)
                 .foregroundColor(.ternaryTextColor)
                 .multilineTextAlignment(.center)
                 .font(.system(size: 22))
                 .frame(maxWidth: 310)
                 .padding(.horizontal, 32)
+                .opacity(viewModel.type != nil ? 1.0 : 0.0)
+                    .animation(.linear, value: viewModel.type)
             Spacer()
             VStack {
                 Text(L10n.Armoire.equipmentRemaining(viewModel.remainingCount))
@@ -245,21 +274,92 @@ struct ArmoireView: View {
                     HabiticaButtonUI(label: Text(L10n.close), color: .white, onTap: {
                         onDismiss()
                     })
+                    .padding(.horizontal, 24)
                 }
-                Text(L10n.Armoire.dropRate)
-                    .foregroundColor(Color(UIColor.purple600))
-                    .font(.system(size: 15, weight: .semibold))
-                    .padding(.top, 12)
-                    .onTapGesture {
-                        showArmoireAlert = true
+                let gradientColors: [Color] = [Color(hexadecimal: "72CFFF"),
+                                      Color(hexadecimal: "77F4C7")]
+                if viewModel.isSubscribed || !viewModel.enableSubBenefit {
+                    if viewModel.enableSubBenefit {
+                        Button(action: {
+                            if isUsingPerk || usedPerk {
+                                return
+                            }
+                            hideGold = true
+                            isUsingPerk = true
+                            viewModel.useSubBenefit {
+                                usedPerk = true
+                            }
+                        }, label: {
+                            Group {
+                                if isUsingPerk {
+                                    ProgressView().progressViewStyle(HabiticaProgressStyle(strokeWidth: 8)).frame(width: 28, height: 28)
+                                } else {
+                                    Text(L10n.Armoire.subbedButtonPrompt)
+                                }
+                            }
+                                .foregroundColor(Color(UIColor.green1))
+                                .font(.headline)
+                                .padding(.vertical, 6)
+                                .frame(minHeight: 60)
+                                .frame(maxWidth: .infinity)
+                                .background(LinearGradient(colors: gradientColors, startPoint: .leading, endPoint: .trailing))
+                                .overlay(RoundedRectangle(cornerRadius: 8).stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
+                                .cornerRadius(8)
+                        })
+                        .padding(.horizontal, 24)
+                        .padding(.bottom, 8)
+                        .opacity(usedPerk ? 0.0 : 1.0)
+                        .animation(.linear, value: usedPerk)
+                        Text(L10n.Faint.subbedFooter)
+                            .foregroundColor(.white)
+                            .font(.system(size: 15, weight: .semibold))
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 36)
                     }
+                    Text(L10n.Armoire.dropRate)
+                        .foregroundColor(Color(UIColor.purple600))
+                        .font(.system(size: 15))
+                        .padding(.top, 4)
+                        .onTapGesture {
+                            showArmoireAlert = true
+                        }
+                } else {
+                    VStack(alignment: .center, spacing: 8) {
+                        HabiticaButtonUI(label: Text(L10n.Armoire.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white) {
+                            
+                        }.frame(maxWidth: 600)
+                        Text(L10n.Armoire.unsubbedFooter)
+                            .foregroundColor(Color(UIColor.teal1))
+                            .font(.system(size: 15, weight: .semibold))
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 16)
+                        Text(L10n.Armoire.dropRate)
+                            .foregroundColor(Color(UIColor.teal1))
+                            .opacity(0.75)
+                            .font(.system(size: 15))
+                            .onTapGesture {
+                                showArmoireAlert = true
+                            }
+                    }
+                    .padding(.horizontal, 24)
+                    .padding(.top, 16)
+                    .padding(.bottom, 38)
+                    .frame(maxWidth: .infinity)
+                    .edgesIgnoringSafeArea(.bottom)
+                    .background(RotatingLinearGradient(colors: gradientColors, animationDuration: 20.0).edgesIgnoringSafeArea(.bottom))
+                    .cornerRadius([.topLeading, .topTrailing], 24)
+                    .padding(.top, 8)
+                }
             }
-            .padding(.horizontal, 50)
-            .padding(.top, 30)
-            .frame(minHeight: UIScreen.main.bounds.height > 700 ? 300 : 220, alignment: .center)
+            .padding(.top, 60)
+            .frame(minHeight: UIScreen.main.bounds.height > 700 ? 330 : 250, alignment: .center)
             .frame(maxWidth: .infinity)
-            .background(Image(uiImage: Asset.armoireBackground.image).resizable().edgesIgnoringSafeArea(.bottom))
-        }.sheet(isPresented: $showArmoireAlert) {
+            .edgesIgnoringSafeArea(.bottom)
+            .background(Image(uiImage: Asset.armoireBackground.image).resizable()
+                .edgesIgnoringSafeArea(.bottom))
+        }
+        .edgesIgnoringSafeArea(.bottom)
+        .sheet(isPresented: $showArmoireAlert) {
             NavigationView {
                 VStack(alignment: .leading) {
                     Text(L10n.Armoire.enchantedArmoireDropRates)
@@ -347,18 +447,28 @@ class ArmoireViewController: UIHostingController<ArmoireView> {
 
 struct ArmoireView_Previews: PreviewProvider {
     
-    private static func makeViewModel(type: String) -> ViewModel {
+    private static func makeViewModel(type: String, isSubscribed: Bool) -> ViewModel {
         let model = ViewModel(gold: 5000)
         model.type = type
         model.text = "Meat"
         model.key = "Meat"
+        model.enableSubBenefit = true
+        model.isSubscribed = isSubscribed
         return model
     }
     
     static var previews: some View {
-        ArmoireView(viewModel: makeViewModel(type: "experience"))
+        ArmoireView(viewModel: makeViewModel(type: "experience", isSubscribed: true))
             .previewDevice("iPhone 14 Pro")
-        ArmoireView(viewModel: makeViewModel(type: "food"))
+            .previewDisplayName("Experience, Subbed")
+        ArmoireView(viewModel: makeViewModel(type: "food", isSubscribed: true))
             .previewDevice("iPhone SE (3rd generation)")
+            .previewDisplayName("Food, Subbed")
+        ArmoireView(viewModel: makeViewModel(type: "experience", isSubscribed: false))
+            .previewDevice("iPhone SE (3rd generation)")
+            .previewDisplayName("Experience, Unsubbed")
+        ArmoireView(viewModel: makeViewModel(type: "food", isSubscribed: false))
+            .previewDevice("iPhone SE (3rd generation)")
+            .previewDisplayName("Food, Unsubbed")
     }
 }

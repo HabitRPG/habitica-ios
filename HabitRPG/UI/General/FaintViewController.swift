@@ -90,6 +90,58 @@ extension View {
     var isPortrait: Bool { UIDevice.current.orientation.isPortrait }
 }
 
+struct RotatingLinearGradient: View {
+    let colors: [Color]
+    let animationDuration: CGFloat
+    
+    @State var rotationAngle = 0.0
+        
+    func unitSquareIntersectionPoint(_ angle: Angle) -> UnitPoint {
+        // swiftlint:disable identifier_name
+        let u = sin(angle.radians + .pi / 2)
+        let v = cos(angle.radians + .pi / 2)
+        // swiftlint:enable identifier_name
+
+        let uSign = abs(u) / u
+        let vSign = abs(v) / v
+
+        if u * u >= v * v {
+            return UnitPoint(
+                x: 0.5 + 0.5 * uSign,
+                y: 0.5 + 0.5 * uSign * (v / u)
+            )
+        } else {
+            return UnitPoint(
+                x: 0.5 + 0.5 * vSign * (u / v),
+                y: 0.5 + 0.5 * vSign
+            )
+        }
+    }
+    
+    func startPoint(angle: CGFloat) -> UnitPoint {
+        return unitSquareIntersectionPoint(Angle(degrees: 360.0 * angle))
+    }
+    
+    func endPoint(angle: CGFloat) -> UnitPoint {
+        return unitSquareIntersectionPoint(Angle(degrees: 360.0 * angle + 180.0))
+    }
+    
+    var body: some View {
+        let start = startPoint(angle: rotationAngle)
+        let end = endPoint(angle: rotationAngle)
+        LinearGradient(colors: colors, startPoint: start, endPoint: end)
+            .onAppear {
+                withAnimation(.linear(duration: animationDuration).repeatForever(autoreverses: false)) {
+                    let step = 0.1 / animationDuration
+                    let timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+                        self.rotationAngle += step
+                    }
+                    timer.tolerance = 0.01
+                }
+            }
+    }
+}
+
 struct FaintView: View {
     var onDismiss: (() -> Void)
     
@@ -235,7 +287,7 @@ struct FaintView: View {
                     .padding(.top, 16)
                     .padding(.bottom, 38)
                     .frame(maxWidth: .infinity)
-                    .background(LinearGradient(colors: gradientColors, startPoint: .leading, endPoint: .trailing))
+                    .background(RotatingLinearGradient(colors: gradientColors, animationDuration: 20.0))
                     .cornerRadius([.topLeading, .topTrailing], 24)
                 }
             }

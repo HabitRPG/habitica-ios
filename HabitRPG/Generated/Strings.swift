@@ -1364,6 +1364,14 @@ public enum L10n {
     public static var rateFoodDescription: String { return L10n.tr("Mainstrings", "armoire.rate_food_description") }
     /// 20%% Piece of Food
     public static var rateFoodTitle: String { return L10n.tr("Mainstrings", "armoire.rate_food_title") }
+    /// Open again for free!
+    public static var subbedButtonPrompt: String { return L10n.tr("Mainstrings", "armoire.subbed_button_prompt") }
+    /// Your subscription gives you an extra chance at the Armoire!
+    public static var subbedFooter: String { return L10n.tr("Mainstrings", "armoire.subbed_footer") }
+    /// Subscribe to open again for free!
+    public static var unsubbedButtonPrompt: String { return L10n.tr("Mainstrings", "armoire.unsubbed_button_prompt") }
+    /// Get an extra chance at the Armoire each time you buy it with a subscription
+    public static var unsubbedFooter: String { return L10n.tr("Mainstrings", "armoire.unsubbed_footer") }
   }
 
   public enum Avatar {

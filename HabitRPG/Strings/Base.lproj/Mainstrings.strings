@@ -823,6 +823,10 @@
 "armoire.rate_experience_title" = "20%% Experience points";
 "armoire.rate_experience_description" = "The amount gained varies randomly from 10 to 50.";
 "armoire.equipment_remaining" = "Equipment Remaining: %d";
+"armoire.unsubbed_button_prompt" = "Subscribe to open again for free!";
+"armoire.unsubbed_footer" = "Get an extra chance at the Armoire each time you buy it with a subscription";
+"armoire.subbed_button_prompt" = "Open again for free!";
+"armoire.subbed_footer" = "Your subscription gives you an extra chance at the Armoire!";
 "agree_guidelines_prompt" = "I agree to follow the guidelines";
 "rage_meter" = "Rage Meter";
 "world_boss.world_boss" = "World Boss";
