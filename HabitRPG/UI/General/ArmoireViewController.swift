@@ -84,6 +84,9 @@ private class ViewModel: ObservableObject {
     @Published var remainingCount = 0
     @Published var enableSubBenefit = false
     @Published var isSubscribed = false
+    @Published var isUsingPerk = false
+    @Published var hideGold = false
+    @Published var usedPerk = false
     
     init(gold: Double? = nil) {
         enableSubBenefit = ConfigRepository.shared.bool(variable: .enableArmoireSubs)
@@ -116,10 +119,12 @@ private class ViewModel: ObservableObject {
             if let url = ImageManager.buildImageUrl(name: "Pet_Food_\(key)") {
                 return Source.network(KF.ImageResource(downloadURL: url))
             }
-        default:
+        case "experience":
             if let data = Asset.armoireExperience.image.pngData() {
                 return Source.provider(RawImageDataProvider(data: data, cacheKey: "armoireExperience"))
             }
+        default:
+            return nil
         }
         return nil
     }
@@ -164,14 +169,17 @@ private class ViewModel: ObservableObject {
     
     func useSubBenefit(_ onCompleted: @escaping () -> Void) {
         type = nil
+        text = ""
+        key = ""
+        
         userRepository.updateUser(key: "stats.gp", value: gold + 100)
             .flatMap(.latest, { _ in
-                return self.inventoryRepository.buyObject(key: "armoire", quantity: 1, price: 0, text: "")
+                return self.inventoryRepository.buyObject(key: "armoire", quantity: 1, price: 0, text: "", openArmoireView: false)
             })
             .observeValues({ response in
                 self.type = response?.armoire?.type
                 self.text = response?.armoire?.dropText ?? ""
-                self.text = response?.armoire?.dropKey ?? ""
+                self.key = response?.armoire?.dropKey ?? ""
                 onCompleted()
             })
     }
@@ -179,14 +187,11 @@ private class ViewModel: ObservableObject {
 
 struct ArmoireView: View {
     var onDismiss: (() -> Void) = {}
-    fileprivate var viewModel: ViewModel
+    @ObservedObject fileprivate var viewModel: ViewModel
     
     @State var isBobbing = false
     @State var confettiCounter = 0
     @State var showArmoireAlert = false
-    @State var isUsingPerk = false
-    @State var hideGold = false
-    @State var usedPerk = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -211,8 +216,8 @@ struct ArmoireView: View {
             .frame(height: 32)
             .padding(.leading, 12)
             .background(Color(UIColor.yellow100).opacity(0.4))
-            .opacity(hideGold ? 0.0 : 1.0)
-            .animation(.linear, value: usedPerk)
+            .opacity(viewModel.hideGold ? 0.0 : 1.0)
+            .animation(.linear, value: viewModel.hideGold)
             .cornerRadius(16)
             .padding(.top, 24)
             .padding(.bottom, 16)
@@ -229,7 +234,7 @@ struct ArmoireView: View {
                     .confettiCannon(counter: $confettiCounter,
                                     num: 5,
                                     confettis: [.shape(.slimRectangle)],
-                                    colors: [Color(UIColor.yellow100), Color(UIColor.red100), Color(UIColor.blue100), Color(UIColor.purple400)],
+                                    colors: [Color(UIColor.yellow100), Color(UIColor.red100), Color(UIColor.blue100), Color(UIColor.purple400)], confettiSize: 20,
                                     rainHeight: 800,
                                     radius: 400,
                                     repetitions: 20,
@@ -239,7 +244,6 @@ struct ArmoireView: View {
                 ArmoirePlus()
                     .offset(x: 60, y: 70)
             }.opacity(viewModel.type != nil ? 1.0 : 0.0)
-                .animation(.linear, value: viewModel.type)
             Text(viewModel.title)
                 .foregroundColor(.primaryTextColor)
                 .font(.system(size: 28, weight: .bold))
@@ -269,29 +273,29 @@ struct ArmoireView: View {
                             viewModel.inventoryRepository.equip(type: "equipped", key: viewModel.key).observeCompleted {
                                 onDismiss()
                             }
-                        }
+                        }.padding(.trailing, 16)
                     }
                     HabiticaButtonUI(label: Text(L10n.close), color: .white, onTap: {
                         onDismiss()
                     })
-                    .padding(.horizontal, 24)
                 }
+                .padding(.horizontal, 24)
                 let gradientColors: [Color] = [Color(hexadecimal: "72CFFF"),
                                       Color(hexadecimal: "77F4C7")]
                 if viewModel.isSubscribed || !viewModel.enableSubBenefit {
                     if viewModel.enableSubBenefit {
                         Button(action: {
-                            if isUsingPerk || usedPerk {
+                            if viewModel.isUsingPerk || viewModel.usedPerk {
                                 return
                             }
-                            hideGold = true
-                            isUsingPerk = true
+                            viewModel.hideGold = true
+                            viewModel.isUsingPerk = true
                             viewModel.useSubBenefit {
-                                usedPerk = true
+                                viewModel.usedPerk = true
                             }
                         }, label: {
                             Group {
-                                if isUsingPerk {
+                                if viewModel.isUsingPerk {
                                     ProgressView().progressViewStyle(HabiticaProgressStyle(strokeWidth: 8)).frame(width: 28, height: 28)
                                 } else {
                                     Text(L10n.Armoire.subbedButtonPrompt)
@@ -308,8 +312,8 @@ struct ArmoireView: View {
                         })
                         .padding(.horizontal, 24)
                         .padding(.bottom, 8)
-                        .opacity(usedPerk ? 0.0 : 1.0)
-                        .animation(.linear, value: usedPerk)
+                        .opacity(viewModel.usedPerk ? 0.0 : 1.0)
+                        .animation(.linear, value: viewModel.usedPerk)
                         Text(L10n.Faint.subbedFooter)
                             .foregroundColor(.white)
                             .font(.system(size: 15, weight: .semibold))

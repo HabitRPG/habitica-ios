@@ -79,7 +79,9 @@ private class ViewModel: ObservableObject {
         userRepository.updateUser(key: "stats.hp", value: 1).observeResult { _ in
             let defaults = UserDefaults.standard
             defaults.set(Date(), forKey: "lastFaintSubBenefit")
-            ToastManager.show(text: L10n.Faint.perkSuccess, color: .green)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                ToastManager.show(text: L10n.Faint.perkSuccess, color: .green)
+            }
             onCompleted()
         }
     }
@@ -263,10 +265,11 @@ struct FaintView: View {
                                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
                                 .cornerRadius(8)
                         })
+                        .frame(maxWidth: 600)
                         .padding(.horizontal, 24)
                         .padding(.bottom, 8)
                         Text(L10n.Faint.subbedFooter)
-                            .foregroundColor(Color(UIColor.teal1))
+                            .foregroundColor(Color(ThemeService.shared.theme.isDark ? UIColor.teal500 : UIColor.teal1))
                             .font(.system(size: 15, weight: .semibold))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 36)

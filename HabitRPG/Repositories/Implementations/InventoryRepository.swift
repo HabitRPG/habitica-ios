@@ -108,7 +108,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         })
     }
     
-    func buyObject(key: String, quantity: Int, price: Int, text: String) -> Signal<BuyResponseProtocol?, Never> {
+    func buyObject(key: String, quantity: Int, price: Int, text: String, openArmoireView: Bool = true) -> Signal<BuyResponseProtocol?, Never> {
         let call = BuyObjectCall(key: key, quantity: quantity)
         
         return call.habiticaResponseSignal.on(value: {[weak self]habiticaResponse in
@@ -116,9 +116,11 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 self?.localUserRepository.updateUser(id: userID, price: price, buyResponse: buyResponse)
                 
                 if let armoire = buyResponse.armoire {
+                    if openArmoireView {
                         let viewController = ArmoireViewController()
                         viewController.configure(type: armoire.type ?? "", text: armoire.dropText ?? "", key: armoire.dropKey, value: armoire.value)
                         viewController.show()
+                    }
                 } else {
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
                         ToastManager.show(text: L10n.purchased(text), color: .green)

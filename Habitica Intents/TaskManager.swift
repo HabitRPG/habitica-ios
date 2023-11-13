@@ -7,10 +7,10 @@
 //
 
 import Foundation
-import Habitica_API_Client
-import Habitica_Database
-import ReactiveSwift
 import Habitica_Models
+import Habitica_Database
+import Habitica_API_Client
+import ReactiveSwift
 import Intents
 import RealmSwift
 
@@ -78,7 +78,6 @@ class TaskManager: BaseRepository<TaskLocalRepository> {
         }
         print("Realm stored at:", config.fileURL ?? "")
         Realm.Configuration.defaultConfiguration = config
-        
     }
 
     func updateServer() {
