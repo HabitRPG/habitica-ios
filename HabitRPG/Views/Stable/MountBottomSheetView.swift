@@ -22,16 +22,18 @@ struct MountBottomSheetView: View, Dismissable {
         let theme = ThemeService.shared.theme
         BottomSheetView(dismisser: dismisser, title: Text(mount.text ?? ""), content: VStack(spacing: 16) {
             StableBackgroundView(content: ZStack {
-                KFImage(ImageManager.buildImageUrl(name: "Mount_Body_\(mount.key ?? "")")).frame(width: 72, height: 72)
-                KFImage(ImageManager.buildImageUrl(name: "Mount_Head_\(mount.key ?? "")")).frame(width: 72, height: 72)
+                PixelArtView(name: "Mount_Body_\(mount.key ?? "")")
+                    .frame(width: 72, height: 72)
+                PixelArtView(name: "Mount_Head_\(mount.key ?? "")")
+                    .frame(width: 72, height: 72)
             }.frame(width: 72, height: 72)
                 .padding(.top, 30), animateFlying: false)
                 .clipShape(.rect(cornerRadius: 12))
-            HabiticaButtonUI(label: Text(L10n.share), color: Color(theme.tintColor)) {
+            HabiticaButtonUI(label: Text(L10n.share), color: Color(theme.fixedTintColor)) {
                 dismisser.dismiss?()
             }
             if owned {
-                HabiticaButtonUI(label: Text(isCurrentMount ? L10n.unequip : L10n.equip), color: Color(theme.tintColor)) {
+                HabiticaButtonUI(label: Text(isCurrentMount ? L10n.unequip : L10n.equip), color: Color(theme.fixedTintColor)) {
                     onEquip()
                     dismisser.dismiss?()
                 }

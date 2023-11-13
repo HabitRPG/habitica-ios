@@ -100,7 +100,7 @@ struct BottomSheetMenu<Title: View, MenuItems: View>: View, Dismissable {
     var body: some View {
         BottomSheetView(dismisser: dismisser, title: title, content: VStack(spacing: 16) {
                 if let url = iconURL {
-                    KFImage(url).frame(width: 70, height: 70)
+                    KFImage(url).interpolation(.none).frame(width: 70, height: 70)
                 }
                 menuItems
                 .environmentObject(dismisser)

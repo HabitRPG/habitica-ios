@@ -209,7 +209,7 @@ struct FaintView: View {
             HabiticaButtonUI(label: Group {
                 if isReviving {
                     HStack(spacing: 12) {
-                        ProgressView().progressViewStyle(HabiticaProgressStyle(strokeWidth: 8)).frame(width: 28, height: 28)
+                        ProgressView().habiticaProgressStyle().frame(width: 28, height: 28)
                         Text("Reviving...")
                     }
                 } else {
@@ -251,7 +251,7 @@ struct FaintView: View {
                         }, label: {
                             Group {
                                 if isUsingPerk {
-                                    ProgressView().progressViewStyle(HabiticaProgressStyle(strokeWidth: 8)).frame(width: 28, height: 28)
+                                    ProgressView().habiticaProgressStyle().frame(width: 28, height: 28)
                                 } else {
                                     Text(L10n.Faint.subbedButtonPrompt)
                                 }

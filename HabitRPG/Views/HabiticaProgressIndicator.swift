@@ -58,6 +58,16 @@ struct HabiticaProgressStyle: ProgressViewStyle {
     }
 }
 
+extension ProgressViewStyle where Self == HabiticaProgressStyle {
+    static var habitica: HabiticaProgressStyle { .init() }
+}
+
+extension View {
+    func habiticaProgressStyle(strokeWidth: CGFloat = 8) -> some View {
+        return self.progressViewStyle(HabiticaProgressStyle(strokeWidth: strokeWidth))
+    }
+}
+
 struct RefreshControlWrapper: View {
     @ObservedObject var refreshState: RefreshState
     

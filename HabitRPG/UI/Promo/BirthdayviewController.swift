@@ -58,7 +58,7 @@ private struct PotionGrid: View {
     var body: some View {
         LazyVGrid(columns: [.init(.adaptive(minimum: 68))], alignment: .center) {
             ForEach(potions, id: \.self) { potion in
-                KFImage(ImageManager.buildImageUrl(name: "Pet_HatchingPotion_\(potion)"))
+                PixelArtView(name: "Pet_HatchingPotion_\(potion)")
                     .frame(width: 68, height: 68)
                     .background(Color.purple50)
                     .cornerRadius(8)
@@ -82,7 +82,7 @@ private struct FourFreeView: View {
                 if let image = image {
                     Image(uiImage: image)
                 } else if let imageName = imageName {
-                    KFImage(ImageManager.buildImageUrl(name: imageName))
+                    PixelArtView(name: imageName)
                 }
             }
                 .frame(width: 121, height: 84)

@@ -15,29 +15,29 @@ struct StableBackgroundView<Content: View>: View {
     private func getBackground() -> ImageAsset {
         let month = Calendar.current.component(.month, from: Date())
         switch month {
-        case 0:
-            return Asset.stableTileJanurary
         case 1:
-            return Asset.stableTileFebruary
+            return Asset.stableTileJanurary
         case 2:
-            return Asset.stableTileMarch
+            return Asset.stableTileFebruary
         case 3:
-            return Asset.stableTileApril
+            return Asset.stableTileMarch
         case 4:
-            return Asset.stableTileMay
+            return Asset.stableTileApril
         case 5:
-            return Asset.stableTileJune
+            return Asset.stableTileMay
         case 6:
-            return Asset.stableTileJuly
+            return Asset.stableTileJune
         case 7:
-            return Asset.stableTileAugust
+            return Asset.stableTileJuly
         case 8:
-            return Asset.stableTileSeptember
+            return Asset.stableTileAugust
         case 9:
-            return Asset.stableTileOctober
+            return Asset.stableTileSeptember
         case 10:
-            return Asset.stableTileNovember
+            return Asset.stableTileOctober
         case 11:
+            return Asset.stableTileNovember
+        case 12:
             return Asset.stableTileDecember
         default:
             return Asset.stableTileMay
@@ -68,6 +68,7 @@ struct StableBackgroundView<Content: View>: View {
     var body: some View {
         ZStack(alignment: .top) {
             Image(getBackground().name)
+                .interpolation(.none)
                 .resizable(resizingMode: .tile)
                 .maxWidth(.infinity)
                 .height(124)

@@ -38,7 +38,7 @@ struct FeedSheetView: View {
             LazyVStack(alignment: .leading, spacing: 0) {
                 ForEach(viewModel.food, id: \.key) { foodItem in
                     HStack {
-                        KFImage(ImageManager.buildImageUrl(name: "Pet_Food_\(foodItem.key ?? "")")).frame(width: 44, height: 44)
+                        PixelArtView(name: "Pet_Food_\(foodItem.key ?? "")").frame(width: 44, height: 44)
                         Text(foodItem.text ?? "")
                             .font(.system(.headline))
                             .frame(maxWidth: .infinity, alignment: .leading)

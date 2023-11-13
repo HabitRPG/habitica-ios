@@ -449,11 +449,11 @@ final class BottomSheetPresentationController: UIPresentationController {
             maxHeightConstraint,
             presentedView.leadingAnchor.constraint(
                 equalTo: containerView.leadingAnchor,
-                constant: 8
+                constant: 0
             ),
             presentedView.trailingAnchor.constraint(
                 equalTo: containerView.trailingAnchor,
-                constant: -8
+                constant: 0
             ),
             presentedView.widthAnchor.constraint(lessThanOrEqualToConstant: 460),
             bottomConstraint,

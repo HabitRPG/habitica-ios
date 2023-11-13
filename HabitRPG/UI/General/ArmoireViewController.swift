@@ -224,8 +224,7 @@ struct ArmoireView: View {
             Spacer()
             
             ZStack {
-                    KFImage(source: viewModel.icon)
-                        .resizable()
+                    PixelArtView(source: viewModel.icon)
                         .frame(width: viewModel.iconWidth, height: viewModel.iconHeight)
                         .offset(y: isBobbing ? 5 : -5)
                     .frame(width: 158, height: 158)
@@ -296,7 +295,7 @@ struct ArmoireView: View {
                         }, label: {
                             Group {
                                 if viewModel.isUsingPerk {
-                                    ProgressView().progressViewStyle(HabiticaProgressStyle(strokeWidth: 8)).frame(width: 28, height: 28)
+                                    ProgressView().habiticaProgressStyle().frame(width: 28, height: 28)
                                 } else {
                                     Text(L10n.Armoire.subbedButtonPrompt)
                                 }

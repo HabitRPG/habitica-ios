@@ -50,7 +50,7 @@ struct LoadingButton<Content: View, SuccessContent: View, ErrorContent: View>: V
     @ViewBuilder
     private func getContent() -> some View {
         if state == .loading {
-            ProgressView().progressViewStyle(HabiticaProgressStyle(strokeWidth: 6)).frame(width: 24, height: 24).overlay(ZStack {
+            ProgressView().habiticaProgressStyle(strokeWidth: 6).frame(width: 24, height: 24).overlay(ZStack {
                 Circle().stroke().foregroundColor(.white).frame(width: 17, height: 17)
                 Circle().stroke().foregroundColor(.white).frame(width: 29, height: 29)
             })

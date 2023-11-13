@@ -21,6 +21,7 @@ struct PetBottomSheetView: View, Dismissable {
     
     private let inventoryRepository = InventoryRepository()
     @State private var isShowingFeeding = false
+    @State private var isUsingSaddle = false
     
     private func getFoodName() -> String {
         switch pet.potion {
@@ -50,20 +51,23 @@ struct PetBottomSheetView: View, Dismissable {
     var body: some View {
         let theme = ThemeService.shared.theme
         BottomSheetView(dismisser: dismisser, title: Text(pet.text ?? ""), content: VStack(spacing: 16) {
-            StableBackgroundView(content: KFImage(ImageManager.buildImageUrl(name: "stable_Pet-\(pet.key ?? "")")).frame(width: 70, height: 70).padding(.top, 40), animateFlying: false)
+            StableBackgroundView(content: PixelArtView(name: "stable_Pet-\(pet.key ?? "")").frame(width: 70, height: 70).padding(.top, 40), animateFlying: false)
                 .clipShape(.rect(cornerRadius: 12))
             if trained > 0 && pet.type != "special" && canRaise {
                 let buttonBackground = Color(theme.tintedSubtleUI)
                 HStack(spacing: 16) {
                     Button(action: {
                         inventoryRepository.feed(pet: pet.key ?? "", food: "Saddle").observeCompleted {
-                            
+                            dismisser.dismiss?()
                         }
-                        dismisser.dismiss?()
                     }, label: {
                         VStack {
-                            Image(Asset.feedSaddle.name)
-                            Text(L10n.Stable.useSaddle).font(.system(size: 16, weight: .semibold)).foregroundColor(Color(theme.tintedMainText))
+                            if isUsingSaddle {
+                                ProgressView().habiticaProgressStyle(strokeWidth: 6)
+                            } else {
+                                Image(Asset.feedSaddle.name).interpolation(.none)
+                                Text(L10n.Stable.useSaddle).font(.system(size: 16, weight: .semibold)).foregroundColor(Color(theme.tintedMainText))
+                            }
                         }
                         .frame(height: 101)
                         .maxWidth(.infinity)
@@ -74,7 +78,7 @@ struct PetBottomSheetView: View, Dismissable {
                         isShowingFeeding = true
                     }, label: {
                         VStack {
-                            Image(getFoodName())
+                            Image(getFoodName()).interpolation(.none)
                             Text(L10n.Stable.feed).font(.system(size: 16, weight: .semibold)).foregroundColor(Color(theme.tintedMainText))
                         }
                         .frame(height: 101)
@@ -84,11 +88,11 @@ struct PetBottomSheetView: View, Dismissable {
                     })
                 }
             }
-            HabiticaButtonUI(label: Text(L10n.share), color: Color(theme.tintColor)) {
+            HabiticaButtonUI(label: Text(L10n.share), color: Color(theme.fixedTintColor)) {
                 dismisser.dismiss?()
             }
             if trained > 0 {
-                HabiticaButtonUI(label: Text(isCurrentPet ? L10n.unequip : L10n.equip), color: Color(theme.tintColor)) {
+                HabiticaButtonUI(label: Text(isCurrentPet ? L10n.unequip : L10n.equip), color: Color(theme.fixedTintColor)) {
                     onEquip()
                     dismisser.dismiss?()
                 }
