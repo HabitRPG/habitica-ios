@@ -40,7 +40,7 @@ class LevelUpOverlayView: HabiticaAlertController {
                 L10n.levelupShare(self?.user?.stats?.level ?? 0)
             ]
             if let image = self?.avatarView.snapshotView(afterScreenUpdates: true) {
-                items.append(image)
+                items.insert(image, at: 0)
             }
             SharingManager.share(identifier: "levelup", items: items, presentingViewController: nil, sourceView: nil)
         }

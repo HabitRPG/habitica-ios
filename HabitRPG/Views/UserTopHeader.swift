@@ -289,7 +289,13 @@ class UserTopHeader: UIView, Themeable {
                 RouterHandler.shared.handle(urlString: "/user/avatar")
             }
             BottomSheetMenuitem(title: L10n.shareAvatar) {
-                
+                var items: [Any] = [
+                    "Check out my avatar on Habitica!"
+                ]
+                if let image = self.avatarView.snapshotView(afterScreenUpdates: true)?.getImageFromCurrentContext() {
+                    items.insert(image, at: 0)
+                }
+                SharingManager.share(identifier: "avatar", items: items, presentingViewController: nil, sourceView: nil)
             }
         }))
         nearestNavigationController?.present(sheet, animated: true)
@@ -303,5 +309,20 @@ class UserTopHeader: UIView, Themeable {
     private func layoutBuffIcon() {
         let usernameLabelSize = usernameLabel.sizeThatFits(levelLabel.bounds.size)
         buffIconView.pin.size(15).start(usernameLabelSize.width + 6).top((usernameLabelSize.height - 15)/2)
+    }
+}
+
+extension UIView {
+    func getImageFromCurrentContext(bounds: CGRect? = nil) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(bounds?.size ?? self.bounds.size, false, 0.0)
+        self.drawHierarchy(in: bounds ?? self.bounds, afterScreenUpdates: true)
+
+        guard let currentImage = UIGraphicsGetImageFromCurrentImageContext() else {
+            return nil
+        }
+
+        UIGraphicsEndImageContext()
+
+        return currentImage
     }
 }

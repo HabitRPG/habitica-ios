@@ -214,7 +214,7 @@ class ItemsViewController: BaseTableViewController {
                 L10n.Inventory.hatchedSharing(egg.text ?? "", potion.text ?? "")
             ]
             if let image = imageAlert.image {
-                items.append(image)
+                items.insert(image, at: 0)
             }
             SharingManager.share(identifier: "hatchedPet", items: items, presentingViewController: nil, sourceView: nil)
         }

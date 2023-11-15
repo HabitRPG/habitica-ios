@@ -215,7 +215,7 @@ struct FaintView: View {
                 } else {
                     Text(L10n.Faint.button)
                 }
-            }, color: Color(UIColor.maroon100)) {
+            }, color: Color(UIColor.maroon100), size: .compact) {
                 if isReviving {
                     return
                 }
@@ -259,7 +259,7 @@ struct FaintView: View {
                                 .foregroundColor(Color(UIColor.green1))
                                 .font(.headline)
                                 .padding(.vertical, 6)
-                                .frame(minHeight: 60)
+                                .frame(minHeight: 48)
                                 .frame(maxWidth: .infinity)
                                 .background(LinearGradient(colors: gradientColors, startPoint: .leading, endPoint: .trailing))
                                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
@@ -277,7 +277,7 @@ struct FaintView: View {
                     }
                 } else {
                     VStack(alignment: .center, spacing: 8) {
-                        HabiticaButtonUI(label: Text(L10n.Faint.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white) {
+                        HabiticaButtonUI(label: Text(L10n.Faint.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white, size: .compact) {
                             
                         }.frame(maxWidth: 600)
                         Text(L10n.Faint.unsubbedFooter)

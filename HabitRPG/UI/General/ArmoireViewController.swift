@@ -203,8 +203,6 @@ struct ArmoireView: View {
                     .foregroundColor(Color.clear)
                     .animatingOverlay(for: viewModel.gold)
                     .animation(.linear(duration: 2))
-                    .foregroundColor(Color(ThemeService.shared.theme.isDark ? UIColor.yellow500 : UIColor.yellow1))
-                    .font(.system(size: 20, weight: .bold))
                     .onAppear {
                         viewModel.gold -= 100
                         confettiCounter = 1
@@ -213,6 +211,8 @@ struct ArmoireView: View {
                         }
                     }
             }
+            .foregroundColor(Color(ThemeService.shared.theme.isDark ? UIColor.yellow500 : UIColor.yellow1))
+            .font(.system(size: 20, weight: .bold))
             .frame(height: 32)
             .padding(.leading, 12)
             .background(Color(UIColor.yellow100).opacity(0.4))
@@ -234,7 +234,7 @@ struct ArmoireView: View {
                                     num: 5,
                                     confettis: [.shape(.slimRectangle)],
                                     colors: [Color(UIColor.yellow100), Color(UIColor.red100), Color(UIColor.blue100), Color(UIColor.purple400)], confettiSize: 20,
-                                    rainHeight: 800,
+                                    rainHeight: 800, fadesOut: false,
                                     radius: 400,
                                     repetitions: 20,
                                     repetitionInterval: 0.1)
@@ -268,13 +268,13 @@ struct ArmoireView: View {
                     .foregroundColor(.white)
                 HStack {
                     if viewModel.type == "gear" {
-                        HabiticaButtonUI(label: Text(L10n.equip), color: .white) {
+                        HabiticaButtonUI(label: Text(L10n.equip), color: .white, size: .compact) {
                             viewModel.inventoryRepository.equip(type: "equipped", key: viewModel.key).observeCompleted {
                                 onDismiss()
                             }
                         }.padding(.trailing, 16)
                     }
-                    HabiticaButtonUI(label: Text(L10n.close), color: .white, onTap: {
+                    HabiticaButtonUI(label: Text(L10n.close), color: .white, size: .compact, onTap: {
                         onDismiss()
                     })
                 }
@@ -303,7 +303,7 @@ struct ArmoireView: View {
                                 .foregroundColor(Color(UIColor.green1))
                                 .font(.headline)
                                 .padding(.vertical, 6)
-                                .frame(minHeight: 60)
+                                .frame(minHeight: 48)
                                 .frame(maxWidth: .infinity)
                                 .background(LinearGradient(colors: gradientColors, startPoint: .leading, endPoint: .trailing))
                                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
@@ -328,7 +328,7 @@ struct ArmoireView: View {
                         }
                 } else {
                     VStack(alignment: .center, spacing: 8) {
-                        HabiticaButtonUI(label: Text(L10n.Armoire.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white) {
+                        HabiticaButtonUI(label: Text(L10n.Armoire.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white, size: .compact) {
                             
                         }.frame(maxWidth: 600)
                         Text(L10n.Armoire.unsubbedFooter)

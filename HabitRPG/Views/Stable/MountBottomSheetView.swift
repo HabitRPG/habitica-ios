@@ -20,16 +20,23 @@ struct MountBottomSheetView: View, Dismissable {
     
     var body: some View {
         let theme = ThemeService.shared.theme
+        let mountView = ZStack {
+            PixelArtView(name: "Mount_Body_\(mount.key ?? "")")
+            PixelArtView(name: "Mount_Head_\(mount.key ?? "")")
+        }.frame(width: 72, height: 72)
+            .padding(.top, 30)
         BottomSheetView(dismisser: dismisser, title: Text(mount.text ?? ""), content: VStack(spacing: 16) {
-            StableBackgroundView(content: ZStack {
-                PixelArtView(name: "Mount_Body_\(mount.key ?? "")")
-                    .frame(width: 72, height: 72)
-                PixelArtView(name: "Mount_Head_\(mount.key ?? "")")
-                    .frame(width: 72, height: 72)
-            }.frame(width: 72, height: 72)
-                .padding(.top, 30), animateFlying: false)
+            StableBackgroundView(content: mountView, animateFlying: false)
                 .clipShape(.rect(cornerRadius: 12))
-            HabiticaButtonUI(label: Text(L10n.share), color: Color(theme.fixedTintColor)) {
+            HabiticaButtonUI(label: Text(L10n.share), color: Color(theme.fixedTintColor), size: .compact) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    var items: [Any] = [
+                    ]
+                    items.insert(StableBackgroundView(content: mountView, animateFlying: false)
+                        .frame(width: 300, height: 124)
+                        .snapshot(), at: 0)
+                    SharingManager.share(identifier: "pet", items: items, presentingViewController: nil, sourceView: nil)
+                }
                 dismisser.dismiss?()
             }
             if owned {

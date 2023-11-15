@@ -22,6 +22,7 @@ struct PetBottomSheetView: View, Dismissable {
     private let inventoryRepository = InventoryRepository()
     @State private var isShowingFeeding = false
     @State private var isUsingSaddle = false
+    @State private var image: UIImage? = nil
     
     private func getFoodName() -> String {
         switch pet.potion {
@@ -50,8 +51,9 @@ struct PetBottomSheetView: View, Dismissable {
     
     var body: some View {
         let theme = ThemeService.shared.theme
+        let petView = PixelArtView(name: "stable_Pet-\(pet.key ?? "")").frame(width: 70, height: 70)
         BottomSheetView(dismisser: dismisser, title: Text(pet.text ?? ""), content: VStack(spacing: 16) {
-            StableBackgroundView(content: PixelArtView(name: "stable_Pet-\(pet.key ?? "")").frame(width: 70, height: 70).padding(.top, 40), animateFlying: false)
+            StableBackgroundView(content: petView.padding(.top, 40), animateFlying: false)
                 .clipShape(.rect(cornerRadius: 12))
             if trained > 0 && pet.type != "special" && canRaise {
                 let buttonBackground = Color(theme.tintedSubtleUI)
@@ -88,11 +90,19 @@ struct PetBottomSheetView: View, Dismissable {
                     })
                 }
             }
-            HabiticaButtonUI(label: Text(L10n.share), color: Color(theme.fixedTintColor)) {
+            HabiticaButtonUI(label: Text(L10n.share), color: Color(theme.fixedTintColor), size: .compact) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    var items: [Any] = [
+                    ]
+                    items.insert(StableBackgroundView(content: petView.padding(.top, 40), animateFlying: false)
+                        .frame(width: 300, height: 124)
+                        .snapshot(), at: 0)
+                    SharingManager.share(identifier: "pet", items: items, presentingViewController: nil, sourceView: nil)
+                }
                 dismisser.dismiss?()
             }
             if trained > 0 {
-                HabiticaButtonUI(label: Text(isCurrentPet ? L10n.unequip : L10n.equip), color: Color(theme.fixedTintColor)) {
+                HabiticaButtonUI(label: Text(isCurrentPet ? L10n.unequip : L10n.equip), color: Color(theme.fixedTintColor), size: .compact) {
                     onEquip()
                     dismisser.dismiss?()
                 }
@@ -121,7 +131,6 @@ struct PetBottomSheetView: View, Dismissable {
                             } label: {
                                 Text(L10n.cancel)
                             }
-
                         }
                     })
             }
@@ -159,4 +168,21 @@ private class PreviewPet: PetProtocol {
     var isValid: Bool = true
     var isManaged: Bool = true
     
+}
+
+extension View {
+    func snapshot() -> UIImage {
+        let controller = UIHostingController(rootView: self.ignoresSafeArea())
+        let view = controller.view
+ 
+        let targetSize = controller.view.intrinsicContentSize
+        view?.bounds = CGRect(origin: .zero, size: targetSize)
+        view?.backgroundColor = .clear
+ 
+        let renderer = UIGraphicsImageRenderer(size: targetSize)
+ 
+        return renderer.image { _ in
+            view?.drawHierarchy(in: controller.view.bounds, afterScreenUpdates: true)
+        }
+    }
 }
