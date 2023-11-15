@@ -20,7 +20,6 @@ class GroupInviteNotificationCell: BaseNotificationCell<NotificationGroupInviteP
         setTitleFor(groupName: groupName, inviterName: nil, isPartyInvitation: notification.isParty)
     }
     
-    
     func setTitleFor(groupName: String, inviterName: String?, isPartyInvitation: Bool) {
         var unformattedString = ""
         if isPartyInvitation {

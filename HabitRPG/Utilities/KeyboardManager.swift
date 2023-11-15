@@ -23,7 +23,7 @@ class KeyboardManager: NSObject {
     }
     
     static func dismiss() {
-        UIApplication.shared.windows.first(where: {$0.isKeyWindow})?.endEditing(true)
+        UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.endEditing(true)
     }
     
     static func addObservingView(_ view: UIView) {

@@ -50,9 +50,7 @@ class UserProfileViewController: BaseTableViewController {
     }
     
     private var isBlocked: Bool {
-        get {
-            return user?.inbox?.blocks.contains(userID ?? "") == true
-        }
+        return user?.inbox?.blocks.contains(userID ?? "") == true
     }
     
     override func viewDidLoad() {

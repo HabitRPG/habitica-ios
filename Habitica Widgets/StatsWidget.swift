@@ -16,13 +16,13 @@ struct Provider: TimelineProvider {
                   widgetFamily: context.family)
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (UserEntry) -> ()) {
+    func getSnapshot(in context: Context, completion: @escaping (UserEntry) -> Void) {
         let entry = UserEntry(date: Date(),
                               widgetFamily: context.family)
         completion(entry)
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<UserEntry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<UserEntry>) -> Void) {
         var entries: [UserEntry] = []
         TaskManager.shared.getUser().on(value: { user in
             let entry = UserEntry(date: Date(),
@@ -60,7 +60,7 @@ struct UserEntry: TimelineEntry {
     var gems = 4
 }
 
-struct StatsWidgetView : View {
+struct StatsWidgetView: View {
     var entry: Provider.Entry
     
     var padding: EdgeInsets {

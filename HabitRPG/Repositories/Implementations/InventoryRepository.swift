@@ -55,15 +55,15 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         return localRepository.getItems(type: type)
     }
     
-    func getSpecialItems(keys: [String]) ->SignalProducer<ReactiveResults<[SpecialItemProtocol]>, ReactiveSwiftRealmError> {
+    func getSpecialItems(keys: [String]) -> SignalProducer<ReactiveResults<[SpecialItemProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getSpecialItems(keys: keys)
     }
     
-    func getQuest(key: String) ->SignalProducer<QuestProtocol?, ReactiveSwiftRealmError> {
+    func getQuest(key: String) -> SignalProducer<QuestProtocol?, ReactiveSwiftRealmError> {
         return localRepository.getQuest(key: key)
     }
     
-    func getQuests(keys: [String]) ->SignalProducer<ReactiveResults<[QuestProtocol]>, ReactiveSwiftRealmError> {
+    func getQuests(keys: [String]) -> SignalProducer<ReactiveResults<[QuestProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getQuests(keys: keys)
     }
     

@@ -38,7 +38,7 @@ class StableRepository: BaseRepository<StableLocalRepository> {
         })
     }
     
-    func getOwnedMount(key: String, userID: String? = nil)-> SignalProducer<OwnedMountProtocol?, ReactiveSwiftRealmError> {
+    func getOwnedMount(key: String, userID: String? = nil) -> SignalProducer<OwnedMountProtocol?, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (currentUserID) in
             return self?.localRepository.getOwnedMount(key: key, userID: userID ?? currentUserID) ?? SignalProducer.empty
         })

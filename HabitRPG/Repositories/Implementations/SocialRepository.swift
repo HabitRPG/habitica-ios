@@ -286,7 +286,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     public func isUserGuildMember(groupID: String) -> SignalProducer<Bool, ReactiveSwiftRealmError> {
-        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] _ in
             return self?.localRepository.getGroupMembership(userID: AuthenticationManager.shared.currentUserId ?? "", groupID: groupID).map({ (membership) in
                 return membership != nil
             }) ?? SignalProducer.empty

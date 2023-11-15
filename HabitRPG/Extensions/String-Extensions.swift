@@ -11,7 +11,7 @@ import Habitica_Models
 
 extension String {
     
-    //https://gist.github.com/zhjuncai/6af27ca9649126dd326c
+    // https://gist.github.com/zhjuncai/6af27ca9649126dd326c
     func widthWithConstrainedHeight(_ height: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: CGFloat.greatestFiniteMagnitude, height: height)
         let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)

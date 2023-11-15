@@ -8,7 +8,8 @@
 
 import Foundation
 
-@objc public protocol WorldStateProtocol: BaseModelProtocol {
+@objc
+public protocol WorldStateProtocol: BaseModelProtocol {
     var worldBoss: QuestStateProtocol? { get set }
     var npcImageSuffix: String? { get set }
     var currentEvent: WorldStateEventProtocol? { get set }
@@ -32,7 +33,8 @@ public extension WorldStateProtocol {
     }
 }
 
-@objc public protocol WorldStateEventProtocol {
+@objc
+public protocol WorldStateEventProtocol {
     var eventKey: String? { get set }
     var start: Date? { get set }
     var end: Date? { get set }

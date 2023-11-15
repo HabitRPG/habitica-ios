@@ -29,7 +29,7 @@ public enum Currency: String {
         if ThemeService.shared.theme.isDark {
             switch self {
             case .gold:
-                return .yellow50
+                return .yellow100
             case .gem:
                 return .green50
             case .hourglass:
@@ -38,7 +38,7 @@ public enum Currency: String {
         } else {
             switch self {
             case .gold:
-                return .yellow10
+                return .yellow1
             case .gem:
                 return .green10
             case .hourglass:

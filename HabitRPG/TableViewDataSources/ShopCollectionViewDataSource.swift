@@ -10,7 +10,8 @@ import UIKit
 import Habitica_Models
 import ReactiveSwift
 
-@objc protocol ShopCollectionViewDataSourceDelegate {
+@objc
+protocol ShopCollectionViewDataSourceDelegate {
     func didSelectItem(_ item: InAppRewardProtocol?)
     func scrollViewDidScroll(_ scrollView: UIScrollView)
     func showGearSelection(sourceView: UIView)

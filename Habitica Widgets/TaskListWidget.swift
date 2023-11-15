@@ -16,12 +16,12 @@ struct TaskListProvider: TimelineProvider {
         TaskListEntry(widgetFamily: context.family)
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (TaskListEntry) -> ()) {
+    func getSnapshot(in context: Context, completion: @escaping (TaskListEntry) -> Void) {
         let entry = TaskListEntry(widgetFamily: context.family)
         completion(entry)
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<TaskListEntry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<TaskListEntry>) -> Void) {
         var entries: [TaskListEntry] = []
         TaskManager.shared.getUser().zip(with: TaskManager.shared.getTasks(predicate: NSPredicate(format: "completed == false && type == 'daily' && isDue == true")))
         .on(value: { (user, tasks) in
@@ -41,7 +41,7 @@ struct TaskListEntry: TimelineEntry {
     var needsCron = false
 }
 
-struct TaskListWidgetView : View {
+struct TaskListWidgetView: View {
     var entry: TaskListProvider.Entry
 
     var body: some View {
@@ -96,7 +96,7 @@ struct MainWidgetContent: View {
             StartDayView(showSpacer: false).frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.widgetBackgroundSecondary.opacity(0.1))
                 .cornerRadius(6)
-        } else if (entry.tasks.isEmpty) {
+        } else if entry.tasks.isEmpty {
             VStack {
                 Image("Sparkles")
                 Text("All done today!").foregroundColor(.widgetText).font(.system(size: 13))
@@ -106,7 +106,7 @@ struct MainWidgetContent: View {
         } else {
             TaskListView(tasks: entry.tasks, maxCount: maxCount, isLarge: entry.widgetFamily == .systemLarge)
         }
-        if (entry.tasks.count < maxCount) {
+        if entry.tasks.count < maxCount {
             Spacer()
         }
     }
@@ -127,7 +127,7 @@ struct TaskListView: View {
             ForEach((0...last), id: \.self) { index in
                 let task = tasks[index]
                 TaskListItem(task: task, showChecklistCount: isLarge).frame(height: 29)
-                if (index != last || (tasks.count > maxCount && isLarge)) {
+                if index != last || (tasks.count > maxCount && isLarge) {
                     Rectangle().fill(Color.separator.opacity(0.3)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1).padding(.leading, 12)
                 }
             }
@@ -210,10 +210,10 @@ struct TaskListWidgetPreview: PreviewProvider {
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks: [], needsCron: true))
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
-            TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks:makePreviewTasks().dropLast(6), needsCron: false))
+            TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks: makePreviewTasks().dropLast(6), needsCron: false))
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
             if #available(iOSApplicationExtension 15.0, *) {
-                TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks:makePreviewTasks().dropLast(6), needsCron: false))
+                TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks: makePreviewTasks().dropLast(6), needsCron: false))
                     .previewContext(WidgetPreviewContext(family: .systemExtraLarge))
             }
         }

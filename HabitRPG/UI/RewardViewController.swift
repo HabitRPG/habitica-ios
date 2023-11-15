@@ -32,7 +32,7 @@ enum RewardSectionType {
         }
     }
 
-    var sectionInset: NSDirectionalEdgeInsets  {
+    var sectionInset: NSDirectionalEdgeInsets {
         switch self {
         case .custom:
             return .zero

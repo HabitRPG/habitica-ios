@@ -172,7 +172,7 @@ precedencegroup ForwardApplication {
 
 infix operator <^>: ForwardApplication
 
-func <^><A, B, C>(function1: @escaping (A) -> B?, function2: @escaping (B) -> C) -> (A) -> C? {
+func <^> <A, B, C>(function1: @escaping (A) -> B?, function2: @escaping (B) -> C) -> (A) -> C? {
     return { first in
         if let second = function1(first) {
             return function2(second)

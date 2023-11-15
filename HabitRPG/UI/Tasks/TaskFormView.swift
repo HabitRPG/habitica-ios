@@ -807,7 +807,7 @@ struct TaskFormView: View {
                     textFields
                     VStack(spacing: 25) {
                         graphs
-                        if (viewModel.taskType == .daily || viewModel.taskType == .todo) {
+                        if viewModel.taskType == .daily || viewModel.taskType == .todo {
                             TaskFormChecklistView(items: $viewModel.checklistItems)
                         }
                         dynamicFormPart

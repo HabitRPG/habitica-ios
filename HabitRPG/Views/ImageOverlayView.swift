@@ -32,9 +32,7 @@ class ImageOverlayView: HabiticaAlertController {
     }
     
     var image: UIImage? {
-        get {
-            return imageView.image
-        }
+        return imageView.image
     }
     
     init(imageName: String, title: String?, message: String?) {

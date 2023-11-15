@@ -49,8 +49,7 @@ struct AsyncImage: View {
             if let imageData = try? Data(contentsOf: url),
            let uiImage = UIImage(data: imageData) {
                 Image(uiImage: uiImage).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center).clipShape(ContainerRelativeShape().inset(by: 10))
-          }
-          else {
+          } else {
            Image("placeholder-image")
           }
         }

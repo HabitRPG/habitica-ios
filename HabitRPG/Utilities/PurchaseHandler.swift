@@ -305,7 +305,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                     SwiftyStoreKit.finishTransaction(transaction)
                 }
             case .error(let error):
-                if (error.localizedDescription.contains("Code: 1")) {
+                if error.localizedDescription.contains("Code: 1") {
                     return
                 }
                 self?.handle(error: error)

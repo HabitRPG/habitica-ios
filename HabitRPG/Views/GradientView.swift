@@ -8,7 +8,7 @@
 
 import UIKit
 
-//https://stackoverflow.com/a/37243106/1315039
+// https://stackoverflow.com/a/37243106/1315039
 @IBDesignable
 class GradientView: UIView {
     

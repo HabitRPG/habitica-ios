@@ -143,7 +143,7 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
                     .start())
             }
         case .itemReceived:
-            if let cell = cell as? ItemReceivedNotificationCell,  let notif = notification as? NotificationItemReceivedProtocol {
+            if let cell = cell as? ItemReceivedNotificationCell, let notif = notification as? NotificationItemReceivedProtocol {
                 cell.configureFor(notification: notif)
             }
         default:

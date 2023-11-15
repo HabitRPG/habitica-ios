@@ -11,7 +11,6 @@ import Habitica_Models
 import UniformTypeIdentifiers
 import MobileCoreServices
 
-
 class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UITableViewDragDelegate, UITableViewDropDelegate {
     public var dataSource: TaskTableViewDataSource?
     public var filterType: Int = 0
@@ -129,7 +128,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     }
     
     @objc
-    func refresh() {        
+    func refresh() {
         if let dataSource = dataSource {
             let taskRepository = TaskRepository()
             let tasks = dataSource.tasks

@@ -119,7 +119,7 @@ class SettingsViewController: FormViewController, Themeable {
                         section <<< SwitchRow { row in
                             row.title = L10n.Groups.copySharedTasks
                             row.cellStyle = UITableViewCell.CellStyle.subtitle
-                            if (self?.user?.isValid == true) {
+                            if self?.user?.isValid == true {
                                 row.value = self?.user?.preferences?.tasks?.mirrorGroupTasks?.contains(plan.id ?? "") == true
                             }
                             row.updateCell()
@@ -239,9 +239,9 @@ class SettingsViewController: FormViewController, Themeable {
             }
         <<< ButtonRow(SettingsTags.pauseDamage) { row in
             row.cellStyle = .subtitle
-            row.cellUpdate { cell, row in
+            row.cellUpdate { cell, _ in
                 cell.textLabel?.textAlignment = .natural
-                if (cell.textLabel?.text == L10n.Settings.pauseDamage) {
+                if cell.textLabel?.text == L10n.Settings.pauseDamage {
                     cell.detailTextLabel?.text = L10n.Settings.pauseDamageSubtitle
                 } else {
                     cell.detailTextLabel?.text = L10n.Settings.resumeDamageSubtitle
@@ -883,7 +883,7 @@ class SettingsViewController: FormViewController, Themeable {
                     HRPGBuyItemModalViewController.displayInsufficientGemsModal(delayDisplay: false)
                     return
                 }
-                let _ = UserManager.shared.showClassSelection(user: user)
+                _ = UserManager.shared.showClassSelection(user: user)
             }
             alertController.addCancelAction()
             alertController.show()

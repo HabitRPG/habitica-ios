@@ -23,7 +23,6 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator?.followScrollView = false
-        collectionView.collectionViewLayout
         if let type = customizationType {
             if type == "eyewear" || type == "headAccessory" {
                 gearDataSource = AvatarGearDetailViewDataSource(type: type)

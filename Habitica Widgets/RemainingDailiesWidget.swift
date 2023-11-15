@@ -19,12 +19,12 @@ struct DailiesCountProvider: IntentTimelineProvider {
                   widgetFamily: context.family, totalCount: 42, completedCount: 10)
     }
 
-    func getSnapshot(for configuration: HRPGDailiesCountIntent,in context: Context, completion: @escaping (DailiesCountWidgetEntry) -> ()) {
+    func getSnapshot(for configuration: HRPGDailiesCountIntent, in context: Context, completion: @escaping (DailiesCountWidgetEntry) -> Void) {
         let entry = DailiesCountWidgetEntry(date: Date(), widgetFamily: context.family, totalCount: 10, completedCount: 5)
         completion(entry)
     }
 
-    func getTimeline(for configuration: HRPGDailiesCountIntent, in context: Context, completion: @escaping (Timeline<DailiesCountWidgetEntry>) -> ()) {
+    func getTimeline(for configuration: HRPGDailiesCountIntent, in context: Context, completion: @escaping (Timeline<DailiesCountWidgetEntry>) -> Void) {
         var entries: [DailiesCountWidgetEntry] = []
         SignalProducer.combineLatest(TaskManager.shared.getTasks(predicate: NSPredicate(format: "type == 'daily' && isDue == true")),
                                      TaskManager.shared.getUser()).on(value: { result in

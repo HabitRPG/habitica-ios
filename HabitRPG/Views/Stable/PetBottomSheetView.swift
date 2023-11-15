@@ -22,7 +22,7 @@ struct PetBottomSheetView: View, Dismissable {
     private let inventoryRepository = InventoryRepository()
     @State private var isShowingFeeding = false
     @State private var isUsingSaddle = false
-    @State private var image: UIImage? = nil
+    @State private var image: UIImage?
     
     private func getFoodName() -> String {
         switch pet.potion {

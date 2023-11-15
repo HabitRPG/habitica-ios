@@ -14,12 +14,12 @@ struct AddTaskSingleProvider: IntentTimelineProvider {
         AddTaskEntry(widgetFamily: context.family, taskType: HRPGTaskType.none)
     }
 
-    func getSnapshot(for configuration: HRPGAddTaskSingleIntent, in context: Context, completion: @escaping (AddTaskEntry) -> ()) {
+    func getSnapshot(for configuration: HRPGAddTaskSingleIntent, in context: Context, completion: @escaping (AddTaskEntry) -> Void) {
         let entry = AddTaskEntry(widgetFamily: context.family, taskType: configuration.taskType)
         completion(entry)
     }
 
-    func getTimeline(for configuration: HRPGAddTaskSingleIntent, in context: Context, completion: @escaping (Timeline<AddTaskEntry>) -> ()) {
+    func getTimeline(for configuration: HRPGAddTaskSingleIntent, in context: Context, completion: @escaping (Timeline<AddTaskEntry>) -> Void) {
         var entries: [AddTaskEntry] = []
         let entry = AddTaskEntry(widgetFamily: context.family, taskType: configuration.taskType)
         entries.append(entry)
@@ -33,12 +33,12 @@ struct AddTaskProvider: IntentTimelineProvider {
         AddTaskEntry(widgetFamily: context.family, taskType: HRPGTaskType.none)
     }
 
-    func getSnapshot(for configuration: HRPGAddTaskIntent, in context: Context, completion: @escaping (AddTaskEntry) -> ()) {
+    func getSnapshot(for configuration: HRPGAddTaskIntent, in context: Context, completion: @escaping (AddTaskEntry) -> Void) {
         let entry = AddTaskEntry(widgetFamily: context.family, showLabels: (configuration.showLabel?.boolValue == true))
         completion(entry)
     }
 
-    func getTimeline(for configuration: HRPGAddTaskIntent, in context: Context, completion: @escaping (Timeline<AddTaskEntry>) -> ()) {
+    func getTimeline(for configuration: HRPGAddTaskIntent, in context: Context, completion: @escaping (Timeline<AddTaskEntry>) -> Void) {
         var entries: [AddTaskEntry] = []
         let entry = AddTaskEntry(widgetFamily: context.family, showLabels: (configuration.showLabel?.boolValue == true))
         entries.append(entry)
@@ -55,7 +55,7 @@ struct AddTaskEntry: TimelineEntry {
     var showLabels = false
 }
 
-struct AddTaskWidgetView : View {
+struct AddTaskWidgetView: View {
     var entry: AddTaskProvider.Entry
     
     var taskIdentifier: String? {
@@ -75,7 +75,7 @@ struct AddTaskWidgetView : View {
 
     var body: some View {
         HStack(spacing: 12) {
-            if (entry.widgetFamily == .systemSmall) {
+            if entry.widgetFamily == .systemSmall {
                 if let identifier = taskIdentifier {
                     AddView(taskType: entry.taskType ?? HRPGTaskType.none, isSingle: true, showLabel: true).widgetURL(URL(string: "/user/tasks/\(identifier)/add"))
                 } else {
@@ -120,7 +120,7 @@ struct AddView: View {
     var showLabel: Bool = false
     
     var iconName: String {
-        if (isSingle && showLabel) {
+        if isSingle && showLabel {
             switch taskType {
             case .habit:
                 return "AddHabitText"
@@ -133,7 +133,7 @@ struct AddView: View {
             default:
                 return "Settings"
             }
-        } else if (showLabel) {
+        } else if showLabel {
             switch taskType {
             case .habit:
                 return "AddHabitSmall"
@@ -194,9 +194,9 @@ struct AddView: View {
     
     var body: some View {
         VStack(alignment: showLabel ? .leading : .center) {
-            if (showLabel) { Spacer() }
+            if showLabel { Spacer() }
             Image(iconName)
-            if (showLabel) { Text(taskType == nil ? "Edit to select a task type" : "Add new\n\(taskName)")
+            if showLabel { Text(taskType == nil ? "Edit to select a task type" : "Add new\n\(taskName)")
                 .foregroundColor(taskType == nil ? Color.gray500 : Color(white: 0, opacity: 0.6))
                 .font(.system(size: isSingle ? (taskType == nil ? 17 : 22) : 15, weight: .semibold))
                 .padding(.top, isSingle ? -4 : -6)

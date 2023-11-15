@@ -286,12 +286,12 @@ final class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransiti
     ) -> UIViewControllerAnimatedTransitioning? {
         guard
             let bottomSheetPresentationController = dismissed.presentationController as? BottomSheetPresentationController,
-            bottomSheetPresentationController.bottomSheetInteractiveDismissalTransition.wantsInteractiveStart
+            bottomSheetPresentationController.interactiveDismissalTransition.wantsInteractiveStart
         else {
             return nil
         }
 
-        return bottomSheetPresentationController.bottomSheetInteractiveDismissalTransition
+        return bottomSheetPresentationController.interactiveDismissalTransition
     }
 
     func interactionControllerForDismissal(
@@ -310,7 +310,7 @@ final class BottomSheetPresentationController: UIPresentationController {
         return view
     }()
 
-    let bottomSheetInteractiveDismissalTransition = BottomSheetInteractiveDismissalTransition()
+    let interactiveDismissalTransition = BottomSheetInteractiveDismissalTransition()
 
     let sheetTopInset: CGFloat
     let sheetCornerRadius: CGFloat
@@ -361,19 +361,19 @@ final class BottomSheetPresentationController: UIPresentationController {
 
         switch gestureRecognizer.state {
         case .began:
-            bottomSheetInteractiveDismissalTransition.start(
+            interactiveDismissalTransition.start(
                 moving: presentedView, interactiveDismissal: panToDismissEnabled
             )
         case .changed:
             if panToDismissEnabled && progress > 0 && !presentedViewController.isBeingDismissed {
                 presentingViewController.dismiss(animated: true)
             }
-            bottomSheetInteractiveDismissalTransition.move(
+            interactiveDismissalTransition.move(
                 presentedView, using: translation.y
             )
         default:
             let velocity = gestureRecognizer.velocity(in: presentedView)
-            bottomSheetInteractiveDismissalTransition.stop(
+            interactiveDismissalTransition.stop(
                 moving: presentedView, at: translation.y, with: velocity
             )
         }
@@ -460,8 +460,8 @@ final class BottomSheetPresentationController: UIPresentationController {
             preferredHeightConstraint
         ])
 
-        bottomSheetInteractiveDismissalTransition.bottomConstraint = bottomConstraint
-        bottomSheetInteractiveDismissalTransition.heightConstraint = heightConstraint
+        interactiveDismissalTransition.bottomConstraint = bottomConstraint
+        interactiveDismissalTransition.heightConstraint = heightConstraint
 
         guard let transitionCoordinator = presentingViewController.transitionCoordinator else {
             return

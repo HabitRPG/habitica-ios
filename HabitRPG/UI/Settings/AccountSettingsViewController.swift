@@ -66,7 +66,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         buildDangerSection()
     }
     
-    //MARK: - Build Info Section
+    // MARK: - Build Info Section
     func buildAccountInfoSection() {
         form +++ Section(L10n.Settings.accountInfo)
         <<< LabelRow { row in
@@ -103,7 +103,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         }
     }
     
-    //MARK: - Build LoginMethods Section
+    // MARK: - Build LoginMethods Section
     func buildLoginMethodsSection() {
         form +++ Section(L10n.Settings.loginMethods)
         <<< LabelRow { row in
@@ -184,7 +184,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         }
     }
     
-    //MARK: - Build Profile Section
+    // MARK: - Build Profile Section
     func buildPublicProfileSection() {
         form +++ Section(L10n.Settings.publicProfile)
         <<< LabelRow { row in
@@ -225,7 +225,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         }
     }
     
-    //MARK: - Build API Section
+    // MARK: - Build API Section
     func buildApiSection() {
         form +++ Section(L10n.Settings.api)
         <<< LabelRow { row in
@@ -260,7 +260,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             }
         }
     
-    //MARK: - Build Danger Section
+    // MARK: - Build Danger Section
     func buildDangerSection() {
         form +++ Section(L10n.Settings.dangerZone)
         <<< ButtonRow { row in

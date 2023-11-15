@@ -450,7 +450,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             }
         }
         var text = ""
-        var failureBlock = {[weak self] in
+        let failureBlock = {[weak self] in
             self?.isPurchasing = false
         }
         if let inAppReward = reward {
