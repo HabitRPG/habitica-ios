@@ -281,7 +281,7 @@ class LookingForPartyViewController: UIHostingController<LookingForPartyView> {
         super.viewDidAppear(animated)
         HabiticaAnalytics.shared.log("View Find Members", withEventProperties: [
             "eventCategory": "navigation",
-            "hitType": "event",
+            "hitType": "event"
         ])
     }
 }

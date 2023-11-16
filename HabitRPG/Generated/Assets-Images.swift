@@ -284,6 +284,8 @@ internal enum Asset {
   internal static let streak = ImageAsset(name: "streak")
   internal static let streakAchievement = ImageAsset(name: "streak_achievement")
   internal static let subBenefitDrops = ImageAsset(name: "sub_benefit_drops")
+  internal static let subBenefitsArmoire = ImageAsset(name: "sub_benefits_armoire")
+  internal static let subBenefitsFaint = ImageAsset(name: "sub_benefits_faint")
   internal static let subBenefitsGems = ImageAsset(name: "sub_benefits_gems")
   internal static let subBenefitsHourglasses = ImageAsset(name: "sub_benefits_hourglasses")
   internal static let subBenefitsPet = ImageAsset(name: "sub_benefits_pet")

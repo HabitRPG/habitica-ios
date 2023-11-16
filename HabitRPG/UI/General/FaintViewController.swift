@@ -13,8 +13,20 @@ import ReactiveSwift
 
 struct HabiticaButtonUI<Label: View>: View {
     enum Size {
+        case small
         case compact
         case normal
+        
+        var height: CGFloat {
+            switch self {
+            case .small:
+                return 40
+            case .compact:
+                return 48
+            case .normal:
+                return 60
+            }
+        }
     }
     enum ButtonType {
         case solid
@@ -39,7 +51,7 @@ struct HabiticaButtonUI<Label: View>: View {
                 .foregroundColor(getForegroundColor())
                 .font(.headline)
                 .padding(.vertical, 6)
-                .frame(minHeight: size == .normal ? 60 : 40)
+                .frame(minHeight: size.height)
                 .frame(maxWidth: .infinity)
                 .background(type == .bordered ? Color.clear : color)
                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(color, lineWidth: type == .bordered ? 3 : 0))

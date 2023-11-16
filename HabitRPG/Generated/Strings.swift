@@ -996,7 +996,7 @@ public enum L10n {
   public static var subscriptionPromoDescription: String { return L10n.tr("Mainstrings", "subscription_promo_description") }
   /// Need Gems?
   public static var subscriptionPromoTitle: String { return L10n.tr("Mainstrings", "subscription_promo_title") }
-  /// Subscribing supports our small team and helps keep Habitica running
+  /// Subscribing supports our small team and helps keep Habitica running, thank you!
   public static var subscriptionSupportDevelopers: String { return L10n.tr("Mainstrings", "subscription_support_developers") }
   /// success
   public static var success: String { return L10n.tr("Mainstrings", "success") }
@@ -2445,6 +2445,25 @@ public enum L10n {
     public static var strengthTitle: String { return L10n.tr("Mainstrings", "stats.strength_title") }
     /// Total
     public static var total: String { return L10n.tr("Mainstrings", "stats.total") }
+  }
+
+  public enum Subscription {
+    /// Subscribers get extra chances at the Armoire and these other benefits!
+    public static var armoreHeader: String { return L10n.tr("Mainstrings", "subscription.armore_header") }
+    /// Subscribers get a second chance at life each day and these other benefits!
+    public static var faintHeader: String { return L10n.tr("Mainstrings", "subscription.faint_header") }
+    /// Subscribe to buy Gems with Gold and receive these other exclusive benefits!
+    public static var gemForGoldHeader: String { return L10n.tr("Mainstrings", "subscription.gem_for_gold_header") }
+    /// Subscribers get Mystic Hourglasses to buy items in the Time Travelers Shop and these other exclusive benefits!
+    public static var hourglassesHeader: String { return L10n.tr("Mainstrings", "subscription.hourglasses_header") }
+    /// Get two chances at new equipment from the Armoire for the price of one
+    public static var infoArmoireDescription: String { return L10n.tr("Mainstrings", "subscription.info_armoire_description") }
+    /// Extra Armoire chances
+    public static var infoArmoireTitle: String { return L10n.tr("Mainstrings", "subscription.info_armoire_title") }
+    /// Have the option of hanging on with 1HP when you run out of health once a day
+    public static var infoFaintDescription: String { return L10n.tr("Mainstrings", "subscription.info_faint_description") }
+    /// Second chance at life
+    public static var infoFaintTitle: String { return L10n.tr("Mainstrings", "subscription.info_faint_title") }
   }
 
   public enum Support {
