@@ -10,6 +10,9 @@ import UIKit
 import Habitica_Models
 
 class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSourceDelegate {
+    
+    private let userRepository = UserRepository()
+    
     func showGearSelection(sourceView: UIView) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         for title in ["warrior", "mage", "healer", "rogue", "none"] {
@@ -66,6 +69,21 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         dataSource?.needsGearSection = shopIdentifier == "market"
         
         refresh()
+    }
+    
+    private var promptedSub = false
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !promptedSub {
+            userRepository.getUser().take(first: 1).on(value: { user in
+                self.promptedSub = true
+                if !user.isSubscribed && user.purchased?.subscriptionPlan?.consecutive?.hourglasses == 0 {
+                    SubscriptionModalViewController(presentationPoint: .timetravelers).show()
+                }
+            }).start()
+        }
     }
     
     private func setupNavBar() {
