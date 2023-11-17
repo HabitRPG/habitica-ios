@@ -17,7 +17,7 @@ enum PresentationPoint {
     
     var headerText: String {
         switch self {
-        case .armoire: 
+        case .armoire:
             return L10n.Subscription.armoreHeader
         case .faint:
             return L10n.Subscription.faintHeader
@@ -33,7 +33,7 @@ struct SubscriptionBenefitView<Icon: View, Title: View, Description: View>: View
     let icon: Icon
     let title: Title
     let description: Description
-    
+        
     var body: some View {
         HStack(spacing: 12) {
             icon
@@ -82,7 +82,6 @@ struct SubscriptionOptionViewUI<Price: View, Recurring: View, Tag: View>: View {
         .cornerRadius(12)
         .foregroundColor(Color(isSelected ? UIColor.purple300 : UIColor.purple600))
         .padding(.vertical, 3)
-        .animation(.interpolatingSpring)
     }
 }
 
@@ -92,51 +91,68 @@ extension SubscriptionOptionViewUI where Tag == EmptyView {
     }
 }
 
+class SubscriptionViewModel: ObservableObject {
+    @Published var presentationPoint: PresentationPoint?
+    @Published var isSubscribed: Bool = false
+    @Published var prices = [String: String]()
+    
+    @Published var selectedSubscription: String = PurchaseHandler.subscriptionIdentifiers[0]
+    @Published var availableSubscriptions = PurchaseHandler.subscriptionIdentifiers
+    
+    init(presentationPoint: PresentationPoint?) {
+        self.presentationPoint = presentationPoint
+        
+        if presentationPoint != nil {
+            availableSubscriptions.remove(at: 2)
+        }
+        if presentationPoint == .timetravelers {
+            availableSubscriptions.remove(at: 0)
+            selectedSubscription = PurchaseHandler.subscriptionIdentifiers[1]
+        }
+    }
+}
+
 struct SubscriptionPage: View {
-    var presentationPoint: PresentationPoint?
-    var isSubscribed: Bool = false
+    @ObservedObject var viewModel: SubscriptionViewModel
     
     var backgroundColor: Color = Color(UIColor.purple300)
     var textColor: Color = .white
     
-    @State var selectedSubscription: String = PurchaseHandler.subscriptionIdentifiers[0]
-    @State var availableSubscriptions = PurchaseHandler.subscriptionIdentifiers
-    
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 0) {
-                if let point = presentationPoint {
+                if let point = viewModel.presentationPoint {
                     Text(point.headerText)
                         .multilineTextAlignment(.center)
                         .font(.system(size: 20, weight: .semibold))
                 } else {
-                    if isSubscribed {
+                    if viewModel.isSubscribed {
                         Image(backgroundColor.uiColor().isLight() ? Asset.subscriberHeader.name : Asset.subscriberHeaderDark.name)
                     } else {
                         Image(backgroundColor.uiColor().isLight() ? Asset.subscribeHeader.name : Asset.subscribeHeaderDark.name)
                     }
                 }
                 Image(Asset.separatorFancy.name).padding(.vertical, 20)
-                if presentationPoint != .gemForGold {
+                if viewModel.presentationPoint != .gemForGold {
                     SubscriptionBenefitView(icon: Image(Asset.subBenefitsGems.name), title: Text(L10n.subscriptionInfo1Title), description: Text(L10n.subscriptionInfo1Description))
                 }
-                if presentationPoint != .armoire {
+                if viewModel.presentationPoint != .armoire {
                     SubscriptionBenefitView(icon: Image(Asset.subBenefitsArmoire.name), title: Text(L10n.Subscription.infoArmoireTitle), description: Text(L10n.Subscription.infoArmoireDescription))
                 }
-                if presentationPoint != .timetravelers {
+                if viewModel.presentationPoint != .timetravelers {
                     SubscriptionBenefitView(icon: Image(Asset.subBenefitsHourglasses.name), title: Text(L10n.subscriptionInfo2Title), description: Text(L10n.subscriptionInfo2Description))
                 }
                 SubscriptionBenefitView(icon: Image(Asset.subBenefitsHourglasses.name), title: Text(L10n.subscriptionInfo3Title), description: Text(L10n.subscriptionInfo3Description))
-                if presentationPoint != .faint {
+                if viewModel.presentationPoint != .faint {
                     SubscriptionBenefitView(icon: Image(Asset.subBenefitsFaint.name), title: Text(L10n.Subscription.infoFaintTitle), description: Text(L10n.Subscription.infoFaintDescription))
                 }
                 SubscriptionBenefitView(icon: Image(Asset.subBenefitsPet.name), title: Text(L10n.subscriptionInfo4Title), description: Text(L10n.subscriptionInfo4Description))
                 SubscriptionBenefitView(icon: Image(Asset.subBenefitDrops.name), title: Text(L10n.subscriptionInfo5Title), description: Text(L10n.subscriptionInfo5Description)).padding(.bottom, 20)
                 
-                if !isSubscribed {
+                if !viewModel.isSubscribed {
                     ZStack(alignment: .top) {
                         VStack(spacing: 0) {
-                            ForEach(enumerating: availableSubscriptions) { sub in
+                            ForEach(enumerating: viewModel.availableSubscriptions) { sub in
                                 Rectangle()
                                     .fill()
                                     .foregroundColor(Color(UIColor.purple200))
@@ -144,7 +160,7 @@ struct SubscriptionPage: View {
                                     .cornerRadius(12)
                                     .padding(.vertical, 3).onTapGesture {
                                         withAnimation {
-                                            selectedSubscription = sub
+                                            viewModel.selectedSubscription = sub
                                         }
                                     }
                             }
@@ -152,18 +168,18 @@ struct SubscriptionPage: View {
                         Rectangle()
                             .frame(height: 106)
                             .cornerRadius(12)
-                            .offset(y: 3.0 + (CGFloat(availableSubscriptions.firstIndex(of: selectedSubscription) ?? 0) * 112.0))
-                            .animation(.interpolatingSpring(stiffness: 500, damping: 25), value: selectedSubscription)
+                            .offset(y: 3.0 + (CGFloat(viewModel.availableSubscriptions.firstIndex(of: viewModel.selectedSubscription) ?? 0) * 112.0))
+                            .animation(.interpolatingSpring(stiffness: 500, damping: 25), value: viewModel.selectedSubscription)
                         VStack(spacing: 0) {
-                            if presentationPoint != .timetravelers {
+                            if viewModel.presentationPoint != .timetravelers {
                                 SubscriptionOptionViewUI(price: Text("$4.99"), recurring: Text(L10n.subscriptionDuration(L10n.month)),
-                                                         isSelected: PurchaseHandler.subscriptionIdentifiers[0] == selectedSubscription)
+                                                         isSelected: PurchaseHandler.subscriptionIdentifiers[0] == viewModel.selectedSubscription)
                             }
                             SubscriptionOptionViewUI(price: Text("$14.99"), recurring: Text(L10n.subscriptionDuration(L10n.xMonths(3))),
-                                                     isSelected: PurchaseHandler.subscriptionIdentifiers[1] == selectedSubscription)
-                            if presentationPoint == nil {
+                                                     isSelected: PurchaseHandler.subscriptionIdentifiers[1] == viewModel.selectedSubscription)
+                            if viewModel.presentationPoint == nil {
                                 SubscriptionOptionViewUI(price: Text("$29.99"), recurring: Text(L10n.subscriptionDuration(L10n.xMonths(6))),
-                                                         isSelected: PurchaseHandler.subscriptionIdentifiers[2] == selectedSubscription)
+                                                         isSelected: PurchaseHandler.subscriptionIdentifiers[2] == viewModel.selectedSubscription)
                             }
                             SubscriptionOptionViewUI(price: Text("$47.99"), recurring: Text(L10n.subscriptionDuration(L10n.xMonths(12))),
                                                      tag: HStack(spacing: 0) {
@@ -175,7 +191,7 @@ struct SubscriptionPage: View {
                                         Color(hexadecimal: "77F4C7"),
                                         Color(hexadecimal: "72CFFF")
                                 ], startPoint: .leading, endPoint: .trailing))
-                            }, isSelected: PurchaseHandler.subscriptionIdentifiers[3] == selectedSubscription)
+                            }, isSelected: PurchaseHandler.subscriptionIdentifiers[3] == viewModel.selectedSubscription)
                         }
                     }
                 }
@@ -193,15 +209,6 @@ struct SubscriptionPage: View {
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .background(backgroundColor.ignoresSafeArea())
-        .onAppear {
-            if presentationPoint != nil {
-                availableSubscriptions.remove(at: 2)
-            }
-            if presentationPoint == .timetravelers {
-                availableSubscriptions.remove(at: 0)
-                selectedSubscription = PurchaseHandler.subscriptionIdentifiers[1]
-            }
-        }
     }
 }
 
@@ -235,15 +242,37 @@ struct DisclaimerView: UIViewRepresentable {
 
 struct SubscriptionPagePreview: PreviewProvider {
     static var previews: some View {
-        SubscriptionPage()
-        SubscriptionPage(isSubscribed: true).previewDisplayName("Subscribed")
-        SubscriptionPage(presentationPoint: .armoire).previewDisplayName("Armoire")
-        SubscriptionPage(presentationPoint: .faint).previewDisplayName("Faint")
-        SubscriptionPage(presentationPoint: .gemForGold).previewDisplayName("Gem for Gold")
-        SubscriptionPage(presentationPoint: .timetravelers).previewDisplayName("Time Travelers")
+        SubscriptionPage(viewModel: SubscriptionViewModel(presentationPoint: nil))
+        SubscriptionPage(viewModel: SubscriptionViewModel(presentationPoint: nil)).previewDisplayName("Subscribed")
+        SubscriptionPage(viewModel: SubscriptionViewModel(presentationPoint: .armoire)).previewDisplayName("Armoire")
+        SubscriptionPage(viewModel: SubscriptionViewModel(presentationPoint: .faint)).previewDisplayName("Faint")
+        SubscriptionPage(viewModel: SubscriptionViewModel(presentationPoint: .gemForGold)).previewDisplayName("Gem for Gold")
+        SubscriptionPage(viewModel: SubscriptionViewModel(presentationPoint: .timetravelers)).previewDisplayName("Time Travelers")
     }
 }
 
 class SubscriptionModalViewController: HostingBottomSheetController<SubscriptionPage> {
+    let viewModel: SubscriptionViewModel
+    let userRepository = UserRepository()
     
+    init(presentationPoint: PresentationPoint?) {
+        viewModel = SubscriptionViewModel(presentationPoint: presentationPoint)
+        super.init(rootView: SubscriptionPage(viewModel: viewModel))
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        viewModel = SubscriptionViewModel(presentationPoint: nil)
+        super.init(coder: aDecoder)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        userRepository.getUser().on(value: {[weak self] user in
+            self?.viewModel.isSubscribed = user.isSubscribed
+        }).start()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
 }
