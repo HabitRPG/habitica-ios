@@ -75,6 +75,8 @@ private class ViewModel: ObservableObject {
     let userRepository = UserRepository()
     let inventoryRepository = InventoryRepository()
     
+    var showSubPage: (() -> Void)?
+    
     @Published var gold: Double = 0
     @Published var initialGold: Double = 0
     @Published var text: String = ""
@@ -329,7 +331,7 @@ struct ArmoireView: View {
                 } else {
                     VStack(alignment: .center, spacing: 8) {
                         HabiticaButtonUI(label: Text(L10n.Armoire.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white, size: .compact) {
-                            
+                            SubscriptionModalViewController(presentationPoint: .armoire).show()
                         }.frame(maxWidth: 600)
                         Text(L10n.Armoire.unsubbedFooter)
                             .foregroundColor(Color(UIColor.teal1))

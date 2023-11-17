@@ -8,6 +8,10 @@
 
 import Foundation
 import SwiftUI
+import SwiftyStoreKit
+import FirebaseAnalytics
+import ReactiveSwift
+import Habitica_Models
 
 enum PresentationPoint {
     case armoire
@@ -92,14 +96,28 @@ extension SubscriptionOptionViewUI where Tag == EmptyView {
 }
 
 class SubscriptionViewModel: ObservableObject {
+    private let disposable = ScopedDisposable(CompositeDisposable())
+
+    let appleValidator: AppleReceiptValidator
+    let itunesSharedSecret = Secrets.itunesSharedSecret
+    let userRepository = UserRepository()
+    let inventoryRepository = InventoryRepository()
+    
     @Published var presentationPoint: PresentationPoint?
     @Published var isSubscribed: Bool = false
     @Published var prices = [String: String]()
+    @Published var mysteryGear: GearProtocol?
     
+    @Published var isSubscribing = false
     @Published var selectedSubscription: String = PurchaseHandler.subscriptionIdentifiers[0]
     @Published var availableSubscriptions = PurchaseHandler.subscriptionIdentifiers
     
     init(presentationPoint: PresentationPoint?) {
+        #if DEBUG
+            appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
+        #else
+            appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
+        #endif
         self.presentationPoint = presentationPoint
         
         if presentationPoint != nil {
@@ -108,6 +126,105 @@ class SubscriptionViewModel: ObservableObject {
         if presentationPoint == .timetravelers {
             availableSubscriptions.remove(at: 0)
             selectedSubscription = PurchaseHandler.subscriptionIdentifiers[1]
+        }
+        
+        disposable.inner.add(inventoryRepository.getLatestMysteryGear().on(value: { gear in
+            self.mysteryGear = gear
+        }).start())
+        
+        retrieveProductList()
+    }
+    
+    func retrieveProductList() {
+        SwiftyStoreKit.retrieveProductsInfo(Set(PurchaseHandler.subscriptionIdentifiers)) { (result) in
+            var prices = [String: String]()
+            for product in result.retrievedProducts {
+                prices[product.productIdentifier] = product.localizedPrice
+            }
+            self.prices = prices
+        }
+    }
+    
+    func priceFor(_ identifier: String) -> String {
+        return prices[identifier] ?? ""
+    }
+    
+    func subscribeTapped() {
+        if !PurchaseHandler.shared.isAllowedToMakePurchases() {
+            return
+        }
+        isSubscribing = true
+        SwiftyStoreKit.purchaseProduct(selectedSubscription, atomically: false) { result in
+            self.isSubscribing = false
+            switch result {
+            case .success(let product):
+                self.verifyAndSubscribe(product)
+                logger.log("Purchase Success: \(product.productId)")
+            case .error(let error):
+                Analytics.logEvent("purchase_failed", parameters: ["error": error.localizedDescription, "code": error.errorCode])
+
+                logger.log("Purchase Failed: \(error)", level: .error)
+            case .deferred:
+                return
+            }
+        }
+    }
+    
+    func verifyAndSubscribe(_ product: PurchaseDetails) {
+        SwiftyStoreKit.verifyReceipt(using: appleValidator, forceRefresh: true) { result in
+            switch result {
+            case .success(let receipt):
+                // Verify the purchase of a Subscription
+                if self.isValidSubscription(product.productId, receipt: receipt) {
+                    self.activateSubscription(product.productId, receipt: receipt) { status in
+                        if status {
+                            if product.needsFinishTransaction {
+                                SwiftyStoreKit.finishTransaction(product.transaction)
+                            }
+                        }
+                    }
+                }
+            case .error(let error):
+                logger.log("Receipt verification failed: \(error)", level: .error)
+            }
+        }
+    }
+    
+    func isSubscription(_ identifier: String) -> Bool {
+        return  PurchaseHandler.subscriptionIdentifiers.contains(identifier)
+    }
+
+    func isValidSubscription(_ identifier: String, receipt: ReceiptInfo) -> Bool {
+        if !isSubscription(identifier) {
+            return false
+        }
+        let purchaseResult = SwiftyStoreKit.verifySubscription(
+            ofType: .autoRenewable,
+            productId: identifier,
+            inReceipt: receipt,
+            validUntil: Date()
+        )
+        switch purchaseResult {
+        case .purchased:
+            return true
+        case .expired:
+            return false
+        case .notPurchased:
+            return false
+        }
+    }
+    
+    func activateSubscription(_ identifier: String, receipt: ReceiptInfo, completion: @escaping (Bool) -> Void) {
+        if let lastReceipt = receipt["latest_receipt"] as? String {
+            userRepository.subscribe(sku: identifier, receipt: lastReceipt).observeResult { (result) in
+                switch result {
+                case .success:
+                    completion(true)
+                    self.isSubscribed = true
+                case .failure:
+                    completion(false)
+                }
+            }
         }
     }
 }
@@ -121,10 +238,13 @@ struct SubscriptionPage: View {
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 0) {
+                Rectangle().fill().foregroundColor(Color(UIColor.purple400)).frame(width: 22, height: 3).cornerRadius(1.5)
+                    .padding(.top, 10)
+                    .padding(.bottom, 16)
                 if let point = viewModel.presentationPoint {
                     Text(point.headerText)
                         .multilineTextAlignment(.center)
-                        .font(.system(size: 20, weight: .semibold))
+                        .font(.system(size: 17, weight: .semibold))
                 } else {
                     if viewModel.isSubscribed {
                         Image(backgroundColor.uiColor().isLight() ? Asset.subscriberHeader.name : Asset.subscriberHeaderDark.name)
@@ -132,7 +252,11 @@ struct SubscriptionPage: View {
                         Image(backgroundColor.uiColor().isLight() ? Asset.subscribeHeader.name : Asset.subscribeHeaderDark.name)
                     }
                 }
-                Image(Asset.separatorFancy.name).padding(.vertical, 20)
+                HStack(spacing: 20) {
+                    Rectangle().fill().frame(maxWidth: .infinity).height(1)
+                    Image(Asset.separatorFancyIcon.name).padding(.vertical, 20)
+                    Rectangle().fill().frame(maxWidth: .infinity).height(1)
+                }.foregroundColor(Color(UIColor.purple400))
                 if viewModel.presentationPoint != .gemForGold {
                     SubscriptionBenefitView(icon: Image(Asset.subBenefitsGems.name), title: Text(L10n.subscriptionInfo1Title), description: Text(L10n.subscriptionInfo1Description))
                 }
@@ -142,7 +266,7 @@ struct SubscriptionPage: View {
                 if viewModel.presentationPoint != .timetravelers {
                     SubscriptionBenefitView(icon: Image(Asset.subBenefitsHourglasses.name), title: Text(L10n.subscriptionInfo2Title), description: Text(L10n.subscriptionInfo2Description))
                 }
-                SubscriptionBenefitView(icon: Image(Asset.subBenefitsHourglasses.name), title: Text(L10n.subscriptionInfo3Title), description: Text(L10n.subscriptionInfo3Description))
+                SubscriptionBenefitView(icon: PixelArtView(name: "shop_set_mystery_\(viewModel.mysteryGear?.key?.split(separator: "_").last ?? "")"), title: Text(L10n.subscriptionInfo3Title), description: Text(L10n.subscriptionInfo3Description))
                 if viewModel.presentationPoint != .faint {
                     SubscriptionBenefitView(icon: Image(Asset.subBenefitsFaint.name), title: Text(L10n.Subscription.infoFaintTitle), description: Text(L10n.Subscription.infoFaintDescription))
                 }
@@ -172,16 +296,16 @@ struct SubscriptionPage: View {
                             .animation(.interpolatingSpring(stiffness: 500, damping: 25), value: viewModel.selectedSubscription)
                         VStack(spacing: 0) {
                             if viewModel.presentationPoint != .timetravelers {
-                                SubscriptionOptionViewUI(price: Text("$4.99"), recurring: Text(L10n.subscriptionDuration(L10n.month)),
+                                SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[0])), recurring: Text(L10n.subscriptionDuration(L10n.month)),
                                                          isSelected: PurchaseHandler.subscriptionIdentifiers[0] == viewModel.selectedSubscription)
                             }
-                            SubscriptionOptionViewUI(price: Text("$14.99"), recurring: Text(L10n.subscriptionDuration(L10n.xMonths(3))),
+                            SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[1])), recurring: Text(L10n.subscriptionDuration(L10n.xMonths(3))),
                                                      isSelected: PurchaseHandler.subscriptionIdentifiers[1] == viewModel.selectedSubscription)
                             if viewModel.presentationPoint == nil {
-                                SubscriptionOptionViewUI(price: Text("$29.99"), recurring: Text(L10n.subscriptionDuration(L10n.xMonths(6))),
+                                SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[2])), recurring: Text(L10n.subscriptionDuration(L10n.xMonths(6))),
                                                          isSelected: PurchaseHandler.subscriptionIdentifiers[2] == viewModel.selectedSubscription)
                             }
-                            SubscriptionOptionViewUI(price: Text("$47.99"), recurring: Text(L10n.subscriptionDuration(L10n.xMonths(12))),
+                            SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[3])), recurring: Text(L10n.subscriptionDuration(L10n.xMonths(12))),
                                                      tag: HStack(spacing: 0) {
                                 Image(uiImage: Asset.flagFlap.image.withRenderingMode(.alwaysTemplate)).foregroundColor(Color(hexadecimal: "77F4C7"))
                                 Text("Save 20%").foregroundColor(Color(UIColor.teal1)).font(.system(size: 12, weight: .semibold))
@@ -195,49 +319,48 @@ struct SubscriptionPage: View {
                         }
                     }
                 }
-                HabiticaButtonUI(label: Text(L10n.subscribe).foregroundColor(Color(UIColor.purple100)), color: Color(UIColor.yellow100), size: .compact) {
-                    
+                Group {
+                    if viewModel.isSubscribing {
+                        ProgressView().habiticaProgressStyle().frame(height: 48)
+                    } else {
+                        HabiticaButtonUI(label: Text(L10n.subscribe).foregroundColor(Color(UIColor.purple100)), color: Color(UIColor.yellow100), size: .compact) {
+                            viewModel.subscribeTapped()
+                        }
+                    }
                 }.padding(.vertical, 13)
                 Text(L10n.subscriptionSupportDevelopers).foregroundColor(Color(UIColor.purple600)).font(.system(size: 15)).multilineTextAlignment(.center)
-                Image(Asset.separatorFancy.name).padding(.vertical, 20)
-                GeometryReader { reader in
-                    DisclaimerView(fixedWidth: reader.size.width)
-                }.frame(height: 160)
+                
+                HStack(spacing: 20) {
+                    Rectangle().fill().frame(maxWidth: .infinity).height(1)
+                    Image(Asset.separatorFancyIcon.name)
+                    Rectangle().fill().frame(maxWidth: .infinity).height(1)
+                }.foregroundColor(Color(UIColor.purple400))
+                    .padding(.vertical, 20)
+                Text("Once we’ve confirmed your purchase, the payment will be charged to your Apple ID.\n\nSubscriptions automatically renew unless auto-renewal is turned off at least 24-hours before the end of the current period. You can manage subscription renewal from your Apple ID Settings. If you have an active subscription, your account will be charged for renewal within 24-hours prior to the end of your current subscription period and you will be charged the same price you initially paid.")
+                    .font(.system(size: 11))
+                    .foregroundColor(Color(UIColor.gray500))
+                HStack(spacing: 0) {
+                    Text("By continuing you accept the ")
+                    // swiftlint:disable force_unwrapping
+                    Link("Terms of Use", destination: URL(string: "https://habitica.com/static/terms")!).font(.system(size: 11, weight: .semibold)).foregroundColor(Color(UIColor.purple600))
+                    Text(" and ")
+                    Link("Privacy Policy", destination: URL(string: "https://habitica.com/static/privacy")!).font(.system(size: 11, weight: .semibold)).foregroundColor(Color(UIColor.purple600))
+                }
+                .font(.system(size: 11))
+                    .foregroundColor(Color(UIColor.gray500))
+                    .padding(.top, 8)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
             .foregroundColor(textColor)
             .padding(.horizontal, 20)
+            .padding(.bottom, 50)
+            .background(backgroundColor.ignoresSafeArea())
         }
         .frame(maxHeight: .infinity, alignment: .top)
-        .background(backgroundColor.ignoresSafeArea())
+        .background(backgroundColor)
+        .cornerRadius([.topLeading, .topTrailing], 12)
+        .ignoresSafeArea(.all, edges: .bottom)
     }
-}
-
-struct DisclaimerView: UIViewRepresentable {
-
-    var fixedWidth = 0.0
-    func makeUIView(context: UIViewRepresentableContext<DisclaimerView>) -> UITextView {
-        let label = UITextView()
-        let termsAttributedText = NSMutableAttributedString(string: "Once we’ve confirmed your purchase, the payment will be charged to your Apple ID.\n\nSubscriptions automatically renew unless auto-renewal is turned off at least 24-hours before the end of the current period. You can manage subscription renewal from your Apple ID Settings. If you have an active subscription, your account will be charged for renewal within 24-hours prior to the end of your current subscription period and you will be charged the same price you initially paid.\n\nBy continuing you accept the Terms of Use and Privacy Policy.")
-        termsAttributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.gray500, range: NSRange(location: 0, length: termsAttributedText.length))
-        termsAttributedText.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 11), range: NSRange(location: 0, length: termsAttributedText.length))
-        let termsRange = termsAttributedText.mutableString.range(of: "Terms of Use")
-        termsAttributedText.addAttributes([NSAttributedString.Key.link: "https://habitica.com/static/terms"], range: termsRange)
-        let privacyRange = termsAttributedText.mutableString.range(of: "Privacy Policy")
-        termsAttributedText.addAttributes([NSAttributedString.Key.link: "https://habitica.com/static/privacy"], range: privacyRange)
-        label.attributedText = termsAttributedText
-        label.isSelectable = false
-        label.isUserInteractionEnabled = false
-        label.isScrollEnabled = false
-        label.backgroundColor = .clear
-        label.linkTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.purple500
-        ]
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.widthAnchor.constraint(equalToConstant: fixedWidth).isActive = true
-        return label
-    }
-
-    func updateUIView(_ uiView: UITextView, context: UIViewRepresentableContext<DisclaimerView>) { }
 }
 
 struct SubscriptionPagePreview: PreviewProvider {
@@ -274,5 +397,17 @@ class SubscriptionModalViewController: HostingBottomSheetController<Subscription
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    func show() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            if var topController = UIApplication.topViewController() {
+                if let tabBarController = topController.tabBarController {
+                    topController = tabBarController
+                }
+                topController.present(self, animated: true) {
+                }
+            }
+        }
     }
 }

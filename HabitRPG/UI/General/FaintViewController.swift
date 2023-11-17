@@ -290,7 +290,7 @@ struct FaintView: View {
                 } else {
                     VStack(alignment: .center, spacing: 8) {
                         HabiticaButtonUI(label: Text(L10n.Faint.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white, size: .compact) {
-                            
+                            SubscriptionModalViewController(presentationPoint: .faint).show()
                         }.frame(maxWidth: 600)
                         Text(L10n.Faint.unsubbedFooter)
                             .foregroundColor(Color(UIColor.teal1))

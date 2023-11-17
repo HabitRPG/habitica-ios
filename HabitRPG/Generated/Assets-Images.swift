@@ -61,6 +61,7 @@ internal enum Asset {
   internal static let moreInteractionsIcon = ImageAsset(name: "MoreInteractionsIcon")
   internal static let nameplate = ImageAsset(name: "Nameplate")
   internal static let noPartyBanner = ImageAsset(name: "NoPartyBanner")
+  internal static let separatorFancyIcon = ImageAsset(name: "SeparatorFancyIcon")
   internal static let veteranPets = ImageAsset(name: "VeteranPets")
   internal static let welcomeDiamond = ImageAsset(name: "WelcomeDiamond")
   internal static let addIcon = ImageAsset(name: "add_icon")

@@ -76,6 +76,12 @@ struct BottomSheetView<Title: View, Content: View>: View, Dismissable {
     }
 }
 
+extension BottomSheetView where Title == EmptyView {
+    init(content: Content) {
+        self.init(title: EmptyView(), content: content)
+    }
+}
+
 struct BottomSheetMenu<Title: View, MenuItems: View>: View, Dismissable {
     var dismisser: Dismisser = Dismisser()
     var title: Title
