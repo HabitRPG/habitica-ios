@@ -9,7 +9,7 @@ import UIKit
 
 // swiftlint:disable:next attributes
 @objc public enum ToastColor: Int {
-    case blue = 0, green, red, gray, yellow, purple
+    case blue = 0, green, red, gray, yellow, purple, black
     
     func getUIColor() -> UIColor {
         switch self {
@@ -25,6 +25,8 @@ import UIKit
             return UIColor.yellow10
         case .purple:
             return UIColor.purple200
+        case .black:
+            return UIColor.black
         }
     }
 }

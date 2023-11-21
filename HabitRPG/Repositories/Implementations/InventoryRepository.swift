@@ -252,7 +252,20 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     
     func feed(pet: String, food: String) -> Signal<HabiticaResponse<Int>?, Never> {
         let call = FeedPetCall(pet: pet, food: food)
-
+        
+        if food == "Saddle" {
+            call.httpResponseSignal.observeValues { response in
+                if response.statusCode == 404 {
+                    let alert = HabiticaAlertController(title: L10n.Inventory.noSaddleTile, message: L10n.Inventory.noSaddleDescription)
+                    alert.addAction(title: L10n.Inventory.visitMarket, style: .default, isMainAction: true) {_ in
+                        RouterHandler.shared.handle(urlString: "/inventory/market")
+                    }
+                    alert.addCloseAction()
+                    alert.show()
+                }
+            }
+        }
+        
         return call.habiticaResponseSignal.on(value: {[weak self] response in
             if let message = response?.message {
                 let toastView = ToastView(title: message, background: .green, delay: 1.0)

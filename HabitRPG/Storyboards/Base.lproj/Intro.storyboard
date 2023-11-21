@@ -19,26 +19,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_bg" translatesAutoresizingMaskIntoConstraints="NO" id="uxj-i6-Ftu">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confetti_tiled" translatesAutoresizingMaskIntoConstraints="NO" id="uxj-i6-Ftu">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="tintColor" red="0.79943448309999998" green="0.38318526739999997" blue="0.97967308760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="GeH-AC-vCO">
-                                <rect key="frame" x="141.5" y="268" width="37" height="37"/>
+                                <rect key="frame" x="141.5" y="423" width="37" height="37"/>
                             </activityIndicatorView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_logo" translatesAutoresizingMaskIntoConstraints="NO" id="56g-ur-5TX">
-                                <rect key="frame" x="77.5" y="120" width="165" height="140"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="dzM-I8-kFu"/>
-                                    <constraint firstAttribute="width" constant="165" id="eIR-4r-nB9"/>
-                                </constraints>
+                                <rect key="frame" x="34.5" y="208" width="251" height="191"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.46390098330000001" green="0.22368210550000001" blue="0.92845708130000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="GeH-AC-vCO" firstAttribute="centerX" secondItem="F88-NI-vdf" secondAttribute="centerX" id="0QI-y6-UK2"/>
                             <constraint firstItem="uxj-i6-Ftu" firstAttribute="top" secondItem="F88-NI-vdf" secondAttribute="firstBaseline" id="4DM-dX-9we"/>
-                            <constraint firstItem="56g-ur-5TX" firstAttribute="top" secondItem="HOh-YP-nne" secondAttribute="bottom" constant="100" id="MD5-jc-OWp"/>
-                            <constraint firstItem="GeH-AC-vCO" firstAttribute="top" secondItem="56g-ur-5TX" secondAttribute="bottom" constant="8" id="fV1-Tx-oMR"/>
+                            <constraint firstItem="56g-ur-5TX" firstAttribute="top" secondItem="F88-NI-vdf" secondAttribute="top" constant="208" id="MD5-jc-OWp"/>
+                            <constraint firstItem="GeH-AC-vCO" firstAttribute="top" secondItem="56g-ur-5TX" secondAttribute="bottom" constant="24" id="fV1-Tx-oMR"/>
                             <constraint firstItem="uxj-i6-Ftu" firstAttribute="leading" secondItem="F88-NI-vdf" secondAttribute="leading" id="lIh-0D-WrD"/>
                             <constraint firstAttribute="bottom" secondItem="uxj-i6-Ftu" secondAttribute="bottom" id="rPN-Th-N0m"/>
                             <constraint firstItem="56g-ur-5TX" firstAttribute="centerX" secondItem="F88-NI-vdf" secondAttribute="centerX" id="xAh-y4-aLN"/>
@@ -1255,8 +1252,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5Hb-dX-OsZ"/>
-        <segue reference="aKA-6e-Im9"/>
+        <segue reference="Zxx-A1-MXZ"/>
+        <segue reference="Z2J-RM-J8b"/>
         <segue reference="TYz-5x-Fui"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -1266,12 +1263,13 @@
         <image name="HelloHabiticanOnboarding" width="287" height="117"/>
         <image name="LoginBackground" width="882" height="714"/>
         <image name="LoginBeginButton" width="126" height="126"/>
-        <image name="LoginLogo" width="133" height="112"/>
+        <image name="LoginLogo" width="135" height="111"/>
         <image name="category_body" width="38" height="37"/>
         <image name="category_extras" width="38" height="37"/>
         <image name="category_hair" width="38" height="37"/>
         <image name="category_selection_caret" width="20" height="8"/>
         <image name="category_skin" width="38" height="37"/>
+        <image name="confetti_tiled" width="254" height="548.5"/>
         <image name="creator_active_pixel_arrow_left" width="40" height="40"/>
         <image name="creator_active_pixel_arrow_right" width="40" height="40"/>
         <image name="creator_hills_bg" width="219" height="105"/>
@@ -1279,8 +1277,7 @@
         <image name="indicatorDiamondSelected" width="24" height="24"/>
         <image name="indicatorDiamondUnselected" width="24" height="24"/>
         <image name="justin_textbox" width="48" height="63"/>
-        <image name="launch_bg" width="375" height="667"/>
-        <image name="launch_logo" width="165" height="140"/>
+        <image name="launch_logo" width="251" height="191"/>
         <image name="login_apple" width="50" height="50"/>
         <image name="login_email" width="20" height="20"/>
         <image name="login_google" width="50" height="50"/>

@@ -59,9 +59,8 @@ struct PetBottomSheetView: View, Dismissable {
                 let buttonBackground = Color(theme.tintedSubtleUI)
                 HStack(spacing: 16) {
                     Button(action: {
-                        inventoryRepository.feed(pet: pet.key ?? "", food: "Saddle").observeCompleted {
-                            dismisser.dismiss?()
-                        }
+                        dismisser.dismiss?()
+                        inventoryRepository.feed(pet: pet.key ?? "", food: "Saddle").observeCompleted {}
                     }, label: {
                         VStack {
                             if isUsingSaddle {

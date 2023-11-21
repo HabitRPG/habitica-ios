@@ -100,8 +100,8 @@ private class ViewModel: ObservableObject {
             userRepository.getUser().on(value: { user in
                 self.isSubscribed = user.isSubscribed
                 if self.gold == 0 {
-                    self.initialGold = Double(user.stats?.gold ?? 0)
-                    self.gold = Double(user.stats?.gold ?? 0)
+                    self.initialGold = Double(user.stats?.gold ?? 0) + 100
+                    self.gold = Double(user.stats?.gold ?? 0) + 100
                 }
             }).start()
             
@@ -270,13 +270,13 @@ struct ArmoireView: View {
                     .foregroundColor(.white)
                 HStack {
                     if viewModel.type == "gear" {
-                        HabiticaButtonUI(label: Text(L10n.equip), color: .white, size: .compact) {
+                        HabiticaButtonUI(label: Text(L10n.equip), color: .white) {
                             viewModel.inventoryRepository.equip(type: "equipped", key: viewModel.key).observeCompleted {
                                 onDismiss()
                             }
                         }.padding(.trailing, 16)
                     }
-                    HabiticaButtonUI(label: Text(L10n.close), color: .white, size: .compact, onTap: {
+                    HabiticaButtonUI(label: Text(L10n.close), color: .white, onTap: {
                         onDismiss()
                     })
                 }
@@ -305,7 +305,7 @@ struct ArmoireView: View {
                                 .foregroundColor(Color(UIColor.green1))
                                 .font(.headline)
                                 .padding(.vertical, 6)
-                                .frame(minHeight: 48)
+                                .frame(minHeight: 60)
                                 .frame(maxWidth: .infinity)
                                 .background(LinearGradient(colors: gradientColors, startPoint: .leading, endPoint: .trailing))
                                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))

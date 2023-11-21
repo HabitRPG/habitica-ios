@@ -40,7 +40,7 @@ struct MountBottomSheetView: View, Dismissable {
                 dismisser.dismiss?()
             }
             if owned {
-                HabiticaButtonUI(label: Text(isCurrentMount ? L10n.unequip : L10n.equip), color: Color(theme.fixedTintColor)) {
+                HabiticaButtonUI(label: Text(isCurrentMount ? L10n.unequip : L10n.equip), color: Color(theme.fixedTintColor), size: .compact) {
                     onEquip()
                     dismisser.dismiss?()
                 }

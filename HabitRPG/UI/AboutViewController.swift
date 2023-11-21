@@ -44,10 +44,10 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         headerImageView.backgroundColor = nil
         headerView.backgroundColor = nil
         let gradient = CAGradientLayer()
-        gradient.colors = [UIColor("#FF878AFF").cgColor, UIColor("#5A2CCBFF").cgColor, UIColor("#5A2CCBFF").cgColor, UIColor("#50B5E9FF").cgColor]
+        gradient.colors = [UIColor("#FF878AFF").cgColor, UIColor("#5A2CCBFF").cgColor, UIColor("#4A84E0").cgColor]
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 1, y: 1)
-        gradient.locations =  [0, 0.4, 0.6, 1]
+        gradient.locations =  [-0.5, 0.55, 1.1]
         gradient.frame = CGRect(x: 20, y: 10, width: headerView.bounds.width - 40, height: 130)
         gradient.cornerRadius = 12
         headerView.layer.insertSublayer(gradient, at: 0)

@@ -1780,10 +1780,16 @@ public enum L10n {
     public static var noGemsLeft: String { return L10n.tr("Mainstrings", "inventory.no_gems_left") }
     /// No Longer Available
     public static var noLongerAvailable: String { return L10n.tr("Mainstrings", "inventory.no_longer_available") }
+    /// Saddles instantly raise a Pet to a Mount. You can purchase one from the Market.
+    public static var noSaddleDescription: String { return L10n.tr("Mainstrings", "inventory.no_saddle_description") }
+    /// You don't have any Saddles
+    public static var noSaddleTile: String { return L10n.tr("Mainstrings", "inventory.no_saddle_tile") }
     /// Monthly Gems: %d/%d Remaining
     public static func numberGemsLeft(_ p1: Int, _ p2: Int) -> String {
       return L10n.tr("Mainstrings", "inventory.number_gems_left", p1, p2)
     }
+    /// Visit Market
+    public static var visitMarket: String { return L10n.tr("Mainstrings", "inventory.visit_market") }
     /// Only available for %@s. You can change your class from Settings
     public static func wrongClass(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "inventory.wrong_class", p1)

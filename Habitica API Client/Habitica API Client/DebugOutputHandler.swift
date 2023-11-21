@@ -24,7 +24,7 @@ class DebugOutputHandler {
     
     func observe(call: NetworkCall) {
         #if DEBUG
-            disposable.inner.add(Signal<NSError, Never>.merge([call.errorSignal, call.serverErrorSignal]).observeValues({ error in
+            disposable.inner.add(Signal.merge([call.errorSignal, call.serverErrorSignal]).observeValues({ error in
                 logger.log(error)
             }))
             disposable.inner.add(call.httpResponseSignal.observeValues({[weak self] (response) in

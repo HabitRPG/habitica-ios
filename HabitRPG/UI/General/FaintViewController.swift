@@ -227,7 +227,7 @@ struct FaintView: View {
                 } else {
                     Text(L10n.Faint.button)
                 }
-            }, color: Color(UIColor.maroon100), size: .compact) {
+            }, color: Color(UIColor.maroon100)) {
                 if isReviving {
                     return
                 }
@@ -246,7 +246,7 @@ struct FaintView: View {
                 if viewModel.isSubscribed {
                     if let nextUsage = viewModel.nextPerkUsage {
                         Text(L10n.Faint.subbedUsed(nextUsage.getShortRemainingString()))
-                            .foregroundColor(Color(UIColor.teal1))
+                            .foregroundColor(Color(ThemeService.shared.theme.isDark ? UIColor.teal500 : UIColor.teal1))
                             .font(.system(size: 15, weight: .semibold))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 36)
@@ -271,7 +271,7 @@ struct FaintView: View {
                                 .foregroundColor(Color(UIColor.green1))
                                 .font(.headline)
                                 .padding(.vertical, 6)
-                                .frame(minHeight: 48)
+                                .frame(minHeight: 60)
                                 .frame(maxWidth: .infinity)
                                 .background(LinearGradient(colors: gradientColors, startPoint: .leading, endPoint: .trailing))
                                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
@@ -289,7 +289,7 @@ struct FaintView: View {
                     }
                 } else {
                     VStack(alignment: .center, spacing: 8) {
-                        HabiticaButtonUI(label: Text(L10n.Faint.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white, size: .compact) {
+                        HabiticaButtonUI(label: Text(L10n.Faint.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white) {
                             SubscriptionModalViewController(presentationPoint: .faint).show()
                         }.frame(maxWidth: 600)
                         Text(L10n.Faint.unsubbedFooter)

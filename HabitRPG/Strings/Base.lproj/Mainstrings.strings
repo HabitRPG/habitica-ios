@@ -438,6 +438,9 @@
 "inventory.avatar_bangs_customization" = "Avatar Bangs Customization";
 "inventory.avatar_hair_color_customization" = "Avatar Hair Color Customization";
 "inventory.avatar_hair_style_customization" = "Avatar Hair Style Customization";
+"inventory.no_saddle_tile" = "You don't have any Saddles";
+"inventory.no_saddle_description" = "Saddles instantly raise a Pet to a Mount. You can purchase one from the Market.";
+"inventory.visit_market" = "Visit Market";
 "pets" = "Pets";
 "mounts" = "Mounts";
 "stable.standard_pets" = "Standard Pets";

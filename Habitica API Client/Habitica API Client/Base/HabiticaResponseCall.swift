@@ -35,8 +35,8 @@ public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
         do {
             return try decoder.decode(HabiticaResponse<C>.self, from: data)
         } catch {
-            if let errorHandler = self.errorHandler {
-                type(of: errorHandler).handle(error: error as NSError, messages: [])
+            if let errorHandler = self.errorHandler, let networkError = error as? NetworkError {
+                type(of: errorHandler).handle(error: networkError, messages: [])
             }
         }
         return nil
@@ -54,17 +54,17 @@ public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
             if let jsonErrors = json["errors"] as? [[String: Any]] {
                 for jsonError in jsonErrors {
                     if let errorMessage = jsonError["message"] as? String {
-                        errors.append(NetworkError(message: errorMessage, code: isNotFound ? 404 : -1000))
+                        errors.append(NetworkError(message: errorMessage, url: self.urlString, code: isNotFound ? 404 : -1000))
                     }
                 }
             }
             if errors.isEmpty, let message = json["message"] as? String {
-                errors.append(NetworkError(message: message, code: isNotFound ? 404 : -1000))
+                errors.append(NetworkError(message: message, url: self.urlString, code: isNotFound ? 404 : -1000))
             }
             return errors
         }))
         errorHandler?.observe(signal: serverErrorSignal.combineLatest(with: jsonSignal)
-            .map({ (error, jsonAny) -> (NSError, [String]) in
+            .map({ (error, jsonAny) -> (NetworkError, [String]) in
                 let json = jsonAny as? [String: Any]
                 var errors = [String]()
                 if let jsonErrors = json?["errors"] as? [[String: Any]] {
@@ -77,7 +77,7 @@ public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
                 if let message = json?["message"] as? String {
                     errors.append(message)
                 }
-                return (error, errors)
+                return (NetworkError(message: error.localizedDescription, url: (error.userInfo["url"] as? String) ?? "", code: error.code), errors)
             }))
     }
 }

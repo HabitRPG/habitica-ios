@@ -667,10 +667,9 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.height = { 68 }
                     cell.imageView?.cornerRadius = 12
                     cell.imageView?.contentMode = .scaleAspectFit
-                    cell.imageView?.image = UIImage(named: filename)?.withAlignmentRectInsets(UIEdgeInsets(all: 4))
+                    cell.imageView?.image = UIImage(named: filename)
                     
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.contentView.layoutMargins = UIEdgeInsets(top: 4, left: cell.layoutMargins.left, bottom: 4, right: cell.layoutMargins.right)
                 }
             })
             row.onChange({[weak self] (row) in
