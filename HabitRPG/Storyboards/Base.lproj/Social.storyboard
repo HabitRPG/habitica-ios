@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -156,7 +156,7 @@
             <objects>
                 <navigationController id="hQu-VZ-lTI" customClass="ThemedNavigationController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="54r-sm-b3w">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -239,7 +239,7 @@
             <objects>
                 <navigationController storyboardIdentifier="InboxNavigationViewController" id="07o-eS-nNQ" customClass="ThemedNavigationController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JdR-7G-nlt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -251,101 +251,11 @@
             <point key="canvasLocation" x="1019" y="15"/>
         </scene>
         <!--Themed Navigation Controller-->
-        <scene sceneID="o2G-h7-0FB">
-            <objects>
-                <navigationController storyboardIdentifier="TavernNavigationViewController" id="dMb-sr-5MN" customClass="ThemedNavigationController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2be-FU-1J8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="8vB-EU-9bR" kind="relationship" relationship="rootViewController" id="SNu-Qj-AEh"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Oso-UN-13a" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="478" y="1171"/>
-        </scene>
-        <!--Tavern-->
-        <scene sceneID="ftE-7c-ajJ">
-            <objects>
-                <viewController restorationIdentifier="TavernViewController" storyboardIdentifier="TavernViewController" id="8vB-EU-9bR" customClass="TavernViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="paG-hx-3Ye"/>
-                        <viewControllerLayoutGuide type="bottom" id="eRx-oc-xPb"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="4oi-b9-9eU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7j-hO-FPY">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
-                                <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Isx-rl-3AG">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
-                                        <connections>
-                                            <segue destination="i00-35-H2A" kind="embed" id="wbb-sI-ONI"/>
-                                        </connections>
-                                    </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZAU-SD-c3A">
-                                        <rect key="frame" x="375" y="0.0" width="375" height="623"/>
-                                        <connections>
-                                            <segue destination="GpJ-zx-fw9" kind="embed" id="Cwl-t5-j4W"/>
-                                        </connections>
-                                    </containerView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rjJ-h8-ULm">
-                                        <rect key="frame" x="375" y="0.0" width="1" height="623"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="1" id="Rr8-lo-u8c"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Isx-rl-3AG" firstAttribute="width" secondItem="c7j-hO-FPY" secondAttribute="width" id="0wA-Yp-BWG"/>
-                                    <constraint firstItem="ZAU-SD-c3A" firstAttribute="width" secondItem="c7j-hO-FPY" secondAttribute="width" id="3eZ-K5-9nd"/>
-                                    <constraint firstItem="rjJ-h8-ULm" firstAttribute="leading" secondItem="Isx-rl-3AG" secondAttribute="trailing" id="FC9-Zx-Erh"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZAU-SD-c3A" secondAttribute="bottom" id="Kjh-2q-SZA"/>
-                                    <constraint firstItem="Isx-rl-3AG" firstAttribute="top" secondItem="c7j-hO-FPY" secondAttribute="top" id="QOI-VT-Pqh"/>
-                                    <constraint firstItem="ZAU-SD-c3A" firstAttribute="leading" secondItem="Isx-rl-3AG" secondAttribute="trailing" id="Shz-9a-F6Q"/>
-                                    <constraint firstItem="Isx-rl-3AG" firstAttribute="height" secondItem="c7j-hO-FPY" secondAttribute="height" id="Vvk-gV-0OB"/>
-                                    <constraint firstItem="ZAU-SD-c3A" firstAttribute="height" secondItem="c7j-hO-FPY" secondAttribute="height" id="eht-9V-vUL"/>
-                                    <constraint firstItem="rjJ-h8-ULm" firstAttribute="top" secondItem="Isx-rl-3AG" secondAttribute="top" id="hnV-hE-uaE"/>
-                                    <constraint firstItem="Isx-rl-3AG" firstAttribute="leading" secondItem="c7j-hO-FPY" secondAttribute="leading" id="nzI-m9-IdN"/>
-                                    <constraint firstAttribute="bottom" secondItem="Isx-rl-3AG" secondAttribute="bottom" id="oau-I7-KHL"/>
-                                    <constraint firstItem="rjJ-h8-ULm" firstAttribute="bottom" secondItem="Isx-rl-3AG" secondAttribute="bottom" id="plu-p2-1fB"/>
-                                    <constraint firstItem="ZAU-SD-c3A" firstAttribute="top" secondItem="c7j-hO-FPY" secondAttribute="top" id="qhO-CF-qUg"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZAU-SD-c3A" secondAttribute="trailing" id="uww-Pg-cEn"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="c7j-hO-FPY" secondAttribute="trailing" id="8fB-nU-D9M"/>
-                            <constraint firstItem="c7j-hO-FPY" firstAttribute="top" secondItem="paG-hx-3Ye" secondAttribute="bottom" id="McH-WV-DmV"/>
-                            <constraint firstItem="c7j-hO-FPY" firstAttribute="leading" secondItem="4oi-b9-9eU" secondAttribute="leading" id="gWE-7v-4Z2"/>
-                            <constraint firstItem="eRx-oc-xPb" firstAttribute="top" secondItem="c7j-hO-FPY" secondAttribute="bottom" id="xW2-cW-9bM"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Tavern" id="Iy2-WC-FJM"/>
-                    <connections>
-                        <outlet property="leftViewWidthConstraint" destination="0wA-Yp-BWG" id="Frh-9A-6i7"/>
-                        <outlet property="rightViewWidthConstraint" destination="3eZ-K5-9nd" id="CpM-7R-bAb"/>
-                        <outlet property="scrollView" destination="c7j-hO-FPY" id="YGy-jK-cwf"/>
-                        <outlet property="scrollViewTopConstraint" destination="McH-WV-DmV" id="u8N-De-twR"/>
-                        <outlet property="separatorView" destination="rjJ-h8-ULm" id="NaA-Sx-noI"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rEL-kr-JRF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1228" y="1171"/>
-        </scene>
-        <!--Themed Navigation Controller-->
         <scene sceneID="Ad9-wI-iiJ">
             <objects>
                 <navigationController storyboardIdentifier="PartyNavigationViewController" id="SxV-sR-3AL" customClass="ThemedNavigationController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0Fj-LL-eYa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -365,11 +275,11 @@
                         <viewControllerLayoutGuide type="bottom" id="l2M-YU-7aU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bwZ-qa-gMk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dKe-8b-7wA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FSC-0T-avm">
                                         <rect key="frame" x="0.0" y="-384" width="375" height="400"/>
@@ -898,7 +808,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="ChallengeDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LJL-4h-PRX" customClass="ChallengeDetailsTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mSs-Sh-idc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -922,7 +832,7 @@
                         <viewControllerLayoutGuide type="bottom" id="P6N-Fc-Wb3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Lyy-sF-5bz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -937,7 +847,7 @@
             <objects>
                 <navigationController storyboardIdentifier="UserProfileNavController" id="oLT-m4-I14" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EzW-JX-RHc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -953,7 +863,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="UserProfileViewController" id="MTH-Re-wqo" customClass="UserProfileViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="WTt-7r-yfN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProfileCell" rowHeight="147" id="Dj7-i1-taf">
@@ -1387,16 +1297,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lUA-N8-pND">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F32-IZ-jcu">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <connections>
                                             <segue destination="NAg-B6-gAf" kind="embed" id="LNd-kW-DZX"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oxa-yG-OLf">
-                                        <rect key="frame" x="375" y="0.0" width="375" height="623"/>
+                                        <rect key="frame" x="375" y="0.0" width="375" height="603"/>
                                         <connections>
                                             <segue destination="lxq-H7-XEI" kind="embed" id="9eh-dp-cpO"/>
                                         </connections>
@@ -1512,11 +1422,11 @@
                         <viewControllerLayoutGuide type="bottom" id="jjC-Ag-kKu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0az-3L-YFU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vH0-3y-TsP">
-                                <rect key="frame" x="16" y="56" width="343" height="547"/>
+                                <rect key="frame" x="16" y="56" width="343" height="527"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1550,7 +1460,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="ChallengeTableViewController" automaticallyAdjustsScrollViewInsets="NO" id="BE2-xn-Wwl" customClass="ChallengeTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="28" sectionFooterHeight="28" id="SWx-Y1-cyG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <connections>
@@ -1585,7 +1495,7 @@
             <objects>
                 <navigationController storyboardIdentifier="ChallengeNavigationViewController" id="dON-DT-k7p" customClass="ThemedNavigationController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hf8-3d-Loz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1604,252 +1514,6 @@
             </objects>
             <point key="canvasLocation" x="3685" y="507"/>
         </scene>
-        <!--Tavern Detail View Controller-->
-        <scene sceneID="OLz-hR-cCg">
-            <objects>
-                <viewController id="i00-35-H2A" customClass="TavernDetailViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bYC-qV-h7x"/>
-                        <viewControllerLayoutGuide type="bottom" id="TZb-fU-Xjd"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="npj-FE-ave">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQ3-dk-VGA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LGu-ud-dCr">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1606"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rbl-0s-XZ1" customClass="NPCBannerView" customModule="Habitica" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="200" id="sh7-kN-msq"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="GWg-WU-6ha">
-                                                <rect key="frame" x="0.0" y="200" width="375" height="1406"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="8HR-da-2p2">
-                                                        <rect key="frame" x="16" y="0.0" width="343" height="1406"/>
-                                                        <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ZjB-q3-Y3D" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="116"/>
-                                                                <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kbU-jW-ccN" customClass="CollapsibleTitle" customModule="Habitica" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="World Boss"/>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </view>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tec-cM-iOQ" customClass="QuestProgressView" customModule="Habitica" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="66" width="343" height="50"/>
-                                                                    </view>
-                                                                </subviews>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="string" keyPath="identifier" value="tavernWorldBoss"/>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hLu-EM-YaS" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="128" width="343" height="838"/>
-                                                                <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UW-Ua-O5N" customClass="CollapsibleTitle" customModule="Habitica" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Check into Inn"/>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </view>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x55-Jn-3In" customClass="HabiticaButton" customModule="Habitica" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="66" width="343" height="38"/>
-                                                                        <color key="backgroundColor" red="0.99927479029999999" green="0.65261268620000001" blue="0.14139345289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38" id="DIh-Oy-DR4"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                                        <state key="normal">
-                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </state>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                <real key="value" value="4"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                        <connections>
-                                                                            <action selector="innButtonTapped:" destination="i00-35-H2A" eventType="touchUpInside" id="70Q-4M-KeW"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIu-ci-16d">
-                                                                        <rect key="frame" x="0.0" y="120" width="343" height="718"/>
-                                                                        <string key="text">Need a break? Check into Daniel’s Inn to pause some of Habitica’s more difficult game mechanics:  ∙ Your missed Dailies won't damage you (bosses will still do damage caused by other Party member's missed Dailies) ∙ Your Task streaks and Habit counters will not reset ∙ Bosses won’t do damage for your missed Dailies ∙ Your damage to the Quest boss or found collection items will remain pending until you check out of the Inn</string>
-                                                                        <color key="textColor" red="0.40768876669999998" green="0.3832124174" blue="0.4558907747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                                    </textView>
-                                                                </subviews>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="string" keyPath="identifier" value="tavernInn"/>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="cJ1-Nq-YSk" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="978" width="343" height="246"/>
-                                                                <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="egA-r8-ZMu" customClass="CollapsibleTitle" customModule="Habitica" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Community Guidelines"/>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </view>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PQZ-Md-abl" customClass="HabiticaButton" customModule="Habitica" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="66" width="343" height="38"/>
-                                                                        <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38" id="OyR-Kp-a2h"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                                        <state key="normal" title="View Community Guidelines"/>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                <real key="value" value="4"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                        <connections>
-                                                                            <action selector="guidelinesButtonTapped:" destination="i00-35-H2A" eventType="touchUpInside" id="bvF-Yh-lRI"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nse-Qa-wgK">
-                                                                        <rect key="frame" x="0.0" y="120" width="343" height="126"/>
-                                                                        <string key="text">Habitica tries to create a welcoming environment for users of all ages and backgrounds, especially in public spaces like the Tavern. If you have any questions, please consult our guidelines.</string>
-                                                                        <color key="textColor" red="0.40768876669999998" green="0.3832124174" blue="0.4558907747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                                    </textView>
-                                                                </subviews>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="string" keyPath="identifier" value="tavernGuidelines"/>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Qwk-6P-BZe" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="1236" width="343" height="170"/>
-                                                                <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yha-wF-baf" customClass="CollapsibleTitle" customModule="Habitica" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Helpful Links"/>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </view>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1kC-MI-SIq" customClass="HabiticaButton" customModule="Habitica" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="66" width="343" height="38"/>
-                                                                        <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38" id="aH1-Nc-Ggb"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                                        <state key="normal" title="View FAQ"/>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                <real key="value" value="4"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                        <connections>
-                                                                            <action selector="faqButtonTapped:" destination="i00-35-H2A" eventType="touchUpInside" id="IfW-og-euM"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eyY-8s-QaF">
-                                                                        <rect key="frame" x="0.0" y="120" width="343" height="50"/>
-                                                                        <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2o-0k-TlN" customClass="HabiticaButton" customModule="Habitica" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="38"/>
-                                                                                <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38" id="gdB-Xc-dhK"/>
-                                                                                </constraints>
-                                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                                                <state key="normal" title="Report a Bug"/>
-                                                                                <userDefinedRuntimeAttributes>
-                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                        <real key="value" value="4"/>
-                                                                                    </userDefinedRuntimeAttribute>
-                                                                                </userDefinedRuntimeAttributes>
-                                                                                <connections>
-                                                                                    <action selector="reportBugButtonTapped:" destination="i00-35-H2A" eventType="touchUpInside" id="U82-Nr-CCR"/>
-                                                                                </connections>
-                                                                            </button>
-                                                                        </subviews>
-                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="bottom" secondItem="a2o-0k-TlN" secondAttribute="bottom" constant="12" id="5gj-Qn-IZV"/>
-                                                                            <constraint firstItem="a2o-0k-TlN" firstAttribute="top" secondItem="eyY-8s-QaF" secondAttribute="top" id="Ujg-YZ-xyT"/>
-                                                                            <constraint firstItem="a2o-0k-TlN" firstAttribute="centerX" secondItem="eyY-8s-QaF" secondAttribute="centerX" id="XT8-kD-b5l"/>
-                                                                            <constraint firstItem="a2o-0k-TlN" firstAttribute="leading" secondItem="eyY-8s-QaF" secondAttribute="leading" id="x4v-TZ-MaP"/>
-                                                                        </constraints>
-                                                                    </view>
-                                                                </subviews>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="string" keyPath="identifier" value="tavernLinks"/>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </stackView>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" priority="500" constant="500" id="zzs-0Z-1ad"/>
-                                                        </constraints>
-                                                    </stackView>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="8HR-da-2p2" secondAttribute="trailing" constant="16" id="Fbg-qP-dNY"/>
-                                                    <constraint firstAttribute="bottom" secondItem="8HR-da-2p2" secondAttribute="bottom" id="HJb-Jq-QRq"/>
-                                                    <constraint firstItem="8HR-da-2p2" firstAttribute="top" secondItem="GWg-WU-6ha" secondAttribute="top" id="bbb-kK-ipI"/>
-                                                    <constraint firstItem="8HR-da-2p2" firstAttribute="leading" secondItem="GWg-WU-6ha" secondAttribute="leading" constant="16" id="fMu-Ci-j3Q"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" priority="500" constant="200" id="Hdz-s0-pBe"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="LGu-ud-dCr" secondAttribute="trailing" id="6JA-Fc-EiM"/>
-                                    <constraint firstItem="LGu-ud-dCr" firstAttribute="width" secondItem="XQ3-dk-VGA" secondAttribute="width" id="adK-mQ-noI"/>
-                                    <constraint firstAttribute="bottom" secondItem="LGu-ud-dCr" secondAttribute="bottom" id="n44-hr-OfT"/>
-                                    <constraint firstItem="LGu-ud-dCr" firstAttribute="leading" secondItem="XQ3-dk-VGA" secondAttribute="leading" id="ofk-W7-Ulj"/>
-                                    <constraint firstItem="LGu-ud-dCr" firstAttribute="top" secondItem="XQ3-dk-VGA" secondAttribute="top" id="q5G-7Q-SvH"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="XQ3-dk-VGA" firstAttribute="top" secondItem="npj-FE-ave" secondAttribute="top" id="3Et-PD-mIB"/>
-                            <constraint firstItem="XQ3-dk-VGA" firstAttribute="leading" secondItem="npj-FE-ave" secondAttribute="leading" id="FmV-c7-7cz"/>
-                            <constraint firstAttribute="trailing" secondItem="XQ3-dk-VGA" secondAttribute="trailing" id="fKP-iI-YAx"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="XQ3-dk-VGA" secondAttribute="bottom" id="jZE-zJ-4qs"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="faqButton" destination="1kC-MI-SIq" id="z3y-Uc-pTW"/>
-                        <outlet property="guidelinesButton" destination="PQZ-Md-abl" id="bpJ-8d-wH2"/>
-                        <outlet property="guidelinesStackView" destination="cJ1-Nq-YSk" id="aTB-a1-W1w"/>
-                        <outlet property="guidelinesTextView" destination="Nse-Qa-wgK" id="lxe-RP-ATg"/>
-                        <outlet property="innButton" destination="x55-Jn-3In" id="Lxn-Kf-nhq"/>
-                        <outlet property="innStackView" destination="hLu-EM-YaS" id="A51-2t-Zcm"/>
-                        <outlet property="innTextView" destination="EIu-ci-16d" id="S46-hm-jH4"/>
-                        <outlet property="linksStackView" destination="Qwk-6P-BZe" id="rQL-70-Hww"/>
-                        <outlet property="questProgressView" destination="Tec-cM-iOQ" id="UtX-Su-rUP"/>
-                        <outlet property="reportButton" destination="a2o-0k-TlN" id="yyt-ct-XgS"/>
-                        <outlet property="scrollView" destination="XQ3-dk-VGA" id="lPc-jb-eng"/>
-                        <outlet property="tavernHeaderView" destination="Rbl-0s-XZ1" id="1rZ-AP-xCd"/>
-                        <outlet property="worldBossStackView" destination="ZjB-q3-Y3D" id="wAx-1v-P09"/>
-                        <outlet property="worldBossTitleView" destination="kbU-jW-ccN" id="NYL-xG-aeR"/>
-                        <segue destination="qim-an-Lm9" kind="show" identifier="GuidelinesSegue" id="9hs-wq-6bn"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ovy-W7-FUk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4198" y="633"/>
-        </scene>
         <!--Group Chat View Controller-->
         <scene sceneID="lKL-ex-jgh">
             <objects>
@@ -1859,7 +1523,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Sur-1o-ymQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OFX-9b-U2U" customClass="UITableView" customModule="Habitica" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -1884,22 +1548,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMp-6b-m4W">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSR-zm-w5F">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <connections>
                                             <segue destination="J2Y-h9-GJa" kind="embed" id="B9N-0Y-5SV"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZC-9W-gA7">
-                                        <rect key="frame" x="375" y="0.0" width="375" height="623"/>
+                                        <rect key="frame" x="375" y="0.0" width="375" height="603"/>
                                         <connections>
                                             <segue destination="GpJ-zx-fw9" kind="embed" id="gAH-Zh-PJ3"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="76c-yj-biB">
-                                        <rect key="frame" x="375" y="0.0" width="1" height="623"/>
+                                        <rect key="frame" x="375" y="0.0" width="1" height="603"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="Dgq-2u-kko"/>
@@ -1908,6 +1572,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="hSR-zm-w5F" secondAttribute="bottom" id="6S6-kw-Nnd"/>
+                                    <constraint firstItem="ZZC-9W-gA7" firstAttribute="height" secondItem="mMp-6b-m4W" secondAttribute="height" id="6je-Jg-1ro"/>
                                     <constraint firstItem="ZZC-9W-gA7" firstAttribute="top" secondItem="mMp-6b-m4W" secondAttribute="top" id="BFr-X9-TYd"/>
                                     <constraint firstItem="76c-yj-biB" firstAttribute="bottom" secondItem="hSR-zm-w5F" secondAttribute="bottom" id="Mf4-PS-JKj"/>
                                     <constraint firstAttribute="bottom" secondItem="ZZC-9W-gA7" secondAttribute="bottom" id="bKe-ii-d1f"/>
@@ -1923,10 +1588,10 @@
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fUh-bv-IOV">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m1b-sQ-3cM">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="8vw-l0-30Z" customClass="GroupInvitationListView" customModule="Habitica" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
@@ -2119,7 +1784,6 @@
                             </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="ZZC-9W-gA7" firstAttribute="height" secondItem="mMp-6b-m4W" secondAttribute="height" id="6je-Jg-1ro"/>
                             <constraint firstAttribute="trailing" secondItem="fUh-bv-IOV" secondAttribute="trailing" id="Pwb-5d-lS1"/>
                             <constraint firstItem="bsU-ZE-VcS" firstAttribute="top" secondItem="fUh-bv-IOV" secondAttribute="bottom" id="Veg-MO-yC9"/>
                             <constraint firstItem="mMp-6b-m4W" firstAttribute="leading" secondItem="eVm-iI-MJ2" secondAttribute="leading" id="e34-dg-DqT"/>
@@ -2614,11 +2278,11 @@
                         <viewControllerLayoutGuide type="bottom" id="362-wL-UUI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CnB-FN-klm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GuM-7B-owL">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Q2f-jL-AaR">
                                         <rect key="frame" x="16" y="16" width="343" height="921"/>
@@ -2999,18 +2663,6 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="1kC-MI-SIq">
-            <size key="intrinsicContentSize" width="73" height="33"/>
-        </designable>
-        <designable name="PQZ-Md-abl">
-            <size key="intrinsicContentSize" width="213" height="33"/>
-        </designable>
-        <designable name="a2o-0k-TlN">
-            <size key="intrinsicContentSize" width="100" height="33"/>
-        </designable>
-        <designable name="x55-Jn-3In">
-            <size key="intrinsicContentSize" width="30" height="33"/>
-        </designable>
         <designable name="ydi-2t-xFg">
             <size key="intrinsicContentSize" width="287" height="20"/>
         </designable>
@@ -3020,7 +2672,6 @@
         <segue reference="71z-UW-WBb"/>
         <segue reference="gAH-Zh-PJ3"/>
         <segue reference="lgk-R4-zXr"/>
-        <segue reference="9hs-wq-6bn"/>
         <segue reference="jXp-j5-lvy"/>
         <segue reference="ypV-Mu-tgU"/>
         <segue reference="wif-V9-Mcy"/>
@@ -3039,7 +2690,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

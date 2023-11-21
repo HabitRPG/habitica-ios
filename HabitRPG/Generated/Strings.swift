@@ -1036,8 +1036,6 @@ public enum L10n {
   public static var tapToShow: String { return L10n.tr("Mainstrings", "tap_to_show") }
   /// Task History (Very Experimental)
   public static var taskHistory: String { return L10n.tr("Mainstrings", "task_history") }
-  /// Welcome to the Inn! Pull up a chair to chat, or take a break from your tasks.
-  public static var tavernIntroHeader: String { return L10n.tr("Mainstrings", "tavern_intro_header") }
   /// Teleporting to Habitica
   public static var teleportingHabitica: String { return L10n.tr("Mainstrings", "teleporting_habitica") }
   /// Thanks for your support!
@@ -1805,8 +1803,6 @@ public enum L10n {
     public static var seasonalShop: String { return L10n.tr("Mainstrings", "locations.seasonal_shop") }
     /// Stable
     public static var stable: String { return L10n.tr("Mainstrings", "locations.stable") }
-    /// Tavern
-    public static var tavern: String { return L10n.tr("Mainstrings", "locations.tavern") }
     /// Time Travelers Shop
     public static var timeTravelersShop: String { return L10n.tr("Mainstrings", "locations.time_travelers_shop") }
   }
@@ -2918,8 +2914,6 @@ public enum L10n {
     public static var spells: String { return L10n.tr("Mainstrings", "titles.spells") }
     /// Stats
     public static var stats: String { return L10n.tr("Mainstrings", "titles.stats") }
-    /// Tavern
-    public static var tavern: String { return L10n.tr("Mainstrings", "titles.tavern") }
   }
 
   public enum Tutorials {

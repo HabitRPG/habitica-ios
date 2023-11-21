@@ -299,7 +299,6 @@
                         <segue destination="9I8-N9-2zE" kind="presentation" identifier="InboxSegue" modalPresentationStyle="formSheet" id="aQi-0b-fOp"/>
                         <segue destination="xpj-mf-wcH" kind="showDetail" identifier="SpellsSegue" id="vLi-wq-h9L"/>
                         <segue destination="utX-nh-KXf" kind="showDetail" identifier="StatsSegue" id="sHV-Iv-bE3"/>
-                        <segue destination="d6K-oQ-bcc" kind="showDetail" identifier="TavernSegue" id="ciX-UD-p4n"/>
                         <segue destination="oL1-I7-dz0" kind="showDetail" identifier="PartySegue" id="ynU-31-3VC"/>
                         <segue destination="id8-rI-GMs" kind="showDetail" identifier="GuildsSegue" id="skH-kj-2aP"/>
                         <segue destination="Z6b-ez-Mmy" kind="showDetail" identifier="ChallengesSegue" id="X0Z-Mc-n0d"/>
@@ -343,7 +342,7 @@
                 <viewControllerPlaceholder storyboardName="Social" referencedIdentifier="UserProfileNavController" id="x5n-fS-qd9" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="037-zv-TYe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2638" y="1409"/>
+            <point key="canvasLocation" x="2777" y="1359"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="Whw-Wx-8Rx">
@@ -1006,16 +1005,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PMb-g7-7qe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3934" y="1353"/>
-        </scene>
-        <!--TavernViewController-->
-        <scene sceneID="WTY-AZ-QZE">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Social" referencedIdentifier="TavernViewController" id="d6K-oQ-bcc" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="gce-1B-Bkl"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tpk-jO-hFW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3891" y="1395"/>
         </scene>
         <!--PartyViewController-->
         <scene sceneID="zz6-4H-FIH">

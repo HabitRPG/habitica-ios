@@ -86,10 +86,7 @@ class SplitSocialViewController: HabiticaSplitViewController {
         if let groupID = self.groupID {
             disposable.inner.add(socialRepository.retrieveGroup(groupID: groupID)
                     .flatMap(.latest) {[weak self] _ -> Signal<[MemberProtocol]?, Never> in
-                        if  groupID != Constants.TAVERN_ID {
-                            return self?.socialRepository.retrieveGroupMembers(groupID: groupID) ?? Signal.empty
-                        }
-                        return Signal.empty
+                        return self?.socialRepository.retrieveGroupMembers(groupID: groupID) ?? Signal.empty
                      }
                     .observeCompleted {})
         }

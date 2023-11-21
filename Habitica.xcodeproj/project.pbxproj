@@ -59,7 +59,6 @@
 		290C302C206BACBB0066AF5B /* SpellsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */; };
 		290E56E32A1FAB14000269C0 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290E56E22A1FAB14000269C0 /* LoadingButton.swift */; };
 		290FF89427DA5BA800F1DE45 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290FF89327DA5BA800F1DE45 /* ItemListViewController.swift */; };
-		290FF89627DA626300F1DE45 /* TavernTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290FF89527DA626300F1DE45 /* TavernTests.swift */; };
 		290FF89827DA67F700F1DE45 /* StableOverviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290FF89727DA67F700F1DE45 /* StableOverviewTests.swift */; };
 		290FF89A27DB41FF00F1DE45 /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290FF89927DB41FF00F1DE45 /* XCUIElement.swift */; };
 		290FF89C27DB509A00F1DE45 /* PetDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290FF89B27DB509A00F1DE45 /* PetDetailTests.swift */; };
@@ -422,8 +421,6 @@
 		29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29E16310200E5FEA00685640 /* QuestProgressView.xib */; };
 		29E16313200E619400685640 /* QuestProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E16312200E619400685640 /* QuestProgressView.swift */; };
 		29E16315200E629800685640 /* QuestProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E16314200E629800685640 /* QuestProgressBarView.swift */; };
-		29E1631B200E84AC00685640 /* TavernViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1631A200E84AC00685640 /* TavernViewController.swift */; };
-		29E1631D200F62C100685640 /* TavernDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1631C200F62C100685640 /* TavernDetailViewController.swift */; };
 		29E1631F200F62CB00685640 /* GroupChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1631E200F62CB00685640 /* GroupChatViewController.swift */; };
 		29E30DE620D935AF00F74ECB /* LevelUpOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E30DE520D935AF00F74ECB /* LevelUpOverlayView.swift */; };
 		29E48F0D22E89DB3005C4B45 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E48F0C22E89DB3005C4B45 /* BadgeView.swift */; };
@@ -735,7 +732,6 @@
 		290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsTableViewDataSource.swift; sourceTree = "<group>"; };
 		290E56E22A1FAB14000269C0 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		290FF89327DA5BA800F1DE45 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
-		290FF89527DA626300F1DE45 /* TavernTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TavernTests.swift; sourceTree = "<group>"; };
 		290FF89727DA67F700F1DE45 /* StableOverviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableOverviewTests.swift; sourceTree = "<group>"; };
 		290FF89927DB41FF00F1DE45 /* XCUIElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIElement.swift; sourceTree = "<group>"; };
 		290FF89B27DB509A00F1DE45 /* PetDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailTests.swift; sourceTree = "<group>"; };
@@ -1085,8 +1081,6 @@
 		29E16310200E5FEA00685640 /* QuestProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestProgressView.xib; sourceTree = "<group>"; };
 		29E16312200E619400685640 /* QuestProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestProgressView.swift; sourceTree = "<group>"; };
 		29E16314200E629800685640 /* QuestProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestProgressBarView.swift; sourceTree = "<group>"; };
-		29E1631A200E84AC00685640 /* TavernViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TavernViewController.swift; sourceTree = "<group>"; };
-		29E1631C200F62C100685640 /* TavernDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TavernDetailViewController.swift; sourceTree = "<group>"; };
 		29E1631E200F62CB00685640 /* GroupChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatViewController.swift; sourceTree = "<group>"; };
 		29E30DE520D935AF00F74ECB /* LevelUpOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpOverlayView.swift; sourceTree = "<group>"; };
 		29E30DE920DA8AFE00F74ECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Mainstrings.strings; sourceTree = "<group>"; };
@@ -1534,7 +1528,6 @@
 		290FF8A427DB632700F1DE45 /* Social */ = {
 			isa = PBXGroup;
 			children = (
-				290FF89527DA626300F1DE45 /* TavernTests.swift */,
 				290FF8A527DB634700F1DE45 /* PartyDetailTests.swift */,
 			);
 			path = Social;
@@ -1886,7 +1879,6 @@
 				29FD8AA1203D7CF60094322E /* Party */,
 				29FD8A9F203D753F0094322E /* SplitSocialViewController.swift */,
 				29E1631E200F62CB00685640 /* GroupChatViewController.swift */,
-				29E16319200E849400685640 /* Tavern */,
 				290B6286207CD6B5007287C4 /* GroupDetailViewController.swift */,
 				29DC5AC620A1E52400993400 /* QuestDetailViewController.swift */,
 				29DC5ACC20A321C900993400 /* GroupFormViewController.swift */,
@@ -1897,15 +1889,6 @@
 				29706C9727D66C77006EC139 /* MessagesViewController.swift */,
 			);
 			path = Social;
-			sourceTree = "<group>";
-		};
-		29E16319200E849400685640 /* Tavern */ = {
-			isa = PBXGroup;
-			children = (
-				29E1631A200E84AC00685640 /* TavernViewController.swift */,
-				29E1631C200F62C100685640 /* TavernDetailViewController.swift */,
-			);
-			path = Tavern;
 			sourceTree = "<group>";
 		};
 		29F177F72AB85D39008B8F0C /* Stable */ = {
@@ -3243,7 +3226,6 @@
 				290FF89A27DB41FF00F1DE45 /* XCUIElement.swift in Sources */,
 				290FF8B827DF6AB800F1DE45 /* CustomizationDetailTests.swift in Sources */,
 				290FF89827DA67F700F1DE45 /* StableOverviewTests.swift in Sources */,
-				290FF89627DA626300F1DE45 /* TavernTests.swift in Sources */,
 				290FF89C27DB509A00F1DE45 /* PetDetailTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3407,7 +3389,6 @@
 				29FEB278202B491600EA245A /* Avatar.swift in Sources */,
 				2953D84728B7790800DC456E /* HabiticaBottomSheet.swift in Sources */,
 				299328A924E57858003BCE0C /* FAQDetailViewController.swift in Sources */,
-				29E1631D200F62C100685640 /* TavernDetailViewController.swift in Sources */,
 				29706C9427D64516006EC139 /* main.swift in Sources */,
 				291DE9762099D85D0073182A /* MemberListView.swift in Sources */,
 				D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */,
@@ -3424,7 +3405,6 @@
 				29E30DE620D935AF00F74ECB /* LevelUpOverlayView.swift in Sources */,
 				29038F2126F33CDB005CA2D3 /* DueDateFormView.swift in Sources */,
 				49DCB7B61F3F64B40079FDD0 /* HRPGShopModalBgView.swift in Sources */,
-				29E1631B200E84AC00685640 /* TavernViewController.swift in Sources */,
 				29F272A62A404F8600F3B50F /* SendPartyInviteViewController.swift in Sources */,
 				2909D42C2726AA2500FF2B29 /* TrackableScrollView.swift in Sources */,
 				291448822087A13100F3A6B5 /* EquipmentDetailViewController.swift in Sources */,

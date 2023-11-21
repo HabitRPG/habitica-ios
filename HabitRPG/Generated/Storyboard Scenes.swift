@@ -145,10 +145,6 @@ internal enum StoryboardScene {
 
     internal static let questDetailViewController = SceneType<Habitica.QuestDetailViewController>(storyboard: Social.self, identifier: "QuestDetailViewController")
 
-    internal static let tavernNavigationViewController = SceneType<Habitica.ThemedNavigationController>(storyboard: Social.self, identifier: "TavernNavigationViewController")
-
-    internal static let tavernViewController = SceneType<Habitica.TavernViewController>(storyboard: Social.self, identifier: "TavernViewController")
-
     internal static let userProfileNavController = SceneType<UIKit.UINavigationController>(storyboard: Social.self, identifier: "UserProfileNavController")
 
     internal static let userProfileViewController = SceneType<Habitica.UserProfileViewController>(storyboard: Social.self, identifier: "UserProfileViewController")

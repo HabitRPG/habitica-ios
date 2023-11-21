@@ -35,7 +35,6 @@
 "titles.pets_and_mounts" = "Pets & Mounts";
 "titles.pets" = "Pets";
 "titles.mounts" = "Mounts";
-"titles.tavern" = "Tavern";
 "titles.party" = "Party";
 "titles.guilds" = "Guilds";
 "titles.guild" = "Guild";
@@ -762,7 +761,6 @@
 "keep_tasks" = "Keep Tasks";
 "delete_tasks" = "Delete Tasks";
 "locations.market" = "Market";
-"locations.tavern" = "Tavern";
 "locations.quest_shop" = "Quest Shop";
 "locations.seasonal_shop" = "Seasonal Shop";
 "locations.time_travelers_shop" = "Time Travelers Shop";
@@ -779,7 +777,6 @@
 "write_a_message" = "Write a Message";
 "write_message" = "Write Message";
 "write_to" = "Write to %@";
-"tavern_intro_header" = "Welcome to the Inn! Pull up a chair to chat, or take a break from your tasks.";
 "resume_damage" = "Resume Damage";
 "pause_damage" = "Pause Damage";
 "whats_world_boss" = "What's a World Boss?";
