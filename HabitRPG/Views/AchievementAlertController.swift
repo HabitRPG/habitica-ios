@@ -119,7 +119,6 @@ class AchievementAlertController: HabiticaAlertController {
              HabiticaNotificationType.achievementDustDevil.rawValue,
              HabiticaNotificationType.achievementAridAuthority.rawValue,
              HabiticaNotificationType.achievementMonsterMagus.rawValue,
-             HabiticaNotificationType.achievementMonsterMagus.rawValue,
              HabiticaNotificationType.achievementUndeadUndertaker.rawValue,
              HabiticaNotificationType.achievementPrimedForPainting.rawValue,
              HabiticaNotificationType.achievementPearlyPro.rawValue,
