@@ -1569,7 +1569,6 @@
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="gfN-10-DvM" firstAttribute="top" secondItem="Ogx-Ep-izu" secondAttribute="top" id="1Jw-ns-flV"/>
                                                 <constraint firstAttribute="height" constant="20" id="Cbm-wP-dGn"/>
