@@ -18,33 +18,9 @@
                     <view key="view" contentMode="scaleToFill" id="F88-NI-vdf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confetti_tiled" translatesAutoresizingMaskIntoConstraints="NO" id="uxj-i6-Ftu">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="tintColor" red="0.79943448309999998" green="0.38318526739999997" blue="0.97967308760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </imageView>
-                            <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="GeH-AC-vCO">
-                                <rect key="frame" x="141.5" y="423" width="37" height="37"/>
-                            </activityIndicatorView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_logo" translatesAutoresizingMaskIntoConstraints="NO" id="56g-ur-5TX">
-                                <rect key="frame" x="34.5" y="208" width="251" height="191"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" red="0.46390098330000001" green="0.22368210550000001" blue="0.92845708130000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="GeH-AC-vCO" firstAttribute="centerX" secondItem="F88-NI-vdf" secondAttribute="centerX" id="0QI-y6-UK2"/>
-                            <constraint firstItem="uxj-i6-Ftu" firstAttribute="top" secondItem="F88-NI-vdf" secondAttribute="firstBaseline" id="4DM-dX-9we"/>
-                            <constraint firstItem="56g-ur-5TX" firstAttribute="top" secondItem="F88-NI-vdf" secondAttribute="top" constant="208" id="MD5-jc-OWp"/>
-                            <constraint firstItem="GeH-AC-vCO" firstAttribute="top" secondItem="56g-ur-5TX" secondAttribute="bottom" constant="24" id="fV1-Tx-oMR"/>
-                            <constraint firstItem="uxj-i6-Ftu" firstAttribute="leading" secondItem="F88-NI-vdf" secondAttribute="leading" id="lIh-0D-WrD"/>
-                            <constraint firstAttribute="bottom" secondItem="uxj-i6-Ftu" secondAttribute="bottom" id="rPN-Th-N0m"/>
-                            <constraint firstItem="56g-ur-5TX" firstAttribute="centerX" secondItem="F88-NI-vdf" secondAttribute="centerX" id="xAh-y4-aLN"/>
-                            <constraint firstAttribute="trailing" secondItem="uxj-i6-Ftu" secondAttribute="trailing" id="ziV-Pg-vjJ"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="GeH-AC-vCO" id="sHf-iF-90Q"/>
-                        <outlet property="logoView" destination="56g-ur-5TX" id="9eB-RC-kUM"/>
                         <segue destination="qul-kf-4Gi" kind="presentation" identifier="InitialSegue" customClass="MainVCSelectionSegue" customModule="Habitica" customModuleProvider="target" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Z2J-RM-J8b"/>
                         <segue destination="v9W-i7-og5" kind="presentation" identifier="SetupSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Zxx-A1-MXZ"/>
                         <segue destination="8LU-Vl-QLq" kind="presentation" identifier="IntroSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Mt8-5R-p1l"/>
@@ -1269,7 +1245,6 @@
         <image name="category_hair" width="38" height="37"/>
         <image name="category_selection_caret" width="20" height="8"/>
         <image name="category_skin" width="38" height="37"/>
-        <image name="confetti_tiled" width="254" height="548.5"/>
         <image name="creator_active_pixel_arrow_left" width="40" height="40"/>
         <image name="creator_active_pixel_arrow_right" width="40" height="40"/>
         <image name="creator_hills_bg" width="219" height="105"/>
@@ -1277,7 +1252,6 @@
         <image name="indicatorDiamondSelected" width="24" height="24"/>
         <image name="indicatorDiamondUnselected" width="24" height="24"/>
         <image name="justin_textbox" width="48" height="63"/>
-        <image name="launch_logo" width="251" height="191"/>
         <image name="login_apple" width="50" height="50"/>
         <image name="login_email" width="20" height="20"/>
         <image name="login_google" width="50" height="50"/>

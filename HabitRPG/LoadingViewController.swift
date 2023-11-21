@@ -9,17 +9,45 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
+import SwiftUI
 
-class LoadingViewController: UIViewController {
+private class LoadingViewModel: ObservableObject {
+    @Published var showProgress = false
+}
+
+struct LoadingPage: View {
+    @ObservedObject fileprivate var viewModel: LoadingViewModel
+    
+    var body: some View {
+        ZStack(alignment: .top) {
+            Image(uiImage: Asset.confettiTiled.image).resizable(resizingMode: .tile).foregroundColor(Color(hexadecimal: "CC62FA")).frame(maxWidth: .infinity, maxHeight: .infinity)
+            VStack(spacing: 24) {
+                Image(uiImage: Asset.launchLogo.image)
+                ZStack {
+                    Circle().fill().foregroundColor(Color(hexadecimal: "4F2A93").opacity(0.3))
+                    ProgressView().habiticaProgressStyle().padding(12)
+                }.frame(width: 56, height: 56).opacity(viewModel.showProgress ? 1.0 : 0.0)
+            }.padding(.top, 208)
+        }
+        .background(Color(hexadecimal: "7639ED"))
+        .ignoresSafeArea()
+    }
+}
+
+class LoadingViewController: UIHostingController<LoadingPage> {
     
     @objc var loadingFinishedAction: (() -> Void)?
     
     @IBOutlet weak var logoView: UIImageView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var userRepository: UserRepository?
     private var configRepository = ConfigRepository.shared
     private let disposable = CompositeDisposable()
+    private let viewModel = LoadingViewModel()
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder, rootView: LoadingPage(viewModel: viewModel))
+    }
     
     private var wasDismissed = false
     
@@ -59,7 +87,7 @@ class LoadingViewController: UIViewController {
         }
         if AuthenticationManager.shared.hasAuthentication() {
             if let repository = userRepository, repository.hasUserData() == false {
-                showLoadingIndicator()
+                viewModel.showProgress = true
             } else {
                 segueForLoggedInUser()
             }
@@ -107,13 +135,6 @@ class LoadingViewController: UIViewController {
             perform(segue: StoryboardSegue.Intro.setupSegue)
         } else {
             perform(segue: StoryboardSegue.Intro.initialSegue)
-        }
-    }
-    
-    private func showLoadingIndicator() {
-        activityIndicator.startAnimating()
-        UIView.animate(withDuration: 0.3) {
-            self.activityIndicator.alpha = 1.0
         }
     }
     

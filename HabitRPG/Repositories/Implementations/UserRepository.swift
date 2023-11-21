@@ -312,7 +312,18 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     func revive() -> Signal<UserProtocol?, Never> {
         let call = ReviveUserCall()
         
-        return call.objectSignal.flatMap(.latest, {[weak self] (_) in
+        return call.objectSignal
+            .on(value: { user in
+                self.localRepository.getUser(self.currentUserId ?? "").take(first: 1).on(value: { currentUser in
+                    if let brokenItem = user?.items?.gear?.owned.first(where: { equipment in
+                        equipment.isOwned == false && currentUser.items?.gear?.owned.contains(where: { $0.key == equipment.key && $0.isOwned == true }) == true
+                    }) {
+                        ToastManager.show(text: "Your \(brokenItem.key ?? "") broke", color: .black)
+                    }
+                }).start()
+            })
+            .flatMap(.latest, {[weak self] (_) in
+                
             return self?.retrieveUser() ?? Signal.empty
         })
     }
