@@ -46,7 +46,6 @@ class EquipmentCell: UITableViewCell {
     }
     
     func configure(_ gear: GearProtocol) {
-        twoHandedView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         gearImageView.setImagewith(name: "shop_\(gear.key ?? "")")
         titleLabel.text = gear.text
         descriptionlabel.text = gear.notes
