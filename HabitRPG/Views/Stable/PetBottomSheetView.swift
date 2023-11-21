@@ -60,7 +60,7 @@ struct PetBottomSheetView: View, Dismissable {
                 HStack(spacing: 16) {
                     Button(action: {
                         dismisser.dismiss?()
-                        inventoryRepository.feed(pet: pet.key ?? "", food: "Saddle").observeCompleted {}
+                        inventoryRepository.feed(pet: pet, food: "Saddle").observeCompleted {}
                     }, label: {
                         VStack {
                             if isUsingSaddle {

@@ -71,15 +71,15 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         refresh()
     }
     
-    private var promptedSub = false
+    private var isSubscribed: Bool?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if !promptedSub {
+        if isSubscribed == nil {
             userRepository.getUser().take(first: 1).on(value: { user in
-                self.promptedSub = true
-                if !user.isSubscribed && user.purchased?.subscriptionPlan?.consecutive?.hourglasses == 0 {
+                self.isSubscribed = user.isSubscribed
+                if self.shopIdentifier == "timeTravelersShop" && !user.isSubscribed && user.purchased?.subscriptionPlan?.consecutive?.hourglasses == 0 {
                     SubscriptionModalViewController(presentationPoint: .timetravelers).show()
                 }
             }).start()
@@ -134,6 +134,11 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
     }
     
     func didSelectItem(_ item: InAppRewardProtocol?) {
+        if item?.key == "gem" && isSubscribed == false {
+            let sheet = SubscriptionModalViewController(presentationPoint: .gemForGold)
+            sheet.show()
+            return
+        }
         let viewController = StoryboardScene.BuyModal.hrpgBuyItemModalViewController.instantiate()
         viewController.reward = item
         viewController.shopIdentifier = shopIdentifier

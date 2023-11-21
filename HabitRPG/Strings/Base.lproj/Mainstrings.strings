@@ -456,6 +456,7 @@
 "stable.use_saddle" = "Use Saddle";
 "stable.color" = "Color";
 "stable.type" = "Type";
+"stable.evolved_pet" = "You have tamed %s, let's go for a ride!";
 "equip" = "Equip";
 "unequip" = "Unequip";
 "equipped_x" = "You Equipped %s";

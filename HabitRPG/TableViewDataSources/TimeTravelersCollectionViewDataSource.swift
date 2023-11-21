@@ -11,7 +11,7 @@ import Habitica_Models
 
 class TimeTravelersCollectionViewDataSource: ShopCollectionViewDataSource {
     
-    override func loadCategories(_ categories: [ShopCategoryProtocol], isSubscribed: Bool) {
+    override func loadCategories(_ categories: [ShopCategoryProtocol]) {
         sections.removeAll()
         for category in categories {
             for item in category.items {

@@ -72,7 +72,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             if sectionCount >= 2 {
                 self?.sections.removeLast(sectionCount - 1)
             }
-            self?.loadCategories(shop?.categories ?? [], isSubscribed: user.isSubscribed)
+            self?.loadCategories(shop?.categories ?? [])
             self?.delegate?.updateShopHeader(shop: shop)
             
             self?.user = user
@@ -109,15 +109,10 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         }
     }
     
-    func loadCategories(_ categories: [ShopCategoryProtocol], isSubscribed: Bool) {
+    func loadCategories(_ categories: [ShopCategoryProtocol]) {
         for category in categories {
             let newSection = ItemSection<InAppRewardProtocol>(title: category.text)
-            newSection.items = category.items.filter({ (inAppReward) -> Bool in
-                if inAppReward.isSubscriberItem {
-                    return isSubscribed
-                }
-                return true
-            })
+            newSection.items = category.items
             sections.append(newSection)
         }
         collectionView?.reloadData()

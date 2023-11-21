@@ -247,11 +247,11 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     }
     
     func feed(pet: PetProtocol, food: FoodProtocol) -> Signal<HabiticaResponse<Int>?, Never> {
-        feed(pet: pet.key ?? "", food: food.key ?? "")
+        feed(pet: pet, food: food.key ?? "")
     }
     
-    func feed(pet: String, food: String) -> Signal<HabiticaResponse<Int>?, Never> {
-        let call = FeedPetCall(pet: pet, food: food)
+    func feed(pet: PetProtocol, food: String) -> Signal<HabiticaResponse<Int>?, Never> {
+        let call = FeedPetCall(pet: pet.key ?? "", food: food)
         
         if food == "Saddle" {
             call.httpResponseSignal.observeValues { response in
@@ -268,11 +268,23 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         
         return call.habiticaResponseSignal.on(value: {[weak self] response in
             if let message = response?.message {
-                let toastView = ToastView(title: message, background: .green, delay: 1.0)
-                ToastManager.show(toast: toastView)
+                let alert = ImageOverlayView(imageName: "stable_Mount_Icon_\(pet.key ?? "")", title: L10n.Stable.evolvedPet(pet.text ?? ""))
+                alert.addAction(title: L10n.onwards, isMainAction: true)
+                alert.addAction(title: L10n.equip) { _ in
+                    self?.equip(type: "mount", key: pet.key ?? "").observeCompleted {}
+                }
+                alert.addAction(title: L10n.share) { _ in
+                    var items: [Any] = [
+                    ]
+                    if let image = alert.image {
+                        items.insert(image, at: 0)
+                    }
+                    SharingManager.share(identifier: "raisedPet", items: items, presentingViewController: nil, sourceView: nil)
+                }
+                alert.show()
             }
             if let userID = self?.currentUserId, let trained = response?.data {
-                self?.localRepository.updatePetTrained(userID: userID, key: pet, trained: trained, consumedFood: food)
+                self?.localRepository.updatePetTrained(userID: userID, key: pet.key ?? "", trained: trained, consumedFood: food)
             }
         })
     }

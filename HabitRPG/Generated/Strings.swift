@@ -2362,6 +2362,10 @@ public enum L10n {
   public enum Stable {
     /// Color
     public static var color: String { return L10n.tr("Mainstrings", "stable.color") }
+    /// You have tamed %s, let's go for a ride!
+    public static func evolvedPet(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "stable.evolved_pet", p1)
+    }
     /// Feed
     public static var feed: String { return L10n.tr("Mainstrings", "stable.feed") }
     /// Magic Potion
