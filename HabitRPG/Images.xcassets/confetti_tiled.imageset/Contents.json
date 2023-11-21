@@ -1,0 +1,68 @@
+{
+  "images" : [
+    {
+      "filename" : "confetti_tile.png",
+      "idiom" : "universal",
+      "resizing" : {
+        "cap-insets" : {
+          "bottom" : 0,
+          "left" : 0,
+          "right" : 0,
+          "top" : 0
+        },
+        "center" : {
+          "height" : 549,
+          "mode" : "tile",
+          "width" : 254
+        },
+        "mode" : "9-part"
+      },
+      "scale" : "1x"
+    },
+    {
+      "filename" : "confetti_tile@2x.png",
+      "idiom" : "universal",
+      "resizing" : {
+        "cap-insets" : {
+          "bottom" : 0,
+          "left" : 0,
+          "right" : 0,
+          "top" : 0
+        },
+        "center" : {
+          "height" : 1097,
+          "mode" : "tile",
+          "width" : 508
+        },
+        "mode" : "9-part"
+      },
+      "scale" : "2x"
+    },
+    {
+      "filename" : "confetti_tile@3x.png",
+      "idiom" : "universal",
+      "resizing" : {
+        "cap-insets" : {
+          "bottom" : 0,
+          "left" : 0,
+          "right" : 0,
+          "top" : 0
+        },
+        "center" : {
+          "height" : 1645,
+          "mode" : "tile",
+          "width" : 761
+        },
+        "mode" : "9-part"
+      },
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
+  }
+}
