@@ -103,6 +103,8 @@ class SubscriptionViewModel: ObservableObject {
     let userRepository = UserRepository()
     let inventoryRepository = InventoryRepository()
     
+    var onSubscriptionSuccessful: (() -> Void)?
+    
     @Published var presentationPoint: PresentationPoint?
     @Published var isSubscribed: Bool = false
     @Published var prices = [String: String]()
@@ -180,6 +182,9 @@ class SubscriptionViewModel: ObservableObject {
                         if status {
                             if product.needsFinishTransaction {
                                 SwiftyStoreKit.finishTransaction(product.transaction)
+                                if let action = onSubscriptionSuccessful {
+                                    action()
+                                }
                             }
                         }
                     }
@@ -238,7 +243,7 @@ struct SubscriptionPage: View {
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 0) {
-                Rectangle().fill().foregroundColor(Color(UIColor.purple400)).frame(width: 22, height: 3).cornerRadius(1.5)
+                Rectangle().fill().foregroundColor(Color(UIColor.gray400)).frame(width: 22, height: 3).cornerRadius(1.5)
                     .padding(.top, 10)
                     .padding(.bottom, 16)
                 if let point = viewModel.presentationPoint {
@@ -380,6 +385,9 @@ class SubscriptionModalViewController: HostingBottomSheetController<Subscription
     
     init(presentationPoint: PresentationPoint?) {
         viewModel = SubscriptionViewModel(presentationPoint: presentationPoint)
+        viewModel.onSubscriptionSuccessful = {
+            self.dismiss()
+        }
         super.init(rootView: SubscriptionPage(viewModel: viewModel))
     }
     
@@ -397,17 +405,5 @@ class SubscriptionModalViewController: HostingBottomSheetController<Subscription
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-    }
-    
-    func show() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            if var topController = UIApplication.topViewController() {
-                if let tabBarController = topController.tabBarController {
-                    topController = tabBarController
-                }
-                topController.present(self, animated: true) {
-                }
-            }
-        }
     }
 }
