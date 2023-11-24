@@ -177,12 +177,15 @@ private class ViewModel: ObservableObject {
         userRepository.updateUser(key: "stats.gp", value: gold + 100)
             .flatMap(.latest, { _ in
                 return self.inventoryRepository.buyObject(key: "armoire", quantity: 1, price: 0, text: "", openArmoireView: false)
-            })
-            .observeValues({ response in
+            }).on(value: {response in
                 self.type = response?.armoire?.type
                 self.text = response?.armoire?.dropText ?? ""
                 self.key = response?.armoire?.dropKey ?? ""
                 onCompleted()
+            }).flatMap(.latest, { _ in
+                return self.userRepository.retrieveUser(forced: true)
+            })
+            .observeValues({ _ in
             })
     }
 }

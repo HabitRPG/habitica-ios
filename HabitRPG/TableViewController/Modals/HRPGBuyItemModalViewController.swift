@@ -552,7 +552,11 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         }
                     }
             } else {
-                inventoryRepository.buyObject(key: key, quantity: quantity, price: value, text: text).observeResult({ (result) in
+                inventoryRepository.buyObject(key: key, quantity: quantity, price: value, text: text)
+                    .flatMap(.latest, { _ in
+                        return self.userRepository.retrieveUser(forced: true)
+                    })
+                    .observeResult({ (result) in
                 switch result {
                 case .success:
                     successBlock()
