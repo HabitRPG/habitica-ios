@@ -61,7 +61,7 @@ class FlagViewModel: ObservableObject {
         case .member:
             return L10n.player
         case .challenge:
-            return L10n.Titles.challenges
+            return L10n.challenge
         }
     }
     

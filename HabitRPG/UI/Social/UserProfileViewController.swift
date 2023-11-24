@@ -535,6 +535,7 @@ class UserProfileViewController: BaseTableViewController {
                    giftViewController?.giftRecipientUsername = username ?? userID
                }
     }
+    
     @IBAction func showOverflowMenu(_ sender: Any) {
         let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(menuItems: {
                 if user?.id != userID {

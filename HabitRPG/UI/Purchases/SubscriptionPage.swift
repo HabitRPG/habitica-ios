@@ -182,7 +182,7 @@ class SubscriptionViewModel: ObservableObject {
                         if status {
                             if product.needsFinishTransaction {
                                 SwiftyStoreKit.finishTransaction(product.transaction)
-                                if let action = onSubscriptionSuccessful {
+                                if let action = self.onSubscriptionSuccessful {
                                     action()
                                 }
                             }
@@ -385,10 +385,10 @@ class SubscriptionModalViewController: HostingBottomSheetController<Subscription
     
     init(presentationPoint: PresentationPoint?) {
         viewModel = SubscriptionViewModel(presentationPoint: presentationPoint)
+        super.init(rootView: SubscriptionPage(viewModel: viewModel))
         viewModel.onSubscriptionSuccessful = {
             self.dismiss()
         }
-        super.init(rootView: SubscriptionPage(viewModel: viewModel))
     }
     
     required init?(coder aDecoder: NSCoder) {

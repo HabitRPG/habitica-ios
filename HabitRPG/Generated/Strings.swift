@@ -110,6 +110,8 @@ public enum L10n {
   public static var cancelSubscriptionGroupPlan: String { return L10n.tr("Mainstrings", "cancel_subscription_group_plan") }
   /// Cancelled
   public static var cancelled: String { return L10n.tr("Mainstrings", "cancelled") }
+  /// Challenge
+  public static var challenge: String { return L10n.tr("Mainstrings", "challenge") }
   /// You put themselves to the test by joining a Challenge!
   public static var challengeJoinedDescription: String { return L10n.tr("Mainstrings", "challengeJoinedDescription") }
   /// Joined a Challenge
