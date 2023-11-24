@@ -91,6 +91,9 @@ class RealmChallenge: Object, ChallengeProtocol {
         groupPrivacy = protocolObject.groupPrivacy
         memberCount = protocolObject.memberCount
         createdAt = protocolObject.createdAt
-        categories = protocolObject.categories
+        categories = protocolObject.categories.map({ category in
+            category.id = (protocolObject.id ?? "") + (category.slug ?? "")
+            return category
+        })
     }
 }
