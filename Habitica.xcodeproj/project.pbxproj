@@ -414,6 +414,7 @@
 		29DC5AC920A1F6C100993400 /* QuestParticipantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5AC820A1F6C100993400 /* QuestParticipantView.swift */; };
 		29DC5ACB20A20A6C00993400 /* QuestTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5ACA20A20A6C00993400 /* QuestTitleView.swift */; };
 		29DC5ACD20A321C900993400 /* GroupFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5ACC20A321C900993400 /* GroupFormViewController.swift */; };
+		29DFBEFA2B10AE8E000B554B /* FlagPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DFBEF92B10AE8E000B554B /* FlagPage.swift */; };
 		29E162E01FFBBDDC00685640 /* UsernameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */; };
 		29E162E21FFC21E100685640 /* CustomFontMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162E11FFC21E100685640 /* CustomFontMetrics.swift */; };
 		29E1630B200D050E00685640 /* TopHeaderNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */; };
@@ -1074,6 +1075,7 @@
 		29DC5AC820A1F6C100993400 /* QuestParticipantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestParticipantView.swift; sourceTree = "<group>"; };
 		29DC5ACA20A20A6C00993400 /* QuestTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestTitleView.swift; sourceTree = "<group>"; };
 		29DC5ACC20A321C900993400 /* GroupFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFormViewController.swift; sourceTree = "<group>"; };
+		29DFBEF92B10AE8E000B554B /* FlagPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagPage.swift; sourceTree = "<group>"; };
 		29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameLabel.swift; sourceTree = "<group>"; };
 		29E162E11FFC21E100685640 /* CustomFontMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontMetrics.swift; sourceTree = "<group>"; };
 		29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderNavigationController.swift; sourceTree = "<group>"; };
@@ -1887,6 +1889,7 @@
 				29951A1D2326670500918FC8 /* InboxOverviewViewController.swift */,
 				29951A1F232669C500918FC8 /* InboxChatViewController.swift */,
 				29706C9727D66C77006EC139 /* MessagesViewController.swift */,
+				29DFBEF92B10AE8E000B554B /* FlagPage.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -3446,6 +3449,7 @@
 				2902799720583D82006DACB9 /* LoadingViewController.swift in Sources */,
 				291448642084EE6D00F3A6B5 /* PetDetailViewController.swift in Sources */,
 				29255E4B1F3E236C0094A3E3 /* ToastManager.swift in Sources */,
+				29DFBEFA2B10AE8E000B554B /* FlagPage.swift in Sources */,
 				296CB4EE218C99FD0044A33E /* HabiticaButton.swift in Sources */,
 				29EBDA83232A3ABA006611E3 /* KeychainItem.swift in Sources */,
 				292AA72420FE15090022CC5F /* UIFont-Extensions.swift in Sources */,

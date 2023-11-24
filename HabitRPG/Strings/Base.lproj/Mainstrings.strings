@@ -961,6 +961,11 @@
 "sale_ends_in" = "Sale ends in %@";
 "get_more_habitica" = "Get more out of Habitica";
 "report_x_violation" = "Report @%@ for violation?";
+"report_x" = "Report %@";
+"report_x_question" = "Why are you reporting this %@?";
+"reason_for_report" = "Reason for report";
+"this_will_also_block_x" = "This will also block %@";
+"reporting_disclaimer" = "You should only report a %@ that violates the Community Guidelines and/or Terms of Service.\nSubmitting a false report is a violation of Habitica’s Community Guidelines.";
 "not_getting_drops" = "Not getting the right drops? Check out the Market to buy just the things you need!";
 "streak_achievement_title" = "You earned a streak achievement!";
 "streak_achievement_description" = "You've completed your Daily for 21 days in a row! Amazing job. Don't break the streak!";
@@ -1267,3 +1272,5 @@
 "failed" = "Failed";
 "open_profile" = "Open Profile";
 "share_avatar" = "Share Avatar";
+"message" = "Message";
+"player" = "Player";

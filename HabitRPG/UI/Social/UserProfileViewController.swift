@@ -549,7 +549,13 @@ class UserProfileViewController: BaseTableViewController {
                             self?.showBlockDialog()
                         }
                     }
+                    BottomSheetMenuitem(title: L10n.reportX(L10n.player), style: .destructive) {
+                        if let member = self.member {
+                            FlagViewController(type: .member, offendingItem: member).show()
+                        }
+                    }
                 }
+            BottomSheetMenuSeparator()
             BottomSheetMenuitem(title: L10n.giftGems) {[weak self] in
                 self?.perform(segue: StoryboardSegue.Social.giftGemsSegue)
             }

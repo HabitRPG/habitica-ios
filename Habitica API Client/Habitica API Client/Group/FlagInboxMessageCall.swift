@@ -11,7 +11,8 @@ import Habitica_Models
 import ReactiveSwift
 
 public class FlagInboxMessageCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(message: InboxMessageProtocol) {
-        super.init(httpMethod: .POST, endpoint: "members/flag-private-message/\(message.id ?? "")")
+    public init(message: InboxMessageProtocol, data: [String: Any]) {
+        let json = try? JSONSerialization.data(withJSONObject: data)
+        super.init(httpMethod: .POST, endpoint: "members/flag-private-message/\(message.id ?? "")", postData: json)
     }
 }

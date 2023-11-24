@@ -120,13 +120,23 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
-    func flag(groupID: String, chatMessage: ChatMessageProtocol) -> Signal<EmptyResponseProtocol?, Never> {
-        return FlagChatMessageCall(groupID: groupID, chatMessage: chatMessage)
+    func flag(groupID: String, chatMessage: ChatMessageProtocol, reason: String) -> Signal<EmptyResponseProtocol?, Never> {
+        return FlagChatMessageCall(groupID: groupID, chatMessage: chatMessage, data: ["comment": reason])
             .objectSignal
     }
     
-    func flag(message: InboxMessageProtocol) -> Signal<EmptyResponseProtocol?, Never> {
-        return FlagInboxMessageCall(message: message)
+    func flag(message: InboxMessageProtocol, reason: String) -> Signal<EmptyResponseProtocol?, Never> {
+        return FlagInboxMessageCall(message: message, data: ["comment": reason])
+            .objectSignal
+    }
+    
+    func flag(challengeID: String, reason: String) -> Signal<EmptyResponseProtocol?, Never> {
+        return FlagChallengeCall(challengeID: challengeID, data: ["comment": reason])
+            .objectSignal
+    }
+    
+    func flag(memberID: String, reason: String) -> Signal<EmptyResponseProtocol?, Never> {
+        return FlagMemberCall(memberID: memberID, data: ["comment": reason])
             .objectSignal
     }
     

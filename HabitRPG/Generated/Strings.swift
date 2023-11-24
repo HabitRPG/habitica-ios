@@ -604,6 +604,8 @@ public enum L10n {
   public static var memberGroupPlan: String { return L10n.tr("Mainstrings", "member_group_plan") }
   /// Menu
   public static var menu: String { return L10n.tr("Mainstrings", "menu") }
+  /// Message
+  public static var message: String { return L10n.tr("Mainstrings", "message") }
   /// Moderator
   public static var moderator: String { return L10n.tr("Mainstrings", "moderator") }
   /// Monday
@@ -778,6 +780,8 @@ public enum L10n {
   public static var pin: String { return L10n.tr("Mainstrings", "pin") }
   /// Plain Backgrounds
   public static var plainBackgrounds: String { return L10n.tr("Mainstrings", "plain_backgrounds") }
+  /// Player
+  public static var player: String { return L10n.tr("Mainstrings", "player") }
   /// Plenty of Potions
   public static var plentyOfPotions: String { return L10n.tr("Mainstrings", "plenty_of_potions") }
   /// We’re bringing back 10 of the community’s favorite Magic Hatching Potions. Head over to the Market to fill out your collection!
@@ -836,6 +840,8 @@ public enum L10n {
   public static var rageMeter: String { return L10n.tr("Mainstrings", "rage_meter") }
   /// Randomize
   public static var randomize: String { return L10n.tr("Mainstrings", "randomize") }
+  /// Reason for report
+  public static var reasonForReport: String { return L10n.tr("Mainstrings", "reason_for_report") }
   /// Recipient
   public static var recipient: String { return L10n.tr("Mainstrings", "recipient") }
   /// Reject
@@ -858,9 +864,21 @@ public enum L10n {
   public static var reply: String { return L10n.tr("Mainstrings", "reply") }
   /// Report
   public static var report: String { return L10n.tr("Mainstrings", "report") }
+  /// Report %@
+  public static func reportX(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "report_x", p1)
+  }
+  /// Why are you reporting this %@?
+  public static func reportXQuestion(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "report_x_question", p1)
+  }
   /// Report @%@ for violation?
   public static func reportXViolation(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "report_x_violation", p1)
+  }
+  /// You should only report a %@ that violates the Community Guidelines and/or Terms of Service.\nSubmitting a false report is a violation of Habitica’s Community Guidelines.
+  public static func reportingDisclaimer(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "reporting_disclaimer", p1)
   }
   /// Reset Tutorials
   public static var resetTips: String { return L10n.tr("Mainstrings", "reset_tips") }
@@ -1040,6 +1058,10 @@ public enum L10n {
   public static var teleportingHabitica: String { return L10n.tr("Mainstrings", "teleporting_habitica") }
   /// Thanks for your support!
   public static var thanksForYourSupport: String { return L10n.tr("Mainstrings", "thanks_for_your_support") }
+  /// This will also block %@
+  public static func thisWillAlsoBlockX(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "this_will_also_block_x", p1)
+  }
   /// Thursday
   public static var thursday: String { return L10n.tr("Mainstrings", "thursday") }
   /// Time Travelers Backgrounds
