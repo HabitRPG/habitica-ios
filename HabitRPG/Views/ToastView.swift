@@ -172,8 +172,20 @@ class ToastView: UIView {
     }
 
     func loadOptions() {
-        backgroundView.backgroundColor = options.backgroundColor.getUIColor()
-        backgroundView.layer.borderColor = options.backgroundColor.getUIColor().darker(by: 10).cgColor
+        if options.backgroundColor == .subscriberPerk {
+            let gradientLayer = CAGradientLayer()
+            gradientLayer.colors = [UIColor("#72CFFFFF").cgColor, UIColor("#77F4C7FF").cgColor]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+            gradientLayer.endPoint   = CGPoint(x: 1, y: 0.5)
+            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            backgroundView.backgroundColor = .clear
+            backgroundView.layer.borderWidth = 3
+            titleLabel.textColor = .green1
+            subtitleLabel.textColor = .green1
+        } else {
+            backgroundView.backgroundColor = options.backgroundColor.getUIColor()
+            backgroundView.layer.borderColor = options.backgroundColor.getUIColor().darker(by: 10).cgColor
+        }
 
         topSpacing.constant = 6
         bottomSpacing.constant = 6
@@ -191,6 +203,18 @@ class ToastView: UIView {
         updateConstraints()
         setNeedsLayout()
         layoutIfNeeded()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if options.backgroundColor == .subscriberPerk {
+            let gradient = UIImage.gradientImage(bounds: backgroundView.bounds, colors: [UIColor("#77F4C7"), UIColor("#72CFFF")])
+            backgroundView.layer.borderColor = UIColor(patternImage: gradient).cgColor
+            backgroundView.layer.sublayers?.forEach({ layer in
+                layer.frame = backgroundView.layer.bounds
+            })
+        }
     }
     
     private func configureTitle(_ title: String?) {
