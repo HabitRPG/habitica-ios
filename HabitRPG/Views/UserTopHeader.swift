@@ -293,7 +293,7 @@ class UserTopHeader: UIView, Themeable {
             }
             BottomSheetMenuitem(title: L10n.shareAvatar) {
                 var items: [Any] = [
-                    "Check out my avatar on Habitica!"
+                    "Check out my avatar on Habitica!\nhttps://habitica.com"
                 ]
                 
                 if let user = self.user {

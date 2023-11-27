@@ -92,6 +92,7 @@ struct PetBottomSheetView: View, Dismissable {
             HabiticaButtonUI(label: Text(L10n.share), color: Color(theme.fixedTintColor), size: .compact) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     var items: [Any] = [
+                        "Check out my pet on Habitica!\nhttps://habitica.com"
                     ]
                     items.insert(StableBackgroundView(content: petView.padding(.top, 40), animateFlying: false)
                         .frame(width: 300, height: 124)

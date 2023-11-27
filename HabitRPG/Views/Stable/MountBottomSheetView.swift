@@ -31,6 +31,7 @@ struct MountBottomSheetView: View, Dismissable {
             HabiticaButtonUI(label: Text(L10n.share), color: Color(theme.fixedTintColor), size: .compact) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     var items: [Any] = [
+                        "Check out my mount on Habitica!\nhttps://habitica.com"
                     ]
                     items.insert(StableBackgroundView(content: mountView, animateFlying: false)
                         .frame(width: 300, height: 124)
