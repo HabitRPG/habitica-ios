@@ -87,17 +87,7 @@ class ItemsViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if section == (dataSource.numberOfSections(in: tableView) - 1) {
             let view = Bundle.main.loadNibNamed("ShopAdFooter", owner: self, options: nil)?.last as? UIView
-            let label = view?.viewWithTag(2) as? UILabel
-            let openShopButton = view?.viewWithTag(3) as? UIButton
-            let theme = ThemeService.shared.theme
-            openShopButton?.layer.borderColor = theme.tintColor.cgColor
-            openShopButton?.setTitleColor(theme.tintColor, for: .normal)
-            openShopButton?.layer.borderWidth = 1.0
-            openShopButton?.layer.cornerRadius = 5
-            
-            label?.text = L10n.notGettingDrops
-            label?.textColor = theme.primaryTextColor
-            openShopButton?.addTarget(self, action: #selector(openMarket), for: .touchUpInside)
+            view?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openMarket)))
             return view
         } else {
             return nil

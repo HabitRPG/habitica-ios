@@ -488,10 +488,10 @@
                                 <rect key="frame" x="0.0" y="91" width="428" height="801"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="foh-Y5-euZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="428" height="209.33333333333334"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="428" height="195.33333333333334"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wYP-zx-dbe">
-                                                <rect key="frame" x="26" y="0.0" width="376" height="249.33333333333334"/>
+                                                <rect key="frame" x="26" y="0.0" width="376" height="235.33333333333334"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adventureGuideArt" translatesAutoresizingMaskIntoConstraints="NO" id="Eax-S2-1ke">
                                                         <rect key="frame" x="0.0" y="0.0" width="376" height="46"/>
@@ -516,10 +516,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="WUa-Qe-rtA">
-                                                        <rect key="frame" x="0.0" y="91.333333333333343" width="376" height="50"/>
+                                                        <rect key="frame" x="0.0" y="91.333333333333343" width="376" height="36"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Complete these onboarding tasks and you’ll earn 5 Achievements and 100 Gold once you’re done!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXt-8h-VNr">
-                                                                <rect key="frame" x="12" y="0.0" width="352" height="50"/>
+                                                                <rect key="frame" x="12" y="0.0" width="352" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" priority="500" constant="22" id="bej-Uf-maR"/>
                                                                 </constraints>
@@ -537,14 +537,14 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPg-7O-j94">
-                                                        <rect key="frame" x="0.0" y="149.33333333333334" width="376" height="1"/>
+                                                        <rect key="frame" x="0.0" y="135.33333333333334" width="376" height="1"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="V3u-UV-9kz"/>
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="ul9-Fj-GrY">
-                                                        <rect key="frame" x="0.0" y="158.33333333333334" width="376" height="20"/>
+                                                        <rect key="frame" x="0.0" y="144.33333333333334" width="376" height="20"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGm-VS-bMz">
                                                                 <rect key="frame" x="0.0" y="0.0" width="85" height="20"/>
@@ -564,14 +564,14 @@
                                                         </constraints>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hqi-5C-p2F" customClass="ProgressBar" customModule="Habitica" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="186.33333333333331" width="376" height="5"/>
+                                                        <rect key="frame" x="0.0" y="172.33333333333331" width="376" height="5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="5" id="sHS-eo-snW"/>
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eGa-gL-7SD">
-                                                        <rect key="frame" x="0.0" y="199.33333333333331" width="376" height="50"/>
+                                                        <rect key="frame" x="0.0" y="185.33333333333331" width="376" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="500" constant="20" id="pmU-Np-CQZ"/>
                                                         </constraints>
@@ -2293,6 +2293,27 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EmptyCell" rowHeight="245" id="7Wz-L7-GUi">
+                                <rect key="frame" x="20" y="99.333332061767578" width="388" height="245"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Wz-L7-GUi" id="7iS-SS-Htp">
+                                    <rect key="frame" x="0.0" y="0.0" width="388" height="245"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="empty/Eggs" translatesAutoresizingMaskIntoConstraints="NO" id="p04-Nb-Aqo">
+                                            <rect key="frame" x="159.33333333333334" y="11" width="69.333333333333343" height="59"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" priority="500" constant="60" id="NON-cA-olx"/>
+                                                <constraint firstAttribute="height" priority="500" constant="59" id="jJG-S4-zHa"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="p04-Nb-Aqo" firstAttribute="centerX" secondItem="7iS-SS-Htp" secondAttribute="centerX" id="SO8-BJ-q1a"/>
+                                        <constraint firstItem="p04-Nb-Aqo" firstAttribute="top" secondItem="7iS-SS-Htp" secondAttribute="topMargin" id="epu-1v-CWF"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="sS8-cF-myv" id="DPA-jK-Kag"/>
@@ -2313,7 +2334,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tgy-p9-JH9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5196" y="2070.3148425787108"/>
+            <point key="canvasLocation" x="5195.3271028037379" y="2070.1943844492444"/>
         </scene>
         <!--Spell Tab Bar Controller-->
         <scene sceneID="oWJ-eh-rJ0">
@@ -3794,7 +3815,7 @@ a matching subscription automatically after sending your gift.</string>
         <segue reference="04Z-5H-zfF"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="jU9-l6-uQc"/>
-        <segue reference="GNu-1J-ZVK"/>
+        <segue reference="V6b-ej-qnx"/>
         <segue reference="gXQ-dZ-OGd"/>
         <segue reference="j9F-en-5nH"/>
         <segue reference="dho-1x-ad8"/>
@@ -3807,6 +3828,7 @@ a matching subscription automatically after sending your gift.</string>
         <image name="add_icon" width="20" height="20"/>
         <image name="adventureGuideArt" width="153" height="46"/>
         <image name="checkmark_small" width="13" height="10"/>
+        <image name="empty/Eggs" width="69.333335876464844" height="59"/>
         <image name="filter_icon" width="26" height="22"/>
         <image name="g1g1_sparkles_left" width="70" height="22"/>
         <image name="g1g1_sparkles_right" width="71" height="22"/>

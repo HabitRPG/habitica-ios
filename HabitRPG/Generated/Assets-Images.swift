@@ -62,6 +62,7 @@ internal enum Asset {
   internal static let nameplate = ImageAsset(name: "Nameplate")
   internal static let noPartyBanner = ImageAsset(name: "NoPartyBanner")
   internal static let separatorFancyIcon = ImageAsset(name: "SeparatorFancyIcon")
+  internal static let shop = ImageAsset(name: "Shop")
   internal static let veteranPets = ImageAsset(name: "VeteranPets")
   internal static let welcomeDiamond = ImageAsset(name: "WelcomeDiamond")
   internal static let addIcon = ImageAsset(name: "add_icon")
@@ -163,6 +164,12 @@ internal enum Asset {
   internal static let creatorSlimShirtYellow = ImageAsset(name: "creator_slim_shirt_yellow")
   internal static let crown = ImageAsset(name: "crown")
   internal static let downIcon = ImageAsset(name: "down_icon")
+  internal enum Empty {
+    internal static let eggs = ImageAsset(name: "empty/Eggs")
+    internal static let food = ImageAsset(name: "empty/Food")
+    internal static let hatchingPotions = ImageAsset(name: "empty/HatchingPotions")
+    internal static let quests = ImageAsset(name: "empty/Quests")
+  }
   internal static let faintGhost = ImageAsset(name: "faint_ghost")
   internal static let faintHeart = ImageAsset(name: "faint_heart")
   internal static let fallPromoBannerLeft = ImageAsset(name: "fall_promo_banner_left")
