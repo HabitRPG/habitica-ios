@@ -37,6 +37,8 @@ class UserTopHeader: UIView, Themeable {
     
     @IBOutlet weak var avatarLeadingSpacing: NSLayoutConstraint!
     
+    private var user: UserProtocol?
+    
     private var contributorTier: Int = 0 {
         didSet {
             if contributorTier > 0 {
@@ -188,6 +190,7 @@ class UserTopHeader: UIView, Themeable {
         if !user.isValid {
             return
         }
+        self.user = user
         userID = user.id ?? ""
         displayName = user.profile?.name ?? ""
         avatarView.avatar = AvatarViewModel(avatar: user)
@@ -292,10 +295,23 @@ class UserTopHeader: UIView, Themeable {
                 var items: [Any] = [
                     "Check out my avatar on Habitica!"
                 ]
-                if let image = self.avatarView.snapshotView(afterScreenUpdates: true)?.getImageFromCurrentContext() {
-                    items.insert(image, at: 0)
+                
+                if let user = self.user {
+                    let view = AvatarView(frame: CGRect(x: 0, y: 0, width: 140, height: 147))
+                    
+                    view.avatar = AvatarViewModel(avatar: user)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        UIGraphicsBeginImageContextWithOptions(view.bounds.size, self.isOpaque, UIScreen.main.scale)
+                        if let currentContext = UIGraphicsGetCurrentContext() {
+                            view.layer.render(in: currentContext)
+                            let image = UIGraphicsGetImageFromCurrentImageContext()
+                            UIGraphicsEndImageContext()
+                            items.insert(image, at: 0)
+                            SharingManager.share(identifier: "avatar", items: items, presentingViewController: nil, sourceView: nil)
+                        }
+                    }
                 }
-                SharingManager.share(identifier: "avatar", items: items, presentingViewController: nil, sourceView: nil)
+
             }
         }))
         nearestNavigationController?.present(sheet, animated: true)
