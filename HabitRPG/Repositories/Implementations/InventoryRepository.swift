@@ -114,7 +114,6 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         return call.habiticaResponseSignal.on(value: {[weak self]habiticaResponse in
             if let buyResponse = habiticaResponse?.data, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, price: price, buyResponse: buyResponse)
-                
                 if let armoire = buyResponse.armoire {
                     if openArmoireView {
                         let viewController = ArmoireViewController()
@@ -122,7 +121,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                         viewController.show()
                     }
                 } else {
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1.0) {
                         ToastManager.show(text: L10n.purchased(text), color: .green)
                     }
                 }

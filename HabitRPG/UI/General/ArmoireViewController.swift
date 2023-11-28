@@ -239,8 +239,9 @@ struct ArmoireView: View {
                                     num: 5,
                                     confettis: [.shape(.slimRectangle)],
                                     colors: [Color(UIColor.yellow100), Color(UIColor.red100), Color(UIColor.blue100), Color(UIColor.purple400)], confettiSize: 20,
-                                    rainHeight: 800, fadesOut: false,
-                                    radius: 400,
+                                    rainHeight: UIScreen.main.bounds.height, fadesOut: false,
+                                    openingAngle: .degrees(30),
+                                    closingAngle: .degrees(150), radius: 400,
                                     repetitions: 20,
                                     repetitionInterval: 0.1)
                 ArmoirePlus()
@@ -283,6 +284,7 @@ struct ArmoireView: View {
                         onDismiss()
                     })
                 }
+                .frame(maxWidth: 600)
                 .padding(.horizontal, 24)
                 let gradientColors: [Color] = [Color(hexadecimal: "72CFFF"),
                                       Color(hexadecimal: "77F4C7")]
@@ -314,6 +316,7 @@ struct ArmoireView: View {
                                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
                                 .cornerRadius(8)
                         })
+                        .frame(maxWidth: 600)
                         .padding(.horizontal, 24)
                         .padding(.bottom, 8)
                         .opacity(viewModel.usedPerk ? 0.0 : 1.0)
@@ -333,7 +336,7 @@ struct ArmoireView: View {
                         }
                 } else {
                     VStack(alignment: .center, spacing: 8) {
-                        HabiticaButtonUI(label: Text(L10n.Armoire.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white, size: .compact) {
+                        HabiticaButtonUI(label: Text(L10n.Armoire.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white) {
                             SubscriptionModalViewController(presentationPoint: .armoire).show()
                         }.frame(maxWidth: 600)
                         Text(L10n.Armoire.unsubbedFooter)
@@ -443,6 +446,10 @@ class ArmoireViewController: UIHostingController<ArmoireView> {
             if var topController = UIApplication.topViewController() {
                 if let tabBarController = topController.tabBarController {
                     topController = tabBarController
+                }
+                if (topController as? HRPGBuyItemModalViewController) != nil {
+                    self.show()
+                    return
                 }
                 self.modalTransitionStyle = .crossDissolve
                 self.modalPresentationStyle = .overCurrentContext
