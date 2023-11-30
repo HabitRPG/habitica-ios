@@ -12,11 +12,13 @@ import Kingfisher
 
 private class FeedSheetViewModel: ObservableObject {
     @Published var food: [FoodProtocol] = []
-    
+    @Published var ownedFoods: [String: Int] = [:]
     private let inventoryRepository = InventoryRepository()
     
     init() {
-        inventoryRepository.getOwnedItems(itemType: "food")
+        inventoryRepository.getOwnedItems(itemType: "food").on(value: { owned in
+            self.ownedFoods = Dictionary(uniqueKeysWithValues: owned.value.map { ($0.key ?? "", $0.numberOwned) })
+        })
             .flatMap(.latest, { ownedFood in
                 return self.inventoryRepository.getFood(keys: ownedFood.value.map({ ownedItem in
                     return ownedItem.key ?? ""
@@ -41,7 +43,9 @@ struct FeedSheetView: View {
                         PixelArtView(name: "Pet_Food_\(foodItem.key ?? "")").frame(width: 44, height: 44)
                         Text(foodItem.text ?? "")
                             .font(.system(.headline))
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Spacer()
+                        Text("\(viewModel.ownedFoods[foodItem.key ?? ""] ?? 0)")
+                            .font(.system(.subheadline))
                     }
                     .padding(.horizontal, 16)
                     .padding(.vertical, 8)

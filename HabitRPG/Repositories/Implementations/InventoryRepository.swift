@@ -267,20 +267,24 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         
         return call.habiticaResponseSignal.on(value: {[weak self] response in
             if let message = response?.message {
-                let alert = ImageOverlayView(imageName: "stable_Mount_Icon_\(pet.key ?? "")", title: L10n.Stable.evolvedPet(pet.text ?? ""))
-                alert.addAction(title: L10n.onwards, isMainAction: true)
-                alert.addAction(title: L10n.equip) { _ in
-                    self?.equip(type: "mount", key: pet.key ?? "").observeCompleted {}
-                }
-                alert.addAction(title: L10n.share) { _ in
-                    var items: [Any] = [
-                    ]
-                    if let image = alert.image {
-                        items.insert(image, at: 0)
+                if response?.data == -1 {
+                    let alert = ImageOverlayView(imageName: "stable_Mount_Icon_\(pet.key ?? "")", title: L10n.Stable.evolvedPet(pet.text ?? ""))
+                    alert.addAction(title: L10n.onwards, isMainAction: true)
+                    alert.addAction(title: L10n.equip) { _ in
+                        self?.equip(type: "mount", key: pet.key ?? "").observeCompleted {}
                     }
-                    SharingManager.share(identifier: "raisedPet", items: items, presentingViewController: nil, sourceView: nil)
+                    alert.addAction(title: L10n.share) { _ in
+                        var items: [Any] = [
+                        ]
+                        if let image = alert.image {
+                            items.insert(image, at: 0)
+                        }
+                        SharingManager.share(identifier: "raisedPet", items: items, presentingViewController: nil, sourceView: nil)
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        alert.show()
+                    }
                 }
-                alert.show()
             }
             if let userID = self?.currentUserId, let trained = response?.data {
                 self?.localRepository.updatePetTrained(userID: userID, key: pet.key ?? "", trained: trained, consumedFood: food)

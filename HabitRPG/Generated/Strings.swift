@@ -878,7 +878,7 @@ public enum L10n {
   public static func reportXViolation(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "report_x_violation", p1)
   }
-  /// You should only report a %@ that violates the Community Guidelines and/or Terms of Service.\nSubmitting a false report is a violation of Habitica’s Community Guidelines.
+  /// You should only report a %@ that violates the Community Guidelines and/or Terms of Service. Submitting a false report is a violation of Habitica’s Community Guidelines.
   public static func reportingDisclaimer(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "reporting_disclaimer", p1)
   }
