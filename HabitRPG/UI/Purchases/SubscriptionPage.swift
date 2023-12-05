@@ -389,6 +389,19 @@ class SubscriptionModalViewController: HostingBottomSheetController<Subscription
         viewModel.onSubscriptionSuccessful = {
             self.dismiss()
         }
+        
+        switch presentationPoint {
+        case .faint:
+            HabiticaAnalytics.shared.log("View death sub CTA")
+        case .armoire:
+            HabiticaAnalytics.shared.log("View armoire sub CTA")
+        case .gemForGold:
+            HabiticaAnalytics.shared.log("View gems for gold CTA")
+        case .timetravelers:
+            HabiticaAnalytics.shared.log("second chance perk")
+        case .none:
+            return
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

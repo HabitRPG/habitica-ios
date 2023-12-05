@@ -36,6 +36,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
                  }
             }
         }
+        HabiticaAnalytics.shared.logNavigationEvent("\(customizationType ?? "") screen")
     }
     
     override func applyTheme(theme: Theme) {
@@ -93,7 +94,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
             }) {[weak self] in
                 if self?.customizationDataSource?.canAfford(price: customization.price) != true {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
-                        HRPGBuyItemModalViewController.displayInsufficientGemsModal(delayDisplay: false)
+                        HRPGBuyItemModalViewController.displayInsufficientGemsModal(reason: "customization", delayDisplay: false)
                     })
                     return
                 }
@@ -138,7 +139,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
             }) {[weak self] in
                 if self?.customizationDataSource?.canAfford(price: customizationSet.setPrice) != true {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
-                        HRPGBuyItemModalViewController.displayInsufficientGemsModal(delayDisplay: false)
+                        HRPGBuyItemModalViewController.displayInsufficientGemsModal(reason: "customization", delayDisplay: false)
                     })
                     return
                 }

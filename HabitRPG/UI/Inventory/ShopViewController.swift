@@ -69,6 +69,8 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         dataSource?.needsGearSection = shopIdentifier == "market"
         
         refresh()
+        
+        HabiticaAnalytics.shared.logNavigationEvent("\(shopIdentifier ?? "") screen")
     }
     
     private var isSubscribed: Bool?

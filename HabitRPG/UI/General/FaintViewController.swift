@@ -88,6 +88,7 @@ private class ViewModel: ObservableObject {
     }
     
     func useSubBenefit(_ onCompleted: @escaping () -> Void) {
+        HabiticaAnalytics.shared.log("second chance perk")
         userRepository.updateUser(key: "stats.hp", value: 1).observeResult { _ in
             let defaults = UserDefaults.standard
             defaults.set(Date(), forKey: "lastFaintSubBenefit")

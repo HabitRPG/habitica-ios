@@ -880,7 +880,7 @@ class SettingsViewController: FormViewController, Themeable {
             
             alertController.addAction(title: L10n.Settings.changeClass) { _ in
                 if user.gemCount < changeClassCosts {
-                    HRPGBuyItemModalViewController.displayInsufficientGemsModal(delayDisplay: false)
+                    HRPGBuyItemModalViewController.displayInsufficientGemsModal(reason: "class change, "delayDisplay: false)
                     return
                 }
                 _ = UserManager.shared.showClassSelection(user: user)

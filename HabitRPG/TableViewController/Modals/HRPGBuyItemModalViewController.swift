@@ -417,7 +417,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     if currency == .hourglass {
                         HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: user)
                     } else if currency == .gem {
-                        HRPGBuyItemModalViewController.displayInsufficientGemsModal()
+                        HRPGBuyItemModalViewController.displayInsufficientGemsModal(reward: reward)
                     } else {
                         HRPGBuyItemModalViewController.displayInsufficientGoldModal()
                     }
@@ -506,7 +506,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 successBlock()
             case .failure:
                 failureBlock()
-                HRPGBuyItemModalViewController.displayInsufficientGemsModal()
+                HRPGBuyItemModalViewController.displayInsufficientGemsModal(reward: self.reward)
                 }
             })
         } else if currency == .gem || purchaseType == "gems" {
@@ -522,7 +522,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     if key == "gem" {
                         HRPGBuyItemModalViewController.displayGemCapReachedModal()
                     } else {
-                        HRPGBuyItemModalViewController.displayInsufficientGemsModal()
+                        HRPGBuyItemModalViewController.displayInsufficientGemsModal(reward: self.reward)
                     }
                 }
             })
@@ -569,7 +569,8 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         }
     }
     
-    static func displayInsufficientGemsModal(delayDisplay: Bool = true) {
+    static func displayInsufficientGemsModal(reward: InAppRewardProtocol? = nil, reason: String = "purchase modal", delayDisplay: Bool = true) {
+        HabiticaAnalytics.shared.log("show insufficient gems modal", withEventProperties: ["reason": "purchase modal", "item": reward?.key ?? ""])
         let alert = prepareInsufficientModal(title: L10n.notEnoughGems, message: L10n.moreGemsMessage, image: Asset.insufficientGems.image)
         alert.addAction(title: L10n.purchaseGems, isMainAction: true, handler: { _ in
             let navigationController = StoryboardScene.Main.purchaseGemNavController.instantiate()

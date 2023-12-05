@@ -74,6 +74,7 @@ class ItemsViewController: BaseTableViewController {
         } else if let item = item {
             showActionSheet(item: item, withSource: tableView.cellForRow(at: indexPath))
         } else {
+            HabiticaAnalytics.shared.log("Items CTA Tap", withEventProperties: ["area": "empty", "type": dataSource.tableView(tableView, titleForHeaderInSection: indexPath.section) ?? ""])
             if indexPath.section < 3 {
                 RouterHandler.shared.handle(.market)
             } else if indexPath.section == 3 {
@@ -104,6 +105,7 @@ class ItemsViewController: BaseTableViewController {
     
     @objc
     func openMarket() {
+        HabiticaAnalytics.shared.log("Items CTA Tap", withEventProperties: ["area": "bottom"])
         RouterHandler.shared.handle(.market)
     }
 
