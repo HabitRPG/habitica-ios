@@ -11,6 +11,7 @@ import Habitica_Models
 import Habitica_Database
 import Habitica_API_Client
 import ReactiveSwift
+import SwiftUIX
 
 class InventoryRepository: BaseRepository<InventoryLocalRepository> {
 
@@ -266,24 +267,23 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         }
         
         return call.habiticaResponseSignal.on(value: {[weak self] response in
-            if let message = response?.message {
-                if response?.data == -1 {
-                    let alert = ImageOverlayView(imageName: "stable_Mount_Icon_\(pet.key ?? "")", title: L10n.Stable.evolvedPet(pet.text ?? ""))
-                    alert.addAction(title: L10n.onwards, isMainAction: true)
-                    alert.addAction(title: L10n.equip) { _ in
-                        self?.equip(type: "mount", key: pet.key ?? "").observeCompleted {}
-                    }
-                    alert.addAction(title: L10n.share) { _ in
-                        var items: [Any] = [
-                        ]
-                        if let image = alert.image {
-                            items.insert(image, at: 0)
-                        }
-                        SharingManager.share(identifier: "raisedPet", items: items, presentingViewController: nil, sourceView: nil)
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        alert.show()
-                    }
+            if response?.data == -1 {
+                let alert = HabiticaAlertController()
+                alert.title = L10n.youRaisedPet(pet.text ?? "")
+                alert.contentView = UIHostingView(rootView: VStack(spacing: 8) {
+                    StableBackgroundView(content: MountView(mount: pet), animateFlying: false).clipShape(.rect(cornerRadius: 12))
+                    Text("\(pet.potion ?? "") \(pet.egg ?? "") Mount").font(.system(size: 16, weight: .medium)).foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                    Text("Let's go for a ride!").font(.system(size: 14)).foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
+                })
+                alert.addAction(title: L10n.equip, isMainAction: true) { _ in
+                    self?.equip(type: "mount", key: pet.key ?? "").observeCompleted {}
+                }
+                alert.addAction(title: L10n.share) { _ in
+                    SharingManager.share(mount: pet, shareIdentifier: "raisedPet")
+                }
+                alert.setCloseAction(title: L10n.close, handler: {})
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    alert.show()
                 }
             }
             if let userID = self?.currentUserId, let trained = response?.data {

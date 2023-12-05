@@ -1232,6 +1232,10 @@ public enum L10n {
   public static var years: String { return L10n.tr("Mainstrings", "years") }
   /// You got an Achievement!
   public static var youGotAchievement: String { return L10n.tr("Mainstrings", "you_got_achievement") }
+  /// You raised your %@ Pet into a Mount!
+  public static func youRaisedPet(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "you_raised_pet", p1)
+  }
   /// Your balance:
   public static var yourBalance: String { return L10n.tr("Mainstrings", "your_balance") }
 

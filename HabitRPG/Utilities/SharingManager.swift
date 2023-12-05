@@ -37,25 +37,23 @@ class SharingManager {
         #endif
     }
     
-    static func share(pet: PetProtocol) {
-        var items: [Any] = [StableBackgroundView(content: PixelArtView(name: "stable_Pet-\(pet.key ?? "")").frame(width: 70, height: 70).padding(.top, 40), animateFlying: false)
+    static func share(pet: AnimalProtocol, shareIdentifier: String = "pet") {
+        let items: [Any] = [StableBackgroundView(content: PixelArtView(name: "stable_Pet-\(pet.key ?? "")")
+            .frame(width: 70, height: 70).padding(.top, 40), animateFlying: false)
             .frame(width: 300, height: 124)
             .snapshot()]
-        SharingManager.share(identifier: "pet", items: items, presentingViewController: nil, sourceView: nil)
+        SharingManager.share(identifier: shareIdentifier, items: items, presentingViewController: nil, sourceView: nil)
     }
     
-    static func share(mount: MountProtocol) {
-        var items: [Any] = [StableBackgroundView(content: ZStack {
-            PixelArtView(name: "Mount_Body_\(mount.key ?? "")")
-            PixelArtView(name: "Mount_Head_\(mount.key ?? "")")
-        }.frame(width: 72, height: 72)
+    static func share(mount: AnimalProtocol, shareIdentifier: String = "mount") {
+        let items: [Any] = [StableBackgroundView(content: MountView(mount: mount)
             .padding(.top, 30), animateFlying: false)
             .frame(width: 300, height: 124)
             .snapshot()]
-        SharingManager.share(identifier: "mount", items: items, presentingViewController: nil, sourceView: nil)
+        SharingManager.share(identifier: shareIdentifier, items: items, presentingViewController: nil, sourceView: nil)
     }
     
-    static func share(avatar: AvatarProtocol) {
+    static func share(avatar: AvatarProtocol, shareIdentifier: String = "avatar") {
         let view = AvatarView(frame: CGRect(x: 0, y: 0, width: 140, height: 147))
         
         view.avatar = AvatarViewModel(avatar: avatar)
@@ -64,7 +62,7 @@ class SharingManager {
             if let currentContext = UIGraphicsGetCurrentContext() {
                 view.layer.render(in: currentContext)
                 if let image = UIGraphicsGetImageFromCurrentImageContext() {
-                    SharingManager.share(identifier: "avatar", items: [image], presentingViewController: nil, sourceView: nil)
+                    SharingManager.share(identifier: shareIdentifier, items: [image], presentingViewController: nil, sourceView: nil)
                 }
                 UIGraphicsEndImageContext()
             }
@@ -72,7 +70,6 @@ class SharingManager {
     }
     
     static func addSharingBanner(inImage image: UIImage) -> UIImage? {
-        let textColor = UIColor.white
         let bannerHeight: CGFloat = 18
 
         let scale = UIScreen.main.scale
@@ -86,15 +83,12 @@ class SharingManager {
             context.addRect(CGRect(origin: CGPoint(x: 0, y: image.size.height), size: CGSize(width: image.size.width, height: bannerHeight)))
             context.drawPath(using: .fill)
         
-            let textFontAttributes = [
-                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10),
-                NSAttributedString.Key.foregroundColor: textColor
-                ] as [NSAttributedString.Key: Any]
             image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
 
             let logo = Asset.wordmarkWhite.image
-            let width = logo.size.width / (logo.size.height / bannerHeight)
-            logo.draw(in: CGRect(x: image.size.width - width - 1, y: image.size.height, width: width, height: bannerHeight))
+            let height = bannerHeight - 4
+            let width = logo.size.width / (logo.size.height / height)
+            logo.draw(in: CGRect(x: image.size.width - width - 4, y: image.size.height + 2, width: width, height: height))
         }
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

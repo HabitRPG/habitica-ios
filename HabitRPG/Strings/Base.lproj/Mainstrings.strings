@@ -1281,3 +1281,4 @@
 "items.empty.food_description" = "Complete tasks, buy an Armoire, or head over to the Market to stock up!";
 "items.empty.quest_description" = "Get Quests from leveling up, log in bonuses, or the Quest Shop!";
 "items.empty.special_description" = "Get transformation items during Seasonal Galas or subscribe for a mystery box of equipment each month!";
+"you_raised_pet" = "You raised your %@ Pet into a Mount!";

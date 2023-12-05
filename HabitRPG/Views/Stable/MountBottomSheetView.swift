@@ -10,6 +10,17 @@ import SwiftUI
 import Habitica_Models
 import Kingfisher
 
+struct MountView: View {
+    var mount: AnimalProtocol
+    
+    var body: some View {
+        ZStack {
+            PixelArtView(name: "Mount_Body_\(mount.key ?? "")")
+            PixelArtView(name: "Mount_Head_\(mount.key ?? "")")
+        }.frame(width: 72, height: 72)
+    }
+}
+
 struct MountBottomSheetView: View, Dismissable {
     var dismisser: Dismisser = Dismisser()
 
@@ -20,13 +31,9 @@ struct MountBottomSheetView: View, Dismissable {
     
     var body: some View {
         let theme = ThemeService.shared.theme
-        let mountView = ZStack {
-            PixelArtView(name: "Mount_Body_\(mount.key ?? "")")
-            PixelArtView(name: "Mount_Head_\(mount.key ?? "")")
-        }.frame(width: 72, height: 72)
-            .padding(.top, 30)
+            
         BottomSheetView(dismisser: dismisser, title: Text(mount.text ?? ""), content: VStack(spacing: 16) {
-            StableBackgroundView(content: mountView, animateFlying: false)
+            StableBackgroundView(content: MountView(mount: mount).padding(.top, 30), animateFlying: false)
                 .clipShape(.rect(cornerRadius: 12))
             HabiticaButtonUI(label: Text(L10n.share), color: Color(theme.fixedTintColor), size: .compact) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
