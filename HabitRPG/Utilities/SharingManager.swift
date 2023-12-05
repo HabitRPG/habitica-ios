@@ -9,6 +9,8 @@
 import UIKit
 #if !targetEnvironment(macCatalyst)
 import FirebaseAnalytics
+import Habitica_Models
+import SwiftUI
 #endif
 
 class SharingManager {
@@ -33,6 +35,40 @@ class SharingManager {
         #if !targetEnvironment(macCatalyst)
         Analytics.logEvent("shared", parameters: ["identifier": identifier])
         #endif
+    }
+    
+    static func share(pet: PetProtocol) {
+        var items: [Any] = [StableBackgroundView(content: PixelArtView(name: "stable_Pet-\(pet.key ?? "")").frame(width: 70, height: 70).padding(.top, 40), animateFlying: false)
+            .frame(width: 300, height: 124)
+            .snapshot()]
+        SharingManager.share(identifier: "pet", items: items, presentingViewController: nil, sourceView: nil)
+    }
+    
+    static func share(mount: MountProtocol) {
+        var items: [Any] = [StableBackgroundView(content: ZStack {
+            PixelArtView(name: "Mount_Body_\(mount.key ?? "")")
+            PixelArtView(name: "Mount_Head_\(mount.key ?? "")")
+        }.frame(width: 72, height: 72)
+            .padding(.top, 30), animateFlying: false)
+            .frame(width: 300, height: 124)
+            .snapshot()]
+        SharingManager.share(identifier: "mount", items: items, presentingViewController: nil, sourceView: nil)
+    }
+    
+    static func share(avatar: AvatarProtocol) {
+        let view = AvatarView(frame: CGRect(x: 0, y: 0, width: 140, height: 147))
+        
+        view.avatar = AvatarViewModel(avatar: avatar)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, UIScreen.main.scale)
+            if let currentContext = UIGraphicsGetCurrentContext() {
+                view.layer.render(in: currentContext)
+                if let image = UIGraphicsGetImageFromCurrentImageContext() {
+                    SharingManager.share(identifier: "avatar", items: [image], presentingViewController: nil, sourceView: nil)
+                }
+                UIGraphicsEndImageContext()
+            }
+        }
     }
     
     static func addSharingBanner(inImage image: UIImage) -> UIImage? {

@@ -318,7 +318,9 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                     if let brokenItem = user?.items?.gear?.owned.first(where: { equipment in
                         equipment.isOwned == false && currentUser.items?.gear?.owned.contains(where: { $0.key == equipment.key && $0.isOwned == true }) == true
                     }) {
-                        ToastManager.show(text: "Your \(brokenItem.key ?? "") broke", color: .black)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            ToastManager.show(text: "Your \(brokenItem.key ?? "") broke", color: .black)
+                        }
                     }
                 }).start()
             })

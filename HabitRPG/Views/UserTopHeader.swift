@@ -293,21 +293,10 @@ class UserTopHeader: UIView, Themeable {
             }
             BottomSheetMenuitem(title: L10n.shareAvatar) {
                 if let user = self.user {
-                    let view = AvatarView(frame: CGRect(x: 0, y: 0, width: 140, height: 147))
-                    
-                    view.avatar = AvatarViewModel(avatar: user)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        UIGraphicsBeginImageContextWithOptions(view.bounds.size, self.isOpaque, UIScreen.main.scale)
-                        if let currentContext = UIGraphicsGetCurrentContext() {
-                            view.layer.render(in: currentContext)
-                            if let image = UIGraphicsGetImageFromCurrentImageContext() {
-                                SharingManager.share(identifier: "avatar", items: [image], presentingViewController: nil, sourceView: nil)
-                            }
-                            UIGraphicsEndImageContext()
-                        }
+                        SharingManager.share(avatar: user)
                     }
                 }
-
             }
         }))
         nearestNavigationController?.present(sheet, animated: true)
