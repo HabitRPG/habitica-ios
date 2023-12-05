@@ -24,6 +24,10 @@ struct PetBottomSheetView: View, Dismissable {
     @State private var isUsingSaddle = false
     @State private var image: UIImage?
     
+    @State private var showFeedResponse = false
+    @State private var feedMessage: String?
+    @State private var feedValue: Float = 0
+    
     private func getFoodName() -> String {
         switch pet.potion {
         case "Base":
@@ -53,8 +57,33 @@ struct PetBottomSheetView: View, Dismissable {
         let theme = ThemeService.shared.theme
         let petView = PixelArtView(name: "stable_Pet-\(pet.key ?? "")").frame(width: 70, height: 70)
         BottomSheetView(dismisser: dismisser, title: Text(pet.text ?? ""), content: VStack(spacing: 16) {
-            StableBackgroundView(content: petView.padding(.top, 40), animateFlying: false)
-                .clipShape(.rect(cornerRadius: 12))
+            ZStack(alignment: .top) {
+                StableBackgroundView(content: petView.padding(.top, 40), animateFlying: false)
+                    .clipShape(.rect(cornerRadius: 12))
+                if showFeedResponse, let message = feedMessage {
+                    Text(message)
+                        .font(.system(size: 12))
+                        .lineLimit(2)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Color(theme.primaryTextColor))
+                        .padding(.horizontal, 4)
+                        .padding(.vertical, 3)
+                        .background(Color(theme.contentBackgroundColor))
+                        .cornerRadius(8)
+                        .transition(.opacity)
+                        .padding(.horizontal, 6)
+                        .padding(.top, 96)
+                    ProgressView(value: feedValue / 50)
+                        .animation(.smooth, value: feedValue)
+                        .padding(.horizontal, 4)
+                        .padding(.vertical, 3)
+                        .background(Color(theme.contentBackgroundColor))
+                        .cornerRadius(8)
+                        .frame(width: 200)
+                        .transition(.opacity)
+                        .padding(.top, 6)
+                }
+            }
             if trained > 0 && pet.type != "special" && canRaise {
                 let buttonBackground = Color(theme.tintedSubtleUI)
                 HStack(spacing: 16) {
@@ -91,12 +120,9 @@ struct PetBottomSheetView: View, Dismissable {
             }
             HabiticaButtonUI(label: Text(L10n.share), color: Color(theme.fixedTintColor), size: .compact) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    var items: [Any] = [
-                        "Check out my pet on Habitica!\nhttps://habitica.com"
-                    ]
-                    items.insert(StableBackgroundView(content: petView.padding(.top, 40), animateFlying: false)
+                    var items: [Any] = [StableBackgroundView(content: petView.padding(.top, 40), animateFlying: false)
                         .frame(width: 300, height: 124)
-                        .snapshot(), at: 0)
+                        .snapshot()]
                     SharingManager.share(identifier: "pet", items: items, presentingViewController: nil, sourceView: nil)
                 }
                 dismisser.dismiss?()
@@ -141,6 +167,21 @@ struct PetBottomSheetView: View, Dismissable {
         self.inventoryRepository.feed(pet: pet, food: food).observeValues { response in
             if response?.data == -1 {
                 dismisser.dismiss?()
+                return
+            }
+            withAnimation {
+                feedMessage = response?.message
+                showFeedResponse = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                withAnimation {
+                    feedValue = Float(response?.data ?? 0)
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                withAnimation {
+                    showFeedResponse = false
+                }
             }
         }
     }

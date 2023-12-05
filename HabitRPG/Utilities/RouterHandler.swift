@@ -50,6 +50,26 @@ private struct RegexRoute {
     }
 }
 
+enum Route {
+    case market
+    case questShop
+    case seasonalShop
+    case timeTravelers
+    case subscription
+    
+    var url: String {
+        // swiftlint:disable
+        switch self {
+        case .market: return "/inventory/market"
+        case .questShop: return "/inventory/quests"
+        case .seasonalShop: return "/inventory/seasonal"
+        case .timeTravelers: return "/inventory/time"
+        case .subscription: return "/user/settings/subscription"
+        }
+        // siwftlint:enable
+    }
+}
+
 class RouterHandler {
     
     public static let shared = RouterHandler()
@@ -59,6 +79,10 @@ class RouterHandler {
     
     private func register(_ route: String, call: @escaping (() -> Void)) {
         directRoutes[route] = call
+    }
+    
+    private func register(_ route: Route, call: @escaping (() -> Void)) {
+        directRoutes[route.url] = call
     }
     
     private func register(_ route: String, call: @escaping (([String: String]) -> Void)) {
@@ -95,25 +119,25 @@ class RouterHandler {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Social.partyViewController.instantiate())
         }
-        register("/inventory/market") {
+        register(.market) {
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Shop.shopViewController.instantiate()
             viewController.shopIdentifier = Constants.MarketKey
             self.push(viewController)
         }
-        register("/inventory/quests") {
+        register(.questShop) {
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Shop.shopViewController.instantiate()
             viewController.shopIdentifier = Constants.QuestShopKey
             self.push(viewController)
         }
-        register("/inventory/seasonal") {
+        register(.seasonalShop) {
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Shop.shopViewController.instantiate()
             viewController.shopIdentifier = Constants.SeasonalShopKey
             self.push(viewController)
         }
-        register("/inventory/time") {
+        register(.timeTravelers) {
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Shop.shopViewController.instantiate()
             viewController.shopIdentifier = Constants.TimeTravelersShopKey
@@ -171,7 +195,7 @@ class RouterHandler {
             self.displayTab(index: 4)
             self.present(StoryboardScene.Settings.initialScene.instantiate())
         }
-        register("/user/settings/subscription") {
+        register(.subscription) {
             self.displayTab(index: 4)
             self.present(StoryboardScene.Main.subscriptionNavController.instantiate())
         }
@@ -266,6 +290,11 @@ class RouterHandler {
         register("/menu") {
             self.displayTab(index: 4)
         }
+    }
+    
+    @discardableResult
+    func handle(_ route: Route) -> Bool {
+        return handle(urlString: route.url)
     }
     
     @discardableResult

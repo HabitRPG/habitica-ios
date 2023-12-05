@@ -688,6 +688,10 @@ public enum L10n {
   public static var noCamera: String { return L10n.tr("Mainstrings", "no_camera") }
   /// no days
   public static var noDays: String { return L10n.tr("Mainstrings", "no_days") }
+  /// No %@
+  public static func noX(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "no_x", p1)
+  }
   /// Not Due
   public static var notDue: String { return L10n.tr("Mainstrings", "not_due") }
   /// Not enough Gems
@@ -1815,6 +1819,22 @@ public enum L10n {
     /// Only available for %@s. You can change your class from Settings
     public static func wrongClass(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "inventory.wrong_class", p1)
+    }
+  }
+
+  public enum Items {
+
+    public enum Empty {
+      /// Complete tasks, Pet Quests, or head over to the Market to stock up!
+      public static var eggDescription: String { return L10n.tr("Mainstrings", "items.empty.egg_description") }
+      /// Complete tasks, buy an Armoire, or head over to the Market to stock up!
+      public static var foodDescription: String { return L10n.tr("Mainstrings", "items.empty.food_description") }
+      /// Complete tasks, Potion Quests, or head over to the Market to stock up!
+      public static var potionDescription: String { return L10n.tr("Mainstrings", "items.empty.potion_description") }
+      /// Get Quests from leveling up, log in bonuses, or the Quest Shop!
+      public static var questDescription: String { return L10n.tr("Mainstrings", "items.empty.quest_description") }
+      /// Get transformation items during Seasonal Galas or subscribe for a mystery box of equipment each month!
+      public static var specialDescription: String { return L10n.tr("Mainstrings", "items.empty.special_description") }
     }
   }
 

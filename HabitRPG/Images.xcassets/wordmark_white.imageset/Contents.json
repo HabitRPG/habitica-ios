@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Group 466.png",
+      "filename" : "habitica_logo_white.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Group 466@2x.png",
+      "filename" : "habitica_logo_white@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Group 466@3x.png",
+      "filename" : "habitica_logo_white@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

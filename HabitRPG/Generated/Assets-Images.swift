@@ -169,6 +169,7 @@ internal enum Asset {
     internal static let food = ImageAsset(name: "empty/Food")
     internal static let hatchingPotions = ImageAsset(name: "empty/HatchingPotions")
     internal static let quests = ImageAsset(name: "empty/Quests")
+    internal static let special = ImageAsset(name: "empty/Special")
   }
   internal static let faintGhost = ImageAsset(name: "faint_ghost")
   internal static let faintHeart = ImageAsset(name: "faint_heart")
@@ -326,6 +327,7 @@ internal enum Asset {
   internal static let taskLockLight = ImageAsset(name: "task_lock_light")
   internal static let teamPlan = ImageAsset(name: "team_plan")
   internal static let wonChallengeIcon = ImageAsset(name: "won_challenge_icon")
+  internal static let wordmarkWhite = ImageAsset(name: "wordmark_white")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

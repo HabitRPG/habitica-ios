@@ -1275,3 +1275,9 @@
 "message" = "Message";
 "player" = "Player";
 "challenge" = "Challenge";
+"no_x" = "No %@";
+"items.empty.egg_description" = "Complete tasks, Pet Quests, or head over to the Market to stock up!";
+"items.empty.potion_description" = "Complete tasks, Potion Quests, or head over to the Market to stock up!";
+"items.empty.food_description" = "Complete tasks, buy an Armoire, or head over to the Market to stock up!";
+"items.empty.quest_description" = "Get Quests from leveling up, log in bonuses, or the Quest Shop!";
+"items.empty.special_description" = "Get transformation items during Seasonal Galas or subscribe for a mystery box of equipment each month!";

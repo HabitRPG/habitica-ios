@@ -292,10 +292,6 @@ class UserTopHeader: UIView, Themeable {
                 RouterHandler.shared.handle(urlString: "/user/avatar")
             }
             BottomSheetMenuitem(title: L10n.shareAvatar) {
-                var items: [Any] = [
-                    "Check out my avatar on Habitica!\nhttps://habitica.com"
-                ]
-                
                 if let user = self.user {
                     let view = AvatarView(frame: CGRect(x: 0, y: 0, width: 140, height: 147))
                     
@@ -304,10 +300,10 @@ class UserTopHeader: UIView, Themeable {
                         UIGraphicsBeginImageContextWithOptions(view.bounds.size, self.isOpaque, UIScreen.main.scale)
                         if let currentContext = UIGraphicsGetCurrentContext() {
                             view.layer.render(in: currentContext)
-                            let image = UIGraphicsGetImageFromCurrentImageContext()
+                            if let image = UIGraphicsGetImageFromCurrentImageContext() {
+                                SharingManager.share(identifier: "avatar", items: [image], presentingViewController: nil, sourceView: nil)
+                            }
                             UIGraphicsEndImageContext()
-                            items.insert(image, at: 0)
-                            SharingManager.share(identifier: "avatar", items: items, presentingViewController: nil, sourceView: nil)
                         }
                     }
                 }

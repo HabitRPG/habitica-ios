@@ -2292,24 +2292,49 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EmptyCell" rowHeight="245" id="7Wz-L7-GUi">
-                                <rect key="frame" x="20" y="99.333332061767578" width="388" height="245"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EmptyCell" id="7Wz-L7-GUi">
+                                <rect key="frame" x="20" y="99.333332061767578" width="388" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Wz-L7-GUi" id="7iS-SS-Htp">
-                                    <rect key="frame" x="0.0" y="0.0" width="388" height="245"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="388" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="empty/Eggs" translatesAutoresizingMaskIntoConstraints="NO" id="p04-Nb-Aqo">
-                                            <rect key="frame" x="159.33333333333334" y="11" width="69.333333333333343" height="59"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="23" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="p04-Nb-Aqo">
+                                            <rect key="frame" x="164" y="19" width="60" height="0.0"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" priority="500" constant="60" id="NON-cA-olx"/>
                                                 <constraint firstAttribute="height" priority="500" constant="59" id="jJG-S4-zHa"/>
                                             </constraints>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="24" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="999" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxZ-no-4m0">
+                                            <rect key="frame" x="20" y="21" width="348" height="0.0"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" priority="500" constant="16" id="kCf-dc-WPv"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="25" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awi-8T-28d">
+                                            <rect key="frame" x="20" y="25" width="348" height="0.0"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" priority="500" constant="16" id="hva-6n-115"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="awi-8T-28d" secondAttribute="bottom" constant="8" id="2WX-7d-6mU"/>
+                                        <constraint firstItem="bxZ-no-4m0" firstAttribute="top" secondItem="p04-Nb-Aqo" secondAttribute="bottom" constant="8" symbolic="YES" id="Amd-ae-D4U"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="awi-8T-28d" secondAttribute="trailing" id="Fup-KR-tBd"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="bxZ-no-4m0" secondAttribute="trailing" id="SA2-Qc-ek0"/>
                                         <constraint firstItem="p04-Nb-Aqo" firstAttribute="centerX" secondItem="7iS-SS-Htp" secondAttribute="centerX" id="SO8-BJ-q1a"/>
-                                        <constraint firstItem="p04-Nb-Aqo" firstAttribute="top" secondItem="7iS-SS-Htp" secondAttribute="topMargin" id="epu-1v-CWF"/>
+                                        <constraint firstItem="awi-8T-28d" firstAttribute="top" secondItem="bxZ-no-4m0" secondAttribute="bottom" constant="4" id="VJH-L1-0RO"/>
+                                        <constraint firstItem="p04-Nb-Aqo" firstAttribute="top" secondItem="7iS-SS-Htp" secondAttribute="topMargin" constant="8" id="epu-1v-CWF"/>
+                                        <constraint firstItem="awi-8T-28d" firstAttribute="leading" secondItem="7iS-SS-Htp" secondAttribute="leadingMargin" id="gbr-U3-a0l"/>
+                                        <constraint firstItem="bxZ-no-4m0" firstAttribute="leading" secondItem="7iS-SS-Htp" secondAttribute="leadingMargin" id="tbV-6k-HIu"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -3827,7 +3852,6 @@ a matching subscription automatically after sending your gift.</string>
         <image name="add_icon" width="20" height="20"/>
         <image name="adventureGuideArt" width="153" height="46"/>
         <image name="checkmark_small" width="13" height="10"/>
-        <image name="empty/Eggs" width="69.333335876464844" height="59"/>
         <image name="filter_icon" width="26" height="22"/>
         <image name="g1g1_sparkles_left" width="70" height="22"/>
         <image name="g1g1_sparkles_right" width="71" height="22"/>

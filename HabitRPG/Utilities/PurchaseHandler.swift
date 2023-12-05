@@ -50,7 +50,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     private var hasCompletionHandler = false
     override private init() {
         #if DEBUG
-            appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
+            appleValidator = AppleReceiptValidator(service: .sandbox, sharedSecret: itunesSharedSecret)
         #else
             appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
         #endif

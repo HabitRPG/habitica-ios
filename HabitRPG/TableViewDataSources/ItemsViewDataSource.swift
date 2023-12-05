@@ -153,10 +153,46 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
         }
     }
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var count = sections[section].items.count
+        // swiftlint:disable:next empty_count
+        if count == 0 {
+            count = 1
+        }
+        return count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if sections.isEmpty {
+            return nil
+        }
+        return sections[section].title
+    }
+    
+    override func item(at indexPath: IndexPath?) -> ItemProtocol? {
+        guard let indexPath = indexPath else {
+            return nil
+        }
+        if indexPath.item < 0 || indexPath.section < 0 {
+            return nil
+        }
+        if indexPath.section < sections.count {	
+            if indexPath.item < sections[indexPath.section].items.count {
+                return sections[indexPath.section].items[indexPath.item]
+            }
+        }
+        return nil
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let theme = ThemeService.shared.theme
         if let ownedItem = item(at: indexPath) {
-            let theme = ThemeService.shared.theme
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+
             cell.backgroundColor = theme.windowBackgroundColor
             let label = cell.viewWithTag(1) as? UILabel
             label?.text = ownedItem.text
@@ -175,13 +211,55 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
                     label?.alpha = 0.3
                 }
             }
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCell", for: indexPath)
+            cell.backgroundColor = theme.windowBackgroundColor
+            let imageView = cell.viewWithTag(23) as? UIImageView
+            let titleView = cell.viewWithTag(24) as? UILabel
+            titleView?.textColor = theme.primaryTextColor
+            let descriptionView = cell.viewWithTag(25) as? UILabel
+            descriptionView?.textColor = theme.primaryTextColor
+            titleView?.text = L10n.noX(self.tableView(tableView, titleForHeaderInSection: indexPath.section) ?? L10n.Titles.items)
+            let text: String
+            switch indexPath.section {
+            case 0:
+                imageView?.image = Asset.Empty.eggs.image
+                text = L10n.Items.Empty.eggDescription
+            case 1:
+                imageView?.image = Asset.Empty.food.image
+                text = L10n.Items.Empty.foodDescription
+            case 2:
+                imageView?.image = Asset.Empty.hatchingPotions.image
+                text = L10n.Items.Empty.potionDescription
+            case 3:
+                imageView?.image = Asset.Empty.special.image
+                text = L10n.Items.Empty.specialDescription
+            case 4:
+                imageView?.image = Asset.Empty.quests.image
+                text = L10n.Items.Empty.questDescription
+            default:
+                return cell
+            }
+            let attributedText = NSMutableAttributedString(string: text)
+            for word in [L10n.Locations.market, L10n.Locations.questShop, L10n.subscribe] {
+                let range = attributedText.mutableString.range(of: word, options: .caseInsensitive)
+                if range.location != NSNotFound {
+                    attributedText.addAttributes([NSAttributedString.Key.foregroundColor: theme.tintColor], range: range)
+                }
+            }
+            descriptionView?.attributedText = attributedText
+            return cell
         }
-        return cell
     }
     
     func canHatch(_ firstItem: ItemProtocol, otherItem: ItemProtocol) -> Bool {
-        guard let egg = firstItem as? EggProtocol ?? otherItem as? EggProtocol else { return false }
-        guard let potion = firstItem as? HatchingPotionProtocol ?? otherItem as? HatchingPotionProtocol else { return false }
+        guard let egg = firstItem as? EggProtocol ?? otherItem as? EggProtocol else {
+            return false
+        }
+        guard let potion = firstItem as? HatchingPotionProtocol ?? otherItem as? HatchingPotionProtocol else {
+            return false
+        }
         if ownedPets.contains("\(egg.key ?? "")-\(potion.key ?? "")") || (egg.key == "Gryphon" && potion.key == "RoyalPurple") {
             return false
         }

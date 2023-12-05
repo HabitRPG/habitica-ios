@@ -155,7 +155,7 @@ class InAppRewardCell: UICollectionViewCell {
 
         if let user = user {
             if currency == .gold {
-                canAfford = price < user.stats?.gold ?? 0
+                canAfford = price <= user.stats?.gold ?? 0
             } else {
                 canAfford = true
             }

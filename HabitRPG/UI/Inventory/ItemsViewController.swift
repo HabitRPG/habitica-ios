@@ -73,6 +73,14 @@ class ItemsViewController: BaseTableViewController {
             }
         } else if let item = item {
             showActionSheet(item: item, withSource: tableView.cellForRow(at: indexPath))
+        } else {
+            if indexPath.section < 3 {
+                RouterHandler.shared.handle(.market)
+            } else if indexPath.section == 3 {
+                RouterHandler.shared.handle(.subscription)
+            } else  if indexPath.section == 4 {
+                RouterHandler.shared.handle(.questShop)
+            }
         }
     }
     
@@ -96,11 +104,7 @@ class ItemsViewController: BaseTableViewController {
     
     @objc
     func openMarket() {
-        let storyboard = UIStoryboard(name: "Shop", bundle: nil)
-        if let viewController = storyboard.instantiateInitialViewController() as? ShopViewController {
-            viewController.shopIdentifier = Constants.MarketKey
-            self.navigationController?.pushViewController(viewController, animated: true)
-        }
+        RouterHandler.shared.handle(.market)
     }
 
     private func showActionSheet(item: ItemProtocol, withSource sourceView: UIView?) {
