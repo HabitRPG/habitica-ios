@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 
-public class ReviveUserCall: ResponseObjectCall<UserProtocol, APIUser> {
+public class ReviveUserCall: ResponseObjectCall<UserItemsProtocol, APIUserItems> {
     public init() {
         super.init(httpMethod: .POST, endpoint: "user/revive")
     }

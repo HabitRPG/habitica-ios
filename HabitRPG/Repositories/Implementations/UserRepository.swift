@@ -310,22 +310,27 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func revive() -> Signal<UserProtocol?, Never> {
-        let call = ReviveUserCall()
+        let call = ReviveUserCall().objectSignal
         
-        return call.objectSignal
-            .on(value: { user in
-                self.localRepository.getUser(self.currentUserId ?? "").take(first: 1).on(value: { currentUser in
-                    if let brokenItem = user?.items?.gear?.owned.first(where: { equipment in
+        return call
+            .on(value: { items in
+                self.localRepository.getUser(self.currentUserId ?? "").take(first: 1).map({ currentUser in
+                    return items?.gear?.owned.first(where: { equipment in
                         equipment.isOwned == false && currentUser.items?.gear?.owned.contains(where: { $0.key == equipment.key && $0.isOwned == true }) == true
-                    }) {
+                    })
+                })
+                .flatMap(.latest, { brokenItem in
+                    return InventoryLocalRepository().getGear(predicate: NSPredicate(format: "key == %@", brokenItem?.key ?? ""))
+                }).on(value: { items in
+                    if let itemText = items.value.first?.text {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            ToastManager.show(text: "Your \(brokenItem.key ?? "") broke", color: .black)
+                            ToastManager.show(text: "Your \(itemText) broke", color: .black)
                         }
                     }
-                }).start()
+                })
+                .start()
             })
             .flatMap(.latest, {[weak self] (_) in
-                
             return self?.retrieveUser() ?? Signal.empty
         })
     }

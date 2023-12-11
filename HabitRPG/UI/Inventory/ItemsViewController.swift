@@ -96,6 +96,17 @@ class ItemsViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if section == (dataSource.numberOfSections(in: tableView) - 1) {
             let view = Bundle.main.loadNibNamed("ShopAdFooter", owner: self, options: nil)?.last as? UIView
+            (view?.viewWithTag(21) as? UILabel)?.textColor = ThemeService.shared.theme.primaryTextColor
+            (view?.viewWithTag(22) as? UILabel)?.textColor = ThemeService.shared.theme.secondaryTextColor
+            if let text = (view?.viewWithTag(22) as? UILabel)?.text {
+                let attributedText = NSMutableAttributedString(string: text)
+                let range = attributedText.mutableString.range(of: L10n.Locations.market, options: .caseInsensitive)
+                    if range.location != NSNotFound {
+                        attributedText.addAttributes([NSAttributedString.Key.foregroundColor: ThemeService.shared.theme.tintColor], range: range)
+                }
+                (view?.viewWithTag(22) as? UILabel)?.attributedText = attributedText
+            }
+            
             view?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openMarket)))
             return view
         } else {

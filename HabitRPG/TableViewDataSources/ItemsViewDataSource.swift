@@ -219,7 +219,7 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
             let titleView = cell.viewWithTag(24) as? UILabel
             titleView?.textColor = theme.primaryTextColor
             let descriptionView = cell.viewWithTag(25) as? UILabel
-            descriptionView?.textColor = theme.primaryTextColor
+            descriptionView?.textColor = theme.secondaryTextColor
             titleView?.text = L10n.noX(self.tableView(tableView, titleForHeaderInSection: indexPath.section) ?? L10n.Titles.items)
             let text: String
             switch indexPath.section {

@@ -198,7 +198,17 @@ struct ArmoireView: View {
     @State var confettiCounter = 0
     @State var showArmoireAlert = false
     
+    private var paddingScaling: CGFloat {
+        if UIScreen.main.bounds.height <= 667 {
+            return 0.85
+        } else {
+            return 1
+        }
+    }
+    
     var body: some View {
+        let paddingScaling = paddingScaling
+        let _ = print(paddingScaling)
         VStack(spacing: 0) {
             Spacer()
             HStack(spacing: 0) {
@@ -224,13 +234,14 @@ struct ArmoireView: View {
             .opacity(viewModel.hideGold ? 0.0 : 1.0)
             .animation(.linear, value: viewModel.hideGold)
             .cornerRadius(16)
-            .padding(.top, 24)
-            .padding(.bottom, 16)
+            .padding(.top, 24 * paddingScaling)
+            .padding(.bottom, 16 * paddingScaling)
             Spacer()
             
             ZStack {
                     PixelArtView(source: viewModel.icon)
                         .frame(width: viewModel.iconWidth, height: viewModel.iconHeight)
+                        .opacity(1)
                         .offset(y: isBobbing ? 5 : -5)
                     .frame(width: 158, height: 158)
                     .background(Color(UIColor.gray700))
@@ -248,25 +259,28 @@ struct ArmoireView: View {
                     .offset(x: -70, y: -60)
                 ArmoirePlus()
                     .offset(x: 60, y: 70)
-            }.opacity(viewModel.type != nil ? 1.0 : 0.0)
+            }
+            .opacity(viewModel.type != nil ? 1.0 : 0.0)
             Text(viewModel.title)
                 .foregroundColor(.primaryTextColor)
                 .font(.system(size: 28, weight: .bold))
                 .multilineTextAlignment(.center)
-                .padding(.top, 24)
+                .padding(.top, 24 * paddingScaling)
                 .padding(.bottom, 8)
                 .frame(maxWidth: 310)
                 .padding(.horizontal, 32)
                 .opacity(viewModel.type != nil ? 1.0 : 0.0)
                     .animation(.linear, value: viewModel.type)
-            Text(viewModel.subtitle)
-                .foregroundColor(.ternaryTextColor)
-                .multilineTextAlignment(.center)
-                .font(.system(size: 22))
-                .frame(maxWidth: 310)
-                .padding(.horizontal, 32)
-                .opacity(viewModel.type != nil ? 1.0 : 0.0)
+            if paddingScaling >= 1 {
+                Text(viewModel.subtitle)
+                    .foregroundColor(.ternaryTextColor)
+                    .multilineTextAlignment(.center)
+                    .font(.system(size: 22))
+                    .frame(maxWidth: 310)
+                    .padding(.horizontal, 32)
+                    .opacity(viewModel.type != nil ? 1.0 : 0.0)
                     .animation(.linear, value: viewModel.type)
+            }
             Spacer()
             VStack {
                 Text(L10n.Armoire.equipmentRemaining(viewModel.remainingCount))
@@ -298,6 +312,7 @@ struct ArmoireView: View {
                             viewModel.isUsingPerk = true
                             viewModel.useSubBenefit {
                                 viewModel.usedPerk = true
+                                confettiCounter += 1
                             }
                         }, label: {
                             Group {
@@ -321,7 +336,7 @@ struct ArmoireView: View {
                         .padding(.bottom, 8)
                         .opacity(viewModel.usedPerk ? 0.0 : 1.0)
                         .animation(.linear, value: viewModel.usedPerk)
-                        Text(L10n.Faint.subbedFooter)
+                        Text(L10n.Armoire.subbedFooter)
                             .foregroundColor(.white)
                             .font(.system(size: 15, weight: .semibold))
                             .multilineTextAlignment(.center)
@@ -331,6 +346,7 @@ struct ArmoireView: View {
                         .foregroundColor(Color(UIColor.purple600))
                         .font(.system(size: 15))
                         .padding(.top, 4)
+                        .padding(.bottom, (UIApplication.shared.findKeyWindow()?.safeAreaInsets.bottom ?? 0) + 12)
                         .onTapGesture {
                             showArmoireAlert = true
                         }
@@ -354,7 +370,7 @@ struct ArmoireView: View {
                     }
                     .padding(.horizontal, 24)
                     .padding(.top, 16)
-                    .padding(.bottom, 38)
+                    .padding(.bottom, (UIApplication.shared.findKeyWindow()?.safeAreaInsets.bottom ?? 0) + 12)
                     .frame(maxWidth: .infinity)
                     .edgesIgnoringSafeArea(.bottom)
                     .background(RotatingLinearGradient(colors: gradientColors, animationDuration: 20.0).edgesIgnoringSafeArea(.bottom))
@@ -362,7 +378,7 @@ struct ArmoireView: View {
                     .padding(.top, 8)
                 }
             }
-            .padding(.top, 60)
+            .padding(.top, 70)
             .frame(minHeight: UIScreen.main.bounds.height > 700 ? 330 : 250, alignment: .center)
             .frame(maxWidth: .infinity)
             .edgesIgnoringSafeArea(.bottom)

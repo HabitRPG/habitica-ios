@@ -10,17 +10,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="141"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="156"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="hZz-ri-ffh">
-                    <rect key="frame" x="0.0" y="16" width="300" height="125"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="hZz-ri-ffh">
+                    <rect key="frame" x="0.0" y="36" width="300" height="120"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" image="Shop" translatesAutoresizingMaskIntoConstraints="NO" id="xtN-tw-OOb">
                             <rect key="frame" x="0.0" y="0.0" width="300" height="52"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Not getting the right items from tasks?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxm-Bm-MUf">
-                            <rect key="frame" x="0.0" y="52" width="300" height="16"/>
+                        <label opaque="NO" userInteractionEnabled="NO" tag="21" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Not getting the right items from tasks?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxm-Bm-MUf">
+                            <rect key="frame" x="0.0" y="56" width="300" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="16" id="K4U-Cm-Oyq"/>
                             </constraints>
@@ -28,8 +28,8 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Check out the Market to buy just the things you need!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6q-WL-fak">
-                            <rect key="frame" x="0.0" y="68" width="300" height="31.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" tag="22" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Check out the Market to buy just the things you need!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6q-WL-fak">
+                            <rect key="frame" x="0.0" y="76" width="300" height="31.5"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="16" id="jK1-8S-J9e"/>
                             </constraints>
@@ -38,7 +38,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hr3-Rf-XTs">
-                            <rect key="frame" x="0.0" y="99.5" width="300" height="25.5"/>
+                            <rect key="frame" x="0.0" y="111.5" width="300" height="8.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="23" id="WgU-Po-c7d"/>
@@ -56,10 +56,10 @@
                 <constraint firstAttribute="bottom" secondItem="hZz-ri-ffh" secondAttribute="bottom" id="Emk-sS-6N3"/>
                 <constraint firstItem="hZz-ri-ffh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="XNn-7o-Zh7"/>
                 <constraint firstAttribute="trailing" secondItem="hZz-ri-ffh" secondAttribute="trailing" priority="999" id="tDx-fa-2db"/>
-                <constraint firstItem="hZz-ri-ffh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="xoW-nA-ts3"/>
+                <constraint firstItem="hZz-ri-ffh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="36" id="xoW-nA-ts3"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="24" y="-195.6521739130435"/>
+            <point key="canvasLocation" x="24" y="-188.90554722638683"/>
         </view>
     </objects>
     <resources>

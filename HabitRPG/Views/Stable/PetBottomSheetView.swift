@@ -26,7 +26,7 @@ struct PetBottomSheetView: View, Dismissable {
     
     @State private var showFeedResponse = false
     @State private var feedMessage: String?
-    @State private var feedValue: Float = 0
+    @State private var feedValue: Float?
     
     private func getFoodName() -> String {
         switch pet.potion {
@@ -73,7 +73,8 @@ struct PetBottomSheetView: View, Dismissable {
                         .transition(.opacity)
                         .padding(.horizontal, 6)
                         .padding(.top, 96)
-                    ProgressView(value: feedValue / 50)
+                        .zIndex(3)
+                    ProgressView(value: (feedValue ?? Float(trained)) / 50)
                         .animation(.smooth, value: feedValue)
                         .padding(.horizontal, 4)
                         .padding(.vertical, 3)
@@ -82,6 +83,7 @@ struct PetBottomSheetView: View, Dismissable {
                         .frame(width: 200)
                         .transition(.opacity)
                         .padding(.top, 6)
+                        .zIndex(4)
                 }
             }
             if trained > 0 && pet.type != "special" && canRaise {
