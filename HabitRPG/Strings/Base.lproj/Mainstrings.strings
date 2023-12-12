@@ -1282,3 +1282,8 @@
 "items.empty.quest_description" = "Get Quests from leveling up, log in bonuses, or the Quest Shop!";
 "items.empty.special_description" = "Get transformation items during Seasonal Galas or subscribe for a mystery box of equipment each month!";
 "you_raised_pet" = "You raised your %@ Pet into a Mount!";
+"x_gems_month" = "%d gems a month";
+"hourglass_in_x_months" = "Hourglass in %d months";
+"1_hourglass" = "1 Hourglass";
+"x_hourglasses" = "%d Hourglasses";
+

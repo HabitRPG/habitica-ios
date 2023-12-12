@@ -8,6 +8,8 @@ public enum L10n {
   /// Update bundle if you need to change app language
   static var bundle: Bundle?
 
+  /// 1 Hourglass
+  public static var _1Hourglass: String { return L10n.tr("Mainstrings", "1_hourglass") }
   /// Abort
   public static var abort: String { return L10n.tr("Mainstrings", "abort") }
   /// About
@@ -497,6 +499,10 @@ public enum L10n {
   /// +%d Mystic Hourglass
   public static func hourglassCount(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "hourglass_count", p1)
+  }
+  /// Hourglass in %d months
+  public static func hourglassInXMonths(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "hourglass_in_x_months", p1)
   }
   /// Mystic Hourglasses are an extremely rare form of currency you can only receive for subscribing to Habitica for three consecutive months or more. They are used in the Time Traveler’s shop to buy past gear sets, pets, mounts, animated backgrounds, or even special quests.\n\nYou can receive up to four Mystic Hourglasses a year. The time they are rewarded is based on your subscription renewal schedule. They are sent out on the first day of a new month after your last subscription payment that qualified you for an hourglass. See the [Subscription] page for more details.
   public static var hourglassesDescription: String { return L10n.tr("Mainstrings", "hourglasses_description") }
@@ -1211,6 +1217,14 @@ public enum L10n {
   /// %d Gems
   public static func xGems(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "x_gems", p1)
+  }
+  /// %d gems a month
+  public static func xGemsMonth(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "x_gems_month", p1)
+  }
+  /// %d Hourglasses
+  public static func xHourglasses(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "x_hourglasses", p1)
   }
   /// %d Items pending
   public static func xItemsFound(_ p1: Int) -> String {

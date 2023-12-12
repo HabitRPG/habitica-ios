@@ -58,6 +58,7 @@ struct SubscriptionOptionViewUI<Price: View, Recurring: View, Tag: View>: View {
     let price: Price
     let recurring: Recurring
     let tag: Tag
+    let bubbleTexts: [String]
     
     var isSelected: Bool
     
@@ -78,6 +79,16 @@ struct SubscriptionOptionViewUI<Price: View, Recurring: View, Tag: View>: View {
                 VStack(alignment: .leading, spacing: 4) {
                     price.font(.system(size: 20, weight: .semibold))
                     recurring.font(.system(size: 13, weight: .semibold))
+                    HStack(spacing: 4) {
+                        ForEach(enumerating: bubbleTexts) { bubbleText in
+                            Text(bubbleText)
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 8)
+                                .background(Color(isSelected ? UIColor.purple400 : UIColor.purple100))
+                                .cornerRadius(16, style: .continuous)
+                        }.foregroundColor(Color(isSelected ? UIColor.white : UIColor.purple600))
+                            .font(.system(size: 12))
+                    }
                 }.frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(16)
@@ -91,8 +102,46 @@ struct SubscriptionOptionViewUI<Price: View, Recurring: View, Tag: View>: View {
 }
 
 extension SubscriptionOptionViewUI where Tag == EmptyView {
-    init(price: Price, recurring: Recurring, isSelected: Bool) {
-        self.init(price: price, recurring: recurring, tag: EmptyView(), isSelected: isSelected)
+    init(price: Price, recurring: Recurring, bubbleTexts: [String], isSelected: Bool) {
+        self.init(price: price, recurring: recurring, tag: EmptyView(), bubbleTexts: bubbleTexts, isSelected: isSelected)
+    }
+}
+
+struct SubscriptionOptionStack: View {
+    @ObservedObject var viewModel: SubscriptionViewModel
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            if viewModel.presentationPoint != .timetravelers {
+                SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[0])),
+                                         recurring: Text(L10n.subscriptionDuration(L10n.month)),
+                                         bubbleTexts: [L10n.xGemsMonth(25), L10n.hourglassInXMonths(3)],
+                                         isSelected: PurchaseHandler.subscriptionIdentifiers[0] == viewModel.selectedSubscription)
+            }
+            SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[1])),
+                                     recurring: Text(L10n.subscriptionDuration(L10n.xMonths(3))),
+                                     bubbleTexts: [L10n.xGemsMonth(30), L10n._1Hourglass],
+                                     isSelected: PurchaseHandler.subscriptionIdentifiers[1] == viewModel.selectedSubscription)
+            if viewModel.presentationPoint == nil {
+                SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[2])),
+                                         recurring: Text(L10n.subscriptionDuration(L10n.xMonths(6))),
+                                         bubbleTexts: [L10n.xGemsMonth(35), L10n.xHourglasses(2)],
+                                         isSelected: PurchaseHandler.subscriptionIdentifiers[2] == viewModel.selectedSubscription)
+            }
+            SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[3])), recurring: Text(L10n.subscriptionDuration(L10n.xMonths(12))),
+                                     tag: HStack(spacing: 0) {
+                Image(uiImage: Asset.flagFlap.image.withRenderingMode(.alwaysTemplate)).foregroundColor(Color(hexadecimal: "77F4C7"))
+                Text("Save 20%").foregroundColor(Color(UIColor.teal1)).font(.system(size: 12, weight: .semibold))
+                    .frame(height: 24)
+                    .padding(.horizontal, 4)
+                    .background(LinearGradient(colors: [
+                        Color(hexadecimal: "77F4C7"),
+                        Color(hexadecimal: "72CFFF")
+                ], startPoint: .leading, endPoint: .trailing))
+            },
+                                     bubbleTexts: [L10n.xGemsMonth(45), L10n.xHourglasses(4)],
+                                     isSelected: PurchaseHandler.subscriptionIdentifiers[3] == viewModel.selectedSubscription)
+        }
     }
 }
 
@@ -296,29 +345,7 @@ struct SubscriptionPage: View {
                             .cornerRadius(12)
                             .offset(y: 3.0 + (CGFloat(viewModel.availableSubscriptions.firstIndex(of: viewModel.selectedSubscription) ?? 0) * 112.0))
                             .animation(.interpolatingSpring(stiffness: 500, damping: 25), value: viewModel.selectedSubscription)
-                        VStack(spacing: 0) {
-                            if viewModel.presentationPoint != .timetravelers {
-                                SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[0])), recurring: Text(L10n.subscriptionDuration(L10n.month)),
-                                                         isSelected: PurchaseHandler.subscriptionIdentifiers[0] == viewModel.selectedSubscription)
-                            }
-                            SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[1])), recurring: Text(L10n.subscriptionDuration(L10n.xMonths(3))),
-                                                     isSelected: PurchaseHandler.subscriptionIdentifiers[1] == viewModel.selectedSubscription)
-                            if viewModel.presentationPoint == nil {
-                                SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[2])), recurring: Text(L10n.subscriptionDuration(L10n.xMonths(6))),
-                                                         isSelected: PurchaseHandler.subscriptionIdentifiers[2] == viewModel.selectedSubscription)
-                            }
-                            SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[3])), recurring: Text(L10n.subscriptionDuration(L10n.xMonths(12))),
-                                                     tag: HStack(spacing: 0) {
-                                Image(uiImage: Asset.flagFlap.image.withRenderingMode(.alwaysTemplate)).foregroundColor(Color(hexadecimal: "77F4C7"))
-                                Text("Save 20%").foregroundColor(Color(UIColor.teal1)).font(.system(size: 12, weight: .semibold))
-                                    .frame(height: 24)
-                                    .padding(.horizontal, 4)
-                                    .background(LinearGradient(colors: [
-                                        Color(hexadecimal: "77F4C7"),
-                                        Color(hexadecimal: "72CFFF")
-                                ], startPoint: .leading, endPoint: .trailing))
-                            }, isSelected: PurchaseHandler.subscriptionIdentifiers[3] == viewModel.selectedSubscription)
-                        }
+                        SubscriptionOptionStack(viewModel: viewModel)
                     }
                 }
                 Group {
