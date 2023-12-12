@@ -190,6 +190,8 @@ class UserProfileViewController: BaseTableViewController {
         } else if isBlocked && section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BlockedCell", for: indexPath)
             cell.contentView.backgroundColor = ThemeService.shared.theme.errorColor
+            (cell.viewWithTag(21) as? UILabel)?.textColor = .white
+            (cell.viewWithTag(22) as? UILabel)?.textColor = .white
             return cell
         }
         switch section {
