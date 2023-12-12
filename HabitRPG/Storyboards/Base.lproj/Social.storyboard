@@ -998,10 +998,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="HWb-Gd-SeY" customClass="NetworkImageView" customModule="Habitica" customModuleProvider="target">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HWb-Gd-SeY" customClass="NetworkImageView" customModule="Habitica" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" priority="500" constant="1" id="BzG-BJ-mWb"/>
+                                                <constraint firstAttribute="height" constant="1" identifier="height" id="BzG-BJ-mWb"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
@@ -1281,7 +1281,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="plR-qj-Mu3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2888.8000000000002" y="742.5787106446777"/>
+            <point key="canvasLocation" x="3058" y="743"/>
         </scene>
         <!--Party Invite View Controller-->
         <scene sceneID="wtY-bt-yhc">
@@ -1511,7 +1511,7 @@
                 <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="GiftSubscriptionNavController" id="htQ-ij-W4p" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YYB-fP-Xtx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3685" y="507"/>
+            <point key="canvasLocation" x="3859" y="521"/>
         </scene>
         <!--Group Chat View Controller-->
         <scene sceneID="lKL-ex-jgh">
@@ -2639,7 +2639,7 @@
                 <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="GiftGemsNavController" id="HSy-Iu-F74" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KH2-sX-hwL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3685" y="569"/>
+            <point key="canvasLocation" x="3860" y="583"/>
         </scene>
         <!--Send Party Invite View Controller-->
         <scene sceneID="APB-7f-YHU">

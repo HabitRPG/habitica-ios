@@ -220,7 +220,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
                 }
                 cell.detailTextLabel?.text = self?.user?.profile?.photoUrl
             }.onCellSelection { _, _ in
-                self.showEditAlert(title: L10n.Settings.changePhotoUrl, name: L10n.photoUrl, value: self.user?.profile?.photoUrl, path: "profile.url")
+                self.showEditAlert(title: L10n.Settings.changePhotoUrl, name: L10n.photoUrl, value: self.user?.profile?.photoUrl, path: "profile.imageUrl")
             }
         }
     }

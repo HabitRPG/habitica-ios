@@ -148,7 +148,9 @@ class ItemsViewController: BaseTableViewController {
             } else if item.itemType == ItemType.quests {
                 BottomSheetMenuitem(title: L10n.showDetails) {[weak self] in
                     if let quest = item as? QuestProtocol {
-                        self?.showQuestDialog(quest: quest)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            self?.showQuestDialog(quest: quest)
+                        }
                     }
                 }
                 BottomSheetMenuitem(title: L10n.inviteParty) {[weak self] in

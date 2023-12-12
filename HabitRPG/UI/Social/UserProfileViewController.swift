@@ -239,7 +239,13 @@ class UserProfileViewController: BaseTableViewController {
             case 4:
                 if let imageUrl = member?.profile?.photoUrl {
                     let imageView = cell.viewWithTag(1) as? NetworkImageView
-                    imageView?.kf.setImage(with: URL(string: imageUrl))
+                    imageView?.kf.setImage(with: URL(string: imageUrl), completionHandler: { result in
+                        if let size = try? result.get().image.size {
+                            imageView?.constraints.first(where: { constraint in
+                                return constraint.identifier == "height"
+                            })?.constant = size.height * ((imageView?.bounds.width ?? 1) / size.width)
+                        }
+                    })
                 }
             case 5:
                 cell.textLabel?.text = L10n.Member.memberSince
