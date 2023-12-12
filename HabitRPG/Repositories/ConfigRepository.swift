@@ -282,7 +282,7 @@ class ConfigRepository: NSObject {
     var testingLevel: TestingLevel {
         #if targetEnvironment(simulator)
             return .simulator
-        #endif
+        #else
         let value = Bundle.main.infoDictionary?["TESTING_LEVEL"] as? String
         switch value {
         case "debug":
@@ -294,6 +294,7 @@ class ConfigRepository: NSObject {
         default:
             return .production
         }
+#endif
     }
     
     @objc
@@ -307,6 +308,7 @@ class ConfigRepository: NSObject {
             for event in worldState?.events ?? [] where event.npcImageSuffix?.isEmpty == false {
                 return event.npcImageSuffix
             }
+            return nil
         }
         return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).stringValue
     }

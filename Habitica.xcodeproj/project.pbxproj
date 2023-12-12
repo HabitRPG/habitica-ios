@@ -195,6 +195,7 @@
 		2942FAEF26777E00003F6500 /* HabiticaLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2942FAEE26777E00003F6500 /* HabiticaLogger.swift */; };
 		2942FAF0267783F7003F6500 /* HabiticaLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2942FAEE26777E00003F6500 /* HabiticaLogger.swift */; };
 		2942FAF1267783F8003F6500 /* HabiticaLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2942FAEE26777E00003F6500 /* HabiticaLogger.swift */; };
+		2945AE972B285D000022F3CC /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 2945AE962B285D000022F3CC /* PanModal */; };
 		294973D2208118C100F02AC3 /* ImageOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973D1208118C100F02AC3 /* ImageOverlayView.swift */; };
 		294EB59D1FA0A7E4006083BD /* FixCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */; };
 		294F5D6628CA1DCB00760F6C /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 294F5D6528CA1DCB00760F6C /* ConfettiSwiftUI */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -1375,6 +1376,7 @@
 				2938ED2E28B4EDC700E995A2 /* FirebaseAnalytics in Frameworks */,
 				292DEE3C204D9D360086D5F7 /* Habitica_Database.framework in Frameworks */,
 				292DEE3A204D9D290086D5F7 /* Habitica_Models.framework in Frameworks */,
+				2945AE972B285D000022F3CC /* PanModal in Frameworks */,
 				294F5D6628CA1DCB00760F6C /* ConfettiSwiftUI in Frameworks */,
 				2938ED3828B4EDC700E995A2 /* FirebaseRemoteConfigSwift in Frameworks */,
 				2938ED4328B4EF5D00E995A2 /* SwiftyStoreKit in Frameworks */,
@@ -2864,6 +2866,7 @@
 				2953D84428B7772B00DC456E /* BottomSheet */,
 				294F5D6528CA1DCB00760F6C /* ConfettiSwiftUI */,
 				29A3FD2E296720AF007D85B2 /* SwiftUIX */,
+				2945AE962B285D000022F3CC /* PanModal */,
 			);
 			productName = HabitRPG;
 			productReference = D9EB4E8B18CB4A9400BB2094 /* Habitica.app */;
@@ -2989,6 +2992,7 @@
 				2953D84328B7772A00DC456E /* XCRemoteSwiftPackageReference "BottomSheet" */,
 				294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 				29A3FD2D296720AF007D85B2 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+				2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal" */,
 			);
 			productRefGroup = D9EB4E8C18CB4A9400BB2094 /* Products */;
 			projectDirPath = "";
@@ -5558,6 +5562,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/slackhq/PanModal.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.7;
+			};
+		};
 		294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
@@ -5705,6 +5717,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */;
 			productName = ReactiveSwift;
+		};
+		2945AE962B285D000022F3CC /* PanModal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal" */;
+			productName = PanModal;
 		};
 		294F5D6528CA1DCB00760F6C /* ConfettiSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;

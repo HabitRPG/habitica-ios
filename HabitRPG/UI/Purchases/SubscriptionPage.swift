@@ -12,6 +12,8 @@ import SwiftyStoreKit
 import FirebaseAnalytics
 import ReactiveSwift
 import Habitica_Models
+import PanModal
+import SwiftUIX
 
 enum PresentationPoint {
     case armoire
@@ -241,11 +243,7 @@ struct SubscriptionPage: View {
     var textColor: Color = .white
     
     var body: some View {
-        ScrollView {
             LazyVStack(spacing: 0) {
-                Rectangle().fill().foregroundColor(Color(UIColor.gray400)).frame(width: 22, height: 3).cornerRadius(1.5)
-                    .padding(.top, 10)
-                    .padding(.bottom, 16)
                 if let point = viewModel.presentationPoint {
                     Text(point.headerText)
                         .multilineTextAlignment(.center)
@@ -359,12 +357,10 @@ struct SubscriptionPage: View {
             .foregroundColor(textColor)
             .padding(.horizontal, 20)
             .padding(.bottom, 50)
+            .padding(.top, 16)
             .background(backgroundColor.ignoresSafeArea())
-        }
-        .frame(maxHeight: .infinity, alignment: .top)
         .background(backgroundColor)
         .cornerRadius([.topLeading, .topTrailing], 12)
-        .ignoresSafeArea(.all, edges: .bottom)
     }
 }
 
@@ -379,13 +375,65 @@ struct SubscriptionPagePreview: PreviewProvider {
     }
 }
 
-class SubscriptionModalViewController: HostingBottomSheetController<SubscriptionPage> {
+class HostingPanModal<Content: View>: BaseUIViewController, PanModalPresentable {
+    
+    let scrollView = UIScrollView()
+    var hostingView: UIHostingView<SubscriptionPage>?
+    
+    var panScrollable: UIScrollView? {
+        return scrollView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.addSubview(scrollView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
+        scrollView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
+
+        hostingView?.translatesAutoresizingMaskIntoConstraints = false
+        if let view = hostingView {
+            scrollView.addSubview(view)
+            
+            view.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true
+            view.topAnchor.constraint(equalTo: self.scrollView.topAnchor).isActive = true
+            view.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true
+            view.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true
+            view.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+            
+            hostingView?.shouldResizeToFitContent = true
+        }
+    }
+
+    var shortFormHeight: PanModalHeight {
+        .contentHeight(300)
+    }
+
+    var cornerRadius: CGFloat = 12
+    
+    func show() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            if var topController = UIApplication.topViewController() {
+                if let tabBarController = topController.tabBarController {
+                    topController = tabBarController
+                }
+                topController.presentPanModal(self)
+            }
+        }
+    }
+}
+
+class SubscriptionModalViewController: HostingPanModal<SubscriptionPage> {
     let viewModel: SubscriptionViewModel
     let userRepository = UserRepository()
     
     init(presentationPoint: PresentationPoint?) {
         viewModel = SubscriptionViewModel(presentationPoint: presentationPoint)
-        super.init(rootView: SubscriptionPage(viewModel: viewModel))
+        super.init(nibName: nil, bundle: nil)
         viewModel.onSubscriptionSuccessful = {
             self.dismiss()
         }
@@ -410,13 +458,12 @@ class SubscriptionModalViewController: HostingBottomSheetController<Subscription
     }
     
     override func viewDidLoad() {
+        hostingView = UIHostingView(rootView: SubscriptionPage(viewModel: viewModel))
         super.viewDidLoad()
+        scrollView.backgroundColor = .purple300
+        
         userRepository.getUser().on(value: {[weak self] user in
             self?.viewModel.isSubscribed = user.isSubscribed
         }).start()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
     }
 }
