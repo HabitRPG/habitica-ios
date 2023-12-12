@@ -72,8 +72,7 @@ class SharingManager {
     static func addSharingBanner(inImage image: UIImage) -> UIImage? {
         let bannerHeight: CGFloat = 18
 
-        let scale = UIScreen.main.scale
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: image.size.width, height: image.size.height + bannerHeight), false, scale)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: image.size.width, height: image.size.height + bannerHeight), false, 1)
         if let context = UIGraphicsGetCurrentContext() {
             
             context.setFillColor(UIColor.white.cgColor)
