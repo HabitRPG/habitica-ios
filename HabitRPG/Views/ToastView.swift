@@ -223,7 +223,11 @@ class ToastView: UIView {
             titleLabel.text = title
             titleLabel.sizeToFit()
             titleLabel.numberOfLines = -1
-            titleLabel.font = UIFont.systemFont(ofSize: 13)
+            if options.backgroundColor == .subscriberPerk {
+                titleLabel.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
+            } else {
+                titleLabel.font = UIFont.systemFont(ofSize: 13)
+            }
             titleLabel.textAlignment = .center
         } else {
             titleLabel.isHidden = true

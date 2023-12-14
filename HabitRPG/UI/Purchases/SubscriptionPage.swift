@@ -232,16 +232,20 @@ class SubscriptionViewModel: ObservableObject {
                         if status {
                             if product.needsFinishTransaction {
                                 SwiftyStoreKit.finishTransaction(product.transaction)
-                                if let action = self.onSubscriptionSuccessful {
-                                    action()
-                                }
                             }
                         }
+                        self.dismiss()
                     }
                 }
             case .error(let error):
                 logger.log("Receipt verification failed: \(error)", level: .error)
             }
+        }
+    }
+    
+    private func dismiss() {
+        if let action = self.onSubscriptionSuccessful {
+            action()
         }
     }
     
