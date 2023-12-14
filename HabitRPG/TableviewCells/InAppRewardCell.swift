@@ -127,6 +127,11 @@ class InAppRewardCell: UICollectionViewCell {
             currencyView.isHidden = false
         }
         
+        if reward.key == "gem" {
+            infoImageView.image = Asset.subBenefitIndicator.image
+            infoImageView.isHidden = false
+        }
+        
         let theme = ThemeService.shared.theme
         backgroundColor = theme.contentBackgroundColor
         containerView.backgroundColor = theme.windowBackgroundColor
