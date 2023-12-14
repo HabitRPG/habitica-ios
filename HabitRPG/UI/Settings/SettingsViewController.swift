@@ -667,7 +667,7 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.height = { 68 }
                     cell.imageView?.cornerRadius = 12
                     cell.imageView?.contentMode = .scaleAspectFit
-                    cell.imageView?.image = UIImage(named: filename)
+                    cell.imageView?.image = UIImage(named: filename)?.resize(maxWidthHeight: 60)
                     
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                 }
