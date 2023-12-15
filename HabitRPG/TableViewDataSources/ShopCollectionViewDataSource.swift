@@ -28,6 +28,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     
     private var ownedItems = [String: OwnedItemProtocol]()
     private var pinnedItems = [String?]()
+    private var completedQuests = [String?]()
     private var user: UserProtocol?
     private var userClass: String? {
         return user?.stats?.habitClass
@@ -90,6 +91,12 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             }).on(value: {[weak self]rewards in
                 self?.pinnedItems = rewards
             }).start())
+        
+        disposable.add(userRepository.getAchievements().map { achievements in
+            achievements.value.filter { $0.isQuestAchievement }
+        }.on(value: {[weak self] achievements in
+            self?.completedQuests = achievements.map({ $0.key })
+        }).start())
         
         disposable.add(inventoryRepository.getOwnedItems().map({ (items, _) -> [String: OwnedItemProtocol] in
             var ownedItems: [String: OwnedItemProtocol] = [:]
@@ -251,6 +258,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                     itemCell.itemsLeft = ownedItem.numberOwned
                 }
                 itemCell.isPinned = pinnedItems.contains(item.key)
+                if item.type == "quests" || item.pinType == "quests" {
+                    itemCell.isChecked = completedQuests.contains(item.key)
+                }
             }
             return cell
         }

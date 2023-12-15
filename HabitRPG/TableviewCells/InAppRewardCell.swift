@@ -16,6 +16,7 @@ class InAppRewardCell: UICollectionViewCell {
     @IBOutlet weak var infoImageView: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var pinnedIndicatorView: UIImageView!
+    @IBOutlet weak var checkmarkView: UIImageView!
     @IBOutlet weak var purchaseConfirmationView: UIImageView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var currencyBackgroundView: UIView!
@@ -85,7 +86,16 @@ class InAppRewardCell: UICollectionViewCell {
         didSet {
             pinnedIndicatorView.isHidden = !isPinned
             if isPinned {
-                pinnedIndicatorView.image = HabiticaIcons.imageOfPinnedItem
+                pinnedIndicatorView.image = HabiticaIcons.imageOfPinnedItem.withRenderingMode(.alwaysTemplate)
+            }
+        }
+    }
+    
+    public var isChecked = false {
+        didSet {
+            checkmarkView.isHidden = !isChecked
+            if isChecked {
+                checkmarkView.image = Asset.checkmarkSmall.image.withRenderingMode(.alwaysTemplate)
             }
         }
     }
@@ -137,6 +147,8 @@ class InAppRewardCell: UICollectionViewCell {
         containerView.backgroundColor = theme.windowBackgroundColor
         currencyBackgroundView.backgroundColor = theme.offsetBackgroundColor.withAlphaComponent(0.3)
         unlockLabel.textColor = theme.secondaryTextColor
+        pinnedIndicatorView.tintColor = theme.dimmedTextColor
+        checkmarkView.tintColor = theme.dimmedTextColor
     }
     
     func wasRecentlyPurchased(_ lastPurchase: Date) -> Bool {
