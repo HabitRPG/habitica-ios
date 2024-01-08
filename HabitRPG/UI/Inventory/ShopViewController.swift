@@ -38,6 +38,7 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
     }
     
     var shopIdentifier: String?
+    var openToSection: String?
     
     private lazy var bannerView: NPCBannerView = {
         return NPCBannerView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 156))
@@ -70,7 +71,7 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         
         refresh()
         
-        HabiticaAnalytics.shared.logNavigationEvent("\(shopIdentifier ?? "") screen")
+        HabiticaAnalytics.shared.logNavigationEvent("navigated \(shopIdentifier ?? "") screen")
     }
     
     private var isSubscribed: Bool?
@@ -85,6 +86,13 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
                     SubscriptionModalViewController(presentationPoint: .timetravelers).show()
                 }
             }).start()
+        }
+        
+        if let sectionKey = openToSection {
+            let section = dataSource?.sections.firstIndex(where: { section in
+                section.key == sectionKey
+            })
+            collectionView.scrollToItem(at: IndexPath(row: 0, section: section ?? 0), at: .top, animated: true)
         }
     }
     

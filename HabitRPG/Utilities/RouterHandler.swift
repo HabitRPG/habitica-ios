@@ -125,6 +125,13 @@ class RouterHandler {
             viewController.shopIdentifier = Constants.MarketKey
             self.push(viewController)
         }
+        register("/inventory/market/:section") { link in
+            self.displayTab(index: 4)
+            let viewController = StoryboardScene.Shop.shopViewController.instantiate()
+            viewController.shopIdentifier = Constants.MarketKey
+            viewController.openToSection = link["section"]
+            self.push(viewController)
+        }
         register(.questShop) {
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Shop.shopViewController.instantiate()

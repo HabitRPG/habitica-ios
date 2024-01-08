@@ -120,6 +120,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         for category in categories {
             let newSection = ItemSection<InAppRewardProtocol>(title: category.text)
             newSection.items = category.items
+            newSection.key = category.identifier
             sections.append(newSection)
         }
         collectionView?.reloadData()

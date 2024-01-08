@@ -36,7 +36,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
                  }
             }
         }
-        HabiticaAnalytics.shared.logNavigationEvent("\(customizationType ?? "") screen")
+        HabiticaAnalytics.shared.logNavigationEvent("navigated \(customizationType ?? "") screen")
     }
     
     override func applyTheme(theme: Theme) {

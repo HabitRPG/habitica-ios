@@ -1195,7 +1195,7 @@
 "use_immediately_disclaimer" = "This will take effect immediately after buying!";
 "gift_one_get_one_data.infoPrompt" = "In honor of the season of giving we're bringing back a very special promotion. Now when you gift somebody else a subscription, you get the same sub for yourself for free!";
 "gift_one_get_one_data.info_instructions" = "Tap ‘Gift a Subscription’ and type in the username of another account you’d like to gift to. From there, pick the sub length you’d like to gift and check out. Your account will automatically be rewarded with the same level of subscription you just gifted.";
-"gift_one_get_one_data.info_limitations" = "This is a limited time event that starts on %@ (13:00 UTC) and will end %@ (01:00 UTC). This promotion only applies when you gift to another Habitican. If you or your gift recipient already have a subscription, the gifted subscription will add months of credit that will only be used after the current subscription is cancelled or expires.";
+"gift_one_get_one_data.info_limitations" = "This is a limited time event that starts on %@ (%@ UTC) and will end %@ (%@ UTC). This promotion only applies when you gift to another Habitican. If you or your gift recipient already have a subscription, the gifted subscription will add months of credit that will only be used after the current subscription is cancelled or expires.";
 "gift_one_get_one_data.purchase_banner_title" = "Gift a sub and get a sub for free until %@";
 "gift_confirmation_body_g1_g1" = "You sent %@ a %@-month Habitica subscription and the same subscription was applied to your account for our Gift One Get One promotion!";
 "create_guild" = "Create Guild";

@@ -173,7 +173,7 @@ private class ViewModel: ObservableObject {
         type = nil
         text = ""
         key = ""
-        
+        HabiticaAnalytics.shared.log("Free armoire perk")
         userRepository.updateUser(key: "stats.gp", value: gold + 100)
             .flatMap(.latest, { _ in
                 return self.inventoryRepository.buyObject(key: "armoire", quantity: 1, price: 0, text: "", openArmoireView: false)
@@ -208,7 +208,6 @@ struct ArmoireView: View {
     
     var body: some View {
         let paddingScaling = paddingScaling
-        let _ = print(paddingScaling)
         VStack(spacing: 0) {
             Spacer()
             HStack(spacing: 0) {
@@ -239,6 +238,16 @@ struct ArmoireView: View {
             Spacer()
             
             ZStack {
+                EmptyView()
+                    .confettiCannon(counter: $confettiCounter,
+                                num: 5,
+                                confettis: [.image(Asset.confettiPill.name)],
+                                colors: [Color(UIColor.yellow100), Color(UIColor.red100), Color(UIColor.blue100), Color(UIColor.purple400)], confettiSize: 10,
+                                rainHeight: UIScreen.main.bounds.height, fadesOut: false,
+                                openingAngle: .degrees(30),
+                                closingAngle: .degrees(150), radius: 400,
+                                repetitions: 20,
+                                repetitionInterval: 0.1)
                     PixelArtView(source: viewModel.icon)
                         .frame(width: viewModel.iconWidth, height: viewModel.iconHeight)
                         .opacity(1)
@@ -246,15 +255,6 @@ struct ArmoireView: View {
                     .frame(width: 158, height: 158)
                     .background(Color(UIColor.gray700))
                     .cornerRadius(79)
-                    .confettiCannon(counter: $confettiCounter,
-                                    num: 5,
-                                    confettis: [.shape(.slimRectangle)],
-                                    colors: [Color(UIColor.yellow100), Color(UIColor.red100), Color(UIColor.blue100), Color(UIColor.purple400)], confettiSize: 20,
-                                    rainHeight: UIScreen.main.bounds.height, fadesOut: false,
-                                    openingAngle: .degrees(30),
-                                    closingAngle: .degrees(150), radius: 400,
-                                    repetitions: 20,
-                                    repetitionInterval: 0.1)
                 ArmoirePlus()
                     .offset(x: -70, y: -60)
                 ArmoirePlus()

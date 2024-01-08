@@ -258,7 +258,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 if response.statusCode == 404 {
                     let alert = HabiticaAlertController(title: L10n.Inventory.noSaddleTile, message: L10n.Inventory.noSaddleDescription)
                     alert.addAction(title: L10n.Inventory.visitMarket, style: .default, isMainAction: true) {_ in
-                        RouterHandler.shared.handle(urlString: "/inventory/market")
+                        RouterHandler.shared.handle(urlString: "/inventory/market/food")
                     }
                     alert.addCloseAction()
                     alert.show()

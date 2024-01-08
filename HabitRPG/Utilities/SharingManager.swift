@@ -9,9 +9,9 @@
 import UIKit
 #if !targetEnvironment(macCatalyst)
 import FirebaseAnalytics
-import Habitica_Models
 import SwiftUI
 #endif
+import Habitica_Models
 
 class SharingManager {
     static func share(identifier: String, items: [Any], presentingViewController: UIViewController?, sourceView: UIView?) {
@@ -20,7 +20,7 @@ class SharingManager {
         }
         
         var sharedItems = [Any]()
-        
+#if !targetEnvironment(macCatalyst)
         for item in items {
             if let image = item as? UIImage, let newImage = addSharingBanner(inImage: image) {
                 sharedItems.append(newImage)
@@ -28,7 +28,7 @@ class SharingManager {
                 sharedItems.append(item)
             }
         }
-        
+#endif
         let avc = UIActivityViewController(activityItems: sharedItems, applicationActivities: nil)
         avc.popoverPresentationController?.sourceView = sourceView ?? viewController.view
         viewController.present(avc, animated: true, completion: nil)
@@ -36,7 +36,7 @@ class SharingManager {
         Analytics.logEvent("shared", parameters: ["identifier": identifier])
         #endif
     }
-    
+
     static func share(pet: AnimalProtocol, shareIdentifier: String = "pet") {
         let items: [Any] = [StableBackgroundView(content: PixelArtView(name: "stable_Pet-\(pet.key ?? "")")
             .frame(width: 70, height: 70).padding(.top, 40), animateFlying: false)
@@ -69,6 +69,7 @@ class SharingManager {
         }
     }
     
+#if !targetEnvironment(macCatalyst)
     static func addSharingBanner(inImage image: UIImage) -> UIImage? {
         let bannerHeight: CGFloat = 18
 
@@ -94,5 +95,5 @@ class SharingManager {
 
         return newImage
     }
-
+    #endif
 }

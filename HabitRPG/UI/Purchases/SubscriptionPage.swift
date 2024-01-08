@@ -424,7 +424,7 @@ class SubscriptionModalViewController: HostingPanModal<SubscriptionPage> {
         case .gemForGold:
             HabiticaAnalytics.shared.log("View gems for gold CTA")
         case .timetravelers:
-            HabiticaAnalytics.shared.log("second chance perk")
+            return
         case .none:
             return
         }

@@ -13,7 +13,6 @@ class RoundedView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = frame.size.height / 2.0
-        clipsToBounds = true
     }
     
 }

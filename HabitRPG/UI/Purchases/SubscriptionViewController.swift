@@ -152,7 +152,7 @@ class SubscriptionViewController: BaseTableViewController {
             stackView.pin.left(16).top().right(16).height(header.bounds.height)
         }
         
-        HabiticaAnalytics.shared.logNavigationEvent("subscription screen")
+        HabiticaAnalytics.shared.logNavigationEvent("navigated subscription screen")
     }
         
     override func applyTheme(theme: Theme) {

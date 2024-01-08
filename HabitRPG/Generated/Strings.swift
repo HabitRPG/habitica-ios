@@ -1637,9 +1637,9 @@ public enum L10n {
   public enum GiftOneGetOneData {
     /// Tap ‘Gift a Subscription’ and type in the username of another account you’d like to gift to. From there, pick the sub length you’d like to gift and check out. Your account will automatically be rewarded with the same level of subscription you just gifted.
     public static var infoInstructions: String { return L10n.tr("Mainstrings", "gift_one_get_one_data.info_instructions") }
-    /// This is a limited time event that starts on %@ (13:00 UTC) and will end %@ (01:00 UTC). This promotion only applies when you gift to another Habitican. If you or your gift recipient already have a subscription, the gifted subscription will add months of credit that will only be used after the current subscription is cancelled or expires.
-    public static func infoLimitations(_ p1: String, _ p2: String) -> String {
-      return L10n.tr("Mainstrings", "gift_one_get_one_data.info_limitations", p1, p2)
+    /// This is a limited time event that starts on %@ (%@ UTC) and will end %@ (%@ UTC). This promotion only applies when you gift to another Habitican. If you or your gift recipient already have a subscription, the gifted subscription will add months of credit that will only be used after the current subscription is cancelled or expires.
+    public static func infoLimitations(_ p1: String, _ p2: String, _ p3: String, _ p4: String) -> String {
+      return L10n.tr("Mainstrings", "gift_one_get_one_data.info_limitations", p1, p2, p3, p4)
     }
     /// In honor of the season of giving we're bringing back a very special promotion. Now when you gift somebody else a subscription, you get the same sub for yourself for free!
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "gift_one_get_one_data.infoPrompt") }
