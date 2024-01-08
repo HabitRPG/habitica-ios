@@ -40,6 +40,14 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         }
     }
     
+    func syncUserStats() -> Signal<UserProtocol?, Never> {
+        return SyncUserStatsCall().objectSignal.on(value: { user in
+            if let user = user {
+                self.localRepository.save(user)
+            }
+        })
+    }
+    
     func getUser() -> SignalProducer<UserProtocol, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest) {[weak self] (userID) in
             return self?.localRepository.getUser(userID) ?? SignalProducer.empty
@@ -323,8 +331,8 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                     return InventoryLocalRepository().getGear(predicate: NSPredicate(format: "key == %@", brokenItem?.key ?? ""))
                 }).on(value: { items in
                     if let itemText = items.value.first?.text {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            ToastManager.show(text: "Your \(itemText) broke", color: .black)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            ToastManager.show(text: "Your \(itemText) broke", color: .black, duration: 3.0)
                         }
                     }
                 })
