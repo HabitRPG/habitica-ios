@@ -25,6 +25,7 @@ public protocol GearProtocol {
     var intelligence: Int { get set }
     var perception: Int { get set }
     var constitution: Int { get set }
+    var released: Bool { get set }
 }
 
 public extension GearProtocol {

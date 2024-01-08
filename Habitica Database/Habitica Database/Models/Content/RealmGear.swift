@@ -26,6 +26,7 @@ class RealmGear: Object, GearProtocol {
     @objc dynamic var intelligence: Int = 0
     @objc dynamic var perception: Int = 0
     @objc dynamic var constitution: Int = 0
+    @objc dynamic var released: Bool = true
     
     override static func primaryKey() -> String {
         return "key"
@@ -48,5 +49,6 @@ class RealmGear: Object, GearProtocol {
         intelligence = gear.intelligence
         perception = gear.perception
         constitution = gear.constitution
+        released = gear.released
     }
 }
