@@ -61,8 +61,7 @@ struct TaskListWidgetView: View {
                     }.frame(width: 60, alignment: .leading)
                     MainWidgetContent(entry: entry, maxCount: maxCount)
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-                .padding(14)
-                .background(Color.widgetBackground)
+                .widgetBackground(Color.widgetBackground)
             } else {
                 VStack(alignment: .leading) {
                     HStack(alignment: .center) {
@@ -79,8 +78,7 @@ struct TaskListWidgetView: View {
                         MainWidgetContent(entry: entry, maxCount: maxCount)
                     }
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-                .padding(20)
-                .background(Color.widgetBackground)
+                .widgetBackground(Color.widgetBackground)
             }
         }
         .widgetURL(URL(string: "/user/tasks/daily"))

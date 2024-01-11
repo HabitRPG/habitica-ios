@@ -72,45 +72,57 @@ struct AddTaskWidgetView: View {
             return nil
         }
     }
+    
+    func taskColor(taskType: HRPGTaskType) -> Color {
+        switch taskType {
+        case .habit:
+            return Color.barRed
+        case .daily:
+            return Color.barYellow
+        case .todo:
+            return Color.barBlue
+        case .reward:
+            return Color.barGreen
+        default:
+            return Color.barGray
+        }
+    }
 
     var body: some View {
         HStack(spacing: 12) {
             if entry.widgetFamily == .systemSmall {
                 if let identifier = taskIdentifier {
-                    AddView(taskType: entry.taskType ?? HRPGTaskType.none, isSingle: true, showLabel: true).widgetURL(URL(string: "/user/tasks/\(identifier)/add"))
+                    AddView(taskType: entry.taskType ?? HRPGTaskType.none, isSingle: true, showLabel: true).widgetURL(URL(string: "/user/tasks/\(identifier)/add")).widgetBackground(taskColor(taskType: entry.taskType ?? .none))
                 } else {
-                    AddView(taskType: nil, isSingle: true, showLabel: true)
+                    AddView(taskType: nil, isSingle: true, showLabel: true).widgetBackground(taskColor(taskType: .none))
                 }
             } else {
                 VStack(alignment: .center) {
                     if let habitURL = URL(string: "/user/tasks/habit/add") {
                         Link(destination: habitURL, label: {
-                            AddView(taskType: .habit, showLabel: entry.showLabels).padding(EdgeInsets(top: 0, leading: 0, bottom: 9, trailing: 0))
+                            AddView(taskType: .habit, showLabel: entry.showLabels).background(taskColor(taskType: .habit)).cornerRadius(16).padding(.bottom, 4)
                         })
                     }
-                    
                     if let todoURL = URL(string: "/user/tasks/todo/add") {
                         Link(destination: todoURL, label: {
-                            AddView(taskType: .todo, showLabel: entry.showLabels)
+                            AddView(taskType: .todo, showLabel: entry.showLabels).background(taskColor(taskType: .todo)).cornerRadius(16).padding(.top, 4)
                         })
                     }
-                }.padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 0))
+                }
                 VStack(alignment: .center) {
                     if let dailyURL = URL(string: "/user/tasks/daily/add") {
                         Link(destination: dailyURL, label: {
-                            AddView(taskType: .daily, showLabel: entry.showLabels).padding(EdgeInsets(top: 0, leading: 0, bottom: 9, trailing: 0))
+                            AddView(taskType: .daily, showLabel: entry.showLabels).background(taskColor(taskType: .daily)).cornerRadius(16).padding(.bottom, 4)
                         })
                     }
-                    
                     if let rewardURL = URL(string: "/user/tasks/reward/add") {
                         Link(destination: rewardURL, label: {
-                            AddView(taskType: .reward, showLabel: entry.showLabels)
+                            AddView(taskType: .reward, showLabel: entry.showLabels).background(taskColor(taskType: .reward)).cornerRadius(16).padding(.top, 4)
                         })
                     }
-                }.padding(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 12))
+                }.widgetBackground(Color.widgetBackground)
             }
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
-        .background(Color.widgetBackground)
             }
 }
 
@@ -177,21 +189,6 @@ struct AddView: View {
         }
     }
     
-    var taskColor: Color {
-        switch taskType {
-        case .habit:
-            return Color.barRed
-        case .daily:
-            return Color.barYellow
-        case .todo:
-            return Color.barBlue
-        case .reward:
-            return Color.barGreen
-        default:
-            return Color.barGray
-        }
-    }
-    
     var body: some View {
         VStack(alignment: showLabel ? .leading : .center) {
             if showLabel { Spacer() }
@@ -202,10 +199,8 @@ struct AddView: View {
                 .padding(.top, isSingle ? -4 : -6)
             }
         }
-        .padding(EdgeInsets(top: 0, leading: showLabel ? (isSingle ? 20 : 14) : 0, bottom: showLabel ? (isSingle ? 16 : 10) : 0, trailing: showLabel ? (isSingle ? 20 : 14) : 0))
+        .padding(EdgeInsets(top: 0, leading: showLabel ? (isSingle ? 0 : 14) : 0, bottom: showLabel ? (isSingle ? 0 : 10) : 0, trailing: showLabel ? (isSingle ? 0 : 14) : 0))
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: showLabel ? .leading : .center)
-        .background(taskColor)
-        .cornerRadius(16)
     }
 }
 

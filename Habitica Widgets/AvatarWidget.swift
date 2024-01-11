@@ -90,7 +90,7 @@ struct AvatarWidgetView: View {
                 }
                 }
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-        .background(Color.widgetBackground)
+        .widgetBackground(Color.widgetBackground)
             }
 }
 

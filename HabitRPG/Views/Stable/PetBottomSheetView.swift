@@ -34,6 +34,8 @@ struct PetBottomSheetView: View, Dismissable {
             return Asset.feedBase.name
         case "CottonCandyBlue":
             return Asset.feedBlue.name
+        case "Desert":
+            return Asset.feedDesert.name
         case "Golden":
             return Asset.feedGolden.name
         case "CottonCandyPink":

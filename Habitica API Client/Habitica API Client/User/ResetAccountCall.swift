@@ -11,7 +11,8 @@ import Habitica_Models
 import ReactiveSwift
 
 public class ResetAccountCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init() {
-        super.init(httpMethod: .POST, endpoint: "user/reset", postData: nil)
+    public init(password: String) {
+        let json = try? JSONSerialization.data(withJSONObject: ["password": password], options: .prettyPrinted)
+        super.init(httpMethod: .POST, endpoint: "user/reset", postData: json)
     }
 }

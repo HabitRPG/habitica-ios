@@ -846,6 +846,28 @@ public enum L10n {
   public static var quest: String { return L10n.tr("Mainstrings", "quest") }
   /// Quest Completed!
   public static var questCompletedTitle: String { return L10n.tr("Mainstrings", "quest_completed_title") }
+  /// Quest Mechanics
+  public static var questMechanics: String { return L10n.tr("Mainstrings", "quest_mechanics") }
+  /// Complete any type of task or use skills to rack up pending damage! Damage will be applied on your next day reset. Strength affects how much damage you do.
+  public static var questMechanicsBossDescription: String { return L10n.tr("Mainstrings", "quest_mechanics_boss_description") }
+  /// Damaging a Boss
+  public static var questMechanicsBossTitle: String { return L10n.tr("Mainstrings", "quest_mechanics_boss_title") }
+  /// When on a Collection Quest, complete your tasks for a random chance to find a Quest item. Pending items will be applied on your next day reset. Perception boosts item rates.
+  public static var questMechanicsCollectingDescription: String { return L10n.tr("Mainstrings", "quest_mechanics_collecting_description") }
+  /// Collecting Quest items
+  public static var questMechanicsCollectingTitle: String { return L10n.tr("Mainstrings", "quest_mechanics_collecting_title") }
+  /// Boss damage is calculated each time a Party member checks in throughout the day. This damage is applied the next time you perform an action that syncs with the server. Boss damage is recorded in your Party’s chat.
+  public static var questMechanicsDamageDescription: String { return L10n.tr("Mainstrings", "quest_mechanics_damage_description") }
+  /// Bosses lash out for missed Dailies
+  public static var questMechanicsDamageTitle: String { return L10n.tr("Mainstrings", "quest_mechanics_damage_title") }
+  /// If you’re struggling to complete your Dailies, you can pause damage from Settings for a break. This will prevent the Boss from hurting you or others, but also pause your own damage. Other members missed Dailies will still cause damage, so be careful out there!
+  public static var questMechanicsPausingDescription: String { return L10n.tr("Mainstrings", "quest_mechanics_pausing_description") }
+  /// Pausing damage
+  public static var questMechanicsPausingTitle: String { return L10n.tr("Mainstrings", "quest_mechanics_pausing_title") }
+  /// Some difficult bosses have an orange Rage meter under their HP. This meter fills up when participants miss Dailies. When it fills completely, the boss will let out a fearsome attack that does extra damage!
+  public static var questMechanicsRageDescription: String { return L10n.tr("Mainstrings", "quest_mechanics_rage_description") }
+  /// Rage meters
+  public static var questMechanicsRageTitle: String { return L10n.tr("Mainstrings", "quest_mechanics_rage_title") }
   /// Quests
   public static var quests: String { return L10n.tr("Mainstrings", "quests") }
   /// Rage Meter
@@ -2262,8 +2284,10 @@ public enum L10n {
     public static var reminder: String { return L10n.tr("Mainstrings", "settings.reminder") }
     /// Reset Account
     public static var resetAccount: String { return L10n.tr("Mainstrings", "settings.reset_account") }
-    /// WARNING! This resets many parts of your account. This is highly discouraged, but some people find it useful in the beginning after playing with the site for a short time.\n\nYou will lose all your levels, gold, and experience points. All your tasks (except those from challenges) will be deleted permanently and you will lose all of their historical data. You will lose all your equipment but you will be able to buy it all back, including all limited edition equipment or subscriber Mystery items that you already own (you will need to be in the correct class to re-buy class-specific gear). You will keep your current class and your pets and mounts. You might prefer to use an Orb of Rebirth instead, which is a much safer option and which will preserve your tasks and equipment.
+    /// You will lose all your levels, Gold, and Experience. All your tasks and their historical data will be deleted (Challenge tasks will stay). You will lose all equipment, except Subscriber items and free commemorative items, but you will be able to buy it back. You will need to be the correct class to re-buy class-specific gear. You will keep your current class, Achievements, and your Pets and Mounts. To confirm reset, type your password below.
     public static var resetAccountDescription: String { return L10n.tr("Mainstrings", "settings.reset_account_description") }
+    /// You will lose all your levels, Gold, and Experience. All your tasks and their historical data will be deleted (Challenge tasks will stay). You will lose all equipment, except Subscriber items and free commemorative items, but you will be able to buy it back. You will need to be the correct class to re-buy class-specific gear. You will keep your current class, Achievements, and your Pets and Mounts. If you’re absolutely certain, type DELETE into the text box below.
+    public static var resetAccountDescriptionSocial: String { return L10n.tr("Mainstrings", "settings.reset_account_description_social") }
     /// Resume Damage
     public static var resumeDamage: String { return L10n.tr("Mainstrings", "settings.resume_damage") }
     /// Damage is currently paused.

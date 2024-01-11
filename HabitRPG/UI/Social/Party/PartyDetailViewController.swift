@@ -30,6 +30,7 @@ class PartyDetailViewController: GroupDetailViewController {
     @IBOutlet weak var questInvitationUserView: UIView!
     @IBOutlet weak var questInvitationUserAvatarView: AvatarView!
     @IBOutlet weak var questInvitationuserLabel: UILabel!
+    @IBOutlet weak var questMechanicsButton: UIButton!
     @IBOutlet weak var questTitleView: UIView!
     @IBOutlet weak var questTitleContentView: QuestTitleView!
     @IBOutlet weak var questTitleDisclosureView: UIImageView!
@@ -134,6 +135,8 @@ class PartyDetailViewController: GroupDetailViewController {
         startQuestButton.setTitleColor(theme.tintColor, for: .normal)
         groupDescriptionTextView?.backgroundColor = theme.windowBackgroundColor
         questTitleSeparator.backgroundColor = theme.separatorColor
+        questMechanicsButton.backgroundColor = nil
+        questMechanicsButton.setTitleColor(theme.tintColor, for: .normal)
         
         challengesStackView.applyTheme(theme: theme)
         membersStackview.applyTheme(theme: theme)
@@ -157,6 +160,7 @@ class PartyDetailViewController: GroupDetailViewController {
         startQuestButton.setTitle(L10n.Party.startQuest, for: .normal)
         questInvitationAcceptButton.setTitle(L10n.accept, for: .normal)
         questInvitationRejectButton.setTitle(L10n.reject, for: .normal)
+        questMechanicsButton.setTitle(L10n.questMechanics, for: .normal)
     }
     
     deinit {
@@ -264,6 +268,7 @@ class PartyDetailViewController: GroupDetailViewController {
                     questInvitationUserView.isHidden = true
                 }
             }
+            questMechanicsButton.isHidden = false
             questTitleContentView.setNeedsLayout()
         } else {
             startQuestButton.isHidden = false
@@ -271,6 +276,7 @@ class PartyDetailViewController: GroupDetailViewController {
             questTitleSeparator.isHidden = true
             partyQuestView.isHidden = true
             questInvitationUserView.isHidden = true
+            questMechanicsButton.isHidden = true
         }
         questContentStackView.setBorders()
     }
@@ -373,5 +379,50 @@ class PartyDetailViewController: GroupDetailViewController {
         }
         alert.addCancelAction()
         alert.show()
+    }
+    
+    @IBAction func showQuestMechanicsSheet(_ sender: Any) {
+        let sheet = HostingBottomSheetController(rootView: BottomSheetView(content: VStack {
+            VStack(alignment: .leading) {
+                Text(L10n.questMechanics)
+                    .font(.system(size: 16, weight: .semibold))
+                    .padding(.bottom, 12)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                Text(L10n.questMechanicsBossTitle)
+                    .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                    .font(.system(size: 16))
+                Text(L10n.questMechanicsBossDescription)
+                    .font(.system(size: 12))
+                    .padding(.bottom, 12)
+                Text(L10n.questMechanicsCollectingTitle)
+                    .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                    .font(.system(size: 16))
+                Text(L10n.questMechanicsCollectingDescription)
+                    .font(.system(size: 12))
+                    .padding(.bottom, 12)
+                Text(L10n.questMechanicsDamageTitle)
+                    .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                    .font(.system(size: 16))
+                Text(L10n.questMechanicsDamageDescription)
+                    .font(.system(size: 12))
+                    .padding(.bottom, 12)
+                Text(L10n.questMechanicsPausingTitle)
+                    .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                    .font(.system(size: 16))
+                Text(L10n.questMechanicsPausingDescription)
+                    .font(.system(size: 12))
+                    .padding(.bottom, 12)
+                Text(L10n.questMechanicsRageTitle)
+                    .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                    .font(.system(size: 16))
+                Text(L10n.questMechanicsRageDescription)
+                    .font(.system(size: 12))
+                Spacer()
+            }
+            .foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor))
+            .padding(.horizontal, 30)
+            .padding(.vertical, 16)
+        }))
+        sheet.show()
     }
 }
