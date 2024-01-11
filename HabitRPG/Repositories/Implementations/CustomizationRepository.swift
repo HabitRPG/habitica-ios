@@ -27,7 +27,7 @@ class CustomizationRepository: BaseRepository<CustomizationLocalRepository> {
     }
     
     public func unlock(customization: CustomizationProtocol, value: Float) -> Signal<UserProtocol?, Never> {
-        let call = UnlockCustomizationsCall(customizations: [customization])
+        let call = UnlockCustomizationsCall(path: customization.path)
         
         return call.objectSignal.on(value: {[weak self] newUser in
             if let userID = self?.currentUserId, let user = newUser {
@@ -37,10 +37,23 @@ class CustomizationRepository: BaseRepository<CustomizationLocalRepository> {
         })
     }
     
+    public func unlock(path: String, value: Float) -> Signal<UserProtocol?, Never> {
+        let call = UnlockCustomizationsCall(path: path)
+        return call.objectSignal.on(value: {[weak self] newUser in
+            if let userID = self?.currentUserId, let user = newUser {
+                self?.userLocalRepository.updateUser(id: userID, balanceDiff: -(value / 4.0))
+                self?.userLocalRepository.updateUser(id: userID, updateUser: user)
+            }
+        })
+    }
+    
     public func unlock(customizationSet: CustomizationSetProtocol, value: Float) -> Signal<UserProtocol?, Never> {
-        let call = UnlockCustomizationsCall(customizations: customizationSet.setItems ?? [])
+        let path = (customizationSet.setItems ?? []).map({ (customization) -> String in
+            return customization.path
+        }).joined(separator: ",")
+        let call = UnlockCustomizationsCall(path: path)
         
-        return call.objectSignal.on(value: {[weak self]newUser in
+        return call.objectSignal.on(value: {[weak self] newUser in
             if let userID = self?.currentUserId, let user = newUser {
                 self?.userLocalRepository.updateUser(id: userID, balanceDiff: -(value / 4.0))
                 self?.userLocalRepository.updateUser(id: userID, updateUser: user)

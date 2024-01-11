@@ -11,10 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class UnlockCustomizationsCall: ResponseObjectCall<UserProtocol, APIUser> {
-    public init(customizations: [CustomizationProtocol]) {
-        let path = customizations.map({ (customization) -> String in
-            return customization.path
-        }).joined(separator: ",")
+    public init(path: String) {
         super.init(httpMethod: .POST, endpoint: "user/unlock/?path=\(path)", postData: nil)
     }
 }

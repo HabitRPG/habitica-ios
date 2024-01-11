@@ -17,6 +17,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @objc var shopIdentifier: String?
     var onInventoryRefresh: (() -> Void)?
     private let inventoryRepository = InventoryRepository()
+    private let customizationRepository = CustomizationRepository()
     private let userRepository = UserRepository()
     private let stableRepository = StableRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
@@ -501,14 +502,24 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             }
         } else if purchaseType == "fortify" {
             userRepository.reroll().observeResult({ (result) in
-            switch result {
-            case .success:
-                successBlock()
-            case .failure:
-                failureBlock()
-                HRPGBuyItemModalViewController.displayInsufficientGemsModal(reward: self.reward)
+                switch result {
+                case .success:
+                    successBlock()
+                case .failure:
+                    failureBlock()
+                    HRPGBuyItemModalViewController.displayInsufficientGemsModal(reward: self.reward)
                 }
             })
+        } else if purchaseType == "backgrounds" {
+            customizationRepository.unlock(path: "background.\(reward?.key ?? "")", value: reward?.value ?? 0).observeResult { result in
+                switch result {
+                case .success:
+                    successBlock()
+                case .failure:
+                    failureBlock()
+                    HRPGBuyItemModalViewController.displayInsufficientGemsModal(reward: self.reward)
+                }
+            }
         } else if currency == .gem || purchaseType == "gems" {
             inventoryRepository.purchaseItem(purchaseType: purchaseType, key: key, value: value, quantity: quantity, text: text)
             .flatMap(.latest, { _ in
