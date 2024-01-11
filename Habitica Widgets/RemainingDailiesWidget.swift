@@ -19,12 +19,12 @@ struct DailiesCountProvider: IntentTimelineProvider {
                   widgetFamily: context.family, totalCount: 42, completedCount: 10)
     }
 
-    func getSnapshot(for configuration: HRPGDailiesCountIntent,in context: Context, completion: @escaping (DailiesCountWidgetEntry) -> ()) {
+    func getSnapshot(for configuration: HRPGDailiesCountIntent, in context: Context, completion: @escaping (DailiesCountWidgetEntry) -> Void) {
         let entry = DailiesCountWidgetEntry(date: Date(), widgetFamily: context.family, totalCount: 10, completedCount: 5)
         completion(entry)
     }
 
-    func getTimeline(for configuration: HRPGDailiesCountIntent, in context: Context, completion: @escaping (Timeline<DailiesCountWidgetEntry>) -> ()) {
+    func getTimeline(for configuration: HRPGDailiesCountIntent, in context: Context, completion: @escaping (Timeline<DailiesCountWidgetEntry>) -> Void) {
         var entries: [DailiesCountWidgetEntry] = []
         SignalProducer.combineLatest(TaskManager.shared.getTasks(predicate: NSPredicate(format: "type == 'daily' && isDue == true")),
                                      TaskManager.shared.getUser()).on(value: { result in
@@ -130,7 +130,7 @@ struct DailiesCountWidgetView : View {
                         CountView(completedCount: entry.completedCount, totalCount: entry.totalCount, displayCount: displayCount, displayRemaining: entry.displayRemaining).padding(.bottom, 17)
                     }
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
-                    .background(Color.widgetBackground)
+                    .widgetBackground(Color.widgetBackground)
                     .widgetURL(URL(string: "/user/tasks/daily"))
             }
     }
@@ -168,7 +168,7 @@ struct CountView: View {
                 .cornerRadius(4.0)
             }.padding(.top, 12)
             Text(displayRemaining ? "\(completedCount) done" : "\(totalCount - completedCount) left to do").font(Font.system(size: 12)).padding(.top, 4).foregroundColor(.widgetTextSecondary)
-        }.padding(17)
+        }
     }
 }
 
@@ -193,7 +193,7 @@ struct CompletedView: View {
                 .cornerRadius(4.0)
             }.padding(.top, 12)
             Text("All done today!").font(Font.system(size: 12)).padding(.top, 4).foregroundColor(.widgetTextSecondary)
-        }.padding(17)
+        }
     }
 }
 

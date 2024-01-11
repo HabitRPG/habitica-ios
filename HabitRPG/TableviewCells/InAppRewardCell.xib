@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -61,23 +63,35 @@
                                     <constraint firstAttribute="width" constant="68" id="vy8-7k-2Yo"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SeM-3f-dTN">
-                                <rect key="frame" x="2" y="2" width="16" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="U0A-n7-Xhb"/>
-                                    <constraint firstAttribute="width" constant="16" id="i3b-c5-fNJ"/>
-                                </constraints>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nBh-ef-OBE">
+                                <rect key="frame" x="2" y="2" width="16" height="32"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SeM-3f-dTN">
+                                        <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="U0A-n7-Xhb"/>
+                                            <constraint firstAttribute="width" constant="16" id="i3b-c5-fNJ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="My8-ty-4Bs">
+                                        <rect key="frame" x="0.0" y="16" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="nPa-zW-HA9"/>
+                                            <constraint firstAttribute="width" constant="16" id="ufB-SA-Ien"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.97636479139999999" green="0.97653168440000004" blue="0.9763541818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="SeM-3f-dTN" firstAttribute="leading" secondItem="WTa-dS-7d1" secondAttribute="leading" constant="2" id="6t0-9F-TD0"/>
                             <constraint firstAttribute="bottom" secondItem="827-G9-ba1" secondAttribute="bottom" id="Cz0-84-ufW"/>
                             <constraint firstAttribute="height" constant="108" id="Dua-ju-Hh6"/>
                             <constraint firstItem="eGb-th-auK" firstAttribute="top" secondItem="WTa-dS-7d1" secondAttribute="top" constant="4" id="GZj-n6-3Sw"/>
                             <constraint firstItem="eGb-th-auK" firstAttribute="centerX" secondItem="WTa-dS-7d1" secondAttribute="centerX" id="L7A-xv-dhs"/>
-                            <constraint firstItem="SeM-3f-dTN" firstAttribute="top" secondItem="WTa-dS-7d1" secondAttribute="top" constant="2" id="Xda-BI-DF0"/>
+                            <constraint firstItem="nBh-ef-OBE" firstAttribute="top" secondItem="WTa-dS-7d1" secondAttribute="top" constant="2" id="X0l-DW-egj"/>
                             <constraint firstItem="827-G9-ba1" firstAttribute="leading" secondItem="WTa-dS-7d1" secondAttribute="leading" id="hiz-5X-YwV"/>
+                            <constraint firstItem="nBh-ef-OBE" firstAttribute="leading" secondItem="WTa-dS-7d1" secondAttribute="leading" constant="2" id="lay-LX-qxO"/>
                             <constraint firstAttribute="trailing" secondItem="827-G9-ba1" secondAttribute="trailing" id="mMb-RH-7hA"/>
                             <constraint firstAttribute="width" constant="78" id="zFc-Eq-lBw"/>
                         </constraints>
@@ -125,6 +139,7 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="checkmarkView" destination="My8-ty-4Bs" id="TlF-ya-JjK"/>
                 <outlet property="containerView" destination="WTa-dS-7d1" id="Gmm-XT-2Oy"/>
                 <outlet property="currencyBackgroundView" destination="827-G9-ba1" id="6Jj-hL-f7I"/>
                 <outlet property="currencyView" destination="e3y-4x-dBE" id="Bnq-Pt-Hs4"/>

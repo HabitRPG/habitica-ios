@@ -11,6 +11,7 @@ import UIKit
 class QuestCompletedAlertController: HabiticaAlertController {
 
     private let inventoryRepository = InventoryRepository()
+    private let userRepository = UserRepository()
     
     private let questDetailView: QuestDetailView = {
         let view = QuestDetailView(frame: CGRect.zero)
@@ -23,7 +24,10 @@ class QuestCompletedAlertController: HabiticaAlertController {
     init(questKey: String) {
         super.init()
         title = L10n.questCompletedTitle
-        addAction(title: L10n.onwards, style: .default, isMainAction: true)
+        addAction(title: L10n.onwards, style: .default, isMainAction: true) { _ in
+            self.userRepository.syncUserStats().observeCompleted {
+            }
+        }
         contentViewInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
         
         inventoryRepository.getQuest(key: questKey).skipNil().take(first: 1).on(value: {[weak self] quest in

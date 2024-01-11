@@ -39,13 +39,13 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
         GiftSubscriptionViewController.self
     ]
     
-    public static func handle(error: NSError, messages: [String]) {
+    public static func handle(error: NetworkError, messages: [String]) {
         if let errorMessage = errorMessageForCode(code: error.code) {
-            notify(message: errorMessage.message, code: error.code)
+            notify(message: errorMessage.message, code: error.code, url: error.url)
         } else if !messages.isEmpty {
-            notify(message: messages.joined(separator: "\n"), code: error.code)
+            notify(message: messages.joined(separator: "\n"), code: error.code, url: error.url)
         } else {
-            notify(message: error.localizedDescription, code: 0)
+            notify(message: error.localizedDescription, code: 0, url: error.url)
         }
     }
     
@@ -58,12 +58,19 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
         return nil
     }
     
-    public static func notify(message: String, code: Int) {
+    public static func notify(message: String, code: Int, url: String) {
         if code == 400 {
             let alertController = HabiticaAlertController(title: message)
             alertController.addCloseAction()
             alertController.show()
         } else {
+            var displayedMessage = message
+            if code == 404 {
+                if url.contains("/Saddle") {
+                    // We want to handle the saddle error differently
+                    return
+                }
+            }
             var duration: Double?
             if message.count > 200 {
                 duration = 4.0

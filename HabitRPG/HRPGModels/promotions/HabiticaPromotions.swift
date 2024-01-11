@@ -378,7 +378,12 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
         viewController.instructionsDescription = L10n.GiftOneGetOneData.infoInstructions
         formatter.dateStyle = .medium
         formatter.timeStyle = .long
-        viewController.limitationsDescription = L10n.GiftOneGetOneData.infoLimitations(formatter.string(from: startDate), formatter.string(from: endDate))
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateStyle = .none
+        timeFormatter.timeStyle = .medium
+        timeFormatter.timeZone = TimeZone(identifier: "UTC")
+        viewController.limitationsDescription = L10n.GiftOneGetOneData.infoLimitations(formatter.string(from: startDate), timeFormatter.string(from: startDate),
+                                                                                       formatter.string(from: endDate), timeFormatter.string(from: endDate))
     }
 }
 

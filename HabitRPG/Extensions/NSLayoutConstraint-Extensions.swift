@@ -8,7 +8,7 @@
 
 import UIKit
 
-//https://stackoverflow.com/a/33003217
+// https://stackoverflow.com/a/33003217
 extension NSLayoutConstraint {
     /**
      Change multiplier constraint

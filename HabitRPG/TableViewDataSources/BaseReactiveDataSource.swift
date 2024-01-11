@@ -11,7 +11,8 @@ import ReactiveSwift
 import Habitica_Database
 import Habitica_Models
 
-@objc public protocol DataSourceEmptyDelegate {
+@objc
+public protocol DataSourceEmptyDelegate {
     func dataSourceHasItems()
     func dataSourceIsEmpty()
 }

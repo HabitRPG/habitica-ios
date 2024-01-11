@@ -802,58 +802,60 @@ struct TaskFormView: View {
         let theme = ThemeService.shared.theme
         TrackableScrollView(contentOffset: $scrollViewContentOffset.onChange { _ in
         }) {
-            VStack {
+            if viewModel.task == nil || viewModel.task?.isValid == true {
                 VStack {
-                    textFields
-                    VStack(spacing: 25) {
-                        graphs
-                        if (viewModel.taskType == .daily || viewModel.taskType == .todo) {
-                            TaskFormChecklistView(items: $viewModel.checklistItems)
-                        }
-                        dynamicFormPart
-                        if viewModel.taskType != .reward && viewModel.isTaskEditable {
-                            TaskFormSection(header: Text(L10n.Tasks.Form.difficulty.uppercased()),
-                                            content: DifficultyPicker(selectedDifficulty: $viewModel.priority).padding(8))
-                        }
-                        if viewModel.taskType == .daily || viewModel.taskType == .todo {
-                            TaskFormReminderView(showDate: viewModel.taskType == .todo, items: $viewModel.reminders)
+                    VStack {
+                        textFields
+                        VStack(spacing: 25) {
+                            graphs
+                            if viewModel.taskType == .daily || viewModel.taskType == .todo {
+                                TaskFormChecklistView(items: $viewModel.checklistItems)
                             }
-                        if viewModel.showStatAllocation && viewModel.isTaskEditable {
-                            TaskFormSection(header: Text(L10n.statAllocation.uppercased()),
-                                            content: TaskFormPicker(options: TaskFormView.statAllocationOptions, selection: $viewModel.stat, tintColor: viewModel.pickerTintColor))
-                        }
-                        if viewModel.taskType == .daily && viewModel.task?.id != nil {
-                            TaskFormSection(header: Text(L10n.Tasks.Form.adjustStreak.uppercased()),
-                                            content: FormRow(title: Text(L10n.streak), valueLabel: TextField(L10n.streak, text: $viewModel.streak)
-                                                .multilineTextAlignment(.trailing)
-                                                .keyboardType(.numberPad)))
-                            
-                        } else if viewModel.taskType == .habit && viewModel.task?.id != nil {
-                            TaskFormSection(header: Text(L10n.Tasks.Form.adjustCounter.uppercased()),
-                                            content: VStack {
-                                FormRow(title: Text(L10n.Tasks.Form.positive), valueLabel: TextField(L10n.Tasks.Form.positive, text: $viewModel.counterUp)
-                                    .multilineTextAlignment(.trailing)
-                                    .keyboardType(.numberPad))
-                                FormRow(title: Text(L10n.Tasks.Form.negative), valueLabel: TextField(L10n.Tasks.Form.negative, text: $viewModel.counterDown)
-                                    .multilineTextAlignment(.trailing)
-                                    .keyboardType(.numberPad))
-                            })
-                        }
-                        TaskFormSection(header: Text(L10n.Tasks.Form.tags.uppercased()),
-                                        content: TagList(selectedTags: $viewModel.selectedTags, allTags: tags, taskColor: viewModel.taskTintColor))
-                        if viewModel.task?.id != nil {
-                            deleteButton
-                        }
-                        if !viewModel.isTaskEditable {
-                            Text(L10n.Tasks.Form.notEditableDisclaimer)
-                                .fixedSize(horizontal: false, vertical: true)
-                                .multilineTextAlignment(.center)
-                                .padding(.horizontal, 16)
-                                .foregroundColor(Color(ThemeService.shared.theme.quadTextColor))
-                                .font(.caption)
-                        }
-                    }.padding(16).background(Color(theme.contentBackgroundColor).edgesIgnoringSafeArea(.bottom)).cornerRadius(8)
-                }.background(viewModel.backgroundTintColor.cornerRadius(12).edgesIgnoringSafeArea(.bottom))
+                            dynamicFormPart
+                            if viewModel.taskType != .reward && viewModel.isTaskEditable {
+                                TaskFormSection(header: Text(L10n.Tasks.Form.difficulty.uppercased()),
+                                                content: DifficultyPicker(selectedDifficulty: $viewModel.priority).padding(8))
+                            }
+                            if viewModel.taskType == .daily || viewModel.taskType == .todo {
+                                TaskFormReminderView(showDate: viewModel.taskType == .todo, items: $viewModel.reminders)
+                            }
+                            if viewModel.showStatAllocation && viewModel.isTaskEditable {
+                                TaskFormSection(header: Text(L10n.statAllocation.uppercased()),
+                                                content: TaskFormPicker(options: TaskFormView.statAllocationOptions, selection: $viewModel.stat, tintColor: viewModel.pickerTintColor))
+                            }
+                            if viewModel.taskType == .daily && viewModel.task?.id != nil {
+                                TaskFormSection(header: Text(L10n.Tasks.Form.adjustStreak.uppercased()),
+                                                content: FormRow(title: Text(L10n.streak), valueLabel: TextField(L10n.streak, text: $viewModel.streak)
+                                                    .multilineTextAlignment(.trailing)
+                                                    .keyboardType(.numberPad)))
+                                
+                            } else if viewModel.taskType == .habit && viewModel.task?.id != nil {
+                                TaskFormSection(header: Text(L10n.Tasks.Form.adjustCounter.uppercased()),
+                                                content: VStack {
+                                    FormRow(title: Text(L10n.Tasks.Form.positive), valueLabel: TextField(L10n.Tasks.Form.positive, text: $viewModel.counterUp)
+                                        .multilineTextAlignment(.trailing)
+                                        .keyboardType(.numberPad))
+                                    FormRow(title: Text(L10n.Tasks.Form.negative), valueLabel: TextField(L10n.Tasks.Form.negative, text: $viewModel.counterDown)
+                                        .multilineTextAlignment(.trailing)
+                                        .keyboardType(.numberPad))
+                                })
+                            }
+                            TaskFormSection(header: Text(L10n.Tasks.Form.tags.uppercased()),
+                                            content: TagList(selectedTags: $viewModel.selectedTags, allTags: tags, taskColor: viewModel.taskTintColor))
+                            if viewModel.task?.id != nil {
+                                deleteButton
+                            }
+                            if !viewModel.isTaskEditable {
+                                Text(L10n.Tasks.Form.notEditableDisclaimer)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .multilineTextAlignment(.center)
+                                    .padding(.horizontal, 16)
+                                    .foregroundColor(Color(ThemeService.shared.theme.quadTextColor))
+                                    .font(.caption)
+                            }
+                        }.padding(16).background(Color(theme.contentBackgroundColor).edgesIgnoringSafeArea(.bottom)).cornerRadius(8)
+                    }.background(viewModel.backgroundTintColor.cornerRadius(12).edgesIgnoringSafeArea(.bottom))
+                }
             }
         }
         .accentColor(viewModel.taskTintColor)

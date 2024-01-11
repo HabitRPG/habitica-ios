@@ -43,13 +43,13 @@ struct AvatarProvider: TimelineProvider {
                   widgetFamily: context.family, imageNames: [])
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (AvatarEntry) -> ()) {
+    func getSnapshot(in context: Context, completion: @escaping (AvatarEntry) -> Void) {
         let entry = AvatarEntry(date: Date(),
                               widgetFamily: context.family, imageNames: [])
         completion(entry)
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<AvatarEntry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<AvatarEntry>) -> Void) {
         var entries: [AvatarEntry] = []
         TaskManager.shared.getUser().on(value: { user in
             let avatar = AvatarViewModel(avatar: user)
@@ -79,9 +79,8 @@ struct AvatarEntry: TimelineEntry {
     var imageNames: [String]
 }
 
-struct AvatarWidgetView : View {
+struct AvatarWidgetView: View {
     var entry: AvatarProvider.Entry
-
 
     var body: some View {
         ZStack {
@@ -91,7 +90,7 @@ struct AvatarWidgetView : View {
                 }
                 }
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-        .background(Color.widgetBackground)
+        .widgetBackground(Color.widgetBackground)
             }
 }
 

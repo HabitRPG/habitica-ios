@@ -48,7 +48,7 @@ class GroupChatViewController: MessagesViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if let groupID = self.groupID, groupID != Constants.TAVERN_ID {
+        if let groupID = self.groupID {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.socialRepository.markChatAsSeen(groupID: groupID).observeCompleted {}
             }

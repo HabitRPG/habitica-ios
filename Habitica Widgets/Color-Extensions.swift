@@ -28,3 +28,15 @@ extension Color {
     static let barPurple = Color(red: 146.0 / 255.0, green: 92.0 / 255.0, blue: 243.0 / 255.0)
     static let barGray = Color(red: 52.0 / 255.0, green: 49.0 / 255.0, blue: 58.0 / 255.0)
 }
+
+extension View {
+    func widgetBackground(_ backgroundView: some View) -> some View {
+        if #available(iOSApplicationExtension 17.0, *) {
+            return containerBackground(for: .widget) {
+                backgroundView
+            }
+        } else {
+            return background(backgroundView)
+        }
+    }
+}

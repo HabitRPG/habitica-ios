@@ -10,7 +10,8 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 
-@objc public protocol SpellsTableViewDataSourceProtocol {
+@objc
+public protocol SpellsTableViewDataSourceProtocol {
     @objc weak var tableView: UITableView? { get set }
     
     @objc

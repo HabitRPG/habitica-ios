@@ -36,7 +36,7 @@ struct BottomSheetMenuitem<Title: View>: View {
     var body: some View {
         HabiticaButtonUI(label: title,
                          color: style == .normal ? Color(ThemeService.shared.theme.fixedTintColor) : style == .destructive ? Color(UIColor.red100) : .windowBackgroundColor,
-                         size: .compact) {
+                         size: .small) {
             dismisser.dismiss?()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 onTap()
@@ -76,6 +76,12 @@ struct BottomSheetView<Title: View, Content: View>: View, Dismissable {
     }
 }
 
+extension BottomSheetView where Title == EmptyView {
+    init(content: Content) {
+        self.init(title: EmptyView(), content: content)
+    }
+}
+
 struct BottomSheetMenu<Title: View, MenuItems: View>: View, Dismissable {
     var dismisser: Dismisser = Dismisser()
     var title: Title
@@ -100,7 +106,7 @@ struct BottomSheetMenu<Title: View, MenuItems: View>: View, Dismissable {
     var body: some View {
         BottomSheetView(dismisser: dismisser, title: title, content: VStack(spacing: 16) {
                 if let url = iconURL {
-                    KFImage(url).frame(width: 70, height: 70)
+                    KFImage(url).interpolation(.none).frame(width: 70, height: 70)
                 }
                 menuItems
                 .environmentObject(dismisser)

@@ -48,7 +48,6 @@ internal enum StoryboardSegue {
     case spellsSegue = "SpellsSegue"
     case stableSegue = "StableSegue"
     case statsSegue = "StatsSegue"
-    case tavernSegue = "TavernSegue"
     case equipmentDetailSegue
     case hallOfContributorsSegue
     case hallOfPatronsSegue

@@ -118,6 +118,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func initialUISetup() {
+        gradientView.middleLocation = 0.7
         let buttonBackground = Asset.loginButton.image.resizableImage(withCapInsets: UIEdgeInsets(top: 21, left: 16, bottom: 21, right: 16))
         loginButton.setBackgroundImage(buttonBackground, for: .normal)
         

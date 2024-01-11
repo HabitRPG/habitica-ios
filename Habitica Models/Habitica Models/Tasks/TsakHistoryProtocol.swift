@@ -9,7 +9,6 @@
 import Foundation
 
 @objc
-
 public protocol TaskHistoryProtocol: BaseModelProtocol {
     var taskID: String? { get set }
     var timestamp: Date? { get set }

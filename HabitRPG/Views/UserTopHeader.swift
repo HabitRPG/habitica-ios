@@ -11,6 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 import Habitica_Database
 import PinLayout
+import SwiftUI
 
 class UserTopHeader: UIView, Themeable {
     
@@ -36,6 +37,8 @@ class UserTopHeader: UIView, Themeable {
     
     @IBOutlet weak var avatarLeadingSpacing: NSLayoutConstraint!
     
+    private var user: UserProtocol?
+    
     private var contributorTier: Int = 0 {
         didSet {
             if contributorTier > 0 {
@@ -47,6 +50,9 @@ class UserTopHeader: UIView, Themeable {
             }
         }
     }
+    
+    private var displayName = ""
+    private var userID = ""
     
     private let repository = UserRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
@@ -76,6 +82,8 @@ class UserTopHeader: UIView, Themeable {
         gemView.currency = .gem
         hourglassView.currency = .hourglass
         
+        avatarView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showUserBottomSheetMenu)))
+        avatarView.isUserInteractionEnabled = true
         gemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showGemView)))
         
         usernameLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
@@ -182,6 +190,9 @@ class UserTopHeader: UIView, Themeable {
         if !user.isValid {
             return
         }
+        self.user = user
+        userID = user.id ?? ""
+        displayName = user.profile?.name ?? ""
         avatarView.avatar = AvatarViewModel(avatar: user)
         if let stats = user.stats {
             healthLabel.value = stats.health
@@ -271,6 +282,26 @@ class UserTopHeader: UIView, Themeable {
         
     }
     
+    @objc
+    private func showUserBottomSheetMenu() {
+        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(Text(""), menuItems: {
+            BottomSheetMenuitem(title: L10n.openProfile) {
+                RouterHandler.shared.handle(urlString: "/profile/" + self.userID)
+            }
+            BottomSheetMenuitem(title: L10n.Menu.customizeAvatar) {
+                RouterHandler.shared.handle(urlString: "/user/avatar")
+            }
+            BottomSheetMenuitem(title: L10n.shareAvatar) {
+                if let user = self.user {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        SharingManager.share(avatar: user)
+                    }
+                }
+            }
+        }))
+        nearestNavigationController?.present(sheet, animated: true)
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         layoutBuffIcon()
@@ -279,5 +310,20 @@ class UserTopHeader: UIView, Themeable {
     private func layoutBuffIcon() {
         let usernameLabelSize = usernameLabel.sizeThatFits(levelLabel.bounds.size)
         buffIconView.pin.size(15).start(usernameLabelSize.width + 6).top((usernameLabelSize.height - 15)/2)
+    }
+}
+
+extension UIView {
+    func getImageFromCurrentContext(bounds: CGRect? = nil) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(bounds?.size ?? self.bounds.size, false, 0.0)
+        self.drawHierarchy(in: bounds ?? self.bounds, afterScreenUpdates: true)
+
+        guard let currentImage = UIGraphicsGetImageFromCurrentImageContext() else {
+            return nil
+        }
+
+        UIGraphicsEndImageContext()
+
+        return currentImage
     }
 }

@@ -226,7 +226,7 @@ struct LookingForPartyView: View {
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 6)
                 if !viewModel.hasLoadedInitialData {
-                    ProgressView().progressViewStyle(HabiticaProgressStyle(strokeWidth: 12)).frame(width: 80, height: 80).padding(.top, 20)
+                    ProgressView().habiticaProgressStyle(strokeWidth: 12).frame(width: 80, height: 80).padding(.top, 20)
                 } else {
                     if viewModel.members.isEmpty {
                         Image(uiImage: Asset.partySeekingEmpty.image).padding(.top, 24)
@@ -275,5 +275,13 @@ class LookingForPartyViewController: UIHostingController<LookingForPartyView> {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder, rootView: LookingForPartyView(viewModel: viewModel))
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        HabiticaAnalytics.shared.log("View Find Members", withEventProperties: [
+            "eventCategory": "navigation",
+            "hitType": "event"
+        ])
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-//https://stackoverflow.com/a/46049763
+// https://stackoverflow.com/a/46049763
 struct JSONCodingKeys: CodingKey {
     var stringValue: String
     

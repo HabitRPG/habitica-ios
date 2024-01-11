@@ -187,21 +187,7 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
     }
     
     private func showReportView(message: InboxMessageProtocol) {
-        guard let view = Bundle.main.loadNibNamed("HRPGFlagInformationOverlayView", owner: self, options: nil)?.first as? FlagInformationOverlayView else {
-            return
-        }
-        view.message = message.text
-        view.sizeToFit()
-        
-        let alert = HabiticaAlertController()
-        alert.title = L10n.reportXViolation(message.username ?? "")
-        alert.contentView = view
-        alert.addAction(title: L10n.report, style: .destructive, isMainAction: true) {[weak self] _ in
-            self?.socialRepository.flag(message: message).observeCompleted {}
-        }
-        alert.addCancelAction()
-        alert.containerViewSpacing = 8
-        alert.enqueue()
+        FlagViewController(type: .inboxMessage, offendingItem: message).show()
     }
     
     private func showProfile(message: InboxMessageProtocol) {

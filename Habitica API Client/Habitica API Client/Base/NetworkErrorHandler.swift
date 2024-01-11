@@ -17,23 +17,23 @@ public protocol ErrorMessage {
 public protocol NetworkErrorHandler {
     var disposable: ScopedDisposable<CompositeDisposable> { get }
     static var errorMessages: [ErrorMessage]? { get }
-    static func handle(error: NSError, messages: [String])
+    static func handle(error: NetworkError, messages: [String])
 }
 
 public extension NetworkErrorHandler {
     func observe(signal: Signal<NSError, Never>) {
         disposable.inner.add(signal.observeValues({ error in
-            Self.handle(error: error, messages: [])
+            Self.handle(error: NetworkError(message: error.localizedDescription, url: "", code: error.code), messages: [])
         }))
     }
-    func observe(signal: Signal<(NSError, [String]), Never>) {
+    func observe(signal: Signal<(NetworkError, [String]), Never>) {
         disposable.inner.add(signal.observeValues({ (error, response) in
             Self.handle(error: error, messages: response)
         }))
     }
     func observe(signal: Signal<[NetworkError], Never>) {
         disposable.inner.add(signal.observeValues({ messages in
-            Self.handle(error: messages.first ?? NetworkError(message: ""), messages: messages.map({ error in
+            Self.handle(error: messages.first ?? NetworkError(message: "", url: ""), messages: messages.map({ error in
                 return error.message
             }))
         }))
@@ -44,7 +44,7 @@ public class PrintNetworkErrorHandler: NetworkErrorHandler {
     public let disposable = ScopedDisposable(CompositeDisposable())
     public static var errorMessages: [ErrorMessage]?
     
-    public static func handle(error: NSError, messages: [String] = []) {
+    public static func handle(error: NetworkError, messages: [String] = []) {
         for message in messages {
             print(message)
         }
@@ -68,10 +68,12 @@ extension UIAlertController {
 }
 
 public class NetworkError: NSError {
+    public var url: String
     var message: String
     
-    init(message: String, code: Int = -1000) {
+    init(message: String, url: String, code: Int = -1000) {
         self.message = message
+        self.url = url
         super.init(domain: "NetworkError", code: code, userInfo: nil)
     }
     

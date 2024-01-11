@@ -16,6 +16,7 @@ class InAppRewardCell: UICollectionViewCell {
     @IBOutlet weak var infoImageView: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var pinnedIndicatorView: UIImageView!
+    @IBOutlet weak var checkmarkView: UIImageView!
     @IBOutlet weak var purchaseConfirmationView: UIImageView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var currencyBackgroundView: UIView!
@@ -85,7 +86,16 @@ class InAppRewardCell: UICollectionViewCell {
         didSet {
             pinnedIndicatorView.isHidden = !isPinned
             if isPinned {
-                pinnedIndicatorView.image = HabiticaIcons.imageOfPinnedItem
+                pinnedIndicatorView.image = HabiticaIcons.imageOfPinnedItem.withRenderingMode(.alwaysTemplate)
+            }
+        }
+    }
+    
+    public var isChecked = false {
+        didSet {
+            checkmarkView.isHidden = !isChecked
+            if isChecked {
+                checkmarkView.image = Asset.checkmarkSmall.image.withRenderingMode(.alwaysTemplate)
             }
         }
     }
@@ -127,11 +137,18 @@ class InAppRewardCell: UICollectionViewCell {
             currencyView.isHidden = false
         }
         
+        if reward.key == "gem" {
+            infoImageView.image = Asset.subBenefitIndicator.image
+            infoImageView.isHidden = false
+        }
+        
         let theme = ThemeService.shared.theme
         backgroundColor = theme.contentBackgroundColor
         containerView.backgroundColor = theme.windowBackgroundColor
         currencyBackgroundView.backgroundColor = theme.offsetBackgroundColor.withAlphaComponent(0.3)
         unlockLabel.textColor = theme.secondaryTextColor
+        pinnedIndicatorView.tintColor = theme.dimmedTextColor
+        checkmarkView.tintColor = theme.dimmedTextColor
     }
     
     func wasRecentlyPurchased(_ lastPurchase: Date) -> Bool {
@@ -155,7 +172,7 @@ class InAppRewardCell: UICollectionViewCell {
 
         if let user = user {
             if currency == .gold {
-                canAfford = price < user.stats?.gold ?? 0
+                canAfford = price <= user.stats?.gold ?? 0
             } else {
                 canAfford = true
             }

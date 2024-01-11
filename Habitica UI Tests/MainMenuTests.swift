@@ -26,7 +26,6 @@ class MainMenuTests: HabiticaAppTests {
         expectExists(table.staticTexts["Items"])
         expectExists(table.staticTexts["Purchase Gems"])
         expectExists(table.staticTexts["Subscription"])
-        expectExists(table.staticTexts["Tavern"])
         expectExists(table.staticTexts["News"])
         expectExists(table.staticTexts["Support"])
         expectExists(table.staticTexts["About"])

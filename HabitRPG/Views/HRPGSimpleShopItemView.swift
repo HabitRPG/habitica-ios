@@ -128,8 +128,8 @@ class HRPGSimpleShopItemView: UIView {
         }
         
         if let lockedReason = reward.lockedReason, reward.locked {
-            topBannerWrapper.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
-            topBannerLabel.textColor = ThemeService.shared.theme.secondaryTextColor
+            topBannerWrapper.backgroundColor = ThemeService.shared.theme.backgroundTintColor
+            topBannerLabel.textColor = .white
             topBannerLabel.text = lockedReason
         }
         topBannerWrapper.isHidden = false

@@ -9,7 +9,7 @@ import UIKit
 
 // swiftlint:disable:next attributes
 @objc public enum ToastColor: Int {
-    case blue = 0, green, red, gray, yellow, purple
+    case blue = 0, green, red, gray, yellow, purple, black, subscriberPerk
     
     func getUIColor() -> UIColor {
         switch self {
@@ -25,6 +25,10 @@ import UIKit
             return UIColor.yellow10
         case .purple:
             return UIColor.purple200
+        case .subscriberPerk:
+            return UIColor.teal100
+        case .black:
+            return UIColor.black
         }
     }
 }
@@ -51,6 +55,7 @@ class ToastManager: NSObject {
             contentView.frame = CGRect(x: 0, y: 0, width: viewController.view.frame.size.width, height: viewController.view.frame.size.height)
             contentView.setNeedsLayout()
             contentView.alpha = 0
+            contentView.backgroundView.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
             viewController.view.addSubview(contentView)
             let bottomOffset = KeyboardManager.height > 0 ? KeyboardManager.height - 44 : 0
             viewController.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-\(bottomOffset)-|",
@@ -59,12 +64,17 @@ class ToastManager: NSObject {
             viewController.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|",
                                                                               options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                                                                               metrics: nil, views: ["view": contentView]))
+            UIView.animate(withDuration: 0.25, delay: 0.0, usingSpringWithDamping: 100, initialSpringVelocity: 20, animations: {
+                contentView.alpha = 1
+                contentView.backgroundView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }, completion: { _ in
+                if let completionBlock = completion {
+                    completionBlock()
+                }
+            })
                 UIView.animate(withDuration: 0.2, animations: { () -> Void in
-                    contentView.alpha = 1
                 }, completion: { (_) in
-                    if let completionBlock = completion {
-                        completionBlock()
-                    }
+                    
             })
         } else {
             displayQueue.removeFirst()
@@ -76,6 +86,8 @@ class ToastManager: NSObject {
             withDuration: 0.2,
             animations: { () -> Void in
                 toast.alpha = 0
+                toast.backgroundView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                toast.transform = CGAffineTransform(translationX: 0, y: 15)
         }, completion: { (_) in
             toast.removeFromSuperview()
             if let completionBlock = completion {
@@ -94,7 +106,9 @@ class ToastManager: NSObject {
                         }
                         self?.displayQueue.removeFirst()
                         if let toast = self?.displayQueue.first {
-                            self?.display(toast: toast)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                self?.display(toast: toast)
+                            }
                         }
                     }
                 }

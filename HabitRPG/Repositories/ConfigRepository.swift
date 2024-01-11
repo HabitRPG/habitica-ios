@@ -49,9 +49,10 @@ enum ConfigVariable: Int {
     
     case enableCronButton
     
-    case hideTavern
-    case hideGuilds
     case hideChallenges
+    
+    case enableFaintSubs
+    case enableArmoireSubs
 
     // swiftlint:disable cyclomatic_complexity
     func name() -> String {
@@ -88,9 +89,9 @@ enum ConfigVariable: Int {
         case .showTaskGraphs: return "showTaskGraphs"
         case .advertiseTaskGraphs: return "advertiseTaskGraphs"
         case .enableCronButton: return "enableCronButton"
-        case .hideTavern: return "hideTavern"
-        case .hideGuilds: return "hideGuilds"
         case .hideChallenges: return "hideChallenges"
+        case .enableFaintSubs: return "enableFaintSubs"
+        case .enableArmoireSubs: return "enableArmoireSubs"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -159,9 +160,9 @@ enum ConfigVariable: Int {
             return false as NSNumber
         case .enableCronButton:
             return false as NSNumber
-        case .hideTavern:
+        case .enableFaintSubs:
             return false as NSNumber
-        case .hideGuilds:
+        case .enableArmoireSubs:
             return false as NSNumber
         case .hideChallenges:
             return false as NSNumber
@@ -199,8 +200,8 @@ enum ConfigVariable: Int {
             .showTaskGraphs,
             .advertiseTaskGraphs,
             .enableCronButton,
-            .hideTavern,
-            .hideGuilds,
+            .enableFaintSubs,
+            .enableArmoireSubs,
             .hideChallenges
         ]
     }
@@ -281,7 +282,7 @@ class ConfigRepository: NSObject {
     var testingLevel: TestingLevel {
         #if targetEnvironment(simulator)
             return .simulator
-        #endif
+        #else
         let value = Bundle.main.infoDictionary?["TESTING_LEVEL"] as? String
         switch value {
         case "debug":
@@ -293,6 +294,7 @@ class ConfigRepository: NSObject {
         default:
             return .production
         }
+#endif
     }
     
     @objc
@@ -306,6 +308,7 @@ class ConfigRepository: NSObject {
             for event in worldState?.events ?? [] where event.npcImageSuffix?.isEmpty == false {
                 return event.npcImageSuffix
             }
+            return nil
         }
         return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).stringValue
     }

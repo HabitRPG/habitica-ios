@@ -24,7 +24,6 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
             disposable.inner.add(viewModel.cellModelsSignal.observeValues({[weak self] (sections) in
                 self?.dataSource.sections = sections
                 self?.tableView.reloadData()
-                self?.updateNavbarButton()
             }))
             
             disposable.inner.add(viewModel.reloadTableSignal.observeValues {[weak self] _ in
@@ -60,6 +59,8 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
         tableView.tableFooterView = UIView()
         tableView.register(UINib(nibName: "ChallengeTableViewHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "header")
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Asset.moreInteractionsIcon.image, style: .plain, target: self, action: #selector(showOverflowMenu))
+        
         self.viewModel?.viewDidLoad()
     }
     
@@ -90,28 +91,26 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
         return dataSource.sections?[section].title != nil ? 55 : 0
     }
     
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        updateNavbarButton()
-    }
-    
-    private func updateNavbarButton() {
-         if (tableView.indexPathsForVisibleRows?.count ?? 0) == 0 {
-             return
-         }
-         let isMember = viewModel?.challengeMembershipProperty.value != nil
-         var indexPath = IndexPath(item: 0, section: 0)
-         if isMember {
-             indexPath = IndexPath(item: 0, section: tableView.numberOfSections-1)
-         }
-         if tableView.isVisible(indexPath: indexPath) {
-             if navigationItem.rightBarButtonItem != nil {
-                 navigationItem.rightBarButtonItem = nil
-             }
-         } else if !isMember && navigationItem.rightBarButtonItem?.title != L10n.join {
-             navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.join, style: .plain, target: self, action: #selector(joinChallenge))
-         } else if isMember && navigationItem.rightBarButtonItem?.title != L10n.leave {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.leave, style: .plain, target: self, action: #selector(leaveChallenge))
-        }
+    @IBAction func showOverflowMenu(_ sender: Any) {
+        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(menuItems: {
+            BottomSheetMenuitem(title: L10n.reportX(L10n.challenge), style: .destructive) {
+                if let challenge = self.viewModel?.challengeProperty.value {
+                    FlagViewController(type: .challenge, offendingItem: challenge).show()
+                }
+            }
+            BottomSheetMenuSeparator()
+            let isMember = viewModel?.challengeMembershipProperty.value != nil
+            if !isMember {
+                BottomSheetMenuitem(title: L10n.joinChallenge) {
+                    self.joinChallenge()
+                }
+            } else if isMember {
+                BottomSheetMenuitem(title: L10n.leaveChallenge, style: .destructive) {
+                    self.leaveChallenge()
+                }
+           }
+        }))
+        present(sheet, animated: true)
     }
     
     @objc

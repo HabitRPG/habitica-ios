@@ -50,7 +50,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     private var hasCompletionHandler = false
     override private init() {
         #if DEBUG
-            appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
+            appleValidator = AppleReceiptValidator(service: .sandbox, sharedSecret: itunesSharedSecret)
         #else
             appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
         #endif
@@ -305,7 +305,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                     SwiftyStoreKit.finishTransaction(transaction)
                 }
             case .error(let error):
-                if (error.localizedDescription.contains("Code: 1")) {
+                if error.localizedDescription.contains("Code: 1") {
                     return
                 }
                 self?.handle(error: error)

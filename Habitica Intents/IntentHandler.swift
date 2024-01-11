@@ -40,8 +40,7 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
                 return
             }
             result = INSpeakableStringResolutionResult.success(with: taskList)
-        }
-        else {
+        } else {
             result = INSpeakableStringResolutionResult.needsValue()
         }
         completion(result)
@@ -108,8 +107,7 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
                 return
             }
             result = INTaskListResolutionResult.success(with: taskList)
-        }
-        else {
+        } else {
             result = INTaskListResolutionResult.needsValue()
         }
         
@@ -125,7 +123,7 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
         guard let targetTaskList = intent.targetTaskList?.title else {
             completion(INAddTasksIntentResponse(code: .failure, userActivity: nil))
             // to require app launch
-            //let response = INAddTasksIntentResponse(code: .failureRequiringAppLaunch, userActivity: nil)
+            // let response = INAddTasksIntentResponse(code: .failureRequiringAppLaunch, userActivity: nil)
             return
         }
         guard let validTaskListTitle = TaskManager.shared.getValidTaskListFromSpokenPhrase(spokenPhrase: targetTaskList.spokenPhrase) else {
@@ -137,8 +135,7 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
         // add to the given list
         var tasks: [INTask] = []
         if let taskTitles = intent.taskTitles {
-            let taskTitlesStrings = taskTitles.map {
-                taskTitle -> String in
+            let taskTitlesStrings = taskTitles.map { taskTitle -> String in
                 return taskTitle.spokenPhrase
             }
             tasks = createTasks(fromTitles: taskTitlesStrings)

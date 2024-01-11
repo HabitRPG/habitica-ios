@@ -152,7 +152,7 @@ class SubscriptionViewController: BaseTableViewController {
             stackView.pin.left(16).top().right(16).height(header.bounds.height)
         }
         
-        HabiticaAnalytics.shared.logNavigationEvent("subscription screen")
+        HabiticaAnalytics.shared.logNavigationEvent("navigated subscription screen")
     }
         
     override func applyTheme(theme: Theme) {
@@ -236,7 +236,7 @@ class SubscriptionViewController: BaseTableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isInformationSection(section) {
-            return 5
+            return 7
         } else if isOptionSection(section) {
             guard let products = self.products else {
                 return 0
@@ -328,7 +328,7 @@ class SubscriptionViewController: BaseTableViewController {
                 fatalError()
             }
             cell.title = SubscriptionInformation.titles[indexPath.item]
-            if indexPath.item == 2 && mysteryGear != nil {
+            if indexPath.item == 3 && mysteryGear != nil {
                 cell.descriptionText = L10n.subscriptionInfo3DescriptionNew(mysteryGear?.text ?? "")
                 ImageManager.getImage(name: "shop_set_mystery_\(mysteryGear?.key?.split(separator: "_").last ?? "")") { (image, _) in
                     cell.iconView.image = image

@@ -50,9 +50,7 @@ class UserProfileViewController: BaseTableViewController {
     }
     
     private var isBlocked: Bool {
-        get {
-            return user?.inbox?.blocks.contains(userID ?? "") == true
-        }
+        return user?.inbox?.blocks.contains(userID ?? "") == true
     }
     
     override func viewDidLoad() {
@@ -192,6 +190,8 @@ class UserProfileViewController: BaseTableViewController {
         } else if isBlocked && section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BlockedCell", for: indexPath)
             cell.contentView.backgroundColor = ThemeService.shared.theme.errorColor
+            (cell.viewWithTag(21) as? UILabel)?.textColor = .white
+            (cell.viewWithTag(22) as? UILabel)?.textColor = .white
             return cell
         }
         switch section {
@@ -239,7 +239,13 @@ class UserProfileViewController: BaseTableViewController {
             case 4:
                 if let imageUrl = member?.profile?.photoUrl {
                     let imageView = cell.viewWithTag(1) as? NetworkImageView
-                    imageView?.kf.setImage(with: URL(string: imageUrl))
+                    imageView?.kf.setImage(with: URL(string: imageUrl), completionHandler: { result in
+                        if let size = try? result.get().image.size {
+                            imageView?.constraints.first(where: { constraint in
+                                return constraint.identifier == "height"
+                            })?.constant = size.height * ((imageView?.bounds.width ?? 1) / size.width)
+                        }
+                    })
                 }
             case 5:
                 cell.textLabel?.text = L10n.Member.memberSince
@@ -537,6 +543,7 @@ class UserProfileViewController: BaseTableViewController {
                    giftViewController?.giftRecipientUsername = username ?? userID
                }
     }
+    
     @IBAction func showOverflowMenu(_ sender: Any) {
         let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(menuItems: {
                 if user?.id != userID {
@@ -551,7 +558,13 @@ class UserProfileViewController: BaseTableViewController {
                             self?.showBlockDialog()
                         }
                     }
+                    BottomSheetMenuitem(title: L10n.reportX(L10n.player), style: .destructive) {
+                        if let member = self.member {
+                            FlagViewController(type: .member, offendingItem: member).show()
+                        }
+                    }
                 }
+            BottomSheetMenuSeparator()
             BottomSheetMenuitem(title: L10n.giftGems) {[weak self] in
                 self?.perform(segue: StoryboardSegue.Social.giftGemsSegue)
             }

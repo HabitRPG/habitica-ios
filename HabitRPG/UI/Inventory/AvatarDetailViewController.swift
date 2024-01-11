@@ -23,7 +23,6 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator?.followScrollView = false
-        collectionView.collectionViewLayout
         if let type = customizationType {
             if type == "eyewear" || type == "headAccessory" {
                 gearDataSource = AvatarGearDetailViewDataSource(type: type)
@@ -37,6 +36,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
                  }
             }
         }
+        HabiticaAnalytics.shared.logNavigationEvent("navigated \(customizationType ?? "") screen")
     }
     
     override func applyTheme(theme: Theme) {
@@ -94,7 +94,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
             }) {[weak self] in
                 if self?.customizationDataSource?.canAfford(price: customization.price) != true {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
-                        HRPGBuyItemModalViewController.displayInsufficientGemsModal(delayDisplay: false)
+                        HRPGBuyItemModalViewController.displayInsufficientGemsModal(reason: "customization", delayDisplay: false)
                     })
                     return
                 }
@@ -139,7 +139,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
             }) {[weak self] in
                 if self?.customizationDataSource?.canAfford(price: customizationSet.setPrice) != true {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
-                        HRPGBuyItemModalViewController.displayInsufficientGemsModal(delayDisplay: false)
+                        HRPGBuyItemModalViewController.displayInsufficientGemsModal(reason: "customization", delayDisplay: false)
                     })
                     return
                 }

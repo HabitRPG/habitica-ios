@@ -10,6 +10,9 @@ import UIKit
 import Habitica_Models
 
 class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSourceDelegate {
+    
+    private let userRepository = UserRepository()
+    
     func showGearSelection(sourceView: UIView) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         for title in ["warrior", "mage", "healer", "rogue", "none"] {
@@ -35,6 +38,7 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
     }
     
     var shopIdentifier: String?
+    var openToSection: String?
     
     private lazy var bannerView: NPCBannerView = {
         return NPCBannerView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 156))
@@ -66,6 +70,30 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         dataSource?.needsGearSection = shopIdentifier == "market"
         
         refresh()
+        
+        HabiticaAnalytics.shared.logNavigationEvent("navigated \(shopIdentifier ?? "") screen")
+    }
+    
+    private var isSubscribed: Bool?
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if isSubscribed == nil {
+            userRepository.getUser().take(first: 1).on(value: { user in
+                self.isSubscribed = user.isSubscribed
+                if self.shopIdentifier == "timeTravelersShop" && !user.isSubscribed && user.purchased?.subscriptionPlan?.consecutive?.hourglasses == 0 {
+                    SubscriptionModalViewController(presentationPoint: .timetravelers).show()
+                }
+            }).start()
+        }
+        
+        if let sectionKey = openToSection {
+            let section = dataSource?.sections.firstIndex(where: { section in
+                section.key == sectionKey
+            })
+            collectionView.scrollToItem(at: IndexPath(row: 0, section: section ?? 0), at: .top, animated: true)
+        }
     }
     
     private func setupNavBar() {
@@ -116,6 +144,11 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
     }
     
     func didSelectItem(_ item: InAppRewardProtocol?) {
+        if item?.key == "gem" && isSubscribed == false {
+            let sheet = SubscriptionModalViewController(presentationPoint: .gemForGold)
+            sheet.show()
+            return
+        }
         let viewController = StoryboardScene.BuyModal.hrpgBuyItemModalViewController.instantiate()
         viewController.reward = item
         viewController.shopIdentifier = shopIdentifier

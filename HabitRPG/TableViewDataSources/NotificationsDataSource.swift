@@ -143,7 +143,7 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
                     .start())
             }
         case .itemReceived:
-            if let cell = cell as? ItemReceivedNotificationCell,  let notif = notification as? NotificationItemReceivedProtocol {
+            if let cell = cell as? ItemReceivedNotificationCell, let notif = notification as? NotificationItemReceivedProtocol {
                 cell.configureFor(notification: notif)
             }
         default:
@@ -207,6 +207,10 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
             url = "/static/new-stuff"
         case .itemReceived:
             let itemReceivedNotification = notification as? NotificationItemReceivedProtocol
+            if itemReceivedNotification?.openDestination?.starts(with: "/") == true {
+                url = itemReceivedNotification?.openDestination
+                break
+            }
             switch itemReceivedNotification?.openDestination {
             case "equipment":
                 url = "/inventory/equipment"

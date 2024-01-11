@@ -37,11 +37,13 @@ protocol Avatar {
 
     var isSleep: Bool { get }
     var size: String? { get }
+    
+    func isValid() -> Bool
 }
 
 extension Avatar {
     
-    private func isValid(_ value: String?) -> Bool {
+    private func isValueValid(_ value: String?) -> Bool {
         return value?.count ?? 0 > 0
     }
     
@@ -50,36 +52,38 @@ extension Avatar {
     }
     
     func getViewDictionary(showsBackground: Bool, showsMount: Bool, showsPet: Bool, isFainted: Bool, ignoreSleeping: Bool) -> [String: Bool] {
-        let hasNoVisualBuff = !isValid(visualBuff)
+        if isValid() == false { return [:] }
+        let hasNoVisualBuff = !isValueValid(visualBuff)
         return [
-            "background": showsBackground && isValid(background),
-            "mount-body": showsMount && isValid(mount),
-            "chair": hasNoVisualBuff && isValid(chair) && chair != "none",
-            "back": hasNoVisualBuff && isValid(back) && isAvailableGear(back),
-            "skin": hasNoVisualBuff && isValid(skin),
-            "shirt": hasNoVisualBuff && isValid(shirt),
-            "armor": hasNoVisualBuff && isValid(armor) && isAvailableGear(armor),
-            "body": hasNoVisualBuff && isValid(body) && isAvailableGear(body),
+            "background": showsBackground && isValueValid(background),
+            "mount-body": showsMount && isValueValid(mount),
+            "chair": hasNoVisualBuff && isValueValid(chair) && chair != "none",
+            "back": hasNoVisualBuff && isValueValid(back) && isAvailableGear(back),
+            "skin": hasNoVisualBuff && isValueValid(skin),
+            "shirt": hasNoVisualBuff && isValueValid(shirt),
+            "armor": hasNoVisualBuff && isValueValid(armor) && isAvailableGear(armor),
+            "body": hasNoVisualBuff && isValueValid(body) && isAvailableGear(body),
             "head_0": hasNoVisualBuff,
-            "hair-base": hasNoVisualBuff && isValid(hairBase) && hairBase != "0",
-            "hair-bangs": hasNoVisualBuff && isValid(hairBangs) && hairBangs != "0",
-            "hair-mustache": hasNoVisualBuff && isValid(hairMustache) && hairMustache != "0",
-            "hair-beard": hasNoVisualBuff && isValid(hairBeard) && hairBeard != "0",
-            "eyewear": hasNoVisualBuff && isValid(eyewear) && isAvailableGear(eyewear),
-            "head": hasNoVisualBuff && isValid(head) && isAvailableGear(head),
-            "head-accessory": hasNoVisualBuff && isValid(headAccessory) && isAvailableGear(headAccessory),
-            "hair-flower": hasNoVisualBuff && isValid(hairFlower) && hairFlower != "0",
-            "shield": hasNoVisualBuff && isValid(shield) && isAvailableGear(shield),
-            "weapon": hasNoVisualBuff && isValid(weapon) && isAvailableGear(weapon),
-            "visual-buff": isValid(visualBuff),
-            "mount-head": showsMount && isValid(mount),
+            "hair-base": hasNoVisualBuff && isValueValid(hairBase) && hairBase != "0",
+            "hair-bangs": hasNoVisualBuff && isValueValid(hairBangs) && hairBangs != "0",
+            "hair-mustache": hasNoVisualBuff && isValueValid(hairMustache) && hairMustache != "0",
+            "hair-beard": hasNoVisualBuff && isValueValid(hairBeard) && hairBeard != "0",
+            "eyewear": hasNoVisualBuff && isValueValid(eyewear) && isAvailableGear(eyewear),
+            "head": hasNoVisualBuff && isValueValid(head) && isAvailableGear(head),
+            "head-accessory": hasNoVisualBuff && isValueValid(headAccessory) && isAvailableGear(headAccessory),
+            "hair-flower": hasNoVisualBuff && isValueValid(hairFlower) && hairFlower != "0",
+            "shield": hasNoVisualBuff && isValueValid(shield) && isAvailableGear(shield),
+            "weapon": hasNoVisualBuff && isValueValid(weapon) && isAvailableGear(weapon),
+            "visual-buff": isValueValid(visualBuff),
+            "mount-head": showsMount && isValueValid(mount),
             "zzz": (isSleep && !ignoreSleeping) && !isFainted,
             "knockout": isFainted,
-            "pet": showsPet && isValid(pet)
+            "pet": showsPet && isValueValid(pet)
         ]
     }
     
     func getFilenameDictionary(ignoreSleeping: Bool) -> [String: String?] {
+        if isValid() == false { return [:] }
         return [
             "background": "background_\(background ?? "")",
             "mount-body": "Mount_Body_\(mount ?? "")",
@@ -118,6 +122,10 @@ class AvatarViewModel: NSObject, Avatar {
     @objc
     init(avatar: AvatarProtocol) {
         self.avatar = avatar
+    }
+    
+    func isValid() -> Bool {
+        return avatar?.isValid == true
     }
     
     private var displayedOutfit: OutfitProtocol? {

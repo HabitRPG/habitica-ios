@@ -119,7 +119,7 @@ class SettingsViewController: FormViewController, Themeable {
                         section <<< SwitchRow { row in
                             row.title = L10n.Groups.copySharedTasks
                             row.cellStyle = UITableViewCell.CellStyle.subtitle
-                            if (self?.user?.isValid == true) {
+                            if self?.user?.isValid == true {
                                 row.value = self?.user?.preferences?.tasks?.mirrorGroupTasks?.contains(plan.id ?? "") == true
                             }
                             row.updateCell()
@@ -239,9 +239,9 @@ class SettingsViewController: FormViewController, Themeable {
             }
         <<< ButtonRow(SettingsTags.pauseDamage) { row in
             row.cellStyle = .subtitle
-            row.cellUpdate { cell, row in
+            row.cellUpdate { cell, _ in
                 cell.textLabel?.textAlignment = .natural
-                if (cell.textLabel?.text == L10n.Settings.pauseDamage) {
+                if cell.textLabel?.text == L10n.Settings.pauseDamage {
                     cell.detailTextLabel?.text = L10n.Settings.pauseDamageSubtitle
                 } else {
                     cell.detailTextLabel?.text = L10n.Settings.resumeDamageSubtitle
@@ -666,10 +666,10 @@ class SettingsViewController: FormViewController, Themeable {
                     let filename = AppIconName(rawValue: row.title ?? "")?.fileName ?? "Purple"
                     cell.height = { 68 }
                     cell.imageView?.cornerRadius = 12
-                    cell.imageView?.contentMode = .center
-                    cell.imageView?.image = UIImage(named: filename)
+                    cell.imageView?.contentMode = .scaleAspectFit
+                    cell.imageView?.image = UIImage(named: filename)?.resize(maxWidthHeight: 60)
+                    
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.contentView.layoutMargins = UIEdgeInsets(top: 4, left: cell.layoutMargins.left, bottom: 4, right: cell.layoutMargins.right)
                 }
             })
             row.onChange({[weak self] (row) in
@@ -880,10 +880,10 @@ class SettingsViewController: FormViewController, Themeable {
             
             alertController.addAction(title: L10n.Settings.changeClass) { _ in
                 if user.gemCount < changeClassCosts {
-                    HRPGBuyItemModalViewController.displayInsufficientGemsModal(delayDisplay: false)
+                    HRPGBuyItemModalViewController.displayInsufficientGemsModal(reason: "class change", delayDisplay: false)
                     return
                 }
-                let _ = UserManager.shared.showClassSelection(user: user)
+                _ = UserManager.shared.showClassSelection(user: user)
             }
             alertController.addCancelAction()
             alertController.show()

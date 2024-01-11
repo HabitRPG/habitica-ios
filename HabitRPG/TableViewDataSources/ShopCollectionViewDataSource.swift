@@ -10,7 +10,8 @@ import UIKit
 import Habitica_Models
 import ReactiveSwift
 
-@objc protocol ShopCollectionViewDataSourceDelegate {
+@objc
+protocol ShopCollectionViewDataSourceDelegate {
     func didSelectItem(_ item: InAppRewardProtocol?)
     func scrollViewDidScroll(_ scrollView: UIScrollView)
     func showGearSelection(sourceView: UIView)
@@ -27,6 +28,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     
     private var ownedItems = [String: OwnedItemProtocol]()
     private var pinnedItems = [String?]()
+    private var completedQuests = [String?]()
     private var user: UserProtocol?
     private var userClass: String? {
         return user?.stats?.habitClass
@@ -71,7 +73,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             if sectionCount >= 2 {
                 self?.sections.removeLast(sectionCount - 1)
             }
-            self?.loadCategories(shop?.categories ?? [], isSubscribed: user.isSubscribed)
+            self?.loadCategories(shop?.categories ?? [])
             self?.delegate?.updateShopHeader(shop: shop)
             
             self?.user = user
@@ -89,6 +91,12 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             }).on(value: {[weak self]rewards in
                 self?.pinnedItems = rewards
             }).start())
+        
+        disposable.add(userRepository.getAchievements().map { achievements in
+            achievements.value.filter { $0.isQuestAchievement }
+        }.on(value: {[weak self] achievements in
+            self?.completedQuests = achievements.map({ $0.key })
+        }).start())
         
         disposable.add(inventoryRepository.getOwnedItems().map({ (items, _) -> [String: OwnedItemProtocol] in
             var ownedItems: [String: OwnedItemProtocol] = [:]
@@ -108,15 +116,11 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         }
     }
     
-    func loadCategories(_ categories: [ShopCategoryProtocol], isSubscribed: Bool) {
+    func loadCategories(_ categories: [ShopCategoryProtocol]) {
         for category in categories {
             let newSection = ItemSection<InAppRewardProtocol>(title: category.text)
-            newSection.items = category.items.filter({ (inAppReward) -> Bool in
-                if inAppReward.isSubscriberItem {
-                    return isSubscribed
-                }
-                return true
-            })
+            newSection.items = category.items
+            newSection.key = category.identifier
             sections.append(newSection)
         }
         collectionView?.reloadData()
@@ -255,6 +259,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                     itemCell.itemsLeft = ownedItem.numberOwned
                 }
                 itemCell.isPinned = pinnedItems.contains(item.key)
+                if item.type == "quests" || item.pinType == "quests" {
+                    itemCell.isChecked = completedQuests.contains(item.key)
+                }
             }
             return cell
         }

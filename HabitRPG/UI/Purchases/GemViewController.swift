@@ -45,7 +45,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         navigationController?.navigationBar.standardAppearance.shadowColor = .clear
         navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
         
-        HabiticaAnalytics.shared.logNavigationEvent("gem screen")
+        HabiticaAnalytics.shared.logNavigationEvent("navigated gem screen")
         
         activePromo = configRepository.activePromotion()
         birthdayEvent = configRepository.getBirthdayEvent()

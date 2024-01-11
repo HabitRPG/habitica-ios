@@ -11,6 +11,7 @@ import Habitica_Models
 import Habitica_Database
 import Habitica_API_Client
 import ReactiveSwift
+import SwiftUIX
 
 class InventoryRepository: BaseRepository<InventoryLocalRepository> {
 
@@ -55,15 +56,15 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         return localRepository.getItems(type: type)
     }
     
-    func getSpecialItems(keys: [String]) ->SignalProducer<ReactiveResults<[SpecialItemProtocol]>, ReactiveSwiftRealmError> {
+    func getSpecialItems(keys: [String]) -> SignalProducer<ReactiveResults<[SpecialItemProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getSpecialItems(keys: keys)
     }
     
-    func getQuest(key: String) ->SignalProducer<QuestProtocol?, ReactiveSwiftRealmError> {
+    func getQuest(key: String) -> SignalProducer<QuestProtocol?, ReactiveSwiftRealmError> {
         return localRepository.getQuest(key: key)
     }
     
-    func getQuests(keys: [String]) ->SignalProducer<ReactiveResults<[QuestProtocol]>, ReactiveSwiftRealmError> {
+    func getQuests(keys: [String]) -> SignalProducer<ReactiveResults<[QuestProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getQuests(keys: keys)
     }
     
@@ -108,19 +109,20 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         })
     }
     
-    func buyObject(key: String, quantity: Int, price: Int, text: String) -> Signal<BuyResponseProtocol?, Never> {
+    func buyObject(key: String, quantity: Int, price: Int, text: String, openArmoireView: Bool = true) -> Signal<BuyResponseProtocol?, Never> {
         let call = BuyObjectCall(key: key, quantity: quantity)
         
         return call.habiticaResponseSignal.on(value: {[weak self]habiticaResponse in
             if let buyResponse = habiticaResponse?.data, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, price: price, buyResponse: buyResponse)
-                
                 if let armoire = buyResponse.armoire {
+                    if openArmoireView {
                         let viewController = ArmoireViewController()
                         viewController.configure(type: armoire.type ?? "", text: armoire.dropText ?? "", key: armoire.dropKey, value: armoire.value)
                         viewController.show()
+                    }
                 } else {
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1.0) {
                         ToastManager.show(text: L10n.purchased(text), color: .green)
                     }
                 }
@@ -244,18 +246,52 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         return localRepository.getShops()
     }
     
-    func feed(pet: PetProtocol, food: FoodProtocol) -> Signal<Int?, Never> {
-        let call = FeedPetCall(pet: pet, food: food)
+    func feed(pet: PetProtocol, food: FoodProtocol) -> Signal<HabiticaResponse<Int>?, Never> {
+        feed(pet: pet, food: food.key ?? "")
+    }
+    
+    func feed(pet: PetProtocol, food: String) -> Signal<HabiticaResponse<Int>?, Never> {
+        let call = FeedPetCall(pet: pet.key ?? "", food: food)
         
-        call.habiticaResponseSignal.observeValues { response in
-            if let message = response?.message {
-                let toastView = ToastView(title: message, background: .green, delay: 1.0)
-                ToastManager.show(toast: toastView)
+        if food == "Saddle" {
+            call.httpResponseSignal.observeValues { response in
+                if response.statusCode == 404 {
+                    let alert = HabiticaAlertController(title: L10n.Inventory.noSaddleTile, message: L10n.Inventory.noSaddleDescription)
+                    alert.addAction(title: L10n.Inventory.visitMarket, style: .default, isMainAction: true) {_ in
+                        RouterHandler.shared.handle(urlString: "/inventory/market/food")
+                    }
+                    alert.addCloseAction()
+                    alert.show()
+                }
             }
         }
-        return call.objectSignal.on(value: {[weak self]petValue in
-            if let userID = self?.currentUserId, let key = pet.key, let trained = petValue, let foodKey = food.key {
-                self?.localRepository.updatePetTrained(userID: userID, key: key, trained: trained, consumedFood: foodKey)
+        
+        return call.habiticaResponseSignal.on(value: {[weak self] response in
+            if response?.data == -1 {
+                StableLocalRepository().getMounts(keys: [pet.key ?? ""]).map { mounts in
+                    return mounts.value.first?.text
+                }.on(value: { mountText in
+                    let alert = HabiticaAlertController()
+                    alert.title = L10n.youRaisedPet(pet.text ?? "")
+                    alert.contentView = UIHostingView(rootView: VStack(spacing: 8) {
+                        StableBackgroundView(content: MountView(mount: pet).padding(.top, 30), animateFlying: false).clipShape(.rect(cornerRadius: 12))
+                        Text("\(mountText ?? "") Mount").font(.system(size: 16, weight: .medium)).foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                        Text("Let's go for a ride!").font(.system(size: 14)).foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
+                    })
+                    alert.addAction(title: L10n.equip, isMainAction: true) { _ in
+                        self?.equip(type: "mount", key: pet.key ?? "").observeCompleted {}
+                    }
+                    alert.addAction(title: L10n.share) { _ in
+                        SharingManager.share(mount: pet, shareIdentifier: "raisedPet")
+                    }
+                    alert.setCloseAction(title: L10n.close, handler: {})
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        alert.show()
+                    }
+                }).start()
+            }
+            if let userID = self?.currentUserId, let trained = response?.data {
+                self?.localRepository.updatePetTrained(userID: userID, key: pet.key ?? "", trained: trained, consumedFood: food)
             }
         })
     }

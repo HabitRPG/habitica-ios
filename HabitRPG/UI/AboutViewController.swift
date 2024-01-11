@@ -36,12 +36,23 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         super.viewDidLoad()
         topHeaderCoordinator?.hideHeader = true
         topHeaderCoordinator?.followScrollView = false
-        let headerImageView = UIImageView(frame: CGRect(x: 0, y: 10, width: view.frame.size.width, height: 130))
+        let headerView = UIView(frame: CGRect(x: 0, y: 10, width: view.frame.size.width, height: 150))
+        let headerImageView = UIImageView(frame: headerView.bounds)
         headerImageView.image = Asset.gryphon.image.withRenderingMode(.alwaysTemplate)
-        headerImageView.tintColor = ThemeService.shared.theme.backgroundTintColor
+        headerImageView.tintColor = .white
         headerImageView.contentMode = .center
-        headerImageView.addHeightConstraint(height: 130)
-        tableView.tableHeaderView = headerImageView
+        headerImageView.backgroundColor = nil
+        headerView.backgroundColor = nil
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor("#FF878AFF").cgColor, UIColor("#5A2CCBFF").cgColor, UIColor("#4A84E0").cgColor]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
+        gradient.locations =  [-0.5, 0.55, 1.1]
+        gradient.frame = CGRect(x: 20, y: 10, width: headerView.bounds.width - 40, height: 130)
+        gradient.cornerRadius = 12
+        headerView.layer.insertSublayer(gradient, at: 0)
+        headerView.addSubview(headerImageView)
+        tableView.tableHeaderView = headerView
         
         tableView.rowHeight = UITableView.automaticDimension
                 

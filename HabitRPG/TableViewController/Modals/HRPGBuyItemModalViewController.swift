@@ -134,7 +134,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         closableShopModal.shopModalBgView.backgroundColor = theme.contentBackgroundColor
         closableShopModal.shopModalBgView.contentView.backgroundColor = theme.contentBackgroundColor
         buttonSeparatorView.backgroundColor = theme.separatorColor
-        if !itemIsLocked() {
+        if reward?.isValid == true && !itemIsLocked() {
             buyLabel.textColor = theme.tintColor
         }
         view.backgroundColor = theme.backgroundTintColor.darker(by: 50).withAlphaComponent(0.6)
@@ -417,7 +417,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     if currency == .hourglass {
                         HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: user)
                     } else if currency == .gem {
-                        HRPGBuyItemModalViewController.displayInsufficientGemsModal()
+                        HRPGBuyItemModalViewController.displayInsufficientGemsModal(reward: reward)
                     } else {
                         HRPGBuyItemModalViewController.displayInsufficientGoldModal()
                     }
@@ -450,7 +450,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             }
         }
         var text = ""
-        var failureBlock = {[weak self] in
+        let failureBlock = {[weak self] in
             self?.isPurchasing = false
         }
         if let inAppReward = reward {
@@ -506,7 +506,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 successBlock()
             case .failure:
                 failureBlock()
-                HRPGBuyItemModalViewController.displayInsufficientGemsModal()
+                HRPGBuyItemModalViewController.displayInsufficientGemsModal(reward: self.reward)
                 }
             })
         } else if currency == .gem || purchaseType == "gems" {
@@ -522,7 +522,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     if key == "gem" {
                         HRPGBuyItemModalViewController.displayGemCapReachedModal()
                     } else {
-                        HRPGBuyItemModalViewController.displayInsufficientGemsModal()
+                        HRPGBuyItemModalViewController.displayInsufficientGemsModal(reward: self.reward)
                     }
                 }
             })
@@ -552,7 +552,11 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         }
                     }
             } else {
-                inventoryRepository.buyObject(key: key, quantity: quantity, price: value, text: text).observeResult({ (result) in
+                inventoryRepository.buyObject(key: key, quantity: quantity, price: value, text: text)
+                    .flatMap(.latest, { _ in
+                        return self.userRepository.retrieveUser(forced: true)
+                    })
+                    .observeResult({ (result) in
                 switch result {
                 case .success:
                     successBlock()
@@ -565,7 +569,8 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         }
     }
     
-    static func displayInsufficientGemsModal(delayDisplay: Bool = true) {
+    static func displayInsufficientGemsModal(reward: InAppRewardProtocol? = nil, reason: String = "purchase modal", delayDisplay: Bool = true) {
+        HabiticaAnalytics.shared.log("show insufficient gems modal", withEventProperties: ["reason": "purchase modal", "item": reward?.key ?? ""])
         let alert = prepareInsufficientModal(title: L10n.notEnoughGems, message: L10n.moreGemsMessage, image: Asset.insufficientGems.image)
         alert.addAction(title: L10n.purchaseGems, isMainAction: true, handler: { _ in
             let navigationController = StoryboardScene.Main.purchaseGemNavController.instantiate()

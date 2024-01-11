@@ -50,6 +50,26 @@ private struct RegexRoute {
     }
 }
 
+enum Route {
+    case market
+    case questShop
+    case seasonalShop
+    case timeTravelers
+    case subscription
+    
+    var url: String {
+        // swiftlint:disable
+        switch self {
+        case .market: return "/inventory/market"
+        case .questShop: return "/inventory/quests"
+        case .seasonalShop: return "/inventory/seasonal"
+        case .timeTravelers: return "/inventory/time"
+        case .subscription: return "/user/settings/subscription"
+        }
+        // siwftlint:enable
+    }
+}
+
 class RouterHandler {
     
     public static let shared = RouterHandler()
@@ -61,6 +81,10 @@ class RouterHandler {
         directRoutes[route] = call
     }
     
+    private func register(_ route: Route, call: @escaping (() -> Void)) {
+        directRoutes[route.url] = call
+    }
+    
     private func register(_ route: String, call: @escaping (([String: String]) -> Void)) {
         parameterRoutes.append(RegexRoute(route: route, call: call))
     }
@@ -68,21 +92,11 @@ class RouterHandler {
     // swiftlint:disable:next function_body_length cyclomatic_complexity
     func register() {
         let configRepository = ConfigRepository.shared
-        if !configRepository.bool(variable: .hideGuilds) {
-            register("/groups/guild/:groupID") { link in
-                self.displayTab(index: 4)
-                let viewController = StoryboardScene.Social.groupTableViewController.instantiate()
-                viewController.groupID = link["groupID"]
-                self.push(viewController)
-            }
-            register("/groups/myGuilds") {
-                self.displayTab(index: 4)
-                self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
-            }
-            register("/groups/discovery") {
-                self.displayTab(index: 4)
-                self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
-            }
+        register("/groups/guild/:groupID") { link in
+            self.displayTab(index: 4)
+            let viewController = StoryboardScene.Social.groupTableViewController.instantiate()
+            viewController.groupID = link["groupID"]
+            self.push(viewController)
         }
         if !configRepository.bool(variable: .hideChallenges) {
             register("/challenges/:challengeID") { link in
@@ -101,39 +115,36 @@ class RouterHandler {
                 self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
             }
         }
-        if !configRepository.bool(variable: .hideTavern) {
-            register("/tavern") {
-                self.displayTab(index: 4)
-                self.push(StoryboardScene.Social.tavernViewController.instantiate())
-            }
-            register("/groups/tavern") {
-                self.displayTab(index: 4)
-                self.push(StoryboardScene.Social.tavernViewController.instantiate())
-            }
-        }
         register("/party") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Social.partyViewController.instantiate())
         }
-        register("/inventory/market") {
+        register(.market) {
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Shop.shopViewController.instantiate()
             viewController.shopIdentifier = Constants.MarketKey
             self.push(viewController)
         }
-        register("/inventory/quests") {
+        register("/inventory/market/:section") { link in
+            self.displayTab(index: 4)
+            let viewController = StoryboardScene.Shop.shopViewController.instantiate()
+            viewController.shopIdentifier = Constants.MarketKey
+            viewController.openToSection = link["section"]
+            self.push(viewController)
+        }
+        register(.questShop) {
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Shop.shopViewController.instantiate()
             viewController.shopIdentifier = Constants.QuestShopKey
             self.push(viewController)
         }
-        register("/inventory/seasonal") {
+        register(.seasonalShop) {
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Shop.shopViewController.instantiate()
             viewController.shopIdentifier = Constants.SeasonalShopKey
             self.push(viewController)
         }
-        register("/inventory/time") {
+        register(.timeTravelers) {
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Shop.shopViewController.instantiate()
             viewController.shopIdentifier = Constants.TimeTravelersShopKey
@@ -191,7 +202,7 @@ class RouterHandler {
             self.displayTab(index: 4)
             self.present(StoryboardScene.Settings.initialScene.instantiate())
         }
-        register("/user/settings/subscription") {
+        register(.subscription) {
             self.displayTab(index: 4)
             self.present(StoryboardScene.Main.subscriptionNavController.instantiate())
         }
@@ -286,6 +297,11 @@ class RouterHandler {
         register("/menu") {
             self.displayTab(index: 4)
         }
+    }
+    
+    @discardableResult
+    func handle(_ route: Route) -> Bool {
+        return handle(urlString: route.url)
     }
     
     @discardableResult

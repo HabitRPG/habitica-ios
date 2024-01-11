@@ -58,6 +58,22 @@ struct HabiticaProgressStyle: ProgressViewStyle {
     }
 }
 
+extension ProgressViewStyle where Self == HabiticaProgressStyle {
+    static var habitica: HabiticaProgressStyle { .init() }
+}
+
+extension View {
+    func habiticaProgressStyle(strokeWidth: CGFloat = 8) -> some View {
+        return self.progressViewStyle(HabiticaProgressStyle(strokeWidth: strokeWidth))
+    }
+}
+
+struct HabiticaProgressView: View {
+    var body: some View {
+        ProgressView().habiticaProgressStyle().frame(width: 44, height: 44, alignment: .center)
+    }
+}
+
 struct RefreshControlWrapper: View {
     @ObservedObject var refreshState: RefreshState
     
@@ -105,6 +121,20 @@ class HabiticaRefresControl: UIRefreshControl {
     override func endRefreshing() {
         super.endRefreshing()
         refreshState.hasRefreshed = true
+    }
+}
+
+class HabiticaActivityIndicator: UIHostingView<HabiticaProgressView> {
+    required init() {
+        super.init(rootView: HabiticaProgressView())
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(rootView: HabiticaProgressView())
+    }
+    
+    required init(rootView: HabiticaProgressView) {
+        fatalError("init(rootView:) has not been implemented")
     }
 }
 

@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import SwiftUIX
+import SwiftUI
+import ConfettiSwiftUI
 
 class ToastView: UIView {
         
@@ -171,10 +174,57 @@ class ToastView: UIView {
         }
     }
 
+    private struct ConfettiView: View {
+        @State private var counter = 0
+        
+        var body: some View {
+            EmptyView()
+                .confettiCannon(counter: $counter,
+                            num: 5,
+                            confettis: [.image(Asset.subscriberStar.name)],
+                            colors: [Color(UIColor.yellow100)],
+                                confettiSize: 22,
+                            rainHeight: 500, fadesOut: false,
+                            openingAngle: .degrees(30),
+                            closingAngle: .degrees(150),
+                                radius: 100,
+                            repetitions: 5,
+                            repetitionInterval: 0.2)
+                .onAppear {
+                    counter += 1
+                }
+        }
+    }
+    
     func loadOptions() {
-        backgroundView.backgroundColor = options.backgroundColor.getUIColor()
-        backgroundView.layer.borderColor = options.backgroundColor.getUIColor().darker(by: 10).cgColor
-
+        if options.backgroundColor == .subscriberPerk {
+            let gradientLayer = CAGradientLayer()
+            gradientLayer.colors = [UIColor("#72CFFFFF").cgColor, UIColor("#77F4C7FF").cgColor]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+            gradientLayer.endPoint   = CGPoint(x: 1, y: 0.5)
+            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            backgroundView.backgroundColor = .clear
+            backgroundView.layer.borderWidth = 3
+            titleLabel.textColor = .green1
+            subtitleLabel.textColor = .green1
+            
+            self.insertSubview(UIHostingView(rootView: ZStack(alignment: .bottom) {
+                ConfettiView()
+            }
+                .padding(.bottom, 70)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)), at: 0)
+        } else {
+            backgroundView.backgroundColor = options.backgroundColor.getUIColor()
+            backgroundView.layer.borderColor = options.backgroundColor.getUIColor().darker(by: 10).cgColor
+            
+            backgroundView.layer.shadowColor = options.backgroundColor.getUIColor().cgColor
+            backgroundView.layer.shadowRadius = 15
+            backgroundView.layer.shadowOpacity = 0.25
+            backgroundView.layer.shadowOffset = .zero
+            backgroundView.layer.masksToBounds = false
+            backgroundView.clipsToBounds = false
+        }
+        
         topSpacing.constant = 6
         bottomSpacing.constant = 6
         leadingSpacing.constant = 8
@@ -193,13 +243,32 @@ class ToastView: UIView {
         layoutIfNeeded()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if options.backgroundColor == .subscriberPerk {
+            let gradient = UIImage.gradientImage(bounds: backgroundView.bounds, colors: [UIColor("#77F4C7"), UIColor("#72CFFF")])
+            backgroundView.layer.borderColor = UIColor(patternImage: gradient).cgColor
+            backgroundView.layer.sublayers?.forEach({ layer in
+                layer.frame = backgroundView.layer.bounds
+            })
+            if options.backgroundColor == .subscriberPerk {
+                self.subviews[0].frame = UIScreen.main.bounds
+            }
+        }
+    }
+    
     private func configureTitle(_ title: String?) {
         if let title = title {
             titleLabel.isHidden = false
             titleLabel.text = title
             titleLabel.sizeToFit()
             titleLabel.numberOfLines = -1
-            titleLabel.font = UIFont.systemFont(ofSize: 13)
+            if options.backgroundColor == .subscriberPerk {
+                titleLabel.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
+            } else {
+                titleLabel.font = UIFont.systemFont(ofSize: 13)
+            }
             titleLabel.textAlignment = .center
         } else {
             titleLabel.isHidden = true

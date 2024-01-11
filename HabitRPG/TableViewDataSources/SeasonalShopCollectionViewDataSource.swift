@@ -11,18 +11,13 @@ import Habitica_Models
 
 class SeasonalShopCollectionViewDataSource: ShopCollectionViewDataSource {
     
-    override func loadCategories(_ categories: [ShopCategoryProtocol], isSubscribed: Bool) {
+    override func loadCategories(_ categories: [ShopCategoryProtocol]) {
         sections.removeAll()
         for category in categories.sorted(by: { category1, category2 in
             return (category1.items.first?.currency == "gold" ? 1 : 0) > (category2.items.first?.currency == "gold" ? 1 : 0)
         }) {
             let newSection = ItemSection<InAppRewardProtocol>(title: category.text)
-            newSection.items = category.items.filter({ (inAppReward) -> Bool in
-                if inAppReward.isSubscriberItem {
-                    return isSubscribed
-                }
-                return true
-            })
+            newSection.items = category.items
             sections.append(newSection)
         }
         collectionView?.reloadData()

@@ -66,13 +66,16 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         buildDangerSection()
     }
     
-    //MARK: - Build Info Section
+    // MARK: - Build Info Section
     func buildAccountInfoSection() {
         form +++ Section(L10n.Settings.accountInfo)
         <<< LabelRow { row in
             row.title = L10n.username
             row.cellStyle = .subtitle
             row.cellUpdate {[weak self] cell, _ in
+                if self?.user?.isValid != true {
+                    return
+                }
                 cell.detailTextLabel?.text = self?.user?.authentication?.local?.username ?? L10n.Settings.notSet
             }.onCellSelection { _, _ in
                 self.showLoginNameChangeAlert()
@@ -103,7 +106,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         }
     }
     
-    //MARK: - Build LoginMethods Section
+    // MARK: - Build LoginMethods Section
     func buildLoginMethodsSection() {
         form +++ Section(L10n.Settings.loginMethods)
         <<< LabelRow { row in
@@ -184,7 +187,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         }
     }
     
-    //MARK: - Build Profile Section
+    // MARK: - Build Profile Section
     func buildPublicProfileSection() {
         form +++ Section(L10n.Settings.publicProfile)
         <<< LabelRow { row in
@@ -220,12 +223,12 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
                 }
                 cell.detailTextLabel?.text = self?.user?.profile?.photoUrl
             }.onCellSelection { _, _ in
-                self.showEditAlert(title: L10n.Settings.changePhotoUrl, name: L10n.photoUrl, value: self.user?.profile?.photoUrl, path: "profile.url")
+                self.showEditAlert(title: L10n.Settings.changePhotoUrl, name: L10n.photoUrl, value: self.user?.profile?.photoUrl, path: "profile.imageUrl")
             }
         }
     }
     
-    //MARK: - Build API Section
+    // MARK: - Build API Section
     func buildApiSection() {
         form +++ Section(L10n.Settings.api)
         <<< LabelRow { row in
@@ -260,7 +263,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             }
         }
     
-    //MARK: - Build Danger Section
+    // MARK: - Build Danger Section
     func buildDangerSection() {
         form +++ Section(L10n.Settings.dangerZone)
         <<< ButtonRow { row in
@@ -384,19 +387,40 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
     private func showResetAccountAlert() {
         let alertController = HabiticaAlertController(title: L10n.Settings.resetAccount)
         
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 8
         let textView = UITextView()
-        textView.text = L10n.Settings.resetAccountDescription
+        if user?.authentication?.local?.email != nil {
+            textView.text = L10n.Settings.resetAccountDescription
+        } else {
+            textView.text = L10n.Settings.resetAccountDescriptionSocial
+        }
         textView.font = UIFont.preferredFont(forTextStyle: .subheadline)
         textView.textColor = ThemeService.shared.theme.ternaryTextColor
         textView.isEditable = false
+        textView.isScrollEnabled = true
         textView.isSelectable = false
         textView.textAlignment = .center
-        textView.addHeightConstraint(height: 350)
+        textView.addHeightConstraint(height: 150)
         textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
-        alertController.contentView = textView
+        stackView.addArrangedSubview(textView)
+        let textField = PaddedTextField()
+        if user?.authentication?.local?.email != nil {
+            textField.attributedPlaceholder = NSAttributedString(string: L10n.password, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
+        }
+        configureTextField(textField)
+        textField.isSecureTextEntry = true
+        textField.returnKeyType = .done
+        textField.delegate = self
+        textField.addHeightConstraint(height: 44)
+        stackView.addArrangedSubview(textField)
+        alertController.contentView = stackView
         
         alertController.addAction(title: L10n.Settings.resetAccount, style: .destructive, isMainAction: true) {[weak self] _ in
-            self?.userRepository.resetAccount().observeCompleted {}
+            if let password = textField.text {
+                self?.userRepository.resetAccount(password: password).observeCompleted {}
+            }
         }
         alertController.addCancelAction()
         alertController.show()

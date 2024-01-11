@@ -12,6 +12,14 @@ import RealmSwift
 
 @objc
 class  RealmGroupInvitation: Object, GroupInvitationProtocol {
+    var isValid: Bool {
+        return !isInvalidated
+    }
+    
+    var isManaged: Bool {
+        return true
+    }
+    
     @objc dynamic var combinedID: String = ""
     var id: String?
     @objc dynamic var userID: String?

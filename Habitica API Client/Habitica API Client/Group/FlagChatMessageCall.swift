@@ -11,7 +11,8 @@ import Habitica_Models
 import ReactiveSwift
 
 public class FlagChatMessageCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(groupID: String, chatMessage: ChatMessageProtocol) {
-        super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/chat/\(chatMessage.id ?? "")/flag")
+    public init(groupID: String, chatMessage: ChatMessageProtocol, data: [String: Any]) {
+        let json = try? JSONSerialization.data(withJSONObject: data)
+        super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/chat/\(chatMessage.id ?? "")/flag", postData: json)
     }
 }

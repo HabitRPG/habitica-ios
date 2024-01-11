@@ -25,6 +25,7 @@ public class APIGear: GearProtocol, Codable {
     public var intelligence: Int = 0
     public var perception: Int = 0
     public var constitution: Int = 0
+    public var released: Bool = true
     
     enum CodingKeys: String, CodingKey {
         case key
@@ -42,6 +43,7 @@ public class APIGear: GearProtocol, Codable {
         case intelligence = "int"
         case perception = "per"
         case constitution = "con"
+        case released
     }
     
     public required init(from decoder: Decoder) throws {
@@ -61,5 +63,6 @@ public class APIGear: GearProtocol, Codable {
         intelligence = (try? values.decode(Int.self, forKey: .intelligence)) ?? 0
         constitution = (try? values.decode(Int.self, forKey: .constitution)) ?? 0
         perception = (try? values.decode(Int.self, forKey: .perception)) ?? 0
+        released = (try? values.decode(Bool.self, forKey: .released)) ?? false
     }
 }

@@ -16,13 +16,13 @@ struct Provider: TimelineProvider {
                   widgetFamily: context.family)
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (UserEntry) -> ()) {
+    func getSnapshot(in context: Context, completion: @escaping (UserEntry) -> Void) {
         let entry = UserEntry(date: Date(),
                               widgetFamily: context.family)
         completion(entry)
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<UserEntry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<UserEntry>) -> Void) {
         var entries: [UserEntry] = []
         TaskManager.shared.getUser().on(value: { user in
             let entry = UserEntry(date: Date(),
@@ -60,16 +60,8 @@ struct UserEntry: TimelineEntry {
     var gems = 4
 }
 
-struct StatsWidgetView : View {
+struct StatsWidgetView: View {
     var entry: Provider.Entry
-    
-    var padding: EdgeInsets {
-        if entry.widgetFamily == .systemSmall {
-            return EdgeInsets(top: 33, leading: 14, bottom: 33, trailing: 20)
-        } else {
-            return EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
-        }
-    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -91,8 +83,7 @@ struct StatsWidgetView : View {
                 }
             }
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-        .padding(padding)
-        .background(Color.widgetBackground)
+        .widgetBackground(Color.widgetBackground)
             }
 }
 

@@ -8,6 +8,8 @@ public enum L10n {
   /// Update bundle if you need to change app language
   static var bundle: Bundle?
 
+  /// 1 Hourglass
+  public static var _1Hourglass: String { return L10n.tr("Mainstrings", "1_hourglass") }
   /// Abort
   public static var abort: String { return L10n.tr("Mainstrings", "abort") }
   /// About
@@ -110,6 +112,8 @@ public enum L10n {
   public static var cancelSubscriptionGroupPlan: String { return L10n.tr("Mainstrings", "cancel_subscription_group_plan") }
   /// Cancelled
   public static var cancelled: String { return L10n.tr("Mainstrings", "cancelled") }
+  /// Challenge
+  public static var challenge: String { return L10n.tr("Mainstrings", "challenge") }
   /// You put themselves to the test by joining a Challenge!
   public static var challengeJoinedDescription: String { return L10n.tr("Mainstrings", "challengeJoinedDescription") }
   /// Joined a Challenge
@@ -496,6 +500,10 @@ public enum L10n {
   public static func hourglassCount(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "hourglass_count", p1)
   }
+  /// Hourglass in %d months
+  public static func hourglassInXMonths(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "hourglass_in_x_months", p1)
+  }
   /// Mystic Hourglasses are an extremely rare form of currency you can only receive for subscribing to Habitica for three consecutive months or more. They are used in the Time Traveler’s shop to buy past gear sets, pets, mounts, animated backgrounds, or even special quests.\n\nYou can receive up to four Mystic Hourglasses a year. The time they are rewarded is based on your subscription renewal schedule. They are sent out on the first day of a new month after your last subscription payment that qualified you for an hourglass. See the [Subscription] page for more details.
   public static var hourglassesDescription: String { return L10n.tr("Mainstrings", "hourglasses_description") }
   /// 100 Gold
@@ -604,6 +612,8 @@ public enum L10n {
   public static var memberGroupPlan: String { return L10n.tr("Mainstrings", "member_group_plan") }
   /// Menu
   public static var menu: String { return L10n.tr("Mainstrings", "menu") }
+  /// Message
+  public static var message: String { return L10n.tr("Mainstrings", "message") }
   /// Moderator
   public static var moderator: String { return L10n.tr("Mainstrings", "moderator") }
   /// Monday
@@ -684,6 +694,10 @@ public enum L10n {
   public static var noCamera: String { return L10n.tr("Mainstrings", "no_camera") }
   /// no days
   public static var noDays: String { return L10n.tr("Mainstrings", "no_days") }
+  /// No %@
+  public static func noX(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "no_x", p1)
+  }
   /// Not Due
   public static var notDue: String { return L10n.tr("Mainstrings", "not_due") }
   /// Not enough Gems
@@ -730,6 +744,8 @@ public enum L10n {
   public static var openItunes: String { return L10n.tr("Mainstrings", "open_itunes") }
   /// You open the Mystery Box and find...
   public static var openMysteryItem: String { return L10n.tr("Mainstrings", "open_mystery_item") }
+  /// Open Profile
+  public static var openProfile: String { return L10n.tr("Mainstrings", "open_profile") }
   /// Open Website
   public static var openWebsite: String { return L10n.tr("Mainstrings", "open_website") }
   /// Organize By
@@ -776,6 +792,8 @@ public enum L10n {
   public static var pin: String { return L10n.tr("Mainstrings", "pin") }
   /// Plain Backgrounds
   public static var plainBackgrounds: String { return L10n.tr("Mainstrings", "plain_backgrounds") }
+  /// Player
+  public static var player: String { return L10n.tr("Mainstrings", "player") }
   /// Plenty of Potions
   public static var plentyOfPotions: String { return L10n.tr("Mainstrings", "plenty_of_potions") }
   /// We’re bringing back 10 of the community’s favorite Magic Hatching Potions. Head over to the Market to fill out your collection!
@@ -828,12 +846,36 @@ public enum L10n {
   public static var quest: String { return L10n.tr("Mainstrings", "quest") }
   /// Quest Completed!
   public static var questCompletedTitle: String { return L10n.tr("Mainstrings", "quest_completed_title") }
+  /// Quest Mechanics
+  public static var questMechanics: String { return L10n.tr("Mainstrings", "quest_mechanics") }
+  /// Complete any type of task or use skills to rack up pending damage! Damage will be applied on your next day reset. Strength affects how much damage you do.
+  public static var questMechanicsBossDescription: String { return L10n.tr("Mainstrings", "quest_mechanics_boss_description") }
+  /// Damaging a Boss
+  public static var questMechanicsBossTitle: String { return L10n.tr("Mainstrings", "quest_mechanics_boss_title") }
+  /// When on a Collection Quest, complete your tasks for a random chance to find a Quest item. Pending items will be applied on your next day reset. Perception boosts item rates.
+  public static var questMechanicsCollectingDescription: String { return L10n.tr("Mainstrings", "quest_mechanics_collecting_description") }
+  /// Collecting Quest items
+  public static var questMechanicsCollectingTitle: String { return L10n.tr("Mainstrings", "quest_mechanics_collecting_title") }
+  /// Boss damage is calculated each time a Party member checks in throughout the day. This damage is applied the next time you perform an action that syncs with the server. Boss damage is recorded in your Party’s chat.
+  public static var questMechanicsDamageDescription: String { return L10n.tr("Mainstrings", "quest_mechanics_damage_description") }
+  /// Bosses lash out for missed Dailies
+  public static var questMechanicsDamageTitle: String { return L10n.tr("Mainstrings", "quest_mechanics_damage_title") }
+  /// If you’re struggling to complete your Dailies, you can pause damage from Settings for a break. This will prevent the Boss from hurting you or others, but also pause your own damage. Other members missed Dailies will still cause damage, so be careful out there!
+  public static var questMechanicsPausingDescription: String { return L10n.tr("Mainstrings", "quest_mechanics_pausing_description") }
+  /// Pausing damage
+  public static var questMechanicsPausingTitle: String { return L10n.tr("Mainstrings", "quest_mechanics_pausing_title") }
+  /// Some difficult bosses have an orange Rage meter under their HP. This meter fills up when participants miss Dailies. When it fills completely, the boss will let out a fearsome attack that does extra damage!
+  public static var questMechanicsRageDescription: String { return L10n.tr("Mainstrings", "quest_mechanics_rage_description") }
+  /// Rage meters
+  public static var questMechanicsRageTitle: String { return L10n.tr("Mainstrings", "quest_mechanics_rage_title") }
   /// Quests
   public static var quests: String { return L10n.tr("Mainstrings", "quests") }
   /// Rage Meter
   public static var rageMeter: String { return L10n.tr("Mainstrings", "rage_meter") }
   /// Randomize
   public static var randomize: String { return L10n.tr("Mainstrings", "randomize") }
+  /// Reason for report
+  public static var reasonForReport: String { return L10n.tr("Mainstrings", "reason_for_report") }
   /// Recipient
   public static var recipient: String { return L10n.tr("Mainstrings", "recipient") }
   /// Reject
@@ -856,9 +898,21 @@ public enum L10n {
   public static var reply: String { return L10n.tr("Mainstrings", "reply") }
   /// Report
   public static var report: String { return L10n.tr("Mainstrings", "report") }
+  /// Report %@
+  public static func reportX(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "report_x", p1)
+  }
+  /// Why are you reporting this %@?
+  public static func reportXQuestion(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "report_x_question", p1)
+  }
   /// Report @%@ for violation?
   public static func reportXViolation(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "report_x_violation", p1)
+  }
+  /// You should only report a %@ that violates the Community Guidelines and/or Terms of Service. Submitting a false report is a violation of Habitica’s Community Guidelines.
+  public static func reportingDisclaimer(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "reporting_disclaimer", p1)
   }
   /// Reset Tutorials
   public static var resetTips: String { return L10n.tr("Mainstrings", "reset_tips") }
@@ -910,6 +964,8 @@ public enum L10n {
   public static var shadowMuteUserConfirm: String { return L10n.tr("Mainstrings", "shadow_mute_user_confirm") }
   /// Share
   public static var share: String { return L10n.tr("Mainstrings", "share") }
+  /// Share Avatar
+  public static var shareAvatar: String { return L10n.tr("Mainstrings", "share_avatar") }
   /// Shirt
   public static var shirt: String { return L10n.tr("Mainstrings", "shirt") }
   /// Show Details
@@ -938,6 +994,8 @@ public enum L10n {
   public static var streakAchievementTitle: String { return L10n.tr("Mainstrings", "streak_achievement_title") }
   /// Strong
   public static var strong: String { return L10n.tr("Mainstrings", "strong") }
+  /// sub perk
+  public static var subPerk: String { return L10n.tr("Mainstrings", "sub_perk") }
   /// Subscribe
   public static var subscribe: String { return L10n.tr("Mainstrings", "subscribe") }
   /// Subscribe for Hourglasses
@@ -990,7 +1048,7 @@ public enum L10n {
   public static var subscriptionPromoDescription: String { return L10n.tr("Mainstrings", "subscription_promo_description") }
   /// Need Gems?
   public static var subscriptionPromoTitle: String { return L10n.tr("Mainstrings", "subscription_promo_title") }
-  /// Subscribing supports our small team and helps keep Habitica running
+  /// Subscribing supports our small team and helps keep Habitica running, thank you!
   public static var subscriptionSupportDevelopers: String { return L10n.tr("Mainstrings", "subscription_support_developers") }
   /// success
   public static var success: String { return L10n.tr("Mainstrings", "success") }
@@ -1030,12 +1088,14 @@ public enum L10n {
   public static var tapToShow: String { return L10n.tr("Mainstrings", "tap_to_show") }
   /// Task History (Very Experimental)
   public static var taskHistory: String { return L10n.tr("Mainstrings", "task_history") }
-  /// Welcome to the Inn! Pull up a chair to chat, or take a break from your tasks.
-  public static var tavernIntroHeader: String { return L10n.tr("Mainstrings", "tavern_intro_header") }
   /// Teleporting to Habitica
   public static var teleportingHabitica: String { return L10n.tr("Mainstrings", "teleporting_habitica") }
   /// Thanks for your support!
   public static var thanksForYourSupport: String { return L10n.tr("Mainstrings", "thanks_for_your_support") }
+  /// This will also block %@
+  public static func thisWillAlsoBlockX(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "this_will_also_block_x", p1)
+  }
   /// Thursday
   public static var thursday: String { return L10n.tr("Mainstrings", "thursday") }
   /// Time Travelers Backgrounds
@@ -1180,6 +1240,14 @@ public enum L10n {
   public static func xGems(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "x_gems", p1)
   }
+  /// %d gems a month
+  public static func xGemsMonth(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "x_gems_month", p1)
+  }
+  /// %d Hourglasses
+  public static func xHourglasses(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "x_hourglasses", p1)
+  }
   /// %d Items pending
   public static func xItemsFound(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "x_items_found", p1)
@@ -1200,6 +1268,10 @@ public enum L10n {
   public static var years: String { return L10n.tr("Mainstrings", "years") }
   /// You got an Achievement!
   public static var youGotAchievement: String { return L10n.tr("Mainstrings", "you_got_achievement") }
+  /// You raised your %@ Pet into a Mount!
+  public static func youRaisedPet(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "you_raised_pet", p1)
+  }
   /// Your balance:
   public static var yourBalance: String { return L10n.tr("Mainstrings", "your_balance") }
 
@@ -1358,6 +1430,14 @@ public enum L10n {
     public static var rateFoodDescription: String { return L10n.tr("Mainstrings", "armoire.rate_food_description") }
     /// 20%% Piece of Food
     public static var rateFoodTitle: String { return L10n.tr("Mainstrings", "armoire.rate_food_title") }
+    /// Open again for free!
+    public static var subbedButtonPrompt: String { return L10n.tr("Mainstrings", "armoire.subbed_button_prompt") }
+    /// Your subscription gives you an extra chance at the Armoire!
+    public static var subbedFooter: String { return L10n.tr("Mainstrings", "armoire.subbed_footer") }
+    /// Subscribe to open again for free!
+    public static var unsubbedButtonPrompt: String { return L10n.tr("Mainstrings", "armoire.unsubbed_button_prompt") }
+    /// Get an extra chance at the Armoire each time you buy it with a subscription
+    public static var unsubbedFooter: String { return L10n.tr("Mainstrings", "armoire.unsubbed_footer") }
   }
 
   public enum Avatar {
@@ -1538,12 +1618,26 @@ public enum L10n {
     public static var dontDespair: String { return L10n.tr("Mainstrings", "faint.dont_despair") }
     /// But you can get them all back with hard work! Good luck—you’ll do great. 
     public static var goodLuckText: String { return L10n.tr("Mainstrings", "faint.good_luck_text") }
-    /// You’ll drop to **level %s**, lose **%s Gold**, and break a **piece of Equipment**…
+    /// You got a second chance with 1 HP!
+    public static var perkSuccess: String { return L10n.tr("Mainstrings", "faint.perk_success") }
+    /// Second chance: Hold on with 1HP!
+    public static var subbedButtonPrompt: String { return L10n.tr("Mainstrings", "faint.subbed_button_prompt") }
+    /// Your subscription lets you have a second chance each day if you run out of HP
+    public static var subbedFooter: String { return L10n.tr("Mainstrings", "faint.subbed_footer") }
+    /// You already used your second chance today. It’s available again in %s.
+    public static func subbedUsed(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "faint.subbed_used", p1)
+    }
+    /// You’ll drop to **level %s, lose %s Gold, and break a piece of gear**…\nYou can earn them all back with hard work!
     public static func subtitle(_ p1: UnsafePointer<CChar>, _ p2: UnsafePointer<CChar>) -> String {
       return L10n.tr("Mainstrings", "faint.subtitle", p1, p2)
     }
     /// You ran out of Health!
     public static var title: String { return L10n.tr("Mainstrings", "faint.title") }
+    /// Subscribe to hold on with 1HP!
+    public static var unsubbedButtonPrompt: String { return L10n.tr("Mainstrings", "faint.unsubbed_button_prompt") }
+    /// Get a second chance each day to avoid running out of HP with a subscription
+    public static var unsubbedFooter: String { return L10n.tr("Mainstrings", "faint.unsubbed_footer") }
   }
 
   public enum FallPromo {
@@ -1565,9 +1659,9 @@ public enum L10n {
   public enum GiftOneGetOneData {
     /// Tap ‘Gift a Subscription’ and type in the username of another account you’d like to gift to. From there, pick the sub length you’d like to gift and check out. Your account will automatically be rewarded with the same level of subscription you just gifted.
     public static var infoInstructions: String { return L10n.tr("Mainstrings", "gift_one_get_one_data.info_instructions") }
-    /// This is a limited time event that starts on %@ (13:00 UTC) and will end %@ (01:00 UTC). This promotion only applies when you gift to another Habitican. If you or your gift recipient already have a subscription, the gifted subscription will add months of credit that will only be used after the current subscription is cancelled or expires.
-    public static func infoLimitations(_ p1: String, _ p2: String) -> String {
-      return L10n.tr("Mainstrings", "gift_one_get_one_data.info_limitations", p1, p2)
+    /// This is a limited time event that starts on %@ (%@ UTC) and will end %@ (%@ UTC). This promotion only applies when you gift to another Habitican. If you or your gift recipient already have a subscription, the gifted subscription will add months of credit that will only be used after the current subscription is cancelled or expires.
+    public static func infoLimitations(_ p1: String, _ p2: String, _ p3: String, _ p4: String) -> String {
+      return L10n.tr("Mainstrings", "gift_one_get_one_data.info_limitations", p1, p2, p3, p4)
     }
     /// In honor of the season of giving we're bringing back a very special promotion. Now when you gift somebody else a subscription, you get the same sub for yourself for free!
     public static var infoPrompt: String { return L10n.tr("Mainstrings", "gift_one_get_one_data.infoPrompt") }
@@ -1752,13 +1846,35 @@ public enum L10n {
     public static var noGemsLeft: String { return L10n.tr("Mainstrings", "inventory.no_gems_left") }
     /// No Longer Available
     public static var noLongerAvailable: String { return L10n.tr("Mainstrings", "inventory.no_longer_available") }
+    /// Saddles instantly raise a Pet to a Mount. You can purchase one from the Market.
+    public static var noSaddleDescription: String { return L10n.tr("Mainstrings", "inventory.no_saddle_description") }
+    /// You don't have any Saddles
+    public static var noSaddleTile: String { return L10n.tr("Mainstrings", "inventory.no_saddle_tile") }
     /// Monthly Gems: %d/%d Remaining
     public static func numberGemsLeft(_ p1: Int, _ p2: Int) -> String {
       return L10n.tr("Mainstrings", "inventory.number_gems_left", p1, p2)
     }
+    /// Visit Market
+    public static var visitMarket: String { return L10n.tr("Mainstrings", "inventory.visit_market") }
     /// Only available for %@s. You can change your class from Settings
     public static func wrongClass(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "inventory.wrong_class", p1)
+    }
+  }
+
+  public enum Items {
+
+    public enum Empty {
+      /// Complete tasks, Pet Quests, or head over to the Market to stock up!
+      public static var eggDescription: String { return L10n.tr("Mainstrings", "items.empty.egg_description") }
+      /// Complete tasks, buy an Armoire, or head over to the Market to stock up!
+      public static var foodDescription: String { return L10n.tr("Mainstrings", "items.empty.food_description") }
+      /// Complete tasks, Potion Quests, or head over to the Market to stock up!
+      public static var potionDescription: String { return L10n.tr("Mainstrings", "items.empty.potion_description") }
+      /// Get Quests from leveling up, log in bonuses, or the Quest Shop!
+      public static var questDescription: String { return L10n.tr("Mainstrings", "items.empty.quest_description") }
+      /// Get transformation items during Seasonal Galas or subscribe for a mystery box of equipment each month!
+      public static var specialDescription: String { return L10n.tr("Mainstrings", "items.empty.special_description") }
     }
   }
 
@@ -1771,8 +1887,6 @@ public enum L10n {
     public static var seasonalShop: String { return L10n.tr("Mainstrings", "locations.seasonal_shop") }
     /// Stable
     public static var stable: String { return L10n.tr("Mainstrings", "locations.stable") }
-    /// Tavern
-    public static var tavern: String { return L10n.tr("Mainstrings", "locations.tavern") }
     /// Time Travelers Shop
     public static var timeTravelersShop: String { return L10n.tr("Mainstrings", "locations.time_travelers_shop") }
   }
@@ -2170,8 +2284,10 @@ public enum L10n {
     public static var reminder: String { return L10n.tr("Mainstrings", "settings.reminder") }
     /// Reset Account
     public static var resetAccount: String { return L10n.tr("Mainstrings", "settings.reset_account") }
-    /// WARNING! This resets many parts of your account. This is highly discouraged, but some people find it useful in the beginning after playing with the site for a short time.\n\nYou will lose all your levels, gold, and experience points. All your tasks (except those from challenges) will be deleted permanently and you will lose all of their historical data. You will lose all your equipment but you will be able to buy it all back, including all limited edition equipment or subscriber Mystery items that you already own (you will need to be in the correct class to re-buy class-specific gear). You will keep your current class and your pets and mounts. You might prefer to use an Orb of Rebirth instead, which is a much safer option and which will preserve your tasks and equipment.
+    /// You will lose all your levels, Gold, and Experience. All your tasks and their historical data will be deleted (Challenge tasks will stay). You will lose all equipment, except Subscriber items and free commemorative items, but you will be able to buy it back. You will need to be the correct class to re-buy class-specific gear. You will keep your current class, Achievements, and your Pets and Mounts. To confirm reset, type your password below.
     public static var resetAccountDescription: String { return L10n.tr("Mainstrings", "settings.reset_account_description") }
+    /// You will lose all your levels, Gold, and Experience. All your tasks and their historical data will be deleted (Challenge tasks will stay). You will lose all equipment, except Subscriber items and free commemorative items, but you will be able to buy it back. You will need to be the correct class to re-buy class-specific gear. You will keep your current class, Achievements, and your Pets and Mounts. If you’re absolutely certain, type DELETE into the text box below.
+    public static var resetAccountDescriptionSocial: String { return L10n.tr("Mainstrings", "settings.reset_account_description_social") }
     /// Resume Damage
     public static var resumeDamage: String { return L10n.tr("Mainstrings", "settings.resume_damage") }
     /// Damage is currently paused.
@@ -2332,6 +2448,10 @@ public enum L10n {
   public enum Stable {
     /// Color
     public static var color: String { return L10n.tr("Mainstrings", "stable.color") }
+    /// You have tamed %s, let's go for a ride!
+    public static func evolvedPet(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "stable.evolved_pet", p1)
+    }
     /// Feed
     public static var feed: String { return L10n.tr("Mainstrings", "stable.feed") }
     /// Magic Potion
@@ -2352,6 +2472,8 @@ public enum L10n {
     public static var standardPets: String { return L10n.tr("Mainstrings", "stable.standard_pets") }
     /// Type
     public static var type: String { return L10n.tr("Mainstrings", "stable.type") }
+    /// Use Saddle
+    public static var useSaddle: String { return L10n.tr("Mainstrings", "stable.use_saddle") }
     /// Wacky Mounts
     public static var wackyMounts: String { return L10n.tr("Mainstrings", "stable.wacky_mounts") }
     /// Wacky Pets
@@ -2415,6 +2537,25 @@ public enum L10n {
     public static var strengthTitle: String { return L10n.tr("Mainstrings", "stats.strength_title") }
     /// Total
     public static var total: String { return L10n.tr("Mainstrings", "stats.total") }
+  }
+
+  public enum Subscription {
+    /// Subscribers get extra chances at the Armoire and these other benefits!
+    public static var armoreHeader: String { return L10n.tr("Mainstrings", "subscription.armore_header") }
+    /// Subscribers get a second chance at life each day and these other benefits!
+    public static var faintHeader: String { return L10n.tr("Mainstrings", "subscription.faint_header") }
+    /// Subscribe to buy Gems with Gold and receive these other exclusive benefits!
+    public static var gemForGoldHeader: String { return L10n.tr("Mainstrings", "subscription.gem_for_gold_header") }
+    /// Subscribers get Mystic Hourglasses to buy items in the Time Travelers Shop and these other exclusive benefits!
+    public static var hourglassesHeader: String { return L10n.tr("Mainstrings", "subscription.hourglasses_header") }
+    /// Get two chances at new equipment from the Armoire for the price of one
+    public static var infoArmoireDescription: String { return L10n.tr("Mainstrings", "subscription.info_armoire_description") }
+    /// Extra Armoire chances
+    public static var infoArmoireTitle: String { return L10n.tr("Mainstrings", "subscription.info_armoire_title") }
+    /// Have the option of hanging on with 1HP when you run out of health once a day
+    public static var infoFaintDescription: String { return L10n.tr("Mainstrings", "subscription.info_faint_description") }
+    /// Second chance at life
+    public static var infoFaintTitle: String { return L10n.tr("Mainstrings", "subscription.info_faint_title") }
   }
 
   public enum Support {
@@ -2863,8 +3004,6 @@ public enum L10n {
     public static var spells: String { return L10n.tr("Mainstrings", "titles.spells") }
     /// Stats
     public static var stats: String { return L10n.tr("Mainstrings", "titles.stats") }
-    /// Tavern
-    public static var tavern: String { return L10n.tr("Mainstrings", "titles.tavern") }
   }
 
   public enum Tutorials {

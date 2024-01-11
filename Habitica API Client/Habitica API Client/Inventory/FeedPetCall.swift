@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class FeedPetCall: ResponseObjectCall<Int, Int> {
-    public init(pet: PetProtocol, food: FoodProtocol) {
-        super.init(httpMethod: .POST, endpoint: "user/feed/\(pet.key ?? "")/\(food.key ?? "")", postData: nil)
+    public init(pet: String, food: String) {
+        super.init(httpMethod: .POST, endpoint: "user/feed/\(pet)/\(food)", postData: nil)
     }
 }

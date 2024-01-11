@@ -68,6 +68,8 @@ class ImageManager {
                 logger.record(error: error)
             }
             if imageView.loadedImageName == name {
+                imageView.layer.minificationFilter = .nearest
+                imageView.layer.magnificationFilter = .nearest
                 imageView.image = image
                 if let action = completion {
                     action(image, error)

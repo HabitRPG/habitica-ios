@@ -7,10 +7,10 @@
 //
 
 import Foundation
-import Habitica_API_Client
-import Habitica_Database
-import ReactiveSwift
 import Habitica_Models
+import Habitica_Database
+import Habitica_API_Client
+import ReactiveSwift
 import Intents
 import RealmSwift
 
@@ -39,10 +39,8 @@ class TaskManager: BaseRepository<TaskLocalRepository> {
     }
 
     func getValidTaskListFromSpokenPhrase(spokenPhrase: String) -> String? {
-        for minimap in self.listSpokenPhraseMap {
-            if minimap.value.contains(spokenPhrase.lowercased()) {
-                return minimap.key
-            }
+        for minimap in self.listSpokenPhraseMap where minimap.value.contains(spokenPhrase.lowercased()) {
+            return minimap.key
         }
         return nil
     }
@@ -60,9 +58,9 @@ class TaskManager: BaseRepository<TaskLocalRepository> {
         NetworkAuthenticationManager.shared.currentUserId = AuthenticationManager.shared.currentUserId
         NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey
         updateServer()
-        //AuthenticatedCall.errorHandler = HabiticaNetworkErrorHandler()
+        // AuthenticatedCall.errorHandler = HabiticaNetworkErrorHandler()
         let configuration = URLSessionConfiguration.default
-        //NetworkLogger.enableLogging(for: configuration)
+        // NetworkLogger.enableLogging(for: configuration)
         AuthenticatedCall.defaultConfiguration.urlConfiguration = configuration
     }
     
@@ -78,7 +76,6 @@ class TaskManager: BaseRepository<TaskLocalRepository> {
         }
         print("Realm stored at:", config.fileURL ?? "")
         Realm.Configuration.defaultConfiguration = config
-        
     }
 
     func updateServer() {
@@ -149,11 +146,11 @@ class TaskManager: BaseRepository<TaskLocalRepository> {
 
     func tasksForList(withName name: String, oncompletion: @escaping ([String]) -> Void) {
         // The following calls have to run on the main thread to complete successfully
-        DispatchQueue.main.sync{
+        DispatchQueue.main.sync {
             // start watching for a change in the local repo for todo items
             let taskSignalProducer = self.getTasks(predicate: NSPredicate(format: "type == 'todo'"))
             var disposable: Disposable?
-            disposable = taskSignalProducer.on(value: { (tasks, changes) in
+            disposable = taskSignalProducer.on(value: { (tasks, _) in
                 var titles: [String] = []
                 tasks.forEach({(task) in
                     if let taskTitle = task.text {

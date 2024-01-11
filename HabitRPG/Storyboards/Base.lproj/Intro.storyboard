@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="upQ-EI-E3w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="upQ-EI-E3w">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,36 +18,9 @@
                     <view key="view" contentMode="scaleToFill" id="F88-NI-vdf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_bg" translatesAutoresizingMaskIntoConstraints="NO" id="uxj-i6-Ftu">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
-                            <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="GeH-AC-vCO">
-                                <rect key="frame" x="141.5" y="248" width="37" height="37"/>
-                            </activityIndicatorView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_logo" translatesAutoresizingMaskIntoConstraints="NO" id="56g-ur-5TX">
-                                <rect key="frame" x="77.5" y="100" width="165" height="140"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="dzM-I8-kFu"/>
-                                    <constraint firstAttribute="width" constant="165" id="eIR-4r-nB9"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="GeH-AC-vCO" firstAttribute="centerX" secondItem="F88-NI-vdf" secondAttribute="centerX" id="0QI-y6-UK2"/>
-                            <constraint firstItem="uxj-i6-Ftu" firstAttribute="top" secondItem="F88-NI-vdf" secondAttribute="firstBaseline" id="4DM-dX-9we"/>
-                            <constraint firstItem="56g-ur-5TX" firstAttribute="top" secondItem="HOh-YP-nne" secondAttribute="bottom" constant="100" id="MD5-jc-OWp"/>
-                            <constraint firstItem="GeH-AC-vCO" firstAttribute="top" secondItem="56g-ur-5TX" secondAttribute="bottom" constant="8" id="fV1-Tx-oMR"/>
-                            <constraint firstItem="uxj-i6-Ftu" firstAttribute="leading" secondItem="F88-NI-vdf" secondAttribute="leading" id="lIh-0D-WrD"/>
-                            <constraint firstAttribute="bottom" secondItem="uxj-i6-Ftu" secondAttribute="bottom" id="rPN-Th-N0m"/>
-                            <constraint firstItem="56g-ur-5TX" firstAttribute="centerX" secondItem="F88-NI-vdf" secondAttribute="centerX" id="xAh-y4-aLN"/>
-                            <constraint firstAttribute="trailing" secondItem="uxj-i6-Ftu" secondAttribute="trailing" id="ziV-Pg-vjJ"/>
-                        </constraints>
+                        <color key="backgroundColor" red="0.46390098330000001" green="0.22368210550000001" blue="0.92845708130000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="GeH-AC-vCO" id="sHf-iF-90Q"/>
-                        <outlet property="logoView" destination="56g-ur-5TX" id="9eB-RC-kUM"/>
                         <segue destination="qul-kf-4Gi" kind="presentation" identifier="InitialSegue" customClass="MainVCSelectionSegue" customModule="Habitica" customModuleProvider="target" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Z2J-RM-J8b"/>
                         <segue destination="v9W-i7-og5" kind="presentation" identifier="SetupSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Zxx-A1-MXZ"/>
                         <segue destination="8LU-Vl-QLq" kind="presentation" identifier="IntroSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Mt8-5R-p1l"/>
@@ -81,7 +54,10 @@
                                                 <color key="value" red="0.2437489926815033" green="0.07930261641740799" blue="0.54235756397247314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                                <color key="value" red="0.6214059591293335" green="0.44730371236801147" blue="0.93352741003036499" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="1" green="0.57647058823529407" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="middleColor">
+                                                <color key="value" red="0.61960784313725492" green="0.44705882352941173" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -962,7 +938,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="7xQ-tj-Lvs" customClass="SpeechbubbleView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="16" y="207" width="288" height="64"/>
+                                <rect key="frame" x="16" y="227" width="288" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="80" id="rsS-wx-hcZ"/>
@@ -980,14 +956,14 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="creator_hills_bg" translatesAutoresizingMaskIntoConstraints="NO" id="yg5-dQ-Nyt">
-                                <rect key="frame" x="50.5" y="90" width="219" height="105"/>
+                                <rect key="frame" x="50.5" y="110" width="219" height="105"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="105" id="Uui-yf-275"/>
                                     <constraint firstAttribute="width" constant="219" id="bAV-2u-wSp"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2H-zJ-vTs">
-                                <rect key="frame" x="77.5" y="25" width="165" height="36"/>
+                                <rect key="frame" x="77.5" y="45" width="165" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="Lrc-HA-Y9c"/>
                                     <constraint firstAttribute="width" constant="165" id="y0i-ym-D1p"/>
@@ -998,7 +974,7 @@
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qr2-DT-Qaf" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="81" y="62" width="140" height="147"/>
+                                <rect key="frame" x="81" y="82" width="140" height="147"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="147" id="BVv-b4-xAV"/>
@@ -1183,14 +1159,14 @@
                                 </constraints>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="creator_purple_bg" translatesAutoresizingMaskIntoConstraints="NO" id="SPy-W3-rEl">
-                                <rect key="frame" x="50.5" y="90" width="219" height="105"/>
+                                <rect key="frame" x="50.5" y="110" width="219" height="105"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="105" id="4UW-KB-7wa"/>
                                     <constraint firstAttribute="width" constant="219" id="RMF-qs-MtB"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ucL-Th-No2" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="81" y="62" width="140" height="147"/>
+                                <rect key="frame" x="81" y="82" width="140" height="147"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="147" id="0Zr-o6-Oyd"/>
@@ -1198,7 +1174,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="hU8-o6-KJ5" customClass="SpeechbubbleView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="16" y="199" width="288" height="72"/>
+                                <rect key="frame" x="16" y="219" width="288" height="52"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="80" id="wUD-gC-hwS"/>
@@ -1252,8 +1228,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5Hb-dX-OsZ"/>
-        <segue reference="aKA-6e-Im9"/>
+        <segue reference="Zxx-A1-MXZ"/>
+        <segue reference="Z2J-RM-J8b"/>
         <segue reference="TYz-5x-Fui"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -1263,7 +1239,7 @@
         <image name="HelloHabiticanOnboarding" width="287" height="117"/>
         <image name="LoginBackground" width="882" height="714"/>
         <image name="LoginBeginButton" width="126" height="126"/>
-        <image name="LoginLogo" width="133" height="112"/>
+        <image name="LoginLogo" width="135" height="111"/>
         <image name="category_body" width="38" height="37"/>
         <image name="category_extras" width="38" height="37"/>
         <image name="category_hair" width="38" height="37"/>
@@ -1276,8 +1252,6 @@
         <image name="indicatorDiamondSelected" width="24" height="24"/>
         <image name="indicatorDiamondUnselected" width="24" height="24"/>
         <image name="justin_textbox" width="48" height="63"/>
-        <image name="launch_bg" width="375" height="667"/>
-        <image name="launch_logo" width="165" height="140"/>
         <image name="login_apple" width="50" height="50"/>
         <image name="login_email" width="20" height="20"/>
         <image name="login_google" width="50" height="50"/>

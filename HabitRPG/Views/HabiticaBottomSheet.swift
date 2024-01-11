@@ -141,6 +141,18 @@ class HostingBottomSheetController<ContentView: View>: UIHostingController<Conte
             bottomSheetTransitioningDelegate.panToDismissEnabled = panToDismissEnabled
         }
     }
+    
+    func show() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            if var topController = UIApplication.topViewController() {
+                if let tabBarController = topController.tabBarController {
+                    topController = tabBarController
+                }
+                topController.present(self, animated: true) {
+                }
+            }
+        }
+    }
 }
 
 class BottomSheetController: UIViewController {
@@ -286,12 +298,12 @@ final class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransiti
     ) -> UIViewControllerAnimatedTransitioning? {
         guard
             let bottomSheetPresentationController = dismissed.presentationController as? BottomSheetPresentationController,
-            bottomSheetPresentationController.bottomSheetInteractiveDismissalTransition.wantsInteractiveStart
+            bottomSheetPresentationController.interactiveDismissalTransition.wantsInteractiveStart
         else {
             return nil
         }
 
-        return bottomSheetPresentationController.bottomSheetInteractiveDismissalTransition
+        return bottomSheetPresentationController.interactiveDismissalTransition
     }
 
     func interactionControllerForDismissal(
@@ -310,7 +322,7 @@ final class BottomSheetPresentationController: UIPresentationController {
         return view
     }()
 
-    let bottomSheetInteractiveDismissalTransition = BottomSheetInteractiveDismissalTransition()
+    let interactiveDismissalTransition = BottomSheetInteractiveDismissalTransition()
 
     let sheetTopInset: CGFloat
     let sheetCornerRadius: CGFloat
@@ -361,19 +373,19 @@ final class BottomSheetPresentationController: UIPresentationController {
 
         switch gestureRecognizer.state {
         case .began:
-            bottomSheetInteractiveDismissalTransition.start(
+            interactiveDismissalTransition.start(
                 moving: presentedView, interactiveDismissal: panToDismissEnabled
             )
         case .changed:
             if panToDismissEnabled && progress > 0 && !presentedViewController.isBeingDismissed {
                 presentingViewController.dismiss(animated: true)
             }
-            bottomSheetInteractiveDismissalTransition.move(
+            interactiveDismissalTransition.move(
                 presentedView, using: translation.y
             )
         default:
             let velocity = gestureRecognizer.velocity(in: presentedView)
-            bottomSheetInteractiveDismissalTransition.stop(
+            interactiveDismissalTransition.stop(
                 moving: presentedView, at: translation.y, with: velocity
             )
         }
@@ -448,17 +460,20 @@ final class BottomSheetPresentationController: UIPresentationController {
         NSLayoutConstraint.activate([
             maxHeightConstraint,
             presentedView.leadingAnchor.constraint(
-                equalTo: containerView.leadingAnchor
+                equalTo: containerView.leadingAnchor,
+                constant: 0
             ),
             presentedView.trailingAnchor.constraint(
-                equalTo: containerView.trailingAnchor
+                equalTo: containerView.trailingAnchor,
+                constant: 0
             ),
+            presentedView.widthAnchor.constraint(lessThanOrEqualToConstant: 460),
             bottomConstraint,
             preferredHeightConstraint
         ])
 
-        bottomSheetInteractiveDismissalTransition.bottomConstraint = bottomConstraint
-        bottomSheetInteractiveDismissalTransition.heightConstraint = heightConstraint
+        interactiveDismissalTransition.bottomConstraint = bottomConstraint
+        interactiveDismissalTransition.heightConstraint = heightConstraint
 
         guard let transitionCoordinator = presentingViewController.transitionCoordinator else {
             return

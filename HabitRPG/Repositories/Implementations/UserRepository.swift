@@ -40,6 +40,14 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         }
     }
     
+    func syncUserStats() -> Signal<UserProtocol?, Never> {
+        return SyncUserStatsCall().objectSignal.on(value: { user in
+            if let user = user {
+                self.localRepository.save(user)
+            }
+        })
+    }
+    
     func getUser() -> SignalProducer<UserProtocol, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest) {[weak self] (userID) in
             return self?.localRepository.getUser(userID) ?? SignalProducer.empty
@@ -237,8 +245,8 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return SocialDisconnectCall(network: network).objectSignal
     }
     
-    func resetAccount() -> Signal<UserProtocol?, Never> {
-        return ResetAccountCall().objectSignal.flatMap(.latest, {[weak self] (_) in
+    func resetAccount(password: String) -> Signal<UserProtocol?, Never> {
+        return ResetAccountCall(password: password).objectSignal.flatMap(.latest, {[weak self] (_) in
             return self?.retrieveUser() ?? Signal.empty
         })
     }
@@ -310,9 +318,27 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func revive() -> Signal<UserProtocol?, Never> {
-        let call = ReviveUserCall()
+        let call = ReviveUserCall().objectSignal
         
-        return call.objectSignal.flatMap(.latest, {[weak self] (_) in
+        return call
+            .on(value: { items in
+                self.localRepository.getUser(self.currentUserId ?? "").take(first: 1).map({ currentUser in
+                    return items?.gear?.owned.first(where: { equipment in
+                        equipment.isOwned == false && currentUser.items?.gear?.owned.contains(where: { $0.key == equipment.key && $0.isOwned == true }) == true
+                    })
+                })
+                .flatMap(.latest, { brokenItem in
+                    return InventoryLocalRepository().getGear(predicate: NSPredicate(format: "key == %@", brokenItem?.key ?? ""))
+                }).on(value: { items in
+                    if let itemText = items.value.first?.text {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            ToastManager.show(text: "Your \(itemText) broke", color: .black, duration: 3.0)
+                        }
+                    }
+                })
+                .start()
+            })
+            .flatMap(.latest, {[weak self] (_) in
             return self?.retrieveUser() ?? Signal.empty
         })
     }

@@ -67,8 +67,6 @@ class RageStrikeView: UIView {
         switch locationIdentifier {
         case "market":
             return "Alex"
-        case "tavern":
-            return "Daniel"
         case "questShop":
             return "Ian"
         case "seasonalShop":
@@ -84,8 +82,6 @@ class RageStrikeView: UIView {
         switch locationIdentifier {
         case "market":
             return L10n.Locations.market
-        case "tavern":
-            return L10n.Locations.tavern
         case "questShop":
             return L10n.Locations.questShop
         case "seasonalShop":
@@ -101,8 +97,6 @@ class RageStrikeView: UIView {
         switch locationIdentifier {
         case "market":
             return L10n.NPCs.alex
-        case "tavern":
-            return L10n.NPCs.daniel
         case "questShop":
             return L10n.NPCs.ian
         case "seasonalShop":

@@ -73,6 +73,19 @@ class ItemsViewController: BaseTableViewController {
             }
         } else if let item = item {
             showActionSheet(item: item, withSource: tableView.cellForRow(at: indexPath))
+        } else {
+            HabiticaAnalytics.shared.log("Items CTA tap", withEventProperties: [
+                "eventCategory": "behaviour",
+                "hitType": "event",
+                "area": "empty",
+                "type": dataSource.tableView(tableView, titleForHeaderInSection: indexPath.section) ?? ""])
+            if indexPath.section < 3 {
+                RouterHandler.shared.handle(.market)
+            } else if indexPath.section == 3 {
+                RouterHandler.shared.handle(.subscription)
+            } else  if indexPath.section == 4 {
+                RouterHandler.shared.handle(.questShop)
+            }
         }
     }
     
@@ -87,17 +100,18 @@ class ItemsViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if section == (dataSource.numberOfSections(in: tableView) - 1) {
             let view = Bundle.main.loadNibNamed("ShopAdFooter", owner: self, options: nil)?.last as? UIView
-            let label = view?.viewWithTag(2) as? UILabel
-            let openShopButton = view?.viewWithTag(3) as? UIButton
-            let theme = ThemeService.shared.theme
-            openShopButton?.layer.borderColor = theme.tintColor.cgColor
-            openShopButton?.setTitleColor(theme.tintColor, for: .normal)
-            openShopButton?.layer.borderWidth = 1.0
-            openShopButton?.layer.cornerRadius = 5
+            (view?.viewWithTag(21) as? UILabel)?.textColor = ThemeService.shared.theme.primaryTextColor
+            (view?.viewWithTag(22) as? UILabel)?.textColor = ThemeService.shared.theme.secondaryTextColor
+            if let text = (view?.viewWithTag(22) as? UILabel)?.text {
+                let attributedText = NSMutableAttributedString(string: text)
+                let range = attributedText.mutableString.range(of: L10n.Locations.market, options: .caseInsensitive)
+                    if range.location != NSNotFound {
+                        attributedText.addAttributes([NSAttributedString.Key.foregroundColor: ThemeService.shared.theme.tintColor], range: range)
+                }
+                (view?.viewWithTag(22) as? UILabel)?.attributedText = attributedText
+            }
             
-            label?.text = L10n.notGettingDrops
-            label?.textColor = theme.primaryTextColor
-            openShopButton?.addTarget(self, action: #selector(openMarket), for: .touchUpInside)
+            view?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openMarket)))
             return view
         } else {
             return nil
@@ -106,11 +120,10 @@ class ItemsViewController: BaseTableViewController {
     
     @objc
     func openMarket() {
-        let storyboard = UIStoryboard(name: "Shop", bundle: nil)
-        if let viewController = storyboard.instantiateInitialViewController() as? ShopViewController {
-            viewController.shopIdentifier = Constants.MarketKey
-            self.navigationController?.pushViewController(viewController, animated: true)
-        }
+        HabiticaAnalytics.shared.log("Items CTA tap", withEventProperties: ["eventCategory": "behaviour",
+                                                                            "hitType": "event",
+                                                                            "area": "bottom"])
+        RouterHandler.shared.handle(.market)
     }
 
     private func showActionSheet(item: ItemProtocol, withSource sourceView: UIView?) {
@@ -141,7 +154,9 @@ class ItemsViewController: BaseTableViewController {
             } else if item.itemType == ItemType.quests {
                 BottomSheetMenuitem(title: L10n.showDetails) {[weak self] in
                     if let quest = item as? QuestProtocol {
-                        self?.showQuestDialog(quest: quest)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            self?.showQuestDialog(quest: quest)
+                        }
                     }
                 }
                 BottomSheetMenuitem(title: L10n.inviteParty) {[weak self] in
@@ -214,7 +229,7 @@ class ItemsViewController: BaseTableViewController {
                 L10n.Inventory.hatchedSharing(egg.text ?? "", potion.text ?? "")
             ]
             if let image = imageAlert.image {
-                items.append(image)
+                items.insert(image, at: 0)
             }
             SharingManager.share(identifier: "hatchedPet", items: items, presentingViewController: nil, sourceView: nil)
         }
