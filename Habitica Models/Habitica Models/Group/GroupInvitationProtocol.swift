@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public protocol GroupInvitationProtocol {
+public protocol GroupInvitationProtocol: BaseModelProtocol {
     var id: String? { get set }
     var name: String? { get set }
     var inviterID: String? { get set }

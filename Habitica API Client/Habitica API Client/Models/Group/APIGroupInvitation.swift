@@ -15,6 +15,9 @@ struct APIGroupInvitationHelper: Decodable {
 }
 
 class APIGroupInvitation: GroupInvitationProtocol, Decodable {
+    var isValid: Bool = true
+    var isManaged: Bool = false
+    
     var id: String?
     var name: String?
     var inviterID: String?

@@ -28,6 +28,7 @@ class GroupInvitationListView: UIView {
         invitationViews.removeAll()
         
         for invitation in invitations ?? [] {
+            if !invitation.isValid { continue }
             let view = GroupInvitationView()
             view.set(invitation: invitation)
             view.responseAction = {[weak self] didAccept in

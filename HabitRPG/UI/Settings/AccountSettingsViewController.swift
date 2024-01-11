@@ -73,6 +73,9 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             row.title = L10n.username
             row.cellStyle = .subtitle
             row.cellUpdate {[weak self] cell, _ in
+                if self?.user?.isValid != true {
+                    return
+                }
                 cell.detailTextLabel?.text = self?.user?.authentication?.local?.username ?? L10n.Settings.notSet
             }.onCellSelection { _, _ in
                 self.showLoginNameChangeAlert()

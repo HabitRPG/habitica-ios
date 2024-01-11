@@ -134,7 +134,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         closableShopModal.shopModalBgView.backgroundColor = theme.contentBackgroundColor
         closableShopModal.shopModalBgView.contentView.backgroundColor = theme.contentBackgroundColor
         buttonSeparatorView.backgroundColor = theme.separatorColor
-        if !itemIsLocked() {
+        if reward?.isValid == true && !itemIsLocked() {
             buyLabel.textColor = theme.tintColor
         }
         view.backgroundColor = theme.backgroundTintColor.darker(by: 50).withAlphaComponent(0.6)
