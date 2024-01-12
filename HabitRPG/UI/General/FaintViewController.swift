@@ -47,7 +47,13 @@ struct HabiticaButtonUI<Label: View>: View {
     }
     var body: some View {
         Button(action: onTap, label: {
-            label
+            if #available(iOS 16.0, *) {
+                label.underline(UIAccessibility.buttonShapesEnabled, color: getForegroundColor())
+            } else {
+                label
+            }
+        }).buttonStyle { configuration in
+            configuration.label
                 .foregroundColor(getForegroundColor())
                 .font(.headline)
                 .padding(.vertical, 6)
@@ -56,7 +62,7 @@ struct HabiticaButtonUI<Label: View>: View {
                 .background(type == .bordered ? Color.clear : color)
                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(color, lineWidth: type == .bordered ? 3 : 0))
                 .cornerRadius(8)
-        })
+        }
     }
 }
 

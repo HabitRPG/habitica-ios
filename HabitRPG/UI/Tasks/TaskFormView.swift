@@ -167,7 +167,15 @@ struct FormRow<TitleView: View, LabelView: View>: View {
                     Spacer()
                     valueLabel
                 }.frame(height: 45).padding(.horizontal, 14)
-            })
+            }).buttonStyle { configuration in
+                if UIAccessibility.buttonShapesEnabled {
+                    configuration.label
+                        .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                        .cornerRadius(6).padding(4)
+                } else {
+                    configuration.label
+                }
+            }
         } else {
             HStack {
                 title.foregroundColor(.primary)
@@ -337,17 +345,24 @@ struct DailySchedulingView: View {
     }
     
     var body: some View {
+        let separator = Group {
+            if UIAccessibility.buttonShapesEnabled {
+                EmptyView()
+            } else {
+                Separator()
+            }
+        }
         VStack(spacing: 0) {
             if isEditable {
                 FormDatePicker(title: Text(L10n.Tasks.Form.startDate), value: $startDate)
-                Separator()
+                separator
                 FormSheetSelector(title: Text(L10n.Tasks.Form.repeats), value: $frequency, options: DailySchedulingView.dailyRepeatOptions)
-                Separator()
+                separator
                 NumberPickerFormView(title: Text(L10n.Tasks.Form.every), value: $everyX, minValue: 0, maxValue: 400, formatter: { value in
                     return "\(value) \(suffix.localizedCapitalized)"
                 })
                 if frequency == "weekly" {
-                    Separator()
+                    separator
                     HStack {
                         weekOption(initial: "M", isEnabled: $monday)
                         weekOption(initial: "T", isEnabled: $tuesday)
@@ -361,7 +376,7 @@ struct DailySchedulingView: View {
                     .padding(.horizontal, 14).padding(.top, 10)
                 }
                 if frequency == "monthly" {
-                    Separator()
+                    separator
                     TaskFormPicker(options: [
                         LabeledFormValue(value: "day", label: L10n.Tasks.Form.dayOfMonth),
                         LabeledFormValue(value: "week", label: L10n.Tasks.Form.dayOfWeek)
@@ -430,11 +445,19 @@ struct TaskFormReminderItemView: View {
                 }, label: {
                     Rectangle().fill(Color.white).frame(width: 9, height: 2)
                         .background(Circle().fill(Color.accentColor).frame(width: 21, height: 21))
-                        .frame(width: 48, height: 48)
-                })
+                        .frame(width: 40, height: 40)
+                }).buttonStyle { configuration in
+                    if UIAccessibility.buttonShapesEnabled {
+                        configuration.label
+                            .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                            .cornerRadius(6).padding(4)
+                    } else {
+                        configuration.label.padding(4)
+                    }
+                }
                 Spacer()
                 buildPicker(value: timeProxy)
-            }
+            }.padding(.trailing, 4)
         }.frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
         .transition(.opacity)
     }
@@ -474,11 +497,14 @@ struct TaskFormReminderView: View {
                     item.time = Date()
                     items.append(item)
                 }, label: {
-                    Text(L10n.Tasks.Form.newReminder).font(.system(size: 15, weight: .semibold))
+                    Text(L10n.Tasks.Form.newReminder).underline(UIAccessibility.buttonShapesEnabled)
+                }).buttonStyle { configuration in
+                    configuration.label
+                        .font(.system(size: 15, weight: .semibold))
                         .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
                         .frame(maxWidth: .infinity).frame(height: 48)
                         .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
-                })
+                }
             }
         }.animation(.easeInOut)
     }
@@ -494,7 +520,15 @@ struct RewardAmountView: View {
                 value = String(intValue)
             }, label: {
                 Image(uiImage: Asset.plus.image.withRenderingMode(.alwaysTemplate)).frame(width: 50, height: 50)
-            })
+            }).buttonStyle { configuration in
+                if UIAccessibility.buttonShapesEnabled {
+                    configuration.label
+                        .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                        .cornerRadius(8)
+                } else {
+                    configuration.label
+                }
+            }
             HStack {
                 Image(uiImage: HabiticaIcons.imageOfGold)
                 TextField("", text: $value)
@@ -507,7 +541,15 @@ struct RewardAmountView: View {
                 value = String(intValue)
             }, label: {
                 Image(uiImage: Asset.minus.image.withRenderingMode(.alwaysTemplate)).frame(width: 50, height: 50)
-            })
+            }).buttonStyle { configuration in
+                if UIAccessibility.buttonShapesEnabled {
+                    configuration.label
+                        .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                        .cornerRadius(8)
+                } else {
+                    configuration.label
+                }
+            }
         }
     }
 }
@@ -772,10 +814,12 @@ struct TaskFormView: View {
             viewModel.onTaskDelete?()
         }, label: {
             Text(L10n.delete).frame(height: 45)
+        }).buttonStyle { configuration in
+            configuration.label
                 .foregroundColor(Color(ThemeService.shared.theme.errorColor))
                 .padding(.horizontal, 14)
                 .frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
-        })
+        }
     }
     
     @ViewBuilder

@@ -92,7 +92,8 @@ struct AddTaskWidgetView: View {
         HStack(spacing: 12) {
             if entry.widgetFamily == .systemSmall {
                 if let identifier = taskIdentifier {
-                    AddView(taskType: entry.taskType ?? HRPGTaskType.none, isSingle: true, showLabel: true).widgetURL(URL(string: "/user/tasks/\(identifier)/add")).widgetBackground(taskColor(taskType: entry.taskType ?? .none))
+                    AddView(taskType: entry.taskType ?? HRPGTaskType.none, isSingle: true, showLabel: true)
+                        .widgetURL(URL(string: "/user/tasks/\(identifier)/add")).widgetBackground(taskColor(taskType: entry.taskType ?? .none))
                 } else {
                     AddView(taskType: nil, isSingle: true, showLabel: true).widgetBackground(taskColor(taskType: .none))
                 }

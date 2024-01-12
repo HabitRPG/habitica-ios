@@ -104,6 +104,11 @@ class LabeledProgressBar: UIView {
         setNeedsLayout()
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        setNeedsLayout()
+    }
+    
     private func applyAccessibility() {
         isAccessibilityElement = isActive
         shouldGroupAccessibilityChildren = true

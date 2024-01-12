@@ -66,9 +66,9 @@ struct StatsWidgetView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             ValueBar(title: L10n.health, value: entry.health, maxValue: entry.maxHealth, color: Color.barRed, iconName: "Heart", showLabels: entry.widgetFamily != .systemSmall)
-            Spacer()
+            Spacer().frame(maxHeight: 14)
             ValueBar(title: L10n.experience, value: entry.experience, maxValue: entry.maxExperience, color: Color.barYellow, iconName: "Experience", showLabels: entry.widgetFamily != .systemSmall)
-            Spacer()
+            Spacer().frame(maxHeight: 14)
             ValueBar(title: "Mana", value: entry.mana, maxValue: entry.maxMana, color: Color.barBlue, iconName: "Mana", showLabels: entry.widgetFamily != .systemSmall)
             if entry.widgetFamily != .systemSmall {
                 Spacer()
@@ -140,5 +140,7 @@ struct StatsWidgetPreview: PreviewProvider {
     static var previews: some View {
         StatsWidgetView(entry: UserEntry(date: Date(), widgetFamily: .systemMedium))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
+        StatsWidgetView(entry: UserEntry(date: Date(), widgetFamily: .systemSmall))
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

@@ -101,26 +101,30 @@ struct PetBottomSheetView: View, Dismissable {
                                 ProgressView().habiticaProgressStyle(strokeWidth: 6)
                             } else {
                                 Image(Asset.feedSaddle.name).interpolation(.none)
-                                Text(L10n.Stable.useSaddle).font(.system(size: 16, weight: .semibold)).foregroundColor(Color(theme.tintedMainText))
+                                Text(L10n.Stable.useSaddle).font(.system(size: 16, weight: .semibold)).foregroundColor(Color(theme.tintedMainText)).underline(UIAccessibility.buttonShapesEnabled)
                             }
                         }
-                        .frame(height: 101)
-                        .maxWidth(.infinity)
-                        .background(buttonBackground)
-                        .clipShape(.rect(cornerRadius: 12))
-                    })
+                    }).buttonStyle { configuration in
+                        configuration.label
+                            .frame(height: 101)
+                            .maxWidth(.infinity)
+                            .background(buttonBackground)
+                            .clipShape(.rect(cornerRadius: 12))
+                    }
                     Button(action: {
                         isShowingFeeding = true
                     }, label: {
                         VStack {
                             Image(getFoodName()).interpolation(.none)
-                            Text(L10n.Stable.feed).font(.system(size: 16, weight: .semibold)).foregroundColor(Color(theme.tintedMainText))
+                            Text(L10n.Stable.feed).font(.system(size: 16, weight: .semibold)).foregroundColor(Color(theme.tintedMainText)).underline(UIAccessibility.buttonShapesEnabled)
                         }
-                        .frame(height: 101)
-                        .maxWidth(.infinity)
-                        .background(buttonBackground)
-                        .clipShape(.rect(cornerRadius: 12))
-                    })
+                    }).buttonStyle { configuration in
+                        configuration.label
+                            .frame(height: 101)
+                            .maxWidth(.infinity)
+                            .background(buttonBackground)
+                            .clipShape(.rect(cornerRadius: 12))
+                    }
                 }
             }
             HabiticaButtonUI(label: Text(L10n.share), color: Color(theme.fixedTintColor), size: .compact) {

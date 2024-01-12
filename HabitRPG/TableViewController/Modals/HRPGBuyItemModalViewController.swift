@@ -130,8 +130,13 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         pinButton.setTitleColor(theme.tintColor, for: .normal)
         pinButton.backgroundColor = theme.windowBackgroundColor
         buyButton.backgroundColor = theme.contentBackgroundColor
-        closeButton.setTitleColor(theme.tintColor, for: .normal)
-        closeButton.backgroundColor = theme.contentBackgroundColor
+        if UIAccessibility.buttonShapesEnabled {
+            closeButton.setTitleColor(theme.tintedMainText, for: .normal)
+            closeButton.backgroundColor = theme.lightlyTintedBackgroundColor
+        } else {
+            closeButton.setTitleColor(theme.tintColor, for: .normal)
+            closeButton.backgroundColor = theme.contentBackgroundColor
+        }
         closableShopModal.shopModalBgView.backgroundColor = theme.contentBackgroundColor
         closableShopModal.shopModalBgView.contentView.backgroundColor = theme.contentBackgroundColor
         buttonSeparatorView.backgroundColor = theme.separatorColor

@@ -41,8 +41,17 @@ struct TaskFormChecklistItemView: View {
             }, label: {
                 Rectangle().fill(Color.white).frame(width: 9, height: 2)
                     .background(Circle().fill(Color.accentColor).frame(width: 21, height: 21))
-                    .frame(width: 48, height: 48)
-            })
+                    .frame(width: 44, height: 44)
+            }).buttonStyle { configuration in
+                if UIAccessibility.buttonShapesEnabled {
+                    configuration.label
+                        .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                        .cornerRadius(6)
+                        .padding(4)
+                } else {
+                    configuration.label.padding(4)
+                }
+            }
             FocusableTextField(placeholder: "Enter your checklist line", text: textProxy, isFirstResponder: $isFirstResponder)
             Image(uiImage: Asset.grabIndicator.image).foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor))
                     .padding(.trailing, 13)
@@ -62,11 +71,14 @@ struct TaskFormChecklistView: View {
             items.append(item)
             focusItemId = item.id
         }, label: {
-            Text(L10n.Tasks.Form.newChecklistItem).font(.system(size: 15, weight: .semibold))
+            Text(L10n.Tasks.Form.newChecklistItem).underline(UIAccessibility.buttonShapesEnabled)
+        }).buttonStyle { configuration in
+            configuration.label
+                .font(.system(size: 15, weight: .semibold))
                 .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
                 .frame(maxWidth: .infinity).frame(height: 48)
                 .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
-        })
+        }
     }
     @State var draggedItem: ChecklistItemProtocol?
 
