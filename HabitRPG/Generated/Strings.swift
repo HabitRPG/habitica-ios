@@ -2202,6 +2202,8 @@ public enum L10n {
     public static var dayStartAdjustment: String { return L10n.tr("Mainstrings", "settings.day_start_adjustment") }
     /// Delete Account
     public static var deleteAccount: String { return L10n.tr("Mainstrings", "settings.delete_account") }
+    /// Are you sure you want to delete?
+    public static var deleteAccountConfirm: String { return L10n.tr("Mainstrings", "settings.delete_account_confirm") }
     /// This will delete your account forever, and it can never be restored! Banked or spent Gems will not be refunded. If you’re absolutely certain, type your password into the text box below.
     public static var deleteAccountDescription: String { return L10n.tr("Mainstrings", "settings.delete_account_description") }
     /// This will delete your account forever, and it can never be restored! Banked or spent Gems will not be refunded. If you’re absolutely certain, type DELETE into the text box below.
@@ -2284,6 +2286,8 @@ public enum L10n {
     public static var reminder: String { return L10n.tr("Mainstrings", "settings.reminder") }
     /// Reset Account
     public static var resetAccount: String { return L10n.tr("Mainstrings", "settings.reset_account") }
+    /// Are you sure you want to reset?
+    public static var resetAccountConfirm: String { return L10n.tr("Mainstrings", "settings.reset_account_confirm") }
     /// You will lose all your levels, Gold, and Experience. All your tasks and their historical data will be deleted (Challenge tasks will stay). You will lose all equipment, except Subscriber items and free commemorative items, but you will be able to buy it back. You will need to be the correct class to re-buy class-specific gear. You will keep your current class, Achievements, and your Pets and Mounts. To confirm reset, type your password below.
     public static var resetAccountDescription: String { return L10n.tr("Mainstrings", "settings.reset_account_description") }
     /// You will lose all your levels, Gold, and Experience. All your tasks and their historical data will be deleted (Challenge tasks will stay). You will lose all equipment, except Subscriber items and free commemorative items, but you will be able to buy it back. You will need to be the correct class to re-buy class-specific gear. You will keep your current class, Achievements, and your Pets and Mounts. If you’re absolutely certain, type DELETE into the text box below.

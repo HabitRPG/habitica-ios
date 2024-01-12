@@ -10,6 +10,7 @@ import UIKit
 import Eureka
 import ReactiveSwift
 import Habitica_Models
+import SwiftUI
 
 // swiftlint:disable:next type_body_length
 class AccountSettingsViewController: FormViewController, Themeable, UITextFieldDelegate {
@@ -326,49 +327,16 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
     }
     
     private func showDeleteAccountAlert() {
-        let alertController = HabiticaAlertController(title: L10n.Settings.deleteAccount)
-        
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 8
-        let textView = UITextView()
-        if user?.authentication?.local?.email != nil {
-            textView.text = L10n.Settings.deleteAccountDescription
-        } else {
-            textView.text = L10n.Settings.deleteAccountDescriptionSocial
-        }
-        textView.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        textView.textColor = ThemeService.shared.theme.ternaryTextColor
-        textView.isEditable = false
-        textView.isScrollEnabled = true
-        textView.isSelectable = false
-        textView.textAlignment = .center
-        textView.addHeightConstraint(height: 150)
-        textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
-        stackView.addArrangedSubview(textView)
-        let textField = PaddedTextField()
-        if user?.authentication?.local?.email != nil {
-            textField.attributedPlaceholder = NSAttributedString(string: L10n.password, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        }
-        configureTextField(textField)
-        textField.isSecureTextEntry = true
-        textField.returnKeyType = .done
-        textField.delegate = self
-        textField.addHeightConstraint(height: 44)
-        stackView.addArrangedSubview(textField)
-        alertController.contentView = stackView
-        
-        alertController.buttonAxis = .horizontal
-        alertController.addCancelAction()
-        alertController.addAction(title: L10n.Settings.deleteAccount, style: .destructive, isMainAction: true) {[weak self] _ in
-            if let password = textField.text {
-                self?.deleteAccount(password: password)
-            }
-        }
-        alertController.onKeyboardChange = { isVisible in
-            textView.isHidden = isVisible
-        }
-        alertController.show()
+        let navController = UINavigationController()
+        let controller = UIHostingController(rootView: DeleteAccountView(dismisser: {
+            navController.dismiss()
+        }, onDelete: {[weak self] password in
+            navController.dismiss()
+            self?.deleteAccount(password: password)
+        }, isSocial: user?.authentication?.local?.email == nil))
+        controller.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissController))
+        navController.setViewControllers([controller], animated: false)
+        present(navController, animated: true)
     }
 
     private func deleteAccount(password: String) {
@@ -385,45 +353,21 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
     }
     
     private func showResetAccountAlert() {
-        let alertController = HabiticaAlertController(title: L10n.Settings.resetAccount)
-        
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 8
-        let textView = UITextView()
-        if user?.authentication?.local?.email != nil {
-            textView.text = L10n.Settings.resetAccountDescription
-        } else {
-            textView.text = L10n.Settings.resetAccountDescriptionSocial
-        }
-        textView.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        textView.textColor = ThemeService.shared.theme.ternaryTextColor
-        textView.isEditable = false
-        textView.isScrollEnabled = true
-        textView.isSelectable = false
-        textView.textAlignment = .center
-        textView.addHeightConstraint(height: 150)
-        textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
-        stackView.addArrangedSubview(textView)
-        let textField = PaddedTextField()
-        if user?.authentication?.local?.email != nil {
-            textField.attributedPlaceholder = NSAttributedString(string: L10n.password, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        }
-        configureTextField(textField)
-        textField.isSecureTextEntry = true
-        textField.returnKeyType = .done
-        textField.delegate = self
-        textField.addHeightConstraint(height: 44)
-        stackView.addArrangedSubview(textField)
-        alertController.contentView = stackView
-        
-        alertController.addAction(title: L10n.Settings.resetAccount, style: .destructive, isMainAction: true) {[weak self] _ in
-            if let password = textField.text {
-                self?.userRepository.resetAccount(password: password).observeCompleted {}
-            }
-        }
-        alertController.addCancelAction()
-        alertController.show()
+        let navController = UINavigationController()
+        let controller = UIHostingController(rootView: ResetAccountView(dismisser: {
+            navController.dismiss()
+        }, onReset: {[weak self] password in
+            navController.dismiss()
+            self?.userRepository.resetAccount(password: password).observeCompleted {}
+        }, isSocial: user?.authentication?.local?.email == nil))
+        controller.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissController))
+        navController.setViewControllers([controller], animated: false)
+        present(navController, animated: true)
+    }
+    
+    @objc
+    func dismissController(_ view: UIView) {
+        view.nearestNavigationController?.dismiss()
     }
 
     private func showEmailChangeAlert() {
@@ -548,5 +492,91 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+struct ResetAccountView: View {
+    let dismisser: () -> Void
+    let onReset: (String) -> Void
+    let isSocial: Bool
+    @State var text: String = ""
+    
+    private func isValidInput() -> Bool {
+        if isSocial {
+            return text == "RESET"
+        } else {
+            return !text.isEmpty
+        }
+    }
+    
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 12) {
+                Text(L10n.Settings.resetAccountConfirm).font(.headline)
+                if isSocial {
+                    Text(L10n.Settings.resetAccountDescriptionSocial).font(.body).foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
+                } else {
+                    Text(L10n.Settings.resetAccountDescription).font(.body).foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
+                }
+                if #available(iOS 15.0, *) {
+                    TextField(text: $text, prompt: Text(L10n.password)) {
+                        
+                    }
+                    .padding(12)
+                    .overlay(RoundedRectangle(cornerRadius: 8).stroke().foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor)))
+                } else {
+                    TextField(text: $text) {
+                        
+                    }
+                    .padding(12)
+                    .overlay(RoundedRectangle(cornerRadius: 8).stroke().foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor)))
+                }
+                HabiticaButtonUI(label: Text(L10n.Settings.resetAccount), color: Color(isValidInput() ? ThemeService.shared.theme.errorColor : ThemeService.shared.theme.dimmedColor)) {
+                    onReset(text)
+                }
+            }.padding(16)
+        }
+    }
+}
+
+struct DeleteAccountView: View {
+    let dismisser: () -> Void
+    let onDelete: (String) -> Void
+    let isSocial: Bool
+    @State var text: String = ""
+    
+    private func isValidInput() -> Bool {
+        if isSocial {
+            return text == "DELETE"
+        } else {
+            return !text.isEmpty
+        }
+    }
+    
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 12) {
+                Text(L10n.Settings.deleteAccountConfirm).font(.headline)
+                if isSocial {
+                    Text(L10n.Settings.deleteAccountDescriptionSocial).font(.body).foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
+                } else {
+                    Text(L10n.Settings.deleteAccountDescription).font(.body).foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
+                }
+                if #available(iOS 15.0, *) {
+                    TextField(text: $text, prompt: Text(L10n.password)) {
+                    }
+                    .padding(12)
+                    .overlay(RoundedRectangle(cornerRadius: 8).stroke().foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor)))
+                } else {
+                    TextField(text: $text) {
+                    }
+                    .padding(12)
+                    .overlay(RoundedRectangle(cornerRadius: 8).stroke().foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor)))
+                }
+                HabiticaButtonUI(label: Text(L10n.Settings.deleteAccount), color: Color(isValidInput() ? ThemeService.shared.theme.errorColor : ThemeService.shared.theme.dimmedColor)) {
+                    onDelete(text)
+                }
+            }.padding(16)
+        }
     }
 }

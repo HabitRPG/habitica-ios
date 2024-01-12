@@ -309,12 +309,14 @@
 "settings.danger_zone" = "Danger Zone";
 "settings.login_methods" = "Login Methods";
 "settings.reset_account" = "Reset Account";
+"settings.reset_account_confirm" = "Are you sure you want to reset?";
 "settings.updated_email" = "Email updated";
 "settings.updated_password" = "Password updated";
 "settings.reset_account_description" = "You will lose all your levels, Gold, and Experience. All your tasks and their historical data will be deleted (Challenge tasks will stay). You will lose all equipment, except Subscriber items and free commemorative items, but you will be able to buy it back. You will need to be the correct class to re-buy class-specific gear. You will keep your current class, Achievements, and your Pets and Mounts. To confirm reset, type your password below.";
 "settings.reset_account_description_social" = "You will lose all your levels, Gold, and Experience. All your tasks and their historical data will be deleted (Challenge tasks will stay). You will lose all equipment, except Subscriber items and free commemorative items, but you will be able to buy it back. You will need to be the correct class to re-buy class-specific gear. You will keep your current class, Achievements, and your Pets and Mounts. If you’re absolutely certain, type DELETE into the text box below.";
 
 "settings.delete_account" = "Delete Account";
+"settings.delete_account_confirm" = "Are you sure you want to delete?";
 "settings.delete_account_description" = "This will delete your account forever, and it can never be restored! Banked or spent Gems will not be refunded. If you’re absolutely certain, type your password into the text box below.";
 "settings.delete_account_description_social" = "This will delete your account forever, and it can never be restored! Banked or spent Gems will not be refunded. If you’re absolutely certain, type DELETE into the text box below.";
 "settings.change_email" = "Change Email";
