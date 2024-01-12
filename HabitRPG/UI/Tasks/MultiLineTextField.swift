@@ -52,7 +52,9 @@ private struct UITextViewWrapper: UIViewRepresentable {
         }
         if giveInitialResponder && uiView.isFirstResponder && !wasAssignedResponder {
             uiView.becomeFirstResponder()
-            wasAssignedResponder = true
+            DispatchQueue.main.async {
+                wasAssignedResponder = true
+            }
         }
         UITextViewWrapper.recalculateHeight(view: uiView, result: $calculatedHeight)
     }
