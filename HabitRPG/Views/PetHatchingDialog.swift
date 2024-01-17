@@ -15,6 +15,7 @@ import FirebaseAnalytics
 
 class PetHatchingAlertController: HabiticaAlertController {
     private let inventoryRepository = InventoryRepository()
+    private let userRepository = UserRepository()
     
     private let stackView: UIStackView = {
         let view = UIStackView()
@@ -83,6 +84,8 @@ class PetHatchingAlertController: HabiticaAlertController {
         return label
     }()
     
+    private var gemCount = 0
+    
     // swiftlint:disable:next function_body_length
     convenience init(item: PetStableItem, ownedEggs: OwnedItemProtocol?, ownedPotions: OwnedItemProtocol?) {
         self.init()
@@ -95,6 +98,9 @@ class PetHatchingAlertController: HabiticaAlertController {
         eggView.setImagewith(name: "Pet_Egg_\(item.pet?.egg ?? "")")
         potionView.setImagewith(name: "Pet_HatchingPotion_\(item.pet?.potion ?? "")")
         petTitleLabel.text = item.pet?.text
+        userRepository.getUser().take(first: 1).on(value: { user in
+            self.gemCount = user.gemCount
+        }).start()
         if item.canRaise || item.pet?.type == "special" {
             title = L10n.hatchPet
             petView.setImagewith(name: "stable_Pet-\(item.pet?.key ?? "")-outline")
@@ -158,6 +164,10 @@ class PetHatchingAlertController: HabiticaAlertController {
                         attributedText.replaceCharacters(in: range, with: addedString)
                     }
                     let button = self.addAction(title: L10n.hatch, isMainAction: false) { _ in
+                        if hatchValue > self.gemCount {
+                            HRPGBuyItemModalViewController.displayInsufficientGemsModal(reason: "hatching", delayDisplay: false)
+                            self.dismiss()
+                        }
                         var signal = SignalProducer<UserProtocol?, Never> { (observable, _) in
                             observable.send(Signal.Event.value(nil))
                             observable.sendCompleted()
@@ -231,6 +241,11 @@ class PetHatchingAlertController: HabiticaAlertController {
         stackView.setNeedsUpdateConstraints()
         stackView.setNeedsLayout()
         view.setNeedsLayout()
+    }
+    
+    override func show() {
+        super.show()
+        HabiticaAnalytics.shared.logNavigationEvent("pet suggestion modal")
     }
     
     override func applyTheme(theme: Theme) {

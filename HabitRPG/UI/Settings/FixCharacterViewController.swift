@@ -158,7 +158,7 @@ class FixCharacterViewController: BaseTableViewController {
     
     @IBAction func savePressed(_ sender: Any) {
         for stat in stats {
-            stats[stat.key] = max(10000.0, (stat.value as? Double) ?? 0)
+            stats[stat.key] = min(10000.0, (stat.value as? Double) ?? 0)
         }
         userRepository.updateUser(stats).observeCompleted {[weak self] in
             self?.dismiss(animated: true, completion: nil)
