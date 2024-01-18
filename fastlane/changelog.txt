@@ -1,2 +1,12 @@
-Thanks for everyone helping with testing!
-
+New with 3.9.1:
+- See answers to common Quest mechanic questions under your active Quest
+- Desert Pets now show the proper preferred food when feeding
+- Local and social login players can now reset accounts
+- Armoire now properly counts equipment left after receiving a piece of gear
+- Armoire no longer awards +0 exp when using the extra Armoire perk
+- Can now purchase Animal Tails from Avatar Customizations
+- Glasses moved from Avatar Customizations to Eyewear in Equipment
+- Pet suggestion dialogue will only let you purchase the Egg and Potion to hatch if you have enough Gems for both
+- Fixed visual bugs in the widget display
+- Fixed a crash when trying to feed pets on iOS 15
+- Fixed an issue with Notifications not opening to the proper part of the app
