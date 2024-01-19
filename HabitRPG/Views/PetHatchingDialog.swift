@@ -245,7 +245,7 @@ class PetHatchingAlertController: HabiticaAlertController {
     
     override func show() {
         super.show()
-        HabiticaAnalytics.shared.logNavigationEvent("pet suggestion modal")
+        HabiticaAnalytics.shared.logNavigationEvent("navigated pet suggestion modal")
     }
     
     override func applyTheme(theme: Theme) {
