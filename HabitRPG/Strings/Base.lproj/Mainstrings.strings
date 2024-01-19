@@ -496,6 +496,7 @@
 "avatar.hair" = "Hair";
 "avatar.skin" = "Skin";
 "avatar.extras" = "Extras";
+"avatar.animal_tails" = "Animal Tails";
 "purchase_for_gems" = "Purchase for %d Gems";
 "purchase_for_without_currency" = "Purchase for %d";
 "purchase_gems" = "Purchase Gems";

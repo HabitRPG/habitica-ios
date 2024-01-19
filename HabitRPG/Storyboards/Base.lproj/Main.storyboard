@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -755,12 +755,12 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ykd-3C-rQW" customClass="AvatarOverviewItemView" customModule="Habitica" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="akH-Ps-Sg4" customClass="AvatarOverviewItemView" customModule="Habitica" customModuleProvider="target">
                                                 <rect key="frame" x="139" y="68" width="79.5" height="113"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="akH-Ps-Sg4" customClass="AvatarOverviewItemView" customModule="Habitica" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wvd-FH-IL0" customClass="AvatarOverviewItemView" customModule="Habitica" customModuleProvider="target">
                                                 <rect key="frame" x="139" y="68" width="79.5" height="113"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -770,7 +770,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wvd-FH-IL0" customClass="AvatarOverviewItemView" customModule="Habitica" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ykd-3C-rQW" customClass="AvatarOverviewItemView" customModule="Habitica" customModuleProvider="target">
                                                 <rect key="frame" x="139" y="68" width="79.5" height="113"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -797,11 +797,11 @@
                     <navigationItem key="navigationItem" id="ezA-f6-dxw"/>
                     <connections>
                         <outlet property="animalEarsView" destination="5h1-Pe-YfX" id="j9X-Ej-6Nv"/>
+                        <outlet property="animalTailView" destination="Ykd-3C-rQW" id="bhM-AB-wKV"/>
                         <outlet property="backgroundView" destination="Wvd-FH-IL0" id="bpN-rL-Zck"/>
                         <outlet property="bodySizeControl" destination="3ow-rh-Fzj" id="YVx-V1-8M7"/>
                         <outlet property="bodySizeLabel" destination="fXX-FU-yYI" id="Ip4-Ar-L8k"/>
                         <outlet property="containerview" destination="eEO-JP-9TP" id="h7s-FH-uqr"/>
-                        <outlet property="eyewearView" destination="Ykd-3C-rQW" id="meO-52-wg3"/>
                         <outlet property="hairBangsView" destination="XTj-Nu-PLs" id="zyL-Bb-XQC"/>
                         <outlet property="hairBaseView" destination="leO-Lg-Fpf" id="Mk2-sk-7ZO"/>
                         <outlet property="hairBeardView" destination="XGd-5U-hh2" id="3nM-bS-2iV"/>

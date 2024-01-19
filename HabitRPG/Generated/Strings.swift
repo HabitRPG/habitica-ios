@@ -1441,6 +1441,8 @@ public enum L10n {
   }
 
   public enum Avatar {
+    /// Animal Tails
+    public static var animalTails: String { return L10n.tr("Mainstrings", "avatar.animal_tails") }
     /// Background
     public static var background: String { return L10n.tr("Mainstrings", "avatar.background") }
     /// Bangs

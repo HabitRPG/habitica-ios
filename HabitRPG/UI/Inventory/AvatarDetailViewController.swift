@@ -24,7 +24,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         super.viewDidLoad()
         topHeaderCoordinator?.followScrollView = false
         if let type = customizationType {
-            if type == "eyewear" || type == "headAccessory" {
+            if type == "eyewear" || type == "headAccessory" || type == "back" || type == "animalTails" {
                 gearDataSource = AvatarGearDetailViewDataSource(type: type)
                 gearDataSource?.collectionView = collectionView
             } else {

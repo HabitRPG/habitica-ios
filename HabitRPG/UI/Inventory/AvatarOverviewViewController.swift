@@ -31,7 +31,7 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
     @IBOutlet weak var hairMustacheView: AvatarOverviewItemView!
     @IBOutlet weak var hairBeardView: AvatarOverviewItemView!
     @IBOutlet weak var hairFlowerView: AvatarOverviewItemView!
-    @IBOutlet weak var eyewearView: AvatarOverviewItemView!
+    @IBOutlet weak var animalTailView: AvatarOverviewItemView!
     @IBOutlet weak var wheelchairView: AvatarOverviewItemView!
     @IBOutlet weak var animalEarsView: AvatarOverviewItemView!
     @IBOutlet weak var backgroundView: AvatarOverviewItemView!
@@ -93,9 +93,6 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
         hairFlowerView.setup(title: L10n.Avatar.flower) {[weak self] in
             self?.openDetailView(type: "hair", group: "flower")
         }
-        eyewearView.setup(title: L10n.Avatar.glasses) {[weak self] in
-            self?.openDetailView(type: "eyewear")
-        }
         wheelchairView.setup(title: L10n.Avatar.wheelchair) {[weak self] in
             self?.openDetailView(type: "chair")
         }
@@ -104,6 +101,9 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
         }
         backgroundView.setup(title: L10n.Avatar.background) {[weak self] in
             self?.openDetailView(type: "background")
+        }
+        animalTailView.setup(title: L10n.Avatar.animalTails) {[weak self] in
+            self?.openDetailView(type: "back")
         }
     }
     
@@ -156,10 +156,10 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
         }
         
         if let outfit = user.preferences?.useCostume ?? false ? user.items?.gear?.costume : user.items?.gear?.equipped {
-            if let eyewear = outfit.eyewear {
-                eyewearView.configure("shop_\(eyewear)")
+            if let back = outfit.back {
+                animalTailView.configure("shop_\(back)")
             } else {
-                eyewearView.configure(nil)
+                animalTailView.configure(nil)
             }
             
             if let headAccessory = outfit.headAccessory {
@@ -200,10 +200,10 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
         hairBeardView.pin.below(of: shirtView).marginTop(8).right(of: hairMustacheView).marginLeft(8).width(itemWidth).height(itemHeight)
         hairFlowerView.pin.below(of: shirtView).marginTop(8).right(of: hairBeardView).marginLeft(8).width(itemWidth).height(itemHeight)
         
-        eyewearView.pin.below(of: hairBaseView).marginTop(8).left(8).width(itemWidth).height(itemHeight)
-        wheelchairView.pin.below(of: hairBaseView).marginTop(8).right(of: eyewearView).marginLeft(8).width(itemWidth).height(itemHeight)
-        animalEarsView.pin.below(of: hairBaseView).marginTop(8).right(of: wheelchairView).marginLeft(8).width(itemWidth).height(itemHeight)
-        backgroundView.pin.below(of: hairBaseView).marginTop(8).right(of: animalEarsView).marginLeft(8).width(itemWidth).height(itemHeight)
+        wheelchairView.pin.below(of: hairBaseView).marginTop(8).left(8).width(itemWidth).height(itemHeight)
+        backgroundView.pin.below(of: hairBaseView).marginTop(8).right(of: wheelchairView).marginLeft(8).width(itemWidth).height(itemHeight)
+        animalEarsView.pin.below(of: hairBaseView).marginTop(8).right(of: backgroundView).marginLeft(8).width(itemWidth).height(itemHeight)
+        animalTailView.pin.below(of: hairBaseView).marginTop(8).right(of: animalEarsView).marginLeft(8).width(itemWidth).height(itemHeight)
     }
     
     @IBAction func bodySizeChanged(_ sender: Any) {

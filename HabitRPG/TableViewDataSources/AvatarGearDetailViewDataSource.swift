@@ -27,9 +27,14 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
         super.init()
         sections.append(ItemSection<GearProtocol>())
 
-        var predicate = NSPredicate(format: "gearSet != nil && type == 'headAccessory'")
-        if gearType == "eyewear" {
-            predicate = NSPredicate(format: "gearSet == 'glasses' && type == 'eyewear'")
+        var predicate: NSPredicate
+        if gearType == "eyewear" || gearType == "headAccessory" {
+            predicate = NSPredicate(format: "gearSet != nil && type == 'headAccessory'")
+            if gearType == "eyewear" {
+                predicate = NSPredicate(format: "gearSet == 'glasses' && type == 'eyewear'")
+            }
+        } else {
+            predicate = NSPredicate(format: "gearSet == 'animal' && type == 'back'")
         }
         disposable.add(inventoryRepository.getGear(predicate: predicate)
             .combineLatest(with: inventoryRepository.getOwnedGear())
@@ -43,6 +48,8 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
             switch self?.gearType {
             case "eyewear":
                 self?.equippedKey = outfit?.eyewear
+            case "back":
+                self?.equippedKey = outfit?.back
             case "headAccessory":
                 self?.equippedKey = outfit?.headAccessory
             default:
@@ -107,7 +114,11 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
         case "glasses":
             return L10n.glasses
         case "animal":
-            return L10n.animalEars
+            if gearType == "back" {
+                return L10n.Avatar.animalTails
+            } else {
+                return L10n.animalEars
+            }
         case "headband":
             return L10n.headband
         default:
