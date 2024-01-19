@@ -182,11 +182,15 @@ private class ViewModel: ObservableObject {
                 self.text = response?.armoire?.dropText ?? ""
                 self.key = response?.armoire?.dropKey ?? ""
                 self.value = response?.armoire?.value ?? 0
-                if (self.type == "gear") {
+                if self.type == "gear" {
                     self.remainingCount -= 1
                 }
                 onCompleted()
-            }).flatMap(.latest, { _ in
+            })
+            .flatMap(.latest, { _ in
+                return self.userRepository.retrieveInAppRewards()
+            })
+            .flatMap(.latest, { _ in
                 return self.userRepository.retrieveUser(forced: true)
             })
             .observeValues({ _ in

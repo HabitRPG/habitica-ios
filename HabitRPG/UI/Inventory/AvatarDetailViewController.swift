@@ -56,7 +56,18 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let width = 80
         let viewWidth = Int(collectionView.frame.size.width)
-        var count = viewWidth / width
+        var count = viewWidth / (width + 10)
+        if let dataSource = gearDataSource {
+            let inSection = dataSource.collectionView(collectionView, numberOfItemsInSection: section)
+            if inSection < count {
+                count = inSection
+            }
+        } else if let dataSource = customizationDataSource {
+            let inSection = dataSource.collectionView(collectionView, numberOfItemsInSection: section)
+            if inSection < count {
+                count = inSection
+            }
+        }
         if customizationType == "background" {
             count = 3
         }
