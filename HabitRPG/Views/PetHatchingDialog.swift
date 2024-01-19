@@ -167,6 +167,7 @@ class PetHatchingAlertController: HabiticaAlertController {
                         if hatchValue > self.gemCount {
                             HRPGBuyItemModalViewController.displayInsufficientGemsModal(reason: "hatching", delayDisplay: false)
                             self.dismiss()
+                            return
                         }
                         var signal = SignalProducer<UserProtocol?, Never> { (observable, _) in
                             observable.send(Signal.Event.value(nil))
