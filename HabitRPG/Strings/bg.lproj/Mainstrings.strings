@@ -338,7 +338,6 @@
 "titles.news" = "Новини";
 "titles.pets" = "Любимци";
 "titles.mounts" = "Превози";
-"titles.tavern" = "Кръчма";
 "titles.party" = "Група";
 "titles.guilds" = "Гилдии";
 "titles.guild" = "Гилдия";
@@ -523,7 +522,6 @@
 "leave_challenge_title" = "Напускане на предизвикателството?";
 "leave_challenge_prompt" = "Искате ли да напуснете предизвикателството и да запазите или изтриете задачите?";
 "locations.market" = "Пазар";
-"locations.tavern" = "Кръчма";
 "locations.quest_shop" = "Магазин за мисии";
 "locations.seasonal_shop" = "Сезонен магазин";
 "locations.stable" = "Конюшня";
@@ -536,7 +534,6 @@
 "unlocks_level_ten" = "Отключва се на ниво 10";
 "write_message" = "Напишете съобщение";
 "write_to" = "Пишете на %@";
-"tavern_intro_header" = "Добре дошли в Странноприемницата! Поседнете, за да си поговорим, или за да си починете от задачите.";
 "resume_damage" = "Продължаване на щетите";
 "pause_damage" = "Спиране на щетите";
 "world_boss_intro_header" = "Не обръщай внимание на чудовището по-долу – това все още е спокойно място за разговори по време на почивките Ви.";

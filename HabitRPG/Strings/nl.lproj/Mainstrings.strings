@@ -512,7 +512,6 @@
 "titles.news" = "Nieuws";
 "titles.pets" = "Huisdieren";
 "titles.mounts" = "Rijdieren";
-"titles.tavern" = "Taveerne";
 "titles.party" = "Groep";
 "titles.guilds" = "Gilden";
 "titles.guild" = "Gilde";
@@ -721,7 +720,6 @@
 "leave_challenge_title" = "Uitdaging verlaten?";
 "leave_challenge_prompt" = "Wil je de uitdaging verlaten en de taken behouden of verwijderen?";
 "locations.market" = "Markt";
-"locations.tavern" = "Herberg";
 "locations.quest_shop" = "Queeste Winkel";
 "locations.seasonal_shop" = "Seizoenswinkel";
 "locations.stable" = "Stal";
@@ -735,7 +733,6 @@
 "copied_message" = "Gekopiëerd Bericht";
 "write_message" = "Schrijf bericht";
 "write_to" = "Schrijf naar %@";
-"tavern_intro_header" = "Welkom bij de Herberg! Neem plaats om te chatten, of om te pauzeren van je taken.";
 "resume_damage" = "Schade Hervatten";
 "pause_damage" = "Pauzeer Schade";
 "world_boss_intro_header" = "Ojee, let niet op het monster hieronder. Dit is nog steeds een toevluchtsoord om te praten tijdens je rusttijd.";
@@ -1333,3 +1330,4 @@
 "open_for" = "Open voor %@";
 "report" = "Raporteer";
 "tasks.form.last_scored" = "Laatste keer gescoord";
+"tasks.form.times_scored" = "Aantal keren gescoord";

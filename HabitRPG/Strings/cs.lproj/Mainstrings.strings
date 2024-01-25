@@ -300,7 +300,6 @@
 "titles.news" = "Novinky";
 "titles.pets" = "Mazlíčci";
 "titles.mounts" = "Zvířata";
-"titles.tavern" = "Krčma";
 "titles.party" = "Družina";
 "titles.guilds" = "Cechy";
 "titles.guild" = "Cech";
@@ -431,7 +430,6 @@
 "leave_challenge_title" = "Opustit výzvu?";
 "leave_challenge_prompt" = "Chceš opustit tuto výzvu a ponechat nebo odstranit její úkoly?";
 "locations.market" = "Trh";
-"locations.tavern" = "Krčma";
 "locations.quest_shop" = "Obchod s výpravami";
 "locations.seasonal_shop" = "Sezónní obchod";
 "locations.stable" = "Stáj";
@@ -866,7 +864,6 @@
 "unlockDropsDescription" = "Odemkli jste Drop System! Nyní, když dokončíte úkoly, máte malou šanci najít položku, včetně vajec, lektvarů a jídla!";
 "unlockDropsTitle" = "Odemkli jste drop systém!";
 "accessibility.not_due" = "Není splatné";
-"tavern_intro_header" = "Vítejte v Krčmě! Vytáhněte židli a povídejte si nebo si udělejte pauzu od svých úkolů.";
 "member_group_plan" = "Člen Skupiny";
 "group_plan" = "Skupina";
 "party.transfer_ownership_description" = "Tím se %@ stane novým vůdcem Družiny";

@@ -7,7 +7,7 @@
 /* (No Comment) */
 "avatar.bangs" = "刘海";
 /* (No Comment) */
-"avatar.beard" = "胡子";
+"avatar.beard" = "下唇胡须";
 /* (No Comment) */
 "avatar.flower" = "花";
 /* (No Comment) */
@@ -15,7 +15,7 @@
 /* (No Comment) */
 "avatar.head" = "头部";
 /* (No Comment) */
-"avatar.mustache" = "胡须";
+"avatar.mustache" = "上唇胡须";
 /* (No Comment) */
 "avatar.shirt" = "上衣";
 /* (No Comment) */
@@ -149,9 +149,9 @@
 /* (No Comment) */
 "settings.clear_cache" = "清空缓存";
 /* (No Comment) */
-"settings.custom_day_start" = "自定义起始日期";
+"settings.custom_day_start" = "自定义每日起始时间";
 /* (No Comment) */
-"settings.daily_reminder" = "每日任务提醒";
+"settings.daily_reminder" = "日常任务提醒";
 /* (No Comment) */
 "settings.day_start" = "起始日期";
 /* (No Comment) */
@@ -244,7 +244,6 @@
 "titles.items" = "物品";
 "titles.pets" = "宠物";
 "titles.mounts" = "坐骑";
-"titles.tavern" = "酒馆";
 "titles.party" = "队伍";
 "titles.guilds" = "公会";
 "titles.guild" = "公会";
@@ -327,7 +326,7 @@
 "dated" = "日期";
 "stats.no_points_to_allocate" = "可分配的点数为0";
 "stats.one_point_to_allocate" = "1个点数可分配";
-"stats.buffs" = "增益魔法";
+"stats.buffs" = "增益";
 "stats.total" = "总计";
 "stats.character_build_title" = "性格锻炼";
 "stats.stat_guide" = "属性概要";
@@ -337,7 +336,7 @@
 "tasks.form.create" = "新的 %@";
 "tasks.form.controls" = "控制";
 "tasks.form.reset_streak" = "连击归零";
-"tasks.form.scheduling" = "规划";
+"tasks.form.scheduling" = "预定日程";
 "tasks.form.checklist" = "待办事项";
 "tasks.form.new_checklist_item" = "新的待办事项";
 "tasks.form.remind_me" = "提醒我";
@@ -354,9 +353,9 @@
 "tasks.team" = "团队";
 "tasks.creativity" = "创造性";
 "tasks.add_x" = "添加 %@";
-"tasks.due_today" = "今天到期";
+"tasks.due_today" = "今日截止";
 "tasks.due_tomorrow" = "明天到期";
-"tasks.due_in_x_days" = "%d天后到期";
+"tasks.due_in_x_days" = "%d日后";
 "tasks.every_x" = "每 %d %@";
 "tasks.repeats.repeats_every_on" = "重复 %@ 在 %@";
 "tasks.repeats.repeats_every" = "%@ 重复";
@@ -567,7 +566,7 @@
 "settings.searchable_username" = "用户名建议";
 "about.website" = "网站";
 "about.send_feedback" = "发送反馈";
-"about.report_bug" = "报告Bug";
+"about.report_bug" = "提交Bug";
 "about.leave_review" = "不保存评论";
 "about.view_source_code" = "查看源码";
 "about.acknowledgements" = "致谢";
@@ -587,7 +586,7 @@
 "login.enter_email" = "输入你用来注册Habitica账户的邮件地址。";
 "login.reset_password_response" = "如果邮件地址无误，重置密码的相关信息已经发送到你的邮箱。";
 "groups.error_name_required" = "名称不能为空。";
-"gift_recipient_title" = "你想赠送给谁？";
+"gift_recipient_title" = "你想赠送给谁？送礼物";
 "gift_recipient_subtitle" = "输入接收者的 @用户名";
 "continue" = "继续";
 "gift_confirmation_title" = "你的礼物已送达！";
@@ -641,9 +640,8 @@
 "keep_tasks" = "保留任务";
 "delete_tasks" = "删除任务";
 "locations.market" = "市场";
-"locations.tavern" = "酒馆";
 "locations.quest_shop" = "副本商店";
-"locations.seasonal_shop" = "季度商店";
+"locations.seasonal_shop" = "季节商店";
 "locations.stable" = "马厩";
 "titles.api" = "API";
 "titles.select_class" = "选择职业";
@@ -676,7 +674,7 @@
 "NPCs.alex" = "商人Alex";
 "NPCs.daniel" = "客栈老板Daniel";
 "NPCs.ian" = "副本向导Ian";
-"NPCs.seasonalSorceress" = "季度魔女";
+"NPCs.seasonalSorceress" = "季节女巫";
 "NPCs.matt" = "驯兽师Matt";
 "welcome_back" = "欢迎回来！";
 "unlocks_selecting_class" = "选择职业后解锁";
@@ -685,7 +683,6 @@
 "write_a_message" = "发消息";
 "write_message" = "发消息";
 "write_to" = "发给%@";
-"tavern_intro_header" = "欢迎来到客栈！拉张凳子坐下聊天，或暂停任务休息一下。";
 "resume_damage" = "恢复伤害";
 "pause_damage" = "暂停伤害";
 "whats_world_boss" = "世界Boss是什么？";
@@ -842,34 +839,34 @@
 "notifications.unread_party_message" = "你的队伍**%@**有新帖子。";
 "notifications.unread_guild_message" = "**%@**有新帖子。";
 "notifications.new_mystery_item" = "你有新的**神秘物品**";
-"notifications.new_bailey" = "Bailey更新！";
-"settings.push_notifications.gifted_subscription" = "赠礼订阅";
+"notifications.new_bailey" = "Bailey有新消息！";
+"settings.push_notifications.gifted_subscription" = "获赠订阅";
 "notifications.unallocated_stat_points" = "你有**%d未分配的点数**";
 "defeat" = "击败";
 "decline" = "拒绝";
 "never_lower_case" = "从不";
 "about.whats_new" = "来看新闻";
 "about.new_version" = "剩余点数: %@";
-"party.leave_party_description" = "你想离开队伍并保持或者放弃挑战吗？";
+"party.leave_party_description" = "你想离开队伍并保持或者放弃挑战吗？离开队伍不会让你退出队伍挑战。";
 "party.leave_party_title" = "离开队伍？";
 "stable.type" = "类型";
 "stable.color" = "颜色";
-"stable.wacky_mounts" = "古怪坐骑";
-"stable.wacky_pets" = "古怪宠物";
+"stable.wacky_mounts" = "搞怪坐骑";
+"stable.wacky_pets" = "搞怪宠物";
 "guilds.left_guild" = "你离开了公会";
 "guilds.joined_guild" = "你加入了公会";
 "settings.push_notifications.invited_quest" = "邀请参与副本";
 //"settings.push_notifications.banned_group" = "Kicked from Group";
 "settings.push_notifications.quest_begun" = "你的副本已经开始";
 "settings.push_notifications.invited_guid" = "邀请进公会";
-"settings.push_notifications.gifted_gems" = "礼物宝石";
+"settings.push_notifications.gifted_gems" = "获赠宝石";
 "settings.push_notifications.received_pm" = "收到私信";
 "settings.push_notifications.title" = "推送通知";
 "empty.notifications.description" = "信使仙女们围着你欢快鼓掌！太棒了！";
 "organize_by" = "组织者";
 "achievements.quests" = "完成的副本";
 "achievements.special" = "特殊成就";
-"achievements.seasonal" = "节日成就";
+"achievements.seasonal" = "季节性成就";
 "achievements.basic" = "基础成就";
 "empty.notifications.title" = "所有任务都完成了！";
 "empty.rewards.description" = "奖励系统是Habitica帮助你完成任务的好方法。立即尝试添加几个吧！";
@@ -932,11 +929,11 @@
 "achievements.onboarding" = "新人成就";
 "copied_x_to_clipboard" = "%@复制到了剪贴板";
 "quests.unlock_previous_short" = "完成副本“%d”";
-"quests.unlock_previous" = "完成副本“%d”来解锁";
-"quests.unlock_level" = "升到%d级来解锁";
+"quests.unlock_previous" = "完成副本“%d”可解锁";
+"quests.unlock_level" = "升到%d级可解锁";
 "quests.unlock_level_short" = "%d级";
 "quests.unlock_invite_short" = "邀请朋友";
-"quests.unlock_invite" = "邀请朋友来解锁副本卷轴";
+"quests.unlock_invite" = "邀请朋友加入队伍可解锁";
 "settings.email_notifications.subscription_reminders" = "订阅提醒";
 "settings.email_notifications.banned_group" = "已被小组踢出";
 "settings.email_notifications.title" = "电邮";
@@ -999,8 +996,8 @@
 "guildJoinedDescription" = "通过加入一个公会来探索Habitica的社交一面！";
 "guildJoinedTitle" = "加入一个公会";
 "mountMasterTitle" = "坐骑大师";
-"triadBingoTitle" = "三全大师称号";
-"triadBingoDescription" = "由于找到了所有宠物，驯养了所有坐骑和再次找到了所有宠物，你获得了“三全大师称号”成就！";
+"triadBingoTitle" = "大三元";
+"triadBingoDescription" = "你找到了所有宠物，驯服了所有坐骑，并再次找到所有宠物，获得了“大三元”成就！";
 "mountMasterDescription" = "由于你驯养了所有坐骑，你获得了“坐骑大师”成就！";
 "beastMasterDescription" = "你集齐了所有宠物，获得了“驯兽师”的成就！";
 "partyOnDescription" = "你的队伍达到了4人！";
@@ -1153,7 +1150,7 @@
 "create_challenge" = "创建挑战";
 "achievements.challenges" = "挑战成功";
 "menu.skills" = "技能";
-"seasonal_potions_available" = "提供季节版物品";
+"seasonal_potions_available" = "季节性商品可购买";
 "new" = "新的";
 "x_items_found" = "你找到了 %d 副本物品";
 "week_reminder_body" = "小憩一会也不错，你可以做一些简单的任务来获得经验值、超酷的装备和魔法值！";
@@ -1184,7 +1181,7 @@
 "survey.title" = "Habitica玩家调查";
 "beginner_objectives" = "新手目标";
 "quests.unlock_incentive_short" = "签到数%d";
-"quests.unlock_incentive" = "签到%d次来解锁";
+"quests.unlock_incentive" = "签到%d次可解锁";
 "inventory.no_longer_available" = "不再可用";
 "inventory.hatched_sharing" = "通过完成现实生活中的任务，我刚刚在Habitica孵化了一只%@%@宠物！";
 "update" = "更新";
@@ -1202,3 +1199,10 @@
 "armoire.food" = "你翻了魔法衣柜，并在里面发现了食物…它怎么在这里？";
 "armoire.enchanted_armoire_drop_rates" = "魔法衣橱掉落物品几率";
 "armoire.equipment" = "你在魔法衣柜里发现了一件稀有装备！";
+"tasks.tasks" = "任务";
+"tasks.form.reset_counter" = "重置计数";
+"settings.day_start_adjustment" = "调整每日起始时间";
+"settings.pauseDamage.pause_damage_description1" = "Boss仍会因其他队友未完成的日常任务而造成伤害";
+"inventory.avatar_mustache_customization" = "自定义角色上唇胡须";
+"inventory.avatar_beard_customization" = "自定义角色下唇胡须";
+"inventory.avatar_bangs_customization" = "自定义角色刘海";

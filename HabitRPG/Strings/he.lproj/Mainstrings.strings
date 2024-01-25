@@ -277,7 +277,6 @@
 "titles.news" = "חדשות";
 "titles.pets" = "חיות מחמד";
 "titles.mounts" = "חיות רכיבה";
-"titles.tavern" = "פונדק";
 "titles.party" = "חבורה";
 "titles.guilds" = "גילדות";
 "titles.guild" = "גילדה";
@@ -381,7 +380,6 @@
 "broad" = "רחב";
 "errors.error" = "תקלה";
 "locations.market" = "שוק";
-"locations.tavern" = "פונדק";
 "locations.seasonal_shop" = "חנות עונתית";
 "locations.stable" = "אורווה";
 "write_message" = "כתבו הודעה";

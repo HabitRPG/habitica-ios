@@ -512,7 +512,6 @@
 "titles.news" = "Noutăți";
 "titles.pets" = "Animale de companie";
 "titles.mounts" = "Animale de călărit";
-"titles.tavern" = "Tavernă";
 "titles.party" = "Grup";
 "titles.guilds" = "Bresle";
 "titles.guild" = "Breaslă";
@@ -711,7 +710,6 @@
 "leave_challenge_title" = "Părăsești Provocarea?";
 "leave_challenge_prompt" = "Dorești să părăsești această provocare și să păstrezi sau ștergi sarcinile?";
 "locations.market" = "Piață";
-"locations.tavern" = "Tavernă";
 "locations.quest_shop" = "Târgul de Expediții";
 "locations.seasonal_shop" = "Piața sezonieră";
 "locations.stable" = "Grajd";
@@ -725,7 +723,6 @@
 "copied_message" = "Mesaj Copiat";
 "write_message" = "Scrie Mesaj";
 "write_to" = "Scrie-i lui %@";
-"tavern_intro_header" = "Bine ai venit la Han! Ia un scaun pentru a purta o discuție, sau ia o pauză de la sarcinile tale.";
 "resume_damage" = "Reia Deteriorarea";
 "pause_damage" = "Pune pauză Deteriorării";
 "world_boss_intro_header" = "Oh dragă, nu îl băga în seamă pe monstrul de mai jos -- ăsta este în continuare un loc sigur pentru discuții în pauze.";

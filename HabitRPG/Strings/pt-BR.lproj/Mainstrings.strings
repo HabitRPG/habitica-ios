@@ -43,9 +43,9 @@
 /* (No Comment) */
 "classes.mage_description" = "Magos(as) aprendem rapidamente, ganhando Experiência e Níveis mais rápido que as outras classes. Eles(as) também conseguem uma boa quantidade de Mana para usar habilidades especiais. Jogue como Mago(a) se você adora os aspectos táticos do Habitica ou se você é fortemente motivado em subir de níveis e desbloquear funções avançadas!";
 /* (No Comment) */
-"classes.rogue" = "Gatuno(a)";
+"classes.rogue" = "Ladino";
 /* (No Comment) */
-"classes.rogue_description" = "Gatunos(as) amam acumular fortunas, ganhando mais Ouro que qualquer um, e são peritos(as) em achar itens aleatórios. Sua habilidade icônica, Furtividade, os(as) permite evitar as consequências de Diárias não feitas. Jogue com o(a) Gatuno(a) se tiver grande motivação em receber Recompensas e Conquistas, e se gostar de ganhar itens e medalhas!";
+"classes.rogue_description" = "Ladinos e Ladinas amam acumular imensas fortunas, ganhando mais Ouro que qualquer um, e também são peritos em achar itens aleatórios. Sua habilidade icônica, Furtividade, os permite evitar as consequências de Diárias não realizadas. Jogue de Ladino se o que te motiva para valer é receber Recompensas e Conquistas - e se gostar de ganhar itens e medalhas!";
 /* (No Comment) */
 "classes.warrior" = "Guerreiro(a)";
 /* (No Comment) */
@@ -482,7 +482,6 @@
 "titles.news" = "Notícias";
 "titles.pets" = "Mascotes";
 "titles.mounts" = "Montarias";
-"titles.tavern" = "Taverna";
 "titles.party" = "Grupo";
 "titles.guilds" = "Guildas";
 "titles.guild" = "Guilda";
@@ -618,7 +617,7 @@
 "party.invitation_invitername" = "**@%@** convidou você para entrar em no grupo **%@**";
 "party.create_party_title" = "Jogue Habitica com um Grupo";
 "party.create_party_button" = "Criar um novo Grupo";
-"party.join_party_title" = "Quer entrar em um grupo?";
+"party.join_party_title" = "Procurando um Grupo?";
 "party.party_challenges" = "Desafios do grupo";
 "party.start_quest" = "Começar missão";
 "groups.guild_invitation_no_invitername" = "Alguém convidou você para entrar na Guilda: **%@**";
@@ -706,7 +705,6 @@
 "leave_challenge_title" = "Sair do Desafio?";
 "leave_challenge_prompt" = "Ao sair do Desafio, você deseja manter ou deletar as tarefas?";
 "locations.market" = "Mercado";
-"locations.tavern" = "Taverna";
 "locations.quest_shop" = "Loja de Missões";
 "locations.seasonal_shop" = "Loja Sazonal";
 "locations.stable" = "Estábulo";
@@ -720,7 +718,6 @@
 "copied_message" = "Mensagem copiada";
 "write_message" = "Escrever mensagem";
 "write_to" = "Escrever para %@";
-"tavern_intro_header" = "Boas-vindas à Taverna. Puxe uma cadeira e junte-se ao bate-papo ou faça uma pausa de suas tarefas.";
 "resume_damage" = "Reativar dano";
 "pause_damage" = "Pausar dano";
 "world_boss_intro_header" = "Oh céus, não se preocupe com o monstro embaixo -- aqui ainda é seguro para bater um papo enquanto descansa.";
@@ -811,7 +808,7 @@
 "stats.strength_text" = "Aumenta o bônus de acertos críticos e os torna mais prováveis ao marcar uma tarefa. Também aumenta o dano causado aos chefes.";
 "tasks.team" = "Time";
 "tasks.due_today" = "Hoje";
-"tasks.due_tomorrow" = "Amanhã";
+"tasks.due_tomorrow" = "Vencimento amanhã";
 "tasks.due_in_x_days" = "Em %d dias";
 "tasks.every_x" = "cada %d %@";
 "tasks.repeats.repeats_every_on" = "Repete %@ em %@";
@@ -834,7 +831,7 @@
 "avatar.hair" = "Cabelo";
 "avatar.extras" = "Extras";
 "party.create_party_description" = "Faça missões com seus(as) amigos(as) ou por conta própria. Lute contra monstros, crie Desafios e ajude-se a permanecer responsável através do Grupo.";
-"party.join_party_description" = "Dê a um membro do grupo o nome de usuário encontrado abaixo e ele(a) poderá enviar um convite";
+"party.join_party_description" = "Gostaria de entrar em um Grupo com mais pessoas, mas não conhece nenhum outro jogador? Informe aos líderes de grupos que você está procurando um convite!";
 "party.party_description" = "Descrição do grupo";
 "groups.members" = "Membros";
 "groups.invite_member" = "Convidar um membro";
@@ -936,8 +933,8 @@
 "buy_reward" = "Você comprou '%@' por %@ ouro";
 "about.whats_new" = "Veja o que há de novo";
 "about.new_version" = "Atualização disponível: %@";
-"party.leave_party_description" = "Você quer sair do Grupo e manter os desafios ou prefere abandoná-los?";
-"party.leave_party_title" = "Sair do Grupo?";
+"party.leave_party_description" = "Sair do seu Grupo não o removerá de nenhum Desafio de Grupo do qual esteja participando.";
+"party.leave_party_title" = "Tem certeza que quer deixar o Grupo?";
 "stable.type" = "Tipo";
 "stable.color" = "Cor";
 "stable.wacky_mounts" = "Montarias Malucas";
@@ -995,7 +992,7 @@
 "never_lower_case" = "nunca";
 "login.login_apple" = "Faça o login com Apple";
 "task_history" = "Histórico de Tarefas (Muito Experimental)";
-"party.remove_from_party" = "Remover do Grupo";
+"party.remove_from_party" = "Remover Membro";
 "remove" = "Remover";
 "transfer" = "Transferir";
 "transfer_ownership" = "Transferir liderança";
@@ -1125,7 +1122,7 @@
 "partyUpTitle" = "Agrupou-se";
 "onboardingComplete_achievement_title" = "Você concluiu suas tarefas de integração!";
 "onboardingCompleteDescription" = "Se você quiser ainda mais, confira Conquistas e comece a coletar!";
-"onboardingCompleteTitle" = "Você ganhou <b>5 Conquistas</b> e <font color='#EE9109'><b>100 Pontos de Ouro</b></font> pelos seus esforços.";
+"onboardingCompleteTitle" = "Você ganhou 5 Conquistas e 100 Pontos de Ouro pelos seus esforços.";
 "view_onboarding_tasks" = "Exibir tarefas de integração";
 "first_drop_title" = "Você encontrou novos itens!";
 "go_to_items" = "Ir para Itens";
@@ -1200,12 +1197,12 @@
 "common_fixes" = "Correções Comuns";
 "known_issues" = "Problemas Conhecidos";
 "more_questions_title" = "Ainda tem uma pergunta?";
-"more_questions_text" = "Envie uma mensagem na [Guilda de Ajuda do Habitica (Habitica Help: Ask A Question)](https://habitica.com/groups/guild/5481ccf3-5d2d-48a9-a871-70a7380cee5a) para ter suas perguntas respondidas por um colega jogador";
+"more_questions_text" = "Você pode [entrar em contato conosco](mailto:admin@habitica.com?subject=%%5BiOS%%5D%%20Question) e um membro da nossa equipe fará o possível para ajudar!";
 "subscriber_currency" = "Moeda do Assinante";
 "gems_description" = "Gemas são uma moeda comprada com dinheiro real que lhe permite comprar conteúdo extra dentro do Habitica e são uma das principais fontes de apoio financeiro para a equipe Habitica juntamente às assinaturas.\n\nTodo o conteúdo comprado através da Gemas é puramente cosmético ou pode ser obtido gratuitamente com o tempo.\n\nVocê também pode receber Gemas através de presentes de outros jogadores, prêmios de Desafio, contribuindo para o Habitica ou fazendo uma assinatura.";
 "currency" = "Moeda";
 "premium_currency" = "Moeda de alta qualidade";
-"stat_description" = "Todos os personagens do Habitica têm quatro atributos que afetam os aspectos da jogabilidade.\n\n**Força (FOR)** afeta acertos críticos e aumenta os danos causados a um chefe de missões. Guerreiros(as) e Gatuno(as) ganham FOR de seus equipamentos de classe.\n\n**Constituição (CON)** aumenta seu HP e faz com que você sofra menos danos. Curandeiros(as) e Guerreiros(as) ganham CON de seus equipamentos de classe.\n\n**Inteligência (INT)** aumenta a quantidade de EXP que você ganha e lhe dá mais Mana. Magos(as) e Curandeiros(as) ganham INT de seus equipamentos de classe.\n\n**Percepção (PER)** aumenta a quantidade de Ouro que você ganha e a taxa de encontrar itens (Drops). Gatuno(as) e Magos(as) ganham PER de seus equipamentos de classe.\n\nApós o nível 10, você ganha 1 Ponto de Atributo a cada nível que você conquistar para distribuir como desejar. Você também pode usar equipamentos que tenham diferentes combinações de melhorias de atributos.";
+"stat_description" = "Todos os personagens no Habitica possuem quatro atributos que afetam os aspectos da jogabilidade.\n\n**Força (FOR)** afeta acertos críticos e aumenta o dano causado a um Chefão de Missão. Guerreiros e Ladinos ganham FOR a partir dos seus equipamentos de classe.\n\n**Constituição (CON)** aumenta seu PV e faz com que você sofra menos danos. Curandeiros e Guerreiros ganham CON a partir dos seus equipamentos de classe.\n\n**Inteligência (INT)** aumenta a quantidade de EXP que você ganha e concede mais Mana. Magos e Curandeiros ganham INT a partir dos seus equipamentos de classe.\n\n**Percepção (PER)** aumenta a quantidade de ouro que você ganha e a capacidade de encontrar itens \"dropáveis\". Ladinos e Magos ganham PER a partir dos seus equipamentos de classe.\n\nApós o nível 10, você ganha 1 Ponto de Atributo para cada nível obtido e pode distribuir estes pontos em qualquer atributo que desejar. Você também pode usar equipamentos com diferentes combinações de aumento de atributos.";
 "stat_allocation" = "Alocação de Atributo";
 "mana_description" = "Pontos de Mana são desbloqueados com o sistema de classes no nível 10 e permitem a **utilização de Habilidades** uma vez que você comece a aprendê-las no nível 11.\n\nAlguns **MP são restaurados** diariamente no reinício do dia, mas você pode recuperar mais completando tarefas ou usando uma habilidade de classe Mago(a).";
 "gold_description" = "Ponto de Ouro é a **principal forma de moeda*** dentro do Habitica e permite que você compre certos equipamentos, missões, itens ou até mesmo recompensas personalizadas que você criar.\n\n*Ganhe Ouro** através da conclusão de tarefas, missões ou através de algumas habilidades de classe. Valores mais altos do **atributo Percepção*** aumentam a quantidade de Ouro que você ganha.\n\nSe você assinar Habitica, você pode até mesmo usar o Ouro para comprar um certo número de Gemas determinado pelo tempo da sua assinatura.";
@@ -1275,7 +1272,7 @@
 "get_started" = "Comece agora mesmo";
 "quests.confirm_leave_nostart" = "Você tem certeza de que quer abandonar a Missão? Você não poderá participar.";
 "quests.confirm_leave" = "Você tem certeza de que quer abandonar a Missão? Todo o seu progresso será perdido.";
-"x_items_found" = "%d Itens encontrados";
+"x_items_found" = "%d Itens pendentes";
 "week_reminder_title" = "Como você está se saindo com suas tarefas?";
 "daily_tip_6" = "Experimente configurar um temporizador de dez minutos e veja o quanto você consegue concluir!";
 "week_reminder_body" = "É saudável dar intervalos, mas você ainda pode ganhar pontos por atividades simples para subir de nível e ganhar equipamentos legais!";
@@ -1440,3 +1437,26 @@
 "faint.disclaimer" = "Equipamento quebrado pode ser comprado novamente em Recompensas";
 "four_for_free_description" = "Para continuar com a festa, estaremos distribuindo Túnicas Festivas, 20 Gemas e um conjunto de Capas de edição limitada e Cenário!";
 "limitations" = "Limitações";
+"guilds.joined_party" = "Você entrou no Grupo";
+"party.look_for_party" = "Procure um Grupo";
+"party.looking_for_party" = "Você está procurando um Grupo!";
+"party.looking_for_party_subtitle" = "Fique de olho em um convite ou comece seu próprio Grupo a qualquer momento";
+"party.leave" = "Sair do Grupo";
+"party.leave_looking_for_party_subtitle" = "Fique de olho em um convite ou comece seu próprio Grupo a qualquer momento";
+"groups.find_members" = "Encontrar Membros";
+"groups.list" = "Lista";
+"groups.by_invite" = "Por Convite";
+"groups.send_invite" = "Enviar Convite";
+"groups.cancel_invite" = "Cancelar Convite";
+"groups.invited" = "Convidado!";
+"groups.invite_pending" = "Convite Pendente";
+"groups.transferred_to" = "Transferência de propriedade para %@";
+"groups.lfp.subtitle" = "Aqui está uma lista de jogadores procurando participar de um Grupo";
+"one_item_found" = "1 Item pendente";
+"failed" = "Falhou";
+"guilds.left_party" = "Você saiu do Grupo";
+"groups.invited_x" = "Convidado @%@";
+"groups.removed" = "Removido %@";
+"groups.find_more_members" = "Encontrar mais membros";
+"groups.lfp.subtitle_empty" = "Não há ninguém à procura de um Grupo neste momento. Você pode voltar mais tarde!";
+"groups.rescinded" = "Cancelada";

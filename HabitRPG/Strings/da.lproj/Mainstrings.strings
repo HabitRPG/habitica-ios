@@ -299,7 +299,6 @@
 "titles.news" = "Nyheder";
 "titles.pets" = "Kæledyr";
 "titles.mounts" = "Ridedyr";
-"titles.tavern" = "Værtshus";
 "titles.party" = "Gruppe";
 "titles.guilds" = "Klaner";
 "titles.guild" = "Klan";
@@ -406,7 +405,6 @@
 "errors.reply" = "Din besked kunne ikke sendes.";
 "errors.request" = "Der opstod en fejl ved din anmodning: %@";
 "locations.market" = "Marked";
-"locations.tavern" = "Værtshus";
 "locations.seasonal_shop" = "Sæson-marked";
 "locations.stable" = "Stald";
 "write_message" = "Skriv Besked";
