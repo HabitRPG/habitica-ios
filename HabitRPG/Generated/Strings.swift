@@ -1477,6 +1477,39 @@ public enum L10n {
     public static var wheelchair: String { return L10n.tr("Mainstrings", "avatar.wheelchair") }
   }
 
+  public enum ChallengeCategory {
+    /// Academics
+    public static var academics: String { return L10n.tr("Mainstrings", "challenge_category.academics") }
+    /// Advocacy + Causes
+    public static var advocacyCauses: String { return L10n.tr("Mainstrings", "challenge_category.advocacy_causes") }
+    /// Creativity
+    public static var creativity: String { return L10n.tr("Mainstrings", "challenge_category.creativity") }
+    /// Entertainment
+    public static var entertainment: String { return L10n.tr("Mainstrings", "challenge_category.entertainment") }
+    /// Finance
+    public static var finance: String { return L10n.tr("Mainstrings", "challenge_category.finance") }
+    /// Getting Organized
+    public static var gettingOrganized: String { return L10n.tr("Mainstrings", "challenge_category.getting_organized") }
+    /// Habitica Official
+    public static var habiticaOfficial: String { return L10n.tr("Mainstrings", "challenge_category.habitica_official") }
+    /// Health + Fitness
+    public static var healthFitness: String { return L10n.tr("Mainstrings", "challenge_category.health_fitness") }
+    /// Hobbies + Occupations
+    public static var hobbiesOccupations: String { return L10n.tr("Mainstrings", "challenge_category.hobbies_occupations") }
+    /// Location-based
+    public static var locationBased: String { return L10n.tr("Mainstrings", "challenge_category.location_based") }
+    /// Mental Health + Self-Care
+    public static var mentalHealth: String { return L10n.tr("Mainstrings", "challenge_category.mental_health") }
+    /// Recovery + Support Groups
+    public static var recoverySupportGroups: String { return L10n.tr("Mainstrings", "challenge_category.recovery_support_groups") }
+    /// Self-Improvement
+    public static var selfImprovement: String { return L10n.tr("Mainstrings", "challenge_category.self_improvement") }
+    /// Spirituality
+    public static var spirituality: String { return L10n.tr("Mainstrings", "challenge_category.spirituality") }
+    /// Time-Management + Accountability
+    public static var timeManagement: String { return L10n.tr("Mainstrings", "challenge_category.time_management") }
+  }
+
   public enum Classes {
     /// Become a %@
     public static func becomeAClass(_ p1: String) -> String {
