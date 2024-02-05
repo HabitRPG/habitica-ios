@@ -11,7 +11,7 @@ import Down
 import Habitica_Models
 
 class ChallengeDescriptionTableViewCell: ResizableTableViewCell, ChallengeConfigurable {
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: MarkdownTextView!
     @IBOutlet weak var caretButton: UIButton!
     @IBOutlet weak var marginConstraint: NSLayoutConstraint!
     
@@ -26,7 +26,7 @@ class ChallengeDescriptionTableViewCell: ResizableTableViewCell, ChallengeConfig
     
     func configure(with challenge: ChallengeProtocol, userID: String?) {
         if let notes = challenge.notes {
-            descriptionLabel.attributedText = try? Down(markdownString: notes.unicodeEmoji).toHabiticaAttributedString(baseSize: descriptionLabel.font.pointSize)
+            descriptionLabel.setMarkdownString(notes.unicodeEmoji)
         }
     }
     
