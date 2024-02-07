@@ -398,31 +398,26 @@ struct DailySchedulingView: View {
 
 struct TaskFormReminderItemView: View {
     var item: ReminderProtocol
-    var isExpanded: Bool
     var showDate: Bool
     var onDelete: () -> Void
     
     @State private var time: Date
-    
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        return formatter
-    }()
-    
+
     @ViewBuilder
     private func buildPicker(value: Binding<Date>) -> some View {
         DatePicker(selection: value,
-                   displayedComponents: showDate ? [.date, .hourAndMinute] : [.hourAndMinute],
+                   displayedComponents: showDate ? [.hourAndMinute, .date] : [.hourAndMinute],
                           label: {
                    Text("")
                           })
+        .onTapGesture(count: 99, perform: {
+            // fix iOS 17.1 bug
+        })
             .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
     }
     
-    init(item: ReminderProtocol, isExpanded: Bool, showDate: Bool, onDelete: @escaping () -> Void) {
+    init(item: ReminderProtocol, showDate: Bool, onDelete: @escaping () -> Void) {
         self.item = item
-        self.isExpanded = isExpanded
         self.showDate = showDate
         self.onDelete = onDelete
         _time = State(initialValue: item.time ?? Calendar.current.date(bySetting: .second, value: 0, of: Date()) ?? Date())
@@ -455,7 +450,6 @@ struct TaskFormReminderItemView: View {
                         configuration.label.padding(4)
                     }
                 }
-                Spacer()
                 buildPicker(value: timeProxy)
             }.padding(.trailing, 4)
         }.frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
@@ -475,7 +469,7 @@ struct TaskFormReminderView: View {
             Text(L10n.Tasks.Form.reminders.uppercased()).font(.system(size: 13, weight: .semibold)).foregroundColor(Color(ThemeService.shared.theme.quadTextColor)).padding(.leading, 14)
             VStack(spacing: 8) {
                 ForEach(items, id: \.id) { item in
-                    TaskFormReminderItemView(item: item, isExpanded: item.id == expandedItem?.id, showDate: showDate) {
+                    TaskFormReminderItemView(item: item, showDate: showDate) {
                         withAnimation {
                             if let index = items.firstIndex(where: { $0.id == item.id }) {
                                 items.remove(at: index)
