@@ -24,6 +24,7 @@ class APIPushNotifications: PushNotificationsProtocol, Decodable {
     var mentionJoinedGuild: Bool = false
     var mentionUnjoinedGuild: Bool = false
     var unsubscribeFromAll: Bool = false
+    var contentRelease: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case giftedGems
@@ -40,6 +41,7 @@ class APIPushNotifications: PushNotificationsProtocol, Decodable {
         case mentionJoinedGuild
         case mentionUnjoinedGuild
         case unsubscribeFromAll
+        case contentRelease
     }
     
     required init(from decoder: Decoder) throws {
@@ -58,5 +60,6 @@ class APIPushNotifications: PushNotificationsProtocol, Decodable {
         mentionJoinedGuild = (try? values.decode(Bool.self, forKey: .mentionJoinedGuild)) ?? false
         mentionUnjoinedGuild = (try? values.decode(Bool.self, forKey: .mentionUnjoinedGuild)) ?? false
         unsubscribeFromAll = (try? values.decode(Bool.self, forKey: .unsubscribeFromAll)) ?? false
+        contentRelease = (try? values.decode(Bool.self, forKey: .contentRelease)) ?? false
     }
 }

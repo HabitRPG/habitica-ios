@@ -405,7 +405,8 @@ class SettingsViewController: FormViewController, Themeable {
                                LabeledFormValue(value: "partyActivity", label: L10n.Settings.PushNotifications.partyActivity),
                                LabeledFormValue(value: "mentionParty", label: L10n.Settings.PushNotifications.mentionParty),
                                LabeledFormValue(value: "mentionJoinedGuild", label: L10n.Settings.PushNotifications.mentionJoinedGuild),
-                               LabeledFormValue(value: "mentionUnjoinedGuild", label: L10n.Settings.PushNotifications.mentionUnjoinedGuild)
+                               LabeledFormValue(value: "mentionUnjoinedGuild", label: L10n.Settings.PushNotifications.mentionUnjoinedGuild),
+                               LabeledFormValue(value: "contentRelease", label: L10n.Settings.PushNotifications.contentRelease)
                 ]
                 row.disabled = Condition.function([SettingsTags.disableAllNotifications], { (form) -> Bool in
                     return (form.rowBy(tag: SettingsTags.disableAllNotifications) as? SwitchRow)?.value == true
@@ -459,7 +460,8 @@ class SettingsViewController: FormViewController, Themeable {
                                LabeledFormValue(value: "invitedQuest", label: L10n.Settings.PushNotifications.invitedQuest),
                                LabeledFormValue(value: "questStarted", label: L10n.Settings.PushNotifications.questBegun),
                                LabeledFormValue(value: "majorUpdates", label: L10n.Settings.PushNotifications.importantAnnouncement),
-                               LabeledFormValue(value: "kickedGroup", label: L10n.Settings.EmailNotifications.bannedGroup)]
+                               LabeledFormValue(value: "kickedGroup", label: L10n.Settings.EmailNotifications.bannedGroup),
+                               LabeledFormValue(value: "contentRelease", label: L10n.Settings.PushNotifications.contentRelease)]
                 
                 row.disabled = Condition.function([SettingsTags.disableAllEmails], { (form) -> Bool in
                     return (form.rowBy(tag: SettingsTags.disableAllEmails) as? SwitchRow)?.value == true
@@ -827,6 +829,9 @@ class SettingsViewController: FormViewController, Themeable {
         if notificationPreferences.mentionUnjoinedGuild {
             pushNotifications.insert(LabeledFormValue(value: "mentionUnjoinedGuild", label: L10n.Settings.PushNotifications.mentionUnjoinedGuild))
         }
+        if notificationPreferences.contentRelease {
+            pushNotifications.insert(LabeledFormValue(value: "contentRelease", label: L10n.Settings.PushNotifications.contentRelease))
+        }
         return pushNotifications
     }
     
@@ -864,6 +869,9 @@ class SettingsViewController: FormViewController, Themeable {
         }
         if notificationPreferences.kickedGroup {
             pushNotifications.insert(LabeledFormValue(value: "kickedGroup", label: L10n.Settings.EmailNotifications.bannedGroup))
+        }
+        if notificationPreferences.contentRelease {
+            pushNotifications.insert(LabeledFormValue(value: "contentRelease", label: L10n.Settings.PushNotifications.contentRelease))
         }
         return pushNotifications
     }

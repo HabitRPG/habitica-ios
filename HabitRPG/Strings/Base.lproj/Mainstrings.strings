@@ -349,6 +349,7 @@
 "settings.push_notifications.mention_party" = "@Mentions in Party";
 "settings.push_notifications.mention_joined_guild" = "@Mentions in joined Guilds";
 "settings.push_notifications.mention_unjoined_guild" = "@Mentions in not joined Guilds";
+"settings.push_notifications.content_release" = "Content releases + Events";
 "settings.add_email_and_password" = "Add Email and Password authentication";
 "settings.added_local_auth" = "Successfully added email and password";
 "settings.launch_screen" = "Launch screen";

@@ -22,6 +22,7 @@ class APIEmailNotifications: EmailNotificationsProtocol, Decodable {
     var unsubscribeFromAll: Bool = false
     var kickedGroup: Bool = false
     var subscriptionReminders: Bool = false
+    var contentRelease: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case giftedGems
@@ -36,6 +37,7 @@ class APIEmailNotifications: EmailNotificationsProtocol, Decodable {
         case unsubscribeFromAll
         case kickedGroup
         case subscriptionReminders
+        case contentRelease
     }
     
     required init(from decoder: Decoder) throws {
@@ -52,5 +54,6 @@ class APIEmailNotifications: EmailNotificationsProtocol, Decodable {
         unsubscribeFromAll = (try? values.decode(Bool.self, forKey: .unsubscribeFromAll)) ?? false
         kickedGroup = (try? values.decode(Bool.self, forKey: .kickedGroup)) ?? false
         subscriptionReminders = (try? values.decode(Bool.self, forKey: .subscriptionReminders)) ?? false
+        contentRelease = (try? values.decode(Bool.self, forKey: .contentRelease)) ?? false
     }
 }

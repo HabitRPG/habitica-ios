@@ -23,4 +23,5 @@ public protocol EmailNotificationsProtocol {
     var unsubscribeFromAll: Bool { get set }
     var kickedGroup: Bool { get set }
     var subscriptionReminders: Bool { get set }
+    var contentRelease: Bool { get set }
 }

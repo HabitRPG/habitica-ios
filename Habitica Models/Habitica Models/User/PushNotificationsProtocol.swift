@@ -25,4 +25,5 @@ public protocol PushNotificationsProtocol {
     var mentionJoinedGuild: Bool { get set }
     var mentionUnjoinedGuild: Bool { get set }
     var unsubscribeFromAll: Bool { get set }
+    var contentRelease: Bool { get set }
 }

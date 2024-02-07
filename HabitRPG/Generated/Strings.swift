@@ -2364,6 +2364,8 @@ public enum L10n {
     }
 
     public enum PushNotifications {
+      /// Content releases + Events
+      public static var contentRelease: String { return L10n.tr("Mainstrings", "settings.push_notifications.content_release") }
       /// Gifted Gems
       public static var giftedGems: String { return L10n.tr("Mainstrings", "settings.push_notifications.gifted_gems") }
       /// Gifted Subscription

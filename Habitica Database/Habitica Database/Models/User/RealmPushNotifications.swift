@@ -26,6 +26,7 @@ class RealmPushNotifications: Object, PushNotificationsProtocol {
     @objc dynamic var mentionParty: Bool = false
     @objc dynamic var mentionJoinedGuild: Bool = false
     @objc dynamic var mentionUnjoinedGuild: Bool = false
+    @objc dynamic var contentRelease: Bool = false
     
     override static func primaryKey() -> String {
         return "id"
@@ -48,5 +49,6 @@ class RealmPushNotifications: Object, PushNotificationsProtocol {
         mentionParty = pnProtocol.mentionParty
         mentionJoinedGuild = pnProtocol.mentionJoinedGuild
         mentionUnjoinedGuild = pnProtocol.mentionUnjoinedGuild
+        contentRelease = pnProtocol.contentRelease
     }
 }

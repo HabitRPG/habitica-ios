@@ -24,6 +24,7 @@ class RealmEmailNotifications: Object, EmailNotificationsProtocol {
     @objc dynamic var unsubscribeFromAll: Bool = false
     @objc dynamic var kickedGroup: Bool = false
     @objc dynamic var subscriptionReminders: Bool = false
+    @objc dynamic var contentRelease: Bool = false
     
     override static func primaryKey() -> String {
         return "id"
@@ -44,5 +45,6 @@ class RealmEmailNotifications: Object, EmailNotificationsProtocol {
         unsubscribeFromAll = pnProtocol.unsubscribeFromAll
         kickedGroup = pnProtocol.kickedGroup
         subscriptionReminders = pnProtocol.subscriptionReminders
+        contentRelease = pnProtocol.contentRelease
     }
 }
