@@ -143,18 +143,11 @@ struct PetBottomSheetView: View, Dismissable {
         )
         .sheet(isPresented: $isShowingFeeding, content: {
             NavigationView {
-                Group {
-                    if #available(macCatalyst 16.0, iOS 16.0, *) {
-                        FeedSheetView { food in
+                if #available(macCatalyst 16.0, iOS 16.0, *) {
+                    FeedSheetView { food in
                             self.feedPet(food: food)
                         }.presentationDetents([.medium, .large])
-                            .presentationDragIndicator(.visible)
-                    } else {
-                        FeedSheetView { food in
-                            self.feedPet(food: food)
-                        }
-                    }
-                }.navigationTitle(L10n.Titles.feedPet)
+                            .presentationDragIndicator(.visible).navigationTitle(L10n.Titles.feedPet)
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar(content: {
                         ToolbarItem(placement: .automatic) {
@@ -165,6 +158,21 @@ struct PetBottomSheetView: View, Dismissable {
                             }
                         }
                     })
+                } else {
+                    FeedSheetView { food in
+                            self.feedPet(food: food)
+                        }.navigationTitle(L10n.Titles.feedPet)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar(content: {
+                        ToolbarItem(placement: .automatic) {
+                            Button {
+                                isShowingFeeding = false
+                            } label: {
+                                Text(L10n.cancel)
+                            }
+                        }
+                    })
+                }
             }
         })
     }

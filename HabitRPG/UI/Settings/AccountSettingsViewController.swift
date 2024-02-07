@@ -333,6 +333,8 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         }, onDelete: {[weak self] password in
             navController.dismiss()
             self?.deleteAccount(password: password)
+        }, onForgotPassword: {[weak self] in
+            self?.forgotPasswordButtonPressed()
         }, isSocial: user?.authentication?.local?.email == nil))
         controller.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissController))
         navController.setViewControllers([controller], animated: false)
@@ -359,6 +361,8 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         }, onReset: {[weak self] password in
             navController.dismiss()
             self?.userRepository.resetAccount(password: password).observeCompleted {}
+        }, onForgotPassword: {[weak self] in
+            self?.forgotPasswordButtonPressed()
         }, isSocial: user?.authentication?.local?.email == nil))
         controller.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissController))
         navController.setViewControllers([controller], animated: false)
@@ -493,11 +497,43 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         textField.resignFirstResponder()
         return true
     }
+    
+    func forgotPasswordButtonPressed() {
+        let alertController = HabiticaAlertController(title: L10n.Login.emailPasswordLink)
+        
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        let textView = UITextView()
+        textView.text = L10n.Login.enterEmail
+        textView.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        textView.textColor = UIColor.gray100
+        textView.isEditable = false
+        textView.isScrollEnabled = false
+        textView.isSelectable = false
+        stackView.addArrangedSubview(textView)
+        let textField = UITextField()
+        textField.placeholder = L10n.email
+        textField.borderStyle = .roundedRect
+        textField.keyboardType = .emailAddress
+        textField.autocapitalizationType = .none
+        stackView.addArrangedSubview(textField)
+        alertController.contentView = stackView
+        
+        alertController.addAction(title: L10n.send, isMainAction: true) { _ in
+            self.userRepository.sendPasswordResetEmail(email: textField.text ?? "").observeCompleted {
+                ToastManager.show(text: L10n.Login.resetPasswordResponse, color: .green, duration: 4.0)
+            }
+        }
+        alertController.addCancelAction()
+        alertController.show()
+    }
 }
 
 struct ResetAccountView: View {
     let dismisser: () -> Void
     let onReset: (String) -> Void
+    let onForgotPassword: () -> Void
     let isSocial: Bool
     @State var text: String = ""
     
@@ -534,6 +570,13 @@ struct ResetAccountView: View {
                 HabiticaButtonUI(label: Text(L10n.Settings.resetAccount), color: Color(isValidInput() ? ThemeService.shared.theme.errorColor : ThemeService.shared.theme.dimmedColor)) {
                     onReset(text)
                 }
+                Text(L10n.Login.forgotPassword)
+                    .foregroundColor(Color(ThemeService.shared.theme.tintColor))
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .onTapGesture {
+                        onForgotPassword()
+                    }
+                    .padding(16)
             }.padding(16)
         }
     }
@@ -542,6 +585,7 @@ struct ResetAccountView: View {
 struct DeleteAccountView: View {
     let dismisser: () -> Void
     let onDelete: (String) -> Void
+    let onForgotPassword: () -> Void
     let isSocial: Bool
     @State var text: String = ""
     
@@ -576,6 +620,13 @@ struct DeleteAccountView: View {
                 HabiticaButtonUI(label: Text(L10n.Settings.deleteAccount), color: Color(isValidInput() ? ThemeService.shared.theme.errorColor : ThemeService.shared.theme.dimmedColor)) {
                     onDelete(text)
                 }
+                Text(L10n.Login.forgotPassword)
+                    .foregroundColor(Color(ThemeService.shared.theme.tintColor))
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .onTapGesture {
+                        onForgotPassword()
+                    }
+                    .padding(16)
             }.padding(16)
         }
     }

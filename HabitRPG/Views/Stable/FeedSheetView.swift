@@ -37,22 +37,29 @@ struct FeedSheetView: View {
     
     var body: some View {
         ScrollView {
-            LazyVStack(alignment: .leading, spacing: 0) {
-                ForEach(viewModel.food, id: \.key) { foodItem in
-                    HStack {
-                        PixelArtView(name: "Pet_Food_\(foodItem.key ?? "")").frame(width: 44, height: 44)
-                        Text(foodItem.text ?? "")
-                            .font(.system(.headline))
-                        Spacer()
-                        Text("\(viewModel.ownedFoods[foodItem.key ?? ""] ?? 0)")
-                            .font(.system(.subheadline))
-                    }
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 8)
-                    .background(Color(ThemeService.shared.theme.contentBackgroundColor))
-                    .onTapGesture {
-                        onFeed(foodItem)
-                        presentationMode.dismiss()
+            if viewModel.food.isEmpty {
+                VStack {
+                    Text(L10n.noX(L10n.food)).font(.headline)
+                    Text(L10n.Items.Empty.foodDescription).font(.body)
+                }
+            } else {
+                LazyVStack(alignment: .leading, spacing: 0) {
+                    ForEach(viewModel.food, id: \.key) { foodItem in
+                        HStack {
+                            PixelArtView(name: "Pet_Food_\(foodItem.key ?? "")").frame(width: 44, height: 44)
+                            Text(foodItem.text ?? "")
+                                .font(.system(.headline))
+                            Spacer()
+                            Text("\(viewModel.ownedFoods[foodItem.key ?? ""] ?? 0)")
+                                .font(.system(.subheadline))
+                        }
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 8)
+                        .background(Color(ThemeService.shared.theme.contentBackgroundColor))
+                        .onTapGesture {
+                            onFeed(foodItem)
+                            presentationMode.dismiss()
+                        }
                     }
                 }
             }
