@@ -1304,3 +1304,19 @@
 "quest_mechanics_pausing_description" = "If you’re struggling to complete your Dailies, you can pause damage from Settings for a break. This will prevent the Boss from hurting you or others, but also pause your own damage. Other members missed Dailies will still cause damage, so be careful out there!";
 "quest_mechanics_rage_title" = "Rage meters";
 "quest_mechanics_rage_description" = "Some difficult bosses have an orange Rage meter under their HP. This meter fills up when participants miss Dailies. When it fills completely, the boss will let out a fearsome attack that does extra damage!";
+
+"challenge_category.habitica_official" = "Habitica Official";
+"challenge_category.academics" = "Academics";
+"challenge_category.advocacy_causes" = "Advocacy + Causes";
+"challenge_category.creativity" = "Creativity";
+"challenge_category.entertainment" = "Entertainment";
+"challenge_category.finance" = "Finance";
+"challenge_category.health_fitness" = "Health + Fitness";
+"challenge_category.hobbies_occupations" = "Hobbies + Occupations";
+"challenge_category.location_based" = "Location-based";
+"challenge_category.mental_health" = "Mental Health + Self-Care";
+"challenge_category.getting_organized" = "Getting Organized";
+"challenge_category.recovery_support_groups" = "Recovery + Support Groups";
+"challenge_category.self_improvement" = "Self-Improvement";
+"challenge_category.spirituality" = "Spirituality";
+"challenge_category.time_management" = "Time-Management + Accountability";
