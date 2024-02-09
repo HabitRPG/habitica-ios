@@ -335,7 +335,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             self?.deleteAccount(password: password)
         }, onForgotPassword: {[weak self] in
             self?.forgotPasswordButtonPressed()
-        }, isSocial: user?.authentication?.local?.email == nil))
+        }, isSocial: user?.authentication?.hasLocalAuth != true))
         controller.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissController))
         navController.setViewControllers([controller], animated: false)
         present(navController, animated: true)
@@ -363,7 +363,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             self?.userRepository.resetAccount(password: password).observeCompleted {}
         }, onForgotPassword: {[weak self] in
             self?.forgotPasswordButtonPressed()
-        }, isSocial: user?.authentication?.local?.email == nil))
+        }, isSocial: user?.authentication?.hasLocalAuth != true))
         controller.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissController))
         navController.setViewControllers([controller], animated: false)
         present(navController, animated: true)
