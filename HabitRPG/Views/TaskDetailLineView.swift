@@ -246,8 +246,8 @@ class TaskDetailLineView: UIView {
         if reminderIconView.isHidden {
             reminderLabel.text = nil
         } else {
+            reminderIconView.tintColor = iconColor
             if task.type == "daily" {
-                reminderIconView.tintColor = iconColor
                 let now = Date()
                 let nextReminder = reminders.first { reminder in
                     guard let time = reminder.time else {
