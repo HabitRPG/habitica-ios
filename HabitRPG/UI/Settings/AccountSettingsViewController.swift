@@ -371,7 +371,9 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
     
     @objc
     func dismissController(_ view: UIView) {
-        view.nearestNavigationController?.dismiss()
+        if let controller = self.presentedViewController {
+            controller.dismiss(animated: true)
+        }
     }
 
     private func showEmailChangeAlert() {
