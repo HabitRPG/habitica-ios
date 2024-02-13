@@ -91,7 +91,7 @@
 /* (No Comment) */
 "member.member_since" = "成员自";
 /* (No Comment) */
-"menu.customize_avatar" = "自定角色";
+"menu.customize_avatar" = "自定义角色形象";
 /* (No Comment) */
 "menu.help_faq" = "帮助与FAQ";
 /* (No Comment) */
@@ -936,8 +936,8 @@
 "quests.unlock_invite" = "邀请朋友加入队伍可解锁";
 "settings.email_notifications.subscription_reminders" = "订阅提醒";
 "settings.email_notifications.banned_group" = "已被小组踢出";
-"settings.email_notifications.title" = "电邮";
-"settings.disable_all_emails" = "关闭电邮";
+"settings.email_notifications.title" = "电子邮箱";
+"settings.disable_all_emails" = "关闭邮件通知";
 "tasks.form.accessibility.attribute" = "属性为%@";
 "tasks.form.accessibility.set_attribute" = "修改属性为%@";
 "accessibility.viewX" = "查看%@";
@@ -966,7 +966,7 @@
 "food_singular" = "食物";
 "hatching_potion" = "孵化药水";
 "egg" = "蛋";
-"settings.added_local_auth" = "成功加入电邮和密码";
+"settings.added_local_auth" = "成功添加邮箱和密码";
 "onwards" = "继续";
 "unpin" = "取消固定";
 "pin" = "固定";
@@ -1197,7 +1197,7 @@
 "scheduled" = "计划";
 "armoire.drop_rate" = "魔法衣柜掉落几率";
 "armoire.food" = "你翻了魔法衣柜，并在里面发现了食物…它怎么在这里？";
-"armoire.enchanted_armoire_drop_rates" = "魔法衣橱掉落物品几率";
+"armoire.enchanted_armoire_drop_rates" = "魔法宝箱物品掉落率";
 "armoire.equipment" = "你在魔法衣柜里发现了一件稀有装备！";
 "tasks.tasks" = "任务";
 "tasks.form.reset_counter" = "重置计数";
@@ -1206,3 +1206,4 @@
 "inventory.avatar_mustache_customization" = "自定义角色上唇胡须";
 "inventory.avatar_beard_customization" = "自定义角色下唇胡须";
 "inventory.avatar_bangs_customization" = "自定义角色刘海";
+"share_avatar" = "分享头像";

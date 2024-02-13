@@ -6,8 +6,8 @@
 "delete" = "삭제";
 "back" = "뒤로";
 "all" = "모두";
-"weak" = "주";
-"strong" = "강한";
+"weak" = "약점";
+"strong" = "강점";
 "done" = "완료";
 "completed" = "완료";
 "name" = "이름";
