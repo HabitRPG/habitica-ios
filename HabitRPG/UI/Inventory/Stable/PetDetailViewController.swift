@@ -50,14 +50,33 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
         guard let pet = stableItem.pet else {
             return
         }
-        let sheet = HostingBottomSheetController(rootView: PetBottomSheetView(pet: pet,
-                                                                              trained: stableItem.trained,
-                                                                              canRaise: stableItem.canRaise,
-                                                                              isCurrentPet: user?.items?.currentPet == stableItem.pet?.key,
-                                                                              onEquip: {[weak self] in
-            self?.inventoryRepository.equip(type: "pet", key: pet.key ?? "").observeCompleted {}
-        }))
-        present(sheet, animated: true)
+        if #available(iOS 16.0, *) {
+            let sheet = HostingBottomSheetController(rootView: PetBottomSheetView(pet: pet,
+                                                                                  trained: stableItem.trained,
+                                                                                  canRaise: stableItem.canRaise,
+                                                                                  isCurrentPet: user?.items?.currentPet == stableItem.pet?.key,
+                                                                                  onEquip: {[weak self] in
+                self?.inventoryRepository.equip(type: "pet", key: pet.key ?? "").observeCompleted {}
+            }))
+            present(sheet, animated: true)
+        } else {
+            let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(Text(stableItem.pet?.text ?? ""), iconName: "stable_Pet-\(stableItem.pet?.key ?? "")", menuItems: {
+                if stableItem.trained > 0 && stableItem.pet?.type != "special" && stableItem.canRaise {
+                    BottomSheetMenuitem(title: L10n.Stable.feed) {[weak self] in
+                        self?.selectedPet = stableItem.pet
+                        DispatchQueue.main.async {
+                            self?.perform(segue: StoryboardSegue.Main.feedSegue)
+                        }
+                    }
+                }
+                if stableItem.trained > 0 {
+                    BottomSheetMenuitem(title: user?.items?.currentPet == stableItem.pet?.key ? L10n.unequip : L10n.equip) {[weak self] in
+                        self?.inventoryRepository.equip(type: "pet", key: stableItem.pet?.key ?? "").observeCompleted {}
+                    }
+                }
+            }))
+            present(sheet, animated: true)
+        }
     }
     
     private func showHatchingDialog(forStableItem item: PetStableItem) {

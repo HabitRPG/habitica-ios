@@ -289,6 +289,10 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                         alert.show()
                     }
                 }).start()
+            } else {
+                if #unavailable(iOS 16.0) {
+                    ToastManager.show(text: response?.message ?? "You fed your pet", color: .green)
+                }
             }
             if let userID = self?.currentUserId, let trained = response?.data {
                 self?.localRepository.updatePetTrained(userID: userID, key: pet.key ?? "", trained: trained, consumedFood: food)
