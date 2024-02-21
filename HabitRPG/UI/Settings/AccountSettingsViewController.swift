@@ -557,7 +557,7 @@ struct ResetAccountView: View {
                     Text(L10n.Settings.resetAccountDescription).font(.body).foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
                 }
                 if #available(iOS 15.0, *) {
-                    TextField(text: $text, prompt: Text(L10n.password)) {
+                    TextField(text: $text, prompt: Text(L10n.confirm)) {
                         
                     }
                     .padding(12)
@@ -609,7 +609,7 @@ struct DeleteAccountView: View {
                     Text(L10n.Settings.deleteAccountDescription).font(.body).foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
                 }
                 if #available(iOS 15.0, *) {
-                    TextField(text: $text, prompt: Text(L10n.password)) {
+                    TextField(text: $text, prompt: Text(L10n.confirm)) {
                     }
                     .padding(12)
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke().foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor)))
