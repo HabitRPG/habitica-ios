@@ -548,6 +548,7 @@ struct ResetAccountView: View {
     }
     
     var body: some View {
+        let _ = print(isSocial)
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
                 Text(L10n.Settings.resetAccountConfirm).font(.headline)
@@ -557,14 +558,12 @@ struct ResetAccountView: View {
                     Text(L10n.Settings.resetAccountDescription).font(.body).foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
                 }
                 if #available(iOS 15.0, *) {
-                    TextField(text: $text, prompt: Text(L10n.confirm)) {
-                        
+                    TextField(text: $text, prompt: Text(isSocial ? "RESET" : L10n.password)) {
                     }
                     .padding(12)
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke().foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor)))
                 } else {
                     TextField(text: $text) {
-                        
                     }
                     .padding(12)
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke().foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor)))
@@ -572,13 +571,15 @@ struct ResetAccountView: View {
                 HabiticaButtonUI(label: Text(L10n.Settings.resetAccount), color: Color(isValidInput() ? ThemeService.shared.theme.errorColor : ThemeService.shared.theme.dimmedColor)) {
                     onReset(text)
                 }
-                Text(L10n.Login.forgotPassword)
-                    .foregroundColor(Color(ThemeService.shared.theme.tintColor))
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .onTapGesture {
-                        onForgotPassword()
-                    }
-                    .padding(16)
+                if (!isSocial) {
+                    Text(L10n.Login.forgotPassword)
+                        .foregroundColor(Color(ThemeService.shared.theme.tintColor))
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .onTapGesture {
+                            onForgotPassword()
+                        }
+                        .padding(16)
+                }
             }.padding(16)
         }
     }
@@ -609,7 +610,7 @@ struct DeleteAccountView: View {
                     Text(L10n.Settings.deleteAccountDescription).font(.body).foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
                 }
                 if #available(iOS 15.0, *) {
-                    TextField(text: $text, prompt: Text(L10n.confirm)) {
+                    TextField(text: $text, prompt: Text(isSocial ? "DELETE" : L10n.password)) {
                     }
                     .padding(12)
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke().foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor)))
@@ -622,13 +623,15 @@ struct DeleteAccountView: View {
                 HabiticaButtonUI(label: Text(L10n.Settings.deleteAccount), color: Color(isValidInput() ? ThemeService.shared.theme.errorColor : ThemeService.shared.theme.dimmedColor)) {
                     onDelete(text)
                 }
-                Text(L10n.Login.forgotPassword)
-                    .foregroundColor(Color(ThemeService.shared.theme.tintColor))
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .onTapGesture {
-                        onForgotPassword()
-                    }
-                    .padding(16)
+                if (!isSocial) {
+                    Text(L10n.Login.forgotPassword)
+                        .foregroundColor(Color(ThemeService.shared.theme.tintColor))
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .onTapGesture {
+                            onForgotPassword()
+                        }
+                        .padding(16)
+                }
             }.padding(16)
         }
     }
