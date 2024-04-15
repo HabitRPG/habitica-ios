@@ -93,6 +93,8 @@ class NPCBannerView: UIView {
             self.npcNameLabel.text = "Leslie"
         case "timeTravelersShop":
             self.npcNameLabel.text = "Tyler & Vicky"
+        case "customizations":
+            self.npcNameLabel.text = "Felicitus"
         default:
             self.npcNameLabel.text = ""
         }

@@ -35,6 +35,7 @@ class MenuItem {
         case questShop
         case seasonalShop
         case timeTravelersShop
+        case customizationShop
         
         case party
         case questDetail
@@ -90,6 +91,7 @@ class MenuItem {
         MenuItem(key: .market, title: L10n.Locations.market, segue: StoryboardSegue.Main.showMarketSegue.rawValue),
         MenuItem(key: .questShop, title: L10n.Locations.questShop, segue: StoryboardSegue.Main.showQuestShopSegue.rawValue),
         MenuItem(key: .seasonalShop, title: L10n.Locations.seasonalShop, segue: StoryboardSegue.Main.showSeasonalShopSegue.rawValue, isHidden: true),
+        MenuItem(key: .customizationShop, title: L10n.Locations.customizations, segue: StoryboardSegue.Main.showCustomizationShopSegue.rawValue, isHidden: true),
         MenuItem(key: .timeTravelersShop, title: L10n.Locations.timeTravelersShop, segue: StoryboardSegue.Main.showTimeTravelersSegue.rawValue),
         MenuItem(key: .customizeAvatar, title: L10n.Menu.customizeAvatar, vcInstantiator: StoryboardScene.Main.avatarOverviewViewController.instantiate),
         MenuItem(key: .equipment, title: L10n.Titles.equipment, vcInstantiator: StoryboardScene.Main.equipmentOverviewViewController.instantiate),
@@ -202,7 +204,7 @@ class MainMenuViewController: BaseTableViewController {
                 menuItem(withKey: .subscription).subtitle = L10n.getMoreHabitica
             }
             
-            if !configRepository.enableIPadUI() {
+            if !configRepository.enableIPadUI() && configRepository.testingLevel != .debug && configRepository.testingLevel != .simulator {
                 let customMenu = configRepository.array(variable: .customMenu)
                 // swiftlint:disable:next empty_count
                 if customMenu.count > 0 {
@@ -386,6 +388,11 @@ class MainMenuViewController: BaseTableViewController {
                     self?.updatePromoCells()
                 })
         }
+        
+        if configRepository.bool(variable: .enableCustomizationShop) {
+            menuItem(withKey: .customizationShop).isHidden = false
+            tableView.reloadData()
+        }
     }
     
     private func updatePromoCells() {
@@ -480,7 +487,8 @@ class MainMenuViewController: BaseTableViewController {
                 menuItem(withKey: .market),
                 menuItem(withKey: .questShop),
                 menuItem(withKey: .seasonalShop),
-                menuItem(withKey: .timeTravelersShop)
+                menuItem(withKey: .timeTravelersShop),
+                menuItem(withKey: .customizationShop)
             ]),
             MenuSection(key: .inventory, title: L10n.Menu.inventory, iconAsset: Asset.iconInventory, items: [
                 menuItem(withKey: .customizeAvatar),
@@ -703,6 +711,8 @@ class MainMenuViewController: BaseTableViewController {
             (segue.destination as? ShopViewController)?.shopIdentifier = Constants.SeasonalShopKey
         } else if segue.identifier == StoryboardSegue.Main.showTimeTravelersSegue.rawValue {
             (segue.destination as? ShopViewController)?.shopIdentifier = Constants.TimeTravelersShopKey
+        } else if segue.identifier == StoryboardSegue.Main.showCustomizationShopSegue.rawValue {
+            (segue.destination as? ShopViewController)?.shopIdentifier = Constants.CustomizationShopKey
         } else if segue.identifier == StoryboardSegue.Main.showUserProfileSegue.rawValue {
             (segue.destination as? UserProfileViewController)?.username = user?.username
             (segue.destination as? UserProfileViewController)?.userID = user?.id

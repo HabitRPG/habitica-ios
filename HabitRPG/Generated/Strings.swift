@@ -1914,6 +1914,8 @@ public enum L10n {
   }
 
   public enum Locations {
+    /// Customizations
+    public static var customizations: String { return L10n.tr("Mainstrings", "locations.customizations") }
     /// Market
     public static var market: String { return L10n.tr("Mainstrings", "locations.market") }
     /// Quest Shop
