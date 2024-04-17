@@ -73,6 +73,9 @@ public class APIInAppReward: InAppRewardProtocol, Decodable {
         pinType = try? values.decode(String.self, forKey: .pinType)
         purchaseType = try? values.decode(String.self, forKey: .purchaseType)
         imageName = try? values.decode(String.self, forKey: .imageName)
+        if imageName?.contains(" ") == true {
+            imageName = imageName?.components(separatedBy: " ")[1]
+        }
         text = try? values.decode(String.self, forKey: .text)
         notes = try? values.decode(String.self, forKey: .notes)
         type = try? values.decode(String.self, forKey: .type)

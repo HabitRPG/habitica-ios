@@ -52,7 +52,9 @@ extension Avatar {
     }
     
     func getViewDictionary(showsBackground: Bool, showsMount: Bool, showsPet: Bool, isFainted: Bool, ignoreSleeping: Bool) -> [String: Bool] {
-        if isValid() == false { return [:] }
+        if isValid() == false {
+            return [:]
+        }
         let hasNoVisualBuff = !isValueValid(visualBuff)
         return [
             "background": showsBackground && isValueValid(background),

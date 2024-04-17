@@ -41,7 +41,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @objc public weak var shopViewController: ShopViewController?
     
     private var bulkView: HRPGBulkPurchaseView?
-    var itemView: HRPGSimpleShopItemView?
+    var itemView: UIView?
     
     private var isPurchasing = false {
         didSet {
@@ -56,7 +56,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             
             if reward?.isValid == true && reward?.key == "gem" {
                 bulkView?.maxValue = user?.purchased?.subscriptionPlan?.gemsRemaining ?? 0
-                itemView?.setGemsLeft(user?.purchased?.subscriptionPlan?.gemsRemaining ?? 0,
+                (itemView as? HRPGSimpleShopItemView)?.setGemsLeft(user?.purchased?.subscriptionPlan?.gemsRemaining ?? 0,
                                       gemsTotal: user?.purchased?.subscriptionPlan?.gemCapTotal ?? 0)
             }
         }
@@ -109,6 +109,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         super.viewWillAppear(animated)
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
+            (self?.itemView as? AvatarShopItemView)?.setAvatar(user)
         }).start())
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -176,7 +177,11 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     func setupItem() {
         if let contentView = closableShopModal.shopModalBgView.contentView {
             if let reward = self.reward {
-                itemView = HRPGSimpleShopItemView(withReward: reward, withUser: user, for: contentView)
+                if reward.purchaseType == "customization" || reward.purchaseType == "backgrounds" {
+                    itemView = AvatarShopItemView(withReward: reward, withUser: user, for: contentView)
+                } else {
+                    itemView = HRPGSimpleShopItemView(withReward: reward, withUser: user, for: contentView)
+                }
             }
             if shopIdentifier == nil {
                 isPinned = true

@@ -61,6 +61,11 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         if let identifier = shopIdentifier {
             bannerView.setSprites(identifier: identifier)
             bannerView.setNPCName(identifier: identifier)
+            
+            if identifier == "customizations" {
+                bannerView.setNotes(L10n.Shops.customizationNotes)
+                bannerView.notesLabel.textColor = UIColor("#7F3300FF")
+            }
         }
         
         setupNavBar()

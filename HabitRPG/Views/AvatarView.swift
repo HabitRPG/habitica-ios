@@ -29,6 +29,12 @@ class AvatarView: UIView {
         }
     }
     
+    var swappedDict: [String: String] = [:] {
+        didSet {
+            updateView()
+        }
+    }
+    
     @IBInspectable var showBackground: Bool = true
     @IBInspectable var showMount: Bool = true
     @IBInspectable var showPet: Bool = true
@@ -184,6 +190,11 @@ class AvatarView: UIView {
             return
         }
         viewDictionary = avatar.getViewDictionary(showsBackground: showBackground, showsMount: showMount, showsPet: showPet, isFainted: isFainted, ignoreSleeping: ignoreSleeping)
+        
+        for entry in swappedDict {
+            viewDictionary[entry.key] = true
+            nameDictionary[entry.key] = entry.value
+        }
 
         AvatarView.viewOrder.enumerated().forEach({ (index, type) in
             if viewDictionary[type] ?? false {

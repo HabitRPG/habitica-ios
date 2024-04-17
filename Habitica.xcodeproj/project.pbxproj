@@ -104,6 +104,8 @@
 		291448A8208A3DD200F3A6B5 /* CustomizationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448A7208A3DD200F3A6B5 /* CustomizationRepository.swift */; };
 		2914943A2731553300DF2153 /* NumberPickerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291494392731553300DF2153 /* NumberPickerFormView.swift */; };
 		2914943C273163AF00DF2153 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914943B273163AF00DF2153 /* SceneDelegate.swift */; };
+		291666412BCFD3490068FCBF /* AvatarShopItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291666402BCFD3490068FCBF /* AvatarShopItemView.xib */; };
+		291666432BCFD5E70068FCBF /* AvatarShopItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291666422BCFD5E70068FCBF /* AvatarShopItemView.swift */; };
 		2919FDD52090CF900096A53B /* InboxMessagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDD42090CF900096A53B /* InboxMessagesDataSource.swift */; };
 		2919FDDD2091D5370096A53B /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDDC2091D5370096A53B /* UserManager.swift */; };
 		2919FDDF2091D87A0096A53B /* FaintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDDE2091D87A0096A53B /* FaintViewController.swift */; };
@@ -780,6 +782,8 @@
 		291448A7208A3DD200F3A6B5 /* CustomizationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationRepository.swift; sourceTree = "<group>"; };
 		291494392731553300DF2153 /* NumberPickerFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerFormView.swift; sourceTree = "<group>"; };
 		2914943B273163AF00DF2153 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = Utilities/SceneDelegate.swift; sourceTree = "<group>"; };
+		291666402BCFD3490068FCBF /* AvatarShopItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvatarShopItemView.xib; sourceTree = "<group>"; };
+		291666422BCFD5E70068FCBF /* AvatarShopItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarShopItemView.swift; sourceTree = "<group>"; };
 		2919FDD42090CF900096A53B /* InboxMessagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxMessagesDataSource.swift; sourceTree = "<group>"; };
 		2919FDDC2091D5370096A53B /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		2919FDDE2091D87A0096A53B /* FaintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaintViewController.swift; sourceTree = "<group>"; };
@@ -2074,6 +2078,8 @@
 				D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */,
 				29AAE55624508FC600220DB1 /* HRPGBulkPurchaseView.swift */,
 				29AAE5582450934C00220DB1 /* HRPGBulkPurchaseView.xib */,
+				291666422BCFD5E70068FCBF /* AvatarShopItemView.swift */,
+				291666402BCFD3490068FCBF /* AvatarShopItemView.xib */,
 			);
 			name = Shop;
 			sourceTree = "<group>";
@@ -3127,6 +3133,7 @@
 				29B388E11EF2BB7600A72950 /* YesterdailyChecklistItem.xib in Resources */,
 				498E4CFC1FA17B9E006933FF /* ChallengeCreatorTableViewCell.xib in Resources */,
 				D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */,
+				291666412BCFD3490068FCBF /* AvatarShopItemView.xib in Resources */,
 				D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */,
 				49DCB7B01F3923F20079FDD0 /* HRPGSimpleShopItemView.xib in Resources */,
 				D91CCAD01BCF11CC001C6A0C /* UserTopHeader.xib in Resources */,
@@ -3607,6 +3614,7 @@
 				29BEE73F252E2CC300D456F8 /* DailiesCount.intentdefinition in Sources */,
 				49EE3FD8201908AB00CD7608 /* ChallengeButtonStyleProvider.swift in Sources */,
 				D9CE90491E4DCF7D00702578 /* SubscriptionDetailView.swift in Sources */,
+				291666432BCFD5E70068FCBF /* AvatarShopItemView.swift in Sources */,
 				2927024324E2D83700BCAA77 /* HallOfContributorsViewController.swift in Sources */,
 				2932821A1F39E28000D42961 /* TypingTextViewController.swift in Sources */,
 				498E4CF71FA17B7F006933FF /* ChallengeButtonTableViewCell.swift in Sources */,

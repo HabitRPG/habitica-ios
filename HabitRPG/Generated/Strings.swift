@@ -2433,6 +2433,8 @@ public enum L10n {
   }
 
   public enum Shops {
+    /// Want to change up your looks? You came to the right place! We get new options all the time.
+    public static var customizationNotes: String { return L10n.tr("Mainstrings", "shops.customization_notes") }
     /// You can only purchase gear for your current class
     public static var otherClassDisclaimer: String { return L10n.tr("Mainstrings", "shops.other_class_disclaimer") }
     /// You already have all your class equipment! More will be released during the Grand Galas, near the solstices and equinoxes.

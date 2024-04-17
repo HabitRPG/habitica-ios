@@ -27,7 +27,7 @@ public extension CustomizationProtocol {
         }
         switch type {
         case "shirt":
-            return "\(preferences?.size ?? "")_shirt_\(key)"
+            return "\(preferences?.size ?? "slim")_shirt_\(key)"
         case "skin":
             return "skin_\(key)"
         case "background":

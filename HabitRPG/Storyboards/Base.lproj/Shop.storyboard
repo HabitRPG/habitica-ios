@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -139,13 +139,6 @@
                                         <constraint firstItem="Q9N-kS-Lun" firstAttribute="leading" secondItem="JB4-vT-m2S" secondAttribute="trailing" constant="8" id="p7E-y6-Dkn"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ODk-l2-KIH">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="0.5"/>
-                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="0.5" id="Rq4-Pi-wj0"/>
-                                    </constraints>
-                                </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jif-V8-AXN">
                                     <rect key="frame" x="8" y="49" width="359" height="18"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -159,11 +152,8 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="ODk-l2-KIH" secondAttribute="trailing" id="3FT-Pf-fkR"/>
                                 <constraint firstAttribute="trailingMargin" secondItem="jif-V8-AXN" secondAttribute="trailing" id="5Mp-g1-nWV"/>
                                 <constraint firstItem="5ba-rq-bH5" firstAttribute="top" secondItem="70u-KL-mp3" secondAttribute="top" id="68f-8E-lG0"/>
-                                <constraint firstItem="ODk-l2-KIH" firstAttribute="top" secondItem="70u-KL-mp3" secondAttribute="top" id="Dwl-zB-s1v"/>
-                                <constraint firstItem="ODk-l2-KIH" firstAttribute="leading" secondItem="70u-KL-mp3" secondAttribute="leading" id="Ieo-Hs-6lj"/>
                                 <constraint firstItem="jif-V8-AXN" firstAttribute="bottom" secondItem="70u-KL-mp3" secondAttribute="bottomMargin" id="Iug-Xf-Jsk"/>
                                 <constraint firstItem="jif-V8-AXN" firstAttribute="leading" secondItem="70u-KL-mp3" secondAttribute="leadingMargin" id="UTn-I9-aXU"/>
                                 <constraint firstAttribute="trailing" secondItem="5ba-rq-bH5" secondAttribute="trailing" constant="8" id="hXd-Cg-l9x"/>
