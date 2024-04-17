@@ -15,7 +15,7 @@ class NPCBannerView: UIView {
     @IBOutlet weak var notesLabel: UILabel!
     @IBOutlet weak var npcNameLabel: UILabel!
     @IBOutlet weak var plaqueImageView: UIImageView!
-    @IBOutlet weak var gradientView: GradientView!
+    @IBOutlet weak var gradientView: UIImageView!
     @IBOutlet weak var bgWhiteView: UILabel!
     @objc var shop: ShopProtocol? {
         didSet {
@@ -44,6 +44,8 @@ class NPCBannerView: UIView {
                 UIView.AutoresizingMask.flexibleHeight
             ]
             
+            self.gradientView.image = Asset.npcGradient.image.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImage.ResizingMode.tile)
+
             addSubview(view)
             
             plaqueImageView.image = UIImage(named: "Nameplate")?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 21, bottom: 0, right: 21))
@@ -53,11 +55,10 @@ class NPCBannerView: UIView {
     @objc
     func applyTheme(backgroundColor: UIColor) {
         let theme = ThemeService.shared.theme
-        gradientView.startColor = backgroundColor.withAlphaComponent(0.8)
-        gradientView.endColor = backgroundColor
         notesLabel.backgroundColor = backgroundColor
         notesLabel.textColor = theme.primaryTextColor
         bgWhiteView.backgroundColor = backgroundColor
+        self.gradientView.tintColor = backgroundColor
         self.backgroundColor = backgroundColor
     }
     
