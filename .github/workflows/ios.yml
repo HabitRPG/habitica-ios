@@ -10,7 +10,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Prepare
         run: ./.github/prepare-workflow
       - name: Run lint
@@ -23,12 +23,10 @@ jobs:
           - "iPhone 12"
           - "iPad Pro (9.7-inch)"
         os-version:
-          - "15.8"
-          - "16.7"
-          - "17.4"
+          - "16.2"
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Prepare
         run: ./.github/prepare-workflow
       - name: Build
@@ -41,12 +39,10 @@ jobs:
           - "iPhone 12"
           - "iPad Pro (9.7-inch)"
         os-version:
-          - "15.8"
-          - "16.7"
-          - "17.4"
+          - "16.2"
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Prepare
         run: ./.github/prepare-workflow
       - name: Build
@@ -61,12 +57,10 @@ jobs:
           - "iPhone 13 Pro Max"
           - "iPad Pro (9.7-inch)"
         os-version:
-          - "15.8"
-          - "16.7"
-          - "17.4"
+          - "16.2"
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Prepare
         run: ./.github/prepare-workflow
       - name: Build
