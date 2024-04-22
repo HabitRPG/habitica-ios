@@ -205,7 +205,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             headerView.gearCategoryButton.isHidden = true
             headerView.otherClassDisclaimer.isHidden = true
             if indexPath.section == 0 && needsGearSection {
-                headerView.titleLabel.text = L10n.Equipment.classEquipment
+                headerView.titleLabel.text = L10n.Equipment.classEquipment.localizedUppercase
                 headerView.gearCategoryLabel.text = ifWizardConvertToMage(selectedGearCategory)?.capitalized
                 headerView.gearCategoryButton.isHidden = false
                 headerView.onGearCategoryLabelTapped = {[weak self] in
@@ -214,9 +214,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 headerView.otherClassDisclaimer.isHidden = userClass == selectedInternalGearCategory || selectedInternalGearCategory == "none"
                 headerView.otherClassDisclaimer.text = L10n.Shops.otherClassDisclaimer
             } else {
-                headerView.titleLabel.text = titleFor(section: indexPath.section)
-                headerView.titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
+                headerView.titleLabel.text = titleFor(section: indexPath.section)?.localizedUppercase
             }
+            headerView.titleLabel.textColor = ThemeService.shared.theme.ternaryTextColor
             headerView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
             return headerView
         }

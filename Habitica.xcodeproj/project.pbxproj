@@ -4028,7 +4028,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 3.9.2;
+				MARKETING_VERSION = 3.10;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -4174,7 +4174,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.9.2;
+				MARKETING_VERSION = 3.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4215,7 +4215,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.9.2;
+				MARKETING_VERSION = 3.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -4258,7 +4258,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.9.2;
+				MARKETING_VERSION = 3.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4385,7 +4385,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 3.9.2;
+				MARKETING_VERSION = 3.10;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -4531,7 +4531,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.9.2;
+				MARKETING_VERSION = 3.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4572,7 +4572,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.9.2;
+				MARKETING_VERSION = 3.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -4615,7 +4615,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.9.2;
+				MARKETING_VERSION = 3.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4752,7 +4752,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.9.2;
+				MARKETING_VERSION = 3.10;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4798,7 +4798,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.9.2;
+				MARKETING_VERSION = 3.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4838,7 +4838,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.9.2;
+				MARKETING_VERSION = 3.10;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -4880,7 +4880,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.9.2;
+				MARKETING_VERSION = 3.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -4920,7 +4920,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.9.2;
+				MARKETING_VERSION = 3.10;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4964,7 +4964,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.9.2;
+				MARKETING_VERSION = 3.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -5268,7 +5268,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 3.9.2;
+				MARKETING_VERSION = 3.10;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -5341,7 +5341,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 3.9.2;
+				MARKETING_VERSION = 3.10;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",

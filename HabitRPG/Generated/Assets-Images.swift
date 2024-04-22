@@ -237,7 +237,6 @@ internal enum Asset {
   internal static let notificationsClose = ImageAsset(name: "notifications_close")
   internal static let notificationsMystery = ImageAsset(name: "notifications_mystery")
   internal static let notificationsStats = ImageAsset(name: "notifications_stats")
-  internal static let npcGradient1 = ImageAsset(name: "npc_gradient 1")
   internal static let npcGradient = ImageAsset(name: "npc_gradient")
   internal static let onboardingDoneArt = ImageAsset(name: "onboardingDoneArt")
   internal static let onboardingGoldLeft = ImageAsset(name: "onboardingGoldLeft")

@@ -18,18 +18,18 @@ class CustomizationHeaderView: UICollectionReusableView {
     func configure(customizationSet: CustomizationSetProtocol, isBackground: Bool) {
         if isBackground {
             if customizationSet.key?.contains("incentive") == true {
-                label.text = L10n.plainBackgrounds
+                label.text = L10n.plainBackgrounds.localizedUppercase
             } else if customizationSet.key?.contains("timeTravel") == true {
-                label.text = L10n.timeTravelBackgrounds
+                label.text = L10n.timeTravelBackgrounds.localizedUppercase
             } else if customizationSet.key?.contains("event") == true {
-                label.text = L10n.eventBackgrounds
+                label.text = L10n.eventBackgrounds.localizedUppercase
             } else if let key = customizationSet.key?.replacingOccurrences(of: "backgrounds", with: "") {
                 let index = key.index(key.startIndex, offsetBy: 2)
                 let month = Int(key[..<index]) ?? 0
                 let year = Int(key[index...]) ?? 0
                 let dateFormatter = DateFormatter()
                 let monthName = month > 0 ? dateFormatter.monthSymbols[month-1] : ""
-                label.text = "\(monthName) \(year)"
+                label.text = "\(monthName) \(year)".localizedUppercase
             }
         } else {
             label.text = customizationSet.text?.uppercased()

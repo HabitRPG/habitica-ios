@@ -17,18 +17,24 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     private let userRepository = UserRepository()
     private let inventoryRepository = InventoryRepository()
     private let customizationRepository = CustomizationRepository()
+    private let configRepository = ConfigRepository.shared
     var customizationGroup: String?
     var customizationType: String?
+    
+    private var newCustomizationLayout = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator?.followScrollView = false
+        
+        newCustomizationLayout = configRepository.bool(variable: .enableCustomizationShop)
+        
         if let type = customizationType {
             if type == "eyewear" || type == "headAccessory" || type == "back" || type == "animalTails" {
                 gearDataSource = AvatarGearDetailViewDataSource(type: type)
                 gearDataSource?.collectionView = collectionView
             } else {
-                customizationDataSource = AvatarDetailViewDataSource(type: type, group: customizationGroup)
+                customizationDataSource = AvatarDetailViewDataSource(type: type, group: customizationGroup, newCustomizationLayout: newCustomizationLayout)
                 customizationDataSource?.collectionView = collectionView
                 
                 customizationDataSource?.purchaseSet = {[weak self] set in
@@ -56,7 +62,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let width = 80
         let viewWidth = Int(collectionView.frame.size.width)
-        var count = viewWidth / (width + 10)
+        var count = 3
         if let dataSource = gearDataSource {
             let inSection = dataSource.collectionView(collectionView, numberOfItemsInSection: section)
             if inSection < count {
@@ -67,9 +73,6 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
             if inSection < count {
                 count = inSection
             }
-        }
-        if customizationType == "background" {
-            count = 3
         }
         let totalWidth = width * count + (10 * (count-1))
         let spacing = CGFloat(viewWidth - totalWidth) / 2

@@ -16,6 +16,7 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
     
     var customizationGroup: String?
     var customizationType: String
+    var newCustomizationLayout: Bool = false
     
     var purchaseSet: ((CustomizationSetProtocol) -> Void)?
     
@@ -28,9 +29,10 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
     
     private var gemCount = 0
     
-    init(type: String, group: String?) {
+    init(type: String, group: String?, newCustomizationLayout: Bool) {
         self.customizationType = type
         self.customizationGroup = group
+        self.newCustomizationLayout = newCustomizationLayout
         super.init()
         
         disposable.add(customizationRepository.getCustomizations(type: customizationType, group: customizationGroup)
@@ -84,6 +86,38 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         }
     }
     
+    func getCustomizationTitle() -> String {
+        switch customizationType {
+        case "shirt":
+            return L10n.Avatar.shirts
+        case "skin":
+            return L10n.Avatar.skins
+        case "chair":
+            return L10n.Avatar.wheelchairs
+        case "background":
+            return L10n.Avatar.backgrounds
+        case "hair":
+            switch customizationGroup {
+            case "bangs":
+                return L10n.Avatar.bangs
+            case "base":
+                return L10n.Avatar.hairStyles
+            case "mustache":
+                return L10n.Avatar.mustaches
+            case "beard":
+                return L10n.Avatar.beards
+            case "color":
+                return L10n.Avatar.hairColors
+            case "flower":
+                return L10n.Avatar.extras
+            default:
+                return ""
+            }
+        default:
+            return ""
+        }
+    }
+    
     func owns(customization: CustomizationProtocol) -> Bool {
         return ownedCustomizations.contains(where: { (ownedCustomization) -> Bool in
             return ownedCustomization.key == customization.key
@@ -94,14 +128,23 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         customizationSets.removeAll()
         sections.removeAll()
         sections.append(ItemSection<CustomizationProtocol>())
+        sections[0].title = getCustomizationTitle()
         for customization in customizations {
-            if (customization.price > 0 && !customization.isPurchasable)
-                || customization.key?.lowercased().contains("birthday_bash") == true {
-                if !owns(customization: customization) {
+            if newCustomizationLayout {
+                if customization.price > 0 && !owns(customization: customization) {
                     continue
                 }
+            } else {
+                if (customization.price > 0 && !customization.isPurchasable)
+                    || customization.key?.lowercased().contains("birthday_bash") == true {
+                    if !owns(customization: customization) {
+                        continue
+                    }
+                }
             }
-            if let set = customization.set {
+            if let set = customization.set, (
+                customizationType == "background" && (set.key?.contains("incentive") == true || set.key?.contains("timeTravel") == true)
+            ) || customizationType != "background" {
                 if let index = sections.firstIndex(where: { (section) -> Bool in
                     return section.key == set.key
                 }) {
@@ -203,6 +246,9 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         } else if let headerView = view as? CustomizationHeaderView {
             if let set = customizationSets[section.key ?? ""] {
                 headerView.configure(customizationSet: set, isBackground: customizationType == "background")
+            } else {
+                headerView.label.text = section.title?.localizedUppercase
+                headerView.label.textColor = ThemeService.shared.theme.quadTextColor
             }
         }
         

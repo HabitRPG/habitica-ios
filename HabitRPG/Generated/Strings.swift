@@ -1445,10 +1445,14 @@ public enum L10n {
     public static var animalTails: String { return L10n.tr("Mainstrings", "avatar.animal_tails") }
     /// Background
     public static var background: String { return L10n.tr("Mainstrings", "avatar.background") }
+    /// Backgrounds
+    public static var backgrounds: String { return L10n.tr("Mainstrings", "avatar.backgrounds") }
     /// Bangs
     public static var bangs: String { return L10n.tr("Mainstrings", "avatar.bangs") }
     /// Beard
     public static var beard: String { return L10n.tr("Mainstrings", "avatar.beard") }
+    /// Beards
+    public static var beards: String { return L10n.tr("Mainstrings", "avatar.beards") }
     /// Body
     public static var body: String { return L10n.tr("Mainstrings", "avatar.body") }
     /// Extras
@@ -1461,20 +1465,34 @@ public enum L10n {
     public static var hair: String { return L10n.tr("Mainstrings", "avatar.hair") }
     /// Hair Style
     public static var hairStyle: String { return L10n.tr("Mainstrings", "avatar.hair_style") }
+    /// Hair Styles
+    public static var hairStyles: String { return L10n.tr("Mainstrings", "avatar.hair_styles") }
     /// Hair Color
     public static var hairColor: String { return L10n.tr("Mainstrings", "avatar.hairColor") }
+    /// Hair Colors
+    public static var hairColors: String { return L10n.tr("Mainstrings", "avatar.hairColors") }
     /// Head
     public static var head: String { return L10n.tr("Mainstrings", "avatar.head") }
     /// Mustache
     public static var mustache: String { return L10n.tr("Mainstrings", "avatar.mustache") }
+    /// Mustaches
+    public static var mustaches: String { return L10n.tr("Mainstrings", "avatar.mustaches") }
     /// Shirt
     public static var shirt: String { return L10n.tr("Mainstrings", "avatar.shirt") }
+    /// Shirts
+    public static var shirts: String { return L10n.tr("Mainstrings", "avatar.shirts") }
     /// Skin
     public static var skin: String { return L10n.tr("Mainstrings", "avatar.skin") }
     /// Skin Color
     public static var skinColor: String { return L10n.tr("Mainstrings", "avatar.skin_color") }
+    /// Skin Colors
+    public static var skinColors: String { return L10n.tr("Mainstrings", "avatar.skin_colors") }
+    /// Skins
+    public static var skins: String { return L10n.tr("Mainstrings", "avatar.skins") }
     /// Wheelchair
     public static var wheelchair: String { return L10n.tr("Mainstrings", "avatar.wheelchair") }
+    /// Wheelchairs
+    public static var wheelchairs: String { return L10n.tr("Mainstrings", "avatar.wheelchairs") }
   }
 
   public enum ChallengeCategory {
