@@ -17,26 +17,40 @@ jobs:
         run: swiftlint --reporter "emoji"
   build:
     runs-on: macos-latest
+    strategy:
+      matrix:
+        name:
+          - "iPhone 12"
+          - "iPad Pro (9.7-inch)"
+        os-version:
+          - "15.8"
+          - "16.7"
+          - "17.4"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Prepare
         run: ./.github/prepare-workflow
       - name: Build
-        run: xcodebuild build -scheme Habitica -destination "platform=iOS Simulator,name=iPhone 12,OS=\16.2"
+        run: xcodebuild build -scheme Habitica -destination "platform=iOS Simulator,name=${{ matrix.name }},OS=${{ matrix.os-version }}"
   unit-tests:
     runs-on: macos-latest
     strategy:
       matrix:
-        destination:
-          - "platform=iOS Simulator,name=iPhone 14,OS=16.2"
+        name:
+          - "iPhone 12"
+          - "iPad Pro (9.7-inch)"
+        os-version:
+          - "15.8"
+          - "16.7"
+          - "17.4"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Prepare
         run: ./.github/prepare-workflow
       - name: Build
-        run: xcodebuild clean test -scheme 'Habitica' -destination '${{ matrix.destination }}' -testPlan "Unit Tests" -showBuildTimingSummary
+        run: xcodebuild clean test -scheme 'Habitica' -destination 'platform=iOS Simulator,name=${{ matrix.name }},OS=${{ matrix.os-version }}' -testPlan "Unit Tests" -showBuildTimingSummary
   ui-tests:
     runs-on: macos-latest
     strategy:
@@ -47,7 +61,9 @@ jobs:
           - "iPhone 13 Pro Max"
           - "iPad Pro (9.7-inch)"
         os-version:
-          - "16.2"
+          - "15.8"
+          - "16.7"
+          - "17.4"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
