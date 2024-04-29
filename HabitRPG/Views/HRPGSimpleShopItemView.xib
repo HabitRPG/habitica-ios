@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,20 +28,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="orr-Zt-z3s" customClass="AnimatedImageView" customModule="Kingfisher">
-                    <rect key="frame" x="142.5" y="24" width="100" height="100"/>
+                    <rect key="frame" x="142.5" y="28" width="100" height="100"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="7Sb-S5-mYO"/>
                         <constraint firstAttribute="height" constant="100" id="DRU-cT-F48"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQH-qG-Ds5">
-                    <rect key="frame" x="16" y="136" width="353" height="20.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQH-qG-Ds5">
+                    <rect key="frame" x="16" y="140" width="353" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LtK-tD-fxk">
-                    <rect key="frame" x="16" y="168.5" width="353" height="18"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LtK-tD-fxk">
+                    <rect key="frame" x="16" y="172.5" width="353" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.40784313725490196" green="0.38431372549019605" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -91,7 +91,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="orr-Zt-z3s" firstAttribute="top" secondItem="cA4-aX-MqB" secondAttribute="bottom" constant="8" id="6dm-jx-AGc"/>
+                <constraint firstItem="orr-Zt-z3s" firstAttribute="top" secondItem="cA4-aX-MqB" secondAttribute="bottom" constant="12" id="6dm-jx-AGc"/>
                 <constraint firstAttribute="trailing" secondItem="SQH-qG-Ds5" secondAttribute="trailing" constant="16" id="EEy-9F-h28"/>
                 <constraint firstItem="SQH-qG-Ds5" firstAttribute="top" secondItem="orr-Zt-z3s" secondAttribute="bottom" constant="12" id="EMX-35-8Ss"/>
                 <constraint firstAttribute="bottom" secondItem="Z3S-dm-kO2" secondAttribute="bottom" id="Gcb-JW-TZW"/>
@@ -100,7 +100,6 @@
                 <constraint firstItem="orr-Zt-z3s" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QVm-hH-UQD"/>
                 <constraint firstItem="cA4-aX-MqB" firstAttribute="top" secondItem="YEq-hb-9GU" secondAttribute="bottom" constant="4" id="QW5-IA-dfx"/>
                 <constraint firstAttribute="trailing" secondItem="YEq-hb-9GU" secondAttribute="trailing" id="UAx-gj-LiN"/>
-                <constraint firstItem="Z3S-dm-kO2" firstAttribute="top" secondItem="LtK-tD-fxk" secondAttribute="bottom" constant="12.5" id="Y2K-bM-Nxq"/>
                 <constraint firstAttribute="trailing" secondItem="cA4-aX-MqB" secondAttribute="trailing" constant="16" id="YPW-kg-Lr3"/>
                 <constraint firstItem="cA4-aX-MqB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="afS-9q-XXF"/>
                 <constraint firstItem="SQH-qG-Ds5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="e00-uc-UfS"/>

@@ -8,8 +8,14 @@ public enum L10n {
   /// Update bundle if you need to change app language
   static var bundle: Bundle?
 
+  /// 1 Day
+  public static var _1Day: String { return L10n.tr("Mainstrings", "1_day") }
+  /// 1 Hour
+  public static var _1Hour: String { return L10n.tr("Mainstrings", "1_hour") }
   /// 1 Hourglass
   public static var _1Hourglass: String { return L10n.tr("Mainstrings", "1_hourglass") }
+  /// 1 Minute
+  public static var _1Minute: String { return L10n.tr("Mainstrings", "1_minute") }
   /// Abort
   public static var abort: String { return L10n.tr("Mainstrings", "abort") }
   /// About
@@ -878,6 +884,8 @@ public enum L10n {
   public static var reasonForReport: String { return L10n.tr("Mainstrings", "reason_for_report") }
   /// Recipient
   public static var recipient: String { return L10n.tr("Mainstrings", "recipient") }
+  /// Refresh for new Items
+  public static var refreshForItems: String { return L10n.tr("Mainstrings", "refresh_for_items") }
   /// Reject
   public static var reject: String { return L10n.tr("Mainstrings", "reject") }
   /// Remember to check off your Dailies!
@@ -1080,6 +1088,10 @@ public enum L10n {
   public static var summary: String { return L10n.tr("Mainstrings", "summary") }
   /// Sunday
   public static var sunday: String { return L10n.tr("Mainstrings", "sunday") }
+  /// Swaps in %@
+  public static func swapsInX(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "swaps_in_x", p1)
+  }
   /// Tags
   public static var tags: String { return L10n.tr("Mainstrings", "tags") }
   /// Take me back
@@ -1232,6 +1244,10 @@ public enum L10n {
   public static func writeTo(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "write_to", p1)
   }
+  /// %d Days
+  public static func xDays(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "x_days", p1)
+  }
   /// %ld Filters
   public static func xFilters(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "x_filters", p1)
@@ -1248,9 +1264,17 @@ public enum L10n {
   public static func xHourglasses(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "x_hourglasses", p1)
   }
+  /// %d Hours
+  public static func xHours(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "x_hours", p1)
+  }
   /// %d Items pending
   public static func xItemsFound(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "x_items_found", p1)
+  }
+  /// %d Minutes
+  public static func xMinutes(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "x_minutes", p1)
   }
   /// %d Months
   public static func xMonths(_ p1: Int) -> String {

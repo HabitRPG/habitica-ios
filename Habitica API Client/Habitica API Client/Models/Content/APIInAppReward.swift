@@ -21,6 +21,7 @@ public class APIInAppReward: InAppRewardProtocol, Decodable {
     public var key: String?
     public var eventStart: Date?
     public var eventEnd: Date?
+    public var endDate: Date?
     public var currency: String?
     public var isSuggested: Bool = false
     public var lastPurchased: Date?
@@ -61,6 +62,7 @@ public class APIInAppReward: InAppRewardProtocol, Decodable {
         case previous
         case level
         case event
+        case endDate = "end"
     }
     
     public required init(from decoder: Decoder) throws {
@@ -90,6 +92,7 @@ public class APIInAppReward: InAppRewardProtocol, Decodable {
         let event = try? values.decode(APIEvent.self, forKey: .event)
         eventStart = event?.start
         eventEnd = event?.end
+        endDate = try? values.decode(Date.self, forKey: .endDate)
     }
     
     init() {

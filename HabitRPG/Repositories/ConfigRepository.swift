@@ -304,6 +304,11 @@ class ConfigRepository: NSObject {
     
     @objc
     func bool(variable: ConfigVariable) -> Bool {
+        #if DEBUG
+        if testingLevel.isDeveloper {
+            return variable.defaultValue()
+        }
+        #endif
         return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).boolValue
     }
 

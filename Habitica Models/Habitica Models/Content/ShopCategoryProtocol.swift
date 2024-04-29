@@ -17,4 +17,5 @@ public protocol ShopCategoryProtocol {
     var purchaseAll: Bool { get set }
     var pinType: String? { get set }
     var items: [InAppRewardProtocol] { get set }
+    var endDate: Date? { get set }
 }

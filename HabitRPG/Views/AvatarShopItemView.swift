@@ -22,6 +22,8 @@ class AvatarShopItemView: UIView {
     
     private var user: UserProtocol?
     
+    private var reward: InAppRewardProtocol?
+    
     @IBInspectable var shouldHideNotes: Bool {
         get {
             return shopItemDescriptionLabel.isHidden
@@ -60,18 +62,7 @@ class AvatarShopItemView: UIView {
         setupView()
     }
     
-    init(withReward reward: InAppRewardProtocol, withUser user: UserProtocol?, for contentView: UIView) {
-        super.init(frame: contentView.bounds)
-        setupView()
-        self.user = user
-        
-        shopItemTitleLabel.text = reward.text
-
-        var purchaseType = ""
-        if let date = reward.eventEnd {
-            setAvailableUntil(date: date)
-        }
-        
+    private func buildSwapDict(reward: InAppRewardProtocol, user: AvatarProtocol?) -> [String: String] {
         let layerKey: String
         if reward.path?.contains("skin") == true {
             layerKey = "skin"
@@ -92,10 +83,44 @@ class AvatarShopItemView: UIView {
         } else {
             layerKey = ""
         }
-        avatarView.swappedDict = [
+        var swappedDict = [
             layerKey: reward.imageName?.replacingOccurrences(of: "icon_", with: "") ?? ""
         ]
         
+        if reward.path?.contains("color") == true {
+            if let hair = user?.preferences?.hair, let color = reward.key?.split(separator: "_").last {
+                if hair.bangs > 0 {
+                    swappedDict["hair-bangs"] = "hair_bangs_\(hair.bangs)_\(color)"
+                }
+                if hair.base > 0 {
+                    swappedDict["hair-base"] = "hair_base_\(hair.base)_\(color)"
+                }
+                if hair.beard > 0 {
+                    swappedDict["hair-beard"] = "hair_beard_\(hair.beard)_\(color)"
+                }
+                if hair.mustache > 0 {
+                    swappedDict["hair-mustache"] = "hair_mustache_\(hair.mustache)_\(color)"
+                }
+            }
+        }
+        return swappedDict
+    }
+    
+    init(withReward reward: InAppRewardProtocol, withUser user: UserProtocol?, for contentView: UIView) {
+        super.init(frame: contentView.bounds)
+        self.reward = reward
+        setupView()
+        self.user = user
+        
+        shopItemTitleLabel.text = reward.text
+
+        var purchaseType = ""
+        if let date = reward.availableUntil() {
+            setAvailableUntil(date: date)
+        }
+
+        avatarView.swappedDict = buildSwapDict(reward: reward, user: user)
+ 
         if let user = user {
             avatarView.avatar = AvatarViewModel(avatar: user)
         }
@@ -124,7 +149,7 @@ class AvatarShopItemView: UIView {
             topBannerLabel.textColor = .white
             topBannerLabel.text = lockedReason
             topBannerWrapper.isHidden = false
-        } else {
+        } else if reward.availableUntil() == nil {
             topBannerWrapper.isHidden = true
         }
     }
@@ -134,6 +159,9 @@ class AvatarShopItemView: UIView {
     }
     
     func setAvatar(_ avatar: AvatarProtocol) {
+        if let reward = self.reward {
+            avatarView.swappedDict = buildSwapDict(reward: reward, user: avatar)
+        }
         avatarView.avatar = AvatarViewModel(avatar: avatar)
     }
 

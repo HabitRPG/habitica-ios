@@ -77,6 +77,13 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCg-bt-MYU">
+                                            <rect key="frame" x="359" y="25" width="0.0" height="0.0"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Q9N-kS-Lun">
                                             <rect key="frame" x="323" y="9" width="28" height="32"/>
                                             <subviews>
@@ -133,7 +140,9 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="3Pm-aT-jbe"/>
                                         <constraint firstItem="Q9N-kS-Lun" firstAttribute="centerY" secondItem="5ba-rq-bH5" secondAttribute="centerY" id="BcN-ee-2nM"/>
+                                        <constraint firstItem="YCg-bt-MYU" firstAttribute="centerY" secondItem="5ba-rq-bH5" secondAttribute="centerY" id="E1I-RL-nX9"/>
                                         <constraint firstItem="JB4-vT-m2S" firstAttribute="centerY" secondItem="5ba-rq-bH5" secondAttribute="centerY" id="I4e-Mr-ePC"/>
+                                        <constraint firstAttribute="trailing" secondItem="YCg-bt-MYU" secondAttribute="trailing" id="Sj9-kr-IfS"/>
                                         <constraint firstItem="Q9N-kS-Lun" firstAttribute="trailing" secondItem="5ba-rq-bH5" secondAttribute="trailingMargin" id="Tc8-5f-0pI"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="JB4-vT-m2S" secondAttribute="leading" id="eCs-QZ-4nH"/>
                                         <constraint firstItem="Q9N-kS-Lun" firstAttribute="leading" secondItem="JB4-vT-m2S" secondAttribute="trailing" constant="8" id="p7E-y6-Dkn"/>
@@ -164,6 +173,7 @@
                                 <outlet property="gearCategoryButton" destination="Q9N-kS-Lun" id="X29-Mw-lkk"/>
                                 <outlet property="gearCategoryLabel" destination="88E-6b-fM7" id="b7b-Z2-cVa"/>
                                 <outlet property="otherClassDisclaimer" destination="jif-V8-AXN" id="qGg-MR-Rvb"/>
+                                <outlet property="swapsInLabel" destination="YCg-bt-MYU" id="GHL-eK-2sq"/>
                                 <outlet property="titleLabel" destination="JB4-vT-m2S" id="HIC-jy-x7H"/>
                             </connections>
                         </collectionReusableView>

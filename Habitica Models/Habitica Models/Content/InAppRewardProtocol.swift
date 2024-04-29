@@ -13,6 +13,7 @@ public protocol InAppRewardProtocol: BaseRewardProtocol {
     var key: String? { get set }
     var eventStart: Date? { get set }
     var eventEnd: Date? { get set }
+    var endDate: Date? { get set }
     var currency: String? { get set }
     var isSuggested: Bool { get set }
     var lastPurchased: Date? { get set }
@@ -29,4 +30,19 @@ public protocol InAppRewardProtocol: BaseRewardProtocol {
     var level: Int { get set }
     
     var category: ShopCategoryProtocol? { get }
+
+}
+
+public extension InAppRewardProtocol {
+    func availableUntil() -> Date? {
+        return endDate ?? eventEnd
+    }
+    
+    var iconName: String {
+        if purchaseType == "customization" {
+            return "icon_\(imageName ?? "")"
+        } else {
+            return imageName ?? ""
+        }
+    }
 }

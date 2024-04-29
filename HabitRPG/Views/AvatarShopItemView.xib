@@ -24,14 +24,14 @@
             <rect key="frame" x="0.0" y="0.0" width="385" height="278"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="pr4-a8-ZWY">
-                    <rect key="frame" x="0.0" y="12" width="385" height="266"/>
+                <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="pr4-a8-ZWY">
+                    <rect key="frame" x="0.0" y="0.0" width="385" height="266"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0KM-EX-Cjj">
-                            <rect key="frame" x="0.0" y="0.0" width="385" height="44.666666666666664"/>
+                            <rect key="frame" x="0.0" y="0.0" width="385" height="20.666666666666668"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwG-lQ-f71">
-                                    <rect key="frame" x="16" y="4" width="353" height="36.666666666666664"/>
+                                    <rect key="frame" x="16" y="3.9999999999999991" width="353" height="12.666666666666664"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -46,28 +46,39 @@
                                 <constraint firstItem="bwG-lQ-f71" firstAttribute="leading" secondItem="0KM-EX-Cjj" secondAttribute="leading" constant="16" id="vIJ-yq-rDu"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f0N-rK-mKA" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
-                            <rect key="frame" x="122.66666666666669" y="56.666666666666686" width="140" height="147"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="30h-8a-s6z">
+                            <rect key="frame" x="0.0" y="36.666666666666657" width="385" height="159"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f0N-rK-mKA" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
+                                    <rect key="frame" x="122.66666666666669" y="12" width="140" height="147"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="147" id="YT9-dC-xIK"/>
+                                        <constraint firstAttribute="width" constant="140" id="q6R-Jy-dVV"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="140" id="EhC-Gw-cB1"/>
-                                <constraint firstAttribute="height" constant="147" id="YT9-dC-xIK"/>
+                                <constraint firstItem="f0N-rK-mKA" firstAttribute="centerX" secondItem="30h-8a-s6z" secondAttribute="centerX" id="JOH-mF-4Mr"/>
+                                <constraint firstAttribute="bottom" secondItem="f0N-rK-mKA" secondAttribute="bottom" id="L3I-2t-XSV"/>
+                                <constraint firstItem="f0N-rK-mKA" firstAttribute="top" secondItem="30h-8a-s6z" secondAttribute="top" constant="12" id="wgS-rb-b1v"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Do6-Ch-3Hd">
-                            <rect key="frame" x="172" y="215.66666666666666" width="41.333333333333343" height="20.333333333333343"/>
+                            <rect key="frame" x="0.0" y="211.66666666666666" width="385" height="20.333333333333343"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xWe-bR-RFs">
-                            <rect key="frame" x="174" y="248" width="37.333333333333343" height="18"/>
+                            <rect key="frame" x="0.0" y="248" width="385" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.40784313729999999" green="0.38431372549999998" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0PC-zS-GJd">
-                            <rect key="frame" x="192.66666666666666" y="266" width="0.0" height="0.0"/>
+                            <rect key="frame" x="0.0" y="266" width="385" height="0.0"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="50" id="BT2-d4-IDQ"/>
                             </constraints>
@@ -90,8 +101,8 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="pr4-a8-ZWY" firstAttribute="leading" secondItem="ElB-ex-kxt" secondAttribute="leading" id="Ten-tT-B3b"/>
-                <constraint firstAttribute="bottom" secondItem="pr4-a8-ZWY" secondAttribute="bottom" id="lpq-ow-kcd"/>
-                <constraint firstItem="pr4-a8-ZWY" firstAttribute="top" secondItem="ElB-ex-kxt" secondAttribute="top" constant="12" id="wP8-3m-cvD"/>
+                <constraint firstAttribute="bottom" secondItem="pr4-a8-ZWY" secondAttribute="bottom" constant="12" id="lpq-ow-kcd"/>
+                <constraint firstItem="pr4-a8-ZWY" firstAttribute="top" secondItem="ElB-ex-kxt" secondAttribute="top" id="wP8-3m-cvD"/>
                 <constraint firstItem="6xa-xd-8J2" firstAttribute="trailing" secondItem="pr4-a8-ZWY" secondAttribute="trailing" id="yL9-y5-ZOA"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

@@ -27,7 +27,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         super.viewDidLoad()
         topHeaderCoordinator?.followScrollView = false
         
-        newCustomizationLayout = configRepository.bool(variable: .enableCustomizationShop)
+        newCustomizationLayout = configRepository.bool(variable: .enableCustomizationShop) || configRepository.testingLevel.isDeveloper
         
         if let type = customizationType {
             if type == "eyewear" || type == "headAccessory" || type == "back" || type == "animalTails" {
@@ -101,7 +101,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     }
     
     private func showPurchaseDialog(customization: CustomizationProtocol, withSource sourceView: UIView?) {
-        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(Text(customization.titleText), iconName: customization.imageName(forUserPreferences: nil) ?? "", menuItems: {
+        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(Text(customization.titleText), iconName: customization.iconName(forUserPreferences: nil) ?? "", menuItems: {
             BottomSheetMenuitem(title: HStack {
                 Text(L10n.purchaseForWithoutCurrency(Int(customization.price)))
                 Image(uiImage: HabiticaIcons.imageOfGem)

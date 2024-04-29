@@ -14,6 +14,7 @@ class HRPGShopSectionHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var gearCategoryLabel: UILabel!
     @IBOutlet weak var dropdownIconView: UIImageView!
     @IBOutlet weak var otherClassDisclaimer: UILabel!
+    @IBOutlet weak var swapsInLabel: UILabel!
     
     var onGearCategoryLabelTapped: (() -> Void)?
     

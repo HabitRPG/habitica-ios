@@ -1335,3 +1335,12 @@
 "challenge_category.self_improvement" = "Self-Improvement";
 "challenge_category.spirituality" = "Spirituality";
 "challenge_category.time_management" = "Time-Management + Accountability";
+
+"x_days" = "%d Days";
+"1_day" = "1 Day";
+"x_hours" = "%d Hours";
+"1_hour" = "1 Hour";
+"x_minutes" = "%d Minutes";
+"1_minute" = "1 Minute";
+"swaps_in_x" = "Switches in %@";
+"refresh_for_items" = "Refresh for new Items";

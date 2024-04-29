@@ -16,6 +16,7 @@ class RealmInAppReward: BaseModel, InAppRewardProtocol {
     @objc dynamic var key: String?
     @objc dynamic var eventStart: Date?
     @objc dynamic var eventEnd: Date?
+    @objc dynamic var endDate: Date?
     @objc dynamic var currency: String?
     @objc dynamic var isSuggested: Bool = false
     @objc dynamic var lastPurchased: Date?
@@ -51,6 +52,7 @@ class RealmInAppReward: BaseModel, InAppRewardProtocol {
         key = protocolObject.key
         eventStart = protocolObject.eventStart
         eventEnd = protocolObject.eventEnd
+        endDate = protocolObject.endDate
         currency = protocolObject.currency
         isSuggested = protocolObject.isSuggested
         lastPurchased = protocolObject.lastPurchased

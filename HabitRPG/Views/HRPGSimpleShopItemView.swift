@@ -84,7 +84,7 @@ class HRPGSimpleShopItemView: UIView {
         shopItemTitleLabel.text = reward.text
 
         var purchaseType = ""
-        if let date = reward.eventEnd {
+        if let date = reward.availableUntil() {
             setAvailableUntil(date: date)
         }
         var imageName = reward.imageName ?? ""

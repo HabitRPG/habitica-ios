@@ -37,4 +37,30 @@ func getShortRemainingString() -> String {
         }
         return string
     }
+    
+    func getImpreciseRemainingString() -> String {
+        let diff = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: Date(), to: self)
+        if let days = diff.day, days > 0 {
+            if days == 1 {
+                return L10n._1Day
+            } else {
+                return L10n.xDays(days)
+            }
+        }
+        if let hours = diff.hour, hours > 0 {
+            if hours == 1 {
+                return L10n._1Hour
+            } else {
+                return L10n.xHours(hours)
+            }
+        }
+        if let minutes = diff.day, minutes > 0 {
+            if minutes == 1 {
+                return L10n._1Minute
+            } else {
+                return L10n.xMinutes(minutes)
+            }
+        }
+        return L10n._1Minute
+    }
 }

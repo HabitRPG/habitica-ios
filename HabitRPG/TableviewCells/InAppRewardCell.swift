@@ -104,7 +104,7 @@ class InAppRewardCell: UICollectionViewCell {
         var currency: Currency?
         let price = reward.value
         currencyView.amount = Int(reward.value)
-        imageName = reward.imageName ?? ""
+        imageName = reward.iconName
         itemName = reward.text ?? ""
         if let currencyString = reward.currency, let thisCurrency = Currency(rawValue: currencyString) {
             currencyView.currency = thisCurrency
@@ -121,7 +121,7 @@ class InAppRewardCell: UICollectionViewCell {
             showPurchaseConfirmation()
         }
         
-        if let date = reward.eventEnd {
+        if let date = reward.availableUntil() {
             availableUntil = date
         } else {
             availableUntil = nil

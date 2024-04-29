@@ -389,7 +389,7 @@ class MainMenuViewController: BaseTableViewController {
                 })
         }
         
-        if configRepository.bool(variable: .enableCustomizationShop) {
+        if configRepository.bool(variable: .enableCustomizationShop) || configRepository.testingLevel.isDeveloper {
             menuItem(withKey: .customizationShop).isHidden = false
             tableView.reloadData()
         }

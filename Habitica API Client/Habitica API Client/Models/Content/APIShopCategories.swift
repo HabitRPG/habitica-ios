@@ -17,6 +17,7 @@ class APIShopCategory: ShopCategoryProtocol, Decodable {
     var purchaseAll: Bool = false
     var pinType: String?
     var items: [InAppRewardProtocol] = []
+    var endDate: Date?
     
     enum CodingKeys: String, CodingKey {
         case identifier
@@ -27,6 +28,7 @@ class APIShopCategory: ShopCategoryProtocol, Decodable {
         case pinType
         case items
         case event
+        case endDate = "end"
     }
     
     public required init(from decoder: Decoder) throws {
@@ -39,7 +41,17 @@ class APIShopCategory: ShopCategoryProtocol, Decodable {
         pinType = try? values.decode(String.self, forKey: .pinType)
         items = (try? values.decode([APIInAppReward].self, forKey: .items)) ?? []
         let event = try? values.decode(APIEvent.self, forKey: .event)
+        if let end = try? values.decode(Date.self, forKey: .endDate) {
+            endDate = end
+        } else {
+            
+        }
         items.forEach { item in
+            if item.endDate == nil && endDate != nil {
+                item.endDate = endDate
+            } else if item.endDate != nil && endDate == nil {
+                endDate = item.endDate
+            }
             if let start = event?.start {
                 item.eventStart = start
             }

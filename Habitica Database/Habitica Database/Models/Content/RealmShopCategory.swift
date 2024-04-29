@@ -36,6 +36,7 @@ class RealmShopCategory: Object, ShopCategoryProtocol {
             }
         }
     }
+    var endDate: Date?
     var realmItems = List<RealmInAppReward>()
     
     override static func primaryKey() -> String {
@@ -53,5 +54,6 @@ class RealmShopCategory: Object, ShopCategoryProtocol {
         purchaseAll = protocolObject.purchaseAll
         pinType = protocolObject.pinType
         items = protocolObject.items
+        endDate = protocolObject.endDate
     }
 }

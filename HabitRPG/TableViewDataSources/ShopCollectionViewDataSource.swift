@@ -121,6 +121,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             let newSection = ItemSection<InAppRewardProtocol>(title: category.text)
             newSection.items = category.items
             newSection.key = category.identifier
+            newSection.endDate = category.endDate
             sections.append(newSection)
         }
         collectionView?.reloadData()
@@ -214,6 +215,18 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 headerView.otherClassDisclaimer.isHidden = userClass == selectedInternalGearCategory || selectedInternalGearCategory == "none"
                 headerView.otherClassDisclaimer.text = L10n.Shops.otherClassDisclaimer
             } else {
+                let section = visibleSections[indexPath.section]
+                if let endDate = section.endDate {
+                    headerView.swapsInLabel.isHidden = false
+                    if endDate > Date() {
+                        headerView.swapsInLabel.text = L10n.swapsInX(endDate.getImpreciseRemainingString())
+                    } else {
+                        headerView.swapsInLabel.text = L10n.refreshForItems
+                    }
+                    headerView.swapsInLabel.textColor = ThemeService.shared.theme.tintedMainText
+                } else {
+                    headerView.swapsInLabel.isHidden = true
+                }
                 headerView.titleLabel.text = titleFor(section: indexPath.section)?.localizedUppercase
             }
             headerView.titleLabel.textColor = ThemeService.shared.theme.ternaryTextColor
