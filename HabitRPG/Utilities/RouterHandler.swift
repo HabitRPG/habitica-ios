@@ -56,12 +56,14 @@ enum Route {
     case seasonalShop
     case timeTravelers
     case subscription
+    case customizationShop
     
     var url: String {
         // swiftlint:disable
         switch self {
         case .market: return "/inventory/market"
         case .questShop: return "/inventory/quests"
+        case .customizationShop: return "/inventory/customizations"
         case .seasonalShop: return "/inventory/seasonal"
         case .timeTravelers: return "/inventory/time"
         case .subscription: return "/user/settings/subscription"
@@ -148,6 +150,12 @@ class RouterHandler {
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Shop.shopViewController.instantiate()
             viewController.shopIdentifier = Constants.TimeTravelersShopKey
+            self.push(viewController)
+        }
+        register(.customizationShop) {
+            self.displayTab(index: 4)
+            let viewController = StoryboardScene.Shop.shopViewController.instantiate()
+            viewController.shopIdentifier = Constants.CustomizationShopKey
             self.push(viewController)
         }
         register("/inventory/items") {

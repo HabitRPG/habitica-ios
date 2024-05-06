@@ -10,6 +10,10 @@ import Foundation
 @testable import Habitica_Models
 
 class TestPreferences: PreferencesProtocol {
+    var dateFormat: String?
+    
+    var tasks: (any Habitica_Models.TaskPreferencesProtocol)?
+    
     var autoEquip: Bool = true
     
     var pushNotifications: PushNotificationsProtocol?

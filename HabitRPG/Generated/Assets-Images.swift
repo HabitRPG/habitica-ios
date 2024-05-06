@@ -167,6 +167,8 @@ internal enum Asset {
   internal static let crown = ImageAsset(name: "crown")
   internal static let downIcon = ImageAsset(name: "down_icon")
   internal enum Empty {
+    internal static let backgrounds = ImageAsset(name: "empty/Backgrounds")
+    internal static let customizations = ImageAsset(name: "empty/Customizations")
     internal static let eggs = ImageAsset(name: "empty/Eggs")
     internal static let food = ImageAsset(name: "empty/Food")
     internal static let hatchingPotions = ImageAsset(name: "empty/HatchingPotions")

@@ -1036,6 +1036,10 @@
 "empty.notifications.title" = "You're all caught up!";
 "empty.notifications.description" = "The notification fairies give you a raucous round of applause! Well done!";
 "empty.inbox.description" = "Start chatting below! Remember to be friendly and follow the Community Guidelines.";
+"empty.no_items" = "You don’t own any of these items";
+"empty.want_more_items" = "Looking for more?";
+"empty.no_items_description" = "Head over to the Customization Shop to browse the many ways you can customize your avatar!";
+"empty.want_more_items_description" = "Check out the Customization Shop for even more ways to customize your avatar!";
 "achievements.onboarding" = "Onboarding Achievements";
 "achievements.basic" = "Basic Achievements";
 "achievements.seasonal" = "Seasonal Achievements";
@@ -1350,3 +1354,5 @@
 "summer" = "Summer";
 "fall" = "Fall";
 "winter" = "Winter";
+
+"customization_shop" = "Customization Shop";

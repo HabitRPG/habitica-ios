@@ -216,6 +216,8 @@ public enum L10n {
   public static var createdTaskTitle: String { return L10n.tr("Mainstrings", "createdTaskTitle") }
   /// Currency
   public static var currency: String { return L10n.tr("Mainstrings", "currency") }
+  /// Customization Shop
+  public static var customizationShop: String { return L10n.tr("Mainstrings", "customization_shop") }
   /// Daily
   public static var daily: String { return L10n.tr("Mainstrings", "daily") }
   /// Want to try something new? Join a Challenge to expand your task list and win some Gems!
@@ -1590,6 +1592,14 @@ public enum L10n {
   }
 
   public enum Empty {
+    /// You don’t own any of these items
+    public static var noItems: String { return L10n.tr("Mainstrings", "empty.no_items") }
+    /// Head over to the Customization Shop to browse the many ways you can customize your avatar!
+    public static var noItemsDescription: String { return L10n.tr("Mainstrings", "empty.no_items_description") }
+    /// Looking for more?
+    public static var wantMoreItems: String { return L10n.tr("Mainstrings", "empty.want_more_items") }
+    /// Check out the Customization Shop for even more ways to customize your avatar!
+    public static var wantMoreItemsDescription: String { return L10n.tr("Mainstrings", "empty.want_more_items_description") }
 
     public enum Dailies {
       /// Dailies are tasks that repeat on a regular basis. Choose the schedule that works for you!

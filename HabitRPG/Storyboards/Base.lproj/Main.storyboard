@@ -831,7 +831,7 @@
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qCK-eG-irz">
                             <size key="itemSize" width="80" height="108"/>
                             <size key="headerReferenceSize" width="50" height="30"/>
-                            <size key="footerReferenceSize" width="50" height="80"/>
+                            <size key="footerReferenceSize" width="50" height="50"/>
                             <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
@@ -902,32 +902,36 @@
                                 <outlet property="label" destination="pWt-Qo-uxJ" id="SLw-2L-Pb8"/>
                             </connections>
                         </collectionReusableView>
-                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectionFooter" id="ZY5-HN-eTS" customClass="CustomizationFooterView" customModule="Habitica" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="138" width="428" height="80"/>
+                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectionFooter" id="6SS-98-tI6" customClass="CustomizationFooterView" customModule="Habitica" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="138" width="428" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUS-0y-rHP">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTK-jZ-X4O">
+                                    <rect key="frame" x="0.0" y="0.0" width="428" height="50"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LW7-NW-AwK">
                                     <rect key="frame" x="84" y="18" width="260" height="40"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" distribution="equalCentering" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="IoC-em-zAB" customClass="StackView" customModule="Habitica" customModuleProvider="target">
+                                        <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" distribution="equalCentering" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="sgw-pG-DJZ" customClass="StackView" customModule="Habitica" customModuleProvider="target">
                                             <rect key="frame" x="38.333333333333329" y="0.0" width="183.33333333333337" height="40"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Buy Set" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24d-gz-RGO">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Buy Set" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ncl-AA-1TI">
                                                     <rect key="frame" x="0.0" y="9.9999999999999982" width="59" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="xsZ-pT-z3A" customClass="CurrencyCountView" customModule="Habitica" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="y05-DL-Ym8" customClass="CurrencyCountView" customModule="Habitica" customModuleProvider="target">
                                                     <rect key="frame" x="71.000000000000028" y="0.0" width="112.33333333333334" height="40"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" priority="500" constant="40" id="gcf-Eg-7he"/>
+                                                        <constraint firstAttribute="width" priority="500" constant="40" id="HOO-Xj-2Cr"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="width" priority="500" constant="50" id="QN0-Xe-NFC"/>
-                                                <constraint firstAttribute="height" constant="40" id="zy9-Hp-NYj"/>
+                                                <constraint firstAttribute="width" priority="500" constant="50" id="6nk-rt-PYH"/>
+                                                <constraint firstAttribute="height" constant="40" id="MeH-Ji-uD1"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -938,10 +942,10 @@
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="260" id="0ZG-cj-tCs"/>
-                                        <constraint firstAttribute="height" constant="40" id="COV-Je-ETU"/>
-                                        <constraint firstItem="IoC-em-zAB" firstAttribute="centerX" secondItem="rUS-0y-rHP" secondAttribute="centerX" id="ZFG-yL-g11"/>
-                                        <constraint firstItem="IoC-em-zAB" firstAttribute="top" secondItem="rUS-0y-rHP" secondAttribute="top" id="bux-8g-D88"/>
+                                        <constraint firstAttribute="width" constant="260" id="EsC-HK-OGn"/>
+                                        <constraint firstItem="sgw-pG-DJZ" firstAttribute="centerX" secondItem="LW7-NW-AwK" secondAttribute="centerX" id="UJV-gT-GyH"/>
+                                        <constraint firstAttribute="height" constant="40" id="h9r-ts-Zh1"/>
+                                        <constraint firstItem="sgw-pG-DJZ" firstAttribute="top" secondItem="LW7-NW-AwK" secondAttribute="top" id="iAc-wd-q9b"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -951,13 +955,18 @@
                                 </view>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="rUS-0y-rHP" firstAttribute="centerX" secondItem="ZY5-HN-eTS" secondAttribute="centerX" id="9be-uN-OFC"/>
-                                <constraint firstItem="rUS-0y-rHP" firstAttribute="top" secondItem="ZY5-HN-eTS" secondAttribute="topMargin" constant="10" id="b94-RO-ggf"/>
+                                <constraint firstItem="qTK-jZ-X4O" firstAttribute="top" secondItem="6SS-98-tI6" secondAttribute="top" id="R4T-r0-qfs"/>
+                                <constraint firstItem="LW7-NW-AwK" firstAttribute="top" secondItem="6SS-98-tI6" secondAttribute="topMargin" constant="10" id="T4Y-eN-vUA"/>
+                                <constraint firstItem="LW7-NW-AwK" firstAttribute="centerX" secondItem="6SS-98-tI6" secondAttribute="centerX" id="cBa-wA-5Kh"/>
+                                <constraint firstAttribute="trailing" secondItem="qTK-jZ-X4O" secondAttribute="trailing" id="in8-UD-Wwy"/>
+                                <constraint firstAttribute="bottom" secondItem="qTK-jZ-X4O" secondAttribute="bottom" id="jQL-uO-RC6"/>
+                                <constraint firstItem="qTK-jZ-X4O" firstAttribute="leading" secondItem="6SS-98-tI6" secondAttribute="leading" id="z6v-Dw-kuH"/>
                             </constraints>
                             <connections>
-                                <outlet property="buyAllLabel" destination="24d-gz-RGO" id="0V4-9s-fVU"/>
-                                <outlet property="currencyView" destination="xsZ-pT-z3A" id="Mqf-X2-UMb"/>
-                                <outlet property="purchaseButton" destination="rUS-0y-rHP" id="UfD-lE-Ypc"/>
+                                <outlet property="buyAllLabel" destination="Ncl-AA-1TI" id="rdd-UT-Hwb"/>
+                                <outlet property="currencyView" destination="y05-DL-Ym8" id="HRp-36-KkM"/>
+                                <outlet property="hostingView" destination="qTK-jZ-X4O" id="bKk-SG-UJ1"/>
+                                <outlet property="purchaseButton" destination="LW7-NW-AwK" id="vYT-YA-coD"/>
                             </connections>
                         </collectionReusableView>
                         <connections>
@@ -969,7 +978,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q5s-Wo-MJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6363" y="124"/>
+            <point key="canvasLocation" x="6361.6822429906542" y="123.75809935205184"/>
         </scene>
         <!--Settings-->
         <scene sceneID="5Gi-ds-f28">

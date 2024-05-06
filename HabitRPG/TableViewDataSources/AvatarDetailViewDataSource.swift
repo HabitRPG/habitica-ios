@@ -8,6 +8,7 @@
 
 import Foundation
 import Habitica_Models
+import SwiftUIX
 
 class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<CustomizationProtocol> {
     
@@ -211,32 +212,43 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         return CGSize.zero
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 80)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
         let view = super.collectionView(collectionView, viewForSupplementaryElementOfKind: kind, at: indexPath)
         let section = sections[indexPath.section]
         
         if let footerView = view as? CustomizationFooterView {
-            if !newCustomizationLayout {
+            if newCustomizationLayout && indexPath.section == collectionView.numberOfSections - 1 {
                 footerView.purchaseButton.isHidden = true
-            }
-            if let set = customizationSets[section.key ?? ""] {
-                footerView.configure(customizationSet: set)
-                let individualPrice = set.setItems?.filter { (customization) -> Bool in
-                    return !self.owns(customization: customization)
-                }.map { $0.price }.reduce(0, +) ?? 0
-                if individualPrice >= set.setPrice && set.setPrice != 0 && set.key?.contains("timeTravel") != true && set.key?.contains("incentive") != true {
-                    footerView.purchaseButton.isHidden = false
+                footerView.hostingView.isHidden = false
+                let hostView = UIHostingView(rootView: CTAFooterView(type: customizationType, hasItems: !ownedCustomizations.isEmpty))
+                footerView.hostingView.addSubview(hostView)
+                hostView.frame = CGRect(x: 0, y: 0, width: collectionView.frame.width, height: 200)
+            } else {
+                footerView.hostingView.isHidden = true
+                if let set = customizationSets[section.key ?? ""] {
+                    footerView.configure(customizationSet: set)
+                    let individualPrice = set.setItems?.filter { (customization) -> Bool in
+                        return !self.owns(customization: customization)
+                    }.map { $0.price }.reduce(0, +) ?? 0
+                    if individualPrice >= set.setPrice && set.setPrice != 0 && set.key?.contains("timeTravel") != true && set.key?.contains("incentive") != true {
+                        footerView.purchaseButton.isHidden = false
+                    } else {
+                        footerView.purchaseButton.isHidden = true
+                    }
+                    
+                    footerView.purchaseButtonTapped = {
+                        if let action = self.purchaseSet {
+                            action(set)
+                        }
+                    }
                 } else {
                     footerView.purchaseButton.isHidden = true
                 }
-                
-                footerView.purchaseButtonTapped = {
-                    if let action = self.purchaseSet {
-                        action(set)
-                    }
-                }
-            } else {
-                footerView.purchaseButton.isHidden = true
             }
         } else if let headerView = view as? CustomizationHeaderView {
             if let set = customizationSets[section.key ?? ""] {

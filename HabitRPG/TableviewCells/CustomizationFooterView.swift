@@ -8,9 +8,11 @@
 
 import Foundation
 import Habitica_Models
+import SwiftUIX
 
 class CustomizationFooterView: UICollectionReusableView {
     
+    @IBOutlet weak var hostingView: UIView!
     @IBOutlet weak var currencyView: CurrencyCountView!
     @IBOutlet weak var purchaseButton: UIView!
     @IBOutlet weak var buyAllLabel: UILabel!

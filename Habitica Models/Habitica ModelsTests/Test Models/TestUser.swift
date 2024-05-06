@@ -10,6 +10,8 @@ import Foundation
 @testable import Habitica_Models
 
 class TestUser: UserProtocol {
+    var permissions: (any Habitica_Models.PermissionsProtocol)?
+    
     var backer: BackerProtocol?
     
     var needsCron: Bool = false

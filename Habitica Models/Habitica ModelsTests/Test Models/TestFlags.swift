@@ -10,6 +10,8 @@ import Foundation
 @testable import Habitica_Models
 
 class TestFlags: FlagsProtocol {
+    var chatShadowMuted: Bool = false
+    
     var tutorials: [TutorialStepProtocol] =  []
     
     var verifiedUsername: Bool = true
