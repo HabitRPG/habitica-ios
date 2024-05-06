@@ -437,7 +437,7 @@ class MainMenuViewController: BaseTableViewController {
             seasonText = L10n.isOpen
         }
         menuItem(withKey: .seasonalShop).pillText = seasonText
-        tableView.reloadSections(IndexSet(integer: 1), with: .none)
+        tableView.reloadData()
     }
     
     override func applyTheme(theme: Theme) {

@@ -55,6 +55,9 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
     private var gemView = CurrencyCountView(currency: .gem)
     private var goldView = CurrencyCountView(currency: .gold)
     
+    var refresher:UIRefreshControl!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator?.alternativeHeader = bannerView
@@ -76,6 +79,10 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         refresh()
         
         HabiticaAnalytics.shared.logNavigationEvent("navigated \(shopIdentifier ?? "") screen")
+        
+        refresher = HabiticaRefresControl()
+        refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        collectionView.addSubview(refresher)
     }
     
     private var isSubscribed: Bool?
@@ -143,8 +150,11 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         dataSource?.dispose()
     }
     
+    @objc
     private func refresh() {
-        dataSource?.retrieveShopInventory(nil)
+        dataSource?.retrieveShopInventory({
+            self.refresher.endRefreshing()
+        })
     }
     
     func didSelectItem(_ item: InAppRewardProtocol?) {
