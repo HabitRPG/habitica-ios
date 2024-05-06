@@ -58,7 +58,7 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="f0N-rK-mKA" firstAttribute="centerX" secondItem="30h-8a-s6z" secondAttribute="centerX" id="JOH-mF-4Mr"/>
                                 <constraint firstAttribute="bottom" secondItem="f0N-rK-mKA" secondAttribute="bottom" id="L3I-2t-XSV"/>

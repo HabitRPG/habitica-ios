@@ -55,6 +55,7 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         bodySizeLabel.textColor = theme.primaryTextColor
+        containerview.backgroundColor = theme.offsetBackgroundColor
     }
     
     override func populateText() {
@@ -183,28 +184,29 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
     }
     
     private func layout() {
-        let itemWidth = (view.bounds.size.width - (7 * 8)) / 4
+        let itemWidth = 76.0
         let itemHeight = itemWidth + 38
-        containerview.pin.top(50).left(8).width(view.bounds.size.width-16).height(itemHeight * 3 + (3 * 8))
+        containerview.pin.top(50).left(8).width(view.bounds.size.width-16).height(itemHeight * 3 + (3 * 12))
+        let padding = (containerview.bounds.width - 24.0 - (itemWidth*4)) / 3
         scrollView.contentSize = CGSize(width: view.bounds.size.width, height: containerview.bounds.origin.y + containerview.bounds.size.height + 64)
         scrollView.pin.all()
         bodySizeLabel.pin.top(0).left(8).above(of: containerview).sizeToFit(.height)
         bodySizeControl.pin.right(8).top(11)
         
-        shirtView.pin.top(8).left(8).width(itemWidth).height(itemHeight)
-        skinView.pin.top(8).right(of: shirtView).marginLeft(8).width(itemWidth).height(itemHeight)
-        hairColorView.pin.top(8).right(of: skinView).marginLeft(8).width(itemWidth).height(itemHeight)
-        hairBangsView.pin.top(8).right(of: hairColorView).marginLeft(8).width(itemWidth).height(itemHeight)
+        shirtView.pin.top(12).left(12).width(itemWidth).height(itemHeight)
+        skinView.pin.top(12).right(of: shirtView).marginLeft(padding).width(itemWidth).height(itemHeight)
+        hairColorView.pin.top(12).right(of: skinView).marginLeft(padding).width(itemWidth).height(itemHeight)
+        hairBangsView.pin.top(12).right(of: hairColorView).marginLeft(padding).width(itemWidth).height(itemHeight)
         
-        hairBaseView.pin.below(of: shirtView).marginTop(8).left(8).width(itemWidth).height(itemHeight)
-        hairMustacheView.pin.below(of: shirtView).marginTop(8).right(of: hairBaseView).marginLeft(8).width(itemWidth).height(itemHeight)
-        hairBeardView.pin.below(of: shirtView).marginTop(8).right(of: hairMustacheView).marginLeft(8).width(itemWidth).height(itemHeight)
-        hairFlowerView.pin.below(of: shirtView).marginTop(8).right(of: hairBeardView).marginLeft(8).width(itemWidth).height(itemHeight)
+        hairBaseView.pin.below(of: shirtView).marginTop(12).left(12).width(itemWidth).height(itemHeight)
+        hairMustacheView.pin.below(of: shirtView).marginTop(12).right(of: hairBaseView).marginLeft(padding).width(itemWidth).height(itemHeight)
+        hairBeardView.pin.below(of: shirtView).marginTop(12).right(of: hairMustacheView).marginLeft(padding).width(itemWidth).height(itemHeight)
+        hairFlowerView.pin.below(of: shirtView).marginTop(12).right(of: hairBeardView).marginLeft(padding).width(itemWidth).height(itemHeight)
         
-        wheelchairView.pin.below(of: hairBaseView).marginTop(8).left(8).width(itemWidth).height(itemHeight)
-        backgroundView.pin.below(of: hairBaseView).marginTop(8).right(of: wheelchairView).marginLeft(8).width(itemWidth).height(itemHeight)
-        animalEarsView.pin.below(of: hairBaseView).marginTop(8).right(of: backgroundView).marginLeft(8).width(itemWidth).height(itemHeight)
-        animalTailView.pin.below(of: hairBaseView).marginTop(8).right(of: animalEarsView).marginLeft(8).width(itemWidth).height(itemHeight)
+        wheelchairView.pin.below(of: hairBaseView).marginTop(12).left(12).width(itemWidth).height(itemHeight)
+        backgroundView.pin.below(of: hairBaseView).marginTop(12).right(of: wheelchairView).marginLeft(padding).width(itemWidth).height(itemHeight)
+        animalEarsView.pin.below(of: hairBaseView).marginTop(12).right(of: backgroundView).marginLeft(padding).width(itemWidth).height(itemHeight)
+        animalTailView.pin.below(of: hairBaseView).marginTop(12).right(of: animalEarsView).marginLeft(padding).width(itemWidth).height(itemHeight)
     }
     
     @IBAction func bodySizeChanged(_ sender: Any) {

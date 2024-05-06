@@ -43,6 +43,12 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
             }
         }
         HabiticaAnalytics.shared.logNavigationEvent("navigated \(customizationType ?? "") screen")
+        
+        let flowlayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        if newCustomizationLayout {
+            flowlayout?.footerReferenceSize = CGSize(width: collectionView.frame.width, height: 20)
+        }
+        
     }
     
     override func applyTheme(theme: Theme) {

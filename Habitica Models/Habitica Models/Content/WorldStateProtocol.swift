@@ -19,17 +19,18 @@ public protocol WorldStateProtocol: BaseModelProtocol {
 public extension WorldStateProtocol {
     
     var seasonalShopEvent: WorldStateEventProtocol? {
-        for event in events where event.gear {
+        for event in events where event.gear || event.season != nil {
             return event
         }
         return nil
     }
     
     var isSeasonalShopOpen: Bool {
-        if let end = seasonalShopEvent?.end {
-            return end > Date()
-        }
-        return false
+        return true
+    }
+    
+    var currentSeason: String? {
+        return seasonalShopEvent?.season
     }
 }
 
@@ -42,4 +43,5 @@ public protocol WorldStateEventProtocol {
     var npcImageSuffix: String? { get set }
     var aprilFools: String? { get set }
     var gear: Bool { get set }
+    var season: String? { get set }
 }

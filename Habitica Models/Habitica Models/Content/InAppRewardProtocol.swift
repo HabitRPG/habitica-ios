@@ -39,7 +39,7 @@ public extension InAppRewardProtocol {
     }
     
     var iconName: String {
-        if purchaseType == "customization" {
+        if purchaseType == "customization" && imageName?.starts(with: "icon_") == false {
             return "icon_\(imageName ?? "")"
         } else {
             return imageName ?? ""

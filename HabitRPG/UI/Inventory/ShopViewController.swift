@@ -64,7 +64,6 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
             
             if identifier == "customizations" {
                 bannerView.setNotes(L10n.Shops.customizationNotes)
-                bannerView.notesLabel.textColor = UIColor("#7F3300FF")
             }
         }
         
@@ -172,5 +171,11 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         super.applyTheme(theme: theme)
         collectionView.backgroundColor = theme.contentBackgroundColor
         bannerView.applyTheme(backgroundColor: theme.contentBackgroundColor)
+        if theme.isDark {
+            bannerView.notesLabel.textColor = theme.primaryTextColor
+        } else {
+            bannerView.notesLabel.textColor = UIColor("#7F3300FF")
+        }
+
     }
 }

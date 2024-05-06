@@ -11,29 +11,27 @@ import UIKit
 class AvatarOverviewItemView: UIView {
     var imageView: NetworkImageView = {
         let imageView = NetworkImageView()
-        imageView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        imageView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         imageView.layer.cornerRadius = 4
         imageView.contentMode = .center
         return imageView
     }()
     var label: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.gray400
+        label.textColor = ThemeService.shared.theme.secondaryTextColor
         label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 11)
         label.textAlignment = .center
         return label
     }()
     var noItemView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.gray10
+        imageView.backgroundColor = ThemeService.shared.theme.isDark ? UIColor.gray5 : UIColor.gray500
         imageView.layer.cornerRadius = 4
         imageView.contentMode = .center
-        imageView.image = HabiticaIcons.imageOfBlankAvatarIcon
+        imageView.image = Asset.blankAvatar.image
         return imageView
     }()
-    
-    let noItemBorder = CAShapeLayer()
-    
+        
     var itemTapped: (() -> Void)?
     
     override init(frame: CGRect) {
@@ -55,14 +53,6 @@ class AvatarOverviewItemView: UIView {
         addSubview(label)
         addSubview(noItemView)
         
-        noItemBorder.strokeColor = UIColor.gray50.cgColor
-        noItemBorder.lineWidth = 2
-        noItemBorder.lineDashPattern = [4, 4]
-        noItemBorder.frame = CGRect(x: 10, y: 10, width: frame.size.width-20, height: 60)
-        noItemBorder.fillColor = nil
-        noItemBorder.path = UIBezierPath(rect: CGRect(x: 10, y: 10, width: frame.size.width-20, height: 60)).cgPath
-        noItemView.layer.addSublayer(noItemBorder)
-        
         setNeedsUpdateConstraints()
         updateConstraints()
         setNeedsLayout()
@@ -74,8 +64,6 @@ class AvatarOverviewItemView: UIView {
         imageView.pin.top().left().right().aspectRatio(1.0)
         noItemView.pin.top().left().right().aspectRatio(1.0)
         label.pin.below(of: imageView).left().right().bottom()
-        noItemBorder.frame = noItemView.bounds
-        noItemBorder.path = UIBezierPath(rect: CGRect(x: 10, y: 10, width: noItemView.bounds.size.width-20, height: noItemView.bounds.size.height-20)).cgPath
     }
     
     func setup(title: String, itemTapped: @escaping (() -> Void)) {

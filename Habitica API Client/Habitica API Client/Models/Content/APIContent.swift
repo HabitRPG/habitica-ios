@@ -158,5 +158,12 @@ public class APIContent: ContentProtocol, Decodable {
         })
         let customizationsWrapper = try? values.decode(APICustomizationsWrapper.self, forKey: .customizations)
         customizations = customizationsWrapper?.asList() ?? []
+        
+        let noBackground = APICustomization()
+        noBackground.set = APICustomizationSet()
+        noBackground.set?.key = "incentiveBackgrounds"
+        noBackground.key = ""
+        noBackground.type = "background"
+        customizations.append(noBackground)
     }
 }

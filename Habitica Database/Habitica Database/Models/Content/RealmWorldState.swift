@@ -89,6 +89,7 @@ class RealmWorldStateEvent: Object, WorldStateEventProtocol {
     @objc dynamic var npcImageSuffix: String?
     @objc dynamic var aprilFools: String?
     @objc dynamic var gear: Bool = false
+    @objc dynamic var season: String?
     
     convenience init(event: WorldStateEventProtocol) {
         self.init()
@@ -99,5 +100,6 @@ class RealmWorldStateEvent: Object, WorldStateEventProtocol {
         npcImageSuffix = event.npcImageSuffix
         aprilFools = event.aprilFools
         gear = event.gear
+        season = event.season
     }
 }

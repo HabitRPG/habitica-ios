@@ -520,8 +520,14 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     HRPGBuyItemModalViewController.displayInsufficientGemsModal(reward: self.reward)
                 }
             })
-        } else if purchaseType == "backgrounds" {
-            customizationRepository.unlock(path: "background.\(reward?.key ?? "")", value: reward?.value ?? 0).observeResult { result in
+        } else if purchaseType == "backgrounds" || purchaseType == "customization" {
+            let path: String
+            if purchaseType == "backgrounds" {
+                path = "background.\(reward?.key ?? "")"
+            } else {
+                path = reward?.path ?? ""
+            }
+            customizationRepository.unlock(path: path, value: reward?.value ?? 0, text: reward?.text ?? "").observeResult { result in
                 switch result {
                 case .success:
                     successBlock()

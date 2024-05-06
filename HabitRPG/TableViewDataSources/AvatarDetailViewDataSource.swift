@@ -95,7 +95,7 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         case "chair":
             return L10n.Avatar.wheelchairs
         case "background":
-            return L10n.Avatar.backgrounds
+            return L10n.monthlyBackgrounds
         case "hair":
             switch customizationGroup {
             case "bangs":
@@ -119,6 +119,9 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
     }
     
     func owns(customization: CustomizationProtocol) -> Bool {
+        if customization.key == "0" || customization.key?.isEmpty == true {
+            return true
+        }
         return ownedCustomizations.contains(where: { (ownedCustomization) -> Bool in
             return ownedCustomization.key == customization.key
         })
@@ -131,7 +134,7 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         sections[0].title = getCustomizationTitle()
         for customization in customizations {
             if newCustomizationLayout {
-                if customization.price > 0 && !owns(customization: customization) {
+                if customization.price > 0 && !owns(customization: customization) || (customization.key?.lowercased().contains("birthday_bash") == true && !owns(customization: customization)) {
                     continue
                 }
             } else {
@@ -143,8 +146,8 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
                 }
             }
             if let set = customization.set, (
-                customizationType == "background" && (set.key?.contains("incentive") == true || set.key?.contains("timeTravel") == true)
-            ) || customizationType != "background" {
+                customizationType == "background" && (set.key?.contains("incentive") == true || set.key?.contains("timeTravel") == true || set.key?.contains("event") == true)
+            ) || (customizationType != "background" && !newCustomizationLayout) {
                 if let index = sections.firstIndex(where: { (section) -> Bool in
                     return section.key == set.key
                 }) {
@@ -163,26 +166,15 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
             sections = sections.filter({ section -> Bool in
                 return section.items.isEmpty == false
             }).sorted { (firstSection, secondSection) -> Bool in
-                if firstSection.key?.contains("incentive") == true || firstSection.key?.contains("timeTravel") == true || firstSection.key?.contains("event") == true {
-                    return true
-                } else if secondSection.key?.contains("incentive") == true || secondSection.key?.contains("timeTravel") == true || secondSection.key?.contains("event") == true {
+                if firstSection.key == nil {
                     return false
+                } else if secondSection.key == nil {
+                    return true
                 }
-                
-                if let firstKey = firstSection.key?.replacingOccurrences(of: "backgrounds", with: ""), let secondKey = secondSection.key?.replacingOccurrences(of: "backgrounds", with: "") {
-                    let firstIndex = firstKey.index(firstKey.startIndex, offsetBy: 2)
-                    let firstMonth = Int(firstKey[..<firstIndex]) ?? 0
-                    let firstYear = Int(firstKey[firstIndex...]) ?? 0
-                    
-                    let secondIndex = secondKey.index(secondKey.startIndex, offsetBy: 2)
-                    let secondMonth = Int(secondKey[..<secondIndex]) ?? 0
-                    let secondYear = Int(secondKey[secondIndex...]) ?? 0
-                    
-                    if firstYear == secondYear {
-                        return firstMonth >= secondMonth
-                    } else {
-                        return firstYear >= secondYear
-                    }
+                if firstSection.key?.contains("incentive") == true {
+                    return true
+                } else if secondSection.key?.contains("incentive") == true {
+                    return false
                 }
                 return firstSection.key ?? "" < secondSection.key ?? ""
             }
@@ -224,6 +216,9 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         let section = sections[indexPath.section]
         
         if let footerView = view as? CustomizationFooterView {
+            if !newCustomizationLayout {
+                footerView.purchaseButton.isHidden = true
+            }
             if let set = customizationSets[section.key ?? ""] {
                 footerView.configure(customizationSet: set)
                 let individualPrice = set.setItems?.filter { (customization) -> Bool in

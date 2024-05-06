@@ -24,7 +24,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="385" height="286"/>
+            <rect key="frame" x="0.0" y="0.0" width="385" height="245"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="orr-Zt-z3s" customClass="AnimatedImageView" customModule="Kingfisher">
@@ -34,13 +34,13 @@
                         <constraint firstAttribute="height" constant="100" id="DRU-cT-F48"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQH-qG-Ds5">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQH-qG-Ds5">
                     <rect key="frame" x="16" y="140" width="353" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LtK-tD-fxk">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LtK-tD-fxk">
                     <rect key="frame" x="16" y="172.5" width="353" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.40784313725490196" green="0.38431372549019605" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
@@ -74,10 +74,10 @@
                         <constraint firstAttribute="height" priority="500" constant="12" id="vhG-SU-A2Y"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z3S-dm-kO2">
-                    <rect key="frame" x="16" y="236" width="353" height="50"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z3S-dm-kO2">
+                    <rect key="frame" x="16" y="245" width="353" height="0.0"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="xAJ-LA-0d6"/>
+                        <constraint firstAttribute="height" priority="500" constant="50" id="xAJ-LA-0d6"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                     <nil key="textColor"/>
@@ -92,6 +92,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="orr-Zt-z3s" firstAttribute="top" secondItem="cA4-aX-MqB" secondAttribute="bottom" constant="12" id="6dm-jx-AGc"/>
+                <constraint firstItem="Z3S-dm-kO2" firstAttribute="top" secondItem="LtK-tD-fxk" secondAttribute="bottom" constant="16" id="7K1-yT-s1g"/>
                 <constraint firstAttribute="trailing" secondItem="SQH-qG-Ds5" secondAttribute="trailing" constant="16" id="EEy-9F-h28"/>
                 <constraint firstItem="SQH-qG-Ds5" firstAttribute="top" secondItem="orr-Zt-z3s" secondAttribute="bottom" constant="12" id="EMX-35-8Ss"/>
                 <constraint firstAttribute="bottom" secondItem="Z3S-dm-kO2" secondAttribute="bottom" id="Gcb-JW-TZW"/>
@@ -113,7 +114,7 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-276" y="-181.70914542728636"/>
+            <point key="canvasLocation" x="-276" y="-200.14992503748127"/>
         </view>
     </objects>
 </document>

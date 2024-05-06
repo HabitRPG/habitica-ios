@@ -346,6 +346,8 @@ public enum L10n {
   public static var experiencePoints: String { return L10n.tr("Mainstrings", "experience_points") }
   /// Failed
   public static var failed: String { return L10n.tr("Mainstrings", "failed") }
+  /// Fall
+  public static var fall: String { return L10n.tr("Mainstrings", "fall") }
   /// Every Pet has a specific food they enjoy! Experiment to find out which will grow your Pet the fastest
   public static var fedPetDescription: String { return L10n.tr("Mainstrings", "fedPetDescription") }
   /// Fed a Pet
@@ -628,6 +630,8 @@ public enum L10n {
   public static var month: String { return L10n.tr("Mainstrings", "month") }
   /// Monthly
   public static var monthly: String { return L10n.tr("Mainstrings", "monthly") }
+  /// Monthly Backgrounds
+  public static var monthlyBackgrounds: String { return L10n.tr("Mainstrings", "monthly_backgrounds") }
   /// Monthly Gem Cap Reached
   public static var monthlyGemCapReached: String { return L10n.tr("Mainstrings", "monthly_gem_cap_reached") }
   /// months
@@ -796,7 +800,7 @@ public enum L10n {
   public static var photoUrl: String { return L10n.tr("Mainstrings", "photo_url") }
   /// Pin
   public static var pin: String { return L10n.tr("Mainstrings", "pin") }
-  /// Plain Backgrounds
+  /// Standard Backgrounds
   public static var plainBackgrounds: String { return L10n.tr("Mainstrings", "plain_backgrounds") }
   /// Player
   public static var player: String { return L10n.tr("Mainstrings", "player") }
@@ -986,6 +990,8 @@ public enum L10n {
   public static var slim: String { return L10n.tr("Mainstrings", "slim") }
   /// Special Items
   public static var specialItems: String { return L10n.tr("Mainstrings", "specialItems") }
+  /// Spring
+  public static var spring: String { return L10n.tr("Mainstrings", "spring") }
   /// Staff
   public static var staff: String { return L10n.tr("Mainstrings", "staff") }
   /// Start my day
@@ -1086,9 +1092,11 @@ public enum L10n {
   }
   /// Summary
   public static var summary: String { return L10n.tr("Mainstrings", "summary") }
+  /// Summer
+  public static var summer: String { return L10n.tr("Mainstrings", "summer") }
   /// Sunday
   public static var sunday: String { return L10n.tr("Mainstrings", "sunday") }
-  /// Swaps in %@
+  /// Switches in %@
   public static func swapsInX(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "swaps_in_x", p1)
   }
@@ -1110,7 +1118,7 @@ public enum L10n {
   }
   /// Thursday
   public static var thursday: String { return L10n.tr("Mainstrings", "thursday") }
-  /// Time Travelers Backgrounds
+  /// Steampunk Backgrounds
   public static var timeTravelBackgrounds: String { return L10n.tr("Mainstrings", "time_travel_backgrounds") }
   /// Title
   public static var title: String { return L10n.tr("Mainstrings", "title") }
@@ -1234,6 +1242,8 @@ public enum L10n {
   public static var whatsWorldBoss: String { return L10n.tr("Mainstrings", "whats_world_boss") }
   /// Wheelchair
   public static var wheelchair: String { return L10n.tr("Mainstrings", "wheelchair") }
+  /// Winter
+  public static var winter: String { return L10n.tr("Mainstrings", "winter") }
   /// Oh dear, pay no heed to the monster below -- this is still a safe haven to chat on your breaks.
   public static var worldBossIntroHeader: String { return L10n.tr("Mainstrings", "world_boss_intro_header") }
   /// Write a Message
@@ -1960,13 +1970,13 @@ public enum L10n {
     public static var customizations: String { return L10n.tr("Mainstrings", "locations.customizations") }
     /// Market
     public static var market: String { return L10n.tr("Mainstrings", "locations.market") }
-    /// Quest Shop
+    /// Quests
     public static var questShop: String { return L10n.tr("Mainstrings", "locations.quest_shop") }
     /// Seasonal Shop
     public static var seasonalShop: String { return L10n.tr("Mainstrings", "locations.seasonal_shop") }
     /// Stable
     public static var stable: String { return L10n.tr("Mainstrings", "locations.stable") }
-    /// Time Travelers Shop
+    /// Time Travelers
     public static var timeTravelersShop: String { return L10n.tr("Mainstrings", "locations.time_travelers_shop") }
   }
 

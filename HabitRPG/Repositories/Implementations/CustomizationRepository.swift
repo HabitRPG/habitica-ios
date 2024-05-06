@@ -37,12 +37,15 @@ class CustomizationRepository: BaseRepository<CustomizationLocalRepository> {
         })
     }
     
-    public func unlock(path: String, value: Float) -> Signal<UserProtocol?, Never> {
+    public func unlock(path: String, value: Float, text: String) -> Signal<UserProtocol?, Never> {
         let call = UnlockCustomizationsCall(path: path)
         return call.objectSignal.on(value: {[weak self] newUser in
             if let userID = self?.currentUserId, let user = newUser {
                 self?.userLocalRepository.updateUser(id: userID, balanceDiff: -(value / 4.0))
                 self?.userLocalRepository.updateUser(id: userID, updateUser: user)
+            }
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                ToastManager.show(text: L10n.purchased(text), color: .green)
             }
         })
     }

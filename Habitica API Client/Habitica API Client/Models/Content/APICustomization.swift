@@ -36,4 +36,8 @@ class APICustomization: CustomizationProtocol, Decodable {
         notes = try? values.decode(String.self, forKey: .notes)
         set = try? values.decode(APICustomizationSet.self, forKey: .set)
     }
+    
+    public init() {
+        price = 0
+    }
 }

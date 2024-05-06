@@ -630,9 +630,10 @@
 "member_group_plan" = "Member of a Group Plan";
 "open_website" = "Open Habitica Website";
 "open_google_play" = "Open Google Play Store";
-"plain_backgrounds" = "Plain Backgrounds";
-"time_travel_backgrounds" = "Time Travelers Backgrounds";
+"plain_backgrounds" = "Standard Backgrounds";
+"time_travel_backgrounds" = "Steampunk Backgrounds";
 "event_backgrounds" = "Event Backgrounds";
+"monthly_backgrounds" = "Monthly Backgrounds";
 "glasses" = "Glasses";
 "size" = "Size";
 "shirt" = "Shirt";
@@ -781,9 +782,9 @@
 "keep_tasks" = "Keep Tasks";
 "delete_tasks" = "Delete Tasks";
 "locations.market" = "Market";
-"locations.quest_shop" = "Quest Shop";
+"locations.quest_shop" = "Quests";
 "locations.seasonal_shop" = "Seasonal Shop";
-"locations.time_travelers_shop" = "Time Travelers Shop";
+"locations.time_travelers_shop" = "Time Travelers";
 "locations.customizations" = "Customizations";
 "locations.stable" = "Stable";
 "NPCs.alex" = "Alex the Merchant";
@@ -1344,3 +1345,8 @@
 "1_minute" = "1 Minute";
 "swaps_in_x" = "Switches in %@";
 "refresh_for_items" = "Refresh for new Items";
+
+"spring" = "Spring";
+"summer" = "Summer";
+"fall" = "Fall";
+"winter" = "Winter";

@@ -47,9 +47,7 @@ class APIShopCategory: ShopCategoryProtocol, Decodable {
             
         }
         items.forEach { item in
-            if item.endDate == nil && endDate != nil {
-                item.endDate = endDate
-            } else if item.endDate != nil && endDate == nil {
+            if item.endDate != nil && endDate == nil {
                 endDate = item.endDate
             }
             if let start = event?.start {
@@ -57,6 +55,10 @@ class APIShopCategory: ShopCategoryProtocol, Decodable {
             }
             if let end = event?.end {
                 item.eventEnd = end
+            }
+            
+            if item.path?.starts(with: "hair.") == true {
+                item.key = item.path
             }
         }
     }

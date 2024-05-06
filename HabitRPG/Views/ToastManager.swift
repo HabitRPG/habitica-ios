@@ -50,6 +50,9 @@ class ToastManager: NSObject {
             if let navigationController = viewController.navigationController {
                 viewController = navigationController
             }
+            if viewController is HRPGBuyItemModalViewController, let mainController = viewController.presentingViewController {
+                viewController = mainController
+            }
             UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: toast.accessibilityLabel)
             let contentView = toast
             contentView.frame = CGRect(x: 0, y: 0, width: viewController.view.frame.size.width, height: viewController.view.frame.size.height)

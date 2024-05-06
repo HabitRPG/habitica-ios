@@ -25,8 +25,8 @@ class CustomizationDetailCell: UICollectionViewCell {
     }
     
     func configure(customization: CustomizationProtocol, preferences: PreferencesProtocol?) {
-        if customization.key == "0" {
-            imageView.image = HabiticaIcons.imageOfBlankAvatarIcon
+        if customization.key == "0" || customization.key?.isEmpty == true {
+            imageView.image = Asset.blankAvatar.image
         } else if customization.type == "background" {
             imageView.setImagewith(name: customization.imageName(forUserPreferences: preferences))
         } else {

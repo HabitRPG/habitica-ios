@@ -52,6 +52,7 @@ extension UIColor {
     @nonobjc static let green500 = UIColor(red: 119.0 / 255.0, green: 244.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0)
     
     @nonobjc static let black = UIColor(red: 26.0 / 255.0, green: 24.0 / 255.0, blue: 29.0 / 255.0, alpha: 1.0)
+    @nonobjc static let gray5 = UIColor(red: 35 / 255.0, green: 32 / 255.0, blue: 42 / 255.0, alpha: 1.0)
     @nonobjc static let gray10 = UIColor(red: 52.0 / 255.0, green: 49.0 / 255.0, blue: 58.0 / 255.0, alpha: 1.0)
     @nonobjc static let gray50 = UIColor(red: 78.0 / 255.0, green: 74.0 / 255.0, blue: 87.0 / 255.0, alpha: 1.0)
     @nonobjc static let gray100 = UIColor(red: 104.0 / 255.0, green: 98.0 / 255.0, blue: 116.0 / 255.0, alpha: 1.0)

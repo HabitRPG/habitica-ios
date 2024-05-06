@@ -90,7 +90,7 @@ class MenuItem {
         MenuItem(key: .achievements, title: L10n.Titles.achievements, vcInstantiator: StoryboardScene.User.achievementsCollectionViewController.instantiate),
         MenuItem(key: .market, title: L10n.Locations.market, segue: StoryboardSegue.Main.showMarketSegue.rawValue),
         MenuItem(key: .questShop, title: L10n.Locations.questShop, segue: StoryboardSegue.Main.showQuestShopSegue.rawValue),
-        MenuItem(key: .seasonalShop, title: L10n.Locations.seasonalShop, segue: StoryboardSegue.Main.showSeasonalShopSegue.rawValue, isHidden: true),
+        MenuItem(key: .seasonalShop, title: L10n.Locations.seasonalShop, segue: StoryboardSegue.Main.showSeasonalShopSegue.rawValue),
         MenuItem(key: .customizationShop, title: L10n.Locations.customizations, segue: StoryboardSegue.Main.showCustomizationShopSegue.rawValue, isHidden: true),
         MenuItem(key: .timeTravelersShop, title: L10n.Locations.timeTravelersShop, segue: StoryboardSegue.Main.showTimeTravelersSegue.rawValue),
         MenuItem(key: .customizeAvatar, title: L10n.Menu.customizeAvatar, vcInstantiator: StoryboardScene.Main.avatarOverviewViewController.instantiate),
@@ -423,14 +423,21 @@ class MainMenuViewController: BaseTableViewController {
             market.pillText = nil
             market.subtitle = nil
         }
-        if worldState.isValid && worldState.isSeasonalShopOpen {
-            menuItem(withKey: .seasonalShop).pillText = L10n.isOpen
-            menuItem(withKey: .seasonalShop).subtitle = L10n.openFor(worldState.seasonalShopEvent?.end?.getShortRemainingString() ?? "")
-            menuItem(withKey: .seasonalShop).isHidden = false
-        } else {
-            menuItem(withKey: .seasonalShop).isHidden = true
+        let seasonText: String
+        switch (worldState.currentSeason) {
+            case "winter":
+            seasonText = L10n.winter
+        case "spring":
+            seasonText = L10n.spring
+        case "summer":
+            seasonText = L10n.summer
+        case "fall":
+            seasonText = L10n.fall
+        default:
+            seasonText = L10n.isOpen
         }
-        tableView.reloadData()
+        menuItem(withKey: .seasonalShop).pillText = seasonText
+        tableView.reloadSections(IndexSet(integer: 1), with: .none)
     }
     
     override func applyTheme(theme: Theme) {
@@ -486,9 +493,9 @@ class MainMenuViewController: BaseTableViewController {
             MenuSection(key: .shops, title: L10n.Menu.shops, iconAsset: Asset.iconInventory, items: [
                 menuItem(withKey: .market),
                 menuItem(withKey: .questShop),
+                menuItem(withKey: .customizationShop),
                 menuItem(withKey: .seasonalShop),
-                menuItem(withKey: .timeTravelersShop),
-                menuItem(withKey: .customizationShop)
+                menuItem(withKey: .timeTravelersShop)
             ]),
             MenuSection(key: .inventory, title: L10n.Menu.inventory, iconAsset: Asset.iconInventory, items: [
                 menuItem(withKey: .customizeAvatar),

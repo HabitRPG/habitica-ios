@@ -79,6 +79,7 @@ internal enum Asset {
   internal static let birthdayMenuGems = ImageAsset(name: "birthday_menu_gems")
   internal static let birthdayMenuText = ImageAsset(name: "birthday_menu_text")
   internal static let birthdayTextdeco = ImageAsset(name: "birthday_textdeco")
+  internal static let blankAvatar = ImageAsset(name: "blank_avatar")
   internal static let buttonGrid = ImageAsset(name: "button_grid")
   internal static let buttonList = ImageAsset(name: "button_list")
   internal static let calendar = ImageAsset(name: "calendar")

@@ -718,7 +718,7 @@
 "leave_challenge_title" = "Wettbewerb verlassen?";
 "leave_challenge_prompt" = "Möchtest Du den Wettbewerb verlassen und die Aufgaben behalten, oder löschen?";
 "locations.market" = "Markt";
-"locations.quest_shop" = "Quest Shop";
+"locations.quest_shop" = "Quests";
 "locations.seasonal_shop" = "Jahreszeitenmarkt";
 "locations.stable" = "Stall";
 "NPCs.alex" = "Alex der Händler";

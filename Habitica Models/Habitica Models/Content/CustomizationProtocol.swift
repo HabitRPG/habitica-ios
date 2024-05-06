@@ -70,7 +70,11 @@ public extension CustomizationProtocol {
             if name == "chair_none" {
                 return "head_0"
             }
-            return "icon_\(name)"
+            if !name.starts(with: "icon_") {
+                return "icon_\(name)"
+            } else {
+                return name
+            }
         } else {
             return nil
         }

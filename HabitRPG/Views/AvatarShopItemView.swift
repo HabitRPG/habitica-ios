@@ -88,7 +88,7 @@ class AvatarShopItemView: UIView {
         ]
         
         if reward.path?.contains("color") == true {
-            if let hair = user?.preferences?.hair, let color = reward.key?.split(separator: "_").last {
+            if let hair = user?.preferences?.hair, let color = reward.key?.split(separator: ".").last {
                 if hair.bangs > 0 {
                     swappedDict["hair-bangs"] = "hair_bangs_\(hair.bangs)_\(color)"
                 }
