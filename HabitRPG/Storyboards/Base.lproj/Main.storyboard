@@ -830,13 +830,13 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qCK-eG-irz">
                             <size key="itemSize" width="80" height="108"/>
-                            <size key="headerReferenceSize" width="50" height="30"/>
+                            <size key="headerReferenceSize" width="50" height="38"/>
                             <size key="footerReferenceSize" width="50" height="50"/>
                             <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="UiJ-MI-3uz" customClass="CustomizationDetailCell" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="8" y="30" width="80" height="108"/>
+                                <rect key="frame" x="8" y="38" width="80" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="108"/>
@@ -879,23 +879,23 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectionHeader" id="fLQ-5C-sqc" customClass="CustomizationHeaderView" customModule="Habitica" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="428" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="428" height="38"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWt-Qo-uxJ">
-                                    <rect key="frame" x="8" y="8" width="412" height="14"/>
+                                    <rect key="frame" x="8" y="12" width="412" height="24"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" priority="500" constant="26" id="AXg-RX-7v0"/>
+                                        <constraint firstAttribute="height" priority="500" constant="30" id="AXg-RX-7v0"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="pWt-Qo-uxJ" firstAttribute="bottom" secondItem="fLQ-5C-sqc" secondAttribute="bottomMargin" id="ODz-cy-khT"/>
+                                <constraint firstItem="pWt-Qo-uxJ" firstAttribute="bottom" secondItem="fLQ-5C-sqc" secondAttribute="bottomMargin" constant="6" id="ODz-cy-khT"/>
                                 <constraint firstAttribute="trailingMargin" secondItem="pWt-Qo-uxJ" secondAttribute="trailing" id="XKO-lk-13o"/>
-                                <constraint firstItem="pWt-Qo-uxJ" firstAttribute="top" secondItem="fLQ-5C-sqc" secondAttribute="topMargin" id="vDG-OY-uAD"/>
+                                <constraint firstItem="pWt-Qo-uxJ" firstAttribute="top" secondItem="fLQ-5C-sqc" secondAttribute="topMargin" constant="4" id="vDG-OY-uAD"/>
                                 <constraint firstItem="pWt-Qo-uxJ" firstAttribute="leading" secondItem="fLQ-5C-sqc" secondAttribute="leadingMargin" id="vPq-QS-7x4"/>
                             </constraints>
                             <connections>
@@ -903,7 +903,7 @@
                             </connections>
                         </collectionReusableView>
                         <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectionFooter" id="6SS-98-tI6" customClass="CustomizationFooterView" customModule="Habitica" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="138" width="428" height="50"/>
+                            <rect key="frame" x="0.0" y="146" width="428" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTK-jZ-X4O">

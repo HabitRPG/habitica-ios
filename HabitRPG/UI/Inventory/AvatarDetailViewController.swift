@@ -31,7 +31,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         
         if let type = customizationType {
             if type == "eyewear" || type == "headAccessory" || type == "back" || type == "animalTails" {
-                gearDataSource = AvatarGearDetailViewDataSource(type: type)
+                gearDataSource = AvatarGearDetailViewDataSource(type: type, newCustomizationLayout: newCustomizationLayout)
                 gearDataSource?.collectionView = collectionView
             } else {
                 customizationDataSource = AvatarDetailViewDataSource(type: type, group: customizationGroup, newCustomizationLayout: newCustomizationLayout)

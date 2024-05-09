@@ -89,7 +89,7 @@ class MenuItem {
         MenuItem(key: .stats, title: L10n.Titles.stats, vcInstantiator: StoryboardScene.User.attributePointsViewController.instantiate),
         MenuItem(key: .achievements, title: L10n.Titles.achievements, vcInstantiator: StoryboardScene.User.achievementsCollectionViewController.instantiate),
         MenuItem(key: .market, title: L10n.Locations.market, segue: StoryboardSegue.Main.showMarketSegue.rawValue),
-        MenuItem(key: .questShop, title: L10n.Locations.questShop, segue: StoryboardSegue.Main.showQuestShopSegue.rawValue),
+        MenuItem(key: .questShop, title: L10n.Menu.questShop, segue: StoryboardSegue.Main.showQuestShopSegue.rawValue),
         MenuItem(key: .seasonalShop, title: L10n.Locations.seasonalShop, segue: StoryboardSegue.Main.showSeasonalShopSegue.rawValue),
         MenuItem(key: .customizationShop, title: L10n.Locations.customizations, segue: StoryboardSegue.Main.showCustomizationShopSegue.rawValue, isHidden: true),
         MenuItem(key: .timeTravelersShop, title: L10n.Locations.timeTravelersShop, segue: StoryboardSegue.Main.showTimeTravelersSegue.rawValue),

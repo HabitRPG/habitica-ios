@@ -782,11 +782,12 @@
 "keep_tasks" = "Keep Tasks";
 "delete_tasks" = "Delete Tasks";
 "locations.market" = "Market";
-"locations.quest_shop" = "Quests";
+"locations.quest_shop" = "Quest Shop";
 "locations.seasonal_shop" = "Seasonal Shop";
 "locations.time_travelers_shop" = "Time Travelers";
 "locations.customizations" = "Customizations";
 "locations.stable" = "Stable";
+"menu.quest_shop" = "Quests";
 "NPCs.alex" = "Alex the Merchant";
 "NPCs.daniel" = "Daniel the inn keeper";
 "NPCs.ian" = "Ian the Quest Guide";

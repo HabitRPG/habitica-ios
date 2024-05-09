@@ -8,6 +8,7 @@
 
 import Foundation
 import Habitica_Models
+import SwiftUIX
 
 class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearProtocol> {
     
@@ -15,24 +16,23 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
     private let userRepository = UserRepository()
     
     var gearType: String
-    
+    var newCustomizationLayout: Bool = false
+
     private var ownedGear: [OwnedGearProtocol] = []
     
     private var equippedKey: String?
     
     var preferences: PreferencesProtocol?
     
-    init(type: String) {
+    init(type: String, newCustomizationLayout: Bool) {
         gearType = type
+        self.newCustomizationLayout = newCustomizationLayout
         super.init()
         sections.append(ItemSection<GearProtocol>())
 
         var predicate: NSPredicate
-        if gearType == "eyewear" || gearType == "headAccessory" {
-            predicate = NSPredicate(format: "gearSet != nil && type == 'headAccessory'")
-            if gearType == "eyewear" {
-                predicate = NSPredicate(format: "gearSet == 'glasses' && type == 'eyewear'")
-            }
+        if gearType == "headAccessory" {
+            predicate = NSPredicate(format: "gearSet == 'animal' && type == 'headAccessory'")
         } else {
             predicate = NSPredicate(format: "gearSet == 'animal' && type == 'back'")
         }
@@ -89,23 +89,30 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
         return CGSize.zero
     }
     
+    func getTitle() -> String {
+        switch gearType {
+        case "headAccessory":
+            return L10n.animalEars
+        case "back":
+            return L10n.Avatar.animalTails
+        default:
+            return ""
+        }
+    }
+    
     private func configureSections(_ gear: [GearProtocol]) {
         sections.removeAll()
         sections.append(ItemSection<GearProtocol>())
+        sections[0].title = getTitle()
         for gear in gear {
-            if let set = gear.gearSet {
-                if let index = sections.firstIndex(where: { (section) -> Bool in
-                    return section.key == set
-                }) {
-                    sections[index].items.append(gear)
-                } else {
-                    sections.append(ItemSection<GearProtocol>(key: set, title: sectionTitle(set)))
-                    sections.last?.items.append(gear)
+            if newCustomizationLayout {
+                if !owns(gear: gear) {
+                    continue
                 }
-            } else {
-                sections[0].items.append(gear)
             }
+            sections[0].items.append(gear)
         }
+        sections[0].showIfEmpty = true
         collectionView?.reloadData()
     }
     
@@ -126,16 +133,28 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 80)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let view = super.collectionView(collectionView, viewForSupplementaryElementOfKind: kind, at: indexPath)
         let section = visibleSections[indexPath.section]
         
         if let headerView = view as? CustomizationHeaderView {
-            headerView.label.text = section.title
-            headerView.label.textColor = ThemeService.shared.theme.primaryTextColor
+            headerView.label.text = section.title?.localizedUppercase
+            headerView.label.textColor = ThemeService.shared.theme.quadTextColor
         }
         if let footerView = view as? CustomizationFooterView {
-            footerView.isHidden = true
+            if newCustomizationLayout && indexPath.section == collectionView.numberOfSections - 1 {
+                footerView.purchaseButton.isHidden = true
+                footerView.hostingView.isHidden = false
+                let hostView = UIHostingView(rootView: CTAFooterView(type: gearType, hasItems: !sections[0].items.isEmpty))
+                footerView.hostingView.addSubview(hostView)
+                hostView.frame = CGRect(x: 0, y: 0, width: collectionView.frame.width, height: 200)
+            } else {
+                footerView.isHidden = true
+            }
         }
         
         return view

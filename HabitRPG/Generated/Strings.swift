@@ -2045,6 +2045,8 @@ public enum L10n {
     public static var helpFaq: String { return L10n.tr("Mainstrings", "menu.help_faq") }
     /// Inventory
     public static var inventory: String { return L10n.tr("Mainstrings", "menu.inventory") }
+    /// Quest Shop
+    public static var questShop: String { return L10n.tr("Mainstrings", "menu.quest_shop") }
     /// Select Class
     public static var selectClass: String { return L10n.tr("Mainstrings", "menu.select_class") }
     /// Shops

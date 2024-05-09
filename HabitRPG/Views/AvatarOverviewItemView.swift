@@ -11,7 +11,11 @@ import UIKit
 class AvatarOverviewItemView: UIView {
     var imageView: NetworkImageView = {
         let imageView = NetworkImageView()
-        imageView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        if ThemeService.shared.theme.isDark {
+            imageView.backgroundColor = .gray50
+        } else {
+            imageView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        }
         imageView.layer.cornerRadius = 4
         imageView.contentMode = .center
         return imageView

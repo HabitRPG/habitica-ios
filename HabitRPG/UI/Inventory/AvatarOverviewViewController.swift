@@ -55,7 +55,11 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         bodySizeLabel.textColor = theme.primaryTextColor
-        containerview.backgroundColor = theme.offsetBackgroundColor
+        if theme.isDark {
+            containerview.backgroundColor = .gray10
+        } else {
+            containerview.backgroundColor = theme.offsetBackgroundColor
+        }
     }
     
     override func populateText() {
@@ -97,7 +101,7 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
         wheelchairView.setup(title: L10n.Avatar.wheelchair) {[weak self] in
             self?.openDetailView(type: "chair")
         }
-        animalEarsView.setup(title: L10n.Avatar.head) {[weak self] in
+        animalEarsView.setup(title: L10n.animalEars) {[weak self] in
             self?.openDetailView(type: "headAccessory")
         }
         backgroundView.setup(title: L10n.Avatar.background) {[weak self] in

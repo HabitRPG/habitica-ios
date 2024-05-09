@@ -163,6 +163,11 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
             }
         }
         
+        if sections[0].items.count == 1 && (sections[0].items[0].key?.isEmpty == true || sections[0].items[0].key == "0") {
+            sections[0].items.removeFirst()
+            sections[0].showIfEmpty = true
+        }
+        
         if customizationType == "background" {
             sections = sections.filter({ section -> Bool in
                 return section.items.isEmpty == false
@@ -225,7 +230,7 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
             if newCustomizationLayout && indexPath.section == collectionView.numberOfSections - 1 {
                 footerView.purchaseButton.isHidden = true
                 footerView.hostingView.isHidden = false
-                let hostView = UIHostingView(rootView: CTAFooterView(type: customizationType, hasItems: !ownedCustomizations.isEmpty))
+                let hostView = UIHostingView(rootView: CTAFooterView(type: customizationType, hasItems: !sections[0].items.isEmpty))
                 footerView.hostingView.addSubview(hostView)
                 hostView.frame = CGRect(x: 0, y: 0, width: collectionView.frame.width, height: 200)
             } else {

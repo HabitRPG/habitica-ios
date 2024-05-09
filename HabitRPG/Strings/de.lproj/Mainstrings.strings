@@ -721,6 +721,7 @@
 "locations.quest_shop" = "Quests";
 "locations.seasonal_shop" = "Jahreszeitenmarkt";
 "locations.stable" = "Stall";
+"menu.quest_shop" = "Quests";
 "NPCs.alex" = "Alex der Händler";
 "NPCs.daniel" = "Daniel der Wirt";
 "NPCs.ian" = "Ian der Quest-Guide";
