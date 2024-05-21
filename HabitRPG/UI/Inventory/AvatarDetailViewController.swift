@@ -102,7 +102,18 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         let cell = collectionView.cellForItem(at: indexPath)
         if let datasource = customizationDataSource, let customization = datasource.item(at: indexPath) {
             if !customization.isPurchasable || datasource.owns(customization: customization) == true {
-                userRepository.updateUser(key: customization.userPath, value: customization.key ?? "").observeCompleted {}
+                var key = customization.key ?? ""
+                if customization.key == datasource.equippedKey {
+                    if customization.type == "background" {
+                        key = datasource.equippedKey ?? ""
+                        customizationRepository.unlock(path: "background.\(key)", value: 0, text: "").observeCompleted {}
+                    } else if customization.type == "hair" && customizationGroup != "color" {
+                        key = "0"
+                    } else {
+                        return
+                    }
+                }
+                userRepository.updateUser(key: customization.userPath, value: key).observeCompleted {}
             } else {
                 if customization.set?.key?.contains("timeTravel") == true {
                     showTimeTravelDialog()

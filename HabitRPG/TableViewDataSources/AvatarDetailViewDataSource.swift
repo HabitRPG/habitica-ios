@@ -24,7 +24,7 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
     private var ownedCustomizations: [OwnedCustomizationProtocol] = []
     private var customizationSets: [String: CustomizationSetProtocol] = [:]
     
-    private var equippedKey: String?
+    var equippedKey: String?
     
     private var preferences: PreferencesProtocol?
     

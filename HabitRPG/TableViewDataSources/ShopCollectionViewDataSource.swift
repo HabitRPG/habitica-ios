@@ -122,6 +122,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             newSection.items = category.items
             newSection.key = category.identifier
             newSection.endDate = category.endDate
+            newSection.showIfEmpty = true
             sections.append(newSection)
         }
         collectionView?.reloadData()
@@ -192,7 +193,11 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         if section == 0 && needsGearSection && !hasGearSection() {
             return 1
         } else {
-            return super.collectionView(collectionView, numberOfItemsInSection: section)
+            let sectionCount = super.collectionView(collectionView, numberOfItemsInSection: section)
+            if sectionCount == 0 {
+                return 1
+            }
+            return sectionCount
         }
     }
     
@@ -255,6 +260,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 return CGSize(width: collectionView.bounds.width, height: 80)
             }
         }
+        if visibleSections[indexPath.section].items.isEmpty {
+            return CGSize(width: collectionView.bounds.width, height: 84)
+        }
         return CGSize(width: 90, height: 120)
     }
     
@@ -277,8 +285,24 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 }
             }
             return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyItemCell", for: indexPath)
+            (cell.viewWithTag(1) as? UILabel)?.text = L10n.Shops.ownAllItems
+            (cell.viewWithTag(1) as? UILabel)?.textColor = ThemeService.shared.theme.primaryTextColor
+            let section = visibleSections[indexPath.section]
+            if section.key == "backgrounds" {
+                (cell.viewWithTag(2) as? UILabel)?.text = L10n.Shops.tryOnCustomizeAvatarReturnNextMonth
+            } else if section.key == "color" || section.key == "skin" {
+                (cell.viewWithTag(2) as? UILabel)?.text = L10n.Shops.tryOnCustomizeAvatarReturnNextSeason
+            } else if section.key == "mystery_sets" {
+                (cell.viewWithTag(2) as? UILabel)?.text = L10n.Shops.tryOnEquipment
+            } else {
+                (cell.viewWithTag(2) as? UILabel)?.text = L10n.Shops.tryOnCustomizeAvatar
+            }
+            (cell.viewWithTag(2) as? UILabel)?.textColor = ThemeService.shared.theme.secondaryTextColor
+            cell.viewWithTag(3)?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+            return cell
         }
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

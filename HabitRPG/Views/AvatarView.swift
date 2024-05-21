@@ -259,7 +259,7 @@ class AvatarView: UIView {
     private func setLayout(_ imageView: UIImageView, type: String) {
         var offset: CGFloat = 0
         if !(viewDictionary["mount-head"] ?? false) && size == .regular {
-            offset = 28
+            offset = 24
             if viewDictionary["pet"] ?? false {
                 offset -= 3
             }
@@ -267,6 +267,7 @@ class AvatarView: UIView {
         if nameDictionary["mount-head"]??.contains("Kangaroo") == true && size == .regular {
             offset = 16
         }
+        offset *= (self.bounds.size.height / 147)
         let name = nameDictionary[type] ?? ""
         if let name = name, specialConstraintsDictionary[name] != nil {
             specialConstraintsDictionary[name]?(self, imageView, size, offset)

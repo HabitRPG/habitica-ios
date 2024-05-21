@@ -44,8 +44,10 @@ class CustomizationRepository: BaseRepository<CustomizationLocalRepository> {
                 self?.userLocalRepository.updateUser(id: userID, balanceDiff: -(value / 4.0))
                 self?.userLocalRepository.updateUser(id: userID, updateUser: user)
             }
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
-                ToastManager.show(text: L10n.purchased(text), color: .green)
+            if value > 0 {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                    ToastManager.show(text: L10n.purchased(text), color: .green)
+                }
             }
         })
     }

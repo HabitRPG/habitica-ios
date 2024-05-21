@@ -1018,6 +1018,11 @@
 "shops.other_class_disclaimer" = "You can only purchase gear for your current class";
 "shops.purchased_all_gear" = "You already have all your class equipment! More will be released during the Grand Galas, near the solstices and equinoxes.";
 "shops.customization_notes" = "Want to change up your looks? You came to the right place! We get new options all the time.";
+"shops.own_all_items" = "You own all of these items";
+"shops.try_on_customize_avatar_return_next_month" = "You can try them on by customizing your avatar. Be sure to check back later for next month’s options!";
+"shops.try_on_customize_avatar_return_next_season" = "You can try them on by customizing your avatar. Be sure to check back later for next season’s options!";
+"shops.try_on_customize_avatar" = "You can try them on by customizing your avatar.";
+"shops.try_on_equipment" = "You can try them on by Equipment. Be sure to check back later for next month’s options!";
 "purchased" = "You purchased %@";
 "buy_reward" = "You bought '%@' for %@ gold";
 "notifications.unallocated_stat_points" = "You have **%d unallocated Stat Points**";

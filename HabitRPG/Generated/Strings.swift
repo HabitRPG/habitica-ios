@@ -2517,8 +2517,18 @@ public enum L10n {
     public static var customizationNotes: String { return L10n.tr("Mainstrings", "shops.customization_notes") }
     /// You can only purchase gear for your current class
     public static var otherClassDisclaimer: String { return L10n.tr("Mainstrings", "shops.other_class_disclaimer") }
+    /// You own all of these items
+    public static var ownAllItems: String { return L10n.tr("Mainstrings", "shops.own_all_items") }
     /// You already have all your class equipment! More will be released during the Grand Galas, near the solstices and equinoxes.
     public static var purchasedAllGear: String { return L10n.tr("Mainstrings", "shops.purchased_all_gear") }
+    /// You can try them on by customizing your avatar.
+    public static var tryOnCustomizeAvatar: String { return L10n.tr("Mainstrings", "shops.try_on_customize_avatar") }
+    /// You can try them on by customizing your avatar. Be sure to check back later for next month’s options!
+    public static var tryOnCustomizeAvatarReturnNextMonth: String { return L10n.tr("Mainstrings", "shops.try_on_customize_avatar_return_next_month") }
+    /// You can try them on by customizing your avatar. Be sure to check back later for next season’s options!
+    public static var tryOnCustomizeAvatarReturnNextSeason: String { return L10n.tr("Mainstrings", "shops.try_on_customize_avatar_return_next_season") }
+    /// You can try them on by Equipment. Be sure to check back later for next month’s options!
+    public static var tryOnEquipment: String { return L10n.tr("Mainstrings", "shops.try_on_equipment") }
   }
 
   public enum Skills {
