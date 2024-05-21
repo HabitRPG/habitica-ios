@@ -523,6 +523,10 @@
 "classes.mage" = "Mage";
 "classes.healer" = "Healer";
 "classes.rogue" = "Rogue";
+"classes.warriors" = "Warriors";
+"classes.mages" = "Mages";
+"classes.healers" = "Healers";
+"classes.rogues" = "Rogues";
 "classes.warrior_description" = "Warriors score more and better \"critical hits\", which randomly give bonus Gold, Experience, and drop chance for scoring a task. They also deal heavy damage to boss monsters. Play a Warrior if you find motivation from unpredictable jackpot-style rewards, or want to dish out the hurt in boss Quests!";
 "classes.mage_description" = "Mages learn swiftly, gaining Experience and Levels faster than other classes. They also get a great deal of Mana for using special abilities. Play a Mage if you enjoy the tactical game aspects of Habitica, or if you are strongly motivated by leveling up and unlocking advanced features!";
 "classes.healer_description" = "Healers stand impervious against harm, and extend that protection to others. Missed Dailies and bad Habits don't faze them much, and they have ways to recover Health from failure. Play a Healer if you enjoy assisting others in your Party, or if the idea of cheating Death through hard work inspires you!";
@@ -1357,3 +1361,5 @@
 "winter" = "Winter";
 
 "customization_shop" = "Customization Shop";
+"class_equipment_shop_dialog" = "This item is only available to %s.\nOpen Settings to change class";
+"insufficient_level_equipment_dialog_new" = "This item is only available to %s.\nYou can select a class after level 10.";

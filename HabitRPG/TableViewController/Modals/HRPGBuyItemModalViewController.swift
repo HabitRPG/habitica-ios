@@ -235,7 +235,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 }
                 .skipNil()
                 .on(value: { gear in
-                    statsView.configure(gear: gear)
+                    statsView.configure(gear: gear, shopItem: self.reward, userClass: self.user?.stats?.habitClass ?? "warrior", userLevel: self.user?.stats?.level ?? 0)
                 }).start()
             addItemAndDetails(itemView, statsView, to: contentView)
         }
@@ -456,6 +456,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         var setIdentifier = ""
         var value = 0
         var successBlock = {
+            SoundManager.shared.play(effect: .rewardBought)
             if let action = self.onInventoryRefresh {
                 action()
             }

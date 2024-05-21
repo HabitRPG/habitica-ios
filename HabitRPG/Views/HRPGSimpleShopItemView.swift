@@ -24,6 +24,7 @@ class HRPGSimpleShopItemView: UIView {
     @IBOutlet weak var imageViewWidth: NSLayoutConstraint!
     @IBOutlet weak var useImmediatelyDisclaimerLabel: UILabel!
     @IBOutlet weak var useImmediatelyDisclaimerHeight: NSLayoutConstraint!
+    @IBOutlet weak var useImmediatelyDisclaimerWrapper: UIView!
     
     private var user: UserProtocol?
     
@@ -104,8 +105,8 @@ class HRPGSimpleShopItemView: UIView {
         
         if reward.key == "potion" || reward.key == "fortify" {
             useImmediatelyDisclaimerHeight.constant = 50
-            useImmediatelyDisclaimerLabel.isHidden = false
-            useImmediatelyDisclaimerLabel.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+            useImmediatelyDisclaimerWrapper.isHidden = false
+            useImmediatelyDisclaimerWrapper.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
             useImmediatelyDisclaimerLabel.textColor = ThemeService.shared.theme.secondaryTextColor
         }
         if let inAppPurchaseType = reward.purchaseType {
@@ -231,7 +232,7 @@ class HRPGSimpleShopItemView: UIView {
             topBannerWrapper.backgroundColor = theme.contentBackgroundColor
             
             useImmediatelyDisclaimerLabel.text = L10n.useImmediatelyDisclaimer
-            useImmediatelyDisclaimerLabel.isHidden = true
+            useImmediatelyDisclaimerWrapper.isHidden = true
             useImmediatelyDisclaimerHeight.constant = 0
             setNeedsUpdateConstraints()
             updateConstraints()

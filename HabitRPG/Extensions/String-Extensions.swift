@@ -144,6 +144,36 @@ extension String {
         }
         return s as String
     }
+    
+    public var translatedClassName: String {
+        switch self {
+        case "healer":
+            return L10n.Classes.healer
+        case "wizard":
+            return L10n.Classes.mage
+        case "mage":
+            return L10n.Classes.mage
+        case "rogue":
+            return L10n.Classes.rogue
+        default:
+            return L10n.Classes.warrior
+        }
+    }
+    
+    public var translatedClassNamePlural: String {
+        switch self {
+        case "healer":
+            return L10n.Classes.healers
+        case "wizard":
+            return L10n.Classes.mages
+        case "mage":
+            return L10n.Classes.mages
+        case "rogue":
+            return L10n.Classes.rogues
+        default:
+            return L10n.Classes.warriors
+        }
+    }
 
 }
 

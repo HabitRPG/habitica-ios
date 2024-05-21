@@ -103,6 +103,11 @@ class AvatarShopItemView: UIView {
                 }
             }
         }
+        
+        if reward.path?.contains("hair") == true {
+            swappedDict["head"] = ""
+            swappedDict["headAccessory"] = ""
+        }
         return swappedDict
     }
     

@@ -19,6 +19,9 @@ class HRPGItemStatsView: UIView {
     @IBOutlet weak var intLabel: UILabel!
     @IBOutlet weak var intStatLabel: UILabel!
     
+    @IBOutlet weak var classDisclaimerWrapper: UIView!
+    @IBOutlet weak var classDisclaimerLabel: UILabel!
+    
     override init(frame: CGRect) {
         super.init(frame: CGRect(x: 0, y: 0, width: 154, height: 36))
         setupView()
@@ -44,6 +47,8 @@ class HRPGItemStatsView: UIView {
             let theme = ThemeService.shared.theme
             view.backgroundColor = theme.contentBackgroundColor
             
+            classDisclaimerWrapper.isHidden = true
+            
             setNeedsUpdateConstraints()
             updateConstraints()
             setNeedsLayout()
@@ -51,11 +56,23 @@ class HRPGItemStatsView: UIView {
         }
     }
 
-    public func configure(gear: GearProtocol) {
+    public func configure(gear: GearProtocol, shopItem: InAppRewardProtocol?, userClass: String, userLevel: Int) {
         configureFields(descriptionLabel: strLabel, valueLabel: strStatLabel, value: gear.strength)
         configureFields(descriptionLabel: conLabel, valueLabel: conStatLabel, value: gear.constitution)
         configureFields(descriptionLabel: perLabel, valueLabel: perStatLabel, value: gear.perception)
         configureFields(descriptionLabel: intLabel, valueLabel: intStatLabel, value: gear.intelligence)
+        
+        if gear.habitClass != nil && gear.specialClass != nil && (gear.habitClass != "special" || shopItem?.pinType == "marketGear") && gear.habitClass != "armoire" && userClass != gear.specialClass {
+            classDisclaimerWrapper.isHidden = false
+            let className = gear.specialClass?.translatedClassNamePlural ?? ""
+            if userLevel >= 10 {
+                classDisclaimerLabel.text = L10n.classEquipmentShopDialog(className)
+            } else {
+                classDisclaimerLabel.text = L10n.insufficientLevelEquipmentDialogNew(className)
+            }
+            classDisclaimerWrapper.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+            classDisclaimerLabel.textColor = ThemeService.shared.theme.secondaryTextColor
+        }
     }
 
     private func configureFields(descriptionLabel: UILabel, valueLabel: UILabel, value: Int) {

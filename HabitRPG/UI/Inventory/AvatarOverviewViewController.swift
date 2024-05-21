@@ -190,7 +190,8 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
     private func layout() {
         let itemWidth = 76.0
         let itemHeight = itemWidth + 38
-        containerview.pin.top(50).left(8).width(view.bounds.size.width-16).height(itemHeight * 3 + (3 * 12))
+        let width = min(view.bounds.size.width - 16, 420)
+        containerview.pin.top(50).left((view.bounds.size.width - width) / 2).width(width).height(itemHeight * 3 + (3 * 12))
         let padding = (containerview.bounds.width - 24.0 - (itemWidth*4)) / 3
         scrollView.contentSize = CGSize(width: view.bounds.size.width, height: containerview.bounds.origin.y + containerview.bounds.size.height + 64)
         scrollView.pin.all()

@@ -138,6 +138,10 @@ public enum L10n {
   public static var checkinYesterdaysDalies: String { return L10n.tr("Mainstrings", "checkin_yesterdays_dalies") }
   /// Choose Task
   public static var chooseTask: String { return L10n.tr("Mainstrings", "choose_task") }
+  /// This item is only available to %s.\nOpen Settings to change class
+  public static func classEquipmentShopDialog(_ p1: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "class_equipment_shop_dialog", p1)
+  }
   /// Class System disabled.
   public static var classSystemDisabled: String { return L10n.tr("Mainstrings", "class_system_disabled") }
   /// You can enable the class system from the apps settings.
@@ -524,6 +528,10 @@ public enum L10n {
   public static var insufficientHourglassesMessage: String { return L10n.tr("Mainstrings", "insufficient_hourglasses_message") }
   /// You’ll need more Mystic Hourglasses to buy this item! Stay Subscribed to keep receiving your Hourglasses.
   public static var insufficientHourglassesMessageSubscriber: String { return L10n.tr("Mainstrings", "insufficient_hourglasses_message_subscriber") }
+  /// This item is only available to %s.\nYou can select a class after level 10.
+  public static func insufficientLevelEquipmentDialogNew(_ p1: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "insufficient_level_equipment_dialog_new", p1)
+  }
   /// You have to specify a valid Habitica Username as recipient.
   public static var invalidRecipientMessage: String { return L10n.tr("Mainstrings", "invalid_recipient_message") }
   /// Invalid Habitica Username
@@ -1577,18 +1585,26 @@ public enum L10n {
     public static var healer: String { return L10n.tr("Mainstrings", "classes.healer") }
     /// Healers stand impervious against harm, and extend that protection to others. Missed Dailies and bad Habits don't faze them much, and they have ways to recover Health from failure. Play a Healer if you enjoy assisting others in your Party, or if the idea of cheating Death through hard work inspires you!
     public static var healerDescription: String { return L10n.tr("Mainstrings", "classes.healer_description") }
+    /// Healers
+    public static var healers: String { return L10n.tr("Mainstrings", "classes.healers") }
     /// Mage
     public static var mage: String { return L10n.tr("Mainstrings", "classes.mage") }
     /// Mages learn swiftly, gaining Experience and Levels faster than other classes. They also get a great deal of Mana for using special abilities. Play a Mage if you enjoy the tactical game aspects of Habitica, or if you are strongly motivated by leveling up and unlocking advanced features!
     public static var mageDescription: String { return L10n.tr("Mainstrings", "classes.mage_description") }
+    /// Mages
+    public static var mages: String { return L10n.tr("Mainstrings", "classes.mages") }
     /// Rogue
     public static var rogue: String { return L10n.tr("Mainstrings", "classes.rogue") }
     /// Rogues love to accumulate wealth, gaining more Gold than anyone else, and are adept at finding random items. Their iconic Stealth ability lets them duck the consequences of missed Dailies. Play a Rogue if you find strong motivation from Rewards and Achievements, striving for loot and badges!
     public static var rogueDescription: String { return L10n.tr("Mainstrings", "classes.rogue_description") }
+    /// Rogues
+    public static var rogues: String { return L10n.tr("Mainstrings", "classes.rogues") }
     /// Warrior
     public static var warrior: String { return L10n.tr("Mainstrings", "classes.warrior") }
     /// Warriors score more and better "critical hits", which randomly give bonus Gold, Experience, and drop chance for scoring a task. They also deal heavy damage to boss monsters. Play a Warrior if you find motivation from unpredictable jackpot-style rewards, or want to dish out the hurt in boss Quests!
     public static var warriorDescription: String { return L10n.tr("Mainstrings", "classes.warrior_description") }
+    /// Warriors
+    public static var warriors: String { return L10n.tr("Mainstrings", "classes.warriors") }
   }
 
   public enum Empty {
@@ -1980,7 +1996,7 @@ public enum L10n {
     public static var customizations: String { return L10n.tr("Mainstrings", "locations.customizations") }
     /// Market
     public static var market: String { return L10n.tr("Mainstrings", "locations.market") }
-    /// Quests
+    /// Quest Shop
     public static var questShop: String { return L10n.tr("Mainstrings", "locations.quest_shop") }
     /// Seasonal Shop
     public static var seasonalShop: String { return L10n.tr("Mainstrings", "locations.seasonal_shop") }
@@ -2045,7 +2061,7 @@ public enum L10n {
     public static var helpFaq: String { return L10n.tr("Mainstrings", "menu.help_faq") }
     /// Inventory
     public static var inventory: String { return L10n.tr("Mainstrings", "menu.inventory") }
-    /// Quest Shop
+    /// Quests
     public static var questShop: String { return L10n.tr("Mainstrings", "menu.quest_shop") }
     /// Select Class
     public static var selectClass: String { return L10n.tr("Mainstrings", "menu.select_class") }

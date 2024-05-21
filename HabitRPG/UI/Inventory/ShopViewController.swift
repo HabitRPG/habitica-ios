@@ -55,9 +55,8 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
     private var gemView = CurrencyCountView(currency: .gem)
     private var goldView = CurrencyCountView(currency: .gold)
     
-    var refresher:UIRefreshControl!
+    var refresher: UIRefreshControl!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator?.alternativeHeader = bannerView

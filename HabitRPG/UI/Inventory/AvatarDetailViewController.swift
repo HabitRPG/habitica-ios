@@ -21,10 +21,14 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     var customizationGroup: String?
     var customizationType: String?
     
+    private let headerView = AvatarHeaderView()
+    
     private var newCustomizationLayout = false
     
     override func viewDidLoad() {
+        topHeaderCoordinator?.hideNavBar = false
         super.viewDidLoad()
+        topHeaderCoordinator?.alternativeHeader = headerView
         topHeaderCoordinator?.followScrollView = false
         
         newCustomizationLayout = configRepository.bool(variable: .enableCustomizationShop) || configRepository.testingLevel.isDeveloper
@@ -43,6 +47,10 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
             }
         }
         HabiticaAnalytics.shared.logNavigationEvent("navigated \(customizationType ?? "") screen")
+        
+        userRepository.getUser().on(value: { [weak self] user in
+            self?.headerView.setAvatar(avatar: user)
+        }).start()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
@@ -57,6 +65,8 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         collectionView.backgroundColor = theme.contentBackgroundColor
+        collectionView.layer.cornerRadius = 22
+        topHeaderCoordinator?.navbarVisibleColor = theme.windowBackgroundColor
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
