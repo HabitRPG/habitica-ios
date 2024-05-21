@@ -40,3 +40,4 @@ fastlane/Preview.html
 /Habitica-Staff
 *.zip
 *.ipa
+/packages
