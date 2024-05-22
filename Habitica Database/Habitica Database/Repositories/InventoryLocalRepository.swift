@@ -248,7 +248,7 @@ public class InventoryLocalRepository: ContentLocalRepository {
                 }
             }
             .flatMap(.latest) { keys in
-                return RealmGear.findBy(predicate: NSPredicate(format: "habitClass == 'armoire' && released == true && NOT key IN %@", keys)).reactive()
+                return RealmGear.findBy(predicate: NSPredicate(format: "habitClass == 'armoire' && released != false && NOT key IN %@", keys)).reactive()
             }.map({ (value, changeset) -> ReactiveResults<[GearProtocol]> in
                 return (value.map({ (item) -> GearProtocol in return item }), changeset)
             })

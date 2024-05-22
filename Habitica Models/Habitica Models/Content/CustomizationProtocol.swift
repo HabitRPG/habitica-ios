@@ -56,7 +56,8 @@ public extension CustomizationProtocol {
         case "beard":
             return "hair_beard_\(key)_\(hairColor)"
         case "color":
-            return "hair_bangs_\(preferences?.hair?.bangs ?? 1)_\(key)"
+            let bangs = preferences?.hair?.bangs ?? 1
+            return "hair_bangs_\(bangs > 0 ? bangs : 1)_\(key)"
         case "flower":
             return "hair_flower_\(key)"
         default:

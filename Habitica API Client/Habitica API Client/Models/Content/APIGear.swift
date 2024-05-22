@@ -63,6 +63,6 @@ public class APIGear: GearProtocol, Codable {
         intelligence = (try? values.decode(Int.self, forKey: .intelligence)) ?? 0
         constitution = (try? values.decode(Int.self, forKey: .constitution)) ?? 0
         perception = (try? values.decode(Int.self, forKey: .perception)) ?? 0
-        released = (try? values.decode(Bool.self, forKey: .released)) ?? false
+        released = (try? values.decode(Bool.self, forKey: .released)) ?? true
     }
 }

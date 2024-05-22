@@ -9,6 +9,7 @@
 import SwiftUI
 import Kingfisher
 import ConfettiSwiftUI
+import ReactiveSwift
 
 struct AnimatableNumberModifier: AnimatableModifier {
     var number: Double
@@ -72,6 +73,7 @@ private struct ArmoirePlus: View {
 }
 
 private class ViewModel: ObservableObject {
+    private let disposable = ScopedDisposable(CompositeDisposable())
     let userRepository = UserRepository()
     let inventoryRepository = InventoryRepository()
     
@@ -97,17 +99,17 @@ private class ViewModel: ObservableObject {
             self.gold = gold
             self.initialGold = gold
         } else {
-            userRepository.getUser().on(value: { user in
+            disposable.inner.add(userRepository.getUser().on(value: { user in
                 self.isSubscribed = user.isSubscribed
                 if self.gold == 0 {
                     self.initialGold = Double(user.stats?.gold ?? 0) + 100
                     self.gold = Double(user.stats?.gold ?? 0) + 100
                 }
-            }).start()
+            }).start())
             
-            inventoryRepository.getArmoireRemainingCount().on(value: {gear in
+            disposable.inner.add(inventoryRepository.getArmoireRemainingCount().on(value: {gear in
                 self.remainingCount = gear.value.count
-            }).start()
+            }).start())
         }
     }
     

@@ -24,13 +24,11 @@ class InAppRewardCell: UICollectionViewCell {
     
     private var itemName = ""
     
-    var itemsLeft = 0 {
+    var itemCount = 0 {
         didSet {
-            if itemsLeft > 0 {
+            if itemCount > 0 {
                 infoLabel.isHidden = false
-                infoLabel.text = String(describing: itemsLeft)
-                infoLabel.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
-                infoLabel.textColor = ThemeService.shared.theme.ternaryTextColor
+                infoLabel.text = String(describing: itemCount)
                 infoImageView.isHidden = true
             } else {
                 infoImageView.isHidden = true
@@ -123,8 +121,12 @@ class InAppRewardCell: UICollectionViewCell {
         
         if let date = reward.availableUntil() {
             availableUntil = date
+            infoLabel.backgroundColor = ThemeService.shared.theme.backgroundTintColor
+            infoLabel.textColor = .white
         } else {
             availableUntil = nil
+            infoLabel.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+            infoLabel.textColor = ThemeService.shared.theme.quadTextColor
         }
         applyAccessibility()
         

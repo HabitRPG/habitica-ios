@@ -36,8 +36,13 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
     @IBOutlet weak var animalEarsView: AvatarOverviewItemView!
     @IBOutlet weak var backgroundView: AvatarOverviewItemView!
     
+    private let headerView = AvatarHeaderView()
+
     override func viewDidLoad() {
+        topHeaderCoordinator?.hideNavBar = false
         super.viewDidLoad()
+        topHeaderCoordinator?.alternativeHeader = headerView
+        topHeaderCoordinator?.followScrollView = false
         if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
             topHeaderCoordinator = TopHeaderCoordinator(topHeaderNavigationController: topHeaderNavigationController, scrollView: scrollView)
         }
@@ -60,6 +65,7 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
         } else {
             containerview.backgroundColor = theme.offsetBackgroundColor
         }
+        topHeaderCoordinator?.navbarVisibleColor = theme.windowBackgroundColor
     }
     
     override func populateText() {

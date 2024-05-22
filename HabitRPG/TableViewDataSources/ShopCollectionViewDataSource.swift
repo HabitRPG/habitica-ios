@@ -288,7 +288,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             if let itemCell = cell as? InAppRewardCell {
                 itemCell.configure(reward: item, user: user)
                 if let ownedItem = ownedItems["\(item.key ?? "")-\(item.type ?? item.purchaseType ?? "")"] {
-                    itemCell.itemsLeft = ownedItem.numberOwned
+                    itemCell.itemCount = ownedItem.numberOwned
                 }
                 itemCell.isPinned = pinnedItems.contains(item.key)
                 if item.type == "quests" || item.pinType == "quests" {

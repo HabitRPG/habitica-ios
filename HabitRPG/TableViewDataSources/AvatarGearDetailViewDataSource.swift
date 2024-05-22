@@ -80,10 +80,10 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if let gear = item(at: indexPath) {
-            if !owns(gear: gear) {
+            if !owns(gear: gear) && !newCustomizationLayout {
                 return CGSize(width: 80, height: 108)
             } else {
-                return CGSize(width: 80, height: 108)
+                return CGSize(width: 80, height: 80)
             }
         }
         return CGSize.zero
