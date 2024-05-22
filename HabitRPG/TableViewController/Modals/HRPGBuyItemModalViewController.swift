@@ -475,6 +475,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 currency = thisCurrency
             }
             successBlock = {
+                SoundManager.shared.play(effect: .rewardBought)
                 self.dismiss(animated: true, completion: nil)
                 self.userRepository.retrieveInAppRewards().observeCompleted {
                 }

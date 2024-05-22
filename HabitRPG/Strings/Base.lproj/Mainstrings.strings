@@ -1016,7 +1016,8 @@
 "choose_task" = "Choose Task";
 "filter_by_tags" = "Filter by Tags";
 "shops.other_class_disclaimer" = "You can only purchase gear for your current class";
-"shops.purchased_all_gear" = "You already have all your class equipment! More will be released during the Grand Galas, near the solstices and equinoxes.";
+"shops.purchased_all_gear" = "You own all %@ Gear\nNew gear is released during the seasonal Galas. Until then, there's %d pieces of gear in the Enchanted Armoire to find!";
+"shops.purchased_all_gear_armoire_empty" = "You own all %@ Gear\nNew gear is released during the seasonal Galas. The Enchanted Armoire gets new stock every month too!";
 "shops.customization_notes" = "Want to change up your looks? You came to the right place! We get new options all the time.";
 "shops.own_all_items" = "You own all of these items";
 "shops.try_on_customize_avatar_return_next_month" = "You can try them on by customizing your avatar. Be sure to check back later for next month’s options!";

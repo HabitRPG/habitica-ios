@@ -31,6 +31,7 @@ class TimeTravelersCollectionViewDataSource: ShopCollectionViewDataSource {
                         section.key = "mystery_sets"
                         section.title = L10n.mysterySets
                         section.items = [InAppRewardProtocol]()
+                        section.showIfEmpty = true
                         sections.append(section)
                     }
                     if let setSection = sections.first(where: { (section) -> Bool in

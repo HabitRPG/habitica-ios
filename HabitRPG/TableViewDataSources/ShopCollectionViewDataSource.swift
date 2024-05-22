@@ -33,6 +33,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     private var userClass: String? {
         return user?.stats?.habitClass
     }
+    private var armoireCount = 0
     
     @objc var needsGearSection: Bool = false {
         didSet {
@@ -108,6 +109,10 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             self?.ownedItems = items
             self?.collectionView?.reloadData()
             }).start())
+        
+        disposable.add(inventoryRepository.getArmoireRemainingCount().on(value: {[weak self] count in
+            self?.armoireCount = count.value.count
+        }).start())
     }
     
     deinit {
@@ -261,7 +266,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             }
         }
         if visibleSections[indexPath.section].items.isEmpty {
-            return CGSize(width: collectionView.bounds.width, height: 84)
+            return CGSize(width: collectionView.bounds.width, height: 100)
         }
         return CGSize(width: 90, height: 120)
     }
@@ -269,7 +274,13 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 && needsGearSection && !hasGearSection() {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyGearCell", for: indexPath)
-            (cell.viewWithTag(1) as? UILabel)?.text = L10n.Shops.purchasedAllGear
+            let className = userClass?.translatedClassName ?? ""
+            if armoireCount == 0 {
+                (cell.viewWithTag(1) as? UILabel)?.text = L10n.Shops.purchasedAllGearArmoireEmpty(className)
+            } else {
+                (cell.viewWithTag(1) as? UILabel)?.text = L10n.Shops.purchasedAllGear(className, 0)
+            }
+            cell.viewWithTag(1)?.backgroundColor = ThemeService.shared.theme.secondaryTextColor
             cell.viewWithTag(2)?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
             return cell
         } else if let item = item(at: indexPath) {

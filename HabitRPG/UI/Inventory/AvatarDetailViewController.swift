@@ -106,7 +106,11 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
                 if customization.key == datasource.equippedKey {
                     if customization.type == "background" {
                         key = datasource.equippedKey ?? ""
-                        customizationRepository.unlock(path: "background.\(key)", value: 0, text: "").observeCompleted {}
+                        customizationRepository.unlock(path: "background.\(key)", value: 0, text: "")
+                            .flatMap(.latest, { _ in
+                                return self.userRepository.retrieveUser(forced: true)
+                            })
+                            .observeCompleted {}
                     } else if customization.type == "hair" && customizationGroup != "color" {
                         key = "0"
                     } else {
