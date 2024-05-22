@@ -195,8 +195,8 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
         let padding = (containerview.bounds.width - 24.0 - (itemWidth*4)) / 3
         scrollView.contentSize = CGSize(width: view.bounds.size.width, height: containerview.bounds.origin.y + containerview.bounds.size.height + 64)
         scrollView.pin.all()
-        bodySizeLabel.pin.top(0).left(8).above(of: containerview).sizeToFit(.height)
-        bodySizeControl.pin.right(8).top(11)
+        bodySizeLabel.pin.top(0).left(padding).above(of: containerview).sizeToFit(.height)
+        bodySizeControl.pin.right(padding).top(11)
         
         shirtView.pin.top(12).left(12).width(itemWidth).height(itemHeight)
         skinView.pin.top(12).right(of: shirtView).marginLeft(padding).width(itemWidth).height(itemHeight)

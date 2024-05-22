@@ -426,7 +426,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     HRPGBuyItemModalViewController.displayGemCapReachedModal()
                 } else if !canAfford() {
                     if currency == .hourglass {
-                        HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: user)
+                        SubscriptionModalViewController(presentationPoint: .timetravelers).show()
                     } else if currency == .gem {
                         HRPGBuyItemModalViewController.displayInsufficientGemsModal(reward: reward)
                     } else {
