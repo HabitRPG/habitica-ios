@@ -184,6 +184,12 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
                 }
                 return firstSection.key ?? "" < secondSection.key ?? ""
             }
+        } else if customizationType == "chair" {
+            sections[0].items.sort { first, second in
+                let firstKey = first.key == "none" ? "" : first.key ?? ""
+                let secondKey = second.key == "none" ? "" : second.key ?? ""
+                return firstKey < secondKey
+            }
         }
         self.collectionView?.reloadData()
     }

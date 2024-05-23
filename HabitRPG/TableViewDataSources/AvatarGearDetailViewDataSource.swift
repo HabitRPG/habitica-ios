@@ -10,6 +10,25 @@ import Foundation
 import Habitica_Models
 import SwiftUIX
 
+private class BlankGear: GearProtocol {
+    var key: String?
+    var text: String?
+    var notes: String?
+    var value: Float = 0
+    var type: String?
+    var set: String?
+    var gearSet: String?
+    var habitClass: String?
+    var specialClass: String?
+    var index: String?
+    var twoHanded: Bool = false
+    var strength: Int = 0
+    var intelligence: Int = 0
+    var perception: Int = 0
+    var constitution: Int = 0
+    var released: Bool = true
+}
+
 class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearProtocol> {
     
     private let inventoryRepository = InventoryRepository()
@@ -20,7 +39,7 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
 
     private var ownedGear: [OwnedGearProtocol] = []
     
-    private var equippedKey: String?
+    var equippedKey: String?
     
     var preferences: PreferencesProtocol?
     
@@ -113,6 +132,12 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
             sections[0].items.append(gear)
         }
         sections[0].showIfEmpty = true
+        if !sections[0].items.isEmpty {
+            let gear = BlankGear()
+            gear.key = "\(gearType)_base_0"
+            gear.type = gearType
+            sections[0].items.insert(gear, at: 0)
+        }
         collectionView?.reloadData()
     }
     

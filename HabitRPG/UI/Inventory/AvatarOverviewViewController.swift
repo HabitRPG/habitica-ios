@@ -128,10 +128,10 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
             skinView.configure("icon_skin_\(skin)")
         }
         if let hairColor = user.preferences?.hair?.color {
-            let bangs = user.preferences?.hair?.bangs
-            hairColorView.configure("icon_hair_bangs_\(bangs ?? 1)_\(hairColor)")
+            let bangs = user.preferences?.hair?.bangs ?? 1
+            hairColorView.configure("icon_hair_bangs_\(bangs > 0 ? bangs : 1)_\(hairColor)")
             if bangs != 0 {
-                hairBangsView.configure("icon_hair_bangs_\(bangs ?? 1)_\(hairColor)")
+                hairBangsView.configure("icon_hair_bangs_\(bangs)_\(hairColor)")
             } else {
                 hairBangsView.configure(nil)
             }

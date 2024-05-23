@@ -25,7 +25,7 @@ class CustomizationDetailCell: UICollectionViewCell {
     }
     
     func configure(customization: CustomizationProtocol, preferences: PreferencesProtocol?) {
-        if customization.key == "0" || customization.key?.isEmpty == true {
+        if customization.key == "0" || customization.key?.isEmpty == true || customization.key == "none" {
             imageView.image = Asset.blankAvatar.image
         } else if customization.type == "background" {
             imageView.setImagewith(name: customization.imageName(forUserPreferences: preferences))
@@ -43,7 +43,11 @@ class CustomizationDetailCell: UICollectionViewCell {
     }
     
     func configure(gear: GearProtocol) {
-        imageView.setImagewith(name: "shop_\(gear.key ?? "")")
+        if gear.key?.isEmpty != false || gear.key?.contains("base_0") == true {
+            imageView.image = Asset.blankAvatar.image
+        } else {
+            imageView.setImagewith(name: "shop_\(gear.key ?? "")")
+        }
         if gear.gearSet == "animal" {
             currencyView.amount = 2
             currencyView.currency = .gem

@@ -262,7 +262,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 && needsGearSection {
             if !hasGearSection() {
-                return CGSize(width: collectionView.bounds.width, height: 80)
+                return CGSize(width: collectionView.bounds.width, height: 100)
             }
         }
         if visibleSections[indexPath.section].items.isEmpty {
@@ -273,15 +273,17 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 && needsGearSection && !hasGearSection() {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyGearCell", for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyItemCell", for: indexPath)
             let className = userClass?.translatedClassName ?? ""
+            (cell.viewWithTag(1) as? UILabel)?.text = L10n.Shops.purchasedAllGearTitle(className)
+            (cell.viewWithTag(1) as? UILabel)?.textColor = ThemeService.shared.theme.primaryTextColor
             if armoireCount == 0 {
-                (cell.viewWithTag(1) as? UILabel)?.text = L10n.Shops.purchasedAllGearArmoireEmpty(className)
+                (cell.viewWithTag(2) as? UILabel)?.text = L10n.Shops.purchasedAllGearArmoireEmpty
             } else {
-                (cell.viewWithTag(1) as? UILabel)?.text = L10n.Shops.purchasedAllGear(className, 0)
+                (cell.viewWithTag(2) as? UILabel)?.text = L10n.Shops.purchasedAllGear(armoireCount)
             }
-            cell.viewWithTag(1)?.backgroundColor = ThemeService.shared.theme.secondaryTextColor
-            cell.viewWithTag(2)?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+            (cell.viewWithTag(2) as? UILabel)?.textColor = ThemeService.shared.theme.secondaryTextColor
+            cell.viewWithTag(3)?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
             return cell
         } else if let item = item(at: indexPath) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath)

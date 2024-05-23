@@ -113,6 +113,8 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
                             .observeCompleted {}
                     } else if customization.type == "hair" && customizationGroup != "color" {
                         key = "0"
+                    } else if customization.type == "chair" {
+                        key = "chair_none"
                     } else {
                         return
                     }
@@ -126,8 +128,14 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
                 }
             }
         } else if let datasource = gearDataSource, let gear = datasource.item(at: indexPath) {
-            if datasource.owns(gear: gear) {
-                inventoryRepository.equip(type: datasource.preferences?.useCostume == true ? "costume" : "equipped", key: gear.key ?? "").observeCompleted {}
+            if datasource.owns(gear: gear) || gear.value == 0 {
+                let key: String?
+                if gear.key?.contains("base_0") == true {
+                    key = datasource.equippedKey
+                } else {
+                    key = gear.key
+                }
+                inventoryRepository.equip(type: datasource.preferences?.useCostume == true ? "costume" : "equipped", key: key ?? "").observeCompleted {}
             } else {
                 showPurchaseDialog(gear: gear, withSource: cell)
             }

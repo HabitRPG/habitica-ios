@@ -2519,13 +2519,15 @@ public enum L10n {
     public static var otherClassDisclaimer: String { return L10n.tr("Mainstrings", "shops.other_class_disclaimer") }
     /// You own all of these items
     public static var ownAllItems: String { return L10n.tr("Mainstrings", "shops.own_all_items") }
-    /// You own all %@ Gear\nNew gear is released during the seasonal Galas. Until then, there's %d pieces of gear in the Enchanted Armoire to find!
-    public static func purchasedAllGear(_ p1: String, _ p2: Int) -> String {
-      return L10n.tr("Mainstrings", "shops.purchased_all_gear", p1, p2)
+    /// New gear is released during the seasonal Galas. Until then, there's %d pieces of gear in the Enchanted Armoire to find!
+    public static func purchasedAllGear(_ p1: Int) -> String {
+      return L10n.tr("Mainstrings", "shops.purchased_all_gear", p1)
     }
-    /// You own all %@ Gear\nNew gear is released during the seasonal Galas. The Enchanted Armoire gets new stock every month too!
-    public static func purchasedAllGearArmoireEmpty(_ p1: String) -> String {
-      return L10n.tr("Mainstrings", "shops.purchased_all_gear_armoire_empty", p1)
+    /// New gear is released during the seasonal Galas. The Enchanted Armoire gets new stock every month too!
+    public static var purchasedAllGearArmoireEmpty: String { return L10n.tr("Mainstrings", "shops.purchased_all_gear_armoire_empty") }
+    /// You own all %@ Gear
+    public static func purchasedAllGearTitle(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "shops.purchased_all_gear_title", p1)
     }
     /// You can try them on by customizing your avatar.
     public static var tryOnCustomizeAvatar: String { return L10n.tr("Mainstrings", "shops.try_on_customize_avatar") }
