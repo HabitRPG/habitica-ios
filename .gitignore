@@ -41,3 +41,4 @@ fastlane/Preview.html
 *.zip
 *.ipa
 /packages
+/ionic.yml

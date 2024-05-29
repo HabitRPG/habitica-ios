@@ -1,20 +1,36 @@
 PODS:
+  - Capacitor (6.0.0):
+    - CapacitorCordova
+  - CapacitorCordova (6.0.0)
   - DynamicBlurView (4.1.0)
+  - IonicLiveUpdates (0.5.2)
+  - IonicPortals (0.11.0):
+    - Capacitor (~> 6.0)
+    - IonicLiveUpdates (< 0.6.0, >= 0.5.0)
   - PopupDialog (1.1.1):
     - DynamicBlurView (~> 4.0)
 
 DEPENDENCIES:
+  - IonicPortals (~> 0.11.0)
   - PopupDialog (~> 1.1.1)
 
 SPEC REPOS:
   trunk:
+    - Capacitor
+    - CapacitorCordova
     - DynamicBlurView
+    - IonicLiveUpdates
+    - IonicPortals
     - PopupDialog
 
 SPEC CHECKSUMS:
+  Capacitor: d557fbf810720ffabd032536386e6f8c454286bd
+  CapacitorCordova: 6855c7b4b0c4ac8f39b9ed5bac5077d1fcc9eaa8
   DynamicBlurView: 58e18fae80bb614e34681a4486870e7d257b62e8
+  IonicLiveUpdates: d14e4b0e6a46c492b9e48390ed51a79278059bfd
+  IonicPortals: ee35bb5069a1265539a358367d3a6eec55cec02f
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
 
-PODFILE CHECKSUM: 6beee120198de5ded80d48baa2a8f4cdcc7b7cc1
+PODFILE CHECKSUM: b63037e24063a0f0593e4c7336c4831a52f490ba
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.11.2

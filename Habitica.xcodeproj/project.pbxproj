@@ -2755,7 +2755,6 @@
 				ECB18BF46B6D3B5D1CB2D868 /* Pods-Habitica-HabiticaTests.testflight-staff.xcconfig */,
 				01E78A293F7B9DB8C31A070A /* Pods-Habitica-HabiticaTests.testflight-beta.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -2898,6 +2897,7 @@
 				7A84E1B0228928AD0081E96F /* Embed Foundation Extensions */,
 				294F5D5F28C75CDE00760F6C /* Upload DSYM */,
 				AACCF985AFF85F8018590655 /* [CP] Embed Pods Frameworks */,
+				143AFF812C07F368007790D4 /* Copy Web App */,
 			);
 			buildRules = (
 			);
@@ -3038,14 +3038,14 @@
 			);
 			mainGroup = D9EB4E8218CB4A9400BB2094;
 			packageReferences = (
-				29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */,
-				292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
+				29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView.git" */,
+				292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess.git" */,
+				292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS.git" */,
 				292BD8A028B4EAC4006447EF /* XCRemoteSwiftPackageReference "Amplitude-iOS" */,
 				292BD8A328B4EAE9006447EF /* XCRemoteSwiftPackageReference "Down" */,
 				292BD8A628B4EB10006447EF /* XCRemoteSwiftPackageReference "PinLayout" */,
-				292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka" */,
-				292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka.git" */,
+				292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher.git" */,
 				292BD8AF28B4EC36006447EF /* XCRemoteSwiftPackageReference "TagListView" */,
 				2938ED2C28B4EDC700E995A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				2938ED4128B4EF5D00E995A2 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
@@ -3053,9 +3053,9 @@
 				2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */,
 				2953D83E28B5215400DC456E /* XCRemoteSwiftPackageReference "Reactivecocoa" */,
 				2953D84328B7772A00DC456E /* XCRemoteSwiftPackageReference "BottomSheet" */,
-				294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+				294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI.git" */,
 				29A3FD2D296720AF007D85B2 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
-				2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal" */,
+				2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal.git" */,
 			);
 			productRefGroup = D9EB4E8C18CB4A9400BB2094 /* Products */;
 			projectDirPath = "";
@@ -3227,18 +3227,44 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Habitica-Habitica UI Tests/Pods-Habitica-Habitica UI Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Capacitor/Capacitor.framework",
+				"${BUILT_PRODUCTS_DIR}/CapacitorCordova/Cordova.framework",
 				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
+				"${BUILT_PRODUCTS_DIR}/IonicPortals/IonicPortals.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/IonicLiveUpdates/IonicLiveUpdates.framework/IonicLiveUpdates",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Capacitor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cordova.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IonicPortals.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IonicLiveUpdates.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habitica-Habitica UI Tests/Pods-Habitica-Habitica UI Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		143AFF812C07F368007790D4 /* Copy Web App */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Web App";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nAPP_ID=38d120aa\nCHANNEL=production\nPORTAL_NAME=ionic_portals_demo\n\nionic-cloud live-update download \\\n  --config=\"${SOURCE_ROOT}/.ionic-cloud.yaml\" \\\n  --app-id ${APP_ID} \\\n  --channel-name ${CHANNEL} \\\n  --zip-name ${PORTAL_NAME}.zip\n\n\nunzip ${PORTAL_NAME}.zip -d \\\n  ${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app/${PORTAL_NAME}\nrm ${PORTAL_NAME}.zip\n";
 		};
 		294F5D5D28C1EEB400760F6C /* Run SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3303,13 +3329,21 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Habitica-HabiticaTests/Pods-Habitica-HabiticaTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Capacitor/Capacitor.framework",
+				"${BUILT_PRODUCTS_DIR}/CapacitorCordova/Cordova.framework",
 				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
+				"${BUILT_PRODUCTS_DIR}/IonicPortals/IonicPortals.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/IonicLiveUpdates/IonicLiveUpdates.framework/IonicLiveUpdates",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Capacitor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cordova.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IonicPortals.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IonicLiveUpdates.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3345,13 +3379,21 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Habitica/Pods-Habitica-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Capacitor/Capacitor.framework",
+				"${BUILT_PRODUCTS_DIR}/CapacitorCordova/Cordova.framework",
 				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
+				"${BUILT_PRODUCTS_DIR}/IonicPortals/IonicPortals.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/IonicLiveUpdates/IonicLiveUpdates.framework/IonicLiveUpdates",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Capacitor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cordova.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IonicPortals.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IonicLiveUpdates.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -5675,7 +5717,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+		292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
 			requirement = {
@@ -5683,7 +5725,7 @@
 				minimumVersion = 4.0.0;
 			};
 		};
-		292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS" */ = {
+		292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/openid/AppAuth-iOS.git";
 			requirement = {
@@ -5715,7 +5757,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka" */ = {
+		292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/xmartlabs/Eureka.git";
 			requirement = {
@@ -5723,7 +5765,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -5771,7 +5813,7 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal" */ = {
+		2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/slackhq/PanModal.git";
 			requirement = {
@@ -5779,7 +5821,7 @@
 				minimumVersion = 1.2.7;
 			};
 		};
-		294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+		294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
 			requirement = {
@@ -5811,7 +5853,7 @@
 				minimumVersion = 0.1.3;
 			};
 		};
-		29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */ = {
+		29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nathantannar4/InputBarAccessoryView.git";
 			requirement = {
@@ -5824,12 +5866,12 @@
 /* Begin XCSwiftPackageProductDependency section */
 		292BD89B28B4EA4F006447EF /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess.git" */;
 			productName = KeychainAccess;
 		};
 		292BD89E28B4EA85006447EF /* AppAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			package = 292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS.git" */;
 			productName = AppAuth;
 		};
 		292BD8A128B4EAC4006447EF /* Amplitude */ = {
@@ -5849,12 +5891,12 @@
 		};
 		292BD8AA28B4EB42006447EF /* Eureka */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka" */;
+			package = 292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka.git" */;
 			productName = Eureka;
 		};
 		292BD8AD28B4EB81006447EF /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = 292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher.git" */;
 			productName = Kingfisher;
 		};
 		292BD8B028B4EC36006447EF /* TagListView */ = {
@@ -5904,12 +5946,12 @@
 		};
 		2938ED3D28B4EEB200E995A2 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess.git" */;
 			productName = KeychainAccess;
 		};
 		2938ED3F28B4EEBC00E995A2 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess.git" */;
 			productName = KeychainAccess;
 		};
 		2938ED4228B4EF5D00E995A2 /* SwiftyStoreKit */ = {
@@ -5929,12 +5971,12 @@
 		};
 		2945AE962B285D000022F3CC /* PanModal */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal" */;
+			package = 2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal.git" */;
 			productName = PanModal;
 		};
 		294F5D6528CA1DCB00760F6C /* ConfettiSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			package = 294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI.git" */;
 			productName = ConfettiSwiftUI;
 		};
 		2953D83A28B51F9E00DC456E /* ReactiveSwift */ = {
@@ -5964,7 +6006,7 @@
 		};
 		29AE771927E3521800CC9646 /* InputBarAccessoryView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */;
+			package = 29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView.git" */;
 			productName = InputBarAccessoryView;
 		};
 /* End XCSwiftPackageProductDependency section */
