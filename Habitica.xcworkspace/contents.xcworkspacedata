@@ -26,4 +26,7 @@
          location = "group:Full Tests.xctestplan">
       </FileRef>
    </Group>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
 </Workspace>
