@@ -234,8 +234,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     return gear.first
                 }
                 .skipNil()
-                .on(value: { gear in
-                    statsView.configure(gear: gear, shopItem: self.reward, userClass: self.user?.stats?.habitClass ?? "warrior", userLevel: self.user?.stats?.level ?? 0)
+                .combineLatest(with: self.userRepository.getUser().take(first: 1))
+                .on(value: { (gear, user) in
+                    statsView.configure(gear: gear, shopItem: self.reward, userClass: user.stats?.habitClass ?? "warrior", userLevel: user.stats?.level ?? 0)
                 }).start()
             addItemAndDetails(itemView, statsView, to: contentView)
         }

@@ -288,10 +288,8 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         let att = NSMutableAttributedString(string: str)
         att.addAttribute(.font, value: UIFont.systemFont(ofSize: 14))
         for word in [L10n.Equipment.equipment, L10n.Shops.customizingYourAvatar] {
-            print(word)
             let range = att.mutableString.range(of: word)
             if range.length > 0 {
-                print(range)
                 att.addAttribute(NSAttributedString.Key.foregroundColor, value: ThemeService.shared.theme.tintColor, range: range)
             }
         }
