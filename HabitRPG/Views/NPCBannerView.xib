@@ -3,7 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,12 +30,9 @@
                         <constraint firstAttribute="height" constant="124" id="c7o-ro-5lf"/>
                     </constraints>
                 </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="au3-k0-leG" customClass="NetworkImageView" customModule="Habitica" customModuleProvider="target">
-                    <rect key="frame" x="10" y="0.0" width="376" height="124"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="au3-k0-leG" customClass="NetworkImageView" customModule="Habitica" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="376" id="pGe-9J-8AR"/>
-                    </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDB-0h-qte" userLabel="bgWhiteView">
                     <rect key="frame" x="0.0" y="124" width="375" height="64"/>
@@ -76,7 +73,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="g3I-SJ-7Li" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="12z-lS-L3T"/>
-                <constraint firstItem="au3-k0-leG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="1EE-BD-uNS"/>
+                <constraint firstItem="au3-k0-leG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1EE-BD-uNS"/>
                 <constraint firstAttribute="bottom" secondItem="PDB-0h-qte" secondAttribute="bottom" id="Cty-6a-9gF"/>
                 <constraint firstItem="au3-k0-leG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DfK-dy-KzG"/>
                 <constraint firstItem="MoN-YN-sBN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="29" id="F0c-d7-MFg"/>
@@ -86,6 +83,7 @@
                 <constraint firstItem="PDB-0h-qte" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="MDR-nQ-viE"/>
                 <constraint firstItem="MoN-YN-sBN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="97" id="PqO-mg-De8"/>
                 <constraint firstItem="MoN-YN-sBN" firstAttribute="trailing" secondItem="cQO-3U-vMy" secondAttribute="trailing" constant="40" id="Sk0-wi-LfU"/>
+                <constraint firstItem="au3-k0-leG" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="UYD-RV-mR9"/>
                 <constraint firstAttribute="trailing" secondItem="PDB-0h-qte" secondAttribute="trailing" id="W2b-u4-dyG"/>
                 <constraint firstItem="PDB-0h-qte" firstAttribute="top" secondItem="du6-vW-1QD" secondAttribute="bottom" id="WkC-5u-fnP"/>
                 <constraint firstItem="du6-vW-1QD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="XIP-3e-AuR"/>
@@ -108,6 +106,6 @@
         </view>
     </objects>
     <resources>
-        <image name="npc_gradient" width="360" height="19"/>
+        <image name="npc_gradient" width="360" height="18"/>
     </resources>
 </document>
