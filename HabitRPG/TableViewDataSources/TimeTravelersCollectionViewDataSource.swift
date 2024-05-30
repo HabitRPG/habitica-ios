@@ -42,6 +42,7 @@ class TimeTravelersCollectionViewDataSource: ShopCollectionViewDataSource {
                         newItem.value = item.value
                         newItem.currency = item.currency
                         newItem.imageName = "shop_set_mystery_"+key
+                        newItem.endDate = item.endDate
                         mysterySection.items.append(newItem)
                     }
                 }
