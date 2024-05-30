@@ -15,19 +15,34 @@ import ReactiveSwift
 class ContentRepository: BaseRepository<ContentLocalRepository> {
     
     func retrieveContent(force: Bool = false) -> Signal<ContentProtocol?, Never> {
-        return RetrieveContentCall(language: LanguageHandler.getAppLanguage().code, forceLoading: force).objectSignal.on(value: {[weak self] content in
-            if let content = content {
-                self?.localRepository.save(content)
-            }
-        })
+        let defaults = UserDefaults.standard
+        let lastContentFetch = defaults.object(forKey: "lastContentFetch") as? NSDate
+        let lastContentFetchVersion = defaults.object(forKey: "lastContentFetchVersion") as? String
+        let currentBuildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+        if force || lastContentFetch == nil || (lastContentFetch?.timeIntervalSinceNow ?? 0) < -3600 || lastContentFetchVersion != currentBuildNumber {
+            return RetrieveContentCall(language: LanguageHandler.getAppLanguage().code, forceLoading: force).objectSignal.on(value: {[weak self] content in
+                if let content = content {
+                    self?.localRepository.save(content)
+                    defaults.setValue(Date(), forKey: "lastContentFetch")
+                    defaults.setValue(currentBuildNumber, forKey: "lastContentFetchVersion")
+                }
+            })
+        }
+        return Signal.empty
     }
     
-    func retrieveWorldState() -> Signal<WorldStateProtocol?, Never> {
-        return RetrieveWorldStateCall().objectSignal.on(value: {[weak self] worldState in
-            if let worldState = worldState {
-                self?.localRepository.save(worldState)
-            }
-        })
+    func retrieveWorldState(force: Bool = false) -> Signal<WorldStateProtocol?, Never> {
+        let defaults = UserDefaults.standard
+        let lastWorldStateFetch = defaults.object(forKey: "lastWorldStateFetch") as? NSDate
+        if force || lastWorldStateFetch == nil || (lastWorldStateFetch?.timeIntervalSinceNow ?? 0) < -600 {
+            return RetrieveWorldStateCall().objectSignal.on(value: {[weak self] worldState in
+                if let worldState = worldState {
+                    self?.localRepository.save(worldState)
+                    defaults.setValue(Date(), forKey: "lastWorldStateFetch")
+                }
+            })
+        }
+        return Signal.empty
     }
     
     func getWorldState() -> SignalProducer<WorldStateProtocol, ReactiveSwiftRealmError> {

@@ -424,8 +424,8 @@ class MainMenuViewController: BaseTableViewController {
             market.subtitle = nil
         }
         let seasonText: String
-        switch (worldState.currentSeason) {
-            case "winter":
+        switch worldState.currentSeason {
+        case "winter":
             seasonText = L10n.winter
         case "spring":
             seasonText = L10n.spring
@@ -550,6 +550,7 @@ class MainMenuViewController: BaseTableViewController {
         disposable.inner.add(userRepository.retrieveUser().observeCompleted {
             self.refreshControl?.endRefreshing()
         })
+        disposable.inner.add(contentRepository.retrieveWorldState().observeCompleted {})
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

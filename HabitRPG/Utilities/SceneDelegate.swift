@@ -100,29 +100,13 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     }
     
     private func retrieveContent() {
-        let defaults = UserDefaults.standard
-        let lastContentFetch = defaults.object(forKey: "lastContentFetch") as? NSDate
-        let lastContentFetchVersion = defaults.object(forKey: "lastContentFetchVersion") as? String
-        let currentBuildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
-        if lastContentFetch == nil || (lastContentFetch?.timeIntervalSinceNow ?? 0) < -3600 || lastContentFetchVersion != currentBuildNumber {
-            contentRepository.getFAQEntries()
-                .take(first: 1)
-                .flatMap(.latest) {[weak self] (entries) in
-                    return self?.contentRepository.retrieveContent(force: entries.value.isEmpty) ?? Signal.empty
-                }
-                .on(completed: {
-                    defaults.setValue(Date(), forKey: "lastContentFetch")
-                    defaults.setValue(currentBuildNumber, forKey: "lastContentFetchVersion")
-                })
-                .start()
-        }
-        
-        let lastWorldStateFetch = defaults.object(forKey: "lastWorldStateFetch") as? NSDate
-        if lastWorldStateFetch == nil || (lastWorldStateFetch?.timeIntervalSinceNow ?? 0) < -600 {
-            contentRepository.retrieveWorldState().observeCompleted {
-                defaults.setValue(Date(), forKey: "lastWorldStateFetch")
+        contentRepository.getFAQEntries()
+            .take(first: 1)
+            .flatMap(.latest) {[weak self] (entries) in
+                return self?.contentRepository.retrieveContent(force: entries.value.isEmpty) ?? Signal.empty
             }
-        }
+            .start()
+        contentRepository.retrieveWorldState(force: true).observeCompleted {}
     }
     
     func reloadWidgetData() {
