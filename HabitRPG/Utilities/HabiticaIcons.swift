@@ -2447,19 +2447,12 @@ public class HabiticaIcons : NSObject {
         let fillColor39 = UIColor(red: 1, green: 1, blue: 1.000, alpha: 1.000)
         let strokeColor2 = UIColor(red: 1, green: 1, blue: 1.000, alpha: 1.000)
 
-        //// Shadow Declarations
-        let shadow = NSShadow()
-        shadow.shadowColor = shadowTint.withAlphaComponent(0.12 * shadowTint.cgColor.alpha)
-        shadow.shadowOffset = CGSize(width: 0, height: 1)
-        shadow.shadowBlurRadius = 1
-
         //// Variable Declarations
         let itemIndicatorColor = isLocked ? (isDark ? indicatorLockedDark : indicatorLocked) : (isLimited ? strokeColor : (isDark ? indicatorLockedDark : itemIndicatorColorBackground))
 
         //// Oval 2 Drawing
-        let oval2Path = UIBezierPath(ovalIn: CGRect(x: 2, y: 2, width: 24, height: 24))
+        let oval2Path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 28, height: 28))
         context.saveGState()
-        context.setShadow(offset: CGSize(width: shadow.shadowOffset.width * resizedShadowScale, height: shadow.shadowOffset.height * resizedShadowScale), blur: shadow.shadowBlurRadius * resizedShadowScale, color: (shadow.shadowColor as! UIColor).cgColor)
         itemIndicatorColor.setFill()
         oval2Path.fill()
         context.restoreGState()

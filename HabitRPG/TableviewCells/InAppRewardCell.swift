@@ -40,10 +40,14 @@ class InAppRewardCell: UICollectionViewCell {
     private var isLocked = false {
         didSet {
             if isLocked {
-                if ThemeService.shared.theme.isDark {
-                    infoImageView.image = HabiticaIcons.imageOfItemIndicatorLockedDark()
+                if availableUntil != nil {
+                    infoImageView.image = HabiticaIcons.imageOfItemIndicatorLocked(indicatorLocked: .purple300, lockColor: .white)
                 } else {
-                    infoImageView.image = HabiticaIcons.imageOfItemIndicatorLocked()
+                    if ThemeService.shared.theme.isDark {
+                        infoImageView.image = HabiticaIcons.imageOfItemIndicatorLockedDark()
+                    } else {
+                        infoImageView.image = HabiticaIcons.imageOfItemIndicatorLocked()
+                    }
                 }
                 infoImageView.isHidden = false
                 infoLabel.isHidden = true
@@ -108,7 +112,6 @@ class InAppRewardCell: UICollectionViewCell {
             currencyView.currency = thisCurrency
             currency = thisCurrency
         }
-        isLocked = reward.locked
         
         if let currency = currency {
             setCanAfford(price, currency: currency, user: user)
@@ -138,6 +141,7 @@ class InAppRewardCell: UICollectionViewCell {
             unlockLabel.isHidden = true
             currencyView.isHidden = false
         }
+        isLocked = reward.locked
         
         if reward.key == "gem" {
             infoImageView.image = Asset.subBenefitIndicator.image

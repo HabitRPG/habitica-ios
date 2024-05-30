@@ -181,7 +181,7 @@ class SettingsViewController: FormViewController, Themeable {
                 }.onCellSelection({[weak self] (_, _) in
                     self?.contentRepository.retrieveContent(force: true)
                         .flatMap(.latest, { _ in
-                            return self?.contentRepository.retrieveWorldState() ?? Signal.empty
+                            return self?.contentRepository.retrieveWorldState(force: true) ?? Signal.empty
                         })
                         .observeCompleted {
                             ToastManager.show(text: L10n.Settings.reloadedContent, color: .green, duration: 4.0)
