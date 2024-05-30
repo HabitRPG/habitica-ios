@@ -25,6 +25,7 @@ import WidgetKit
 import AppAuth
 import AdServices
 import iAd
+import IonicPortals
 
 class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate {
     var window: UIWindow?
@@ -64,6 +65,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         handleInitialLaunch()
         applySearchAdAttribution()
         Measurements.stop(identifier: "didFinishLaunchingWithOptions")
+        PortalsRegistrationManager.shared.register(key: Secrets.ionicPortalsKey)
         return true
     }
 

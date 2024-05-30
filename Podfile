@@ -6,8 +6,8 @@ workspace 'Habitica'
 
 target 'Habitica' do
   project 'Habitica.xcodeproj'
-  pod 'PopupDialog'
-  
+  pod 'PopupDialog', '~> 1.1.1'
+  pod 'IonicPortals', '~> 0.11.0'
   target 'HabiticaTests' do
     inherit! :complete
   end
