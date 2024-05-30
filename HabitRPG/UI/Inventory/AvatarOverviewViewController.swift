@@ -39,19 +39,20 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
     private let headerView = AvatarHeaderView()
 
     override func viewDidLoad() {
-        topHeaderCoordinator?.hideNavBar = false
         super.viewDidLoad()
-        topHeaderCoordinator?.alternativeHeader = headerView
-        topHeaderCoordinator?.followScrollView = false
         if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
             topHeaderCoordinator = TopHeaderCoordinator(topHeaderNavigationController: topHeaderNavigationController, scrollView: scrollView)
         }
+        topHeaderCoordinator?.hideNavBar = false
+        topHeaderCoordinator?.alternativeHeader = headerView
         topHeaderCoordinator?.followScrollView = false
+        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
         
         setupItemViews()
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             self?.configure(user: user)
+            self?.headerView.setAvatar(avatar: user)
         }).start())
         
         view.setNeedsLayout()
@@ -197,12 +198,13 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
         let itemWidth = 76.0
         let itemHeight = itemWidth + 38
         let width = min(view.bounds.size.width - 16, 420)
-        containerview.pin.top(50).left((view.bounds.size.width - width) / 2).width(width).height(itemHeight * 3 + (3 * 12))
+        let containerPadding = (view.bounds.size.width - width) / 2
+        containerview.pin.top(60).left(containerPadding).width(width).height(itemHeight * 3 + (3 * 12))
         let padding = (containerview.bounds.width - 24.0 - (itemWidth*4)) / 3
         scrollView.contentSize = CGSize(width: view.bounds.size.width, height: containerview.bounds.origin.y + containerview.bounds.size.height + 64)
         scrollView.pin.all()
-        bodySizeLabel.pin.top(0).left(padding).above(of: containerview).sizeToFit(.height)
-        bodySizeControl.pin.right(padding).top(11)
+        bodySizeLabel.pin.top(11).left(containerPadding).above(of: containerview).sizeToFit(.height)
+        bodySizeControl.pin.right(containerPadding).top(20)
         
         shirtView.pin.top(12).left(12).width(itemWidth).height(itemHeight)
         skinView.pin.top(12).right(of: shirtView).marginLeft(padding).width(itemWidth).height(itemHeight)

@@ -2444,8 +2444,8 @@ public class HabiticaIcons : NSObject {
         //// Color Declarations
         let strokeColor = UIColor(red: 0.380, green: 0.200, blue: 0.706, alpha: 1.000)
         let shadowTint = UIColor(red: 0.102, green: 0.094, blue: 0.114, alpha: 1.000)
-        let fillColor39 = UIColor(red: 0.741, green: 0.659, blue: 1.000, alpha: 1.000)
-        let strokeColor2 = UIColor(red: 0.741, green: 0.659, blue: 1.000, alpha: 1.000)
+        let fillColor39 = UIColor(red: 1, green: 1, blue: 1.000, alpha: 1.000)
+        let strokeColor2 = UIColor(red: 1, green: 1, blue: 1.000, alpha: 1.000)
 
         //// Shadow Declarations
         let shadow = NSShadow()

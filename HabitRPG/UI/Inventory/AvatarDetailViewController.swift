@@ -28,7 +28,14 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     override func viewDidLoad() {
         topHeaderCoordinator?.hideNavBar = false
         super.viewDidLoad()
-        topHeaderCoordinator?.alternativeHeader = headerView
+        if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
+            if let header = topHeaderNavigationController.currentHeaderCoordinator?.alternativeHeader as? AvatarHeaderView {
+                topHeaderCoordinator?.alternativeHeader = header
+            }
+        }
+        if topHeaderCoordinator?.alternativeHeader == nil {
+            topHeaderCoordinator?.alternativeHeader = headerView
+        }
         topHeaderCoordinator?.followScrollView = false
         
         newCustomizationLayout = configRepository.bool(variable: .enableCustomizationShop) || configRepository.testingLevel.isDeveloper
@@ -114,7 +121,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
                     } else if customization.type == "hair" && customizationGroup != "color" {
                         key = "0"
                     } else if customization.type == "chair" {
-                        key = "chair_none"
+                        key = "none"
                     } else {
                         return
                     }

@@ -16,6 +16,8 @@ class AvatarHeaderView: UIView, Themeable {
     private let roundBlockLeft = UIView()
     private let backBlockRight = UIView()
     private let roundBlockRight = UIView()
+   
+    private let roundingWrapper = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,15 +32,17 @@ class AvatarHeaderView: UIView, Themeable {
     private func setupView() {
         ThemeService.shared.addThemeable(themable: self)
         addSubview(avatarView)
-        addSubview(backBlockLeft)
+        roundingWrapper.clipsToBounds = true
+        addSubview(roundingWrapper)
+        roundingWrapper.addSubview(backBlockLeft)
         roundBlockLeft.cornerRadius = 22
         roundBlockLeft.layer.maskedCorners = [.layerMinXMinYCorner]
-        addSubview(roundBlockLeft)
+        roundingWrapper.addSubview(roundBlockLeft)
         
-        addSubview(backBlockRight)
+        roundingWrapper.addSubview(backBlockRight)
         roundBlockRight.cornerRadius = 22
         roundBlockRight.layer.maskedCorners = [.layerMaxXMinYCorner]
-        addSubview(roundBlockRight)
+        roundingWrapper.addSubview(roundBlockRight)
     }
     
     func applyTheme(theme: any Theme) {
@@ -52,10 +56,11 @@ class AvatarHeaderView: UIView, Themeable {
     override func layoutSubviews() {
         super.layoutSubviews()
         avatarView.pin.width(140).height(147).top().hCenter()
-        backBlockLeft.pin.size(22).bottom(-22).start()
-        roundBlockLeft.pin.size(44).bottom(-44).start()
-        backBlockRight.pin.size(22).bottom(-22).end()
-        roundBlockRight.pin.size(44).bottom(-44).end()
+        roundingWrapper.pin.width(bounds.width).height(22).bottom(-22)
+        backBlockLeft.pin.size(22).top().start()
+        roundBlockLeft.pin.size(44).top().start()
+        backBlockRight.pin.size(22).top().end()
+        roundBlockRight.pin.size(44).top().end()
     }
     
     func setAvatar(avatar: AvatarProtocol) {

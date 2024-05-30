@@ -13,6 +13,11 @@ class TimeTravelersCollectionViewDataSource: ShopCollectionViewDataSource {
     
     override func loadCategories(_ categories: [ShopCategoryProtocol]) {
         sections.removeAll()
+        let mysterySection = ItemSection<InAppRewardProtocol>()
+        mysterySection.key = "mystery_sets"
+        mysterySection.title = L10n.mysterySets
+        mysterySection.items = [InAppRewardProtocol]()
+        mysterySection.showIfEmpty = true
         for category in categories {
             for item in category.items {
                 if item.category?.pinType != "mystery_set" {
@@ -26,34 +31,23 @@ class TimeTravelersCollectionViewDataSource: ShopCollectionViewDataSource {
                         sections.append(section)
                     }
                 } else {
-                    if sections.isEmpty || !sections.contains(where: { (section) -> Bool in section.key == "mystery_sets" }) {
-                        let section = ItemSection<InAppRewardProtocol>()
-                        section.key = "mystery_sets"
-                        section.title = L10n.mysterySets
-                        section.items = [InAppRewardProtocol]()
-                        section.showIfEmpty = true
-                        sections.append(section)
-                    }
-                    if let setSection = sections.first(where: { (section) -> Bool in
-                        section.key == "mystery_sets"
-                    }) {
-                        if setSection.items.isEmpty || setSection.items.last?.key != item.category?.identifier {
-                            let newItem = inventoryRepository.getNewInAppReward()
-                            let key = item.category?.identifier ?? ""
-                            newItem.text = item.category?.text
-                            newItem.key = key
-                            newItem.pinType = item.pinType ?? "mystery_set"
-                            newItem.purchaseType = newItem.pinType
-                            newItem.path = item.path ?? "mystery."+key
-                            newItem.value = item.value
-                            newItem.currency = item.currency
-                            newItem.imageName = "shop_set_mystery_"+key
-                            setSection.items.append(newItem)
-                        }
+                    if mysterySection.items.isEmpty || mysterySection.items.last?.key != item.category?.identifier {
+                        let newItem = inventoryRepository.getNewInAppReward()
+                        let key = item.category?.identifier ?? ""
+                        newItem.text = item.category?.text
+                        newItem.key = key
+                        newItem.pinType = item.pinType ?? "mystery_set"
+                        newItem.purchaseType = newItem.pinType
+                        newItem.path = item.path ?? "mystery."+key
+                        newItem.value = item.value
+                        newItem.currency = item.currency
+                        newItem.imageName = "shop_set_mystery_"+key
+                        mysterySection.items.append(newItem)
                     }
                 }
             }
         }
+        sections.append(mysterySection)
         collectionView?.reloadData()
     }
 }

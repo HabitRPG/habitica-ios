@@ -58,6 +58,10 @@ enum Route {
     case subscription
     case customizationShop
     
+    case equipment
+    
+    case customizations(type: String, group: String? = nil)
+    
     var url: String {
         // swiftlint:disable
         switch self {
@@ -67,6 +71,13 @@ enum Route {
         case .seasonalShop: return "/inventory/seasonal"
         case .timeTravelers: return "/inventory/time"
         case .subscription: return "/user/settings/subscription"
+        case .equipment: return "/inventory/equipment"
+        case .customizations(let type, let group):
+            if let group = group {
+                return "/inventory/customizations/\(type)/\(group)"
+            } else {
+                return "/inventory/customizations/\(type)"
+            }
         }
         // siwftlint:enable
     }
@@ -169,6 +180,19 @@ class RouterHandler {
         register("/inventory/stable") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.stableViewController.instantiate())
+        }
+        register("/inventory/customizations/:type/:group") { link in
+            self.displayTab(index: 4)
+            let viewController = StoryboardScene.Main.avatarDetailViewController.instantiate()
+            viewController.customizationType = link["type"]
+            viewController.customizationGroup = link["group"]
+            self.push(viewController)
+        }
+        register("/inventory/customizations/:type") { link in
+            self.displayTab(index: 4)
+            let viewController = StoryboardScene.Main.avatarDetailViewController.instantiate()
+            viewController.customizationType = link["type"]
+            self.push(viewController)
         }
         register("/inventory/stable/pets/:petType") { link in
             self.displayTab(index: 4)

@@ -2515,6 +2515,8 @@ public enum L10n {
   public enum Shops {
     /// Want to change up your looks? You came to the right place! We get new options all the time.
     public static var customizationNotes: String { return L10n.tr("Mainstrings", "shops.customization_notes") }
+    /// customizing your avatar
+    public static var customizingYourAvatar: String { return L10n.tr("Mainstrings", "shops.customizing_your_avatar") }
     /// You can only purchase gear for your current class
     public static var otherClassDisclaimer: String { return L10n.tr("Mainstrings", "shops.other_class_disclaimer") }
     /// You own all of these items
@@ -2535,7 +2537,7 @@ public enum L10n {
     public static var tryOnCustomizeAvatarReturnNextMonth: String { return L10n.tr("Mainstrings", "shops.try_on_customize_avatar_return_next_month") }
     /// You can try them on by customizing your avatar. Be sure to check back later for next season’s options!
     public static var tryOnCustomizeAvatarReturnNextSeason: String { return L10n.tr("Mainstrings", "shops.try_on_customize_avatar_return_next_season") }
-    /// You can try them on by Equipment. Be sure to check back later for next month’s options!
+    /// You can try them on from Equipment. Be sure to check back later for next month’s options!
     public static var tryOnEquipment: String { return L10n.tr("Mainstrings", "shops.try_on_equipment") }
   }
 

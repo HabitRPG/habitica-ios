@@ -156,10 +156,38 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         })
     }
     
-    func didSelectItem(_ item: InAppRewardProtocol?) {
+    func didSelectItem(_ item: InAppRewardProtocol?, indexPath: IndexPath) {
         if item?.key == "gem" && isSubscribed == false {
             let sheet = SubscriptionModalViewController(presentationPoint: .gemForGold)
             sheet.show()
+            return
+        }
+        if item == nil {
+            if shopIdentifier == Constants.CustomizationShopKey {
+                if let identifier = dataSource?.visibleSections[indexPath.section].key {
+                    var type = identifier
+                    var group: String?
+                    if identifier == "color" {
+                        type = "hair"
+                        group = "color"
+                    } else if identifier == "facialHair" {
+                        type = "hair"
+                        group = "beard"
+                    } else if identifier == "base" {
+                        type = "hair"
+                        group = "base"
+                    } else if identifier == "animalEars" {
+                        type = "headAccessory"
+                    } else if identifier == "animalTails" {
+                        type = "back"
+                    } else if identifier == "backgrounds" {
+                        type = "background"
+                    }
+                    RouterHandler.shared.handle(.customizations(type: type, group: group))
+                }
+            } else if shopIdentifier == Constants.TimeTravelersShopKey {
+                RouterHandler.shared.handle(.equipment)
+            }
             return
         }
         let viewController = StoryboardScene.BuyModal.hrpgBuyItemModalViewController.instantiate()

@@ -19,6 +19,7 @@ class AvatarShopItemView: UIView {
     @IBOutlet weak var shopItemTitleLabel: UILabel!
     @IBOutlet weak var shopItemDescriptionLabel: UILabel!
     @IBOutlet weak var additionalInfoLabel: UILabel!
+    @IBOutlet weak var spacerview: UIView!
     
     private var user: UserProtocol?
     
@@ -138,10 +139,11 @@ class AvatarShopItemView: UIView {
             configureFor(key: reward.key ?? "", purchaseType: purchaseType)
         }
         
-        if let notes = reward.notes {
+        if let notes = reward.notes, !notes.isEmpty {
             self.shopItemDescriptionLabel.text = notes
         } else {
             self.shopItemDescriptionLabel.text = ""
+            shouldHideNotes = true
             if let label = shopItemDescriptionLabel {
                 let constraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal,
                                                     toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 0)
@@ -154,8 +156,10 @@ class AvatarShopItemView: UIView {
             topBannerLabel.textColor = .white
             topBannerLabel.text = lockedReason
             topBannerWrapper.isHidden = false
+            spacerview.isHidden = true
         } else if reward.availableUntil() == nil {
             topBannerWrapper.isHidden = true
+            spacerview.isHidden = false
         }
     }
     

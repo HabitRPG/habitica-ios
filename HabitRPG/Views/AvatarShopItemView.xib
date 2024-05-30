@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,6 +15,7 @@
                 <outlet property="avatarView" destination="f0N-rK-mKA" id="wSt-eu-OgU"/>
                 <outlet property="shopItemDescriptionLabel" destination="xWe-bR-RFs" id="sUU-Ys-qdl"/>
                 <outlet property="shopItemTitleLabel" destination="Do6-Ch-3Hd" id="M0n-c7-WLm"/>
+                <outlet property="spacerview" destination="SQZ-cL-DdQ" id="OHw-SB-u0y"/>
                 <outlet property="topBannerLabel" destination="bwG-lQ-f71" id="RV9-FM-X7l"/>
                 <outlet property="topBannerWrapper" destination="0KM-EX-Cjj" id="EWL-Iv-IcQ"/>
             </connections>
@@ -28,10 +29,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="385" height="266"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0KM-EX-Cjj">
-                            <rect key="frame" x="0.0" y="0.0" width="385" height="20.666666666666668"/>
+                            <rect key="frame" x="0.0" y="0.0" width="385" height="8"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwG-lQ-f71">
-                                    <rect key="frame" x="16" y="3.9999999999999991" width="353" height="12.666666666666664"/>
+                                    <rect key="frame" x="16" y="4" width="353" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -46,8 +47,15 @@
                                 <constraint firstItem="bwG-lQ-f71" firstAttribute="leading" secondItem="0KM-EX-Cjj" secondAttribute="leading" constant="16" id="vIJ-yq-rDu"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQZ-cL-DdQ">
+                            <rect key="frame" x="0.0" y="24" width="385" height="0.0"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" priority="500" id="20i-wW-rFW"/>
+                            </constraints>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="30h-8a-s6z">
-                            <rect key="frame" x="0.0" y="36.666666666666657" width="385" height="159"/>
+                            <rect key="frame" x="0.0" y="40" width="385" height="159"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f0N-rK-mKA" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
                                     <rect key="frame" x="122.66666666666669" y="12" width="140" height="147"/>
@@ -65,14 +73,14 @@
                                 <constraint firstItem="f0N-rK-mKA" firstAttribute="top" secondItem="30h-8a-s6z" secondAttribute="top" constant="12" id="wgS-rb-b1v"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Do6-Ch-3Hd">
-                            <rect key="frame" x="0.0" y="211.66666666666666" width="385" height="20.333333333333343"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Do6-Ch-3Hd">
+                            <rect key="frame" x="0.0" y="215" width="385" height="20.333333333333343"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xWe-bR-RFs">
-                            <rect key="frame" x="0.0" y="248" width="385" height="18"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xWe-bR-RFs">
+                            <rect key="frame" x="0.0" y="251.33333333333334" width="385" height="14.666666666666657"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.40784313729999999" green="0.38431372549999998" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>

@@ -1024,7 +1024,8 @@
 "shops.try_on_customize_avatar_return_next_month" = "You can try them on by customizing your avatar. Be sure to check back later for next month’s options!";
 "shops.try_on_customize_avatar_return_next_season" = "You can try them on by customizing your avatar. Be sure to check back later for next season’s options!";
 "shops.try_on_customize_avatar" = "You can try them on by customizing your avatar.";
-"shops.try_on_equipment" = "You can try them on by Equipment. Be sure to check back later for next month’s options!";
+"shops.try_on_equipment" = "You can try them on from Equipment. Be sure to check back later for next month’s options!";
+"shops.customizing_your_avatar" = "customizing your avatar";
 "purchased" = "You purchased %@";
 "buy_reward" = "You bought '%@' for %@ gold";
 "notifications.unallocated_stat_points" = "You have **%d unallocated Stat Points**";

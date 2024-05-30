@@ -12,7 +12,7 @@ import ReactiveSwift
 
 @objc
 protocol ShopCollectionViewDataSourceDelegate {
-    func didSelectItem(_ item: InAppRewardProtocol?)
+    func didSelectItem(_ item: InAppRewardProtocol?, indexPath: IndexPath)
     func scrollViewDidScroll(_ scrollView: UIScrollView)
     func showGearSelection(sourceView: UIView)
     func updateShopHeader(shop: ShopProtocol?)
@@ -265,10 +265,37 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 return CGSize(width: collectionView.bounds.width, height: 100)
             }
         }
-        if visibleSections[indexPath.section].items.isEmpty {
-            return CGSize(width: collectionView.bounds.width, height: 100)
+        let section = visibleSections[indexPath.section]
+        if section.items.isEmpty {
+            let attributedString = attributedStringInEmptySection(section: section)
+            let size = attributedString.boundingRect(with: CGSize(width: collectionView.bounds.width - 60, height: 200), options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
+            return CGSize(width: collectionView.bounds.width, height: size.height + 30 + 34)
         }
         return CGSize(width: 90, height: 120)
+    }
+    
+    private func attributedStringInEmptySection(section: ItemSection<InAppRewardProtocol>) -> NSAttributedString {
+        var str = ""
+        if section.key == "backgrounds" {
+            str = L10n.Shops.tryOnCustomizeAvatarReturnNextMonth
+        } else if section.key == "color" || section.key == "skin" {
+            str = L10n.Shops.tryOnCustomizeAvatarReturnNextSeason
+        } else if section.key == "mystery_sets" {
+            str = L10n.Shops.tryOnEquipment
+        } else {
+            str = L10n.Shops.tryOnCustomizeAvatar
+        }
+        let att = NSMutableAttributedString(string: str)
+        att.addAttribute(.font, value: UIFont.systemFont(ofSize: 14))
+        for word in [L10n.Equipment.equipment, L10n.Shops.customizingYourAvatar] {
+            print(word)
+            let range = att.mutableString.range(of: word)
+            if range.length > 0 {
+                print(range)
+                att.addAttribute(NSAttributedString.Key.foregroundColor, value: ThemeService.shared.theme.tintColor, range: range)
+            }
+        }
+        return att
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -303,23 +330,15 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             (cell.viewWithTag(1) as? UILabel)?.text = L10n.Shops.ownAllItems
             (cell.viewWithTag(1) as? UILabel)?.textColor = ThemeService.shared.theme.primaryTextColor
             let section = visibleSections[indexPath.section]
-            if section.key == "backgrounds" {
-                (cell.viewWithTag(2) as? UILabel)?.text = L10n.Shops.tryOnCustomizeAvatarReturnNextMonth
-            } else if section.key == "color" || section.key == "skin" {
-                (cell.viewWithTag(2) as? UILabel)?.text = L10n.Shops.tryOnCustomizeAvatarReturnNextSeason
-            } else if section.key == "mystery_sets" {
-                (cell.viewWithTag(2) as? UILabel)?.text = L10n.Shops.tryOnEquipment
-            } else {
-                (cell.viewWithTag(2) as? UILabel)?.text = L10n.Shops.tryOnCustomizeAvatar
-            }
             (cell.viewWithTag(2) as? UILabel)?.textColor = ThemeService.shared.theme.secondaryTextColor
+            (cell.viewWithTag(2) as? UILabel)?.attributedText = attributedStringInEmptySection(section: section)
             cell.viewWithTag(3)?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
             return cell
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelectItem(item(at: indexPath))
+        delegate?.didSelectItem(item(at: indexPath), indexPath: indexPath)
     }
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
