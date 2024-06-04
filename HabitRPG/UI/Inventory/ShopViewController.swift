@@ -29,6 +29,7 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
     
     func updateShopHeader(shop: ShopProtocol?) {
         bannerView.shop = shop
+        collectionView.contentInset = .init(top: bannerView.intrinsicContentSize.height + 20, left: 0, bottom: 0, right: 0)
     }
     
     func updateNavBar(gold: Int, gems: Int, hourglasses: Int) {
@@ -63,10 +64,6 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         if let identifier = shopIdentifier {
             bannerView.setSprites(identifier: identifier)
             bannerView.setNPCName(identifier: identifier)
-            
-            if identifier == "customizations" {
-                bannerView.setNotes(L10n.Shops.customizationNotes)
-            }
         }
         
         setupNavBar()
@@ -128,7 +125,8 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
             return
         }
         collectionViewLayout.itemSize = CGSize(width: 90, height: 120)
-        collectionViewLayout.sectionInset = UIEdgeInsets(top: 0, left: 6, bottom: 20, right: 6)
+        collectionViewLayout.sectionInset = UIEdgeInsets(top: 0, left: 6, bottom: 40, right: 6)
+        collectionView.contentInset = .zero
         collectionView.collectionViewLayout = collectionViewLayout
         
         if let identifier = shopIdentifier {

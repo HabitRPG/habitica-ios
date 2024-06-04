@@ -44,6 +44,7 @@ class TimeTravelersCollectionViewDataSource: ShopCollectionViewDataSource {
                         newItem.imageName = "shop_set_mystery_"+key
                         newItem.endDate = item.endDate
                         mysterySection.items.append(newItem)
+                        mysterySection.endDate = newItem.endDate
                     }
                 }
             }

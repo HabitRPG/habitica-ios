@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 extension UIApplication {
     class func topViewController(base: UIViewController? = UIApplication.shared.findKeyWindow()?.rootViewController) -> UIViewController? {
@@ -29,5 +30,22 @@ extension UIApplication {
     
     func findKeyWindow() -> UIWindow? {
         return windows.first(where: { $0.isKeyWindow }) ?? windows.first
+    }
+    
+    var foregroundActiveScene: UIWindowScene? {
+        connectedScenes
+            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
+    }
+    
+    class func requestReview() {
+        let configRepository = ConfigRepository.shared
+        if configRepository.bool(variable: .enableReviewRequest) {
+            #if os(macOS)
+                SKStoreReviewController.requestReview()
+            #else
+                guard let scene = UIApplication.shared.foregroundActiveScene else { return }
+                SKStoreReviewController.requestReview(in: scene)
+            #endif
+        }
     }
 }

@@ -54,6 +54,7 @@ enum ConfigVariable: Int {
     case enableFaintSubs
     case enableArmoireSubs
     case enableCustomizationShop
+    case enableReviewRequest
 
     // swiftlint:disable cyclomatic_complexity
     func name() -> String {
@@ -93,7 +94,8 @@ enum ConfigVariable: Int {
         case .hideChallenges: return "hideChallenges"
         case .enableFaintSubs: return "enableFaintSubs"
         case .enableArmoireSubs: return "enableArmoireSubs"
-        case.enableCustomizationShop: return "enableCustomizationShop"
+        case .enableCustomizationShop: return "enableCustomizationShop"
+        case .enableReviewRequest: return "enableReviewRequest"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -169,7 +171,9 @@ enum ConfigVariable: Int {
         case .hideChallenges:
             return false as NSNumber
         case .enableCustomizationShop:
-            return true as NSNumber
+            return false as NSNumber
+        case .enableReviewRequest:
+            return false as NSNumber
         }
     }
     

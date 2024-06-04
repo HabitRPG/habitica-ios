@@ -51,7 +51,7 @@ class InAppRewardCell: UICollectionViewCell {
                 }
                 infoImageView.isHidden = false
                 infoLabel.isHidden = true
-            } else {
+            } else if availableUntil == nil {
                 infoImageView.isHidden = true
                 infoLabel.isHidden = true
             }
@@ -124,7 +124,7 @@ class InAppRewardCell: UICollectionViewCell {
         
         if let date = reward.availableUntil() {
             availableUntil = date
-            infoLabel.backgroundColor = ThemeService.shared.theme.backgroundTintColor
+            infoLabel.backgroundColor = .purple300
             infoLabel.textColor = .white
         } else {
             availableUntil = nil
@@ -176,12 +176,10 @@ class InAppRewardCell: UICollectionViewCell {
     func setCanAfford(_ price: Float, currency: Currency, user: UserProtocol?) {
         var canAfford = false
 
-        if let user = user {
-            if currency == .gold {
-                canAfford = price <= user.stats?.gold ?? 0
-            } else {
-                canAfford = true
-            }
+        if let user = user, currency == .gold  {
+            canAfford = price <= user.stats?.gold ?? 0
+        } else {
+            canAfford = true
         }
     
         if canAfford && !isLocked {

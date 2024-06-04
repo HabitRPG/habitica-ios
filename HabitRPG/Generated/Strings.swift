@@ -138,7 +138,7 @@ public enum L10n {
   public static var checkinYesterdaysDalies: String { return L10n.tr("Mainstrings", "checkin_yesterdays_dalies") }
   /// Choose Task
   public static var chooseTask: String { return L10n.tr("Mainstrings", "choose_task") }
-  /// This item is only available to %s.\nOpen Settings to change class
+  /// This item is only available to %s.\nOpen Settings to change class.
   public static func classEquipmentShopDialog(_ p1: UnsafePointer<CChar>) -> String {
     return L10n.tr("Mainstrings", "class_equipment_shop_dialog", p1)
   }

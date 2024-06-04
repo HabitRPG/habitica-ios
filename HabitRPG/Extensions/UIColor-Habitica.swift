@@ -83,6 +83,21 @@ extension UIColor {
     @nonobjc static let tier6 = UIColor(red: 43.0 / 255.0, green: 131.0 / 255.0, blue: 99.0 / 255.0, alpha: 1.0)
     @nonobjc static let tier7 = UIColor(red: 22.0 / 255.0, green: 126.0 / 255.0, blue: 135.0 / 255.0, alpha: 1.0)
     @nonobjc static let tierMod = UIColor(red: 39.0 / 255.0, green: 126.0 / 255.0, blue: 171.0 / 255.0, alpha: 1.0)
+    
+    static func backgroundColorFor(habiticaClass: String?) -> UIColor {
+        switch habiticaClass {
+        case "warrior":
+            return .maroon50
+        case "healer":
+            return .yellow10
+        case "mage", "wizard":
+            return .blue10
+        case "rogue":
+            return .purple200
+        default:
+            return .gray500
+        }
+    }
 }
 
 extension Color {

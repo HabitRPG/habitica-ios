@@ -1369,5 +1369,5 @@
 "winter" = "Winter";
 
 "customization_shop" = "Customization Shop";
-"class_equipment_shop_dialog" = "This item is only available to %s.\nOpen Settings to change class";
+"class_equipment_shop_dialog" = "This item is only available to %s.\nOpen Settings to change class.";
 "insufficient_level_equipment_dialog_new" = "This item is only available to %s.\nYou can select a class after level 10.";

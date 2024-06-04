@@ -268,6 +268,7 @@ internal enum Asset {
   internal static let separatorFancy = ImageAsset(name: "separator_fancy")
   internal static let shopEmptyHourglass = ImageAsset(name: "shop_empty_hourglass")
   internal static let shopEmptySeasonal = ImageAsset(name: "shop_empty_seasonal")
+  internal static let shopSeparatorSparkle = ImageAsset(name: "shop_separator_sparkle")
   internal static let sliderThumb = ImageAsset(name: "slider_thumb")
   internal static let sparkleStarsLeft = ImageAsset(name: "sparkleStarsLeft")
   internal static let sparkleStarsRight = ImageAsset(name: "sparkleStarsRight")
@@ -333,6 +334,7 @@ internal enum Asset {
   internal static let taskLockDisabled = ImageAsset(name: "task_lock_disabled")
   internal static let taskLockLight = ImageAsset(name: "task_lock_light")
   internal static let teamPlan = ImageAsset(name: "team_plan")
+  internal static let triangle = ImageAsset(name: "triangle")
   internal static let wonChallengeIcon = ImageAsset(name: "won_challenge_icon")
   internal static let wordmarkWhite = ImageAsset(name: "wordmark_white")
 }

@@ -213,14 +213,11 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             ) as? HRPGShopSectionHeaderCollectionReusableView
         
         if let headerView = view {
-            headerView.gearCategoryButton.isHidden = true
-            headerView.otherClassDisclaimer.isHidden = true
             if indexPath.section == 0 && needsGearSection {
                 headerView.titleLabel.text = L10n.Equipment.classEquipment.localizedUppercase
-                headerView.gearCategoryLabel.text = ifWizardConvertToMage(selectedGearCategory)?.capitalized
-                headerView.gearCategoryButton.isHidden = false
+                headerView.setSecondRow(className: ifWizardConvertToMage(selectedGearCategory)?.capitalized ?? "", classColor: .backgroundColorFor(habiticaClass: selectedGearCategory))
                 headerView.onGearCategoryLabelTapped = {[weak self] in
-                    self?.delegate?.showGearSelection(sourceView: headerView.gearCategoryButton)
+                    self?.delegate?.showGearSelection(sourceView: headerView.gearCategoryLabel)
                 }
                 headerView.otherClassDisclaimer.isHidden = userClass == selectedInternalGearCategory || selectedInternalGearCategory == "none"
                 headerView.otherClassDisclaimer.text = L10n.Shops.otherClassDisclaimer
@@ -228,19 +225,20 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 let section = visibleSections[indexPath.section]
                 if let endDate = section.endDate {
                     headerView.swapsInLabel.isHidden = false
-                    if endDate > Date() {
-                        headerView.swapsInLabel.text = L10n.swapsInX(endDate.getImpreciseRemainingString())
-                    } else {
-                        headerView.swapsInLabel.text = L10n.refreshForItems
-                    }
-                    headerView.swapsInLabel.textColor = ThemeService.shared.theme.tintedMainText
+                    headerView.setSecondRow(date: endDate)
                 } else {
-                    headerView.swapsInLabel.isHidden = true
+                    headerView.hideSecondRow()
                 }
                 headerView.titleLabel.text = titleFor(section: indexPath.section)?.localizedUppercase
+                headerView.otherClassDisclaimer.isHidden = true
             }
-            headerView.titleLabel.textColor = ThemeService.shared.theme.ternaryTextColor
+            headerView.setNeedsLayout()
             headerView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+            if ThemeService.shared.theme.isDark {
+                headerView.backgroundView.backgroundColor = UIColor("#55311D")
+            } else {
+                headerView.backgroundView.backgroundColor = UIColor("#B36213")
+            }
             return headerView
         }
         return UICollectionReusableView()
@@ -252,11 +250,18 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
    
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 0 && needsGearSection {
-             if userClass != selectedInternalGearCategory {
+            if userClass != selectedInternalGearCategory {
+                return CGSize(width: collectionView.bounds.width, height: 110)
+            } else {
                 return CGSize(width: collectionView.bounds.width, height: 75)
             }
         }
-        return CGSize(width: collectionView.bounds.width, height: 50)
+        let section = visibleSections[section]
+        if section.endDate != nil {
+            return CGSize(width: collectionView.bounds.width, height: 75)
+        } else {
+            return CGSize(width: collectionView.bounds.width, height: 40)
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
