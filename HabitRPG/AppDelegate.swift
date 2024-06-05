@@ -31,21 +31,21 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     var window: UIWindow?
     var currentAuthorizationFlow: OIDExternalUserAgentSession?
     var isBeingTested = false
-        
+
     var application: UIApplication?
-    
+
     private let userRepository = UserRepository()
     private let contentRepository = ContentRepository()
     let taskRepository = TaskRepository()
     private let socialRepository = SocialRepository()
     private let configRepository = ConfigRepository.shared
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         Measurements.start(identifier: "didFinishLaunchingWithOptions")
         Measurements.start(identifier: "task list loaded")
         logger = RemoteLogger()
         self.application = application
-        
+
         if !isBeingTested {
             setupLogging()
             setupAnalytics()
@@ -57,11 +57,11 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         setupNetworkClient()
         setupDatabase()
         configureNotifications()
-        
+
         if let userInfo = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
             handlePushnotification(identifier: nil, userInfo: userInfo)
         }
-        
+
         handleInitialLaunch()
         applySearchAdAttribution()
         Measurements.stop(identifier: "didFinishLaunchingWithOptions")
@@ -76,7 +76,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         }
         return RouterHandler.shared.handle(url: url)
     }
-    
+
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         URLContexts.forEach { context in
             RouterHandler.shared.handle(url: context.url)
@@ -101,16 +101,16 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         if let apiKey = launchEnvironment["apikey"] {
             AuthenticationManager.shared.currentUserKey = apiKey
         }
-        
+
         if let stubs = launchEnvironment["STUB_DATA"]?.data(using: .utf8) {
             // swiftlint:disable:next force_try
             HabiticaServerConfig.stubs = try! JSONDecoder().decode([String: CallStub].self, from: stubs)
         }
     }
-    
+
     func setupFirebase() {
         Messaging.messaging().delegate = self
-        
+
         let userDefaults = UserDefaults.standard
         #if !targetEnvironment(macCatalyst)
         Crashlytics.crashlytics().setCustomValue(-(NSTimeZone.local.secondsFromGMT() / 60), forKey: "timesoze_offset")
@@ -121,23 +121,23 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         Analytics.setUserProperty(userDefaults.string(forKey: "initialScreenURL"), forName: "launch_screen")
         #endif
     }
-    
+
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        
+
     }
-    
+
     func saveDeviceToken(_ deviceToken: Data) {
         let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
         UserDefaults.standard.set(token, forKey: "PushNotificationDeviceToken")
     }
-    
+
     func setupLogging() {
         let userID = AuthenticationManager.shared.currentUserId
         FirebaseApp.configure()
         (logger as? RemoteLogger)?.setUserID(userID)
         logger.isProduction = HabiticaAppDelegate.isRunningLive()
     }
-    
+
     func setupAnalytics() {
         Amplitude.instance().initializeApiKey(Secrets.amplitudeApiKey)
         Amplitude.instance().setUserId(AuthenticationManager.shared.currentUserId)
@@ -146,11 +146,11 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                                                  "launch_screen": userDefaults.string(forKey: "initialScreenURL") ?? ""
         ])
     }
-    
+
     func setupPurchaseHandling() {
         PurchaseHandler.shared.completionHandler()
     }
-    
+
     func setupNetworkClient() {
         NetworkAuthenticationManager.shared.currentUserId = AuthenticationManager.shared.currentUserId
         NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey
@@ -165,7 +165,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         }
         let configuration = URLSessionConfiguration.default
         AuthenticatedCall.defaultConfiguration.urlConfiguration = configuration
-        
+
         let userDefaults = UserDefaults.standard
         for (key, etag) in userDefaults.dictionaryRepresentation().filter({ (key, _) -> Bool in
             return key.starts(with: "etag")
@@ -173,7 +173,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             HabiticaServerConfig.etags[String(key.dropFirst(4))] = etag as? String
         }
     }
-    
+
     func updateServer() {
         if isBeingTested {
             AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.stub
@@ -219,7 +219,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             }
         }
     }
-    
+
     func setupDatabase() {
         var config = Realm.Configuration.defaultConfiguration
         config.deleteRealmIfMigrationNeeded = true
@@ -237,30 +237,30 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         }
         Realm.Configuration.defaultConfiguration = config
     }
-    
+
     func setupRouter() {
         RouterHandler.shared.register()
     }
-    
+
     func handleInitialLaunch() {
         let defaults = UserDefaults.standard
         if !defaults.bool(forKey: "wasLaunchedBefore") {
             defaults.set(true, forKey: "wasLaunchedBefore")
-            
+
             var components = Calendar.current.dateComponents([.year, .month, .day], from: Date())
             components.hour = 19
             components.minute = 0
             let newDate = Calendar.current.date(from: components)
-            
+
             defaults.set(true, forKey: "dailyReminderActive")
             defaults.set(newDate, forKey: "dailyReminderTime")
             defaults.set(true, forKey: "appBadgeActive")
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-            
+
             rescheduleDailyReminder()
         }
     }
-    
+
     func retrieveTasks(_ completed: @escaping ((Bool) -> Void)) {
         taskRepository.retrieveTasks().observeResult { (result) in
             switch result {
@@ -271,7 +271,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             }
         }
     }
-    
+
     func scoreTask(_ taskId: String, direction: TaskScoringDirection, completed: @escaping (() -> Void)) {
         if let task = taskRepository.getEditableTask(id: taskId) {
             taskRepository.score(task: task, direction: direction).observeCompleted {
@@ -281,7 +281,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             completed()
         }
     }
-    
+
     func acceptQuestInvitation(_ completed: @escaping ((Bool) -> Void)) {
         userRepository.getUser().take(first: 1)
             .map({ (user) -> String? in
@@ -296,7 +296,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                 completed(true)
             }).start()
     }
-    
+
     func rejectQuestInvitation(_ completed: @escaping ((Bool) -> Void)) {
         userRepository.getUser().take(first: 1)
             .map({ (user) -> String? in
@@ -311,7 +311,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                 completed(true)
             }).start()
     }
-    
+
     func sendPrivateMessage(toUserID: String, message: String, completed: @escaping ((Bool) -> Void)) {
         socialRepository.post(inboxMessage: message, toUserID: toUserID).observeResult({ (result) in
             switch result {
@@ -322,17 +322,17 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             }
         })
     }
-    
+
     func displayNotificationInApp(text: String) {
         ToastManager.show(text: text, color: .purple)
         UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
     }
-    
+
     func displayNotificationInApp(title: String, text: String) {
         ToastManager.show(text: "\(title)\n\(text)", color: .purple)
         UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
     }
-    
+
     static func isRunningLive() -> Bool {
         #if targetEnvironment(simulator)
         return false
@@ -346,7 +346,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         }
         #endif
     }
-    
+
     func applySearchAdAttribution() {
         if UserDefaults.standard.bool(forKey: "userWasAttributed") {
             return
@@ -389,7 +389,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             }
         }
     }
-    
+
     private func handleCampaign(_ data: [String: Any]) {
         guard let campaignId = data["campaignId"] as? Int else {
             return
@@ -413,7 +413,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             "searchAdConversionDate": data["iad-conversion-date"] ?? ""
         ])
     }
-    
+
     static func isRunningScreenshots() -> Bool {
         #if !targetEnvironment(simulator)
         return false
@@ -421,13 +421,13 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         return UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT")
         #endif
     }
-    
+
     func messaging(_ messaging: MessagingDelegate, didReceiveRegistrationToken fcmToken: String) {
         logger.log("Firebase registration token: \(fcmToken)")
         let dataDict: [String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
     }
-    
+
     func displayInAppNotification(taskID: String, text: String) {
         let alertController = HabiticaAlertController(title: text)
         alertController.addAction(title: L10n.complete, style: .default, isMainAction: true, closeOnTap: true, identifier: nil) {[weak self] _ in
@@ -451,7 +451,7 @@ extension HabiticaAppDelegate {
         }
         return false
     }
-    
+
     func displayMaintenanceScreen(title: String, descriptionString: String) {
         if findMaintenanceScreen() == nil {
             let maintenanceController = MaintenanceViewController()
@@ -461,11 +461,11 @@ extension HabiticaAppDelegate {
             UIApplication.topViewController()?.present(maintenanceController, animated: true, completion: nil)
         }
     }
-    
+
     func hideMaintenanceScreen() {
         findMaintenanceScreen()?.dismiss(animated: true, completion: nil)
     }
-    
+
     private func findMaintenanceScreen() -> MaintenanceViewController? {
         var viewController: UIViewController? = UIApplication.shared.findKeyWindow()?.rootViewController
         while viewController != nil {

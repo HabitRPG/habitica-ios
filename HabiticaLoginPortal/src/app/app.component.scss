@@ -1,0 +1,12 @@
+ion-content {
+  .container {
+    background-color: #7639ED;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    h3 {
+      // Color of label
+      color: var(--ion-color-light);
+    }
+  }
+}

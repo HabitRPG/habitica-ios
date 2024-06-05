@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09E04CE0E2A1D593D4188636 /* Pods_Habitica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3B21CA2C48E2E54CC4023F /* Pods_Habitica.framework */; };
+		145F56B42C0ECE8A0080B3A1 /* LoadingScreenPortal in Resources */ = {isa = PBXBuildFile; fileRef = 145F56B32C0ECE8A0080B3A1 /* LoadingScreenPortal */; };
 		290279632057EC03006DACB9 /* FAQTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290279622057EC03006DACB9 /* FAQTableViewController.swift */; };
 		2902796C2057F2C5006DACB9 /* Assets-Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290279692057F2C4006DACB9 /* Assets-Images.swift */; };
 		2902796D2057F2C5006DACB9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902796A2057F2C5006DACB9 /* Strings.swift */; };
@@ -34,7 +36,7 @@
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
 		29084B3326CF97F500AD9966 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29084B3226CF97F500AD9966 /* ShopViewController.swift */; };
 		2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */; };
-		2908E3512217255600D246CD /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		2908E3512217255600D246CD /* (null) in Resources */ = {isa = PBXBuildFile; };
 		290922F02242628600645D0E /* LanguageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290922EF2242628600645D0E /* LanguageHandler.swift */; };
 		2909D41F272199BE00FF2B29 /* MultiLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D41E272199BE00FF2B29 /* MultiLineTextField.swift */; };
 		2909D4222722C20A00FF2B29 /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D4212722C20A00FF2B29 /* Servers.swift */; };
@@ -467,7 +469,6 @@
 		328C951E24A2C13100293E16 /* LinksOnlyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328C951D24A2C13100293E16 /* LinksOnlyTextView.swift */; };
 		32C6FFF226ED896400C8F682 /* PathTraceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6FFF126ED896400C8F682 /* PathTraceable.swift */; };
 		32C71C6725507E65007E48C5 /* Habitica WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		347ACD8622CBB53009F5B799 /* Pods_Habitica_HabiticaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553751CB01B9737248031714 /* Pods_Habitica_HabiticaTests.framework */; };
 		49005B721F180589004830D9 /* CurrencyCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B711F180588004830D9 /* CurrencyCountView.swift */; };
 		49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */; };
 		49005B7E1F183775004830D9 /* HRPGShopUserHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */; };
@@ -520,7 +521,7 @@
 		49E6F57E1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E6F57C1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib */; };
 		49EE3FD8201908AB00CD7608 /* ChallengeButtonStyleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE3FD7201908AB00CD7608 /* ChallengeButtonStyleProvider.swift */; };
 		49FA9FF720DC47AD0086C478 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FA9FF620DC47AD0086C478 /* TaskTableViewController.swift */; };
-		6BC41581FD0085E633E226FF /* Pods_Habitica_Habitica_UI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7304BFD276A4CF13E551AFCF /* Pods_Habitica_Habitica_UI_Tests.framework */; };
+		6A1093BEE23D54E718F6E4B8 /* Pods_Habitica_HabiticaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA81A9A6F3477EEAFB54A556 /* Pods_Habitica_HabiticaTests.framework */; };
 		7A84E194228928AC0081E96F /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E193228928AC0081E96F /* IntentHandler.swift */; };
 		7A84E19C228928AD0081E96F /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A84E19B228928AD0081E96F /* IntentsUI.framework */; };
 		7A84E19F228928AD0081E96F /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E19E228928AD0081E96F /* IntentViewController.swift */; };
@@ -530,6 +531,7 @@
 		7A84E1B222898E9F0081E96F /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E1B122898E9F0081E96F /* TaskManager.swift */; };
 		7A84E1B32289963E0081E96F /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884D2010CCC2002B3D3F /* BaseRepository.swift */; };
 		7A84E1B42289968B0081E96F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
+		AE4DF5CBC654050B3E9FC901 /* Pods_Habitica_Habitica_UI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FCD877204D26BF3A1815CD /* Pods_Habitica_Habitica_UI_Tests.framework */; };
 		C8415994225F8B7800989FB8 /* Habitica_Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */; };
 		C841599C225F8C2A00989FB8 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C841599B225F8C2900989FB8 /* SnapshotHelper.swift */; };
 		C85A68AF2527812400EED0D6 /* SpellTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85A68AE2527812400EED0D6 /* SpellTabBarController.swift */; };
@@ -610,7 +612,6 @@
 		D9F1E3EA1E55DCFB0034D0F4 /* SubscriptionInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9F1E3E91E55DCFB0034D0F4 /* SubscriptionInformationCell.xib */; };
 		D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */; };
 		DC2C41815D97E02EF9D3BEF9 /* HRPGLabeledProgressBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */; };
-		E0FEE5AFE6692CA27C4D26C9 /* Pods_Habitica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72ADC00546AD7B0CC8874F9B /* Pods_Habitica.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -688,9 +689,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		01E78A293F7B9DB8C31A070A /* Pods-Habitica-HabiticaTests.testflight-beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-HabiticaTests.testflight-beta.xcconfig"; path = "Target Support Files/Pods-Habitica-HabiticaTests/Pods-Habitica-HabiticaTests.testflight-beta.xcconfig"; sourceTree = "<group>"; };
-		1593C2FAB8C560F69A4129D5 /* Pods-Habitica.testflight-beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.testflight-beta.xcconfig"; path = "Target Support Files/Pods-Habitica/Pods-Habitica.testflight-beta.xcconfig"; sourceTree = "<group>"; };
-		2035E4BF479EA7C826164733 /* Pods-Habitica-Habitica UI Tests.testflight-beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-Habitica UI Tests.testflight-beta.xcconfig"; path = "Target Support Files/Pods-Habitica-Habitica UI Tests/Pods-Habitica-Habitica UI Tests.testflight-beta.xcconfig"; sourceTree = "<group>"; };
+		12F7D8A4A2D82BEDA11FF447 /* Pods-Habitica-Habitica UI Tests.testflight-staff.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-Habitica UI Tests.testflight-staff.xcconfig"; path = "Target Support Files/Pods-Habitica-Habitica UI Tests/Pods-Habitica-Habitica UI Tests.testflight-staff.xcconfig"; sourceTree = "<group>"; };
+		145F56B32C0ECE8A0080B3A1 /* LoadingScreenPortal */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LoadingScreenPortal; path = HabitRPG/LoadingScreenPortal; sourceTree = "<group>"; };
 		290279622057EC03006DACB9 /* FAQTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQTableViewController.swift; sourceTree = "<group>"; };
 		290279692057F2C4006DACB9 /* Assets-Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Assets-Images.swift"; sourceTree = "<group>"; };
 		2902796A2057F2C5006DACB9 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -1138,8 +1138,10 @@
 		29FEB279202B4F0400EA245A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		328C951D24A2C13100293E16 /* LinksOnlyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksOnlyTextView.swift; sourceTree = "<group>"; };
 		32C6FFF126ED896400C8F682 /* PathTraceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTraceable.swift; sourceTree = "<group>"; };
-		35B4EDD6967BC8CA5B5E57A3 /* Pods-Habitica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.debug.xcconfig"; path = "Target Support Files/Pods-Habitica/Pods-Habitica.debug.xcconfig"; sourceTree = "<group>"; };
-		44EB61A8234752342A0106CC /* Pods-Habitica.testflight-staff.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.testflight-staff.xcconfig"; path = "Target Support Files/Pods-Habitica/Pods-Habitica.testflight-staff.xcconfig"; sourceTree = "<group>"; };
+		3B3B21CA2C48E2E54CC4023F /* Pods_Habitica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4159659E1CCD1A774AAD9488 /* Pods-Habitica-HabiticaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-HabiticaTests.debug.xcconfig"; path = "Target Support Files/Pods-Habitica-HabiticaTests/Pods-Habitica-HabiticaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		41FCD877204D26BF3A1815CD /* Pods_Habitica_Habitica_UI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Habitica_UI_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		427F232B9DA1D34A995C427A /* Pods-Habitica-HabiticaTests.testflight-staff.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-HabiticaTests.testflight-staff.xcconfig"; path = "Target Support Files/Pods-Habitica-HabiticaTests/Pods-Habitica-HabiticaTests.testflight-staff.xcconfig"; sourceTree = "<group>"; };
 		49005B711F180588004830D9 /* CurrencyCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyCountView.swift; sourceTree = "<group>"; };
 		49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopUserHeaderView.swift; sourceTree = "<group>"; };
 		49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGShopUserHeaderView.xib; sourceTree = "<group>"; };
@@ -1192,12 +1194,7 @@
 		49E6F57C1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoubleButtonTableViewCell.xib; sourceTree = "<group>"; };
 		49EE3FD7201908AB00CD7608 /* ChallengeButtonStyleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeButtonStyleProvider.swift; sourceTree = "<group>"; };
 		49FA9FF620DC47AD0086C478 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
-		50787D2DDF98E6BDBD1AB51F /* Pods-Habitica-Habitica UI Tests.testflight-staff.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-Habitica UI Tests.testflight-staff.xcconfig"; path = "Target Support Files/Pods-Habitica-Habitica UI Tests/Pods-Habitica-Habitica UI Tests.testflight-staff.xcconfig"; sourceTree = "<group>"; };
-		553751CB01B9737248031714 /* Pods_Habitica_HabiticaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_HabiticaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6068E053C80554745192A1E3 /* Pods-Habitica-Habitica UI Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-Habitica UI Tests.debug.xcconfig"; path = "Target Support Files/Pods-Habitica-Habitica UI Tests/Pods-Habitica-Habitica UI Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		72ADC00546AD7B0CC8874F9B /* Pods_Habitica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7304BFD276A4CF13E551AFCF /* Pods_Habitica_Habitica_UI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Habitica_UI_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		75C6C320089B9D772486524E /* Pods-Habitica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.release.xcconfig"; path = "Target Support Files/Pods-Habitica/Pods-Habitica.release.xcconfig"; sourceTree = "<group>"; };
+		5F82E90FFAEBF7CBE075EB79 /* Pods-Habitica-HabiticaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-HabiticaTests.release.xcconfig"; path = "Target Support Files/Pods-Habitica-HabiticaTests/Pods-Habitica-HabiticaTests.release.xcconfig"; sourceTree = "<group>"; };
 		7A84E191228928AC0081E96F /* Habitica Intents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Habitica Intents.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A84E193228928AC0081E96F /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		7A84E195228928AC0081E96F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1208,9 +1205,8 @@
 		7A84E1A3228928AD0081E96F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A84E1B122898E9F0081E96F /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		7A84E1B6228A5CB40081E96F /* Habitica Intents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Habitica Intents.entitlements"; sourceTree = "<group>"; };
-		93E38B393575F8E18F94D72F /* Pods-Habitica-HabiticaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-HabiticaTests.release.xcconfig"; path = "Target Support Files/Pods-Habitica-HabiticaTests/Pods-Habitica-HabiticaTests.release.xcconfig"; sourceTree = "<group>"; };
-		AA374825C93D5158B2CE2CA2 /* Pods-Habitica-HabiticaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-HabiticaTests.debug.xcconfig"; path = "Target Support Files/Pods-Habitica-HabiticaTests/Pods-Habitica-HabiticaTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C1AFE9601822B0AA8DA38331 /* Pods-Habitica-Habitica UI Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-Habitica UI Tests.release.xcconfig"; path = "Target Support Files/Pods-Habitica-Habitica UI Tests/Pods-Habitica-Habitica UI Tests.release.xcconfig"; sourceTree = "<group>"; };
+		98F0E5DEE2107880B9A5AB8A /* Pods-Habitica.testflight-staff.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.testflight-staff.xcconfig"; path = "Target Support Files/Pods-Habitica/Pods-Habitica.testflight-staff.xcconfig"; sourceTree = "<group>"; };
+		ABEAAD802AB745A3139A48BD /* Pods-Habitica-HabiticaTests.testflight-beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-HabiticaTests.testflight-beta.xcconfig"; path = "Target Support Files/Pods-Habitica-HabiticaTests/Pods-Habitica-HabiticaTests.testflight-beta.xcconfig"; sourceTree = "<group>"; };
 		C8415991225F8B7800989FB8 /* Habitica Snapshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica Snapshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitica_Snapshots.swift; sourceTree = "<group>"; };
 		C8415995225F8B7800989FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1219,6 +1215,7 @@
 		C897F63B218CCF51002907C2 /* RouterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterHandler.swift; sourceTree = "<group>"; };
 		C897F63D218CE052002907C2 /* Storyboard Scenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Scenes.swift"; sourceTree = "<group>"; };
 		C897F63E218CE052002907C2 /* Storyboard Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Segues.swift"; sourceTree = "<group>"; };
+		CFBB0C2ED6E756DA95884BAA /* Pods-Habitica-Habitica UI Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-Habitica UI Tests.debug.xcconfig"; path = "Target Support Files/Pods-Habitica-Habitica UI Tests/Pods-Habitica-Habitica UI Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D90576821BD8323F009BB7BC /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D90576861BD83240009BB7BC /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1327,7 +1324,12 @@
 		D9F1E3E91E55DCFB0034D0F4 /* SubscriptionInformationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscriptionInformationCell.xib; sourceTree = "<group>"; };
 		D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionInformation.swift; sourceTree = "<group>"; };
 		DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGLabeledProgressBarTests.swift; sourceTree = "<group>"; };
-		ECB18BF46B6D3B5D1CB2D868 /* Pods-Habitica-HabiticaTests.testflight-staff.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-HabiticaTests.testflight-staff.xcconfig"; path = "Target Support Files/Pods-Habitica-HabiticaTests/Pods-Habitica-HabiticaTests.testflight-staff.xcconfig"; sourceTree = "<group>"; };
+		DFF5D9FC65B61D9E284A28D6 /* Pods-Habitica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.release.xcconfig"; path = "Target Support Files/Pods-Habitica/Pods-Habitica.release.xcconfig"; sourceTree = "<group>"; };
+		E6125E0798788563A5797731 /* Pods-Habitica.testflight-beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.testflight-beta.xcconfig"; path = "Target Support Files/Pods-Habitica/Pods-Habitica.testflight-beta.xcconfig"; sourceTree = "<group>"; };
+		EE0C3E0E27938DEF9C8D9BDD /* Pods-Habitica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.debug.xcconfig"; path = "Target Support Files/Pods-Habitica/Pods-Habitica.debug.xcconfig"; sourceTree = "<group>"; };
+		F5FABF3C145D4286DA82EA53 /* Pods-Habitica-Habitica UI Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-Habitica UI Tests.release.xcconfig"; path = "Target Support Files/Pods-Habitica-Habitica UI Tests/Pods-Habitica-Habitica UI Tests.release.xcconfig"; sourceTree = "<group>"; };
+		FA81A9A6F3477EEAFB54A556 /* Pods_Habitica_HabiticaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_HabiticaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAF31D39D0B11AC2FA8ABBAE /* Pods-Habitica-Habitica UI Tests.testflight-beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-Habitica UI Tests.testflight-beta.xcconfig"; path = "Target Support Files/Pods-Habitica-Habitica UI Tests/Pods-Habitica-Habitica UI Tests.testflight-beta.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1335,7 +1337,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BC41581FD0085E633E226FF /* Pods_Habitica_Habitica_UI_Tests.framework in Frameworks */,
+				AE4DF5CBC654050B3E9FC901 /* Pods_Habitica_Habitica_UI_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1388,7 +1390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2938ED4F28B5043700E995A2 /* Nimble in Frameworks */,
-				347ACD8622CBB53009F5B799 /* Pods_Habitica_HabiticaTests.framework in Frameworks */,
+				6A1093BEE23D54E718F6E4B8 /* Pods_Habitica_HabiticaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1432,7 +1434,7 @@
 				D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */,
 				2938ED3028B4EDC700E995A2 /* FirebaseCrashlytics in Frameworks */,
 				D9C89CF91B1F0E6C00A599B0 /* StoreKit.framework in Frameworks */,
-				E0FEE5AFE6692CA27C4D26C9 /* Pods_Habitica.framework in Frameworks */,
+				09E04CE0E2A1D593D4188636 /* Pods_Habitica.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2620,6 +2622,7 @@
 		D9EB4E8218CB4A9400BB2094 = {
 			isa = PBXGroup;
 			children = (
+				145F56B32C0ECE8A0080B3A1 /* LoadingScreenPortal */,
 				2995F7FA25BAF3B600322CB3 /* RemoteLogger.swift */,
 				29BEE639252CCFE300D456F8 /* Habitica WidgetsExtension.entitlements */,
 				D9EB4E9418CB4A9400BB2094 /* Habitica */,
@@ -2674,9 +2677,9 @@
 				7A84E19B228928AD0081E96F /* IntentsUI.framework */,
 				29BEE62C252CCFE100D456F8 /* WidgetKit.framework */,
 				29BEE62E252CCFE100D456F8 /* SwiftUI.framework */,
-				72ADC00546AD7B0CC8874F9B /* Pods_Habitica.framework */,
-				7304BFD276A4CF13E551AFCF /* Pods_Habitica_Habitica_UI_Tests.framework */,
-				553751CB01B9737248031714 /* Pods_Habitica_HabiticaTests.framework */,
+				3B3B21CA2C48E2E54CC4023F /* Pods_Habitica.framework */,
+				41FCD877204D26BF3A1815CD /* Pods_Habitica_Habitica_UI_Tests.framework */,
+				FA81A9A6F3477EEAFB54A556 /* Pods_Habitica_HabiticaTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2742,18 +2745,18 @@
 		EDF539F31260A6E60FFF35C8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				35B4EDD6967BC8CA5B5E57A3 /* Pods-Habitica.debug.xcconfig */,
-				75C6C320089B9D772486524E /* Pods-Habitica.release.xcconfig */,
-				44EB61A8234752342A0106CC /* Pods-Habitica.testflight-staff.xcconfig */,
-				1593C2FAB8C560F69A4129D5 /* Pods-Habitica.testflight-beta.xcconfig */,
-				6068E053C80554745192A1E3 /* Pods-Habitica-Habitica UI Tests.debug.xcconfig */,
-				C1AFE9601822B0AA8DA38331 /* Pods-Habitica-Habitica UI Tests.release.xcconfig */,
-				50787D2DDF98E6BDBD1AB51F /* Pods-Habitica-Habitica UI Tests.testflight-staff.xcconfig */,
-				2035E4BF479EA7C826164733 /* Pods-Habitica-Habitica UI Tests.testflight-beta.xcconfig */,
-				AA374825C93D5158B2CE2CA2 /* Pods-Habitica-HabiticaTests.debug.xcconfig */,
-				93E38B393575F8E18F94D72F /* Pods-Habitica-HabiticaTests.release.xcconfig */,
-				ECB18BF46B6D3B5D1CB2D868 /* Pods-Habitica-HabiticaTests.testflight-staff.xcconfig */,
-				01E78A293F7B9DB8C31A070A /* Pods-Habitica-HabiticaTests.testflight-beta.xcconfig */,
+				EE0C3E0E27938DEF9C8D9BDD /* Pods-Habitica.debug.xcconfig */,
+				DFF5D9FC65B61D9E284A28D6 /* Pods-Habitica.release.xcconfig */,
+				98F0E5DEE2107880B9A5AB8A /* Pods-Habitica.testflight-staff.xcconfig */,
+				E6125E0798788563A5797731 /* Pods-Habitica.testflight-beta.xcconfig */,
+				CFBB0C2ED6E756DA95884BAA /* Pods-Habitica-Habitica UI Tests.debug.xcconfig */,
+				F5FABF3C145D4286DA82EA53 /* Pods-Habitica-Habitica UI Tests.release.xcconfig */,
+				12F7D8A4A2D82BEDA11FF447 /* Pods-Habitica-Habitica UI Tests.testflight-staff.xcconfig */,
+				FAF31D39D0B11AC2FA8ABBAE /* Pods-Habitica-Habitica UI Tests.testflight-beta.xcconfig */,
+				4159659E1CCD1A774AAD9488 /* Pods-Habitica-HabiticaTests.debug.xcconfig */,
+				5F82E90FFAEBF7CBE075EB79 /* Pods-Habitica-HabiticaTests.release.xcconfig */,
+				427F232B9DA1D34A995C427A /* Pods-Habitica-HabiticaTests.testflight-staff.xcconfig */,
+				ABEAAD802AB745A3139A48BD /* Pods-Habitica-HabiticaTests.testflight-beta.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -2765,11 +2768,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 29706CAB27D8B797006EC139 /* Build configuration list for PBXNativeTarget "Habitica UI Tests" */;
 			buildPhases = (
-				55613A8D595C63AB9C0B9716 /* [CP] Check Pods Manifest.lock */,
+				51DECAE262B40F4EAAF013DA /* [CP] Check Pods Manifest.lock */,
 				29706C9F27D8B797006EC139 /* Sources */,
 				29706CA027D8B797006EC139 /* Frameworks */,
 				29706CA127D8B797006EC139 /* Resources */,
-				0D97E3BF1F0FA8589A18B067 /* [CP] Embed Pods Frameworks */,
+				8BF9968EA9859892A203F8E9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2864,11 +2867,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D944618B1AB34F5C0015215E /* Build configuration list for PBXNativeTarget "HabiticaTests" */;
 			buildPhases = (
-				B3397993D4B0B724027BC70A /* [CP] Check Pods Manifest.lock */,
+				FE097BED195102BCFD6D8713 /* [CP] Check Pods Manifest.lock */,
 				D944617F1AB34F5C0015215E /* Sources */,
 				D94461801AB34F5C0015215E /* Frameworks */,
 				D94461811AB34F5C0015215E /* Resources */,
-				37576693FC332FFF05FBE22B /* [CP] Embed Pods Frameworks */,
+				B7C59D700D4FE78E8EF858A0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2887,7 +2890,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9EB4EC318CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "Habitica" */;
 			buildPhases = (
-				C8B18EE8C411C1C5340AB1DE /* [CP] Check Pods Manifest.lock */,
+				AC91050E75A7699BFC36192D /* [CP] Check Pods Manifest.lock */,
 				294F5D5D28C1EEB400760F6C /* Run SwiftGen */,
 				294F5D5E28C1F32300760F6C /* Run SwiftLint */,
 				D9EB4E8718CB4A9400BB2094 /* Sources */,
@@ -2896,8 +2899,7 @@
 				29265896206A4E84006C8B54 /* Embed Frameworks */,
 				7A84E1B0228928AD0081E96F /* Embed Foundation Extensions */,
 				294F5D5F28C75CDE00760F6C /* Upload DSYM */,
-				AACCF985AFF85F8018590655 /* [CP] Embed Pods Frameworks */,
-				143AFF812C07F368007790D4 /* Copy Web App */,
+				15FBFC86B2D541B4A98EF1FD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3038,14 +3040,14 @@
 			);
 			mainGroup = D9EB4E8218CB4A9400BB2094;
 			packageReferences = (
-				29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView.git" */,
-				292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess.git" */,
-				292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS.git" */,
+				29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */,
+				292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
 				292BD8A028B4EAC4006447EF /* XCRemoteSwiftPackageReference "Amplitude-iOS" */,
 				292BD8A328B4EAE9006447EF /* XCRemoteSwiftPackageReference "Down" */,
 				292BD8A628B4EB10006447EF /* XCRemoteSwiftPackageReference "PinLayout" */,
-				292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka.git" */,
-				292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher.git" */,
+				292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka" */,
+				292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				292BD8AF28B4EC36006447EF /* XCRemoteSwiftPackageReference "TagListView" */,
 				2938ED2C28B4EDC700E995A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				2938ED4128B4EF5D00E995A2 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
@@ -3053,9 +3055,9 @@
 				2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */,
 				2953D83E28B5215400DC456E /* XCRemoteSwiftPackageReference "Reactivecocoa" */,
 				2953D84328B7772A00DC456E /* XCRemoteSwiftPackageReference "BottomSheet" */,
-				294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI.git" */,
+				294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 				29A3FD2D296720AF007D85B2 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
-				2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal.git" */,
+				2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal" */,
 			);
 			productRefGroup = D9EB4E8C18CB4A9400BB2094 /* Products */;
 			projectDirPath = "";
@@ -3150,7 +3152,8 @@
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
-				2908E3512217255600D246CD /* BuildFile in Resources */,
+				145F56B42C0ECE8A0080B3A1 /* LoadingScreenPortal in Resources */,
+				2908E3512217255600D246CD /* (null) in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
@@ -3220,13 +3223,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0D97E3BF1F0FA8589A18B067 /* [CP] Embed Pods Frameworks */ = {
+		15FBFC86B2D541B4A98EF1FD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Habitica-Habitica UI Tests/Pods-Habitica-Habitica UI Tests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Habitica/Pods-Habitica-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Capacitor/Capacitor.framework",
 				"${BUILT_PRODUCTS_DIR}/CapacitorCordova/Cordova.framework",
 				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
@@ -3245,26 +3248,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habitica-Habitica UI Tests/Pods-Habitica-Habitica UI Tests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habitica/Pods-Habitica-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		143AFF812C07F368007790D4 /* Copy Web App */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Web App";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nAPP_ID=38d120aa\nCHANNEL=production\nPORTAL_NAME=ionic_portals_demo\n\nionic-cloud live-update download \\\n  --config=\"${SOURCE_ROOT}/.ionic-cloud.yaml\" \\\n  --app-id ${APP_ID} \\\n  --channel-name ${CHANNEL} \\\n  --zip-name ${PORTAL_NAME}.zip\n\n\nunzip ${PORTAL_NAME}.zip -d \\\n  ${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app/${PORTAL_NAME}\nrm ${PORTAL_NAME}.zip\n";
 		};
 		294F5D5D28C1EEB400760F6C /* Run SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3322,7 +3307,79 @@
 			shellPath = /bin/sh;
 			shellScript = "${BUILD_DIR%Build/*}SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run -gsp ${PROJECT_DIR}/HabitRPG/GoogleService-Info.plist -p ios\n";
 		};
-		37576693FC332FFF05FBE22B /* [CP] Embed Pods Frameworks */ = {
+		51DECAE262B40F4EAAF013DA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Habitica-Habitica UI Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8BF9968EA9859892A203F8E9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Habitica-Habitica UI Tests/Pods-Habitica-Habitica UI Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Capacitor/Capacitor.framework",
+				"${BUILT_PRODUCTS_DIR}/CapacitorCordova/Cordova.framework",
+				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
+				"${BUILT_PRODUCTS_DIR}/IonicPortals/IonicPortals.framework",
+				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/IonicLiveUpdates/IonicLiveUpdates.framework/IonicLiveUpdates",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Capacitor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cordova.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IonicPortals.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IonicLiveUpdates.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habitica-Habitica UI Tests/Pods-Habitica-Habitica UI Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC91050E75A7699BFC36192D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Habitica-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7C59D700D4FE78E8EF858A0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3350,57 +3407,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habitica-HabiticaTests/Pods-Habitica-HabiticaTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		55613A8D595C63AB9C0B9716 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Habitica-Habitica UI Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AACCF985AFF85F8018590655 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Habitica/Pods-Habitica-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Capacitor/Capacitor.framework",
-				"${BUILT_PRODUCTS_DIR}/CapacitorCordova/Cordova.framework",
-				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
-				"${BUILT_PRODUCTS_DIR}/IonicPortals/IonicPortals.framework",
-				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/IonicLiveUpdates/IonicLiveUpdates.framework/IonicLiveUpdates",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Capacitor.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cordova.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IonicPortals.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IonicLiveUpdates.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habitica/Pods-Habitica-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B3397993D4B0B724027BC70A /* [CP] Check Pods Manifest.lock */ = {
+		FE097BED195102BCFD6D8713 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3416,28 +3423,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Habitica-HabiticaTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C8B18EE8C411C1C5340AB1DE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Habitica-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4227,7 +4212,7 @@
 		};
 		295519C529191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1593C2FAB8C560F69A4129D5 /* Pods-Habitica.testflight-beta.xcconfig */;
+			baseConfigurationReference = E6125E0798788563A5797731 /* Pods-Habitica.testflight-beta.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Beta";
@@ -4303,7 +4288,7 @@
 		};
 		295519C629191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 01E78A293F7B9DB8C31A070A /* Pods-Habitica-HabiticaTests.testflight-beta.xcconfig */;
+			baseConfigurationReference = ABEAAD802AB745A3139A48BD /* Pods-Habitica-HabiticaTests.testflight-beta.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -4502,7 +4487,7 @@
 		};
 		295519CD29191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2035E4BF479EA7C826164733 /* Pods-Habitica-Habitica UI Tests.testflight-beta.xcconfig */;
+			baseConfigurationReference = FAF31D39D0B11AC2FA8ABBAE /* Pods-Habitica-Habitica UI Tests.testflight-beta.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4587,7 +4572,7 @@
 		};
 		295519CF29191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 44EB61A8234752342A0106CC /* Pods-Habitica.testflight-staff.xcconfig */;
+			baseConfigurationReference = 98F0E5DEE2107880B9A5AB8A /* Pods-Habitica.testflight-staff.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Staff";
@@ -4663,7 +4648,7 @@
 		};
 		295519D029191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ECB18BF46B6D3B5D1CB2D868 /* Pods-Habitica-HabiticaTests.testflight-staff.xcconfig */;
+			baseConfigurationReference = 427F232B9DA1D34A995C427A /* Pods-Habitica-HabiticaTests.testflight-staff.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -4862,7 +4847,7 @@
 		};
 		295519D729191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 50787D2DDF98E6BDBD1AB51F /* Pods-Habitica-Habitica UI Tests.testflight-staff.xcconfig */;
+			baseConfigurationReference = 12F7D8A4A2D82BEDA11FF447 /* Pods-Habitica-Habitica UI Tests.testflight-staff.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4894,7 +4879,7 @@
 		};
 		29706CAC27D8B797006EC139 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6068E053C80554745192A1E3 /* Pods-Habitica-Habitica UI Tests.debug.xcconfig */;
+			baseConfigurationReference = CFBB0C2ED6E756DA95884BAA /* Pods-Habitica-Habitica UI Tests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4927,7 +4912,7 @@
 		};
 		29706CAD27D8B797006EC139 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1AFE9601822B0AA8DA38331 /* Pods-Habitica-Habitica UI Tests.release.xcconfig */;
+			baseConfigurationReference = F5FABF3C145D4286DA82EA53 /* Pods-Habitica-Habitica UI Tests.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -5283,7 +5268,7 @@
 		};
 		D944618C1AB34F5C0015215E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA374825C93D5158B2CE2CA2 /* Pods-Habitica-HabiticaTests.debug.xcconfig */;
+			baseConfigurationReference = 4159659E1CCD1A774AAD9488 /* Pods-Habitica-HabiticaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -5327,7 +5312,7 @@
 		};
 		D944618D1AB34F5C0015215E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 93E38B393575F8E18F94D72F /* Pods-Habitica-HabiticaTests.release.xcconfig */;
+			baseConfigurationReference = 5F82E90FFAEBF7CBE075EB79 /* Pods-Habitica-HabiticaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -5477,7 +5462,7 @@
 		};
 		D9EB4EC418CB4A9400BB2094 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35B4EDD6967BC8CA5B5E57A3 /* Pods-Habitica.debug.xcconfig */;
+			baseConfigurationReference = EE0C3E0E27938DEF9C8D9BDD /* Pods-Habitica.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -5552,7 +5537,7 @@
 		};
 		D9EB4EC518CB4A9400BB2094 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 75C6C320089B9D772486524E /* Pods-Habitica.release.xcconfig */;
+			baseConfigurationReference = DFF5D9FC65B61D9E284A28D6 /* Pods-Habitica.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -5717,7 +5702,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess.git" */ = {
+		292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
 			requirement = {
@@ -5725,7 +5710,7 @@
 				minimumVersion = 4.0.0;
 			};
 		};
-		292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS.git" */ = {
+		292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/openid/AppAuth-iOS.git";
 			requirement = {
@@ -5757,7 +5742,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka.git" */ = {
+		292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/xmartlabs/Eureka.git";
 			requirement = {
@@ -5765,7 +5750,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher.git" */ = {
+		292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -5813,7 +5798,7 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal.git" */ = {
+		2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/slackhq/PanModal.git";
 			requirement = {
@@ -5821,7 +5806,7 @@
 				minimumVersion = 1.2.7;
 			};
 		};
-		294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI.git" */ = {
+		294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
 			requirement = {
@@ -5853,7 +5838,7 @@
 				minimumVersion = 0.1.3;
 			};
 		};
-		29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView.git" */ = {
+		29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nathantannar4/InputBarAccessoryView.git";
 			requirement = {
@@ -5866,12 +5851,12 @@
 /* Begin XCSwiftPackageProductDependency section */
 		292BD89B28B4EA4F006447EF /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess.git" */;
+			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
 		};
 		292BD89E28B4EA85006447EF /* AppAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS.git" */;
+			package = 292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
 			productName = AppAuth;
 		};
 		292BD8A128B4EAC4006447EF /* Amplitude */ = {
@@ -5891,12 +5876,12 @@
 		};
 		292BD8AA28B4EB42006447EF /* Eureka */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka.git" */;
+			package = 292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka" */;
 			productName = Eureka;
 		};
 		292BD8AD28B4EB81006447EF /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher.git" */;
+			package = 292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 		292BD8B028B4EC36006447EF /* TagListView */ = {
@@ -5946,12 +5931,12 @@
 		};
 		2938ED3D28B4EEB200E995A2 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess.git" */;
+			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
 		};
 		2938ED3F28B4EEBC00E995A2 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess.git" */;
+			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
 		};
 		2938ED4228B4EF5D00E995A2 /* SwiftyStoreKit */ = {
@@ -5971,12 +5956,12 @@
 		};
 		2945AE962B285D000022F3CC /* PanModal */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal.git" */;
+			package = 2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal" */;
 			productName = PanModal;
 		};
 		294F5D6528CA1DCB00760F6C /* ConfettiSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI.git" */;
+			package = 294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
 			productName = ConfettiSwiftUI;
 		};
 		2953D83A28B51F9E00DC456E /* ReactiveSwift */ = {
@@ -6006,7 +5991,7 @@
 		};
 		29AE771927E3521800CC9646 /* InputBarAccessoryView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView.git" */;
+			package = 29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */;
 			productName = InputBarAccessoryView;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -1,5 +1,5 @@
 {
   "appId": "com.ionicframework.habitica-of-portals",
   "appName": "OF Habitica Portals",
-  "webDir": "build"
+  "webDir": "dist/habitica-login-portal/browser"
 }

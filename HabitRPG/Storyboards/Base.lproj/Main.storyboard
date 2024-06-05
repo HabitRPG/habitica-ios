@@ -3,7 +3,7 @@
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -2892,7 +2892,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="RewardsViewController" id="wkr-0z-ZYr" customClass="RewardViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="gUo-Ev-aot">
-                        <rect key="frame" x="0.0" y="0.0" width="107" height="801"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SF4-0s-DyZ">
@@ -2903,7 +2903,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="SZW-8l-WwC">
-                                <rect key="frame" x="28.666666666666668" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -3844,7 +3844,7 @@ a matching subscription automatically after sending your gift.</string>
         <segue reference="2vn-wQ-bqg"/>
         <segue reference="FPm-Dv-Zos"/>
         <segue reference="x0h-sG-Le1"/>
-        <segue reference="zgD-BU-MQh"/>
+        <segue reference="6DM-V3-6dx"/>
         <segue reference="ScC-Xo-JyG"/>
         <segue reference="WRT-c8-yJ5"/>
         <segue reference="ETz-qE-xC2"/>
@@ -3853,7 +3853,7 @@ a matching subscription automatically after sending your gift.</string>
         <segue reference="u8W-Xm-nze"/>
         <segue reference="j9F-en-5nH"/>
         <segue reference="dho-1x-ad8"/>
-        <segue reference="PHp-cT-md6"/>
+        <segue reference="tO1-JH-hWy"/>
         <segue reference="zf0-3c-Xzo"/>
         <segue reference="Nkz-Sr-H0i"/>
     </inferredMetricsTieBreakers>
