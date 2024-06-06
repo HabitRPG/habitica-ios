@@ -63,6 +63,9 @@ class LoadingViewController: UIHostingController<LoadingPage> {
                 .flatMap(.latest, {[weak self] (_) in
                     return self?.userRepository?.retrieveInboxConversations() ?? Signal.empty
                 })
+                .flatMap(.latest, {[weak self] (_) in
+                    return self?.userRepository?.retrieveInAppRewards() ?? Signal.empty
+                })
                 .observeCompleted { [weak self] in
                     self?.userRepository = nil
                     if !hasUserData {

@@ -161,33 +161,53 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
             return
         }
         if item == nil {
-            if shopIdentifier == Constants.CustomizationShopKey {
-                if let identifier = dataSource?.visibleSections[indexPath.section].key {
-                    var type = identifier
-                    var group: String?
-                    if identifier == "color" {
-                        type = "hair"
-                        group = "color"
-                    } else if identifier == "facialHair" {
-                        type = "hair"
-                        group = "beard"
-                    } else if identifier == "base" {
-                        type = "hair"
-                        group = "base"
-                    } else if identifier == "animalEars" {
-                        type = "headAccessory"
-                    } else if identifier == "animalTails" {
-                        type = "back"
-                    } else if identifier == "backgrounds" {
-                        type = "background"
+            if shopIdentifier == Constants.MarketKey && indexPath.section == 0 {
+                userRepository.getInAppRewards()
+                    .take(first: 1)
+                    .map { result in
+                    return result.value.first { reward in
+                        return reward.key == "armoire"
                     }
-                    RouterHandler.shared.handle(.customizations(type: type, group: group))
+                }.skipNil()
+                    .on(value: { armoire in
+                        self.displayBuyDialogFor(item: armoire)
+                    })
+                    .start()
+            } else {
+                if shopIdentifier == Constants.CustomizationShopKey {
+                    if let identifier = dataSource?.visibleSections[indexPath.section].key {
+                        var type = identifier
+                        var group: String?
+                        if identifier == "color" {
+                            type = "hair"
+                            group = "color"
+                        } else if identifier == "facialHair" {
+                            type = "hair"
+                            group = "beard"
+                        } else if identifier == "base" {
+                            type = "hair"
+                            group = "base"
+                        } else if identifier == "animalEars" {
+                            type = "headAccessory"
+                        } else if identifier == "animalTails" {
+                            type = "back"
+                        } else if identifier == "backgrounds" {
+                            type = "background"
+                        }
+                        RouterHandler.shared.handle(.customizations(type: type, group: group))
+                    }
+                } else if shopIdentifier == Constants.TimeTravelersShopKey {
+                    RouterHandler.shared.handle(.equipment)
                 }
-            } else if shopIdentifier == Constants.TimeTravelersShopKey {
-                RouterHandler.shared.handle(.equipment)
+                return
             }
-            return
         }
+        if let item = item {
+            displayBuyDialogFor(item: item)
+        }
+    }
+    
+    private func displayBuyDialogFor(item: InAppRewardProtocol) {
         let viewController = StoryboardScene.BuyModal.hrpgBuyItemModalViewController.instantiate()
         viewController.reward = item
         viewController.shopIdentifier = shopIdentifier

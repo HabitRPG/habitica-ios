@@ -267,7 +267,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 && needsGearSection {
             if !hasGearSection() {
-                return CGSize(width: collectionView.bounds.width, height: 100)
+                return CGSize(width: collectionView.bounds.width, height: 200)
             }
         }
         let section = visibleSections[indexPath.section]
@@ -309,11 +309,23 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             (cell.viewWithTag(1) as? UILabel)?.textColor = ThemeService.shared.theme.primaryTextColor
             if armoireCount == 0 {
                 (cell.viewWithTag(2) as? UILabel)?.text = L10n.Shops.purchasedAllGearArmoireEmpty
+                cell.viewWithTag(4)?.isHidden = true
+                cell.viewWithTag(5)?.isHidden = true
+                cell.viewWithTag(9)?.isHidden = true
             } else {
                 (cell.viewWithTag(2) as? UILabel)?.text = L10n.Shops.purchasedAllGear(armoireCount)
+                cell.viewWithTag(4)?.isHidden = false
+                if let imageView = (cell.viewWithTag(4)) as? NetworkImageView {
+                    ImageManager.setImage(on: imageView, name: "shop_armoire")
+                }
+                cell.viewWithTag(5)?.isHidden = false
+                (cell.viewWithTag(8) as? UIImageView)?.image = HabiticaIcons.imageOfGold
+                cell.viewWithTag(9)?.isHidden = false
             }
             (cell.viewWithTag(2) as? UILabel)?.textColor = ThemeService.shared.theme.secondaryTextColor
             cell.viewWithTag(3)?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+            cell.viewWithTag(5)?.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor.withAlphaComponent(0.3)
+            (cell.viewWithTag(6) as? UILabel)?.textColor = ThemeService.shared.theme.isDark ? .yellow500 : .yellow1
             return cell
         } else if let item = item(at: indexPath) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath)
@@ -336,6 +348,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             (cell.viewWithTag(2) as? UILabel)?.textColor = ThemeService.shared.theme.secondaryTextColor
             (cell.viewWithTag(2) as? UILabel)?.attributedText = attributedStringInEmptySection(section: section)
             cell.viewWithTag(3)?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+            cell.viewWithTag(4)?.isHidden = true
+            cell.viewWithTag(5)?.isHidden = true
+            cell.viewWithTag(9)?.isHidden = true
             return cell
         }
     }

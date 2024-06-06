@@ -114,7 +114,9 @@ class InAppRewardCell: UICollectionViewCell {
         }
         
         if let currency = currency {
-            setCanAfford(price, currency: currency, user: user)
+            setCanAfford(price, currency: currency, user: user, isLocked: reward.locked)
+        } else {
+            currencyView.state = .normal
         }
         isPinned = false
         
@@ -173,10 +175,10 @@ class InAppRewardCell: UICollectionViewCell {
         })
     }
     
-    func setCanAfford(_ price: Float, currency: Currency, user: UserProtocol?) {
+    func setCanAfford(_ price: Float, currency: Currency, user: UserProtocol?, isLocked: Bool) {
         var canAfford = false
 
-        if let user = user, currency == .gold  {
+        if let user = user, currency == .gold {
             canAfford = price <= user.stats?.gold ?? 0
         } else {
             canAfford = true

@@ -89,7 +89,7 @@ extension UIColor {
         case "warrior":
             return .maroon50
         case "healer":
-            return .yellow10
+            return .yellow50
         case "mage", "wizard":
             return .blue10
         case "rogue":
