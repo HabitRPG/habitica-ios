@@ -93,6 +93,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     func populateText() {
         registerBeginButton.setTitle(L10n.Login.register, for: .normal)
         loginBeginButton.setTitle(L10n.Login.login, for: .normal)
+        
         backButton.setTitle(L10n.back, for: .normal)
         usernameField.placeholderText = L10n.username
         emailField.placeholderText = L10n.email

@@ -711,6 +711,7 @@
 "login.register" = "Register";
 "login.social_register" = "Register with %@";
 "login.login" = "Login";
+"login.about_of" = "About Open Forge";
 "login.social_login" = "Login with %@";
 "login.email_username" = "Email / Username";
 "login.login_google" = "Login with Google";

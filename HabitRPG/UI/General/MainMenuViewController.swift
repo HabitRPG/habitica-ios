@@ -514,7 +514,7 @@ class MainMenuViewController: BaseTableViewController {
                 menuItem(withKey: .settings),
                 menuItem(withKey: .news),
                 menuItem(withKey: .support),
-                menuItem(withKey: .about)
+                menuItem(withKey: .about),
                 ])
         ]
         

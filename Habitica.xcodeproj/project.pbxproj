@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		09E04CE0E2A1D593D4188636 /* Pods_Habitica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3B21CA2C48E2E54CC4023F /* Pods_Habitica.framework */; };
+		1403B8482C1A6FF100F5318E /* LoadingAboutScreenPortal in Resources */ = {isa = PBXBuildFile; fileRef = 1403B8472C1A6FA600F5318E /* LoadingAboutScreenPortal */; };
+		1410BC2C2C12A5DD00617A6C /* AboutOFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410BC2B2C12A5DD00617A6C /* AboutOFViewController.swift */; };
 		145F56B42C0ECE8A0080B3A1 /* LoadingScreenPortal in Resources */ = {isa = PBXBuildFile; fileRef = 145F56B32C0ECE8A0080B3A1 /* LoadingScreenPortal */; };
 		290279632057EC03006DACB9 /* FAQTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290279622057EC03006DACB9 /* FAQTableViewController.swift */; };
 		2902796C2057F2C5006DACB9 /* Assets-Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290279692057F2C4006DACB9 /* Assets-Images.swift */; };
@@ -690,6 +692,8 @@
 
 /* Begin PBXFileReference section */
 		12F7D8A4A2D82BEDA11FF447 /* Pods-Habitica-Habitica UI Tests.testflight-staff.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-Habitica UI Tests.testflight-staff.xcconfig"; path = "Target Support Files/Pods-Habitica-Habitica UI Tests/Pods-Habitica-Habitica UI Tests.testflight-staff.xcconfig"; sourceTree = "<group>"; };
+		1403B8472C1A6FA600F5318E /* LoadingAboutScreenPortal */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LoadingAboutScreenPortal; path = HabitRPG/LoadingAboutScreenPortal; sourceTree = "<group>"; };
+		1410BC2B2C12A5DD00617A6C /* AboutOFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutOFViewController.swift; path = HabitRPG/UI/AboutOFViewController.swift; sourceTree = SOURCE_ROOT; };
 		145F56B32C0ECE8A0080B3A1 /* LoadingScreenPortal */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LoadingScreenPortal; path = HabitRPG/LoadingScreenPortal; sourceTree = "<group>"; };
 		290279622057EC03006DACB9 /* FAQTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQTableViewController.swift; sourceTree = "<group>"; };
 		290279692057F2C4006DACB9 /* Assets-Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Assets-Images.swift"; sourceTree = "<group>"; };
@@ -2399,6 +2403,7 @@
 				29C1B6A920594F3D0001D3EF /* Tasks */,
 				2986EB091FCC63CC00B316F6 /* User */,
 				29A62B08216CE5D700D4BD90 /* AboutViewController.swift */,
+				1410BC2B2C12A5DD00617A6C /* AboutOFViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -2622,6 +2627,7 @@
 		D9EB4E8218CB4A9400BB2094 = {
 			isa = PBXGroup;
 			children = (
+				1403B8472C1A6FA600F5318E /* LoadingAboutScreenPortal */,
 				145F56B32C0ECE8A0080B3A1 /* LoadingScreenPortal */,
 				2995F7FA25BAF3B600322CB3 /* RemoteLogger.swift */,
 				29BEE639252CCFE300D456F8 /* Habitica WidgetsExtension.entitlements */,
@@ -3173,6 +3179,7 @@
 				49DCB7B81F3F64D40079FDD0 /* HRPGShopModalBgView.xib in Resources */,
 				D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */,
 				493ECBB91F47D82A0099B1FC /* HRPGGearSetItem.xib in Resources */,
+				1403B8482C1A6FF100F5318E /* LoadingAboutScreenPortal in Resources */,
 				29FC8864201B78D6002B3D3F /* QuestMenuHeader.xib in Resources */,
 				2927025A24E3F42100BCAA77 /* Support.storyboard in Resources */,
 				493ECBB51F47A58F0099B1FC /* HRPGItemStatsView.xib in Resources */,
@@ -3705,6 +3712,7 @@
 				293BB49A1FCD7DC0003B6F4F /* StatsView.swift in Sources */,
 				49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */,
 				29A984D22547294E00F04665 /* HabiticaAnalytics.swift in Sources */,
+				1410BC2C2C12A5DD00617A6C /* AboutOFViewController.swift in Sources */,
 				291A5E6226CD35E800E9CD50 /* TutorialStepsProtocol.swift in Sources */,
 				2912C3B422CB441C00BC485F /* NewMysteryitemNotificationCell.swift in Sources */,
 				29CEA8562641A2B500101C0A /* AdventureGuideTableViewCell.swift in Sources */,

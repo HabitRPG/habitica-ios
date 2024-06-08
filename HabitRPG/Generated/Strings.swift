@@ -2007,6 +2007,8 @@ public enum L10n {
   }
 
   public enum Login {
+    /// About Open Forge
+    public static var aboutOf: String { return L10n.tr("Mainstrings", "login.about_of") }
     /// There was an error with the authentication. Try again later
     public static var authenticationError: String { return L10n.tr("Mainstrings", "login.authentication_error") }
     /// Please enter a valid email.

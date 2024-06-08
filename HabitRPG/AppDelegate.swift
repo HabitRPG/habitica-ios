@@ -65,7 +65,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         handleInitialLaunch()
         applySearchAdAttribution()
         Measurements.stop(identifier: "didFinishLaunchingWithOptions")
-        PortalsRegistrationManager.shared.register(key: Secrets.ionicPortalsKey)
+        PortalsRegistrationManager.shared.register(key: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YTMzMjlmOS02YmRiLTRmNDItOGQ5Ni00YzlhZTk4Y2VjOWQifQ.kXnym6skhDcd-Uhrpd3keT1zdIwqzHaozwVLgR3DV9lGEJ_H6ZqXXJvoZvLZyX2ji4ugk4opde0fzty048ZMJ0smCoZHxOJoHKGtX2Et_4iqbWvPfR1kCuiFqkpBOuXXgzAwMKXRRMZ4GSVKJTORXU_DYk3zykcFRNbeHcjvjXGYzcfImfIro0IS9NY4ka_cYf3STFWYncQp7eelgRU56d1nvb3h_84R3_KBVE-JvjjMWbwvvx7GDhxFX_-LC2WMNpkA6FbWiazUUl3UrYQZLG1xKrc8Hfh25h8i65FcO5_HfPdlMjoPLyIdNUTsIwi30BJA8gpqZmBttsL7WJbmLQ")
         return true
     }
 

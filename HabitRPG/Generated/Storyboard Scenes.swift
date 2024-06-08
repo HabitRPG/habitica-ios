@@ -23,12 +23,16 @@ internal enum StoryboardScene {
   internal enum Intro: StoryboardType {
     internal static let storyboardName = "Intro"
 
-    internal static let initialScene = InitialSceneType<Habitica.LoadingViewController>(storyboard: Intro.self)
+    internal static let initialScene = InitialSceneType<Habitica.AboutOFViewController>(storyboard: Intro.self)
+
+    internal static let aboutOFViewController = SceneType<Habitica.AboutOFViewController>(storyboard: Intro.self, identifier: "AboutOFViewController")
 
     internal static let loginTableViewController = SceneType<Habitica.LoginTableViewController>(storyboard: Intro.self, identifier: "LoginTableViewController")
   }
   internal enum Main: StoryboardType {
     internal static let storyboardName = "Main"
+
+    internal static let aboutOFViewController = SceneType<Habitica.AboutOFViewController>(storyboard: Main.self, identifier: "AboutOFViewController")
 
     internal static let aboutViewController = SceneType<Habitica.AboutViewController>(storyboard: Main.self, identifier: "AboutViewController")
 

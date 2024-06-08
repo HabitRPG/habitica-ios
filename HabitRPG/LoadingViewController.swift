@@ -37,7 +37,6 @@ class LoadingViewController: UIViewController {
     private let viewModel = LoadingViewModel()
     private var wasDismissed = false
     private var dismissCancellable: AnyCancellable?
-    private var myPortal: PortalUIView?
 
     override func loadView() {
         super.loadView()

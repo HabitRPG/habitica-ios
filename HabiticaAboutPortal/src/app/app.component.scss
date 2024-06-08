@@ -1,0 +1,39 @@
+ion-content {
+  display: flex;
+  justify-content: center;
+  background-color: #7639ED;
+}
+ion-item {
+  text-align: center;
+}
+ion-card {
+  padding: 1rem;
+  text-align: center;
+}
+
+ion-button {
+  --background: #7639ED;
+  width: 100%;
+  margin-top: 1rem;
+}
+ion-card-title{
+  text-align: center;
+}
+a, h3 {
+  text-decoration: none;
+  color: #7639ED;
+}
+
+.container {
+  background-color: #7639ED;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 1rem 1rem;
+}
+.centered {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
