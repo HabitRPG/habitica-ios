@@ -544,6 +544,8 @@ public enum L10n {
   public static var invitedFriendDescription: String { return L10n.tr("Mainstrings", "invitedFriendDescription") }
   /// Invited a Friend
   public static var invitedFriendTitle: String { return L10n.tr("Mainstrings", "invitedFriendTitle") }
+  /// Closed
+  public static var isClosed: String { return L10n.tr("Mainstrings", "is_closed") }
   /// Open
   public static var isOpen: String { return L10n.tr("Mainstrings", "is_open") }
   /// Join

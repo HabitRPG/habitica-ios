@@ -814,6 +814,7 @@
                         <outlet property="skinView" destination="F2b-NY-aTQ" id="ICh-GU-nKM"/>
                         <outlet property="wheelchairView" destination="akH-Ps-Sg4" id="L7n-Xc-GTI"/>
                         <segue destination="l5S-RX-jq2" kind="show" identifier="DetailSegue" id="7To-4w-0p6"/>
+                        <segue destination="WIb-ka-8Ng" kind="show" identifier="OldDetailSegue" id="wEp-wX-tRo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m7n-j0-thw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -978,7 +979,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q5s-Wo-MJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6361.6822429906542" y="123.75809935205184"/>
+            <point key="canvasLocation" x="6456" y="422"/>
         </scene>
         <!--Settings-->
         <scene sceneID="5Gi-ds-f28">
@@ -3837,6 +3838,166 @@ a matching subscription automatically after sending your gift.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7l0-CR-liL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8074" y="1104"/>
+        </scene>
+        <!--Old Avatar Detail View Controller-->
+        <scene sceneID="paB-zh-TVJ">
+            <objects>
+                <collectionViewController storyboardIdentifier="oldAvatarDetailViewController" id="WIb-ka-8Ng" customClass="OldAvatarDetailViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="jm9-r8-sNt">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="I4T-rW-wgs">
+                            <size key="itemSize" width="80" height="108"/>
+                            <size key="headerReferenceSize" width="50" height="38"/>
+                            <size key="footerReferenceSize" width="50" height="70"/>
+                            <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="GMm-7f-e87" customClass="CustomizationDetailCell" customModule="Habitica" customModuleProvider="target">
+                                <rect key="frame" x="8" y="38" width="80" height="108"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="108"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SQR-ff-dLs" customClass="NetworkImageView" customModule="Habitica" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="SQR-ff-dLs" secondAttribute="height" multiplier="1:1" id="ZkI-m3-9j1"/>
+                                            </constraints>
+                                        </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="slb-bR-KQi" customClass="CurrencyCountView" customModule="Habitica" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="80" width="80" height="28"/>
+                                            <color key="backgroundColor" red="0.92813128229999997" green="0.92537832259999997" blue="0.93166613580000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                    </subviews>
+                                </view>
+                                <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="slb-bR-KQi" secondAttribute="trailing" id="5rj-vi-c5n"/>
+                                    <constraint firstItem="slb-bR-KQi" firstAttribute="leading" secondItem="GMm-7f-e87" secondAttribute="leading" id="g1s-dS-YEo"/>
+                                    <constraint firstAttribute="trailing" secondItem="SQR-ff-dLs" secondAttribute="trailing" id="gfz-33-bQk"/>
+                                    <constraint firstAttribute="bottom" secondItem="slb-bR-KQi" secondAttribute="bottom" id="i7N-Ur-Ufa"/>
+                                    <constraint firstItem="SQR-ff-dLs" firstAttribute="top" secondItem="GMm-7f-e87" secondAttribute="top" id="mZn-l1-GHe"/>
+                                    <constraint firstItem="SQR-ff-dLs" firstAttribute="leading" secondItem="GMm-7f-e87" secondAttribute="leading" id="qj4-dq-1eE"/>
+                                    <constraint firstItem="slb-bR-KQi" firstAttribute="top" secondItem="SQR-ff-dLs" secondAttribute="bottom" id="rwK-5K-sGg"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.60365134480000004" green="0.38511508700000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="currencyView" destination="slb-bR-KQi" id="lpD-Hp-Chr"/>
+                                    <outlet property="imageView" destination="SQR-ff-dLs" id="w83-BP-aBi"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectionHeader" id="At4-BB-jgH" customClass="CustomizationHeaderView" customModule="Habitica" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="428" height="38"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0LP-XT-vYr">
+                                    <rect key="frame" x="8" y="12" width="412" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="500" constant="30" id="uz2-jt-ka7"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="0LP-XT-vYr" firstAttribute="top" secondItem="At4-BB-jgH" secondAttribute="topMargin" constant="4" id="3IW-ZD-R4F"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="0LP-XT-vYr" secondAttribute="trailing" id="Gl7-U6-w3i"/>
+                                <constraint firstItem="0LP-XT-vYr" firstAttribute="leading" secondItem="At4-BB-jgH" secondAttribute="leadingMargin" id="SsH-ZZ-5nr"/>
+                                <constraint firstItem="0LP-XT-vYr" firstAttribute="bottom" secondItem="At4-BB-jgH" secondAttribute="bottomMargin" constant="6" id="g3i-Ye-Z7V"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="label" destination="0LP-XT-vYr" id="SMa-q9-tFt"/>
+                            </connections>
+                        </collectionReusableView>
+                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectionFooter" id="4iR-JW-gCe" customClass="CustomizationFooterView" customModule="Habitica" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="146" width="428" height="70"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kjg-2X-Os1">
+                                    <rect key="frame" x="0.0" y="0.0" width="428" height="70"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zrC-9e-5Qs">
+                                    <rect key="frame" x="84" y="18" width="260" height="40"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" distribution="equalCentering" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="erh-Sm-vx6" customClass="StackView" customModule="Habitica" customModuleProvider="target">
+                                            <rect key="frame" x="38.333333333333329" y="0.0" width="183.33333333333337" height="40"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Buy Set" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGI-QV-yRn">
+                                                    <rect key="frame" x="0.0" y="9.9999999999999982" width="59" height="20.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="VO5-FU-baw" customClass="CurrencyCountView" customModule="Habitica" customModuleProvider="target">
+                                                    <rect key="frame" x="71.000000000000028" y="0.0" width="112.33333333333334" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" priority="500" constant="40" id="zFy-pU-ZcX"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="Hyj-3h-R3z"/>
+                                                <constraint firstAttribute="width" priority="500" constant="50" id="KhP-0W-qFL"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="8"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="erh-Sm-vx6" firstAttribute="top" secondItem="zrC-9e-5Qs" secondAttribute="top" id="2gX-BE-OGH"/>
+                                        <constraint firstItem="erh-Sm-vx6" firstAttribute="centerX" secondItem="zrC-9e-5Qs" secondAttribute="centerX" id="51A-up-HrZ"/>
+                                        <constraint firstAttribute="width" constant="260" id="SdM-5S-YkV"/>
+                                        <constraint firstAttribute="height" constant="40" id="ywn-CG-E8L"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="8"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="zrC-9e-5Qs" firstAttribute="centerX" secondItem="4iR-JW-gCe" secondAttribute="centerX" id="KZm-r2-2Lw"/>
+                                <constraint firstAttribute="bottom" secondItem="kjg-2X-Os1" secondAttribute="bottom" id="OLb-z4-usM"/>
+                                <constraint firstItem="zrC-9e-5Qs" firstAttribute="top" secondItem="4iR-JW-gCe" secondAttribute="topMargin" constant="10" id="QFs-6M-udM"/>
+                                <constraint firstItem="kjg-2X-Os1" firstAttribute="top" secondItem="4iR-JW-gCe" secondAttribute="top" id="UBd-QE-ivv"/>
+                                <constraint firstAttribute="trailing" secondItem="kjg-2X-Os1" secondAttribute="trailing" id="nIE-vf-rxw"/>
+                                <constraint firstItem="kjg-2X-Os1" firstAttribute="leading" secondItem="4iR-JW-gCe" secondAttribute="leading" id="xoT-rd-eDP"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="buyAllLabel" destination="XGI-QV-yRn" id="iUy-BW-JZr"/>
+                                <outlet property="currencyView" destination="VO5-FU-baw" id="uas-GX-D1x"/>
+                                <outlet property="hostingView" destination="kjg-2X-Os1" id="kwV-u3-5zD"/>
+                                <outlet property="purchaseButton" destination="zrC-9e-5Qs" id="3Id-8G-Bhj"/>
+                            </connections>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="WIb-ka-8Ng" id="g9X-lp-cXx"/>
+                            <outlet property="delegate" destination="WIb-ka-8Ng" id="RNy-A1-BXB"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="ZaE-dz-a4M"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eMc-AL-WW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7188.7850467289718" y="-19.438444924406049"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

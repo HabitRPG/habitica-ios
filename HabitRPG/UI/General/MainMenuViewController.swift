@@ -389,7 +389,7 @@ class MainMenuViewController: BaseTableViewController {
                 })
         }
         
-        if configRepository.bool(variable: .enableCustomizationShop) || configRepository.testingLevel.isDeveloper {
+        if configRepository.bool(variable: .enableCustomizationShop) {
             menuItem(withKey: .customizationShop).isHidden = false
             tableView.reloadData()
         }
@@ -434,7 +434,11 @@ class MainMenuViewController: BaseTableViewController {
         case "fall":
             seasonText = L10n.fall
         default:
-            seasonText = L10n.isOpen
+            if configRepository.bool(variable: .enableCustomizationShop) {
+                seasonText = L10n.isOpen
+            } else {
+                seasonText = L10n.isClosed
+            }
         }
         menuItem(withKey: .seasonalShop).pillText = seasonText
         tableView.reloadData()

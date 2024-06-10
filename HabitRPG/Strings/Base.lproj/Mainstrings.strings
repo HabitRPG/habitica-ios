@@ -656,6 +656,7 @@
 "copied_x_to_clipboard" = "Copied %@ to Clipboard";
 "open" = "Open";
 "is_open" = "Open";
+"is_closed" = "Closed";
 "open_mystery_item" = "You open the Mystery Box and find...";
 "monday" = "Monday";
 "tuesday" = "Tuesday";

@@ -98,6 +98,8 @@ internal enum StoryboardScene {
 
     internal static let avatarDetailViewController = SceneType<Habitica.AvatarDetailViewController>(storyboard: Main.self, identifier: "avatarDetailViewController")
 
+    internal static let oldAvatarDetailViewController = SceneType<Habitica.OldAvatarDetailViewController>(storyboard: Main.self, identifier: "oldAvatarDetailViewController")
+
     internal static let spellTaskNavigationController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "spellTaskNavigationController")
 
     internal static let tagNavigationController = SceneType<Habitica.ThemedNavigationController>(storyboard: Main.self, identifier: "tagNavigationController")

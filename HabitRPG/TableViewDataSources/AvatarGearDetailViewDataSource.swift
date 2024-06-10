@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import SwiftUIX
 
-private class BlankGear: GearProtocol {
+class BlankGear: GearProtocol {
     var key: String?
     var text: String?
     var notes: String?
@@ -89,7 +89,7 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
         
         if let gear = item(at: indexPath), let customizationCell = cell as? CustomizationDetailCell {
             customizationCell.isCustomizationSelected = gear.key == equippedKey
-            customizationCell.currencyView.isHidden = owns(gear: gear)
+            customizationCell.currencyView.isHidden = owns(gear: gear) || gear is BlankGear
             customizationCell.configure(gear: gear)
         }
         
@@ -99,7 +99,7 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if let gear = item(at: indexPath) {
-            if !owns(gear: gear) && !newCustomizationLayout {
+            if !owns(gear: gear) && !newCustomizationLayout && !(gear is BlankGear) {
                 return CGSize(width: 80, height: 108)
             } else {
                 return CGSize(width: 80, height: 80)
