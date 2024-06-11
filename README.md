@@ -37,70 +37,8 @@ $ cp sample.debug.xcconfig debug.xcconfig
 
 If you want to run your app against a locally running version of Habitica, change `CUSTOM_DOMAIN` to `localhost:3000` or whatever port you have your local version configured to. Also set `DISABLE_SSL` to true so that the url can be configured correctly.
 
-### CocoaPods
 
-We are using [CocoaPods](http://cocoapods.org) to manage dependencies.
-
-During installation, cocoapods-keys will prompt for some of the keys used in the project. Use any random value for debugging, the real values are only required when uploading a final build to the app store.
-
-CocoaPods requires that you open the *Habitica.xcworkspace*.
-
-```
-$ open Habitica.xcworkspace
-```
-
-### Non-M1 Mac Installation
-
-If you have managed ruby environment (rbenv, rvm, etc.):
-
-```
-$ bundle install
-$ bundle exec pod install
-```
-
-As an alternative, it is possible to install the dependendencies manually. Use `sudo` if required to install gems (i.e. you are using the MacOS system ruby):
-
-```
-$ sudo gem install cocoapods:'>=1.2'
-$ sudo gem install cocoapods-keys
-$ pod install
-```
-
-### M1 Mac Installation
-
-#### Step 1: Install Brew
-
-```
-# Install Brew (package manager)
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Add 'brew' as a terminal command (change {USER_NAME})
-echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> /Users/{USER_NAME}/.zprofile
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# Verify Installation
-which brew
-```
-
-#### Step 2: Install cocoapods using Brew
-
-```
-brew install cocoapods
-
-# Verify the installation from brew and get the Version number:
-brew info cocoapods
-# ^example output: cocoapods: stable 1.10.1 (bottled)
-
-# Go to your project directory
-cd path/to/project
-
-# Install pods (REMEMBER to run this in your project folder)
-opt/homebrew/Cellar/cocoapods/{VERSION}/bin/pod init
-opt/homebrew/Cellar/cocoapods/{VERSION}/bin/pod install
-```
-NOTE Get the {VERSION} from the brew info cocoapods command
-
-### Step 3: Install swiftgen and generate secrets
+### Install swiftgen and generate secrets
 
 ```
 brew install swiftgen
@@ -108,8 +46,7 @@ brew install swiftgen
 # Replace the secrets.yml.example to secrets.yml and set your own values
 
 swiftgen config run
+```
 
 NOTE You can run the project without being set the credentials but this features will be limited
-
-```
 
