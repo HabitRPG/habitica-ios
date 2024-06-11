@@ -38,6 +38,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     
     var createdTags = [SetupTaskCategory: TagProtocol]()
     var tagsToCreate = [SetupTaskCategory: TagProtocol]()
+    private var isCompletingSetup = false
     
     private let configRepository = ConfigRepository.shared
 
@@ -186,7 +187,8 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func completeSetup() {
-        if !tagsToCreate.isEmpty || !createdTags.isEmpty {
+        isCompletingSetup = true
+        if !tagsToCreate.isEmpty || !createdTags.isEmpty || isCompletingSetup {
             return
         }
         UserDefaults.standard.set(false, forKey: "isInSetup")
