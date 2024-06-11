@@ -168,7 +168,7 @@ class CheckboxView: UIView {
                     return
             }
             if checked {
-                let strLength = attributedString.string.count
+                let strLength = attributedString.string.utf16.count
                 attributedString.addAttribute(.strikethroughStyle, value: NSNumber(value: 2), range: NSRange(location: 0, length: strLength))
                 label.attributedText = attributedString
             } else {
