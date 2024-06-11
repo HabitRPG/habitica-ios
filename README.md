@@ -100,3 +100,16 @@ opt/homebrew/Cellar/cocoapods/{VERSION}/bin/pod install
 ```
 NOTE Get the {VERSION} from the brew info cocoapods command
 
+### Step 3: Install swiftgen and generate secrets
+
+```
+brew install swiftgen
+
+# Replace the secrets.yml.example to secrets.yml and set your own values
+
+swiftgen config run
+
+NOTE You can run the project without being set the credentials but this features will be limited
+
+```
+
