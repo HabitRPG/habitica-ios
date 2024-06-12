@@ -58,7 +58,7 @@ class CalculateUserStatsInteractor: Interactor<(StatsProtocol, [GearProtocol]), 
     override func configure(signal: Signal<(StatsProtocol, [GearProtocol]), NSError>) -> Signal<CalculatedUserStats, NSError> {
         return signal.map({ (userStats, gear) in
             var stats = CalculatedUserStats()
-            stats.levelStat = min(userStats.level / 2, 100)
+            stats.levelStat = min(userStats.level / 2, 50)
             
             stats.allocatedStrength = userStats.strength
             stats.allocatedIntelligence = userStats.intelligence
