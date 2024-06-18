@@ -112,7 +112,8 @@ struct ValueBar: View {
                         Rectangle().fill(Color.progressBackground).frame(width: metrics.size.width, height: thickness, alignment: .leading).cornerRadius(4)
                         Rectangle().fill(color).frame(width: metrics.size.width * CGFloat(value / maxValue), height: thickness, alignment: .leading).cornerRadius(4)
                     })
-                }.frame(width: .infinity, height: thickness, alignment: .center)
+                }.frame(height: thickness, alignment: .center)
+                    .frame(maxWidth: .infinity, alignment: .center)
                 if showLabels { HStack {
                     Text(title).font(.caption).foregroundColor(Color.widgetText)
                     Spacer()

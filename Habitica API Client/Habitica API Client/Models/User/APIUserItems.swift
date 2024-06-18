@@ -63,7 +63,7 @@ public class APIUserItems: UserItemsProtocol, Decodable {
             return APIOwnedItem(key: key, numberOwned: numberOwned as? Int ?? 0, itemType: ItemType.special.rawValue)
         })) ?? []
         
-        let petsDict = try?values.decode([String: Int?].self, forKey: .ownedPets)
+        let petsDict = try? values.decode([String: Int?].self, forKey: .ownedPets)
         ownedPets = (petsDict?.map({ (key, trained) -> OwnedPetProtocol in
             return APIOwnedPet(key: key, trained: trained ?? 0)
         })) ?? []

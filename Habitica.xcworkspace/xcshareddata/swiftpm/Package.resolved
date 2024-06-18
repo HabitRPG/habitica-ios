@@ -1,5 +1,5 @@
 {
-  "originHash" : "b0c330473c1c0fc2a373849ddbcea4d4d6b5c46fa3d714a44e206254ac95d3aa",
+  "originHash" : "0653bca06d3e788d4535bce3793966c300fe828f0e20825e9369bac6bea0c3d0",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -170,6 +170,15 @@
       "state" : {
         "revision" : "2d12673670417654f08f5f90fdd62926dc3a2648",
         "version" : "100.0.0"
+      }
+    },
+    {
+      "identity" : "ios-snapshot-test-case",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/uber/ios-snapshot-test-case.git",
+      "state" : {
+        "revision" : "7b10770333a961be6e5a41c9ce04b8c6d3990126",
+        "version" : "8.0.0"
       }
     },
     {

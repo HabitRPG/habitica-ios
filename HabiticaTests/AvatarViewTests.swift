@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import FBSnapshotTestCase
+import iOSSnapshotTestCase
 import Nimble
 @testable import Habitica
 
@@ -291,6 +291,10 @@ class AvatarViewTests: HabiticaTests {
 }
 
 class TestAvatar: Avatar {
+    func isValid() -> Bool {
+        return true
+    }
+    
     var substitutions: NSDictionary? = [:]
     var background: String?
     var chair: String?

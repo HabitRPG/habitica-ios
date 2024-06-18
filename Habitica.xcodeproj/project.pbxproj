@@ -34,7 +34,7 @@
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
 		29084B3326CF97F500AD9966 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29084B3226CF97F500AD9966 /* ShopViewController.swift */; };
 		2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */; };
-		2908E3512217255600D246CD /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		2908E3512217255600D246CD /* (null) in Resources */ = {isa = PBXBuildFile; };
 		290922F02242628600645D0E /* LanguageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290922EF2242628600645D0E /* LanguageHandler.swift */; };
 		2909D41F272199BE00FF2B29 /* MultiLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D41E272199BE00FF2B29 /* MultiLineTextField.swift */; };
 		2909D4222722C20A00FF2B29 /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2909D4212722C20A00FF2B29 /* Servers.swift */; };
@@ -397,6 +397,10 @@
 		29C38C8724A256F800F219A1 /* AdventureGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8624A256F800F219A1 /* AdventureGuideViewController.swift */; };
 		29C38C8924A33E6600F219A1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8824A33E6600F219A1 /* NotificationManager.swift */; };
 		29C38C8B24A48F9D00F219A1 /* AchievementAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8A24A48F9D00F219A1 /* AchievementAlertController.swift */; };
+		29C55B302C21A1CB008F553A /* iOSSnapshotTestCase in Frameworks */ = {isa = PBXBuildFile; productRef = 29C55B2F2C21A1CB008F553A /* iOSSnapshotTestCase */; };
+		29C55B352C21A419008F553A /* CwlCatchException in Frameworks */ = {isa = PBXBuildFile; productRef = 29C55B342C21A419008F553A /* CwlCatchException */; };
+		29C55B372C21AEC4008F553A /* CwlCatchException in Frameworks */ = {isa = PBXBuildFile; productRef = 29C55B362C21AEC4008F553A /* CwlCatchException */; };
+		29C55B392C21AF74008F553A /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 29C55B382C21AF74008F553A /* Nimble */; };
 		29CAC3C92A3A11B5006DF74D /* LookingForPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CAC3C82A3A11B5006DF74D /* LookingForPartyViewController.swift */; };
 		29CAC3CB2A3A1288006DF74D /* BaseHostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CAC3CA2A3A1288006DF74D /* BaseHostingViewController.swift */; };
 		29CAC3CD2A3C7C61006DF74D /* PartyInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CAC3CC2A3C7C61006DF74D /* PartyInviteViewController.swift */; };
@@ -1321,6 +1325,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29C55B352C21A419008F553A /* CwlCatchException in Frameworks */,
+				29C55B392C21AF74008F553A /* Nimble in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1372,6 +1378,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29C55B372C21AEC4008F553A /* CwlCatchException in Frameworks */,
+				29C55B302C21A1CB008F553A /* iOSSnapshotTestCase in Frameworks */,
 				2938ED4F28B5043700E995A2 /* Nimble in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2226,7 +2234,6 @@
 		D957043A1E151BE5004F6804 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				D9709A4C1E7F130F0005F35B /* Challenges */,
 				D9709A481E7F00320005F35B /* Tasks */,
 				D957043B1E151BF7004F6804 /* Login */,
 				DC2C4F94176B40E92E73BD9E /* Views */,
@@ -2266,13 +2273,6 @@
 				D9709A4F1E7F17150005F35B /* TaskDetailLineViewTests.swift */,
 			);
 			path = Tasks;
-			sourceTree = "<group>";
-		};
-		D9709A4C1E7F130F0005F35B /* Challenges */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Challenges;
 			sourceTree = "<group>";
 		};
 		D9709A521E8051BD0005F35B /* Tasks */ = {
@@ -2617,7 +2617,6 @@
 				29706CA427D8B797006EC139 /* Habitica UI Tests */,
 				D9EB4E8D18CB4A9400BB2094 /* Frameworks */,
 				D9EB4E8C18CB4A9400BB2094 /* Products */,
-				EDF539F31260A6E60FFF35C8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2721,13 +2720,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		EDF539F31260A6E60FFF35C8 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2745,6 +2737,10 @@
 				29706CAA27D8B797006EC139 /* PBXTargetDependency */,
 			);
 			name = "Habitica UI Tests";
+			packageProductDependencies = (
+				29C55B342C21A419008F553A /* CwlCatchException */,
+				29C55B382C21AF74008F553A /* Nimble */,
+			);
 			productName = "Habitica UI Tests";
 			productReference = 29706CA327D8B797006EC139 /* Habitica UI Tests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -2844,6 +2840,8 @@
 			name = HabiticaTests;
 			packageProductDependencies = (
 				2938ED4E28B5043700E995A2 /* Nimble */,
+				29C55B2F2C21A1CB008F553A /* iOSSnapshotTestCase */,
+				29C55B362C21AEC4008F553A /* CwlCatchException */,
 			);
 			productName = HabiticaTests;
 			productReference = D94461831AB34F5C0015215E /* HabiticaTests.xctest */;
@@ -3001,14 +2999,14 @@
 			);
 			mainGroup = D9EB4E8218CB4A9400BB2094;
 			packageReferences = (
-				29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView.git" */,
-				292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess.git" */,
-				292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS.git" */,
+				29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */,
+				292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
 				292BD8A028B4EAC4006447EF /* XCRemoteSwiftPackageReference "Amplitude-iOS" */,
 				292BD8A328B4EAE9006447EF /* XCRemoteSwiftPackageReference "Down" */,
 				292BD8A628B4EB10006447EF /* XCRemoteSwiftPackageReference "PinLayout" */,
-				292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka.git" */,
-				292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher.git" */,
+				292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka" */,
+				292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				292BD8AF28B4EC36006447EF /* XCRemoteSwiftPackageReference "TagListView" */,
 				2938ED2C28B4EDC700E995A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				2938ED4128B4EF5D00E995A2 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
@@ -3016,9 +3014,11 @@
 				2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */,
 				2953D83E28B5215400DC456E /* XCRemoteSwiftPackageReference "Reactivecocoa" */,
 				2953D84328B7772A00DC456E /* XCRemoteSwiftPackageReference "BottomSheet" */,
-				294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI.git" */,
+				294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 				29A3FD2D296720AF007D85B2 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
-				2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal.git" */,
+				2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal" */,
+				29C55B2E2C21A1CB008F553A /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */,
+				29C55B312C21A247008F553A /* XCRemoteSwiftPackageReference "CwlCatchException" */,
 			);
 			productRefGroup = D9EB4E8C18CB4A9400BB2094 /* Products */;
 			projectDirPath = "";
@@ -3113,7 +3113,7 @@
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
-				2908E3512217255600D246CD /* BuildFile in Resources */,
+				2908E3512217255600D246CD /* (null) in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
@@ -5510,7 +5510,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess.git" */ = {
+		292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
 			requirement = {
@@ -5518,7 +5518,7 @@
 				minimumVersion = 4.0.0;
 			};
 		};
-		292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS.git" */ = {
+		292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/openid/AppAuth-iOS.git";
 			requirement = {
@@ -5550,7 +5550,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka.git" */ = {
+		292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/xmartlabs/Eureka.git";
 			requirement = {
@@ -5558,7 +5558,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher.git" */ = {
+		292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -5606,7 +5606,7 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal.git" */ = {
+		2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/slackhq/PanModal.git";
 			requirement = {
@@ -5614,7 +5614,7 @@
 				minimumVersion = 1.2.7;
 			};
 		};
-		294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI.git" */ = {
+		294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
 			requirement = {
@@ -5646,7 +5646,7 @@
 				minimumVersion = 0.1.3;
 			};
 		};
-		29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView.git" */ = {
+		29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nathantannar4/InputBarAccessoryView.git";
 			requirement = {
@@ -5654,17 +5654,33 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		29C55B2E2C21A1CB008F553A /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/uber/ios-snapshot-test-case.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+		29C55B312C21A247008F553A /* XCRemoteSwiftPackageReference "CwlCatchException" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mattgallagher/CwlCatchException.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		292BD89B28B4EA4F006447EF /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess.git" */;
+			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
 		};
 		292BD89E28B4EA85006447EF /* AppAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS.git" */;
+			package = 292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
 			productName = AppAuth;
 		};
 		292BD8A128B4EAC4006447EF /* Amplitude */ = {
@@ -5684,12 +5700,12 @@
 		};
 		292BD8AA28B4EB42006447EF /* Eureka */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka.git" */;
+			package = 292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka" */;
 			productName = Eureka;
 		};
 		292BD8AD28B4EB81006447EF /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher.git" */;
+			package = 292BD8AC28B4EB81006447EF /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 		292BD8B028B4EC36006447EF /* TagListView */ = {
@@ -5739,12 +5755,12 @@
 		};
 		2938ED3D28B4EEB200E995A2 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess.git" */;
+			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
 		};
 		2938ED3F28B4EEBC00E995A2 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess.git" */;
+			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
 		};
 		2938ED4228B4EF5D00E995A2 /* SwiftyStoreKit */ = {
@@ -5764,12 +5780,12 @@
 		};
 		2945AE962B285D000022F3CC /* PanModal */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal.git" */;
+			package = 2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal" */;
 			productName = PanModal;
 		};
 		294F5D6528CA1DCB00760F6C /* ConfettiSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI.git" */;
+			package = 294F5D6428CA1DCA00760F6C /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
 			productName = ConfettiSwiftUI;
 		};
 		2953D83A28B51F9E00DC456E /* ReactiveSwift */ = {
@@ -5799,8 +5815,28 @@
 		};
 		29AE771927E3521800CC9646 /* InputBarAccessoryView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView.git" */;
+			package = 29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */;
 			productName = InputBarAccessoryView;
+		};
+		29C55B2F2C21A1CB008F553A /* iOSSnapshotTestCase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29C55B2E2C21A1CB008F553A /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */;
+			productName = iOSSnapshotTestCase;
+		};
+		29C55B342C21A419008F553A /* CwlCatchException */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29C55B312C21A247008F553A /* XCRemoteSwiftPackageReference "CwlCatchException" */;
+			productName = CwlCatchException;
+		};
+		29C55B362C21AEC4008F553A /* CwlCatchException */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29C55B312C21A247008F553A /* XCRemoteSwiftPackageReference "CwlCatchException" */;
+			productName = CwlCatchException;
+		};
+		29C55B382C21AF74008F553A /* Nimble */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2938ED4D28B5043700E995A2 /* XCRemoteSwiftPackageReference "Nimble" */;
+			productName = Nimble;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

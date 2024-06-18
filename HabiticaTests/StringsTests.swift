@@ -27,7 +27,7 @@ class StringsTests: HabiticaTests {
     func testGroupStrings() {
         print("Testing in \(NSLocale.current.identifier)")
         let groupName = "Test Group"
-        expect(L10n.Party.invitationInvitername("Username")).toNot(beNil())
+        expect(L10n.Party.invitationInvitername("Username", "Group")).toNot(beNil())
         expect(L10n.Party.invitedToQuest(groupName)).toNot(beNil())
         expect(L10n.Party.questNumberResponded(4, 10)).toNot(beNil())
         expect(L10n.Party.questParticipantCount(20)).toNot(beNil())
@@ -120,7 +120,6 @@ class StringsTests: HabiticaTests {
         expect(L10n.purchaseForGems(20)).toNot(beNil())
         expect(L10n.purchaseX(10)).toNot(beNil())
         expect(L10n.purchased("Test")).toNot(beNil())
-        expect(L10n.receivedMysteryItem("Test")).toNot(beNil())
         expect(L10n.reportXViolation("Test")).toNot(beNil())
         expect(L10n.saleEndsIn("Test")).toNot(beNil())
         expect(L10n.sell(10)).toNot(beNil())

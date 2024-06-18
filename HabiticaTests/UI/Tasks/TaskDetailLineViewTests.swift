@@ -130,6 +130,7 @@ class TaskDetailLineViewTests: XCTestCase {
 }
 
 class TestTask: TaskProtocol {
+    var groupAssignedDetails: [any Habitica_Models.AssignedDetailsProtocol] = []
     var groupID: String?
     var isManaged: Bool = false
     

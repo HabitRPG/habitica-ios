@@ -192,14 +192,14 @@ struct TaskListWidget: Widget {
 struct TaskListWidgetPreview: PreviewProvider {
     static var previews: some View {
         Group {
-            TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemMedium, tasks: makePreviewTasks().dropLast(8), needsCron: true))
+            TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemMedium, tasks: makePreviewDailies().dropLast(8), needsCron: true))
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
-            TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemMedium, tasks: makePreviewTasks().dropLast(8), needsCron: false))
+            TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemMedium, tasks: makePreviewDailies().dropLast(8), needsCron: false))
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
-            TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemMedium, tasks: makePreviewTasks(), needsCron: false))
+            TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemMedium, tasks: makePreviewDailies(), needsCron: false))
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
                 .environment(\.colorScheme, .dark)
-            TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks: makePreviewTasks(), needsCron: false))
+            TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks: makePreviewDailies(), needsCron: false))
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
             TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks: [], needsCron: false))
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
@@ -208,10 +208,10 @@ struct TaskListWidgetPreview: PreviewProvider {
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks: [], needsCron: true))
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
-            TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks: makePreviewTasks().dropLast(6), needsCron: false))
+            TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks: makePreviewDailies().dropLast(6), needsCron: false))
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
             if #available(iOSApplicationExtension 15.0, *) {
-                TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks: makePreviewTasks().dropLast(6), needsCron: false))
+                TaskListWidgetView(entry: TaskListEntry(widgetFamily: .systemLarge, tasks: makePreviewDailies().dropLast(6), needsCron: false))
                     .previewContext(WidgetPreviewContext(family: .systemExtraLarge))
             }
         }
@@ -219,7 +219,7 @@ struct TaskListWidgetPreview: PreviewProvider {
     }
 }
 
-private func makePreviewTasks() -> [TaskProtocol] {
+private func makePreviewDailies() -> [TaskProtocol] {
     var tasks = [TaskProtocol]()
     for index in 1...10 {
         let task = PreviewTask()

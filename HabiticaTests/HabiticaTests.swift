@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import FBSnapshotTestCase
+import iOSSnapshotTestCase
 
 class HabiticaTests: FBSnapshotTestCase {
     
