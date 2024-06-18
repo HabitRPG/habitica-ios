@@ -1,10 +1,8 @@
-# Habitica for iOS [![Build Status](https://travis-ci.org/HabitRPG/habitica-ios.svg?branch=master)](https://travis-ci.org/HabitRPG/habitica-ios)
+# Habitica for iOS
 
 Native iOS app for [Habitica](https://habitica.com/).
 
 ## Contributing
-
-For an introduction to the technologies used and how the software is organized, refer to [Contributing to Habitica](http://habitica.wikia.com/wiki/Contributing_to_Habitica#Coders_.28Web_.26_Mobile.29) - "Coders (Web & Mobile)" section.
 
 Thank you very much [to all contributors](https://github.com/HabitRPG/habitica-ios/graphs/contributors).
 
