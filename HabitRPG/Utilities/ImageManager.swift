@@ -56,7 +56,7 @@ class ImageManager {
         "Pet-Gryphatrice-Jubilant": "gif",
         "stable_Pet-Gryphatrice-Jubilant": "gif",
         "back_special_heroicAureole": "gif",
-        "Pet-HatchingPotion-Funghi": "gif"
+        "Pet_HatchingPotion_Fungi": "gif"
     ]
     
     static func setImage(on imageView: NetworkImageView, name: String, extension fileExtension: String = "", completion: ((UIImage?, NSError?) -> Void)? = nil) {
