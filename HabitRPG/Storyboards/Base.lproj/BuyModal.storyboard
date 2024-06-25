@@ -3,7 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -212,6 +212,7 @@
                         <outlet property="buttonSeparatorView" destination="fqA-Gf-Y0Z" id="7hi-Wq-ccF"/>
                         <outlet property="buyButton" destination="e3z-QN-KcI" id="85Z-iK-947"/>
                         <outlet property="buyLabel" destination="j5D-EL-LRQ" id="IV9-ti-otW"/>
+                        <outlet property="centerConstraint" destination="99Z-Bp-NiO" id="twd-eL-g4k"/>
                         <outlet property="closableShopModal" destination="di7-JQ-KmH" id="hna-9x-zD3"/>
                         <outlet property="closeButton" destination="TiK-yj-cOf" id="fuP-3h-sg6"/>
                         <outlet property="currencyCountView" destination="few-vN-72G" id="eqo-2s-TW3"/>

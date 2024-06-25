@@ -12,6 +12,6 @@ import ReactiveSwift
 
 public class SyncUserStatsCall: ResponseObjectCall<UserProtocol, APIUser> {
     public init() {
-        super.init(httpMethod: .GET, endpoint: "user/stat-sync")
+        super.init(httpMethod: .POST, endpoint: "user/stat-sync")
     }
 }

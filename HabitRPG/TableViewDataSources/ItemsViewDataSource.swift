@@ -15,9 +15,9 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
     var itemType: String? {
         didSet {
             if itemType != nil {
-            sections.forEach { section in
-                section.isHidden = section.key != itemType
-            }
+                sections.forEach { section in
+                    section.isHidden = section.key != itemType
+                }
             } else {
                 sections.forEach { section in
                     section.isHidden = false
@@ -154,11 +154,11 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return visibleSections.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var count = sections[section].items.count
+        var count = visibleSections[section].items.count
         // swiftlint:disable:next empty_count
         if count == 0 {
             count = 1
@@ -167,10 +167,10 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if sections.isEmpty {
+        if visibleSections.isEmpty {
             return nil
         }
-        return sections[section].title
+        return visibleSections[section].title
     }
     
     override func item(at indexPath: IndexPath?) -> ItemProtocol? {
@@ -180,9 +180,9 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
         if indexPath.item < 0 || indexPath.section < 0 {
             return nil
         }
-        if indexPath.section < sections.count {	
-            if indexPath.item < sections[indexPath.section].items.count {
-                return sections[indexPath.section].items[indexPath.item]
+        if indexPath.section < visibleSections.count {
+            if indexPath.item < visibleSections[indexPath.section].items.count {
+                return visibleSections[indexPath.section].items[indexPath.item]
             }
         }
         return nil

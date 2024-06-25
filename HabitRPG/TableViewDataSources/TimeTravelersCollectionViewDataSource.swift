@@ -35,6 +35,7 @@ class TimeTravelersCollectionViewDataSource: ShopCollectionViewDataSource {
                         let newItem = inventoryRepository.getNewInAppReward()
                         let key = item.category?.identifier ?? ""
                         newItem.text = item.category?.text
+                        newItem.notes = item.category?.notes ?? item.notes
                         newItem.key = key
                         newItem.pinType = item.pinType ?? "mystery_set"
                         newItem.purchaseType = newItem.pinType

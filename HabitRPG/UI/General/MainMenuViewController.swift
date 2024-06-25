@@ -91,7 +91,7 @@ class MenuItem {
         MenuItem(key: .market, title: L10n.Locations.market, segue: StoryboardSegue.Main.showMarketSegue.rawValue),
         MenuItem(key: .questShop, title: L10n.Menu.questShop, segue: StoryboardSegue.Main.showQuestShopSegue.rawValue),
         MenuItem(key: .seasonalShop, title: L10n.Locations.seasonalShop, segue: StoryboardSegue.Main.showSeasonalShopSegue.rawValue),
-        MenuItem(key: .customizationShop, title: L10n.Locations.customizations, segue: StoryboardSegue.Main.showCustomizationShopSegue.rawValue, isHidden: true),
+        MenuItem(key: .customizationShop, title: L10n.Locations.customizations, segue: StoryboardSegue.Main.showCustomizationShopSegue.rawValue),
         MenuItem(key: .timeTravelersShop, title: L10n.Locations.timeTravelersShop, segue: StoryboardSegue.Main.showTimeTravelersSegue.rawValue),
         MenuItem(key: .customizeAvatar, title: L10n.Menu.customizeAvatar, vcInstantiator: StoryboardScene.Main.avatarOverviewViewController.instantiate),
         MenuItem(key: .equipment, title: L10n.Titles.equipment, vcInstantiator: StoryboardScene.Main.equipmentOverviewViewController.instantiate),
@@ -388,11 +388,6 @@ class MainMenuViewController: BaseTableViewController {
                     self?.updatePromoCells()
                 })
         }
-        
-        if configRepository.bool(variable: .enableCustomizationShop) {
-            menuItem(withKey: .customizationShop).isHidden = false
-            tableView.reloadData()
-        }
     }
     
     private func updatePromoCells() {
@@ -434,11 +429,7 @@ class MainMenuViewController: BaseTableViewController {
         case "fall":
             seasonText = L10n.fall
         default:
-            if configRepository.bool(variable: .enableCustomizationShop) {
-                seasonText = L10n.isOpen
-            } else {
-                seasonText = L10n.isClosed
-            }
+            seasonText = L10n.isOpen
         }
         menuItem(withKey: .seasonalShop).pillText = seasonText
         tableView.reloadData()
