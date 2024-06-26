@@ -51,6 +51,14 @@ class MountOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                 self?.sections[3].items.append(contentsOf: overviewItems["special"] ?? [])
                 self?.collectionView?.reloadData()
             }).start()
+        
+        disposable.add(userRepository.getUser().map { $0.items?.currentMount }
+            .on(value: {[weak self] mount in
+                if self?.currentSelected != mount {
+                    self?.currentSelected = mount
+                }
+            })
+            .start())
     }
     
     override func getImageName(_ animal: AnimalProtocol) -> String {

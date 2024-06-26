@@ -11,11 +11,14 @@ import Habitica_Models
 
 class PetDetailCell: UICollectionViewCell {
     
+    @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var imageView: NetworkImageView!
     @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var activeIndicator: UIImageView!
     
     func configure(petItem: PetStableItem, currentPet: String?) {
-        backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        bgView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         let percentage = Float(petItem.trained) / 50.0
         if let key = petItem.pet?.key {
             if petItem.trained != 0 {
@@ -47,6 +50,9 @@ class PetDetailCell: UICollectionViewCell {
         } else {
             progressView.isHidden = true
         }
+        
+        activeIndicator.isHidden = currentPet != petItem.pet?.key
+        activeIndicator.backgroundColor = .teal100
         
         shouldGroupAccessibilityChildren = true
         isAccessibilityElement = true

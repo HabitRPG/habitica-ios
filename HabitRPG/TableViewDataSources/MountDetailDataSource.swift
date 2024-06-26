@@ -17,7 +17,13 @@ struct MountStableItem {
 class MountDetailDataSource: BaseReactiveCollectionViewDataSource<MountStableItem> {
     
     private let stableRepsository = StableRepository()
+    private let userRepository = UserRepository()
     var types = ["drop", "premium"]
+    private var currentMount: String? {
+        didSet {
+            collectionView?.reloadData()
+        }
+    }
     
     init(searchEggs: Bool, searchKey: String) {
         super.init()
@@ -61,13 +67,20 @@ class MountDetailDataSource: BaseReactiveCollectionViewDataSource<MountStableIte
                 }
                 self?.collectionView?.reloadData()
             }).start())
+        disposable.add(userRepository.getUser().map { $0.items?.currentMount }
+            .on(value: {[weak self] mount in
+                if self?.currentMount != mount {
+                    self?.currentMount = mount
+                }
+            })
+            .start())
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
         if let mountItem = item(at: indexPath), let mountCell = cell as? MountDetailCell {
-            mountCell.configure(mountItem: mountItem)
+            mountCell.configure(mountItem: mountItem, currentMount: currentMount)
         }
         
         return cell

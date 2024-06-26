@@ -72,5 +72,13 @@ class PetOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                             self.ownedItems = ownedItems
                             self.collectionView?.reloadData()
                         }).start())
+        
+        disposable.add(userRepository.getUser().map { $0.items?.currentPet }
+            .on(value: {[weak self] pet in
+                if self?.currentSelected != pet {
+                    self?.currentSelected = pet
+                }
+            })
+            .start())
     }
 }

@@ -10,13 +10,16 @@ import UIKit
 
 class StableOverviewCell: UICollectionViewCell {
     
+    @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var imageView: NetworkImageView!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var countLabelHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var activeIndicator: UIImageView!
     
-    func configure(item: StableOverviewItem, ownsItem: Bool) {
-        backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+    func configure(item: StableOverviewItem, ownsItem: Bool, currentSelected: String?) {
+        backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        bgView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         textLabel.text = item.text
         countLabel.text = "\(item.numberOwned)/\(item.totalNumber)"
         
@@ -49,6 +52,9 @@ class StableOverviewCell: UICollectionViewCell {
             countLabelHeightConstraint.constant = 20
             imageView.setImagewith(name: item.imageName)
         }
+        
+        activeIndicator.isHidden = currentSelected != item.searchKey
+        activeIndicator.backgroundColor = .teal100
         
         shouldGroupAccessibilityChildren = true
         isAccessibilityElement = true

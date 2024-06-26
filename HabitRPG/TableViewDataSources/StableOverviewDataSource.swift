@@ -25,6 +25,7 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
     
     internal let stableRepository = StableRepository()
     internal let inventoryRepository = InventoryRepository()
+    internal let userRepository = UserRepository()
     internal var fetchDisposable: Disposable?
     
     var organizeByColor = false {
@@ -34,6 +35,7 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
     }
     
     var ownedItems = [String: OwnedItemProtocol]()
+    var currentSelected: String?
     
     deinit {
         if let disposable = fetchDisposable {
@@ -55,7 +57,7 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
             } else {
                 ownsItem = true
             }
-            overviewCell.configure(item: animalItem, ownsItem: ownsItem)
+            overviewCell.configure(item: animalItem, ownsItem: ownsItem, currentSelected: currentSelected)
         }
         
         return cell
