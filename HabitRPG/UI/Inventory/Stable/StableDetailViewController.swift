@@ -15,6 +15,7 @@ class StableDetailViewController<DS>: BaseCollectionViewController {
     var searchEggs = true
     var searchKey: String = ""
     var animalType: String = "drop"
+    var showMounts = false
     
     var datasource: DS?
     
@@ -30,7 +31,11 @@ class StableDetailViewController<DS>: BaseCollectionViewController {
         super.viewDidLoad()
         disposable.inner.add(inventoryRepository.getItems(keys: [(searchEggs ? ItemType.eggs : ItemType.hatchingPotions): [searchKey]]).take(first: 1).on(value: {[weak self] items in
             if self?.searchEggs == true {
-                self?.title = items.0.value.first?.text
+                if self?.showMounts == true {
+                    self?.title = items.0.value.first?.mountText
+                } else {
+                    self?.title = items.0.value.first?.text
+                }
             } else {
                 self?.title = items.2.value.first?.text
             }

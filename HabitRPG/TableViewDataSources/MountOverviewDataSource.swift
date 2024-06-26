@@ -37,7 +37,7 @@ class MountOverviewDataSource: StableOverviewDataSource<PetProtocol> {
             .map({[weak self] (pets, items) -> [String: [StableOverviewItem]] in
                 var sortedItems = [String: String]()
                 items.0.value.forEach { sortedItems["potion-\($0.key ?? "")"] = $0.text }
-                items.1.value.forEach { sortedItems["egg-\($0.key ?? "")"] = $0.text }
+                items.1.value.forEach { sortedItems["egg-\($0.key ?? "")"] = ($0 as? EggProtocol)?.mountText }
                 return self?.mapData(owned: pets.0, animals: pets.1.value, items: sortedItems) ?? [:]
             })
             .on(value: {[weak self]overviewItems in

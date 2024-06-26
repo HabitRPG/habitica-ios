@@ -18,6 +18,7 @@ class MountDetailViewController: StableDetailViewController<MountDetailDataSourc
     private var user: UserProtocol?
     
     override func viewDidLoad() {
+        showMounts = true
         datasource = MountDetailDataSource(searchEggs: searchEggs, searchKey: searchKey)
         if animalType == "drop" || animalType == "premium" {
             datasource?.types = ["drop", "premium"]

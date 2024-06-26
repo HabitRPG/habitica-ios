@@ -11,6 +11,7 @@ import Foundation
 @objc
 public protocol EggProtocol: ItemProtocol {
     var adjective: String? { get set }
+    var mountText: String? { get set }
 }
 
 public extension EggProtocol {

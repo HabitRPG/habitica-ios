@@ -12,10 +12,12 @@ import RealmSwift
 
 class RealmEgg: RealmItem, EggProtocol {
     @objc dynamic var adjective: String?
+    @objc dynamic var mountText: String?
     
     convenience init(_ egg: EggProtocol) {
         self.init(item: egg)
         adjective = egg.adjective
+        mountText = egg.mountText
         itemType = ItemType.eggs.rawValue
     }
     

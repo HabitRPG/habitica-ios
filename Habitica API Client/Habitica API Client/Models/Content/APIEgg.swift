@@ -13,6 +13,7 @@ class APIEgg: EggProtocol, Decodable {
     var isSubscriberItem: Bool = false
     var key: String?
     var text: String?
+    var mountText: String?
     var notes: String?
     var value: Float = 0
     var adjective: String?
@@ -25,6 +26,7 @@ class APIEgg: EggProtocol, Decodable {
     enum CodingKeys: String, CodingKey {
         case key
         case text
+        case mountText
         case notes
         case value
         case adjective
@@ -36,6 +38,7 @@ class APIEgg: EggProtocol, Decodable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         key = try? values.decode(String.self, forKey: .key)
         text = try? values.decode(String.self, forKey: .text)
+        mountText = try? values.decode(String.self, forKey: .mountText)
         notes = try? values.decode(String.self, forKey: .notes)
         value = (try? values.decode(Float.self, forKey: .value)) ?? 0
         adjective = try? values.decode(String.self, forKey: .adjective)
