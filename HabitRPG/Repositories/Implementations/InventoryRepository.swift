@@ -91,6 +91,33 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
             if let userItems = userItems, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, userItems: userItems)
             }
+            
+            StableRepository().getPets(keys: ["\(egg ?? "")-\(potion ?? "")"])
+                .take(first: 1)
+                .map({ result in
+                    return result.value.first
+                })
+                .skipNil()
+                .on(value: { pet in
+                    let alert = HabiticaAlertController()
+                    alert.title = L10n.Inventory.hatched
+                    let hostingView = UIHostingView(rootView: VStack(spacing: 8) {
+                        StableBackgroundView(content: PetView(pet: pet).padding(.top, 40), animateFlying: true).clipShape(.rect(cornerRadius: 12))
+                        Text("\(pet.text ?? "") Pet").font(.system(size: 16, weight: .medium)).foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                    }.ignoresSafeArea())
+                    hostingView.shouldResizeToFitContent = true
+                    alert.contentView = hostingView
+                    alert.addAction(title: L10n.equip, isMainAction: true) { _ in
+                        self?.equip(type: "pet", key: pet.key ?? "").observeCompleted {}
+                    }
+                    alert.addAction(title: L10n.share) { _ in
+                        SharingManager.share(pet: pet, shareIdentifier: "hatchedPet")
+                    }
+                    alert.setCloseAction(title: L10n.close, handler: {})
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        alert.show()
+                    }
+                }).start()
         })
     }
     

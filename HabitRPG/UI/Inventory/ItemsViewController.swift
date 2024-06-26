@@ -63,12 +63,10 @@ class ItemsViewController: BaseTableViewController {
         if isHatching {
             self.isHatching = false
             if let egg = dataSource.hatchingItem as? EggProtocol, let potion = item as? HatchingPotionProtocol {
-                inventoryRepository.hatchPet(egg: egg, potion: potion).skipNil().observeValues {[weak self] _ in
-                    self?.showHatchedDialog(egg: egg, potion: potion)
+                inventoryRepository.hatchPet(egg: egg, potion: potion).skipNil().observeValues { _ in
                 }
             } else if let egg = item as? EggProtocol, let potion = dataSource.hatchingItem as? HatchingPotionProtocol {
-                inventoryRepository.hatchPet(egg: egg, potion: potion).skipNil().observeValues {[weak self] _ in
-                    self?.showHatchedDialog(egg: egg, potion: potion)
+                inventoryRepository.hatchPet(egg: egg, potion: potion).skipNil().observeValues { _ in
                 }
             }
         } else if let item = item {
@@ -217,27 +215,6 @@ class ItemsViewController: BaseTableViewController {
         if isPresentedModally {
             self.dismiss(animated: true, completion: nil)
         }
-    }
-    
-    private func showHatchedDialog(egg: EggProtocol, potion: HatchingPotionProtocol) {
-        let imageAlert = ImageOverlayView(imageName: "Pet-\(egg.key ?? "")-\(potion.key ?? "")", title: L10n.Inventory.hatched, message: "\(potion.text ?? "") \(egg.text ?? "")")
-        imageAlert.addAction(title: L10n.equip, isMainAction: true) {[weak self] _ in
-            self?.inventoryRepository.equip(type: "pet", key: "\(egg.key ?? "")-\(potion.key ?? "")").observeCompleted {}
-        }
-        imageAlert.addAction(title: L10n.share) { (_) in
-            var items: [Any] = [
-                L10n.Inventory.hatchedSharing(egg.text ?? "", potion.text ?? "")
-            ]
-            if let image = imageAlert.image {
-                items.insert(image, at: 0)
-            }
-            SharingManager.share(identifier: "hatchedPet", items: items, presentingViewController: nil, sourceView: nil)
-        }
-        imageAlert.arrangeMessageLast = true
-        imageAlert.containerViewSpacing = 12
-        imageAlert.setCloseAction(title: L10n.close, handler: {})
-        imageAlert.imageHeight = 99
-        imageAlert.enqueue()
     }
     
     private func showMysteryitemDialog(item: GearProtocol) {

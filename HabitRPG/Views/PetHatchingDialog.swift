@@ -132,10 +132,6 @@ class PetHatchingAlertController: HabiticaAlertController {
             addAction(title: L10n.hatch, isMainAction: true) { _ in
                 self.inventoryRepository.getItems(keys: [ItemType.eggs: [item.pet?.egg ?? ""], ItemType.hatchingPotions: [item.pet?.potion ?? ""]]).take(first: 1).on(value: { items in
                 self.inventoryRepository.hatchPet(egg: ownedEggs?.key, potion: ownedPotions?.key).observeCompleted {
-                    guard let egg = items.eggs.value.first, let potion = items.hatchingPotions.value.first else {
-                        return
-                    }
-                    self.showHatchedDialog(egg: egg, potion: potion)
                 }
                 }).start()
             }
@@ -193,7 +189,6 @@ class PetHatchingAlertController: HabiticaAlertController {
                             guard let egg = items.eggs.value.first, let potion = items.hatchingPotions.value.first else {
                                 return
                             }
-                            self.showHatchedDialog(egg: egg, potion: potion)
                         }).start()
                     }
                     button.setAttributedTitle(attributedText, for: .normal)
@@ -203,28 +198,7 @@ class PetHatchingAlertController: HabiticaAlertController {
         
         setupView()
     }
-    
-    private func showHatchedDialog(egg: EggProtocol, potion: HatchingPotionProtocol) {
-        let imageAlert = ImageOverlayView(imageName: "Pet-\(egg.key ?? "")-\(potion.key ?? "")", title: L10n.Inventory.hatched, message: "\(potion.text ?? "") \(egg.text ?? "")")
-        imageAlert.addAction(title: L10n.equip, isMainAction: true) {[weak self] _ in
-            self?.inventoryRepository.equip(type: "pet", key: "\(egg.key ?? "")-\(potion.key ?? "")").observeCompleted {}
-        }
-        imageAlert.addAction(title: L10n.share) { (_) in
-            var items: [Any] = [
-                L10n.Inventory.hatchedSharing(egg.text ?? "", potion.text ?? "")
-            ]
-            if let image = imageAlert.image {
-                items.insert(image, at: 0)
-            }
-            SharingManager.share(identifier: "hatchedPet", items: items, presentingViewController: nil, sourceView: nil)
-        }
-        imageAlert.arrangeMessageLast = true
-        imageAlert.containerViewSpacing = 12
-        imageAlert.setCloseAction(title: L10n.close, handler: {})
-        imageAlert.imageHeight = 99
-        imageAlert.enqueue()
-    }
-    
+
     private func setupView() {
         contentView = stackView
         stackView.addArrangedSubview(imageStackView)

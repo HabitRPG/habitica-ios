@@ -10,6 +10,15 @@ import SwiftUI
 import Habitica_Models
 import Kingfisher
 
+struct PetView: View {
+    var pet: AnimalProtocol
+    
+    var body: some View {
+        PixelArtView(name: "stable_Pet-\(pet.key ?? "")").frame(width: 70, height: 70)
+    }
+}
+
+
 struct PetBottomSheetView: View, Dismissable {
     var dismisser: Dismisser = Dismisser()
     
@@ -57,10 +66,9 @@ struct PetBottomSheetView: View, Dismissable {
     
     var body: some View {
         let theme = ThemeService.shared.theme
-        let petView = PixelArtView(name: "stable_Pet-\(pet.key ?? "")").frame(width: 70, height: 70)
         BottomSheetView(dismisser: dismisser, title: Text(pet.text ?? ""), content: VStack(spacing: 16) {
             ZStack(alignment: .top) {
-                StableBackgroundView(content: petView.padding(.top, 40), animateFlying: false)
+                StableBackgroundView(content: PetView(pet: pet).padding(.top, 40), animateFlying: false)
                     .clipShape(.rect(cornerRadius: 12))
                 if showFeedResponse, let message = feedMessage {
                     Text(message)
@@ -93,8 +101,12 @@ struct PetBottomSheetView: View, Dismissable {
                 let buttonBackground = Color(theme.tintedSubtleUI)
                 HStack(spacing: 16) {
                     Button(action: {
+                        isUsingSaddle = true
                         dismisser.dismiss?()
-                        inventoryRepository.feed(pet: pet, food: "Saddle").observeCompleted {}
+                        inventoryRepository.feed(pet: pet, food: "Saddle")
+                            .observeCompleted {
+                            isUsingSaddle = false
+                        }
                     }, label: {
                         VStack {
                             if isUsingSaddle {
