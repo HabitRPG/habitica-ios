@@ -188,7 +188,8 @@ class HabiticaAlertController: UIViewController, Themeable {
         maximumSize.height -= contentViewInsets.top + contentViewInsets.bottom
         let maximumHeight = maximumSize.height - (32 + 140) - buttonUpperSpacing.constant - buttonLowerSpacing.constant - KeyboardManager.height - CGFloat(buttons.count * 40)
         var contentHeight = contentView?.systemLayoutSizeFitting(maximumSize).height ?? 0
-        if contentHeight == 0 || (contentView?.intrinsicContentSize.height ?? 0 < contentHeight) {
+        let intrinsicSize = contentView?.intrinsicContentSize.height ?? 0
+        if contentHeight == 0 || (intrinsicSize > 0 && intrinsicSize < contentHeight) {
             contentHeight = contentView?.intrinsicContentSize.height ?? 0
         }
         var height = contentHeight + contentViewInsets.top + contentViewInsets.bottom

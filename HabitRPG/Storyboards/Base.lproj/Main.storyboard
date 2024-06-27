@@ -1184,7 +1184,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="791"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="Lf1-Aa-zJn">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Lf1-Aa-zJn">
                             <size key="itemSize" width="84" height="84"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -1252,7 +1252,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="801"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="tQa-dP-3X4">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="tQa-dP-3X4">
                             <size key="itemSize" width="84" height="104"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -1366,7 +1366,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="791"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="HL5-tx-L50">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="HL5-tx-L50">
                             <size key="itemSize" width="84" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -1456,7 +1456,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="84" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ya-Pu-XwC">
+                                        <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ya-Pu-XwC">
                                             <rect key="frame" x="4" y="4" width="76" height="92"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="reM-ea-z4g" customClass="NetworkImageView" customModule="Habitica" customModuleProvider="target">
@@ -1476,7 +1476,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark_small" translatesAutoresizingMaskIntoConstraints="NO" id="3Yl-Dw-pgg">
-                                                    <rect key="frame" x="32" y="82" width="12" height="10"/>
+                                                    <rect key="frame" x="32" y="74" width="12" height="10"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="12" id="8bV-Al-vnA"/>
                                                         <constraint firstAttribute="height" constant="10" id="gtD-WQ-vIw"/>
@@ -1486,7 +1486,7 @@
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstItem="3Yl-Dw-pgg" firstAttribute="centerX" secondItem="1Ya-Pu-XwC" secondAttribute="centerX" id="Lrc-sM-BKD"/>
-                                                <constraint firstAttribute="bottom" secondItem="3Yl-Dw-pgg" secondAttribute="bottom" id="PGl-MP-89b"/>
+                                                <constraint firstAttribute="bottom" secondItem="3Yl-Dw-pgg" secondAttribute="bottom" constant="8" id="PGl-MP-89b"/>
                                                 <constraint firstItem="reM-ea-z4g" firstAttribute="top" secondItem="1Ya-Pu-XwC" secondAttribute="top" id="aMQ-1i-evp"/>
                                                 <constraint firstItem="eDM-kx-eXq" firstAttribute="top" secondItem="1Ya-Pu-XwC" secondAttribute="top" id="dLU-PZ-bem"/>
                                                 <constraint firstAttribute="centerX" secondItem="eDM-kx-eXq" secondAttribute="centerX" constant="8" id="h5H-Mg-rX0"/>
@@ -1495,6 +1495,9 @@
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                     <real key="value" value="6"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="1"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
@@ -1507,14 +1510,6 @@
                                     <constraint firstAttribute="bottom" secondItem="1Ya-Pu-XwC" secondAttribute="bottom" constant="4" id="yrv-ZA-tp5"/>
                                     <constraint firstAttribute="trailing" secondItem="1Ya-Pu-XwC" secondAttribute="trailing" constant="4" id="z3Z-hV-Blh"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </collectionViewCell>
                         </cells>
                         <connections>

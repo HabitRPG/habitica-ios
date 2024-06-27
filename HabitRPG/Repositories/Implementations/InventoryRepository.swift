@@ -283,12 +283,14 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         if food == "Saddle" {
             call.httpResponseSignal.observeValues { response in
                 if response.statusCode == 404 {
-                    let alert = HabiticaAlertController(title: L10n.Inventory.noSaddleTile, message: L10n.Inventory.noSaddleDescription)
-                    alert.addAction(title: L10n.Inventory.visitMarket, style: .default, isMainAction: true) {_ in
-                        RouterHandler.shared.handle(urlString: "/inventory/market/food")
-                    }
-                    alert.addCloseAction()
-                    alert.show()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                        let alert = HabiticaAlertController(title: L10n.Inventory.noSaddleTile, message: L10n.Inventory.noSaddleDescription)
+                        alert.addAction(title: L10n.Inventory.visitMarket, style: .default, isMainAction: true) {_ in
+                            RouterHandler.shared.handle(urlString: "/inventory/market/food")
+                        }
+                        alert.addCloseAction()
+                        alert.show()
+                    })
                 }
             }
         }
