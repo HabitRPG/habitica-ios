@@ -13,7 +13,6 @@ import Habitica_Models
 import ReactiveSwift
 
 struct DailiesCountProvider: IntentTimelineProvider {
-    
     func placeholder(in context: Context) -> DailiesCountWidgetEntry {
         DailiesCountWidgetEntry(date: Date(),
                   widgetFamily: context.family, totalCount: 42, completedCount: 10)
@@ -60,7 +59,7 @@ struct DailiesCountWidgetEntry: TimelineEntry {
     var needsCron = false
 }
 
-struct DailiesCountWidgetView : View {
+struct DailiesCountWidgetView: View {
     var entry: DailiesCountProvider.Entry
 
     private var isLockscreenWidget: Bool {

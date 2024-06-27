@@ -83,11 +83,11 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>fLm7kx</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>21G115</string>
+	<string>23A344</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>14B47b</string>
+	<string>15F31d</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>14.1</string>
+	<string>15.4</string>
 	<key>INIntents</key>
 	<array>
 		<dict>

@@ -114,7 +114,8 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         WidgetCenter.shared.reloadTimelines(ofKind: "DailiesCountWidget")
         WidgetCenter.shared.reloadTimelines(ofKind: "StatsWidget")
         WidgetCenter.shared.reloadTimelines(ofKind: "TaskListWidget")
-        
+        WidgetCenter.shared.reloadTimelines(ofKind: "TodoTaskListWidget")
+
         WidgetCenter.shared.getCurrentConfigurations { result in
             switch result {
             case let .success(info):

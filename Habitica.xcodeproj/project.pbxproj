@@ -378,8 +378,8 @@
 		29BEE6D7252E14F000D456F8 /* HabiticaWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE6C7252E144F00D456F8 /* HabiticaWidgets.swift */; };
 		29BEE6DC252E14F300D456F8 /* RemainingDailiesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE6CD252E14C000D456F8 /* RemainingDailiesWidget.swift */; };
 		29BEE6E7252E1B7700D456F8 /* Color-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE6E1252E1B3600D456F8 /* Color-Extensions.swift */; };
-		29BEE6ED252E27B800D456F8 /* DailiesCount.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE6EC252E27B800D456F8 /* DailiesCount.intentdefinition */; };
-		29BEE73F252E2CC300D456F8 /* DailiesCount.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE6EC252E27B800D456F8 /* DailiesCount.intentdefinition */; };
+		29BEE6ED252E27B800D456F8 /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE6EC252E27B800D456F8 /* Widget.intentdefinition */; };
+		29BEE73F252E2CC300D456F8 /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE6EC252E27B800D456F8 /* Widget.intentdefinition */; };
 		29BEE755252E321F00D456F8 /* AvatarWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE754252E321F00D456F8 /* AvatarWidget.swift */; };
 		29BEE75A252E33AB00D456F8 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FEB277202B491600EA245A /* Avatar.swift */; };
 		29BEE760252E367600D456F8 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE75F252E367600D456F8 /* URLImage.swift */; };
@@ -1047,7 +1047,7 @@
 		29BEE6C7252E144F00D456F8 /* HabiticaWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaWidgets.swift; sourceTree = "<group>"; };
 		29BEE6CD252E14C000D456F8 /* RemainingDailiesWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingDailiesWidget.swift; sourceTree = "<group>"; };
 		29BEE6E1252E1B3600D456F8 /* Color-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Extensions.swift"; sourceTree = "<group>"; };
-		29BEE6EC252E27B800D456F8 /* DailiesCount.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = DailiesCount.intentdefinition; sourceTree = "<group>"; };
+		29BEE6EC252E27B800D456F8 /* Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Widget.intentdefinition; sourceTree = "<group>"; };
 		29BEE754252E321F00D456F8 /* AvatarWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarWidget.swift; sourceTree = "<group>"; };
 		29BEE75F252E367600D456F8 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
 		29BEE7B4252EE92D00D456F8 /* AddTaskWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskWidget.swift; sourceTree = "<group>"; };
@@ -1861,7 +1861,7 @@
 				29BEE6CD252E14C000D456F8 /* RemainingDailiesWidget.swift */,
 				29BEE6E1252E1B3600D456F8 /* Color-Extensions.swift */,
 				29BEE631252CCFE100D456F8 /* StatsWidget.swift */,
-				29BEE6EC252E27B800D456F8 /* DailiesCount.intentdefinition */,
+				29BEE6EC252E27B800D456F8 /* Widget.intentdefinition */,
 				29BEE754252E321F00D456F8 /* AvatarWidget.swift */,
 				29BEE75F252E367600D456F8 /* URLImage.swift */,
 				29BEE7B4252EE92D00D456F8 /* AddTaskWidget.swift */,
@@ -3269,7 +3269,7 @@
 			files = (
 				29BEE64D252DD3F400D456F8 /* TaskManager.swift in Sources */,
 				29A9858125472D1700F04665 /* HabiticaAnalytics.swift in Sources */,
-				29BEE6ED252E27B800D456F8 /* DailiesCount.intentdefinition in Sources */,
+				29BEE6ED252E27B800D456F8 /* Widget.intentdefinition in Sources */,
 				29BEE755252E321F00D456F8 /* AvatarWidget.swift in Sources */,
 				2995F7FC25BAF3B600322CB3 /* RemoteLogger.swift in Sources */,
 				29BEE632252CCFE100D456F8 /* StatsWidget.swift in Sources */,
@@ -3634,7 +3634,7 @@
 				29C1360824EE917F00DBC6B3 /* UITableView-Extensions.swift in Sources */,
 				29D50B7B25F9037A0009CF55 /* AppDelegate-Notifications.swift in Sources */,
 				2927025724E3EEDE00BCAA77 /* ReportBugViewController.swift in Sources */,
-				29BEE73F252E2CC300D456F8 /* DailiesCount.intentdefinition in Sources */,
+				29BEE73F252E2CC300D456F8 /* Widget.intentdefinition in Sources */,
 				49EE3FD8201908AB00CD7608 /* ChallengeButtonStyleProvider.swift in Sources */,
 				D9CE90491E4DCF7D00702578 /* SubscriptionDetailView.swift in Sources */,
 				291666432BCFD5E70068FCBF /* AvatarShopItemView.swift in Sources */,

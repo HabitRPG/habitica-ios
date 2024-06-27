@@ -457,7 +457,7 @@
 /* (No Comment) */
 "tasks.reward" = "Belohnung";
 /* (No Comment) */
-"tasks.todo" = "To-Do";
+"tasks.todo" = "To Do";
 /* (No Comment) */
 "theme.blue" = "Blau";
 /* (No Comment) */
@@ -539,7 +539,7 @@
 "tasks.habits" = "Gewohnheiten";
 "tasks.dailies" = "Tägliche Aufgaben";
 "tasks.rewards" = "Belohnungen";
-"tasks.todos" = "To-Dos";
+"tasks.todos" = "To Dos";
 "tasks.form.accessibility.enable" = "Aktiviere %@";
 "tasks.form.accessibility.disable" = "Deaktiviere %@";
 "tasks.work" = "Arbeit";
