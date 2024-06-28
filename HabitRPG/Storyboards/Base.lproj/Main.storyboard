@@ -1602,7 +1602,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OdM-ul-yrc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="neK-n6-0WI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5765.625" y="3272.5"/>
+            <point key="canvasLocation" x="5558" y="3103"/>
         </scene>
         <!--Equipment Detail View Controller-->
         <scene sceneID="bP6-qX-kmi">
@@ -2987,7 +2987,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VqI-0M-zUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4779.375" y="3272.5"/>
+            <point key="canvasLocation" x="4811" y="3103"/>
         </scene>
         <!--Top Header View Controller-->
         <scene sceneID="ADP-AR-Pd2">
@@ -4122,20 +4122,20 @@ a matching subscription automatically after sending your gift.</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="yNZ-LP-06T"/>
+        <segue reference="FI8-Gh-C6n"/>
         <segue reference="2vn-wQ-bqg"/>
         <segue reference="FPm-Dv-Zos"/>
         <segue reference="x0h-sG-Le1"/>
         <segue reference="zgD-BU-MQh"/>
         <segue reference="ScC-Xo-JyG"/>
-        <segue reference="WRT-c8-yJ5"/>
+        <segue reference="iSa-66-Wjc"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="jU9-l6-uQc"/>
-        <segue reference="nf5-O5-ykS"/>
-        <segue reference="u8W-Xm-nze"/>
+        <segue reference="nYO-SY-Og4"/>
+        <segue reference="1Wb-WL-WiI"/>
         <segue reference="j9F-en-5nH"/>
         <segue reference="dho-1x-ad8"/>
-        <segue reference="PHp-cT-md6"/>
+        <segue reference="6tw-63-M3K"/>
         <segue reference="zf0-3c-Xzo"/>
         <segue reference="Nkz-Sr-H0i"/>
     </inferredMetricsTieBreakers>

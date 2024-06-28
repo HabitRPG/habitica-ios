@@ -89,7 +89,7 @@ class ItemsViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if section == (dataSource.numberOfSections(in: tableView) - 1) {
-            return 150
+            return 170
         } else {
             return 0
         }
@@ -98,16 +98,32 @@ class ItemsViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if section == (dataSource.numberOfSections(in: tableView) - 1) {
             let view = Bundle.main.loadNibNamed("ShopAdFooter", owner: self, options: nil)?.last as? UIView
-            (view?.viewWithTag(21) as? UILabel)?.textColor = ThemeService.shared.theme.primaryTextColor
-            (view?.viewWithTag(22) as? UILabel)?.textColor = ThemeService.shared.theme.secondaryTextColor
-            if let text = (view?.viewWithTag(22) as? UILabel)?.text {
-                let attributedText = NSMutableAttributedString(string: text)
-                let range = attributedText.mutableString.range(of: L10n.Locations.market, options: .caseInsensitive)
-                    if range.location != NSNotFound {
-                        attributedText.addAttributes([NSAttributedString.Key.foregroundColor: ThemeService.shared.theme.tintColor], range: range)
+            let iconView = (view?.viewWithTag(23) as? UIImageView)
+            let titleLabel = (view?.viewWithTag(21) as? UILabel)
+            let descriptionLabel = (view?.viewWithTag(22) as? UILabel)
+            titleLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+            descriptionLabel?.textColor = ThemeService.shared.theme.secondaryTextColor
+            let text: String
+            if itemType == "quests" {
+                if dataSource.visibleSections.first?.items.isEmpty == true {
+                    return nil
                 }
-                (view?.viewWithTag(22) as? UILabel)?.attributedText = attributedText
+                iconView?.image = Asset.Empty.quests.image
+                titleLabel?.text = L10n.Items.footerQuestsTitle
+                text = L10n.Items.footerQuestsDescriptions
+            } else {
+                iconView?.image = Asset.shop.image
+                titleLabel?.text = L10n.Items.footerTitle
+                text = L10n.Items.footerDescription
             }
+            let attributedText = NSMutableAttributedString(string: text)
+            for shopName in [L10n.Locations.market, L10n.Locations.questShop] {
+                let range = attributedText.mutableString.range(of: shopName, options: .caseInsensitive)
+                if range.location != NSNotFound {
+                    attributedText.addAttributes([NSAttributedString.Key.foregroundColor: ThemeService.shared.theme.tintColor], range: range)
+                }
+            }
+            descriptionLabel?.attributedText = attributedText
             
             view?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openMarket)))
             return view

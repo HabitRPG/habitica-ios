@@ -1321,6 +1321,10 @@
 "items.empty.food_description" = "Complete tasks, buy an Armoire, or head over to the Market to stock up!";
 "items.empty.quest_description" = "Get Quests from leveling up, log in bonuses, or the Quest Shop!";
 "items.empty.special_description" = "Get transformation items during Seasonal Galas or subscribe for a mystery box of equipment each month!";
+"items.footer_title" = "Not getting the right items from tasks?";
+"items.footer_description" = "Check out the Market to buy just the things you need!";
+"items.footer_quests_title" = "Want more Quests?";
+"items.footer_quests_descriptions" = "Check out the Quest Shop to see what’s available!";
 "you_raised_pet" = "You raised your %@ Pet into a Mount!";
 "x_gems_month" = "%d gems a month";
 "hourglass_in_x_months" = "Hourglass in %d months";
@@ -1372,3 +1376,4 @@
 "customization_shop" = "Customization Shop";
 "class_equipment_shop_dialog" = "This item is only available to %s.\nOpen Settings to change class.";
 "insufficient_level_equipment_dialog_new" = "This item is only available to %s.\nYou can select a class after level 10.";
+

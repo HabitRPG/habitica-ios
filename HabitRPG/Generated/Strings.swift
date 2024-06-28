@@ -1978,6 +1978,14 @@ public enum L10n {
   }
 
   public enum Items {
+    /// Check out the Market to buy just the things you need!
+    public static var footerDescription: String { return L10n.tr("Mainstrings", "items.footer_description") }
+    /// Check out the Quest Shop to see what’s available!
+    public static var footerQuestsDescriptions: String { return L10n.tr("Mainstrings", "items.footer_quests_descriptions") }
+    /// Want more Quests?
+    public static var footerQuestsTitle: String { return L10n.tr("Mainstrings", "items.footer_quests_title") }
+    /// Not getting the right items from tasks?
+    public static var footerTitle: String { return L10n.tr("Mainstrings", "items.footer_title") }
 
     public enum Empty {
       /// Complete tasks, Pet Quests, or head over to the Market to stock up!
