@@ -101,12 +101,14 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 .on(value: { pet in
                     let alert = HabiticaAlertController()
                     alert.title = L10n.Inventory.hatched
-                    let hostingView = UIHostingView(rootView: VStack(spacing: 8) {
-                        StableBackgroundView(content: PetView(pet: pet).padding(.top, 40), animateFlying: true).clipShape(.rect(cornerRadius: 12))
-                        Text("\(pet.text ?? "") Pet").font(.system(size: 16, weight: .medium)).foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
-                    }.ignoresSafeArea())
-                    hostingView.shouldResizeToFitContent = true
-                    alert.contentView = hostingView
+                    if #available(iOS 15.0, *) {
+                        let hostingView = UIHostingView(rootView: VStack(spacing: 8) {
+                            StableBackgroundView(content: PetView(pet: pet).padding(.top, 40), animateFlying: true).clipShape(.rect(cornerRadius: 12))
+                            Text("\(pet.text ?? "") Pet").font(.system(size: 16, weight: .medium)).foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                        }.ignoresSafeArea())
+                        hostingView.shouldResizeToFitContent = true
+                        alert.contentView = hostingView
+                    }
                     alert.addAction(title: L10n.equip, isMainAction: true) { _ in
                         self?.equip(type: "pet", key: pet.key ?? "").observeCompleted {}
                     }
@@ -302,11 +304,13 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 }.on(value: { mountText in
                     let alert = HabiticaAlertController()
                     alert.title = L10n.youRaisedPet(pet.text ?? "")
-                    alert.contentView = UIHostingView(rootView: VStack(spacing: 8) {
-                        StableBackgroundView(content: MountView(mount: pet).padding(.top, 30), animateFlying: false).clipShape(.rect(cornerRadius: 12))
-                        Text("\(mountText ?? "") Mount").font(.system(size: 16, weight: .medium)).foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
-                        Text("Let's go for a ride!").font(.system(size: 14)).foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
-                    })
+                    if #available(iOS 15.0, *) {
+                        alert.contentView = UIHostingView(rootView: VStack(spacing: 8) {
+                            StableBackgroundView(content: MountView(mount: pet).padding(.top, 30), animateFlying: false).clipShape(.rect(cornerRadius: 12))
+                            Text("\(mountText ?? "") Mount").font(.system(size: 16, weight: .medium)).foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                            Text("Let's go for a ride!").font(.system(size: 14)).foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
+                        })
+                    }
                     alert.addAction(title: L10n.equip, isMainAction: true) { _ in
                         self?.equip(type: "mount", key: pet.key ?? "").observeCompleted {}
                     }

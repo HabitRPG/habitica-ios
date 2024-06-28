@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+@available(iOS 15.0, *)
 struct StableBackgroundView<Content: View>: View {
     let content: Content
     let animateFlying: Bool
@@ -77,25 +78,28 @@ struct StableBackgroundView<Content: View>: View {
         }
         .maxWidth(.infinity)
         .height(124)
-        .onAppear {
-            animationTask = Task {
-                try? await Task.sleep(nanoseconds: 1000000000)
+        .task {
+            try? await Task.sleep(nanoseconds: 1000000000)
+            do {
                 while true {
                     self.bounceAnimation(totalHeight: -24)
-                    try? await Task.sleep(nanoseconds: 2400000000)
+                    try await Task.sleep(nanoseconds: 2400000000)
                     self.bounceAnimation(totalHeight: -5)
-                    try? await Task.sleep(nanoseconds: 700000000)
+                    try await Task.sleep(nanoseconds: 700000000)
                     self.bounceAnimation(totalHeight: -9)
-                    try? await Task.sleep(nanoseconds: 3000000000)
+                    try await Task.sleep(nanoseconds: 3000000000)
                 }
+            } catch {
+                // task is cancelled
             }
-        }
-        .onDisappear {
-            animationTask?.cancel()
         }
     }
 }
 
 #Preview {
-    StableBackgroundView(content: Text("Animal"), animateFlying: false)
+    if #available(iOS 15.0, *) {
+        return StableBackgroundView(content: Text("Animal"), animateFlying: false)
+    } else {
+        return EmptyView()
+    }
 }

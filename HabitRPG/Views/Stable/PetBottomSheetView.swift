@@ -19,6 +19,7 @@ struct PetView: View {
 }
 
 
+@available(iOS 15.0, *)
 struct PetBottomSheetView: View, Dismissable {
     var dismisser: Dismisser = Dismisser()
     
@@ -214,8 +215,12 @@ struct PetBottomSheetView: View, Dismissable {
 }
 
 #Preview {
-    PetBottomSheetView(pet: PreviewPet(egg: "BearCub", potion: "Base", type: "drop", text: "Base Bear Cub"), trained: 10, canRaise: true, isCurrentPet: false, onEquip: {})
-        .previewLayout(.fixed(width: 400, height: 500))
+    if #available(iOS 15.0, *) {
+        return PetBottomSheetView(pet: PreviewPet(egg: "BearCub", potion: "Base", type: "drop", text: "Base Bear Cub"), trained: 10, canRaise: true, isCurrentPet: false, onEquip: {})
+            .previewLayout(.fixed(width: 400, height: 500))
+    } else {
+        return EmptyView()
+    }
 }
 
 private class PreviewPet: PetProtocol {

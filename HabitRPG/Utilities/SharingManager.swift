@@ -38,18 +38,32 @@ class SharingManager {
     }
 
     static func share(pet: AnimalProtocol, shareIdentifier: String = "pet") {
-        let items: [Any] = [StableBackgroundView(content: PixelArtView(name: "stable_Pet-\(pet.key ?? "")")
-            .frame(width: 70, height: 70).padding(.top, 40), animateFlying: false)
+        var items: [Any] = []
+        if #available(iOS 15.0, *) {
+            items.append(StableBackgroundView(content: PetView(pet: pet)
+                .padding(.top, 30), animateFlying: false)
             .frame(width: 300, height: 124)
-            .snapshot()]
+            .snapshot())
+        } else {
+            items.append(PetView(pet: pet)
+                .frame(width: 300, height: 124)
+                .snapshot())
+        }
         SharingManager.share(identifier: shareIdentifier, items: items, presentingViewController: nil, sourceView: nil)
     }
     
     static func share(mount: AnimalProtocol, shareIdentifier: String = "mount") {
-        let items: [Any] = [StableBackgroundView(content: MountView(mount: mount)
-            .padding(.top, 30), animateFlying: false)
+        var items: [Any] = []
+        if #available(iOS 15.0, *) {
+            items.append(StableBackgroundView(content: MountView(mount: mount)
+                .padding(.top, 30), animateFlying: false)
             .frame(width: 300, height: 124)
-            .snapshot()]
+            .snapshot())
+        } else {
+            items.append(MountView(mount: mount)
+                .frame(width: 300, height: 124)
+                .snapshot())
+        }
         SharingManager.share(identifier: shareIdentifier, items: items, presentingViewController: nil, sourceView: nil)
     }
     
