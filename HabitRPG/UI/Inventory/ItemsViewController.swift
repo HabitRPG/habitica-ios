@@ -8,6 +8,7 @@
 
 import UIKit
 import Habitica_Models
+import ReactiveSwift
 import SwiftUI
 
 class ItemsViewController: BaseTableViewController {
@@ -221,6 +222,9 @@ class ItemsViewController: BaseTableViewController {
                         self?.showMysteryitemDialog(item: item)
                     }
                 }
+            })
+            .flatMap(.latest, {[weak self] _ in
+                return self?.userRepository.retrieveUser(withTasks: false, forced: true) ?? Signal.empty
             })
             .observeCompleted {[weak self] in
             self?.dismissIfNeeded()
