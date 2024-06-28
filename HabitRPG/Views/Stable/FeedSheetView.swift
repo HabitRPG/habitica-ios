@@ -29,45 +29,70 @@ private class FeedSheetViewModel: ObservableObject {
         }).start()
     }
 }
-    
+
+@available(iOS 16.0, *)
 struct FeedSheetView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject fileprivate var viewModel = FeedSheetViewModel()
     let onFeed: (FoodProtocol) -> Void
+    var dismissParent: (() -> Void)?
     
     var body: some View {
-        ScrollView {
             if viewModel.food.isEmpty {
                 VStack {
+                    Image(uiImage: Asset.Empty.food.image)
                     Text(L10n.noX(L10n.food)).font(.headline)
                     Text(L10n.Items.Empty.foodDescription).font(.body)
                 }
             } else {
-                LazyVStack(alignment: .leading, spacing: 0) {
-                    ForEach(viewModel.food, id: \.key) { foodItem in
-                        HStack {
-                            PixelArtView(name: "Pet_Food_\(foodItem.key ?? "")").frame(width: 44, height: 44)
-                            Text(foodItem.text ?? "")
-                                .font(.system(.headline))
-                            Spacer()
-                            Text("\(viewModel.ownedFoods[foodItem.key ?? ""] ?? 0)")
-                                .font(.system(.subheadline))
+                List {
+                    Section(content: {
+                        ForEach(viewModel.food, id: \.key) { foodItem in
+                            HStack {
+                                Group {
+                                    PixelArtView(name: "Pet_Food_\(foodItem.key ?? "")").frame(width: 68, height: 68)
+                                }.frame(width: 50, height: 50)
+                                Text(foodItem.text ?? "")
+                                    .font(.system(.headline))
+                                Spacer()
+                                Text("\(viewModel.ownedFoods[foodItem.key ?? ""] ?? 0)")
+                                    .font(.system(.subheadline))
+                            }
+                            .listRowSpacing(0)
+                            .listRowInsets(.none)
+                            .onTapGesture {
+                                onFeed(foodItem)
+                                presentationMode.dismiss()
+                            }
                         }
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 8)
-                        .background(Color(ThemeService.shared.theme.contentBackgroundColor))
+                    }, footer: {
+                        VStack {
+                            Image(uiImage: Asset.shop.image)
+                            Text(L10n.Items.footerFoodTitle).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
+                                .padding(.vertical, 1)
+                            Text(L10n.Items.footerFoodDescription).font(.system(size: 13)).foregroundStyle(Color(ThemeService.shared.theme.ternaryTextColor))
+                        }
+                        .padding(.top, 16)
+                        .multilineTextAlignment(.center)
                         .onTapGesture {
-                            onFeed(foodItem)
                             presentationMode.dismiss()
+                            dismissParent?()
+                            RouterHandler.shared.handle(.market)
                         }
-                    }
+                    }).listRowBackground(Color(ThemeService.shared.theme.windowBackgroundColor))
                 }
+                .scrollContentBackground(.hidden)
+                .background(Color(ThemeService.shared.theme.contentBackgroundColor))
+                .listStyle(.insetGrouped)
             }
-        }
     }
 }
 
 #Preview {
-    FeedSheetView { _ in
+    if #available(iOS 16.0, *) {
+        return FeedSheetView { _ in
+        }
+    } else {
+       return EmptyView()
     }
 }

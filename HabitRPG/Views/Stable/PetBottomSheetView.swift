@@ -19,7 +19,7 @@ struct PetView: View {
 }
 
 
-@available(iOS 15.0, *)
+@available(iOS 16.0, *)
 struct PetBottomSheetView: View, Dismissable {
     var dismisser: Dismisser = Dismisser()
     
@@ -156,36 +156,22 @@ struct PetBottomSheetView: View, Dismissable {
         )
         .sheet(isPresented: $isShowingFeeding, content: {
             NavigationView {
-                if #available(macCatalyst 16.0, iOS 16.0, *) {
-                    FeedSheetView { food in
-                            self.feedPet(food: food)
-                        }.presentationDetents([.medium, .large])
-                            .presentationDragIndicator(.visible).navigationTitle(L10n.Titles.feedPet)
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar(content: {
-                        ToolbarItem(placement: .automatic) {
-                            Button {
-                                isShowingFeeding = false
-                            } label: {
-                                Text(L10n.cancel)
-                            }
+                FeedSheetView(onFeed: { food in
+                        self.feedPet(food: food)
+                    }, dismissParent: {
+                        dismisser.dismiss?()
+                    }).presentationDetents([.medium, .large])
+                        .presentationDragIndicator(.visible).navigationTitle(L10n.Titles.feedPet)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar(content: {
+                    ToolbarItem(placement: .automatic) {
+                        Button {
+                            isShowingFeeding = false
+                        } label: {
+                            Text(L10n.cancel)
                         }
-                    })
-                } else {
-                    FeedSheetView { food in
-                            self.feedPet(food: food)
-                        }.navigationTitle(L10n.Titles.feedPet)
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar(content: {
-                        ToolbarItem(placement: .automatic) {
-                            Button {
-                                isShowingFeeding = false
-                            } label: {
-                                Text(L10n.cancel)
-                            }
-                        }
-                    })
-                }
+                    }
+                })
             }
         })
     }
@@ -215,7 +201,7 @@ struct PetBottomSheetView: View, Dismissable {
 }
 
 #Preview {
-    if #available(iOS 15.0, *) {
+    if #available(iOS 16.0, *) {
         return PetBottomSheetView(pet: PreviewPet(egg: "BearCub", potion: "Base", type: "drop", text: "Base Bear Cub"), trained: 10, canRaise: true, isCurrentPet: false, onEquip: {})
             .previewLayout(.fixed(width: 400, height: 500))
     } else {

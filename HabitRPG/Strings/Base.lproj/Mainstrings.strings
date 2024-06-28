@@ -1325,6 +1325,8 @@
 "items.footer_description" = "Check out the Market to buy just the things you need!";
 "items.footer_quests_title" = "Want more Quests?";
 "items.footer_quests_descriptions" = "Check out the Quest Shop to see what’s available!";
+"items.footer_food_title" = "Not getting the right food from tasks?";
+"items.footer_food_description" = "Check out the Market to buy food or a Saddle to instantly raise your Pet!";
 "you_raised_pet" = "You raised your %@ Pet into a Mount!";
 "x_gems_month" = "%d gems a month";
 "hourglass_in_x_months" = "Hourglass in %d months";
