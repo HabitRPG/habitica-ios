@@ -150,7 +150,7 @@ class LanguageHandler {
         for code in languageCodes ?? [] {
             let locale = Locale(identifier: code)
             if let language = AppLanguage.allLanguages().first(where: { language -> Bool in
-                return language.code == locale.languageCode
+                return language.code == locale.languageCode || language.code == code
             }) {
                 return language
             }
