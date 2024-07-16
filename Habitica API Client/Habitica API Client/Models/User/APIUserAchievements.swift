@@ -44,8 +44,17 @@ class APIUserAchievements: UserAchievementsProtocol, Decodable {
         streak = (try? values.decode(Int.self, forKey: .streak)) ?? 0
         quests = []
         challenges = []
-        let userQuests = try? values.decode([String: Int].self, forKey: .quests)
-        userQuests?.forEach({ (key, count) in
+        var combinedQuests = [String: Int]()
+        if let userQuests = try? values.decode([String: Int].self, forKey: .quests), !userQuests.isEmpty {
+            combinedQuests.merge(userQuests, uniquingKeysWith: { (first, _) in first })
+        }
+        if let stringCodedQuests = (try? values.decode([String: String].self, forKey: .quests))?.mapValues({ stringValue in
+            return Int(stringValue) ?? 0
+        }), !stringCodedQuests.isEmpty {
+            combinedQuests.merge(stringCodedQuests, uniquingKeysWith: { (first, _) in first })
+        }
+        
+        combinedQuests.forEach({ (key, count) in
             let achievement = APIAchievement()
             achievement.key = key
             achievement.earned = true
