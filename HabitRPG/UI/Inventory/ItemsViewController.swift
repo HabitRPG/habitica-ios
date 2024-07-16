@@ -78,12 +78,15 @@ class ItemsViewController: BaseTableViewController {
                 "hitType": "event",
                 "area": "empty",
                 "type": dataSource.tableView(tableView, titleForHeaderInSection: indexPath.section) ?? ""])
-            if indexPath.section < 3 {
+            if indexPath.section == 4 || itemType == "quests" {
+                RouterHandler.shared.handle(.questShop)
+            } else if indexPath.section < 3 {
                 RouterHandler.shared.handle(.market)
             } else if indexPath.section == 3 {
                 RouterHandler.shared.handle(.subscription)
-            } else  if indexPath.section == 4 {
-                RouterHandler.shared.handle(.questShop)
+            }
+            if isPresentedModally {
+                dismiss()
             }
         }
     }
@@ -103,7 +106,7 @@ class ItemsViewController: BaseTableViewController {
             let titleLabel = (view?.viewWithTag(21) as? UILabel)
             let descriptionLabel = (view?.viewWithTag(22) as? UILabel)
             titleLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-            descriptionLabel?.textColor = ThemeService.shared.theme.secondaryTextColor
+            descriptionLabel?.textColor = ThemeService.shared.theme.ternaryTextColor
             let text: String
             if itemType == "quests" {
                 if dataSource.visibleSections.first?.items.isEmpty == true {
@@ -118,12 +121,7 @@ class ItemsViewController: BaseTableViewController {
                 text = L10n.Items.footerDescription
             }
             let attributedText = NSMutableAttributedString(string: text)
-            for shopName in [L10n.Locations.market, L10n.Locations.questShop] {
-                let range = attributedText.mutableString.range(of: shopName, options: .caseInsensitive)
-                if range.location != NSNotFound {
-                    attributedText.addAttributes([NSAttributedString.Key.foregroundColor: ThemeService.shared.theme.tintColor], range: range)
-                }
-            }
+            attributedText.highlightWords(words: L10n.Locations.market, L10n.Locations.questShop)
             descriptionLabel?.attributedText = attributedText
             
             view?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openMarket)))

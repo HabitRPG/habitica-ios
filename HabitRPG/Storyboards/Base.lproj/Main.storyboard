@@ -2443,7 +2443,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="500" constant="16" id="kCf-dc-WPv"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -2452,7 +2452,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="500" constant="16" id="hva-6n-115"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -4131,7 +4131,7 @@ a matching subscription automatically after sending your gift.</string>
         <segue reference="iSa-66-Wjc"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="jU9-l6-uQc"/>
-        <segue reference="nYO-SY-Og4"/>
+        <segue reference="V6b-ej-qnx"/>
         <segue reference="1Wb-WL-WiI"/>
         <segue reference="j9F-en-5nH"/>
         <segue reference="dho-1x-ad8"/>

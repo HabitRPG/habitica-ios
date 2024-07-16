@@ -94,7 +94,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             }).start())
         
         disposable.add(userRepository.getAchievements().map { achievements in
-            achievements.value.filter { $0.isQuestAchievement }
+            achievements.value.filter { $0.optionalCount > 0 && $0.isQuestAchievement }
         }.on(value: {[weak self] achievements in
             self?.completedQuests = achievements.map({ $0.key })
         }).start())

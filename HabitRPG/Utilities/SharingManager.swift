@@ -39,7 +39,7 @@ class SharingManager {
 
     static func share(pet: AnimalProtocol, shareIdentifier: String = "pet") {
         var items: [Any] = []
-        if #available(iOS 15.0, *) {
+        if #available(iOS 16.0, *) {
             items.append(StableBackgroundView(content: PetView(pet: pet)
                 .padding(.top, 30), animateFlying: false)
             .frame(width: 300, height: 124)
@@ -54,7 +54,7 @@ class SharingManager {
     
     static func share(mount: AnimalProtocol, shareIdentifier: String = "mount") {
         var items: [Any] = []
-        if #available(iOS 15.0, *) {
+        if #available(iOS 16.0, *) {
             items.append(StableBackgroundView(content: MountView(mount: mount)
                 .padding(.top, 30), animateFlying: false)
             .frame(width: 300, height: 124)

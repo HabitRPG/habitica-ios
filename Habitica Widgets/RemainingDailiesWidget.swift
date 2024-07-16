@@ -129,6 +129,7 @@ struct DailiesCountWidgetView: View {
                         CountView(completedCount: entry.completedCount, totalCount: entry.totalCount, displayCount: displayCount, displayRemaining: entry.displayRemaining).padding(.bottom, 17)
                     }
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+                    .padding(widgetPadding())
                     .widgetBackground(Color.widgetBackground)
                     .widgetURL(URL(string: "/user/tasks/daily"))
             }

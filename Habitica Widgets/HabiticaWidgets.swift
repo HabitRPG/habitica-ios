@@ -21,3 +21,11 @@ struct HabiticaWidgets: WidgetBundle {
         StatsWidget()
     }
 }
+
+func widgetPadding() -> CGFloat {
+    if #available(iOS 17.0, *) {
+        return 0
+    } else {
+        return 12
+    }
+}

@@ -162,6 +162,8 @@ public enum L10n {
   public static var commonFixes: String { return L10n.tr("Mainstrings", "common_fixes") }
   /// Common Questions
   public static var commonQuestions: String { return L10n.tr("Mainstrings", "common_questions") }
+  /// Community Guidelines
+  public static var communityGuidelines: String { return L10n.tr("Mainstrings", "community_guidelines") }
   /// Complete
   public static var complete: String { return L10n.tr("Mainstrings", "complete") }
   /// You need to complete more tasks before you can afford this item!
@@ -1122,6 +1124,8 @@ public enum L10n {
   public static var taskHistory: String { return L10n.tr("Mainstrings", "task_history") }
   /// Teleporting to Habitica
   public static var teleportingHabitica: String { return L10n.tr("Mainstrings", "teleporting_habitica") }
+  /// Terms of Service
+  public static var termsOfService: String { return L10n.tr("Mainstrings", "terms_of_service") }
   /// Thanks for your support!
   public static var thanksForYourSupport: String { return L10n.tr("Mainstrings", "thanks_for_your_support") }
   /// This will also block %@
@@ -2551,7 +2555,7 @@ public enum L10n {
     public static var tryOnCustomizeAvatarReturnNextMonth: String { return L10n.tr("Mainstrings", "shops.try_on_customize_avatar_return_next_month") }
     /// You can try them on by customizing your avatar. Be sure to check back later for next season’s options!
     public static var tryOnCustomizeAvatarReturnNextSeason: String { return L10n.tr("Mainstrings", "shops.try_on_customize_avatar_return_next_season") }
-    /// You can try them on from Equipment. Be sure to check back later for next month’s options!
+    /// You can try them on from Equipment. New stock comes in at the beginning of each month!
     public static var tryOnEquipment: String { return L10n.tr("Mainstrings", "shops.try_on_equipment") }
   }
 

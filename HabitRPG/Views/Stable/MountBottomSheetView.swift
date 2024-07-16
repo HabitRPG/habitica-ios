@@ -33,7 +33,7 @@ struct MountBottomSheetView: View, Dismissable {
         let theme = ThemeService.shared.theme
             
         BottomSheetView(dismisser: dismisser, title: Text(mount.text ?? ""), content: VStack(spacing: 16) {
-            if #available(iOS 15.0, *) {
+            if #available(iOS 16.0, *) {
                 StableBackgroundView(content: MountView(mount: mount).padding(.top, 30), animateFlying: false)
                     .clipShape(.rect(cornerRadius: 12))
             }

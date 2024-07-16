@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-@available(iOS 15.0, *)
+@available(iOS 16.0, *)
 struct StableBackgroundView<Content: View>: View {
     let content: Content
     let animateFlying: Bool
@@ -97,7 +97,7 @@ struct StableBackgroundView<Content: View>: View {
 }
 
 #Preview {
-    if #available(iOS 15.0, *) {
+    if #available(iOS 16.0, *) {
         return StableBackgroundView(content: Text("Animal"), animateFlying: false)
     } else {
         return EmptyView()

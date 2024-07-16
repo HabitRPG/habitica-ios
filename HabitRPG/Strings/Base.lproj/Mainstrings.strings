@@ -1025,7 +1025,7 @@
 "shops.try_on_customize_avatar_return_next_month" = "You can try them on by customizing your avatar. Be sure to check back later for next month’s options!";
 "shops.try_on_customize_avatar_return_next_season" = "You can try them on by customizing your avatar. Be sure to check back later for next season’s options!";
 "shops.try_on_customize_avatar" = "You can try them on by customizing your avatar.";
-"shops.try_on_equipment" = "You can try them on from Equipment. Be sure to check back later for next month’s options!";
+"shops.try_on_equipment" = "You can try them on from Equipment. New stock comes in at the beginning of each month!";
 "shops.customizing_your_avatar" = "customizing your avatar";
 "purchased" = "You purchased %@";
 "buy_reward" = "You bought '%@' for %@ gold";
@@ -1379,3 +1379,5 @@
 "class_equipment_shop_dialog" = "This item is only available to %s.\nOpen Settings to change class.";
 "insufficient_level_equipment_dialog_new" = "This item is only available to %s.\nYou can select a class after level 10.";
 
+"community_guidelines" = "Community Guidelines";
+"terms_of_service" = "Terms of Service";

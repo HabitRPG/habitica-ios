@@ -93,9 +93,13 @@ struct AddTaskWidgetView: View {
             if entry.widgetFamily == .systemSmall {
                 if let identifier = taskIdentifier {
                     AddView(taskType: entry.taskType ?? HRPGTaskType.none, isSingle: true, showLabel: true)
-                        .widgetURL(URL(string: "/user/tasks/\(identifier)/add")).widgetBackground(taskColor(taskType: entry.taskType ?? .none))
+                        .widgetURL(URL(string: "/user/tasks/\(identifier)/add"))
+                        .padding(widgetPadding())
+                        .widgetBackground(taskColor(taskType: entry.taskType ?? .none))
                 } else {
-                    AddView(taskType: nil, isSingle: true, showLabel: true).widgetBackground(taskColor(taskType: .none))
+                    AddView(taskType: nil, isSingle: true, showLabel: true)
+                        .padding(widgetPadding())
+                        .widgetBackground(taskColor(taskType: .none))
                 }
             } else {
                 VStack(alignment: .center) {
@@ -121,7 +125,9 @@ struct AddTaskWidgetView: View {
                             AddView(taskType: .reward, showLabel: entry.showLabels).background(taskColor(taskType: .reward)).cornerRadius(16).padding(.top, 4)
                         })
                     }
-                }.widgetBackground(Color.widgetBackground)
+                }
+                .padding(widgetPadding())
+                .widgetBackground(Color.widgetBackground)
             }
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
             }

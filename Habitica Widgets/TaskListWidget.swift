@@ -67,6 +67,7 @@ struct TaskListWidgetView: View {
                     }.frame(width: 60, alignment: .leading)
                     MainWidgetContent(entry: entry)
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+                    .padding(widgetPadding())
                 .widgetBackground(Color.widgetBackground)
             } else {
                 VStack(alignment: .leading) {
@@ -83,6 +84,7 @@ struct TaskListWidgetView: View {
                     MainWidgetContent(entry: entry)
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+                .padding(widgetPadding())
                 .widgetBackground(Color.widgetBackground)
             }
         }

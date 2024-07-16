@@ -69,6 +69,10 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
         sections.append(ItemSection<ItemProtocol>(key: "special", title: L10n.specialItems))
         sections.append(ItemSection<ItemProtocol>(key: "quests", title: L10n.quests))
         
+        sections.forEach { section in
+            section.showIfEmpty = true
+        }
+        
         fetchItems()
         
         disposable.add(stableRepository.getOwnedPets()
@@ -242,12 +246,8 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
                 return cell
             }
             let attributedText = NSMutableAttributedString(string: text)
-            for word in [L10n.Locations.market, L10n.Locations.questShop, L10n.subscribe] {
-                let range = attributedText.mutableString.range(of: word, options: .caseInsensitive)
-                if range.location != NSNotFound {
-                    attributedText.addAttributes([NSAttributedString.Key.foregroundColor: theme.tintColor], range: range)
-                }
-            }
+            attributedText.highlightWords(words: L10n.Locations.market, L10n.Locations.questShop, L10n.subscribe)
+
             descriptionView?.attributedText = attributedText
             return cell
         }

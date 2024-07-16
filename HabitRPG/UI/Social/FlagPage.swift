@@ -133,7 +133,19 @@ struct FlagPage: View {
             if viewModel.type == .member {
                 Text(L10n.thisWillAlsoBlockX(viewModel.offendingText)).font(.system(size: 14, weight: .medium)).foregroundColor(Color(theme.ternaryTextColor))
             }
-            Text(L10n.reportingDisclaimer(typeText)).font(.system(size: 14)).foregroundColor(Color(theme.ternaryTextColor)).padding(.bottom, 12)
+            if #available(iOS 15, *) {
+                Text(AttributedString(L10n.reportingDisclaimer(typeText)).withCommunityGuidelinesLinked().withTermsOfServiceLinked())
+                    .environment(\.openURL, OpenURLAction(handler: { url in
+                        if url.absoluteString.contains("community-guidelines") {
+                            RouterHandler.shared.handle(urlString: "https://habitica.com/static/community-guidelines")
+                            return .handled
+                        }
+                        return .systemAction
+                    }))
+                    .font(.system(size: 14)).foregroundColor(Color(theme.ternaryTextColor)).padding(.bottom, 12)
+            } else {
+                Text(L10n.reportingDisclaimer(typeText)).font(.system(size: 14)).foregroundColor(Color(theme.ternaryTextColor)).padding(.bottom, 12)
+            }
         }.padding(.horizontal, 32).foregroundColor(Color(theme.primaryTextColor))
     }
 }

@@ -39,11 +39,18 @@ struct FeedSheetView: View {
     
     var body: some View {
             if viewModel.food.isEmpty {
-                VStack {
-                    Image(uiImage: Asset.Empty.food.image)
-                    Text(L10n.noX(L10n.food)).font(.headline)
-                    Text(L10n.Items.Empty.foodDescription).font(.body)
-                }
+                VStack(spacing: 2) {
+                    Image(uiImage: Asset.Empty.food.image).padding(.bottom, 16)
+                    Text(L10n.noX(L10n.food)).font(.system(size: 16, weight: .semibold)).multilineTextAlignment(.center)
+                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                    Text(AttributedString(L10n.Items.Empty.foodDescription).withHighlightWords(words: L10n.Locations.market)).font(.system(size: 14)).multilineTextAlignment(.center)
+                        .foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor))
+                }.padding(.horizontal, 48)
+                    .onTapGesture {
+                        presentationMode.dismiss()
+                        dismissParent?()
+                        RouterHandler.shared.handle(.market)
+                    }
             } else {
                 List {
                     Section(content: {
@@ -68,9 +75,9 @@ struct FeedSheetView: View {
                     }, footer: {
                         VStack {
                             Image(uiImage: Asset.shop.image)
-                            Text(L10n.Items.footerFoodTitle).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
+                            Text(AttributedString(L10n.Items.footerFoodTitle).withHighlightWords(words: L10n.Locations.market)).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
                                 .padding(.vertical, 1)
-                            Text(L10n.Items.footerFoodDescription).font(.system(size: 13)).foregroundStyle(Color(ThemeService.shared.theme.ternaryTextColor))
+                            Text(L10n.Items.footerFoodDescription).font(.system(size: 14)).foregroundStyle(Color(ThemeService.shared.theme.ternaryTextColor))
                         }
                         .padding(.top, 16)
                         .multilineTextAlignment(.center)
