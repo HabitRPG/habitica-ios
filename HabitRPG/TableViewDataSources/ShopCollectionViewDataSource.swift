@@ -224,6 +224,13 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                     headerView.otherClassDisclaimer.isHidden = true
                     headerView.changeClassWrapper.isHidden = true
                 } else {
+                    headerView.newClassName = selectedClassName
+                    headerView.onClassChange = {
+                        let selectedClass = self.selectedGearCategory == "mage" ? "wizard" : self.selectedGearCategory
+                        self.userRepository.selectClass(HabiticaClass(rawValue: selectedClass ?? "")).observeCompleted {
+                            collectionView.reloadData()
+                        }
+                    }
                     headerView.otherClassDisclaimer.isHidden = false
                     headerView.otherClassDisclaimer.text = L10n.Shops.otherClassDisclaimer
                     headerView.changeClassWrapper.isHidden = false

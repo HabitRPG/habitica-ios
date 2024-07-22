@@ -18,6 +18,8 @@
 "summary" = "Summary";
 "clear" = "Clear";
 "use" = "Use";
+"yes" = "Yes";
+"no" = "No";
 "reset_tips" = "Reset Tutorials";
 "titles.settings" = "Settings";
 "titles.authentication" = "Authentication";
@@ -1384,3 +1386,4 @@
 
 "change_class_to" = "Change class to %@";
 "unlock_x_gear_and_skills" = "Unlock %@ gear and skills";
+"class_change_confirm" = "Are you sure you want to change your class to %@? This will cost 3 gems.";

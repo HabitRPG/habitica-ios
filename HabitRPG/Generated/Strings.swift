@@ -126,6 +126,10 @@ public enum L10n {
   public static var challengeJoinedTitle: String { return L10n.tr("Mainstrings", "challengeJoinedTitle") }
   /// Change
   public static var change: String { return L10n.tr("Mainstrings", "change") }
+  /// Change class to %@
+  public static func changeClassTo(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "change_class_to", p1)
+  }
   /// Character Level
   public static var characterLevel: String { return L10n.tr("Mainstrings", "character_level") }
   /// Chat
@@ -138,6 +142,10 @@ public enum L10n {
   public static var checkinYesterdaysDalies: String { return L10n.tr("Mainstrings", "checkin_yesterdays_dalies") }
   /// Choose Task
   public static var chooseTask: String { return L10n.tr("Mainstrings", "choose_task") }
+  /// Are you sure you want to change your class to %@? This will cost 3 gems.
+  public static func classChangeConfirm(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "class_change_confirm", p1)
+  }
   /// This item is only available to %s.\nOpen Settings to change class.
   public static func classEquipmentShopDialog(_ p1: UnsafePointer<CChar>) -> String {
     return L10n.tr("Mainstrings", "class_equipment_shop_dialog", p1)
@@ -712,6 +720,8 @@ public enum L10n {
   public static func nextPrizeInXCheckins(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "next_prize_in_x_checkins", p1)
   }
+  /// No
+  public static var no: String { return L10n.tr("Mainstrings", "no") }
   /// No Benefit
   public static var noBenefit: String { return L10n.tr("Mainstrings", "no_benefit") }
   /// No Camera available
@@ -1162,6 +1172,10 @@ public enum L10n {
   public static var unequip: String { return L10n.tr("Mainstrings", "unequip") }
   /// Unhatched Pet
   public static var unhatchedPet: String { return L10n.tr("Mainstrings", "unhatched_pet") }
+  /// Unlock %@ gear and skills
+  public static func unlockXGearAndSkills(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "unlock_x_gear_and_skills", p1)
+  }
   /// You've unlocked the Drop System! Now when you complete tasks, you have a small chance of finding an item, including eggs, potions, and food!
   public static var unlockDropsDescription: String { return L10n.tr("Mainstrings", "unlockDropsDescription") }
   /// You unlocked the drop system!
@@ -1316,6 +1330,8 @@ public enum L10n {
   public static var yearly: String { return L10n.tr("Mainstrings", "yearly") }
   /// years
   public static var years: String { return L10n.tr("Mainstrings", "years") }
+  /// Yes
+  public static var yes: String { return L10n.tr("Mainstrings", "yes") }
   /// You got an Achievement!
   public static var youGotAchievement: String { return L10n.tr("Mainstrings", "you_got_achievement") }
   /// You raised your %@ Pet into a Mount!

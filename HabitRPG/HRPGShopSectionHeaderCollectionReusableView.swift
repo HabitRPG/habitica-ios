@@ -27,6 +27,10 @@ class HRPGShopSectionHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var changeClassTitle: UILabel!
     @IBOutlet weak var changeClassSubtitle: UILabel!
     @IBOutlet weak var changeClassPriceLabel: CurrencyCountView!
+    
+    var newClassName: String?
+    var onClassChange: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         gearCategoryLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gearCategoryLabelTapped)))
@@ -36,6 +40,8 @@ class HRPGShopSectionHeaderCollectionReusableView: UICollectionReusableView {
         backgroundView.layer.cornerRadius = 9
         lowerBackgroundView.layer.cornerRadius = 6
         lowerBackgroundView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        
+        changeClassPriceLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeClassTapped)))
     }
     
     @objc
@@ -43,6 +49,18 @@ class HRPGShopSectionHeaderCollectionReusableView: UICollectionReusableView {
         if let action = onGearCategoryLabelTapped {
             action()
         }
+    }
+    
+    @objc
+    private func changeClassTapped() {
+        let dialog = HabiticaAlertController(title: L10n.classChangeConfirm(newClassName ?? ""))
+        dialog.addAction(title: L10n.yes, isMainAction: true) { _ in
+            if let action = self.onClassChange {
+                action()
+            }
+        }
+        dialog.addAction(title: L10n.no)
+        dialog.show()
     }
     
     func hideSecondRow() {
