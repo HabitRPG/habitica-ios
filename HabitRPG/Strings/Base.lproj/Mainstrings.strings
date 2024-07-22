@@ -1381,3 +1381,6 @@
 
 "community_guidelines" = "Community Guidelines";
 "terms_of_service" = "Terms of Service";
+
+"change_class_to" = "Change class to %@";
+"unlock_x_gear_and_skills" = "Unlock %@ gear and skills";

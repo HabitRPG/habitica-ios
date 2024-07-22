@@ -214,13 +214,28 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         
         if let headerView = view {
             if indexPath.section == 0 && needsGearSection {
+                let selectedClassName = ifWizardConvertToMage(selectedGearCategory)?.capitalized ?? ""
                 headerView.titleLabel.text = L10n.Equipment.classEquipment.localizedUppercase
-                headerView.setSecondRow(className: ifWizardConvertToMage(selectedGearCategory)?.capitalized ?? "", classColor: .backgroundColorFor(habiticaClass: selectedGearCategory))
+                headerView.setSecondRow(className: selectedClassName, classColor: .backgroundColorFor(habiticaClass: selectedGearCategory))
                 headerView.onGearCategoryLabelTapped = {[weak self] in
                     self?.delegate?.showGearSelection(sourceView: headerView.gearCategoryLabel)
                 }
-                headerView.otherClassDisclaimer.isHidden = userClass == selectedInternalGearCategory || selectedInternalGearCategory == "none"
-                headerView.otherClassDisclaimer.text = L10n.Shops.otherClassDisclaimer
+                if userClass == selectedInternalGearCategory || selectedInternalGearCategory == "none" {
+                    headerView.otherClassDisclaimer.isHidden = true
+                    headerView.changeClassWrapper.isHidden = true
+                } else {
+                    headerView.otherClassDisclaimer.isHidden = false
+                    headerView.otherClassDisclaimer.text = L10n.Shops.otherClassDisclaimer
+                    headerView.changeClassWrapper.isHidden = false
+                    headerView.changeClassWrapper.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                    headerView.changeClassTitle?.text = L10n.changeClassTo(selectedClassName)
+                    headerView.changeClassTitle?.textColor = ThemeService.shared.theme.primaryTextColor
+                    headerView.changeClassSubtitle?.text = L10n.unlockXGearAndSkills(selectedClassName)
+                    headerView.changeClassSubtitle?.textColor = ThemeService.shared.theme.ternaryTextColor
+                    headerView.changeClassPriceLabel?.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+                    headerView.changeClassPriceLabel?.currency = .gem
+                    headerView.changeClassPriceLabel?.amount = 3
+                }
             } else {
                 let section = visibleSections[indexPath.section]
                 if let endDate = section.endDate {
@@ -251,7 +266,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 0 && needsGearSection {
             if userClass != selectedInternalGearCategory {
-                return CGSize(width: collectionView.bounds.width, height: 110)
+                return CGSize(width: collectionView.bounds.width, height: 170)
             } else {
                 return CGSize(width: collectionView.bounds.width, height: 75)
             }

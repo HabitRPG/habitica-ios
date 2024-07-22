@@ -23,6 +23,10 @@ class HRPGShopSectionHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var leftSparkleView: UIImageView!
     var onGearCategoryLabelTapped: (() -> Void)?
         
+    @IBOutlet weak var changeClassWrapper: UIView!
+    @IBOutlet weak var changeClassTitle: UILabel!
+    @IBOutlet weak var changeClassSubtitle: UILabel!
+    @IBOutlet weak var changeClassPriceLabel: CurrencyCountView!
     override func awakeFromNib() {
         super.awakeFromNib()
         gearCategoryLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gearCategoryLabelTapped)))
@@ -102,7 +106,11 @@ class HRPGShopSectionHeaderCollectionReusableView: UICollectionReusableView {
         backgroundView.pin.start(horizontalPadding).end(horizontalPadding).top(topOffset).height(height)
         
         if !otherClassDisclaimer.isHidden {
-            otherClassDisclaimer.pin.below(of: backgroundView).start().end().bottom()
+            otherClassDisclaimer.pin.below(of: backgroundView).marginTop(12).start().end().sizeToFit(.width)
+        }
+        
+        if !changeClassWrapper.isHidden {
+            changeClassWrapper.pin.below(of: otherClassDisclaimer).marginTop(6).start(12).end(12).height(60)
         }
     }
 }
