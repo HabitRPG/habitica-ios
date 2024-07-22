@@ -226,24 +226,29 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
             descriptionView?.textColor = theme.secondaryTextColor
             titleView?.text = L10n.noX(self.tableView(tableView, titleForHeaderInSection: indexPath.section) ?? L10n.Titles.items)
             let text: String
-            switch indexPath.section {
-            case 0:
-                imageView?.image = Asset.Empty.eggs.image
-                text = L10n.Items.Empty.eggDescription
-            case 1:
-                imageView?.image = Asset.Empty.food.image
-                text = L10n.Items.Empty.foodDescription
-            case 2:
-                imageView?.image = Asset.Empty.hatchingPotions.image
-                text = L10n.Items.Empty.potionDescription
-            case 3:
-                imageView?.image = Asset.Empty.special.image
-                text = L10n.Items.Empty.specialDescription
-            case 4:
+            if itemType == "quests" {
                 imageView?.image = Asset.Empty.quests.image
                 text = L10n.Items.Empty.questDescription
-            default:
-                return cell
+            } else {
+                switch indexPath.section {
+                case 0:
+                    imageView?.image = Asset.Empty.eggs.image
+                    text = L10n.Items.Empty.eggDescription
+                case 1:
+                    imageView?.image = Asset.Empty.food.image
+                    text = L10n.Items.Empty.foodDescription
+                case 2:
+                    imageView?.image = Asset.Empty.hatchingPotions.image
+                    text = L10n.Items.Empty.potionDescription
+                case 3:
+                    imageView?.image = Asset.Empty.special.image
+                    text = L10n.Items.Empty.specialDescription
+                case 4:
+                    imageView?.image = Asset.Empty.quests.image
+                    text = L10n.Items.Empty.questDescription
+                default:
+                    return cell
+                }
             }
             let attributedText = NSMutableAttributedString(string: text)
             attributedText.highlightWords(words: L10n.Locations.market, L10n.Locations.questShop, L10n.subscribe)

@@ -136,7 +136,14 @@ class ItemsViewController: BaseTableViewController {
         HabiticaAnalytics.shared.log("Items CTA tap", withEventProperties: ["eventCategory": "behaviour",
                                                                             "hitType": "event",
                                                                             "area": "bottom"])
-        RouterHandler.shared.handle(.market)
+        if itemType == "quests" {
+            RouterHandler.shared.handle(.questShop)
+        } else {
+            RouterHandler.shared.handle(.market)
+        }
+        if isPresentedModally {
+            dismiss()
+        }
     }
 
     private func showActionSheet(item: ItemProtocol, withSource sourceView: UIView?) {
