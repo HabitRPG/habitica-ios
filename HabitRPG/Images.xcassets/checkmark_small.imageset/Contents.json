@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "checkmark.png",
+      "filename" : "Vector 6 (Stroke).png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "checkmark@2x.png",
+      "filename" : "Vector 6 (Stroke)@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "checkmark@3x.png",
+      "filename" : "Vector 6 (Stroke)@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
