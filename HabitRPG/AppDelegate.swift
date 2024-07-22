@@ -146,7 +146,9 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     }
     
     func setupPurchaseHandling() {
+        #if !targetEnvironment(simulator)
         PurchaseHandler.shared.completionHandler()
+        #endif
     }
     
     func setupNetworkClient() {
@@ -183,8 +185,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             return
         }
         if let chosenServer = UserDefaults().string(forKey: "chosenServer") {
-            switch chosenServer {
-            case "production":
+            if chosenServer == "production" {
                 let configRepository = ConfigRepository.shared
                 if let host = configRepository.string(variable: .prodHost), let apiVersion = configRepository.string(variable: .apiVersion) {
                     let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion.isEmpty ? "v3" : apiVersion)")
@@ -192,20 +193,8 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                 } else {
                     AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.production
                 }
-            case "staging":
-                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.staging
-            case "beta":
-                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.beta
-            case "gamma":
-                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.gamma
-            case "delta":
-                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.delta
-            case "mobile":
-                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.mobile
-            case "guilds":
-                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.guilds
-            default:
-                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.localhost
+            } else {
+                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.from(chosenServer)
             }
         } else {
             let configRepository = ConfigRepository.shared

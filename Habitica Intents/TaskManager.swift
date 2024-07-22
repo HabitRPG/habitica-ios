@@ -88,20 +88,7 @@ class TaskManager: BaseRepository<TaskLocalRepository> {
          - Chris Coffin
          */
         if let chosenServer = UserDefaults().string(forKey: "chosenServer") {
-            switch chosenServer {
-            case "staging":
-                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.staging
-            case "beta":
-                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.beta
-            case "gamma":
-                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.gamma
-            case "delta":
-                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.delta
-            case "mobile":
-                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.mobile
-            default:
-                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.production
-            }
+            AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.from(chosenServer)
         }
     }
 

@@ -11,28 +11,38 @@ import Foundation
 enum Servers: String {
     case production
     case staging
-    case beta
-    case gamma
-    case delta
-    case mobile
-    case guilds
+    
+    case bat
+    case frog
+    case llama
+    case monkey
+    case seal
+    case shrimp
+    case star
+    case turtle
     
     var niceName: String {
         switch self {
         case .production:
-            return "Production"
+            return "⚙️ Production"
         case .staging:
-            return "Staging"
-        case .beta:
-            return "Beta"
-        case.gamma:
-            return "Gamma"
-        case.delta:
-            return "Delta"
-        case .mobile:
-            return "Mobile"
-        case .guilds:
-            return "Guilds"
+            return "🎤 Staging"
+        case .bat:
+            return "🦇 Bat"
+        case.frog:
+            return "🐸 Frog"
+        case.llama:
+            return "🦙 Llama"
+        case .monkey:
+            return "🐒 Monkey"
+        case .seal:
+            return "🦭 Seal"
+        case .shrimp:
+            return "🦐 Shrimp"
+        case .star:
+            return "⭐️ Star"
+        case .turtle:
+            return "🐢 Turtle"
         }
     }
     
@@ -40,11 +50,14 @@ enum Servers: String {
         return [
             .production,
             .staging,
-            .beta,
-            .gamma,
-            .delta,
-            .mobile,
-            .guilds
+            .bat,
+            .frog,
+            .llama,
+            .monkey,
+            .seal,
+            .shrimp,
+            .star,
+            .turtle
         ]
     }
 }
