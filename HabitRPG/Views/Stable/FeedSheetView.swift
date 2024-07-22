@@ -75,9 +75,9 @@ struct FeedSheetView: View {
                     }, footer: {
                         VStack {
                             Image(uiImage: Asset.shop.image)
-                            Text(AttributedString(L10n.Items.footerFoodTitle).withHighlightWords(words: L10n.Locations.market)).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
+                            Text(L10n.Items.footerFoodTitle).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
                                 .padding(.vertical, 1)
-                            Text(L10n.Items.footerFoodDescription).font(.system(size: 14)).foregroundStyle(Color(ThemeService.shared.theme.ternaryTextColor))
+                            Text(AttributedString(L10n.Items.footerFoodDescription).withHighlightWords(words: L10n.Locations.market)).font(.system(size: 14)).foregroundStyle(Color(ThemeService.shared.theme.ternaryTextColor))
                         }
                         .padding(.top, 16)
                         .multilineTextAlignment(.center)
