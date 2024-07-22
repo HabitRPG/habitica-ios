@@ -59,7 +59,7 @@ extension AttributedString {
     }
     
     func withCommunityGuidelinesLinked() -> AttributedString {
-        return withLinkedWord(word: L10n.communityGuidelines, link: "https://")
+        return withLinkedWord(word: L10n.communityGuidelines, link: "https://habitica.com/static/community-guidelines")
     }
     
     func withTermsOfServiceLinked() -> AttributedString {
