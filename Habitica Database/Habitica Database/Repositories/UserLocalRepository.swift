@@ -296,9 +296,10 @@ public class UserLocalRepository: BaseLocalRepository {
     
     public func getInAppRewards(userID: String) -> SignalProducer<ReactiveResults<[InAppRewardProtocol]>, ReactiveSwiftRealmError> {
         return SignalProducer.combineLatest(
-            RealmUser.findBy(key: userID),
+            RealmUser.findBy(query: "id == '\(userID)'").reactive(),
             RealmInAppReward.findBy(query: "userID == '\(userID)'").reactive()
-        ).map { (user, rewardsResult) -> ReactiveResults<[InAppRewardProtocol]> in
+        ).map { (userResult, rewardsResult) -> ReactiveResults<[InAppRewardProtocol]> in
+            let user = userResult.value.first
             let (rewards, changeset) = rewardsResult
             var orderedItems = [InAppRewardProtocol]()
             if user?.isValid != true {

@@ -89,8 +89,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 return rewards.map({ (reward) in
                     return reward.key
                 })
-            }).on(value: {[weak self]rewards in
+            }).on(value: {[weak self] rewards in
                 self?.pinnedItems = rewards
+                self?.collectionView?.reloadData()
             }).start())
         
         disposable.add(userRepository.getAchievements().map { achievements in
