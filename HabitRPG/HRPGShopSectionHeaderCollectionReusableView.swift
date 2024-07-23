@@ -53,13 +53,13 @@ class HRPGShopSectionHeaderCollectionReusableView: UICollectionReusableView {
     
     @objc
     private func changeClassTapped() {
-        let dialog = HabiticaAlertController(title: L10n.classChangeConfirm(newClassName ?? ""))
-        dialog.addAction(title: L10n.yes, isMainAction: true) { _ in
+        let dialog = HabiticaAlertController(title: L10n.classChangeConfirm(newClassName ?? ""), message: L10n.classChangeConfirmDescription)
+        dialog.addAction(title: L10n.Settings.changeClass, style: .destructive, isMainAction: true) { _ in
             if let action = self.onClassChange {
                 action()
             }
         }
-        dialog.addAction(title: L10n.no)
+        dialog.addCloseAction()
         dialog.show()
     }
     

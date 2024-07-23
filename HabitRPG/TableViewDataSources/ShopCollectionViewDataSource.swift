@@ -226,8 +226,11 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 } else {
                     headerView.newClassName = selectedClassName
                     headerView.onClassChange = {
-                        let selectedClass = self.selectedGearCategory == "mage" ? "wizard" : self.selectedGearCategory
-                        self.userRepository.selectClass(HabiticaClass(rawValue: selectedClass ?? "")).observeCompleted {
+                        let selectedClass = self.selectedInternalGearCategory
+                        self.userRepository.selectClass(HabiticaClass(rawValue: selectedClass ?? "")).observeValues { _ in
+                            self.retrieveShopInventory {
+                                self.fetchGear()
+                            }
                             collectionView.reloadData()
                         }
                     }

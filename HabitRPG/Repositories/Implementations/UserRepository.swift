@@ -392,10 +392,23 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             return Signal.empty
         }
         lastClassSelection = Date()
-        return SelectClassCall(class: habiticaClass).responseSignal
-            .flatMap(.latest, {[weak self] _ in
-                return self?.retrieveUser(withTasks: false, forced: true) ?? .empty
+        return SelectClassCall(class: habiticaClass).httpResponseSignal
+            .on(value: { response in
+                if response.statusCode == 200 {
+                    let alert = HabiticaAlertController(
+                        title: L10n.classChangeSuccessTitle(habiticaClass?.translatedName ?? ""),
+                        message: L10n.classChangeSuccessDescription(habiticaClass?.translatedName ?? ""))
+                    alert.addAction(title: L10n.gotIt, isMainAction: true)
+                    alert.addAction(title: L10n.openStats) { _ in
+                        RouterHandler.shared.handle(urlString: "/user/stats")
+                    }
+                    alert.show()
+                }
             })
+            .flatMap(.latest, { _ in
+                return self.retrieveUser(withTasks: false, forced: true)
+            })
+            .take(first: 1)
             .on(value: handleUserUpdate())
     }
     

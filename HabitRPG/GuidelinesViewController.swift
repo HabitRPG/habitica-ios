@@ -8,12 +8,16 @@
 
 import UIKit
 import Down
+import SwiftUIX
 
 class GuidelinesViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
-    
+    let activityIndicator = UIHostingView(rootView: HabiticaProgressView())
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(activityIndicator)
         
         navigationItem.title = L10n.Titles.guidelines
         
@@ -21,9 +25,21 @@ class GuidelinesViewController: UIViewController {
         guard let url = URL(string: urlString) else {
             return
         }
-        if let text = try? String(contentsOf: url) {
-            textView.attributedText = try? Down(markdownString: text).toHabiticaAttributedString()
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            if let text = try? String(contentsOf: url) {
+                let attributed = try? Down(markdownString: text).toHabiticaAttributedString()
+                DispatchQueue.main.async {
+                    self?.textView.attributedText = attributed
+                    self?.textView.isHidden = false
+                    self?.activityIndicator.isHidden = true
+                }
+            }
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        activityIndicator.pin.center().size(44)
     }
     
     @IBAction func doneButtonTapped(_ sender: Any) {

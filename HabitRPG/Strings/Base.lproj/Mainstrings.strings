@@ -1386,4 +1386,9 @@
 
 "change_class_to" = "Change class to %@";
 "unlock_x_gear_and_skills" = "Unlock %@ gear and skills";
-"class_change_confirm" = "Are you sure you want to change your class to %@? This will cost 3 gems.";
+"class_change_confirm" = "Change class to %s for 3 Gems?";
+"class_change_confirm_description" = "This will switch which gear is unlocked in the shops, change your available skills, and reset your stat points.";
+"class_change_success_title" = "You're a %@!";
+"class_change_success_description" = "You can now use %@ skills and purchase gear from shops. Gain levels to earn stat points you can use to power up your skills.";
+"got_it" = "Got it!";
+"open_stats" = "Open Stats";

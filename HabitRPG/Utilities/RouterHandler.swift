@@ -230,6 +230,10 @@ class RouterHandler {
             viewController.index = Int(string: link["index"] ?? "0") ?? 0
             self.push(viewController)
         }
+        register("/static/community-guidelines") {
+            let viewController = StoryboardScene.Social.guidelinesNavigationViewController.instantiate()
+            self.present(viewController)
+        }
         register("/user/settings.*") {
             self.displayTab(index: 4)
             self.present(StoryboardScene.Settings.initialScene.instantiate())
@@ -404,7 +408,11 @@ class RouterHandler {
     
     private func present(_ viewController: UIViewController) {
         if let tabbarController = self.tabbarController {
-            tabbarController.present(viewController, animated: true, completion: nil)
+            var presenter: UIViewController = tabbarController
+            while presenter.isPresenting, let presented = presenter.presentedViewController {
+                presenter = presented
+            }
+            presenter.present(viewController, animated: true, completion: nil)
         } else {
             loadingController?.loadingFinishedAction = {[weak self] in
                 self?.tabbarController?.present(viewController, animated: true, completion: nil)

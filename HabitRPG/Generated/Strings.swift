@@ -142,9 +142,19 @@ public enum L10n {
   public static var checkinYesterdaysDalies: String { return L10n.tr("Mainstrings", "checkin_yesterdays_dalies") }
   /// Choose Task
   public static var chooseTask: String { return L10n.tr("Mainstrings", "choose_task") }
-  /// Are you sure you want to change your class to %@? This will cost 3 gems.
-  public static func classChangeConfirm(_ p1: String) -> String {
+  /// Change class to %s for 3 Gems?
+  public static func classChangeConfirm(_ p1: UnsafePointer<CChar>) -> String {
     return L10n.tr("Mainstrings", "class_change_confirm", p1)
+  }
+  /// This will switch which gear is unlocked in the shops, change your available skills, and reset your stat points.
+  public static var classChangeConfirmDescription: String { return L10n.tr("Mainstrings", "class_change_confirm_description") }
+  /// You can now use %@ skills and purchase gear from shops. Gain levels to earn stat points you can use to power up your skills.
+  public static func classChangeSuccessDescription(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "class_change_success_description", p1)
+  }
+  /// You're a %@!
+  public static func classChangeSuccessTitle(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "class_change_success_title", p1)
   }
   /// This item is only available to %s.\nOpen Settings to change class.
   public static func classEquipmentShopDialog(_ p1: UnsafePointer<CChar>) -> String {
@@ -478,6 +488,8 @@ public enum L10n {
   public static var gold: String { return L10n.tr("Mainstrings", "gold") }
   /// Gold is the **main form of currency** within Habitica and allows you to buy certain gear, quests, items, or even custom rewards you make for yourself.\n\n**Earn Gold** through completing tasks or quests, or through some Class skills. Higher **Perception stats** raise the amount of Gold you earn.\n\nIf you subscribe to Habitica, you can even use Gold to purchase a number of Gems determined by the length of time you’ve been subscribed.
   public static var goldDescription: String { return L10n.tr("Mainstrings", "gold_description") }
+  /// Got it!
+  public static var gotIt: String { return L10n.tr("Mainstrings", "got_it") }
   /// Great
   public static var great: String { return L10n.tr("Mainstrings", "great") }
   /// Group By
@@ -780,6 +792,8 @@ public enum L10n {
   public static var openMysteryItem: String { return L10n.tr("Mainstrings", "open_mystery_item") }
   /// Open Profile
   public static var openProfile: String { return L10n.tr("Mainstrings", "open_profile") }
+  /// Open Stats
+  public static var openStats: String { return L10n.tr("Mainstrings", "open_stats") }
   /// Open Website
   public static var openWebsite: String { return L10n.tr("Mainstrings", "open_website") }
   /// Organize By

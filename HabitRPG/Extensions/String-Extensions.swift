@@ -174,7 +174,21 @@ extension String {
             return L10n.Classes.warriors
         }
     }
+}
 
+extension HabiticaClass {
+    var translatedName: String {
+        switch self {
+        case .warrior:
+            return L10n.Classes.warrior
+        case .mage:
+            return L10n.Classes.mage
+        case .healer:
+            return L10n.Classes.healer
+        case .rogue:
+            return L10n.Classes.rogue
+        }
+    }
 }
 
 // swiftlint:enable all
