@@ -104,6 +104,10 @@ class UserProfileViewController: BaseTableViewController {
         disposable.inner.add( userRepository.getUser().take(first: 1).on(
             value: {[weak self] user in
                 self?.user = user
+                
+                if (self?.username == user.username || self?.userID == user.id) && user.loginIncentives >= 10 {
+                    UIApplication.requestReview()
+                }
             }).start())
         
         if needsDoneButton {

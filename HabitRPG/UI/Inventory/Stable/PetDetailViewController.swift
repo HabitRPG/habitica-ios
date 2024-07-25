@@ -110,7 +110,9 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
             if stableItem.trained > 0 {
                 let equipString = L10n.equip
                 actions.append(UIAction(title: equipString, handler: {[weak self] _ in
-                    self?.inventoryRepository.equip(type: "pet", key: stableItem.pet?.key ?? "").observeCompleted {}
+                    self?.inventoryRepository.equip(type: "pet", key: stableItem.pet?.key ?? "").observeCompleted {
+                        UIApplication.requestReview()
+                    }
                 }))
             }
             return UIMenu(title: stableItem.pet?.text ?? "", children: actions)

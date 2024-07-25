@@ -31,7 +31,9 @@ class EquipmentDetailViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if let gear = datasource?.item(at: indexPath) {
-            inventoryRepository.equip(type: selectedCostume ? "costume" : "equipped", key: gear.key ?? "").observeCompleted {}
+            inventoryRepository.equip(type: selectedCostume ? "costume" : "equipped", key: gear.key ?? "").observeCompleted {
+                UIApplication.requestReview()
+            }
         }
     }
 }

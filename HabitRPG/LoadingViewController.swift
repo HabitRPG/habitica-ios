@@ -57,6 +57,11 @@ class LoadingViewController: UIHostingController<LoadingPage> {
             userRepository = UserRepository()
             let hasUserData = userRepository?.hasUserData() ?? false
             userRepository?.retrieveUser()
+                .on(value: { user in
+                    let defaults = UserDefaults.standard
+                    defaults.set(user?.loginIncentives ?? 0, forKey: "loginIncentives")
+                    defaults.synchronize()
+                })
                 .flatMap(.latest, {[weak self] (_) in
                     return self?.userRepository?.retrieveGroupPlans() ?? Signal.empty
                 })

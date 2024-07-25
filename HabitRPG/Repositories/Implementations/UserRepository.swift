@@ -403,6 +403,8 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                         RouterHandler.shared.handle(urlString: "/user/stats")
                     }
                     alert.show()
+                    
+                    UIApplication.requestReview()
                 }
             })
             .flatMap(.latest, { _ in

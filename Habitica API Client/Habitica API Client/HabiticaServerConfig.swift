@@ -12,7 +12,7 @@ import Habitica_Models
 public class HabiticaServerConfig {
     public static let production = ServerConfiguration(scheme: "https", host: Constants.defaultProdHost, apiRoute: "api/\(Constants.defaultApiVersion)")
     
-    public static let staging = ServerConfiguration(scheme: "https", host: "staging.habitica.com.com", apiRoute: "api/\(Constants.defaultApiVersion)")
+    public static let staging = ServerConfiguration(scheme: "https", host: "staging.habitica.com", apiRoute: "api/\(Constants.defaultApiVersion)")
     
     public static let bat = ServerConfiguration(scheme: "https", host: "bat.habitica.com", apiRoute: "api/\(Constants.defaultApiVersion)")
     public static let frog = ServerConfiguration(scheme: "https", host: "frog.habitica.com", apiRoute: "api/\(Constants.defaultApiVersion)")
