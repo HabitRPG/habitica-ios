@@ -315,17 +315,17 @@ struct SubscriptionPage: View {
                 if viewModel.presentationPoint != .gemForGold {
                     SubscriptionBenefitView(icon: Image(Asset.subBenefitsGems.name), title: Text(L10n.subscriptionInfo1Title), description: Text(L10n.subscriptionInfo1Description))
                 }
-                if viewModel.presentationPoint != .armoire {
-                    SubscriptionBenefitView(icon: Image(Asset.subBenefitsArmoire.name), title: Text(L10n.Subscription.infoArmoireTitle), description: Text(L10n.Subscription.infoArmoireDescription))
-                }
+                SubscriptionBenefitView(icon: PixelArtView(name: "shop_set_mystery_\(viewModel.mysteryGear?.key?.split(separator: "_").last ?? "")"), title: Text(L10n.subscriptionInfo3Title), description: Text(L10n.subscriptionInfo3Description))
+
                 if viewModel.presentationPoint != .timetravelers {
                     SubscriptionBenefitView(icon: Image(Asset.subBenefitsHourglasses.name), title: Text(L10n.subscriptionInfo2Title), description: Text(L10n.subscriptionInfo2Description))
                 }
-                SubscriptionBenefitView(icon: PixelArtView(name: "shop_set_mystery_\(viewModel.mysteryGear?.key?.split(separator: "_").last ?? "")"), title: Text(L10n.subscriptionInfo3Title), description: Text(L10n.subscriptionInfo3Description))
                 if viewModel.presentationPoint != .faint {
                     SubscriptionBenefitView(icon: Image(Asset.subBenefitsFaint.name), title: Text(L10n.Subscription.infoFaintTitle), description: Text(L10n.Subscription.infoFaintDescription))
                 }
-                SubscriptionBenefitView(icon: Image(Asset.subBenefitsPet.name), title: Text(L10n.subscriptionInfo4Title), description: Text(L10n.subscriptionInfo4Description))
+                if viewModel.presentationPoint != .armoire {
+                    SubscriptionBenefitView(icon: Image(Asset.subBenefitsArmoire.name), title: Text(L10n.Subscription.infoArmoireTitle), description: Text(L10n.Subscription.infoArmoireDescription))
+                }
                 SubscriptionBenefitView(icon: Image(Asset.subBenefitDrops.name), title: Text(L10n.subscriptionInfo5Title), description: Text(L10n.subscriptionInfo5Description)).padding(.bottom, 20)
                 
                 if !viewModel.isSubscribed {

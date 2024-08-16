@@ -328,7 +328,7 @@ class SubscriptionViewController: BaseTableViewController {
                 fatalError()
             }
             cell.title = SubscriptionInformation.titles[indexPath.item]
-            if indexPath.item == 3 && mysteryGear != nil {
+            if indexPath.item == 1 && mysteryGear != nil {
                 cell.descriptionText = L10n.subscriptionInfo3DescriptionNew(mysteryGear?.text ?? "")
                 ImageManager.getImage(name: "shop_set_mystery_\(mysteryGear?.key?.split(separator: "_").last ?? "")") { (image, _) in
                     cell.iconView.image = image

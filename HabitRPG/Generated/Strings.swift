@@ -414,7 +414,7 @@ public enum L10n {
   public static var gameMechanics: String { return L10n.tr("Mainstrings", "game_mechanics") }
   /// Gems allow you to buy fun extras for your account, including:
   public static var gemBenefitsTitle: String { return L10n.tr("Mainstrings", "gem_benefits_title") }
-  /// %d Gem cap
+  /// Unlocks %d Gold-purchasable Gems per month
   public static func gemCap(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "gem_cap", p1)
   }
@@ -1070,13 +1070,13 @@ public enum L10n {
   public static var subscriptionGiftButton: String { return L10n.tr("Mainstrings", "subscription_gift_button") }
   /// Want to give the benefits of a subscription to someone else?
   public static var subscriptionGiftExplanation: String { return L10n.tr("Mainstrings", "subscription_gift_explanation") }
-  /// You’ll be able to buy Gems from the Market for 20 gold each!
+  /// Get up to 50 Gems in the Market to buy Quests, Customizations, Pets, and more!
   public static var subscriptionInfo1Description: String { return L10n.tr("Mainstrings", "subscription_info_1_description") }
-  /// Gold for Gems
+  /// Free Monthly Gems
   public static var subscriptionInfo1Title: String { return L10n.tr("Mainstrings", "subscription_info_1_title") }
-  /// Earn Mystic Hourglasses to purchase items in the Time Traveler’s Shop!
+  /// Never miss an item with 1 Mystic Hourglass a month to use in the Time Travelers Shop!
   public static var subscriptionInfo2Description: String { return L10n.tr("Mainstrings", "subscription_info_2_description") }
-  /// Mystic Hourglasses
+  /// Monthly Mystic Hourglasses
   public static var subscriptionInfo2Title: String { return L10n.tr("Mainstrings", "subscription_info_2_title") }
   /// Subscribe now to get an exclusive set now and receive new items every month!
   public static var subscriptionInfo3Description: String { return L10n.tr("Mainstrings", "subscription_info_3_description") }
@@ -1086,13 +1086,9 @@ public enum L10n {
   }
   /// Monthly Mystery Items
   public static var subscriptionInfo3Title: String { return L10n.tr("Mainstrings", "subscription_info_3_title") }
-  /// Receive the Royal Purple Jackalope pet when you become a new subscriber.
-  public static var subscriptionInfo4Description: String { return L10n.tr("Mainstrings", "subscription_info_4_description") }
-  /// Special Subscriber Pet
-  public static var subscriptionInfo4Title: String { return L10n.tr("Mainstrings", "subscription_info_4_title") }
-  /// Discover even more items in Habitica with a 2x bonus daily drop cap.
+  /// Get a Royal Purple Jackalope plus double the Eggs, Hatching Potions, and Food each day to grow your Pet collection!
   public static var subscriptionInfo5Description: String { return L10n.tr("Mainstrings", "subscription_info_5_description") }
-  /// Double the Drops
+  /// Special Pet & More Drops
   public static var subscriptionInfo5Title: String { return L10n.tr("Mainstrings", "subscription_info_5_title") }
   /// Choose the Subscription length that works for you
   public static var subscriptionOptionsTitle: String { return L10n.tr("Mainstrings", "subscription_options_title") }
@@ -1174,6 +1170,8 @@ public enum L10n {
   public static var triadBingoTitle: String { return L10n.tr("Mainstrings", "triadBingoTitle") }
   /// Tuesday
   public static var tuesday: String { return L10n.tr("Mainstrings", "tuesday") }
+  /// +2 Gems each month
+  public static var twoGemsPerMonth: String { return L10n.tr("Mainstrings", "two_gems_per_month") }
   /// Two-Handed
   public static var twoHanded: String { return L10n.tr("Mainstrings", "twoHanded") }
   /// Unban User

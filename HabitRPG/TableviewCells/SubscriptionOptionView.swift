@@ -37,7 +37,7 @@ class SubscriptionOptionView: UITableViewCell {
             setMonthCount(6)
         case PurchaseHandler.subscriptionIdentifiers[3]:
             setMonthCount(12)
-            flagView.text = "Save 20%"
+            flagView.text = "Popular"
             flagView.textColor = .white
             flagView.isHidden = false
         default:
@@ -84,16 +84,16 @@ class SubscriptionOptionView: UITableViewCell {
         switch count {
         case 1:
             setGemCap(25)
-            setHourglassCount(0)
+            showGemsPerMonth(true)
         case 3:
-            setGemCap(30)
-            setHourglassCount(1)
+            setGemCap(25)
+            showGemsPerMonth(true)
         case 6:
-            setGemCap(35)
-            setHourglassCount(2)
+            setGemCap(25)
+            showGemsPerMonth(true)
         case 12:
-            setGemCap(45)
-            setHourglassCount(4)
+            setGemCap(50)
+            showGemsPerMonth(false)
         default:
             break
         }
@@ -103,9 +103,12 @@ class SubscriptionOptionView: UITableViewCell {
         gemCapLabel.text = L10n.gemCap(count)
     }
     
-    func setHourglassCount(_ count: Int) {
-        // swiftlint:disable:next empty_count
-        mysticHourglassLabel.isHidden = count == 0
-        mysticHourglassLabel.text = L10n.hourglassCount(count)
+    private func showGemsPerMonth(_ show: Bool) {
+        if show {
+            mysticHourglassLabel.isHidden = false
+            mysticHourglassLabel.text = L10n.twoGemsPerMonth
+        } else {
+            mysticHourglassLabel.isHidden = true
+        }
     }
 }
