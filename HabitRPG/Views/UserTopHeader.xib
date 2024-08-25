@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,15 +14,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tP1-9i-M3A" customClass="LabeledProgressBar" customModule="Habitica" customModuleProvider="target">
-                    <rect key="frame" x="141" y="0.0" width="451" height="31.5"/>
+                    <rect key="frame" x="141" y="0.0" width="439" height="31.5"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEm-of-HXC" customClass="LabeledProgressBar" customModule="Habitica" customModuleProvider="target">
-                    <rect key="frame" x="141" y="33.5" width="451" height="32"/>
+                    <rect key="frame" x="141" y="33.5" width="439" height="32"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkr-YH-kSX" customClass="LabeledProgressBar" customModule="Habitica" customModuleProvider="target">
-                    <rect key="frame" x="141" y="67.5" width="451" height="31.5"/>
+                    <rect key="frame" x="141" y="67.5" width="439" height="31.5"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UWI-d8-sGn" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
@@ -37,7 +37,7 @@
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HQD-NM-NBo" userLabel="I">
-                    <rect key="frame" x="22" y="99" width="570" height="50"/>
+                    <rect key="frame" x="22" y="99" width="558" height="50"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0wH-g6-8n6">
                             <rect key="frame" x="0.0" y="7" width="50" height="36"/>
@@ -48,10 +48,10 @@
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" horizontalHuggingPriority="999" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="999" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="J68-ym-ngp">
-                            <rect key="frame" x="58" y="2" width="338" height="46"/>
+                            <rect key="frame" x="58" y="2" width="326" height="46"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7A-NB-rwz">
-                                    <rect key="frame" x="0.0" y="0.0" width="338" height="21"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="326" height="21"/>
                                     <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" priority="500" constant="400" id="3Wb-ku-BHA"/>
@@ -88,21 +88,21 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="ay5-5r-reE" customClass="CurrencyCountView" customModule="Habitica" customModuleProvider="target">
-                            <rect key="frame" x="404" y="0.0" width="50" height="50"/>
+                            <rect key="frame" x="392" y="0.0" width="50" height="50"/>
                             <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="36" id="nUy-TL-jAq"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="diH-Q0-CAQ" customClass="CurrencyCountView" customModule="Habitica" customModuleProvider="target">
-                            <rect key="frame" x="462" y="0.0" width="50" height="50"/>
+                            <rect key="frame" x="450" y="0.0" width="50" height="50"/>
                             <color key="backgroundColor" red="0.97592383623123169" green="0.97666221857070923" blue="0.97603815793991089" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="36" id="SUa-gl-PjD"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="NYA-2D-ZUB" customClass="CurrencyCountView" customModule="Habitica" customModuleProvider="target">
-                            <rect key="frame" x="520" y="0.0" width="50" height="50"/>
+                            <rect key="frame" x="508" y="0.0" width="50" height="50"/>
                             <color key="backgroundColor" red="0.97592383623123169" green="0.97666221857070923" blue="0.97603815793991089" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="50" id="1X9-XL-a7p"/>
@@ -113,24 +113,29 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="BEm-of-HXC" secondAttribute="trailing" constant="8" id="0mR-VB-b2N"/>
-                <constraint firstAttribute="trailing" secondItem="jkr-YH-kSX" secondAttribute="trailing" constant="8" id="1EV-dk-Zay"/>
+                <constraint firstAttribute="trailing" secondItem="BEm-of-HXC" secondAttribute="trailing" priority="999" constant="8" id="0mR-VB-b2N"/>
+                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="jkr-YH-kSX" secondAttribute="trailing" id="1EV-dk-Zay"/>
                 <constraint firstItem="HQD-NM-NBo" firstAttribute="top" secondItem="jkr-YH-kSX" secondAttribute="bottom" id="2mj-Vb-KjX"/>
+                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="HQD-NM-NBo" secondAttribute="trailing" id="3zB-v4-EhE"/>
                 <constraint firstItem="BEm-of-HXC" firstAttribute="leading" secondItem="UWI-d8-sGn" secondAttribute="trailing" constant="25" id="52g-dx-EDh"/>
-                <constraint firstAttribute="trailing" secondItem="HQD-NM-NBo" secondAttribute="trailing" constant="8" id="Bdf-Qq-JCf"/>
+                <constraint firstItem="UWI-d8-sGn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="7tq-CI-iCq"/>
+                <constraint firstAttribute="trailing" secondItem="HQD-NM-NBo" secondAttribute="trailing" priority="999" constant="8" id="Bdf-Qq-JCf"/>
                 <constraint firstItem="BEm-of-HXC" firstAttribute="height" secondItem="tP1-9i-M3A" secondAttribute="height" id="Cfg-GS-4aK"/>
+                <constraint firstAttribute="trailing" secondItem="tP1-9i-M3A" secondAttribute="trailing" priority="999" constant="8" id="H1g-Mu-PcJ"/>
                 <constraint firstItem="jkr-YH-kSX" firstAttribute="height" secondItem="tP1-9i-M3A" secondAttribute="height" id="ROY-gh-K4V"/>
                 <constraint firstItem="tP1-9i-M3A" firstAttribute="leading" secondItem="UWI-d8-sGn" secondAttribute="trailing" constant="25" id="Tsx-qO-1vI"/>
-                <constraint firstItem="UWI-d8-sGn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="22" id="U1i-0Q-qji"/>
+                <constraint firstItem="UWI-d8-sGn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="999" constant="22" id="U1i-0Q-qji"/>
                 <constraint firstItem="tP1-9i-M3A" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="W5L-XH-qhb"/>
                 <constraint firstItem="UWI-d8-sGn" firstAttribute="centerY" secondItem="BEm-of-HXC" secondAttribute="centerY" id="Wo5-6I-30N"/>
                 <constraint firstItem="jkr-YH-kSX" firstAttribute="top" secondItem="BEm-of-HXC" secondAttribute="bottom" constant="2" id="YEp-zi-3ZL"/>
+                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="BEm-of-HXC" secondAttribute="trailing" id="am9-my-BGI"/>
                 <constraint firstItem="BEm-of-HXC" firstAttribute="top" secondItem="tP1-9i-M3A" secondAttribute="bottom" constant="2" id="fgc-bi-B7Y"/>
-                <constraint firstAttribute="trailing" secondItem="tP1-9i-M3A" secondAttribute="trailing" constant="8" id="gvC-Rc-WhO"/>
+                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="tP1-9i-M3A" secondAttribute="trailing" id="gvC-Rc-WhO"/>
                 <constraint firstItem="jkr-YH-kSX" firstAttribute="leading" secondItem="UWI-d8-sGn" secondAttribute="trailing" constant="25" id="ktf-vh-VaP"/>
                 <constraint firstAttribute="bottom" secondItem="HQD-NM-NBo" secondAttribute="bottom" constant="2" id="lJ7-hp-dFG"/>
                 <constraint firstItem="HQD-NM-NBo" firstAttribute="leading" secondItem="UWI-d8-sGn" secondAttribute="leading" id="lhZ-BP-qWF"/>
                 <constraint firstItem="HQD-NM-NBo" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.33" id="pe7-SN-nYh"/>
+                <constraint firstAttribute="trailing" secondItem="jkr-YH-kSX" secondAttribute="trailing" priority="999" constant="8" id="vDq-l2-yQ7"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
