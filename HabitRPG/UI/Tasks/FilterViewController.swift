@@ -25,33 +25,51 @@ class FilterViewController: BaseTableViewController {
     private let headerView = UIView()
     private var filterTypeControl = UISegmentedControl()
         
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationItem.title = L10n.filter
-        self.clearButton.title = L10n.clear
-        self.editButton.title = L10n.edit
-        self.doneButton.title = L10n.done
-        self.doneNavbarButton.title = L10n.done
-        
-        dataSource.tableView = tableView
-        dataSource.selectedTagIds = selectedTags
-                
-        if taskType == "habit" {
-            filterTypeControl = UISegmentedControl(items: [L10n.all, L10n.weak, L10n.strong])
-        } else if taskType == "daily" {
-            filterTypeControl = UISegmentedControl(items: [L10n.all, L10n.due, L10n.notDue])
-        } else if taskType == "todo" {
-            filterTypeControl = UISegmentedControl(items: [L10n.active, L10n.scheduled, L10n.completed])
-        }
-        let defaults = UserDefaults.standard
-        filterTypeControl.selectedSegmentIndex = defaults.integer(forKey: "\(taskType ?? "")Filter")
-        
-        filterTypeControl.addTarget(self, action: #selector(filterTypeChanged), for: .valueChanged)
-        headerView.addSubview(filterTypeControl)
-        tableView.tableHeaderView = headerView
-        
-        doneButtonTapped(doneButton)
-    }
+  override func viewDidLoad() {
+      super.viewDidLoad()
+      setupNavigationItems()
+      setupDataSource()
+      setupFilterTypeControl()
+      setupHeaderView()
+      doneButtonTapped(doneButton)
+  }
+
+  private func setupNavigationItems() {
+      self.navigationItem.title = L10n.filter
+      self.clearButton.title = L10n.clear
+      self.editButton.title = L10n.edit
+      self.doneButton.title = L10n.done
+      self.doneNavbarButton.title = L10n.done
+  }
+
+  private func setupDataSource() {
+      dataSource.tableView = tableView
+      dataSource.selectedTagIds = selectedTags
+  }
+
+  private func setupFilterTypeControl() {
+      if let taskType = taskType {
+          switch taskType {
+          case "habit":
+              filterTypeControl = UISegmentedControl(items: [L10n.all, L10n.weak, L10n.strong])
+          case "daily":
+              filterTypeControl = UISegmentedControl(items: [L10n.all, L10n.due, L10n.notDue])
+          case "todo":
+              filterTypeControl = UISegmentedControl(items: [L10n.active, L10n.scheduled, L10n.completed])
+          default:
+              filterTypeControl = UISegmentedControl(items: [])
+          }
+          let defaults = UserDefaults.standard
+          filterTypeControl.selectedSegmentIndex = defaults.integer(forKey: "\(taskType)Filter")
+          filterTypeControl.addTarget(self, action: #selector(filterTypeChanged), for: .valueChanged)
+      }
+  }
+
+  private func setupHeaderView() {
+      headerView.addSubview(filterTypeControl)
+      tableView.tableHeaderView = headerView
+  }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

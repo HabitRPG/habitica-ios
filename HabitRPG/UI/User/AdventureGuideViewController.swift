@@ -19,28 +19,49 @@ class AdventureGuideViewController: BaseUIViewController {
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var progressBar: ProgressBar!
     @IBOutlet weak var achievementsStackview: UIStackView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
 
-        userRepository.getUser().on(value: { user in
-            if let achievements = user.achievements?.onboardingAchievements {
-                let earned = achievements.filter { $0.value }.count
-                let percentCompleted = Float(earned) / Float(achievements.count)
-                self.progressBar.value = CGFloat(earned)
-                self.progressBar.maxValue = CGFloat(achievements.count)
-                self.progressLabel.text = L10n.percentComplete(Int(percentCompleted * 100.0))
-                
-                self.setAchievements(keys: user.achievements?.onboardingAchievementKeys ?? [], achievements: achievements)
-            }
-            }).start()
-        HabiticaAnalytics.shared.logNavigationEvent("navigated adventure guide screen")
-    }
-    
+  override func viewDidLoad() {
+      super.viewDidLoad()
+
+      configureNavigationBar()
+      configureUserRepository()
+      logNavigationEvent()
+  }
+
+  private func configureNavigationBar() {
+      guard let navigationBar = navigationController?.navigationBar else { return }
+
+      navigationBar.setBackgroundImage(UIImage(), for: .default)
+      navigationBar.shadowImage = UIImage()
+      navigationBar.isTranslucent = true
+      navigationController?.view.backgroundColor = .clear
+  }
+
+  private func configureUserRepository() {
+      userRepository.getUser().on(value: { [weak self] user in
+          guard let self = self else { return }
+
+          if let achievements = user.achievements?.onboardingAchievements {
+              let earnedCount = achievements.filter { $0.value }.count
+              let totalCount = achievements.count
+              let percentCompleted = Float(earnedCount) / Float(totalCount)
+
+              self.progressBar.value = CGFloat(earnedCount)
+              self.progressBar.maxValue = CGFloat(totalCount)
+              self.progressLabel.text = L10n.percentComplete(Int(percentCompleted * 100.0))
+
+              self.setAchievements(
+                  keys: user.achievements?.onboardingAchievementKeys ?? [],
+                  achievements: achievements
+              )
+          }
+      }).start()
+  }
+
+  private func logNavigationEvent() {
+      HabiticaAnalytics.shared.logNavigationEvent("navigated adventure guide screen")
+  }
+
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         view.backgroundColor = theme.contentBackgroundColor
