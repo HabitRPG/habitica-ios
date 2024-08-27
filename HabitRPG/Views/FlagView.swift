@@ -20,28 +20,7 @@ class FlagView: UIView {
         }
     }
 
-    @IBInspectable var flagColor: UIColor = UIColor.gray400 {
-        didSet {
-            label.backgroundColor = flagColor
-            flapView.tintColor = flagColor
-
-            if self.automaticTextColor {
-                var red: CGFloat = 0
-                var green: CGFloat = 0
-                var blue: CGFloat = 0
-                var alpha: CGFloat = 0
-                if flagColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
-                    if red*0.299 + green*0.587 + blue*0.114 > 0.829 {
-                        self.label.textColor = .black
-                    } else {
-                        self.label.textColor = .white
-                    }
-                }
-            }
-        }
-    }
-
-    @IBInspectable var textColor: UIColor = UIColor.white {
+    @IBInspectable var textColor: UIColor = UIColor.teal1 {
         didSet {
             self.label.textColor = textColor
         }
@@ -59,6 +38,7 @@ class FlagView: UIView {
         }
     }
 
+    private let gradientView = GradientView()
     private let label = UILabel()
     private let flapView = UIImageView(image: Asset.flagFlap.image)
 
@@ -73,17 +53,24 @@ class FlagView: UIView {
     }
 
     func setupView() {
+        addSubview(gradientView)
         addSubview(label)
         addSubview(flapView)
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 12)
         label.textColor = textColor
+        
+        gradientView.horizontalMode = true
+        gradientView.startColor = UIColor.teal100
+        gradientView.endColor = UIColor.blue100
+        flapView.tintColor = UIColor.teal100
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        flapView.frame = CGRect(x: 0, y: 0, width: 9, height: 24)
-        label.frame = CGRect(x: 9, y: 0, width: frame.size.width-9, height: frame.size.height)
+        flapView.frame = CGRect(x: 0, y: 0, width: 4, height: 24)
+        gradientView.frame = CGRect(x: 4, y: 0, width: frame.size.width-4, height: frame.size.height)
+        label.frame = CGRect(x: 4, y: 0, width: frame.size.width-4, height: frame.size.height)
     }
 
     override var intrinsicContentSize: CGSize {
@@ -91,7 +78,7 @@ class FlagView: UIView {
             return CGSize(width: 0, height: 0)
         }
         let originalSize = label.intrinsicContentSize
-        let width = originalSize.width+20
+        let width = originalSize.width+15
         let height = CGFloat(24)
         return CGSize(width: width, height: height)
     }

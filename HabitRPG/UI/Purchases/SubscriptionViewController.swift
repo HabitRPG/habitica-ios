@@ -236,7 +236,7 @@ class SubscriptionViewController: BaseTableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isInformationSection(section) {
-            return 7
+            return 6
         } else if isOptionSection(section) {
             guard let products = self.products else {
                 return 0

@@ -109,14 +109,20 @@ class SubscriptionDetailView: UITableViewCell {
         gemCapPill.text = String(plan.gemCapTotal)
         var months = DateComponents()
         months.month = plan.monthsUntilNextHourglass
-        if plan.isActive && !plan.isGifted && plan.dateTerminated == nil, let nextDate = Calendar.current.date(byAdding: months, to: Date()) {
-            let formatter = DateFormatter()
-            if Calendar.current.compare(nextDate, to: Date(), toGranularity: .year) != .orderedSame {
-                formatter.dateFormat = "MMMM YYYY"
+        var firstDay = DateComponents()
+        firstDay.day = 1
+        if let startOfMonth = Calendar.current.nextDate(after: Date(), matching: firstDay, matchingPolicy: .nextTime, direction: .backward), let nextDate = Calendar.current.date(byAdding: months, to: startOfMonth), plan.isActive {
+            if let dateTerminated = plan.dateTerminated, dateTerminated < nextDate {
+                hourGlassCountPill.text = "--"
             } else {
-                formatter.dateFormat = "MMMM"
+                let formatter = DateFormatter()
+                if Calendar.current.compare(nextDate, to: Date(), toGranularity: .year) != .orderedSame {
+                    formatter.dateFormat = "d MMMM YYYY"
+                } else {
+                    formatter.dateFormat = "d MMMM"
+                }
+                hourGlassCountPill.text = formatter.string(from: nextDate)
             }
-            hourGlassCountPill.text = formatter.string(from: nextDate)
         } else {
             hourGlassCountPill.text = "--"
         }

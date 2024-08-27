@@ -93,7 +93,7 @@ class SubscriptionOptionView: UITableViewCell {
             showGemsPerMonth(true)
         case 12:
             setGemCap(50)
-            showGemsPerMonth(false)
+            showGemsPerMonth(true, text: L10n.maxGemCap)
         default:
             break
         }
@@ -103,7 +103,7 @@ class SubscriptionOptionView: UITableViewCell {
         gemCapLabel.text = L10n.gemCap(count)
     }
     
-    private func showGemsPerMonth(_ show: Bool) {
+    private func showGemsPerMonth(_ show: Bool, text: String = L10n.twoGemsPerMonth) {
         if show {
             mysticHourglassLabel.isHidden = false
             mysticHourglassLabel.text = L10n.twoGemsPerMonth

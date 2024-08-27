@@ -650,6 +650,8 @@ public enum L10n {
   public static var manualSyncDescription: String { return L10n.tr("Mainstrings", "manual_sync_description") }
   /// Manual Sync & Force Restart
   public static var manualSyncTitle: String { return L10n.tr("Mainstrings", "manual_sync_title") }
+  /// Max Gem Cap
+  public static var maxGemCap: String { return L10n.tr("Mainstrings", "max_gem_cap") }
   /// Member of a Group Plan
   public static var memberGroupPlan: String { return L10n.tr("Mainstrings", "member_group_plan") }
   /// Menu
@@ -1058,7 +1060,7 @@ public enum L10n {
   public static var subscriberCurrency: String { return L10n.tr("Mainstrings", "subscriber_currency") }
   /// Subscription
   public static var subscription: String { return L10n.tr("Mainstrings", "subscription") }
-  /// Become a subscriber and you’ll get these useful benefits
+  /// Stay motivated with even more rewards when you subscribe
   public static var subscriptionBenefitsTitle: String { return L10n.tr("Mainstrings", "subscription_benefits_title") }
   /// You get these benefits for being a Subscriber
   public static var subscriptionBenefitsTitleSubscribed: String { return L10n.tr("Mainstrings", "subscription_benefits_title_subscribed") }
@@ -1080,11 +1082,11 @@ public enum L10n {
   public static var subscriptionInfo2Title: String { return L10n.tr("Mainstrings", "subscription_info_2_title") }
   /// Subscribe now to get an exclusive set now and receive new items every month!
   public static var subscriptionInfo3Description: String { return L10n.tr("Mainstrings", "subscription_info_3_description") }
-  /// Subscribe now to get this %@ set now and receive new items every month!
-  public static func subscriptionInfo3DescriptionNew(_ p1: String) -> String {
+  /// Stay decked out in the latest exclusive gear. Subscribe now to get %s!
+  public static func subscriptionInfo3DescriptionNew(_ p1: UnsafePointer<CChar>) -> String {
     return L10n.tr("Mainstrings", "subscription_info_3_description_new", p1)
   }
-  /// Monthly Mystery Items
+  /// Limited Monthly Gear Sets
   public static var subscriptionInfo3Title: String { return L10n.tr("Mainstrings", "subscription_info_3_title") }
   /// Get a Royal Purple Jackalope plus double the Eggs, Hatching Potions, and Food each day to grow your Pet collection!
   public static var subscriptionInfo5Description: String { return L10n.tr("Mainstrings", "subscription_info_5_description") }
@@ -2739,13 +2741,13 @@ public enum L10n {
     public static var gemForGoldHeader: String { return L10n.tr("Mainstrings", "subscription.gem_for_gold_header") }
     /// Subscribers get Mystic Hourglasses to buy items in the Time Travelers Shop and these other exclusive benefits!
     public static var hourglassesHeader: String { return L10n.tr("Mainstrings", "subscription.hourglasses_header") }
-    /// Get two chances at new equipment from the Armoire for the price of one
+    /// Get two chances to score new equipment each time you open the Enchanted Armoire!
     public static var infoArmoireDescription: String { return L10n.tr("Mainstrings", "subscription.info_armoire_description") }
-    /// Extra Armoire chances
+    /// Double Armoire Rewards
     public static var infoArmoireTitle: String { return L10n.tr("Mainstrings", "subscription.info_armoire_title") }
-    /// Have the option of hanging on with 1HP when you run out of health once a day
+    /// Avoid losing your progress with an instant heal when you run out of HP once a day!
     public static var infoFaintDescription: String { return L10n.tr("Mainstrings", "subscription.info_faint_description") }
-    /// Second chance at life
+    /// Get a Second Chance
     public static var infoFaintTitle: String { return L10n.tr("Mainstrings", "subscription.info_faint_title") }
   }
 

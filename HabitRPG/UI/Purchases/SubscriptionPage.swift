@@ -315,7 +315,8 @@ struct SubscriptionPage: View {
                 if viewModel.presentationPoint != .gemForGold {
                     SubscriptionBenefitView(icon: Image(Asset.subBenefitsGems.name), title: Text(L10n.subscriptionInfo1Title), description: Text(L10n.subscriptionInfo1Description))
                 }
-                SubscriptionBenefitView(icon: PixelArtView(name: "shop_set_mystery_\(viewModel.mysteryGear?.key?.split(separator: "_").last ?? "")"), title: Text(L10n.subscriptionInfo3Title), description: Text(L10n.subscriptionInfo3Description))
+                SubscriptionBenefitView(icon: PixelArtView(name: "shop_set_mystery_\(viewModel.mysteryGear?.key?.split(separator: "_").last ?? "")"), title: Text(L10n.subscriptionInfo3Title),
+                                        description: Text(L10n.subscriptionInfo3Description))
 
                 if viewModel.presentationPoint != .timetravelers {
                     SubscriptionBenefitView(icon: Image(Asset.subBenefitsHourglasses.name), title: Text(L10n.subscriptionInfo2Title), description: Text(L10n.subscriptionInfo2Description))
