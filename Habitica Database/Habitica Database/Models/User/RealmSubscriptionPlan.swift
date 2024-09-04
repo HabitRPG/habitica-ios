@@ -20,6 +20,7 @@ class RealmSubscriptionPlan: Object, SubscriptionPlanProtocol {
     @objc dynamic var planId: String?
     @objc dynamic var paymentMethod: String?
     @objc dynamic var customerId: String?
+    @objc dynamic var hourglassPromoReceived: Date?
     var consecutive: SubscriptionConsecutiveProtocol? {
         get {
             return realmSubscriptionConsecutive
@@ -70,5 +71,6 @@ class RealmSubscriptionPlan: Object, SubscriptionPlanProtocol {
         consecutive = protocolObject.consecutive
         paymentMethod = protocolObject.paymentMethod
         mysteryItems = protocolObject.mysteryItems
+        hourglassPromoReceived = protocolObject.hourglassPromoReceived
     }
 }

@@ -2749,6 +2749,8 @@ public enum L10n {
     public static var infoFaintDescription: String { return L10n.tr("Mainstrings", "subscription.info_faint_description") }
     /// Get a Second Chance
     public static var infoFaintTitle: String { return L10n.tr("Mainstrings", "subscription.info_faint_title") }
+    /// Stay motivated with even more rewards when you subscribe
+    public static var stayMotivatedWithMoreRewards: String { return L10n.tr("Mainstrings", "subscription.stay_motivated_with_more_rewards") }
   }
 
   public enum Support {

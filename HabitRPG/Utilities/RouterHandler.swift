@@ -56,6 +56,7 @@ enum Route {
     case seasonalShop
     case timeTravelers
     case subscription
+    case giftSubscription
     case customizationShop
     
     case equipment
@@ -71,6 +72,7 @@ enum Route {
         case .seasonalShop: return "/inventory/seasonal"
         case .timeTravelers: return "/inventory/time"
         case .subscription: return "/user/settings/subscription"
+        case .giftSubscription: return "/user/settings/subscription/gift"
         case .equipment: return "/inventory/equipment"
         case .customizations(let type, let group):
             if let group = group {
@@ -241,6 +243,10 @@ class RouterHandler {
         register(.subscription) {
             self.displayTab(index: 4)
             self.present(StoryboardScene.Main.subscriptionNavController.instantiate())
+        }
+        register(.giftSubscription) {
+            self.displayTab(index: 4)
+            self.present(StoryboardScene.Main.giftSubscriptionNavController.instantiate())
         }
         register("/user/settings/gems") {
             self.displayTab(index: 4)

@@ -21,6 +21,7 @@ public protocol SubscriptionPlanProtocol {
     var paymentMethod: String? { get set }
     var consecutive: SubscriptionConsecutiveProtocol? { get set }
     var mysteryItems: [String] { get set }
+    var hourglassPromoReceived: Date? { get set }
 }
 
 public extension SubscriptionPlanProtocol {
@@ -63,5 +64,9 @@ public extension SubscriptionPlanProtocol {
         } else {
             return (consecutive?.offset ?? 0) + 1
         }
+    }
+    
+    var isEligableForHourglassPromo: Bool {
+        return hourglassPromoReceived == nil
     }
 }

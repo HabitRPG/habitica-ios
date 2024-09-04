@@ -17,6 +17,7 @@ extension UIColor {
     @nonobjc static let red500 = UIColor(red: 1.0, green: 182.0 / 255.0, blue: 184.0 / 255.0, alpha: 1.0)
     
     @nonobjc static let yellow1 = UIColor(red: 121.0 / 255.0, green: 75.0 / 255.0, blue: 0.0, alpha: 1.0)
+    @nonobjc static let yellow5 = UIColor(red: 238.0 / 255.0, green: 145.0 / 255.0, blue: 9.0 / 255.0, alpha: 1.0)
     @nonobjc static let yellow10 = UIColor(red: 1.0, green: 166.0 / 255.0, blue: 36.0 / 255.0, alpha: 1.0)
     @nonobjc static let yellow50 = UIColor(red: 1.0, green: 180.0 / 255.0, blue: 69.0 / 255.0, alpha: 1.0)
     @nonobjc static let yellow100 = UIColor(red: 1.0, green: 190.0 / 255.0, blue: 93.0 / 255.0, alpha: 1.0)
@@ -67,7 +68,7 @@ extension UIColor {
     @nonobjc static let purple100 = UIColor(red: 67.0 / 255.0, green: 40.0 / 255.0, blue: 116.0 / 255.0, alpha: 1.0)
     @nonobjc static let purple200 = UIColor(red: 79.0 / 255.0, green: 42.0 / 255.0, blue: 147.0 / 255.0, alpha: 1.0)
     @nonobjc static let purple300 = UIColor(red: 97.0 / 255.0, green: 51.0 / 255.0, blue: 180.0 / 255.0, alpha: 1.0)
-    @nonobjc static let purple400 = UIColor(red: 154.0 / 255.0, green: 98.0 / 255.0, blue: 1.0, alpha: 1.0)
+    @nonobjc static let purple400 = UIColor(red: 146.0 / 255.0, green: 92.0 / 255.0, blue: 243.0 / 255.0, alpha: 1.0)
     @nonobjc static let purple500 = UIColor(red: 0.74, green: 0.66, blue: 1.00, alpha: 1.00)
     @nonobjc static let purple600 = UIColor(red: 0.84, green: 0.78, blue: 1.00, alpha: 1.00)
     @nonobjc static let purple5060 = UIColor(red: 54.0 / 255.0, green: 32.0 / 255.0, blue: 93.0 / 255.0, alpha: 0.6)
@@ -108,6 +109,7 @@ extension Color {
     @nonobjc static let red500 = Color(red: 1.0, green: 182.0 / 255.0, blue: 184.0 / 255.0, opacity: 1.0)
     
     @nonobjc static let yellow1 = Color(red: 121.0 / 255.0, green: 75.0 / 255.0, blue: 0.0, opacity: 1.0)
+    @nonobjc static let yellow5 = Color(red: 238.0 / 255.0, green: 145.0 / 255.0, blue: 9.0 / 255.0, opacity: 1.0)
     @nonobjc static let yellow10 = Color(red: 1.0, green: 166.0 / 255.0, blue: 36.0 / 255.0, opacity: 1.0)
     @nonobjc static let yellow50 = Color(red: 1.0, green: 180.0 / 255.0, blue: 69.0 / 255.0, opacity: 1.0)
     @nonobjc static let yellow100 = Color(red: 1.0, green: 190.0 / 255.0, blue: 93.0 / 255.0, opacity: 1.0)
@@ -117,6 +119,7 @@ extension Color {
     @nonobjc static let blue10 = Color(red: 41.0 / 255.0, green: 149.0 / 255.0, blue: 205.0 / 255.0, opacity: 1.0)
     @nonobjc static let blue50 = Color(red: 70.0 / 255.0, green: 167.0 / 255.0, blue: 217.0 / 255.0, opacity: 1.0)
     @nonobjc static let blue100 = Color(red: 80.0 / 255.0, green: 181.0 / 255.0, blue: 233.0 / 255.0, opacity: 1.0)
+    @nonobjc static let blue200 = Color(red: 119.0 / 255.0, green: 244.0 / 255.0, blue: 199.0 / 255.0, opacity: 1.0)
     @nonobjc static let blue500 = Color(red: 169.0 / 255.0, green: 220.0 / 255.0, blue: 246.0 / 255.0, opacity: 1.0)
     
     @nonobjc static let maroon10 = Color(red: 176.0 / 255.0, green: 20.0 / 255.0, blue: 20.0 / 255.0, opacity: 1.0)
@@ -134,6 +137,7 @@ extension Color {
     @nonobjc static let teal10 = Color(red: 38.0 / 255.0, green: 160.0 / 255.0, blue: 171.0 / 255.0, opacity: 1.0)
     @nonobjc static let teal50 = Color(red: 52.0 / 255.0, green: 181.0 / 255.0, blue: 193.0 / 255.0, opacity: 1.0)
     @nonobjc static let teal100 = Color(red: 59.0 / 255.0, green: 202.0 / 255.0, blue: 215.0 / 255.0, opacity: 1.0)
+    @nonobjc static let teal200 = Color(red: 114.0 / 255.0, green: 207.0 / 255.0, blue: 255.0 / 255.0, opacity: 1.0)
     @nonobjc static let teal500 = Color(red: 142.0 / 255.0, green: 237.0 / 255.0, blue: 246.0 / 255.0, opacity: 1.0)
     
     @nonobjc static let green1 = Color(red: 0.0, green: 87.0 / 255.0, blue: 55.0 / 255.0, opacity: 1.0)
@@ -157,7 +161,7 @@ extension Color {
     @nonobjc static let purple100 = Color(red: 67.0 / 255.0, green: 40.0 / 255.0, blue: 116.0 / 255.0, opacity: 1.0)
     @nonobjc static let purple200 = Color(red: 79.0 / 255.0, green: 42.0 / 255.0, blue: 147.0 / 255.0, opacity: 1.0)
     @nonobjc static let purple300 = Color(red: 97.0 / 255.0, green: 51.0 / 255.0, blue: 180.0 / 255.0, opacity: 1.0)
-    @nonobjc static let purple400 = Color(red: 154.0 / 255.0, green: 98.0 / 255.0, blue: 1.0, opacity: 1.0)
+    @nonobjc static let purple400 = Color(red: 146.0 / 255.0, green: 92.0 / 255.0, blue: 243.0 / 255.0, opacity: 1.0)
     @nonobjc static let purple500 = Color(red: 0.74, green: 0.66, blue: 1.00, opacity: 1.00)
     @nonobjc static let purple600 = Color(red: 0.84, green: 0.78, blue: 1.00, opacity: 1.00)
     @nonobjc static let purple5060 = Color(red: 54.0 / 255.0, green: 32.0 / 255.0, blue: 93.0 / 255.0, opacity: 0.6)

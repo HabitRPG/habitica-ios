@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "sub_benefits_armoire.png",
+      "filename" : "sub_bene_armoire.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "sub_benefits_armoire 1.png",
+      "filename" : "sub_bene_armoire@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "sub_benefits_armoire 2.png",
+      "filename" : "sub_bene_armoire@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
