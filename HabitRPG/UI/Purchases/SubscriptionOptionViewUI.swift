@@ -7,14 +7,12 @@
 //
 import SwiftUI
 
-
 struct HourglassPromo: View {
     @State private var animatePromoGradient = false
 
-    var body: some View {
+    private var content: some View {
         let offset = animatePromoGradient ? 0.5 : -0.5
-        Spacer()
-        Group {
+        return Group {
             Text("Get ") +
             Text("12 Mystic Hourglasses").fontWeight(.bold) +
             Text("immediately after your first 12 month subscription!")
@@ -29,10 +27,18 @@ struct HourglassPromo: View {
                                            Gradient.Stop(color: Color(hexadecimal: "72CFFF"), location: offset + 1.0)],
                                    startPoint: .leading,
                                    endPoint: .trailing))
-        .onAppear {
-            withAnimation(.easeInOut(duration: 2.5).repeatForever(autoreverses: true)) {
-                animatePromoGradient = true
-            }
+    }
+    
+    var body: some View {
+        if #available(iOS 15.0, *) {
+            content
+                .task {
+                    withAnimation(.easeInOut(duration: 2.5).repeatForever(autoreverses: true)) {
+                        animatePromoGradient = true
+                    }
+                }
+        } else {
+            content
         }
     }
 }
@@ -115,6 +121,7 @@ struct SubscriptionOptionViewUI<Price: View, Recurring: View, Tag: View>: View {
                         .padding(.top, 16)
                         .padding(.leading, 30)
                     
+                    Spacer()
                     if showHourglassPromo {
                         HourglassPromo()
                     }
