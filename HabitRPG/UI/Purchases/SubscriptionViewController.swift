@@ -513,7 +513,6 @@ class SubscriptionViewController: BaseTableViewController {
             self.perform(segue: StoryboardSegue.Main.openGiftSubscriptionDialog)
         }, saveButtonTitle: L10n.continue)
         present(navController, animated: true, completion: nil)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

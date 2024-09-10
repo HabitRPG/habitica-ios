@@ -627,7 +627,7 @@
 "inactive" = "Inactive";
 "one_month" = "1 Month";
 "x_months" = "%d Months";
-"unsubscribe_itunes" = "No longer want to subscribe? You can manage your subscription through your Apple ID in your device's Settings.";
+"unsubscribe_itunes" = "No longer want to subscribe? You can find the option to unsubscribe by going to the Settings app and viewing your Apple ID subscriptions";
 "open_itunes" = "Open Apple ID Subscriptions";
 "open_app_store" = "Open App Store Page";
 "unsubscribe_website" = "No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.";
@@ -960,6 +960,15 @@
 "subscription.gem_for_gold_header" = "Subscribe to buy Gems with Gold and receive these other exclusive benefits!";
 "subscription.hourglasses_header" = "Subscribers get Mystic Hourglasses to buy items in the Time Travelers Shop and these other exclusive benefits!";
 "subscription.stay_motivated_with_more_rewards" = "Stay motivated with even more rewards when you subscribe";
+"subscription.thanks_for_subscribing" = "Thanks for subscribing";
+"subscription.enjoy_these_benefits" = "Enjoy all these exclusive benefits with your subscription";
+"subscription.subscribers_receive" = "Subscribers receive a Mystic Hourglass, a Mystery Gear Set, and Gems restocked in the Market within the first two days of the month";
+"subscription.gifted" = "Gifted";
+"subscription.payment_method" = "Payment Method";
+"subscription.months_subscribed" = "Months Subscribed";
+"subscription.monthly_gems" = "Monthly Gems";
+"subscription.next_hourglass_delivery" = "Next Hourglass delivery";
+"subscription.subscribe_again_hourglasses" ="Subscribe again to continue receiving Mystic Hourglasses";
 "duration_month" = "month";
 "duration_3month" = "3 months";
 "duration_6month" = "6 months";
@@ -971,8 +980,8 @@
 "not_recurring" = "Not Recurring";
 "cancelled" = "Cancelled";
 "cancel_subscription" = "Cancel Subscription";
-"renew_subscription_description" = "Want to continue your benefits? You can start a new subscription before this one runs out to keep your benefits active.";
-"renew_subscription_gifted_description" = "Want to continue your benefits? You can start a new subscription before your gifted one runs out to keep your benefits active.";
+"renew_subscription_description" = "Want to continue receiving subscription benefits? You can restart your subscription by going to the Settings app and viewing your Apple ID subscriptions.";
+"renew_subscription_gifted_description" = "Want to continue receiving subscription benefits? You can start a recurring subscription by going to the Settings app and viewing your Apple ID subscriptions.";
 "cancel_subscription_group_plan" = "You have a free subscription because you are a member a Party or Guild that has a Group Plan. This will end if you leave or the Group Plan is cancelled by the owner. Any months of extra subscription credit you have will be applied at the end of the Group Plan.";
 "send_gift" = "Send Gift";
 "gift_one_get_one" = "Gift a sub and get a sub free event going on now!";
@@ -1392,3 +1401,4 @@
 "class_change_success_description" = "You can now use %@ skills and purchase gear from shops. Gain levels to earn stat points you can use to power up your skills.";
 "got_it" = "Got it!";
 "open_stats" = "Open Stats";
+"continue_benefits" = "Continue Benefits";

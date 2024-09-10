@@ -104,6 +104,11 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             // swiftlint:disable:next force_try
             HabiticaServerConfig.stubs = try! JSONDecoder().decode([String: CallStub].self, from: stubs)
         }
+        if let url = launchEnvironment["OPEN_URL"] {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                RouterHandler.shared.handle(urlString: url)
+            })
+        }
     }
     
     func setupFirebase() {
@@ -111,7 +116,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         
         let userDefaults = UserDefaults.standard
         #if !targetEnvironment(macCatalyst)
-        Crashlytics.crashlytics().setCustomValue(-(NSTimeZone.local.secondsFromGMT() / 60), forKey: "timesoze_offset")
+        Crashlytics.crashlytics().setCustomValue(-(NSTimeZone.local.secondsFromGMT() / 60), forKey: "timezone_offset")
         Crashlytics.crashlytics().setCustomValue(LanguageHandler.getAppLanguage().code, forKey: "app_language")
         Analytics.setUserProperty(LanguageHandler.getAppLanguage().code, forName: "app_language")
         Analytics.setUserProperty(configRepository.testingLevel.rawValue.lowercased(), forName: "app_testing_level")

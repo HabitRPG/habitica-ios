@@ -11,16 +11,151 @@ import SwiftyStoreKit
 import StoreKit
 import ReactiveSwift
 import Habitica_Models
+import SwiftUI
 
-class GiftSubscriptionViewController: BaseTableViewController {
+struct GiftSubscriptionPage: View {
+    @ObservedObject var viewModel: GiftSubscriptionViewModel
     
-    @IBOutlet weak var avatarView: AvatarView!
-    @IBOutlet weak var displayNameLabel: UsernameLabel!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var explanationTitle: UILabel!
-    @IBOutlet weak var giftOneGetOneTitleLabel: UILabel!
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
-    @IBOutlet weak var giftOneGetOneDescriptionLabel: UILabel!
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 0) {
+                if let member = viewModel.giftedUser {
+                    AvatarViewUI(avatar: AvatarViewModel(avatar: member), showBackground: false, showMount: false, showPet: false)
+                        .frame(width: 97, height: 99)
+                } else {
+                    Spacer()
+                        .frame(width: 97, height: 99)
+                }
+                Text("@\(viewModel.giftedUser?.username ?? "")").font(.system(size: 17, weight: .semibold)).padding(.bottom, 8)
+                Text(L10n.giftSubscriptionPrompt)
+                    .multilineTextAlignment(.center)
+                    .font(.system(size: 15)).padding(.horizontal, 32).padding(.bottom, 8)
+                ZStack(alignment: .top) {
+                    VStack(spacing: 0) {
+                        ForEach(enumerating: viewModel.availableSubscriptions) { sub in
+                            Rectangle()
+                                .fill()
+                                .foregroundColor(Color(UIColor.purple200))
+                                .frame(height: 126)
+                                .cornerRadius(12)
+                                .padding(.vertical, 4).onTapGesture {
+                                    withAnimation {
+                                        viewModel.selectedSubscription = sub
+                                    }
+                                }
+                        }
+                    }
+                    Rectangle()
+                        .foregroundColor(.white)
+                        .frame(height: 126)
+                        .cornerRadius(12)
+                        .offset(y: 4.0 + (CGFloat(viewModel.availableSubscriptions.firstIndex(of: viewModel.selectedSubscription) ?? 0) * 134.0))
+                        .animation(.interpolatingSpring(stiffness: 500, damping: 55), value: viewModel.selectedSubscription)
+                    VStack(spacing: 0) {
+                        SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.noRenewSubscriptionIdentifiers[0])),
+                                                 recurring: Text(viewModel.titleFor(PurchaseHandler.noRenewSubscriptionIdentifiers[0])),
+                                                 instantGems: "24",
+                                                 isSelected: PurchaseHandler.noRenewSubscriptionIdentifiers[0] == viewModel.selectedSubscription)
+                        SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.noRenewSubscriptionIdentifiers[1])),
+                                                 recurring: Text(viewModel.titleFor(PurchaseHandler.noRenewSubscriptionIdentifiers[1])),
+                                                 instantGems: "24",
+                                                 isSelected: PurchaseHandler.noRenewSubscriptionIdentifiers[1] == viewModel.selectedSubscription)
+                        SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.noRenewSubscriptionIdentifiers[2])),
+                                                 recurring: Text(viewModel.titleFor(PurchaseHandler.noRenewSubscriptionIdentifiers[2])),
+                                                 instantGems: "24",
+                                                 isSelected: PurchaseHandler.noRenewSubscriptionIdentifiers[2] == viewModel.selectedSubscription)
+                        SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.noRenewSubscriptionIdentifiers[3])), recurring: Text(viewModel.titleFor(PurchaseHandler.noRenewSubscriptionIdentifiers[3])),
+                                                 tag: HStack(spacing: 0) {
+                            Image(uiImage: Asset.flagFlap.image.withRenderingMode(.alwaysTemplate)).foregroundColor(Color(hexadecimal: "77F4C7"))
+                            Text("Popular").foregroundColor(Color(UIColor.teal1)).font(.system(size: 12, weight: .semibold))
+                                .frame(height: 24)
+                                .padding(.horizontal, 8)
+                                .background(LinearGradient(colors: [
+                                    Color(hexadecimal: "77F4C7"),
+                                    Color(hexadecimal: "72CFFF")
+                                ], startPoint: .leading, endPoint: .trailing))
+                        },
+                                                 instantGems: "50",
+                                                 isSelected: PurchaseHandler.noRenewSubscriptionIdentifiers[3] == viewModel.selectedSubscription,
+                                                 nonSalePrice: viewModel.twelveMonthNonSalePrice,
+                                                 gemCapMax: true,
+                                                 showHourglassPromo: false)
+                    }
+                }
+                    .padding(.horizontal, 24)
+                Group {
+                    if viewModel.isSubscribing {
+                        ProgressView().habiticaProgressStyle().frame(height: 48)
+                    } else {
+                        HabiticaButtonUI(label: Text(L10n.giftSubscription).foregroundColor(Color(UIColor.purple100)), color: Color(UIColor.yellow100), size: .compact) {
+                            viewModel.subscribeToPlan()
+                        }
+                    }
+                }
+                .padding(.horizontal, 24)
+                .padding(.top, 16)
+                .padding(.bottom, 32)
+                Image(Asset.subscriptionBackground.name)
+            }.background(Color.purple300.ignoresSafeArea(.all, edges: .top).padding(.bottom, 4))
+        }.foregroundColor(.white)
+            .background(Color.purple400.ignoresSafeArea(.all, edges: .bottom).padding(.top, 200))
+    }
+}
+
+class GiftSubscriptionViewModel: BaseSubscriptionViewModel {
+    @Published var giftedUser: MemberProtocol?
+    @Published var selectedSubscription: String = PurchaseHandler.noRenewSubscriptionIdentifiers[3]
+    @Published var availableSubscriptions = PurchaseHandler.noRenewSubscriptionIdentifiers
+
+    var onSuccessfulSubscribe: (() -> Void)?
+    
+    override init() {
+        super.init()
+        retrieveProductList()
+    }
+    
+    func retrieveProductList() {
+        SwiftyStoreKit.retrieveProductsInfo(Set(PurchaseHandler.noRenewSubscriptionIdentifiers)) { (result) in
+            var prices = [String: String]()
+            var titles = [String: String]()
+            for product in result.retrievedProducts {
+                prices[product.productIdentifier] = product.localizedPrice
+                titles[product.productIdentifier] = product.localizedTitle
+                if product.productIdentifier == PurchaseHandler.noRenewSubscriptionIdentifiers[1] {
+                    self.calculateNonSalePrice(product.price, locale: product.priceLocale)
+                }
+            }
+            self.prices = prices
+            self.titles = titles
+        }
+    }
+    
+    func subscribeToPlan() {
+        if !PurchaseHandler.shared.isAllowedToMakePurchases() || isSubscribing {
+            return
+        }
+        isSubscribing = true
+
+        PurchaseHandler.shared.pendingGifts[selectedSubscription] = self.giftedUser?.id
+        SwiftyStoreKit.purchaseProduct(selectedSubscription, atomically: false) { result in
+            self.isSubscribing = false
+            switch result {
+            case .success(let product):
+                if let action = self.onSuccessfulSubscribe {
+                    action()
+                }
+                logger.log("Purchase Success: \(product.productId)")
+            case .error(let error):
+                logger.log("Purchase Failed: \(error)", level: .error)
+            case .deferred:
+                return
+            }
+        }
+    }
+}
+
+class GiftSubscriptionViewController: UIHostingController<GiftSubscriptionPage> {
+    let viewModel: GiftSubscriptionViewModel = GiftSubscriptionViewModel()
     
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
@@ -29,35 +164,15 @@ class GiftSubscriptionViewController: BaseTableViewController {
     
     private var activePromo: HabiticaPromotion?
 
-    var products: [SKProduct]?
-    var selectedSubscriptionPlan: SKProduct?
-    var isSubscribing = false
     public var giftRecipientUsername: String?
-    var giftedUser: MemberProtocol? {
-        didSet {
-            if let user = giftedUser {
-                avatarView.avatar = AvatarViewModel(avatar: user)
-                displayNameLabel.text = giftedUser?.profile?.name
-                displayNameLabel.contributorLevel = user.contributor?.level ?? 0
-                usernameLabel.text = "@\(user.username ?? "")"
-            }
-        }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder, rootView: GiftSubscriptionPage(viewModel: viewModel))
     }
-    var expandedList = [Bool](repeating: false, count: 4)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cancelButton.title = L10n.cancel
-        
-        let optionNib = UINib.init(nibName: "SubscriptionOptionView", bundle: nil)
-        self.tableView.register(optionNib, forCellReuseIdentifier: "OptionCell")
-        retrieveProductList()
-        
-        avatarView.showPet = false
-        avatarView.showMount = false
-        avatarView.showBackground = false
-        avatarView.ignoreSleeping = true
-        
+
         if let username = giftRecipientUsername {
             let signal: Signal<MemberProtocol?, Never>
             if UUID(uuidString: username) != nil {
@@ -66,212 +181,26 @@ class GiftSubscriptionViewController: BaseTableViewController {
                 signal = socialRepository.retrieveMemberWithUsername(username)
             }
             disposable.inner.add(signal.observeValues({[weak self] member in
-                self?.giftedUser = member
+                self?.viewModel.giftedUser = member
             }))
         }
 
         activePromo = configRepository.activePromotion()
-
-        if activePromo?.identifier != "g1g1" {
-            tableView.tableFooterView = nil
-        } else if let footer = tableView.tableFooterView {
-            footer.backgroundColor = nil
-            footer.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
-            let gradient: CAGradientLayer = CAGradientLayer()
-
-            gradient.colors = [UIColor("#3BCAD7").cgColor, UIColor("#925CF3").cgColor]
-            gradient.locations = [0.0, 1.0]
-            gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
-            gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
-            gradient.frame = CGRect(x: 0.0, y: 0.0, width: footer.frame.size.width, height: footer.frame.size.height)
-            footer.layer.insertSublayer(gradient, at: 0)
-        }
         
-        navigationController?.navigationBar.standardAppearance.shadowColor = .clear
-        navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
-        
-        explanationTitle.text = L10n.giftSubscriptionPrompt
-    }
-    
-    override func populateText() {
-        navigationItem.title = L10n.Titles.giftSubscription
-    }
-    
-    override func applyTheme(theme: Theme) {
-        super.applyTheme(theme: theme)
+        view.backgroundColor = .purple300
+        navigationController?.navigationBar.backgroundColor = .purple300
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.barTintColor = .purple300
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.standardAppearance.backgroundColor = theme.contentBackgroundColor
-        tableView.backgroundColor = theme.contentBackgroundColor
-        explanationTitle.textColor = theme.primaryTextColor
-        tableView.reloadData()
-    }
-    
-    func retrieveProductList() {
-        SwiftyStoreKit.retrieveProductsInfo(Set(PurchaseHandler.noRenewSubscriptionIdentifiers)) { (result) in
-            self.products = Array(result.retrievedProducts)
-            self.products?.sort(by: { (product1, product2) -> Bool in
-                guard let firstIndex = PurchaseHandler.noRenewSubscriptionIdentifiers.firstIndex(of: product1.productIdentifier) else {
-                    return false
-                }
-                guard let secondIndex = PurchaseHandler.noRenewSubscriptionIdentifiers.firstIndex(of: product2.productIdentifier) else {
-                    return true
-                }
-                return firstIndex < secondIndex
-            })
-            self.selectedSubscriptionPlan = self.products?.first
-            self.tableView.reloadData()
-            self.tableView.selectRow(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .none)
+        
+        viewModel.onSuccessfulSubscribe = {[weak self] in
+            self?.displayConfirmationDialog()
         }
     }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let products = self.products else {
-            return 0
-        }
 
-        if section == 0 {
-            return products.count
-        } else {
-                return 1
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 106
-        }
-        return 70
-    }
-    
-    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if indexPath.section != 0 {
-            return nil
-        }
-        return indexPath
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == tableView.numberOfSections-1 {
-            subscribeToPlan()
-        } else {
-            self.selectedSubscriptionPlan = (self.products?[indexPath.item])
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var returnedCell: UITableViewCell?
-        if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "OptionCell", for: indexPath) as? SubscriptionOptionView else {
-                fatalError()
-            }
-            
-            let product = self.products?[indexPath.item]
-            cell.priceLabel.text = product?.localizedPrice
-            cell.titleLabel.text = product?.localizedTitle
-            
-            cell.flagView.isHidden = true
-            switch product?.productIdentifier {
-            case PurchaseHandler.noRenewSubscriptionIdentifiers[0]:
-                cell.setMonthCount(1)
-            case PurchaseHandler.noRenewSubscriptionIdentifiers[1]:
-                cell.setMonthCount(3)
-            case PurchaseHandler.noRenewSubscriptionIdentifiers[2]:
-                cell.setMonthCount(6)
-            case PurchaseHandler.noRenewSubscriptionIdentifiers[3]:
-                cell.setMonthCount(12)
-                cell.flagView.text = "Save 20%"
-                cell.flagView.textColor = .white
-                cell.flagView.isHidden = false
-            default:
-                break
-            }
-            DispatchQueue.main.async {
-                cell.setSelected(product?.productIdentifier == self.selectedSubscriptionPlan?.productIdentifier, animated: true)
-            }
-            returnedCell = cell
-        } else if indexPath.section == tableView.numberOfSections-1 {
-            returnedCell = tableView.dequeueReusableCell(withIdentifier: "SubscribeButtonCell", for: indexPath)
-            (returnedCell?.viewWithTag(1) as? UIButton)?.setTitle(L10n.sendGift, for: .normal)
-            returnedCell?.viewWithTag(1)?.isHidden = isSubscribing
-            returnedCell?.viewWithTag(2)?.isHidden = !isSubscribing
-        }
-        returnedCell?.selectionStyle = .none
-        return returnedCell ?? UITableViewCell()
-    }
-    
-    func isInformationSection(_ section: Int) -> Bool {
-        return section == 0
-    }
-    
-    @IBAction func subscribeButtonPressed(_ sender: Any) {
-        if isSubscribing {
-            return
-        }
-        tableView.beginUpdates()
-        tableView.reloadSections(IndexSet(integer: tableView.numberOfSections - 1), with: .automatic)
-        tableView.endUpdates()
-        self.subscribeToPlan()
-    }
-    
-    func subscribeToPlan() {
-        if !PurchaseHandler.shared.isAllowedToMakePurchases() || isSubscribing {
-            return
-        }
-        guard let identifier = self.selectedSubscriptionPlan?.productIdentifier else {
-            return
-        }
-        isSubscribing = true
-        tableView.reloadSections(IndexSet(integer: tableView.numberOfSections-1), with: .fade)
-
-        PurchaseHandler.shared.pendingGifts[identifier] = self.giftedUser?.id
-        SwiftyStoreKit.purchaseProduct(identifier, atomically: false) { result in
-            self.isSubscribing = false
-            switch result {
-            case .success(let product):
-                self.displayConfirmationDialog()
-                self.userRepository.retrieveUser().observeCompleted {}
-                logger.log("Purchase Success: \(product.productId)")
-            case .error(let error):
-                logger.log("Purchase Failed: \(error)", level: .error)
-            case .deferred:
-                return
-            }
-            self.tableView.beginUpdates()
-            self.tableView.reloadSections(IndexSet(integer: self.tableView.numberOfSections - 1), with: .automatic)
-            self.tableView.endUpdates()
-        }
-    }
-    
-    func isSubscription(_ identifier: String) -> Bool {
-        return  PurchaseHandler.subscriptionIdentifiers.contains(identifier)
-    }
-    
-    func isValidSubscription(_ identifier: String, receipt: ReceiptInfo) -> Bool {
-        if !isSubscription(identifier) {
-            return false
-        }
-        let purchaseResult = SwiftyStoreKit.verifySubscription(
-            ofType: .autoRenewable,
-            productId: identifier,
-            inReceipt: receipt,
-            validUntil: Date()
-        )
-        switch purchaseResult {
-        case .purchased:
-            return true
-        case .expired:
-            return false
-        case .notPurchased:
-            return false
-        }
-    }
-    
     private func selectedDurationString() -> String {
-        switch selectedSubscriptionPlan?.productIdentifier {
+        switch viewModel.selectedSubscription {
         case PurchaseHandler.noRenewSubscriptionIdentifiers[0]:
             return "1"
         case PurchaseHandler.noRenewSubscriptionIdentifiers[1]:
@@ -286,9 +215,9 @@ class GiftSubscriptionViewController: BaseTableViewController {
     }
     
     func displayConfirmationDialog() {
-        var body = L10n.giftConfirmationBody(usernameLabel.text ?? "", selectedDurationString())
+        var body = L10n.giftConfirmationBody(viewModel.giftedUser?.profile?.name ?? "", selectedDurationString())
         if activePromo?.identifier == "g1g1" {
-            body = L10n.giftConfirmationBodyG1g1(usernameLabel.text ?? "", selectedDurationString())
+            body = L10n.giftConfirmationBodyG1g1(viewModel.giftedUser?.profile?.name ?? "", selectedDurationString())
         }
         let alertController = HabiticaAlertController(title: L10n.giftConfirmationTitle, message: body)
         alertController.addCloseAction { _ in

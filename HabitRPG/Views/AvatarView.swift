@@ -279,9 +279,15 @@ class AvatarView: UIView {
 
 struct AvatarViewUI: UIViewRepresentable {
     var avatar: Avatar
+    var showBackground: Bool = true
+    var showMount: Bool = true
+    var showPet: Bool = true
     
     func makeUIView(context: Context) -> AvatarView {
         let avatarView = AvatarView()
+        avatarView.showBackground = showBackground
+        avatarView.showMount = showMount
+        avatarView.showPet = showPet
         return avatarView
     }
     

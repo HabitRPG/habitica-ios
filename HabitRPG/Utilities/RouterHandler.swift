@@ -56,7 +56,7 @@ enum Route {
     case seasonalShop
     case timeTravelers
     case subscription
-    case giftSubscription
+    case giftSubscription(username: String)
     case customizationShop
     
     case equipment
@@ -72,7 +72,8 @@ enum Route {
         case .seasonalShop: return "/inventory/seasonal"
         case .timeTravelers: return "/inventory/time"
         case .subscription: return "/user/settings/subscription"
-        case .giftSubscription: return "/user/settings/subscription/gift"
+        case .giftSubscription(let username):
+            return "/user/settings/subscription/gift/\(username)"
         case .equipment: return "/inventory/equipment"
         case .customizations(let type, let group):
             if let group = group {
@@ -241,19 +242,18 @@ class RouterHandler {
             self.present(StoryboardScene.Settings.initialScene.instantiate())
         }
         register(.subscription) {
-            self.displayTab(index: 4)
             self.present(StoryboardScene.Main.subscriptionNavController.instantiate())
         }
-        register(.giftSubscription) {
-            self.displayTab(index: 4)
-            self.present(StoryboardScene.Main.giftSubscriptionNavController.instantiate())
+        register("/user/settings/subscription/gift/:username") { link in
+            let viewController = StoryboardScene.Main.giftSubscriptionViewController.instantiate()
+            viewController.giftRecipientUsername = link["username"]
+            let navController = UINavigationController(rootViewController: viewController)
+            self.present(navController)
         }
         register("/user/settings/gems") {
-            self.displayTab(index: 4)
             self.present(StoryboardScene.Main.purchaseGemNavController.instantiate())
         }
         register("/promo") {
-            self.displayTab(index: 4)
             self.present(StoryboardScene.Main.promotionInfoNavController.instantiate())
         }
         register("/private-messages") {

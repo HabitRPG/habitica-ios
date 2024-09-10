@@ -444,6 +444,8 @@
 		29ED1AFB1F338E5D005A3895 /* SetupCustomizationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */; };
 		29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */; };
 		29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */; };
+		29ED3FEF2C90A68A00DD1483 /* BaseSubscriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED3FEE2C90A68500DD1483 /* BaseSubscriptionViewModel.swift */; };
+		29EFE3A52C8B359A005B66C9 /* SubscriptionDetailViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EFE3A42C8B359A005B66C9 /* SubscriptionDetailViewUI.swift */; };
 		29EFF94E25AC750700D73F55 /* AchievementNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EFF94D25AC750700D73F55 /* AchievementNotificationCell.swift */; };
 		29F177F92AB85D52008B8F0C /* PetBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F177F82AB85D52008B8F0C /* PetBottomSheetView.swift */; };
 		29F177FB2AB85D66008B8F0C /* StableBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F177FA2AB85D66008B8F0C /* StableBackgroundView.swift */; };
@@ -1115,6 +1117,8 @@
 		29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomizationRepository.swift; sourceTree = "<group>"; };
 		29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomization.swift; sourceTree = "<group>"; };
 		29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Extensions.swift"; sourceTree = "<group>"; };
+		29ED3FEE2C90A68500DD1483 /* BaseSubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSubscriptionViewModel.swift; sourceTree = "<group>"; };
+		29EFE3A42C8B359A005B66C9 /* SubscriptionDetailViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDetailViewUI.swift; sourceTree = "<group>"; };
 		29EFF94D25AC750700D73F55 /* AchievementNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementNotificationCell.swift; sourceTree = "<group>"; };
 		29F177F82AB85D52008B8F0C /* PetBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetBottomSheetView.swift; sourceTree = "<group>"; };
 		29F177FA2AB85D66008B8F0C /* StableBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableBackgroundView.swift; sourceTree = "<group>"; };
@@ -2329,6 +2333,7 @@
 		D984D5871E49F9D9006E84F8 /* Purchases */ = {
 			isa = PBXGroup;
 			children = (
+				29ED3FEE2C90A68500DD1483 /* BaseSubscriptionViewModel.swift */,
 				D984D58A1E4A1F59006E84F8 /* SubscriptionViewController.swift */,
 				2907F99D1F694C4000328AEE /* GemViewController.swift */,
 				296E480721BE86F800D15E4A /* GiftSubscriptionViewController.swift */,
@@ -2337,6 +2342,7 @@
 				2922EE852C888C8500254106 /* SubscriptionDisclaimer.swift */,
 				2922EE832C80774400254106 /* SubscriptionOptionViewUI.swift */,
 				2922EE812C80772A00254106 /* SubscriptionBenefitView.swift */,
+				29EFE3A42C8B359A005B66C9 /* SubscriptionDetailViewUI.swift */,
 			);
 			path = Purchases;
 			sourceTree = "<group>";
@@ -3376,6 +3382,8 @@
 				2919FDDF2091D87A0096A53B /* FaintViewController.swift in Sources */,
 				29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */,
 				29B4788420BD6DED00B6123F /* SkillsUserTableViewController.swift in Sources */,
+				29EFE3A52C8B359A005B66C9 /* SubscriptionDetailViewUI.swift in Sources */,
+				29ED3FEF2C90A68A00DD1483 /* BaseSubscriptionViewModel.swift in Sources */,
 				49E3784F200912BA00E0DA3D /* ResizableTableViewCell.swift in Sources */,
 				29706C9827D66C77006EC139 /* MessagesViewController.swift in Sources */,
 				29A9038826EA33A400442B93 /* FlagInformationOverlayView.swift in Sources */,
@@ -4026,6 +4034,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(inherited)\"",
+				);
+				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -4385,6 +4398,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(inherited)\"",
+				);
+				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -5223,7 +5241,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(inherited)\"",
+				);
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -5274,6 +5297,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(inherited)\"",
+				);
+				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

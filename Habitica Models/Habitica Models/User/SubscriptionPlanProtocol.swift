@@ -70,3 +70,19 @@ public extension SubscriptionPlanProtocol {
         return hourglassPromoReceived == nil
     }
 }
+
+public class PreviewSubscriptionPlan: SubscriptionPlanProtocol {
+    public init() {}
+    public var quantity: Int = 0
+    public var gemsBought: Int = 0
+    public var perkMonthCount: Int = 0
+    public var dateTerminated: Date?
+    public var dateUpdated: Date?
+    public var dateCreated: Date?
+    public var planId: String?
+    public var customerId: String?
+    public var paymentMethod: String?
+    public var consecutive: SubscriptionConsecutiveProtocol?
+    public var mysteryItems: [String] = []
+    public var hourglassPromoReceived: Date?
+}

@@ -68,14 +68,14 @@ struct SubscriptionOptionStack: View {
             },
                                      instantGems: "50",
                                      isSelected: PurchaseHandler.subscriptionIdentifiers[3] == viewModel.selectedSubscription,
-                                     nonSalePrice: "$59.99",
+                                     nonSalePrice: viewModel.twelveMonthNonSalePrice,
                                      gemCapMax: true,
                                      showHourglassPromo: viewModel.showHourglassPromo)
         }
     }
 }
 
-class SubscriptionViewModel: ObservableObject {
+class SubscriptionViewModel: BaseSubscriptionViewModel {
     private let disposable = ScopedDisposable(CompositeDisposable())
 
     let appleValidator: AppleReceiptValidator
@@ -84,14 +84,14 @@ class SubscriptionViewModel: ObservableObject {
     let inventoryRepository = InventoryRepository()
     
     var onSubscriptionSuccessful: (() -> Void)?
+    var onGiftButtonTapped: (() -> Void)?
     
     @Published var presentationPoint: PresentationPoint?
     @Published var isSubscribed: Bool = false
+    @Published var subscriptionPlan: SubscriptionPlanProtocol?
     @Published var showHourglassPromo: Bool = true
-    @Published var prices = [String: String]()
     @Published var mysteryGear: GearProtocol?
     
-    @Published var isSubscribing = false
     @Published var selectedSubscription: String = PurchaseHandler.subscriptionIdentifiers[0]
     @Published var availableSubscriptions = PurchaseHandler.subscriptionIdentifiers
     
@@ -102,6 +102,8 @@ class SubscriptionViewModel: ObservableObject {
             appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
         #endif
         self.presentationPoint = presentationPoint
+        
+        super.init()
         
         if presentationPoint != nil {
             availableSubscriptions.remove(at: 2)
@@ -124,13 +126,13 @@ class SubscriptionViewModel: ObservableObject {
             var prices = [String: String]()
             for product in result.retrievedProducts {
                 prices[product.productIdentifier] = product.localizedPrice
+                
+                if product.productIdentifier == PurchaseHandler.subscriptionIdentifiers[1] {
+                    self.calculateNonSalePrice(product.price, locale: product.priceLocale)
+                }
             }
             self.prices = prices
         }
-    }
-    
-    func priceFor(_ identifier: String) -> String {
-        return prices[identifier] ?? ""
     }
     
     func subscribeTapped() {
@@ -255,12 +257,16 @@ struct SubscriptionBenefitListView: View {
 }
 
 struct GiftSubscriptionSegment: View {
+    let viewModel: SubscriptionViewModel
+    
     var body: some View {
         VStack(spacing: 14) {
             Image(Asset.giftSubGift.name)
             Text(L10n.subscriptionGiftExplanation).multilineTextAlignment(.center)
             HabiticaButtonUI(label: Text(L10n.subscriptionGiftButton), color: .purple200, size: .compact) {
-                RouterHandler.shared.handle(.giftSubscription)
+                if let action = viewModel.onGiftButtonTapped {
+                    action()
+                }
             }
         }
     }
@@ -336,15 +342,42 @@ struct SubscriptionPage: View {
                         .italic()
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 32)
-                    GiftSubscriptionSegment()
+                    GiftSubscriptionSegment(viewModel: viewModel)
                         .padding(.horizontal, 24)
                         .padding(.vertical, 30)
                     Image(Asset.subscriptionBackground.name)
                     SubscriptionDisclaimer()
                 } else {
+                    Image(uiImage: HabiticaIcons.imageOfHeartLarge)
+                        .padding(.top, 22)
+                        .padding(.bottom, 3)
+                    Text(L10n.Subscription.thanksForSubscribing)
+                        .font(.system(size: 17, weight: .semibold))
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 24)
+                    if let plan = viewModel.subscriptionPlan {
+                        SubscriptionDetailViewUI(plan: plan)
+                            .padding(.vertical, 10)
+                            .padding(.horizontal, 24)
+                    }
+                    Text(L10n.Subscription.subscribersReceive)
+                        .font(.system(size: 13))
+                        .italic()
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 32)
+                    GiftSubscriptionSegment(viewModel: viewModel)
+                        .padding(.vertical, 26)
+                        .padding(.horizontal, 24)
+                    SubscriptionSeparator()
+                        .padding(.horizontal, 24)
+                    SubscriptionBenefitListView(presentationPoint: viewModel.presentationPoint, mysteryGear: viewModel.mysteryGear)
+                        .padding(.horizontal, 24)
+                    Text(L10n.Subscription.enjoyTheseBenefits)
+                        .font(.system(size: 17, weight: .semibold))
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 32)
+                    
                     Image(Asset.subscriptionBackground.name)
-                        .padding(.bottom, 20)
-                        .background(.purple400)
                 }
             }
             .foregroundColor(textColor)
@@ -413,8 +446,20 @@ class SubscriptionModalViewController: HostingPanModal<SubscriptionPage> {
         
         userRepository.getUser().on(value: {[weak self] user in
             self?.viewModel.isSubscribed = user.isSubscribed
+            self?.viewModel.subscriptionPlan = user.purchased?.subscriptionPlan
             self?.viewModel.showHourglassPromo = user.purchased?.subscriptionPlan?.isEligableForHourglassPromo == true
         }).start()
+        
+        viewModel.onGiftButtonTapped = {[weak self] in
+            self?.giftSubscriptionButtonTapped()
+        }
+    }
+    
+    func giftSubscriptionButtonTapped() {
+        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
+            RouterHandler.shared.handle(.giftSubscription(username: username))
+        }, saveButtonTitle: L10n.continue)
+        present(navController, animated: true, completion: nil)
     }
 }
 
@@ -459,7 +504,21 @@ class SubscriptionPageController: UIHostingController<ScrollableSubscriptionPage
         
         userRepository.getUser().on(value: {[weak self] user in
             self?.viewModel.isSubscribed = user.isSubscribed
+            self?.viewModel.subscriptionPlan = user.purchased?.subscriptionPlan
             self?.viewModel.showHourglassPromo = user.purchased?.subscriptionPlan?.isEligableForHourglassPromo == true
         }).start()
+        
+        viewModel.onGiftButtonTapped = {[weak self] in
+            self?.giftSubscriptionButtonTapped()
+        }
+    }
+    
+    func giftSubscriptionButtonTapped() {
+        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                RouterHandler.shared.handle(.giftSubscription(username: username))
+            })
+        }, saveButtonTitle: L10n.continue)
+        present(navController, animated: true, completion: nil)
     }
 }

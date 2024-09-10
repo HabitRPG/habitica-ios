@@ -204,6 +204,8 @@ public enum L10n {
   public static var confirmUsername: String { return L10n.tr("Mainstrings", "confirm_username") }
   /// Continue
   public static var `continue`: String { return L10n.tr("Mainstrings", "continue") }
+  /// Continue Benefits
+  public static var continueBenefits: String { return L10n.tr("Mainstrings", "continue_benefits") }
   /// Controls
   public static var controls: String { return L10n.tr("Mainstrings", "controls") }
   /// Copied Message
@@ -940,9 +942,9 @@ public enum L10n {
   public static var remove: String { return L10n.tr("Mainstrings", "remove") }
   /// Renew Subscription
   public static var renewSubscription: String { return L10n.tr("Mainstrings", "renew_subscription") }
-  /// Want to continue your benefits? You can start a new subscription before this one runs out to keep your benefits active.
+  /// Want to continue receiving subscription benefits? You can restart your subscription by going to the Settings app and viewing your Apple ID subscriptions.
   public static var renewSubscriptionDescription: String { return L10n.tr("Mainstrings", "renew_subscription_description") }
-  /// Want to continue your benefits? You can start a new subscription before your gifted one runs out to keep your benefits active.
+  /// Want to continue receiving subscription benefits? You can start a recurring subscription by going to the Settings app and viewing your Apple ID subscriptions.
   public static var renewSubscriptionGiftedDescription: String { return L10n.tr("Mainstrings", "renew_subscription_gifted_description") }
   /// Repeat Password
   public static var repeatPassword: String { return L10n.tr("Mainstrings", "repeat_password") }
@@ -1214,7 +1216,7 @@ public enum L10n {
   public static var unshadowMuteUserConfirm: String { return L10n.tr("Mainstrings", "unshadow_mute_user_confirm") }
   /// No longer want to subscribe? Due to your payment method, you can only unsubscribe through the Google Play Store.
   public static var unsubscribeGoogle: String { return L10n.tr("Mainstrings", "unsubscribe_google") }
-  /// No longer want to subscribe? You can manage your subscription through your Apple ID in your device's Settings.
+  /// No longer want to subscribe? You can find the option to unsubscribe by going to the Settings app and viewing your Apple ID subscriptions
   public static var unsubscribeItunes: String { return L10n.tr("Mainstrings", "unsubscribe_itunes") }
   /// No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.
   public static var unsubscribeWebsite: String { return L10n.tr("Mainstrings", "unsubscribe_website") }
@@ -2735,10 +2737,14 @@ public enum L10n {
   public enum Subscription {
     /// Subscribers get extra chances at the Armoire and these other benefits!
     public static var armoreHeader: String { return L10n.tr("Mainstrings", "subscription.armore_header") }
+    /// Enjoy all these exclusive benefits with your subscription
+    public static var enjoyTheseBenefits: String { return L10n.tr("Mainstrings", "subscription.enjoy_these_benefits") }
     /// Subscribers get a second chance at life each day and these other benefits!
     public static var faintHeader: String { return L10n.tr("Mainstrings", "subscription.faint_header") }
     /// Subscribe to buy Gems with Gold and receive these other exclusive benefits!
     public static var gemForGoldHeader: String { return L10n.tr("Mainstrings", "subscription.gem_for_gold_header") }
+    /// Gifted
+    public static var gifted: String { return L10n.tr("Mainstrings", "subscription.gifted") }
     /// Subscribers get Mystic Hourglasses to buy items in the Time Travelers Shop and these other exclusive benefits!
     public static var hourglassesHeader: String { return L10n.tr("Mainstrings", "subscription.hourglasses_header") }
     /// Get two chances to score new equipment each time you open the Enchanted Armoire!
@@ -2749,8 +2755,22 @@ public enum L10n {
     public static var infoFaintDescription: String { return L10n.tr("Mainstrings", "subscription.info_faint_description") }
     /// Get a Second Chance
     public static var infoFaintTitle: String { return L10n.tr("Mainstrings", "subscription.info_faint_title") }
+    /// Monthly Gems
+    public static var monthlyGems: String { return L10n.tr("Mainstrings", "subscription.monthly_gems") }
+    /// Months Subscribed
+    public static var monthsSubscribed: String { return L10n.tr("Mainstrings", "subscription.months_subscribed") }
+    /// Next Hourglass delivery
+    public static var nextHourglassDelivery: String { return L10n.tr("Mainstrings", "subscription.next_hourglass_delivery") }
+    /// Payment Method
+    public static var paymentMethod: String { return L10n.tr("Mainstrings", "subscription.payment_method") }
     /// Stay motivated with even more rewards when you subscribe
     public static var stayMotivatedWithMoreRewards: String { return L10n.tr("Mainstrings", "subscription.stay_motivated_with_more_rewards") }
+    /// Subscribe again to continue receiving Mystic Hourglasses
+    public static var subscribeAgainHourglasses: String { return L10n.tr("Mainstrings", "subscription.subscribe_again_hourglasses") }
+    /// Subscribers receive a Mystic Hourglass, a Mystery Gear Set, and Gems restocked in the Market within the first two days of the month
+    public static var subscribersReceive: String { return L10n.tr("Mainstrings", "subscription.subscribers_receive") }
+    /// Thanks for subscribing
+    public static var thanksForSubscribing: String { return L10n.tr("Mainstrings", "subscription.thanks_for_subscribing") }
   }
 
   public enum Support {
