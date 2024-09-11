@@ -300,6 +300,36 @@ struct SubscriptionPage: View {
                         .padding(.horizontal, 24)
                     SubscriptionSeparator()
                         .padding(.horizontal, 24)
+                    if (viewModel.subscriptionPlan?.consecutive?.gemCapExtra ?? 0) > 0 {
+                        VStack(spacing: 0) {
+                            HStack(spacing: 10) {
+                                Image(Asset.gemcapLeft.name)
+                                Text(L10n.xxGemCap(viewModel.subscriptionPlan?.gemCapTotal ?? 0, 50))
+                                    .font(.system(size: 20, weight: .bold))
+                                Image(Asset.gemcapRight.name)
+                            }
+                            Text(L10n.resubscribeToPickUp).font(.system(size: 13))
+                            if #available(iOS 15.0, *) {
+                                GeometryReader { reader in
+                                    ZStack(alignment: .leading) {
+                                        Rectangle()
+                                            .foregroundColor(.purple100)
+                                            .fill()
+                                            .cornerRadius(4)
+                                            .frame(maxWidth: .infinity)
+                                            .frame(height: 8)
+                                            Rectangle()
+                                                .foregroundColor(.green100)
+                                                .fill()
+                                                .cornerRadius(4)
+                                                .frame(width: reader.size.width * (CGFloat(viewModel.subscriptionPlan?.gemCapTotal ?? 0) / 50.0), height: 8)
+                                    }
+                                }
+                                .padding(.top, 8)
+                                .padding(.horizontal, 41)
+                            }
+                        }.padding(.bottom, 24)
+                    }
                     SubscriptionBenefitListView(presentationPoint: viewModel.presentationPoint, mysteryGear: viewModel.mysteryGear)
                         .padding(.horizontal, 24)
                     ZStack(alignment: .top) {
@@ -317,6 +347,8 @@ struct SubscriptionPage: View {
                                     }
                             }
                         }
+                        .padding(.horizontal, 24)
+                        .padding(.bottom, 24)
                         Rectangle()
                             .frame(height: viewModel.showHourglassPromo && viewModel.selectedSubscription == viewModel.availableSubscriptions.last ? 186 : 126)
                             .cornerRadius(12)

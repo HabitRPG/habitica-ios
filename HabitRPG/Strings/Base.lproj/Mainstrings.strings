@@ -1402,3 +1402,5 @@
 "got_it" = "Got it!";
 "open_stats" = "Open Stats";
 "continue_benefits" = "Continue Benefits";
+"x_x_gem_cap" = "%d / %d Gem Cap";
+"resubscribe_to_pick_up" = "Resubscribe to pick up where you left off!";

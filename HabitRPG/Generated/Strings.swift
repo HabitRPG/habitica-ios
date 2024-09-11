@@ -974,6 +974,8 @@ public enum L10n {
   public static var resetStreak: String { return L10n.tr("Mainstrings", "resetStreak") }
   /// Resubscribe
   public static var resubscribe: String { return L10n.tr("Mainstrings", "resubscribe") }
+  /// Resubscribe to pick up where you left off!
+  public static var resubscribeToPickUp: String { return L10n.tr("Mainstrings", "resubscribe_to_pick_up") }
   /// Resume Damage
   public static var resumeDamage: String { return L10n.tr("Mainstrings", "resume_damage") }
   /// Resync
@@ -1339,6 +1341,10 @@ public enum L10n {
   /// %@ to %@
   public static func xToY(_ p1: String, _ p2: String) -> String {
     return L10n.tr("Mainstrings", "x_to_y", p1, p2)
+  }
+  /// %d/%d Gem Cap
+  public static func xxGemCap(_ p1: Int, _ p2: Int) -> String {
+    return L10n.tr("Mainstrings", "x_x_gem_cap", p1, p2)
   }
   /// year
   public static var year: String { return L10n.tr("Mainstrings", "year") }

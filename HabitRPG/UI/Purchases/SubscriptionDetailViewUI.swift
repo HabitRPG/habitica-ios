@@ -192,7 +192,7 @@ struct SubscriptionDetailViewUI: View {
                         HStack(spacing: 4) {
                             Image(Asset.calendarLarge.name)
                             Text("\(plan.consecutive?.count ?? 0)")
-                                .font(.system(size: 22, weight: .medium))
+                                .font(.system(size: 22, weight: .bold))
                         }
                         Text(L10n.Subscription.monthsSubscribed)
                             .font(.system(size: 13, weight: .semibold))
@@ -203,10 +203,10 @@ struct SubscriptionDetailViewUI: View {
                         HStack(spacing: 4) {
                             Image(Asset.bigGem.name)
                             Text("\(plan.gemCapTotal)")
-                                .font(.system(size: 22, weight: .semibold))
+                                .font(.system(size: 22, weight: .bold))
                         }
                         Text(L10n.Subscription.monthlyGems)
-                            .font(.system(size: 13, weight: .medium))
+                            .font(.system(size: 13, weight: .semibold))
                     }
                 }
             }
@@ -217,7 +217,7 @@ struct SubscriptionDetailViewUI: View {
                         VStack {
                             if let date = nextHourglassDate {
                                 Text(date, formatter: monthFormatter)
-                                    .font(.system(size: 22, weight: .semibold))
+                                    .font(.system(size: 22, weight: .bold))
                             }
                             Text(L10n.Subscription.nextHourglassDelivery)
                                 .font(.system(size: 13, weight: .semibold))
