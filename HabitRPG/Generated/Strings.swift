@@ -462,6 +462,10 @@ public enum L10n {
   public static var giftOneGetOne: String { return L10n.tr("Mainstrings", "gift_one_get_one") }
   /// Gift a subscription now and you’ll get the same sub for yourself free!
   public static var giftOneGetOneDescription: String { return L10n.tr("Mainstrings", "gift_one_get_one_description") }
+  /// Gift a sub and get a sub for free until %@
+  public static func giftOneGetOneDescriptionDate(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "gift_one_get_one_description_date", p1)
+  }
   /// Gift One, Get One Event
   public static var giftOneGetOneEvent: String { return L10n.tr("Mainstrings", "gift_one_get_one_event") }
   /// Gift One, Get One
@@ -1342,7 +1346,7 @@ public enum L10n {
   public static func xToY(_ p1: String, _ p2: String) -> String {
     return L10n.tr("Mainstrings", "x_to_y", p1, p2)
   }
-  /// %d/%d Gem Cap
+  /// %d / %d Gem Cap
   public static func xxGemCap(_ p1: Int, _ p2: Int) -> String {
     return L10n.tr("Mainstrings", "x_x_gem_cap", p1, p2)
   }

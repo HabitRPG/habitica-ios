@@ -82,6 +82,7 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
     let itunesSharedSecret = Secrets.itunesSharedSecret
     let userRepository = UserRepository()
     let inventoryRepository = InventoryRepository()
+    let configRepository = ConfigRepository.shared
     
     var onSubscriptionSuccessful: (() -> Void)?
     var onGiftButtonTapped: (() -> Void)?
@@ -94,6 +95,8 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
     
     @Published var selectedSubscription: String = PurchaseHandler.subscriptionIdentifiers[0]
     @Published var availableSubscriptions = PurchaseHandler.subscriptionIdentifiers
+    
+    @Published var activePromo: HabiticaPromotion?
     
     init(presentationPoint: PresentationPoint?) {
         #if DEBUG
@@ -119,6 +122,8 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
         }).start())
         
         retrieveProductList()
+        
+        activePromo = configRepository.activePromotion()
     }
     
     func retrieveProductList() {
@@ -280,6 +285,9 @@ struct SubscriptionPage: View {
     
     var body: some View {
             LazyVStack(spacing: 0) {
+                if let endDate = viewModel.activePromo?.endDate, viewModel.activePromo?.identifier == "g1g1" {
+                    G1G1Banner(endDate: endDate)
+                }
                 if let point = viewModel.presentationPoint {
                     Text(point.headerText)
                         .multilineTextAlignment(.center)
@@ -498,7 +506,7 @@ class SubscriptionModalViewController: HostingPanModal<SubscriptionPage> {
 class SubscriptionPageController: UIHostingController<ScrollableSubscriptionPage> {
     let viewModel: SubscriptionViewModel
     let userRepository = UserRepository()
-    
+
     init(presentationPoint: PresentationPoint?) {
         viewModel = SubscriptionViewModel(presentationPoint: presentationPoint)
         super.init(rootView: ScrollableSubscriptionPage(viewModel: viewModel))

@@ -988,6 +988,7 @@
 "gift_one_get_one_title" = "Gift One, Get One";
 "gift_one_get_one_event" = "Gift One, Get One Event";
 "gift_one_get_one_description" = "Gift a subscription now and you’ll get the same sub for yourself free!";
+"gift_one_get_one_description_date" = "Gift a sub and get a sub for free until %@";
 "gems_support_developers" = "Purchasing Gems supports our small team and helps keep Habitica running";
 "gem_benefits_title" = "Gems allow you to buy fun extras for your account, including:";
 "unpin" = "Unpin";

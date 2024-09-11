@@ -239,6 +239,9 @@
 		296CB4EE218C99FD0044A33E /* HabiticaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CB4ED218C99FD0044A33E /* HabiticaButton.swift */; };
 		296D6F1D20A0908B00D9CAB5 /* PartyQuestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296D6F1C20A0908B00D9CAB5 /* PartyQuestView.swift */; };
 		296E480821BE86F800D15E4A /* GiftSubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296E480721BE86F800D15E4A /* GiftSubscriptionViewController.swift */; };
+		296E4F0D2C91A05A00D9CBDE /* G1G1Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296E4F0C2C91A05A00D9CBDE /* G1G1Banner.swift */; };
+		296E4F0F2C91A6A800D9CBDE /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 296E4F0E2C91A6A800D9CBDE /* Habitica_Models.framework */; };
+		296E4F102C91A6A800D9CBDE /* Habitica_Models.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 296E4F0E2C91A6A800D9CBDE /* Habitica_Models.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		296F51642358E5EF0019C872 /* SubscriptionPromoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296F51632358E5EF0019C872 /* SubscriptionPromoView.swift */; };
 		29701FE01F560D310097BBCC /* UIApplication-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */; };
 		29701FE21F5617900097BBCC /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29701FE11F5617900097BBCC /* ToastView.xib */; };
@@ -680,6 +683,17 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		296E4F112C91A6A800D9CBDE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				296E4F102C91A6A800D9CBDE /* Habitica_Models.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A84E1B0228928AD0081E96F /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -907,6 +921,8 @@
 		296D6F1C20A0908B00D9CAB5 /* PartyQuestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyQuestView.swift; sourceTree = "<group>"; };
 		296E0E6520F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		296E480721BE86F800D15E4A /* GiftSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftSubscriptionViewController.swift; sourceTree = "<group>"; };
+		296E4F0C2C91A05A00D9CBDE /* G1G1Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = G1G1Banner.swift; sourceTree = "<group>"; };
+		296E4F0E2C91A6A800D9CBDE /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		296F51632358E5EF0019C872 /* SubscriptionPromoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPromoView.swift; sourceTree = "<group>"; };
 		29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication-Extensions.swift"; sourceTree = "<group>"; };
 		29701FE11F5617900097BBCC /* ToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
@@ -1349,6 +1365,7 @@
 				2994A8B128FE946A00CEDED7 /* Habitica_Database.framework in Frameworks */,
 				29252C382AF4FB330003692D /* Habitica_API_Client.framework in Frameworks */,
 				29BEE62F252CCFE100D456F8 /* SwiftUI.framework in Frameworks */,
+				296E4F0F2C91A6A800D9CBDE /* Habitica_Models.framework in Frameworks */,
 				2938ED3E28B4EEB200E995A2 /* KeychainAccess in Frameworks */,
 				29BEE62D252CCFE100D456F8 /* WidgetKit.framework in Frameworks */,
 			);
@@ -2343,6 +2360,7 @@
 				2922EE832C80774400254106 /* SubscriptionOptionViewUI.swift */,
 				2922EE812C80772A00254106 /* SubscriptionBenefitView.swift */,
 				29EFE3A42C8B359A005B66C9 /* SubscriptionDetailViewUI.swift */,
+				296E4F0C2C91A05A00D9CBDE /* G1G1Banner.swift */,
 			);
 			path = Purchases;
 			sourceTree = "<group>";
@@ -2652,6 +2670,7 @@
 		D9EB4E8D18CB4A9400BB2094 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				296E4F0E2C91A6A800D9CBDE /* Habitica_Models.framework */,
 				29252C372AF4FB330003692D /* Habitica_API_Client.framework */,
 				29995A6026CBCB0B0063D4C9 /* AdServices.framework */,
 				292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */,
@@ -2767,6 +2786,7 @@
 				29BEE627252CCFE100D456F8 /* Sources */,
 				29BEE628252CCFE100D456F8 /* Frameworks */,
 				29BEE629252CCFE100D456F8 /* Resources */,
+				296E4F112C91A6A800D9CBDE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3664,6 +3684,7 @@
 				297D15FA20B803D30048101F /* UserProfileViewController.swift in Sources */,
 				D9525F9B1E5F559600C529B8 /* ChallengeTableViewCell.swift in Sources */,
 				D9A63A341E10328A0083ADC4 /* LoginTableViewController.swift in Sources */,
+				296E4F0D2C91A05A00D9CBDE /* G1G1Banner.swift in Sources */,
 				299328AB24E5985B003BCE0C /* UIStackview-Extensions.swift in Sources */,
 				D9BB455D1E71C8C70002AE2E /* CheckedTableViewcell.swift in Sources */,
 				292DEEA5204F6F6C0086D5F7 /* DailyTableViewDataSource.swift in Sources */,
