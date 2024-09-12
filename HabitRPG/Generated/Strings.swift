@@ -976,6 +976,8 @@ public enum L10n {
   public static var resetTips: String { return L10n.tr("Mainstrings", "reset_tips") }
   /// Reset Streak
   public static var resetStreak: String { return L10n.tr("Mainstrings", "resetStreak") }
+  /// Restore Purchase
+  public static var restorePurchase: String { return L10n.tr("Mainstrings", "restore_purchase") }
   /// Resubscribe
   public static var resubscribe: String { return L10n.tr("Mainstrings", "resubscribe") }
   /// Resubscribe to pick up where you left off!

@@ -27,7 +27,7 @@ struct SubscriptionBenefitView<Icon: View, Title: View, Description: View>: View
                 .cornerRadius(8)
             VStack(alignment: .leading, spacing: 4) {
                 title.font(.system(size: 15, weight: .semibold))
-                description.font(.system(size: 13))
+                description.font(.system(size: 13)).lineSpacing(3)
             }.frame(maxWidth: .infinity, alignment: .leading)
         }.padding(.leading, 12)
             .padding(.vertical, 8)

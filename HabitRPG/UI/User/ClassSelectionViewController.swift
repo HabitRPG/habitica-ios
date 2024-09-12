@@ -226,6 +226,14 @@ class ClassSelectionViewController: UIViewController, Themeable {
     
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         UserManager.shared.classSelectionViewController = nil
-        super.dismiss(animated: flag, completion: completion)
+        if !isPresenting {
+            super.dismiss(animated: flag, completion: completion)
+        } else if let presented = presentedViewController as? HabiticaAlertController {
+            presented.onDismissAction = {[weak self] in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                    self?.dismiss(animated: true)
+                })
+            }
+        }
     }
 }

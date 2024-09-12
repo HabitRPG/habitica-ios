@@ -124,6 +124,8 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
         retrieveProductList()
         
         activePromo = configRepository.activePromotion()
+        
+        activePromo = GiftOneGetOnePromotion(startDate: nil, endDate: Date())
     }
     
     func retrieveProductList() {
@@ -225,6 +227,30 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
             }
         }
     }
+    
+    func checkForExistingSubscription() {
+        SwiftyStoreKit.verifyReceipt(using: self.appleValidator, forceRefresh: true) { result in
+            switch result {
+            case .success(let verifiedReceipt):
+                guard let purchases = verifiedReceipt["latest_receipt_info"] as? [ReceiptInfo] else {
+                    return
+                }
+                for purchase in purchases {
+                    if let identifier = purchase["product_id"] as? String {
+                        if self.isValidSubscription(identifier, receipt: verifiedReceipt) {
+                            self.activateSubscription(identifier, receipt: verifiedReceipt) {status in
+                                if status {
+                                    return
+                                }
+                            }
+                        }
+                    }
+                }
+            case .error(let error):
+                logger.log("Receipt verification failed: \(error)", level: .error)
+            }
+        }
+    }
 }
 
 struct SubscriptionSeparator: View {
@@ -287,6 +313,10 @@ struct SubscriptionPage: View {
             LazyVStack(spacing: 0) {
                 if let endDate = viewModel.activePromo?.endDate, viewModel.activePromo?.identifier == "g1g1" {
                     G1G1Banner(endDate: endDate)
+                        .frame(height: 96)
+                        .cornerRadius(8)
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 30)
                 }
                 if let point = viewModel.presentationPoint {
                     Text(point.headerText)
@@ -309,7 +339,7 @@ struct SubscriptionPage: View {
                     SubscriptionSeparator()
                         .padding(.horizontal, 24)
                     if (viewModel.subscriptionPlan?.consecutive?.gemCapExtra ?? 0) > 0 {
-                        VStack(spacing: 0) {
+                        VStack(spacing: 1) {
                             HStack(spacing: 10) {
                                 Image(Asset.gemcapLeft.name)
                                 Text(L10n.xxGemCap(viewModel.subscriptionPlan?.gemCapTotal ?? 0, 50))
@@ -355,7 +385,6 @@ struct SubscriptionPage: View {
                                     }
                             }
                         }
-                        .padding(.horizontal, 24)
                         .padding(.bottom, 24)
                         Rectangle()
                             .frame(height: viewModel.showHourglassPromo && viewModel.selectedSubscription == viewModel.availableSubscriptions.last ? 186 : 126)
@@ -416,6 +445,13 @@ struct SubscriptionPage: View {
                         .font(.system(size: 17, weight: .semibold))
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 32)
+                    
+                    if !viewModel.isSubscribed {
+                        Button(L10n.restorePurchase) {
+                            viewModel.checkForExistingSubscription()
+                        }.buttonStyle(.borderless)
+                            .accentColor(.yellow100)
+                    }
                     
                     Image(Asset.subscriptionBackground.name)
                 }

@@ -37,8 +37,10 @@ class HabiticaAlertController: UIViewController, Themeable {
     var buttonAxis: NSLayoutConstraint.Axis?
     var dismissOnBackgroundTap = true
     var maxAlertWidth: CGFloat = 340
+    
     var onKeyboardChange: ((Bool) -> Void)?
-
+    var onDismissAction: (() -> Void)?
+    
     var contentView: UIView? {
         didSet {
             configureContentView()
@@ -418,6 +420,9 @@ class HabiticaAlertController: UIViewController, Themeable {
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         super.dismiss(animated: flag, completion: completion)
         HabiticaAlertController.showNextInQueue(currentAlert: self)
+        if let action = onDismissAction {
+            action()
+        }
     }
     
     @objc
