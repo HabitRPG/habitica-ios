@@ -180,7 +180,9 @@ class QuestDetailViewController: BaseUIViewController {
         }
         
         if group.quest?.leaderID != userRepository.currentUserId {
-            leaveButton.isHidden = hideRSVPButtons
+            leaveButton.isHidden = !(isQuestActive && participants.contains(where: { participant in
+                return participant.userID == userRepository.currentUserId
+            }))
         } else {
             leaveButton.isHidden = true
         }
