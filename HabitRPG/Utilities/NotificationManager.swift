@@ -157,7 +157,7 @@ class NotificationManager {
     
     static func displayLoginIncentive(notification: NotificationProtocol) -> Bool {
         guard let loginIncentiveNotification = notification as? NotificationLoginIncentiveProtocol else {
-            return false
+            return true
         }
         let nextRewardAt = loginIncentiveNotification.nextRewardAt
         userRepository.retrieveUser().observeValues { user in

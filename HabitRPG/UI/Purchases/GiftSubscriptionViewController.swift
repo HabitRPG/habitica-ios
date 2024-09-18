@@ -225,7 +225,7 @@ class GiftSubscriptionViewController: UIHostingController<GiftSubscriptionPage> 
         let alertController = HabiticaAlertController(title: L10n.giftConfirmationTitle, message: body)
         alertController.addCloseAction { _ in
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
-                self.performSegue(withIdentifier: "unwindToList", sender: self)
+                self.dismiss()
             }
         }
         alertController.show()

@@ -180,7 +180,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         passwordText = self.prefillPasswordProperty.signal
         passwordRepeatText = self.prefillPasswordRepeatProperty.signal
 
-        showNextViewController = onSuccessfulLoginProperty.signal.combineLatest(with: authTypeProperty.signal)
+        showNextViewController = onSuccessfulLoginProperty.signal.withLatest(from: authTypeProperty.signal)
         .map({ (isNewUser, authType) -> String in
             if authType == .login && !isNewUser {
                 return "MainSegue"

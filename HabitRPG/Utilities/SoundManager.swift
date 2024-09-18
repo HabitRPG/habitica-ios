@@ -151,17 +151,20 @@ class SoundManager {
         if currentTheme == SoundTheme.none {
             return
         }
-        guard let url = soundsDirectory?.appendingPathComponent("\(currentTheme.rawValue)/\(effect.rawValue).mp3") else {
-            return
-        }
-        
-        if !FileManager.default.fileExists(atPath: url.path) {
-            return
-        }
-        
         let queue = DispatchQueue(label: "sound", attributes: .concurrent)
         queue.async {[weak self] in
             do {
+                guard let theme = self?.currentTheme.rawValue else {
+                    return
+                }
+                guard let url = self?.soundsDirectory?.appendingPathComponent("\(theme)/\(effect.rawValue).mp3") else {
+                    return
+                }
+                
+                if !FileManager.default.fileExists(atPath: url.path) {
+                    return
+                }
+                
                 try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
                 try AVAudioSession.sharedInstance().setActive(true)
                 self?.player = try? AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
