@@ -55,15 +55,18 @@ struct GiftSubscriptionPage: View {
                         SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.noRenewSubscriptionIdentifiers[0])),
                                                  recurring: Text(viewModel.titleFor(PurchaseHandler.noRenewSubscriptionIdentifiers[0])),
                                                  instantGems: "24",
-                                                 isSelected: PurchaseHandler.noRenewSubscriptionIdentifiers[0] == viewModel.selectedSubscription)
+                                                 isSelected: PurchaseHandler.noRenewSubscriptionIdentifiers[0] == viewModel.selectedSubscription,
+                                                 isGift: true)
                         SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.noRenewSubscriptionIdentifiers[1])),
                                                  recurring: Text(viewModel.titleFor(PurchaseHandler.noRenewSubscriptionIdentifiers[1])),
                                                  instantGems: "24",
-                                                 isSelected: PurchaseHandler.noRenewSubscriptionIdentifiers[1] == viewModel.selectedSubscription)
+                                                 isSelected: PurchaseHandler.noRenewSubscriptionIdentifiers[1] == viewModel.selectedSubscription,
+                                                 isGift: true)
                         SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.noRenewSubscriptionIdentifiers[2])),
                                                  recurring: Text(viewModel.titleFor(PurchaseHandler.noRenewSubscriptionIdentifiers[2])),
                                                  instantGems: "24",
-                                                 isSelected: PurchaseHandler.noRenewSubscriptionIdentifiers[2] == viewModel.selectedSubscription)
+                                                 isSelected: PurchaseHandler.noRenewSubscriptionIdentifiers[2] == viewModel.selectedSubscription,
+                                                 isGift: true)
                         SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.noRenewSubscriptionIdentifiers[3])), recurring: Text(viewModel.titleFor(PurchaseHandler.noRenewSubscriptionIdentifiers[3])),
                                                  tag: HStack(spacing: 0) {
                             Image(uiImage: Asset.flagFlap.image.withRenderingMode(.alwaysTemplate)).foregroundColor(Color(hexadecimal: "77F4C7"))
@@ -76,7 +79,7 @@ struct GiftSubscriptionPage: View {
                                 ], startPoint: .leading, endPoint: .trailing))
                         },
                                                  instantGems: "50",
-                                                 isSelected: PurchaseHandler.noRenewSubscriptionIdentifiers[3] == viewModel.selectedSubscription,
+                                                 isGift: true, isSelected: PurchaseHandler.noRenewSubscriptionIdentifiers[3] == viewModel.selectedSubscription,
                                                  nonSalePrice: viewModel.twelveMonthNonSalePrice,
                                                  gemCapMax: true,
                                                  showHourglassPromo: false)

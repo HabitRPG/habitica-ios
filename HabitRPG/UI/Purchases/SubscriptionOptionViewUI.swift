@@ -15,7 +15,7 @@ struct HourglassPromo: View {
         return Group {
             Text("Get ") +
             Text("12 Mystic Hourglasses").fontWeight(.bold) +
-            Text("immediately after your first 12 month subscription!")
+            Text(" immediately after your first 12 month subscription!")
         }
         .font(.system(size: 15, weight: .medium))
         .foregroundColor(.teal1)
@@ -48,11 +48,14 @@ struct SubscriptionOptionViewUI<Price: View, Recurring: View, Tag: View>: View {
     let recurring: Recurring
     let tag: Tag
     let instantGems: String
+    var isGift = false
     
     var isSelected: Bool
     var nonSalePrice: String?
     var gemCapMax = false
     var showHourglassPromo = false
+    
+    @State var isVisible = false
     
     var selectedColor: Color {
         return nonSalePrice != nil ? Color.teal1 : .purple300
@@ -95,7 +98,7 @@ struct SubscriptionOptionViewUI<Price: View, Recurring: View, Tag: View>: View {
                         HStack(spacing: 8) {
                             Image(Asset.plus.name).renderingMode(.template).foregroundColor(isSelected ? Color.yellow100 : .purple400)
                             Group {
-                                Text("Unlock ") +
+                                Text(isGift ? "Unlocks " : "Unlock ") +
                                 Text("\(instantGems) Gems").fontWeight(.bold).foregroundColor(isSelected ? Color.yellow5 : .white) +
                                 Text(" per month instantly")
                             }.multilineTextAlignment(.leading)
@@ -110,9 +113,9 @@ struct SubscriptionOptionViewUI<Price: View, Recurring: View, Tag: View>: View {
                                 }.multilineTextAlignment(.leading)
                             } else {
                                 Group {
-                                    Text("Earn ") +
+                                    Text(isGift ? "Earns" : "Earn ") +
                                     Text("+2 Gems").fontWeight(.bold).foregroundColor(isSelected ? Color.yellow5 : .white) +
-                                    Text(" every month you're subscribed")
+                                    Text(isGift ? " every month they're subscribed" : " every month you're subscribed")
                                 }.multilineTextAlignment(.leading)
                             }
                         }.font(.caption)
@@ -129,8 +132,10 @@ struct SubscriptionOptionViewUI<Price: View, Recurring: View, Tag: View>: View {
                 tag.offset(y: 16)
             }
             .frame(height: showHourglassPromo ? 186 : 126)
-            if isSelected {
+            .zIndex(1)
+            if isSelected && isVisible {
                 Image(Asset.subscriptionSelectionIndicator.name)
+                    .zIndex(300)
                     .frame(width: 40, height: 40)
                     .animation(.snappy(duration: 0.2).delay(0.5))
                     .asymmetricTransition(insertion: .slide, removal: .opacity.animation(.easeInOut(duration: 0.15)))
@@ -140,12 +145,17 @@ struct SubscriptionOptionViewUI<Price: View, Recurring: View, Tag: View>: View {
         .cornerRadius(12)
         .foregroundColor(isSelected ? selectedColor : Color.purple600)
         .padding(.vertical, 4)
+        .onAppear {
+            withAnimation {
+                isVisible = true
+            }
+        }
     }
 }
 
 extension SubscriptionOptionViewUI where Tag == EmptyView {
-    init(price: Price, recurring: Recurring, instantGems: String, isSelected: Bool) {
-        self.init(price: price, recurring: recurring, tag: EmptyView(), instantGems: instantGems, isSelected: isSelected)
+    init(price: Price, recurring: Recurring, instantGems: String, isSelected: Bool, isGift: Bool = false) {
+        self.init(price: price, recurring: recurring, tag: EmptyView(), instantGems: instantGems, isGift: isGift, isSelected: isSelected)
     }
 }
 

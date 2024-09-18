@@ -3428,13 +3428,12 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Xg0-Ur-YWK">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="wW2-hb-dip" kind="unwind" unwindAction="unwindToList:" id="Bwo-Ow-e2l"/>
+                                <action selector="cancelButtonTapped:" destination="QrZ-zf-ehm" id="8MG-sb-kbc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </hostingController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cl-Ci-XdC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="wW2-hb-dip" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2804" y="10418"/>
         </scene>

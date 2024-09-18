@@ -1082,7 +1082,7 @@ public enum L10n {
   public static var subscriptionGiftButton: String { return L10n.tr("Mainstrings", "subscription_gift_button") }
   /// Want to give the benefits of a subscription to someone else?
   public static var subscriptionGiftExplanation: String { return L10n.tr("Mainstrings", "subscription_gift_explanation") }
-  /// Get up to 50 Gems in the Market to buy Quests, Customizations, Pets, and more!
+  /// Get up to 50 Gold-purchasable Gems in the Market to buy Quests, Customizations, Pets, and more!
   public static var subscriptionInfo1Description: String { return L10n.tr("Mainstrings", "subscription_info_1_description") }
   /// Free Monthly Gems
   public static var subscriptionInfo1Title: String { return L10n.tr("Mainstrings", "subscription_info_1_title") }
@@ -1092,9 +1092,9 @@ public enum L10n {
   public static var subscriptionInfo2Title: String { return L10n.tr("Mainstrings", "subscription_info_2_title") }
   /// Subscribe now to get an exclusive set now and receive new items every month!
   public static var subscriptionInfo3Description: String { return L10n.tr("Mainstrings", "subscription_info_3_description") }
-  /// Stay decked out in the latest exclusive gear. Subscribe now to get %s!
-  public static func subscriptionInfo3DescriptionNew(_ p1: UnsafePointer<CChar>) -> String {
-    return L10n.tr("Mainstrings", "subscription_info_3_description_new", p1)
+  /// Stay decked out in the latest exclusive gear. Subscribe now to get %@’s %@!
+  public static func subscriptionInfo3DescriptionGear(_ p1: String, _ p2: String) -> String {
+    return L10n.tr("Mainstrings", "subscription_info_3_description_gear", p1, p2)
   }
   /// Limited Monthly Gear Sets
   public static var subscriptionInfo3Title: String { return L10n.tr("Mainstrings", "subscription_info_3_title") }
@@ -1108,7 +1108,7 @@ public enum L10n {
   public static var subscriptionPromoDescription: String { return L10n.tr("Mainstrings", "subscription_promo_description") }
   /// Need Gems?
   public static var subscriptionPromoTitle: String { return L10n.tr("Mainstrings", "subscription_promo_title") }
-  /// Subscribing supports our small team and helps keep Habitica running, thank you!
+  /// Subscribing supports our small team and helps keep Habitica running
   public static var subscriptionSupportDevelopers: String { return L10n.tr("Mainstrings", "subscription_support_developers") }
   /// success
   public static var success: String { return L10n.tr("Mainstrings", "success") }

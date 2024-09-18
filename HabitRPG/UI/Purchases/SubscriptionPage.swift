@@ -42,17 +42,17 @@ struct SubscriptionOptionStack: View {
             if viewModel.presentationPoint != .timetravelers {
                 SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[0])),
                                          recurring: Text(L10n.subscriptionDuration(L10n.month)),
-                                         instantGems: "24",
+                                         instantGems: "\(viewModel.subscriptionPlan?.gemCapTotal ?? 24)",
                                          isSelected: PurchaseHandler.subscriptionIdentifiers[0] == viewModel.selectedSubscription)
             }
             SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[1])),
                                      recurring: Text(L10n.subscriptionDuration(L10n.xMonths(3))),
-                                     instantGems: "24",
+                                     instantGems: "\(viewModel.subscriptionPlan?.gemCapTotal ?? 24)",
                                      isSelected: PurchaseHandler.subscriptionIdentifiers[1] == viewModel.selectedSubscription)
             if viewModel.presentationPoint == nil {
                 SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[2])),
                                          recurring: Text(L10n.subscriptionDuration(L10n.xMonths(6))),
-                                         instantGems: "24",
+                                         instantGems: "\(viewModel.subscriptionPlan?.gemCapTotal ?? 24)",
                                          isSelected: PurchaseHandler.subscriptionIdentifiers[2] == viewModel.selectedSubscription)
             }
             SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[3])), recurring: Text(L10n.subscriptionDuration(L10n.xMonths(12))),
@@ -114,9 +114,7 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
         if presentationPoint == .timetravelers {
             availableSubscriptions.remove(at: 0)
         }
-        
-        selectedSubscription = PurchaseHandler.subscriptionIdentifiers.last ?? PurchaseHandler.subscriptionIdentifiers[0]
-        
+                
         disposable.inner.add(inventoryRepository.getLatestMysteryGear().on(value: { gear in
             self.mysteryGear = gear
         }).start())
@@ -124,8 +122,6 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
         retrieveProductList()
         
         activePromo = configRepository.activePromotion()
-        
-        activePromo = GiftOneGetOnePromotion(startDate: nil, endDate: Date())
     }
     
     func retrieveProductList() {
@@ -139,6 +135,7 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
                 }
             }
             self.prices = prices
+            self.selectedSubscription = PurchaseHandler.subscriptionIdentifiers.last ?? PurchaseHandler.subscriptionIdentifiers[0]
         }
     }
     
@@ -264,6 +261,11 @@ struct SubscriptionSeparator: View {
 }
 
 struct SubscriptionBenefitListView: View {
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM"
+        return formatter
+    }
     let presentationPoint: PresentationPoint?
     let mysteryGear: GearProtocol?
     
@@ -272,7 +274,7 @@ struct SubscriptionBenefitListView: View {
             SubscriptionBenefitView(icon: Image(Asset.subBenefitsGems.name), title: Text(L10n.subscriptionInfo1Title), description: Text(L10n.subscriptionInfo1Description))
         }
         SubscriptionBenefitView(icon: PixelArtView(name: "shop_set_mystery_\(mysteryGear?.key?.split(separator: "_").last ?? "")"), title: Text(L10n.subscriptionInfo3Title),
-                                description: Text(L10n.subscriptionInfo3Description))
+                                description: Text(mysteryGear?.text != nil ? L10n.subscriptionInfo3DescriptionGear(dateFormatter.string(from: Date()), mysteryGear?.text ?? "") : L10n.subscriptionInfo3Description))
 
         if presentationPoint != .timetravelers {
             SubscriptionBenefitView(icon: Image(Asset.subBenefitsHourglasses.name), title: Text(L10n.subscriptionInfo2Title), description: Text(L10n.subscriptionInfo2Description))
@@ -294,6 +296,7 @@ struct GiftSubscriptionSegment: View {
         VStack(spacing: 14) {
             Image(Asset.giftSubGift.name)
             Text(L10n.subscriptionGiftExplanation).multilineTextAlignment(.center)
+                .font(.system(size: 17, weight: .semibold))
             HabiticaButtonUI(label: Text(L10n.subscriptionGiftButton), color: .purple200, size: .compact) {
                 if let action = viewModel.onGiftButtonTapped {
                     action()
@@ -385,7 +388,6 @@ struct SubscriptionPage: View {
                                     }
                             }
                         }
-                        .padding(.bottom, 24)
                         Rectangle()
                             .frame(height: viewModel.showHourglassPromo && viewModel.selectedSubscription == viewModel.availableSubscriptions.last ? 186 : 126)
                             .cornerRadius(12)
@@ -446,14 +448,20 @@ struct SubscriptionPage: View {
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 32)
                     
-                    if !viewModel.isSubscribed {
-                        Button(L10n.restorePurchase) {
-                            viewModel.checkForExistingSubscription()
-                        }.buttonStyle(.borderless)
-                            .accentColor(.yellow100)
-                    }
-                    
                     Image(Asset.subscriptionBackground.name)
+                }
+                if #available(iOS 15.0, *) {
+                    Group {
+                        Button {
+                            viewModel.checkForExistingSubscription()
+                        } label: {
+                            Text(L10n.restorePurchase)
+                                .foregroundColor(.yellow100)
+                                .font(.system(size: 17, weight: .semibold))
+                        }
+                        .buttonStyle(.borderless)
+                    }.frame(maxWidth: .infinity)
+                        .background(.purple400)
                 }
             }
             .foregroundColor(textColor)

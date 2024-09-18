@@ -43,7 +43,7 @@ public extension SubscriptionPlanProtocol {
     }
     
     var gemCapTotal: Int {
-        return 25 + (consecutive?.gemCapExtra ?? 0)
+        return 24 + (consecutive?.gemCapExtra ?? 0)
     }
     
     var gemsRemaining: Int {

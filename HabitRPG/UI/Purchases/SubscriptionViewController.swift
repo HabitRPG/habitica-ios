@@ -329,7 +329,7 @@ class SubscriptionViewController: BaseTableViewController {
             }
             cell.title = SubscriptionInformation.titles[indexPath.item]
             if indexPath.item == 1 && mysteryGear != nil {
-                cell.descriptionText = L10n.subscriptionInfo3DescriptionNew(mysteryGear?.text ?? "")
+                cell.descriptionText = L10n.subscriptionInfo3DescriptionGear("This months", mysteryGear?.text ?? "")
                 ImageManager.getImage(name: "shop_set_mystery_\(mysteryGear?.key?.split(separator: "_").last ?? "")") { (image, _) in
                     cell.iconView.image = image
                 }

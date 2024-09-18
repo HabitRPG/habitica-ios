@@ -66,6 +66,8 @@ struct SubscriptionDetailViewUI: View {
             return L10n.subscriptionDuration(duration)
         } else if plan.isGroupPlanSub {
             return L10n.memberGroupPlan
+        } else if plan.isGifted {
+            return L10n.Subscription.gifted
         } else if let terminated = plan.dateTerminated {
             let formatter = DateFormatter()
             formatter.dateStyle = .medium
@@ -245,7 +247,7 @@ struct SubscriptionDetailViewUI: View {
                     Text(cancelDescription).font(.system(size: 13))
                     if let text = cancelButtonText {
                         HabiticaButtonUI(label: Text(text).foregroundColor(.purple100), color: .yellow100, size: .compact) {
-                            
+                            cancelSubscription()
                         }.padding(.top, 7)
                     }
                 }

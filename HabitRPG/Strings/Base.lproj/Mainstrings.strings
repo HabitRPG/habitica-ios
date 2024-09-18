@@ -936,12 +936,12 @@
 "view_participant_progress" = "View Participant Progress";
 "end_challenge" = "End Challenge";
 "subscription_info_1_title" = "Free Monthly Gems";
-"subscription_info_1_description" = "Get up to 50 Gems in the Market to buy Quests, Customizations, Pets, and more!";
+"subscription_info_1_description" = "Get up to 50 Gold-purchasable Gems in the Market to buy Quests, Customizations, Pets, and more!";
 "subscription_info_2_title" = "Monthly Mystic Hourglasses";
 "subscription_info_2_description" = "Never miss an item with 1 Mystic Hourglass a month to use in the Time Travelers Shop!";
 "subscription_info_3_title" = "Limited Monthly Gear Sets";
 "subscription_info_3_description" = "Subscribe now to get an exclusive set now and receive new items every month!";
-"subscription_info_3_description_new" = "Stay decked out in the latest exclusive gear. Subscribe now to get %s!";
+"subscription_info_3_description_gear" = "Stay decked out in the latest exclusive gear. Subscribe now to get %@’s %@!";
 "subscription_info_5_title" = "Special Pet & More Drops";
 "subscription_info_5_description" = "Get a Royal Purple Jackalope plus double the Eggs, Hatching Potions, and Food each day to grow your Pet collection!";
 "subscription.info_armoire_title" = "Double Armoire Rewards";
@@ -953,7 +953,7 @@
 "subscription_options_title" = "Choose the Subscription length that works for you";
 "subscription_gift_explanation" = "Want to give the benefits of a subscription to someone else?";
 "subscription_gift_button" = "Gift a Subscription";
-"subscription_support_developers" = "Subscribing supports our small team and helps keep Habitica running, thank you!";
+"subscription_support_developers" = "Subscribing supports our small team and helps keep Habitica running";
 "subscribe" = "Subscribe";
 "subscription.armore_header" = "Subscribers get extra chances at the Armoire and these other benefits!";
 "subscription.faint_header" = "Subscribers get a second chance at life each day and these other benefits!";
