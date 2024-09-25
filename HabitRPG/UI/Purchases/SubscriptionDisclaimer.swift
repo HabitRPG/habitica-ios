@@ -23,9 +23,9 @@ struct SubscriptionDisclaimer: View {
             HStack(spacing: 0) {
                 Text("By continuing you accept the ")
                 // swiftlint:disable force_unwrapping
-                Link("Terms of Use", destination: URL(string: "https://habitica.com/static/terms")!).font(.system(size: 11, weight: .semibold)).foregroundColor(.yellow5)
+                Link("Terms of Use", destination: URL(string: "https://habitica.com/static/terms")!).font(.system(size: 11, weight: .semibold)).foregroundColor(.yellow100)
                 Text(" and ")
-                Link("Privacy Policy", destination: URL(string: "https://habitica.com/static/privacy")!).font(.system(size: 11, weight: .semibold)).foregroundColor(.yellow5)
+                Link("Privacy Policy", destination: URL(string: "https://habitica.com/static/privacy")!).font(.system(size: 11, weight: .semibold)).foregroundColor(.yellow100)
             }
             .padding(.top, 16)
             .font(.system(size: 11))

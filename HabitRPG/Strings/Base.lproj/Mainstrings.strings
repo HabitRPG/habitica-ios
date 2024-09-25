@@ -969,6 +969,7 @@
 "subscription.monthly_gems" = "Monthly Gems";
 "subscription.next_hourglass_delivery" = "Next Hourglass delivery";
 "subscription.subscribe_again_hourglasses" ="Subscribe again to continue receiving Mystic Hourglasses";
+"see_more_sub_options" = "See more subscription options";
 "duration_month" = "month";
 "duration_3month" = "3 months";
 "duration_6month" = "6 months";
@@ -1406,3 +1407,6 @@
 "x_x_gem_cap" = "%d / %d Gem Cap";
 "resubscribe_to_pick_up" = "Resubscribe to pick up where you left off!";
 "restore_purchase" = "Restore Purchase";
+"no_active_subscription_to_restore" = "Could not find an active subscription to restore";
+"subscriber_benefit" = "Subscriber Benefit";
+"buy_gems_with_gold" = "Buy Gems with Gold";

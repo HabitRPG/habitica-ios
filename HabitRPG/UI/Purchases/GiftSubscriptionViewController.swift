@@ -88,11 +88,11 @@ struct GiftSubscriptionPage: View {
                     .padding(.horizontal, 24)
                 Group {
                     if viewModel.isSubscribing {
-                        ProgressView().habiticaProgressStyle().frame(height: 48)
+                        ProgressView().habiticaProgressStyle().frame(height: 48).transition(.opacity)
                     } else {
                         HabiticaButtonUI(label: Text(L10n.giftSubscription).foregroundColor(Color(UIColor.purple100)), color: Color(UIColor.yellow100), size: .compact) {
                             viewModel.subscribeToPlan()
-                        }
+                        }.transition(.opacity)
                     }
                 }
                 .padding(.horizontal, 24)
@@ -137,11 +137,14 @@ class GiftSubscriptionViewModel: BaseSubscriptionViewModel {
         if !PurchaseHandler.shared.isAllowedToMakePurchases() || isSubscribing {
             return
         }
-        isSubscribing = true
-
+        withAnimation {
+            isSubscribing = true
+        }
         PurchaseHandler.shared.pendingGifts[selectedSubscription] = self.giftedUser?.id
         SwiftyStoreKit.purchaseProduct(selectedSubscription, atomically: false) { result in
-            self.isSubscribing = false
+            withAnimation {
+                self.isSubscribing = false
+            }
             switch result {
             case .success(let product):
                 if let action = self.onSuccessfulSubscribe {

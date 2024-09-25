@@ -202,6 +202,8 @@ class EditingFormViewController: UIViewController, Themeable {
     }()
     
     var fields = [EditingTextField]()
+    var autoDismiss = true
+    private var loadingIndicator = HabiticaActivityIndicator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -227,6 +229,8 @@ class EditingFormViewController: UIViewController, Themeable {
         ])
 
         ThemeService.shared.addThemeable(themable: self)
+        
+        loadingIndicator.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -237,6 +241,7 @@ class EditingFormViewController: UIViewController, Themeable {
         for field in fields {
             stackView.addArrangedSubview(field)
         }
+        stackView.addArrangedSubview(loadingIndicator)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -279,7 +284,13 @@ class EditingFormViewController: UIViewController, Themeable {
             }
             action(values)
         }
-        dismissForm()
+        if autoDismiss {
+            dismissForm()
+        }
+    }
+    
+    func isLoading(_ isLoading: Bool) {
+        loadingIndicator.isHidden = !isLoading
     }
     
     override func viewWillLayoutSubviews() {

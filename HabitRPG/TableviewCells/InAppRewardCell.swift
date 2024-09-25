@@ -146,8 +146,12 @@ class InAppRewardCell: UICollectionViewCell {
         isLocked = reward.locked
         
         if reward.key == "gem" {
-            infoImageView.image = Asset.subBenefitIndicator.image
-            infoImageView.isHidden = false
+            if user?.isSubscribed != true {
+                infoImageView.image = Asset.subBenefitIndicator.image
+                infoImageView.isHidden = false
+            } else {
+                itemCount = user?.purchased?.subscriptionPlan?.gemsRemaining ?? 0
+            }
         }
         
         let theme = ThemeService.shared.theme

@@ -102,6 +102,8 @@ public enum L10n {
   public static func buyForX(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "buy_for_x", p1)
   }
+  /// Buy Gems with Gold
+  public static var buyGemsWithGold: String { return L10n.tr("Mainstrings", "buy_gems_with_gold") }
   /// You bought '%@' for %@ gold
   public static func buyReward(_ p1: String, _ p2: String) -> String {
     return L10n.tr("Mainstrings", "buy_reward", p1, p2)
@@ -742,6 +744,8 @@ public enum L10n {
   }
   /// No
   public static var no: String { return L10n.tr("Mainstrings", "no") }
+  /// Could not find an active subscription to restore
+  public static var noActiveSubscriptionToRestore: String { return L10n.tr("Mainstrings", "no_active_subscription_to_restore") }
   /// No Benefit
   public static var noBenefit: String { return L10n.tr("Mainstrings", "no_benefit") }
   /// No Camera available
@@ -1006,6 +1010,8 @@ public enum L10n {
   public static var search: String { return L10n.tr("Mainstrings", "search") }
   /// Seasonal items available
   public static var seasonalPotionsAvailable: String { return L10n.tr("Mainstrings", "seasonal_potions_available") }
+  /// See more subscription options
+  public static var seeMoreSubOptions: String { return L10n.tr("Mainstrings", "see_more_sub_options") }
   /// See you tomorrow
   public static var seeYouTomorrow: String { return L10n.tr("Mainstrings", "see_you_tomorrow") }
   /// Sell for %d Gold
@@ -1066,6 +1072,8 @@ public enum L10n {
   public static var subscribeForHourglasses: String { return L10n.tr("Mainstrings", "subscribe_for_hourglasses") }
   /// Want more than 2 weeks of data?
   public static var subscribeForTaskHistory: String { return L10n.tr("Mainstrings", "subscribe_for_task_history") }
+  /// Subscriber Benefit
+  public static var subscriberBenefit: String { return L10n.tr("Mainstrings", "subscriber_benefit") }
   /// Subscriber Currency
   public static var subscriberCurrency: String { return L10n.tr("Mainstrings", "subscriber_currency") }
   /// Subscription

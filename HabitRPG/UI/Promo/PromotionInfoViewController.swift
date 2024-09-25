@@ -123,11 +123,7 @@ class PromotionInfoViewController: BaseUIViewController {
 
     private func showGiftSubscriptionAlert() {
         let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
-            let navigationController = StoryboardScene.Main.giftSubscriptionNavController.instantiate()
-            if let giftViewController = navigationController.topViewController as? GiftSubscriptionViewController {
-                giftViewController.giftRecipientUsername = username
-            }
-            self.present(navigationController, animated: true, completion: nil)
+            RouterHandler.shared.handle(.giftSubscription(username: username))
         }, saveButtonTitle: L10n.continue)
         present(navController, animated: true, completion: nil)
     }

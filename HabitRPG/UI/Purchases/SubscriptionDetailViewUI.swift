@@ -66,13 +66,29 @@ struct SubscriptionDetailViewUI: View {
             return L10n.subscriptionDuration(duration)
         } else if plan.isGroupPlanSub {
             return L10n.memberGroupPlan
-        } else if plan.isGifted {
-            return L10n.Subscription.gifted
         } else if let terminated = plan.dateTerminated {
             let formatter = DateFormatter()
             formatter.dateStyle = .medium
             formatter.timeStyle = .none
             return L10n.endingOn(formatter.string(from: terminated))
+        } else {
+            return ""
+        }
+    }
+    
+    var paymentTypeText: String {
+        if plan.isGifted {
+            return L10n.Subscription.gifted
+        } else if plan.dateTerminated != nil {
+            return L10n.cancelled
+        } else if plan.paymentMethod == "Apple" {
+            return "Apple Pay"
+        } else if plan.paymentMethod == "Google" {
+            return "Google Pay"
+        } else if plan.paymentMethod == "PayPal" {
+            return "PayPal"
+        } else if plan.paymentMethod == "Stripe" {
+            return "Stripe"
         } else {
             return ""
         }
@@ -179,7 +195,7 @@ struct SubscriptionDetailViewUI: View {
                     VStack(alignment: .leading, spacing: 6) {
                         Text(L10n.Subscription.paymentMethod)
                             .font(.system(size: 15, weight: .semibold))
-                        Text(typeText)
+                        Text(paymentTypeText)
                             .font(.system(size: 13))
                     }
                     Spacer()
@@ -257,7 +273,7 @@ struct SubscriptionDetailViewUI: View {
     
     func cancelSubscription() {
         var url: URL?
-        if plan.paymentMethod == "Apple" {
+        if plan.paymentMethod == "Apple" || plan.isGifted {
             if #available(iOS 15.0, *) {
                 if let window = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                     Task {
