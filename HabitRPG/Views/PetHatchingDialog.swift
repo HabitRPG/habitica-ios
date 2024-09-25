@@ -178,7 +178,7 @@ class PetHatchingAlertController: HabiticaAlertController {
     }
     
     private func setText(item: PetStableItem, eggText: String, potionText: String) {
-        if item.canRaise || item.pet?.type == "special" {
+        if item.canRaise || item.pet?.type == "special" || item.pet?.type == "wacky" {
             title = L10n.hatchPet
             petView.setImagewith(name: "stable_Pet-\(item.pet?.key ?? "")-outline")
             if eggCount == 0 && potionCount == 0 {
