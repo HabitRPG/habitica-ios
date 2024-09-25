@@ -85,12 +85,14 @@ class PetHatchingAlertController: HabiticaAlertController {
     }()
     
     private var gemCount = 0
+    private var eggCount = 0
+    private var potionCount = 0
     
     // swiftlint:disable:next function_body_length
     convenience init(item: PetStableItem, ownedEggs: OwnedItemProtocol?, ownedPotions: OwnedItemProtocol?) {
         self.init()
-        let eggCount = ownedEggs?.numberOwned ?? 0
-        let potionCount = ownedPotions?.numberOwned ?? 0
+        eggCount = ownedEggs?.numberOwned ?? 0
+        potionCount = ownedPotions?.numberOwned ?? 0
         eggCountView.text = String(eggCount)
         eggCountView.isHidden = eggCount == 0
         potionCountView.text = String(potionCount)
@@ -101,32 +103,12 @@ class PetHatchingAlertController: HabiticaAlertController {
         userRepository.getUser().take(first: 1).on(value: { user in
             self.gemCount = user.gemCount
         }).start()
-        if item.canRaise || item.pet?.type == "special" {
-            title = L10n.hatchPet
-            petView.setImagewith(name: "stable_Pet-\(item.pet?.key ?? "")-outline")
-            if eggCount == 0 && potionCount == 0 {
-                descriptionlabel.text = L10n.suggestPetHatchMissingBoth(item.pet?.egg ?? "", item.pet?.potion ?? "")
-            } else if eggCount == 0 {
-                descriptionlabel.text = L10n.suggestPetHatchMissingEgg(item.pet?.egg ?? "")
-            } else if potionCount == 0 {
-                descriptionlabel.text = L10n.suggestPetHatchMissingPotion(item.pet?.potion ?? "")
-            } else {
-                descriptionlabel.text = L10n.canHatchPet(item.pet?.egg ?? "", item.pet?.potion ?? "")
-            }
-        } else {
-            title = L10n.hatchPetAgain
-            petView.setImagewith(name: "stable_Pet-\(item.pet?.key ?? "")")
-            petView.alpha = 0.5
-            if eggCount == 0 && potionCount == 0 {
-                descriptionlabel.text = L10n.suggestPetHatchAgainMissingBoth(item.pet?.egg ?? "", item.pet?.potion ?? "")
-            } else if eggCount == 0 {
-                descriptionlabel.text = L10n.suggestPetHatchAgainMissingEgg(item.pet?.egg ?? "")
-            } else if potionCount == 0 {
-                descriptionlabel.text = L10n.suggestPetHatchAgainMissingPotion(item.pet?.potion ?? "")
-            } else {
-                descriptionlabel.text = L10n.canHatchPet(item.pet?.egg ?? "", item.pet?.potion ?? "")
-            }
-        }
+        inventoryRepository.getItems(keys: [.eggs: [item.pet?.egg ?? ""], .hatchingPotions: [item.pet?.potion ?? ""]]).take(first: 1).on(value: { items in
+            let egg = items.eggs.value.first
+            let potion = items.hatchingPotions.value.first
+            self.setText(item: item, eggText: egg?.text ?? item.pet?.egg ?? "", potionText: potion?.text ?? item.pet?.potion ?? "")
+        }).start()
+        setText(item: item, eggText: item.pet?.egg ?? "", potionText: item.pet?.potion ?? "")
         
         if eggCount > 0 && potionCount > 0 {
             addAction(title: L10n.hatch, isMainAction: true) { _ in
@@ -145,8 +127,8 @@ class PetHatchingAlertController: HabiticaAlertController {
                 #endif
                 let egg = items.eggs.value.first
                 let potion = items.hatchingPotions.value.first
-                var hatchValue = eggCount > 0 ? 0 : Int(egg?.value ?? 0.0)
-                hatchValue += potionCount > 0 ? 0 : Int(potion?.value ?? 0.0)
+                var hatchValue = self.eggCount > 0 ? 0 : Int(egg?.value ?? 0.0)
+                hatchValue += self.potionCount > 0 ? 0 : Int(potion?.value ?? 0.0)
                 
                 if hatchValue > 0 && (item.pet?.type == "drop" || (item.pet?.type == "quest" && ownedEggs != nil)) {
                     let attributedText = NSMutableAttributedString(string: L10n.hatch + "   \(hatchValue) :gems:")
@@ -169,12 +151,12 @@ class PetHatchingAlertController: HabiticaAlertController {
                             observable.send(Signal.Event.value(nil))
                             observable.sendCompleted()
                         }
-                        if eggCount == 0 {
+                        if self.eggCount == 0 {
                             signal = signal.flatMap(.latest, { _ -> Signal<UserProtocol?, Never> in
                                 return self.inventoryRepository.purchaseItem(purchaseType: "eggs", key: item.pet?.egg ?? "", value: 4, quantity: 1, text: (egg?.text ?? "") + " " + L10n.egg)
                             })
                         }
-                        if potionCount == 0 {
+                        if self.potionCount == 0 {
                             signal = signal.flatMap(.latest, { _ -> Signal<UserProtocol?, Never> in
                                 return self.inventoryRepository.purchaseItem(purchaseType: "hatchingPotions", key: item.pet?.potion ?? "",
                                                                              value: 4,
@@ -185,10 +167,6 @@ class PetHatchingAlertController: HabiticaAlertController {
                         
                         signal.flatMap(.latest, { _ in
                             return self.inventoryRepository.hatchPet(egg: item.pet?.egg, potion: item.pet?.potion)
-                        }).on(completed: {
-                            guard let egg = items.eggs.value.first, let potion = items.hatchingPotions.value.first else {
-                                return
-                            }
                         }).start()
                     }
                     button.setAttributedTitle(attributedText, for: .normal)
@@ -197,6 +175,35 @@ class PetHatchingAlertController: HabiticaAlertController {
         }
         
         setupView()
+    }
+    
+    private func setText(item: PetStableItem, eggText: String, potionText: String) {
+        if item.canRaise || item.pet?.type == "special" {
+            title = L10n.hatchPet
+            petView.setImagewith(name: "stable_Pet-\(item.pet?.key ?? "")-outline")
+            if eggCount == 0 && potionCount == 0 {
+                descriptionlabel.text = L10n.suggestPetHatchMissingBoth(eggText, potionText)
+            } else if eggCount == 0 {
+                descriptionlabel.text = L10n.suggestPetHatchMissingEgg(eggText)
+            } else if potionCount == 0 {
+                descriptionlabel.text = L10n.suggestPetHatchMissingPotion(potionText)
+            } else {
+                descriptionlabel.text = L10n.canHatchPet(eggText, potionText)
+            }
+        } else {
+            title = L10n.hatchPetAgain
+            petView.setImagewith(name: "stable_Pet-\(item.pet?.key ?? "")")
+            petView.alpha = 0.5
+            if eggCount == 0 && potionCount == 0 {
+                descriptionlabel.text = L10n.suggestPetHatchAgainMissingBoth(eggText, potionText)
+            } else if eggCount == 0 {
+                descriptionlabel.text = L10n.suggestPetHatchAgainMissingEgg(eggText)
+            } else if potionCount == 0 {
+                descriptionlabel.text = L10n.suggestPetHatchAgainMissingPotion(potionText)
+            } else {
+                descriptionlabel.text = L10n.canHatchPet(eggText, potionText)
+            }
+        }
     }
 
     private func setupView() {
