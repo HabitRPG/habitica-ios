@@ -135,7 +135,16 @@ class SubscriptionDetailView: UITableViewCell {
     private func setCancelDescription(_ plan: SubscriptionPlanProtocol) {
         cancelTitleLabel.text = L10n.cancelSubscription
         cancelDescriptionButton.isHidden = false
-        if plan.paymentMethod == "Apple" {
+        if plan.dateTerminated != nil {
+            cancelDescriptionButton.setTitle(L10n.renewSubscription, for: .normal)
+            if plan.isGifted {
+                cancelDescriptionLabel.text = L10n.renewSubscriptionGiftedDescription
+                cancelTitleLabel.text = L10n.subscribe
+            } else {
+                cancelDescriptionLabel.text = L10n.renewSubscriptionDescription
+                cancelTitleLabel.text = L10n.resubscribe
+            }
+        } else if plan.paymentMethod == "Apple" {
             cancelDescriptionLabel.text = L10n.unsubscribeItunes
             cancelDescriptionButton.setTitle(L10n.openItunes, for: .normal)
         } else if plan.paymentMethod == "Google" {
@@ -147,15 +156,6 @@ class SubscriptionDetailView: UITableViewCell {
         } else if plan.isGroupPlanSub {
             cancelDescriptionLabel.text = L10n.cancelSubscriptionGroupPlan
             cancelDescriptionButton.isHidden = true
-        } else if plan.dateTerminated != nil {
-            cancelDescriptionButton.setTitle(L10n.renewSubscription, for: .normal)
-            if plan.isGifted {
-                cancelDescriptionLabel.text = L10n.renewSubscriptionGiftedDescription
-                cancelTitleLabel.text = L10n.subscribe
-            } else {
-                cancelDescriptionLabel.text = L10n.renewSubscriptionDescription
-                cancelTitleLabel.text = L10n.resubscribe
-            }
         }
     }
     

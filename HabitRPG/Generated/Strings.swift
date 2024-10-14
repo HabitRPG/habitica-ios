@@ -1787,7 +1787,7 @@ public enum L10n {
   public enum Faint {
     /// Refill Health & Try Again
     public static var button: String { return L10n.tr("Mainstrings", "faint.button") }
-    /// Broken equipment can be repurchased from Rewards
+    /// Broken equipment can be repurchased from the Market
     public static var disclaimer: String { return L10n.tr("Mainstrings", "faint.disclaimer") }
     /// Don't despair!
     public static var dontDespair: String { return L10n.tr("Mainstrings", "faint.dont_despair") }

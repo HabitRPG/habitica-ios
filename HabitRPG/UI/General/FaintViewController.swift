@@ -86,10 +86,11 @@ private class ViewModel: ObservableObject {
         }
         
         userRepository.getUser()
-            .take(first: 1)
             .on(value: { user in
                 self.isSubscribed = user.isSubscribed
-                self.lossText = LocalizedStringKey(L10n.Faint.subtitle(String((user.stats?.level ?? 1) - 1), String(Int(user.stats?.gold ?? 0))))
+                if self.lossText == "" {
+                    self.lossText = LocalizedStringKey(L10n.Faint.subtitle(String((user.stats?.level ?? 1) - 1), String(Int(user.stats?.gold ?? 0))))
+                }
         }).start()
     }
     
