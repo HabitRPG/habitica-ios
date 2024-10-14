@@ -114,7 +114,7 @@ public enum L10n {
   }
   /// Cancel
   public static var cancel: String { return L10n.tr("Mainstrings", "cancel") }
-  /// Cancel Subscription
+  /// Cancel subscription
   public static var cancelSubscription: String { return L10n.tr("Mainstrings", "cancel_subscription") }
   /// You have a free subscription because you are a member a Party or Guild that has a Group Plan. This will end if you leave or the Group Plan is cancelled by the owner. Any months of extra subscription credit you have will be applied at the end of the Group Plan.
   public static var cancelSubscriptionGroupPlan: String { return L10n.tr("Mainstrings", "cancel_subscription_group_plan") }
@@ -326,6 +326,8 @@ public enum L10n {
   public static var earnedAchievementShare: String { return L10n.tr("Mainstrings", "earned_achievement_share") }
   /// Edit
   public static var edit: String { return L10n.tr("Mainstrings", "edit") }
+  /// Edit or cancel subscription
+  public static var editCancelSubscription: String { return L10n.tr("Mainstrings", "edit_cancel_subscription") }
   /// Challenge tasks only offer limited editing.
   public static var editChallengeTasks: String { return L10n.tr("Mainstrings", "edit_challenge_tasks") }
   /// Edit Tag
@@ -470,6 +472,8 @@ public enum L10n {
   }
   /// Gift One, Get One Event
   public static var giftOneGetOneEvent: String { return L10n.tr("Mainstrings", "gift_one_get_one_event") }
+  /// While this promotion is active, you’ll receive a matching subscription automatically after sending your gift.
+  public static var giftOneGetOneScreenBanner: String { return L10n.tr("Mainstrings", "gift_one_get_one_screen_banner") }
   /// Gift One, Get One
   public static var giftOneGetOneTitle: String { return L10n.tr("Mainstrings", "gift_one_get_one_title") }
   /// Enter recipient's @ username
@@ -950,9 +954,9 @@ public enum L10n {
   public static var remove: String { return L10n.tr("Mainstrings", "remove") }
   /// Renew Subscription
   public static var renewSubscription: String { return L10n.tr("Mainstrings", "renew_subscription") }
-  /// Want to continue receiving subscription benefits? You can restart your subscription by going to the Settings app and viewing your Apple ID subscriptions.
+  /// Want to continue receiving subscription benefits? You can restart your subscription from the subscriptions section of your Apple ID settings.
   public static var renewSubscriptionDescription: String { return L10n.tr("Mainstrings", "renew_subscription_description") }
-  /// Want to continue receiving subscription benefits? You can start a recurring subscription by going to the Settings app and viewing your Apple ID subscriptions.
+  /// Want to continue receiving subscription benefits? You can start a recurring subscription from the subscriptions section of your Apple ID settings.
   public static var renewSubscriptionGiftedDescription: String { return L10n.tr("Mainstrings", "renew_subscription_gifted_description") }
   /// Repeat Password
   public static var repeatPassword: String { return L10n.tr("Mainstrings", "repeat_password") }
@@ -1230,11 +1234,11 @@ public enum L10n {
   public static var unshadowMuteUser: String { return L10n.tr("Mainstrings", "unshadow_mute_user") }
   /// Do you want to remove the shadow ban from this user?
   public static var unshadowMuteUserConfirm: String { return L10n.tr("Mainstrings", "unshadow_mute_user_confirm") }
-  /// No longer want to subscribe? Due to your payment method, you can only unsubscribe through the Google Play Store.
+  /// No longer want to subscribe? Due to your payment method, you’ll need to unsubscribe through the Google Play Store. Any leftover months of subscription credit will be added to your end date after cancellation.
   public static var unsubscribeGoogle: String { return L10n.tr("Mainstrings", "unsubscribe_google") }
-  /// No longer want to subscribe? You can find the option to unsubscribe by going to the Settings app and viewing your Apple ID subscriptions
+  /// Want to change your subscription duration, or cancel all together? You can edit or cancel your subscription by going to the Settings app and viewing your Apple ID subscriptions. Any leftover months of subscription credit will be added to your end date after cancellation.
   public static var unsubscribeItunes: String { return L10n.tr("Mainstrings", "unsubscribe_itunes") }
-  /// No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.
+  /// No longer want to subscribe? Due to your payment method, you’ll need to unsubscribe from our website. To do this, tap the button below, log in to your account, tap the player icon in the top right, then go to the Subscription section. Any leftover months of subscription credit will be added to your end date after cancellation. We’ll miss you!
   public static var unsubscribeWebsite: String { return L10n.tr("Mainstrings", "unsubscribe_website") }
   /// Update
   public static var update: String { return L10n.tr("Mainstrings", "update") }
@@ -2765,7 +2769,7 @@ public enum L10n {
     public static var gemForGoldHeader: String { return L10n.tr("Mainstrings", "subscription.gem_for_gold_header") }
     /// Gifted
     public static var gifted: String { return L10n.tr("Mainstrings", "subscription.gifted") }
-    /// Subscribers get Mystic Hourglasses to buy items in the Time Travelers Shop and these other exclusive benefits!
+    /// Subscribers get a Mystic Hourglass each month along with these exclusive benefits!
     public static var hourglassesHeader: String { return L10n.tr("Mainstrings", "subscription.hourglasses_header") }
     /// Get two chances to score new equipment each time you open the Enchanted Armoire!
     public static var infoArmoireDescription: String { return L10n.tr("Mainstrings", "subscription.info_armoire_description") }

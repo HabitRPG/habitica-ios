@@ -337,11 +337,12 @@ class FaintViewController: UIHostingController<FaintView> {
         rootView.onDismiss = {[weak self] in
             self?.dismiss()
         }
+        
+        SoundManager.shared.play(effect: .death)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        SoundManager.shared.play(effect: .death)
     }
     
     private func dismiss() {

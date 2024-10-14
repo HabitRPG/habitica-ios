@@ -98,7 +98,25 @@ struct GiftSubscriptionPage: View {
                 .padding(.horizontal, 24)
                 .padding(.top, 16)
                 .padding(.bottom, 32)
-                Image(Asset.subscriptionBackground.name)
+                Image(Asset.giftSubscriptionHills.name)
+                if viewModel.isGiftOneGetOne() {
+                    VStack(alignment: .center) {
+                        HStack {
+                            Image(Asset.g1g1SparklesLeft.name)
+                            Text(L10n.giftOneGetOneTitle)
+                                .font(.system(size: 17, weight: .medium))
+                            Image(Asset.g1g1SparklesRight.name)
+                        }.padding(.top, 16)
+                        Text(L10n.giftOneGetOneScreenBanner)
+                            .font(.system(size: 13, weight: .semibold))
+                            .lineSpacing(2)
+                    }.foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .background(LinearGradient(colors: [
+                            Color(hexadecimal: "50B5E9"),
+                            Color(hexadecimal: "925CF3")
+                        ], startPoint: .top, endPoint: .bottom))
+                }
             }.background(Color.purple300.ignoresSafeArea(.all, edges: .top).padding(.bottom, 4))
         }.foregroundColor(.white)
             .background(Color.purple400.ignoresSafeArea(.all, edges: .bottom).padding(.top, 200))
@@ -106,15 +124,23 @@ struct GiftSubscriptionPage: View {
 }
 
 class GiftSubscriptionViewModel: BaseSubscriptionViewModel {
+    let configRepository = ConfigRepository.shared
+
     @Published var giftedUser: MemberProtocol?
     @Published var selectedSubscription: String = PurchaseHandler.noRenewSubscriptionIdentifiers[3]
     @Published var availableSubscriptions = PurchaseHandler.noRenewSubscriptionIdentifiers
 
     var onSuccessfulSubscribe: (() -> Void)?
-    
+    @Published var activePromo: HabiticaPromotion?
+
     override init() {
         super.init()
         retrieveProductList()
+        activePromo = configRepository.activePromotion()
+    }
+    
+    func isGiftOneGetOne() -> Bool {
+        return activePromo?.identifier == "g1g1"
     }
     
     func retrieveProductList() {

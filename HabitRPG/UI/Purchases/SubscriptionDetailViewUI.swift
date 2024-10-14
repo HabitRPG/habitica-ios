@@ -256,6 +256,8 @@ struct SubscriptionDetailViewUI: View {
                             Text(L10n.continueBenefits)
                         } else if plan.dateTerminated != nil {
                             Text(L10n.resubscribe)
+                        } else if plan.paymentMethod == "Apple" {
+                            Text(L10n.editCancelSubscription)
                         } else {
                             Text(L10n.cancelSubscription)
                         }

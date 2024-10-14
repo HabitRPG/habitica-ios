@@ -289,9 +289,7 @@ struct SubscriptionBenefitListView: View {
         SubscriptionBenefitView(icon: PixelArtView(name: "shop_set_mystery_\(mysteryGear?.key?.split(separator: "_").last ?? "")"), title: Text(L10n.subscriptionInfo3Title),
                                 description: Text(mysteryGear?.text != nil ? L10n.subscriptionInfo3DescriptionGear(dateFormatter.string(from: Date()), mysteryGear?.text ?? "") : L10n.subscriptionInfo3Description))
 
-        if presentationPoint != .timetravelers {
-            SubscriptionBenefitView(icon: Image(Asset.subBenefitsHourglasses.name), title: Text(L10n.subscriptionInfo2Title), description: Text(L10n.subscriptionInfo2Description))
-        }
+        SubscriptionBenefitView(icon: Image(Asset.subBenefitsHourglasses.name), title: Text(L10n.subscriptionInfo2Title), description: Text(L10n.subscriptionInfo2Description))
         if presentationPoint != .faint {
             SubscriptionBenefitView(icon: Image(Asset.subBenefitsFaint.name), title: Text(L10n.Subscription.infoFaintTitle), description: Text(L10n.Subscription.infoFaintDescription))
         }
@@ -439,7 +437,7 @@ struct SubscriptionPage: View {
                     .padding(.vertical, 13)
                     .padding(.horizontal, 24)
                     Text(L10n.subscriptionSupportDevelopers)
-                        .foregroundColor(Color(UIColor.purple600))
+                        .foregroundColor(.white)
                         .font(.system(size: 13))
                         .italic()
                         .multilineTextAlignment(.center)
@@ -488,7 +486,6 @@ struct SubscriptionPage: View {
                         if viewModel.presentationPoint == nil {
                             if viewModel.isRestoringPurchase {
                                 ProgressView().habiticaProgressStyle().frame(height: 48)
-                                    .transition(.opacity)
                             } else {
                                 Button {
                                     viewModel.checkForExistingSubscription()
@@ -496,9 +493,10 @@ struct SubscriptionPage: View {
                                     Text(L10n.restorePurchase)
                                         .foregroundColor(.yellow100)
                                         .font(.system(size: 17, weight: .semibold))
+                                        .animation(nil)
                                 }
                                 .frame(height: 48)
-                                .transition(.opacity)
+                                .animation(nil)
                             }
                         } else {
                             Button {

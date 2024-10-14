@@ -103,7 +103,7 @@ private struct FourFreeView: View {
 struct BirthdayView: View {
     private let dateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMM dd"
+        formatter.dateFormat = "MMM d"
         return formatter
     }()
     private let complexDateFormatter = {

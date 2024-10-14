@@ -63,6 +63,8 @@ enum Route {
     
     case customizations(type: String, group: String? = nil)
     
+    case promoInfo
+    
     var url: String {
         // swiftlint:disable
         switch self {
@@ -81,6 +83,7 @@ enum Route {
             } else {
                 return "/inventory/customizations/\(type)"
             }
+        case .promoInfo: return "/promo/info"
         }
         // siwftlint:enable
     }
@@ -253,9 +256,6 @@ class RouterHandler {
         register("/user/settings/gems") {
             self.present(StoryboardScene.Main.purchaseGemNavController.instantiate())
         }
-        register("/promo") {
-            self.present(StoryboardScene.Main.promotionInfoNavController.instantiate())
-        }
         register("/private-messages") {
             self.displayTab(index: 4)
             self.present(StoryboardScene.Social.inboxNavigationViewController.instantiate())
@@ -283,7 +283,7 @@ class RouterHandler {
         register("/user/onboarding") {
             self.present(StoryboardScene.Main.adventureGuideNavigationViewController.instantiate())
         }
-        register("/promo/info") {
+        register(.promoInfo) {
             self.present(StoryboardScene.Main.promotionInfoNavController.instantiate())
         }
         register("/promo/web") {

@@ -627,11 +627,11 @@
 "inactive" = "Inactive";
 "one_month" = "1 Month";
 "x_months" = "%d Months";
-"unsubscribe_itunes" = "No longer want to subscribe? You can find the option to unsubscribe by going to the Settings app and viewing your Apple ID subscriptions";
+"unsubscribe_itunes" = "Want to change your subscription duration, or cancel all together? You can edit or cancel your subscription by going to the Settings app and viewing your Apple ID subscriptions. Any leftover months of subscription credit will be added to your end date after cancellation.";
 "open_itunes" = "Open Apple ID Subscriptions";
 "open_app_store" = "Open App Store Page";
-"unsubscribe_website" = "No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.";
-"unsubscribe_google" = "No longer want to subscribe? Due to your payment method, you can only unsubscribe through the Google Play Store.";
+"unsubscribe_website" = "No longer want to subscribe? Due to your payment method, you’ll need to unsubscribe from our website. To do this, tap the button below, log in to your account, tap the player icon in the top right, then go to the Subscription section. Any leftover months of subscription credit will be added to your end date after cancellation. We’ll miss you!";
+"unsubscribe_google" = "No longer want to subscribe? Due to your payment method, you’ll need to unsubscribe through the Google Play Store. Any leftover months of subscription credit will be added to your end date after cancellation.";
 "group_plan" = "Group Plan";
 "member_group_plan" = "Member of a Group Plan";
 "open_website" = "Open Habitica Website";
@@ -835,7 +835,7 @@
 "faint.dont_despair" = "Don't despair!";
 "faint.good_luck_text" = "But you can get them all back with hard work! Good luck—you’ll do great. ";
 "faint.button" = "Refill Health & Try Again";
-"faint.disclaimer" = "Broken equipment can be repurchased from Rewards";
+"faint.disclaimer" = "Broken equipment can be repurchased from the Market";
 "faint.unsubbed_button_prompt" = "Subscribe to hold on with 1HP!";
 "faint.unsubbed_footer" = "Get a second chance each day to avoid running out of HP with a subscription";
 "faint.subbed_button_prompt" = "Second chance: Hold on with 1HP!";
@@ -958,7 +958,7 @@
 "subscription.armore_header" = "Subscribers get extra chances at the Armoire and these other benefits!";
 "subscription.faint_header" = "Subscribers get a second chance at life each day and these other benefits!";
 "subscription.gem_for_gold_header" = "Subscribe to buy Gems with Gold and receive these other exclusive benefits!";
-"subscription.hourglasses_header" = "Subscribers get Mystic Hourglasses to buy items in the Time Travelers Shop and these other exclusive benefits!";
+"subscription.hourglasses_header" = "Subscribers get a Mystic Hourglass each month along with these exclusive benefits!";
 "subscription.stay_motivated_with_more_rewards" = "Stay motivated with even more rewards when you subscribe";
 "subscription.thanks_for_subscribing" = "Thanks for subscribing";
 "subscription.enjoy_these_benefits" = "Enjoy all these exclusive benefits with your subscription";
@@ -980,9 +980,10 @@
 "ending_on" = "Ending on %@";
 "not_recurring" = "Not Recurring";
 "cancelled" = "Cancelled";
-"cancel_subscription" = "Cancel Subscription";
-"renew_subscription_description" = "Want to continue receiving subscription benefits? You can restart your subscription by going to the Settings app and viewing your Apple ID subscriptions.";
-"renew_subscription_gifted_description" = "Want to continue receiving subscription benefits? You can start a recurring subscription by going to the Settings app and viewing your Apple ID subscriptions.";
+"cancel_subscription" = "Cancel subscription";
+"edit_cancel_subscription" = "Edit or cancel subscription";
+"renew_subscription_description" = "Want to continue receiving subscription benefits? You can restart your subscription from the subscriptions section of your Apple ID settings.";
+"renew_subscription_gifted_description" = "Want to continue receiving subscription benefits? You can start a recurring subscription from the subscriptions section of your Apple ID settings.";
 "cancel_subscription_group_plan" = "You have a free subscription because you are a member a Party or Guild that has a Group Plan. This will end if you leave or the Group Plan is cancelled by the owner. Any months of extra subscription credit you have will be applied at the end of the Group Plan.";
 "send_gift" = "Send Gift";
 "gift_one_get_one" = "Gift a sub and get a sub free event going on now!";
@@ -1251,6 +1252,7 @@
 "gift_one_get_one_data.info_limitations" = "This is a limited time event that starts on %@ (%@ UTC) and will end %@ (%@ UTC). This promotion only applies when you gift to another Habitican. If you or your gift recipient already have a subscription, the gifted subscription will add months of credit that will only be used after the current subscription is cancelled or expires.";
 "gift_one_get_one_data.purchase_banner_title" = "Gift a sub and get a sub for free until %@";
 "gift_confirmation_body_g1_g1" = "You sent %@ a %@-month Habitica subscription and the same subscription was applied to your account for our Gift One Get One promotion!";
+"gift_one_get_one_screen_banner" = "While this promotion is active, you’ll receive a matching subscription automatically after sending your gift.";
 "create_guild" = "Create Guild";
 "create_guild_description" = "To create a Guild, log in to the Habitica website then tap the “Create” button on the “My Guilds” screen.";
 "create_challenge" = "Create Challenge";

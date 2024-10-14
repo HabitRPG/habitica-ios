@@ -14,7 +14,7 @@ struct G1G1Banner: View {
     
     private let formatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMM dd"
+        formatter.dateFormat = "MMM d"
         return formatter
     }()
     
@@ -35,7 +35,7 @@ struct G1G1Banner: View {
         }
         .background(LinearGradient(colors: [Color(UIColor("#3BCAD7")), Color(UIColor("#925CF3"))], startPoint: .topLeading, endPoint: .bottomTrailing))
         .onTapGesture {
-            
+            RouterHandler.shared.handle(.promoInfo)
         }
     }
 }
