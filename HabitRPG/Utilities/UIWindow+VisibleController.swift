@@ -26,4 +26,17 @@ extension UIWindow {
             }
         }
     }
+    
+    static func findViewController<VC: UIViewController>(from rootViewController: UIViewController? = nil) -> VC? {
+        var viewController: UIViewController? = rootViewController ?? UIApplication.shared.findKeyWindow()?.rootViewController
+        while viewController != nil {
+            if let vc = viewController as? VC {
+                return vc
+            } else {
+                viewController = viewController?.presentedViewController
+            }
+        }
+        return nil
+    }
 }
+ 

@@ -37,7 +37,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     private let contentRepository = ContentRepository()
     let taskRepository = TaskRepository()
     private let socialRepository = SocialRepository()
-    private let configRepository = ConfigRepository.shared
+    internal let configRepository = ConfigRepository.shared
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         Measurements.start(identifier: "didFinishLaunchingWithOptions")
@@ -431,42 +431,3 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     }
 }
 
-// Maintenance
-extension HabiticaAppDelegate {
-    func handleMaintenanceScreen() -> Bool {
-        let maintenanceData = configRepository.dictionary(variable: .maintenanceData)
-        if let title = maintenanceData["title"] as? String, let descriptionString = maintenanceData["description"] as? String {
-            displayMaintenanceScreen(title: title, descriptionString: descriptionString)
-            return true
-        } else {
-            hideMaintenanceScreen()
-        }
-        return false
-    }
-    
-    func displayMaintenanceScreen(title: String, descriptionString: String) {
-        if findMaintenanceScreen() == nil {
-            let maintenanceController = MaintenanceViewController()
-            maintenanceController.configure(title: title, descriptionString: descriptionString, showAppstoreButton: false)
-            maintenanceController.modalPresentationStyle = .fullScreen
-            maintenanceController.modalTransitionStyle = .crossDissolve
-            UIApplication.topViewController()?.present(maintenanceController, animated: true, completion: nil)
-        }
-    }
-    
-    func hideMaintenanceScreen() {
-        findMaintenanceScreen()?.dismiss(animated: true, completion: nil)
-    }
-    
-    private func findMaintenanceScreen() -> MaintenanceViewController? {
-        var viewController: UIViewController? = UIApplication.shared.findKeyWindow()?.rootViewController
-        while viewController != nil {
-            if let maintenanceController = viewController as? MaintenanceViewController {
-                return maintenanceController
-            } else {
-                viewController = viewController?.presentedViewController
-            }
-        }
-        return nil
-    }
-}
