@@ -113,7 +113,7 @@ struct SubscriptionOptionViewUI<Price: View, Recurring: View, Tag: View>: View {
                                 }.multilineTextAlignment(.leading)
                             } else {
                                 Group {
-                                    Text(isGift ? "Earns" : "Earn ") +
+                                    Text(isGift ? "Earns " : "Earn ") +
                                     Text("+2 Gems").fontWeight(.bold).foregroundColor(isSelected ? Color.yellow5 : .white) +
                                     Text(isGift ? " every month they're subscribed" : " every month you're subscribed")
                                 }.multilineTextAlignment(.leading)

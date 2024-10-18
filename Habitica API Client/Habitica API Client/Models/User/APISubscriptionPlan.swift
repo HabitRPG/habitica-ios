@@ -22,6 +22,7 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
     var consecutive: SubscriptionConsecutiveProtocol?
     var mysteryItems: [String]
     var hourglassPromoReceived: Date?
+    var extraMonths: Int
     
     enum CodingKeys: String, CodingKey {
         case quantity
@@ -36,6 +37,7 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
         case consecutive
         case mysteryItems
         case hourglassPromoReceived
+        case extraMonths
     }
     
     required init(from decoder: Decoder) throws {
@@ -52,5 +54,6 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
         consecutive = try? values.decode(APISubscriptionConsecutive.self, forKey: .consecutive)
         mysteryItems = (try? values.decode([String].self, forKey: .mysteryItems)) ?? []
         hourglassPromoReceived = (try? values.decode(Date.self, forKey: .hourglassPromoReceived))
+        extraMonths = (try? values.decode(Int.self, forKey: .extraMonths)) ?? 0
     }
 }

@@ -88,6 +88,7 @@ private class ViewModel: ObservableObject {
         userRepository.getUser()
             .on(value: { user in
                 self.isSubscribed = user.isSubscribed
+                // swiftlint:disable:next empty_string
                 if self.lossText == "" {
                     self.lossText = LocalizedStringKey(L10n.Faint.subtitle(String((user.stats?.level ?? 1) - 1), String(Int(user.stats?.gold ?? 0))))
                 }
@@ -211,14 +212,14 @@ struct FaintView: View {
             Text(L10n.Faint.title)
                 .font(.system(size: 30, weight: .bold))
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, 48)
+                .padding(.horizontal, 40)
             Text(viewModel.lossText)
                 .foregroundColor(.primaryTextColor)
                 .font(.system(size: 20))
                 .multilineTextAlignment(.center)
-                .frame(maxWidth: 380)
+                .frame(maxWidth: 400)
                 .padding(.top, 12)
-                .padding(.horizontal, 48)
+                .padding(.horizontal, 40)
             Text(L10n.Faint.disclaimer)
                 .foregroundColor(.ternaryTextColor)
                 .font(.system(size: 14))

@@ -22,6 +22,7 @@ public protocol SubscriptionPlanProtocol {
     var consecutive: SubscriptionConsecutiveProtocol? { get set }
     var mysteryItems: [String] { get set }
     var hourglassPromoReceived: Date? { get set }
+    var extraMonths: Int { get set }
 }
 
 public extension SubscriptionPlanProtocol {
@@ -85,4 +86,5 @@ public class PreviewSubscriptionPlan: SubscriptionPlanProtocol {
     public var consecutive: SubscriptionConsecutiveProtocol?
     public var mysteryItems: [String] = []
     public var hourglassPromoReceived: Date?
+    public var extraMonths: Int = 0
 }

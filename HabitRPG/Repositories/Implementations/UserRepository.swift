@@ -442,7 +442,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     
     private var lastSubscriptionCall: Date?
     func subscribe(sku: String, receipt: String) -> Signal<UserProtocol?, Never> {
-        if let lastCall = lastSubscriptionCall, lastCall.timeIntervalSinceNow < -15 {
+        if let lastCall = lastSubscriptionCall, lastCall.timeIntervalSinceNow > -15 {
             return Signal.empty
         }
         lastSubscriptionCall = Date()

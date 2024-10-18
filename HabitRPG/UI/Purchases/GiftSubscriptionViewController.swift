@@ -100,7 +100,7 @@ struct GiftSubscriptionPage: View {
                 .padding(.bottom, 32)
                 Image(Asset.giftSubscriptionHills.name)
                 if viewModel.isGiftOneGetOne() {
-                    VStack(alignment: .center) {
+                    VStack(alignment: .center, spacing: 6) {
                         HStack {
                             Image(Asset.g1g1SparklesLeft.name)
                             Text(L10n.giftOneGetOneTitle)
@@ -109,17 +109,23 @@ struct GiftSubscriptionPage: View {
                         }.padding(.top, 16)
                         Text(L10n.giftOneGetOneScreenBanner)
                             .font(.system(size: 13, weight: .semibold))
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 50)
                             .lineSpacing(2)
                     }.foregroundColor(.white)
                         .frame(maxWidth: .infinity)
+                        .padding(.bottom, 32)
                         .background(LinearGradient(colors: [
-                            Color(hexadecimal: "50B5E9"),
-                            Color(hexadecimal: "925CF3")
+                            .blue100,
+                            .purple400
                         ], startPoint: .top, endPoint: .bottom))
                 }
-            }.background(Color.purple300.ignoresSafeArea(.all, edges: .top).padding(.bottom, 4))
+            }
+            .ignoresSafeArea(.all, edges: .bottom)
+            .background(Color.purple300.ignoresSafeArea(.all, edges: .top).padding(.bottom, 4))
         }.foregroundColor(.white)
-            .background(Color.purple400.ignoresSafeArea(.all, edges: .bottom).padding(.top, 200))
+            .ignoresSafeArea(.all, edges: .bottom)
+            .background((viewModel.isGiftOneGetOne() ? Color.purple400 : Color.blue100).ignoresSafeArea(.all, edges: .bottom).padding(.top, 200))
     }
 }
 

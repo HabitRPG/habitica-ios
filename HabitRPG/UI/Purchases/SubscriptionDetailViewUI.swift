@@ -134,7 +134,13 @@ struct SubscriptionDetailViewUI: View {
     }
     
     var cancelDescription: String {
-        if plan.paymentMethod == "Apple" {
+        if plan.dateTerminated != nil {
+            if plan.isGifted {
+                return L10n.renewSubscriptionGiftedDescription
+            } else {
+                return L10n.renewSubscriptionDescription
+            }
+        } else if plan.paymentMethod == "Apple" {
             return L10n.unsubscribeItunes
         } else if plan.paymentMethod == "Google" {
             return L10n.unsubscribeGoogle
@@ -142,26 +148,22 @@ struct SubscriptionDetailViewUI: View {
             return L10n.unsubscribeWebsite
         } else if plan.isGroupPlanSub {
             return L10n.cancelSubscriptionGroupPlan
-        } else if plan.dateTerminated != nil {
-            if plan.isGifted {
-                return L10n.renewSubscriptionGiftedDescription
-            } else {
-                return L10n.renewSubscriptionDescription
-            }
         } else {
             return L10n.unsubscribeItunes
         }
     }
     
     var cancelButtonText: String? {
-        if plan.paymentMethod == "Google" {
+        if plan.dateTerminated != nil {
+            return L10n.openItunes
+        } else if plan.paymentMethod == "Apple" {
+            return L10n.openItunes
+        } else if plan.paymentMethod == "Google" {
             return L10n.openGooglePlay
-        } else if plan.paymentMethod != nil {
-            return L10n.openWebsite
         } else if plan.isGroupPlanSub {
             return nil
         } else {
-            return L10n.openItunes
+            return L10n.openWebsite
         }
     }
     
@@ -178,6 +180,19 @@ struct SubscriptionDetailViewUI: View {
     
     var body: some View {
         VStack(spacing: 8) {
+            if plan.extraMonths > 0 {
+                Text(LocalizedStringKey(L10n.subscriptionCreditTitle(plan.extraMonths)))
+                    .font(.system(size: 15))
+                    .foregroundColor(.green500)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 11)
+                    .padding(.horizontal, 15)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(lineWidth: 3)
+                            .foregroundColor(.green100)
+                    }
+            }
             DetailContainer {
                 HStack {
                     VStack(alignment: .leading, spacing: 6) {

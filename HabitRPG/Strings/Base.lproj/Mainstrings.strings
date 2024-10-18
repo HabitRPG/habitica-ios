@@ -632,6 +632,7 @@
 "open_app_store" = "Open App Store Page";
 "unsubscribe_website" = "No longer want to subscribe? Due to your payment method, you’ll need to unsubscribe from our website. To do this, tap the button below, log in to your account, tap the player icon in the top right, then go to the Subscription section. Any leftover months of subscription credit will be added to your end date after cancellation. We’ll miss you!";
 "unsubscribe_google" = "No longer want to subscribe? Due to your payment method, you’ll need to unsubscribe through the Google Play Store. Any leftover months of subscription credit will be added to your end date after cancellation.";
+"subscription_credit_title" = "Your **%d months** of subscription credit will activate after canceling";
 "group_plan" = "Group Plan";
 "member_group_plan" = "Member of a Group Plan";
 "open_website" = "Open Habitica Website";
@@ -831,7 +832,7 @@
 "tutorials.stats" = "Tap the gray button to allocate lots of your stats at once, or tap the arrows to add them one point at a time.";
 "tutorials.spells" = "Skills are special abilities that have powerful effects! Tap on a skill to use it. It will cost Mana (the blue bar), which you earn by checking in every day and by completing your real-life tasks. Check out the FAQ in the menu for more info!";
 "faint.title" = "You ran out of Health!";
-"faint.subtitle" = "You’ll drop to **level %s, lose %s Gold, and break a piece of gear**…\nYou can earn them all back with hard work!";
+"faint.subtitle" = "You’ll drop to **level %s, lose %s Gold, and break a piece of gear**… You can earn them all back with hard work!";
 "faint.dont_despair" = "Don't despair!";
 "faint.good_luck_text" = "But you can get them all back with hard work! Good luck—you’ll do great. ";
 "faint.button" = "Refill Health & Try Again";
@@ -1249,7 +1250,7 @@
 "use_immediately_disclaimer" = "This will take effect immediately after buying!";
 "gift_one_get_one_data.infoPrompt" = "In honor of the season of giving we're bringing back a very special promotion. Now when you gift somebody else a subscription, you get the same sub for yourself for free!";
 "gift_one_get_one_data.info_instructions" = "Tap ‘Gift a Subscription’ and type in the username of another account you’d like to gift to. From there, pick the sub length you’d like to gift and check out. Your account will automatically be rewarded with the same level of subscription you just gifted.";
-"gift_one_get_one_data.info_limitations" = "This is a limited time event that starts on %@ (%@ UTC) and will end %@ (%@ UTC). This promotion only applies when you gift to another Habitican. If you or your gift recipient already have a subscription, the gifted subscription will add months of credit that will only be used after the current subscription is cancelled or expires.";
+"gift_one_get_one_data.info_limitations" = "This is a limited time event that starts on %@ and will end %@. This promotion only applies when you gift to another Habitican. If you or your gift recipient already have a subscription, the gifted subscription will add months of credit that will only be used after the current subscription is cancelled or expires.";
 "gift_one_get_one_data.purchase_banner_title" = "Gift a sub and get a sub for free until %@";
 "gift_confirmation_body_g1_g1" = "You sent %@ a %@-month Habitica subscription and the same subscription was applied to your account for our Gift One Get One promotion!";
 "gift_one_get_one_screen_banner" = "While this promotion is active, you’ll receive a matching subscription automatically after sending your gift.";
