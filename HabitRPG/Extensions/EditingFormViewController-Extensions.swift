@@ -16,7 +16,7 @@ extension EditingFormViewController {
         controller.autoDismiss = false
         controller.formTitle = title
         controller.saveButtonTitle = saveButtonTitle
-        controller.fields.append(EditingTextField(key: "username", title: subtitle, type: .name, placeholder: L10n.username))
+        controller.fields.append(EditingTextField(key: "username", title: subtitle, type: .name, submitOnEnter: true, placeholder: L10n.username))
         controller.onSave = {values in
             controller.isLoading(true)
             if let username = values["username"] {

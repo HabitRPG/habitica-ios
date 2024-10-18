@@ -121,10 +121,12 @@ class EditingTextField: UIStackView, UITextFieldDelegate {
     
     let key: String
     private let type: EditingTextFieldType
+    let submitOnEnter: Bool
     
     init(key: String, title: String, type: EditingTextFieldType, submitOnEnter: Bool = false, placeholder: String? = nil, value: String? = nil) {
         self.key = key
         self.type = type
+        self.submitOnEnter = submitOnEnter
         super.init(frame: CGRect.zero)
         textField.delegate = self
         textField.text = value
@@ -242,6 +244,13 @@ class EditingFormViewController: UIViewController, Themeable {
             stackView.addArrangedSubview(field)
         }
         stackView.addArrangedSubview(loadingIndicator)
+        
+        if let field = fields.last, field.submitOnEnter {
+            field.textField.returnKeyType = .done
+            if !field.textField.allTargets.contains(self) {
+                field.textField.addTarget(self, action: #selector(saveForm), for: .editingDidEndOnExit)
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
