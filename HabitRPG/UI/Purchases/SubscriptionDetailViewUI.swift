@@ -62,15 +62,15 @@ struct SubscriptionDetailViewUI: View {
         default:
             break
         }
-        if let duration = duration {
-            return L10n.subscriptionDuration(duration)
-        } else if plan.isGroupPlanSub {
-            return L10n.memberGroupPlan
-        } else if let terminated = plan.dateTerminated {
+        if let terminated = plan.dateTerminated {
             let formatter = DateFormatter()
             formatter.dateStyle = .medium
             formatter.timeStyle = .none
             return L10n.endingOn(formatter.string(from: terminated))
+        } else if let duration = duration {
+            return L10n.subscriptionDuration(duration)
+        } else if plan.isGroupPlanSub {
+            return L10n.memberGroupPlan
         } else {
             return ""
         }
@@ -82,6 +82,11 @@ struct SubscriptionDetailViewUI: View {
         } else if plan.dateTerminated != nil {
             return L10n.cancelled
         } else if plan.paymentMethod == "Apple" {
+            if let nextEstimatedPayment = plan.nextEstimatedPayment {
+                let format = DateFormatter()
+                format.dateFormat = "MMM YYYY"
+                return L10n.nextPaymentX(format.string(from: nextEstimatedPayment))
+            }
             return "Apple Pay"
         } else if plan.paymentMethod == "Google" {
             return "Google Pay"
@@ -183,6 +188,7 @@ struct SubscriptionDetailViewUI: View {
             if plan.extraMonths > 0 {
                 Text(LocalizedStringKey(L10n.subscriptionCreditTitle(plan.extraMonths)))
                     .font(.system(size: 15))
+                    .multilineTextAlignment(.center)
                     .foregroundColor(.green500)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 11)
@@ -205,17 +211,19 @@ struct SubscriptionDetailViewUI: View {
                     activityPill
                 }
             }
-            DetailContainer {
-                HStack {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text(L10n.Subscription.paymentMethod)
-                            .font(.system(size: 15, weight: .semibold))
-                        Text(paymentTypeText)
-                            .font(.system(size: 13))
-                    }
-                    Spacer()
-                    if let image = paymentImage {
-                        Image(uiImage: image)
+            if !plan.isGroupPlanSub {
+                DetailContainer {
+                    HStack {
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text(L10n.Subscription.paymentMethod)
+                                .font(.system(size: 15, weight: .semibold))
+                            Text(paymentTypeText)
+                                .font(.system(size: 13))
+                        }
+                        Spacer()
+                        if let image = paymentImage {
+                            Image(uiImage: image)
+                        }
                     }
                 }
             }
@@ -290,7 +298,7 @@ struct SubscriptionDetailViewUI: View {
     
     func cancelSubscription() {
         var url: URL?
-        if plan.paymentMethod == "Apple" || plan.isGifted {
+        if plan.paymentMethod == "Apple" || plan.isGifted || plan.dateTerminated != nil {
             if #available(iOS 15.0, *) {
                 if let window = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                     Task {

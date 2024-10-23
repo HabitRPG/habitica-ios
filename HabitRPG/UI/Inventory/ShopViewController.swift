@@ -86,14 +86,12 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if isSubscribed == nil {
-            userRepository.getUser().take(first: 1).on(value: { user in
-                self.isSubscribed = user.isSubscribed
-                if self.shopIdentifier == "timeTravelersShop" && !user.isSubscribed && user.purchased?.subscriptionPlan?.consecutive?.hourglasses == 0 {
-                    SubscriptionModalViewController(presentationPoint: .timetravelers).show()
-                }
-            }).start()
-        }
+        userRepository.getUser().on(value: {[weak self] user in
+            if self?.isSubscribed == nil && self?.shopIdentifier == "timeTravelersShop" && !user.isSubscribed && user.purchased?.subscriptionPlan?.consecutive?.hourglasses == 0 {
+                SubscriptionModalViewController(presentationPoint: .timetravelers).show()
+            }
+            self?.isSubscribed = user.isSubscribed
+        }).start()
         
         if let sectionKey = openToSection {
             let section = dataSource?.sections.firstIndex(where: { section in

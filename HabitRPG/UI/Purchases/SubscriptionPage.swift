@@ -96,6 +96,8 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
     
     @Published var activePromo: HabiticaPromotion?
     @Published var isRestoringPurchase = false
+    
+    @Published var scrollToTop: Date?
 
     init(presentationPoint: PresentationPoint?) {
         #if DEBUG
@@ -107,11 +109,14 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
         
         super.init()
         
-        
         userRepository.getUser().on(value: {[weak self] user in
+            if (self?.scrollToTop == nil && self?.isSubscribed == false && user.isSubscribed) {
+                self?.scrollToTop = Date()
+            }
             self?.isSubscribed = user.isSubscribed
             self?.subscriptionPlan = user.purchased?.subscriptionPlan
             self?.showHourglassPromo = user.purchased?.subscriptionPlan?.isEligableForHourglassPromo == true
+
         }).start()
         
         if presentationPoint != nil {
@@ -226,6 +231,7 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
                 case .success:
                     completion(true)
                     self.isSubscribed = true
+                    self.scrollToTop = Date()
                 case .failure:
                     completion(false)
                 }
@@ -320,11 +326,11 @@ struct GiftSubscriptionSegment: View {
 struct SubscriptionPage: View {
     @ObservedObject var viewModel: SubscriptionViewModel
     
-    var backgroundColor: Color = Color(UIColor.purple300)
+    var backgroundColor: Color = .purple300
     var textColor: Color = .white
     
     var body: some View {
-            LazyVStack(spacing: 0) {
+            VStack(spacing: 0) {
                 if let endDate = viewModel.activePromo?.endDate, viewModel.activePromo?.identifier == "g1g1" {
                     G1G1Banner(endDate: endDate)
                         .frame(height: 96)
@@ -523,11 +529,21 @@ struct SubscriptionPage: View {
 }
 
 struct ScrollableSubscriptionPage: View {
-    let viewModel: SubscriptionViewModel
+    @ObservedObject var viewModel: SubscriptionViewModel
     
     var body: some View {
-        ScrollView {
-            SubscriptionPage(viewModel: viewModel)
+        ScrollViewReader { reader in
+            ScrollView {
+                SubscriptionPage(viewModel: viewModel)
+                    .id("page")
+            }
+            .onChange(of: viewModel.scrollToTop) { _ in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    withAnimation {
+                        reader.scrollTo("page", anchor: .top)
+                    }
+                })
+            }
         }
         .background(Color.purple400.ignoresSafeArea(.all, edges: .bottom).padding(.top, 200))
     }

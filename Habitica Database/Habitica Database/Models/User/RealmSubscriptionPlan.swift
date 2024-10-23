@@ -17,6 +17,7 @@ class RealmSubscriptionPlan: Object, SubscriptionPlanProtocol {
     @objc dynamic var dateTerminated: Date?
     @objc dynamic var dateUpdated: Date?
     @objc dynamic var dateCreated: Date?
+    @objc dynamic var dateCurrentTypeCreated: Date?
     @objc dynamic var planId: String?
     @objc dynamic var paymentMethod: String?
     @objc dynamic var customerId: String?
@@ -74,5 +75,6 @@ class RealmSubscriptionPlan: Object, SubscriptionPlanProtocol {
         mysteryItems = protocolObject.mysteryItems
         hourglassPromoReceived = protocolObject.hourglassPromoReceived
         extraMonths = protocolObject.extraMonths
+        dateCurrentTypeCreated = protocolObject.dateCurrentTypeCreated
     }
 }

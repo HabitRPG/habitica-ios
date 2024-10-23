@@ -98,7 +98,7 @@ struct GiftSubscriptionPage: View {
                 .padding(.horizontal, 24)
                 .padding(.top, 16)
                 .padding(.bottom, 32)
-                Image(Asset.giftSubscriptionHills.name)
+                Image(viewModel.isGiftOneGetOne() ? Asset.giftSubscriptionHills.name : Asset.subscriptionBackground.name)
                 if viewModel.isGiftOneGetOne() {
                     VStack(alignment: .center, spacing: 6) {
                         HStack {
@@ -125,7 +125,7 @@ struct GiftSubscriptionPage: View {
             .background(Color.purple300.ignoresSafeArea(.all, edges: .top).padding(.bottom, 4))
         }.foregroundColor(.white)
             .ignoresSafeArea(.all, edges: .bottom)
-            .background((viewModel.isGiftOneGetOne() ? Color.purple400 : Color.blue100).ignoresSafeArea(.all, edges: .bottom).padding(.top, 200))
+            .background((Color.purple400).ignoresSafeArea(.all, edges: .bottom).padding(.top, 200))
     }
 }
 

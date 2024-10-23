@@ -69,19 +69,28 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         sections.append(ItemSection<InAppRewardProtocol>())
         sections[0].showIfEmpty = needsGearSection
         
-        disposable.add(inventoryRepository.getShop(identifier: identifier).combineLatest(with: userRepository.getUser()).on(value: {[weak self] (shop, user) in
+        disposable.add(inventoryRepository.getShop(identifier: identifier).on(value: {[weak self] shop in
             let sectionCount = self?.sections.count ?? 0
             if sectionCount >= 2 {
                 self?.sections.removeLast(sectionCount - 1)
             }
             self?.loadCategories(shop?.categories ?? [])
             self?.delegate?.updateShopHeader(shop: shop)
-            
+        }).start())
+        
+        disposable.add(userRepository.getUser().on(value: {[weak self] user in
+            var shouldReload = false
+            if self?.user?.isSubscribed != user.isSubscribed {
+                shouldReload = true
+            }
             self?.user = user
             if self?.selectedGearCategory == nil {
                 self?.selectedGearCategory = self?.userClass
             }
             self?.delegate?.updateNavBar(gold: Int(user.stats?.gold ?? 0), gems: user.gemCount, hourglasses: user.purchased?.subscriptionPlan?.consecutive?.hourglasses ?? 0)
+            if shouldReload {
+                self?.collectionView?.reloadData()
+            }
         }).start())
         
         disposable.add(userRepository.getInAppRewards()

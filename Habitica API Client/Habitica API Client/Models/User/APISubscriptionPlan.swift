@@ -16,6 +16,7 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
     var dateTerminated: Date?
     var dateUpdated: Date?
     var dateCreated: Date?
+    var dateCurrentTypeCreated: Date?
     var planId: String?
     var customerId: String?
     var paymentMethod: String?
@@ -29,6 +30,7 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
         case dateTerminated
         case dateUpdated
         case dateCreated
+        case dateCurrentTypeCreated
         case gemsBought
         case perkMonthCount
         case planId
@@ -48,6 +50,7 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
         dateTerminated = try? values.decode(Date.self, forKey: .dateTerminated)
         dateUpdated = try? values.decode(Date.self, forKey: .dateUpdated)
         dateCreated = try? values.decode(Date.self, forKey: .dateCreated)
+        dateCurrentTypeCreated = try? values.decode(Date.self, forKey: .dateCurrentTypeCreated)
         planId = try? values.decode(String.self, forKey: .planId)
         customerId = try? values.decode(String.self, forKey: .customerId)
         paymentMethod = try? values.decode(String.self, forKey: .paymentMethod)
@@ -55,5 +58,6 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
         mysteryItems = (try? values.decode([String].self, forKey: .mysteryItems)) ?? []
         hourglassPromoReceived = (try? values.decode(Date.self, forKey: .hourglassPromoReceived))
         extraMonths = (try? values.decode(Int.self, forKey: .extraMonths)) ?? 0
+        
     }
 }

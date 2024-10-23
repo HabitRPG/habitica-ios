@@ -13,7 +13,7 @@ import PanModal
 class HostingPanModal<Content: View>: BaseUIViewController, PanModalPresentable {
     
     let scrollView = UIScrollView()
-    var hostingView: UIHostingView<SubscriptionPage>?
+    var hostingView: UIHostingView<Content>?
     
     var panScrollable: UIScrollView? {
         return scrollView
@@ -34,11 +34,11 @@ class HostingPanModal<Content: View>: BaseUIViewController, PanModalPresentable 
         if let view = hostingView {
             scrollView.addSubview(view)
             
-            view.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true
-            view.topAnchor.constraint(equalTo: self.scrollView.topAnchor).isActive = true
-            view.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true
-            view.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true
-            view.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+            view.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: 0).isActive = true
+            view.topAnchor.constraint(equalTo: self.scrollView.topAnchor, constant: 0).isActive = true
+            view.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor, constant: 0).isActive = true
+            view.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor, constant: 0).isActive = true
+            view.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: 0).isActive = true
             
             hostingView?.shouldResizeToFitContent = true
         }

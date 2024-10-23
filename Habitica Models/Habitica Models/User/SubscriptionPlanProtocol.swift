@@ -16,6 +16,7 @@ public protocol SubscriptionPlanProtocol {
     var dateTerminated: Date? { get set }
     var dateUpdated: Date? { get set }
     var dateCreated: Date? { get set }
+    var dateCurrentTypeCreated: Date? { get set }
     var planId: String? { get set }
     var customerId: String? { get set }
     var paymentMethod: String? { get set }
@@ -51,8 +52,21 @@ public extension SubscriptionPlanProtocol {
         return gemCapTotal - gemsBought
     }
     
-    private var isMonthlyRenewal: Bool {
+    var interval: Int {
         if planId == "basic_earned" || planId == "group_monthly" {
+            return 1
+        } else if planId == "basic_3mo" {
+            return 3
+        } else if planId == "basic_6mo" || planId == "google_6mo" {
+            return 6
+        } else if planId == "basic_12mo" {
+            return 12
+        }
+        return 0
+    }
+    
+    private var isMonthlyRenewal: Bool {
+        if interval == 1 {
             return true
         } else {
             return false
@@ -70,6 +84,24 @@ public extension SubscriptionPlanProtocol {
     var isEligableForHourglassPromo: Bool {
         return hourglassPromoReceived == nil
     }
+    
+    var nextEstimatedPayment: Date? {
+        guard var startDate = dateCurrentTypeCreated ?? dateCreated else {
+            return nil
+        }
+        let interval = interval
+        let now = Date()
+        let calendar = Calendar.current
+        while (startDate < now) {
+            var newDate = calendar.date(byAdding: .month, value: interval, to: startDate)
+            if let date = newDate {
+                startDate = date
+            } else {
+                return nil
+            }
+        }
+        return startDate
+    }
 }
 
 public class PreviewSubscriptionPlan: SubscriptionPlanProtocol {
@@ -80,6 +112,7 @@ public class PreviewSubscriptionPlan: SubscriptionPlanProtocol {
     public var dateTerminated: Date?
     public var dateUpdated: Date?
     public var dateCreated: Date?
+    public var dateCurrentTypeCreated: Date?
     public var planId: String?
     public var customerId: String?
     public var paymentMethod: String?

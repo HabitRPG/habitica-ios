@@ -738,6 +738,10 @@ public enum L10n {
   public static func nextCheckinPrizeXDays(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "next_checkin_prize_x_days", p1)
   }
+  /// Next Payment %@
+  public static func nextPaymentX(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "next_payment_x", p1)
+  }
   /// Next prize at %d Check-Ins
   public static func nextPrizeAtXCheckins(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "next_prize_at_x_checkins", p1)
@@ -1086,7 +1090,7 @@ public enum L10n {
   public static var subscriptionBenefitsTitle: String { return L10n.tr("Mainstrings", "subscription_benefits_title") }
   /// You get these benefits for being a Subscriber
   public static var subscriptionBenefitsTitleSubscribed: String { return L10n.tr("Mainstrings", "subscription_benefits_title_subscribed") }
-  /// Your %d months of subscription credit will activate after canceling
+  /// Your **%d months** of subscription credit will activate after canceling
   public static func subscriptionCreditTitle(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "subscription_credit_title", p1)
   }

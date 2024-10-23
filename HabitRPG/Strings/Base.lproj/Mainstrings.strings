@@ -753,6 +753,7 @@
 "randomize" = "Randomize";
 "finish" = "Finish";
 "next" = "Next";
+"next_payment_x" = "Next Payment %@";
 "mana_points" = "Mana Points";
 "character_level" = "Character Level";
 "gold" = "Gold";
@@ -978,7 +979,7 @@
 "subscription_duration" = "Recurring every %@";
 "resubscribe" = "Resubscribe";
 "renew_subscription" = "Renew Subscription";
-"ending_on" = "Ending on %@";
+"ending_on" = "Benefits end %@";
 "not_recurring" = "Not Recurring";
 "cancelled" = "Cancelled";
 "cancel_subscription" = "Cancel subscription";
