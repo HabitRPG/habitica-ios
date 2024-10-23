@@ -147,6 +147,8 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
     
     @objc
     private func refresh() {
+        userRepository.retrieveUser(forced: true).observeCompleted {
+        }
         dataSource?.retrieveShopInventory({
             self.refresher.endRefreshing()
         })

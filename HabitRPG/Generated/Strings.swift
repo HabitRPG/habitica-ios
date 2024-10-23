@@ -342,7 +342,7 @@ public enum L10n {
   public static var endChallenge: String { return L10n.tr("Mainstrings", "end_challenge") }
   /// To end a Challenge, log in to the Habitica website then tap the “End Challenge” button on the right of the Challenge screen.
   public static var endChallengeDescription: String { return L10n.tr("Mainstrings", "end_challenge_description") }
-  /// Ending on %@
+  /// Benefits end %@
   public static func endingOn(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "ending_on", p1)
   }
