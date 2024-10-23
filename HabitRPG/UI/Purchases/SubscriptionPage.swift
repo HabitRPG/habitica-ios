@@ -563,6 +563,8 @@ class SubscriptionModalViewController: HostingPanModal<SubscriptionPage> {
     let viewModel: SubscriptionViewModel
     let userRepository = UserRepository()
     
+    private let upperBackground = UIView()
+    
     init(presentationPoint: PresentationPoint?) {
         viewModel = SubscriptionViewModel(presentationPoint: presentationPoint)
         super.init(nibName: nil, bundle: nil)
@@ -593,7 +595,31 @@ class SubscriptionModalViewController: HostingPanModal<SubscriptionPage> {
         hostingView = UIHostingView(rootView: SubscriptionPage(viewModel: viewModel))
         super.viewDidLoad()
         view.backgroundColor = .purple400
+        view.insertSubview(upperBackground, at: 0)
+        upperBackground.backgroundColor = .purple300
         scrollView.bounces = false
+        
+        userRepository.getUser().on(value: {[weak self] user in
+            self?.viewModel.isSubscribed = user.isSubscribed
+            self?.viewModel.subscriptionPlan = user.purchased?.subscriptionPlan
+            self?.viewModel.showHourglassPromo = user.purchased?.subscriptionPlan?.isEligableForHourglassPromo == true
+        }).start()
+        
+        viewModel.onGiftButtonTapped = {[weak self] in
+            self?.giftSubscriptionButtonTapped()
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        upperBackground.pin.left().top().right().height(100)
+    }
+    
+    func giftSubscriptionButtonTapped() {
+        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
+            RouterHandler.shared.handle(.giftSubscription(username: username))
+        }, saveButtonTitle: L10n.continue)
+        present(navController, animated: true, completion: nil)
     }
 }
 
