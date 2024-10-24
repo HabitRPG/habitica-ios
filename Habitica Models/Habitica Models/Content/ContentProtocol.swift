@@ -21,4 +21,5 @@ public protocol ContentProtocol {
     var pets: [PetProtocol]? { get set }
     var mounts: [MountProtocol]? { get set }
     var customizations: [CustomizationProtocol] { get set }
+    var mystery: [GearSetProtocol] { get set }
 }

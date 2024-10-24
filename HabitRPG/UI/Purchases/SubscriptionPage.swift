@@ -90,6 +90,7 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
     @Published var subscriptionPlan: SubscriptionPlanProtocol?
     @Published var showHourglassPromo: Bool = true
     @Published var mysteryGear: GearProtocol?
+    @Published var mysteryGearSet: GearSetProtocol?
     
     @Published var selectedSubscription: String = PurchaseHandler.subscriptionIdentifiers[0]
     @Published var availableSubscriptions = PurchaseHandler.subscriptionIdentifiers
@@ -126,6 +127,10 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
                 
         disposable.inner.add(inventoryRepository.getLatestMysteryGear().on(value: { gear in
             self.mysteryGear = gear
+        }).start())
+        
+        disposable.inner.add(inventoryRepository.getLatestMysteryGearSet().on(value: { set in
+            self.mysteryGearSet = set
         }).start())
         
         retrieveProductList()
@@ -287,13 +292,24 @@ struct SubscriptionBenefitListView: View {
     }
     let presentationPoint: PresentationPoint?
     let mysteryGear: GearProtocol?
+    let mysteryGearSet: GearSetProtocol?
+    
+    var mysteryText: String {
+        if let text = mysteryGearSet?.text {
+            return L10n.subscriptionInfo3DescriptionGear(dateFormatter.string(from: Date()), text)
+        } else if let text = mysteryGear?.text {
+            return L10n.subscriptionInfo3DescriptionGear(dateFormatter.string(from: Date()), text)
+        } else {
+            return L10n.subscriptionInfo3Description
+        }
+    }
     
     var body: some View {
         if presentationPoint != .gemForGold {
             SubscriptionBenefitView(icon: Image(Asset.subBenefitsGems.name), title: Text(L10n.subscriptionInfo1Title), description: Text(L10n.subscriptionInfo1Description))
         }
         SubscriptionBenefitView(icon: PixelArtView(name: "shop_set_mystery_\(mysteryGear?.key?.split(separator: "_").last ?? "")"), title: Text(L10n.subscriptionInfo3Title),
-                                description: Text(mysteryGear?.text != nil ? L10n.subscriptionInfo3DescriptionGear(dateFormatter.string(from: Date()), mysteryGear?.text ?? "") : L10n.subscriptionInfo3Description))
+                                description: Text(mysteryText))
 
         SubscriptionBenefitView(icon: Image(Asset.subBenefitsHourglasses.name), title: Text(L10n.subscriptionInfo2Title), description: Text(L10n.subscriptionInfo2Description))
         if presentationPoint != .faint {
@@ -404,7 +420,7 @@ struct SubscriptionPage: View {
                             }
                         }.padding(.bottom, 24)
                     }
-                    SubscriptionBenefitListView(presentationPoint: viewModel.presentationPoint, mysteryGear: viewModel.mysteryGear)
+                    SubscriptionBenefitListView(presentationPoint: viewModel.presentationPoint, mysteryGear: viewModel.mysteryGear, mysteryGearSet: viewModel.mysteryGearSet)
                         .padding(.horizontal, 24)
                     ZStack(alignment: .top) {
                         VStack(spacing: 0) {
@@ -479,7 +495,7 @@ struct SubscriptionPage: View {
                         .padding(.horizontal, 24)
                     SubscriptionSeparator()
                         .padding(.horizontal, 24)
-                    SubscriptionBenefitListView(presentationPoint: viewModel.presentationPoint, mysteryGear: viewModel.mysteryGear)
+                    SubscriptionBenefitListView(presentationPoint: viewModel.presentationPoint, mysteryGear: viewModel.mysteryGear, mysteryGearSet: viewModel.mysteryGearSet)
                         .padding(.horizontal, 24)
                     Text(L10n.Subscription.enjoyTheseBenefits)
                         .font(.system(size: 17, weight: .semibold))

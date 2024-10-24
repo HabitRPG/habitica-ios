@@ -226,13 +226,10 @@ struct ArmoireView: View {
                     .padding(.horizontal, 12)
                     .foregroundColor(Color.clear)
                     .animatingOverlay(for: viewModel.gold)
-                    .animation(.linear(duration: 2))
+                    .animation(.linear(duration: 2), value: viewModel.gold)
                     .onAppear {
                         viewModel.gold -= 100
                         confettiCounter = 1
-                        withAnimation(.easeInOut(duration: 2.5).repeatForever(autoreverses: true)) {
-                            isBobbing = true
-                        }
                     }
             }
             .foregroundColor(Color(ThemeService.shared.theme.isDark ? UIColor.yellow500 : UIColor.yellow1))
@@ -241,23 +238,25 @@ struct ArmoireView: View {
             .padding(.leading, 12)
             .background(Color(UIColor.yellow100).opacity(0.4))
             .opacity(viewModel.hideGold ? 0.0 : 1.0)
-            .animation(.linear, value: viewModel.hideGold)
+            .animation(.linear(duration: 0.1), value: viewModel.hideGold)
             .cornerRadius(16)
             .padding(.top, 24 * paddingScaling)
             .padding(.bottom, 16 * paddingScaling)
             Spacer()
             
             ZStack {
-                EmptyView()
-                    .confettiCannon(counter: $confettiCounter,
-                                num: 5,
-                                confettis: [.image(Asset.confettiPill.name)],
-                                colors: [Color(UIColor.yellow100), Color(UIColor.red100), Color(UIColor.blue100), Color(UIColor.purple400)], confettiSize: 10,
-                                rainHeight: UIScreen.main.bounds.height, fadesOut: false,
-                                openingAngle: .degrees(30),
-                                closingAngle: .degrees(150), radius: 400,
-                                repetitions: 20,
-                                repetitionInterval: 0.1)
+                if !viewModel.isUsingPerk || viewModel.usedPerk {
+                    EmptyView()
+                        .confettiCannon(counter: $confettiCounter,
+                                        num: 5,
+                                        confettis: [.image(Asset.confettiPill.name)],
+                                        colors: [Color(UIColor.yellow100), Color(UIColor.red100), Color(UIColor.blue100), Color(UIColor.purple400)], confettiSize: 10,
+                                        rainHeight: UIScreen.main.bounds.height, fadesOut: false,
+                                        openingAngle: .degrees(30),
+                                        closingAngle: .degrees(150), radius: 400,
+                                        repetitions: 20,
+                                        repetitionInterval: 0.1)
+                }
                     PixelArtView(source: viewModel.icon)
                         .frame(width: viewModel.iconWidth, height: viewModel.iconHeight)
                         .opacity(1)
@@ -322,7 +321,9 @@ struct ArmoireView: View {
                             viewModel.isUsingPerk = true
                             viewModel.useSubBenefit {
                                 viewModel.usedPerk = true
-                                confettiCounter += 1
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                                    confettiCounter += 1
+                                })
                             }
                         }, label: {
                             Group {
@@ -396,6 +397,11 @@ struct ArmoireView: View {
                 .edgesIgnoringSafeArea(.bottom))
         }
         .edgesIgnoringSafeArea(.bottom)
+        .onAppear {
+            withAnimation(.easeInOut(duration: 2.5).repeatForever(autoreverses: true)) {
+                isBobbing = true
+            }
+        }
         .sheet(isPresented: $showArmoireAlert) {
             NavigationView {
                 VStack(alignment: .leading) {

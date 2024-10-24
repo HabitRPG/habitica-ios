@@ -212,6 +212,18 @@ public class InventoryLocalRepository: ContentLocalRepository {
         }
     }
     
+    public func getLatestMysteryGearSet() -> SignalProducer<GearSetProtocol?, ReactiveSwiftRealmError> {
+        return RealmGearSet.findBy(query: "key CONTAINS '20'").sorted(key: "key", ascending: false)
+        .reactive()
+            .map { (result, _) in
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyyMM"
+                return result.first { item in
+                    return item.key?.contains(dateFormatter.string(from: Date())) == true
+                }
+        }
+    }
+    
     public func getCurrentTimeLimitedItems() -> SignalProducer<[ItemProtocol], ReactiveSwiftRealmError> {
         let now = Date() as NSDate
         return SignalProducer.combineLatest(

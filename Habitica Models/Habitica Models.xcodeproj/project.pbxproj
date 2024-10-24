@@ -109,6 +109,7 @@
 		29990DC020E65C05001ADD8B /* TaskResponseQuestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DBF20E65C05001ADD8B /* TaskResponseQuestProtocol.swift */; };
 		29990DC220E65C33001ADD8B /* TaskResponseTempProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DC120E65C33001ADD8B /* TaskResponseTempProtocol.swift */; };
 		29990DC420E65CA4001ADD8B /* TaskResponseDropProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DC320E65CA4001ADD8B /* TaskResponseDropProtocol.swift */; };
+		299CE6332CCA5B7800ABA85C /* GearSetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299CE6322CCA5B7200ABA85C /* GearSetProtocol.swift */; };
 		299FB27A2084946700422522 /* AnimalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2792084946700422522 /* AnimalProtocol.swift */; };
 		299FB27C208494CA00422522 /* PetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB27B208494CA00422522 /* PetProtocol.swift */; };
 		299FB27E208494E200422522 /* MountProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB27D208494E200422522 /* MountProtocol.swift */; };
@@ -250,6 +251,7 @@
 		29990DBF20E65C05001ADD8B /* TaskResponseQuestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskResponseQuestProtocol.swift; sourceTree = "<group>"; };
 		29990DC120E65C33001ADD8B /* TaskResponseTempProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskResponseTempProtocol.swift; sourceTree = "<group>"; };
 		29990DC320E65CA4001ADD8B /* TaskResponseDropProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskResponseDropProtocol.swift; sourceTree = "<group>"; };
+		299CE6322CCA5B7200ABA85C /* GearSetProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearSetProtocol.swift; sourceTree = "<group>"; };
 		299FB2792084946700422522 /* AnimalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalProtocol.swift; sourceTree = "<group>"; };
 		299FB27B208494CA00422522 /* PetProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetProtocol.swift; sourceTree = "<group>"; };
 		299FB27D208494E200422522 /* MountProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountProtocol.swift; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 		295610E52056C5B500D9711A /* Content */ = {
 			isa = PBXGroup;
 			children = (
+				299CE6322CCA5B7200ABA85C /* GearSetProtocol.swift */,
 				299FB2792084946700422522 /* AnimalProtocol.swift */,
 				295610E62056C5BF00D9711A /* ContentProtocol.swift */,
 				29144899208A32B400F3A6B5 /* CustomizationProtocol.swift */,
@@ -698,6 +701,7 @@
 				29144890208A1B1500F3A6B5 /* HairProtocol.swift in Sources */,
 				29A6B86A20690D470086B2A6 /* WeekRepeatProtocol.swift in Sources */,
 				295611052056DC7100D9711A /* QuestBossProtocol.swift in Sources */,
+				299CE6332CCA5B7800ABA85C /* GearSetProtocol.swift in Sources */,
 				2931150822D745E700E4A9E3 /* AchievementProtocol.swift in Sources */,
 				29990DC420E65CA4001ADD8B /* TaskResponseDropProtocol.swift in Sources */,
 				2912C3C122CB912B00BC485F /* NotificationQuestInviteProtocol.swift in Sources */,

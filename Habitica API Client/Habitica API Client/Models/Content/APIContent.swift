@@ -102,6 +102,7 @@ public class APIContent: ContentProtocol, Decodable {
     public var pets: [PetProtocol]?
     public var mounts: [MountProtocol]?
     public var customizations: [CustomizationProtocol]
+    public var mystery: [GearSetProtocol]
     
     enum CodingKeys: String, CodingKey {
         case food
@@ -115,6 +116,7 @@ public class APIContent: ContentProtocol, Decodable {
         case pets = "petInfo"
         case mounts = "mountInfo"
         case customizations = "appearances"
+        case mystery
     }
     
     public required init(from decoder: Decoder) throws {
@@ -165,5 +167,9 @@ public class APIContent: ContentProtocol, Decodable {
         noBackground.key = ""
         noBackground.type = "background"
         customizations.append(noBackground)
+        
+        mystery = (try? values.decode([String: APIGearSet].self, forKey: .mystery).map({ (_, value) in
+            return value
+        })) ?? []
     }
 }

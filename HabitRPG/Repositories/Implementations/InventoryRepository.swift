@@ -341,6 +341,10 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         return localRepository.getLatestMysteryGear()
     }
     
+    func getLatestMysteryGearSet() -> SignalProducer<GearSetProtocol?, ReactiveSwiftRealmError> {
+        return localRepository.getLatestMysteryGearSet()
+    }
+    
     func getCurrentTimeLimitedItems() -> SignalProducer<[ItemProtocol], ReactiveSwiftRealmError> {
         return localRepository.getCurrentTimeLimitedItems()
     }
