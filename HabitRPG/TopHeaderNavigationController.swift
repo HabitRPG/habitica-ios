@@ -133,7 +133,8 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         if self.shouldHideTopHeader {
            return 0
         }
-        if statusBarHeight == 59 {
+        // iphones with dynamic island need this for some reason
+        if statusBarHeight == 59 || statusBarHeight == 62 {
             return topHeaderHeight + 10
         }
         return self.topHeaderHeight
