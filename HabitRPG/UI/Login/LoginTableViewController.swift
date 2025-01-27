@@ -64,6 +64,9 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         googleLoginButton.addTarget(self, action: #selector(googleLoginButtonPressed), for: .touchUpInside)
         appleLoginButton.addTarget(self, action: #selector(appleLoginButtonPressed), for: .touchUpInside)
         forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonPressed), for: .touchUpInside)
+        
+        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tapGesture)
 
         self.viewModel.setAuthType(authType: LoginViewAuthType.none)
         bindViewModel()
