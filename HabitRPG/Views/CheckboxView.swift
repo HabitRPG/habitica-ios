@@ -220,6 +220,7 @@ class CheckboxView: UIView {
         dimmOverlayView.frame = frame
         let horizontalCenter = centerCheckbox ? bounds.size.width / 2 : padding + size / 2
         checkView.frame = CGRect(x: horizontalCenter - size / 2, y: bounds.size.height / 2 - size / 2, width: size, height: size)
+        layer.setNeedsDisplay()
     }
     
     override func draw(_ rect: CGRect) {
