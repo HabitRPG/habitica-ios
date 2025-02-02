@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -122,6 +122,7 @@
                 <constraint firstAttribute="trailing" secondItem="HQD-NM-NBo" secondAttribute="trailing" priority="999" constant="8" id="Bdf-Qq-JCf"/>
                 <constraint firstItem="BEm-of-HXC" firstAttribute="height" secondItem="tP1-9i-M3A" secondAttribute="height" id="Cfg-GS-4aK"/>
                 <constraint firstAttribute="trailing" secondItem="tP1-9i-M3A" secondAttribute="trailing" priority="999" constant="8" id="H1g-Mu-PcJ"/>
+                <constraint firstItem="UWI-d8-sGn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="0.5" id="OGP-kF-8Rb"/>
                 <constraint firstItem="jkr-YH-kSX" firstAttribute="height" secondItem="tP1-9i-M3A" secondAttribute="height" id="ROY-gh-K4V"/>
                 <constraint firstItem="tP1-9i-M3A" firstAttribute="leading" secondItem="UWI-d8-sGn" secondAttribute="trailing" constant="25" id="Tsx-qO-1vI"/>
                 <constraint firstItem="UWI-d8-sGn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="999" constant="22" id="U1i-0Q-qji"/>
