@@ -1,18 +1,31 @@
 # Habitica for iOS
 
-Native iOS app for [Habitica](https://habitica.com/).
+This repository contains the Native iOS application for the productivity and wellness-centered web program [Habitica](https://habitica.com/) that encourages self-improvement and motivation through exciting role-playing game mechanics. 
+
+#### Key Features:
+
+The Habitica iOS app allows users to stay inspired on the go with these features:
+
+* ✅ Tracking habits and complete daily tasks to stay productive 📅
+* 🎮 Gamify productivity by earning XP, leveling up, and collecting rewards 🏆
+* ⚔️ Team up with friends to go on quests and defeat bosses 🐉
+* 🎨 Customize avatars, collect pets 🐱, and unlock cool gear 🛡️
 
 ## Contributing
 
-Thank you very much [to all contributors](https://github.com/HabitRPG/habitica-ios/graphs/contributors).
-
 #### How mobile releases work
 
-All major mobile releases are organized by Milestones labeled with the release number. The 'Help Wanted' is added to any issue we feel would be okay for a contributor to work on, so look for that tag first! We do our best to answer any questions contributors may have regarding issues marked with that tag. If an issue does not have the 'Help Wanted' tag, that means staff will handle it when we have the availability. 
+All major mobile releases are organized by Milestones labeled with the release number. The 'Help Wanted' is added to any issue we feel would be okay for a contributor to work on, so look for that tag first! We do our best to answer any questions contributors may have regarding issues marked with that tag. If an issue does not have the 'Help Wanted' tag, that means staff will handle it when we have the availability.  When selecting issues to work on it may be best to pick up issues you already have a good idea how to handle and test.
 
 The mobile team consists of one developer and one designer for both Android and iOS. Because of this, we switch back and forth for releases. While we work on one platform, the other will be put on hold. This may result in a wait time for PRs to be reviewed or questions to be answered. Any PRs submitted while we're working on a different platform will be assigned to the next Milestone and we will review it when we come back!
 
-Given that our team is stretched pretty thin, it can be difficult for us to take an active role in helping to troubleshoot how to fix issues, but we always do our best to help as much as possible :) With this in mind, when selecting issues to work on it may be best to pick up issues you already have a good idea how to handle and test. Thank you for putting in your time to help make Habitica the best it can be!
+#### Production Support
+
+Our wiki page contains resources on how to contribute code, the details of existing code and features, and also indicate where to seek further guidance or ask questions. Additionally, linked below are recommended starting resources.
+
+* [Wiki Page for Contributing](https://habitica.fandom.com/wiki/Category:Contributing) - the general wiki page.
+* [Guidance for Blacksmiths](https://habitica.fandom.com/wiki/Guidance_for_Blacksmiths) - an introduction to the technologies used and how the software is organized.
+* [Setting up Habitica Locally](https://github.com/HabitRPG/habitica/wiki/Setting-Up-Habitica-for-Local-Development) - how to set up a local install of Habitica for development and testing.
 
 #### Steps for contributing to this repository:
 
@@ -23,7 +36,37 @@ Given that our team is stretched pretty thin, it can be difficult for us to take
 5. Create new Pull Request
 * Don't forget to include your Habitica User ID, so that we can count your contributrion towards your contributor tier
 
+#### Interested in contributing elsewhere?
+
+* Android: https://github.com/HabitRPG/habitica-android
+* Main Program: https://github.com/HabitRPG/habitica
+
+#### Acknowledgement
+
+Thank you very much [to all contributors](https://github.com/HabitRPG/habitica-ios/graphs/contributors).
+
+Given that our team is stretched pretty thin, it can be difficult for us to take an active role in helping to troubleshoot how to fix issues, but we always do our best to help as much as possible :) Thank you for putting in your time to help make Habitica the best it can be!
+
 ## Setup for local development
+
+### Getting Started
+
+To set up and run the Habitica iOS app locally, follow these steps:
+
+1. **Clone this repository**
+   ```bash
+   git clone https://github.com/HabitRPG/habitica-ios.git
+   
+2. **Navigate into project folder**
+   ```bash
+   cd habitica-ios
+
+3. **Install dependencies**
+   ```bash
+   yarn install
+
+4. **Open `Habitica.xcodeproj` in Xcode and build the project.**
+   
 
 ### Config File
 
