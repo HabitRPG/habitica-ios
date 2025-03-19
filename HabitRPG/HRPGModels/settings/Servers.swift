@@ -18,7 +18,7 @@ enum Servers: String {
     case monkey
     case seal
     case shrimp
-    case star
+    case starfish
     case turtle
     
     var niceName: String {
@@ -39,8 +39,8 @@ enum Servers: String {
             return "🦭 Seal"
         case .shrimp:
             return "🦐 Shrimp"
-        case .star:
-            return "⭐️ Star"
+        case .starfish:
+            return "⭐️ Starfish"
         case .turtle:
             return "🐢 Turtle"
         }
@@ -56,7 +56,7 @@ enum Servers: String {
             .monkey,
             .seal,
             .shrimp,
-            .star,
+            .starfish,
             .turtle
         ]
     }

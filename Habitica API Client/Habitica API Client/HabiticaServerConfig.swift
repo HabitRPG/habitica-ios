@@ -20,7 +20,7 @@ public class HabiticaServerConfig {
     public static let monkey = ServerConfiguration(scheme: "https", host: "monkey.habitica.com", apiRoute: "api/\(Constants.defaultApiVersion)")
     public static let seal = ServerConfiguration(scheme: "https", host: "seal.habitica.com", apiRoute: "api/\(Constants.defaultApiVersion)")
     public static let shrimp = ServerConfiguration(scheme: "https", host: "shrimp.habitica.com", apiRoute: "api/\(Constants.defaultApiVersion)")
-    public static let star = ServerConfiguration(scheme: "https", host: "star.habitica.com", apiRoute: "api/\(Constants.defaultApiVersion)")
+    public static let starfish = ServerConfiguration(scheme: "https", host: "starfish.habitica.com", apiRoute: "api/\(Constants.defaultApiVersion)")
     public static let turtle = ServerConfiguration(scheme: "https", host: "turtle.habitica.com", apiRoute: "api/\(Constants.defaultApiVersion)")
 
 
@@ -49,8 +49,8 @@ public class HabiticaServerConfig {
             return HabiticaServerConfig.seal
         case "shrimp":
             return HabiticaServerConfig.shrimp
-        case "star":
-            return HabiticaServerConfig.star
+        case "starfish":
+            return HabiticaServerConfig.starfish
         case "turtle":
             return HabiticaServerConfig.turtle
         default:
