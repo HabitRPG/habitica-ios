@@ -57,7 +57,8 @@ class ImageManager {
         "stable_Pet-Gryphatrice-Jubilant": "gif",
         "back_special_heroicAureole": "gif",
         "Pet_HatchingPotion_Fungi": "gif",
-        "shop_armoire": "gif"
+        "shop_armoire": "gif",
+        "Pet_HatchingPotion_Cryptid": "gif"
     ]
     
     @MainActor

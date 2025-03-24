@@ -752,6 +752,10 @@ public enum L10n {
   public static func nextPrizeInXCheckins(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "next_prize_in_x_checkins", p1)
   }
+  /// Next switch in %@
+  public static func nextSwitchInX(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "next_switch_in_x", p1)
+  }
   /// No
   public static var no: String { return L10n.tr("Mainstrings", "no") }
   /// Could not find an active subscription to restore

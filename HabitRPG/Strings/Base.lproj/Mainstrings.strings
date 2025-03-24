@@ -1386,6 +1386,7 @@
 "x_minutes" = "%d Minutes";
 "1_minute" = "1 Minute";
 "swaps_in_x" = "Switches in %@";
+"next_switch_in_x" = "Next switch in %@";
 "refresh_for_items" = "Refresh for new Items";
 
 "spring" = "Spring";

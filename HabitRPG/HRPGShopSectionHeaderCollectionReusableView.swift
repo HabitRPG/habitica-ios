@@ -71,13 +71,18 @@ class HRPGShopSectionHeaderCollectionReusableView: UICollectionReusableView {
         dropdownIconView.isHidden = true
     }
     
-    func setSecondRow(date: Date) {
+    func setSecondRow(dates: Set<Date>) {
         separatorView.isHidden = false
         lowerBackgroundView.isHidden = false
         swapsInLabel.isHidden = false
         gearCategoryLabel.isHidden = true
         dropdownIconView.isHidden = true
-        if date > Date() {
+        guard let date = dates.min() else {
+            return
+        }
+        if date > Date() && dates.count > 1 {
+            swapsInLabel.text = L10n.nextSwitchInX(date.getImpreciseRemainingString())
+        } else if date > Date() {
             swapsInLabel.text = L10n.swapsInX(date.getImpreciseRemainingString())
         } else {
             swapsInLabel.text = L10n.refreshForItems

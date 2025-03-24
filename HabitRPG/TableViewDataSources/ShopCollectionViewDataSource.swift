@@ -136,7 +136,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             let newSection = ItemSection<InAppRewardProtocol>(title: category.text)
             newSection.items = category.items
             newSection.key = category.identifier
-            newSection.endDate = category.endDate
+            newSection.endDates = category.endDates
             newSection.showIfEmpty = true
             sections.append(newSection)
         }
@@ -258,9 +258,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 }
             } else {
                 let section = visibleSections[indexPath.section]
-                if let endDate = section.endDate {
+                if let endDates = section.endDates, !endDates.isEmpty {
                     headerView.swapsInLabel.isHidden = false
-                    headerView.setSecondRow(date: endDate)
+                    headerView.setSecondRow(dates: endDates)
                 } else {
                     headerView.hideSecondRow()
                 }
@@ -292,7 +292,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             }
         }
         let section = visibleSections[section]
-        if section.endDate != nil {
+        if section.endDates?.isEmpty == false {
             return CGSize(width: collectionView.bounds.width, height: 75)
         } else {
             return CGSize(width: collectionView.bounds.width, height: 40)

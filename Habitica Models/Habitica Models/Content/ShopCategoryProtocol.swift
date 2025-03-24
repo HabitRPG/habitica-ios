@@ -18,4 +18,22 @@ public protocol ShopCategoryProtocol {
     var pinType: String? { get set }
     var items: [InAppRewardProtocol] { get set }
     var endDate: Date? { get set }
+
+}
+
+public extension ShopCategoryProtocol {
+    var endDates: Set<Date> {
+        get {
+            var dates = Set<Date>()
+            if let endDate = endDate {
+                dates.insert(endDate)
+            }
+            items.map { $0.endDate }.forEach { endDate in
+                if let endDate = endDate {
+                    dates.insert(endDate)
+                }
+            }
+            return dates
+        }
+    }
 }

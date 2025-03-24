@@ -18,7 +18,7 @@ class SeasonalShopCollectionViewDataSource: ShopCollectionViewDataSource {
         }) {
             let newSection = ItemSection<InAppRewardProtocol>(title: category.text)
             newSection.items = category.items
-            newSection.endDate = category.endDate
+            newSection.endDates = category.endDates
             sections.append(newSection)
         }
         collectionView?.reloadData()

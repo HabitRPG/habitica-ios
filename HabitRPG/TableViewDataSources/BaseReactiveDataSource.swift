@@ -23,7 +23,7 @@ class ItemSection<MODEL> {
     var isHidden = false
     var showIfEmpty = false
     var items = [MODEL]()
-    var endDate: Date? = nil
+    var endDates: Set<Date>? = nil
     
     var isVisible: Bool {
         return !isHidden && (items.isEmpty == false || showIfEmpty)
