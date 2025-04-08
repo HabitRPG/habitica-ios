@@ -19,6 +19,7 @@ enum AppLanguage: Int {
     case chineseSimplified
     case portugueseBrazil
     case hebrew
+    case hungaruan
     case polish
     case russian
     case bulgarian
@@ -66,6 +67,8 @@ enum AppLanguage: Int {
             return "Italiano"
         case .japanese:
             return "日本語"
+        case .hungaruan:
+            return "Magyar"
         }
     }
     
@@ -107,6 +110,8 @@ enum AppLanguage: Int {
             return "it"
         case .japanese:
             return "ja"
+        case .hungaruan:
+            return "hu"
         }
     }
     
@@ -130,6 +135,7 @@ enum AppLanguage: Int {
             .chineseSimplified,
             .portugueseBrazil,
             .hebrew,
+            .hungaruan,
             .polish,
             .russian,
             .bulgarian,
