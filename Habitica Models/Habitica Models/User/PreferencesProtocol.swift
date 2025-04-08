@@ -29,4 +29,6 @@ public protocol PreferencesProtocol: BaseModelProtocol {
     var searchableUsername: Bool { get set }
     var dateFormat: String? { get set }
     var tasks: TaskPreferencesProtocol? { get set }
+    var analyticsConsent: Bool { get set }
+    var analyticsConsentGiven: Bool { get set }
 }

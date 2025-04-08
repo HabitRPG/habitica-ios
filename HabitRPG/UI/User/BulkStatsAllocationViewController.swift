@@ -9,9 +9,6 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
-#if !targetEnvironment(macCatalyst)
-import FirebaseAnalytics
-#endif
 
 class BulkStatsAllocationViewController: UIViewController, Themeable {
     private let disposable = ScopedDisposable(CompositeDisposable())

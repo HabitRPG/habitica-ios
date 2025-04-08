@@ -8,9 +8,6 @@
 
 import UIKit
 import Firebase
-#if !targetEnvironment(macCatalyst)
-import FirebaseAnalytics
-#endif
 import WidgetKit
 import ReactiveSwift
 
@@ -89,9 +86,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         ThemeService.shared.updateDarkMode()
         let defaults = UserDefaults.standard
         let themeName = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") ?? ThemeName.defaultTheme
-        #if !targetEnvironment(macCatalyst)
-        Analytics.setUserProperty(themeName.rawValue, forName: "theme")
-        #endif
+        HabiticaAnalytics.shared.setUserProperty(key: "theme", value: themeName.rawValue)
     }
     
     private func cleanAndRefresh() {
@@ -119,9 +114,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         WidgetCenter.shared.getCurrentConfigurations { result in
             switch result {
             case let .success(info):
-                #if !targetEnvironment(macCatalyst)
-                Analytics.setUserProperty(String(info.count), forName: "widgetCount")
-                #endif
+                HabiticaAnalytics.shared.setUserProperty(key: "widgetCount", value: String(info.count))
             case let .failure(error):
                 logger.log(error)
             }

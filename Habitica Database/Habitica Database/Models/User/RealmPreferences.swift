@@ -31,6 +31,8 @@ class RealmPreferences: BaseModel, PreferencesProtocol {
     @objc dynamic var autoEquip: Bool = false
     @objc dynamic var searchableUsername: Bool = false
     @objc dynamic var dateFormat: String?
+    @objc dynamic var analyticsConsent: Bool = false
+    @objc dynamic var analyticsConsentGiven: Bool = false
     var pushNotifications: PushNotificationsProtocol? {
         get {
             return realmPushNotifications
@@ -128,5 +130,7 @@ class RealmPreferences: BaseModel, PreferencesProtocol {
         searchableUsername = preferences.searchableUsername
         dateFormat = preferences.dateFormat
         tasks = preferences.tasks
+        analyticsConsent = preferences.analyticsConsent
+        analyticsConsentGiven = preferences.analyticsConsentGiven
     }
 }

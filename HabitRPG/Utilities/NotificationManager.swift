@@ -8,9 +8,6 @@
 
 import Foundation
 import Habitica_Models
-#if !targetEnvironment(macCatalyst)
-import FirebaseAnalytics
-#endif
 
 class NotificationManager {
     private static var seenNotifications = Set<String>()
@@ -143,7 +140,7 @@ class NotificationManager {
         }
         if notification.type == HabiticaNotificationType.achievementOnboardingComplete {
             Analytics.logEvent(notification.type.rawValue, parameters: nil)
-            Analytics.setUserProperty("true", forName: "completedOnboarding")
+            HabiticaAnalytics.shared.setUserProperty(key: "completedOnboarding", value: "true")
         }
         #endif
         let alert = AchievementAlertController()

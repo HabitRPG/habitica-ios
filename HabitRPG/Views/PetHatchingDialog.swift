@@ -9,9 +9,6 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
-#if !targetEnvironment(macCatalyst)
-import FirebaseAnalytics
-#endif
 
 class PetHatchingAlertController: HabiticaAlertController {
     private let inventoryRepository = InventoryRepository()

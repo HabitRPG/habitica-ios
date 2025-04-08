@@ -33,6 +33,8 @@ class APIPreferences: PreferencesProtocol, Decodable {
     var isValid: Bool = true
     var dateFormat: String?
     var tasks: TaskPreferencesProtocol?
+    var analyticsConsent: Bool = false
+    var analyticsConsentGiven: Bool = false
     public var isManaged: Bool = false
     
     enum CodingKeys: String, CodingKey {
@@ -58,6 +60,7 @@ class APIPreferences: PreferencesProtocol, Decodable {
         case searchableUsername
         case dateFormat
         case tasks
+        case analyticsConsent
     }
     
     public required init(from decoder: Decoder) throws {
@@ -84,5 +87,9 @@ class APIPreferences: PreferencesProtocol, Decodable {
         searchableUsername = (try? values.decode(Bool.self, forKey: .searchableUsername)) ?? false
         dateFormat = try? values.decode(String.self, forKey: .dateFormat)
         tasks = try? values.decode(APITaskPreferences.self, forKey: .tasks)
+        
+        let consent = try? values.decode(Bool.self, forKey: .analyticsConsent)
+        analyticsConsent = consent == true
+        analyticsConsentGiven = consent != nil
     }
 }

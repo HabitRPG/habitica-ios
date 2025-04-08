@@ -8,7 +8,6 @@
 
 import UIKit
 #if !targetEnvironment(macCatalyst)
-import FirebaseAnalytics
 import SwiftUI
 #endif
 import Habitica_Models

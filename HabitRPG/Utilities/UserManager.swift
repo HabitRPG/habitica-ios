@@ -10,9 +10,6 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 import Habitica_Database
-#if !targetEnvironment(macCatalyst)
-import FirebaseAnalytics
-#endif
 
 @objc
 class UserManager: NSObject {
@@ -155,11 +152,12 @@ class UserManager: NSObject {
             }
         }
         #if !targetEnvironment(macCatalyst)
-        Analytics.setUserProperty(user.isSubscribed ? "true" : "false", forName: "is_subscribed")
-        Analytics.setUserProperty(user.party?.id != nil ? "true" : "false", forName: "has_party")
-        Analytics.setUserProperty("\(user.loginIncentives)", forName: "checkin_count")
+        HabiticaAnalytics.shared.setUserProperty(key: "is_subscribed", value: user.isSubscribed ? "true" : "false")
+        HabiticaAnalytics.shared.setUserProperty(key: "has_party", value: user.party?.id != nil ? "true" : "false")
+        HabiticaAnalytics.shared.setUserProperty(key: "checkin_count", value: "\(user.loginIncentives)")
+        HabiticaAnalytics.shared.setAnalyticsConsents(user.preferences?.analyticsConsent == true)
         if let notifs = user.preferences?.pushNotifications {
-            Analytics.setUserProperty("\(notifs)", forName: "allowed_push_notifications")
+            HabiticaAnalytics.shared.setUserProperty(key: "allowed_push_notifications", value: "\(notifs)")
         }
         #endif
     }

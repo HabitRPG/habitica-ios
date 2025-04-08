@@ -7,9 +7,6 @@
 //
 
 import UIKit
-#if !targetEnvironment(macCatalyst)
-import FirebaseAnalytics
-#endif
 
 class StableSplitViewController: HabiticaSplitViewController {
     @IBOutlet weak var organizeByButton: UIBarButtonItem!
@@ -41,9 +38,7 @@ class StableSplitViewController: HabiticaSplitViewController {
             }
         }
         
-        #if !targetEnvironment(macCatalyst)
         Analytics.logEvent("open_stable", parameters: nil)
-        #endif
     }
     
     override func populateText() {

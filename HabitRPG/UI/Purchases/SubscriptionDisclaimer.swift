@@ -10,7 +10,6 @@
 import Foundation
 import SwiftUI
 import SwiftyStoreKit
-import FirebaseAnalytics
 import ReactiveSwift
 import Habitica_Models
 import SwiftUIX

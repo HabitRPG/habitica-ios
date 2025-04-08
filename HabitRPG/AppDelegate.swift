@@ -13,9 +13,6 @@ import Habitica_Models
 import RealmSwift
 import ReactiveSwift
 import Firebase
-#if !targetEnvironment(macCatalyst)
-import FirebaseAnalytics
-#endif
 import SwiftyStoreKit
 import StoreKit
 import UserNotifications
@@ -114,14 +111,16 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     func setupFirebase() {
         Messaging.messaging().delegate = self
         
+        
         let userDefaults = UserDefaults.standard
         #if !targetEnvironment(macCatalyst)
         Crashlytics.crashlytics().setCustomValue(-(NSTimeZone.local.secondsFromGMT() / 60), forKey: "timezone_offset")
         Crashlytics.crashlytics().setCustomValue(LanguageHandler.getAppLanguage().code, forKey: "app_language")
-        Analytics.setUserProperty(LanguageHandler.getAppLanguage().code, forName: "app_language")
-        Analytics.setUserProperty(configRepository.testingLevel.rawValue.lowercased(), forName: "app_testing_level")
-        Analytics.setUserProperty(UIApplication.shared.alternateIconName, forName: "app_icon")
-        Analytics.setUserProperty(userDefaults.string(forKey: "initialScreenURL"), forName: "launch_screen")
+        
+        HabiticaAnalytics.shared.setUserProperty(key: "app_language", value: LanguageHandler.getAppLanguage().code)
+        HabiticaAnalytics.shared.setUserProperty(key: "app_testing_level", value: configRepository.testingLevel.rawValue.lowercased())
+        HabiticaAnalytics.shared.setUserProperty(key: "app_icon", value: UIApplication.shared.alternateIconName)
+        HabiticaAnalytics.shared.setUserProperty(key: "launch_screen", value: userDefaults.string(forKey: "initialScreenURL"))
         #endif
     }
     
@@ -144,12 +143,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     }
     
     func setupAnalytics() {
-        Amplitude.instance().initializeApiKey(Secrets.amplitudeApiKey)
-        Amplitude.instance().setUserId(AuthenticationManager.shared.currentUserId)
-        let userDefaults = UserDefaults.standard
-        Amplitude.instance().setUserProperties(["iosTimezoneOffset": -(NSTimeZone.local.secondsFromGMT() / 60),
-                                                 "launch_screen": userDefaults.string(forKey: "initialScreenURL") ?? ""
-        ])
+        HabiticaAnalytics.shared.initialize()
     }
     
     func setupPurchaseHandling() {

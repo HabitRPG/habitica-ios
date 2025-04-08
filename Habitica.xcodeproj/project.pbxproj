@@ -448,6 +448,8 @@
 		29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */; };
 		29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */; };
 		29ED3FEF2C90A68A00DD1483 /* BaseSubscriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED3FEE2C90A68500DD1483 /* BaseSubscriptionViewModel.swift */; };
+		29ED62DE2DA540CA0060A60A /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F808912770B0D900BAF854 /* Secrets.swift */; };
+		29ED62DF2DA540CA0060A60A /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F808912770B0D900BAF854 /* Secrets.swift */; };
 		29EFE3A52C8B359A005B66C9 /* SubscriptionDetailViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EFE3A42C8B359A005B66C9 /* SubscriptionDetailViewUI.swift */; };
 		29EFF94E25AC750700D73F55 /* AchievementNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EFF94D25AC750700D73F55 /* AchievementNotificationCell.swift */; };
 		29F177F92AB85D52008B8F0C /* PetBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F177F82AB85D52008B8F0C /* PetBottomSheetView.swift */; };
@@ -3309,6 +3311,7 @@
 				29BEE6E7252E1B7700D456F8 /* Color-Extensions.swift in Sources */,
 				29D064B926414E5A007D4F4F /* UIColor-Habitica.swift in Sources */,
 				29BEE75A252E33AB00D456F8 /* Avatar.swift in Sources */,
+				29ED62DF2DA540CA0060A60A /* Secrets.swift in Sources */,
 				29BEE81E252F101600D456F8 /* TaskListWidget.swift in Sources */,
 				29BEE7B5252EE92D00D456F8 /* AddTaskWidget.swift in Sources */,
 				29BEE6DC252E14F300D456F8 /* RemainingDailiesWidget.swift in Sources */,
@@ -3321,6 +3324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2995F7FB25BAF3B600322CB3 /* RemoteLogger.swift in Sources */,
+				29ED62DE2DA540CA0060A60A /* Secrets.swift in Sources */,
 				29A9857F25472D1600F04665 /* HabiticaAnalytics.swift in Sources */,
 				7A84E1B32289963E0081E96F /* BaseRepository.swift in Sources */,
 				7A84E1B42289968B0081E96F /* AuthenticationManager.swift in Sources */,

@@ -10,9 +10,6 @@ import ReactiveCocoa
 import ReactiveSwift
 import AppAuth
 import AuthenticationServices
-#if !targetEnvironment(macCatalyst)
-import FirebaseAnalytics
-#endif
 
 enum LoginViewAuthType {
     case none

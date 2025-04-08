@@ -12,7 +12,6 @@ import StoreKit
 import ReactiveSwift
 import Habitica_Models
 import PinLayout
-import FirebaseAnalytics
 import SwiftUIX
 
 // swiftlint:disable:next type_body_length
