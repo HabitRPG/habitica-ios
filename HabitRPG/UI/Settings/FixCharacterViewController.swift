@@ -37,11 +37,23 @@ class FixCharacterViewController: BaseTableViewController {
         
         headerLabel.text = L10n.Settings.fixValuesDescription
         headerLabel.numberOfLines = 0
-        headerLabel.preferredMaxLayoutWidth = self.view.frame.size.width-52
-        headerLabel.frame = CGRect(origin: CGPoint(x: 26, y: 10), size: headerLabel.intrinsicContentSize)
-        headerView.frame = CGRect(x: 0, y: 0, width: headerLabel.frame.size.width+42, height: headerLabel.frame.size.height+20)
+        headerLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         headerView.addSubview(headerLabel)
+        
+        NSLayoutConstraint.activate([
+            headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 26),
+            headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -26),
+            headerLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 10),
+            headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -10)
+        ])
+        
         tableView.tableHeaderView = headerView
+        
+        DispatchQueue.main.async {
+            self.sizeHeaderToFit()
+        }
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.stats["stats.hp"] = user.stats?.health
@@ -53,6 +65,18 @@ class FixCharacterViewController: BaseTableViewController {
             self?.habitClass = user.stats?.habitClass ?? ""
             self?.tableView.reloadData()
         }).start())
+    }
+    
+    private func sizeHeaderToFit() {
+        guard let headerView = tableView.tableHeaderView else { return }
+        headerView.frame.size.width = tableView.bounds.width
+        let size = headerView.systemLayoutSizeFitting(
+            CGSize(width: tableView.bounds.width, height: UIView.layoutFittingCompressedSize.height),
+            withHorizontalFittingPriority: UILayoutPriority.required,
+            verticalFittingPriority: UILayoutPriority.fittingSizeLevel
+        )
+        headerView.frame.size.height = size.height
+        tableView.tableHeaderView = headerView
     }
     
     override func applyTheme(theme: Theme) {
