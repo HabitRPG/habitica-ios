@@ -237,7 +237,7 @@
 /* (No Comment) */
 "tasks.reward" = "פרס";
 /* (No Comment) */
-"tasks.todo" = "משימה";
+"tasks.todo" = "מטלה";
 /* (No Comment) */
 "theme.blue" = "כחול";
 /* (No Comment) */
@@ -297,7 +297,7 @@
 "tasks.habits" = "הרגלים";
 "tasks.dailies" = "יומיות";
 "tasks.rewards" = "פרסים";
-"tasks.todos" = "משימות";
+"tasks.todos" = "מטלות";
 "tasks.work" = "עבודה";
 "tasks.exercise" = "אימון";
 "tasks.health" = "בריאות";
@@ -306,7 +306,7 @@
 "tasks.creativity" = "יצירתיות";
 "tasks.add_x" = "הוסף %@";
 "tasks.examples.todo_text" = "הצטרפו להאביטיקה (סמנו אותי!)";
-"tasks.examples.todo_notes" = "אתה יכול להשלים את המשימה, לערוך או למחוק אותה.";
+"tasks.examples.todo_notes" = "אתה יכול להשלים את המטלה, לערוך או למחוק אותה.";
 "tasks.examples.reward_text" = "תנו לעצמכם פרס";
 "tasks.examples.work_habit" = "טפל במיילים";
 "tasks.examples.exercise_todo_text" = "צור תוכנית אימונים";
@@ -404,7 +404,6 @@
 "subscription_info_2_title" = "חפצים חודשיים ייחודיים";
 "subscription_info_3_title" = "שמור רשומות היסטוריה נוספות";
 "subscription_info_3_description" = "גורם למשימות שהושלמו והיסטוריית משימות להיות זמינות זמן רב יותר.";
-"subscription_info_4_title" = "הגבלת הביזה היומית מוכפלת";
 "moderator" = "עורך";
 "staff" = "חבר צוות";
 "report_x_violation" = "דווח על הפרה של %@?";
@@ -462,14 +461,14 @@
 "tasks.form.accessibility.task_difficulty" = "רמת הקושי: %@";
 "tasks.form.accessibility.set_task_difficulty" = "שנה את רמת הקושי ל %@";
 "tasks.form.accessibility.enable" = "הפעל %@";
-"tasks.form.accessibility.disable" = "השהה  %@";
+"tasks.form.accessibility.disable" = "השהה %@";
 "tasks.team" = "קבוצה";
-"tasks.due_today" = "מסתיימים היום";
-"tasks.due_tomorrow" = "מסתיימים מחר";
-"tasks.due_in_x_days" = "מסתיימים ב%d ימים";
+"tasks.due_today" = "היום";
+"tasks.due_tomorrow" = "מחר";
+"tasks.due_in_x_days" = "בעוד %d ימים";
 "tasks.every_x" = "כל %d %@";
 "tasks.repeats.repeats_every_on" = "חזור על %@ ב %@";
-"tasks.repeats.repeats_every" = "חוזר שוב  %@";
+"tasks.repeats.repeats_every" = "חוזר שוב %@";
 "tasks.repeats.daily" = "יום יומי";
 "tasks.repeats.weekly" = "שבועי";
 "tasks.repeats.monthly" = "חודשי";
@@ -553,3 +552,41 @@
 "theme.default_theme" = "ברירת מחדל";
 "stable.premium" = "תֶקֶן";
 "stable.standard" = "תֶקֶ";
+"titles.notifications" = "הודעות";
+"titles.pets_and_mounts" = "חיות מחמד וחיות רכיבה";
+"not_due" = "המועד האחרון";
+"scheduled" = "מתוזמן";
+"completed" = "מוגמר";
+"yes" = "כן";
+"no" = "לא";
+"titles.messages" = "מסרונים";
+"titles.basics" = "בסיסיים";
+"tasks.form.none" = "ללא";
+"menu.gems" = "רכישת אבני חן";
+"menu.subscription" = "מנוי";
+"menu.group_plans" = "קבוצות";
+"tasks.form.not_editable_disclaimer" = "למשימות אתגר או משימות קבוצה אפשרויות עריכה מצומצמות בהשוואה למשימות הרגילות שלך";
+"settings.next_cron_run" = "איפוס יום למחרת %@";
+"settings.day_start_adjustment" = "התאמת תחילת היום";
+"settings.custom_day_start_description" = "שנה את השעה שבה היום מתחלף מעבר לשעת ברירת המחדל של 12:00 בלילה";
+"tasks.form.adjust_counter" = "עדכן מונה";
+"total_completions" = "סה\"כ המשימות שהושלמו";
+"tasks.form.times_scored" = "פעמים שנוקדו";
+"titles.hall_of_heroes" = "היכל הגיבורים";
+"created_at" = "נוצר ב";
+"skills.caused_damage" = "פגעת בבוס וגרמת לנזק";
+"tasks.form.last_scored" = "פעם אחרונה שנוקד";
+"menu.skills" = "יכולות";
+"titles.hall_of_patrons" = "היכל הפטרונים";
+"titles.achievements" = "הישגים";
+"tasks.form.adjust_streak" = "עדכן רצף";
+"tasks.form.positive" = "חיובי";
+"streak" = "רצף";
+"update" = "עדכון";
+"tasks.form.completion" = "סיום";
+"tasks.form.negative" = "שלילי";
+"tasks.form.completions" = "מה שסיימתי";
+"titles.hall_of_contributors" = "היכל התורמים";
+"menu.support" = "תמיכה";
+"tasks.tasks" = "משימות";
+"tasks.form.reset_counter" = "אפס מונה";

@@ -169,7 +169,7 @@
 /* (No Comment) */
 "quests.rejected" = "Отказана";
 /* (No Comment) */
-"reset_tips" = "Нулиране на съветите на Джъстин";
+"reset_tips" = "Нулиране на съветите";
 /* (No Comment) */
 "resetStreak" = "Нулиране на серията";
 /* (No Comment) */
@@ -592,9 +592,7 @@
 "subscription_info_2_title" = "Изключителни месечни предмети";
 "subscription_info_3_title" = "Запазвате по-голяма история";
 "subscription_info_3_description" = "Завършените задачи за изпълнение остават по-дълго в историята.";
-"subscription_info_4_title" = "Удвоен дневен максимален брой падания";
-"subscription_info_4_description" = "Двойното ограничение за падане на предмети ще Ви позволи да получавате повече предмети от завършените си задачи за всеки ден, спомагайки да попълните конюшнята си по-бързо!";
-"subscription_benefits_title" = "Станете абонат и ще получите следните предимства:";
+"subscription_benefits_title" = "Станете абонат и ще получите следните предимства";
 "gem_benefits_title" = "Диамантите Ви позволяват да купувате забавни неща за профила си, като:";
 "moderator" = "Модератор";
 "staff" = "Екип";
@@ -615,3 +613,44 @@
 "your_balance" = "Вашата наличност:";
 "choose_task" = "Изберете задача";
 "shops.purchased_all_gear" = "Вече имате всичката възможна класова екипировка! Още ще стане налична по време на големите празненства, около слънцестоенията и равноденствията.";
+"titles.notifications" = "Известия";
+"scheduled" = "Планиран";
+"completed" = "Завършен";
+"stats.strength_text" = "Увеличава бонуса от критични удари и ги прави по-вероятни при изпълнение на задача. Също така увеличава щетите, нанасяни на босовете.";
+"tasks.form.new_reminder" = "Ново напомняне";
+"tasks.form.negative" = "Негативен";
+"yes" = "Да";
+"no" = "Не";
+"titles.pets_and_mounts" = "конюшня";
+"titles.messages" = "Съобщения";
+"titles.achievements" = "Постижения";
+"stats.points_to_allocate" = "%d точка за разпределяне";
+"stats.total" = "Общо";
+"tasks.form.accessibility.task_difficulty" = "Трудността е %@";
+"tasks.form.positive" = "Позитивен";
+"titles.skills" = "Умения";
+"tasks.form.day_of_month" = "Ден от месеца";
+"tasks.form.rewards_title_placeholder" = "Как искаш да се възнаградиш?";
+"controls" = "Управление";
+"tasks.form.every" = "Всеки";
+"streak" = "Серия";
+"total_completions" = "Общо Завършени";
+"titles.gift_subscription" = "Подари Абонамент";
+"tasks.form.controls" = "Управление";
+"titles.avatar" = "Герой";
+"tasks.form.day_of_week" = "Ден от седмицата";
+"tasks.form.create" = "Нова %@";
+"titles.hall_of_contributors" = "Зала на Сътрудниците";
+"titles.hall_of_heroes" = "Зала на Героите";
+"titles.hall_of_patrons" = "Зала на Дарителите";
+"titles.basics" = "Основи";
+"created_at" = "Създадено в";
+"tasks.tasks" = "Задачи";
+"tasks.form.reset_counter" = "Занули Брояча";
+"tasks.form.habit_title_placeholder" = "Какви навици искате да развиете или да откажете?";
+"tasks.form.not_editable_disclaimer" = "Предизвикателствата и груповите задачи имат ограничени опции за редактиране в сравнение с обикновените ви задачи";
+"tasks.form.last_scored" = "Последно отбелязан";
+"tasks.form.todos_title_placeholder" = "Какво искате да завършите веднъж?";
+"tasks.form.dailies_title_placeholder" = "Какво искате да правите редовно?";
+"tasks.form.times_scored" = "Отбелязани пъти";
+"tasks.form.none" = "Няма";

@@ -35,7 +35,7 @@
 /* (No Comment) */
 "classes.rogue" = "Slyngel";
 /* (No Comment) */
-"classes.rogue_description" = "Slyngler elsker at samle sig en formue, eftersom de får mere Guld end nogen anden, og de er dygtige til at finde tilfældige ting. Deres ikoniske Listeevne lader dem undgå konsekvenserne af oversprungne Daglige. Spil  som Slyngel hvis du er stærkt motiveret af Belønninger og Præstationer, og stræber efter bytte og emblemer!";
+"classes.rogue_description" = "Slyngler elsker at samle sig en formue, eftersom de får mere Guld end nogen anden, og de er dygtige til at finde tilfældige ting. Deres ikoniske Listeevne lader dem undgå konsekvenserne af oversprungne Daglige. Spil som Slyngel hvis du er stærkt motiveret af Belønninger og Præstationer, og stræber efter bytte og emblemer!";
 /* (No Comment) */
 "classes.warrior" = "Kriger";
 /* (No Comment) */
@@ -433,7 +433,6 @@
 "subscription_info_2_title" = "Eksklusive Månedlige Abonnent-varer";
 "subscription_info_3_title" = "Behold yderligere historik";
 "subscription_info_3_description" = "Gør dine færdiggjorte To-Dos og opgavehistorik tilgængelige i længere tid.";
-"subscription_info_4_title" = "Daglig drop-grænse fordoblet";
 "moderator" = "Moderator";
 "staff" = "Ansat";
 "report_x_violation" = "Anmeld %@ for overtrædelse?";

@@ -482,7 +482,6 @@
 "subscription_info_2_title" = "Mystické přesýpací hodiny";
 "subscription_info_3_title" = "Tajemné předměty každý měsíc";
 "subscription_info_3_description" = "Staň se předplatitelem/kou nyní a získej exkluzivní sadu a každý měsíc obdržíš nové předměty!";
-"subscription_info_4_title" = "Tajemné předměty každý měsíc";
 "moderator" = "Moderátor";
 "staff" = "Hůl";
 "report_x_violation" = "Nahlásit %@ za porušení?";
@@ -544,7 +543,7 @@
 "tasks.team" = "Tým";
 "tasks.due_today" = "Splněno do dneška";
 "tasks.due_tomorrow" = "Splněno do zítra";
-"tasks.due_in_x_days" = "má být splněno za %d  dní";
+"tasks.due_in_x_days" = "má být splněno za %d dní";
 "tasks.every_x" = "každý %d %@";
 "tasks.repeats.repeats_every_on" = "Opakuj %@ v %@";
 "tasks.repeats.repeats_every" = "Opakuj %@";
@@ -630,7 +629,7 @@
 "party.party_challenges" = "Skupinové výzvy";
 "party.start_quest" = "Začít výpravu";
 "party.leave_party_title" = "Opustit skupinu?";
-"party.leave_party_description" = "Chceš opustit skupinu a ponechat si nebo smazat výzvy?";
+"party.leave_party_description" = "Opuštění skupiny tě neodstraní ze skupinových výzev, kterých se účastníš.";
 "groups.members" = "Členové";
 "groups.invite_member" = "Pozvi člena";
 "pending_damage" = "Očekávaná škoda";
@@ -687,7 +686,7 @@
 "levelup_description" = "Splněním svých skutečných cílů jsi se dostal/a na další úroveň a jsi nyní zcela vyléčen/a!";
 "plain_backgrounds" = "Obyčejné pozadí";
 "open_website" = "Otevřít webovou stránku Habitica";
-"unsubscribe_website" = "Už se nechcete přihlásit k odběru? Z důvodu vašeho způsobu platby se můžete odhlásit pouze prostřednictvím webu.";
+"unsubscribe_website" = "Už nechceš dále využívat předplatné? Z důvodu vašeho způsobu platby se můžeš odhlásit pouze prostřednictvím webové stránky. K odhlášení klikni na tlačítko, které je níže, přihlas se do svého účtu, klikni na ikonu hráče, poté jsi do sekce předplatné. Zbylé měsíce předplatného budou po zrušení předplatného přičteny k datu ukončení předplatného. Budeš nám chybět!";
 "open_app_store" = "Otevřít App Store";
 "open_itunes" = "Otevřete předplatné Apple ID";
 "groups.guild_invitation_no_invitername" = "Někdo vás pozval, abyste se připojili k Cechu: %@";
@@ -867,7 +866,7 @@
 "member_group_plan" = "Člen Skupiny";
 "group_plan" = "Skupina";
 "party.transfer_ownership_description" = "Tím se %@ stane novým vůdcem Družiny";
-"settings.api_disclaimer" = "Zkopírujte pro použití v aplikacích třetích stran. Představte si však svůj token API jako heslo a nesdělujte jej veřejně. Můžete být občas požádáni o ID uživatele, ale nikdy nezveřejňujte svůj token API tam, kde jej mohou ostatní vidět, a to i na Githubu.";
+"settings.api_disclaimer" = "Zkopíruj Token. Ale opatrně, je to totiž heslo!";
 "menu.subscription" = "Předplatné";
 "menu.gems" = "Nákup drahokamů";
 "settings.disable_all_emails" = "Deaktivovat všechny emaily";
@@ -909,8 +908,6 @@
 "resubscribe" = "Opakuj předplatné";
 "renew_subscription" = "Obnov předplatné";
 "subscription_duration" = "Opakující se %@";
-"subscription_info_4_description" = "Získáš královského fialového Zajdalena jako mazlíčka, jakmile se staneš novým/ou předplatitelem/kou.";
-"subscription_info_3_description_new" = "Staň se předplatitelem/kou nyní a získej tuto sadu: %@, a každý měsíc obdržíš nové předměty!";
 "subscription_info_5_description" = "Objev ještě více předmětů v Habitica s 2x větším denním limitem na kořist.";
 "subscription_info_5_title" = "Zdvojnásob kořist";
 "subscription_options_title" = "Zvol si takovou délku předplatného, jaká ti bude vyhovovat";
@@ -969,3 +966,21 @@
 "tasks.form.adjust_counter" = "Upravit počítadlo";
 "skills.caused_damage" = "Způsobyl jsi bossovi zranění";
 "tasks.form.none" = "Žádný";
+"purchase_for_without_currency" = "Nakoupit za %d";
+"avatar.shirts" = "Košile";
+"avatar.wheelchairs" = "Kolečková křesla";
+"avatar.backgrounds" = "Pozadí";
+"avatar.skin_colors" = "Barvy kůže";
+"avatar.hairColors" = "Barvy vlasů";
+"scheduled" = "Naplánováno";
+"completed" = "Dokončeno";
+"not_due" = "Není splatný";
+"yes" = "Ano";
+"no" = "Ne";
+"tasks.form.not_editable_disclaimer" = "Výzvy a skupinové úkoly mají omezenou možnost editace v porovnání s tvými běžnými úkoly";
+"menu.group_plans" = "Skupiny";
+"avatar.animal_tails" = "Zvířecí ocasy";
+"avatar.hair_styles" = "Účesy";
+"avatar.mustaches" = "Kníry";
+"avatar.beards" = "Vousy";
+"avatar.skins" = "Kůže";

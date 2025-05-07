@@ -700,8 +700,6 @@
 "subscription_info_2_title" = "Clessidre Mistiche";
 "subscription_info_3_title" = "Oggetti Misteriosi Mensili";
 "subscription_info_3_description" = "Abbonati ora per ottenere un set esclusivo subito e ricevere nuovi oggetti ogni mese!";
-"subscription_info_4_title" = "Oggetti Misteriosi Mensili";
-"subscription_info_4_description" = "Riceverai il Lepronte Porpora quando diventerai un nuovo abbonato.";
 "subscription_benefits_title" = "Diventa un abbonato e otterrai i seguenti utili vantaggi";
 "gem_benefits_title" = "Le gemme ti permettono di comprare divertenti extra per il tuo account, fra cui:";
 "moderator" = "Moderatore";
@@ -737,7 +735,6 @@
 "tasks.examples.team_todo_text" = "Completa il progetto della squadra";
 "settings.app_icon" = "Icona dell'App";
 "settings.server" = "Server";
-"subscription_info_3_description_new" = "Abbonati ora per ottenere il set %@ subito e ricevere nuovi oggetti ogni mese!";
 "party.transfer_ownership_description" = "Ciò renderà %@ il nuovo leader della Squadra";
 "party.transfer_ownership_title" = "Vuoi trasferire la Leadership?";
 "party.leave_party_description" = "Lasciare la squadra non ti rimuoverà dalle Sfide Squadra a cui stai partecipando.";

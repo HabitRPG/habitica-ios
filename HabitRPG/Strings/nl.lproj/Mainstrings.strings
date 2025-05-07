@@ -792,8 +792,6 @@
 "subscription_info_2_title" = "Mystieke zandlopers";
 "subscription_info_3_title" = "Maandelijkse mysterie voorwerpen";
 "subscription_info_3_description" = "Schrijf je nu in om nu een exclusieve set te krijgen en elke maand nieuwe voorwerpen te ontvangen!";
-"subscription_info_4_title" = "Maandelijkse mysterieuze voorwerpen";
-"subscription_info_4_description" = "Ontvang het royale paarse Jackalope huisdier wanneer je een nieuwe abonnee wordt.";
 "subscription_benefits_title" = "Word abonnee en je krijgt deze handige voordelen";
 "gem_benefits_title" = "Edelstenen staan je toe om leuke extra's te kopen voor je account, waaronder:";
 "moderator" = "Beheerder";
@@ -1093,7 +1091,6 @@
 "subscription_benefits_title_subscribed" = "Je krijgt deze voordelen door Abonnee te zijn";
 "subscription_info_5_description" = "Ontdek nog meer voorwerpen in Habitica met een 2x bonus van de dagelijkse vondstlimiet.";
 "subscription_info_5_title" = "Verdubbel de vondsten";
-"subscription_info_3_description_new" = "Schrijf je in om deze %@ set nu te krijgen en daarna elke maand nieuwe voorwerpen te ontvangen!";
 "accessibility.viewX" = "Bekijk %@";
 "accessibility.notOwned" = "Niet in bezit";
 "accessibility.owned" = "In bezit";
@@ -1331,3 +1328,12 @@
 "report" = "Raporteer";
 "tasks.form.last_scored" = "Laatste keer gescoord";
 "tasks.form.times_scored" = "Aantal keren gescoord";
+"scheduled" = "Ingepland";
+"completed" = "Gedaan";
+"settings.updated_email" = "E-mail veranderd";
+"no" = "Nee";
+"settings.add_email" = "Voeg e-mail toe";
+"settings.change" = "Verander";
+"settings.reset_account_confirm" = "Weet je zeker dat je wil resetten?";
+"settings.updated_password" = "Wachtwoord veranderd";
+"mute_user_confirm" = "Wil je deze gebruiker dempen?";

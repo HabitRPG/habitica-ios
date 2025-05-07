@@ -37,13 +37,13 @@
 /* (No Comment) */
 "classes.healer" = "治療師";
 /* (No Comment) */
-"classes.healer_description" = "治療師は痛みに耐え、他人を守るのです。やらなかった日課や悪い習慣にも治療師は動揺せず、失敗から体力を回復させる能力を持っています。パーティーの他のメンバーを助けることに喜びを感じる、困難な仕事による死をも恐れぬ理想があるのなら、治療師でプレーしましょう!";
+"classes.healer_description" = "治療師は痛みに耐え、他人を守るのです。やらなかった日課や悪い習慣にも治療師は動揺せず、失敗から体力を回復させる能力を持っています。パーティーの他のメンバーを助けることに喜びを感じる、困難な仕事による死をも恐れぬ理想があるのなら、治療師でプレーしましょう！";
 /* (No Comment) */
 "classes.mage" = "魔道士";
 /* (No Comment) */
 "classes.rogue" = "盗賊";
 /* (No Comment) */
-"classes.rogue_description" = "盗賊は富を集めることを愛するのです。ほかのどのクラスよりもゴールドを稼ぎ、アイテムを見つける確率が高いのです。盗賊の特徴、忍びの術をもってすれば、日課をやらなかったとしても、性格的に傷つかない。戦利品や勲章――Habitica では、ごほうびと実績に強く心動かされるなら、盗賊でプレーしましょう!";
+"classes.rogue_description" = "盗賊は富を集めることを愛するのです。ほかのどのクラスよりもゴールドを稼ぎ、アイテムを見つける確率が高いのです。盗賊の特徴、忍びの術をもってすれば、日課をやらなかったとしても、性格的に傷つかない。戦利品や勲章――Habitica では、ごほうびと実績に強く心動かされるなら、盗賊でプレーしましょう！";
 /* (No Comment) */
 "classes.warrior" = "戦士";
 /* (No Comment) */
@@ -143,7 +143,7 @@
 /* (No Comment) */
 "levelup_description" = "現実での目標を達成してレベルが上がり、体力が全回復した！";
 /* (No Comment) */
-"levelup_share" = "現実での習慣が向上したので、Habitica で %ld にレベルアップしました!";
+"levelup_share" = "実生活での習慣が向上したので、Habitica で %ld にレベルアップしました！";
 /* (No Comment) */
 "levelup_title" = "レベル%ldになった！";
 /* (No Comment) */
@@ -201,9 +201,9 @@
 /* (No Comment) */
 "quests.collection_quest" = "アイテム集めのクエスト";
 /* (No Comment) */
-"quests.confirm_abort" = "このミッションを中断します。よろしいですか?　パーティの全員が中断になり、すべての進行状況は失われます。クエストの巻物はクエスト所有者の手に戻ります。";
+"quests.confirm_abort" = "このミッションを中断します。よろしいですか？パーティの全員が中断になり、すべての進行状況は失われます。クエストの巻物はクエスト所有者の手に戻ります。";
 /* (No Comment) */
-"quests.confirm_cancel_invitation" = "このクエストを中止します。よろしいですか?　招待への承認は全て無効になります。クエストの巻物は、クエストの所有者の手に戻ります。";
+"quests.confirm_cancel_invitation" = "このクエストを中止します。よろしいですか？招待への承認は全て無効になります。クエストの巻物は、クエストの所有者の手に戻ります。";
 /* (No Comment) */
 "quests.confirm_force_start" = "本当によろしいですか？パーティーメンバーのうち何人かはクエストに参加していません。すべてのプレイヤーが参加または招待を辞退すると、クエストは自動的に始まります。";
 /* (No Comment) */
@@ -235,13 +235,13 @@
 /* (No Comment) */
 "settings.api" = "API";
 /* (No Comment) */
-"settings.are_you_sure" = "本当によろしいですか?";
+"settings.are_you_sure" = "本当によろしいですか？";
 /* (No Comment) */
 "settings.authentication" = "認証";
 /* (No Comment) */
 "settings.change_class" = "クラスを変更する";
 /* (No Comment) */
-"settings.change_class_disclaimer" = "よろしいのですか?　この操作で、あなたのキャラクターのクラスと割り当てたポイントがリセットされます(獲得したポイントについては、再割り当てできる状態に戻ります)。また、3 ジェムが必要です。";
+"settings.change_class_disclaimer" = "よろしいのですか？この操作で、あなたのキャラクターのクラスと割り当てたポイントがリセットされます(獲得したポイントについては、再割り当てできる状態に戻ります)。また、3 ジェムが必要です。";
 /* (No Comment) */
 "settings.clear_cache" = "キャッシュを消去する";
 /* (No Comment) */
@@ -323,7 +323,7 @@
 /* (No Comment) */
 "tasks.form.clear" = "クリア";
 /* (No Comment) */
-"tasks.form.confirm_delete" = "このタスクを削除します。よろしいですか?";
+"tasks.form.confirm_delete" = "このタスクを削除します。よろしいですか？";
 /* (No Comment) */
 "tasks.form.cost" = "価格";
 /* (No Comment) */
@@ -553,7 +553,7 @@
 "stable.standard_pets" = "基本のペット";
 "stable.standard_mounts" = "基本の乗騎";
 "equipment.equipment" = "装備";
-"equipment.costume_explanation" = "「衣装を使用する」を選択すると、武装の能力値に影響を与えずに、アイテムをアバターに着せることができます!　つまり、もっとも効果の高いアイテムを装備しながらも、あなたのアバターは自由にオシャレができるということです。";
+"equipment.costume_explanation" = "「衣装を使用する」を選択すると、武装の能力値に影響を与えずに、アイテムをアバターに着せることができます！つまり、もっとも効果の高いアイテムを装備しながらも、あなたのアバターは自由にオシャレができるということです。";
 "equipment.class_equipment" = "クラスの装備";
 "avatar.skin_color" = "肌の色";
 "purchase_gems" = "ジェムを購入する";
@@ -574,7 +574,7 @@
 "open_itunes" = "Apple ID サブスクリプションを開く";
 "unsubscribe_website" = "もう有料プランを続けたくないですか？ あなたの支払方法では、ウェブサイトからのみ有料プランを解約できます。";
 "open_website" = "Habitica のウェブサイトを開く";
-"plain_backgrounds" = "シンプルな背景";
+"plain_backgrounds" = "スタンダードな背景";
 "size" = "サイズ";
 "shirt" = "シャツ";
 "bangs" = "前髪";
@@ -727,13 +727,11 @@
 "create_tag" = "タグをつくる";
 "unlockDropsTitle" = "ドロップシステムをアンロックしました！";
 "unlockDropsDescription" = "ドロップシステムがアンロックされました！今後タスクを達成すると、たまごなどのアイテムや、薬、そしてエサの落とし物を発見するちょっとしたチャンスが訪れます！";
-"subscription_info_1_title" = "ゴールドをジェムに";
-"subscription_info_2_title" = "神秘の砂時計";
-"subscription_info_3_title" = "毎月のミステリーアイテム";
+"subscription_info_1_title" = "月ごとの無料ジェム";
+"subscription_info_2_title" = "月ごとの神秘の砂時計";
+"subscription_info_3_title" = "毎月の限定装備セット";
 "subscription_info_3_description" = "今すぐ有料プランに加入して、限定セットや毎月の新しいアイテムを受け取りましょう！";
-"subscription_info_4_title" = "毎月のミステリーアイテム";
-"subscription_info_4_description" = "新しく有料会員になって、ロイヤルパープルのジャッカロープのペットを迎えましょう。";
-"subscription_benefits_title" = "有料会員になって、これらの有益な特典を手に入れましょう";
+"subscription_benefits_title" = "有料プランに加入すると、さらに多くの特典でモチベーションを維持できます";
 "gem_benefits_title" = "ジェムを使って、あなたのアカウントを彩る 楽しいおまけを購入できます。例えば：";
 "moderator" = "モデレーター";
 "staff" = "スタッフ";
@@ -754,7 +752,7 @@
 "your_balance" = "あなたの残高：";
 "choose_task" = "タスクを選択";
 "shops.other_class_disclaimer" = "現在のクラスの装備のみ購入できます";
-"shops.purchased_all_gear" = "あなたはクラス固有の装備をすでに全部持っています！　春分・秋分や夏至・冬至の頃に開催される大祭で、新たな装備が追加されることでしょう。";
+"shops.purchased_all_gear" = "新しい装備は季節の大祭で追加されます。それまでは、%d個もの装備がラッキー宝箱でみつかります！";
 "titles.skills" = "スキル";
 "titles.avatar" = "アバター";
 "stats.total" = "合計";
@@ -822,7 +820,7 @@
 "gift_confirmation_body_g1g1" = "%@ に %@ヶ月分のHabitica有料プランを送りました。そして、誰かにプレゼントすると同じ分だけ無料で受けられるキャンペーンによって、あなたのアカウントにも同じプランが無料で適用されました！";
 "gift_confirmation_body" = "%@ に %@ヶ月分のHabitica有料プランを送りました。";
 "gift_subscription_prompt" = "下の方からプレゼントしたい有料プランを選んでください！ この購入では、自動的に更新はされません。";
-"gem_cap" = "上限 %d ジェム";
+"gem_cap" = "ゴールドで購入可能なジェムを月間%d個アンロックします";
 "hourglass_count" = "+%d個の神秘の砂時計";
 "intro.welcome_prompt" = "あなたを何と呼べばいいですか？";
 "intro.welcome_speechbubble" = "やあ、新人さんだね。僕はJustin。Habiticaの案内役だよ。\n\nまず、あなたを何と呼べばいいかな？ 僕の選んだものから自由に変更してね。準備が整ったら、自分のアバターを作ってみよう！";
@@ -870,8 +868,8 @@
 "publish_challenge" = "公共のチャレンジ";
 "view_participant_progress" = "参加者の進捗を見る";
 "end_challenge" = "チャレンジを終了する";
-"subscription_info_1_description" = "市場で20ゴールドごとにジェムを買えるようになります！";
-"subscription_info_2_description" = "タイムトラベラーの店でアイテムを購入できる神秘の砂時計が手に入ります！";
+"subscription_info_1_description" = "市場で最大50ジェムを手に入れ、クエストやカスタマイズ、ペットなどを購入しましょう！";
+"subscription_info_2_description" = "タイムトラベラーの店で使える毎月1個の神秘の砂時計を見逃さないで！";
 "subscription_gift_explanation" = "有料プランの特典を誰かにプレゼントしたいですか？";
 "subscription_gift_button" = "有料プランをプレゼントする";
 "subscription_support_developers" = "有料プランに加入することで、小規模なのHabitica運営チームを支援し、Habiticaを維持する手助けができます。ありがとうございます！";
@@ -967,8 +965,8 @@
 "subscription_duration" = "%@ごとにくり返す";
 "subscription_options_title" = "有料プランの期間をあなたのご都合に合わせて選びましょう";
 "subscription_benefits_title_subscribed" = "有料会員になるとこれらの特典を得られます";
-"subscription_info_5_description" = "落とし物を見つける数の１日ごとの上限が２倍になるボーナスによって、Habiticaでよりいっそうアイテムを発見しましょう。";
-"subscription_info_5_title" = "落とし物が２倍";
+"subscription_info_5_description" = "ロイヤル・パープル・ジャッカロープを手に入れて、たまご、たまごがえしの薬、餌を毎日2倍にしてペットコレクションを増やしましょう！";
+"subscription_info_5_title" = "スペシャルなペットやさらなる落とし物";
 "party.transfer_ownership_description" = "これにより%@が新しいパーティーリーダーになります";
 "duration_12month" = "12ヶ月";
 "duration_6month" = "6ヶ月";
@@ -981,7 +979,7 @@
 "cancelled" = "キャンセルしました";
 "menu.subscription" = "有料プラン";
 "menu.gems" = "ジェムを買う";
-"time_travel_backgrounds" = "タイムトラベラーの背景";
+"time_travel_backgrounds" = "スチームパンクの背景";
 "member_group_plan" = "グループプランのメンバー";
 "group_plan" = "グループプラン";
 "settings.email_notifications.title" = "メール";
@@ -1020,10 +1018,9 @@
 "get_more_habitica" = "Habiticaをさらに楽しみましょう";
 "accessibility.notOwned" = "オーナーではない";
 "accessibility.owned" = "オーナーである";
-"subscription_info_3_description_new" = "今すぐ有料プランに加入して、この%@セットや毎月の新しいアイテムを受け取りましょう！";
 "settings.delete_account_description_social" = "この操作であなたのアカウントは完全に削除され、決して復元はできません！ 貯めているジェム、使ったジェムは、返金できません。本当にアカウントを削除するのなら、下のテキストボックスに「DELETE」と入力してください。";
 "cancel_subscription_group_plan" = "あなたはグループプランに加入したパーティーかギルドのメンバーであるため、有料プランの特典が無料で付与されています。これはあなたがグループを離れるか、オーナーによってグループプランが解約された場合に終了します。有料プランの有効期間が余分にある場合、その月数はグループプランが終了された際に適用されます。";
-"locations.time_travelers_shop" = "タイムトラベラーの店";
+"locations.time_travelers_shop" = "タイムトラベラー";
 "egg" = "たまご";
 "settings.added_local_auth" = "メールアドレスとパスワードが正常に追加されました";
 "login.register_error" = "リクエストに問題がありました。すべてのデータをよくご確認ください。";
@@ -1067,7 +1064,7 @@
 "titles.hall_of_heroes" = "英雄記念館";
 "excess_items" = "あまったアイテム";
 "complete_to_earn_gold" = "完了して100ゴールドをゲットしよう！";
-"beastMasterDescription" = "すべてのペットを集めた実績、「獣使い」を手に入れた!";
+"beastMasterDescription" = "すべてのペットを集めた実績、「獣使い」を手に入れた！";
 "beastMasterTitle" = "獣使い";
 "partyOnDescription" = "4人以上のパーティーに参加しました！";
 "partyOnTitle" = "パーティーは続く";
@@ -1176,7 +1173,7 @@
 "end_challenge_description" = "チャレンジを終わらせるにはHabiticaのウェブサイトにログインして「チャレンジ」画面の右上の「チャレンジを終了する」をタップしてください。";
 "create_guild_description" = "ギルドを作るにはHabiticaのウェブサイトにログインして「所属ギルド」画面の「作る」ボタンをタップしてください。";
 "create_guild" = "ギルドを作成";
-"gift_one_get_one_data.info_limitations" = "このイベントは%@(13:00 UTC)から%@(01:00 UTC)までの期間限定です。プロモーションは他のプレイヤーにギフトを贈った際にのみ適用されます。もしギフトを受け取った人がすでに有料会員の場合、有料会員期間が延長されます。この延長は、現在の有料会員期間を満了もしくはキャンセルした後にのみ適用されます。";
+"gift_one_get_one_data.info_limitations" = "このイベントは%@(%@ UTC)から%@(%@ UTC)までの期間限定です。プロモーションは他のプレイヤーにギフトを贈った際にのみ適用されます。もしギフトを受け取った人がすでに有料会員の場合、有料会員期間が延長されます。この延長は、現在の有料会員期間を満了もしくはキャンセルした後にのみ適用されます。";
 "gift_one_get_one_data.info_instructions" = "「有料プランをプレゼントする」をタップして、贈る相手のユーザーネームを入力し、プレゼントする有料プランの期間を選択してください。自動的にあなたのアカウントにもプレゼントした分と同じ期間のプランが無料で適用されます。";
 "gift_one_get_one_data.infoPrompt" = "贈り物の季節を祝して、特別なプロモーションを再び開催しています。いま誰かに有料プランをプレゼントすると、あなた自身も同じプランを無料で受けることができます！";
 "use_immediately_disclaimer" = "買うとすぐに効果があらわれます！";
@@ -1354,16 +1351,16 @@
 "open_mystery_item" = "ミステリーボックスを開けて見つけたのは……";
 "errors.password_not_matching" = "パスワードは一致しなければなりません";
 "faint.good_luck_text" = "でも、頑張れば全部取り戻せるよ！がんばれ！きっとうまくいく。 ";
-"faint.disclaimer" = "壊れた装備はごほうびから買い戻すことができます";
+"faint.disclaimer" = "壊れた装備は市場から買い戻すことができます";
 "armoire.drop_rate" = "宝箱のドロップ率";
 "armoire.food" = "宝箱を探したら食べ物があった。これは何だろう？";
-"armoire.experience" = "宝箱と格闘して、経験値を得ました。どうぞっ!";
+"armoire.experience" = "宝箱と格闘して、経験値を得ました。どうぞっ！";
 "armoire.rate_equipment_title" = "60% 装備品";
 "armoire.rate_food_title" = "20% えさ";
 "armoire.rate_food_description" = "10種類のえさのうち1つを受け取れます。特別なイベント時には、通常のえさはケーキやお菓子に変わります。";
 "armoire.rate_experience_title" = "20% 経験値";
 "armoire.rate_experience_description" = "獲得量は10～50の間でランダムに変化します。";
-"armoire.equipment_remaining" = "残りの装備: %d";
+"armoire.equipment_remaining" = "残りの装備：%d";
 "sale_ends_in" = "セールは%@に終了します";
 "next_checkin_prize_in_x_days" = "次の賞は、%d回のチェックインでアンロックされます";
 "unban_user" = "ユーザーを復帰";
@@ -1405,7 +1402,7 @@
 "unsubscribe_google" = "もう有料プランを続けたくないですか？ あなたの支払方法では、 Google Playからのみ有料プランを解約できます。";
 "errors.enter_valid_email" = "有効なメールアドレスをご入力ください";
 "errors.password_length" = "パスワードは%d文字以上にする必要があります";
-"faint.subtitle" = "あなたは、**レベル %s**に下がり、**%s ゴールド**を失い、**装備を1個**失います…\n頑張ればすべて取り戻せます！";
+"faint.subtitle" = "あなたは、**レベル %s**に下がり、**%s ゴールド**を失い、**装備を1個**失います…頑張ればすべて取り戻せます！";
 "armoire.equipment" = "宝箱の中から珍しい装備を発見！";
 "armoire.enchanted_armoire_drop_rates" = "ラッキー宝箱のドロップ率";
 "armoire.rate_equipment_description" = "毎月、新しい装備品が追加されます。すべての装備品を所持している場合、50%/50%の確率で「えさ」または「経験値」を獲得できます。";
@@ -1416,3 +1413,146 @@
 "unshadow_mute_user_confirm" = "このユーザーをシャドーミュート解除しますか？";
 "four_for_free_description" = "パーティーを盛り上げるために、パーティーローブ、20ジェム、そして限定版のケープセットと背景をプレゼントします！";
 "settings.next_cron_run" = "次の日付リセット：%@";
+"settings.reset_account_description_social" = "すべてのレベル、ゴールド、経験値が失われます。すべてのタスクとその履歴データは削除されます（チャレンジタスクは残ります）。有料会員アイテムと無料記念アイテムを除くすべての装備を失いますが、買い戻すことは可能です。クラス固有の装備を再購入するには、正しいクラスである必要があります。現在のクラス、実績、ペットと乗騎は維持されます。絶対に間違いない場合は、下のテキストボックスに「RESET」と入力してください。";
+"items.empty.egg_description" = "タスクやペットクエストをこなしたり、市場に行って買い物をしたりしましょう！";
+"quest_mechanics_boss_description" = "あらゆる種類のタスクを完了するか、スキルを使用すると保留中のダメージが蓄積されます！ダメージは次の日のリセット時に適用されます。体力はダメージ量に影響します。";
+"quest_mechanics_collecting_description" = "コレクションクエスト中にタスクを完了すると、ランダムな確率でクエストアイテムを見つけることができます。保留中のアイテムは翌日のリセット時に適用されます。知覚はアイテム出現率を上げます。";
+"settings.reset_account_confirm" = "本当にリセットしますか？";
+"settings.delete_account_confirm" = "本当に削除しますか？";
+"stable.evolved_pet" = "%sを手なずけた！さあ、乗ってみよう！";
+"avatar.animal_tails" = "動物のしっぽ";
+"faint.unsubbed_button_prompt" = "1HPで持ちこたえるために有料会員になりましょう！";
+"faint.unsubbed_footer" = "有料プランでHP切れを防ぐために、毎日セカンドチャンスを手に入れましょう";
+"faint.subbed_button_prompt" = "セカンドチャンス：1HPで持ちこたえる！";
+"armoire.unsubbed_button_prompt" = "有料会員になればもう一度無料でオープンできます！";
+"armoire.unsubbed_footer" = "有料会員は、宝箱を購入するたびに追加のチャンスがあります";
+"armoire.subbed_button_prompt" = "無料でもう一度開ける！";
+"armoire.subbed_footer" = "有料会員は、ラッキー宝箱を手に入れるチャンスが増えます！";
+"subscription.faint_header" = "有料会員は毎日、人生のセカンドチャンスを得ることができ、その他にも特典があります！";
+"report_x" = "%@を報告する";
+"player" = "プレーヤー";
+"items.empty.quest_description" = "クエストはレベルアップやログインボーナス、クエストショップから入手できます！";
+"x_gems_month" = "上限 %d ジェム";
+"hourglass_in_x_months" = "%dヶ月ごとの砂時計";
+"inventory.no_saddle_tile" = "くらを持っていません";
+"inventory.no_saddle_description" = "くらはペットを即座に乗騎に昇格させます。くらは市場で購入できます。";
+"inventory.visit_market" = "市場に行く";
+"stable.use_saddle" = "くらを使う";
+"faint.subbed_footer" = "有料プランを利用することで、HPを使い切った場合のセカンドチャンスを毎日得ることができます";
+"faint.subbed_used" = "あなたは今日、すでにセカンドチャンスを使用済みです。%sで再度ご利用いただけます。";
+"faint.perk_success" = "1HPでセカンドチャンスを得ました！";
+"sub_perk" = "サブ特典";
+"subscription.info_armoire_title" = "宝箱2倍のチャンス";
+"subscription.info_armoire_description" = "ラッキー宝箱を開けるたびに、新しい装備を獲得するチャンスが2回あります！";
+"subscription.armore_header" = "有料会員は、宝箱での特別なチャンスやその他の特典を得ることができます！";
+"subscription.gem_for_gold_header" = "ゴールドでジェムを購入したり、他の限定特典を受け取るために有料プランに加入しましょう！";
+"subscription.hourglasses_header" = "有料会員は、タイムトラベラーの店でアイテムを購入できる神秘の砂時計や、その他の限定特典を得ることができます！";
+"report_x_question" = "なぜこの%@を報告するのですか？";
+"reason_for_report" = "報告の理由";
+"this_will_also_block_x" = "%@ もブロックします";
+"open_profile" = "プロフィールを開く";
+"share_avatar" = "アバターを共有";
+"message" = "メッセージ";
+"challenge" = "チャレンジ";
+"no_x" = "%@がありません";
+"items.empty.potion_description" = "タスクやポーションクエストをこなしたり、市場に行って買い物をしたりしましょう！";
+"items.empty.food_description" = "タスクをこなしたり、宝箱を買ったり、市場に行って買い物をしたりしましょう！";
+"1_hourglass" = "1個の砂時計";
+"x_hourglasses" = "%d個の砂時計";
+"quest_mechanics" = "クエストの仕組み";
+"quest_mechanics_boss_title" = "ボスへのダメージ";
+"quest_mechanics_collecting_title" = "クエストアイテムを集める";
+"quest_mechanics_damage_title" = "日課を未完にするとボスが攻撃してきます";
+"quest_mechanics_damage_description" = "ボスのダメージは、パーティメンバーが毎日チェックインするたびに計算されます。このダメージは、次にサーバーと同期するアクションを行ったときに適用されます。ボスのダメージはパーティーのチャットに記録されます。";
+"quest_mechanics_pausing_title" = "停止中のダメージ";
+"challenge_category.hobbies_occupations" = "趣味・仕事";
+"challenge_category.time_management" = "時間管理・アカウンタビリティ";
+"quest_mechanics_rage_title" = "怒りメーター";
+"quest_mechanics_pausing_description" = "日課をクリアするのに苦労しているなら、設定でダメージを一時停止して休憩しよう。これにより、ボスが自分や他のメンバーを傷つけるのを防ぐことができます。他のメンバーが日課を完了しないときのダメージは受けるので、気をつけましょう！";
+"quest_mechanics_rage_description" = "難易度の高いボスには、HPの下にオレンジ色の怒りメーターが表示されているものがいます。このメーターは、参加者が日課を完了しないと増加します。メーターが満タンになると、ボスは特大ダメージを与える恐ろしい攻撃を放ちます！";
+"challenge_category.habitica_official" = "Habitica公式";
+"challenge_category.academics" = "学術分野";
+"challenge_category.advocacy_causes" = "主義主張";
+"challenge_category.creativity" = "創造性";
+"challenge_category.entertainment" = "エンターテイメント";
+"challenge_category.finance" = "金融・経済";
+"challenge_category.health_fitness" = "健康・フィットネス";
+"challenge_category.location_based" = "国・地域別";
+"challenge_category.mental_health" = "メンタルヘルス・セルフケア";
+"challenge_category.getting_organized" = "整理整頓";
+"challenge_category.recovery_support_groups" = "回復・支援のためのグループ";
+"challenge_category.self_improvement" = "自己改善";
+"challenge_category.spirituality" = "精神性";
+"reporting_disclaimer" = "コミュニティガイドラインおよび/または利用規約に違反する%@のみを報告してください。虚偽の報告は、ハビティカのコミュニティガイドラインに違反します。";
+"items.empty.special_description" = "季節の大祭で変身アイテムをゲットしたり、有料プランで毎月のミステリー・ボックスを手に入れましょう！";
+"you_raised_pet" = "あなたはペットの%@を乗騎に育てました！";
+"subscription.info_faint_title" = "セカンドチャンスを手に入れましょう";
+"subscription.info_faint_description" = "1日1回、HPがなくなったら即座に回復することで、前進を失わないようにしましょう！";
+"empty.want_more_items" = "もっとお探しですか？";
+"empty.want_more_items_description" = "アバターをカスタマイズする方法は、カスタマイズショップをご覧ください！";
+"x_days" = "%d 日間";
+"1_day" = "１日";
+"x_hours" = "%d 時間";
+"1_hour" = "１時間";
+"1_minute" = "1分間";
+"swaps_in_x" = "%@に切り換えます";
+"refresh_for_items" = "新しいアイテムに更新します";
+"spring" = "春";
+"summer" = "夏";
+"fall" = "秋";
+"winter" = "冬";
+"menu.quest_shop" = "クエスト";
+"empty.no_items" = "これらのアイテムを持っていません";
+"empty.no_items_description" = "アバターをカスタマイズするには、カスタマイズショップへ行きましょう！";
+"x_minutes" = "%d 分間";
+"customization_shop" = "カスタマイズショップ";
+"avatar.shirts" = "シャツ";
+"avatar.skin_colors" = "肌の色";
+"avatar.hairColors" = "髪の色";
+"avatar.hair_styles" = "髪型";
+"avatar.mustaches" = "くちひげ";
+"avatar.beards" = "あごひげ";
+"avatar.wheelchairs" = "車いす";
+"avatar.backgrounds" = "背景";
+"avatar.skins" = "肌";
+"shops.customization_notes" = "ルックスを変えたい？いいところに来たね！私たちは常に新しい選択肢を手に入れます。";
+"settings.push_notifications.content_release" = "コンテンツリリースとイベント";
+"monthly_backgrounds" = "月替わりの背景";
+"locations.customizations" = "カスタマイズ";
+"classes.warriors" = "戦士";
+"classes.mages" = "魔道士";
+"classes.healers" = "治療師";
+"classes.rogues" = "盗賊";
+"shops.own_all_items" = "あなたはこれらすべてを所有しています";
+"shops.purchased_all_gear_armoire_empty" = "新しい装備は季節の大祭で発表されます。ラッキー宝箱も毎月新しい在庫を入荷しています！";
+"shops.try_on_customize_avatar_return_next_month" = "アバターをカスタマイズして試着できます。来月のオプションもお見逃しなく！";
+"shops.try_on_customize_avatar_return_next_season" = "アバターをカスタマイズして試着することができます。次のシーズンのオプションもお見逃しなく！";
+"shops.try_on_customize_avatar" = "アバターをカスタマイズして試着することができます。";
+"shops.try_on_equipment" = "装備から試着できます。毎月初めに新しい装備が入荷します！";
+"insufficient_level_equipment_dialog_new" = "このアイテムは%sのみが使用可能です。\nクラスはレベル10以降に選択できます。";
+"class_equipment_shop_dialog" = "このアイテムは %s のみが使用可能です。\n設定を開いてクラスを変更してください。";
+"shops.purchased_all_gear_title" = "%@の装備をすべて所有しています";
+"shops.customizing_your_avatar" = "アバターのカスタマイズ";
+"is_closed" = "閉店中";
+"items.footer_quests_title" = "もっとクエストが欲しいですか？";
+"items.footer_food_title" = "タスクから正しいエサがもらえてないですか？";
+"items.footer_title" = "タスクから正しいいアテムがもらえてないですか？";
+"items.footer_description" = "市場をチェックして、必要なものだけを買いましょう！";
+"items.footer_food_description" = "マーケットでエサやくらを買って、ペットを速く育てましょう！";
+"items.footer_quests_descriptions" = "クエスト・ショップに何があるかチェックしましょう！";
+"yes" = "はい";
+"no" = "いいえ";
+"community_guidelines" = "コミュニティ ガイドライン";
+"terms_of_service" = "利用規約";
+"change_class_to" = "%@にクラスを変更します";
+"unlock_x_gear_and_skills" = "%@の装備とスキルを解放";
+"class_change_confirm" = "3ジェムでクラスを%sに変更しますか？";
+"class_change_success_title" = "あなたは%@ に転職した！";
+"got_it" = "了解！";
+"open_stats" = "ステータスを開く";
+"class_change_confirm_description" = "これにより、ショップで解放される装備が切り替わり、使用可能なスキルが変更され、ステータスポイントがリセットされます。";
+"class_change_success_description" = "スキル %@ を使えるようになりました。ショップで装備を購入することもできます。レベルを上げてステータスポイントを獲得し、スキルをパワーアップさせましょう。";
+"two_gems_per_month" = "毎月+2ジェム";
+"max_gem_cap" = "ジェム最大数";
+"subscription.stay_motivated_with_more_rewards" = "有料プランに加入すると、さらに多くの特典でモチベーションを維持できます";
+"buy_gems_with_gold" = "ジェムをゴールドで買う";
