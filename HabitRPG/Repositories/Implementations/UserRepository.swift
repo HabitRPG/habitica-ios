@@ -317,8 +317,12 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return call.objectSignal
             .on(value: { loginResponse in
             if let response = loginResponse {
-                AuthenticationManager.shared.currentUserId = response.id
-                AuthenticationManager.shared.currentUserKey = response.apiToken
+                if !response.id.isEmpty {
+                    AuthenticationManager.shared.currentUserId = response.id
+                }
+                if !response.apiToken.isEmpty {
+                    AuthenticationManager.shared.currentUserKey = response.apiToken
+                }
             }
         })
     }
