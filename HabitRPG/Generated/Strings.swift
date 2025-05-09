@@ -554,7 +554,7 @@ public enum L10n {
   public static func hourglassInXMonths(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "hourglass_in_x_months", p1)
   }
-  /// Mystic Hourglasses are an extremely rare form of currency you can only receive for subscribing to Habitica for three consecutive months or more. They are used in the Time Traveler’s shop to buy past gear sets, pets, mounts, animated backgrounds, or even special quests.\n\nYou can receive up to four Mystic Hourglasses a year. The time they are rewarded is based on your subscription renewal schedule. They are sent out on the first day of a new month after your last subscription payment that qualified you for an hourglass. See the [Subscription] page for more details.
+  /// Mystic Hourglasses are an extremely rare form of currency you can only receive for subscribing to Habitica. You can use them in the Time Travelers Shop to buy past Subscriber Gear sets, exclusive Pets, Mounts, animated Backgrounds, or even special Quests! These extra perks are a great way to stay motivated through the year and reward yourself for a job well done.\n\nSubscribers receive a Mystic Hourglass at the start of each month they have subscription benefits, along with a bunch of other perks. Be sure to check out our subscription options if you’re interested in what the Time Travelers have to offer!
   public static var hourglassesDescription: String { return L10n.tr("Mainstrings", "hourglasses_description") }
   /// 100 Gold
   public static var hundredGold: String { return L10n.tr("Mainstrings", "hundred_gold") }

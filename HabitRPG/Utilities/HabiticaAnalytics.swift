@@ -38,13 +38,14 @@ public class HabiticaAnalytics {
         let properties = [
             "eventAction": "navigated",
             "eventCategory": "navigation",
-            "hitType": "pageview",
+            "hitType": "pageview"
         ]
         Amplitude.instance().logEvent(pageName, withEventProperties: properties)
     }
     
-    public func log(_ eventName: String, withEventProperties properties: [AnyHashable: Any] = [:]) {
+    public func log(_ eventName: String, withEventProperties properties: [String: Any] = [:]) {
         Amplitude.instance().logEvent(eventName, withEventProperties: properties)
+        Analytics.logEvent(eventName, parameters: properties)
     }
     
     public func setAnalyticsConsents(_ consented: Bool) {

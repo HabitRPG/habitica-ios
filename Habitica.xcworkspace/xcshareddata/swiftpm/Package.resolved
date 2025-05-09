@@ -61,7 +61,7 @@
       "location" : "https://github.com/simibac/ConfettiSwiftUI.git",
       "state" : {
         "branch" : "master",
-        "revision" : "d19c1705fdc8e4eca07f669b7350255602898fc8"
+        "revision" : "79666d42b882bf7921b1941fa7c636d681d77980"
       }
     },
     {
@@ -195,8 +195,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher.git",
       "state" : {
-        "revision" : "e6749919f9761d573d37a7d7e78b1b854c191d7f",
-        "version" : "8.1.3"
+        "revision" : "7deda23bbdca612076c5c315003d8638a08ed0f1",
+        "version" : "8.3.2"
       }
     },
     {
@@ -268,7 +268,7 @@
       "location" : "https://github.com/ReactiveCocoa/ReactiveSwift",
       "state" : {
         "branch" : "master",
-        "revision" : "8581f24e9944521975a1b2177a7bb9b95ab803ed"
+        "revision" : "7f733497761379030d1b82e36d5b7c3deabbf01b"
       }
     },
     {
@@ -294,8 +294,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",
       "state" : {
-        "revision" : "ebc7251dd5b37f627c93698e4374084d98409633",
-        "version" : "1.28.2"
+        "revision" : "d72aed98f8253ec1aa9ea1141e28150f408cf17f",
+        "version" : "1.29.0"
       }
     },
     {

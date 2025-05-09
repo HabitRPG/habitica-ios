@@ -281,9 +281,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                                         email: authValues.email ?? "")
                     .observeValues { loginResult in
                     if loginResult != nil {
-                        #if !targetEnvironment(macCatalyst)
-                        Analytics.logEvent("register", parameters: nil)
-                        #endif
+                        HabiticaAnalytics.shared.log("register")
                         self.onSuccessfulLogin(true)
                     } else {
                         self.loadingIndicatorVisibilityObserver.send(value: false)

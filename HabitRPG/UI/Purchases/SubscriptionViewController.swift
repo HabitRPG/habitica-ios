@@ -404,7 +404,7 @@ class SubscriptionViewController: BaseTableViewController {
                 self.verifyAndSubscribe(product)
                 logger.log("Purchase Success: \(product.productId)")
             case .error(let error):
-                Analytics.logEvent("purchase_failed", parameters: ["error": error.localizedDescription, "code": error.errorCode])
+                HabiticaAnalytics.shared.log("purchase_failed", withEventProperties: ["error": error.localizedDescription, "code": error.errorCode])
 
                 logger.log("Purchase Failed: \(error)", level: .error)
             case .deferred:

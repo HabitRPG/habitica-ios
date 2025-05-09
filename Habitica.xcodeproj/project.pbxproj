@@ -289,6 +289,8 @@
 		298F20B72A4ECC66004AABE5 /* HabiticaProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298F20B62A4ECC66004AABE5 /* HabiticaProgressIndicator.swift */; };
 		298FAB0224BF5BF30084CB0D /* MainTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 298FAB0124BF5BF30084CB0D /* MainTableviewCell.xib */; };
 		2990EAE32AB9FB7900916A67 /* FeedSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990EAE22AB9FB7900916A67 /* FeedSheetView.swift */; };
+		2992435D2DC8C0A900432ED3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2992435C2DC8C0A900432ED3 /* FirebaseAnalytics */; };
+		2992435F2DC8C1CD00432ED3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2992435E2DC8C1CD00432ED3 /* FirebaseAnalytics */; };
 		299328A924E57858003BCE0C /* FAQDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299328A824E57858003BCE0C /* FAQDetailViewController.swift */; };
 		299328AB24E5985B003BCE0C /* UIStackview-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299328AA24E5985B003BCE0C /* UIStackview-Extensions.swift */; };
 		2994A8AE28FE945E00CEDED7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; };
@@ -1355,6 +1357,7 @@
 			files = (
 				2938ED3C28B4EE6B00E995A2 /* Amplitude in Frameworks */,
 				2953D83D28B51FA700DC456E /* ReactiveSwift in Frameworks */,
+				2992435F2DC8C1CD00432ED3 /* FirebaseAnalytics in Frameworks */,
 				2994A8B128FE946A00CEDED7 /* Habitica_Database.framework in Frameworks */,
 				29252C382AF4FB330003692D /* Habitica_API_Client.framework in Frameworks */,
 				29BEE62F252CCFE100D456F8 /* SwiftUI.framework in Frameworks */,
@@ -1367,6 +1370,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2992435D2DC8C0A900432ED3 /* FirebaseAnalytics in Frameworks */,
 				2953D83B28B51F9E00DC456E /* ReactiveSwift in Frameworks */,
 				2994A8B028FE946800CEDED7 /* Habitica_Database.framework in Frameworks */,
 				2938ED3A28B4EE5C00E995A2 /* Amplitude in Frameworks */,
@@ -2790,6 +2794,7 @@
 				2938ED3B28B4EE6B00E995A2 /* Amplitude */,
 				2938ED3D28B4EEB200E995A2 /* KeychainAccess */,
 				2953D83C28B51FA700DC456E /* ReactiveSwift */,
+				2992435E2DC8C1CD00432ED3 /* FirebaseAnalytics */,
 			);
 			productName = "Habitica WidgetsExtension";
 			productReference = 29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */;
@@ -2812,6 +2817,7 @@
 				2938ED3928B4EE5C00E995A2 /* Amplitude */,
 				2938ED3F28B4EEBC00E995A2 /* KeychainAccess */,
 				2953D83A28B51F9E00DC456E /* ReactiveSwift */,
+				2992435C2DC8C0A900432ED3 /* FirebaseAnalytics */,
 			);
 			productName = "Habitica Intents";
 			productReference = 7A84E191228928AC0081E96F /* Habitica Intents.appex */;
@@ -4095,7 +4101,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 3.12.4;
+				MARKETING_VERSION = 3.12.5;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -4239,7 +4245,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.12.4;
+				MARKETING_VERSION = 3.12.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4281,7 +4287,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.12.4;
+				MARKETING_VERSION = 3.12.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -4325,7 +4331,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.12.4;
+				MARKETING_VERSION = 3.12.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4459,7 +4465,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 3.12.4;
+				MARKETING_VERSION = 3.12.5;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -4603,7 +4609,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.12.4;
+				MARKETING_VERSION = 3.12.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4645,7 +4651,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.12.4;
+				MARKETING_VERSION = 3.12.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -4689,7 +4695,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.12.4;
+				MARKETING_VERSION = 3.12.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4830,7 +4836,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.12.4;
+				MARKETING_VERSION = 3.12.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4877,7 +4883,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.12.4;
+				MARKETING_VERSION = 3.12.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4918,7 +4924,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.12.4;
+				MARKETING_VERSION = 3.12.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -4961,7 +4967,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.12.4;
+				MARKETING_VERSION = 3.12.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
@@ -5002,7 +5008,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.12.4;
+				MARKETING_VERSION = 3.12.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -5047,7 +5053,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.12.4;
+				MARKETING_VERSION = 3.12.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -5358,7 +5364,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 3.12.4;
+				MARKETING_VERSION = 3.12.5;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -5431,7 +5437,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 3.12.4;
+				MARKETING_VERSION = 3.12.5;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -5865,6 +5871,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2953D84328B7772A00DC456E /* XCRemoteSwiftPackageReference "BottomSheet" */;
 			productName = BottomSheet;
+		};
+		2992435C2DC8C0A900432ED3 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2938ED2C28B4EDC700E995A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		2992435E2DC8C1CD00432ED3 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2938ED2C28B4EDC700E995A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 		29A3FD2E296720AF007D85B2 /* SwiftUIX */ = {
 			isa = XCSwiftPackageProductDependency;

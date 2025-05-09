@@ -48,9 +48,7 @@ class BulkStatsAllocationViewController: UIViewController, Themeable {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        #if !targetEnvironment(macCatalyst)
-        Analytics.logEvent("open_bulk_stats", parameters: nil)
-        #endif
+        HabiticaAnalytics.shared.log("open_bulk_stats")
     }
     
     func applyTheme(theme: Theme) {

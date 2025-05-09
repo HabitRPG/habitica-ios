@@ -119,9 +119,6 @@ class PetHatchingAlertController: HabiticaAlertController {
             addAction(title: L10n.close, isMainAction: true)
             
             inventoryRepository.getItems(keys: [ItemType.eggs: [item.pet?.egg ?? ""], ItemType.hatchingPotions: [item.pet?.potion ?? ""]]).take(first: 1).on(value: { items in
-                #if !targetEnvironment(macCatalyst)
-                Analytics.logEvent("hatch_buy_button_tapped", parameters: nil)
-                #endif
                 let egg = items.eggs.value.first
                 let potion = items.hatchingPotions.value.first
                 var hatchValue = self.eggCount > 0 ? 0 : Int(egg?.value ?? 0.0)

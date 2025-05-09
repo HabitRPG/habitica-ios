@@ -87,7 +87,7 @@ class UserManager: NSObject {
             return
         }
         lastYesterdailyDialog = Date()
-        var eventProperties = [AnyHashable: Any]()
+        var eventProperties = [String: Any]()
         eventProperties["eventAction"] = "show cron"
         eventProperties["eventCategory"] = "behaviour"
         eventProperties["event"] = "event"

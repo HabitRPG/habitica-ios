@@ -38,7 +38,7 @@ class StableSplitViewController: HabiticaSplitViewController {
             }
         }
         
-        Analytics.logEvent("open_stable", parameters: nil)
+        HabiticaAnalytics.shared.log("open_stable")
     }
     
     override func populateText() {
