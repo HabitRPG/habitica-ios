@@ -311,10 +311,16 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return call.objectSignal
     }
     
-    func updatePassword(newPassword: String, password: String, confirmPassword: String) -> Signal<EmptyResponseProtocol?, Never> {
+    func updatePassword(newPassword: String, password: String, confirmPassword: String) -> Signal<LoginResponseProtocol?, Never> {
         let call = UpdatePasswordCall(newPassword: newPassword, oldPassword: password, confirmPassword: confirmPassword)
         
         return call.objectSignal
+            .on(value: { loginResponse in
+            if let response = loginResponse {
+                AuthenticationManager.shared.currentUserId = response.id
+                AuthenticationManager.shared.currentUserKey = response.apiToken
+            }
+        })
     }
     
     func revive() -> Signal<UserProtocol?, Never> {
