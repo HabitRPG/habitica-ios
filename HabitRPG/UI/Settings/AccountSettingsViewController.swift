@@ -249,8 +249,16 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             row.cellStyle = .subtitle
             row.cellUpdate { cell, _ in
                 cell.detailTextLabel?.text = L10n.Settings.apiDisclaimer
-            }.onCellSelection { _, _ in
-                self.copyToClipboard(L10n.apiKey, value: AuthenticationManager.shared.currentUserKey)
+            }.onCellSelection { [weak self] _, _ in
+                guard let self = self else { return }
+                guard let token = AuthenticationManager.shared.currentUserKey else { return }
+                let sheetView = ApiTokenSheetView(token: token) {
+                    UIPasteboard.general.string = token
+                    ToastManager.show(text: L10n.copiedToClipboard, color: .blue)
+                }
+                let sheetController = HostingBottomSheetController(rootView: sheetView)
+                sheetController.preferredSheetSizing = .medium
+                self.present(sheetController, animated: true)
             }
         }
             <<< ButtonRow { row in

@@ -328,7 +328,7 @@
 "settings.new_password" = "New Password";
 "settings.old_password" = "Old Password";
 "settings.confirm_new_password" = "Confirm new Password";
-"settings.api_disclaimer" = "Copy Token. Be careful, this is a password!";
+"settings.api_disclaimer" = "Password token for developers and third-party tools";
 "settings.local" = "Local";
 "settings.searchable_everywhere" = "Everywhere";
 "settings.searchable_private_spaces" = "Only Private Spaces";
@@ -1421,3 +1421,10 @@
 "subscriber_benefit" = "Subscriber Benefit";
 "buy_gems_with_gold" = "Buy Gems with Gold";
 "change_password_helper" = "Passwords must be 8 characters or more. Changing your password will log you out of any other devices and third-party tools you may use.";
+"api_token_title" = "API Token";
+"api_token_is_password" = "Your API Token is like a password";
+"api_token_password_description" = "Do not share it publicly. You may occasionally be asked for your User ID, but never post your API Token where others can see it, including on Github.";
+"api_token_reset_title" = "If you need a new API Token";
+"api_token_reset_desc" = "You can change your password to reset it. Once it is reset, you will need to log back in to any other devices you use Habitica on and provide the new API Token to third-party tools you may use.";
+"copy_token" = "Copy Token";
+

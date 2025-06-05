@@ -42,6 +42,16 @@ public enum L10n {
   public static var animalEars: String { return L10n.tr("Mainstrings", "animal_ears") }
   /// API Key
   public static var apiKey: String { return L10n.tr("Mainstrings", "api_key") }
+  /// Your API Token is like a password
+  public static var apiTokenIsPassword: String { return L10n.tr("Mainstrings", "api_token_is_password") }
+  /// Do not share it publicly. You may occasionally be asked for your User ID, but never post your API Token where others can see it, including on Github.
+  public static var apiTokenPasswordDescription: String { return L10n.tr("Mainstrings", "api_token_password_description") }
+  /// You can change your password to reset it. Once it is reset, you will need to log back in to any other devices you use Habitica on and provide the new API Token to third-party tools you may use.
+  public static var apiTokenResetDesc: String { return L10n.tr("Mainstrings", "api_token_reset_desc") }
+  /// If you need a new API Token
+  public static var apiTokenResetTitle: String { return L10n.tr("Mainstrings", "api_token_reset_title") }
+  /// API Token
+  public static var apiTokenTitle: String { return L10n.tr("Mainstrings", "api_token_title") }
   /// Back
   public static var back: String { return L10n.tr("Mainstrings", "back") }
   /// Backer Tier: %d
@@ -222,6 +232,8 @@ public enum L10n {
   public static func copiedXToClipboard(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "copied_x_to_clipboard", p1)
   }
+  /// Copy Token
+  public static var copyToken: String { return L10n.tr("Mainstrings", "copy_token") }
   /// Could not gift gems. Please try again later.
   public static var couldNotGiftGems: String { return L10n.tr("Mainstrings", "could_not_gift_gems") }
   /// Create
@@ -2365,7 +2377,7 @@ public enum L10n {
     public static var adjustment: String { return L10n.tr("Mainstrings", "settings.adjustment") }
     /// API
     public static var api: String { return L10n.tr("Mainstrings", "settings.api") }
-    /// Copy Token. Be careful, this is a password!
+    /// Password token for developers and third-party tools
     public static var apiDisclaimer: String { return L10n.tr("Mainstrings", "settings.api_disclaimer") }
     /// App Icon
     public static var appIcon: String { return L10n.tr("Mainstrings", "settings.app_icon") }
