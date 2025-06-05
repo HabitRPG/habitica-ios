@@ -134,6 +134,8 @@ public enum L10n {
   public static func changeClassTo(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "change_class_to", p1)
   }
+  /// Passwords must be 8 characters or more. Changing your password will log you out of any other devices and third-party tools you may use.
+  public static var changePasswordHelper: String { return L10n.tr("Mainstrings", "change_password_helper") }
   /// Character Level
   public static var characterLevel: String { return L10n.tr("Mainstrings", "character_level") }
   /// Chat

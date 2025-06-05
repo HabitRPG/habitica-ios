@@ -416,6 +416,16 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         controller.fields.append(EditingTextField(key: "oldPassword", title: L10n.Settings.oldPassword, type: .password))
         controller.fields.append(EditingTextField(key: "password", title: L10n.Settings.newPassword, type: .password))
         controller.fields.append(EditingTextField(key: "passwordRepeat", title: L10n.Settings.confirmNewPassword, type: .password))
+        
+        controller.extraFooterViewProvider = {
+            let label = UILabel()
+            label.text = L10n.changePasswordHelper
+            label.textColor = ThemeService.shared.theme.secondaryTextColor
+            label.font = .systemFont(ofSize: 13)
+            label.numberOfLines = 0
+            label.textAlignment = .center
+            return label
+        }
 
         controller.onCrossValidation = { values in
             var errors = [String: String]()
@@ -425,7 +435,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             return errors
         }
         
-        controller.onSave = {[weak self] values in
+        controller.onSave = { [weak self] values in
             if let oldPassword = values["oldPassword"], let password = values["password"], let passwordRepeat = values["passwordRepeat"] {
                 self?.userRepository.updatePassword(newPassword: password, password: oldPassword, confirmPassword: passwordRepeat).observeCompleted {
                     ToastManager.show(text: L10n.Settings.updatedPassword, color: .green)
@@ -435,6 +445,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         let navController = UINavigationController(rootViewController: controller)
         present(navController, animated: true, completion: nil)
     }
+
 
     private func showAddLocalAuthAlert(title: String) {
         let hasEmail = user?.authentication?.local?.email != nil
