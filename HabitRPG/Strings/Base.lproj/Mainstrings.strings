@@ -1420,3 +1420,4 @@
 "no_active_subscription_to_restore" = "Could not find an active subscription to restore";
 "subscriber_benefit" = "Subscriber Benefit";
 "buy_gems_with_gold" = "Buy Gems with Gold";
+"change_password_helper" = "Passwords must be 8 characters or more. Changing your password will log you out of any other devices and third-party tools you may use.";

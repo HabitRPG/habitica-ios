@@ -204,6 +204,7 @@ class EditingFormViewController: UIViewController, Themeable {
     }()
     
     var fields = [EditingTextField]()
+    var extraFooterViewProvider: (() -> UIView)?
     var autoDismiss = true
     private var loadingIndicator = HabiticaActivityIndicator()
     
@@ -243,6 +244,10 @@ class EditingFormViewController: UIViewController, Themeable {
         for field in fields {
             stackView.addArrangedSubview(field)
         }
+        
+        if let extraView = extraFooterViewProvider?() {
+            stackView.addArrangedSubview(extraView)
+        }
         stackView.addArrangedSubview(loadingIndicator)
         
         if let field = fields.last, field.submitOnEnter {
@@ -252,6 +257,7 @@ class EditingFormViewController: UIViewController, Themeable {
             }
         }
     }
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
