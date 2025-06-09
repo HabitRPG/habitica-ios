@@ -536,26 +536,29 @@ class SettingsViewController: FormViewController, Themeable {
             <<< PushRow<LabeledFormValue<String>>(SettingsTags.initialAppScreen) { row in
                 row.title = L10n.Settings.launchScreen
                 row.cellUpdate { cell, _ in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.textLabel?.textColor    = ThemeService.shared.theme.primaryTextColor
                     cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                    cell.tintColor               = ThemeService.shared.theme.tintColor
+                    cell.backgroundColor         = ThemeService.shared.theme.windowBackgroundColor
                 }
-                row.options = InitialScreens.allScreens.map({ screen -> LabeledFormValue<String> in
-                    return LabeledFormValue(value: screen.rawValue, label: screen.niceName)
-                })
-                
-                let screen = InitialScreens(rawValue: UserDefaults().string(forKey: "initialScreenURL") ?? "") ?? InitialScreens.habits
-                row.value = LabeledFormValue(value: screen.rawValue, label: screen.niceName)
-                row.onChange({ (row) in
-                    UserDefaults().set(row.value?.value, forKey: "initialScreenURL")
-                })
-                row.onPresent({ (_, to) in
+                row.options = InitialScreens.allScreens.map { screen in
+                    LabeledFormValue(value: screen.rawValue, label: screen.niceName)
+                }
+                let savedRaw = UserDefaults.standard.string(forKey: "initialScreenURL") ?? ""
+                let screen  = InitialScreens(rawValue: savedRaw) ?? .habits
+                row.value    = LabeledFormValue(value: screen.rawValue, label: screen.niceName)
+                row.onChange { row in
+                    if let newRaw = row.value?.value {
+                        UserDefaults.standard.set(newRaw, forKey: "initialScreenURL")
+                    }
+                }
+                row.onPresent { _, to in
                     to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     }
-                })
+                }
             }
+
             <<< PushRow<LabeledFormValue<String>>(SettingsTags.soundTheme) { row in
                 row.title = L10n.Settings.soundTheme
                 row.cellUpdate { cell, _ in
