@@ -157,7 +157,9 @@ class UserManager: NSObject {
         HabiticaAnalytics.shared.setUserProperty(key: "checkin_count", value: "\(user.loginIncentives)")
         HabiticaAnalytics.shared.setAnalyticsConsents(user.preferences?.analyticsConsent == true)
         if let notifs = user.preferences?.pushNotifications {
-            HabiticaAnalytics.shared.setUserProperty(key: "allowed_push_notifications", value: "\(notifs)")
+            for (notif, value) in notifs.mapOfKeys() {
+                HabiticaAnalytics.shared.setUserProperty(key: "allow_push\(notif)", value: "\(value)")
+            }
         }
         #endif
     }
