@@ -172,6 +172,7 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
             if let sleep = user.preferences?.sleep {
                 informationString.append("Is in Inn: \(sleep)\n")
             }
+            informationString.append("Is subscribed: \(user.isSubscribed)\n")
             if let useCostume = user.preferences?.useCostume {
                 informationString.append("Uses Costume: \(useCostume)\n")
             }
