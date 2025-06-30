@@ -14,10 +14,10 @@ struct ApiTokenSheetView: View, Dismissable {
     var dismisser = Dismisser()
     @Environment(\.colorScheme) var colorScheme
 
-    var yellow: Color { Color.yellow500 }
+    var yellow: Color { Color.yellow100 }
 
     var tokenBoxBg: Color {
-        colorScheme == .dark ? Color.gray100.opacity(0.18) : Color.gray200.opacity(0.95)
+        colorScheme == .dark ? Color.gray100.opacity(0.18) : Color.gray600.opacity(0.95)
     }
 
     var body: some View {
@@ -51,8 +51,10 @@ struct ApiTokenSheetView: View, Dismissable {
                 .frame(maxWidth: .infinity, alignment: .leading)
 
                 HStack {
-                    Image(systemName: "lock")
-                        .foregroundColor(.secondary)
+                    Image(uiImage: HabiticaIcons.imageOfLocked())
+                      .resizable()
+                      .aspectRatio(contentMode: .fit)
+                      .frame(width: 16, height: 16)
                     Text(token)
                         .font(.system(size: 14, weight: .medium, design: .monospaced))
                         .foregroundColor(.primary)

@@ -257,7 +257,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             }
         }
         <<< LabelRow { row in
-            row.title = L10n.apiKey
+            row.title = L10n.apiTokenTitle
             row.cellStyle = .subtitle
             row.cellUpdate { cell, _ in
                 cell.detailTextLabel?.text = L10n.Settings.apiDisclaimer
