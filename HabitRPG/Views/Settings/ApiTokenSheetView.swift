@@ -14,10 +14,18 @@ struct ApiTokenSheetView: View, Dismissable {
     var dismisser = Dismisser()
     @Environment(\.colorScheme) var colorScheme
 
-    var yellow: Color { Color.yellow100 }
+    
+    var buttonColor: Color { Color.yellow100 }
+    var buttonTextColor: Color { Color.yellow1 }
 
     var tokenBoxBg: Color {
         colorScheme == .dark ? Color.gray100.opacity(0.18) : Color.gray600.opacity(0.95)
+    }
+
+    var theme: Theme { ThemeService.shared.theme }
+
+    var descriptionColor: Color {
+        colorScheme == .dark ? Color.gray400 : Color.gray200
     }
 
     var body: some View {
@@ -30,23 +38,35 @@ struct ApiTokenSheetView: View, Dismissable {
             
             VStack(spacing: 20) {
                 Text(L10n.apiTokenTitle)
-                    .font(.headline)
+                    .font(.system(size: 16))
+                    .foregroundColor(descriptionColor)
+                    .fontWeight(.semibold)
                 
                 VStack(alignment: .leading, spacing: 10) {
                     Text(L10n.apiTokenIsPassword)
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.primary)
+                        .font(.system(size: 16))
+                        .kerning(-0.31)
+                        .lineSpacing(5)
+                        .foregroundColor(Color(theme.primaryTextColor))
+                        .padding(.bottom, 2)
                     Text(L10n.apiTokenPasswordDescription)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+                        .font(.system(size: 14))
+                        .kerning(-0.08)
+                        .lineSpacing(4)
+                        .foregroundColor(descriptionColor)
+                        .padding(.bottom, 12)
                     Text(L10n.apiTokenResetTitle)
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .padding(.top, 4)
+                        .font(.system(size: 16))
+                        .kerning(-0.31)
+                        .lineSpacing(5)
+                        .foregroundColor(Color(theme.primaryTextColor))
+                        .padding(.bottom, 2)
                     Text(L10n.apiTokenResetDesc)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+                        .font(.system(size: 14))
+                        .kerning(-0.08)
+                        .lineSpacing(4)
+                        .foregroundColor(descriptionColor)
+                        .padding(.bottom, 12)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -74,12 +94,12 @@ struct ApiTokenSheetView: View, Dismissable {
                     Text(L10n.copyToken)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(yellow)
-                        .foregroundColor(.black)
+                        .background(buttonColor)
+                        .foregroundColor(buttonTextColor)
                         .font(.headline)
                         .cornerRadius(8)
                 }
-                .padding(.top, 16)
+                .frame(minHeight: 48) 
             }
             .padding(.horizontal, 20)
             .padding(.bottom, 24)

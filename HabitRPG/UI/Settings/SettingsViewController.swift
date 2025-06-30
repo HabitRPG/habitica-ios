@@ -1002,7 +1002,7 @@ struct PauseDamageView: View, Dismissable {
                     .font(.system(size: 16)).padding(.bottom, 2)
                 Text(L10n.Settings.PauseDamage.pauseDamageDescription3).foregroundColor(Color(theme.secondaryTextColor))
                     .font(.system(size: 14)).padding(.bottom, 19)
-                HabiticaButtonUI(label: Text(L10n.pauseDamage).foregroundColor(.yellow1), color: .yellow100) {
+                HabiticaButtonUI(label: Text(L10n.pauseDamage).foregroundColor(.yellow1), color: .yellow100, size: .compact) {
                     tappedButton()
                     dismisser.dismiss?()
                 }
