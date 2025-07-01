@@ -359,6 +359,8 @@
 		29ACB3AC26404496009B059C /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ACB3AB26404496009B059C /* CalendarView.swift */; };
 		29AE771A27E3521800CC9646 /* InputBarAccessoryView in Frameworks */ = {isa = PBXBuildFile; productRef = 29AE771927E3521800CC9646 /* InputBarAccessoryView */; };
 		29AE771F27E4D56D00CC9646 /* MainMenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AE771E27E4D56D00CC9646 /* MainMenuTests.swift */; };
+		29B30EB82E0AD511001B587B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B30EB72E0AD511001B587B /* LoginViewModel.swift */; };
+		29B30EBC2E0ADEA8001B587B /* PrivacyPreferencesSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B30EBB2E0ADEA2001B587B /* PrivacyPreferencesSheetView.swift */; };
 		29B388E11EF2BB7600A72950 /* YesterdailyChecklistItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */; };
 		29B3FEB11F9A37E3000B12CF /* BaseSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEB01F9A37E3000B12CF /* BaseSettingsViewController.swift */; };
 		29B3FEBC1F9E3B17000B12CF /* HabiticaAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */; };
@@ -588,7 +590,6 @@
 		D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D99DEC88190842CA00FFD2B9 /* Placeholder.png */; };
 		D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9A50E991A868DE400FC8B1A /* Launch Screen.xib */; };
 		D9A63A341E10328A0083ADC4 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A63A331E10328A0083ADC4 /* LoginTableViewController.swift */; };
-		D9A63A361E1032BD0083ADC4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A63A351E1032BD0083ADC4 /* LoginViewModel.swift */; };
 		D9BB45591E71AFAF0002AE2E /* Down-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB45581E71AFAF0002AE2E /* Down-Extensions.swift */; };
 		D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB455A1E71C52F0002AE2E /* TaskTableViewCell.swift */; };
 		D9BB455D1E71C8C70002AE2E /* CheckedTableViewcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB455C1E71C8C70002AE2E /* CheckedTableViewcell.swift */; };
@@ -1037,6 +1038,8 @@
 		29AB257B2B02799900A3C1D1 /* PixelArtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelArtView.swift; sourceTree = "<group>"; };
 		29ACB3AB26404496009B059C /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		29AE771E27E4D56D00CC9646 /* MainMenuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuTests.swift; sourceTree = "<group>"; };
+		29B30EB72E0AD511001B587B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		29B30EBB2E0ADEA2001B587B /* PrivacyPreferencesSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPreferencesSheetView.swift; sourceTree = "<group>"; };
 		29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailyChecklistItem.xib; sourceTree = "<group>"; };
 		29B3FEB01F9A37E3000B12CF /* BaseSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingsViewController.swift; sourceTree = "<group>"; };
 		29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaAlertController.swift; sourceTree = "<group>"; };
@@ -1289,7 +1292,6 @@
 		D99DEC88190842CA00FFD2B9 /* Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder.png; sourceTree = "<group>"; };
 		D9A50E991A868DE400FC8B1A /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "Launch Screen.xib"; path = "HabitRPG/Launch Screen.xib"; sourceTree = SOURCE_ROOT; };
 		D9A63A331E10328A0083ADC4 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
-		D9A63A351E1032BD0083ADC4 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = HabitRPG/UI/Login/LoginViewModel.swift; sourceTree = SOURCE_ROOT; };
 		D9B2F2961D9966F8001810BD /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9B2F2971D9966F9001810BD /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9B2F29D1D99672D001810BD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1855,6 +1857,22 @@
 			name = Setup;
 			sourceTree = "<group>";
 		};
+		29B30EB92E0ADE7E001B587B /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		29B30EBA2E0ADE92001B587B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				29B30EBB2E0ADEA2001B587B /* PrivacyPreferencesSheetView.swift */,
+				29A92C2F2E03050F00B2321A /* ApiTokenSheetView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		29B3FEAD1F9A339B000B12CF /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -2405,7 +2423,7 @@
 				D96BFC4D1E181B5500266EEF /* Intro */,
 				290B62A0207F814D007287C4 /* General */,
 				290B629F207F8140007287C4 /* Inventory */,
-				D9A63A371E104F6C0083ADC4 /* Login */,
+				D9A63A371E104F6C0083ADC4 /* Onboarding */,
 				D984D5871E49F9D9006E84F8 /* Purchases */,
 				2957B8B41F4B2DF900E836EF /* Rewards */,
 				29B3FEAD1F9A339B000B12CF /* Settings */,
@@ -2418,13 +2436,13 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		D9A63A371E104F6C0083ADC4 /* Login */ = {
+		D9A63A371E104F6C0083ADC4 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
 				D9A63A331E10328A0083ADC4 /* LoginTableViewController.swift */,
-				D9A63A351E1032BD0083ADC4 /* LoginViewModel.swift */,
+				29B30EB72E0AD511001B587B /* LoginViewModel.swift */,
 			);
-			path = Login;
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		D9ADD3531943BE33006202C1 /* TabBarController */ = {
@@ -2477,7 +2495,7 @@
 		D9C000311928F85E003D4E4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				29A92C2F2E03050F00B2321A /* ApiTokenSheetView.swift */,
+				29B30EB92E0ADE7E001B587B /* New Group */,
 				29F177F72AB85D39008B8F0C /* Stable */,
 				29C1360124EBD12E00DBC6B3 /* AbbreviatedNumberLabel.swift */,
 				29C38C8424A2466400F219A1 /* AdventureGuidePromoView.swift */,
@@ -2536,6 +2554,7 @@
 				2945AE982B2868CA0022F3CC /* HostingPanModal.swift */,
 				29359A512BE8F8F8009790DE /* CTAFooterView.swift */,
 				299564202BEE488A00B1A68F /* AvatarHeaderView.swift */,
+				29B30EBA2E0ADE92001B587B /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3496,6 +3515,7 @@
 				297517B41F30EBD100B5BCB9 /* AvatarSetupViewController.swift in Sources */,
 				2957B8C41F4D922C00E836EF /* CustomRewardCell.swift in Sources */,
 				D9BB45DD1E7AE5240002AE2E /* ConfigRepository.swift in Sources */,
+				29B30EB82E0AD511001B587B /* LoginViewModel.swift in Sources */,
 				29255E471F3E14920094A3E3 /* AppDelegate.swift in Sources */,
 				29FC5A6920403011008E88C8 /* ThemeService.swift in Sources */,
 				29255E491F3E1B0F0094A3E3 /* ToastView.swift in Sources */,
@@ -3578,6 +3598,7 @@
 				2914486A2085126700F3A6B5 /* StableSectionHeader.swift in Sources */,
 				29FC885220134A8F002B3D3F /* PurchaseHandler.swift in Sources */,
 				292DEE74204DECF60086D5F7 /* BaseReactiveDataSource.swift in Sources */,
+				29B30EBC2E0ADEA8001B587B /* PrivacyPreferencesSheetView.swift in Sources */,
 				291448802086508A00F3A6B5 /* EquipmentOverviewItemView.swift in Sources */,
 				29397EE42977FBA4009EFD20 /* CountdownView.swift in Sources */,
 				29E162E21FFC21E100685640 /* CustomFontMetrics.swift in Sources */,
@@ -3779,7 +3800,6 @@
 				29D50A6825F66F760009CF55 /* UIWindowScene-Extensions.swift in Sources */,
 				2927024C24E3040A00BCAA77 /* HallOfPatronsDataSource.swift in Sources */,
 				D9BB45D41E7849B40002AE2E /* ChallengeTaskListView.swift in Sources */,
-				D9A63A361E1032BD0083ADC4 /* LoginViewModel.swift in Sources */,
 				2974BD91208DEFEA00EC1A25 /* CustomizationDetailCell.swift in Sources */,
 				49A37A8020C0EBFF008C28F5 /* SingleItemTableViewDataSource.swift in Sources */,
 				29A984D32547294E00F04665 /* RemoteLogger.swift in Sources */,

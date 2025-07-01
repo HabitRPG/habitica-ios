@@ -385,6 +385,17 @@
 "settings.pauseDamage.resume_damage_title3" = "Your Quest progress will apply again";
 "settings.pauseDamage.resume_damage_description3" = "Any pending damage or collection items will apply on your next day reset";
 
+"settings.user_data" = "User Data";
+"settings.privacy_preferences" = "Privacy Preferences";
+"settings.manage_privacy_preferences" = "Change your privacy permissions";
+"your_privacy_preferences" = "Your Privacy Preferences";
+"privacy_preferences_sheet_description" = "Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\n\nYou can change this at any time. To learn more, review our Privacy Policy.";
+"privacy_preferences_full_description" = "Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\n\nYou can change these at any time from your account settings.";
+"performance_analytics" = "Performance & Analytics";
+"performance_analytics_description" = "This is used to improve the player experience, performance, and services of Habitica. Our support team will also use this when handling requests and bug reports.";
+"strictly_necessary" = "Strictly necessary";
+"strictly_necessary_description" = "This is necessary data required by our app to function. This includes data like your preferences saved in settings as well as crash information.";
+
 "theme.default_theme" = "Default";
 "theme.blue" = "Blue";
 "theme.teal" = "Teal";

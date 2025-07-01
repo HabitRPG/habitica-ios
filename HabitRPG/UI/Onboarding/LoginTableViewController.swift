@@ -164,8 +164,8 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         let imageView = UIImageView()
         imageView.image = image
         
-        imageView.frame.origin = CGPoint(x: Int(arc4random_uniform(UInt32(backgroundScrollView.contentSize.width)) + 1),
-                                         y: Int(arc4random_uniform(UInt32(backgroundScrollView.contentSize.height)) + 1))
+        imageView.frame.origin = CGPoint(x: Int.random(in: 0...(Int(backgroundScrollView.contentSize.width)) + 1),
+                                         y: Int.random(in: 0...(Int(backgroundScrollView.contentSize.height)) + 1))
         imageView.frame.size = image.size
         backgroundScrollView.insertSubview(imageView, aboveSubview: gradientView)
     }

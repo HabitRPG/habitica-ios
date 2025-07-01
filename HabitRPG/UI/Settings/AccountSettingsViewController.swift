@@ -231,7 +231,19 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
     
     // MARK: - Build API Section
     func buildApiSection() {
-        form +++ Section(L10n.Settings.api)
+        form +++ Section(L10n.Settings.userData)
+        <<< LabelRow { row in
+            row.title = L10n.Settings.privacyPreferences
+            row.cellStyle = .subtitle
+            row.cellUpdate {[weak self] cell, _ in
+                cell.detailTextLabel?.text = L10n.Settings.managePrivacyPreferences
+            }.onCellSelection { _, _ in
+                let sheetView = PrivacyPreferencesSheetView()
+                let sheetController = HostingBottomSheetController(rootView: sheetView)
+                sheetController.preferredSheetSizing = .medium
+                self.present(sheetController, animated: true)
+            }
+        }
         <<< LabelRow { row in
             row.title = L10n.userID
             row.cellStyle = .subtitle
