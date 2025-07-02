@@ -821,7 +821,7 @@
 "settings.confirm_new_password" = "Confirma la nueva contraseña";
 "tasks.examples.team_habit" = "Atender a tu equipo";
 "tasks.examples.team_daily_text" = "Actualizar a tu equipo sobre tu situación";
-"settings.api_disclaimer" = "Copiar token. ¡Ten cuidado, el token es una contraseña!";
+"settings.api_disclaimer" = "Contraseña del token para desarrolladores y herramientas de terceros";
 "settings.searchable_everywhere" = "En todas partes";
 "settings.searchable_private_spaces" = "Solo lugares privados";
 "settings.mentions" = "Menciones";
@@ -1251,7 +1251,7 @@
 "more_help_title" = "¿Necesitas más ayuda?";
 "magic_potions" = "Pociones mágicas";
 "unlocks_selecting_class_prompt" = "¡Ahora que estás en el nivel 10, puedes elegir una clase!";
-"hourglasses_description" = "Los relojes de arena místicos son un tipo de divisa extremadamente raro que solo puedes recibir por suscribirse a Habitica durante tres o más meses consecutivos. Se utilizan en la tienda del Viajero del Tiempo para conjuntos de equipo, mascotas, monturas, fondos animados o incluso misiones especiales de años pasados.\n\nPuedes recibir hasta cuatro relojes de arena místicos al año. El tiempo en se recibe esta recompensa se basa en la fecha de renovación de tu suscripción. Se reciben el primer día del mes posterior al pago de la suscripción que te hizo merecedor de un reloj. Consulta la página [Suscripción] para obtener más detalles.";
+"hourglasses_description" = "Los Relojes de arena Místicos son un tipo de divisa extremadamente raro que solo puedes recibir por suscribirte a Habitica. Se utilizan en la Tienda de los Viajeros del Tiempo para comprar Conjuntos de Equipamiento por Suscripción de meses pasados, Macostas exclusivas, Monturas, Fondos animados o incluso ¡Misiones especiales! Estos beneficios adicionales son una excelente manera de mantenerte motivado durante el año y gratificarte por un trabajo bien hecho.\n\nLos suscriptores reciben un Reloj de arena Místico al principio de cada mes en el cual se disfruta de los beneficios de suscriptor, además de muchos otros beneficios. ¡Comprueba nuestras opciones de suscripción si estás interesado en lo que los Viajeros del Tiempo tienen para ofrecerte!";
 "gold_description" = "El oro es la **moneda principal** de Habitica y te permite comprar ciertos equipamientos, misiones, artículos o incluso recompensas personalizadas que te marques.\n\n**Gana oro** completando tareas o misiones, o mediante algunas habilidades de clase. ** La estadística PERCEPCIÓN** modifica el índice e oro que ganas.\n\nSi te suscribes a Habitica, también podrás usar el oro para comprar una cierta cantidad de gemas en función del tiempo que lleves suscrito.";
 "gems_description" = "Las gemas son una divisa comprada con dinero real que te permite comprar contenido adicional en Habitica y junto con las suscripciones, son una de las principales fuentes de apoyo financiero para el equipo desarrollador de Habitica.\n\nTodo el contenido comprado con gemas es puramente estético o se puede obtenerse gratis con el tiempo.\n\nTambién puedes recibir gemas como regalo de otros jugadores, premios de desafío, contribuyendo a Habitica o suscribiéndote.";
 "week_reminder_body" = "Descansar está bien, ¡pero realizando en su lugar algunas tareas sencillas, podrás seguir ganando puntos para subir de nivel y conseguir equipo molón!";
@@ -1629,3 +1629,10 @@
 "turkey_day" = "Día del Pavo";
 "party.quest_participant_one" = "1 Participante";
 "next_switch_in_x" = "Próximo cambio en %@";
+"change_password_helper" = "La Contraseña debe contener 8 caracteres o más. Al cambiar tu contraseña tu cuenta se desconectará de otros dispositivos y de cualquier herramienta de terceros que pudieras estar usando.";
+"api_token_password_description" = "No lo compartas. Ocasionalmente te lo podríamos pedir para tu ID de Usuario, pero nunca publiques tu Token API donde otros puedan verlo, inclusive GitHub.";
+"api_token_reset_desc" = "Puedes cambiar tu contraseña o resetearla. Una vez que la resetees, necesitarás volver a identificarte en otros dispositivos en los que estés usando Habitica y introducir el nuevo Token API para el uso de herramientas de terceros que pudieras estar empleando.";
+"api_token_title" = "Token API";
+"api_token_is_password" = "Tu Token API es como una contraseña";
+"api_token_reset_title" = "Si necesitas un nuevo Token API";
+"copy_token" = "Copiar Token";
