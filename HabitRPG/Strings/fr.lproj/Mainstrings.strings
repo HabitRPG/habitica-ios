@@ -776,7 +776,7 @@
 "settings.server" = "Serveur";
 "settings.change_about_message" = "Changer le message A propos";
 "settings.reset_account_description" = "Vous perdrez tous nos niveaux, Or et Expérience. Toutes vos tâches et leur historique seront supprimés (les tâches liées au Défi apparaîtront toujours). Vous allez perdre tout votre équipement, sauf les objets d'Abonnement et les objets commémoratifs obtenus gratuitement, mais vous pourrez les acheter à nouveau. Vous devrez choisir la classe adaptée pour acheter des équipements spécifiques à celle-ci. Vous conserverez votre classe actuelle, vos Succès, et vos Familiers et Montures. Pour confirmer la réinitialisaton, écrivez votre mot de passe ci-dessous.";
-"settings.api_disclaimer" = "Copiez ceci. Attention, c'est un mot de passe !";
+"settings.api_disclaimer" = "Clé mot de passe pour les développeu·r·se·s et outils tiers";
 "settings.searchable_everywhere" = "Partout";
 "settings.searchable_private_spaces" = "Seulement les espaces privés";
 "settings.mentions" = "Mentions";
@@ -1161,7 +1161,7 @@
 "gems_description" = "Les gemmes sont une monnaie achetée avec de l'argent, et qui vous permet d'acheter plus de contenu dans Habitica. C'est la principale source de soutien financier pour l'équipe d'Habitica, avec les abonnements. \n \nTout le contenu acheté avec des gemmes est purement accessoire ou peut être obtenu gratuitement avec le temps. \n \nVous pouvez aussi recevoir des gemmes offertes par d'autres personnes, par des récompenses de défi, en contribuant à Habitica ou en vous abonnant.";
 "stat_allocation" = "Allocation des attributs";
 "subscriber_currency" = "Devise de souscription";
-"hourglasses_description" = "Les sabliers mystiques sont une forme de monnaie extrêmement rare que vous ne recevrez qu'en vous abonnant à Habitica pour trois mois consécutifs ou plus. Ils sont utilisables à la boutique des voyageurs temporels pour acheter d'anciens équipements, familiers, montures, arrière-plans animés ou même des quêtes spéciales.\n\nVous pouvez recevoir jusqu'à quatre sabliers mystiques par an. Vous les recevrez au moment où votre abonnement se renouvelle. Ils vous sont envoyés le premier jour du mois qui suit votre dernier paiement d'abonnement vous qualifiant pour un sablier. Lisez la page d'[abonnement] pour plus de détails.";
+"hourglasses_description" = "Les Sabliers Mystiques sont une forme de monnaie extrêmement rare que vous ne recevrez qu'en vous abonnant à Habitica. Ils sont utilisables dans la Boutique des Voyageu·r·se·s Temporel·le·s pour acheter des ensembles d'Armures d'Abonnements précédents, des Familiers exclusifs, des Montures, des Arrière-plans animés ou même des Quêtes spéciales ! Ces avantages supplémentaires sont une excellente façon de rester motivé·e tout au long de l'année et de vous récompenser pour tout ce que vous avez accompli.\n\nLes abonné·e·s reçoivent un Sablier Mystique au début de chaque mois pendant lequel ils·elles bénéficient des avantages de l’abonnement, ainsi que plein d'autres avantages. Assurez-vous de consulter nos différentes formules d'abonnement si la marchandise des Voyageu·r·se·s Temporel·le·s vous intrigue !";
 "left_challenge" = "A quitté le défi";
 "gems_promo.info_limitations" = "Cette promotion est limitée à la durée de l'événement. Cet événement démarrera le %@ (12:00 UTC) et se terminera le %@ (00:00 UTC). Cette promotion n'est disponible que si vous achetez des gemmes pour vous-même.";
 "spooky_promo.info_instructions" = "Entre le %@ et le %@, achetez simplement n'importe quel paquet de gemmes comme d'habitude, et votre compte sera crédité du nombre de gemmes promotionnelles. Cela vous fera plus de gemmes à dépenser, partager, ou économiser pour de futurs objets !";
@@ -1578,3 +1578,10 @@
 "nye" = "Nouvel An";
 "party.quest_participant_one" = "1 Participant·e";
 "next_switch_in_x" = "Prochaine sélection dans %@";
+"change_password_helper" = "Votre mot de passe doit contenir au minimum 8 caractères. En changeant votre mot de passe, vous serez déconnecté·e des autres plateformes et add-ons.";
+"api_token_title" = "Clé API";
+"api_token_reset_title" = "Si vous avez besoin d'une nouvelle Clé API";
+"copy_token" = "Copier Clé";
+"api_token_is_password" = "Votre Clé API est comme un mot de passe";
+"api_token_password_description" = "Ne le partagez pas. Il est possible que votre ID d'Utilisat·eur·rice vous soit demandé, mais ne postez jamais votre Clé API sur des pages publiques, pas même sur Github.";
+"api_token_reset_desc" = "Vous pouvez changer votre mot de passe pour la réinitialiser. Une fois réinitialisée, vous devrez vous reconnecter sur toutes les plateformes sur lesquelles vous étiez connecté·e à Habitica et renseigner votre nouvelle Clé API aux applications tierces que utilisez.";

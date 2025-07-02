@@ -684,3 +684,5 @@
 "failed" = "Nieudane";
 "total_completions" = "Łączna liczba ukończeń";
 "tasks.every_x" = "każdy %d%@";
+"yes" = "Tak";
+"no" = "Nie";

@@ -481,7 +481,7 @@
 /* (No Comment) */
 "unsubscribe_itunes" = "Wil je niet langer abonneren? Je kan je abonnement beheren met je Apple-ID in de Instellingen van je apparaat.";
 /* (No Comment) */
-"unsubscribe_website" = "Wil je niet langer abonneren? Vanwege je betaalmethode, kan je alleen je abonnement afzeggen via de website.";
+"unsubscribe_website" = "Wil je niet langer abonneren? Vanwege je betaalmethode kun je alleen je abonnement opzeggen via de website. Om dit te doen, klik op de knop hieronder, log in bij je account, klik op het speler icoon rechtsboven, ga daarna naar de Abonnement sectie. Reeds betaalde maanden van je abonnement zullen toegevoegd worden aan je einddatum na opzegging. We zullen je missen!";
 /* (No Comment) */
 "weekly" = "Wekelijks";
 /* (No Comment) */
@@ -813,7 +813,7 @@
 "your_balance" = "Je balans:";
 "choose_task" = "Kies taak";
 "shops.other_class_disclaimer" = "Je kan alleen uitrusting kopen voor je momentele klasse";
-"shops.purchased_all_gear" = "Je bezit al je klasse uitrustingen al! Er zullen meer worden uitgebracht tijdens Grand Gala's en rondom de zonnewendes en dag- en nachteveningen.";
+"shops.purchased_all_gear" = "Nieuwe uitrusting wordt uitgebracht tijdens seizoen Gala's. Tot die tijd zijn er %d stuks uitrusting in het Betoverde Kabinet te vinden!";
 "titles.skills" = "Vaardigheden";
 "stats.total" = "Totaal";
 "whats_world_boss" = "Wat is een eindbaas?";
@@ -867,7 +867,7 @@
 "party.leave_party_description" = "Wil je de groep verlaten en de uitdagingen behouden of verlaten?";
 "party.leave_party_title" = "Groep verlaten?";
 "party.party_description" = "Groepsbeschrijving";
-"party.join_party_description" = "Geef een groepslid de gebruikersnaam hieronder, zodat ze je een uitnodiging kunnen sturen";
+"party.join_party_description" = "Wil je in een groep spelen met andere mensen maar ken je geen spelers? Laat de groepsleiders weten dat je op zoek bent naar een uitnodiging!";
 "party.create_party_description" = "Start een queeste met vrienden of in je eentje. Versla monsters, begin uitdagingen en blijf verantwoordelijk - allemaal met je groep.";
 "avatar.extras" = "Extra's";
 "avatar.hair" = "Haar";
@@ -894,7 +894,7 @@
 "settings.mentions" = "Vermeldingen";
 "settings.searchable_private_spaces" = "Alleen Privé Ruimtes";
 "settings.searchable_everywhere" = "Overal";
-"settings.api_disclaimer" = "Kopieer deze om in third party applicaties te gebruiken. Beschouw je API Token wel als een wachtwoord, en deel het niet openbaar. Je wordt soms wel eens gevraagd om je User ID, maar post je API token nooit ergens waar anderen het kunnen zien, ook niet op Github.";
+"settings.api_disclaimer" = "Kopieer API Token. Wees voorzichtig, dit is een wachtwoord!";
 "settings.confirm_new_password" = "Bevestig nieuw Wachtwoord";
 "settings.change_about_message" = "Verander Profiel Tekst";
 "settings.server" = "Server";
@@ -907,8 +907,8 @@
 "tasks.repeats.repeats_every_on" = "Herhaalt elke %@ op %@";
 "tasks.every_x" = "elke %d %@";
 "tasks.due_in_x_days" = "Moet over %d dagen gedaan zijn";
-"tasks.due_tomorrow" = "Moet morgen gedaan zijn";
-"tasks.due_today" = "Moet vandaag gedaan zijn";
+"tasks.due_tomorrow" = "Morgen";
+"tasks.due_today" = "Vandaag";
 "tasks.team" = "Team";
 "stats.strength_text" = "Verhoogt de bonus van kritieke treffers en verhoogt de kans erop als je een taak voltooit. Verhoogt ook de schade toegebracht aan bazen.";
 "titles.achievements" = "Prestaties";
@@ -1089,7 +1089,7 @@
 "duration_month" = "maand";
 "subscription_options_title" = "Kies de abonnementslengte die voor jou werkt";
 "subscription_benefits_title_subscribed" = "Je krijgt deze voordelen door Abonnee te zijn";
-"subscription_info_5_description" = "Ontdek nog meer voorwerpen in Habitica met een 2x bonus van de dagelijkse vondstlimiet.";
+"subscription_info_5_description" = "Krijg een Koninklijke Paarse Jackalope en dubbele eieren, Uitbroeddranken en dagelijks Voedsel om je huisdierencollectie te uit te breiden!";
 "subscription_info_5_title" = "Verdubbel de vondsten";
 "accessibility.viewX" = "Bekijk %@";
 "accessibility.notOwned" = "Niet in bezit";
@@ -1280,7 +1280,7 @@
 "seasonal_potions_available" = "Seizoensvoorwerpen beschikbaar";
 "experience_description" = "Ervaringspunten geven je voortgang weer, en zorgen ervoor dat je een level omhoog gaat. Je zult hoofdzakelijk **EXP krijgen** door het voltooien van taken of queestes, maar er zijn ook klasse-vaardigheden die EXP geven.\n\nMoeilijkere taken, of roodgekleurde taken geven je **meer EXP**. De **Intelligentie stat** zorgt ook voor snellere EXP stijging.";
 "health_description" = "Dit stelt je avatar's leven voor. Een dagelijkse taak missen, of een negatieve gewoonte naleven **reduceert je HP**.\n\n**Herstel HP** door een level omhoog te gaan, een genezingsdrank te gebruiken, of een vaardigheid die geneest in te zetten.\n\nAls je **HP 0 bereikt** verlies je één level, al je Goud, en één voorwerp. Verloren voorwerpen kunnen teruggekocht worden.";
-"more_questions_text" = "Plaats een bericht in de [Habitica Hulp Gilde](https://habitica.com/groups/guild/5481ccf3-5d2d-48a9-a871-70a7380cee5a) om je vragen door een medespeler te laten beantwoorden";
+"more_questions_text" = "Je kunt [contact opnemen](mailto:admin@habitica.com?subject=%%5BiOS%%5D%%20Question) een lid van ons team zal hun uiterste best doen om je te helpen!";
 "support.questions_description" = "We leggen de basis uit en beantwoorden veelgestelde vragen om je op weg te helpen";
 "mana_description" = "Mana punten worden vrijgespeeld in het klasse systeem op level 10, en stellen je in staat om **Vaardigheden te gebruiken** zodra je ze begint te leren op level 11.\n\nEen gedeelte van je **MP worden aangevuld** bij de dagelijkse reset, maar je krijgt er meer terug door taken af te ronden of de Magiër klassevaardigheid te gebruiken.";
 "gold_description" = "Goud is de **voornaamste valuta** in Habitica en stelt je in staat om bepaalde uitrustingen, queesten, voorwerpen of zelfs op maat ingestelde beloningen voor jezelf te kopen.\n\n**Verdien Goud** door taken en queesten af te ronden, en met sommige klasse vaardigheden. Een hogere **Perceptie eigenschap** zorgt voor een hogere goudopbrengst.\n\nAls je een abonnement neemt op Habitica, kun je goud zelfs gebruiken om een aantal edelstenen van te kopen, gebaseerd op de tijdsduur van je abonnement.";
@@ -1299,7 +1299,7 @@
 "beginner_objectives" = "Begindoelen";
 "fall_promo.info_instructions" = "Koop je tussen %@ en %@ een edelsteenbundel zoals gewoonlijk dan word je account opgewaardeerd met het promotie aantal aan edelstenen. Meer edelstenen om uit te geven, te delen of te sparen voor toekomstige releases!";
 "fall_promo.info_prompt" = "Het herfstgala is in volle gang, dus we dachten dat dit het perfecte moment was om onze allereerste edelsteen uitverkoop te introduceren! Nu krijg je bij elke aankoop meer edelstenen dan ooit tevoren.";
-"hourglasses_description" = "Mystieke zandlopers zijn een uiterst zeldzame vorm van valuta die u alleen kunt ontvangen als u zich gedurende drie opeenvolgende maanden of langer op Habitica abonneert. Ze worden gebruikt in de winkel van de tijdreiziger om eerdere uitrustingssets, huisdieren, rijdieren, geanimeerde achtergronden of zelfs speciale speurtochten te kopen.\n\nJe kunt maximaal vier mystieke zandlopers per jaar ontvangen. De tijd dat ze worden beloond, is gebaseerd op het verlengingsschema van uw abonnement. Ze worden verzonden op de eerste dag van een nieuwe maand na uw laatste abonnementsbetaling die jou kwalificeerde voor een zandloper. Zie de pagina [Abonnement] voor meer details.";
+"hourglasses_description" = "Mystieke zandlopers zijn een uiterst zeldzame vorm van valuta die u alleen kunt ontvangen als u zich gedurende drie opeenvolgende maanden of langer op Habitica abonneert. Ze worden gebruikt in de winkel van de tijdreiziger om eerdere uitrustingssets, huisdieren, rijdieren, geanimeerde achtergronden of zelfs speciale speurtochten te kopen. Deze extra voordelen zijn een goede manier om gemotiveerd te blijven gedurende het jaar en jezelf te belonen voor je goede werk.\n\nAbonnementhouders ontvangen een mystieke zandloper aan het begin van elke maand dat ze abonnee zijn, naast een boel andere voordelen. Zorg dat je onze abonneeropties bekijkt als je geïnteresseerd bent in wat de Tijdreizigers te bieden hebben!";
 "gems_description" = "Edelstenen zijn een valuta die met echt geld wordt gekocht en waarmee je extra inhoud binnen Habitica kunt kopen, en zijn naast abonnementen een van de belangrijkste bronnen van financiële steun voor het Habitica-team.\n\nAlle inhoud die je via edelstenen koopt, is puur cosmetisch of kan na verloop van tijd gratis worden verkregen.\n\nJe kunt ook edelstenen ontvangen via geschenken van andere spelers, uitdagingsprijzen, bijdragen aan Habitica of door te abonneren.";
 "use_immediately_disclaimer" = "Dit gaat direct na aankoop in!";
 "magic_potion" = "Magisch drankje";
@@ -1337,3 +1337,10 @@
 "settings.reset_account_confirm" = "Weet je zeker dat je wil resetten?";
 "settings.updated_password" = "Wachtwoord veranderd";
 "mute_user_confirm" = "Wil je deze gebruiker dempen?";
+"not_due" = "Moet nog niet af";
+"settings.next_cron_run" = "Volgende dag reset: %@";
+"settings.day_start_adjustment" = "Begin dag aanpassing";
+"settings.cleared_cache" = "Cache leeggemaakt";
+"settings.custom_day_start_description" = "Verander wanneer jouw dag verwisseld na de standaard tijd van 12:00 AM";
+"tasks.form.not_editable_disclaimer" = "Uitdagingen en groepstaken hebben gelimiteerde bewerkingsopties in vergelijking met je normale taken";
+"yes" = "Ja";
