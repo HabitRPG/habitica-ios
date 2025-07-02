@@ -13,4 +13,17 @@ public class APILoginResponse: LoginResponseProtocol, Decodable {
     public var id: String = ""
     public var apiToken: String = ""
     public var newUser: Bool = false
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case apiToken
+        case newUser
+    }
+    
+    required public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = (try? values.decode(String.self, forKey: .id)) ?? ""
+        apiToken = (try? values.decode(String.self, forKey: .apiToken)) ?? ""
+        newUser = (try? values.decode(Bool.self, forKey: .newUser)) ?? false
+    }
 }

@@ -311,52 +311,25 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return call.objectSignal
     }
     
-    func updatePassword(
-        newPassword:    String,
-        password:       String,
-        confirmPassword:String
-    ) -> Signal<String, Never> {
-        let call = UpdatePasswordCall(
-            newPassword:     newPassword,
-            oldPassword:     password,
-            confirmPassword: confirmPassword
-        )
-        
-        let jsonLogger = call.jsonSignal
-            .on(value: { raw in
-                guard
-                    let dict  = raw as? [String:Any],
-                    let data  = dict["data"] as? [String:Any],
-                    let token = data["apiToken"] as? String,
-                    !token.isEmpty
-                else {
-                    ToastManager.show(
-                        text:  L10n.Settings.wrongPassword,
-                        color: .red
-                    )
-                    return
+    func updatePassword(newPassword: String, password: String, confirmPassword: String) -> Signal<LoginResponseProtocol?, Never> {
+            let call = UpdatePasswordCall(newPassword: newPassword, oldPassword: password, confirmPassword: confirmPassword)
+            
+            return call.objectSignal
+                .on(value: { loginResponse in
+                if let response = loginResponse {
+                    if !response.id.isEmpty {
+                        AuthenticationManager.shared.currentUserId = response.id
+                    }
+                    if !response.apiToken.isEmpty {
+                        AuthenticationManager.shared.currentUserKey = response.apiToken
+                        ToastManager.show(
+                                            text:  L10n.Settings.updatedPassword,
+                                            color: .green
+                                        )
+                    }
                 }
-                AuthenticationManager.shared.currentUserKey = token
-                ToastManager.show(
-                    text:  L10n.Settings.updatedPassword,
-                    color: .green
-                )
             })
-        
-        return jsonLogger
-            .compactMap { raw -> String? in
-                guard
-                    let dict  = raw as? [String:Any],
-                    let data  = dict["data"] as? [String:Any],
-                    let token = data["apiToken"] as? String,
-                    !token.isEmpty
-                else {
-                    return nil
-                }
-                return token
-            }
-            .take(first: 1)
-    }
+        }
     
     func revive() -> Signal<UserProtocol?, Never> {
         let call = ReviveUserCall().objectSignal
