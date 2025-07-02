@@ -312,20 +312,24 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func updatePassword(newPassword: String, password: String, confirmPassword: String) -> Signal<LoginResponseProtocol?, Never> {
-        let call = UpdatePasswordCall(newPassword: newPassword, oldPassword: password, confirmPassword: confirmPassword)
-        
-        return call.objectSignal
-            .on(value: { loginResponse in
-            if let response = loginResponse {
-                if !response.id.isEmpty {
-                    AuthenticationManager.shared.currentUserId = response.id
+            let call = UpdatePasswordCall(newPassword: newPassword, oldPassword: password, confirmPassword: confirmPassword)
+            
+            return call.objectSignal
+                .on(value: { loginResponse in
+                if let response = loginResponse {
+                    if !response.id.isEmpty {
+                        AuthenticationManager.shared.currentUserId = response.id
+                    }
+                    if !response.apiToken.isEmpty {
+                        AuthenticationManager.shared.currentUserKey = response.apiToken
+                        ToastManager.show(
+                                            text:  L10n.Settings.updatedPassword,
+                                            color: .green
+                                        )
+                    }
                 }
-                if !response.apiToken.isEmpty {
-                    AuthenticationManager.shared.currentUserKey = response.apiToken
-                }
-            }
-        })
-    }
+            })
+        }
     
     func revive() -> Signal<UserProtocol?, Never> {
         let call = ReviveUserCall().objectSignal
