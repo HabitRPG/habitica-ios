@@ -54,6 +54,15 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         setupDatabase()
         configureNotifications()
         
+        NotificationCenter.default.addObserver(
+            forName: Notification.Name("userDidBecomeUnauthorized"),
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            guard let self = self else { return }
+            self.userRepository.logoutAccount()
+        }
+        
         if let userInfo = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
             handlePushnotification(identifier: nil, userInfo: userInfo)
         }
