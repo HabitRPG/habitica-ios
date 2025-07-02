@@ -261,12 +261,18 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             row.cellStyle = .subtitle
             row.cellUpdate { cell, _ in
                 cell.detailTextLabel?.text = L10n.Settings.apiDisclaimer
-            }.onCellSelection { [weak self] _, _ in
+            }
+            .onCellSelection { [weak self] _, _ in
                 guard let self = self else { return }
                 guard let token = AuthenticationManager.shared.currentUserKey else { return }
                 let sheetView = ApiTokenSheetView(token: token) {
                     UIPasteboard.general.string = token
-                    ToastManager.show(text: L10n.copiedToClipboard, color: .blue)
+                    self.dismiss(animated: true) {
+                        ToastManager.show(
+                            text:  L10n.copiedToClipboard,
+                            color: .blue
+                        )
+                    }
                 }
                 let sheetController = HostingBottomSheetController(rootView: sheetView)
                 sheetController.preferredSheetSizing = .medium
@@ -457,9 +463,12 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         
         controller.onSave = { [weak self] values in
             if let oldPassword = values["oldPassword"], let password = values["password"], let passwordRepeat = values["passwordRepeat"] {
-                self?.userRepository.updatePassword(newPassword: password, password: oldPassword, confirmPassword: passwordRepeat).observeCompleted {
-                    ToastManager.show(text: L10n.Settings.updatedPassword, color: .green)
-                }
+                self?.userRepository.updatePassword(newPassword: password, password: oldPassword, confirmPassword: passwordRepeat).observeValues { _ in
+                    ToastManager.show(
+                      text:  L10n.Settings.updatedPassword,
+                      color: .green
+                    )
+                  }
             }
         }
         let navController = UINavigationController(rootViewController: controller)

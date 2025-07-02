@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ApiTokenSheetView: View, Dismissable {
     let token: String
-    let onCopy: () -> Void
+    var onCopy: () -> Void
     var dismisser = Dismisser()
     @Environment(\.colorScheme) var colorScheme
 
@@ -89,7 +89,6 @@ struct ApiTokenSheetView: View, Dismissable {
 
                 Button(action: {
                     onCopy()
-                    dismisser.dismiss?()
                 }) {
                     Text(L10n.copyToken)
                         .frame(maxWidth: .infinity)
