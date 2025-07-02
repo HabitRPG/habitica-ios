@@ -158,7 +158,7 @@ class UserManager: NSObject {
         HabiticaAnalytics.shared.setAnalyticsConsents(user.preferences?.analyticsConsent == true)
         if let notifs = user.preferences?.pushNotifications {
             for (notif, value) in notifs.mapOfKeys() {
-                HabiticaAnalytics.shared.setUserProperty(key: "allow_push\(notif)", value: "\(value)")
+                HabiticaAnalytics.shared.setUserProperty(key: "allowP\(notif)", value: "\(value)")
             }
         }
         #endif
