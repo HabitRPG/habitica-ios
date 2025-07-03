@@ -231,3 +231,9 @@
 "menu.subscription" = "訂閱";
 "menu.help_faq" = "說明與常見問題";
 "daily_tip_7" = "試著將市場中的物品釘選到獎勵欄，激勵自己努力賺取吧！";
+"subscription.thanks_for_subscribing" = "感謝你的訂閱";
+"subscription.gifted" = "已贈送";
+"subscription_gift_explanation" = "想要贈送訂閱的好處給別人嗎？";
+"subscription_gift_button" = "贈送訂閱";
+"subscription_support_developers" = "訂閱可以支持我們的小團隊，並幫助 Habitica 繼續營運";
+"subscribe" = "訂閱";
