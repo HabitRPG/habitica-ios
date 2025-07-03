@@ -448,6 +448,8 @@
 		29E1631F200F62CB00685640 /* GroupChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1631E200F62CB00685640 /* GroupChatViewController.swift */; };
 		29E30DE620D935AF00F74ECB /* LevelUpOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E30DE520D935AF00F74ECB /* LevelUpOverlayView.swift */; };
 		29E48F0D22E89DB3005C4B45 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E48F0C22E89DB3005C4B45 /* BadgeView.swift */; };
+		29E96B512E157EFC00D9EF25 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E96B502E157EF900D9EF25 /* LoginScreen.swift */; };
+		29E96B532E1692A200D9EF25 /* Font-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E96B522E16929C00D9EF25 /* Font-Extensions.swift */; };
 		29EBDA83232A3ABA006611E3 /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA82232A3ABA006611E3 /* KeychainItem.swift */; };
 		29ED1AFB1F338E5D005A3895 /* SetupCustomizationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */; };
 		29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */; };
@@ -1129,6 +1131,8 @@
 		29E30DE520D935AF00F74ECB /* LevelUpOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpOverlayView.swift; sourceTree = "<group>"; };
 		29E30DE920DA8AFE00F74ECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		29E48F0C22E89DB3005C4B45 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
+		29E96B502E157EF900D9EF25 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		29E96B522E16929C00D9EF25 /* Font-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font-Extensions.swift"; sourceTree = "<group>"; };
 		29EBDA82232A3ABA006611E3 /* KeychainItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
 		29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomizationRepository.swift; sourceTree = "<group>"; };
 		29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomization.swift; sourceTree = "<group>"; };
@@ -2238,6 +2242,7 @@
 		D95704371E106BF3004F6804 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				29E96B522E16929C00D9EF25 /* Font-Extensions.swift */,
 				29737EEE2D38054C00480353 /* NSRange-Extensions.swift */,
 				29D50AD025F769520009CF55 /* Alignment-Extensions.swift */,
 				2909D42D2726ACBD00FF2B29 /* Binding-Extensions.swift */,
@@ -2439,6 +2444,7 @@
 		D9A63A371E104F6C0083ADC4 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				29E96B502E157EF900D9EF25 /* LoginScreen.swift */,
 				D9A63A331E10328A0083ADC4 /* LoginTableViewController.swift */,
 				29B30EB72E0AD511001B587B /* LoginViewModel.swift */,
 			);
@@ -3505,6 +3511,7 @@
 				291448822087A13100F3A6B5 /* EquipmentDetailViewController.swift in Sources */,
 				29C135FE24EACA7B00DBC6B3 /* MarkdownTextView.swift in Sources */,
 				2927024A24E303CB00BCAA77 /* HallOfPatronsViewController.swift in Sources */,
+				29E96B512E157EFC00D9EF25 /* LoginScreen.swift in Sources */,
 				29FC885C2018D47D002B3D3F /* Quest-Extensions.swift in Sources */,
 				2931150422D744ED00E4A9E3 /* AchievementsCollectionViewController.swift in Sources */,
 				299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */,
@@ -3753,6 +3760,7 @@
 				299FB2A72084B44000422522 /* PetOverviewDataSource.swift in Sources */,
 				2927024624E2D8AB00BCAA77 /* HallOfContributorsDataSource.swift in Sources */,
 				290E56E32A1FAB14000269C0 /* LoadingButton.swift in Sources */,
+				29E96B532E1692A200D9EF25 /* Font-Extensions.swift in Sources */,
 				2909D41F272199BE00FF2B29 /* MultiLineTextField.swift in Sources */,
 				2922EE822C80772A00254106 /* SubscriptionBenefitView.swift in Sources */,
 				D9E02EC61E5E0458002CFCE2 /* ChallengeTableViewController.swift in Sources */,

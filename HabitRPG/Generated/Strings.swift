@@ -2129,8 +2129,16 @@ public enum L10n {
   }
 
   public enum Login {
+    /// Already have an account?
+    public static var alreadyHaveAccount: String { return L10n.tr("Mainstrings", "login.already_have_account") }
     /// There was an error with the authentication. Try again later
     public static var authenticationError: String { return L10n.tr("Mainstrings", "login.authentication_error") }
+    /// Continue with Apple
+    public static var continueWithApple: String { return L10n.tr("Mainstrings", "login.continue_with_apple") }
+    /// Continue with email
+    public static var continueWithEmail: String { return L10n.tr("Mainstrings", "login.continue_with_email") }
+    /// Continue with Google
+    public static var continueWithGoogle: String { return L10n.tr("Mainstrings", "login.continue_with_google") }
     /// Please enter a valid email.
     public static var emailInvalid: String { return L10n.tr("Mainstrings", "login.email_invalid") }
     /// Email a Password Reset Link
@@ -2147,6 +2155,8 @@ public enum L10n {
     public static var loginApple: String { return L10n.tr("Mainstrings", "login.login_apple") }
     /// Login with Google
     public static var loginGoogle: String { return L10n.tr("Mainstrings", "login.login_google") }
+    /// Need an account?
+    public static var needAccount: String { return L10n.tr("Mainstrings", "login.need_account") }
     /// Password and password confirmation have to match and be longer than 8 characters.
     public static var passwordConfirmError: String { return L10n.tr("Mainstrings", "login.password_confirm_error") }
     /// Register
@@ -2163,6 +2173,8 @@ public enum L10n {
     public static func socialRegister(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "login.social_register", p1)
     }
+    /// Enjoy having fun getting things done
+    public static var tagline: String { return L10n.tr("Mainstrings", "login.tagline") }
   }
 
   public enum Member {

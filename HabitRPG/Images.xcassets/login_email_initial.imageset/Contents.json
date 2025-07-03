@@ -1,23 +1,23 @@
 {
   "images" : [
     {
+      "filename" : "Group 885.png",
       "idiom" : "universal",
-      "filename" : "signin_facebook.png",
       "scale" : "1x"
     },
     {
+      "filename" : "Group 885@2x.png",
       "idiom" : "universal",
-      "filename" : "signin_facebook@2x.png",
       "scale" : "2x"
     },
     {
+      "filename" : "Group 885@3x.png",
       "idiom" : "universal",
-      "filename" : "signin_facebook@3x.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

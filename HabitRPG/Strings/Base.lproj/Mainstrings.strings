@@ -735,6 +735,12 @@
 "login.email_password_link" = "Email a Password Reset Link";
 "login.enter_email" = "Enter the email address you used to register your Habitica account.";
 "login.reset_password_response" = "If we have your email on file, instructions for setting a new password have been sent to your email.";
+"login.tagline" = "Enjoy having fun getting things done";
+"login.continue_with_apple" = "Continue with Apple";
+"login.continue_with_google" = "Continue with Google";
+"login.continue_with_email" = "Continue with email";
+"login.already_have_account" = "Already have an account?";
+"login.need_account" = "Need an account?";
 "groups.error_name_required" = "Name may not be empty.";
 "gift_recipient_title" = "Send gift";
 "gift_recipient_subtitle" = "Enter recipient's @ username";
