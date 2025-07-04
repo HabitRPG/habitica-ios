@@ -237,3 +237,8 @@
 "subscription_gift_button" = "贈送訂閱";
 "subscription_support_developers" = "訂閱可以支持我們的小團隊，並幫助 Habitica 繼續營運";
 "subscribe" = "訂閱";
+"staff" = "工作人員";
+"sale" = "促銷活動";
+"streak_achievement_description" = "你連續已完成你的每日任務21天!太棒了!不要斷了這個連續紀錄!";
+"next_checkin_prize_1_day" = "再簽到 1 次即可解鎖下個獎勵!";
+"next_checkin_prize_x_days" = "再簽到 %d 次即可解鎖下個獎勵!";
