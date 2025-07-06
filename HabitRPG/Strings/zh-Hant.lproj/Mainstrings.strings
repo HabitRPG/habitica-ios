@@ -248,3 +248,15 @@
 "social.x_members" = "%s 成員";
 "tutorials.inbox" = "在這裡你可以讀取和回復私人訊息!你也可以從它們的個人檔案傳訊息。";
 "faint.title" = "你的生命值耗盡了!";
+"is_closed" = "關閉";
+"open" = "開啟";
+"is_open" = "開啟";
+"monday" = "星期一";
+"tuesday" = "星期二";
+"wednesday" = "星期三";
+"thursday" = "星期四";
+"friday" = "星期五";
+"email" = "電子郵件";
+"groups.invite.add_userid" = "新增使用者 ID";
+"groups.invite.add_username" = "新增使用者名稱";
+"groups.invite.add_email" = "新增使用者電子郵件";
