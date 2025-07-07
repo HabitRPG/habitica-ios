@@ -260,3 +260,16 @@
 "groups.invite.add_userid" = "新增使用者 ID";
 "groups.invite.add_username" = "新增使用者名稱";
 "groups.invite.add_email" = "新增使用者電子郵件";
+"hatch_pet" = "孵化寵物";
+"suggest_pet_hatch_again_missing_potion" = "你還需要一瓶 %@ 藥水，才能再次孵化這隻寵物";
+"survey.title" = "Habitica 玩家調查";
+"survey.description" = "完成這5分鐘的調查就可以幫助我們成長並可得到成就!";
+"survey.button" = "進行調查";
+"suggest_pet_hatch_missing_egg" = "你還需要一顆 %@ 蛋，才能孵化這隻寵物";
+"suggest_pet_hatch_missing_both" = "你還需要一瓶 %@ 藥水和 %@ 藥水，才能孵化這隻寵物";
+"suggest_pet_hatch_again_missing_egg" = "你還需要一顆 %@ 蛋，才能再次孵化這隻寵物";
+"suggest_pet_hatch_missing_potion" = "你還需要一瓶 %@ 藥水，才能孵化這隻寵物";
+"suggest_pet_hatch_again_missing_both" = "你還需要一瓶 %@藥水和 %@藥水，才能再次孵化這隻寵物";
+"can_hatch_pet" = "結合你的 %@蛋和 %@ 藥水來孵化這隻寵物!";
+"hatch" = "孵化";
+"unhatched_pet" = "未孵化的寵物";
