@@ -291,3 +291,14 @@
 "whats_world_boss" = "甚麼是世界 Boss?";
 "tutorials.habits_2" = "每次當你完成好習慣，按+鍵取得經驗值和金幣!";
 "about.view_source_code" = "檢視開源程式碼";
+"stable.color" = "顏色";
+"stable.standard" = "標準";
+"stable.premium" = "魔法藥水";
+"stable.feed" = "餵食";
+"stable.type" = "類別";
+"unequip" = "未著裝";
+"about.acknowledgements" = "致謝名單";
+"about.version" = "版本";
+"about.export_database" = "匯出資料庫";
+"about.report_bug" = "回報問題";
+"about.no_email_title" = "你尚未設定你的電子郵件";
