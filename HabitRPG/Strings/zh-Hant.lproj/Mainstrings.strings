@@ -302,3 +302,12 @@
 "about.export_database" = "匯出資料庫";
 "about.report_bug" = "回報問題";
 "about.no_email_title" = "你尚未設定你的電子郵件";
+"party.start_quest" = "開始副本";
+"party.leave_party_title" = "你確定要離開隊伍嗎?";
+"party.leave" = "離開隊伍";
+"party.transfer_ownership_title" = "更換隊長?";
+"party.transfer_ownership_description" = "這將會讓%@成為隊長";
+"repeat_password" = "重複密碼";
+"username_prompt_title" = "是時候來設定你的用戶名稱!";
+"party.look_for_party" = "查找隊伍";
+"confirm_username" = "確認使用者名稱";
