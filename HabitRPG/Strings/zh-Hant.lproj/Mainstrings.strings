@@ -311,3 +311,15 @@
 "username_prompt_title" = "是時候來設定你的用戶名稱!";
 "party.look_for_party" = "查找隊伍";
 "confirm_username" = "確認使用者名稱";
+"duration_12month" = "12個月";
+"quests.reward_experience" = "%d 經驗值";
+"quests.reward_gold" = "%d 金幣";
+"quests.unlock_invite_short" = "邀請朋友";
+"quests.unlock_level" = "達到等級%d 才能解鎖";
+"quests.unlock_level_short" = "等級 %d";
+"duration_6month" = "6個月";
+"quests.unlock_incentive_short" = "%d 登入紀錄";
+"quests.unlock_previous" = "完成副本%d 來解鎖";
+"quests.unlock_incentive" = "登入%d 次才能解鎖";
+"duration_month" = "月";
+"duration_3month" = "3個月";
