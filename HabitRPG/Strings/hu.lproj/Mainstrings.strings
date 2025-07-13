@@ -376,7 +376,7 @@
 "settings.new_username" = "Új felhasználónév";
 "settings.old_password" = "Régi jelszó";
 "settings.confirm_new_password" = "Új jelszó megerősítése";
-"settings.api_disclaimer" = "Másold ki a tokent. Vigyázz, ez jelszónak minősül!";
+"settings.api_disclaimer" = "Fejlesztőknek és külső eszközöknek szánt jelszó token";
 "settings.new_password" = "Új jelszó";
 "settings.launch_screen" = "Indítóképernyő";
 "settings.push_notifications.invited_quest" = "Meghívó érkezett egy küldetésre";
@@ -1398,3 +1398,9 @@
 "gift_one_get_one_data.purchase_banner_title" = "Ajándékozz egy előfizetést és kapj egyet ingyen eddig: %@";
 "next_switch_in_x" = "Következő váltás: %s";
 "change_password_helper" = "A jelszónak legalább 8 karakter hosszúnak kell lennie. A jelszó megváltoztatása kiléptet minden más eszközről és harmadik féltől származó alkalmazásból, amit használsz.";
+"api_token_reset_desc" = "A jelszavad megváltoztatásával visszaállíthatod. A visszaállítás után újra be kell jelentkezned minden olyan eszközön, ahol használod a Habiticát, és újra meg kell adnod az API tokent azokhoz a külső eszközökhöz, amiket használsz.";
+"api_token_title" = "API token";
+"api_token_is_password" = "Az API tokened olyan, mint egy jelszó";
+"api_token_password_description" = "Ne oszd meg nyilvánosan. Előfordulhat, hogy meg kell adnod a felhasználói azonosítódat, de soha ne tedd közzé az API tokened mások számára látható helyen, például a Githubon.";
+"api_token_reset_title" = "Ha új API tokenre van szükséged";
+"copy_token" = "Token másolása";
