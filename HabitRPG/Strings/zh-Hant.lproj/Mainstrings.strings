@@ -323,3 +323,14 @@
 "quests.unlock_incentive" = "登入%d 次才能解鎖";
 "duration_month" = "月";
 "duration_3month" = "3個月";
+"accessibility.complete_task" = "完成任務";
+"support.questions_button" = "閱讀更多";
+"success" = "成功";
+"accessibility.reply_to_message" = "回復訊息";
+"accessibility.copy_message" = "複製訊息";
+"accessibility.delete_message" = "刪除訊息";
+"accessibility.like_message" = "喜歡訊息";
+"accessibility.completed_x" = "已完成 %@";
+"accessibility.not_completed_x" = "未完成 %@";
+"accessibility.double_tap_to_complete" = "點擊2次來完成";
+"accessibility.double_tap_to_edit" = "點擊2次來編輯";
