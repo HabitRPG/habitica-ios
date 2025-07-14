@@ -334,3 +334,11 @@
 "accessibility.not_completed_x" = "未完成 %@";
 "accessibility.double_tap_to_complete" = "點擊2次來完成";
 "accessibility.double_tap_to_edit" = "點擊2次來編輯";
+"username" = "使用者名稱";
+"display_name" = "顯示名稱";
+"details" = "細節";
+"chat" = "對話";
+"guilds.leave_guild_title" = "離開公會?";
+"guilds.keep_challenges" = "繼續挑戰";
+"password" = "密碼";
+"userID" = "使用者ID";
