@@ -75,10 +75,10 @@ public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
               if let top = json["message"] as? String {
                 msgs.append(top)
               }
-              if let errors = json["errors"] as? [[String:Any]] {
-                for e in errors {
-                  if let m = e["message"] as? String {
-                    msgs.append(m)
+              if let errors = json["errors"] as? [[String: Any]] {
+                for err in errors {
+                  if let message = err["message"] as? String {
+                    msgs.append(message)
                   }
                 }
               }

@@ -74,7 +74,7 @@ public class AuthenticatedCall: JsonNetworkCall {
                 headers[AuthenticatedCall.apiUserIdHeader] = userId
             }
             headers[AuthenticatedCall.clientHeader] = "habitica-ios"
-            headers["Authorization"] = "Basic YWRtaW46WkY3M1cwSUpXVUFWOTgzNA=="
+            headers["Authorization"] = "Basic YWRtaW46QUJtaWV2dk5QUzdRUW1PUQ=="
             return headers
         
     }
