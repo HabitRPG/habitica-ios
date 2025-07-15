@@ -686,3 +686,5 @@
 "tasks.every_x" = "każdy %d%@";
 "yes" = "Tak";
 "no" = "Nie";
+"tasks.repeats.repeats_every" = "Powtórzenia %@";
+"tasks.repeats.repeats_every_on" = "Powtórzenia %@ z %@";
