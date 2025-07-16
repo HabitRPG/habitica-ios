@@ -242,31 +242,46 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     
     @objc private func handleInvalidCredentials() {
         DispatchQueue.main.async { [weak self] in
-            self?.userRepository.logoutAccount()
-
-            var currentWindow: UIWindow?
-            if #available(iOS 13.0, *) {
-                currentWindow = UIApplication.shared.connectedScenes
-                    .compactMap { $0 as? UIWindowScene }
-                    .first?.windows
-                    .first { $0.isKeyWindow }
-            } else {
-                currentWindow = self?.window
+            // cancel any pending network requests to prevent race conditions
+            URLSession.shared.getAllTasks { tasks in
+                tasks.forEach { $0.cancel() }
             }
             
-            if let window = currentWindow {
-                if let presented = window.rootViewController?.presentedViewController {
-                    presented.dismiss(animated: false) {
-                        let storyboard = UIStoryboard(name: "Intro", bundle: nil)
-                        let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController")
-                        window.rootViewController = loginViewController
-                        window.makeKeyAndVisible()
-                    }
+            self?.userRepository.logoutAccount()
+            
+            self?.contentRepository.retrieveContent(force: true).observeCompleted {
+                var currentWindow: UIWindow?
+                if #available(iOS 13.0, *) {
+                    currentWindow = UIApplication.shared.connectedScenes
+                        .compactMap { $0 as? UIWindowScene }
+                        .first?.windows
+                        .first { $0.isKeyWindow }
                 } else {
-                    let storyboard = UIStoryboard(name: "Intro", bundle: nil)
-                    let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController")
-                    window.rootViewController = loginViewController
-                    window.makeKeyAndVisible()
+                    currentWindow = self?.window
+                }
+                
+                if let window = currentWindow {
+                    if let presented = window.rootViewController?.presentedViewController {
+                        presented.dismiss(animated: false) {
+                            let storyboard = UIStoryboard(name: "Intro", bundle: nil)
+                            if let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController") as? LoginTableViewController {
+                                loginViewController.isRootViewController = true
+                                let navigationController = UINavigationController(rootViewController: loginViewController)
+                                navigationController.setNavigationBarHidden(true, animated: false)
+                                window.rootViewController = navigationController
+                                window.makeKeyAndVisible()
+                            }
+                        }
+                    } else {
+                        let storyboard = UIStoryboard(name: "Intro", bundle: nil)
+                        if let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController") as? LoginTableViewController {
+                            loginViewController.isRootViewController = true
+                            let navigationController = UINavigationController(rootViewController: loginViewController)
+                            navigationController.setNavigationBarHidden(true, animated: false)
+                            window.rootViewController = navigationController
+                            window.makeKeyAndVisible()
+                        }
+                    }
                 }
             }
         }

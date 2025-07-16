@@ -82,6 +82,8 @@ public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
                             let shouldLogout = !excludedPaths.contains(where: { self.urlString.contains($0) })
                             
                             if shouldLogout {
+                                // Add invalid_credentials to the errors array so NetworkErrorHandler can suppress it
+                                errors.append("invalid_credentials")
                                 NotificationCenter.default.post(name: .invalidCredentials, object: nil)
                             }
                         }
