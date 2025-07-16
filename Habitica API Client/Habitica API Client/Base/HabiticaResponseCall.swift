@@ -67,6 +67,7 @@ public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
             }
             return errors
         }))
+        
         errorHandler?.observe(signal: serverErrorSignal.combineLatest(with: errorJsonSignal)
             .map({ (error, jsonAny) -> (NetworkError, [String]) in
                 let json = jsonAny
@@ -74,14 +75,16 @@ public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
                 var errorCode = error.code
                 
                 // check for invalid_credentials error
-                if error.code == 401, let errorField = json["error"] as? String, 
-                   errorField.lowercased() == "invalid_credentials" {
-                    // skip logout for certain endpoints
-                    let excludedPaths = ["/user/auth/update-password", "group-plans"]
-                    let shouldLogout = !excludedPaths.contains(where: { self.urlString.contains($0) })
-                    
-                    if shouldLogout {
-                        NotificationCenter.default.post(name: .invalidCredentials, object: nil)
+                if error.code == 401 {
+                    if let errorField = json["error"] as? String {
+                        if errorField.lowercased() == "invalid_credentials" {
+                            let excludedPaths = ["/user/auth/update-password", "group-plans"]
+                            let shouldLogout = !excludedPaths.contains(where: { self.urlString.contains($0) })
+                            
+                            if shouldLogout {
+                                NotificationCenter.default.post(name: .invalidCredentials, object: nil)
+                            }
+                        }
                     }
                 }
                 

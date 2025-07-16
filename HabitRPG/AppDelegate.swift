@@ -244,12 +244,30 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         DispatchQueue.main.async { [weak self] in
             self?.userRepository.logoutAccount()
 
-            if let window = self?.window,
-               let rootViewController = window.rootViewController as? MainTabBarController {
-                let storyboard = UIStoryboard(name: "Intro", bundle: nil)
-                let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController")
-                loginViewController.modalPresentationStyle = .fullScreen
-                rootViewController.present(loginViewController, animated: true)
+            var currentWindow: UIWindow?
+            if #available(iOS 13.0, *) {
+                currentWindow = UIApplication.shared.connectedScenes
+                    .compactMap { $0 as? UIWindowScene }
+                    .first?.windows
+                    .first { $0.isKeyWindow }
+            } else {
+                currentWindow = self?.window
+            }
+            
+            if let window = currentWindow {
+                if let presented = window.rootViewController?.presentedViewController {
+                    presented.dismiss(animated: false) {
+                        let storyboard = UIStoryboard(name: "Intro", bundle: nil)
+                        let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController")
+                        window.rootViewController = loginViewController
+                        window.makeKeyAndVisible()
+                    }
+                } else {
+                    let storyboard = UIStoryboard(name: "Intro", bundle: nil)
+                    let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController")
+                    window.rootViewController = loginViewController
+                    window.makeKeyAndVisible()
+                }
             }
         }
     }
