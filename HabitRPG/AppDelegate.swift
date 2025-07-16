@@ -53,6 +53,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         setupNetworkClient()
         setupDatabase()
         configureNotifications()
+        setupInvalidCredentialsObserver()
         
         if let userInfo = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
             handlePushnotification(identifier: nil, userInfo: userInfo)
@@ -228,6 +229,29 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     
     func setupRouter() {
         RouterHandler.shared.register()
+    }
+    
+    func setupInvalidCredentialsObserver() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleInvalidCredentials),
+            name: .invalidCredentials,
+            object: nil
+        )
+    }
+    
+    @objc private func handleInvalidCredentials() {
+        DispatchQueue.main.async { [weak self] in
+            self?.userRepository.logoutAccount()
+
+            if let window = self?.window,
+               let rootViewController = window.rootViewController as? MainTabBarController {
+                let storyboard = UIStoryboard(name: "Intro", bundle: nil)
+                let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController")
+                loginViewController.modalPresentationStyle = .fullScreen
+                rootViewController.present(loginViewController, animated: true)
+            }
+        }
     }
     
     func handleInitialLaunch() {

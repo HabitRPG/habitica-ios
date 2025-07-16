@@ -10,6 +10,10 @@ import Foundation
 import ReactiveSwift
 import Habitica_Models
 
+extension Notification.Name {
+    public static let invalidCredentials = Notification.Name("InvalidCredentialsLogout")
+}
+
 public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
     
     public lazy var habiticaResponseSignal: Signal<HabiticaResponse<C>?, Never> = jsonSignal.map({ json in
@@ -63,21 +67,35 @@ public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
             }
             return errors
         }))
-        errorHandler?.observe(signal: serverErrorSignal.combineLatest(with: jsonSignal)
+        errorHandler?.observe(signal: serverErrorSignal.combineLatest(with: errorJsonSignal)
             .map({ (error, jsonAny) -> (NetworkError, [String]) in
-                let json = jsonAny as? [String: Any]
+                let json = jsonAny
                 var errors = [String]()
-                if let jsonErrors = json?["errors"] as? [[String: Any]] {
+                var errorCode = error.code
+                
+                // check for invalid_credentials error
+                if error.code == 401, let errorField = json["error"] as? String, 
+                   errorField.lowercased() == "invalid_credentials" {
+                    // skip logout for certain endpoints
+                    let excludedPaths = ["/user/auth/update-password", "group-plans"]
+                    let shouldLogout = !excludedPaths.contains(where: { self.urlString.contains($0) })
+                    
+                    if shouldLogout {
+                        NotificationCenter.default.post(name: .invalidCredentials, object: nil)
+                    }
+                }
+                
+                if let jsonErrors = json["errors"] as? [[String: Any]] {
                     for jsonError in jsonErrors {
                         if let errorMessage = jsonError["message"] as? String {
                             errors.append(errorMessage)
                         }
                     }
                 }
-                if let message = json?["message"] as? String {
+                if let message = json["message"] as? String {
                     errors.append(message)
                 }
-                return (NetworkError(message: error.localizedDescription, url: (error.userInfo["url"] as? String) ?? "", code: error.code), errors)
+                return (NetworkError(message: error.localizedDescription, url: (error.userInfo["url"] as? String) ?? "", code: errorCode), errors)
             }))
     }
 }
