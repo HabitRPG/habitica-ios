@@ -223,8 +223,8 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
-    func login(userID: String, network: String, accessToken: String) -> Signal<LoginResponseProtocol?, Never> {
-        return SocialLoginCall(userID: userID, network: network, accessToken: accessToken).objectSignal.on(value: { loginResponse in
+    func login(userID: String, network: String, accessToken: String, allowRegister: Bool) -> Signal<LoginResponseProtocol?, Never> {
+        return SocialLoginCall(userID: userID, network: network, accessToken: accessToken, allowRegister: allowRegister).objectSignal.on(value: { loginResponse in
             if let response = loginResponse {
                 AuthenticationManager.shared.currentUserId = response.id
                 AuthenticationManager.shared.currentUserKey = response.apiToken
@@ -232,8 +232,8 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
-    func loginApple(identityToken: String, name: String) -> Signal<LoginResponseProtocol?, Never> {
-        return AppleLoginCall(identityToken: identityToken, name: name).objectSignal.on(value: { loginResponse in
+    func loginApple(identityToken: String, name: String, allowRegister: Bool) -> Signal<LoginResponseProtocol?, Never> {
+        return AppleLoginCall(identityToken: identityToken, name: name, allowRegister: allowRegister).objectSignal.on(value: { loginResponse in
             if let response = loginResponse {
                 AuthenticationManager.shared.currentUserId = response.id
                 AuthenticationManager.shared.currentUserKey = response.apiToken
@@ -308,6 +308,11 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     
     func verifyUsername(_ newUsername: String) -> Signal<VerifyUsernameResponse?, Never> {
         let call = VerifyUsernameCall(username: newUsername)
+        return call.objectSignal
+    }
+    
+    func checkEmail(_ newEmail: String) -> Signal<CheckEmailResponse?, Never> {
+        let call = CheckEmailCall(email: newEmail)
         return call.objectSignal
     }
     

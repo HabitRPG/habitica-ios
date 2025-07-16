@@ -602,6 +602,8 @@ public enum L10n {
   public static var join: String { return L10n.tr("Mainstrings", "join") }
   /// Join Challenge
   public static var joinChallenge: String { return L10n.tr("Mainstrings", "join_challenge") }
+  /// Join Habitica
+  public static var joinHabitica: String { return L10n.tr("Mainstrings", "join_habitica") }
   /// Joined Challenge
   public static var joinedChallenge: String { return L10n.tr("Mainstrings", "joined_challenge") }
   /// Jubilant Gryphatrice
@@ -2175,6 +2177,12 @@ public enum L10n {
     }
     /// Enjoy having fun getting things done
     public static var tagline: String { return L10n.tr("Mainstrings", "login.tagline") }
+    /// You agree to our Terms of Service and have read our Privacy Policy.
+    public static var termsText: String { return L10n.tr("Mainstrings", "login.terms_text") }
+    /// This is a unique name you can change later at any time!
+    public static var usernameDescription: String { return L10n.tr("Mainstrings", "login.username_description") }
+    /// What should we call you?
+    public static var whatCallYou: String { return L10n.tr("Mainstrings", "login.what_call_you") }
   }
 
   public enum Member {

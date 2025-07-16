@@ -183,6 +183,8 @@
 		295FE2C420A4505B00C97BA4 /* UpdateGroupCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295FE2C320A4505B00C97BA4 /* UpdateGroupCall.swift */; };
 		29617E0624DC40CD00CF5EB4 /* BlockMemberCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29617E0524DC40CD00CF5EB4 /* BlockMemberCall.swift */; };
 		29617E0A24E1706900CF5EB4 /* UnlinkAllTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29617E0924E1706900CF5EB4 /* UnlinkAllTasksCall.swift */; };
+		296AA28F2E26898F00AB8426 /* CheckEmailCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296AA28E2E26898F00AB8426 /* CheckEmailCall.swift */; };
+		296AA2932E268A1900AB8426 /* APICheckEmailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296AA2922E268A1900AB8426 /* APICheckEmailResponse.swift */; };
 		296AC81A20ADD99900885682 /* RetrieveInAppRewardsCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296AC81920ADD99900885682 /* RetrieveInAppRewardsCall.swift */; };
 		296AC81C20ADD9D500885682 /* APIInAppReward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296AC81B20ADD9D500885682 /* APIInAppReward.swift */; };
 		296E480A21BEBC0600D15E4A /* RetrieveMemberUsernameCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296E480921BEBC0600D15E4A /* RetrieveMemberUsernameCall.swift */; };
@@ -436,6 +438,8 @@
 		295FE2C320A4505B00C97BA4 /* UpdateGroupCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGroupCall.swift; sourceTree = "<group>"; };
 		29617E0524DC40CD00CF5EB4 /* BlockMemberCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockMemberCall.swift; sourceTree = "<group>"; };
 		29617E0924E1706900CF5EB4 /* UnlinkAllTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlinkAllTasksCall.swift; sourceTree = "<group>"; };
+		296AA28E2E26898F00AB8426 /* CheckEmailCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailCall.swift; sourceTree = "<group>"; };
+		296AA2922E268A1900AB8426 /* APICheckEmailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICheckEmailResponse.swift; sourceTree = "<group>"; };
 		296AC81920ADD99900885682 /* RetrieveInAppRewardsCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveInAppRewardsCall.swift; sourceTree = "<group>"; };
 		296AC81B20ADD9D500885682 /* APIInAppReward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIInAppReward.swift; sourceTree = "<group>"; };
 		296E480921BEBC0600D15E4A /* RetrieveMemberUsernameCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveMemberUsernameCall.swift; sourceTree = "<group>"; };
@@ -627,6 +631,7 @@
 				29DBFF0E20D15BEA00DF9CF2 /* APIUserNewMessages.swift */,
 				291E95B4209888E1006EE585 /* APIUserParty.swift */,
 				29A62B04216CC6A100D4BD90 /* APIVerifyUsernameResponse.swift */,
+				296AA2922E268A1900AB8426 /* APICheckEmailResponse.swift */,
 				2953D84D28BCDFCA00DC456E /* APIGroupPlan.swift */,
 			);
 			path = User;
@@ -830,6 +835,7 @@
 				290C302D206BD2020066AF5B /* UseSkillCall.swift */,
 				29DBFF0220CE91A500DF9CF2 /* UseTransformationItemCall.swift */,
 				29A62B06216CC6CC00D4BD90 /* VerifyUsernameCall.swift */,
+				296AA28E2E26898F00AB8426 /* CheckEmailCall.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1224,6 +1230,7 @@
 				2919FDDB2091D3D70096A53B /* MarkInboxAsSeenCall.swift in Sources */,
 				290B6273207BA7D9007287C4 /* UpdateUsernameCall.swift in Sources */,
 				295E9DE420B31C1300D58D45 /* DeleteTagCall.swift in Sources */,
+				296AA28F2E26898F00AB8426 /* CheckEmailCall.swift in Sources */,
 				299CE6372CCA5CCF00ABA85C /* APIGearSet.swift in Sources */,
 				299FB2882084987000422522 /* APIPet.swift in Sources */,
 				294973CA2080F9F600F02AC3 /* EquipGearCall.swift in Sources */,
@@ -1275,6 +1282,7 @@
 				292F9666206E4F9F00804151 /* FlagChatMessageCall.swift in Sources */,
 				299F93EF246D75A8008DB702 /* SendGemsCall.swift in Sources */,
 				29990DC620E65CF1001ADD8B /* APITaskResponseQuest.swift in Sources */,
+				296AA2932E268A1900AB8426 /* APICheckEmailResponse.swift in Sources */,
 				296E480A21BEBC0600D15E4A /* RetrieveMemberUsernameCall.swift in Sources */,
 				290365742B4C1A63007B3FE3 /* SyncUserStatsCall.swift in Sources */,
 				296AC81A20ADD99900885682 /* RetrieveInAppRewardsCall.swift in Sources */,

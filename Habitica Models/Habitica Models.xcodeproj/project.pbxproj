@@ -89,6 +89,7 @@
 		295E9DE620B3257700D58D45 /* ShopProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DE520B3257700D58D45 /* ShopProtocol.swift */; };
 		295E9DE820B3263E00D58D45 /* ShopCategoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DE720B3263E00D58D45 /* ShopCategoryProtocol.swift */; };
 		295E9DF620B4792500D58D45 /* QuestColorsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DF520B4792500D58D45 /* QuestColorsProtocol.swift */; };
+		296AA2912E2689E500AB8426 /* CheckEmailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296AA2902E2689E500AB8426 /* CheckEmailResponse.swift */; };
 		296AC81620AC86B900885682 /* BaseRewardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296AC81520AC86B900885682 /* BaseRewardProtocol.swift */; };
 		296AC81820AC898D00885682 /* InAppRewardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296AC81720AC898D00885682 /* InAppRewardProtocol.swift */; };
 		2970B62A24A4BADA008CD068 /* NotificationFirstDropProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2970B62924A4BADA008CD068 /* NotificationFirstDropProtocol.swift */; };
@@ -228,6 +229,7 @@
 		295E9DE520B3257700D58D45 /* ShopProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopProtocol.swift; sourceTree = "<group>"; };
 		295E9DE720B3263E00D58D45 /* ShopCategoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCategoryProtocol.swift; sourceTree = "<group>"; };
 		295E9DF520B4792500D58D45 /* QuestColorsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestColorsProtocol.swift; sourceTree = "<group>"; };
+		296AA2902E2689E500AB8426 /* CheckEmailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailResponse.swift; sourceTree = "<group>"; };
 		296AC81520AC86B900885682 /* BaseRewardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRewardProtocol.swift; sourceTree = "<group>"; };
 		296AC81720AC898D00885682 /* InAppRewardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppRewardProtocol.swift; sourceTree = "<group>"; };
 		2970B62924A4BADA008CD068 /* NotificationFirstDropProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationFirstDropProtocol.swift; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 				29B478BE20C5304F00B6123F /* BuyResponseProtocol.swift */,
 				29B478C020C531B000B6123F /* ArmoireResponseProtocol.swift */,
 				29A62B02216CC66F00D4BD90 /* VerifyUsernameResponse.swift */,
+				296AA2902E2689E500AB8426 /* CheckEmailResponse.swift */,
 				29DBFF0820D1336000DF9CF2 /* EquatableStringEnumProtocol.swift */,
 				2981849F20F8AC3E00F06D3D /* BaseModelProtocol.swift */,
 				29A984CC2547293E00F04665 /* Constants.swift */,
@@ -656,6 +659,7 @@
 				2927269A20B6FB61009DD08A /* ChallengeProtocol.swift in Sources */,
 				295E9DF620B4792500D58D45 /* QuestColorsProtocol.swift in Sources */,
 				29A62B03216CC66F00D4BD90 /* VerifyUsernameResponse.swift in Sources */,
+				296AA2912E2689E500AB8426 /* CheckEmailResponse.swift in Sources */,
 				296AC81820AC898D00885682 /* InAppRewardProtocol.swift in Sources */,
 				29C38C7F24A2321400F219A1 /* UserAchievementsProtocol.swift in Sources */,
 				290B62452073976B007287C4 /* GroupMembershipProtocol.swift in Sources */,

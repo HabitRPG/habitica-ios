@@ -63,7 +63,7 @@ extension AccountSettingsViewController: ASAuthorizationControllerDelegate {
         if let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate {
             appDelegate.currentAuthorizationFlow = OIDAuthState.authState(byPresenting: request, presenting: self, callback: {[weak self] (authState, _) in
                 if authState != nil {
-                    self?.userRepository.login(userID: "", network: "google", accessToken: authState?.lastTokenResponse?.accessToken ?? "").observeResult { (result) in
+                    self?.userRepository.login(userID: "", network: "google", accessToken: authState?.lastTokenResponse?.accessToken ?? "", allowRegister: false).observeResult { (result) in
                         switch result {
                         case .success:
                             self?.userRepository.retrieveUser().observeCompleted {}
@@ -122,7 +122,7 @@ extension AccountSettingsViewController: ASAuthorizationControllerDelegate {
     }
     
     func performAppleLogin(identityToken: String, name: String) {
-        userRepository.loginApple(identityToken: identityToken, name: name).observeResult {[weak self] (result) in
+        userRepository.loginApple(identityToken: identityToken, name: name, allowRegister: false).observeResult {[weak self] (result) in
             switch result {
             case .success:
                 self?.userRepository.retrieveUser().observeCompleted {}

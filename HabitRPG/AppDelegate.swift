@@ -190,7 +190,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             return
         }
         if let host = ProcessInfo.processInfo.environment["CUSTOM_DOMAIN"], let apiVersion = configRepository.string(variable: .apiVersion) {
-            let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion.isEmpty ? "v3" : apiVersion)")
+            let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion.isEmpty ? "v4" : apiVersion)")
             AuthenticatedCall.defaultConfiguration = config
             return
         }
@@ -198,7 +198,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             if chosenServer == "production" {
                 let configRepository = ConfigRepository.shared
                 if let host = configRepository.string(variable: .prodHost), let apiVersion = configRepository.string(variable: .apiVersion) {
-                    let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion.isEmpty ? "v3" : apiVersion)")
+                    let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion.isEmpty ? "v4" : apiVersion)")
                     AuthenticatedCall.defaultConfiguration = config
                 } else {
                     AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.production

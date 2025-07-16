@@ -11,9 +11,10 @@ import Habitica_Models
 import ReactiveSwift
 
 public class AppleLoginCall: ResponseObjectCall<LoginResponseProtocol, APILoginResponse> {
-    public init(identityToken: String, name: String) {
+    public init(identityToken: String, name: String, allowRegister: Bool = false) {
         let json = try? JSONSerialization.data(withJSONObject: ["id_token": identityToken,
-                                                                "user": "{\"name\": \"\(name)\"}"
+                                                                "user": "{\"name\": \"\(name)\"}",
+                                                                "allowRegister": allowRegister
         ], options: .prettyPrinted)
         super.init(httpMethod: .POST, endpoint: "user/auth/apple", postData: json, needsAuthentication: false)
     }

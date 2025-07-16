@@ -425,6 +425,7 @@
 		29D50A6825F66F760009CF55 /* UIWindowScene-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D50A6725F66F760009CF55 /* UIWindowScene-Extensions.swift */; };
 		29D50AD125F769520009CF55 /* Alignment-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D50AD025F769520009CF55 /* Alignment-Extensions.swift */; };
 		29D50B7B25F9037A0009CF55 /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D50B7A25F9037A0009CF55 /* AppDelegate+Notifications.swift */; };
+		29D6F68A2E266FA0009BEE8E /* UsernameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D6F6892E266F9D009BEE8E /* UsernameScreen.swift */; };
 		29DBDE48274BCDA2008F6777 /* HabiticaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE47274BCDA2008F6777 /* HabiticaTests.swift */; };
 		29DBDE4A274BE745008F6777 /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE49274BE745008F6777 /* AccountSettingsViewController.swift */; };
 		29DBDE54274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE53274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift */; };
@@ -1108,6 +1109,7 @@
 		29D5AD5B20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29D5AD5E20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29D5AD5F20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		29D6F6892E266F9D009BEE8E /* UsernameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameScreen.swift; sourceTree = "<group>"; };
 		29DBDE47274BCDA2008F6777 /* HabiticaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaTests.swift; sourceTree = "<group>"; };
 		29DBDE49274BE745008F6777 /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
 		29DBDE53274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountSettingsViewController+Apple.swift"; sourceTree = "<group>"; };
@@ -2444,6 +2446,7 @@
 		D9A63A371E104F6C0083ADC4 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				29D6F6892E266F9D009BEE8E /* UsernameScreen.swift */,
 				29E96B502E157EF900D9EF25 /* LoginScreen.swift */,
 				D9A63A331E10328A0083ADC4 /* LoginTableViewController.swift */,
 				29B30EB72E0AD511001B587B /* LoginViewModel.swift */,
@@ -3465,6 +3468,7 @@
 				328C951E24A2C13100293E16 /* LinksOnlyTextView.swift in Sources */,
 				2912C3C522CB955B00BC485F /* QuestInviteNotificationCell.swift in Sources */,
 				298119B11F50453100F9FB39 /* QuestGoalView.swift in Sources */,
+				29D6F68A2E266FA0009BEE8E /* UsernameScreen.swift in Sources */,
 				D9D17CCC1E6736A600AD9232 /* ChallengeDetailHeaderView.swift in Sources */,
 				291448A8208A3DD200F3A6B5 /* CustomizationRepository.swift in Sources */,
 				2912C3B222CB415100BC485F /* UnreadGroupNotificationCell.swift in Sources */,

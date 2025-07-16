@@ -95,6 +95,7 @@ internal enum Asset {
   internal static let checkChecklist = ImageAsset(name: "check_checklist")
   internal static let checkboxChecked = ImageAsset(name: "checkbox_checked")
   internal static let checkboxUnchecked = ImageAsset(name: "checkbox_unchecked")
+  internal static let checkmark = ImageAsset(name: "checkmark")
   internal static let checkmarkSmall = ImageAsset(name: "checkmark_small")
   internal static let circleSelected = ImageAsset(name: "circle_selected")
   internal static let circleUnselected = ImageAsset(name: "circle_unselected")
@@ -343,6 +344,7 @@ internal enum Asset {
   internal static let taskLockLight = ImageAsset(name: "task_lock_light")
   internal static let teamPlan = ImageAsset(name: "team_plan")
   internal static let triangle = ImageAsset(name: "triangle")
+  internal static let usernameHeader = ImageAsset(name: "username_header")
   internal static let wonChallengeIcon = ImageAsset(name: "won_challenge_icon")
   internal static let wordmarkWhite = ImageAsset(name: "wordmark_white")
 }

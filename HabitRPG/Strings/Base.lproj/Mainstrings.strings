@@ -741,6 +741,10 @@
 "login.continue_with_email" = "Continue with email";
 "login.already_have_account" = "Already have an account?";
 "login.need_account" = "Need an account?";
+"login.what_call_you" = "What should we call you?";
+"login.username_description" = "This is a unique name you can change later at any time!";
+"login.terms_text" = "You agree to our Terms of Service and have read our Privacy Policy.";
+"join_habitica" = "Join Habitica";
 "groups.error_name_required" = "Name may not be empty.";
 "gift_recipient_title" = "Send gift";
 "gift_recipient_subtitle" = "Enter recipient's @ username";
