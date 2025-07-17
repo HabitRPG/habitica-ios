@@ -60,6 +60,7 @@ class LoginViewModel: ObservableObject {
                     self?.userRepository.login(userID: "", network: "google", accessToken: self?.socialLoginAccessToken ?? "", allowRegister: false)
                         .observeValues { response in
                             if response?.newUser == true {
+                                self?.prefillUsername()
                                 self?.showUsernameView = true
                             } else {
                                 self?.onSuccessfulLogin(false)
@@ -106,6 +107,7 @@ class LoginViewModel: ObservableObject {
             switch result {
             case .success(let response):
                 if response?.newUser == true {
+                    self?.prefillUsername()
                     self?.showUsernameView = true
                 } else {
                     self?.onSuccessfulLogin(false)
@@ -143,6 +145,7 @@ class LoginViewModel: ObservableObject {
             switch result {
             case .success(let response):
                 if response?.valid == true {
+                    self.prefillUsername()
                     self.showUsernameView = true
                 } else {
                     self.showLoadingIndicator = false
