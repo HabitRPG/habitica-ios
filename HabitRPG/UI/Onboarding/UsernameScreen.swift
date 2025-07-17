@@ -28,13 +28,24 @@ public struct UsernameScreen: View {
                 .foregroundColor(.white)
             LoginTextInput(placeholder: L10n.username, prefix: "@", icon: EmptyView(), isValid: viewModel.usernameValid, text: $viewModel.username)
                 .onChange(of: viewModel.username) { _ in
-                    viewModel.verifyUsername()
+                    if viewModel.username.count >= 3 {
+                        viewModel.verifyUsername()
+                    }
                 }
+            ForEach(viewModel.usernameIssues, id: \.self) { issue in
+                Text(issue)
+                    .foregroundColor(.red100)
+                    .scaledFont(size: 15, weight: .semibold)
+                    .padding(.bottom, 4)
+                    .padding(.horizontal, 16)
+                    .transition(.push(from: .top))
+            }
             Text(L10n.Login.usernameDescription)
                 .multilineTextAlignment(.center)
                 .scaledFont(size: 15, weight: .semibold)
                 .foregroundColor(.purple600)
                 .padding(.top, 8)
+                .padding(.horizontal, 16)
             Spacer().frame(maxHeight: .infinity)
             HStack {
                 ZStack {
@@ -49,6 +60,7 @@ public struct UsernameScreen: View {
                     .padding(.trailing, 6)
                 Text(L10n.Login.termsText)
                     .scaledFont(size: 13)
+                    .lineSpacing(4)
                     .foregroundColor(.purple600)
             }
             .onTapGesture {

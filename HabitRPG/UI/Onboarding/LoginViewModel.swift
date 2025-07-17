@@ -24,7 +24,8 @@ class LoginViewModel: ObservableObject {
     @Published var showUsernameView = false
     @Published var usernameValid: Bool?
     @Published var acceptedTerms: Bool = false
-
+    @Published var usernameIssues: [String] = []
+    
     private var socialLoginMethod: String?
     private var socialLoginAccessToken: String?
 
@@ -135,6 +136,7 @@ class LoginViewModel: ObservableObject {
                 } else {
                     self.usernameValid = false
                 }
+                self.usernameIssues = response?.issues ?? []
             }
         }
     }
@@ -196,7 +198,8 @@ class LoginViewModel: ObservableObject {
     
     func prefillUsername() {
         if email.isValidEmail() {
-            username = String(email.split(separator: "@").first ?? "")
+            username = String(email.split(separator: "@").first ?? "").replacing("[\\w+]", with: "")
+            verifyUsername()
         }
     }
 }

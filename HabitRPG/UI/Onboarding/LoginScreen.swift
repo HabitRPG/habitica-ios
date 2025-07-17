@@ -35,9 +35,11 @@ struct LoginTextFieldStyle<Icon: View>: TextFieldStyle {
     var prefix: String?
     var icon: Icon
     var isValid: Bool?
+    var isFocused: Bool = false
     
     // swiftlint:disable:next identifier_name
     func _body(configuration: TextField<Self._Label>) -> some View {
+        let showError = isValid == false && !isFocused
         HStack {
             if let prefix = prefix {
                 Text(prefix)
@@ -49,7 +51,7 @@ struct LoginTextFieldStyle<Icon: View>: TextFieldStyle {
             if isValid == true {
                 Image(Asset.checkmarkSmall.name)
                     .foregroundColor(.green100)
-            } else if isValid == false {
+            } else if showError {
                 Image(Asset.close.name)
                     .foregroundColor(.red100)
             }
@@ -61,6 +63,14 @@ struct LoginTextFieldStyle<Icon: View>: TextFieldStyle {
             .minHeight(60)
             .background(.purple100)
             .cornerRadius(16)
+            .foregroundColor(.red100)
+            .overlay(
+                RoundedRectangle(cornerRadius: 16, style: .circular)
+                    .stroke(Color.red100, lineWidth: showError ? 1:0)
+                    .animation(.easeInOut, value: showError)
+                    .scaleEffect(1)
+            )
+            .animation(.easeInOut, value: isValid)
     }
 }
 
@@ -69,21 +79,34 @@ struct LoginTextInput<Icon: View>: View {
     var prefix: String?
     var icon: Icon
     var isSecure: Bool = false
-    var isValid: Bool? = nil
+    var isValid: Bool?
+    var errorMessage: String?
     
     @Binding var text: String
-    
+
+    @FocusState private var isFocused: Bool
+
     var body: some View {
-        if isSecure {
-            SecureField(placeholder, text: $text, prompt: Text(placeholder).foregroundColor(.purple500))
-                .textFieldStyle(LoginTextFieldStyle(prefix: prefix, icon: icon, isValid: isValid))
-                .textInputAutocapitalization(.never)
-                .autocorrectionDisabled()
-        } else {
-            TextField(placeholder, text: $text, prompt: Text(placeholder).foregroundColor(Color.purple500))
-                .textFieldStyle(LoginTextFieldStyle(prefix: prefix, icon: icon, isValid: isValid))
-                .textInputAutocapitalization(.never)
-                .autocorrectionDisabled()
+        VStack {
+            if isSecure {
+                SecureField(placeholder, text: $text, prompt: Text(placeholder).foregroundColor(.purple500))
+                    .textFieldStyle(LoginTextFieldStyle(prefix: prefix, icon: icon, isValid: isValid, isFocused: isFocused))
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                    .focused($isFocused)
+            } else {
+                TextField(placeholder, text: $text, prompt: Text(placeholder).foregroundColor(Color.purple500))
+                    .textFieldStyle(LoginTextFieldStyle(prefix: prefix, icon: icon, isValid: isValid, isFocused: isFocused))
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                    .focused($isFocused)
+            }
+            if let message = errorMessage {
+                Text(message)
+                    .scaledFont(size: 15, weight: .semibold)
+                    .padding(.bottom, 6)
+                    .foregroundColor(.red100)
+            }
         }
     }
 }
@@ -102,6 +125,9 @@ struct LoginForm: View {
     let onPasswordForgot: () -> Void
     
     var body: some View {
+        let isEmailValid = email.isEmpty ? nil : email.isValidEmail()
+        let isPasswordValid = password.isEmpty ? nil : password.count >= 8
+        let isPasswordRepeatValid = repeatPassword.isEmpty ? nil : repeatPassword == password
         Button {
             withAnimation {
                 if viewState == .register {
@@ -124,14 +150,25 @@ struct LoginForm: View {
             }
             .scaledFont(size: 17, weight: .medium)
         }.padding(.bottom, 17)
-        LoginTextInput(placeholder: viewState == .register ? L10n.email : L10n.Login.emailUsername, icon: Image(Asset.loginEmail.name), isSecure: false, isValid: email.isEmpty ? nil : email.isValidEmail(), text: $email)
+        LoginTextInput(placeholder: viewState == .register ? L10n.email : L10n.Login.emailUsername,
+                       icon: Image(Asset.loginEmail.name),
+                       isValid: viewState == .login ? nil : isEmailValid,
+                       text: $email)
             .padding(.bottom, 7)
             .submitLabel(.next)
-        let passwordField = LoginTextInput(placeholder: L10n.password, icon: Image(Asset.loginPassword.name), isSecure: true, isValid: password.isEmpty ? nil : password.count >= 8, text: $password)
+        let passwordField = LoginTextInput(placeholder: L10n.password,
+                                           icon: Image(Asset.loginPassword.name),
+                                           isSecure: true,
+                                           isValid: viewState == .login ? nil : isPasswordValid,
+                                           text: $password)
         if viewState != .login {
             passwordField
                 .submitLabel(.next)
-            LoginTextInput(placeholder: L10n.repeatPassword, icon: Image(Asset.loginPassword.name), isSecure: true, isValid: repeatPassword.isEmpty ? nil : repeatPassword == password, text: $repeatPassword)
+            LoginTextInput(placeholder: L10n.repeatPassword,
+                           icon: Image(Asset.loginPassword.name),
+                           isSecure: true,
+                           isValid: isPasswordRepeatValid,
+                           text: $repeatPassword)
                 .transition(.move(edge: .top).combined(with: .opacity))
                 .padding(.top, 7)
                 .submitLabel(.continue)
@@ -148,6 +185,8 @@ struct LoginForm: View {
             HabiticaProgressView()
                 .padding(.top, 36)
         } else {
+            let isFormValid = viewState == .login ? isEmailValid == true && isPasswordValid == true
+                : isEmailValid == true && isPasswordValid == true && isPasswordRepeatValid == true
             Button {
                 onLogin()
             } label: {
@@ -155,6 +194,8 @@ struct LoginForm: View {
             }.buttonStyle(LoginScreenButtonStyle())
                 .drawingGroup()
                 .padding(.top, 36)
+                .opacity(isFormValid ? 1 : 0.5)
+                .disabled(!isFormValid)
         }
         if viewState != .register {
                 Button {
