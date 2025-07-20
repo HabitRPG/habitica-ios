@@ -352,3 +352,13 @@
 "accessibility.not_completed" = "未完成";
 "accessibility.collapse_checklist" = "折疊核對清單";
 "accessibility.expand_checklist" = "折疊核對清單";
+"settings.app_icon" = "APP圖標";
+"settings.server" = "伺服器";
+"settings.select_class" = "選擇職業";
+"settings.theme_color" = "主題顏色";
+"settings.theme_mode" = "主題模式";
+"settings.sound_theme" = "聲音主題";
+"settings.wrong_password" = "不正確密碼";
+"settings.are_you_sure" = "你確定?";
+"settings.change_display_name" = "變更顯示名稱";
+"settings.change_photo_url" = "變更照片URL";
