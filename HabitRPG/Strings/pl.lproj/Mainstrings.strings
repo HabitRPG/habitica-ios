@@ -343,7 +343,7 @@
 "titles.guild" = "Gildia";
 "titles.challenges" = "Wyzwania";
 "titles.shops" = "Sklepy";
-"titles.choose_user" = "Wybierz użytkownika";
+"titles.choose_user" = "Wybierz czlonka";
 "titles.choose_recipient" = "Wybierz odbiorcę";
 "titles.feed_pet" = "Nakarm Chowańca";
 "titles.guidelines" = "Wytyczne";
@@ -682,9 +682,13 @@
 "update" = "Aktualizacja";
 "tasks.edit_details" = "Edytuj Szczegóły";
 "failed" = "Nieudane";
-"total_completions" = "Łączna liczba ukończeń";
+"total_completions" = "Łączna Liczba Ukończeń";
 "tasks.every_x" = "każdy %d%@";
 "yes" = "Tak";
 "no" = "Nie";
 "tasks.repeats.repeats_every" = "Powtórzenia %@";
 "tasks.repeats.repeats_every_on" = "Powtórzenia %@ z %@";
+"menu.subscription" = "Prenumerata";
+"resync_all" = "zsynchronizuj wszystko ponownie";
+"menu.gems" = "kupuj klejnoty";
+"tasks.examples.team_habit" = "Zameldowanie w zespole";

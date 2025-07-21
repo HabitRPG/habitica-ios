@@ -158,3 +158,5 @@
 "tasks.form.times_scored" = "Times Scored";
 "tasks.form.last_scored" = "Last Scored";
 "tasks.form.none" = "None";
+"tasks.health" = "Health";
+"tasks.exercise" = "Exercise";
