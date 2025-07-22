@@ -336,7 +336,13 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
                 if response?.temp?.drop?.key != nil {
                     self?.disposable.add(self?.userRepository.retrieveUser().observeCompleted {})
                 }
-                
+                if task.type == TaskType.todo {
+                    if direction == .up {
+                        UserManager.shared.cancelNotifications(for: task.id ?? "")
+                    } else if direction == .down {
+                        UserManager.shared.rescheduleNotifications(for: task.id ?? "")
+                    }
+                }
                 let defaults = UserDefaults.standard
                 if !Calendar.current.isDateInToday(Date(timeIntervalSince1970: defaults.double(forKey: "last_task_score_report"))) {
                     HabiticaAnalytics.shared.log("task scored", withEventProperties: [:])
