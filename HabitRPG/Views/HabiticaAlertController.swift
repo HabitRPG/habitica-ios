@@ -505,7 +505,7 @@ extension HabiticaAlertController {
             title: title,
             message: message
         )
-        alertController.addOkAction()
+        alertController.addCloseAction(isMainAction: true)
         
         return alertController
     }
@@ -516,17 +516,17 @@ extension HabiticaAlertController {
     }
     
     @objc
-    func addCloseAction(handler: ((UIButton) -> Void)? = nil) {
-        addAction(title: L10n.close, identifier: "Close", handler: handler)
+    func addCloseAction(isMainAction: Bool = false, handler: ((UIButton) -> Void)? = nil) {
+        addAction(title: L10n.close, isMainAction: isMainAction, identifier: "Close", handler: handler)
     }
     
     @objc
-    func addShareAction(handler: ((UIButton) -> Void)? = nil) {
-        addAction(title: L10n.share, closeOnTap: false, handler: handler)
+    func addShareAction(isMainAction: Bool = false, handler: ((UIButton) -> Void)? = nil) {
+        addAction(title: L10n.share, isMainAction: isMainAction, closeOnTap: false, handler: handler)
     }
     
     @objc
-    func addOkAction(handler: ((UIButton) -> Void)? = nil) {
-        addAction(title: L10n.ok, handler: handler)
+    func addOkAction(isMainAction: Bool = false, handler: ((UIButton) -> Void)? = nil) {
+        addAction(title: L10n.ok, isMainAction: isMainAction, handler: handler)
     }
 }

@@ -22,6 +22,8 @@ public enum L10n {
   public static var aboutText: String { return L10n.tr("Mainstrings", "aboutText") }
   /// Accept
   public static var accept: String { return L10n.tr("Mainstrings", "accept") }
+  /// Accept All
+  public static var acceptAll: String { return L10n.tr("Mainstrings", "accept_all") }
   /// Active
   public static var active: String { return L10n.tr("Mainstrings", "active") }
   /// Active on %@
@@ -602,6 +604,8 @@ public enum L10n {
   public static var join: String { return L10n.tr("Mainstrings", "join") }
   /// Join Challenge
   public static var joinChallenge: String { return L10n.tr("Mainstrings", "join_challenge") }
+  /// Join Habitica
+  public static var joinHabitica: String { return L10n.tr("Mainstrings", "join_habitica") }
   /// Joined Challenge
   public static var joinedChallenge: String { return L10n.tr("Mainstrings", "joined_challenge") }
   /// Jubilant Gryphatrice
@@ -866,6 +870,10 @@ public enum L10n {
   public static func percentComplete(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "percent_complete", p1)
   }
+  /// Performance & Analytics
+  public static var performanceAnalytics: String { return L10n.tr("Mainstrings", "performance_analytics") }
+  /// This is used to improve the player experience, performance, and services of Habitica. Our support team will also use this when handling requests and bug reports.
+  public static var performanceAnalyticsDescription: String { return L10n.tr("Mainstrings", "performance_analytics_description") }
   /// %@, Mount Owned
   public static func petAccessibilityLabelMountOwned(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "pet_accessibility_label_mount_owned", p1)
@@ -892,6 +900,10 @@ public enum L10n {
   public static var ponytail: String { return L10n.tr("Mainstrings", "ponytail") }
   /// Premium Currency
   public static var premiumCurrency: String { return L10n.tr("Mainstrings", "premium_currency") }
+  /// Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\n\nYou can change these at any time from your account settings.
+  public static var privacyPreferencesFullDescription: String { return L10n.tr("Mainstrings", "privacy_preferences_full_description") }
+  /// Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\n\nYou can change this at any time. To learn more, review our Privacy Policy.
+  public static var privacyPreferencesSheetDescription: String { return L10n.tr("Mainstrings", "privacy_preferences_sheet_description") }
   /// How it works
   public static var promoInfoInstructionsTitle: String { return L10n.tr("Mainstrings", "promo_info_instructions_title") }
   /// Limitations
@@ -1034,6 +1046,8 @@ public enum L10n {
   public static var saturday: String { return L10n.tr("Mainstrings", "saturday") }
   /// Save
   public static var save: String { return L10n.tr("Mainstrings", "save") }
+  /// Save Preferences
+  public static var savePreferences: String { return L10n.tr("Mainstrings", "save_preferences") }
   /// Scheduled
   public static var scheduled: String { return L10n.tr("Mainstrings", "scheduled") }
   /// Search
@@ -1092,6 +1106,10 @@ public enum L10n {
   public static var streakAchievementDescription: String { return L10n.tr("Mainstrings", "streak_achievement_description") }
   /// You earned a streak achievement!
   public static var streakAchievementTitle: String { return L10n.tr("Mainstrings", "streak_achievement_title") }
+  /// Strictly necessary
+  public static var strictlyNecessary: String { return L10n.tr("Mainstrings", "strictly_necessary") }
+  /// This is necessary data required by our app to function. This includes data like your preferences saved in settings as well as crash information.
+  public static var strictlyNecessaryDescription: String { return L10n.tr("Mainstrings", "strictly_necessary_description") }
   /// Strong
   public static var strong: String { return L10n.tr("Mainstrings", "strong") }
   /// sub perk
@@ -1414,6 +1432,8 @@ public enum L10n {
   }
   /// Your balance:
   public static var yourBalance: String { return L10n.tr("Mainstrings", "your_balance") }
+  /// Your Privacy Preferences
+  public static var yourPrivacyPreferences: String { return L10n.tr("Mainstrings", "your_privacy_preferences") }
 
   public enum NPCs {
     /// Alex the Merchant
@@ -1985,16 +2005,14 @@ public enum L10n {
   }
 
   public enum Intro {
-    /// So how would you like to look? Don’t worry, you can change this later.
+    /// You must be new here. I’m Justin, I’ll be your guide in Habitica.\n\nSo how would you like to look? Don’t worry, you can change this later.
     public static var avatarSetupSpeechbubble: String { return L10n.tr("Mainstrings", "intro.avatar_setup_speechbubble") }
     /// Let's start!
     public static var letsGo: String { return L10n.tr("Mainstrings", "intro.lets_go") }
-    /// Great! Now, what are you interested in working on throughout this journey?
+    /// Looking good! Now, choose any categories you’d like to work on and we’ll create a few tasks to get started.\n\nWe’ll go to your task board after this!
     public static var taskSetupSpeechbubble: String { return L10n.tr("Mainstrings", "intro.task_setup_speechbubble") }
     /// What should we call you?
     public static var welcomePrompt: String { return L10n.tr("Mainstrings", "intro.welcome_prompt") }
-    /// Oh, you must be new here. I’m Justin, your guide to Habitica.\n\nFirst, what should we call you? Feel free to change what I picked. When you’re all set, let’s create your avatar!
-    public static var welcomeSpeechbubble: String { return L10n.tr("Mainstrings", "intro.welcome_speechbubble") }
 
     public enum Card1 {
       /// It’s time to have fun while you get things done. Join over 2 million others improving their life one task at a time.
@@ -2115,8 +2133,16 @@ public enum L10n {
   }
 
   public enum Login {
+    /// Already have an account?
+    public static var alreadyHaveAccount: String { return L10n.tr("Mainstrings", "login.already_have_account") }
     /// There was an error with the authentication. Try again later
     public static var authenticationError: String { return L10n.tr("Mainstrings", "login.authentication_error") }
+    /// Continue with Apple
+    public static var continueWithApple: String { return L10n.tr("Mainstrings", "login.continue_with_apple") }
+    /// Continue with email
+    public static var continueWithEmail: String { return L10n.tr("Mainstrings", "login.continue_with_email") }
+    /// Continue with Google
+    public static var continueWithGoogle: String { return L10n.tr("Mainstrings", "login.continue_with_google") }
     /// Please enter a valid email.
     public static var emailInvalid: String { return L10n.tr("Mainstrings", "login.email_invalid") }
     /// Email a Password Reset Link
@@ -2133,8 +2159,12 @@ public enum L10n {
     public static var loginApple: String { return L10n.tr("Mainstrings", "login.login_apple") }
     /// Login with Google
     public static var loginGoogle: String { return L10n.tr("Mainstrings", "login.login_google") }
-    /// Password and password confirmation have to match and be longer than 8 characters.
+    /// Need an account?
+    public static var needAccount: String { return L10n.tr("Mainstrings", "login.need_account") }
+    /// Password and password confirmation have to match.
     public static var passwordConfirmError: String { return L10n.tr("Mainstrings", "login.password_confirm_error") }
+    /// Passwords must be 8 characters or more.
+    public static var passwordLengthError: String { return L10n.tr("Mainstrings", "login.password_length_error") }
     /// Register
     public static var register: String { return L10n.tr("Mainstrings", "login.register") }
     /// There was an issue with the request. Please check all data carefully.
@@ -2149,6 +2179,14 @@ public enum L10n {
     public static func socialRegister(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "login.social_register", p1)
     }
+    /// Enjoy having fun getting things done
+    public static var tagline: String { return L10n.tr("Mainstrings", "login.tagline") }
+    /// You agree to our Terms of Service and have read our Privacy Policy.
+    public static var termsText: String { return L10n.tr("Mainstrings", "login.terms_text") }
+    /// This is a unique name you can change later at any time!
+    public static var usernameDescription: String { return L10n.tr("Mainstrings", "login.username_description") }
+    /// What should we call you?
+    public static var whatCallYou: String { return L10n.tr("Mainstrings", "login.what_call_you") }
   }
 
   public enum Member {
@@ -2469,6 +2507,8 @@ public enum L10n {
     public static var loginMethods: String { return L10n.tr("Mainstrings", "settings.login_methods") }
     /// Maintenance
     public static var maintenance: String { return L10n.tr("Mainstrings", "settings.maintenance") }
+    /// Change your privacy permissions
+    public static var managePrivacyPreferences: String { return L10n.tr("Mainstrings", "settings.manage_privacy_preferences") }
     /// Manually Restart Day
     public static var manuallyRestartDay: String { return L10n.tr("Mainstrings", "settings.manually_restart_day") }
     /// Mentions
@@ -2501,6 +2541,8 @@ public enum L10n {
     public static var pauseDamageSubtitle: String { return L10n.tr("Mainstrings", "settings.pause_damage_subtitle") }
     /// Preferences
     public static var preferences: String { return L10n.tr("Mainstrings", "settings.preferences") }
+    /// Privacy Preferences
+    public static var privacyPreferences: String { return L10n.tr("Mainstrings", "settings.privacy_preferences") }
     /// Profile
     public static var profile: String { return L10n.tr("Mainstrings", "settings.profile") }
     /// Public Profile
@@ -2547,6 +2589,8 @@ public enum L10n {
     public static var updatedPassword: String { return L10n.tr("Mainstrings", "settings.updated_password") }
     /// User
     public static var user: String { return L10n.tr("Mainstrings", "settings.user") }
+    /// User Data
+    public static var userData: String { return L10n.tr("Mainstrings", "settings.user_data") }
     /// Username not confirmed
     public static var usernameNotConfirmed: String { return L10n.tr("Mainstrings", "settings.username_not_confirmed") }
     /// Incorrect Password

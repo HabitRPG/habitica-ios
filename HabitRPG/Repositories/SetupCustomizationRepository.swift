@@ -31,8 +31,6 @@ class SetupCustomizationRepository {
         switch subcategory {
         case .some(.shirt):
             return getShirts(size: user.preferences?.size)
-        case .some(.size):
-            return getSizes()
         default:
             return Array()
         }
@@ -84,13 +82,6 @@ class SetupCustomizationRepository {
             SetupCustomization.createShirt(key: "pink", icon: #imageLiteral(resourceName: "creator_broad_shirt_pink")),
             SetupCustomization.createShirt(key: "white", icon: #imageLiteral(resourceName: "creator_broad_shirt_white")),
             SetupCustomization.createShirt(key: "yellow", icon: #imageLiteral(resourceName: "creator_broad_shirt_yellow"))
-        ]
-    }
-    
-    private static func getSizes() -> [SetupCustomization] {
-        return [
-            SetupCustomization.createSize(key: "slim", icon: #imageLiteral(resourceName: "creator_slim_shirt_white"), text: L10n.slim),
-            SetupCustomization.createSize(key: "broad", icon: #imageLiteral(resourceName: "creator_broad_shirt_white"), text: L10n.broad)
         ]
     }
     

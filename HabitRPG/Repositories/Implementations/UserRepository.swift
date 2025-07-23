@@ -200,44 +200,48 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
+    private func updateAuth(response: LoginResponseProtocol?) {
+        if let response = response {
+            if !response.id.isEmpty {
+                AuthenticationManager.shared.currentUserId = response.id
+            }
+            if !response.apiToken.isEmpty {
+                AuthenticationManager.shared.currentUserKey = response.apiToken
+            }
+        }
+    }
+    
     func login(username: String, password: String) -> Signal<LoginResponseProtocol?, Never> {
         let call = LocalLoginCall(username: username, password: password)
         
         return call.objectSignal.merge(with: call.responseSignal.map({ _ -> LoginResponseProtocol? in
             return nil
-        }))
-            .on(value: { loginResponse in
-            if let response = loginResponse {
-                AuthenticationManager.shared.currentUserId = response.id
-                AuthenticationManager.shared.currentUserKey = response.apiToken
-            }
+        })).on(value: { loginResponse in
+            self.updateAuth(response: loginResponse)
         })
     }
-    
+
     func register(username: String, password: String, confirmPassword: String, email: String) -> Signal<LoginResponseProtocol?, Never> {
         return LocalRegisterCall(username: username, password: password, confirmPassword: confirmPassword, email: email).objectSignal.on(value: { loginResponse in
-            if let response = loginResponse {
-                AuthenticationManager.shared.currentUserId = response.id
-                AuthenticationManager.shared.currentUserKey = response.apiToken
-            }
+            self.updateAuth(response: loginResponse)
         })
     }
     
-    func login(userID: String, network: String, accessToken: String) -> Signal<LoginResponseProtocol?, Never> {
-        return SocialLoginCall(userID: userID, network: network, accessToken: accessToken).objectSignal.on(value: { loginResponse in
-            if let response = loginResponse {
-                AuthenticationManager.shared.currentUserId = response.id
-                AuthenticationManager.shared.currentUserKey = response.apiToken
-            }
+    func login(userID: String, network: String, accessToken: String, allowRegister: Bool) -> Signal<LoginResponseProtocol?, Never> {
+        let call = SocialLoginCall(userID: userID, network: network, accessToken: accessToken, allowRegister: allowRegister)
+        return call.objectSignal.merge(with: call.responseSignal.map({ _ -> LoginResponseProtocol? in
+            return nil
+        })).on(value: { loginResponse in
+            self.updateAuth(response: loginResponse)
         })
     }
     
-    func loginApple(identityToken: String, name: String) -> Signal<LoginResponseProtocol?, Never> {
-        return AppleLoginCall(identityToken: identityToken, name: name).objectSignal.on(value: { loginResponse in
-            if let response = loginResponse {
-                AuthenticationManager.shared.currentUserId = response.id
-                AuthenticationManager.shared.currentUserKey = response.apiToken
-            }
+    func loginApple(identityToken: String, name: String, allowRegister: Bool) -> Signal<LoginResponseProtocol?, Never> {
+        let call = AppleLoginCall(identityToken: identityToken, name: name, allowRegister: allowRegister)
+        return call.objectSignal.merge(with: call.responseSignal.map({ _ -> LoginResponseProtocol? in
+            return nil
+        })).on(value: { loginResponse in
+            self.updateAuth(response: loginResponse)
         })
     }
     
@@ -268,9 +272,13 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         let defaults = UserDefaults.standard
         let themeMode = defaults.string(forKey: "themeMode")
         let launchScreen = defaults.string(forKey: "initialScreenURL")
+        let chosenServer = defaults.string(forKey: "chosenServer")
         defaults.dictionaryRepresentation().keys.forEach { defaults.removeObject(forKey: $0) }
         defaults.set(themeMode, forKey: "themeMode")
         defaults.set(launchScreen, forKey: "initialScreenURL")
+        if ConfigRepository.shared.testingLevel.isTrustworthy {
+            defaults.set(chosenServer, forKey: "chosenServer")
+        }
     }
     
     func updateEmail(newEmail: String, password: String) -> Signal<UserProtocol, ReactiveSwiftRealmError> {
@@ -308,6 +316,11 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     
     func verifyUsername(_ newUsername: String) -> Signal<VerifyUsernameResponse?, Never> {
         let call = VerifyUsernameCall(username: newUsername)
+        return call.objectSignal
+    }
+    
+    func checkEmail(_ newEmail: String) -> Signal<CheckEmailResponse?, Never> {
+        let call = CheckEmailCall(email: newEmail)
         return call.objectSignal
     }
     

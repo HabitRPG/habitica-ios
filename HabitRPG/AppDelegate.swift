@@ -62,6 +62,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             guard let self = self else { return }
             self.userRepository.logoutAccount()
         }
+        KeyboardManager.shared.observeKeyboardNotifications()
         
         if let userInfo = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
             handlePushnotification(identifier: nil, userInfo: userInfo)
@@ -71,14 +72,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         applySearchAdAttribution()
         Measurements.stop(identifier: "didFinishLaunchingWithOptions")
         return true
-    }
-
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-        if currentAuthorizationFlow?.resumeExternalUserAgentFlow(with: url) == true {
-            currentAuthorizationFlow = nil
-            return true
-        }
-        return RouterHandler.shared.handle(url: url)
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -190,7 +183,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             return
         }
         if let host = ProcessInfo.processInfo.environment["CUSTOM_DOMAIN"], let apiVersion = configRepository.string(variable: .apiVersion) {
-            let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion.isEmpty ? "v3" : apiVersion)")
+            let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion.isEmpty ? "v4" : apiVersion)")
             AuthenticatedCall.defaultConfiguration = config
             return
         }
@@ -198,7 +191,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             if chosenServer == "production" {
                 let configRepository = ConfigRepository.shared
                 if let host = configRepository.string(variable: .prodHost), let apiVersion = configRepository.string(variable: .apiVersion) {
-                    let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion.isEmpty ? "v3" : apiVersion)")
+                    let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion.isEmpty ? "v4" : apiVersion)")
                     AuthenticatedCall.defaultConfiguration = config
                 } else {
                     AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.production

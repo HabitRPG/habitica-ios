@@ -11,11 +11,12 @@ import Habitica_Models
 import ReactiveSwift
 
 public class SocialLoginCall: ResponseObjectCall<LoginResponseProtocol, APILoginResponse> {
-    public init(userID: String, network: String, accessToken: String) {
+    public init(userID: String, network: String, accessToken: String, allowRegister: Bool) {
         let json = try? JSONSerialization.data(withJSONObject: ["network": network, "authResponse": [
             "access_token": accessToken,
             "client_id": userID
-            ]], options: .prettyPrinted)
-        super.init(httpMethod: .POST, endpoint: "user/auth/social", postData: json, needsAuthentication: false)
+            ],
+            "allowRegister": allowRegister], options: .prettyPrinted)
+        super.init(httpMethod: .POST, endpoint: "user/auth/social", postData: json, errorHandler: PrintNetworkErrorHandler(), needsAuthentication: false)
     }
 }

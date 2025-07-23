@@ -30,10 +30,15 @@ class KeyboardManager: NSObject {
         shared.viewsToUpdate.append(ObservingView(value: view))
     }
 
-    private func observeKeyboardNotifications() {
+    private var isObserving = false
+    func observeKeyboardNotifications() {
+        if isObserving {
+            return
+        }
         let center = NotificationCenter.default
         center.addObserver(self, selector: #selector(self.keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         center.addObserver(self, selector: #selector(self.keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        isObserving = true
     }
 
     @objc

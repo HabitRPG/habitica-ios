@@ -36,10 +36,6 @@ public class SetupCustomization {
         self.icon = icon
     }
     
-    static func createSize(key: String, icon: UIImage?, text: String) -> SetupCustomization {
-        return SetupCustomization(key: key, path: "size", text: text, category: .body, subcategory: .size, icon: icon)
-    }
-    
     static func createShirt(key: String, icon: UIImage?) -> SetupCustomization {
         return SetupCustomization(key: key, path: "shirt", text: nil, category: .body, subcategory: .shirt, icon: icon)
     }
