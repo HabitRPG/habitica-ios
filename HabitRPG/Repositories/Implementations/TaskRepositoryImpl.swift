@@ -14,6 +14,8 @@ import Habitica_Database
 
 class TaskRepository: BaseRepository<TaskLocalRepository> {
     
+    private let userRepository = UserRepository()
+    
     func retrieveTasks(dueOnDay: Date? = nil) -> Signal<[TaskProtocol]?, Never> {
         let call = RetrieveTasksCall(dueOnDay: dueOnDay)
         
@@ -84,7 +86,9 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
         return ScoreTaskCall(task: task, direction: direction).objectSignal.withLatest(from: localRepository.getUserStats(id: AuthenticationManager.shared.currentUserId ?? "")
             .flatMapError({ (_) in
             return SignalProducer.empty
-        })).on(value: {[weak self] (taskResponse, stats) in
+        }), userRepository.getUser().flatMapError({ (_) in
+            return SignalProducer.empty
+        })).on(value: {[weak self] (taskResponse, stats, user) in
             guard let response = taskResponse else {
                 return
             }
@@ -114,11 +118,14 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
                 formatter.maximumFractionDigits = 2
                 ToastManager.show(text: L10n.buyReward(task.text ?? "", formatter.string(from: NSNumber(value: task.value)) ?? ""), color: .green)
             } else if healthDiff + magicDiff + goldDiff + questDamage != 0 && (response.level ?? 0) > 0 {
+                let hasActiveQuest = user.party?.quest?.active ?? false
+                let questDamageToShow = hasActiveQuest ? questDamage : 0
+                
                 let toastView = ToastView(healthDiff: healthDiff,
                                           magicDiff: magicDiff,
                                           expDiff: expDiff,
                                           goldDiff: goldDiff,
-                                          questDamage: questDamage,
+                                          questDamage: questDamageToShow,
                                           background: healthDiff >= 0 ? .green : .red)
                 ToastManager.show(toast: toastView)
             }
