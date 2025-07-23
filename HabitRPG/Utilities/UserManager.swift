@@ -327,13 +327,11 @@ class UserManager: NSObject {
         }
     }
     
-    // Cancel all pending notifications for a specific task
     public func cancelNotifications(for taskId: String) {
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.getPendingNotificationRequests { requests in
             var toCancel = [String]()
             for request in requests {
-                // Check if this notification is for the given task
                 if let userInfo = request.content.userInfo as? [String: Any],
                    let notificationTaskId = userInfo["taskID"] as? String,
                    notificationTaskId == taskId {
@@ -342,21 +340,17 @@ class UserManager: NSObject {
             }
             if !toCancel.isEmpty {
                 notificationCenter.removePendingNotificationRequests(withIdentifiers: toCancel)
-                logger.log("Cancelled \(toCancel.count) notifications for completed task \(taskId)")
             }
         }
     }
     
-    // Reschedule notifications for a specific task (e.g., when uncompleted)
     public func rescheduleNotifications(for taskId: String) {
-        // Get all reminders and filter for the specific task
         disposable.add(taskRepository.getReminders().take(first: 1)
             .on(value: { [weak self] remindersResult in
                 let taskReminders = remindersResult.value.filter { reminder in
                     return reminder.task?.id == taskId
                 }
                 if !taskReminders.isEmpty {
-                    // Schedule notifications only for this task's reminders
                     let daysPerReminder = max(1, min(6, Int(64.0 / max(1, Double(taskReminders.count)))))
                     for reminder in taskReminders where reminder.isValid {
                         _ = self?.scheduleNotifications(reminder: reminder, daysPerReminder: daysPerReminder)

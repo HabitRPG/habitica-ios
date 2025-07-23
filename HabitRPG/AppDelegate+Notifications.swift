@@ -135,14 +135,29 @@ extension HabiticaAppDelegate: UNUserNotificationCenterDelegate {
             return "dailyReminderNotification\(number)"
         }))
         
-        if defaults.bool(forKey: "dailyReminderActive"), let date = defaults.value(forKey: "dailyReminderTime") as? Date {
+        if defaults.bool(forKey: "dailyReminderActive"), let reminderTime = defaults.value(forKey: "dailyReminderTime") as? Date {
             let calendar = Calendar(identifier: .gregorian)
-            var actualDate = date
-            var offsettter = DateComponents()
-            offsettter.day = 1
+            let now = Date()
+            
+            let timeComponents = calendar.dateComponents([.hour, .minute], from: reminderTime)
+            
+            var todayComponents = calendar.dateComponents([.year, .month, .day], from: now)
+            todayComponents.hour = timeComponents.hour
+            todayComponents.minute = timeComponents.minute
+            todayComponents.second = 0
+            
+            var actualDate = calendar.date(from: todayComponents) ?? now
+            
+            if actualDate <= now {
+                actualDate = calendar.date(byAdding: .day, value: 1, to: actualDate) ?? actualDate
+            }
+            
+            var offsetter = DateComponents()
+            offsetter.day = 1
+            
             for offset in 0...6 {
-                let components = calendar.dateComponents(in: .current, from: actualDate)
-                let newComponents = DateComponents(calendar: calendar, timeZone: .current, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
+                let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: actualDate)
+                let newComponents = DateComponents(calendar: calendar, timeZone: .current, year: components.year, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
                 let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
 
                 let notification = buildBaseNotification()
@@ -154,11 +169,11 @@ extension HabiticaAppDelegate: UNUserNotificationCenterDelegate {
                         logger.log("Uh oh! We had an error: \(error)")
                     }
                 }
-                actualDate = calendar.date(byAdding: offsettter, to: actualDate) ?? Date()
+                actualDate = calendar.date(byAdding: offsetter, to: actualDate) ?? Date()
             }
             
-            let components = calendar.dateComponents(in: .current, from: actualDate)
-            let newComponents = DateComponents(calendar: calendar, timeZone: .current, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
+            let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: actualDate)
+            let newComponents = DateComponents(calendar: calendar, timeZone: .current, year: components.year, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
             let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
 
             let notification = buildBaseNotification()
@@ -193,4 +208,5 @@ extension HabiticaAppDelegate: UNUserNotificationCenterDelegate {
         notification.sound = UNNotificationSound.default
         return notification
     }
+    
 }

@@ -2459,6 +2459,8 @@ public enum L10n {
     public static var customDayStartDescription: String { return L10n.tr("Mainstrings", "settings.custom_day_start_description") }
     /// Daily Reminder
     public static var dailyReminder: String { return L10n.tr("Mainstrings", "settings.daily_reminder") }
+    /// Please enable notifications in Settings to use daily reminders
+    public static var dailyReminderPermissionNeeded: String { return L10n.tr("Mainstrings", "settings.daily_reminder_permission_needed") }
     /// Danger Zone
     public static var dangerZone: String { return L10n.tr("Mainstrings", "settings.danger_zone") }
     /// Day Start
@@ -2585,7 +2587,7 @@ public enum L10n {
     public static var themeMode: String { return L10n.tr("Mainstrings", "settings.theme_mode") }
     /// Email updated
     public static var updatedEmail: String { return L10n.tr("Mainstrings", "settings.updated_email") }
-    /// Password updated
+    /// Password successfully changed
     public static var updatedPassword: String { return L10n.tr("Mainstrings", "settings.updated_password") }
     /// User
     public static var user: String { return L10n.tr("Mainstrings", "settings.user") }
