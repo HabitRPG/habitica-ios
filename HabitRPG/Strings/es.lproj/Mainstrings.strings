@@ -1328,7 +1328,7 @@
 "settings.adjustment" = "Ajuste";
 "settings.add_email" = "Agregar correo electrónico";
 "settings.updated_email" = "Correo electrónico actualizado";
-"settings.updated_password" = "Contraseña actualizada";
+"settings.updated_password" = "Contraseña actualizada con éxito";
 "settings.account_info" = "Información de la cuenta";
 "settings.public_profile" = "Perfil público";
 "settings.password" = "Contraseña";
@@ -1635,3 +1635,9 @@
 "api_token_is_password" = "Tu Token API es como una contraseña";
 "api_token_reset_title" = "Si necesitas un nuevo Token API";
 "copy_token" = "Copiar Token";
+"settings.user_data" = "Datos de Usuario";
+"settings.privacy_preferences" = "Preferencias de Privacidad";
+"settings.manage_privacy_preferences" = "Cambia tus permisos de privacidad";
+"settings.daily_reminder_permission_needed" = "Por favor active las notificaciones en los Ajustes para así recibir recordatorios diarios";
+"your_privacy_preferences" = "Tus Preferencias de Privacidad";
+"privacy_preferences_sheet_description" = "Habitica usa los datos de tu dispositivo para analizar el rendimiento, ayudar con peticiones de soporte, y proporcionarte la mejor experiencia en el juego. Para lograr eso, necesitamos pedirte los siguientes permisos.\n\n\nPuedes modificar todo esto en cualquier momento. Para saber más, revisa por favor nuestra Política de Privacidad.";
