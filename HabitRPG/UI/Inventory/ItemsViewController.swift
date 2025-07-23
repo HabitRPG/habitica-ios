@@ -294,15 +294,23 @@ class ItemsViewController: BaseTableViewController {
         let stackView = UIStackView(arrangedSubviews: [imageView, detailView, textView])
         stackView.axis = .vertical
         stackView.spacing = 12
+        
+        alertController.contentView = stackView
+        
         ImageManager.getImage(name: "quest_" + (quest.key ?? "")) { (image, _) in
             imageView.image = image
             imageView.addHeightConstraint(height: image?.size.height ?? 0)
             imageView.updateConstraints()
-            textView.addHeightConstraint(height: textView.sizeThatFits(CGSize(width: stackView.bounds.width, height: .infinity)).height)
-            textView.updateConstraints()
-            alertController.view.setNeedsLayout()
+            
+            DispatchQueue.main.async {
+                let maxWidth = min(340, UIScreen.main.bounds.width - 32) - alertController.contentViewInsets.left - alertController.contentViewInsets.right
+                let textSize = textView.sizeThatFits(CGSize(width: maxWidth, height: .infinity))
+                textView.addHeightConstraint(height: textSize.height)
+                textView.updateConstraints()
+                alertController.view.setNeedsLayout()
+                alertController.view.layoutIfNeeded()
+            }
         }
-        alertController.contentView = stackView
         alertController.addAction(title: L10n.inviteParty, style: .default, isMainAction: true) {[weak self] _ in
             self?.inventoryRepository.inviteToQuest(quest: quest)
                 .flatMap(.latest, { _ in
