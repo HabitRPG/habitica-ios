@@ -867,7 +867,6 @@
 "gem_cap" = "Desbloqueia %d Gemas adquiríveis com Ouro por mês";
 "hourglass_count" = "+%d Ampulheta Mística";
 "intro.welcome_prompt" = "Como devemos chamar você?";
-"intro.welcome_speechbubble" = "Oh, você deve ser novo aqui. Eu sou o Justin, o seu guia para o Habitica.\n\nPrimeiro, como devemos chamá-lo? Sinta-se livre para mudar o que eu escolhi. Quando estiver tudo pronto, vamos criar seu avatar!";
 "intro.avatar_setup_speechbubble" = "Então, como você gostaria de parecer? Não se preocupe, você pode mudar isso mais tarde.";
 "intro.task_setup_speechbubble" = "Ótimo! Agora, o que você está interessado em trabalhar nesta jornada?";
 "intro.card2.text" = "Desbloqueie recursos no jogo, marcando suas tarefas da vida real. Ganhe armaduras, mascotes e muito mais como recompensa por atingir suas metas.";

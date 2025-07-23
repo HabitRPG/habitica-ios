@@ -865,7 +865,6 @@
 "titles.achievements" = "Erfolge";
 "titles.notifications" = "Mitteilungen";
 "titles.messages" = "Nachrichten";
-"intro.welcome_speechbubble" = "Oh, Du musst neu hier sein. Ich bin Justin, der Stadtführer von Habitica. \n\nSag mir doch als Erstes, wie wir Dich nennen sollen! Ändere ruhig meinen Vorschlag. Wenn Du damit fertig bist, lass uns Deinen Avatar erstellen!";
 "intro.welcome_prompt" = "Wie sollen wir Dich nennen?";
 "hourglass_count" = "+%d Mystische Sanduhr";
 "gem_cap" = "Schaltet %d mit Gold erwerbbare Edelsteine pro Monat frei";

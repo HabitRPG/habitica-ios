@@ -607,7 +607,6 @@
 "faint.good_luck_text" = "하지만 열심히 노력하면 모두 되찾을 수 있습니다! 행운을 빕니다—you’ll do great. ";
 "update_app_title" = "앱 업데이트";
 "update_app_description" = "새로운 수정 사항이 계속 나오고 있으니 앱 스토어에서 업데이트가 있는지 확인하세요";
-"intro.welcome_speechbubble" = "반가워! 네가 그 신입이구나? 아, 내 이름은 <strong>저스틴</strong>이야. 이 곳 Habitica에서 안내를 해 줄 가이드지.\n\n내가 널 뭐라고 부르면 될까? 몇 개 준비했으니 이 중에 골라. 준비가 되었다면 아바타를 만들러 가보자!";
 "menu.quest_shop" = "퀘스트";
 "tutorials.habits_4" = "한번 해보세요! 하단 네비게이션을 통해 다른 과제 유형도 확인할 수 있습니다.";
 "onboarding_tasks" = "신규 이용자 과제";

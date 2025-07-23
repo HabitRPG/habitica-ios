@@ -915,7 +915,6 @@
 "intro.card2.text" = "Sblocca nuovi elementi nel gioco portando a termine gli impegni della vita reale. Ottieni armature, animali e altro come ricompensa per aver raggiunto i tuoi obiettivi.";
 "intro.task_setup_speechbubble" = "Splendido! Ora dimmi, su cosa vorresti lavorare durante questo viaggio?";
 "intro.avatar_setup_speechbubble" = "Quindi, che aspetto ti piacerebbe avere? Non preoccuparti, lo potrai cambiare in seguito.";
-"intro.welcome_speechbubble" = "Oh, devi essere nuovo qui. Sono Justin, sarò la tua guida in Habitica.\n\nInnanzi tutto, come vorresti chiamarti? Non esitare a cambiare quello che ho selezionato per te. Quando sei pronto, crea il tuo avatar!";
 "intro.welcome_prompt" = "Come dovremmo chiamarti?";
 "hourglass_count" = "+%d Clessidra Mistica";
 "gift_gems_prompt" = "Ti piacerebbe regalare un gruzzolo di Gemme brillanti e luccicose a qualcuno?";

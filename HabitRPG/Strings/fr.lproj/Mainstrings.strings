@@ -823,7 +823,6 @@
 "gem_cap" = "Débloque %d Gemmes par mois à acheter avec de l'Or";
 "hourglass_count" = "+ %d sabliers mystiques";
 "intro.welcome_prompt" = "Comment devrions-nous vous appeler ?";
-"intro.welcome_speechbubble" = "Oh, vous devez être nouveau par ici. Je suis Justin, votre guide sur Habitica.\n\nD'abord, comment devrions-nous vous appeler ? Vous pouvez changer le nom que j'ai choisi pour vous. Quand vous aurez choisi, nous créerons votre avatar !";
 "intro.avatar_setup_speechbubble" = "A quoi voudriez-vous ressembler ? Ne vous en faites pas, vous pourrez changer ça à nouveau plus tard.";
 "intro.task_setup_speechbubble" = "Bien ! Maintenant, a quoi voudriez-vous vous attaquer pendant cette aventure ?";
 "intro.card2.text" = "Déverrouillez les fonctionnalités en validant vos tâches. Gagnez des armures, des familiers et gagnez des récompenses pour vos réussites.";

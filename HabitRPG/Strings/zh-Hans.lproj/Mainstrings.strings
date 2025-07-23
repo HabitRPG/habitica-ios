@@ -596,7 +596,6 @@
 "gem_cap" = "解锁使用金币换取宝石的功能，每月可兑换%d颗";
 "hourglass_count" = "+%d神秘沙漏";
 "intro.welcome_prompt" = "我们该怎么称呼你呢？";
-"intro.welcome_speechbubble" = "哦，你一定是新来的。我叫Justin，是你在Habitica的向导。\n\n首先，我们该怎么称呼你呢？你可以随意选择我为你生成的名字，等你设置好后，我们就可以开始创建你的角色形象！";
 "intro.avatar_setup_speechbubble" = "你希望拥有怎样的外观？别担心，之后还能修改。";
 "intro.task_setup_speechbubble" = "棒极了！那么，你想在这里改善生活的什么方面呢？";
 "intro.card1.title" = "欢迎来到";
