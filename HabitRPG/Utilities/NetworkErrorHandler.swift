@@ -79,6 +79,15 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
     }
     
     public static func notify(message: String, code: Int, url: String) {
+        // Suppress invalid_credentials errors - they're handled by automatic logout
+        if message.lowercased().contains("invalid_credentials") {
+            return
+        }
+        // Should not need this check, just in case however, this is handled by automatic logout.
+        if message.lowercased().contains("there is no account that uses those credentials") {
+           return
+        }
+        
         if code == 400 {
             let alertController = HabiticaAlertController(title: message)
             alertController.addCloseAction()
