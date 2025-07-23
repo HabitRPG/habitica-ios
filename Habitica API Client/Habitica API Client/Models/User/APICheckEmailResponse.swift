@@ -12,4 +12,5 @@ import Habitica_Models
 public class APICheckEmailResponse: Decodable, CheckEmailResponse {
     public var email: String?
     public var valid: Bool = false
+    public var error: String?
 }

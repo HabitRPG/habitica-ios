@@ -35,11 +35,10 @@ struct LoginTextFieldStyle<Icon: View>: TextFieldStyle {
     var prefix: String?
     var icon: Icon
     var isValid: Bool?
-    var isFocused: Bool = false
+    var showError: Bool = false
     
     // swiftlint:disable:next identifier_name
     func _body(configuration: TextField<Self._Label>) -> some View {
-        let showError = isValid == false && !isFocused
         HStack {
             if let prefix = prefix {
                 Text(prefix)
@@ -63,7 +62,6 @@ struct LoginTextFieldStyle<Icon: View>: TextFieldStyle {
             .minHeight(60)
             .background(.purple100)
             .cornerRadius(16)
-            .foregroundColor(.red100)
             .overlay(
                 RoundedRectangle(cornerRadius: 16, style: .circular)
                     .stroke(Color.red100, lineWidth: showError ? 1:0)
@@ -85,28 +83,42 @@ struct LoginTextInput<Icon: View>: View {
     @Binding var text: String
 
     @FocusState private var isFocused: Bool
+    
+    @State private var lastFocusChange = Date()
+    @State private var lastInputChange = Date()
 
     var body: some View {
         VStack {
+            let showError = isValid == false && (!isFocused || (isFocused && lastFocusChange > lastInputChange))
             if isSecure {
                 SecureField(placeholder, text: $text, prompt: Text(placeholder).foregroundColor(.purple500))
-                    .textFieldStyle(LoginTextFieldStyle(prefix: prefix, icon: icon, isValid: isValid, isFocused: isFocused))
+                    .textFieldStyle(LoginTextFieldStyle(prefix: prefix, icon: icon, isValid: isValid, showError: showError))
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
                     .focused($isFocused)
+                    .onTapGesture {
+                        isFocused = true
+                    }
             } else {
                 TextField(placeholder, text: $text, prompt: Text(placeholder).foregroundColor(Color.purple500))
-                    .textFieldStyle(LoginTextFieldStyle(prefix: prefix, icon: icon, isValid: isValid, isFocused: isFocused))
+                    .textFieldStyle(LoginTextFieldStyle(prefix: prefix, icon: icon, isValid: isValid, showError: showError))
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
                     .focused($isFocused)
+                    .onTapGesture {
+                        isFocused = true
+                    }
             }
-            if let message = errorMessage {
+            if showError, let message = errorMessage {
                 Text(message)
                     .scaledFont(size: 15, weight: .semibold)
                     .padding(.bottom, 6)
-                    .foregroundColor(.red100)
+                    .foregroundColor(.red500)
             }
+        }.onChange(of: isFocused) { _ in
+            lastFocusChange = Date()
+        }.onChange(of: text) { _ in
+            lastInputChange = Date()
         }
     }
 }
@@ -156,10 +168,12 @@ struct LoginForm: View {
                        text: $email)
             .padding(.bottom, 7)
             .submitLabel(.next)
+            .keyboardType(.emailAddress)
         let passwordField = LoginTextInput(placeholder: L10n.password,
                                            icon: Image(Asset.loginPassword.name),
                                            isSecure: true,
                                            isValid: viewState == .login ? nil : isPasswordValid,
+                                           errorMessage: viewState == .register && password.count < 8 ? L10n.Login.passwordLengthError : nil,
                                            text: $password)
         if viewState != .login {
             passwordField
@@ -168,6 +182,7 @@ struct LoginForm: View {
                            icon: Image(Asset.loginPassword.name),
                            isSecure: true,
                            isValid: isPasswordRepeatValid,
+                           errorMessage: isPasswordRepeatValid == false ? L10n.Login.passwordConfirmError : nil,
                            text: $repeatPassword)
                 .transition(.move(edge: .top).combined(with: .opacity))
                 .padding(.top, 7)
@@ -185,7 +200,7 @@ struct LoginForm: View {
             HabiticaProgressView()
                 .padding(.top, 36)
         } else {
-            let isFormValid = viewState == .login ? isEmailValid == true && isPasswordValid == true
+            let isFormValid = viewState == .login ? !email.isEmpty && isPasswordValid == true
                 : isEmailValid == true && isPasswordValid == true && isPasswordRepeatValid == true
             Button {
                 onLogin()
@@ -244,6 +259,9 @@ struct LoginScreen: View {
     @ObservedObject var viewModel: LoginViewModel
     @State fileprivate var viewState: LoginViewState
     @State var isShowingForm = false
+    
+    @AppStorage("chosenServer")
+    var chosenServer: String = "production"
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -356,6 +374,18 @@ struct LoginScreen: View {
                         .foregroundColor(.white)
                         .font(.headline.bold())
                         .padding()
+                }
+            } else {
+                if ConfigRepository.shared.testingLevel.isTrustworthy {
+                    Picker(selection: $chosenServer) {
+                        ForEach(Servers.allServers) { server in
+                            Text(server.niceName).tag(server.rawValue)
+                        }
+                    }.pickerStyle(.menu)
+                        .onChange(of: chosenServer) { _ in
+                            let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate
+                            appDelegate?.updateServer()
+                        }
                 }
             }
 

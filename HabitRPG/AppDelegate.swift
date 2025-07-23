@@ -62,6 +62,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             guard let self = self else { return }
             self.userRepository.logoutAccount()
         }
+        KeyboardManager.shared.observeKeyboardNotifications()
         
         if let userInfo = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
             handlePushnotification(identifier: nil, userInfo: userInfo)
@@ -71,14 +72,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         applySearchAdAttribution()
         Measurements.stop(identifier: "didFinishLaunchingWithOptions")
         return true
-    }
-
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-        if currentAuthorizationFlow?.resumeExternalUserAgentFlow(with: url) == true {
-            currentAuthorizationFlow = nil
-            return true
-        }
-        return RouterHandler.shared.handle(url: url)
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {

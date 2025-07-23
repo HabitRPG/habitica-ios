@@ -9,6 +9,7 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
+import SwiftUI
 
 class MainTabBarController: UITabBarController {
     
@@ -137,6 +138,15 @@ class MainTabBarController: UITabBarController {
             
             if let tutorials = user.flags?.tutorials {
                 self?.updateTutorialSteps(tutorials)
+            }
+            
+            if user.preferences?.analyticsConsentGiven == false {
+                let controller = UIHostingController(rootView: PrivacyPreferencesScreenView())
+                controller.modalPresentationStyle = .fullScreen
+                controller.rootView.dismisser.dismiss = {
+                    controller.dismiss(animated: true)
+                }
+                self?.present(controller, animated: true)
             }
         }).start())
         disposable.inner.add(taskRepository.getDueTasks().on(value: {[weak self] tasks in

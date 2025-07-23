@@ -20,7 +20,6 @@ internal enum StoryboardSegue {
     case mainSegue = "MainSegue"
     case setupSegue = "SetupSegue"
     case taskSegue = "TaskSegue"
-    case welcomeSegue = "WelcomeSegue"
   }
   internal enum Main: String, SegueType {
     case aboutSegue = "AboutSegue"

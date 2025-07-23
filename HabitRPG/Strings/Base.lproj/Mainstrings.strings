@@ -720,7 +720,8 @@
 "about.no_email_title" = "Your email isn't set up yet";
 "about.no_email_message" = "Whoops, looks like you haven't set up your email on this phone yet. Configure an account in the iOS mail app to use this quick-reporting option, or just email us directly at %@";
 "damage_paused" = "Damage Paused";
-"login.password_confirm_error" = "Password and password confirmation have to match and be longer than 8 characters.";
+"login.password_confirm_error" = "Password and password confirmation have to match.";
+"login.password_length_error" = "Passwords must be 8 characters or more.";
 "login.email_invalid" = "Please enter a valid email.";
 "login.register_error" = "There was an issue with the request. Please check all data carefully.";
 "login.authentication_error" = "There was an error with the authentication. Try again later";
@@ -759,9 +760,8 @@
 "max_gem_cap" = "Max Gem Cap";
 "hourglass_count" = "+%d Mystic Hourglass";
 "intro.welcome_prompt" = "What should we call you?";
-"intro.welcome_speechbubble" = "Oh, you must be new here. I’m Justin, your guide to Habitica.\n\nFirst, what should we call you? Feel free to change what I picked. When you’re all set, let’s create your avatar!";
-"intro.avatar_setup_speechbubble" = "So how would you like to look? Don’t worry, you can change this later.";
-"intro.task_setup_speechbubble" = "Great! Now, what are you interested in working on throughout this journey?";
+"intro.avatar_setup_speechbubble" = "You must be new here. I’m Justin, I’ll be your guide in Habitica.\n\nSo how would you like to look? Don’t worry, you can change this later.";
+"intro.task_setup_speechbubble" = "Looking good! Now, choose any categories you’d like to work on and we’ll create a few tasks to get started.\n\nWe’ll go to your task board after this!";
 "intro.card1.title" = "Welcome to";
 "intro.card1.text" = "It’s time to have fun while you get things done. Join over 2 million others improving their life one task at a time.";
 "intro.card2.title" = "Progress in the game";
@@ -1448,4 +1448,5 @@
 "api_token_reset_title" = "If you need a new API Token";
 "api_token_reset_desc" = "You can change your password to reset it. Once it is reset, you will need to log back in to any other devices you use Habitica on and provide the new API Token to third-party tools you may use.";
 "copy_token" = "Copy Token";
-
+"save_preferences" = "Save Preferences";
+"accept_all" = "Accept All";

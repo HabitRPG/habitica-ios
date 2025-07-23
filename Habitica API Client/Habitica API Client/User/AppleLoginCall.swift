@@ -16,6 +16,6 @@ public class AppleLoginCall: ResponseObjectCall<LoginResponseProtocol, APILoginR
                                                                 "user": "{\"name\": \"\(name)\"}",
                                                                 "allowRegister": allowRegister
         ], options: .prettyPrinted)
-        super.init(httpMethod: .POST, endpoint: "user/auth/apple", postData: json, needsAuthentication: false)
+        super.init(httpMethod: .POST, endpoint: "user/auth/apple", postData: json, errorHandler: PrintNetworkErrorHandler(), needsAuthentication: false)
     }
 }

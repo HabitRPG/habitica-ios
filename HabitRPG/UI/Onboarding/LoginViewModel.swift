@@ -60,7 +60,7 @@ class LoginViewModel: ObservableObject {
                     self?.socialLoginAccessToken = authState?.lastTokenResponse?.accessToken
                     self?.userRepository.login(userID: "", network: "google", accessToken: self?.socialLoginAccessToken ?? "", allowRegister: false)
                         .observeValues { response in
-                            if response?.newUser == true {
+                            if response?.newUser == true || response == nil {
                                 self?.prefillUsername()
                                 self?.showUsernameView = true
                             } else {
@@ -107,7 +107,7 @@ class LoginViewModel: ObservableObject {
         userRepository.loginApple(identityToken: identityToken, name: name, allowRegister: false).observeResult {[weak self] (result) in
             switch result {
             case .success(let response):
-                if response?.newUser == true {
+                if response?.newUser == true || response == nil {
                     self?.prefillUsername()
                     self?.showUsernameView = true
                 } else {
@@ -124,10 +124,22 @@ class LoginViewModel: ObservableObject {
             .combineLatest(with: userRepository.retrieveGroupPlans())
             .observeCompleted {[weak self] in
                 self?.viewController?.showNextViewController(segueName: isNewUser ? "SetupSegue" : "MainSegue")
+                self?.username = ""
+                self?.email = ""
+                self?.password = ""
+                self?.showUsernameView = false
+                self?.showLoadingIndicator = false
+                self?.acceptedTerms = false
+                self?.repeatPassword = ""
         }
     }
     
     func verifyUsername() {
+        if username.count < 1 {
+            self.usernameValid = nil
+            usernameIssues = []
+            return
+        }
         userRepository.verifyUsername(username).observeResult { result in
             switch result {
             case .success(let response):
@@ -143,18 +155,18 @@ class LoginViewModel: ObservableObject {
     
     func beginRegistration() {
         self.showLoadingIndicator = true
-        userRepository.checkEmail(email).observeResult({ result in
+        userRepository.checkEmail(email).on(completed: {
+            self.showLoadingIndicator = false
+        }).observeResult({ result in
             switch result {
             case .success(let response):
                 if response?.valid == true {
                     self.prefillUsername()
                     self.showUsernameView = true
                 } else {
-                    self.showLoadingIndicator = false
-                    self.viewController?.showError(L10n.Login.emailInvalid)
+                    self.viewController?.showError(response?.error ?? L10n.Login.emailInvalid)
                 }
             case .failure:
-                self.showLoadingIndicator = false
                 self.viewController?.showError(L10n.Login.authenticationError)
             }
         })
@@ -173,7 +185,14 @@ class LoginViewModel: ObservableObject {
         responseSignal.observeResult { result in
                 switch result {
                 case .success(let response):
-                    self.onSuccessfulLogin(response?.newUser ?? true)
+                    if self.socialLoginMethod != nil {
+                        self.userRepository.updateUsername(newUsername: self.username)
+                            .observeCompleted {
+                                self.onSuccessfulLogin(response?.newUser ?? true)
+                            }
+                    } else {
+                        self.onSuccessfulLogin(response?.newUser ?? true)
+                    }
                 case .failure:
                     self.showLoadingIndicator = false
                     self.viewController?.showError(L10n.Login.authenticationError)
@@ -198,7 +217,7 @@ class LoginViewModel: ObservableObject {
     
     func prefillUsername() {
         if email.isValidEmail() {
-            username = String(email.split(separator: "@").first ?? "").replacing("[\\w+]", with: "")
+            username = String(email.split(separator: "@").first ?? "").replacing(/[\s+]/, with: "")
             verifyUsername()
         }
     }

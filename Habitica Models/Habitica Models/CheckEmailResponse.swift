@@ -11,4 +11,5 @@ import Foundation
 public protocol CheckEmailResponse {
     var email: String? { get set }
     var valid: Bool { get set }
+    var error: String? { get set }
 }

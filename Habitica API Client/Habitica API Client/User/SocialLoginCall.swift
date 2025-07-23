@@ -14,9 +14,9 @@ public class SocialLoginCall: ResponseObjectCall<LoginResponseProtocol, APILogin
     public init(userID: String, network: String, accessToken: String, allowRegister: Bool) {
         let json = try? JSONSerialization.data(withJSONObject: ["network": network, "authResponse": [
             "access_token": accessToken,
-            "client_id": userID,
-            "allowRegister": allowRegister
-            ]], options: .prettyPrinted)
-        super.init(httpMethod: .POST, endpoint: "user/auth/social", postData: json, needsAuthentication: false)
+            "client_id": userID
+            ],
+            "allowRegister": allowRegister], options: .prettyPrinted)
+        super.init(httpMethod: .POST, endpoint: "user/auth/social", postData: json, errorHandler: PrintNetworkErrorHandler(), needsAuthentication: false)
     }
 }

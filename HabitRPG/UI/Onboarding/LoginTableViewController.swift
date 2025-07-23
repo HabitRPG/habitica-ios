@@ -33,7 +33,6 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     }
     private var hostingView: UIHostingView<OnboardingScreen>
     @IBOutlet weak var backgroundScrollView: UIScrollView!
-    @IBOutlet weak var gradientView: GradientView!
     
     @IBOutlet weak var logoView: UIImageView!
     @IBOutlet weak private var loginActivityIndicator: UIActivityIndicatorView!
@@ -65,15 +64,14 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func initialUISetup() {
-            gradientView.middleLocation = 0.7
-            
-            backgroundScrollView.layoutIfNeeded()
-            let contentOffset = CGPoint(x: 0, y: backgroundScrollView.contentSize.height-view.frame.size.height)
-            backgroundScrollView.contentOffset = contentOffset
-            
-            generateStars()
-            view.addSubview(hostingView)
-        }
+        backgroundScrollView.backgroundColor = .purple300
+        backgroundScrollView.layoutIfNeeded()
+        let contentOffset = CGPoint(x: 0, y: backgroundScrollView.contentSize.height-view.frame.size.height)
+        backgroundScrollView.contentOffset = contentOffset
+        
+        generateStars()
+        view.addSubview(hostingView)
+    }
     
     private func generateStars() {
         generateStars(largeCount: 1, mediumCount: 12, smallCount: 25)
@@ -98,7 +96,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         imageView.frame.origin = CGPoint(x: Int.random(in: 0...(Int(backgroundScrollView.contentSize.width)) + 1),
                                          y: Int.random(in: 0...(Int(backgroundScrollView.contentSize.height)) + 1))
         imageView.frame.size = image.size
-        backgroundScrollView.insertSubview(imageView, aboveSubview: gradientView)
+        backgroundScrollView.addSubview(imageView)
     }
 
     @objc

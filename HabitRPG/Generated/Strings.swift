@@ -22,6 +22,8 @@ public enum L10n {
   public static var aboutText: String { return L10n.tr("Mainstrings", "aboutText") }
   /// Accept
   public static var accept: String { return L10n.tr("Mainstrings", "accept") }
+  /// Accept All
+  public static var acceptAll: String { return L10n.tr("Mainstrings", "accept_all") }
   /// Active
   public static var active: String { return L10n.tr("Mainstrings", "active") }
   /// Active on %@
@@ -1044,6 +1046,8 @@ public enum L10n {
   public static var saturday: String { return L10n.tr("Mainstrings", "saturday") }
   /// Save
   public static var save: String { return L10n.tr("Mainstrings", "save") }
+  /// Save Preferences
+  public static var savePreferences: String { return L10n.tr("Mainstrings", "save_preferences") }
   /// Scheduled
   public static var scheduled: String { return L10n.tr("Mainstrings", "scheduled") }
   /// Search
@@ -2001,16 +2005,14 @@ public enum L10n {
   }
 
   public enum Intro {
-    /// So how would you like to look? Don’t worry, you can change this later.
+    /// You must be new here. I’m Justin, I’ll be your guide in Habitica.\n\nSo how would you like to look? Don’t worry, you can change this later.
     public static var avatarSetupSpeechbubble: String { return L10n.tr("Mainstrings", "intro.avatar_setup_speechbubble") }
     /// Let's start!
     public static var letsGo: String { return L10n.tr("Mainstrings", "intro.lets_go") }
-    /// Great! Now, what are you interested in working on throughout this journey?
+    /// Looking good! Now, choose any categories you’d like to work on and we’ll create a few tasks to get started.\n\nWe’ll go to your task board after this!
     public static var taskSetupSpeechbubble: String { return L10n.tr("Mainstrings", "intro.task_setup_speechbubble") }
     /// What should we call you?
     public static var welcomePrompt: String { return L10n.tr("Mainstrings", "intro.welcome_prompt") }
-    /// Oh, you must be new here. I’m Justin, your guide to Habitica.\n\nFirst, what should we call you? Feel free to change what I picked. When you’re all set, let’s create your avatar!
-    public static var welcomeSpeechbubble: String { return L10n.tr("Mainstrings", "intro.welcome_speechbubble") }
 
     public enum Card1 {
       /// It’s time to have fun while you get things done. Join over 2 million others improving their life one task at a time.
@@ -2159,8 +2161,10 @@ public enum L10n {
     public static var loginGoogle: String { return L10n.tr("Mainstrings", "login.login_google") }
     /// Need an account?
     public static var needAccount: String { return L10n.tr("Mainstrings", "login.need_account") }
-    /// Password and password confirmation have to match and be longer than 8 characters.
+    /// Password and password confirmation have to match.
     public static var passwordConfirmError: String { return L10n.tr("Mainstrings", "login.password_confirm_error") }
+    /// Passwords must be 8 characters or more.
+    public static var passwordLengthError: String { return L10n.tr("Mainstrings", "login.password_length_error") }
     /// Register
     public static var register: String { return L10n.tr("Mainstrings", "login.register") }
     /// There was an issue with the request. Please check all data carefully.
