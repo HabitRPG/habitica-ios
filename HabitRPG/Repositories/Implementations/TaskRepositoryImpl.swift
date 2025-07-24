@@ -12,7 +12,16 @@ import Habitica_Models
 import Habitica_API_Client
 import Habitica_Database
 
+enum UserQuestStatus {
+    case noQuest
+    case questCollect
+    case questBoss
+    case questUnknown
+}
+
 class TaskRepository: BaseRepository<TaskLocalRepository> {
+    
+    static var currentUserQuestStatus: UserQuestStatus = .noQuest
     
     func retrieveTasks(dueOnDay: Date? = nil) -> Signal<[TaskProtocol]?, Never> {
         let call = RetrieveTasksCall(dueOnDay: dueOnDay)
@@ -77,63 +86,84 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
     }
         
     func score(task: TaskProtocol, direction: TaskScoringDirection) -> Signal<TaskResponseProtocol?, Never> {
-        if !task.isValid {
-            return Signal.empty
-        }
-        UIImpactFeedbackGenerator.oneShotImpactOccurred(.light)
-        return ScoreTaskCall(task: task, direction: direction).objectSignal.withLatest(from: localRepository.getUserStats(id: AuthenticationManager.shared.currentUserId ?? "")
-            .flatMapError({ (_) in
-            return SignalProducer.empty
-        })).on(value: {[weak self] (taskResponse, stats) in
-            guard let response = taskResponse else {
-                return
-            }
             if !task.isValid {
-                return
+                return Signal.empty
             }
-
-            let healthDiff = (response.health ?? 0) - stats.health
-            let magicDiff = (response.magic ?? 0) - stats.mana
-            var expDiff = (response.experience ?? 0) - stats.experience
-            if stats.level < (response.level ?? 0) {
-                let levelUpView = LevelUpOverlayView()
-                levelUpView.show()
-                SoundManager.shared.play(effect: .levelUp)
-                
-                expDiff = stats.toNextLevel - stats.experience + (response.experience ?? 0)
-            }
-            let goldDiff = (response.gold ?? 0) - stats.gold
-            let questDamage = (response.temp?.quest?.progressDelta ?? 0)
+            UIImpactFeedbackGenerator.oneShotImpactOccurred(.light)
             
-            if let taskId = task.id {
-                self?.localRepository.update(taskID: taskId, userID: self?.currentUserId ?? "", stats: stats, direction: direction, response: response)
-            }
-            if task.type == "reward" {
-                let formatter = NumberFormatter()
-                formatter.minimumFractionDigits = 0
-                formatter.maximumFractionDigits = 2
-                ToastManager.show(text: L10n.buyReward(task.text ?? "", formatter.string(from: NSNumber(value: task.value)) ?? ""), color: .green)
-            } else if healthDiff + magicDiff + goldDiff + questDamage != 0 && (response.level ?? 0) > 0 {
-                let toastView = ToastView(healthDiff: healthDiff,
-                                          magicDiff: magicDiff,
-                                          expDiff: expDiff,
-                                          goldDiff: goldDiff,
-                                          questDamage: questDamage,
-                                          background: healthDiff >= 0 ? .green : .red)
-                ToastManager.show(toast: toastView)
-            }
+            let scoreCall = ScoreTaskCall(task: task, direction: direction)
+            let scoreSignal = scoreCall.objectSignal
             
-            if let drop = response.temp?.drop {
-                var dialog = drop.dialog
-                if dialog == nil {
-                    dialog = "You found a \(drop.key ?? "")"
+            let userId = AuthenticationManager.shared.currentUserId ?? ""
+            let statsProducer = localRepository.getUserStats(id: userId)
+                .flatMapError { _ -> SignalProducer<StatsProtocol, Never> in
+                    return SignalProducer.empty
                 }
-                ToastManager.show(text: dialog ?? "", color: .gray)
-            }
-        }).map({ (response, _) in
-            return response
-        })
-    }
+            
+            let combinedSignal = scoreSignal.withLatest(from: statsProducer)
+            
+            return combinedSignal.on(value: {[weak self] (taskResponse, stats) in
+                guard let response = taskResponse else {
+                    return
+                }
+                if !task.isValid {
+                    return
+                }
+
+                let healthDiff = (response.health ?? 0) - stats.health
+                let magicDiff = (response.magic ?? 0) - stats.mana
+                var expDiff = (response.experience ?? 0) - stats.experience
+                if stats.level < (response.level ?? 0) {
+                    let levelUpView = LevelUpOverlayView()
+                    levelUpView.show()
+                    SoundManager.shared.play(effect: .levelUp)
+                    
+                    expDiff = stats.toNextLevel - stats.experience + (response.experience ?? 0)
+                }
+                let goldDiff = (response.gold ?? 0) - stats.gold
+                let questDamage = (response.temp?.quest?.progressDelta ?? 0)
+                
+                if let taskId = task.id {
+                    self?.localRepository.update(taskID: taskId, userID: self?.currentUserId ?? "", stats: stats, direction: direction, response: response)
+                }
+                if task.type == "reward" {
+                    let formatter = NumberFormatter()
+                    formatter.minimumFractionDigits = 0
+                    formatter.maximumFractionDigits = 2
+                    ToastManager.show(text: L10n.buyReward(task.text ?? "", formatter.string(from: NSNumber(value: task.value)) ?? ""), color: .green)
+                } else if healthDiff + magicDiff + goldDiff + questDamage != 0 && (response.level ?? 0) > 0 {
+                    let questDamageToShow: Float = {
+                        switch TaskRepository.currentUserQuestStatus {
+                        case .questBoss:
+                            return questDamage
+                        default:
+                            return 0
+                        }
+                    }()
+                    
+                    let toastView = ToastView(healthDiff: healthDiff,
+                                              magicDiff: magicDiff,
+                                              expDiff: expDiff,
+                                              goldDiff: goldDiff,
+                                              questDamage: questDamageToShow,
+                                              background: healthDiff >= 0 ? .green : .red)
+                    ToastManager.show(toast: toastView)
+                }
+                
+                if let drop = response.temp?.drop {
+                    var dialog = drop.dialog
+                    if dialog == nil {
+                        dialog = "You found a \(drop.key ?? "")"
+                    }
+                    ToastManager.show(text: dialog ?? "", color: .gray)
+                }
+            }).map({ (response, _) in
+                return response
+            })
+        }
+    
+        
+    
     
     func score(checklistItem: ChecklistItemProtocol, task: TaskProtocol) -> Signal<TaskProtocol?, Never> {
         let call = ScoreChecklistItem(item: checklistItem, task: task)

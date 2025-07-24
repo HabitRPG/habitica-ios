@@ -116,10 +116,26 @@ class UserManager: NSObject {
         alert.enqueue()
     }
     
+    private func updateQuestStatus(user: UserProtocol?) {
+        guard let user = user,
+              user.isValid,
+              let partyId = user.party?.id,
+              !partyId.isEmpty,
+              let quest = user.party?.quest,
+              let questKey = quest.key,
+              !questKey.isEmpty else {
+            TaskRepository.currentUserQuestStatus = .noQuest
+            return
+        }
+        
+        TaskRepository.currentUserQuestStatus = .questBoss
+    }
+    
     private func onUserUpdated(user: UserProtocol) {
         if !user.isValid {
             return
         }
+        updateQuestStatus(user: user)
         SoundManager.shared.currentTheme = SoundTheme(rawValue: user.preferences?.sound ?? "") ?? SoundTheme.none
         
         tutorialSteps = [:]
