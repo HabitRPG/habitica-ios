@@ -1274,7 +1274,7 @@
 "settings.password" = "Mot de Passe";
 "menu.group_plans" = "Groupes";
 "settings.reloaded_content" = "Contenu chargé à nouveau";
-"settings.updated_password" = "Mot de passe mis à jour";
+"settings.updated_password" = "Mot de passe changé avec succès";
 "settings.email" = "Email";
 "settings.connect" = "Se connecter";
 "tasks.form.not_editable_disclaimer" = "Les options d'éditions des tâches de groupe et de challenges sont plus limitées que celle des tâches ordinaires";
@@ -1607,3 +1607,4 @@
 "login.username_description" = "C'est votre pseudo unique que vous pourrez changer quand vous le souhaitez !";
 "privacy_preferences_full_description" = "Habitica utilise des données de votre appareil pour une analyse des performances, la gestion des requêtes sur le support, et pour vous proposer la meilleure expérience de jeu possible. Pour cela, nous devons vous demander quelques autorisations.\n\n\nVous pouvez changer ces options depuis vos paramètres de compte.";
 "save_preferences" = "Enregistrer les Préférences";
+"settings.daily_reminder_permission_needed" = "Veuillez autoriser l'affichage de notifications dans vos Paramètres pour utiliser les rappels quotidiens";
