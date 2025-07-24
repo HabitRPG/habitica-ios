@@ -87,6 +87,10 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
         if message.lowercased().contains("there is no account that uses those credentials") {
            return
         }
+        // Suppress SUBSCRIPTION_STILL_VALID notifications
+        if message.contains("SUBSCRIPTION_STILL_VALID") {
+            return
+        }
         
         if code == 400 {
             let alertController = HabiticaAlertController(title: message)
