@@ -229,20 +229,20 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     
     func login(userID: String, network: String, accessToken: String, allowRegister: Bool) -> Signal<LoginResponseProtocol?, Never> {
         let call = SocialLoginCall(userID: userID, network: network, accessToken: accessToken, allowRegister: allowRegister)
-        return call.objectSignal.merge(with: call.responseSignal.map({ _ -> LoginResponseProtocol? in
-            return nil
-        })).on(value: { loginResponse in
+        return call.objectSignal.on(value: { loginResponse in
             self.updateAuth(response: loginResponse)
-        })
+        }).merge(with: call.responseSignal.map({ _ -> LoginResponseProtocol? in
+            return nil
+        }))
     }
     
     func loginApple(identityToken: String, name: String, allowRegister: Bool) -> Signal<LoginResponseProtocol?, Never> {
         let call = AppleLoginCall(identityToken: identityToken, name: name, allowRegister: allowRegister)
-        return call.objectSignal.merge(with: call.responseSignal.map({ _ -> LoginResponseProtocol? in
-            return nil
-        })).on(value: { loginResponse in
+        return call.objectSignal.on(value: { loginResponse in
             self.updateAuth(response: loginResponse)
-        })
+        }).merge(with: call.responseSignal.map({ _ -> LoginResponseProtocol? in
+            return nil
+        }))
     }
     
     func disconnectSocial(_ network: String) -> Signal<EmptyResponseProtocol?, Never> {
@@ -295,23 +295,12 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
-    func updateUsername(newUsername: String, password: String? = nil) -> Signal<UserProtocol, ReactiveSwiftRealmError> {
+    func updateUsername(newUsername: String, password: String? = nil) -> Signal<UserProtocol?, Never> {
         let call = UpdateUsernameCall(username: newUsername, password: password)
         
-        return call.objectSignal
-            .filter({ (response) -> Bool in
-                return response != nil
-            })
-            .flatMap(.concat, {[weak self] (_) in
-            return self?.getUser().take(first: 1) ?? SignalProducer.empty
-        }).on(value: {[weak self]user in
-            self?.localRepository.updateCall { _ in
-                if let local = user.authentication?.local {
-                    local.username = newUsername
-                    user.flags?.verifiedUsername = true
-                }
-            }
-        })
+        return call.objectSignal.flatMap(.latest) { _ in
+            return self.retrieveUser(forced: true)
+        }
     }
     
     func verifyUsername(_ newUsername: String) -> Signal<VerifyUsernameResponse?, Never> {

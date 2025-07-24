@@ -185,11 +185,14 @@ class LoginViewModel: ObservableObject {
         responseSignal.observeResult { result in
                 switch result {
                 case .success(let response):
+                    if response == nil {
+                        return
+                    }
                     if self.socialLoginMethod != nil {
                         self.userRepository.updateUsername(newUsername: self.username)
-                            .observeCompleted {
+                            .on(value: { _ in
                                 self.onSuccessfulLogin(response?.newUser ?? true)
-                            }
+                            }).observeCompleted {}
                     } else {
                         self.onSuccessfulLogin(response?.newUser ?? true)
                     }

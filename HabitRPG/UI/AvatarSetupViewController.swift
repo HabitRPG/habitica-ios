@@ -82,7 +82,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController, The
     private let inventoryRepository = InventoryRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
-    var currentCategory: AvatarCustomizationCategory = .body {
+    var currentCategory: AvatarCustomizationCategory = .skin {
         didSet {
             updateCategoryButtons()
             setSubCategories(getSubcategoriesForCurrentCategory())

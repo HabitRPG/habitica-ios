@@ -119,8 +119,12 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollToPage(_ page: Int) {
-        UserDefaults.standard.set(page, forKey: "currentSetupStep")
-        if currentpage > page {
+        var safePage = page
+        if safePage > views.count-1 {
+            safePage = views.count-1
+        }
+        UserDefaults.standard.set(safePage, forKey: "currentSetupStep")
+        if currentpage > safePage {
             let oldpage = currentpage
             UIView.animate(withDuration: 0.2, animations: {[weak self] in
                     self?.views[oldpage].alpha = 0
@@ -128,24 +132,24 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
                     self?.views[oldpage].isHidden = true
             })
         } else {
-            views[page].isHidden = false
+            views[safePage].isHidden = false
             UIView.animate(withDuration: 0.2, animations: {[weak self] in
-                self?.views[page].alpha = 1
+                self?.views[safePage].alpha = 1
             })
         }
         DispatchQueue.main.asyncAfter(deadline: .now()+0.6) {[weak self] in
-            self?.viewControllers[page].startTyping()
+            self?.viewControllers[safePage].startTyping()
         }
-        currentpage = page
+        currentpage = safePage
         
-        updateIndicator(page)
+        updateIndicator(safePage)
         
-        if page <= 0 {
+        if safePage <= 0 {
             previousButtonImageView.tintColor = UIColor.purple100
         } else {
             previousButtonImageView.tintColor = UIColor.white
         }
-        if page >= 1 {
+        if safePage >= 1 {
             nextButtonTextView.text = L10n.finish
         } else {
             nextButtonTextView.text = L10n.next
