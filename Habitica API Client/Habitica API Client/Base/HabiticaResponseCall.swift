@@ -67,39 +67,35 @@ public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
           signal: serverErrorSignal
             .combineLatest(with: errorJsonSignal)
             .map { (nsErr, json) -> (NetworkError, [String]) in
-              // build the NetworkError with the real status code
-              let netErr = NetworkError(
-                message: nsErr.localizedDescription,
-                url:     (nsErr.userInfo["url"] as? String) ?? "",
-                code:    nsErr.code
-              )
-
-              // extract any server‐sent messages
-              var msgs: [String] = []
-              if let top = json["message"] as? String {
-                msgs.append(top)
-              }
-              if let errors = json["errors"] as? [[String: Any]] {
-                for err in errors {
-                  if let message = err["message"] as? String {
-                    msgs.append(message)
-                  }
+                // build the NetworkError with the real status code
+                let netErr = NetworkError(
+                    message: nsErr.localizedDescription,
+                    url: (nsErr.userInfo["url"] as? String) ?? "",
+                    code: nsErr.code
+                )
+                
+                // extract any server‐sent messages
+                var msgs: [String] = []
+                if let top = json["message"] as? String {
+                    msgs.append(top)
                 }
-              }
-
-              return (netErr, msgs)
+                if let errors = json["errors"] as? [[String: Any]] {
+                    for err in errors {
+                        if let message = err["message"] as? String {
+                            msgs.append(message)
+                        }
+                    }
+                }
+                
+                return (netErr, msgs)
             }
-            if errors.isEmpty, let message = json["message"] as? String {
-                errors.append(NetworkError(message: message, url: self.urlString, code: isNotFound ? 404 : -1000))
-            }
-            return errors
-        }))
+        )
         
-        errorHandler?.observe(signal: serverErrorSignal.combineLatest(with: errorJsonSignal)
+        HabiticaResponseCall<T, C>.errorHandler?.observe(signal: serverErrorSignal.combineLatest(with: errorJsonSignal)
             .map({ (error, jsonAny) -> (NetworkError, [String]) in
                 let json = jsonAny
                 var errors = [String]()
-                var errorCode = error.code
+                let errorCode = error.code
                 
                 // check for invalid_credentials error
                 if error.code == 401 {

@@ -149,7 +149,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController, The
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        currentCategory = .body
+        currentCategory = .skin
     }
     
     @objc
