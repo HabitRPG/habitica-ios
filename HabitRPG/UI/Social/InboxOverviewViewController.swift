@@ -31,6 +31,7 @@ class InboxOverviewViewController: BaseTableViewController {
         refreshControl = HabiticaRefresControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         #endif
+        refresh()
     }
     
     override func applyTheme(theme: Theme) {
