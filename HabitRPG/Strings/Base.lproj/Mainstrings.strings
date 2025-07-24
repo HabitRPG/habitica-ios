@@ -272,6 +272,7 @@
 "settings.log_out" = "Log Out";
 "settings.reminder" = "Reminder";
 "settings.daily_reminder" = "Daily Reminder";
+"settings.daily_reminder_permission_needed" = "Please enable notifications in Settings to use daily reminders";
 "settings.every_day" = "Every day at";
 "settings.notification_badge" = "Notification Badge";
 "settings.display_notification_badge" = "Display Notification Badge";

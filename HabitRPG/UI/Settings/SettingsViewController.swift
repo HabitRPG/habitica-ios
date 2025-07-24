@@ -11,6 +11,7 @@ import Eureka
 import ReactiveSwift
 import Habitica_Models
 import SwiftUI
+import UserNotifications
 
 enum SettingsTags {
     static let myAccount = "myAccount"
@@ -283,9 +284,45 @@ class SettingsViewController: FormViewController, Themeable {
                         return
                     }
                     let defaults = UserDefaults()
-                    defaults.set(row.value ?? false, forKey: "dailyReminderActive")
-                    if let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate {
-                        appDelegate.rescheduleDailyReminder()
+                    let isEnabling = row.value ?? false
+                    
+                    if isEnabling {
+                        UNUserNotificationCenter.current().getNotificationSettings { settings in
+                            if settings.authorizationStatus == .notDetermined {
+                                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+                                    DispatchQueue.main.async {
+                                        if granted {
+                                            defaults.set(true, forKey: "dailyReminderActive")
+                                            if let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate {
+                                                appDelegate.rescheduleDailyReminder()
+                                            }
+                                        } else {
+                                            row.value = false
+                                            row.updateCell()
+                                            ToastManager.show(text: L10n.Settings.dailyReminderPermissionNeeded, color: .red)
+                                        }
+                                    }
+                                }
+                            } else if settings.authorizationStatus == .denied {
+                                DispatchQueue.main.async {
+                                    row.value = false
+                                    row.updateCell()
+                                    ToastManager.show(text: L10n.Settings.dailyReminderPermissionNeeded, color: .red)
+                                }
+                            } else {
+                                DispatchQueue.main.async {
+                                    defaults.set(true, forKey: "dailyReminderActive")
+                                    if let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate {
+                                        appDelegate.rescheduleDailyReminder()
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        defaults.set(false, forKey: "dailyReminderActive")
+                        if let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate {
+                            appDelegate.rescheduleDailyReminder()
+                        }
                     }
                 })
             <<< TimePickerRow(SettingsTags.dailyReminderTime) { row in
