@@ -225,7 +225,10 @@ class UserManager: NSObject {
         let notificationCenter = UNUserNotificationCenter.current()
         var scheduledReminderKeys = [String]()
         for reminder in reminders where reminder.isValid {
-                scheduledReminderKeys.append(contentsOf: self.scheduleNotifications(reminder: reminder, daysPerReminder: daysPerReminder))
+            if let task = reminder.task, task.type == TaskType.todo && task.completed {
+                continue
+            }
+            scheduledReminderKeys.append(contentsOf: self.scheduleNotifications(reminder: reminder, daysPerReminder: daysPerReminder))
         }
         notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
             var toCancel = [String]()
@@ -260,7 +263,7 @@ class UserManager: NSObject {
                 }
             }
         } else if task.type == TaskType.todo, let time = reminder.time {
-            if time > Date() {
+            if time > Date() && !task.completed {
                 if let key = scheduleForDay(reminder: reminder, date: reminder.startDate ?? time, atTime: time) {
                     keys.append(key)
                 }
