@@ -64,7 +64,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func initialUISetup() {
-        backgroundScrollView.backgroundColor = .purple300
+        view.backgroundColor = .purple300
         backgroundScrollView.layoutIfNeeded()
         let contentOffset = CGPoint(x: 0, y: backgroundScrollView.contentSize.height-view.frame.size.height)
         backgroundScrollView.contentOffset = contentOffset

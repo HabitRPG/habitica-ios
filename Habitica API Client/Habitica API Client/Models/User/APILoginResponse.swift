@@ -26,4 +26,8 @@ public class APILoginResponse: LoginResponseProtocol, Decodable {
         apiToken = (try? values.decode(String.self, forKey: .apiToken)) ?? ""
         newUser = (try? values.decode(Bool.self, forKey: .newUser)) ?? false
     }
+    
+    public init() {
+        
+    }
 }

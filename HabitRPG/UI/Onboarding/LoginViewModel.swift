@@ -95,7 +95,7 @@ class LoginViewModel: ObservableObject {
                     }
                     self?.userRepository.login(userID: "", network: "google", accessToken: self?.socialLoginAccessToken ?? "", allowRegister: false)
                         .observeValues { response in
-                            if response?.newUser == true || response == nil {
+                            if response?.newUser == true {
                                 self?.prefillUsername()
                                 self?.showUsernameView = true
                             } else {

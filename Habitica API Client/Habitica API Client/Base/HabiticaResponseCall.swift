@@ -54,8 +54,8 @@ public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
           signal: errorSignal.map { nsErr in
             ( NetworkError(
                 message: nsErr.localizedDescription,
-                url:     "",
-                code:    nsErr.code
+                url: "",
+                code: nsErr.code
               ),
               []
             )

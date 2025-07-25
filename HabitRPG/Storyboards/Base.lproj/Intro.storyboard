@@ -46,6 +46,10 @@
                             <scrollView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHc-yB-sBi">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FTS-Ia-ivU">
+                                        <rect key="frame" x="40" y="220" width="240" height="128"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Cloud1" translatesAutoresizingMaskIntoConstraints="NO" id="qPb-EC-8mn">
                                         <rect key="frame" x="-109" y="345" width="240" height="87"/>
                                         <constraints>
@@ -61,16 +65,24 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.27531379461288452" green="0.11066564172506332" blue="0.57404261827468872" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="FTS-Ia-ivU" firstAttribute="leading" secondItem="VHc-yB-sBi" secondAttribute="leading" id="0Og-7c-gQD"/>
+                                    <constraint firstItem="FTS-Ia-ivU" firstAttribute="top" secondItem="VHc-yB-sBi" secondAttribute="top" id="DOQ-b6-xdm"/>
                                     <constraint firstAttribute="trailing" secondItem="zQm-MY-iyJ" secondAttribute="trailing" constant="-110" id="Lec-eX-uqU"/>
                                     <constraint firstItem="qPb-EC-8mn" firstAttribute="leading" secondItem="VHc-yB-sBi" secondAttribute="leading" constant="-109" id="Lgu-h9-8g2"/>
+                                    <constraint firstItem="qPb-EC-8mn" firstAttribute="top" secondItem="VHc-yB-sBi" secondAttribute="top" constant="145" id="OwZ-Rk-ObT"/>
+                                    <constraint firstAttribute="trailing" secondItem="FTS-Ia-ivU" secondAttribute="trailing" id="RJq-ZJ-qs1"/>
+                                    <constraint firstAttribute="bottom" secondItem="FTS-Ia-ivU" secondAttribute="bottom" id="kZB-c2-JuM"/>
+                                    <constraint firstItem="zQm-MY-iyJ" firstAttribute="top" secondItem="VHc-yB-sBi" secondAttribute="top" constant="122" id="tV4-aK-VIE"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="VHc-yB-sBi" firstAttribute="top" secondItem="LgY-Wx-7fl" secondAttribute="top" id="62c-hB-SCp"/>
+                            <constraint firstItem="FTS-Ia-ivU" firstAttribute="width" secondItem="LgY-Wx-7fl" secondAttribute="width" id="L8E-jv-BJM"/>
+                            <constraint firstItem="FTS-Ia-ivU" firstAttribute="height" secondItem="LgY-Wx-7fl" secondAttribute="height" id="MRU-AX-tN8"/>
                             <constraint firstAttribute="trailing" secondItem="VHc-yB-sBi" secondAttribute="trailing" id="gjr-im-oQC"/>
                             <constraint firstAttribute="bottom" secondItem="VHc-yB-sBi" secondAttribute="bottom" id="htO-C1-cqS"/>
                             <constraint firstItem="VHc-yB-sBi" firstAttribute="leading" secondItem="LgY-Wx-7fl" secondAttribute="leading" id="tDJ-54-kry"/>
@@ -691,8 +703,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="5Hb-dX-OsZ"/>
-        <segue reference="mhd-Im-RcK"/>
-        <segue reference="KJh-7Q-0Lc"/>
+        <segue reference="aKA-6e-Im9"/>
+        <segue reference="TYz-5x-Fui"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Cloud1" width="240" height="87"/>

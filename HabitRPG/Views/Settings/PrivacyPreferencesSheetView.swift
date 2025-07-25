@@ -56,7 +56,7 @@ struct PrivacyPreferencesSheetView: View, Dismissable {
                 .font(.system(size: 16, weight: .medium))
                 .padding(.bottom, 18)
                 .padding(.horizontal, 13)
-            Text(L10n.privacyPreferencesSheetDescription)
+            Text((try? AttributedString(markdown: L10n.privacyPreferencesSheetDescription)) ?? AttributedString(L10n.privacyPreferencesSheetDescription))
                 .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
                 .font(.system(size: 16))
                 .lineSpacing(3)

@@ -63,10 +63,11 @@ public struct UsernameScreen: View {
                         .background(.purple100)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                         .padding(.trailing, 6)
-                    Text(L10n.Login.termsText)
+                    Text((try? AttributedString(markdown: L10n.Login.termsText)) ?? AttributedString(""))
                         .scaledFont(size: 13)
                         .lineSpacing(4)
                         .foregroundColor(.purple600)
+                        .tint(.white)
                 }
                 .onTapGesture {
                     viewModel.acceptedTerms.toggle()

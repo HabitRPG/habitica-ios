@@ -256,7 +256,6 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     
     func showMainView() {
         performSegue(withIdentifier: "MainSegue", sender: self)
-        removeFromParent()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
