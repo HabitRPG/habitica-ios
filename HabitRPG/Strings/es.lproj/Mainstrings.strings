@@ -853,7 +853,7 @@
 "about.love_open_source" = "Software código abierto.";
 "about.no_email_message" = "Oops, parece que aún no has configurado tu correo en este teléfono. Agrega una cuenta en la aplicación de correo iOS para usar esta opción de contacto, o envíanos un mail directamente a %@";
 "damage_paused" = "Daño pausado";
-"login.password_confirm_error" = "La contraseña y la confirmación de la misma deben coincidir y deben superar los 8 caracteres.";
+"login.password_confirm_error" = "La contraseña y la confirmación de la misma deben coincidir.";
 "login.authentication_error" = "Hubo un error con la autenticación. Intenta más tarde";
 "login.email_username" = "Correo / Nombre de usuario";
 "login.forgot_password" = "Olvidé mi contraseña";
@@ -1641,3 +1641,9 @@
 "settings.daily_reminder_permission_needed" = "Por favor active las notificaciones en los Ajustes para así recibir recordatorios diarios";
 "your_privacy_preferences" = "Tus Preferencias de Privacidad";
 "privacy_preferences_sheet_description" = "Habitica usa los datos de tu dispositivo para analizar el rendimiento, ayudar con peticiones de soporte, y proporcionarte la mejor experiencia en el juego. Para lograr eso, necesitamos pedirte los siguientes permisos.\n\n\nPuedes modificar todo esto en cualquier momento. Para saber más, revisa por favor nuestra Política de Privacidad.";
+"strictly_necessary_description" = "Esto datos requeridos son necesarios para que nuestra app funcione. Esto incluye datos como por ejemplo tus preferencias guardadas in los ajustes así como información de errores.";
+"login.password_length_error" = "La contraseña debe contener al menos 8 caracteres o más.";
+"performance_analytics" = "Rendimiento y Analíticas";
+"performance_analytics_description" = "Esto se usa para mejorar la experiencia de juego, el rendimiento, y los servicios de Habitica. Nuestro equipo de soporte también usa esto cuando ayuda con las peticiones y los informes de errores.";
+"strictly_necessary" = "Estrictamente necesario";
+"privacy_preferences_full_description" = "Habitica usa los datos de tu dispositivo para analizar el rendimiento, ayudarte con las solicitudes de soporte, y proporcionarte la mejor experiencia de juego. Para lograr eso, necesitamos pedirte los siguientes permisos.\n\n\nPuedes modificar esto en cualquier momento desde tu cuenta en ajustes.";
