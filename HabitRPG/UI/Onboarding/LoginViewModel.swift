@@ -27,7 +27,7 @@ func base64UrlDecode(_ value: String) -> Data? {
   let paddingLength = requiredLength - length
   if paddingLength > 0 {
     let padding = "".padding(toLength: Int(paddingLength), withPad: "=", startingAt: 0)
-    base64 = base64 + padding
+    base64 += padding
   }
   return Data(base64Encoded: base64, options: .ignoreUnknownCharacters)
 }

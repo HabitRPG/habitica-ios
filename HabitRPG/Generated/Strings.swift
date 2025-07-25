@@ -902,7 +902,7 @@ public enum L10n {
   public static var premiumCurrency: String { return L10n.tr("Mainstrings", "premium_currency") }
   /// Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\n\nYou can change these at any time from your account settings.
   public static var privacyPreferencesFullDescription: String { return L10n.tr("Mainstrings", "privacy_preferences_full_description") }
-  /// Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\n\nYou can change this at any time. To learn more, review our [Privacy Policy](https://habitica.com/privacy).
+  /// Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\n\nYou can change this at any time. To learn more, review our [Privacy Policy](https://habitica.com/static/privacy).
   public static var privacyPreferencesSheetDescription: String { return L10n.tr("Mainstrings", "privacy_preferences_sheet_description") }
   /// How it works
   public static var promoInfoInstructionsTitle: String { return L10n.tr("Mainstrings", "promo_info_instructions_title") }
@@ -2181,7 +2181,7 @@ public enum L10n {
     }
     /// Enjoy having fun getting things done
     public static var tagline: String { return L10n.tr("Mainstrings", "login.tagline") }
-    /// You agree to our [Terms of Service](https://habitica.com/terms and have read our [Privacy Policy](https://habitica.com/privacy).
+    /// You agree to our **[Terms of Service](https://habitica.com/static/terms)** and have read our **[Privacy Policy](https://habitica.com/static/privacy)**.
     public static var termsText: String { return L10n.tr("Mainstrings", "login.terms_text") }
     /// This is a unique name you can change later at any time!
     public static var usernameDescription: String { return L10n.tr("Mainstrings", "login.username_description") }
