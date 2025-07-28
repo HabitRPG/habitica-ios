@@ -32,8 +32,8 @@ public struct UsernameScreen: View {
                     .scaledFont(size: 15, weight: .semibold)
                     .foregroundColor(.purple600)
                     .padding(.horizontal, 16)
-                    .padding(.top, 5)
-                    .padding(.bottom, 12)
+                    .padding(.top, 2)
+                    .padding(.bottom, 6)
                 LoginTextInput(placeholder: L10n.username, prefix: "@", icon: EmptyView(), isValid: viewModel.usernameValid, text: $viewModel.username)
                     .onChange(of: viewModel.username) { _ in
                         if viewModel.username.count >= 3 {
@@ -82,6 +82,8 @@ public struct UsernameScreen: View {
                     .disabled(!canSubmit)
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
                 .padding(.horizontal, 20)
+                .padding(.top, 44)
+                .padding(.bottom, 13)
                 .background(Color.purple300.ignoresSafeArea())
             Button {
                 withAnimation {
