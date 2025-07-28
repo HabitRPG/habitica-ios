@@ -269,8 +269,7 @@ class SettingsViewController: FormViewController, Themeable {
                 }).onCellSelection({ (_, _) in
                     self.userRepository.logoutAccount()
                     self.contentRepository.retrieveContent(force: true).observeCompleted {}
-                    self.navigationController?.dismiss(animated: true, completion: nil)
-                    self.presentingViewController?.dismiss(animated: true, completion: nil)
+                    (UIApplication.shared.delegate as? HabiticaAppDelegate)?.showLoginScreen()
                 })
         }
     }

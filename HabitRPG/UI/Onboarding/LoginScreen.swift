@@ -213,33 +213,33 @@ struct LoginForm: View {
                 .disabled(!isFormValid)
         }
         if viewState != .register {
-                Button {
-                    onAppleLogin()
-                } label: {
-                    Label {
-                        Text(L10n.Login.continueWithApple)
-                    } icon: {
-                        Image(Asset.loginApple.name)
-                    }
-                }.buttonStyle(LoginScreenButtonStyle())
-                    .padding(.top, 8)
-                Button {
-                    onGoogleLogin()
-                } label: {
-                    Label {
-                        Text(L10n.Login.continueWithGoogle)
-                    } icon: {
-                        Image(Asset.loginGoogle.name)
-                    }
-                }.buttonStyle(LoginScreenButtonStyle())
-                    .padding(.top, 8)
-                
-                Button {
-                    onPasswordForgot()
-                } label: {
-                    Text(L10n.Login.forgotPassword)
-                        .foregroundColor(.white)
-                }.padding(.top, 17)
+            Button {
+                onAppleLogin()
+            } label: {
+                Label {
+                    Text(L10n.Login.continueWithApple)
+                } icon: {
+                    Image(Asset.loginApple.name)
+                }
+            }.buttonStyle(LoginScreenButtonStyle())
+                .padding(.top, 8)
+            Button {
+                onGoogleLogin()
+            } label: {
+                Label {
+                    Text(L10n.Login.continueWithGoogle)
+                } icon: {
+                    Image(Asset.loginGoogle.name)
+                }
+            }.buttonStyle(LoginScreenButtonStyle())
+                .padding(.top, 8)
+            
+            Button {
+                onPasswordForgot()
+            } label: {
+                Text(L10n.Login.forgotPassword)
+                    .foregroundColor(.white)
+            }.padding(.top, 17)
         }
     }
 }
@@ -264,6 +264,7 @@ struct LoginScreen: View {
     var chosenServer: String = "production"
     
     var body: some View {
+        let isSmallDevice = UIApplication.shared.firstKeyWindow?.frame.height ?? 812 < 896
         ZStack(alignment: .topLeading) {
             VStack(spacing: 0) {
                 Spacer()
@@ -273,7 +274,7 @@ struct LoginScreen: View {
                         Image(Asset.loginBackground.name)
                     }
                     .frame(height: 318)
-                LinearGradient(gradient: Gradient(colors: [Color(UIColor("#A995EAFF")), .purple400]))
+                LinearGradient(gradient: Gradient(colors: [Color(hexadecimal: "#A995EAFF"), .purple400]))
                     .frame(maxWidth: .infinity)
                     .frame(height: viewState == .initial ? 212 : 0)
             }
@@ -286,8 +287,9 @@ struct LoginScreen: View {
                 if viewState == .initial {
                     Text(L10n.Login.tagline)
                         .scaledFont(size: 26, weight: .bold)
-                        .foregroundStyle(Color.purple500)
+                        .foregroundStyle(isSmallDevice ? .white : .purple500)
                         .multilineTextAlignment(.center)
+                        .shadow(color: Color(hexadecimal: "#36205D"), x: 0, y: 0, blur: 4)
                         .lineLimit(5)
                         .padding(.top, 29)
                 } else {
@@ -347,7 +349,8 @@ struct LoginScreen: View {
                             }
                         }.buttonStyle(LoginScreenButtonStyle())
                             .padding(.top, 8)
-                        Button {
+                        
+                        let loginButton = Button {
                             withAnimation {
                                 viewState = .login
                             }
@@ -359,6 +362,12 @@ struct LoginScreen: View {
                             }
                             .scaledFont(size: 17, weight: .medium)
                         }.padding(.top, 17)
+                        
+                        if UIApplication.shared.firstKeyWindow?.safeAreaInsets.bottom == 0 {
+                            loginButton.padding(.bottom, 13)
+                        } else {
+                            loginButton
+                        }
                     }
                     .animation(.bouncy, value: viewState)
                     .transition(.asymmetric(insertion: .push(from: .bottom), removal: .push(from: .top)))

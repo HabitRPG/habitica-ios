@@ -252,38 +252,37 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             self?.userRepository.logoutAccount()
             
             self?.contentRepository.retrieveContent(force: true).observeCompleted {
-                var currentWindow: UIWindow?
-                if #available(iOS 13.0, *) {
-                    currentWindow = UIApplication.shared.connectedScenes
-                        .compactMap { $0 as? UIWindowScene }
-                        .first?.windows
-                        .first { $0.isKeyWindow }
-                } else {
-                    currentWindow = self?.window
-                }
-                
-                if let window = currentWindow {
-                    if let presented = window.rootViewController?.presentedViewController {
-                        presented.dismiss(animated: false) {
-                            let storyboard = UIStoryboard(name: "Intro", bundle: nil)
-                            if let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController") as? LoginTableViewController {
-                                loginViewController.isRootViewController = true
-                                let navigationController = UINavigationController(rootViewController: loginViewController)
-                                navigationController.setNavigationBarHidden(true, animated: false)
-                                window.rootViewController = navigationController
-                                window.makeKeyAndVisible()
-                            }
-                        }
-                    } else {
-                        let storyboard = UIStoryboard(name: "Intro", bundle: nil)
-                        if let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController") as? LoginTableViewController {
-                            loginViewController.isRootViewController = true
-                            let navigationController = UINavigationController(rootViewController: loginViewController)
-                            navigationController.setNavigationBarHidden(true, animated: false)
-                            window.rootViewController = navigationController
-                            window.makeKeyAndVisible()
-                        }
+                self?.showLoginScreen()
+            }
+        }
+    }
+    
+    func showLoginScreen() {
+        var currentWindow = UIApplication.shared.connectedScenes
+                .compactMap { $0 as? UIWindowScene }
+                .first?.windows
+                .first { $0.isKeyWindow }
+        
+        if let window = currentWindow {
+            if let presented = window.rootViewController?.presentedViewController {
+                presented.dismiss(animated: false) {
+                    let storyboard = UIStoryboard(name: "Intro", bundle: nil)
+                    if let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController") as? LoginTableViewController {
+                        loginViewController.isRootViewController = true
+                        let navigationController = UINavigationController(rootViewController: loginViewController)
+                        navigationController.setNavigationBarHidden(true, animated: false)
+                        window.rootViewController = navigationController
+                        window.makeKeyAndVisible()
                     }
+                }
+            } else {
+                let storyboard = UIStoryboard(name: "Intro", bundle: nil)
+                if let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController") as? LoginTableViewController {
+                    loginViewController.isRootViewController = true
+                    let navigationController = UINavigationController(rootViewController: loginViewController)
+                    navigationController.setNavigationBarHidden(true, animated: false)
+                    window.rootViewController = navigationController
+                    window.makeKeyAndVisible()
                 }
             }
         }

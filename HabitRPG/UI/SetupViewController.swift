@@ -73,7 +73,6 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewControllers[0].startTyping()
         
         if configRepository.bool(variable: .randomizeAvatar) {
             avatarSetupViewController?.randomizeButtonTapped()
@@ -137,9 +136,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
                 self?.views[safePage].alpha = 1
             })
         }
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.6) {[weak self] in
-            self?.viewControllers[safePage].startTyping()
-        }
+        viewControllers[safePage].startTyping()
         currentpage = safePage
         
         updateIndicator(safePage)
@@ -255,7 +252,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func showMainView() {
-        performSegue(withIdentifier: "MainSegue", sender: self)
+        UIApplication.shared.firstKeyWindow?.rootViewController = StoryboardScene.Main.mainSplitViewController.instantiate()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

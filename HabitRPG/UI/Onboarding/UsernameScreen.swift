@@ -32,7 +32,6 @@ public struct UsernameScreen: View {
                     .scaledFont(size: 15, weight: .semibold)
                     .foregroundColor(.purple600)
                     .padding(.horizontal, 16)
-                    .padding(.top, 2)
                     .padding(.bottom, 6)
                 LoginTextInput(placeholder: L10n.username, prefix: "@", icon: EmptyView(), isValid: viewModel.usernameValid, text: $viewModel.username)
                     .onChange(of: viewModel.username) { _ in

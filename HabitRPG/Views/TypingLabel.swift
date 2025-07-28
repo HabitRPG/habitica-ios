@@ -33,8 +33,14 @@ class TypingLabel: UITextView {
     
     func startAnimating() {
         index = 0
-        timer = Timer.scheduledTimer(withTimeInterval: typingSpeed, repeats: true) {[weak self] _ in
-            self?.updateText()
+        mutableText = NSMutableAttributedString(string: text, attributes: [
+            .foregroundColor: UIColor.clear,
+            .font: UIFont.preferredFont(forTextStyle: .subheadline)
+        ])
+        if timer == nil {
+            timer = Timer.scheduledTimer(withTimeInterval: typingSpeed, repeats: true) {[weak self] _ in
+                self?.updateText()
+            }
         }
     }
     

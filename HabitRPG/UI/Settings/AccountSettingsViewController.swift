@@ -368,11 +368,10 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
     }
 
     private func deleteAccount(password: String) {
-        userRepository.deleteAccount(password: password).observeValues({[weak self] response in
+        userRepository.deleteAccount(password: password).observeValues({ response in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 if response.statusCode == 200 {
-                    self?.navigationController?.dismiss(animated: true, completion: nil)
-                    self?.presentingViewController?.dismiss(animated: true, completion: nil)
+                    (UIApplication.shared.delegate as? HabiticaAppDelegate)?.showLoginScreen()
                 } else if response.statusCode == 401 {
                     let alertView = HabiticaAlertController(title: L10n.Settings.wrongPassword)
                     alertView.addCloseAction()
