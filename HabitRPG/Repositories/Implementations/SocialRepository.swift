@@ -59,10 +59,15 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     func retrieveChallenges(page: Int, memberOnly: Bool) -> Signal<[ChallengeProtocol]?, Never> {
+        if page == 0 {
+            localRepository.deleteAllChallenges()
+        }
+        
         return RetrieveChallengesCall(page: page, memberOnly: memberOnly).arraySignal.on(value: {[weak self]challenges in
             guard let challenges = challenges else {
                 return
             }
+            
             self?.localRepository.save(challenges)
         })
     }

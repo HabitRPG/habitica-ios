@@ -80,6 +80,14 @@ public class SocialLocalRepository: BaseLocalRepository {
         })
     }
     
+    
+    public func deleteAllChallenges() {
+        updateCall { realm in
+            let allChallenges = realm.objects(RealmChallenge.self)
+            realm.delete(allChallenges)
+        }
+    }
+    
     public func save(groupID: String?, chatMessages: [ChatMessageProtocol]) {
         save(objects: chatMessages.map { (chatMessage) in
             if let realmChatMessage = chatMessage as? RealmChatMessage {
@@ -290,6 +298,7 @@ public class SocialLocalRepository: BaseLocalRepository {
             }
         }
     }
+    
     
     public func getGroup(groupID: String) -> SignalProducer<GroupProtocol?, ReactiveSwiftRealmError> {
         return RealmGroup.findBy(query: "id == '\(groupID)'").reactive().map({ (groups, _) -> GroupProtocol? in
