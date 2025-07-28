@@ -1540,3 +1540,6 @@
 "login.continue_with_apple" = "使用苹果账户继续";
 "login.already_have_account" = "已经拥有账户？";
 "login.need_account" = "需要注册账户？";
+"join_habitica" = "加入Habitica";
+"login.terms_text" = "同意 **[服务条款](https://habitica.com/static/terms)** 并已阅读 **[隐私政策](https://habitica.com/static/privacy)**.";
+"login.what_call_you" = "我们该怎么称呼你呢？";
