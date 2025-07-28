@@ -81,7 +81,7 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
             return
         }
         self.titleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
-        self.titleLabel.textContainerInset = UIEdgeInsets.zero
+        self.titleLabel.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 2, right: 0)
         self.subtitleLabel.textContainerInset = UIEdgeInsets.zero
         if let text = task.text {
             let mutableString = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString(baseSize: 15, textColor: ThemeService.shared.theme.primaryTextColor)
