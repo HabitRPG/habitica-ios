@@ -95,7 +95,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             self?.viewController?.navigationController?.pushViewController(profileViewController, animated: true)
         }
         cell.reportAction = {
-            FlagViewController(type: .inboxMessage, offendingItem: chatMessage).show()
+            FlagViewController(type: .chatMessage, offendingItem: chatMessage).show()
         }
         cell.replyAction = {[weak self] in
             self?.viewController?.configureReplyTo(name: chatMessage.username ?? chatMessage.displayName)
