@@ -245,7 +245,12 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         let call = AppleLoginCall(identityToken: identityToken, name: name, allowRegister: allowRegister)
         return call.objectSignal.on(value: { loginResponse in
             self.updateAuth(response: loginResponse)
-        }).merge(with: call.responseSignal.map({ _ -> LoginResponseProtocol? in
+        }).merge(with: call.httpResponseSignal.map({ response -> LoginResponseProtocol? in
+            if response.statusCode == 404 {
+                let loginResponse = APILoginResponse()
+                loginResponse.newUser = true
+                return loginResponse
+            }
             return nil
         }))
     }

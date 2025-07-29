@@ -10,7 +10,7 @@ import UIKit
 
 class TypingLabel: UITextView {
     
-    var typingSpeed = 0.07
+    var typingSpeed = 0.05
     var finishedAction: (() -> Void)?
     
     private var mutableText: NSMutableAttributedString?

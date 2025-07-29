@@ -900,6 +900,8 @@ public enum L10n {
   public static var ponytail: String { return L10n.tr("Mainstrings", "ponytail") }
   /// Premium Currency
   public static var premiumCurrency: String { return L10n.tr("Mainstrings", "premium_currency") }
+  /// Privacy Policy
+  public static var privacyPolicy: String { return L10n.tr("Mainstrings", "privacy_policy") }
   /// Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\n\nYou can change these at any time from your account settings.
   public static var privacyPreferencesFullDescription: String { return L10n.tr("Mainstrings", "privacy_preferences_full_description") }
   /// Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\n\nYou can change this at any time. To learn more, review our [Privacy Policy](https://habitica.com/static/privacy).

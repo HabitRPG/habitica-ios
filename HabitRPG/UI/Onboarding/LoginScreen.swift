@@ -292,30 +292,35 @@ struct LoginScreen: View {
                         .shadow(color: Color(hexadecimal: "#36205D"), x: 0, y: 0, blur: 4)
                         .lineLimit(5)
                         .padding(.top, 29)
+                    Spacer()
+                        .frame(maxHeight: .infinity)
                 } else {
-                    LoginForm(viewState: $viewState,
-                              email: $viewModel.email,
-                              password: $viewModel.password,
-                              repeatPassword: $viewModel.repeatPassword,
-                              showLoadingIndicator: viewModel.showLoadingIndicator,
-                              onLogin: {
-                        if viewState == .register {
-                            viewModel.beginRegistration()
-                        } else {
-                            viewModel.login()
+                    ScrollView {
+                        VStack(spacing: 0) {
+                            LoginForm(viewState: $viewState,
+                                      email: $viewModel.email,
+                                      password: $viewModel.password,
+                                      repeatPassword: $viewModel.repeatPassword,
+                                      showLoadingIndicator: viewModel.showLoadingIndicator,
+                                      onLogin: {
+                                if viewState == .register {
+                                    viewModel.beginRegistration()
+                                } else {
+                                    viewModel.login()
+                                }
+                            }, onAppleLogin: {
+                                viewModel.appleLoginButtonPressed()
+                            }, onGoogleLogin: {
+                                viewModel.googleLoginButtonPressed()
+                            }, onPasswordForgot: {
+                                viewModel.viewController?.forgotPasswordButtonPressed()
+                            })
+                            .animation(.bouncy, value: viewState)
+                            .transition(.asymmetric(insertion: .push(from: .top), removal: .push(from: .bottom)).combined(with: .opacity))
                         }
-                    }, onAppleLogin: {
-                        viewModel.appleLoginButtonPressed()
-                    }, onGoogleLogin: {
-                        viewModel.googleLoginButtonPressed()
-                    }, onPasswordForgot: {
-                        viewModel.viewController?.forgotPasswordButtonPressed()
-                    })
-                    .animation(.bouncy, value: viewState)
-                    .transition(.asymmetric(insertion: .push(from: .top), removal: .push(from: .bottom)).combined(with: .opacity))
-                }
-                Spacer()
+                    }
                     .frame(maxHeight: .infinity)
+                }
                 if viewState == .initial {
                     Group {
                         Button {

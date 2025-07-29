@@ -47,18 +47,18 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FTS-Ia-ivU">
-                                        <rect key="frame" x="40" y="220" width="240" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Cloud1" translatesAutoresizingMaskIntoConstraints="NO" id="qPb-EC-8mn">
-                                        <rect key="frame" x="-109" y="345" width="240" height="87"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud1" translatesAutoresizingMaskIntoConstraints="NO" id="qPb-EC-8mn">
+                                        <rect key="frame" x="-109" y="145" width="240" height="87"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="87" id="b2k-rs-3w8"/>
                                             <constraint firstAttribute="width" constant="240" id="lUT-9d-4c1"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Cloud2" translatesAutoresizingMaskIntoConstraints="NO" id="zQm-MY-iyJ">
-                                        <rect key="frame" x="157" y="322" width="273" height="90"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud2" translatesAutoresizingMaskIntoConstraints="NO" id="zQm-MY-iyJ">
+                                        <rect key="frame" x="157" y="122" width="273" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="273" id="K1D-rx-Onl"/>
                                             <constraint firstAttribute="height" constant="90" id="hcl-Vv-w43"/>
@@ -266,7 +266,7 @@
                         <viewControllerLayoutGuide type="bottom" id="08u-3i-A1l"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Mx4-o3-Q9Q">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="513"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="992-ys-Zq4">
@@ -277,7 +277,7 @@
                                 <rect key="frame" x="16" y="413" width="288" height="100"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="H14-5M-nUJ">
-                                        <rect key="frame" x="72" y="3" width="72" height="93"/>
+                                        <rect key="frame" x="0.0" y="3.5" width="72" height="93"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category_skin" translatesAutoresizingMaskIntoConstraints="NO" id="O34-Y5-Lpu">
                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="37"/>
@@ -295,7 +295,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="KbZ-Us-QJf">
-                                        <rect key="frame" x="0.0" y="3.5" width="72" height="93"/>
+                                        <rect key="frame" x="72" y="3.5" width="72" height="93"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category_body" translatesAutoresizingMaskIntoConstraints="NO" id="eQS-gD-h3W">
                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="37"/>
@@ -465,12 +465,12 @@
                             <constraint firstItem="DqC-T2-Uv4" firstAttribute="leading" secondItem="Mx4-o3-Q9Q" secondAttribute="leadingMargin" id="97F-aY-GsC"/>
                             <constraint firstItem="992-ys-Zq4" firstAttribute="top" secondItem="JDw-Ev-dce" secondAttribute="top" id="BpF-7x-YtS"/>
                             <constraint firstItem="yg5-dQ-Nyt" firstAttribute="centerX" secondItem="Mx4-o3-Q9Q" secondAttribute="centerX" id="Ic6-OW-aVo"/>
-                            <constraint firstItem="yg5-dQ-Nyt" firstAttribute="top" secondItem="K2H-zJ-vTs" secondAttribute="bottom" priority="501" constant="29" id="Mtj-pa-B43"/>
+                            <constraint firstItem="yg5-dQ-Nyt" firstAttribute="top" secondItem="qJI-Tu-RJ9" secondAttribute="bottom" priority="501" constant="90" id="Mtj-pa-B43"/>
                             <constraint firstItem="7xQ-tj-Lvs" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yg5-dQ-Nyt" secondAttribute="bottom" priority="501" constant="12" id="O11-DX-rxW"/>
                             <constraint firstItem="7xQ-tj-Lvs" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yg5-dQ-Nyt" secondAttribute="bottom" constant="4" id="R5u-Mv-pBr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7xQ-tj-Lvs" secondAttribute="trailing" id="VJk-aa-rxH"/>
                             <constraint firstItem="FdJ-aY-gbH" firstAttribute="top" secondItem="7xQ-tj-Lvs" secondAttribute="bottom" priority="501" constant="12" id="YES-z4-XEK"/>
-                            <constraint firstItem="yg5-dQ-Nyt" firstAttribute="top" relation="greaterThanOrEqual" secondItem="K2H-zJ-vTs" secondAttribute="bottom" constant="4" id="YFk-Tx-SmP"/>
+                            <constraint firstItem="yg5-dQ-Nyt" firstAttribute="top" relation="greaterThanOrEqual" secondItem="qJI-Tu-RJ9" secondAttribute="bottom" constant="4" id="YFk-Tx-SmP"/>
                             <constraint firstItem="FdJ-aY-gbH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7xQ-tj-Lvs" secondAttribute="bottom" constant="4" id="ZeA-yh-2Nf"/>
                             <constraint firstItem="qr2-DT-Qaf" firstAttribute="top" secondItem="yg5-dQ-Nyt" secondAttribute="top" constant="-28" id="eI1-Zz-vSy"/>
                             <constraint firstAttribute="trailing" secondItem="JDw-Ev-dce" secondAttribute="trailing" constant="16" id="iML-LD-hkS"/>
@@ -525,7 +525,7 @@
                         <viewControllerLayoutGuide type="bottom" id="12Q-8i-iue"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yXS-GH-6cu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="513"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFU-n3-BVG">
