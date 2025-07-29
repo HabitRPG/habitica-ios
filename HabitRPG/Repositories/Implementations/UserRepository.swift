@@ -290,6 +290,38 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     func updateUsername(newUsername: String, password: String? = nil) -> Signal<UserProtocol, ReactiveSwiftRealmError> {
         let call = UpdateUsernameCall(username: newUsername, password: password)
         
+        call.serverErrorSignal.combineLatest(with: call.errorJsonSignal)
+            .observeValues { (error, json) in
+                if error.code == 400 {
+                    var errorMessage: String?
+                    
+                    if let usernameTaken = json["usernameTaken"] as? String {
+                        errorMessage = usernameTaken
+                    } else if let message = json["message"] as? String {
+                        errorMessage = message
+                    } else if let errors = json["errors"] as? [[String: Any]] {
+                        for jsonError in errors {
+                            if let message = jsonError["message"] as? String {
+                                errorMessage = message
+                                break
+                            }
+                        }
+                    }
+                    
+                    if let message = errorMessage {
+                        let lowercasedMessage = message.lowercased()
+                        if lowercasedMessage.contains("already taken") || 
+                           lowercasedMessage.contains("already in use") ||
+                           lowercasedMessage.contains("username is taken") ||
+                           lowercasedMessage.contains("username already") {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                ToastManager.show(text: L10n.Errors.usernameAlreadyTaken, color: .red)
+                            }
+                        }
+                    }
+                }
+            }
+        
         return call.objectSignal
             .filter({ (response) -> Bool in
                 return response != nil

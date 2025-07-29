@@ -1816,6 +1816,8 @@ public enum L10n {
     public static var syncMessage: String { return L10n.tr("Mainstrings", "errors.sync_message") }
     /// User not found.
     public static var userNotFound: String { return L10n.tr("Mainstrings", "errors.user_not_found") }
+    /// Username already taken.
+    public static var usernameAlreadyTaken: String { return L10n.tr("Mainstrings", "errors.username_already_taken") }
   }
 
   public enum Faint {
