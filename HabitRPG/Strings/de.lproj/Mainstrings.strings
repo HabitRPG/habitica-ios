@@ -209,7 +209,7 @@
 /* (No Comment) */
 "party.invitation_invitername" = "%@ hat dich eingeladen Ihrer Gruppe beizutreten";
 /* (No Comment) */
-"party.invitation_no_invitername" = "Du wurdest von Jemandem in die Gruppe **%@** eingeladen";
+"party.invitation_no_invitername" = "Jemand hat dich eingeladen seiner Party beizutreten";
 /* (No Comment) */
 "party.invited_to_quest" = "%@ hat dich eingeladen an einer Quest teilzunehmen";
 /* (No Comment) */
@@ -820,7 +820,7 @@
 "tasks.team" = "Team";
 "tasks.due_tomorrow" = "Morgen";
 "tasks.due_in_x_days" = "in %d Tagen";
-"stats.strength_text" = "Erhöht den Bonus von kritischen Treffern und macht sie wahrscheinlicher, wenn Du eine Aufgabe erledigst. Erhöht außerdem den Schaden gegen Bosse.";
+"stats.strength_text" = "Erhöht die Wahrscheinlichkeit und den Bonus von kritischen Treffern, wenn Du eine Aufgabe erledigst. Außerdem wird der Schaden gegen Bosse erhöht.";
 "tasks.due_today" = "Heute";
 "settings.change_about_message" = "Info ändern";
 "settings.reset_account_description" = "Du wirst alle deine Level, Gold und Erfahrung verlieren. Alle Ihre Aufgaben und ihre historischen Daten werden gelöscht (Herausforderungsaufgaben bleiben erhalten). Du wirst alle Ausrüstungsgegenstände verlieren, mit Ausnahme von Abonnenten-Gegenständen und kostenlosen Erinnerungsgegenständen, aber du wirst sie zurückkaufen können. Du wirst der richtigen Klasse angehören müssen, um klassenspezifische Ausrüstung wieder zu kaufen. Du behältst deine aktuelle Klasse, deine Errungenschaften sowie deine Haustiere und Reittiere. Um das Zurücksetzen zu bestätigen, gib dein Passwort unten ein.";
@@ -1329,7 +1329,7 @@
 "next_prize_in_x_checkins" = "Nächster Preis in %d Anmeldungen";
 "scheduled" = "geplant";
 "completed" = "erledigt";
-"not_due" = "noch nicht fällig";
+"not_due" = "Noch nicht fällig";
 "tasks.form.not_editable_disclaimer" = "Aufgaben aus Herausforderungen und Gruppen haben weniger Bearbeitungsoptionen im Vergleich zu den Standardaufgaben";
 "menu.group_plans" = "Gruppen";
 "settings.adjustment" = "Anpassung";
