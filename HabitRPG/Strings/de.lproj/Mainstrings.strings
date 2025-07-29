@@ -207,9 +207,9 @@
 /* (No Comment) */
 "open_website" = "Habitica Webseite öffnen";
 /* (No Comment) */
-"party.invitation_invitername" = "%@ hat dich eingeladen Ihrer Gruppe beizutreten";
+"party.invitation_invitername" = "Du bist eingeladen der Party von %@ beizutreten";
 /* (No Comment) */
-"party.invitation_no_invitername" = "Jemand hat dich eingeladen seiner Party beizutreten";
+"party.invitation_no_invitername" = "Du wurdest von Jemandem in die Gruppe **%@** eingeladen";
 /* (No Comment) */
 "party.invited_to_quest" = "%@ hat dich eingeladen an einer Quest teilzunehmen";
 /* (No Comment) */
