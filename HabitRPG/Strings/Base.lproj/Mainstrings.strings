@@ -780,6 +780,7 @@
 "errors.enter_valid_email" = "Please enter a valid Email address";
 "errors.password_length" = "Password must be %d characters or more";
 "errors.password_not_matching" = "Passwords must match";
+"errors.username_already_taken" = "Username already taken.";
 "never" = "Never";
 "never_lower_case" = "never";
 "day" = "day";
