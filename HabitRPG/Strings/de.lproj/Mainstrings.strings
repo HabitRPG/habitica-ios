@@ -631,7 +631,7 @@
 "level" = "Level";
 "party.create_party_title" = "Spiele Habitica in einer Gruppe";
 "party.create_party_button" = "Neue Gruppe erstellen";
-"party.join_party_title" = "Möchtest Du einer Party beitreten?";
+"party.join_party_title" = "Suchst du nach einer Gruppe?";
 "party.party_challenges" = "Gruppenwettbewerbe";
 "party.start_quest" = "Quest starten";
 "unsubscribe_itunes" = "Du willst Deine Abo-Dauer ändern oder ganz kündigen? Ändere oder kündige Dein Abonnement über Deine Apple ID in den Einstellungen Deines Geräts. Alle verbleibenden Monate des Abo-Guthabens bleiben nach der Kündigung bis zu ihrem Enddatum aktiv.";
@@ -829,7 +829,7 @@
 "avatar.body" = "Körper";
 "avatar.hair" = "Haare";
 "avatar.extras" = "Extras";
-"party.join_party_description" = "Du möchtest einer Gruppe beitreten, aber kennst keine anderen Spieler? Lass Gruppenanführer wissen, dass du nach einer Einladung suchst!";
+"party.join_party_description" = "Gib einem Partymitglied den Benutzernamen unten an, damit Du eine Einladung bekommen kannst";
 "party.party_description" = "Gruppenbeschreibung";
 "groups.members" = "Mitglieder";
 "groups.invite_member" = "Neues Mitglied einladen";
