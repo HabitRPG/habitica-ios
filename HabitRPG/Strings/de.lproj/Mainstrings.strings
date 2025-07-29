@@ -829,7 +829,7 @@
 "avatar.body" = "Körper";
 "avatar.hair" = "Haare";
 "avatar.extras" = "Extras";
-"party.join_party_description" = "Gib einem Partymitglied den Benutzernamen unten an, damit Du eine Einladung bekommen kannst";
+"party.join_party_description" = "Du möchtest einer Gruppe beitreten, aber kennst keine anderen Spieler? Lass Gruppenanführer wissen, dass du nach einer Einladung suchst!";
 "party.party_description" = "Gruppenbeschreibung";
 "groups.members" = "Mitglieder";
 "groups.invite_member" = "Neues Mitglied einladen";
@@ -1412,7 +1412,7 @@
 "classes.healers" = "Heiler";
 "classes.rogues" = "Diebe";
 "party.leave_looking_for_party_subtitle" = "Halte Ausschau nach einer Einladung oder starte jederzeit deine eigene Party";
-"groups.find_members" = "Mitglieder finden";
+"groups.find_members" = "Finde Mitglieder";
 "groups.list" = "Liste";
 "groups.by_invite" = "Durch Einladung";
 "groups.send_invite" = "Einladung versenden";
