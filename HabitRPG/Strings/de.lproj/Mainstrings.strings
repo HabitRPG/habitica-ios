@@ -209,7 +209,7 @@
 /* (No Comment) */
 "party.invitation_invitername" = "%@ hat dich eingeladen Ihrer Gruppe beizutreten";
 /* (No Comment) */
-"party.invitation_no_invitername" = "Du wurdest von Jemandem zu einer Gruppe eingeladen.";
+"party.invitation_no_invitername" = "Du wurdest von Jemandem in die Gruppe **%@** eingeladen";
 /* (No Comment) */
 "party.invited_to_quest" = "%@ hat dich eingeladen an einer Quest teilzunehmen";
 /* (No Comment) */
@@ -914,7 +914,7 @@
 "never_lower_case" = "niemals";
 "never" = "Niemals";
 "intro.card2.text" = "Schalte Spielinhalte durch das Erledigen und Abhaken Deiner realen Aufgaben frei. Verdiene Rüstungen, Tiere und vieles mehr als Belohnungen für das Erreichen Deiner Ziele.";
-"intro.task_setup_speechbubble" = "Sieht gut aus! Nun wähle Kategorien, an denen du arbeiten möchtest und wir erstellen ein paar Aufgaben, um zu starten.\n\nDanach sehen wir uns deine Aufgabenliste an.";
+"intro.task_setup_speechbubble" = "Sieht gut aus! Nun wähle Kategorien, an denen du arbeiten möchtest und wir erstellen ein paar Aufgaben, um zu starten.\n\nDanach sehen wir uns deine Aufgabenliste an!";
 "intro.avatar_setup_speechbubble" = "Du musst neu hier sein. Ich bin Justin und ich werde dein Führer in Habitica sein.\n\nWie würdest du denn gerne aussehen? Keine Sorge, du kannst dein Aussehen später immer wieder ändern.";
 "about.no_email_message" = "Hoppla, anscheinend hast Du auf diesem Telefon noch keine E-Mailadresse eingerichtet. Konfiguriere Dein Konto in der iOS-Mail-App, um diese schnelle Berichtsoption zu verwenden, oder sende uns eine Email direkt an % @";
 "about.love_open_source" = "Web Love Open Source Software.";
@@ -1031,7 +1031,7 @@
 "not_recurring" = "Einmalig";
 "subscription_duration" = "Alle %@";
 "subscription_benefits_title_subscribed" = "Du erhälst diese Vorteile für Dein Abonnement";
-"subscription_info_5_description" = "Hole Dir einen purpurnen Wolpertinger und verdopple jeden Tag Eier, Schlüpfelixiere und Futter, um Deine Haustiersammlung aufzuziehen.";
+"subscription_info_5_description" = "Hole Dir einen purpurnen Wolpertinger und verdopple jeden Tag Eier, Schlüpfelixiere und Futter, um Deine Haustiersammlung aufzuziehen!";
 "sale" = "Angebot";
 "member_group_plan" = "Mitglieder eines Gruppenplans";
 "group_plan" = "Gruppenplan";
@@ -1311,7 +1311,7 @@
 "x_items_found" = "%d Gegenstände warten";
 "seasonal_potions_available" = "Saisonale Gegenstände erhältlich";
 "new" = "Neu";
-"skills.caused_damage" = "Du hast dem Boss Schaden zugefügt.";
+"skills.caused_damage" = "Du hast dem Boss Schaden zugefügt";
 "day" = "Tag";
 "week" = "Woche";
 "month" = "Monat";
@@ -1330,7 +1330,7 @@
 "scheduled" = "geplant";
 "completed" = "erledigt";
 "not_due" = "noch nicht fällig";
-"tasks.form.not_editable_disclaimer" = "Aufgaben aus Herausforderungen und Gruppen haben weniger Bearbeitungsoptionen im Vergleich zu den Standardaufgaben.";
+"tasks.form.not_editable_disclaimer" = "Aufgaben aus Herausforderungen und Gruppen haben weniger Bearbeitungsoptionen im Vergleich zu den Standardaufgaben";
 "menu.group_plans" = "Gruppen";
 "settings.adjustment" = "Anpassung";
 "settings.cleared_cache" = "Cache zurücksetzen";
@@ -1354,17 +1354,17 @@
 "settings.resume_damage" = "Schaden-Pause aufheben";
 "settings.pause_damage_subtitle" = "Schaden ist aktiv. Erfahre mehr darüber...";
 "settings.resume_damage_subtitle" = "Schaden ist pausiert.";
-"settings.pauseDamage.pause_damage_title1" = "Nicht erfüllte Tagesaufgaben fügen dir keinen Schaden zu.";
-"settings.pauseDamage.pause_damage_description1" = "Bosse können dir dennoch Schaden zufügen aufgrund nicht erfüllter Tagesaufgaben der Gruppenmitglieder.";
-"settings.pauseDamage.pause_damage_title2" = "Deine Strähnen und Zählersstände werden nicht zurückgesetzt.";
-"settings.pauseDamage.pause_damage_description2" = "Tägliche Strähnen und Zählerstände bei den Gewohnheiten werden nur hochgezählt, wenn dieser Punkt aktiv ist.";
-"settings.pauseDamage.pause_damage_title3" = "Dein Fortschritt in Quests wird ausgesetzt.";
+"settings.pauseDamage.pause_damage_title1" = "Nicht erfüllte Tagesaufgaben fügen dir keinen Schaden zu";
+"settings.pauseDamage.pause_damage_description1" = "Bosse können dir dennoch Schaden zufügen aufgrund nicht erfüllter Tagesaufgaben der Mitglieder deiner Gruppe";
+"settings.pauseDamage.pause_damage_title2" = "Deine Strähnen und Zählersstände werden nicht zurückgesetzt";
+"settings.pauseDamage.pause_damage_description2" = "Tägliche Strähnen und Zählerstände bei den Gewohnheiten werden nur gezählt, wenn diese Einstellung aktiv ist";
+"settings.pauseDamage.pause_damage_title3" = "Dein Fortschritt in Quests wird ausgesetzt";
 "settings.pauseDamage.resume_damage_title1" = "Tagesaufgaben, die du nicht erfüllst, werden Schaden bei dir ausüben. ";
-"settings.pauseDamage.resume_damage_description1" = "Bosse können darüberhinaus deinen Gruppenmitgliedern Schaden zufügen für Tagesaufgaben, die du nicht erfüllt hast.";
-"settings.pauseDamage.resume_damage_title2" = "Deine Strähnen und Zählerstände werden zurückgesetzt.";
-"settings.pauseDamage.resume_damage_description2" = "Erfüllst du eine Tagesaufgabe nicht, wird deine Strähne und der Zähler normal zurückgesetzt.";
-"settings.pauseDamage.resume_damage_title3" = "Dein Fortschritt in Quests wird wieder normal angewendet.";
-"settings.pauseDamage.resume_damage_description3" = "Ausstehender Schaden oder gesammelte Objekte werden angewendet, sobald der Tag das nächste Mal zurückgesetzt wurde.";
+"settings.pauseDamage.resume_damage_description1" = "Bosse können darüberhinaus den Mitgliedern deiner Gruppe Schaden zufügen für Tagesaufgaben, die du nicht erfüllt hast";
+"settings.pauseDamage.resume_damage_title2" = "Deine Strähnen und Zählerstände werden zurückgesetzt";
+"settings.pauseDamage.resume_damage_description2" = "Erfüllst du eine Tagesaufgabe nicht, wird deine Strähne und der Zähler normal zurückgesetzt";
+"settings.pauseDamage.resume_damage_title3" = "Dein Fortschritt in Quests wird wieder normal angewendet";
+"settings.pauseDamage.resume_damage_description3" = "Ausstehender Schaden oder gesammelte Objekte werden angewendet, sobald der Tag das nächste Mal zurückgesetzt wurde";
 "social.x_leader" = "Leiter:in von %s";
 "social.x_members" = "Mitglieder:innen in %s";
 "social.x_bank" = "Bank von %s";
@@ -1381,7 +1381,7 @@
 "purchase_for_without_currency" = "Kaufe für %d";
 "groups.groups" = "Gruppen";
 "groups.group" = "Gruppe";
-"settings.pauseDamage.pause_damage_description3" = "Einem Boss hinzugefügter Schaden oder gefundene Gegenstände werden zurückgehalten, bis du Schaden wieder aktivierst.";
+"settings.pauseDamage.pause_damage_description3" = "Einem Boss hinzugefügter Schaden oder gefundene Gegenstände werden zurückgehalten, bis du Schaden wieder aktivierst";
 "settings.next_cron_run" = "Neuer Tages-Rest: &@";
 "settings.day_start_adjustment" = "Anpassung vom Tagesbeginn";
 "guilds.left_party" = "Du hast die Party verlassen";
@@ -1390,7 +1390,7 @@
 "party.looking_for_party_subtitle" = "Halte Ausschau nach Einladungen oder gründe jederzeit deine eigene Gruppe";
 "party.leave" = "Gruppe verlassen";
 "guilds.joined_party" = "Du bist der Party beigetreten";
-"settings.custom_day_start_description" = "Ein neuer Tag beginnt in Habitica standardmäßig um Mitternacht, hier kannst du deinen persönlichen Tagesbeginn verschieben.";
+"settings.custom_day_start_description" = "Verschiebe den Zeitpunkt zu dem dein Tag wechselt. Standard-Einstellung: Mitternacht";
 "settings.delete_account_confirm" = "Bist du sicher, dass du deinen Account löschen möchtest?";
 "inventory.no_saddle_tile" = "Du hast keine Sattel";
 "inventory.no_saddle_description" = "Sattel machen direkt aus einem Haustier ein Reittier. Du kannst einen Sattel auf dem Markt kaufen.";
@@ -1427,13 +1427,13 @@
 "groups.lfp.subtitle_empty" = "Es sucht aktuell niemand nach einer Party. Du kannst später nochmal vorbeikommen!";
 "groups.group_plan_settings" = "Gruppenplaneinstellungen";
 "groups.copy_shared_tasks" = "Geteilte Aufgaben kopieren";
-"avatar.skins" = "Skins";
+"avatar.skins" = "Hautfarben";
 "is_closed" = "Geschlossen";
 "settings.push_notifications.content_release" = "Inhaltsveröffentlichungen + Events";
 "monthly_backgrounds" = "Monatliche Hintergründe";
 "locations.customizations" = "Anpassungen";
 "groups.copy_shared_tasks_description" = "Zugeteilte und offene Aufgaben in deinen persönlichen Aufgabenlisten anzeigen";
-"unsubscribe_google" = "Du willst nicht länger Abonnent sein? Aufgrund Deiner Zahlungsmethode ist es notwendig, Dein Abo über den Google Play Store zu kündigen. Alle verbleibenden Monate des Abo-Guthabens bleiben nach der Kündigung bis zu ihrem Enddatum aktiv. Wir werden Dich vermissen!";
+"unsubscribe_google" = "Du willst nicht länger Abonnent sein? Aufgrund Deiner Zahlungsmethode ist es notwendig, Dein Abo über den Google Play Store zu kündigen. Alle verbleibenden Monate des Abo-Guthabens bleiben nach der Kündigung bis zu ihrem Enddatum aktiv.";
 "open_google_play" = "Google Play Store öffnen";
 "event_backgrounds" = "Event-Hintergründe";
 "open_mystery_item" = "Du öffnest die mysteriöse Box und findest…";
@@ -1477,7 +1477,7 @@
 "subscription.info_faint_description" = "Behalte deinen Fortschritt mit einer sofortigen Heilung pro Tag, sobald deine Gesundheit aufgebraucht ist!";
 "subscription.info_armoire_title" = "Verdopple Schrank-Belohnungen";
 "shops.try_on_customize_avatar" = "Du kannst sie anprobieren, indem du deinen Avatar anpasst.";
-"subscription.info_armoire_description" = "Erhalte zwei Chancen auf neue Ausrüstung aus dem verzauberten Schrank zum Preis von einer";
+"subscription.info_armoire_description" = "Erhalte zwei Chancen auf neue Ausrüstung aus dem verzauberten Schrank zum Preis von einer!";
 "shops.customizing_your_avatar" = "Anpassen Deines Avatars";
 "groups.transferred_to" = "Der neue Gruppenleiter ist %@";
 "faint.disclaimer" = "Defekte Ausrüstung kann auf dem Marktplatz zurückgekauft werden";
