@@ -207,7 +207,7 @@
 /* (No Comment) */
 "open_website" = "Habitica Webseite öffnen";
 /* (No Comment) */
-"party.invitation_invitername" = "Du bist eingeladen der Party von %@ beizutreten";
+"party.invitation_invitername" = "**@%@** hat dich in die Gruppe **%@** eingeladen";
 /* (No Comment) */
 "party.invitation_no_invitername" = "Du wurdest von Jemandem in die Gruppe **%@** eingeladen";
 /* (No Comment) */
@@ -631,7 +631,7 @@
 "level" = "Level";
 "party.create_party_title" = "Spiele Habitica in einer Gruppe";
 "party.create_party_button" = "Neue Gruppe erstellen";
-"party.join_party_title" = "Suchst du nach einer Gruppe?";
+"party.join_party_title" = "Möchtest Du einer Party beitreten?";
 "party.party_challenges" = "Gruppenwettbewerbe";
 "party.start_quest" = "Quest starten";
 "unsubscribe_itunes" = "Du willst Deine Abo-Dauer ändern oder ganz kündigen? Ändere oder kündige Dein Abonnement über Deine Apple ID in den Einstellungen Deines Geräts. Alle verbleibenden Monate des Abo-Guthabens bleiben nach der Kündigung bis zu ihrem Enddatum aktiv.";
