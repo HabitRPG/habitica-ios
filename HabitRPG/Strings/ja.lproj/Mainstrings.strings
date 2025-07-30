@@ -399,7 +399,7 @@
 "titles.guild" = "ギルド";
 "titles.challenges" = "チャレンジ";
 "titles.shops" = "ショップ";
-"titles.choose_user" = "ユーザーを選択";
+"titles.choose_user" = "メンバーを選択";
 "titles.choose_recipient" = "受け手を選ぶ";
 "titles.feed_pet" = "ペットにえさをやる";
 "titles.guidelines" = "ガイドライン";
@@ -1555,3 +1555,4 @@
 "max_gem_cap" = "ジェム最大数";
 "subscription.stay_motivated_with_more_rewards" = "有料プランに加入すると、さらに多くの特典でモチベーションを維持できます";
 "buy_gems_with_gold" = "ジェムをゴールドで買う";
+"party.quest_participant_one" = "参加者一人";
