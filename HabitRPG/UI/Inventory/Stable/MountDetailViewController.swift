@@ -33,6 +33,16 @@ class MountDetailViewController: StableDetailViewController<MountDetailDataSourc
         }).start())
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if animalType == "special" || animalType == "wacky" {
+            if let firstItem = datasource?.sections.first?.items.first, firstItem.owned == true {
+                showActionSheet(forStableItem: firstItem, withSource: nil)
+            }
+        }
+    }
+    
     deinit {
         datasource?.dispose()
     }

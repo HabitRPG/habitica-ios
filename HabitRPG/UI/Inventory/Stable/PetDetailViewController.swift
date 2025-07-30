@@ -32,6 +32,16 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
         }).start())
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if animalType == "special" || animalType == "wacky" {
+            if let firstItem = datasource?.sections.first?.items.first, firstItem.trained > 0 {
+                showActionSheet(forStableItem: firstItem, withSource: nil)
+            }
+        }
+    }
+    
     deinit {
         datasource?.dispose()
     }
