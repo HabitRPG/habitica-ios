@@ -1287,6 +1287,8 @@
 "week_reminder_body" = "Breaks are healthy, but you can still earn points for simple activities to level up and get cool gear!";
 "x_items_found" = "%d Items pending";
 "one_item_found" = "1 Item pending";
+"quest_items_found" = "You've found %d quest items";
+"one_quest_item_found" = "You've found 1 quest item";
 "new" = "New";
 "seasonal_potions_available" = "Seasonal items available";
 "open_for" = "Open for %@";

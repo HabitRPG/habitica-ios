@@ -10,4 +10,5 @@ import Foundation
 
 public protocol TaskResponseQuestProtocol {
     var progressDelta: Float { get set }
+    var collection: Int? { get set }
 }

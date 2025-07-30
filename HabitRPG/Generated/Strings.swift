@@ -816,6 +816,8 @@ public enum L10n {
   public static var oneItemFound: String { return L10n.tr("Mainstrings", "one_item_found") }
   /// 1 Month
   public static var oneMonth: String { return L10n.tr("Mainstrings", "one_month") }
+  /// You've found 1 quest item
+  public static var oneQuestItemFound: String { return L10n.tr("Mainstrings", "one_quest_item_found") }
   /// Onwards
   public static var onwards: String { return L10n.tr("Mainstrings", "onwards") }
   /// Open
@@ -936,6 +938,10 @@ public enum L10n {
   public static var quest: String { return L10n.tr("Mainstrings", "quest") }
   /// Quest Completed!
   public static var questCompletedTitle: String { return L10n.tr("Mainstrings", "quest_completed_title") }
+  /// You've found %d quest items
+  public static func questItemsFound(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "quest_items_found", p1)
+  }
   /// Quest Mechanics
   public static var questMechanics: String { return L10n.tr("Mainstrings", "quest_mechanics") }
   /// Complete any type of task or use skills to rack up pending damage! Damage will be applied on your next day reset. Strength affects how much damage you do.
