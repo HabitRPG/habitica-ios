@@ -1431,7 +1431,7 @@
 "is_closed" = "Geschlossen";
 "settings.push_notifications.content_release" = "Inhaltsveröffentlichungen + Events";
 "monthly_backgrounds" = "Monatliche Hintergründe";
-"locations.customizations" = "Anpassungen";
+"locations.customizations" = "Individualisierungen";
 "groups.copy_shared_tasks_description" = "Zugeteilte und offene Aufgaben in deinen persönlichen Aufgabenlisten anzeigen";
 "unsubscribe_google" = "Du willst nicht länger Abonnent sein? Aufgrund Deiner Zahlungsmethode ist es notwendig, Dein Abo über den Google Play Store zu kündigen. Alle verbleibenden Monate des Abo-Guthabens bleiben nach der Kündigung bis zu ihrem Enddatum aktiv.";
 "open_google_play" = "Google Play Store öffnen";
@@ -1576,7 +1576,7 @@
 "sub_perk" = "Abo-Vorteil";
 "subscription.months_subscribed" = "Monate abonniert";
 "subscription.next_hourglass_delivery" = "Nächste Lieferung einer Mystischen Sanduhr";
-"subscription.subscribers_receive" = "Abonnierende erhalten eine Mystische Sanduhr, ein Mystisches Ausrüstungsset und Edelsteine, die innerhalb der ersten zwei Tage des Monats auf dem Markt wieder aufgefüllt werden";
+"subscription.subscribers_receive" = "Abonnenten erhalten eine Mystische Sanduhr, ein Mystisches Ausrüstungsset und Edelsteine, die innerhalb der ersten zwei Tage des Monats auf dem Markt wieder aufgefüllt werden";
 "subscription.subscribe_again_hourglasses" = "Abonniere erneut, um weiter Mystische Sanduhren zu erhalten";
 "items.empty.potion_description" = "Erledige Aufgaben, Elixier-Quests oder besuche den Marktplatz zum Auffüllen!";
 "items.empty.egg_description" = "Erledige Aufgaben, Haustier-Quests oder besuche den Marktplatz zum Auffüllen!";
@@ -1637,7 +1637,7 @@
 "quest_mechanics_damage_title" = "Bosse bestrafen dich für versäumte Tagesaufgaben";
 "quest_mechanics_pausing_description" = "Wenn du Schwierigkeiten hast, deine Tagesaufgaben abzuschließen, kannst du unter Einstellungen den Schaden für eine Weile aussetzen. Dadurch wird verhindert, dass der Boss dich oder andere verletzt, aber auch dein eigener Schaden wird unterbrochen. Andere Mitglieder, die Tagesaufgaben verpasst haben, provozieren weiterhin Schaden, also sei vorsichtig da draußen!";
 "class_change_confirm_description" = "Dadurch ändert sich die am Markt freigeschaltene Ausrüstung, die verfügbaren Fertigkeiten wechseln und die Punkte für Eigenschaften werden zurückgesetzt.";
-"quest_mechanics_rage_description" = "Einige schwierige Bosse haben eine orangefarbene Wutanzeige unter ihren HP. Diese Anzeige füllt sich, wenn Teilnehmer Tagesaufgaben verpassen. Wenn sie vollständig gefüllt ist, führt der Boss einen furchterregenden Angriff aus, der zusätzlichen Schaden verursacht!";
+"quest_mechanics_rage_description" = "Einige schwierige Bosse haben eine orangefarbene Rasereianzeige unter ihren HP. Diese Anzeige füllt sich, wenn Teilnehmer Tagesaufgaben verpassen. Wenn sie vollständig gefüllt ist, führt der Boss einen furchterregenden Angriff aus, der zusätzlichen Schaden verursacht!";
 "party.quest_participant_one" = "1 Teilnehmer";
 "settings.user_data" = "Benutzerdaten";
 "settings.privacy_preferences" = "Privatsphäre-Einstellungen";
@@ -1671,3 +1671,4 @@
 "api_token_title" = "API-Schlüssel";
 "api_token_is_password" = "Dein API-Schlüssel ist wie ein Passwort";
 "api_token_password_description" = "Teile ihn niemals öffentlich. Du wirst ggf. nach deiner Benutzer-ID gefragt, aber schreibe deinen API-Schlüssel niemals dort, wo andere ihn sehen könnten bspw. Github.";
+"privacy_policy" = "Datenschutzbestimmungen";
