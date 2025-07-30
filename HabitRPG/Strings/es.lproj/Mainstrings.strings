@@ -1660,3 +1660,6 @@
 "login.already_have_account" = "¿Ya tienes una cuenta?";
 "login.need_account" = "¿Necesitas una cuenta?";
 "privacy_policy" = "Política de Privacidad";
+"errors.username_already_taken" = "Nombre de usuario ya en uso.";
+"one_quest_item_found" = "Has encontrado 1 artículo de misión";
+"quest_items_found" = "Has encontrado %d artículos de misión";
