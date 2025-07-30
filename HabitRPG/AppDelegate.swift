@@ -242,7 +242,8 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         )
     }
     
-    @objc private func handleInvalidCredentials() {
+    @objc
+    private func handleInvalidCredentials() {
         DispatchQueue.main.async { [weak self] in
             // cancel any pending network requests to prevent race conditions
             URLSession.shared.getAllTasks { tasks in
@@ -258,7 +259,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     }
     
     func showLoginScreen() {
-        var currentWindow = UIApplication.shared.connectedScenes
+        let currentWindow = UIApplication.shared.connectedScenes
                 .compactMap { $0 as? UIWindowScene }
                 .first?.windows
                 .first { $0.isKeyWindow }

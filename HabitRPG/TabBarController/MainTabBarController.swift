@@ -27,6 +27,8 @@ class MainTabBarController: UITabBarController {
     private var tutorialDailyCount = 0
     private var tutorialToDoCount = 0
     
+    private var presentedPrivacyPreferencesAt: Date?
+    
     private var _displayBirthdayIcon: Bool = false {
         didSet {
             if _displayBirthdayIcon {
@@ -141,12 +143,14 @@ class MainTabBarController: UITabBarController {
             }
             
             if user.preferences?.analyticsConsentGiven == false {
-                let controller = UIHostingController(rootView: PrivacyPreferencesScreenView())
-                controller.modalPresentationStyle = .fullScreen
-                controller.rootView.dismisser.dismiss = {
-                    controller.dismiss(animated: true)
+                if self?.presentedPrivacyPreferencesAt == nil || Date().timeIntervalSince(self?.presentedPrivacyPreferencesAt ?? Date()) > 60 {
+                    let controller = UIHostingController(rootView: PrivacyPreferencesScreenView())
+                    controller.modalPresentationStyle = .fullScreen
+                    controller.rootView.dismisser.dismiss = {
+                        controller.dismiss(animated: true)
+                    }
+                    self?.present(controller, animated: true)
                 }
-                self?.present(controller, animated: true)
             }
         }).start())
         disposable.inner.add(taskRepository.getDueTasks().on(value: {[weak self] tasks in

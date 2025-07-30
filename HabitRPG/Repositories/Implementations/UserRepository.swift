@@ -202,10 +202,10 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     
     private func updateAuth(response: LoginResponseProtocol?) {
         if let response = response {
-            if !response.id.isEmpty {
+            if response.id?.isEmpty == false {
                 AuthenticationManager.shared.currentUserId = response.id
             }
-            if !response.apiToken.isEmpty {
+            if response.apiToken?.isEmpty == false {
                 AuthenticationManager.shared.currentUserKey = response.apiToken
             }
         }
@@ -243,9 +243,20 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     
     func loginApple(identityToken: String, name: String, allowRegister: Bool) -> Signal<LoginResponseProtocol?, Never> {
         let call = AppleLoginCall(identityToken: identityToken, name: name, allowRegister: allowRegister)
-        return call.objectSignal.on(value: { loginResponse in
+        return call.objectSignal
+            .on(value: { loginResponse in
             self.updateAuth(response: loginResponse)
-        }).merge(with: call.httpResponseSignal.map({ response -> LoginResponseProtocol? in
+        })
+            .map({ response in
+                if response == nil {
+                    let loginResponse = APILoginResponse()
+                    loginResponse.newUser = true
+                    return loginResponse
+                } else {
+                    return response
+                }
+            })
+            .merge(with: call.httpResponseSignal.map({ response -> LoginResponseProtocol? in
             if response.statusCode == 404 {
                 let loginResponse = APILoginResponse()
                 loginResponse.newUser = true
@@ -329,10 +340,10 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             return call.objectSignal
                 .on(value: { loginResponse in
                 if let response = loginResponse {
-                    if !response.id.isEmpty {
+                    if response.id?.isEmpty == false {
                         AuthenticationManager.shared.currentUserId = response.id
                     }
-                    if !response.apiToken.isEmpty {
+                    if response.apiToken?.isEmpty == false {
                         AuthenticationManager.shared.currentUserKey = response.apiToken
                         ToastManager.show(
                                             text:  L10n.Settings.updatedPassword,

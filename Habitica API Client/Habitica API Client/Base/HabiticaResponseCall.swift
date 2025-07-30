@@ -61,37 +61,8 @@ public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
             )
           }
         )
-
-        // HTTP 4xx/5xx + JSON body together
-        handler?.observe(
-          signal: serverErrorSignal
-            .combineLatest(with: errorJsonSignal)
-            .map { (nsErr, json) -> (NetworkError, [String]) in
-                // build the NetworkError with the real status code
-                let netErr = NetworkError(
-                    message: nsErr.localizedDescription,
-                    url: (nsErr.userInfo["url"] as? String) ?? "",
-                    code: nsErr.code
-                )
-                
-                // extract any server‐sent messages
-                var msgs: [String] = []
-                if let top = json["message"] as? String {
-                    msgs.append(top)
-                }
-                if let errors = json["errors"] as? [[String: Any]] {
-                    for err in errors {
-                        if let message = err["message"] as? String {
-                            msgs.append(message)
-                        }
-                    }
-                }
-                
-                return (netErr, msgs)
-            }
-        )
         
-        HabiticaResponseCall<T, C>.errorHandler?.observe(signal: serverErrorSignal.combineLatest(with: errorJsonSignal)
+        handler?.observe(signal: serverErrorSignal.combineLatest(with: errorJsonSignal)
             .map({ (error, jsonAny) -> (NetworkError, [String]) in
                 let json = jsonAny
                 var errors = [String]()

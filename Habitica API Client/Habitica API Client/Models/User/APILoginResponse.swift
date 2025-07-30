@@ -10,8 +10,8 @@ import Foundation
 import Habitica_Models
 
 public class APILoginResponse: LoginResponseProtocol, Decodable {
-    public var id: String = ""
-    public var apiToken: String = ""
+    public var id: String?
+    public var apiToken: String?
     public var newUser: Bool = false
     
     enum CodingKeys: String, CodingKey {
