@@ -151,7 +151,7 @@ class AdventureGuideTableViewCell: UITableViewCell, Themeable {
         starView.pin.start(22).width(30).height(35).vCenter()
         titleView.pin.start(62).top(13).sizeToFit()
         progressText.pin.end(28).bottom(15).sizeToFit()
-        progressBar.pin.start(62).bottom(21).before(of: progressText).marginEnd(10).height(5)
+        progressBar.pin.start(62).bottom(21).before(of: progressText).marginEnd(10).height(10)
         
         rewardBackground.pin.top(11).end(23).width(58).height(22)
         goldView.pin.start(to: rewardBackground.edge.start).marginStart(5).top(to: rewardBackground.edge.top).marginTop(3).width(16).height(16)

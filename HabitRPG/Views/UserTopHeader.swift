@@ -152,13 +152,13 @@ class UserTopHeader: UIView, Themeable {
             gemView,
             goldView
             ], color: theme.contentBackgroundColor)
-        healthLabel.textColor = theme.secondaryTextColor
+        healthLabel.textColor = theme.isDark ? UIColor.maroon500 : UIColor.maroon10
         healthLabel.backgroundColor = theme.contentBackgroundColor
         healthLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
-        experienceLabel.textColor = theme.secondaryTextColor
+        experienceLabel.textColor = theme.isDark ? UIColor.yellow500 : UIColor.yellow1
         experienceLabel.backgroundColor = theme.contentBackgroundColor
         experienceLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
-        magicLabel.textColor = theme.secondaryTextColor
+        magicLabel.textColor = theme.isDark ? UIColor.blue500 : UIColor.blue10
         magicLabel.backgroundColor = theme.contentBackgroundColor
         magicLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
         
