@@ -18,6 +18,7 @@ class UserManager: NSObject {
     
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
+    private let inventoryRepository = InventoryRepository()
     private let disposable = CompositeDisposable()
     private let configRepository = ConfigRepository.shared
     
@@ -125,10 +126,27 @@ class UserManager: NSObject {
               let questKey = quest.key,
               !questKey.isEmpty else {
             TaskRepository.currentUserQuestStatus = .noQuest
+            TaskRepository.currentQuestKey = nil
             return
         }
         
-        TaskRepository.currentUserQuestStatus = .questBoss
+        TaskRepository.currentQuestKey = questKey
+        inventoryRepository.getQuest(key: questKey)
+            .take(first: 1)
+            .on(value: { questContent in
+                if let questContent = questContent {
+                    if questContent.isCollectionQuest {
+                        TaskRepository.currentUserQuestStatus = .questCollect
+                    } else if questContent.isBossQuest {
+                        TaskRepository.currentUserQuestStatus = .questBoss
+                    } else {
+                        TaskRepository.currentUserQuestStatus = .questUnknown
+                    }
+                } else {
+                    TaskRepository.currentUserQuestStatus = .questUnknown
+                }
+            })
+            .start()
     }
     
     private func onUserUpdated(user: UserProtocol) {
