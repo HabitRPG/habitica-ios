@@ -22,6 +22,7 @@ enum UserQuestStatus {
 class TaskRepository: BaseRepository<TaskLocalRepository> {
     
     static var currentUserQuestStatus: UserQuestStatus = .noQuest
+    static var currentQuestKey: String?
     
     func retrieveTasks(dueOnDay: Date? = nil) -> Signal<[TaskProtocol]?, Never> {
         let call = RetrieveTasksCall(dueOnDay: dueOnDay)
@@ -149,18 +150,25 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
                                               background: healthDiff >= 0 ? .green : .red)
                     ToastManager.show(toast: toastView)
                 }
-                
+                var dropMessage = ""
                 if let drop = response.temp?.drop {
-                    var dialog = drop.dialog
-                    if dialog == nil {
-                        dialog = "You found a \(drop.key ?? "")"
+                    dropMessage = drop.dialog ?? "You found a \(drop.key ?? "")"
+                }
+                if let questItemsFound = response.temp?.quest?.collection, questItemsFound > 0 {
+                    let questItemsText = questItemsFound == 1 ? L10n.oneQuestItemFound : L10n.questItemsFound(questItemsFound)
+                    if !dropMessage.isEmpty {
+                        dropMessage += "\n"
                     }
-                    ToastManager.show(text: dialog ?? "", color: .gray)
+                    dropMessage += questItemsText
+                }
+                
+                if !dropMessage.isEmpty {
+                    ToastManager.show(text: dropMessage, color: .gray)
                 }
             }).map({ (response, _) in
                 return response
             })
-        }
+    }
     
         
     

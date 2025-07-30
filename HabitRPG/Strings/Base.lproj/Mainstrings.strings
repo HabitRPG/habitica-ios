@@ -801,6 +801,7 @@
 "errors.enter_valid_email" = "Please enter a valid Email address";
 "errors.password_length" = "Password must be %d characters or more";
 "errors.password_not_matching" = "Passwords must match";
+"errors.username_already_taken" = "Username already taken.";
 "never" = "Never";
 "never_lower_case" = "never";
 "day" = "day";
@@ -1307,6 +1308,8 @@
 "week_reminder_body" = "Breaks are healthy, but you can still earn points for simple activities to level up and get cool gear!";
 "x_items_found" = "%d Items pending";
 "one_item_found" = "1 Item pending";
+"quest_items_found" = "You've found %d quest items";
+"one_quest_item_found" = "You've found 1 quest item";
 "new" = "New";
 "seasonal_potions_available" = "Seasonal items available";
 "open_for" = "Open for %@";

@@ -11,4 +11,10 @@ import Habitica_Models
 
 class APITaskResponseQuest: TaskResponseQuestProtocol, Decodable {
     var progressDelta: Float = 0
+    var collection: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case progressDelta
+        case collection
+    }
 }
