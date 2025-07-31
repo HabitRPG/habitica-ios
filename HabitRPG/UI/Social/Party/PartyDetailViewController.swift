@@ -431,6 +431,6 @@ class PartyDetailViewController: GroupDetailViewController {
             .padding(.horizontal, 30)
             .padding(.vertical, 16)
         }))
-        sheet.show()
+        present(sheet, animated: true)
     }
 }

@@ -23,7 +23,9 @@ class ThemedNavigationController: UINavigationController, Themeable {
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .semibold),
             NSAttributedString.Key.kern: 0.6
         ]
-        navigationBar.backgroundColor = navigationBarColor ?? theme.contentBackgroundColor
-        navigationBar.barTintColor = navigationBarColor ?? theme.contentBackgroundColor
+        if #unavailable(iOS 26.0) {
+            navigationBar.backgroundColor = navigationBarColor ?? theme.contentBackgroundColor
+            navigationBar.barTintColor = navigationBarColor ?? theme.contentBackgroundColor
+        }
     }
 }

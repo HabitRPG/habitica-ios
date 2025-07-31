@@ -466,6 +466,12 @@ public protocol NotificationEmitter {
 }
 
 extension Results: NotificationEmitter {
+    public func observe(on queue: DispatchQueue?, _ block: @escaping (RealmSwift.RealmCollectionChange<RealmSwift.Results<Element>>) -> Void) -> RealmSwift.NotificationToken {
+        self.observe(keyPaths: nil, on: queue) { change in
+            block(change)
+        }
+    }
+    
 }
 
 public protocol ObjectNotificationEmitter {
@@ -525,7 +531,19 @@ public protocol SortableRealmResults {
     func distinct(by: [String]) -> Self
 }
 
-extension Results: SortableRealmResults {}
+extension Results: SortableRealmResults {
+    public func sorted(by: [RealmSwift.SortDescriptor]) -> RealmSwift.Results<Element> {
+        return self
+    }
+    
+    public func sorted(byKeyPath keyPath: String, ascending: Bool) -> RealmSwift.Results<Element> {
+        return self
+    }
+    
+    public func distinct(by: [String]) -> RealmSwift.Results<Element> {
+        return self
+    }
+}
 
 public typealias RealmReactiveResults<Value: RealmCollectionValue> = (value: Results<Value>, changes: ReactiveChangeset?)
 public typealias ReactiveResults<Value: Collection> = (value: Value, changes: ReactiveChangeset?)

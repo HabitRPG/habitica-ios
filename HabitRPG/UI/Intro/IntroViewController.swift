@@ -96,7 +96,7 @@ ZStack(alignment: .bottom) {
                     }.padding(.top, geometry.safeAreaInsets.top)
                 Spacer()
                 Indicator(currentPage: currentPage, pageCount: pages.count)
-                Button(action: {
+                let button = Button(action: {
                     withAnimation {
                         if isLastPage {
                             if let action = finishIntro {
@@ -109,10 +109,17 @@ ZStack(alignment: .bottom) {
                 }, label: {
                     Text(isLastPage ? L10n.getStarted : L10n.next).padding(.vertical, 10)
                         .frame(maxWidth: .infinity)
+                })
+                
+                if #available(iOS 26.0, *) {
+                    button
+                        .buttonStyle(.glass)
+                } else {
+                    button
                         .background(Color.black.opacity(0.3))
                         .foregroundColor(.white)
                         .cornerRadius(8)
-                })
+                }
             }
             .padding(.bottom, geometry.safeAreaInsets.bottom + 12)
             .padding(.horizontal, 20)

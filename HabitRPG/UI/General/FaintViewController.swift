@@ -57,7 +57,7 @@ struct HabiticaButtonUI<Label: View>: View {
                 .frame(maxWidth: .infinity)
                 .background(type == .bordered ? Color.clear : color)
                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(color, lineWidth: type == .bordered ? 3 : 0))
-                .cornerRadius(8)
+                .cornerRadius(size.height/2)
         }
     }
 }

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Group 427.png",
+      "filename" : "ToDos-unselected.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Group 427@2x.png",
+      "filename" : "ToDos-unselected@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Group 427@3x.png",
+      "filename" : "ToDos-unselected@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

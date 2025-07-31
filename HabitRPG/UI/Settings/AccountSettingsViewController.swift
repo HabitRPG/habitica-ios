@@ -240,7 +240,6 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             }.onCellSelection { _, _ in
                 let sheetView = PrivacyPreferencesSheetView()
                 let sheetController = HostingBottomSheetController(rootView: sheetView)
-                sheetController.preferredSheetSizing = .medium
                 self.present(sheetController, animated: true)
             }
         }
@@ -275,7 +274,6 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
                     }
                 }
                 let sheetController = HostingBottomSheetController(rootView: sheetView)
-                sheetController.preferredSheetSizing = .medium
                 self.present(sheetController, animated: true)
             }
         }

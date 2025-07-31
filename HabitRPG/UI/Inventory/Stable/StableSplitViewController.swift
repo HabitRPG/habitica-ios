@@ -57,7 +57,6 @@ class StableSplitViewController: HabiticaSplitViewController {
                 self?.organizeByColor = false
             })
         }))
-        sheet.preferredSheetSizing = .large
         present(sheet, animated: true)
     }
 }

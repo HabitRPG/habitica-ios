@@ -39,7 +39,7 @@ struct LoginTextFieldStyle<Icon: View>: TextFieldStyle {
     
     // swiftlint:disable:next identifier_name
     func _body(configuration: TextField<Self._Label>) -> some View {
-        HStack {
+        let field = HStack {
             if let prefix = prefix {
                 Text(prefix)
                     .scaledFont(size: 17)
@@ -59,7 +59,12 @@ struct LoginTextFieldStyle<Icon: View>: TextFieldStyle {
         .foregroundColor(Color.white)
         .padding(.horizontal, 21)
         .padding(.vertical, 10)
-            .minHeight(60)
+        .minHeight(60)
+        
+        if #available(iOS 26.0, *) {
+            field.glassEffect(.regular.tint(.purple100), in: .capsule)
+        } else {
+            field
             .background(.purple100)
             .cornerRadius(16)
             .overlay(
@@ -69,6 +74,7 @@ struct LoginTextFieldStyle<Icon: View>: TextFieldStyle {
                     .scaleEffect(1)
             )
             .animation(.easeInOut, value: isValid)
+        }
     }
 }
 
@@ -202,18 +208,17 @@ struct LoginForm: View {
         } else {
             let isFormValid = viewState == .login ? !email.isEmpty && isPasswordValid == true
                 : isEmailValid == true && isPasswordValid == true && isPasswordRepeatValid == true
-            Button {
+            LoginButton {
                 onLogin()
             } label: {
                 Text(viewState == .register ? L10n.continue : L10n.Login.login)
-            }.buttonStyle(LoginScreenButtonStyle())
-                .drawingGroup()
+            }
                 .padding(.top, 36)
                 .opacity(isFormValid ? 1 : 0.5)
                 .disabled(!isFormValid)
         }
         if viewState != .register {
-            Button {
+            LoginButton {
                 onAppleLogin()
             } label: {
                 Label {
@@ -221,9 +226,9 @@ struct LoginForm: View {
                 } icon: {
                     Image(Asset.loginApple.name)
                 }
-            }.buttonStyle(LoginScreenButtonStyle())
+            }
                 .padding(.top, 8)
-            Button {
+            LoginButton {
                 onGoogleLogin()
             } label: {
                 Label {
@@ -231,7 +236,7 @@ struct LoginForm: View {
                 } icon: {
                     Image(Asset.loginGoogle.name)
                 }
-            }.buttonStyle(LoginScreenButtonStyle())
+            }
                 .padding(.top, 8)
             
             Button {
@@ -240,6 +245,26 @@ struct LoginForm: View {
                 Text(L10n.Login.forgotPassword)
                     .foregroundColor(.white)
             }.padding(.top, 17)
+        }
+    }
+}
+
+struct LoginButton<Label: View>: View {
+    let action: () -> Void
+    @ViewBuilder let label: Label
+    
+    var body: some View {
+        let button = Button(action: {
+            action()
+        }, label: label
+            .frame(maxWidth: .infinity)
+            .frame(minHeight: 44))
+        
+        if #available(iOS 26.0, *) {
+            button
+                .buttonStyle(.glass)
+        } else {
+            button.buttonStyle(LoginScreenButtonStyle())
         }
     }
 }
@@ -323,7 +348,7 @@ struct LoginScreen: View {
                 }
                 if viewState == .initial {
                     Group {
-                        Button {
+                        LoginButton {
                             viewModel.appleLoginButtonPressed()
                         } label: {
                             Label {
@@ -331,8 +356,8 @@ struct LoginScreen: View {
                             } icon: {
                                 Image(Asset.loginApple.name)
                             }
-                        }.buttonStyle(LoginScreenButtonStyle())
-                        Button {
+                        }
+                        LoginButton {
                             viewModel.googleLoginButtonPressed()
                         } label: {
                             Label {
@@ -340,9 +365,9 @@ struct LoginScreen: View {
                             } icon: {
                                 Image(Asset.loginGoogle.name)
                             }
-                        }.buttonStyle(LoginScreenButtonStyle())
+                        }
                             .padding(.top, 8)
-                        Button {
+                        LoginButton {
                             withAnimation {
                                 viewState = .register
                             }
@@ -352,7 +377,7 @@ struct LoginScreen: View {
                             } icon: {
                                 Image(Asset.loginEmailInitial.name)
                             }
-                        }.buttonStyle(LoginScreenButtonStyle())
+                        }
                             .padding(.top, 8)
                         
                         let loginButton = Button {
