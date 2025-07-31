@@ -1672,3 +1672,6 @@
 "api_token_is_password" = "Dein API-Schlüssel ist wie ein Passwort";
 "api_token_password_description" = "Teile ihn niemals öffentlich. Du wirst ggf. nach deiner Benutzer-ID gefragt, aber schreibe deinen API-Schlüssel niemals dort, wo andere ihn sehen könnten bspw. Github.";
 "privacy_policy" = "Datenschutzbestimmungen";
+"one_quest_item_found" = "Du hast 1 Quest-Gegenstand gefunden";
+"errors.username_already_taken" = "Benutzername bereits vergeben.";
+"quest_items_found" = "Du hast %d Quest-Gegenstände gefunden";
