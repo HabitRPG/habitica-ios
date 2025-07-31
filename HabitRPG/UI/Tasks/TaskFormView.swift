@@ -938,11 +938,13 @@ class TaskFormController: UIHostingController<TaskFormView> {
             viewModel.textFieldTintColor = editedTask != nil ? viewModel.darkestTaskTintColor : Color(.purple10)
             
             if let controller = navigationController as? ThemedNavigationController {
-                controller.navigationBarColor = color
+                if #unavailable(iOS 26.0) {
+                    controller.navigationBarColor = color
+                    controller.navigationBar.tintColor = darkestColor
+                    controller.navigationBar.isTranslucent = false
+                    controller.navigationBar.shadowImage = UIImage()
+                }
                 controller.textColor = darkestColor
-                controller.navigationBar.tintColor = darkestColor
-                controller.navigationBar.isTranslucent = false
-                controller.navigationBar.shadowImage = UIImage()
             }
             view.backgroundColor = color
             
@@ -982,11 +984,13 @@ class TaskFormController: UIHostingController<TaskFormView> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let controller = navigationController as? ThemedNavigationController, editedTask == nil {
-            controller.navigationBarColor = .purple200
+            if #unavailable(iOS 26.0) {
+                controller.navigationBarColor = .purple200
+                controller.navigationBar.tintColor = .white
+                controller.navigationBar.isTranslucent = false
+                controller.navigationBar.shadowImage = UIImage()
+            }
             controller.textColor = .white
-            controller.navigationBar.tintColor = .white
-            controller.navigationBar.isTranslucent = false
-            controller.navigationBar.shadowImage = UIImage()
         }
     }
         
