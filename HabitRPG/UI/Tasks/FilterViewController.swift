@@ -27,15 +27,25 @@ class FilterViewController: BaseTableViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        
+        dataSource.tableView = tableView
+        dataSource.selectedTagIds = selectedTags
+        
+        doneButtonTapped(doneButton)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(languageChanged), name: .languageChanged, object: nil)
+    }
+    
+    private func setupUI() {
         self.navigationItem.title = L10n.filter
         self.clearButton.title = L10n.clear
         self.editButton.title = L10n.edit
         self.doneButton.title = L10n.done
         self.doneNavbarButton.title = L10n.done
         
-        dataSource.tableView = tableView
-        dataSource.selectedTagIds = selectedTags
-                
+        headerView.subviews.forEach { $0.removeFromSuperview() }
+        
         if taskType == "habit" {
             filterTypeControl = UISegmentedControl(items: [L10n.all, L10n.weak, L10n.strong])
         } else if taskType == "daily" {
@@ -49,8 +59,6 @@ class FilterViewController: BaseTableViewController {
         filterTypeControl.addTarget(self, action: #selector(filterTypeChanged), for: .valueChanged)
         headerView.addSubview(filterTypeControl)
         tableView.tableHeaderView = headerView
-        
-        doneButtonTapped(doneButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +80,16 @@ class FilterViewController: BaseTableViewController {
         super.viewWillLayoutSubviews()
         headerView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 46)
         filterTypeControl.frame = CGRect(x: 8, y: headerView.frame.size.height - 30, width: headerView.frame.size.width - 16, height: 30)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc
+    private func languageChanged() {
+        setupUI()
+        tableView.reloadData()
     }
     
     override func applyTheme(theme: Theme) {

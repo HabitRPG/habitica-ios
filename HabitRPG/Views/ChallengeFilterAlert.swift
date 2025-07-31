@@ -77,6 +77,8 @@ class ChallengeFilterAlert: UIViewController, Themeable {
         groupListView.axis = .vertical
         groupListView.spacing = 12
 
+        setupLocalizedText()
+        
         ownedButton.isChecked = showOwned
         notOwnedButton.isChecked = showNotOwned
         ownedButton.checkedAction = {[weak self] isChecked in
@@ -93,6 +95,28 @@ class ChallengeFilterAlert: UIViewController, Themeable {
         }).start())
         
         ThemeService.shared.addThemeable(themable: self)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(languageChanged), name: .languageChanged, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func setupLocalizedText() {
+        titleLabel.text = L10n.filter
+        doneButton.setTitle(L10n.done, for: .normal)
+        allGroupsButton.setTitle(L10n.all, for: .normal)
+        noGroupsButton.setTitle(L10n.Tasks.Form.none, for: .normal)
+        groupsTitleLabel.text = L10n.Groups.groups.uppercased()
+        ownershipTitleLabel.text = "OWNERSHIP"
+        ownedButton.text = L10n.Accessibility.owned
+        notOwnedButton.text = L10n.Accessibility.notOwned
+    }
+    
+    @objc
+    private func languageChanged() {
+        setupLocalizedText()
     }
 
     override func viewWillLayoutSubviews() {
