@@ -149,6 +149,10 @@ enum AppLanguage: Int {
     }
 }
 
+extension Notification.Name {
+    static let languageChanged = Notification.Name("LanguageChangedNotification")
+}
+
 class LanguageHandler {
     
     static func getAppLanguage() -> AppLanguage {
@@ -171,5 +175,6 @@ class LanguageHandler {
         if let path = Bundle.main.path(forResource: language.bundleCode, ofType: "lproj") {
             L10n.bundle = Bundle(path: path)
         }
+        NotificationCenter.default.post(name: .languageChanged, object: nil)
     }
 }
