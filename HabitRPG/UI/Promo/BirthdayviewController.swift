@@ -15,8 +15,7 @@ import ReactiveSwift
 
 private struct BirthdaySection<Title: View, Content: View>: View {
     let title: Title
-    @ViewBuilder
-    let content: Content
+    @ViewBuilder let content: Content
     
     var body: some View {
         VStack(spacing: 0) {

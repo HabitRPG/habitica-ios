@@ -187,7 +187,8 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
     }
     
     private func showReportView(message: InboxMessageProtocol) {
-        FlagViewController(type: .inboxMessage, offendingItem: message).show()
+        let controller = FlagViewController(type: .inboxMessage, offendingItem: message)
+        viewController?.present(controller, animated: true)
     }
     
     private func showProfile(message: InboxMessageProtocol) {

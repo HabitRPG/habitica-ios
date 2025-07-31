@@ -417,6 +417,11 @@
 		29CEA81D26414F0D00101C0A /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */; };
 		29CEA822264150CA00101C0A /* UIColor-Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CEA821264150CA00101C0A /* UIColor-Contributor.swift */; };
 		29CEA8562641A2B500101C0A /* AdventureGuideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CEA8552641A2B500101C0A /* AdventureGuideTableViewCell.swift */; };
+		29D048BA2E3A641A004A6AAA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 29D048B92E3A641A004A6AAA /* RealmSwift */; };
+		29D048BC2E3A6423004A6AAA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 29D048BB2E3A6423004A6AAA /* RealmSwift */; };
+		29D048BD2E3A6423004A6AAA /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 29D048BB2E3A6423004A6AAA /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		29D048C02E3A647F004A6AAA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 29D048BF2E3A647F004A6AAA /* RealmSwift */; };
+		29D048C12E3A647F004A6AAA /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 29D048BF2E3A647F004A6AAA /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		29D064B926414E5A007D4F4F /* UIColor-Habitica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291CE4B5231E828D0001A243 /* UIColor-Habitica.swift */; };
 		29D16C7725A336E8001D9A61 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D16C7625A336E8001D9A61 /* MainSplitViewController.swift */; };
 		29D16C7E25A33F70001D9A61 /* MainVCSelectionSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D16C7D25A33F70001D9A61 /* MainVCSelectionSegue.swift */; };
@@ -687,6 +692,28 @@
 				29265893206A4E84006C8B54 /* Habitica_Database.framework in Embed Frameworks */,
 				29265891206A4E84006C8B54 /* Habitica_Models.framework in Embed Frameworks */,
 				29265895206A4E84006C8B54 /* Habitica_API_Client.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29D048BE2E3A6423004A6AAA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				29D048BD2E3A6423004A6AAA /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29D048C22E3A647F004A6AAA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				29D048C12E3A647F004A6AAA /* RealmSwift in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1370,6 +1397,7 @@
 				2938ED3C28B4EE6B00E995A2 /* Amplitude in Frameworks */,
 				2953D83D28B51FA700DC456E /* ReactiveSwift in Frameworks */,
 				2992435F2DC8C1CD00432ED3 /* FirebaseAnalytics in Frameworks */,
+				29D048C02E3A647F004A6AAA /* RealmSwift in Frameworks */,
 				2994A8B128FE946A00CEDED7 /* Habitica_Database.framework in Frameworks */,
 				29252C382AF4FB330003692D /* Habitica_API_Client.framework in Frameworks */,
 				29BEE62F252CCFE100D456F8 /* SwiftUI.framework in Frameworks */,
@@ -1382,6 +1410,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29D048BC2E3A6423004A6AAA /* RealmSwift in Frameworks */,
 				2992435D2DC8C0A900432ED3 /* FirebaseAnalytics in Frameworks */,
 				2953D83B28B51F9E00DC456E /* ReactiveSwift in Frameworks */,
 				2994A8B028FE946800CEDED7 /* Habitica_Database.framework in Frameworks */,
@@ -1435,6 +1464,7 @@
 				294F5D6628CA1DCB00760F6C /* ConfettiSwiftUI in Frameworks */,
 				2938ED4328B4EF5D00E995A2 /* SwiftyStoreKit in Frameworks */,
 				D92D26161D58EF00001FD977 /* AVFoundation.framework in Frameworks */,
+				29D048BA2E3A641A004A6AAA /* RealmSwift in Frameworks */,
 				2938ED3628B4EDC700E995A2 /* FirebaseRemoteConfig in Frameworks */,
 				292BD8AB28B4EB42006447EF /* Eureka in Frameworks */,
 				D9CD2DBE1BC7FBB500B1304B /* CoreSpotlight.framework in Frameworks */,
@@ -2819,6 +2849,7 @@
 				29BEE627252CCFE100D456F8 /* Sources */,
 				29BEE628252CCFE100D456F8 /* Frameworks */,
 				29BEE629252CCFE100D456F8 /* Resources */,
+				29D048C22E3A647F004A6AAA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2830,6 +2861,7 @@
 				2938ED3D28B4EEB200E995A2 /* KeychainAccess */,
 				2953D83C28B51FA700DC456E /* ReactiveSwift */,
 				2992435E2DC8C1CD00432ED3 /* FirebaseAnalytics */,
+				29D048BF2E3A647F004A6AAA /* RealmSwift */,
 			);
 			productName = "Habitica WidgetsExtension";
 			productReference = 29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */;
@@ -2842,6 +2874,7 @@
 				7A84E18F228928AC0081E96F /* Resources */,
 				7A84E18D228928AC0081E96F /* Sources */,
 				7A84E18E228928AC0081E96F /* Frameworks */,
+				29D048BE2E3A6423004A6AAA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2853,6 +2886,7 @@
 				2938ED3F28B4EEBC00E995A2 /* KeychainAccess */,
 				2953D83A28B51F9E00DC456E /* ReactiveSwift */,
 				2992435C2DC8C0A900432ED3 /* FirebaseAnalytics */,
+				29D048BB2E3A6423004A6AAA /* RealmSwift */,
 			);
 			productName = "Habitica Intents";
 			productReference = 7A84E191228928AC0081E96F /* Habitica Intents.appex */;
@@ -2960,6 +2994,7 @@
 				294F5D6528CA1DCB00760F6C /* ConfettiSwiftUI */,
 				29A3FD2E296720AF007D85B2 /* SwiftUIX */,
 				2945AE962B285D000022F3CC /* PanModal */,
+				29D048B92E3A641A004A6AAA /* RealmSwift */,
 			);
 			productName = HabitRPG;
 			productReference = D9EB4E8B18CB4A9400BB2094 /* Habitica.app */;
@@ -3088,6 +3123,7 @@
 				2945AE952B285CE00022F3CC /* XCRemoteSwiftPackageReference "PanModal" */,
 				29C55B2E2C21A1CB008F553A /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */,
 				29C55B312C21A247008F553A /* XCRemoteSwiftPackageReference "CwlCatchException" */,
+				29D048B82E3A641A004A6AAA /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = D9EB4E8C18CB4A9400BB2094 /* Products */;
 			projectDirPath = "";
@@ -5791,6 +5827,14 @@
 				minimumVersion = 2.2.0;
 			};
 		};
+		29D048B82E3A641A004A6AAA /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -5963,6 +6007,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2938ED4D28B5043700E995A2 /* XCRemoteSwiftPackageReference "Nimble" */;
 			productName = Nimble;
+		};
+		29D048B92E3A641A004A6AAA /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29D048B82E3A641A004A6AAA /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		29D048BB2E3A6423004A6AAA /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29D048B82E3A641A004A6AAA /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		29D048BF2E3A647F004A6AAA /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29D048B82E3A641A004A6AAA /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

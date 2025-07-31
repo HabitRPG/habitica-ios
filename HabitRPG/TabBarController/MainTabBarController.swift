@@ -261,11 +261,13 @@ class MainTabBar: UITabBar, Themeable {
 
     override open func sizeThatFits(_ size: CGSize) -> CGSize {
         var sizeThatFits = super.sizeThatFits(size)
-        guard let window = UIApplication.shared.findKeyWindow() else {
-            return sizeThatFits
-        }
-        if window.safeAreaInsets.bottom > 0 {
-            sizeThatFits.height = 42 + window.safeAreaInsets.bottom
+        if #unavailable(iOS 26.0) {
+            guard let window = UIApplication.shared.findKeyWindow() else {
+                return sizeThatFits
+            }
+            if window.safeAreaInsets.bottom > 0 {
+                sizeThatFits.height = 42 + window.safeAreaInsets.bottom
+            }
         }
         return sizeThatFits
     }
@@ -280,11 +282,14 @@ class MainTabBar: UITabBar, Themeable {
             }
         })
         tintColor = theme.fixedTintColor
-        barTintColor = theme.contentBackgroundColor
-        backgroundColor = theme.contentBackgroundColor
-        backgroundImage = UIImage.from(color: theme.contentBackgroundColor)
-        shadowImage = UIImage.from(color: theme.contentBackgroundColor)
-        barStyle = .black
+        unselectedItemTintColor = theme.ternaryTextColor
+        if #unavailable(iOS 26.0) {
+            barTintColor = theme.contentBackgroundColor
+            backgroundColor = theme.contentBackgroundColor
+            backgroundImage = UIImage.from(color: theme.contentBackgroundColor)
+            shadowImage = UIImage.from(color: theme.contentBackgroundColor)
+            barStyle = .black
+        }
     }
     
     override func layoutSubviews() {
