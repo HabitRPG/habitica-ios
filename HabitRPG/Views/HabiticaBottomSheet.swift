@@ -16,7 +16,7 @@ protocol Dismissable {
 class HostingBottomSheetController<ContentView: View>: UIHostingController<ContentView> {
     private var bottomInset: CGFloat = 0
         
-    override init(rootView: ContentView) {
+    init(rootView: ContentView, allowLargeDetent: Bool = false) {
         super.init(rootView: rootView)
         if let root = rootView as? Dismissable {
             root.dismisser.dismiss = {
@@ -24,7 +24,7 @@ class HostingBottomSheetController<ContentView: View>: UIHostingController<Conte
             }
         }
         
-        view.backgroundColor = .orange
+        view.backgroundColor = .clear
         
         if let sheetController = self.presentationController as? UISheetPresentationController {
             let fraction = UISheetPresentationController.Detent.custom { _ in
@@ -32,13 +32,14 @@ class HostingBottomSheetController<ContentView: View>: UIHostingController<Conte
                 return self.view.frame.size.height
                 
             }
-            sheetController.detents = [fraction, .large()]
-            sheetController.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+            sheetController.detents = [fraction]
+            if allowLargeDetent {
+                sheetController.detents.append(.large())
+            }
             sheetController.prefersGrabberVisible = true
-            sheetController.prefersScrollingExpandsWhenScrolledToEdge = true
         }
     }
-    
+
     @MainActor
     required dynamic init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
