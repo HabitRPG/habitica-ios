@@ -179,6 +179,11 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
             if let cds = user.preferences?.dayStart {
                 informationString.append("Custom Day Start: \(cds)\n")
             }
+            if let consent = user.preferences?.analyticsConsent {
+                informationString.append("Analytics Consent: \(consent)\n")
+            } else {
+                informationString.append("Analytics Consent: No Response\n")
+            }
         }
         return informationString
     }
