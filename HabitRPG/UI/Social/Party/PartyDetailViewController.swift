@@ -129,7 +129,7 @@ class PartyDetailViewController: GroupDetailViewController {
         partyChallengesButton.backgroundColor = theme.windowBackgroundColor
         partyChallengesButton.setTitleColor(theme.tintColor, for: .normal)
         questContentStackView.backgroundColor = theme.windowBackgroundColor
-        questContentStackView.cornerRadius = 12
+        questContentStackView.cornerRadius = 26
         inviteMemberButton.backgroundColor = theme.windowBackgroundColor
         inviteMemberButton.setTitleColor(theme.tintColor, for: .normal)
         startQuestButton.backgroundColor = theme.windowBackgroundColor

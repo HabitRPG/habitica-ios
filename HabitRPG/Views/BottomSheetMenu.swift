@@ -70,8 +70,8 @@ struct BottomSheetView<Title: View, Content: View>: View, Dismissable {
                 .font(.headline)
                 .foregroundColor(.primaryTextColor)
             content
-        }.padding(.horizontal, 24)
-            .padding(.top, 20)
+        }.padding(.horizontal, 20)
+            .padding(.top, 12)
             .padding(.bottom, 12)
     }
 }
