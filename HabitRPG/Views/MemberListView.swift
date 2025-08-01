@@ -117,7 +117,7 @@ struct MemberList: View {
                     }, canInvite: isLeader, isPending: true)
                     .padding(16)
                     .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-                    .cornerRadius(12)
+                    .cornerRadius(26)
                 }
             }
         }

@@ -27,12 +27,14 @@ class HostingBottomSheetController<ContentView: View>: UIHostingController<Conte
         view.backgroundColor = .clear
         
         if let sheetController = self.presentationController as? UISheetPresentationController {
+            self.view.sizeToFit()
+            let actualViewSize = self.view.frame.size.height
             let fraction = UISheetPresentationController.Detent.custom { _ in
-                self.view.sizeToFit()
-                return self.view.frame.size.height
+                
+                return actualViewSize + self.bottomInset
                 
             }
-            sheetController.detents = [fraction]
+            sheetController.detents = [fraction, .large()]
             if allowLargeDetent {
                 sheetController.detents.append(.large())
             }
