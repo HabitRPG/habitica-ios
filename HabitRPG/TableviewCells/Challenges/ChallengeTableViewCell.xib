@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="898" height="86"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K9c-QL-fNJ" id="cKH-IP-9MQ">
-                <rect key="frame" x="0.0" y="0.0" width="898" height="85.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="898" height="86"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big_gem" translatesAutoresizingMaskIntoConstraints="NO" id="awt-ik-dXW">
@@ -35,10 +33,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZOg-jY-5Vr">
-                        <rect key="frame" x="66" y="19" width="812" height="48"/>
+                        <rect key="frame" x="66" y="19" width="816" height="48"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Pf-Wi-0Gq">
-                                <rect key="frame" x="0.0" y="0.0" width="812" height="52"/>
+                                <rect key="frame" x="0.0" y="0.0" width="816" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="21" id="Gt2-Lb-tf9"/>
                                 </constraints>
@@ -47,7 +45,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3S-xl-CMk">
-                                <rect key="frame" x="0.0" y="56" width="812" height="0.0"/>
+                                <rect key="frame" x="0.0" y="56" width="816" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="21" id="jIl-VG-yDl"/>
                                 </constraints>
@@ -56,7 +54,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="obq-qJ-T3a">
-                                <rect key="frame" x="0.0" y="26" width="719" height="22"/>
+                                <rect key="frame" x="0.0" y="26" width="816" height="22"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MemberCountIcon" translatesAutoresizingMaskIntoConstraints="NO" id="hLe-qv-Uja">
                                         <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
@@ -142,6 +140,9 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="CMw-55-7qK">
+                                        <rect key="frame" x="723" y="0.0" width="93" height="22"/>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="500" constant="300" id="b1b-n6-yqX"/>
@@ -180,6 +181,7 @@
                 <outlet property="memberCountLabel" destination="331-AO-u2D" id="GKP-KG-8i6"/>
                 <outlet property="nameLabel" destination="3Pf-Wi-0Gq" id="FVP-p7-YaG"/>
                 <outlet property="officialBadge" destination="xJw-Ph-RcP" id="vQy-uT-CI6"/>
+                <outlet property="otherPillsStack" destination="CMw-55-7qK" id="1mr-Rc-g9Z"/>
                 <outlet property="ownerBadge" destination="VLb-Ql-Fij" id="s20-ZR-n6x"/>
                 <outlet property="participatingBadge" destination="2j8-z6-3p0" id="NyB-SF-Yaa"/>
                 <outlet property="prizeLabel" destination="dwk-Uu-v8M" id="4zu-1h-6w1"/>
