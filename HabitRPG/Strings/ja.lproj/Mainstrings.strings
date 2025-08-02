@@ -1558,3 +1558,6 @@
 "party.quest_participant_one" = "参加者1人";
 "subscription_info_3_description_gear" = "最新の限定装備で着飾りましょう！有料プランに登録して%@の %@をゲットしよう！";
 "subscription.payment_method" = "お支払い方法";
+"login.continue_with_google" = "Google で続行";
+"login.continue_with_email" = "Eメールで続行";
+"login.continue_with_apple" = "Apple で続行";
