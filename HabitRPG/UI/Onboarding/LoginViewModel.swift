@@ -229,6 +229,9 @@ class LoginViewModel: ObservableObject {
                     }
                     if self.socialLoginMethod != nil {
                         self.userRepository.updateUsername(newUsername: self.username)
+                            .flatMap(.latest, { _ in
+                                self.userRepository.updateUser(key: "profile.name", value: self.username)
+                            })
                             .on(value: { _ in
                                 self.onSuccessfulLogin(response?.newUser ?? true)
                             }).observeCompleted {}
