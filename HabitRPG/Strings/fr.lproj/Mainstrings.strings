@@ -1609,3 +1609,6 @@
 "save_preferences" = "Enregistrer les Préférences";
 "settings.daily_reminder_permission_needed" = "Veuillez autoriser l'affichage de notifications dans vos Paramètres pour utiliser les rappels quotidiens";
 "privacy_policy" = "Politique de Confidentialité";
+"errors.username_already_taken" = "Non d'utilisateur déjà pris.";
+"quest_items_found" = "Vous avez trouvé %d articles de quête";
+"one_quest_item_found" = "Vous avez trouvé 1 article de quête";
