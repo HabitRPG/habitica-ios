@@ -60,8 +60,7 @@ class ImageManager {
         "shop_armoire": "gif",
         "Pet_HatchingPotion_Cryptid": "gif",
         "Mount_Head_Dragon-Hydra": "gif",
-        "Mount_Body_Dragon-Hydra": "gif",
-        "stable_Mount_Icon_Dragon-Hydra": "gif"
+        "Mount_Body_Dragon-Hydra": "gif"
     ]
     
     @MainActor
