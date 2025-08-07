@@ -21,12 +21,12 @@ struct PrivacyPreferencesScreenView: View, Dismissable {
             VStack(alignment: .leading, spacing: 0) {
                 Text(L10n.yourPrivacyPreferences)
                     .foregroundStyle(.white)
-                    .font(.system(size: 28, weight: .medium))
+                    .scaledFont(size: 30, weight: .bold)
                     .padding(.bottom, 20)
                     .padding(.horizontal, 13)
                 Text(L10n.privacyPreferencesFullDescription)
                     .foregroundStyle(.white)
-                    .font(.system(size: 16))
+                    .scaledFont(size: 16)
                     .lineSpacing(4)
                     .padding(.bottom, 16)
                     .padding(.horizontal, 13)
@@ -52,6 +52,7 @@ struct PrivacyPreferencesScreenView: View, Dismissable {
                     }
                 } label: {
                     Text(L10n.savePreferences)
+                        .scaledFont(size: 16, weight: .bold)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                 }
@@ -68,6 +69,7 @@ struct PrivacyPreferencesScreenView: View, Dismissable {
                     }
                 } label: {
                     Text(L10n.acceptAll)
+                        .scaledFont(size: 16, weight: .bold)
                         .foregroundColor(.gray50)
                         .frame(maxWidth: .infinity)
                 }
@@ -77,6 +79,7 @@ struct PrivacyPreferencesScreenView: View, Dismissable {
                 .padding(.top, 8)
                 if let url = URL(string: "https://habitica.com/static/privacy") {
                     Link("Habitica's Privacy Policy", destination: url)
+                        .scaledFont(size: 16, weight: .bold)
                         .frame(maxWidth: .infinity)
                         .foregroundColor(.purple600)
                         .height(60)

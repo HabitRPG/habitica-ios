@@ -218,9 +218,9 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
                 informationString.append("Custom Day Start: \(cds)\n")
             }
             if let consent = user.preferences?.analyticsConsent {
-                informationString.append("Analytics Consent: \(consent)\n")
+                informationString.append("Analytics Enabled: \(consent)\n")
             } else {
-                informationString.append("Analytics Consent: No Response\n")
+                informationString.append("Analytics Enabled: No Response\n")
             }
         }
         return informationString

@@ -904,9 +904,9 @@ public enum L10n {
   public static var premiumCurrency: String { return L10n.tr("Mainstrings", "premium_currency") }
   /// Privacy Policy
   public static var privacyPolicy: String { return L10n.tr("Mainstrings", "privacy_policy") }
-  /// Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\n\nYou can change these at any time from your account settings.
+  /// Your privacy is important to us. Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\nYou can change these at any time from your account settings.
   public static var privacyPreferencesFullDescription: String { return L10n.tr("Mainstrings", "privacy_preferences_full_description") }
-  /// Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\n\nYou can change this at any time. To learn more, review our [Privacy Policy](https://habitica.com/static/privacy).
+  /// Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\nYou can change this at any time. To learn more, review our [Privacy Policy](https://habitica.com/static/privacy).
   public static var privacyPreferencesSheetDescription: String { return L10n.tr("Mainstrings", "privacy_preferences_sheet_description") }
   /// How it works
   public static var promoInfoInstructionsTitle: String { return L10n.tr("Mainstrings", "promo_info_instructions_title") }

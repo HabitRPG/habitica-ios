@@ -217,7 +217,11 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     
     private func handleBugReport() {
         let viewController = StoryboardScene.Support.reportBugViewController.instantiate()
-        navigationController?.pushViewController(viewController, animated: true)
+        if let navController = navigationController {
+            navigationController?.pushViewController(viewController, animated: true)
+        } else {
+            present(viewController, animated: true)
+        }
     }
     
     private func needsUpdate() -> Bool {

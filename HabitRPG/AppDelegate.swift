@@ -270,9 +270,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                     let storyboard = UIStoryboard(name: "Intro", bundle: nil)
                     if let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController") as? LoginTableViewController {
                         loginViewController.isRootViewController = true
-                        let navigationController = UINavigationController(rootViewController: loginViewController)
-                        navigationController.setNavigationBarHidden(true, animated: false)
-                        window.rootViewController = navigationController
+                        window.rootViewController = loginViewController
                         window.makeKeyAndVisible()
                     }
                 }
@@ -280,9 +278,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
                 let storyboard = UIStoryboard(name: "Intro", bundle: nil)
                 if let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController") as? LoginTableViewController {
                     loginViewController.isRootViewController = true
-                    let navigationController = UINavigationController(rootViewController: loginViewController)
-                    navigationController.setNavigationBarHidden(true, animated: false)
-                    window.rootViewController = navigationController
+                    window.rootViewController = loginViewController
                     window.makeKeyAndVisible()
                 }
             }

@@ -677,14 +677,14 @@ class MainMenuViewController: BaseTableViewController {
             if let navigationController = viewController as? UINavigationController {
                 present(navigationController, animated: true, completion: nil)
             } else {
-                if splitViewController != nil {
+                if let splitViewController = splitViewController, !splitViewController.isCollapsed {
                     let oldIndexPath = currentSecondaryIndexPath
                     currentSecondaryIndexPath = indexPath
                     tableView.beginUpdates()
                     tableView.reloadRows(at: [indexPath, oldIndexPath], with: .automatic)
                     tableView.endUpdates()
                     viewController.navigationItem.setHidesBackButton(true, animated: false)
-                    splitViewController?.showDetailViewController(viewController, sender: self)
+                    splitViewController.showDetailViewController(viewController, sender: self)
                 } else {
                     navigationController?.pushViewController(viewController, animated: true)
                 }

@@ -390,8 +390,8 @@
 "settings.privacy_preferences" = "Privacy Preferences";
 "settings.manage_privacy_preferences" = "Change your privacy permissions";
 "your_privacy_preferences" = "Your Privacy Preferences";
-"privacy_preferences_sheet_description" = "Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\n\nYou can change this at any time. To learn more, review our [Privacy Policy](https://habitica.com/static/privacy).";
-"privacy_preferences_full_description" = "Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\n\nYou can change these at any time from your account settings.";
+"privacy_preferences_sheet_description" = "Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\nYou can change this at any time. To learn more, review our [Privacy Policy](https://habitica.com/static/privacy).";
+"privacy_preferences_full_description" = "Your privacy is important to us. Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\nYou can change these at any time from your account settings.";
 "performance_analytics" = "Performance & Analytics";
 "performance_analytics_description" = "This is used to improve the player experience, performance, and services of Habitica. Our support team will also use this when handling requests and bug reports.";
 "strictly_necessary" = "Strictly necessary";
