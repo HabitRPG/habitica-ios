@@ -27,13 +27,13 @@ class AdventureGuideTableViewCell: UITableViewCell, Themeable {
         let view = GradientView()
 
         view.horizontalMode = true
-        view.cornerRadius = 8
+        view.cornerRadius = 13
         return view
     }()
     
     private let overlayView: UIView = {
         let view = UIView()
-        view.cornerRadius = 5
+        view.cornerRadius = 10
         return view
     }()
     
@@ -81,7 +81,7 @@ class AdventureGuideTableViewCell: UITableViewCell, Themeable {
     
     private let rewardBackground: UIView = {
         let view = UIView()
-        view.cornerRadius = 11
+        view.cornerRadius = 13
         return view
     }()
     

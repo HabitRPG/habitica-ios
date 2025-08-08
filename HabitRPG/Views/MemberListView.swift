@@ -70,7 +70,7 @@ struct MemberListItem: View {
         }
         .padding(16)
         .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-        .cornerRadius(12)
+        .cornerRadius(26)
         .onTapGesture {
             onTap(member)
         }

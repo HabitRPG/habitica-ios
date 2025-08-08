@@ -38,7 +38,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        view.cornerRadius = 16
+        view.cornerRadius = 26
     }
     
     func applyTheme(theme: Theme) {

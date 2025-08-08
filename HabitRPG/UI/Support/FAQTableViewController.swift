@@ -101,7 +101,7 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
             stackView.titleView?.icon = entry["icon"] as? UIImage
             stackView.titleView?.showCarret = false
             stackView.titleView?.insets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
-            stackView.cornerRadius = 6
+            stackView.cornerRadius = 13
             stackView.showSeparators = false
             stackView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
             let textView = MarkdownTextView()

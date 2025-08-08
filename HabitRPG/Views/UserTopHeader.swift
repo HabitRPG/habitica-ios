@@ -91,6 +91,10 @@ class UserTopHeader: UIView, Themeable {
         usernameLabel.adjustsFontForContentSizeCategory = true
         levelLabel.adjustsFontForContentSizeCategory = true
         
+        healthLabel.type = "HP"
+        experienceLabel.type = "EXP"
+        magicLabel.type = "MP"
+        
         disposable.inner.add(repository.getUser().on(value: {[weak self] user in
             self?.set(user: user)
         }).start())
@@ -119,16 +123,6 @@ class UserTopHeader: UIView, Themeable {
     }
     
     private func configureAccessibilitySizing() {
-        if traitCollection.preferredContentSizeCategory.isAccessibilityCategory && healthLabel.type != "Hp" {
-            healthLabel.type = "Hp"
-            experienceLabel.type = "Exp"
-            magicLabel.type = "Mp"
-        } else if !traitCollection.preferredContentSizeCategory.isAccessibilityCategory && healthLabel.type != L10n.health {
-            healthLabel.type = L10n.health
-            experienceLabel.type = L10n.experience
-            magicLabel.type = L10n.mana
-        }
-        
         if traitCollection.preferredContentSizeCategory.isAccessibilityCategory && healthLabelAvatarSpacing.constant != 10 {
             healthLabelAvatarSpacing.constant = 10
             experienceLabelAvatarSpacing.constant = 10
@@ -152,7 +146,7 @@ class UserTopHeader: UIView, Themeable {
             gemView,
             goldView
             ], color: theme.contentBackgroundColor)
-        healthLabel.textColor = theme.isDark ? UIColor.maroon500 : UIColor.maroon10
+        healthLabel.textColor = theme.isDark ? UIColor.maroon500 : UIColor.maroon100
         healthLabel.backgroundColor = theme.contentBackgroundColor
         healthLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
         experienceLabel.textColor = theme.isDark ? UIColor.yellow500 : UIColor.yellow1

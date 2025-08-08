@@ -42,6 +42,7 @@ class EquipmentCell: UITableViewCell {
         twoHandedIconView.image = HabiticaIcons.imageOfTwoHandedIcon
         twoHandedLabel.text = L10n.twoHanded
         noBenefitsLabel.text = L10n.noBenefit
+        gearImageView.cornerRadius = 26
     }
     
     func configure(_ gear: GearProtocol) {

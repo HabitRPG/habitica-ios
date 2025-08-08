@@ -49,7 +49,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         gradient.endPoint = CGPoint(x: 1, y: 1)
         gradient.locations =  [-0.5, 0.55, 1.1]
         gradient.frame = CGRect(x: 20, y: 10, width: headerView.bounds.width - 40, height: 130)
-        gradient.cornerRadius = 12
+        gradient.cornerRadius = 26
         headerView.layer.insertSublayer(gradient, at: 0)
         headerView.addSubview(headerImageView)
         tableView.tableHeaderView = headerView
