@@ -65,13 +65,13 @@ class UserTopHeader: UIView, Themeable {
         magicLabel.icon = HabiticaIcons.imageOfMagic
         
         if UIDevice.current.userInterfaceIdiom == .pad {
-            healthLabel.fontSize = 13
-            experienceLabel.fontSize = 13
-            magicLabel.fontSize = 13
+            healthLabel.fontSize = 14
+            experienceLabel.fontSize = 14
+            magicLabel.fontSize = 14
         } else {
-            healthLabel.fontSize = 11
-            experienceLabel.fontSize = 11
-            magicLabel.fontSize = 11
+            healthLabel.fontSize = 12
+            experienceLabel.fontSize = 12
+            magicLabel.fontSize = 12
         }
         
         configureAccessibilitySizing()
@@ -86,10 +86,13 @@ class UserTopHeader: UIView, Themeable {
         avatarView.isUserInteractionEnabled = true
         gemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showGemView)))
         
-        usernameLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
-        levelLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 11)
+        usernameLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
+        levelLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
         usernameLabel.adjustsFontForContentSizeCategory = true
         levelLabel.adjustsFontForContentSizeCategory = true
+        hourglassView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
+        gemView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
+        goldView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
         
         healthLabel.type = "HP"
         experienceLabel.type = "EXP"
