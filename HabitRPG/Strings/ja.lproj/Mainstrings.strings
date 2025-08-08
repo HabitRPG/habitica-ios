@@ -823,7 +823,7 @@
 "gem_cap" = "ゴールドで購入可能なジェムを月間%d個アンロックします";
 "hourglass_count" = "+%d個の神秘の砂時計";
 "intro.welcome_prompt" = "あなたを何と呼べばいいですか？";
-"intro.avatar_setup_speechbubble" = "では、どのような容姿にしたいですか？ 心配しないで、これはあとで変更することができます。";
+"intro.avatar_setup_speechbubble" = "ようこそ！Habiticaへのガイド、Justin です。\n\nでは、どのような容姿にしたいですか？ 心配しないで、これはあとで変更することができます。";
 "intro.task_setup_speechbubble" = "素晴らしい！ さて、あなたはこの旅路を通して何に取り組むことに関心がありますか？";
 "intro.card2.text" = "現実でタスクをこなして、ゲーム内の機能をアンロックしましょう。よろいやペットなどのさまざまなアイテムを、目標に近づいたごほうびとして獲得しましょう。";
 "never" = "しません";
@@ -1561,3 +1561,8 @@
 "login.continue_with_google" = "Google で続行";
 "login.continue_with_email" = "Eメールで続行";
 "login.continue_with_apple" = "Apple で続行";
+"errors.username_already_taken" = "このユーザー名は既に使用されています。";
+"subscription.thanks_for_subscribing" = "有料プランに登録していただき、ありがとうございました";
+"login.need_account" = "アカウントが必要ですか？";
+"next_payment_x" = "次のお支払い%@";
+"join_habitica" = "Habiticaに参加する";

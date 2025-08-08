@@ -6,3 +6,14 @@
 "all" = "Tüm";
 "strong" = "Güçlü";
 "due" = "Bitiş Tarihi";
+"weak" = "Zayıf";
+"done" = "Bitti";
+"name" = "İsim";
+"change" = "Değiştir";
+"description" = "Açıklama";
+"summary" = "Özet";
+"use" = "Kullan";
+"yes" = "Evet";
+"no" = "Hayır";
+"reset_tips" = "Rehberleri Sıfırla";
+"titles.settings" = "Ayarlar";
