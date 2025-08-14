@@ -1263,7 +1263,7 @@
 "could_not_gift_gems" = "No se pudieron regalar las gemas. Por favor, inténtalo más tarde.";
 "report" = "Reportar";
 "open_for" = "Abrir durante %@";
-"more_help_button" = "Reportar un error";
+"more_help_button" = "Informar de un error";
 "premium_currency" = "Divisas premium";
 "suggest_pet_hatch_again_missing_egg" = "Todavía necesitas un %@ para eclosionar esta mascota de nuevo";
 "hatch" = "Eclosionar";
@@ -1526,7 +1526,7 @@
 "1_hour" = "1 Hora";
 "x_minutes" = "%d Minutos";
 "1_minute" = "1 Minuto";
-"swaps_in_x" = "Conexiones %@";
+"swaps_in_x" = "Cambia en %@";
 "refresh_for_items" = "Refresca la sesión para ver nuevos Artículos";
 "spring" = "Primavera";
 "summer" = "Verano";
@@ -1547,7 +1547,7 @@
 "failed" = "Fallado";
 "challenge_category.habitica_official" = "Oficial de Habitica";
 "challenge_category.academics" = "Académicos";
-"challenge_category.advocacy_causes" = "Promoción + Causas";
+"challenge_category.advocacy_causes" = "Defensa + Causas";
 "challenge_category.creativity" = "Creatividad";
 "challenge_category.entertainment" = "Entretenimiento";
 "challenge_category.finance" = "Finanzas";
@@ -1615,7 +1615,7 @@
 "x_x_gem_cap" = "%d / %d Capacidad de Gemas";
 "resubscribe_to_pick_up" = "¡Vuelve a suscribirte para recoger lo que te dejaste!";
 "subscriber_benefit" = "Beneficios de Suscriptor";
-"buy_gems_with_gold" = "Cómoda Gemas con Oro";
+"buy_gems_with_gold" = "Comprar Gemas con Oro";
 "continue_benefits" = "Continuar con los Beneficios";
 "no_active_subscription_to_restore" = "No se puede encontrar una suscripción activa que restaurar";
 "gift_one_get_one_screen_banner" = "Mientras esta promoción esté activa, recibirás una suscripción equivalente automáticamente después de enviar tu regalo.";
