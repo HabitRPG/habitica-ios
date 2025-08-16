@@ -1588,7 +1588,7 @@
 "settings.privacy_preferences" = "Préférences de Confidentialité";
 "settings.manage_privacy_preferences" = "Changer vos paramètres de confidentialité";
 "your_privacy_preferences" = "Vos Préférences de Confidentialité";
-"privacy_preferences_sheet_description" = "Habitica utilise des données de votre appareil pour une analyse des performances, la gestion des requêtes sur le support, et pour vous proposer la meilleure expérience de jeu possible. Pour cela, nous avons besoin de quelques autorisations.\n\n\nVous pouvez changer vos paramètres à tout moment. Pour en savoir plus, consultez notre [Politique de Confidentialité](https://habitica.com/static/privacy).";
+"privacy_preferences_sheet_description" = "Habitica utilise des données de votre appareil pour une analyse des performances, la gestion des requêtes sur le support, et pour vous proposer la meilleure expérience de jeu possible. Pour cela, nous avons besoin de quelques autorisations.\n\nVous pouvez changer vos paramètres à tout moment. Pour en savoir plus, consultez notre [Politique de Confidentialité](https://habitica.com/static/privacy).";
 "performance_analytics" = "Performance et Analyses";
 "strictly_necessary" = "Strict nécessaire";
 "strictly_necessary_description" = "Ce sont les données nécessaires requises pour le bon fonctionnement de notre application. Ces données sont celles liées à vos préférences enregistrées dans vos paramètres, ainsi que des informations en cas d'arrêt inopiné de l'application.";
@@ -1605,7 +1605,7 @@
 "performance_analytics_description" = "C'est informations sont utilisées pour améliorer l'expérience de jeu, ainsi que les performances et services proposés par Habitica. L'équipe du support pourront également utiliser ces données durant la résolution de ticket et de rapport de bug.";
 "login.password_length_error" = "Le mot de passe doit faire au moins 8 caractères.";
 "login.username_description" = "C'est votre pseudo unique que vous pourrez changer quand vous le souhaitez !";
-"privacy_preferences_full_description" = "Habitica utilise des données de votre appareil pour une analyse des performances, la gestion des requêtes sur le support, et pour vous proposer la meilleure expérience de jeu possible. Pour cela, nous devons vous demander quelques autorisations.\n\n\nVous pouvez changer ces options depuis vos paramètres de compte.";
+"privacy_preferences_full_description" = "Habitica utilise des données de votre appareil pour une analyse des performances, la gestion des requêtes sur le support, et pour vous proposer la meilleure expérience de jeu possible. Pour cela, nous devons vous demander quelques autorisations.\n\nVous pouvez changer ces options depuis vos paramètres de compte.";
 "save_preferences" = "Enregistrer les Préférences";
 "settings.daily_reminder_permission_needed" = "Veuillez autoriser l'affichage de notifications dans vos Paramètres pour utiliser les rappels quotidiens";
 "privacy_policy" = "Politique de Confidentialité";
