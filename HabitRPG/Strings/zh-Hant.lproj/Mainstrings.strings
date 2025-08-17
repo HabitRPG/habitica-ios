@@ -355,3 +355,15 @@
 "hatch_pet_again" = "再次孵化寵物";
 "magic_potions" = "魔法藥水";
 "magic_potion" = "魔法藥水";
+"total_completions" = "總完成量";
+"tasks.form.reminders" = "提醒";
+"tasks.form.new_reminder" = "新增提醒";
+"tasks.form.due_date" = "截止日期";
+"tasks.form.day_of_month" = "日";
+"tasks.form.day_of_week" = "星期";
+"tasks.form.completions" = "完成情況";
+"tasks.form.completion" = "完成";
+"stats.character_build_text" = "每提升一級你都會獲得一個可自由分配的屬性點數。你可以手動分配，也可以使用自動分配讓遊戲根據某種分配選項幫你分配。";
+"tasks.form.scheduling" = "預定日程";
+"tasks.form.clear" = "清除";
+"accept_all" = "全部接受";
