@@ -17,3 +17,9 @@
 "no" = "Hayır";
 "reset_tips" = "Rehberleri Sıfırla";
 "titles.settings" = "Ayarlar";
+"titles.news" = "Haberler";
+"titles.profile" = "Profil";
+"titles.api" = "API";
+"titles.stats" = "Istatistikler";
+"titles.about" = "Hakkinda";
+"titles.party" = "Takim";
