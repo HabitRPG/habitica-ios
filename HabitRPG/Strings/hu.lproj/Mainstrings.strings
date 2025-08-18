@@ -376,7 +376,7 @@
 "settings.new_username" = "Új felhasználónév";
 "settings.old_password" = "Régi jelszó";
 "settings.confirm_new_password" = "Új jelszó megerősítése";
-"settings.api_disclaimer" = "Másold ki a tokent. Vigyázz, ez jelszónak minősül!";
+"settings.api_disclaimer" = "Fejlesztőknek és külső eszközöknek szánt jelszó token";
 "settings.new_password" = "Új jelszó";
 "settings.launch_screen" = "Indítóképernyő";
 "settings.push_notifications.invited_quest" = "Meghívó érkezett egy küldetésre";
@@ -534,7 +534,6 @@
 "gift_confirmation_body_g1g1" = "Elküldtél %@ számára egy %@ hónapos Habitica-előfizetést és ugyanilyen előfizetést kaptál te is a „Gift One Get One” promóciónk keretében!";
 "gift_subscription_prompt" = "Válaszd ki alább, hogy milyen előfizetést szeretnél ajándékozni! Ez a vásárlás nem újul meg automatikusan.";
 "gift_gems_prompt" = "Szeretnél egy rakás csillogó gyémántot ajándékozni valakinek?";
-"intro.welcome_speechbubble" = "Ó, te biztos új vagy itt. Justin vagyok, a Habitica kalauzod.\n\nElőször is, hogy szólíthatunk? Nyugodtan változtasd meg, amit beírtam. Ha megvagy, kezdjük el a karaktered elkészítését!";
 "intro.card1.text" = "Itt az ideje, hogy szórakozva intézd el a feladataidat. Csatlakozz több mint 2 millió emberhez, akik apró lépésekben fejlesztik az életüket.";
 "intro.card2.text" = "A való életbeli feladataid teljesítésével oldhatod fel a játék funkcióit. Teljesítsd céljaidat, ezzel szerezz páncélt, kisállatokat és még sok minden mást jutalomként.";
 "intro.card1.title" = "Üdvözlünk itt:";
@@ -1086,7 +1085,7 @@
 "experience_description" = "A tapasztalati pontok (TP) mutatják az előrehaladásodat és ezek segítségével léphetsz szinteket. Elsősorban feladatok és küldetések teljesítésével **kapsz TP-t**, de bizonyos kasztképességek is adhatnak tapasztalati pontokat.\n\nMagasabb **Intelligencia** értékkel több TP-t kapsz.";
 "mana_description" = "A mana pontok a 10. szinten, a kasztrendszerrel válnak elérhetővé és segítségükkel használhatod a 11. szinten megtanulható **képességeidet**.\n\nA **mana minden nap visszatöltődik** egy bizonyos mértékig, de további mana pontokat szerezhetsz feladatok teljesítésével vagy a mágus kaszt képességeinek használatával.";
 "stat_description" = "Minden Habitica-karakternek négy fő tulajdonsága van, melyek befolyásolják a játékélményt.\n\nAz **Erő (ERŐ)** befolyásolja a kritikus találatokat, és növeli a küldetésfőellenségeknek okozott sebzést. A harcosok és tolvajok ERŐ-t kapnak kasztfelszereléseikből.\n\nA **Szívósság (SZÍV)** növeli az életerődet, és csökkenti a kapott sebzést. A gyógyítók és harcosok SZÍV-et kapnak kasztfelszereléseikből.\n\nAz **Intelligencia (INT)** növeli a megszerzett TP-t, és több manát biztosít. A mágusok és gyógyítók INT-et kapnak kasztfelszereléseikből.\n\nAz **Ész (ÉSZ)** növeli az arany szerzését és a tárgyak megtalálásának esélyét. A tolvajok és mágusok ÉSZ-t kapnak kasztfelszereléseikből.\n\nA 10. szinttől kezdve minden újabb szint után kapsz 1 statisztikapontot, amit szabadon kioszthatsz. Emellett felszereléseket is használhatsz, amelyek további statisztikapontokat adhatnak.";
-"hourglasses_description" = "A misztikus homokóra rendkívül ritka fizetőeszköz, amelyet csak akkor kapsz, ha legalább három hónapon át folyamatosan előfizettél a Habiticára. Az Időutazók boltjában vásárolhatsz vele múltbéli felszereléseket, kisállatokat, hátasokat, animált háttereket vagy akár különleges küldetéseket.\n\nÉvente maximum négy misztikus homokórát kaphatsz. Ezeket mindig az előfizetésed megújulásához igazodóan, az utolsó jogosult előfizetés befizetése utáni hónap első napján osztjuk ki. További részletekért nézd meg az [Előfizetés] oldalt.";
+"hourglasses_description" = "A misztikus homokórák egy rendkívül ritka fizetőeszköz, amit csak akkor kaphatsz, ha előfizetsz a Habiticára. Az Időutazók boltjában tudod elkölteni őket korábbi előfizetői felszerelésekre, exkluzív kisállatokra, hátasokra, animált hátterekre vagy akár különleges küldetésekre! Ezek az extra jutalmak remek motivációt adnak egész évben, és megérdemelt jutalomként szolgálnak egy jól végzett munka után.\n\nAz előfizetők minden hónap elején kapnak egy misztikus homokórát, amíg él az előfizetésük, és még sok más bónuszban is részesülnek. Nézd meg az előfizetési lehetőségeket, ha érdekel, mit kínálnak az Időutazók!";
 "gift_one_get_one_data.infoPrompt" = "Az ajándékozás időszaka alkalmából visszahoztuk ezt a különleges akciót. Most, ha előfizetést ajándékozol valakinek, te is ugyanazt az előfizetést kapod ingyen!";
 "unlocks_selecting_class_prompt" = "Most, hogy elérted a 10. szintet, válassz kasztot!";
 "birthday_header_description" = "Ünnepeld a Habitica 10. születésnapját az alábbi ajándékokkal és exkluzív tárgyakkal!";
@@ -1397,3 +1396,10 @@
 "promo_info_instructions_title" = "Hogyan működik";
 "gift_one_get_one_data.purchase_banner_title" = "Ajándékozz egy előfizetést és kapj egyet ingyen eddig: %@";
 "next_switch_in_x" = "Következő váltás: %s";
+"change_password_helper" = "A jelszónak legalább 8 karakter hosszúnak kell lennie. A jelszó megváltoztatása kiléptet minden más eszközről és harmadik féltől származó alkalmazásból, amit használsz.";
+"api_token_reset_desc" = "A jelszavad megváltoztatásával visszaállíthatod. A visszaállítás után újra be kell jelentkezned minden olyan eszközön, ahol használod a Habiticát, és újra meg kell adnod az API tokent azokhoz a külső eszközökhöz, amiket használsz.";
+"api_token_title" = "API token";
+"api_token_is_password" = "Az API tokened olyan, mint egy jelszó";
+"api_token_password_description" = "Ne oszd meg nyilvánosan. Előfordulhat, hogy meg kell adnod a felhasználói azonosítódat, de soha ne tedd közzé az API tokened mások számára látható helyen, például a Githubon.";
+"api_token_reset_title" = "Ha új API tokenre van szükséged";
+"copy_token" = "Token másolása";

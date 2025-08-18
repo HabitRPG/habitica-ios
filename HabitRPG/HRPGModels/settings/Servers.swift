@@ -8,7 +8,9 @@
 
 import Foundation
 
-enum Servers: String {
+enum Servers: String, Identifiable {
+    var id: RawValue { rawValue }
+    
     case production
     case staging
     

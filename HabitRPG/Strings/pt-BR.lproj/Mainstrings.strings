@@ -201,7 +201,7 @@
 /* (No Comment) */
 "open_website" = "Abrir site do Habitica";
 /* (No Comment) */
-"party.invited_to_quest" = "%@ te convidou para participar de uma missão";
+"party.invited_to_quest" = "%@ te convidou para participar de uma Missão";
 /* (No Comment) */
 "party.quest_number_responded" = "%d/%d membros responderam";
 /* (No Comment) */
@@ -867,7 +867,6 @@
 "gem_cap" = "Desbloqueia %d Gemas adquiríveis com Ouro por mês";
 "hourglass_count" = "+%d Ampulheta Mística";
 "intro.welcome_prompt" = "Como devemos chamar você?";
-"intro.welcome_speechbubble" = "Oh, você deve ser novo aqui. Eu sou o Justin, o seu guia para o Habitica.\n\nPrimeiro, como devemos chamá-lo? Sinta-se livre para mudar o que eu escolhi. Quando estiver tudo pronto, vamos criar seu avatar!";
 "intro.avatar_setup_speechbubble" = "Então, como você gostaria de parecer? Não se preocupe, você pode mudar isso mais tarde.";
 "intro.task_setup_speechbubble" = "Ótimo! Agora, o que você está interessado em trabalhar nesta jornada?";
 "intro.card2.text" = "Desbloqueie recursos no jogo, marcando suas tarefas da vida real. Ganhe armaduras, mascotes e muito mais como recompensa por atingir suas metas.";
@@ -1101,7 +1100,7 @@
 "hatchedPetDescription" = "Existem tantos Mascotes para colecionar, você certamente terá um favorito. Se você alimentá-los, eles podem crescer…";
 "completedTaskDescription" = "Uma tarefa pode ser um Hábito, Diária ou Afazer. Continue completando-as para receber todos os tipos de recompensas!";
 "createdTaskDescription" = "Mantenha-se firme! Se você precisar de ajuda para planejar tarefas, tente pensar no que gostaria de fazer durante um horário específico do dia";
-"invitedFriendDescription" = "Você convidou um(a) amigo(a) [ou amigos(a)] que se juntou/juntaram a você em sua aventura!";
+"invitedFriendDescription" = "Você convidou um amigo ou mais que se juntaram a você em sua aventura!";
 "invitedFriendTitle" = "Convidou um(a) amigo(a)";
 "challengeJoinedDescription" = "Você colocou-se à prova participando de um Desafio!";
 "challengeJoinedTitle" = "Juntou-se a um Desafio";

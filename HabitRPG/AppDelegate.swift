@@ -55,6 +55,16 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         configureNotifications()
         setupInvalidCredentialsObserver()
         
+        NotificationCenter.default.addObserver(
+            forName: Notification.Name("userDidBecomeUnauthorized"),
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            guard let self = self else { return }
+            self.userRepository.logoutAccount()
+        }
+        KeyboardManager.shared.observeKeyboardNotifications()
+        
         if let userInfo = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
             handlePushnotification(identifier: nil, userInfo: userInfo)
         }
@@ -63,14 +73,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         applySearchAdAttribution()
         Measurements.stop(identifier: "didFinishLaunchingWithOptions")
         return true
-    }
-
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-        if currentAuthorizationFlow?.resumeExternalUserAgentFlow(with: url) == true {
-            currentAuthorizationFlow = nil
-            return true
-        }
-        return RouterHandler.shared.handle(url: url)
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -182,7 +184,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             return
         }
         if let host = ProcessInfo.processInfo.environment["CUSTOM_DOMAIN"], let apiVersion = configRepository.string(variable: .apiVersion) {
-            let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion.isEmpty ? "v3" : apiVersion)")
+            let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion.isEmpty ? "v4" : apiVersion)")
             AuthenticatedCall.defaultConfiguration = config
             return
         }
@@ -190,7 +192,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             if chosenServer == "production" {
                 let configRepository = ConfigRepository.shared
                 if let host = configRepository.string(variable: .prodHost), let apiVersion = configRepository.string(variable: .apiVersion) {
-                    let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion.isEmpty ? "v3" : apiVersion)")
+                    let config = ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(apiVersion.isEmpty ? "v4" : apiVersion)")
                     AuthenticatedCall.defaultConfiguration = config
                 } else {
                     AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.production
@@ -240,7 +242,8 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         )
     }
     
-    @objc private func handleInvalidCredentials() {
+    @objc
+    private func handleInvalidCredentials() {
         DispatchQueue.main.async { [weak self] in
             // cancel any pending network requests to prevent race conditions
             URLSession.shared.getAllTasks { tasks in
@@ -250,38 +253,33 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             self?.userRepository.logoutAccount()
             
             self?.contentRepository.retrieveContent(force: true).observeCompleted {
-                var currentWindow: UIWindow?
-                if #available(iOS 13.0, *) {
-                    currentWindow = UIApplication.shared.connectedScenes
-                        .compactMap { $0 as? UIWindowScene }
-                        .first?.windows
-                        .first { $0.isKeyWindow }
-                } else {
-                    currentWindow = self?.window
-                }
-                
-                if let window = currentWindow {
-                    if let presented = window.rootViewController?.presentedViewController {
-                        presented.dismiss(animated: false) {
-                            let storyboard = UIStoryboard(name: "Intro", bundle: nil)
-                            if let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController") as? LoginTableViewController {
-                                loginViewController.isRootViewController = true
-                                let navigationController = UINavigationController(rootViewController: loginViewController)
-                                navigationController.setNavigationBarHidden(true, animated: false)
-                                window.rootViewController = navigationController
-                                window.makeKeyAndVisible()
-                            }
-                        }
-                    } else {
-                        let storyboard = UIStoryboard(name: "Intro", bundle: nil)
-                        if let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController") as? LoginTableViewController {
-                            loginViewController.isRootViewController = true
-                            let navigationController = UINavigationController(rootViewController: loginViewController)
-                            navigationController.setNavigationBarHidden(true, animated: false)
-                            window.rootViewController = navigationController
-                            window.makeKeyAndVisible()
-                        }
+                self?.showLoginScreen()
+            }
+        }
+    }
+    
+    func showLoginScreen() {
+        let currentWindow = UIApplication.shared.connectedScenes
+                .compactMap { $0 as? UIWindowScene }
+                .first?.windows
+                .first { $0.isKeyWindow }
+        
+        if let window = currentWindow {
+            if let presented = window.rootViewController?.presentedViewController {
+                presented.dismiss(animated: false) {
+                    let storyboard = UIStoryboard(name: "Intro", bundle: nil)
+                    if let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController") as? LoginTableViewController {
+                        loginViewController.isRootViewController = true
+                        window.rootViewController = loginViewController
+                        window.makeKeyAndVisible()
                     }
+                }
+            } else {
+                let storyboard = UIStoryboard(name: "Intro", bundle: nil)
+                if let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController") as? LoginTableViewController {
+                    loginViewController.isRootViewController = true
+                    window.rootViewController = loginViewController
+                    window.makeKeyAndVisible()
                 }
             }
         }

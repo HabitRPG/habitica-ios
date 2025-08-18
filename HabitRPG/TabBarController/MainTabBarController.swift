@@ -9,6 +9,7 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
+import SwiftUI
 
 class MainTabBarController: UITabBarController {
     
@@ -25,6 +26,8 @@ class MainTabBarController: UITabBarController {
     private var dueToDosCount = 0
     private var tutorialDailyCount = 0
     private var tutorialToDoCount = 0
+    
+    private var presentedPrivacyPreferencesAt: Date?
     
     private var _displayBirthdayIcon: Bool = false {
         didSet {
@@ -137,6 +140,18 @@ class MainTabBarController: UITabBarController {
             
             if let tutorials = user.flags?.tutorials {
                 self?.updateTutorialSteps(tutorials)
+            }
+            
+            if user.preferences?.analyticsConsentGiven == false {
+                if self?.presentedPrivacyPreferencesAt == nil || Date().timeIntervalSince(self?.presentedPrivacyPreferencesAt ?? Date()) > 60 {
+                    self?.presentedPrivacyPreferencesAt = Date()
+                    let controller = UIHostingController(rootView: PrivacyPreferencesScreenView())
+                    controller.modalPresentationStyle = .fullScreen
+                    controller.rootView.dismisser.dismiss = {
+                        controller.dismiss(animated: true)
+                    }
+                    self?.present(controller, animated: true)
+                }
             }
         }).start())
         disposable.inner.add(taskRepository.getDueTasks().on(value: {[weak self] tasks in

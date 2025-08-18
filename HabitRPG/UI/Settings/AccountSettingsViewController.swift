@@ -231,7 +231,19 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
     
     // MARK: - Build API Section
     func buildApiSection() {
-        form +++ Section(L10n.Settings.api)
+        form +++ Section(L10n.Settings.userData)
+        <<< LabelRow { row in
+            row.title = L10n.Settings.privacyPreferences
+            row.cellStyle = .subtitle
+            row.cellUpdate {[weak self] cell, _ in
+                cell.detailTextLabel?.text = L10n.Settings.managePrivacyPreferences
+            }.onCellSelection { _, _ in
+                let sheetView = PrivacyPreferencesSheetView()
+                let sheetController = HostingBottomSheetController(rootView: sheetView)
+                sheetController.preferredSheetSizing = .medium
+                self.present(sheetController, animated: true)
+            }
+        }
         <<< LabelRow { row in
             row.title = L10n.userID
             row.cellStyle = .subtitle
@@ -356,14 +368,15 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
     }
 
     private func deleteAccount(password: String) {
-        userRepository.deleteAccount(password: password).observeValues({[weak self] response in
-            if response.statusCode == 200 {
-                self?.navigationController?.dismiss(animated: true, completion: nil)
-                self?.presentingViewController?.dismiss(animated: true, completion: nil)
-            } else if response.statusCode == 401 {
-                let alertView = HabiticaAlertController(title: L10n.Settings.wrongPassword)
-                alertView.addCloseAction()
-                alertView.show()
+        userRepository.deleteAccount(password: password).observeValues({ response in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                if response.statusCode == 200 {
+                    (UIApplication.shared.delegate as? HabiticaAppDelegate)?.showLoginScreen()
+                } else if response.statusCode == 401 {
+                    let alertView = HabiticaAlertController(title: L10n.Settings.wrongPassword)
+                    alertView.addCloseAction()
+                    alertView.enqueue()
+                }
             }
         })
     }
@@ -453,7 +466,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             if let oldPassword = values["oldPassword"], let password = values["password"], let passwordRepeat = values["passwordRepeat"] {
                 self?.userRepository.updatePassword(newPassword: password, password: oldPassword, confirmPassword: passwordRepeat).observeValues { _ in
                     ToastManager.show(
-                      text:  L10n.Settings.updatedPassword,
+                      text: L10n.Settings.updatedPassword,
                       color: .green
                     )
                   }
@@ -462,7 +475,6 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         let navController = UINavigationController(rootViewController: controller)
         present(navController, animated: true, completion: nil)
     }
-
 
     private func showAddLocalAuthAlert(title: String) {
         let hasEmail = user?.authentication?.local?.email != nil
@@ -576,7 +588,6 @@ struct ResetAccountView: View {
     }
     
     var body: some View {
-        let _ = print(isSocial)
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
                 Text(L10n.Settings.resetAccountConfirm).font(.headline)
@@ -585,14 +596,21 @@ struct ResetAccountView: View {
                 } else {
                     Text(L10n.Settings.resetAccountDescription).font(.body).foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
                 }
-                TextField(text: $text, prompt: Text(isSocial ? "RESET" : L10n.password)) {
+                Group {
+                    if isSocial {
+                        TextField(text: $text, prompt: Text("RESET")) {
+                        }
+                    } else {
+                        SecureField(text: $text, prompt: Text(L10n.password)) {
+                        }
+                    }
                 }
                 .padding(12)
                 .overlay(RoundedRectangle(cornerRadius: 8).stroke().foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor)))
                 HabiticaButtonUI(label: Text(L10n.Settings.resetAccount), color: Color(isValidInput() ? ThemeService.shared.theme.errorColor : ThemeService.shared.theme.dimmedColor)) {
                     onReset(text)
                 }
-                if (!isSocial) {
+                if !isSocial {
                     Text(L10n.Login.forgotPassword)
                         .foregroundColor(Color(ThemeService.shared.theme.tintColor))
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -630,8 +648,17 @@ struct DeleteAccountView: View {
                 } else {
                     Text(L10n.Settings.deleteAccountDescription).font(.body).foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
                 }
-                TextField(text: $text, prompt: Text(isSocial ? "DELETE" : L10n.password)) {
+                Group {
+                    if isSocial {
+                        TextField(text: $text, prompt: Text("DELETE")) {
+                        }
+                    } else {
+                        SecureField(text: $text, prompt: Text(L10n.password)) {
+                        }
+                    }
                 }
+                .autocorrectionDisabled()
+                .textInputAutocapitalization(.never)
                 .padding(12)
                 .overlay(RoundedRectangle(cornerRadius: 8).stroke().foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor)))
                 HabiticaButtonUI(label: Text(L10n.Settings.deleteAccount), color: Color(isValidInput() ? ThemeService.shared.theme.errorColor : ThemeService.shared.theme.dimmedColor)) {

@@ -15,7 +15,6 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var pageIndicatorContainer: UIStackView!
     @IBOutlet weak var pageIndicatorHeightConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var welcomeView: UIView!
     @IBOutlet weak var avatarSetupView: UIView!
     @IBOutlet weak var taskSetupView: UIView!
     
@@ -51,9 +50,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         nextButtonView.accessibilityLabel = L10n.next
         let previousGesture = UITapGestureRecognizer(target: self, action: #selector(scrollToPreviousPage))
         previousButtonView.addGestureRecognizer(previousGesture)
-        views = [welcomeView, avatarSetupView, taskSetupView]
-        avatarSetupView.isHidden = true
-        avatarSetupView.alpha = 0
+        views = [avatarSetupView, taskSetupView]
         taskSetupView.isHidden = true
         taskSetupView.alpha = 0
         previousButtonImageView.tintColor = UIColor.purple100
@@ -62,7 +59,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         defaults.set(true, forKey: "isInSetup")
         let currentSetupStep = defaults.integer(forKey: "currentSetupStep")
         if currentSetupStep != 0 {
-            if currentSetupStep > 1 {
+            if currentSetupStep > 0 {
                 avatarSetupView.alpha = 1
                 avatarSetupView.isHidden = false
             }
@@ -76,12 +73,6 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        (viewControllers[0] as? WelcomeViewController)?.onEnableNextButton = {[weak self] enable in
-            self?.enableNextButton(enabled: enable)
-        }
-        
-        viewControllers[0].startTyping()
         
         if configRepository.bool(variable: .randomizeAvatar) {
             avatarSetupViewController?.randomizeButtonTapped()
@@ -111,11 +102,9 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     
     @objc
     func scrollToNextPage() {
-        if getCurrentPage() >= 2 {
+        if getCurrentPage() >= 1 {
             completeSetup()
             return
-        } else if getCurrentPage() == 0 {
-            confirmNames()
         }
         scrollToPage(getCurrentPage()+1)
     }
@@ -129,8 +118,12 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollToPage(_ page: Int) {
-        UserDefaults.standard.set(page, forKey: "currentSetupStep")
-        if currentpage > page {
+        var safePage = page
+        if safePage > views.count-1 {
+            safePage = views.count-1
+        }
+        UserDefaults.standard.set(safePage, forKey: "currentSetupStep")
+        if currentpage > safePage {
             let oldpage = currentpage
             UIView.animate(withDuration: 0.2, animations: {[weak self] in
                     self?.views[oldpage].alpha = 0
@@ -138,24 +131,22 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
                     self?.views[oldpage].isHidden = true
             })
         } else {
-            views[page].isHidden = false
+            views[safePage].isHidden = false
             UIView.animate(withDuration: 0.2, animations: {[weak self] in
-                self?.views[page].alpha = 1
+                self?.views[safePage].alpha = 1
             })
         }
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.6) {[weak self] in
-            self?.viewControllers[page].startTyping()
-        }
-        currentpage = page
+        viewControllers[safePage].startTyping()
+        currentpage = safePage
         
-        updateIndicator(page)
+        updateIndicator(safePage)
         
-        if page <= 0 {
+        if safePage <= 0 {
             previousButtonImageView.tintColor = UIColor.purple100
         } else {
             previousButtonImageView.tintColor = UIColor.white
         }
-        if page >= 2 {
+        if safePage >= 1 {
             nextButtonTextView.text = L10n.finish
         } else {
             nextButtonTextView.text = L10n.next
@@ -261,14 +252,12 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func showMainView() {
-        performSegue(withIdentifier: "MainSegue", sender: self)
+        UIApplication.shared.firstKeyWindow?.rootViewController = StoryboardScene.Main.mainSplitViewController.instantiate()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? TypingTextViewController {
-            if segue.identifier == "WelcomeSegue" {
-                viewControllers.insert(viewController, at: 0)
-            } else if segue.identifier == "AvatarSegue" {
+            if segue.identifier == "AvatarSegue" {
                 if viewControllers.count < 1 {
                     viewControllers.append(viewController)
                 } else {
@@ -288,28 +277,6 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
                 }
             }
         }
-    }
-    
-    func confirmNames() {
-        guard let welcomeViewController = viewControllers[0] as? WelcomeViewController else {
-            return
-        }
-        guard let displayname = welcomeViewController.displayName else {
-            return
-        }
-        guard let username = welcomeViewController.username else {
-            return
-        }
-        userRepository.updateUser(key: "profile.name", value: displayname)
-            .flatMap(.latest, {[weak self] user -> SignalProducer<UserProtocol, ValidationError> in
-                if user == nil {
-                    return SignalProducer.init(error: ValidationError(""))
-                }
-                return self?.userRepository.updateUsername(newUsername: username).mapError({ error -> ValidationError in
-                    return ValidationError(error.localizedDescription)
-                }).producer ?? SignalProducer.empty
-            })
-            .observeCompleted {}
     }
 }
 

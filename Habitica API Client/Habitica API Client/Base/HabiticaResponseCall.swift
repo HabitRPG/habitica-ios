@@ -39,40 +39,34 @@ public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
         do {
             return try decoder.decode(HabiticaResponse<C>.self, from: data)
         } catch {
-            if let errorHandler = self.errorHandler, let networkError = error as? NetworkError {
-                type(of: errorHandler).handle(error: networkError, messages: [])
+            if let handler  = self.errorHandler,
+               let netError = error as? NetworkError {
+                type(of: handler).handle(error: netError, messages: [])
             }
         }
         return nil
     }
     
     override func setupErrorHandler() {
-        let errorHandler = customErrorHandler ?? AuthenticatedCall.errorHandler
-        errorHandler?.observe(signal: errorSignal)
-        errorHandler?.observe(signal: errorJsonSignal.map({ json -> [NetworkError] in
-            var errors = [NetworkError]()
-            var isNotFound = false
-            if let error = json["error"] as? String, error == "NotFound" {
-                isNotFound = true
-            }
-            if let jsonErrors = json["errors"] as? [[String: Any]] {
-                for jsonError in jsonErrors {
-                    if let errorMessage = jsonError["message"] as? String {
-                        errors.append(NetworkError(message: errorMessage, url: self.urlString, code: isNotFound ? 404 : -1000))
-                    }
-                }
-            }
-            if errors.isEmpty, let message = json["message"] as? String {
-                errors.append(NetworkError(message: message, url: self.urlString, code: isNotFound ? 404 : -1000))
-            }
-            return errors
-        }))
+        let handler = customErrorHandler ?? AuthenticatedCall.errorHandler
+
+        handler?.observe(
+          signal: errorSignal.map { nsErr in
+            ( NetworkError(
+                message: nsErr.localizedDescription,
+                url: "",
+                code: nsErr.code
+              ),
+              []
+            )
+          }
+        )
         
-        errorHandler?.observe(signal: serverErrorSignal.combineLatest(with: errorJsonSignal)
+        handler?.observe(signal: serverErrorSignal.combineLatest(with: errorJsonSignal)
             .map({ (error, jsonAny) -> (NetworkError, [String]) in
                 let json = jsonAny
                 var errors = [String]()
-                var errorCode = error.code
+                let errorCode = error.code
                 
                 // check for invalid_credentials error
                 if error.code == 401 {

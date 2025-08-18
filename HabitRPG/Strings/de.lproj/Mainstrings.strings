@@ -207,9 +207,9 @@
 /* (No Comment) */
 "open_website" = "Habitica Webseite öffnen";
 /* (No Comment) */
-"party.invitation_invitername" = "%@ hat dich eingeladen Ihrer Gruppe beizutreten";
+"party.invitation_invitername" = "**@%@** hat dich in die Gruppe **%@** eingeladen";
 /* (No Comment) */
-"party.invitation_no_invitername" = "Du wurdest von Jemandem zu einer Gruppe eingeladen.";
+"party.invitation_no_invitername" = "Du wurdest von Jemandem in die Gruppe **%@** eingeladen";
 /* (No Comment) */
 "party.invited_to_quest" = "%@ hat dich eingeladen an einer Quest teilzunehmen";
 /* (No Comment) */
@@ -508,7 +508,7 @@
 "titles.news" = "Neuigkeiten";
 "titles.pets" = "Haustiere";
 "titles.mounts" = "Reittiere";
-"titles.party" = "Gruppe";
+"titles.party" = "Party";
 "titles.guilds" = "Gilden";
 "titles.guild" = "Gilde";
 "titles.challenges" = "Wettbewerbe";
@@ -820,7 +820,7 @@
 "tasks.team" = "Team";
 "tasks.due_tomorrow" = "Morgen";
 "tasks.due_in_x_days" = "in %d Tagen";
-"stats.strength_text" = "Erhöht den Bonus von kritischen Treffern und macht sie wahrscheinlicher, wenn Du eine Aufgabe erledigst. Erhöht außerdem den Schaden gegen Bosse.";
+"stats.strength_text" = "Erhöht die Wahrscheinlichkeit und den Bonus von kritischen Treffern, wenn Du eine Aufgabe erledigst. Außerdem wird der Schaden gegen Bosse erhöht.";
 "tasks.due_today" = "Heute";
 "settings.change_about_message" = "Info ändern";
 "settings.reset_account_description" = "Du wirst alle deine Level, Gold und Erfahrung verlieren. Alle Ihre Aufgaben und ihre historischen Daten werden gelöscht (Herausforderungsaufgaben bleiben erhalten). Du wirst alle Ausrüstungsgegenstände verlieren, mit Ausnahme von Abonnenten-Gegenständen und kostenlosen Erinnerungsgegenständen, aber du wirst sie zurückkaufen können. Du wirst der richtigen Klasse angehören müssen, um klassenspezifische Ausrüstung wieder zu kaufen. Du behältst deine aktuelle Klasse, deine Errungenschaften sowie deine Haustiere und Reittiere. Um das Zurücksetzen zu bestätigen, gib dein Passwort unten ein.";
@@ -865,7 +865,6 @@
 "titles.achievements" = "Erfolge";
 "titles.notifications" = "Mitteilungen";
 "titles.messages" = "Nachrichten";
-"intro.welcome_speechbubble" = "Oh, Du musst neu hier sein. Ich bin Justin, der Stadtführer von Habitica. \n\nSag mir doch als Erstes, wie wir Dich nennen sollen! Ändere ruhig meinen Vorschlag. Wenn Du damit fertig bist, lass uns Deinen Avatar erstellen!";
 "intro.welcome_prompt" = "Wie sollen wir Dich nennen?";
 "hourglass_count" = "+%d Mystische Sanduhr";
 "gem_cap" = "Schaltet %d mit Gold erwerbbare Edelsteine pro Monat frei";
@@ -881,7 +880,7 @@
 "login.login_apple" = "Mit Apple einloggen";
 "login.email_username" = "E-Mail / Benutzername";
 "login.authentication_error" = "Es ist ein Fehler bei der Authentifizierung aufgetreten. Versuch es später noch einmal";
-"login.password_confirm_error" = "Passwort und Passwortbestätigung müssen übereinstimmen und länger sein als 8 Zeichen.";
+"login.password_confirm_error" = "Passwort und Passwortbestätigung müssen übereinstimmen.";
 "damage_paused" = "Schaden pausiert";
 "about.leave_review" = "Hinterlasse eine Bewertung";
 "about.send_feedback" = "Sende Feedback";
@@ -906,7 +905,7 @@
 "settings.push_notifications.invited_quest" = "Zu einer Quest eingeladen";
 //"settings.push_notifications.banned_group" = "Kicked from Group";
 "settings.push_notifications.quest_begun" = "Deine Quest hat begonnen";
-"settings.api_disclaimer" = "Kopiere dein API-Token. Behandle es wie ein Passwort und verbreite es nicht.";
+"settings.api_disclaimer" = "Zugangsschlüssel für Entwickler und Drittanbieter-Anwendungen";
 "whats_world_boss" = "Was ist ein Weltboss?";
 "write_a_message" = "Verfasse eine Nachricht";
 "welcome_back" = "Willkommen zurück!";
@@ -915,8 +914,8 @@
 "never_lower_case" = "niemals";
 "never" = "Niemals";
 "intro.card2.text" = "Schalte Spielinhalte durch das Erledigen und Abhaken Deiner realen Aufgaben frei. Verdiene Rüstungen, Tiere und vieles mehr als Belohnungen für das Erreichen Deiner Ziele.";
-"intro.task_setup_speechbubble" = "Großartig! Nun denn, woran würdest Du während Deiner Reise gerne arbeiten?";
-"intro.avatar_setup_speechbubble" = "Wie würdest Du denn gerne aussehen? Keine Sorge, Du kannst Dein Aussehen später immer wieder ändern.";
+"intro.task_setup_speechbubble" = "Sieht gut aus! Nun wähle Kategorien, an denen du arbeiten möchtest und wir erstellen ein paar Aufgaben, um zu starten.\n\nDanach sehen wir uns deine Aufgabenliste an!";
+"intro.avatar_setup_speechbubble" = "Du musst neu hier sein. Ich bin Justin und ich werde dein Führer in Habitica sein.\n\nWie würdest du denn gerne aussehen? Keine Sorge, du kannst dein Aussehen später immer wieder ändern.";
 "about.no_email_message" = "Hoppla, anscheinend hast Du auf diesem Telefon noch keine E-Mailadresse eingerichtet. Konfiguriere Dein Konto in der iOS-Mail-App, um diese schnelle Berichtsoption zu verwenden, oder sende uns eine Email direkt an % @";
 "about.love_open_source" = "Web Love Open Source Software.";
 "settings.confirm_username_description" = "Das Bestätigen Deines Nutzernamens wird diesen für Einladungen, @Erwähnungen und Nachrichten öffentlich machen. Du kannst Deinen Benutzernamen jederzeit in den Einstellungen ändern.";
@@ -1032,7 +1031,7 @@
 "not_recurring" = "Einmalig";
 "subscription_duration" = "Alle %@";
 "subscription_benefits_title_subscribed" = "Du erhälst diese Vorteile für Dein Abonnement";
-"subscription_info_5_description" = "Hole Dir einen purpurnen Wolpertinger und verdopple jeden Tag Eier, Schlüpfelixiere und Futter, um Deine Haustiersammlung aufzuziehen.";
+"subscription_info_5_description" = "Hole Dir einen purpurnen Wolpertinger und verdopple jeden Tag Eier, Schlüpfelixiere und Futter, um Deine Haustiersammlung aufzuziehen!";
 "sale" = "Angebot";
 "member_group_plan" = "Mitglieder eines Gruppenplans";
 "group_plan" = "Gruppenplan";
@@ -1211,7 +1210,7 @@
 "more_questions_title" = "Hast Du weitere Fragen?";
 "left_challenge" = "Herausforderung verlassen";
 "joined_challenge" = "Einer Herausforderung beigetreten";
-"hourglasses_description" = "Mystische Sanduhren sind eine extrem seltene Währung, die Du nur durch ein Habitica-Abonnement von mindestens drei aufeinanderfolgenden Monaten erhalten kannst. Du brauchst die Sanduhren im Shop der Mystischen Zeitreisenden, um Ausrüstungssets aus vergangenen Zeiten zu kaufen, oder auch Haustiere, Reittiere, animierte Hintergründe oder spezielle Quests.\n\nDu kannst bis zu vier Mystische Sanduhren pro Jahr erhalten. Der Zeitpunkt, wann das passiert, hängt von Deiner Abonnements-Erneuerung ab. Die Sanduhren trudeln am ersten Tag des neuen Monats nach der Abonnementszahlung ein, für die Dir eine Sanduhr zusteht. Sieh auf der [Abonnement]-Seite nach, wenn Du mehr wissen willst.";
+"hourglasses_description" = "Mystische Sanduhren sind eine extrem seltene Währung, die Du nur durch ein Habitica-Abonnement erhalten kannst. Du kannst diese im Laden der Mysteriösen Zeitreisenden verwenden, um Abo-Ausrüstungssets aus vergangenen Zeiten, exklusive Haustiere, Reittiere, animierte Hintergründe oder besondere Quests zu kaufen! Diese zusätzlichen Extras sind eine tolle Möglichkeit deine Motivation das Jahr über aufrechtzuerhalten und dich selbst für deine gute Arbeit zu belohnen.\n\nAbonnenten erhalten eine Mystische Sanduhren zu Beginn jeden Monats, in dem sie Abo-Vorteile haben, zusammen mit einer Menge weiterer Extras. Vergiss nicht dir unsere Abo-Optionen anzuschauen, wenn dich das Angebot der Mysteriösen Zeitreisenden interessiert!";
 "mystic_hourglasses" = "Mystische Sanduhren";
 "subscriber_currency" = "Abonnentenzahlungsmittel";
 "gems_description" = "Edelsteine sind eine Währung, die Du mit echtem Geld kaufst. Sie ermöglichen Dir, zusätzliche Inhalte in Habitica zu kaufen und sind neben Abonnements eine der Haupteinnahmequellen für das Habitica-Team.\n\nAlle Inhalte, die mit Edelsteinen gekauft werden, sind rein kosmetischer Natur oder können mit der Zeit auch kostenlos erhalten werden.\n\nDu kannst Edelsteine auch als Geschenk von anderen Spielern erhalten, als Preis einer Herausforderung, durch Mitarbeit an Habitica oder durch ein Abonnement.";
@@ -1312,7 +1311,7 @@
 "x_items_found" = "%d Gegenstände warten";
 "seasonal_potions_available" = "Saisonale Gegenstände erhältlich";
 "new" = "Neu";
-"skills.caused_damage" = "Du hast dem Boss Schaden zugefügt.";
+"skills.caused_damage" = "Du hast dem Boss Schaden zugefügt";
 "day" = "Tag";
 "week" = "Woche";
 "month" = "Monat";
@@ -1330,8 +1329,8 @@
 "next_prize_in_x_checkins" = "Nächster Preis in %d Anmeldungen";
 "scheduled" = "geplant";
 "completed" = "erledigt";
-"not_due" = "noch nicht fällig";
-"tasks.form.not_editable_disclaimer" = "Aufgaben aus Herausforderungen und Gruppen haben weniger Bearbeitungsoptionen im Vergleich zu den Standardaufgaben.";
+"not_due" = "Noch nicht fällig";
+"tasks.form.not_editable_disclaimer" = "Aufgaben aus Herausforderungen und Gruppen haben weniger Bearbeitungsoptionen im Vergleich zu den Standardaufgaben";
 "menu.group_plans" = "Gruppen";
 "settings.adjustment" = "Anpassung";
 "settings.cleared_cache" = "Cache zurücksetzen";
@@ -1339,7 +1338,7 @@
 "settings.change" = "Bearbeiten";
 "settings.add_email" = "Email hinzufügen";
 "settings.updated_email" = "Email wurde aktualisiert";
-"settings.updated_password" = "Passwort wurde aktualisiert";
+"settings.updated_password" = "Passwort erfolgreich geändert";
 "settings.account_info" = "Kontoinformationen";
 "settings.public_profile" = "Öffentliches Profil";
 "settings.password" = "Passwort";
@@ -1355,17 +1354,17 @@
 "settings.resume_damage" = "Schaden-Pause aufheben";
 "settings.pause_damage_subtitle" = "Schaden ist aktiv. Erfahre mehr darüber...";
 "settings.resume_damage_subtitle" = "Schaden ist pausiert.";
-"settings.pauseDamage.pause_damage_title1" = "Nicht erfüllte Tagesaufgaben fügen dir keinen Schaden zu.";
-"settings.pauseDamage.pause_damage_description1" = "Bosse können dir dennoch Schaden zufügen aufgrund nicht erfüllter Tagesaufgaben der Gruppenmitglieder.";
-"settings.pauseDamage.pause_damage_title2" = "Deine Strähnen und Zählersstände werden nicht zurückgesetzt.";
-"settings.pauseDamage.pause_damage_description2" = "Tägliche Strähnen und Zählerstände bei den Gewohnheiten werden nur hochgezählt, wenn dieser Punkt aktiv ist.";
-"settings.pauseDamage.pause_damage_title3" = "Dein Fortschritt in Quests wird ausgesetzt.";
+"settings.pauseDamage.pause_damage_title1" = "Nicht erfüllte Tagesaufgaben fügen dir keinen Schaden zu";
+"settings.pauseDamage.pause_damage_description1" = "Bosse können dir dennoch Schaden zufügen aufgrund nicht erfüllter Tagesaufgaben der Mitglieder deiner Gruppe";
+"settings.pauseDamage.pause_damage_title2" = "Deine Strähnen und Zählersstände werden nicht zurückgesetzt";
+"settings.pauseDamage.pause_damage_description2" = "Tägliche Strähnen und Zählerstände bei den Gewohnheiten werden nur gezählt, wenn diese Einstellung aktiv ist";
+"settings.pauseDamage.pause_damage_title3" = "Dein Fortschritt in Quests wird ausgesetzt";
 "settings.pauseDamage.resume_damage_title1" = "Tagesaufgaben, die du nicht erfüllst, werden Schaden bei dir ausüben. ";
-"settings.pauseDamage.resume_damage_description1" = "Bosse können darüberhinaus deinen Gruppenmitgliedern Schaden zufügen für Tagesaufgaben, die du nicht erfüllt hast.";
-"settings.pauseDamage.resume_damage_title2" = "Deine Strähnen und Zählerstände werden zurückgesetzt.";
-"settings.pauseDamage.resume_damage_description2" = "Erfüllst du eine Tagesaufgabe nicht, wird deine Strähne und der Zähler normal zurückgesetzt.";
-"settings.pauseDamage.resume_damage_title3" = "Dein Fortschritt in Quests wird wieder normal angewendet.";
-"settings.pauseDamage.resume_damage_description3" = "Ausstehender Schaden oder gesammelte Objekte werden angewendet, sobald der Tag das nächste Mal zurückgesetzt wurde.";
+"settings.pauseDamage.resume_damage_description1" = "Bosse können darüberhinaus den Mitgliedern deiner Gruppe Schaden zufügen für Tagesaufgaben, die du nicht erfüllt hast";
+"settings.pauseDamage.resume_damage_title2" = "Deine Strähnen und Zählerstände werden zurückgesetzt";
+"settings.pauseDamage.resume_damage_description2" = "Erfüllst du eine Tagesaufgabe nicht, wird deine Strähne und der Zähler normal zurückgesetzt";
+"settings.pauseDamage.resume_damage_title3" = "Dein Fortschritt in Quests wird wieder normal angewendet";
+"settings.pauseDamage.resume_damage_description3" = "Ausstehender Schaden oder gesammelte Objekte werden angewendet, sobald der Tag das nächste Mal zurückgesetzt wurde";
 "social.x_leader" = "Leiter:in von %s";
 "social.x_members" = "Mitglieder:innen in %s";
 "social.x_bank" = "Bank von %s";
@@ -1382,7 +1381,7 @@
 "purchase_for_without_currency" = "Kaufe für %d";
 "groups.groups" = "Gruppen";
 "groups.group" = "Gruppe";
-"settings.pauseDamage.pause_damage_description3" = "Einem Boss hinzugefügter Schaden oder gefundene Gegenstände werden zurückgehalten, bis du Schaden wieder aktivierst.";
+"settings.pauseDamage.pause_damage_description3" = "Einem Boss hinzugefügter Schaden oder gefundene Gegenstände werden zurückgehalten, bis du Schaden wieder aktivierst";
 "settings.next_cron_run" = "Neuer Tages-Rest: &@";
 "settings.day_start_adjustment" = "Anpassung vom Tagesbeginn";
 "guilds.left_party" = "Du hast die Party verlassen";
@@ -1391,7 +1390,7 @@
 "party.looking_for_party_subtitle" = "Halte Ausschau nach Einladungen oder gründe jederzeit deine eigene Gruppe";
 "party.leave" = "Gruppe verlassen";
 "guilds.joined_party" = "Du bist der Party beigetreten";
-"settings.custom_day_start_description" = "Ein neuer Tag beginnt in Habitica standardmäßig um Mitternacht, hier kannst du deinen persönlichen Tagesbeginn verschieben.";
+"settings.custom_day_start_description" = "Verschiebe den Zeitpunkt zu dem dein Tag wechselt. Standard-Einstellung: Mitternacht";
 "settings.delete_account_confirm" = "Bist du sicher, dass du deinen Account löschen möchtest?";
 "inventory.no_saddle_tile" = "Du hast keine Sattel";
 "inventory.no_saddle_description" = "Sattel machen direkt aus einem Haustier ein Reittier. Du kannst einen Sattel auf dem Markt kaufen.";
@@ -1413,7 +1412,7 @@
 "classes.healers" = "Heiler";
 "classes.rogues" = "Diebe";
 "party.leave_looking_for_party_subtitle" = "Halte Ausschau nach einer Einladung oder starte jederzeit deine eigene Party";
-"groups.find_members" = "Mitglieder finden";
+"groups.find_members" = "Finde Mitglieder";
 "groups.list" = "Liste";
 "groups.by_invite" = "Durch Einladung";
 "groups.send_invite" = "Einladung versenden";
@@ -1428,13 +1427,13 @@
 "groups.lfp.subtitle_empty" = "Es sucht aktuell niemand nach einer Party. Du kannst später nochmal vorbeikommen!";
 "groups.group_plan_settings" = "Gruppenplaneinstellungen";
 "groups.copy_shared_tasks" = "Geteilte Aufgaben kopieren";
-"avatar.skins" = "Skins";
+"avatar.skins" = "Hautfarben";
 "is_closed" = "Geschlossen";
 "settings.push_notifications.content_release" = "Inhaltsveröffentlichungen + Events";
 "monthly_backgrounds" = "Monatliche Hintergründe";
-"locations.customizations" = "Anpassungen";
+"locations.customizations" = "Individualisierungen";
 "groups.copy_shared_tasks_description" = "Zugeteilte und offene Aufgaben in deinen persönlichen Aufgabenlisten anzeigen";
-"unsubscribe_google" = "Du willst nicht länger Abonnent sein? Aufgrund Deiner Zahlungsmethode ist es notwendig, Dein Abo über den Google Play Store zu kündigen. Alle verbleibenden Monate des Abo-Guthabens bleiben nach der Kündigung bis zu ihrem Enddatum aktiv. Wir werden Dich vermissen!";
+"unsubscribe_google" = "Du willst nicht länger Abonnent sein? Aufgrund Deiner Zahlungsmethode ist es notwendig, Dein Abo über den Google Play Store zu kündigen. Alle verbleibenden Monate des Abo-Guthabens bleiben nach der Kündigung bis zu ihrem Enddatum aktiv.";
 "open_google_play" = "Google Play Store öffnen";
 "event_backgrounds" = "Event-Hintergründe";
 "open_mystery_item" = "Du öffnest die mysteriöse Box und findest…";
@@ -1478,7 +1477,7 @@
 "subscription.info_faint_description" = "Behalte deinen Fortschritt mit einer sofortigen Heilung pro Tag, sobald deine Gesundheit aufgebraucht ist!";
 "subscription.info_armoire_title" = "Verdopple Schrank-Belohnungen";
 "shops.try_on_customize_avatar" = "Du kannst sie anprobieren, indem du deinen Avatar anpasst.";
-"subscription.info_armoire_description" = "Erhalte zwei Chancen auf neue Ausrüstung aus dem verzauberten Schrank zum Preis von einer";
+"subscription.info_armoire_description" = "Erhalte zwei Chancen auf neue Ausrüstung aus dem verzauberten Schrank zum Preis von einer!";
 "shops.customizing_your_avatar" = "Anpassen Deines Avatars";
 "groups.transferred_to" = "Der neue Gruppenleiter ist %@";
 "faint.disclaimer" = "Defekte Ausrüstung kann auf dem Marktplatz zurückgekauft werden";
@@ -1577,7 +1576,7 @@
 "sub_perk" = "Abo-Vorteil";
 "subscription.months_subscribed" = "Monate abonniert";
 "subscription.next_hourglass_delivery" = "Nächste Lieferung einer Mystischen Sanduhr";
-"subscription.subscribers_receive" = "Abonnierende erhalten eine Mystische Sanduhr, ein Mystisches Ausrüstungsset und Edelsteine, die innerhalb der ersten zwei Tage des Monats auf dem Markt wieder aufgefüllt werden";
+"subscription.subscribers_receive" = "Abonnenten erhalten eine Mystische Sanduhr, ein Mystisches Ausrüstungsset und Edelsteine, die innerhalb der ersten zwei Tage des Monats auf dem Markt wieder aufgefüllt werden";
 "subscription.subscribe_again_hourglasses" = "Abonniere erneut, um weiter Mystische Sanduhren zu erhalten";
 "items.empty.potion_description" = "Erledige Aufgaben, Elixier-Quests oder besuche den Marktplatz zum Auffüllen!";
 "items.empty.egg_description" = "Erledige Aufgaben, Haustier-Quests oder besuche den Marktplatz zum Auffüllen!";
@@ -1638,5 +1637,41 @@
 "quest_mechanics_damage_title" = "Bosse bestrafen dich für versäumte Tagesaufgaben";
 "quest_mechanics_pausing_description" = "Wenn du Schwierigkeiten hast, deine Tagesaufgaben abzuschließen, kannst du unter Einstellungen den Schaden für eine Weile aussetzen. Dadurch wird verhindert, dass der Boss dich oder andere verletzt, aber auch dein eigener Schaden wird unterbrochen. Andere Mitglieder, die Tagesaufgaben verpasst haben, provozieren weiterhin Schaden, also sei vorsichtig da draußen!";
 "class_change_confirm_description" = "Dadurch ändert sich die am Markt freigeschaltene Ausrüstung, die verfügbaren Fertigkeiten wechseln und die Punkte für Eigenschaften werden zurückgesetzt.";
-"quest_mechanics_rage_description" = "Einige schwierige Bosse haben eine orangefarbene Wutanzeige unter ihren HP. Diese Anzeige füllt sich, wenn Teilnehmer Tagesaufgaben verpassen. Wenn sie vollständig gefüllt ist, führt der Boss einen furchterregenden Angriff aus, der zusätzlichen Schaden verursacht!";
+"quest_mechanics_rage_description" = "Einige schwierige Bosse haben eine orangefarbene Rasereianzeige unter ihren HP. Diese Anzeige füllt sich, wenn Teilnehmer Tagesaufgaben verpassen. Wenn sie vollständig gefüllt ist, führt der Boss einen furchterregenden Angriff aus, der zusätzlichen Schaden verursacht!";
 "party.quest_participant_one" = "1 Teilnehmer";
+"settings.user_data" = "Benutzerdaten";
+"settings.privacy_preferences" = "Privatsphäre-Einstellungen";
+"settings.manage_privacy_preferences" = "Ändere deine Privatsphäre-Einstellungen";
+"your_privacy_preferences" = "Deine Privatsphäre-Einstellungen";
+"login.password_length_error" = "Passwörter müssen mindestens 8 Zeichen lang sein.";
+"join_habitica" = "Habitica beitreten";
+"settings.daily_reminder_permission_needed" = "Bitte aktivieren Sie Benachrichtigungen in den Einstellungen, um Erinnerungen zu verwenden";
+"performance_analytics" = "Leistung & Analyse";
+"performance_analytics_description" = "Dies wird benötigt um die Spielerfahrung, die Leistung und den Service von Habitica zu verbessern. Zudem wird unser Support-Team dies für die Bearbeitung von Support-Anfragen und Fehlermeldungen verwenden.";
+"strictly_necessary" = "Absolut notwendig";
+"strictly_necessary_description" = "Diese Daten sind notwendig, damit die App funktioniert. Dies schließt deine gespeicherten Einstellungen sowie Fehlerinformationen ein.";
+"login.tagline" = "Zeit für ein bisschen Spaß während Du etwas erledigst";
+"login.continue_with_apple" = "Mit Apple anmelden";
+"login.continue_with_google" = "Mit Google anmelden";
+"login.continue_with_email" = "Per Email anmelden";
+"login.already_have_account" = "Bereits registriert?";
+"login.need_account" = "Noch nicht registriert?";
+"login.what_call_you" = "Wie sollen wir dich nennen?";
+"login.username_description" = "Dies ist ein einzigartiger Name, den du später jederzeit ändern kannst!";
+"login.terms_text" = "Du erklärst dich mit den **[Nutzungsbestimmungen](https://habitica.com/static/terms)** und den **[Datenschutzbestimmungen](https://habitica.com/static/privacy)** einverstanden und bestätigst diese gelesen zu haben.";
+"save_preferences" = "Einstellungen speichern";
+"accept_all" = "Alles akzeptieren";
+"change_password_helper" = "Passwörter müssen mindestens 8 Zeichen lang sein. Das Ändern deines Passwortes wird dich von all deinen Geräten und Drittanbieter-Anwendungen abmelden.";
+"next_switch_in_x" = "Nächster Wechsel in %@";
+"privacy_preferences_full_description" = "Habitica verwendet Daten deines Geräts zur Analyse der Leistung, um Support-Anfragen zu bearbeiten und um dir die bestmögliche gamifizierte Erfahrung zu bieten. Hierfür benötigen wir deine Zustimmung für folgende Berechtigungen.\n\nDu kannst dies jederzeit in deinen Konto-Einstellungen ändern.";
+"privacy_preferences_sheet_description" = "Habitica verwendet Daten deines Geräts zur Analyse der Leistung, um Support-Anfragen zu bearbeiten und um dir die bestmögliche gamifizierte Erfahrung zu bieten. Hierfür benötigen wir deine Zustimmung für folgende Berechtigungen.\n\nDu kannst deine Zustimmung jederzeit widerrufen. Weitere Informationen findest du in unseren [Datenschutzbestimmungen](https://habitica.com/static/privacy).";
+"api_token_reset_title" = "Falls du einen neuen API-Schüssel benötigst";
+"api_token_reset_desc" = "Du kannst dein Passwort ändern, um ihn zurückzusetzen. Einmal zurückgesetzt, musst du dich auf all deinen Geräten, auf denen du Habitica verwendest, erneut anmelden und deinen neuen API-Schlüssel in Drittanbieter-Anwendungen angeben, die du verwendest.";
+"copy_token" = "Schüssel kopieren";
+"api_token_title" = "API-Schlüssel";
+"api_token_is_password" = "Dein API-Schlüssel ist wie ein Passwort";
+"api_token_password_description" = "Teile ihn niemals öffentlich. Du wirst ggf. nach deiner Benutzer-ID gefragt, aber schreibe deinen API-Schlüssel niemals dort, wo andere ihn sehen könnten bspw. Github.";
+"privacy_policy" = "Datenschutzbestimmungen";
+"one_quest_item_found" = "Du hast 1 Quest-Gegenstand gefunden";
+"errors.username_already_taken" = "Benutzername bereits vergeben.";
+"quest_items_found" = "Du hast %d Quest-Gegenstände gefunden";

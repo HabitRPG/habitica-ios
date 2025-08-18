@@ -126,7 +126,11 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     func flag(groupID: String, chatMessage: ChatMessageProtocol, reason: String) -> Signal<EmptyResponseProtocol?, Never> {
-        return FlagChatMessageCall(groupID: groupID, chatMessage: chatMessage, data: ["comment": reason])
+        var id = groupID
+        if id.isEmpty {
+            id = "party"
+        }
+        return FlagChatMessageCall(groupID: id, chatMessage: chatMessage, data: ["comment": reason])
             .objectSignal
     }
     

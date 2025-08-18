@@ -155,13 +155,14 @@ class VerifyUsernameModalViewController: UIViewController, Themeable {
         }
         confirmButton.isEnabled = false
         userRepository.updateUser(key: "profile.name", value: displayname)
-            .flatMap(.latest, { user -> SignalProducer<UserProtocol, ValidationError> in
+            .flatMap(.latest, { user -> SignalProducer<UserProtocol?, ValidationError> in
                 if user == nil {
                     return SignalProducer.init(error: ValidationError(""))
                 }
                 return self.userRepository.updateUsername(newUsername: username).mapError({ error -> ValidationError in
                     return ValidationError(error.localizedDescription)
-                }).producer
+                })
+                .producer
             })
             .on(value: { _ in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {

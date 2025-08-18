@@ -15,12 +15,10 @@ public enum AvatarCustomizationCategory {
 }
 
 public enum AvatarCustomizationSubcategory {
-    case none, size, shirt, bangs, ponytail, color, flower, glasses, wheelchair
+    case none, shirt, bangs, ponytail, color, flower, glasses, wheelchair
     
     var text: String {
         switch self {
-        case .size:
-            return L10n.size
         case .shirt:
             return L10n.shirt
         case .bangs:
@@ -84,7 +82,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController, The
     private let inventoryRepository = InventoryRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
-    var currentCategory: AvatarCustomizationCategory = .body {
+    var currentCategory: AvatarCustomizationCategory = .skin {
         didSet {
             updateCategoryButtons()
             setSubCategories(getSubcategoriesForCurrentCategory())
@@ -151,7 +149,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController, The
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        currentCategory = .body
+        currentCategory = .skin
     }
     
     @objc
@@ -180,7 +178,6 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController, The
             return
         }
         var updateData = [String: String]()
-        updateData["preferences.size"] = chooseRandomKey(SetupCustomizationRepository.getCustomizations(category: .body, subcategory: .size, user: user), weighFirstOption: false)
         updateData["preferences.shirt"] = chooseRandomKey(SetupCustomizationRepository.getCustomizations(category: .body, subcategory: .shirt, user: user), weighFirstOption: false)
         updateData["preferences.skin"] = chooseRandomKey(SetupCustomizationRepository.getCustomizations(category: .skin, subcategory: .color, user: user), weighFirstOption: false)
         updateData["preferences.hair.color"] = chooseRandomKey(SetupCustomizationRepository.getCustomizations(category: .hair, subcategory: .color, user: user), weighFirstOption: false)
@@ -293,7 +290,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController, The
     private func getSubcategoriesForCurrentCategory() -> [AvatarCustomizationSubcategory] {
         switch currentCategory {
         case .body:
-            return [.size, .shirt]
+            return [.shirt]
         case .skin:
             return [.color]
         case .hair:
@@ -411,8 +408,6 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController, The
         }
         if let user = self.user {
             switch customization.subcategory {
-            case .size:
-                return customization.key == user.preferences?.size ?? ""
             case .shirt:
                 return customization.key == user.preferences?.shirt ?? ""
             case .color:

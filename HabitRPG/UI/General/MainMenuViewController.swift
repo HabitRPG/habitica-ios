@@ -80,35 +80,73 @@ class MenuItem {
     }
     
     static let allItems = [
-        MenuItem(key: .tasks, title: L10n.Tasks.tasks, vcInstantiator: StoryboardScene.Main.taskBoardViewController.instantiate),
-        MenuItem(key: .habits, title: L10n.Tasks.habits, vcInstantiator: StoryboardScene.Main.habitsViewController.instantiate),
-        MenuItem(key: .dailies, title: L10n.Tasks.dailies, vcInstantiator: StoryboardScene.Main.dailiesViewController.instantiate),
-        MenuItem(key: .todos, title: L10n.Tasks.todos, vcInstantiator: StoryboardScene.Main.todosViewController.instantiate),
-        MenuItem(key: .rewards, title: L10n.Tasks.rewards, vcInstantiator: StoryboardScene.Main.rewardsViewController.instantiate),
-        MenuItem(key: .skills, title: L10n.Menu.skills, vcInstantiator: StoryboardScene.User.spellsViewController.instantiate),
-        MenuItem(key: .stats, title: L10n.Titles.stats, vcInstantiator: StoryboardScene.User.attributePointsViewController.instantiate),
-        MenuItem(key: .achievements, title: L10n.Titles.achievements, vcInstantiator: StoryboardScene.User.achievementsCollectionViewController.instantiate),
-        MenuItem(key: .market, title: L10n.Locations.market, segue: StoryboardSegue.Main.showMarketSegue.rawValue),
-        MenuItem(key: .questShop, title: L10n.Menu.questShop, segue: StoryboardSegue.Main.showQuestShopSegue.rawValue),
-        MenuItem(key: .seasonalShop, title: L10n.Locations.seasonalShop, segue: StoryboardSegue.Main.showSeasonalShopSegue.rawValue),
-        MenuItem(key: .customizationShop, title: L10n.Locations.customizations, segue: StoryboardSegue.Main.showCustomizationShopSegue.rawValue),
-        MenuItem(key: .timeTravelersShop, title: L10n.Locations.timeTravelersShop, segue: StoryboardSegue.Main.showTimeTravelersSegue.rawValue),
-        MenuItem(key: .customizeAvatar, title: L10n.Menu.customizeAvatar, vcInstantiator: StoryboardScene.Main.avatarOverviewViewController.instantiate),
-        MenuItem(key: .equipment, title: L10n.Titles.equipment, vcInstantiator: StoryboardScene.Main.equipmentOverviewViewController.instantiate),
-        MenuItem(key: .items, title: L10n.Titles.items, vcInstantiator: StoryboardScene.Main.itemsViewController.instantiate),
-        MenuItem(key: .stable, title: L10n.Titles.petsAndMounts, vcInstantiator: StoryboardScene.Main.stableViewController.instantiate),
-        MenuItem(key: .gems, title: L10n.Menu.gems, vcInstantiator: StoryboardScene.Main.purchaseGemNavController.instantiate),
-        MenuItem(key: .subscription, title: L10n.Menu.subscription, vcInstantiator: StoryboardScene.Main.subscriptionNavController.instantiate),
-        MenuItem(key: .party, title: L10n.Titles.party, vcInstantiator: StoryboardScene.Social.partyViewController.instantiate),
-        MenuItem(key: .questDetail, title: L10n.quest, vcInstantiator: StoryboardScene.Social.questDetailViewController.instantiate),
-        MenuItem(key: .challenges, title: L10n.Titles.challenges, vcInstantiator: StoryboardScene.Social.challengeTableViewController.instantiate),
-        MenuItem(key: .news, title: L10n.Titles.news, vcInstantiator: StoryboardScene.Main.newsViewController.instantiate),
-        MenuItem(key: .support, title: L10n.Menu.support, vcInstantiator: StoryboardScene.Support.initialScene.instantiate),
-        MenuItem(key: .about, title: L10n.Titles.about, vcInstantiator: StoryboardScene.Main.aboutViewController.instantiate),
-        MenuItem(key: .settings, title: L10n.Titles.settings, vcInstantiator: StoryboardScene.Settings.initialScene.instantiate),
-        MenuItem(key: .messages, title: L10n.Titles.messages, vcInstantiator: StoryboardScene.Social.inboxNavigationViewController.instantiate),
-        MenuItem(key: .notifications, title: L10n.Titles.notifications, vcInstantiator: StoryboardScene.Main.notificationsNavigationController.instantiate)
+        MenuItem(key: .tasks, title: "", vcInstantiator: StoryboardScene.Main.taskBoardViewController.instantiate),
+        MenuItem(key: .habits, title: "", vcInstantiator: StoryboardScene.Main.habitsViewController.instantiate),
+        MenuItem(key: .dailies, title: "", vcInstantiator: StoryboardScene.Main.dailiesViewController.instantiate),
+        MenuItem(key: .todos, title: "", vcInstantiator: StoryboardScene.Main.todosViewController.instantiate),
+        MenuItem(key: .rewards, title: "", vcInstantiator: StoryboardScene.Main.rewardsViewController.instantiate),
+        MenuItem(key: .skills, title: "", vcInstantiator: StoryboardScene.User.spellsViewController.instantiate),
+        MenuItem(key: .stats, title: "", vcInstantiator: StoryboardScene.User.attributePointsViewController.instantiate),
+        MenuItem(key: .achievements, title: "", vcInstantiator: StoryboardScene.User.achievementsCollectionViewController.instantiate),
+        MenuItem(key: .market, title: "", segue: StoryboardSegue.Main.showMarketSegue.rawValue),
+        MenuItem(key: .questShop, title: "", segue: StoryboardSegue.Main.showQuestShopSegue.rawValue),
+        MenuItem(key: .seasonalShop, title: "", segue: StoryboardSegue.Main.showSeasonalShopSegue.rawValue),
+        MenuItem(key: .customizationShop, title: "", segue: StoryboardSegue.Main.showCustomizationShopSegue.rawValue),
+        MenuItem(key: .timeTravelersShop, title: "", segue: StoryboardSegue.Main.showTimeTravelersSegue.rawValue),
+        MenuItem(key: .customizeAvatar, title: "", vcInstantiator: StoryboardScene.Main.avatarOverviewViewController.instantiate),
+        MenuItem(key: .equipment, title: "", vcInstantiator: StoryboardScene.Main.equipmentOverviewViewController.instantiate),
+        MenuItem(key: .items, title: "", vcInstantiator: StoryboardScene.Main.itemsViewController.instantiate),
+        MenuItem(key: .stable, title: "", vcInstantiator: StoryboardScene.Main.stableViewController.instantiate),
+        MenuItem(key: .gems, title: "", vcInstantiator: StoryboardScene.Main.purchaseGemNavController.instantiate),
+        MenuItem(key: .subscription, title: "", vcInstantiator: StoryboardScene.Main.subscriptionNavController.instantiate),
+        MenuItem(key: .party, title: "", vcInstantiator: StoryboardScene.Social.partyViewController.instantiate),
+        MenuItem(key: .questDetail, title: "", vcInstantiator: StoryboardScene.Social.questDetailViewController.instantiate),
+        MenuItem(key: .challenges, title: "", vcInstantiator: StoryboardScene.Social.challengeTableViewController.instantiate),
+        MenuItem(key: .news, title: "", vcInstantiator: StoryboardScene.Main.newsViewController.instantiate),
+        MenuItem(key: .support, title: "", vcInstantiator: StoryboardScene.Support.initialScene.instantiate),
+        MenuItem(key: .about, title: "", vcInstantiator: StoryboardScene.Main.aboutViewController.instantiate),
+        MenuItem(key: .settings, title: "", vcInstantiator: StoryboardScene.Settings.initialScene.instantiate),
+        MenuItem(key: .messages, title: "", vcInstantiator: StoryboardScene.Social.inboxNavigationViewController.instantiate),
+        MenuItem(key: .notifications, title: "", vcInstantiator: StoryboardScene.Main.notificationsNavigationController.instantiate)
     ]
+    
+    static var titleMapping: [MenuItem.Key: String] {
+        return [
+            .tasks: L10n.Tasks.tasks,
+            .habits: L10n.Tasks.habits,
+            .dailies: L10n.Tasks.dailies,
+            .todos: L10n.Tasks.todos,
+            .rewards: L10n.Tasks.rewards,
+            .skills: L10n.Menu.skills,
+            .stats: L10n.Titles.stats,
+            .achievements: L10n.Titles.achievements,
+            .market: L10n.Locations.market,
+            .questShop: L10n.Menu.questShop,
+            .seasonalShop: L10n.Locations.seasonalShop,
+            .customizationShop: L10n.Locations.customizations,
+            .timeTravelersShop: L10n.Locations.timeTravelersShop,
+            .customizeAvatar: L10n.Menu.customizeAvatar,
+            .equipment: L10n.Titles.equipment,
+            .items: L10n.Titles.items,
+            .stable: L10n.Titles.petsAndMounts,
+            .gems: L10n.Menu.gems,
+            .subscription: L10n.Menu.subscription,
+            .party: L10n.Titles.party,
+            .questDetail: L10n.quest,
+            .challenges: L10n.Titles.challenges,
+            .news: L10n.Titles.news,
+            .support: L10n.Menu.support,
+            .about: L10n.Titles.about,
+            .settings: L10n.Titles.settings,
+            .messages: L10n.Titles.messages,
+            .notifications: L10n.Titles.notifications,
+            .selectClass: ""
+        ]
+    }
+    
+    static func localizedTitle(for key: MenuItem.Key) -> String {
+        return titleMapping[key] ?? ""
+    }
 }
 
 struct MenuSection {
@@ -289,6 +327,8 @@ class MainMenuViewController: BaseTableViewController {
         #endif
         
         setupMenu()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(languageChanged), name: .languageChanged, object: nil)
                 
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
@@ -484,7 +524,25 @@ class MainMenuViewController: BaseTableViewController {
         }
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc
+    private func languageChanged() {
+        updateMenuTitles()
+        setupMenu()
+        tableView.reloadData()
+    }
+    
+    private func updateMenuTitles() {
+        for item in MenuItem.allItems {
+            item.title = MenuItem.localizedTitle(for: item.key)
+        }
+    }
+    
     private func setupMenu() {
+        updateMenuTitles()
         menuSections = [
             MenuSection(key: .user, title: L10n.Settings.user, iconAsset: nil, items: [
                 menuItem(withKey: .tasks),
@@ -619,14 +677,14 @@ class MainMenuViewController: BaseTableViewController {
             if let navigationController = viewController as? UINavigationController {
                 present(navigationController, animated: true, completion: nil)
             } else {
-                if splitViewController != nil {
+                if let splitViewController = splitViewController, !splitViewController.isCollapsed {
                     let oldIndexPath = currentSecondaryIndexPath
                     currentSecondaryIndexPath = indexPath
                     tableView.beginUpdates()
                     tableView.reloadRows(at: [indexPath, oldIndexPath], with: .automatic)
                     tableView.endUpdates()
                     viewController.navigationItem.setHidesBackButton(true, animated: false)
-                    splitViewController?.showDetailViewController(viewController, sender: self)
+                    splitViewController.showDetailViewController(viewController, sender: self)
                 } else {
                     navigationController?.pushViewController(viewController, animated: true)
                 }

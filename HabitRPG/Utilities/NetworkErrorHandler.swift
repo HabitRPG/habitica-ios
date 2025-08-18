@@ -40,6 +40,25 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
     ]
     
     public static func handle(error: NetworkError, messages: [String]) {
+        if error.code == 401,
+           !error.url.contains("/user/auth/update-password") {
+            let combined = messages.joined(separator: "\n")
+            let trimmed = combined.trimmingCharacters(in: .whitespacesAndNewlines)
+            let lower = trimmed.lowercased()
+            
+            let shouldLogout =
+            trimmed.caseInsensitiveCompare("missingAuthHeaders") == .orderedSame
+            || lower.contains("invalidcredentials")
+            || lower.contains("missing authentication headers")
+            || lower.contains("there is no account that uses those credentials")
+            
+            if shouldLogout {
+                NotificationCenter.default
+                    .post(name: .init("userDidBecomeUnauthorized"), object: nil)
+                return
+            }
+        }
+        
         if let errorMessage = errorMessageForCode(code: error.code) {
             notify(message: errorMessage.message, code: error.code, url: error.url)
         } else if !messages.isEmpty {
@@ -48,6 +67,7 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
             notify(message: error.localizedDescription, code: 0, url: error.url)
         }
     }
+
     
     static func errorMessageForCode(code: Int) -> ErrorMessage? {
         if let messages = errorMessages {
@@ -66,6 +86,10 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
         // Should not need this check, just in case however, this is handled by automatic logout.
         if message.lowercased().contains("there is no account that uses those credentials") {
            return
+        }
+        // Suppress SUBSCRIPTION_STILL_VALID notifications
+        if message.contains("SUBSCRIPTION_STILL_VALID") {
+            return
         }
         
         if code == 400 {

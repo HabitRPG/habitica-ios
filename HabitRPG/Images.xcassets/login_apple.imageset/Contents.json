@@ -1,23 +1,23 @@
 {
   "images" : [
     {
+      "filename" : ".png",
       "idiom" : "universal",
-      "filename" : "signin_apple.png",
       "scale" : "1x"
     },
     {
+      "filename" : "@2x.png",
       "idiom" : "universal",
-      "filename" : "signin_apple@2x.png",
       "scale" : "2x"
     },
     {
+      "filename" : "@3x.png",
       "idiom" : "universal",
-      "filename" : "signin_apple@3x.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }
