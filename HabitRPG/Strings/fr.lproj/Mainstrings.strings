@@ -1599,7 +1599,7 @@
 "login.already_have_account" = "Vous avez déjà un compte ?";
 "login.need_account" = "Vous souhaitez créer un compte ?";
 "login.what_call_you" = "Comment souhaitez-vous que nous vous appelions ?";
-"login.terms_text" = "Vous acceptez nos **[Conditions d'Utilisation](https://habitica.com/static/terms)** et avez lu notre **[Politique de Confidentialité](https://habitica.com/static/privacy)**.";
+"login.terms_text" = "Vous confirmez avoir plus de 18 ans, et avoir lu et accepté nos **[Conditions d'Utilisation](https://habitica.com/static/terms)** ainsi que notre **[Politique de Confidentialité](https://habitica.com/static/privacy)**.";
 "join_habitica" = "Rejoindre Habitica";
 "accept_all" = "Tout Accepter";
 "performance_analytics_description" = "C'est informations sont utilisées pour améliorer l'expérience de jeu, ainsi que les performances et services proposés par Habitica. L'équipe du support pourront également utiliser ces données durant la résolution de ticket et de rapport de bug.";
