@@ -621,11 +621,11 @@
 "login.enter_email" = "Habiticaのアカウント登録に使ったメールアドレスを入力してください。";
 "login.reset_password_response" = "もし入力されたメールアドレスが登録されている場合、新しいパスワードの設定方法が送信されたはずです。";
 "intro.card1.title" = "ようこそ";
-"intro.card1.text" = "仕事を片付けながら楽しみも満喫できる時代がやってきました。200万人のHabiticaの民とともに、あなたの人生もタスクも一気に改善しましょう。";
-"intro.card2.title" = "ゲームでの進行は";
+"intro.card1.text" = "仕事を片付けながら楽しみも満喫できる時代がやってきました。200万人以上のHabiticaの住民とともに、あなたも一歩ずつ人生をよりよくしていきましょう。";
+"intro.card2.title" = "ゲームでの進行";
 "intro.card2.subtitle" = "人生の進行";
-"intro.card3.title" = "モンスターと戦おう";
-"intro.card3.subtitle" = "友達とつながって";
+"intro.card3.title" = "友達とつながろう";
+"intro.card3.subtitle" = "モンスターと戦おう";
 "intro.card3.text" = "友達の助けを借りて目標に向かって進みましょう。現実でもバトルでもお互いに支え合い一緒に成長しましょう！";
 "intro.lets_go" = "はじめましょう！";
 "skip" = "スキップ";
@@ -823,8 +823,8 @@
 "gem_cap" = "ゴールドで購入可能なジェムを月間%d個アンロックします";
 "hourglass_count" = "+%d個の神秘の砂時計";
 "intro.welcome_prompt" = "あなたを何と呼べばいいですか？";
-"intro.avatar_setup_speechbubble" = "ようこそ！Habiticaへのガイド、Justin です。\n\nでは、どのような容姿にしたいですか？ 心配しないで、これはあとで変更することができます。";
-"intro.task_setup_speechbubble" = "素晴らしい！ さて、あなたはこの旅路を通して何に取り組むことに関心がありますか？";
+"intro.avatar_setup_speechbubble" = "ようこそ！Habiticaの案内人、Justin です。\n\nでは、どのような容姿にしたいですか？ 心配しないで、これはあとからでも変更することができます。";
+"intro.task_setup_speechbubble" = "カッコいいですね！では、興味のあるカテゴリーを選んで、さっそくタスクをいくつか作ってみよう。\n\nこの後はタスクボードに移動します！";
 "intro.card2.text" = "現実でタスクをこなして、ゲーム内の機能をアンロックしましょう。よろいやペットなどのさまざまなアイテムを、目標に近づいたごほうびとして獲得しましょう。";
 "never" = "しません";
 "keep_tasks" = "タスクを残す";
