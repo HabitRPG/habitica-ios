@@ -56,15 +56,17 @@ public struct UsernameScreen: View {
                                         viewModel.usernameValid = nil
                                     }
                                 }
-                            ForEach(viewModel.usernameIssues, id: \.self) { issue in
-                                Text(issue)
-                                    .multilineTextAlignment(.center)
-                                    .foregroundColor(.red100)
-                                    .scaledFont(size: 15, weight: .semibold)
-                                    .padding(.bottom, 4)
-                                    .padding(.horizontal, 16)
-                                    .transition(.push(from: .top))
-                            }
+                            VStack(spacing: 4) {
+                                ForEach(viewModel.usernameIssues, id: \.self) { issue in
+                                    Text(issue)
+                                        .multilineTextAlignment(.center)
+                                        .foregroundColor(.red500)
+                                        .scaledFont(size: 15, weight: .semibold)
+                                        .padding(.horizontal, 36)
+                                        .transition(.push(from: .top))
+                                }
+                            }.padding(.top, 5)
+                                .padding(.bottom, 4)
                         }
                         .padding(.top, 44)
                     }.frame(maxHeight: .infinity)

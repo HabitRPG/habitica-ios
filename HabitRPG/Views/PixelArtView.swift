@@ -25,7 +25,7 @@ struct PixelArtView: View {
     }
     
     var body: some View {
-        KFImage(source: source).resizable().interpolation(.none)
+        KFAnimatedImage(source: source)
     }
     
 }
