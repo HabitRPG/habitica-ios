@@ -774,7 +774,7 @@
 "settings.change_about_message" = "メッセージについて変更する";
 "settings.reset_account_description" = "すべてのレベル、ゴールド、経験値が失われます。すべてのタスクとその履歴データは削除されます（チャレンジタスクは残ります）。有料プランアイテムと無料記念アイテムを除くすべての装備を失いますが、買い戻すことは可能です。クラス固有の装備を再購入するには、対応したクラスである必要があります。現在のクラス、実績、ペットと乗騎は維持されます。リセットを確認するには、以下にパスワードを入力してください。";
 "settings.confirm_new_password" = "新しいパスワードを確認する";
-"settings.api_disclaimer" = "トークンをコピーする。これはパスワードなので慎重に扱ってください！";
+"settings.api_disclaimer" = "開発者とサードパーティーツール用のパスワードトークン";
 "settings.searchable_everywhere" = "どこでも";
 "settings.searchable_private_spaces" = "プライベートスペースのみ";
 "settings.mentions" = "返信";
@@ -1568,3 +1568,9 @@
 "join_habitica" = "Habiticaに参加する";
 "subscription.enjoy_these_benefits" = "有料プランに登録してこれらの限定特典をお楽しみください";
 "subscription.gifted" = "贈りました";
+"api_token_password_description" = "だれとも共有しないでください。ユーザーIDの入力を求められることはありますが、Githubを含め、他の人が見られる場所にAPIトークンを投稿しないでください。";
+"api_token_reset_desc" = "パスワードを変えてリセットすることができます。一度リセットされたら、Habiticaを使用するデバイスに再びログインし、サードパーティーツールを使用する場合、APIトークンを更新する必要があります。";
+"settings.privacy_preferences" = "プライバシー設定";
+"your_privacy_preferences" = "プライバシー設定";
+"settings.user_data" = "ユーザーデータ";
+"api_token_is_password" = "あなたのAPIトークンはパスワードのようなものです";

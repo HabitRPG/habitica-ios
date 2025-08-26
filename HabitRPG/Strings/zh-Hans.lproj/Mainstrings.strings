@@ -597,7 +597,7 @@
 "hourglass_count" = "+%d神秘沙漏";
 "intro.welcome_prompt" = "我们该怎么称呼你呢？";
 "intro.avatar_setup_speechbubble" = "新面孔呀！我是Justin，你的Habitica专属导游。\n\n你希望拥有怎样的外观？别担心，之后还能修改。";
-"intro.task_setup_speechbubble" = "帅气！现在任选你想专注的类别，我们先创建几个任务热热身。\n完成后直奔任务面板！";
+"intro.task_setup_speechbubble" = "帅气！现在任选你想专注的类别，我们先创建几个任务热热身。\n\n完成后直奔任务面板！";
 "intro.card1.title" = "欢迎来到";
 "intro.card2.title" = "游戏进度";
 "intro.card2.subtitle" = "人生成就";
