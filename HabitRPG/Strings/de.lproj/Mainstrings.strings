@@ -1658,7 +1658,7 @@
 "login.need_account" = "Noch nicht registriert?";
 "login.what_call_you" = "Wie sollen wir dich nennen?";
 "login.username_description" = "Dies ist ein einzigartiger Name, den du später jederzeit ändern kannst!";
-"login.terms_text" = "Du erklärst dich mit den **[Nutzungsbestimmungen](https://habitica.com/static/terms)** und den **[Datenschutzbestimmungen](https://habitica.com/static/privacy)** einverstanden und bestätigst diese gelesen zu haben.";
+"login.terms_text" = "Du bestätigst, dass du mindestens 18 Jahre alt bist, du unsere **[Nutzungsbedingungungen](https://habitica.com/static/terms)** und **[Datenschutzbestimmungen](https://habitica.com/static/privacy)** gelesen hast und erklärst dich mit diesen einverstanden.";
 "save_preferences" = "Einstellungen speichern";
 "accept_all" = "Alles akzeptieren";
 "change_password_helper" = "Passwörter müssen mindestens 8 Zeichen lang sein. Das Ändern deines Passwortes wird dich von all deinen Geräten und Drittanbieter-Anwendungen abmelden.";
