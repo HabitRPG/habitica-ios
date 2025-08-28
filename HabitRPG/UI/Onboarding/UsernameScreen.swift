@@ -10,7 +10,8 @@ import SwiftUI
 
 public struct UsernameScreen: View {
     @ObservedObject var viewModel: LoginViewModel
-
+    @FocusState private var isFocused: Bool
+    
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
     }
@@ -49,6 +50,7 @@ public struct UsernameScreen: View {
                                 .padding(.top, 5)
                                 .padding(.bottom, 16)
                             LoginTextInput(placeholder: L10n.username, prefix: "@", icon: EmptyView(), isValid: viewModel.usernameValid, text: $viewModel.username)
+                                .focused($isFocused)
                                 .onChange(of: viewModel.username) { _ in
                                     viewModel.verifyUsername()
                                 }
@@ -58,13 +60,14 @@ public struct UsernameScreen: View {
                                         .multilineTextAlignment(.center)
                                         .foregroundColor(.red500)
                                         .scaledFont(size: 15, weight: .semibold)
-                                        .padding(.horizontal, 36)
+                                        .padding(.horizontal, 30)
                                         .transition(.push(from: .top))
                                 }
                             }.padding(.top, 5)
                                 .padding(.bottom, 4)
                         }
-                        .padding(.top, 44)
+                        .padding(.top, isFocused ? 0 : 44)
+                        .animation(.easeInOut, value: isFocused)
                     }.frame(maxHeight: .infinity)
                     HStack {
                         ZStack {
