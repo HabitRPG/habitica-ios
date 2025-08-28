@@ -2191,7 +2191,7 @@ public enum L10n {
     }
     /// Enjoy having fun getting things done
     public static var tagline: String { return L10n.tr("Mainstrings", "login.tagline") }
-    /// You agree to our **[Terms of Service](https://habitica.com/static/terms)** and have read our **[Privacy Policy](https://habitica.com/static/privacy)**.
+    /// You confirm that you are at least 18 years old, and that you have read and agree to our **[Terms of Service](https://habitica.com/static/terms)** and **[Privacy Policy](https://habitica.com/static/privacy)**.
     public static var termsText: String { return L10n.tr("Mainstrings", "login.terms_text") }
     /// This is a unique name you can change later at any time!
     public static var usernameDescription: String { return L10n.tr("Mainstrings", "login.username_description") }

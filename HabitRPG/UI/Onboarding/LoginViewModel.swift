@@ -173,7 +173,7 @@ class LoginViewModel: ObservableObject {
         }
     }
     
-    func verifyUsername() {
+    func verifyUsername(initial: Bool = false) {
         if username.count < 1 {
             self.usernameValid = nil
             usernameIssues = []
@@ -186,6 +186,9 @@ class LoginViewModel: ObservableObject {
                     self.usernameValid = true
                 } else {
                     self.usernameValid = false
+                    if initial {
+                        self.username = ""
+                    }
                 }
                 self.usernameIssues = response?.issues ?? []
             }
@@ -263,7 +266,7 @@ class LoginViewModel: ObservableObject {
     func prefillUsername() {
         if email.isValidEmail() {
             username = String(email.split(separator: "@").first ?? "").replacing(/[\s+]/, with: "")
-            verifyUsername()
+            verifyUsername(initial: true)
         }
     }
 }

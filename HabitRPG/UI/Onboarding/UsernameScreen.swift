@@ -50,11 +50,7 @@ public struct UsernameScreen: View {
                                 .padding(.bottom, 16)
                             LoginTextInput(placeholder: L10n.username, prefix: "@", icon: EmptyView(), isValid: viewModel.usernameValid, text: $viewModel.username)
                                 .onChange(of: viewModel.username) { _ in
-                                    if viewModel.username.count >= 3 {
-                                        viewModel.verifyUsername()
-                                    } else {
-                                        viewModel.usernameValid = nil
-                                    }
+                                    viewModel.verifyUsername()
                                 }
                             VStack(spacing: 4) {
                                 ForEach(viewModel.usernameIssues, id: \.self) { issue in
