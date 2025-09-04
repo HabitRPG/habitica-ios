@@ -119,7 +119,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         #if !targetEnvironment(macCatalyst)
         Crashlytics.crashlytics().setCustomValue(-(NSTimeZone.local.secondsFromGMT() / 60), forKey: "timezone_offset")
         Crashlytics.crashlytics().setCustomValue(LanguageHandler.getAppLanguage().code, forKey: "app_language")
-        
         HabiticaAnalytics.shared.setUserProperty(key: "app_language", value: LanguageHandler.getAppLanguage().code)
         HabiticaAnalytics.shared.setUserProperty(key: "app_testing_level", value: configRepository.testingLevel.rawValue.lowercased())
         HabiticaAnalytics.shared.setUserProperty(key: "app_icon", value: UIApplication.shared.alternateIconName)
@@ -450,11 +449,9 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         analyticsData["keywordMatchtype"] = data["iad-keyword-matchtype"]
 
         UserDefaults.standard.set(true, forKey: "userWasAttributed")
-        Amplitude.instance().setUserProperties([
-            "clickedSearchAd": data["iad-attribution"] ?? "",
-            "searchAdName": data["iad-campaign-name"] ?? "",
-            "searchAdConversionDate": data["iad-conversion-date"] ?? ""
-        ])
+        UserDefaults.standard.set(data["iad-attribution"], forKey: "pendingAttribution_clickedSearchAd")
+        UserDefaults.standard.set(data["iad-campaign-name"], forKey: "pendingAttribution_searchAdName")
+        UserDefaults.standard.set(data["iad-conversion-date"], forKey: "pendingAttribution_searchAdConversionDate")
     }
     
     static func isRunningScreenshots() -> Bool {
