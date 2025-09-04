@@ -289,6 +289,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         if let userID = currentUserId {
             AuthenticationManager.shared.clearAuthentication(userId: userID)
         }
+        HabiticaAnalytics.shared.resetAnalyticsOnLogout()
         deregisterPushDevice().observeCompleted {}
         let defaults = UserDefaults.standard
         let themeMode = defaults.string(forKey: "themeMode")
