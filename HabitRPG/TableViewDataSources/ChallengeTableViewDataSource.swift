@@ -9,6 +9,7 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
+import RealmSwift
 
 class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengeProtocol> {
     @objc var predicate: NSPredicate? {
@@ -98,6 +99,11 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         if let challenge = item(at: indexPath), let challengeCell = cell as? ChallengeTableViewCell {
+            // Check if the challenge is a Realm object and if it's been invalidated
+            if let realmChallenge = challenge as? Object, realmChallenge.isInvalidated {
+                return cell
+            }
+            
             challengeCell.setChallenge(challenge, isParticipating: membershipIDs.contains(challenge.id ?? ""), isOwner: challenge.leaderID == socialRepository.currentUserId)
             
             if self.isShowingJoinedChallenges {
