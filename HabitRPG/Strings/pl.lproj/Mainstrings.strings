@@ -686,3 +686,7 @@
 "tasks.every_x" = "każdy %d%@";
 "yes" = "Tak";
 "no" = "Nie";
+"tasks.form.notes_placeholder" = "Dodaj wszelkie notatki, które mogą Ci pomóc";
+"menu.support" = "Wsparcie";
+"resync_task" = "ponownie zsynchronizuj to zadanie";
+"tasks.examples.team_daily_text" = "Aktualizowanie statusu zespołu";

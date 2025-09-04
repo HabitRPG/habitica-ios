@@ -1652,7 +1652,7 @@
 "join_habitica" = "Únete a Habitica";
 "login.what_call_you" = "¿Cómo deberíamos llamarte?";
 "login.username_description" = "¡Este es un nombre único que puedes cambiar más tarde en cualquier momento!";
-"login.terms_text" = "Estás de acuerdo con nuestros **[Terminos de Servicio] (https://habitica.com/static/terms)** y has leído nuestra **[Política de Privacidad] (https://habitica.com/static/privacy)**.";
+"login.terms_text" = "Confirmas que tienes al menos 18 años y que has leído y estás de acuerdo con nuestros **[Terminos de Servicio] (https://habitica.com/static/terms)** y **[Política de Privacidad] (https://habitica.com/static/privacy)**.";
 "save_preferences" = "Guardar Preferencias";
 "accept_all" = "Aceptar Todo";
 "login.continue_with_google" = "Continuar con Google";

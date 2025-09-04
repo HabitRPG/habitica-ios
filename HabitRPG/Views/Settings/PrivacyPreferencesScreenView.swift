@@ -20,46 +20,30 @@ struct PrivacyPreferencesScreenView: View, Dismissable {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
                 Text(L10n.yourPrivacyPreferences)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
                     .scaledFont(size: 30, weight: .bold)
                     .padding(.bottom, 20)
                     .padding(.horizontal, 13)
                 Text(L10n.privacyPreferencesFullDescription)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
                     .scaledFont(size: 16)
                     .lineSpacing(4)
                     .padding(.bottom, 16)
                     .padding(.horizontal, 13)
                 PrivacyToggleContainer(title: Text(L10n.performanceAnalytics),
                                        description: Text(L10n.performanceAnalyticsDescription),
-                                       titleTextColor: .white,
-                                       descriptionTextColor: .gray500,
-                                       backgroundColor: .purple50,
+                                       titleTextColor: Color(ThemeService.shared.theme.primaryTextColor),
+                                       descriptionTextColor: Color(ThemeService.shared.theme.secondaryTextColor),
+                                       backgroundColor: Color(ThemeService.shared.theme.windowBackgroundColor),
                                        isOn: $analyticsConsent)
                 .padding(.bottom, 8)
                 PrivacyToggleContainer(title: Text(L10n.strictlyNecessary),
                                        description: Text(L10n.strictlyNecessaryDescription),
-                                       titleTextColor: .white,
-                                       descriptionTextColor: .gray500,
-                                       backgroundColor: .purple50,
+                                       titleTextColor: Color(ThemeService.shared.theme.primaryTextColor),
+                                       descriptionTextColor: Color(ThemeService.shared.theme.secondaryTextColor),
+                                       backgroundColor: Color(ThemeService.shared.theme.windowBackgroundColor),
                                        isOn: .constant(true),
                                        disabled: true)
-                Button {
-                    userRepository.updateUser(key: "preferences.analyticsConsent", value: analyticsConsent).observeCompleted {
-                        if let dismiss = dismisser.dismiss {
-                            dismiss()
-                        }
-                    }
-                } label: {
-                    Text(L10n.savePreferences)
-                        .scaledFont(size: 16, weight: .bold)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                }
-                .height(60)
-                .background(.purple400)
-                .cornerRadius(16)
-                .padding(.top, 13)
                 Button {
                     analyticsConsent = true
                     userRepository.updateUser(key: "preferences.analyticsConsent", value: analyticsConsent).observeCompleted {
@@ -75,6 +59,22 @@ struct PrivacyPreferencesScreenView: View, Dismissable {
                 }
                 .height(60)
                 .background(.white)
+                .cornerRadius(16)
+                .padding(.top, 13)
+                Button {
+                    userRepository.updateUser(key: "preferences.analyticsConsent", value: analyticsConsent).observeCompleted {
+                        if let dismiss = dismisser.dismiss {
+                            dismiss()
+                        }
+                    }
+                } label: {
+                    Text(L10n.savePreferences)
+                        .scaledFont(size: 16, weight: .bold)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                }
+                .height(60)
+                .background(.purple400)
                 .cornerRadius(16)
                 .padding(.top, 8)
                 if let url = URL(string: "https://habitica.com/static/privacy") {
@@ -94,7 +94,7 @@ struct PrivacyPreferencesScreenView: View, Dismissable {
                 }).start()
             }
         }
-        .background(Color(.purple300).ignoresSafeArea())
+        .background(Color(ThemeService.shared.theme.contentBackgroundColor).ignoresSafeArea())
     }
 }
 

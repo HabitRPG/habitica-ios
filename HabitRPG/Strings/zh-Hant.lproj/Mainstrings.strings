@@ -367,3 +367,14 @@
 "tasks.form.scheduling" = "預定日程";
 "tasks.form.clear" = "清除";
 "accept_all" = "全部接受";
+"quest_mechanics_boss_description" = "完成任何類型的任務或使用技能即可累積預期傷害！這些傷害將在你下一次的每日起始時間後生效。力量會影響你造成的傷害量。";
+"quest_mechanics_collecting_description" = "在收集型副本中，完成任務可隨機獲得副本物品。待處理的物品會在你下一次的每日起始時間後添加。感知能提升獲得道具的機率。";
+"quest_mechanics_collecting_title" = "收集副本物品";
+"quest_mechanics_pausing_title" = "暫停傷害";
+"quest_mechanics_pausing_description" = "如果你最近難以完成每日任務，可以從設定中暫停傷害來稍作休息。這會防止Boss對你或其他成員造成傷害，但同樣也會暫停你對Boss造成的傷害。其他成員若有漏做每日任務，你仍然會承受這些傷害，所以請小心！";
+"quest_mechanics" = "副本機制";
+"quest_mechanics_boss_title" = "對Boss造成傷害";
+"quest_mechanics_rage_title" = "怒氣條";
+"quest_mechanics_rage_description" = "某些高難度Boss的血量下方會出現橘色的怒氣條。怒氣條會在參與者錯過每日任務時逐漸填滿。一旦怒氣條全滿，Boss就會施展一次強力攻擊，造成額外傷害！";
+"quest_mechanics_damage_title" = "錯過每日任務會讓Boss反擊";
+"quest_mechanics_damage_description" = "每當隊伍成員在新的每日起始時間後打卡，系統都會計算Boss造成的傷害。這些傷害會在你下一次執行與伺服器同步的動作時生效。Boss造成的傷害會記錄在你們隊伍的聊天室中。";
