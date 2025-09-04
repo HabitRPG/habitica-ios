@@ -93,6 +93,9 @@ class AuthenticationManager {
             if let newID = newValue {
                 (logger as? RemoteLogger)?.setUserID(newID)
                 HabiticaAnalytics.shared.setUserID(newID)
+            } else {
+                (logger as? RemoteLogger)?.setUserID(nil)
+                HabiticaAnalytics.shared.setUserID(nil)
             }
         }
     }
