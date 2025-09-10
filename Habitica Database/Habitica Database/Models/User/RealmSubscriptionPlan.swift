@@ -59,6 +59,10 @@ class RealmSubscriptionPlan: Object, SubscriptionPlanProtocol {
         return ["mysteryItems"]
     }
     
+    var isValid: Bool {
+        return isInvalidated
+    }
+    
     convenience init(userID: String?, protocolObject: SubscriptionPlanProtocol) {
         self.init()
         self.id = userID
