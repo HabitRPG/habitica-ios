@@ -75,11 +75,11 @@
 /* (No Comment) */
 "equipment.auto_equip" = "新しい装備品を自動装備する";
 /* (No Comment) */
-"equipment.back" = "背中のアクセサリ";
+"equipment.back" = "背中のアクセサリー";
 /* (No Comment) */
 "equipment.battle_gear" = "武装";
 /* (No Comment) */
-"equipment.body" = "胴のアクセサリ";
+"equipment.body" = "胴のアクセサリー";
 /* (No Comment) */
 "equipment.costume" = "衣装";
 /* (No Comment) */
@@ -833,7 +833,7 @@
 "write_a_message" = "メッセージを書く";
 "whats_world_boss" = "ワールドボスとは何ですか？";
 "tutorials.spells" = "スキルは、強力な効果を持つ特殊能力です！ スキルをタップして使いましょう。スキルを使うとマナ (青いバー) が減ります。マナは、毎日チェックして現実のタスクを達成することで獲得できます。詳しくは、メニューの「よくある質問」をチェックしましょう！";
-"faint.title" = "体力がなくなった！";
+"faint.title" = "体力がなくなりました！";
 "faint.dont_despair" = "がっかりしないで！";
 "faint.button" = "体力を復活させて、もう一度やってみよう";
 "agree_guidelines_prompt" = "ガイドラインに従うことに同意します";
