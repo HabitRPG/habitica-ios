@@ -18,7 +18,8 @@ class ChallengeTableViewCell: UITableViewCell {
     @IBOutlet weak private var officialBadge: PillView!
     @IBOutlet weak private var participatingBadge: PillView!
     @IBOutlet weak private var ownerBadge: PillView!
-    
+    @IBOutlet weak var otherPillsStack: UIStackView!
+	
     func setChallenge(_ challenge: ChallengeProtocol, isParticipating: Bool, isOwner: Bool) {
         self.prizeLabel.text = String(challenge.prize)
         self.nameLabel.text = challenge.name?.unicodeEmoji
@@ -34,13 +35,30 @@ class ChallengeTableViewCell: UITableViewCell {
         summaryLabel.textColor = ThemeService.shared.theme.secondaryTextColor
         memberCountLabel.textColor = ThemeService.shared.theme.secondaryTextColor
         
-        prizeLabel.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
-        nameLabel.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
-        summaryLabel.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
-        memberCountLabel.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
-        
+        prizeLabel.backgroundColor = .clear
+        nameLabel.backgroundColor = .clear
+        summaryLabel.backgroundColor = .clear
+        memberCountLabel.backgroundColor = .clear
+
         officialBadge.textColor = UIColor.white
         participatingBadge.textColor = UIColor.white
         ownerBadge.textColor = UIColor.white
+
+        otherPillsStack.removeAllArrangedSubviews()
+        challenge.categories
+            .compactMap { $0.name }
+            .filter { $0 != CategoryNameHelper.official }
+            .compactMap { CategoryNameHelper.localizedCategoryNameFor(name: $0) }
+            .enumerated()
+            .forEach { idx, name in
+                let pill = PillView()
+                pill.pillColor = .gray400
+                pill.text = name
+                let priority = UILayoutPriority(rawValue: Float(1000 - idx))
+                pill.setContentHuggingPriority(priority, for: .horizontal)
+                pill.setContentCompressionResistancePriority(priority, for: .horizontal)
+                otherPillsStack.addArrangedSubview(pill)
+            }
     }
+
 }

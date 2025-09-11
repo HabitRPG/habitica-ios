@@ -19,12 +19,20 @@ class ContentRepository: BaseRepository<ContentLocalRepository> {
         let lastContentFetch = defaults.object(forKey: "lastContentFetch") as? NSDate
         let lastContentFetchVersion = defaults.object(forKey: "lastContentFetchVersion") as? String
         let currentBuildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
-        if force || lastContentFetch == nil || (lastContentFetch?.timeIntervalSinceNow ?? 0) < -3600 || lastContentFetchVersion != currentBuildNumber {
-            return RetrieveContentCall(language: LanguageHandler.getAppLanguage().code, forceLoading: force).objectSignal.on(value: {[weak self] content in
+        let lastContentAppLanguageCode = defaults.object(forKey: "lastContentAppLanguageCode") as? String
+        let currentAppLanguageCode = LanguageHandler.getAppLanguage().code
+
+        if force ||
+            lastContentFetch == nil ||
+            (lastContentFetch?.timeIntervalSinceNow ?? 0) < -3600 ||
+            currentAppLanguageCode != lastContentAppLanguageCode ||
+            lastContentFetchVersion != currentBuildNumber {
+            return RetrieveContentCall(language: currentAppLanguageCode, forceLoading: force).objectSignal.on(value: {[weak self] content in
                 if let content = content {
                     self?.localRepository.save(content)
                     defaults.setValue(Date(), forKey: "lastContentFetch")
                     defaults.setValue(currentBuildNumber, forKey: "lastContentFetchVersion")
+                    defaults.setValue(currentAppLanguageCode, forKey: "lastContentAppLanguageCode")
                 }
             })
         }

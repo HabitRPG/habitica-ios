@@ -542,6 +542,7 @@
 		49E6F57E1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E6F57C1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib */; };
 		49EE3FD8201908AB00CD7608 /* ChallengeButtonStyleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE3FD7201908AB00CD7608 /* ChallengeButtonStyleProvider.swift */; };
 		49FA9FF720DC47AD0086C478 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FA9FF620DC47AD0086C478 /* TaskTableViewController.swift */; };
+		7378D4502E3E439100CC03B9 /* CategoryNameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7378D44F2E3E439100CC03B9 /* CategoryNameHelper.swift */; };
 		7A84E194228928AC0081E96F /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E193228928AC0081E96F /* IntentHandler.swift */; };
 		7A84E19C228928AD0081E96F /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A84E19B228928AD0081E96F /* IntentsUI.framework */; };
 		7A84E19F228928AD0081E96F /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E19E228928AD0081E96F /* IntentViewController.swift */; };
@@ -1224,6 +1225,7 @@
 		49E6F57C1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoubleButtonTableViewCell.xib; sourceTree = "<group>"; };
 		49EE3FD7201908AB00CD7608 /* ChallengeButtonStyleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeButtonStyleProvider.swift; sourceTree = "<group>"; };
 		49FA9FF620DC47AD0086C478 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
+		7378D44F2E3E439100CC03B9 /* CategoryNameHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryNameHelper.swift; sourceTree = "<group>"; };
 		7A84E191228928AC0081E96F /* Habitica Intents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Habitica Intents.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A84E193228928AC0081E96F /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		7A84E195228928AC0081E96F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -2415,6 +2417,7 @@
 				291A5E6126CD35E800E9CD50 /* TutorialStepsProtocol.swift */,
 				29C1360324EBD66900DBC6B3 /* UIWindow+VisibleController.swift */,
 				2919FDDC2091D5370096A53B /* UserManager.swift */,
+				7378D44F2E3E439100CC03B9 /* CategoryNameHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -3711,6 +3714,7 @@
 				29C38C8924A33E6600F219A1 /* NotificationManager.swift in Sources */,
 				49DCECA71F96ECEF00982E99 /* MultiModelDataSource.swift in Sources */,
 				2957B8B31F4B2D5A00E836EF /* RewardViewController.swift in Sources */,
+				7378D4502E3E439100CC03B9 /* CategoryNameHelper.swift in Sources */,
 				291448682084FBCF00F3A6B5 /* MountDetailCell.swift in Sources */,
 				2927025524E3EEC000BCAA77 /* MainSupportViewController.swift in Sources */,
 				29AAA1631F2B6D2000029737 /* SetupViewController.swift in Sources */,
