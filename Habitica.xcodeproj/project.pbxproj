@@ -241,7 +241,6 @@
 		296F51642358E5EF0019C872 /* SubscriptionPromoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296F51632358E5EF0019C872 /* SubscriptionPromoView.swift */; };
 		29701FE01F560D310097BBCC /* UIApplication-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */; };
 		29701FE21F5617900097BBCC /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29701FE11F5617900097BBCC /* ToastView.xib */; };
-		29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FE31F56C2200097BBCC /* IconLabel.swift */; };
 		29701FE61F56DABC0097BBCC /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FE51F56DABC0097BBCC /* RoundedView.swift */; };
 		29706C8727D22CF3006EC139 /* LabeledProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29706C8627D22CF3006EC139 /* LabeledProgressBar.swift */; };
 		29706C8927D23C82006EC139 /* SpellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29706C8827D23C82006EC139 /* SpellViewController.swift */; };
@@ -948,7 +947,6 @@
 		296F51632358E5EF0019C872 /* SubscriptionPromoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPromoView.swift; sourceTree = "<group>"; };
 		29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication-Extensions.swift"; sourceTree = "<group>"; };
 		29701FE11F5617900097BBCC /* ToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
-		29701FE31F56C2200097BBCC /* IconLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
 		29701FE51F56DABC0097BBCC /* RoundedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		29706C8627D22CF3006EC139 /* LabeledProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledProgressBar.swift; sourceTree = "<group>"; };
 		29706C8827D23C82006EC139 /* SpellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellViewController.swift; sourceTree = "<group>"; };
@@ -1753,7 +1751,6 @@
 				29FC88592017C039002B3D3F /* CollapsibleStackView.swift */,
 				29FC88552017B840002B3D3F /* CollapsibleTitle.swift */,
 				296CB4ED218C99FD0044A33E /* HabiticaButton.swift */,
-				29701FE31F56C2200097BBCC /* IconLabel.swift */,
 				D9BB45D91E79A02C0002AE2E /* LabeledCheckboxView.swift */,
 				328C951D24A2C13100293E16 /* LinksOnlyTextView.swift */,
 				29C135FD24EACA7B00DBC6B3 /* MarkdownTextView.swift */,
@@ -3485,7 +3482,6 @@
 				29701FE01F560D310097BBCC /* UIApplication-Extensions.swift in Sources */,
 				29D16C7E25A33F70001D9A61 /* MainVCSelectionSegue.swift in Sources */,
 				2919FDDF2091D87A0096A53B /* FaintViewController.swift in Sources */,
-				29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */,
 				29B4788420BD6DED00B6123F /* SkillsUserTableViewController.swift in Sources */,
 				29EFE3A52C8B359A005B66C9 /* SubscriptionDetailViewUI.swift in Sources */,
 				29ED3FEF2C90A68A00DD1483 /* BaseSubscriptionViewModel.swift in Sources */,
