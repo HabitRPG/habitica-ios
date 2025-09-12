@@ -21,12 +21,12 @@ class UserTopHeader: UIView, Themeable {
     @IBOutlet weak var experienceLabel: LabeledProgressBar!
     @IBOutlet weak var magicLabel: LabeledProgressBar!
     
+    @IBOutlet weak var levelStackview: UIStackView!
     @IBOutlet weak var levelLabel: UILabel!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var buffIconView: UIImageView!
     
     @IBOutlet weak var classImageView: UIImageView!
     
+    @IBOutlet weak var currencyStackView: StackView!
     @IBOutlet weak var gemView: CurrencyCountView!
     @IBOutlet weak var goldView: CurrencyCountView!
     @IBOutlet weak var hourglassView: CurrencyCountView!
@@ -41,13 +41,6 @@ class UserTopHeader: UIView, Themeable {
     
     private var contributorTier: Int = 0 {
         didSet {
-            if contributorTier > 0 {
-                usernameLabel.textColor = UIColor.contributorColor(forTier: contributorTier)
-                levelLabel.textColor = UIColor.contributorColor(forTier: contributorTier)
-            } else {
-                usernameLabel.textColor = ThemeService.shared.theme.primaryTextColor
-                levelLabel.textColor = ThemeService.shared.theme.primaryTextColor
-            }
         }
     }
     
@@ -75,9 +68,7 @@ class UserTopHeader: UIView, Themeable {
         }
         
         configureAccessibilitySizing()
-        
-        buffIconView.image = HabiticaIcons.imageOfBuffIcon
-        
+                
         goldView.currency = .gold
         gemView.currency = .gem
         hourglassView.currency = .hourglass
@@ -86,10 +77,7 @@ class UserTopHeader: UIView, Themeable {
         avatarView.isUserInteractionEnabled = true
         gemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showGemView)))
         
-        usernameLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
         levelLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
-        usernameLabel.adjustsFontForContentSizeCategory = true
-        levelLabel.adjustsFontForContentSizeCategory = true
         hourglassView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
         gemView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
         goldView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
@@ -130,25 +118,14 @@ class UserTopHeader: UIView, Themeable {
             healthLabelAvatarSpacing.constant = 10
             experienceLabelAvatarSpacing.constant = 10
             magicLabelAvatarSpacing.constant = 10
-            avatarLeadingSpacing.constant = 12
         } else if !traitCollection.preferredContentSizeCategory.isAccessibilityCategory && healthLabelAvatarSpacing.constant != 25 {
             healthLabelAvatarSpacing.constant = 25
             experienceLabelAvatarSpacing.constant = 25
             magicLabelAvatarSpacing.constant = 25
-            avatarLeadingSpacing.constant = 22
         }
     }
     
     func applyTheme(theme: Theme) {
-        theme.applyBackgroundColor(views: [
-            self,
-            classImageView,
-            usernameLabel,
-            levelLabel,
-            hourglassView,
-            gemView,
-            goldView
-            ], color: theme.contentBackgroundColor)
         healthLabel.textColor = theme.isDark ? UIColor.maroon500 : UIColor.maroon100
         healthLabel.backgroundColor = theme.contentBackgroundColor
         healthLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
@@ -176,8 +153,9 @@ class UserTopHeader: UIView, Themeable {
             magicLabel.iconView.alpha = 1.0
             classImageView.alpha = 1.0
         }
-        let tier = contributorTier
-        contributorTier = tier
+        currencyStackView.backgroundColor = theme.windowBackgroundColor
+        currencyStackView.cornerRadius = 50
+        levelStackview.cornerRadius = 12
         goldView.updateStateValues()
         gemView.updateStateValues()
         hourglassView.updateStateValues()
@@ -204,12 +182,8 @@ class UserTopHeader: UIView, Themeable {
             configureMagicBar(user: user)
             
             let levelString = L10n.level
-            usernameLabel.text = "\(levelString) \(stats.level)"
             configureClassDisplay(user: user)
             goldView.amount = Int(stats.gold)
-            
-            buffIconView.isHidden = stats.buffs?.isBuffed != true
-            layoutBuffIcon()
         }
         contributorTier = user.contributor?.level ?? 0
         gemView.amount = user.gemCount
@@ -252,17 +226,25 @@ class UserTopHeader: UIView, Themeable {
     }
     
     private func configureClassDisplay(user: UserProtocol) {
+        levelLabel.text = "Lvl \(user.stats?.level ?? 0)"
         if user.preferences?.disableClasses != true && (user.stats?.level ?? 0) >= 10 {
-            levelLabel.text = user.stats?.habitClassNice?.capitalized
             switch user.stats?.habitClass ?? "" {
             case "warrior":
                 classImageView.image = HabiticaIcons.imageOfWarriorLightBg
+                levelStackview.backgroundColor = .red500
+                levelLabel.textColor = .red1
             case "wizard":
                 classImageView.image = HabiticaIcons.imageOfMageLightBg
+                levelStackview.backgroundColor = .blue500
+                levelLabel.textColor = .blue1
             case "healer":
                 classImageView.image = HabiticaIcons.imageOfHealerLightBg
+                levelStackview.backgroundColor = .yellow500
+                levelLabel.textColor = .yellow1
             case "rogue":
                 classImageView.image = HabiticaIcons.imageOfRogueLightBg
+                levelStackview.backgroundColor = .purple500
+                levelLabel.textColor = .purple10
             default:
                 classImageView.image = nil
             }
@@ -270,7 +252,7 @@ class UserTopHeader: UIView, Themeable {
         } else {
             classImageView.image = nil
             classImageView.isHidden = true
-            levelLabel.text = nil
+            levelStackview.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         }
     }
     
@@ -297,16 +279,6 @@ class UserTopHeader: UIView, Themeable {
             }
         }))
         nearestNavigationController?.present(sheet, animated: true)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        layoutBuffIcon()
-    }
-    
-    private func layoutBuffIcon() {
-        let usernameLabelSize = usernameLabel.sizeThatFits(levelLabel.bounds.size)
-        buffIconView.pin.size(15).start(usernameLabelSize.width + 6).top((usernameLabelSize.height - 15)/2)
     }
 }
 
