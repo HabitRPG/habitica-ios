@@ -38,8 +38,12 @@ class CheckedTableViewCell: TaskTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         contentStartEdge = checkBox.edge.end
-        
+
         checklistTapArea.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(expandTask)))
+
+        mainTaskWrapper.clipsToBounds = true
+        checklistContainer.clipsToBounds = true
+        contentView.clipsToBounds = true
     }
     
     override func configure(task: TaskProtocol) {
