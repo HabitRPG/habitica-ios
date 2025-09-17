@@ -347,7 +347,7 @@ struct SubscriptionPage: View {
                     }
                     SubscriptionSeparator()
                         .padding(.horizontal, 24)
-                    if (viewModel.subscriptionPlan?.consecutive?.gemCapExtra ?? 0) > 0 {
+                    if viewModel.subscriptionPlan?.isValid == true && (viewModel.subscriptionPlan?.consecutive?.gemCapExtra ?? 0) > 0 {
                         VStack(spacing: 1) {
                             HStack(spacing: 10) {
                                 Image(Asset.gemcapLeft.name)

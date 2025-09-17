@@ -42,6 +42,10 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
         case extraMonths
     }
     
+    var isValid: Bool {
+        return true
+    }
+    
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         quantity = (try? values.decode(Int.self, forKey: .quantity)) ?? 0
@@ -58,6 +62,5 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
         mysteryItems = (try? values.decode([String].self, forKey: .mysteryItems)) ?? []
         hourglassPromoReceived = (try? values.decode(Date.self, forKey: .hourglassPromoReceived))
         extraMonths = (try? values.decode(Int.self, forKey: .extraMonths)) ?? 0
-        
     }
 }

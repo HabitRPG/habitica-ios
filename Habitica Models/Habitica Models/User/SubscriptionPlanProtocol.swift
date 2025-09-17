@@ -24,6 +24,7 @@ public protocol SubscriptionPlanProtocol {
     var mysteryItems: [String] { get set }
     var hourglassPromoReceived: Date? { get set }
     var extraMonths: Int { get set }
+    var isValid: Bool { get }
 }
 
 public extension SubscriptionPlanProtocol {
@@ -116,4 +117,5 @@ public class PreviewSubscriptionPlan: SubscriptionPlanProtocol {
     public var mysteryItems: [String] = []
     public var hourglassPromoReceived: Date?
     public var extraMonths: Int = 0
+    public var isValid = true
 }
