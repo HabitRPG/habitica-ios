@@ -86,6 +86,16 @@ class UserTopHeader: UIView, Themeable {
         experienceLabel.type = "EXP"
         magicLabel.type = "MP"
         
+        healthLabel.progressBar.showGradient = true
+        healthLabel.progressBar.gStartColor = UIColor("#F74E52")
+        healthLabel.progressBar.gEndColor = UIColor("#FF976A")
+        experienceLabel.progressBar.showGradient = true
+        experienceLabel.progressBar.gStartColor = UIColor("#FF944C")
+        experienceLabel.progressBar.gEndColor = UIColor("#FFD76F")
+        magicLabel.progressBar.showGradient = true
+        magicLabel.progressBar.gStartColor = UIColor("#46A7D9")
+        magicLabel.progressBar.gEndColor = UIColor("#5ADEEA")
+        
         disposable.inner.add(repository.getUser().on(value: {[weak self] user in
             self?.set(user: user)
         }).start())
@@ -115,17 +125,18 @@ class UserTopHeader: UIView, Themeable {
     
     private func configureAccessibilitySizing() {
         if traitCollection.preferredContentSizeCategory.isAccessibilityCategory && healthLabelAvatarSpacing.constant != 10 {
-            healthLabelAvatarSpacing.constant = 10
-            experienceLabelAvatarSpacing.constant = 10
-            magicLabelAvatarSpacing.constant = 10
+            healthLabelAvatarSpacing.constant = 8
+            experienceLabelAvatarSpacing.constant = 8
+            magicLabelAvatarSpacing.constant = 8
         } else if !traitCollection.preferredContentSizeCategory.isAccessibilityCategory && healthLabelAvatarSpacing.constant != 25 {
-            healthLabelAvatarSpacing.constant = 25
-            experienceLabelAvatarSpacing.constant = 25
-            magicLabelAvatarSpacing.constant = 25
+            healthLabelAvatarSpacing.constant = 13
+            experienceLabelAvatarSpacing.constant = 13
+            magicLabelAvatarSpacing.constant = 13
         }
     }
     
     func applyTheme(theme: Theme) {
+        avatarView.borderColor = theme.contentBackgroundColor
         healthLabel.textColor = theme.isDark ? UIColor.maroon500 : UIColor.maroon100
         healthLabel.backgroundColor = theme.contentBackgroundColor
         healthLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
@@ -155,7 +166,7 @@ class UserTopHeader: UIView, Themeable {
         }
         currencyStackView.backgroundColor = theme.windowBackgroundColor
         currencyStackView.cornerRadius = 50
-        levelStackview.cornerRadius = 12
+        levelStackview.cornerRadius = 20
         goldView.updateStateValues()
         gemView.updateStateValues()
         hourglassView.updateStateValues()
@@ -231,20 +242,36 @@ class UserTopHeader: UIView, Themeable {
             switch user.stats?.habitClass ?? "" {
             case "warrior":
                 classImageView.image = HabiticaIcons.imageOfWarriorLightBg
-                levelStackview.backgroundColor = .red500
-                levelLabel.textColor = .red1
+                levelStackview.backgroundColor = .red500.withAlphaComponent(0.3)
+                if ThemeService.shared.theme.isDark {
+                    levelLabel.textColor = .red500
+                } else {
+                    levelLabel.textColor = .red1
+                }
             case "wizard":
                 classImageView.image = HabiticaIcons.imageOfMageLightBg
-                levelStackview.backgroundColor = .blue500
-                levelLabel.textColor = .blue1
+                levelStackview.backgroundColor = .blue500.withAlphaComponent(0.3)
+                if ThemeService.shared.theme.isDark {
+                    levelLabel.textColor = .blue500
+                } else {
+                    levelLabel.textColor = .blue1
+                }
             case "healer":
                 classImageView.image = HabiticaIcons.imageOfHealerLightBg
-                levelStackview.backgroundColor = .yellow500
-                levelLabel.textColor = .yellow1
+                levelStackview.backgroundColor = .yellow500.withAlphaComponent(0.3)
+                if ThemeService.shared.theme.isDark {
+                    levelLabel.textColor = .yellow500
+                } else {
+                    levelLabel.textColor = .yellow1
+                }
             case "rogue":
                 classImageView.image = HabiticaIcons.imageOfRogueLightBg
-                levelStackview.backgroundColor = .purple500
-                levelLabel.textColor = .purple10
+                levelStackview.backgroundColor = .purple500.withAlphaComponent(0.3)
+                if ThemeService.shared.theme.isDark {
+                    levelLabel.textColor = .purple500
+                } else {
+                    levelLabel.textColor = .purple300
+                }
             default:
                 classImageView.image = nil
             }

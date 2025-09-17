@@ -71,14 +71,14 @@ struct BottomSheetView<Title: View, Content: View>: View, Dismissable {
                 .foregroundColor(.primaryTextColor)
             content
         }.padding(.horizontal, 20)
-            .padding(.top, 12)
+            .padding(.top, 28)
             .padding(.bottom, 12)
     }
 }
 
 extension BottomSheetView where Title == EmptyView {
-    init(content: Content) {
-        self.init(title: EmptyView(), content: content)
+    init(dismisser: Dismisser = Dismisser(), content: Content) {
+        self.init(dismisser: dismisser, title: EmptyView(), content: content)
     }
 }
 

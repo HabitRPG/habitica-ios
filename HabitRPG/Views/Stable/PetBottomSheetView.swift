@@ -69,7 +69,7 @@ struct PetBottomSheetView: View, Dismissable {
         BottomSheetView(dismisser: dismisser, title: Text(pet.text ?? ""), content: VStack(spacing: 16) {
             ZStack(alignment: .top) {
                 StableBackgroundView(content: PetView(pet: pet).padding(.top, 40), animateFlying: false)
-                    .clipShape(.rect(cornerRadius: 12))
+                    .clipShape(.rect(cornerRadius: 26))
                 if showFeedResponse, let message = feedMessage {
                     Text(message)
                         .font(.system(size: 12))
@@ -97,8 +97,8 @@ struct PetBottomSheetView: View, Dismissable {
                         .zIndex(4)
                 }
             }
+            let buttonBackground = Color(theme.contentBackgroundColor)
             if trained > 0 && pet.type != "special" && canRaise {
-                let buttonBackground = Color(theme.tintedSubtleUI)
                 HStack(spacing: 16) {
                     Button(action: {
                         isUsingSaddle = true
@@ -117,11 +117,16 @@ struct PetBottomSheetView: View, Dismissable {
                             }
                         }
                     }).buttonStyle { configuration in
-                        configuration.label
+                        let conf = configuration.label
                             .frame(height: 101)
                             .maxWidth(.infinity)
-                            .background(buttonBackground)
-                            .clipShape(.rect(cornerRadius: 12))
+                        if #available(iOS 26.0, *) {
+                            conf.glassEffect(.regular.interactive().tint(buttonBackground), in: RoundedRectangle(cornerRadius: 26))
+                        } else {
+                            conf
+                                .background(buttonBackground)
+                                .clipShape(.rect(cornerRadius: 26))
+                        }
                     }
                     Button(action: {
                         isShowingFeeding = true
@@ -131,22 +136,27 @@ struct PetBottomSheetView: View, Dismissable {
                             Text(L10n.Stable.feed).font(.system(size: 16, weight: .semibold)).foregroundColor(Color(theme.tintedMainText)).underline(UIAccessibility.buttonShapesEnabled)
                         }
                     }).buttonStyle { configuration in
-                        configuration.label
+                        let conf = configuration.label
                             .frame(height: 101)
                             .maxWidth(.infinity)
-                            .background(buttonBackground)
-                            .clipShape(.rect(cornerRadius: 12))
+                        if #available(iOS 26.0, *) {
+                            conf.glassEffect(.regular.interactive().tint(buttonBackground.opacity(0.95)), in: RoundedRectangle(cornerRadius: 26))
+                        } else {
+                            conf
+                                .background(buttonBackground)
+                                .clipShape(.rect(cornerRadius: 26))
+                        }
                     }
                 }
             }
-            HabiticaButtonUI(label: Text(L10n.share), color: Color(theme.fixedTintColor), size: .compact) {
+            HabiticaButtonUI(label: Text(L10n.share).foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor)), color: buttonBackground) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     SharingManager.share(pet: pet)
                 }
                 dismisser.dismiss?()
             }
             if trained > 0 {
-                HabiticaButtonUI(label: Text(isCurrentPet ? L10n.unequip : L10n.equip), color: Color(theme.fixedTintColor), size: .compact) {
+                HabiticaButtonUI(label: Text(isCurrentPet ? L10n.unequip : L10n.equip), color: Color(theme.fixedTintColor)) {
                     onEquip()
                     dismisser.dismiss?()
                 }

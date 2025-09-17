@@ -17,7 +17,7 @@ struct TaskFormSection<Header: View, Content: View>: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             header.font(.system(size: 13, weight: .semibold)).foregroundColor(Color(ThemeService.shared.theme.quadTextColor)).padding(.leading, 14)
-            content.frame(maxWidth: .infinity).background(backgroundColor.cornerRadius(8))
+            content.frame(maxWidth: .infinity).background(backgroundColor.cornerRadius(26))
         }
     }
 }
@@ -100,7 +100,7 @@ struct HabitControlsFormView: View {
 
 struct Separator: View {
     var body: some View {
-        Rectangle().fill(Color(ThemeService.shared.theme.separatorColor)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1).padding(.leading, 15)
+        Rectangle().fill(Color(ThemeService.shared.theme.separatorColor)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1).padding(.horizontal, 14)
     }
 }
 
@@ -123,7 +123,7 @@ struct TagList: View {
                     }
                 }
                 .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
-                .frame(height: 45).padding(.horizontal, 14)
+                .frame(height: 50).padding(.horizontal, 26)
                 .onTapGesture {
                     UISelectionFeedbackGenerator.oneShotSelectionChanged()
                     if isSelected {
@@ -154,12 +154,16 @@ struct FormRow<TitleView: View, LabelView: View>: View {
                     title.foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
                     Spacer()
                     valueLabel
-                }.frame(height: 45).padding(.horizontal, 14)
+                        .padding(.vertical, 6)
+                        .padding(.horizontal, 11)
+                        .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                        .cornerRadius(26)
+                }.frame(height: 45).padding(.leading, 26).padding(.trailing, 12)
             }).buttonStyle { configuration in
                 if UIAccessibility.buttonShapesEnabled {
                     configuration.label
                         .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                        .cornerRadius(6).padding(4)
+                        .cornerRadius(26).padding(4)
                 } else {
                     configuration.label
                 }
@@ -168,8 +172,12 @@ struct FormRow<TitleView: View, LabelView: View>: View {
             HStack {
                 title.foregroundColor(.primary)
                 Spacer()
-                valueLabel.foregroundColor(.accentColor)
-            }.frame(height: 45).padding(.horizontal, 14)
+                valueLabel
+                    .padding(.vertical, 6)
+                    .padding(.horizontal, 11)
+                    .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                    .cornerRadius(26)
+            }.frame(height: 45).padding(.leading, 26).padding(.trailing, 12)
         }
     }
 }
@@ -182,21 +190,21 @@ struct FormSheetSelector<TYPE: Equatable & Hashable>: View {
     @State var isOpen = false
     
     var body: some View {
-        var buttons = options.map({ option in
-            return ActionSheet.Button.default(Text(option.label)) {
-                withAnimation(.easeInOut(duration: 0.2)) {
-                    value = option.value
+        HStack {
+            title
+            Spacer()
+            Picker(selection: $value, content: {
+                ForEach(options) { option in
+                    Text(option.label).tag(option.value)
                 }
-            }
-        })
-        
-        buttons.append(.cancel())
-        return FormRow(title: title, valueLabel: Text(options.first(where: { $0.value == value })?.label ?? ""), action: {
-            withAnimation { isOpen.toggle() }
-        })
-        .actionSheet(isPresented: $isOpen, content: {
-            ActionSheet(title: title, message: nil, buttons: buttons)
-        })
+            }, label: {
+                Text(options.first(where: { $0.value == value })?.label ?? "")
+            })
+            .tint(Color(ThemeService.shared.theme.primaryTextColor))
+            .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
+            .cornerRadius(26, style: .continuous)
+            .menuIndicator(.hidden)
+        }.frame(height: 45).padding(.leading, 26).padding(.trailing, 12)
     }
 }
 
@@ -218,15 +226,6 @@ struct FormDatePicker<TitleView: View>: View {
         })
     }
     
-    @ViewBuilder
-    private var picker: some View {
-        DatePicker(selection: dateProxy,
-                          displayedComponents: [.date],
-                          label: {
-                   title
-                          })
-    }
-    
     private var valueText: String {
         if let date = value {
             return dateFormatter.string(from: date)
@@ -236,20 +235,13 @@ struct FormDatePicker<TitleView: View>: View {
     }
     
     var body: some View {
-        VStack {
-            FormRow(title: title, valueLabel: Text(valueText).foregroundColor(value != nil ? .accentColor : Color(ThemeService.shared.theme.dimmedTextColor))) {
-                if value == nil {
-                    value = Date()
-                }
-                withAnimation {
-                    isOpen.toggle()
-                }
-            }
-            if isOpen {
-                    picker.datePickerStyle(GraphicalDatePickerStyle())
-                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
-            }
-        }
+        DatePicker(selection: dateProxy,
+                 displayedComponents: [.date],
+                 label: {
+          title
+                 })
+        .padding(.leading, 26).padding(.trailing, 12)
+        .frame(height: 50)
     }
 }
 
@@ -318,11 +310,12 @@ struct DailySchedulingView: View {
     }
     
     private func weekOption(initial: String, isEnabled: Binding<Bool>) -> some View {
-        return Text(initial).font(.system(size: 15))
+        let option = Text(initial).font(.system(size: 15))
             .foregroundColor(isEnabled.wrappedValue ? .white : Color(ThemeService.shared.theme.dimmedTextColor))
             .frame(width: 32, height: 32)
-            .background(Circle().fill(isEnabled.wrappedValue ? Color.accentColor : Color(ThemeService.shared.theme.offsetBackgroundColor)))
-            .animation(.easeInOut)
+            .border(Color(ThemeService.shared.theme.dimmedColor), width: isEnabled.wrappedValue ? 0 : 1, cornerRadius: 26, antialiased: true)
+            .background(Circle().fill(isEnabled.wrappedValue ? Color.accentColor : .clear))
+            .animation(.easeInOut, value: isEnabled.wrappedValue)
             .frame(maxWidth: .infinity)
             .onTapGesture {
                 UISelectionFeedbackGenerator.oneShotSelectionChanged()
@@ -330,6 +323,12 @@ struct DailySchedulingView: View {
                     isEnabled.wrappedValue.toggle()
                 }
             }
+        
+        if #available(iOS 26.0, *) {
+            return option.glassEffect()
+        } else {
+            return option
+        }
     }
     
     var body: some View {
@@ -433,14 +432,14 @@ struct TaskFormReminderItemView: View {
                     if UIAccessibility.buttonShapesEnabled {
                         configuration.label
                             .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                            .cornerRadius(6).padding(4)
+                            .cornerRadius(26).padding(4)
                     } else {
                         configuration.label.padding(4)
                     }
                 }
                 buildPicker(value: timeProxy)
-            }.padding(.trailing, 4)
-        }.frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
+            }.padding(.trailing, 8)
+        }.frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(26))
         .transition(.opacity)
     }
 }
@@ -485,7 +484,7 @@ struct TaskFormReminderView: View {
                         .font(.system(size: 15, weight: .semibold))
                         .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
                         .frame(maxWidth: .infinity).frame(height: 48)
-                        .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
+                        .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(26))
                 }
             }
         }.animation(.easeInOut)
@@ -506,7 +505,7 @@ struct RewardAmountView: View {
                 if UIAccessibility.buttonShapesEnabled {
                     configuration.label
                         .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                        .cornerRadius(8)
+                        .cornerRadius(26)
                 } else {
                     configuration.label
                 }
@@ -517,7 +516,7 @@ struct RewardAmountView: View {
             }.padding(.horizontal, 16).frame(width: 112, height: 50)
                 .background(Color(ThemeService.shared.theme.windowBackgroundColor))
             .border(Color(ThemeService.shared.theme.separatorColor), width: 1)
-            .cornerRadius(8)
+            .cornerRadius(26)
             Button(action: {
                 let intValue = (Int(value) ?? 1) - 1
                 value = String(intValue)
@@ -527,7 +526,7 @@ struct RewardAmountView: View {
                 if UIAccessibility.buttonShapesEnabled {
                     configuration.label
                         .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                        .cornerRadius(8)
+                        .cornerRadius(26)
                 } else {
                     configuration.label
                 }
@@ -694,7 +693,7 @@ struct DailyProgressView: View {
                     ForEach(0..<7) { offset in
                         dayItem(size: size, offset: 6 - offset)
                     }
-                }.padding(.horizontal, 10).padding(.vertical, 10).background(Color(theme.windowBackgroundColor).cornerRadius(8))
+                }.padding(.horizontal, 10).padding(.vertical, 10).background(Color(theme.windowBackgroundColor).cornerRadius(26))
                 .background(GeometryReader { _ -> Color in
                     DispatchQueue.main.async {
                         self.dayItemHeight = size
@@ -800,7 +799,7 @@ struct TaskFormView: View {
             configuration.label
                 .foregroundColor(Color(ThemeService.shared.theme.errorColor))
                 .padding(.horizontal, 14)
-                .frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
+                .frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.errorColor.withAlphaComponent(0.14)).cornerRadius(26))
         }
     }
     
@@ -879,8 +878,8 @@ struct TaskFormView: View {
                                     .foregroundColor(Color(ThemeService.shared.theme.quadTextColor))
                                     .font(.caption)
                             }
-                        }.padding(16).background(Color(theme.contentBackgroundColor).edgesIgnoringSafeArea(.bottom)).cornerRadius(8)
-                    }.background(viewModel.backgroundTintColor.cornerRadius(12).edgesIgnoringSafeArea(.bottom))
+                        }.padding(16).background(Color(theme.contentBackgroundColor).edgesIgnoringSafeArea(.bottom)).cornerRadius(26)
+                    }.background(viewModel.backgroundTintColor.cornerRadius(26).edgesIgnoringSafeArea(.bottom))
                 }
             }
         }
@@ -905,7 +904,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
     }
     var editedTask: TaskProtocol? {
         didSet {
-            let color = editedTask != nil ? UIColor.forTaskValue(editedTask?.value ?? 0) : .purple200
+            let color = editedTask != nil ? UIColor.forTaskValueLight(editedTask?.value ?? 0) : .purple300
             viewModel.isCreating = editedTask == nil
             viewModel.task = editedTask
             

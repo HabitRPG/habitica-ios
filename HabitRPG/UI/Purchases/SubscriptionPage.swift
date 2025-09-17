@@ -634,11 +634,6 @@ class SubscriptionPageController: UIHostingController<ScrollableSubscriptionPage
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .purple300
-        navigationController?.navigationBar.backgroundColor = .purple300
-        navigationController?.navigationBar.barStyle = .black
-        navigationController?.navigationBar.barTintColor = .purple300
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
 
         viewModel.onGiftButtonTapped = {[weak self] in
             self?.giftSubscriptionButtonTapped()

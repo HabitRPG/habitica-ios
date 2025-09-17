@@ -157,25 +157,25 @@ struct ToastView: View {
                             }
                             if let title = options.title {
                                 Text(title)
-                                    .scaledFont(size: 13, weight: .semibold)
+                                    .scaledFont(size: 15, weight: .semibold)
                                     .foregroundColor(.white)
                             }
                         }
                         if !options.statsChanges.isEmpty {
                             ForEach(options.statsChanges, id: \.text) { change in
                                 HStack(spacing: 4) {
-                                    Text(change.text).font(.footnote)
+                                    Text(change.text)
                                     Image(uiImage: change.icon)
                                 }
-                            }
+                            }.font(.callout)
                         }
-                    }.padding(10)
+                    }.padding(14)
                     if let image = options.rightIcon, let text = options.rightText {
                         HStack(spacing: 4) {
                             Text(text)
-                                .foregroundColor(Color(options.rightTextColor))
                             Image(uiImage: image)
                         }
+                        .foregroundColor(Color(options.rightTextColor))
                         .padding(.horizontal, 8)
                         .frame(maxHeight: .infinity)
                         .background(.white)
@@ -187,6 +187,7 @@ struct ToastView: View {
                         if options.isVisible {
                             content
                                 .glassEffect(.regular.tint(options.backgroundColor.getColor()))
+                                .padding(.bottom, 50)
                         }
                 } else {
                     content

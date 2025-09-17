@@ -42,9 +42,6 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
             self?.user = user
         }).start())
         
-        navigationController?.navigationBar.standardAppearance.shadowColor = .clear
-        navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
-        
         HabiticaAnalytics.shared.logNavigationEvent("navigated gem screen")
         
         activePromo = configRepository.activePromotion()
@@ -53,8 +50,6 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        navigationController?.navigationBar.standardAppearance.backgroundColor = theme.contentBackgroundColor
-        navigationController?.navigationBar.shadowImage = UIImage()
         collectionView.backgroundColor = theme.contentBackgroundColor
     }
     

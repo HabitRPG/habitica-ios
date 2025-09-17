@@ -124,8 +124,8 @@ class LabeledProgressBar: UIView {
     }
     
     private func layout() {
-        iconView.pin.start().size(18)
-        progressBar.pin.after(of: iconView).marginStart(6).end().height(10).top()
+        iconView.pin.start().size(19)
+        progressBar.pin.after(of: iconView).marginStart(6).end().height(10).top(4)
         typeView.pin.below(of: progressBar).marginTop(4).start(to: progressBar.edge.start).sizeToFit()
         labelView.pin.below(of: progressBar).marginTop(4).end(to: progressBar.edge.end).sizeToFit()
         
