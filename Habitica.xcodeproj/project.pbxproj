@@ -441,6 +441,8 @@
 		29DC5AC920A1F6C100993400 /* QuestParticipantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5AC820A1F6C100993400 /* QuestParticipantView.swift */; };
 		29DC5ACB20A20A6C00993400 /* QuestTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5ACA20A20A6C00993400 /* QuestTitleView.swift */; };
 		29DC5ACD20A321C900993400 /* GroupFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5ACC20A321C900993400 /* GroupFormViewController.swift */; };
+		29DDAC1F2E79A1E6007EC4CD /* BuySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDAC1E2E79A1E2007EC4CD /* BuySheet.swift */; };
+		29DDAC222E79A9F3007EC4CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29DDAC202E79A74F007EC4CD /* Preview Assets.xcassets */; };
 		29DFBEFA2B10AE8E000B554B /* FlagPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DFBEF92B10AE8E000B554B /* FlagPage.swift */; };
 		29E162E01FFBBDDC00685640 /* UsernameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */; };
 		29E162E21FFC21E100685640 /* CustomFontMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162E11FFC21E100685640 /* CustomFontMetrics.swift */; };
@@ -1146,6 +1148,8 @@
 		29DC5AC820A1F6C100993400 /* QuestParticipantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestParticipantView.swift; sourceTree = "<group>"; };
 		29DC5ACA20A20A6C00993400 /* QuestTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestTitleView.swift; sourceTree = "<group>"; };
 		29DC5ACC20A321C900993400 /* GroupFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFormViewController.swift; sourceTree = "<group>"; };
+		29DDAC1E2E79A1E2007EC4CD /* BuySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuySheet.swift; sourceTree = "<group>"; };
+		29DDAC202E79A74F007EC4CD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		29DFBEF92B10AE8E000B554B /* FlagPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagPage.swift; sourceTree = "<group>"; };
 		29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameLabel.swift; sourceTree = "<group>"; };
 		29E162E11FFC21E100685640 /* CustomFontMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontMetrics.swift; sourceTree = "<group>"; };
@@ -1888,13 +1892,6 @@
 			name = Setup;
 			sourceTree = "<group>";
 		};
-		29B30EB92E0ADE7E001B587B /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		29B30EBA2E0ADE92001B587B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -1969,6 +1966,14 @@
 				29D50B9325F92E460009CF55 /* Info.plist */,
 			);
 			path = "Habitica Notifications";
+			sourceTree = "<group>";
+		};
+		29DDAC1D2E79A1D7007EC4CD /* BuySheet */ = {
+			isa = PBXGroup;
+			children = (
+				29DDAC1E2E79A1E2007EC4CD /* BuySheet.swift */,
+			);
+			path = BuySheet;
 			sourceTree = "<group>";
 		};
 		29E16318200E849000685640 /* Social */ = {
@@ -2530,7 +2535,7 @@
 		D9C000311928F85E003D4E4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				29B30EB92E0ADE7E001B587B /* New Group */,
+				29DDAC1D2E79A1D7007EC4CD /* BuySheet */,
 				29F177F72AB85D39008B8F0C /* Stable */,
 				29C1360124EBD12E00DBC6B3 /* AbbreviatedNumberLabel.swift */,
 				29C38C8424A2466400F219A1 /* AdventureGuidePromoView.swift */,
@@ -2753,6 +2758,7 @@
 		D9EB4E9418CB4A9400BB2094 /* Habitica */ = {
 			isa = PBXGroup;
 			children = (
+				29DDAC202E79A74F007EC4CD /* Preview Assets.xcassets */,
 				D9BB45DB1E7AE23E0002AE2E /* Repositories */,
 				D97ED0AB1E6DBB5F006C2A26 /* Interactors */,
 				D95704371E106BF3004F6804 /* Extensions */,
@@ -3198,6 +3204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29DDAC222E79A9F3007EC4CD /* Preview Assets.xcassets in Resources */,
 				2902799D20583ECA006DACB9 /* User.storyboard in Resources */,
 				290279A620583ED8006DACB9 /* BuyModal.storyboard in Resources */,
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
@@ -3713,6 +3720,7 @@
 				2957B8BC1F4B4DDE00E836EF /* InAppRewardCell.swift in Sources */,
 				29066CFD24FF8CC200A266EE /* PromotionInfoViewController.swift in Sources */,
 				49DCECEA1F9A84AF00982E99 /* ChallengeDetailsTableViewController.swift in Sources */,
+				29DDAC1F2E79A1E6007EC4CD /* BuySheet.swift in Sources */,
 				D9BB45CC1E76E0FC0002AE2E /* ToDoTableViewCell.swift in Sources */,
 				29706C8727D22CF3006EC139 /* LabeledProgressBar.swift in Sources */,
 				29701FE61F56DABC0097BBCC /* RoundedView.swift in Sources */,
@@ -4168,6 +4176,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1013;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
+				DEVELOPMENT_ASSET_PATHS = "\"HabitRPG/Preview Assets.xcassets\"";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -4532,6 +4541,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1013;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
+				DEVELOPMENT_ASSET_PATHS = "\"HabitRPG/Preview Assets.xcassets\"";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -5431,6 +5441,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1013;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
+				DEVELOPMENT_ASSET_PATHS = "\"HabitRPG/Preview Assets.xcassets\"";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -5505,6 +5516,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1013;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
+				DEVELOPMENT_ASSET_PATHS = "\"HabitRPG/Preview Assets.xcassets\"";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;

@@ -212,18 +212,9 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
     }
     
     private func displayBuyDialogFor(item: InAppRewardProtocol) {
-        let viewController = StoryboardScene.BuyModal.hrpgBuyItemModalViewController.instantiate()
-        viewController.reward = item
-        viewController.shopIdentifier = shopIdentifier
-        viewController.onInventoryRefresh = {[weak self] in
-            self?.dataSource?.retrieveShopInventory(nil)
-        }
-        viewController.modalTransitionStyle = .crossDissolve
-        viewController.modalPresentationStyle = .overFullScreen
-        viewController.shopViewController = self
-        if let controller = tabBarController ?? navigationController {
-            controller.present(viewController, animated: true, completion: nil)
-        }
+        let sheet = HostingBottomSheetController(rootView: BuySheet(item: item, shopIdentifier: shopIdentifier),
+                                                 prefersGrabberVisible: false)
+        present(sheet, animated: true)
     }
     
     override func applyTheme(theme: Theme) {

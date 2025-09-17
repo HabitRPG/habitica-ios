@@ -16,7 +16,7 @@ protocol Dismissable {
 class HostingBottomSheetController<ContentView: View>: UIHostingController<ContentView> {
     private var bottomInset: CGFloat = 0
         
-    init(rootView: ContentView, allowLargeDetent: Bool = false) {
+    init(rootView: ContentView, allowLargeDetent: Bool = false, prefersGrabberVisible: Bool = true) {
         super.init(rootView: rootView)
         if let root = rootView as? Dismissable {
             root.dismisser.dismiss = {
@@ -28,17 +28,15 @@ class HostingBottomSheetController<ContentView: View>: UIHostingController<Conte
         
         if let sheetController = self.presentationController as? UISheetPresentationController {
             self.view.sizeToFit()
-            let actualViewSize = self.view.frame.size.height
+            let actualViewSize = self.view.intrinsicContentSize.height
             let fraction = UISheetPresentationController.Detent.custom { _ in
-                
                 return actualViewSize + self.bottomInset
-                
             }
-            sheetController.detents = [fraction, .large()]
+            sheetController.detents = [fraction]
             if allowLargeDetent {
                 sheetController.detents.append(.large())
             }
-            sheetController.prefersGrabberVisible = true
+            sheetController.prefersGrabberVisible = prefersGrabberVisible
         }
     }
 
