@@ -18,7 +18,9 @@ struct SimpleItemDetails: View {
     var body: some View {
         if let sprite = item.imageName {
             if #available(iOS 26.0, *) {
-                PixelArtView(name: sprite).frame(width: 120, height: 120)
+                PixelArtView(name: sprite)
+                    .frame(width: 102, height: 102)
+                    .frame(width: 120, height: 120)
                     .glassEffect(.regular.tint(Color(ThemeService.shared.theme.windowBackgroundColor).opacity(0.65)), in: RoundedRectangle(cornerRadius: 26))
                     .padding(.bottom, 9)
             } else {

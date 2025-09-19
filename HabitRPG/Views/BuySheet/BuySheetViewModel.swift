@@ -97,7 +97,7 @@ class BuySheetViewModel: ObservableObject {
                     self.gear = foundGear.value.first
                 })
                 .start()
-        } else if item.purchaseType == "quest" {
+        } else if item.purchaseType == "quests" {
             inventoryRepository.getQuest(key: item.key ?? "").take(first: 1)
                 .on(value: { quest in
                     self.quest = quest

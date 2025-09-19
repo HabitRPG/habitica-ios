@@ -212,8 +212,9 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
     }
     
     private func displayBuyDialogFor(item: InAppRewardProtocol) {
-        let sheet = HostingBottomSheetController(rootView: BuySheet(item: item, shopIdentifier: shopIdentifier),
-                                                 prefersGrabberVisible: false)
+        let sheet = HostingBottomSheetController(rootView: BuySheet(item: item, shopIdentifier: shopIdentifier, onInventoryRefresh: {
+            self.refresh()
+        }), prefersGrabberVisible: false)
         present(sheet, animated: true)
     }
     

@@ -30,4 +30,12 @@ public extension QuestProtocol {
     var isCollectionQuest: Bool {
         return (collect?.count ?? 0) > 0
     }
+    
+    var difficulty: CGFloat {
+        if isBossQuest {
+            return CGFloat(boss?.strength ?? 0)
+        } else {
+            return 1
+        }
+    }
 }
