@@ -421,9 +421,7 @@
 		29CEA8562641A2B500101C0A /* AdventureGuideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CEA8552641A2B500101C0A /* AdventureGuideTableViewCell.swift */; };
 		29D048BA2E3A641A004A6AAA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 29D048B92E3A641A004A6AAA /* RealmSwift */; };
 		29D048BC2E3A6423004A6AAA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 29D048BB2E3A6423004A6AAA /* RealmSwift */; };
-		29D048BD2E3A6423004A6AAA /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 29D048BB2E3A6423004A6AAA /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		29D048C02E3A647F004A6AAA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 29D048BF2E3A647F004A6AAA /* RealmSwift */; };
-		29D048C12E3A647F004A6AAA /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 29D048BF2E3A647F004A6AAA /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		29D064B926414E5A007D4F4F /* UIColor-Habitica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291CE4B5231E828D0001A243 /* UIColor-Habitica.swift */; };
 		29D16C7725A336E8001D9A61 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D16C7625A336E8001D9A61 /* MainSplitViewController.swift */; };
 		29D16C7E25A33F70001D9A61 /* MainVCSelectionSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D16C7D25A33F70001D9A61 /* MainVCSelectionSegue.swift */; };
@@ -706,7 +704,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				29D048BD2E3A6423004A6AAA /* RealmSwift in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -717,7 +714,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				29D048C12E3A647F004A6AAA /* RealmSwift in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;

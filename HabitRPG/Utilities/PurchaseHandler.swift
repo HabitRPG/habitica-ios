@@ -385,7 +385,10 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
                                     guard case .verified(let renewalInfo) = status.renewalInfo else {
                                         continue
                                     }
-                                    if latestRenewalInfo == nil || renewalInfo.recentSubscriptionStartDate > latestRenewalInfo!.recentSubscriptionStartDate {
+                                    if latestRenewalInfo == nil {
+                                        latestRenewalInfo = renewalInfo
+                                    }
+                                    if let latestRenewal = latestRenewalInfo, renewalInfo.recentSubscriptionStartDate > latestRenewal.recentSubscriptionStartDate {
                                         latestRenewalInfo = renewalInfo
                                     }
                                 }

@@ -45,8 +45,8 @@ private struct QuestGoalViewUI: View {
                     Spacer()
                     let collectCount = collects.map { collect in
                         return collect.count
-                    }.reduce(0) { partial, n in
-                        return partial + n
+                    }.reduce(0) { partial, next in
+                        return partial + next
                     }
                     Text("\(collectCount)")
                         .font(.system(size: 15, weight: .semibold))
