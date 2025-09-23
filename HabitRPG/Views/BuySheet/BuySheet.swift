@@ -39,7 +39,7 @@ private struct QuestGoalViewUI: View {
                     .frame(height: 50)
                     .background(.red100)
             }
-            if let collects = quest.collect {
+            if let collects = quest.collect, collects.isEmpty == false {
                 HStack {
                     Text(L10n.collect)
                     Spacer()
@@ -133,11 +133,11 @@ struct BuyCurrencyView: View {
     private var textColor: Color {
         switch currency {
         case .gem:
-            return .green1
+            return ThemeService.shared.theme.isDark ? .green500 : .green1
         case .gold:
-            return .yellow1
+            return ThemeService.shared.theme.isDark ? .yellow500 : .yellow1
         case .hourglass:
-            return .blue1
+            return ThemeService.shared.theme.isDark ? .blue500 : .blue1
         }
     }
     
@@ -236,10 +236,10 @@ struct BuySheet: View, Dismissable {
                     } label: {
                         if viewModel.isPinned {
                             Image(uiImage: HabiticaIcons.imageOfUnpinItem.withRenderingMode(.alwaysTemplate)).frame(height: 36)
-                                .foregroundStyle(Color.maroon100)
+                                .foregroundStyle(ThemeService.shared.theme.isDark ? Color.red500 : Color.maroon100)
                         } else {
                             Image(uiImage: HabiticaIcons.imageOfPinItem.withRenderingMode(.alwaysTemplate)).frame(height: 36)
-                                .foregroundStyle(Color.purple400)
+                                .foregroundStyle(ThemeService.shared.theme.isDark ? Color.purple500 : Color.purple400)
                         }
                     }.buttonStyle(.glassProminent)
                         .tintColor(Color(viewModel.isPinned ? UIColor.red100 : ThemeService.shared.theme.fixedTintColor).opacity(0.4))
@@ -288,7 +288,7 @@ struct BuySheet: View, Dismissable {
             }
             if let date = viewModel.item.availableUntil() {
                 BuyBanner(color: .purple500.opacity(0.4), content: Text(L10n.Inventory.availableFor(date.getShortRemainingString()))
-                    .foregroundStyle(Color.purple100))
+                    .foregroundStyle(ThemeService.shared.theme.isDark ? Color.purple600 : Color.purple100))
             }
             let canBuy = viewModel.canBuy
             if viewModel.isPurchasing {

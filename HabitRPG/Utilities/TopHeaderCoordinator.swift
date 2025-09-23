@@ -51,6 +51,12 @@ class TopHeaderCoordinator: NSObject {
         let insets = UIEdgeInsets(top: navController.contentInset, left: 0, bottom: 0, right: 0)
         scrollView?.contentInset = insets
         scrollView?.scrollIndicatorInsets = insets
+        if #available(iOS 26.0, *) {
+            scrollView?.topEdgeEffect.style = .soft
+            scrollView?.topEdgeEffect.isHidden = false
+            scrollView?.bottomEdgeEffect.style = .soft
+            scrollView?.bottomEdgeEffect.isHidden = false
+        }
         if navController.state == .hidden {
             scrollView?.contentOffset = CGPoint(x: 0, y: -navController.contentOffset)
         }

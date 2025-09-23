@@ -99,7 +99,7 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
         updateAppDescriptionLabel.textColor = theme.ternaryTextColor
         moreHelpTitleLabel.textColor = theme.primaryTextColor
         moreHelpDescriptionLabel.textColor = theme.ternaryTextColor
-        moreHelpButton.backgroundColor = theme.fixedTintColor
+        moreHelpButton.tintColor = theme.fixedTintColor
         moreHelpButton.setTitleColor(theme.lightTextColor, for: .normal)
         knownIssuesBackground.backgroundColor = theme.windowBackgroundColor
     }

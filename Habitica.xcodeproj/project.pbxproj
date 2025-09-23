@@ -437,6 +437,8 @@
 		29DC5ACD20A321C900993400 /* GroupFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5ACC20A321C900993400 /* GroupFormViewController.swift */; };
 		29DDAC1F2E79A1E6007EC4CD /* BuySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDAC1E2E79A1E2007EC4CD /* BuySheet.swift */; };
 		29DDAC222E79A9F3007EC4CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29DDAC202E79A74F007EC4CD /* Preview Assets.xcassets */; };
+		29DDAC232E8140D9007EC4CD /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 29D048B92E3A641A004A6AAA /* RealmSwift */; };
+		29DDAC252E82C2CC007EC4CD /* StableDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDAC242E82C2C5007EC4CD /* StableDetailDataSource.swift */; };
 		29DFBEFA2B10AE8E000B554B /* FlagPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DFBEF92B10AE8E000B554B /* FlagPage.swift */; };
 		29E162E01FFBBDDC00685640 /* UsernameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */; };
 		29E162E21FFC21E100685640 /* CustomFontMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162E11FFC21E100685640 /* CustomFontMetrics.swift */; };
@@ -687,6 +689,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				29DDAC232E8140D9007EC4CD /* RealmSwift in Embed Frameworks */,
 				29265893206A4E84006C8B54 /* Habitica_Database.framework in Embed Frameworks */,
 				29265891206A4E84006C8B54 /* Habitica_Models.framework in Embed Frameworks */,
 				29265895206A4E84006C8B54 /* Habitica_API_Client.framework in Embed Frameworks */,
@@ -1149,6 +1152,7 @@
 		29DC5ACC20A321C900993400 /* GroupFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFormViewController.swift; sourceTree = "<group>"; };
 		29DDAC1E2E79A1E2007EC4CD /* BuySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuySheet.swift; sourceTree = "<group>"; };
 		29DDAC202E79A74F007EC4CD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		29DDAC242E82C2C5007EC4CD /* StableDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableDetailDataSource.swift; sourceTree = "<group>"; };
 		29DFBEF92B10AE8E000B554B /* FlagPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagPage.swift; sourceTree = "<group>"; };
 		29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameLabel.swift; sourceTree = "<group>"; };
 		29E162E11FFC21E100685640 /* CustomFontMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontMetrics.swift; sourceTree = "<group>"; };
@@ -1622,6 +1626,7 @@
 		2914485E2084E9F300F3A6B5 /* Stable */ = {
 			isa = PBXGroup;
 			children = (
+				29DDAC242E82C2C5007EC4CD /* StableDetailDataSource.swift */,
 				299FB2A42084B40700422522 /* StableOverviewDataSource.swift */,
 				299FB2A62084B44000422522 /* PetOverviewDataSource.swift */,
 				2914485A2084E61400F3A6B5 /* MountOverviewDataSource.swift */,
@@ -3509,6 +3514,7 @@
 				2909D42A2722C25800FF2B29 /* AppIconName.swift in Sources */,
 				295BC6E4226F0F9500DDDF1A /* NotificationsTableViewController.swift in Sources */,
 				29A3FD282966EAE2007D85B2 /* BirthdayviewController.swift in Sources */,
+				29DDAC252E82C2CC007EC4CD /* StableDetailDataSource.swift in Sources */,
 				29A06E1D23ED4125003BADE9 /* InAppRewardProtocol-Extensions.swift in Sources */,
 				D984D58B1E4A1F59006E84F8 /* SubscriptionViewController.swift in Sources */,
 				299FB29D2084A67D00422522 /* StableOverviewViewController.swift in Sources */,

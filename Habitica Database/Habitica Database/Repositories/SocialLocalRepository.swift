@@ -319,7 +319,7 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func getChatMessages(groupID: String) -> SignalProducer<ReactiveResults<[ChatMessageProtocol]>, ReactiveSwiftRealmError> {
-        return RealmChatMessage.findBy(query: "groupID == '\(groupID)'").sorted(key: "timestamp", ascending: false).reactive().map({ (value, changeset) -> ReactiveResults<[ChatMessageProtocol]> in
+        return RealmChatMessage.findBy(query: "groupID == '\(groupID)'").sorted(key: "timestamp", ascending: true).reactive().map({ (value, changeset) -> ReactiveResults<[ChatMessageProtocol]> in
             return (value.map({ (message) -> ChatMessageProtocol in return message }), changeset)
         })
     }

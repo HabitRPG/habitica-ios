@@ -10,7 +10,7 @@ import UIKit
 import Habitica_Models
 import SwiftUI
 
-class MountDetailViewController: StableDetailViewController<MountDetailDataSource> {
+class MountDetailViewController: StableDetailViewController<MountProtocol, MountStableItem, MountDetailDataSource> {
 
     private var stableRepository = StableRepository()
     private let userRepository = UserRepository()

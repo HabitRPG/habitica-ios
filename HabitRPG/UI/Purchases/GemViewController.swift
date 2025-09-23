@@ -32,7 +32,6 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doneButton.title = L10n.done
 
         let nib = UINib.init(nibName: "GemPurchaseView", bundle: nil)
         self.collectionView?.register(nib, forCellWithReuseIdentifier: "Cell")

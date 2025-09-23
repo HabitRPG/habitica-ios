@@ -22,7 +22,7 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     private var disposable: CompositeDisposable = CompositeDisposable()
     private var filterButton = UIButton()
     var searchBar = UISearchBar()
-    var searchBarWrapper = UIView()
+    var searchBarWrapper = UIVisualEffectView()
     var searchBarCancelButton = UIButton()
 
     @objc var showOnlyUserChallenges = true
@@ -44,9 +44,16 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         searchBar.showsCancelButton = false
         searchBarCancelButton.setTitle(L10n.cancel, for: .normal)
         searchBarCancelButton.addTarget(self, action: #selector(searchBarCancelButtonClicked), for: .touchUpInside)
-        searchBarWrapper.addSubview(searchBar)
-        searchBarWrapper.addSubview(searchBarCancelButton)
-                
+        searchBarWrapper.contentView.addSubview(searchBar)
+        searchBarWrapper.contentView.addSubview(searchBarCancelButton)
+        
+        if #available(iOS 26.0, *) {
+            let glassEffect = UIGlassEffect()
+            searchBarWrapper.effect = glassEffect
+            searchBarWrapper.layer.cornerRadius = 26
+            searchBarWrapper.clipsToBounds = true
+        }
+        
         filterButton.setImage(HabiticaIcons.imageOfFilterIcon().withRenderingMode(.alwaysTemplate), for: .normal)
         filterButton.addTarget(self, action: #selector(filterTapped(_:)), for: .touchUpInside)
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addChallengeAction))
@@ -78,16 +85,13 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        if theme.isDark {
-            searchBar.barStyle = .black
-            searchBar.isTranslucent = true
-        } else {
-            searchBar.barStyle = .default
-            searchBar.isTranslucent = false
-        }
-        searchBar.backgroundColor = theme.contentBackgroundColor
+        searchBar.barStyle = .black
+        searchBar.isTranslucent = true
+        searchBar.backgroundColor = .clear
         navigationItem.rightBarButtonItem?.tintColor = theme.tintColor
-        searchBarWrapper.backgroundColor = theme.contentBackgroundColor
+        if #unavailable(iOS 26.0) {
+            searchBarWrapper.backgroundColor = theme.contentBackgroundColor
+        }
         searchBarCancelButton.setTitleColor(theme.tintColor, for: .normal)
     }
 
@@ -141,6 +145,12 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
             })
         } else {
             self.searchBarWrapper.removeFromSuperview()
+        }
+        self.navigationItem.rightBarButtonItems?.forEach { item in
+            item.isHidden = false
+        }
+        self.navigationItem.leftBarButtonItems?.forEach { item in
+            item.isHidden = false
         }
         tableView.reloadData()
     }
@@ -245,13 +255,19 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     
     @IBAction func searchButtonTapped(_ sender: Any) {
         navigationController?.navigationBar.addSubview(searchBarWrapper)
-        searchBarWrapper.frame = CGRect(x: 28, y: 0, width: tableView.bounds.size.width - 40, height: navigationController?.navigationBar.frame.size.height ?? 48)
-        searchBarCancelButton.pin.top().end().bottom().sizeToFit(.height)
-        searchBar.pin.start().before(of: searchBarCancelButton).top().bottom()
+        searchBarWrapper.frame = CGRect(x: 66, y: -4, width: tableView.bounds.size.width - 84, height: navigationController?.navigationBar.frame.size.height ?? 48)
+        searchBarCancelButton.pin.top().end(8).bottom().sizeToFit(.height)
+        searchBar.pin.start(6).before(of: searchBarCancelButton).marginRight(6).top().bottom()
         searchBar.becomeFirstResponder()
         searchBarWrapper.alpha = 0
         UIView.animate(withDuration: 0.3) {
             self.searchBarWrapper.alpha = 1
+            self.navigationItem.rightBarButtonItems?.forEach { item in
+                item.isHidden = true
+            }
+            self.navigationItem.leftBarButtonItems?.forEach { item in
+                item.isHidden = true
+            }
         }
     }
 }

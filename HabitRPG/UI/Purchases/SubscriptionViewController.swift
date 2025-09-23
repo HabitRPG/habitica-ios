@@ -83,7 +83,6 @@ class SubscriptionViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doneButton.title = L10n.done
         
         activePromo = configRepository.activePromotion()
         

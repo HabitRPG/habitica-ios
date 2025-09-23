@@ -58,6 +58,7 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
         tableView.estimatedRowHeight = 200
         tableView.tableFooterView = UIView()
         tableView.register(UINib(nibName: "ChallengeTableViewHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "header")
+        tableView.separatorStyle = .none
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: Asset.moreInteractionsIcon.image, style: .plain, target: self, action: #selector(showOverflowMenu))
         

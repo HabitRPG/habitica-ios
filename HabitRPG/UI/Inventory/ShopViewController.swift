@@ -83,6 +83,10 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         userRepository.getUser().on(value: {[weak self] user in
             self?.updateNavBar(gold: Int(user.stats?.gold ?? 0.0), gems: user.gemCount, hourglasses: user.purchased?.subscriptionPlan?.consecutive?.hourglasses ?? 0)
         }).start()
+        
+        goldView.insets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        gemView.insets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
+        hourglassView.insets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
     }
     
     private var isSubscribed: Bool?

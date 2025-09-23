@@ -16,7 +16,7 @@ struct PetStableItem {
     var canRaise: Bool
 }
 
-class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
+class PetDetailDataSource: StableDetailDataSource<PetProtocol, PetStableItem> {
     
     private let stableRepsository = StableRepository()
     private let inventoryRepository = InventoryRepository()

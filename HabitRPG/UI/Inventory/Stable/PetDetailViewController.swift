@@ -10,7 +10,7 @@ import UIKit
 import Habitica_Models
 import SwiftUI
 
-class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
+class PetDetailViewController: StableDetailViewController<PetProtocol, PetStableItem, PetDetailDataSource> {
     private let userRepository = UserRepository()
     
     private var user: UserProtocol?

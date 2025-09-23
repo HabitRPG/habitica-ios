@@ -66,7 +66,6 @@ class SettingsViewController: FormViewController, Themeable {
         tableView.cellLayoutMarginsFollowReadableWidth = false
         super.viewDidLoad()
         navigationItem.title = L10n.Titles.settings
-        doneButton.title = L10n.done
         setupForm()
         loadSettingsFromUserDefaults()
         

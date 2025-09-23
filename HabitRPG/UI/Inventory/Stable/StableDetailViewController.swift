@@ -10,7 +10,7 @@ import UIKit
 import Habitica_Models
 import ReactiveSwift
 
-class StableDetailViewController<DS>: BaseCollectionViewController {
+class StableDetailViewController<ANIMAL: AnimalProtocol, ITEM, DS: StableDetailDataSource<ANIMAL, ITEM>>: BaseCollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var searchEggs = true
     var searchKey: String = ""
@@ -45,5 +45,19 @@ class StableDetailViewController<DS>: BaseCollectionViewController {
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         collectionView.backgroundColor = theme.contentBackgroundColor
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let width = 102
+        let viewWidth = Int(collectionView.frame.size.width)
+        var count = Int(viewWidth / width)
+        if let inSection = datasource?.collectionView(collectionView, numberOfItemsInSection: section) {
+            if inSection < count {
+                count = inSection
+            }
+        }
+        let totalWidth = width * count + (14 * (count-1))
+        let spacing = CGFloat(viewWidth - totalWidth) / 2
+        return UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
     }
 }

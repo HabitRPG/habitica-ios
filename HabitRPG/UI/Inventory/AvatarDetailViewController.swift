@@ -73,7 +73,6 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         super.applyTheme(theme: theme)
         collectionView.backgroundColor = theme.contentBackgroundColor
         collectionView.layer.cornerRadius = 22
-        topHeaderCoordinator?.navbarVisibleColor = theme.windowBackgroundColor
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

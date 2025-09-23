@@ -14,7 +14,7 @@ struct MountStableItem {
     var owned: Bool
 }
 
-class MountDetailDataSource: BaseReactiveCollectionViewDataSource<MountStableItem> {
+class MountDetailDataSource: StableDetailDataSource<MountProtocol, MountStableItem> {
     
     private let stableRepsository = StableRepository()
     private let userRepository = UserRepository()

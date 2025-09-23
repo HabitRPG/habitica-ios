@@ -68,7 +68,6 @@ class PromotionInfoViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doneButton.title = L10n.done
         promotion = configRepository.activePromotion()
         
         instructionsTitleLabel.text = L10n.promoInfoInstructionsTitle

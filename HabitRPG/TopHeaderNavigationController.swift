@@ -202,7 +202,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         defaultNavbarVisibleColor = theme.contentBackgroundColor
         visibleTintColor = theme.primaryTextColor
         backgroundView.backgroundColor = theme.contentBackgroundColor
-        upperBackgroundView.backgroundColor = theme.contentBackgroundColor
+        // upperBackgroundView.backgroundColor = theme.contentBackgroundColor
         setNavigationBarColors()
         setNeedsStatusBarAppearanceUpdate()
     }
@@ -303,12 +303,9 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         if newYPos > bgViewOffset {
             newYPos = bgViewOffset
         }
-        if (newYPos + frame.size.height) > bgViewOffset {
+        if (newYPos + frame.size.height) > bgViewOffset, state != .visible {
             state = .visible
-        } else {
-            if state == .hidden {
-                return
-            }
+        } else if state != .hidden {
             state = .hidden
         }
         frame.origin.y = newYPos
@@ -318,7 +315,13 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     
     @objc
     public func setNavigationBarColors() {
-        upperBackgroundView.backgroundColor = navbarVisibleColor
+        if navbarVisibleColor != defaultNavbarVisibleColor {
+            upperBackgroundView.backgroundColor = navbarVisibleColor
+        } else if #unavailable(iOS 26.0) {
+            upperBackgroundView.backgroundColor = navbarVisibleColor
+        } else {
+            upperBackgroundView.backgroundColor = .clear
+        }
         backgroundView.backgroundColor = navbarVisibleColor
         let tintColor = visibleTintColor
         navigationBar.tintColor = tintColor
@@ -337,9 +340,9 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
             return .lightContent
         }
         if !isLightColor {
-            return .lightContent
-        } else {
             return .darkContent
+        } else {
+            return .lightContent
         }
     }
     

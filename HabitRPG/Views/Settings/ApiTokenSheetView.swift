@@ -12,9 +12,9 @@ struct ApiTokenSheetView: View, Dismissable {
     let token: String
     var onCopy: () -> Void
     var dismisser = Dismisser()
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme)
+    var colorScheme
 
-    
     var buttonColor: Color { Color.yellow100 }
     var buttonTextColor: Color { Color.yellow1 }
 
@@ -29,13 +29,6 @@ struct ApiTokenSheetView: View, Dismissable {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            RoundedRectangle(cornerRadius: 2)
-                .fill(Color.gray300.opacity(0.5))
-                .frame(width: 40, height: 5)
-                .padding(.top, 10)
-                .padding(.bottom, 24)
-            
             VStack(spacing: 20) {
                 Text(L10n.apiTokenTitle)
                     .font(.system(size: 16))
@@ -103,9 +96,6 @@ struct ApiTokenSheetView: View, Dismissable {
             .padding(.horizontal, 20)
             .padding(.bottom, 24)
         }
-        .background(Color(.systemBackground))
-        .cornerRadius(16)
-    }
 }
 
 

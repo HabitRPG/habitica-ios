@@ -296,7 +296,7 @@ func lighter(by percentage: CGFloat=30.0) -> UIColor {
     }
     
     func isLight() -> Bool {
-        if brightness < 0.65 {
+        if brightness < 0.55 {
             return false
         } else {
             return true

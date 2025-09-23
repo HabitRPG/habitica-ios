@@ -18,7 +18,6 @@ class NotificationsTableViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = L10n.Titles.notifications
-        doneButton.title = L10n.done
         
         dataSource.tableView = tableView
         dataSource.viewController = self

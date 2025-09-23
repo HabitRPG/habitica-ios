@@ -21,7 +21,6 @@ class InboxOverviewViewController: BaseTableViewController {
     override func viewDidLoad() {
         tutorialIdentifier = "inbox"
         super.viewDidLoad()
-        doneButton.title = L10n.done
         dataSource.tableView = tableView
         clearsSelectionOnViewWillAppear = false
         tableView.rowHeight = UITableView.automaticDimension

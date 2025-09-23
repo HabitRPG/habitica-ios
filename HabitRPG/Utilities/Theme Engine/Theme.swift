@@ -126,7 +126,7 @@ extension DarkTheme {
     public var dimmedTextColor: UIColor { return UIColor.gray200 }
     public var lightTextColor: UIColor { return UIColor.gray500 }
     public var separatorColor: UIColor { return UIColor.gray10 }
-    public var tableviewSeparatorColor: UIColor { return UIColor.gray100 }
+    public var tableviewSeparatorColor: UIColor { return UIColor.gray10 }
     public var navbarHiddenColor: UIColor { return contentBackgroundColor }
     public var dimmedColor: UIColor { return UIColor.gray100 }
     public var dimmBackgroundColor: UIColor { return UIColor.gray50 }

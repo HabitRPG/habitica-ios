@@ -709,7 +709,6 @@ struct TaskFormView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var isEditingText = false
     @State private var isEditingNotes = false
-    @State private var scrollViewContentOffset = CGFloat(0)
 
     var tags: [TagProtocol] = []
     
@@ -825,8 +824,7 @@ struct TaskFormView: View {
     
     var body: some View {
         let theme = ThemeService.shared.theme
-        TrackableScrollView(contentOffset: $scrollViewContentOffset.onChange { _ in
-        }) {
+        ScrollView {
             if viewModel.task == nil || viewModel.task?.isValid == true {
                 VStack {
                     VStack {
@@ -883,6 +881,7 @@ struct TaskFormView: View {
                 }
             }
         }
+        .scrollDismissesKeyboard(.immediately)
         .accentColor(viewModel.taskTintColor)
         .frame(maxHeight: .infinity)
         .background(Color(theme.contentBackgroundColor).edgesIgnoringSafeArea(.bottom).padding(.top, 40))

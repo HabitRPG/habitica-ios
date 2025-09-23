@@ -33,8 +33,8 @@ class ItemsViewController: BaseTableViewController {
     private var isPresentedModally = false
     
     override func viewDidLoad() {
+        topHeaderCoordinator?.hideHeader = true
         super.viewDidLoad()
-        cancelButton.title = L10n.cancel
         
         dataSource.tableView = tableView
         dataSource.itemType = itemType
