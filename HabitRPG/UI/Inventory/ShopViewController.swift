@@ -13,18 +13,8 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
     
     private let userRepository = UserRepository()
     
-    func showGearSelection(sourceView: UIView) {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        for title in ["warrior", "mage", "healer", "rogue", "none"] {
-            let action = UIAlertAction(title: title.localizedCapitalized, style: .default) {[weak self] _ in
-                self?.selectedGearCategory = title
-            }
-            alertController.addAction(action)
-        }
-        alertController.addAction(UIAlertAction.cancelAction())
-        alertController.popoverPresentationController?.sourceView = sourceView
-        alertController.popoverPresentationController?.sourceRect = sourceView.bounds
-        present(alertController, animated: true, completion: nil)
+    func changeGearCategory(to className: String) {
+        self.selectedGearCategory = className
     }
     
     func updateShopHeader(shop: ShopProtocol?) {
@@ -122,6 +112,9 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
                 UIBarButtonItem(customView: gemView),
                 UIBarButtonItem(customView: goldView)
             ]
+        }
+        navigationItem.rightBarButtonItems?.forEach { item in
+            item.isEnabled = false
         }
     }
     

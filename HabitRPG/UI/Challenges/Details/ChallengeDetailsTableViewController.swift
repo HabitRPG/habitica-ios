@@ -60,9 +60,31 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
         tableView.register(UINib(nibName: "ChallengeTableViewHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "header")
         tableView.separatorStyle = .none
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Asset.moreInteractionsIcon.image, style: .plain, target: self, action: #selector(showOverflowMenu))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Asset.moreInteractionsIcon.image, menu: overflowMenu)
         
         self.viewModel?.viewDidLoad()
+    }
+    
+    private var overflowMenu: UIMenu {
+        return UIMenu(children: [
+            UIMenu(options: .displayInline, children: [ UIDeferredMenuElement({ add in
+                if self.viewModel?.challengeMembershipProperty.value != nil {
+                    add([UIAction(title: L10n.leaveChallenge, image: UIImage(systemName: "person.badge.minus"), attributes: .destructive) { _ in
+                        self.leaveChallenge()
+                    }])
+                } else {
+                    add([UIAction(title: L10n.joinChallenge, image: UIImage(systemName: "person.badge.plus")) { _ in
+                            self.joinChallenge()
+                    }])
+                }
+            }) ]),
+            UIAction(title: L10n.reportX(L10n.challenge), image: UIImage(systemName: "flag"), attributes: .destructive) { _ in
+                if let challenge = self.viewModel?.challengeProperty.value {
+                    let controller = FlagViewController(type: .challenge, offendingItem: challenge)
+                    self.present(controller, animated: true)
+                }
+            }
+        ])
     }
     
     override func applyTheme(theme: Theme) {
@@ -90,29 +112,6 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return dataSource.sections?[section].title != nil ? 55 : 0
-    }
-    
-    @IBAction func showOverflowMenu(_ sender: Any) {
-        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(menuItems: {
-            BottomSheetMenuitem(title: L10n.reportX(L10n.challenge), style: .destructive) {
-                if let challenge = self.viewModel?.challengeProperty.value {
-                    let controller = FlagViewController(type: .challenge, offendingItem: challenge)
-                    self.present(controller, animated: true)
-                }
-            }
-            BottomSheetMenuSeparator()
-            let isMember = viewModel?.challengeMembershipProperty.value != nil
-            if !isMember {
-                BottomSheetMenuitem(title: L10n.joinChallenge) {
-                    self.joinChallenge()
-                }
-            } else if isMember {
-                BottomSheetMenuitem(title: L10n.leaveChallenge, style: .destructive) {
-                    self.leaveChallenge()
-                }
-           }
-        }))
-        present(sheet, animated: true)
     }
     
     @objc

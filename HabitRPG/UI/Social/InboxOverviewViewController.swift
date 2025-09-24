@@ -82,16 +82,17 @@ class InboxOverviewViewController: BaseTableViewController {
 
     @IBAction func showNewMessageAlert(_ sender: Any) {
         let alertController = HabiticaAlertController(title: L10n.newMessage)
+        alertController.message = L10n.chatWithQuestion
         let stackView = UIStackView()
+        stackView.alignment = .fill
         stackView.axis = .vertical
-        stackView.spacing = 16
-        let usernameTextField = UITextField()
-        usernameTextField.attributedPlaceholder = NSAttributedString(string: L10n.username, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        usernameTextField.borderStyle = .roundedRect
-        usernameTextField.autocapitalizationType = .none
-        usernameTextField.spellCheckingType = .no
-        usernameTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        usernameTextField.textColor = ThemeService.shared.theme.primaryTextColor
+        stackView.spacing = 12
+        let usernameTextField = GlassTextField()
+        usernameTextField.textField.attributedPlaceholder = NSAttributedString(string: L10n.username, attributes: [.foregroundColor: ThemeService.shared.theme.ternaryTextColor])
+        
+        usernameTextField.textField.autocapitalizationType = .none
+        usernameTextField.textField.spellCheckingType = .no
+        usernameTextField.textField.textColor = ThemeService.shared.theme.primaryTextColor
         stackView.addArrangedSubview(usernameTextField)
         alertController.contentView = stackView
         

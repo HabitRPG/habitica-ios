@@ -11,18 +11,15 @@ import UIKit
 @objc
 class HabiticaAlertController: UIViewController, Themeable {
     
+    @IBOutlet weak var backgroundView: UIVisualEffectView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var titleLabelTopMargin: NSLayoutConstraint!
-    @IBOutlet weak var titleLabelBottomMargin: NSLayoutConstraint!
-    @IBOutlet weak var titleLabelBackground: UIView!
+    @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var buttonStackView: UIStackView!
-    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var alertStackView: UIStackView!
     @IBOutlet weak var bottomOffsetConstraint: NSLayoutConstraint!
     @IBOutlet var centerConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollviewHeightConstraint: NSLayoutConstraint!
-     @IBOutlet weak var alertBackgroundView: UIView!
     @IBOutlet weak var buttonContainerView: UIView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!
@@ -34,7 +31,6 @@ class HabiticaAlertController: UIViewController, Themeable {
     private var buttons = [UIButton]()
     private var shouldCloseOnButtonTap = [Int: Bool]()
     
-    var buttonAxis: NSLayoutConstraint.Axis?
     var dismissOnBackgroundTap = true
     var maxAlertWidth: CGFloat = 340
     
@@ -90,13 +86,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     
     var arrangeMessageLast = false
     
-    var closeAction: (() -> Void)? {
-        didSet {
-            configureCloseButton()
-        }
-    }
-    
-    var contentViewInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30) {
+    var contentViewInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14) {
         didSet {
             if containerView != nil {
                 containerView.layoutMargins = contentViewInsets
@@ -104,10 +94,8 @@ class HabiticaAlertController: UIViewController, Themeable {
         }
     }
     
-    var containerViewSpacing: CGFloat = 8
-    
-    var closeTitle: String?
-    
+    var containerViewSpacing: CGFloat = 24
+        
     convenience init(attributedTitle newTitle: NSAttributedString?, message newMessage: String? = nil) {
         self.init()
         attributedTitle = newTitle
@@ -146,19 +134,19 @@ class HabiticaAlertController: UIViewController, Themeable {
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backgroundTapped)))
-        alertBackgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(alertTapped)))
+        backgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(alertTapped)))
     
         KeyboardManager.addObservingView(view)
+        if #available(iOS 26.0, *) {
+            let effect = UIGlassEffect(style: .regular)
+            effect.tintColor = ThemeService.shared.theme.contentBackgroundColor.withAlphaComponent(0.85)
+            backgroundView.effect = effect
+        }
     }
     
     func applyTheme(theme: Theme) {
-        view.backgroundColor = theme.dimmBackgroundColor.withAlphaComponent(0.7)
-        buttonContainerView.backgroundColor = theme.contentBackgroundColor
-        alertBackgroundView.backgroundColor = theme.contentBackgroundColor
-        closeButton.backgroundColor = theme.contentBackgroundColor
-        
+        view.backgroundColor = theme.dimmBackgroundColor.withAlphaComponent(0.2)
         titleLabel.textColor = theme.primaryTextColor
-        titleLabelBackground.backgroundColor = theme.contentBackgroundColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -166,7 +154,6 @@ class HabiticaAlertController: UIViewController, Themeable {
         configureTitleView()
         configureContentView()
         configureMessageView()
-        configureCloseButton()
         configureButtons()
         scrollView.alwaysBounceVertical = false
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -188,7 +175,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         widthConstraint.constant = maximumSize.width
         maximumSize.width -= contentViewInsets.left + contentViewInsets.right
         maximumSize.height -= contentViewInsets.top + contentViewInsets.bottom
-        let maximumHeight = maximumSize.height - (32 + 140) - buttonUpperSpacing.constant - buttonLowerSpacing.constant - KeyboardManager.height - CGFloat(buttons.count * 40)
+        let maximumHeight = maximumSize.height - (32 + 140) - buttonUpperSpacing.constant - buttonLowerSpacing.constant - KeyboardManager.height - CGFloat(buttons.count * 48)
         var contentHeight = contentView?.systemLayoutSizeFitting(maximumSize).height ?? 0
         let intrinsicSize = contentView?.intrinsicContentSize.height ?? 0
         if contentHeight == 0 || (intrinsicSize > 0 && intrinsicSize < contentHeight) {
@@ -267,28 +254,33 @@ class HabiticaAlertController: UIViewController, Themeable {
             color = ThemeService.shared.theme.errorColor
         }
         
+        button.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .medium)
         if isMainAction {
             button.setTitleColor(UIColor.white, for: .normal)
-            button.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
-            button.backgroundColor = color
-            button.cornerRadius = 8
-            button.layer.shadowColor = ThemeService.shared.theme.buttonShadowColor.cgColor
-            button.layer.shadowRadius = 2
-            button.layer.shadowOffset = CGSize(width: 1, height: 1)
-            button.layer.shadowOpacity = 0.5
-            button.layer.masksToBounds = false
+            if #available(iOS 26.0, *) {
+                button.cornerConfiguration = .capsule()
+                button.configuration = .prominentGlass()
+                button.tintColor = color
+            } else {
+                button.backgroundColor = color
+                button.cornerRadius = 8
+                button.layer.shadowColor = ThemeService.shared.theme.buttonShadowColor.cgColor
+                button.layer.shadowRadius = 2
+                button.layer.shadowOffset = CGSize(width: 1, height: 1)
+                button.layer.shadowOpacity = 0.5
+                button.layer.masksToBounds = false
+            }
         } else {
-            button.setTitleColor(color, for: .normal)
-            button.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17)
+            if #available(iOS 26.0, *) {
+                button.cornerConfiguration = .capsule()
+                button.configuration = .prominentGlass()
+                button.tintColor = UIColor("787880").withAlphaComponent(0.05)
+            }
+            button.setTitleColor(ThemeService.shared.theme.primaryTextColor, for: .normal)
         }
-        
-        if buttonAxis == .horizontal {
-            button.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-            button.addWidthConstraint(width: 50, relatedBy: NSLayoutConstraint.Relation.greaterThanOrEqual)
-        } else {
-            button.contentEdgeInsets = UIEdgeInsets(top: 8, left: 24, bottom: 8, right: 24)
-            button.addWidthConstraint(width: 150, relatedBy: NSLayoutConstraint.Relation.greaterThanOrEqual)
-        }
+
+        button.addHeightConstraint(height: 48, relatedBy: NSLayoutConstraint.Relation.greaterThanOrEqual)
+        button.addWidthConstraint(width: 150, relatedBy: NSLayoutConstraint.Relation.greaterThanOrEqual)
         
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
     
@@ -300,19 +292,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         }
         shouldCloseOnButtonTap[button.tag] = closeOnTap
         buttons.append(button)
-        if buttonStackView != nil {
-            buttonStackView.addArrangedSubview(button)
-            if buttonStackView.arrangedSubviews.count > 2 && buttonAxis == nil {
-                buttonStackView.axis = .vertical
-            }
-        }
         return button
-    }
-    
-    @objc
-    func setCloseAction(title: String, handler: @escaping (() -> Void)) {
-        closeAction = handler
-        closeTitle = title
     }
     
     private func configureTitleView() {
@@ -323,31 +303,20 @@ class HabiticaAlertController: UIViewController, Themeable {
                 titleLabel.attributedText = attributedTitle
             }
         }
-        if (title == nil && attributedTitle == nil) && titleLabelTopMargin != nil && titleLabelBottomMargin != nil {
-            titleLabelTopMargin.constant = 0
-            titleLabelBottomMargin.constant = 0
-        } else if titleLabelTopMargin != nil && titleLabelBottomMargin != nil {
-            titleLabelTopMargin.constant = 12
-            titleLabelBottomMargin.constant = 12
-        }
     }
     
     private func configureMessageView() {
-        if (message == nil && attributedMessage == nil) || containerView == nil {
+        if message == nil && attributedMessage == nil {
+            subtitleLabel.isHidden = true
             return
         }
-        let label = UILabel()
-        label.textColor = messageColor ?? ThemeService.shared.theme.secondaryTextColor
-        label.font = messageFont
+        subtitleLabel.isHidden = false
         if message != nil {
-            label.text = message
+            subtitleLabel.text = message
         } else {
-            label.attributedText = attributedMessage
+            subtitleLabel.attributedText = attributedMessage
         }
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        containerView.addSubview(label)
-        messageView = label
+        subtitleLabel.textColor = messageColor ?? ThemeService.shared.theme.primaryTextColor
     }
     
     private func configureContentView() {
@@ -357,7 +326,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         containerView.layoutMargins = contentViewInsets
         if contentView == nil && message == nil {
             containerView.superview?.isHidden = true
-            alertStackView.spacing = 0
+            alertStackView.spacing = containerViewSpacing
         } else {
             containerView.superview?.isHidden = false
             alertStackView.spacing = containerViewSpacing
@@ -370,29 +339,12 @@ class HabiticaAlertController: UIViewController, Themeable {
         }
     }
     
-    private func configureCloseButton() {
-        if closeButton != nil {
-            closeButton.isHidden = closeAction == nil
-            closeButton.setTitle(closeTitle, for: .normal)
-            closeButton.tintColor = ThemeService.shared.theme.fixedTintColor
-        }
-    }
-    
     private func configureButtons() {
         buttonStackView.arrangedSubviews.forEach { (view) in
             view.removeFromSuperview()
         }
         for button in buttons {
             buttonStackView.addArrangedSubview(button)
-        }
-        if let axis = buttonAxis {
-            buttonStackView.axis = axis
-        } else {
-            if buttons.count > 1 {
-                buttonStackView.axis = .vertical
-            } else {
-                buttonStackView.axis = .horizontal
-            }
         }
     }
     
@@ -433,13 +385,6 @@ class HabiticaAlertController: UIViewController, Themeable {
         })
         } else {
             buttonHandlers[button.tag]?(button)
-        }
-    }
-    
-    @IBAction func closeTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-        if let action = closeAction {
-            action()
         }
     }
     

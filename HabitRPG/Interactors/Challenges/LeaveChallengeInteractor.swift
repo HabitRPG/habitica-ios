@@ -49,9 +49,9 @@ class LeaveChallengeInteractor: Interactor<ChallengeProtocol, Bool> {
         alert.addAction(title: L10n.leaveAndDeleteTasks, style: .destructive, handler: { (_) in
             observer.send(value: (true, false, challenge))
         })
-        alert.setCloseAction(title: L10n.cancel, handler: {
+        alert.addCloseAction { _ in
             observer.send(value: (false, false, challenge))
-        })
+        }
         alert.show()
     }
 }

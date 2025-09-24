@@ -108,7 +108,7 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
         
         positionLabel.horizontalPadding = 8
         
-        if frame.size.width < 375 {
+        if frame.size.width < 320 {
             isAvatarHidden = true
         }
         

@@ -439,6 +439,7 @@
 		29DDAC222E79A9F3007EC4CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29DDAC202E79A74F007EC4CD /* Preview Assets.xcassets */; };
 		29DDAC232E8140D9007EC4CD /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 29D048B92E3A641A004A6AAA /* RealmSwift */; };
 		29DDAC252E82C2CC007EC4CD /* StableDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDAC242E82C2C5007EC4CD /* StableDetailDataSource.swift */; };
+		29DDAC272E82F3FC007EC4CD /* GlassTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDAC262E82F3F7007EC4CD /* GlassTextField.swift */; };
 		29DFBEFA2B10AE8E000B554B /* FlagPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DFBEF92B10AE8E000B554B /* FlagPage.swift */; };
 		29E162E01FFBBDDC00685640 /* UsernameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */; };
 		29E162E21FFC21E100685640 /* CustomFontMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162E11FFC21E100685640 /* CustomFontMetrics.swift */; };
@@ -1153,6 +1154,7 @@
 		29DDAC1E2E79A1E2007EC4CD /* BuySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuySheet.swift; sourceTree = "<group>"; };
 		29DDAC202E79A74F007EC4CD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		29DDAC242E82C2C5007EC4CD /* StableDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableDetailDataSource.swift; sourceTree = "<group>"; };
+		29DDAC262E82F3F7007EC4CD /* GlassTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassTextField.swift; sourceTree = "<group>"; };
 		29DFBEF92B10AE8E000B554B /* FlagPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagPage.swift; sourceTree = "<group>"; };
 		29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameLabel.swift; sourceTree = "<group>"; };
 		29E162E11FFC21E100685640 /* CustomFontMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontMetrics.swift; sourceTree = "<group>"; };
@@ -2541,6 +2543,7 @@
 		D9C000311928F85E003D4E4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				29DDAC262E82F3F7007EC4CD /* GlassTextField.swift */,
 				29DDAC1D2E79A1D7007EC4CD /* BuySheet */,
 				29F177F72AB85D39008B8F0C /* Stable */,
 				29C1360124EBD12E00DBC6B3 /* AbbreviatedNumberLabel.swift */,
@@ -3752,6 +3755,7 @@
 				49DCECA71F96ECEF00982E99 /* MultiModelDataSource.swift in Sources */,
 				2957B8B31F4B2D5A00E836EF /* RewardViewController.swift in Sources */,
 				7378D4502E3E439100CC03B9 /* CategoryNameHelper.swift in Sources */,
+				29DDAC272E82F3FC007EC4CD /* GlassTextField.swift in Sources */,
 				291448682084FBCF00F3A6B5 /* MountDetailCell.swift in Sources */,
 				2927025524E3EEC000BCAA77 /* MainSupportViewController.swift in Sources */,
 				29AAA1631F2B6D2000029737 /* SetupViewController.swift in Sources */,

@@ -1779,7 +1779,7 @@
             <objects>
                 <hostingController id="mbi-ct-92m" customClass="SubscriptionPageController" customModule="Habitica" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Z1P-CG-lCa">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="gct-2c-bIk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="gct-2c-bIk">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="aQc-Iq-bo1" kind="unwind" unwindAction="unwindToList:" id="M2b-xL-HeX"/>
@@ -2026,7 +2026,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="C4c-p3-v26">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="nxq-Dr-Nhh">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="cancel" id="nxq-Dr-Nhh">
                             <connections>
                                 <action selector="doneButtonTapped:" destination="0F5-C1-rPv" id="FIm-k3-Qh5"/>
                             </connections>
@@ -2969,11 +2969,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yA7-ap-uv0">
-                        <barButtonItem key="rightBarButtonItem" id="kSc-p7-YTC">
-                            <connections>
-                                <action selector="changeOrganizeBy:" destination="HEh-dF-ytU" id="fwf-yj-7xx"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="kSc-p7-YTC"/>
                     </navigationItem>
                     <connections>
                         <outlet property="leftViewWidthConstraint" destination="9tD-k9-D74" id="NPC-we-A57"/>

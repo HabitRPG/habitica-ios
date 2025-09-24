@@ -66,6 +66,9 @@ class SettingsViewController: FormViewController, Themeable {
         tableView.cellLayoutMarginsFollowReadableWidth = false
         super.viewDidLoad()
         navigationItem.title = L10n.Titles.settings
+        if #unavailable(iOS 26.0) {
+            doneButton.style = .done
+        }
         setupForm()
         loadSettingsFromUserDefaults()
         
@@ -921,10 +924,10 @@ class SettingsViewController: FormViewController, Themeable {
         if user.canChooseClassForFree == true {
             _ = UserManager.shared.showClassSelection(user: user)
         } else {
-            let alertController = HabiticaAlertController(title: L10n.Settings.areYouSure, message: L10n.Settings.changeClassDisclaimer)
+            let alertController = HabiticaAlertController(title: L10n.Settings.changeClassTitle, message: L10n.Settings.changeClassDisclaimer)
             let changeClassCosts = changeClassCosts
             
-            alertController.addAction(title: L10n.Settings.changeClass) { _ in
+            alertController.addAction(title: L10n.Settings.changeClass, isMainAction: true) { _ in
                 if user.gemCount < changeClassCosts {
                     HRPGBuyItemModalViewController.displayInsufficientGemsModal(reason: "class change", delayDisplay: false)
                     return

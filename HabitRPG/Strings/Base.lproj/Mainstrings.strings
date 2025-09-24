@@ -297,7 +297,8 @@
 "settings.sound_theme" = "Sound Theme";
 "settings.wrong_password" = "Incorrect Password";
 "settings.are_you_sure" = "Are you sure?";
-"settings.change_class_disclaimer" = "This will reset your character's class and allocated points (you'll get them all back to re-allocate), and costs 3 gems.";
+"settings.change_class_title" = "Change class for 3 Gems?";
+"settings.change_class_disclaimer" = "This will remove your current class and refund all stat points then let you select a new class";
 "settings.enable_class_system" = "Enable Class System";
 "settings.select_class" = "Select Class";
 "settings.app_icon" = "App Icon";
@@ -1113,6 +1114,7 @@
 "edit_challenge_tasks" = "Challenge tasks only offer limited editing.";
 "add" = "Add";
 "onwards" = "Onwards";
+"chat_with_question" = "Who would you like to chat with?";
 "gift_gems_alert_title" = "Who would you like to send your gift to?";
 "gift_gems_alert_prompt" = "Enter recipient's @username";
 "gift_gems_disclaimer" = "Habitica will never require you to gift gems to other players. Begging people for gems is a violation of the Community Guidelines and should be reported to admin@habitica.com.";

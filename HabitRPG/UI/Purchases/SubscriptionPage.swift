@@ -638,6 +638,10 @@ class SubscriptionPageController: UIHostingController<ScrollableSubscriptionPage
         viewModel.onGiftButtonTapped = {[weak self] in
             self?.giftSubscriptionButtonTapped()
         }
+        
+        if #unavailable(iOS 26.0) {
+            navigationItem.rightBarButtonItem?.style = .done
+        }
     }
     
     func giftSubscriptionButtonTapped() {

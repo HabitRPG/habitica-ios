@@ -32,6 +32,10 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #unavailable(iOS 26.0) {
+            navigationItem.rightBarButtonItem?.style = .done
+        }
 
         let nib = UINib.init(nibName: "GemPurchaseView", bundle: nil)
         self.collectionView?.register(nib, forCellWithReuseIdentifier: "Cell")

@@ -15,6 +15,7 @@ import SwiftUI
 
 class UserTopHeader: UIView, Themeable {
     
+    @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var avatarView: AvatarView!
     
     @IBOutlet weak var healthLabel: LabeledProgressBar!
@@ -73,8 +74,27 @@ class UserTopHeader: UIView, Themeable {
         gemView.currency = .gem
         hourglassView.currency = .hourglass
         
-        avatarView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showUserBottomSheetMenu)))
+        avatarButton.menu = UIMenu(children: [
+            UIAction(title: L10n.openProfile, image: UIImage(systemName: "person.crop.circle")) { _ in
+                RouterHandler.shared.handle(urlString: "/profile/" + self.userID)
+            },
+            UIAction(title: L10n.Menu.customizeAvatar, image: UIImage(systemName: "theatermask.and.paintbrush")) { _ in
+                RouterHandler.shared.handle(urlString: "/user/avatar")
+            },
+            UIAction(title: L10n.Equipment.equipment.localizedCapitalized, image: UIImage(systemName: "shirt")) { _ in
+                RouterHandler.shared.handle(urlString: "/user/equipment")
+            },
+            UIAction(title: L10n.shareAvatar, image: UIImage(systemName: "square.and.arrow.up")) { _ in
+                if let user = self.user {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        SharingManager.share(avatar: user)
+                    }
+                }
+            }
+        ])
         avatarView.isUserInteractionEnabled = true
+        avatarButton.showsMenuAsPrimaryAction = true
+
         gemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showGemView)))
         
         levelLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
@@ -286,26 +306,6 @@ class UserTopHeader: UIView, Themeable {
     @objc
     private func showGemView() {
         
-    }
-    
-    @objc
-    private func showUserBottomSheetMenu() {
-        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(Text(""), menuItems: {
-            BottomSheetMenuitem(title: L10n.openProfile) {
-                RouterHandler.shared.handle(urlString: "/profile/" + self.userID)
-            }
-            BottomSheetMenuitem(title: L10n.Menu.customizeAvatar) {
-                RouterHandler.shared.handle(urlString: "/user/avatar")
-            }
-            BottomSheetMenuitem(title: L10n.shareAvatar) {
-                if let user = self.user {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        SharingManager.share(avatar: user)
-                    }
-                }
-            }
-        }))
-        nearestNavigationController?.present(sheet, animated: true)
     }
 }
 

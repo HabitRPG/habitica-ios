@@ -695,10 +695,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             self.buyItem(quantity: quantity)
             alert.dismiss(animated: true, completion: nil)
         }
-        alert.closeTitle = L10n.cancel
-        alert.closeAction = {
-            alert.dismiss(animated: true, completion: nil)
-        }
+        alert.addCancelAction()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             alert.enqueue()
         }

@@ -14,7 +14,7 @@ import ReactiveSwift
 protocol ShopCollectionViewDataSourceDelegate {
     func didSelectItem(_ item: InAppRewardProtocol?, indexPath: IndexPath)
     func scrollViewDidScroll(_ scrollView: UIScrollView)
-    func showGearSelection(sourceView: UIView)
+    func changeGearCategory(to className: String)
     func updateShopHeader(shop: ShopProtocol?)
     func updateNavBar(gold: Int, gems: Int, hourglasses: Int)
 }
@@ -227,8 +227,8 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 let selectedClassName = ifWizardConvertToMage(selectedGearCategory)?.capitalized ?? ""
                 headerView.titleLabel.text = L10n.Equipment.classEquipment.localizedUppercase
                 headerView.setSecondRow(className: selectedClassName, classColor: .backgroundColorFor(habiticaClass: selectedGearCategory))
-                headerView.onGearCategoryLabelTapped = {[weak self] in
-                    self?.delegate?.showGearSelection(sourceView: headerView.gearCategoryLabel)
+                headerView.onGearCategoryChanged = {[weak self] className in
+                    self?.delegate?.changeGearCategory(to: className)
                 }
                 if userClass == selectedInternalGearCategory || selectedInternalGearCategory == "none" {
                     headerView.otherClassDisclaimer.isHidden = true
@@ -285,7 +285,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
    
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 0 && needsGearSection {
-            if userClass != selectedInternalGearCategory {
+            if userClass != selectedInternalGearCategory && selectedInternalGearCategory != "none" {
                 return CGSize(width: collectionView.bounds.width, height: 170)
             } else {
                 return CGSize(width: collectionView.bounds.width, height: 75)

@@ -54,7 +54,7 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
             searchBarWrapper.clipsToBounds = true
         }
         
-        filterButton.setImage(HabiticaIcons.imageOfFilterIcon().withRenderingMode(.alwaysTemplate), for: .normal)
+        filterButton.setImage(UIImage(systemName: "slider.horizontal.3"), for: .normal)
         filterButton.addTarget(self, action: #selector(filterTapped(_:)), for: .touchUpInside)
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addChallengeAction))
         let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonTapped(_:)))

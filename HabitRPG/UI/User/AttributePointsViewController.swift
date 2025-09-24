@@ -366,7 +366,6 @@ class AttributePointsViewController: BaseUIViewController {
         alert.addAction(title: L10n.save, isMainAction: true) { _ in
             viewController.save()
         }
-        alert.buttonAxis = .horizontal
         alert.containerViewSpacing = 0
         alert.show()
     }

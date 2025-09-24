@@ -152,6 +152,8 @@ public enum L10n {
   public static var characterLevel: String { return L10n.tr("Mainstrings", "character_level") }
   /// Chat
   public static var chat: String { return L10n.tr("Mainstrings", "chat") }
+  /// Who would you like to chat with?
+  public static var chatWithQuestion: String { return L10n.tr("Mainstrings", "chat_with_question") }
   /// You earned a %@ as a reward for your devotion to improving your life.
   public static func checkinPrizeEarned(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "checkin_prize_earned", p1)
@@ -2441,8 +2443,10 @@ public enum L10n {
     public static var changeAboutMessage: String { return L10n.tr("Mainstrings", "settings.change_about_message") }
     /// Change Class
     public static var changeClass: String { return L10n.tr("Mainstrings", "settings.change_class") }
-    /// This will reset your character's class and allocated points (you'll get them all back to re-allocate), and costs 3 gems.
+    /// This will remove your current class and refund all stat points then let you select a new class
     public static var changeClassDisclaimer: String { return L10n.tr("Mainstrings", "settings.change_class_disclaimer") }
+    /// Change class for 3 Gems?
+    public static var changeClassTitle: String { return L10n.tr("Mainstrings", "settings.change_class_title") }
     /// Change Display Name
     public static var changeDisplayName: String { return L10n.tr("Mainstrings", "settings.change_display_name") }
     /// Change Email

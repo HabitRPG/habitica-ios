@@ -113,7 +113,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                     alert.addAction(title: L10n.share) { _ in
                         SharingManager.share(pet: pet, shareIdentifier: "hatchedPet")
                     }
-                    alert.setCloseAction(title: L10n.close, handler: {})
+                    alert.addCloseAction()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         alert.show()
                     }
@@ -313,7 +313,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                     alert.addAction(title: L10n.share) { _ in
                         SharingManager.share(mount: pet, shareIdentifier: "raisedPet")
                     }
-                    alert.setCloseAction(title: L10n.close, handler: {})
+                    alert.addCloseAction()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         alert.show()
                     }

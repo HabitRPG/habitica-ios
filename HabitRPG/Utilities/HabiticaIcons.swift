@@ -9746,16 +9746,6 @@ public class HabiticaIcons : NSObject {
         return Cache.imageOfDisclosureArrow!
     }
 
-    @objc dynamic public class func imageOfFilterIcon(percentage: CGFloat = 0) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 22, height: 22), false, 0)
-            HabiticaIcons.drawFilterIcon(percentage: percentage)
-
-        let imageOfFilterIcon = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-
-        return imageOfFilterIcon
-    }
-
     @objc dynamic public class var imageOfDeclineIcon: UIImage {
         if Cache.imageOfDeclineIcon != nil {
             return Cache.imageOfDeclineIcon!

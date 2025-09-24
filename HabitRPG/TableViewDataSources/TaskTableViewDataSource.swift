@@ -377,7 +377,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
                         return self.repository.retrieveTasks()
                     }.observeCompleted {}
                 })
-                alert.setCloseAction(title: L10n.close, handler: {})
+                alert.addCloseAction()
                 alert.show()
         }
         ).start()
@@ -393,7 +393,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
             alert.addAction(title: L10n.deleteXTasks(taskCount), style: .destructive) { _ in
                 self.repository.unlinkAllTasks(challengeID: task.challengeID ?? "", keepOption: "remove-all").observeCompleted {}
             }
-            alert.setCloseAction(title: L10n.close, handler: {})
+            alert.addCloseAction()
             alert.show()
             }).start()
     }
