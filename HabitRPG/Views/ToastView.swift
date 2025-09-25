@@ -10,33 +10,22 @@ import UIKit
 import SwiftUIX
 import SwiftUI
 import ConfettiSwiftUI
+import PinLayout
 
-class ToastView: UIView {
-        
-    @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var priceContainer: UIView!
-    @IBOutlet weak var priceIconLabel: IconLabel!
-    @IBOutlet weak var statsDiffStackView: UIStackView!
+struct StatsChange {
+    var text: String
+    var icon: UIImage
+}
+
+struct ToastView: View {
+    @ObservedObject var options: ToastOptions
     
-    @IBOutlet weak var leftImageView: UIImageView!
-    @IBOutlet weak var bottomSpacing: NSLayoutConstraint!
-    @IBOutlet weak var topSpacing: NSLayoutConstraint!
-    @IBOutlet weak var leadingSpacing: NSLayoutConstraint!
-    @IBOutlet weak var trailingSpacing: NSLayoutConstraint!
+    public init(options: ToastOptions) {
+        self.options = options
+    }
     
-    @IBOutlet weak var leftImageWidth: NSLayoutConstraint!
-    @IBOutlet weak var leftImageHeight: NSLayoutConstraint!
-    @IBOutlet weak var priceContainerWidth: NSLayoutConstraint!
-    @IBOutlet weak var priceTrailingPadding: NSLayoutConstraint!
-    @IBOutlet weak var priceLeadingPadding: NSLayoutConstraint!
-    @IBOutlet weak var priceIconLabelWidth: NSLayoutConstraint!
-    
-    var options: ToastOptions = ToastOptions()
-    
-    public convenience init(title: String, subtitle: String, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
-        self.init(frame: CGRect.zero)
+    public init(title: String, subtitle: String, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
+        let options = ToastOptions()
         options.title = title
         options.subtitle = subtitle
         options.backgroundColor = background
@@ -46,12 +35,11 @@ class ToastView: UIView {
         if let delay = delay {
             options.delayDuration = delay
         }
-        loadOptions()
-        accessibilityLabel = "\(title), \(subtitle)"
+        self.init(options: options)
     }
     
-    public convenience init(title: String, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
-        self.init(frame: CGRect.zero)
+    public init(title: String, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
+        let options = ToastOptions()
         options.title = title
         options.backgroundColor = background
         if let duration = duration {
@@ -60,12 +48,11 @@ class ToastView: UIView {
         if let delay = delay {
             options.delayDuration = delay
         }
-        loadOptions()
-        accessibilityLabel = title
+        self.init(options: options)
     }
     
-    public convenience init(title: String, subtitle: String, icon: UIImage, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
-        self.init(frame: CGRect.zero)
+    public init(title: String, subtitle: String, icon: UIImage, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
+        let options = ToastOptions()
         options.title = title
         options.subtitle = subtitle
         options.leftImage = icon
@@ -76,12 +63,11 @@ class ToastView: UIView {
         if let delay = delay {
             options.delayDuration = delay
         }
-        loadOptions()
-        accessibilityLabel = "\(title), \(subtitle)"
+        self.init(options: options)
     }
     
-    public convenience init(title: String, icon: UIImage, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
-        self.init(frame: CGRect.zero)
+    public init(title: String, icon: UIImage, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
+        let options = ToastOptions()
         options.title = title
         options.backgroundColor = background
         options.leftImage = icon
@@ -91,12 +77,11 @@ class ToastView: UIView {
         if let delay = delay {
             options.delayDuration = delay
         }
-        loadOptions()
-        accessibilityLabel = title
+        self.init(options: options)
     }
     
-    public convenience init(title: String, rightIcon: UIImage, rightText: String, rightTextColor: UIColor, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
-        self.init(frame: CGRect.zero)
+    public init(title: String, rightIcon: UIImage, rightText: String, rightTextColor: UIColor, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
+        let options = ToastOptions()
         options.title = title
         options.backgroundColor = background
         options.rightIcon = rightIcon
@@ -108,69 +93,30 @@ class ToastView: UIView {
         if let delay = delay {
             options.delayDuration = delay
         }
-        loadOptions()
-        accessibilityLabel = title
+        self.init(options: options)
     }
     
-    public convenience init(healthDiff: Float, magicDiff: Float, expDiff: Float, goldDiff: Float, questDamage: Float, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
-        self.init(frame: CGRect.zero)
-        accessibilityLabel = "You received "
-        addStatsView(HabiticaIcons.imageOfHeartDarkBg, diff: healthDiff, label: "Health")
-        addStatsView(HabiticaIcons.imageOfExperience, diff: expDiff, label: "Experience")
-        addStatsView(HabiticaIcons.imageOfMagic, diff: magicDiff, label: "Mana")
-        addStatsView(HabiticaIcons.imageOfGold, diff: goldDiff, label: "Gold")
-        addStatsView(HabiticaIcons.imageOfDamage, diff: questDamage, label: "Damage")
+    public init(healthDiff: Float, magicDiff: Float, expDiff: Float, goldDiff: Float, questDamage: Float, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
+        let options = ToastOptions()
+        ToastView.addStatsView(HabiticaIcons.imageOfHeartDarkBg, diff: healthDiff, label: L10n.health, options: options)
+        ToastView.addStatsView(HabiticaIcons.imageOfExperience, diff: expDiff, label: L10n.experience, options: options)
+        ToastView.addStatsView(HabiticaIcons.imageOfMagic, diff: magicDiff, label: L10n.mana, options: options)
+        ToastView.addStatsView(HabiticaIcons.imageOfGold, diff: goldDiff, label: L10n.gold, options: options)
+        ToastView.addStatsView(HabiticaIcons.imageOfDamage, diff: questDamage, label: "Damage", options: options)
         options.backgroundColor = background
-        loadOptions()
+        self.init(options: options)
     }
     
-    public convenience init(goldDiff: Float, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
-        self.init(frame: CGRect.zero)
-        accessibilityLabel = "You received "
-        addStatsView(HabiticaIcons.imageOfGold, diff: goldDiff, label: L10n.gold)
+    public init(goldDiff: Float, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
+        let options = ToastOptions()
+        ToastView.addStatsView(HabiticaIcons.imageOfGold, diff: goldDiff, label: L10n.gold, options: options)
         options.backgroundColor = background
-        loadOptions()
+        self.init(options: options)
     }
     
-    private func addStatsView(_ icon: UIImage, diff: Float, label: String) {
+    private static func addStatsView(_ icon: UIImage, diff: Float, label: String, options: ToastOptions) {
         if diff != 0 {
-            let iconLabel = IconLabel()
-            iconLabel.icon = icon
-            iconLabel.text = diff > 0 ? String(format: "+%.2f", diff) : String(format: "%.2f", diff)
-            iconLabel.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .horizontal)
-            statsDiffStackView.addArrangedSubview(iconLabel)
-            accessibilityLabel = (accessibilityLabel ?? "") + "\(Int(diff)) \(label), "
-        }
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureViews()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        configureViews()
-    }
-    
-    private func configureViews() {
-        self.backgroundColor = .clear
-        if let view = viewFromNibForClass() {
-            translatesAutoresizingMaskIntoConstraints = false
-            
-            view.frame = bounds
-            addSubview(view)
-            
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
-            
-            backgroundView.layer.borderColor = UIColor.black.withAlphaComponent(0.1).cgColor
-            backgroundView.layer.borderWidth = 1
-            
-            isUserInteractionEnabled = false
-            backgroundView.isUserInteractionEnabled = true
-            
-            isAccessibilityElement = false
+            options.statsChanges.append(StatsChange(text: diff > 0 ? String(format: "+%.2f", diff) : String(format: "%.2f", diff), icon: icon))
         }
     }
 
@@ -196,53 +142,64 @@ class ToastView: UIView {
         }
     }
     
-    func loadOptions() {
-        if options.backgroundColor == .subscriberPerk {
-            let gradientLayer = CAGradientLayer()
-            gradientLayer.colors = [UIColor("#72CFFFFF").cgColor, UIColor("#77F4C7FF").cgColor]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-            gradientLayer.endPoint   = CGPoint(x: 1, y: 0.5)
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
-            backgroundView.backgroundColor = .clear
-            backgroundView.layer.borderWidth = 3
-            titleLabel.textColor = .green1
-            subtitleLabel.textColor = .green1
-            
-            self.insertSubview(UIHostingView(rootView: ZStack(alignment: .bottom) {
-                ConfettiView()
-            }
-                .padding(.bottom, 70)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)), at: 0)
-        } else {
-            backgroundView.backgroundColor = options.backgroundColor.getUIColor()
-            backgroundView.layer.borderColor = options.backgroundColor.getUIColor().darker(by: 10).cgColor
-            
-            backgroundView.layer.shadowColor = options.backgroundColor.getUIColor().cgColor
-            backgroundView.layer.shadowRadius = 15
-            backgroundView.layer.shadowOpacity = 0.25
-            backgroundView.layer.shadowOffset = .zero
-            backgroundView.layer.masksToBounds = false
-            backgroundView.clipsToBounds = false
+    var body: some View {
+        Group {
+                let content = HStack(spacing: 12) {
+                    if let image = options.leftImage {
+                        Image(uiImage: image)
+                            .frame(width: 46)
+                    }
+                    HStack(spacing: 8) {
+                        VStack(spacing: 2) {
+                            if let subtitle = options.subtitle {
+                                Text(subtitle)
+                                    .scaledFont(size: 16)
+                            }
+                            if let title = options.title {
+                                Text(title)
+                                    .scaledFont(size: 15, weight: .semibold)
+                                    .foregroundColor(.white)
+                            }
+                        }
+                        if !options.statsChanges.isEmpty {
+                            ForEach(options.statsChanges, id: \.text) { change in
+                                HStack(spacing: 4) {
+                                    Text(change.text)
+                                    Image(uiImage: change.icon)
+                                }
+                            }.font(.callout)
+                        }
+                    }.padding(14)
+                    if let image = options.rightIcon, let text = options.rightText {
+                        HStack(spacing: 4) {
+                            Text(text)
+                            Image(uiImage: image)
+                        }
+                        .foregroundColor(Color(options.rightTextColor))
+                        .padding(.horizontal, 8)
+                        .frame(maxHeight: .infinity)
+                        .background(.white)
+                            .cornerRadius([.topTrailing, .bottomTrailing], 20)
+                            .padding(4)
+                    }
+                }
+                if #available(iOS 26.0, *) {
+                        if options.isVisible {
+                            content
+                                .glassEffect(.regular.tint(options.backgroundColor.getColor()))
+                                .padding(.bottom, 50)
+                        }
+                } else {
+                    content
+                }
         }
-        
-        topSpacing.constant = 6
-        bottomSpacing.constant = 6
-        leadingSpacing.constant = 8
-        trailingSpacing.constant = 8
-        
-        configureTitle(options.title)
-        configureSubtitle(options.subtitle)
-        configureLeftImage(options.leftImage)
-        configureRightView(icon: options.rightIcon, text: options.rightText, textColor: options.rightTextColor)
-        
-        priceContainerWidth.constant = 0
-        
-        setNeedsUpdateConstraints()
-        updateConstraints()
-        setNeedsLayout()
-        layoutIfNeeded()
+        .fixedSize(horizontal: false, vertical: true)
+        .foregroundColor(.white)
+        .padding(.bottom, 60)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
     }
     
+    /*
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -316,6 +273,6 @@ class ToastView: UIView {
             priceContainer.isHidden = true
             priceIconLabel.removeFromSuperview()
         }
-    }
+    }*/
     
 }

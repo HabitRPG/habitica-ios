@@ -620,7 +620,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         }
     }
     
-    private static func displayInsufficientGoldModal() {
+    static func displayInsufficientGoldModal() {
         let alert = prepareInsufficientModal(title: L10n.notEnoughGold, message: L10n.completeMoreTasks, image: Asset.insufficientGold.image)
         alert.addAction(title: L10n.takeMeBack, isMainAction: true)
         DispatchQueue.main.asyncAfter(deadline: .now()) {
@@ -628,7 +628,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         }
     }
     
-    private static func displayInsufficientHourglassesModal(user: UserProtocol?) {
+    static func displayInsufficientHourglassesModal(user: UserProtocol?) {
         let alert = prepareInsufficientModal(title: L10n.notEnoughHourglasses, message: nil, image: Asset.insufficientHourglasses.image)
         if user?.isSubscribed == true {
             alert.message = L10n.insufficientHourglassesMessageSubscriber
@@ -646,7 +646,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         }
     }
     
-    private static func displayGemCapReachedModal() {
+    static func displayGemCapReachedModal() {
         let alert = prepareInsufficientModal(title: L10n.monthlyGemCapReached, message: L10n.Inventory.noGemsLeft, image: Asset.insufficientGems.image)
         alert.addAction(title: L10n.takeMeBack, isMainAction: true)
         DispatchQueue.main.asyncAfter(deadline: .now()) {
@@ -654,7 +654,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         }
     }
     
-    private static func prepareInsufficientModal(title: String, message: String?, image: UIImage) -> HabiticaAlertController {
+    static func prepareInsufficientModal(title: String, message: String?, image: UIImage) -> HabiticaAlertController {
         let alert = HabiticaAlertController(title: title, message: message)
         let imageView = UIImageView(image: image)
         imageView.contentMode = .center
@@ -665,7 +665,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         return alert
     }
     
-    private func displayPurchaseConfirmationDialog(quantity: Int) {
+    func displayPurchaseConfirmationDialog(quantity: Int) {
         if quantity == 0 {
             displayNoRemainingConfirmationDialog()
         } else {
@@ -673,7 +673,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         }
     }
     
-    private func displayNoRemainingConfirmationDialog() {
+    func displayNoRemainingConfirmationDialog() {
         let alert = HabiticaAlertController(title: L10n.excessItems, message: L10n.excessNoItemsLeft(reward?.text ?? "", purchaseQuantity, reward?.text ?? ""))
         alert.addAction(title: L10n.purchaseX(purchaseQuantity), isMainAction: true) { _ in
             self.buyItem(quantity: self.purchaseQuantity)
@@ -685,7 +685,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         }
     }
     
-    private func displaySomeRemainingConfirmationDialog(quantity: Int) {
+    func displaySomeRemainingConfirmationDialog(quantity: Int) {
         let alert = HabiticaAlertController(title: L10n.excessItems, message: L10n.excessXItemsLeft(quantity, reward?.text ?? "", purchaseQuantity))
         alert.addAction(title: L10n.purchaseX(purchaseQuantity), isMainAction: true) { _ in
             self.buyItem(quantity: self.purchaseQuantity)

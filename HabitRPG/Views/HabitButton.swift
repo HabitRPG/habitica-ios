@@ -42,7 +42,6 @@ class HabitButton: UIView {
         roundedView.layer.cornerRadius = buttonSize / 2
         label.contentMode = .scaleAspectFit
         isUserInteractionEnabled = true
-        roundedView.layer.borderWidth = 2
         addSubview(dimmOverlayView)
         addSubview(label)
         interactionOverlay.backgroundColor = .init(white: 1.0, alpha: 0.4)
@@ -74,13 +73,11 @@ class HabitButton: UIView {
             } else {
                 roundedView.backgroundColor = UIColor.forTaskValue(task.value)
             }
-            roundedView.layer.borderColor = UIColor.clear.cgColor
             label.tintColor = .white
         } else {
             backgroundColor = theme.windowBackgroundColor
-            roundedView.layer.borderColor = theme.separatorColor.cgColor
-            roundedView.backgroundColor = theme.windowBackgroundColor
-            label.tintColor = theme.separatorColor
+            roundedView.backgroundColor = theme.separatorColor
+            label.tintColor = theme.quadTextColor
         }
                 
         dimmOverlayView.isHidden = !theme.isDark

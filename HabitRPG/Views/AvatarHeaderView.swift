@@ -35,12 +35,12 @@ class AvatarHeaderView: UIView, Themeable {
         roundingWrapper.clipsToBounds = true
         addSubview(roundingWrapper)
         roundingWrapper.addSubview(backBlockLeft)
-        roundBlockLeft.cornerRadius = 22
+        roundBlockLeft.cornerRadius = 26
         roundBlockLeft.layer.maskedCorners = [.layerMinXMinYCorner]
         roundingWrapper.addSubview(roundBlockLeft)
         
         roundingWrapper.addSubview(backBlockRight)
-        roundBlockRight.cornerRadius = 22
+        roundBlockRight.cornerRadius = 26
         roundBlockRight.layer.maskedCorners = [.layerMaxXMinYCorner]
         roundingWrapper.addSubview(roundBlockRight)
     }

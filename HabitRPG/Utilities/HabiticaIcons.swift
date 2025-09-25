@@ -1749,7 +1749,7 @@ public class HabiticaIcons : NSObject {
 
     }
 
-    @objc dynamic public class func drawDifficultyStars(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 48, height: 12), resizing: ResizingBehavior = .aspectFit, difficulty: CGFloat = 2) {
+    @objc dynamic public class func drawDifficultyStars(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 16), resizing: ResizingBehavior = .aspectFit, difficulty: CGFloat = 2) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         
@@ -9207,7 +9207,7 @@ public class HabiticaIcons : NSObject {
     }
 
     @objc dynamic public class func imageOfDifficultyStars(difficulty: CGFloat = 2) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 48, height: 12), false, 0)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 60, height: 16), false, 0)
             HabiticaIcons.drawDifficultyStars(difficulty: difficulty)
 
         let imageOfDifficultyStars = UIGraphicsGetImageFromCurrentImageContext()!

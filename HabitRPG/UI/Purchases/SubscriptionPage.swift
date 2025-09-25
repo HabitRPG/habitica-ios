@@ -307,7 +307,7 @@ struct SubscriptionPage: View {
                 if let endDate = viewModel.activePromo?.endDate, viewModel.activePromo?.identifier == "g1g1" {
                     G1G1Banner(endDate: endDate)
                         .frame(height: 96)
-                        .cornerRadius(8)
+                        .cornerRadius(13)
                         .padding(.horizontal, 20)
                         .padding(.bottom, 30)
                 }
@@ -386,7 +386,7 @@ struct SubscriptionPage: View {
                                     .fill()
                                     .foregroundColor(Color(UIColor.purple200))
                                     .frame(height: viewModel.showHourglassPromo && sub == viewModel.availableSubscriptions.last ? 186 : 126)
-                                    .cornerRadius(12)
+                                    .cornerRadius(13)
                                     .padding(.vertical, 4).onTapGesture {
                                         withAnimation {
                                             viewModel.selectedSubscription = sub
@@ -396,7 +396,7 @@ struct SubscriptionPage: View {
                         }
                         Rectangle()
                             .frame(height: viewModel.showHourglassPromo && viewModel.selectedSubscription == viewModel.availableSubscriptions.last ? 186 : 126)
-                            .cornerRadius(12)
+                            .cornerRadius(13)
                             .offset(y: 4.0 + (CGFloat(viewModel.availableSubscriptions.firstIndex(of: viewModel.selectedSubscription) ?? 0) * 134.0))
                             .animation(.interpolatingSpring(stiffness: 500, damping: 55), value: viewModel.selectedSubscription)
                         SubscriptionOptionStack(viewModel: viewModel)
@@ -634,11 +634,6 @@ class SubscriptionPageController: UIHostingController<ScrollableSubscriptionPage
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .purple300
-        navigationController?.navigationBar.backgroundColor = .purple300
-        navigationController?.navigationBar.barStyle = .black
-        navigationController?.navigationBar.barTintColor = .purple300
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
 
         viewModel.onGiftButtonTapped = {[weak self] in
             self?.giftSubscriptionButtonTapped()

@@ -200,70 +200,45 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
-    private func updateAuth(response: LoginResponseProtocol?) {
-        if let response = response {
-            if response.id?.isEmpty == false {
-                AuthenticationManager.shared.currentUserId = response.id
-            }
-            if response.apiToken?.isEmpty == false {
-                AuthenticationManager.shared.currentUserKey = response.apiToken
-            }
-        }
-    }
-    
     func login(username: String, password: String) -> Signal<LoginResponseProtocol?, Never> {
         let call = LocalLoginCall(username: username, password: password)
         
         return call.objectSignal.merge(with: call.responseSignal.map({ _ -> LoginResponseProtocol? in
             return nil
-        })).on(value: { loginResponse in
-            self.updateAuth(response: loginResponse)
+        }))
+            .on(value: { loginResponse in
+            if let response = loginResponse {
+                AuthenticationManager.shared.currentUserId = response.id
+                AuthenticationManager.shared.currentUserKey = response.apiToken
+            }
         })
     }
-
+    
     func register(username: String, password: String, confirmPassword: String, email: String) -> Signal<LoginResponseProtocol?, Never> {
         return LocalRegisterCall(username: username, password: password, confirmPassword: confirmPassword, email: email).objectSignal.on(value: { loginResponse in
-            self.updateAuth(response: loginResponse)
+            if let response = loginResponse {
+                AuthenticationManager.shared.currentUserId = response.id
+                AuthenticationManager.shared.currentUserKey = response.apiToken
+            }
         })
     }
     
     func login(userID: String, network: String, accessToken: String, allowRegister: Bool) -> Signal<LoginResponseProtocol?, Never> {
-        let call = SocialLoginCall(userID: userID, network: network, accessToken: accessToken, allowRegister: allowRegister)
-        return call.objectSignal.on(value: { loginResponse in
-            self.updateAuth(response: loginResponse)
-        }).merge(with: call.httpResponseSignal.map({ response -> LoginResponseProtocol? in
-            if response.statusCode == 404 {
-                let loginResponse = APILoginResponse()
-                loginResponse.newUser = true
-                return loginResponse
+        return SocialLoginCall(userID: userID, network: network, accessToken: accessToken, allowRegister: allowRegister).objectSignal.on(value: { loginResponse in
+            if let response = loginResponse {
+                AuthenticationManager.shared.currentUserId = response.id
+                AuthenticationManager.shared.currentUserKey = response.apiToken
             }
-            return nil
-        }))
+        })
     }
     
     func loginApple(identityToken: String, name: String, allowRegister: Bool) -> Signal<LoginResponseProtocol?, Never> {
-        let call = AppleLoginCall(identityToken: identityToken, name: name, allowRegister: allowRegister)
-        return call.objectSignal
-            .on(value: { loginResponse in
-            self.updateAuth(response: loginResponse)
-        })
-            .map({ response in
-                if response == nil {
-                    let loginResponse = APILoginResponse()
-                    loginResponse.newUser = true
-                    return loginResponse
-                } else {
-                    return response
-                }
-            })
-            .merge(with: call.httpResponseSignal.map({ response -> LoginResponseProtocol? in
-            if response.statusCode == 404 {
-                let loginResponse = APILoginResponse()
-                loginResponse.newUser = true
-                return loginResponse
+        return AppleLoginCall(identityToken: identityToken, name: name, allowRegister: allowRegister).objectSignal.on(value: { loginResponse in
+            if let response = loginResponse {
+                AuthenticationManager.shared.currentUserId = response.id
+                AuthenticationManager.shared.currentUserKey = response.apiToken
             }
-            return nil
-        }))
+        })
     }
     
     func disconnectSocial(_ network: String) -> Signal<EmptyResponseProtocol?, Never> {
@@ -289,18 +264,13 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         if let userID = currentUserId {
             AuthenticationManager.shared.clearAuthentication(userId: userID)
         }
-        HabiticaAnalytics.shared.resetAnalyticsOnLogout()
         deregisterPushDevice().observeCompleted {}
         let defaults = UserDefaults.standard
         let themeMode = defaults.string(forKey: "themeMode")
         let launchScreen = defaults.string(forKey: "initialScreenURL")
-        let chosenServer = defaults.string(forKey: "chosenServer")
         defaults.dictionaryRepresentation().keys.forEach { defaults.removeObject(forKey: $0) }
         defaults.set(themeMode, forKey: "themeMode")
         defaults.set(launchScreen, forKey: "initialScreenURL")
-        if ConfigRepository.shared.testingLevel.isTrustworthy {
-            defaults.set(chosenServer, forKey: "chosenServer")
-        }
     }
     
     func updateEmail(newEmail: String, password: String) -> Signal<UserProtocol, ReactiveSwiftRealmError> {
@@ -317,12 +287,23 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
-    func updateUsername(newUsername: String, password: String? = nil) -> Signal<UserProtocol?, Never> {
+    func updateUsername(newUsername: String, password: String? = nil) -> Signal<UserProtocol, ReactiveSwiftRealmError> {
         let call = UpdateUsernameCall(username: newUsername, password: password)
         
-        return call.objectSignal.flatMap(.latest) { _ in
-            return self.retrieveUser(forced: true)
-        }
+        return call.objectSignal
+            .filter({ (response) -> Bool in
+                return response != nil
+            })
+            .flatMap(.concat, {[weak self] (_) in
+            return self?.getUser().take(first: 1) ?? SignalProducer.empty
+        }).on(value: {[weak self]user in
+            self?.localRepository.updateCall { _ in
+                if let local = user.authentication?.local {
+                    local.username = newUsername
+                    user.flags?.verifiedUsername = true
+                }
+            }
+        })
     }
     
     func verifyUsername(_ newUsername: String) -> Signal<VerifyUsernameResponse?, Never> {

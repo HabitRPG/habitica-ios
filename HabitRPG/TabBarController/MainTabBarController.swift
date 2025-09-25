@@ -261,11 +261,13 @@ class MainTabBar: UITabBar, Themeable {
 
     override open func sizeThatFits(_ size: CGSize) -> CGSize {
         var sizeThatFits = super.sizeThatFits(size)
-        guard let window = UIApplication.shared.findKeyWindow() else {
-            return sizeThatFits
-        }
-        if window.safeAreaInsets.bottom > 0 {
-            sizeThatFits.height = 42 + window.safeAreaInsets.bottom
+        if #unavailable(iOS 26.0) {
+            guard let window = UIApplication.shared.findKeyWindow() else {
+                return sizeThatFits
+            }
+            if window.safeAreaInsets.bottom > 0 {
+                sizeThatFits.height = 42 + window.safeAreaInsets.bottom
+            }
         }
         return sizeThatFits
     }
@@ -280,11 +282,14 @@ class MainTabBar: UITabBar, Themeable {
             }
         })
         tintColor = theme.fixedTintColor
-        barTintColor = theme.contentBackgroundColor
-        backgroundColor = theme.contentBackgroundColor
-        backgroundImage = UIImage.from(color: theme.contentBackgroundColor)
-        shadowImage = UIImage.from(color: theme.contentBackgroundColor)
-        barStyle = .black
+        unselectedItemTintColor = theme.ternaryTextColor
+        if #unavailable(iOS 26.0) {
+            barTintColor = theme.contentBackgroundColor
+            backgroundColor = theme.contentBackgroundColor
+            backgroundImage = UIImage.from(color: theme.contentBackgroundColor)
+            shadowImage = UIImage.from(color: theme.contentBackgroundColor)
+            barStyle = .black
+        }
     }
     
     override func layoutSubviews() {
@@ -298,13 +303,23 @@ class MainTabBar: UITabBar, Themeable {
             let size = entry.value.intrinsicContentSize
             let width = max(size.height, size.width)
             // Find the edge of the icon and then center the badge there
-            entry.value.frame = CGRect(x: frame.origin.x + (frame.size.width/2) + 15 - (width/2), y: frame.origin.y + 4, width: width, height: size.height)
+            entry.value.frame = CGRect(x: frame.origin.x + (frame.size.width/2) + 35 - (width/2), y: frame.origin.y + 4, width: width, height: size.height)
             entry.value.cornerRadius = size.height / 2
         }
     }
     
     private func frameForTab(atIndex index: Int) -> CGRect {
-        var frames = subviews.compactMap { (view: UIView) -> CGRect? in
+        var container: UIView = self
+        if #available(iOS 26.0, *) {
+            if let foundView = container.subviews.first(where: { view in
+                    !(view is PaddedView)
+                })?.subviews.first(where: { view in
+                    view.description.contains("UITabBarPlatterView")
+                }) {
+                container = foundView
+            }
+        }
+        var frames = container.subviews.compactMap { (view: UIView) -> CGRect? in
             if let view = view as? UIControl {
                 return view.frame
             }

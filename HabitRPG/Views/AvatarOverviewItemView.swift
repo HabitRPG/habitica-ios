@@ -16,7 +16,7 @@ class AvatarOverviewItemView: UIView {
         } else {
             imageView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         }
-        imageView.layer.cornerRadius = 4
+        imageView.layer.cornerRadius = 8
         imageView.contentMode = .center
         return imageView
     }()
@@ -30,7 +30,7 @@ class AvatarOverviewItemView: UIView {
     var noItemView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = ThemeService.shared.theme.isDark ? UIColor.gray5 : UIColor.gray500
-        imageView.layer.cornerRadius = 4
+        imageView.layer.cornerRadius = 8
         imageView.contentMode = .center
         imageView.image = Asset.blankAvatar.image
         return imageView

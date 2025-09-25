@@ -63,6 +63,8 @@ struct BottomSheetView<Title: View, Content: View>: View, Dismissable {
     var dismisser: Dismisser = Dismisser()
     var title: Title
     let content: Content
+    var topPadding: CGFloat = 28
+    var bottomPadding: CGFloat = 12
 
     var body: some View {
         Group {
@@ -70,15 +72,15 @@ struct BottomSheetView<Title: View, Content: View>: View, Dismissable {
                 .font(.headline)
                 .foregroundColor(.primaryTextColor)
             content
-        }.padding(.horizontal, 24)
-            .padding(.top, 20)
-            .padding(.bottom, 12)
+        }.padding(.horizontal, 20)
+            .padding(.top, topPadding)
+            .padding(.bottom, bottomPadding)
     }
 }
 
 extension BottomSheetView where Title == EmptyView {
-    init(content: Content) {
-        self.init(title: EmptyView(), content: content)
+    init(dismisser: Dismisser = Dismisser(), content: Content, topPadding: CGFloat = 28, bottomPadding: CGFloat = 12) {
+        self.init(dismisser: dismisser, title: EmptyView(), content: content, topPadding: topPadding, bottomPadding: bottomPadding)
     }
 }
 

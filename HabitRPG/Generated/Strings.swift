@@ -1216,6 +1216,8 @@ public enum L10n {
   }
   /// Tags
   public static var tags: String { return L10n.tr("Mainstrings", "tags") }
+  /// This will take effect immediately after buying!
+  public static var takeEffectImmediately: String { return L10n.tr("Mainstrings", "take_effect_immediately") }
   /// Take me back
   public static var takeMeBack: String { return L10n.tr("Mainstrings", "take_me_back") }
   /// Tap to Show

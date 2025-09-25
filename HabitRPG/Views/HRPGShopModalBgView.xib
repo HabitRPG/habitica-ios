@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24127" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,17 +18,12 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="418"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <tabBar clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rKG-5L-EWP">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="418"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <items/>
-                </tabBar>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Q0-LU-z7k">
                     <rect key="frame" x="0.0" y="52" width="375" height="296"/>
                     <subviews>
                         <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="yzx-qy-agh">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="100" id="epu-zm-Mnr"/>
                             </constraints>
@@ -44,17 +39,12 @@
                     </constraints>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" red="0.97647058819999999" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="5Q0-LU-z7k" secondAttribute="trailing" id="CNa-yU-tsA"/>
                 <constraint firstItem="5Q0-LU-z7k" firstAttribute="leading" secondItem="pSG-iV-odl" secondAttribute="leading" id="IZS-4v-Sgc"/>
-                <constraint firstItem="rKG-5L-EWP" firstAttribute="height" secondItem="pSG-iV-odl" secondAttribute="height" id="PK7-Ux-sib"/>
                 <constraint firstItem="5Q0-LU-z7k" firstAttribute="top" secondItem="pSG-iV-odl" secondAttribute="top" constant="52" id="ZmO-j2-Mcv"/>
-                <constraint firstItem="rKG-5L-EWP" firstAttribute="leading" secondItem="pSG-iV-odl" secondAttribute="leading" id="a0V-Tf-DzC"/>
-                <constraint firstAttribute="bottom" secondItem="rKG-5L-EWP" secondAttribute="bottom" id="kMN-hE-PKN"/>
-                <constraint firstAttribute="trailing" secondItem="rKG-5L-EWP" secondAttribute="trailing" id="m7m-N5-NJo"/>
                 <constraint firstItem="yzx-qy-agh" firstAttribute="width" secondItem="pSG-iV-odl" secondAttribute="width" id="qOM-M0-jvW"/>
-                <constraint firstItem="rKG-5L-EWP" firstAttribute="top" secondItem="pSG-iV-odl" secondAttribute="top" id="sbs-H3-AqG"/>
                 <constraint firstAttribute="bottom" secondItem="5Q0-LU-z7k" secondAttribute="bottom" constant="70" id="wKi-gc-va9"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

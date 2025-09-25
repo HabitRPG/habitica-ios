@@ -95,7 +95,8 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
         let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(menuItems: {
             BottomSheetMenuitem(title: L10n.reportX(L10n.challenge), style: .destructive) {
                 if let challenge = self.viewModel?.challengeProperty.value {
-                    FlagViewController(type: .challenge, offendingItem: challenge).show()
+                    let controller = FlagViewController(type: .challenge, offendingItem: challenge)
+                    self.present(controller, animated: true)
                 }
             }
             BottomSheetMenuSeparator()

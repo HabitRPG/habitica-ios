@@ -26,7 +26,7 @@ struct NumberPickerFormView<TitleView: View>: View {
     
     var body: some View {
         VStack {
-            FormRow(title: title, valueLabel: Text(valueText).foregroundColor(.accentColor)) {
+            FormRow(title: title, valueLabel: Text(valueText)) {
                 withAnimation {
                     isOpen.toggle()
                 }
@@ -38,7 +38,7 @@ struct NumberPickerFormView<TitleView: View>: View {
                     }
                 } label: {
                     
-                }.pickerStyle(WheelPickerStyle())
+                }.pickerStyle(.wheel)
             }
         }
     }

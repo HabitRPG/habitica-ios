@@ -26,6 +26,10 @@ struct PixelArtView: View {
     
     var body: some View {
         KFAnimatedImage(source: source)
+            
     }
     
+    private var scale: CGFloat {
+        UIScreen.main.scale
+    }
 }

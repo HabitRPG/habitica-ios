@@ -564,7 +564,8 @@ class UserProfileViewController: BaseTableViewController {
                     }
                     BottomSheetMenuitem(title: L10n.reportX(L10n.player), style: .destructive) {
                         if let member = self.member {
-                            FlagViewController(type: .member, offendingItem: member).show()
+                            let controller = FlagViewController(type: .member, offendingItem: member)
+                            self.present(controller, animated: true)
                         }
                     }
                 }

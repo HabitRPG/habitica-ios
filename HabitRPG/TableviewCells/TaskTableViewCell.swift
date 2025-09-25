@@ -80,11 +80,11 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         if !task.isValid {
             return
         }
-        self.titleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
+        self.titleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 16, ofWeight: .semibold)
         self.titleLabel.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 2, right: 0)
         self.subtitleLabel.textContainerInset = UIEdgeInsets.zero
         if let text = task.text {
-            let mutableString = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString(baseSize: 15, textColor: ThemeService.shared.theme.primaryTextColor)
+            let mutableString = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString(baseSize: 16, baseWeight: .semibold, textColor: ThemeService.shared.theme.primaryTextColor)
             let strLength = mutableString?.string.count ?? 0
             let style = NSMutableParagraphStyle()
             style.lineSpacing = 2
@@ -94,8 +94,8 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         }
 
         if let trimmedNotes = task.notes?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedNotes.isEmpty == false {
-            self.subtitleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 11)
-            self.subtitleLabel.attributedText = try? Down(markdownString: trimmedNotes.unicodeEmoji).toHabiticaAttributedString(baseSize: 11, textColor: ThemeService.shared.theme.ternaryTextColor)
+            self.subtitleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
+            self.subtitleLabel.attributedText = try? Down(markdownString: trimmedNotes.unicodeEmoji).toHabiticaAttributedString(baseSize: 15, textColor: ThemeService.shared.theme.ternaryTextColor)
             self.subtitleLabel.isHidden = false
         } else {
             self.subtitleLabel.text = nil
@@ -210,17 +210,17 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         layoutContentStartEdge()
         layoutContentEndEdge()
         if let contentStartEdge = contentStartEdge, let contentEndEdge = contentEndEdge {
-            titleLabel.pin.top(10).start(to: contentStartEdge).marginStart(10).marginEnd(11).end(to: contentEndEdge).sizeToFit(.width)
+            titleLabel.pin.top(15).start(to: contentStartEdge).marginStart(10).marginEnd(11).end(to: contentEndEdge).sizeToFit(.width)
             if !subtitleLabel.text.isEmpty {
                 subtitleLabel.pin.below(of: lastView).marginTop(1).start(to: contentStartEdge).marginStart(10).marginEnd(11).end(to: contentEndEdge).sizeToFit(.width)
                 lastView = subtitleLabel
             }
             if !taskDetailLine.isHidden {
-                taskDetailLine.pin.below(of: lastView).marginTop(7).start(to: contentStartEdge).marginStart(12).marginEnd(12).end(to: contentEndEdge).height(taskDetailLine.detailLabel.font.lineHeight)
+                taskDetailLine.pin.below(of: lastView).marginTop(12).start(to: contentStartEdge).marginStart(12).marginEnd(12).end(to: contentEndEdge).height(taskDetailLine.detailLabel.font.lineHeight)
                 lastView = taskDetailLine
             }
         }
-        var height = lastView.frame.origin.y + lastView.frame.size.height + 10
+        var height = lastView.frame.origin.y + lastView.frame.size.height + 12
         if lastView == subtitleLabel {
             height += 7
         }
