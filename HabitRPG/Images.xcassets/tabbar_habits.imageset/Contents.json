@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Group 428.png",
+      "filename" : "icon_habits.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Group 428@2x.png",
+      "filename" : "icon_habits@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Group 428@3x.png",
+      "filename" : "icon_habits@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

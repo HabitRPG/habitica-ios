@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Group 429.png",
+      "filename" : "dailies_unselected.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Group 429@2x.png",
+      "filename" : "dailies_unselected@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Group 429@3x.png",
+      "filename" : "dailies_unselected@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
