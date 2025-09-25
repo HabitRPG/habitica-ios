@@ -8,7 +8,6 @@
 
 import Foundation
 import Amplitude
-import FirebaseAnalytics
 
 public class HabiticaAnalytics {
     public static let shared = HabiticaAnalytics()
@@ -19,7 +18,6 @@ public class HabiticaAnalytics {
         Amplitude.instance().initializeApiKey(Secrets.amplitudeApiKey)
         Amplitude.instance().setUserId(AuthenticationManager.shared.currentUserId)
         Amplitude.instance().optOut = true
-        Analytics.setAnalyticsCollectionEnabled(false)
     }
     
     public func setUserID(_ userID: String?) {
@@ -27,13 +25,12 @@ public class HabiticaAnalytics {
         if userID == nil {
             analyticsConsented = false
             Amplitude.instance().optOut = true
-            Analytics.setAnalyticsCollectionEnabled(false)
         }
     }
     
     public func setUserProperty(key: String, value: String?) {
         guard analyticsConsented else { return }
-        Analytics.setUserProperty(value, forName: key)
+        Amplitude.instance().setUserProperties([key: value ?? ""])
     }
     
     public func logNavigationEvent(_ pageName: String) {
@@ -49,13 +46,11 @@ public class HabiticaAnalytics {
     public func log(_ eventName: String, withEventProperties properties: [String: Any] = [:]) {
         guard analyticsConsented else { return }
         Amplitude.instance().logEvent(eventName, withEventProperties: properties)
-        Analytics.logEvent(eventName, parameters: properties)
     }
     
     public func resetAnalyticsOnLogout() {
         analyticsConsented = false
         Amplitude.instance().optOut = true
-        Analytics.setAnalyticsCollectionEnabled(false)
         Amplitude.instance().setUserId(nil)
     }
     
@@ -63,7 +58,6 @@ public class HabiticaAnalytics {
         analyticsConsented = consented
         let enable = consented == true
         Amplitude.instance().optOut = !enable
-        Analytics.setAnalyticsCollectionEnabled(enable)
         if enable {
             let userDefaults = UserDefaults.standard
             var properties: [String: Any] = [
