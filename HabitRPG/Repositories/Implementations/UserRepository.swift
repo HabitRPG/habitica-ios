@@ -223,8 +223,8 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
-    func login(userID: String, network: String, accessToken: String) -> Signal<LoginResponseProtocol?, Never> {
-        return SocialLoginCall(userID: userID, network: network, accessToken: accessToken).objectSignal.on(value: { loginResponse in
+    func login(userID: String, network: String, accessToken: String, allowRegister: Bool) -> Signal<LoginResponseProtocol?, Never> {
+        return SocialLoginCall(userID: userID, network: network, accessToken: accessToken, allowRegister: allowRegister).objectSignal.on(value: { loginResponse in
             if let response = loginResponse {
                 AuthenticationManager.shared.currentUserId = response.id
                 AuthenticationManager.shared.currentUserKey = response.apiToken
@@ -232,8 +232,8 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
-    func loginApple(identityToken: String, name: String) -> Signal<LoginResponseProtocol?, Never> {
-        return AppleLoginCall(identityToken: identityToken, name: name).objectSignal.on(value: { loginResponse in
+    func loginApple(identityToken: String, name: String, allowRegister: Bool) -> Signal<LoginResponseProtocol?, Never> {
+        return AppleLoginCall(identityToken: identityToken, name: name, allowRegister: allowRegister).objectSignal.on(value: { loginResponse in
             if let response = loginResponse {
                 AuthenticationManager.shared.currentUserId = response.id
                 AuthenticationManager.shared.currentUserKey = response.apiToken
@@ -264,7 +264,6 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         if let userID = currentUserId {
             AuthenticationManager.shared.clearAuthentication(userId: userID)
         }
-        HabiticaAnalytics.shared.resetAnalyticsOnLogout()
         deregisterPushDevice().observeCompleted {}
         let defaults = UserDefaults.standard
         let themeMode = defaults.string(forKey: "themeMode")
@@ -291,38 +290,6 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     func updateUsername(newUsername: String, password: String? = nil) -> Signal<UserProtocol, ReactiveSwiftRealmError> {
         let call = UpdateUsernameCall(username: newUsername, password: password)
         
-        call.serverErrorSignal.combineLatest(with: call.errorJsonSignal)
-            .observeValues { (error, json) in
-                if error.code == 400 {
-                    var errorMessage: String?
-                    
-                    if let usernameTaken = json["usernameTaken"] as? String {
-                        errorMessage = usernameTaken
-                    } else if let message = json["message"] as? String {
-                        errorMessage = message
-                    } else if let errors = json["errors"] as? [[String: Any]] {
-                        for jsonError in errors {
-                            if let message = jsonError["message"] as? String {
-                                errorMessage = message
-                                break
-                            }
-                        }
-                    }
-                    
-                    if let message = errorMessage {
-                        let lowercasedMessage = message.lowercased()
-                        if lowercasedMessage.contains("already taken") || 
-                           lowercasedMessage.contains("already in use") ||
-                           lowercasedMessage.contains("username is taken") ||
-                           lowercasedMessage.contains("username already") {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                ToastManager.show(text: L10n.Errors.usernameAlreadyTaken, color: .red)
-                            }
-                        }
-                    }
-                }
-            }
-        
         return call.objectSignal
             .filter({ (response) -> Bool in
                 return response != nil
@@ -344,16 +311,21 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return call.objectSignal
     }
     
+    func checkEmail(_ newEmail: String) -> Signal<CheckEmailResponse?, Never> {
+        let call = CheckEmailCall(email: newEmail)
+        return call.objectSignal
+    }
+    
     func updatePassword(newPassword: String, password: String, confirmPassword: String) -> Signal<LoginResponseProtocol?, Never> {
             let call = UpdatePasswordCall(newPassword: newPassword, oldPassword: password, confirmPassword: confirmPassword)
             
             return call.objectSignal
                 .on(value: { loginResponse in
                 if let response = loginResponse {
-                    if !response.id.isEmpty {
+                    if response.id?.isEmpty == false {
                         AuthenticationManager.shared.currentUserId = response.id
                     }
-                    if !response.apiToken.isEmpty {
+                    if response.apiToken?.isEmpty == false {
                         AuthenticationManager.shared.currentUserKey = response.apiToken
                         ToastManager.show(
                                             text:  L10n.Settings.updatedPassword,

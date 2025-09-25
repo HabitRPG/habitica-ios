@@ -154,7 +154,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
                 if let drop = response.temp?.drop {
                     dropMessage = drop.dialog ?? "You found a \(drop.key ?? "")"
                 }
-                if let questItemsFound = response.temp?.quest?.collection, questItemsFound > 0 {
+                if TaskRepository.currentUserQuestStatus == .questCollect, let questItemsFound = response.temp?.quest?.collection, questItemsFound > 0 {
                     let questItemsText = questItemsFound == 1 ? L10n.oneQuestItemFound : L10n.questItemsFound(questItemsFound)
                     if !dropMessage.isEmpty {
                         dropMessage += "\n"
