@@ -284,6 +284,7 @@
 		2990EAE32AB9FB7900916A67 /* FeedSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990EAE22AB9FB7900916A67 /* FeedSheetView.swift */; };
 		299328A924E57858003BCE0C /* FAQDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299328A824E57858003BCE0C /* FAQDetailViewController.swift */; };
 		299328AB24E5985B003BCE0C /* UIStackview-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299328AA24E5985B003BCE0C /* UIStackview-Extensions.swift */; };
+		299336F12E8BE37600ADB6BA /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299336F02E8BE37300ADB6BA /* Identifiable.swift */; };
 		2994A8AE28FE945E00CEDED7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; };
 		2994A8AF28FE945F00CEDED7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; };
 		2994A8B028FE946800CEDED7 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; };
@@ -466,6 +467,7 @@
 		29F177FB2AB85D66008B8F0C /* StableBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F177FA2AB85D66008B8F0C /* StableBackgroundView.swift */; };
 		29F177FD2AB89AA4008B8F0C /* MountBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F177FC2AB89AA4008B8F0C /* MountBottomSheetView.swift */; };
 		29F272A62A404F8600F3B50F /* SendPartyInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F272A52A404F8600F3B50F /* SendPartyInviteViewController.swift */; };
+		29F4671C2E8A9DC1009643C5 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F4671B2E8A9DBE009643C5 /* ViewModel.swift */; };
 		29F808922770B0D900BAF854 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F808912770B0D900BAF854 /* Secrets.swift */; };
 		29F89F1A1F47882A004E5B84 /* String-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89F191F47882A004E5B84 /* String-Extensions.swift */; };
 		29F9761822DDFDA50079B945 /* AchievementHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F9761722DDFDA50079B945 /* AchievementHeaderReusableView.swift */; };
@@ -997,6 +999,7 @@
 		2990EAE22AB9FB7900916A67 /* FeedSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSheetView.swift; sourceTree = "<group>"; };
 		299328A824E57858003BCE0C /* FAQDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQDetailViewController.swift; sourceTree = "<group>"; };
 		299328AA24E5985B003BCE0C /* UIStackview-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackview-Extensions.swift"; sourceTree = "<group>"; };
+		299336F02E8BE37300ADB6BA /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		29951A1D2326670500918FC8 /* InboxOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InboxOverviewViewController.swift; path = HabitRPG/UI/Social/InboxOverviewViewController.swift; sourceTree = SOURCE_ROOT; };
 		29951A1F232669C500918FC8 /* InboxChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxChatViewController.swift; sourceTree = "<group>"; };
 		29951A212327E94F00918FC8 /* ThemedNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedNavigationController.swift; sourceTree = "<group>"; };
@@ -1180,6 +1183,7 @@
 		29F177FA2AB85D66008B8F0C /* StableBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableBackgroundView.swift; sourceTree = "<group>"; };
 		29F177FC2AB89AA4008B8F0C /* MountBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountBottomSheetView.swift; sourceTree = "<group>"; };
 		29F272A52A404F8600F3B50F /* SendPartyInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPartyInviteViewController.swift; sourceTree = "<group>"; };
+		29F4671B2E8A9DBE009643C5 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		29F808912770B0D900BAF854 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		29F89F191F47882A004E5B84 /* String-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Extensions.swift"; sourceTree = "<group>"; };
 		29F9761722DDFDA50079B945 /* AchievementHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementHeaderReusableView.swift; sourceTree = "<group>"; };
@@ -2014,6 +2018,16 @@
 			path = Stable;
 			sourceTree = "<group>";
 		};
+		29F4671A2E8A9DA3009643C5 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				29F4671B2E8A9DBE009643C5 /* ViewModel.swift */,
+				49A4646A1FCD18FD00E14A5D /* HRPGButtonViewModel.swift */,
+				49EE3FD7201908AB00CD7608 /* ChallengeButtonStyleProvider.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
 		29FC5A6320402EE2008E88C8 /* Theme Engine */ = {
 			isa = PBXGroup;
 			children = (
@@ -2068,8 +2082,6 @@
 		493ECBC91F4DD7DD0099B1FC /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				49A4646A1FCD18FD00E14A5D /* HRPGButtonViewModel.swift */,
-				49EE3FD7201908AB00CD7608 /* ChallengeButtonStyleProvider.swift */,
 			);
 			name = "View Models";
 			sourceTree = "<group>";
@@ -2282,6 +2294,7 @@
 		D95704371E106BF3004F6804 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				299336F02E8BE37300ADB6BA /* Identifiable.swift */,
 				29E96B522E16929C00D9EF25 /* Font-Extensions.swift */,
 				29737EEE2D38054C00480353 /* NSRange-Extensions.swift */,
 				29D50AD025F769520009CF55 /* Alignment-Extensions.swift */,
@@ -2773,6 +2786,7 @@
 				D95704371E106BF3004F6804 /* Extensions */,
 				D9A63A311E1031FD0083ADC4 /* UI */,
 				D9B5C0EB18D6321400C8D1B7 /* Models */,
+				29F4671A2E8A9DA3009643C5 /* View Models */,
 				D93D796C1D2BC73200AFE014 /* DataSources */,
 				D92CDAE118CB83C40006C242 /* TableViewController */,
 				D9C2570D1B9B4BFB00839F48 /* Cells */,
@@ -3477,6 +3491,7 @@
 				29084B3326CF97F500AD9966 /* ShopViewController.swift in Sources */,
 				498E4CFF1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.swift in Sources */,
 				2909D4242722C22500FF2B29 /* InitialScreens.swift in Sources */,
+				29F4671C2E8A9DC1009643C5 /* ViewModel.swift in Sources */,
 				297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */,
 				2914485B2084E61400F3A6B5 /* MountOverviewDataSource.swift in Sources */,
 				2988EFC528D3583E00D703BC /* Measurements.swift in Sources */,
@@ -3815,6 +3830,7 @@
 				493ECBB71F47D7E10099B1FC /* HRPGGearSetItem.swift in Sources */,
 				29A4FE6326A9B3DB00F0FE30 /* HabitProgressView.swift in Sources */,
 				29066CFF24FFA20B00A266EE /* Date-Extensions.swift in Sources */,
+				299336F12E8BE37600ADB6BA /* Identifiable.swift in Sources */,
 				49DCB7AC1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift in Sources */,
 				29DC5AC920A1F6C100993400 /* QuestParticipantView.swift in Sources */,
 				2902796C2057F2C5006DACB9 /* Assets-Images.swift in Sources */,

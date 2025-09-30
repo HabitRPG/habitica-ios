@@ -15,19 +15,13 @@ class AchievementCell: UICollectionViewCell {
     var isGridLayout = false {
         didSet {
             if isGridLayout && isRegularAchievement {
-                titleLabel.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
                 titleLabel.textAlignment = .center
-                titleLabel.numberOfLines = 3
                 descriptionlabel.isHidden = true
-                contentBackgroundView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-                contentBackgroundView.isHidden = false
             } else {
-                titleLabel.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                 titleLabel.textAlignment = .natural
-                titleLabel.numberOfLines = 3
                 descriptionlabel.isHidden = false
-                contentBackgroundView.isHidden = true
             }
+            contentBackgroundView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         }
     }
     
@@ -35,14 +29,13 @@ class AchievementCell: UICollectionViewCell {
     
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14, ofWeight: .medium)
-        label.cornerRadius = 6
-        label.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
+        label.numberOfLines = 3
         return label
     }()
     private var descriptionlabel: UILabel = {
         let label = UILabel()
-        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 13)
         label.numberOfLines = 0
         return label
     }()
@@ -85,8 +78,9 @@ class AchievementCell: UICollectionViewCell {
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
             var newFrame = layoutAttributes.frame
             if isGridLayout && isRegularAchievement {
-                newFrame.size.width = 156
-                newFrame.size.height = 106
+                let availableWidth = ((superview?.frame.size.width ?? 300) - 32)
+                newFrame.size.width = layoutAttributes.frame.width
+                newFrame.size.height = 130
             } else {
                 let totalWidth = superview?.frame.size.width ?? 100
                 newFrame.size.width = totalWidth
@@ -104,18 +98,19 @@ class AchievementCell: UICollectionViewCell {
     
     private func layout() {
         if isGridLayout && isRegularAchievement {
-            iconView.pin.start(4).top(4).end(4).height(66)
-            titleLabel.pin.start(4).below(of: iconView).bottom().end(4)
+            iconView.pin.start(4).top(20).end(4).height(66)
+            titleLabel.pin.start(12).below(of: iconView).bottom().end(12)
             countBadge.pin.start().top().sizeToFit()
             contentBackgroundView.pin.top(to: iconView.edge.top).start(4).end(4).bottom(to: titleLabel.edge.bottom)
         } else {
-            iconView.pin.start(16).width(48).height(52).vCenter()
+            iconView.pin.start(20).width(48).height(52).vCenter()
             countBadge.pin.start(12).top(to: iconView.edge.top).marginTop(-4).sizeToFit()
             titleLabel.pin.after(of: iconView).marginStart(16).end(16).sizeToFit(.width)
             descriptionlabel.pin.after(of: iconView).marginStart(16).below(of: titleLabel).marginTop(4).end(16).sizeToFit(.width)
             let offset = (frame.size.height - (titleLabel.frame.size.height + descriptionlabel.frame.size.height)) / 2
             titleLabel.pin.top(offset)
             descriptionlabel.pin.below(of: titleLabel)
+            contentBackgroundView.pin.top(to: titleLabel.edge.top).start(4).end(4).bottom(to: descriptionlabel.edge.bottom)
         }
         if !isRegularAchievement {
             countBadge.pin.size(40).start(20).vCenter()
@@ -124,14 +119,14 @@ class AchievementCell: UICollectionViewCell {
     
     func heightForWidth(_ width: CGFloat) -> CGFloat {
         if isGridLayout && isRegularAchievement {
-            return 106
+            return 130
         } else {
             var height = titleLabel.sizeThatFits(CGSize(width: width - 84, height: 200)).height
             height += descriptionlabel.sizeThatFits(CGSize(width: width - 84, height: 200)).height
             if !isRegularAchievement {
-                return max(height + 16, 60)
+                return max(height + 32, 60)
             } else {
-                return max(height + 16, 80)
+                return max(height + 32, 80)
             }
         }
     }

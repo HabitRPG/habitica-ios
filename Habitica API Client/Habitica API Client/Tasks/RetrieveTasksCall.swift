@@ -16,12 +16,10 @@ public class RetrieveTasksCall: ResponseArrayCall<TaskProtocol, APITask> {
         if let date = dueOnDay {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-            formatter.locale = Locale(identifier: "en_US_POSIX")
-            formatter.timeZone = TimeZone.current
             var dateString = formatter.string(from: date)
             let regex = try? NSRegularExpression(pattern: "T([0-9]):", options: .caseInsensitive)
             dateString = regex?.stringByReplacingMatches(in: dateString, options: [], range: NSRange(location: 0, length: dateString.count), withTemplate: "T0$1:") ?? ""
-            let encodedDateString = dateString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? dateString
+            let encodedDateString = (dateString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? dateString).replacingOccurrences(of: "+", with: "%2B")
             url = "\(url)?type=dailys&dueDate=\(encodedDateString)"
         }
         if let type = type {

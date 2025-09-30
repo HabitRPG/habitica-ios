@@ -94,12 +94,17 @@ class LoginViewModel: ObservableObject {
                         }
                     }
                     self?.userRepository.login(userID: "", network: "google", accessToken: self?.socialLoginAccessToken ?? "", allowRegister: false)
-                        .observeValues { response in
-                            if response?.newUser == true {
-                                self?.prefillUsername()
-                                self?.showUsernameView = true
-                            } else {
-                                self?.onSuccessfulLogin(false)
+                        .observeResult {[weak self] (result) in
+                            switch result {
+                            case .success(let response):
+                                if response?.newUser == true {
+                                    self?.prefillUsername()
+                                    self?.showUsernameView = true
+                                } else {
+                                    self?.onSuccessfulLogin(false)
+                                }
+                            case .failure:
+                                self?.viewController?.showError(L10n.Login.authenticationError)
                             }
                         }
                 }
@@ -216,7 +221,7 @@ class LoginViewModel: ObservableObject {
     
     func completeRegistration() {
         self.showLoadingIndicator = true
-        let responseSignal: Signal<LoginResponseProtocol?, Never>
+        var responseSignal: Signal<LoginResponseProtocol?, Never>
         if socialLoginMethod == "apple" {
             responseSignal = userRepository.loginApple(identityToken: socialLoginAccessToken ?? "", name: "", allowRegister: true)
         } else if socialLoginMethod == "google" {
@@ -224,23 +229,27 @@ class LoginViewModel: ObservableObject {
         } else {
             responseSignal = userRepository.register(username: username, password: password, confirmPassword: password, email: email)
         }
+        if socialLoginMethod != nil {
+            responseSignal = responseSignal.flatMap(.latest, { response in
+                if response?.id?.isEmpty != false {
+                    return Signal<LoginResponseProtocol?, Never>.empty
+                }
+                return self.userRepository.updateUsername(newUsername: self.username)
+                    .flatMap(.latest, { _ in
+                        self.userRepository.updateUser(key: "profile.name", value: self.username)
+                    })
+                    .map { _ in
+                        return response
+                    }
+            })
+        }
         responseSignal.observeResult { result in
                 switch result {
                 case .success(let response):
                     if response == nil {
                         return
                     }
-                    if self.socialLoginMethod != nil {
-                        self.userRepository.updateUsername(newUsername: self.username)
-                            .flatMap(.latest, { _ in
-                                self.userRepository.updateUser(key: "profile.name", value: self.username)
-                            })
-                            .on(value: { _ in
-                                self.onSuccessfulLogin(response?.newUser ?? true)
-                            }).observeCompleted {}
-                    } else {
-                        self.onSuccessfulLogin(response?.newUser ?? true)
-                    }
+                    self.onSuccessfulLogin(response?.newUser ?? true)
                 case .failure:
                     self.showLoadingIndicator = false
                     self.viewController?.showError(L10n.Login.authenticationError)

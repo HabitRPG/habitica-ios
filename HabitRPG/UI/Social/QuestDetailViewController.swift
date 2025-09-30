@@ -154,7 +154,7 @@ class QuestDetailViewController: BaseUIViewController {
             questTypeHeader.text = L10n.Quests.collectionQuest
             questBossView.isHidden = true
         }
-        headerView.imageView.setImagewith(name: "inventory_quest_scroll_\(quest.key ?? "")")
+        headerView.imageView.setImagewith(name: quest.imageName)
         headerView.titleLabel.text = quest.text
     }
     

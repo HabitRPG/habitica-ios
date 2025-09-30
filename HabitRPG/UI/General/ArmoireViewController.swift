@@ -63,7 +63,7 @@ private struct ArmoirePlus: View {
                 .cornerRadius(thickness/2)
                 .offset(x: 0, y: isAnimating ? maxSpacing : 0)
         }
-        .animation(.easeInOut(duration: Double.random(in: 3...4)).repeatForever(autoreverses: true))
+        .animation(.easeInOut(duration: Double.random(in: 3...4)).repeatForever(autoreverses: true), value: isAnimating)
         .onAppear {
             withAnimation {
                 isAnimating = true
@@ -72,8 +72,7 @@ private struct ArmoirePlus: View {
     }
 }
 
-private class ViewModel: ObservableObject {
-    private let disposable = ScopedDisposable(CompositeDisposable())
+private class ArmoireViewModel: ViewModel {
     let userRepository = UserRepository()
     let inventoryRepository = InventoryRepository()
     
@@ -94,12 +93,12 @@ private class ViewModel: ObservableObject {
     
     init(gold: Double? = nil) {
         enableSubBenefit = ConfigRepository.shared.bool(variable: .enableArmoireSubs)
-
+        super.init()
         if let gold = gold {
             self.gold = gold
             self.initialGold = gold
         } else {
-            disposable.inner.add(userRepository.getUser().on(value: { user in
+            disposable.add(userRepository.getUser().on(value: { user in
                 self.isSubscribed = user.isSubscribed
                 if self.gold == 0 {
                     self.initialGold = Double(user.stats?.gold ?? 0) + 100
@@ -107,7 +106,7 @@ private class ViewModel: ObservableObject {
                 }
             }).start())
             
-            disposable.inner.add(inventoryRepository.getArmoireRemainingCount().on(value: {gear in
+            disposable.add(inventoryRepository.getArmoireRemainingCount().on(value: {gear in
                 self.remainingCount = gear.value.count
             }).start())
         }
@@ -202,7 +201,7 @@ private class ViewModel: ObservableObject {
 
 struct ArmoireView: View {
     var onDismiss: (() -> Void) = {}
-    @ObservedObject fileprivate var viewModel: ViewModel
+    @ObservedObject fileprivate var viewModel: ArmoireViewModel
     
     @State var isBobbing = false
     @State var confettiCounter = 0
@@ -351,6 +350,7 @@ struct ArmoireView: View {
                             .foregroundColor(.white)
                             .font(.system(size: 15, weight: .semibold))
                             .multilineTextAlignment(.center)
+                            .fixedSize(horizontal: false, vertical: true)
                             .padding(.horizontal, 36)
                     }
                     Text(L10n.Armoire.dropRate)
@@ -447,7 +447,7 @@ struct ArmoireView: View {
 }
 
 class ArmoireViewController: UIHostingController<ArmoireView> {
-    fileprivate let viewModel = ViewModel()
+    fileprivate let viewModel = ArmoireViewModel()
     
     init() {
         super.init(rootView: ArmoireView(viewModel: viewModel))
@@ -494,8 +494,8 @@ class ArmoireViewController: UIHostingController<ArmoireView> {
 
 struct ArmoireView_Previews: PreviewProvider {
     
-    private static func makeViewModel(type: String, isSubscribed: Bool) -> ViewModel {
-        let model = ViewModel(gold: 5000)
+    private static func makeViewModel(type: String, isSubscribed: Bool) -> ArmoireViewModel {
+        let model = ArmoireViewModel(gold: 5000)
         model.type = type
         model.text = "Meat"
         model.key = "Meat"

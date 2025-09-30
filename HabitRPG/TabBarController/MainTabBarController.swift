@@ -143,7 +143,7 @@ class MainTabBarController: UITabBarController {
             }
             
             if user.preferences?.analyticsConsentGiven == false {
-                if self?.presentedPrivacyPreferencesAt == nil || Date().timeIntervalSince(self?.presentedPrivacyPreferencesAt ?? Date()) > 60 {
+                if self?.presentedPrivacyPreferencesAt == nil {
                     self?.presentedPrivacyPreferencesAt = Date()
                     let controller = UIHostingController(rootView: PrivacyPreferencesScreenView())
                     controller.modalPresentationStyle = .fullScreen

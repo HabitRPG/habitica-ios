@@ -26,7 +26,7 @@ struct PixelArtView: View {
     
     var body: some View {
         KFAnimatedImage(source: source)
-            
+            .aspectRatio(contentMode: .fit)
     }
     
     private var scale: CGFloat {

@@ -73,15 +73,16 @@ struct HabiticaButtonUI<Label: View>: View {
     }
 }
 
-private class ViewModel: ObservableObject {
+private class FaintViewModel: ViewModel {
     let userRepository = UserRepository()
     @Published var lossText: LocalizedStringKey = ""
     @Published var enableSubBenefit = false
     @Published var isSubscribed = false
     @Published var nextPerkUsage: Date?
     
-    init() {
+    override init() {
         enableSubBenefit = ConfigRepository.shared.bool(variable: .enableFaintSubs)
+        super.init()
         if enableSubBenefit {
             let defaults = UserDefaults()
             let lastUsage = defaults.value(forKey: "lastFaintSubBenefit")
@@ -179,7 +180,7 @@ struct FaintView: View {
         self.onDismiss = {}
     }
     
-    fileprivate init(viewModel: ViewModel) {
+    fileprivate init(viewModel: FaintViewModel) {
         self.init()
         self.viewModel = viewModel
     }
@@ -187,7 +188,7 @@ struct FaintView: View {
     @State var appear = false
     @State var isReviving = false
     @State var isUsingPerk = false
-    @ObservedObject fileprivate var viewModel = ViewModel()
+    @ObservedObject fileprivate var viewModel = FaintViewModel()
     private let positions = (0..<6).map { _ in Int.random(in: 5...50) }
     
     var body: some View {
@@ -349,11 +350,7 @@ class FaintViewController: UIHostingController<FaintView> {
         
         SoundManager.shared.play(effect: .death)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
+
     private func dismiss() {
         UIView.animate(withDuration: 0.8, animations: {
             self.view.alpha = 0
@@ -386,21 +383,21 @@ class FaintViewController: UIHostingController<FaintView> {
 }
 
 struct FaintViewPreview: PreviewProvider {
-    private static var unsubbedViewModel: ViewModel = {
-        let unsubbedViewModel = ViewModel()
+    private static var unsubbedViewModel: FaintViewModel = {
+        let unsubbedViewModel = FaintViewModel()
         unsubbedViewModel.enableSubBenefit = true
         return unsubbedViewModel
     }()
     
-    private static var subbedViewModel: ViewModel = {
-        let subbedViewModel = ViewModel()
+    private static var subbedViewModel: FaintViewModel = {
+        let subbedViewModel = FaintViewModel()
         subbedViewModel.enableSubBenefit = true
         subbedViewModel.isSubscribed = true
         return subbedViewModel
     }()
     
-    private static var subbedUsedViewModel: ViewModel = {
-        let subbedViewModel = ViewModel()
+    private static var subbedUsedViewModel: FaintViewModel = {
+        let subbedViewModel = FaintViewModel()
         subbedViewModel.enableSubBenefit = true
         subbedViewModel.isSubscribed = true
         subbedViewModel.nextPerkUsage = Calendar.current.date(byAdding: .day, value: 1, to: Date())
