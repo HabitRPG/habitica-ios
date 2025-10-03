@@ -89,6 +89,8 @@ struct StatsWidgetView: View {
 }
 
 struct ValueBar: View {
+    @Environment(\.widgetRenderingMode) var renderingMode
+    
     var title: String
     var value: Float
     var maxValue: Float
@@ -98,9 +100,9 @@ struct ValueBar: View {
     
     var thickness: CGFloat {
         if showLabels {
-            return 8
-        } else {
             return 10
+        } else {
+            return 12
         }
     }
     
@@ -110,8 +112,12 @@ struct ValueBar: View {
             VStack(alignment: .center, spacing: 0, content: {
                 GeometryReader { metrics in
                     ZStack(alignment: .leading, content: {
-                        Rectangle().fill(Color.progressBackground).frame(width: metrics.size.width, height: thickness, alignment: .leading).cornerRadius(4)
-                        Rectangle().fill(color).frame(width: metrics.size.width * CGFloat(value / maxValue), height: thickness, alignment: .leading).cornerRadius(4)
+                        Rectangle().fill(Color.progressBackground).frame(width: metrics.size.width, height: thickness, alignment: .leading)
+                            .cornerRadius(thickness / 2)
+                            .opacity(renderingMode == .fullColor ? 1 : 0.2)
+                        Rectangle().fill(color).frame(width: metrics.size.width * CGFloat(value / maxValue), height: thickness, alignment: .leading)
+                            .cornerRadius(thickness / 2)
+                            .widgetAccentable()
                     })
                 }.frame(height: thickness, alignment: .center)
                     .frame(maxWidth: .infinity, alignment: .center)

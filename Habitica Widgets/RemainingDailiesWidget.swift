@@ -63,11 +63,7 @@ struct DailiesCountWidgetView: View {
     var entry: DailiesCountProvider.Entry
 
     private var isLockscreenWidget: Bool {
-        if #available(iOSApplicationExtension 16.0, *) {
-            return entry.widgetFamily == .accessoryInline || entry.widgetFamily == .accessoryCircular
-        } else {
-            return false
-        }
+        return entry.widgetFamily == .accessoryInline || entry.widgetFamily == .accessoryCircular
     }
     
     private var inlineLockScreenContent: some View {
@@ -85,37 +81,35 @@ struct DailiesCountWidgetView: View {
     
     var body: some View {
             if isLockscreenWidget {
-                if #available(iOSApplicationExtension 16.0, *) {
-                    if entry.widgetFamily == .accessoryInline {
-                        Label {
-                            inlineLockScreenContent
-                        } icon: {
-                            Image("gryphon").resizable()
+                if entry.widgetFamily == .accessoryInline {
+                    Label {
+                        inlineLockScreenContent
+                    } icon: {
+                        Image("gryphon").resizable()
+                    }
+                } else {
+                    if entry.needsCron {
+                        VStack(spacing: 2) {
+                            Image("StartDayIcon").resizable().frame(width: 12, height: 12)
+                            Text("Start day").font(.caption)
                         }
+                        .padding(.bottom, 2)
+                        .foregroundColor(Color.widgetText)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .multilineTextAlignment(.center).background(Color.widgetBackground)
+                        
+                    } else if entry.completedCount == entry.totalCount {
+                        Gauge(value: Float(entry.completedCount) / Float(entry.totalCount)) {
+                            Image("Sparkles").resizable().frame(width: 16, height: 16)
+                        } currentValueLabel: {
+                            Text("\(entry.completedCount) / \(entry.totalCount)")
+                        }.gaugeStyle(.accessoryCircular)
                     } else {
-                        if entry.needsCron {
-                            VStack(spacing: 2) {
-                                Image("StartDayIcon").resizable().frame(width: 12, height: 12)
-                                Text("Start day").font(.caption)
-                            }
-                            .padding(.bottom, 2)
-                            .foregroundColor(Color.widgetText)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .multilineTextAlignment(.center).background(Color.widgetBackground)
-                            
-                        } else if entry.completedCount == entry.totalCount {
-                            Gauge(value: Float(entry.completedCount) / Float(entry.totalCount)) {
-                                Image("Sparkles").resizable().frame(width: 16, height: 16)
-                            } currentValueLabel: {
-                                Text("\(entry.completedCount) / \(entry.totalCount)")
-                            }.gaugeStyle(.accessoryCircular)
-                        } else {
-                            Gauge(value: Float(entry.completedCount) / Float(entry.totalCount)) {
-                                Image("gryphon")
-                            } currentValueLabel: {
-                                Text("\(entry.completedCount) / \(entry.totalCount)")
-                            }.gaugeStyle(.accessoryCircular)
-                        }
+                        Gauge(value: Float(entry.completedCount) / Float(entry.totalCount)) {
+                            Image("gryphon")
+                        } currentValueLabel: {
+                            Text("\(entry.completedCount) / \(entry.totalCount)")
+                        }.gaugeStyle(.accessoryCircular)
                     }
                 }
             } else {
@@ -137,6 +131,9 @@ struct DailiesCountWidgetView: View {
 }
 
 struct CountView: View {
+    @Environment(\.widgetRenderingMode)
+    var renderingMode
+
     var completedCount: Int
     var totalCount: Int
     var displayCount: Int
@@ -159,14 +156,16 @@ struct CountView: View {
                 ZStack(alignment: .leading) {
                     Rectangle()
                         .foregroundColor(Color.progressBackground)
-                        .frame(width: width, height: 7.0)
+                        .opacity(renderingMode == .fullColor ? 1 : 0.2)
+                        .frame(width: width, height: 12.0)
                     Rectangle()
                         .foregroundColor(barColor)
-                        .frame(width: width * (CGFloat(completedCount) / CGFloat(totalCount)), height: 7.0)
+                        .frame(width: width * (CGFloat(completedCount) / CGFloat(totalCount)), height: 12.0)
                     
                 }
-                .cornerRadius(4.0)
-            }.padding(.top, 12)
+                .cornerRadius(6.0)
+            }.padding(.top, 10)
+                .frame(height: 12)
             Text(displayRemaining ? "\(completedCount) done" : "\(totalCount - completedCount) left to do").font(Font.system(size: 12)).padding(.top, 4).foregroundColor(.widgetTextSecondary)
         }
     }
@@ -177,7 +176,7 @@ struct CompletedView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Spacer()
-            HStack() {
+            HStack {
                 Text(String(totalCount)).font(Font.system(size: 50, weight: .semibold)).foregroundColor(Color.dailiesWidgetPurple)
                 Image("Sparkles").padding(.leading, 1)
             }
@@ -187,11 +186,12 @@ struct CompletedView: View {
                 ZStack(alignment: .leading) {
                     Rectangle()
                         .foregroundColor(Color.barPurple)
-                        .frame(width: width, height: 7.0)
+                        .frame(width: width, height: 12.0)
                     
                 }
-                .cornerRadius(4.0)
+                .cornerRadius(6.0)
             }.padding(.top, 12)
+                .frame(height: 12)
             Text("All done today!").font(Font.system(size: 12)).padding(.top, 4).foregroundColor(.widgetTextSecondary)
         }
     }
@@ -206,7 +206,6 @@ struct StartDayView: View {
         }
     }
 }
-
 
 struct DailiesCountWidget: Widget {
     let kind: String = "DailiesCountWidget"

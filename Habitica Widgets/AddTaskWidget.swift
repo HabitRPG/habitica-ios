@@ -56,6 +56,8 @@ struct AddTaskEntry: TimelineEntry {
 }
 
 struct AddTaskWidgetView: View {
+    @Environment(\.widgetRenderingMode) var renderingMode
+
     var entry: AddTaskProvider.Entry
     
     var taskIdentifier: String? {
@@ -102,27 +104,32 @@ struct AddTaskWidgetView: View {
                         .widgetBackground(taskColor(taskType: .none))
                 }
             } else {
+                let bgOpacity = renderingMode == .fullColor ? 1 : 0.2
                 VStack(alignment: .center) {
                     if let habitURL = URL(string: "/user/tasks/habit/add") {
                         Link(destination: habitURL, label: {
-                            AddView(taskType: .habit, showLabel: entry.showLabels).background(taskColor(taskType: .habit)).cornerRadius(16).padding(.bottom, 4)
+                            AddView(taskType: .habit, showLabel: entry.showLabels)
+                                .background(taskColor(taskType: .habit).opacity(bgOpacity)).cornerRadius(40).padding(.bottom, 4)
                         })
                     }
                     if let todoURL = URL(string: "/user/tasks/todo/add") {
                         Link(destination: todoURL, label: {
-                            AddView(taskType: .todo, showLabel: entry.showLabels).background(taskColor(taskType: .todo)).cornerRadius(16).padding(.top, 4)
+                            AddView(taskType: .todo, showLabel: entry.showLabels)
+                                .background(taskColor(taskType: .todo).opacity(bgOpacity)).cornerRadius(40).padding(.top, 4)
                         })
                     }
                 }
                 VStack(alignment: .center) {
                     if let dailyURL = URL(string: "/user/tasks/daily/add") {
                         Link(destination: dailyURL, label: {
-                            AddView(taskType: .daily, showLabel: entry.showLabels).background(taskColor(taskType: .daily)).cornerRadius(16).padding(.bottom, 4)
+                            AddView(taskType: .daily, showLabel: entry.showLabels)
+                                .background(taskColor(taskType: .daily).opacity(bgOpacity)).cornerRadius(40).padding(.bottom, 4)
                         })
                     }
                     if let rewardURL = URL(string: "/user/tasks/reward/add") {
                         Link(destination: rewardURL, label: {
-                            AddView(taskType: .reward, showLabel: entry.showLabels).background(taskColor(taskType: .reward)).cornerRadius(16).padding(.top, 4)
+                            AddView(taskType: .reward, showLabel: entry.showLabels)
+                                .background(taskColor(taskType: .reward).opacity(bgOpacity)).cornerRadius(40).padding(.top, 4)
                         })
                     }
                 }
