@@ -116,9 +116,7 @@ class BuySheetViewModel: ObservableObject {
     }
     
     func dismiss() {
-        if let action = dismisser.dismiss {
-            action()
-        }
+        dismisser.dismiss()
     }
     
     func pinItem() {

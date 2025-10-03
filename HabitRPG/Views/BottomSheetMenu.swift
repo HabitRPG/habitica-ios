@@ -11,7 +11,17 @@ import SwiftUI
 import Kingfisher
 
 class Dismisser: ObservableObject {
-    var dismiss: (() -> Void)?
+    var dismissAction: (() -> Void)?
+    var onDismiss: (() -> Void)?
+    
+    func dismiss() {
+        if let action = onDismiss {
+            action()
+        }
+        if let action = dismissAction {
+            action()
+        }
+    }
 }
 
 struct BottomSheetMenuitem<Title: View>: View {
@@ -37,7 +47,7 @@ struct BottomSheetMenuitem<Title: View>: View {
         HabiticaButtonUI(label: title,
                          color: style == .normal ? Color(ThemeService.shared.theme.fixedTintColor) : style == .destructive ? Color(UIColor.red100) : .windowBackgroundColor,
                          size: .small) {
-            dismisser.dismiss?()
+            dismisser.dismiss()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 onTap()
             }

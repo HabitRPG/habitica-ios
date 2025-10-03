@@ -100,21 +100,19 @@ class UserManager: NSObject {
             return
         }
         
-        let viewController = YesterdailiesDialogView()
-        viewController.tasks = tasks
-        let alert = HabiticaAlertController()
-        alert.title = L10n.welcomeBack
-        alert.message = L10n.checkinYesterdaysDalies
-        alert.contentView = viewController.view
-        alert.contentViewInsets = .zero
-        alert.dismissOnBackgroundTap = false
-        alert.maxAlertWidth = 400
-        alert.addAction(title: L10n.startMyDay, style: .default, isMainAction: true, closeOnTap: true) {[weak self] _ in
-            viewController.runCron()
-            self?.yesterdailiesDialog = nil
+        let sheet = HostingBottomSheetController(rootView: RYABottomSheet(tasks: tasks, onCronRun: {
+            self.yesterdailiesDialog = nil
+        }), prefersGrabberVisible: false, interactiveDismiss: false)
+        if var topController = UIApplication.topViewController() {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            while let parent = topController.parent {
+                topController = parent
+            }
+            topController.present(sheet, animated: true) {
+            }
         }
-        yesterdailiesDialog = viewController
-        alert.enqueue()
     }
     
     private func updateQuestStatus(user: UserProtocol?) {

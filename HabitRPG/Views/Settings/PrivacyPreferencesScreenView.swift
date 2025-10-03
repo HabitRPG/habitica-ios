@@ -46,9 +46,7 @@ struct PrivacyPreferencesScreenView: View, Dismissable {
                                        disabled: true)
                 Button {
                     userRepository.updateUser(key: "preferences.analyticsConsent", value: analyticsConsent).observeCompleted {
-                        if let dismiss = dismisser.dismiss {
-                            dismiss()
-                        }
+                        dismisser.dismiss()
                     }
                 } label: {
                     Text(L10n.savePreferences)
@@ -63,9 +61,7 @@ struct PrivacyPreferencesScreenView: View, Dismissable {
                 Button {
                     analyticsConsent = true
                     userRepository.updateUser(key: "preferences.analyticsConsent", value: analyticsConsent).observeCompleted {
-                        if let dismiss = dismisser.dismiss {
-                            dismiss()
-                        }
+                        dismisser.dismiss()
                     }
                 } label: {
                     Text(L10n.acceptAll)

@@ -19,12 +19,13 @@ class HostingBottomSheetController<ContentView: View>: UIHostingController<Conte
     private let allowLargeDetent: Bool
     private let prefersGrabberVisible: Bool
         
-    init(rootView: ContentView, allowLargeDetent: Bool = false, prefersGrabberVisible: Bool = true) {
+    init(rootView: ContentView, allowLargeDetent: Bool = false, prefersGrabberVisible: Bool = true, interactiveDismiss: Bool = true) {
         self.allowLargeDetent = allowLargeDetent
         self.prefersGrabberVisible = prefersGrabberVisible
         super.init(rootView: rootView)
+        isModalInPresentation = !interactiveDismiss
         if let root = rootView as? Dismissable {
-            root.dismisser.dismiss = {
+            root.dismisser.dismissAction = {
                 self.dismiss(animated: true)
             }
         }
@@ -50,7 +51,15 @@ class HostingBottomSheetController<ContentView: View>: UIHostingController<Conte
             if allowLargeDetent {
                 sheetController.detents.append(.large())
             }
+            sheetController.prefersScrollingExpandsWhenScrolledToEdge = false
             sheetController.prefersGrabberVisible = prefersGrabberVisible
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if let root = rootView as? Dismissable {
+            root.dismisser.onDismiss?()
+        }
+        super.viewWillDisappear(animated)
     }
 }

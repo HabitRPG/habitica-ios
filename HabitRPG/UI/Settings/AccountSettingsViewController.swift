@@ -28,7 +28,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableView.cellLayoutMarginsFollowReadableWidth = false
         super.viewDidLoad()
-        navigationItem.title = L10n.Titles.settings
+        navigationItem.title = L10n.Settings.myAccount
         setupForm()
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in

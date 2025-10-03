@@ -39,12 +39,12 @@ struct MountBottomSheetView: View, Dismissable {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     SharingManager.share(mount: mount)
                 }
-                dismisser.dismiss?()
+                dismisser.dismiss()
             }
             if owned {
                 HabiticaButtonUI(label: Text(isCurrentMount ? L10n.unequip : L10n.equip), color: Color(theme.fixedTintColor)) {
                     onEquip()
-                    dismisser.dismiss?()
+                    dismisser.dismiss()
                 }
             }
         }

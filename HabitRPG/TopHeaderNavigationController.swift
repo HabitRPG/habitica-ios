@@ -201,8 +201,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         defaultNavbarHiddenColor = theme.navbarHiddenColor
         defaultNavbarVisibleColor = theme.contentBackgroundColor
         visibleTintColor = theme.primaryTextColor
-        backgroundView.backgroundColor = theme.contentBackgroundColor
-        // upperBackgroundView.backgroundColor = theme.contentBackgroundColor
+
         setNavigationBarColors()
         setNeedsStatusBarAppearanceUpdate()
     }
@@ -319,10 +318,12 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
             upperBackgroundView.backgroundColor = navbarVisibleColor
         } else if #unavailable(iOS 26.0) {
             upperBackgroundView.backgroundColor = navbarVisibleColor
+            backgroundView.backgroundColor = navbarVisibleColor
         } else {
+            backgroundView.backgroundColor = .clear
             upperBackgroundView.backgroundColor = .clear
         }
-        backgroundView.backgroundColor = navbarVisibleColor
+        
         let tintColor = visibleTintColor
         navigationBar.tintColor = tintColor
         topViewController?.navigationItem.leftBarButtonItems?.forEach({ (button) in

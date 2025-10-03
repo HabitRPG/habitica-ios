@@ -147,7 +147,7 @@ class MainTabBarController: UITabBarController {
                     self?.presentedPrivacyPreferencesAt = Date()
                     let controller = UIHostingController(rootView: PrivacyPreferencesScreenView())
                     controller.modalPresentationStyle = .fullScreen
-                    controller.rootView.dismisser.dismiss = {
+                    controller.rootView.dismisser.dismissAction = {
                         controller.dismiss(animated: true)
                     }
                     self?.present(controller, animated: true)

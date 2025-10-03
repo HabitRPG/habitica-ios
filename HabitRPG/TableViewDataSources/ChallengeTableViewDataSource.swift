@@ -24,9 +24,7 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
         }
     }
     
-    var isFiltering = false
-    var showOwned = true
-    var showNotOwned = true
+    var filterState = ChallengeFilterState()
     @objc var shownGuilds: [String]?
     var searchText: String?
     
@@ -123,23 +121,12 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
         var searchComponents = [String]()
         let userId = socialRepository.currentUserId ?? ""
 
-        if self.showOwned != self.showNotOwned {
-            if self.showOwned {
+        if filterState.showOwned != filterState.showNotOwned {
+            if filterState.showOwned {
                 searchComponents.append("leaderID == \'\(userId)\'")
             } else {
                 searchComponents.append("leaderID != \'\(userId)\'")
             }
-        }
-        if let shownGuilds = self.shownGuilds {
-            var component = "groupID IN {"
-            if shownGuilds.isEmpty == false {
-                component.append("\'\(shownGuilds[0])\'")
-            }
-            for id in shownGuilds.dropFirst() {
-                component.append(", \'\(id)\'")
-            }
-            component.append("}")
-            searchComponents.append(component)
         }
         if let searchText = self.searchText {
             if searchText.isEmpty == false {
@@ -147,8 +134,11 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
             }
         }
         
-        if isShowingJoinedChallenges {
+        if isShowingJoinedChallenges || filterState.showParticipating != filterState.showNotParticipating {
             var component = "(id IN {"
+            if !isShowingJoinedChallenges && filterState.showNotParticipating {
+                component = "!(id IN {"
+            }
             if membershipIDs.isEmpty == false {
                 component.append("\'\(membershipIDs[0])\'")
             }
@@ -156,7 +146,7 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
                 component.append(", \'\(id)\'")
             }
             component.append("}")
-            if showOwned {
+            if filterState.showOwned {
                 component.append(" || leaderID == \'\(userId)\')")
             } else {
                 component.append(")")

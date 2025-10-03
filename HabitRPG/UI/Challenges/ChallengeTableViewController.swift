@@ -11,7 +11,19 @@ import ReactiveSwift
 import ReactiveCocoa
 import Habitica_Models
 
-class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate, ChallengeFilterChangedDelegate {
+struct ChallengeFilterState {
+    var showOwned: Bool = true
+    var showNotOwned: Bool = true
+    
+    var showParticipating: Bool = true
+    var showNotParticipating: Bool = true
+    
+    func cleared() -> ChallengeFilterState {
+        return ChallengeFilterState()
+    }
+}
+
+class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate {
     
     var selectedChallenge: ChallengeProtocol?
 
@@ -220,25 +232,11 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     
     @objc
     func filterTapped(_ sender: UIButton!) {
-        let viewController = ChallengeFilterAlert()
-        viewController.showOwned = dataSource.showOwned
-        viewController.showNotOwned = dataSource.showNotOwned
-        if dataSource.shownGuilds == nil {
-            viewController.initShownGuilds = true
-        } else {
-            viewController.shownGuilds = dataSource.shownGuilds ?? [String]()
-        }
-        viewController.delegate = self
-        let alert = HabiticaAlertController()
-        alert.contentView = viewController.view
-        alert.show()
-    }
-
-    func challengeFilterChanged(showOwned: Bool, showNotOwned: Bool, shownGuilds: [String]) {
-        self.dataSource.showOwned = showOwned
-        self.dataSource.showNotOwned = showNotOwned
-        self.dataSource.shownGuilds = shownGuilds
-        self.dataSource.updatePredicate()
+        let sheet = HostingBottomSheetController(rootView: ChallengeFilterView(filterState: dataSource.filterState, updateFilterState: {[weak self] newState in
+            self?.dataSource.filterState = newState
+            self?.dataSource.updatePredicate()
+        }))
+        present(sheet, animated: true)
     }
     
     @IBAction func addChallengeAction(_ sender: Any) {

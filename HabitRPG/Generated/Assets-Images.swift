@@ -53,6 +53,9 @@ internal enum Asset {
   internal static let loginBackground = ImageAsset(name: "LoginBackground")
   internal static let loginLogo = ImageAsset(name: "LoginLogo")
   internal static let memberCountIcon = ImageAsset(name: "MemberCountIcon")
+  internal enum Menu {
+    internal static let badge = ImageAsset(name: "Menu/badge")
+  }
   internal static let menuMessages = ImageAsset(name: "MenuMessages")
   internal static let menuNotifications = ImageAsset(name: "MenuNotifications")
   internal static let menuSettings = ImageAsset(name: "MenuSettings")

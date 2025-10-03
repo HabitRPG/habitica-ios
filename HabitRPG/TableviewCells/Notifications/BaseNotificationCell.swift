@@ -15,13 +15,13 @@ class BaseNotificationCell<NP>: UITableViewCell {
     let iconView = NetworkImageView()
     internal let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
         label.numberOfLines = 0
         return label
     }()
     internal let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
         label.numberOfLines = 0
         return label
     }()
@@ -35,8 +35,12 @@ class BaseNotificationCell<NP>: UITableViewCell {
         let button = UIButton()
         button.setTitle(L10n.decline, for: .normal)
         button.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12, ofWeight: .medium)
-        button.cornerRadius = 4
-        button.setTitleColor(.white, for: .normal)
+        if #available(iOS 26.0, *) {
+            button.cornerConfiguration = .capsule()
+        } else {
+            button.cornerRadius = 13
+        }
+        button.setTitleColor(.red1, for: .normal)
         button.isPointerInteractionEnabled = true
         return button
     }()
@@ -44,8 +48,12 @@ class BaseNotificationCell<NP>: UITableViewCell {
         let button = UIButton()
         button.setTitle(L10n.accept, for: .normal)
         button.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12, ofWeight: .medium)
-        button.cornerRadius = 4
-        button.setTitleColor(.white, for: .normal)
+        if #available(iOS 26.0, *) {
+            button.cornerConfiguration = .capsule()
+        } else {
+            button.cornerRadius = 13
+        }
+        button.setTitleColor(.green1, for: .normal)
         button.isPointerInteractionEnabled = true
         return button
     }()

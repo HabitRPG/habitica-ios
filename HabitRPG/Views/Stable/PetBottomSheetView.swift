@@ -102,7 +102,7 @@ struct PetBottomSheetView: View, Dismissable {
                 HStack(spacing: 16) {
                     Button(action: {
                         isUsingSaddle = true
-                        dismisser.dismiss?()
+                        dismisser.dismiss()
                         inventoryRepository.feed(pet: pet, food: "Saddle")
                             .observeCompleted {
                             isUsingSaddle = false
@@ -153,12 +153,12 @@ struct PetBottomSheetView: View, Dismissable {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     SharingManager.share(pet: pet)
                 }
-                dismisser.dismiss?()
+                dismisser.dismiss()
             }
             if trained > 0 {
                 HabiticaButtonUI(label: Text(isCurrentPet ? L10n.unequip : L10n.equip), color: Color(theme.fixedTintColor)) {
                     onEquip()
-                    dismisser.dismiss?()
+                    dismisser.dismiss()
                 }
             }
         }
@@ -168,7 +168,7 @@ struct PetBottomSheetView: View, Dismissable {
                 FeedSheetView(onFeed: { food in
                         self.feedPet(food: food)
                     }, dismissParent: {
-                        dismisser.dismiss?()
+                        dismisser.dismiss()
                     }).presentationDetents([.medium, .large])
                         .presentationDragIndicator(.visible).navigationTitle(L10n.Titles.feedPet)
                 .navigationBarTitleDisplayMode(.inline)
@@ -188,7 +188,7 @@ struct PetBottomSheetView: View, Dismissable {
     private func feedPet(food: FoodProtocol) {
         self.inventoryRepository.feed(pet: pet, food: food).observeValues { response in
             if response?.data == -1 {
-                dismisser.dismiss?()
+                dismisser.dismiss()
                 return
             }
             withAnimation {

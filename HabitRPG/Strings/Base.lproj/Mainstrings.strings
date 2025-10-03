@@ -1458,3 +1458,8 @@
 "save_preferences" = "Save Preferences";
 "accept_all" = "Accept All";
 "take_effect_immediately" = "This will take effect immediately after buying!";
+
+"membership" = "Membership";
+"participating" = "Participating";
+"not_participating" = "Not participating";
+"ownership" = "Ownership";

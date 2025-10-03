@@ -32,7 +32,7 @@ struct PrivacyToggleContainer: View {
             Toggle(isOn: $isOn) {
             }
             .tint(Color(ThemeService.shared.theme.fixedTintColor))
-            .frame(width: 46)
+            .frame(width: 64)
                 .opacity(disabled ? 0.5 : 1.0)
         }
         .padding(16)
@@ -53,7 +53,7 @@ struct PrivacyPreferencesSheetView: View, Dismissable {
     var body: some View {
         VStack(spacing: 0) {
             Text(L10n.yourPrivacyPreferences)
-                .foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
+                .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
                 .scaledFont(size: 16, weight: .medium)
                 .padding(.bottom, 18)
                 .padding(.horizontal, 13)
@@ -86,7 +86,6 @@ struct PrivacyPreferencesSheetView: View, Dismissable {
         }
         .padding(.top, 24)
         .padding(.horizontal, 12)
-        .background(Color(.systemBackground))
         .cornerRadius(16)
         .onAppear {
             userRepository.getUser().on(value: { user in

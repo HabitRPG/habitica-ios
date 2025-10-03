@@ -104,6 +104,10 @@ extension TaskProtocol {
             self.completed = completed
         }
     }
+    
+    public var typeAsEnum: TaskType? {
+        return TaskType(rawValue: type ?? "")
+    }
 }
 
 public class PreviewTask: TaskProtocol {

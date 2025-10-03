@@ -36,6 +36,7 @@ class FixCharacterViewController: BaseTableViewController {
         navigationItem.title = L10n.Titles.fixValues
         
         headerLabel.text = L10n.Settings.fixValuesDescription
+        headerLabel.font = .systemFont(ofSize: 15)
         headerLabel.numberOfLines = 0
         headerLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -68,7 +69,9 @@ class FixCharacterViewController: BaseTableViewController {
     }
     
     private func sizeHeaderToFit() {
-        guard let headerView = tableView.tableHeaderView else { return }
+        guard let headerView = tableView.tableHeaderView else {
+            return
+        }
         headerView.frame.size.width = tableView.bounds.width
         let size = headerView.systemLayoutSizeFitting(
             CGSize(width: tableView.bounds.width, height: UIView.layoutFittingCompressedSize.height),
@@ -81,8 +84,9 @@ class FixCharacterViewController: BaseTableViewController {
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        headerView.backgroundColor = theme.windowBackgroundColor
-        headerLabel.textColor = theme.quadTextColor
+        headerView.backgroundColor = theme.contentBackgroundColor
+        tableView.backgroundColor = theme.contentBackgroundColor
+        headerLabel.textColor = theme.primaryTextColor
     }
     
     private func identifierFor(index: Int) -> String {
@@ -122,9 +126,9 @@ class FixCharacterViewController: BaseTableViewController {
             valueField.textColor = ThemeService.shared.theme.primaryTextColor
         }
         if let wrapper = cell.viewWithTag(4) {
-            wrapper.borderColor = ThemeService.shared.theme.separatorColor
-            wrapper.borderWidth = 1
-            wrapper.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+            wrapper.borderWidth = 0
+            wrapper.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+            wrapper.cornerRadius = 13
         }
         
         return cell
@@ -143,25 +147,21 @@ class FixCharacterViewController: BaseTableViewController {
         case 0:
             titleLabel.text = L10n.health
             titleLabel.textColor = UIColor.red10
-            iconView.backgroundColor = UIColor.red500.withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfHeartLightBg
             return
         case 1:
             titleLabel.text = L10n.experience
             titleLabel.textColor = UIColor.yellow10
-            iconView.backgroundColor = UIColor.yellow500.withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfExperience
             return
         case 2:
             titleLabel.text = L10n.manaPoints
             titleLabel.textColor = UIColor.blue10
-            iconView.backgroundColor = UIColor.blue500.withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfMagic
             return
         case 3:
             titleLabel.text = L10n.gold
             titleLabel.textColor = UIColor.yellow10
-            iconView.backgroundColor = UIColor.yellow500.withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfGold
             return
         case 4:
@@ -172,8 +172,7 @@ class FixCharacterViewController: BaseTableViewController {
         case 5:
             titleLabel.text = L10n.dayStreaks
             titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
-            iconView.backgroundColor = UIColor.gray500.withAlphaComponent(0.5)
-            iconView.image = #imageLiteral(resourceName: "streak_achievement")
+            iconView.image = Asset.Menu.badge.image
             return
         default:
             return
@@ -207,19 +206,15 @@ class FixCharacterViewController: BaseTableViewController {
     func configure(iconView: UIImageView, forHabitClass habitClass: String) {
         switch habitClass {
         case "warrior":
-            iconView.backgroundColor = UIColor.red500.withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfWarriorLightBg
             return
         case "wizard":
-            iconView.backgroundColor = UIColor.blue500.withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfMageLightBg
             return
         case "healer":
-            iconView.backgroundColor = UIColor.yellow500.withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfHealerLightBg
             return
         case "rogue":
-            iconView.backgroundColor = UIColor.purple400.withAlphaComponent(0.2)
             iconView.image = HabiticaIcons.imageOfRogueLightBg
             return
         default:

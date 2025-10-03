@@ -688,6 +688,8 @@ public enum L10n {
   public static var maxGemCap: String { return L10n.tr("Mainstrings", "max_gem_cap") }
   /// Member of a Group Plan
   public static var memberGroupPlan: String { return L10n.tr("Mainstrings", "member_group_plan") }
+  /// Membership
+  public static var membership: String { return L10n.tr("Mainstrings", "membership") }
   /// Menu
   public static var menu: String { return L10n.tr("Mainstrings", "menu") }
   /// Message
@@ -800,6 +802,8 @@ public enum L10n {
   public static var notEnoughHourglasses: String { return L10n.tr("Mainstrings", "not_enough_hourglasses") }
   /// Not getting the right drops? Check out the Market to buy just the things you need!
   public static var notGettingDrops: String { return L10n.tr("Mainstrings", "not_getting_drops") }
+  /// Not participating
+  public static var notParticipating: String { return L10n.tr("Mainstrings", "not_participating") }
   /// Not Recurring
   public static var notRecurring: String { return L10n.tr("Mainstrings", "not_recurring") }
   /// Notes
@@ -852,6 +856,10 @@ public enum L10n {
   public static func ownTodayFor(_ p1: UnsafePointer<CChar>, _ p2: Int) -> String {
     return L10n.tr("Mainstrings", "own_today_for", p1, p2)
   }
+  /// Ownership
+  public static var ownership: String { return L10n.tr("Mainstrings", "ownership") }
+  /// Participating
+  public static var participating: String { return L10n.tr("Mainstrings", "participating") }
   /// A Party Robe
   public static var partyRobe: String { return L10n.tr("Mainstrings", "party_robe") }
   /// Your party grew to 4 members!
