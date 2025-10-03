@@ -186,7 +186,7 @@ struct ToastView: View {
                 if #available(iOS 26.0, *) {
                         if options.isVisible {
                             content
-                                .glassEffect(.regular.tint(options.backgroundColor.getColor()))
+                                .glassEffect(.clear.tint(options.backgroundColor.getColor()))
                                 .padding(.bottom, 50)
                         }
                 } else {
@@ -198,81 +198,4 @@ struct ToastView: View {
         .padding(.bottom, 60)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
     }
-    
-    /*
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        if options.backgroundColor == .subscriberPerk {
-            let gradient = UIImage.gradientImage(bounds: backgroundView.bounds, colors: [UIColor("#77F4C7"), UIColor("#72CFFF")])
-            backgroundView.layer.borderColor = UIColor(patternImage: gradient).cgColor
-            backgroundView.layer.sublayers?.forEach({ layer in
-                layer.frame = backgroundView.layer.bounds
-            })
-            if options.backgroundColor == .subscriberPerk {
-                self.subviews[0].frame = UIScreen.main.bounds
-            }
-        }
-    }
-    
-    private func configureTitle(_ title: String?) {
-        if let title = title {
-            titleLabel.isHidden = false
-            titleLabel.text = title
-            titleLabel.sizeToFit()
-            titleLabel.numberOfLines = -1
-            if options.backgroundColor == .subscriberPerk {
-                titleLabel.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
-            } else {
-                titleLabel.font = UIFont.systemFont(ofSize: 13)
-            }
-            titleLabel.textAlignment = .center
-        } else {
-            titleLabel.isHidden = true
-            titleLabel.text = nil
-        }
-    }
-    
-    private func configureSubtitle(_ subtitle: String?) {
-        if let subtitle = subtitle {
-            subtitleLabel.isHidden = false
-            subtitleLabel.text = subtitle
-            subtitleLabel.sizeToFit()
-            subtitleLabel.numberOfLines = -1
-            titleLabel.font = UIFont.systemFont(ofSize: 16)
-            titleLabel.textAlignment = .center
-        } else {
-            subtitleLabel.isHidden = true
-            subtitleLabel.text = nil
-        }
-    }
-    
-    private func configureLeftImage(_ leftImage: UIImage?) {
-        if let leftImage = leftImage {
-            leftImageView.isHidden = false
-            leftImageView.image = leftImage
-            leadingSpacing.constant = 4
-            leftImageWidth.constant = 46
-            leftImageHeight.priority = UILayoutPriority(rawValue: 999)
-        } else {
-            leftImageView.isHidden = true
-            leftImageWidth.constant = 0
-            leftImageHeight.priority = UILayoutPriority(rawValue: 500)
-        }
-    }
-    
-    private func configureRightView(icon: UIImage?, text: String?, textColor: UIColor?) {
-        if let icon = icon, let text = text, let textColor = textColor {
-            priceContainer.isHidden = false
-            priceIconLabel.icon = icon
-            priceIconLabel.text = text
-            priceIconLabel.textColor = textColor
-            trailingSpacing.constant = 0
-            backgroundView.layer.borderColor = options.backgroundColor.getUIColor().cgColor
-        } else {
-            priceContainer.isHidden = true
-            priceIconLabel.removeFromSuperview()
-        }
-    }*/
-    
 }

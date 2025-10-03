@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import SwiftUI
 import StoreKit
 
 extension UIApplication {
     class func topViewController(base: UIViewController? = UIApplication.shared.findKeyWindow()?.rootViewController) -> UIViewController? {
         if let nav = base as? UINavigationController {
+            if nav.visibleViewController is HostingViewController {
+                return nav
+            }
             return topViewController(base: nav.visibleViewController)
         }
         if let tab = base as? UITabBarController {
@@ -29,7 +33,8 @@ extension UIApplication {
     }
     
     func findKeyWindow() -> UIWindow? {
-        return windows.first(where: { $0.isKeyWindow }) ?? windows.first
+        let windows = foregroundActiveScene?.windows
+        return windows?.first(where: { $0.isKeyWindow }) ?? windows?.first
     }
     
     var foregroundActiveScene: UIWindowScene? {
@@ -60,7 +65,9 @@ extension UIApplication {
             #if os(macOS)
                 SKStoreReviewController.requestReview()
             #else
-                guard let scene = UIApplication.shared.foregroundActiveScene else { return }
+            guard let scene = UIApplication.shared.foregroundActiveScene else {
+                return
+            }
                 SKStoreReviewController.requestReview(in: scene)
             #endif
         }

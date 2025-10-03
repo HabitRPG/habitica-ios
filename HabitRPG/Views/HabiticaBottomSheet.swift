@@ -13,7 +13,7 @@ protocol Dismissable {
     var dismisser: Dismisser { get set }
 }
 
-class HostingBottomSheetController<ContentView: View>: UIHostingController<ContentView> {
+class HostingBottomSheetController<ContentView: View>: UIHostingController<ContentView>, HostingViewController {
     private var bottomInset: CGFloat = 0
     
     private let allowLargeDetent: Bool
