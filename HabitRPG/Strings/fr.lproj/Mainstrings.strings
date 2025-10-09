@@ -832,7 +832,7 @@
 "tutorials.spells" = "Les compétences sont des capacités spéciales qui ont des effets puissants ! Tapez une compétence pour l'utiliser. Cela vous coûtera du mana (la barre bleue), que vous gagnez chaque jour et en complétant vos tâches. Lisez la FAQ dans le menu pour plus d'informations !";
 "faint.title" = "Vous êtes à court de point de santé !";
 "faint.dont_despair" = "Ne désespérez pas !";
-"faint.button" = "Récupérez des points de santé et réessayez";
+"faint.button" = "Reprendre des forces et réessayer";
 "agree_guidelines_prompt" = "J'accepte de suivre les règles";
 "rage_meter" = "Barre de Rage";
 "world_boss.world_boss" = "Boss Mondial";
