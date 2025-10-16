@@ -153,13 +153,13 @@
 /* (No Comment) */
 "invite_party" = "Pozovi Družinu";
 /* (No Comment) */
-"last_activity" = "Zadnja aktivnost %@";
+"last_activity" = "Zadnja Aktivnost %@";
 /* (No Comment) */
 "leader" = "Vođa";
 /* (No Comment) */
 "leave" = "Napusti";
 /* (No Comment) */
-"level_number" = "Level %d";
+"level_number" = "Razina %d";
 /* (No Comment) */
 "levelup_description" = "Postizanjem svojih životnih ciljeva, dostigao/la si level %ld!";
 /* (No Comment) */
@@ -175,7 +175,7 @@
 /* (No Comment) */
 "menu.customize_avatar" = "Uredi Avatara";
 /* (No Comment) */
-"menu.help_faq" = "Pomoć & ČPP";
+"menu.help_faq" = "Pomoć & FAQ";
 /* (No Comment) */
 "menu.inventory" = "Inventar";
 /* (No Comment) */
@@ -183,7 +183,7 @@
 /* (No Comment) */
 "menu.shops" = "Dućani";
 /* (No Comment) */
-"menu.social" = "Društvene mreže";
+"menu.social" = "Društveno";
 /* (No Comment) */
 "monthly" = "Mjesečno";
 /* (No Comment) */
@@ -191,7 +191,7 @@
 /* (No Comment) */
 "my_challenges" = "Moji Izazovi";
 /* (No Comment) */
-"my_guilds" = "Moji Cehovi";
+"my_guilds" = "Moji Klanovi";
 /* (No Comment) */
 "name" = "Ime";
 /* (No Comment) */
@@ -251,13 +251,13 @@
 /* (No Comment) */
 "reset_tips" = "Resetiraj Upute";
 /* (No Comment) */
-"resetStreak" = "Resetiraj broj ponavljanja";
+"resetStreak" = "Poništi Niz";
 /* (No Comment) */
-"resync" = "Resinkroniziraj";
+"resync" = "Ponovno Sinkroniziraj";
 /* (No Comment) */
-"resync_all" = "Resinkroniziraj sve";
+"resync_all" = "Ponovno Sinkroniziraj sve";
 /* (No Comment) */
-"resync_task" = "Resinkroniziraj ovaj zadatak";
+"resync_task" = "Ponovno Sinkroniziraj ovaj zadatak";
 /* (No Comment) */
 "save" = "Spremi";
 /* (No Comment) */
@@ -267,71 +267,71 @@
 /* (No Comment) */
 "settings.api" = "API";
 /* (No Comment) */
-"settings.are_you_sure" = "Jesi li siguran/na?";
+"settings.are_you_sure" = "Jeste li sigurni?";
 /* (No Comment) */
-"settings.authentication" = "Provjera autentičnosti";
+"settings.authentication" = "Autentifikacija";
 /* (No Comment) */
-"settings.change_class" = "Promijeni klasu";
+"settings.change_class" = "Promijeni Klasu";
 /* (No Comment) */
-"settings.change_class_disclaimer" = "Ovo će resetirati klasu tvog lika i raspodijeljene bodove (dobit ćeš ih sve natrag za ponovnu raspodjelu) i košta 3 dragulja.";
+"settings.change_class_disclaimer" = "Ovo će poništiti klasu tvog lika i raspodijeljene bodove (sve ćeš ih dobiti natrag za ponovnu raspodjelu), a košta 3 dragulja.";
 /* (No Comment) */
-"settings.clear_cache" = "Očisti predmemoriju";
+"settings.clear_cache" = "Očisti Predmemoriju";
 /* (No Comment) */
-"settings.custom_day_start" = "Prilagođeni početak dana";
+"settings.custom_day_start" = "Prilagođeni Početak Dana";
 /* (No Comment) */
-"settings.daily_reminder" = "Svakodnevni podsjetnik";
+"settings.daily_reminder" = "Svakodnevni Podsjetnik";
 /* (No Comment) */
-"settings.day_start" = "Početak dana";
+"settings.day_start" = "Početak Dana";
 /* (No Comment) */
-"settings.disable_all_notifications" = "Onemogući sve push notifikacije";
+"settings.disable_all_notifications" = "Onemogući sve Push obavijesti";
 /* (No Comment) */
-"settings.disable_pm" = "Onemogući privatne poruke";
+"settings.disable_pm" = "Onemogući Privatne Poruke";
 /* (No Comment) */
-"settings.display_notification_badge" = "Prikaži obavještajne značke";
+"settings.display_notification_badge" = "Prikaži Značku za Obavijesti";
 /* (No Comment) */
-"settings.enable_class_system" = "Omogući Sustav Klasa";
+"settings.enable_class_system" = "Omogućite Sustav Klasa";
 /* (No Comment) */
 "settings.every_day" = "Svaki dan u";
 /* (No Comment) */
 "settings.fix_characterValues" = "Popravi Vrijednosti Lika";
 /* (No Comment) */
-"settings.log_out" = "Odjava";
+"settings.log_out" = "Odjavi se";
 /* (No Comment) */
-"settings.maintenance" = "Održavanje sustava";
+"settings.maintenance" = "Održavanje Sustava";
 /* (No Comment) */
-"settings.notification_badge" = "Obavještajne značke";
+"settings.notification_badge" = "Značka za Obavijesti";
 /* (No Comment) */
 "settings.preferences" = "Postavke";
 /* (No Comment) */
 "settings.profile" = "Profil";
 /* (No Comment) */
-"settings.reload_content" = "Ponovno učitaj sadržaj";
+"settings.reload_content" = "Ponovno Učitaj Sadržaj";
 /* (No Comment) */
 "settings.reminder" = "Podsjetnik";
 /* (No Comment) */
-"settings.select_class" = "Odaberi Klasu";
+"settings.select_class" = "Odaberite Klasu";
 /* (No Comment) */
-"settings.social" = "Društvene mreže";
+"settings.social" = "Društveno";
 /* (No Comment) */
-"settings.sound_theme" = "Tema zvuka";
+"settings.sound_theme" = "Tema Zvuka";
 /* (No Comment) */
-"settings.theme_color" = "Tematska boja";
+"settings.theme_color" = "Boja Teme";
 /* (No Comment) */
 "settings.user" = "Korisnik";
 /* (No Comment) */
-"settings.wrong_password" = "Neispravna lozinka";
+"settings.wrong_password" = "Neispravna Zaporka";
 /* (No Comment) */
 "share" = "Podijeli";
 /* (No Comment) */
 "skills.cant_cast_on_challenge_tasks" = "Nije moguće baciti čaroliju na zadatak iz izazova";
 /* (No Comment) */
-"skills.transformation_items" = "Transformacijski predmeti";
+"skills.transformation_items" = "Predmeti za transformaciju";
 /* (No Comment) */
-"skills.unlocks_at" = "Otključa se na levelu %d";
+"skills.unlocks_at" = "Otključava se na razini %d";
 /* (No Comment) */
-"skills.use_skill" = "Ti koristiš %@";
+"skills.use_skill" = "Koristite %@";
 /* (No Comment) */
-"skills.used_transformation_item" = "Iskoristio/la si %@";
+"skills.used_transformation_item" = "Koristili ste %@";
 /* (No Comment) */
 "specialItems" = "Posebni artikli";
 /* (No Comment) */
@@ -373,39 +373,39 @@
 /* (No Comment) */
 "tags" = "Oznake";
 /* (No Comment) */
-"tasks.daily" = "Dnevno";
+"tasks.daily" = "Dnevni zadatak";
 /* (No Comment) */
-"tasks.form.accessibility.disable_negative" = "Onemogući lošu radnju.";
+"tasks.form.accessibility.disable_negative" = "Onemogući negativnu radnju.";
 /* (No Comment) */
-"tasks.form.accessibility.disable_positive" = "Onemogući dobru radnju.";
+"tasks.form.accessibility.disable_positive" = "Onemogući pozitivnu radnju.";
 /* (No Comment) */
-"tasks.form.accessibility.enable_negative" = "Omogući lošu radnju.";
+"tasks.form.accessibility.enable_negative" = "Omogući negativnu radnju.";
 /* (No Comment) */
-"tasks.form.accessibility.enable_positive" = "Omogući dobru radnju.";
+"tasks.form.accessibility.enable_positive" = "Omogući pozitivnu radnju.";
 /* (No Comment) */
-"tasks.form.accessibility.negative_enabled" = "Loša radnja iz navike je omogućena.";
+"tasks.form.accessibility.negative_enabled" = "Omogućena je radnja za negativnu naviku.";
 /* (No Comment) */
-"tasks.form.accessibility.positive_and_negative_enabled" = "Dobra i loša radnja iz navike su omogućene.";
+"tasks.form.accessibility.positive_and_negative_enabled" = "Omogućene su radnje za pozitivne i negativne navike.";
 /* (No Comment) */
-"tasks.form.accessibility.positive_enabled" = "Dobra radnja iz navike je omogućena.";
+"tasks.form.accessibility.positive_enabled" = "Omogućena je radnja za pozitivnu naviku.";
 /* (No Comment) */
 "tasks.form.accessibility.set_task_difficulty" = "Promijeni težinu u %@";
 /* (No Comment) */
 "tasks.form.accessibility.task_difficulty" = "Težina je %@";
 /* (No Comment) */
-"tasks.form.checklist" = "Lista";
+"tasks.form.checklist" = "Spisak";
 /* (No Comment) */
 "tasks.form.clear" = "Očisti";
 /* (No Comment) */
-"tasks.form.confirm_delete" = "Jesi li siguran/na da želiš izbrisati ovaj zadatak?";
+"tasks.form.confirm_delete" = "Jeste li sigurni da želite izbrisati ovaj zadatak?";
 /* (No Comment) */
 "tasks.form.controls" = "Kontrole";
 /* (No Comment) */
-"tasks.form.cost" = "Cijeni";
+"tasks.form.cost" = "Cijena";
 /* (No Comment) */
 "tasks.form.create" = "Novi %@";
 /* (No Comment) */
-"tasks.form.dailies_title_placeholder" = "Što želiš redovito raditi?";
+"tasks.form.dailies_title_placeholder" = "Što želiš raditi redovito?";
 /* (No Comment) */
 "tasks.form.day_of_month" = "Dan u mjesecu";
 /* (No Comment) */
@@ -421,17 +421,17 @@
 /* (No Comment) */
 "tasks.form.every" = "Svaka";
 /* (No Comment) */
-"tasks.form.habit_title_placeholder" = "Koje navike želiš njegovati ili prekinuti?";
+"tasks.form.habit_title_placeholder" = "Koje navike želiš poticati ili prekinuti?";
 /* (No Comment) */
 "tasks.form.hard" = "Teško";
 /* (No Comment) */
-"tasks.form.medium" = "Srednje teško";
+"tasks.form.medium" = "Umjereno";
 /* (No Comment) */
-"tasks.form.new_checklist_item" = "Nova stavka na listi";
+"tasks.form.new_checklist_item" = "Nova stavka spiska";
 /* (No Comment) */
 "tasks.form.new_reminder" = "Novi podsjetnik";
 /* (No Comment) */
-"tasks.form.notes_placeholder" = "Uključi bilo kakve bilješke koje bi ti mogle pomoći";
+"tasks.form.notes_placeholder" = "Uključite sve bilješke koje će vam pomoći";
 /* (No Comment) */
 "tasks.form.remind_me" = "Podsjeti me";
 /* (No Comment) */
@@ -439,7 +439,7 @@
 /* (No Comment) */
 "tasks.form.repeats" = "Ponavlja se";
 /* (No Comment) */
-"tasks.form.reset_streak" = "Resetiraj broj ponavljanja";
+"tasks.form.reset_streak" = "Poništi Niz";
 /* (No Comment) */
 "tasks.form.rewards_title_placeholder" = "Kako se želiš nagraditi?";
 /* (No Comment) */
@@ -449,15 +449,15 @@
 /* (No Comment) */
 "tasks.form.tags" = "Oznake";
 /* (No Comment) */
-"tasks.form.todos_title_placeholder" = "Što želiš jednom obaviti?";
+"tasks.form.todos_title_placeholder" = "Što želiš dovršiti jednom?";
 /* (No Comment) */
-"tasks.form.trivial" = "Jako lagano";
+"tasks.form.trivial" = "Trivijalano";
 /* (No Comment) */
 "tasks.habit" = "Navika";
 /* (No Comment) */
 "tasks.reward" = "Nagrada";
 /* (No Comment) */
-"tasks.todo" = "Zadatak";
+"tasks.todo" = "Obveza";
 /* (No Comment) */
 "theme.blue" = "Plava";
 /* (No Comment) */
@@ -541,29 +541,29 @@
 "stats.strength_text" = "Povećava bonus kritičnih pogodaka i čini ih vjerojatnijima prilikom bodovanja zadatka. Također povećava štetu nanesenu bossevima.";
 "titles.notifications" = "Obavijesti";
 "stats.intelligence_text" = "Povećava osvojeno EXP od dovršavanja zadataka. Također povećava tvoj maksimalni mana kapacitet i brzinu kojom se mana regenerira s vremenom.";
-"tasks.form.negative" = "Negativna";
-"tasks.form.none" = "Nijedan";
+"tasks.form.negative" = "Negativno";
+"tasks.form.none" = "Ništa";
 "titles.pets_and_mounts" = "Ljubimci i Životinje za jahanje";
 "scheduled" = "Zakazano";
 "completed" = "Dovršeno";
 "titles.messages" = "Poruke";
 "stats.constitution_title" = "Izdržljivost";
 "stats.perception_title" = "Percepcija";
-"total_completions" = "Broj ukupnih dovršetaka";
+"total_completions" = "Ukupno ispunjenih zadataka";
 "tasks.habits" = "Navike";
 "tasks.dailies" = "Dnevni zadaci";
 "tasks.rewards" = "Nagrade";
 "tasks.form.accessibility.disable" = "Onemogući %@";
 "tasks.form.accessibility.attribute" = "Atribut je %@";
 "tasks.form.completions" = "Dovršenja";
-"tasks.form.times_scored" = "Puta Postignuto";
-"tasks.form.last_scored" = "Zadnje postignuto";
+"tasks.form.times_scored" = "Broj Postizanja";
+"tasks.form.last_scored" = "Zadnje Postizanje";
 "titles.hall_of_heroes" = "Dvorana Heroja";
 "created_at" = "Stvoreno u";
 "titles.achievements" = "Postignuća";
-"tasks.form.adjust_streak" = "Prilagodi niz";
+"tasks.form.adjust_streak" = "Prilagodi Niz";
 "titles.basics" = "Osnove";
-"tasks.form.positive" = "Pozitivna";
+"tasks.form.positive" = "Pozitivno";
 "tasks.form.accessibility.enable" = "Omogući %@";
 "titles.hall_of_contributors" = "Dvorana Doprinositelja";
 "stats.intelligence_title" = "Inteligencija";
@@ -571,12 +571,121 @@
 "tasks.form.accessibility.set_attribute" = "Promijeni atribut u %@";
 "streak" = "Niz";
 "tasks.tasks" = "Zadaci";
-"tasks.form.adjust_counter" = "Prilagodi brojilo";
+"tasks.form.adjust_counter" = "Prilagodi Brojilo";
 "not_due" = "Bez Roka";
 "stats.constitution_text" = "Smanjuje količinu štete primljene od tvojih zadataka. Ne smanjuje štetu primljenu od bosseva.";
 "stats.perception_text" = "Povećava vjerojatnost pronalaska predmeta prilikom dovršavanja Zadataka, dnevno ograničenje dropova, Bonus Niza te količinu zlata dodijeljenu za Zadatak.";
-"tasks.form.reset_counter" = "Resetiraj brojač";
+"tasks.form.reset_counter" = "Poništi Brojač";
 "titles.hall_of_patrons" = "Dvorana Pokrovitelja";
 "tasks.form.completion" = "Dovršenje";
 "yes" = "Da";
 "no" = "Ne";
+"tasks.examples.reward_notes" = "Gledajte TV, igrajte igricu, pojedite poslasticu, na vama je!";
+"tasks.work" = "Posao";
+"tasks.examples.exercise_todo_text" = "Postavite raspored vježbanja";
+"tasks.due_today" = "Danas";
+"tasks.repeats.repeats_every" = "Ponavlja se %@";
+"tasks.examples.health_todo_text" = "Osmislite zdravu promjenu";
+"tasks.examples.school_todo_notes" = "Dodirnite da odredite svoj najvažniji zadatak";
+"menu.support" = "Podrška";
+"tasks.examples.school_todo_text" = "Dovrši zadatak za nastavu";
+"tasks.examples.chores_todo_text" = "Organizirajte nered";
+"tasks.due_in_x_days" = "Za %d dana";
+"tasks.examples.team_todo_text" = "Dovrši timski projekt";
+"menu.subscription" = "Pretplate";
+"tasks.examples.todo_text" = "Pridružite se Habitici (Označi me kao gotovo!)";
+"tasks.examples.exercise_habit" = "10 minuta kardio";
+"tasks.examples.creativity_todo_notes" = "Dodirnite za navođenje naziva vašeg projekta";
+"menu" = "Izbornik";
+"x_filters" = "%ld Filtra";
+"menu.group_plans" = "Grupe";
+"tasks.chores" = "Obveze";
+"tasks.form.not_editable_disclaimer" = "Izazovi i Grupni zadaci imaju ograničene mogućnosti uređivanja u usporedbi s tvojim redovnim zadacima";
+"settings.day_start_adjustment" = "Prilagodba početka dana";
+"settings.adjustment" = "Prilagodbe";
+"tasks.every_x" = "svakih %d %@";
+"tasks.examples.habit_text" = "Dodirnite ovdje da uredite u lošu naviku koju biste željeli prestati";
+"tasks.examples.reward_text" = "Nagradite se";
+"tasks.examples.work_daily_notes" = "Dodirnite da odredite svoj najvažniji zadatak";
+"tasks.examples.work_todo_text" = "Završite radni projekt";
+"tasks.examples.exercise_daily_notes" = "Dodirnite za odabir rasporeda i navedite vježbe!";
+"tasks.examples.exercise_todo_notes" = "Dodirnite za dodavanje spiska!";
+"tasks.examples.health_daily_text" = "Koristiti zubni konac";
+"tasks.examples.health_daily_notes" = "Dodirnite za promjene!";
+"tasks.examples.team_daily_notes" = "Dodirnite da odredite svoj najvažniji zadatak";
+"tasks.examples.team_todo_notes" = "Dodirnite da odredite svoj najvažniji zadatak";
+"tasks.examples.chores_daily_notes" = "Dodirnite za odabir rasporeda!";
+"tasks.examples.chores_todo_notes" = "Dodirnite za navođenje pretrpanog područja!";
+"settings.next_cron_run" = "Resetiranje novog dana: %@";
+"settings.add_email" = "Dodajte Email";
+"settings.updated_email" = "Email ažuriran";
+"settings.reset_account_confirm" = "Jeste li sigurni da želite resetirati?";
+"tasks.quality.bad" = "Loše";
+"settings.daily_reminder_permission_needed" = "Molimo, omogućite obavijesti u Postavkama kako biste koristili dnevne podsjetnike";
+"settings.cleared_cache" = "Očišćena Predmemorija";
+"settings.reloaded_content" = "Osvježen Sadržaj";
+"settings.app_icon" = "Ikona Aplikacije";
+"settings.fix_values_description" = "Ako ste naišli na grešku ili ste pogriješili zbog koje ste nepravedno promijenili svojstvo karaktera, ovdje možete ručno ispraviti te vrijednosti.";
+"settings.change_photo_url" = "Promijenite URL Fotografije";
+"settings.change" = "Promijenite";
+"tasks.examples.school_daily_text" = "Napišite domaću zadaću";
+"settings.custom_day_start_description" = "Pomakni resetiranje dana izvan zadanog vremena u ponoć";
+"settings.updated_password" = "Zaporka uspješno promijenjena";
+"settings.reset_account_description" = "Izgubit ćete sve razine, zlato i bodove iskustva. Svi vaši zadaci (osim onih iz izazova) bit će trajno izbrisani i izgubit ćete sve njihove povijesne podatke. Izgubit ćete svu svoju opremu, ali ćete je moći kupiti natrag, uključujući svu opremu ograničenog izdanja ili pretplatničke tajnovite predmete koje već posjedujete (morat ćete biti u ispravnoj klasi da biste ponovno kupili opremu specifičnu za klasu). Zadržat ćete svoju trenutnu klasu i svoje ljubimce i konja. Umjesto toga možda biste radije upotrijebili Kuglu ponovnog rođenja, što je dosta sigurnija opcija i koja će sačuvati vaše zadatke i opremu.";
+"settings.reset_account_description_social" = "Izgubit ćete sve svoje razine, Zlato i Iskustvo. Svi vaši zadaci i njihovi povijesni podaci bit će izbrisani (Zadaci iz Izazova će ostati). Izgubit ćete svu opremu, osim predmeta za Pretplatnike i besplatnih komemorativnih predmeta, ali moći ćete ih ponovno kupiti. Morat ćete biti odgovarajuće klase da ponovno kupite opremu specifičnu za klasu. Zadržat ćete svoju trenutnu klasu, Postignuća te svoje Ljubimce i Životinje za jahanje. Ako ste apsolutno sigurani, upišite RESET u tekstualno polje ispod.";
+"tasks.examples.team_daily_text" = "Obavijestite tim o statusu";
+"tasks.examples.school_habit" = "Učiti/Odugovlačiti";
+"tasks.quality.worst" = "Najgore";
+"tasks.quality.neutral" = "Neutralno";
+"tasks.health" = "Zdravlje";
+"tasks.quality.worse" = "Gore";
+"tasks.examples.creativity_habit" = "Uvježbao novu kreativnu tehniku";
+"filter" = "Filter";
+"skills.caused_damage" = "Nanijeli ste štetu Bossu";
+"settings.disable_all_emails" = "Onemogući sve Mailove";
+"menu.skills" = "Vještine";
+"tasks.creativity" = "Kreativnost";
+"tasks.examples.exercise_daily_text" = "Dnevna rutina vježbanja";
+"one_filter" = "1 Filter";
+"tasks.quality.best" = "Najbolje";
+"tasks.due_tomorrow" = "Sutra";
+"tasks.repeats.every_day" = "svaki dan";
+"settings.server" = "Poslužitelj";
+"tasks.repeats.daily" = "dnevno";
+"tasks.quality.better" = "Bolje";
+"tasks.repeats.weekly" = "tjedno";
+"tasks.examples.chores_habit" = "10 minuta čišćenja";
+"tasks.examples.creativity_daily_notes" = "Dodirnite za navođenje naziva vašeg trenutnog projekta + postavite raspored!";
+"tasks.examples.creativity_todo_text" = "Završite kreativni projekt";
+"tasks.team" = "Tim";
+"update" = "Ažuriraj";
+"tasks.examples.school_daily_notes" = "Dodirnite da odredite svoj najvažniji zadatak";
+"tasks.examples.team_habit" = "Provjeriti s timom";
+"tasks.repeats.repeats_every_on" = "Ponavlja se %@ na %@";
+"tasks.examples.creativity_daily_text" = "Rad na kreativnom projektu";
+"tasks.repeats.monthly_the" = "%@";
+"settings.login_methods" = "Načini Prijave";
+"tasks.add_x" = "Dodaj %@";
+"tasks.exercise" = "Trening";
+"tasks.examples.work_daily_text" = "Radili na današnjem najvažnijem zadatku";
+"tasks.repeats.weekends" = "vikendima";
+"settings.change_display_name" = "Promijenite Ime za Prikaz";
+"tasks.examples.work_todo_notes" = "Dodirnite za navođenje naziva vašeg trenutnog projekta + postavite rok!";
+"settings.reset_account" = "Resetirajte Račun";
+"tasks.examples.health_todo_notes" = "Dodirnite za dodavanje spiska!";
+"tasks.examples.health_habit" = "Jedite zdravo/brzu hranu";
+"tasks.repeats.monthly" = "mjesečno";
+"tasks.examples.todo_notes" = "Možete dovršiti ovu Obavezu, urediti je ili ukloniti.";
+"tasks.examples.work_habit" = "Obradi email";
+"tasks.examples.habit_notes" = "Ili izbrišite povlačenjem ulijevo";
+"tasks.repeats.weekdays" = "radnim danima";
+"tasks.repeats.yearly" = "godišnje";
+"tasks.quality.good" = "Dobro";
+"settings.change_about_message" = "Promijenite Opis";
+"menu.gems" = "Kupi Dragulje";
+"settings.theme_mode" = "Način Rada Teme";
+"settings.change_password" = "Promijenite Zaporku";
+"tasks.examples.chores_daily_text" = "Pranje posuđa";
+"tasks.school" = "Škola";
+"settings.danger_zone" = "Zona Opasnosti";
+"tasks.edit_details" = "Uredi Pojedinosti";
