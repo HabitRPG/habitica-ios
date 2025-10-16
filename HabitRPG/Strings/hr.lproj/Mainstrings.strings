@@ -631,8 +631,8 @@
 "tasks.examples.school_daily_text" = "Napišite domaću zadaću";
 "settings.custom_day_start_description" = "Pomakni resetiranje dana izvan zadanog vremena u ponoć";
 "settings.updated_password" = "Zaporka uspješno promijenjena";
-"settings.reset_account_description" = "Izgubit ćete sve razine, zlato i bodove iskustva. Svi vaši zadaci (osim onih iz izazova) bit će trajno izbrisani i izgubit ćete sve njihove povijesne podatke. Izgubit ćete svu svoju opremu, ali ćete je moći kupiti natrag, uključujući svu opremu ograničenog izdanja ili pretplatničke tajnovite predmete koje već posjedujete (morat ćete biti u ispravnoj klasi da biste ponovno kupili opremu specifičnu za klasu). Zadržat ćete svoju trenutnu klasu i svoje ljubimce i konja. Umjesto toga možda biste radije upotrijebili Kuglu ponovnog rođenja, što je dosta sigurnija opcija i koja će sačuvati vaše zadatke i opremu.";
-"settings.reset_account_description_social" = "Izgubit ćete sve svoje razine, Zlato i Iskustvo. Svi vaši zadaci i njihovi povijesni podaci bit će izbrisani (Zadaci iz Izazova će ostati). Izgubit ćete svu opremu, osim predmeta za Pretplatnike i besplatnih komemorativnih predmeta, ali moći ćete ih ponovno kupiti. Morat ćete biti odgovarajuće klase da ponovno kupite opremu specifičnu za klasu. Zadržat ćete svoju trenutnu klasu, Postignuća te svoje Ljubimce i Životinje za jahanje. Ako ste apsolutno sigurani, upišite RESET u tekstualno polje ispod.";
+"settings.reset_account_description" = "Izgubit ćete sve svoje razine, Zlato i Iskustvo. Svi vaši zadaci i njihovi povijesni podaci bit će izbrisani (Zadaci iz Izazova će ostati). Izgubit ćete svu opremu, osim predmeta za Pretplatnike i besplatnih komemorativnih predmeta, ali moći ćete je ponovno kupiti. Morat ćete biti odgovarajuće klase da ponovno kupite opremu specifičnu za klasu. Zadržat ćete svoju trenutnu klasu, Postignuća te svoje Ljubimce i Životinje za jahanje. Za potvrdu poništenja, upišite svoju zaporku u nastavku.";
+"settings.reset_account_description_social" = "Izgubit ćete sve svoje razine, Zlato i Iskustvo. Svi vaši zadaci i njihovi povijesni podaci bit će izbrisani (Zadaci iz Izazova će ostati). Izgubit ćete svu opremu, osim predmeta za Pretplatnike i besplatnih komemorativnih predmeta, ali moći ćete je ponovno kupiti. Morat ćete biti odgovarajuće klase da ponovno kupite opremu specifičnu za klasu. Zadržat ćete svoju trenutnu klasu, Postignuća te svoje Ljubimce i Životinje za jahanje. Ako ste apsolutno sigurni, upišite RESET u tekstualno polje ispod.";
 "tasks.examples.team_daily_text" = "Obavijestite tim o statusu";
 "tasks.examples.school_habit" = "Učiti/Odugovlačiti";
 "tasks.quality.worst" = "Najgore";
@@ -689,3 +689,13 @@
 "tasks.school" = "Škola";
 "settings.danger_zone" = "Zona Opasnosti";
 "tasks.edit_details" = "Uredi Pojedinosti";
+"settings.delete_account_confirm" = "Jeste li sigurni da želite izbrisati?";
+"settings.new_username" = "Novo Korisničko Ime";
+"settings.new_email" = "Novi Email";
+"settings.delete_account_description_social" = "Ovo će zauvijek izbrisati vaš račun i više se neće moći vratiti! Pohranjeni ili potrošeni dragulji neće biti vraćeni. Ako ste potpuno sigurni, upišite DELETE u tekstni okvir ispod.";
+"settings.old_password" = "Stara Zaporka";
+"settings.delete_account_description" = "Ovo će zauvijek izbrisati vaš račun i više se neće moći vratiti! Pohranjeni ili potrošeni dragulji neće biti vraćeni. Ako ste potpuno sigurni, upišite svoju zaporku u tekstni okvir ispod.";
+"settings.delete_account" = "Izbrišite Račun";
+"settings.change_email" = "Promijenite Email";
+"settings.change_username" = "Promjeni Korisničko ime";
+"settings.new_password" = "Nova Zaporka";
