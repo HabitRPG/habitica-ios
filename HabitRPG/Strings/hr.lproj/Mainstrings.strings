@@ -73,7 +73,7 @@
 /* (No Comment) */
 "discover" = "Otkrij";
 /* (No Comment) */
-"edit" = "Izmijeni";
+"edit" = "Uredi";
 /* (No Comment) */
 "eggs" = "jaja";
 /* (No Comment) */
@@ -261,7 +261,7 @@
 /* (No Comment) */
 "save" = "Spremi";
 /* (No Comment) */
-"search" = "Traži";
+"search" = "Pretraži";
 /* (No Comment) */
 "sell" = "Prodaj za %d zlatnika";
 /* (No Comment) */
@@ -491,13 +491,13 @@
 "back" = "Nazad";
 "all" = "Sve";
 "weak" = "Slab";
-"strong" = "Silan";
-"due" = "Dužan";
-"dated" = "Datiran";
+"strong" = "Jak";
+"due" = "Rok";
+"dated" = "Datirano";
 "done" = "Gotovo";
-"change" = "Izmijeniti";
-"clear" = "Čisto";
-"use" = "Koristiti";
+"change" = "Promijeni";
+"clear" = "Obriši";
+"use" = "Koristi";
 "titles.settings" = "Postavljanje";
 "titles.authentication" = "Ovjera";
 "titles.profile" = "Profil";
@@ -572,9 +572,11 @@
 "streak" = "Niz";
 "tasks.tasks" = "Zadaci";
 "tasks.form.adjust_counter" = "Prilagodi brojilo";
-"not_due" = "Nisu na redu";
+"not_due" = "Bez Roka";
 "stats.constitution_text" = "Smanjuje količinu štete koju ti zadaci mogu nanijeti. Ne umanjuje štetu nanesenu od bosova.";
 "stats.perception_text" = "Povećava vjerojatnost pronalaženja stvari prilikom izvršavanja Zadataka, dnevni limit dobivenih stvari, bonuse za redovno izvršavanje zadataka i količinu zlatnika koju ti donose Zadaci.";
 "tasks.form.reset_counter" = "Resetiraj brojač";
 "titles.hall_of_patrons" = "Dvorana Pokrovitelja";
 "tasks.form.completion" = "Dovršenje";
+"yes" = "Da";
+"no" = "Ne";
