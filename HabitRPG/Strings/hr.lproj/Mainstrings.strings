@@ -249,7 +249,7 @@
 /* (No Comment) */
 "quests.started_by" = "Započeo/la je %@";
 /* (No Comment) */
-"reset_tips" = "Resetiraj Justinove savjete";
+"reset_tips" = "Resetiraj Upute";
 /* (No Comment) */
 "resetStreak" = "Resetiraj broj ponavljanja";
 /* (No Comment) */
@@ -355,19 +355,19 @@
 /* (No Comment) */
 "stats.allocated" = "Raspodijeljeno";
 /* (No Comment) */
-"stats.battle_gear" = "Ratna oprema";
+"stats.battle_gear" = "Ratna Oprema";
 /* (No Comment) */
-"stats.buffs" = "Ojačanja";
+"stats.buffs" = "Pojačanja";
 /* (No Comment) */
-"stats.class_bonus" = "Bonus klase";
+"stats.class_bonus" = "Bonus-Klase";
 /* (No Comment) */
-"stats.level" = "Level";
+"stats.level" = "Razina";
 /* (No Comment) */
-"stats.no_points_to_allocate" = "0 Bodova za raspodjelu";
+"stats.no_points_to_allocate" = "0 Bodova za Raspodjelu";
 /* (No Comment) */
-"stats.one_point_to_allocate" = "1 Bod za raspodjelu";
+"stats.one_point_to_allocate" = "1 Bod za Raspodjelu";
 /* (No Comment) */
-"stats.points_to_allocate" = "%d bodova za raspodjelu";
+"stats.points_to_allocate" = "%d Bodova za Raspodjelu";
 /* (No Comment) */
 "summary" = "Sažetak";
 /* (No Comment) */
@@ -498,56 +498,56 @@
 "change" = "Promijeni";
 "clear" = "Obriši";
 "use" = "Koristi";
-"titles.settings" = "Postavljanje";
-"titles.authentication" = "Ovjera";
+"titles.settings" = "Postavke";
+"titles.authentication" = "Autentifikacija";
 "titles.profile" = "Profil";
 "titles.api" = "API";
 "titles.fix_values" = "Popravi Vrijednosti";
-"titles.select_class" = "Odaberite Klasa";
+"titles.select_class" = "Odaberite Klasu";
 "titles.skills" = "Vještine";
 "titles.stats" = "Statistike";
 "titles.equipment" = "Oprema";
-"titles.items" = "Stavke";
-"titles.faq" = "Pitanja";
-"titles.about" = "Otprilike u";
+"titles.items" = "Predmeti";
+"titles.faq" = "Često postavljena pitanja";
+"titles.about" = "O";
 "titles.news" = "Novosti";
-"titles.pets" = "Kućni ljubimci";
-"titles.mounts" = "Nosači";
-"titles.party" = "Partija";
-"titles.guilds" = "Udruženje";
-"titles.guild" = "Udruženje";
+"titles.pets" = "Ljubimci";
+"titles.mounts" = "Životinje za jahanje";
+"titles.party" = "Grupa";
+"titles.guilds" = "Klanovi";
+"titles.guild" = "Klan";
 "titles.challenges" = "Izazovi";
-"titles.shops" = "Trgovine";
+"titles.shops" = "Dućani";
 "titles.avatar" = "Avatar";
-"titles.gift_subscription" = "Dajte Pretplatu";
-"titles.choose_user" = "Odaberite Korisnika";
+"titles.gift_subscription" = "Pokloni Pretplatu";
+"titles.choose_user" = "Odaberite Člana";
 "titles.choose_recipient" = "Odaberite Primatelja";
-"titles.feed_pet" = "Hraniti Kućni Ljubimac";
+"titles.feed_pet" = "Nahranite Ljubimca";
 "titles.guidelines" = "Smjernice";
 "titles.invite_members" = "Pozovite Članove";
 "titles.spells" = "Čarolije";
 "stats.total" = "Ukupno";
-"stats.auto_allocate_points" = "Automatsko Dodjeljivanje Bodova";
-"stats.distribute_evenly" = "Podijelite ravnomjerno";
+"stats.auto_allocate_points" = "Automatska Raspodjela Bodova";
+"stats.distribute_evenly" = "Ravnomjerno Raspodijeli";
 "stats.distribute_evenly_help" = "Dodjeljuje isti broj bodova svakom atributu.";
-"stats.distribute_class" = "Distribuirajte na temelju klasa";
-"stats.distribute_class_help" = "Dodijelite više točaka atributima važnim za vašu klasu.";
-"stats.distribute_tasks" = "Distribuirajte na temelju aktivnosti zadatka";
-"stats.distribute_tasks_help" = "Dodjeljuje točke na temelju kategorija snage, inteligencije, ustava i percepcije povezane s zadacima koje ste dovršili.";
-"stats.character_build_title" = "Izrada Znakova";
-"stats.character_build_text" = "Svaka razina zarađuje jednu točku za dodjeljivanje atributa po vašem izboru. To možete učiniti ručno ili pustiti da se igra odluči za vas koristeći jednu od opcija automatske alokacije.";
-"stats.stat_guide" = "Statistički vodič";
-"stats.strength_title" = "Sila";
-"stats.strength_text" = "Povećava bonus kritičnih udaraca i čini ih vjerojatnijim kada se postigne zadatak. Također povećava štete koje se isplaćuju šefovima.";
+"stats.distribute_class" = "Rasporedi na temelju klase";
+"stats.distribute_class_help" = "Dodjeljuje više bodova atributima važnim za tvoju Klasu.";
+"stats.distribute_tasks" = "Rasporedi na temelju aktivnosti zadataka";
+"stats.distribute_tasks_help" = "Dodjeljuje bodove na temelju kategorija Snaga, Inteligencija, Izdržljivost i Percepcija povezanih sa zadacima koje dovršavaš.";
+"stats.character_build_title" = "Izgradnja Lika";
+"stats.character_build_text" = "Svaka razina donosi ti jedan bod koji možeš dodijeliti atributu po tvom izboru. To možeš učiniti ručno ili dopustiti igri da odluči za tebe koristeći jednu od opcija Automatske raspodjele.";
+"stats.stat_guide" = "Vodič za Atribute";
+"stats.strength_title" = "Snaga";
+"stats.strength_text" = "Povećava bonus kritičnih pogodaka i čini ih vjerojatnijima prilikom bodovanja zadatka. Također povećava štetu nanesenu bossevima.";
 "titles.notifications" = "Obavijesti";
-"stats.intelligence_text" = "Povećava Iskustvo (XP) koje zaradiš izvršavanjem zadataka. Također povećava tvoj limit mane i brzinu kojom se mana obnavlja s vremenom.";
+"stats.intelligence_text" = "Povećava osvojeno EXP od dovršavanja zadataka. Također povećava tvoj maksimalni mana kapacitet i brzinu kojom se mana regenerira s vremenom.";
 "tasks.form.negative" = "Negativna";
 "tasks.form.none" = "Nijedan";
 "titles.pets_and_mounts" = "Ljubimci i Životinje za jahanje";
 "scheduled" = "Zakazano";
 "completed" = "Dovršeno";
 "titles.messages" = "Poruke";
-"stats.constitution_title" = "Konstitucija";
+"stats.constitution_title" = "Izdržljivost";
 "stats.perception_title" = "Percepcija";
 "total_completions" = "Broj ukupnih dovršetaka";
 "tasks.habits" = "Navike";
@@ -558,7 +558,7 @@
 "tasks.form.completions" = "Dovršenja";
 "tasks.form.times_scored" = "Puta Postignuto";
 "tasks.form.last_scored" = "Zadnje postignuto";
-"titles.hall_of_heroes" = "Dvorana heroja";
+"titles.hall_of_heroes" = "Dvorana Heroja";
 "created_at" = "Stvoreno u";
 "titles.achievements" = "Postignuća";
 "tasks.form.adjust_streak" = "Prilagodi niz";
@@ -573,8 +573,8 @@
 "tasks.tasks" = "Zadaci";
 "tasks.form.adjust_counter" = "Prilagodi brojilo";
 "not_due" = "Bez Roka";
-"stats.constitution_text" = "Smanjuje količinu štete koju ti zadaci mogu nanijeti. Ne umanjuje štetu nanesenu od bosova.";
-"stats.perception_text" = "Povećava vjerojatnost pronalaženja stvari prilikom izvršavanja Zadataka, dnevni limit dobivenih stvari, bonuse za redovno izvršavanje zadataka i količinu zlatnika koju ti donose Zadaci.";
+"stats.constitution_text" = "Smanjuje količinu štete primljene od tvojih zadataka. Ne smanjuje štetu primljenu od bosseva.";
+"stats.perception_text" = "Povećava vjerojatnost pronalaska predmeta prilikom dovršavanja Zadataka, dnevno ograničenje dropova, Bonus Niza te količinu zlata dodijeljenu za Zadatak.";
 "tasks.form.reset_counter" = "Resetiraj brojač";
 "titles.hall_of_patrons" = "Dvorana Pokrovitelja";
 "tasks.form.completion" = "Dovršenje";
