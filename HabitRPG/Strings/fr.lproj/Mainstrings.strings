@@ -359,10 +359,10 @@
 /* (No Comment) */
 "yearly" = "Annuellement";
 "back" = "Retour";
-"all" = "Toutes";
-"weak" = "Faibles";
+"all" = "Tout";
+"weak" = "Faible";
 "strong" = "Fort";
-"due" = "Restantes";
+"due" = "Restant•e(s)";
 "dated" = "Datées";
 "done" = "Faites";
 "change" = "Changer";
