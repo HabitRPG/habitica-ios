@@ -40,7 +40,6 @@ internal enum StoryboardSegue {
     case mountDetailSegue = "MountDetailSegue"
     case newsSegue = "NewsSegue"
     case notificationsSegue = "NotificationsSegue"
-    case oldDetailSegue = "OldDetailSegue"
     case partySegue = "PartySegue"
     case petDetailSegue = "PetDetailSegue"
     case settingsSegue = "SettingsSegue"

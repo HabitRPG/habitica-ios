@@ -22,9 +22,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     var customizationType: String?
     
     private let headerView = AvatarHeaderView()
-    
-    private var newCustomizationLayout = false
-    
+        
     override func viewDidLoad() {
         topHeaderCoordinator?.hideNavBar = false
         super.viewDidLoad()
@@ -37,15 +35,13 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
             topHeaderCoordinator?.alternativeHeader = headerView
         }
         topHeaderCoordinator?.followScrollView = false
-        
-        newCustomizationLayout = configRepository.bool(variable: .enableCustomizationShop) || configRepository.testingLevel.isDeveloper
-        
+                
         if let type = customizationType {
             if type == "eyewear" || type == "headAccessory" || type == "back" || type == "animalTails" {
-                gearDataSource = AvatarGearDetailViewDataSource(type: type, newCustomizationLayout: newCustomizationLayout)
+                gearDataSource = AvatarGearDetailViewDataSource(type: type)
                 gearDataSource?.collectionView = collectionView
             } else {
-                customizationDataSource = AvatarDetailViewDataSource(type: type, group: customizationGroup, newCustomizationLayout: newCustomizationLayout)
+                customizationDataSource = AvatarDetailViewDataSource(type: type, group: customizationGroup)
                 customizationDataSource?.collectionView = collectionView
                 
                 customizationDataSource?.purchaseSet = {[weak self] set in
@@ -61,12 +57,10 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        if section == collectionView.numberOfSections - 1 && newCustomizationLayout {
+        if section == collectionView.numberOfSections - 1 {
             return CGSize(width: collectionView.frame.width, height: 200)
-        } else if newCustomizationLayout {
-            return CGSize(width: collectionView.frame.width, height: 20)
         }
-        return CGSize(width: collectionView.frame.width, height: 60)
+        return CGSize(width: collectionView.frame.width, height: 20)
     }
     
     override func applyTheme(theme: Theme) {

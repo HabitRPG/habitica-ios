@@ -230,20 +230,12 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
     private func openDetailView(type: String, group: String? = nil) {
         selectedType = type
         selectedGroup = group
-        if configRepository.bool(variable: .enableCustomizationShop) {
-            perform(segue: StoryboardSegue.Main.detailSegue)
-        } else {
-            perform(segue: StoryboardSegue.Main.oldDetailSegue)
-        }
+        perform(segue: StoryboardSegue.Main.detailSegue)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardSegue.Main.detailSegue.rawValue {
             let destination = segue.destination as? AvatarDetailViewController
-            destination?.customizationType = selectedType
-            destination?.customizationGroup = selectedGroup
-        } else if segue.identifier == StoryboardSegue.Main.oldDetailSegue.rawValue {
-            let destination = segue.destination as? OldAvatarDetailViewController
             destination?.customizationType = selectedType
             destination?.customizationGroup = selectedGroup
         }

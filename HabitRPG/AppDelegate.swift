@@ -114,7 +114,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     func setupFirebase() {
         Messaging.messaging().delegate = self
         
-        
         let userDefaults = UserDefaults.standard
         #if !targetEnvironment(macCatalyst)
         Crashlytics.crashlytics().setCustomValue(-(NSTimeZone.local.secondsFromGMT() / 60), forKey: "timezone_offset")
