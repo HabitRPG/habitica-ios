@@ -1262,11 +1262,7 @@
                                     <segue destination="jza-oe-b8O" kind="presentation" identifier="WriteMessageSegue" modalPresentationStyle="pageSheet" id="2EH-Sz-Osv"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="MoreInteractionsIcon" id="Xuw-Hi-kDu">
-                                <connections>
-                                    <action selector="showOverflowMenu:" destination="MTH-Re-wqo" id="dyD-DX-teM"/>
-                                </connections>
-                            </barButtonItem>
+                            <barButtonItem image="MoreInteractionsIcon" id="Xuw-Hi-kDu"/>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -2693,7 +2689,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.2196078431372549" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -384,9 +384,13 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
                 row.onPresent({ (_, to) in
+                    to.title = L10n.Settings.dayStartAdjustment
+                    to.tableViewStyle = .insetGrouped
                     to.enableDeselection = false
                     to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                        to.tableView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                     }
                 })
             }
@@ -450,14 +454,22 @@ class SettingsViewController: FormViewController, Themeable {
                     return (form.rowBy(tag: SettingsTags.disableAllNotifications) as? SwitchRow)?.value == true
                 })
                 row.cellUpdate { (cell, _) in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
+                    if row.isDisabled {
+                        cell.textLabel?.textColor = ThemeService.shared.theme.dimmedTextColor
+                        cell.detailTextLabel?.textColor = ThemeService.shared.theme.dimmedTextColor
+                    } else {
+                        cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                        cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
+                    }
                     cell.tintColor = ThemeService.shared.theme.tintColor
                     cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.onPresent({ (_, to) in
+                    to.tableViewStyle = .insetGrouped
                     to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                        to.tableView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                     }
                 })
                 row.onChange({[weak self] (row) in
@@ -504,15 +516,23 @@ class SettingsViewController: FormViewController, Themeable {
                 row.disabled = Condition.function([SettingsTags.disableAllEmails], { (form) -> Bool in
                     return (form.rowBy(tag: SettingsTags.disableAllEmails) as? SwitchRow)?.value == true
                 })
-                row.cellUpdate { (cell, _) in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
+                row.cellUpdate { (cell, row) in
+                    if row.isDisabled {
+                        cell.textLabel?.textColor = ThemeService.shared.theme.dimmedTextColor
+                        cell.detailTextLabel?.textColor = ThemeService.shared.theme.dimmedTextColor
+                    } else {
+                        cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                        cell.detailTextLabel?.textColor = ThemeService.shared.theme.quadTextColor
+                    }
                     cell.tintColor = ThemeService.shared.theme.tintColor
                     cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 }
                 row.onPresent({ (_, to) in
+                    to.tableViewStyle = .insetGrouped
                     to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                        to.tableView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                     }
                 })
                 row.onChange({[weak self] (row) in
@@ -566,8 +586,12 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
                 row.onPresent({ (_, to) in
+                    to.title = L10n.Settings.language
+                    to.tableViewStyle = .insetGrouped
                     to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                        to.tableView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                     }
                 })
             }
@@ -591,8 +615,12 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 }
                 row.onPresent { _, to in
+                    to.title = L10n.Settings.launchScreen
+                    to.tableViewStyle = .insetGrouped
                     to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                        to.tableView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                     }
                 }
             }
@@ -620,8 +648,12 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
                 row.onPresent({ (_, to) in
+                    to.title = L10n.Settings.soundTheme
+                    to.tableViewStyle = .insetGrouped
                     to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                        to.tableView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                     }
                 })
             }
@@ -653,12 +685,20 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
                 row.onPresent({ (_, to) in
-                    to.selectableRowCellUpdate = { cell, _ in
-                        cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    to.title = L10n.Settings.themeColor
+                    to.tableViewStyle = .insetGrouped
+                    to.selectableRowCellUpdate = { cell, row in
+                        if let newTheme = ThemeName(rawValue: row.selectableValue?.value ?? "") {
+                            cell.textLabel?.textColor = newTheme.themeClass.tintColor
+                        } else {
+                            cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                        }
+                        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                        to.tableView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                     }
                 })
             }
-        <<< PushRow<LabeledFormValue<String>>(SettingsTags.themeMode) { row in
+        <<< ActionSheetRow<LabeledFormValue<String>>(SettingsTags.themeMode) { row in
             row.title = L10n.Settings.themeMode
             row.cellUpdate { cell, _ in
                 cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
@@ -685,11 +725,6 @@ class SettingsViewController: FormViewController, Themeable {
                     ThemeService.shared.updateDarkMode()
                 }
             })
-            row.onPresent({ (_, to) in
-                to.selectableRowCellUpdate = { cell, _ in
-                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                }
-            })
         }
         form +++ section
         section <<< PushRow<String>(SettingsTags.appIcon) { row in
@@ -705,14 +740,19 @@ class SettingsViewController: FormViewController, Themeable {
             })
             row.value = UIApplication.shared.alternateIconName ?? AppIconName.defaultTheme.rawValue
             row.onPresent({ (_, to) in
+                to.title = L10n.Settings.appIcon
+                to.tableViewStyle = .insetGrouped
                 to.selectableRowCellUpdate = { cell, row in
                     let filename = AppIconName(rawValue: row.title ?? "")?.fileName ?? "Purple"
+                    var config = cell.defaultContentConfiguration()
+                    config.image = UIImage(named: filename)?.resize(maxWidthHeight: 60)
+                    config.text = row.title
+                    cell.contentConfiguration = config
                     cell.height = { 68 }
-                    cell.imageView?.cornerRadius = 12
-                    cell.imageView?.contentMode = .scaleAspectFit
-                    cell.imageView?.image = UIImage(named: filename)?.resize(maxWidthHeight: 60)
                     
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                    to.tableView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                 }
             })
             row.onChange({[weak self] (row) in

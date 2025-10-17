@@ -29,7 +29,7 @@ struct ApiTokenSheetView: View, Dismissable {
     }
 
     var body: some View {
-            VStack(spacing: 20) {
+        BottomSheetView(content: VStack(spacing: 20) {
                 Text(L10n.apiTokenTitle)
                     .font(.system(size: 16))
                     .foregroundColor(descriptionColor)
@@ -78,23 +78,12 @@ struct ApiTokenSheetView: View, Dismissable {
                 .padding(.vertical, 12)
                 .padding(.horizontal, 16)
                 .background(tokenBoxBg)
-                .cornerRadius(8)
+                .cornerRadius(26)
 
-                Button(action: {
-                    onCopy()
-                }) {
-                    Text(L10n.copyToken)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(buttonColor)
-                        .foregroundColor(buttonTextColor)
-                        .font(.headline)
-                        .cornerRadius(8)
-                }
-                .frame(minHeight: 48) 
+            HabiticaButtonUI(label: Text(L10n.copyToken).foregroundColor(buttonTextColor), color: buttonColor, size: .compact) {
+                onCopy()
             }
-            .padding(.horizontal, 20)
-            .padding(.bottom, 24)
+            })
         }
 }
 

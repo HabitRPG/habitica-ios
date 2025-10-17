@@ -557,6 +557,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         textField.borderStyle = .roundedRect
         textField.keyboardType = .emailAddress
         textField.autocapitalizationType = .none
+        textField.cornerRadius = 26
         stackView.addArrangedSubview(textField)
         alertController.contentView = stackView
         
@@ -603,8 +604,8 @@ struct ResetAccountView: View {
                         }
                     }
                 }
-                .padding(12)
-                .overlay(RoundedRectangle(cornerRadius: 8).stroke().foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor)))
+                .padding(16)
+                .overlay(RoundedRectangle(cornerRadius: 26).stroke().foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor)))
                 HabiticaButtonUI(label: Text(L10n.Settings.resetAccount), color: Color(isValidInput() ? ThemeService.shared.theme.errorColor : ThemeService.shared.theme.dimmedColor)) {
                     onReset(text)
                 }
@@ -657,12 +658,12 @@ struct DeleteAccountView: View {
                 }
                 .autocorrectionDisabled()
                 .textInputAutocapitalization(.never)
-                .padding(12)
-                .overlay(RoundedRectangle(cornerRadius: 8).stroke().foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor)))
+                .padding(16)
+                .overlay(RoundedRectangle(cornerRadius: 26).stroke().foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor)))
                 HabiticaButtonUI(label: Text(L10n.Settings.deleteAccount), color: Color(isValidInput() ? ThemeService.shared.theme.errorColor : ThemeService.shared.theme.dimmedColor)) {
                     onDelete(text)
                 }
-                if (!isSocial) {
+                if !isSocial {
                     Text(L10n.Login.forgotPassword)
                         .foregroundColor(Color(ThemeService.shared.theme.tintColor))
                         .frame(maxWidth: .infinity, alignment: .center)

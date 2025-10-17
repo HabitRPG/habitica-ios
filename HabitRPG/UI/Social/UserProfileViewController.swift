@@ -59,6 +59,7 @@ class UserProfileViewController: BaseTableViewController {
         topHeaderCoordinator?.followScrollView = false
         
         navigationItem.title = username
+        moreButton.menu = overflowMenu
         
         let subscriber = Signal<CalculatedUserStats, NSError>.Observer(value: {[weak self] stats in
             self?.calculatedStats = stats
@@ -548,50 +549,59 @@ class UserProfileViewController: BaseTableViewController {
                }
     }
     
-    @IBAction func showOverflowMenu(_ sender: Any) {
-        let sheet = HostingBottomSheetController(rootView: BottomSheetMenu(menuItems: {
-                if user?.id != userID {
-                    if isBlocked {
-                        BottomSheetMenuitem(title: L10n.unblockUser, style: .destructive) {[weak self] in
+    private var overflowMenu: UIMenu {
+        return UIMenu(children: [
+            UIMenu(options: .displayInline, children: [ UIDeferredMenuElement({[weak self] add in
+                var items = [] as [UIAction]
+                if self?.user?.id != self?.userID {
+                    if self?.isBlocked == true {
+                        items.append(UIAction(title: L10n.unblockUser, image: UIImage(systemName: "person.slash"), attributes: .destructive) {[weak self] _ in
                             self?.socialRepository.blockMember(userID: self?.userID ?? self?.username ?? "").observeCompleted {
                                 ToastManager.show(text: L10n.userWasUnblocked(self?.username ?? ""), color: .red)
                             }
-                        }
+                        })
                     } else {
-                        BottomSheetMenuitem(title: L10n.block, style: .destructive) {[weak self] in
+                        items.append(UIAction(title: L10n.blockUser, image: UIImage(systemName: "person.slash"), attributes: .destructive) {[weak self] _ in
                             self?.showBlockDialog()
-                        }
+                        })
                     }
-                    BottomSheetMenuitem(title: L10n.reportX(L10n.player), style: .destructive) {
-                        if let member = self.member {
+                    items.append(UIAction(title: L10n.reportX(L10n.player), image: UIImage(systemName: "flag"), attributes: .destructive) {[weak self] _ in
+                        if let member = self?.member {
                             let controller = FlagViewController(type: .member, offendingItem: member)
-                            self.present(controller, animated: true)
+                            self?.present(controller, animated: true)
                         }
-                    }
+                    })
                 }
-            BottomSheetMenuSeparator()
-            BottomSheetMenuitem(title: L10n.giftGems) {[weak self] in
+                add(items)
+            })]),
+            UIAction(title: L10n.giftGems, image: UIImage(systemName: "gift")) {[weak self] _ in
                 self?.perform(segue: StoryboardSegue.Social.giftGemsSegue)
-            }
-            BottomSheetMenuitem(title: L10n.giftSubscription) {[weak self] in
-                self?.perform(segue: StoryboardSegue.Social.giftSubscriptionSegue)
-            }
-            if user?.hasPermission(.userSupport) == true {
-                BottomSheetMenuSeparator()
-                BottomSheetMenuitem(title: member?.authentication?.blocked == true ? L10n.unbanUser : L10n.banUser, style: .destructive) {[weak self] in
-                    self?.showBanDialog()
+            },
+            UIAction(title: L10n.giftSubscription, image: UIImage(systemName: "giftcard")) {[weak self] _ in
+                self?.perform(segue: StoryboardSegue.Social.giftGemsSegue)
+            },
+            UIMenu(options: .displayInline, children: [ UIDeferredMenuElement({[weak self] add in
+                var items = [] as [UIAction]
+                guard let member = self?.member else {
+                    return
                 }
-                
-                BottomSheetMenuitem(title: member?.flags?.chatShadowMuted == true ? L10n.unshadowMuteUser : L10n.shadowMuteUser, style: .destructive) {[weak self] in
-                    self?.showShadowMuteDialog()
+                if self?.user?.hasPermission(.userSupport) == true {
+                    items.append(UIAction(title: member.authentication?.blocked == true ? L10n.unbanUser : L10n.banUser,
+                                          image: UIImage(systemName: "hammer"), attributes: .destructive) {[weak self] _ in
+                        self?.showBanDialog()
+                    })
+                    items.append(UIAction(title: member.flags?.chatShadowMuted == true ? L10n.unshadowMuteUser : L10n.shadowMuteUser,
+                                          image: UIImage(systemName: "speaker.slash"), attributes: .destructive) {[weak self] _ in
+                        self?.showShadowMuteDialog()
+                    })
+                    items.append(UIAction(title: member.flags?.chatRevoked == true ? L10n.unmuteUser : L10n.muteUser,
+                                          image: UIImage(systemName: "speaker.slash"), attributes: .destructive) {[weak self] _ in
+                        self?.showMuteDialog()
+                    })
                 }
-                
-                BottomSheetMenuitem(title: member?.flags?.chatRevoked == true ? L10n.unmuteUser : L10n.muteUser, style: .destructive) {[weak self] in
-                    self?.showMuteDialog()
-                }
-            }
-        }))
-        present(sheet, animated: true)
+                add(items)
+            })])
+        ])
     }
     
     private func showBlockDialog() {

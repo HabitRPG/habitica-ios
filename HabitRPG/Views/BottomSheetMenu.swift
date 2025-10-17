@@ -109,7 +109,7 @@ struct BottomSheetView<Title: View, Content: View>: View, Dismissable {
     var dismisser: Dismisser = Dismisser()
     var title: Title
     let content: Content
-    var topPadding: CGFloat = 28
+    var topPadding: CGFloat = 24
     var bottomPadding: CGFloat = 12
 
     var body: some View {
