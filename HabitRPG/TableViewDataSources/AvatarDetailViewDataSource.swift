@@ -17,7 +17,6 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
     
     var customizationGroup: String?
     var customizationType: String
-    var newCustomizationLayout: Bool = false
     
     var purchaseSet: ((CustomizationSetProtocol) -> Void)?
     
@@ -30,10 +29,9 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
     
     private var gemCount = 0
     
-    init(type: String, group: String?, newCustomizationLayout: Bool) {
+    init(type: String, group: String?) {
         self.customizationType = type
         self.customizationGroup = group
-        self.newCustomizationLayout = newCustomizationLayout
         super.init()
         
         disposable.add(customizationRepository.getCustomizations(type: customizationType, group: customizationGroup)
@@ -134,21 +132,12 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         sections.append(ItemSection<CustomizationProtocol>())
         sections[0].title = getCustomizationTitle()
         for customization in customizations {
-            if newCustomizationLayout {
-                if customization.price > 0 && !owns(customization: customization) || (customization.key?.lowercased().contains("birthday_bash") == true && !owns(customization: customization)) {
-                    continue
-                }
-            } else {
-                if (customization.price > 0 && !customization.isPurchasable)
-                    || customization.key?.lowercased().contains("birthday_bash") == true {
-                    if !owns(customization: customization) {
-                        continue
-                    }
-                }
+            if customization.price > 0 && !owns(customization: customization) || (customization.key?.lowercased().contains("birthday_bash") == true && !owns(customization: customization)) {
+                continue
             }
             if let set = customization.set, (
                 customizationType == "background" && (set.key?.contains("incentive") == true || set.key?.contains("timeTravel") == true || set.key?.contains("event") == true)
-            ) || (customizationType != "background" && !newCustomizationLayout) {
+            ) {
                 if let index = sections.firstIndex(where: { (section) -> Bool in
                     return section.key == set.key
                 }) {
@@ -233,7 +222,7 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         let section = sections[indexPath.section]
         
         if let footerView = view as? CustomizationFooterView {
-            if newCustomizationLayout && indexPath.section == collectionView.numberOfSections - 1 {
+            if indexPath.section == collectionView.numberOfSections - 1 {
                 footerView.purchaseButton.isHidden = true
                 footerView.hostingView.isHidden = false
                 let hostView = UIHostingView(rootView: CTAFooterView(type: customizationType, hasItems: !sections[0].items.isEmpty))

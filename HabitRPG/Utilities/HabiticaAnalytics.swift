@@ -32,12 +32,16 @@ public class HabiticaAnalytics {
     }
     
     public func setUserProperty(key: String, value: String?) {
-        guard analyticsConsented else { return }
+        guard analyticsConsented else {
+            return
+        }
         Analytics.setUserProperty(value, forName: key)
     }
     
     public func logNavigationEvent(_ pageName: String) {
-        guard analyticsConsented else { return }
+        guard analyticsConsented else {
+            return
+        }
         let properties = [
             "eventAction": "navigated",
             "eventCategory": "navigation",
@@ -47,7 +51,9 @@ public class HabiticaAnalytics {
     }
     
     public func log(_ eventName: String, withEventProperties properties: [String: Any] = [:]) {
-        guard analyticsConsented else { return }
+        guard analyticsConsented else {
+            return
+        }
         Amplitude.instance().logEvent(eventName, withEventProperties: properties)
         Analytics.logEvent(eventName, parameters: properties)
     }

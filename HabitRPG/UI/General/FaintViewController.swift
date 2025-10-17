@@ -65,20 +65,16 @@ struct HabiticaButtonUI<Label: View>: View {
 private class ViewModel: ObservableObject {
     let userRepository = UserRepository()
     @Published var lossText: LocalizedStringKey = ""
-    @Published var enableSubBenefit = false
     @Published var isSubscribed = false
     @Published var nextPerkUsage: Date?
     
     init() {
-        enableSubBenefit = ConfigRepository.shared.bool(variable: .enableFaintSubs)
-        if enableSubBenefit {
-            let defaults = UserDefaults()
-            let lastUsage = defaults.value(forKey: "lastFaintSubBenefit")
-            let calendar = Calendar.current
-            if let usage = lastUsage as? Date, calendar.isDate(usage, inSameDayAs: Date()) {
-                let tomorrow = calendar.date(byAdding: .day, value: 1, to: Date()) ?? Date()
-                nextPerkUsage = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: tomorrow)
-            }
+        let defaults = UserDefaults()
+        let lastUsage = defaults.value(forKey: "lastFaintSubBenefit")
+        let calendar = Calendar.current
+        if let usage = lastUsage as? Date, calendar.isDate(usage, inSameDayAs: Date()) {
+            let tomorrow = calendar.date(byAdding: .day, value: 1, to: Date()) ?? Date()
+            nextPerkUsage = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: tomorrow)
         }
         
         userRepository.getUser()
@@ -243,73 +239,71 @@ struct FaintView: View {
                     }
             }.frame(maxWidth: 600)
                 .padding(.horizontal, 24)
-                .padding(.bottom, viewModel.enableSubBenefit ? 15 : 42)
-            if viewModel.enableSubBenefit {
-                let gradientColors: [Color] = [Color(hexadecimal: "72CFFF"),
-                                      Color(hexadecimal: "77F4C7")
-                                     ]
-                if viewModel.isSubscribed {
-                    if let nextUsage = viewModel.nextPerkUsage {
-                        Text(L10n.Faint.subbedUsed(nextUsage.getShortRemainingString()))
-                            .foregroundColor(Color(ThemeService.shared.theme.isDark ? UIColor.teal500 : UIColor.teal1))
-                            .font(.system(size: 15, weight: .semibold))
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal, 36)
-                            .padding(.bottom, 38)
-                    } else {
-                        Button(action: {
-                            if isUsingPerk {
-                                return
-                            }
-                            isUsingPerk = true
-                            viewModel.useSubBenefit {
-                                onDismiss()
-                            }
-                        }, label: {
-                            Group {
-                                if isUsingPerk {
-                                    ProgressView().habiticaProgressStyle().frame(width: 28, height: 28)
-                                } else {
-                                    Text(L10n.Faint.subbedButtonPrompt)
-                                }
-                            }
-                                .foregroundColor(Color(UIColor.green1))
-                                .font(.headline)
-                                .padding(.vertical, 6)
-                                .frame(minHeight: 60)
-                                .frame(maxWidth: .infinity)
-                                .background(LinearGradient(colors: gradientColors, startPoint: .leading, endPoint: .trailing))
-                                .overlay(RoundedRectangle(cornerRadius: 8).stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
-                                .cornerRadius(8)
-                        })
-                        .frame(maxWidth: 600)
-                        .padding(.horizontal, 24)
-                        .padding(.bottom, 8)
-                        Text(L10n.Faint.subbedFooter)
-                            .foregroundColor(Color(ThemeService.shared.theme.isDark ? UIColor.teal500 : UIColor.teal1))
-                            .font(.system(size: 15, weight: .semibold))
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal, 36)
-                            .padding(.bottom, 38)
-                    }
+                .padding(.bottom, 15)
+            let gradientColors: [Color] = [Color(hexadecimal: "72CFFF"),
+                                  Color(hexadecimal: "77F4C7")
+                                 ]
+            if viewModel.isSubscribed {
+                if let nextUsage = viewModel.nextPerkUsage {
+                    Text(L10n.Faint.subbedUsed(nextUsage.getShortRemainingString()))
+                        .foregroundColor(Color(ThemeService.shared.theme.isDark ? UIColor.teal500 : UIColor.teal1))
+                        .font(.system(size: 15, weight: .semibold))
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 36)
+                        .padding(.bottom, 38)
                 } else {
-                    VStack(alignment: .center, spacing: 8) {
-                        HabiticaButtonUI(label: Text(L10n.Faint.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white) {
-                            SubscriptionModalViewController(presentationPoint: .faint).show()
-                        }.frame(maxWidth: 600)
-                        Text(L10n.Faint.unsubbedFooter)
-                            .foregroundColor(Color(UIColor.teal1))
-                            .font(.system(size: 15, weight: .semibold))
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal, 16)
-                    }
+                    Button(action: {
+                        if isUsingPerk {
+                            return
+                        }
+                        isUsingPerk = true
+                        viewModel.useSubBenefit {
+                            onDismiss()
+                        }
+                    }, label: {
+                        Group {
+                            if isUsingPerk {
+                                ProgressView().habiticaProgressStyle().frame(width: 28, height: 28)
+                            } else {
+                                Text(L10n.Faint.subbedButtonPrompt)
+                            }
+                        }
+                            .foregroundColor(Color(UIColor.green1))
+                            .font(.headline)
+                            .padding(.vertical, 6)
+                            .frame(minHeight: 60)
+                            .frame(maxWidth: .infinity)
+                            .background(LinearGradient(colors: gradientColors, startPoint: .leading, endPoint: .trailing))
+                            .overlay(RoundedRectangle(cornerRadius: 8).stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
+                            .cornerRadius(8)
+                    })
+                    .frame(maxWidth: 600)
                     .padding(.horizontal, 24)
-                    .padding(.top, 16)
-                    .padding(.bottom, 38)
-                    .frame(maxWidth: .infinity)
-                    .background(RotatingLinearGradient(colors: gradientColors, animationDuration: 20.0))
-                    .cornerRadius([.topLeading, .topTrailing], 24)
+                    .padding(.bottom, 8)
+                    Text(L10n.Faint.subbedFooter)
+                        .foregroundColor(Color(ThemeService.shared.theme.isDark ? UIColor.teal500 : UIColor.teal1))
+                        .font(.system(size: 15, weight: .semibold))
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 36)
+                        .padding(.bottom, 38)
                 }
+            } else {
+                VStack(alignment: .center, spacing: 8) {
+                    HabiticaButtonUI(label: Text(L10n.Faint.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white) {
+                        SubscriptionModalViewController(presentationPoint: .faint).show()
+                    }.frame(maxWidth: 600)
+                    Text(L10n.Faint.unsubbedFooter)
+                        .foregroundColor(Color(UIColor.teal1))
+                        .font(.system(size: 15, weight: .semibold))
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 16)
+                }
+                .padding(.horizontal, 24)
+                .padding(.top, 16)
+                .padding(.bottom, 38)
+                .frame(maxWidth: .infinity)
+                .background(RotatingLinearGradient(colors: gradientColors, animationDuration: 20.0))
+                .cornerRadius([.topLeading, .topTrailing], 24)
             }
         }
         .ignoresSafeArea(.all)
@@ -377,20 +371,17 @@ class FaintViewController: UIHostingController<FaintView> {
 struct FaintViewPreview: PreviewProvider {
     private static var unsubbedViewModel: ViewModel = {
         let unsubbedViewModel = ViewModel()
-        unsubbedViewModel.enableSubBenefit = true
         return unsubbedViewModel
     }()
     
     private static var subbedViewModel: ViewModel = {
         let subbedViewModel = ViewModel()
-        subbedViewModel.enableSubBenefit = true
         subbedViewModel.isSubscribed = true
         return subbedViewModel
     }()
     
     private static var subbedUsedViewModel: ViewModel = {
         let subbedViewModel = ViewModel()
-        subbedViewModel.enableSubBenefit = true
         subbedViewModel.isSubscribed = true
         subbedViewModel.nextPerkUsage = Calendar.current.date(byAdding: .day, value: 1, to: Date())
         return subbedViewModel

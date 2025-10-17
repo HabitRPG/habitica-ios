@@ -35,7 +35,6 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
     private let userRepository = UserRepository()
     
     var gearType: String
-    var newCustomizationLayout: Bool = false
 
     private var ownedGear: [OwnedGearProtocol] = []
     
@@ -43,9 +42,8 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
     
     var preferences: PreferencesProtocol?
     
-    init(type: String, newCustomizationLayout: Bool) {
+    init(type: String) {
         gearType = type
-        self.newCustomizationLayout = newCustomizationLayout
         super.init()
         sections.append(ItemSection<GearProtocol>())
 
@@ -99,7 +97,7 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if let gear = item(at: indexPath) {
-            if !owns(gear: gear) && !newCustomizationLayout && !(gear is BlankGear) {
+            if !owns(gear: gear) && !(gear is BlankGear) {
                 return CGSize(width: 80, height: 108)
             } else {
                 return CGSize(width: 80, height: 80)
@@ -124,10 +122,8 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
         sections.append(ItemSection<GearProtocol>())
         sections[0].title = getTitle()
         for gear in gear {
-            if newCustomizationLayout {
-                if !owns(gear: gear) {
-                    continue
-                }
+            if !owns(gear: gear) {
+                continue
             }
             sections[0].items.append(gear)
         }
@@ -171,7 +167,7 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
             headerView.label.textColor = ThemeService.shared.theme.quadTextColor
         }
         if let footerView = view as? CustomizationFooterView {
-            if newCustomizationLayout && indexPath.section == collectionView.numberOfSections - 1 {
+            if indexPath.section == collectionView.numberOfSections - 1 {
                 footerView.purchaseButton.isHidden = true
                 footerView.hostingView.isHidden = false
                 let hostView = UIHostingView(rootView: CTAFooterView(type: gearType, hasItems: !sections[0].items.isEmpty))

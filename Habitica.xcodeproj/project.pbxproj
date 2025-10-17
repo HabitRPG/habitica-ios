@@ -70,7 +70,6 @@
 		290FF8A727DB657000F1DE45 /* party-members.json in Resources */ = {isa = PBXBuildFile; fileRef = 290FF8A227DB62F500F1DE45 /* party-members.json */; };
 		290FF8B827DF6AB800F1DE45 /* CustomizationDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290FF8B727DF6AB800F1DE45 /* CustomizationDetailTests.swift */; };
 		291017DF2B06161400D0607B /* SubscriptionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291017DE2B06161400D0607B /* SubscriptionPage.swift */; };
-		2910EFC82C16E56500D6D1E8 /* OldAvatarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2910EFC72C16E56500D6D1E8 /* OldAvatarDetailViewController.swift */; };
 		2910EFCA2C16EC8700D6D1E8 /* OldAvatarDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2910EFC92C16EC8700D6D1E8 /* OldAvatarDetailViewDataSource.swift */; };
 		2912C3B022CA701C00BC485F /* QuestCompletedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */; };
 		2912C3B222CB415100BC485F /* UnreadGroupNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912C3B122CB415100BC485F /* UnreadGroupNotificationCell.swift */; };
@@ -769,7 +768,6 @@
 		290FF8A527DB634700F1DE45 /* PartyDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyDetailTests.swift; sourceTree = "<group>"; };
 		290FF8B727DF6AB800F1DE45 /* CustomizationDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationDetailTests.swift; sourceTree = "<group>"; };
 		291017DE2B06161400D0607B /* SubscriptionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPage.swift; sourceTree = "<group>"; };
-		2910EFC72C16E56500D6D1E8 /* OldAvatarDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldAvatarDetailViewController.swift; sourceTree = "<group>"; };
 		2910EFC92C16EC8700D6D1E8 /* OldAvatarDetailViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldAvatarDetailViewDataSource.swift; sourceTree = "<group>"; };
 		2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestCompletedAlertController.swift; sourceTree = "<group>"; };
 		2912C3B122CB415100BC485F /* UnreadGroupNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadGroupNotificationCell.swift; sourceTree = "<group>"; };
@@ -1548,7 +1546,6 @@
 				2914488D2089EC5C00F3A6B5 /* AvatarOverviewViewController.swift */,
 				29144895208A270800F3A6B5 /* AvatarDetailViewController.swift */,
 				29084B3226CF97F500AD9966 /* ShopViewController.swift */,
-				2910EFC72C16E56500D6D1E8 /* OldAvatarDetailViewController.swift */,
 			);
 			path = Inventory;
 			sourceTree = "<group>";
@@ -1861,13 +1858,6 @@
 				297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */,
 			);
 			name = Setup;
-			sourceTree = "<group>";
-		};
-		29B30EB92E0ADE7E001B587B /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		29B30EBA2E0ADE92001B587B /* Settings */ = {
@@ -2506,7 +2496,6 @@
 		D9C000311928F85E003D4E4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				29B30EB92E0ADE7E001B587B /* New Group */,
 				29F177F72AB85D39008B8F0C /* Stable */,
 				29C1360124EBD12E00DBC6B3 /* AbbreviatedNumberLabel.swift */,
 				29C38C8424A2466400F219A1 /* AdventureGuidePromoView.swift */,
@@ -3761,7 +3750,6 @@
 				29DC5ACB20A20A6C00993400 /* QuestTitleView.swift in Sources */,
 				299FB2AA2084BA6200422522 /* StableOverviewCell.swift in Sources */,
 				299FB2A52084B40700422522 /* StableOverviewDataSource.swift in Sources */,
-				2910EFC82C16E56500D6D1E8 /* OldAvatarDetailViewController.swift in Sources */,
 				299FB29A2084A30400422522 /* StableRepository.swift in Sources */,
 				29951A1E2326670500918FC8 /* InboxOverviewViewController.swift in Sources */,
 				29028C422037131C00B7F704 /* SystemMessageTableViewCell.swift in Sources */,

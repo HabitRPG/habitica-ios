@@ -86,15 +86,12 @@ private class ViewModel: ObservableObject {
     @Published var key: String = ""
     @Published var value: Float = 0
     @Published var remainingCount = 0
-    @Published var enableSubBenefit = false
     @Published var isSubscribed = false
     @Published var isUsingPerk = false
     @Published var hideGold = false
     @Published var usedPerk = false
     
     init(gold: Double? = nil) {
-        enableSubBenefit = ConfigRepository.shared.bool(variable: .enableArmoireSubs)
-
         if let gold = gold {
             self.gold = gold
             self.initialGold = gold
@@ -311,48 +308,46 @@ struct ArmoireView: View {
                 .padding(.horizontal, 24)
                 let gradientColors: [Color] = [Color(hexadecimal: "72CFFF"),
                                       Color(hexadecimal: "77F4C7")]
-                if viewModel.isSubscribed || !viewModel.enableSubBenefit {
-                    if viewModel.enableSubBenefit {
-                        Button(action: {
-                            if viewModel.isUsingPerk || viewModel.usedPerk {
-                                return
+                if viewModel.isSubscribed {
+                    Button(action: {
+                        if viewModel.isUsingPerk || viewModel.usedPerk {
+                            return
+                        }
+                        viewModel.hideGold = true
+                        viewModel.isUsingPerk = true
+                        viewModel.useSubBenefit {
+                            viewModel.usedPerk = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                                confettiCounter += 1
+                            })
+                        }
+                    }, label: {
+                        Group {
+                            if viewModel.isUsingPerk {
+                                ProgressView().habiticaProgressStyle().frame(width: 28, height: 28)
+                            } else {
+                                Text(L10n.Armoire.subbedButtonPrompt)
                             }
-                            viewModel.hideGold = true
-                            viewModel.isUsingPerk = true
-                            viewModel.useSubBenefit {
-                                viewModel.usedPerk = true
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                                    confettiCounter += 1
-                                })
-                            }
-                        }, label: {
-                            Group {
-                                if viewModel.isUsingPerk {
-                                    ProgressView().habiticaProgressStyle().frame(width: 28, height: 28)
-                                } else {
-                                    Text(L10n.Armoire.subbedButtonPrompt)
-                                }
-                            }
-                                .foregroundColor(Color(UIColor.green1))
-                                .font(.headline)
-                                .padding(.vertical, 6)
-                                .frame(minHeight: 60)
-                                .frame(maxWidth: .infinity)
-                                .background(LinearGradient(colors: gradientColors, startPoint: .leading, endPoint: .trailing))
-                                .overlay(RoundedRectangle(cornerRadius: 8).stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
-                                .cornerRadius(8)
-                        })
-                        .frame(maxWidth: 600)
-                        .padding(.horizontal, 24)
-                        .padding(.bottom, 8)
-                        .opacity(viewModel.usedPerk ? 0.0 : 1.0)
-                        .animation(.linear, value: viewModel.usedPerk)
-                        Text(L10n.Armoire.subbedFooter)
-                            .foregroundColor(.white)
-                            .font(.system(size: 15, weight: .semibold))
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal, 36)
-                    }
+                        }
+                            .foregroundColor(Color(UIColor.green1))
+                            .font(.headline)
+                            .padding(.vertical, 6)
+                            .frame(minHeight: 60)
+                            .frame(maxWidth: .infinity)
+                            .background(LinearGradient(colors: gradientColors, startPoint: .leading, endPoint: .trailing))
+                            .overlay(RoundedRectangle(cornerRadius: 8).stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
+                            .cornerRadius(8)
+                    })
+                    .frame(maxWidth: 600)
+                    .padding(.horizontal, 24)
+                    .padding(.bottom, 8)
+                    .opacity(viewModel.usedPerk ? 0.0 : 1.0)
+                    .animation(.linear, value: viewModel.usedPerk)
+                    Text(L10n.Armoire.subbedFooter)
+                        .foregroundColor(.white)
+                        .font(.system(size: 15, weight: .semibold))
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 36)
                     Text(L10n.Armoire.dropRate)
                         .foregroundColor(Color(UIColor.purple600))
                         .font(.system(size: 15))
@@ -499,7 +494,6 @@ struct ArmoireView_Previews: PreviewProvider {
         model.type = type
         model.text = "Meat"
         model.key = "Meat"
-        model.enableSubBenefit = true
         model.isSubscribed = isSubscribed
         return model
     }
