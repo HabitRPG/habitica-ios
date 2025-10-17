@@ -1675,3 +1675,4 @@
 "one_quest_item_found" = "Du hast 1 Quest-Gegenstand gefunden";
 "errors.username_already_taken" = "Benutzername bereits vergeben.";
 "quest_items_found" = "Du hast %d Quest-Gegenstände gefunden";
+"take_effect_immediately" = "Dies wird sofort nach dem Kauf wirksam!";
