@@ -1535,7 +1535,7 @@
 "is_closed" = "閉店中";
 "items.footer_quests_title" = "もっとクエストが欲しいですか？";
 "items.footer_food_title" = "タスクから正しいエサがもらえてないですか？";
-"items.footer_title" = "タスクから正しいいアテムがもらえてないですか？";
+"items.footer_title" = "タスクから欲しいアイテムが手に入らない？";
 "items.footer_description" = "市場をチェックして、必要なものだけを買いましょう！";
 "items.footer_food_description" = "マーケットでエサやくらを買って、ペットを速く育てましょう！";
 "items.footer_quests_descriptions" = "クエスト・ショップに何があるかチェックしましょう！";
@@ -1576,4 +1576,4 @@
 "api_token_is_password" = "あなたのAPIトークンはパスワードのようなものです";
 "api_token_reset_title" = "新しいAPIトークンが必要な場合";
 "save_preferences" = "設定を保存";
-"settings.manage_privacy_preferences" = "プライバシー権限を変更する";
+"settings.manage_privacy_preferences" = "プライバシー設定を編集する";

@@ -202,3 +202,4 @@
 "tasks.examples.reward_text" = "Reward yourself";
 "tasks.examples.work_daily_notes" = "Tap to specify your most important task";
 "tasks.examples.work_todo_text" = "Complete work project";
+"subscription_credit_title" = "Your **%d months** of subscription credit will activate after cancelling";
