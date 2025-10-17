@@ -69,6 +69,42 @@ struct BottomSheetMenuSeparator: View {
     }
 }
 
+struct BottomSheetHeaderBar<Title: View, Left: View, Right: View>: View {
+    var title: Title
+    var leftAction: Left
+    var isLeftProminent = false
+    var rightAction: Right
+    var isRightProminent = true
+    
+    var body: some View {
+        HStack {
+            if #available(iOS 26.0, *) {
+                leftAction
+                    .buttonStyle(.glass)
+                    .buttonBorderShape(.circle)
+            } else {
+                leftAction
+                    .clipShape(.circle)
+                    .tintColor(Color(isLeftProminent ? ThemeService.shared.theme.tintColor : ThemeService.shared.theme.windowBackgroundColor))
+            }
+            Spacer()
+            title
+                .font(.headline)
+                .foregroundColor(.primaryTextColor)
+            Spacer()
+            if #available(iOS 26.0, *) {
+                rightAction
+                    .buttonStyle(.glassProminent)
+                    .buttonBorderShape(.circle)
+            } else {
+                rightAction
+                    .clipShape(.circle)
+                    .tintColor(Color(isRightProminent ? ThemeService.shared.theme.tintColor : ThemeService.shared.theme.windowBackgroundColor))
+            }
+        }
+    }
+}
+
 struct BottomSheetView<Title: View, Content: View>: View, Dismissable {
     var dismisser: Dismisser = Dismisser()
     var title: Title
@@ -79,8 +115,6 @@ struct BottomSheetView<Title: View, Content: View>: View, Dismissable {
     var body: some View {
         Group {
             title
-                .font(.headline)
-                .foregroundColor(.primaryTextColor)
             content
         }.padding(.horizontal, 20)
             .padding(.top, topPadding)

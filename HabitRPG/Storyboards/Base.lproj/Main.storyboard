@@ -554,7 +554,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANP-hf-wbL">
-                                                                <rect key="frame" x="55.666666666666686" y="0.0" width="0.0" height="20"/>
+                                                                <rect key="frame" x="55.666666666666671" y="0.0" width="0.0" height="20"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -639,45 +639,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pz5-my-WUA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7009" y="1433"/>
-        </scene>
-        <!--Notifications Table View Controller-->
-        <scene sceneID="YmH-5N-Edi">
-            <objects>
-                <tableViewController id="pMX-Jf-kyX" customClass="NotificationsTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wVG-yt-pY6">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="873"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wYY-jG-8s4">
-                                <rect key="frame" x="0.0" y="50" width="430" height="51"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wYY-jG-8s4" id="gwd-CO-978">
-                                    <rect key="frame" x="0.0" y="0.0" width="430" height="51"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="pMX-Jf-kyX" id="fsW-rj-pMj"/>
-                            <outlet property="delegate" destination="pMX-Jf-kyX" id="abB-oG-qiY"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="Yze-D0-rv0">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="yYY-ek-wiO">
-                            <connections>
-                                <segue destination="l4R-rS-UCd" kind="unwind" unwindAction="unwindToList:" id="BlP-O4-Oij"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="doneButton" destination="yYY-ek-wiO" id="Vkj-rT-HE1"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wxM-Rf-4oP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="l4R-rS-UCd" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="7889" y="1896"/>
         </scene>
         <!--Avatar Overview View Controller-->
         <scene sceneID="raq-ir-4h4">
@@ -2629,7 +2590,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="krt-d5-JgT">
-                                            <rect key="frame" x="61.666666666666629" y="15" width="30" height="30"/>
+                                            <rect key="frame" x="61.666666666666657" y="15" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="krt-d5-JgT" secondAttribute="height" multiplier="1:1" id="QjS-Tf-oOe"/>
                                             </constraints>
@@ -3441,12 +3402,36 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="pMX-Jf-kyX" kind="relationship" relationship="rootViewController" id="89T-KL-QcN"/>
+                        <segue destination="gBF-KX-ak9" kind="relationship" relationship="rootViewController" id="QhJ-Go-EjA"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ePU-FQ-HBY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7148" y="1896"/>
+        </scene>
+        <!--Notifications Table View Controller-->
+        <scene sceneID="A4s-5z-D7z">
+            <objects>
+                <hostingController id="gBF-KX-ak9" customClass="NotificationsTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbar key="view" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="2ZL-bV-0Zd">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="873"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <items>
+                            <barButtonItem title="Dismiss All" id="ZnK-Qf-tjA"/>
+                        </items>
+                    </toolbar>
+                    <navigationItem key="navigationItem" id="Ost-VA-F9E">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="pnW-up-PUQ">
+                            <connections>
+                                <segue destination="Lqr-6Q-6q1" kind="unwind" unwindAction="unwindToList:" id="G5h-Ay-Arb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oLK-Hy-12r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Lqr-6Q-6q1" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="7839" y="1896"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="k8I-xz-AVn">

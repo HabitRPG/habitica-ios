@@ -1118,6 +1118,8 @@ public enum L10n {
   public static var statAllocation: String { return L10n.tr("Mainstrings", "stat_allocation") }
   /// All Habitica characters have four stats that affect the gameplay aspects of Habitica.\n\n**Strength (STR)** affects critical hits and raises damage done to a Quest Boss. Warriors and Rogues gain STR from their class equipment.\n\n**Constitution (CON)** raises your HP and makes you take less damage. Healers and Warriors gain CON from their class equipment.\n\n**Intelligence (INT)** raises the amount of EXP you earn and gives you more Mana. Mages and Healers gain INT from their class equipment.\n\n**Perception (PER)** increases the gold you earn and the rate of finding dropped items. Rogues and Mages gain PER from their class equipment.\n\nAfter level 10, you earn 1 Stat Point every level you gain that you can put into any stat you’d like. You can also equip gear that has different combinations of stat boosts.
   public static var statDescription: String { return L10n.tr("Mainstrings", "stat_description") }
+  /// Stats
+  public static var stats: String { return L10n.tr("Mainstrings", "stats") }
   /// Streak
   public static var streak: String { return L10n.tr("Mainstrings", "streak") }
   /// You've completed your Daily for 21 days in a row! Amazing job. Don't break the streak!
@@ -1234,6 +1236,8 @@ public enum L10n {
   public static var tapToShow: String { return L10n.tr("Mainstrings", "tap_to_show") }
   /// Task History (Very Experimental)
   public static var taskHistory: String { return L10n.tr("Mainstrings", "task_history") }
+  /// Task Reminder
+  public static var taskReminder: String { return L10n.tr("Mainstrings", "task_reminder") }
   /// Teleporting to Habitica
   public static var teleportingHabitica: String { return L10n.tr("Mainstrings", "teleporting_habitica") }
   /// Terms of Service

@@ -29,7 +29,7 @@ public protocol Theme {
     var primaryTextColor: UIColor { get }
     var secondaryTextColor: UIColor { get }
     var ternaryTextColor: UIColor { get }
-var quadTextColor: UIColor { get }
+    var quadTextColor: UIColor { get }
     var dimmedTextColor: UIColor { get }
     var lightTextColor: UIColor { get }
     var badgeColor: UIColor { get }

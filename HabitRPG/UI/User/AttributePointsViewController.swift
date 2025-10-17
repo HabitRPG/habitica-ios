@@ -162,7 +162,7 @@ class AttributePointsViewController: BaseUIViewController {
 
         pointsToAllocateLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openBulkAssignView)))
         pointsToAllocateLabel.horizontalPadding = 12
-        pointsToAllocateLabel.verticalPadding = 4
+        pointsToAllocateLabel.verticalPadding = 12
         pointsToAllocateLabel.layer.cornerRadius = pointsToAllocateLabel.frame.size.height/2
     }
     
@@ -358,15 +358,14 @@ class AttributePointsViewController: BaseUIViewController {
     
     @objc
     func openBulkAssignView() {
-        let viewController = BulkStatsAllocationViewController(nibName: "BulkStatsAllocationView", bundle: Bundle.main)
-        let alert = HabiticaAlertController()
-        alert.contentView = viewController.view
-        alert.contentViewInsets = .zero
-        alert.addCancelAction()
-        alert.addAction(title: L10n.save, isMainAction: true) { _ in
-            viewController.save()
+        guard let stats = user?.stats else {
+            return
         }
-        alert.containerViewSpacing = 0
-        alert.show()
+        let sheet = HostingBottomSheetController(rootView: BulkStatsAllocationSheet(initialStrength: stats.strength,
+                                                                                    initialIntelligence: stats.intelligence,
+                                                                                    initialConstitution: stats.constitution,
+                                                                                    initialPerception: stats.perception,
+                                                                                    maxToAllocate: stats.points))
+        present(sheet, animated: true)
     }
 }

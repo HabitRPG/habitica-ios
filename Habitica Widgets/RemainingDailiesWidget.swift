@@ -190,7 +190,7 @@ struct CompletedView: View {
                     
                 }
                 .cornerRadius(6.0)
-            }.padding(.top, 12)
+            }.padding(.top, 10)
                 .frame(height: 12)
             Text("All done today!").font(Font.system(size: 12)).padding(.top, 4).foregroundColor(.widgetTextSecondary)
         }

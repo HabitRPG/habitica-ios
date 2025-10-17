@@ -12,6 +12,11 @@ import Habitica_Models
 
 class BaseNotificationCell<NP>: UITableViewCell {
     
+    private var containerView: UIView {
+        let view = UIView()
+        view.cornerRadius = 26
+        return view
+    }
     let iconView = NetworkImageView()
     internal let titleLabel: UILabel = {
         let label = UILabel()
@@ -132,6 +137,7 @@ class BaseNotificationCell<NP>: UITableViewCell {
     }
     
     internal func setupView() {
+        contentView.addSubview(containerView)
         contentView.addSubview(closeButton)
         contentView.addSubview(titleLabel)
         contentView.addSubview(iconView)
@@ -170,40 +176,37 @@ class BaseNotificationCell<NP>: UITableViewCell {
     internal func layout() {
         var endEdge = contentView.edge.end
         if isClosable {
-            closeButton.pin.top(12).end(16).size(22)
+            closeButton.pin.top(16).end(33).size(22)
             endEdge = closeButton.edge.start
         }
-        var offset: CGFloat = 0
-        if iconView.image != nil {
-            offset = 51
-            iconView.pin.start(20).top(9).minWidth(32).minHeight(32).sizeToFit()
-        }
-        if iconView.frame.totalHeight + 9 > cellHeight {
-            cellHeight = iconView.frame.totalHeight + 9
-        }
+        let offset: CGFloat = 56
+        iconView.pin.start(25).top(20).minWidth(32).minHeight(32).sizeToFit()
+        cellHeight = iconView.frame.totalHeight + 20
         var buttonEdge = contentView.edge.top
         if hasDescription {
-            titleLabel.pin.start(offset).marginStart(20).end(to: endEdge).marginEnd(16).top(16).sizeToFit(.width)
+            titleLabel.pin.start(offset).marginStart(20).end(to: endEdge).marginEnd(16).top(20).sizeToFit(.width)
             descriptionLabel.pin.start(offset).marginStart(20).end(to: endEdge).marginEnd(16).below(of: titleLabel).sizeToFit(.width)
-            let height = titleLabel.frame.totalHeight + descriptionLabel.frame.totalHeight + 16
+            let height = titleLabel.frame.totalHeight + descriptionLabel.frame.totalHeight + 20
             if height > cellHeight {
                 cellHeight = height
             }
             buttonEdge = descriptionLabel.edge.bottom
         } else {
-            titleLabel.pin.start(offset).marginStart(20).end(to: endEdge).marginEnd(16).top(16).bottom(1).sizeToFit(.width)
-            if titleLabel.frame.totalHeight + 16 > cellHeight {
-                cellHeight = titleLabel.frame.totalHeight + 16
+            titleLabel.pin.start(offset).marginStart(20).end(to: endEdge).marginEnd(16).top(20).bottom(1).sizeToFit(.width)
+            if titleLabel.frame.totalHeight + 20 > cellHeight {
+                cellHeight = titleLabel.frame.totalHeight + 20
             }
             buttonEdge = titleLabel.edge.bottom
         }
         
         if showResponseButtons {
             layoutResponseButtons(to: buttonEdge)
-            if declineButton.frame.totalHeight + 16 > cellHeight {
-                cellHeight = declineButton.frame.totalHeight + 16
+            if declineButton.frame.totalHeight + 20 > cellHeight {
+                cellHeight = declineButton.frame.totalHeight + 20
             }
         }
+        containerView.pin.start().end().top(4).height(cellHeight)
+        cellHeight += 8
     }
     
     func layoutResponseButtons(to edge: VerticalEdge) {
@@ -212,6 +215,7 @@ class BaseNotificationCell<NP>: UITableViewCell {
     }
     
     func configureFor(notification: NP) {
+        containerView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
         descriptionLabel.textColor = ThemeService.shared.theme.secondaryTextColor
         closeButton.tintColor = ThemeService.shared.theme.secondaryTextColor

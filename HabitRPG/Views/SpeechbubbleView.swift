@@ -66,8 +66,8 @@ class SpeechbubbleView: UIView, Themeable {
             view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
             addSubview(view)
             
-            textView.textContainerInset = UIEdgeInsets(top: 16, left: 20, bottom: 12, right: 12)
-            textView.layer.cornerRadius = 4
+            textView.textContainerInset = UIEdgeInsets(top: 20, left: 20, bottom: 16, right: 12)
+            textView.layer.cornerRadius = 26
             ThemeService.shared.addThemeable(themable: self)
             
             namePlateBackgroundView.image = #imageLiteral(resourceName: "Nameplate").resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 21, bottom: 0, right: 21))

@@ -469,7 +469,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     }
     
     func displayInAppNotification(taskID: String, text: String) {
-        let alertController = HabiticaAlertController(title: text)
+        let alertController = HabiticaAlertController(title: L10n.taskReminder, message: text)
         alertController.addAction(title: L10n.complete, style: .default, isMainAction: true, closeOnTap: true, identifier: nil) {[weak self] _ in
             self?.scoreTask(taskID, direction: .up) {}
         }

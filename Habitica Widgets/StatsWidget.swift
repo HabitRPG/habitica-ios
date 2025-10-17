@@ -73,16 +73,18 @@ struct StatsWidgetView: View {
             if entry.widgetFamily != .systemSmall {
                 Spacer()
                 HStack {
-                    Text(L10n.levelNumber(entry.level)).font(.footnote).foregroundColor(Color.widgetText)
+                    Text(L10n.levelNumber(entry.level))
                     Spacer()
                     Image("Gold")
-                    Text("\(entry.gold)".stringWithAbbreviatedNumber()).font(.footnote).foregroundColor(Color.widgetText)
+                    Text("\(entry.gold)".stringWithAbbreviatedNumber())
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 8))
                     Image("Gem")
-                    Text("\(entry.gems)".stringWithAbbreviatedNumber()).font(.footnote).foregroundColor(Color.widgetText)
+                    Text("\(entry.gems)".stringWithAbbreviatedNumber())
                 }
             }
-                }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+                }
+        .font(.system(size: 13, weight: .semibold)).foregroundColor(Color.widgetText)
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
             .padding(widgetPadding())
         .widgetBackground(Color.widgetBackground)
             }
@@ -122,10 +124,11 @@ struct ValueBar: View {
                 }.frame(height: thickness, alignment: .center)
                     .frame(maxWidth: .infinity, alignment: .center)
                 if showLabels { HStack {
-                    Text(title).font(.caption).foregroundColor(Color.widgetText)
+                    Text(title)
                     Spacer()
-                    Text("\(Int(value))/\(Int(maxValue))").font(.caption).foregroundColor(Color.widgetText)
-                }.padding(.top, 2) }
+                    Text("\(Int(value))/\(Int(maxValue))")
+                }
+                    .padding(.top, 2) }
             })
         }
     }

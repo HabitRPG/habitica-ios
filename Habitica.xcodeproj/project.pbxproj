@@ -411,6 +411,8 @@
 		29C55B352C21A419008F553A /* CwlCatchException in Frameworks */ = {isa = PBXBuildFile; productRef = 29C55B342C21A419008F553A /* CwlCatchException */; };
 		29C55B372C21AEC4008F553A /* CwlCatchException in Frameworks */ = {isa = PBXBuildFile; productRef = 29C55B362C21AEC4008F553A /* CwlCatchException */; };
 		29C55B392C21AF74008F553A /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 29C55B382C21AF74008F553A /* Nimble */; };
+		29C9BDDD2E9EA21000FC4FCA /* HabiticaButtonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C9BDDC2E9EA21000FC4FCA /* HabiticaButtonUI.swift */; };
+		29C9BDDF2E9FE48400FC4FCA /* BulkStatsAllocationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C9BDDE2E9FE48400FC4FCA /* BulkStatsAllocationSheet.swift */; };
 		29CAC3C92A3A11B5006DF74D /* LookingForPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CAC3C82A3A11B5006DF74D /* LookingForPartyViewController.swift */; };
 		29CAC3CB2A3A1288006DF74D /* BaseHostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CAC3CA2A3A1288006DF74D /* BaseHostingViewController.swift */; };
 		29CAC3CD2A3C7C61006DF74D /* PartyInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CAC3CC2A3C7C61006DF74D /* PartyInviteViewController.swift */; };
@@ -1130,6 +1132,8 @@
 		29C38C8A24A48F9D00F219A1 /* AchievementAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementAlertController.swift; sourceTree = "<group>"; };
 		29C5A72B22F08C010083749D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		29C600A120F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		29C9BDDC2E9EA21000FC4FCA /* HabiticaButtonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaButtonUI.swift; sourceTree = "<group>"; };
+		29C9BDDE2E9FE48400FC4FCA /* BulkStatsAllocationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkStatsAllocationSheet.swift; sourceTree = "<group>"; };
 		29CAC3C82A3A11B5006DF74D /* LookingForPartyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookingForPartyViewController.swift; sourceTree = "<group>"; };
 		29CAC3CA2A3A1288006DF74D /* BaseHostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHostingViewController.swift; sourceTree = "<group>"; };
 		29CAC3CC2A3C7C61006DF74D /* PartyInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyInviteViewController.swift; sourceTree = "<group>"; };
@@ -1766,6 +1770,7 @@
 		2967CF80252479FA00F366DF /* Basic */ = {
 			isa = PBXGroup;
 			children = (
+				29C9BDDC2E9EA21000FC4FCA /* HabiticaButtonUI.swift */,
 				29FC88592017C039002B3D3F /* CollapsibleStackView.swift */,
 				29FC88552017B840002B3D3F /* CollapsibleTitle.swift */,
 				296CB4ED218C99FD0044A33E /* HabiticaButton.swift */,
@@ -2622,6 +2627,7 @@
 				29359A512BE8F8F8009790DE /* CTAFooterView.swift */,
 				299564202BEE488A00B1A68F /* AvatarHeaderView.swift */,
 				29B30EBA2E0ADE92001B587B /* Settings */,
+				29C9BDDE2E9FE48400FC4FCA /* BulkStatsAllocationSheet.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3660,6 +3666,7 @@
 				4994065A20C83D4F0084CC40 /* DailyTableViewController.swift in Sources */,
 				292F968020723A4D00804151 /* ImageManager.swift in Sources */,
 				290B62412072711A007287C4 /* PublicGuildCell.swift in Sources */,
+				29C9BDDF2E9FE48400FC4FCA /* BulkStatsAllocationSheet.swift in Sources */,
 				296F51642358E5EF0019C872 /* SubscriptionPromoView.swift in Sources */,
 				293BB4A91FD0806C003B6F4F /* BulkStatsAllocationViewController.swift in Sources */,
 				292DEE78204E1FFD0086D5F7 /* CheckboxView.swift in Sources */,
@@ -3715,6 +3722,7 @@
 				299F93F1246D9C49008DB702 /* PaddedTextField.swift in Sources */,
 				C897F63C218CCF51002907C2 /* RouterHandler.swift in Sources */,
 				2910EFCA2C16EC8700D6D1E8 /* OldAvatarDetailViewDataSource.swift in Sources */,
+				29C9BDDD2E9EA21000FC4FCA /* HabiticaButtonUI.swift in Sources */,
 				D9525F9D1E64739900C529B8 /* PaddedView.swift in Sources */,
 				2914488C2089E2D300F3A6B5 /* AvatarOverviewItemView.swift in Sources */,
 				290C302C206BACBB0066AF5B /* SpellsTableViewDataSource.swift in Sources */,

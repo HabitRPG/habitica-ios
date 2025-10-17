@@ -14,10 +14,6 @@ import UIKit
 struct TaskListProvider: TimelineProvider {
     let taskType: TaskType
     
-    init(taskType: TaskType) {
-        self.taskType = taskType
-    }
-    
     func placeholder(in context: Context) -> TaskListEntry {
         TaskListEntry(widgetFamily: context.family, taskType: taskType)
     }
@@ -52,7 +48,7 @@ struct TaskListWidgetView: View {
     var entry: TaskListEntry
 
     var body: some View {
-        GeometryReader { geometry in
+        Group {
             if entry.widgetFamily == .systemMedium {
                 HStack {
                     VStack(alignment: .leading) {

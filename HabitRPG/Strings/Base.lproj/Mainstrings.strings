@@ -1441,6 +1441,7 @@
 "class_change_success_description" = "You can now use %@ skills and purchase gear from shops. Gain levels to earn stat points you can use to power up your skills.";
 "got_it" = "Got it!";
 "open_stats" = "Open Stats";
+"stats" = "Stats";
 "continue_benefits" = "Continue Benefits";
 "x_x_gem_cap" = "%d / %d Gem Cap";
 "resubscribe_to_pick_up" = "Resubscribe to pick up where you left off!";
@@ -1463,3 +1464,4 @@
 "participating" = "Participating";
 "not_participating" = "Not participating";
 "ownership" = "Ownership";
+"task_reminder" = "Task Reminder";
