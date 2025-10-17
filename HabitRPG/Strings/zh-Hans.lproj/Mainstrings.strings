@@ -1550,3 +1550,4 @@
 "quest_items_found" = "你找到了%d副本物品";
 "save_preferences" = "保存偏好设置";
 "login.username_description" = "此为专属名称，支持随时修改！";
+"take_effect_immediately" = "购买后即刻生效！";

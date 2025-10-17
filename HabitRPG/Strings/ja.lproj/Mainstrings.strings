@@ -1574,3 +1574,4 @@
 "your_privacy_preferences" = "プライバシー設定";
 "settings.user_data" = "ユーザーデータ";
 "api_token_is_password" = "あなたのAPIトークンはパスワードのようなものです";
+"api_token_reset_title" = "新しいAPIトークンが必要な場合は";
