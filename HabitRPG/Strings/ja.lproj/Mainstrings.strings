@@ -808,7 +808,7 @@
 "about.love_open_source" = "私たちはオープンソースのソフトウェアが大好きです。";
 "about.no_email_message" = "おっと、どうやらあなたはこの電話でメールアドレスを設定していないようです。このクイック報告オプションを使うには、iOSのメールアプリでアカウントを設定してください。もしくは、%@で直接私たちにメールを送ってください";
 "damage_paused" = "ダメージを一時停止する";
-"login.password_confirm_error" = "パスワードとパスワードの確認は一致しなくてはなりません。なおかつ8文字以上である必要があります。";
+"login.password_confirm_error" = "パスワードとパスワードの確認は一致しなくてはなりません。";
 "login.authentication_error" = "認証にエラーが発生しました。あとで再試行してください";
 "login.email_username" = "Eメール / ユーザー名";
 "login.forgot_password" = "パスワードを忘れた";
@@ -867,11 +867,11 @@
 "publish_challenge" = "公共のチャレンジ";
 "view_participant_progress" = "参加者の進捗を見る";
 "end_challenge" = "チャレンジを終了する";
-"subscription_info_1_description" = "市場で最大50ジェムを手に入れ、クエストやカスタマイズ、ペットなどを購入しましょう！";
+"subscription_info_1_description" = "市場でゴールドで購入可能なジェムを最大50個手に入れ、クエストやカスタマイズ、ペットなどを購入しましょう！";
 "subscription_info_2_description" = "タイムトラベラーの店で使える毎月1個の神秘の砂時計を見逃さないで！";
 "subscription_gift_explanation" = "有料プランの特典を誰かにプレゼントしたいですか？";
 "subscription_gift_button" = "有料プランをプレゼントする";
-"subscription_support_developers" = "有料プランに加入することで、小規模なのHabitica運営チームを支援し、Habiticaを維持する手助けができます。ありがとうございます！";
+"subscription_support_developers" = "有料プランに加入することで、小規模なのHabitica運営チームを支援し、Habiticaを維持する手助けができます";
 "subscribe" = "有料プランに加入する";
 "send_gift" = "贈り物を送る";
 "gift_one_get_one_title" = "誰かに有料プランをプレゼントすると、同じ分の有料プランが無料で適用されます";
@@ -1142,7 +1142,7 @@
 "user_was_blocked" = "%@をブロックしました。";
 "block_description" = "ブロックしたユーザーからはプライベートメッセージを受けとれません。しかし、そのプレイヤーの投稿は見ることができます。";
 "joined_challenge" = "チャレンジに参加しました";
-"hourglasses_description" = "神秘の砂時計は極めてレアなゲーム内通貨で、Habiticaの有料会員を3ヶ月以上継続することで受け取れます。タイムトラベラーの店で神秘の砂時計を使って、過去の装備セット・ペット・乗騎・動く背景・特別なクエストなどを購入できます。\n\nあなたは神秘の砂時計を年に4つ受け取れます。入手のタイミングは有料会員の更新スケジュールに基づいています。砂時計を入手できる期間の有料プランを支払うと、その翌月の最初の日に配布されます。詳しくは [有料プラン] のページをご覧ください。";
+"hourglasses_description" = "神秘の砂時計は極めてレアなゲーム内通貨で、Habiticaの有料プランに登録しないと受け取れません。タイムトラベラーの店で神秘の砂時計を使って、有料会員限定の装備セット・ペット・乗騎・動く背景・特別なクエストなどを購入できます。これらの追加特典は、年間を通してやる気を出したり、よくできたときに自分にご褒美を与えたりするために便利です。\n\n有料会員は毎月の初めに神秘の砂時計1つと、他にもたくさんの特典がゲットできます。タイムトラベラーの店でどんなものが買えるか、興味のある人はぜひ有料プランのオプションを見てください！";
 "mystic_hourglasses" = "神秘の砂時計";
 "subscriber_currency" = "有料会員特典のゲーム内通貨";
 "gems_description" = "ジェムは現実のお金で購入するゲーム内通貨です。ジェムで追加コンテンツを購入できます。ジェムの購入金は有料プランとともにHabiticaチームの主要な資金源になっています。\n\nジェムで購入できる全てのコンテンツは、単なる装飾品か、あるいは時間をかければ無料でも入手できるものです。\n\nジェムは、他のプレイヤーからの贈り物・チャレンジの賞品・Habiticaへの貢献・有料プランの特典などでも受け取ることができます。";
@@ -1172,7 +1172,7 @@
 "end_challenge_description" = "チャレンジを終わらせるにはHabiticaのウェブサイトにログインして「チャレンジ」画面の右上の「チャレンジを終了する」をタップしてください。";
 "create_guild_description" = "ギルドを作るにはHabiticaのウェブサイトにログインして「所属ギルド」画面の「作る」ボタンをタップしてください。";
 "create_guild" = "ギルドを作成";
-"gift_one_get_one_data.info_limitations" = "このイベントは%@(%@ UTC)から%@(%@ UTC)までの期間限定です。プロモーションは他のプレイヤーにギフトを贈った際にのみ適用されます。もしギフトを受け取った人がすでに有料会員の場合、有料会員期間が延長されます。この延長は、現在の有料会員期間を満了もしくはキャンセルした後にのみ適用されます。";
+"gift_one_get_one_data.info_limitations" = "このイベントは%@から%@までの期間限定です。プロモーションは他のプレイヤーにギフトを贈った際にのみ適用されます。もしギフトを受け取った人がすでに有料会員の場合、有料会員期間が延長されます。この延長は、現在の有料会員期間を満了もしくはキャンセルした後にのみ適用されます。";
 "gift_one_get_one_data.info_instructions" = "「有料プランをプレゼントする」をタップして、贈る相手のユーザーネームを入力し、プレゼントする有料プランの期間を選択してください。自動的にあなたのアカウントにもプレゼントした分と同じ期間のプランが無料で適用されます。";
 "gift_one_get_one_data.infoPrompt" = "贈り物の季節を祝して、特別なプロモーションを再び開催しています。いま誰かに有料プランをプレゼントすると、あなた自身も同じプランを無料で受けることができます！";
 "use_immediately_disclaimer" = "買うとすぐに効果があらわれます！";
@@ -1398,7 +1398,7 @@
 "social.x_leader" = "%s リーダー";
 "groups.groups" = "グループ";
 "groups.copy_shared_tasks_description" = "割り当てられたタスクと未完了のタスクを個人のタスク リストに表示する";
-"unsubscribe_google" = "もう有料プランを続けたくないですか？ あなたの支払方法では、 Google Playからのみ有料プランを解約できます。";
+"unsubscribe_google" = "もう有料プランを続けたくないですか？ あなたの支払方法では、 Google プレイストアから有料プランを解約しなければなりません。有料プランの残りのクレジットはキャンセル後、終了日に加算されます。";
 "errors.enter_valid_email" = "有効なメールアドレスをご入力ください";
 "errors.password_length" = "パスワードは%d文字以上にする必要があります";
 "faint.subtitle" = "あなたは、**レベル %s**に下がり、**%s ゴールド**を失い、**装備を1個**失います…頑張ればすべて取り戻せます！";
@@ -1445,7 +1445,7 @@
 "subscription.info_armoire_description" = "ラッキー宝箱を開けるたびに、新しい装備を獲得するチャンスが2回あります！";
 "subscription.armore_header" = "有料会員は、宝箱での特別なチャンスやその他の特典を得ることができます！";
 "subscription.gem_for_gold_header" = "ゴールドでジェムを購入したり、他の限定特典を受け取るために有料プランに加入しましょう！";
-"subscription.hourglasses_header" = "有料会員は、タイムトラベラーの店でアイテムを購入できる神秘の砂時計や、その他の限定特典を得ることができます！";
+"subscription.hourglasses_header" = "有料会員は毎月、神秘の砂時計や、いろいろな限定特典を得ることができます！";
 "report_x_question" = "なぜこの%@を報告するのですか？";
 "reason_for_report" = "報告の理由";
 "this_will_also_block_x" = "%@ もブロックします";
@@ -1535,7 +1535,7 @@
 "is_closed" = "閉店中";
 "items.footer_quests_title" = "もっとクエストが欲しいですか？";
 "items.footer_food_title" = "タスクから正しいエサがもらえてないですか？";
-"items.footer_title" = "タスクから欲しいアイテムが手に入らない？";
+"items.footer_title" = "タスクから欲しいアイテムが手に入りませんか？";
 "items.footer_description" = "市場をチェックして、必要なものだけを買いましょう！";
 "items.footer_food_description" = "マーケットでエサやくらを買って、ペットを速く育てましょう！";
 "items.footer_quests_descriptions" = "クエスト・ショップに何があるかチェックしましょう！";
@@ -1577,3 +1577,4 @@
 "api_token_reset_title" = "新しいAPIトークンが必要な場合";
 "save_preferences" = "設定を保存";
 "settings.manage_privacy_preferences" = "プライバシー設定を編集する";
+"take_effect_immediately" = "購入後すぐに反映されます！";
