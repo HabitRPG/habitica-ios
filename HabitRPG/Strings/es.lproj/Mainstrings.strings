@@ -1663,3 +1663,4 @@
 "errors.username_already_taken" = "Nombre de usuario ya en uso.";
 "one_quest_item_found" = "Has encontrado 1 artículo de misión";
 "quest_items_found" = "Has encontrado %d artículos de misión";
+"take_effect_immediately" = "¡Esto tendrá efecto inmediatamente después de su compra!";
