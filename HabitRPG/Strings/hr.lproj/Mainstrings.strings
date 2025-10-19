@@ -1,7 +1,7 @@
 /* (No Comment) */
 "active" = "Aktivni";
 /* (No Comment) */
-"animal_ears" = "Životinjske uši";
+"animal_ears" = "Životinjske Uši";
 /* (No Comment) */
 "avatar.background" = "Pozadina";
 /* (No Comment) */
@@ -115,9 +115,9 @@
 /* (No Comment) */
 "groups.assign_new_leader" = "Odaberi novog vođu";
 /* (No Comment) */
-"groups.guild_invitation_invitername" = "%@ te pozvao/la da se priključiš Cehu: %@";
+"groups.guild_invitation_invitername" = "**@%@** vas je pozvao da se pridružite Klanu: **%@**";
 /* (No Comment) */
-"groups.guild_invitation_no_invitername" = "Netko te pozvao da se priključiš Cehu: %@";
+"groups.guild_invitation_no_invitername" = "Netko vas je pozvao da se pridružite Klanu: **%@**";
 /* (No Comment) */
 "groups.leader_challenges" = "Samo vođa može kreirati Izazove";
 /* (No Comment) */
@@ -135,7 +135,7 @@
 /* (No Comment) */
 "hatching_potions" = "Napitci za izlijeganje";
 /* (No Comment) */
-"headband" = "Obruč za kosu";
+"headband" = "Traka za glavu";
 /* (No Comment) */
 "health" = "Zdravlje";
 /* (No Comment) */
@@ -145,11 +145,11 @@
 /* (No Comment) */
 "inventory.hatched" = "Izlegli ste novog ljubimca!";
 /* (No Comment) */
-"inventory.no_gems_left" = "Ovaj mjesec nemaš više dostupnih Dragulja. Više ih postane dostupno unutar prva 3 dana svakog mjeseca.";
+"inventory.no_gems_left" = "Kupili ste sve Dragulje koje možete ovaj mjesec. Više će ih biti dostupno unutar prva tri dana svakog mjeseca. Hvala vam na pretplati!";
 /* (No Comment) */
-"inventory.number_gems_left" = "Preostalo mjesečnih Dragulja: %d/%d";
+"inventory.number_gems_left" = "Mjesečni Dragulji: %d/%d Preostalo";
 /* (No Comment) */
-"inventory.wrong_class" = "Dostupno samo za klasu %@. Možeš promijeniti svoju klasu u postavkama";
+"inventory.wrong_class" = "Dostupno samo za %@s. Možete promijeniti svoju klasu u Postavkama";
 /* (No Comment) */
 "invite_party" = "Pozovi Grupu";
 /* (No Comment) */
@@ -161,11 +161,11 @@
 /* (No Comment) */
 "level_number" = "Razina %d";
 /* (No Comment) */
-"levelup_description" = "Postizanjem svojih životnih ciljeva, dostigao/la si level %ld!";
+"levelup_description" = "Postizanjem svojih ciljeva iz stvarnog života, prešli ste na višu razinu i sada ste potpuno izliječeni!";
 /* (No Comment) */
 "levelup_share" = "Došao/la sam do levela %ld u Habitici poboljšavajući svoje navike u stvarnom životu!";
 /* (No Comment) */
-"levelup_title" = "Dosegnuo/la si novi level!";
+"levelup_title" = "Dosegnuli ste Razinu %ld!";
 /* (No Comment) */
 "mana" = "Mana";
 /* (No Comment) */
@@ -199,11 +199,11 @@
 /* (No Comment) */
 "ok" = "OK";
 /* (No Comment) */
-"one_month" = "1 mjesec";
+"one_month" = "1 Mjesec";
 /* (No Comment) */
 "open" = "Otvori";
 /* (No Comment) */
-"open_itunes" = "Otvori iTunes";
+"open_itunes" = "Otvori Pretplate za Apple ID";
 /* (No Comment) */
 "open_website" = "Otvori web stranicu Habitice";
 /* (No Comment) */
@@ -221,7 +221,7 @@
 /* (No Comment) */
 "pets" = "Ljubimci";
 /* (No Comment) */
-"plain_backgrounds" = "Obične pozadine";
+"plain_backgrounds" = "Standardne Pozadine";
 /* (No Comment) */
 "purchase_for_gems" = "Kupi za %d Dragulja";
 /* (No Comment) */
@@ -229,15 +229,15 @@
 /* (No Comment) */
 "quests.accepted" = "Prihvaćeno";
 /* (No Comment) */
-"quests.boss_battle" = "Borba protiv Bosa";
+"quests.boss_battle" = "Borba protiv Bossa";
 /* (No Comment) */
 "quests.collection_quest" = "Pustolovina prikupljanja";
 /* (No Comment) */
-"quests.confirm_abort" = "Jesi li siguran/na da želiš otkazati ovu pustolovinu? Ovo će je otkazati za sve u tvojoj družini i sav napredak će biti izgubljen. Pustolovni svitak će biti vraćen vlasniku pustolovine.";
+"quests.confirm_abort" = "Jesi li sigurni da želite prekinuti ovu misiju? Bit će prekinuta za sve u tvojoj grupi i sav napredak bit će izgubljen. Svitak za potragu bit će vraćen vlasniku pustolovine.";
 /* (No Comment) */
-"quests.confirm_cancel_invitation" = "Jesi li siguran/na da želiš otkazati ovu pustolovinu? Svi prihvaćeni pozivi će biti izgubljeni. Vlasnik pustolovine će zadržati pustolovni svitak u svom posjedu.";
+"quests.confirm_cancel_invitation" = "Jesi li sigurni da želite otkazati ovu Pustolovinu? Sva prihvaćanja pozivnica bit će izgubljena. Vlasnik Pustolovine zadržat će posjed svitka za Pustolovinu.";
 /* (No Comment) */
-"quests.confirm_force_start" = "Jesi li siguran/na? Još se nisu svi članovi družine priključili pustolovini! Pustolovine počinju automatski kad se svi igrači pridruže ili pak odbiju poziv.";
+"quests.confirm_force_start" = "Jesi li sigurni? Nisu svi članovi grupe prihvatili ovu Pustolovinu! Pustolovine se automatski pokreću kada se svi igrači pridruže ili odbiju pozivnicu.";
 /* (No Comment) */
 "quests.invitations_header" = "Pozivnice";
 /* (No Comment) */
@@ -247,7 +247,7 @@
 /* (No Comment) */
 "quests.rejected" = "Odbijeno";
 /* (No Comment) */
-"quests.started_by" = "Započeo/la je %@";
+"quests.started_by" = "Započeli %@";
 /* (No Comment) */
 "reset_tips" = "Resetiraj Upute";
 /* (No Comment) */
@@ -479,13 +479,13 @@
 /* (No Comment) */
 "unequip" = "Ukloni";
 /* (No Comment) */
-"unsubscribe_itunes" = "Ne želiš više biti pretplatnik? Možeš upravljati svojom pretplatom kroz iTunes.";
+"unsubscribe_itunes" = "Želite li promijeniti trajanje pretplate ili je u potpunosti otkazati? Svoju pretplatu možete urediti ili otkazati tako da idete u aplikaciju Postavke i pregledate pretplate za vaš Apple ID.";
 /* (No Comment) */
-"unsubscribe_website" = "Ne želiš više biti pretplatnik? Zbog tvog načina plaćanja, možeš otkazati pretplatu jedino putem web stranice.";
+"unsubscribe_website" = "Ne želite više biti pretplaćeni? Zbog vaše metode plaćanja, morat ćete otkazati pretplatu na našoj web stranici. Da bi to učinili, dodirnite gumb ispod, prijavite se na vaš račun, dodirnite ikonu igrača u gornjem desnom kutu, a zatim idite u odjeljak Pretplata. Svi preostali mjeseci pretplatničkog kredita bit će vam dodani krajnjem datumu nakon otkazivanja. Nedostajat ćete nam!";
 /* (No Comment) */
 "weekly" = "Tjedno";
 /* (No Comment) */
-"x_months" = "%d mjeseci";
+"x_months" = "%d Mjeseci";
 /* (No Comment) */
 "yearly" = "Godišnje";
 "back" = "Nazad";
@@ -833,3 +833,75 @@
 "party.create_party_button" = "Kreiraj novu Grupu";
 "inventory.hatched_sharing" = "Upravo sam izlegao/la %@ %@ ljubimca u Habitici dovršavajući svoje zadatke iz stvarnog života!";
 "stable.type" = "Vrsta";
+"group_plan" = "Grupni Plan";
+"groups.members" = "Članovi";
+"party.leave" = "Napusti Grupu";
+"party.leave_looking_for_party_subtitle" = "Pripazi na pozivnicu ili pokreni vlastitu Grupu u bilo koje vrijeme";
+"groups.group" = "Grupa";
+"groups.group_plan_settings" = "Postavke Plana Grupe";
+"open_google_play" = "Otvori Google Play Trgovinu";
+"party.quest_not_participating" = "Vi ne sudjelujete";
+"monthly_backgrounds" = "Mjesečne Pozadine";
+"quests.confirm_leave" = "Jeste li sigurni da želite napustiti Pustolovinu? Sav vaš napredak bit će izgubljen.";
+"quests.reward_experience" = "%d Bodova Iskustva";
+"quests.unlock_previous" = "Otključajte tako što ćete završiti Pustolovinu %d";
+"event_backgrounds" = "Pozadine Događaja";
+"party.join_party_description" = "Želiš se pridružiti Grupi s drugima, ali ne poznaješ nijednog drugog igrača? Obavijesti Vođe Grupa da tražiš pozivnicu!";
+"party.look_for_party" = "Tražite Grupu";
+"party.looking_for_party" = "Tražite Grupu!";
+"party.looking_for_party_subtitle" = "Pripazi na pozivnicu ili pokreni vlastitu Grupu u bilo koje vrijeme";
+"party.party_challenges" = "Izazovi Grupe";
+"party.start_quest" = "Započni Pustolovinu";
+"groups.copy_shared_tasks" = "Kopiraj dijeljene zadatke";
+"groups.copy_shared_tasks_description" = "Prikaži dodijeljene i otvorene zadatke na svojim osobnim listama zadataka";
+"unsubscribe_google" = "Ne želite više biti pretplaćeni? Zbog vaše metode plaćanja, morat ćete otkazati pretplatu putem Google Play Trgovine. Svi preostali mjeseci pretplatničkog kredita bit će vam dodani krajnjem datumu nakon otkazivanja.";
+"ponytail" = "Repovi";
+"subscription_credit_title" = "Vaših **%d mjeseci** pretplatničkog kredita aktivirat će se nakon otkazivanja";
+"groups.invite_member" = "Pozovi Člana";
+"groups.find_members" = "Pronađi Članove";
+"groups.list" = "Spisak";
+"groups.invited" = "Pozvani!";
+"groups.invite_pending" = "Pozivnica na Čekanju";
+"groups.rescinded" = "Opozvano";
+"groups.removed" = "Uklonjeno %@";
+"groups.by_invite" = "Po Pozivu";
+"groups.send_invite" = "Pošalji Pozivnicu";
+"groups.cancel_invite" = "Otkaži Pozivnicu";
+"groups.invited_x" = "pozvali @%@";
+"groups.groups" = "Grupe";
+"groups.transferred_to" = "Vodstvo je preneseno na %@";
+"groups.find_more_members" = "Pronađi više članova";
+"groups.lfp.subtitle" = "Ovo je popis igrača koji se žele pridružiti Grupi";
+"groups.lfp.subtitle_empty" = "Trenutno nitko ne traži Grupu. Možete provjeriti ponovo kasnije!";
+"quests.unlock_previous_short" = "Završite Pustolovinu %d";
+"inventory.available_for" = "Dostupan za %@";
+"member_group_plan" = "Članovi Grupnog Plana";
+"size" = "Veličina";
+"open_app_store" = "Otvorite stranicu App Store";
+"shirt" = "Majica";
+"quests.reward_gold" = "%d Zlata";
+"quests.rage_attack" = "Napad bijesa: %@";
+"quests.unlock_level_short" = "Razina %d";
+"remove" = "Ukloni";
+"bangs" = "Šiške";
+"transfer_ownership" = "Prebaci Vodstvo";
+"party.leave_party_description" = "Želite li napustiti grupu i zadržati ili ostaviti izazove?";
+"time_travel_backgrounds" = "Pozadine Putnika kroz Vrijeme";
+"quests.unlock_incentive_short" = "%d Prijava";
+"party.join_party_title" = "Želite li se pridružiti Grupi?";
+"pending_items" = "Predmeti na čekanju";
+"quests.confirm_leave_nostart" = "Jeste li sigurni da želite napustiti Pustolovinu? Nećete moći sudjelovati.";
+"quests.unlock_incentive" = "Otključajte prijavom %d puta";
+"quests.unlock_level" = "Otključajte dostizanjem razine %d";
+"party.transfer_ownership_title" = "Prebaci Vodstvo?";
+"party.remove_from_party" = "Ukloni Člana";
+"flower" = "Cvijeće";
+"quests.unlock_invite" = "Otključajte pozivom prijatelja u svoju grupu";
+"transfer" = "Prebaci";
+"party.leave_party_title" = "Jeste li sigurni da želiš napustiti Grupu?";
+"party.transfer_ownership_description" = "Time ćete ućiniti %@ da postane novi vođa Grupe";
+"quests.unlock_invite_short" = "Pozovi Prijatelje";
+"party.party_description" = "Opis Grupe";
+"wheelchair" = "Kolica";
+"party.remove_member_title" = "Jeste li sigurni da želite ukloniti %@ iz grupe?";
+"color" = "Boja";
