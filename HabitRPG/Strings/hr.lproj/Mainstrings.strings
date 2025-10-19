@@ -15,7 +15,7 @@
 /* (No Comment) */
 "avatar.hair_style" = "Frizura";
 /* (No Comment) */
-"avatar.hairColor" = "Boja kose";
+"avatar.hairColor" = "Boja Kose";
 /* (No Comment) */
 "avatar.head" = "Glava";
 /* (No Comment) */
@@ -23,13 +23,13 @@
 /* (No Comment) */
 "avatar.shirt" = "Majica";
 /* (No Comment) */
-"avatar.skin" = "Boja kože";
+"avatar.skin" = "Izgled";
 /* (No Comment) */
-"avatar.wheelchair" = "Invalidska kolica";
+"avatar.wheelchair" = "Kolica";
 /* (No Comment) */
 "cancel" = "Otkaži";
 /* (No Comment) */
-"chat" = "Chat";
+"chat" = "Razgovor";
 /* (No Comment) */
 "classes.become_a_class" = "Postani %@";
 /* (No Comment) */
@@ -37,19 +37,19 @@
 /* (No Comment) */
 "classes.healer" = "Iscjelitelj";
 /* (No Comment) */
-"classes.healer_description" = "Iscjelitelji su otporni na štetu i pružaju zaštitu sebi i drugima. Propušteni Svakodnevni zadaci i loše Navike ih ne uznemiravaju u tolikoj mjeri jer znaju kako nadoknaditi izgubljeno Zdravlje. Igraj Iscjelitelja ako ako uživaš u pomaganju drugim članovima svoje Družine, ili ako te inspirira pomisao na varanje Smrti pomoću marljivog rada!";
+"classes.healer_description" = "Iscjelitelji nepokolebljivo stoje protiv štete te tu zaštitu pružaju i drugima. Propušteni Dnevni zadaci i loše Navike ih ne uznemiravaju previše, a imaju i načine za obnavljanje Zdravlja usprkos neuspjehu. Odaberite Iscjelitelja ako uživate u pomaganju drugima u svojoj Grupi ili ako vas inspirira ideja izbjegavanja Smrti marljivim radom!";
 /* (No Comment) */
 "classes.mage" = "Čarobnjak";
 /* (No Comment) */
-"classes.mage_description" = "Čarobnjaci brzo uče te dobivajući na Iskustvu i Levelima brže od ostalih klasa. Također dobivaju jako puno Mane za korištenje svojih posebnih vještina. Igraj Čarobnjaka ako uživaš u taktičkim igračim aspektima Habitice ili ako ti podizanje levela i otključavanje naprednih mogućnosti daje jaku motivaciju!";
+"classes.mage_description" = "Čarobnjaci brzo uče, stječući Iskustvo i Razine brže od ostalih klasa. Također dobivaju veliku količinu Mane za korištenje posebnih sposobnosti. Odaberite Čarobnjaka ako uživate u taktičkim aspektima Habitice ili ako vas snažno motivira povećavanje razine i otključavanje naprednih značajki!";
 /* (No Comment) */
 "classes.rogue" = "Lupež";
 /* (No Comment) */
-"classes.rogue_description" = "Lupeži vole akumulirati bogatstvo, dobivaju više Zlatnika od ostalih, također su bolji u nalaženju nasumičnih predmeta. Njihova poznata moć Tajnosti im daje sposobnost izbjegavanja posljedica neizvršenih Svakodnevnih zadataka. Igraj Lupeža ako te jako motiviraju Nagrade i Postignuća i ako stremiš ka sakupljanju plijena i znački!";
+"classes.rogue_description" = "Lupeži obožavaju gomilati bogatstvo, zarađujući više Zlata od bilo koje druge klase i vješti su u pronalasku nasumičnih predmeta. Njihova prepoznatljiva vještina Prikrivanja omogućuje im da izbjegnu posljedice propuštenih Dnevnih zadataka. Odaberite Lupeža ako vas snažno motiviraju Nagrade i Postignuća, te ako težite plijenu i značkama!";
 /* (No Comment) */
 "classes.warrior" = "Ratnik";
 /* (No Comment) */
-"classes.warrior_description" = "Ratnici postižu više \"kritičnih udaraca\" koji nasumično donose dodatno Zlatnika, Iskustva i šansi za dobivanje poklona prilikom izvršavanja zadatka. Također nanose veliku štetu u borbi protiv Bosova. Igraj ulogu Ratnika ako te motiviraju nepredvidive nagrade u stilu jackpota ili ako želiš rasturiti u Pustolovinama potjere Bosa!";
+"classes.warrior_description" = "Ratnici postižu više i bolje \"kritične udarce\", koji nasumično daju bonus Zlato, Iskustvo i povećavaju šansu za dobivanje predmeta pri završavanju zadatka. Oni također nanose veliku štetu Bossevima. Odaberite Ratnika ako vas motiviraju nepredvidive nagrade u stilu jackpota ili ako želite nanositi tešku štetu u Potragama sa Šefovima!";
 /* (No Comment) */
 "close" = "Zatvori";
 /* (No Comment) */
@@ -75,7 +75,7 @@
 /* (No Comment) */
 "edit" = "Uredi";
 /* (No Comment) */
-"eggs" = "jaja";
+"eggs" = "Jaja";
 /* (No Comment) */
 "equip" = "Opremi";
 /* (No Comment) */
@@ -85,23 +85,23 @@
 /* (No Comment) */
 "equipment.back" = "Dodatak za leđa";
 /* (No Comment) */
-"equipment.battle_gear" = "Ratna oprema";
+"equipment.battle_gear" = "Ratna Oprema";
 /* (No Comment) */
 "equipment.body" = "Dodatak za tijelo";
 /* (No Comment) */
 "equipment.costume" = "Kostim";
 /* (No Comment) */
-"equipment.costume_explanation" = "Odaberi \"Koristi kostim\" kako bi opremio/la artikle za svog avatara bez utjecanja na statistiku svoje ratne opreme! Ovo znači da svog avatara možeš obući kako god hoćeš, a da pritom i dalje imaš opremljenu najbolju ratnu opremu.";
+"equipment.costume_explanation" = "Odaberite \"Koristi Kostim\" da biste opremili predmete na svom avataru bez utjecaja na Statuse vaše Borbene opreme! To znači da možete obući svog avatara u odjeću kakvu god želite, a da pritom i dalje imate opremljenu najbolju Borbenu opremu.";
 /* (No Comment) */
 "equipment.eyewear" = "Naočale";
 /* (No Comment) */
-"equipment.head" = "Pokrivala za glavu";
+"equipment.head" = "Pokrivalo za glavu";
 /* (No Comment) */
 "equipment.head_accessory" = "Dodatak za glavu";
 /* (No Comment) */
 "equipment.nothing_equipped" = "Ništa nije opremljeno";
 /* (No Comment) */
-"equipment.off_hand" = "Pomoćni";
+"equipment.off_hand" = "Pomoćna Ruka";
 /* (No Comment) */
 "equipment.use_costume" = "Koristi Kostim";
 /* (No Comment) */
@@ -109,7 +109,7 @@
 /* (No Comment) */
 "experience" = "Iskustvo";
 /* (No Comment) */
-"food" = "hrane";
+"food" = "Hrana";
 /* (No Comment) */
 "glasses" = "Naočale";
 /* (No Comment) */
@@ -125,15 +125,15 @@
 /* (No Comment) */
 "guilds.leave_challenges" = "Napusti izazove";
 /* (No Comment) */
-"guilds.leave_guild_description" = "Želiš li napustiti ceh i zadržati ili izbrisati izazove?";
+"guilds.leave_guild_description" = "Želite li napustiti klan i zadržati ili izbrisati izazove?";
 /* (No Comment) */
-"guilds.leave_guild_title" = "Napusti ceh?";
+"guilds.leave_guild_title" = "Napusti Klan?";
 /* (No Comment) */
-"hatch_egg" = "Izlezi jaje";
+"hatch_egg" = "Iskoristi na Jajetu";
 /* (No Comment) */
-"hatch_potion" = "Izlezi pomoću napitka";
+"hatch_potion" = "Izlezi s napitkom";
 /* (No Comment) */
-"hatching_potions" = "Napici za izlijeganje";
+"hatching_potions" = "Napitci za izlijeganje";
 /* (No Comment) */
 "headband" = "Obruč za kosu";
 /* (No Comment) */
@@ -143,7 +143,7 @@
 /* (No Comment) */
 "inventory.available_until" = "Dostupno do %@";
 /* (No Comment) */
-"inventory.hatched" = "Izlegao/la si novog ljubimca!";
+"inventory.hatched" = "Izlegli ste novog ljubimca!";
 /* (No Comment) */
 "inventory.no_gems_left" = "Ovaj mjesec nemaš više dostupnih Dragulja. Više ih postane dostupno unutar prva 3 dana svakog mjeseca.";
 /* (No Comment) */
@@ -151,7 +151,7 @@
 /* (No Comment) */
 "inventory.wrong_class" = "Dostupno samo za klasu %@. Možeš promijeniti svoju klasu u postavkama";
 /* (No Comment) */
-"invite_party" = "Pozovi Družinu";
+"invite_party" = "Pozovi Grupu";
 /* (No Comment) */
 "last_activity" = "Zadnja Aktivnost %@";
 /* (No Comment) */
@@ -197,7 +197,7 @@
 /* (No Comment) */
 "notes" = "Bilješke";
 /* (No Comment) */
-"ok" = "Ok";
+"ok" = "OK";
 /* (No Comment) */
 "one_month" = "1 mjesec";
 /* (No Comment) */
@@ -207,19 +207,19 @@
 /* (No Comment) */
 "open_website" = "Otvori web stranicu Habitice";
 /* (No Comment) */
-"party.invitation_invitername" = "%@ te pozvao/la da se priključiš njihovoj družini";
+"party.invitation_invitername" = "@%@ su pozvali da se pridružiš Grupi %@";
 /* (No Comment) */
-"party.invitation_no_invitername" = "Netko te pozvao da se priključiš njihovoj družini";
+"party.invitation_no_invitername" = "Netko te pozvao da se pridružiš Grupi %@";
 /* (No Comment) */
-"party.invited_to_quest" = "%@ te pozvao/la da sudjeluješ u pustolovini";
+"party.invited_to_quest" = "%@ su vas pozvali da sudjelujete u pustolovini";
 /* (No Comment) */
 "party.quest_number_responded" = "%d/%d članova je odgovorilo";
 /* (No Comment) */
-"party.quest_participant_count" = "%d sudionika";
+"party.quest_participant_count" = "%d Sudionika";
 /* (No Comment) */
 "pending_damage" = "Šteta na čekanju";
 /* (No Comment) */
-"pets" = "Ljubimce";
+"pets" = "Ljubimci";
 /* (No Comment) */
 "plain_backgrounds" = "Obične pozadine";
 /* (No Comment) */
@@ -263,7 +263,7 @@
 /* (No Comment) */
 "search" = "Pretraži";
 /* (No Comment) */
-"sell" = "Prodaj za %d zlatnika";
+"sell" = "Prodaj za %d Zlata";
 /* (No Comment) */
 "settings.api" = "API";
 /* (No Comment) */
@@ -333,11 +333,11 @@
 /* (No Comment) */
 "skills.used_transformation_item" = "Koristili ste %@";
 /* (No Comment) */
-"specialItems" = "Posebni artikli";
+"specialItems" = "Posebni predmeti";
 /* (No Comment) */
 "stable.feed" = "Nahrani";
 /* (No Comment) */
-"stable.premium" = "Od čarobnih napitaka";
+"stable.premium" = "Čarobni Napitak";
 /* (No Comment) */
 "stable.quest_mounts" = "Pustolovne Jahaće životinje";
 /* (No Comment) */
@@ -471,7 +471,7 @@
 /* (No Comment) */
 "theme.red" = "Crvena";
 /* (No Comment) */
-"theme.teal" = "Plavo";
+"theme.teal" = "Tirkizna";
 /* (No Comment) */
 "theme.yellow" = "Žuta";
 /* (No Comment) */
@@ -749,3 +749,87 @@
 "settings.local" = "Lokalno";
 "settings.push_notifications.mention_joined_guild" = "@Spominjanja u Klanu";
 "settings.added_local_auth" = "Uspješno dodani email i zaporka";
+"avatar.backgrounds" = "Pozadine";
+"avatar.skins" = "Izgledi";
+"avatar.wheelchairs" = "Kolica";
+"settings.user_data" = "Korisnički Podaci";
+"settings.privacy_preferences" = "Postavke Privatnosti";
+"settings.manage_privacy_preferences" = "Promijenite vaše postavke privatnosti";
+"your_privacy_preferences" = "Vaše postavke privatnosti";
+"performance_analytics" = "Izvedba i Analitika";
+"strictly_necessary" = "Nužno potrebno";
+"strictly_necessary_description" = "Ovo su nužni podaci koje naša aplikacija zahtijeva za funkcioniranje. To uključuje podatke poput vaših preferencija spremljenih u postavkama, kao i informacije o rušenjima.";
+"guilds.join_guild" = "Pridruži se Klanu";
+"theme.dark" = "Tamna";
+"stable.use_saddle" = "Iskoristi Sedlo";
+"stable.evolved_pet" = "Pripitomili ste %s, idemo na jahanje!";
+"avatar.animal_tails" = "Životinjski Repovi";
+"classes.mages" = "Čarobnjaci";
+"classes.healers" = "Iscjelitelji";
+"classes.warriors" = "Ratnici";
+"classes.rogues" = "Lupeži";
+"theme.alwaysDark" = "Uvijek Tamno";
+"avatar.mustaches" = "Brkovi";
+"avatar.beards" = "Brade";
+"inventory.no_saddle_description" = "Sedla trenutno podižu Ljubimca u Jahaću životinju. Možete kupiti u Dućanu.";
+"inventory.visit_market" = "Posjeti Dućan";
+"avatar.hair_styles" = "Frizure";
+"party.quest_participant_one" = "1 Sudionik";
+"settings.pauseDamage.resume_damage_description1" = "Bossevi će ponovno nanositi štetu članovima Grupe zbog tvojih propuštenih Dnevnih zadataka";
+"settings.pauseDamage.resume_damage_title2" = "Vaši nizovi i brojači se mogu poništiti";
+"settings.pauseDamage.resume_damage_description2" = "Propuštanje Dnevnog zadatka će poništiti vaš niz, a Brojači navika će se poništiti normalno";
+"settings.pauseDamage.resume_damage_title3" = "Napredak vaše Pustolovine će se ponovno primjenjivati";
+"settings.pauseDamage.resume_damage_description3" = "Bilo kakva šteta ili predmeti za prikupljanje na čekanju bit će primijenjeni pri vašem sljedećem resetiranju dana";
+"privacy_preferences_full_description" = "Vaša privatnost nam je važna. Habitica koristi podatke s vašeg uređaja za analizu performansi, obradu zahtjeva za podrškom i pružanje najboljeg mogućeg iskustva gamifikacije. Da bismo to učinili, moramo zatražiti sljedeće dozvole.\n\nOve postavke možete promijeniti u bilo kojem trenutku u postavkama vašeg računa.";
+"performance_analytics_description" = "Ovo se koristi za poboljšanje iskustva igrača, performansi i usluga Habitice. Naš tim za podršku će ovo također koristiti pri rješavanju zahtjeva i prijavljivanju grešaka.";
+"guilds.left_guild" = "Napustili ste klan";
+"social.x_leader" = "%s Vođa";
+"food_singular" = "Hrana";
+"quest" = "Pustolovina";
+"sell_no_currency" = "Prodaj za %d";
+"inventory.no_longer_available" = "Više Nije Dostupno";
+"inventory.avatar_skin_customization" = "Prilagodba Izgleda Avatara";
+"inventory.no_saddle_tile" = "Nemate Sedlo";
+"equipment.class_equipment" = "Oprema Klase";
+"avatar.shirts" = "Majice";
+"avatar.skin_colors" = "Boje Kože";
+"avatar.hairColors" = "Boje Kose";
+"social.x_description" = "%s Opis";
+"guilds.joined_party" = "Pridružili ste se Grupi";
+"guilds.left_party" = "Napustili ste Grupu";
+"social.x_members" = "%s Članovi";
+"social.x_bank" = "%s Banka";
+"inventory.avatar_beard_customization" = "Prilagodba Brade Avatara";
+"inventory.avatar_mustache_customization" = "Prilagodba Brkova Avatara";
+"inventory.avatar_bangs_customization" = "Prilagodba Šiški Avatara";
+"inventory.avatar_shirt_customization" = "Prilagodba Majice Avatara";
+"inventory.avatar_hair_color_customization" = "Prilagodba Boje Kose Avatara";
+"inventory.avatar_hair_style_customization" = "Prilagodba Frizure Avatara";
+"stable.color" = "Boja";
+"equipped_x" = "Opremili ste %s";
+"equipment.equipment" = "Oprema";
+"avatar.skin_color" = "Boja Kože";
+"avatar.extras" = "Dodatno";
+"purchase_for_without_currency" = "Kupi za %d";
+"more_options" = "Više Opcija";
+"party.create_party_title" = "Igraj Habiticu u Grupi";
+"level" = "Razina";
+"privacy_preferences_sheet_description" = "Habitica koristi podatke s vašeg uređaja za analizu performansi, obradu zahtjeva za podrškom i pružanje najboljeg mogućeg iskustva gamifikacije. Da bismo to učinili, moramo zatražiti sljedeće dozvole.\n\nTo možete promijeniti u bilo kojem trenutku. Da biste saznali više, pregledajte našu [Politiku Privatnosti](https://habitica.com/static/privacy).";
+"theme.alwaysLight" = "Uvijek Svjetlo";
+"party.create_party_description" = "Krenite u misije s prijateljima ili sami. Borite se s čudovištima, stvarajte izazove i pomozite sebi da ostanete odgovorni kroz Grupe.";
+"guilds.invite_to_guild" = "Pozovite u Klan";
+"purchase_gems" = "Kupi Dragulje";
+"theme.light" = "Svjetla";
+"stable.wacky_mounts" = "Šašave Jahaće životinje";
+"join" = "Pridruži se";
+"avatar.body" = "Tijelo";
+"guilds.guild_challenges" = "Izazovi Klana";
+"guilds.joined_guild" = "Pridružili ste se klanu";
+"theme.followSystem" = "Slijedite postavke sustava";
+"hatching_potion" = "Napitak za izlijeganje";
+"egg" = "Jaje";
+"avatar.hair" = "Kosa";
+"stable.wacky_pets" = "Šašavi Ljubimci";
+"party.create_party_button" = "Kreiraj novu Grupu";
+"inventory.hatched_sharing" = "Upravo sam izlegao/la %@ %@ ljubimca u Habitici dovršavajući svoje zadatke iz stvarnog života!";
+"stable.type" = "Vrsta";
