@@ -1612,3 +1612,4 @@
 "errors.username_already_taken" = "Non d'utilisateur déjà pris.";
 "quest_items_found" = "Vous avez trouvé %d articles de quête";
 "one_quest_item_found" = "Vous avez trouvé 1 article de quête";
+"take_effect_immediately" = "Ceci prendra effet immédiatement après l'achat !";
