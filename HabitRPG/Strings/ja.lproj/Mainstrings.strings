@@ -1607,3 +1607,5 @@
 "resubscribe_to_pick_up" = "有料プランに再登録して、中断したところから続けましょう！";
 "api_token_title" = "APIトークン";
 "accept_all" = "すべて受け入れる";
+"subscription.subscribers_receive" = "有料会員は毎月の最初の二日間に、神秘の砂時計・ミステリー装備セットを入手でき、市場で購入可能なジェムも再入荷されます";
+"login.username_description" = "これはいつでも変更できる、ユニークな名前です！";
