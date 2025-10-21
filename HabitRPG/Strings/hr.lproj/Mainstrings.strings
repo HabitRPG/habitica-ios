@@ -1084,3 +1084,12 @@
 "errors.quest_invite_reject" = "Došlo je do pogreške prilikom odbijanja pozivnice za pustolovinu";
 "years" = "godina";
 "resume_damage" = "Nastavi uzimati Štetu";
+"tutorials.inbox" = "Ovdje možete čitati i odgovarati na privatne poruke! Također možete slati poruke ljudima s njihovih profila.";
+"tutorials.add_task" = "Dodirnite za dodavanje novog zadatka.";
+"tutorials.filter_task" = "Dodirnite za filtriranje zadataka.";
+"tutorials.rewards_2" = "Također možete napraviti prilagođene nagrade u stvarnom svijetu na temelju onoga što vas motivira.";
+"tutorials.edit_task" = "Dodirnite zadatak da biste ga uredili i dodali podsjetnike. Prijeđite prstom ulijevo da biste izbrisali.";
+"tutorials.spells" = "Vještine su posebne sposobnosti koje imaju snažne učinke! Dodirnite vještinu da biste je upotrijebili. To će koštati Mana (plava traka), koju zarađujete prijavom svaki dan i izvršavanjem zadataka iz stvarnog života. Provjerite FAQ u izborniku za više informacija!";
+"tutorials.stats" = "Dodirnite sivi gumb da dodijelite puno svojih statistika odjednom ili dodirnite strelice da ih dodate jednu po jednu točku.";
+"faint.title" = "Ostali ste bez Zdravlja!";
+"tutorials.reorder_task" = "Drži pritisnuto na zadatku kako bi ga povukli.";
