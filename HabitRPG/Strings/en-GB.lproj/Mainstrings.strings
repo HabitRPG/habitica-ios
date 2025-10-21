@@ -42,7 +42,7 @@
 "stats.one_point_to_allocate" = "1 Point to Allocate";
 "stats.points_to_allocate" = "%d Points to Allocate";
 "stats.level" = "Level";
-"titles.settings" = "Settings menu";
+"titles.settings" = "Settings";
 "titles.profile" = "Profile";
 "titles.authentication" = "Authentication";
 "titles.api" = "API";
@@ -69,9 +69,9 @@
 "stats.intelligence_title" = "Intelligence";
 "stats.intelligence_text" = "Increases EXP earned from completing tasks. It also increases your mana cap and mana regeneration over time.";
 "stats.constitution_title" = "Constitution";
-"stats.constitution_text" = "Reduces the amount of damage taken from completing tasks. Does not reduce the damage received from bosses.";
+"stats.constitution_text" = "Reduces the amount of damage taken from your tasks. Does not reduce the damage received from bosses.";
 "stats.perception_title" = "Perception";
-"stats.perception_text" = "Increases the likelihood of finding drops when completing tasks, the daily drop cap, streak bonuses, and the amount of gold awarded for tasks.";
+"stats.perception_text" = "Increases the likelihood of finding drops when completing Tasks, the daily drop-cap, Streak Bonuses, and the amount of gold awarded for Tasks.";
 "controls" = "Controls";
 "difficulty" = "Difficulty";
 "resetStreak" = "Reset Streak";
@@ -210,7 +210,7 @@
 "bangs" = "Fringe";
 "inventory.avatar_shirt_customization" = "Avatar Shirt Customisation";
 "inventory.avatar_beard_customization" = "Avatar Beard Customisation";
-"inventory.avatar_mustache_customization" = "Avatar Mustache Customisation";
+"inventory.avatar_mustache_customization" = "Avatar Moustache Customisation";
 "avatar.skin_color" = "Skin Colour";
 "avatar.bangs" = "Fringe";
 "avatar.skin_colors" = "Skin Colours";
@@ -234,3 +234,7 @@
 "locations.customizations" = "Customisations";
 "shops.try_on_customize_avatar_return_next_month" = "You can try them on by customising your avatar. Be sure to check back later for next month’s options!";
 "empty.no_items_description" = "Head over to the Customisation Shop to browse the many ways you can customise your avatar!";
+"avatar.mustaches" = "Moustaches";
+"levelup_description" = "By accomplishing your real life goals, you levelled up and are now fully healed!";
+"tasks.examples.creativity_habit" = "Practised a new creative technique";
+"avatar.mustache" = "Moustache";
