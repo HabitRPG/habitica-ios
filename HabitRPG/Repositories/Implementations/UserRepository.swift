@@ -240,9 +240,18 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func loginApple(identityToken: String, name: String, allowRegister: Bool) -> Signal<LoginResponseProtocol?, Never> {
-        return AppleLoginCall(identityToken: identityToken, name: name, allowRegister: allowRegister).objectSignal.on(value: { loginResponse in
+        let call = AppleLoginCall(identityToken: identityToken, name: name, allowRegister: allowRegister)
+        return call.objectSignal.merge(with: call.responseSignal.map({ _ -> LoginResponseProtocol? in
+            let response = APILoginResponse()
+            response.newUser = true
+            return response
+        })).on(value: { loginResponse in
             self.updateAuth(response: loginResponse)
         })
+    }
+    
+    func disconnectSocial(_ network: String) -> Signal<EmptyResponseProtocol?, Never> {
+        return SocialDisconnectCall(network: network).objectSignal
     }
     
     func resetAccount(password: String) -> Signal<UserProtocol?, Never> {
