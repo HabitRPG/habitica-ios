@@ -263,7 +263,7 @@
 /* (No Comment) */
 "settings.change_class" = "Cambiar de clase";
 /* (No Comment) */
-"settings.change_class_disclaimer" = "Se restablecerán la clase y los puntos asignados a tu personaje (que recuperarás y podrás volver a asignar), y te costará 3 gemas.";
+"settings.change_class_disclaimer" = "Esto eliminará tu clase actual y te restituirá todos los puntos de atributo después de eso puedes elegir una nueva clase";
 /* (No Comment) */
 "settings.clear_cache" = "Borrar la caché";
 /* (No Comment) */
@@ -1664,3 +1664,11 @@
 "one_quest_item_found" = "Has encontrado 1 artículo de misión";
 "quest_items_found" = "Has encontrado %d artículos de misión";
 "take_effect_immediately" = "¡Esto tendrá efecto inmediatamente después de su compra!";
+"chat_with_question" = "¿Con quién te gustaría hablar?";
+"stats" = "Atributos";
+"membership" = "Afiliación";
+"participating" = "Participación";
+"not_participating" = "Sin participación";
+"ownership" = "Propiedad";
+"task_reminder" = "Recordatorio de Tarea";
+"settings.change_class_title" = "¿Cambiar de clase por 3 Gemas?";

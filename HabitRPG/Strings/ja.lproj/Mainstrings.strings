@@ -241,7 +241,7 @@
 /* (No Comment) */
 "settings.change_class" = "クラスを変更する";
 /* (No Comment) */
-"settings.change_class_disclaimer" = "よろしいのですか？この操作で、あなたのキャラクターのクラスと割り当てたポイントがリセットされます(獲得したポイントについては、再割り当てできる状態に戻ります)。また、3 ジェムが必要です。";
+"settings.change_class_disclaimer" = "この操作で、あなたのキャラクターのクラスと割り当てたポイントがリセットされ、新しいクラスが選べるようになります";
 /* (No Comment) */
 "settings.clear_cache" = "キャッシュを消去する";
 /* (No Comment) */
@@ -572,7 +572,7 @@
 "x_months" = "%dヶ月";
 "unsubscribe_itunes" = "もう有料プランを続けたくないですか？あなたの端末の設定＞Apple ID＞サブスクリプションから有料プランを管理できます。";
 "open_itunes" = "Apple ID サブスクリプションを開く";
-"unsubscribe_website" = "もう有料プランを続けたくないですか？ あなたの支払方法では、ウェブサイトからのみ有料プランを解約できます。";
+"unsubscribe_website" = "もう有料プランを続けたくないですか？お支払方法のため、Habiticaのウェブサイトから有料プランをキャンセルする必要があります。下のボタンを押してアカウントにログインし、右上のユーザーアイコンをタップしてから「有料プラン」のセクションに移動してください。有料プランの残りのクレジットは、キャンセル後に終了日に加算されます。今までサポートしていただき、ありがとうございました！";
 "open_website" = "Habitica のウェブサイトを開く";
 "plain_backgrounds" = "スタンダードな背景";
 "size" = "サイズ";
@@ -1302,7 +1302,7 @@
 "settings.reloaded_content" = "コンテンツを再読み込み";
 "settings.change" = "変更する";
 "settings.updated_email" = "メールアドレスを更新しました";
-"settings.updated_password" = "パスワードを更新しました";
+"settings.updated_password" = "パスワードは正常に変更されました";
 "settings.public_profile" = "公開プロフィール";
 "settings.password" = "パスワード";
 "settings.email" = "メール";
@@ -1609,3 +1609,15 @@
 "accept_all" = "すべて受け入れる";
 "subscription.subscribers_receive" = "有料会員は毎月の最初の二日間に、神秘の砂時計・ミステリー装備セットを入手でき、市場で購入可能なジェムも再入荷されます";
 "login.username_description" = "これはいつでも変更できる、ユニークな名前です！";
+"restore_purchase" = "購入を復元する";
+"strictly_necessary_description" = "これはアプリが正しく機能するために必要なデータです。あなたが保存した設定や、クラッシュ情報などを含みます。";
+"x_x_gem_cap" = "%d / %d ジェムの上限";
+"settings.change_class_title" = "3ジェムでクラスを変更しますか？";
+"chat_with_question" = "だれと話したいですか？";
+"no_active_subscription_to_restore" = "復元するアクティブな有料プランが見つかりません";
+"participating" = "参加";
+"not_participating" = "不参加";
+"ownership" = "オーナー";
+"task_reminder" = "タスクの通知";
+"membership" = "参加状況";
+"copy_token" = "トークンをコピーする";
