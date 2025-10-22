@@ -22,7 +22,7 @@ public class RetrieveTasksCall: ResponseArrayCall<TaskProtocol, APITask> {
             let regex = try? NSRegularExpression(pattern: "T([0-9]):", options: .caseInsensitive)
             dateString = regex?.stringByReplacingMatches(in: dateString, options: [], range: NSRange(location: 0, length: dateString.count), withTemplate: "T0$1:") ?? ""
             let encodedDateString = dateString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? dateString
-            url = "\(url)?type=dailys&dueDate=\(encodedDateString)"
+            url = "\(url)?type=dailys&dueDate=\(encodedDateString.replacingOccurrences(of: "+", with: "%2B"))"
         }
         if let type = type {
             url = "\(url)?type=\(type)"
