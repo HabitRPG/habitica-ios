@@ -296,12 +296,12 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
                 expandedIndexPath = nil
             }
             tableView?.beginUpdates()
-            tableView?.reloadRows(at: [indexPath], with: .none)
+            tableView?.reloadRows(at: [indexPath], with: .fade)
             tableView?.endUpdates()
         } else {
             if let path = expandedPath {
                 tableView?.beginUpdates()
-                tableView?.reloadRows(at: [indexPath, path], with: .none)
+                tableView?.reloadRows(at: [indexPath, path], with: .fade)
                 tableView?.endUpdates()
             }
         }
