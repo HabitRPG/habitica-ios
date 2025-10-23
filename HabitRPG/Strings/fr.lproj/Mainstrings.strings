@@ -229,7 +229,7 @@
 /* (No Comment) */
 "settings.change_class" = "Changer de classe";
 /* (No Comment) */
-"settings.change_class_disclaimer" = "Ceci réinitialisera la classe de votre avatar et ses points alloués (que vous récupérerez pour les ré-allouer), et coûtera 3 gemmes.";
+"settings.change_class_disclaimer" = "Ceci supprimera votre classe actuelle et resituera tous vos points de statistiques afin que vous puissiez choisir une nouvelle classe.";
 /* (No Comment) */
 "settings.clear_cache" = "Effacer le cache";
 /* (No Comment) */
@@ -1613,3 +1613,11 @@
 "quest_items_found" = "Vous avez trouvé %d articles de quête";
 "one_quest_item_found" = "Vous avez trouvé 1 article de quête";
 "take_effect_immediately" = "Ceci prendra effet immédiatement après l'achat !";
+"settings.change_class_title" = "Changer de classe pour 3 Gemmes ?";
+"chat_with_question" = "Avec qui souhaitez-vous discuter ?";
+"stats" = "Attributs";
+"membership" = "Adhésion";
+"participating" = "Participe";
+"not_participating" = "Ne participe pas";
+"ownership" = "Propriété";
+"task_reminder" = "Rappel de Tâches";

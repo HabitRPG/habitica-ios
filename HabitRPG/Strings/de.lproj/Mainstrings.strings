@@ -273,7 +273,7 @@
 /* (No Comment) */
 "settings.change_class" = "Klasse ändern";
 /* (No Comment) */
-"settings.change_class_disclaimer" = "Das wird Deine Klasse zurücksetzen und Du erhältst alle Attributpunkte als freie Punkte zurück. Es kostet 3 Edelsteine.";
+"settings.change_class_disclaimer" = "Das wird deine aktuelle Klasse entfernen, alle Attributpunkte zurückerstatten und dich anschließend eine neue Klasse wählen lassen";
 /* (No Comment) */
 "settings.clear_cache" = "Cache löschen";
 /* (No Comment) */
@@ -1676,3 +1676,11 @@
 "errors.username_already_taken" = "Benutzername bereits vergeben.";
 "quest_items_found" = "Du hast %d Quest-Gegenstände gefunden";
 "take_effect_immediately" = "Dies wird sofort nach dem Kauf wirksam!";
+"settings.change_class_title" = "Klasse ändern für 3 Edelsteine?";
+"chat_with_question" = "Mit wem möchtest du gerne chatten?";
+"stats" = "Werte";
+"membership" = "Mitgliedschaft";
+"participating" = "Teilnehmer";
+"not_participating" = "Nicht Teilnehmer";
+"ownership" = "Besitz";
+"task_reminder" = "Aufgaben-Erinnerung";
