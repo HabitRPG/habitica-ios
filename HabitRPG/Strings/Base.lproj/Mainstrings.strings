@@ -1459,6 +1459,8 @@
 "save_preferences" = "Save Preferences";
 "accept_all" = "Accept All";
 "take_effect_immediately" = "This will take effect immediately after buying!";
+"search_questions" = "Search questions";
+"no_matching_questions" = "No matching questions found";
 
 "membership" = "Membership";
 "participating" = "Participating";

@@ -6,30 +6,90 @@
 //  Copyright © 2018 HabitRPG Inc. All rights reserved.
 //
 
+// swiftlint:disable file_length
+
 import UIKit
 import Habitica_Models
 import ReactiveSwift
 import Down
 import MessageUI
 
+enum SearchableFAQItem {
+    case collapsible(
+        title: String,
+        subtitle: String?,
+        description: String,
+        view: CollapsibleStackView,
+        matchSnippet: String?
+    )
+
+    case navigable(
+        article: FAQEntryProtocol,
+        matchSnippet: String?
+    )
+
+    var displayTitle: String {
+        switch self {
+        case .collapsible(let title, _, _, _, _):
+            return title
+        case .navigable(let article, _):
+            return article.question ?? ""
+        }
+    }
+
+    var snippet: String? {
+        switch self {
+        case .collapsible(_, _, _, _, let snippet):
+            return snippet
+        case .navigable:
+            return nil
+        }
+    }
+
+    var collapsibleView: CollapsibleStackView? {
+        switch self {
+        case .collapsible(_, _, _, let view, _):
+            return view
+        case .navigable:
+            return nil
+        }
+    }
+
+    var article: FAQEntryProtocol? {
+        switch self {
+        case .collapsible:
+            return nil
+        case .navigable(let article, _):
+            return article
+        }
+    }
+}
+
+// swiftlint:disable:next type_body_length
 class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelegate {
-    
+
     private let searchBar = UISearchBar()
-    
     private let dataSource = FAQTableViewDataSource()
-    private var selectedIndex: Int?
-    
+    var selectedIndex: Int?
+
     private let userRepository = UserRepository()
     private let contentRepository = ContentRepository()
     private let configRepository = ConfigRepository.shared
     private let disposable = ScopedDisposable(CompositeDisposable())
-    
-    @IBOutlet private var mainStackView: UIStackView!
-    @IBOutlet private var mechanicsTitleLabel: UILabel!
-    @IBOutlet private var mechanicsStackView: UIStackView!
-    @IBOutlet private var commonQuestionsTitleLabel: UILabel!
-    @IBOutlet weak var commonQuestionsBackground: UIView!
-    @IBOutlet private var commonQuestionsStackView: SeparatedStackView!
+
+    var searchQuery: String = ""
+    var searchDebounceTimer: Timer?
+    var faqArticles: [FAQEntryProtocol] = []
+    var searchResults: [SearchableFAQItem] = []
+    var isSearchActive: Bool = false
+    var searchResultsContainerView: UIView?
+
+    @IBOutlet var mainStackView: UIStackView!
+    @IBOutlet var mechanicsTitleLabel: UILabel!
+    @IBOutlet var mechanicsStackView: UIStackView!
+    @IBOutlet var commonQuestionsTitleLabel: UILabel!
+    @IBOutlet var commonQuestionsBackground: UIView!
+    @IBOutlet var commonQuestionsStackView: SeparatedStackView!
     @IBOutlet weak var moreQuestionsStackView: UIStackView!
     @IBOutlet weak var moreQuestionsTitle: UILabel!
     @IBOutlet weak var moreQuestionsText: MarkdownTextView!
@@ -46,7 +106,9 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
         super.viewDidLoad()
         topHeaderCoordinator?.hideHeader = true
         topHeaderCoordinator?.followScrollView = false
-        
+
+        setupSearchBar()
+
         mainStackView.isLayoutMarginsRelativeArrangement = true
         mainStackView.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         moreQuestionsStackView.isLayoutMarginsRelativeArrangement = true
@@ -55,19 +117,27 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
         commonQuestionsStackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         commonQuestionsStackView.separatorBetweenItems = true
         commonQuestionsStackView.separatorInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
-        
+
         populateMechanics()
         disposable.inner.add(contentRepository.getFAQEntries().on(value: {[weak self] entries in
+            self?.faqArticles = entries.value
             self?.populateFAQ(questions: entries.value)
-            }).start())
-        
+        }).start())
+
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
         }).start())
-        
+
         moreQuestionsText.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moreQuestionsTapped)))
         supportEmail = configRepository.string(variable: .supportEmail, defaultValue: "admin@habitica.com")
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Re-run search if query exists to prevent duplicates when returning from detail screen
+        if isSearchActive && !searchQuery.isEmpty {
+            performSearch(query: searchQuery)
+        }
     }
     
     override func populateText() {
@@ -157,7 +227,7 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
         }
     }
 
-    private static let mechanics = [
+    static let mechanics = [
         ["title": L10n.healthPoints, "subtitle": "HP", "icon": HabiticaIcons.imageOfHeartLarge, "text": L10n.healthDescription],
         ["title": L10n.experiencePoints, "subtitle": "EXP", "icon": HabiticaIcons.imageOfExperienceReward, "text": L10n.experienceDescription],
         ["title": L10n.manaPoints, "subtitle": "MP", "icon": HabiticaIcons.imageOfMagic, "text": L10n.manaDescription],
@@ -166,7 +236,7 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
         ["title": L10n.mysticHourglasses, "subtitle": L10n.premiumCurrency, "icon": HabiticaIcons.imageOfHourglass, "text": L10n.hourglassesDescription],
         ["title": L10n.statAllocation, "subtitle": "STR, CON, INT, PER", "icon": HabiticaIcons.imageOfStats, "text": L10n.statDescription]
     ]
-    
+
     @objc
     private func moreQuestionsTapped() {
         if MFMailComposeViewController.canSendMail() {
@@ -228,5 +298,239 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         dismiss(animated: true, completion: nil)
+    }
+
+    func setupSearchBar() {
+        searchBar.delegate = self
+        searchBar.placeholder = L10n.searchQuestions
+        searchBar.searchBarStyle = .minimal
+        searchBar.showsCancelButton = false
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.backgroundImage = UIImage()
+        searchBar.backgroundColor = .clear
+
+        mainStackView.insertArrangedSubview(searchBar, at: 0)
+    }
+
+    func performSearch(query: String) {
+        searchQuery = query
+
+        if query.isEmpty {
+            restoreOriginalLayout()
+            return
+        }
+
+        searchResultsContainerView?.removeFromSuperview()
+        searchResultsContainerView = nil
+
+        isSearchActive = true
+        searchResults = []
+
+        populateMechanics()
+
+        let lowercasedQuery = query.lowercased()
+
+        for (index, mechanic) in FAQViewController.mechanics.enumerated() {
+            let title = mechanic["title"] as? String ?? ""
+            let subtitle = mechanic["subtitle"] as? String ?? ""
+            let description = mechanic["text"] as? String ?? ""
+
+            let titleMatch = title.lowercased().contains(lowercasedQuery)
+            let subtitleMatch = subtitle.lowercased().contains(lowercasedQuery)
+            let descriptionMatch = description.lowercased().contains(lowercasedQuery)
+
+            if titleMatch || subtitleMatch || descriptionMatch {
+                if index < mechanicsStackView.arrangedSubviews.count,
+                   let collapsibleView = mechanicsStackView.arrangedSubviews[index] as? CollapsibleStackView {
+                    let item = SearchableFAQItem.collapsible(
+                        title: title,
+                        subtitle: subtitle,
+                        description: description,
+                        view: collapsibleView,
+                        matchSnippet: nil
+                    )
+                    searchResults.append(item)
+                }
+            }
+        }
+
+        for article in faqArticles {
+            let question = article.question ?? ""
+            let answer = article.answer
+
+            let questionMatch = question.lowercased().contains(lowercasedQuery)
+            let answerMatch = answer.lowercased().contains(lowercasedQuery)
+
+            if questionMatch || answerMatch {
+                let item = SearchableFAQItem.navigable(
+                    article: article,
+                    matchSnippet: nil
+                )
+                searchResults.append(item)
+            }
+        }
+
+        displaySearchResults()
+    }
+
+    func displaySearchResults() {
+        mechanicsTitleLabel.isHidden = true
+        mechanicsStackView.isHidden = true
+        commonQuestionsTitleLabel.isHidden = true
+        commonQuestionsStackView.isHidden = true
+        commonQuestionsBackground.isHidden = true
+        moreQuestionsStackView.isHidden = true
+
+        searchResultsContainerView?.removeFromSuperview()
+
+        if searchResults.isEmpty {
+            displayEmptyState()
+            return
+        }
+
+        let containerView = UIStackView()
+        containerView.axis = .vertical
+        containerView.spacing = 8
+        containerView.isLayoutMarginsRelativeArrangement = true
+        containerView.layoutMargins = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+
+        for (index, result) in searchResults.enumerated() {
+            switch result {
+            case .collapsible(_, _, _, let view, _):
+                view.alpha = 0
+                view.transform = CGAffineTransform(translationX: 0, y: 20)
+                containerView.addArrangedSubview(view)
+
+                UIView.animate(withDuration: 0.2, delay: Double(index) * 0.03, options: .curveEaseOut) {
+                    view.alpha = 1
+                    view.transform = .identity
+                }
+
+            case .navigable(let article, _):
+                let questionView = createQuestionView(for: article)
+                questionView.alpha = 0
+                questionView.transform = CGAffineTransform(translationX: 0, y: 20)
+                containerView.addArrangedSubview(questionView)
+
+                UIView.animate(withDuration: 0.2, delay: Double(index) * 0.03, options: .curveEaseOut) {
+                    questionView.alpha = 1
+                    questionView.transform = .identity
+                }
+            }
+        }
+
+        mainStackView.insertArrangedSubview(containerView, at: 1)
+        searchResultsContainerView = containerView
+    }
+
+    func createQuestionView(for article: FAQEntryProtocol) -> UIView {
+        let containerView = UIView()
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.spacing = 8
+        stackView.layoutMargins = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 15)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+
+        let title = UILabel()
+        title.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
+        title.text = article.question
+        title.numberOfLines = 0
+        title.textColor = ThemeService.shared.theme.primaryTextColor
+
+        let imageView = UIImageView(image: Asset.caretRight.image)
+        imageView.contentMode = .center
+        imageView.addWidthConstraint(width: 9)
+
+        stackView.addArrangedSubview(title)
+        stackView.addArrangedSubview(imageView)
+
+        containerView.addSubview(stackView)
+
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
+            stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+        ])
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(searchResultQuestionTapped))
+        containerView.addGestureRecognizer(tapGesture)
+        containerView.isUserInteractionEnabled = true
+
+        if let index = faqArticles.firstIndex(where: { $0.index == article.index }) {
+            containerView.tag = index
+        }
+
+        return containerView
+    }
+
+    func displayEmptyState() {
+        let emptyLabel = UILabel()
+        emptyLabel.text = L10n.noMatchingQuestions
+        emptyLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
+        emptyLabel.textColor = ThemeService.shared.theme.secondaryTextColor
+        emptyLabel.textAlignment = .center
+        emptyLabel.numberOfLines = 0
+
+        let containerView = UIView()
+        containerView.addSubview(emptyLabel)
+        emptyLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            emptyLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            emptyLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 60),
+            emptyLabel.leadingAnchor.constraint(greaterThanOrEqualTo: containerView.leadingAnchor, constant: 20),
+            emptyLabel.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor, constant: -20),
+            containerView.heightAnchor.constraint(equalToConstant: 200)
+        ])
+
+        mainStackView.insertArrangedSubview(containerView, at: 1)
+        searchResultsContainerView = containerView
+    }
+
+    func restoreOriginalLayout() {
+        isSearchActive = false
+        searchResults = []
+
+        searchResultsContainerView?.removeFromSuperview()
+        searchResultsContainerView = nil
+
+        mechanicsTitleLabel.isHidden = false
+        mechanicsStackView.isHidden = false
+        commonQuestionsTitleLabel.isHidden = false
+        commonQuestionsStackView.isHidden = false
+        commonQuestionsBackground.isHidden = false
+        moreQuestionsStackView.isHidden = false
+
+        populateMechanics()
+    }
+
+    @objc
+    func searchResultQuestionTapped(_ gesture: UITapGestureRecognizer) {
+        if let containerView = gesture.view {
+            selectedIndex = containerView.tag
+            perform(segue: StoryboardSegue.Support.showFAQDetailSegue)
+        }
+    }
+}
+
+extension FAQViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchDebounceTimer?.invalidate()
+
+        searchDebounceTimer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { [weak self] _ in
+            self?.performSearch(query: searchText)
+        }
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
     }
 }

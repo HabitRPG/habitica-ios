@@ -788,6 +788,8 @@ public enum L10n {
   public static var noCamera: String { return L10n.tr("Mainstrings", "no_camera") }
   /// no days
   public static var noDays: String { return L10n.tr("Mainstrings", "no_days") }
+  /// No matching questions found
+  public static var noMatchingQuestions: String { return L10n.tr("Mainstrings", "no_matching_questions") }
   /// No %@
   public static func noX(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "no_x", p1)
@@ -1070,6 +1072,8 @@ public enum L10n {
   public static var scheduled: String { return L10n.tr("Mainstrings", "scheduled") }
   /// Search
   public static var search: String { return L10n.tr("Mainstrings", "search") }
+  /// Search questions
+  public static var searchQuestions: String { return L10n.tr("Mainstrings", "search_questions") }
   /// Seasonal items available
   public static var seasonalPotionsAvailable: String { return L10n.tr("Mainstrings", "seasonal_potions_available") }
   /// See more subscription options
