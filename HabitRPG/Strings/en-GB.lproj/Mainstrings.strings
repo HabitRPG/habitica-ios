@@ -238,3 +238,5 @@
 "levelup_description" = "By accomplishing your real life goals, you levelled up and are now fully healed!";
 "tasks.examples.creativity_habit" = "Practised a new creative technique";
 "avatar.mustache" = "Moustache";
+"tasks.examples.health_habit" = "Eat healthy/junk food";
+"tasks.examples.health_daily_text" = "Floss";

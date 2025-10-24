@@ -1482,7 +1482,7 @@
 "challenge_category.recovery_support_groups" = "回復・支援のためのグループ";
 "challenge_category.self_improvement" = "自己改善";
 "challenge_category.spirituality" = "精神性";
-"reporting_disclaimer" = "コミュニティガイドラインおよび/または利用規約に違反する%@のみを報告してください。虚偽の報告は、ハビティカのコミュニティガイドラインに違反します。";
+"reporting_disclaimer" = "コミュニティガイドラインおよび／または利用規約に違反する%@のみを報告してください。虚偽の報告は、Habitica のコミュニティガイドラインに違反します。";
 "items.empty.special_description" = "季節の大祭で変身アイテムをゲットしたり、有料プランで毎月のミステリー・ボックスを手に入れましょう！";
 "you_raised_pet" = "あなたはペットの%@を乗騎に育てました！";
 "subscription.info_faint_title" = "セカンドチャンスを手に入れましょう";

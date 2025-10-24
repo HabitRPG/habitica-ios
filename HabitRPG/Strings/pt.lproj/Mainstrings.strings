@@ -315,7 +315,7 @@
 "settings.login_methods" = "Métodos de autenticação";
 "settings.reset_account" = "Redefinir a conta";
 "settings.updated_email" = "Email actualizado";
-"settings.updated_password" = "Senha actualizada";
+"settings.updated_password" = "Senha atualizada com sucesso";
 "settings.delete_account" = "Eliminar a conta";
 "settings.delete_account_confirm" = "Tem a certeza de que a pretende apagar?";
 "settings.new_email" = "Novo endereço de email";
@@ -342,3 +342,7 @@
 "settings.push_notifications.invited_quest" = "Convidado para uma aventura";
 "settings.push_notifications.important_announcement" = "Anúncios importantes";
 "settings.push_notifications.invited_party" = "Convidado para um pelotão";
+"settings.fix_values_description" = "Se você encontrou um bug ou cometeu um erro que tenha afetado seu personagem injustamente, você pode corrigir manualmente esses valores aqui.";
+"settings.daily_reminder_permission_needed" = "Por favor, ative as notificações nas configurações para receber lembretes diários";
+"settings.change_class_title" = "Mudar a classe por 3 gemas?";
+"settings.change_class_disclaimer" = "Isso removerá sua classe atual e restituirá todos os pontos de atributos permitindo então que você escolha uma nova classe";
