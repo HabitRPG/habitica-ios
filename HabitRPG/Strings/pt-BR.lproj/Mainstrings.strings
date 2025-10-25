@@ -263,7 +263,7 @@
 /* (No Comment) */
 "settings.change_class" = "Mudar de Classe";
 /* (No Comment) */
-"settings.change_class_disclaimer" = "Isso irá resetar a classe de seu personagem e os pontos atribuídos (você terá todos eles de volta para redistribuir), e custa 3 gemas.";
+"settings.change_class_disclaimer" = "Isso irá resetar a classe de seu personagem e os pontos atribuídos (você terá todos eles de volta para redistribuir), e custa 3 gemas";
 /* (No Comment) */
 "settings.clear_cache" = "Limpar Cache";
 /* (No Comment) */
@@ -1662,3 +1662,4 @@
 "api_token_reset_title" = "Se você precisar de um novo Token de API";
 "api_token_reset_desc" = "Você pode alterar sua senha para redefini-la. Após redefini-la, você precisará fazer login novamente em todos os outros dispositivos em que usa o Habitica e fornecer o novo Token de API para ferramentas de terceiros que você possa usar.";
 "copy_token" = "Copiar Token";
+"settings.change_class_title" = "Mudar a classe por 3 gemas?";
