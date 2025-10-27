@@ -75,7 +75,7 @@ class NotificationManager {
         guard let firstDropNotification = notification as? NotificationFirstDropProtocol else {
             return true
         }
-        userRepository.retrieveUser().observeCompleted {}
+        userRepository.retrieveUser(forced: true).observeCompleted {}
         userRepository.readNotification(notification: notification).observeCompleted {}
         let alert = HabiticaAlertController(title: L10n.firstDropTitle)
         let stackView = UIStackView()
@@ -132,7 +132,7 @@ class NotificationManager {
     }
     
     static func displayAchievement(notification: NotificationProtocol, isOnboarding: Bool, isLastOnboardingAchievement: Bool) -> Bool {
-        userRepository.retrieveUser().observeCompleted {}
+        userRepository.retrieveUser(forced: true).observeCompleted {}
         userRepository.readNotification(notification: notification).observeCompleted {}
         if notification.type == HabiticaNotificationType.achievementOnboardingComplete {
             HabiticaAnalytics.shared.setUserProperty(key: "completedOnboarding", value: "true")
@@ -151,7 +151,7 @@ class NotificationManager {
             return true
         }
         let nextRewardAt = loginIncentiveNotification.nextRewardAt
-        userRepository.retrieveUser().observeValues { user in
+        userRepository.retrieveUser(forced: true).observeValues { user in
             if let reward = loginIncentiveNotification.rewardKey.first {
                 var imageName = reward
                 if imageName.contains("armor") {
