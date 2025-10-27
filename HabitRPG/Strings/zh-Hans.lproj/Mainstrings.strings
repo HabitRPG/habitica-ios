@@ -145,7 +145,7 @@
 /* (No Comment) */
 "settings.change_class" = "更改职业";
 /* (No Comment) */
-"settings.change_class_disclaimer" = "这将会重置你角色职业和已经分配的属性点(它们将会被返还让你重新分配)，消耗3个宝石。";
+"settings.change_class_disclaimer" = "这将重置您当前的职业并退还所有属性点数，然后让您选择一个新职业。";
 /* (No Comment) */
 "settings.clear_cache" = "清空缓存";
 /* (No Comment) */
@@ -1551,3 +1551,11 @@
 "save_preferences" = "保存偏好设置";
 "login.username_description" = "此为专属名称，支持随时修改！";
 "take_effect_immediately" = "购买后即刻生效！";
+"settings.change_class_title" = "使用3颗宝石以更改职业？";
+"chat_with_question" = "你想和谁聊天？";
+"stats" = "属性";
+"participating" = "正在参与";
+"not_participating" = "未参加";
+"ownership" = "所有权";
+"task_reminder" = "任务提醒";
+"membership" = "参与状态";
