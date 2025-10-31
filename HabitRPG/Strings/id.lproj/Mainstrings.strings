@@ -35,7 +35,7 @@
 "titles.challenges" = "Tantangan";
 "titles.shops" = "Toko";
 "titles.avatar" = "Avatar";
-"titles.choose_user" = "Pilih Pengguna";
+"titles.choose_user" = "Pilih Anggota";
 "titles.choose_recipient" = "Pilih Penerima";
 "titles.feed_pet" = "Beri Makan Peliharaan";
 "titles.guidelines" = "Pedoman";
@@ -256,7 +256,7 @@
 "settings.login_methods" = "Cara Masuk";
 "settings.reset_account" = "Reset Akun";
 "settings.updated_email" = "Email diperbarui";
-"settings.updated_password" = "Kata Sandi diperbarui";
+"settings.updated_password" = "Kata Sandi berhasil diperbaharui";
 "settings.delete_account" = "Hapus Akun";
 "settings.delete_account_description" = "Ini akan menghapus akunmu selamanya, dan tidak akan pernah bisa dipulihkan! Permata yang disimpan atau dibelanjakan tidak akan dikembalikan. Jika kamu benar-benar yakin, ketikkan kata sandimu ke dalam kotak teks di bawah ini.";
 "settings.delete_account_description_social" = "Ini akan menghapus akunmu selamanya, dan tidak akan pernah bisa dipulihkan! Permata yang disimpan atau dibelanjakan tidak akan dikembalikan. Jika kamu benar-benar yakin, ketik DELETE ke dalam kotak teks di bawah ini.";
@@ -512,7 +512,7 @@
 "settings.clear_cache" = "Bersihkan Cache";
 "settings.theme_color" = "Warna Tema";
 "settings.sound_theme" = "Tema Suara";
-"settings.change_class_disclaimer" = "Ini akan mengatur ulang profesi karakter dan poin yang dialokasikan (kamu akan mendapatkan semuanya kembali untuk dialokasikan kembali), dan menghabiskan 3 permata.";
+"settings.change_class_disclaimer" = "Ini akan menghapus profesimu saat ini dan mengembalikan semua poin statistik lalu memperbolehkanmu untuk memili profesi baru";
 "settings.fix_values_description" = "Jika kamu mengalami bug atau membuat kesalahan yang mengubah karaktermu secara tidak adil, kamu dapat memperbaiki nilai-nilai tersebut secara manual di sini.";
 "settings.change_about_message" = "Ganti Pesan di Profil";
 "settings.reset_account_description" = "Anda akan kehilangan semua level, Emas, dan Pengalaman Anda. Semua tugas Anda dan data historisnya akan dihapus (Tugas tantangan akan tetap ada). Anda akan kehilangan semua peralatan kecuali item Pelanggan dan item peringatan gratis, tetapi Anda dapat membelinya kembali. Anda harus menjadi kelas yang tepat untuk membeli kembali perlengkapan khusus kelas. Anda akan mempertahankan kelas, Pencapaian, dan Hewan Peliharaan serta Tunggangan Anda saat ini. Untuk mengonfirmasi pengaturan ulang, ketik kata sandi Anda di bawah.";
@@ -529,7 +529,7 @@
 "sell_no_currency" = "Jual seharga %d";
 "ok" = "OK";
 "stable.quest_mounts" = "Tunggangan Misi";
-"settings.api_disclaimer" = "Salin Token. Hati-hati, ini kata sandi!";
+"settings.api_disclaimer" = "Token sandi untuk pengembang dan alat pihak ketiga";
 "social.x_members" = "Anggota %s";
 "inventory.hatched" = "Kamu menetaskan peliharaan baru!";
 "unequip" = "Lepaskan";
@@ -1354,3 +1354,6 @@
 "customization_shop" = "Toko Kustomisasi";
 "no" = "Tidak";
 "yes" = "Ya";
+"settings.daily_reminder_permission_needed" = "Tolong nyalakan notifikasi di Pengaturan untuk menggunakan pengingat Harian";
+"settings.user_data" = "Data Pengguna";
+"settings.change_class_title" = "Ubah profesi seharga 3 Permata?";
