@@ -1357,3 +1357,6 @@
 "settings.daily_reminder_permission_needed" = "Tolong nyalakan notifikasi di Pengaturan untuk menggunakan pengingat Harian";
 "settings.user_data" = "Data Pengguna";
 "settings.change_class_title" = "Ubah profesi seharga 3 Permata?";
+"settings.manage_privacy_preferences" = "Ubah izin privasimu";
+"settings.privacy_preferences" = "Preferensi Privasi";
+"your_privacy_preferences" = "Preferensi Privasimu";
