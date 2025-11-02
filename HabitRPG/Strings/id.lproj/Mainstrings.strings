@@ -1360,3 +1360,4 @@
 "settings.manage_privacy_preferences" = "Ubah izin privasimu";
 "settings.privacy_preferences" = "Preferensi Privasi";
 "your_privacy_preferences" = "Preferensi Privasimu";
+"privacy_preferences_sheet_description" = "Habitica menggunakan data dari perangkatmu untuk menganalisa performa, menolong jika ada masalah, dan memberikan pengalaman bermain yang paling seru untukmu. Untuk itu, kami perlu minta izin berikut ini.\n\nKamu bisa ubah pengaturannya kapan aja. Buat info lebih lanjut, kunjungi [Privacy Policy](https://habitica.com/static/privacy).";
