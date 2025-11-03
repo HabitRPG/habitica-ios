@@ -299,7 +299,7 @@
 "settings.change_email" = "Mudar o endereço de email";
 "settings.new_password" = "Nova senha";
 "settings.change_class" = "Mudar a classe";
-"settings.custom_day_start_description" = "Muda quando o seu dia ultrapassa a hora pré-definida que é as 00:00";
+"settings.custom_day_start_description" = "Alterar a hora em que o teu dia muda, ultrapassando o tempo padrão das 00:00";
 "settings.next_cron_run" = "Recomeço de dia seguinte: %@";
 "settings.sound_theme" = "Tema sonoro";
 "settings.wrong_password" = "Senha incorrecta";
@@ -542,3 +542,13 @@
 "party.party_description" = "Descrição do Grupo";
 "party.party_challenges" = "Desafios de Grupo";
 "party.start_quest" = "Iniciar uma Missão";
+"party.leave_party_title" = "Tens a certeza de que queres sair do Grupo?";
+"party.leave_party_description" = "Sair do teu Grupo não te remove de nenhum Desafio de Grupo em que estejas a participar.";
+"party.leave" = "Sair do Grupo";
+"party.transfer_ownership_title" = "Transferir Liderança?";
+"party.transfer_ownership_description" = "Isto tornará %@ o novo líder do Grupo";
+"party.remove_member_title" = "Tens a certeza de que queres remover %@ do Grupo?";
+"party.quest_not_participating" = "Não estás a participar";
+"party.leave_looking_for_party_subtitle" = "Fica atento a um convite ou cria o teu próprio Grupo a qualquer momento";
+"transfer_ownership" = "Transferir Liderança";
+"transfer" = "Transferir";
