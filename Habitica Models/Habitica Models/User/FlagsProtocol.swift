@@ -10,6 +10,7 @@ public protocol FlagsProtocol {
     var armoireEmpty: Bool { get set }
     var cronCount: Int { get set }
     var rebirthEnabled: Bool { get set }
+    var lastFreeRebirth: Date? { get set }
     var communityGuidelinesAccepted: Bool { get set }
     var hasNewStuff: Bool { get set }
     var armoireOpened: Bool { get set }
@@ -18,7 +19,7 @@ public protocol FlagsProtocol {
     var tutorials: [TutorialStepProtocol] { get set }
     var verifiedUsername: Bool { get set }
     var welcomed: Bool { get set }
-    
+
     var chatRevoked: Bool { get set }
     var chatShadowMuted: Bool { get set }
 }

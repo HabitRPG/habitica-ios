@@ -54,6 +54,10 @@ class NotificationManager {
                 notificationDisplayed = NotificationManager.displayAchievement(notification: notification, isOnboarding: true, isLastOnboardingAchievement: notifications.contains {
                     return $0.type == HabiticaNotificationType.achievementOnboardingComplete
                 })
+            case HabiticaNotificationType.rebirthEnabled:
+                notificationDisplayed = NotificationManager.displayAchievement(notification: notification, isOnboarding: false, isLastOnboardingAchievement: false)
+            case HabiticaNotificationType.rebirthAchievement:
+                notificationDisplayed = NotificationManager.displayRebirthAchievement(notification: notification)
             case HabiticaNotificationType.loginIncentive:
                 notificationDisplayed = NotificationManager.displayLoginIncentive(notification: notification)
             case HabiticaNotificationType.firstDrop:
@@ -145,7 +149,22 @@ class NotificationManager {
         }
         return true
     }
-    
+
+    static func displayRebirthAchievement(notification: NotificationProtocol) -> Bool {
+        userRepository.readNotification(notification: notification).observeCompleted {}
+        userRepository.retrieveUser(forced: true).observeValues { user in
+            DispatchQueue.main.async {
+                let alert = AchievementAlertController()
+                alert.title = L10n.youGotAchievement
+                alert.setRebirthAchievement(user: user)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                    alert.enqueue()
+                }
+            }
+        }
+        return true
+    }
+
     static func displayLoginIncentive(notification: NotificationProtocol) -> Bool {
         guard let loginIncentiveNotification = notification as? NotificationLoginIncentiveProtocol else {
             return true

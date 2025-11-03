@@ -1067,6 +1067,17 @@
 "shops.try_on_customize_avatar" = "You can try them on by customizing your avatar.";
 "shops.try_on_equipment" = "You can try them on from Equipment. New stock comes in at the beginning of each month!";
 "shops.customizing_your_avatar" = "customizing your avatar";
+"shops.rebirthShop" = "Orb of Rebirth";
+"shops.rebirthShopDescription" = "Instantly restart your character as a Level 1 Warrior while retaining achievements, collectibles, and equipment. Your tasks will reset to their original status and all skill points and experience will be reset. If you are over Level 100, you can use the Orb once every 45 days for free. If you are between Level 50 and Level 99, you can use the Orb for 6 Gems.";
+"shops.rebirthConfirmTitle" = "Restart Your Adventure?";
+"shops.rebirthConfirmMessage" = "Are you sure you want to use the Orb of Rebirth?\n\nYou will:\n• Return to Level 1 as a Warrior\n• Reset all your stats and skill points\n• Lose all your gold and mana\n• Reset all task values and streaks\n\nYou will keep:\n• All your equipment, pets, and mounts\n• All your achievements\n• Your guild, party, and challenge memberships";
+"shops.rebirthConfirmFree" = "Restart (FREE)";
+"shops.rebirthConfirmGems" = "Restart (%d Gems)";
+"shops.rebirthEnabledTitle" = "Rebirth: New Adventure Available!";
+"shops.rebirthEnabledDescription" = "You've unlocked Rebirth! This special Market item allows you to begin a new game at level 1 while keeping all of the items, achievements, and pets that you've collected so far.";
+"shops.rebirthAchievementTitle" = "You've Been Reborn!";
+"shops.rebirthAchievementDescription" = "You've begun a new adventure! This is Rebirth %d for you, and the highest Level you've attained is %d.";
+"shops.rebirthAchievementDescriptionMax" = "You've begun a new adventure! This is Rebirth %d for you, and the highest Level you've attained is %d or higher.";
 "purchased" = "You purchased %@";
 "buy_reward" = "You bought '%@' for %@ gold";
 "notifications.unallocated_stat_points" = "You have **%d unallocated Stat Points**";

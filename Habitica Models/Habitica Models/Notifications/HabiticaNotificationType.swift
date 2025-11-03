@@ -30,7 +30,9 @@ public enum HabiticaNotificationType: String, EquatableStringEnumProtocol {
     case achievementInvitedFriend = "INVITED_FRIEND_ACHIEVEMENT"
     case achievementGeneric = "ACHIEVEMENT"
     case achievementOnboardingComplete = "ONBOARDING_COMPLETE"
-    
+    case rebirthEnabled = "REBIRTH_ENABLED"
+    case rebirthAchievement = "REBIRTH_ACHIEVEMENT"
+
     case achievementAllYourBase = "ACHIEVEMENT_ALL_YOUR_BASE"
     case achievementBackToBasics = "ACHIEVEMENT_BACK_TO_BASICS"
     case achievementJustAddWater = "ACHIEVEMENT_JUST_ADD_WATER"

@@ -448,6 +448,12 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         return
                     }
                 }
+
+                if self.reward?.purchaseType == "rebirth_orb" {
+                    self.displayRebirthConfirmationDialog()
+                    return
+                }
+
                 self.isPurchasing = true
                 self.buyItem(quantity: self.purchaseQuantity)
             }
@@ -525,6 +531,25 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 case .failure:
                     failureBlock()
                     HRPGBuyItemModalViewController.displayInsufficientGemsModal(reward: self.reward)
+                }
+            })
+        } else if purchaseType == "rebirth_orb" {
+            userRepository.rebirth().observeResult({ (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success:
+                        SoundManager.shared.play(effect: .rewardBought)
+                        self.dismiss(animated: true, completion: nil)
+                        self.userRepository.retrieveInAppRewards().observeCompleted {}
+                        if let action = self.onInventoryRefresh {
+                            action()
+                        }
+                    case .failure:
+                        failureBlock()
+                        if (self.reward?.value ?? 0) > 0 {
+                            HRPGBuyItemModalViewController.displayInsufficientGemsModal(reward: self.reward)
+                        }
+                    }
                 }
             })
         } else if purchaseType == "backgrounds" || purchaseType == "customization" {
@@ -703,7 +728,22 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             alert.enqueue()
         }
     }
-    
+
+    private func displayRebirthConfirmationDialog() {
+        let alert = HabiticaAlertController(title: L10n.Shops.rebirthConfirmTitle, message: L10n.Shops.rebirthConfirmMessage)
+        let value = reward?.value ?? 0
+        let buttonTitle = value == 0 ? L10n.Shops.rebirthConfirmFree : L10n.Shops.rebirthConfirmGems(Int(value))
+        alert.addAction(title: buttonTitle, style: .destructive, isMainAction: true) { _ in
+            self.isPurchasing = true
+            self.buyItem(quantity: self.purchaseQuantity)
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addCancelAction()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            alert.enqueue()
+        }
+    }
+
     @objc
     func closePressed() {
         dismiss(animated: true, completion: nil)

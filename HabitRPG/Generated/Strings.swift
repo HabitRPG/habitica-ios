@@ -2697,6 +2697,34 @@ public enum L10n {
     public static func purchasedAllGearTitle(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "shops.purchased_all_gear_title", p1)
     }
+    /// You've begun a new adventure! This is Rebirth %d for you, and the highest Level you've attained is %d.
+    public static func rebirthAchievementDescription(_ p1: Int, _ p2: Int) -> String {
+      return L10n.tr("Mainstrings", "shops.rebirthAchievementDescription", p1, p2)
+    }
+    /// You've begun a new adventure! This is Rebirth %d for you, and the highest Level you've attained is %d or higher.
+    public static func rebirthAchievementDescriptionMax(_ p1: Int, _ p2: Int) -> String {
+      return L10n.tr("Mainstrings", "shops.rebirthAchievementDescriptionMax", p1, p2)
+    }
+    /// You've Been Reborn!
+    public static var rebirthAchievementTitle: String { return L10n.tr("Mainstrings", "shops.rebirthAchievementTitle") }
+    /// Restart (FREE)
+    public static var rebirthConfirmFree: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmFree") }
+    /// Restart (%d Gems)
+    public static func rebirthConfirmGems(_ p1: Int) -> String {
+      return L10n.tr("Mainstrings", "shops.rebirthConfirmGems", p1)
+    }
+    /// Are you sure you want to use the Orb of Rebirth?\n\nYou will:\n• Return to Level 1 as a Warrior\n• Reset all your stats and skill points\n• Lose all your gold and mana\n• Reset all task values and streaks\n\nYou will keep:\n• All your equipment, pets, and mounts\n• All your achievements\n• Your guild, party, and challenge memberships
+    public static var rebirthConfirmMessage: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmMessage") }
+    /// Restart Your Adventure?
+    public static var rebirthConfirmTitle: String { return L10n.tr("Mainstrings", "shops.rebirthConfirmTitle") }
+    /// You've unlocked Rebirth! This special Market item allows you to begin a new game at level 1 while keeping all of the items, achievements, and pets that you've collected so far.
+    public static var rebirthEnabledDescription: String { return L10n.tr("Mainstrings", "shops.rebirthEnabledDescription") }
+    /// Rebirth: New Adventure Available!
+    public static var rebirthEnabledTitle: String { return L10n.tr("Mainstrings", "shops.rebirthEnabledTitle") }
+    /// Orb of Rebirth
+    public static var rebirthShop: String { return L10n.tr("Mainstrings", "shops.rebirthShop") }
+    /// Instantly restart your character as a Level 1 Warrior while retaining achievements, collectibles, and equipment. Your tasks will reset to their original status and all skill points and experience will be reset. If you are over Level 100, you can use the Orb once every 45 days for free. If you are between Level 50 and Level 99, you can use the Orb for 6 Gems.
+    public static var rebirthShopDescription: String { return L10n.tr("Mainstrings", "shops.rebirthShopDescription") }
     /// You can try them on by customizing your avatar.
     public static var tryOnCustomizeAvatar: String { return L10n.tr("Mainstrings", "shops.try_on_customize_avatar") }
     /// You can try them on by customizing your avatar. Be sure to check back later for next month’s options!

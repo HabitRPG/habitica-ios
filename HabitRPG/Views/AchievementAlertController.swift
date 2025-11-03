@@ -148,9 +148,51 @@ class AchievementAlertController: HabiticaAlertController {
         case HabiticaNotificationType.achievementOnboardingComplete.rawValue:
             title = L10n.onboardingCompleteAchievementTitle
             configureAlert(title: L10n.onboardingCompleteTitle, text: L10n.onboardingCompleteDescription, iconName: "onboardingComplete")
+        case HabiticaNotificationType.rebirthEnabled.rawValue:
+            configureAlert(title: L10n.Shops.rebirthEnabledTitle, text: L10n.Shops.rebirthEnabledDescription, iconName: "rebirth_orb")
         default:
             break
         }
+    }
+
+    func setRebirthAchievement(user: UserProtocol?) {
+        let rebirthCount = user?.rebirths ?? 0
+        let rebirthLevel = user?.rebirthLevel ?? 0
+        let text: String
+        if rebirthLevel >= 100 {
+            text = L10n.Shops.rebirthAchievementDescriptionMax(rebirthCount, 100)
+        } else {
+            text = L10n.Shops.rebirthAchievementDescription(rebirthCount, rebirthLevel)
+        }
+        configureRebirthAchievementAlert(title: L10n.Shops.rebirthAchievementTitle, text: text, iconName: "achievement-sun")
+    }
+
+    private func configureRebirthAchievementAlert(title: String, text: String, iconName: String) {
+        iconStackView.insertArrangedSubview(leftSparkleView, at: 0)
+        iconView.setImagewith(name: iconName)
+        iconStackView.addArrangedSubview(rightSparkleView)
+        descriptionLabel.text = text
+        descriptionLabel.textColor = ThemeService.shared.theme.primaryTextColor
+        achievementTitleLabel.text = title
+        achievementTitleLabel.textColor = ThemeService.shared.theme.primaryTextColor
+
+        let titleSize = achievementTitleLabel.sizeThatFits(CGSize(width: 240, height: 600))
+        achievementTitleLabel.addHeightConstraint(height: titleSize.height)
+        let size = descriptionLabel.sizeThatFits(CGSize(width: 240, height: 600))
+        descriptionLabel.addHeightConstraint(height: size.height)
+
+        containerViewSpacing = 12
+
+        addAction(title: L10n.viewAchievements, isMainAction: true) { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                RouterHandler.shared.handle(urlString: "/user/achievements")
+            }
+        }
+        addCloseAction()
+
+        stackView.setNeedsUpdateConstraints()
+        stackView.setNeedsLayout()
+        view.setNeedsLayout()
     }
     
     private func configureAlert(title: String, text: String, iconName: String) {
@@ -158,6 +200,10 @@ class AchievementAlertController: HabiticaAlertController {
             iconView.image = Asset.onboardingDoneArt.image
             iconView.contentMode = .center
             iconStackView.addHeightConstraint(height: 90)
+        } else if iconName == "rebirth_orb" {
+            iconStackView.insertArrangedSubview(leftSparkleView, at: 0)
+            iconView.setImagewith(name: "rebirth_orb")
+            iconStackView.addArrangedSubview(rightSparkleView)
         } else {
             iconStackView.insertArrangedSubview(leftSparkleView, at: 0)
             iconView.setImagewith(name: "achievement-\(iconName)2x")

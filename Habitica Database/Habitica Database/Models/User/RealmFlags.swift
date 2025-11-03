@@ -15,6 +15,7 @@ class RealmFlags: Object, FlagsProtocol {
     @objc dynamic var armoireEmpty: Bool = false
     @objc dynamic var cronCount: Int = 0
     @objc dynamic var rebirthEnabled: Bool = false
+    @objc dynamic var lastFreeRebirth: Date?
     @objc dynamic var communityGuidelinesAccepted: Bool = false
     @objc dynamic var hasNewStuff: Bool = false
     @objc dynamic var armoireOpened: Bool = false
@@ -54,6 +55,7 @@ class RealmFlags: Object, FlagsProtocol {
         armoireEmpty = flags.armoireEmpty
         cronCount = flags.cronCount
         rebirthEnabled = flags.rebirthEnabled
+        lastFreeRebirth = flags.lastFreeRebirth
         communityGuidelinesAccepted = flags.communityGuidelinesAccepted
         hasNewStuff = flags.hasNewStuff
         armoireOpened = flags.armoireOpened

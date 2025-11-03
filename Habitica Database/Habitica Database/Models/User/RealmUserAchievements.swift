@@ -55,7 +55,9 @@ class RealmUserAchievements: BaseModel, UserAchievementsProtocol {
     var hatchedPet: Bool = false
     var fedPet: Bool = false
     var purchasedEquipment: Bool = false
-    
+    var rebirths: Int = 0
+    var rebirthLevel: Int = 0
+
     override static func primaryKey() -> String {
         return "userID"
     }
@@ -73,6 +75,8 @@ class RealmUserAchievements: BaseModel, UserAchievementsProtocol {
         fedPet = protocolObject.fedPet
         purchasedEquipment = protocolObject.purchasedEquipment
         streak = protocolObject.streak
+        rebirths = protocolObject.rebirths
+        rebirthLevel = protocolObject.rebirthLevel
         quests = protocolObject.quests
         challenges = protocolObject.challenges
     }
