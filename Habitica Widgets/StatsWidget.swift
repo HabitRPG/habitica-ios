@@ -91,7 +91,8 @@ struct StatsWidgetView: View {
 }
 
 struct ValueBar: View {
-    @Environment(\.widgetRenderingMode) var renderingMode
+    @Environment(\.widgetRenderingMode)
+    var renderingMode
     
     var title: String
     var value: Float

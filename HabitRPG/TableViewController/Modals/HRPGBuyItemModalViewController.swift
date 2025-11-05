@@ -548,16 +548,16 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             .flatMap(.latest, { _ in
                 return self.userRepository.retrieveUser()
             }).observeResult({ (result) in
-            switch result {
-            case .success:
-                successBlock()
-            case .failure:
-                failureBlock()
-                    if key == "gem" {
-                        HRPGBuyItemModalViewController.displayGemCapReachedModal()
-                    } else {
-                        HRPGBuyItemModalViewController.displayInsufficientGemsModal(reward: self.reward)
-                    }
+                switch result {
+                case .success:
+                    successBlock()
+                case .failure:
+                    failureBlock()
+                        if key == "gem" {
+                            HRPGBuyItemModalViewController.displayGemCapReachedModal()
+                        } else {
+                            HRPGBuyItemModalViewController.displayInsufficientGemsModal(reward: self.reward)
+                        }
                 }
             })
         } else {
@@ -573,7 +573,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 case .failure:
                     failureBlock()
                     HRPGBuyItemModalViewController.displayInsufficientGoldModal()
-                    }
+                }
                 })
             } else if purchaseType == "debuffPotion" {
                 userRepository.useDebuffItem(key: key).observeResult { (result) in
@@ -583,8 +583,8 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     case .failure:
                         failureBlock()
                         HRPGBuyItemModalViewController.displayInsufficientGoldModal()
-                        }
                     }
+                }
             } else {
                 inventoryRepository.buyObject(key: key, quantity: quantity, price: value, text: text)
                     .flatMap(.latest, { _ in
@@ -597,7 +597,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 case .failure:
                     failureBlock()
                     HRPGBuyItemModalViewController.displayInsufficientGoldModal()
-                    }
+                }
                 })
             }
         }

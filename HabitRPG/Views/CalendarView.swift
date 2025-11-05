@@ -49,7 +49,8 @@ fileprivate extension Calendar {
 }
 
 struct CalendarView<DateView>: View where DateView: View {
-    @Environment(\.calendar) var calendar
+    @Environment(\.calendar)
+    var calendar
 
     let interval: DateInterval
     let content: (Date) -> DateView
@@ -81,7 +82,8 @@ struct CalendarView<DateView>: View where DateView: View {
 }
 
 struct MonthView<DateView>: View where DateView: View {
-    @Environment(\.calendar) var calendar
+    @Environment(\.calendar)
+    var calendar
 
     let month: Date
     let content: (Date) -> DateView
@@ -114,7 +116,8 @@ struct MonthView<DateView>: View where DateView: View {
 }
 
 struct WeekView<DateView>: View where DateView: View {
-    @Environment(\.calendar) var calendar
+    @Environment(\.calendar)
+    var calendar
 
     let week: Date
     let content: (Date) -> DateView
@@ -153,7 +156,8 @@ struct WeekView<DateView>: View where DateView: View {
 }
 
 struct CalendarView_Previews: PreviewProvider {
-    @Environment(\.calendar) static var calendar
+    @Environment(\.calendar)
+    static var calendar
 
     private static var year: DateInterval {
         calendar.dateInterval(of: .month, for: Date()) ?? DateInterval()

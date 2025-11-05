@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct StatsAllocationRow<Title: View>: View {
-    @Environment(\.sizeCategory) var sizeCategory
+    @Environment(\.sizeCategory)
+    var sizeCategory
     
     var title: Title
     var color: Color

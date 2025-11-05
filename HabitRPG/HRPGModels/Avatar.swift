@@ -85,7 +85,9 @@ extension Avatar {
     }
     
     func getFilenameDictionary(ignoreSleeping: Bool) -> [String: String?] {
-        if isValid() == false { return [:] }
+        if isValid() == false {
+            return [:]
+        }
         return [
             "background": "background_\(background ?? "")",
             "mount-body": "Mount_Body_\(mount ?? "")",

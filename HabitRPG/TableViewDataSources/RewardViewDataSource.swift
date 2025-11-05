@@ -36,7 +36,7 @@ class RewardViewDataSource: BaseReactiveCollectionViewDataSource<BaseRewardProto
     
     func isCustomRewardsSection(_ section: Int) -> Bool {
         if let item = item(at: IndexPath(row: 0, section: section)) {
-            if item as? TaskProtocol != nil {
+            if item is TaskProtocol {
                 return true
             }
         }

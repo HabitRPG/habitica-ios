@@ -68,7 +68,6 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
         }
     }
 
-    
     static func errorMessageForCode(code: Int) -> ErrorMessage? {
         if let messages = errorMessages {
             for errorMessage in messages where code == errorMessage.forCode {

@@ -331,7 +331,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                     if response.apiToken?.isEmpty == false {
                         AuthenticationManager.shared.currentUserKey = response.apiToken
                         ToastManager.show(
-                                            text:  L10n.Settings.updatedPassword,
+                                            text: L10n.Settings.updatedPassword,
                                             color: .green
                                         )
                     }

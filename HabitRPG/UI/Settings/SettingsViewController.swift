@@ -290,7 +290,7 @@ class SettingsViewController: FormViewController, Themeable {
                     if isEnabling {
                         UNUserNotificationCenter.current().getNotificationSettings { settings in
                             if settings.authorizationStatus == .notDetermined {
-                                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+                                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
                                     DispatchQueue.main.async {
                                         if granted {
                                             defaults.set(true, forKey: "dailyReminderActive")

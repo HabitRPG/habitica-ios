@@ -30,11 +30,6 @@ class ChallengeCreatorTableViewCell: UITableViewCell, ChallengeConfigurable {
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
     func configure(with challenge: ChallengeProtocol, userID: String?) {
         userNameLabel.text = challenge.leaderName
     }

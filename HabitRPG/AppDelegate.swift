@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Amplitude
 import Habitica_API_Client
 import Habitica_Models
 import RealmSwift
@@ -60,7 +59,9 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             object: nil,
             queue: .main
         ) { [weak self] _ in
-            guard let self = self else { return }
+            guard let self = self else {
+                return
+            }
             self.userRepository.logoutAccount()
         }
         KeyboardManager.shared.observeKeyboardNotifications()
@@ -477,4 +478,3 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         UINotificationFeedbackGenerator.oneShotNotificationOccurred(.warning)
     }
 }
-

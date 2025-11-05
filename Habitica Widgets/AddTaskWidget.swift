@@ -56,7 +56,8 @@ struct AddTaskEntry: TimelineEntry {
 }
 
 struct AddTaskWidgetView: View {
-    @Environment(\.widgetRenderingMode) var renderingMode
+    @Environment(\.widgetRenderingMode)
+    var renderingMode
 
     var entry: AddTaskProvider.Entry
     

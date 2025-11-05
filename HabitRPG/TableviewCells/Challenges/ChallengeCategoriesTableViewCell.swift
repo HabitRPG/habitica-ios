@@ -18,10 +18,6 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
     
     private var isExpanded = true
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     func configure(with challenge: ChallengeProtocol, userID: String?) {
         categories = challenge.categories.map { $0.name ?? "" }
         if isExpanded {

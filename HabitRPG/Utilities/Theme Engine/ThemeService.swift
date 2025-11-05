@@ -40,9 +40,7 @@ public class ThemeService: NSObject {
         UINavigationBar.appearance().titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: theme.primaryTextColor
         ]
-        if #available(iOS 26.0, *) {
-            
-        } else {
+        if #unavailable(iOS 26.0) {
             UINavigationBar.appearance().backgroundColor = theme.contentBackgroundColor
             UINavigationBar.appearance().barTintColor = theme.contentBackgroundColor
             UITabBar.appearance().barTintColor = theme.contentBackgroundColor

@@ -11,6 +11,4 @@ import Habitica_Models
 import ReactiveSwift
 
 class StableDetailDataSource<ANIMAL: AnimalProtocol, ITEM>: BaseReactiveCollectionViewDataSource<ITEM> {
-    
-    
 }

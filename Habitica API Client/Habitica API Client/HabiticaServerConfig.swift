@@ -23,7 +23,6 @@ public class HabiticaServerConfig {
     public static let starfish = ServerConfiguration(scheme: "https", host: "starfish.habitica.com", apiRoute: "api/\(Constants.defaultApiVersion)")
     public static let turtle = ServerConfiguration(scheme: "https", host: "turtle.habitica.com", apiRoute: "api/\(Constants.defaultApiVersion)")
 
-
     public static let localhost = ServerConfiguration(scheme: "http", host: "192.168.178.52:3000", apiRoute: "api/\(Constants.defaultApiVersion)")
     public static let stub = ServerConfiguration(shouldStub: true, scheme: "https", host: "habitica.com", apiRoute: "api/\(Constants.defaultApiVersion)")
     

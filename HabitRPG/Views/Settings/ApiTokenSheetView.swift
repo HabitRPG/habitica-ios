@@ -86,6 +86,3 @@ struct ApiTokenSheetView: View, Dismissable {
             })
         }
 }
-
-
-

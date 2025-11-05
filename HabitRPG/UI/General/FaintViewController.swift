@@ -11,8 +11,6 @@ import Habitica_Models
 import SwiftUI
 import ReactiveSwift
 
-
-
 private class FaintViewModel: ViewModel {
     let userRepository = UserRepository()
     @Published var lossText: LocalizedStringKey = ""

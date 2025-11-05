@@ -66,26 +66,32 @@ enum Route {
     case promoInfo
     
     var url: String {
-        // swiftlint:disable
         switch self {
-        case .market: return "/inventory/market"
-        case .questShop: return "/inventory/quests"
-        case .customizationShop: return "/inventory/customizations"
-        case .seasonalShop: return "/inventory/seasonal"
-        case .timeTravelers: return "/inventory/time"
-        case .subscription: return "/user/settings/subscription"
+        case .market:
+            return "/inventory/market"
+        case .questShop:
+            return "/inventory/quests"
+        case .customizationShop:
+            return "/inventory/customizations"
+        case .seasonalShop:
+            return "/inventory/seasonal"
+        case .timeTravelers:
+            return "/inventory/time"
+        case .subscription:
+            return "/user/settings/subscription"
         case .giftSubscription(let username):
             return "/user/settings/subscription/gift/\(username)"
-        case .equipment: return "/inventory/equipment"
+        case .equipment:
+            return "/inventory/equipment"
         case .customizations(let type, let group):
             if let group = group {
                 return "/inventory/customizations/\(type)/\(group)"
             } else {
                 return "/inventory/customizations/\(type)"
             }
-        case .promoInfo: return "/promo/info"
+        case .promoInfo:
+            return "/promo/info"
         }
-        // siwftlint:enable
     }
 }
 

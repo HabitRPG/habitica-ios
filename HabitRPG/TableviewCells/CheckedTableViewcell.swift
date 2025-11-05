@@ -56,7 +56,7 @@ class CheckedTableViewCell: TaskTableViewCell {
         
         handleChecklist(task)
         
-        if task.completed(by: userID)  {
+        if task.completed(by: userID) {
             titleLabel.textColor = ThemeService.shared.theme.quadTextColor
             subtitleLabel.textColor = ThemeService.shared.theme.quadTextColor
         }

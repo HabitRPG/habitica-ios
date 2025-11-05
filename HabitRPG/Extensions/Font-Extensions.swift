@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct ScaledFont: ViewModifier {
-    @Environment(\.sizeCategory) var sizeCategory
+    @Environment(\.sizeCategory)
+    var sizeCategory
     var size: Double
     var weight: Font.Weight = .regular
 

@@ -150,6 +150,55 @@ struct GearGridView: View {
     }
 }
 
+struct StatsViewUI: View {
+    let upperBackgroundColor: Color
+    let upperTextColor: Color
+    let title: String
+    
+    let totalValue: Int
+    let levelValue: Int
+    let equipmentValue: Int
+    let buffValue: Int
+    let allocatedValue: Int
+    
+    @ViewBuilder
+    func makeEntry(value: Int, name: String) -> some View {
+        VStack {
+            Text("\(value)").scaledFont(size: 22, weight: .semibold)
+            Text(name).scaledFont(size: 13)
+        }
+    }
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            HStack {
+                Text(title)
+                Spacer()
+                Text("\(totalValue)")
+            }
+            .scaledFont(size: 22, weight: .bold)
+            .padding(.vertical, 8)
+            .padding(.horizontal, 26)
+            .frame(minHeight: 28)
+            .background(upperBackgroundColor)
+            .foregroundColor(upperTextColor)
+            HStack {
+                Spacer()
+                makeEntry(value: levelValue, name: L10n.level)
+                Spacer()
+                makeEntry(value: equipmentValue, name: L10n.Equipment.equipment)
+                Spacer()
+                makeEntry(value: buffValue, name: L10n.buffs)
+                Spacer()
+                makeEntry(value: allocatedValue, name: L10n.allocated)
+                Spacer()
+            }.padding(.vertical, 16)
+                .foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor))
+        }.background(Color(ThemeService.shared.theme.windowBackgroundColor))
+            .cornerRadius(26)
+    }
+}
+
 struct ProfilePage: View {
     @ObservedObject fileprivate var viewModel: ProfileViewModel
     
@@ -357,7 +406,7 @@ struct ProfilePage: View {
                                 Text(L10n.petsFound)
                             }
                             VStack {
-                                Text("\(member.items?.ownedPets.filter { pet in viewModel.baseAnimalKeys.contains(pet.key ?? "") && pet.trained != 0 }.count ?? 0)/\(viewModel.baseAnimalKeys.size)")
+                                Text("\(member.items?.ownedPets.filter { pet in viewModel.baseAnimalKeys.contains(pet.key ?? "") && pet.trained != 0 }.count ?? 0)/\(viewModel.baseAnimalKeys.count)")
                                     .scaledFont(size: 17, weight: .semibold)
                                 Text(L10n.standardPets)
                             }
@@ -377,7 +426,7 @@ struct ProfilePage: View {
                                 Text(L10n.mountsFound)
                             }
                             VStack {
-                                Text("\(member.items?.ownedMounts.filter { mount in viewModel.baseAnimalKeys.contains(mount.key ?? "") && mount.owned } .count ?? 0)/\(viewModel.baseAnimalKeys.size)")
+                                Text("\(member.items?.ownedMounts.filter { mount in viewModel.baseAnimalKeys.contains(mount.key ?? "") && mount.owned } .count ?? 0)/\(viewModel.baseAnimalKeys.count)")
                                     .scaledFont(size: 17, weight: .semibold)
                                 Text(L10n.standardMounts)
                             }
@@ -387,9 +436,42 @@ struct ProfilePage: View {
                     Text(L10n.stats)
                         .scaledFont(size: 22, weight: .bold)
                         .padding(.top, 28)
+                    let calc = viewModel.calculatedStats
+                    StatsViewUI(upperBackgroundColor: .red100,
+                                upperTextColor: .red1,
+                                title: L10n.Stats.strengthTitle,
+                                totalValue: calc.totalStrength,
+                                levelValue: calc.levelStat,
+                                equipmentValue: calc.gearStrength,
+                                buffValue: calc.buffStrength,
+                                allocatedValue: calc.allocatedStrength)
                     
-                    Text("\(viewModel.calculatedStats.levelStat)")
-                    Text("\(viewModel.calculatedStats.gearStrength)")
+                    StatsViewUI(upperBackgroundColor: .blue100,
+                                upperTextColor: .blue1,
+                                title: L10n.Stats.intelligenceTitle,
+                                totalValue: calc.totalIntelligence,
+                                levelValue: calc.levelStat,
+                                equipmentValue: calc.gearIntelligence,
+                                buffValue: calc.buffIntelligence,
+                                allocatedValue: calc.allocatedIntelligence)
+                
+                    StatsViewUI(upperBackgroundColor: .yellow100,
+                                upperTextColor: .yellow1,
+                                title: L10n.Stats.constitutionTitle,
+                                totalValue: calc.totalConstitution,
+                                levelValue: calc.levelStat,
+                                equipmentValue: calc.gearConstitution,
+                                buffValue: calc.buffConstitution,
+                                allocatedValue: calc.allocatedConstitution)
+                
+                    StatsViewUI(upperBackgroundColor: .purple300,
+                                upperTextColor: .white,
+                                title: L10n.Stats.perceptionTitle,
+                                totalValue: calc.totalPerception,
+                                levelValue: calc.levelStat,
+                                equipmentValue: calc.gearPerception,
+                                buffValue: calc.buffPerception,
+                                allocatedValue: calc.allocatedPerception)
                     
                     Text(L10n.Titles.achievements)
                         .scaledFont(size: 22, weight: .bold)

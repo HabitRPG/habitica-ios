@@ -5,8 +5,6 @@
 //  Created by Phillip Thelen on 18.09.25.
 //  Copyright © 2025 HabitRPG Inc. All rights reserved.
 //
-
-
 import SwiftUI
 import Habitica_Models
 import ReactiveSwift

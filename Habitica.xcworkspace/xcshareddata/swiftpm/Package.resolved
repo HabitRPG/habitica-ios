@@ -1,5 +1,5 @@
 {
-  "originHash" : "44b89553472a90841bd8fcb01e8ac9c9aff30897953937172a96c45b9cf1412c",
+  "originHash" : "d9afef24a8c9e579e7bee933fbbb638e684f5badca2ee3a3ac6e7e0dd61d26b8",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -11,12 +11,21 @@
       }
     },
     {
-      "identity" : "amplitude-ios",
+      "identity" : "amplitude-swift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/amplitude/Amplitude-iOS",
+      "location" : "https://github.com/amplitude/Amplitude-Swift",
       "state" : {
-        "revision" : "7ec0f8971b68c1cb859028655fbff1bcde8170dd",
-        "version" : "8.22.2"
+        "revision" : "46f88eb4aa20ede8d534e58da4ffaeced41e4a37",
+        "version" : "1.15.3"
+      }
+    },
+    {
+      "identity" : "amplitudecore-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/amplitude/AmplitudeCore-Swift.git",
+      "state" : {
+        "revision" : "1d9b590e202c3e2abb27ccb6b5b5ae62145406f0",
+        "version" : "1.2.4"
       }
     },
     {

@@ -7,4 +7,3 @@
 //
 
 import Habitica_Models
-

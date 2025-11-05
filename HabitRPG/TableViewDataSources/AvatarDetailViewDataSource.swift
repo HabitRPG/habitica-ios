@@ -135,9 +135,9 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
             if customization.price > 0 && !owns(customization: customization) || (customization.key?.lowercased().contains("birthday_bash") == true && !owns(customization: customization)) {
                 continue
             }
-            if let set = customization.set, (
+            if let set = customization.set,
                 customizationType == "background" && (set.key?.contains("incentive") == true || set.key?.contains("timeTravel") == true || set.key?.contains("event") == true)
-            ) {
+             {
                 if let index = sections.firstIndex(where: { (section) -> Bool in
                     return section.key == set.key
                 }) {

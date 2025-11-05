@@ -12,8 +12,7 @@ import StoreKit
 
 private struct DetailContainer<Content: View>: View {
     var verticalPadding: CGFloat = 19
-    @ViewBuilder
-    let content: Content
+    @ViewBuilder let content: Content
     
     var body: some View {
         content
@@ -99,8 +98,7 @@ struct SubscriptionDetailViewUI: View {
         }
     }
     
-    @ViewBuilder
-    var activityPill: some View {
+    @ViewBuilder var activityPill: some View {
         if plan.isActive {
             if plan.isGifted {
                 StatusPill(text: L10n.Subscription.gifted, background: .yellow10, textColor: .purple100)

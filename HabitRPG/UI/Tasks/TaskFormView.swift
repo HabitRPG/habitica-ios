@@ -708,7 +708,8 @@ struct DailyProgressView: View {
 }
 
 struct TaskFormView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode)
+    var presentationMode
     @State private var isEditingText = false
     @State private var isEditingNotes = false
 
@@ -780,8 +781,7 @@ struct TaskFormView: View {
         .preferredColorScheme(ThemeService.shared.theme.isDark ? .dark : .light)
     }
     
-    @ViewBuilder
-    private var graphs: some View {
+    @ViewBuilder private var graphs: some View {
         if viewModel.taskType == .daily && viewModel.showTaskGraphs, let task = viewModel.task {
             TaskFormSection(header: Text(L10n.Tasks.Form.completion.uppercased()),
                             content: DailyProgressView(history: task.history), backgroundColor: .clear)
@@ -804,8 +804,7 @@ struct TaskFormView: View {
         }
     }
     
-    @ViewBuilder
-    private var dynamicFormPart: some View {
+    @ViewBuilder private var dynamicFormPart: some View {
         if viewModel.taskType == .habit && viewModel.isTaskEditable {
             TaskFormSection(header: Text(L10n.Tasks.Form.controls.uppercased()),
                             content: HabitControlsFormView(taskColor: viewModel.lightTaskTintColor.uiColor(), isUp: $viewModel.up, isDown: $viewModel.down).padding(8))

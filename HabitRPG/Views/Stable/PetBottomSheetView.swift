@@ -18,7 +18,6 @@ struct PetView: View {
     }
 }
 
-
 struct PetBottomSheetView: View, Dismissable {
     var dismisser: Dismisser = Dismisser()
     

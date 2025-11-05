@@ -215,7 +215,7 @@ class QuestDetailViewController: BaseUIViewController {
     
     private func set(members: [MemberProtocol]) {
         invitationsStackView.arrangedSubviews.filter { (view) -> Bool in
-            return view as? QuestParticipantView != nil
+            return view is QuestParticipantView
             }.forEach { (view) in
                 view.removeFromSuperview()
         }
