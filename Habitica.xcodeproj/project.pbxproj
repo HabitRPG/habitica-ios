@@ -144,7 +144,6 @@
 		292AA72420FE15090022CC5F /* UIFont-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292AA72320FE15090022CC5F /* UIFont-Extensions.swift */; };
 		292BD89C28B4EA4F006447EF /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 292BD89B28B4EA4F006447EF /* KeychainAccess */; };
 		292BD89F28B4EA85006447EF /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 292BD89E28B4EA85006447EF /* AppAuth */; };
-		292BD8A228B4EAC4006447EF /* Amplitude in Frameworks */ = {isa = PBXBuildFile; productRef = 292BD8A128B4EAC4006447EF /* Amplitude */; };
 		292BD8A528B4EAE9006447EF /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = 292BD8A428B4EAE9006447EF /* Down */; };
 		292BD8A828B4EB10006447EF /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 292BD8A728B4EB10006447EF /* PinLayout */; };
 		292BD8AB28B4EB42006447EF /* Eureka in Frameworks */ = {isa = PBXBuildFile; productRef = 292BD8AA28B4EB42006447EF /* Eureka */; };
@@ -175,8 +174,6 @@
 		293282161F389DBB00D42961 /* SetupCustomizationItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */; };
 		2932821A1F39E28000D42961 /* TypingTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282191F39E28000D42961 /* TypingTextViewController.swift */; };
 		29359A522BE8F8F8009790DE /* CTAFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29359A512BE8F8F8009790DE /* CTAFooterView.swift */; };
-		2938ED3A28B4EE5C00E995A2 /* Amplitude in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED3928B4EE5C00E995A2 /* Amplitude */; };
-		2938ED3C28B4EE6B00E995A2 /* Amplitude in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED3B28B4EE6B00E995A2 /* Amplitude */; };
 		2938ED3E28B4EEB200E995A2 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED3D28B4EEB200E995A2 /* KeychainAccess */; };
 		2938ED4028B4EEBC00E995A2 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED3F28B4EEBC00E995A2 /* KeychainAccess */; };
 		2938ED4328B4EF5D00E995A2 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED4228B4EF5D00E995A2 /* SwiftyStoreKit */; };
@@ -254,6 +251,9 @@
 		29706CB727D911F5006EC139 /* XCUIApplication-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29706CB627D911F5006EC139 /* XCUIApplication-Extensions.swift */; };
 		29706CB827D917CD006EC139 /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 29706CB427D9115C006EC139 /* tasks.json */; };
 		2970CB52227B1A8600FACCB7 /* MarkdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2970CB51227B1A8600FACCB7 /* MarkdownTests.swift */; };
+		2972A33A2EBB96CC00106850 /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2972A3392EBB96CC00106850 /* AmplitudeSwift */; };
+		2972A33C2EBB9A1600106850 /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2972A33B2EBB9A1600106850 /* AmplitudeSwift */; };
+		2972A33E2EBB9A1E00106850 /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2972A33D2EBB9A1E00106850 /* AmplitudeSwift */; };
 		29737EEF2D38055000480353 /* NSRange-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29737EEE2D38054C00480353 /* NSRange-Extensions.swift */; };
 		2974BD91208DEFEA00EC1A25 /* CustomizationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */; };
 		2974BDAD208F68A800EC1A25 /* CustomizationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */; };
@@ -1409,7 +1409,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2938ED3C28B4EE6B00E995A2 /* Amplitude in Frameworks */,
+				2972A33E2EBB9A1E00106850 /* AmplitudeSwift in Frameworks */,
 				2953D83D28B51FA700DC456E /* ReactiveSwift in Frameworks */,
 				29D048C02E3A647F004A6AAA /* RealmSwift in Frameworks */,
 				2994A8B128FE946A00CEDED7 /* Habitica_Database.framework in Frameworks */,
@@ -1427,9 +1427,9 @@
 				29D048BC2E3A6423004A6AAA /* RealmSwift in Frameworks */,
 				2953D83B28B51F9E00DC456E /* ReactiveSwift in Frameworks */,
 				2994A8B028FE946800CEDED7 /* Habitica_Database.framework in Frameworks */,
-				2938ED3A28B4EE5C00E995A2 /* Amplitude in Frameworks */,
 				2938ED4028B4EEBC00E995A2 /* KeychainAccess in Frameworks */,
 				2994A8AE28FE945E00CEDED7 /* Habitica_Models.framework in Frameworks */,
+				2972A33C2EBB9A1600106850 /* AmplitudeSwift in Frameworks */,
 				2994A8B228FE947800CEDED7 /* Habitica_API_Client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1469,13 +1469,13 @@
 				292BD89F28B4EA85006447EF /* AppAuth in Frameworks */,
 				292DEE4C204DA1830086D5F7 /* Habitica_API_Client.framework in Frameworks */,
 				29AE771A27E3521800CC9646 /* InputBarAccessoryView in Frameworks */,
-				292BD8A228B4EAC4006447EF /* Amplitude in Frameworks */,
 				292DEE3C204D9D360086D5F7 /* Habitica_Database.framework in Frameworks */,
 				292DEE3A204D9D290086D5F7 /* Habitica_Models.framework in Frameworks */,
 				299336FA2E8C0A0600ADB6BA /* FirebaseMessaging in Frameworks */,
 				2945AE972B285D000022F3CC /* PanModal in Frameworks */,
 				294F5D6628CA1DCB00760F6C /* ConfettiSwiftUI in Frameworks */,
 				2938ED4328B4EF5D00E995A2 /* SwiftyStoreKit in Frameworks */,
+				2972A33A2EBB96CC00106850 /* AmplitudeSwift in Frameworks */,
 				D92D26161D58EF00001FD977 /* AVFoundation.framework in Frameworks */,
 				29D048BA2E3A641A004A6AAA /* RealmSwift in Frameworks */,
 				292BD8AB28B4EB42006447EF /* Eureka in Frameworks */,
@@ -2888,10 +2888,10 @@
 			);
 			name = "Habitica WidgetsExtension";
 			packageProductDependencies = (
-				2938ED3B28B4EE6B00E995A2 /* Amplitude */,
 				2938ED3D28B4EEB200E995A2 /* KeychainAccess */,
 				2953D83C28B51FA700DC456E /* ReactiveSwift */,
 				29D048BF2E3A647F004A6AAA /* RealmSwift */,
+				2972A33D2EBB9A1E00106850 /* AmplitudeSwift */,
 			);
 			productName = "Habitica WidgetsExtension";
 			productReference = 29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */;
@@ -2912,10 +2912,10 @@
 			);
 			name = "Habitica Intents";
 			packageProductDependencies = (
-				2938ED3928B4EE5C00E995A2 /* Amplitude */,
 				2938ED3F28B4EEBC00E995A2 /* KeychainAccess */,
 				2953D83A28B51F9E00DC456E /* ReactiveSwift */,
 				29D048BB2E3A6423004A6AAA /* RealmSwift */,
+				2972A33B2EBB9A1600106850 /* AmplitudeSwift */,
 			);
 			productName = "Habitica Intents";
 			productReference = 7A84E191228928AC0081E96F /* Habitica Intents.appex */;
@@ -3005,7 +3005,6 @@
 				29AE771927E3521800CC9646 /* InputBarAccessoryView */,
 				292BD89B28B4EA4F006447EF /* KeychainAccess */,
 				292BD89E28B4EA85006447EF /* AppAuth */,
-				292BD8A128B4EAC4006447EF /* Amplitude */,
 				292BD8A428B4EAE9006447EF /* Down */,
 				292BD8A728B4EB10006447EF /* PinLayout */,
 				292BD8AA28B4EB42006447EF /* Eureka */,
@@ -3022,6 +3021,7 @@
 				299336F52E8C084E00ADB6BA /* FirebaseRemoteConfig */,
 				299336F72E8C08F300ADB6BA /* FirebaseCrashlytics */,
 				299336F92E8C0A0600ADB6BA /* FirebaseMessaging */,
+				2972A3392EBB96CC00106850 /* AmplitudeSwift */,
 			);
 			productName = HabitRPG;
 			productReference = D9EB4E8B18CB4A9400BB2094 /* Habitica.app */;
@@ -3036,7 +3036,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				CLASSPREFIX = HRPG;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 2600;
 				ORGANIZATIONNAME = "HabitRPG Inc.";
 				TargetAttributes = {
 					29706CA227D8B797006EC139 = {
@@ -3133,7 +3133,6 @@
 				29AE771827E3521800CC9646 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */,
 				292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
-				292BD8A028B4EAC4006447EF /* XCRemoteSwiftPackageReference "Amplitude-Swift" */,
 				292BD8A328B4EAE9006447EF /* XCRemoteSwiftPackageReference "Down" */,
 				292BD8A628B4EB10006447EF /* XCRemoteSwiftPackageReference "PinLayout" */,
 				292BD8A928B4EB42006447EF /* XCRemoteSwiftPackageReference "Eureka" */,
@@ -3151,6 +3150,7 @@
 				29C55B312C21A247008F553A /* XCRemoteSwiftPackageReference "CwlCatchException" */,
 				29D048B82E3A641A004A6AAA /* XCRemoteSwiftPackageReference "realm-swift" */,
 				299336F42E8C084E00ADB6BA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				2972A3382EBB96CC00106850 /* XCRemoteSwiftPackageReference "Amplitude-Swift" */,
 			);
 			productRefGroup = D9EB4E8C18CB4A9400BB2094 /* Products */;
 			projectDirPath = "";
@@ -4175,6 +4175,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1013;
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -4193,6 +4194,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4203,7 +4205,6 @@
 		295519C529191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Beta";
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -4213,8 +4214,12 @@
 				CURRENT_PROJECT_VERSION = 1013;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"HabitRPG/Preview Assets.xcassets\"";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_BITCODE = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = YES;
+				ENABLE_RESOURCE_ACCESS_CAMERA = YES;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4279,11 +4284,9 @@
 		295519C629191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -4325,7 +4328,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -4349,7 +4351,6 @@
 		295519C829191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -4363,7 +4364,8 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1013;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -4405,7 +4407,8 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1013;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -4449,7 +4452,8 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1013;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -4488,7 +4492,6 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1013;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -4540,6 +4543,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1013;
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -4558,6 +4562,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4568,7 +4573,6 @@
 		295519CF29191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Staff";
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -4578,8 +4582,12 @@
 				CURRENT_PROJECT_VERSION = 1013;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"HabitRPG/Preview Assets.xcassets\"";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_BITCODE = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = YES;
+				ENABLE_RESOURCE_ACCESS_CAMERA = YES;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4644,11 +4652,9 @@
 		295519D029191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -4690,7 +4696,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -4714,7 +4719,6 @@
 		295519D229191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -4728,7 +4732,8 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1013;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -4770,7 +4775,8 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1013;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -4814,7 +4820,8 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1013;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -4853,7 +4860,6 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1013;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -4884,7 +4890,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1013;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -4918,7 +4923,6 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1013;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -4955,7 +4959,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1013;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -5002,7 +5007,8 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1013;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -5043,7 +5049,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1013;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -5086,7 +5093,8 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1013;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -5114,7 +5122,6 @@
 		7A84E1AE228928AD0081E96F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -5127,7 +5134,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1013;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -5158,7 +5166,6 @@
 		7A84E1AF228928AD0081E96F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -5172,7 +5179,8 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1013;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -5210,7 +5218,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -5246,7 +5253,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -5270,11 +5276,9 @@
 		D944618C1AB34F5C0015215E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -5311,11 +5315,9 @@
 		D944618D1AB34F5C0015215E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -5377,6 +5379,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1013;
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -5403,6 +5406,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -5440,6 +5444,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1013;
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -5458,6 +5463,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -5468,7 +5474,6 @@
 		D9EB4EC418CB4A9400BB2094 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -5478,8 +5483,12 @@
 				CURRENT_PROJECT_VERSION = 1013;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"HabitRPG/Preview Assets.xcassets\"";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_BITCODE = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = YES;
+				ENABLE_RESOURCE_ACCESS_CAMERA = YES;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5543,7 +5552,6 @@
 		D9EB4EC518CB4A9400BB2094 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -5553,8 +5561,12 @@
 				CURRENT_PROJECT_VERSION = 1013;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"HabitRPG/Preview Assets.xcassets\"";
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_BITCODE = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = YES;
+				ENABLE_RESOURCE_ACCESS_CAMERA = YES;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5723,14 +5735,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		292BD8A028B4EAC4006447EF /* XCRemoteSwiftPackageReference "Amplitude-Swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/amplitude/Amplitude-Swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 8.0.0;
-			};
-		};
 		292BD8A328B4EAE9006447EF /* XCRemoteSwiftPackageReference "Down" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/johnxnguyen/Down";
@@ -5827,6 +5831,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		2972A3382EBB96CC00106850 /* XCRemoteSwiftPackageReference "Amplitude-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/amplitude/Amplitude-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		299336F42E8C084E00ADB6BA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -5888,11 +5900,6 @@
 			package = 292BD89D28B4EA85006447EF /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
 			productName = AppAuth;
 		};
-		292BD8A128B4EAC4006447EF /* Amplitude */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 292BD8A028B4EAC4006447EF /* XCRemoteSwiftPackageReference "Amplitude-Swift" */;
-			productName = Amplitude;
-		};
 		292BD8A428B4EAE9006447EF /* Down */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 292BD8A328B4EAE9006447EF /* XCRemoteSwiftPackageReference "Down" */;
@@ -5917,16 +5924,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 292BD8AF28B4EC36006447EF /* XCRemoteSwiftPackageReference "TagListView" */;
 			productName = TagListView;
-		};
-		2938ED3928B4EE5C00E995A2 /* Amplitude */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 292BD8A028B4EAC4006447EF /* XCRemoteSwiftPackageReference "Amplitude-Swift" */;
-			productName = Amplitude;
-		};
-		2938ED3B28B4EE6B00E995A2 /* Amplitude */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 292BD8A028B4EAC4006447EF /* XCRemoteSwiftPackageReference "Amplitude-Swift" */;
-			productName = Amplitude;
 		};
 		2938ED3D28B4EEB200E995A2 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -5982,6 +5979,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2953D84328B7772A00DC456E /* XCRemoteSwiftPackageReference "BottomSheet" */;
 			productName = BottomSheet;
+		};
+		2972A3392EBB96CC00106850 /* AmplitudeSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2972A3382EBB96CC00106850 /* XCRemoteSwiftPackageReference "Amplitude-Swift" */;
+			productName = AmplitudeSwift;
+		};
+		2972A33B2EBB9A1600106850 /* AmplitudeSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2972A3382EBB96CC00106850 /* XCRemoteSwiftPackageReference "Amplitude-Swift" */;
+			productName = AmplitudeSwift;
+		};
+		2972A33D2EBB9A1E00106850 /* AmplitudeSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2972A3382EBB96CC00106850 /* XCRemoteSwiftPackageReference "Amplitude-Swift" */;
+			productName = AmplitudeSwift;
 		};
 		299336F52E8C084E00ADB6BA /* FirebaseRemoteConfig */ = {
 			isa = XCSwiftPackageProductDependency;
