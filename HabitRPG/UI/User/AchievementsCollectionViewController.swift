@@ -48,6 +48,8 @@ class AchievementsViewModel: ViewModel {
     @Published var isGridLayout = false
     @Published var items: [AchievementPageItem] = []
     @Published var quests: [String: QuestProtocol] = [:]
+    
+    var onShowAchievementDetail: ((AchievementProtocol) -> Void)?
 
     private static func appendSection(_ header: Header, from achievements: [AchievementProtocol], with key: String) -> [AchievementPageItem] {
         var modifiedHeader = header
@@ -170,6 +172,7 @@ private struct ListItem: View {
 }
 
 struct AchievementList: View {
+    let viewModel: AchievementsViewModel
     let items: [AchievementPageItem]
     let quests: [String: QuestProtocol]
     
@@ -185,6 +188,11 @@ struct AchievementList: View {
                             .padding(.trailing, 25)
                     case .achievement(let achievement):
                         ListItem(achievement: achievement, questDetails: quests[achievement.key ?? ""])
+                            .onTapGesture {
+                                if let action = viewModel.onShowAchievementDetail {
+                                    action(achievement)
+                                }
+                            }
                     }
                 }
             }.padding(.top, 8)
@@ -222,6 +230,7 @@ struct AchievementSection: Identifiable {
 }
 
 struct AchievementGrid: View {
+    let viewModel: AchievementsViewModel
     let items: [AchievementPageItem]
     let quests: [String: QuestProtocol]
     
@@ -255,6 +264,11 @@ struct AchievementGrid: View {
                         .padding(.trailing, 9)) {
                         ForEach(section.items, id: \.key) { achievement in
                             AchievementGridItem(achievement: achievement, questDetails: quests[achievement.key ?? ""])
+                                .onTapGesture {
+                                    if let action = viewModel.onShowAchievementDetail {
+                                        action(achievement)
+                                    }
+                                }
                         }
                     }
                 }
@@ -268,9 +282,9 @@ struct AchievementsPage: View {
     
     var body: some View {
         if viewModel.isGridLayout {
-            AchievementGrid(items: viewModel.items, quests: viewModel.quests)
+            AchievementGrid(viewModel: viewModel, items: viewModel.items, quests: viewModel.quests)
         } else {
-            AchievementList(items: viewModel.items, quests: viewModel.quests)
+            AchievementList(viewModel: viewModel, items: viewModel.items, quests: viewModel.quests)
         }
     }
 }
@@ -289,6 +303,10 @@ class AchievementsCollectionViewController: BaseHostingViewController<Achievemen
         topHeaderCoordinator?.followScrollView = false
         viewModel.retrieveData(completed: nil)
         viewSwitcherButton.image = Asset.buttonGrid.image
+        viewModel.onShowAchievementDetail = { achievement in
+            let sheet = HostingBottomSheetController(rootView: AchievementSheet(achievement: achievement))
+            self.present(sheet, animated: true)
+        }
     }
     
     override func populateText() {

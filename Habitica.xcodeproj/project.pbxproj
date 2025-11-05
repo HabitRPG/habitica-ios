@@ -254,6 +254,7 @@
 		2972A33A2EBB96CC00106850 /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2972A3392EBB96CC00106850 /* AmplitudeSwift */; };
 		2972A33C2EBB9A1600106850 /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2972A33B2EBB9A1600106850 /* AmplitudeSwift */; };
 		2972A33E2EBB9A1E00106850 /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2972A33D2EBB9A1E00106850 /* AmplitudeSwift */; };
+		2972A3402EBBA87D00106850 /* AchievementSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2972A33F2EBBA87D00106850 /* AchievementSheet.swift */; };
 		29737EEF2D38055000480353 /* NSRange-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29737EEE2D38054C00480353 /* NSRange-Extensions.swift */; };
 		2974BD91208DEFEA00EC1A25 /* CustomizationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */; };
 		2974BDAD208F68A800EC1A25 /* CustomizationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */; };
@@ -970,6 +971,7 @@
 		29706CB427D9115C006EC139 /* tasks.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tasks.json; sourceTree = "<group>"; };
 		29706CB627D911F5006EC139 /* XCUIApplication-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication-Extensions.swift"; sourceTree = "<group>"; };
 		2970CB51227B1A8600FACCB7 /* MarkdownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTests.swift; sourceTree = "<group>"; };
+		2972A33F2EBBA87D00106850 /* AchievementSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementSheet.swift; sourceTree = "<group>"; };
 		29737EEE2D38054C00480353 /* NSRange-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRange-Extensions.swift"; sourceTree = "<group>"; };
 		2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationDetailCell.swift; sourceTree = "<group>"; };
 		2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationHeaderView.swift; sourceTree = "<group>"; };
@@ -2625,6 +2627,7 @@
 				299564202BEE488A00B1A68F /* AvatarHeaderView.swift */,
 				29B30EBA2E0ADE92001B587B /* Settings */,
 				29C9BDDE2E9FE48400FC4FCA /* BulkStatsAllocationSheet.swift */,
+				2972A33F2EBBA87D00106850 /* AchievementSheet.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3892,6 +3895,7 @@
 				49DCB79B1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift in Sources */,
 				2922EE862C888C8500254106 /* SubscriptionDisclaimer.swift in Sources */,
 				290B6289207CF248007287C4 /* StackView.swift in Sources */,
+				2972A3402EBBA87D00106850 /* AchievementSheet.swift in Sources */,
 				29323E4920521FD500AC6D6F /* ContributorProtocol-Extensions.swift in Sources */,
 				295BC6F9226F5B6400DDDF1A /* BaseNotificationCell.swift in Sources */,
 				291448842088E2E000F3A6B5 /* EquipmentViewDataSource.swift in Sources */,

@@ -26,6 +26,8 @@ private class ProfileViewModel: ViewModel {
     
     @Published var currentPet: PetProtocol?
     @Published var currentMount: MountProtocol?
+    
+    var onAchievementDetail: ((AchievementProtocol) -> Void)?
 }
 
 private struct ProfileContainer: ViewModifier {
@@ -483,6 +485,11 @@ struct ProfilePage: View {
                                 .frame(maxWidth: .infinity)
                                 .background(Color(ThemeService.shared.theme.windowBackgroundColor))
                                 .cornerRadius(26)
+                                .onTapGesture {
+                                    if let action = viewModel.onAchievementDetail {
+                                        action(achievement)
+                                    }
+                                }
                         }
                     }
                     
@@ -577,6 +584,11 @@ class UserProfileViewController: BaseHostingViewController<ProfilePage> {
         
         navigationItem.title = username
         moreButton.menu = overflowMenu
+        
+        viewModel.onAchievementDetail = { achievement in
+            let sheet = HostingBottomSheetController(rootView: AchievementSheet(achievement: achievement))
+            self.present(sheet, animated: true)
+        }
         
         let subscriber = Signal<CalculatedUserStats, NSError>.Observer(value: {[weak self] stats in
             self?.viewModel.calculatedStats = stats

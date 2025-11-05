@@ -114,7 +114,7 @@ struct BottomSheetView<Title: View, Content: View>: View, Dismissable {
 
     var body: some View {
         Group {
-            title
+            title.font(.headline)
             content
         }.padding(.horizontal, 20)
             .padding(.top, topPadding)
