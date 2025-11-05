@@ -38,8 +38,4 @@ open class PaddedTextField: UITextField {
     open override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: textInsets)
     }
-    
-    open override func drawText(in rect: CGRect) {
-        super.drawText(in: rect.inset(by: textInsets))
-    }
 }

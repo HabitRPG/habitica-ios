@@ -28,7 +28,6 @@ private class FeedSheetViewModel: ObservableObject {
             })
             .on(value: {[weak self] food in
                 if self?.food.count != food.value.count {
-                    print("Reloading", self?.food.count, food.value.count)
                     self?.food = food.value
                 }
         }).start()

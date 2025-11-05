@@ -99,8 +99,10 @@ struct HabitControlsFormView: View {
 }
 
 struct Separator: View {
+    var padding: CGFloat = 14
+    
     var body: some View {
-        Rectangle().fill(Color(ThemeService.shared.theme.separatorColor)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1).padding(.horizontal, 14)
+        Rectangle().fill(Color(ThemeService.shared.theme.separatorColor)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1).padding(.horizontal, padding)
     }
 }
 

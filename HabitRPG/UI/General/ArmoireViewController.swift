@@ -85,14 +85,12 @@ private class ArmoireViewModel: ViewModel {
     @Published var key: String = ""
     @Published var value: Float = 0
     @Published var remainingCount = 0
-    @Published var enableSubBenefit = false
     @Published var isSubscribed = false
     @Published var isUsingPerk = false
     @Published var hideGold = false
     @Published var usedPerk = false
     
     init(gold: Double? = nil) {
-        enableSubBenefit = ConfigRepository.shared.bool(variable: .enableArmoireSubs)
         super.init()
         if let gold = gold {
             self.gold = gold
@@ -310,8 +308,7 @@ struct ArmoireView: View {
                 .padding(.horizontal, 24)
                 let gradientColors: [Color] = [Color(hexadecimal: "72CFFF"),
                                       Color(hexadecimal: "77F4C7")]
-                if viewModel.isSubscribed || !viewModel.enableSubBenefit {
-                    if viewModel.enableSubBenefit {
+                if viewModel.isSubscribed {
                         Button(action: {
                             if viewModel.isUsingPerk || viewModel.usedPerk {
                                 return
@@ -352,15 +349,6 @@ struct ArmoireView: View {
                             .multilineTextAlignment(.center)
                             .fixedSize(horizontal: false, vertical: true)
                             .padding(.horizontal, 36)
-                    }
-                    Text(L10n.Armoire.dropRate)
-                        .foregroundColor(Color(UIColor.purple600))
-                        .font(.system(size: 15))
-                        .padding(.top, 4)
-                        .padding(.bottom, (UIApplication.shared.findKeyWindow()?.safeAreaInsets.bottom ?? 0) + 12)
-                        .onTapGesture {
-                            showArmoireAlert = true
-                        }
                 } else {
                     VStack(alignment: .center, spacing: 8) {
                         HabiticaButtonUI(label: Text(L10n.Armoire.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white) {
@@ -388,6 +376,14 @@ struct ArmoireView: View {
                     .cornerRadius([.topLeading, .topTrailing], 24)
                     .padding(.top, 8)
                 }
+                Text(L10n.Armoire.dropRate)
+                    .foregroundColor(Color(UIColor.purple600))
+                    .font(.system(size: 15))
+                    .padding(.top, 4)
+                    .padding(.bottom, (UIApplication.shared.findKeyWindow()?.safeAreaInsets.bottom ?? 0) + 12)
+                    .onTapGesture {
+                        showArmoireAlert = true
+                    }
             }
             .padding(.top, 70)
             .frame(minHeight: UIScreen.main.bounds.height > 700 ? 330 : 250, alignment: .center)
@@ -499,7 +495,6 @@ struct ArmoireView_Previews: PreviewProvider {
         model.type = type
         model.text = "Meat"
         model.key = "Meat"
-        model.enableSubBenefit = true
         model.isSubscribed = isSubscribed
         return model
     }

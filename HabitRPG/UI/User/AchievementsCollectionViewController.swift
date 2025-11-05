@@ -97,7 +97,7 @@ class AchievementsViewModel: ViewModel {
     }
 }
 
-private struct AchievementIconView: View {
+struct AchievementIconView: View {
     let achievement: AchievementProtocol
     
     var body: some View {
@@ -192,7 +192,7 @@ struct AchievementList: View {
     }
 }
 
-struct GridItem: View {
+struct AchievementGridItem: View {
     let achievement: AchievementProtocol
     let questDetails: QuestProtocol?
     
@@ -254,7 +254,7 @@ struct AchievementGrid: View {
                         .padding(.leading, 16)
                         .padding(.trailing, 9)) {
                         ForEach(section.items, id: \.key) { achievement in
-                            GridItem(achievement: achievement, questDetails: quests[achievement.key ?? ""])
+                            AchievementGridItem(achievement: achievement, questDetails: quests[achievement.key ?? ""])
                         }
                     }
                 }

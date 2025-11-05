@@ -481,7 +481,6 @@ struct SubscriptionPage: View {
                                         .animation(nil)
                                 }
                                 .frame(height: 48)
-                                .animation(nil)
                             }
                         } else {
                             Button {

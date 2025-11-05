@@ -28,6 +28,12 @@ class StableRepository: BaseRepository<StableLocalRepository> {
             return localRepository.getPets(keys: keys, sortKey: sortKey)
     }
     
+    func getPet(key: String) -> SignalProducer<PetProtocol?, ReactiveSwiftRealmError> {
+        return localRepository.getPets(keys: [key], sortKey: "key").map { results in
+            return results.value.first
+        }
+    }
+    
     func getPets(query: String, sortKey: String = "key") -> SignalProducer<ReactiveResults<[PetProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getPets(query: query, sortKey: sortKey)
     }
@@ -48,6 +54,12 @@ class StableRepository: BaseRepository<StableLocalRepository> {
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (currentUserID) in
             return self?.localRepository.getOwnedMounts(query: query, userID: userID ?? currentUserID) ?? SignalProducer.empty
         })
+    }
+    
+    func getMount(key: String) -> SignalProducer<MountProtocol?, ReactiveSwiftRealmError> {
+        return localRepository.getMounts(keys: [key], sortKey: "key").map { results in
+            return results.value.first
+        }
     }
     
     func getMounts(keys: [String]? = nil, sortKey: String = "key") -> SignalProducer<ReactiveResults<[MountProtocol]>, ReactiveSwiftRealmError> {

@@ -138,7 +138,6 @@ struct SubscriptionOptionViewUI<Price: View, Recurring: View, Tag: View>: View {
                 Image(Asset.subscriptionSelectionIndicator.name)
                     .zIndex(300)
                     .frame(width: 40, height: 40)
-                    .animation(.snappy(duration: 0.2).delay(0.5))
                     .asymmetricTransition(insertion: .slide, removal: .opacity.animation(.easeInOut(duration: 0.15)))
             }
         }

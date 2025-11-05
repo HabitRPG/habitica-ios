@@ -78,7 +78,6 @@ class AchievementCell: UICollectionViewCell {
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
             var newFrame = layoutAttributes.frame
             if isGridLayout && isRegularAchievement {
-                let availableWidth = ((superview?.frame.size.width ?? 300) - 32)
                 newFrame.size.width = layoutAttributes.frame.width
                 newFrame.size.height = 130
             } else {

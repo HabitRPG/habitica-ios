@@ -43,7 +43,7 @@ private struct Indicator: View {
             Image(uiImage: Asset.indicatorDiamondSelected.image.withRenderingMode(.alwaysTemplate))
                 .padding(.leading, 24 * CGFloat(currentPage))
                 .foregroundColor(.white)
-                .animation(.bouncy())
+                .animation(.bouncy(), value: currentPage)
         }
     }
 }
@@ -92,7 +92,7 @@ ZStack(alignment: .bottom) {
                                 .padding()
                         }).foregroundColor(.white)
                         .opacity(isLastPage ? 0 : 1)
-                        .animation(.bouncy())
+                        .animation(.bouncy(), value: isLastPage)
                     }.padding(.top, geometry.safeAreaInsets.top)
                 Spacer()
                 Indicator(currentPage: currentPage, pageCount: pages.count)

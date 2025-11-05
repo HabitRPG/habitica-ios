@@ -140,6 +140,8 @@ public enum L10n {
   public static var challengeJoinedDescription: String { return L10n.tr("Mainstrings", "challengeJoinedDescription") }
   /// Joined a Challenge
   public static var challengeJoinedTitle: String { return L10n.tr("Mainstrings", "challengeJoinedTitle") }
+  /// Challenges Won
+  public static var challengesWon: String { return L10n.tr("Mainstrings", "challenges_won") }
   /// Change
   public static var change: String { return L10n.tr("Mainstrings", "change") }
   /// Change class to %@
@@ -372,6 +374,8 @@ public enum L10n {
   }
   /// Equip
   public static var equip: String { return L10n.tr("Mainstrings", "equip") }
+  /// Equipped Gear
+  public static var equippedGear: String { return L10n.tr("Mainstrings", "equipped_gear") }
   /// You Equipped %s
   public static func equippedX(_ p1: UnsafePointer<CChar>) -> String {
     return L10n.tr("Mainstrings", "equipped_x", p1)
@@ -610,6 +614,10 @@ public enum L10n {
   public static var joinHabitica: String { return L10n.tr("Mainstrings", "join_habitica") }
   /// Joined Challenge
   public static var joinedChallenge: String { return L10n.tr("Mainstrings", "joined_challenge") }
+  /// Joined %s
+  public static func joinedX(_ p1: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "joined_x", p1)
+  }
   /// Jubilant Gryphatrice
   public static var jubilantGryphatrice: String { return L10n.tr("Mainstrings", "jubilant_gryphatrice") }
   /// Keep Tasks
@@ -670,6 +678,8 @@ public enum L10n {
   public static var limitedEdition: String { return L10n.tr("Mainstrings", "limited_edition") }
   /// Limited Event
   public static var limitedEvent: String { return L10n.tr("Mainstrings", "limited_event") }
+  /// Logins
+  public static var logins: String { return L10n.tr("Mainstrings", "logins") }
   /// Magic Potion
   public static var magicPotion: String { return L10n.tr("Mainstrings", "magic_potion") }
   /// Magic Potions
@@ -722,12 +732,16 @@ public enum L10n {
   public static var moreQuestionsText: String { return L10n.tr("Mainstrings", "more_questions_text") }
   /// Still have a question?
   public static var moreQuestionsTitle: String { return L10n.tr("Mainstrings", "more_questions_title") }
+  /// Mount
+  public static var mount: String { return L10n.tr("Mainstrings", "mount") }
   /// You have earned the “Mount Master” achievement for taming all the mounts!
   public static var mountMasterDescription: String { return L10n.tr("Mainstrings", "mountMasterDescription") }
   /// Mount Master
   public static var mountMasterTitle: String { return L10n.tr("Mainstrings", "mountMasterTitle") }
   /// Mounts
   public static var mounts: String { return L10n.tr("Mainstrings", "mounts") }
+  /// Mounts Found
+  public static var mountsFound: String { return L10n.tr("Mainstrings", "mounts_found") }
   /// Mute User
   public static var muteUser: String { return L10n.tr("Mainstrings", "mute_user") }
   /// Do you want to mute this user?
@@ -792,6 +806,8 @@ public enum L10n {
   public static func noX(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "no_x", p1)
   }
+  /// None
+  public static var `none`: String { return L10n.tr("Mainstrings", "none") }
   /// Not Due
   public static var notDue: String { return L10n.tr("Mainstrings", "not_due") }
   /// Not enough Gems
@@ -886,6 +902,8 @@ public enum L10n {
   public static var performanceAnalytics: String { return L10n.tr("Mainstrings", "performance_analytics") }
   /// This is used to improve the player experience, performance, and services of Habitica. Our support team will also use this when handling requests and bug reports.
   public static var performanceAnalyticsDescription: String { return L10n.tr("Mainstrings", "performance_analytics_description") }
+  /// Pet
+  public static var pet: String { return L10n.tr("Mainstrings", "pet") }
   /// %@, Mount Owned
   public static func petAccessibilityLabelMountOwned(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "pet_accessibility_label_mount_owned", p1)
@@ -896,6 +914,8 @@ public enum L10n {
   }
   /// Pets
   public static var pets: String { return L10n.tr("Mainstrings", "pets") }
+  /// Pets Found
+  public static var petsFound: String { return L10n.tr("Mainstrings", "pets_found") }
   /// Photo URL
   public static var photoUrl: String { return L10n.tr("Mainstrings", "photo_url") }
   /// Pin
@@ -904,6 +924,10 @@ public enum L10n {
   public static var plainBackgrounds: String { return L10n.tr("Mainstrings", "plain_backgrounds") }
   /// Player
   public static var player: String { return L10n.tr("Mainstrings", "player") }
+  /// Player has not completed any quests.
+  public static var playerNotCompletedQuests: String { return L10n.tr("Mainstrings", "player_not_completed_quests") }
+  /// Player has not won any challenges.
+  public static var playerNotWonChallenges: String { return L10n.tr("Mainstrings", "player_not_won_challenges") }
   /// Plenty of Potions
   public static var plentyOfPotions: String { return L10n.tr("Mainstrings", "plenty_of_potions") }
   /// We’re bringing back 10 of the community’s favorite Magic Hatching Potions. Head over to the Market to fill out your collection!
@@ -1112,6 +1136,10 @@ public enum L10n {
   public static var spring: String { return L10n.tr("Mainstrings", "spring") }
   /// Staff
   public static var staff: String { return L10n.tr("Mainstrings", "staff") }
+  /// Standard Mounts
+  public static var standardMounts: String { return L10n.tr("Mainstrings", "standard_mounts") }
+  /// Standard Pets
+  public static var standardPets: String { return L10n.tr("Mainstrings", "standard_pets") }
   /// Start my day
   public static var startMyDay: String { return L10n.tr("Mainstrings", "start_my_day") }
   /// Stat Allocation
@@ -2216,7 +2244,7 @@ public enum L10n {
   }
 
   public enum Member {
-    /// Last logged in
+    /// Last Login
     public static var lastLoggedIn: String { return L10n.tr("Mainstrings", "member.last_logged_in") }
     /// Member Since
     public static var memberSince: String { return L10n.tr("Mainstrings", "member.member_since") }
@@ -2783,6 +2811,8 @@ public enum L10n {
     }
     /// Feed
     public static var feed: String { return L10n.tr("Mainstrings", "stable.feed") }
+    /// Pets and Mounts
+    public static var petsAndMounts: String { return L10n.tr("Mainstrings", "stable.pets_and_mounts") }
     /// Magic Potion
     public static var premium: String { return L10n.tr("Mainstrings", "stable.premium") }
     /// Quest Mounts

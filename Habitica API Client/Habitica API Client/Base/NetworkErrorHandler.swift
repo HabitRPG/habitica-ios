@@ -67,7 +67,7 @@ extension UIAlertController {
     }
 }
 
-public class NetworkError: NSError {
+public class NetworkError: NSError, @unchecked Sendable {
     public var url: String
     var message: String
     

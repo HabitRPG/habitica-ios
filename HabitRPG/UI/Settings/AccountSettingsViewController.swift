@@ -235,7 +235,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         <<< LabelRow { row in
             row.title = L10n.Settings.privacyPreferences
             row.cellStyle = .subtitle
-            row.cellUpdate {[weak self] cell, _ in
+            row.cellUpdate { cell, _ in
                 cell.detailTextLabel?.text = L10n.Settings.managePrivacyPreferences
             }.onCellSelection { _, _ in
                 let sheetView = PrivacyPreferencesSheetView()

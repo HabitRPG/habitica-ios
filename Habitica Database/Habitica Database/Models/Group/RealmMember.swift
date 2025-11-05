@@ -154,6 +154,22 @@ class RealmMember: BaseModel, MemberProtocol {
         }
     }
     @objc dynamic var realmAuthentication: RealmAuthentication?
+    
+    var achievements: UserAchievementsProtocol? {
+        get {
+            return realmAchievements
+        }
+        set {
+            if let value = newValue as? RealmUserAchievements {
+                realmAchievements = value
+                return
+            }
+            if let value = newValue {
+                realmAchievements = RealmUserAchievements(userID: "m\(id ?? "")", protocolObject: value)
+            }
+        }
+    }
+    @objc dynamic var realmAchievements: RealmUserAchievements?
     @objc dynamic var loginIncentives: Int = 0
 
     override static func primaryKey() -> String {
@@ -176,5 +192,6 @@ class RealmMember: BaseModel, MemberProtocol {
         flags = member.flags
         authentication = member.authentication
         loginIncentives = member.loginIncentives
+        achievements = member.achievements
     }
 }

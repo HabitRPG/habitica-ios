@@ -97,7 +97,6 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
             alertController.addCloseAction()
             alertController.show()
         } else {
-            var displayedMessage = message
             if code == 404 {
                 if url.contains("/Saddle") {
                     // We want to handle the saddle error differently

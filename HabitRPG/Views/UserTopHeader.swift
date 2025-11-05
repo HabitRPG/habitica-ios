@@ -212,7 +212,6 @@ class UserTopHeader: UIView, Themeable {
             
             configureMagicBar(user: user)
             
-            let levelString = L10n.level
             configureClassDisplay(user: user)
             goldView.amount = Int(stats.gold)
         }

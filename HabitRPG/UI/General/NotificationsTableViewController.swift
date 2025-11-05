@@ -52,7 +52,7 @@ class NotificationsViewModel: ViewModel {
     func decline(notification: NotificationProtocol) {
         if notification.type == .groupInvite, let notification = notification as? NotificationGroupInviteProtocol {
             socialRepository.rejectGroupInvitation(groupID: notification.groupID ?? "").observeCompleted {}
-        } else if notification.type == .questInvite, let notification = notification as? NotificationQuestInviteProtocol {
+        } else if notification.type == .questInvite && notification is NotificationQuestInviteProtocol {
             socialRepository.rejectQuestInvitation(groupID: "party").observeCompleted {}
         }
     }
@@ -60,7 +60,7 @@ class NotificationsViewModel: ViewModel {
     func accept(notification: NotificationProtocol) {
         if notification.type == .groupInvite, let notification = notification as? NotificationGroupInviteProtocol {
             socialRepository.joinGroup(groupID: notification.groupID ?? "", isParty: notification.isParty).observeCompleted {}
-        } else if notification.type == .questInvite, let notification = notification as? NotificationQuestInviteProtocol {
+        } else if notification.type == .questInvite && notification is NotificationQuestInviteProtocol {
             socialRepository.acceptQuestInvitation(groupID: "party").observeCompleted {}
         }
     }

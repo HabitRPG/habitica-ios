@@ -521,4 +521,10 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             return self.userRepository.retrieveUser()
         }
     }
+    
+    func retrieveMemberAchievements(userID: String) -> Signal<[AchievementProtocol]?, Never> {
+        return RetrieveAchievementsCall(userID: userID).objectSignal.map({ achievementList in
+            return achievementList?.achievements
+        })
+    }
 }

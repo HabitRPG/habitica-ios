@@ -89,7 +89,7 @@ public extension SubscriptionPlanProtocol {
         let interval = interval
         let now = Date()
         let calendar = Calendar.current
-        while (startDate < now) {
+        while startDate < now {
             let newDate = calendar.date(byAdding: .month, value: interval, to: startDate)
             if let date = newDate {
                 startDate = date

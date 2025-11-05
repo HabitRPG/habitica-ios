@@ -460,7 +460,9 @@
 "inventory.no_saddle_tile" = "You don't have any Saddles";
 "inventory.no_saddle_description" = "Saddles instantly raise a Pet to a Mount. You can purchase one from the Market.";
 "inventory.visit_market" = "Visit Market";
+"pet" = "Pet";
 "pets" = "Pets";
+"mount" = "Mount";
 "mounts" = "Mounts";
 "stable.standard_pets" = "Standard Pets";
 "stable.quest_pets" = "Quest Pets";
@@ -636,7 +638,8 @@
 "inventory.available_until" = "Available Until %@";
 "inventory.available_for" = "Available For %@";
 "member.member_since" = "Member Since";
-"member.last_logged_in" = "Last logged in";
+"member.last_logged_in" = "Last Login";
+"logins" = "Logins";
 "active" = "Active";
 "inactive" = "Inactive";
 "one_month" = "1 Month";
@@ -1465,3 +1468,15 @@
 "not_participating" = "Not participating";
 "ownership" = "Ownership";
 "task_reminder" = "Task Reminder";
+"joined_x" = "Joined %s";
+"equipped_gear" = "Equipped Gear";
+"stable.pets_and_mounts" = "Pets and Mounts";
+"challenges_won" = "Challenges Won";
+"player_not_won_challenges" = "Player has not won any challenges.";
+"player_not_completed_quests" = "Player has not completed any quests.";
+
+"pets_found" = "Pets Found";
+"standard_pets" = "Standard Pets";
+"mounts_found" = "Mounts Found";
+"standard_mounts" = "Standard Mounts";
+"none" = "None";

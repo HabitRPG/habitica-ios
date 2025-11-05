@@ -16,21 +16,17 @@ import ReactiveSwift
 private class FaintViewModel: ViewModel {
     let userRepository = UserRepository()
     @Published var lossText: LocalizedStringKey = ""
-    @Published var enableSubBenefit = false
     @Published var isSubscribed = false
     @Published var nextPerkUsage: Date?
     
     override init() {
-        enableSubBenefit = ConfigRepository.shared.bool(variable: .enableFaintSubs)
         super.init()
-        if enableSubBenefit {
-            let defaults = UserDefaults()
-            let lastUsage = defaults.value(forKey: "lastFaintSubBenefit")
-            let calendar = Calendar.current
-            if let usage = lastUsage as? Date, calendar.isDate(usage, inSameDayAs: Date()) {
-                let tomorrow = calendar.date(byAdding: .day, value: 1, to: Date()) ?? Date()
-                nextPerkUsage = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: tomorrow)
-            }
+        let defaults = UserDefaults()
+        let lastUsage = defaults.value(forKey: "lastFaintSubBenefit")
+        let calendar = Calendar.current
+        if let usage = lastUsage as? Date, calendar.isDate(usage, inSameDayAs: Date()) {
+            let tomorrow = calendar.date(byAdding: .day, value: 1, to: Date()) ?? Date()
+            nextPerkUsage = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: tomorrow)
         }
         
         userRepository.getUser()
@@ -151,7 +147,7 @@ struct FaintView: View {
                 }.offset(y: 20)
                 Image(Asset.faintGhost.name)
                     .offset(y: appear ? -10 : 0)
-                    .animation(.easeInOut(duration: 4).repeatForever(autoreverses: true))
+                    .animation(.easeInOut(duration: 4).repeatForever(autoreverses: true), value: appear)
                     .onAppear { appear = true }
                 Image(Asset.faintHeart.name)
                     .offset(y: 25)
@@ -195,8 +191,7 @@ struct FaintView: View {
                     }
             }.frame(maxWidth: 600)
                 .padding(.horizontal, 24)
-                .padding(.bottom, viewModel.enableSubBenefit ? 15 : 42)
-            if viewModel.enableSubBenefit {
+                .padding(.bottom, 15)
                 let gradientColors: [Color] = [Color(hexadecimal: "72CFFF"),
                                       Color(hexadecimal: "77F4C7")
                                      ]
@@ -244,24 +239,6 @@ struct FaintView: View {
                             .padding(.horizontal, 36)
                             .padding(.bottom, 38)
                     }
-                } else {
-                    VStack(alignment: .center, spacing: 8) {
-                        HabiticaButtonUI(label: Text(L10n.Faint.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white) {
-                            SubscriptionModalViewController(presentationPoint: .faint).show()
-                        }.frame(maxWidth: 600)
-                        Text(L10n.Faint.unsubbedFooter)
-                            .foregroundColor(Color(UIColor.teal1))
-                            .font(.system(size: 15, weight: .semibold))
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal, 16)
-                    }
-                    .padding(.horizontal, 24)
-                    .padding(.top, 16)
-                    .padding(.bottom, 38)
-                    .frame(maxWidth: .infinity)
-                    .background(RotatingLinearGradient(colors: gradientColors, animationDuration: 20.0))
-                    .cornerRadius([.topLeading, .topTrailing], 24)
-                }
             }
         }
         .ignoresSafeArea(.all)
@@ -325,20 +302,17 @@ class FaintViewController: UIHostingController<FaintView> {
 struct FaintViewPreview: PreviewProvider {
     private static var unsubbedViewModel: FaintViewModel = {
         let unsubbedViewModel = FaintViewModel()
-        unsubbedViewModel.enableSubBenefit = true
         return unsubbedViewModel
     }()
     
     private static var subbedViewModel: FaintViewModel = {
         let subbedViewModel = FaintViewModel()
-        subbedViewModel.enableSubBenefit = true
         subbedViewModel.isSubscribed = true
         return subbedViewModel
     }()
     
     private static var subbedUsedViewModel: FaintViewModel = {
         let subbedViewModel = FaintViewModel()
-        subbedViewModel.enableSubBenefit = true
         subbedViewModel.isSubscribed = true
         subbedViewModel.nextPerkUsage = Calendar.current.date(byAdding: .day, value: 1, to: Date())
         return subbedViewModel

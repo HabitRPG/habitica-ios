@@ -23,17 +23,15 @@ public protocol ShopCategoryProtocol {
 
 public extension ShopCategoryProtocol {
     var endDates: Set<Date> {
-        get {
-            var dates = Set<Date>()
+        var dates = Set<Date>()
+        if let endDate = endDate {
+            dates.insert(endDate)
+        }
+        items.map { $0.endDate }.forEach { endDate in
             if let endDate = endDate {
                 dates.insert(endDate)
             }
-            items.map { $0.endDate }.forEach { endDate in
-                if let endDate = endDate {
-                    dates.insert(endDate)
-                }
-            }
-            return dates
         }
+        return dates
     }
 }
