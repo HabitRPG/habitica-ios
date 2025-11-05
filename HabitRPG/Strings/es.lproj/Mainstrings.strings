@@ -163,7 +163,7 @@
 /* (No Comment) */
 "mana" = "Maná";
 /* (No Comment) */
-"member.last_logged_in" = "Último inicio de sesión";
+"member.last_logged_in" = "Último Acceso";
 /* (No Comment) */
 "member.member_since" = "Miembro desde";
 /* (No Comment) */
@@ -1672,3 +1672,12 @@
 "ownership" = "Propiedad";
 "task_reminder" = "Recordatorio de Tarea";
 "settings.change_class_title" = "¿Cambiar de clase por 3 Gemas?";
+"mount" = "Montura";
+"joined_x" = "Ingreso %s";
+"equipped_gear" = "Equipamiento Equipado";
+"stable.pets_and_mounts" = "Mascotas y Monturas";
+"challenges_won" = "Desafíos Ganados";
+"player_not_won_challenges" = "El jugador no ha ganado ningún desafío.";
+"player_not_completed_quests" = "El jugador no ha completado ninguna misión.";
+"pet" = "Mascota";
+"logins" = "Accesos";
