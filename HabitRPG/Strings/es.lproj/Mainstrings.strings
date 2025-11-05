@@ -1681,3 +1681,8 @@
 "player_not_completed_quests" = "El jugador no ha completado ninguna misión.";
 "pet" = "Mascota";
 "logins" = "Accesos";
+"pets_found" = "Mascotas Encontradas";
+"standard_pets" = "Mascotas Estándar";
+"mounts_found" = "Monturas Encontradas";
+"standard_mounts" = "Monturas Estándar";
+"none" = "Ninguna";
