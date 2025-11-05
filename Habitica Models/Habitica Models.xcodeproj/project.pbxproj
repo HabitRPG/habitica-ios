@@ -274,6 +274,7 @@
 		29DBFF0A20D15A4A00DF9CF2 /* UserNewMessagesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNewMessagesProtocol.swift; sourceTree = "<group>"; };
 		29E31C29290C005C004BB386 /* AssignedDetailsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignedDetailsProtocol.swift; sourceTree = "<group>"; };
 		29EBDA7823290E04006611E3 /* InboxConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxConversation.swift; sourceTree = "<group>"; };
+		AA835E7F2EBC102600C6D779 /* project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = project.xcconfig; sourceTree = "<group>"; };
 		DC2C4B6483B722EF73FA7153 /* ProfileProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileProtocol.swift; sourceTree = "<group>"; };
 		DC2C4C19F7CA64826BF23A5A /* PreferencesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesProtocol.swift; sourceTree = "<group>"; };
 		DC2C4E928EBDE3260EBA94B5 /* FlagsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagsProtocol.swift; sourceTree = "<group>"; };
@@ -456,6 +457,7 @@
 				298FB9D2204D9403004DDACC /* Habitica Models */,
 				298FB9DD204D9404004DDACC /* Habitica ModelsTests */,
 				298FB9D1204D9403004DDACC /* Products */,
+				AA835E7F2EBC102600C6D779 /* project.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -775,6 +777,7 @@
 /* Begin XCBuildConfiguration section */
 		298FB9E2204D9404004DDACC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -811,6 +814,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_MODULE_VERIFIER = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -844,6 +848,7 @@
 		};
 		298FB9E3204D9404004DDACC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -880,6 +885,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_MODULE_VERIFIER = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -907,6 +913,7 @@
 		};
 		298FB9E5204D9404004DDACC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -914,7 +921,6 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -927,7 +933,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-Models";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.habitica.Habitica-Models";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -938,6 +944,7 @@
 		};
 		298FB9E6204D9404004DDACC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -945,7 +952,6 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -958,7 +964,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-Models";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.habitica.Habitica-Models";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -968,10 +974,10 @@
 		};
 		298FB9E8204D9404004DDACC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				INFOPLIST_FILE = "Habitica ModelsTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -979,7 +985,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-ModelsTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.habitica.Habitica-ModelsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -988,10 +994,10 @@
 		};
 		298FB9E9204D9404004DDACC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				INFOPLIST_FILE = "Habitica ModelsTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -999,7 +1005,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-ModelsTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.habitica.Habitica-ModelsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1008,6 +1014,7 @@
 		};
 		29EE34C32919331A00C8A9C4 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -1044,6 +1051,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_MODULE_VERIFIER = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1077,6 +1085,7 @@
 		};
 		29EE34C42919331A00C8A9C4 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -1085,7 +1094,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1098,7 +1106,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-Models";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.habitica.Habitica-Models";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1109,10 +1117,10 @@
 		};
 		29EE34C52919331A00C8A9C4 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				INFOPLIST_FILE = "Habitica ModelsTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1120,7 +1128,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-ModelsTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.habitica.Habitica-ModelsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1129,6 +1137,7 @@
 		};
 		29EE34C62919332800C8A9C4 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -1165,6 +1174,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_MODULE_VERIFIER = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1198,6 +1208,7 @@
 		};
 		29EE34C72919332800C8A9C4 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -1206,7 +1217,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1219,7 +1229,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-Models";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.habitica.Habitica-Models";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1230,10 +1240,10 @@
 		};
 		29EE34C82919332800C8A9C4 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E7F2EBC102600C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				INFOPLIST_FILE = "Habitica ModelsTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1241,7 +1251,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-ModelsTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.habitica.Habitica-ModelsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
