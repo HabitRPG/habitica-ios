@@ -567,6 +567,8 @@
 		A0B363012E73567D00F2E0CC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		A0B363032E73567D00F2E0CC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		A0B363052E73567D00F2E0CC /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = A0B363042E73567D00F2E0CC /* FirebaseRemoteConfig */; };
+		AA835E822EBC15F400C6D779 /* project.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AA835E812EBC15F400C6D779 /* project.xcconfig */; };
+		AA835E832EBC15F400C6D779 /* project.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AA835E812EBC15F400C6D779 /* project.xcconfig */; };
 		C8415994225F8B7800989FB8 /* Habitica_Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */; };
 		C841599C225F8C2A00989FB8 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C841599B225F8C2900989FB8 /* SnapshotHelper.swift */; };
 		C85A68AF2527812400EED0D6 /* SpellTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85A68AE2527812400EED0D6 /* SpellTabBarController.swift */; };
@@ -1282,6 +1284,7 @@
 		7A84E1A3228928AD0081E96F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A84E1B122898E9F0081E96F /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		7A84E1B6228A5CB40081E96F /* Habitica Intents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Habitica Intents.entitlements"; sourceTree = "<group>"; };
+		AA835E812EBC15F400C6D779 /* project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = project.xcconfig; sourceTree = "<group>"; };
 		C8415991225F8B7800989FB8 /* Habitica Snapshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica Snapshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitica_Snapshots.swift; sourceTree = "<group>"; };
 		C8415995225F8B7800989FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -2742,6 +2745,7 @@
 				29706CA427D8B797006EC139 /* Habitica UI Tests */,
 				D9EB4E8D18CB4A9400BB2094 /* Frameworks */,
 				D9EB4E8C18CB4A9400BB2094 /* Products */,
+				AA835E812EBC15F400C6D779 /* project.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3191,6 +3195,7 @@
 			files = (
 				2988EFC228D32C4300D703BC /* Mainstrings.strings in Resources */,
 				29BEE634252CCFE300D456F8 /* Assets.xcassets in Resources */,
+				AA835E832EBC15F400C6D779 /* project.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3198,6 +3203,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA835E822EBC15F400C6D779 /* project.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4148,6 +4154,7 @@
 /* Begin XCBuildConfiguration section */
 		295519C429191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -4208,6 +4215,7 @@
 		};
 		295519C529191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Beta";
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
@@ -4267,7 +4275,7 @@
 					"$(inherited)",
 				);
 				PRIVATE_HEADERS_FOLDER_PATH = Habitica.app/PrivateHeaders;
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica";
 				PRODUCT_MODULE_NAME = Habitica;
 				PRODUCT_NAME = Habitica;
 				PROVISIONING_PROFILE = "";
@@ -4287,6 +4295,7 @@
 		};
 		295519C629191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -4311,7 +4320,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HabiticaTests/UI/Login/HabiticaTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -4321,6 +4330,7 @@
 		};
 		295519C729191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4344,7 +4354,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitica.ios.Habitica-Snapshots";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX_ALT).ios.Habitica-Snapshots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4354,6 +4364,7 @@
 		};
 		295519C829191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4385,7 +4396,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.Habitica-Intents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -4397,6 +4408,7 @@
 		};
 		295519C929191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4427,7 +4439,7 @@
 				MARKETING_VERSION = 4.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.HabiticaIntentsUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -4439,6 +4451,7 @@
 		};
 		295519CA29191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -4473,7 +4486,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Widgets";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.Habitica-Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -4485,6 +4498,7 @@
 		};
 		295519CD29191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4504,7 +4518,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica-UI-Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica-UI-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -4516,6 +4530,7 @@
 		};
 		295519CE29191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -4576,6 +4591,7 @@
 		};
 		295519CF29191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Staff";
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
@@ -4635,7 +4651,7 @@
 					"$(inherited)",
 				);
 				PRIVATE_HEADERS_FOLDER_PATH = Habitica.app/PrivateHeaders;
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica";
 				PRODUCT_MODULE_NAME = Habitica;
 				PRODUCT_NAME = Habitica;
 				PROVISIONING_PROFILE = "";
@@ -4655,6 +4671,7 @@
 		};
 		295519D029191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -4679,7 +4696,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HabiticaTests/UI/Login/HabiticaTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -4689,6 +4706,7 @@
 		};
 		295519D129191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4712,7 +4730,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitica.ios.Habitica-Snapshots";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX_ALT).ios.Habitica-Snapshots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4722,6 +4740,7 @@
 		};
 		295519D229191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4753,7 +4772,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.Habitica-Intents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -4765,6 +4784,7 @@
 		};
 		295519D329191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4795,7 +4815,7 @@
 				MARKETING_VERSION = 4.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.HabiticaIntentsUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -4807,6 +4827,7 @@
 		};
 		295519D429191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -4841,7 +4862,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Widgets";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.Habitica-Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -4853,6 +4874,7 @@
 		};
 		295519D729191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4872,7 +4894,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica-UI-Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica-UI-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -4884,6 +4906,7 @@
 		};
 		29706CAC27D8B797006EC139 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4902,7 +4925,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica-UI-Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica-UI-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -4916,6 +4939,7 @@
 		};
 		29706CAD27D8B797006EC139 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4935,7 +4959,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica-UI-Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica-UI-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -4947,6 +4971,7 @@
 		};
 		29BEE63A252CCFE300D456F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -4980,7 +5005,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Widgets";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.Habitica-Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -4994,6 +5019,7 @@
 		};
 		29BEE63B252CCFE300D456F8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -5028,7 +5054,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Widgets";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.Habitica-Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -5040,6 +5066,7 @@
 		};
 		7A84E1AB228928AD0081E96F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -5069,7 +5096,7 @@
 				MARKETING_VERSION = 4.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.HabiticaIntentsUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -5083,6 +5110,7 @@
 		};
 		7A84E1AC228928AD0081E96F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -5113,7 +5141,7 @@
 				MARKETING_VERSION = 4.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.HabiticaIntentsUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -5125,6 +5153,7 @@
 		};
 		7A84E1AE228928AD0081E96F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -5155,7 +5184,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.Habitica-Intents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -5169,6 +5198,7 @@
 		};
 		7A84E1AF228928AD0081E96F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -5200,7 +5230,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.Habitica-Intents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -5212,6 +5242,7 @@
 		};
 		C8415999225F8B7800989FB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -5234,7 +5265,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitica.ios.Habitica-Snapshots";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX_ALT).ios.Habitica-Snapshots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -5246,6 +5277,7 @@
 		};
 		C841599A225F8B7800989FB8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -5269,7 +5301,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitica.ios.Habitica-Snapshots";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX_ALT).ios.Habitica-Snapshots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -5279,6 +5311,7 @@
 		};
 		D944618C1AB34F5C0015215E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -5307,7 +5340,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HabiticaTests/UI/Login/HabiticaTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -5318,6 +5351,7 @@
 		};
 		D944618D1AB34F5C0015215E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -5342,7 +5376,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HabiticaTests/UI/Login/HabiticaTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -5352,6 +5386,7 @@
 		};
 		D9EB4EC118CB4A9400BB2094 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -5417,6 +5452,7 @@
 		};
 		D9EB4EC218CB4A9400BB2094 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -5477,6 +5513,7 @@
 		};
 		D9EB4EC418CB4A9400BB2094 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
@@ -5535,7 +5572,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica";
 				PRODUCT_MODULE_NAME = Habitica;
 				PRODUCT_NAME = Habitica;
 				PROVISIONING_PROFILE = "";
@@ -5555,6 +5592,7 @@
 		};
 		D9EB4EC518CB4A9400BB2094 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
@@ -5612,7 +5650,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica";
 				PRODUCT_MODULE_NAME = Habitica;
 				PRODUCT_NAME = Habitica;
 				PROVISIONING_PROFILE = "";
