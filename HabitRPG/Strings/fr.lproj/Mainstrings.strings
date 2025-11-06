@@ -147,7 +147,7 @@
 /* (No Comment) */
 "mana" = "Mana";
 /* (No Comment) */
-"member.last_logged_in" = "Dernière connexion le";
+"member.last_logged_in" = "Dernière Connexion";
 /* (No Comment) */
 "member.member_since" = "Membre depuis";
 /* (No Comment) */
@@ -229,7 +229,7 @@
 /* (No Comment) */
 "settings.change_class" = "Changer de classe";
 /* (No Comment) */
-"settings.change_class_disclaimer" = "Ceci supprimera votre classe actuelle et resituera tous vos points de statistiques afin que vous puissiez choisir une nouvelle classe.";
+"settings.change_class_disclaimer" = "Ceci supprimera votre classe actuelle et resituera tous vos points de statistiques afin que vous puissiez choisir une nouvelle classe";
 /* (No Comment) */
 "settings.clear_cache" = "Effacer le cache";
 /* (No Comment) */
@@ -1621,3 +1621,17 @@
 "not_participating" = "Ne participe pas";
 "ownership" = "Propriété";
 "task_reminder" = "Rappel de Tâches";
+"pet" = "Familier";
+"mount" = "Monture";
+"joined_x" = "Inscrit·e le %s";
+"equipped_gear" = "Équipement Porté";
+"stable.pets_and_mounts" = "Familiers et Montures";
+"challenges_won" = "Défis Remportés";
+"player_not_won_challenges" = "L·e·a Joueu·r·se n'a remporté aucun défi.";
+"player_not_completed_quests" = "L·e·a Joueu·r·se n'a pas accompli de quêtes.";
+"standard_pets" = "Familiers Communs";
+"mounts_found" = "Montures Domptées";
+"pets_found" = "Familiers Adoptés";
+"standard_mounts" = "Montures Standards";
+"none" = "Vide";
+"logins" = "Connexions";
