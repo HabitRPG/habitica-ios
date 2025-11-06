@@ -131,7 +131,20 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             completed?()
         })
     }
-    
+
+    func loadOlderMessages(completed: (() -> Void)?) {
+        if user?.party?.id == nil {
+            completed?()
+            return
+        }
+        let currentMessages = sections[0].items
+        disposable.add(socialRepository.loadOlderMessages(groupID: groupID, currentMessages: currentMessages, onComplete: {
+            completed?()
+        }).observeCompleted {
+            completed?()
+        })
+    }
+
     private func expandSelectedCell(_ indexPath: IndexPath) {
         if self.viewController?.isScrolling == true {
             return

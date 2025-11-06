@@ -19,15 +19,12 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     func getGroups(predicate: NSPredicate) -> SignalProducer<ReactiveResults<[GroupProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getGroups(predicate: predicate)
     }
-    
     func getChallenges(predicate: NSPredicate?) -> SignalProducer<ReactiveResults<[ChallengeProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getChallenges(predicate: predicate)
     }
-    
     func getChallengesDistinctGroups() -> SignalProducer<ReactiveResults<[ChallengeProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getChallengesDistinctGroups()
     }
-    
     func retrieveGroups(_ groupType: String) -> Signal<[GroupProtocol]?, Never> {
         return RetrieveGroupsCall(groupType).arraySignal.on(value: {[weak self]groups in
             guard let groups = groups else {
@@ -43,7 +40,6 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             }
         })
     }
-
     func retrieveGroup(groupID: String) -> Signal<GroupProtocol?, Never> {
         let call = RetrieveGroupCall(groupID: groupID)
         call.serverErrorSignal.observeValues {[weak self] (error) in
@@ -57,7 +53,6 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             }
         })
     }
-    
     func retrieveChallenges(page: Int, memberOnly: Bool) -> Signal<[ChallengeProtocol]?, Never> {
         if page == 0 {
             localRepository.deleteAllChallenges()
@@ -71,7 +66,6 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             self?.localRepository.save(challenges)
         })
     }
-    
     func retrieveChallenge(challengeID: String, withTasks: Bool = true) -> Signal<ChallengeProtocol?, Never> {
         let signal = RetrieveChallengeCall(challengeID: challengeID).objectSignal.on(value: {[weak self]challenge in
             if let challenge = challenge {
@@ -91,7 +85,6 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             return signal
         }
     }
-
     func retrieveGroupMembers(groupID: String) -> Signal<[MemberProtocol]?, Never> {
         return RetrieveGroupMembersCall(groupID: groupID).arraySignal.on(value: {[weak self] members in
             if let members = members {
@@ -103,28 +96,22 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     func retrieveLookingForParty() -> Signal<[MemberProtocol]?, Never> {
         return LookingForPartyCall().arraySignal
     }
-    
     func retrieveGroupInvites(groupID: String) -> Signal<[MemberProtocol]?, Never> {
         return RetrieveGroupInvitesCall(groupID: groupID).arraySignal
     }
-    
     func markChatAsSeen(groupID: String) -> Signal<EmptyResponseProtocol?, Never> {
         return MarkChatSeenCall(groupID: groupID).objectSignal.on(value: {[weak self] response in
-            if response != nil, let userID = self?.currentUserId {
-                self?.localRepository.setNoNewMessages(userID: userID, groupID: groupID)
-            }
+            guard response != nil, let userID = self?.currentUserId else { return }
+            self?.localRepository.setNoNewMessages(userID: userID, groupID: groupID)
         })
     }
     
     func like(groupID: String, chatMessage: ChatMessageProtocol) -> Signal<ChatMessageProtocol?, Never> {
         return LikeChatMessageCall(groupID: groupID, chatMessage: chatMessage)
             .objectSignal.on(value: {[weak self]message in
-            if let message = message {
-                self?.localRepository.save(groupID: groupID, chatMessage: message)
-            }
+            message.map { self?.localRepository.save(groupID: groupID, chatMessage: $0) }
         })
     }
-    
     func flag(groupID: String, chatMessage: ChatMessageProtocol, reason: String) -> Signal<EmptyResponseProtocol?, Never> {
         var id = groupID
         if id.isEmpty {
@@ -133,22 +120,18 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         return FlagChatMessageCall(groupID: id, chatMessage: chatMessage, data: ["comment": reason])
             .objectSignal
     }
-    
     func flag(message: InboxMessageProtocol, reason: String) -> Signal<EmptyResponseProtocol?, Never> {
         return FlagInboxMessageCall(message: message, data: ["comment": reason])
             .objectSignal
     }
-    
     func flag(challengeID: String, reason: String) -> Signal<EmptyResponseProtocol?, Never> {
         return FlagChallengeCall(challengeID: challengeID, data: ["comment": reason])
             .objectSignal
     }
-    
     func flag(memberID: String, reason: String) -> Signal<EmptyResponseProtocol?, Never> {
         return FlagMemberCall(memberID: memberID, data: ["comment": reason])
             .objectSignal
     }
-    
     func delete(groupID: String, chatMessage: ChatMessageProtocol) -> Signal<EmptyResponseProtocol?, Never> {
         if !chatMessage.isValid {
             return Signal.empty
@@ -160,14 +143,12 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             }
         })
     }
-    
     func delete(message: InboxMessageProtocol) -> Signal<EmptyResponseProtocol?, Never> {
         return DeleteInboxMessageCall(message: message)
             .objectSignal.on(value: {[weak self]_ in
             self?.localRepository.delete(message)
         })
     }
-    
     func post(chatMessage: String, toGroup groupID: String) -> Signal<ChatMessageProtocol?, Never> {
         return PostChatMessageCall(groupID: groupID, chatMessage: chatMessage).objectSignal.on(value: {[weak self] chatMessage in
             if let chatMessage = chatMessage {
@@ -183,14 +164,28 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
-    func retrieveChat(groupID: String) -> Signal<[ChatMessageProtocol]?, Never> {
-        return RetrieveChatCall(groupID: groupID).arraySignal.on(value: {[weak self] chatMessages in
-            if let chatMessages = chatMessages {
-                self?.localRepository.save(groupID: groupID, chatMessages: chatMessages)
+    func retrieveChat(groupID: String, limit: Int? = 50, before: String? = nil) -> Signal<[ChatMessageProtocol]?, Never> {
+        return RetrieveChatCall(groupID: groupID, limit: limit, before: before).arraySignal.on(value: {[weak self] chatMessages in
+            chatMessages.map { messages in
+                messages.forEach { self?.localRepository.save(groupID: groupID, chatMessage: $0) }
             }
         })
     }
-    
+    private var isLoadingOlderMessages = false
+    func loadOlderMessages(groupID: String, currentMessages: [ChatMessageProtocol], onComplete: @escaping () -> Void) -> Signal<[ChatMessageProtocol]?, Never> {
+        guard !isLoadingOlderMessages, let oldestMessage = currentMessages.last else {
+            onComplete()
+            return Signal.empty
+        }
+        isLoadingOlderMessages = true
+        let cleanup = { [weak self] in self?.isLoadingOlderMessages = false; onComplete() }
+        return RetrieveChatCall(groupID: groupID, limit: 50, before: oldestMessage.id).arraySignal.on(completed: cleanup, value: {[weak self] messages in
+            guard let self = self, let messages = messages, !messages.isEmpty else { cleanup(); return }
+            messages.forEach { self.localRepository.save(groupID: groupID, chatMessage: $0) }
+            cleanup()
+        })
+    }
+
     public func getGroup(groupID: String, retrieveIfNotFound: Bool = false) -> SignalProducer<GroupProtocol?, Never> {
         return localRepository.getGroup(groupID: groupID)
             .flatMapError({ (_) -> SignalProducer<GroupProtocol?, Never> in
@@ -204,7 +199,6 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
                 }
             })
     }
-    
     public func getChallenge(challengeID: String, retrieveIfNotFound: Bool = false) -> SignalProducer<ChallengeProtocol?, Never> {
         return localRepository.getChallenge(challengeID: challengeID)
             .flatMapError({ (_) -> SignalProducer<ChallengeProtocol?, Never> in
@@ -218,74 +212,57 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
                 }
             })
     }
-    
     public func getChallengeTasks(challengeID: String) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getChallengeTasks(challengeID: challengeID)
     }
-
     func getGroupMembers(groupID: String) -> SignalProducer<ReactiveResults<[MemberProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getGroupMembers(groupID: groupID)
     }
-    
     public func getChatMessages(groupID: String) -> SignalProducer<ReactiveResults<[ChatMessageProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getChatMessages(groupID: groupID)
     }
-
     public func getGroupMemberships() -> SignalProducer<ReactiveResults<[GroupMembershipProtocol]>, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
             return self?.localRepository.getGroupMemberships(userID: userID) ?? SignalProducer.empty
         })
     }
-    
     public func getChallengeMemberships() -> SignalProducer<ReactiveResults<[ChallengeMembershipProtocol]>, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
             return self?.localRepository.getChallengeMemberships(userID: userID) ?? SignalProducer.empty
         })
     }
-    
     public func getChallengeMembership(challengeID: String) -> SignalProducer<ChallengeMembershipProtocol?, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
             return self?.localRepository.getChallengeMembership(userID: userID, challengeID: challengeID) ?? SignalProducer.empty
         })
     }
-    
     public func retrieveMember(userID: String, fromHall: Bool = false) -> Signal<MemberProtocol?, Never> {
         return RetrieveMemberCall(userID: userID, fromHall: fromHall).objectSignal.on(value: {[weak self] member in
-            if let member = member, !fromHall {
-                self?.localRepository.save(member)
-            }
+            if let member = member, !fromHall { self?.localRepository.save(member) }
         })
     }
-    
     public func retrieveMemberWithUsername(_ username: String) -> Signal<MemberProtocol?, Never> {
         return RetrieveMemberUsernameCall(username: username).objectSignal.on(value: {[weak self] member in
-            if let member = member {
-                self?.localRepository.save(member)
-            }
+            member.map { self?.localRepository.save($0) }
         })
     }
-    
     func updateMember(userID: String, updateDict: [String: Encodable]) -> Signal<MemberProtocol?, Never> {
         return UpdateMemberCall(userID: userID, updateDict: updateDict).objectSignal
     }
-    
     func updateMember(userID: String, key: String, value: Encodable) -> Signal<MemberProtocol?, Never> {
         return updateMember(userID: userID, updateDict: [key: value])
     }
-    
     public func findUsernames(_ username: String, context: String?, id: String?) -> Signal<[MemberProtocol], Never> {
         return FindUsernamesCall(username: username, context: context, id: id).arraySignal.map({ result in
             return result ?? []
         })
     }
-    
     public func findUsernamesLocally(_ username: String, id: String?) -> SignalProducer<[MemberProtocol], Never> {
         return localRepository.findUsernames(username, id: id)
             .flatMapError({ (_) -> SignalProducer<[MemberProtocol], Never> in
                 return SignalProducer.empty
             })
     }
-    
     public func getMember(userID: String, retrieveIfNotFound: Bool = false) -> SignalProducer<MemberProtocol?, Never> {
         return localRepository.getMember(userID: userID)
             .flatMapError({ (_) -> SignalProducer<MemberProtocol?, Never> in
@@ -299,11 +276,9 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
                 }
             })
     }
-    
     public func getMembers(userIDs: [String]) -> SignalProducer<ReactiveResults<[MemberProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getMembers(userIDs: userIDs)
     }
-    
     public func isUserGuildMember(groupID: String) -> SignalProducer<Bool, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] _ in
             return self?.localRepository.getGroupMembership(userID: AuthenticationManager.shared.currentUserId ?? "", groupID: groupID).map({ (membership) in
@@ -311,29 +286,24 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             }) ?? SignalProducer.empty
         })
     }
-    
     public func joinGroup(groupID: String, isParty: Bool) -> Signal<GroupProtocol?, Never> {
         UISelectionFeedbackGenerator.oneShotSelectionChanged()
         return JoinGroupCall(groupID: groupID).objectSignal.on(value: {[weak self]group in
-            if let userID = AuthenticationManager.shared.currentUserId {
-                ToastManager.show(text: isParty ? L10n.Guilds.joinedParty : L10n.Guilds.joinedGuild, color: .green)
-                self?.localRepository.joinGroup(userID: userID, groupID: groupID, group: group)
-                self?.localRepository.deleteGroupInvitation(userID: userID, groupID: groupID)
-            }
+            guard let userID = AuthenticationManager.shared.currentUserId else { return }
+            ToastManager.show(text: isParty ? L10n.Guilds.joinedParty : L10n.Guilds.joinedGuild, color: .green)
+            self?.localRepository.joinGroup(userID: userID, groupID: groupID, group: group)
+            self?.localRepository.deleteGroupInvitation(userID: userID, groupID: groupID)
         })
     }
-    
     public func leaveGroup(groupID: String, leaveChallenges: Bool, isParty: Bool) -> Signal<GroupProtocol?, Never> {
         UISelectionFeedbackGenerator.oneShotSelectionChanged()
         return LeaveGroupCall(groupID: groupID, leaveChallenges: leaveChallenges)
             .objectSignal.on(value: {[weak self]group in
-            if let userID = AuthenticationManager.shared.currentUserId {
-                ToastManager.show(text: isParty ? L10n.Guilds.leftParty : L10n.Guilds.leftGuild, color: .green)
-                self?.localRepository.leaveGroup(userID: userID, groupID: groupID, group: group)
-            }
+            guard let userID = AuthenticationManager.shared.currentUserId else { return }
+            ToastManager.show(text: isParty ? L10n.Guilds.leftParty : L10n.Guilds.leftGuild, color: .green)
+            self?.localRepository.leaveGroup(userID: userID, groupID: groupID, group: group)
         })
     }
-    
     public func rejectGroupInvitation(groupID: String) -> Signal<EmptyResponseProtocol?, Never> {
         UISelectionFeedbackGenerator.oneShotSelectionChanged()
         return RejectGroupInvitationCall(groupID: groupID)
@@ -343,7 +313,6 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             }
         })
     }
-    
     public func invite(toGroup groupID: String, members: [String: Any]) -> Signal<EmptyResponseProtocol?, Never> {
         let call = InviteToGroupCall(groupID: groupID, members: members)
         call.habiticaResponseSignal.observeValues { (response) in
@@ -358,51 +327,36 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         }
         return call.objectSignal
     }
-    
     public func joinChallenge(challengeID: String) -> Signal<ChallengeProtocol?, Never> {
         UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        if let userID = AuthenticationManager.shared.currentUserId {
-            localRepository.joinChallenge(userID: userID, challengeID: challengeID, challenge: nil)
-        }
+        AuthenticationManager.shared.currentUserId.map { localRepository.joinChallenge(userID: $0, challengeID: challengeID, challenge: nil) }
         return JoinChallengeCall(challengeID: challengeID)
             .objectSignal.on(value: {[weak self]challenge in
-            if let userID = AuthenticationManager.shared.currentUserId {
-                self?.localRepository.joinChallenge(userID: userID, challengeID: challengeID, challenge: challenge)
-            }
-                ToastManager.show(text: L10n.joinedChallenge, color: .green)
+            AuthenticationManager.shared.currentUserId.map { self?.localRepository.joinChallenge(userID: $0, challengeID: challengeID, challenge: challenge) }
+            ToastManager.show(text: L10n.joinedChallenge, color: .green)
         }).flatMap(.latest, {[weak self] challenge -> Signal<ChallengeProtocol?, Never> in
-            return self?.userRepository.retrieveUser().map({ _ in
-                challenge
-            }) ?? Signal.empty
+            return self?.userRepository.retrieveUser().map({ _ in challenge }) ?? Signal.empty
         })
     }
-    
     public func leaveChallenge(challengeID: String, keepTasks: Bool) -> Signal<ChallengeProtocol?, Never> {
         UISelectionFeedbackGenerator.oneShotSelectionChanged()
-        if let userID = AuthenticationManager.shared.currentUserId {
-            localRepository.leaveChallenge(userID: userID, challengeID: challengeID, challenge: nil)
-        }
+        AuthenticationManager.shared.currentUserId.map { localRepository.leaveChallenge(userID: $0, challengeID: challengeID, challenge: nil) }
         return LeaveChallengeCall(challengeID: challengeID, keepTasks: keepTasks)
             .objectSignal.on(value: {[weak self]challenge in
-            if let userID = AuthenticationManager.shared.currentUserId {
-                self?.localRepository.leaveChallenge(userID: userID, challengeID: challengeID, challenge: challenge)
-            }
+            AuthenticationManager.shared.currentUserId.map { self?.localRepository.leaveChallenge(userID: $0, challengeID: challengeID, challenge: challenge) }
             ToastManager.show(text: L10n.leftChallenge, color: .green)
         })
     }
-    
     public func getMessagesThreads() -> SignalProducer<ReactiveResults<[InboxConversationProtocol]>, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
             return self?.localRepository.getMessagesThreads(userID: userID) ?? SignalProducer.empty
         })
     }
-    
     public func getMessages(withUserID: String) -> SignalProducer<ReactiveResults<[InboxMessageProtocol]>, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
             return self?.localRepository.getMessages(userID: userID, withUserID: withUserID) ?? SignalProducer.empty
         })
     }
-    
     public func markInboxAsSeen() -> Signal<EmptyResponseProtocol?, Never> {
         return MarkInboxAsSeenCall()
             .objectSignal.on(value: {[weak self] _ in

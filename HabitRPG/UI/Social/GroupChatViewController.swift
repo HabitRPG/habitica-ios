@@ -83,4 +83,25 @@ class GroupChatViewController: MessagesViewController {
             }
         }
     }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let dataSource = dataSource else {
+            return
+        }
+
+        let totalItems = tableView.numberOfRows(inSection: 0)
+        if totalItems == 0 {
+            return
+        }
+
+        guard let visibleIndexPaths = tableView.indexPathsForVisibleRows else {
+            return
+        }
+
+        let lastVisibleItemPosition = visibleIndexPaths.map { $0.item }.max() ?? 0
+
+        if lastVisibleItemPosition >= totalItems - 5 && totalItems > 0 {
+            dataSource.loadOlderMessages(completed: nil)
+        }
+    }
 }

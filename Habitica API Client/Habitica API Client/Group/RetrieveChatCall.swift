@@ -11,7 +11,22 @@ import Habitica_Models
 import ReactiveSwift
 
 public class RetrieveChatCall: ResponseArrayCall<ChatMessageProtocol, APIChatMessage> {
-    public init(groupID: String) {
-        super.init(httpMethod: .GET, endpoint: "groups/\(groupID)/chat")
+    public init(groupID: String, limit: Int? = nil, before: String? = nil) {
+        var endpoint = "groups/\(groupID)/chat"
+        var queryParams: [String] = []
+
+        if let limit = limit {
+            queryParams.append("limit=\(limit)")
+        }
+
+        if let before = before {
+            queryParams.append("before=\(before)")
+        }
+
+        if !queryParams.isEmpty {
+            endpoint += "?" + queryParams.joined(separator: "&")
+        }
+
+        super.init(httpMethod: .GET, endpoint: endpoint)
     }
 }
