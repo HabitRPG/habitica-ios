@@ -1364,3 +1364,4 @@
 "performance_analytics" = "Performa & Analisa";
 "privacy_preferences_full_description" = "Privasimu berarti bagi kami.Habitica menggunakan data dari perangkatmu untuk menganalisis performa, menangani permintaan dukungan, dan memberikan pengalaman gamifikasi terbaik untukmu. Untuk melakukan itu, kami perlu meminta izin berikut.\n\nKamu dapat mengubah izin ini kapan saja melalui pengaturan akunmu.";
 "performance_analytics_description" = "Ini digunakan untuk meningkatkan pengalaman pemain, performa, dan layanan Habitica.\nTim dukungan kami juga akan menggunakan data ini saat menangani permintaan dan laporan bug.";
+"strictly_necessary" = "Sangat diperlukan";
