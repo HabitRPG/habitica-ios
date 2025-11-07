@@ -169,7 +169,7 @@
 /* (No Comment) */
 "mana" = "Mana";
 /* (No Comment) */
-"member.last_logged_in" = "Zuletzt eingeloggt";
+"member.last_logged_in" = "Letzter Login";
 /* (No Comment) */
 "member.member_since" = "Mitglied seit";
 /* (No Comment) */
@@ -1686,3 +1686,15 @@
 "task_reminder" = "Aufgaben-Erinnerung";
 "pet" = "Haustier";
 "mount" = "Reittier";
+"equipped_gear" = "Angelegte Ausrüstung";
+"challenges_won" = "Gewonnene Herausforderungen";
+"player_not_completed_quests" = "Der Spieler hat noch keine Quests abgeschlossen.";
+"pets_found" = "Gefundene Haustiere";
+"standard_pets" = "Standard Haustiere";
+"mounts_found" = "Reittiere gefunden";
+"standard_mounts" = "Standard-Reittiere";
+"none" = "Keine";
+"logins" = "Logins";
+"joined_x" = "Beigetreten %s";
+"stable.pets_and_mounts" = "Haus- und Reittiere";
+"player_not_won_challenges" = "Der Spieler hat noch keine Herausforderungen gewonnen.";
