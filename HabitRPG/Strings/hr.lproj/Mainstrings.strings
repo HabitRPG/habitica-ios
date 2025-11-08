@@ -169,7 +169,7 @@
 /* (No Comment) */
 "mana" = "Mana";
 /* (No Comment) */
-"member.last_logged_in" = "Datum zadnje prijave";
+"member.last_logged_in" = "Zadnja Prijava";
 /* (No Comment) */
 "member.member_since" = "Član od";
 /* (No Comment) */
@@ -1685,3 +1685,17 @@
 "quest_mechanics_pausing_description" = "Ako se mučite s izvršavanjem svojih Dnevnih zadataka, možete pauzirati štetu u Postavkama kako biste uzeli predah. To će spriječiti Bossa da naudi vama ili drugima, ali će i pauzirati vašu štetu. Propušteni Dnevni zadaci drugih članova i dalje će uzrokovati štetu, stoga budite oprezni!";
 "api_token_reset_desc" = "Zaporke možete promijeniti da biste je resetirali. Nakon što se resetira, morat ćete se ponovno prijaviti na svim drugim uređajima na kojima koristite Habiticu i dati novi API Token alatima trećih strana koje možda koristite.";
 "settings.change_class_title" = "Promijenite klasu za 3 Dragulja?";
+"mount" = "Jahaća životinja";
+"logins" = "Prijave";
+"joined_x" = "Pridružili se %s";
+"equipped_gear" = "Obuci Opremu";
+"stable.pets_and_mounts" = "Ljubimci i Jahaće Životinje";
+"challenges_won" = "Dobiveni Izazovi";
+"player_not_completed_quests" = "Igrač nije dovršio nijednu pustolovinu.";
+"player_not_won_challenges" = "Igrač nije pobijedio ni jedan izazov.";
+"pets_found" = "Ljubimaca Pronađeno";
+"standard_pets" = "Standardni Ljubimci";
+"mounts_found" = "Pronađene Jahaće životinje";
+"standard_mounts" = "Standardne Jahaće životinje";
+"none" = "Nijedan";
+"pet" = "Ljubimac";
