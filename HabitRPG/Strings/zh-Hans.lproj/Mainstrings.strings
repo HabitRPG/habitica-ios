@@ -87,7 +87,7 @@
 /* (No Comment) */
 "mana" = "法力值";
 /* (No Comment) */
-"member.last_logged_in" = "上一次登录时间";
+"member.last_logged_in" = "上次登录";
 /* (No Comment) */
 "member.member_since" = "成员自";
 /* (No Comment) */
@@ -1559,3 +1559,15 @@
 "ownership" = "所有权";
 "task_reminder" = "任务提醒";
 "membership" = "参与状态";
+"pet" = "宠物";
+"mount" = "坐骑";
+"equipped_gear" = "当前装备";
+"stable.pets_and_mounts" = "宠物和坐骑";
+"challenges_won" = "赢得的挑战";
+"player_not_won_challenges" = "玩家尚未赢得任何挑战。";
+"player_not_completed_quests" = "玩家尚未完成任何副本。";
+"pets_found" = "已发现的宠物";
+"standard_pets" = "基础宠物";
+"mounts_found" = "已发现的坐骑";
+"standard_mounts" = "基础坐骑";
+"none" = "无";
