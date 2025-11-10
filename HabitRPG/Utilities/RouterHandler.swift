@@ -56,6 +56,7 @@ enum Route {
     case seasonalShop
     case timeTravelers
     case subscription
+    case purchaseGems
     case giftSubscription(username: String)
     case customizationShop
     
@@ -79,6 +80,8 @@ enum Route {
             return "/inventory/time"
         case .subscription:
             return "/user/settings/subscription"
+        case .purchaseGems:
+            return "/user/settings/gems"
         case .giftSubscription(let username):
             return "/user/settings/subscription/gift/\(username)"
         case .equipment:
@@ -133,11 +136,11 @@ class RouterHandler {
             }
             register("/challenges/myChallenges") {
                 self.displayTab(index: 4)
-                self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
+                self.push(StoryboardScene.Social.challengeTableViewController.instantiate())
             }
             register("/challenges/findChallenges") {
                 self.displayTab(index: 4)
-                self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
+                self.push(StoryboardScene.Social.challengeTableViewController.instantiate())
             }
         }
         register("/party") {
@@ -259,7 +262,7 @@ class RouterHandler {
             let navController = UINavigationController(rootViewController: viewController)
             self.present(navController)
         }
-        register("/user/settings/gems") {
+        register(.purchaseGems) {
             self.present(StoryboardScene.Main.purchaseGemNavController.instantiate())
         }
         register("/private-messages") {

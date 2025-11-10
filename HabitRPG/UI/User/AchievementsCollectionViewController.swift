@@ -216,7 +216,7 @@ struct AchievementGridItem: View {
         .scaledFont(size: 15, weight: .semibold)
         .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
         .padding(.vertical, 20)
-            .padding(.horizontal, 8)
+            .padding(.horizontal, 12)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(ThemeService.shared.theme.windowBackgroundColor))
             .cornerRadius(26)

@@ -138,18 +138,18 @@ class BuySheetViewModel: ObservableObject {
             let currency = itemCurrency
             if !canBuy {
                 if item.key == "gem" {
-                    HRPGBuyItemModalViewController.displayGemCapReachedModal()
+                    BuySheetViewModel.displayGemCapReachedModal()
                 } else if !canAfford {
                     if currency == .hourglass {
                         if user?.isSubscribed == true {
-                            HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: user)
+                            BuySheetViewModel.displayInsufficientHourglassesModal(user: user)
                         } else {
-                            SubscriptionModalViewController(presentationPoint: .timetravelers).show()
+                            HabiticaApplication.shared.topmostViewController?.present(SubscriptionModalViewController(presentationPoint: .timetravelers), animated: true)
                         }
                     } else if currency == .gem {
-                        HRPGBuyItemModalViewController.displayInsufficientGemsModal(reward: item)
+                        BuySheetViewModel.displayInsufficientGemsModal(reward: item)
                     } else {
-                        HRPGBuyItemModalViewController.displayInsufficientGoldModal()
+                        BuySheetViewModel.displayInsufficientGoldModal()
                     }
                 }
                 return
@@ -190,7 +190,6 @@ class BuySheetViewModel: ObservableObject {
                     withAnimation {
                         self?.isPurchasing = false
                     }
-                    // HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: self?.user)
                 }
         }
         if itemCurrency == .hourglass {
@@ -309,6 +308,100 @@ class BuySheetViewModel: ObservableObject {
                 .start()
         } else {
             onResult(-1)
+        }
+    }
+    
+    static func displayInsufficientGemsModal(reward: InAppRewardProtocol? = nil, reason: String = "purchase modal", delayDisplay: Bool = true) {
+        HabiticaAnalytics.shared.log("show insufficient gems modal", withEventProperties: ["reason": "purchase modal", "item": reward?.key ?? ""])
+        let alert = prepareInsufficientModal(title: L10n.notEnoughGems, message: L10n.moreGemsMessage, image: Asset.insufficientGems.image)
+        alert.addAction(title: L10n.purchaseGems, isMainAction: true, handler: { _ in
+            let navigationController = StoryboardScene.Main.purchaseGemNavController.instantiate()
+            UIApplication.topViewController()?.present(navigationController, animated: true, completion: nil)
+        })
+        alert.addCloseAction()
+        if delayDisplay {
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                alert.enqueue()
+            }
+        } else {
+            alert.enqueue()
+        }
+    }
+    
+    static func displayInsufficientGoldModal() {
+        let alert = prepareInsufficientModal(title: L10n.notEnoughGold, message: L10n.completeMoreTasks, image: Asset.insufficientGold.image)
+        alert.addAction(title: L10n.takeMeBack, isMainAction: true)
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            alert.enqueue()
+        }
+    }
+    
+    static func displayInsufficientHourglassesModal(user: UserProtocol?) {
+        let alert = prepareInsufficientModal(title: L10n.notEnoughHourglasses, message: nil, image: Asset.insufficientHourglasses.image)
+        if user?.isSubscribed == true {
+            alert.message = L10n.insufficientHourglassesMessageSubscriber
+            alert.addAction(title: L10n.takeMeBack, isMainAction: true)
+        } else {
+            alert.message = L10n.insufficientHourglassesMessage
+            alert.addAction(title: L10n.learnMore, isMainAction: true, handler: { _ in
+                let navigationController = StoryboardScene.Main.subscriptionNavController.instantiate()
+                UIApplication.topViewController()?.present(navigationController, animated: true, completion: nil)
+            })
+            alert.addCloseAction()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            alert.enqueue()
+        }
+    }
+    
+    static func displayGemCapReachedModal() {
+        let alert = prepareInsufficientModal(title: L10n.monthlyGemCapReached, message: L10n.Inventory.noGemsLeft, image: Asset.insufficientGems.image)
+        alert.addAction(title: L10n.takeMeBack, isMainAction: true)
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            alert.enqueue()
+        }
+    }
+    
+    static func prepareInsufficientModal(title: String, message: String?, image: UIImage) -> HabiticaAlertController {
+        let alert = HabiticaAlertController(title: title, message: message)
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .center
+        alert.contentView = imageView
+        alert.containerViewSpacing = 20
+        alert.arrangeMessageLast = true
+        alert.messageFont = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
+        return alert
+    }
+    
+    func displayPurchaseConfirmationDialog(quantity: Int) {
+        if quantity == 0 {
+            displayNoRemainingConfirmationDialog()
+        } else {
+            displaySomeRemainingConfirmationDialog(quantity: quantity)
+        }
+    }
+    
+    func displayNoRemainingConfirmationDialog() {
+        let alert = HabiticaAlertController(title: L10n.excessItems, message: L10n.excessNoItemsLeft(item.text ?? "", quantity, item.text ?? ""))
+        alert.addAction(title: L10n.purchaseX(quantity), isMainAction: true) { _ in
+            self.buyItem(quantity: self.quantity)
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addCancelAction()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            alert.enqueue()
+        }
+    }
+    
+    func displaySomeRemainingConfirmationDialog(quantity: Int) {
+        let alert = HabiticaAlertController(title: L10n.excessItems, message: L10n.excessXItemsLeft(quantity, item.text ?? "", quantity))
+        alert.addAction(title: L10n.purchaseX(quantity), isMainAction: true) { _ in
+            self.buyItem(quantity: self.quantity)
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addCancelAction()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            alert.enqueue()
         }
     }
 }

@@ -28,6 +28,8 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     private var activePromo: HabiticaPromotion?
     private var birthdayEvent: WorldStateEventProtocol?
     
+    private let stretchView = UIView()
+    
     var isSubscribed = false
     
     override func viewDidLoad() {
@@ -49,13 +51,10 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         
         activePromo = configRepository.activePromotion()
         birthdayEvent = configRepository.getBirthdayEvent()
+        
+        collectionView.insertSubview(stretchView, at: 0)
+        stretchView.backgroundColor = .purple400
     }
-    
-    override func applyTheme(theme: Theme) {
-        super.applyTheme(theme: theme)
-        collectionView.backgroundColor = theme.contentBackgroundColor
-    }
-    
     func retrieveProductList() {
         SwiftyStoreKit.retrieveProductsInfo(Set(PurchaseHandler.IAPIdentifiers)) { (result) in
             self.products = Array(result.retrievedProducts)
@@ -84,6 +83,15 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         purchaseGems(identifier: PurchaseHandler.IAPIdentifiers[indexPath.item])
         let cell = collectionView.cellForItem(at: indexPath)
         (cell as? GemPurchaseCell)?.setLoading(true)
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentHeight = scrollView.contentSize.height
+        if contentHeight > 0 {
+            let bottomSize = max(0, scrollView.contentOffset.y - (contentHeight - scrollView.frame.size.height))
+            stretchView.frame = CGRect(x: 0, y: contentHeight, width: scrollView.frame.size.width, height: bottomSize)
+        }
+        super.scrollViewDidScroll(scrollView)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -122,7 +130,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 160, height: 212)
+        return CGSize(width: 160, height: 222)
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -160,7 +168,6 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
                 } else {
                     headerImage.image = Asset.gemPurchaseHeader.image
                 }
-                headerImage.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
             }
             
             if let headerLabel = view.viewWithTag(3) as? UILabel {
@@ -272,7 +279,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         usernameTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         usernameTextField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
         usernameTextField.borderWidth = 1
-        usernameTextField.cornerRadius = 8
+        usernameTextField.cornerRadius = 26
         usernameTextField.textInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         usernameTextField.textColor = ThemeService.shared.theme.secondaryTextColor
         stackView.addArrangedSubview(usernameTextField)

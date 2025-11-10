@@ -31,8 +31,8 @@ struct SimpleItemDetails: View {
             }
         }
         Text(item.text ?? "").foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor)).scaledFont(size: 22, weight: .bold)
-        if let notes = item.notes, !notes.isEmpty {
-            Text(notes).foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor)).scaledFont(size: 17)
+        if let notes = item.notes, !notes.isEmpty, let nsAttr = try? HabiticaMarkdownHelper.toHabiticaAttributedString(notes) {
+            Text(AttributedString(nsAttr)).foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor)).scaledFont(size: 17)
                 .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
                 .padding(.top, 6)

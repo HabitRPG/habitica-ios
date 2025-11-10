@@ -606,6 +606,8 @@ public enum L10n {
   public static var isClosed: String { return L10n.tr("Mainstrings", "is_closed") }
   /// Open
   public static var isOpen: String { return L10n.tr("Mainstrings", "is_open") }
+  /// Item is locked
+  public static var itemIsLocked: String { return L10n.tr("Mainstrings", "item_is_locked") }
   /// Join
   public static var join: String { return L10n.tr("Mainstrings", "join") }
   /// Join Challenge

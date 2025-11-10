@@ -16,11 +16,11 @@ private struct DetailContainer<Content: View>: View {
     
     var body: some View {
         content
-            .padding(.horizontal, 19)
+            .padding(.horizontal, 20)
             .padding(.vertical, verticalPadding)
             .frame(maxWidth: .infinity)
             .background(Color.purple200)
-            .cornerRadius(8)
+            .cornerRadius(26)
     }
 }
 
@@ -182,7 +182,7 @@ struct SubscriptionDetailViewUI: View {
     }
     
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 12) {
             if plan.extraMonths > 0 {
                 Text(LocalizedStringKey(L10n.subscriptionCreditTitle(plan.extraMonths)))
                     .font(.system(size: 15))
@@ -192,7 +192,7 @@ struct SubscriptionDetailViewUI: View {
                     .padding(.vertical, 11)
                     .padding(.horizontal, 15)
                     .overlay {
-                        RoundedRectangle(cornerRadius: 8)
+                        RoundedRectangle(cornerRadius: 13)
                             .stroke(lineWidth: 3)
                             .foregroundColor(.green100)
                     }
@@ -225,7 +225,7 @@ struct SubscriptionDetailViewUI: View {
                     }
                 }
             }
-            HStack(spacing: 8) {
+            HStack(spacing: 12) {
                 DetailContainer(verticalPadding: 14) {
                     VStack(spacing: 6) {
                         HStack(spacing: 4) {

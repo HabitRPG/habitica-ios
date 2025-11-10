@@ -72,8 +72,10 @@ class UserTopHeader: UIView, Themeable {
                 
         goldView.currency = .gold
         gemView.currency = .gem
+        gemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onGemTapped)))
         hourglassView.currency = .hourglass
-        
+        hourglassView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onHourglassTapped)))
+
         avatarButton.menu = UIMenu(children: [
             UIAction(title: L10n.openProfile, image: UIImage(systemName: "person.crop.circle")) { _ in
                 RouterHandler.shared.handle(urlString: "/profile/" + self.userID)
@@ -94,8 +96,6 @@ class UserTopHeader: UIView, Themeable {
         ])
         avatarView.isUserInteractionEnabled = true
         avatarButton.showsMenuAsPrimaryAction = true
-
-        gemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showGemView)))
         
         levelLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
         hourglassView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
@@ -302,9 +302,12 @@ class UserTopHeader: UIView, Themeable {
         }
     }
     
-    @objc
-    private func showGemView() {
-        
+    @objc private func onGemTapped() {
+        RouterHandler.shared.handle(.purchaseGems)
+    }
+    
+    @objc private func onHourglassTapped() {
+        RouterHandler.shared.handle(.subscription)
     }
 }
 

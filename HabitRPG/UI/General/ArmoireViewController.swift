@@ -352,7 +352,7 @@ struct ArmoireView: View {
                 } else {
                     VStack(alignment: .center, spacing: 8) {
                         HabiticaButtonUI(label: Text(L10n.Armoire.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white) {
-                            SubscriptionModalViewController(presentationPoint: .armoire).show()
+                            HabiticaApplication.shared.topmostViewController?.present(SubscriptionModalViewController(presentationPoint: .armoire), animated: true)
                         }.frame(maxWidth: 600)
                         Text(L10n.Armoire.unsubbedFooter)
                             .foregroundColor(Color(UIColor.teal1))
@@ -474,10 +474,6 @@ class ArmoireViewController: UIHostingController<ArmoireView> {
             if var topController = UIApplication.topViewController() {
                 if let tabBarController = topController.tabBarController {
                     topController = tabBarController
-                }
-                if (topController as? HRPGBuyItemModalViewController) != nil {
-                    self.show()
-                    return
                 }
                 self.modalTransitionStyle = .crossDissolve
                 self.modalPresentationStyle = .overCurrentContext

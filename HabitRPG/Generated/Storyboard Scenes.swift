@@ -13,13 +13,6 @@ import UIKit
 // swiftlint:disable explicit_type_interface identifier_name line_length prefer_self_in_static_references
 // swiftlint:disable type_body_length type_name
 internal enum StoryboardScene {
-  internal enum BuyModal: StoryboardType {
-    internal static let storyboardName = "BuyModal"
-
-    internal static let initialScene = InitialSceneType<Habitica.HRPGBuyItemModalViewController>(storyboard: BuyModal.self)
-
-    internal static let hrpgBuyItemModalViewController = SceneType<Habitica.HRPGBuyItemModalViewController>(storyboard: BuyModal.self, identifier: "HRPGBuyItemModalViewController")
-  }
   internal enum Intro: StoryboardType {
     internal static let storyboardName = "Intro"
 
@@ -128,8 +121,6 @@ internal enum StoryboardScene {
     internal static let guidelinesNavigationViewController = SceneType<Habitica.ThemedNavigationController>(storyboard: Social.self, identifier: "GuidelinesNavigationViewController")
 
     internal static let guidelinesViewController = SceneType<Habitica.GuidelinesViewController>(storyboard: Social.self, identifier: "GuidelinesViewController")
-
-    internal static let guildsOverviewViewController = SceneType<Habitica.GuildOverviewViewController>(storyboard: Social.self, identifier: "GuildsOverviewViewController")
 
     internal static let inboxChatNavigationController = SceneType<Habitica.ThemedNavigationController>(storyboard: Social.self, identifier: "InboxChatNavigationController")
 

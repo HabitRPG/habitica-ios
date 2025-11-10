@@ -137,7 +137,7 @@ class PetHatchingAlertController: HabiticaAlertController {
                     }
                     let button = self.addAction(title: L10n.hatch, isMainAction: false) { _ in
                         if hatchValue > self.gemCount {
-                            HRPGBuyItemModalViewController.displayInsufficientGemsModal(reason: "hatching", delayDisplay: false)
+                            BuySheetViewModel.displayInsufficientGemsModal(reason: "hatching", delayDisplay: false)
                             self.dismiss()
                             return
                         }

@@ -86,7 +86,7 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         
         userRepository.getUser().on(value: {[weak self] user in
             if self?.isSubscribed == nil && self?.shopIdentifier == "timeTravelersShop" && !user.isSubscribed && user.purchased?.subscriptionPlan?.consecutive?.hourglasses == 0 {
-                SubscriptionModalViewController(presentationPoint: .timetravelers).show()
+                self?.present(SubscriptionModalViewController(presentationPoint: .timetravelers), animated: true)
             }
             self?.isSubscribed = user.isSubscribed
         }).start()
@@ -158,7 +158,7 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
     func didSelectItem(_ item: InAppRewardProtocol?, indexPath: IndexPath) {
         if item?.key == "gem" && isSubscribed == false {
             let sheet = SubscriptionModalViewController(presentationPoint: .gemForGold)
-            sheet.show()
+            present(sheet, animated: true)
             return
         }
         if item == nil {

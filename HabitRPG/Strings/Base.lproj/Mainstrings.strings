@@ -1480,3 +1480,4 @@
 "mounts_found" = "Mounts Found";
 "standard_mounts" = "Standard Mounts";
 "none" = "None";
+"item_is_locked" = "Item is locked";

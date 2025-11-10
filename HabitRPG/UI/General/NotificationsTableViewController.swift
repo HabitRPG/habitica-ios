@@ -165,19 +165,29 @@ struct NotificationMainContent<Content: View>: View {
     var onDismiss: (() -> Void)?
     @ViewBuilder let content: () -> Content
     
+    @State private var isDismissing = false
+    
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
             HStack(spacing: 8) {
                 content()
             }
             if let onDismiss = onDismiss {
-                Image(.notificationsClose)
-                    .frame(width: 40)
-                    .onTapGesture {
-                        onDismiss()
+                Group {
+                    if isDismissing {
+                        ProgressView().habiticaProgressStyle(strokeWidth: 4)
+                            .frame(width: 20, height: 20)
+                            .frame(width: 40, height: 40)
+                    } else {
+                        Image(.notificationsClose)
+                            .frame(width: 40, height: 40)
+                            .onTapGesture {
+                                isDismissing = true
+                                
+                                onDismiss()
+                            }
                     }
-                    .padding(.vertical, 10)
-                    .frame(maxHeight: .infinity, alignment: .top)
+                }.frame(maxHeight: .infinity, alignment: .top)
             }
         }.fixedSize(horizontal: false, vertical: true)
     }
@@ -218,7 +228,7 @@ struct UnallocatedStatsNotificationView: View {
     var body: some View {
         NotificationMainContent(onDismiss: onDismiss) {
             NotificationImage(content: Image(.notificationsStats))
-            NotificationTexts(description: Text(L10n.Notifications.unallocatedStatPoints(notification.points)))
+            NotificationTexts(description: Text(markdown: L10n.Notifications.unallocatedStatPoints(notification.points)))
         }
     }
 }
@@ -230,7 +240,7 @@ struct NewStuffNotificationView: View {
     var body: some View {
         NotificationMainContent(onDismiss: onDismiss) {
             NotificationImage(content: Image(.notificationsBailey))
-            NotificationTexts(title: Text(L10n.Notifications.newBailey), description: Text(notification.title ?? ""))
+            NotificationTexts(title: Text(L10n.Notifications.newBailey), description: Text(markdown: notification.title ?? ""))
         }
     }
 }
@@ -337,8 +347,8 @@ struct AchievementNotificationView: View {
     var body: some View {
         NotificationMainContent(onDismiss: onDismiss) {
             NotificationImage(content: Image(.notificationsStats))
-            NotificationTexts(title: Text(notification.achievementModalText ?? ""),
-                              description: Text(notification.achievementMessage ?? ""))
+            NotificationTexts(title: Text(markdown: notification.achievementModalText ?? ""),
+                              description: Text(markdown: notification.achievementMessage ?? ""))
         }
     }
 }
@@ -346,43 +356,46 @@ struct AchievementNotificationView: View {
 struct NotificationsPage: View {
     @ObservedObject var viewModel: NotificationsViewModel
     
+    @ViewBuilder
+    private func renderNotification(notification: NotificationProtocol) -> some View {
+        let onNotificationDismiss: () -> Void = {
+            viewModel.dismiss(notification: notification)
+        }
+        let type = notification.type
+        if type == .unallocatedStatsPoints, let notification = notification as? NotificationUnallocatedStatsProtocol {
+            UnallocatedStatsNotificationView(notification: notification, onDismiss: onNotificationDismiss)
+        } else if type == .newStuff, let notification = notification as? NotificationNewsProtocol {
+            NewStuffNotificationView(notification: notification, onDismiss: onNotificationDismiss)
+        } else if type == .newChatMessage, let notification = notification as? NotificationNewChatProtocol {
+            NewChatMessageNotificationView(notification: notification, partyID: viewModel.partyID, onDismiss: onNotificationDismiss)
+        } else if type == .itemReceived, let notification = notification as? NotificationItemReceivedProtocol {
+            ItemReceivedNotificationView(notification: notification, onDismiss: onNotificationDismiss)
+        } else if type == .newMysteryItem, let notification = notification as? NotificationNewMysteryItemProtocol {
+            NewMysteryItemNotificationView(notification: notification, onDismiss: onNotificationDismiss)
+        } else if type == .questInvite, let notification = notification as? NotificationQuestInviteProtocol {
+            QuestInviteNotificationView(notification: notification, onDecline: {
+                viewModel.decline(notification: notification)
+            }, onAccept: {
+                viewModel.accept(notification: notification)
+            })
+        } else if type == .groupInvite, let notification = notification as? NotificationGroupInviteProtocol {
+            GroupInviteNotificationView(notification: notification, isPartyInvite: notification.groupID == viewModel.partyID, onDecline: {
+                viewModel.decline(notification: notification)
+            }, onAccept: {
+                viewModel.accept(notification: notification)
+            })
+        } else if notification.achievementKey != nil {
+            AchievementNotificationView(notification: notification, onDismiss: onNotificationDismiss)
+        } else {
+            BasicNotificationView(notification: notification, onDismiss: onNotificationDismiss)
+        }
+    }
+    
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 8) {
                 ForEach(viewModel.notifications, id: \.id) { notification in
-                    Group {
-                        let onNotificationDismiss: () -> Void = {
-                            viewModel.dismiss(notification: notification)
-                        }
-                        let type = notification.type
-                        if type == .unallocatedStatsPoints, let notification = notification as? NotificationUnallocatedStatsProtocol {
-                            UnallocatedStatsNotificationView(notification: notification, onDismiss: onNotificationDismiss)
-                        } else if type == .newStuff, let notification = notification as? NotificationNewsProtocol {
-                            NewStuffNotificationView(notification: notification, onDismiss: onNotificationDismiss)
-                        } else if type == .newChatMessage, let notification = notification as? NotificationNewChatProtocol {
-                            NewChatMessageNotificationView(notification: notification, partyID: viewModel.partyID, onDismiss: onNotificationDismiss)
-                        } else if type == .itemReceived, let notification = notification as? NotificationItemReceivedProtocol {
-                            ItemReceivedNotificationView(notification: notification, onDismiss: onNotificationDismiss)
-                        } else if type == .newMysteryItem, let notification = notification as? NotificationNewMysteryItemProtocol {
-                            NewMysteryItemNotificationView(notification: notification, onDismiss: onNotificationDismiss)
-                        } else if type == .questInvite, let notification = notification as? NotificationQuestInviteProtocol {
-                            QuestInviteNotificationView(notification: notification, onDecline: {
-                                viewModel.decline(notification: notification)
-                            }, onAccept: {
-                                viewModel.accept(notification: notification)
-                            })
-                        } else if type == .groupInvite, let notification = notification as? NotificationGroupInviteProtocol {
-                            GroupInviteNotificationView(notification: notification, isPartyInvite: notification.groupID == viewModel.partyID, onDecline: {
-                                viewModel.decline(notification: notification)
-                            }, onAccept: {
-                                viewModel.accept(notification: notification)
-                            })
-                        } else if notification.achievementKey != nil {
-                            AchievementNotificationView(notification: notification, onDismiss: onNotificationDismiss)
-                        } else {
-                            BasicNotificationView(notification: notification, onDismiss: onNotificationDismiss)
-                        }
-                    }
+                    renderNotification(notification: notification)
                     .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
                     .padding(8)
                     .background(Color(ThemeService.shared.theme.windowBackgroundColor))
@@ -394,11 +407,13 @@ struct NotificationsPage: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Text("\(viewModel.notifications.count)")
             }
-            ToolbarItem(placement: .status) {
-                Button {
-                    viewModel.dismissAllNotifications()
-                } label: {
-                    Text(L10n.Notifications.dismissAll)
+            if !viewModel.notifications.isEmpty {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        viewModel.dismissAllNotifications()
+                    } label: {
+                        Text(L10n.Notifications.dismissAll).foregroundColor(.accentColor)
+                    }
                 }
             }
         }
@@ -416,6 +431,7 @@ class NotificationsTableViewController: BaseHostingViewController<NotificationsP
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = L10n.Titles.notifications
         viewModel.onDismiss = { [weak self] callback in
             self?.dismiss(animated: true, completion: {

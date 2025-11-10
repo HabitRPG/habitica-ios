@@ -11,121 +11,6 @@ import Habitica_Models
 import ReactiveSwift
 import Habitica_Database
 
-private struct QuestGoalViewUI: View {
-    let quest: QuestProtocol
-    
-    var body: some View {
-        VStack(spacing: 0) {
-            if let boss = quest.boss {
-                HStack {
-                    Text(boss.name ?? "")
-                    Spacer()
-                    HStack(spacing: 4) {
-                        Text("\(boss.health)")
-                            .padding(.leading, 4)
-                            .font(.system(size: 15, weight: .semibold))
-                        Image(uiImage: HabiticaIcons.imageOfHeartLightBg)
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                    }.padding(4)
-                        .background(Color.red500)
-                        .cornerRadius(26)
-                }
-                .padding(.vertical, 11)
-                .padding(.leading, 25)
-                .padding(.trailing, 11)
-                .foregroundStyle(Color.red1)
-                .frame(maxWidth: .infinity)
-                    .frame(height: 50)
-                    .background(.red100)
-            }
-            if let collects = quest.collect, collects.isEmpty == false {
-                HStack {
-                    Text(L10n.collect)
-                    Spacer()
-                    let collectCount = collects.map { collect in
-                        return collect.count
-                    }.reduce(0) { partial, next in
-                        return partial + next
-                    }
-                    Text("\(collectCount)")
-                        .font(.system(size: 15, weight: .semibold))
-                        .padding(4)
-                    .background(Color.red500)
-                    .cornerRadius(26)
-                }
-                .padding(.vertical, 11)
-                .padding(.leading, 25)
-                .padding(.trailing, 11)
-                .foregroundStyle(Color.red1)
-                .frame(maxWidth: .infinity)
-                    .frame(height: 50)
-                    .background(.red100)
-            }
-            HStack {
-                Text(L10n.difficulty).foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
-                Spacer()
-                Image(uiImage: HabiticaIcons.imageOfDifficultyStars(difficulty: quest.difficulty))
-                    .padding(.horizontal, 11)
-                    .padding(.vertical, 6)
-                    .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                        .cornerRadius(26)
-            }
-            .padding(.vertical, 11)
-            .padding(.leading, 25)
-            .padding(.trailing, 11)
-        }
-        .font(.system(size: 17, weight: .semibold))
-        .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-        .cornerRadius(26)
-        .padding(.vertical, 15)
-    }
-}
-
-struct QuestReward<Icon: View, Label: View>: View {
-    let icon: Icon
-    let label: Label
-    
-    var body: some View {
-        HStack(spacing: 14) {
-            icon
-                .frame(width: 68, height: 68)
-                .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                .cornerRadius(14)
-            label
-                .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
-                .scaledFont(size: 15, weight: .semibold)
-                .frame(maxWidth: .infinity)
-        }
-        .padding(4)
-        .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-        .cornerRadius(16)
-    }
-}
-
-struct QuestDetails: View {
-    let quest: QuestProtocol?
-    
-    var body: some View {
-        if let quest = quest {
-            QuestGoalViewUI(quest: quest)
-            Text(L10n.Tasks.rewards)
-                .scaledFont(size: 16, weight: .semibold)
-            VStack(spacing: 8) {
-                if let experience = quest.drop?.experience {
-                    QuestReward(icon: Image(uiImage: HabiticaIcons.imageOfExperienceReward), label: Text(L10n.Quests.rewardExperience(experience)))
-                }
-                if let gold = quest.drop?.gold {
-                    QuestReward(icon: Image(uiImage: HabiticaIcons.imageOfGoldReward), label: Text(L10n.Quests.rewardGold(gold)))
-                }
-                ForEach(quest.drop?.items ?? [], id: \.key) { drop in
-                    QuestReward(icon: PixelArtView(name: drop.imageName), label: Text(drop.text ?? ""))
-                }
-            }
-        }
-    }
-}
-
 struct BuyCurrencyView: View {
     let value: Int
     let currency: Currency
@@ -281,21 +166,42 @@ struct BuySheet: View, Dismissable {
     
     @ViewBuilder
     private func bottomContent() -> some View {
+        let isDarkTheme = ThemeService.shared.theme.isDark
         VStack {
             if viewModel.isInstantUse {
                 BuyBanner(color: Color(ThemeService.shared.theme.offsetBackgroundColor), content: Text(L10n.takeEffectImmediately).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
                 )
             }
             if let date = viewModel.item.availableUntil() {
-                BuyBanner(color: .purple500.opacity(0.4), content: Text(L10n.Inventory.availableFor(date.getShortRemainingString()))
+                BuyBanner(color: (isDarkTheme ? Color.purple500 : .purple100).opacity(0.4), content: Text(L10n.Inventory.availableFor(date.getShortRemainingString()))
                     .foregroundStyle(ThemeService.shared.theme.isDark ? Color.purple600 : Color.purple100))
             }
-            let canBuy = viewModel.canBuy
+            if viewModel.item.locked {
+                BuyBanner(color: Color(ThemeService.shared.theme.offsetBackgroundColor),
+                          content: Text(viewModel.item.lockedReason ?? viewModel.item.shortLockedReason ?? L10n.itemIsLocked).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor)))
+            }
+            if viewModel.item.key == "gem" {
+                let remaining = viewModel.user?.purchased?.subscriptionPlan?.gemsRemaining ?? 0
+                let total = viewModel.user?.purchased?.subscriptionPlan?.gemCapTotal ?? 0
+                if total > 0 && viewModel.user?.isSubscribed == true {
+                    if remaining > 0 {
+                        BuyBanner(color: (isDarkTheme ? Color.green500 : .green100).opacity(0.4),
+                                  content: Text(L10n.Inventory.numberGemsLeft(remaining, total)).foregroundStyle(Color.green1))
+                    } else {
+                        BuyBanner(color: (isDarkTheme ? Color.yellow500 : .yellow100).opacity(0.4),
+                                  content: Text(L10n.Inventory.numberGemsLeft(remaining, total)).foregroundStyle(Color.green1))
+                    }
+                } else {
+                    // This shouldn't show and is mostly for layouting purposes
+                    BuyBanner(color: Color(ThemeService.shared.theme.offsetBackgroundColor), content: Text(L10n.Inventory.noGemsLeft))
+                }
+            }
             if viewModel.isPurchasing {
                 ProgressView().habiticaProgressStyle().frame(width: 42, height: 42)
                     .transition(.opacity)
                     .padding(9)
             } else {
+                let canBuy = viewModel.canBuy
                 HabiticaButtonUI(label: HStack(spacing: 5) {
                     Text(L10n.buy.localizedCapitalized)
                     Image(uiImage: viewModel.itemCurrency.getImage()).padding(.leading, 3)

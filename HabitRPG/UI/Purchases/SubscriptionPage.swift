@@ -307,7 +307,7 @@ struct SubscriptionPage: View {
                 if let endDate = viewModel.activePromo?.endDate, viewModel.activePromo?.identifier == "g1g1" {
                     G1G1Banner(endDate: endDate)
                         .frame(height: 96)
-                        .cornerRadius(13)
+                        .cornerRadius(26)
                         .padding(.horizontal, 20)
                         .padding(.bottom, 30)
                 }
@@ -321,7 +321,7 @@ struct SubscriptionPage: View {
                             }.frame(maxWidth: .infinity)
                             Image(Asset.subBenefitGoldgemsRight.name)
                         }.background(.teal1)
-                            .cornerRadius(12)
+                            .cornerRadius(26)
                             .padding(.horizontal, 24)
                             .padding(.top, 16)
                             .padding(.bottom, 22)
@@ -361,13 +361,13 @@ struct SubscriptionPage: View {
                                     Rectangle()
                                         .foregroundColor(.purple100)
                                         .fill()
-                                        .cornerRadius(4)
+                                        .cornerRadius(13)
                                         .frame(maxWidth: .infinity)
                                         .frame(height: 8)
                                         Rectangle()
                                             .foregroundColor(.green100)
                                             .fill()
-                                            .cornerRadius(4)
+                                            .cornerRadius(13)
                                             .frame(width: reader.size.width * (CGFloat(viewModel.subscriptionPlan?.gemCapTotal ?? 0) / 50.0), height: 8)
                                 }
                             }
@@ -386,7 +386,7 @@ struct SubscriptionPage: View {
                                     .fill()
                                     .foregroundColor(Color(UIColor.purple200))
                                     .frame(height: viewModel.showHourglassPromo && sub == viewModel.availableSubscriptions.last ? 186 : 126)
-                                    .cornerRadius(13)
+                                    .cornerRadius(26)
                                     .padding(.vertical, 4).onTapGesture {
                                         withAnimation {
                                             viewModel.selectedSubscription = sub
@@ -407,7 +407,7 @@ struct SubscriptionPage: View {
                             ProgressView().habiticaProgressStyle().frame(height: 48)
                                 .transition(.opacity)
                         } else {
-                            HabiticaButtonUI(label: Text(L10n.subscribe).foregroundColor(Color(UIColor.purple100)), color: Color(UIColor.yellow100), size: .compact) {
+                            HabiticaButtonUI(label: Text(L10n.subscribe).foregroundColor(.purple100), color: Color(UIColor.yellow100), size: .compact) {
                                 viewModel.subscribeTapped()
                             }
                             .transition(.opacity)
@@ -422,7 +422,6 @@ struct SubscriptionPage: View {
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 32)
                     if viewModel.presentationPoint == nil {
-                        
                         GiftSubscriptionSegment(viewModel: viewModel)
                             .padding(.horizontal, 24)
                             .padding(.vertical, 30)
@@ -503,7 +502,6 @@ struct SubscriptionPage: View {
             .padding(.top, 16)
             .background(backgroundColor.ignoresSafeArea(.all, edges: .top).padding(.bottom, 4))
             .ignoresSafeArea()
-        .cornerRadius([.topLeading, .topTrailing], 12)
     }
 }
 
@@ -538,15 +536,13 @@ struct SubscriptionPagePreview: PreviewProvider {
     }
 }
 
-class SubscriptionModalViewController: HostingPanModal<SubscriptionPage> {
+class SubscriptionModalViewController: HostingBottomSheetController<ScrollableSubscriptionPage> {
     let viewModel: SubscriptionViewModel
     let userRepository = UserRepository()
-    
-    private let upperBackground = UIView()
-    
+        
     init(presentationPoint: PresentationPoint?) {
         viewModel = SubscriptionViewModel(presentationPoint: presentationPoint)
-        super.init(nibName: nil, bundle: nil)
+        super.init(rootView: ScrollableSubscriptionPage(viewModel: viewModel))
         viewModel.dimissVC = {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                 self.dismiss(animated: true)
@@ -578,21 +574,11 @@ class SubscriptionModalViewController: HostingPanModal<SubscriptionPage> {
     }
     
     override func viewDidLoad() {
-        hostingView = UIHostingView(rootView: SubscriptionPage(viewModel: viewModel))
         super.viewDidLoad()
-        view.backgroundColor = .purple400
-        view.insertSubview(upperBackground, at: 0)
-        upperBackground.backgroundColor = .purple300
-        scrollView.bounces = false
 
         viewModel.onGiftButtonTapped = {[weak self] in
             self?.giftSubscriptionButtonTapped()
         }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        upperBackground.pin.left().top().right().height(100)
     }
     
     func giftSubscriptionButtonTapped() {

@@ -65,6 +65,8 @@ class SettingsViewController: FormViewController, Themeable {
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableView.cellLayoutMarginsFollowReadableWidth = false
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         navigationItem.title = L10n.Titles.settings
         if #unavailable(iOS 26.0) {
             doneButton.style = .done
@@ -969,7 +971,7 @@ class SettingsViewController: FormViewController, Themeable {
             
             alertController.addAction(title: L10n.Settings.changeClass, isMainAction: true) { _ in
                 if user.gemCount < changeClassCosts {
-                    HRPGBuyItemModalViewController.displayInsufficientGemsModal(reason: "class change", delayDisplay: false)
+                    BuySheetViewModel.displayInsufficientGemsModal(reason: "class change", delayDisplay: false)
                     return
                 }
                 _ = UserManager.shared.showClassSelection(user: user)
