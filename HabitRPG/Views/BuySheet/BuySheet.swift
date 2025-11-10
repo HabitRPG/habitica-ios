@@ -68,7 +68,41 @@ struct BuyBanner<Content: View>: View {
             .frame(maxWidth: .infinity)
             .background(color)
             .clipShape(.capsule)
-            .padding(.bottom, 16)
+    }
+}
+
+struct BulkPurchaseView: View {
+    @Binding var quantity: Int
+    let showGem: Bool
+    let canPurchase: Bool
+    
+    var body: some View {
+        HStack {
+            Button {
+                quantity -= 1
+            } label: {
+                Image(systemName: "minus")
+                    .scaledFont(size: 22, weight: .semibold)
+            }.disabled(quantity <= 1 || !canPurchase)
+            HStack(spacing: 4) {
+                if showGem {
+                    Image(uiImage: HabiticaIcons.imageOfGem)
+                }
+                Text("\(quantity)")
+                    .scaledFont(size: 22, weight: .bold)
+                    .foregroundStyle(Color(canPurchase ? ThemeService.shared.theme.primaryTextColor : ThemeService.shared.theme.ternaryTextColor))
+            }
+                .padding(.vertical, 11)
+                .padding(.horizontal, 31)
+                .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                .cornerRadius(50)
+            Button {
+                quantity += 1
+            } label: {
+                Image(systemName: "plus")
+                    .scaledFont(size: 22, weight: .semibold)
+            }.disabled(!canPurchase)
+        }
     }
 }
 
@@ -167,7 +201,11 @@ struct BuySheet: View, Dismissable {
     @ViewBuilder
     private func bottomContent() -> some View {
         let isDarkTheme = ThemeService.shared.theme.isDark
-        VStack {
+        VStack(spacing: 16) {
+            let remainingGems = viewModel.user?.purchased?.subscriptionPlan?.gemsRemaining ?? 0
+            if viewModel.canBulkPurchase {
+                BulkPurchaseView(quantity: $viewModel.quantity, showGem: viewModel.item.key == "gem", canPurchase: viewModel.item.key == "gem" ? remainingGems > 0 : true)
+            }
             if viewModel.isInstantUse {
                 BuyBanner(color: Color(ThemeService.shared.theme.offsetBackgroundColor), content: Text(L10n.takeEffectImmediately).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
                 )
@@ -181,15 +219,14 @@ struct BuySheet: View, Dismissable {
                           content: Text(viewModel.item.lockedReason ?? viewModel.item.shortLockedReason ?? L10n.itemIsLocked).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor)))
             }
             if viewModel.item.key == "gem" {
-                let remaining = viewModel.user?.purchased?.subscriptionPlan?.gemsRemaining ?? 0
                 let total = viewModel.user?.purchased?.subscriptionPlan?.gemCapTotal ?? 0
                 if total > 0 && viewModel.user?.isSubscribed == true {
-                    if remaining > 0 {
+                    if remainingGems > 0 {
                         BuyBanner(color: (isDarkTheme ? Color.green500 : .green100).opacity(0.4),
-                                  content: Text(L10n.Inventory.numberGemsLeft(remaining, total)).foregroundStyle(Color.green1))
+                                  content: Text(L10n.Inventory.numberGemsLeft(remainingGems, total)).foregroundStyle(Color.green1))
                     } else {
                         BuyBanner(color: (isDarkTheme ? Color.yellow500 : .yellow100).opacity(0.4),
-                                  content: Text(L10n.Inventory.numberGemsLeft(remaining, total)).foregroundStyle(Color.green1))
+                                  content: Text(L10n.Inventory.numberGemsLeft(remainingGems, total)).foregroundStyle(Color.green1))
                     }
                 } else {
                     // This shouldn't show and is mostly for layouting purposes
@@ -201,11 +238,11 @@ struct BuySheet: View, Dismissable {
                     .transition(.opacity)
                     .padding(9)
             } else {
-                let canBuy = viewModel.canBuy
+                let canBuy = viewModel.canBuyDisplay
                 HabiticaButtonUI(label: HStack(spacing: 5) {
                     Text(L10n.buy.localizedCapitalized)
                     Image(uiImage: viewModel.itemCurrency.getImage()).padding(.leading, 3)
-                    Text("\(viewModel.item.value.formatted(.number))")
+                    Text("\(viewModel.totalValue.formatted(.number))")
                 }.foregroundStyle(canBuy ? .white : Color(ThemeService.shared.theme.quadTextColor)),
                                  color: Color(canBuy ? ThemeService.shared.theme.fixedTintColor : ThemeService.shared.theme.offsetBackgroundColor)) {
                     viewModel.buyPressed()

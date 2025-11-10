@@ -99,8 +99,6 @@
 		291448A8208A3DD200F3A6B5 /* CustomizationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448A7208A3DD200F3A6B5 /* CustomizationRepository.swift */; };
 		2914943A2731553300DF2153 /* NumberPickerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291494392731553300DF2153 /* NumberPickerFormView.swift */; };
 		2914943C273163AF00DF2153 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914943B273163AF00DF2153 /* SceneDelegate.swift */; };
-		291666412BCFD3490068FCBF /* AvatarShopItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291666402BCFD3490068FCBF /* AvatarShopItemView.xib */; };
-		291666432BCFD5E70068FCBF /* AvatarShopItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291666422BCFD5E70068FCBF /* AvatarShopItemView.swift */; };
 		2919FDD52090CF900096A53B /* InboxMessagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDD42090CF900096A53B /* InboxMessagesDataSource.swift */; };
 		2919FDDD2091D5370096A53B /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDDC2091D5370096A53B /* UserManager.swift */; };
 		2919FDDF2091D87A0096A53B /* FaintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDDE2091D87A0096A53B /* FaintViewController.swift */; };
@@ -173,10 +171,6 @@
 		29397EE42977FBA4009EFD20 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29397EE32977FBA4009EFD20 /* CountdownView.swift */; };
 		293BB49A1FCD7DC0003B6F4F /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB4991FCD7DC0003B6F4F /* StatsView.swift */; };
 		293BB49C1FCD7DC8003B6F4F /* StatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293BB49B1FCD7DC8003B6F4F /* StatsView.xib */; };
-		293BB4A11FD06E7E003B6F4F /* BulkStatsAllocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293BB4A01FD06E7E003B6F4F /* BulkStatsAllocationView.xib */; };
-		293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293BB4A21FD07603003B6F4F /* StatsSliderView.xib */; };
-		293BB4A51FD078EC003B6F4F /* StatsSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB4A41FD078EC003B6F4F /* StatsSliderView.swift */; };
-		293BB4A91FD0806C003B6F4F /* BulkStatsAllocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB4A81FD0806C003B6F4F /* BulkStatsAllocationViewController.swift */; };
 		293DFE3C24F5647400E115FE /* UIImage-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293DFE3B24F5647400E115FE /* UIImage-Extensions.swift */; };
 		2942F8CF266DF9CB003F6500 /* TaskFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2942F8CE266DF9CB003F6500 /* TaskFormView.swift */; };
 		2942FAEF26777E00003F6500 /* HabiticaLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2942FAEE26777E00003F6500 /* HabiticaLogger.swift */; };
@@ -291,7 +285,6 @@
 		29995A6126CBCB0B0063D4C9 /* AdServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29995A6026CBCB0B0063D4C9 /* AdServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		299B12492642D2AB00498025 /* PromoWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299B12482642D2AB00498025 /* PromoWebViewController.swift */; };
 		299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6211F505DFA00E22935 /* PaddedLabel.swift */; };
-		299BD6351F54346F00E22935 /* QuestDetailRewardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */; };
 		299BD6371F5457E100E22935 /* HabiticaIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6361F5457E100E22935 /* HabiticaIcons.swift */; };
 		299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
 		299C172929BB4EE40003906B /* SeasonalShopCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299C172829BB4EE40003906B /* SeasonalShopCollectionViewDataSource.swift */; };
@@ -486,18 +479,12 @@
 		32C6FFF226ED896400C8F682 /* PathTraceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6FFF126ED896400C8F682 /* PathTraceable.swift */; };
 		32C71C6725507E65007E48C5 /* Habitica WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		49005B721F180589004830D9 /* CurrencyCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B711F180588004830D9 /* CurrencyCountView.swift */; };
-		49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */; };
-		49005B7E1F183775004830D9 /* HRPGShopUserHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */; };
 		4904C7401F1ED87400F80723 /* GradientImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904C73F1F1ED87400F80723 /* GradientImageView.swift */; };
 		491C6E5B2020FE64005030A2 /* Challenge-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */; };
 		4924314E202CD19A00288278 /* ChallengeRewardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4924314C202CD19A00288278 /* ChallengeRewardTableViewCell.swift */; };
 		4924314F202CD19A00288278 /* ChallengeRewardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4924314D202CD19A00288278 /* ChallengeRewardTableViewCell.xib */; };
 		49391ED120C9C898002B2BB5 /* HabitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49391ED020C9C898002B2BB5 /* HabitTableViewController.swift */; };
 		49391ED320C9C94B002B2BB5 /* ToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49391ED220C9C94B002B2BB5 /* ToDoTableViewController.swift */; };
-		493ECBB31F47A1100099B1FC /* HRPGItemStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493ECBB21F47A1100099B1FC /* HRPGItemStatsView.swift */; };
-		493ECBB51F47A58F0099B1FC /* HRPGItemStatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 493ECBB41F47A58F0099B1FC /* HRPGItemStatsView.xib */; };
-		493ECBB71F47D7E10099B1FC /* HRPGGearSetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493ECBB61F47D7E10099B1FC /* HRPGGearSetItem.swift */; };
-		493ECBB91F47D82A0099B1FC /* HRPGGearSetItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 493ECBB81F47D82A0099B1FC /* HRPGGearSetItem.xib */; };
 		494E540B1F2D894D0003683C /* ShopCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E540A1F2D894D0003683C /* ShopCollectionViewDataSource.swift */; };
 		494E54221F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E54211F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift */; };
 		498E4CF71FA17B7F006933FF /* ChallengeButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498E4CF51FA17B7F006933FF /* ChallengeButtonTableViewCell.swift */; };
@@ -517,12 +504,6 @@
 		49A4646B1FCD18FD00E14A5D /* HRPGButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A4646A1FCD18FD00E14A5D /* HRPGButtonViewModel.swift */; };
 		49A84FB21F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A84FB01F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift */; };
 		49A84FB31F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49A84FB11F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib */; };
-		49DCB7AC1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7AB1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift */; };
-		49DCB7B01F3923F20079FDD0 /* HRPGSimpleShopItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7AF1F3923F20079FDD0 /* HRPGSimpleShopItemView.xib */; };
-		49DCB7B61F3F64B40079FDD0 /* HRPGShopModalBgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7B51F3F64B40079FDD0 /* HRPGShopModalBgView.swift */; };
-		49DCB7B81F3F64D40079FDD0 /* HRPGShopModalBgView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7B71F3F64D40079FDD0 /* HRPGShopModalBgView.xib */; };
-		49DCB7BA1F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7B91F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib */; };
-		49DCB7BC1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7BB1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift */; };
 		49DCB7C21F40D7F10079FDD0 /* NPCBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7C11F40D7F00079FDD0 /* NPCBannerView.swift */; };
 		49DCB7C41F40D80B0079FDD0 /* NPCBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7C31F40D80B0079FDD0 /* NPCBannerView.xib */; };
 		49DCECA71F96ECEF00982E99 /* MultiModelDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCECA61F96ECEF00982E99 /* MultiModelDataSource.swift */; };
@@ -810,8 +791,6 @@
 		291448A7208A3DD200F3A6B5 /* CustomizationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationRepository.swift; sourceTree = "<group>"; };
 		291494392731553300DF2153 /* NumberPickerFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerFormView.swift; sourceTree = "<group>"; };
 		2914943B273163AF00DF2153 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = Utilities/SceneDelegate.swift; sourceTree = "<group>"; };
-		291666402BCFD3490068FCBF /* AvatarShopItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvatarShopItemView.xib; sourceTree = "<group>"; };
-		291666422BCFD5E70068FCBF /* AvatarShopItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarShopItemView.swift; sourceTree = "<group>"; };
 		2919FDD42090CF900096A53B /* InboxMessagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxMessagesDataSource.swift; sourceTree = "<group>"; };
 		2919FDDC2091D5370096A53B /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		2919FDDE2091D87A0096A53B /* FaintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaintViewController.swift; sourceTree = "<group>"; };
@@ -876,10 +855,6 @@
 		293A683B20F5083400685945 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		293BB4991FCD7DC0003B6F4F /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		293BB49B1FCD7DC8003B6F4F /* StatsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsView.xib; sourceTree = "<group>"; };
-		293BB4A01FD06E7E003B6F4F /* BulkStatsAllocationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BulkStatsAllocationView.xib; sourceTree = "<group>"; };
-		293BB4A21FD07603003B6F4F /* StatsSliderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsSliderView.xib; sourceTree = "<group>"; };
-		293BB4A41FD078EC003B6F4F /* StatsSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsSliderView.swift; sourceTree = "<group>"; };
-		293BB4A81FD0806C003B6F4F /* BulkStatsAllocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkStatsAllocationViewController.swift; sourceTree = "<group>"; };
 		293DFE3B24F5647400E115FE /* UIImage-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage-Extensions.swift"; sourceTree = "<group>"; };
 		2942F8CE266DF9CB003F6500 /* TaskFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormView.swift; sourceTree = "<group>"; };
 		2942FAEE26777E00003F6500 /* HabiticaLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HabiticaLogger.swift; path = "../../Habitica Models/Habitica Models/HabiticaLogger.swift"; sourceTree = "<group>"; };
@@ -993,7 +968,6 @@
 		29995A6026CBCB0B0063D4C9 /* AdServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdServices.framework; path = System/Library/Frameworks/AdServices.framework; sourceTree = SDKROOT; };
 		299B12482642D2AB00498025 /* PromoWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoWebViewController.swift; sourceTree = "<group>"; };
 		299BD6211F505DFA00E22935 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
-		299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestDetailRewardView.xib; sourceTree = "<group>"; };
 		299BD6361F5457E100E22935 /* HabiticaIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabiticaIcons.swift; sourceTree = "<group>"; };
 		299BD6391F557FE700E22935 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		299C172829BB4EE40003906B /* SeasonalShopCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonalShopCollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -1178,18 +1152,12 @@
 		328C951D24A2C13100293E16 /* LinksOnlyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksOnlyTextView.swift; sourceTree = "<group>"; };
 		32C6FFF126ED896400C8F682 /* PathTraceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTraceable.swift; sourceTree = "<group>"; };
 		49005B711F180588004830D9 /* CurrencyCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyCountView.swift; sourceTree = "<group>"; };
-		49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopUserHeaderView.swift; sourceTree = "<group>"; };
-		49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGShopUserHeaderView.xib; sourceTree = "<group>"; };
 		4904C73F1F1ED87400F80723 /* GradientImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientImageView.swift; sourceTree = "<group>"; };
 		491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenge-Extensions.swift"; sourceTree = "<group>"; };
 		4924314C202CD19A00288278 /* ChallengeRewardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRewardTableViewCell.swift; sourceTree = "<group>"; };
 		4924314D202CD19A00288278 /* ChallengeRewardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeRewardTableViewCell.xib; sourceTree = "<group>"; };
 		49391ED020C9C898002B2BB5 /* HabitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTableViewController.swift; sourceTree = "<group>"; };
 		49391ED220C9C94B002B2BB5 /* ToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewController.swift; sourceTree = "<group>"; };
-		493ECBB21F47A1100099B1FC /* HRPGItemStatsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGItemStatsView.swift; sourceTree = "<group>"; };
-		493ECBB41F47A58F0099B1FC /* HRPGItemStatsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGItemStatsView.xib; sourceTree = "<group>"; };
-		493ECBB61F47D7E10099B1FC /* HRPGGearSetItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGGearSetItem.swift; sourceTree = "<group>"; };
-		493ECBB81F47D82A0099B1FC /* HRPGGearSetItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGGearSetItem.xib; sourceTree = "<group>"; };
 		494E540A1F2D894D0003683C /* ShopCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		494E54211F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopSectionHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		498E4CF51FA17B7F006933FF /* ChallengeButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -1209,12 +1177,6 @@
 		49A4646A1FCD18FD00E14A5D /* HRPGButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRPGButtonViewModel.swift; sourceTree = "<group>"; };
 		49A84FB01F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailInfoTableViewCell.swift; sourceTree = "<group>"; };
 		49A84FB11F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeDetailInfoTableViewCell.xib; sourceTree = "<group>"; };
-		49DCB7AB1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGSimpleShopItemView.swift; sourceTree = "<group>"; };
-		49DCB7AF1F3923F20079FDD0 /* HRPGSimpleShopItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGSimpleShopItemView.xib; sourceTree = "<group>"; };
-		49DCB7B51F3F64B40079FDD0 /* HRPGShopModalBgView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopModalBgView.swift; sourceTree = "<group>"; };
-		49DCB7B71F3F64D40079FDD0 /* HRPGShopModalBgView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGShopModalBgView.xib; sourceTree = "<group>"; };
-		49DCB7B91F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGCloseableShopModalView.xib; sourceTree = "<group>"; };
-		49DCB7BB1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGCloseableShopModalView.swift; sourceTree = "<group>"; };
 		49DCB7C11F40D7F00079FDD0 /* NPCBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NPCBannerView.swift; sourceTree = "<group>"; };
 		49DCB7C31F40D80B0079FDD0 /* NPCBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPCBannerView.xib; sourceTree = "<group>"; };
 		49DCECA61F96ECEF00982E99 /* MultiModelDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiModelDataSource.swift; sourceTree = "<group>"; };
@@ -1749,7 +1711,6 @@
 				2931150322D744ED00E4A9E3 /* AchievementsCollectionViewController.swift */,
 				29C38C8624A256F800F219A1 /* AdventureGuideViewController.swift */,
 				2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */,
-				293BB4A81FD0806C003B6F4F /* BulkStatsAllocationViewController.swift */,
 				295D42F520921F4200948E7E /* ClassSelectionViewController.swift */,
 				291E95AE20988025006EE585 /* NewsViewController.swift */,
 				29706C8827D23C82006EC139 /* SpellViewController.swift */,
@@ -2108,26 +2069,11 @@
 		49DCB7B31F3F5E820079FDD0 /* Shop */ = {
 			isa = PBXGroup;
 			children = (
-				49DCB7BB1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift */,
-				49DCB7B91F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib */,
-				493ECBB61F47D7E10099B1FC /* HRPGGearSetItem.swift */,
-				493ECBB81F47D82A0099B1FC /* HRPGGearSetItem.xib */,
-				493ECBB21F47A1100099B1FC /* HRPGItemStatsView.swift */,
-				493ECBB41F47A58F0099B1FC /* HRPGItemStatsView.xib */,
-				49DCB7B51F3F64B40079FDD0 /* HRPGShopModalBgView.swift */,
-				49DCB7B71F3F64D40079FDD0 /* HRPGShopModalBgView.xib */,
-				49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */,
-				49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */,
-				49DCB7AB1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift */,
-				49DCB7AF1F3923F20079FDD0 /* HRPGSimpleShopItemView.xib */,
-				299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */,
 				298119AE1F5040DA00F9FB39 /* QuestDetailView.swift */,
 				298119AC1F5040B900F9FB39 /* QuestDetailView.xib */,
 				D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */,
 				29AAE55624508FC600220DB1 /* HRPGBulkPurchaseView.swift */,
 				29AAE5582450934C00220DB1 /* HRPGBulkPurchaseView.xib */,
-				291666422BCFD5E70068FCBF /* AvatarShopItemView.swift */,
-				291666402BCFD3490068FCBF /* AvatarShopItemView.xib */,
 			);
 			name = Shop;
 			sourceTree = "<group>";
@@ -2496,7 +2442,6 @@
 				29E48F0C22E89DB3005C4B45 /* BadgeView.swift */,
 				2967CF80252479FA00F366DF /* Basic */,
 				2953D84828B77E3800DC456E /* BottomSheets */,
-				293BB4A01FD06E7E003B6F4F /* BulkStatsAllocationView.xib */,
 				29ACB3AB26404496009B059C /* CalendarView.swift */,
 				299BD6311F5420A300E22935 /* Challenges */,
 				292DEE77204E1FFD0086D5F7 /* CheckboxView.swift */,
@@ -2524,8 +2469,6 @@
 				293282131F389CC000D42961 /* SetupCustomizationItemView.swift */,
 				293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */,
 				49DCB7B31F3F5E820079FDD0 /* Shop */,
-				293BB4A41FD078EC003B6F4F /* StatsSliderView.swift */,
-				293BB4A21FD07603003B6F4F /* StatsSliderView.xib */,
 				293BB4991FCD7DC0003B6F4F /* StatsView.swift */,
 				293BB49B1FCD7DC8003B6F4F /* StatsView.xib */,
 				296F51632358E5EF0019C872 /* SubscriptionPromoView.swift */,
@@ -3144,7 +3087,6 @@
 				29B478BD20C1378100B6123F /* ChallengeTableViewCell.xib in Resources */,
 				298119B51F5048C000F9FB39 /* QuestGoalView.xib in Resources */,
 				2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */,
-				293BB4A11FD06E7E003B6F4F /* BulkStatsAllocationView.xib in Resources */,
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
@@ -3152,7 +3094,6 @@
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
-				293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */,
 				2996AA1F22EB157800033D92 /* AppIntentVocabulary.plist in Resources */,
 				29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */,
 				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
@@ -3162,14 +3103,10 @@
 				29A0FD81203DF49900590BDE /* GuidelinesPromptView.xib in Resources */,
 				49DCB7C41F40D80B0079FDD0 /* NPCBannerView.xib in Resources */,
 				498E4CF81FA17B7F006933FF /* ChallengeButtonTableViewCell.xib in Resources */,
-				299BD6351F54346F00E22935 /* QuestDetailRewardView.xib in Resources */,
 				498E4D081FA17DB9006933FF /* ChallengeActionsTableViewCell.xib in Resources */,
-				49DCB7B81F3F64D40079FDD0 /* HRPGShopModalBgView.xib in Resources */,
 				D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */,
-				493ECBB91F47D82A0099B1FC /* HRPGGearSetItem.xib in Resources */,
 				29FC8864201B78D6002B3D3F /* QuestMenuHeader.xib in Resources */,
 				2927025A24E3F42100BCAA77 /* Support.storyboard in Resources */,
-				493ECBB51F47A58F0099B1FC /* HRPGItemStatsView.xib in Resources */,
 				29028BB120319E4000B7F704 /* RageStrikeActiveContentView.xib in Resources */,
 				29C1B6AE205952E40001D3EF /* Tasks.storyboard in Resources */,
 				D9BBF32E1DBD128700C4114C /* ShopAdFooter.xib in Resources */,
@@ -3186,17 +3123,13 @@
 				29B388E11EF2BB7600A72950 /* YesterdailyChecklistItem.xib in Resources */,
 				498E4CFC1FA17B9E006933FF /* ChallengeCreatorTableViewCell.xib in Resources */,
 				D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */,
-				291666412BCFD3490068FCBF /* AvatarShopItemView.xib in Resources */,
-				49DCB7B01F3923F20079FDD0 /* HRPGSimpleShopItemView.xib in Resources */,
 				D91CCAD01BCF11CC001C6A0C /* UserTopHeader.xib in Resources */,
-				49DCB7BA1F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib in Resources */,
 				290279A320583ED3006DACB9 /* Shop.storyboard in Resources */,
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
 				293BB49C1FCD7DC8003B6F4F /* StatsView.xib in Resources */,
 				290279A920583EDE006DACB9 /* Settings.storyboard in Resources */,
 				29701FE21F5617900097BBCC /* ToastView.xib in Resources */,
 				D9D17CD21E6898E400AD9232 /* HabitTableViewCell.xib in Resources */,
-				49005B7E1F183775004830D9 /* HRPGShopUserHeaderView.xib in Resources */,
 				293282161F389DBB00D42961 /* SetupCustomizationItemView.xib in Resources */,
 				290279AD20583EF9006DACB9 /* Intro.storyboard in Resources */,
 				D984D5841E48E57C006E84F8 /* TaskDetailLineView.xib in Resources */,
@@ -3396,7 +3329,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2909D42E2726ACBD00FF2B29 /* Binding-Extensions.swift in Sources */,
-				493ECBB31F47A1100099B1FC /* HRPGItemStatsView.swift in Sources */,
 				29D50AD125F769520009CF55 /* Alignment-Extensions.swift in Sources */,
 				29084B3326CF97F500AD9966 /* ShopViewController.swift in Sources */,
 				498E4CFF1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.swift in Sources */,
@@ -3488,7 +3420,6 @@
 				291017DF2B06161400D0607B /* SubscriptionPage.swift in Sources */,
 				29E30DE620D935AF00F74ECB /* LevelUpOverlayView.swift in Sources */,
 				29038F2126F33CDB005CA2D3 /* DueDateFormView.swift in Sources */,
-				49DCB7B61F3F64B40079FDD0 /* HRPGShopModalBgView.swift in Sources */,
 				29F272A62A404F8600F3B50F /* SendPartyInviteViewController.swift in Sources */,
 				2909D42C2726AA2500FF2B29 /* TrackableScrollView.swift in Sources */,
 				291448822087A13100F3A6B5 /* EquipmentDetailViewController.swift in Sources */,
@@ -3556,13 +3487,11 @@
 				290B62412072711A007287C4 /* PublicGuildCell.swift in Sources */,
 				29C9BDDF2E9FE48400FC4FCA /* BulkStatsAllocationSheet.swift in Sources */,
 				296F51642358E5EF0019C872 /* SubscriptionPromoView.swift in Sources */,
-				293BB4A91FD0806C003B6F4F /* BulkStatsAllocationViewController.swift in Sources */,
 				292DEE78204E1FFD0086D5F7 /* CheckboxView.swift in Sources */,
 				290B624A2073C37A007287C4 /* SettingsViewController.swift in Sources */,
 				294973D2208118C100F02AC3 /* ImageOverlayView.swift in Sources */,
 				49391ED320C9C94B002B2BB5 /* ToDoTableViewController.swift in Sources */,
 				293BB49A1FCD7DC0003B6F4F /* StatsView.swift in Sources */,
-				49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */,
 				29A984D22547294E00F04665 /* HabiticaAnalytics.swift in Sources */,
 				291A5E6226CD35E800E9CD50 /* TutorialStepsProtocol.swift in Sources */,
 				29CEA8562641A2B500101C0A /* AdventureGuideTableViewCell.swift in Sources */,
@@ -3681,13 +3610,11 @@
 				2974BDB42090926B00EC1A25 /* MainTabBarController.swift in Sources */,
 				29951A20232669C600918FC8 /* InboxChatViewController.swift in Sources */,
 				29323E352052008800AC6D6F /* UserTopHeader.swift in Sources */,
-				293BB4A51FD078EC003B6F4F /* StatsSliderView.swift in Sources */,
 				29C1360824EE917F00DBC6B3 /* UITableView-Extensions.swift in Sources */,
 				29D50B7B25F9037A0009CF55 /* AppDelegate+Notifications.swift in Sources */,
 				2927025724E3EEDE00BCAA77 /* ReportBugViewController.swift in Sources */,
 				29BEE73F252E2CC300D456F8 /* Widget.intentdefinition in Sources */,
 				49EE3FD8201908AB00CD7608 /* ChallengeButtonStyleProvider.swift in Sources */,
-				291666432BCFD5E70068FCBF /* AvatarShopItemView.swift in Sources */,
 				2927024324E2D83700BCAA77 /* HallOfContributorsViewController.swift in Sources */,
 				2932821A1F39E28000D42961 /* TypingTextViewController.swift in Sources */,
 				29ADAB542E7C234200FFB9A0 /* SimpleItemDetails.swift in Sources */,
@@ -3724,11 +3651,9 @@
 				29AA79C72685B71100871541 /* TaskFormPicker.swift in Sources */,
 				29ADAB522E7C233900FFB9A0 /* BuySheetViewModel.swift in Sources */,
 				29B4788620BD6E2E00B6123F /* SkillsUserTableViewDataSource.swift in Sources */,
-				493ECBB71F47D7E10099B1FC /* HRPGGearSetItem.swift in Sources */,
 				29A4FE6326A9B3DB00F0FE30 /* HabitProgressView.swift in Sources */,
 				29066CFF24FFA20B00A266EE /* Date-Extensions.swift in Sources */,
 				299336F12E8BE37600ADB6BA /* Identifiable.swift in Sources */,
-				49DCB7AC1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift in Sources */,
 				29DC5AC920A1F6C100993400 /* QuestParticipantView.swift in Sources */,
 				2902796C2057F2C5006DACB9 /* Assets-Images.swift in Sources */,
 				299336F32E8C052400ADB6BA /* ChallengeFilterView.swift in Sources */,
@@ -3788,7 +3713,6 @@
 				2974BD91208DEFEA00EC1A25 /* CustomizationDetailCell.swift in Sources */,
 				49A37A8020C0EBFF008C28F5 /* SingleItemTableViewDataSource.swift in Sources */,
 				29A984D32547294E00F04665 /* RemoteLogger.swift in Sources */,
-				49DCB7BC1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift in Sources */,
 				D97ED0AE1E6DBB97006C2A26 /* JoinChallengeInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

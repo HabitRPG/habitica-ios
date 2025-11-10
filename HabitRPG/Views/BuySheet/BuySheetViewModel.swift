@@ -53,15 +53,23 @@ class BuySheetViewModel: ObservableObject {
         return item.key != "armoire" && item.key != "potion"
     }
     
-    var canAfford: Bool {
+    var canAffordDisplay: Bool {
         if itemCurrency == .hourglass || itemCurrency == .gem {
             return true
         }
-        return item.value <= Float(userCurrencyOwned)
+        return totalValue <= Float(userCurrencyOwned)
+    }
+    
+    var canAfford: Bool {
+        return totalValue <= Float(userCurrencyOwned)
     }
     
     var isLocked: Bool {
         return item.locked == true
+    }
+    
+    var canBuyDisplay: Bool {
+        return canAffordDisplay && !isLocked
     }
     
     var canBuy: Bool {
