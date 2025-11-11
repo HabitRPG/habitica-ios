@@ -32,6 +32,8 @@ public enum L10n {
   }
   /// Add
   public static var add: String { return L10n.tr("Mainstrings", "add") }
+  /// Add Tag
+  public static var addTag: String { return L10n.tr("Mainstrings", "add_tag") }
   /// Complete these onboarding tasks and you’ll earn 5 Achievements and 100 Gold once you’re done!
   public static var adventureGuideDescription: String { return L10n.tr("Mainstrings", "adventure_guide_description") }
   /// I agree to follow the guidelines
@@ -354,6 +356,8 @@ public enum L10n {
   public static var editChallengeTasks: String { return L10n.tr("Mainstrings", "edit_challenge_tasks") }
   /// Edit Tag
   public static var editTag: String { return L10n.tr("Mainstrings", "edit_tag") }
+  /// Edit Tags
+  public static var editTags: String { return L10n.tr("Mainstrings", "edit_tags") }
   /// Egg
   public static var egg: String { return L10n.tr("Mainstrings", "egg") }
   /// Eggs

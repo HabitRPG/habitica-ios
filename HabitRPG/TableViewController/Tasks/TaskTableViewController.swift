@@ -226,7 +226,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     @IBAction func unwindFilterChanged(segue: UIStoryboardSegue?) {
         if let tagVC = segue?.source as? FilterViewController {
             if let tabVC = tabBarController as? MainTabBarController {
-                tabVC.selectedTags = tagVC.selectedTags
+                tabVC.selectedTags = tagVC.viewModel.selectedTags
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "taskFilterChanged"), object: nil)
             }
         }
@@ -428,8 +428,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
             if let tabVC = tabBarController as? MainTabBarController,
                 let navVC = segue.destination as? UINavigationController,
                 let filterVC = navVC.topViewController as? FilterViewController {
-                filterVC.selectedTags = tabVC.selectedTags
-                filterVC.taskType = typeName
+                filterVC.viewModel.selectedTags = tabVC.selectedTags
+                filterVC.viewModel.taskType = typeName ?? ""
             }
         }
     }

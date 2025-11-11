@@ -48,23 +48,18 @@ struct HabiticaButtonUI<Label: View>: View {
     var body: some View {
         Button(action: onTap, label: {
                 label.underline(UIAccessibility.buttonShapesEnabled, color: getForegroundColor())
+                .foregroundColor(getForegroundColor())
+                .scaledFont(size: 17, weight: .semibold)
+                .padding(.vertical, 6)
+                .frame(minHeight: size.height)
+                .frame(maxWidth: .infinity)
         }).buttonStyle { configuration in
             if #available(iOS 26.0, *) {
                 configuration.label
-                    .foregroundColor(getForegroundColor())
-                    .scaledFont(size: 17, weight: .semibold)
-                    .padding(.vertical, 6)
-                    .frame(minHeight: size.height)
-                    .frame(maxWidth: .infinity)
                     .glassEffect(
                         color != .clear ? .regular.interactive().tint(color.opacity(0.9)) : .regular.interactive())
             } else {
                 configuration.label
-                    .foregroundColor(getForegroundColor())
-                    .scaledFont(size: 17, weight: .semibold)
-                    .padding(.vertical, 6)
-                    .frame(minHeight: size.height)
-                    .frame(maxWidth: .infinity)
                     .background(type == .bordered ? Color.clear : color)
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(color, lineWidth: type == .bordered ? 3 : 0))
                     .cornerRadius(26)

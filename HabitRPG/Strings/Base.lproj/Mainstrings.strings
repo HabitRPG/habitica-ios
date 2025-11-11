@@ -1481,3 +1481,5 @@
 "standard_mounts" = "Standard Mounts";
 "none" = "None";
 "item_is_locked" = "Item is locked";
+"edit_tags" = "Edit Tags";
+"add_tag" = "Add Tag";

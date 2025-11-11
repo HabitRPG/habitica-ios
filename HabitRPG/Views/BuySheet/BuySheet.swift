@@ -47,11 +47,15 @@ struct BuyCurrencyView: View {
         
         if #available(iOS 26.0, *) {
             content
+                .contentTransition(.numericText(countsDown: true))
+                .animation(.default, value: value)
                 .glassEffect(.regular.tint(backgroundColor.opacity(0.3)))
         } else {
             content
-            .background(backgroundColor.opacity(0.3))
-            .cornerRadius(26)
+                .contentTransition(.numericText(countsDown: true))
+                .animation(.default, value: value)
+                .background(backgroundColor.opacity(0.3))
+                .cornerRadius(26)
         }
     }
 }
@@ -79,7 +83,9 @@ struct BulkPurchaseView: View {
     var body: some View {
         HStack {
             Button {
-                quantity -= 1
+                withAnimation {
+                    quantity -= 1
+                }
             } label: {
                 Image(systemName: "minus")
                     .scaledFont(size: 22, weight: .semibold)
@@ -89,15 +95,18 @@ struct BulkPurchaseView: View {
                     Image(uiImage: HabiticaIcons.imageOfGem)
                 }
                 Text("\(quantity)")
+                    .contentTransition(.numericText())
                     .scaledFont(size: 22, weight: .bold)
                     .foregroundStyle(Color(canPurchase ? ThemeService.shared.theme.primaryTextColor : ThemeService.shared.theme.ternaryTextColor))
             }
                 .padding(.vertical, 11)
                 .padding(.horizontal, 31)
-                .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                .background(Color(ThemeService.shared.theme.windowBackgroundColor))
                 .cornerRadius(50)
             Button {
-                quantity += 1
+                withAnimation {
+                    quantity += 1
+                }
             } label: {
                 Image(systemName: "plus")
                     .scaledFont(size: 22, weight: .semibold)
@@ -243,6 +252,7 @@ struct BuySheet: View, Dismissable {
                     Text(L10n.buy.localizedCapitalized)
                     Image(uiImage: viewModel.itemCurrency.getImage()).padding(.leading, 3)
                     Text("\(viewModel.totalValue.formatted(.number))")
+                        .contentTransition(.numericText())
                 }.foregroundStyle(canBuy ? .white : Color(ThemeService.shared.theme.quadTextColor)),
                                  color: Color(canBuy ? ThemeService.shared.theme.fixedTintColor : ThemeService.shared.theme.offsetBackgroundColor)) {
                     viewModel.buyPressed()
