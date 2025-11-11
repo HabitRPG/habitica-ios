@@ -653,21 +653,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="873"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WwC-SX-HDy">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WwC-SX-HDy">
                                 <rect key="frame" x="0.0" y="0.0" width="430" height="839"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXX-FU-yYI">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXX-FU-yYI">
                                         <rect key="frame" x="8" y="67" width="0.0" height="0.0"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.3075395823" green="0.2903449535" blue="0.34151983260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3ow-rh-Fzj">
-                                        <rect key="frame" x="246" y="67" width="121" height="29"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="28" id="VYZ-LX-zFo"/>
-                                            <constraint firstAttribute="width" constant="121" id="kG4-Jo-9wd"/>
-                                        </constraints>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3ow-rh-Fzj">
+                                        <rect key="frame" x="246" y="67" width="64" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title=""/>
                                             <segment title=""/>
@@ -676,8 +675,9 @@
                                             <action selector="bodySizeChanged:" destination="o49-Mt-AdO" eventType="valueChanged" id="xXr-fr-lBn"/>
                                         </connections>
                                     </segmentedControl>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eEO-JP-9TP">
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eEO-JP-9TP">
                                         <rect key="frame" x="8" y="53" width="359" height="250"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wrE-l6-peu" customClass="AvatarOverviewItemView" customModule="Habitica" customModuleProvider="target">
                                                 <rect key="frame" x="139" y="68" width="80" height="113"/>
@@ -748,24 +748,9 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="3ow-rh-Fzj" firstAttribute="leading" secondItem="WwC-SX-HDy" secondAttribute="leading" constant="246" id="BfC-zz-UFl"/>
-                                    <constraint firstItem="3ow-rh-Fzj" firstAttribute="top" secondItem="fXX-FU-yYI" secondAttribute="top" id="DL4-bO-gYh"/>
-                                    <constraint firstItem="eEO-JP-9TP" firstAttribute="top" secondItem="3ow-rh-Fzj" secondAttribute="bottom" constant="17" id="I3o-Dh-Lpt"/>
-                                    <constraint firstItem="3ow-rh-Fzj" firstAttribute="top" secondItem="WwC-SX-HDy" secondAttribute="topMargin" id="MPI-le-tWO"/>
-                                    <constraint firstAttribute="bottom" secondItem="3ow-rh-Fzj" secondAttribute="bottom" constant="410" id="YeO-ec-dbN"/>
-                                    <constraint firstItem="3ow-rh-Fzj" firstAttribute="trailing" secondItem="WwC-SX-HDy" secondAttribute="trailingMargin" id="ox3-FJ-pjz"/>
-                                    <constraint firstItem="3ow-rh-Fzj" firstAttribute="trailing" secondItem="eEO-JP-9TP" secondAttribute="trailing" id="ycc-vT-hO0"/>
-                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="WwC-SX-HDy" secondAttribute="trailing" id="1Ij-QP-9Jf"/>
-                            <constraint firstItem="3Tg-SP-0y0" firstAttribute="top" secondItem="WwC-SX-HDy" secondAttribute="bottom" id="4V7-wc-NrT"/>
-                            <constraint firstItem="WwC-SX-HDy" firstAttribute="leading" secondItem="a2y-7e-Ejm" secondAttribute="leading" id="ZZk-7s-C7v"/>
-                            <constraint firstItem="WwC-SX-HDy" firstAttribute="top" secondItem="Y0d-VG-Fv7" secondAttribute="bottom" id="qIj-1e-RwG"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ezA-f6-dxw"/>
                     <connections>

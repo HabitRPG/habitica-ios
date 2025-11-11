@@ -221,7 +221,7 @@ struct BuySheet: View, Dismissable {
             }
             if let date = viewModel.item.availableUntil() {
                 BuyBanner(color: (isDarkTheme ? Color.purple500 : .purple100).opacity(0.4), content: Text(L10n.Inventory.availableFor(date.getShortRemainingString()))
-                    .foregroundStyle(ThemeService.shared.theme.isDark ? Color.purple600 : Color.purple100))
+                    .foregroundStyle(ThemeService.shared.theme.isDark ? Color.purple600 : Color.purple400))
             }
             if viewModel.item.locked {
                 BuyBanner(color: Color(ThemeService.shared.theme.offsetBackgroundColor),
@@ -260,7 +260,7 @@ struct BuySheet: View, Dismissable {
                     .transition(.opacity)
             }
         }.padding(.bottom, 20)
-            .padding(.top, 16)
+            .padding(.top, 8)
     }
     
     var body: some View {
