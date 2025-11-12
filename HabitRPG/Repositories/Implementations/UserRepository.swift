@@ -297,15 +297,19 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return call.objectSignal
             .filter({ (response) -> Bool in
                 return response != nil
-            }).on(value: {[weak self]user in
-            self?.getUser().take(first: 1).on(value: { user in
-                self?.localRepository.updateCall { _ in
-                    if let local = user.authentication?.local {
-                        local.username = newUsername
-                        user.flags?.verifiedUsername = true
-                    }
+            })
+            .flatMap(.latest, {[weak self] _ in
+                return self?.retrieveUser(forced: true) ?? Signal.empty
+            })
+            .flatMap(.latest, {[weak self] (_) in
+                return self?.getUser().take(first: 1) ?? SignalProducer.empty
+        }).on(value: {[weak self]user in
+            self?.localRepository.updateCall { _ in
+                if let local = user.authentication?.local {
+                    local.username = newUsername
+                    user.flags?.verifiedUsername = true
                 }
-            }).start()
+            }
         })
     }
     

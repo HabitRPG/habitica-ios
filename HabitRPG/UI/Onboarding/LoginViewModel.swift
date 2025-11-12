@@ -164,7 +164,7 @@ class LoginViewModel: ObservableObject {
     }
 
     func onSuccessfulLogin(_ isNewUser: Bool) {
-        userRepository.retrieveUser()
+        userRepository.retrieveUser(forced: true)
             .combineLatest(with: userRepository.retrieveGroupPlans())
             .observeCompleted {[weak self] in
                 self?.viewController?.showNextViewController(segueName: isNewUser ? "SetupSegue" : "MainSegue")
