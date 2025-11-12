@@ -1663,3 +1663,13 @@
 "api_token_reset_desc" = "Você pode alterar sua senha para redefini-la. Após redefini-la, você precisará fazer login novamente em todos os outros dispositivos em que usa o Habitica e fornecer o novo Token de API para ferramentas de terceiros que você possa usar.";
 "copy_token" = "Copiar Token";
 "settings.change_class_title" = "Mudar a classe por 3 gemas?";
+"task_reminder" = "Lembrete de tarefa";
+"mount" = "Montaria";
+"logins" = "Acessos";
+"stats" = "Atributos";
+"participating" = "Participando";
+"not_participating" = "Não participando";
+"joined_x" = "Ingressou %s";
+"stable.pets_and_mounts" = "Mascotes e Montarias";
+"pet" = "Mascote";
+"chat_with_question" = "Com quem gostaria de conversar?";
