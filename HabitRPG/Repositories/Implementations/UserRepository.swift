@@ -303,9 +303,12 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             .filter({ (response) -> Bool in
                 return response != nil
             })
-            .flatMap(.concat, {[weak self] (_) in
+            .flatMap(.latest, {[weak self] _ in
+                return self?.retrieveUser(forced: true) ?? Signal.empty
+            })
+            .flatMap(.latest, {[weak self] (_) in
             return self?.getUser().take(first: 1) ?? SignalProducer.empty
-        }).on(value: {[weak self]user in
+        }).on(value: {[weak self] user in
             self?.localRepository.updateCall { _ in
                 if let local = user.authentication?.local {
                     local.username = newUsername
