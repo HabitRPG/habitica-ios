@@ -230,11 +230,16 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     
     func login(userID: String, network: String, accessToken: String, allowRegister: Bool) -> Signal<LoginResponseProtocol?, Never> {
         let call = SocialLoginCall(userID: userID, network: network, accessToken: accessToken, allowRegister: allowRegister)
-            return call.objectSignal.merge(with: call.responseSignal.map({ _ -> LoginResponseProtocol? in
+            return call.objectSignal.merge(with: call.httpResponseSignal.map({ response -> LoginResponseProtocol? in
+                if response.statusCode == 200 {
+                    return nil
+                }
                 let response = APILoginResponse()
                 response.newUser = true
                 return response
-        })).on(value: { loginResponse in
+            }).filter({ response in
+                return response != nil
+            })).on(value: { loginResponse in
             self.updateAuth(response: loginResponse)
         })
     }
