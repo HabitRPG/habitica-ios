@@ -149,7 +149,7 @@
 /* (No Comment) */
 "mana" = "マナ";
 /* (No Comment) */
-"member.last_logged_in" = "最終ログイン日";
+"member.last_logged_in" = "最終ログイン";
 /* (No Comment) */
 "member.member_since" = "メンバー登録日";
 /* (No Comment) */
@@ -1627,3 +1627,17 @@
 "stats" = "ステータス";
 "privacy_preferences_full_description" = "あなたのプライバシーは私たちにとって重要です。Habiticaでは、パフォーマンスの分析、サポートリクエストへの対応、そして最高のゲーム体験を提供するために、あなたのデバイスからのデータを利用します。そのために、以下の権限をリクエストする必要があります。\n\nこれらの設定は、アカウント設定からいつでも変更できます。";
 "performance_analytics_description" = "これは、ユーザー体験、パフォーマンス、そして Habitica のサービスを改善するために使用されます。また、サポートチームがリクエストやバグ報告に対応する際にも利用されます。";
+"pet" = "ペット";
+"mount" = "乗騎";
+"logins" = "ログイン回数";
+"joined_x" = "%sに参加";
+"stable.pets_and_mounts" = "動物小屋";
+"challenges_won" = "優勝したチャレンジ";
+"standard_pets" = "基本のペット";
+"mounts_found" = "見つけた乗騎";
+"standard_mounts" = "基本の乗騎";
+"none" = "なし";
+"edit_tags" = "タグを編集";
+"pets_found" = "見つけたペット";
+"item_is_locked" = "このアイテムはロックされています";
+"add_tag" = "タグを追加";
