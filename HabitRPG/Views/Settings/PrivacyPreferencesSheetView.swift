@@ -37,7 +37,7 @@ struct PrivacyToggleContainer: View {
         }
         .padding(16)
         .background(backgroundColor)
-        .cornerRadius(16)
+        .cornerRadius(UIConstants.largeCornerRadius)
     }
 }
 
@@ -86,7 +86,6 @@ struct PrivacyPreferencesSheetView: View, Dismissable {
         }
         .padding(.top, 24)
         .padding(.horizontal, 12)
-        .cornerRadius(16)
         .onAppear {
             userRepository.getUser().on(value: { user in
                 analyticsConsent = user.preferences?.analyticsConsent ?? false

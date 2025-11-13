@@ -16,7 +16,7 @@ struct AchievementSheet: View {
             AchievementIconView(achievement: achievement)
                 .frame(width: 72, height: 72)
                 .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                .cornerRadius(13)
+                .cornerRadius(UIConstants.mediumCornerRadius)
             Text(achievement.text ?? "").scaledFont(size: 17)
         }, topPadding: 32)
     }

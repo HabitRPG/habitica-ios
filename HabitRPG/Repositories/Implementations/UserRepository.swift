@@ -291,7 +291,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
-    func updateUsername(newUsername: String, password: String? = nil) -> Signal<EmptyResponseProtocol?, Never> {
+    func updateUsername(newUsername: String, password: String? = nil) -> Signal<UserProtocol, ReactiveSwiftRealmError> {
         let call = UpdateUsernameCall(username: newUsername, password: password)
         
         return call.objectSignal

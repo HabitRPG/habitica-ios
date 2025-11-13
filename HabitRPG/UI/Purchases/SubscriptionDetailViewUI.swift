@@ -20,7 +20,7 @@ private struct DetailContainer<Content: View>: View {
             .padding(.vertical, verticalPadding)
             .frame(maxWidth: .infinity)
             .background(Color.purple200)
-            .cornerRadius(26)
+            .cornerRadius(UIConstants.largeCornerRadius)
     }
 }
 
@@ -35,7 +35,7 @@ private struct StatusPill: View {
             .padding(.horizontal, 12)
             .padding(.vertical, 3)
             .background(background)
-            .cornerRadius(20)
+            .clipShape(.capsule)
             .foregroundColor(textColor)
     }
 }
@@ -192,7 +192,7 @@ struct SubscriptionDetailViewUI: View {
                     .padding(.vertical, 11)
                     .padding(.horizontal, 15)
                     .overlay {
-                        RoundedRectangle(cornerRadius: 13)
+                        RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius)
                             .stroke(lineWidth: 3)
                             .foregroundColor(.green100)
                     }

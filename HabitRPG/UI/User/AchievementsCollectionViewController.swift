@@ -132,7 +132,7 @@ private struct AchievementHeaderView: View {
                 .padding(.horizontal, 6)
                 .padding(.vertical, 2)
                 .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-                .cornerRadius(26)
+                .cornerRadius(UIConstants.largeCornerRadius)
         }
         .scaledFont(size: 15, weight: .semibold)
         .foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
@@ -166,7 +166,7 @@ private struct ListItem: View {
         .frame(maxWidth: .infinity)
             .padding(20)
             .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-            .cornerRadius(26)
+            .cornerRadius(UIConstants.largeCornerRadius)
             .padding(.horizontal, 16)
     }
 }
@@ -219,7 +219,7 @@ struct AchievementGridItem: View {
             .padding(.horizontal, 12)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-            .cornerRadius(26)
+            .cornerRadius(UIConstants.largeCornerRadius)
     }
 }
 

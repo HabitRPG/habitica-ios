@@ -231,15 +231,14 @@ class LoginViewModel: ObservableObject {
         }
         if socialLoginMethod != nil {
             responseSignal = responseSignal.flatMap(.latest, { response in
-                if response?.id?.isEmpty != false {
-                    return Signal<LoginResponseProtocol?, Never>.empty
-                }
                 return self.userRepository.updateUsername(newUsername: self.username)
                     .flatMap(.latest, { _ in
                         self.userRepository.updateUser(key: "profile.name", value: self.username)
                     })
                     .map { _ in
                         return response
+                    }.flatMapError { _ in
+                        return SignalProducer.empty
                     }
             })
         }

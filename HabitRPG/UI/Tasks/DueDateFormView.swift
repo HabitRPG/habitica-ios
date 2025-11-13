@@ -22,7 +22,7 @@ struct DueDateFormView: View {
                     }
                 }, label: {
                     Text(L10n.Tasks.Form.clear).font(.system(size: 15, weight: .semibold)).foregroundColor(.accentColor)
-                }).frame(maxWidth: .infinity).frame(height: 48).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(26))
+                }).frame(maxWidth: .infinity).frame(height: 48).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
             }
         }
     }

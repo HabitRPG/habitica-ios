@@ -254,18 +254,18 @@ struct HabitProgressView: View {
             }
             .padding(.vertical, 16)
             .frame(height: 180)
-            .background(Color(theme.windowBackgroundColor)).cornerRadius(8)
+            .background(Color(theme.windowBackgroundColor)).cornerRadius(UIConstants.mediumCornerRadius)
             HStack(spacing: 16) {
                 VStack(spacing: 8) {
                     Text(String(timesScored())).font(.system(size: 28)).foregroundColor(Color(theme.primaryTextColor))
                     Text(L10n.Tasks.Form.timesScored).font(.system(size: 15)).foregroundColor(Color(theme.ternaryTextColor))
                 }.frame(height: 88).frame(maxWidth: .infinity)
-                .background(Color(theme.windowBackgroundColor)).cornerRadius(8)
+                .background(Color(theme.windowBackgroundColor)).cornerRadius(UIConstants.mediumCornerRadius)
                 VStack(spacing: 8) {
                     Text(lastScoring()).font(.system(size: 28)).foregroundColor(Color(theme.primaryTextColor))
                     Text(L10n.Tasks.Form.lastScored).font(.system(size: 15)).foregroundColor(Color(theme.ternaryTextColor))
                 }.frame(height: 88).frame(maxWidth: .infinity)
-                .background(Color(theme.windowBackgroundColor)).cornerRadius(8)
+                .background(Color(theme.windowBackgroundColor)).cornerRadius(UIConstants.mediumCornerRadius)
             }
         }
         .onTapGesture {

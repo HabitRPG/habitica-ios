@@ -55,7 +55,7 @@ struct BuyCurrencyView: View {
                 .contentTransition(.numericText(countsDown: true))
                 .animation(.default, value: value)
                 .background(backgroundColor.opacity(0.3))
-                .cornerRadius(26)
+                .cornerRadius(UIConstants.largeCornerRadius)
         }
     }
 }
@@ -102,7 +102,7 @@ struct BulkPurchaseView: View {
                 .padding(.vertical, 11)
                 .padding(.horizontal, 31)
                 .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-                .cornerRadius(50)
+                .clipShape(.capsule)
             Button {
                 withAnimation {
                     quantity += 1

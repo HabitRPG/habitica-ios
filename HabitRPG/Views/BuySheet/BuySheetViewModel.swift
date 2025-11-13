@@ -9,6 +9,7 @@ import SwiftUI
 import Habitica_Models
 import ReactiveSwift
 import Habitica_Database
+import SwiftUIX
 
 class BuySheetViewModel: ObservableObject {
     private let userRepository = UserRepository()
@@ -371,11 +372,22 @@ class BuySheetViewModel: ObservableObject {
     }
     
     static func prepareInsufficientModal(title: String, message: String?, image: UIImage) -> HabiticaAlertController {
-        let alert = HabiticaAlertController(title: title, message: message)
-        let imageView = UIImageView(image: image)
-        imageView.contentMode = .center
-        alert.contentView = imageView
+        let alert = HabiticaAlertController()
+        alert.contentView = UIHostingView(rootView: VStack {
+            Image(Asset.bigGem.name)
+                .frame(width: 70, height: 70)
+                .background(Color.purple200)
+                .cornerRadius(35)
+            Text(L10n.moreGemsMessage)
+        }.foregroundStyle(.white)
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 32)
+            .background()
+        )
         alert.containerViewSpacing = 20
+        alert.topOffset = 0
+        alert.contentViewInsets = .zero
         alert.arrangeMessageLast = true
         alert.messageFont = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
         return alert

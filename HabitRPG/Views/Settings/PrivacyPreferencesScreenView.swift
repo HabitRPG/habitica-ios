@@ -44,34 +44,18 @@ struct PrivacyPreferencesScreenView: View, Dismissable {
                                        backgroundColor: .purple50,
                                        isOn: .constant(true),
                                        disabled: true)
-                Button {
+                HabiticaButtonUI(label: Text(L10n.savePreferences), color: .purple400) {
                     userRepository.updateUser(key: "preferences.analyticsConsent", value: analyticsConsent).observeCompleted {
                         dismisser.dismiss()
                     }
-                } label: {
-                    Text(L10n.savePreferences)
-                        .scaledFont(size: 16, weight: .bold)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
                 }
-                .height(60)
-                .background(.purple400)
-                .cornerRadius(16)
                 .padding(.top, 13)
-                Button {
+                HabiticaButtonUI(label: Text(L10n.acceptAll).foregroundColor(.gray50), color: .purple400) {
                     analyticsConsent = true
                     userRepository.updateUser(key: "preferences.analyticsConsent", value: analyticsConsent).observeCompleted {
                         dismisser.dismiss()
                     }
-                } label: {
-                    Text(L10n.acceptAll)
-                        .scaledFont(size: 16, weight: .bold)
-                        .foregroundColor(.gray50)
-                        .frame(maxWidth: .infinity)
                 }
-                .height(60)
-                .background(.white)
-                .cornerRadius(16)
                 .padding(.top, 8)
                 if let url = URL(string: "https://habitica.com/static/privacy") {
                     Link("Habitica's Privacy Policy", destination: url)

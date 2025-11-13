@@ -35,9 +35,9 @@ struct StatsAllocationRow<Title: View>: View {
                     .foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
             }.frame(width: 64, height: 48)
                 .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-                .cornerRadius(13)
+                .cornerRadius(UIConstants.mediumCornerRadius)
                 .overlay {
-                    RoundedRectangle(cornerRadius: 13)
+                    RoundedRectangle(cornerRadius: UIConstants.mediumCornerRadius)
                         .stroke(Color(ThemeService.shared.theme.offsetBackgroundColor))
                 }
                 .padding(.leading, 13)

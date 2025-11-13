@@ -26,7 +26,7 @@ private struct QuestGoalViewUI: View {
                             .frame(width: 20, height: 20)
                     }.padding(4)
                         .background(Color.red500)
-                        .cornerRadius(26)
+                        .cornerRadius(UIConstants.largeCornerRadius)
                 }
                 .padding(.vertical, 11)
                 .padding(.leading, 25)
@@ -49,7 +49,7 @@ private struct QuestGoalViewUI: View {
                         .font(.system(size: 15, weight: .semibold))
                         .padding(4)
                     .background(Color.red500)
-                    .cornerRadius(26)
+                    .cornerRadius(UIConstants.largeCornerRadius)
                 }
                 .padding(.vertical, 11)
                 .padding(.leading, 25)
@@ -66,7 +66,7 @@ private struct QuestGoalViewUI: View {
                     .padding(.horizontal, 11)
                     .padding(.vertical, 6)
                     .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                        .cornerRadius(26)
+                        .cornerRadius(UIConstants.largeCornerRadius)
             }
             .padding(.vertical, 11)
             .padding(.leading, 25)
@@ -74,7 +74,7 @@ private struct QuestGoalViewUI: View {
         }
         .font(.system(size: 17, weight: .semibold))
         .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-        .cornerRadius(26)
+        .cornerRadius(UIConstants.largeCornerRadius)
         .padding(.vertical, 15)
     }
 }
@@ -88,7 +88,7 @@ struct QuestReward<Icon: View, Label: View>: View {
             icon
                 .frame(width: 68, height: 68)
                 .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                .cornerRadius(14)
+                .cornerRadius(UIConstants.mediumCornerRadius)
             label
                 .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
                 .scaledFont(size: 15, weight: .semibold)

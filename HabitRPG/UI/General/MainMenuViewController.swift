@@ -395,16 +395,6 @@ class MainMenuViewController: BaseTableViewController {
         disposable.inner.add(contentRepository.getWorldState()
                                 .combineLatest(with: inventoryRepository.getCurrentTimeLimitedItems())
                                 .on(value: {[weak self] (worldState, items) in
-                                    if let event = self?.configRepository.getBirthdayEvent(), (event.end?.timeIntervalSince1970 ?? 0) > Date().timeIntervalSince1970 {
-                                        let width: CGFloat = (self?.view.bounds.width ?? 300) - 40
-                                        let view = UIHostingView(rootView: BirthdayBannerview(width: width, endDate: event.end).onTapGesture {
-                                            self?.present(BirthdayViewController(), animated: true)
-                                        })
-                                        let container = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 110))
-                                        container.addSubview(view)
-                                        view.frame = CGRect(x: 20, y: 10, width: width, height: 110)
-                                        self?.tableView.tableHeaderView = container
-                                    }
             self?.seasonalShopTimer?.invalidate()
                                     self?.updateSeasonalEntries(worldState: worldState, items: items)
             self?.seasonalShopTimer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true, block: {[weak self] _ in

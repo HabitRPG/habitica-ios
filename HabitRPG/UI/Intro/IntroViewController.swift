@@ -118,7 +118,7 @@ ZStack(alignment: .bottom) {
                     button
                         .background(Color.black.opacity(0.3))
                         .foregroundColor(.white)
-                        .cornerRadius(8)
+                        .cornerRadius(UIConstants.largeCornerRadius)
                 }
             }
             .padding(.bottom, geometry.safeAreaInsets.bottom + 12)

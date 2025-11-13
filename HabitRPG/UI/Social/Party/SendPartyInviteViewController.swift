@@ -92,7 +92,7 @@ struct InviteView: View {
                 Image(systemName: .xmark).frame(width: 14, height: 14).foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
             }).frame(width: 30, height: 48)
             FocusableTextField(placeholder: "Username or email address", text: $text, isFirstResponder: $isFirstResponder).frame(height: 48)
-        }.background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
+        }.background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(UIConstants.mediumCornerRadius))
         .transition(.opacity)
     }
 }
@@ -109,7 +109,7 @@ struct SendPartyInviteView: View {
                     .font(.body)
             }
             .frame(maxWidth: .infinity, alignment: .leading).frame(height: 48)
-            .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8)).onTapGesture {
+            .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(UIConstants.mediumCornerRadius)).onTapGesture {
                 viewModel.invites.append("")
                 focusIndex = viewModel.invites.count - 1
             }

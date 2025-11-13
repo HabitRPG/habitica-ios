@@ -38,7 +38,7 @@ private struct ProfileContainer: ViewModifier {
             .frame(maxWidth: .infinity)
             .padding(spacing)
             .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-            .cornerRadius(26)
+            .cornerRadius(UIConstants.largeCornerRadius)
     }
 }
 
@@ -118,7 +118,7 @@ private struct GearGridItem<Label: View>: View {
                 }
             }.frame(width: 68, height: 58)
                 .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                .cornerRadius(13)
+                .cornerRadius(UIConstants.mediumCornerRadius)
             label
                 .scaledFont(size: 12)
         }
@@ -197,7 +197,7 @@ struct StatsViewUI: View {
             }.padding(.vertical, 16)
                 .foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor))
         }.background(Color(ThemeService.shared.theme.windowBackgroundColor))
-            .cornerRadius(26)
+            .cornerRadius(UIConstants.largeCornerRadius)
     }
 }
 
@@ -242,22 +242,22 @@ struct ProfilePage: View {
             Image(uiImage: HabiticaIcons.imageOfWarriorDarkBg)
                 .frame(width: 32, height: 32)
                 .background(.red500)
-                .cornerRadius(16)
+                .clipShape(.circle)
         } else if className == "healer" {
             Image(uiImage: HabiticaIcons.imageOfHealerDarkBg)
                 .frame(width: 32, height: 32)
                 .background(.yellow500)
-                .cornerRadius(16)
+                .clipShape(.circle)
         } else if className == "wizard" {
             Image(uiImage: HabiticaIcons.imageOfMageDarkBg)
                 .frame(width: 32, height: 32)
                 .background(.blue500)
-                .cornerRadius(16)
+                .clipShape(.circle)
         } else if className == "rogue" {
             Image(uiImage: HabiticaIcons.imageOfRogueDarkBg)
                 .frame(width: 32, height: 32)
                 .background(.purple500)
-                .cornerRadius(16)
+                .clipShape(.circle)
         }
     }
     
@@ -271,7 +271,7 @@ struct ProfilePage: View {
                                 .frame(width: 141, height: 147)
                         }
                         .frame(width: 135, height: 141)
-                        .cornerRadius(26)
+                        .cornerRadius(UIConstants.largeCornerRadius)
                         VStack(alignment: .leading, spacing: 7) {
                             HStack(spacing: 10) {
                                 if member.hasHabiticaClass {
@@ -390,7 +390,7 @@ struct ProfilePage: View {
                             MountView(mount: mount).padding(.top, 30)
                         }
                     }, animateFlying: false)
-                    .cornerRadius(13)
+                    .cornerRadius(UIConstants.mediumCornerRadius)
                     .profileContainer(spacing: 26)
                     
                     HStack(spacing: 12) {
@@ -484,7 +484,7 @@ struct ProfilePage: View {
                                 .frame(height: 94)
                                 .frame(maxWidth: .infinity)
                                 .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-                                .cornerRadius(26)
+                                .cornerRadius(UIConstants.largeCornerRadius)
                                 .onTapGesture {
                                     if let action = viewModel.onAchievementDetail {
                                         action(achievement)

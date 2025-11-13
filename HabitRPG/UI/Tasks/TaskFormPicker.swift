@@ -26,13 +26,13 @@ struct TaskFormPicker: View {
                     }
                 }
                 if #available(iOS 26.0, *) {
-                    RoundedRectangle(cornerRadius: 26)
+                    RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius)
                         .glassEffect(.regular.tint(tintColor))
                         .frame(width: itemWidth - 4, height: 28)
                         .padding(.leading, (CGFloat(selectedIndex) * itemWidth) + 2)
                         .animation(.spring(), value: selection)
                 } else {
-                    RoundedRectangle(cornerRadius: 7).foregroundColor(tintColor)
+                    RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius).foregroundColor(tintColor)
                         .shadow(color: .black.opacity(0.12), radius: 8, x: 0, y: 3)
                         .shadow(color: .black.opacity(0.04), radius: 1, x: 0, y: 1)
                         .frame(width: itemWidth - 8, height: 28)

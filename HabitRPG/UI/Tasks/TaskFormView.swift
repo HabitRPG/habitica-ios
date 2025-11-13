@@ -17,7 +17,7 @@ struct TaskFormSection<Header: View, Content: View>: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             header.font(.system(size: 13, weight: .semibold)).foregroundColor(Color(ThemeService.shared.theme.quadTextColor)).padding(.leading, 14)
-            content.frame(maxWidth: .infinity).background(backgroundColor.cornerRadius(26))
+            content.frame(maxWidth: .infinity).background(backgroundColor.cornerRadius(UIConstants.largeCornerRadius))
         }
     }
 }
@@ -124,7 +124,7 @@ struct TagList: View {
                         Image(Asset.checkmarkSmall.name).foregroundColor(.accentColor)
                     }
                 }
-                .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(8))
+                .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
                 .frame(height: 50).padding(.horizontal, 26)
                 .onTapGesture {
                     UISelectionFeedbackGenerator.oneShotSelectionChanged()
@@ -159,13 +159,13 @@ struct FormRow<TitleView: View, LabelView: View>: View {
                         .padding(.vertical, 6)
                         .padding(.horizontal, 11)
                         .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                        .cornerRadius(26)
+                        .cornerRadius(UIConstants.largeCornerRadius)
                 }.frame(height: 45).padding(.leading, 26).padding(.trailing, 12)
             }).buttonStyle { configuration in
                 if UIAccessibility.buttonShapesEnabled {
                     configuration.label
                         .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                        .cornerRadius(26).padding(4)
+                        .cornerRadius(UIConstants.largeCornerRadius).padding(4)
                 } else {
                     configuration.label
                 }
@@ -178,7 +178,7 @@ struct FormRow<TitleView: View, LabelView: View>: View {
                     .padding(.vertical, 6)
                     .padding(.horizontal, 11)
                     .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                    .cornerRadius(26)
+                    .cornerRadius(UIConstants.largeCornerRadius)
             }.frame(height: 45).padding(.leading, 26).padding(.trailing, 12)
         }
     }
@@ -204,7 +204,7 @@ struct FormSheetSelector<TYPE: Equatable & Hashable>: View {
             })
             .tint(Color(ThemeService.shared.theme.primaryTextColor))
             .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-            .cornerRadius(26, style: .continuous)
+            .cornerRadius(UIConstants.largeCornerRadius)
             .menuIndicator(.hidden)
         }.frame(height: 45).padding(.leading, 26).padding(.trailing, 12)
     }
@@ -315,7 +315,7 @@ struct DailySchedulingView: View {
         let option = Text(initial).font(.system(size: 15))
             .foregroundColor(isEnabled.wrappedValue ? .white : Color(ThemeService.shared.theme.dimmedTextColor))
             .frame(width: 32, height: 32)
-            .border(Color(ThemeService.shared.theme.dimmedColor), width: isEnabled.wrappedValue ? 0 : 1, cornerRadius: 26, antialiased: true)
+            .border(Color(ThemeService.shared.theme.dimmedColor), width: isEnabled.wrappedValue ? 0 : 1, cornerRadius: UIConstants.largeCornerRadius, antialiased: true)
             .background(Circle().fill(isEnabled.wrappedValue ? Color.accentColor : .clear))
             .animation(.easeInOut, value: isEnabled.wrappedValue)
             .frame(maxWidth: .infinity)
@@ -434,14 +434,14 @@ struct TaskFormReminderItemView: View {
                     if UIAccessibility.buttonShapesEnabled {
                         configuration.label
                             .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                            .cornerRadius(26).padding(4)
+                            .cornerRadius(UIConstants.largeCornerRadius).padding(4)
                     } else {
                         configuration.label.padding(4)
                     }
                 }
                 buildPicker(value: timeProxy)
             }.padding(.trailing, 8)
-        }.frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(26))
+        }.frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
         .transition(.opacity)
     }
 }
@@ -486,7 +486,7 @@ struct TaskFormReminderView: View {
                         .font(.system(size: 15, weight: .semibold))
                         .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
                         .frame(maxWidth: .infinity).frame(height: 48)
-                        .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(26))
+                        .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
                 }
             }
         }.animation(.easeInOut)
@@ -507,7 +507,7 @@ struct RewardAmountView: View {
                 if UIAccessibility.buttonShapesEnabled {
                     configuration.label
                         .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                        .cornerRadius(26)
+                        .cornerRadius(UIConstants.largeCornerRadius)
                 } else {
                     configuration.label
                 }
@@ -518,7 +518,7 @@ struct RewardAmountView: View {
             }.padding(.horizontal, 16).frame(width: 112, height: 50)
                 .background(Color(ThemeService.shared.theme.windowBackgroundColor))
             .border(Color(ThemeService.shared.theme.separatorColor), width: 1)
-            .cornerRadius(26)
+            .cornerRadius(UIConstants.largeCornerRadius)
             Button(action: {
                 let intValue = (Int(value) ?? 1) - 1
                 value = String(intValue)
@@ -528,7 +528,7 @@ struct RewardAmountView: View {
                 if UIAccessibility.buttonShapesEnabled {
                     configuration.label
                         .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                        .cornerRadius(26)
+                        .cornerRadius(UIConstants.largeCornerRadius)
                 } else {
                     configuration.label
                 }
@@ -695,7 +695,7 @@ struct DailyProgressView: View {
                     ForEach(0..<7) { offset in
                         dayItem(size: size, offset: 6 - offset)
                     }
-                }.padding(.horizontal, 10).padding(.vertical, 10).background(Color(theme.windowBackgroundColor).cornerRadius(26))
+                }.padding(.horizontal, 10).padding(.vertical, 10).background(Color(theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
                 .background(GeometryReader { _ -> Color in
                     DispatchQueue.main.async {
                         self.dayItemHeight = size
@@ -764,7 +764,7 @@ struct TaskFormView: View {
                 .padding(8)
                 .frame(minHeight: 40)
                 .background(viewModel.lightestTaskTintColor)
-                .cornerRadius(12)
+                .cornerRadius(UIConstants.mediumCornerRadius)
                 .disabled(!viewModel.isTaskEditable)
                 .opacity(viewModel.isTaskEditable ? 1.0 : 0.6)
             Text(L10n.notes).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingNotes ? .semibold : .regular)).padding(.leading, 8).padding(.top, 10)
@@ -775,7 +775,7 @@ struct TaskFormView: View {
                 .padding(8)
                 .frame(minHeight: 40)
                 .background(viewModel.lightestTaskTintColor)
-                .cornerRadius(12)
+                .cornerRadius(UIConstants.mediumCornerRadius)
         }.padding(.horizontal, 16)
         .padding(.vertical, 12)
         .preferredColorScheme(ThemeService.shared.theme.isDark ? .dark : .light)
@@ -800,7 +800,7 @@ struct TaskFormView: View {
             configuration.label
                 .foregroundColor(Color(ThemeService.shared.theme.errorColor))
                 .padding(.horizontal, 14)
-                .frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.errorColor.withAlphaComponent(0.14)).cornerRadius(26))
+                .frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.errorColor.withAlphaComponent(0.14)).cornerRadius(UIConstants.largeCornerRadius))
         }
     }
     
@@ -877,8 +877,8 @@ struct TaskFormView: View {
                                     .foregroundColor(Color(ThemeService.shared.theme.quadTextColor))
                                     .font(.caption)
                             }
-                        }.padding(16).background(Color(theme.contentBackgroundColor).edgesIgnoringSafeArea(.bottom)).cornerRadius(26)
-                    }.background(viewModel.backgroundTintColor.cornerRadius(26).edgesIgnoringSafeArea(.bottom))
+                        }.padding(16).background(Color(theme.contentBackgroundColor).edgesIgnoringSafeArea(.bottom)).cornerRadius(UIConstants.largeCornerRadius)
+                    }.background(viewModel.backgroundTintColor.cornerRadius(UIConstants.largeCornerRadius).edgesIgnoringSafeArea(.bottom))
                 }
             }
         }

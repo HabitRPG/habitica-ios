@@ -27,7 +27,7 @@ struct LoginScreenButtonStyle: ButtonStyle {
             .padding(.vertical, 6)
             .minHeight(60)
             .background(Color.white)
-            .cornerRadius(16)
+            .cornerRadius(UIConstants.largeCornerRadius)
     }
 }
 
@@ -66,7 +66,7 @@ struct LoginTextFieldStyle<Icon: View>: TextFieldStyle {
         } else {
             field
             .background(.purple100)
-            .cornerRadius(16)
+            .cornerRadius(UIConstants.largeCornerRadius)
             .overlay(
                 RoundedRectangle(cornerRadius: 16, style: .circular)
                     .stroke(Color.red100, lineWidth: showError ? 1:0)

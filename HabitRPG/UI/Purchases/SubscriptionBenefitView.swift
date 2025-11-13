@@ -23,7 +23,7 @@ struct SubscriptionBenefitView<Icon: View, Title: View, Description: View>: View
             icon
                 .frame(width: 72, height: 72)
                 .background(Color(UIColor.purple200))
-                .cornerRadius(13)
+                .cornerRadius(UIConstants.mediumCornerRadius)
             VStack(alignment: .leading, spacing: 4) {
                 title.font(.system(size: 15, weight: .semibold))
                 description.font(.system(size: 13)).lineSpacing(2)

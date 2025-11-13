@@ -44,23 +44,23 @@ private struct ArmoirePlus: View {
         VStack(alignment: .center, spacing: 0) {
             color
                 .frame(width: thickness, height: length)
-                .cornerRadius(thickness/2)
+                .clipShape(.capsule)
                 .offset(x: 0, y: isAnimating ? -maxSpacing : 0)
             HStack(spacing: 0) {
                 color
                     .frame(width: length, height: thickness)
-                    .cornerRadius(thickness/2)
+                    .clipShape(.capsule)
                     .offset(x: isAnimating ? -maxSpacing : 0, y: 0)
                 Spacer()
                     .frame(width: thickness)
                 color
                     .frame(width: length, height: thickness)
-                    .cornerRadius(thickness/2)
+                    .clipShape(.capsule)
                     .offset(x: isAnimating ? maxSpacing : 0, y: 0)
             }
             color
                 .frame(width: thickness, height: length)
-                .cornerRadius(thickness/2)
+                .clipShape(.capsule)
                 .offset(x: 0, y: isAnimating ? maxSpacing : 0)
         }
         .animation(.easeInOut(duration: Double.random(in: 3...4)).repeatForever(autoreverses: true), value: isAnimating)
@@ -236,7 +236,7 @@ struct ArmoireView: View {
             .background(Color(UIColor.yellow100).opacity(0.4))
             .opacity(viewModel.hideGold ? 0.0 : 1.0)
             .animation(.linear(duration: 0.1), value: viewModel.hideGold)
-            .cornerRadius(16)
+            .clipShape(.capsule)
             .padding(.top, 24 * paddingScaling)
             .padding(.bottom, 16 * paddingScaling)
             Spacer()
@@ -260,7 +260,7 @@ struct ArmoireView: View {
                         .offset(y: isBobbing ? 5 : -5)
                     .frame(width: 158, height: 158)
                     .background(Color(UIColor.gray700))
-                    .cornerRadius(79)
+                    .clipShape(.circle)
                 ArmoirePlus()
                     .offset(x: -70, y: -60)
                 ArmoirePlus()
@@ -335,8 +335,8 @@ struct ArmoireView: View {
                                 .frame(minHeight: 60)
                                 .frame(maxWidth: .infinity)
                                 .background(LinearGradient(colors: gradientColors, startPoint: .leading, endPoint: .trailing))
-                                .overlay(RoundedRectangle(cornerRadius: 8).stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
-                                .cornerRadius(8)
+                                .overlay(RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius).stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
+                                .cornerRadius(UIConstants.largeCornerRadius)
                         })
                         .frame(maxWidth: 600)
                         .padding(.horizontal, 24)
@@ -373,7 +373,7 @@ struct ArmoireView: View {
                     .frame(maxWidth: .infinity)
                     .edgesIgnoringSafeArea(.bottom)
                     .background(RotatingLinearGradient(colors: gradientColors, animationDuration: 20.0).edgesIgnoringSafeArea(.bottom))
-                    .cornerRadius([.topLeading, .topTrailing], 24)
+                    .cornerRadius([.topLeading, .topTrailing], UIConstants.largeCornerRadius)
                     .padding(.top, 8)
                 }
                 Text(L10n.Armoire.dropRate)

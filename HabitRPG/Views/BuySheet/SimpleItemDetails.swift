@@ -22,7 +22,7 @@ struct SimpleItemDetails: View {
                     .offset(y: isAnimating ? 0 : -10)
                     .animation(.easeInOut(duration: 0.3).delay(0.2), value: isAnimating)
                     .frame(width: 120, height: 120)
-                    .glassEffect(.regular.tint(Color(ThemeService.shared.theme.windowBackgroundColor).opacity(0.65)), in: RoundedRectangle(cornerRadius: 26))
+                    .glassEffect(.regular.tint(Color(ThemeService.shared.theme.windowBackgroundColor).opacity(0.65)), in: RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius))
                     .padding(.bottom, 9)
                     .onAppear {
                         isAnimating = true
@@ -30,7 +30,7 @@ struct SimpleItemDetails: View {
             } else {
                 PixelArtView(name: sprite).frame(width: 120, height: 120)
                     .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-                    .cornerRadius(26)
+                    .cornerRadius(UIConstants.largeCornerRadius)
                     .padding(.bottom, 9)
             }
         }

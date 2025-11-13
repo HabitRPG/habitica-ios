@@ -191,6 +191,9 @@ struct ToastView: View {
                         }
                 } else {
                     content
+                        .background(options.backgroundColor.getColor())
+                        .clipShape(.capsule)
+                        .padding(.bottom, 20)
                 }
         }
         .fixedSize(horizontal: false, vertical: true)

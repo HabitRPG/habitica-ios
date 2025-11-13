@@ -29,8 +29,9 @@ class HostingBottomSheetController<ContentView: View>: UIHostingController<Conte
                 self.dismiss(animated: true)
             }
         }
-        
-        view.backgroundColor = .clear
+        if #available(iOS 26.0, *) {
+            view.backgroundColor = .clear
+        }
     }
 
     @MainActor

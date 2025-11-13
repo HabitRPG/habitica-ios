@@ -53,7 +53,7 @@ private struct FilterSection<Label: View, Rows: View>: View {
         }
         .padding(.horizontal, 14)
         .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-            .cornerRadius(26)
+            .cornerRadius(UIConstants.largeCornerRadius)
     }
 }
 

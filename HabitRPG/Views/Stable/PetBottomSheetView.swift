@@ -68,7 +68,7 @@ struct PetBottomSheetView: View, Dismissable {
         BottomSheetView(dismisser: dismisser, title: Text(pet.text ?? ""), content: VStack(spacing: 16) {
             ZStack(alignment: .top) {
                 StableBackgroundView(content: PetView(pet: pet).padding(.top, 40), animateFlying: false)
-                    .clipShape(.rect(cornerRadius: 26))
+                    .clipShape(.rect(cornerRadius: UIConstants.largeCornerRadius))
                 if showFeedResponse, let message = feedMessage {
                     Text(message)
                         .font(.system(size: 12))
@@ -78,7 +78,7 @@ struct PetBottomSheetView: View, Dismissable {
                         .padding(.horizontal, 4)
                         .padding(.vertical, 3)
                         .background(Color(theme.contentBackgroundColor))
-                        .cornerRadius(8)
+                        .clipShape(.capsule)
                         .transition(.opacity)
                         .padding(.horizontal, 4)
                         .padding(.bottom, 8)
@@ -89,14 +89,14 @@ struct PetBottomSheetView: View, Dismissable {
                         .padding(.horizontal, 4)
                         .padding(.vertical, 3)
                         .background(Color(theme.contentBackgroundColor))
-                        .cornerRadius(8)
+                        .clipShape(.capsule)
                         .frame(width: 200)
                         .transition(.opacity)
                         .padding(.top, 6)
                         .zIndex(4)
                 }
             }
-            let buttonBackground = Color(theme.contentBackgroundColor)
+            let buttonBackground = Color(theme.windowBackgroundColor)
             if trained > 0 && pet.type != "special" && canRaise {
                 HStack(spacing: 16) {
                     Button(action: {
@@ -120,11 +120,11 @@ struct PetBottomSheetView: View, Dismissable {
                             .frame(height: 101)
                             .maxWidth(.infinity)
                         if #available(iOS 26.0, *) {
-                            conf.glassEffect(.regular.interactive().tint(buttonBackground), in: RoundedRectangle(cornerRadius: 26))
+                            conf.glassEffect(.regular.interactive().tint(buttonBackground), in: RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius))
                         } else {
                             conf
                                 .background(buttonBackground)
-                                .clipShape(.rect(cornerRadius: 26))
+                                .clipShape(.rect(cornerRadius: UIConstants.largeCornerRadius))
                         }
                     }
                     Button(action: {
@@ -139,11 +139,11 @@ struct PetBottomSheetView: View, Dismissable {
                             .frame(height: 101)
                             .maxWidth(.infinity)
                         if #available(iOS 26.0, *) {
-                            conf.glassEffect(.regular.interactive().tint(buttonBackground.opacity(0.95)), in: RoundedRectangle(cornerRadius: 26))
+                            conf.glassEffect(.regular.interactive().tint(buttonBackground.opacity(0.95)), in: RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius))
                         } else {
                             conf
                                 .background(buttonBackground)
-                                .clipShape(.rect(cornerRadius: 26))
+                                .clipShape(.rect(cornerRadius: UIConstants.largeCornerRadius))
                         }
                     }
                 }

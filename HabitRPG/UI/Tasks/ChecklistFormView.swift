@@ -46,7 +46,7 @@ struct TaskFormChecklistItemView: View {
                 if UIAccessibility.buttonShapesEnabled {
                     configuration.label
                         .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                        .cornerRadius(26)
+                        .cornerRadius(UIConstants.largeCornerRadius)
                         .padding(4)
                 } else {
                     configuration.label.padding(4)
@@ -55,8 +55,8 @@ struct TaskFormChecklistItemView: View {
             FocusableTextField(placeholder: "Enter your checklist line", text: textProxy, isFirstResponder: $isFirstResponder)
             Image(uiImage: Asset.grabIndicator.image).foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor))
                     .padding(.trailing, 13)
-        }.background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(26))
-            .contentShape([.dragPreview], RoundedRectangle(cornerRadius: 26))
+        }.background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
+            .contentShape([.dragPreview], RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius))
         .transition(.opacity)
     }
 }
@@ -78,7 +78,7 @@ struct TaskFormChecklistView: View {
                 .font(.system(size: 15, weight: .semibold))
                 .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
                 .frame(maxWidth: .infinity).frame(height: 48)
-                .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(26))
+                .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
         }
     }
     @State var draggedItem: ChecklistItemProtocol?

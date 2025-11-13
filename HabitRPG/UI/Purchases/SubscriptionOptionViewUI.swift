@@ -142,7 +142,7 @@ struct SubscriptionOptionViewUI<Price: View, Recurring: View, Tag: View>: View {
             }
         }
         .frame(height: showHourglassPromo ? 186 : 126)
-        .cornerRadius(26)
+        .cornerRadius(UIConstants.largeCornerRadius)
         .foregroundColor(isSelected ? selectedColor : Color.purple600)
         .padding(.vertical, 4)
         .onAppear {

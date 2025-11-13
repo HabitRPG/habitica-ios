@@ -12,6 +12,8 @@ import UIKit
 class HabiticaAlertController: UIViewController, Themeable {
     
     @IBOutlet weak var backgroundView: UIVisualEffectView!
+    @IBOutlet weak var topOffsetConstraint: NSLayoutConstraint!
+    @IBOutlet weak var textStackView: UIStackView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var buttonStackView: UIStackView!
@@ -95,6 +97,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     }
     
     var containerViewSpacing: CGFloat = 24
+    var topOffset: CGFloat = 20
         
     convenience init(attributedTitle newTitle: NSAttributedString?, message newMessage: String? = nil) {
         self.init()
@@ -138,8 +141,8 @@ class HabiticaAlertController: UIViewController, Themeable {
     
         KeyboardManager.addObservingView(view)
         if #available(iOS 26.0, *) {
-            let effect = UIGlassEffect(style: .regular)
-            effect.tintColor = ThemeService.shared.theme.contentBackgroundColor.withAlphaComponent(0.85)
+            let effect = UIGlassEffect(style: .clear)
+            effect.tintColor = ThemeService.shared.theme.contentBackgroundColor.withAlphaComponent(0.9)
             backgroundView.effect = effect
         }
     }
@@ -168,6 +171,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        topOffsetConstraint.constant = topOffset
         var maximumSize = view.frame.size
         let guide = view.safeAreaLayoutGuide
         maximumSize = guide.layoutFrame.size
@@ -302,6 +306,7 @@ class HabiticaAlertController: UIViewController, Themeable {
             } else {
                 titleLabel.attributedText = attributedTitle
             }
+            checkTextStackHidden()
         }
     }
     
@@ -316,7 +321,19 @@ class HabiticaAlertController: UIViewController, Themeable {
         } else {
             subtitleLabel.attributedText = attributedMessage
         }
+        checkTextStackHidden()
         subtitleLabel.textColor = messageColor ?? ThemeService.shared.theme.primaryTextColor
+    }
+    
+    private func checkTextStackHidden() {
+        if title?.isEmpty != false
+            && attributedTitle?.string.isEmpty != false
+            && message?.isEmpty != false
+            && attributedMessage?.string.isEmpty != false {
+            textStackView.isHidden = true
+        } else {
+            textStackView.isHidden = false
+        }
     }
     
     private func configureContentView() {

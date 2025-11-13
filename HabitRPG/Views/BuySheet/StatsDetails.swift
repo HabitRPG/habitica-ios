@@ -43,7 +43,7 @@ struct StatsDetails: View {
         .padding(.vertical, 25)
             .padding(.horizontal, 33)
             .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-            .cornerRadius(26)
+            .cornerRadius(UIConstants.largeCornerRadius)
             .padding(.top, 16)
             .padding(.horizontal, 44)
     }

@@ -179,7 +179,7 @@ struct RYATaskView: View {
         .frame(minHeight: 50)
         .frame(maxWidth: .infinity)
         .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-        .cornerRadius(13)
+        .cornerRadius(UIConstants.mediumCornerRadius)
         .onTapGesture {
             onChecked(!isChecked)
         }
@@ -235,7 +235,6 @@ struct RYABottomSheet: View, Dismissable {
                 }
             }
                 .frame(height: 60)
-                .padding(.bottom, 12)
             
             if #available(iOS 26.0, *) {
                 scrollView
@@ -249,6 +248,7 @@ struct RYABottomSheet: View, Dismissable {
                 topContent
                 scrollView
                 bottomContent
+                    .padding(.bottom, 12)
             }
         },
                         topPadding: 0,

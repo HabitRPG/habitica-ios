@@ -78,7 +78,7 @@ struct ApiTokenSheetView: View, Dismissable {
                 .padding(.vertical, 12)
                 .padding(.horizontal, 16)
                 .background(tokenBoxBg)
-                .cornerRadius(26)
+                .cornerRadius(UIConstants.largeCornerRadius)
 
             HabiticaButtonUI(label: Text(L10n.copyToken).foregroundColor(buttonTextColor), color: buttonColor, size: .compact) {
                 onCopy()

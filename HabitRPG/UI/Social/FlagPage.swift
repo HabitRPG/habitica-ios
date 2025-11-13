@@ -131,12 +131,13 @@ struct FlagPage: View {
             }
             .padding(16)
             .overlay(
-                RoundedRectangle(cornerRadius: 26)
+                RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius)
                     .stroke(Color(theme.separatorColor), lineWidth: 1)
             )
             Text(L10n.reportXQuestion(typeText)).font(.system(size: 16, weight: .medium)).padding(.top, 20)
             FocusableTextField(placeholder: L10n.reasonForReport, text: $viewModel.reason, isFirstResponder: $isFirstResponder)
-                .padding(16).background(Color(UIColor.gray400).opacity(0.12)).cornerRadius(26)
+                .padding(16).background(Color(UIColor.gray400).opacity(0.12))
+                .cornerRadius(UIConstants.largeCornerRadius)
                 .padding(.top, 12).padding(.bottom, 15)
             if viewModel.type == .member {
                 Text(L10n.thisWillAlsoBlockX(viewModel.offendingText)).font(.system(size: 14, weight: .medium)).foregroundColor(Color(theme.ternaryTextColor))

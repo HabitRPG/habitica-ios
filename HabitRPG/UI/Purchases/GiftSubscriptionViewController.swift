@@ -37,7 +37,7 @@ struct GiftSubscriptionPage: View {
                                 .fill()
                                 .foregroundColor(Color(UIColor.purple200))
                                 .frame(height: 126)
-                                .cornerRadius(12)
+                                .cornerRadius(UIConstants.mediumCornerRadius)
                                 .padding(.vertical, 4).onTapGesture {
                                     withAnimation {
                                         viewModel.selectedSubscription = sub
@@ -48,7 +48,7 @@ struct GiftSubscriptionPage: View {
                     Rectangle()
                         .foregroundColor(.white)
                         .frame(height: 126)
-                        .cornerRadius(12)
+                        .cornerRadius(UIConstants.mediumCornerRadius)
                         .offset(y: 4.0 + (CGFloat(viewModel.availableSubscriptions.firstIndex(of: viewModel.selectedSubscription) ?? 0) * 134.0))
                         .animation(.interpolatingSpring(stiffness: 500, damping: 55), value: viewModel.selectedSubscription)
                     VStack(spacing: 0) {

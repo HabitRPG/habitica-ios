@@ -298,9 +298,6 @@ class RouterHandler {
         register("/promo/web") {
             self.present(StoryboardScene.Main.promoWebNavController.instantiate())
         }
-        register("/promo/birthday") {
-            self.present(BirthdayViewController())
-        }
         register("/profile/:userID") { link in
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Social.userProfileViewController.instantiate()

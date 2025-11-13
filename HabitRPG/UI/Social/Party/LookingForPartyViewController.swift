@@ -244,7 +244,7 @@ struct LookingForPartyView: View {
                                 .padding(.horizontal, 12)
                                 .padding(.bottom, 12)
                                 .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-                                .cornerRadius(8)
+                                .cornerRadius(UIConstants.mediumCornerRadius)
                             }
                         }
                     }

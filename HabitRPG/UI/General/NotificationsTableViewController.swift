@@ -392,15 +392,21 @@ struct NotificationsPage: View {
     }
     
     var body: some View {
-        ScrollView {
-            LazyVStack(spacing: 8) {
-                ForEach(viewModel.notifications, id: \.id) { notification in
-                    renderNotification(notification: notification)
-                    .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
-                    .padding(8)
-                    .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-                    .cornerRadius(26)
-                    .padding(.horizontal, 17)
+        Group {
+            if viewModel.notifications.isEmpty {
+                NoContentView(icon: Image(Asset.emptyNotificationsIcon.name), title: Text(L10n.Empty.Notifications.title), content: Text(L10n.Empty.Notifications.description))
+            } else {
+                ScrollView {
+                    LazyVStack(spacing: 8) {
+                        ForEach(viewModel.notifications, id: \.id) { notification in
+                            renderNotification(notification: notification)
+                                .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                                .padding(8)
+                                .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+                                .cornerRadius(UIConstants.largeCornerRadius)
+                                .padding(.horizontal, 17)
+                        }
+                    }
                 }
             }
         }.toolbar {
@@ -431,7 +437,6 @@ class NotificationsTableViewController: BaseHostingViewController<NotificationsP
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = L10n.Titles.notifications
         viewModel.onDismiss = { [weak self] callback in
             self?.dismiss(animated: true, completion: {

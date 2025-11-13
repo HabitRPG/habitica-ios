@@ -29,26 +29,6 @@ class MainTabBarController: UITabBarController {
     
     private var presentedPrivacyPreferencesAt: Date?
     
-    private var _displayBirthdayIcon: Bool = false {
-        didSet {
-            if _displayBirthdayIcon {
-                tabBar.items?[4].image = Asset.birthdayIconUnselected.image.withRenderingMode(.alwaysOriginal)
-                tabBar.items?[4].selectedImage = Asset.birthdayIconSelected.image.withRenderingMode(.alwaysOriginal)
-            } else {
-                tabBar.items?[4].image = Asset.tabbarMenu.image
-                tabBar.items?[4].selectedImage = nil
-            }
-        }
-    }
-    var displayBirthdayIcon: Bool {
-        get { return _displayBirthdayIcon }
-        set {
-            if _displayBirthdayIcon != newValue {
-                _displayBirthdayIcon = newValue
-            }
-        }
-    }
-    
     private var badges: [Int: PaddedView]? {
         get {
             return (tabBar as? MainTabBar)?.badges
@@ -172,21 +152,6 @@ class MainTabBarController: UITabBarController {
             self?.updateToDoBadge()
             self?.updateAppBadge()
         }).start())
-        disposable.inner.add(contentRepository.getWorldState()
-            .on(value: {[weak self] _ in
-                let event = self?.configRepository.getBirthdayEvent()
-                if event != nil && self?.displayBirthdayIcon == false {
-                    self?.displayBirthdayIcon = true
-                    if let date = event?.end, date.timeIntervalSinceNow < 3600 {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + date.timeIntervalSinceNow) {
-                            self?.displayBirthdayIcon = false
-                        }
-                    }
-                } else if event == nil && self?.displayBirthdayIcon == true {
-                    self?.displayBirthdayIcon = false
-                }
-            })
-            .start())
     }
     
     private func updateTutorialSteps(_ tutorials: [TutorialStepProtocol]) {
@@ -303,7 +268,13 @@ class MainTabBar: UITabBar, Themeable {
             let size = entry.value.intrinsicContentSize
             let width = max(size.height, size.width)
             // Find the edge of the icon and then center the badge there
-            entry.value.frame = CGRect(x: frame.origin.x + (frame.size.width/2) + 35 - (width/2), y: frame.origin.y + 4, width: width, height: size.height)
+            let offset: CGFloat
+            if #available(iOS 26.0, *) {
+                offset = 35
+            } else {
+                offset = 15
+            }
+            entry.value.frame = CGRect(x: frame.origin.x + (frame.size.width/2) + offset - (width/2), y: frame.origin.y + 4, width: width, height: size.height)
             entry.value.cornerRadius = size.height / 2
         }
     }

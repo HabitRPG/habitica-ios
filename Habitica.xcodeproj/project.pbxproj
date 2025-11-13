@@ -177,7 +177,6 @@
 		2942FAF0267783F7003F6500 /* HabiticaLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2942FAEE26777E00003F6500 /* HabiticaLogger.swift */; };
 		2942FAF1267783F8003F6500 /* HabiticaLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2942FAEE26777E00003F6500 /* HabiticaLogger.swift */; };
 		2945AE972B285D000022F3CC /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 2945AE962B285D000022F3CC /* PanModal */; };
-		2945AE992B2868CA0022F3CC /* HostingPanModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2945AE982B2868CA0022F3CC /* HostingPanModal.swift */; };
 		294973D2208118C100F02AC3 /* ImageOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973D1208118C100F02AC3 /* ImageOverlayView.swift */; };
 		294EB59D1FA0A7E4006083BD /* FixCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */; };
 		294F5D6628CA1DCB00760F6C /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 294F5D6528CA1DCB00760F6C /* ConfettiSwiftUI */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -304,8 +303,6 @@
 		29A0FD81203DF49900590BDE /* GuidelinesPromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */; };
 		29A1B9B91F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */; };
 		29A23E1027F48C7E00713FC0 /* StringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A23E0F27F48C7E00713FC0 /* StringsTests.swift */; };
-		29A3FD282966EAE2007D85B2 /* BirthdayviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3FD272966EAE2007D85B2 /* BirthdayviewController.swift */; };
-		29A3FD2A29671910007D85B2 /* BirthdayBannerview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3FD2929671910007D85B2 /* BirthdayBannerview.swift */; };
 		29A3FD2F296720AF007D85B2 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 29A3FD2E296720AF007D85B2 /* SwiftUIX */; };
 		29A4CB71257FF3150013F0B3 /* String-SafeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4CB70257FF3150013F0B3 /* String-SafeExtensions.swift */; };
 		29A4CB77257FF31F0013F0B3 /* String-SafeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4CB70257FF3150013F0B3 /* String-SafeExtensions.swift */; };
@@ -393,6 +390,10 @@
 		29CAC3C92A3A11B5006DF74D /* LookingForPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CAC3C82A3A11B5006DF74D /* LookingForPartyViewController.swift */; };
 		29CAC3CB2A3A1288006DF74D /* BaseHostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CAC3CA2A3A1288006DF74D /* BaseHostingViewController.swift */; };
 		29CAC3CD2A3C7C61006DF74D /* PartyInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CAC3CC2A3C7C61006DF74D /* PartyInviteViewController.swift */; };
+		29CBCDA22EC4AFFB0020FC14 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CBCDA12EC4AFFB0020FC14 /* EmptyView.swift */; };
+		29CBCDA42EC4E5090020FC14 /* GamifiedWaveBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CBCDA32EC4E5090020FC14 /* GamifiedWaveBackground.swift */; };
+		29CBCDA62EC4E5EC0020FC14 /* FanfareContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CBCDA52EC4E5EC0020FC14 /* FanfareContainer.swift */; };
+		29CBCDA82EC4FF720020FC14 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CBCDA72EC4FF6D0020FC14 /* UIConstants.swift */; };
 		29CC0DFD2E8EBE23009643B9 /* RYABottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CC0DFC2E8EBE1E009643B9 /* RYABottomSheet.swift */; };
 		29CEA81D26414F0D00101C0A /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */; };
 		29CEA822264150CA00101C0A /* UIColor-Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CEA821264150CA00101C0A /* UIColor-Contributor.swift */; };
@@ -858,7 +859,6 @@
 		293DFE3B24F5647400E115FE /* UIImage-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage-Extensions.swift"; sourceTree = "<group>"; };
 		2942F8CE266DF9CB003F6500 /* TaskFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormView.swift; sourceTree = "<group>"; };
 		2942FAEE26777E00003F6500 /* HabiticaLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HabiticaLogger.swift; path = "../../Habitica Models/Habitica Models/HabiticaLogger.swift"; sourceTree = "<group>"; };
-		2945AE982B2868CA0022F3CC /* HostingPanModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingPanModal.swift; sourceTree = "<group>"; };
 		294973D1208118C100F02AC3 /* ImageOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOverlayView.swift; sourceTree = "<group>"; };
 		294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixCharacterViewController.swift; sourceTree = "<group>"; };
 		2953D84128B6564A00DC456E /* ArmoireViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmoireViewController.swift; sourceTree = "<group>"; };
@@ -987,8 +987,6 @@
 		29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuidelinesPromptView.xib; sourceTree = "<group>"; };
 		29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction-Extensions.swift"; sourceTree = "<group>"; };
 		29A23E0F27F48C7E00713FC0 /* StringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsTests.swift; sourceTree = "<group>"; };
-		29A3FD272966EAE2007D85B2 /* BirthdayviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayviewController.swift; sourceTree = "<group>"; };
-		29A3FD2929671910007D85B2 /* BirthdayBannerview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayBannerview.swift; sourceTree = "<group>"; };
 		29A4CB70257FF3150013F0B3 /* String-SafeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-SafeExtensions.swift"; sourceTree = "<group>"; };
 		29A4FE6226A9B3DB00F0FE30 /* HabitProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitProgressView.swift; sourceTree = "<group>"; };
 		29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUsernameModalViewController.swift; sourceTree = "<group>"; };
@@ -1070,6 +1068,10 @@
 		29CAC3C82A3A11B5006DF74D /* LookingForPartyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookingForPartyViewController.swift; sourceTree = "<group>"; };
 		29CAC3CA2A3A1288006DF74D /* BaseHostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHostingViewController.swift; sourceTree = "<group>"; };
 		29CAC3CC2A3C7C61006DF74D /* PartyInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyInviteViewController.swift; sourceTree = "<group>"; };
+		29CBCDA12EC4AFFB0020FC14 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		29CBCDA32EC4E5090020FC14 /* GamifiedWaveBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamifiedWaveBackground.swift; sourceTree = "<group>"; };
+		29CBCDA52EC4E5EC0020FC14 /* FanfareContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FanfareContainer.swift; sourceTree = "<group>"; };
+		29CBCDA72EC4FF6D0020FC14 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		29CC0DFC2E8EBE1E009643B9 /* RYABottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RYABottomSheet.swift; sourceTree = "<group>"; };
 		29CEA821264150CA00101C0A /* UIColor-Contributor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Contributor.swift"; sourceTree = "<group>"; };
 		29CEA8552641A2B500101C0A /* AdventureGuideTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventureGuideTableViewCell.swift; sourceTree = "<group>"; };
@@ -1470,7 +1472,6 @@
 			children = (
 				29066CF624FE6A6900A266EE /* PromoMenuView.swift */,
 				29066CFA24FE83D300A266EE /* PromoBannerView.swift */,
-				29A3FD2929671910007D85B2 /* BirthdayBannerview.swift */,
 			);
 			path = promotions;
 			sourceTree = "<group>";
@@ -1677,6 +1678,7 @@
 				29701FE51F56DABC0097BBCC /* RoundedView.swift */,
 				290B6288207CF248007287C4 /* StackView.swift */,
 				29706C8627D22CF3006EC139 /* LabeledProgressBar.swift */,
+				29CBCDA12EC4AFFB0020FC14 /* EmptyView.swift */,
 			);
 			name = Basic;
 			sourceTree = "<group>";
@@ -1786,7 +1788,6 @@
 			children = (
 				29066CFC24FF8CC200A266EE /* PromotionInfoViewController.swift */,
 				299B12482642D2AB00498025 /* PromoWebViewController.swift */,
-				29A3FD272966EAE2007D85B2 /* BirthdayviewController.swift */,
 			);
 			path = Promo;
 			sourceTree = "<group>";
@@ -2318,6 +2319,7 @@
 		D987393919687E46002A2426 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				29CBCDA72EC4FF6D0020FC14 /* UIConstants.swift */,
 				299BD6391F557FE700E22935 /* AuthenticationManager.swift */,
 				29E162E11FFC21E100685640 /* CustomFontMetrics.swift */,
 				29706C8A27D27893006EC139 /* Emoji.swift */,
@@ -2482,12 +2484,13 @@
 				29323E342052008800AC6D6F /* UserTopHeader.swift */,
 				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
 				29AB257B2B02799900A3C1D1 /* PixelArtView.swift */,
-				2945AE982B2868CA0022F3CC /* HostingPanModal.swift */,
 				29359A512BE8F8F8009790DE /* CTAFooterView.swift */,
 				299564202BEE488A00B1A68F /* AvatarHeaderView.swift */,
 				29B30EBA2E0ADE92001B587B /* Settings */,
 				29C9BDDE2E9FE48400FC4FCA /* BulkStatsAllocationSheet.swift */,
 				2972A33F2EBBA87D00106850 /* AchievementSheet.swift */,
+				29CBCDA32EC4E5090020FC14 /* GamifiedWaveBackground.swift */,
+				29CBCDA52EC4E5EC0020FC14 /* FanfareContainer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3373,7 +3376,6 @@
 				C897F63F218CE054002907C2 /* Storyboard Scenes.swift in Sources */,
 				2909D42A2722C25800FF2B29 /* AppIconName.swift in Sources */,
 				295BC6E4226F0F9500DDDF1A /* NotificationsTableViewController.swift in Sources */,
-				29A3FD282966EAE2007D85B2 /* BirthdayviewController.swift in Sources */,
 				29DDAC252E82C2CC007EC4CD /* StableDetailDataSource.swift in Sources */,
 				29A06E1D23ED4125003BADE9 /* InAppRewardProtocol-Extensions.swift in Sources */,
 				299FB29D2084A67D00422522 /* StableOverviewViewController.swift in Sources */,
@@ -3432,6 +3434,7 @@
 				290279732057FB4E006DACB9 /* FAQTableViewDataSource.swift in Sources */,
 				29FC884E2010CCC2002B3D3F /* BaseRepository.swift in Sources */,
 				29BD3EB327590731003AD251 /* FocusableTextField.swift in Sources */,
+				29CBCDA42EC4E5090020FC14 /* GamifiedWaveBackground.swift in Sources */,
 				297517B41F30EBD100B5BCB9 /* AvatarSetupViewController.swift in Sources */,
 				2957B8C41F4D922C00E836EF /* CustomRewardCell.swift in Sources */,
 				D9BB45DD1E7AE5240002AE2E /* ConfigRepository.swift in Sources */,
@@ -3473,6 +3476,7 @@
 				2914943C273163AF00DF2153 /* SceneDelegate.swift in Sources */,
 				293DFE3C24F5647400E115FE /* UIImage-Extensions.swift in Sources */,
 				292844EF20DD1D630011DC43 /* GroupInvitationListView.swift in Sources */,
+				29CBCDA22EC4AFFB0020FC14 /* EmptyView.swift in Sources */,
 				29FD8AA7203DA42A0094322E /* NSLayoutConstraint-Extensions.swift in Sources */,
 				291448702085EC0F00F3A6B5 /* MountDetailViewController.swift in Sources */,
 				D97ED0B01E6DBC87006C2A26 /* Interactor.swift in Sources */,
@@ -3529,6 +3533,7 @@
 				2974BDB62090C03E00EC1A25 /* InboxOverviewDataSource.swift in Sources */,
 				29ADAB562E7C234A00FFB9A0 /* StatsDetails.swift in Sources */,
 				2959BC84275E1BDE005EE62D /* EditingFormViewController-Extensions.swift in Sources */,
+				29CBCDA62EC4E5EC0020FC14 /* FanfareContainer.swift in Sources */,
 				29066CFB24FE83D300A266EE /* PromoBannerView.swift in Sources */,
 				29AAE55724508FC600220DB1 /* HRPGBulkPurchaseView.swift in Sources */,
 				29DBFF0120CE6FFF00DF9CF2 /* SoundManager.swift in Sources */,
@@ -3642,6 +3647,7 @@
 				298119AF1F5040DA00F9FB39 /* QuestDetailView.swift in Sources */,
 				29DC5ACB20A20A6C00993400 /* QuestTitleView.swift in Sources */,
 				299FB2AA2084BA6200422522 /* StableOverviewCell.swift in Sources */,
+				29CBCDA82EC4FF720020FC14 /* UIConstants.swift in Sources */,
 				299FB2A52084B40700422522 /* StableOverviewDataSource.swift in Sources */,
 				299FB29A2084A30400422522 /* StableRepository.swift in Sources */,
 				29951A1E2326670500918FC8 /* InboxOverviewViewController.swift in Sources */,
@@ -3675,7 +3681,6 @@
 				29144896208A270800F3A6B5 /* AvatarDetailViewController.swift in Sources */,
 				299C172929BB4EE40003906B /* SeasonalShopCollectionViewDataSource.swift in Sources */,
 				49DCECE81F9A843E00982E99 /* MultiModelTableViewController.swift in Sources */,
-				2945AE992B2868CA0022F3CC /* HostingPanModal.swift in Sources */,
 				29CAC3C92A3A11B5006DF74D /* LookingForPartyViewController.swift in Sources */,
 				29144876208648D500F3A6B5 /* EquipmentOverviewViewController.swift in Sources */,
 				29951A222327E94F00918FC8 /* ThemedNavigationController.swift in Sources */,
@@ -3703,7 +3708,6 @@
 				291448842088E2E000F3A6B5 /* EquipmentViewDataSource.swift in Sources */,
 				2919FDDD2091D5370096A53B /* UserManager.swift in Sources */,
 				29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */,
-				29A3FD2A29671910007D85B2 /* BirthdayBannerview.swift in Sources */,
 				291448662084FBAC00F3A6B5 /* PetDetailCell.swift in Sources */,
 				293282141F389CC000D42961 /* SetupCustomizationItemView.swift in Sources */,
 				2974BDAD208F68A800EC1A25 /* CustomizationHeaderView.swift in Sources */,

@@ -307,7 +307,7 @@ struct SubscriptionPage: View {
                 if let endDate = viewModel.activePromo?.endDate, viewModel.activePromo?.identifier == "g1g1" {
                     G1G1Banner(endDate: endDate)
                         .frame(height: 96)
-                        .cornerRadius(26)
+                        .cornerRadius(UIConstants.largeCornerRadius)
                         .padding(.horizontal, 20)
                         .padding(.bottom, 30)
                 }
@@ -321,7 +321,7 @@ struct SubscriptionPage: View {
                             }.frame(maxWidth: .infinity)
                             Image(Asset.subBenefitGoldgemsRight.name)
                         }.background(.teal1)
-                            .cornerRadius(26)
+                            .cornerRadius(UIConstants.largeCornerRadius)
                             .padding(.horizontal, 24)
                             .padding(.top, 16)
                             .padding(.bottom, 22)
@@ -361,13 +361,13 @@ struct SubscriptionPage: View {
                                     Rectangle()
                                         .foregroundColor(.purple100)
                                         .fill()
-                                        .cornerRadius(13)
+                                        .cornerRadius(UIConstants.mediumCornerRadius)
                                         .frame(maxWidth: .infinity)
                                         .frame(height: 8)
                                         Rectangle()
                                             .foregroundColor(.green100)
                                             .fill()
-                                            .cornerRadius(13)
+                                            .cornerRadius(UIConstants.mediumCornerRadius)
                                             .frame(width: reader.size.width * (CGFloat(viewModel.subscriptionPlan?.gemCapTotal ?? 0) / 50.0), height: 8)
                                 }
                             }
@@ -386,7 +386,7 @@ struct SubscriptionPage: View {
                                     .fill()
                                     .foregroundColor(Color(UIColor.purple200))
                                     .frame(height: viewModel.showHourglassPromo && sub == viewModel.availableSubscriptions.last ? 186 : 126)
-                                    .cornerRadius(26)
+                                    .cornerRadius(UIConstants.largeCornerRadius)
                                     .padding(.vertical, 4).onTapGesture {
                                         withAnimation {
                                             viewModel.selectedSubscription = sub
@@ -396,7 +396,7 @@ struct SubscriptionPage: View {
                         }
                         Rectangle()
                             .frame(height: viewModel.showHourglassPromo && viewModel.selectedSubscription == viewModel.availableSubscriptions.last ? 186 : 126)
-                            .cornerRadius(13)
+                            .cornerRadius(UIConstants.mediumCornerRadius)
                             .offset(y: 4.0 + (CGFloat(viewModel.availableSubscriptions.firstIndex(of: viewModel.selectedSubscription) ?? 0) * 134.0))
                             .animation(.interpolatingSpring(stiffness: 500, damping: 55), value: viewModel.selectedSubscription)
                         SubscriptionOptionStack(viewModel: viewModel)
