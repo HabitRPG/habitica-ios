@@ -1686,3 +1686,6 @@
 "mounts_found" = "Monturas Encontradas";
 "standard_mounts" = "Monturas Estándar";
 "none" = "Ninguna";
+"item_is_locked" = "El artículo está bloqueado";
+"edit_tags" = "Editar Etiquetas";
+"add_tag" = "Añadir Etiqueta";
