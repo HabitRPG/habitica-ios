@@ -37,7 +37,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             }
         }).start())
         disposable.add(socialRepository.getChatMessages(groupID: groupID).on(value: {[weak self] (chatMessages, changes) in
-            self?.sections[0].items = chatMessages
+            self?.sections[0].items = chatMessages.reversed()
             self?.notify(changes: changes)
         }).start())
         disposable.add(socialRepository.getGroupMembers(groupID: groupID).filter({ members in

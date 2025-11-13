@@ -72,6 +72,11 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         inputBar.inputTextView.keyboardType = .twitter
         inputBar.inputTextView.placeholder = L10n.writeMessage
         inputBar.bottomStackView.isHidden = true
+        let configuration = UIImage.SymbolConfiguration(pointSize: 32)
+        inputBar.sendButton.image = UIImage(systemName: "arrow.up.circle.fill", withConfiguration: configuration)?.withRenderingMode(.alwaysTemplate)
+        inputBar.sendButton.title = nil
+        inputBar.sendButton.alpha = 0
+        inputBar.sendButton.transform = CGAffineTransform(translationX: 30, y: 0)
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.checkGuidelinesAccepted(user: user)
         }).start())
@@ -92,6 +97,7 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         inputBar.inputTextView.tintColor = theme.tintColor
         inputBar.sendButton.tintColor = theme.tintColor
         inputBar.sendButton.setTitleColor(theme.tintColor, for: .normal)
+        inputBar.sendButton.setTitleColor(theme.dimmedTextColor, for: .disabled)
         if #available(iOS 26.0, *) {
             (inputBarContainer.effect as? UIGlassEffect)?.tintColor = theme.contentBackgroundColor
         }
@@ -123,7 +129,7 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
                 keyboardOffset = KeyboardManager.height - ((view.window?.bounds.height ?? 0) -  (abs(view?.window?.convert(CGPoint(x: 0, y: 0), to: view).y ?? 0) + view.bounds.height))
             }
         }
-        let inputBarHeight = inputBar.requiredInputTextViewHeight + inputBar.padding.top + inputBar.padding.bottom + inputBar.topStackViewPadding.top
+        let inputBarHeight = inputBar.requiredInputTextViewHeight + inputBar.padding.top + inputBar.padding.bottom + inputBar.topStackViewPadding.top + 2
         let autocompleteSize = autocompleteManager.tableView.intrinsicContentSize
         let autocompleteHeight: CGFloat
         if autocompleteManager.currentSession != nil {
@@ -140,7 +146,7 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         }
         tableView.contentInset.top = inputBarOffset
         inputBarContainer.pin.horizontally(20).height(inputBarHeight + autocompleteHeight).bottom(keyboardOffset)
-        inputBar.pin.horizontally(8).vertically()
+        inputBar.pin.start(8).end(-10).top().bottom(2)
         if let acceptView = view.viewWithTag(999) {
             let yPos: CGFloat = view.frame.size.height-90
             let height: CGFloat = 90
@@ -228,6 +234,13 @@ extension MessagesViewController: AutocompleteManagerDelegate, AutocompleteManag
     
     @objc
     func inputBar(_ inputBar: InputBarAccessoryView, textViewTextDidChangeTo text: String) {
+        if text.isEmpty && inputBar.sendButton.isAnimating {
+            return
+        }
+        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 4) {
+            inputBar.sendButton.alpha = text.isEmpty ? 0 : 1
+            inputBar.sendButton.transform = CGAffineTransform(translationX: text.isEmpty ? 30 : 0, y: 0)
+        }
         guard autocompleteManager.currentSession?.prefix == "@" else {
             return
         }
