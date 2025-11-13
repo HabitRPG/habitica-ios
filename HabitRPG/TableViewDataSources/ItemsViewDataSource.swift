@@ -163,6 +163,7 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count = visibleSections[section].items.count
+        // swiftlint:disable:next empty_count
         if count == 0 {
             count = 1
         }

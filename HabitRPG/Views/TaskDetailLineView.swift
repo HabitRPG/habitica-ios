@@ -191,6 +191,7 @@ class TaskDetailLineView: UIView {
     }
     
     private func setStreak(count: Int) {
+        // swiftlint:disable:next empty_count
         if count > 0 {
             streakLabel.text = String(count)
             streakIconView.isHidden = false

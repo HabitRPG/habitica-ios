@@ -300,7 +300,7 @@ struct QuestInviteNotificationView: View {
 
     var body: some View {
         NotificationMainContent(content: {
-            NotificationImage()
+            NotificationImage(content: Image(.notificationsQuest))
             NotificationTexts(title: Text(""))
         })
         NotificationResponseView(onDecline: onDecline, onAccept: onAccept)
@@ -333,7 +333,7 @@ struct GroupInviteNotificationView: View {
     
     var body: some View {
         NotificationMainContent {
-            NotificationImage()
+            NotificationImage(content: Image(.notificationsGuild))
             NotificationTexts(title: Text(getTitleFor(groupName: notification.groupName ?? "", inviterName: nil, isPartyInvitation: isPartyInvite)))
         }
         NotificationResponseView(onDecline: onDecline, onAccept: onAccept)
@@ -349,6 +349,18 @@ struct AchievementNotificationView: View {
             NotificationImage(content: Image(.notificationsStats))
             NotificationTexts(title: Text(markdown: notification.achievementModalText ?? ""),
                               description: Text(markdown: notification.achievementMessage ?? ""))
+        }
+    }
+}
+
+struct GroupTaskNotificationView: View {
+    let notification: NotificationGroupTaskProtocol
+    let onDismiss: () -> Void
+    
+    var body: some View {
+        NotificationMainContent(onDismiss: onDismiss) {
+            NotificationImage(content: Image(.notificationsGroupTask))
+            NotificationTexts(title: Text(notification.notificationMessage ?? ""))
         }
     }
 }
@@ -386,6 +398,8 @@ struct NotificationsPage: View {
             })
         } else if notification.achievementKey != nil {
             AchievementNotificationView(notification: notification, onDismiss: onNotificationDismiss)
+        } else if type.isGroupPlan, let notification = notification as? NotificationGroupTaskProtocol {
+            GroupTaskNotificationView(notification: notification, onDismiss: onNotificationDismiss)
         } else {
             BasicNotificationView(notification: notification, onDismiss: onNotificationDismiss)
         }

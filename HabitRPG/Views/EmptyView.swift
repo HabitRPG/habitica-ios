@@ -23,6 +23,7 @@ struct NoContentView<Icon: View, Title: View, Content: View>: View {
                 .scaledFont(size: 15)
                 .foregroundStyle(Color(ThemeService.shared.theme.ternaryTextColor))
         }.frame(maxWidth: .infinity)
+            .padding(.top, 50)
             .multilineTextAlignment(.center)
     }
 }

@@ -19,7 +19,8 @@ class RealmNotification: BaseModel,
     NotificationNewMysteryItemProtocol,
     NotificationLoginIncentiveProtocol,
     NotificationFirstDropProtocol,
-    NotificationItemReceivedProtocol {
+    NotificationItemReceivedProtocol,
+    NotificationGroupTaskProtocol {
     @objc dynamic var id: String = ""
     @objc dynamic var realmType: String = ""
     var type: HabiticaNotificationType {
@@ -35,6 +36,7 @@ class RealmNotification: BaseModel,
     @objc dynamic var userID: String = ""
     @objc dynamic var priority: Int = 0
     @objc dynamic var date: Date? = Date()
+    @objc dynamic var notificationMessage: String?
 
     @objc dynamic var title: String?
     @objc dynamic var groupID: String?
@@ -87,6 +89,7 @@ class RealmNotification: BaseModel,
         self.userID = userID ?? ""
         self.id = protocolObject.id
         self.type = protocolObject.type
+        self.notificationMessage = protocolObject.notificationMessage
         if let notification = protocolObject as? NotificationNewChatProtocol {
             groupID = notification.groupID
             groupName = notification.groupName

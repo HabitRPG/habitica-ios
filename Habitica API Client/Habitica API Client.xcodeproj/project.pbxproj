@@ -134,6 +134,7 @@
 		29323E6E2056C0E900AC6D6F /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 29323E6D2056C0E900AC6D6F /* content.json */; };
 		2938ED5528B504B300E995A2 /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED5428B504B300E995A2 /* ReactiveSwift */; };
 		293F22DD232FBF4B00A33928 /* RemoveMemberCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293F22DC232FBF4B00A33928 /* RemoveMemberCall.swift */; };
+		2944786C2EC60B6500AB9B61 /* APINotificationGroupTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944786B2EC60B6500AB9B61 /* APINotificationGroupTaskData.swift */; };
 		294973C62080F92400F02AC3 /* SellItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973C52080F92400F02AC3 /* SellItemCall.swift */; };
 		294973C82080F98600F02AC3 /* HatchPetCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973C72080F98600F02AC3 /* HatchPetCall.swift */; };
 		294973CA2080F9F600F02AC3 /* EquipGearCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973C92080F9F600F02AC3 /* EquipGearCall.swift */; };
@@ -389,6 +390,7 @@
 		29323E6B2056BCB400AC6D6F /* user.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
 		29323E6D2056C0E900AC6D6F /* content.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
 		293F22DC232FBF4B00A33928 /* RemoveMemberCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveMemberCall.swift; sourceTree = "<group>"; };
+		2944786B2EC60B6500AB9B61 /* APINotificationGroupTaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APINotificationGroupTaskData.swift; sourceTree = "<group>"; };
 		294973C52080F92400F02AC3 /* SellItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellItemCall.swift; sourceTree = "<group>"; };
 		294973C72080F98600F02AC3 /* HatchPetCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatchPetCall.swift; sourceTree = "<group>"; };
 		294973C92080F9F600F02AC3 /* EquipGearCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipGearCall.swift; sourceTree = "<group>"; };
@@ -726,6 +728,7 @@
 				2912C3BE22CB5CF300BC485F /* APINotificationUnallocatedStatsData.swift */,
 				2970B62B24A4BB32008CD068 /* APINotificationFirstDrop.swift */,
 				29A7E79226B17C61009F0C4D /* APILoginIncentiveData.swift */,
+				2944786B2EC60B6500AB9B61 /* APINotificationGroupTaskData.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -1122,6 +1125,7 @@
 				29990DB020E3E791001ADD8B /* APIQuestProgressCollect.swift in Sources */,
 				292F966C206E6D8A00804151 /* UpdateUserCall.swift in Sources */,
 				29A9B05C22817DBE0049291E /* JsonDataHandler.swift in Sources */,
+				2944786C2EC60B6500AB9B61 /* APINotificationGroupTaskData.swift in Sources */,
 				295610F92056CAA800D9711A /* APIHatchingPotion.swift in Sources */,
 				2954A35429475A7D001953B1 /* UpdateMemberCall.swift in Sources */,
 				290B627D207BA9D4007287C4 /* SocialLoginCall.swift in Sources */,

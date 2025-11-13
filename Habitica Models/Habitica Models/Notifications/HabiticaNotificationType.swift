@@ -18,6 +18,14 @@ public enum HabiticaNotificationType: String, EquatableStringEnumProtocol {
     case questInvite = "QUEST_INVITE"
     case groupInvite = "GROUP_INVITE"
     case itemReceived = "ITEM_RECEIVED"
+    case wonChallenge = "WON_CHALLENGE"
+    case cardReceived = "CARD_RECEIVED"
+    
+    case groupTaskApproval = "GROUP_TASK_APPROVAL"
+    case groupTaskApproved = "GROUP_TASK_APPROVED"
+    case groupTaskAssigned = "GROUP_TASK_ASSIGNED"
+    case groupTaskClaimed = "GROUP_TASK_CLAIMED"
+    case groupTaskNeedsWork = "GROUP_TASK_NEEDS_WORK"
     
     // Achievements
     case achievementPartyUp = "ACHIEVEMENT_PARTY_UP"
@@ -72,6 +80,15 @@ public enum HabiticaNotificationType: String, EquatableStringEnumProtocol {
             return 6
         default:
             return 100
+        }
+    }
+    
+    public var isGroupPlan: Bool {
+        switch self {
+        case .groupTaskClaimed, .groupTaskApproval, .groupTaskApproved, .groupTaskAssigned, .groupTaskNeedsWork:
+            return true
+        default:
+            return false
         }
     }
 }

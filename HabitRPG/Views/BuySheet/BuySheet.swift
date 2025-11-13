@@ -173,6 +173,7 @@ struct BuySheet: View, Dismissable {
                         }
                     }.buttonStyle(.glassProminent)
                         .tintColor(Color(viewModel.isPinned ? UIColor.red100 : ThemeService.shared.theme.fixedTintColor).opacity(0.4))
+                        .clipShape(.circle)
                 } else {
                     Spacer().frame(width: 44)
                 }
@@ -201,6 +202,7 @@ struct BuySheet: View, Dismissable {
                         }
                     }.buttonStyle(.borderedProminent)
                         .tintColor(Color(viewModel.isPinned ? UIColor.red100 : ThemeService.shared.theme.fixedTintColor).opacity(0.4))
+                        .clipShape(.circle)
                 } else {
                     Spacer().frame(width: 44)
                 }
