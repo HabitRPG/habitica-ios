@@ -753,7 +753,7 @@ struct TaskFormView: View {
             HStack {
                 Text(L10n.title).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingText ? .semibold : .regular)).padding(.leading, 8)
                 if !viewModel.isTaskEditable {
-                Image(uiImage: HabiticaIcons.imageOfLocked().withRenderingMode(.alwaysTemplate)).foregroundColor(viewModel.darkestTaskTintColor)
+                    Image(uiImage: HabiticaIcons.imageOfLocked().withRenderingMode(.alwaysTemplate)).foregroundColor(viewModel.darkestTaskTintColor)
                 }
             }
             MultilineTextField("", text: $viewModel.text, onCommit: {
@@ -764,7 +764,7 @@ struct TaskFormView: View {
                 .padding(8)
                 .frame(minHeight: 40)
                 .background(viewModel.lightestTaskTintColor)
-                .cornerRadius(UIConstants.mediumCornerRadius)
+                .cornerRadius(UIConstants.largeCornerRadius)
                 .disabled(!viewModel.isTaskEditable)
                 .opacity(viewModel.isTaskEditable ? 1.0 : 0.6)
             Text(L10n.notes).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingNotes ? .semibold : .regular)).padding(.leading, 8).padding(.top, 10)
@@ -775,7 +775,7 @@ struct TaskFormView: View {
                 .padding(8)
                 .frame(minHeight: 40)
                 .background(viewModel.lightestTaskTintColor)
-                .cornerRadius(UIConstants.mediumCornerRadius)
+                .cornerRadius(UIConstants.largeCornerRadius)
         }.padding(.horizontal, 16)
         .padding(.vertical, 12)
         .preferredColorScheme(ThemeService.shared.theme.isDark ? .dark : .light)

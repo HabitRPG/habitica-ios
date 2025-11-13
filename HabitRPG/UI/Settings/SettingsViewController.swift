@@ -65,7 +65,6 @@ class SettingsViewController: FormViewController, Themeable {
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableView.cellLayoutMarginsFollowReadableWidth = false
         super.viewDidLoad()
-        navigationItem.largeTitleDisplayMode = .always
         navigationItem.title = L10n.Titles.settings
         if #unavailable(iOS 26.0) {
             doneButton.style = .done

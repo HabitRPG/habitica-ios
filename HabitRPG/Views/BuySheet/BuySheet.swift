@@ -133,13 +133,15 @@ struct BuySheet: View, Dismissable {
     
     @ViewBuilder
     private func itemDetailsView() -> some View {
-        let item = viewModel.item
-        SimpleItemDetails(item: item)
-        if item.purchaseType == "gear" {
-            StatsDetails(gear: viewModel.gear)
-        }
-        if item.purchaseType == "quests" {
-            QuestDetails(quest: viewModel.quest)
+        VStack(spacing: 0) {
+            let item = viewModel.item
+            SimpleItemDetails(item: item)
+            if item.purchaseType == "gear" {
+                StatsDetails(gear: viewModel.gear)
+            }
+            if item.purchaseType == "quests" {
+                QuestDetails(quest: viewModel.quest)
+            }
         }
     }
     
@@ -181,7 +183,7 @@ struct BuySheet: View, Dismissable {
                     Image(systemName: "xmark").frame(width: 30, height: 36).foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
                         .font(.system(size: 20, weight: .bold))
                 }
-                    .clipShape(.circle)
+                    .buttonStyle(.borderedProminent)
                     .tintColor(Color(ThemeService.shared.theme.windowBackgroundColor))
                 Spacer()
                 BuyCurrencyView(value: viewModel.userCurrencyOwned, currency: viewModel.itemCurrency)
@@ -198,13 +200,13 @@ struct BuySheet: View, Dismissable {
                                 .foregroundStyle(Color.purple400)
                         }
                     }.buttonStyle(.borderedProminent)
-                        .tintColor(Color(viewModel.isPinned ? UIColor.red100 : ThemeService.shared.theme.fixedTintColor))
+                        .tintColor(Color(viewModel.isPinned ? UIColor.red100 : ThemeService.shared.theme.fixedTintColor).opacity(0.4))
                 } else {
                     Spacer().frame(width: 44)
                 }
             }
         }.padding(.top, 16)
-            .padding(.bottom, 16)
+            .padding(.bottom, 12)
     }
     
     @ViewBuilder
@@ -259,8 +261,7 @@ struct BuySheet: View, Dismissable {
                 }.disabled(!canBuy)
                     .transition(.opacity)
             }
-        }.padding(.bottom, 20)
-            .padding(.top, 8)
+        }
     }
     
     var body: some View {
@@ -286,6 +287,8 @@ struct BuySheet: View, Dismissable {
                 topContent()
                 scrollView
                 bottomContent()
+                    .padding(.top, 12)
+                    .padding(.bottom, 32)
             }
         },
                         topPadding: 0,
