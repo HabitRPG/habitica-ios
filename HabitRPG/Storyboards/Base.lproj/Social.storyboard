@@ -910,7 +910,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMp-6b-m4W">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="mMp-6b-m4W">
                                 <rect key="frame" x="0.0" y="74" width="375" height="593"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSR-zm-w5F">
@@ -1150,7 +1150,7 @@
                             <constraint firstItem="fUh-bv-IOV" firstAttribute="top" secondItem="8vO-ry-4o5" secondAttribute="bottom" id="eev-h8-6AG"/>
                             <constraint firstAttribute="trailing" secondItem="mMp-6b-m4W" secondAttribute="trailing" id="eqk-9i-B5H"/>
                             <constraint firstItem="fUh-bv-IOV" firstAttribute="leading" secondItem="eVm-iI-MJ2" secondAttribute="leading" id="nWD-5x-jn5"/>
-                            <constraint firstItem="bsU-ZE-VcS" firstAttribute="top" secondItem="mMp-6b-m4W" secondAttribute="bottom" id="qeQ-ec-kmg"/>
+                            <constraint firstAttribute="bottom" secondItem="mMp-6b-m4W" secondAttribute="bottom" id="qeQ-ec-kmg"/>
                             <constraint firstItem="mMp-6b-m4W" firstAttribute="top" secondItem="8vO-ry-4o5" secondAttribute="bottom" id="zAV-rE-QSF"/>
                         </constraints>
                     </view>

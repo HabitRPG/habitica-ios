@@ -13,7 +13,7 @@ import InputBarAccessoryView
 
 class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrollViewDelegate {
     let inputBar: InputBarAccessoryView = InputBarAccessoryView()
-
+    let inputBarContainer: UIVisualEffectView = UIVisualEffectView()
     let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
     private let configRepository = ConfigRepository.shared
@@ -35,7 +35,18 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
     override func loadView() {
         view = UIView()
         view.addSubview(tableView)
-        view.addSubview(inputBar)
+        view.addSubview(inputBarContainer)
+        inputBarContainer.contentView.addSubview(inputBar)
+        if #available(iOS 26.0, *) {
+            inputBarContainer.effect = UIGlassEffect(style: .regular)
+        } else {
+            inputBarContainer.effect = UIBlurEffect(style: .systemMaterial)
+        }
+        inputBarContainer.cornerRadius = UIConstants.largeCornerRadius
+        inputBar.backgroundColor = .clear
+        inputBar.backgroundView.backgroundColor = .clear
+        inputBar.separatorLine.isHidden = true
+        autocompleteManager.tableView.backgroundColor = .clear
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +92,9 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         inputBar.inputTextView.tintColor = theme.tintColor
         inputBar.sendButton.tintColor = theme.tintColor
         inputBar.sendButton.setTitleColor(theme.tintColor, for: .normal)
+        if #available(iOS 26.0, *) {
+            (inputBarContainer.effect as? UIGlassEffect)?.tintColor = theme.contentBackgroundColor
+        }
         tableView.backgroundColor = theme.windowBackgroundColor
         tableView.reloadData()
     }
@@ -99,13 +113,8 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
             return
         }
         tableView.frame = view.frame
-        var safearea: CGFloat = 0
-        var tabbarOffset: CGFloat = (view.window?.safeAreaInsets.bottom ?? 0) + 40
-        if tabBarController == nil {
-            tabbarOffset = 0
-            safearea = (view.window?.safeAreaInsets.bottom ?? 0)
-        }
-        var keyboardOffset = KeyboardManager.height > 0 ? KeyboardManager.height - tabbarOffset : safearea
+        var safearea: CGFloat = (tabBarController?.tabBar.frame.size.height ?? view.window?.safeAreaInsets.bottom ?? 0)
+        var keyboardOffset = (KeyboardManager.height > 0 ? KeyboardManager.height : safearea) + 6
         if (modalPresentationStyle == .pageSheet || modalPresentationStyle == .formSheet) && view.window?.traitCollection.isIPadFullSize == true {
             safearea = 0
             if (view.window?.bounds.size.height ?? 0) - KeyboardManager.height > view.bounds.size.height {
@@ -123,14 +132,15 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
             autocompleteHeight = 0
         }
         
-        var inputBarOffset = keyboardOffset + autocompleteHeight
+        var inputBarOffset = keyboardOffset + autocompleteHeight + 8
         if tabBarController != nil {
             inputBarOffset += inputBarHeight + autocompleteHeight
         } else {
             inputBarOffset -= 4
         }
         tableView.contentInset.top = inputBarOffset
-        inputBar.pin.start().end().height(inputBarHeight + autocompleteHeight).bottom(keyboardOffset)
+        inputBarContainer.pin.horizontally(20).height(inputBarHeight + autocompleteHeight).bottom(keyboardOffset)
+        inputBar.pin.horizontally(8).vertically()
         if let acceptView = view.viewWithTag(999) {
             let yPos: CGFloat = view.frame.size.height-90
             let height: CGFloat = 90
@@ -238,6 +248,7 @@ extension MessagesViewController: AutocompleteManagerDelegate, AutocompleteManag
             attributedText = NSAttributedString(string: ":\(session.completion?.text ?? "")".unicodeEmoji + " :") + attributedText
         }
         cell.textLabel?.attributedText = attributedText
+        cell.backgroundColor = .clear
         return cell
     }
 
