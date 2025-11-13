@@ -1635,3 +1635,6 @@
 "standard_mounts" = "Montures Standards";
 "none" = "Vide";
 "logins" = "Connexions";
+"add_tag" = "Ajouter une Étiquette";
+"item_is_locked" = "L'Objet n'est pas utilisable";
+"edit_tags" = "Éditer les Étiquettes";
