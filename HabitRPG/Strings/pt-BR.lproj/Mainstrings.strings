@@ -1673,3 +1673,15 @@
 "stable.pets_and_mounts" = "Mascotes e Montarias";
 "pet" = "Mascote";
 "chat_with_question" = "Com quem gostaria de conversar?";
+"take_effect_immediately" = "Isto terá efeito imediatamente após a compra!";
+"membership" = "Assinatura";
+"ownership" = "Propriedade";
+"equipped_gear" = "Equipamento em uso";
+"challenges_won" = "Desafios Vencidos";
+"player_not_won_challenges" = "Jogador não venceu nenhum desafio.";
+"player_not_completed_quests" = "Jogador não completou nenhuma missão.";
+"pets_found" = "Mascotes encontrados";
+"standard_pets" = "Mascotes Básicos";
+"mounts_found" = "Montarias Encontradas";
+"none" = "Nenhum";
+"standard_mounts" = "Montarias Básicas";
