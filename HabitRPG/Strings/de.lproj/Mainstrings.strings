@@ -1698,3 +1698,6 @@
 "joined_x" = "Beigetreten %s";
 "stable.pets_and_mounts" = "Haus- und Reittiere";
 "player_not_won_challenges" = "Der Spieler hat noch keine Herausforderungen gewonnen.";
+"item_is_locked" = "Gegenstand gesperrt";
+"edit_tags" = "Tags Bearbeiten";
+"add_tag" = "Tag hinzufügen";

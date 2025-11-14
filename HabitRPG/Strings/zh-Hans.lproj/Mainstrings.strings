@@ -1571,3 +1571,7 @@
 "mounts_found" = "已发现的坐骑";
 "standard_mounts" = "基础坐骑";
 "none" = "无";
+"joined_x" = "加入了%s";
+"item_is_locked" = "物品已被锁定";
+"edit_tags" = "编辑标签";
+"add_tag" = "添加标签";

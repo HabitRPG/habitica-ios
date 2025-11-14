@@ -1685,3 +1685,6 @@
 "mounts_found" = "Montarias Encontradas";
 "none" = "Nenhum";
 "standard_mounts" = "Montarias Básicas";
+"item_is_locked" = "Item está bloqueado";
+"edit_tags" = "Editar Etiquetas";
+"add_tag" = "Adicionar Etiqueta";
