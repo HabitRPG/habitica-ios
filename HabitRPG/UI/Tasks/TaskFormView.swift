@@ -632,13 +632,27 @@ class TaskFormViewModel: ObservableObject {
     }
 }
 
+extension Calendar {
+    /// Returns which occurrence of the weekday this date is in the month.
+    /// Examples:
+    ///   - Jan 1, 2025 (first Wednesday) → returns 1
+    ///   - Jan 8, 2025 (second Wednesday) → returns 2
+    ///   - Jan 29, 2025 (fifth Wednesday) → returns 5
+    func weekdayOrdinal(for date: Date) -> Int {
+        let formatter = DateFormatter()
+        formatter.calendar = self
+        formatter.dateFormat = "F"  // "F" means weekday ordinal (1-5)
+        return Int(formatter.string(from: date)) ?? 1
+    }
+}
+
 struct DailyProgressView: View {
     let history: [TaskHistoryProtocol]
-    
+
     private let theme = ThemeService.shared.theme
     private let today = Date()
     private let calendar = Calendar.current
-    
+
     private let gray = Color(UIColor.gray400)
     
     @State private var dayItemHeight: CGFloat = 40
@@ -1046,7 +1060,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
         
         if let startDate = task.startDate {
             if viewModel.dayOrWeekMonth == "week" {
-                task.weeksOfMonth.append(Calendar.current.component(.weekOfMonth, from: startDate)-1)
+                task.weeksOfMonth.append(Calendar.current.weekdayOrdinal(for: startDate))
             } else {
                 task.daysOfMonth.append(Calendar.current.component(.day, from: startDate))
             }
