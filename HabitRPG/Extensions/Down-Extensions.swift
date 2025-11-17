@@ -104,13 +104,18 @@ extension Down {
             
             range = string.mutableString.range(of: "<strong>")
         }
+        removeHtmlTags(string)
+    }
+    
+    private func removeHtmlTags(_ string: NSMutableAttributedString) {
+        replaceIn(string: string, characters: "<[^>]+>", with: "")
     }
     
     private func replaceIn(string: NSMutableAttributedString, characters: String, with replacement: String) {
-        var range = string.mutableString.range(of: characters)
+        var range = string.mutableString.range(of: characters, options: .regularExpression)
         while range.length > 0 {
             string.replaceCharacters(in: range, with: replacement)
-            range = string.mutableString.range(of: characters)
+            range = string.mutableString.range(of: characters, options: .regularExpression)
         }
     }
     

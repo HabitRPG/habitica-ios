@@ -74,7 +74,7 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
     private func doNothing() {}
     
     @objc
-    func configure(task: TaskProtocol) {
+    func configure(task: TaskProtocol, isLocked: Bool = false) {
         if !task.isValid {
             return
         }

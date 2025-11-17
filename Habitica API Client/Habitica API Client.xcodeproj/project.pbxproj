@@ -245,6 +245,7 @@
 		29DBFF0320CE91A500DF9CF2 /* UseTransformationItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0220CE91A500DF9CF2 /* UseTransformationItemCall.swift */; };
 		29DBFF0720D01EE000DF9CF2 /* RetrieveChallengeTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0620D01EE000DF9CF2 /* RetrieveChallengeTasksCall.swift */; };
 		29DBFF0F20D15BEA00DF9CF2 /* APIUserNewMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0E20D15BEA00DF9CF2 /* APIUserNewMessages.swift */; };
+		29DF93412ECB6BED0047801F /* APINotificationCardReceivedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF93402ECB6BE70047801F /* APINotificationCardReceivedData.swift */; };
 		29DFBEFC2B10AF0E000B554B /* FlagMemberCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DFBEFB2B10AF0E000B554B /* FlagMemberCall.swift */; };
 		29DFBEFE2B10B056000B554B /* FlagChallengeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DFBEFD2B10B056000B554B /* FlagChallengeCall.swift */; };
 		29EBDA7F232910FD006611E3 /* APIInboxConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA7E232910FD006611E3 /* APIInboxConversation.swift */; };
@@ -505,6 +506,7 @@
 		29DBFF0220CE91A500DF9CF2 /* UseTransformationItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseTransformationItemCall.swift; sourceTree = "<group>"; };
 		29DBFF0620D01EE000DF9CF2 /* RetrieveChallengeTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveChallengeTasksCall.swift; sourceTree = "<group>"; };
 		29DBFF0E20D15BEA00DF9CF2 /* APIUserNewMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserNewMessages.swift; sourceTree = "<group>"; };
+		29DF93402ECB6BE70047801F /* APINotificationCardReceivedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APINotificationCardReceivedData.swift; sourceTree = "<group>"; };
 		29DFBEFB2B10AF0E000B554B /* FlagMemberCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagMemberCall.swift; sourceTree = "<group>"; };
 		29DFBEFD2B10B056000B554B /* FlagChallengeCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagChallengeCall.swift; sourceTree = "<group>"; };
 		29EBDA7E232910FD006611E3 /* APIInboxConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIInboxConversation.swift; sourceTree = "<group>"; };
@@ -722,6 +724,7 @@
 		2912C3B722CB4E2600BC485F /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				29DF93402ECB6BE70047801F /* APINotificationCardReceivedData.swift */,
 				2912C3B822CB4E3700BC485F /* APINotification.swift */,
 				2912C3BA22CB5CB100BC485F /* APINotificationNewChatData.swift */,
 				2912C3BC22CB5CE000BC485F /* APINotificationNewStuffData.swift */,
@@ -1231,6 +1234,7 @@
 				295611072056DD2800D9711A /* APIQuest.swift in Sources */,
 				29323E37205212C400AC6D6F /* APIFlags.swift in Sources */,
 				295610F72056CA6900D9711A /* APIEgg.swift in Sources */,
+				29DF93412ECB6BED0047801F /* APINotificationCardReceivedData.swift in Sources */,
 				2919FDDB2091D3D70096A53B /* MarkInboxAsSeenCall.swift in Sources */,
 				290B6273207BA7D9007287C4 /* UpdateUsernameCall.swift in Sources */,
 				295E9DE420B31C1300D58D45 /* DeleteTagCall.swift in Sources */,

@@ -426,6 +426,7 @@
 		29DDAC232E8140D9007EC4CD /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 29D048B92E3A641A004A6AAA /* RealmSwift */; };
 		29DDAC252E82C2CC007EC4CD /* StableDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDAC242E82C2C5007EC4CD /* StableDetailDataSource.swift */; };
 		29DDAC272E82F3FC007EC4CD /* GlassTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDAC262E82F3F7007EC4CD /* GlassTextField.swift */; };
+		29DF933D2EC640860047801F /* GamifiedBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF933C2EC640860047801F /* GamifiedBottomSheet.swift */; };
 		29DFBEFA2B10AE8E000B554B /* FlagPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DFBEF92B10AE8E000B554B /* FlagPage.swift */; };
 		29E162E01FFBBDDC00685640 /* UsernameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */; };
 		29E162E21FFC21E100685640 /* CustomFontMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162E11FFC21E100685640 /* CustomFontMetrics.swift */; };
@@ -1102,6 +1103,7 @@
 		29DDAC202E79A74F007EC4CD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		29DDAC242E82C2C5007EC4CD /* StableDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableDetailDataSource.swift; sourceTree = "<group>"; };
 		29DDAC262E82F3F7007EC4CD /* GlassTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassTextField.swift; sourceTree = "<group>"; };
+		29DF933C2EC640860047801F /* GamifiedBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamifiedBottomSheet.swift; sourceTree = "<group>"; };
 		29DFBEF92B10AE8E000B554B /* FlagPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagPage.swift; sourceTree = "<group>"; };
 		29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameLabel.swift; sourceTree = "<group>"; };
 		29E162E11FFC21E100685640 /* CustomFontMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontMetrics.swift; sourceTree = "<group>"; };
@@ -1610,6 +1612,7 @@
 		2953D84828B77E3800DC456E /* BottomSheets */ = {
 			isa = PBXGroup;
 			children = (
+				29DF933B2EC6401F0047801F /* Gamified */,
 				29CC0DFC2E8EBE1E009643B9 /* RYABottomSheet.swift */,
 				2953D84628B7790800DC456E /* HabiticaBottomSheet.swift */,
 				2953D84928B77E4900DC456E /* BottomSheetMenu.swift */,
@@ -1889,6 +1892,16 @@
 				29ADAB512E7C233900FFB9A0 /* BuySheetViewModel.swift */,
 			);
 			path = BuySheet;
+			sourceTree = "<group>";
+		};
+		29DF933B2EC6401F0047801F /* Gamified */ = {
+			isa = PBXGroup;
+			children = (
+				29CBCDA32EC4E5090020FC14 /* GamifiedWaveBackground.swift */,
+				29CBCDA52EC4E5EC0020FC14 /* FanfareContainer.swift */,
+				29DF933C2EC640860047801F /* GamifiedBottomSheet.swift */,
+			);
+			path = Gamified;
 			sourceTree = "<group>";
 		};
 		29E16318200E849000685640 /* Social */ = {
@@ -2489,8 +2502,6 @@
 				29B30EBA2E0ADE92001B587B /* Settings */,
 				29C9BDDE2E9FE48400FC4FCA /* BulkStatsAllocationSheet.swift */,
 				2972A33F2EBBA87D00106850 /* AchievementSheet.swift */,
-				29CBCDA32EC4E5090020FC14 /* GamifiedWaveBackground.swift */,
-				29CBCDA52EC4E5EC0020FC14 /* FanfareContainer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3451,6 +3462,7 @@
 				294EB59D1FA0A7E4006083BD /* FixCharacterViewController.swift in Sources */,
 				2990EAE32AB9FB7900916A67 /* FeedSheetView.swift in Sources */,
 				29E1630F200E279900685640 /* MenuNavigationBarView.swift in Sources */,
+				29DF933D2EC640860047801F /* GamifiedBottomSheet.swift in Sources */,
 				49E6F57D1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.swift in Sources */,
 				D9BB45631E71CE910002AE2E /* HabitTableViewCell.swift in Sources */,
 				2914488E2089EC5C00F3A6B5 /* AvatarOverviewViewController.swift in Sources */,

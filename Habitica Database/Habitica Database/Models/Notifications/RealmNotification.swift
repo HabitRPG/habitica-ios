@@ -20,7 +20,8 @@ class RealmNotification: BaseModel,
     NotificationLoginIncentiveProtocol,
     NotificationFirstDropProtocol,
     NotificationItemReceivedProtocol,
-    NotificationGroupTaskProtocol {
+    NotificationGroupTaskProtocol,
+    NotificationCardReceivedProtocol {
     @objc dynamic var id: String = ""
     @objc dynamic var realmType: String = ""
     var type: HabiticaNotificationType {
@@ -51,6 +52,10 @@ class RealmNotification: BaseModel,
     @objc dynamic var achievementModalText: String?
     @objc dynamic var egg: String?
     @objc dynamic var hatchingPotion: String?
+    
+    @objc dynamic var cardKey: String?
+    @objc dynamic var cardSenderID: String?
+    @objc dynamic var cardSenderName: String?
     
     @objc dynamic var nextRewardAt: Int = -1
     @objc dynamic var message: String?
@@ -111,6 +116,11 @@ class RealmNotification: BaseModel,
             message = notification.message
             icon = notification.icon
             openDestination = notification.openDestination
+        }
+        if let notification = protocolObject as? NotificationCardReceivedProtocol {
+            cardKey = notification.cardKey
+            cardSenderID = notification.cardSenderID
+            cardSenderName = notification.cardSenderName
         }
         achievementKey = protocolObject.achievementKey
         achievementMessage = protocolObject.achievementMessage

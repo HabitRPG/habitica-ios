@@ -221,6 +221,18 @@ struct BasicNotificationView: View {
     }
 }
 
+struct CardReceivedNotificationView: View {
+    let notification: NotificationCardReceivedProtocol
+    let onDismiss: () -> Void
+    
+    var body: some View {
+        NotificationMainContent(onDismiss: onDismiss) {
+            NotificationImage(content: PixelArtView(name: "notif_inventory_special_\(notification.cardKey ?? "")"))
+            NotificationTexts(description: Text(markdown: "\(notification.cardSenderName ?? "") sent you a **\(notification.cardKey?.localizedCapitalized ?? "") Card!**"))
+        }
+    }
+}
+
 struct UnallocatedStatsNotificationView: View {
     let notification: NotificationUnallocatedStatsProtocol
     let onDismiss: () -> Void
@@ -360,7 +372,9 @@ struct GroupTaskNotificationView: View {
     var body: some View {
         NotificationMainContent(onDismiss: onDismiss) {
             NotificationImage(content: Image(.notificationsGroupTask))
-            NotificationTexts(title: Text(notification.notificationMessage ?? ""))
+            if let formatted = try? HabiticaMarkdownHelper.toHabiticaAttributedString(notification.notificationMessage ?? "") {
+                NotificationTexts(description: Text(AttributedString(formatted)))
+            }
         }
     }
 }
@@ -400,6 +414,8 @@ struct NotificationsPage: View {
             AchievementNotificationView(notification: notification, onDismiss: onNotificationDismiss)
         } else if type.isGroupPlan, let notification = notification as? NotificationGroupTaskProtocol {
             GroupTaskNotificationView(notification: notification, onDismiss: onNotificationDismiss)
+        } else if type == .cardReceived, let notification = notification as? NotificationCardReceivedProtocol {
+            CardReceivedNotificationView(notification: notification, onDismiss: onNotificationDismiss)
         } else {
             BasicNotificationView(notification: notification, onDismiss: onNotificationDismiss)
         }

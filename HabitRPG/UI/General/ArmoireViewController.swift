@@ -33,10 +33,10 @@ extension View {
     }
 }
 
-private struct ArmoirePlus: View {
+struct ArmoirePlus: View {
     var thickness: CGFloat = 6
     var length: CGFloat = 12
-    var maxSpacing: CGFloat = 4
+    var maxSpacing: CGFloat = 3
     var color = Color(ThemeService.shared.theme.tintColor)
     
     @State private var isAnimating = false
@@ -63,7 +63,7 @@ private struct ArmoirePlus: View {
                 .clipShape(.capsule)
                 .offset(x: 0, y: isAnimating ? maxSpacing : 0)
         }
-        .animation(.easeInOut(duration: Double.random(in: 3...4)).repeatForever(autoreverses: true), value: isAnimating)
+        .animation(.easeInOut(duration: Double.random(in: 3...6)).repeatForever(autoreverses: true), value: isAnimating)
         .onAppear {
             withAnimation {
                 isAnimating = true

@@ -243,6 +243,7 @@ struct RYABottomSheet: View, Dismissable {
                     })
                     .safeAreaBar(edge: .bottom) {
                         bottomContent
+                            .padding(.bottom, 12)
                     }
             } else {
                 topContent

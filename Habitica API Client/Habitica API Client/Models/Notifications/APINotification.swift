@@ -22,8 +22,16 @@ private class APIItemReceivedData: Decodable {
     var text: String
 }
 
-public class APINotification: NotificationProtocol, NotificationNewsProtocol, NotificationNewChatProtocol,
-                              NotificationUnallocatedStatsProtocol, NotificationFirstDropProtocol, NotificationLoginIncentiveProtocol, NotificationItemReceivedProtocol, NotificationGroupTaskProtocol, Decodable {
+public class APINotification: NotificationProtocol,
+                              NotificationNewsProtocol,
+                              NotificationNewChatProtocol,
+                              NotificationUnallocatedStatsProtocol,
+                              NotificationFirstDropProtocol,
+                              NotificationLoginIncentiveProtocol,
+                              NotificationItemReceivedProtocol,
+                              NotificationGroupTaskProtocol,
+                              NotificationCardReceivedProtocol,
+                              Decodable {
     public var isValid: Bool = true
     public var isManaged: Bool = false
     
@@ -45,6 +53,10 @@ public class APINotification: NotificationProtocol, NotificationNewsProtocol, No
     public var message: String?
     public var rewardKey: [String] = []
     public var rewardText: String?
+    
+    public var cardKey: String?
+    public var cardSenderID: String?
+    public var cardSenderName: String?
     
     public var icon: String?
     public var openDestination: String?
@@ -88,6 +100,11 @@ public class APINotification: NotificationProtocol, NotificationNewsProtocol, No
             message = data?.text
             icon = data?.icon
             openDestination = data?.destination
+        case .cardReceived:
+            let data = try? values.decode(APINotificationCardReceivedData.self, forKey: .data)
+            cardKey = data?.card
+            cardSenderID = data?.sender?.id
+            cardSenderName = data?.sender?.name
         default:
             break
         }

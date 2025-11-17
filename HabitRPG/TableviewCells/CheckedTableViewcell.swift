@@ -46,10 +46,10 @@ class CheckedTableViewCell: TaskTableViewCell {
         contentView.clipsToBounds = true
     }
     
-    override func configure(task: TaskProtocol) {
+    override func configure(task: TaskProtocol, isLocked: Bool = false) {
         self.task = task
-        super.configure(task: task)
-        self.checkBox.configure(task: task, completed: task.completed(by: userID) )
+        super.configure(task: task, isLocked: isLocked)
+        self.checkBox.configure(task: task, completed: task.completed(by: userID), isLocked: isLocked)
         self.checkBox.wasTouched = {[weak self] in
             self?.checkTask()
         }

@@ -26,10 +26,10 @@ class HabitTableViewCell: TaskTableViewCell {
         contentEndEdge = minusButton.edge.start
     }
     
-    override func configure(task: TaskProtocol) {
-        super.configure(task: task)
-        plusButton.configure(task: task, isNegative: false)
-        minusButton.configure(task: task, isNegative: true)
+    override func configure(task: TaskProtocol, isLocked: Bool = false) {
+        super.configure(task: task, isLocked: isLocked)
+        plusButton.configure(task: task, isNegative: false, isLocked: isLocked)
+        minusButton.configure(task: task, isNegative: true, isLocked: isLocked)
         plusButton.action = {[weak self] in
             self?.scoreUp()
         }
