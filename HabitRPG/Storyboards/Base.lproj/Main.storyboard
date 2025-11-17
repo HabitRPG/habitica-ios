@@ -539,14 +539,14 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPg-7O-j94">
-                                                        <rect key="frame" x="0.0" y="135.33333333333337" width="378" height="1"/>
+                                                        <rect key="frame" x="0.0" y="135.33333333333334" width="378" height="1"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="V3u-UV-9kz"/>
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="ul9-Fj-GrY">
-                                                        <rect key="frame" x="0.0" y="144.33333333333337" width="378" height="19.999999999999972"/>
+                                                        <rect key="frame" x="0.0" y="144.33333333333334" width="378" height="20"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGm-VS-bMz">
                                                                 <rect key="frame" x="0.0" y="0.0" width="85" height="20"/>
@@ -566,7 +566,7 @@
                                                         </constraints>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hqi-5C-p2F" customClass="ProgressBar" customModule="Habitica" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="172.33333333333337" width="378" height="5"/>
+                                                        <rect key="frame" x="0.0" y="172.33333333333334" width="378" height="5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="5" id="sHS-eo-snW"/>
@@ -2536,22 +2536,10 @@
             <objects>
                 <tableViewController id="CZc-T4-a1C" customClass="FilterViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="RJ8-HL-bIH">
-                        <barButtonItem key="leftBarButtonItem" id="gXq-n8-9n6">
-                            <connections>
-                                <action selector="clearTags:" destination="CZc-T4-a1C" id="w6a-pA-ffR"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="2yR-UY-zxm">
-                            <connections>
-                                <segue destination="Rot-qR-0bj" kind="unwind" unwindAction="unwindFilterChangedWithSegue:" id="JlJ-u3-PVM"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="RJ8-HL-bIH"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="clearButton" destination="gXq-n8-9n6" id="ZGu-Me-OV9"/>
-                        <outlet property="doneNavbarButton" destination="2yR-UY-zxm" id="xbc-cU-udP"/>
+                        <segue destination="Rot-qR-0bj" kind="unwind" identifier="filterChangedSegue" unwindAction="unwindFilterChangedWithSegue:" id="GIG-rX-Wqy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SBZ-BJ-FJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -8,6 +8,24 @@
 
 import SwiftUI
 
+extension Font.Weight {
+    var asUIFontWeight: UIFont.Weight {
+        switch self {
+        case .ultraLight: return .ultraLight
+        case .black: return .black
+        case .light: return .light
+        case .bold: return .bold
+        case .heavy: return .heavy
+        case .medium: return .medium
+        case .regular: return .regular
+        case .semibold: return .semibold
+        case .thin: return .thin
+        default:
+            return .regular
+        }
+    }
+}
+
 // Use for TextField to become first Responder
 // Source: https://stackoverflow.com/questions/56507839/swiftui-how-to-make-textfield-become-first-responder
 struct FocusableTextField: UIViewRepresentable {
@@ -29,13 +47,24 @@ struct FocusableTextField: UIViewRepresentable {
         view.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         view.addTarget(context.coordinator, action: #selector(Coordinator.textViewDidChange), for: .editingChanged)
         view.delegate = context.coordinator
-        view.textColor = ThemeService.shared.theme.primaryTextColor
+        if #available(iOS 26.0, *) {
+            if let font = context.environment.font?.resolve(in: context.environment.fontResolutionContext) {
+                view.font = UIFont.systemFont(ofSize: font.pointSize, weight: font.weight.asUIFontWeight)
+            }
+        }
+        view.textColor = context.environment.tintColor?.uiColor()
         return view
     }
 
     public func updateUIView(_ uiView: UITextField, context: Context) {
         uiView.placeholder = placeholder
         uiView.text = text
+        if #available(iOS 26.0, *) {
+            if let font = context.environment.font?.resolve(in: context.environment.fontResolutionContext) {
+                uiView.font = UIFont.systemFont(ofSize: font.pointSize, weight: font.weight.asUIFontWeight)
+            }
+        }
+        uiView.textColor = context.environment.tintColor?.uiColor()
         configuration(uiView)
         if isFirstResponder && !uiView.isFirstResponder {
             uiView.becomeFirstResponder()
