@@ -166,7 +166,7 @@ class BuySheetViewModel: ObservableObject {
             remainingPurchaseQuantity { remainingQuantity in
                 if remainingQuantity >= 0 {
                     if remainingQuantity < self.quantity {
-                        // self.displayPurchaseConfirmationDialog(quantity: remainingQuantity)
+                        self.displayPurchaseConfirmationDialog(quantity: remainingQuantity)
                         return
                     }
                 }
@@ -322,75 +322,74 @@ class BuySheetViewModel: ObservableObject {
     
     static func displayInsufficientGemsModal(reward: InAppRewardProtocol? = nil, reason: String = "purchase modal", delayDisplay: Bool = true) {
         HabiticaAnalytics.shared.log("show insufficient gems modal", withEventProperties: ["reason": "purchase modal", "item": reward?.key ?? ""])
-        let alert = prepareInsufficientModal(title: L10n.notEnoughGems, message: L10n.moreGemsMessage, image: Asset.insufficientGems.image)
-        alert.addAction(title: L10n.purchaseGems, isMainAction: true, handler: { _ in
-            let navigationController = StoryboardScene.Main.purchaseGemNavController.instantiate()
-            UIApplication.topViewController()?.present(navigationController, animated: true, completion: nil)
-        })
-        alert.addCloseAction()
+        let sheet = InsufficientCurrencySheet(backgroundColor: .purple400,
+                                              circleColor: .purple100,
+                                              ringColor: .purple300,
+                                              plusColor: .purple500,
+                                              icon: Image(Asset.insufficientGems.name),
+                                              title: Text(L10n.moreGemsMessage),
+                                              content: Text(L10n.gemsSupportDevelopers)) {
+            HabiticaButtonUI(label: Text(L10n.purchaseGems), color: Color(ThemeService.shared.theme.tintColor)) {
+                RouterHandler.shared.handle(.purchaseGems)
+            }
+        }
+        let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
         if delayDisplay {
             DispatchQueue.main.asyncAfter(deadline: .now()) {
-                alert.enqueue()
+                viewController.show()
             }
         } else {
-            alert.enqueue()
+            viewController.show()
         }
     }
     
     static func displayInsufficientGoldModal() {
-        let alert = prepareInsufficientModal(title: L10n.notEnoughGold, message: L10n.completeMoreTasks, image: Asset.insufficientGold.image)
-        alert.addAction(title: L10n.takeMeBack, isMainAction: true)
+        let sheet = InsufficientCurrencySheet(backgroundColor: .yellow100,
+                                              circleColor: Color(ThemeService.shared.theme.contentBackgroundColor),
+                                              ringColor: .yellow500,
+                                              plusColor: .yellow10,
+                                              icon: Image(Asset.insufficientGold.name),
+                                              title: Text(L10n.notEnoughGold),
+                                              content: Text(L10n.completeMoreTasks)) {
+        }
+        let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
         DispatchQueue.main.asyncAfter(deadline: .now()) {
-            alert.enqueue()
+            viewController.show()
         }
     }
     
     static func displayInsufficientHourglassesModal(user: UserProtocol?) {
-        let alert = prepareInsufficientModal(title: L10n.notEnoughHourglasses, message: nil, image: Asset.insufficientHourglasses.image)
-        if user?.isSubscribed == true {
-            alert.message = L10n.insufficientHourglassesMessageSubscriber
-            alert.addAction(title: L10n.takeMeBack, isMainAction: true)
-        } else {
-            alert.message = L10n.insufficientHourglassesMessage
-            alert.addAction(title: L10n.learnMore, isMainAction: true, handler: { _ in
-                let navigationController = StoryboardScene.Main.subscriptionNavController.instantiate()
-                UIApplication.topViewController()?.present(navigationController, animated: true, completion: nil)
-            })
-            alert.addCloseAction()
+        let isSubscribed = user?.isSubscribed == true
+        let sheet = InsufficientCurrencySheet(backgroundColor: .blue100,
+                                              circleColor: Color(ThemeService.shared.theme.contentBackgroundColor),
+                                              ringColor: .blue500,
+                                              plusColor: .blue10,
+                                              icon: Image(Asset.insufficientHourglasses.name),
+                                              title: Text(L10n.notEnoughHourglasses),
+                                              content: Text(isSubscribed ? L10n.insufficientHourglassesMessageSubscriber : L10n.insufficientHourglassesMessage)) {
+            HabiticaButtonUI(label: Text(L10n.learnMore), color: Color(ThemeService.shared.theme.tintColor)) {
+                RouterHandler.shared.handle(.subscription)
+            }
         }
+        let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
         DispatchQueue.main.asyncAfter(deadline: .now()) {
-            alert.enqueue()
+            viewController.show()
         }
     }
     
     static func displayGemCapReachedModal() {
-        let alert = prepareInsufficientModal(title: L10n.monthlyGemCapReached, message: L10n.Inventory.noGemsLeft, image: Asset.insufficientGems.image)
-        alert.addAction(title: L10n.takeMeBack, isMainAction: true)
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            alert.enqueue()
+        let sheet = InsufficientCurrencySheet(backgroundColor: .purple400,
+                                              circleColor: .purple100,
+                                              ringColor: .purple300,
+                                              plusColor: .purple500,
+                                              icon: Image(Asset.insufficientGems.name),
+                                              title: Text(L10n.monthlyGemCapReached),
+                                              content: Text(L10n.Inventory.noGemsLeft)) {
         }
-    }
-    
-    static func prepareInsufficientModal(title: String, message: String?, image: UIImage) -> HabiticaAlertController {
-        let alert = HabiticaAlertController()
-        alert.contentView = UIHostingView(rootView: VStack {
-            Image(Asset.bigGem.name)
-                .frame(width: 70, height: 70)
-                .background(Color.purple200)
-                .cornerRadius(35)
-            Text(L10n.moreGemsMessage)
-        }.foregroundStyle(.white)
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 32)
-            .background()
-        )
-        alert.containerViewSpacing = 20
-        alert.topOffset = 0
-        alert.contentViewInsets = .zero
-        alert.arrangeMessageLast = true
-        alert.messageFont = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
-        return alert
+        let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            viewController.show()
+        }
     }
     
     func displayPurchaseConfirmationDialog(quantity: Int) {

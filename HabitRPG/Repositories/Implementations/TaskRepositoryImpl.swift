@@ -115,7 +115,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
                 let magicDiff = (response.magic ?? 0) - stats.mana
                 var expDiff = (response.experience ?? 0) - stats.experience
                 if stats.level < (response.level ?? 0) {
-                    let levelUpView = LevelUpOverlayView()
+                    let levelUpView = HostingBottomSheetController(rootView: LevelupSheet(), prefersGrabberVisible: false)
                     levelUpView.show()
                     SoundManager.shared.play(effect: .levelUp)
                     

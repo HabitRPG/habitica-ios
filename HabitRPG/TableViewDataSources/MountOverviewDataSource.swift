@@ -30,14 +30,14 @@ class MountOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                     return !key.isEmpty
                 })
             })
-            .combineLatest(with: self.stableRepository.getMounts(sortKey: (organizeByColor ? "potion" : "egg")))
-            .combineLatest(with: self.inventoryRepository.getItems(type: ItemType.hatchingPotions)
-                            .combineLatest(with: self.inventoryRepository.getItems(type: ItemType.eggs))
+            .combineLatest(with: stableRepository.getMounts(sortKey: (organizeByColor ? "potion" : "egg")))
+            .combineLatest(with: inventoryRepository.getItems(type: ItemType.hatchingPotions)
+                            .combineLatest(with: inventoryRepository.getItems(type: ItemType.eggs))
             )
             .map({[weak self] (pets, items) -> [String: [StableOverviewItem]] in
                 var sortedItems = [String: String]()
-                items.0.value.forEach { sortedItems["potion-\($0.key ?? "")"] = $0.text }
-                items.1.value.forEach { sortedItems["egg-\($0.key ?? "")"] = ($0 as? EggProtocol)?.mountText }
+                items.0.value.forEach { $0.isValid ? sortedItems["potion-\($0.key ?? "")"] = $0.text : () }
+                items.1.value.forEach { $0.isValid ? sortedItems["egg-\($0.key ?? "")"] = ($0 as? EggProtocol)?.mountText : () }
                 return self?.mapData(owned: pets.0, animals: pets.1.value, items: sortedItems) ?? [:]
             })
             .on(value: {[weak self]overviewItems in

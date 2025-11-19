@@ -375,7 +375,7 @@ class HabiticaAlertController: UIViewController, Themeable {
                 topController = parent
             }
             modalTransitionStyle = .crossDissolve
-            modalPresentationStyle = .fullScreen
+            modalPresentationStyle = .overFullScreen
             topController.present(self, animated: true) {
             }
         }

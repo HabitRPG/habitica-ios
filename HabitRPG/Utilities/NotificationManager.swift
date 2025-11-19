@@ -8,6 +8,7 @@
 
 import Foundation
 import Habitica_Models
+import SwiftUI
 
 class NotificationManager {
     private static var seenNotifications = Set<String>()
@@ -77,71 +78,130 @@ class NotificationManager {
         }
         userRepository.retrieveUser().observeCompleted {}
         userRepository.readNotification(notification: notification).observeCompleted {}
-        let alert = HabiticaAlertController(title: L10n.firstDropTitle)
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.spacing = 12
-        let iconStackView = UIStackView()
-        iconStackView.axis = .horizontal
-        iconStackView.spacing = 16
-        let eggView = NetworkImageView()
-        eggView.setImagewith(name: "Pet_Egg_\(firstDropNotification.egg ?? "")")
-        eggView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        eggView.cornerRadius = 4
-        eggView.contentMode = .center
-        iconStackView.addArrangedSubview(eggView)
-        eggView.addWidthConstraint(width: 80)
-        let potionView = NetworkImageView()
-        potionView.setImagewith(name: "Pet_HatchingPotion_\(firstDropNotification.hatchingPotion ?? "")")
-        potionView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        potionView.cornerRadius = 4
-        potionView.contentMode = .center
-        iconStackView.addArrangedSubview(potionView)
-        potionView.addWidthConstraint(width: 80)
-        stackView.addArrangedSubview(iconStackView)
-        iconStackView.addHeightConstraint(height: 80)
-        let firstLabel = UILabel()
-        firstLabel.text = L10n.firstDropExplanation1
-        firstLabel.textColor = ThemeService.shared.theme.ternaryTextColor
-        firstLabel.font = .systemFont(ofSize: 14)
-        firstLabel.textAlignment = .center
-        firstLabel.numberOfLines = 0
-        stackView.addArrangedSubview(firstLabel)
-        let firstSize = firstLabel.sizeThatFits(CGSize(width: 240, height: 600))
-        firstLabel.addHeightConstraint(height: firstSize.height)
-        let secondLabel = UILabel()
-        secondLabel.text = L10n.firstDropExplanation2
-        secondLabel.textColor = ThemeService.shared.theme.secondaryTextColor
-        secondLabel.font = .systemFont(ofSize: 14)
-        secondLabel.textAlignment = .center
-        secondLabel.numberOfLines = 0
-        stackView.addArrangedSubview(secondLabel)
-        let size = secondLabel.sizeThatFits(CGSize(width: 240, height: 600))
-        secondLabel.addHeightConstraint(height: size.height)
-        
-        alert.contentView = stackView
-        alert.addAction(title: L10n.goToItems, isMainAction: true) { _ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                RouterHandler.shared.handle(urlString: "/inventory/items")
-            }
+        let viewC = HostingBottomSheetController(rootView: FirstDropSheet(eggKey: firstDropNotification.egg ?? "", potionKey: firstDropNotification.hatchingPotion ?? ""), prefersGrabberVisible: false)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            viewC.show()
         }
-        alert.addCloseAction()
-        alert.enqueue()
         return true
     }
     
+    func setNotification(notification: NotificationProtocol) {
+
+    }
+    
+    // swiftlint:disable:next function_body_length
     static func displayAchievement(notification: NotificationProtocol, isOnboarding: Bool, isLastOnboardingAchievement: Bool) -> Bool {
         userRepository.retrieveUser().observeCompleted {}
         userRepository.readNotification(notification: notification).observeCompleted {}
+        
+        var key = notification.type.rawValue
+        if notification.type == HabiticaNotificationType.achievementGeneric {
+            key = notification.achievementKey ?? ""
+        }
+        var text: String = ""
+        var description: String = ""
+        var imageKey: String = ""
+        switch key {
+        case HabiticaNotificationType.achievementPartyUp.rawValue:
+            text = L10n.partyUpTitle
+            description = L10n.partyUpDescription
+            imageKey = "partyUp"
+        case HabiticaNotificationType.achievementPartyOn.rawValue:
+            text = L10n.partyOnTitle
+            description = L10n.partyOnDescription
+            imageKey = "partyOn"
+        case HabiticaNotificationType.achievementBeastMaster.rawValue:
+            text = L10n.beastMasterTitle
+            description = L10n.beastMasterDescription
+            imageKey = "rat"
+        case HabiticaNotificationType.achievementMountMaster.rawValue:
+            text = L10n.mountMasterTitle
+            description = L10n.mountMasterDescription
+            imageKey = "wolf"
+        case HabiticaNotificationType.achievementTriadBingo.rawValue:
+            text = L10n.triadBingoTitle
+            description = L10n.triadBingoDescription
+            imageKey = "triadbingo"
+        case HabiticaNotificationType.achievementGuildJoined.rawValue:
+            text = L10n.guildJoinedTitle
+            description = L10n.guildJoinedDescription
+            imageKey = "guild"
+        case HabiticaNotificationType.achievementChallengeJoined.rawValue:
+            text = L10n.challengeJoinedTitle
+            description = L10n.challengeJoinedDescription
+            imageKey = "challenge"
+            
+        case HabiticaNotificationType.achievementAllYourBase.rawValue,
+             HabiticaNotificationType.achievementBackToBasics.rawValue,
+             HabiticaNotificationType.achievementJustAddWater.rawValue,
+             HabiticaNotificationType.achievementLostMasterclasser.rawValue,
+             HabiticaNotificationType.achievementMindOverMatter.rawValue,
+             HabiticaNotificationType.achievementDustDevil.rawValue,
+             HabiticaNotificationType.achievementAridAuthority.rawValue,
+             HabiticaNotificationType.achievementMonsterMagus.rawValue,
+             HabiticaNotificationType.achievementUndeadUndertaker.rawValue,
+             HabiticaNotificationType.achievementPrimedForPainting.rawValue,
+             HabiticaNotificationType.achievementPearlyPro.rawValue,
+             HabiticaNotificationType.achievementTickledPink.rawValue,
+             HabiticaNotificationType.achievementRosyOutlook.rawValue,
+             HabiticaNotificationType.achievementBugBonanza.rawValue,
+             HabiticaNotificationType.achievementBareNecessities.rawValue,
+             HabiticaNotificationType.achievementFreshwaterFriends.rawValue,
+             HabiticaNotificationType.achievementGoodAsGold.rawValue,
+             HabiticaNotificationType.achievementAllThatGlitters.rawValue,
+             HabiticaNotificationType.achievementBoneCollector.rawValue,
+             HabiticaNotificationType.achievementSkeletonCrew.rawValue:
+            text = notification.achievementMessage ?? ""
+            description = notification.achievementModalText ?? ""
+            imageKey = notification.achievementKey ?? ""
+            
+        case HabiticaNotificationType.achievementInvitedFriend.rawValue:
+            text = L10n.invitedFriendTitle
+            description = L10n.invitedFriendDescription
+            imageKey = "friends"
+        case "createdTask":
+            text = L10n.createdTaskTitle
+            description = L10n.createdTaskDescription
+            imageKey = "createdTask"
+        case "completedTask":
+            text = L10n.completedTaskTitle
+            description = L10n.completedTaskDescription
+            imageKey = "completedTask"
+        case "hatchedPet":
+            text = L10n.hatchedPetTitle
+            description = L10n.hatchedPetDescription
+            imageKey = "hatchedPet"
+        case "fedPet":
+            text = L10n.fedPetTitle
+            description = L10n.fedPetDescription
+            imageKey = "fedPet"
+        case "purchasedEquipment":
+            text = L10n.purchasedEquipmentTitle
+            description = L10n.purchasedEquipmentDescription
+            imageKey = "purchasedEquipment"
+        case HabiticaNotificationType.achievementOnboardingComplete.rawValue:
+            text = L10n.onboardingCompleteAchievementTitle
+            description = L10n.onboardingCompleteDescription
+            imageKey = "onboardingComplete"
+        default:
+            break
+        }
+        
         if notification.type == HabiticaNotificationType.achievementOnboardingComplete {
             HabiticaAnalytics.shared.setUserProperty(key: "completedOnboarding", value: "true")
         }
-        let alert = AchievementAlertController()
-        alert.setNotification(notification: notification, isOnboarding: isOnboarding, isLastOnboardingAchievement: isLastOnboardingAchievement)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            // add a slight delay to make sure that any running VC transitions are done
-            alert.enqueue()
+        if isLastOnboardingAchievement {
+            
+        } else {
+            let viewC = HostingBottomSheetController(rootView: AchievementReceivedSheet(key: imageKey,
+                                                                                        isOnboarding: isOnboarding,
+                                                                                        text: Text(text),
+                                                                                        description: Text(description)),
+                                                     prefersGrabberVisible: false)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                // add a slight delay to make sure that any running VC transitions are done
+                viewC.show()
+            }
         }
         return true
     }
@@ -157,30 +217,15 @@ class NotificationManager {
                 if imageName.contains("armor") {
                     imageName = "slim_\(imageName)"
                 }
-                let alert = ImageOverlayView(imageName: imageName,
-                                             title: loginIncentiveNotification.message,
-                                             message: nil)
-                if imageName.contains("background") {
-                    alert.imageHeight = 140
-                }
-                let mutableString = NSMutableAttributedString(string: L10n.checkinPrizeEarned(loginIncentiveNotification.rewardText ?? ""))
-                mutableString.append(NSAttributedString(string: "\n\n"))
+                var nextRewardIn = 0
                 if let loginIncentives = user?.loginIncentives {
-                    let nextRewardIn = nextRewardAt - loginIncentives
-                    mutableString.append(NSAttributedString(string: L10n.nextPrizeInXCheckins(nextRewardIn), attributes: [
-                        .font: UIFont.systemFont(ofSize: 14, weight: .semibold)
-                    ]))
-                } else {
-                    mutableString.append(NSAttributedString(string: L10n.nextPrizeAtXCheckins(nextRewardAt), attributes: [
-                        .font: UIFont.systemFont(ofSize: 14, weight: .semibold)
-                    ]))
+                    nextRewardIn = nextRewardAt - loginIncentives
                 }
-                
-                alert.attributedMessage = mutableString
-                alert.addAction(title: L10n.seeYouTomorrow, isMainAction: true)
-                alert.arrangeMessageLast = true
+                let viewC = HostingBottomSheetController(rootView: LoginIncentiveSheet(imageName: imageName,
+                                                                                       text: loginIncentiveNotification.rewardText ?? "",
+                                                                                       nextUnlockIn: nextRewardIn), prefersGrabberVisible: false)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    alert.show()
+                    viewC.show()
                 }
             } else {
                 if let loginIncentives = user?.loginIncentives {

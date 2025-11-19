@@ -8,69 +8,131 @@
 
 import SwiftUI
 
-struct GamifiedBottomSheet<UpperContent: View, Title: View, Description: View, Buttons: View>: View {
-    var upperBackgroundColor: Color = .purple400
+struct SolidColorView: View {
+    let color: Color
+    
+    var body: some View {
+        Rectangle().fill().foregroundStyle(color)
+    }
+}
+
+struct GamifiedBottomSheet<UpperBackground: View, UpperContent: View, Title: View, Description: View, Buttons: View>: View {
+    @Environment(\.presentationManager) var presentationManager
+
+    var upperBackground: UpperBackground
     let upperContent: UpperContent
+    var upperContentBottomPadding: CGFloat = 35
     let title: Title
     let description: Description
-    @ViewBuilder let buttons: Buttons
+    @ViewBuilder let buttons: () -> Buttons
     
     var body: some View {
         VStack(spacing: 16) {
             ZStack(alignment: .topLeading) {
                 upperContent.frame(maxWidth: .infinity)
-                Button {
-                    
-                } label: {
-                    Image(systemName: "xmark")
-                        .scaledFont(size: 24)
-                        .frame(width: 24, height: 24)
-                }.buttonStyle(.bordered)
-                    .tint(.gray10)
-                    .clipShape(.circle)
-                    .padding(.top, 16)
-                    .padding(.leading, 12)
+                    Button {
+                        presentationManager.dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .scaledFont(size: 24)
+                            .frame(width: 24, height: 24)
+                    }.buttonStyle(.bordered)
+                        .tint(.gray10)
+                        .clipShape(.circle)
+                        .padding(.top, 16)
+                        .padding(.leading, 16)
             }
-                .padding(.bottom, 35)
-                .background(GamifiedWaveBackground(color: upperBackgroundColor))
+                .padding(.bottom, upperContentBottomPadding)
+                .gamifiedWaveBackground(view: upperBackground)
                 .padding(.bottom, 10)
             VStack(spacing: 4) {
                 title.scaledFont(size: 20, weight: .semibold)
                 description.scaledFont(size: 17)
-            }.padding(.horizontal, 30)
-                .multilineTextAlignment(.center)
-            buttons
+            }
+            .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
+            .padding(.horizontal, 30)
+            buttons()
                 .padding(.horizontal, 16)
         }
+        .multilineTextAlignment(.center)
     }
 }
 
-extension GamifiedBottomSheet where Description == EmptyView {
-    init(upperBackgroundColor: Color = .purple400, upperContent: UpperContent, title: Title, buttons: Buttons) {
+extension GamifiedBottomSheet where UpperBackground == SolidColorView {
+    init(upperBackgroundColor: Color = .purple400, upperContent: UpperContent, upperContentBottomPadding: CGFloat = 35, title: Title, description: Description, @ViewBuilder buttons: @escaping () -> Buttons) {
         self.upperContent = upperContent
+        self.upperContentBottomPadding = upperContentBottomPadding
+        self.title = title
+        self.description = description
+        self.upperBackground = SolidColorView(color: upperBackgroundColor)
+        self.buttons = buttons
+    }
+}
+
+extension GamifiedBottomSheet where Description == EmptyView, UpperBackground == SolidColorView {
+    init(upperBackgroundColor: Color = .purple400, upperContent: UpperContent, upperContentBottomPadding: CGFloat = 35, title: Title, @ViewBuilder buttons: @escaping () -> Buttons) {
+        self.upperContent = upperContent
+        self.upperContentBottomPadding = upperContentBottomPadding
         self.title = title
         self.description = EmptyView()
-        self.upperBackgroundColor = upperBackgroundColor
+        self.upperBackground = SolidColorView(color: upperBackgroundColor)
+        self.buttons = buttons
+    }
+}
+
+extension GamifiedBottomSheet where UpperBackground == SolidColorView, Title == EmptyView, Description == EmptyView {
+    init(upperBackgroundColor: Color = .purple400, upperContent: UpperContent, upperContentBottomPadding: CGFloat = 35, @ViewBuilder buttons: @escaping () -> Buttons) {
+        self.upperContent = upperContent
+        self.upperContentBottomPadding = upperContentBottomPadding
+        self.title = EmptyView()
+        self.description = EmptyView()
+        self.upperBackground = SolidColorView(color: upperBackgroundColor)
+        self.buttons = buttons
+    }
+}
+
+extension GamifiedBottomSheet where UpperBackground == SolidColorView, Title == EmptyView {
+    init(upperBackgroundColor: Color = .purple400, upperContent: UpperContent, upperContentBottomPadding: CGFloat = 35, description: Description, @ViewBuilder buttons: @escaping () -> Buttons) {
+        self.upperContent = upperContent
+        self.upperContentBottomPadding = upperContentBottomPadding
+        self.title = EmptyView()
+        self.description = description
+        self.upperBackground = SolidColorView(color: upperBackgroundColor)
+        self.buttons = buttons
+    }
+}
+
+// Extensions for custom background view
+
+extension GamifiedBottomSheet where Description == EmptyView {
+    init(upperBackground: UpperBackground, upperContent: UpperContent, upperContentBottomPadding: CGFloat = 35, title: Title, @ViewBuilder buttons: @escaping () -> Buttons) {
+        self.upperContent = upperContent
+        self.upperContentBottomPadding = upperContentBottomPadding
+        self.title = title
+        self.description = EmptyView()
+        self.upperBackground = upperBackground
         self.buttons = buttons
     }
 }
 
 extension GamifiedBottomSheet where Title == EmptyView, Description == EmptyView {
-    init(upperBackgroundColor: Color = .purple400, upperContent: UpperContent, buttons: Buttons) {
+    init(upperBackground: UpperBackground, upperContent: UpperContent, upperContentBottomPadding: CGFloat = 35, @ViewBuilder buttons: @escaping () -> Buttons) {
         self.upperContent = upperContent
+        self.upperContentBottomPadding = upperContentBottomPadding
         self.title = EmptyView()
         self.description = EmptyView()
-        self.upperBackgroundColor = upperBackgroundColor
+        self.upperBackground = upperBackground
         self.buttons = buttons
     }
 }
 
 extension GamifiedBottomSheet where Title == EmptyView {
-    init(upperBackgroundColor: Color = .purple400, upperContent: UpperContent, description: Description, buttons: Buttons) {
+    init(upperBackground: UpperBackground, upperContent: UpperContent, upperContentBottomPadding: CGFloat = 35, description: Description, @ViewBuilder buttons: @escaping () -> Buttons) {
         self.upperContent = upperContent
+        self.upperContentBottomPadding = upperContentBottomPadding
         self.title = EmptyView()
         self.description = description
-        self.upperBackgroundColor = upperBackgroundColor
+        self.upperBackground = upperBackground
         self.buttons = buttons
     }
 }

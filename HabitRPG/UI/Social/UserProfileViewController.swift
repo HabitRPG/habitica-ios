@@ -586,7 +586,7 @@ class UserProfileViewController: BaseHostingViewController<ProfilePage> {
         moreButton.menu = overflowMenu
         
         viewModel.onAchievementDetail = { achievement in
-            let sheet = HostingBottomSheetController(rootView: AchievementSheet(achievement: achievement))
+            let sheet = HostingBottomSheetController(rootView: AchievementDetailSheet(achievement: achievement))
             self.present(sheet, animated: true)
         }
         

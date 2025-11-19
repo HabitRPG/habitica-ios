@@ -162,9 +162,7 @@ class UserManager: NSObject {
         })
         
         faintViewController = checkFainting(user: user)
-        
-        _ = checkClassSelection(user: user)
-        
+                
         handleQuestCompletion(user)
         
         userRepository.registerPushDevice(user: user).observeCompleted {}
@@ -215,13 +213,6 @@ class UserManager: NSObject {
             return faintView
         }
         return faintViewController
-    }
-    
-    func checkClassSelection(user: UserProtocol) -> Bool {
-        if user.flags?.classSelected == false && user.preferences?.disableClasses == false && (user.stats?.level ?? 0) >= 10 {
-            return showClassSelection(user: user)
-        }
-        return false
     }
     
     func showClassSelection(user: UserProtocol) -> Bool {

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "4 gems.png",
+      "filename" : "avatar_border.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "4 gems@2x.png",
+      "filename" : "avatar_border@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "4 gems@3x.png",
+      "filename" : "avatar_border@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

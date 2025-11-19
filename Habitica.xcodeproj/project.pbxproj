@@ -202,7 +202,6 @@
 		295E9DF420B456F100D58D45 /* FilterTableviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DF320B456F100D58D45 /* FilterTableviewDataSource.swift */; };
 		29617E0824E12A5300CF5EB4 /* NetworkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29617E0724E12A5300CF5EB4 /* NetworkImageView.swift */; };
 		29646DE1205C18FA0050886C /* TaskType-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29646DE0205C18FA0050886C /* TaskType-Extensions.swift */; };
-		2967CE5D25236F0E00F366DF /* PetHatchingDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2967CE5C25236F0E00F366DF /* PetHatchingDialog.swift */; };
 		296AC81420AC85C200885682 /* RewardViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296AC81320AC85C200885682 /* RewardViewDataSource.swift */; };
 		296CB4EE218C99FD0044A33E /* HabiticaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CB4ED218C99FD0044A33E /* HabiticaButton.swift */; };
 		296D6F1D20A0908B00D9CAB5 /* PartyQuestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296D6F1C20A0908B00D9CAB5 /* PartyQuestView.swift */; };
@@ -233,7 +232,7 @@
 		2972A33A2EBB96CC00106850 /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2972A3392EBB96CC00106850 /* AmplitudeSwift */; };
 		2972A33C2EBB9A1600106850 /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2972A33B2EBB9A1600106850 /* AmplitudeSwift */; };
 		2972A33E2EBB9A1E00106850 /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2972A33D2EBB9A1E00106850 /* AmplitudeSwift */; };
-		2972A3402EBBA87D00106850 /* AchievementSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2972A33F2EBBA87D00106850 /* AchievementSheet.swift */; };
+		2972A3402EBBA87D00106850 /* AchievementDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2972A33F2EBBA87D00106850 /* AchievementDetailSheet.swift */; };
 		2972A3422EC1FF5200106850 /* QuestDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2972A3412EC1FF5200106850 /* QuestDetails.swift */; };
 		29737EEF2D38055000480353 /* NSRange-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29737EEE2D38054C00480353 /* NSRange-Extensions.swift */; };
 		2974BD91208DEFEA00EC1A25 /* CustomizationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */; };
@@ -427,6 +426,15 @@
 		29DDAC252E82C2CC007EC4CD /* StableDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDAC242E82C2C5007EC4CD /* StableDetailDataSource.swift */; };
 		29DDAC272E82F3FC007EC4CD /* GlassTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDAC262E82F3F7007EC4CD /* GlassTextField.swift */; };
 		29DF933D2EC640860047801F /* GamifiedBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF933C2EC640860047801F /* GamifiedBottomSheet.swift */; };
+		29DF93432ECC8A880047801F /* PetHatchedSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF93422ECC8A880047801F /* PetHatchedSheet.swift */; };
+		29DF93452ECCC3370047801F /* MountRaisedSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF93442ECCC3370047801F /* MountRaisedSheet.swift */; };
+		29DF93472ECCCD3B0047801F /* HatchSuggestionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF93462ECCCD3B0047801F /* HatchSuggestionSheet.swift */; };
+		29DF93492ECCE0640047801F /* ClassConfirmationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF93482ECCE0640047801F /* ClassConfirmationSheet.swift */; };
+		29DF934B2ECDE5150047801F /* AchievementReceivedSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF934A2ECDE5150047801F /* AchievementReceivedSheet.swift */; };
+		29DF934D2ECDEE9C0047801F /* FirstDropSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF934C2ECDEE9C0047801F /* FirstDropSheet.swift */; };
+		29DF934F2ECDFAB60047801F /* LoginIncentiveSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF934E2ECDFAB60047801F /* LoginIncentiveSheet.swift */; };
+		29DF93512ECDFDB90047801F /* LevelupSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF93502ECDFDB90047801F /* LevelupSheet.swift */; };
+		29DF93532ECE1B9E0047801F /* InsufficientCurrencySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF93522ECE1B9E0047801F /* InsufficientCurrencySheet.swift */; };
 		29DFBEFA2B10AE8E000B554B /* FlagPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DFBEF92B10AE8E000B554B /* FlagPage.swift */; };
 		29E162E01FFBBDDC00685640 /* UsernameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */; };
 		29E162E21FFC21E100685640 /* CustomFontMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162E11FFC21E100685640 /* CustomFontMetrics.swift */; };
@@ -436,7 +444,6 @@
 		29E16313200E619400685640 /* QuestProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E16312200E619400685640 /* QuestProgressView.swift */; };
 		29E16315200E629800685640 /* QuestProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E16314200E629800685640 /* QuestProgressBarView.swift */; };
 		29E1631F200F62CB00685640 /* GroupChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1631E200F62CB00685640 /* GroupChatViewController.swift */; };
-		29E30DE620D935AF00F74ECB /* LevelUpOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E30DE520D935AF00F74ECB /* LevelUpOverlayView.swift */; };
 		29E48F0D22E89DB3005C4B45 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E48F0C22E89DB3005C4B45 /* BadgeView.swift */; };
 		29E96B512E157EFC00D9EF25 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E96B502E157EF900D9EF25 /* LoginScreen.swift */; };
 		29E96B532E1692A200D9EF25 /* Font-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E96B522E16929C00D9EF25 /* Font-Extensions.swift */; };
@@ -880,7 +887,6 @@
 		295E9DF320B456F100D58D45 /* FilterTableviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableviewDataSource.swift; sourceTree = "<group>"; };
 		29617E0724E12A5300CF5EB4 /* NetworkImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImageView.swift; sourceTree = "<group>"; };
 		29646DE0205C18FA0050886C /* TaskType-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskType-Extensions.swift"; sourceTree = "<group>"; };
-		2967CE5C25236F0E00F366DF /* PetHatchingDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetHatchingDialog.swift; sourceTree = "<group>"; };
 		296AC81320AC85C200885682 /* RewardViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardViewDataSource.swift; sourceTree = "<group>"; };
 		296ACB37251B605100EC7110 /* Habitica IntentsUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Habitica IntentsUI.entitlements"; sourceTree = "<group>"; };
 		296CB4ED218C99FD0044A33E /* HabiticaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaButton.swift; sourceTree = "<group>"; };
@@ -908,7 +914,7 @@
 		29706CB427D9115C006EC139 /* tasks.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tasks.json; sourceTree = "<group>"; };
 		29706CB627D911F5006EC139 /* XCUIApplication-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication-Extensions.swift"; sourceTree = "<group>"; };
 		2970CB51227B1A8600FACCB7 /* MarkdownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTests.swift; sourceTree = "<group>"; };
-		2972A33F2EBBA87D00106850 /* AchievementSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementSheet.swift; sourceTree = "<group>"; };
+		2972A33F2EBBA87D00106850 /* AchievementDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementDetailSheet.swift; sourceTree = "<group>"; };
 		2972A3412EC1FF5200106850 /* QuestDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDetails.swift; sourceTree = "<group>"; };
 		29737EEE2D38054C00480353 /* NSRange-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRange-Extensions.swift"; sourceTree = "<group>"; };
 		2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationDetailCell.swift; sourceTree = "<group>"; };
@@ -1104,6 +1110,15 @@
 		29DDAC242E82C2C5007EC4CD /* StableDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableDetailDataSource.swift; sourceTree = "<group>"; };
 		29DDAC262E82F3F7007EC4CD /* GlassTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassTextField.swift; sourceTree = "<group>"; };
 		29DF933C2EC640860047801F /* GamifiedBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamifiedBottomSheet.swift; sourceTree = "<group>"; };
+		29DF93422ECC8A880047801F /* PetHatchedSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetHatchedSheet.swift; sourceTree = "<group>"; };
+		29DF93442ECCC3370047801F /* MountRaisedSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountRaisedSheet.swift; sourceTree = "<group>"; };
+		29DF93462ECCCD3B0047801F /* HatchSuggestionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatchSuggestionSheet.swift; sourceTree = "<group>"; };
+		29DF93482ECCE0640047801F /* ClassConfirmationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassConfirmationSheet.swift; sourceTree = "<group>"; };
+		29DF934A2ECDE5150047801F /* AchievementReceivedSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementReceivedSheet.swift; sourceTree = "<group>"; };
+		29DF934C2ECDEE9C0047801F /* FirstDropSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstDropSheet.swift; sourceTree = "<group>"; };
+		29DF934E2ECDFAB60047801F /* LoginIncentiveSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginIncentiveSheet.swift; sourceTree = "<group>"; };
+		29DF93502ECDFDB90047801F /* LevelupSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelupSheet.swift; sourceTree = "<group>"; };
+		29DF93522ECE1B9E0047801F /* InsufficientCurrencySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsufficientCurrencySheet.swift; sourceTree = "<group>"; };
 		29DFBEF92B10AE8E000B554B /* FlagPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagPage.swift; sourceTree = "<group>"; };
 		29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameLabel.swift; sourceTree = "<group>"; };
 		29E162E11FFC21E100685640 /* CustomFontMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontMetrics.swift; sourceTree = "<group>"; };
@@ -1113,7 +1128,6 @@
 		29E16312200E619400685640 /* QuestProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestProgressView.swift; sourceTree = "<group>"; };
 		29E16314200E629800685640 /* QuestProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestProgressBarView.swift; sourceTree = "<group>"; };
 		29E1631E200F62CB00685640 /* GroupChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatViewController.swift; sourceTree = "<group>"; };
-		29E30DE520D935AF00F74ECB /* LevelUpOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpOverlayView.swift; sourceTree = "<group>"; };
 		29E30DE920DA8AFE00F74ECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		29E48F0C22E89DB3005C4B45 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		29E96B502E157EF900D9EF25 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
@@ -1644,8 +1658,6 @@
 				29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */,
 				29A9038726EA33A400442B93 /* FlagInformationOverlayView.swift */,
 				294973D1208118C100F02AC3 /* ImageOverlayView.swift */,
-				29E30DE520D935AF00F74ECB /* LevelUpOverlayView.swift */,
-				2967CE5C25236F0E00F366DF /* PetHatchingDialog.swift */,
 				2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
@@ -1900,6 +1912,15 @@
 				29CBCDA32EC4E5090020FC14 /* GamifiedWaveBackground.swift */,
 				29CBCDA52EC4E5EC0020FC14 /* FanfareContainer.swift */,
 				29DF933C2EC640860047801F /* GamifiedBottomSheet.swift */,
+				29DF93422ECC8A880047801F /* PetHatchedSheet.swift */,
+				29DF93442ECCC3370047801F /* MountRaisedSheet.swift */,
+				29DF93462ECCCD3B0047801F /* HatchSuggestionSheet.swift */,
+				29DF93482ECCE0640047801F /* ClassConfirmationSheet.swift */,
+				29DF934A2ECDE5150047801F /* AchievementReceivedSheet.swift */,
+				29DF934C2ECDEE9C0047801F /* FirstDropSheet.swift */,
+				29DF934E2ECDFAB60047801F /* LoginIncentiveSheet.swift */,
+				29DF93502ECDFDB90047801F /* LevelupSheet.swift */,
+				29DF93522ECE1B9E0047801F /* InsufficientCurrencySheet.swift */,
 			);
 			path = Gamified;
 			sourceTree = "<group>";
@@ -2501,7 +2522,7 @@
 				299564202BEE488A00B1A68F /* AvatarHeaderView.swift */,
 				29B30EBA2E0ADE92001B587B /* Settings */,
 				29C9BDDE2E9FE48400FC4FCA /* BulkStatsAllocationSheet.swift */,
-				2972A33F2EBBA87D00106850 /* AchievementSheet.swift */,
+				2972A33F2EBBA87D00106850 /* AchievementDetailSheet.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3377,6 +3398,7 @@
 				49DCECA91F96F8DE00982E99 /* ChallengeDetailViewModel.swift in Sources */,
 				29A62B012167D55200D4BD90 /* VerifyUsernameModalViewController.swift in Sources */,
 				2919FDD52090CF900096A53B /* InboxMessagesDataSource.swift in Sources */,
+				29DF934D2ECDEE9C0047801F /* FirstDropSheet.swift in Sources */,
 				29E16313200E619400685640 /* QuestProgressView.swift in Sources */,
 				29E162E01FFBBDDC00685640 /* UsernameLabel.swift in Sources */,
 				298F20B72A4ECC66004AABE5 /* HabiticaProgressIndicator.swift in Sources */,
@@ -3431,7 +3453,6 @@
 				299F93ED246960A1008DB702 /* GiftGemsViewController.swift in Sources */,
 				2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */,
 				291017DF2B06161400D0607B /* SubscriptionPage.swift in Sources */,
-				29E30DE620D935AF00F74ECB /* LevelUpOverlayView.swift in Sources */,
 				29038F2126F33CDB005CA2D3 /* DueDateFormView.swift in Sources */,
 				29F272A62A404F8600F3B50F /* SendPartyInviteViewController.swift in Sources */,
 				2909D42C2726AA2500FF2B29 /* TrackableScrollView.swift in Sources */,
@@ -3470,13 +3491,16 @@
 				29C1360224EBD12E00DBC6B3 /* AbbreviatedNumberLabel.swift in Sources */,
 				49A37A8320C0FA49008C28F5 /* EmptyTableViewCell.swift in Sources */,
 				29CC0DFD2E8EBE23009643B9 /* RYABottomSheet.swift in Sources */,
+				29DF93472ECCCD3B0047801F /* HatchSuggestionSheet.swift in Sources */,
 				290C302A206BA0B50066AF5B /* SkillTableViewCell.swift in Sources */,
 				290458D02021D6C60032BC5E /* TopHeaderCoordinator.swift in Sources */,
+				29DF93532ECE1B9E0047801F /* InsufficientCurrencySheet.swift in Sources */,
 				2909D4282722C24700FF2B29 /* ThemeMode.swift in Sources */,
 				D96BFC4C1E181B4A00266EEF /* IntroViewController.swift in Sources */,
 				2902799720583D82006DACB9 /* LoadingViewController.swift in Sources */,
 				291448642084EE6D00F3A6B5 /* PetDetailViewController.swift in Sources */,
 				29255E4B1F3E236C0094A3E3 /* ToastManager.swift in Sources */,
+				29DF93452ECCC3370047801F /* MountRaisedSheet.swift in Sources */,
 				29DFBEFA2B10AE8E000B554B /* FlagPage.swift in Sources */,
 				296CB4EE218C99FD0044A33E /* HabiticaButton.swift in Sources */,
 				29EBDA83232A3ABA006611E3 /* KeychainItem.swift in Sources */,
@@ -3547,6 +3571,7 @@
 				2959BC84275E1BDE005EE62D /* EditingFormViewController-Extensions.swift in Sources */,
 				29CBCDA62EC4E5EC0020FC14 /* FanfareContainer.swift in Sources */,
 				29066CFB24FE83D300A266EE /* PromoBannerView.swift in Sources */,
+				29DF93492ECCE0640047801F /* ClassConfirmationSheet.swift in Sources */,
 				29AAE55724508FC600220DB1 /* HRPGBulkPurchaseView.swift in Sources */,
 				29DBFF0120CE6FFF00DF9CF2 /* SoundManager.swift in Sources */,
 				2909D4222722C20A00FF2B29 /* Servers.swift in Sources */,
@@ -3565,6 +3590,7 @@
 				29A9B057228082BF0049291E /* BaseCollectionViewController.swift in Sources */,
 				298119AB1F50251300F9FB39 /* InventoryRepository.swift in Sources */,
 				29DBDE54274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift in Sources */,
+				29DF93432ECC8A880047801F /* PetHatchedSheet.swift in Sources */,
 				29A92C302E03050F00B2321A /* ApiTokenSheetView.swift in Sources */,
 				29255E431F3DD2120094A3E3 /* TutorialStepView.swift in Sources */,
 				29BEEB2F253EFA7300D456F8 /* MaintenanceViewController.swift in Sources */,
@@ -3575,7 +3601,6 @@
 				29FC884C2010CC8A002B3D3F /* SocialRepository.swift in Sources */,
 				498E4D031FA17C31006933FF /* ChallengeDescriptionTableViewCell.swift in Sources */,
 				D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */,
-				2967CE5D25236F0E00F366DF /* PetHatchingDialog.swift in Sources */,
 				291E95B720988B85006EE585 /* PartyDetailViewController.swift in Sources */,
 				2912C3B022CA701C00BC485F /* QuestCompletedAlertController.swift in Sources */,
 				29E16315200E629800685640 /* QuestProgressBarView.swift in Sources */,
@@ -3597,6 +3622,7 @@
 				29A62B09216CE5D700D4BD90 /* AboutViewController.swift in Sources */,
 				2914486E2085EAD300F3A6B5 /* MountDetailDataSource.swift in Sources */,
 				29CEA822264150CA00101C0A /* UIColor-Contributor.swift in Sources */,
+				29DF934B2ECDE5150047801F /* AchievementReceivedSheet.swift in Sources */,
 				D9D17CDE1E6AFFD900AD9232 /* ChallengeDetailAlert.swift in Sources */,
 				2914485D2084E6ED00F3A6B5 /* MountOverviewViewController.swift in Sources */,
 				49DCB7C21F40D7F10079FDD0 /* NPCBannerView.swift in Sources */,
@@ -3715,7 +3741,7 @@
 				29AB257C2B02799900A3C1D1 /* PixelArtView.swift in Sources */,
 				2922EE862C888C8500254106 /* SubscriptionDisclaimer.swift in Sources */,
 				290B6289207CF248007287C4 /* StackView.swift in Sources */,
-				2972A3402EBBA87D00106850 /* AchievementSheet.swift in Sources */,
+				2972A3402EBBA87D00106850 /* AchievementDetailSheet.swift in Sources */,
 				29323E4920521FD500AC6D6F /* ContributorProtocol-Extensions.swift in Sources */,
 				291448842088E2E000F3A6B5 /* EquipmentViewDataSource.swift in Sources */,
 				2919FDDD2091D5370096A53B /* UserManager.swift in Sources */,
@@ -3723,6 +3749,7 @@
 				291448662084FBAC00F3A6B5 /* PetDetailCell.swift in Sources */,
 				293282141F389CC000D42961 /* SetupCustomizationItemView.swift in Sources */,
 				2974BDAD208F68A800EC1A25 /* CustomizationHeaderView.swift in Sources */,
+				29DF934F2ECDFAB60047801F /* LoginIncentiveSheet.swift in Sources */,
 				29D50A6825F66F760009CF55 /* UIWindowScene-Extensions.swift in Sources */,
 				2927024C24E3040A00BCAA77 /* HallOfPatronsDataSource.swift in Sources */,
 				D9BB45D41E7849B40002AE2E /* ChallengeTaskListView.swift in Sources */,
@@ -3730,6 +3757,7 @@
 				49A37A8020C0EBFF008C28F5 /* SingleItemTableViewDataSource.swift in Sources */,
 				29A984D32547294E00F04665 /* RemoteLogger.swift in Sources */,
 				D97ED0AE1E6DBB97006C2A26 /* JoinChallengeInteractor.swift in Sources */,
+				29DF93512ECDFDB90047801F /* LevelupSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

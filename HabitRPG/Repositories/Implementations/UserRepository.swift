@@ -420,15 +420,9 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         lastClassSelection = Date()
         return SelectClassCall(class: habiticaClass).httpResponseSignal
             .on(value: { response in
-                if response.statusCode == 200 && habiticaClass != nil {
-                    let alert = HabiticaAlertController(
-                        title: L10n.classChangeSuccessTitle(habiticaClass?.translatedName ?? ""),
-                        message: L10n.classChangeSuccessDescription(habiticaClass?.translatedName ?? ""))
-                    alert.addAction(title: L10n.gotIt, isMainAction: true)
-                    alert.addAction(title: L10n.openStats) { _ in
-                        RouterHandler.shared.handle(urlString: "/user/stats")
-                    }
-                    alert.show()
+                if response.statusCode == 200, let habiticaClass = habiticaClass {
+                    let viewController = HostingBottomSheetController(rootView: ClassConfirmationSheet(selectedClass: habiticaClass))
+                    viewController.show()
                     
                     UIApplication.requestReview()
                 }

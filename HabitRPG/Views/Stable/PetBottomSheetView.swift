@@ -212,7 +212,7 @@ struct PetBottomSheetView: View, Dismissable {
     return PetBottomSheetView(pet: PreviewPet(egg: "BearCub", potion: "Base", type: "drop", text: "Base Bear Cub"), trained: 10, canRaise: true, isCurrentPet: false, onEquip: {})
 }
 
-private class PreviewPet: PetProtocol {
+class PreviewPet: PetProtocol {
     init(egg: String, potion: String, type: String? = nil, text: String? = nil) {
         self.key = "\(egg)-\(potion)"
         self.egg = egg

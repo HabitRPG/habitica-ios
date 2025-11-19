@@ -63,4 +63,8 @@ class HostingBottomSheetController<ContentView: View>: UIHostingController<Conte
         }
         super.viewWillDisappear(animated)
     }
+    
+    func show() {
+        UIApplication.shared.topmostViewController?.present(self, animated: true)
+    }
 }

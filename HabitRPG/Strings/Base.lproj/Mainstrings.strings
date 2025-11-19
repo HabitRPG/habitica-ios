@@ -447,7 +447,7 @@
 "share" = "Share";
 "close" = "Close";
 "ok" = "OK";
-"inventory.hatched" = "You hatched a new pet!";
+"inventory.hatched" = "You hatched a new %s Pet!";
 "inventory.hatched_sharing" = "I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!";
 "inventory.no_longer_available" = "No Longer Available";
 "inventory.avatar_skin_customization" = "Avatar Skin Customization";
@@ -959,6 +959,8 @@
 "create_tag" = "Create Tag";
 "great" = "Great";
 "unlockDropsTitle" = "You unlocked the drop system!";
+"unlocked_another_checkin_prize" = "You unlocked another check-in prize!";
+"checkin_prize_description" = "You earned a %s for being committed to improving your life";
 "unlockDropsDescription" = "You've unlocked the Drop System! Now when you complete tasks, you have a small chance of finding an item, including eggs, potions, and food!";
 "leave_challenge" = "Leave Challenge";
 "join_challenge" = "Join Challenge";
@@ -1021,7 +1023,7 @@
 "gift_one_get_one_event" = "Gift One, Get One Event";
 "gift_one_get_one_description" = "Gift a subscription now and you’ll get the same sub for yourself free!";
 "gift_one_get_one_description_date" = "Gift a sub and get a sub for free until %@";
-"gems_support_developers" = "Purchasing Gems supports our small team and helps keep Habitica running";
+"gems_support_developers" = "Purchasing Gems supports our small team at Habitica!";
 "gem_benefits_title" = "Gems allow you to buy fun extras for your account, including:";
 "unpin" = "Unpin";
 "pin" = "Pin";
@@ -1151,7 +1153,7 @@
 "you_got_achievement" = "You got an Achievement!";
 "view_achievements" = "View Achievements";
 "first_drop_explanation1" = "Completing tasks gives you a chance to find eggs, hatching potions, and pet food.";
-"first_drop_explanation2" = "Head to your Items and try combining your new Egg and Hatching Potion!";
+"first_drop_explanation2" = "Try combining your new Egg and Hatching Potion!";
 "go_to_items" = "Go to Items";
 "first_drop_title" = "You found new items!";
 "view_onboarding_tasks" = "View Onboarding Tasks";
@@ -1293,6 +1295,8 @@
 "end_challenge_description" = "To end a Challenge, log in to the Habitica website then tap the “End Challenge” button on the right of the Challenge screen.";
 "could_not_gift_gems" = "Could not gift gems. Please try again later.";
 "class_system_disabled" = "Class System disabled.";
+"class_system_unlocked" = "Class system unlocked";
+"class_system_unlocked_description" = "Choose a class that fits your play style and unlock special skills and armor to help you on your journey";
 "class_system_enable_instructions" = "You can enable the class system from the apps settings.";
 "unlocks_selecting_class_description" = "Skills are unlocked once you reach level 10 and have selected a class";
 "unlocks_selecting_class_prompt" = "Now that you reached level 10, you can choose a class!";
@@ -1441,7 +1445,8 @@
 "class_change_confirm" = "Change class to %s for 3 Gems?";
 "class_change_confirm_description" = "This will switch which gear is unlocked in the shops, change your available skills, and reset your stat points.";
 "class_change_success_title" = "You're a %@!";
-"class_change_success_description" = "You can now use %@ skills and purchase gear from shops. Gain levels to earn stat points you can use to power up your skills.";
+"class_change_success_subtitle" = "You can now allocate stats";
+"class_change_success_description" = "Every level you earn a Stat point that you can use to power up your Skills and affect the gameplay aspects of Habitica";
 "got_it" = "Got it!";
 "open_stats" = "Open Stats";
 "stats" = "Stats";
@@ -1483,3 +1488,7 @@
 "item_is_locked" = "Item is locked";
 "edit_tags" = "Edit Tags";
 "add_tag" = "Add Tag";
+"view_stats" = "View Stats";
+"find_stats_menu" = "You can find stats any time in the Menu";
+"go_to_pets_mounts" = "Go to Pets & Mounts";
+"not_now" = "Not right now";

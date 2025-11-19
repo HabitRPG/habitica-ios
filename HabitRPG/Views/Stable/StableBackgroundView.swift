@@ -10,7 +10,7 @@ import SwiftUI
 
 struct StableBackgroundView<Content: View>: View {
     let content: Content
-    let animateFlying: Bool
+    var animateFlying: Bool = false
     
     private func getBackground() -> ImageAsset {
         let month = Calendar.current.component(.month, from: Date())
@@ -92,6 +92,12 @@ struct StableBackgroundView<Content: View>: View {
                 // task is cancelled
             }
         }
+    }
+}
+
+extension StableBackgroundView where Content == EmptyView {
+    init() {
+        self.init(content: EmptyView())
     }
 }
 

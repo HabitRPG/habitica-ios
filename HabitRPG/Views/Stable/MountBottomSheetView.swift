@@ -56,7 +56,7 @@ struct MountBottomSheetView: View, Dismissable {
         return MountBottomSheetView(mount: PreviewMount(egg: "BearCub", potion: "Base", type: "drop", text: "Base Bear Cub"), owned: true, isCurrentMount: false, onEquip: {})
 }
 
-private class PreviewMount: MountProtocol {
+class PreviewMount: MountProtocol {
     init(egg: String, potion: String, type: String? = nil, text: String? = nil) {
         self.key = "\(egg)-\(potion)"
         self.egg = egg

@@ -181,11 +181,12 @@ struct BuySheet: View, Dismissable {
                 Button {
                     viewModel.dismiss()
                 } label: {
-                    Image(systemName: "xmark").frame(width: 30, height: 36).foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
-                        .font(.system(size: 20, weight: .bold))
-                }
-                    .buttonStyle(.borderedProminent)
-                    .tintColor(Color(ThemeService.shared.theme.windowBackgroundColor))
+                    Image(systemName: "xmark")
+                        .scaledFont(size: 24)
+                        .frame(width: 24, height: 24)
+                }.buttonStyle(.bordered)
+                    .tint(.gray10)
+                    .clipShape(.circle)
                 Spacer()
                 BuyCurrencyView(value: viewModel.userCurrencyOwned, currency: viewModel.itemCurrency)
                 Spacer()
@@ -263,7 +264,7 @@ struct BuySheet: View, Dismissable {
                 }.disabled(!canBuy)
                     .transition(.opacity)
             }
-        }
+        }.padding(.bottom, 20)
     }
     
     var body: some View {

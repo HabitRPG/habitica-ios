@@ -304,7 +304,7 @@ class AchievementsCollectionViewController: BaseHostingViewController<Achievemen
         viewModel.retrieveData(completed: nil)
         viewSwitcherButton.image = Asset.buttonGrid.image
         viewModel.onShowAchievementDetail = { achievement in
-            let sheet = HostingBottomSheetController(rootView: AchievementSheet(achievement: achievement))
+            let sheet = HostingBottomSheetController(rootView: AchievementDetailSheet(achievement: achievement))
             self.present(sheet, animated: true)
         }
     }

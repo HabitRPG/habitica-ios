@@ -275,7 +275,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         #if targetEnvironment(simulator)
         if HabiticaAppDelegate.isRunningScreenshots() {
-            let levelUpView = LevelUpOverlayView()
+            let levelUpView = HostingBottomSheetController(rootView: LevelupSheet(), prefersGrabberVisible: false)
             levelUpView.show()
             return
         }

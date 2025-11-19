@@ -72,8 +72,11 @@ class PetDetailViewController: StableDetailViewController<PetProtocol, PetStable
     
     private func showHatchingDialog(forStableItem item: PetStableItem) {
         let ownedItems = datasource?.ownedItemsFor(pet: item)
-        let alert = PetHatchingAlertController(item: item, ownedEggs: ownedItems?.eggs, ownedPotions: ownedItems?.potions)
-        alert.show()
+        let viewC = HostingBottomSheetController(rootView: HatchSuggestionSheet(item: item,
+                                                                                ownedEggCount: ownedItems?.eggs?.numberOwned ?? 0,
+                                                                                ownedPotionCount: ownedItems?.potions?.numberOwned ?? 0),
+        prefersGrabberVisible: false)
+        viewC.show()
     }
     
     @IBAction func unwindToList(_ segue: UIStoryboardSegue) {

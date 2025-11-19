@@ -9,7 +9,7 @@
 import SwiftUI
 import Habitica_Models
 
-struct AchievementSheet: View {
+struct AchievementDetailSheet: View {
     let achievement: AchievementProtocol
     var body: some View {
         BottomSheetView(title: Text(achievement.title ?? ""), content: VStack(spacing: 16) {
