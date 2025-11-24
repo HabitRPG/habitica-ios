@@ -24,6 +24,7 @@ struct FanfareContainer<Content: View>: View {
                 .animation(.linear(duration: 30).repeatForever(autoreverses: false), value: animating)
             Image(.fanfareRadial).foregroundStyle(haloColor)
             content()
+                .offset(y: animating ? 3 : -3)
                 .frame(width: 123, height: 123)
                 .background(circleColor)
                 .clipShape(.circle)

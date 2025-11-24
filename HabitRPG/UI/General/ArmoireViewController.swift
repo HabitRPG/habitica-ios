@@ -359,6 +359,7 @@ struct ArmoireView: View {
                             .font(.system(size: 15, weight: .semibold))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 16)
+                            .fixedSize(horizontal: false, vertical: true)
                         Text(L10n.Armoire.dropRate)
                             .foregroundColor(Color(UIColor.teal1))
                             .opacity(0.75)
@@ -376,16 +377,8 @@ struct ArmoireView: View {
                     .cornerRadius([.topLeading, .topTrailing], UIConstants.largeCornerRadius)
                     .padding(.top, 8)
                 }
-                Text(L10n.Armoire.dropRate)
-                    .foregroundColor(Color(UIColor.purple600))
-                    .font(.system(size: 15))
-                    .padding(.top, 4)
-                    .padding(.bottom, (UIApplication.shared.findKeyWindow()?.safeAreaInsets.bottom ?? 0) + 12)
-                    .onTapGesture {
-                        showArmoireAlert = true
-                    }
             }
-            .padding(.top, 70)
+            .padding(.top, 90)
             .frame(minHeight: UIScreen.main.bounds.height > 700 ? 330 : 250, alignment: .center)
             .frame(maxWidth: .infinity)
             .edgesIgnoringSafeArea(.bottom)

@@ -11,7 +11,7 @@ import ReactiveSwift
 import Habitica_Database
 import SwiftUIX
 
-class BuySheetViewModel: ObservableObject {
+class BuySheetViewModel: ViewModel {
     private let userRepository = UserRepository()
     private let inventoryRepository = InventoryRepository()
     private let customizationRepository = CustomizationRepository()
@@ -86,6 +86,7 @@ class BuySheetViewModel: ObservableObject {
         self.shopIdentifier = shopIdentifier
         self.onInventoryRefresh = onInventoryRefresh
         itemCurrency = Currency(rawValue: item.currency ?? "gold") ?? .gold
+        super.init()
         setup()
     }
     
@@ -94,36 +95,39 @@ class BuySheetViewModel: ObservableObject {
             isPinned = true
         }
         
-        userRepository.getUser().on(value: {[weak self] user in
+        disposable.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
-        }).start()
+        }).start())
         
         if item.purchaseType == "gear" {
-            inventoryRepository.getGear(keys: [item.key ?? ""]).take(first: 1)
+            disposable.add(inventoryRepository.getGear(keys: [item.key ?? ""]).take(first: 1)
                 .on(value: { foundGear in
                     self.gear = foundGear.value.first
                 })
-                .start()
+                .start())
         } else if item.purchaseType == "quests" {
-            inventoryRepository.getQuest(key: item.key ?? "").take(first: 1)
+            disposable.add(inventoryRepository.getQuest(key: item.key ?? "").take(first: 1)
                 .on(value: { quest in
                     self.quest = quest
                 })
-                .start()
+                .start())
         }
         
-        userRepository.getInAppRewards().take(first: 1)
+        disposable.add(userRepository.getInAppRewards().take(first: 1)
             .map({ (rewards, _) in
                 return rewards.map({ (reward) in
                     return reward.key
                 })
             }).on(value: {[weak self]rewards in
                 self?.isPinned = rewards.contains(self?.item.key)
-            }).start()
+            }).start())
     }
     
     func dismiss() {
         dismisser.dismiss()
+        if !disposable.isDisposed {
+            disposable.dispose()
+        }
     }
     
     func pinItem() {

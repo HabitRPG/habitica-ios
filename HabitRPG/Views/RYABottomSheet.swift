@@ -249,7 +249,7 @@ struct RYABottomSheet: View, Dismissable {
                 topContent
                 scrollView
                 bottomContent
-                    .padding(.bottom, 12)
+                    .padding(.bottom, 28)
             }
         },
                         topPadding: 0,

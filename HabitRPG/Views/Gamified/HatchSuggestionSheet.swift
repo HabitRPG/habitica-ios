@@ -45,7 +45,7 @@ struct PetItemsFlowView<LeftIcon: View, MiddleIcon: View, RightIcon: View>: View
             Spacer()
             Circle().fill().frame(width: 8, height: 8).foregroundStyle(highlightedStep == 1 ? Color.purple500 : Color.purple300)
             Spacer()
-            middleIcon
+            rightIcon
                 .frame(width: 60, height: 60)
             .background(Color(ThemeService.shared.theme.contentBackgroundColor))
             .clipShape(RoundedRectangle(cornerRadius: 8))

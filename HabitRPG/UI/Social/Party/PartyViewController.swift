@@ -44,6 +44,9 @@ class PartyViewController: SplitSocialViewController {
         gradient.locations =  [0, 0.4, 1]
         noPartyHeaderBackground.gradient = gradient
         chatViewController?.autocompleteContext = "party"
+        
+        createPartyButton.cornerRadius = UIConstants.largeCornerRadius
+        userIDButton.cornerRadius = UIConstants.largeCornerRadius
     }
     
     override func viewWillAppear(_ animated: Bool) {

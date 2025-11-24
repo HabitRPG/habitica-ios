@@ -64,6 +64,14 @@ struct BuyBanner<Content: View>: View {
     var color: Color
     var content: Content
     
+    private var shape: some Shape {
+        if #available(iOS 26.0, *) {
+            return .capsule
+        } else {
+            return .rect(cornerRadius: UIConstants.largeCornerRadius)
+        }
+    }
+    
     var body: some View {
         content
             .scaledFont(size: 15, weight: .semibold)
@@ -71,7 +79,7 @@ struct BuyBanner<Content: View>: View {
             .padding(.horizontal, 14)
             .frame(maxWidth: .infinity)
             .background(color)
-            .clipShape(.capsule)
+            .clipShape(shape)
     }
 }
 
@@ -135,7 +143,7 @@ struct BuySheet: View, Dismissable {
     private func itemDetailsView() -> some View {
         VStack(spacing: 0) {
             let item = viewModel.item
-            SimpleItemDetails(item: item)
+            SimpleItemDetails(item: item, user: viewModel.user)
             if item.purchaseType == "gear" {
                 StatsDetails(gear: viewModel.gear)
             }
@@ -225,10 +233,9 @@ struct BuySheet: View, Dismissable {
                 )
             }
             if let date = viewModel.item.availableUntil() {
-                BuyBanner(color: (isDarkTheme ? Color.purple500 : .purple100).opacity(0.4), content: Text(L10n.Inventory.availableFor(date.getShortRemainingString()))
-                    .foregroundStyle(ThemeService.shared.theme.isDark ? Color.purple600 : Color.purple400))
-            }
-            if viewModel.item.locked {
+                BuyBanner(color: (isDarkTheme ? Color.purple500 : .purple400).opacity(0.4), content: Text(L10n.Inventory.availableFor(date.getShortRemainingString()))
+                    .foregroundStyle(ThemeService.shared.theme.isDark ? Color.purple600 : Color.purple100))
+            } else if viewModel.item.locked {
                 BuyBanner(color: Color(ThemeService.shared.theme.offsetBackgroundColor),
                           content: Text(viewModel.item.lockedReason ?? viewModel.item.shortLockedReason ?? L10n.itemIsLocked).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor)))
             }
@@ -264,40 +271,45 @@ struct BuySheet: View, Dismissable {
                 }.disabled(!canBuy)
                     .transition(.opacity)
             }
-        }.padding(.bottom, 20)
+        }.padding(.bottom, 28)
     }
     
     var body: some View {
-        BottomSheetView(dismisser: viewModel.dismisser, content: VStack(spacing: 0) {
-            let scrollView = ScrollView {
-                itemDetailsView()
-            }
-                .scrollBounceBehavior(.basedOnSize)
-            if #available(iOS 26.0, *) {
-                scrollView
-                    .safeAreaBar(edge: .top,
-                                 alignment: .center,
-                                 spacing: 0,
-                                 content: topContent)
-                    .safeAreaBar(edge: .bottom,
-                                 alignment: .center,
-                                 spacing: 0,
-                                 content: bottomContent)
-                    .scrollEdgeEffectStyle(.soft, for: .all)
-                    .scrollEdgeEffectHidden(false)
-                    .scrollIndicators(.hidden)
-            } else {
-                topContent()
-                scrollView
-                bottomContent()
-                    .padding(.top, 12)
-                    .padding(.bottom, 32)
-            }
-        },
-                        topPadding: 0,
-                        bottomPadding: 0
-                        )
-        .ignoresSafeArea()
+        if viewModel.item.isValid {
+            BottomSheetView(dismisser: viewModel.dismisser, content: VStack(spacing: 0) {
+                let scrollView = ScrollView {
+                    itemDetailsView()
+                }
+                    .scrollBounceBehavior(.basedOnSize)
+                if #available(iOS 26.0, *) {
+                    scrollView
+                        .safeAreaBar(edge: .top,
+                                     alignment: .center,
+                                     spacing: 0,
+                                     content: topContent)
+                        .safeAreaBar(edge: .bottom,
+                                     alignment: .center,
+                                     spacing: 0,
+                                     content: bottomContent)
+                        .scrollEdgeEffectStyle(.soft, for: .all)
+                        .scrollEdgeEffectHidden(false)
+                        .scrollIndicators(.hidden)
+                } else {
+                    topContent()
+                    scrollView
+                    bottomContent()
+                }
+            },
+                            topPadding: 0,
+                            bottomPadding: 0
+            )
+            .ignoresSafeArea()
+        } else {
+            Text("")
+                .task {
+                    viewModel.dismiss()
+                }
+        }
     }
 }
 
