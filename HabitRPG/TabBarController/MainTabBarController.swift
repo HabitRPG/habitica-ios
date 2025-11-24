@@ -27,7 +27,7 @@ class MainTabBarController: UITabBarController {
     private var tutorialDailyCount = 0
     private var tutorialToDoCount = 0
     
-    private var presentedPrivacyPreferencesAt: Date?
+    static var presentedPrivacyPreferencesAt: Date?
     
     private var _displayBirthdayIcon: Bool = false {
         didSet {
@@ -118,7 +118,9 @@ class MainTabBarController: UITabBarController {
     }
     
     private func fetchData() {
-        disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
+        disposable.inner.add(userRepository.getUser()
+            .throttle(1, on: QueueScheduler(targeting: .main))
+            .on(value: {[weak self] user in
             var badgeCount = 0
             // swiftlint:disable:next empty_count
             if let count = user.inbox?.numberNewMessages, count > 0 {
@@ -143,8 +145,8 @@ class MainTabBarController: UITabBarController {
             }
             
             if user.preferences?.analyticsConsentGiven == false {
-                if self?.presentedPrivacyPreferencesAt == nil {
-                    self?.presentedPrivacyPreferencesAt = Date()
+                if MainTabBarController.presentedPrivacyPreferencesAt == nil {
+                    MainTabBarController.presentedPrivacyPreferencesAt = Date()
                     let controller = UIHostingController(rootView: PrivacyPreferencesScreenView())
                     controller.modalPresentationStyle = .fullScreen
                     controller.rootView.dismisser.dismiss = {

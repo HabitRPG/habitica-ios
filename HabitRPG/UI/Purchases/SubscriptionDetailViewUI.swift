@@ -87,9 +87,9 @@ struct SubscriptionDetailViewUI: View {
                 format.dateFormat = "MMM YYYY"
                 return L10n.nextPaymentX(format.string(from: nextEstimatedPayment))
             }
-            return "Apple Pay"
+            return "Apple"
         } else if plan.paymentMethod == "Google" {
-            return "Google Pay"
+            return "Google"
         } else if plan.paymentMethod == "PayPal" {
             return "PayPal"
         } else if plan.paymentMethod == "Stripe" {
