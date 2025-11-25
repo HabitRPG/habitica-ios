@@ -14,6 +14,7 @@ class TaskFilterViewModel: ViewModel {
     private let taskRepository = TaskRepository()
     @Published var tags = [TagProtocol]()
     @Published var editedTags = [TagProtocol]()
+    @Published var deletedTags: [(TagProtocol, Int)] = []
     @Published var selectedTags = [String]()
     @Published var selectedFilterType = 0 {
         didSet {
@@ -27,6 +28,10 @@ class TaskFilterViewModel: ViewModel {
     @Published var isSaving = false
     
     var onDismiss: (() -> Void)?
+    
+    var hasActiveFilters: Bool {
+        return selectedFilterType != 0 || !selectedTags.isEmpty
+    }
     
     override init() {
         super.init()
@@ -92,6 +97,7 @@ class TaskFilterViewModel: ViewModel {
     func cancelEditing() {
         withAnimation(.interactiveSpring) {
             isEditing = false
+            deletedTags = []
         }
     }
     
@@ -100,6 +106,7 @@ class TaskFilterViewModel: ViewModel {
             return
         }
         isSaving = true
+        deletedTags = []
         let tagsToDelete = tags.filter { tag in
             return !editedTags.contains { editedTag in
                 return editedTag.id == tag.id
@@ -142,11 +149,24 @@ class TaskFilterViewModel: ViewModel {
         return taskRepository.getNewTag()
     }
     
+    func undoDelete() {
+        guard let (tag, index) = deletedTags.popLast() else {
+            return
+        }
+        withAnimation {
+            editedTags.insert(tag, at: index)
+        }
+    }
+    
     func deleteTag(tag: TagProtocol) {
         if isEditing && !isSaving {
             withAnimation {
-                editedTags.removeAll { removingTag in
+                let index: Int = editedTags.firstIndex { removingTag in
                     return removingTag.id == tag.id
+                } ?? -1
+                if index >= 0 {
+                    editedTags.remove(at: index)
+                    deletedTags.append((tag, index))
                 }
             }
         } else {
@@ -231,7 +251,8 @@ struct TaskFilterPage: View {
                                         .scaledFont(size: 20)
                                         .foregroundStyle(Color(ThemeService.shared.theme.errorColor))
                                 }
-                                .frame(width: 22, height: 22)
+                                .contentShape(Rectangle())
+                                .frame(width: 24, height: 22)
                                 .transition(.asymmetric(insertion: .push(from: .leading), removal: .push(from: .trailing)))
                                 TagFormItemView(tag: tag, focusItemId: focusItemId)
                             } else {
@@ -249,9 +270,9 @@ struct TaskFilterPage: View {
                         .animation(.spring, value: viewModel.isEditing)
                         .contentShape(Rectangle())
                         .listRowBackground(Color(ThemeService.shared.theme.windowBackgroundColor))
-                            .onTapGesture {
-                                viewModel.tagTapped(tag: tag)
-                            }
+                        .onTapGesture(disabled: viewModel.isEditing, perform: {
+                            viewModel.tagTapped(tag: tag)
+                        })
                     }.onDelete { set in
                         for item in set {
                             viewModel.deleteTag(at: item)
@@ -299,6 +320,15 @@ struct TaskFilterPage: View {
                 .scrollContentBackground(.hidden)
         }
         .toolbar {
+            if !viewModel.deletedTags.isEmpty {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        viewModel.undoDelete()
+                    } label: {
+                        Text(L10n.undo)
+                    }
+                }
+            }
             if viewModel.isEditing {
                 ToolbarItem(placement: .topBarLeading) {
                     if #available(iOS 26.0, *) {
@@ -322,13 +352,15 @@ struct TaskFilterPage: View {
                             Text(L10n.clear).foregroundStyle(Color.red100)
                         }.buttonStyle(.glassProminent)
                             .tint(.red100.opacity(0.14))
+                            .opacity(viewModel.hasActiveFilters ? 1 : 0.5)
+                            .disabled(!viewModel.hasActiveFilters)
                     } else {
                         Button {
                             viewModel.clearFilters()
                         } label: {
                             Text(L10n.clear)
-                        }.buttonStyle(.borderedProminent)
-                            .tint(.red100)
+                        }.tint(.red100)
+                            .disabled(!viewModel.hasActiveFilters)
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {

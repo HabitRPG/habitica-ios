@@ -8,13 +8,14 @@
 
 import UIKit
 import Eureka
+import SwiftUI
 
-public class ThemeService: NSObject {
+public class ThemeService: ObservableObject {
     private let defaults = UserDefaults.standard
 
     public static let shared = ThemeService()
-    public var isDarkTheme: Bool?
-    public var theme: Theme = DefaultTheme() {
+    @Published public var isDarkTheme: Bool?
+    @Published public var theme: Theme = DefaultTheme() {
         didSet {
             applyTheme()
         }
@@ -133,4 +134,8 @@ public class ThemeService: NSObject {
 
 public protocol Themeable: AnyObject {
     func applyTheme(theme: Theme)
+}
+
+extension EnvironmentValues {
+    @Entry var themeService = ThemeService.shared
 }

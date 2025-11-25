@@ -1492,3 +1492,5 @@
 "find_stats_menu" = "You can find stats any time in the Menu";
 "go_to_pets_mounts" = "Go to Pets & Mounts";
 "not_now" = "Not right now";
+"undo" = "Undo";
+"assigned_stat" = "Assigned Stat";

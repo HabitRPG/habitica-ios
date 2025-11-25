@@ -5959,21 +5959,20 @@ public class HabiticaIcons : NSObject {
 
 
         //// Color Declarations
-        let fillColor37 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
         let strokeColor15 = UIColor(red: 0.765, green: 0.753, blue: 0.780, alpha: 1.000)
         let transparent = UIColor(red: 0.800, green: 0.322, blue: 0.322, alpha: 0.000)
 
         //// Variable Declarations
-        let starFillColor = isActive ? taskTintColor : transparent
-        let borderColor = isActive ? taskTintColor : strokeColor15
-        let controlFillColor = isActive ? fillColor37 : strokeColor15
+        let starFillColor = isActive ? .white : transparent
+        let borderColor = isActive ? .white : strokeColor15
+        let controlFillColor = isActive ? taskTintColor : strokeColor15
 
         //// Oval Drawing
         let ovalPath = UIBezierPath(ovalIn: CGRect(x: 1, y: 1, width: 32, height: 32))
         starFillColor.setFill()
         ovalPath.fill()
         borderColor.setStroke()
-        ovalPath.lineWidth = 1
+        ovalPath.lineWidth = 2
         ovalPath.stroke()
 
 
@@ -6013,21 +6012,20 @@ public class HabiticaIcons : NSObject {
 
 
         //// Color Declarations
-        let fillColor37 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
         let strokeColor15 = UIColor(red: 0.765, green: 0.753, blue: 0.780, alpha: 1.000)
         let transparent = UIColor(red: 0.800, green: 0.322, blue: 0.322, alpha: 0.000)
 
         //// Variable Declarations
-        let starFillColor = isActive ? taskTintColor : transparent
-        let borderColor = isActive ? taskTintColor : strokeColor15
-        let controlFillColor = isActive ? fillColor37 : strokeColor15
+        let starFillColor = isActive ? .white : transparent
+        let borderColor = isActive ? .white : strokeColor15
+        let controlFillColor = isActive ? taskTintColor : strokeColor15
 
         //// Oval Drawing
         let ovalPath = UIBezierPath(ovalIn: CGRect(x: 1, y: 1, width: 32, height: 32))
         starFillColor.setFill()
         ovalPath.fill()
         borderColor.setStroke()
-        ovalPath.lineWidth = 1
+        ovalPath.lineWidth = 2
         ovalPath.stroke()
 
 

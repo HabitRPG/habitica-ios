@@ -185,8 +185,13 @@ class UserTopHeader: UIView, Themeable {
             classImageView.alpha = 1.0
         }
         currencyStackView.backgroundColor = theme.windowBackgroundColor
-        currencyStackView.cornerRadius = 50
-        levelStackview.cornerRadius = 20
+        if #available(iOS 26.0, *) {
+            currencyStackView.cornerRadius = UIConstants.largeCornerRadius
+            levelStackview.cornerConfiguration = .capsule()
+        } else {
+            currencyStackView.cornerRadius = UIConstants.mediumCornerRadius
+            levelStackview.cornerRadius = UIConstants.mediumCornerRadius
+        }
         goldView.updateStateValues()
         gemView.updateStateValues()
         hourglassView.updateStateValues()

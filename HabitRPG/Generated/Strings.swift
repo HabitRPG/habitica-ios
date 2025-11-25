@@ -56,6 +56,8 @@ public enum L10n {
   public static var apiTokenResetTitle: String { return L10n.tr("Mainstrings", "api_token_reset_title") }
   /// API Token
   public static var apiTokenTitle: String { return L10n.tr("Mainstrings", "api_token_title") }
+  /// Assigned Stat
+  public static var assignedStat: String { return L10n.tr("Mainstrings", "assigned_stat") }
   /// Back
   public static var back: String { return L10n.tr("Mainstrings", "back") }
   /// Backer Tier: %d
@@ -1326,6 +1328,8 @@ public enum L10n {
   public static var unbanUserConfirm: String { return L10n.tr("Mainstrings", "unban_user_confirm") }
   /// Unblock
   public static var unblockUser: String { return L10n.tr("Mainstrings", "unblock_user") }
+  /// Undo
+  public static var undo: String { return L10n.tr("Mainstrings", "undo") }
   /// Unequip
   public static var unequip: String { return L10n.tr("Mainstrings", "unequip") }
   /// Unhatched Pet

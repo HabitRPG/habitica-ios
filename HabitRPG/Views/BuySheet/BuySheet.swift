@@ -83,47 +83,10 @@ struct BuyBanner<Content: View>: View {
     }
 }
 
-struct BulkPurchaseView: View {
-    @Binding var quantity: Int
-    let showGem: Bool
-    let canPurchase: Bool
-    
-    var body: some View {
-        HStack {
-            Button {
-                withAnimation {
-                    quantity -= 1
-                }
-            } label: {
-                Image(systemName: "minus")
-                    .scaledFont(size: 22, weight: .semibold)
-            }.disabled(quantity <= 1 || !canPurchase)
-            HStack(spacing: 4) {
-                if showGem {
-                    Image(uiImage: HabiticaIcons.imageOfGem)
-                }
-                Text("\(quantity)")
-                    .contentTransition(.numericText())
-                    .scaledFont(size: 22, weight: .bold)
-                    .foregroundStyle(Color(canPurchase ? ThemeService.shared.theme.primaryTextColor : ThemeService.shared.theme.ternaryTextColor))
-            }
-                .padding(.vertical, 11)
-                .padding(.horizontal, 31)
-                .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-                .clipShape(.capsule)
-            Button {
-                withAnimation {
-                    quantity += 1
-                }
-            } label: {
-                Image(systemName: "plus")
-                    .scaledFont(size: 22, weight: .semibold)
-            }.disabled(!canPurchase)
-        }
-    }
-}
+
 
 struct BuySheet: View, Dismissable {
+    @Environment(\.themeService) var themeService
     @ObservedObject private var viewModel: BuySheetViewModel
     
     var dismisser: Dismisser {
@@ -160,11 +123,11 @@ struct BuySheet: View, Dismissable {
                 Button {
                     viewModel.dismiss()
                 } label: {
-                    Image(systemName: "xmark").frame(width: 30, height: 36).foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
+                    Image(systemName: "xmark").frame(width: 30, height: 36).foregroundStyle(Color(themeService.theme.primaryTextColor))
                         .font(.system(size: 20, weight: .bold))
                 }.buttonStyle(.glass)
                     .clipShape(.circle)
-                    .tintColor(Color(ThemeService.shared.theme.windowBackgroundColor).opacity(0.4))
+                    .tintColor(Color(themeService.theme.windowBackgroundColor).opacity(0.4))
                 Spacer()
                 BuyCurrencyView(value: viewModel.userCurrencyOwned, currency: viewModel.itemCurrency)
                 Spacer()
@@ -174,13 +137,13 @@ struct BuySheet: View, Dismissable {
                     } label: {
                         if viewModel.isPinned {
                             Image(uiImage: HabiticaIcons.imageOfUnpinItem.withRenderingMode(.alwaysTemplate)).frame(height: 36)
-                                .foregroundStyle(ThemeService.shared.theme.isDark ? Color.red500 : Color.maroon100)
+                                .foregroundStyle(themeService.theme.isDark ? Color.red500 : Color.maroon100)
                         } else {
                             Image(uiImage: HabiticaIcons.imageOfPinItem.withRenderingMode(.alwaysTemplate)).frame(height: 36)
-                                .foregroundStyle(ThemeService.shared.theme.isDark ? Color.purple500 : Color.purple400)
+                                .foregroundStyle(themeService.theme.isDark ? Color.purple500 : Color.purple400)
                         }
                     }.buttonStyle(.glassProminent)
-                        .tintColor(Color(viewModel.isPinned ? UIColor.red100 : ThemeService.shared.theme.fixedTintColor).opacity(0.4))
+                        .tintColor(Color(viewModel.isPinned ? UIColor.red100 : themeService.theme.fixedTintColor).opacity(0.4))
                         .clipShape(.circle)
                 } else {
                     Spacer().frame(width: 44)
@@ -210,7 +173,7 @@ struct BuySheet: View, Dismissable {
                                 .foregroundStyle(Color.purple400)
                         }
                     }.buttonStyle(.borderedProminent)
-                        .tintColor(Color(viewModel.isPinned ? UIColor.red100 : ThemeService.shared.theme.fixedTintColor).opacity(0.4))
+                        .tintColor(Color(viewModel.isPinned ? UIColor.red100 : themeService.theme.fixedTintColor).opacity(0.4))
                         .clipShape(.circle)
                 } else {
                     Spacer().frame(width: 44)
@@ -222,14 +185,21 @@ struct BuySheet: View, Dismissable {
     
     @ViewBuilder
     private func bottomContent() -> some View {
-        let isDarkTheme = ThemeService.shared.theme.isDark
+        let isDarkTheme = themeService.theme.isDark
         VStack(spacing: 16) {
             let remainingGems = viewModel.user?.purchased?.subscriptionPlan?.gemsRemaining ?? 0
             if viewModel.canBulkPurchase {
-                BulkPurchaseView(quantity: $viewModel.quantity, showGem: viewModel.item.key == "gem", canPurchase: viewModel.item.key == "gem" ? remainingGems > 0 : true)
+                let icon = Group {
+                    if viewModel.item.key == "gem" {
+                        Image(uiImage: HabiticaIcons.imageOfGem)
+                    } else {
+                        EmptyView()
+                    }
+                }
+                PlusMinusStepperView(amount: $viewModel.quantity, icon: icon, isActive: viewModel.item.key == "gem" ? remainingGems > 0 : true)
             }
             if viewModel.isInstantUse {
-                BuyBanner(color: Color(ThemeService.shared.theme.offsetBackgroundColor), content: Text(L10n.takeEffectImmediately).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
+                BuyBanner(color: Color(themeService.theme.offsetBackgroundColor), content: Text(L10n.takeEffectImmediately).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
                 )
             }
             if let date = viewModel.item.availableUntil() {

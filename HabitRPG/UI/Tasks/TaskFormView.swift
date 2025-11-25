@@ -9,704 +9,6 @@
 import SwiftUI
 import Habitica_Models
 
-struct TaskFormSection<Header: View, Content: View>: View {
-    let header: Header
-    let content: Content
-    var backgroundColor: Color = Color(ThemeService.shared.theme.windowBackgroundColor)
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            header.font(.system(size: 13, weight: .semibold)).foregroundColor(Color(ThemeService.shared.theme.quadTextColor)).padding(.leading, 14)
-            content.frame(maxWidth: .infinity).background(backgroundColor.cornerRadius(UIConstants.largeCornerRadius))
-        }
-    }
-}
-
-struct DifficultyPicker: View {
-    @Binding var selectedDifficulty: Float
-    
-    private let theme = ThemeService.shared.theme
-    
-    @ViewBuilder
-    func difficultyOption(text: String, value: Float) -> some View {
-        let color: Color = .accentColor
-        VStack {
-            let isActive = value == selectedDifficulty
-            let accessibilityText = "Difficulty " + text + ", \(isActive ? "on" : "off")"
-            Group {
-                Image(uiImage: HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: .white, difficulty: value == 0.1 ? 0.1 : CGFloat(value), isActive: true).withRenderingMode(.alwaysTemplate))
-                    .foregroundColor(isActive ? .accentColor : Color(ThemeService.shared.theme.dimmedColor))
-                Text(text)
-                    .font(.system(size: 15, weight: isActive ? .semibold : .regular))
-                    .foregroundColor(isActive ? color : Color(theme.ternaryTextColor))
-                    .frame(maxWidth: .infinity)
-            }
-            .accessibilityElement(children: .ignore)
-            .accessibilityLabel(accessibilityText)
-            .accessibilityRemoveTraits(.isImage)
-        }.onTapGesture {
-            UISelectionFeedbackGenerator.oneShotSelectionChanged()
-            selectedDifficulty = value
-        }
-        .frame(maxWidth: .infinity)
-    }
-    
-    var body: some View {
-        HStack {
-            difficultyOption(text: L10n.Tasks.Form.trivial, value: 0.1)
-            difficultyOption(text: L10n.Tasks.Form.easy, value: 1.0)
-            difficultyOption(text: L10n.Tasks.Form.medium, value: 1.5)
-            difficultyOption(text: L10n.Tasks.Form.hard, value: 2.0)
-        }
-    }
-}
-
-struct HabitControlsFormView: View {
-    let taskColor: UIColor
-    @Binding var isUp: Bool
-    @Binding var isDown: Bool
-    
-    let theme = ThemeService.shared.theme
-
-    private func buildOption(text: String, icon: UIImage, isActive: Binding<Bool>) -> some View {
-        return VStack(spacing: 12) {
-            Group {
-                Image(uiImage: icon)
-                    .accessibilityHidden(true)
-                Text(text)
-                    .accessibilityHidden(true)
-                    .font(.system(size: 15, weight: isActive.wrappedValue ? .semibold : .regular))
-                    .foregroundColor(isActive.wrappedValue ? .accentColor : Color(theme.ternaryTextColor))
-            }
-            .accessibilityElement(children: .ignore)
-            .accessibilityLabel(text + " control, " + "\( isActive.wrappedValue ? "on": "off")")
-            .accessibilityRemoveTraits(.isImage)
-        }
-        .padding(.top, 4)
-        .frame(maxWidth: .infinity)
-        .onTapGesture {
-            UISelectionFeedbackGenerator.oneShotSelectionChanged()
-            isActive.wrappedValue.toggle()
-        }
-    }
-    
-    var body: some View {
-        HStack {
-            buildOption(text: L10n.Tasks.Form.positive, icon: HabiticaIcons.imageOfHabitControlPlus(taskTintColor: taskColor, isActive: isUp), isActive: $isUp)
-            buildOption(text: L10n.Tasks.Form.negative, icon: HabiticaIcons.imageOfHabitControlMinus(taskTintColor: taskColor, isActive: isDown), isActive: $isDown)
-        }
-    }
-}
-
-struct Separator: View {
-    var padding: CGFloat = 14
-    
-    var body: some View {
-        Rectangle().fill(Color(ThemeService.shared.theme.separatorColor)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1).padding(.horizontal, padding)
-    }
-}
-
-struct TagList: View {
-    @Binding var selectedTags: [TagProtocol]
-    var allTags: [TagProtocol]
-    var taskColor: Color
-    
-    var body: some View {
-        VStack(spacing: 0) {
-            ForEach(allTags, id: \.id) { tag in
-                let isSelected = selectedTags.contains { selectedTag in
-                    return selectedTag.id == tag.id
-                }
-                HStack {
-                    Text(tag.text ?? "TagName").font(.body).foregroundColor(isSelected ? .accentColor : Color(ThemeService.shared.theme.primaryTextColor))
-                    Spacer()
-                    if isSelected {
-                        Image(Asset.checkmarkSmall.name).foregroundColor(.accentColor)
-                    }
-                }
-                .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
-                .frame(height: 50).padding(.horizontal, 26)
-                .onTapGesture {
-                    UISelectionFeedbackGenerator.oneShotSelectionChanged()
-                    if isSelected {
-                        selectedTags.removeAll { selectedTag in
-                            return selectedTag.id == tag.id
-                        }
-                    } else {
-                        selectedTags.append(tag)
-                    }
-                }
-                if tag.id != allTags.last?.id {
-                    Separator()
-                }
-            }
-        }
-    }
-}
-
-struct FormRow<TitleView: View, LabelView: View>: View {
-    let title: TitleView
-    let valueLabel: LabelView
-    var action: (() -> Void)?
-    
-    var body: some View {
-        if let action = action {
-            Button(action: action, label: {
-                HStack {
-                    title.foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
-                    Spacer()
-                    valueLabel
-                        .padding(.vertical, 6)
-                        .padding(.horizontal, 11)
-                        .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                        .cornerRadius(UIConstants.largeCornerRadius)
-                }.frame(height: 45).padding(.leading, 26).padding(.trailing, 12)
-            }).buttonStyle { configuration in
-                if UIAccessibility.buttonShapesEnabled {
-                    configuration.label
-                        .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                        .cornerRadius(UIConstants.largeCornerRadius).padding(4)
-                } else {
-                    configuration.label
-                }
-            }
-        } else {
-            HStack {
-                title.foregroundColor(.primary)
-                Spacer()
-                valueLabel
-                    .padding(.vertical, 6)
-                    .padding(.horizontal, 11)
-                    .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                    .cornerRadius(UIConstants.largeCornerRadius)
-            }.frame(height: 45).padding(.leading, 26).padding(.trailing, 12)
-        }
-    }
-}
-
-struct FormSheetSelector<TYPE: Equatable & Hashable>: View {
-    let title: Text
-    @Binding var value: TYPE
-    let options: [LabeledFormValue<TYPE>]
-    
-    @State var isOpen = false
-    
-    var body: some View {
-        HStack {
-            title
-            Spacer()
-            Picker(selection: $value, content: {
-                ForEach(options) { option in
-                    Text(option.label).tag(option.value)
-                }
-            }, label: {
-                Text(options.first(where: { $0.value == value })?.label ?? "")
-            })
-            .tint(Color(ThemeService.shared.theme.primaryTextColor))
-            .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-            .cornerRadius(UIConstants.largeCornerRadius)
-            .menuIndicator(.hidden)
-        }.frame(height: 45).padding(.leading, 26).padding(.trailing, 12)
-    }
-}
-
-struct FormDatePicker<TitleView: View>: View {
-    let title: TitleView
-    @Binding var value: Date?
-
-    @State var isOpen = false
-    
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        return formatter
-    }()
-    
-    private var dateProxy: Binding<Date> {
-        Binding<Date>(get: { self.value ?? Date() }, set: {
-            self.value = $0
-        })
-    }
-    
-    private var valueText: String {
-        if let date = value {
-            return dateFormatter.string(from: date)
-        } else {
-            return L10n.Tasks.Form.none
-        }
-    }
-    
-    var body: some View {
-        DatePicker(selection: dateProxy,
-                 displayedComponents: [.date],
-                 label: {
-          title
-                 })
-        .padding(.leading, 26).padding(.trailing, 12)
-        .frame(height: 50)
-    }
-}
-
-public struct FormTextFieldStyle: TextFieldStyle {
-    // swiftlint:disable:next identifier_name
-    public func _body(configuration: TextField<Self._Label>) -> some View {
-        configuration
-            .padding(.horizontal, 8)
-            .padding(.vertical, 4)
-    }
-}
-
-struct DailySchedulingView: View {
-    var isEditable: Bool
-    @Binding var startDate: Date?
-    @Binding var frequency: String
-    @Binding var everyX: Int
-    
-    @Binding var monday: Bool
-    @Binding var tuesday: Bool
-    @Binding var wednesday: Bool
-    @Binding var thursday: Bool
-    @Binding var friday: Bool
-    @Binding var saturday: Bool
-    @Binding var sunday: Bool
-    @Binding var daysOfMonth: [Int]
-    @Binding var weeksOfMonth: [Int]
-    @Binding var dayOrWeekMonth: String
-    
-    private static let dailyRepeatOptions = [
-        LabeledFormValue<String>(value: "daily", label: L10n.daily),
-        LabeledFormValue<String>(value: "weekly", label: L10n.weekly),
-        LabeledFormValue<String>(value: "monthly", label: L10n.monthly),
-        LabeledFormValue<String>(value: "yearly", label: L10n.yearly)
-    ]
-    
-    private var suffix: String {
-        switch frequency {
-        case "daily":
-            if everyX == 1 {
-                return L10n.day
-            } else {
-                return L10n.days
-            }
-        case "weekly":
-            if everyX == 1 {
-                return L10n.week
-            } else {
-                return L10n.weeks
-            }
-        case "monthly":
-            if everyX == 1 {
-                return L10n.month
-            } else {
-                return L10n.months
-            }
-        case "yearly":
-            if everyX == 1 {
-                return L10n.year
-            } else {
-                return L10n.years
-            }
-        default:
-            return ""
-        }
-    }
-    
-    private func weekOption(initial: String, isEnabled: Binding<Bool>) -> some View {
-        let option = Text(initial).font(.system(size: 15))
-            .foregroundColor(isEnabled.wrappedValue ? .white : Color(ThemeService.shared.theme.dimmedTextColor))
-            .frame(width: 32, height: 32)
-            .border(Color(ThemeService.shared.theme.dimmedColor), width: isEnabled.wrappedValue ? 0 : 1, cornerRadius: UIConstants.largeCornerRadius, antialiased: true)
-            .background(Circle().fill(isEnabled.wrappedValue ? Color.accentColor : .clear))
-            .animation(.easeInOut, value: isEnabled.wrappedValue)
-            .frame(maxWidth: .infinity)
-            .onTapGesture {
-                UISelectionFeedbackGenerator.oneShotSelectionChanged()
-                withAnimation {
-                    isEnabled.wrappedValue.toggle()
-                }
-            }
-        
-        if #available(iOS 26.0, *) {
-            return option.glassEffect()
-        } else {
-            return option
-        }
-    }
-    
-    var body: some View {
-        let separator = Group {
-            if UIAccessibility.buttonShapesEnabled {
-                EmptyView()
-            } else {
-                Separator()
-            }
-        }
-        VStack(spacing: 0) {
-            if isEditable {
-                FormDatePicker(title: Text(L10n.Tasks.Form.startDate), value: $startDate)
-                separator
-                FormSheetSelector(title: Text(L10n.Tasks.Form.repeats), value: $frequency, options: DailySchedulingView.dailyRepeatOptions)
-                separator
-                NumberPickerFormView(title: Text(L10n.Tasks.Form.every), value: $everyX, minValue: 0, maxValue: 400, formatter: { value in
-                    return "\(value) \(suffix.localizedCapitalized)"
-                })
-                if frequency == "weekly" {
-                    separator
-                    HStack {
-                        weekOption(initial: "M", isEnabled: $monday)
-                        weekOption(initial: "T", isEnabled: $tuesday)
-                        weekOption(initial: "W", isEnabled: $wednesday)
-                        weekOption(initial: "T", isEnabled: $thursday)
-                        weekOption(initial: "F", isEnabled: $friday)
-                        weekOption(initial: "S", isEnabled: $saturday)
-                        weekOption(initial: "S", isEnabled: $sunday)
-                    }
-                    .transition(.move(edge: .top).combined(with: .opacity))
-                    .padding(.horizontal, 14).padding(.top, 10)
-                }
-                if frequency == "monthly" {
-                    separator
-                    TaskFormPicker(options: [
-                        LabeledFormValue(value: "day", label: L10n.Tasks.Form.dayOfMonth),
-                        LabeledFormValue(value: "week", label: L10n.Tasks.Form.dayOfWeek)
-                    ], selection: $dayOrWeekMonth)
-                    .transition(.move(edge: .top).combined(with: .opacity))
-                    .padding(.horizontal, 12).padding(.top, 10)
-                }
-            }
-            Text(TaskRepeatablesSummaryInteractor().repeatablesSummary(frequency: frequency, everyX: everyX, monday: monday, tuesday: tuesday, wednesday: wednesday, thursday: thursday, friday: friday, saturday: saturday, sunday: sunday, startDate: startDate, daysOfMonth: nil, weeksOfMonth: nil))
-                .padding(.horizontal, 14)
-                .padding(.vertical, 8)
-                .font(.caption)
-                .multilineTextAlignment(.center)
-                .foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor))
-        }
-
-    }
-}
-
-struct TaskFormReminderItemView: View {
-    var item: ReminderProtocol
-    var showDate: Bool
-    var onDelete: () -> Void
-    
-    @State private var time: Date
-
-    @ViewBuilder
-    private func buildPicker(value: Binding<Date>) -> some View {
-        DatePicker(selection: value,
-                   displayedComponents: showDate ? [.hourAndMinute, .date] : [.hourAndMinute],
-                          label: {
-                   Text("")
-                          })
-        .onTapGesture(count: 99, perform: {
-            // fix iOS 17.1 bug
-        })
-            .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
-    }
-    
-    init(item: ReminderProtocol, showDate: Bool, onDelete: @escaping () -> Void) {
-        self.item = item
-        self.showDate = showDate
-        self.onDelete = onDelete
-        _time = State(initialValue: item.time ?? Calendar.current.date(bySetting: .second, value: 0, of: Date()) ?? Date())
-    }
-    
-    private var timeProxy: Binding<Date> {
-        Binding<Date>(get: { self.time }, set: {
-            self.time = $0
-            if !self.item.isManaged {
-                self.item.time = $0
-            }
-        })
-    }
-    
-    var body: some View {
-        VStack {
-            HStack {
-                Button(action: {
-                    onDelete()
-                }, label: {
-                    Rectangle().fill(Color.white).frame(width: 9, height: 2)
-                        .background(Circle().fill(Color.accentColor).frame(width: 21, height: 21))
-                        .frame(width: 40, height: 40)
-                }).buttonStyle { configuration in
-                    if UIAccessibility.buttonShapesEnabled {
-                        configuration.label
-                            .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                            .cornerRadius(UIConstants.largeCornerRadius).padding(4)
-                    } else {
-                        configuration.label.padding(4)
-                    }
-                }
-                buildPicker(value: timeProxy)
-            }.padding(.trailing, 8)
-        }.frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
-        .transition(.opacity)
-    }
-}
-
-struct TaskFormReminderView: View {
-    var showDate: Bool
-    private let taskRepository = TaskRepository()
-    @Binding var items: [ReminderProtocol]
-    
-    @State private var expandedItem: ReminderProtocol?
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text(L10n.Tasks.Form.reminders.uppercased()).font(.system(size: 13, weight: .semibold)).foregroundColor(Color(ThemeService.shared.theme.quadTextColor)).padding(.leading, 14)
-            VStack(spacing: 8) {
-                ForEach(items, id: \.id) { item in
-                    TaskFormReminderItemView(item: item, showDate: showDate) {
-                        withAnimation {
-                            if let index = items.firstIndex(where: { $0.id == item.id }) {
-                                items.remove(at: index)
-                            }
-                        }
-                    }.onTapGesture {
-                        withAnimation {
-                            if expandedItem?.id == item.id {
-                                expandedItem = nil
-                            } else {
-                                expandedItem = item
-                            }
-                        }
-                    }
-                }
-                Button(action: {
-                    let item = taskRepository.getNewReminder()
-                    item.id = UUID().uuidString
-                    item.time = Date()
-                    items.append(item)
-                }, label: {
-                    Text(L10n.Tasks.Form.newReminder).underline(UIAccessibility.buttonShapesEnabled)
-                }).buttonStyle { configuration in
-                    configuration.label
-                        .font(.system(size: 15, weight: .semibold))
-                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
-                        .frame(maxWidth: .infinity).frame(height: 48)
-                        .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
-                }
-            }
-        }.animation(.easeInOut)
-    }
-}
-
-struct RewardAmountView: View {
-    @Binding var value: String
-    
-    var body: some View {
-        HStack {
-            Button(action: {
-                let intValue = (Int(value) ?? 0) + 1
-                value = String(intValue)
-            }, label: {
-                Image(uiImage: Asset.plus.image.withRenderingMode(.alwaysTemplate)).frame(width: 50, height: 50)
-            }).buttonStyle { configuration in
-                if UIAccessibility.buttonShapesEnabled {
-                    configuration.label
-                        .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                        .cornerRadius(UIConstants.largeCornerRadius)
-                } else {
-                    configuration.label
-                }
-            }
-            HStack {
-                Image(uiImage: HabiticaIcons.imageOfGold)
-                TextField("", text: $value)
-            }.padding(.horizontal, 16).frame(width: 112, height: 50)
-                .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-            .border(Color(ThemeService.shared.theme.separatorColor), width: 1)
-            .cornerRadius(UIConstants.largeCornerRadius)
-            Button(action: {
-                let intValue = (Int(value) ?? 1) - 1
-                value = String(intValue)
-            }, label: {
-                Image(uiImage: Asset.minus.image.withRenderingMode(.alwaysTemplate)).frame(width: 50, height: 50)
-            }).buttonStyle { configuration in
-                if UIAccessibility.buttonShapesEnabled {
-                    configuration.label
-                        .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                        .cornerRadius(UIConstants.largeCornerRadius)
-                } else {
-                    configuration.label
-                }
-            }
-        }
-    }
-}
-
-class TaskFormViewModel: ObservableObject {
-    private let taskRepository = TaskRepository()
-    
-    @Published var isTaskEditable: Bool = true
-
-    @Published var text: String = ""
-    @Published var notes: String = ""
-    @Published var priority: Float = 1.0
-    @Published var frequency: String = "daily"
-    @Published var value: String = "0"
-    @Published var stat: String = "str"
-    @Published var up: Bool = true
-    @Published var down: Bool = false
-    @Published var everyX: Int = 1
-    @Published var startDate: Date? = Date()
-    @Published var dueDate: Date?
-    @Published var selectedTags: [TagProtocol] = []
-    
-    @Published var streak: String = "0"
-    @Published var counterUp: String = "0"
-    @Published var counterDown: String = "0"
-    
-    @Published var monday: Bool = true
-    @Published var tuesday: Bool = true
-    @Published var wednesday: Bool = true
-    @Published var thursday: Bool = true
-    @Published var friday: Bool = true
-    @Published var saturday: Bool = true
-    @Published var sunday: Bool = true
-    @Published var daysOfMonth: [Int] = []
-    @Published var weeksOfMonth: [Int] = []
-    @Published var dayOrWeekMonth: String = "day"
-    
-    @Published var checklistItems: [ChecklistItemProtocol] = []
-    @Published var reminders: [ReminderProtocol] = []
-    
-    @Published var isCreating: Bool = true
-    @Published var taskType: TaskType = .habit
-    @Published var taskTintColor: Color = Color(.purple300)
-    @Published var backgroundTintColor: Color = Color(.purple300)
-    @Published var darkTaskTintColor: Color = Color(.purple200)
-    @Published var lightTaskTintColor: Color = Color(.purple400)
-    @Published var pickerTintColor: Color = Color(.purple400)
-    @Published var darkestTaskTintColor: Color = Color(UIColor(white: 1, alpha: 0.7))
-    @Published var textFieldTintColor: Color = Color(.purple10)
-    @Published var lightestTaskTintColor: Color = Color(.purple500)
-    @Published var showStatAllocation = false
-    @Published var showTaskGraphs = false
-    
-    var onTaskDelete: (() -> Void)?
-    
-    var task: TaskProtocol? {
-        didSet {
-            _text = Published(initialValue: task?.text ?? "")
-            _notes = Published(initialValue: task?.notes ?? "")
-            _priority = Published(initialValue: task?.priority ?? 1.0)
-            _frequency = Published(initialValue: task?.frequency ?? "daily")
-            _stat = Published(initialValue: task?.attribute ?? "str")
-            _value = Published(initialValue: String(task?.value ?? 0))
-            _up = Published(initialValue: task?.up ?? true)
-            _down = Published(initialValue: task?.down ?? false)
-            _everyX = Published(initialValue: task?.everyX ?? 1)
-            _startDate = Published(initialValue: task?.startDate ?? Date())
-            _dueDate = Published(initialValue: task?.duedate)
-            
-            _streak = Published(initialValue: String(task?.streak ?? 0))
-            _counterUp = Published(initialValue: String(task?.counterUp ?? 0))
-            _counterDown = Published(initialValue: String(task?.counterDown ?? 0))
-
-            _selectedTags = Published(initialValue: task?.tags ?? [])
-            
-            _monday = Published(initialValue: task?.weekRepeat?.monday ?? true)
-            _tuesday = Published(initialValue: task?.weekRepeat?.tuesday ?? true)
-            _wednesday = Published(initialValue: task?.weekRepeat?.wednesday ?? true)
-            _thursday = Published(initialValue: task?.weekRepeat?.thursday ?? true)
-            _friday = Published(initialValue: task?.weekRepeat?.friday ?? true)
-            _saturday = Published(initialValue: task?.weekRepeat?.saturday ?? true)
-            _sunday = Published(initialValue: task?.weekRepeat?.sunday ?? true)
-            _daysOfMonth = Published(initialValue: task?.daysOfMonth ?? [])
-            _weeksOfMonth = Published(initialValue: task?.weeksOfMonth ?? [])
-            if !weeksOfMonth.isEmpty {
-                _dayOrWeekMonth = Published(initialValue: "week")
-            }
-            _checklistItems = Published(initialValue: task?.checklist.map({ item in
-                return item.detached()
-            }) ?? [])
-            _reminders = Published(initialValue: task?.reminders.map({ item in
-                return item.detached()
-            }) ?? [])
-            
-            _isTaskEditable = Published(initialValue: task?.isEditable != false)
-        }
-    }
-}
-
-struct DailyProgressView: View {
-    let history: [TaskHistoryProtocol]
-    
-    private let theme = ThemeService.shared.theme
-    private let today = Date()
-    private let calendar = Calendar.current
-    
-    private let gray = Color(UIColor.gray400)
-    
-    @State private var dayItemHeight: CGFloat = 40
-    
-    @ViewBuilder
-    private func icon(wasCompleted: Bool, wasActive: Bool) -> some View {
-        if wasActive {
-            if wasCompleted {
-                Image(Asset.checkmarkSmall.name)
-            } else {
-                Image(Asset.close.name)
-            }
-        } else {
-            if wasCompleted {
-                Image(Asset.checkmarkSmall.name)
-            } else {
-                Text("")
-            }
-        }
-    }
-    
-    @ViewBuilder
-    private func dayItem(size: CGFloat, offset: Int) -> some View {
-        let examinedDay = today.addingTimeInterval(-(Double(offset * 24 * 60 * 60)))
-        
-        let historyEntry = history.last { item in
-            if let timestamp = item.timestamp {
-                return Calendar.current.isDate(timestamp, inSameDayAs: examinedDay)
-            }
-            return false
-        }
-        let wasActive = historyEntry?.isDue ?? false
-        let wasCompleted = historyEntry?.completed ?? false
-        
-        let day = calendar.component(.day, from: examinedDay)
-        let color = wasCompleted ? Color(UIColor.green100) : Color(UIColor.red100)
-        let borderColor = wasActive ? color : gray
-        let width: CGFloat = wasActive ? 2 : 1
-        VStack(alignment: .center, spacing: 5) {
-            icon(wasCompleted: wasCompleted, wasActive: wasActive).frame(width: 8, height: 8).foregroundColor(color).padding(.top, 2)
-            Text(String(day)).font(.system(size: 11)).foregroundColor(borderColor)
-        }.frame(width: size, height: size, alignment: .center)
-        .overlay(
-            RoundedRectangle(cornerRadius: 5)
-                .stroke(borderColor, lineWidth: width)
-        )
-    }
-    
-    var body: some View {
-        VStack {
-            GeometryReader { reader in
-                let size = (reader.size.width - 62) / 7
-                HStack(spacing: 7) {
-                    ForEach(0..<7) { offset in
-                        dayItem(size: size, offset: 6 - offset)
-                    }
-                }.padding(.horizontal, 10).padding(.vertical, 10).background(Color(theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
-                .background(GeometryReader { _ -> Color in
-                    DispatchQueue.main.async {
-                        self.dayItemHeight = size
-                    }
-                    return Color.clear
-                })
-            }.frame(height: dayItemHeight + 20)
-        }
-    }
-}
-
 struct TaskFormView: View {
     @Environment(\.presentationMode)
     var presentationMode
@@ -761,7 +63,8 @@ struct TaskFormView: View {
                 isEditingText = isEditing
             }, giveInitialResponder: shouldShowKeyboardInitially,
                                textColor: isEditingText ? viewModel.textFieldTintColor : viewModel.textFieldTintColor.opacity(0.75))
-                .padding(8)
+            .padding(.vertical, 8)
+                .padding(.horizontal, 12)
                 .frame(minHeight: 40)
                 .background(viewModel.lightestTaskTintColor)
                 .cornerRadius(UIConstants.largeCornerRadius)
@@ -772,7 +75,8 @@ struct TaskFormView: View {
                 isEditingNotes = isEditing
             },
                                textColor: isEditingNotes ? viewModel.textFieldTintColor : viewModel.textFieldTintColor.opacity(0.75))
-                .padding(8)
+            .padding(.vertical, 8)
+                .padding(.horizontal, 12)
                 .frame(minHeight: 40)
                 .background(viewModel.lightestTaskTintColor)
                 .cornerRadius(UIConstants.largeCornerRadius)
@@ -806,19 +110,30 @@ struct TaskFormView: View {
     
     @ViewBuilder private var dynamicFormPart: some View {
         if viewModel.taskType == .habit && viewModel.isTaskEditable {
-            TaskFormSection(header: Text(L10n.Tasks.Form.controls.uppercased()),
-                            content: HabitControlsFormView(taskColor: viewModel.lightTaskTintColor.uiColor(), isUp: $viewModel.up, isDown: $viewModel.down).padding(8))
-            TaskFormSection(header: Text(L10n.Tasks.Form.resetCounter.uppercased()),
-                            content: TaskFormPicker(options: TaskFormView.habitResetStreakOptions, selection: $viewModel.frequency, tintColor: viewModel.pickerTintColor))
+            TaskFormSection(header: Text(L10n.Tasks.Form.controls.localizedCapitalized),
+                            content: HabitControlsFormView(taskColor: viewModel.lightTaskTintColor.uiColor(), isUp: $viewModel.up, isDown: $viewModel.down), backgroundColor: .clear)
         } else if viewModel.taskType == .reward && viewModel.isTaskEditable {
-            TaskFormSection(header: Text(L10n.Tasks.Form.difficulty.uppercased()),
-                            content: RewardAmountView(value: $viewModel.value), backgroundColor: .clear)
+            TaskFormSection(header: Text(L10n.Tasks.Form.cost.localizedCapitalized),
+                            content: PlusMinusStepperView(amount: $viewModel.value, icon: Image(uiImage: HabiticaIcons.imageOfGold)), backgroundColor: .clear)
         } else if viewModel.taskType == .daily {
-            TaskFormSection(header: Text(L10n.Tasks.Form.scheduling.uppercased()),
-                            content: DailySchedulingView(isEditable: viewModel.isTaskEditable, startDate: $viewModel.startDate, frequency: $viewModel.frequency, everyX: $viewModel.everyX, monday: $viewModel.monday, tuesday: $viewModel.tuesday, wednesday: $viewModel.wednesday, thursday: $viewModel.thursday, friday: $viewModel.friday, saturday: $viewModel.saturday, sunday: $viewModel.sunday, daysOfMonth: $viewModel.daysOfMonth, weeksOfMonth: $viewModel.weeksOfMonth, dayOrWeekMonth: $viewModel.dayOrWeekMonth
+            TaskFormSection(header: Text(L10n.Tasks.Form.scheduling.localizedCapitalized),
+                            content: DailySchedulingView(isEditable: viewModel.isTaskEditable,
+                                                         startDate: $viewModel.startDate,
+                                                         frequency: $viewModel.frequency,
+                                                         everyX: $viewModel.everyX,
+                                                         monday: $viewModel.monday,
+                                                         tuesday: $viewModel.tuesday,
+                                                         wednesday: $viewModel.wednesday,
+                                                         thursday: $viewModel.thursday,
+                                                         friday: $viewModel.friday,
+                                                         saturday: $viewModel.saturday,
+                                                         sunday: $viewModel.sunday,
+                                                         daysOfMonth: $viewModel.daysOfMonth,
+                                                         weeksOfMonth: $viewModel.weeksOfMonth,
+                                                         dayOrWeekMonth: $viewModel.dayOrWeekMonth
                                                          ))
         } else if viewModel.taskType == .todo && viewModel.isTaskEditable {
-            TaskFormSection(header: Text(L10n.Tasks.Form.scheduling.uppercased()),
+            TaskFormSection(header: Text(L10n.Tasks.Form.scheduling.localizedCapitalized),
                             content: DueDateFormView(date: $viewModel.dueDate))
         }
     }
@@ -837,24 +152,26 @@ struct TaskFormView: View {
                             }
                             dynamicFormPart
                             if viewModel.taskType != .reward && viewModel.isTaskEditable {
-                                TaskFormSection(header: Text(L10n.Tasks.Form.difficulty.uppercased()),
-                                                content: DifficultyPicker(selectedDifficulty: $viewModel.priority).padding(8))
+                                TaskFormSection(header: Text(L10n.Tasks.Form.difficulty.localizedCapitalized),
+                                                content: DifficultyPicker(selectedDifficulty: $viewModel.priority).tint(viewModel.pickerTintColor), backgroundColor: .clear)
                             }
                             if viewModel.taskType == .daily || viewModel.taskType == .todo {
                                 TaskFormReminderView(showDate: viewModel.taskType == .todo, items: $viewModel.reminders)
                             }
                             if viewModel.showStatAllocation && viewModel.isTaskEditable {
-                                TaskFormSection(header: Text(L10n.statAllocation.uppercased()),
+                                TaskFormSection(header: Text(L10n.assignedStat.localizedCapitalized),
                                                 content: TaskFormPicker(options: TaskFormView.statAllocationOptions, selection: $viewModel.stat, tintColor: viewModel.pickerTintColor))
                             }
+                            if viewModel.taskType == .habit {
+                                TaskFormSection(header: Text(L10n.Tasks.Form.resetCounter.localizedCapitalized),
+                                                content: TaskFormPicker(options: TaskFormView.habitResetStreakOptions, selection: $viewModel.frequency, tintColor: viewModel.pickerTintColor))
+                            }
                             if viewModel.taskType == .daily && viewModel.task?.id != nil {
-                                TaskFormSection(header: Text(L10n.Tasks.Form.adjustStreak.uppercased()),
-                                                content: FormRow(title: Text(L10n.streak), valueLabel: TextField(L10n.streak, text: $viewModel.streak)
-                                                    .multilineTextAlignment(.trailing)
-                                                    .keyboardType(.numberPad)))
-                                
+                                TaskFormSection(header: Text(L10n.Tasks.Form.adjustStreak.localizedCapitalized),
+                                                content: PlusMinusStepperView(amount: $viewModel.value, icon: EmptyView(), minAmount: 0), backgroundColor: .clear)
                             } else if viewModel.taskType == .habit && viewModel.task?.id != nil {
-                                TaskFormSection(header: Text(L10n.Tasks.Form.adjustCounter.uppercased()),
+                                
+                                TaskFormSection(header: Text(L10n.Tasks.Form.adjustCounter.localizedCapitalized),
                                                 content: VStack {
                                     FormRow(title: Text(L10n.Tasks.Form.positive), valueLabel: TextField(L10n.Tasks.Form.positive, text: $viewModel.counterUp)
                                         .multilineTextAlignment(.trailing)
@@ -864,7 +181,7 @@ struct TaskFormView: View {
                                         .keyboardType(.numberPad))
                                 })
                             }
-                            TaskFormSection(header: Text(L10n.Tasks.Form.tags.uppercased()),
+                            TaskFormSection(header: Text(L10n.Tasks.Form.tags.localizedCapitalized),
                                             content: TagList(selectedTags: $viewModel.selectedTags, allTags: tags, taskColor: viewModel.taskTintColor))
                             if viewModel.task?.id != nil {
                                 deleteButton
@@ -885,7 +202,7 @@ struct TaskFormView: View {
         .scrollDismissesKeyboard(.immediately)
         .accentColor(viewModel.taskTintColor)
         .frame(maxHeight: .infinity)
-        .background(Color(theme.contentBackgroundColor).edgesIgnoringSafeArea(.bottom).padding(.top, 40))
+        .background(Color(theme.contentBackgroundColor).edgesIgnoringSafeArea(.bottom).padding(.top, 200))
         .navigationBarTitle(navigationTitle)
     }
 }
@@ -1021,7 +338,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
         task.notes = viewModel.notes
         task.priority = viewModel.priority
         task.frequency = viewModel.frequency
-        task.value = Float(viewModel.value) ?? 0
+        task.value = Float(viewModel.value)
         task.up = viewModel.up
         task.down = viewModel.down
         task.everyX = viewModel.everyX
