@@ -125,7 +125,7 @@
 /* (No Comment) */
 "inventory.available_until" = "%@ まで有効";
 /* (No Comment) */
-"inventory.hatched" = "新しいペットが生まれました！";
+"inventory.hatched" = "新しい%sペットが生まれました！";
 /* (No Comment) */
 "inventory.no_gems_left" = "今月ゴールドで購入可能なジェムをすべて買い切りました。来月の1～3日頃にまた新しく購入可能になります。有料プランにご加入いただきありがとうございます！";
 /* (No Comment) */
@@ -876,7 +876,7 @@
 "send_gift" = "贈り物を送る";
 "gift_one_get_one_title" = "誰かに有料プランをプレゼントすると、同じ分の有料プランが無料で適用されます";
 "gift_one_get_one_description" = "いま有料プランをプレゼントすると、あなた自身も同じ有料プランが無料で適用されます！";
-"gems_support_developers" = "ジェムを購入することで、小規模なのHabitica運営チームを支援し、Habiticaを維持する手助けができます";
+"gems_support_developers" = "ジェムを購入することで、小規模なのHabitica運営チームを支援できます！";
 "buy_for_x" = "%@で買う";
 "earned_achievement_share" = "Habiticaで新しい実績を獲得しました！";
 "invalid_recipient_message" = "受け取る人として有効なHabiticaユーザー名を指定する必要があります。";
@@ -1078,7 +1078,7 @@
 "view_onboarding_tasks" = "「初心者入門のタスク」を見る";
 "first_drop_title" = "新しいアイテムを見つけました！";
 "go_to_items" = "「アイテム」へ";
-"first_drop_explanation2" = "「アイテム」メニューから新しいたまごにたまごがえしの薬を使ってみましょう！";
+"first_drop_explanation2" = "新しいたまごにたまごがえしの薬を使ってみましょう！";
 "first_drop_explanation1" = "タスクを完了することで、たまご・たまごがえしの薬・ペットのえさなどのアイテムを見つけるチャンスが与えられます。";
 "view_achievements" = "実績を見る";
 "you_got_achievement" = "実績を解除しました！";
@@ -1643,3 +1643,10 @@
 "add_tag" = "タグを追加";
 "equipped_gear" = "身に着けた装備品";
 "player_not_won_challenges" = "このプレイヤーはまだチャレンジに優勝していません。";
+"unlocked_another_checkin_prize" = "次のチェックインの賞品がアンロックされました！";
+"class_system_unlocked" = "クラスシステムがアンロックされました";
+"class_system_unlocked_description" = "あなたのプレイスタイルにあったクラスを選んで、あなたの冒険を補助するスペシャルスキルや装備を手に入れましょう";
+"go_to_pets_mounts" = "動物小屋へ移動";
+"not_now" = "後で";
+"undo" = "元に戻す";
+"checkin_prize_description" = "あなたは、人生・生活を向上することを誓いました。それを称え、%sを贈ります";
