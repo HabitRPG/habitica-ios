@@ -123,7 +123,7 @@
 /* (No Comment) */
 "inventory.available_until" = "Disponible jusqu’au %@";
 /* (No Comment) */
-"inventory.hatched" = "Vous avez fait éclore un nouveau familier !";
+"inventory.hatched" = "Vous avez fait éclore un nouveau Familier %s !";
 /* (No Comment) */
 "inventory.no_gems_left" = "Vous avez acheté toutes les gemmes disponibles ce mois-ci. De nouvelles sont remises en circulation les 3 premiers jours de chaque mois. Merci de votre abonnement !";
 /* (No Comment) */
@@ -861,7 +861,7 @@
 "send_gift" = "Offrir";
 "gift_one_get_one_title" = "Offrez-en un, recevez-en un";
 "gift_one_get_one_description" = "Offrez un abonnement maintenant pour recevoir le même abonnement gratuitement !";
-"gems_support_developers" = "Acheter des gemmes soutient notre petite équipe et permet à Habitica de fonctionner";
+"gems_support_developers" = "Acheter des gemmes soutient notre petite équipe à Habitica !";
 "buy_for_x" = "Acheter pour %@";
 "earned_achievement_share" = "J'ai gagné un nouveau succès dans Habitica !";
 "invalid_recipient_message" = "Vous devez spécifier un nom d'utilisateur Habitica valide comme récipiendaire.";
@@ -1071,7 +1071,7 @@
 "view_onboarding_tasks" = "Voir les Tâches d’Intégration";
 "first_drop_title" = "Vous avez trouvé des nouveaux Objets !";
 "go_to_items" = "Allez voir vos Objets";
-"first_drop_explanation2" = "Allez voir vos Objets et essayez de combiner votre nouvel Œuf et Potion d’Éclosion !";
+"first_drop_explanation2" = "Essayez de combiner votre nouvel Œuf avec une Potion d’Éclosion !";
 "first_drop_explanation1" = "Accomplir des tâches vous donne la chance d’obtenir des œufs, des potions d’éclosion, et de la nourriture pour familiers.";
 "purchasedEquipmentDescription" = "L’équipement peut être pratique ou juste élégant. Augmentez vos caractéristiques pour donner toutes sortes d’avantages à votre Avatar";
 "feedPet_description" = "Accomplissez des tâches pour obtenir de la nourriture ! Vous pourrez ainsi nourrir votre Familier";
@@ -1544,7 +1544,7 @@
 "got_it" = "Ok !";
 "open_stats" = "Voir les Attributs";
 "class_change_confirm_description" = "Cela changera les types d'équipements achetables dans les boutiques, les différentes compétences que vous pourrez utiliser, et réinitialisera vos points d'attributs.";
-"class_change_success_description" = "Vous pouvez désormais utiliser les compétences %@ et acheter des équipements dans les boutiques. Gagnez des niveaux pour obtenir des points d'attributs que vous pourrez utiliser pour booster vos compétences.";
+"class_change_success_description" = "À chaque nouveau niveau, vous débloquez des points d'Attribut que vous pourrez utiliser pour augmenter vos Compétences ; cela vous permettra d'influer sur plusieurs aspects de jeu Habitica";
 "subscription.stay_motivated_with_more_rewards" = "Restez motivé·e grâce à toujours plus de récompense en vous abonnant";
 "two_gems_per_month" = "+2 Gemmes chaque mois";
 "max_gem_cap" = "Limite de Gemme Maximum";
@@ -1638,3 +1638,14 @@
 "add_tag" = "Ajouter une Étiquette";
 "item_is_locked" = "L'Objet n'est pas utilisable";
 "edit_tags" = "Éditer les Étiquettes";
+"unlocked_another_checkin_prize" = "Vous avez débloqué une nouvelle récompense de connexion !";
+"checkin_prize_description" = "Vous avez reçu un(e) %s du fait de vos efforts pour améliorer votre vie";
+"class_system_unlocked" = "Système de Classe débloqué";
+"class_system_unlocked_description" = "Choisissez une class qui correspond à votre style de jeu, et débloquez des compétences spéciales et des pièces d'équipement pour vous aider dans votre périple";
+"class_change_success_subtitle" = "Vous pouvez répartir de nouveaux attributs";
+"view_stats" = "Voir les Attributs";
+"find_stats_menu" = "Vous pouvez consulter vos attributs quand vous le souhaitez dans le Menu";
+"go_to_pets_mounts" = "Voir les Familiers et Montures";
+"not_now" = "Pas tout de suite";
+"undo" = "Annuler";
+"assigned_stat" = "Attribut Assigné";
