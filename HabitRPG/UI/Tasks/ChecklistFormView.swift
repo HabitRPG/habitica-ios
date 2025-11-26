@@ -10,6 +10,7 @@ import SwiftUI
 import Habitica_Models
 
 struct TaskFormChecklistItemView: View {
+    @ObservedObject var themeService = ThemeService.shared
     var item: ChecklistItemProtocol {
         didSet {
             text = item.text ?? ""
@@ -40,12 +41,12 @@ struct TaskFormChecklistItemView: View {
                 onDelete()
             }, label: {
                 Rectangle().fill(Color.white).frame(width: 9, height: 2)
-                    .background(Circle().fill(Color.accentColor).frame(width: 21, height: 21))
+                    .background(Circle().fill(.tint).frame(width: 21, height: 21))
                     .frame(width: 44, height: 44)
             }).buttonStyle { configuration in
                 if UIAccessibility.buttonShapesEnabled {
                     configuration.label
-                        .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                        .background(Color(themeService.theme.offsetBackgroundColor))
                         .cornerRadius(UIConstants.largeCornerRadius)
                         .padding(4)
                 } else {
@@ -53,15 +54,16 @@ struct TaskFormChecklistItemView: View {
                 }
             }
             FocusableTextField(placeholder: "Enter your checklist line", text: textProxy, isFirstResponder: $isFirstResponder)
-            Image(uiImage: Asset.grabIndicator.image).foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor))
+            Image(uiImage: Asset.grabIndicator.image).foregroundStyle(Color(themeService.theme.tableviewSeparatorColor))
                     .padding(.trailing, 13)
-        }.background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
+        }.background(Color(themeService.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
             .contentShape([.dragPreview], RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius))
         .transition(.opacity)
     }
 }
 
 struct TaskFormChecklistView: View {
+    @ObservedObject var themeService = ThemeService.shared
     private let taskRepository = TaskRepository()
     @Binding var items: [ChecklistItemProtocol]
     @State var focusItemId: String?
@@ -76,16 +78,16 @@ struct TaskFormChecklistView: View {
         }).buttonStyle { configuration in
             configuration.label
                 .font(.system(size: 15, weight: .semibold))
-                .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 .frame(maxWidth: .infinity).frame(height: 48)
-                .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
+                .background(Color(themeService.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
         }
     }
     @State var draggedItem: ChecklistItemProtocol?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(L10n.Tasks.Form.checklist.uppercased()).font(.system(size: 13, weight: .semibold)).foregroundColor(Color(ThemeService.shared.theme.quadTextColor)).padding(.leading, 14)
+            Text(L10n.Tasks.Form.checklist.uppercased()).font(.system(size: 13, weight: .semibold)).foregroundStyle(Color(themeService.theme.quadTextColor)).padding(.leading, 14)
                 LazyVStack {
                     ForEach(items, id: \.id) { item in
                         TaskFormChecklistItemView(item: item, onDelete: {

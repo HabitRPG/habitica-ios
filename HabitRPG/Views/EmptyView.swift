@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct NoContentView<Icon: View, Title: View, Content: View>: View {
+    @ObservedObject var themeService = ThemeService.shared
     let icon: Icon
     let title: Title
     let content: Content
@@ -18,10 +19,10 @@ struct NoContentView<Icon: View, Title: View, Content: View>: View {
             icon.padding(.bottom, 15)
             title
                 .scaledFont(size: 16, weight: .semibold)
-                .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
+                .foregroundStyle(Color(themeService.theme.primaryTextColor))
             content
                 .scaledFont(size: 15)
-                .foregroundStyle(Color(ThemeService.shared.theme.ternaryTextColor))
+                .foregroundStyle(Color(themeService.theme.ternaryTextColor))
         }.frame(maxWidth: .infinity)
             .padding(.top, 50)
             .multilineTextAlignment(.center)

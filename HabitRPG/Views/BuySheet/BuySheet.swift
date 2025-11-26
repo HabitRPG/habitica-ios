@@ -12,17 +12,18 @@ import ReactiveSwift
 import Habitica_Database
 
 struct BuyCurrencyView: View {
+    @ObservedObject var themeService = ThemeService.shared
     let value: Int
     let currency: Currency
     
     private var textColor: Color {
         switch currency {
         case .gem:
-            return ThemeService.shared.theme.isDark ? .green500 : .green1
+            return themeService.theme.isDark ? .green500 : .green1
         case .gold:
-            return ThemeService.shared.theme.isDark ? .yellow500 : .yellow1
+            return themeService.theme.isDark ? .yellow500 : .yellow1
         case .hourglass:
-            return ThemeService.shared.theme.isDark ? .blue500 : .blue1
+            return themeService.theme.isDark ? .blue500 : .blue1
         }
     }
     
@@ -75,6 +76,7 @@ struct BuyBanner<Content: View>: View {
     var body: some View {
         content
             .scaledFont(size: 15, weight: .semibold)
+            .multilineTextAlignment(.center)
             .padding(.vertical, 10)
             .padding(.horizontal, 14)
             .frame(maxWidth: .infinity)
@@ -83,10 +85,8 @@ struct BuyBanner<Content: View>: View {
     }
 }
 
-
-
 struct BuySheet: View, Dismissable {
-    @Environment(\.themeService) var themeService
+    @ObservedObject var themeService = ThemeService.shared
     @ObservedObject private var viewModel: BuySheetViewModel
     
     var dismisser: Dismisser {

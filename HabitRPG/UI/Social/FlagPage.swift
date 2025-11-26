@@ -102,28 +102,29 @@ class FlagViewModel: ObservableObject {
 }
 
 struct FlagPage: View {
+    @ObservedObject var themeService = ThemeService.shared
     @ObservedObject var viewModel: FlagViewModel
     @State var isFirstResponder = true
     
     var body: some View {
-        let theme = ThemeService.shared.theme
+        let theme = themeService.theme
         let typeText = viewModel.typeText
         VStack(alignment: .leading, spacing: 0) {
             HStack {
-                Text(L10n.reportX(typeText)).foregroundColor(Color(theme.primaryTextColor)).font(.system(size: 20, weight: .medium))
+                Text(L10n.reportX(typeText)).foregroundStyle(Color(theme.primaryTextColor)).font(.system(size: 20, weight: .medium))
                 Spacer()
                 if #available(iOS 26.0, *) {
                     Button(L10n.report) {
                         viewModel.sendReport()
                     }.buttonStyle(.glassProminent)
-                        .foregroundColor(.white)
-                        .tint(Color(ThemeService.shared.theme.errorColor))
+                        .foregroundStyle(.white)
+                        .tint(Color(theme.errorColor))
                 } else {
                     Button(L10n.report) {
                         viewModel.sendReport()
                     }.buttonStyle(.plain)
-                        .foregroundColor(.white)
-                        .tint(Color(ThemeService.shared.theme.errorColor))
+                        .foregroundStyle(.white)
+                        .tint(Color(theme.errorColor))
                 }
             }.padding(.vertical, 32)
             VStack {
@@ -140,7 +141,7 @@ struct FlagPage: View {
                 .cornerRadius(UIConstants.largeCornerRadius)
                 .padding(.top, 12).padding(.bottom, 15)
             if viewModel.type == .member {
-                Text(L10n.thisWillAlsoBlockX(viewModel.offendingText)).font(.system(size: 14, weight: .medium)).foregroundColor(Color(theme.ternaryTextColor))
+                Text(L10n.thisWillAlsoBlockX(viewModel.offendingText)).font(.system(size: 14, weight: .medium)).foregroundStyle(Color(theme.ternaryTextColor))
             }
             Text(AttributedString(L10n.reportingDisclaimer(typeText)).withCommunityGuidelinesLinked().withTermsOfServiceLinked())
                 .environment(\.openURL, OpenURLAction(handler: { url in
@@ -150,8 +151,8 @@ struct FlagPage: View {
                     }
                     return .systemAction
                 }))
-                .font(.system(size: 14)).foregroundColor(Color(theme.ternaryTextColor)).padding(.bottom, 12)
-        }.padding(.horizontal, 32).foregroundColor(Color(theme.primaryTextColor))
+                .font(.system(size: 14)).foregroundStyle(Color(theme.ternaryTextColor)).padding(.bottom, 12)
+        }.padding(.horizontal, 32).foregroundStyle(Color(theme.primaryTextColor))
     }
 }
 

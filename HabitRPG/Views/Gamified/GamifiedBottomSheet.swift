@@ -17,6 +17,7 @@ struct SolidColorView: View {
 }
 
 struct GamifiedBottomSheet<UpperBackground: View, UpperContent: View, Title: View, Description: View, Buttons: View>: View {
+    @ObservedObject var themeService = ThemeService.shared
     @Environment(\.presentationManager) var presentationManager
 
     var upperBackground: UpperBackground
@@ -49,7 +50,7 @@ struct GamifiedBottomSheet<UpperBackground: View, UpperContent: View, Title: Vie
                 title.scaledFont(size: 20, weight: .semibold)
                 description.scaledFont(size: 17)
             }
-            .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
+            .foregroundStyle(Color(themeService.theme.primaryTextColor))
             .padding(.horizontal, 30)
             buttons()
                 .padding(.horizontal, 16)

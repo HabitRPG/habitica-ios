@@ -11,6 +11,7 @@ import ReactiveSwift
 import Habitica_Database
 
 struct PlusMinusStepperView<Icon: View>: View {
+    @ObservedObject var themeService = ThemeService.shared
     @Binding var amount: Int
     let icon: Icon
     var isActive: Bool = true
@@ -31,12 +32,12 @@ struct PlusMinusStepperView<Icon: View>: View {
                 Text("\(amount)")
                     .contentTransition(.numericText())
                     .scaledFont(size: 22, weight: .bold)
-                    .foregroundStyle(Color(isActive ? ThemeService.shared.theme.primaryTextColor : ThemeService.shared.theme.ternaryTextColor))
+                    .foregroundStyle(Color(isActive ? themeService.theme.primaryTextColor : themeService.theme.ternaryTextColor))
             }
                 .padding(.vertical, 11)
                 .padding(.horizontal, 31)
                 .frame(minWidth: 112, minHeight: 50)
-                .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+                .background(Color(themeService.theme.windowBackgroundColor))
                 .clipShape(.capsule)
             Button {
                 withAnimation {

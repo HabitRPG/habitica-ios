@@ -157,6 +157,7 @@ extension Color {
     @nonobjc static let gray600 = Color(red: 237.0 / 255.0, green: 236.0 / 255.0, blue: 238.0 / 255.0, opacity: 1.0)
     @nonobjc static let gray700 = Color(white: 249.0 / 255.0, opacity: 1.0)
     
+    @nonobjc static let purple10 = Color(red: 0.18, green: 0.11, blue: 0.31, opacity: 1.0)
     @nonobjc static let purple50 = Color(red: 54.0 / 255.0, green: 32.0 / 255.0, blue: 93.0 / 255.0, opacity: 1.0)
     @nonobjc static let purple100 = Color(red: 67.0 / 255.0, green: 40.0 / 255.0, blue: 116.0 / 255.0, opacity: 1.0)
     @nonobjc static let purple200 = Color(red: 79.0 / 255.0, green: 42.0 / 255.0, blue: 147.0 / 255.0, opacity: 1.0)
@@ -167,7 +168,6 @@ extension Color {
     @nonobjc static let purple5060 = Color(red: 54.0 / 255.0, green: 32.0 / 255.0, blue: 93.0 / 255.0, opacity: 0.6)
     @nonobjc static let blackPurple50 = Color(red: 0.1, green: 0.09, blue: 0.11, opacity: 1.0)
     @nonobjc static let blackPurple100 = Color(red: 0.2, green: 0.19, blue: 0.23, opacity: 1.0)
-    @nonobjc static let purple10 = Color(red: 0.18, green: 0.11, blue: 0.31, opacity: 1.0)
     
     @nonobjc static let tier1 = Color(red: 196.0 / 255.0, green: 40.0 / 255.0, blue: 113.0 / 255.0, opacity: 1.0)
     @nonobjc static let tier2 = Color(red: 176.0 / 255.0, green: 21.0 / 255.0, blue: 21.0 / 255.0, opacity: 1.0)
@@ -177,4 +177,183 @@ extension Color {
     @nonobjc static let tier6 = Color(red: 43.0 / 255.0, green: 131.0 / 255.0, blue: 99.0 / 255.0, opacity: 1.0)
     @nonobjc static let tier7 = Color(red: 22.0 / 255.0, green: 126.0 / 255.0, blue: 135.0 / 255.0, opacity: 1.0)
     @nonobjc static let tierMod = Color(red: 39.0 / 255.0, green: 126.0 / 255.0, blue: 171.0 / 255.0, opacity: 1.0)
+}
+
+extension ShapeStyle where Self == Color {
+    static var maroon10: Color {
+        return .maroon10
+    }
+    static var maroon50: Color {
+        return .maroon50
+    }
+    static var maroon100: Color {
+        return .maroon100
+    }
+    static var maroon500: Color {
+        return .maroon500
+    }
+    
+    static var red1: Color {
+        return .red1
+    }
+    static var red10: Color {
+        return .red10
+    }
+    static var red50: Color {
+        return .red50
+    }
+    static var red100: Color {
+        return .red100
+    }
+    static var red500: Color {
+        return .red500
+    }
+    
+    static var orange1: Color {
+        return .orange1
+    }
+    static var orange10: Color {
+        return .orange10
+    }
+    static var orange50: Color {
+        return .orange50
+    }
+    static var orange100: Color {
+        return .orange100
+    }
+    static var orange500: Color {
+        return .orange500
+    }
+    
+    static var yellow1: Color {
+        return .yellow1
+    }
+    static var yellow5: Color {
+        return .yellow5
+    }
+    static var yellow10: Color {
+        return .yellow10
+    }
+    static var yellow50: Color {
+        return .yellow50
+    }
+    static var yellow100: Color {
+        return .yellow100
+    }
+    static var yellow500: Color {
+        return .yellow500
+    }
+    
+    static var green1: Color {
+        return .green1
+    }
+    static var green10: Color {
+        return .green10
+    }
+    static var green50: Color {
+        return .green50
+    }
+    static var green100: Color {
+        return .green100
+    }
+    static var green500: Color {
+        return .green500
+    }
+    
+    static var teal1: Color {
+        return .teal1
+    }
+    static var teal10: Color {
+        return .teal10
+    }
+    static var teal50: Color {
+        return .teal50
+    }
+    static var teal100: Color {
+        return .teal100
+    }
+    static var teal500: Color {
+        return .teal500
+    }
+    
+    static var blue1: Color {
+        return .blue1
+    }
+    static var blue10: Color {
+        return .blue10
+    }
+    static var blue50: Color {
+        return .blue50
+    }
+    static var blue100: Color {
+        return .blue100
+    }
+    static var blue500: Color {
+        return .blue500
+    }
+
+    static var gray10: Color {
+        return .gray10
+    }
+    static var gray50: Color {
+        return .gray50
+    }
+    static var gray100: Color {
+        return .gray100
+    }
+    static var gray200: Color {
+        return .gray200
+    }
+    static var gray300: Color {
+        return .gray300
+    }
+    static var gray400: Color {
+        return .gray400
+    }
+    static var gray500: Color {
+        return .gray500
+    }
+    static var gray600: Color {
+        return .gray600
+    }
+    static var gray700: Color {
+        return .gray700
+    }
+    
+    
+    static var purple10: Color {
+        return .purple10
+    }
+    static var purple50: Color {
+        return .purple50
+    }
+    static var purple100: Color {
+        return .purple100
+    }
+    static var purple200: Color {
+        return .purple200
+    }
+    static var purple300: Color {
+        return .purple300
+    }
+    static var purple400: Color {
+        return .purple400
+    }
+    static var purple500: Color {
+        return .purple500
+    }
+    static var purple600: Color {
+        return .purple600
+    }
+    static var purple5060: Color {
+        return .purple5060
+    }
+    
+    
+    static var blackPurple50: Color {
+        return .blackPurple50
+    }
+    static var blackPurple100: Color {
+        return .blackPurple100
+    }
 }

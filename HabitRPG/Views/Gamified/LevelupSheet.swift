@@ -31,6 +31,7 @@ class LevelupViewModel: ViewModel {
 }
 
 struct LevelupSheet: View {
+    @ObservedObject var themeService = ThemeService.shared
     @Environment(\.presentationManager) var presentationManager
     
     @ObservedObject var viewModel: LevelupViewModel = LevelupViewModel()
@@ -60,27 +61,27 @@ struct LevelupSheet: View {
         }, description: VStack(spacing: 20) {
             if viewModel.canSelectClass {
                 Text(L10n.classSystemUnlockedDescription)
-                Text(L10n.classSystemEnableInstructions).foregroundStyle(Color(ThemeService.shared.theme.ternaryTextColor)).scaledFont(size: 15, weight: .semibold)
+                Text(L10n.classSystemEnableInstructions).foregroundStyle(Color(themeService.theme.ternaryTextColor)).scaledFont(size: 15, weight: .semibold)
             }
             Text(L10n.levelupDescription)
         }) {
             if viewModel.canSelectClass {
-                HabiticaButtonUI(label: Text(L10n.Titles.selectClass), color: Color(ThemeService.shared.theme.tintColor)) {
+                HabiticaButtonUI(label: Text(L10n.Titles.selectClass), color: Color(themeService.theme.tintColor)) {
                     if let user = viewModel.user {
                         _ = UserManager.shared.showClassSelection(user: user)
                     }
                     presentationManager.dismiss()
                 }
-                HabiticaButtonUI(label: Text(L10n.notNow).foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor)),
-                                 color: Color(ThemeService.shared.theme.offsetBackgroundColor)) {
+                HabiticaButtonUI(label: Text(L10n.notNow).foregroundStyle(Color(themeService.theme.primaryTextColor)),
+                                 color: Color(themeService.theme.offsetBackgroundColor)) {
                     presentationManager.dismiss()
                 }
             } else {
-                HabiticaButtonUI(label: Text(L10n.onwards), color: Color(ThemeService.shared.theme.tintColor)) {
+                HabiticaButtonUI(label: Text(L10n.onwards), color: Color(themeService.theme.tintColor)) {
                     presentationManager.dismiss()
                 }
-                HabiticaButtonUI(label: Text(L10n.share).foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor)),
-                                 color: Color(ThemeService.shared.theme.offsetBackgroundColor)) {
+                HabiticaButtonUI(label: Text(L10n.share).foregroundStyle(Color(themeService.theme.primaryTextColor)),
+                                 color: Color(themeService.theme.offsetBackgroundColor)) {
                     var items: [Any] = [
                         L10n.levelupShare(viewModel.user?.stats?.level ?? 0)
                     ]

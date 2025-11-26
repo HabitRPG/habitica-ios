@@ -17,6 +17,7 @@ struct Separator: View {
 }
 
 struct TagList: View {
+    @ObservedObject var themeService = ThemeService.shared
     @Binding var selectedTags: [TagProtocol]
     var allTags: [TagProtocol]
     var taskColor: Color
@@ -28,13 +29,13 @@ struct TagList: View {
                     return selectedTag.id == tag.id
                 }
                 HStack {
-                    Text(tag.text ?? "TagName").font(.body).foregroundColor(isSelected ? .accentColor : Color(ThemeService.shared.theme.primaryTextColor))
+                    Text(tag.text ?? "TagName").font(.body).foregroundStyle(isSelected ? Color.accentColor : Color(themeService.theme.primaryTextColor))
                     Spacer()
                     if isSelected {
-                        Image(Asset.checkmarkSmall.name).foregroundColor(.accentColor)
+                        Image(Asset.checkmarkSmall.name).foregroundStyle(.tint)
                     }
                 }
-                .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
+                .background(Color(themeService.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
                 .frame(height: 50).padding(.horizontal, 26)
                 .onTapGesture {
                     UISelectionFeedbackGenerator.oneShotSelectionChanged()

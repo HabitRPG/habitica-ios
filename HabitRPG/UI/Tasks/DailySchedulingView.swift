@@ -9,6 +9,7 @@ import SwiftUI
 import Habitica_Models
 
 struct DailySchedulingView: View {
+    @ObservedObject var themeService = ThemeService.shared
     var isEditable: Bool
     @Binding var startDate: Date?
     @Binding var frequency: String
@@ -65,7 +66,7 @@ struct DailySchedulingView: View {
     
     private func weekOption(initial: String, isEnabled: Binding<Bool>) -> some View {
         let option = Text(initial).font(.system(size: 15))
-            .foregroundColor(isEnabled.wrappedValue ? .white : Color(ThemeService.shared.theme.dimmedTextColor))
+            .foregroundStyle(isEnabled.wrappedValue ? .white : Color(themeService.theme.dimmedTextColor))
             .frame(width: 32, height: 32)
             .onTapGesture {
                 UISelectionFeedbackGenerator.oneShotSelectionChanged()
@@ -80,7 +81,7 @@ struct DailySchedulingView: View {
                 .frame(maxWidth: .infinity)
         } else {
             return option
-                .border(Color(ThemeService.shared.theme.dimmedColor), width: isEnabled.wrappedValue ? 0 : 1, cornerRadius: UIConstants.largeCornerRadius, antialiased: true)
+                .border(Color(themeService.theme.dimmedColor), width: isEnabled.wrappedValue ? 0 : 1, cornerRadius: UIConstants.largeCornerRadius, antialiased: true)
                 .background(Circle().fill(isEnabled.wrappedValue ? Color.accentColor : .clear))
                 .animation(.easeInOut, value: isEnabled.wrappedValue)
                 .frame(maxWidth: .infinity)
@@ -128,12 +129,23 @@ struct DailySchedulingView: View {
                     .padding(.horizontal, 12).padding(.top, 10)
                 }
             }
-            Text(TaskRepeatablesSummaryInteractor().repeatablesSummary(frequency: frequency, everyX: everyX, monday: monday, tuesday: tuesday, wednesday: wednesday, thursday: thursday, friday: friday, saturday: saturday, sunday: sunday, startDate: startDate, daysOfMonth: nil, weeksOfMonth: nil))
+            Text(TaskRepeatablesSummaryInteractor().repeatablesSummary(frequency: frequency,
+                                                                       everyX: everyX,
+                                                                       monday: monday,
+                                                                       tuesday: tuesday,
+                                                                       wednesday: wednesday,
+                                                                       thursday: thursday,
+                                                                       friday: friday,
+                                                                       saturday: saturday,
+                                                                       sunday: sunday,
+                                                                       startDate: startDate,
+                                                                       daysOfMonth: nil,
+                                                                       weeksOfMonth: nil))
                 .padding(.horizontal, 14)
                 .padding(.vertical, 8)
                 .font(.caption)
                 .multilineTextAlignment(.center)
-                .foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor))
+                .foregroundStyle(Color(themeService.theme.ternaryTextColor))
         }
 
     }

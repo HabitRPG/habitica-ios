@@ -34,6 +34,7 @@ extension View {
 }
 
 struct ArmoirePlus: View {
+    @ObservedObject var themeService = ThemeService.shared
     var thickness: CGFloat = 6
     var length: CGFloat = 12
     var maxSpacing: CGFloat = 3
@@ -198,6 +199,7 @@ private class ArmoireViewModel: ViewModel {
 }
 
 struct ArmoireView: View {
+    @ObservedObject var themeService = ThemeService.shared
     var onDismiss: (() -> Void) = {}
     @ObservedObject fileprivate var viewModel: ArmoireViewModel
     
@@ -221,7 +223,7 @@ struct ArmoireView: View {
                 Image(uiImage: HabiticaIcons.imageOfGold)
                 Text("\(Int(viewModel.initialGold))")
                     .padding(.horizontal, 12)
-                    .foregroundColor(Color.clear)
+                    .foregroundStyle(Color.clear)
                     .animatingOverlay(for: viewModel.gold)
                     .animation(.linear(duration: 2), value: viewModel.gold)
                     .onAppear {
@@ -229,7 +231,7 @@ struct ArmoireView: View {
                         confettiCounter = 1
                     }
             }
-            .foregroundColor(Color(ThemeService.shared.theme.isDark ? UIColor.yellow500 : UIColor.yellow1))
+            .foregroundStyle(Color(themeService.theme.isDark ? UIColor.yellow500 : UIColor.yellow1))
             .font(.system(size: 20, weight: .bold))
             .frame(height: 32)
             .padding(.leading, 12)
@@ -247,7 +249,7 @@ struct ArmoireView: View {
                         .confettiCannon(trigger: $confettiCounter,
                                         num: 5,
                                         confettis: [.image(Asset.confettiPill.name)],
-                                        colors: [Color(UIColor.yellow100), Color(UIColor.red100), Color(UIColor.blue100), Color(UIColor.purple400)], confettiSize: 10,
+                                        colors: [.yellow100, .red100, .blue100, .purple400], confettiSize: 10,
                                         rainHeight: UIScreen.main.bounds.height, fadesOut: false,
                                         openingAngle: .degrees(30),
                                         closingAngle: .degrees(150), radius: 400,
@@ -268,7 +270,7 @@ struct ArmoireView: View {
             }
             .opacity(viewModel.type != nil ? 1.0 : 0.0)
             Text(viewModel.title)
-                .foregroundColor(.primaryTextColor)
+                .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 .font(.system(size: 28, weight: .bold))
                 .multilineTextAlignment(.center)
                 .padding(.top, 24 * paddingScaling)
@@ -279,7 +281,7 @@ struct ArmoireView: View {
                     .animation(.linear, value: viewModel.type)
             if paddingScaling >= 1 {
                 Text(viewModel.subtitle)
-                    .foregroundColor(.ternaryTextColor)
+                    .foregroundStyle(Color(themeService.theme.ternaryTextColor))
                     .multilineTextAlignment(.center)
                     .font(.system(size: 22))
                     .frame(maxWidth: 310)
@@ -291,7 +293,7 @@ struct ArmoireView: View {
             VStack {
                 Text(L10n.Armoire.equipmentRemaining(viewModel.remainingCount))
                     .font(.system(size: 18, weight: .bold))
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
                 HStack {
                     if viewModel.type == "gear" {
                         HabiticaButtonUI(label: Text(L10n.equip), color: .white) {
@@ -329,7 +331,7 @@ struct ArmoireView: View {
                                     Text(L10n.Armoire.subbedButtonPrompt)
                                 }
                             }
-                                .foregroundColor(Color(UIColor.green1))
+                                .foregroundStyle(Color(UIColor.green1))
                                 .font(.headline)
                                 .padding(.vertical, 6)
                                 .frame(minHeight: 60)
@@ -344,24 +346,24 @@ struct ArmoireView: View {
                         .opacity(viewModel.usedPerk ? 0.0 : 1.0)
                         .animation(.linear, value: viewModel.usedPerk)
                         Text(L10n.Armoire.subbedFooter)
-                            .foregroundColor(.white)
+                            .foregroundStyle(.white)
                             .font(.system(size: 15, weight: .semibold))
                             .multilineTextAlignment(.center)
                             .fixedSize(horizontal: false, vertical: true)
                             .padding(.horizontal, 36)
                 } else {
                     VStack(alignment: .center, spacing: 8) {
-                        HabiticaButtonUI(label: Text(L10n.Armoire.unsubbedButtonPrompt).foregroundColor(Color(UIColor.teal10)), color: .white) {
+                        HabiticaButtonUI(label: Text(L10n.Armoire.unsubbedButtonPrompt).foregroundStyle(Color(UIColor.teal10)), color: .white) {
                             HabiticaApplication.shared.topmostViewController?.present(SubscriptionModalViewController(presentationPoint: .armoire), animated: true)
                         }.frame(maxWidth: 600)
                         Text(L10n.Armoire.unsubbedFooter)
-                            .foregroundColor(Color(UIColor.teal1))
+                            .foregroundStyle(Color(UIColor.teal1))
                             .font(.system(size: 15, weight: .semibold))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 16)
                             .fixedSize(horizontal: false, vertical: true)
                         Text(L10n.Armoire.dropRate)
-                            .foregroundColor(Color(UIColor.teal1))
+                            .foregroundStyle(Color(UIColor.teal1))
                             .opacity(0.75)
                             .font(.system(size: 15))
                             .onTapGesture {
@@ -398,25 +400,25 @@ struct ArmoireView: View {
                         .font(.system(size: 16, weight: .semibold))
                         .padding(.bottom, 18)
                     Text(L10n.Armoire.rateEquipmentTitle)
-                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                        .foregroundStyle(Color(themeService.theme.primaryTextColor))
                         .font(.system(size: 16))
                     Text(L10n.Armoire.rateEquipmentDescription)
                         .font(.system(size: 12))
                         .padding(.bottom, 18)
                     Text(L10n.Armoire.rateFoodTitle)
-                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                        .foregroundStyle(Color(themeService.theme.primaryTextColor))
                         .font(.system(size: 16))
                     Text(L10n.Armoire.rateFoodDescription)
                         .font(.system(size: 12))
                         .padding(.bottom, 18)
                     Text(L10n.Armoire.rateExperienceTitle)
-                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                        .foregroundStyle(Color(themeService.theme.primaryTextColor))
                         .font(.system(size: 16))
                     Text(L10n.Armoire.rateExperienceDescription)
                         .font(.system(size: 12))
                     Spacer()
                 }
-                .foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor))
+                .foregroundStyle(Color(themeService.theme.ternaryTextColor))
                 .padding(.horizontal, 30)
                 .padding(.vertical, 16)
                 .toolbar {

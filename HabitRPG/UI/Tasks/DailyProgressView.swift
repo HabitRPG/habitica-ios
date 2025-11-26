@@ -54,8 +54,8 @@ struct DailyProgressView: View {
         let borderColor = wasActive ? color : gray
         let width: CGFloat = wasActive ? 2 : 1
         VStack(alignment: .center, spacing: 5) {
-            icon(wasCompleted: wasCompleted, wasActive: wasActive).frame(width: 8, height: 8).foregroundColor(color).padding(.top, 2)
-            Text(String(day)).font(.system(size: 11)).foregroundColor(borderColor)
+            icon(wasCompleted: wasCompleted, wasActive: wasActive).frame(width: 8, height: 8).foregroundStyle(color).padding(.top, 2)
+            Text(String(day)).font(.system(size: 11)).foregroundStyle(borderColor)
         }.frame(width: size, height: size, alignment: .center)
         .overlay(
             RoundedRectangle(cornerRadius: 5)

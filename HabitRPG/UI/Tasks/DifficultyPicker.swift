@@ -9,10 +9,9 @@ import SwiftUI
 import Habitica_Models
 
 struct DifficultyPicker: View {
+    @ObservedObject var themeService = ThemeService.shared
     @Binding var selectedDifficulty: Float
-    
-    private let theme = ThemeService.shared.theme
-    
+        
     private let difficulties: [Float] = [
         0.1,
         1.0,
@@ -22,18 +21,19 @@ struct DifficultyPicker: View {
     
     @ViewBuilder
     func difficultyOption(text: String, value: Float) -> some View {
+        let theme = themeService.theme
         let color: Color = .accentColor
         VStack {
             let isActive = value == selectedDifficulty
             let accessibilityText = "Difficulty " + text + ", \(isActive ? "on" : "off")"
             Group {
                 Image(uiImage: HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: .white, difficulty: value == 0.1 ? 0.1 : CGFloat(value), isActive: true).withRenderingMode(.alwaysTemplate))
-                    .foregroundColor(isActive ? .white : Color(ThemeService.shared.theme.dimmedColor))
+                    .foregroundStyle(isActive ? .white : Color(theme.dimmedColor))
                     .animation(.spring(), value: isActive)
                     .frame(width: 57, height: 57)
                 Text(text)
                     .font(.system(size: 15, weight: isActive ? .semibold : .regular))
-                    .foregroundColor(isActive ? color : Color(theme.ternaryTextColor))
+                    .foregroundStyle(isActive ? color : Color(theme.ternaryTextColor))
                     .frame(maxWidth: .infinity)
             }
             .accessibilityElement(children: .ignore)
@@ -48,37 +48,38 @@ struct DifficultyPicker: View {
     }
     
     var body: some View {
+        let theme = themeService.theme
         GeometryReader { reader in
             let itemWidth = reader.size.width / 4
             ZStack(alignment: .topLeading) {
                 HStack(spacing: 0) {
                     RoundedRectangle(cornerRadius: UIConstants.mediumCornerRadius)
                         .frame(width: 57, height: 57)
-                        .foregroundStyle(selectedDifficulty == 0.1 ? .clear : Color(ThemeService.shared.theme.windowBackgroundColor))
+                        .foregroundStyle(selectedDifficulty == 0.1 ? .clear : Color(theme.windowBackgroundColor))
                         .frame(width: itemWidth)
                     RoundedRectangle(cornerRadius: UIConstants.mediumCornerRadius)
                         .frame(width: 57, height: 57)
-                        .foregroundStyle(selectedDifficulty == 1.0 ? .clear : Color(ThemeService.shared.theme.windowBackgroundColor))
+                        .foregroundStyle(selectedDifficulty == 1.0 ? .clear : Color(theme.windowBackgroundColor))
                         .frame(width: itemWidth)
                     RoundedRectangle(cornerRadius: UIConstants.mediumCornerRadius)
                         .frame(width: 57, height: 57)
-                        .foregroundStyle(selectedDifficulty == 1.5 ? .clear : Color(ThemeService.shared.theme.windowBackgroundColor))
+                        .foregroundStyle(selectedDifficulty == 1.5 ? .clear : Color(theme.windowBackgroundColor))
                         .frame(width: itemWidth)
                     RoundedRectangle(cornerRadius: UIConstants.mediumCornerRadius)
                         .frame(width: 57, height: 57)
-                        .foregroundStyle(selectedDifficulty == 2.0 ? .clear : Color(ThemeService.shared.theme.windowBackgroundColor))
+                        .foregroundStyle(selectedDifficulty == 2.0 ? .clear : Color(theme.windowBackgroundColor))
                         .frame(width: itemWidth)
                 }
                 let offset = (CGFloat(difficulties.firstIndex(of: selectedDifficulty) ?? 0) * itemWidth) + (itemWidth - 57) / 2
                 if #available(iOS 26.0, *) {
                     RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius)
                         .foregroundStyle(.clear)
-                        .glassEffect(.regular.tint(.tintColor), in: RoundedRectangle(cornerRadius: UIConstants.mediumCornerRadius))
+                        .glassEffect(.regular.tint(Color(theme.tintColor)), in: RoundedRectangle(cornerRadius: UIConstants.mediumCornerRadius))
                         .frame(width: 57, height: 57)
                         .padding(.leading, offset)
                         .animation(.spring(), value: selectedDifficulty)
                 } else {
-                    RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius).foregroundColor(.tintColor)
+                    RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius).foregroundStyle(Color(theme.tintColor))
                         .shadow(color: .black.opacity(0.12), radius: 8, x: 0, y: 3)
                         .shadow(color: .black.opacity(0.04), radius: 1, x: 0, y: 1)
                         .frame(width: 57, height: 57)

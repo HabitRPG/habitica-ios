@@ -19,6 +19,7 @@ struct PetView: View {
 }
 
 struct PetBottomSheetView: View, Dismissable {
+    @ObservedObject var themeService = ThemeService.shared
     var dismisser: Dismisser = Dismisser()
     
     let pet: PetProtocol
@@ -64,7 +65,7 @@ struct PetBottomSheetView: View, Dismissable {
     }
     
     var body: some View {
-        let theme = ThemeService.shared.theme
+        let theme = themeService.theme
         BottomSheetView(dismisser: dismisser, title: Text(pet.text ?? ""), content: VStack(spacing: 16) {
             ZStack(alignment: .top) {
                 StableBackgroundView(content: PetView(pet: pet).padding(.top, 40), animateFlying: false)
@@ -74,7 +75,7 @@ struct PetBottomSheetView: View, Dismissable {
                         .font(.system(size: 12))
                         .lineLimit(2)
                         .multilineTextAlignment(.center)
-                        .foregroundColor(Color(theme.primaryTextColor))
+                        .foregroundStyle(Color(theme.primaryTextColor))
                         .padding(.horizontal, 4)
                         .padding(.vertical, 3)
                         .background(Color(theme.contentBackgroundColor))
@@ -112,7 +113,7 @@ struct PetBottomSheetView: View, Dismissable {
                                 ProgressView().habiticaProgressStyle(strokeWidth: 6)
                             } else {
                                 Image(Asset.feedSaddle.name).interpolation(.none)
-                                Text(L10n.Stable.useSaddle).font(.system(size: 16, weight: .semibold)).foregroundColor(Color(theme.tintedMainText)).underline(UIAccessibility.buttonShapesEnabled)
+                                Text(L10n.Stable.useSaddle).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(theme.tintedMainText)).underline(UIAccessibility.buttonShapesEnabled)
                             }
                         }
                     }).buttonStyle { configuration in
@@ -132,7 +133,7 @@ struct PetBottomSheetView: View, Dismissable {
                     }, label: {
                         VStack {
                             Image(getFoodName()).interpolation(.none)
-                            Text(L10n.Stable.feed).font(.system(size: 16, weight: .semibold)).foregroundColor(Color(theme.tintedMainText)).underline(UIAccessibility.buttonShapesEnabled)
+                            Text(L10n.Stable.feed).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(theme.tintedMainText)).underline(UIAccessibility.buttonShapesEnabled)
                         }
                     }).buttonStyle { configuration in
                         let conf = configuration.label

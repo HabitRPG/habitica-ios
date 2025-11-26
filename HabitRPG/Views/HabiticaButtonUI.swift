@@ -38,7 +38,7 @@ struct HabiticaButtonUI<Label: View>: View {
     var type: ButtonType = .solid
     var onTap: (() -> Void)
     
-    private func getForegroundColor() -> Color {
+    private func getforegroundStyle() -> Color {
         if type == .solid {
             return color == .white ? Color(UIColor.purple400) : .white
         } else {
@@ -47,8 +47,8 @@ struct HabiticaButtonUI<Label: View>: View {
     }
     var body: some View {
         Button(action: onTap, label: {
-                label.underline(UIAccessibility.buttonShapesEnabled, color: getForegroundColor())
-                .foregroundColor(getForegroundColor())
+                label.underline(UIAccessibility.buttonShapesEnabled, color: getforegroundStyle())
+                .foregroundStyle(getforegroundStyle())
                 .scaledFont(size: 17, weight: .semibold)
                 .padding(.vertical, 6)
                 .frame(minHeight: size.height)

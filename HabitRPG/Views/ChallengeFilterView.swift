@@ -9,23 +9,24 @@
 import SwiftUI
 
 struct CheckedRow<Title: View>: View {
+    @ObservedObject var themeService = ThemeService.shared
     let title: Title
     @Binding var isChecked: Bool
     
     var body: some View {
         HStack {
-            title.foregroundStyle(isChecked ? Color(ThemeService.shared.theme.isDark ? UIColor.purple500 : UIColor.purple300) : Color(ThemeService.shared.theme.primaryTextColor))
+            title.foregroundStyle(isChecked ? Color(themeService.theme.isDark ? UIColor.purple500 : UIColor.purple300) : Color(themeService.theme.primaryTextColor))
                 .scaledFont(size: 17, weight: isChecked ? .semibold : .regular)
             Spacer()
             if isChecked {
                 Image(systemName: "checkmark")
                     .renderingMode(.template)
-                    .foregroundStyle(Color(ThemeService.shared.theme.tintColor))
+                    .foregroundStyle(Color(themeService.theme.tintColor))
                     .scaledFont(size: 17)
             }
         }.padding(.horizontal, 12)
             .frame(minHeight: 44)
-            .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+            .background(Color(themeService.theme.windowBackgroundColor))
             .onTapGesture {
                 isChecked = !isChecked
             }
@@ -33,6 +34,7 @@ struct CheckedRow<Title: View>: View {
 }
 
 private struct FilterSection<Label: View, Rows: View>: View {
+    @ObservedObject var themeService = ThemeService.shared
     let label: Label
     @ViewBuilder let rows: Rows
     
@@ -52,12 +54,13 @@ private struct FilterSection<Label: View, Rows: View>: View {
             }
         }
         .padding(.horizontal, 14)
-        .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+        .background(Color(themeService.theme.windowBackgroundColor))
             .cornerRadius(UIConstants.largeCornerRadius)
     }
 }
 
 struct ChallengeFilterView: View, Dismissable {
+    @ObservedObject var themeService = ThemeService.shared
     var dismisser = Dismisser()
     
     @State var filterState: ChallengeFilterState
@@ -75,7 +78,7 @@ struct ChallengeFilterView: View, Dismissable {
             Button {
                 filterState = filterState.cleared()
             } label: {
-                Text(L10n.clear).foregroundStyle(Color(ThemeService.shared.theme.isDark ? Color.red500 : Color.maroon100))
+                Text(L10n.clear).foregroundStyle(Color(themeService.theme.isDark ? Color.red500 : Color.maroon100))
                     .font(.system(size: 15, weight: .regular))
                     .padding(.horizontal, 3)
                     .frame(height: 34)
@@ -83,7 +86,7 @@ struct ChallengeFilterView: View, Dismissable {
                 .tintColor(Color.red100.opacity(0.14))
             Spacer()
             Text(L10n.filter)
-                .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
+                .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 .scaledFont(size: 17, weight: .semibold)
             Spacer()
             Button {
@@ -93,7 +96,7 @@ struct ChallengeFilterView: View, Dismissable {
                     .font(.system(size: 26))
             }.buttonStyle(.glassProminent)
                 .clipShape(.circle)
-                .tintColor(Color(ThemeService.shared.theme.tintColor))
+                .tintColor(Color(themeService.theme.tintColor))
         }.padding(.top, 16)
             .padding(.bottom, 16)
     }
@@ -104,14 +107,14 @@ struct ChallengeFilterView: View, Dismissable {
             Button {
                 filterState = filterState.cleared()
             } label: {
-                Text(L10n.clear).foregroundStyle(Color(ThemeService.shared.theme.isDark ? UIColor.red500 : UIColor.maroon100))
+                Text(L10n.clear).foregroundStyle(Color(themeService.theme.isDark ? UIColor.red500 : UIColor.maroon100))
                     .font(.system(size: 15))
                     .frame(height: 34)
             }
                 .tintColor(Color.red100.opacity(0.4))
             Spacer()
             Text(L10n.filter)
-                .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
+                .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 .scaledFont(size: 17, weight: .semibold)
             Spacer()
             Button {
@@ -121,7 +124,7 @@ struct ChallengeFilterView: View, Dismissable {
                     .font(.system(size: 26))
             }
                 .clipShape(.circle)
-                .tintColor(Color(ThemeService.shared.theme.tintColor))
+                .tintColor(Color(themeService.theme.tintColor))
         }.padding(.top, 16)
             .padding(.bottom, 16)
     }

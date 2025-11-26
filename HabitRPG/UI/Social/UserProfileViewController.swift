@@ -31,13 +31,14 @@ private class ProfileViewModel: ViewModel {
 }
 
 private struct ProfileContainer: ViewModifier {
+    @ObservedObject var themeService = ThemeService.shared
     let spacing: CGFloat
     
     func body(content: Content) -> some View {
         content
             .frame(maxWidth: .infinity)
             .padding(spacing)
-            .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+            .background(Color(themeService.theme.windowBackgroundColor))
             .cornerRadius(UIConstants.largeCornerRadius)
     }
 }
@@ -49,11 +50,12 @@ extension View {
 }
 
 struct ValueBarProgressStyle: ProgressViewStyle {
+    @ObservedObject var themeService = ThemeService.shared
     var gradientStart: Color
     var gradientEnd: Color
     
     func makeBody(configuration: Configuration) -> some View {
-        Capsule().fill(Color(ThemeService.shared.theme.offsetBackgroundColor))
+        Capsule().fill(Color(themeService.theme.offsetBackgroundColor))
             .overlay(alignment: .leading) {
                 GeometryReader { proxy in
                     Capsule().fill(
@@ -102,6 +104,7 @@ extension ValueBar where TrailingLabel == EmptyView {
 }
 
 private struct GearGridItem<Label: View>: View {
+    @ObservedObject var themeService = ThemeService.shared
     let iconName: String?
     let label: Label
     
@@ -113,14 +116,14 @@ private struct GearGridItem<Label: View>: View {
                         .transition(.scale)
                 } else {
                     Rectangle().stroke(style: StrokeStyle(lineWidth: 2, dash: [2]))
-                        .frame(width: 60, height: 60)
-                        .foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
+                        .frame(width: 58, height: 58)
+                        .foregroundStyle(Color(themeService.theme.dimmedTextColor))
                 }
-            }.frame(width: 68, height: 58)
-                .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                .cornerRadius(UIConstants.mediumCornerRadius)
+            }.frame(width: 70, height: 70)
+                .background(Color(themeService.theme.offsetBackgroundColor))
+                .cornerRadius(UIConstants.smallCornerRadius)
             label
-                .scaledFont(size: 12)
+                .scaledFont(size: 12, weight: .medium)
         }
     }
 }
@@ -129,30 +132,41 @@ struct GearGridView: View {
     let outfit: OutfitProtocol
     let background: String?
     
+    func isEquipped(key: String?) -> Bool {
+        if key == nil {
+            return false
+        }
+        if key?.contains("_0") == true {
+            return false
+        }
+        return true
+    }
+    
     var body: some View {
         HStack {
             VStack(spacing: 17) {
-                GearGridItem(iconName: outfit.weapon != nil ? "shop_\(outfit.weapon ?? "")" : nil, label: Text(L10n.Equipment.weapon))
-                GearGridItem(iconName: outfit.armor != nil ? "shop_\(outfit.armor ?? "")" : nil, label: Text(L10n.Equipment.armor))
-                GearGridItem(iconName: outfit.back != nil ? "shop_\(outfit.back ?? "")" : nil, label: Text(L10n.Equipment.back))
+                GearGridItem(iconName: isEquipped(key: outfit.weapon) ? "shop_\(outfit.weapon ?? "")" : nil, label: Text(L10n.Equipment.weapon))
+                GearGridItem(iconName: isEquipped(key: outfit.armor) ? "shop_\(outfit.armor ?? "")" : nil, label: Text(L10n.Equipment.armor))
+                GearGridItem(iconName: isEquipped(key: outfit.back) ? "shop_\(outfit.back ?? "")" : nil, label: Text(L10n.Equipment.back))
             }
             Spacer()
             VStack(spacing: 17) {
-                GearGridItem(iconName: outfit.shield != nil ? "shop_\(outfit.shield ?? "")" : nil, label: Text(L10n.Equipment.offHand))
-                GearGridItem(iconName: outfit.headAccessory != nil ? "shop_\(outfit.headAccessory ?? "")" : nil, label: Text(L10n.Equipment.headAccessory))
-                GearGridItem(iconName: outfit.eyewear != nil ? "shop_\(outfit.eyewear ?? "")" : nil, label: Text(L10n.Equipment.eyewear))
+                GearGridItem(iconName: isEquipped(key: outfit.shield) ? "shop_\(outfit.shield ?? "")" : nil, label: Text(L10n.Equipment.offHand))
+                GearGridItem(iconName: isEquipped(key: outfit.headAccessory) ? "shop_\(outfit.headAccessory ?? "")" : nil, label: Text(L10n.Equipment.headAccessory))
+                GearGridItem(iconName: isEquipped(key: outfit.eyewear) ? "shop_\(outfit.eyewear ?? "")" : nil, label: Text(L10n.Equipment.eyewear))
             }
             Spacer()
             VStack(spacing: 17) {
-                GearGridItem(iconName: outfit.head != nil ? "shop_\(outfit.head ?? "")" : nil, label: Text(L10n.Equipment.head))
-                GearGridItem(iconName: outfit.body != nil ? "shop_\(outfit.body ?? "")" : nil, label: Text(L10n.Equipment.body))
-                GearGridItem(iconName: background != nil ? "shop_\(background ?? "")" : nil, label: Text(L10n.background))
+                GearGridItem(iconName: isEquipped(key: outfit.head) ? "shop_\(outfit.head ?? "")" : nil, label: Text(L10n.Equipment.head))
+                GearGridItem(iconName: isEquipped(key: outfit.body) ? "shop_\(outfit.body ?? "")" : nil, label: Text(L10n.Equipment.body))
+                GearGridItem(iconName: isEquipped(key: background) ? "icon_background_\(background ?? "")" : nil, label: Text(L10n.background))
             }
         }.profileContainer()
     }
 }
 
 struct StatsViewUI: View {
+    @ObservedObject var themeService = ThemeService.shared
     let upperBackgroundColor: Color
     let upperTextColor: Color
     let title: String
@@ -183,7 +197,7 @@ struct StatsViewUI: View {
             .padding(.horizontal, 26)
             .frame(minHeight: 28)
             .background(upperBackgroundColor)
-            .foregroundColor(upperTextColor)
+            .foregroundStyle(upperTextColor)
             HStack {
                 Spacer()
                 makeEntry(value: levelValue, name: L10n.level)
@@ -195,19 +209,20 @@ struct StatsViewUI: View {
                 makeEntry(value: allocatedValue, name: L10n.allocated)
                 Spacer()
             }.padding(.vertical, 16)
-                .foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor))
-        }.background(Color(ThemeService.shared.theme.windowBackgroundColor))
+                .foregroundStyle(Color(themeService.theme.ternaryTextColor))
+        }.background(Color(themeService.theme.windowBackgroundColor))
             .cornerRadius(UIConstants.largeCornerRadius)
     }
 }
 
 struct ProfilePage: View {
+    @ObservedObject var themeService = ThemeService.shared
     @ObservedObject fileprivate var viewModel: ProfileViewModel
     
     @State private var showEquipmentCostume = "equipment"
     
     private func classTextColor(className: String) -> Color {
-        if ThemeService.shared.theme.isDark {
+        if themeService.theme.isDark {
             switch className {
             case "warrior":
                 return .red500
@@ -218,7 +233,7 @@ struct ProfilePage: View {
             case "rogue":
                 return .purple500
             default:
-                return Color(ThemeService.shared.theme.primaryTextColor)
+                return Color(themeService.theme.primaryTextColor)
             }
         } else {
             switch className {
@@ -231,7 +246,7 @@ struct ProfilePage: View {
             case "rogue":
                 return .purple10
             default:
-                return Color(ThemeService.shared.theme.primaryTextColor)
+                return Color(themeService.theme.primaryTextColor)
             }
         }
     }
@@ -277,29 +292,29 @@ struct ProfilePage: View {
                                 if member.hasHabiticaClass {
                                     classImage(className: member.stats?.habitClass ?? "")
                                     Text("Lv. \(member.stats?.level ?? 0) \(member.stats?.habitClassNice?.capitalized ?? "")")
-                                        .foregroundColor(classTextColor(className: member.stats?.habitClass ?? ""))
+                                        .foregroundStyle(classTextColor(className: member.stats?.habitClass ?? ""))
                                 } else {
                                     Text("Lv. \(member.stats?.level ?? 0)")
                                 }
                             }.scaledFont(size: 12, weight: .black)
                             if let stats = member.stats {
                                 HStack(spacing: 8) {
-                                    Image(uiImage: ThemeService.shared.theme.isDark ? HabiticaIcons.imageOfHeartDarkBg : HabiticaIcons.imageOfHeartLightBg)
+                                    Image(uiImage: themeService.theme.isDark ? HabiticaIcons.imageOfHeartDarkBg : HabiticaIcons.imageOfHeartLightBg)
                                         .frame(width: 28)
                                     ValueBar(value: stats.health, maxValue: stats.maxHealth, leadingLabel: Text("HP"), barStartColor: .red100, barEndColor: .orange100)
-                                        .foregroundColor(Color.maroon100)
+                                        .foregroundStyle(Color.maroon100)
                                 }
                                 HStack(spacing: 8) {
                                     Image(uiImage: HabiticaIcons.imageOfExperience)
                                         .frame(width: 28)
                                     ValueBar(value: stats.experience, maxValue: stats.toNextLevel, leadingLabel: Text("EXP"), barStartColor: .orange100, barEndColor: .yellow100)
-                                        .foregroundColor(Color.yellow1)
+                                        .foregroundStyle(Color.yellow1)
                                 }
                                 HStack(spacing: 8) {
                                     Image(uiImage: HabiticaIcons.imageOfMagic)
                                         .frame(width: 28)
                                     ValueBar(value: stats.mana, maxValue: stats.maxMana, leadingLabel: Text("MP"), barStartColor: .blue100, barEndColor: .teal100)
-                                        .foregroundColor(Color.blue10)
+                                        .foregroundStyle(Color.blue10)
                                 }
                             }
                         }.frame(maxWidth: .infinity)
@@ -400,7 +415,7 @@ struct ProfilePage: View {
                                 if let pet = viewModel.currentPet {
                                     Text(pet.text ?? "")
                                 } else {
-                                    Text(L10n.none).foregroundStyle(Color(ThemeService.shared.theme.dimmedTextColor))
+                                    Text(L10n.none).foregroundStyle(Color(themeService.theme.dimmedTextColor))
                                 }
                             }
                             VStack {
@@ -420,7 +435,7 @@ struct ProfilePage: View {
                                 if let mount = viewModel.currentMount {
                                     Text(mount.text ?? "")
                                 } else {
-                                    Text(L10n.none).foregroundStyle(Color(ThemeService.shared.theme.dimmedTextColor))
+                                    Text(L10n.none).foregroundStyle(Color(themeService.theme.dimmedTextColor))
                                 }
                             }
                             VStack {
@@ -478,12 +493,12 @@ struct ProfilePage: View {
                     Text(L10n.Titles.achievements)
                         .scaledFont(size: 22, weight: .bold)
                         .padding(.top, 28)
-                    LazyVGrid(columns: [.init(.adaptive(minimum: 115, maximum: 180), spacing: 12)], spacing: 12) {
+                    LazyVGrid(columns: [.init(.adaptive(minimum: 114, maximum: 180), spacing: 12)], spacing: 12) {
                         ForEach(viewModel.achievements, id: \.key) { achievement in
                             AchievementIconView(achievement: achievement)
                                 .frame(height: 94)
                                 .frame(maxWidth: .infinity)
-                                .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+                                .background(Color(themeService.theme.windowBackgroundColor))
                                 .cornerRadius(UIConstants.largeCornerRadius)
                                 .onTapGesture {
                                     if let action = viewModel.onAchievementDetail {
@@ -499,21 +514,25 @@ struct ProfilePage: View {
                     if viewModel.questData.isEmpty {
                         Text(L10n.playerNotCompletedQuests)
                             .scaledFont(size: 17, weight: .semibold)
-                            .foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
+                            .foregroundStyle(Color(themeService.theme.secondaryTextColor))
                             .profileContainer()
                     } else {
-                        ForEach(member.achievements?.quests ?? [], id: \.key) { questAchievement in
-                            HStack(spacing: 15) {
-                                Text("\(questAchievement.optionalCount)")
-                                    .scaledFont(size: 15, weight: .semibold)
-                                    .foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
-                                    .frame(width: 40, height: 40)
-                                    .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
-                                    .cornerRadius(20)
-                                Text(viewModel.questData[questAchievement.key ?? ""]?.text ?? "")
-                                    .scaledFont(size: 15, weight: .semibold)
-                                    .frame(maxWidth: .infinity)
-                            }.profileContainer()
+                        VStack(spacing: 8) {
+                            ForEach(member.achievements?.quests ?? [], id: \.key) { questAchievement in
+                                HStack(spacing: 15) {
+                                    Text("\(questAchievement.optionalCount)")
+                                        .scaledFont(size: 15, weight: .semibold)
+                                        .minimumScaleFactor(0.6)
+                                        .padding(4)
+                                        .foregroundStyle(Color(themeService.theme.secondaryTextColor))
+                                        .frame(width: 40, height: 40)
+                                        .background(Color(themeService.theme.offsetBackgroundColor))
+                                        .cornerRadius(20)
+                                    Text(viewModel.questData[questAchievement.key ?? ""]?.text ?? "")
+                                        .scaledFont(size: 15, weight: .semibold)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }.profileContainer()
+                            }
                         }
                     }
                     
@@ -524,26 +543,27 @@ struct ProfilePage: View {
                     if challenges.isEmpty {
                         Text(L10n.playerNotWonChallenges)
                             .scaledFont(size: 17, weight: .semibold)
-                            .foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
+                            .foregroundStyle(Color(themeService.theme.secondaryTextColor))
                             .profileContainer()
                     } else {
-                        ForEach(challenges, id: \.key) { challenge in
-                            HStack(spacing: 15) {
-                                AchievementIconView(achievement: challenge)
-                                Text(challenge.title ?? "")
-                                    .scaledFont(size: 15, weight: .semibold)
-                                    .frame(maxWidth: .infinity)
-                            }.profileContainer()
+                        VStack(spacing: 8) {
+                            ForEach(challenges, id: \.index) { challenge in
+                                HStack(spacing: 15) {
+                                    AchievementIconView(achievement: challenge)
+                                    Text(challenge.title ?? "")
+                                        .scaledFont(size: 15, weight: .semibold)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }.profileContainer()
+                            }
                         }
                     }
                 }.padding(.horizontal, 12)
                     .padding(.bottom, 16)
             }
-        }.foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
+        }.foregroundStyle(Color(themeService.theme.secondaryTextColor))
     }
 }
 
-// swiftlint:disable:next type_body_length
 class UserProfileViewController: BaseHostingViewController<ProfilePage> {
     private var viewModel = ProfileViewModel()
     

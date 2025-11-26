@@ -52,12 +52,12 @@ struct TaskListWidgetView: View {
             if entry.widgetFamily == .systemMedium {
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(entry.taskType == .daily ? "Dailies" : "To Do's").font(.system(size: 13, weight: .semibold)).foregroundColor(.widgetTextSecondary).padding(.top, 4)
-                        Text("\(entry.tasks.count)").font(Font.system(size: 34)).foregroundColor(Color("taskListSecondaryText"))
+                        Text(entry.taskType == .daily ? "Dailies" : "To Do's").font(.system(size: 13, weight: .semibold)).foregroundStyle(.widgetTextSecondary).padding(.top, 4)
+                        Text("\(entry.tasks.count)").font(Font.system(size: 34)).foregroundStyle(Color("taskListSecondaryText"))
                         Spacer()
                         if let addURL = entry.taskType == .daily ? URL(string: "/user/tasks/daily/add") : URL(string: "/user/tasks/todo/add") {
                             Link(destination: addURL, label: {
-                                Image("Add").foregroundColor(Color("taskListSecondaryText"))
+                                Image("Add").foregroundStyle(Color("taskListSecondaryText"))
                             }).padding(.bottom, 7)
                         }
                     }.frame(width: 60, alignment: .leading)
@@ -68,12 +68,12 @@ struct TaskListWidgetView: View {
             } else {
                 VStack(alignment: .leading) {
                     HStack(alignment: .center) {
-                        Text(entry.taskType == .daily ? "Today's Dailies" : "Your To Do's").font(.system(size: 20, weight: .semibold)).foregroundColor(Color("taskListPrimaryText"))
+                        Text(entry.taskType == .daily ? "Today's Dailies" : "Your To Do's").font(.system(size: 20, weight: .semibold)).foregroundStyle(Color("taskListPrimaryText"))
                         Spacer()
                         
                         if let addURL = entry.taskType == .daily ? URL(string: "/user/tasks/daily/add") : URL(string: "/user/tasks/todo/add") {
                             Link(destination: addURL, label: {
-                                Image("Add").foregroundColor(Color("taskListSecondaryText"))
+                                Image("Add").foregroundStyle(Color("taskListSecondaryText"))
                             })
                         }
                     }.padding(EdgeInsets(top: 0, leading: 0, bottom: 1, trailing: 0))
@@ -99,7 +99,7 @@ struct MainWidgetContent: View {
         } else if entry.tasks.isEmpty {
             VStack {
                 Image("Sparkles")
-                Text(entry.taskType == .daily ? "All done today!" : "All done!").foregroundColor(.widgetText).font(.body)
+                Text(entry.taskType == .daily ? "All done today!" : "All done!").foregroundStyle(.widgetText).font(.body)
             }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             .background(Color.widgetBackgroundSecondary.opacity(0.1))
                 .cornerRadius(6)
@@ -139,7 +139,7 @@ struct TaskListView: View {
                                                 "\(remaining) more unfinished Dailies") : (remaining == 1 ?
                                                                                            "1 more unfinished To Do" :
                                                                                            "\(remaining) more unfinished To Do's"))
-                        .foregroundColor(.dailiesWidgetPurple)
+                        .foregroundStyle(.dailiesWidgetPurple)
                         .font(.caption)
                         .padding(.leading, 12)
                         .padding(.top, 6)
@@ -159,7 +159,7 @@ struct TaskListItem: View {
             RoundedRectangle(cornerRadius: 2, style: .continuous)
                 .fill(Color(UIColor.forTaskValue(task.value)))
                 .frame(width: 4, height: 18)
-            Text(task.text ?? "").font(font).foregroundColor(Color("taskListTaskText")).lineLimit(2)
+            Text(task.text ?? "").font(font).foregroundStyle(Color("taskListTaskText")).lineLimit(2)
             let completedCount = task.checklist.filter { $0.completed }.count
             if showChecklistCount && !task.checklist.isEmpty {
                 Spacer()
@@ -167,7 +167,7 @@ struct TaskListItem: View {
                     .font(.caption2)
                     .padding(.horizontal, 4)
                     .padding(.vertical, 2)
-                    .foregroundColor(completedCount == task.checklist.count ? Color.widgetTextSecondary : Color.white)
+                    .foregroundStyle(completedCount == task.checklist.count ? Color.widgetTextSecondary : Color.white)
                     .background(completedCount == task.checklist.count ? Color.checklistBackgroundDone : Color.checklistBackground)
                     .cornerRadius(4)
             }

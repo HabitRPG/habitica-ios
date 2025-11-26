@@ -72,11 +72,12 @@ class UsernameLabel: UILabel {
 }
 
 struct UsernameLabelUI: View {
+    @ObservedObject var themeService = ThemeService.shared
     let name: String
     var level: Int = 0
     
     private var textColor: UIColor {
-        if ThemeService.shared.theme.isDark {
+        if themeService.theme.isDark {
             return UIColor.lightContributorColor(forTier: level)
         } else {
             return UIColor.contributorColor(forTier: level)
@@ -85,7 +86,7 @@ struct UsernameLabelUI: View {
     
     var body: some View {
         HStack(alignment: .center, spacing: 2) {
-            Text(name).foregroundColor(Color(textColor))
+            Text(name).foregroundStyle(Color(textColor))
             if level > 0 {
                 Image(uiImage: HabiticaIcons.imageOfContributorBadge(_1: CGFloat(level), isNPC: false)).frame(width: 16, height: 16)
             }

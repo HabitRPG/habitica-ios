@@ -54,8 +54,8 @@ struct SubscriptionOptionStack: View {
             }
             SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.subscriptionIdentifiers[3])), recurring: Text(L10n.subscriptionDuration(L10n.xMonths(12))),
                                      tag: HStack(spacing: 0) {
-                Image(uiImage: Asset.flagFlap.image.withRenderingMode(.alwaysTemplate)).foregroundColor(Color(hexadecimal: "77F4C7"))
-                Text("Popular").foregroundColor(Color(UIColor.teal1)).font(.system(size: 12, weight: .semibold))
+                Image(uiImage: Asset.flagFlap.image.withRenderingMode(.alwaysTemplate)).foregroundStyle(Color(hexadecimal: "77F4C7"))
+                Text("Popular").foregroundStyle(Color(UIColor.teal1)).font(.system(size: 12, weight: .semibold))
                     .frame(height: 24)
                     .padding(.horizontal, 8)
                     .background(LinearGradient(colors: [
@@ -236,7 +236,7 @@ struct SubscriptionSeparator: View {
             Rectangle().fill().frame(maxWidth: .infinity).height(1)
             Image(Asset.separatorFancyIcon.name).padding(.vertical, 16).padding(.horizontal, 10)
             Rectangle().fill().frame(maxWidth: .infinity).height(1)
-        }.foregroundColor(Color(UIColor.purple400))
+        }.foregroundStyle(Color(UIColor.purple400))
     }
 }
 
@@ -359,13 +359,13 @@ struct SubscriptionPage: View {
                             GeometryReader { reader in
                                 ZStack(alignment: .leading) {
                                     Rectangle()
-                                        .foregroundColor(.purple100)
+                                        .foregroundStyle(.purple100)
                                         .fill()
                                         .cornerRadius(UIConstants.mediumCornerRadius)
                                         .frame(maxWidth: .infinity)
                                         .frame(height: 8)
                                         Rectangle()
-                                            .foregroundColor(.green100)
+                                            .foregroundStyle(.green100)
                                             .fill()
                                             .cornerRadius(UIConstants.mediumCornerRadius)
                                             .frame(width: reader.size.width * (CGFloat(viewModel.subscriptionPlan?.gemCapTotal ?? 0) / 50.0), height: 8)
@@ -384,7 +384,7 @@ struct SubscriptionPage: View {
                             ForEach(enumerating: viewModel.availableSubscriptions) { sub in
                                 Rectangle()
                                     .fill()
-                                    .foregroundColor(Color(UIColor.purple200))
+                                    .foregroundStyle(Color(UIColor.purple200))
                                     .frame(height: viewModel.showHourglassPromo && sub == viewModel.availableSubscriptions.last ? 186 : 126)
                                     .cornerRadius(UIConstants.largeCornerRadius)
                                     .padding(.vertical, 4).onTapGesture {
@@ -407,7 +407,7 @@ struct SubscriptionPage: View {
                             ProgressView().habiticaProgressStyle().frame(height: 48)
                                 .transition(.opacity)
                         } else {
-                            HabiticaButtonUI(label: Text(L10n.subscribe).foregroundColor(.purple100), color: Color(UIColor.yellow100), size: .compact) {
+                            HabiticaButtonUI(label: Text(L10n.subscribe).foregroundStyle(.purple100), color: Color(UIColor.yellow100), size: .compact) {
                                 viewModel.subscribeTapped()
                             }
                             .transition(.opacity)
@@ -416,7 +416,7 @@ struct SubscriptionPage: View {
                     .padding(.vertical, 13)
                     .padding(.horizontal, 24)
                     Text(L10n.subscriptionSupportDevelopers)
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                         .font(.system(size: 13))
                         .italic()
                         .multilineTextAlignment(.center)
@@ -475,7 +475,7 @@ struct SubscriptionPage: View {
                                     viewModel.checkForExistingSubscription()
                                 } label: {
                                     Text(L10n.restorePurchase)
-                                        .foregroundColor(.yellow100)
+                                        .foregroundStyle(.yellow100)
                                         .font(.system(size: 17, weight: .semibold))
                                         .animation(nil)
                                 }
@@ -486,7 +486,7 @@ struct SubscriptionPage: View {
                                 RouterHandler.shared.handle(.subscription)
                             } label: {
                                 Text(L10n.seeMoreSubOptions)
-                                    .foregroundColor(.yellow100)
+                                    .foregroundStyle(.yellow100)
                                     .font(.system(size: 17, weight: .semibold))
                             }
                             .frame(height: 48)
@@ -498,7 +498,7 @@ struct SubscriptionPage: View {
                         .frame(maxWidth: .infinity)
                         .background(.purple400)
             }
-            .foregroundColor(textColor)
+            .foregroundStyle(textColor)
             .padding(.top, 16)
             .background(backgroundColor.ignoresSafeArea(.all, edges: .top).padding(.bottom, 4))
             .ignoresSafeArea()

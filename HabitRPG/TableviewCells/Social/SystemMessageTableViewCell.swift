@@ -32,5 +32,6 @@ class SystemMessageTableViewCell: UITableViewCell {
         contentView.backgroundColor = theme.windowBackgroundColor
         messageTextView.textColor = theme.tintColor
         messageWrapper.borderColor = theme.separatorColor
+        messageTextView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .regular)
     }
 }

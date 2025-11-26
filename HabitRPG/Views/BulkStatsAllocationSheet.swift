@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct StatsAllocationRow<Title: View>: View {
+    @ObservedObject var themeService = ThemeService.shared
     @Environment(\.sizeCategory)
     var sizeCategory
     
@@ -25,20 +26,20 @@ struct StatsAllocationRow<Title: View>: View {
                 .frame(width: UIFontMetrics.default.scaledValue(for: 50))
             Text("\(amount + initialAmount, format: .number.precision(.fractionLength(0)))")
                 .frame(width: 40, alignment: .trailing)
-                .foregroundColor(Color(ThemeService.shared.theme.quadTextColor))
+                .foregroundStyle(Color(themeService.theme.quadTextColor))
                 .padding(.trailing, 17)
             Slider(value: $amount, in: 0...maxAmount).tint(color)
             HStack(spacing: 8) {
                 Text("+")
-                    .foregroundColor(Color(ThemeService.shared.theme.quadTextColor))
+                    .foregroundStyle(Color(themeService.theme.quadTextColor))
                 Text("\(amount + initialAmount, format: .number.precision(.fractionLength(0)))")
-                    .foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
+                    .foregroundStyle(Color(themeService.theme.secondaryTextColor))
             }.frame(width: 64, height: 48)
-                .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+                .background(Color(themeService.theme.windowBackgroundColor))
                 .cornerRadius(UIConstants.mediumCornerRadius)
                 .overlay {
                     RoundedRectangle(cornerRadius: UIConstants.mediumCornerRadius)
-                        .stroke(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                        .stroke(Color(themeService.theme.offsetBackgroundColor))
                 }
                 .padding(.leading, 13)
         }
@@ -47,6 +48,7 @@ struct StatsAllocationRow<Title: View>: View {
 }
 
 struct BulkStatsAllocationSheet: View, Dismissable {
+    @ObservedObject var themeService = ThemeService.shared
     var dismisser = Dismisser()
     
     @State var strength: Float = 0
@@ -103,13 +105,13 @@ struct BulkStatsAllocationSheet: View, Dismissable {
             }), content: VStack {
                 VStack(spacing: 2) {
                     Text("\(strength + intelligence + constitution + perception, format: .number.precision(.fractionLength(0)))/\(maxToAllocate, format: .number.precision(.fractionLength(0)))")
-                    .foregroundColor(Color(ThemeService.shared.theme.tintColor))
+                    .foregroundStyle(Color(ThemeService.shared.theme.tintColor))
                     .scaledFont(size: 28, weight: .bold)
                 Text(L10n.allocated)
-                    .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                    .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
                     .scaledFont(size: 17, weight: .semibold)
             }
-                StatsAllocationRow(title: Text("STR").foregroundColor(ThemeService.shared.theme.isDark ? Color.red500 : Color.maroon100),
+                StatsAllocationRow(title: Text("STR").foregroundStyle(themeService.theme.isDark ? Color.red500 : Color.maroon100),
                                    color: .red100,
                                    amount: $strength,
                                    initialAmount: initialStrength,
@@ -119,7 +121,7 @@ struct BulkStatsAllocationSheet: View, Dismissable {
                         redistribute(exclude: "str")
                     }
                 }
-                StatsAllocationRow(title: Text("INT").foregroundColor(ThemeService.shared.theme.isDark ? Color.blue500 : Color.blue10),
+                StatsAllocationRow(title: Text("INT").foregroundStyle(themeService.theme.isDark ? Color.blue500 : Color.blue10),
                                    color: .blue100,
                                    amount: $intelligence,
                                    initialAmount: initialIntelligence,
@@ -129,7 +131,7 @@ struct BulkStatsAllocationSheet: View, Dismissable {
                         redistribute(exclude: "int")
                     }
                 }
-                StatsAllocationRow(title: Text("CON").foregroundColor(ThemeService.shared.theme.isDark ? Color.yellow500 : Color.yellow10),
+                StatsAllocationRow(title: Text("CON").foregroundStyle(themeService.theme.isDark ? Color.yellow500 : Color.yellow10),
                                    color: .yellow100,
                                    amount: $constitution,
                                    initialAmount: initialConstitution,
@@ -139,7 +141,7 @@ struct BulkStatsAllocationSheet: View, Dismissable {
                         redistribute(exclude: "con")
                     }
                 }
-                StatsAllocationRow(title: Text("PER").foregroundColor(ThemeService.shared.theme.isDark ? Color.purple500 : Color.purple300),
+                StatsAllocationRow(title: Text("PER").foregroundStyle(themeService.theme.isDark ? Color.purple500 : Color.purple300),
                                    color: .purple400,
                                    amount: $perception,
                                    initialAmount: initialPerception,
@@ -149,7 +151,7 @@ struct BulkStatsAllocationSheet: View, Dismissable {
                         redistribute(exclude: "per")
                     }
                 }
-            }).sheetBackground(Color(ThemeService.shared.theme.contentBackgroundColor))
+            }).sheetBackground(Color(themeService.theme.contentBackgroundColor))
     }
 }
 

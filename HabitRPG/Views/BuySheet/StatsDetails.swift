@@ -11,21 +11,23 @@ import ReactiveSwift
 import Habitica_Database
 
 struct StatsLabel: View {
+    @ObservedObject var themeService = ThemeService.shared
     let label: String
     let value: Int?
     
     var body: some View {
         HStack {
-            Text("\(label):").foregroundStyle((value ?? 0) > 0 ? Color(ThemeService.shared.theme.primaryTextColor) : Color(ThemeService.shared.theme.dimmedTextColor))
+            Text("\(label):").foregroundStyle((value ?? 0) > 0 ? Color(themeService.theme.primaryTextColor) : Color(ThemeService.shared.theme.dimmedTextColor))
             Spacer()
             if let value = value {
-                Text("+\(value)").foregroundStyle(value > 0 ? Color(ThemeService.shared.theme.successColor) : Color(ThemeService.shared.theme.dimmedTextColor))
+                Text("+\(value)").foregroundStyle(value > 0 ? Color(themeService.theme.successColor) : Color(ThemeService.shared.theme.dimmedTextColor))
             }
         }
     }
 }
 
 struct StatsDetails: View {
+    @ObservedObject var themeService = ThemeService.shared
     let gear: GearProtocol?
     
     var body: some View {
@@ -42,9 +44,8 @@ struct StatsDetails: View {
         .scaledFont(size: 17, weight: .semibold)
         .padding(.vertical, 25)
             .padding(.horizontal, 33)
-            .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+            .background(Color(themeService.theme.windowBackgroundColor))
             .cornerRadius(UIConstants.largeCornerRadius)
             .padding(.top, 16)
-            .padding(.horizontal, 44)
     }
 }

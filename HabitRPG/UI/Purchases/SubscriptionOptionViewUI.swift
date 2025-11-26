@@ -18,7 +18,7 @@ struct HourglassPromo: View {
             Text(" immediately after your first 12 month subscription!")
         }
         .font(.system(size: 15, weight: .medium))
-        .foregroundColor(.teal1)
+        .foregroundStyle(.teal1)
         .multilineTextAlignment(.center)
         .padding(.horizontal, 14)
         .frame(maxWidth: .infinity)
@@ -87,29 +87,29 @@ struct SubscriptionOptionViewUI<Price: View, Recurring: View, Tag: View>: View {
                                     Rectangle().frame(height: 2).fill()
                                 }
                                 .font(.system(size: 15, weight: .medium))
-                                .foregroundColor(isSelected ? .gray400 : .purple600)
+                                .foregroundStyle(isSelected ? .gray400 : .purple600)
                             }
                         }
                         recurring.font(.system(size: 13, weight: .semibold))
                         HStack(spacing: 8) {
-                            Image(Asset.plus.name).renderingMode(.template).foregroundColor(isSelected ? Color.yellow100 : .purple400)
+                            Image(Asset.plus.name).renderingMode(.template).foregroundStyle(isSelected ? .yellow100 : .purple400)
                             Group {
                                 Text(isGift ? "They unlock " : "Unlock ") +
-                                Text("\(instantGems) Gems").fontWeight(.bold).foregroundColor(isSelected ? Color.yellow5 : .white) +
+                                Text("\(instantGems) Gems").fontWeight(.bold).foregroundColor(isSelected ? .yellow5 : .white) +
                                 Text(" per month in the Market")
                             }.multilineTextAlignment(.leading)
                         }.font(.caption)
                             .padding(.top, 8)
                         HStack(spacing: 8) {
-                            Image(Asset.plus.name).renderingMode(.template).foregroundColor(isSelected ? Color.yellow100 : .purple400)
+                            Image(Asset.plus.name).renderingMode(.template).foregroundColor(isSelected ? .yellow100 : .purple400)
                             if gemCapMax {
                                 Group {
                                     if isGift {
                                         Text("They instantly start at the max ") +
-                                        Text("Gem Cap").fontWeight(.bold).foregroundColor(isSelected ? Color.yellow5 : .white)
+                                        Text("Gem Cap").fontWeight(.bold).foregroundColor(isSelected ? .yellow5 : .white)
                                     } else {
                                         Text("Max ") +
-                                        Text("Gem Cap").fontWeight(.bold).foregroundColor(isSelected ? Color.yellow5 : .white)
+                                        Text("Gem Cap").fontWeight(.bold).foregroundColor(isSelected ? .yellow5 : .white)
                                     }
                                 }.multilineTextAlignment(.leading)
                             } else {
@@ -143,7 +143,7 @@ struct SubscriptionOptionViewUI<Price: View, Recurring: View, Tag: View>: View {
         }
         .frame(height: showHourglassPromo ? 186 : 126)
         .cornerRadius(UIConstants.largeCornerRadius)
-        .foregroundColor(isSelected ? selectedColor : Color.purple600)
+        .foregroundStyle(isSelected ? selectedColor : Color.purple600)
         .padding(.vertical, 4)
         .onAppear {
             withAnimation {

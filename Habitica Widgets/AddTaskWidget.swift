@@ -209,7 +209,7 @@ struct AddView: View {
             if showLabel { Spacer() }
             Image(iconName)
             if showLabel { Text(taskType == nil ? "Edit to select a task type" : "Add new\n\(taskName)")
-                .foregroundColor(taskType == nil ? Color.gray500 : Color(white: 0, opacity: 0.6))
+                .foregroundStyle(taskType == nil ? Color.gray500 : Color(white: 0, opacity: 0.6))
                 .font(.system(size: isSingle ? (taskType == nil ? 17 : 22) : 15, weight: .semibold))
                 .padding(.top, isSingle ? -4 : -6)
             }

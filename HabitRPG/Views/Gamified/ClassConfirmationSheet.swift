@@ -10,6 +10,7 @@ import SwiftUI
 import Habitica_Models
 
 struct ClassConfirmationSheet: View {
+    @ObservedObject var themeService = ThemeService.shared
     @Environment(\.presentationManager) var presentationManager
     
     var selectedClass: HabiticaClass
@@ -70,9 +71,9 @@ struct ClassConfirmationSheet: View {
         }, title: Text(L10n.classChangeSuccessSubtitle), description: VStack {
             Text(L10n.classChangeSuccessDescription)
             Text(L10n.findStatsMenu).scaledFont(size: 15, weight: .semibold)
-                .foregroundStyle(Color(ThemeService.shared.theme.ternaryTextColor))
+                .foregroundStyle(Color(themeService.theme.ternaryTextColor))
         }) {
-            HabiticaButtonUI(label: Text(L10n.viewStats), color: Color(ThemeService.shared.theme.tintColor)) {
+            HabiticaButtonUI(label: Text(L10n.viewStats), color: Color(themeService.theme.tintColor)) {
                 presentationManager.dismiss()
                 RouterHandler.shared.handle(urlString: "/user/stats")
             }

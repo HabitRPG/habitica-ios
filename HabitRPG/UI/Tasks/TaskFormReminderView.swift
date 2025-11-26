@@ -9,6 +9,7 @@ import SwiftUI
 import Habitica_Models
 
 struct TaskFormReminderView: View {
+    @ObservedObject var themeService = ThemeService.shared
     var showDate: Bool
     private let taskRepository = TaskRepository()
     @Binding var items: [ReminderProtocol]
@@ -17,7 +18,7 @@ struct TaskFormReminderView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(L10n.Tasks.Form.reminders.uppercased()).font(.system(size: 13, weight: .semibold)).foregroundColor(Color(ThemeService.shared.theme.quadTextColor)).padding(.leading, 14)
+            Text(L10n.Tasks.Form.reminders.uppercased()).font(.system(size: 13, weight: .semibold)).foregroundStyle(Color(themeService.theme.quadTextColor)).padding(.leading, 14)
             VStack(spacing: 8) {
                 ForEach(items, id: \.id) { item in
                     TaskFormReminderItemView(item: item, showDate: showDate) {
@@ -46,9 +47,9 @@ struct TaskFormReminderView: View {
                 }).buttonStyle { configuration in
                     configuration.label
                         .font(.system(size: 15, weight: .semibold))
-                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                        .foregroundStyle(Color(themeService.theme.primaryTextColor))
                         .frame(maxWidth: .infinity).frame(height: 48)
-                        .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
+                        .background(Color(themeService.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
                 }
             }
         }.animation(.easeInOut)

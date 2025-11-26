@@ -591,9 +591,9 @@ struct ResetAccountView: View {
             VStack(alignment: .leading, spacing: 12) {
                 Text(L10n.Settings.resetAccountConfirm).font(.headline)
                 if isSocial {
-                    Text(L10n.Settings.resetAccountDescriptionSocial).font(.body).foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
+                    Text(L10n.Settings.resetAccountDescriptionSocial).font(.body).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
                 } else {
-                    Text(L10n.Settings.resetAccountDescription).font(.body).foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
+                    Text(L10n.Settings.resetAccountDescription).font(.body).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
                 }
                 Group {
                     if isSocial {
@@ -605,13 +605,13 @@ struct ResetAccountView: View {
                     }
                 }
                 .padding(16)
-                .overlay(RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius).stroke().foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor)))
+                .overlay(RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius).stroke().foregroundStyle(Color(ThemeService.shared.theme.tableviewSeparatorColor)))
                 HabiticaButtonUI(label: Text(L10n.Settings.resetAccount), color: Color(isValidInput() ? ThemeService.shared.theme.errorColor : ThemeService.shared.theme.dimmedColor)) {
                     onReset(text)
                 }
                 if !isSocial {
                     Text(L10n.Login.forgotPassword)
-                        .foregroundColor(Color(ThemeService.shared.theme.tintColor))
+                        .foregroundStyle(Color(ThemeService.shared.theme.tintColor))
                         .frame(maxWidth: .infinity, alignment: .center)
                         .onTapGesture {
                             onForgotPassword()
@@ -643,9 +643,9 @@ struct DeleteAccountView: View {
             VStack(alignment: .leading, spacing: 12) {
                 Text(L10n.Settings.deleteAccountConfirm).font(.headline)
                 if isSocial {
-                    Text(L10n.Settings.deleteAccountDescriptionSocial).font(.body).foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
+                    Text(L10n.Settings.deleteAccountDescriptionSocial).font(.body).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
                 } else {
-                    Text(L10n.Settings.deleteAccountDescription).font(.body).foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
+                    Text(L10n.Settings.deleteAccountDescription).font(.body).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
                 }
                 Group {
                     if isSocial {
@@ -659,13 +659,13 @@ struct DeleteAccountView: View {
                 .autocorrectionDisabled()
                 .textInputAutocapitalization(.never)
                 .padding(16)
-                .overlay(RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius).stroke().foregroundColor(Color(ThemeService.shared.theme.tableviewSeparatorColor)))
+                .overlay(RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius).stroke().foregroundStyle(Color(ThemeService.shared.theme.tableviewSeparatorColor)))
                 HabiticaButtonUI(label: Text(L10n.Settings.deleteAccount), color: Color(isValidInput() ? ThemeService.shared.theme.errorColor : ThemeService.shared.theme.dimmedColor)) {
                     onDelete(text)
                 }
                 if !isSocial {
                     Text(L10n.Login.forgotPassword)
-                        .foregroundColor(Color(ThemeService.shared.theme.tintColor))
+                        .foregroundStyle(Color(ThemeService.shared.theme.tintColor))
                         .frame(maxWidth: .infinity, alignment: .center)
                         .onTapGesture {
                             onForgotPassword()

@@ -121,6 +121,7 @@ struct AchievementIconView: View {
 }
 
 private struct AchievementHeaderView: View {
+    @ObservedObject var themeService = ThemeService.shared
     let title: String
     let count: Int
     
@@ -131,15 +132,16 @@ private struct AchievementHeaderView: View {
             Text("\(count)")
                 .padding(.horizontal, 6)
                 .padding(.vertical, 2)
-                .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+                .background(Color(themeService.theme.windowBackgroundColor))
                 .cornerRadius(UIConstants.largeCornerRadius)
         }
         .scaledFont(size: 15, weight: .semibold)
-        .foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
+        .foregroundStyle(Color(themeService.theme.secondaryTextColor))
     }
 }
 
 private struct ListItem: View {
+    @ObservedObject var themeService = ThemeService.shared
     let achievement: AchievementProtocol
     let questDetails: QuestProtocol?
 
@@ -150,22 +152,22 @@ private struct ListItem: View {
                 if let title = achievement.title {
                     Text(title)
                         .scaledFont(size: 15, weight: .semibold)
-                        .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
+                        .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 } else if achievement.isQuestAchievement, let questDetails = questDetails {
                     Text(questDetails.text ?? "")
                         .scaledFont(size: 15, weight: .semibold)
-                        .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
+                        .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 }
                 if let text = achievement.text {
                     Text(text)
                         .scaledFont(size: 13)
-                        .foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
+                        .foregroundStyle(Color(themeService.theme.secondaryTextColor))
                 }
             }.frame(maxWidth: .infinity, alignment: .leading)
         }
         .frame(maxWidth: .infinity)
             .padding(20)
-            .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+            .background(Color(themeService.theme.windowBackgroundColor))
             .cornerRadius(UIConstants.largeCornerRadius)
             .padding(.horizontal, 16)
     }
@@ -201,6 +203,7 @@ struct AchievementList: View {
 }
 
 struct AchievementGridItem: View {
+    @ObservedObject var themeService = ThemeService.shared
     let achievement: AchievementProtocol
     let questDetails: QuestProtocol?
     
@@ -214,11 +217,11 @@ struct AchievementGridItem: View {
             }
         }
         .scaledFont(size: 15, weight: .semibold)
-        .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
+        .foregroundStyle(Color(themeService.theme.primaryTextColor))
         .padding(.vertical, 20)
             .padding(.horizontal, 12)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+            .background(Color(themeService.theme.windowBackgroundColor))
             .cornerRadius(UIConstants.largeCornerRadius)
     }
 }

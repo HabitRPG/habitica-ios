@@ -83,7 +83,7 @@ struct StatsWidgetView: View {
                 }
             }
                 }
-        .font(.system(size: 13, weight: .semibold)).foregroundColor(Color.widgetText)
+        .font(.system(size: 13, weight: .semibold)).foregroundStyle(Color.widgetText)
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
             .padding(widgetPadding())
         .widgetBackground(Color.widgetBackground)

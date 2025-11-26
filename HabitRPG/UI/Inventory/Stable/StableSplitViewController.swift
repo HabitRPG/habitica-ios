@@ -27,11 +27,15 @@ class StableSplitViewController: HabiticaSplitViewController {
         super.viewDidLoad()
         organizeByColor = UserDefaults.standard.bool(forKey: "stableOrganize")
         organizeByButton.menu = UIMenu(title: L10n.organizeBy, children: [
-            UIAction(title: L10n.Stable.color, image: UIImage(systemName: "paintbrush"), state: organizeByColor ? .on : .off) { _ in
-                self.organizeByColor = true
-            },
-            UIAction(title: L10n.Stable.type, image: UIImage(systemName: "pawprint"), state: organizeByColor ? .off : .on) { _ in
-                self.organizeByColor = false
+            UIDeferredMenuElement.uncached {[weak self] call in
+                call([
+                    UIAction(title: L10n.Stable.color, image: UIImage(systemName: "paintbrush"), state: self?.organizeByColor == true ? .on : .off) { _ in
+                        self?.organizeByColor = true
+                    },
+                    UIAction(title: L10n.Stable.type, image: UIImage(systemName: "pawprint"), state: self?.organizeByColor == true ? .off : .on) { _ in
+                        self?.organizeByColor = false
+                    }
+                ])
             }
         ])
         

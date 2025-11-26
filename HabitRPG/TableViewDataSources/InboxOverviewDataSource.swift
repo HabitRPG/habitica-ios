@@ -30,14 +30,14 @@ class InboxOverviewDataSource: BaseReactiveTableViewDataSource<InboxConversation
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         if let message = item(at: indexPath) {
-            cell.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+            cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
             let displayNameLabel = cell.viewWithTag(1) as? UsernameLabel
             displayNameLabel?.text = message.displayName
             displayNameLabel?.contributorLevel = message.contributor?.level ?? 0
             displayNameLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17)
             let textLabel = cell.viewWithTag(2) as? UILabel
             textLabel?.text = message.text
-            textLabel?.textColor = ThemeService.shared.theme.secondaryTextColor
+            textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
             let timeLabel = cell.viewWithTag(3) as? UILabel
             if let timestamp = message.timestamp {
                 timeLabel?.text = formatter.localizedString(for: timestamp, relativeTo: Date())

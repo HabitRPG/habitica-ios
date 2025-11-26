@@ -9,24 +9,23 @@ import SwiftUI
 import Habitica_Models
 
 struct HabitControlsFormView: View {
+    @ObservedObject var themeService = ThemeService.shared
     let taskColor: UIColor
     @Binding var isUp: Bool
     @Binding var isDown: Bool
     
-    let theme = ThemeService.shared.theme
-
     private func buildOption(text: String, icon: UIImage, isActive: Binding<Bool>) -> some View {
         return VStack(spacing: 12) {
             Group {
                 Image(uiImage: icon)
                     .accessibilityHidden(true)
                     .frame(width: 57, height: 57)
-                    .background(Color(isActive.wrappedValue ? taskColor : ThemeService.shared.theme.windowBackgroundColor))
+                    .background(Color(isActive.wrappedValue ? taskColor : themeService.theme.windowBackgroundColor))
                     .cornerRadius(UIConstants.mediumCornerRadius)
                 Text(text)
                     .accessibilityHidden(true)
                     .font(.system(size: 15, weight: isActive.wrappedValue ? .semibold : .regular))
-                    .foregroundColor(isActive.wrappedValue ? .accentColor : Color(theme.ternaryTextColor))
+                    .foregroundStyle(isActive.wrappedValue ? Color.accentColor : Color(themeService.theme.ternaryTextColor))
             }
             .accessibilityElement(children: .ignore)
             .accessibilityLabel(text + " control, " + "\( isActive.wrappedValue ? "on": "off")")

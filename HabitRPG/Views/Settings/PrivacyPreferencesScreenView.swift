@@ -50,7 +50,7 @@ struct PrivacyPreferencesScreenView: View, Dismissable {
                     }
                 }
                 .padding(.top, 13)
-                HabiticaButtonUI(label: Text(L10n.acceptAll).foregroundColor(.gray50), color: .purple400) {
+                HabiticaButtonUI(label: Text(L10n.acceptAll).foregroundStyle(.gray50), color: .purple400) {
                     analyticsConsent = true
                     userRepository.updateUser(key: "preferences.analyticsConsent", value: analyticsConsent).observeCompleted {
                         dismisser.dismiss()
@@ -61,7 +61,7 @@ struct PrivacyPreferencesScreenView: View, Dismissable {
                     Link("Habitica's Privacy Policy", destination: url)
                         .scaledFont(size: 16, weight: .bold)
                         .frame(maxWidth: .infinity)
-                        .foregroundColor(.purple600)
+                        .foregroundStyle(.purple600)
                         .height(60)
                         .padding(.top, 12)
                 }

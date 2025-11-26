@@ -72,6 +72,7 @@ class RYABottomSheetViewModel: ViewModel {
 }
 
 struct TaskCheckBox: View {
+    @ObservedObject var themeService = ThemeService.shared
     let type: TaskType
     let value: Float
     var isDue: Bool = true
@@ -89,7 +90,7 @@ struct TaskCheckBox: View {
     }
     
     private var boxColor: Color {
-        let theme = ThemeService.shared.theme
+        let theme = themeService.theme
         if isChecked {
             return Color(theme.offsetBackgroundColor)
         } else if isDue {
@@ -101,11 +102,11 @@ struct TaskCheckBox: View {
     
     private var backgroundColor: Color {
         if isChecked {
-            return Color(ThemeService.shared.theme.windowBackgroundColor)
+            return Color(themeService.theme.windowBackgroundColor)
         } else if isDue != false {
             return Color(UIColor.forTaskValueLight(value))
         } else {
-            return Color(ThemeService.shared.theme.offsetBackgroundColor)
+            return Color(themeService.theme.offsetBackgroundColor)
         }
     }
     
@@ -126,6 +127,7 @@ struct TaskCheckBox: View {
 }
 
 struct RYATaskView: View {
+    @ObservedObject var themeService = ThemeService.shared
     let task: TaskProtocol
     let isChecked: Bool
     let onChecked: (Bool) -> Void
@@ -139,7 +141,7 @@ struct RYATaskView: View {
                     onChecked(check)
                 }.frame(width: 40)
                 Text(task.text ?? "")
-                    .foregroundStyle(Color(isChecked ? ThemeService.shared.theme.secondaryTextColor : ThemeService.shared.theme.primaryTextColor))
+                    .foregroundStyle(Color(isChecked ? themeService.theme.secondaryTextColor : themeService.theme.primaryTextColor))
                     .scaledFont(size: 16, weight: .semibold)
                     .padding(.vertical, 15)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -151,7 +153,7 @@ struct RYATaskView: View {
                             Rectangle().cornerRadius(6)
                                 .fill()
                                 .frame(width: 20, height: 20)
-                                .foregroundStyle(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                                .foregroundStyle(Color(themeService.theme.offsetBackgroundColor))
                             if isChecked {
                                 Image(systemName: "checkmark")
                                     .font(.system(size: 15, weight: .semibold))
@@ -165,7 +167,7 @@ struct RYATaskView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     .fixedSize(horizontal: false, vertical: true)
-                    .foregroundStyle(Color(checklistItem.completed ? ThemeService.shared.theme.secondaryTextColor : ThemeService.shared.theme.primaryTextColor))
+                    .foregroundStyle(Color(checklistItem.completed ? themeService.theme.secondaryTextColor : themeService.theme.primaryTextColor))
                     .scaledFont(size: 16, weight: .semibold)
                     .onTapGesture {
                         checklistItem.completed = true
@@ -178,7 +180,7 @@ struct RYATaskView: View {
         .fixedSize(horizontal: false, vertical: true)
         .frame(minHeight: 50)
         .frame(maxWidth: .infinity)
-        .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+        .background(Color(themeService.theme.windowBackgroundColor))
         .cornerRadius(UIConstants.mediumCornerRadius)
         .onTapGesture {
             onChecked(!isChecked)
@@ -187,6 +189,7 @@ struct RYATaskView: View {
 }
 
 struct RYABottomSheet: View, Dismissable {
+    @ObservedObject var themeService = ThemeService.shared
     var dismisser: Dismisser {
         get {
             return viewModel.dismisser
@@ -205,10 +208,10 @@ struct RYABottomSheet: View, Dismissable {
         BottomSheetView(dismisser: dismisser, content: VStack(spacing: 0) {
             let topContent = VStack(spacing: 9) {
                 Text(L10n.welcomeBack)
-                    .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
+                    .foregroundStyle(Color(themeService.theme.primaryTextColor))
                     .scaledFont(size: 22, weight: .bold)
                 Text(L10n.checkinYesterdaysDalies)
-                    .foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
+                    .foregroundStyle(Color(themeService.theme.secondaryTextColor))
                     .scaledFont(size: 17)
             }.padding(.top, 32)
             
@@ -228,7 +231,7 @@ struct RYABottomSheet: View, Dismissable {
                     HabiticaProgressView()
                         .transition(.opacity)
                 } else {
-                    HabiticaButtonUI(label: Text(L10n.startMyDay), color: Color(ThemeService.shared.theme.tintColor)) {
+                    HabiticaButtonUI(label: Text(L10n.startMyDay), color: Color(themeService.theme.fixedTintColor)) {
                         viewModel.runCron()
                     }
                     .transition(.opacity)

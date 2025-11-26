@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct PrivacyToggleContainer: View {
+    @ObservedObject var themeService = ThemeService.shared
     let title: Text
     let description: Text
     let titleTextColor: Color
@@ -31,7 +32,7 @@ struct PrivacyToggleContainer: View {
             .frame(maxWidth: .infinity)
             Toggle(isOn: $isOn) {
             }
-            .tint(Color(ThemeService.shared.theme.fixedTintColor))
+            .tint(Color(themeService.theme.fixedTintColor))
             .frame(width: 64)
                 .opacity(disabled ? 0.5 : 1.0)
         }
@@ -42,6 +43,7 @@ struct PrivacyToggleContainer: View {
 }
 
 struct PrivacyPreferencesSheetView: View, Dismissable {
+    @ObservedObject var themeService = ThemeService.shared
     let userRepository = UserRepository()
     
     var dismisser = Dismisser()
@@ -53,22 +55,22 @@ struct PrivacyPreferencesSheetView: View, Dismissable {
     var body: some View {
         VStack(spacing: 0) {
             Text(L10n.yourPrivacyPreferences)
-                .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
+                .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 .scaledFont(size: 16, weight: .medium)
                 .padding(.bottom, 18)
                 .padding(.horizontal, 13)
             Text((try? AttributedString(markdown: L10n.privacyPreferencesSheetDescription,
                                         options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace))) ?? AttributedString(L10n.privacyPreferencesSheetDescription))
                 .scaledFont(size: 14)
-                .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
+                .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 .lineSpacing(3)
                 .padding(.bottom, 30)
                 .padding(.horizontal, 13)
             PrivacyToggleContainer(title: Text(L10n.performanceAnalytics),
                                    description: Text(L10n.performanceAnalyticsDescription),
-                                   titleTextColor: Color(ThemeService.shared.theme.primaryTextColor),
-                                   descriptionTextColor: Color(ThemeService.shared.theme.secondaryTextColor),
-                                   backgroundColor: Color(ThemeService.shared.theme.windowBackgroundColor),
+                                   titleTextColor: Color(themeService.theme.primaryTextColor),
+                                   descriptionTextColor: Color(themeService.theme.secondaryTextColor),
+                                   backgroundColor: Color(themeService.theme.windowBackgroundColor),
                                    isOn: $analyticsConsent)
                 .onChange(of: analyticsConsent, perform: { consented in
                     userRepository.updateUser(key: "preferences.analyticsConsent", value: consented).observeCompleted {
@@ -78,9 +80,9 @@ struct PrivacyPreferencesSheetView: View, Dismissable {
                 .padding(.bottom, 8)
             PrivacyToggleContainer(title: Text(L10n.strictlyNecessary),
                                    description: Text(L10n.strictlyNecessaryDescription),
-                                   titleTextColor: Color(ThemeService.shared.theme.primaryTextColor),
-                                   descriptionTextColor: Color(ThemeService.shared.theme.secondaryTextColor),
-                                   backgroundColor: Color(ThemeService.shared.theme.windowBackgroundColor),
+                                   titleTextColor: Color(themeService.theme.primaryTextColor),
+                                   descriptionTextColor: Color(themeService.theme.secondaryTextColor),
+                                   backgroundColor: Color(themeService.theme.windowBackgroundColor),
                                    isOn: .constant(true),
                                    disabled: true)
         }

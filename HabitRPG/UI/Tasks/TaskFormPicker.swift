@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct TaskFormPicker: View {
+    @ObservedObject var themeService = ThemeService.shared
     var options: [LabeledFormValue<String>]
     @Binding var selection: String
     var tintColor: Color = .accentColor
@@ -21,7 +22,7 @@ struct TaskFormPicker: View {
                 HStack(spacing: 0) {
                     ForEach(options.dropLast(), id: \.value) { option in
                         let index = options.firstIndex(of: option) ?? 0
-                        Rectangle().foregroundColor(Color(ThemeService.shared.theme.dimmedTextColor)).frame(width: 1, height: 28).padding(.leading, itemWidth-1)
+                        Rectangle().foregroundStyle(Color(themeService.theme.dimmedTextColor)).frame(width: 1, height: 28).padding(.leading, itemWidth-1)
                             .opacity((selectedIndex == index || selectedIndex == index + 1) ? 0 : 1)
                     }
                 }
@@ -32,7 +33,7 @@ struct TaskFormPicker: View {
                         .padding(.leading, (CGFloat(selectedIndex) * itemWidth) + 2)
                         .animation(.spring(), value: selection)
                 } else {
-                    RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius).foregroundColor(tintColor)
+                    RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius).foregroundStyle(tintColor)
                         .shadow(color: .black.opacity(0.12), radius: 8, x: 0, y: 3)
                         .shadow(color: .black.opacity(0.04), radius: 1, x: 0, y: 1)
                         .frame(width: itemWidth - 8, height: 28)
@@ -45,7 +46,7 @@ struct TaskFormPicker: View {
                         Text(option.label)
                             .font(.system(size: 13, weight: isSelected ? .semibold : .medium))
                             .frame(width: itemWidth)
-                            .foregroundColor(isSelected ? .white : Color(ThemeService.shared.theme.primaryTextColor))
+                            .foregroundStyle(isSelected ? .white : Color(ThemeService.shared.theme.primaryTextColor))
                             .onTapGesture {
                                 UISelectionFeedbackGenerator.oneShotSelectionChanged()
                                 withAnimation {

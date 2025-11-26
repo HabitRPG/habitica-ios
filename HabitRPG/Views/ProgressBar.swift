@@ -23,7 +23,7 @@ struct ProgressBarUI<V>: View where V: BinaryFloatingPoint {
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: radius)
                     .frame(width: reader.size.width, height: reader.size.height)
-                    .foregroundColor(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                    .foregroundStyle(Color(ThemeService.shared.theme.offsetBackgroundColor))
                 
                 RoundedRectangle(cornerRadius: radius)
                     .size(width: reader.size.width * CGFloat(value), height: reader.size.height)

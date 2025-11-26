@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ApiTokenSheetView: View, Dismissable {
+    @ObservedObject var themeService = ThemeService.shared
     let token: String
     var onCopy: () -> Void
     var dismisser = Dismisser()
@@ -22,17 +23,16 @@ struct ApiTokenSheetView: View, Dismissable {
         colorScheme == .dark ? Color.gray100.opacity(0.18) : Color.gray600.opacity(0.95)
     }
 
-    var theme: Theme { ThemeService.shared.theme }
-
     var descriptionColor: Color {
         colorScheme == .dark ? Color.gray400 : Color.gray200
     }
 
     var body: some View {
+        let theme = themeService.theme
         BottomSheetView(content: VStack(spacing: 20) {
                 Text(L10n.apiTokenTitle)
                     .font(.system(size: 16))
-                    .foregroundColor(descriptionColor)
+                    .foregroundStyle(descriptionColor)
                     .fontWeight(.semibold)
                 
                 VStack(alignment: .leading, spacing: 10) {
@@ -40,25 +40,25 @@ struct ApiTokenSheetView: View, Dismissable {
                         .font(.system(size: 16))
                         .kerning(-0.31)
                         .lineSpacing(5)
-                        .foregroundColor(Color(theme.primaryTextColor))
+                        .foregroundStyle(Color(theme.primaryTextColor))
                         .padding(.bottom, 2)
                     Text(L10n.apiTokenPasswordDescription)
                         .font(.system(size: 14))
                         .kerning(-0.08)
                         .lineSpacing(4)
-                        .foregroundColor(descriptionColor)
+                        .foregroundStyle(descriptionColor)
                         .padding(.bottom, 12)
                     Text(L10n.apiTokenResetTitle)
                         .font(.system(size: 16))
                         .kerning(-0.31)
                         .lineSpacing(5)
-                        .foregroundColor(Color(theme.primaryTextColor))
+                        .foregroundStyle(Color(theme.primaryTextColor))
                         .padding(.bottom, 2)
                     Text(L10n.apiTokenResetDesc)
                         .font(.system(size: 14))
                         .kerning(-0.08)
                         .lineSpacing(4)
-                        .foregroundColor(descriptionColor)
+                        .foregroundStyle(descriptionColor)
                         .padding(.bottom, 12)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -70,7 +70,7 @@ struct ApiTokenSheetView: View, Dismissable {
                       .frame(width: 16, height: 16)
                     Text(token)
                         .font(.system(size: 14, weight: .medium, design: .monospaced))
-                        .foregroundColor(.primary)
+                        .foregroundStyle(.primary)
                         .lineLimit(1)
                         .truncationMode(.middle)
                     Spacer()
@@ -80,7 +80,7 @@ struct ApiTokenSheetView: View, Dismissable {
                 .background(tokenBoxBg)
                 .cornerRadius(UIConstants.largeCornerRadius)
 
-            HabiticaButtonUI(label: Text(L10n.copyToken).foregroundColor(buttonTextColor), color: buttonColor, size: .compact) {
+            HabiticaButtonUI(label: Text(L10n.copyToken).foregroundStyle(buttonTextColor), color: buttonColor, size: .compact) {
                 onCopy()
             }
             })

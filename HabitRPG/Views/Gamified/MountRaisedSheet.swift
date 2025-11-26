@@ -10,17 +10,18 @@ import SwiftUI
 import Habitica_Models
 
 struct MountRaisedSheet: View, Dismissable {
+    @ObservedObject var themeService = ThemeService.shared
     var dismisser = Dismisser()
     let mount: AnimalProtocol
     var onEquip: () -> Void = { }
     
     var body: some View {
         GamifiedBottomSheet(upperBackground: StableBackgroundView(), upperContent: MountView(mount: mount).padding(.top, 30), upperContentBottomPadding: 100, title: Text(L10n.youRaisedPet(mount.text ?? ""))) {
-            HabiticaButtonUI(label: Text(L10n.equip), color: Color(ThemeService.shared.theme.tintColor)) {
+            HabiticaButtonUI(label: Text(L10n.equip), color: Color(themeService.theme.tintColor)) {
                 onEquip()
                 dismisser.dismiss()
             }
-            HabiticaButtonUI(label: Text(L10n.share).foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor)), color: Color(ThemeService.shared.theme.offsetBackgroundColor)) {
+            HabiticaButtonUI(label: Text(L10n.share).foregroundStyle(Color(themeService.theme.primaryTextColor)), color: Color(themeService.theme.offsetBackgroundColor)) {
                 SharingManager.share(mount: mount, shareIdentifier: "raisedPet")
                 dismisser.dismiss()
             }

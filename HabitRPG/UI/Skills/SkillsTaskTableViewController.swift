@@ -43,5 +43,4 @@ class SkillsTaskTableViewController: UITableViewController {
     private func configureTableViewBackgroundColor() {
         self.tableView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
     }
-
 }

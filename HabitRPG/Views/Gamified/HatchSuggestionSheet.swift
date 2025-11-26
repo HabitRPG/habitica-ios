@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct PetItemsFlowView<LeftIcon: View, MiddleIcon: View, RightIcon: View>: View {
+    @ObservedObject var themeService = ThemeService.shared
+
     let leftIcon: LeftIcon
     let middleIcon: MiddleIcon
     let rightIcon: RightIcon
@@ -21,7 +23,7 @@ struct PetItemsFlowView<LeftIcon: View, MiddleIcon: View, RightIcon: View>: View
         HStack(spacing: 0) {
             leftIcon
                 .frame(width: 60, height: 60)
-            .background(Color(ThemeService.shared.theme.contentBackgroundColor))
+                .background(Color(themeService.theme.contentBackgroundColor))
             .clipShape(RoundedRectangle(cornerRadius: 8))
             .frame(width: 68, height: 68)
             .border(Color.purple300, width: 8, cornerRadius: 13, antialiased: true)
@@ -35,7 +37,7 @@ struct PetItemsFlowView<LeftIcon: View, MiddleIcon: View, RightIcon: View>: View
             Spacer()
             middleIcon
             .frame(width: 96, height: 96)
-            .background(Color(ThemeService.shared.theme.contentBackgroundColor))
+            .background(Color(themeService.theme.contentBackgroundColor))
             .clipShape(RoundedRectangle(cornerRadius: 8))
             .border(highlightedStep == 4 ? Color.purple200 : Color.purple300, width: 8, cornerRadius: 13, antialiased: true)
             Spacer()
@@ -47,7 +49,7 @@ struct PetItemsFlowView<LeftIcon: View, MiddleIcon: View, RightIcon: View>: View
             Spacer()
             rightIcon
                 .frame(width: 60, height: 60)
-            .background(Color(ThemeService.shared.theme.contentBackgroundColor))
+                .background(Color(themeService.theme.contentBackgroundColor))
             .clipShape(RoundedRectangle(cornerRadius: 8))
             .frame(width: 68, height: 68)
             .border(Color.purple300, width: 8, cornerRadius: 13, antialiased: true)
@@ -72,11 +74,17 @@ struct PetItemsFlowView<LeftIcon: View, MiddleIcon: View, RightIcon: View>: View
 }
 
 struct HatchSuggestionSheet: View {
-    @Environment(\.presentationManager) var presentationManager
+    @ObservedObject var themeService = ThemeService.shared
+    @Environment(\.presentationManager)
+    var presentationManager
+    
+    private let inventoryRepository = InventoryRepository()
 
     let item: PetStableItem
     let ownedEggCount: Int
     let ownedPotionCount: Int
+    
+    @State var isHatching = false
         
     private var descriptionText: String {
         if ownedEggCount > 0 && ownedPotionCount > 0 {
@@ -102,8 +110,18 @@ struct HatchSuggestionSheet: View {
                 .foregroundStyle(.white)
         }, title: Text(item.pet?.text ?? ""), description: Text(descriptionText)) {
             if ownedEggCount > 0 && ownedPotionCount > 0 {
-                HabiticaButtonUI(label: Text(L10n.hatch), color: Color(ThemeService.shared.theme.fixedTintColor)) {
-                    presentationManager.dismiss()
+                if isHatching {
+                    HabiticaProgressView().frame(height: 60)
+                } else {
+                    HabiticaButtonUI(label: Text(L10n.hatch), color: Color(themeService.theme.fixedTintColor)) {
+                        withAnimation {
+                            isHatching = true
+                        }
+                        inventoryRepository.hatchPet(egg: item.pet?.egg ?? "", potion: item.pet?.potion ?? "")
+                            .observeCompleted {
+                                presentationManager.dismiss()
+                            }
+                    }
                 }
             }
         }

@@ -11,6 +11,8 @@ import ReactiveSwift
 import Habitica_Database
 
 struct SimpleItemDetails: View {
+    @ObservedObject var themeService = ThemeService.shared
+
     let item: InAppRewardProtocol
     let user: UserProtocol?
     
@@ -40,17 +42,17 @@ struct SimpleItemDetails: View {
     var body: some View {
         if #available(iOS 26.0, *) {
             iconView
-                .glassEffect(.regular.tint(Color(ThemeService.shared.theme.windowBackgroundColor).opacity(0.65)), in: RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius))
+                .glassEffect(.regular.tint(Color(themeService.theme.windowBackgroundColor).opacity(0.65)), in: RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius))
                 .padding(.bottom, 9)
         } else {
             iconView
-                .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+                .background(Color(themeService.theme.windowBackgroundColor))
                 .cornerRadius(UIConstants.largeCornerRadius)
                 .padding(.bottom, 9)
         }
-        Text(item.text ?? "").foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor)).scaledFont(size: 22, weight: .bold)
+        Text(item.text ?? "").foregroundStyle(Color(themeService.theme.primaryTextColor)).scaledFont(size: 22, weight: .bold)
         if let notes = item.notes, !notes.isEmpty, let nsAttr = try? HabiticaMarkdownHelper.toHabiticaAttributedString(notes) {
-            Text(AttributedString(nsAttr)).foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor)).scaledFont(size: 17)
+            Text(AttributedString(nsAttr)).foregroundStyle(Color(themeService.theme.primaryTextColor)).scaledFont(size: 17)
                 .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
                 .padding(.top, 6)

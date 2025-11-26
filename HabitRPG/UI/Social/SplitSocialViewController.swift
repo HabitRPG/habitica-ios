@@ -79,7 +79,7 @@ class SplitSocialViewController: HabiticaSplitViewController {
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        view.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        view.backgroundColor = theme.windowBackgroundColor
     }
     
     func retrieveGroup() {

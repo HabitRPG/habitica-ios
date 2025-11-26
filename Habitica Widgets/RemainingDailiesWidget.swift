@@ -94,7 +94,7 @@ struct DailiesCountWidgetView: View {
                             Text("Start day").font(.caption)
                         }
                         .padding(.bottom, 2)
-                        .foregroundColor(Color.widgetText)
+                        .foregroundStyle(Color.widgetText)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .multilineTextAlignment(.center).background(Color.widgetBackground)
                         
@@ -149,24 +149,24 @@ struct CountView: View {
         let barColor = colors[Int((Float(completedCount) / Float(totalCount)) * Float(colors.count))]
         VStack(alignment: .leading, spacing: 8) {
             Spacer()
-            Text(String(displayCount)).font(Font.system(size: 50, weight: .semibold)).foregroundColor(Color.dailiesWidgetPurple)
-            Text(displayRemaining ? "Dailies left" : "Dailies done").foregroundColor(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center).padding(.top, -12)
+            Text(String(displayCount)).font(Font.system(size: 50, weight: .semibold)).foregroundStyle(Color.dailiesWidgetPurple)
+            Text(displayRemaining ? "Dailies left" : "Dailies done").foregroundStyle(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center).padding(.top, -12)
             GeometryReader { geometry in
                 let width = geometry.size.width
                 ZStack(alignment: .leading) {
                     Rectangle()
-                        .foregroundColor(Color.progressBackground)
+                        .foregroundStyle(Color.progressBackground)
                         .opacity(renderingMode == .fullColor ? 1 : 0.2)
                         .frame(width: width, height: 12.0)
                     Rectangle()
-                        .foregroundColor(barColor)
+                        .foregroundStyle(barColor)
                         .frame(width: width * (CGFloat(completedCount) / CGFloat(totalCount)), height: 12.0)
                     
                 }
                 .cornerRadius(6.0)
             }.padding(.top, 10)
                 .frame(height: 12)
-            Text(displayRemaining ? "\(completedCount) done" : "\(totalCount - completedCount) left to do").font(Font.system(size: 12)).padding(.top, 4).foregroundColor(.widgetTextSecondary)
+            Text(displayRemaining ? "\(completedCount) done" : "\(totalCount - completedCount) left to do").font(Font.system(size: 12)).padding(.top, 4).foregroundStyle(.widgetTextSecondary)
         }
     }
 }
@@ -177,22 +177,22 @@ struct CompletedView: View {
         VStack(alignment: .leading, spacing: 8) {
             Spacer()
             HStack {
-                Text(String(totalCount)).font(Font.system(size: 50, weight: .semibold)).foregroundColor(Color.dailiesWidgetPurple)
+                Text(String(totalCount)).font(Font.system(size: 50, weight: .semibold)).foregroundStyle(Color.dailiesWidgetPurple)
                 Image("Sparkles").padding(.leading, 1)
             }
-            Text("Dailies done").foregroundColor(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center).padding(.top, -12)
+            Text("Dailies done").foregroundStyle(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center).padding(.top, -12)
             GeometryReader { geometry in
                 let width = geometry.size.width
                 ZStack(alignment: .leading) {
                     Rectangle()
-                        .foregroundColor(Color.barPurple)
+                        .foregroundStyle(Color.barPurple)
                         .frame(width: width, height: 12.0)
                     
                 }
                 .cornerRadius(6.0)
             }.padding(.top, 10)
                 .frame(height: 12)
-            Text("All done today!").font(Font.system(size: 12)).padding(.top, 4).foregroundColor(.widgetTextSecondary)
+            Text("All done today!").font(Font.system(size: 12)).padding(.top, 4).foregroundStyle(.widgetTextSecondary)
         }
     }
 }
@@ -202,7 +202,7 @@ struct StartDayView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 12) {
             Image("StartDayIcon")
-            Text("Start a new day").foregroundColor(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center)
+            Text("Start a new day").foregroundStyle(Color.widgetText).font(Font.system(size: 15, weight: .semibold)).multilineTextAlignment(.center)
         }
     }
 }

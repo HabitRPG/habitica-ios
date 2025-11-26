@@ -10,6 +10,7 @@ import SwiftUI
 import Habitica_Models
 
 struct PetHatchedSheet: View, Dismissable {
+    @ObservedObject var themeService = ThemeService.shared
     var dismisser = Dismisser()
     let pet: PetProtocol
     var onEquip: () -> Void = { }
@@ -19,11 +20,11 @@ struct PetHatchedSheet: View, Dismissable {
                             upperContent: PetView(pet: pet).padding(.top, 40),
                             upperContentBottomPadding: 10,
                             title: Text(L10n.Inventory.hatched(pet.text ?? ""))) {
-            HabiticaButtonUI(label: Text(L10n.equip), color: Color(ThemeService.shared.theme.tintColor)) {
+            HabiticaButtonUI(label: Text(L10n.equip), color: Color(themeService.theme.tintColor)) {
                 onEquip()
                 dismisser.dismiss()
             }
-            HabiticaButtonUI(label: Text(L10n.share).foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor)), color: Color(ThemeService.shared.theme.offsetBackgroundColor)) {
+            HabiticaButtonUI(label: Text(L10n.share).foregroundStyle(Color(themeService.theme.primaryTextColor)), color: Color(themeService.theme.offsetBackgroundColor)) {
                 SharingManager.share(pet: pet, shareIdentifier: "hatchedPet")
                 dismisser.dismiss()
             }

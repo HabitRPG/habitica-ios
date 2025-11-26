@@ -9,6 +9,7 @@ import SwiftUI
 import Habitica_Models
 
 struct TaskFormReminderItemView: View {
+    @ObservedObject var themeService = ThemeService.shared
     var item: ReminderProtocol
     var showDate: Bool
     var onDelete: () -> Void
@@ -25,7 +26,7 @@ struct TaskFormReminderItemView: View {
         .onTapGesture(count: 99, perform: {
             // fix iOS 17.1 bug
         })
-            .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+            .foregroundStyle(Color(themeService.theme.primaryTextColor))
     }
     
     init(item: ReminderProtocol, showDate: Bool, onDelete: @escaping () -> Void) {
@@ -51,12 +52,12 @@ struct TaskFormReminderItemView: View {
                     onDelete()
                 }, label: {
                     Rectangle().fill(Color.white).frame(width: 9, height: 2)
-                        .background(Circle().fill(Color.accentColor).frame(width: 21, height: 21))
+                        .background(Circle().fill(.tint).frame(width: 21, height: 21))
                         .frame(width: 40, height: 40)
                 }).buttonStyle { configuration in
                     if UIAccessibility.buttonShapesEnabled {
                         configuration.label
-                            .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                            .background(Color(themeService.theme.offsetBackgroundColor))
                             .cornerRadius(UIConstants.largeCornerRadius).padding(4)
                     } else {
                         configuration.label.padding(4)
@@ -64,7 +65,7 @@ struct TaskFormReminderItemView: View {
                 }
                 buildPicker(value: timeProxy)
             }.padding(.trailing, 8)
-        }.frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
+        }.frame(maxWidth: .infinity).background(Color(themeService.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
         .transition(.opacity)
     }
 }

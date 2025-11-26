@@ -84,6 +84,7 @@ class LookingForPartyViewModel: ObservableObject {
 }
 
 struct ClassLabel: View {
+    @ObservedObject var themeService = ThemeService.shared
     let className: String
     let selectedClass: Bool
     
@@ -103,7 +104,7 @@ struct ClassLabel: View {
     }
     
     private func classColor() -> UIColor? {
-        if ThemeService.shared.theme.isDark {
+        if themeService.theme.isDark {
             switch className {
             case "warrior":
                 return UIColor.maroon500
@@ -139,7 +140,7 @@ struct ClassLabel: View {
                     Image(uiImage: classImage).frame(width: 21, height: 21)
                 }
                 Text(className.localizedCapitalized)
-                    .foregroundColor(Color(classColor() ?? ThemeService.shared.theme.primaryTextColor))
+                    .foregroundStyle(Color(classColor() ?? themeService.theme.primaryTextColor))
                     .font(.system(size: 14, weight: .semibold))
             }
         }
@@ -148,6 +149,7 @@ struct ClassLabel: View {
 }
 
 struct PartyInviteView: View {
+    @ObservedObject var themeService = ThemeService.shared
     let member: MemberProtocol
     let inviteButtonState: LoadingButtonState
     let isInvited: Bool
@@ -167,15 +169,15 @@ struct PartyInviteView: View {
                         Text(L10n.Groups.invitePending.uppercased())
                             .font(Font.system(size: 14, weight: .medium))
                             .kerning(0.75)
-                            .foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor))
+                            .foregroundStyle(Color(themeService.theme.ternaryTextColor))
                     }
                     UsernameLabelUI(name: member.profile?.name ?? "", level: member.contributor?.level ?? 0)
                         .font(.headline)
                     Text("@\(member.username ?? "")")
                         .font(.system(size: 14))
-                        .foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
+                        .foregroundStyle(Color(themeService.theme.secondaryTextColor))
                     Rectangle().fill()
-                        .foregroundColor(Color(ThemeService.shared.theme.separatorColor))
+                        .foregroundStyle(Color(themeService.theme.separatorColor))
                         .frame(maxWidth: .infinity, maxHeight: 1)
                         .padding(.vertical, 2)
                     HStack {
@@ -190,7 +192,7 @@ struct PartyInviteView: View {
                         }
                     }
                 }
-                .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 .font(.system(size: 14, weight: .semibold))
             }
             if canInvite {
@@ -210,6 +212,7 @@ struct PartyInviteView: View {
 }
 
 struct LookingForPartyView: View {
+    @ObservedObject var themeService = ThemeService.shared
     @ObservedObject var viewModel: LookingForPartyViewModel
     
     private var content: some View {
@@ -243,7 +246,7 @@ struct LookingForPartyView: View {
                                 .padding(.top, 8)
                                 .padding(.horizontal, 12)
                                 .padding(.bottom, 12)
-                                .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+                                .background(Color(themeService.theme.windowBackgroundColor))
                                 .cornerRadius(UIConstants.mediumCornerRadius)
                             }
                         }
@@ -252,7 +255,7 @@ struct LookingForPartyView: View {
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
             .padding(14)
-        }.background(Color(ThemeService.shared.theme.contentBackgroundColor))
+        }.background(Color(themeService.theme.contentBackgroundColor))
     }
     
     var body: some View {

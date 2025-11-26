@@ -9,6 +9,7 @@ import SwiftUI
 import Habitica_Models
 
 private struct QuestGoalViewUI: View {
+    @ObservedObject var themeService = ThemeService.shared
     let quest: QuestProtocol
     
     var body: some View {
@@ -60,12 +61,12 @@ private struct QuestGoalViewUI: View {
                     .background(.red100)
             }
             HStack {
-                Text(L10n.difficulty).foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
+                Text(L10n.difficulty).foregroundStyle(Color(themeService.theme.primaryTextColor))
                 Spacer()
                 Image(uiImage: HabiticaIcons.imageOfDifficultyStars(difficulty: quest.difficulty))
                     .padding(.horizontal, 11)
                     .padding(.vertical, 6)
-                    .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                    .background(Color(themeService.theme.offsetBackgroundColor))
                         .cornerRadius(UIConstants.largeCornerRadius)
             }
             .padding(.vertical, 11)
@@ -73,13 +74,14 @@ private struct QuestGoalViewUI: View {
             .padding(.trailing, 11)
         }
         .font(.system(size: 17, weight: .semibold))
-        .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+        .background(Color(themeService.theme.windowBackgroundColor))
         .cornerRadius(UIConstants.largeCornerRadius)
         .padding(.vertical, 15)
     }
 }
 
 struct QuestReward<Icon: View, Label: View>: View {
+    @ObservedObject var themeService = ThemeService.shared
     let icon: Icon
     let label: Label
     
@@ -87,7 +89,7 @@ struct QuestReward<Icon: View, Label: View>: View {
         HStack(spacing: 14) {
             icon
                 .frame(width: 68, height: 68)
-                .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                .background(Color(themeService.theme.offsetBackgroundColor))
                 .cornerRadius(UIConstants.mediumCornerRadius)
             label
                 .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
@@ -95,7 +97,7 @@ struct QuestReward<Icon: View, Label: View>: View {
                 .frame(maxWidth: .infinity)
         }
         .padding(4)
-        .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+        .background(Color(themeService.theme.windowBackgroundColor))
         .cornerRadius(16)
     }
 }

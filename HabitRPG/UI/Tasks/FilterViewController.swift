@@ -216,6 +216,7 @@ struct TagFormItemView: View {
 }
 
 struct TaskFilterPage: View {
+    @ObservedObject var themeService = ThemeService.shared
     @ObservedObject var viewModel: TaskFilterViewModel
     @State var focusItemId: String?
 
@@ -249,7 +250,7 @@ struct TaskFilterPage: View {
                                 } label: {
                                     Image(systemName: "minus.circle.fill")
                                         .scaledFont(size: 20)
-                                        .foregroundStyle(Color(ThemeService.shared.theme.errorColor))
+                                        .foregroundStyle(Color(themeService.theme.errorColor))
                                 }
                                 .contentShape(Rectangle())
                                 .frame(width: 24, height: 22)
@@ -258,18 +259,18 @@ struct TaskFilterPage: View {
                             } else {
                                 Text(tag.text ?? "")
                                     .scaledFont(size: 17, weight: isSelected ? .semibold : .regular)
-                                    .foregroundStyle(Color(isSelected ? ThemeService.shared.theme.tintedMainText : ThemeService.shared.theme.primaryTextColor))
+                                    .foregroundStyle(Color(isSelected ? themeService.theme.tintedMainText : themeService.theme.primaryTextColor))
                                 Spacer()
                             }
                             if isSelected && !viewModel.isEditing {
                                 Image(systemName: "checkmark")
-                                    .foregroundStyle(Color(ThemeService.shared.theme.tintColor))
+                                    .foregroundStyle(Color(themeService.theme.tintColor))
                                     .transition(.scale.combined(with: .opacity))
                             }
                         }
                         .animation(.spring, value: viewModel.isEditing)
                         .contentShape(Rectangle())
-                        .listRowBackground(Color(ThemeService.shared.theme.windowBackgroundColor))
+                        .listRowBackground(Color(themeService.theme.windowBackgroundColor))
                         .onTapGesture(disabled: viewModel.isEditing, perform: {
                             viewModel.tagTapped(tag: tag)
                         })
@@ -277,12 +278,12 @@ struct TaskFilterPage: View {
                         for item in set {
                             viewModel.deleteTag(at: item)
                         }
-                    }.listRowBackground(Color(ThemeService.shared.theme.windowBackgroundColor))
+                    }.listRowBackground(Color(themeService.theme.windowBackgroundColor))
                     if viewModel.isEditing {
                         HStack(spacing: 18) {
                             Image(systemName: "minus.circle.fill")
                                 .scaledFont(size: 20)
-                                .foregroundStyle(Color(ThemeService.shared.theme.errorColor))
+                                .foregroundStyle(Color(themeService.theme.errorColor))
                             Button(action: {
                                 let tag = viewModel.getNewTag()
                                 tag.id = UUID().uuidString
@@ -292,10 +293,10 @@ struct TaskFilterPage: View {
                                 focusItemId = tag.id
                             }, label: {
                                 Text(L10n.addTag).underline(UIAccessibility.buttonShapesEnabled)
-                                    .foregroundStyle(Color(ThemeService.shared.theme.ternaryTextColor))
+                                    .foregroundStyle(Color(themeService.theme.ternaryTextColor))
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             })
-                        }.listRowBackground(Color(ThemeService.shared.theme.windowBackgroundColor))
+                        }.listRowBackground(Color(themeService.theme.windowBackgroundColor))
                     }
                 }
                 
@@ -307,14 +308,14 @@ struct TaskFilterPage: View {
                     } label: {
                         Text(L10n.save)
                             .frame(maxWidth: .infinity)
-                    }.listRowBackground(Color(ThemeService.shared.theme.windowBackgroundColor))
+                    }.listRowBackground(Color(themeService.theme.windowBackgroundColor))
                 } else {
                     Button {
                         viewModel.beginEditing()
                     } label: {
                         Text(L10n.editTags)
                             .frame(maxWidth: .infinity)
-                    }.listRowBackground(Color(ThemeService.shared.theme.windowBackgroundColor))
+                    }.listRowBackground(Color(themeService.theme.windowBackgroundColor))
                 }
             }.listStyle(.insetGrouped)
                 .scrollContentBackground(.hidden)

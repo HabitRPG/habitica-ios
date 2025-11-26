@@ -232,7 +232,7 @@ struct HabitProgressView: View {
                 .padding(.horizontal, 30)
                 .frame(maxHeight: .infinity)
                 Rectangle()
-                    .foregroundColor(Color(theme.separatorColor))
+                    .foregroundStyle(Color(theme.separatorColor))
                     .frame(height: 2)
                     .frame(maxWidth: .infinity)
                     .padding(.horizontal, 30)
@@ -242,11 +242,11 @@ struct HabitProgressView: View {
                         let day = calendar.component(.day, from: examinedDay)
                         VStack {
                             Rectangle()
-                                .foregroundColor(Color(theme.separatorColor))
+                                .foregroundStyle(Color(theme.separatorColor))
                                 .frame(width: 2, height: 4)
                             Text(String(day))
                                 .font(.system(size: 12))
-                                .foregroundColor(Color(theme.ternaryTextColor))
+                                .foregroundStyle(Color(theme.ternaryTextColor))
                             
                         }.frame(maxWidth: .infinity)
                     }
@@ -257,13 +257,13 @@ struct HabitProgressView: View {
             .background(Color(theme.windowBackgroundColor)).cornerRadius(UIConstants.mediumCornerRadius)
             HStack(spacing: 16) {
                 VStack(spacing: 8) {
-                    Text(String(timesScored())).font(.system(size: 28)).foregroundColor(Color(theme.primaryTextColor))
-                    Text(L10n.Tasks.Form.timesScored).font(.system(size: 15)).foregroundColor(Color(theme.ternaryTextColor))
+                    Text(String(timesScored())).font(.system(size: 28)).foregroundStyle(Color(theme.primaryTextColor))
+                    Text(L10n.Tasks.Form.timesScored).font(.system(size: 15)).foregroundStyle(Color(theme.ternaryTextColor))
                 }.frame(height: 88).frame(maxWidth: .infinity)
                 .background(Color(theme.windowBackgroundColor)).cornerRadius(UIConstants.mediumCornerRadius)
                 VStack(spacing: 8) {
-                    Text(lastScoring()).font(.system(size: 28)).foregroundColor(Color(theme.primaryTextColor))
-                    Text(L10n.Tasks.Form.lastScored).font(.system(size: 15)).foregroundColor(Color(theme.ternaryTextColor))
+                    Text(lastScoring()).font(.system(size: 28)).foregroundStyle(Color(theme.primaryTextColor))
+                    Text(L10n.Tasks.Form.lastScored).font(.system(size: 15)).foregroundStyle(Color(theme.ternaryTextColor))
                 }.frame(height: 88).frame(maxWidth: .infinity)
                 .background(Color(theme.windowBackgroundColor)).cornerRadius(UIConstants.mediumCornerRadius)
             }

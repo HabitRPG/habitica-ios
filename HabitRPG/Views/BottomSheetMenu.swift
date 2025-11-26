@@ -25,6 +25,7 @@ class Dismisser: ObservableObject {
 }
 
 struct BottomSheetMenuitem<Title: View>: View {
+    @ObservedObject var themeService = ThemeService.shared
     @EnvironmentObject private var dismisser: Dismisser
     
     enum Style {
@@ -45,7 +46,7 @@ struct BottomSheetMenuitem<Title: View>: View {
     
     var body: some View {
         HabiticaButtonUI(label: title,
-                         color: style == .normal ? Color(ThemeService.shared.theme.fixedTintColor) : style == .destructive ? Color(UIColor.red100) : .windowBackgroundColor,
+                         color: style == .normal ? Color(themeService.theme.fixedTintColor) : style == .destructive ? .red100 : Color(themeService.theme.windowBackgroundColor),
                          size: .small) {
             dismisser.dismiss()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -70,6 +71,7 @@ struct BottomSheetMenuSeparator: View {
 }
 
 struct BottomSheetHeaderBar<Title: View, Left: View, Right: View>: View {
+    @ObservedObject var themeService = ThemeService.shared
     var title: Title
     var leftAction: Left
     var isLeftProminent = false
@@ -85,12 +87,12 @@ struct BottomSheetHeaderBar<Title: View, Left: View, Right: View>: View {
             } else {
                 leftAction
                     .clipShape(.circle)
-                    .tintColor(Color(isLeftProminent ? ThemeService.shared.theme.tintColor : ThemeService.shared.theme.windowBackgroundColor))
+                    .tintColor(Color(isLeftProminent ? themeService.theme.tintColor : themeService.theme.windowBackgroundColor))
             }
             Spacer()
             title
                 .font(.headline)
-                .foregroundColor(.primaryTextColor)
+                .foregroundStyle(Color(themeService.theme.primaryTextColor))
             Spacer()
             if #available(iOS 26.0, *) {
                 rightAction
@@ -99,7 +101,7 @@ struct BottomSheetHeaderBar<Title: View, Left: View, Right: View>: View {
             } else {
                 rightAction
                     .clipShape(.circle)
-                    .tintColor(Color(isRightProminent ? ThemeService.shared.theme.tintColor : ThemeService.shared.theme.windowBackgroundColor))
+                    .tintColor(Color(isRightProminent ? themeService.theme.tintColor : themeService.theme.windowBackgroundColor))
             }
         }
     }
@@ -180,22 +182,4 @@ extension BottomSheetMenu where Title == EmptyView {
         self.init(EmptyView(), iconName: iconName, menuItems: menuItems)
 
       }
-}
-
-extension Color {
-    static var primaryTextColor: Color {
-            return Color(ThemeService.shared.theme.primaryTextColor)
-    }
-    static var secondaryTextColor: Color {
-            return Color(ThemeService.shared.theme.secondaryTextColor)
-    }
-    static var ternaryTextColor: Color {
-            return Color(ThemeService.shared.theme.ternaryTextColor)
-    }
-    static var tintColor: Color {
-            return Color(ThemeService.shared.theme.tintColor)
-    }
-    static var windowBackgroundColor: Color {
-            return Color(ThemeService.shared.theme.windowBackgroundColor)
-    }
 }

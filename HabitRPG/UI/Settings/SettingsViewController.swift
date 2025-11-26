@@ -1051,36 +1051,36 @@ struct PauseDamageView: View, Dismissable {
 
         BottomSheetView(title: Text(isPaused ? L10n.resumeDamage : L10n.pauseDamage).padding(.bottom, 18), content: VStack(alignment: .leading, spacing: 0) {
             if isPaused {
-                Text(L10n.Settings.PauseDamage.resumeDamageTitle1).foregroundColor(Color(theme.primaryTextColor))
+                Text(L10n.Settings.PauseDamage.resumeDamageTitle1).foregroundStyle(Color(theme.primaryTextColor))
                     .font(.system(size: 16)).padding(.bottom, 2)
-                Text(L10n.Settings.PauseDamage.resumeDamageDescription1).foregroundColor(Color(theme.secondaryTextColor))
+                Text(L10n.Settings.PauseDamage.resumeDamageDescription1).foregroundStyle(Color(theme.secondaryTextColor))
                     .font(.system(size: 14)).padding(.bottom, 12)
-                Text(L10n.Settings.PauseDamage.resumeDamageTitle2).foregroundColor(Color(theme.primaryTextColor))
+                Text(L10n.Settings.PauseDamage.resumeDamageTitle2).foregroundStyle(Color(theme.primaryTextColor))
                     .font(.system(size: 16)).padding(.bottom, 2)
-                Text(L10n.Settings.PauseDamage.resumeDamageDescription2).foregroundColor(Color(theme.secondaryTextColor))
+                Text(L10n.Settings.PauseDamage.resumeDamageDescription2).foregroundStyle(Color(theme.secondaryTextColor))
                     .font(.system(size: 14)).padding(.bottom, 12)
-                Text(L10n.Settings.PauseDamage.resumeDamageTitle3).foregroundColor(Color(theme.primaryTextColor))
+                Text(L10n.Settings.PauseDamage.resumeDamageTitle3).foregroundStyle(Color(theme.primaryTextColor))
                     .font(.system(size: 16)).padding(.bottom, 2)
-                Text(L10n.Settings.PauseDamage.resumeDamageDescription3).foregroundColor(Color(theme.secondaryTextColor))
+                Text(L10n.Settings.PauseDamage.resumeDamageDescription3).foregroundStyle(Color(theme.secondaryTextColor))
                     .font(.system(size: 14)).padding(.bottom, 19)
-                HabiticaButtonUI(label: Text(L10n.resumeDamage).foregroundColor(.yellow1), color: .yellow100) {
+                HabiticaButtonUI(label: Text(L10n.resumeDamage).foregroundStyle(.yellow1), color: .yellow100) {
                     tappedButton()
                     dismisser.dismiss()
                 }
             } else {
-                Text(L10n.Settings.PauseDamage.pauseDamageTitle1).foregroundColor(Color(theme.primaryTextColor))
+                Text(L10n.Settings.PauseDamage.pauseDamageTitle1).foregroundStyle(Color(theme.primaryTextColor))
                     .font(.system(size: 16)).padding(.bottom, 2)
-                Text(L10n.Settings.PauseDamage.pauseDamageDescription1).foregroundColor(Color(theme.secondaryTextColor))
+                Text(L10n.Settings.PauseDamage.pauseDamageDescription1).foregroundStyle(Color(theme.secondaryTextColor))
                     .font(.system(size: 14)).padding(.bottom, 12)
-                Text(L10n.Settings.PauseDamage.pauseDamageTitle2).foregroundColor(Color(theme.primaryTextColor))
+                Text(L10n.Settings.PauseDamage.pauseDamageTitle2).foregroundStyle(Color(theme.primaryTextColor))
                     .font(.system(size: 16)).padding(.bottom, 2)
-                Text(L10n.Settings.PauseDamage.pauseDamageDescription2).foregroundColor(Color(theme.secondaryTextColor))
+                Text(L10n.Settings.PauseDamage.pauseDamageDescription2).foregroundStyle(Color(theme.secondaryTextColor))
                     .font(.system(size: 14)).padding(.bottom, 12)
-                Text(L10n.Settings.PauseDamage.pauseDamageTitle3).foregroundColor(Color(theme.primaryTextColor))
+                Text(L10n.Settings.PauseDamage.pauseDamageTitle3).foregroundStyle(Color(theme.primaryTextColor))
                     .font(.system(size: 16)).padding(.bottom, 2)
-                Text(L10n.Settings.PauseDamage.pauseDamageDescription3).foregroundColor(Color(theme.secondaryTextColor))
+                Text(L10n.Settings.PauseDamage.pauseDamageDescription3).foregroundStyle(Color(theme.secondaryTextColor))
                     .font(.system(size: 14)).padding(.bottom, 19)
-                HabiticaButtonUI(label: Text(L10n.pauseDamage).foregroundColor(.yellow1), color: .yellow100, size: .compact) {
+                HabiticaButtonUI(label: Text(L10n.pauseDamage).foregroundStyle(.yellow1), color: .yellow100, size: .compact) {
                     tappedButton()
                     dismisser.dismiss()
                 }

@@ -158,7 +158,7 @@ struct ToastView: View {
                             if let title = options.title {
                                 Text(title)
                                     .scaledFont(size: 15, weight: .semibold)
-                                    .foregroundColor(.white)
+                                    .foregroundStyle(.white)
                             }
                         }
                         if !options.statsChanges.isEmpty {
@@ -175,7 +175,7 @@ struct ToastView: View {
                             Text(text)
                             Image(uiImage: image)
                         }
-                        .foregroundColor(Color(options.rightTextColor))
+                        .foregroundStyle(Color(options.rightTextColor))
                         .padding(.horizontal, 8)
                         .frame(maxHeight: .infinity)
                         .background(.white)
@@ -197,7 +197,7 @@ struct ToastView: View {
                 }
         }
         .fixedSize(horizontal: false, vertical: true)
-        .foregroundColor(.white)
+        .foregroundStyle(.white)
         .padding(.bottom, 60)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
     }

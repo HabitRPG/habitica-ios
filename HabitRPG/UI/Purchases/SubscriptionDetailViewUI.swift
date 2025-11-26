@@ -36,7 +36,7 @@ private struct StatusPill: View {
             .padding(.vertical, 3)
             .background(background)
             .clipShape(.capsule)
-            .foregroundColor(textColor)
+            .foregroundStyle(textColor)
     }
 }
 
@@ -187,14 +187,14 @@ struct SubscriptionDetailViewUI: View {
                 Text(LocalizedStringKey(L10n.subscriptionCreditTitle(plan.extraMonths)))
                     .font(.system(size: 15))
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.green500)
+                    .foregroundStyle(.green500)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 11)
                     .padding(.horizontal, 15)
                     .overlay {
                         RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius)
                             .stroke(lineWidth: 3)
-                            .foregroundColor(.green100)
+                            .foregroundStyle(.green100)
                     }
             }
             DetailContainer {
@@ -287,7 +287,7 @@ struct SubscriptionDetailViewUI: View {
                         }.font(.system(size: 15, weight: .semibold))
                         Text(cancelDescription).font(.system(size: 13))
                         if let text = cancelButtonText {
-                            HabiticaButtonUI(label: Text(text).foregroundColor(.purple100), color: .yellow100, size: .compact) {
+                            HabiticaButtonUI(label: Text(text).foregroundStyle(.purple100), color: .yellow100, size: .compact) {
                                 cancelSubscription()
                             }.padding(.top, 7)
                         }

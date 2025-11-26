@@ -9,6 +9,7 @@ import SwiftUI
 import Habitica_Models
 
 struct FormSheetSelector<TYPE: Equatable & Hashable>: View {
+    @ObservedObject var themeService = ThemeService.shared
     let title: Text
     @Binding var value: TYPE
     let options: [LabeledFormValue<TYPE>]
@@ -26,8 +27,8 @@ struct FormSheetSelector<TYPE: Equatable & Hashable>: View {
             }, label: {
                 Text(options.first(where: { $0.value == value })?.label ?? "")
             })
-            .tint(Color(ThemeService.shared.theme.primaryTextColor))
-            .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
+            .tint(Color(themeService.theme.primaryTextColor))
+            .background(Color(themeService.theme.offsetBackgroundColor))
             .cornerRadius(UIConstants.largeCornerRadius)
             .menuIndicator(.hidden)
         }.frame(height: 45).padding(.leading, 26).padding(.trailing, 12)

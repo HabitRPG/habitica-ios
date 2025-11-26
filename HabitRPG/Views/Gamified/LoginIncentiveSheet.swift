@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct LoginIncentiveSheet: View {
+    @ObservedObject var themeService = ThemeService.shared
     @Environment(\.presentationManager) var presentationManager
     
     let imageName: String
@@ -17,7 +18,7 @@ struct LoginIncentiveSheet: View {
     
     var body: some View {
         GamifiedBottomSheet(upperBackgroundColor: .blue100, upperContent: VStack(spacing: 0) {
-            FanfareContainer(haloColor: .blue500, circleColor: Color(ThemeService.shared.theme.contentBackgroundColor), outerRingColor: .blue500, plusColor: .blue10) {
+            FanfareContainer(haloColor: .blue500, circleColor: Color(themeService.theme.contentBackgroundColor), outerRingColor: .blue500, plusColor: .blue10) {
                 PixelArtView(name: imageName)
             }
             Text(L10n.unlockedAnotherCheckinPrize)
@@ -29,7 +30,7 @@ struct LoginIncentiveSheet: View {
                     .foregroundStyle(Color.blue10)
             }
         }) {
-            HabiticaButtonUI(label: Text(L10n.seeYouTomorrow), color: Color(ThemeService.shared.theme.tintColor)) {
+            HabiticaButtonUI(label: Text(L10n.seeYouTomorrow), color: Color(themeService.theme.tintColor)) {
                 presentationManager.dismiss()
             }
         }

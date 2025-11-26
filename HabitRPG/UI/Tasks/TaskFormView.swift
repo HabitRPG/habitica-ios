@@ -10,6 +10,7 @@ import SwiftUI
 import Habitica_Models
 
 struct TaskFormView: View {
+    @ObservedObject var themeService = ThemeService.shared
     @Environment(\.presentationMode)
     var presentationMode
     @State private var isEditingText = false
@@ -53,9 +54,9 @@ struct TaskFormView: View {
     private var textFields: some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
-                Text(L10n.title).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingText ? .semibold : .regular)).padding(.leading, 8)
+                Text(L10n.title).foregroundStyle(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingText ? .semibold : .regular)).padding(.leading, 8)
                 if !viewModel.isTaskEditable {
-                    Image(uiImage: HabiticaIcons.imageOfLocked().withRenderingMode(.alwaysTemplate)).foregroundColor(viewModel.darkestTaskTintColor)
+                    Image(uiImage: HabiticaIcons.imageOfLocked().withRenderingMode(.alwaysTemplate)).foregroundStyle(viewModel.darkestTaskTintColor)
                 }
             }
             MultilineTextField("", text: $viewModel.text, onCommit: {
@@ -70,7 +71,7 @@ struct TaskFormView: View {
                 .cornerRadius(UIConstants.largeCornerRadius)
                 .disabled(!viewModel.isTaskEditable)
                 .opacity(viewModel.isTaskEditable ? 1.0 : 0.6)
-            Text(L10n.notes).foregroundColor(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingNotes ? .semibold : .regular)).padding(.leading, 8).padding(.top, 10)
+            Text(L10n.notes).foregroundStyle(viewModel.darkestTaskTintColor).font(.system(size: 13, weight: isEditingNotes ? .semibold : .regular)).padding(.leading, 8).padding(.top, 10)
             MultilineTextField("", text: $viewModel.notes, onEditingChanged: { isEditing in
                 isEditingNotes = isEditing
             },
@@ -82,7 +83,7 @@ struct TaskFormView: View {
                 .cornerRadius(UIConstants.largeCornerRadius)
         }.padding(.horizontal, 16)
         .padding(.vertical, 12)
-        .preferredColorScheme(ThemeService.shared.theme.isDark ? .dark : .light)
+        .preferredColorScheme(themeService.theme.isDark ? .dark : .light)
     }
     
     @ViewBuilder private var graphs: some View {
@@ -102,9 +103,9 @@ struct TaskFormView: View {
             Text(L10n.delete).frame(height: 45)
         }).buttonStyle { configuration in
             configuration.label
-                .foregroundColor(Color(ThemeService.shared.theme.errorColor))
+                .foregroundStyle(Color(themeService.theme.errorColor))
                 .padding(.horizontal, 14)
-                .frame(maxWidth: .infinity).background(Color(ThemeService.shared.theme.errorColor.withAlphaComponent(0.14)).cornerRadius(UIConstants.largeCornerRadius))
+                .frame(maxWidth: .infinity).background(Color(themeService.theme.errorColor.withAlphaComponent(0.14)).cornerRadius(UIConstants.largeCornerRadius))
         }
     }
     
@@ -139,7 +140,7 @@ struct TaskFormView: View {
     }
     
     var body: some View {
-        let theme = ThemeService.shared.theme
+        let theme = themeService.theme
         ScrollView {
             if viewModel.task == nil || viewModel.task?.isValid == true {
                 VStack {
@@ -191,7 +192,7 @@ struct TaskFormView: View {
                                     .fixedSize(horizontal: false, vertical: true)
                                     .multilineTextAlignment(.center)
                                     .padding(.horizontal, 16)
-                                    .foregroundColor(Color(ThemeService.shared.theme.quadTextColor))
+                                    .foregroundStyle(Color(theme.quadTextColor))
                                     .font(.caption)
                             }
                         }.padding(16).background(Color(theme.contentBackgroundColor).edgesIgnoringSafeArea(.bottom)).cornerRadius(UIConstants.largeCornerRadius)
@@ -200,7 +201,7 @@ struct TaskFormView: View {
             }
         }
         .scrollDismissesKeyboard(.immediately)
-        .accentColor(viewModel.taskTintColor)
+        .tint(viewModel.taskTintColor)
         .frame(maxHeight: .infinity)
         .background(Color(theme.contentBackgroundColor).edgesIgnoringSafeArea(.bottom).padding(.top, 200))
         .navigationBarTitle(navigationTitle)

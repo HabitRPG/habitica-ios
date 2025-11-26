@@ -199,10 +199,10 @@ struct NotificationResponseView: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            HabiticaButtonUI(label: Image(systemName: .xmark).foregroundColor(.red1), color: .red100, onTap: {
+            HabiticaButtonUI(label: Image(systemName: .xmark).foregroundStyle(.red1), color: .red100, onTap: {
                 
             })
-            HabiticaButtonUI(label: Image(systemName: .xmark).foregroundColor(.green1), color: .green100, onTap: {
+            HabiticaButtonUI(label: Image(systemName: .xmark).foregroundStyle(.green1), color: .green100, onTap: {
                 
             })
         }.scaledFont(size: 17, weight: .medium)
@@ -430,7 +430,7 @@ struct NotificationsPage: View {
                     LazyVStack(spacing: 8) {
                         ForEach(viewModel.notifications, id: \.id) { notification in
                             renderNotification(notification: notification)
-                                .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                                .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
                                 .padding(8)
                                 .background(Color(ThemeService.shared.theme.windowBackgroundColor))
                                 .cornerRadius(UIConstants.largeCornerRadius)
@@ -448,7 +448,7 @@ struct NotificationsPage: View {
                     Button {
                         viewModel.dismissAllNotifications()
                     } label: {
-                        Text(L10n.Notifications.dismissAll).foregroundColor(.accentColor)
+                        Text(L10n.Notifications.dismissAll).foregroundStyle(.tint)
                     }
                 }
             }

@@ -35,6 +35,7 @@ private class FeedSheetViewModel: ObservableObject {
 }
 
 struct FeedSheetView: View {
+    @ObservedObject var themeService = ThemeService.shared
     @Environment(\.presentationMode)
     var presentationMode
     @StateObject fileprivate var viewModel = FeedSheetViewModel()
@@ -47,9 +48,9 @@ struct FeedSheetView: View {
                 VStack(spacing: 2) {
                     Image(uiImage: Asset.Empty.food.image).padding(.bottom, 16)
                     Text(L10n.noX(L10n.food)).font(.system(size: 16, weight: .semibold)).multilineTextAlignment(.center)
-                        .foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                        .foregroundStyle(Color(themeService.theme.primaryTextColor))
                     Text(AttributedString(L10n.Items.Empty.foodDescription).withHighlightWords(words: L10n.Locations.market)).font(.system(size: 14)).multilineTextAlignment(.center)
-                        .foregroundColor(Color(ThemeService.shared.theme.ternaryTextColor))
+                        .foregroundStyle(Color(themeService.theme.ternaryTextColor))
                 }.padding(.horizontal, 48)
                     .onTapGesture {
                         presentationMode.dismiss()
@@ -79,9 +80,9 @@ struct FeedSheetView: View {
                 }, footer: {
                     VStack {
                         Image(uiImage: Asset.shop.image)
-                        Text(L10n.Items.footerFoodTitle).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
+                        Text(L10n.Items.footerFoodTitle).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(themeService.theme.secondaryTextColor))
                             .padding(.vertical, 1)
-                        Text(AttributedString(L10n.Items.footerFoodDescription).withHighlightWords(words: L10n.Locations.market)).font(.system(size: 14)).foregroundStyle(Color(ThemeService.shared.theme.ternaryTextColor))
+                        Text(AttributedString(L10n.Items.footerFoodDescription).withHighlightWords(words: L10n.Locations.market)).font(.system(size: 14)).foregroundStyle(Color(themeService.theme.ternaryTextColor))
                     }
                     .padding(.top, 16)
                     .multilineTextAlignment(.center)
@@ -90,11 +91,11 @@ struct FeedSheetView: View {
                         dismissParent?()
                         RouterHandler.shared.handle(.market)
                     }
-                }).listRowBackground(Color(ThemeService.shared.theme.windowBackgroundColor))
+                }).listRowBackground(Color(themeService.theme.windowBackgroundColor))
             }
         }
         .scrollContentBackground(.hidden)
-        .background(Color(ThemeService.shared.theme.contentBackgroundColor))
+        .background(Color(themeService.theme.contentBackgroundColor))
         .listStyle(.insetGrouped)
     }
 }

@@ -108,6 +108,7 @@ struct RotatingLinearGradient: View {
 }
 
 struct FaintView: View {
+    @ObservedObject var themeService = ThemeService.shared
     var onDismiss: (() -> Void)
     
     init() {
@@ -156,14 +157,14 @@ struct FaintView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 40)
             Text(viewModel.lossText)
-                .foregroundColor(.primaryTextColor)
+                .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 .font(.system(size: 20))
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 400)
                 .padding(.top, 12)
                 .padding(.horizontal, 40)
             Text(L10n.Faint.disclaimer)
-                .foregroundColor(.ternaryTextColor)
+                .foregroundStyle(Color(themeService.theme.ternaryTextColor))
                 .font(.system(size: 14))
                 .multilineTextAlignment(.center)
                 .padding(.top, 12)
@@ -196,7 +197,7 @@ struct FaintView: View {
                 if viewModel.isSubscribed {
                     if let nextUsage = viewModel.nextPerkUsage {
                         Text(L10n.Faint.subbedUsed(nextUsage.getShortRemainingString()))
-                            .foregroundColor(Color(ThemeService.shared.theme.isDark ? UIColor.teal500 : UIColor.teal1))
+                            .foregroundStyle(Color(themeService.theme.isDark ? UIColor.teal500 : UIColor.teal1))
                             .font(.system(size: 15, weight: .semibold))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 36)
@@ -218,20 +219,21 @@ struct FaintView: View {
                                     Text(L10n.Faint.subbedButtonPrompt)
                                 }
                             }
-                                .foregroundColor(Color(UIColor.green1))
+                                .foregroundStyle(Color(UIColor.green1))
                                 .font(.headline)
                                 .padding(.vertical, 6)
                                 .frame(minHeight: 60)
                                 .frame(maxWidth: .infinity)
                                 .background(LinearGradient(colors: gradientColors, startPoint: .leading, endPoint: .trailing))
-                                .overlay(RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius).stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
+                                .overlay(RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius)
+                                    .stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
                                 .cornerRadius(UIConstants.largeCornerRadius)
                         })
                         .frame(maxWidth: 600)
                         .padding(.horizontal, 24)
                         .padding(.bottom, 8)
                         Text(L10n.Faint.subbedFooter)
-                            .foregroundColor(Color(ThemeService.shared.theme.isDark ? UIColor.teal500 : UIColor.teal1))
+                            .foregroundStyle(Color(themeService.theme.isDark ? UIColor.teal500 : UIColor.teal1))
                             .font(.system(size: 15, weight: .semibold))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 36)

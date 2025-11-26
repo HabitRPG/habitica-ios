@@ -20,7 +20,7 @@ struct LoginScreenButtonStyle: ButtonStyle {
         configuration.label
             .frame(maxWidth: .infinity)
             .lineLimit(3)
-            .foregroundColor(.gray50)
+            .foregroundStyle(.gray50)
             .multilineTextAlignment(.center)
             .scaledFont(size: 17, weight: .semibold)
             .padding(.horizontal, 12)
@@ -43,20 +43,20 @@ struct LoginTextFieldStyle<Icon: View>: TextFieldStyle {
             if let prefix = prefix {
                 Text(prefix)
                     .scaledFont(size: 17)
-                    .foregroundColor(.purple500)
+                    .foregroundStyle(.purple500)
                     .padding(.trailing, 6)
             }
             configuration
             if isValid == true {
                 Image(Asset.checkmarkSmall.name)
-                    .foregroundColor(.green100)
+                    .foregroundStyle(.green100)
             } else if showError {
                 Image(Asset.close.name)
-                    .foregroundColor(.red100)
+                    .foregroundStyle(.red100)
             }
             icon
         }
-        .foregroundColor(Color.white)
+        .foregroundStyle(Color.white)
         .padding(.horizontal, 21)
         .padding(.vertical, 10)
         .minHeight(60)
@@ -106,7 +106,7 @@ struct LoginTextInput<Icon: View>: View {
                         isFocused = true
                     }
             } else {
-                TextField(placeholder, text: $text, prompt: Text(placeholder).foregroundColor(Color.purple500))
+                TextField(placeholder, text: $text, prompt: Text(placeholder).foregroundColor(.purple500))
                     .textFieldStyle(LoginTextFieldStyle(prefix: prefix, icon: icon, isValid: isValid, showError: showError))
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
@@ -119,7 +119,7 @@ struct LoginTextInput<Icon: View>: View {
                 Text(message)
                     .scaledFont(size: 15, weight: .semibold)
                     .padding(.bottom, 6)
-                    .foregroundColor(.red500)
+                    .foregroundStyle(.red500)
             }
         }.onChange(of: isFocused) { _ in
             lastFocusChange = Date()
@@ -244,7 +244,7 @@ struct LoginForm: View {
                 onPasswordForgot()
             } label: {
                 Text(L10n.Login.forgotPassword)
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
             }.padding(.top, 17)
         }
     }
@@ -411,7 +411,7 @@ struct LoginScreen: View {
                     }
                 } label: {
                     Image(systemName: "chevron.backward")
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                         .font(.headline.bold())
                         .padding()
                 }

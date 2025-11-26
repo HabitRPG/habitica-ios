@@ -73,6 +73,7 @@ class SendPartyInviteViewModel: ObservableObject {
 }
 
 struct InviteView: View {
+    @ObservedObject var themeService = ThemeService.shared
     @Binding var text: String
     let onDelete: () -> Void
     
@@ -89,27 +90,28 @@ struct InviteView: View {
             Button(action: {
                 onDelete()
             }, label: {
-                Image(systemName: .xmark).frame(width: 14, height: 14).foregroundColor(Color(ThemeService.shared.theme.primaryTextColor))
+                Image(systemName: .xmark).frame(width: 14, height: 14).foregroundStyle(Color(themeService.theme.primaryTextColor))
             }).frame(width: 30, height: 48)
             FocusableTextField(placeholder: "Username or email address", text: $text, isFirstResponder: $isFirstResponder).frame(height: 48)
-        }.background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(UIConstants.mediumCornerRadius))
+        }.background(Color(themeService.theme.windowBackgroundColor).cornerRadius(UIConstants.mediumCornerRadius))
         .transition(.opacity)
     }
 }
 
 struct SendPartyInviteView: View {
+    @ObservedObject var themeService = ThemeService.shared
     @ObservedObject var viewModel: SendPartyInviteViewModel
     @State var focusIndex: Int?
     
     var addButton: some View {
             HStack {
-                Image(systemName: .plus).frame(width: 16, height: 16).foregroundColor(Color(ThemeService.shared.theme.primaryTextColor)).width(30)
+                Image(systemName: .plus).frame(width: 16, height: 16).foregroundStyle(Color(themeService.theme.primaryTextColor)).width(30)
                 Text("Username or email address").font(.system(size: 17))
-                    .foregroundColor(Color(ThemeService.shared.theme.dimmedTextColor))
+                    .foregroundStyle(Color(ThemeService.shared.theme.dimmedTextColor))
                     .font(.body)
             }
             .frame(maxWidth: .infinity, alignment: .leading).frame(height: 48)
-            .background(Color(ThemeService.shared.theme.windowBackgroundColor).cornerRadius(UIConstants.mediumCornerRadius)).onTapGesture {
+            .background(Color(themeService.theme.windowBackgroundColor).cornerRadius(UIConstants.mediumCornerRadius)).onTapGesture {
                 viewModel.invites.append("")
                 focusIndex = viewModel.invites.count - 1
             }
@@ -154,7 +156,7 @@ struct SendPartyInviteView: View {
                 Text("If an email isn't registered yet, we'll invite them to join Habitica.")
                     .multilineTextAlignment(.center)
                     .font(.system(size: 14))
-                    .foregroundColor(Color(ThemeService.shared.theme.secondaryTextColor))
+                    .foregroundStyle(Color(themeService.theme.secondaryTextColor))
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
             .padding(14)

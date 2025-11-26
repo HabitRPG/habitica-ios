@@ -249,6 +249,7 @@
 		2973E26A2ED5F57B000C2E0F /* FormSheetSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2973E2692ED5F57B000C2E0F /* FormSheetSelector.swift */; };
 		2973E26C2ED5F580000C2E0F /* FormTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2973E26B2ED5F580000C2E0F /* FormTextFieldStyle.swift */; };
 		2973E26E2ED6154E000C2E0F /* BulkPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2973E26D2ED6154E000C2E0F /* BulkPurchaseView.swift */; };
+		2973E2702ED71F2D000C2E0F /* View-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2973E26F2ED71F2A000C2E0F /* View-Extensions.swift */; };
 		2974BD91208DEFEA00EC1A25 /* CustomizationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */; };
 		2974BDAD208F68A800EC1A25 /* CustomizationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */; };
 		2974BDB42090926B00EC1A25 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDB32090926B00EC1A25 /* MainTabBarController.swift */; };
@@ -393,7 +394,6 @@
 		29C38C8524A2466400F219A1 /* AdventureGuidePromoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8424A2466400F219A1 /* AdventureGuidePromoView.swift */; };
 		29C38C8724A256F800F219A1 /* AdventureGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8624A256F800F219A1 /* AdventureGuideViewController.swift */; };
 		29C38C8924A33E6600F219A1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8824A33E6600F219A1 /* NotificationManager.swift */; };
-		29C38C8B24A48F9D00F219A1 /* AchievementAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8A24A48F9D00F219A1 /* AchievementAlertController.swift */; };
 		29C55B302C21A1CB008F553A /* iOSSnapshotTestCase in Frameworks */ = {isa = PBXBuildFile; productRef = 29C55B2F2C21A1CB008F553A /* iOSSnapshotTestCase */; };
 		29C55B352C21A419008F553A /* CwlCatchException in Frameworks */ = {isa = PBXBuildFile; productRef = 29C55B342C21A419008F553A /* CwlCatchException */; };
 		29C55B372C21AEC4008F553A /* CwlCatchException in Frameworks */ = {isa = PBXBuildFile; productRef = 29C55B362C21AEC4008F553A /* CwlCatchException */; };
@@ -946,6 +946,7 @@
 		2973E2692ED5F57B000C2E0F /* FormSheetSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSheetSelector.swift; sourceTree = "<group>"; };
 		2973E26B2ED5F580000C2E0F /* FormTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextFieldStyle.swift; sourceTree = "<group>"; };
 		2973E26D2ED6154E000C2E0F /* BulkPurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkPurchaseView.swift; sourceTree = "<group>"; };
+		2973E26F2ED71F2A000C2E0F /* View-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View-Extensions.swift"; sourceTree = "<group>"; };
 		2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationDetailCell.swift; sourceTree = "<group>"; };
 		2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationHeaderView.swift; sourceTree = "<group>"; };
 		2974BDB32090926B00EC1A25 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -1096,7 +1097,6 @@
 		29C38C8424A2466400F219A1 /* AdventureGuidePromoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventureGuidePromoView.swift; sourceTree = "<group>"; };
 		29C38C8624A256F800F219A1 /* AdventureGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventureGuideViewController.swift; sourceTree = "<group>"; };
 		29C38C8824A33E6600F219A1 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		29C38C8A24A48F9D00F219A1 /* AchievementAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementAlertController.swift; sourceTree = "<group>"; };
 		29C5A72B22F08C010083749D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		29C600A120F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		29C9BDDC2E9EA21000FC4FCA /* HabiticaButtonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaButtonUI.swift; sourceTree = "<group>"; };
@@ -1683,7 +1683,6 @@
 		2967CF7E252479C400F366DF /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
-				29C38C8A24A48F9D00F219A1 /* AchievementAlertController.swift */,
 				29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */,
 				29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */,
 				29A9038726EA33A400442B93 /* FlagInformationOverlayView.swift */,
@@ -2250,9 +2249,7 @@
 		D95704371E106BF3004F6804 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				299336F02E8BE37300ADB6BA /* Identifiable.swift */,
-				29E96B522E16929C00D9EF25 /* Font-Extensions.swift */,
-				29737EEE2D38054C00480353 /* NSRange-Extensions.swift */,
+				2973E26F2ED71F2A000C2E0F /* View-Extensions.swift */,
 				29D50AD025F769520009CF55 /* Alignment-Extensions.swift */,
 				2909D42D2726ACBD00FF2B29 /* Binding-Extensions.swift */,
 				29255E4C1F3E25910094A3E3 /* CGRect-Extensions.swift */,
@@ -2263,9 +2260,12 @@
 				D9BB45581E71AFAF0002AE2E /* Down-Extensions.swift */,
 				2959BC83275E1BDE005EE62D /* EditingFormViewController-Extensions.swift */,
 				D95704421E1528F2004F6804 /* Event-Extensions.swift */,
+				29E96B522E16929C00D9EF25 /* Font-Extensions.swift */,
+				299336F02E8BE37300ADB6BA /* Identifiable.swift */,
 				29A06E1C23ED4125003BADE9 /* InAppRewardProtocol-Extensions.swift */,
 				291448872088F3F700F3A6B5 /* NSAttributedString.swift */,
 				29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */,
+				29737EEE2D38054C00480353 /* NSRange-Extensions.swift */,
 				29FC885B2018D47D002B3D3F /* Quest-Extensions.swift */,
 				29F89F191F47882A004E5B84 /* String-Extensions.swift */,
 				29A4CB70257FF3150013F0B3 /* String-SafeExtensions.swift */,
@@ -3573,6 +3573,7 @@
 				49005B721F180589004830D9 /* CurrencyCountView.swift in Sources */,
 				299FB29F2084A8FD00422522 /* StableSplitViewController.swift in Sources */,
 				295D42F620921F4200948E7E /* ClassSelectionViewController.swift in Sources */,
+				2973E2702ED71F2D000C2E0F /* View-Extensions.swift in Sources */,
 				C897F640218CE054002907C2 /* Storyboard Segues.swift in Sources */,
 				291CE4B6231E828E0001A243 /* UIColor-Habitica.swift in Sources */,
 				4994065A20C83D4F0084CC40 /* DailyTableViewController.swift in Sources */,
@@ -3762,7 +3763,6 @@
 				299BD6371F5457E100E22935 /* HabiticaIcons.swift in Sources */,
 				29706C8927D23C82006EC139 /* SpellViewController.swift in Sources */,
 				498E4CFB1FA17B9E006933FF /* ChallengeCreatorTableViewCell.swift in Sources */,
-				29C38C8B24A48F9D00F219A1 /* AchievementAlertController.swift in Sources */,
 				292726B620B7094B009DD08A /* ChallengeTableViewDataSource.swift in Sources */,
 				29F177FB2AB85D66008B8F0C /* StableBackgroundView.swift in Sources */,
 				299FB2A72084B44000422522 /* PetOverviewDataSource.swift in Sources */,
