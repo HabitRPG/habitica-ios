@@ -459,7 +459,7 @@
 "hatch_egg" = "孵化这个蛋";
 "hatch_potion" = "使用孵化药水";
 "share" = "分享";
-"inventory.hatched" = "你孵化出一只新宠物！";
+"inventory.hatched" = "你孵化出一只新 %s 宠物！";
 "stable.standard_pets" = "基础宠物";
 "stable.standard_mounts" = "基础坐骑";
 "stable.standard" = "基础";
@@ -785,7 +785,7 @@
 "send_gift" = "赠送礼物";
 "gift_one_get_one_title" = "赠一得一";
 "gift_one_get_one_description" = "现在赠送一份订阅，你也将免费获得一份相同的订阅！";
-"gems_support_developers" = "购买订阅支持我们，帮助Habitica运作";
+"gems_support_developers" = "购买宝石为Habitica小型团队提供有力支持！";
 "gem_benefits_title" = "宝石可用于购买更多小玩意，包括：";
 "buy_for_x" = "花费%@购买";
 "moderator" = "版主";
@@ -1006,7 +1006,7 @@
 "view_onboarding_tasks" = "查看新手任务";
 "first_drop_title" = "你找到了新物品！";
 "go_to_items" = "前往物品栏";
-"first_drop_explanation2" = "前往物品栏，尝试使用孵化药水孵化你新获得的宠物蛋！";
+"first_drop_explanation2" = "尝试使用孵化药水孵化你新获得的宠物蛋！";
 "first_drop_explanation1" = "完成任务有概率掉落宠物蛋、孵化药水和宠物食物。";
 "view_achievements" = "查看成就";
 "you_got_achievement" = "你获得了一项成就！";
@@ -1481,7 +1481,7 @@
 "subscription.stay_motivated_with_more_rewards" = "订阅以获得更多激励奖品";
 "gift_one_get_one_description_date" = "赠一得一活动持续至%@";
 "class_change_confirm_description" = "此操作将切换商店中已解锁的装备、变更可用技能，并重置属性点数。";
-"class_change_success_description" = "你现在可以使用%@技能并在商店中购买装备。升级时获得的属性点数可以用于强化你的技能。";
+"class_change_success_description" = "每升一级即可获得一个属性点，用于强化技能，提升你在Habitica的游戏体验";
 "subscription.thanks_for_subscribing" = "感谢订阅";
 "subscription.enjoy_these_benefits" = "享受你的订阅者专属奖励";
 "subscription.subscribers_receive" = "订阅者特权：每月前两日将获得一个神秘沙漏，一组神秘装备套装，并且商店中可兑换的宝石也将更新";
@@ -1575,3 +1575,14 @@
 "item_is_locked" = "物品已被锁定";
 "edit_tags" = "编辑标签";
 "add_tag" = "添加标签";
+"unlocked_another_checkin_prize" = "你已解锁又一签到奖励！";
+"checkin_prize_description" = "因致力于改善生活，你获得了 %s";
+"class_system_unlocked" = "已解锁职业系统";
+"class_system_unlocked_description" = "选择适合你游戏风格的职业，解锁专属技能与护甲，伴您一路前行";
+"class_change_success_subtitle" = "现在可以分配属性点了";
+"view_stats" = "查看属性";
+"find_stats_menu" = "你可随时在菜单中查看属性";
+"go_to_pets_mounts" = "前往宠物与坐骑";
+"not_now" = "稍后";
+"undo" = "撤销";
+"assigned_stat" = "已分配属性";

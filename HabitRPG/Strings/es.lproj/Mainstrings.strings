@@ -137,7 +137,7 @@
 /* (No Comment) */
 "inventory.available_until" = "Disponible hasta %@";
 /* (No Comment) */
-"inventory.hatched" = "¡Has eclosionado una nueva mascota!";
+"inventory.hatched" = "¡Has eclosionado una nueva mascota %s!";
 /* (No Comment) */
 "inventory.no_gems_left" = "Has comprado todas las Gemas que podías este mes. Habrá más disponibles a partir de los primeros tres días de cada mes. ¡Gracias por suscribirte!";
 /* (No Comment) */
@@ -921,7 +921,7 @@
 "send_gift" = "Enviar Regalo";
 "gift_one_get_one_title" = "Regala uno, obtén uno";
 "gift_one_get_one_description" = "¡Regala una suscripción ahora y tú tendrás la misma suscripción para ti gratis!";
-"gems_support_developers" = "Adquirir gemas sirve para apoyar nuestro pequeño equipo y ayuda a mantener Habitica";
+"gems_support_developers" = "¡Adquirir gemas sirve para apoyar nuestro pequeño equipo en Habitica!";
 "buy_for_x" = "Comprar por %@";
 "earned_achievement_share" = "¡Conseguí un nuevo logro en Habitica!";
 "invalid_recipient_message" = "Debes especificar un Nombre de Usuario válido como receptor.";
@@ -1184,7 +1184,7 @@
 "adventure_guide_description" = "¡Completa estas tareas de incorporación y obtendrás 5 logros y 100 monedas de oro cuando acabes!";
 "inventory.hatched_sharing" = "¡Acabo de eclosionar la mascota %@ %@ en Habitica completando mis tareas de la vida real!";
 "five_achievements" = "5 logros";
-"first_drop_explanation2" = "¡Dirígete a tus objetos para tratar de combinar tu nuevo huevo con una poción de eclosión!";
+"first_drop_explanation2" = "¡Trata de combinar tu nuevo huevo con una poción de eclosión!";
 "triadBingoDescription" = "¡Obtuviste el logro \"Tríada de bingo\" por encontrar todas las mascotas, amaestrar todas las monturas y encontrar todas las mascotas otra vez!";
 "quests.confirm_leave" = "¿Seguro que quieres abandonar la misión? Todo tu progreso se perderá.";
 "completedTaskDescription" = "Una tarea puede ser un hábito, tarea diaria o tarea pendiente. ¡Continúa completándolos todos para recibir todo tipo de recompensas!";
@@ -1595,7 +1595,7 @@
 "class_change_success_title" = "¡Eres un %@!";
 "got_it" = "¡Ya lo tienes!";
 "open_stats" = "Abrir Estadísticas";
-"class_change_success_description" = "A partir de ahora puedes usar las habilidades de %@ y comprar el equipamiento específico en las tiendas. Sube de nivel para obtener puntos de atributo para potenciar tus características.";
+"class_change_success_description" = "Por cada nivel obtienes un punto de atributo para potenciar tus Habilidades y interactuar de esa manera con los aspectos jugables de Habitica";
 "two_gems_per_month" = "+2 Gemas cada mes";
 "max_gem_cap" = "Máxima Capacidad de Gemas";
 "subscription_info_3_description_gear" = "Mantente a la moda con lo último en equipamiento exclusivo. ¡Suscríbete ahora para obtener %@ de %@!";
@@ -1689,3 +1689,14 @@
 "item_is_locked" = "El artículo está bloqueado";
 "edit_tags" = "Editar Etiquetas";
 "add_tag" = "Añadir Etiqueta";
+"class_system_unlocked_description" = "Elige una clase que se ajuste a tu estilo de juego y desbloquea las habilidades especiales y armadura que te ayudarán en tu viaje";
+"unlocked_another_checkin_prize" = "¡Has desbloqueado otro premio al acceder!";
+"checkin_prize_description" = "Has obtenido un %s por estar comprometido a mejorar tu vida";
+"class_system_unlocked" = "Sistema de clases desbloqueado";
+"class_change_success_subtitle" = "Ahora ya puedes distribuir tus puntos";
+"go_to_pets_mounts" = "Ir a Mascotas y Monturas";
+"not_now" = "No ahora mismo";
+"undo" = "Deshacer";
+"assigned_stat" = "Atributo Asignado";
+"find_stats_menu" = "Puedes encontrar los atributos en cualquier momento en el Menú";
+"view_stats" = "Ver los Atributos";
