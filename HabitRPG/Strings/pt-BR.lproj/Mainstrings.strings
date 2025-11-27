@@ -137,7 +137,7 @@
 /* (No Comment) */
 "inventory.available_until" = "Disponível até %@";
 /* (No Comment) */
-"inventory.hatched" = "Você chocou um novo mascote!";
+"inventory.hatched" = "Você chocou um novo %s mascote!";
 /* (No Comment) */
 "inventory.no_gems_left" = "Você comprou todas as Gemas disponíveis deste mês. Mais ficarão disponíveis nos três primeiros dias de cada mês. Obrigado por assinar!";
 /* (No Comment) */
@@ -920,7 +920,7 @@
 "send_gift" = "Enviar presente";
 "gift_one_get_one_title" = "Presenteie uma, Ganhe outra";
 "gift_one_get_one_description" = "Dê uma assinatura de presente agora e você receberá a mesma assinatura de graça!";
-"gems_support_developers" = "Comprar Gemas apoia nossa pequena equipe e ajuda a manter o Habitica em execução";
+"gems_support_developers" = "Comprar Gemas apoia nossa pequena equipe do Habitica!";
 "buy_for_x" = "Compre por %@";
 "earned_achievement_share" = "Eu ganhei uma nova conquista em Habitica!";
 "invalid_recipient_message" = "Você precisa especificar um nome de usuário Habitica válido como destinatário.";
@@ -1122,7 +1122,7 @@
 "view_onboarding_tasks" = "Exibir tarefas de integração";
 "first_drop_title" = "Você encontrou novos itens!";
 "go_to_items" = "Ir para Itens";
-"first_drop_explanation2" = "Vá para os seus Itens e tente combinar seu novo Ovo e Poção de Eclosão!";
+"first_drop_explanation2" = "Tente combinar seu novo Ovo e Poção de Eclosão!";
 "first_drop_explanation1" = "A conclusão de tarefas dá a você a chance de encontrar Ovos, Poções de Eclosão e Comida para mascotes.";
 "view_achievements" = "Visualizar Conquistas";
 "you_got_achievement" = "Você ganhou uma Conquista!";
@@ -1632,7 +1632,7 @@
 "performance_analytics" = "Desempenho e Análises";
 "performance_analytics_description" = "Isso é usado para melhorar a experiência do usuário, o desempenho e os serviços do Habitica. Nossa equipe de suporte também usará isso para lidar com solicitações e relatórios de bugs.";
 "strictly_necessary_description" = "Estes são dados necessários para o funcionamento do nosso aplicativo. Inclui dados como suas preferências salvas nas configurações, bem como informações sobre falhas.";
-"class_change_success_description" = "Agora você pode usar as habilidades de %@ e comprar equipamentos em lojas. Suba de nível para ganhar pontos de atributos que podem ser usados para aprimorar suas habilidades.";
+"class_change_success_description" = "Todo nível você ganha pontos de atributo que você pode usar para melhorar suas habilidades e impactar o jogabilidade do Habitica";
 "login.password_length_error" = "A senha precisa ter 8 ou mais caracteres.";
 "login.tagline" = "Divirta-se realizando tarefas";
 "login.continue_with_apple" = "Continue com Apple";
@@ -1688,3 +1688,14 @@
 "item_is_locked" = "Item está bloqueado";
 "edit_tags" = "Editar Etiquetas";
 "add_tag" = "Adicionar Etiqueta";
+"unlocked_another_checkin_prize" = "Você desbloqueou um novo premio de check-in!";
+"checkin_prize_description" = "Você ganhou um %s por ter se comprometido em melhorar sua vida";
+"class_system_unlocked" = "Sistema de classes desbloqueado";
+"class_system_unlocked_description" = "Escolha a classe que se encaixa em seu estilo de jogo e desbloqueie habilidades e equipamentos que te ajudarão em sua jornada";
+"class_change_success_subtitle" = "Você pode alocar atributos";
+"view_stats" = "Ver atributos";
+"find_stats_menu" = "Você pode encontrar os atributos a qualquer momento no menu";
+"go_to_pets_mounts" = "Ir para pets e montarias";
+"not_now" = "Agora não";
+"undo" = "Desfazer";
+"assigned_stat" = "Atributo atribuído";

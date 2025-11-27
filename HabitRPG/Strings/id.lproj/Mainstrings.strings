@@ -531,7 +531,7 @@
 "stable.quest_mounts" = "Tunggangan Misi";
 "settings.api_disclaimer" = "Token sandi untuk pengembang dan alat pihak ketiga";
 "social.x_members" = "Anggota %s";
-"inventory.hatched" = "Kamu menetaskan peliharaan baru!";
+"inventory.hatched" = "Kamu menetaskan peliharaan %s baru!";
 "unequip" = "Lepaskan";
 "social.x_description" = "Deskripsi %s";
 "inventory.hatched_sharing" = "Saya baru saja menetaskan seekor %@ %@ di Habitica dengan menyelesaikan tugas kehidupan nyata!";
@@ -637,7 +637,7 @@
 "about.export_database" = "Ekspor Database";
 "about.no_email_title" = "Email belum disiapkan";
 "damage_paused" = "Damage Ditunda";
-"login.password_confirm_error" = "Kata sandi dan konfirmasi kata sandi harus cocok dan lebih dari 8 karakter.";
+"login.password_confirm_error" = "Kata sandi dan konfirmasi kata sandi harus cocok.";
 "login.email_invalid" = "Silakan masukkan email yang valid.";
 "login.register_error" = "Ada masalah dengan permintaan tersebut. Harap periksa semua data dengan cermat.";
 "login.authentication_error" = "Terjadi kesalahan dengan otentikasi. Coba lagi nanti";
@@ -743,9 +743,9 @@
 "armoire.drop_rate" = "Tingkat perolehan dari Peti Ajaib";
 "armoire.enchanted_armoire_drop_rates" = "Tingkat perolehan dari Peti Ajaib";
 "active" = "Aktif";
-"unsubscribe_itunes" = "Tidak ingin berlangganan lagi? Kamu dapat mengelola langganan melalui ID Apple di Pengaturan perangkat.";
+"unsubscribe_itunes" = "Mau mengganti durasi langganan, atau batalkan langganan sekaligus? Kamu dapat menyunting atau membatalkan langgananmu melalui aplikasi Pengaturan dan melihat langganan Apple ID kamu. Sisa bulan kredit langganan akan ditambahkan ke tanggal berakhirmu setelah pembatalan.";
 "levelup_description" = "Dengan menyelesaikan tujuan hidupmu, kamu naik level dan sekarang sepenuhnya pulih!";
-"unsubscribe_google" = "Tidak ingin berlangganan lagi? Dikarenakan metode pembayaranmu, kamu hanya dapat berhenti berlangganan melalui Google Play Store.";
+"unsubscribe_google" = "Tidak ingin berlangganan lagi? Dikarenakan metode pembayaranmu, kamu hanya dapat berhenti berlangganan melalui Google Play Store. Sisa bulan kredit langganan akan ditambahkan ke tanggal berakhirmu setelah pembatalan.";
 "groups.invite.invitation_type" = "Jenis Undangan";
 "event_backgrounds" = "Latar belakang Even";
 "levelup_title" = "Kamu Telah Mencapai Level %ld!";
@@ -1365,3 +1365,12 @@
 "privacy_preferences_full_description" = "Privasimu berarti bagi kami.Habitica menggunakan data dari perangkatmu untuk menganalisis performa, menangani permintaan dukungan, dan memberikan pengalaman gamifikasi terbaik untukmu. Untuk melakukan itu, kami perlu meminta izin berikut.\n\nKamu dapat mengubah izin ini kapan saja melalui pengaturan akunmu.";
 "performance_analytics_description" = "Ini digunakan untuk meningkatkan pengalaman pemain, performa, dan layanan Habitica.\nTim dukungan kami juga akan menggunakan data ini saat menangani permintaan dan laporan bug.";
 "strictly_necessary" = "Sangat diperlukan";
+"logins" = "Jumlah Masuk";
+"login.tagline" = "Nikmati keseruan sambil menyelesaikan berbagai tugas";
+"login.continue_with_apple" = "Lanjutkan dengan Apple";
+"login.password_length_error" = "Kata sandi harus terdiri dari 8 karater atau lebih.";
+"party.quest_participant_one" = "1 Peserta";
+"subscription_credit_title" = "Credit Langganan **%d months**mu akan diaktifasi setelah membatalkan";
+"strictly_necessary_description" = "Data penting ini diperlukan oleh aplikasi kami agar dapat berfungsi. Ini termasuk data seperti preferensimu di pengaturan serta informasi tentang crash.";
+"pet" = "Hewan Peliharaan";
+"mount" = "Tunggangan";
