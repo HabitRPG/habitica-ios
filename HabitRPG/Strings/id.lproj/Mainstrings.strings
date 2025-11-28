@@ -574,7 +574,7 @@
 "x_months" = "%d Bulan";
 "open_itunes" = "Buka Langganan ID Apple";
 "open_app_store" = "Buka Halaman App Store";
-"unsubscribe_website" = "Tidak ingin berlangganan lagi? Dikarenakan metode pembayaranmu, kamu hanya dapat berhenti berlangganan melalui situs web.";
+"unsubscribe_website" = "Tidak ingin berlangganan lagi? Dikarenakan metode pembayaranmu, kamu hanya dapat berhenti berlangganan melalui situs web. Untuk melakukan ini, ketuk tombol dibawah, masuk ke akunmu, ketuk ikon pemain di kanan atas, lalu pergi ke bagian Langganan. Sisa kredit langganan bulan akan ditambahkan pada akhir tanggal setelah pembatalan. Kami akan merindukanmu!";
 "group_plan" = "Paket Grup";
 "member_group_plan" = "Anggota Paket Grup";
 "open_website" = "Buka Situs Habitica";
@@ -1374,3 +1374,7 @@
 "strictly_necessary_description" = "Data penting ini diperlukan oleh aplikasi kami agar dapat berfungsi. Ini termasuk data seperti preferensimu di pengaturan serta informasi tentang crash.";
 "pet" = "Hewan Peliharaan";
 "mount" = "Tunggangan";
+"login.continue_with_google" = "Lanjutkan dengan Google";
+"login.continue_with_email" = "Lanjutkan dengan email";
+"login.already_have_account" = "Sudah punya akun?";
+"login.need_account" = "Butuh akun?";
