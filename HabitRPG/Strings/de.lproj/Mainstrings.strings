@@ -143,7 +143,7 @@
 /* (No Comment) */
 "inventory.available_until" = "Verfügbar bis %@";
 /* (No Comment) */
-"inventory.hatched" = "Du hast ein neues Haustier ausgebrütet!";
+"inventory.hatched" = "Du hast ein neues %s Haustier ausgebrütet!";
 /* (No Comment) */
 "inventory.no_gems_left" = "Du hast alle Edelsteine erworben, die Du in diesem Monat kaufen kannst. Mehr werden in den ersten drei Tagen jedes Monats verfügbar sein. Danke für Dein Abonnement!";
 /* (No Comment) */
@@ -964,7 +964,7 @@
 "invalid_recipient_message" = "Du musst einen gültigen Habitica-Benutzernamen als Empfänger angeben.";
 "earned_achievement_share" = "Ich habe in Habitica einen neuen Erfolg verdient!";
 "buy_for_x" = "Kaufe für %@";
-"gems_support_developers" = "Der Erwerb von Edelsteinen unterstützt unser kleines Team und hilft Habitica am Laufen zu halten";
+"gems_support_developers" = "Der Erwerb von Edelsteinen unterstützt unser kleines Team bei Habitica!";
 "gift_one_get_one_title" = "Verschenk' Eins, Bekomm' Eins";
 "send_gift" = "Geschenk schicken";
 "subscribe" = "Abonnieren";
@@ -1128,7 +1128,7 @@
 "view_onboarding_tasks" = "Einstiegsaufgaben ansehen";
 "first_drop_title" = "Du hast neue Gegenstände gefunden!";
 "go_to_items" = "Zu Gegenständen gehen";
-"first_drop_explanation2" = "Schau in Deinen Gegenständen nach und versuche, ein Schlüpfelixier mit einem Ei zu kombinieren!";
+"first_drop_explanation2" = "Versuche dein neues Ei mit einem Schlüpfelixier zu kombinieren!";
 "first_drop_explanation1" = "Durch das Abschließen von Aufgaben erhältst Du die Chance, Gegenstände wie etwa Eier, Schlüpfelixiere und Futter zu finden.";
 "view_achievements" = "Erfolge ansehen";
 "you_got_achievement" = "Du hast einen Erfolg erzielt!";
@@ -1630,7 +1630,7 @@
 "quest_mechanics_boss_description" = "Erledige jede Art von Aufgabe oder setze Fähigkeiten ein, um ausstehenden Schaden anzuhäufen! Der Schaden wird am nächsten Tag zugefügt. Die Stärke beeinflusst, wie viel Schaden du anrichtest.";
 "quest_mechanics_rage_title" = "Raserei-Balken";
 "quest_mechanics_collecting_description" = "Erledige bei einer Sammelquest deine Aufgaben, um eine zufällige Chance zu haben, einen Questgegenstand zu finden. Ausstehende Gegenstände werden beim Reset am nächsten Tag übernommen. Wahrnehmung erhöht deine Chancen.";
-"class_change_success_description" = "Du kannst nun deine Fertigkeit %@ verwenden und Ausrüstungen im Shop erwerben. Erhöhe dein Level, um Punkte für die Aufwertung deiner Fertigkeiten zu erhalten.";
+"class_change_success_description" = "Mit jedem Level erhältst du einen Attributspunkt, den du nutzen kannst, um deine Fähigkeiten zu verstärken und die spielerischen Aspekte von Habitica zu beeinflussen";
 "quest_mechanics_collecting_title" = "Questgegenstände sammeln";
 "quest_mechanics_damage_description" = "Der Bossschaden wird jedes Mal berechnet, wenn ein Mitglied der Party im Laufe des Tages eincheckt. Dieser Schaden wird angewandt, wenn du das nächste Mal eine Aktion ausführst, die mit dem Server synchronisiert wird. Der Boss-Schaden wird im Chat eurer Party aufgezeichnet.";
 "quest_mechanics_pausing_title" = "Schaden aussetzen";
@@ -1701,3 +1701,14 @@
 "item_is_locked" = "Gegenstand gesperrt";
 "edit_tags" = "Tags Bearbeiten";
 "add_tag" = "Tag hinzufügen";
+"unlocked_another_checkin_prize" = "Du hast eine weitere Check-In-Belohnung freigeschaltet!";
+"checkin_prize_description" = "Du hast %s erhalten, da du dich stark engagiert hast dein Leben zu verbessern";
+"class_system_unlocked" = "Klassen-System freigeschaltet";
+"class_system_unlocked_description" = "Wähle eine Klasse die zu deinem Spielstil passt und schalte spezielle Fähigkeiten frei die dir auf deinem Weg helfen";
+"class_change_success_subtitle" = "Du kannst jetzt Werte vergeben";
+"view_stats" = "Werte ansehen";
+"find_stats_menu" = "Du kannst die Werte jederzeit in Menü finden";
+"go_to_pets_mounts" = "Zu den Haus- und Reittieren gehen";
+"not_now" = "Jetzt nicht";
+"undo" = "Rückgängig";
+"assigned_stat" = "Statuswert zugewiesen";
