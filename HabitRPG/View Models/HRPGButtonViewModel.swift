@@ -38,7 +38,7 @@ class HRPGButtonViewModel {
     
     private func observeValues() {
         attributeProvider?.bgColorSignal.observeValues({ [weak self] (color) in
-            self?.button?.backgroundColor = color
+            self?.button?.tintColor = color
         })
         
         attributeProvider?.titleSignal.observeValues({ [weak self] (title) in

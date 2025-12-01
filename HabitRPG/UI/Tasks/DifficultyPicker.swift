@@ -11,6 +11,7 @@ import Habitica_Models
 struct DifficultyPicker: View {
     @ObservedObject var themeService = ThemeService.shared
     @Binding var selectedDifficulty: Float
+    var tintColor: Color = .accentColor
         
     private let difficulties: [Float] = [
         0.1,
@@ -74,7 +75,7 @@ struct DifficultyPicker: View {
                 if #available(iOS 26.0, *) {
                     RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius)
                         .foregroundStyle(.clear)
-                        .glassEffect(.regular.tint(Color(theme.tintColor)), in: RoundedRectangle(cornerRadius: UIConstants.mediumCornerRadius))
+                        .glassEffect(.regular.tint(tintColor), in: RoundedRectangle(cornerRadius: UIConstants.mediumCornerRadius))
                         .frame(width: 57, height: 57)
                         .padding(.leading, offset)
                         .animation(.spring(), value: selectedDifficulty)

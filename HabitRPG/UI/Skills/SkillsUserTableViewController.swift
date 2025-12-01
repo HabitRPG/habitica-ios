@@ -9,7 +9,7 @@
 import UIKit
 import Habitica_Models
 
-class SkillsUserTableViewController: UITableViewController {
+class SkillsUserTableViewController: UITableViewController, Themeable {
     
     private let datasource = SkillsUserTableViewDataSource()
     
@@ -24,6 +24,7 @@ class SkillsUserTableViewController: UITableViewController {
         cancelButton.title = L10n.cancel
         
         navigationItem.title = L10n.Titles.chooseUser
+        ThemeService.shared.addThemeable(themable: self)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -31,5 +32,9 @@ class SkillsUserTableViewController: UITableViewController {
             selectedUserID = member.id
         }
         perform(segue: StoryboardSegue.Main.castUserSpellSegue)
+    }
+    
+    func applyTheme(theme: any Theme) {
+        tableView.backgroundColor = theme.contentBackgroundColor
     }
 }

@@ -87,18 +87,28 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         knownIssuesTitleLabel.textColor = theme.quadTextColor
+        knownIssuesTitleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 13, ofWeight: .semibold)
         commonFixesTitleLabel.textColor = theme.quadTextColor
+        commonFixesTitleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 13, ofWeight: .semibold)
         clearCacheBackground.backgroundColor = theme.windowBackgroundColor
         clearCacheTitleLabel.textColor = theme.primaryTextColor
+        clearCacheTitleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
         clearCacheDescriptionLabel.textColor = theme.ternaryTextColor
+        clearCacheDescriptionLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17)
         manualSyncBackground.backgroundColor = theme.windowBackgroundColor
         manualSyncTitleLabel.textColor = theme.primaryTextColor
+        manualSyncTitleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
         manualSyncDescriptionLabel.textColor = theme.ternaryTextColor
+        manualSyncDescriptionLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17)
         updateAppBackground.backgroundColor = theme.windowBackgroundColor
         updateAppTitleLabel.textColor = theme.primaryTextColor
+        updateAppTitleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
         updateAppDescriptionLabel.textColor = theme.ternaryTextColor
+        updateAppDescriptionLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17)
         moreHelpTitleLabel.textColor = theme.primaryTextColor
+        moreHelpTitleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
         moreHelpDescriptionLabel.textColor = theme.ternaryTextColor
+        moreHelpDescriptionLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17)
         moreHelpButton.tintColor = theme.fixedTintColor
         moreHelpButton.setTitleColor(theme.lightTextColor, for: .normal)
         knownIssuesBackground.backgroundColor = theme.windowBackgroundColor

@@ -52,9 +52,14 @@ class DoubleButtonMultiModelDataSourceItem: ConcreteMultiModelDataSourceItem<Dou
     
     override func configureCell(_ cell: UITableViewCell, userID: String?) {
         if let buttonCell = cell as? DoubleButtonTableViewCell {
+            buttonCell.contentView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+            buttonCell.contentView.clipsToBounds = false
+            buttonCell.clipsToBounds = false
+            buttonCell.leftButton.titleLabel?.textAlignment = .center
             buttonCell.leftButtonViewModel.attributeProvider = leftAttributeProvider
             buttonCell.leftModelInputs = leftInputs
             
+            buttonCell.rightButton.titleLabel?.textAlignment = .center
             buttonCell.rightButtonViewModel.attributeProvider = rightAttributeProvider
             buttonCell.rightModelInputs = rightInputs
         }

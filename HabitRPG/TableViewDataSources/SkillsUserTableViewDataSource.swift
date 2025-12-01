@@ -43,6 +43,7 @@ class SkillsUserTableViewDataSource: BaseReactiveTableViewDataSource<MemberProto
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         if let member = item(at: indexPath) {
+            cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
             let nameTextView = cell.viewWithTag(1) as? UILabel
             nameTextView?.text = member.profile?.name
             let avatarView = cell.viewWithTag(2) as? AvatarView

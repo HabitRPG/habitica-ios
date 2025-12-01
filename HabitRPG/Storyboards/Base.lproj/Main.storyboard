@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24127" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -197,7 +197,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="DailiesViewController" id="YnE-7V-tix" customClass="DailyTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" id="Plb-DG-Ly3">
-                        <rect key="frame" x="0.0" y="0.0" width="107.33333333333331" height="839"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections/>
@@ -1018,7 +1018,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="MountsOverviewViewController" autoresizesArchivedViewToFullSize="NO" id="k4g-ZO-Buh" customClass="MountOverviewViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="uMo-F9-k66">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="839"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="873"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ugs-DU-Mbl">
@@ -1137,7 +1137,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="MountDetailViewController" autoresizesArchivedViewToFullSize="NO" id="LGJ-iF-vTZ" customClass="MountDetailViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="Jyn-1Y-gwc">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="780"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="814"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Lf1-Aa-zJn">
@@ -1205,7 +1205,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="PetsOverviewViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iyK-dS-pks" customClass="PetOverviewViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="0uY-w8-R73">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="839"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="873"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="tQa-dP-3X4">
@@ -1319,7 +1319,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="PetDetailViewController" autoresizesArchivedViewToFullSize="NO" id="OMM-QF-DNw" customClass="PetDetailViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="0NF-w0-Ru8">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="780"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="814"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="t7j-BT-dp2">
@@ -1487,7 +1487,7 @@
             <objects>
                 <tableViewController id="cVq-Fh-1Yu" customClass="FeedViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="mJC-fk-DDR">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="770"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="804"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -2304,36 +2304,43 @@
         <scene sceneID="0hc-ne-2lf">
             <objects>
                 <tableViewController id="57X-FG-jGF" customClass="SkillsUserTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="HS2-QW-ige">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="114" sectionHeaderHeight="18" sectionFooterHeight="18" id="HS2-QW-ige">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="90" id="NGh-Kf-amr">
-                                <rect key="frame" x="0.0" y="50" width="430" height="90"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="114" id="NGh-Kf-amr">
+                                <rect key="frame" x="20" y="55.333332061767578" width="390" height="114"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NGh-Kf-amr" id="0nb-CC-wXg">
-                                    <rect key="frame" x="0.0" y="0.0" width="430" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="114"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhU-da-mlI">
-                                            <rect key="frame" x="98" y="0.0" width="324" height="90"/>
+                                            <rect key="frame" x="118" y="0.0" width="264" height="114"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pOk-IY-fz3" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                            <rect key="frame" x="20" y="16" width="90" height="82"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="90" id="f70-4Y-46X"/>
                                                 <constraint firstAttribute="height" constant="90" id="h02-tK-TPy"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="13"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="YhU-da-mlI" firstAttribute="leading" secondItem="pOk-IY-fz3" secondAttribute="trailing" constant="8" id="Zpz-lU-8h1"/>
-                                        <constraint firstItem="pOk-IY-fz3" firstAttribute="leading" secondItem="0nb-CC-wXg" secondAttribute="leading" id="p6v-ho-6CQ"/>
+                                        <constraint firstItem="pOk-IY-fz3" firstAttribute="top" secondItem="0nb-CC-wXg" secondAttribute="top" constant="16" id="b3f-Rh-m9R"/>
+                                        <constraint firstAttribute="bottom" secondItem="pOk-IY-fz3" secondAttribute="bottom" constant="16" id="fq8-7Y-a78"/>
+                                        <constraint firstItem="pOk-IY-fz3" firstAttribute="leading" secondItem="0nb-CC-wXg" secondAttribute="leading" constant="20" id="p6v-ho-6CQ"/>
                                         <constraint firstAttribute="trailing" secondItem="YhU-da-mlI" secondAttribute="trailing" constant="8" id="scT-Vl-6Ub"/>
                                         <constraint firstItem="pOk-IY-fz3" firstAttribute="centerY" secondItem="0nb-CC-wXg" secondAttribute="centerY" id="tgu-gg-0Xt"/>
                                         <constraint firstItem="YhU-da-mlI" firstAttribute="top" secondItem="0nb-CC-wXg" secondAttribute="top" id="yLF-QL-Jw1"/>
@@ -2384,16 +2391,16 @@
         <scene sceneID="WgF-4W-TMv">
             <objects>
                 <tableViewController id="DhB-2l-6nh" customClass="SkillsTaskTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="M57-sX-1Qv">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="M57-sX-1Qv">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="OdA-Sn-uyn" detailTextLabel="hUD-X1-AC8" style="IBUITableViewCellStyleSubtitle" id="oLS-QL-fBX">
-                                <rect key="frame" x="0.0" y="50" width="430" height="44"/>
+                                <rect key="frame" x="20" y="55.333332061767578" width="390" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oLS-QL-fBX" id="XgP-UM-zeZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="430" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OdA-Sn-uyn">
@@ -2419,7 +2426,7 @@
                             <outlet property="delegate" destination="DhB-2l-6nh" id="36h-85-9NO"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" image="tabbar_todos" id="TXB-iK-KhP"/>
+                    <tabBarItem key="tabBarItem" image="tabbar_todos" selectedImage="tabbar_todos_selected" id="TXB-iK-KhP"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YWa-8S-jGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2429,16 +2436,16 @@
         <scene sceneID="ZtU-ke-UJe">
             <objects>
                 <tableViewController id="7lu-pK-DCS" customClass="SkillsTaskTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="WsU-DS-w0W">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="WsU-DS-w0W">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="22Q-AK-5wD" detailTextLabel="ds2-xc-YBm" style="IBUITableViewCellStyleSubtitle" id="uEk-fm-YZ5">
-                                <rect key="frame" x="0.0" y="50" width="430" height="44"/>
+                                <rect key="frame" x="20" y="55.333332061767578" width="390" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uEk-fm-YZ5" id="eLm-Af-ZOY">
-                                    <rect key="frame" x="0.0" y="0.0" width="430" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="22Q-AK-5wD">
@@ -2464,7 +2471,7 @@
                             <outlet property="delegate" destination="7lu-pK-DCS" id="gFd-Yz-QB9"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" image="tabbar_dailies" id="Aco-n2-RnG"/>
+                    <tabBarItem key="tabBarItem" image="tabbar_dailies" selectedImage="tabbar_dailies_selected" id="Aco-n2-RnG"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qq3-Vg-EmH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2474,16 +2481,16 @@
         <scene sceneID="pyJ-pU-Dzp">
             <objects>
                 <tableViewController id="Sir-tg-Qda" customClass="SkillsTaskTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9Od-N1-1ne">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="9Od-N1-1ne">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="N3l-6A-3SX" detailTextLabel="TYc-Rw-kQw" style="IBUITableViewCellStyleSubtitle" id="1j9-fM-Ape">
-                                <rect key="frame" x="0.0" y="50" width="430" height="44"/>
+                                <rect key="frame" x="20" y="55.333332061767578" width="390" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1j9-fM-Ape" id="WBO-y1-Dm3">
-                                    <rect key="frame" x="0.0" y="0.0" width="430" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N3l-6A-3SX">
@@ -2509,7 +2516,7 @@
                             <outlet property="delegate" destination="Sir-tg-Qda" id="YdM-Xd-OnM"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" image="tabbar_habits" id="CTh-zS-7ZY"/>
+                    <tabBarItem key="tabBarItem" image="tabbar_habits" selectedImage="tabbar_habits_selected" id="CTh-zS-7ZY"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C3e-cK-1k5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2761,22 +2768,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S70-Y1-yfR">
-                                <rect key="frame" x="0.0" y="0.0" width="430" height="839"/>
+                                <rect key="frame" x="0.0" y="0.0" width="430" height="873"/>
                                 <subviews>
                                     <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="czQ-Ho-JSx">
-                                        <rect key="frame" x="0.0" y="0.0" width="430" height="839"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="430" height="873"/>
                                         <connections>
                                             <segue destination="iyK-dS-pks" kind="embed" id="UbK-ox-2Ce"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7rM-nT-9RT">
-                                        <rect key="frame" x="430" y="0.0" width="430" height="839"/>
+                                        <rect key="frame" x="430" y="0.0" width="430" height="873"/>
                                         <connections>
                                             <segue destination="k4g-ZO-Buh" kind="embed" id="HY1-1v-mBf"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wde-Lz-yBP">
-                                        <rect key="frame" x="430" y="0.0" width="1" height="839"/>
+                                        <rect key="frame" x="430" y="0.0" width="1" height="873"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="WK7-gT-dwO"/>
@@ -2803,7 +2810,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="THH-f4-eYM" firstAttribute="top" secondItem="S70-Y1-yfR" secondAttribute="bottom" id="9iC-y7-Ocw"/>
+                            <constraint firstAttribute="bottom" secondItem="S70-Y1-yfR" secondAttribute="bottom" id="9iC-y7-Ocw"/>
                             <constraint firstItem="S70-Y1-yfR" firstAttribute="top" secondItem="HP6-xx-TVS" secondAttribute="bottom" id="G0e-F3-D1j"/>
                             <constraint firstItem="S70-Y1-yfR" firstAttribute="leading" secondItem="zMP-6N-8vE" secondAttribute="leading" id="vSG-xh-PZS"/>
                             <constraint firstAttribute="trailing" secondItem="S70-Y1-yfR" secondAttribute="trailing" id="xSt-th-JXe"/>
@@ -3465,7 +3472,7 @@
         <segue reference="V6b-ej-qnx"/>
         <segue reference="u8W-Xm-nze"/>
         <segue reference="j9F-en-5nH"/>
-        <segue reference="dho-1x-ad8"/>
+        <segue reference="eRm-Rp-Tyf"/>
         <segue reference="PHp-cT-md6"/>
         <segue reference="zf0-3c-Xzo"/>
         <segue reference="Nkz-Sr-H0i"/>

@@ -318,6 +318,7 @@ class MainMenuViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "MainTableviewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        tableView.rowHeight = UITableView.automaticDimension
         setupHeader()
         
         #if !targetEnvironment(macCatalyst)

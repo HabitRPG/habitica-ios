@@ -22,6 +22,9 @@ class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
         super.awakeFromNib()
         rewardCurrencyCountView.currency = .gem
         rewardCurrencyCountView.viewSize = .large
+        
+        participantsWrapper.cornerRadius = UIConstants.largeCornerRadius
+        prizeWrapper.cornerRadius = UIConstants.largeCornerRadius
     }
     
     func configure(with challenge: ChallengeProtocol, userID: String?) {
@@ -33,9 +36,9 @@ class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
         addTags(for: challenge, userID: userID)
         
         let theme = ThemeService.shared.theme
-        contentView.backgroundColor = theme.windowBackgroundColor
-        participantsWrapper.backgroundColor = theme.contentBackgroundColor
-        prizeWrapper.backgroundColor = theme.contentBackgroundColor
+        contentView.backgroundColor = theme.contentBackgroundColor
+        participantsWrapper.backgroundColor = theme.windowBackgroundColor
+        prizeWrapper.backgroundColor = theme.windowBackgroundColor
     }
     
     func addTags(for challenge: ChallengeProtocol, userID: String?) {

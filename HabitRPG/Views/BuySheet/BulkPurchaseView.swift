@@ -17,6 +17,12 @@ struct PlusMinusStepperView<Icon: View>: View {
     var isActive: Bool = true
     var minAmount = 1
     
+    private var textProxy: Binding<String> {
+        Binding<String>(get: { String(self.amount) }, set: {
+            self.amount = Int($0) ?? 0
+        })
+    }
+    
     var body: some View {
         HStack {
             Button {
@@ -29,7 +35,11 @@ struct PlusMinusStepperView<Icon: View>: View {
             }.disabled(amount <= minAmount || !isActive)
             HStack(spacing: 4) {
                 icon
-                Text("\(amount)")
+                TextField(text: textProxy, label: {
+                    
+                })
+                .fixedSize(horizontal: true, vertical: false)
+                .keyboardType(.numberPad)
                     .contentTransition(.numericText())
                     .scaledFont(size: 22, weight: .bold)
                     .foregroundStyle(Color(isActive ? themeService.theme.primaryTextColor : themeService.theme.ternaryTextColor))

@@ -13,7 +13,11 @@ class HabiticaButton: UIButton {
     
     @IBInspectable public var buttonColor: UIColor = UIColor.purple200 {
         didSet {
-            backgroundColor = buttonColor
+            if #available(iOS 26.0, *) {
+                tintColor = buttonColor
+            } else {
+                backgroundColor = buttonColor
+            }
             
             updateLegibility()
         }
@@ -62,7 +66,11 @@ class HabiticaButton: UIButton {
     }
     
     func setupView() {
-        cornerRadius = 12
+        if #available(iOS 26.0, *) {
+            configuration = .prominentGlass()
+        } else {
+            cornerRadius = UIConstants.largeCornerRadius
+        }
         setTitleColor(.white, for: .normal)
         isPointerInteractionEnabled = true
     }

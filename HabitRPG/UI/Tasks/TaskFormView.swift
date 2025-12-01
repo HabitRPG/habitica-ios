@@ -154,7 +154,7 @@ struct TaskFormView: View {
                             dynamicFormPart
                             if viewModel.taskType != .reward && viewModel.isTaskEditable {
                                 TaskFormSection(header: Text(L10n.Tasks.Form.difficulty.localizedCapitalized),
-                                                content: DifficultyPicker(selectedDifficulty: $viewModel.priority).tint(viewModel.pickerTintColor), backgroundColor: .clear)
+                                                content: DifficultyPicker(selectedDifficulty: $viewModel.priority, tintColor: viewModel.pickerTintColor), backgroundColor: .clear)
                             }
                             if viewModel.taskType == .daily || viewModel.taskType == .todo {
                                 TaskFormReminderView(showDate: viewModel.taskType == .todo, items: $viewModel.reminders)

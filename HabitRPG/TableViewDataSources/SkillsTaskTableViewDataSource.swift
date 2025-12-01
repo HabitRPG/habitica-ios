@@ -29,13 +29,16 @@ class SkillsTaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtoco
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         if let task = item(at: indexPath) {
+            cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
             cell.textLabel?.text = task.text?.unicodeEmoji
             cell.textLabel?.textColor = UIColor.forTaskValue(task.value)
             if task.challengeID != nil {
                 cell.detailTextLabel?.text = L10n.Skills.cantCastOnChallengeTasks
-                cell.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+                cell.detailTextLabel?.textColor = ThemeService.shared.theme.dimmedTextColor
+                cell.textLabel?.alpha = 0.5
             } else {
                 cell.detailTextLabel?.text = nil
+                cell.textLabel?.alpha = 1.0
             }
         }
         return cell
