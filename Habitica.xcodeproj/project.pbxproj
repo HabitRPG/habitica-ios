@@ -204,7 +204,6 @@
 		2945AE992B2868CA0022F3CC /* HostingPanModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2945AE982B2868CA0022F3CC /* HostingPanModal.swift */; };
 		294973D2208118C100F02AC3 /* ImageOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973D1208118C100F02AC3 /* ImageOverlayView.swift */; };
 		294EB59D1FA0A7E4006083BD /* FixCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */; };
-		294EBC602ED4A9A300C947AD /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294EBC5F2ED4A9A300C947AD /* test.swift */; };
 		294F5D6628CA1DCB00760F6C /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 294F5D6528CA1DCB00760F6C /* ConfettiSwiftUI */; settings = {ATTRIBUTES = (Weak, ); }; };
 		2953D83B28B51F9E00DC456E /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2953D83A28B51F9E00DC456E /* ReactiveSwift */; };
 		2953D83D28B51FA700DC456E /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2953D83C28B51FA700DC456E /* ReactiveSwift */; };
@@ -887,7 +886,6 @@
 		2945AE982B2868CA0022F3CC /* HostingPanModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingPanModal.swift; sourceTree = "<group>"; };
 		294973D1208118C100F02AC3 /* ImageOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOverlayView.swift; sourceTree = "<group>"; };
 		294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixCharacterViewController.swift; sourceTree = "<group>"; };
-		294EBC5F2ED4A9A300C947AD /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		2953D84128B6564A00DC456E /* ArmoireViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmoireViewController.swift; sourceTree = "<group>"; };
 		2953D84628B7790800DC456E /* HabiticaBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaBottomSheet.swift; sourceTree = "<group>"; };
 		2953D84928B77E4900DC456E /* BottomSheetMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetMenu.swift; sourceTree = "<group>"; };
@@ -2433,7 +2431,6 @@
 				29C1B6A920594F3D0001D3EF /* Tasks */,
 				2986EB091FCC63CC00B316F6 /* User */,
 				29A62B08216CE5D700D4BD90 /* AboutViewController.swift */,
-				294EBC5F2ED4A9A300C947AD /* test.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -3528,7 +3525,6 @@
 				291448822087A13100F3A6B5 /* EquipmentDetailViewController.swift in Sources */,
 				29C135FE24EACA7B00DBC6B3 /* MarkdownTextView.swift in Sources */,
 				2927024A24E303CB00BCAA77 /* HallOfPatronsViewController.swift in Sources */,
-				294EBC602ED4A9A300C947AD /* test.swift in Sources */,
 				29E96B512E157EFC00D9EF25 /* LoginScreen.swift in Sources */,
 				29FC885C2018D47D002B3D3F /* Quest-Extensions.swift in Sources */,
 				2931150422D744ED00E4A9E3 /* AchievementsCollectionViewController.swift in Sources */,
