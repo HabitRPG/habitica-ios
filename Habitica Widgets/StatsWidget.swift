@@ -24,23 +24,24 @@ struct Provider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<UserEntry>) -> Void) {
         var entries: [UserEntry] = []
-        TaskManager.shared.getUser().on(value: { user in
-            let entry = UserEntry(date: Date(),
-                                  widgetFamily: context.family,
-                                  health: user.stats?.health ?? 0.0,
-                                  maxHealth: user.stats?.maxHealth ?? 0.0,
-                                  experience: user.stats?.experience ?? 0.0,
-                                  maxExperience: user.stats?.toNextLevel ?? 0.0,
-                                  mana: user.stats?.mana ?? 0.0,
-                                  maxMana: user.stats?.maxMana ?? 0.0,
-                                  level: user.stats?.level ?? 0,
-                                  gold: user.stats?.gold ?? 0.0,
-                                  gems: user.gemCount)
-            entries.append(entry)
+        guard let user = TaskManager.shared.getUser() else {
+            return
+        }
+        let entry = UserEntry(date: Date(),
+                              widgetFamily: context.family,
+                              health: user.stats?.health ?? 0.0,
+                              maxHealth: user.stats?.maxHealth ?? 0.0,
+                              experience: user.stats?.experience ?? 0.0,
+                              maxExperience: user.stats?.toNextLevel ?? 0.0,
+                              mana: user.stats?.mana ?? 0.0,
+                              maxMana: user.stats?.maxMana ?? 0.0,
+                              level: user.stats?.level ?? 0,
+                              gold: user.stats?.gold ?? 0.0,
+                              gems: user.gemCount)
+        entries.append(entry)
 
-            let timeline = Timeline(entries: entries, policy: .atEnd)
-            completion(timeline)
-        }).take(first: 1).start()
+        let timeline = Timeline(entries: entries, policy: .atEnd)
+        completion(timeline)
     }
 }
 

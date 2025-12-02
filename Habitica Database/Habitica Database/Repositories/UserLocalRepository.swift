@@ -194,6 +194,10 @@ public class UserLocalRepository: BaseLocalRepository {
         }).skipNil()
     }
     
+    public func getUserAsync(_ id: String) -> UserProtocol? {
+        return getRealm()?.objects(RealmUser.self).filter("id == '\(id)'").first
+    }
+    
     public func hasUserData(id: String) -> Bool {
         return getRealm()?.object(ofType: RealmUser.self, forPrimaryKey: id) != nil
     }
