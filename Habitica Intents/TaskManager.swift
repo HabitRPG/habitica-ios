@@ -14,6 +14,14 @@ import ReactiveSwift
 import Intents
 import RealmSwift
 
+class HabiticaAnalytics {
+    static let shared = HabiticaAnalytics()
+    
+    func setUserID(_ userId: String?) {
+        // not actually used
+    }
+}
+
 class TaskManager: BaseRepository<TaskLocalRepository> {
     static let shared = TaskManager()
     let listSpokenPhraseMap = ["todo": ["todo", "to do", "to-do", "todos"],
@@ -68,6 +76,7 @@ class TaskManager: BaseRepository<TaskLocalRepository> {
     func setupDatabase() {
         var config = Realm.Configuration.defaultConfiguration
         config.deleteRealmIfMigrationNeeded = true
+        config.maximumNumberOfActiveVersions = 1
         let fileUrl = FileManager.default
             .containerURL(forSecurityApplicationGroupIdentifier: "group.habitrpg.habitica")?
             .appendingPathComponent("habitica.realm")

@@ -67,8 +67,18 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.springboard">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "29BEE62A252CCFE100D456F8"
+            BuildableName = "Habitica WidgetsExtension.appex"
+            BlueprintName = "Habitica WidgetsExtension"
+            ReferencedContainer = "container:Habitica.xcodeproj">
+         </BuildableReference>
+      </RemoteRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D9EB4E8A18CB4A9400BB2094"
@@ -76,7 +86,7 @@
             BlueprintName = "Habitica"
             ReferencedContainer = "container:Habitica.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "_XCWidgetKind"
@@ -103,16 +113,17 @@
       debugDocumentVersioning = "YES"
       askForAppToLaunch = "Yes"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.springboard">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D9EB4E8A18CB4A9400BB2094"
-            BuildableName = "Habitica.app"
-            BlueprintName = "Habitica"
+            BlueprintIdentifier = "29BEE62A252CCFE100D456F8"
+            BuildableName = "Habitica WidgetsExtension.appex"
+            BlueprintName = "Habitica WidgetsExtension"
             ReferencedContainer = "container:Habitica.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -25,25 +25,24 @@ struct DailiesCountProvider: IntentTimelineProvider {
 
     func getTimeline(for configuration: HRPGDailiesCountIntent, in context: Context, completion: @escaping (Timeline<DailiesCountWidgetEntry>) -> Void) {
         var entries: [DailiesCountWidgetEntry] = []
-        SignalProducer.combineLatest(TaskManager.shared.getTasks(predicate: NSPredicate(format: "type == 'daily' && isDue == true")),
-                                     TaskManager.shared.getUser()).on(value: { result in
-                                        let tasks = result.0
-                                        let user = result.1
-                                        var needsCron = user.needsCron
-                                        if !needsCron, let lastCron = user.lastCron {
-                                            let calendar = Calendar.current
-                                            let date1 = calendar.startOfDay(for: lastCron)
-                                            let date2 = calendar.startOfDay(for: Date())
-                                            let components = calendar.dateComponents([.day], from: date1, to: date2)
+        let tasks = TaskManager.shared.getTasks(predicate: NSPredicate(format: "type == 'daily' && isDue == true"))
+        guard let user = TaskManager.shared.getUser() else {
+            return
+        }
+        var needsCron = user.needsCron
+        if !needsCron, let lastCron = user.lastCron {
+            let calendar = Calendar.current
+            let date1 = calendar.startOfDay(for: lastCron)
+            let date2 = calendar.startOfDay(for: Date())
+            let components = calendar.dateComponents([.day], from: date1, to: date2)
 
-                                            needsCron = (components.day ?? 0) > (user.preferences?.dayStart ?? 0)
-                                        }
-                                        let entry = DailiesCountWidgetEntry(date: Date(), widgetFamily: context.family, totalCount: tasks.value.count, completedCount: tasks.value.filter({ $0.completed }).count, displayRemaining: configuration.displayRemaining?.boolValue ?? false, needsCron: needsCron)
-                                        entries.append(entry)
+            needsCron = (components.day ?? 0) > (user.preferences?.dayStart ?? 0)
+        }
+        let entry = DailiesCountWidgetEntry(date: Date(), widgetFamily: context.family, totalCount: tasks.count, completedCount: tasks.filter({ $0.completed }).count, displayRemaining: configuration.displayRemaining?.boolValue ?? false, needsCron: needsCron)
+        entries.append(entry)
 
-                                        let timeline = Timeline(entries: entries, policy: .atEnd)
-                                        completion(timeline)
-        }).take(first: 1).start()
+        let timeline = Timeline(entries: entries, policy: .atEnd)
+        completion(timeline)
     }
 }
 

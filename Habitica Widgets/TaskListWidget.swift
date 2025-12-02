@@ -14,10 +14,6 @@ import UIKit
 struct TaskListProvider: TimelineProvider {
     let taskType: TaskType
     
-    init(taskType: TaskType) {
-        self.taskType = taskType
-    }
-    
     func placeholder(in context: Context) -> TaskListEntry {
         TaskListEntry(widgetFamily: context.family, taskType: taskType)
     }
@@ -29,14 +25,15 @@ struct TaskListProvider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<TaskListEntry>) -> Void) {
         var entries: [TaskListEntry] = []
-        TaskManager.shared.getUser().zip(with: TaskManager.shared.getTasks(predicate: NSPredicate(format: taskType == .daily ? "completed == false && type == 'daily' && isDue == true": "completed == false && type == 'todo'")))
-        .on(value: { (user, tasks) in
-            let entry = TaskListEntry(widgetFamily: context.family, taskType: taskType, tasks: tasks.value, needsCron: user.needsCron)
-            entries.append(entry)
+        let tasks = TaskManager.shared.getTasks(predicate: NSPredicate(format: taskType == .daily ? "completed == false && type == 'daily' && isDue == true": "completed == false && type == 'todo'"))
+        guard let user = TaskManager.shared.getUser() else {
+            return
+        }
+        let entry = TaskListEntry(widgetFamily: context.family, taskType: taskType, tasks: tasks, needsCron: user.needsCron)
+        entries.append(entry)
 
-            let timeline = Timeline(entries: entries, policy: .atEnd)
-            completion(timeline)
-        }).take(first: 1).start()
+        let timeline = Timeline(entries: entries, policy: .atEnd)
+        completion(timeline)
     }
 }
 

@@ -98,6 +98,12 @@ public class TaskLocalRepository: BaseLocalRepository {
         })
     }
     
+    public func getTasksAsync(userID: String, predicate: NSPredicate, sortKey: String) -> [TaskProtocol]? {
+        let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [NSPredicate(format: "ownerID == %@", userID), predicate])
+        let res = getRealm()?.objects(RealmTask.self).filter(predicate)
+        return res?.map({ (task) -> TaskProtocol in return task }).compactMap(\.self)
+    }
+    
     public func getTask(id: String) -> SignalProducer<TaskProtocol, ReactiveSwiftRealmError> {
         return RealmTask.findBy(key: id).skipNil().map({ task -> TaskProtocol in
             return task
