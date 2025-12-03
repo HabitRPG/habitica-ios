@@ -120,7 +120,6 @@
 		2922EE842C80774400254106 /* SubscriptionOptionViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2922EE832C80774400254106 /* SubscriptionOptionViewUI.swift */; };
 		2922EE862C888C8500254106 /* SubscriptionDisclaimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2922EE852C888C8500254106 /* SubscriptionDisclaimer.swift */; };
 		2923121828DDAFE9000F5D7A /* CustomizationFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2923121728DDAFE9000F5D7A /* CustomizationFooterView.swift */; };
-		29252C382AF4FB330003692D /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29252C372AF4FB330003692D /* Habitica_API_Client.framework */; };
 		29255E431F3DD2120094A3E3 /* TutorialStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E421F3DD2120094A3E3 /* TutorialStepView.swift */; };
 		29255E451F3DD3ED0094A3E3 /* TutorialStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29255E441F3DD3ED0094A3E3 /* TutorialStepView.xib */; };
 		29255E471F3E14920094A3E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E461F3E14920094A3E3 /* AppDelegate.swift */; };
@@ -181,7 +180,6 @@
 		2938ED3428B4EDC700E995A2 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED3328B4EDC700E995A2 /* FirebasePerformance */; };
 		2938ED3628B4EDC700E995A2 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED3528B4EDC700E995A2 /* FirebaseRemoteConfig */; };
 		2938ED3A28B4EE5C00E995A2 /* Amplitude in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED3928B4EE5C00E995A2 /* Amplitude */; };
-		2938ED3C28B4EE6B00E995A2 /* Amplitude in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED3B28B4EE6B00E995A2 /* Amplitude */; };
 		2938ED3E28B4EEB200E995A2 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED3D28B4EEB200E995A2 /* KeychainAccess */; };
 		2938ED4028B4EEBC00E995A2 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED3F28B4EEBC00E995A2 /* KeychainAccess */; };
 		2938ED4328B4EF5D00E995A2 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2938ED4228B4EF5D00E995A2 /* SwiftyStoreKit */; };
@@ -206,7 +204,6 @@
 		294EB59D1FA0A7E4006083BD /* FixCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */; };
 		294F5D6628CA1DCB00760F6C /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 294F5D6528CA1DCB00760F6C /* ConfettiSwiftUI */; settings = {ATTRIBUTES = (Weak, ); }; };
 		2953D83B28B51F9E00DC456E /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2953D83A28B51F9E00DC456E /* ReactiveSwift */; };
-		2953D83D28B51FA700DC456E /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2953D83C28B51FA700DC456E /* ReactiveSwift */; };
 		2953D84028B5215400DC456E /* ReactiveCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 2953D83F28B5215400DC456E /* ReactiveCocoa */; };
 		2953D84228B6564A00DC456E /* ArmoireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2953D84128B6564A00DC456E /* ArmoireViewController.swift */; };
 		2953D84528B7772B00DC456E /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 2953D84428B7772B00DC456E /* BottomSheet */; };
@@ -293,7 +290,6 @@
 		2994A8AE28FE945E00CEDED7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; };
 		2994A8AF28FE945F00CEDED7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; };
 		2994A8B028FE946800CEDED7 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; };
-		2994A8B128FE946A00CEDED7 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; };
 		2994A8B228FE947800CEDED7 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */; };
 		2994A8B328FE947800CEDED7 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */; };
 		29951A1E2326670500918FC8 /* InboxOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29951A1D2326670500918FC8 /* InboxOverviewViewController.swift */; };
@@ -445,6 +441,7 @@
 		29E96B512E157EFC00D9EF25 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E96B502E157EF900D9EF25 /* LoginScreen.swift */; };
 		29E96B532E1692A200D9EF25 /* Font-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E96B522E16929C00D9EF25 /* Font-Extensions.swift */; };
 		29EBDA83232A3ABA006611E3 /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA82232A3ABA006611E3 /* KeychainItem.swift */; };
+		29ECCB3F2EDF50D20075CC88 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29ECCB3E2EDF50D20075CC88 /* Habitica_Database.framework */; };
 		29ED1AFB1F338E5D005A3895 /* SetupCustomizationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */; };
 		29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */; };
 		29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */; };
@@ -1131,6 +1128,7 @@
 		29E96B502E157EF900D9EF25 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		29E96B522E16929C00D9EF25 /* Font-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font-Extensions.swift"; sourceTree = "<group>"; };
 		29EBDA82232A3ABA006611E3 /* KeychainItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
+		29ECCB3E2EDF50D20075CC88 /* Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomizationRepository.swift; sourceTree = "<group>"; };
 		29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomization.swift; sourceTree = "<group>"; };
 		29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Extensions.swift"; sourceTree = "<group>"; };
@@ -1361,10 +1359,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2938ED3C28B4EE6B00E995A2 /* Amplitude in Frameworks */,
-				2953D83D28B51FA700DC456E /* ReactiveSwift in Frameworks */,
-				2994A8B128FE946A00CEDED7 /* Habitica_Database.framework in Frameworks */,
-				29252C382AF4FB330003692D /* Habitica_API_Client.framework in Frameworks */,
+				29ECCB3F2EDF50D20075CC88 /* Habitica_Database.framework in Frameworks */,
 				29BEE62F252CCFE100D456F8 /* SwiftUI.framework in Frameworks */,
 				2938ED3E28B4EEB200E995A2 /* KeychainAccess in Frameworks */,
 				29BEE62D252CCFE100D456F8 /* WidgetKit.framework in Frameworks */,
@@ -2685,6 +2680,7 @@
 		D9EB4E8D18CB4A9400BB2094 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				29ECCB3E2EDF50D20075CC88 /* Habitica_Database.framework */,
 				296E4F0E2C91A6A800D9CBDE /* Habitica_Models.framework */,
 				29252C372AF4FB330003692D /* Habitica_API_Client.framework */,
 				29995A6026CBCB0B0063D4C9 /* AdServices.framework */,
@@ -2811,9 +2807,7 @@
 			);
 			name = "Habitica WidgetsExtension";
 			packageProductDependencies = (
-				2938ED3B28B4EE6B00E995A2 /* Amplitude */,
 				2938ED3D28B4EEB200E995A2 /* KeychainAccess */,
-				2953D83C28B51FA700DC456E /* ReactiveSwift */,
 			);
 			productName = "Habitica WidgetsExtension";
 			productReference = 29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */;
@@ -5847,11 +5841,6 @@
 			package = 292BD8A028B4EAC4006447EF /* XCRemoteSwiftPackageReference "Amplitude-iOS" */;
 			productName = Amplitude;
 		};
-		2938ED3B28B4EE6B00E995A2 /* Amplitude */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 292BD8A028B4EAC4006447EF /* XCRemoteSwiftPackageReference "Amplitude-iOS" */;
-			productName = Amplitude;
-		};
 		2938ED3D28B4EEB200E995A2 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 292BD89A28B4EA4F006447EF /* XCRemoteSwiftPackageReference "KeychainAccess" */;
@@ -5888,11 +5877,6 @@
 			productName = ConfettiSwiftUI;
 		};
 		2953D83A28B51F9E00DC456E /* ReactiveSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */;
-			productName = ReactiveSwift;
-		};
-		2953D83C28B51FA700DC456E /* ReactiveSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2938ED5628B504D100E995A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */;
 			productName = ReactiveSwift;
