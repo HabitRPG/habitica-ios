@@ -955,8 +955,8 @@
 "theme.alwaysLight" = "常にライト";
 //"settings.push_notifications.banned_group" = "Kicked from Group";
 "settings.push_notifications.quest_begun" = "あなたのクエストが始まりました";
-"renew_subscription_gifted_description" = "特典を受け続けたいですか？ この有料プランの有効期限が切れる前に新しい有料プランをはじめることで、特典を有効に受け続けられます。";
-"renew_subscription_description" = "特典を受け続けたいですか？ この有料プランの有効期限が切れる前に新しい有料プランをはじめることで、特典を有効に受け続けられます。";
+"renew_subscription_gifted_description" = "特典を受け続けたいですか？ Apple ID設定のサブスクリプションセクションからサブスクリプションを再度有効にできます。";
+"renew_subscription_description" = "特典を受け続けたいですか？ Apple ID設定のサブスクリプションセクションから、サブスクリプションを再開できます。";
 "subscribe_for_task_history" = "２週間以上のデータがほしいですか？";
 "subscription_promo_description" = "有料会員になって、ゴールドでジェムを購入したり、毎月のミステリーアイテムを手に入れたり、落とし物の上限を増やしたり、他にもいろいろな特典を受けましょう！";
 "not_recurring" = "くり返さない";
@@ -1650,3 +1650,8 @@
 "not_now" = "後で";
 "undo" = "元に戻す";
 "checkin_prize_description" = "あなたは、人生・生活を向上することを誓いました。それを称え、%sを贈ります";
+"find_stats_menu" = "ステータスはいつでもメニューから見ることができます";
+"assigned_stat" = "ステータスポイントの割り当て";
+"class_change_success_subtitle" = "ステータスを割り振ることができます";
+"player_not_completed_quests" = "このプレーヤーはまだクエストを完了していません。";
+"view_stats" = "ステータスを見る";
