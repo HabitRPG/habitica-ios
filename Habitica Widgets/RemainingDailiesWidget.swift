@@ -27,6 +27,8 @@ struct DailiesCountProvider: IntentTimelineProvider {
         var entries: [DailiesCountWidgetEntry] = []
         let tasks = TaskManager.shared.getTasks(predicate: NSPredicate(format: "type == 'daily' && isDue == true"))
         guard let user = TaskManager.shared.getUser() else {
+            let timeline = Timeline(entries: entries, policy: .atEnd)
+            completion(timeline)
             return
         }
         var needsCron = user.needsCron
@@ -38,9 +40,13 @@ struct DailiesCountProvider: IntentTimelineProvider {
 
             needsCron = (components.day ?? 0) > (user.preferences?.dayStart ?? 0)
         }
-        let entry = DailiesCountWidgetEntry(date: Date(), widgetFamily: context.family, totalCount: tasks.count, completedCount: tasks.filter({ $0.completed }).count, displayRemaining: configuration.displayRemaining?.boolValue ?? false, needsCron: needsCron)
+        let entry = DailiesCountWidgetEntry(date: Date(),
+                                            widgetFamily: context.family,
+                                            totalCount: tasks.count,
+                                            completedCount: tasks.filter({ $0.completed }).count,
+                                            displayRemaining: configuration.displayRemaining?.boolValue ?? false,
+                                            needsCron: needsCron)
         entries.append(entry)
-
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
@@ -247,13 +253,12 @@ struct DailiesCountWidgetPreview: PreviewProvider {
             DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryInline, totalCount: 42, completedCount: 10, needsCron: true))
                 .previewContext(WidgetPreviewContext(family: .accessoryInline))
             
-            
-                DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryCircular, totalCount: 42, completedCount: 10))
-                    .previewContext(WidgetPreviewContext(family: .accessoryCircular))
-                DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryCircular, totalCount: 42, completedCount: 42))
-                    .previewContext(WidgetPreviewContext(family: .accessoryCircular))
-                DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryCircular, totalCount: 42, completedCount: 10, needsCron: true))
-                    .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+            DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryCircular, totalCount: 42, completedCount: 10))
+                .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+            DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryCircular, totalCount: 42, completedCount: 42))
+                .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+            DailiesCountWidgetView(entry: DailiesCountWidgetEntry(date: Date(), widgetFamily: .accessoryCircular, totalCount: 42, completedCount: 10, needsCron: true))
+                .previewContext(WidgetPreviewContext(family: .accessoryCircular))
         }
     }
 }

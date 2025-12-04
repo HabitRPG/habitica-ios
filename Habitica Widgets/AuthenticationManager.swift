@@ -7,11 +7,8 @@
 //
 
 import Foundation
-import ReactiveSwift
-import Habitica_API_Client
 
 class AuthenticationManager {
-
     func initialize(withStorage storage: AuthenticationStorage) {
         self.storage = storage
         // This is to properly run the setters so that the app is correctly configured
@@ -29,20 +26,8 @@ class AuthenticationManager {
         
         set(newValue) {
             storage?.userID = newValue
-            currentUserIDProperty.value = newValue
-            UserDefaults.standard.set(newValue, forKey: "currentUserId")
-            NetworkAuthenticationManager.shared.currentUserId = newValue
-            if let newID = newValue {
-                (logger as? RemoteLogger)?.setUserID(newID)
-                HabiticaAnalytics.shared.setUserID(newID)
-            } else {
-                (logger as? RemoteLogger)?.setUserID(nil)
-                HabiticaAnalytics.shared.setUserID(nil)
-            }
         }
     }
-
-    var currentUserIDProperty = MutableProperty<String?>(nil)
 
     var currentUserKey: String? {
         get {
@@ -51,12 +36,7 @@ class AuthenticationManager {
         
         set(newValue) {
             storage?.apiKey = newValue
-            NetworkAuthenticationManager.shared.currentUserKey = newValue
         }
-    }
-
-    private init() {
-        currentUserIDProperty.value = currentUserId
     }
 
     func hasAuthentication() -> Bool {

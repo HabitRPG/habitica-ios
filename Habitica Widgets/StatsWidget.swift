@@ -25,6 +25,8 @@ struct Provider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<UserEntry>) -> Void) {
         var entries: [UserEntry] = []
         guard let user = TaskManager.shared.getUser() else {
+            let timeline = Timeline(entries: entries, policy: .atEnd)
+            completion(timeline)
             return
         }
         let entry = UserEntry(date: Date(),
@@ -39,7 +41,6 @@ struct Provider: TimelineProvider {
                               gold: user.stats?.gold ?? 0.0,
                               gems: user.gemCount)
         entries.append(entry)
-
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }

@@ -27,11 +27,12 @@ struct TaskListProvider: TimelineProvider {
         var entries: [TaskListEntry] = []
         let tasks = TaskManager.shared.getTasks(predicate: NSPredicate(format: taskType == .daily ? "completed == false && type == 'daily' && isDue == true": "completed == false && type == 'todo'"))
         guard let user = TaskManager.shared.getUser() else {
+            let timeline = Timeline(entries: entries, policy: .atEnd)
+            completion(timeline)
             return
         }
         let entry = TaskListEntry(widgetFamily: context.family, taskType: taskType, tasks: tasks, needsCron: user.needsCron)
         entries.append(entry)
-
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
