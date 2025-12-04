@@ -429,12 +429,14 @@ struct NotificationsPage: View {
                 ScrollView {
                     LazyVStack(spacing: 8) {
                         ForEach(viewModel.notifications, id: \.id) { notification in
-                            renderNotification(notification: notification)
-                                .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
-                                .padding(8)
-                                .background(Color(ThemeService.shared.theme.windowBackgroundColor))
-                                .cornerRadius(UIConstants.largeCornerRadius)
-                                .padding(.horizontal, 17)
+                            if notification.isValid {
+                                renderNotification(notification: notification)
+                                    .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
+                                    .padding(8)
+                                    .background(Color(ThemeService.shared.theme.windowBackgroundColor))
+                                    .cornerRadius(UIConstants.largeCornerRadius)
+                                    .padding(.horizontal, 17)
+                            }
                         }
                     }
                 }

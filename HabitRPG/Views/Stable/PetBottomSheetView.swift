@@ -97,7 +97,7 @@ struct PetBottomSheetView: View, Dismissable {
                         .zIndex(4)
                 }
             }
-            let buttonBackground = Color(theme.windowBackgroundColor)
+            let buttonBackground = Color(theme.isDark ? theme.offsetBackgroundColor : theme.windowBackgroundColor)
             if trained > 0 && pet.type != "special" && canRaise {
                 HStack(spacing: 16) {
                     Button(action: {

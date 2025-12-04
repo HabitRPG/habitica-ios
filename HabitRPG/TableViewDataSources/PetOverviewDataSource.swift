@@ -46,7 +46,9 @@ class PetOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                         sortedItems["egg-\($0.key ?? "")"] = $0.text
                     }
                 }
-                return self?.mapData(owned: pets.0, animals: pets.1.value, items: sortedItems) ?? [:]
+                return self?.mapData(owned: pets.0, animals: pets.1.value.sorted(by: { first, second in
+                    return (first.egg ?? "") < (second.egg ?? "")
+                }), items: sortedItems) ?? [:]
             })
             .on(value: {[weak self] overviewItems in
                 self?.sections[0].items.removeAll()

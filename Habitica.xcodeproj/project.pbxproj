@@ -256,6 +256,11 @@
 		2974BDB62090C03E00EC1A25 /* InboxOverviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDB52090C03E00EC1A25 /* InboxOverviewDataSource.swift */; };
 		297517B41F30EBD100B5BCB9 /* AvatarSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */; };
 		297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */; };
+		2979D5F32EE1CEFB00BB2F54 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979D5F22EE1CEFB00BB2F54 /* TaskManager.swift */; };
+		2979D5F52EE1D1E000BB2F54 /* AuthenticationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979D5F42EE1D1E000BB2F54 /* AuthenticationStorage.swift */; };
+		2979D5F62EE1D1E500BB2F54 /* AuthenticationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979D5F42EE1D1E000BB2F54 /* AuthenticationStorage.swift */; };
+		2979D5F72EE1D1E500BB2F54 /* AuthenticationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979D5F42EE1D1E000BB2F54 /* AuthenticationStorage.swift */; };
+		2979D5FC2EE1D2F100BB2F54 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979D5FB2EE1D2F100BB2F54 /* AuthenticationManager.swift */; };
 		297D15FA20B803D30048101F /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297D15F920B803D30048101F /* UserProfileViewController.swift */; };
 		2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */; };
 		2980E6091EEA25CE005B7100 /* YesterdailiesDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */; };
@@ -328,8 +333,6 @@
 		29A92C302E03050F00B2321A /* ApiTokenSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A92C2F2E03050F00B2321A /* ApiTokenSheetView.swift */; };
 		29A984D22547294E00F04665 /* HabiticaAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A984D02547294E00F04665 /* HabiticaAnalytics.swift */; };
 		29A984D32547294E00F04665 /* RemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A984D12547294E00F04665 /* RemoteLogger.swift */; };
-		29A9857F25472D1600F04665 /* HabiticaAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A984D02547294E00F04665 /* HabiticaAnalytics.swift */; };
-		29A9858125472D1700F04665 /* HabiticaAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A984D02547294E00F04665 /* HabiticaAnalytics.swift */; };
 		29A98593254841C500F04665 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A98592254841C500F04665 /* KeyboardManager.swift */; };
 		29A9B0552280825A0049291E /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B0542280825A0049291E /* BaseUIViewController.swift */; };
 		29A9B057228082BF0049291E /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B056228082BF0049291E /* BaseCollectionViewController.swift */; };
@@ -370,9 +373,6 @@
 		29BEE62F252CCFE100D456F8 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BEE62E252CCFE100D456F8 /* SwiftUI.framework */; };
 		29BEE632252CCFE100D456F8 /* StatsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE631252CCFE100D456F8 /* StatsWidget.swift */; };
 		29BEE634252CCFE300D456F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29BEE633252CCFE300D456F8 /* Assets.xcassets */; };
-		29BEE64D252DD3F400D456F8 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E1B122898E9F0081E96F /* TaskManager.swift */; };
-		29BEE659252DD85C00D456F8 /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884D2010CCC2002B3D3F /* BaseRepository.swift */; };
-		29BEE65F252DD86200D456F8 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
 		29BEE6D7252E14F000D456F8 /* HabiticaWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE6C7252E144F00D456F8 /* HabiticaWidgets.swift */; };
 		29BEE6DC252E14F300D456F8 /* RemainingDailiesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE6CD252E14C000D456F8 /* RemainingDailiesWidget.swift */; };
 		29BEE6E7252E1B7700D456F8 /* Color-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE6E1252E1B3600D456F8 /* Color-Extensions.swift */; };
@@ -953,6 +953,9 @@
 		2974BDB52090C03E00EC1A25 /* InboxOverviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxOverviewDataSource.swift; sourceTree = "<group>"; };
 		297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarSetupViewController.swift; sourceTree = "<group>"; };
 		297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskSetupViewController.swift; sourceTree = "<group>"; };
+		2979D5F22EE1CEFB00BB2F54 /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
+		2979D5F42EE1D1E000BB2F54 /* AuthenticationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationStorage.swift; sourceTree = "<group>"; };
+		2979D5FB2EE1D2F100BB2F54 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		297AAB4720F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		297AAB4920F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		297AAB4B20F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Mainstrings.strings; sourceTree = "<group>"; };
@@ -1884,6 +1887,7 @@
 			children = (
 				29BEE633252CCFE300D456F8 /* Assets.xcassets */,
 				29BEE635252CCFE300D456F8 /* Info.plist */,
+				2979D5FB2EE1D2F100BB2F54 /* AuthenticationManager.swift */,
 				29BEE6C7252E144F00D456F8 /* HabiticaWidgets.swift */,
 				29BEE6CD252E14C000D456F8 /* RemainingDailiesWidget.swift */,
 				29BEE6E1252E1B3600D456F8 /* Color-Extensions.swift */,
@@ -1893,6 +1897,7 @@
 				29BEE75F252E367600D456F8 /* URLImage.swift */,
 				29BEE7B4252EE92D00D456F8 /* AddTaskWidget.swift */,
 				29BEE81D252F101600D456F8 /* TaskListWidget.swift */,
+				2979D5F22EE1CEFB00BB2F54 /* TaskManager.swift */,
 			);
 			path = "Habitica Widgets";
 			sourceTree = "<group>";
@@ -2399,6 +2404,7 @@
 			isa = PBXGroup;
 			children = (
 				29CBCDA72EC4FF6D0020FC14 /* UIConstants.swift */,
+				2979D5F42EE1D1E000BB2F54 /* AuthenticationStorage.swift */,
 				299BD6391F557FE700E22935 /* AuthenticationManager.swift */,
 				29E162E11FFC21E100685640 /* CustomFontMetrics.swift */,
 				29706C8A27D27893006EC139 /* Emoji.swift */,
@@ -3328,20 +3334,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29BEE64D252DD3F400D456F8 /* TaskManager.swift in Sources */,
-				29A9858125472D1700F04665 /* HabiticaAnalytics.swift in Sources */,
+				2979D5F72EE1D1E500BB2F54 /* AuthenticationStorage.swift in Sources */,
 				29BEE6ED252E27B800D456F8 /* Widget.intentdefinition in Sources */,
 				29BEE755252E321F00D456F8 /* AvatarWidget.swift in Sources */,
 				2995F7FC25BAF3B600322CB3 /* RemoteLogger.swift in Sources */,
 				29BEE632252CCFE100D456F8 /* StatsWidget.swift in Sources */,
-				29BEE659252DD85C00D456F8 /* BaseRepository.swift in Sources */,
 				29A4CB77257FF31F0013F0B3 /* String-SafeExtensions.swift in Sources */,
 				29CEA81D26414F0D00101C0A /* UIColor-Extensions.swift in Sources */,
-				29BEE65F252DD86200D456F8 /* AuthenticationManager.swift in Sources */,
 				29BEE6D7252E14F000D456F8 /* HabiticaWidgets.swift in Sources */,
 				29BEE760252E367600D456F8 /* URLImage.swift in Sources */,
 				2988EFC328D32C4900D703BC /* Strings.swift in Sources */,
 				29BEE6E7252E1B7700D456F8 /* Color-Extensions.swift in Sources */,
+				2979D5FC2EE1D2F100BB2F54 /* AuthenticationManager.swift in Sources */,
+				2979D5F32EE1CEFB00BB2F54 /* TaskManager.swift in Sources */,
 				29D064B926414E5A007D4F4F /* UIColor-Habitica.swift in Sources */,
 				29BEE75A252E33AB00D456F8 /* Avatar.swift in Sources */,
 				29ED62DF2DA540CA0060A60A /* Secrets.swift in Sources */,
@@ -3358,8 +3363,8 @@
 			files = (
 				2995F7FB25BAF3B600322CB3 /* RemoteLogger.swift in Sources */,
 				29ED62DE2DA540CA0060A60A /* Secrets.swift in Sources */,
-				29A9857F25472D1600F04665 /* HabiticaAnalytics.swift in Sources */,
 				7A84E1B32289963E0081E96F /* BaseRepository.swift in Sources */,
+				2979D5F62EE1D1E500BB2F54 /* AuthenticationStorage.swift in Sources */,
 				7A84E1B42289968B0081E96F /* AuthenticationManager.swift in Sources */,
 				7A84E1B222898E9F0081E96F /* TaskManager.swift in Sources */,
 				7A84E194228928AC0081E96F /* IntentHandler.swift in Sources */,
@@ -3810,6 +3815,7 @@
 				293282141F389CC000D42961 /* SetupCustomizationItemView.swift in Sources */,
 				2974BDAD208F68A800EC1A25 /* CustomizationHeaderView.swift in Sources */,
 				29DF934F2ECDFAB60047801F /* LoginIncentiveSheet.swift in Sources */,
+				2979D5F52EE1D1E000BB2F54 /* AuthenticationStorage.swift in Sources */,
 				29D50A6825F66F760009CF55 /* UIWindowScene-Extensions.swift in Sources */,
 				2927024C24E3040A00BCAA77 /* HallOfPatronsDataSource.swift in Sources */,
 				D9BB45D41E7849B40002AE2E /* ChallengeTaskListView.swift in Sources */,

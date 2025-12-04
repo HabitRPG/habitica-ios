@@ -18,7 +18,6 @@ class TaskManager {
     
     init() {
         AuthenticationManager.shared.initialize(withStorage: KeychainAuthenticationStorage())
-        
         setupDatabase()
     }
 

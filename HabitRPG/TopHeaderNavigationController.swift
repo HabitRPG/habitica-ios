@@ -48,7 +48,6 @@ protocol TopHeaderNavigationControllerProtocol: AnyObject {
 
 class TopHeaderViewController: UINavigationController, TopHeaderNavigationControllerProtocol, Themeable {
     @objc public var state: TopHeaderState = .visible
-    @objc public var defaultNavbarHiddenColor = UIColor.purple300
     @objc public var defaultNavbarVisibleColor = ThemeService.shared.theme.contentBackgroundColor
     private var headerView: UIView?
     private var alternativeHeaderView: UIView?
@@ -198,7 +197,6 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .semibold),
             NSAttributedString.Key.kern: 0.6
         ]
-        defaultNavbarHiddenColor = theme.navbarHiddenColor
         defaultNavbarVisibleColor = theme.contentBackgroundColor
         visibleTintColor = theme.primaryTextColor
 

@@ -67,6 +67,11 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
         
         knownIssues = configRepository.array(variable: .knownIssues)
         populateKnownIssues()
+        
+        knownIssuesStackView.cornerRadius = UIConstants.largeCornerRadius
+        updateAppBackground.cornerRadius = UIConstants.largeCornerRadius
+        clearCacheBackground.cornerRadius = UIConstants.largeCornerRadius
+        manualSyncBackground.cornerRadius = UIConstants.largeCornerRadius
     }
     
     override func populateText() {
