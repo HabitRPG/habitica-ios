@@ -51,12 +51,6 @@ class UserManager: NSObject {
                         })
                     }).withLatest(from: SignalProducer<UserProtocol, Never>(value: user)) ?? Signal<([TaskProtocol], UserProtocol), Never>.empty
             }).on(value: {[weak self] (tasks, user) in
-                
-                if UserDefaults.standard.bool(forKey: "isInSetup") && user.flags?.welcomed == false {
-                    self?.userRepository.updateUser(key: "flags.welcomed", value: true).observeCompleted {
-                    }
-                }
-                
                 var uncompletedTaskCount = 0
                 for task in tasks {
                     if task.type == "daily" && !task.completed {
@@ -150,6 +144,10 @@ class UserManager: NSObject {
     private func onUserUpdated(user: UserProtocol) {
         if !user.isValid {
             return
+        }
+        if !UserDefaults.standard.bool(forKey: "isInSetup") && user.flags?.welcomed == false {
+            userRepository.updateUser(key: "flags.welcomed", value: true).observeCompleted {
+            }
         }
         updateQuestStatus(user: user)
         SoundManager.shared.currentTheme = SoundTheme(rawValue: user.preferences?.sound ?? "") ?? SoundTheme.none
@@ -320,7 +318,7 @@ class UserManager: NSObject {
         let taskText = reminder.task?.text?.unicodeEmoji
         
         let content = UNMutableNotificationContent()
-        content.body = taskText ?? ""
+        content.title = taskText ?? ""
         content.sound = UNNotificationSound.default
         if let taskID = reminder.task?.id, let taskType = reminder.task?.type {
             content.userInfo = [
@@ -347,9 +345,7 @@ class UserManager: NSObject {
     private func setTimezoneOffset(_ user: UserProtocol) {
         let offset = -(NSTimeZone.local.secondsFromGMT() / 60)
         if user.preferences?.timezoneOffset != offset {
-            userRepository.updateUser(key: "preferences.timezoneOffset", value: offset).observeCompleted {
-                
-            }
+            userRepository.updateUser(key: "preferences.timezoneOffset", value: offset).observeCompleted {}
         }
     }
     
