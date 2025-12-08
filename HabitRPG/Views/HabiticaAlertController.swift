@@ -10,7 +10,6 @@ import UIKit
 
 @objc
 class HabiticaAlertController: UIViewController, Themeable {
-    
     @IBOutlet weak var backgroundView: UIVisualEffectView!
     @IBOutlet weak var topOffsetConstraint: NSLayoutConstraint!
     @IBOutlet weak var textStackView: UIStackView!
@@ -83,7 +82,6 @@ class HabiticaAlertController: UIViewController, Themeable {
     
     var messageFont = UIFontMetrics.default.scaledSystemFont(ofSize: 17)
     var messageColor: UIColor?
-    
     var messageView: UILabel?
     
     var arrangeMessageLast = false

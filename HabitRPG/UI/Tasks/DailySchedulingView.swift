@@ -93,7 +93,7 @@ struct DailySchedulingView: View {
             if UIAccessibility.buttonShapesEnabled {
                 EmptyView()
             } else {
-                Separator()
+                Divider()
             }
         }
         VStack(spacing: 0) {

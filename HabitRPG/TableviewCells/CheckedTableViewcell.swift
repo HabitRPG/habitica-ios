@@ -72,7 +72,9 @@ class CheckedTableViewCell: TaskTableViewCell {
                 checkedCount += 1
             }
             checklistDoneLabel.text = "\(checkedCount)"
+            checklistDoneLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 11)
             checklistTotalLabel.text = "\(checklistCount)"
+            checklistTotalLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 11)
             if checkedCount == checklistCount {
                 if theme.isDark {
                     checklistIndicator.backgroundColor = .gray50
@@ -219,7 +221,9 @@ class CheckedTableViewCell: TaskTableViewCell {
         super.layout()
         checkBox.pin.start().top().bottom().width(40)
         if !checklistIndicator.isHidden {
-            checklistIndicator.pin.height(42).vCenter()
+            let lineHeight = checklistTotalLabel.font.lineHeight
+            let charCount = max(checklistTotalLabel.text?.count ?? 0, checklistDoneLabel.text?.count ?? 0)
+            checklistIndicator.pin.height(lineHeight * 2 + 10).vCenter().width(CGFloat(charCount) * 0.7 * lineHeight + 8).end(12)
             checklistIndicatorSeparator.pin.width(12).height(1).center()
             checklistDoneLabel.pin.above(of: checklistIndicatorSeparator).marginBottom(2).start().end().sizeToFit(.width)
             checklistTotalLabel.pin.below(of: checklistIndicatorSeparator).marginTop(2).start().end().sizeToFit(.width)

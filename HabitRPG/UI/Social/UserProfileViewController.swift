@@ -354,7 +354,7 @@ struct ProfilePage: View {
                             }.buttonStyle(.borderless)
                         }.padding(.horizontal, 13)
                         
-                        Separator(padding: 0)
+                        Divider()
                         
                         HStack {
                             VStack(alignment: .leading) {
@@ -369,7 +369,7 @@ struct ProfilePage: View {
                         }.padding(.horizontal, 13)
                         
                         if let blurb = viewModel.member?.profile?.blurb {
-                            Separator(padding: 0)
+                            Divider()
                             VStack(alignment: .leading) {
                                 Text(L10n.Titles.about).scaledFont(size: 17, weight: .semibold)
                                 Text(blurb)

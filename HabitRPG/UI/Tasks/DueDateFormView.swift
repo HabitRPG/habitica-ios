@@ -16,7 +16,7 @@ struct DueDateFormView: View {
         VStack(spacing: 0) {
             FormDatePicker(title: Text(L10n.Tasks.Form.dueDate), value: $date)
             if date != nil {
-                Separator()
+                Divider()
                 Button(action: {
                     withAnimation {
                         date = nil

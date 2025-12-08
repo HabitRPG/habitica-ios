@@ -64,12 +64,6 @@ extension BottomSheetMenuitem where Title == Text {
     }
 }
 
-struct BottomSheetMenuSeparator: View {
-    var body: some View {
-        Separator()
-    }
-}
-
 struct BottomSheetHeaderBar<Title: View, Left: View, Right: View>: View {
     @ObservedObject var themeService = ThemeService.shared
     var title: Title

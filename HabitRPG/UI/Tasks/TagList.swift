@@ -8,14 +8,6 @@
 import SwiftUI
 import Habitica_Models
 
-struct Separator: View {
-    var padding: CGFloat = 14
-    
-    var body: some View {
-        Rectangle().fill(Color(ThemeService.shared.theme.separatorColor)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1).padding(.horizontal, padding)
-    }
-}
-
 struct TagList: View {
     @ObservedObject var themeService = ThemeService.shared
     @Binding var selectedTags: [TagProtocol]
@@ -29,26 +21,31 @@ struct TagList: View {
                     return selectedTag.id == tag.id
                 }
                 HStack {
-                    Text(tag.text ?? "TagName").font(.body).foregroundStyle(isSelected ? Color.accentColor : Color(themeService.theme.primaryTextColor))
+                    Text(tag.text ?? "TagName")
+                        .font(.body)
                     Spacer()
                     if isSelected {
-                        Image(Asset.checkmarkSmall.name).foregroundStyle(.tint)
+                        Image(systemName: "checkmark").scaledFont(size: 12, weight: .bold)
+                            .transition(.scale)
                     }
                 }
-                .background(Color(themeService.theme.windowBackgroundColor).cornerRadius(UIConstants.largeCornerRadius))
-                .frame(height: 50).padding(.horizontal, 26)
+                .foregroundStyle(isSelected ? taskColor : Color(themeService.theme.primaryTextColor))
+                .contentShape(.rect)
+                .frame(minHeight: 50).padding(.horizontal, 26)
                 .onTapGesture {
                     UISelectionFeedbackGenerator.oneShotSelectionChanged()
-                    if isSelected {
-                        selectedTags.removeAll { selectedTag in
-                            return selectedTag.id == tag.id
+                    withAnimation(.spring(duration: 0.2)) {
+                        if isSelected {
+                            selectedTags.removeAll { selectedTag in
+                                return selectedTag.id == tag.id
+                            }
+                        } else {
+                            selectedTags.append(tag)
                         }
-                    } else {
-                        selectedTags.append(tag)
                     }
                 }
                 if tag.id != allTags.last?.id {
-                    Separator()
+                    Divider()
                 }
             }
         }
