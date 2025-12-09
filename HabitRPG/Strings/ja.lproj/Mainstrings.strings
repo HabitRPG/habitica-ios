@@ -1550,7 +1550,7 @@
 "got_it" = "了解！";
 "open_stats" = "ステータスを開く";
 "class_change_confirm_description" = "これにより、ショップで解放される装備が切り替わり、使用可能なスキルが変更され、ステータスポイントがリセットされます。";
-"class_change_success_description" = "スキル %@ を使えるようになりました。ショップで装備を購入することもできます。レベルを上げてステータスポイントを獲得し、スキルをパワーアップさせましょう。";
+"class_change_success_description" = "レベルごとに、スキルの効果を高めたりHabiticaのゲームプレイに影響を与えたりできるステータスポイントを獲得できます";
 "two_gems_per_month" = "毎月+2ジェム";
 "max_gem_cap" = "ジェム最大数";
 "subscription.stay_motivated_with_more_rewards" = "有料プランに加入すると、さらに多くの特典でモチベーションを維持できます";
