@@ -969,7 +969,7 @@
 "purchasedEquipmentTitle" = "Perlengkapan dibeli";
 "you_got_achievement" = "Kamu mendapatkan Pencapaian!";
 "view_achievements" = "Lihat Pencapaian";
-"first_drop_explanation2" = "Pergi ke Item milikmu dan cobalah mengombinasikan telur barumu dengan Ramuan Penetas!";
+"first_drop_explanation2" = "Coba gabungkan Telur barumu dengan Ramuan Penetas!";
 "go_to_items" = "Buka Item";
 "first_drop_title" = "Kamu menemukan item baru!";
 "view_onboarding_tasks" = "Lihat Tugas Pengenalan";
@@ -1063,7 +1063,7 @@
 "magic_potions" = "Ramuan Ajaib";
 "magic_potion" = "Ramuan Ajaib";
 "use_immediately_disclaimer" = "Ini akan langsung berefek setelah pembelian!";
-"gift_one_get_one_data.info_limitations" = "Ini adalah acara berbatas waktu yang dimulai pada %@ (%@ UTC) dan akan berakhir pada %@ (%@ UTC). Promosi ini hanya berlaku jika Anda memberikan hadiah kepada Habitican lain. Jika Anda atau penerima hadiah Anda sudah memiliki langganan, langganaan yang dihadiahkan akan menambahkan kredit berbulan-bulan yang hanya akan digunakan setelah langganan saat ini dibatalkan atau habis masa berlakunya.";
+"gift_one_get_one_data.info_limitations" = "Ini adalah acara berbatas waktu yang dimulai pada %@ dan akan berakhir pada %@. Promosi ini hanya berlaku jika kamu memberikan hadiah kepada Habitican lain. Jika kamu atau penerima hadiah kamu sudah memiliki langganan, langganaan yang dihadiahkan akan menambahkan kredit berbulan-bulan yang hanya akan digunakan setelah langganan saat ini dibatalkan atau habis masa berlakunya.";
 "gift_one_get_one_data.purchase_banner_title" = "Memberikan berlangganan dan dapatkan berlangganan secara gratis sampai %@";
 "create_guild" = "Buat Guild";
 "create_guild_description" = "Untuk membuat Guild, masuk ke situs Habitica dan ketuk tombol \"Buat\" pada layar \"Guild Saya\".";
@@ -1149,7 +1149,7 @@
 "show_details" = "Tampilkan Detil";
 "gift_gems_disclaimer" = "Habitica tidak akan pernah meminta kamu untuk memberikan permata kepada pemain lain. Mengemis orang lain agar diberi permata adalah tindakan pelanggaran pada Pedoman Komunitas dan akan dilaporkan pada admin@habitica.com.";
 "gift_gems_alert_title" = "Kepada siapa kamu ingin mengirim hadiah?";
-"hourglasses_description" = "Jam Pasir Mistik adalah bentuk mata uang yang sangat langka yang hanya dapat kamu terima untuk berlangganan Habitica selama tiga bulan berturut-turut atau lebih. Ini digunakan di toko Penjelajah Waktu untuk membeli set perlengkapan masa lalu, peliharaan, tunggangan, latar belakang animasi, atau bahkan pencarian khusus.\n\nKamu dapat menerima hingga empat Jam Pasir Mistik setahun. Saat pemberiannya didasarkan pada jadwal perpanjangan langgananmu. Jam Pasir Ajaib dikirim pada hari pertama bulan baru setelah pembayaran berlangganan terakhirmu apabila memenuhi syarat untuk jam pasir. Lihat halaman [Langganan] untuk detail selengkapnya.";
+"hourglasses_description" = "Jam Pasir Mistik adalah mata uang yang sangat langka dan hanya bisa kamu dapatkan dengan berlangganan Habitica. Kamu dapat menggunakannya di Toko Penjelajah Waktu untuk membeli set Perlengkapan Langganan dari masa lalu, Hewan Peliharaan eksklusif, Tunggangan, Latar Belakang animasi, atau bahkan Misi spesial! Semua bonus tambahan ini adalah cara yang bagus untuk tetap termotivasi sepanjang tahun dan memberi hadiah untuk dirimu atas kerja kerasmu.\n\nPara pelanggan menerima satu Jam Pasir Mistik di awal setiap bulan selama mereka masih memiliki manfaat langganan, ditambah berbagai keuntungan lainnya. Jangan lupa untuk melihat opsi langganan kami jika kamu tertarik dengan apa yang ditawarkan oleh para Penjelajah Waktu!";
 "learn_more" = "Pelajari Lebih Lanjut";
 "excess_no_items_left" = "Kamu telah mempunyai semua yang kamu butuhkan untuk semua peliharaan %@. Apakah kamu yakin untuk membeli %d %@s?";
 "percent_complete" = "%d%% Terselesaikan";
@@ -1288,7 +1288,7 @@
 "shops.try_on_customize_avatar_return_next_month" = "Anda dapat mencobanya dengan menyesuaikan avatar Anda. Pastikan untuk memeriksa kembali nanti untuk mengetahui opsi bulan depan!";
 "share_avatar" = "Bagikan Avatar";
 "shops.try_on_customize_avatar" = "Anda dapat mencobanya dengan menyesuaikan avatar Anda.";
-"shops.try_on_equipment" = "Anda dapat mencobanya dari Peralatan. Pastikan untuk memeriksa kembali nanti untuk mengetahui opsi bulan depan!";
+"shops.try_on_equipment" = "Kamu dapat mencobanya dari Peralatan. Stok baru datang setiap awal bulam!";
 "empty.want_more_items" = "Mencari lebih banyak?";
 "shops.purchased_all_gear_armoire_empty" = "Perlengkapan baru dirilis selama Gala musiman. The Enchanted Armoire juga mendapat stok baru setiap bulan!";
 "message" = "Pesan";
@@ -1402,3 +1402,9 @@
 "subscription.enjoy_these_benefits" = "Nikmati semua hadiah eksklusif ini beserta langgananmu";
 "subscription.subscribers_receive" = "Pelanggan menerima sebuah Jam Pasir Mistik, Set Perlengkapan Misteri, dan Permata yang diisi ulang di Pasar dalam waktu dua hari pertama setiap bulan";
 "subscription.subscribe_again_hourglasses" = "Berlanggan lagi untuk tetap menerima Jam Pasir Mistik";
+"quest_items_found" = "Kamu telah menemukan %d item misi";
+"gift_one_get_one_screen_banner" = "Selama promosi ini masih aktif, kamu akan mendapatkan langganan yang sama secara otomatis setelah memberikan hadiahmu.";
+"one_quest_item_found" = "Kamu telah menemukan 1 item misi";
+"chat_with_question" = "Dengan siapa kamu ingin mengobrol?";
+"class_system_unlocked" = "Sistem Kelas terbuka";
+"class_system_unlocked_description" = "Pilih kelas yang sesuai dengan gaya mainmu dan buka keterampilan serta perlengkapan khusus yang dapat membantumu dalam perjalananmu";
