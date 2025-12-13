@@ -1418,3 +1418,13 @@
 "unlock_x_gear_and_skills" = "Buka %@ perlengkapan dan keterampilan";
 "turkey_day" = "Hari Pengucapan Syukur";
 "change_class_to" = "Ubah kelas menjadi %@";
+"got_it" = "Mengerti!";
+"class_change_confirm_description" = "Ini akan mengubah perlengkapan yang dibuka di toko-toko, mengubah keterampilan yang tersedia, dan mengatur ulang poin statistikmu.";
+"class_change_success_title" = "Kamu adalah seorang %@!";
+"class_change_success_description" = "Setiap level kamu mendapatkan satu poin Statistik yang dapat kamu gunakan untuk meningkatkan Keterampilanmu dan memengaruhi aspek permainan Habitica";
+"open_stats" = "Buka Statistik";
+"x_x_gem_cap" = "%d / %d Batas Permata";
+"class_change_confirm" = "Ubah kelas menjadi %s dengan 3 Permata?";
+"class_change_success_subtitle" = "Kamu dapat mengalokasikan stastik sekarang";
+"stats" = "Statistik";
+"continue_benefits" = "Lanjutkan Manfaat";
