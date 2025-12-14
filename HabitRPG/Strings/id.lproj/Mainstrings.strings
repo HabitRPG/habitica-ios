@@ -1428,3 +1428,13 @@
 "class_change_success_subtitle" = "Kamu dapat mengalokasikan stastik sekarang";
 "stats" = "Statistik";
 "continue_benefits" = "Lanjutkan Manfaat";
+"buy_gems_with_gold" = "Beli Permata dengan Emas";
+"restore_purchase" = "Pulihkan Pembelian";
+"change_password_helper" = "Kata sandi harus terdiri dari 8 karakter atau lebih. Mengubah kata sandi akan mengeluarkan kamu dari semua perangkat lain dan alat pihak ketiga yang mungkin kamu gunakan.";
+"api_token_title" = "Token API";
+"api_token_is_password" = "Token APImu itu seperti kata sandi";
+"api_token_password_description" = "Jangan membagikannya secara publik. Kamu mungkin sesekali akan diminta untuk memberikan User ID-mu, tetapi jangan pernah memposting API Token kamu di tempat yang dapat dilihat orang lain, termasuk di GitHub.";
+"api_token_reset_title" = "Jika kamu membutuhkan token API baru";
+"resubscribe_to_pick_up" = "Berlanggan lagi untuk melanjuti progresmu!";
+"no_active_subscription_to_restore" = "Tidak dapat menemukan langganan aktif untuk dipulihkan";
+"subscriber_benefit" = "Manfaat Pelanggan";
