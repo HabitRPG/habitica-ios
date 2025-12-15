@@ -1440,3 +1440,11 @@
 "subscriber_benefit" = "Manfaat Pelanggan";
 "copy_token" = "Salin Token";
 "api_token_reset_desc" = "Kamu dapat mengubah kata sandimu untuk diatur ulanf. Saat diatur ulang, kamu harus masuk lagi di perangkat-perangkat lain yang kamu gunakan untuk Habitica dan menyediakan Token API baru untuk alat pihak ketiga yang mungkin kamu gunakan.";
+"save_preferences" = "Simpan Preferensi";
+"accept_all" = "Setuju dengan semua";
+"take_effect_immediately" = "Ini akan langsung berlaku setelah pembelian!";
+"membership" = "Langganan";
+"participating" = "Berpartisipasi";
+"not_participating" = "Tidak berpartisipasi";
+"ownership" = "Kepemilikan";
+"task_reminder" = "Pengingat Tugas";
