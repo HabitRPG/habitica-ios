@@ -1438,3 +1438,5 @@
 "resubscribe_to_pick_up" = "Berlanggan lagi untuk melanjuti progresmu!";
 "no_active_subscription_to_restore" = "Tidak dapat menemukan langganan aktif untuk dipulihkan";
 "subscriber_benefit" = "Manfaat Pelanggan";
+"copy_token" = "Salin Token";
+"api_token_reset_desc" = "Kamu dapat mengubah kata sandimu untuk diatur ulanf. Saat diatur ulang, kamu harus masuk lagi di perangkat-perangkat lain yang kamu gunakan untuk Habitica dan menyediakan Token API baru untuk alat pihak ketiga yang mungkin kamu gunakan.";
