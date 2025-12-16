@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Habitica_Models
 
-class MountOverviewViewController: StableOverviewViewController<MountOverviewDataSource> {
+class MountOverviewViewController: StableOverviewViewController<MountProtocol, MountOverviewDataSource> {
     
     override var organizeByColor: Bool {
         didSet {
@@ -28,7 +29,7 @@ class MountOverviewViewController: StableOverviewViewController<MountOverviewDat
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == StoryboardSegue.Main.mountDetailSegue.rawValue {
+        if segue.identifier == StoryboardSegue.Stable.mountDetailSegue.rawValue {
             let destination = segue.destination as? MountDetailViewController
             guard let cell = sender as? UICollectionViewCell else {
                 return

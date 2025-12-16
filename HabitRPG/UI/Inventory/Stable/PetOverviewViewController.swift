@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Habitica_Models
 
-class PetOverviewViewController: StableOverviewViewController<PetOverviewDataSource> {
+class PetOverviewViewController: StableOverviewViewController<PetProtocol, PetOverviewDataSource> {
     
     override var organizeByColor: Bool {
         didSet {
@@ -23,7 +24,7 @@ class PetOverviewViewController: StableOverviewViewController<PetOverviewDataSou
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == StoryboardSegue.Main.petDetailSegue.rawValue {
+        if segue.identifier == StoryboardSegue.Stable.petDetailSegue.rawValue {
             let destination = segue.destination as? PetDetailViewController
             guard let cell = sender as? UICollectionViewCell else {
                 return

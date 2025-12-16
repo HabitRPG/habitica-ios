@@ -194,7 +194,7 @@ class RouterHandler {
         }
         register("/inventory/stable") {
             self.displayTab(index: 4)
-            self.push(StoryboardScene.Main.stableViewController.instantiate())
+            self.push(StoryboardScene.Stable.stableViewController.instantiate())
         }
         register("/inventory/customizations/:type/:group") { link in
             self.displayTab(index: 4)
@@ -211,8 +211,8 @@ class RouterHandler {
         }
         register("/inventory/stable/pets/:petType") { link in
             self.displayTab(index: 4)
-            self.push(StoryboardScene.Main.stableViewController.instantiate())
-            let viewController = StoryboardScene.Main.petDetailViewController.instantiate()
+            self.push(StoryboardScene.Stable.stableViewController.instantiate())
+            let viewController = StoryboardScene.Stable.petDetailViewController.instantiate()
             viewController.searchKey = link["petType"] ?? ""
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.push(viewController)
@@ -220,8 +220,8 @@ class RouterHandler {
         }
         register("/inventory/stable/mounts/:mountType") { link in
             self.displayTab(index: 4)
-            self.push(StoryboardScene.Main.stableViewController.instantiate())
-            let viewController = StoryboardScene.Main.mountDetailViewController.instantiate()
+            self.push(StoryboardScene.Stable.stableViewController.instantiate())
+            let viewController = StoryboardScene.Stable.mountDetailViewController.instantiate()
             viewController.searchKey = link["mountType"] ?? ""
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.push(viewController)

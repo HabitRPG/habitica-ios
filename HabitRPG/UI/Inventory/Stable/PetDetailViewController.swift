@@ -106,7 +106,7 @@ class PetDetailViewController: StableDetailViewController<PetProtocol, PetStable
             if stableItem.trained > 0 && stableItem.pet?.type != "special" && stableItem.canRaise {
                 actions.append(UIAction(title: L10n.Stable.feed, handler: {[weak self] (_) in
                     self?.selectedPet = stableItem.pet
-                    self?.perform(segue: StoryboardSegue.Main.feedSegue)
+                    self?.perform(segue: StoryboardSegue.Stable.feedSegue)
                 }))
             }
             if stableItem.trained > 0 {

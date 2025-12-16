@@ -30,22 +30,18 @@ internal enum StoryboardSegue {
     case customizationSegue = "CustomizationSegue"
     case detailSegue = "DetailSegue"
     case equipmentSegue = "EquipmentSegue"
-    case feedSegue = "FeedSegue"
     case filterSegue = "FilterSegue"
     case formSegue = "FormSegue"
     case giftGemsSegue = "GiftGemsSegue"
     case guildsSegue = "GuildsSegue"
     case inboxSegue = "InboxSegue"
     case itemSegue = "ItemSegue"
-    case mountDetailSegue = "MountDetailSegue"
     case newsSegue = "NewsSegue"
     case notificationsSegue = "NotificationsSegue"
     case partySegue = "PartySegue"
-    case petDetailSegue = "PetDetailSegue"
     case settingsSegue = "SettingsSegue"
     case showShopSegue = "ShowShopSegue"
     case spellsSegue = "SpellsSegue"
-    case stableSegue = "StableSegue"
     case statsSegue = "StatsSegue"
     case equipmentDetailSegue
     case filterChangedSegue
@@ -63,6 +59,7 @@ internal enum StoryboardSegue {
     case showTimeTravelersSegue
     case showUserProfileSegue
     case showWebPromoSegue
+    case stableSegue
     case subscriptionSegue
     case tasksBoardSegue
   }
@@ -88,6 +85,12 @@ internal enum StoryboardSegue {
     case giftGemsSegue
     case giftSubscriptionSegue
     case inviteMembersSegue
+  }
+  internal enum Stable: String, SegueType {
+    case feedSegue = "FeedSegue"
+    case mountDetailSegue = "MountDetailSegue"
+    case petDetailSegue = "PetDetailSegue"
+    case showShopSegue = "ShowShopSegue"
   }
   internal enum Support: String, SegueType {
     case showFAQDetailSegue

@@ -204,7 +204,7 @@ struct LoginForm: View {
         }
         if showLoadingIndicator {
             HabiticaProgressView()
-                .padding(.top, 36)
+                .padding(.top, 40)
                 .padding(.bottom, 12)
         } else {
             let isFormValid = viewState == .login ? !email.isEmpty && isPasswordValid == true

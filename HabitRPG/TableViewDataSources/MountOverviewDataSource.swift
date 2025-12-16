@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-class MountOverviewDataSource: StableOverviewDataSource<PetProtocol> {
+class MountOverviewDataSource: StableOverviewDataSource<MountProtocol> {
     
     override init() {
         super.init()

@@ -50,7 +50,10 @@ struct SimpleItemDetails: View {
                 .cornerRadius(UIConstants.largeCornerRadius)
                 .padding(.bottom, 9)
         }
-        Text(item.text ?? "").foregroundStyle(Color(themeService.theme.primaryTextColor)).scaledFont(size: 22, weight: .bold)
+        Text(item.text ?? "")
+            .foregroundStyle(Color(themeService.theme.primaryTextColor))
+            .scaledFont(size: 22, weight: .bold)
+            .multilineTextAlignment(.center)
         if let notes = item.notes, !notes.isEmpty, let nsAttr = try? HabiticaMarkdownHelper.toHabiticaAttributedString(notes) {
             Text(AttributedString(nsAttr)).foregroundStyle(Color(themeService.theme.primaryTextColor)).scaledFont(size: 17)
                 .fixedSize(horizontal: false, vertical: true)

@@ -82,9 +82,6 @@ class PetDetailDataSource: StableDetailDataSource<PetProtocol, PetStableItem> {
                         self?.sections[0].items.append(item)
                     }
                 })
-                if self?.visibleSections.count == 1 {
-                    self?.visibleSections[0].title = nil
-                }
                 self?.collectionView?.reloadData()
             }).start())
         

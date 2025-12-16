@@ -369,6 +369,7 @@
 		29BE1FD627DA3E01001BBBA8 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 29BE1FD427DA3DA0001BBBA8 /* content.json */; };
 		29BE1FD827DA3E11001BBBA8 /* world-state.json in Resources */ = {isa = PBXBuildFile; fileRef = 29BE1FD727DA3E11001BBBA8 /* world-state.json */; };
 		29BE1FD927DA3E72001BBBA8 /* world-state.json in Resources */ = {isa = PBXBuildFile; fileRef = 29BE1FD727DA3E11001BBBA8 /* world-state.json */; };
+		29BE867F2EF167E700828DBC /* Stable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29BE867E2EF167E700828DBC /* Stable.storyboard */; };
 		29BEE62D252CCFE100D456F8 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BEE62C252CCFE100D456F8 /* WidgetKit.framework */; platformFilter = ios; };
 		29BEE62F252CCFE100D456F8 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BEE62E252CCFE100D456F8 /* SwiftUI.framework */; };
 		29BEE632252CCFE100D456F8 /* StatsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BEE631252CCFE100D456F8 /* StatsWidget.swift */; };
@@ -1074,6 +1075,7 @@
 		29BE1FD227DA2B1E001BBBA8 /* SkillTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SkillTableViewController.swift; path = Skills/SkillTableViewController.swift; sourceTree = "<group>"; };
 		29BE1FD427DA3DA0001BBBA8 /* content.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
 		29BE1FD727DA3E11001BBBA8 /* world-state.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "world-state.json"; sourceTree = "<group>"; };
+		29BE867E2EF167E700828DBC /* Stable.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Stable.storyboard; path = Base.lproj/Stable.storyboard; sourceTree = "<group>"; };
 		29BEE62B252CCFE100D456F8 /* Habitica WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Habitica WidgetsExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BEE62C252CCFE100D456F8 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		29BEE62E252CCFE100D456F8 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -1497,6 +1499,7 @@
 			isa = PBXGroup;
 			children = (
 				290279AF20583EF9006DACB9 /* Intro.storyboard */,
+				29BE867E2EF167E700828DBC /* Stable.storyboard */,
 				D9C31DB11C6501090096F4EC /* Main.storyboard */,
 				290279AB20583EDE006DACB9 /* Settings.storyboard */,
 				290279A520583ED3006DACB9 /* Shop.storyboard */,
@@ -3199,6 +3202,7 @@
 				D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */,
 				2914487C20864EB800F3A6B5 /* EquipmentOverviewItemView.xib in Resources */,
 				49A84FB31F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib in Resources */,
+				29BE867F2EF167E700828DBC /* Stable.storyboard in Resources */,
 				29AAE5592450934C00220DB1 /* HRPGBulkPurchaseView.xib in Resources */,
 				49A37A8420C0FA49008C28F5 /* EmptyTableViewCell.xib in Resources */,
 				D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */,

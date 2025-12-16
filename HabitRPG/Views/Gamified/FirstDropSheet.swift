@@ -10,6 +10,7 @@ import SwiftUI
 
 struct FirstDropSheet: View {
     @ObservedObject var themeService = ThemeService.shared
+    @Environment(\.presentationManager) var presentationManager
     let eggKey: String
     let potionKey: String
     
@@ -23,6 +24,7 @@ struct FirstDropSheet: View {
                             title: Text(L10n.firstDropExplanation2),
                             description: Text(L10n.firstDropExplanation1)) {
             HabiticaButtonUI(label: Text(L10n.goToPetsMounts), color: Color(themeService.theme.fixedTintColor), onTap: {
+                presentationManager.dismiss()
                 RouterHandler.shared.handle(urlString: "/inventory/stable")
             })
         }

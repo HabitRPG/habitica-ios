@@ -9,7 +9,7 @@
 import UIKit
 import Habitica_Models
 
-class StableOverviewViewController<DS>: BaseCollectionViewController {
+class StableOverviewViewController<ANIMAL: AnimalProtocol, DS: StableOverviewDataSource<ANIMAL>>: BaseCollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var datasource: DS?
     
@@ -36,5 +36,19 @@ class StableOverviewViewController<DS>: BaseCollectionViewController {
         super.applyTheme(theme: theme)
         collectionView.backgroundColor = theme.contentBackgroundColor
         headerView.applyTheme(backgroundColor: theme.contentBackgroundColor)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let width = 102
+        let viewWidth = Int(collectionView.frame.size.width)
+        var count = Int(viewWidth / width)
+        if let inSection = datasource?.collectionView(collectionView, numberOfItemsInSection: section) {
+            if inSection < count {
+                count = inSection
+            }
+        }
+        let totalWidth = width * count + (14 * (count-1))
+        let spacing = CGFloat(viewWidth - totalWidth) / 2
+        return UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
     }
 }

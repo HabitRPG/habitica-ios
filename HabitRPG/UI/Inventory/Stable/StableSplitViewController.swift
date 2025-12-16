@@ -49,8 +49,6 @@ class StableSplitViewController: HabiticaSplitViewController {
                 viewController.organizeByColor = organizeByColor
             }
         }
-        
-        HabiticaAnalytics.shared.log("open_stable")
     }
     
     override func populateText() {

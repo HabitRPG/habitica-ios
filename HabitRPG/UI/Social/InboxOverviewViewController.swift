@@ -26,6 +26,10 @@ class InboxOverviewViewController: BaseTableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60
         
+        if #unavailable(iOS 26.0) {
+            doneButton.style = .done
+        }
+        
         #if !targetEnvironment(macCatalyst)
         refreshControl = HabiticaRefresControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -133,7 +137,9 @@ class InboxOverviewViewController: BaseTableViewController {
             }
         }
         alertController.addCancelAction()
+        alertController.onAppeared = {
+            usernameTextField.becomeFirstResponder()
+        }
         alertController.show()
-        usernameTextField.becomeFirstResponder()
     }
 }

@@ -23,4 +23,11 @@ public extension NotificationProtocol {
     var isDismissable: Bool {
         return !id.contains("invite-")
     }
+    
+    var safeId: String {
+        if isValid {
+            return id
+        }
+        return ""
+    }
 }

@@ -94,7 +94,7 @@ struct QuestReward<Icon: View, Label: View>: View {
             label
                 .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
                 .scaledFont(size: 15, weight: .semibold)
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding(4)
         .background(Color(themeService.theme.windowBackgroundColor))
@@ -110,6 +110,7 @@ struct QuestDetails: View {
             QuestGoalViewUI(quest: quest)
             Text(L10n.Tasks.rewards)
                 .scaledFont(size: 16, weight: .semibold)
+                .padding(.bottom, 15)
             VStack(spacing: 8) {
                 if let experience = quest.drop?.experience {
                     QuestReward(icon: Image(uiImage: HabiticaIcons.imageOfExperienceReward), label: Text(L10n.Quests.rewardExperience(experience)))

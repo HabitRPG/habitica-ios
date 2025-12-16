@@ -428,7 +428,7 @@ struct NotificationsPage: View {
             } else {
                 ScrollView {
                     LazyVStack(spacing: 8) {
-                        ForEach(viewModel.notifications, id: \.id) { notification in
+                        ForEach(viewModel.notifications, id: \.safeId) { notification in
                             if notification.isValid {
                                 renderNotification(notification: notification)
                                     .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))

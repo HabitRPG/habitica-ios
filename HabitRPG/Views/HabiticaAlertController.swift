@@ -37,6 +37,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     
     var onKeyboardChange: ((Bool) -> Void)?
     var onDismissAction: (() -> Void)?
+    var onAppeared: (() -> Void)?
     
     var contentView: UIView? {
         didSet {
@@ -159,6 +160,13 @@ class HabiticaAlertController: UIViewController, Themeable {
         scrollView.alwaysBounceVertical = false
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let action = onAppeared {
+            action()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

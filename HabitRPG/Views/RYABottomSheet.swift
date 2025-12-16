@@ -146,6 +146,7 @@ struct RYATaskView: View {
                     .padding(.vertical, 15)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
+            .padding(.trailing, 16)
             if !task.checklist.isEmpty {
                 ForEach(task.checklist, id: \.id) { checklistItem in
                     HStack {
@@ -166,6 +167,7 @@ struct RYATaskView: View {
                             .padding(.vertical, 14)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
+                    .padding(.trailing, 16)
                     .fixedSize(horizontal: false, vertical: true)
                     .foregroundStyle(Color(checklistItem.completed ? themeService.theme.secondaryTextColor : themeService.theme.primaryTextColor))
                     .scaledFont(size: 16, weight: .semibold)

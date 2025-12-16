@@ -23,7 +23,7 @@ class GlassTextField: UIVisualEffectView {
     init() {
         if #available(iOS 26.0, *) {
             let effect = UIGlassEffect()
-            effect.tintColor = UIColor("787880").withAlphaComponent(0.05)
+            effect.tintColor = ThemeService.shared.theme.offsetBackgroundColor.withAlphaComponent(0.4)
             super.init(effect: effect)
         } else {
             super.init(effect: .none)
@@ -49,5 +49,9 @@ class GlassTextField: UIVisualEffectView {
     override var intrinsicContentSize: CGSize {
         let fieldSize = textField.intrinsicContentSize
         return CGSize(width: fieldSize.width + 32, height: fieldSize.height + 24)
+    }
+    
+    override func becomeFirstResponder() -> Bool {
+        textField.becomeFirstResponder()
     }
 }

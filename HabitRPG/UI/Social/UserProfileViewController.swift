@@ -650,6 +650,9 @@ class UserProfileViewController: BaseHostingViewController<ProfilePage> {
             disposable.inner.add(socialRepository.getMember(userID: userID).skipNil().flatMap(.latest, {[weak self] (member) in
                 return self?.fetchGearStats(member: member) ?? SignalProducer.empty
             }).on(value: {[weak self] (member, gear) in
+                if !member.isValid {
+                    return
+                }
                 self?.viewModel.member = member
                 if self?.username == nil {
                     self?.username = member.username
@@ -786,6 +789,7 @@ class UserProfileViewController: BaseHostingViewController<ProfilePage> {
             UIMenu(options: .displayInline, children: [ UIDeferredMenuElement({[weak self] add in
                 var items = [] as [UIAction]
                 guard let member = self?.viewModel.hallMember else {
+                    add([])
                     return
                 }
                 if self?.user?.hasPermission(.userSupport) == true {
