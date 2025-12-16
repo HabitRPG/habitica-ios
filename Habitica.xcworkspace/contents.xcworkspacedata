@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:HabitRPG/Storyboards/Base.lproj/Stable.storyboard">
-   </FileRef>
-   <FileRef
       location = "group:Habitica Models/Habitica Models.xcodeproj">
    </FileRef>
    <FileRef
