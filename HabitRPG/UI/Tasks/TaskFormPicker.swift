@@ -28,6 +28,7 @@ struct TaskFormPicker: View {
                 }
                 if #available(iOS 26.0, *) {
                     RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius)
+                        .foregroundStyle(.clear)
                         .glassEffect(.regular.tint(tintColor))
                         .frame(width: itemWidth - 4, height: 28)
                         .padding(.leading, (CGFloat(selectedIndex) * itemWidth) + 2)

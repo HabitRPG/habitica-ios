@@ -23,7 +23,6 @@ struct DifficultyPicker: View {
     @ViewBuilder
     func difficultyOption(text: String, value: Float) -> some View {
         let theme = themeService.theme
-        let color: Color = .accentColor
         VStack {
             let isActive = value == selectedDifficulty
             let accessibilityText = "Difficulty " + text + ", \(isActive ? "on" : "off")"
@@ -34,7 +33,7 @@ struct DifficultyPicker: View {
                     .frame(width: 57, height: 57)
                 Text(text)
                     .font(.system(size: 15, weight: isActive ? .semibold : .regular))
-                    .foregroundStyle(isActive ? color : Color(theme.ternaryTextColor))
+                    .foregroundStyle(isActive ? tintColor : Color(theme.ternaryTextColor))
                     .frame(maxWidth: .infinity)
             }
             .accessibilityElement(children: .ignore)
@@ -73,14 +72,14 @@ struct DifficultyPicker: View {
                 }
                 let offset = (CGFloat(difficulties.firstIndex(of: selectedDifficulty) ?? 0) * itemWidth) + (itemWidth - 57) / 2
                 if #available(iOS 26.0, *) {
-                    RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius)
+                    RoundedRectangle(cornerRadius: UIConstants.mediumCornerRadius)
                         .foregroundStyle(.clear)
                         .glassEffect(.regular.tint(tintColor), in: RoundedRectangle(cornerRadius: UIConstants.mediumCornerRadius))
                         .frame(width: 57, height: 57)
                         .padding(.leading, offset)
                         .animation(.spring(), value: selectedDifficulty)
                 } else {
-                    RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius).foregroundStyle(Color(theme.tintColor))
+                    RoundedRectangle(cornerRadius: UIConstants.mediumCornerRadius).foregroundStyle(tintColor)
                         .shadow(color: .black.opacity(0.12), radius: 8, x: 0, y: 3)
                         .shadow(color: .black.opacity(0.04), radius: 1, x: 0, y: 1)
                         .frame(width: 57, height: 57)

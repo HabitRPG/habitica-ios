@@ -26,6 +26,8 @@ struct FormSheetSelector<TYPE: Equatable & Hashable>: View {
                 }
             }, label: {
                 Text(options.first(where: { $0.value == value })?.label ?? "")
+                    .scaledFont(size: 15, weight: .semibold)
+                    .foregroundStyle(Color(themeService.theme.primaryTextColor))
             })
             .tint(Color(themeService.theme.primaryTextColor))
             .background(Color(themeService.theme.offsetBackgroundColor))

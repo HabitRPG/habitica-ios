@@ -26,6 +26,8 @@ struct DailySchedulingView: View {
     @Binding var weeksOfMonth: [Int]
     @Binding var dayOrWeekMonth: String
     
+    var tintColor: Color
+    
     private static let dailyRepeatOptions = [
         LabeledFormValue<String>(value: "daily", label: L10n.daily),
         LabeledFormValue<String>(value: "weekly", label: L10n.weekly),
@@ -76,13 +78,13 @@ struct DailySchedulingView: View {
             }
         
         if #available(iOS 26.0, *) {
-            return option.glassEffect(.regular.interactive().tint(isEnabled.wrappedValue ? .accentColor : .clear))
+            return option.glassEffect(.regular.interactive().tint(isEnabled.wrappedValue ? tintColor : .clear))
                 .animation(.easeInOut, value: isEnabled.wrappedValue)
                 .frame(maxWidth: .infinity)
         } else {
             return option
                 .border(Color(themeService.theme.dimmedColor), width: isEnabled.wrappedValue ? 0 : 1, cornerRadius: UIConstants.largeCornerRadius, antialiased: true)
-                .background(Circle().fill(isEnabled.wrappedValue ? Color.accentColor : .clear))
+                .background(Circle().fill(isEnabled.wrappedValue ? tintColor : .clear))
                 .animation(.easeInOut, value: isEnabled.wrappedValue)
                 .frame(maxWidth: .infinity)
         }

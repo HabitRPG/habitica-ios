@@ -131,7 +131,8 @@ struct TaskFormView: View {
                                                          sunday: $viewModel.sunday,
                                                          daysOfMonth: $viewModel.daysOfMonth,
                                                          weeksOfMonth: $viewModel.weeksOfMonth,
-                                                         dayOrWeekMonth: $viewModel.dayOrWeekMonth
+                                                         dayOrWeekMonth: $viewModel.dayOrWeekMonth,
+                                                         tintColor: viewModel.taskTintColor
                                                          ))
         } else if viewModel.taskType == .todo && viewModel.isTaskEditable {
             TaskFormSection(header: Text(L10n.Tasks.Form.scheduling.localizedCapitalized),
