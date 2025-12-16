@@ -83,8 +83,8 @@ class UserTopHeader: UIView, Themeable {
             UIAction(title: L10n.Menu.customizeAvatar, image: UIImage(systemName: "theatermask.and.paintbrush")) { _ in
                 RouterHandler.shared.handle(urlString: "/user/avatar")
             },
-            UIAction(title: L10n.Equipment.equipment.localizedCapitalized, image: UIImage(systemName: "shirt")) { _ in
-                RouterHandler.shared.handle(urlString: "/user/equipment")
+            UIAction(title: L10n.Equipment.equipment.localizedCapitalized, image: UIImage(systemName: "tshirt")) { _ in
+                RouterHandler.shared.handle(urlString: "/inventory/equipment")
             },
             UIAction(title: L10n.shareAvatar, image: UIImage(systemName: "square.and.arrow.up")) { _ in
                 if let user = self.user {
