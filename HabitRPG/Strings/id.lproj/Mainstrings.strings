@@ -1448,3 +1448,13 @@
 "not_participating" = "Tidak berpartisipasi";
 "ownership" = "Kepemilikan";
 "task_reminder" = "Pengingat Tugas";
+"joined_x" = "Bergabung %s";
+"equipped_gear" = "Perlengkapan yang Dipakai";
+"stable.pets_and_mounts" = "Hewan Peliharaan dan Tunggangan";
+"challenges_won" = "Tantangan yang dimenangkan";
+"player_not_won_challenges" = "Pemain belum memenangkan tantangan apapun.";
+"player_not_completed_quests" = "Pemain belum menyelesaikan misi apapun.";
+"pets_found" = "Hewan Peliharaan yang ditemukan";
+"standard_pets" = "Hewan Peliharaan Standar";
+"mounts_found" = "Tunggangan yang ditemukan";
+"standard_mounts" = "Tunggangan Standar";
