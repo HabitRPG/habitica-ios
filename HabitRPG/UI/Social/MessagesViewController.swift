@@ -166,16 +166,16 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
             let acceptButton = acceptView.viewWithTag(1) as? UIButton
             acceptButton?.setTitle(L10n.accept, for: .normal)
             acceptButton?.addTarget(self, action: #selector(acceptGuidelines), for: .touchUpInside)
-            acceptButton?.cornerRadius = UIConstants.largeCornerRadius
+            if #available(iOS 26.0, *) {
+                acceptButton?.cornerConfiguration = .capsule()
+            } else {
+                acceptButton?.cornerRadius = UIConstants.largeCornerRadius
+            }
             let descriptionButton = acceptView.viewWithTag(2) as? UIButton
             descriptionButton?.addTarget(self, action: #selector(openGuidelinesView), for: .touchUpInside)
             acceptView.frame = CGRect(x: 0, y: view.frame.size.height-90, width: view.frame.size.width, height: 90)
             acceptView.tag = 999
-            if #available(iOS 26.0, *) {
-                acceptView.cornerConfiguration = .capsule()
-            } else {
-                acceptView.cornerRadius = UIConstants.largeCornerRadius
-            }
+            acceptView.cornerRadius = UIConstants.largeCornerRadius
             view.addSubview(acceptView)
         } else if acceptView != nil && (user.flags?.communityGuidelinesAccepted ?? false) {
             acceptView?.removeFromSuperview()

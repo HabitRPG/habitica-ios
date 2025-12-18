@@ -15,16 +15,14 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
     @IBOutlet weak var rightViewWidthConstraint: NSLayoutConstraint?
     @IBOutlet weak var separatorView: UIView!
     
-    private let segmentedWrapper = PaddedView()
+    private let segmentedWrapper = UIVisualEffectView()
     internal let segmentedControl = UISegmentedControl(items: ["", ""])
     private var isInitialSetup = true
     var showAsSplitView = false
     var canShowAsSplitView = true
     
     internal var viewID: String?
-    
-    private var borderView = UIView()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         showAsSplitView = traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular
@@ -32,12 +30,18 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(self, action: #selector(HabiticaSplitViewController.switchView(_:)), for: .valueChanged)
         segmentedControl.isHidden = false
-        segmentedWrapper.insets = UIEdgeInsets(top: 4, left: 8, bottom: 10, right: 8)
-        segmentedWrapper.containedView = segmentedControl
-        borderView.frame = CGRect(x: 0, y: segmentedWrapper.intrinsicContentSize.height+1, width: self.view.bounds.size.width, height: 1)
-        segmentedWrapper.addSubview(borderView)
+        segmentedWrapper.contentView.addSubview(segmentedControl)
+        
+        if #available(iOS 26.0, *) {
+            let glassEffect = UIGlassEffect()
+            segmentedWrapper.effect = glassEffect
+            segmentedWrapper.cornerConfiguration = .capsule()
+        }
+        
         topHeaderCoordinator?.alternativeHeader = segmentedWrapper
         topHeaderCoordinator?.hideHeader = canShowAsSplitView && showAsSplitView
+        topHeaderCoordinator?.followScrollView = false
+        layoutHeader()
         
         scrollView.delegate = self
         scrollView.bounces = false
@@ -48,17 +52,24 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
         ThemeService.shared.addThemeable(themable: self)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
-            scrollViewTopConstraint.constant = topHeaderNavigationController.contentInset
-        }
+    override func viewWillLayoutSubviews() {
+        layoutHeader()
+        super.viewWillLayoutSubviews()
     }
     
-    override func applyTheme(theme: Theme) {
-        super.applyTheme(theme: theme)
-        borderView.backgroundColor = ThemeService.shared.theme.separatorColor
+    func layoutHeader() {
+        let size = segmentedControl.intrinsicContentSize
+        segmentedWrapper.frame = CGRect(x: 8, y: 0, width: view.frame.width - 16, height: size.height + 8)
+        segmentedControl.pin.horizontally(4).vertically(4)
+        var subviews: [UIView] = scrollView.subviews
+        while !subviews.isEmpty && !(subviews.first is UIScrollView) {
+            subviews = subviews.first?.subviews ?? []
+        }
+        subviews.forEach { subview in
+            if let scroll = subview as? UIScrollView {
+                scroll.contentInset = UIEdgeInsets(top: view.safeAreaInsets.top + size.height + 8, left: view.safeAreaInsets.left, bottom: view.safeAreaInsets.bottom, right: view.safeAreaInsets.right)
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
