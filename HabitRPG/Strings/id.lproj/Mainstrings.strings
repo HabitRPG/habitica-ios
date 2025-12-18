@@ -1458,3 +1458,13 @@
 "standard_pets" = "Hewan Peliharaan Standar";
 "mounts_found" = "Tunggangan yang ditemukan";
 "standard_mounts" = "Tunggangan Standar";
+"item_is_locked" = "Item terkunci";
+"edit_tags" = "Ubah Label";
+"add_tag" = "Tambah Label";
+"none" = "Tidak ada";
+"view_stats" = "Lihat Stat";
+"find_stats_menu" = "Kamu dapat menemukan statmu kapan saja di Menu";
+"go_to_pets_mounts" = "Pergi ke Hewan Peliharaan & Tunggangan";
+"not_now" = "Tidak sekarang";
+"undo" = "Urungkan";
+"assigned_stat" = "Statistik teralokasi";
