@@ -12,7 +12,7 @@ import ReactiveSwift
 import Down
 import MessageUI
 
-class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelegate {
+class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelegate, UIScrollViewDelegate {
     
     private let searchBar = UISearchBar()
     
@@ -24,6 +24,7 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
     private let configRepository = ConfigRepository.shared
     private let disposable = ScopedDisposable(CompositeDisposable())
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet private var mainStackView: UIStackView!
     @IBOutlet private var mechanicsTitleLabel: UILabel!
     @IBOutlet private var mechanicsStackView: UIStackView!
@@ -42,19 +43,26 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
     private var supportEmail = ""
     private var user: UserProtocol?
     
+    private lazy var bannerView: NPCBannerView = {
+        return NPCBannerView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 124))
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        topHeaderCoordinator?.hideHeader = true
-        topHeaderCoordinator?.followScrollView = false
+        topHeaderCoordinator?.alternativeHeader = bannerView
+        topHeaderCoordinator?.scrollView = scrollView
+        bannerView.setSprites(identifier: "tavern")
+        bannerView.setNPCName(identifier: "support")
+        scrollView.delegate = self
         
         mainStackView.isLayoutMarginsRelativeArrangement = true
         mainStackView.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         moreQuestionsStackView.isLayoutMarginsRelativeArrangement = true
         moreQuestionsStackView.layoutMargins = UIEdgeInsets(top: 30, left: 22, bottom: 0, right: 22)
         commonQuestionsStackView.isLayoutMarginsRelativeArrangement = true
-        commonQuestionsStackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+        commonQuestionsStackView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         commonQuestionsStackView.separatorBetweenItems = true
-        commonQuestionsStackView.separatorInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+        commonQuestionsStackView.separatorInsets = UIEdgeInsets(top: 0, left: 66, bottom: 0, right: 0)
         
         populateMechanics()
         disposable.inner.add(contentRepository.getFAQEntries().on(value: {[weak self] entries in
@@ -67,13 +75,38 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
         
         moreQuestionsText.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moreQuestionsTapped)))
         supportEmail = configRepository.string(variable: .supportEmail, defaultValue: "admin@habitica.com")
-
+        topHeaderCoordinator?.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        topHeaderCoordinator?.viewWillAppear()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        displayTutorialStep()
+        topHeaderCoordinator?.viewDidAppear()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        topHeaderCoordinator?.viewWillDisappear()
+        super.viewWillDisappear(animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        displayedTutorialStep = false
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        topHeaderCoordinator?.scrollViewDidScroll()
     }
     
     override func populateText() {
         navigationItem.title = L10n.Titles.basics
-        mechanicsTitleLabel.text = L10n.gameMechanics.uppercased()
-        commonQuestionsTitleLabel.text = L10n.commonQuestions.uppercased()
+        mechanicsTitleLabel.text = L10n.glossary
+        commonQuestionsTitleLabel.text = L10n.commonQuestions
         moreQuestionsTitle.text = L10n.moreQuestionsTitle
         let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.center
@@ -88,6 +121,7 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
         moreQuestionsText.textColor = theme.ternaryTextColor
         commonQuestionsBackground.backgroundColor = theme.windowBackgroundColor
         populateMechanics()
+        bannerView.applyTheme(backgroundColor: theme.contentBackgroundColor)
     }
     
     private func populateMechanics() {
@@ -96,8 +130,9 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
             let stackView = CollapsibleStackView()
             stackView.titleView?.text = entry["title"] as? String
             stackView.titleView?.subtitle = entry["subtitle"] as? String
-            stackView.titleView?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
-            stackView.titleView?.subtitleFont = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
+            stackView.titleView?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
+            stackView.titleColor = entry["color"] as? UIColor ?? ThemeService.shared.theme.primaryTextColor
+            stackView.titleView?.subtitleFont = UIFontMetrics.default.scaledSystemFont(ofSize: 17)
             stackView.titleView?.icon = entry["icon"] as? UIImage
             stackView.titleView?.showCarret = false
             stackView.titleView?.insets = UIEdgeInsets(top: 16, left: 8, bottom: 16, right: 8)
@@ -110,7 +145,7 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
             textView.setMarkdownString(entry["text"] as? String)
             textView.backgroundColor = .clear
             textView.textContainerInset = UIEdgeInsets(top: 4, left: 12, bottom: 16, right: 12)
-            textView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 13)
+            textView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
             textView.textColor = ThemeService.shared.theme.secondaryTextColor
             stackView.addArrangedSubview(textView)
             mechanicsStackView.addArrangedSubview(stackView)
@@ -124,18 +159,18 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
             let stackView = UIStackView()
             stackView.axis = .horizontal
             stackView.isLayoutMarginsRelativeArrangement = true
-            stackView.spacing = 8
-            stackView.layoutMargins = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 15)
+            stackView.spacing = 22
+            stackView.layoutMargins = UIEdgeInsets(top: 12, left: 26, bottom: 12, right: 26)
+            let imageView = UIImageView(image: Asset.faqIcon.image)
+            imageView.contentMode = .center
+            imageView.addWidthConstraint(width: 9)
+            stackView.addArrangedSubview(imageView)
             let title = UILabel()
             title.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
             title.text = question.question
             title.numberOfLines = 0
             title.textColor = ThemeService.shared.theme.primaryTextColor
-            let imageView = UIImageView(image: Asset.caretRight.image)
-            imageView.contentMode = .center
-            imageView.addWidthConstraint(width: 9)
             stackView.addArrangedSubview(title)
-            stackView.addArrangedSubview(imageView)
             stackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(questionTapped)))
             commonQuestionsStackView.addArrangedSubview(stackView)
         }
@@ -157,15 +192,18 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
         }
     }
 
-    private static let mechanics = [
-        ["title": L10n.healthPoints, "subtitle": "HP", "icon": HabiticaIcons.imageOfHeartLarge, "text": L10n.healthDescription],
-        ["title": L10n.experiencePoints, "subtitle": "EXP", "icon": HabiticaIcons.imageOfExperienceReward, "text": L10n.experienceDescription],
-        ["title": L10n.manaPoints, "subtitle": "MP", "icon": HabiticaIcons.imageOfMagic, "text": L10n.manaDescription],
-        ["title": L10n.gold, "subtitle": L10n.currency, "icon": HabiticaIcons.imageOfGoldReward, "text": L10n.goldDescription],
-        ["title": L10n.gems, "subtitle": L10n.premiumCurrency, "icon": HabiticaIcons.imageOfGem, "text": L10n.gemsDescription],
-        ["title": L10n.mysticHourglasses, "subtitle": L10n.premiumCurrency, "icon": HabiticaIcons.imageOfHourglass, "text": L10n.hourglassesDescription],
-        ["title": L10n.statAllocation, "subtitle": "STR, CON, INT, PER", "icon": HabiticaIcons.imageOfStats, "text": L10n.statDescription]
-    ]
+    private static var mechanics: [[String: Any]] {
+        let isDark = ThemeService.shared.theme.isDark
+        return [
+            ["title": L10n.healthPoints, "subtitle": "HP", "icon": HabiticaIcons.imageOfHeartLarge, "text": L10n.healthDescription, "color": isDark ? UIColor.red500 : UIColor.red10],
+            ["title": L10n.experiencePoints, "subtitle": "EXP", "icon": HabiticaIcons.imageOfExperienceReward, "text": L10n.experienceDescription, "color": isDark ? UIColor.yellow500 : UIColor.yellow5],
+            ["title": L10n.manaPoints, "subtitle": "MP", "icon": HabiticaIcons.imageOfMagic, "text": L10n.manaDescription, "color": isDark ? UIColor.blue500 : UIColor.blue10],
+            ["title": L10n.gold, "subtitle": L10n.currency, "icon": HabiticaIcons.imageOfGoldReward, "text": L10n.goldDescription, "color": isDark ? UIColor.orange500 : UIColor.orange10],
+            ["title": L10n.gems, "subtitle": L10n.premiumCurrency, "icon": HabiticaIcons.imageOfGem, "text": L10n.gemsDescription, "color": isDark ? UIColor.green500 : UIColor.green10],
+            ["title": L10n.mysticHourglasses, "subtitle": L10n.premiumCurrency, "icon": HabiticaIcons.imageOfHourglass, "text": L10n.hourglassesDescription, "color": isDark ? UIColor.purple500 : UIColor.purple300],
+            ["title": L10n.statAllocation, "subtitle": "STR, CON, INT, PER", "icon": HabiticaIcons.imageOfStats, "text": L10n.statDescription, "color": isDark ? UIColor.orange100 : UIColor.orange1]
+        ]
+    }
     
     @objc
     private func moreQuestionsTapped() {

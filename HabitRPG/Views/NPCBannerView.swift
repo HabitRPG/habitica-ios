@@ -63,6 +63,9 @@ class NPCBannerView: UIView {
     }
     
     override var intrinsicContentSize: CGSize {
+        if notesLabel.text?.isEmpty != false {
+            return CGSize(width: UIScreen.main.bounds.size.width, height: 124)
+        }
         notesLabel.sizeToFit()
         var labelHeight: CGFloat = notesLabel.bounds.size.height
         if labelHeight == 0 {
@@ -96,6 +99,8 @@ class NPCBannerView: UIView {
             self.npcNameLabel.text = "Tyler & Vicky"
         case "customizations":
             self.npcNameLabel.text = "Felicitus"
+        case "support":
+            self.npcNameLabel.text = "Justin"
         default:
             self.npcNameLabel.text = ""
         }

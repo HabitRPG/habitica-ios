@@ -22,12 +22,16 @@ struct LoginIncentiveSheet: View {
                 PixelArtView(name: imageName)
             }
             Text(L10n.unlockedAnotherCheckinPrize)
+                .foregroundStyle(.blue1)
+                .scaledFont(size: 22, weight: .bold)
+                .padding(.horizontal, 40)
         }, title: Text(text), description: VStack {
             Text(L10n.checkinPrizeEarned(text))
             if nextUnlockIn > 0 {
                 Text(L10n.nextPrizeInXCheckins(nextUnlockIn))
                     .scaledFont(size: 15)
                     .foregroundStyle(Color.blue10)
+                    .padding(.top, 20)
             }
         }) {
             HabiticaButtonUI(label: Text(L10n.seeYouTomorrow), color: Color(themeService.theme.tintColor)) {

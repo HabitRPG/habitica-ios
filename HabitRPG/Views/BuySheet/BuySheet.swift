@@ -44,7 +44,8 @@ struct BuyCurrencyView: View {
             Text("\(value.formatted(.number))")
                 .font(.system(size: 22, weight: .bold))
                 .foregroundStyle(textColor)
-        }.padding(9)
+        }.padding(.vertical, 9)
+            .padding(.horizontal, 12)
         
         if #available(iOS 26.0, *) {
             content
@@ -241,7 +242,7 @@ struct BuySheet: View, Dismissable {
                 }.disabled(!canBuy)
                     .transition(.opacity)
             }
-        }.padding(.bottom, 28)
+        }.padding(.bottom, viewModel.keyboardHeight > 0 ? viewModel.keyboardHeight - 36 : 20)
     }
     
     var body: some View {
@@ -274,6 +275,9 @@ struct BuySheet: View, Dismissable {
                             bottomPadding: 0
             )
             .ignoresSafeArea()
+            .onDisappear {
+                viewModel.dispose()
+            }
         } else {
             Text("")
                 .task {

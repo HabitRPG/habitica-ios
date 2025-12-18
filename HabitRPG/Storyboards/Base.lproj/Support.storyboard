@@ -457,7 +457,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="UcZ-nC-uHq" firstAttribute="leading" secondItem="8AS-Y1-98V" secondAttribute="leading" id="1XK-PV-9pO"/>
-                            <constraint firstItem="UcZ-nC-uHq" firstAttribute="top" secondItem="8AS-Y1-98V" secondAttribute="top" id="Ep0-cG-Oe9"/>
+                            <constraint firstItem="UcZ-nC-uHq" firstAttribute="top" secondItem="r5v-Dj-90l" secondAttribute="top" id="Ep0-cG-Oe9"/>
                             <constraint firstItem="8AS-Y1-98V" firstAttribute="bottom" secondItem="UcZ-nC-uHq" secondAttribute="bottom" id="QuQ-SL-Zok"/>
                             <constraint firstItem="8AS-Y1-98V" firstAttribute="trailing" secondItem="UcZ-nC-uHq" secondAttribute="trailing" id="l8P-Aq-Y40"/>
                             <constraint firstItem="2fa-LQ-4Ma" firstAttribute="width" secondItem="r5v-Dj-90l" secondAttribute="width" id="qYo-OB-90s"/>
@@ -474,6 +474,7 @@
                         <outlet property="moreQuestionsStackView" destination="gAs-0x-ank" id="gzL-ay-2uO"/>
                         <outlet property="moreQuestionsText" destination="cwy-dt-cjY" id="0yW-DE-GRz"/>
                         <outlet property="moreQuestionsTitle" destination="WX9-YK-OVf" id="K1a-rH-KBf"/>
+                        <outlet property="scrollView" destination="UcZ-nC-uHq" id="zEj-lc-eY7"/>
                         <segue destination="Zzv-XT-YeL" kind="show" identifier="showFAQDetailSegue" id="p4b-j2-14v"/>
                     </connections>
                 </viewController>
@@ -874,7 +875,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemPurpleColor">
-            <color red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.79607843137254897" green="0.18823529411764706" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

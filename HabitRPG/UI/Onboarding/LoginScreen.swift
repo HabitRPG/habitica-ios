@@ -258,12 +258,13 @@ struct LoginButton<Label: View>: View {
         let button = Button(action: {
             action()
         }, label: label
+            .foregroundStyle(.gray50)
             .frame(maxWidth: .infinity)
             .frame(minHeight: 44))
         
         if #available(iOS 26.0, *) {
             button
-                .buttonStyle(.glass)
+                .buttonStyle(.glass(.clear.tint(.white.opacity(0.7))))
         } else {
             button.buttonStyle(LoginScreenButtonStyle())
         }

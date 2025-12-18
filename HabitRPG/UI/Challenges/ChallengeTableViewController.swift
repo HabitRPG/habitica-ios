@@ -10,6 +10,8 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 import Habitica_Models
+import SwiftUI
+import SwiftUIX
 
 struct ChallengeFilterState {
     var showOwned: Bool = true
@@ -43,6 +45,8 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     
     let segmentedWrapper = UIView()
     let segmentedFilterControl = UISegmentedControl(items: [L10n.myChallenges, L10n.discover])
+    
+    let emptyView = UIHostingView(rootView: NoContentView(icon: Image(Asset.Empty.challenges.name), title: Text(L10n.Empty.challenges), content: Text(L10n.Empty.challengesDescription)))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,6 +97,10 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         dataSource.tableView = self.tableView
         
         segmentedFilterControl.selectedSegmentIndex = 0
+        
+        view.addSubview(emptyView)
+        emptyView.isHidden = true
+        dataSource.emptyView = emptyView
     }
     
     override func applyTheme(theme: Theme) {
@@ -126,6 +134,7 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     
     override func viewWillLayoutSubviews() {
         layoutHeader()
+        emptyView.pin.left().right().top(40).sizeToFit(.width)
         super.viewWillLayoutSubviews()
     }
     

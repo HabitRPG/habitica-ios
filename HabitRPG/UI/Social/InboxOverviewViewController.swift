@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftUI
+import SwiftUIX
 
 class InboxOverviewViewController: BaseTableViewController {
     
@@ -17,6 +19,8 @@ class InboxOverviewViewController: BaseTableViewController {
     
     private var newMessageUsername: String?
     private var newMessageUserID: String?
+
+    let emptyView = UIHostingView(rootView: NoContentView(icon: Image(Asset.Empty.messages.name), title: Text(L10n.Empty.messages), content: Text(L10n.Empty.messagesDescription)))
 
     override func viewDidLoad() {
         tutorialIdentifier = "inbox"
@@ -35,6 +39,10 @@ class InboxOverviewViewController: BaseTableViewController {
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         #endif
         refresh()
+        
+        view.addSubview(emptyView)
+        emptyView.isHidden = true
+        dataSource.emptyView = emptyView
     }
     
     override func applyTheme(theme: Theme) {
@@ -141,5 +149,10 @@ class InboxOverviewViewController: BaseTableViewController {
             usernameTextField.becomeFirstResponder()
         }
         alertController.show()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        emptyView.pin.left().right().top(40).sizeToFit(.width)
+        super.viewWillLayoutSubviews()
     }
 }

@@ -1100,6 +1100,10 @@
 "empty.want_more_items" = "Looking for more?";
 "empty.no_items_description" = "Head over to the Customization Shop to browse the many ways you can customize your avatar!";
 "empty.want_more_items_description" = "Check out the Customization Shop for even more ways to customize your avatar!";
+"empty.challenges" = "You aren’t a part of any Challenges";
+"empty.challenges_description" = "Browse the Discover section to find and join tons of themed Challenges created by other players. It’s a great way to fill out your task list!";
+"empty.messages" = "You don’t have any messages";
+"empty.messages_description" = "Send a message to start a conversation with your Party members or another Habitica player";
 "achievements.onboarding" = "Onboarding Achievements";
 "achievements.basic" = "Basic Achievements";
 "achievements.seasonal" = "Seasonal Achievements";
@@ -1238,7 +1242,7 @@
 "experience_points" = "Experience Points";
 "experience_description" = "Experience points represent your progress and allow you to level up. You’ll mainly **gain EXP** from completing tasks or quests, but there are also some class skills that give EXP.\n\nTasks of higher difficulty, or red-colored tasks will give you **more EXP**. The **Intelligence stat** also raises your rate of EXP gain.";
 "mana_points" = "Mana Points";
-"gold_description" = "Gold is the **main form of currency** within Habitica and allows you to buy certain gear, quests, items, or even custom rewards you make for yourself.\n\n**Earn Gold** through completing tasks or quests, or through some Class skills. Higher **Perception stats** raise the amount of Gold you earn.\n\nIf you subscribe to Habitica, you can even use Gold to purchase a number of Gems determined by the length of time you’ve been subscribed.";
+"gold_description" = "Gold is the main form of currency within Habitica and allows you to buy certain gear, quests, items, or even custom rewards you make for yourself.\n\nEarn Gold through completing tasks, quests, or through some Class skills.";
 "mana_description" = "Mana points are unlocked with the class system at level 10 and allow you to **use Skills** once you begin learning them at level 11.\n\nSome **MP is restored** at day reset every day, but you can regain more by completing tasks or using a Mage class skill.";
 "stat_allocation" = "Stat Allocation";
 "stat_description" = "All Habitica characters have four stats that affect the gameplay aspects of Habitica.\n\n**Strength (STR)** affects critical hits and raises damage done to a Quest Boss. Warriors and Rogues gain STR from their class equipment.\n\n**Constitution (CON)** raises your HP and makes you take less damage. Healers and Warriors gain CON from their class equipment.\n\n**Intelligence (INT)** raises the amount of EXP you earn and gives you more Mana. Mages and Healers gain INT from their class equipment.\n\n**Perception (PER)** increases the gold you earn and the rate of finding dropped items. Rogues and Mages gain PER from their class equipment.\n\nAfter level 10, you earn 1 Stat Point every level you gain that you can put into any stat you’d like. You can also equip gear that has different combinations of stat boosts.";
@@ -1494,3 +1498,4 @@
 "not_now" = "Not right now";
 "undo" = "Undo";
 "assigned_stat" = "Assigned Stat";
+"glossary" = "Glossary";

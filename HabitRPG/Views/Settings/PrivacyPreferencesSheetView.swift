@@ -8,6 +8,22 @@
 
 import SwiftUI
 
+struct CustomToggleWrapper: UIViewRepresentable {
+    var isOn: Binding<Bool>
+
+    func makeUIView(context: Context) -> UISwitch {
+        UISwitch()
+    }
+
+    func updateUIView(_ uiView: UISwitch, context: Context) {
+        uiView.onTintColor = ThemeService.shared.theme.fixedTintColor
+        uiView.tintColor = ThemeService.shared.theme.contentBackgroundColor
+        uiView.layer.cornerRadius = uiView.frame.height / 2
+        uiView.backgroundColor = .gray600.withAlphaComponent(0.3)
+        uiView.isOn = isOn.wrappedValue
+    }
+}
+
 struct PrivacyToggleContainer: View {
     @ObservedObject var themeService = ThemeService.shared
     let title: Text
@@ -30,8 +46,10 @@ struct PrivacyToggleContainer: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .frame(maxWidth: .infinity)
-            Toggle(isOn: $isOn) {
-            }
+            CustomToggleWrapper(isOn: $isOn)
+                .onTapGesture {
+                    isOn = !isOn
+                }
             .tint(Color(themeService.theme.fixedTintColor))
             .frame(width: 64)
                 .opacity(disabled ? 0.5 : 1.0)

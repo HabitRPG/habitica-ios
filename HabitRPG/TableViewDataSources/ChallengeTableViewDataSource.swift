@@ -10,6 +10,7 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 import RealmSwift
+import SwiftUIX
 
 class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengeProtocol> {
     @objc var predicate: NSPredicate? {
@@ -31,6 +32,7 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
     var nextPage = 0
     var loadedAllData = false
     var isLoading = false
+    weak var emptyView: UIHostingView<NoContentView<Image, Text, Text>>?
 
     private var fetchChallengesDisposable: Disposable?
     private let socialRepository = SocialRepository()
@@ -60,6 +62,11 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
             disposable.dispose()
         }
         fetchChallengesDisposable = socialRepository.getChallenges(predicate: predicate).on(value: {[weak self](challenges, changes) in
+            if challenges.isEmpty {
+                self?.emptyView?.isHidden = false
+            } else {
+                self?.emptyView?.isHidden = true
+            }
             self?.sections[0].items = challenges
             self?.notify(changes: changes)
         }).start()

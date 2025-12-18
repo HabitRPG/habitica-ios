@@ -318,8 +318,14 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
             upperBackgroundView.backgroundColor = navbarVisibleColor
             backgroundView.backgroundColor = navbarVisibleColor
         } else {
-            backgroundView.backgroundColor = .clear
-            upperBackgroundView.backgroundColor = .clear
+            if topViewController is MainMenuViewController {
+                // in Dark mode the special header needs to be taken into account
+                upperBackgroundView.backgroundColor = navbarVisibleColor
+                backgroundView.backgroundColor = navbarVisibleColor
+            } else {
+                backgroundView.backgroundColor = .clear
+                upperBackgroundView.backgroundColor = .clear
+            }
         }
         
         let tintColor = visibleTintColor
@@ -333,6 +339,9 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
+        if upperBackgroundView.backgroundColor == .clear {
+            return ThemeService.shared.theme.isDark ? .lightContent : .darkContent
+        }
         let isLightColor = self.upperBackgroundView.backgroundColor?.isLight() ?? true
         if upperBackgroundView.backgroundColor == .white && ThemeService.shared.theme.isDark {
             // For some reason when forcing dark mode, the statusbar style is requested before the theme is applied

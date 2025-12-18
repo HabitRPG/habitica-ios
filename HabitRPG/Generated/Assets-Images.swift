@@ -163,6 +163,7 @@ internal enum Asset {
   internal static let downIcon = ImageAsset(name: "down_icon")
   internal enum Empty {
     internal static let backgrounds = ImageAsset(name: "empty/Backgrounds")
+    internal static let challenges = ImageAsset(name: "empty/Challenges")
     internal static let customizations = ImageAsset(name: "empty/Customizations")
     internal static let eggs = ImageAsset(name: "empty/Eggs")
     internal static let food = ImageAsset(name: "empty/Food")
@@ -184,6 +185,7 @@ internal enum Asset {
   internal static let fallPromoTitleDate = ImageAsset(name: "fall_promo_title_date")
   internal static let fanfareRadial = ImageAsset(name: "fanfare_radial")
   internal static let fanfareStar = ImageAsset(name: "fanfare_star")
+  internal static let faqIcon = ImageAsset(name: "faq_icon")
   internal static let feedBase = ImageAsset(name: "feed_base")
   internal static let feedBlue = ImageAsset(name: "feed_blue")
   internal static let feedDesert = ImageAsset(name: "feed_desert")

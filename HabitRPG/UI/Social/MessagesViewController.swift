@@ -148,11 +148,7 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         inputBarContainer.pin.horizontally(20).height(inputBarHeight + autocompleteHeight).bottom(keyboardOffset)
         inputBar.pin.start(8).end(-10).top().bottom(2)
         if let acceptView = view.viewWithTag(999) {
-            let yPos: CGFloat = view.frame.size.height-90
-            let height: CGFloat = 90
-            if acceptView.frame.origin.y != yPos || acceptView.frame.height != height {
-                acceptView.frame = CGRect(x: 0, y: yPos, width: view.frame.size.width, height: height)
-            }
+            acceptView.pin.horizontally(20).bottom((tabBarController?.tabBar.frame.height ?? 0) + 6).height(90)
         }
         super.viewDidLayoutSubviews()
     }
@@ -163,24 +159,30 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
     
     private func checkGuidelinesAccepted(user: UserProtocol) {
         let acceptView = view.viewWithTag(999)
-        if !(user.flags?.communityGuidelinesAccepted ?? false) {
-            if acceptView != nil {
-                return
-            }
+        if acceptView == nil && !(user.flags?.communityGuidelinesAccepted ?? false) {
             guard let acceptView = Bundle.main.loadNibNamed("GuidelinesPromptView", owner: self, options: nil)?[0] as? UIView else {
                 return
             }
             let acceptButton = acceptView.viewWithTag(1) as? UIButton
             acceptButton?.setTitle(L10n.accept, for: .normal)
             acceptButton?.addTarget(self, action: #selector(acceptGuidelines), for: .touchUpInside)
+            acceptButton?.cornerRadius = UIConstants.largeCornerRadius
             let descriptionButton = acceptView.viewWithTag(2) as? UIButton
             descriptionButton?.addTarget(self, action: #selector(openGuidelinesView), for: .touchUpInside)
             acceptView.frame = CGRect(x: 0, y: view.frame.size.height-90, width: view.frame.size.width, height: 90)
             acceptView.tag = 999
+            if #available(iOS 26.0, *) {
+                acceptView.cornerConfiguration = .capsule()
+            } else {
+                acceptView.cornerRadius = UIConstants.largeCornerRadius
+            }
             view.addSubview(acceptView)
-        } else {
+        } else if acceptView != nil && (user.flags?.communityGuidelinesAccepted ?? false) {
             acceptView?.removeFromSuperview()
+        } else {
+            return
         }
+        view.setNeedsLayout()
     }
     
     @objc

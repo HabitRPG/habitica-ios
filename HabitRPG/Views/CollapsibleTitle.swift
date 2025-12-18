@@ -37,7 +37,7 @@ class CollapsibleTitle: UIView, UIGestureRecognizerDelegate {
             return label.text
         }
         set {
-            label.text = newValue?.uppercased()
+            label.text = newValue
             setNeedsLayout()
         }
     }

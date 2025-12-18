@@ -34,7 +34,10 @@ struct InsufficientCurrencySheet<Icon: View, Title: View, Content: View, Buttons
                 ArmoirePlus(color: plusColor)
                     .offset(x: 80, y: 55)
             }
-            title.scaledFont(size: 22, weight: .semibold).foregroundStyle(.white)
+            title
+                .scaledFont(size: 22, weight: .bold)
+                .foregroundStyle(.white)
+                .padding(.horizontal, 40)
         }.padding(.top, 50), description: content, buttons: buttons)
     }
 }

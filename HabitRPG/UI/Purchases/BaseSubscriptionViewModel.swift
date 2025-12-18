@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-class BaseSubscriptionViewModel: ObservableObject {
+class BaseSubscriptionViewModel: ViewModel {
     @Published var isSubscribing = false
     @Published var prices = [String: String]()
     @Published var titles = [String: String]()

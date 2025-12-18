@@ -22,6 +22,7 @@ struct NoContentView<Icon: View, Title: View, Content: View>: View {
                 .foregroundStyle(Color(themeService.theme.primaryTextColor))
             content
                 .scaledFont(size: 15)
+                .lineSpacing(2)
                 .foregroundStyle(Color(themeService.theme.ternaryTextColor))
         }.frame(maxWidth: 320)
             .padding(.top, 40)

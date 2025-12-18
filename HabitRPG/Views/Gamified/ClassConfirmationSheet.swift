@@ -68,6 +68,7 @@ struct ClassConfirmationSheet: View {
             Text(L10n.classChangeSuccessTitle(selectedClass.translatedName))
                 .scaledFont(size: 22, weight: .bold)
                 .foregroundStyle(textColor)
+                .padding(.horizontal, 40)
         }, title: Text(L10n.classChangeSuccessSubtitle), description: VStack {
             Text(L10n.classChangeSuccessDescription)
             Text(L10n.findStatsMenu).scaledFont(size: 15, weight: .semibold)

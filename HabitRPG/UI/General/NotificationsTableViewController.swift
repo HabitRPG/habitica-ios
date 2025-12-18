@@ -227,7 +227,7 @@ struct CardReceivedNotificationView: View {
     
     var body: some View {
         NotificationMainContent(onDismiss: onDismiss) {
-            NotificationImage(content: PixelArtView(name: "notif_inventory_special_\(notification.cardKey ?? "")"))
+            NotificationImage(content: PixelArtView(name: "notif_inventory_special_\(notification.cardKey ?? "")").frame(width: 28, height: 28))
             NotificationTexts(description: Text(markdown: "\(notification.cardSenderName ?? "") sent you a **\(notification.cardKey?.localizedCapitalized ?? "") Card!**"))
         }
     }
@@ -280,7 +280,7 @@ struct ItemReceivedNotificationView: View {
 
     var body: some View {
         NotificationMainContent(onDismiss: onDismiss) {
-            NotificationImage(content: PixelArtView(name: notification.icon ?? ""))
+            NotificationImage(content: PixelArtView(name: notification.icon ?? "").frame(width: 28, height: 28))
             NotificationTexts(title: Text(markdown: notification.title ?? ""), description: Text(markdown: notification.message ?? ""))
         }
     }
@@ -299,7 +299,7 @@ struct NewMysteryItemNotificationView: View {
     var body: some View {
         NotificationMainContent(onDismiss: onDismiss) {
             let month = Calendar.current.component(.month, from: Date())
-            NotificationImage(content: PixelArtView(name: "inventory_present_\(month)"))
+            NotificationImage(content: PixelArtView(name: "inventory_present_\(month)").frame(width: 28, height: 28))
             NotificationTexts(description: Text(markdown: L10n.Notifications.newMysteryItem))
         }
     }
@@ -435,6 +435,9 @@ struct NotificationsPage: View {
                                     .padding(8)
                                     .background(Color(ThemeService.shared.theme.windowBackgroundColor))
                                     .cornerRadius(UIConstants.largeCornerRadius)
+                                    .onTapGesture {
+                                        viewModel.openNotification(notification: notification)
+                                    }
                                     .padding(.horizontal, 17)
                             }
                         }

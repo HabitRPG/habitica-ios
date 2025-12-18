@@ -8,19 +8,26 @@
 
 import Foundation
 import Habitica_Models
+import SwiftUIX
 
 class InboxOverviewDataSource: BaseReactiveTableViewDataSource<InboxConversationProtocol> {
     let formatter = RelativeDateTimeFormatter()
     
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
-    
+    weak var emptyView: UIHostingView<NoContentView<Image, Text, Text>>?
+
     override init() {
         super.init()
         formatter.unitsStyle = .full
         sections.append(ItemSection<InboxConversationProtocol>())
         
         disposable.add(socialRepository.getMessagesThreads().on(value: {[weak self](messages, changes) in
+            if messages.isEmpty {
+                self?.emptyView?.isHidden = false
+            } else {
+                self?.emptyView?.isHidden = true
+            }
             self?.sections[0].items = messages
             self?.notify(changes: changes)
         }).start())

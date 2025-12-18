@@ -532,6 +532,8 @@ public enum L10n {
   public static var giftSubscriptionPrompt: String { return L10n.tr("Mainstrings", "gift_subscription_prompt") }
   /// Glasses
   public static var glasses: String { return L10n.tr("Mainstrings", "glasses") }
+  /// Glossary
+  public static var glossary: String { return L10n.tr("Mainstrings", "glossary") }
   /// Go Shopping
   public static var goShopping: String { return L10n.tr("Mainstrings", "go_shopping") }
   /// Go to Items
@@ -540,7 +542,7 @@ public enum L10n {
   public static var goToPetsMounts: String { return L10n.tr("Mainstrings", "go_to_pets_mounts") }
   /// Gold
   public static var gold: String { return L10n.tr("Mainstrings", "gold") }
-  /// Gold is the **main form of currency** within Habitica and allows you to buy certain gear, quests, items, or even custom rewards you make for yourself.\n\n**Earn Gold** through completing tasks or quests, or through some Class skills. Higher **Perception stats** raise the amount of Gold you earn.\n\nIf you subscribe to Habitica, you can even use Gold to purchase a number of Gems determined by the length of time you’ve been subscribed.
+  /// Gold is the main form of currency within Habitica and allows you to buy certain gear, quests, items, or even custom rewards you make for yourself.\n\nEarn Gold through completing tasks, quests, or through some Class skills.
   public static var goldDescription: String { return L10n.tr("Mainstrings", "gold_description") }
   /// Got it!
   public static var gotIt: String { return L10n.tr("Mainstrings", "got_it") }
@@ -1804,6 +1806,14 @@ public enum L10n {
   }
 
   public enum Empty {
+    /// You aren’t a part of any Challenges
+    public static var challenges: String { return L10n.tr("Mainstrings", "empty.challenges") }
+    /// Browse the Discover section to find and join tons of themed Challenges created by other players. It’s a great way to fill out your task list!
+    public static var challengesDescription: String { return L10n.tr("Mainstrings", "empty.challenges_description") }
+    /// You don’t have any messages
+    public static var messages: String { return L10n.tr("Mainstrings", "empty.messages") }
+    /// Send a message to start a conversation with your Party members or another Habitica player
+    public static var messagesDescription: String { return L10n.tr("Mainstrings", "empty.messages_description") }
     /// You don’t own any of these items
     public static var noItems: String { return L10n.tr("Mainstrings", "empty.no_items") }
     /// Head over to the Customization Shop to browse the many ways you can customize your avatar!

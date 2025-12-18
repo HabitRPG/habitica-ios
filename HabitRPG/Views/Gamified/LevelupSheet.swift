@@ -32,7 +32,8 @@ class LevelupViewModel: ViewModel {
 
 struct LevelupSheet: View {
     @ObservedObject var themeService = ThemeService.shared
-    @Environment(\.presentationManager) var presentationManager
+    @Environment(\.presentationManager)
+    var presentationManager
     
     @ObservedObject var viewModel: LevelupViewModel = LevelupViewModel()
     
@@ -53,7 +54,10 @@ struct LevelupSheet: View {
                 }
                 Image(Asset.levelupstarsRight.name)
             }
-            Text(L10n.levelupTitle(viewModel.level)).scaledFont(size: 22, weight: .bold).foregroundStyle(.white)
+            Text(L10n.levelupTitle(viewModel.level))
+                .scaledFont(size: 22, weight: .bold)
+                .foregroundStyle(.white)
+                .padding(.horizontal, 40)
         }.padding(.top, 50), title: Group {
             if viewModel.canSelectClass {
                 Text(L10n.classSystemUnlocked)

@@ -12,6 +12,12 @@ import UIKit
 class CollapsibleStackView: SeparatedStackView {
     
     var titleView: CollapsibleTitle?
+    
+    var titleColor: UIColor? {
+        didSet {
+            titleView?.textColor = titleColor ?? ThemeService.shared.theme.primaryTextColor
+        }
+    }
         
     @IBInspectable var identifier: String?
     @IBInspectable var canCollapse: Bool = true {
@@ -115,7 +121,9 @@ class CollapsibleStackView: SeparatedStackView {
         super.applyTheme(theme: theme)
         
         backgroundColor = theme.windowBackgroundColor
-        titleView?.textColor = theme.ternaryTextColor
+        if titleColor == nil {
+            titleView?.textColor = theme.ternaryTextColor
+        }
         titleView?.subtitleColor = theme.quadTextColor
     }
 }

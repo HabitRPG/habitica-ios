@@ -24,8 +24,12 @@ struct AchievementReceivedSheet<Title: View, Description: View>: View {
                                                                    outerRingColor: .yellow500,
                                                                    plusColor: .yellow100, content: {
             PixelArtView(name: "achievement-\(key)2x")
+                                    .frame(width: 108, height: 108)
         })
-            Text(L10n.youGotAchievement).scaledFont(size: 22, weight: .semibold).foregroundStyle(Color.yellow1)
+            Text(L10n.youGotAchievement)
+                .scaledFont(size: 22, weight: .bold)
+                .foregroundStyle(Color.yellow1)
+                .padding(.horizontal, 40)
         }, title: text, description: description, buttons: {
             HabiticaButtonUI(label: Text(L10n.onwards), color: Color(themeService.theme.fixedTintColor)) {
                 presentationManager.dismiss()

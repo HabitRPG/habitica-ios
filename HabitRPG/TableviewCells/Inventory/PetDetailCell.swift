@@ -44,6 +44,7 @@ class PetDetailCell: UICollectionViewCell {
         }
         progressView.tintColor = ThemeService.shared.theme.successColor
         progressView.trackTintColor = ThemeService.shared.theme.offsetBackgroundColor
+        progressView.borderColor = ThemeService.shared.theme.tableviewSeparatorColor
         if petItem.pet?.type != " " && petItem.trained > 0 && petItem.canRaise == true {
             progressView.isHidden = false
             progressView.progress = percentage

@@ -83,7 +83,7 @@ public struct UsernameScreen: View {
                         Text(formattedTermsText)
                             .scaledFont(size: 13)
                             .lineSpacing(4)
-                            .foregroundStyle(.red)
+                            .foregroundStyle(.purple600)
                             .tint(.white)
                     }
                     .onTapGesture {

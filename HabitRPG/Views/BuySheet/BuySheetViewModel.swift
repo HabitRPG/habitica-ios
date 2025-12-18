@@ -21,6 +21,8 @@ class BuySheetViewModel: ViewModel {
     var shopIdentifier: String?
     var onInventoryRefresh: (() -> Void)?
     var dismisser: Dismisser = Dismisser()
+    
+    @Published var keyboardHeight: CGFloat = 0
 
     @Published var user: UserProtocol?
     @Published var isPinned: Bool = false
@@ -78,7 +80,7 @@ class BuySheetViewModel: ViewModel {
     }
     
     var canBulkPurchase: Bool {
-        return item.key == "gem" || ["eggs", "hatchingPotions", "food"].contains(item.purchaseType ?? "")
+        return item.key == "gem" || ["eggs", "hatchingPotions", "food"].contains(item.purchaseType ?? "") || item.pinType == "seasonalSpell"
     }
     
     init(item: InAppRewardProtocol, shopIdentifier: String?, onInventoryRefresh: (() -> Void)?) {
@@ -88,6 +90,24 @@ class BuySheetViewModel: ViewModel {
         itemCurrency = Currency(rawValue: item.currency ?? "gold") ?? .gold
         super.init()
         setup()
+        
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(self.keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        center.addObserver(self, selector: #selector(self.keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc
+    func keyboardShow(notice: Notification) {
+        keyboardHeight = KeyboardManager.height
+    }
+    
+    @objc
+    func keyboardHide(notice: Notification) {
+        keyboardHeight = 0
     }
     
     func setup() {
@@ -124,17 +144,19 @@ class BuySheetViewModel: ViewModel {
     }
     
     func dismiss() {
+        dispose()
         dismisser.dismiss()
-        if !disposable.isDisposed {
-            disposable.dispose()
-        }
     }
     
     func pinItem() {
         guard let pinType = item.pinType, let path = item.path else {
             return
         }
-        inventoryRepository.togglePinnedItem(pinType: pinType, path: path).observeValues {[weak self] (_) in
+        inventoryRepository.togglePinnedItem(pinType: pinType, path: path)
+            .flatMap(.latest, { _ in
+                self.userRepository.retrieveInAppRewards()
+            })
+            .observeValues {[weak self] (_) in
             self?.isPinned = !(self?.isPinned ?? false)
         }
     }

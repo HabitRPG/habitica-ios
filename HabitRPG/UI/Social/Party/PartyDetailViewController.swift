@@ -129,11 +129,12 @@ class PartyDetailViewController: GroupDetailViewController {
         partyChallengesButton.backgroundColor = theme.windowBackgroundColor
         partyChallengesButton.setTitleColor(theme.tintColor, for: .normal)
         questContentStackView.backgroundColor = theme.windowBackgroundColor
-        questContentStackView.cornerRadius = 26
+        questContentStackView.cornerRadius = UIConstants.largeCornerRadius
         inviteMemberButton.backgroundColor = theme.windowBackgroundColor
         inviteMemberButton.setTitleColor(theme.tintColor, for: .normal)
         startQuestButton.backgroundColor = theme.windowBackgroundColor
         startQuestButton.setTitleColor(theme.tintColor, for: .normal)
+        startQuestButton.cornerRadius = UIConstants.largeCornerRadius
         groupDescriptionTextView?.backgroundColor = theme.windowBackgroundColor
         questTitleSeparator.backgroundColor = theme.separatorColor
         questMechanicsButton.backgroundColor = nil
@@ -150,6 +151,7 @@ class PartyDetailViewController: GroupDetailViewController {
         membersStackview.backgroundColor = theme.contentBackgroundColor
         
         leaveButton?.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
+        leaveButton?.tintColor = theme.errorColor
     }
     
     override func populateText() {

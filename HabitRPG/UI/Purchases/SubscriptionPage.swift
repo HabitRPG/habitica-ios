@@ -73,8 +73,6 @@ struct SubscriptionOptionStack: View {
 }
 
 class SubscriptionViewModel: BaseSubscriptionViewModel {
-    private let disposable = ScopedDisposable(CompositeDisposable())
-
     let appleValidator: AppleReceiptValidator
     let itunesSharedSecret = Secrets.itunesSharedSecret
     let userRepository = UserRepository()
@@ -128,11 +126,11 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
             availableSubscriptions.remove(at: 1)
         }
                 
-        disposable.inner.add(inventoryRepository.getLatestMysteryGear().on(value: {[weak self] gear in
+        disposable.add(inventoryRepository.getLatestMysteryGear().on(value: {[weak self] gear in
             self?.mysteryGear = gear
         }).start())
         
-        disposable.inner.add(inventoryRepository.getLatestMysteryGearSet().on(value: {[weak self] set in
+        disposable.add(inventoryRepository.getLatestMysteryGearSet().on(value: {[weak self] set in
             self?.mysteryGearSet = set
         }).start())
         
@@ -303,6 +301,7 @@ struct SubscriptionPage: View {
     var textColor: Color = .white
     
     var body: some View {
+        if viewModel.subscriptionPlan?.isValid == true {
             VStack(spacing: 0) {
                 if let endDate = viewModel.activePromo?.endDate, viewModel.activePromo?.identifier == "g1g1" {
                     G1G1Banner(endDate: endDate)
@@ -364,11 +363,11 @@ struct SubscriptionPage: View {
                                         .cornerRadius(UIConstants.mediumCornerRadius)
                                         .frame(maxWidth: .infinity)
                                         .frame(height: 8)
-                                        Rectangle()
-                                            .foregroundStyle(.green100)
-                                            .fill()
-                                            .cornerRadius(UIConstants.mediumCornerRadius)
-                                            .frame(width: reader.size.width * (CGFloat(viewModel.subscriptionPlan?.gemCapTotal ?? 0) / 50.0), height: 8)
+                                    Rectangle()
+                                        .foregroundStyle(.green100)
+                                        .fill()
+                                        .cornerRadius(UIConstants.mediumCornerRadius)
+                                        .frame(width: reader.size.width * (CGFloat(viewModel.subscriptionPlan?.gemCapTotal ?? 0) / 50.0), height: 8)
                                 }
                             }
                             .frame(height: 8)
@@ -401,7 +400,7 @@ struct SubscriptionPage: View {
                             .animation(.interpolatingSpring(stiffness: 500, damping: 55), value: viewModel.selectedSubscription)
                         SubscriptionOptionStack(viewModel: viewModel)
                     }
-                        .padding(.horizontal, 24)
+                    .padding(.horizontal, 24)
                     Group {
                         if viewModel.isSubscribing {
                             ProgressView().habiticaProgressStyle().frame(height: 48)
@@ -466,42 +465,42 @@ struct SubscriptionPage: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: .infinity)
                 }
-                    Group {
-                        if viewModel.presentationPoint == nil {
-                            if viewModel.isRestoringPurchase {
-                                ProgressView().habiticaProgressStyle().frame(height: 48)
-                            } else {
-                                Button {
-                                    viewModel.checkForExistingSubscription()
-                                } label: {
-                                    Text(L10n.restorePurchase)
-                                        .foregroundStyle(.yellow100)
-                                        .font(.system(size: 17, weight: .semibold))
-                                        .animation(nil)
-                                }
-                                .frame(height: 48)
-                            }
+                Group {
+                    if viewModel.presentationPoint == nil {
+                        if viewModel.isRestoringPurchase {
+                            ProgressView().habiticaProgressStyle().frame(height: 48)
                         } else {
                             Button {
-                                RouterHandler.shared.handle(.subscription)
+                                viewModel.checkForExistingSubscription()
                             } label: {
-                                Text(L10n.seeMoreSubOptions)
+                                Text(L10n.restorePurchase)
                                     .foregroundStyle(.yellow100)
                                     .font(.system(size: 17, weight: .semibold))
                             }
                             .frame(height: 48)
-                            .transition(.opacity)
                         }
+                    } else {
+                        Button {
+                            RouterHandler.shared.handle(.subscription)
+                        } label: {
+                            Text(L10n.seeMoreSubOptions)
+                                .foregroundStyle(.yellow100)
+                                .font(.system(size: 17, weight: .semibold))
+                        }
+                        .frame(height: 48)
+                        .transition(.opacity)
                     }
+                }
                 
-                        .buttonStyle(.borderless)
-                        .frame(maxWidth: .infinity)
-                        .background(.purple400)
+                .buttonStyle(.borderless)
+                .frame(maxWidth: .infinity)
+                .background(.purple400)
             }
             .foregroundStyle(textColor)
             .padding(.top, 16)
             .background(backgroundColor.ignoresSafeArea(.all, edges: .top).padding(.bottom, 4))
             .ignoresSafeArea()
+        }
     }
 }
 
