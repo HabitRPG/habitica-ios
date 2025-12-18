@@ -242,13 +242,9 @@ public class InventoryLocalRepository: ContentLocalRepository {
             RealmQuest.findBy(predicate: NSPredicate(format: "eventStart < %@ && %@ < eventEnd", now, now)).reactive().map({ (value, changeset) -> ReactiveResults<[QuestProtocol]> in
                 return (value.map({ (item) -> QuestProtocol in return item }), changeset)
             })).map { items in
-                var allItems = [ItemProtocol]()
-                for type in [items.0.value, items.1.value, items.2.value, items.3.value, items.4.value] as [[ItemProtocol]] {
-                    for item in type {
-                        allItems.append(item)
-                    }
-                }
-                return allItems
+                // Optimize: Use flatMap to flatten arrays in a single operation instead of nested loops
+                return ([items.0.value, items.1.value, items.2.value, items.3.value, items.4.value] as [[ItemProtocol]])
+                    .flatMap { $0 }
             }
     }
     
