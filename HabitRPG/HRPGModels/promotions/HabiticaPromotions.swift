@@ -101,8 +101,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
     
     func configurePill(_ pillView: PillView) {
         pillView.backgroundColor = nil
-        // Optimize: Remove gradient layers more efficiently using removeAll(where:)
-        pillView.layer.sublayers?.removeAll(where: { $0 is CAGradientLayer })
+        pillView.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: pillView)
         gradientLayer.cornerRadius = pillView.frame.size.height / 2
         pillView.layer.insertSublayer(gradientLayer, at: 0)
@@ -130,8 +129,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
     
     func configureGemView(view: GemPurchaseCell, regularAmount: Int) {
         view.backgroundColor = backgroundColor()
-        // Optimize: Remove gradient layers more efficiently using removeAll(where:)
-        view.priceLabel.layer.sublayers?.removeAll(where: { $0 is CAGradientLayer })
+        view.priceLabel.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: view.priceLabel)
         gradientLayer.cornerRadius = 8
         view.priceLabel.backgroundColor = .clear
@@ -174,8 +172,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         viewController.promptText = L10n.FallPromo.infoPrompt
         viewController.promptButton.setTitle(L10n.viewGemBundles, for: .normal)
         viewController.promptButton.setTitleColor(.white, for: .normal)
-        // Optimize: Remove gradient layers more efficiently using removeAll(where:)
-        viewController.promptButton.layer.sublayers?.removeAll(where: { $0 is CAGradientLayer })
+        viewController.promptButton.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: viewController.promptButton)
         gradientLayer.cornerRadius = 8
         viewController.promptButton.layer.insertSublayer(gradientLayer, at: 0)
@@ -339,8 +336,7 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
     
     func configurePill(_ pillView: PillView) {
         pillView.backgroundColor = nil
-        // Optimize: Remove gradient layers more efficiently using removeAll(where:)
-        pillView.layer.sublayers?.removeAll(where: { $0 is CAGradientLayer })
+        pillView.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: pillView)
         gradientLayer.cornerRadius = pillView.frame.size.height / 2
         pillView.layer.insertSublayer(gradientLayer, at: 0)
@@ -349,8 +345,7 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
     
     func configurePromoMenuView(view: PromoMenuView) {
         view.backgroundColor = nil
-        // Optimize: Remove gradient layers more efficiently using removeAll(where:)
-        view.layer.sublayers?.removeAll(where: { $0 is CAGradientLayer })
+        view.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: view)
         view.layer.insertSublayer(gradientLayer, at: 0)
         view.leftImageView.image = Asset.promoGiftLeftLarge.image
@@ -370,8 +365,7 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
     
     func configurePurchaseBanner(view: PromoBannerView) {
         view.backgroundColor = nil
-        // Optimize: Remove gradient layers more efficiently using removeAll(where:)
-        view.layer.sublayers?.removeAll(where: { $0 is CAGradientLayer })
+        view.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: view)
         view.layer.insertSublayer(gradientLayer, at: 0)
         view.leftImageView.image = Asset.subScreenG1g1PresentsLeft.image
@@ -386,8 +380,7 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
     
     func configureInfoView(_ viewController: PromotionInfoViewController) {
         viewController.promoBanner.backgroundColor = nil
-        // Optimize: Remove gradient layers more efficiently using removeAll(where:)
-        viewController.promoBanner.layer.sublayers?.removeAll(where: { $0 is CAGradientLayer })
+        viewController.promoBanner.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: viewController.promoBanner)
         viewController.promoBanner.layer.insertSublayer(gradientLayer, at: 0)
         viewController.promoBanner.leftImageView.image = Asset.promoGiftsLeft.image
