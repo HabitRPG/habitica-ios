@@ -1,0 +1,18 @@
+//
+//  base.xcconfig
+//  Habitica
+//  
+//  Copyright © 2025 HabitRPG Inc. All rights reserved.
+//
+//  Configuration settings file format documentation can be found at:
+//  https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+//
+//  Use user.xcconfig (git ignored) to override settings in this file for your local development environment.
+//
+
+BUNDLE_ID_PREFIX = com.habitrpg
+BUNDLE_ID_PREFIX_ALT = com.habitica
+
+CODE_SIGN_IDENTITY= iPhone Developer
+
+DEVELOPMENT_TEAM = 9Q9SMRMCNN
