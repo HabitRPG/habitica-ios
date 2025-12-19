@@ -27,7 +27,6 @@ class UserManager: NSObject {
     private var lastClassSelectionDisplayed: Date?
     private var lastQuestCompletionDisplayed: Date?
     private var lastYesterdailyDialog: Date?
-    weak var yesterdailiesDialog: YesterdailiesDialogView?
     
     private var tutorialSteps = [String: Bool]()
         
@@ -41,8 +40,8 @@ class UserManager: NSObject {
             .throttle(0.5, on: QueueScheduler.main)
             .on(value: {[weak self]user in
                 self?.onUserUpdated(user: user)
-            }).filter({[weak self] (user) -> Bool in
-                return user.needsCron && self?.yesterdailiesDialog == nil
+            }).filter({ (user) -> Bool in
+                return user.needsCron
             }).flatMap(.latest, {[weak self] user in
                 return self?.taskRepository.retrieveTasks(dueOnDay: self?.getYesterday()).skipNil()
                     .map({ tasks in
@@ -95,7 +94,6 @@ class UserManager: NSObject {
         }
         
         let sheet = HostingBottomSheetController(rootView: RYABottomSheet(tasks: tasks, onCronRun: {
-            self.yesterdailiesDialog = nil
         }), prefersGrabberVisible: false, interactiveDismiss: false)
         if var topController = UIApplication.topViewController() {
             while let presentedViewController = topController.presentedViewController {

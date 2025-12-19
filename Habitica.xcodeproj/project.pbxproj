@@ -262,8 +262,6 @@
 		2979D5F72EE1D1E500BB2F54 /* AuthenticationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979D5F42EE1D1E000BB2F54 /* AuthenticationStorage.swift */; };
 		2979D5FC2EE1D2F100BB2F54 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979D5FB2EE1D2F100BB2F54 /* AuthenticationManager.swift */; };
 		297D15FA20B803D30048101F /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297D15F920B803D30048101F /* UserProfileViewController.swift */; };
-		2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */; };
-		2980E6091EEA25CE005B7100 /* YesterdailiesDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */; };
 		2980E60B1EEA39B1005B7100 /* YesterdailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */; };
 		2980E60D1EEA39DF005B7100 /* YesterdailyTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */; };
 		298119AB1F50251300F9FB39 /* InventoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298119AA1F50251300F9FB39 /* InventoryRepository.swift */; };
@@ -423,6 +421,7 @@
 		29D50AD125F769520009CF55 /* Alignment-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D50AD025F769520009CF55 /* Alignment-Extensions.swift */; };
 		29D50B7B25F9037A0009CF55 /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D50B7A25F9037A0009CF55 /* AppDelegate+Notifications.swift */; };
 		29D6F68A2E266FA0009BEE8E /* UsernameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D6F6892E266F9D009BEE8E /* UsernameScreen.swift */; };
+		29D825E92EF5A66E0019FEB9 /* habitica.icon in Resources */ = {isa = PBXBuildFile; fileRef = 29D825E82EF5A66E0019FEB9 /* habitica.icon */; };
 		29DBDE48274BCDA2008F6777 /* HabiticaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE47274BCDA2008F6777 /* HabiticaTests.swift */; };
 		29DBDE4A274BE745008F6777 /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE49274BE745008F6777 /* AccountSettingsViewController.swift */; };
 		29DBDE54274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE53274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift */; };
@@ -963,8 +962,6 @@
 		297AAB4920F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		297AAB4B20F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		297D15F920B803D30048101F /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
-		2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailiesDialogView.xib; sourceTree = "<group>"; };
-		2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesterdailiesDialogView.swift; sourceTree = "<group>"; };
 		2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesterdailyTaskCell.swift; sourceTree = "<group>"; };
 		2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailyTaskCell.xib; sourceTree = "<group>"; };
 		298119AA1F50251300F9FB39 /* InventoryRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryRepository.swift; sourceTree = "<group>"; };
@@ -1130,6 +1127,7 @@
 		29D5AD5E20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29D5AD5F20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		29D6F6892E266F9D009BEE8E /* UsernameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameScreen.swift; sourceTree = "<group>"; };
+		29D825E82EF5A66E0019FEB9 /* habitica.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = habitica.icon; sourceTree = "<group>"; };
 		29DBDE47274BCDA2008F6777 /* HabiticaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaTests.swift; sourceTree = "<group>"; };
 		29DBDE49274BE745008F6777 /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
 		29DBDE53274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountSettingsViewController+Apple.swift"; sourceTree = "<group>"; };
@@ -1697,8 +1695,6 @@
 				29A9038726EA33A400442B93 /* FlagInformationOverlayView.swift */,
 				294973D1208118C100F02AC3 /* ImageOverlayView.swift */,
 				2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */,
-				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
-				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
 			);
 			name = Alerts;
 			sourceTree = "<group>";
@@ -2756,6 +2752,7 @@
 				29D16C7D25A33F70001D9A61 /* MainVCSelectionSegue.swift */,
 				290279AC20583EE8006DACB9 /* Storyboards */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
+				29D825E82EF5A66E0019FEB9 /* habitica.icon */,
 				298BE1CD2E2FAAB7005DA8CD /* Settings-prod.bundle */,
 				298BE1D02E2FACB8005DA8CD /* Settings-staff.bundle */,
 				290279672057F0B7006DACB9 /* Generated */,
@@ -3181,7 +3178,6 @@
 				29B3FEBE1F9E3DC3000B12CF /* HabiticaAlertController.xib in Resources */,
 				29B478BD20C1378100B6123F /* ChallengeTableViewCell.xib in Resources */,
 				298119B51F5048C000F9FB39 /* QuestGoalView.xib in Resources */,
-				2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */,
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
@@ -3199,6 +3195,7 @@
 				49DCB7C41F40D80B0079FDD0 /* NPCBannerView.xib in Resources */,
 				498E4CF81FA17B7F006933FF /* ChallengeButtonTableViewCell.xib in Resources */,
 				498E4D081FA17DB9006933FF /* ChallengeActionsTableViewCell.xib in Resources */,
+				29D825E92EF5A66E0019FEB9 /* habitica.icon in Resources */,
 				D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */,
 				29FC8864201B78D6002B3D3F /* QuestMenuHeader.xib in Resources */,
 				2927025A24E3F42100BCAA77 /* Support.storyboard in Resources */,
@@ -3804,7 +3801,6 @@
 				291448602084EA0100F3A6B5 /* PetDetailDataSource.swift in Sources */,
 				29CAC3CB2A3A1288006DF74D /* BaseHostingViewController.swift in Sources */,
 				29A4CB71257FF3150013F0B3 /* String-SafeExtensions.swift in Sources */,
-				2980E6091EEA25CE005B7100 /* YesterdailiesDialogView.swift in Sources */,
 				29646DE1205C18FA0050886C /* TaskType-Extensions.swift in Sources */,
 				29C1360624EBD7E000DBC6B3 /* FeedViewController.swift in Sources */,
 				29B4788820BD732A00B6123F /* SkillsTaskTableViewDataSource.swift in Sources */,
@@ -5429,7 +5425,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = habitica;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
@@ -5508,7 +5504,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = habitica;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;

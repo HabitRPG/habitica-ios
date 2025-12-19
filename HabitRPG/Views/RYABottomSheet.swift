@@ -45,7 +45,6 @@ class RYABottomSheetViewModel: ViewModel {
             }
         }
         userRepository.runCron(checklistItems: completedChecklistItems, tasks: completedTasks)
-        UserManager.shared.yesterdailiesDialog = nil
         dismisser.dismiss()
     }
     

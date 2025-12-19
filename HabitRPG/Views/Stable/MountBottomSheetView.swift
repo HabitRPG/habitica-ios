@@ -35,7 +35,7 @@ struct MountBottomSheetView: View, Dismissable {
         BottomSheetView(dismisser: dismisser, title: Text(mount.text ?? ""), content: VStack(spacing: 16) {
             StableBackgroundView(content: MountView(mount: mount).padding(.top, 30), animateFlying: false)
                 .clipShape(.rect(cornerRadius: UIConstants.largeCornerRadius))
-            HabiticaButtonUI(label: Text(L10n.share)) {
+            HabiticaButtonUI(label: Text(L10n.share).foregroundStyle(Color(theme.primaryTextColor)), color: Color(theme.offsetBackgroundColor)) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     SharingManager.share(mount: mount)
                 }

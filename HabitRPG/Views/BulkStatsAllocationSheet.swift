@@ -48,6 +48,7 @@ struct StatsAllocationRow<Title: View>: View {
 }
 
 struct BulkStatsAllocationSheet: View, Dismissable {
+    let userRepository = UserRepository()
     @ObservedObject var themeService = ThemeService.shared
     var dismisser = Dismisser()
     
@@ -93,15 +94,28 @@ struct BulkStatsAllocationSheet: View, Dismissable {
         }
     }
     
+    private func allocate() {
+        userRepository.bulkAllocate(strength: Int(strength), intelligence: Int(intelligence), constitution: Int(constitution), perception: Int(perception))
+            .observeCompleted {
+                
+            }
+        dismisser.dismiss()
+    }
+    
     var body: some View {
         BottomSheetView(dismisser: dismisser, title: BottomSheetHeaderBar(title: Text(L10n.stats), leftAction: Button {
                 dismisser.dismiss()
             } label: {
                 Image(systemName: .xmark)
+                    .scaledFont(size: 24)
+                    .frame(width: 24, height: 24)
+                    .foregroundStyle(.gray10)
             }, rightAction: Button {
-                dismisser.dismiss()
+                allocate()
             } label: {
                 Image(systemName: .checkmark)
+                    .scaledFont(size: 24)
+                    .frame(width: 24, height: 24)
             }), content: VStack {
                 VStack(spacing: 2) {
                     Text("\(strength + intelligence + constitution + perception, format: .number.precision(.fractionLength(0)))/\(maxToAllocate, format: .number.precision(.fractionLength(0)))")

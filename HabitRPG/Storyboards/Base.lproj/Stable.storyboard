@@ -16,13 +16,13 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pz5-my-WUA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6567" y="3102"/>
+            <point key="canvasLocation" x="6312" y="3102"/>
         </scene>
         <!--Mount Overview View Controller-->
         <scene sceneID="Ntu-Ub-BnA">
             <objects>
                 <collectionViewController storyboardIdentifier="MountsOverviewViewController" autoresizesArchivedViewToFullSize="NO" id="k4g-ZO-Buh" customClass="MountOverviewViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="uMo-F9-k66">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="uMo-F9-k66">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -317,7 +317,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oEZ-xz-ZVh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3114" y="3103"/>
+            <point key="canvasLocation" x="3112" y="2997"/>
         </scene>
         <!--Pet Detail View Controller-->
         <scene sceneID="hyi-ES-K3e">
@@ -493,7 +493,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2P3-bh-otW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3844" y="3103"/>
+            <point key="canvasLocation" x="3843" y="2998"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="QbV-9U-Vv1">
