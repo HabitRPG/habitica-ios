@@ -61,13 +61,14 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
         let size = segmentedControl.intrinsicContentSize
         segmentedWrapper.frame = CGRect(x: 8, y: 0, width: view.frame.width - 16, height: size.height + 8)
         segmentedControl.pin.horizontally(4).vertically(4)
-        var subviews: [UIView] = scrollView.subviews
-        while !subviews.isEmpty && !(subviews.first is UIScrollView) {
-            subviews = subviews.first?.subviews ?? []
-        }
-        subviews.forEach { subview in
-            if let scroll = subview as? UIScrollView {
-                scroll.contentInset = UIEdgeInsets(top: view.safeAreaInsets.top + size.height + 8, left: view.safeAreaInsets.left, bottom: view.safeAreaInsets.bottom, right: view.safeAreaInsets.right)
+        scrollView.subviews.forEach { subview in
+            var subviews: [UIView] = subview.subviews
+            while !subviews.isEmpty && !(subviews.first is UIScrollView) {
+                subviews = subviews.first?.subviews ?? []
+            }
+            if let scroll = subviews.first as? UIScrollView {
+                scroll.contentInset = UIEdgeInsets(top: view.safeAreaInsets.top + size.height + 12, left: view.safeAreaInsets.left, bottom: view.safeAreaInsets.bottom, right: view.safeAreaInsets.right)
+                scroll.scrollIndicatorInsets = UIEdgeInsets(top: size.height + 8, left: 0, bottom: 0, right: 0)
             }
         }
     }

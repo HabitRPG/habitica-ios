@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PromoMenuView: UIView {
+class PromoMenuView: UIView, Themeable {
     
     var onButtonTapped: (() -> Void)?
     var onCloseButtonTapped: (() -> Void)?
@@ -41,8 +41,16 @@ class PromoMenuView: UIView {
         button.isPointerInteractionEnabled = true
         return button
     }()
-    let leftImageView = UIImageView()
-    let rightImageView = UIImageView()
+    let leftImageView = {
+        let view = UIImageView()
+        view.contentMode = .topLeft
+        return view
+    }()
+    let rightImageView = {
+        let view = UIImageView()
+        view.contentMode = .topRight
+        return view
+    }()
     
     let closeButton: UIButton = {
         let view = UIButton()
@@ -51,6 +59,8 @@ class PromoMenuView: UIView {
         view.isHidden = true
         return view
     }()
+    
+    let topGradient = GradientView()
     
     func setTitle(_ title: String) {
         titleView.isHidden = false
@@ -83,6 +93,7 @@ class PromoMenuView: UIView {
     }
     
     private func setupViews() {
+        addSubview(topGradient)
         addSubview(rightImageView)
         addSubview(leftImageView)
         addSubview(titleView)
@@ -99,6 +110,8 @@ class PromoMenuView: UIView {
         
         actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
         closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        
+        ThemeService.shared.addThemeable(themable: self)
     }
     
     override func layoutSubviews() {
@@ -107,15 +120,15 @@ class PromoMenuView: UIView {
     }
     
     private func layout() {
-        leftImageView.pin.start().bottom().sizeToFit()
-        rightImageView.pin.end().bottom().sizeToFit()
+        leftImageView.pin.start().bottom().top(46).sizeToFit(.height)
+        rightImageView.pin.end().bottom().top(46).sizeToFit(.height)
         var upperEdge = edge.top
         if !titleView.isHidden {
-            titleView.pin.top(to: upperEdge).marginTop(20).sizeToFit().hCenter()
+            titleView.pin.top(to: upperEdge).marginTop(40).sizeToFit().hCenter()
             upperEdge = titleView.edge.bottom
         }
         if !titleImageView.isHidden {
-            titleImageView.pin.top(to: upperEdge).marginTop(24).sizeToFit().hCenter()
+            titleImageView.pin.top(to: upperEdge).marginTop(44).sizeToFit().hCenter()
             upperEdge = titleImageView.edge.bottom
         }
         if !descriptionView.isHidden {
@@ -128,14 +141,15 @@ class PromoMenuView: UIView {
         }
         actionButton.pin.top(to: upperEdge).minWidth(110).sizeToFit().marginTop(16).hCenter().height(32)
         closeButton.pin.top(8).end(8).wrapContent(padding: 12)
+        topGradient.pin.horizontally().top().height(80)
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 300, height: 148)
+        return CGSize(width: 300, height: 168)
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let size = CGSize(width: size.width, height: 148)
+        let size = CGSize(width: size.width, height: 168)
         frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: size.width, height: size.height)
         layout()
         return size
@@ -153,5 +167,10 @@ class PromoMenuView: UIView {
         if let action = onCloseButtonTapped {
             action()
         }
+    }
+    
+    func applyTheme(theme: any Theme) {
+        topGradient.startColor = theme.contentBackgroundColor
+        topGradient.endColor = theme.contentBackgroundColor.withAlphaComponent(0)
     }
 }

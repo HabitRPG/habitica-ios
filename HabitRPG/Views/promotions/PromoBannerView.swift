@@ -105,11 +105,11 @@ class PromoBannerView: UIView {
         rightImageView.pin.sizeToFit().end().bottom()
         var upperEdge = edge.top
         if !titleView.isHidden {
-            titleView.pin.top(to: upperEdge).marginTop(20).start(60).end(60).sizeToFit(.width)
+            titleView.pin.top(to: upperEdge).marginTop(25).start(60).end(60).sizeToFit(.width)
             upperEdge = titleView.edge.bottom
         }
         if !titleImageView.isHidden {
-            titleImageView.pin.top(to: upperEdge).marginTop(20).sizeToFit().hCenter()
+            titleImageView.pin.top(to: upperEdge).marginTop(25).sizeToFit().hCenter()
             upperEdge = titleImageView.edge.bottom
         }
         if !descriptionLabel.isHidden {
@@ -133,11 +133,11 @@ class PromoBannerView: UIView {
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 300, height: 148)
+        return CGSize(width: 300, height: 158)
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let size = CGSize(width: size.width, height: 148)
+        let size = CGSize(width: size.width, height: 158)
         frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: size.width, height: size.height)
         layout()
         return size

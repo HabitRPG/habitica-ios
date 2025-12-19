@@ -193,6 +193,7 @@ class MainMenuViewController: BaseTableViewController {
     private var disposable = ScopedDisposable(CompositeDisposable())
     private var seasonalShopTimer: Timer?
     private var promoTimer: Timer?
+    private let stretchView = GradientView()
 
     private var menuSections = [MenuSection]()
     var visibleSections: [MenuSection] {
@@ -293,8 +294,11 @@ class MainMenuViewController: BaseTableViewController {
                 if tableView.tableFooterView?.tag == promoTag {
                     return
                 }
-                let view = PromoMenuView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
+                let view = PromoMenuView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 168))
                 promo.configurePromoMenuView(view: view)
+                stretchView.startColor = promo.gradientStart ?? promo.backgroundColor
+                stretchView.endColor = promo.gradientEnd ?? promo.backgroundColor
+                stretchView.diagonalMode = true
                 view.onButtonTapped = { [weak self] in
                     if self?.activePromo?.isWebPromo == true {
                         self?.perform(segue: StoryboardSegue.Main.showWebPromoSegue)
@@ -405,6 +409,7 @@ class MainMenuViewController: BaseTableViewController {
         
         splitViewController?.displayModeButtonVisibility = .always
         splitViewController?.showsSecondaryOnlyButton = true
+        tableView.addSubview(stretchView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -419,6 +424,16 @@ class MainMenuViewController: BaseTableViewController {
                     self?.updatePromoCells()
                 })
         }
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentHeight = scrollView.contentSize.height
+        if contentHeight > 0 {
+            let footerSize = (tableView.tableFooterView?.frame.height ?? 0)
+            let bottomSize = max(0, scrollView.contentOffset.y - (contentHeight - scrollView.frame.size.height)) + footerSize
+            stretchView.frame = CGRect(x: 0, y: contentHeight - footerSize, width: scrollView.frame.size.width, height: bottomSize)
+        }
+        super.scrollViewDidScroll(scrollView)
     }
     
     private func updatePromoCells() {

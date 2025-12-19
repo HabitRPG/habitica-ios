@@ -81,9 +81,6 @@ class PromotionInfoViewController: BaseUIViewController {
         mainStackView.isLayoutMarginsRelativeArrangement = true
         
         promotion?.configureInfoView(self)
-        
-        navigationController?.navigationBar.standardAppearance.shadowColor = .clear
-        navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -95,8 +92,6 @@ class PromotionInfoViewController: BaseUIViewController {
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.standardAppearance.backgroundColor = theme.contentBackgroundColor
         instructionsTitleLabel.textColor = theme.secondaryTextColor
         limitationsTitleLabel.textColor = theme.secondaryTextColor
         instructionsDescriptionLabel.textColor = theme.quadTextColor

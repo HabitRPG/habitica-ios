@@ -1205,7 +1205,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="GemPurchaseViewController" id="0F5-C1-rPv" customClass="GemViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" id="CgT-fS-CrK">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="873"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="863"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="18" minimumInteritemSpacing="18" id="VJm-WU-tp7">
@@ -1230,10 +1230,10 @@
                                             </constraints>
                                         </view>
                                         <view hidden="YES" tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZ9-SA-Tk9" customClass="PromoBannerView" customModule="Habitica" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="-80" width="406" height="80"/>
+                                            <rect key="frame" x="0.0" y="-90" width="406" height="90"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="80" id="faj-GO-PfI"/>
+                                                <constraint firstAttribute="height" constant="90" id="faj-GO-PfI"/>
                                             </constraints>
                                         </view>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gem_purchase_header" translatesAutoresizingMaskIntoConstraints="NO" id="dBL-Kl-l7v">
@@ -2577,7 +2577,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hFs-vR-qJJ">
-                        <barButtonItem key="rightBarButtonItem" id="KsR-uQ-xY6">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="KsR-uQ-xY6">
                             <connections>
                                 <segue destination="1AC-4C-EqI" kind="unwind" unwindAction="unwindToList:" id="JhO-Cx-HhQ"/>
                             </connections>
@@ -2817,14 +2817,14 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="yNZ-LP-06T"/>
-        <segue reference="2vn-wQ-bqg"/>
+        <segue reference="9d2-gY-n53"/>
         <segue reference="FPm-Dv-Zos"/>
         <segue reference="x0h-sG-Le1"/>
         <segue reference="zgD-BU-MQh"/>
         <segue reference="xXS-0h-Y8G"/>
         <segue reference="WRT-c8-yJ5"/>
         <segue reference="ETz-qE-xC2"/>
-        <segue reference="jU9-l6-uQc"/>
+        <segue reference="0lJ-Wy-mKC"/>
         <segue reference="qTg-hC-uiS"/>
         <segue reference="gXQ-dZ-OGd"/>
         <segue reference="j9F-en-5nH"/>
