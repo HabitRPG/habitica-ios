@@ -750,6 +750,7 @@
 "login.what_call_you" = "What should we call you?";
 "login.username_description" = "This is a unique name you can change later at any time!";
 "login.terms_text" = "You confirm that you are at least 18 years old, and that you have read and agree to our **[Terms of Service](https://habitica.com/static/terms)** and **[Privacy Policy](https://habitica.com/static/privacy)**.";
+"login.custom_domain" = "Custom Domain";
 "join_habitica" = "Join Habitica";
 "groups.error_name_required" = "Name may not be empty.";
 "gift_recipient_title" = "Send gift";

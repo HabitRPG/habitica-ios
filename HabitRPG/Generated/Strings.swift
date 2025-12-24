@@ -2281,6 +2281,8 @@ public enum L10n {
     public static var usernameDescription: String { return L10n.tr("Mainstrings", "login.username_description") }
     /// What should we call you?
     public static var whatCallYou: String { return L10n.tr("Mainstrings", "login.what_call_you") }
+    // Custom Domain
+    public static var customDomain: String { return L10n.tr("Mainstrings", "login.custom_domain") }
   }
 
   public enum Member {

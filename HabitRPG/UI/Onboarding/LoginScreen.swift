@@ -289,6 +289,12 @@ struct LoginScreen: View {
     
     @AppStorage("chosenServer")
     var chosenServer: String = "production"
+
+    @AppStorage("customHost")
+    var customHost: String = ""
+
+    @AppStorage("customHostEnabled")
+    var customHostEnabled: Bool = false
     
     var body: some View {
         let isSmallDevice = UIApplication.shared.firstKeyWindow?.frame.height ?? 812 < 896
@@ -311,6 +317,9 @@ struct LoginScreen: View {
                 Image(Asset.loginLogo.name)
                     .scaleEffect(x: viewState == .initial ? 1.0 : 0.67, y: viewState == .initial ? 1.0 : 0.67)
                     .padding(.top, viewState == .initial ? 65 : 0)
+                    .onTapGesture(count: 5) {
+                        customHostEnabled = true
+                    }
                 if viewState == .initial {
                     Text(L10n.Login.tagline)
                         .scaledFont(size: 26, weight: .bold)
@@ -349,6 +358,20 @@ struct LoginScreen: View {
                     .frame(maxHeight: .infinity)
                 }
                 if viewState == .initial {
+                    if (chosenServer == "custom") {
+                        LoginTextInput(placeholder: L10n.Login.customDomain,
+                                       icon: Image(Asset.pillGryphon.name),
+                                       isValid: customHost == "" ? nil : true,
+                                       text: $customHost)
+                            .padding(.bottom, 7)
+                            .submitLabel(.next)
+                            .keyboardType(.URL)
+                            .onChange(of: customHost) { _ in
+                                let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate
+                                appDelegate?.updateServer()
+                            }
+                    }
+                    
                     Group {
                         LoginButton {
                             viewModel.appleLoginButtonPressed()
@@ -427,7 +450,17 @@ struct LoginScreen: View {
                             let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate
                             appDelegate?.updateServer()
                         }
+                } else if (customHostEnabled) {
+                    Picker(selection: $chosenServer) {
+                        Text(Servers.production.niceName).tag(Servers.production.rawValue)
+                        Text(Servers.custom.niceName).tag(Servers.custom.rawValue)
+                    }.pickerStyle(.menu)
+                        .onChange(of: chosenServer) { _ in
+                            let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate
+                            appDelegate?.updateServer()
+                        }
                 }
+                
             }
 
         }.frame(maxWidth: .infinity, maxHeight: .infinity)

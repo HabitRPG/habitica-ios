@@ -52,6 +52,9 @@ public class HabiticaServerConfig {
             return HabiticaServerConfig.starfish
         case "turtle":
             return HabiticaServerConfig.turtle
+        case "custom":
+            let host = UserDefaults.standard.string(forKey: "customHost") ?? ""
+            return ServerConfiguration(scheme: "https", host: host, apiRoute: "api/\(Constants.defaultApiVersion)")
         default:
             return HabiticaServerConfig.production
         }

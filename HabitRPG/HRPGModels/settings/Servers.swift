@@ -22,6 +22,7 @@ enum Servers: String, Identifiable {
     case shrimp
     case starfish
     case turtle
+    case custom
     
     var niceName: String {
         switch self {
@@ -45,6 +46,8 @@ enum Servers: String, Identifiable {
             return "⭐️ Starfish"
         case .turtle:
             return "🐢 Turtle"
+        case .custom:
+            return "🏠 Custom"
         }
     }
     
@@ -59,7 +62,8 @@ enum Servers: String, Identifiable {
             .seal,
             .shrimp,
             .starfish,
-            .turtle
+            .turtle,
+            .custom
         ]
     }
 }
