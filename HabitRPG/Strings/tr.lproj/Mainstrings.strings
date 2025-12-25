@@ -173,3 +173,5 @@
 "pets_found" = "Bulunan Evcil Hayvanlar";
 "player_not_completed_quests" = "Oyuncu herhangi bir görev tamamlamadı.";
 "player_not_won_challenges" = "Oyuncu herhangi bir mücadele kazanmadı.";
+"tasks.form.none" = "Hiçbiri";
+"tasks.form.times_scored" = "Puanlanan Zamanlar";
