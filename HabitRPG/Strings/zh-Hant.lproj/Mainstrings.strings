@@ -378,3 +378,4 @@
 "quest_mechanics_rage_description" = "某些高難度Boss的血量下方會出現橘色的怒氣條。怒氣條會在參與者錯過每日任務時逐漸填滿。一旦怒氣條全滿，Boss就會施展一次強力攻擊，造成額外傷害！";
 "quest_mechanics_damage_title" = "錯過每日任務會讓Boss反擊";
 "quest_mechanics_damage_description" = "每當隊伍成員在新的每日起始時間後打卡，系統都會計算Boss造成的傷害。這些傷害會在你下一次執行與伺服器同步的動作時生效。Boss造成的傷害會記錄在你們隊伍的聊天室中。";
+"stats.strength_text" = "提升暴擊加成並提高完成任務時的暴擊率，也會增加對 Boss 的傷害。";
