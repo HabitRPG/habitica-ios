@@ -912,7 +912,7 @@
 "view_participant_progress" = "Visualizar Progresso de Participante";
 "end_challenge" = "Finalizar Desafio";
 "subscription_info_1_description" = "Obtenha até 50 Gemas que podem ser adquiridas com Ouro no Mercado. Compre Missões, Personalizações, Mascotes e muito mais!";
-"subscription_info_2_description" = "Nunca perca 1 item com uma Ampulheta Mística por mês para usar na Loja dos Viajantes do Tempo!";
+"subscription_info_2_description" = "Não perca nenhum item com 1 Ampulheta Mística por mês para usar na Loja dos Viajantes do Tempo!";
 "subscription_gift_explanation" = "Quer dar os benefícios de uma assinatura para outra pessoa?";
 "subscription_gift_button" = "Presentear uma Assinatura";
 "subscription_support_developers" = "Assinar apoia nossa pequena equipe e ajuda a manter o Habitica em funcionamento";
@@ -1572,7 +1572,7 @@
 "shops.try_on_equipment" = "Você pode experimentá-los em \"Equipamentos\". Novos equipamentos estão disponíveis no começo de cada mês!";
 "shops.try_on_customize_avatar_return_next_month" = "Você pode experimentá-los customizando seu avatar. Certifique-se de voltar no próximo mês para conferir as novidades!";
 "shops.try_on_customize_avatar_return_next_season" = "Você pode experimentá-los customizando seu avatar. Certifique-se de voltar mais tarde para conferir as opções da próxima estação!";
-"empty.want_more_items" = "Procurando algo mais?";
+"empty.want_more_items" = "Buscando algo a mais?";
 "shops.try_on_customize_avatar" = "Você pode experimentá-los customizando seu avatar.";
 "shops.customization_notes" = "Gostaria de um novo visual? Veio ao lugar certo! Sempre recebemos novidades.";
 "empty.want_more_items_description" = "Confira a Loja de Personalização para encontrar ainda mais opções diferentes de personalizar seu avatar!";
@@ -1673,8 +1673,8 @@
 "stable.pets_and_mounts" = "Mascotes e Montarias";
 "pet" = "Mascote";
 "chat_with_question" = "Com quem gostaria de conversar?";
-"take_effect_immediately" = "Isto terá efeito imediatamente após a compra!";
-"membership" = "Assinatura";
+"take_effect_immediately" = "Isso entrará em vigor imediatamente após a compra!";
+"membership" = "Adesão";
 "ownership" = "Propriedade";
 "equipped_gear" = "Equipamento em uso";
 "challenges_won" = "Desafios Vencidos";
