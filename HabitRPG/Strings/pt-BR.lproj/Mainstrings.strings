@@ -739,7 +739,7 @@
 "tutorials.stats" = "Toque no botão cinza para distribuir vários de seus atributos de uma vez, ou clique nas setas para distribuir um de cada vez.";
 "world_boss.pending_strike" = "Dano Pendente";
 "world_boss.rage_strike_explanation_button" = "O que é um Golpe de Fúria?";
-"buffs" = "Buffs";
+"buffs" = "Melhorias";
 "allocated" = "Distribuído";
 "gems" = "Gemas";
 "teleporting_habitica" = "Teleportando para Habitica";
@@ -1495,9 +1495,9 @@
 "settings.push_notifications.content_release" = "Lançamento de conteúdo + Eventos";
 "inventory.no_saddle_description" = "Selas fazem Mascotes crescerem imediatamente para Montarias. Você pode comprá-las no Mercado.";
 "faint.subbed_button_prompt" = "Segunda chance: Continue com 1 de Vida!";
-"faint.subbed_footer" = "Sua assinatura permite uma nova chance a cada dia se a sua Vida acabar.";
+"faint.subbed_footer" = "Sua assinatura permite uma nova chance a cada dia se a sua vida acabar";
 "faint.unsubbed_button_prompt" = "Assine para continuar com 1 de Vida!";
-"faint.unsubbed_footer" = "Uma nova chance de não zerar sua vida a cada dia, só assinando.";
+"faint.unsubbed_footer" = "Uma nova chance de não zerar sua vida a cada dia com uma assinatura";
 "faint.subbed_used" = "Você já usou sua segunda chance hoje. Você receberá outra em %s.";
 "faint.perk_success" = "Você recebeu uma segunda chance com 1 de Vida!";
 "sub_perk" = "benefício de assinante";
@@ -1674,7 +1674,7 @@
 "pet" = "Mascote";
 "chat_with_question" = "Com quem gostaria de conversar?";
 "take_effect_immediately" = "Isso entrará em vigor imediatamente após a compra!";
-"membership" = "Adesão";
+"membership" = "Assinatura";
 "ownership" = "Propriedade";
 "equipped_gear" = "Equipamento em uso";
 "challenges_won" = "Desafios Vencidos";
