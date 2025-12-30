@@ -137,6 +137,12 @@ struct LoginForm: View {
     @Binding var repeatPassword: String
     var showLoadingIndicator: Bool
     
+    @AppStorage("chosenServer")
+    var chosenServer: String = "production"
+
+    @AppStorage("customHost")
+    var customHost: String = ""
+    
     let onLogin: () -> Void
     let onAppleLogin: () -> Void
     let onGoogleLogin: () -> Void
@@ -200,6 +206,19 @@ struct LoginForm: View {
             passwordField.submitLabel(.continue)
                 .onSubmit {
                     onLogin()
+                }
+        }
+        if (chosenServer == "custom") {
+            LoginTextInput(placeholder: L10n.Login.customDomain,
+                           icon: Image(Asset.pillGryphon.name),
+                           isValid: customHost == "" ? nil : true,
+                           text: $customHost)
+                .padding(.top, 7)
+                .submitLabel(.next)
+                .keyboardType(.URL)
+                .onChange(of: customHost) { _ in
+                    let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate
+                    appDelegate?.updateServer()
                 }
         }
         if showLoadingIndicator {
@@ -290,9 +309,6 @@ struct LoginScreen: View {
     @AppStorage("chosenServer")
     var chosenServer: String = "production"
 
-    @AppStorage("customHost")
-    var customHost: String = ""
-
     @AppStorage("customHostEnabled")
     var customHostEnabled: Bool = false
     
@@ -358,20 +374,6 @@ struct LoginScreen: View {
                     .frame(maxHeight: .infinity)
                 }
                 if viewState == .initial {
-                    if (chosenServer == "custom") {
-                        LoginTextInput(placeholder: L10n.Login.customDomain,
-                                       icon: Image(Asset.pillGryphon.name),
-                                       isValid: customHost == "" ? nil : true,
-                                       text: $customHost)
-                            .padding(.bottom, 7)
-                            .submitLabel(.next)
-                            .keyboardType(.URL)
-                            .onChange(of: customHost) { _ in
-                                let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate
-                                appDelegate?.updateServer()
-                            }
-                    }
-                    
                     Group {
                         LoginButton {
                             viewModel.appleLoginButtonPressed()
