@@ -1149,7 +1149,7 @@
 "currency" = "Monnaie";
 "premium_currency" = "Monnaie premium";
 "mana_description" = "Les points de mana sont débloqués avec le système de classe au niveau 10, et vous permettent d'**utiliser des compétences** au fur et à mesure que vous les apprenez dès le niveau 11. \n \nQuelques ** points de mana sont gagnés** chaque nouveau jour, mais vous pouvez en gagner plus en réalisant des tâches ou en utilisant des compétences de la classe Mage.";
-"gold_description" = "L'or est la **principale forme de monnaie** dans Habitica et vous permet d'acheter de l'équipement, des quêtes, des objets ou même des récompenses personnalisées que vous créez vous-même. \n \n**Gagnez de l'or** en validant vos tâches ou en réalisant des quêtes, ou avec certaines compétences de classe. Un **attribut de perception** plus élevé augmente l'or que vous gagnez. \n \nSi vous vous abonnez à Habitica, vous pourrez même utiliser l'or pour acheter un nombre de gemmes déterminé par la durée de votre abonnement.";
+"gold_description" = "L'Or est la principale forme de monnaie dans Habitica et vous permet d'acheter de l'équipement, des quêtes, des objets ou même des récompenses personnalisées que vous créez vous-même.\n\nGagnez de l'Or en accomplissant des tâches, des quêtes, ou avec certaines compétences de Classe.";
 "experience_points" = "Points d'expérience";
 "health_description" = "Ceci représente la santé de votre avatar. Rater une quotidienne ou réaliser une mauvaise habitude **diminue vos points de vie**. \n \n**Retrouvez des points de vie** en montant de niveau, en utilisant une potion, ou une compétence de classe de régénération. \n \nSi vos **points de vie tombent à 0**, vous perdrez un niveau, tout votre or, et une pièce d'équipement. L'équipement perdu peut être racheté.";
 "health_points" = "Points de vie";
@@ -1649,3 +1649,8 @@
 "not_now" = "Pas tout de suite";
 "undo" = "Annuler";
 "assigned_stat" = "Attribut Assigné";
+"empty.messages" = "Vous n'avez pas de messages";
+"empty.challenges" = "Vous ne participez à aucun Défi";
+"empty.challenges_description" = "Parcourez la section \"Découvrir\" afin de trouver des Défis thématiques créés par d'autres joueu·r·se·s et y participer. C'est une chouette façon de remplir votre liste de Tâches !";
+"empty.messages_description" = "Envoyez un message pour commencer une discussion avec un·e membre de votre Équipe ou un·e autre joueu·r·se Habitica";
+"glossary" = "Glossaire";
