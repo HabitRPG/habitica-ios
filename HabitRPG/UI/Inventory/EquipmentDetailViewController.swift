@@ -30,14 +30,17 @@ class EquipmentDetailViewController: BaseTableViewController, UISearchResultsUpd
         tableView.estimatedRowHeight = 100
         
         self.navigationItem.searchController = searchController
-        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = true
         navigationItem.backButtonDisplayMode = .minimal
         navigationItem.backButtonTitle = nil
         navigationItem.title = nil
         self.navigationItem.preferredSearchBarPlacement = .inline
-        searchController.scopeBarActivation = .automatic
+        searchController.scopeBarActivation = .onSearchActivation
+        searchController.automaticallyShowsCancelButton = true
+        if #available(iOS 26.0, *) {
+            navigationItem.preferredSearchBarPlacement = .integratedButton
+        }
         updateSearchSuggestions(withInput: nil)
-        searchController.searchBar.showsCancelButton = false
         searchController.searchResultsUpdater = self
         tableView.keyboardDismissMode = .onDrag
     }

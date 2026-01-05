@@ -273,6 +273,8 @@ internal enum Asset {
   internal static let promoGiftRightLarge = ImageAsset(name: "promo_gift_right_large")
   internal static let promoGiftsLeft = ImageAsset(name: "promo_gifts_left")
   internal static let promoGiftsRight = ImageAsset(name: "promo_gifts_right")
+  internal static let questRewardsLeft = ImageAsset(name: "quest_rewards_left")
+  internal static let questRewardsRight = ImageAsset(name: "quest_rewards_right")
   internal static let rageStrikeActive = ImageAsset(name: "rage_strike_active")
   internal static let rageStrikePending = ImageAsset(name: "rage_strike_pending")
   internal static let reminder = ImageAsset(name: "reminder")
