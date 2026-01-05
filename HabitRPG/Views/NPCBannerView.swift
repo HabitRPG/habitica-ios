@@ -100,7 +100,7 @@ class NPCBannerView: UIView {
         case "customizations":
             self.npcNameLabel.text = "Felicitus"
         case "support":
-            self.npcNameLabel.text = "Justin"
+            self.npcNameLabel.text = "Daniel"
         default:
             self.npcNameLabel.text = ""
         }

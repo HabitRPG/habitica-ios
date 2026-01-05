@@ -257,6 +257,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                     headerView.changeClassPriceLabel?.amount = 3
                 }
             } else {
+                headerView.changeClassWrapper.isHidden = true
                 let section = visibleSections[indexPath.section]
                 if let endDates = section.endDates, !endDates.isEmpty {
                     headerView.swapsInLabel.isHidden = false

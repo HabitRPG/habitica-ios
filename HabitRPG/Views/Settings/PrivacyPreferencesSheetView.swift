@@ -79,7 +79,7 @@ struct PrivacyPreferencesSheetView: View, Dismissable {
                 .padding(.horizontal, 13)
             Text((try? AttributedString(markdown: L10n.privacyPreferencesSheetDescription,
                                         options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace))) ?? AttributedString(L10n.privacyPreferencesSheetDescription))
-                .scaledFont(size: 14)
+                .scaledFont(size: 16)
                 .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 .lineSpacing(3)
                 .padding(.bottom, 30)

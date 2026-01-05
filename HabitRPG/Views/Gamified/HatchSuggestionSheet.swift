@@ -105,7 +105,7 @@ struct HatchSuggestionSheet: View {
                              rightIcon: PixelArtView(name: "Pet_HatchingPotion_\(item.pet?.potion ?? "")"),
             isleftIconActive: ownedEggCount > 0,
             isRightIconActive: ownedPotionCount > 0)
-            Text((ownedEggCount > 0 && ownedPotionCount > 0) ? L10n.hatchPet : L10n.unhatchedPet)
+            Text((ownedEggCount > 0 && ownedPotionCount > 0) ? L10n.hatchPetNewTitle : L10n.unhatchedPet)
                 .scaledFont(size: 22, weight: .bold)
                 .foregroundStyle(.white)
         }, title: Text(item.pet?.text ?? ""), description: Text(descriptionText)) {

@@ -197,7 +197,10 @@ struct BuySheet: View, Dismissable {
                         EmptyView()
                     }
                 }
-                PlusMinusStepperView(amount: $viewModel.quantity, icon: icon, isActive: viewModel.item.key == "gem" ? remainingGems > 0 : true)
+                PlusMinusStepperView(amount: $viewModel.quantity,
+                                     icon: icon,
+                                     isActive: viewModel.item.key == "gem" ? remainingGems > 0 : true,
+                                     maxAmount: viewModel.item.key == "gem" ? remainingGems : nil)
             }
             if viewModel.isInstantUse {
                 BuyBanner(color: Color(themeService.theme.offsetBackgroundColor), content: Text(L10n.takeEffectImmediately).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
@@ -215,10 +218,10 @@ struct BuySheet: View, Dismissable {
                 if total > 0 && viewModel.user?.isSubscribed == true {
                     if remainingGems > 0 {
                         BuyBanner(color: (isDarkTheme ? Color.green500 : .green100).opacity(0.4),
-                                  content: Text(L10n.Inventory.numberGemsLeft(remainingGems, total)).foregroundStyle(Color.green1))
+                                  content: Text(L10n.Inventory.numberGemsLeft(remainingGems, total)).foregroundStyle(isDarkTheme ? Color.green500 : Color.green1))
                     } else {
                         BuyBanner(color: (isDarkTheme ? Color.yellow500 : .yellow100).opacity(0.4),
-                                  content: Text(L10n.Inventory.numberGemsLeft(remainingGems, total)).foregroundStyle(Color.green1))
+                                  content: Text(L10n.Inventory.numberGemsLeft(remainingGems, total)).foregroundStyle(isDarkTheme ? Color.yellow500 : Color.yellow1))
                     }
                 } else {
                     // This shouldn't show and is mostly for layouting purposes

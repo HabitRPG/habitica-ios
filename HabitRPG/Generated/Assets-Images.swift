@@ -244,6 +244,7 @@ internal enum Asset {
   internal static let messages = ImageAsset(name: "messages")
   internal static let minus = ImageAsset(name: "minus")
   internal static let minusGray = ImageAsset(name: "minus_gray")
+  internal static let notificationParty = ImageAsset(name: "notification_party")
   internal static let notificationsBailey = ImageAsset(name: "notifications_bailey")
   internal static let notificationsClose = ImageAsset(name: "notifications_close")
   internal static let notificationsGroupTask = ImageAsset(name: "notifications_group_task")

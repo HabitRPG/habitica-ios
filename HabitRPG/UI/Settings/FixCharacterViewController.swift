@@ -143,30 +143,31 @@ class FixCharacterViewController: BaseTableViewController {
             valueField.text = "\(floatValue)"
             valueField.keyboardType = .decimalPad
         }
+        let isDark = ThemeService.shared.theme.isDark
         switch item {
         case 0:
             titleLabel.text = L10n.health
-            titleLabel.textColor = UIColor.red10
+            titleLabel.textColor = isDark ? .red500 : .red10
             iconView.image = HabiticaIcons.imageOfHeartLightBg
             return
         case 1:
             titleLabel.text = L10n.experience
-            titleLabel.textColor = UIColor.yellow10
+            titleLabel.textColor = isDark ? .yellow500 : .yellow10
             iconView.image = HabiticaIcons.imageOfExperience
             return
         case 2:
             titleLabel.text = L10n.manaPoints
-            titleLabel.textColor = UIColor.blue10
+            titleLabel.textColor = isDark ? .blue500 : .blue10
             iconView.image = HabiticaIcons.imageOfMagic
             return
         case 3:
             titleLabel.text = L10n.gold
-            titleLabel.textColor = UIColor.yellow10
+            titleLabel.textColor = isDark ? .orange500 : .yellow10
             iconView.image = HabiticaIcons.imageOfGold
             return
         case 4:
             titleLabel.text = L10n.characterLevel
-            titleLabel.textColor = UIColor.purple300
+            titleLabel.textColor = isDark ? .purple500 : .purple300
             configure(iconView: iconView, forHabitClass: habitClass)
             return
         case 5:

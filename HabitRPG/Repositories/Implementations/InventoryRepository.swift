@@ -139,7 +139,11 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                     }
                 } else {
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1.0) {
-                        ToastManager.show(text: L10n.purchased(text), color: .green)
+                        if quantity > 1 {
+                            ToastManager.show(text: L10n.purchasedAmount(quantity, text), color: .green)
+                        } else {
+                            ToastManager.show(text: L10n.purchased(text), color: .green)
+                        }
                     }
                 }
                 UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
@@ -158,7 +162,11 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
-                ToastManager.show(text: L10n.purchased(text), color: .green)
+                if quantity > 1 {
+                    ToastManager.show(text: L10n.purchasedAmount(quantity, text), color: .green)
+                } else {
+                    ToastManager.show(text: L10n.purchased(text), color: .green)
+                }
             }
         })
     }

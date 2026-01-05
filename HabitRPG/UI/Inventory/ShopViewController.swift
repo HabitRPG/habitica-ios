@@ -75,8 +75,11 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         }).start()
         
         goldView.insets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        goldView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
         gemView.insets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
+        gemView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
         hourglassView.insets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+        hourglassView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
     }
     
     private var isSubscribed: Bool?

@@ -391,7 +391,7 @@
 "settings.privacy_preferences" = "Privacy Preferences";
 "settings.manage_privacy_preferences" = "Change your privacy permissions";
 "your_privacy_preferences" = "Your Privacy Preferences";
-"privacy_preferences_sheet_description" = "Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\nYou can change this at any time. To learn more, review our [Privacy Policy](https://habitica.com/static/privacy).";
+"privacy_preferences_sheet_description" = "Your privacy is important to us. Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\nYou can change this at any time. To learn more, review our [Privacy Policy](https://habitica.com/static/privacy).";
 "privacy_preferences_full_description" = "Your privacy is important to us. Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\nYou can change these at any time from your account settings.";
 "performance_analytics" = "Performance & Analytics";
 "performance_analytics_description" = "This is used to improve the player experience, performance, and services of Habitica. Our support team will also use this when handling requests and bug reports.";
@@ -907,7 +907,7 @@
 "world_boss.rage_strike_explanation" = "There are 3 potential Rage Strikes\nThis gauge fills when Habiticans miss their Dailies. If it fills up, the DysHeartener will unleash its Shattering Heartbreak attack on one of Habitica's shopkeepers, so be sure to do your tasks!";
 "buffs" = "Buffs";
 "allocated" = "Allocated";
-"checkin_yesterdays_dalies" = "Check off any Dailies you did yesterday:";
+"checkin_yesterdays_dalies" = "Check off any Dailies you did yesterday before starting today:";
 "start_my_day" = "Start my day";
 "gems" = "Gems";
 "teleporting_habitica" = "Teleporting to Habitica";
@@ -1074,6 +1074,7 @@
 "shops.try_on_equipment" = "You can try them on from Equipment. New stock comes in at the beginning of each month!";
 "shops.customizing_your_avatar" = "customizing your avatar";
 "purchased" = "You purchased %@";
+"purchased_amount" = "You purchased %d %@";
 "buy_reward" = "You bought '%@' for %@ gold";
 "notifications.unallocated_stat_points" = "You have **%d unallocated Stat Points**";
 "notifications.new_bailey" = "New Bailey Update!";
@@ -1124,7 +1125,8 @@
 "add" = "Add";
 "onwards" = "Onwards";
 "chat_with_question" = "Who would you like to chat with?";
-"gift_gems_alert_title" = "Who would you like to send your gift to?";
+"gift_gems_alert_title" = "Git Gems";
+"gift_gems_alert_text" = "What account would you like to  send your gift to?";
 "gift_gems_alert_prompt" = "Enter recipient's @username";
 "gift_gems_disclaimer" = "Habitica will never require you to gift gems to other players. Begging people for gems is a violation of the Community Guidelines and should be reported to admin@habitica.com.";
 "gift_gems_explanation_purchase" = "Choose how many Gems to gift below or switch tabs to gift Gems from your current balance";
@@ -1188,6 +1190,7 @@
 "create_task_title" = "Create a Task";
 "complete_task_title" = "Complete a Task";
 "hatch_pet_title" = "Hatch a Pet";
+"hatch_pet_new_title" = "Hatch a new Pet";
 "feedPet_title" = "Feed a Pet";
 "hundred_gold" = "100 Gold";
 "five_achievements" = "5 Achievements";

@@ -204,7 +204,7 @@ struct LoginForm: View {
         }
         if showLoadingIndicator {
             HabiticaProgressView()
-                .padding(.top, 40)
+                .padding(.top, 38)
                 .padding(.bottom, 12)
         } else {
             let isFormValid = viewState == .login ? !email.isEmpty && isPasswordValid == true
@@ -258,6 +258,7 @@ struct LoginButton<Label: View>: View {
         let button = Button(action: {
             action()
         }, label: label
+            .scaledFont(size:17, weight: .bold)
             .foregroundStyle(.gray50)
             .frame(maxWidth: .infinity)
             .frame(minHeight: 44))
@@ -308,21 +309,21 @@ struct LoginScreen: View {
             .animation(.bouncy, value: viewState)
             .ignoresSafeArea()
             VStack(spacing: 0) {
-                Image(Asset.loginLogo.name)
+                let icon = Image(Asset.loginLogo.name)
                     .scaleEffect(x: viewState == .initial ? 1.0 : 0.67, y: viewState == .initial ? 1.0 : 0.67)
                     .padding(.top, viewState == .initial ? 65 : 0)
-                if viewState == .initial {
-                    Text(L10n.Login.tagline)
-                        .scaledFont(size: 26, weight: .bold)
-                        .foregroundStyle(isSmallDevice ? .white : .purple500)
-                        .multilineTextAlignment(.center)
-                        .shadow(color: Color(hexadecimal: "#36205D"), x: 0, y: 0, blur: 4)
-                        .lineLimit(5)
-                        .padding(.top, 29)
-                    Spacer()
-                        .frame(maxHeight: .infinity)
-                } else {
-                    ScrollView {
+                let scrollView = ScrollView {
+                    if viewState == .initial {
+                        Text(L10n.Login.tagline)
+                            .scaledFont(size: 26, weight: .bold)
+                            .foregroundStyle(isSmallDevice ? .white : .purple500)
+                            .multilineTextAlignment(.center)
+                            .shadow(color: Color(hexadecimal: "#36205D"), x: 0, y: 0, blur: 4)
+                            .lineLimit(5)
+                            .padding(.top, 29)
+                        Spacer()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    } else {
                         VStack(spacing: 0) {
                             LoginForm(viewState: $viewState,
                                       email: $viewModel.email,
@@ -345,8 +346,18 @@ struct LoginScreen: View {
                             .animation(.bouncy, value: viewState)
                             .transition(.asymmetric(insertion: .push(from: .top), removal: .push(from: .bottom)).combined(with: .opacity))
                         }
+                        .padding(.horizontal, 20)
+                        .transition(.scale(scale: 0.7, anchor: .bottom).combined(with: .opacity))
                     }
-                    .frame(maxHeight: .infinity)
+                }
+                .frame(maxHeight: .infinity)
+                if #available(iOS 26.0, *) {
+                    scrollView.safeAreaBar(edge: .top) {
+                        icon
+                    }
+                } else {
+                    icon
+                    scrollView
                 }
                 if viewState == .initial {
                     Group {
@@ -370,7 +381,7 @@ struct LoginScreen: View {
                         }
                             .padding(.top, 8)
                         LoginButton {
-                            withAnimation {
+                            withAnimation(.spring) {
                                 viewState = .register
                             }
                         } label: {
@@ -383,7 +394,7 @@ struct LoginScreen: View {
                             .padding(.top, 8)
                         
                         let loginButton = Button {
-                            withAnimation {
+                            withAnimation(.spring) {
                                 viewState = .login
                             }
                         } label: {
@@ -401,10 +412,11 @@ struct LoginScreen: View {
                             loginButton
                         }
                     }
+                    .padding(.horizontal, 20)
                     .animation(.bouncy, value: viewState)
                     .transition(.asymmetric(insertion: .push(from: .bottom), removal: .push(from: .top)))
                 }
-            }.padding(.horizontal, 20)
+            }
             if viewState != .initial {
                 Button {
                     withAnimation {

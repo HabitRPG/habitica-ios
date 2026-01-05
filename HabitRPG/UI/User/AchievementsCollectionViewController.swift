@@ -217,6 +217,7 @@ struct AchievementGridItem: View {
             }
         }
         .scaledFont(size: 15, weight: .semibold)
+        .multilineTextAlignment(.center)
         .foregroundStyle(Color(themeService.theme.primaryTextColor))
         .padding(.vertical, 20)
             .padding(.horizontal, 12)

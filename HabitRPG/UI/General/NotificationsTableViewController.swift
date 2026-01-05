@@ -264,7 +264,7 @@ struct NewChatMessageNotificationView: View {
 
     var body: some View {
         NotificationMainContent(onDismiss: onDismiss) {
-            NotificationImage()
+            NotificationImage(content: Image(Asset.notificationParty.name).frame(width: 32, height: 32))
             if partyID == notification.groupID {
                 NotificationTexts(description: Text(markdown: L10n.Notifications.unreadPartyMessage(notification.groupName?.unicodeEmoji ?? "")))
             } else {
@@ -299,7 +299,7 @@ struct NewMysteryItemNotificationView: View {
     var body: some View {
         NotificationMainContent(onDismiss: onDismiss) {
             let month = Calendar.current.component(.month, from: Date())
-            NotificationImage(content: PixelArtView(name: "inventory_present_\(month)").frame(width: 28, height: 28))
+            NotificationImage(content: PixelArtView(name: "inventory_present_\(month)"))
             NotificationTexts(description: Text(markdown: L10n.Notifications.newMysteryItem))
         }
     }

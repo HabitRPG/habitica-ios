@@ -72,6 +72,9 @@ class BuySheetViewModel: ViewModel {
     }
     
     var canBuyDisplay: Bool {
+        if item.key == "gem" && user?.purchased?.subscriptionPlan?.gemsRemaining == 0 {
+            return false
+        }
         return canAffordDisplay && !isLocked
     }
     
@@ -190,16 +193,20 @@ class BuySheetViewModel: ViewModel {
                 return
             }
             remainingPurchaseQuantity { remainingQuantity in
+                var quantity = self.quantity
                 if remainingQuantity >= 0 {
-                    if remainingQuantity < self.quantity {
+                    if remainingQuantity < quantity {
                         self.displayPurchaseConfirmationDialog(quantity: remainingQuantity)
                         return
                     }
                 }
+                if self.item.purchaseType == "gems", let remaining = self.user?.purchased?.subscriptionPlan?.gemsRemaining {
+                    quantity = min(remaining, quantity)
+                }
                 withAnimation {
                     self.isPurchasing = true
                 }
-                self.buyItem(quantity: self.quantity)
+                self.buyItem(quantity: quantity)
             }
         }
     }

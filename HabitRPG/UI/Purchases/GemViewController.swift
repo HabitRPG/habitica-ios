@@ -246,25 +246,17 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     }
     
     @IBAction func giftGemsTapped(_ sender: Any) {
-        let alertController = HabiticaAlertController(title: L10n.giftGemsAlertTitle)
+        let alertController = HabiticaAlertController(title: L10n.giftGemsAlertTitle, message: L10n.giftGemsAlertText)
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 12
-        let label = UILabel()
-        label.text = L10n.giftGemsAlertPrompt
-        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
-        label.textColor = ThemeService.shared.theme.ternaryTextColor
-        label.textAlignment = .center
-        stackView.addArrangedSubview(label)
         let usernameTextField = PaddedTextField()
         usernameTextField.attributedPlaceholder = NSAttributedString(string: L10n.username, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
         usernameTextField.autocapitalizationType = .none
         usernameTextField.spellCheckingType = .no
         usernameTextField.borderStyle = .none
-        usernameTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        usernameTextField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
-        usernameTextField.borderWidth = 1
-        usernameTextField.cornerRadius = 26
+        usernameTextField.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+        usernameTextField.cornerRadius = UIConstants.largeCornerRadius
         usernameTextField.textInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         usernameTextField.textColor = ThemeService.shared.theme.secondaryTextColor
         stackView.addArrangedSubview(usernameTextField)

@@ -168,7 +168,7 @@ public enum L10n {
   public static func checkinPrizeEarned(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "checkin_prize_earned", p1)
   }
-  /// Check off any Dailies you did yesterday:
+  /// Check off any Dailies you did yesterday before starting today:
   public static var checkinYesterdaysDalies: String { return L10n.tr("Mainstrings", "checkin_yesterdays_dalies") }
   /// Choose Task
   public static var chooseTask: String { return L10n.tr("Mainstrings", "choose_task") }
@@ -492,7 +492,9 @@ public enum L10n {
   public static var giftGems: String { return L10n.tr("Mainstrings", "gift_gems") }
   /// Enter recipient's @username
   public static var giftGemsAlertPrompt: String { return L10n.tr("Mainstrings", "gift_gems_alert_prompt") }
-  /// Who would you like to send your gift to?
+  /// What account would you like to  send your gift to?
+  public static var giftGemsAlertText: String { return L10n.tr("Mainstrings", "gift_gems_alert_text") }
+  /// Git Gems
   public static var giftGemsAlertTitle: String { return L10n.tr("Mainstrings", "gift_gems_alert_title") }
   /// Habitica will never require you to gift gems to other players. Begging people for gems is a violation of the Community Guidelines and should be reported to admin@habitica.com.
   public static var giftGemsDisclaimer: String { return L10n.tr("Mainstrings", "gift_gems_disclaimer") }
@@ -568,6 +570,8 @@ public enum L10n {
   public static var hatchPetAgain: String { return L10n.tr("Mainstrings", "hatch_pet_again") }
   /// Complete tasks to get a Hatching Potion and Egg then hatch your Pet!
   public static var hatchPetDescription: String { return L10n.tr("Mainstrings", "hatch_pet_description") }
+  /// Hatch a new Pet
+  public static var hatchPetNewTitle: String { return L10n.tr("Mainstrings", "hatch_pet_new_title") }
   /// Hatch a Pet
   public static var hatchPetTitle: String { return L10n.tr("Mainstrings", "hatch_pet_title") }
   /// Hatch with potion
@@ -964,7 +968,7 @@ public enum L10n {
   public static var privacyPolicy: String { return L10n.tr("Mainstrings", "privacy_policy") }
   /// Your privacy is important to us. Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\nYou can change these at any time from your account settings.
   public static var privacyPreferencesFullDescription: String { return L10n.tr("Mainstrings", "privacy_preferences_full_description") }
-  /// Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\nYou can change this at any time. To learn more, review our [Privacy Policy](https://habitica.com/static/privacy).
+  /// Your privacy is important to us. Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\nYou can change this at any time. To learn more, review our [Privacy Policy](https://habitica.com/static/privacy).
   public static var privacyPreferencesSheetDescription: String { return L10n.tr("Mainstrings", "privacy_preferences_sheet_description") }
   /// How it works
   public static var promoInfoInstructionsTitle: String { return L10n.tr("Mainstrings", "promo_info_instructions_title") }
@@ -1001,6 +1005,10 @@ public enum L10n {
   /// You purchased %@
   public static func purchased(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "purchased", p1)
+  }
+  /// You purchased %d %@
+  public static func purchasedAmount(_ p1: Int, _ p2: String) -> String {
+    return L10n.tr("Mainstrings", "purchased_amount", p1, p2)
   }
   /// Equipment can be practical or just fashionable. Raise your stats to get all sorts of benefits to your avatar
   public static var purchasedEquipmentDescription: String { return L10n.tr("Mainstrings", "purchasedEquipmentDescription") }
