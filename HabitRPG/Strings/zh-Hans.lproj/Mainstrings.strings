@@ -724,7 +724,7 @@
 "world_boss.rage_strike_explanation" = "Boss会造成3次狂暴攻击\n如果有玩家忘记做每日任务，这个进度条就会前进。如果进度条满了，DysHeartener就会释放毁天灭地心碎攻击，还会随机攻击Habitica的一个店主。要记得完成你的任务哟！";
 "buffs" = "增益";
 "allocated" = "已分配";
-"checkin_yesterdays_dalies" = "检查你昨天的日常任务：";
+"checkin_yesterdays_dalies" = "在开始今天之前，勾选昨天已经完成的日常任务：";
 "start_my_day" = "开始新的一天";
 "gems" = "宝石";
 "teleporting_habitica" = "传送到Habitica";
@@ -1522,7 +1522,7 @@
 "api_token_reset_title" = "如需重置API Token";
 "api_token_reset_desc" = "修改密码将自动重置 Token。重置后需要：在所有您使用Habitica的设备上进行重新登录，在您使用的第三方工具中更新为新的API Token。";
 "copy_token" = "复制Token";
-"privacy_preferences_sheet_description" = "Habitica 将使用您设备中的数据用于：分析性能表现、处理支持请求提供最佳游戏化体验。因此，我们需要申请以下权限。\n\n您可随时修改权限设置。更多详情请查看[隐私政策](https://habitica.com/static/privacy)。";
+"privacy_preferences_sheet_description" = "您的隐私对我们来说至关重要。Habitica 将使用您设备中的数据用于：分析性能表现、处理支持请求提供最佳游戏化体验。因此，我们需要申请以下权限。\n\n您可随时修改权限设置。更多详情请查看[隐私政策](https://habitica.com/static/privacy)。";
 "settings.user_data" = "用户数据";
 "settings.privacy_preferences" = "隐私设置";
 "settings.manage_privacy_preferences" = "修改隐私权限";
@@ -1591,3 +1591,6 @@
 "empty.challenges" = "你没有参加任何挑战";
 "empty.challenges_description" = "快来“探索”板块逛逛吧！这里有海量其他玩家创建的趣味挑战等你发现和加入，是充实待办清单的绝佳方式！";
 "empty.messages_description" = "发送消息，开始与你的队伍成员或其他 Habitica 玩家交流吧";
+"purchased_amount" = "你购买了%d %@";
+"hatch_pet_new_title" = "孵化一只新宠物";
+"gift_gems_alert_text" = "你想给哪个帐户赠送礼物？";
