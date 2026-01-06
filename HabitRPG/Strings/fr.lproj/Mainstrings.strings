@@ -845,7 +845,7 @@
 "world_boss.rage_strike_warning" = "Soyez prudent.e...\nUne fois sa barre de rage remplie, le boss mondial attaquera et s'en prendra à l'un.e de nos ami.es marchand.es. Continuez à accomplir vos Quotidiennes pour tenter de l'en empêcher !";
 "world_boss.rage_strike_damaged" = "%@ a le coeur brisé !\nNotre cher %@ fut dévasté lorsque %@ brisa le %@. Vite, occupez-vous de vos tâches pour vaincre le monstre et aider à reconstruire !";
 "world_boss.rage_strike_explanation" = "Il peut y avoir jusqu'à 3 attaques de rage\nLa barre se remplit lorsque les habitants d'Habitica manquent leurs Quotidiennes. Lorsque la jauge sera remplie, la Décoeurageante libèrera son Brisement de cœur sur l'un.e des marchand.es d'Habitica, alors assurez-vous d'accomplir vos tâches !";
-"checkin_yesterdays_dalies" = "Cochez les Quotidiennes accomplies hier :";
+"checkin_yesterdays_dalies" = "Cochez les Quotidiennes accomplies hier avant de commencer votre nouvelle journée :";
 "force_start" = "Démarrage forcé";
 "leave_challenge" = "Quitter le défi";
 "join_challenge" = "Participer au défi";
@@ -1039,7 +1039,7 @@
 "gift_gems_explanation_purchase" = "Choisissez combien de gemmes offrir ci-dessous, ou changez d'onglet pour offrir des gemmes de votre propre réserve";
 "gift_gems_disclaimer" = "Habitica ne vous obligera jamais à offrir des gemmes à d'autres personnes. Réclamer des gemmes est une violation de notre guide de vie en communauté qui doit être reportée à admin@habitica.com.";
 "gift_gems_alert_prompt" = "Entrez l'@identifiant de la personne destinataire";
-"gift_gems_alert_title" = "A qui voudriez-vous envoyer votre cadeau ?";
+"gift_gems_alert_title" = "Offrir des Gemmes";
 "gift_gems_prompt" = "Vous voulez offrir un beau butin de gemmes à quelqu'un d'autre ?";
 "purchase_x" = "Acheter %d";
 "excess_x_items_left" = "Vous avez seulement besoin de %d %@s pour faire éclore tous les familiers possibles. Voulez-vous vraiment acheter %d ?";
@@ -1588,7 +1588,7 @@
 "settings.privacy_preferences" = "Préférences de Confidentialité";
 "settings.manage_privacy_preferences" = "Changer vos paramètres de confidentialité";
 "your_privacy_preferences" = "Vos Préférences de Confidentialité";
-"privacy_preferences_sheet_description" = "Habitica utilise des données de votre appareil pour une analyse des performances, la gestion des requêtes sur le support, et pour vous proposer la meilleure expérience de jeu possible. Pour cela, nous avons besoin de quelques autorisations.\n\nVous pouvez changer vos paramètres à tout moment. Pour en savoir plus, consultez notre [Politique de Confidentialité](https://habitica.com/static/privacy).";
+"privacy_preferences_sheet_description" = "Votre confidentialité nous importe. Habitica utilise des données de votre appareil pour une analyse des performances, la gestion des requêtes sur le support, et pour vous proposer la meilleure expérience de jeu possible. Pour cela, nous avons besoin de quelques autorisations.\n\nVous pouvez changer vos paramètres à tout moment. Pour en savoir plus, consultez notre [Politique de Confidentialité](https://habitica.com/static/privacy).";
 "performance_analytics" = "Performance et Analyses";
 "strictly_necessary" = "Strict nécessaire";
 "strictly_necessary_description" = "Ce sont les données nécessaires requises pour le bon fonctionnement de notre application. Ces données sont celles liées à vos préférences enregistrées dans vos paramètres, ainsi que des informations en cas d'arrêt inopiné de l'application.";
@@ -1654,3 +1654,6 @@
 "empty.challenges_description" = "Parcourez la section \"Découvrir\" afin de trouver des Défis thématiques créés par d'autres joueu·r·se·s et y participer. C'est une chouette façon de remplir votre liste de Tâches !";
 "empty.messages_description" = "Envoyez un message pour commencer une discussion avec un·e membre de votre Équipe ou un·e autre joueu·r·se Habitica";
 "glossary" = "Glossaire";
+"purchased_amount" = "Vous avez acheté %d %@";
+"gift_gems_alert_text" = "À quel compte souhaitez-vous envoyer votre cadeau ?";
+"hatch_pet_new_title" = "Faire éclore un nouveau Familier";
