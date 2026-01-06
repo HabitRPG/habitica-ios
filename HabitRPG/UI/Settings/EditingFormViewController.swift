@@ -274,6 +274,8 @@ class EditingFormViewController: UIViewController, Themeable {
     func applyTheme(theme: Theme) {
         if #unavailable(iOS 26.0) {
             scrollView.backgroundColor = theme.contentBackgroundColor
+        } else {
+            navigationItem.rightBarButtonItem?.tintColor = theme.fixedTintColor
         }
     }
     

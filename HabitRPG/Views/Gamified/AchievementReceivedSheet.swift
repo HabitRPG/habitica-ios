@@ -22,9 +22,9 @@ struct AchievementReceivedSheet<Title: View, Description: View>: View {
                             upperContent: VStack {FanfareContainer(haloColor: .yellow500,
                                                                    circleColor: Color(themeService.theme.contentBackgroundColor),
                                                                    outerRingColor: .yellow500,
-                                                                   plusColor: .yellow100, content: {
+                                                                   plusColor: .yellow10, content: {
             PixelArtView(name: "achievement-\(key)2x")
-                                    .frame(width: 108, height: 108)
+                                    .frame(width: 72, height: 72)
         })
             Text(L10n.youGotAchievement)
                 .scaledFont(size: 22, weight: .bold)

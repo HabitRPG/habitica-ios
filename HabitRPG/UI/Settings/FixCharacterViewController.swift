@@ -33,7 +33,7 @@ class FixCharacterViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = L10n.Titles.fixValues
+        title = L10n.Titles.fixValues
         
         headerLabel.text = L10n.Settings.fixValuesDescription
         headerLabel.font = .systemFont(ofSize: 15)
@@ -87,6 +87,8 @@ class FixCharacterViewController: BaseTableViewController {
         headerView.backgroundColor = theme.contentBackgroundColor
         tableView.backgroundColor = theme.contentBackgroundColor
         headerLabel.textColor = theme.primaryTextColor
+        navigationItem.rightBarButtonItem?.tintColor = theme.fixedTintColor
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.primaryTextColor]
     }
     
     private func identifierFor(index: Int) -> String {
@@ -118,12 +120,19 @@ class FixCharacterViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
+        cell.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         if let titleLabel = cell.viewWithTag(1) as? UILabel,
             let iconView = cell.viewWithTag(3) as? UIImageView,
             let valueField = cell.viewWithTag(2) as? UITextField {
             configure(item: indexPath.item, titleLabel: titleLabel, iconView: iconView, valueField: valueField)
             valueField.textColor = ThemeService.shared.theme.primaryTextColor
+            let bottomLabel = cell.viewWithTag(5) as? UILabel
+            if indexPath.item == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+                bottomLabel?.text = L10n.fcvStreakExplanation
+                bottomLabel?.textColor = ThemeService.shared.theme.ternaryTextColor
+            } else {
+                bottomLabel?.text = nil
+            }
         }
         if let wrapper = cell.viewWithTag(4) {
             wrapper.borderWidth = 0

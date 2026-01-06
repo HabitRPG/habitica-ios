@@ -25,6 +25,7 @@ struct LoginIncentiveSheet: View {
                 .foregroundStyle(.blue1)
                 .scaledFont(size: 22, weight: .bold)
                 .padding(.horizontal, 40)
+                .fixedSize(horizontal: false, vertical: true)
         }, title: Text(text), description: VStack {
             Text(L10n.checkinPrizeEarned(text))
             if nextUnlockIn > 0 {
@@ -34,7 +35,7 @@ struct LoginIncentiveSheet: View {
                     .padding(.top, 20)
             }
         }) {
-            HabiticaButtonUI(label: Text(L10n.seeYouTomorrow), color: Color(themeService.theme.tintColor)) {
+            HabiticaButtonUI(label: Text(L10n.seeYouTomorrow), color: Color(themeService.theme.fixedTintColor)) {
                 presentationManager.dismiss()
             }
         }

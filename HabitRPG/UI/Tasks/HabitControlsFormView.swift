@@ -25,7 +25,7 @@ struct HabitControlsFormView: View {
                 Text(text)
                     .accessibilityHidden(true)
                     .font(.system(size: 15, weight: isActive.wrappedValue ? .semibold : .regular))
-                    .foregroundStyle(isActive.wrappedValue ? Color.accentColor : Color(themeService.theme.ternaryTextColor))
+                    .foregroundStyle(Color(isActive.wrappedValue ? taskColor : themeService.theme.ternaryTextColor))
             }
             .accessibilityElement(children: .ignore)
             .accessibilityLabel(text + " control, " + "\( isActive.wrappedValue ? "on": "off")")

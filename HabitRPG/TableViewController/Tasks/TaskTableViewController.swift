@@ -29,9 +29,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     var editable: Bool = false
     var sourceIndexPath: IndexPath?
     var snapshot: UIView?
-    
-    var searchController = UISearchController(searchResultsController: nil)
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -81,7 +79,6 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         tableView.dragInteractionEnabled = true
         
         navigationItem.leftBarButtonItem?.title = L10n.filter
-        navigationItem.searchController = searchController
     }
     
     func createDataSource() {

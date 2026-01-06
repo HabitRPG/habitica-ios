@@ -151,11 +151,11 @@ struct ToastView: View {
                     }
                     HStack(spacing: 8) {
                         VStack(spacing: 2) {
-                            if let subtitle = options.subtitle {
+                            if let subtitle = options.subtitle, !subtitle.isEmpty {
                                 Text(subtitle)
                                     .scaledFont(size: 16)
                             }
-                            if let title = options.title {
+                            if let title = options.title, !title.isEmpty {
                                 Text(title)
                                     .scaledFont(size: 15, weight: .semibold)
                                     .foregroundStyle(.white)

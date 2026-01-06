@@ -701,6 +701,11 @@ class UserProfileViewController: BaseHostingViewController<ProfilePage> {
         }
     }
     
+    override func applyTheme(theme: any Theme) {
+        super.applyTheme(theme: theme)
+        navigationItem.leftBarButtonItem?.tintColor = theme.fixedTintColor
+    }
+    
     @objc
     private func doneTapped() {
         navigationController?.dismiss(animated: true, completion: nil)

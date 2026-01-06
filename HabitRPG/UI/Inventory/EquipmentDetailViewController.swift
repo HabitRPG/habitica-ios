@@ -45,11 +45,6 @@ class EquipmentDetailViewController: BaseTableViewController, UISearchResultsUpd
         tableView.keyboardDismissMode = .onDrag
     }
     
-    override func applyTheme(theme: any Theme) {
-        super.applyTheme(theme: theme)
-        searchController.searchBar.backgroundColor = theme.contentBackgroundColor
-    }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if let gear = datasource?.item(at: indexPath) {

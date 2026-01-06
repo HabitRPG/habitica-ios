@@ -418,6 +418,8 @@ public enum L10n {
   public static var failed: String { return L10n.tr("Mainstrings", "failed") }
   /// Fall
   public static var fall: String { return L10n.tr("Mainstrings", "fall") }
+  /// You can restore streaks on individual tasks by tapping them to open the edit view
+  public static var fcvStreakExplanation: String { return L10n.tr("Mainstrings", "fcv_streak_explanation") }
   /// Every Pet has a specific food they enjoy! Experiment to find out which will grow your Pet the fastest
   public static var fedPetDescription: String { return L10n.tr("Mainstrings", "fedPetDescription") }
   /// Fed a Pet
@@ -492,7 +494,7 @@ public enum L10n {
   public static var giftGems: String { return L10n.tr("Mainstrings", "gift_gems") }
   /// Enter recipient's @username
   public static var giftGemsAlertPrompt: String { return L10n.tr("Mainstrings", "gift_gems_alert_prompt") }
-  /// What account would you like to  send your gift to?
+  /// What account would you like to send your gift to?
   public static var giftGemsAlertText: String { return L10n.tr("Mainstrings", "gift_gems_alert_text") }
   /// Git Gems
   public static var giftGemsAlertTitle: String { return L10n.tr("Mainstrings", "gift_gems_alert_title") }

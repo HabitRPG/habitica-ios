@@ -87,9 +87,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     func hatchPet(egg: String?, potion: String?) -> Signal<UserItemsProtocol?, Never> {
         let call = HatchPetCall(egg: egg ?? "", potion: potion ?? "")
         
-        return call.objectSignal.on(value: {[weak self]userItems in
-            if let userItems = userItems, let userID = self?.currentUserId {
-                self?.localUserRepository.updateUser(id: userID, userItems: userItems)
+        return call.objectSignal.on(value: { userItems in
+            if let userItems = userItems, let userID = self.currentUserId {
+                self.localUserRepository.updateUser(id: userID, userItems: userItems)
             }
             
             StableRepository().getPets(keys: ["\(egg ?? "")-\(potion ?? "")"])
@@ -99,8 +99,8 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 })
                 .skipNil()
                 .on(value: { pet in
-                    let sheet = PetHatchedSheet(pet: pet) {[weak self] in
-                        self?.equip(type: "pet", key: pet.key ?? "").observeCompleted {}
+                    let sheet = PetHatchedSheet(pet: pet) {
+                        self.equip(type: "pet", key: pet.key ?? "").observeCompleted {}
                     }
                     let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

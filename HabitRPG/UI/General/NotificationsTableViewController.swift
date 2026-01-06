@@ -298,8 +298,9 @@ struct NewMysteryItemNotificationView: View {
 
     var body: some View {
         NotificationMainContent(onDismiss: onDismiss) {
-            let month = Calendar.current.component(.month, from: Date())
-            NotificationImage(content: PixelArtView(name: "inventory_present_\(month)"))
+            var month = Calendar.current.component(.month, from: Date())
+            var monthString = month < 10 ? "0\(month)" : "\(month)"
+            NotificationImage(content: PixelArtView(name: "notif_inventory_present_\(month)").frame(width: 56, height: 56))
             NotificationTexts(description: Text(markdown: L10n.Notifications.newMysteryItem))
         }
     }
