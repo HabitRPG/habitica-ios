@@ -1657,3 +1657,4 @@
 "purchased_amount" = "Vous avez acheté %d %@";
 "gift_gems_alert_text" = "À quel compte souhaitez-vous envoyer votre cadeau ?";
 "hatch_pet_new_title" = "Faire éclore un nouveau Familier";
+"fcv_streak_explanation" = "Vous pouvez restaurer vos combos sur des tâches individuelles en cliquant dessus pour les éditer";
