@@ -1594,3 +1594,4 @@
 "purchased_amount" = "你购买了%d %@";
 "hatch_pet_new_title" = "孵化一只新宠物";
 "gift_gems_alert_text" = "你想给哪个帐户赠送礼物？";
+"fcv_streak_explanation" = "你可以通过点击任务打开编辑视图，从而恢复该任务的连胜纪录";
