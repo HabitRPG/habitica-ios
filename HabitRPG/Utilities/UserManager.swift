@@ -143,7 +143,7 @@ class UserManager: NSObject {
         if !user.isValid {
             return
         }
-        if !UserDefaults.standard.bool(forKey: "isInSetup") && user.flags?.welcomed == false {
+        if UserDefaults.standard.bool(forKey: "isInSetup") && user.flags?.welcomed == false {
             userRepository.updateUser(key: "flags.welcomed", value: true).observeCompleted {
             }
         }
