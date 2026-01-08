@@ -112,7 +112,7 @@ struct TaskFormView: View {
     @ViewBuilder private var dynamicFormPart: some View {
         if viewModel.taskType == .habit && viewModel.isTaskEditable {
             TaskFormSection(header: Text(L10n.Tasks.Form.controls.localizedCapitalized),
-                            content: HabitControlsFormView(taskColor: viewModel.lightTaskTintColor.uiColor(), isUp: $viewModel.up, isDown: $viewModel.down), backgroundColor: .clear)
+                            content: HabitControlsFormView(taskColor: viewModel.pickerTintColor, isUp: $viewModel.up, isDown: $viewModel.down), backgroundColor: .clear)
         } else if viewModel.taskType == .reward && viewModel.isTaskEditable {
             TaskFormSection(header: Text(L10n.Tasks.Form.cost.localizedCapitalized),
                             content: PlusMinusStepperView(amount: $viewModel.value, icon: Image(uiImage: HabiticaIcons.imageOfGold)), backgroundColor: .clear)

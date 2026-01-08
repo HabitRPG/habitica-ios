@@ -26,14 +26,17 @@ class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegat
     
     private var selectedCostume = false
     private var selectedType = ""
-    
+    private let headerView = AvatarHeaderView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
             topHeaderCoordinator = TopHeaderCoordinator(topHeaderNavigationController: topHeaderNavigationController, scrollView: scrollView)
         }
+        topHeaderCoordinator?.alternativeHeader = headerView
+        topHeaderCoordinator?.followScrollView = false
         scrollView.delegate = self
-        
+                
         gearView.title = L10n.Equipment.battleGear
         gearView.switchLabel = L10n.Equipment.autoEquip
         gearView.itemTapped = {[weak self] typeKey in
@@ -67,6 +70,7 @@ class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegat
                 self?.costumeView.configure(outfit: costume)
             }
             self?.costumeView.switchValue = user.preferences?.useCostume ?? false
+            self?.headerView.setAvatar(avatar: user)
         }).start())
     }
     
@@ -95,7 +99,6 @@ class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegat
     }
     
     override func populateText() {
-        navigationItem.title = L10n.Titles.equipment
         costumeExplanationLabel.text = L10n.Equipment.costumeExplanation
     }
     

@@ -10,7 +10,6 @@ import SwiftUI
 
 struct CustomToggleWrapper: UIViewRepresentable {
     var isOn: Binding<Bool>
-    var disabled: Bool
 
     func makeUIView(context: Context) -> UISwitch {
         UISwitch()
@@ -21,8 +20,8 @@ struct CustomToggleWrapper: UIViewRepresentable {
         uiView.tintColor = ThemeService.shared.theme.contentBackgroundColor
         uiView.layer.cornerRadius = uiView.frame.height / 2
         uiView.backgroundColor = .gray600.withAlphaComponent(0.3)
-        uiView.isOn = isOn.wrappedValue
-        uiView.isEnabled = !disabled
+        uiView.setOn(isOn.wrappedValue, animated: true)
+        uiView.isUserInteractionEnabled = false
     }
 }
 
@@ -48,11 +47,16 @@ struct PrivacyToggleContainer: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .frame(maxWidth: .infinity)
-            CustomToggleWrapper(isOn: $isOn, disabled: disabled)
-                .onTapGesture {
+            Group {
+                CustomToggleWrapper(isOn: $isOn)
+                    .tint(Color(themeService.theme.fixedTintColor))
+            }
+            .contentShape(.capsule)
+            .onTapGesture {
+                if !disabled {
                     isOn = !isOn
                 }
-            .tint(Color(themeService.theme.fixedTintColor))
+            }
             .frame(width: 64)
                 .opacity(disabled ? 0.5 : 1.0)
         }

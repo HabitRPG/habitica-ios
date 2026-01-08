@@ -57,7 +57,7 @@ struct LevelupSheet: View {
             Text(L10n.levelupTitle(viewModel.level))
                 .scaledFont(size: 22, weight: .bold)
                 .foregroundStyle(.white)
-                .padding(.horizontal, 40)
+                .padding(.horizontal, 50)
         }.padding(.top, 50), title: Group {
             if viewModel.canSelectClass {
                 Text(L10n.classSystemUnlocked)

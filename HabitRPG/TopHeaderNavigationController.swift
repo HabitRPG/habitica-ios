@@ -136,7 +136,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         if statusBarHeight == 59 || statusBarHeight == 62 {
             return topHeaderHeight + 22
         }
-        return self.topHeaderHeight
+        return self.topHeaderHeight + 12
    }
     
      @objc public var contentOffset: CGFloat {

@@ -258,7 +258,7 @@ struct LoginButton<Label: View>: View {
         let button = Button(action: {
             action()
         }, label: label
-            .scaledFont(size:17, weight: .bold)
+            .scaledFont(size: 17, weight: .bold)
             .foregroundStyle(.gray50)
             .frame(maxWidth: .infinity)
             .frame(minHeight: 44))
@@ -321,6 +321,7 @@ struct LoginScreen: View {
                             .shadow(color: Color(hexadecimal: "#36205D"), x: 0, y: 0, blur: 4)
                             .lineLimit(5)
                             .padding(.top, 29)
+                            .padding(.horizontal, 52)
                         Spacer()
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     } else {

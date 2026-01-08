@@ -44,19 +44,19 @@ struct ClassConfirmationSheet: View {
     @ViewBuilder private var upperContent: some View {
         switch selectedClass {
         case .warrior:
-            FanfareContainer(haloColor: .red500, circleColor: .white, outerRingColor: .red500, plusColor: .red10, content: {
+            FanfareContainer(haloColor: .red500, outerRingColor: .red500, plusColor: .red10, content: {
                 Image(uiImage: HabiticaIcons.imageOfWarriorLightBg)
             })
         case .mage:
-            FanfareContainer(haloColor: .blue500, circleColor: .white, outerRingColor: .blue500, plusColor: .blue10, content: {
+            FanfareContainer(haloColor: .blue500, outerRingColor: .blue500, plusColor: .blue10, content: {
                 Image(uiImage: HabiticaIcons.imageOfMageLightBg)
             })
         case .healer:
-            FanfareContainer(haloColor: .yellow500, circleColor: .white, outerRingColor: .yellow500, plusColor: .yellow10, content: {
+            FanfareContainer(haloColor: .yellow500, outerRingColor: .yellow500, plusColor: .yellow10, content: {
                 Image(uiImage: HabiticaIcons.imageOfHealerLightBg)
             })
         case .rogue:
-            FanfareContainer(haloColor: .purple500, circleColor: .white, outerRingColor: .purple500, plusColor: .purple500, content: {
+            FanfareContainer(haloColor: .purple500, outerRingColor: .purple500, plusColor: .purple500, content: {
                 Image(uiImage: HabiticaIcons.imageOfRogueLightBg)
             })
         }
@@ -68,7 +68,7 @@ struct ClassConfirmationSheet: View {
             Text(L10n.classChangeSuccessTitle(selectedClass.translatedName))
                 .scaledFont(size: 22, weight: .bold)
                 .foregroundStyle(textColor)
-                .padding(.horizontal, 40)
+                .padding(.horizontal, 50)
         }, title: Text(L10n.classChangeSuccessSubtitle), description: VStack {
             Text(L10n.classChangeSuccessDescription)
             Text(L10n.findStatsMenu).scaledFont(size: 15, weight: .semibold)

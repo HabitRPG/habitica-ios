@@ -18,20 +18,20 @@ struct LoginIncentiveSheet: View {
     
     var body: some View {
         GamifiedBottomSheet(upperBackgroundColor: .blue100, upperContent: VStack(spacing: 0) {
-            FanfareContainer(haloColor: .blue500, circleColor: Color(themeService.theme.contentBackgroundColor), outerRingColor: .blue500, plusColor: .blue10) {
+            FanfareContainer(haloColor: .blue500, outerRingColor: .blue500, plusColor: .blue10) {
                 PixelArtView(name: imageName)
             }
             Text(L10n.unlockedAnotherCheckinPrize)
                 .foregroundStyle(.blue1)
                 .scaledFont(size: 22, weight: .bold)
-                .padding(.horizontal, 40)
+                .padding(.horizontal, 50)
                 .fixedSize(horizontal: false, vertical: true)
         }, title: Text(text), description: VStack {
             Text(L10n.checkinPrizeEarned(text))
             if nextUnlockIn > 0 {
-                Text(L10n.nextPrizeInXCheckins(nextUnlockIn))
-                    .scaledFont(size: 15)
-                    .foregroundStyle(Color.blue10)
+                Text(nextUnlockIn == 1 ? L10n.nextPrizeIn1Checkin : L10n.nextPrizeInXCheckins(nextUnlockIn))
+                    .scaledFont(size: 15, weight: .semibold)
+                    .foregroundStyle(themeService.theme.isDark ? Color.blue500 : Color.blue10)
                     .padding(.top, 20)
             }
         }) {

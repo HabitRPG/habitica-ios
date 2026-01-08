@@ -11,7 +11,8 @@ import Habitica_Models
 
 class AvatarHeaderView: UIView, Themeable {
     private let avatarView = AvatarView()
-    
+    private let avatarWrapper = UIView()
+    private let avatarContainer = UIVisualEffectView()
     private let backBlockLeft = UIView()
     private let roundBlockLeft = UIView()
     private let backBlockRight = UIView()
@@ -31,7 +32,15 @@ class AvatarHeaderView: UIView, Themeable {
     
     private func setupView() {
         ThemeService.shared.addThemeable(themable: self)
-        addSubview(avatarView)
+        addSubview(avatarContainer)
+        avatarWrapper.addSubview(avatarView)
+        avatarWrapper.clipsToBounds = true
+        avatarContainer.contentView.addSubview(avatarWrapper)
+        if #available(iOS 26.0, *) {
+            avatarContainer.effect = UIGlassEffect(style: .regular)
+            avatarContainer.cornerConfiguration = .corners(radius: .fixed(UIConstants.mediumCornerRadius))
+            avatarWrapper.cornerConfiguration = .corners(radius: .containerConcentric())
+        }
         roundingWrapper.clipsToBounds = true
         addSubview(roundingWrapper)
         roundingWrapper.addSubview(backBlockLeft)
@@ -46,16 +55,26 @@ class AvatarHeaderView: UIView, Themeable {
     }
     
     func applyTheme(theme: any Theme) {
-        backgroundColor = theme.windowBackgroundColor
-        backBlockLeft.backgroundColor = theme.windowBackgroundColor
-        roundBlockLeft.backgroundColor = theme.contentBackgroundColor
-        backBlockRight.backgroundColor = theme.windowBackgroundColor
-        roundBlockRight.backgroundColor = theme.contentBackgroundColor
+        if #available(iOS 26.0, *) {
+            backgroundColor = .clear
+            backBlockLeft.backgroundColor = .clear
+            roundBlockLeft.backgroundColor = .clear
+            backBlockRight.backgroundColor = .clear
+            roundBlockRight.backgroundColor = .clear
+        } else {
+            backgroundColor = theme.windowBackgroundColor
+            backBlockLeft.backgroundColor = theme.windowBackgroundColor
+            roundBlockLeft.backgroundColor = theme.contentBackgroundColor
+            backBlockRight.backgroundColor = theme.windowBackgroundColor
+            roundBlockRight.backgroundColor = theme.contentBackgroundColor
+        }
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        avatarView.pin.width(140).height(147).top().hCenter()
+        avatarContainer.pin.width(142).height(149).top(-52).hCenter()
+        avatarWrapper.pin.width(134).height(141).top(4).hCenter()
+        avatarView.pin.width(140).height(147).center()
         roundingWrapper.pin.width(bounds.width).height(22).bottom(-22)
         backBlockLeft.pin.size(22).top().start()
         roundBlockLeft.pin.size(44).top().start()
@@ -68,6 +87,6 @@ class AvatarHeaderView: UIView, Themeable {
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIScreen.main.bounds.size.width, height: 169)
+        return CGSize(width: UIScreen.main.bounds.size.width, height: 110)
     }
 }

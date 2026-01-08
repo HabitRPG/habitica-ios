@@ -37,7 +37,7 @@ struct InsufficientCurrencySheet<Icon: View, Title: View, Content: View, Buttons
             title
                 .scaledFont(size: 22, weight: .bold)
                 .foregroundStyle(.white)
-                .padding(.horizontal, 40)
+                .padding(.horizontal, 50)
         }.padding(.top, 50), description: content, buttons: buttons)
     }
 }

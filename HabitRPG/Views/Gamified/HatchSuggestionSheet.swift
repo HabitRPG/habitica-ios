@@ -107,6 +107,7 @@ struct HatchSuggestionSheet: View {
             isRightIconActive: ownedPotionCount > 0)
             Text((ownedEggCount > 0 && ownedPotionCount > 0) ? L10n.hatchPetNewTitle : L10n.unhatchedPet)
                 .scaledFont(size: 22, weight: .bold)
+                .padding(.horizontal, 50)
                 .foregroundStyle(.white)
         }, title: Text(item.pet?.text ?? ""), description: Text(descriptionText)) {
             if ownedEggCount > 0 && ownedPotionCount > 0 {

@@ -127,11 +127,17 @@ class FixCharacterViewController: BaseTableViewController {
             configure(item: indexPath.item, titleLabel: titleLabel, iconView: iconView, valueField: valueField)
             valueField.textColor = ThemeService.shared.theme.primaryTextColor
             let bottomLabel = cell.viewWithTag(5) as? UILabel
+            let spacing = view.constraints.first { constraint in
+                return constraint.identifier == "extraDescriptionSpacing"
+            }
             if indexPath.item == tableView.numberOfRows(inSection: indexPath.section) - 1 {
                 bottomLabel?.text = L10n.fcvStreakExplanation
                 bottomLabel?.textColor = ThemeService.shared.theme.ternaryTextColor
+                bottomLabel?.font = .preferredFont(forTextStyle: .subheadline)
+                spacing?.constant = 8
             } else {
                 bottomLabel?.text = nil
+                spacing?.constant = 2
             }
         }
         if let wrapper = cell.viewWithTag(4) {

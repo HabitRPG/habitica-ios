@@ -808,11 +808,13 @@ public enum L10n {
   public static func nextPaymentX(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "next_payment_x", p1)
   }
-  /// Next prize at %d Check-Ins
+  /// Next prize at %d days!
   public static func nextPrizeAtXCheckins(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "next_prize_at_x_checkins", p1)
   }
-  /// Next prize in %d Check-Ins
+  /// Next prize in 1 day!
+  public static var nextPrizeIn1Checkin: String { return L10n.tr("Mainstrings", "next_prize_in_1_checkin") }
+  /// Next prize in %d days!
   public static func nextPrizeInXCheckins(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "next_prize_in_x_checkins", p1)
   }
@@ -2904,7 +2906,7 @@ public enum L10n {
     public static var characterBuildTitle: String { return L10n.tr("Mainstrings", "stats.character_build_title") }
     /// Class-Bonus
     public static var classBonus: String { return L10n.tr("Mainstrings", "stats.class_bonus") }
-    /// Decreases the amount of damage taken from your tasks. Does not decrease the damage received from bosses.
+    /// Reduces damage taken from missed Dailies and negative Habits. Does not reduce damage from bosses.
     public static var constitutionText: String { return L10n.tr("Mainstrings", "stats.constitution_text") }
     /// Constitution
     public static var constitutionTitle: String { return L10n.tr("Mainstrings", "stats.constitution_title") }
@@ -2920,7 +2922,7 @@ public enum L10n {
     public static var distributeTasks: String { return L10n.tr("Mainstrings", "stats.distribute_tasks") }
     /// Assigns points based on the Strength, Intelligence, Constitution, and Perception categories associated with the tasks you complete.
     public static var distributeTasksHelp: String { return L10n.tr("Mainstrings", "stats.distribute_tasks_help") }
-    /// Increases EXP earned from completing tasks. Also increases your mana cap and how fast mana regenerates over time.
+    /// Increases Exp earned from tasks. Also increases your mana cap and mana regeneration rate.
     public static var intelligenceText: String { return L10n.tr("Mainstrings", "stats.intelligence_text") }
     /// Intelligence
     public static var intelligenceTitle: String { return L10n.tr("Mainstrings", "stats.intelligence_title") }
@@ -2930,7 +2932,7 @@ public enum L10n {
     public static var noPointsToAllocate: String { return L10n.tr("Mainstrings", "stats.no_points_to_allocate") }
     /// 1 Point to Allocate
     public static var onePointToAllocate: String { return L10n.tr("Mainstrings", "stats.one_point_to_allocate") }
-    /// Increases the likelihood of finding drops when completing Tasks, the daily drop-cap, Streak Bonuses, and the amount of gold awarded for Tasks.
+    /// Increases item drop chance, daily item drop cap, task streak bonuses, and Gold earned when completing tasks.
     public static var perceptionText: String { return L10n.tr("Mainstrings", "stats.perception_text") }
     /// Perception
     public static var perceptionTitle: String { return L10n.tr("Mainstrings", "stats.perception_title") }
@@ -2940,7 +2942,7 @@ public enum L10n {
     }
     /// Stat guide
     public static var statGuide: String { return L10n.tr("Mainstrings", "stats.stat_guide") }
-    /// Increases the bonus of critical hits and makes them more likely when scoring a task. Also increases damage dealt to bosses.
+    /// Increases critical hit chance and damage when scoring tasks. Also increases damage dealt to bosses.
     public static var strengthText: String { return L10n.tr("Mainstrings", "stats.strength_text") }
     /// Strength
     public static var strengthTitle: String { return L10n.tr("Mainstrings", "stats.strength_title") }

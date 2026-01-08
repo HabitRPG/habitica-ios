@@ -20,7 +20,6 @@ struct AchievementReceivedSheet<Title: View, Description: View>: View {
     var body: some View {
         GamifiedBottomSheet(upperBackgroundColor: .yellow100,
                             upperContent: VStack {FanfareContainer(haloColor: .yellow500,
-                                                                   circleColor: Color(themeService.theme.contentBackgroundColor),
                                                                    outerRingColor: .yellow500,
                                                                    plusColor: .yellow10, content: {
             PixelArtView(name: "achievement-\(key)2x")
@@ -29,13 +28,16 @@ struct AchievementReceivedSheet<Title: View, Description: View>: View {
             Text(L10n.youGotAchievement)
                 .scaledFont(size: 22, weight: .bold)
                 .foregroundStyle(Color.yellow1)
-                .padding(.horizontal, 40)
+                .padding(.horizontal, 50)
         }, title: text, description: description, buttons: {
             HabiticaButtonUI(label: Text(L10n.onwards), color: Color(themeService.theme.fixedTintColor)) {
                 presentationManager.dismiss()
             }
             if isOnboarding {
                 HabiticaButtonUI(label: Text(L10n.viewOnboardingTasks).foregroundStyle(Color(themeService.theme.primaryTextColor)), color: Color(themeService.theme.offsetBackgroundColor)) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        RouterHandler.shared.handle(urlString: "/user/onboarding")
+                    }
                     presentationManager.dismiss()
                 }
             }
