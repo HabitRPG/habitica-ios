@@ -182,7 +182,6 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
             return
         }
         isCompletingSetup = true
-        UserDefaults.standard.set(false, forKey: "isInSetup")
         UserDefaults.standard.set(0, forKey: "currentSetupStep")
         if let viewController = taskSetupViewController {
             for taskCategory in viewController.selectedCategories {
@@ -195,6 +194,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
                     .flatMap(.latest, { _ in
                         return (self?.userRepository.retrieveUser() ?? Signal.empty)
                     }).observeCompleted {
+                        UserDefaults.standard.set(false, forKey: "isInSetup")
                         self?.showMainView()
                     }
             }
