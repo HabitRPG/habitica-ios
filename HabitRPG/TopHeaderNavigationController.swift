@@ -220,7 +220,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
             }
         }
         
-        if let scrollView = currentHeaderCoordinator?.scrollView {
+        if let scrollView = currentHeaderCoordinator?.scrollView, currentHeaderCoordinator?.followScrollView == true {
             if scrollView.contentInset.top != contentInset {
                 let existingInsets = scrollView.contentInset
                 var insets = UIEdgeInsets(top: contentInset, left: 0, bottom: 0, right: 0)

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24127" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -700,11 +700,11 @@
                                 <rect key="frame" x="0.0" y="118" width="393" height="734"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AZZ-h2-bPq">
-                                        <rect key="frame" x="0.0" y="560" width="393" height="153"/>
+                                        <rect key="frame" x="0.0" y="628" width="393" height="153"/>
                                         <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="fzj-yE-7gB">
-                                        <rect key="frame" x="16" y="16" width="361" height="1099"/>
+                                        <rect key="frame" x="16" y="16" width="361" height="1167"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N89-h1-lZ2">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="28"/>
@@ -752,16 +752,16 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="ZqI-FF-2Rc">
-                                                <rect key="frame" x="0.0" y="40" width="361" height="452"/>
+                                                <rect key="frame" x="0.0" y="40" width="361" height="520"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="SbX-i9-bHd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="361" height="220"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="361" height="254"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UBy-5n-eLv" customClass="StatsView" customModule="Habitica" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="361" height="104"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="361" height="121"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="104" id="uMU-Qr-qb2"/>
+                                                                    <constraint firstAttribute="height" constant="121" id="uMU-Qr-qb2"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Strength"/>
@@ -774,10 +774,10 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v7e-ar-WYy" customClass="StatsView" customModule="Habitica" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="116" width="361" height="104"/>
+                                                                <rect key="frame" x="0.0" y="133" width="361" height="121"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="104" id="4WL-Dc-2Rk"/>
+                                                                    <constraint firstAttribute="height" constant="121" id="4WL-Dc-2Rk"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Intelligence"/>
@@ -792,13 +792,13 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="wgn-MO-M0w">
-                                                        <rect key="frame" x="0.0" y="232" width="361" height="220"/>
+                                                        <rect key="frame" x="0.0" y="266" width="361" height="254"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yis-h9-p8e" customClass="StatsView" customModule="Habitica" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="361" height="104"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="361" height="121"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="104" id="jJa-up-Gmz"/>
+                                                                    <constraint firstAttribute="height" constant="121" id="jJa-up-Gmz"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Constitution"/>
@@ -811,10 +811,10 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A77-n6-5Pn" customClass="StatsView" customModule="Habitica" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="116" width="361" height="104"/>
+                                                                <rect key="frame" x="0.0" y="133" width="361" height="121"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="104" id="H2V-3h-7Hv"/>
+                                                                    <constraint firstAttribute="height" constant="121" id="H2V-3h-7Hv"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Perception"/>
@@ -832,7 +832,7 @@
                                                 <variation key="widthClass=regular" axis="horizontal"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQp-wE-PnR">
-                                                <rect key="frame" x="0.0" y="504" width="361" height="28"/>
+                                                <rect key="frame" x="0.0" y="572" width="361" height="28"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gQ-dz-Izv">
                                                         <rect key="frame" x="0.0" y="0.0" width="300" height="28"/>
@@ -849,7 +849,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="5wn-4Y-eFc">
-                                                <rect key="frame" x="0.0" y="544" width="361" height="153"/>
+                                                <rect key="frame" x="0.0" y="612" width="361" height="153"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GDv-Ov-TyI">
                                                         <rect key="frame" x="0.0" y="0.0" width="361" height="45"/>
@@ -985,13 +985,13 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAm-Rw-4AT">
-                                                <rect key="frame" x="0.0" y="709" width="361" height="50"/>
+                                                <rect key="frame" x="0.0" y="777" width="361" height="50"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <color key="textColor" red="0.20529916879999999" green="0.1913966238" blue="0.2281859517" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="qIV-Qa-rge">
-                                                <rect key="frame" x="0.0" y="771" width="361" height="328"/>
+                                                <rect key="frame" x="0.0" y="839" width="361" height="328"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ujb-xw-nJK">
                                                         <rect key="frame" x="39.333333333333343" y="0.0" width="282.33333333333326" height="56"/>

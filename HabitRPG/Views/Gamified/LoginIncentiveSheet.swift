@@ -12,6 +12,7 @@ struct LoginIncentiveSheet: View {
     @ObservedObject var themeService = ThemeService.shared
     @Environment(\.presentationManager) var presentationManager
     
+    let key: String
     let imageName: String
     let text: String
     let nextUnlockIn: Int
@@ -27,7 +28,11 @@ struct LoginIncentiveSheet: View {
                 .padding(.horizontal, 50)
                 .fixedSize(horizontal: false, vertical: true)
         }, title: Text(text), description: VStack {
-            Text(L10n.checkinPrizeEarned(text))
+            if key == "background_purple" {
+                Text(L10n.checkinPrizeSetDescription(text))
+            } else {
+                Text(L10n.checkinPrizeDescription(text))
+            }
             if nextUnlockIn > 0 {
                 Text(nextUnlockIn == 1 ? L10n.nextPrizeIn1Checkin : L10n.nextPrizeInXCheckins(nextUnlockIn))
                     .scaledFont(size: 15, weight: .semibold)
@@ -43,5 +48,5 @@ struct LoginIncentiveSheet: View {
 }
 
 #Preview {
-    LoginIncentiveSheet(imageName: "", text: "Royal Purple Hatching Potion", nextUnlockIn: 5)
+    LoginIncentiveSheet(key: "", imageName: "", text: "Royal Purple Hatching Potion", nextUnlockIn: 5)
 }

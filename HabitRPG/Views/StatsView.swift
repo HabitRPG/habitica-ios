@@ -24,6 +24,7 @@ class StatsView: UIView, Themeable {
     @IBOutlet private weak var allocatedLabel: UILabel!
     @IBOutlet private weak var allocatedBackgroundView: UIView!
     @IBOutlet private weak var allocateButton: UIButton!
+    @IBOutlet weak var topBarTrailingConstraint: NSLayoutConstraint!
     
     private var containedView: UIView?
     
@@ -72,21 +73,13 @@ class StatsView: UIView, Themeable {
             let theme = ThemeService.shared.theme
             if canAllocatePoints {
                 allocateButton.backgroundColor = theme.offsetBackgroundColor
-                allocatedBackgroundView.backgroundColor = theme.offsetBackgroundColor
                 if theme.isDark {
                     allocateButton.tintColor = .gray400
-                    allocatedLabel.textColor = theme.primaryTextColor
-                    allocatedValueLabel.textColor = theme.primaryTextColor
                 } else {
                     allocateButton.tintColor = .purple500
-                    allocatedValueLabel.textColor = attributeTextColor
-                    allocatedLabel.textColor = attributeTextColor
                 }
             } else {
                 allocateButton.backgroundColor = theme.windowBackgroundColor
-                allocatedBackgroundView.backgroundColor = theme.windowBackgroundColor
-                allocatedLabel.textColor = theme.dimmedTextColor
-                allocatedValueLabel.textColor = theme.primaryTextColor
             }
         }
     }
@@ -135,13 +128,13 @@ class StatsView: UIView, Themeable {
     func applyTheme(theme: Theme) {
         backgroundColor = theme.contentBackgroundColor
         containedView?.backgroundColor = theme.contentBackgroundColorDimmed
-        levelLabel.textColor = theme.dimmedTextColor
+        levelLabel.textColor = theme.secondaryTextColor
         levelValueLabel.textColor = theme.primaryTextColor
-        equipmentLabel.textColor = theme.dimmedTextColor
+        equipmentLabel.textColor = theme.secondaryTextColor
         equipmentValueLabel.textColor = theme.primaryTextColor
-        buffsLabel.textColor = theme.dimmedTextColor
+        buffsLabel.textColor = theme.secondaryTextColor
         buffsValueLabel.textColor = theme.primaryTextColor
-        allocatedLabel.textColor = theme.dimmedTextColor
+        allocatedLabel.textColor = theme.secondaryTextColor
         allocatedValueLabel.textColor = theme.primaryTextColor
     }
     

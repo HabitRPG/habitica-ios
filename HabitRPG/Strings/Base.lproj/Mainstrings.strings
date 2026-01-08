@@ -961,6 +961,7 @@
 "unlockDropsTitle" = "You unlocked the drop system!";
 "unlocked_another_checkin_prize" = "You unlocked another check-in prize!";
 "checkin_prize_description" = "You earned a %s for being committed to improving your life";
+"checkin_prize_set_description" = "You earned a set of %s for being committed to improving your life";
 "unlockDropsDescription" = "You've unlocked the Drop System! Now when you complete tasks, you have a small chance of finding an item, including eggs, potions, and food!";
 "leave_challenge" = "Leave Challenge";
 "join_challenge" = "Join Challenge";

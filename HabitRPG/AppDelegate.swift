@@ -37,7 +37,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         Measurements.start(identifier: "didFinishLaunchingWithOptions")
-        Measurements.start(identifier: "task list loaded")
         logger = RemoteLogger()
         self.application = application
         

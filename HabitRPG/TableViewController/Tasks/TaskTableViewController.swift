@@ -30,8 +30,21 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     var sourceIndexPath: IndexPath?
     var snapshot: UIView?
         
+    var fakeHeader = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 1)))
+    let headerWrapper = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        fakeHeader.backgroundColor = .clear
+        topHeaderCoordinator?.hideHeader = true
+        topHeaderCoordinator?.followScrollView = false
+        topHeaderCoordinator?.alternativeHeader = fakeHeader
+        
+        tableView.tableHeaderView = headerWrapper
+        let nibViews = Bundle.main.loadNibNamed("UserTopHeader", owner: self, options: nil)
+        if let userHeader = nibViews?[0] as? UserTopHeader {
+            headerWrapper.addSubview(userHeader)
+        }
         
         createDataSource()
         dataSource?.tableView = tableView
@@ -130,12 +143,14 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
             scrollToTask(with: taskId)
             scrollToTaskAfterLoading = nil
         }
-        Measurements.stop(identifier: "task list loaded")
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tableView.layoutMargins = UIEdgeInsets.zero
+        if let userHeader = headerWrapper.subviews.first as? UserTopHeader, let topHeaderController = navigationController as? TopHeaderViewController {
+            headerWrapper.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: topHeaderController.defaultHeaderHeight + 12)
+            userHeader.frame = CGRect(x: 0, y: 0, width: headerWrapper.bounds.size.width, height: topHeaderController.defaultHeaderHeight)
+        }
     }
     
     @objc

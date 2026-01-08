@@ -123,7 +123,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
                 logger.record(error: error)
                 self?.fetchTasks()
             }, value: {[weak self] (tasks, changes) in
-                self?.sections[0].items = tasks
+                self?.sections[0].items = tasks.sorted { $0.order < $1.order }
                 self?.notify(changes: changes)
                 self?.isProcessingDeletion = false
         }).start()

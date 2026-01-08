@@ -221,7 +221,8 @@ class NotificationManager {
                 if let loginIncentives = user?.loginIncentives {
                     nextRewardIn = nextRewardAt - loginIncentives
                 }
-                let viewC = HostingBottomSheetController(rootView: LoginIncentiveSheet(imageName: imageName,
+                let viewC = HostingBottomSheetController(rootView: LoginIncentiveSheet(key: reward,
+                    imageName: imageName,
                                                                                        text: loginIncentiveNotification.rewardText ?? "",
                                                                                        nextUnlockIn: nextRewardIn), prefersGrabberVisible: false)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {

@@ -168,6 +168,10 @@ public enum L10n {
   public static func checkinPrizeEarned(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "checkin_prize_earned", p1)
   }
+  /// You earned a set of %s for being committed to improving your life
+  public static func checkinPrizeSetDescription(_ p1: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "checkin_prize_set_description", p1)
+  }
   /// Check off any Dailies you did yesterday before starting today:
   public static var checkinYesterdaysDalies: String { return L10n.tr("Mainstrings", "checkin_yesterdays_dalies") }
   /// Choose Task
@@ -2906,7 +2910,7 @@ public enum L10n {
     public static var characterBuildTitle: String { return L10n.tr("Mainstrings", "stats.character_build_title") }
     /// Class-Bonus
     public static var classBonus: String { return L10n.tr("Mainstrings", "stats.class_bonus") }
-    /// Reduces damage taken from missed Dailies and negative Habits. Does not reduce damage from bosses.
+    /// Increases Experience earned from tasks. Also increases your Mana cap and Mana regeneration rate.
     public static var constitutionText: String { return L10n.tr("Mainstrings", "stats.constitution_text") }
     /// Constitution
     public static var constitutionTitle: String { return L10n.tr("Mainstrings", "stats.constitution_title") }
@@ -2922,7 +2926,7 @@ public enum L10n {
     public static var distributeTasks: String { return L10n.tr("Mainstrings", "stats.distribute_tasks") }
     /// Assigns points based on the Strength, Intelligence, Constitution, and Perception categories associated with the tasks you complete.
     public static var distributeTasksHelp: String { return L10n.tr("Mainstrings", "stats.distribute_tasks_help") }
-    /// Increases Exp earned from tasks. Also increases your mana cap and mana regeneration rate.
+    /// Increases Experience earned from tasks. Also increases your Mana cap and Mana regeneration rate.
     public static var intelligenceText: String { return L10n.tr("Mainstrings", "stats.intelligence_text") }
     /// Intelligence
     public static var intelligenceTitle: String { return L10n.tr("Mainstrings", "stats.intelligence_title") }
@@ -2942,7 +2946,7 @@ public enum L10n {
     }
     /// Stat guide
     public static var statGuide: String { return L10n.tr("Mainstrings", "stats.stat_guide") }
-    /// Increases critical hit chance and damage when scoring tasks. Also increases damage dealt to bosses.
+    /// Increases critical hit chance and damage when scoring tasks. Also increases damage dealt to Quest bosses.
     public static var strengthText: String { return L10n.tr("Mainstrings", "stats.strength_text") }
     /// Strength
     public static var strengthTitle: String { return L10n.tr("Mainstrings", "stats.strength_title") }
