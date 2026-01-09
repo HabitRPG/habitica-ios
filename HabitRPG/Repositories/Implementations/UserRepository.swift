@@ -277,6 +277,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func logoutAccount() {
+        UserManager.shared.stopListening()
         localRepository.clearDatabase()
         if let userID = currentUserId {
             AuthenticationManager.shared.clearAuthentication(userId: userID)

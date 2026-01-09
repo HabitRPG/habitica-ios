@@ -19,7 +19,7 @@ class UserManager: NSObject {
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
     private let inventoryRepository = InventoryRepository()
-    private let disposable = CompositeDisposable()
+    private var disposable = CompositeDisposable()
     private let configRepository = ConfigRepository.shared
     
     private weak var faintViewController: FaintViewController?
@@ -35,7 +35,15 @@ class UserManager: NSObject {
         return Calendar.current.date(byAdding: .day, value: -1, to: today)
     }
     
+    func stopListening() {
+        disposable.dispose()
+    }
+
     func beginListening() {
+        if !disposable.isDisposed {
+            disposable.dispose()
+        }
+        disposable = CompositeDisposable()
         disposable.add(userRepository.getUser()
             .throttle(0.5, on: QueueScheduler.main)
             .on(value: {[weak self]user in
