@@ -988,7 +988,7 @@
 "force_start" = "Erzwinge den Start";
 "decline" = "Ablehnen";
 "start_my_day" = "Starte meinen Tag";
-"checkin_yesterdays_dalies" = "Hake die Tagesaufgaben ab, die Du gestern erledigt hast:";
+"checkin_yesterdays_dalies" = "Hake die Tagesaufgaben ab, die Du gestern erledigt hast, bevor du in den neuen Tag startest:";
 "world_boss.rage_strike_title" = "%@ wurde angegriffen!";
 "world_boss.third_bullet" = "Du kannst weiterhin Quest-Bosse bekämpfen, Dein Schaden wird beiden zugefügt werden";
 "world_boss.second_bullet" = "Der Boss wird Dir keinen Schaden für nicht erledigte Aufgaben zufügen, aber sein Raserei-Balken wird ansteigen. Wenn dieser voll ist, wird der Boss einen von Habiticas Händlern angreifen!";
@@ -1100,7 +1100,7 @@
 "gift_gems_explanation_balance" = "Gib unten ein, wie viele Deiner Edelsteine Du schenken möchtest, oder wechsle den Tab, um Edelsteine zum Verschenken zu kaufen";
 "gift_gems_disclaimer" = "Habitica würde von Dir niemals verlangen, anderen Edelsteine zu schenken. Um Edelsteine zu bitten stellt einen Verstoß gegen die Community-Richtlinien dar und sollte an admin@habitica.com gemeldet werden.";
 "gift_gems_alert_prompt" = "@Benutzernamen der empfangenden Person eingeben";
-"gift_gems_alert_title" = "Wem würdest Du gerne Dein Geschenk schicken?";
+"gift_gems_alert_title" = "Edelsteine schenken";
 "purchasedEquipmentTitle" = "Hat Ausrüstung gekauft";
 "fedPetTitle" = "Hat ein Haustier gefüttert";
 "hatchedPetTitle" = "Hat ein Haustier geschlüpft";
@@ -1219,7 +1219,7 @@
 "stat_description" = "Alle Habitica-Charaktere haben vier Attribute, die Habiticas Spielablauf beeinflussen. \n \n**Stärke (STR)** beeinflusst kritische Treffer und erhöht den Schaden, den Du einem Quest Boss zufügst. Krieger und Schurken erhalten STR von Ihrer Klassenausrüstung. \n \n**Ausdauer (CON)** erhöht Deine HP und sorgt dafür, dass Du weniger Schaden nimmst. Heiler und Krieger erhalten CON von Ihrer Klassenausrüstung. \n \n**Intelligenz (INT)** steigert die Menge an EXP, die Du verdienst und gibt Dir mehr Mana. Magier und Heiler erhalten INT von Ihrer Klassenausrüstung. \n \n**Wahrnehmung (PER)** erhöht die Goldmenge, die Du erhältst, und die Fundrate von Gegenständen. Schurken und Magier erhalten PER von Ihrer Klassenausrüstung. \n \nAb Level 10 verdienst Du einen Attributspunkt für jedes Level, das Du aufsteigst. Diesen Punkt kannst Du in ein beliebiges Attribut stecken. Außerdem kannst Du Ausrüstung anziehen, die unterschiedliche Attributsboni gewährt.";
 "stat_allocation" = "Attributpunktezuweisung";
 "mana_description" = "Mana-Punkte werden mit dem Klassensystem ab Level 10 freigeschaltet und ermöglichen Dir **Fähigkeiten zu verwenden**, sobald Du ab Level 11 welche erlernt hast.\n\nBeim Tageswechsel wird täglich etwas **Mana aufgefüllt**, aber Du kannst mehr Mana dazugewinnen, indem Du Aufgaben erledigst oder Fähigkeiten eines Magiers anwendest.";
-"gold_description" = "Gold ist die **Hauptwährung** in Habitica und ermöglicht Dir, Ausrüstung, Quests, Gegenstände oder sogar maßgeschneiderte Belohnungen zu kaufen. \n \n**Verdiene Gold** durch das Abschließen von Quests oder mittels Klassenfähigkeiten. Höhere **Wahrnehmungswerte** erhöhen die Menge an Gold, die Du verdienst. \n \nWenn Du Habitica abonnierst, kannst Du mit Gold sogar eine gewisse, von der Dauer Deines Abonnements abhängige, Anzahl an Edelsteinen kaufen.";
+"gold_description" = "Gold ist die Hauptwährung in Habitica und ermöglicht Dir, Ausrüstung, Quests, Gegenstände oder sogar maßgeschneiderte Belohnungen zu kaufen. \n \nVerdiene Gold durch das Abschließen von Quests oder mittels Klassenfähigkeiten.";
 "experience_description" = "Erfahrungspunkte zeigen Deinen Fortschritt und ermöglichen Dir, ein Level aufzusteigen. Du kannst hauptsächlich **EXP gewinnen**, indem Du Aufgaben erledigst oder Quests abschließt, aber es gibt auch einige Klassenfähigkeiten, die EXP geben.\n\nSchwierigere Aufgaben und auch rot gefärbte Aufgaben geben Dir **mehr EXP**. Der **Intelligenz-Wert** erhöht Deinen EXP-Gewinn ebenfalls.";
 "experience_points" = "Erfahrungspunkte";
 "health_description" = "Dies stellt das Leben Deines Avatars dar. Eine Tagesaufgabe zu versäumen oder einer schlechten Gewohnheit nachzugehen **senkt Deine Lebenspunkte**.\n\n**Stelle Lebenspunkte wieder her*, indem Du ein Level aufsteigst, durch einen Heiltrank, oder mit einer Klassenfähigkeit, die heilt.\n\nWenn Deine **Lebenspunkte auf 0 sinken**, wirst Du ein Level verlieren, sowie alles Gold und einen Ausrüstungsgegenstand. Verlorene Ausrüstung kann wieder gekauft werden.";
@@ -1664,7 +1664,7 @@
 "change_password_helper" = "Passwörter müssen mindestens 8 Zeichen lang sein. Das Ändern deines Passwortes wird dich von all deinen Geräten und Drittanbieter-Anwendungen abmelden.";
 "next_switch_in_x" = "Nächster Wechsel in %@";
 "privacy_preferences_full_description" = "Habitica verwendet Daten deines Geräts zur Analyse der Leistung, um Support-Anfragen zu bearbeiten und um dir die bestmögliche gamifizierte Erfahrung zu bieten. Hierfür benötigen wir deine Zustimmung für folgende Berechtigungen.\n\nDu kannst dies jederzeit in deinen Konto-Einstellungen ändern.";
-"privacy_preferences_sheet_description" = "Habitica verwendet Daten deines Geräts zur Analyse der Leistung, um Support-Anfragen zu bearbeiten und um dir die bestmögliche gamifizierte Erfahrung zu bieten. Hierfür benötigen wir deine Zustimmung für folgende Berechtigungen.\n\nDu kannst deine Zustimmung jederzeit widerrufen. Weitere Informationen findest du in unseren [Datenschutzbestimmungen](https://habitica.com/static/privacy).";
+"privacy_preferences_sheet_description" = "Deine Privatsphäre ist uns wichtig. Habitica verwendet Daten deines Geräts zur Analyse der Leistung, um Support-Anfragen zu bearbeiten und um dir die bestmögliche gamifizierte Erfahrung zu bieten. Hierfür benötigen wir deine Zustimmung für folgende Berechtigungen.\n\nDu kannst deine Zustimmung jederzeit widerrufen. Weitere Informationen findest du in unseren [Datenschutzbestimmungen](https://habitica.com/static/privacy).";
 "api_token_reset_title" = "Falls du einen neuen API-Schüssel benötigst";
 "api_token_reset_desc" = "Du kannst dein Passwort ändern, um ihn zurückzusetzen. Einmal zurückgesetzt, musst du dich auf all deinen Geräten, auf denen du Habitica verwendest, erneut anmelden und deinen neuen API-Schlüssel in Drittanbieter-Anwendungen angeben, die du verwendest.";
 "copy_token" = "Schüssel kopieren";
@@ -1712,3 +1712,12 @@
 "not_now" = "Jetzt nicht";
 "undo" = "Rückgängig";
 "assigned_stat" = "Statuswert zugewiesen";
+"empty.challenges_description" = "Stöbere im Entdecken-Bereich und finde unzählige themenbezogene Herausforderungen anderer Spieler*innen, an denen du teilnehmen kannst. So kannst du deine Aufgabenliste ganz einfach füllen!";
+"empty.messages" = "Du hast keine Nachrichten";
+"empty.messages_description" = "Sende eine Nachricht, um eine Unterhaltung mit deinen Partymitgliedern oder anderen Habitica-Spieler*innen zu beginnen";
+"empty.challenges" = "Du nimmst noch an keinen Herausforderungen teil";
+"glossary" = "Glossar";
+"purchased_amount" = "Du hast %d %@ gekauft";
+"gift_gems_alert_text" = "Welchem Account möchtest du dein Geschenk schicken?";
+"hatch_pet_new_title" = "Ein neues Haustier ausbrüten";
+"fcv_streak_explanation" = "Du kannst Strähnen einzelner Aufgaben wiederherstellen, in dem du sie antippst um die Bearbeitungsansicht zu öffnen";

@@ -406,11 +406,11 @@
 "stats.stat_guide" = "Guide des attributs";
 "stats.strength_title" = "Force";
 "stats.intelligence_title" = "Intelligence";
-"stats.intelligence_text" = "Augmente l'expérience reçue des tâches validées. Augmente également votre limite de mana et sa vitesse de régénération dans le temps.";
+"stats.intelligence_text" = "Augmente l'Expérience reçue des tâches. Augmente également votre limite de Mana et sa vitesse de régénération.";
 "stats.constitution_title" = "Constitution";
-"stats.constitution_text" = "Diminue la quantité de dégâts reçue de vos tâches. Ne diminue pas les dégâts reçus des boss.";
+"stats.constitution_text" = "Augmente l'Expérience reçue des tâches. Augmente également votre limite de Mana et sa vitesse de régénération.";
 "stats.perception_title" = "Perception";
-"stats.perception_text" = "Augmente la probabilité de trouver du butin lorsqu'une tâche est validée, la limite de butin quotidienne, le bonus des combos, et la quantité d'or reçue pour les tâches.";
+"stats.perception_text" = "Augmente les chances de drop des objets, la limite de drop des objets quotidiens, les bonus liés au combos des tâches, et l'Or obtenu en validant des tâches.";
 "controls" = "Contrôles";
 "tasks.habits" = "Habitudes";
 "tasks.dailies" = "Quotidiennes";
@@ -761,7 +761,7 @@
 "titles.skills" = "Compétences";
 "titles.avatar" = "Avatar";
 "titles.gift_subscription" = "Offrir un Abonnement";
-"stats.strength_text" = "Augmente le bonus des coups critiques et leur chance lorsqu'une tâche est validée. Augmente également les dégâts infligés aux boss.";
+"stats.strength_text" = "Augmente le bonus et la chance de coups critiques vous validez vos tâches. Augmente également les dégâts infligés aux boss de Quêtes.";
 "tasks.due_today" = "Aujourd'hui";
 "tasks.due_tomorrow" = "Demain";
 "tasks.due_in_x_days" = "Dans %d jours";
@@ -1261,7 +1261,7 @@
 "see_you_tomorrow" = "À demain";
 "tasks.form.reset_counter" = "Réinitialiser le Compteur";
 "tasks.form.adjust_counter" = "Ajuster le Compteur";
-"next_prize_in_x_checkins" = "Prochain prix dans %d enregistrements";
+"next_prize_in_x_checkins" = "Prochaine récompense au %d jour !";
 "tasks.form.none" = "Aucun";
 "scheduled" = "Planifiées";
 "not_due" = "Non Échues";
@@ -1372,7 +1372,7 @@
 "armoire.equipment_remaining" = "Équipement restant : %d";
 "sale_ends_in" = "La vente se termine dans %@";
 "next_checkin_prize_in_x_days" = "Votre prochaine récompense sera débloquée dans %d connexions";
-"next_prize_at_x_checkins" = "Prochaine récompense dans %d connexions";
+"next_prize_at_x_checkins" = "Prochaine récompense au %d jour !";
 "one_item_found" = "1 objet en attente";
 "ban_user" = "Bannir l'Utilisateur";
 "unban_user" = "Débannir l'Utilisateur";
@@ -1658,3 +1658,5 @@
 "gift_gems_alert_text" = "À quel compte souhaitez-vous envoyer votre cadeau ?";
 "hatch_pet_new_title" = "Faire éclore un nouveau Familier";
 "fcv_streak_explanation" = "Vous pouvez restaurer vos combos sur des tâches individuelles en cliquant dessus pour les éditer";
+"checkin_prize_set_description" = "Vous avez obtenu un ensemble de %s grâce à vos efforts pour rendre votre vie meilleur";
+"next_prize_in_1_checkin" = "Prochaine récompense dans 1 jour !";
