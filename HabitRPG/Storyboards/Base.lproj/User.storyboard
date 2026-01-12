@@ -769,7 +769,13 @@
                                                                         <color key="value" red="0.96900206799999999" green="0.30568504330000001" blue="0.31993827219999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="attributeTextColor">
-                                                                        <color key="value" red="0.94854217767715454" green="0.18609553575515747" blue="0.20925292372703552" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="value" red="0.42352941179999998" green="0.015686274510000001" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="allocateButtonBackgroundColor">
+                                                                        <color key="value" red="0.42352941176470588" green="0.015686274509803921" blue="0.023529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="allocateButtonTextColor">
+                                                                        <color key="value" red="1" green="0.71372549019607845" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
@@ -785,7 +791,13 @@
                                                                         <color key="value" red="0.2741750180721283" green="0.65423643589019775" blue="0.85219955444335938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="attributeTextColor">
-                                                                        <color key="value" red="0.1605511308" green="0.58313089610000002" blue="0.80296146869999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="value" red="0.011764705882352941" green="0.24705882352941178" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="allocateButtonBackgroundColor">
+                                                                        <color key="value" red="0.011764705882352941" green="0.24705882352941178" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="allocateButtonTextColor">
+                                                                        <color key="value" red="0.66274509803921566" green="0.86274509803921573" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
@@ -806,7 +818,13 @@
                                                                         <color key="value" red="0.99927479028701782" green="0.65261268615722656" blue="0.14139345288276672" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="attributeTextColor">
-                                                                        <color key="value" red="0.9346584677696228" green="0.57012462615966797" blue="0.036457560956478119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="value" red="0.47450980392156861" green="0.29411764705882354" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="allocateButtonBackgroundColor">
+                                                                        <color key="value" red="0.47450980392156861" green="0.29411764705882354" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="allocateButtonTextColor">
+                                                                        <color key="value" red="0.99607843137254903" green="0.87058823529411766" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
@@ -822,7 +840,13 @@
                                                                         <color key="value" red="0.37997829914093018" green="0.19829493761062622" blue="0.70615965127944946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="attributeTextColor">
-                                                                        <color key="value" red="0.37997829910000003" green="0.1982949376" blue="0.70615965130000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="value" red="0.83529411764705885" green="0.78431372549019607" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="allocateButtonTextColor">
+                                                                        <color key="value" red="0.83529411764705885" green="0.78431372549019607" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="allocateButtonBackgroundColor">
+                                                                        <color key="value" red="0.2627450980392157" green="0.15686274509803921" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>

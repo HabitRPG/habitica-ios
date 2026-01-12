@@ -38,8 +38,15 @@ class StatsView: UIView, Themeable {
             topBackground.backgroundColor = attributeBackgroundColor
         }
     }
-    @IBInspectable var attributeTextColor: UIColor?
-    
+    @IBInspectable var attributeTextColor: UIColor? {
+        didSet {
+            titleLabel.textColor = attributeTextColor
+            totalValueLabel.textColor = attributeTextColor
+        }
+    }
+    @IBInspectable var allocateButtonBackgroundColor: UIColor?
+    @IBInspectable var allocateButtonTextColor: UIColor?
+
     var totalValue: Int = 0 {
         didSet {
             totalValueLabel.text = String(totalValue)
@@ -72,14 +79,12 @@ class StatsView: UIView, Themeable {
             allocateButton.isHidden = !canAllocatePoints
             let theme = ThemeService.shared.theme
             if canAllocatePoints {
-                allocateButton.backgroundColor = theme.offsetBackgroundColor
-                if theme.isDark {
-                    allocateButton.tintColor = .gray400
-                } else {
-                    allocateButton.tintColor = .purple500
-                }
+                allocateButton.backgroundColor = allocateButtonBackgroundColor
+                allocateButton.tintColor = allocateButtonTextColor
+                topBarTrailingConstraint.constant = 0
             } else {
                 allocateButton.backgroundColor = theme.windowBackgroundColor
+                topBarTrailingConstraint.constant = 26
             }
         }
     }
@@ -113,10 +118,7 @@ class StatsView: UIView, Themeable {
             
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
-            
-            allocateButton.setImage(HabiticaIcons.imageOfAttributeAllocateButton, for: .normal)
-            allocateButton.tintColor = UIColor(red: 0.529, green: 0.506, blue: 0.565, alpha: 1.000)
-            
+                        
             setNeedsUpdateConstraints()
             updateConstraints()
             setNeedsLayout()

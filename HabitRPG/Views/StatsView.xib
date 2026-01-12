@@ -41,13 +41,13 @@
                                     <rect key="frame" x="26" y="0.0" width="323" height="43"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Otd-xL-WlU">
-                                            <rect key="frame" x="0.0" y="0.0" width="246.5" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="179.5" height="43"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOF-99-JbJ">
-                                            <rect key="frame" x="262.5" y="0.0" width="14.5" height="43"/>
+                                            <rect key="frame" x="195.5" y="0.0" width="14.5" height="43"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" priority="500" constant="20" id="iM0-Hd-xsR"/>
                                             </constraints>
@@ -55,8 +55,12 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3nk-sp-ofO">
-                                            <rect key="frame" x="293" y="0.0" width="30" height="43"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3nk-sp-ofO">
+                                            <rect key="frame" x="226" y="0.0" width="97" height="43"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="97" id="lF9-5A-wQy"/>
+                                            </constraints>
+                                            <state key="normal" image="allocate_arrow"/>
                                             <connections>
                                                 <action selector="allocateButtonTapped:" destination="-1" eventType="touchUpInside" id="1zk-T4-DJl"/>
                                             </connections>
@@ -202,4 +206,7 @@
             <point key="canvasLocation" x="23.199999999999999" y="-224.4377811094453"/>
         </view>
     </objects>
+    <resources>
+        <image name="allocate_arrow" width="20" height="14"/>
+    </resources>
 </document>

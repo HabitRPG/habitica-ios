@@ -67,6 +67,7 @@ internal enum Asset {
   internal static let addIcon = ImageAsset(name: "add_icon")
   internal static let adventureGuideArt = ImageAsset(name: "adventureGuideArt")
   internal static let adventureGuideStar = ImageAsset(name: "adventureGuideStar")
+  internal static let allocateArrow = ImageAsset(name: "allocate_arrow")
   internal static let armoireBackground = ImageAsset(name: "armoire_background")
   internal static let armoireExperience = ImageAsset(name: "armoire_experience")
   internal static let avatarBorder = ImageAsset(name: "avatar_border")
