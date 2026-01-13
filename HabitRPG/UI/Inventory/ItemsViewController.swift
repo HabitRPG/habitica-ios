@@ -229,7 +229,7 @@ class ItemsViewController: BaseTableViewController {
                 }
             }
         })
-        present(sheet, animated: true)
+        sheet.show()
     }
     
     private func openMysteryItem() {

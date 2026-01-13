@@ -103,9 +103,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                         self.equip(type: "pet", key: pet.key ?? "").observeCompleted {}
                     }
                     let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        viewController.show()
-                    }
+                    viewController.show()
                 }).start()
         })
     }

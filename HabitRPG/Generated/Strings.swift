@@ -2910,7 +2910,7 @@ public enum L10n {
     public static var characterBuildTitle: String { return L10n.tr("Mainstrings", "stats.character_build_title") }
     /// Class-Bonus
     public static var classBonus: String { return L10n.tr("Mainstrings", "stats.class_bonus") }
-    /// Increases Experience earned from tasks. Also increases your Mana cap and Mana regeneration rate.
+    /// Reduces damage taken from missed Dailies and negative Habits. Does not reduce damage from Quest bosses.
     public static var constitutionText: String { return L10n.tr("Mainstrings", "stats.constitution_text") }
     /// Constitution
     public static var constitutionTitle: String { return L10n.tr("Mainstrings", "stats.constitution_title") }

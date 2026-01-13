@@ -366,6 +366,6 @@ class AttributePointsViewController: BaseUIViewController {
                                                                                     initialConstitution: stats.constitution,
                                                                                     initialPerception: stats.perception,
                                                                                     maxToAllocate: stats.points))
-        present(sheet, animated: true)
+        sheet.show()
     }
 }

@@ -405,9 +405,7 @@ class BuySheetViewModel: ViewModel {
             }
         }
         let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
             viewController.show()
-        }
     }
     
     static func displayGemCapReachedModal() {
@@ -420,9 +418,7 @@ class BuySheetViewModel: ViewModel {
                                               content: Text(L10n.Inventory.noGemsLeft)) {
         }
         let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
             viewController.show()
-        }
     }
     
     func displayPurchaseConfirmationDialog(quantity: Int) {

@@ -81,7 +81,7 @@
 "stats.intelligence_title" = "Intelligence";
 "stats.intelligence_text" = "Increases Experience earned from tasks. Also increases your Mana cap and Mana regeneration rate.";
 "stats.constitution_title" = "Constitution";
-"stats.constitution_text" = "Increases Experience earned from tasks. Also increases your Mana cap and Mana regeneration rate.";
+"stats.constitution_text" = "Reduces damage taken from missed Dailies and negative Habits. Does not reduce damage from Quest bosses.";
 "stats.perception_title" = "Perception";
 "stats.perception_text" = "Increases item drop chance, daily item drop cap, task streak bonuses, and Gold earned when completing tasks.";
 "controls" = "Controls";

@@ -215,7 +215,7 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         let sheet = HostingBottomSheetController(rootView: BuySheet(item: item, shopIdentifier: shopIdentifier, onInventoryRefresh: {
             self.refresh()
         }), prefersGrabberVisible: false)
-        present(sheet, animated: true)
+        sheet.show()
     }
     
     override func applyTheme(theme: Theme) {

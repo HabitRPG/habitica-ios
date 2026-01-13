@@ -103,16 +103,7 @@ class UserManager: NSObject {
         
         let sheet = HostingBottomSheetController(rootView: RYABottomSheet(tasks: tasks, onCronRun: {
         }), prefersGrabberVisible: false, interactiveDismiss: false)
-        if var topController = UIApplication.topViewController() {
-            while let presentedViewController = topController.presentedViewController {
-                topController = presentedViewController
-            }
-            while let parent = topController.parent {
-                topController = parent
-            }
-            topController.present(sheet, animated: true) {
-            }
-        }
+        sheet.show()
     }
     
     private func updateQuestStatus(user: UserProtocol?) {

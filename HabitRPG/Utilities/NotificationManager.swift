@@ -79,9 +79,7 @@ class NotificationManager {
         userRepository.retrieveUser().observeCompleted {}
         userRepository.readNotification(notification: notification).observeCompleted {}
         let viewC = HostingBottomSheetController(rootView: FirstDropSheet(eggKey: firstDropNotification.egg ?? "", potionKey: firstDropNotification.hatchingPotion ?? ""), prefersGrabberVisible: false)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            viewC.show()
-        }
+        viewC.show()
         return true
     }
     
@@ -198,10 +196,7 @@ class NotificationManager {
                                                                                         text: Text(text),
                                                                                         description: Text(description)),
                                                      prefersGrabberVisible: false)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                // add a slight delay to make sure that any running VC transitions are done
-                viewC.show()
-            }
+            viewC.show()
         }
         return true
     }
@@ -225,9 +220,7 @@ class NotificationManager {
                     imageName: imageName,
                                                                                        text: loginIncentiveNotification.rewardText ?? "",
                                                                                        nextUnlockIn: nextRewardIn), prefersGrabberVisible: false)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    viewC.show()
-                }
+                viewC.show()
             } else {
                 if let loginIncentives = user?.loginIncentives {
                     let nextRewardIn = nextRewardAt - loginIncentives

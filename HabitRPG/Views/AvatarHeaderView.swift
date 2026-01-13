@@ -72,7 +72,7 @@ class AvatarHeaderView: UIView, Themeable {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        avatarContainer.pin.width(142).height(149).top(-52).hCenter()
+        avatarContainer.pin.width(142).height(149).top(-22).hCenter()
         avatarWrapper.pin.width(134).height(141).top(4).hCenter()
         avatarView.pin.width(140).height(147).center()
         roundingWrapper.pin.width(bounds.width).height(22).bottom(-22)
@@ -87,6 +87,10 @@ class AvatarHeaderView: UIView, Themeable {
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIScreen.main.bounds.size.width, height: 110)
+        if #available(iOS 26.0, *) {
+            return CGSize(width: UIScreen.main.bounds.size.width, height: 127)
+        } else {
+            return CGSize(width: UIScreen.main.bounds.size.width, height: 140)
+        }
     }
 }

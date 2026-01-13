@@ -9,27 +9,15 @@
 import SwiftUI
 import Kingfisher
 
-struct PixelArtView: View {
-    let source: Source?
+struct PixelArtView: UIViewRepresentable {
+    var name: String?
+    var source: Source?
     
-    init(source: Source?) {
-        self.source = source
+    func makeUIView(context: Context) -> NetworkImageView {
+        NetworkImageView()
     }
     
-    init(name: String) {
-        if let url = ImageManager.buildImageUrl(name: name) {
-            self.source = Source.network(url)
-        } else {
-            self.source = nil
-        }
-    }
-    
-    var body: some View {
-        KFAnimatedImage(source: source)
-            .aspectRatio(contentMode: .fit)
-    }
-    
-    private var scale: CGFloat {
-        UIScreen.main.scale
+    func updateUIView(_ uiView: NetworkImageView, context: Context) {
+        uiView.setImagewith(name: name)
     }
 }

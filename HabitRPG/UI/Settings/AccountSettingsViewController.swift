@@ -240,7 +240,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             }.onCellSelection { _, _ in
                 let sheetView = PrivacyPreferencesSheetView()
                 let sheetController = HostingBottomSheetController(rootView: sheetView)
-                self.present(sheetController, animated: true)
+                sheetController.show()
             }
         }
         <<< LabelRow { row in
@@ -262,19 +262,23 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
                 cell.detailTextLabel?.text = L10n.Settings.apiDisclaimer
             }
             .onCellSelection { [weak self] _, _ in
-                guard let self = self else { return }
-                guard let token = AuthenticationManager.shared.currentUserKey else { return }
+                guard let self = self else {
+                    return
+                }
+                guard let token = AuthenticationManager.shared.currentUserKey else {
+                    return
+                }
                 let sheetView = ApiTokenSheetView(token: token) {
                     UIPasteboard.general.string = token
                     self.dismiss(animated: true) {
                         ToastManager.show(
-                            text:  L10n.copiedToClipboard,
+                            text: L10n.copiedToClipboard,
                             color: .blue
                         )
                     }
                 }
                 let sheetController = HostingBottomSheetController(rootView: sheetView)
-                self.present(sheetController, animated: true)
+                sheetController.show()
             }
         }
             <<< ButtonRow { row in

@@ -201,7 +201,7 @@ class PartyDetailViewController: GroupDetailViewController {
                     }
                 }
             }))
-            self?.present(sheet, animated: true)
+            sheet.show()
         })
         let controller = UIHostingController(rootView: memberListView)
         controller.view.backgroundColor = .clear
@@ -433,6 +433,6 @@ class PartyDetailViewController: GroupDetailViewController {
             .padding(.horizontal, 30)
             .padding(.vertical, 16)
         }))
-        present(sheet, animated: true)
+        sheet.show()
     }
 }

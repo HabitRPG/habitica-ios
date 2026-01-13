@@ -607,7 +607,7 @@ class UserProfileViewController: BaseHostingViewController<ProfilePage> {
         
         viewModel.onAchievementDetail = { achievement in
             let sheet = HostingBottomSheetController(rootView: AchievementDetailSheet(achievement: achievement))
-            self.present(sheet, animated: true)
+            sheet.show()
         }
         
         let subscriber = Signal<CalculatedUserStats, NSError>.Observer(value: {[weak self] stats in

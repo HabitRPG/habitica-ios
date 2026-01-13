@@ -271,6 +271,14 @@ class TaskFormController: UIHostingController<TaskFormView> {
             } else {
                 navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.create, style: .plain, target: self, action: #selector(rightButtonTapped))
             }
+            if ThemeService.shared.theme.isDark {
+                navigationItem.rightBarButtonItem?.tintColor = .white
+                navigationItem.leftBarButtonItem?.tintColor = .white
+                if #available(iOS 26.0, *) {
+                    navigationItem.leftBarButtonItem?.style = .prominent
+                    navigationItem.rightBarButtonItem?.style = .prominent
+                }
+            }
         }
     }
     required init?(coder aDecoder: NSCoder) {

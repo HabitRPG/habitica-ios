@@ -63,6 +63,6 @@ class MountDetailViewController: StableDetailViewController<MountProtocol, Mount
                                                                                 onEquip: {[weak self] in
             self?.inventoryRepository.equip(type: "mount", key: mount.key ?? "").observeCompleted {}
         }))
-        present(sheet, animated: true)
+        sheet.show()
     }
 }

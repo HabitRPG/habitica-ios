@@ -309,7 +309,7 @@ class AchievementsCollectionViewController: BaseHostingViewController<Achievemen
         viewSwitcherButton.image = Asset.buttonGrid.image
         viewModel.onShowAchievementDetail = { achievement in
             let sheet = HostingBottomSheetController(rootView: AchievementDetailSheet(achievement: achievement))
-            self.present(sheet, animated: true)
+            sheet.show()
         }
     }
     
