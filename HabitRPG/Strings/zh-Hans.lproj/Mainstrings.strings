@@ -261,13 +261,13 @@
 "stats.distribute_tasks_help" = "根据你完成任务的类型，分配力量、智力、体质和感知点数。";
 "stats.character_build_text" = "每提升一级你都会获得一个可自由分配的属性点数。你可以手动分配，也可以使用自动分配让游戏根据某种分配选项帮你分配。";
 "stats.strength_title" = "力量";
-"stats.strength_text" = "增加暴击的奖励及完成任务时触发暴击的几率。也会增加对Boss造成的伤害。";
+"stats.strength_text" = "完成任务时的暴击率和伤害值。也会增加对Boss造成的伤害。";
 "stats.intelligence_title" = "智力";
-"stats.intelligence_text" = "增加完成任务时获得的经验值。还能增加法力值的上限并提高法力值的再生速度。";
+"stats.intelligence_text" = "提高从任务中获得的经验值。同时提你的法力值上限与法力值恢复速度。";
 "stats.constitution_title" = "体质";
-"stats.constitution_text" = "降低未完成的任务造成的伤害。但不会降低来自Boss的伤害。";
+"stats.constitution_text" = "提高从任务中获得的经验值。同时提你的法力值上限与法力值恢复速度。";
 "stats.perception_title" = "感知";
-"stats.perception_text" = "增加完成任务时的物品掉率、每日物品掉落上限、连击奖励和任务奖励的金币数量。";
+"stats.perception_text" = "提高任务完成时的物品掉落几率、每日掉落上限、连续完成奖励以及获得的金币。";
 "create" = "创建";
 "tasks.reward" = "奖励";
 "tasks.habits" = "习惯";
@@ -1272,9 +1272,9 @@
 "subscription.info_faint_title" = "获得复活机会";
 "groups.by_invite" = "通过邀请";
 "groups.invite_pending" = "待接受的邀请";
-"next_prize_at_x_checkins" = "下一个奖励将在第%d次签到解锁";
+"next_prize_at_x_checkins" = "下一个奖励将在%d天后解锁！";
 "next_checkin_prize_in_x_days" = "你的下一个奖励还需再签到%d次";
-"next_prize_in_x_checkins" = "下一个奖励还需再签到%d次";
+"next_prize_in_x_checkins" = "下一个奖励将在%d天后解锁！";
 "checkin_prize_earned" = "你获得了%@作为你致力改善生活的奖励。";
 "settings.pauseDamage.resume_damage_title2" = "你的连击次数和习惯计数器可以重置";
 "settings.pauseDamage.pause_damage_title2" = "你的连击次数和习惯计数器将不会重置";
@@ -1595,3 +1595,5 @@
 "hatch_pet_new_title" = "孵化一只新宠物";
 "gift_gems_alert_text" = "你想给哪个帐户赠送礼物？";
 "fcv_streak_explanation" = "你可以通过点击任务打开编辑视图，从而恢复该任务的连胜纪录";
+"checkin_prize_set_description" = "因致力于改善生活，你获得了 %s 套装";
+"next_prize_in_1_checkin" = "下一个奖励将在1天后解锁！";
