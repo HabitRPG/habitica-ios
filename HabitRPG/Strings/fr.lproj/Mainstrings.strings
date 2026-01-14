@@ -408,7 +408,7 @@
 "stats.intelligence_title" = "Intelligence";
 "stats.intelligence_text" = "Augmente l'Expérience reçue des tâches. Augmente également votre limite de Mana et sa vitesse de régénération.";
 "stats.constitution_title" = "Constitution";
-"stats.constitution_text" = "Augmente l'Expérience reçue des tâches. Augmente également votre limite de Mana et sa vitesse de régénération.";
+"stats.constitution_text" = "Réduit les dommages subis des Quotidiennes manquées et des Habitudes négatives. Ne réduit pas les dégâts infligés par les boss de Quête.";
 "stats.perception_title" = "Perception";
 "stats.perception_text" = "Augmente les chances de drop des objets, la limite de drop des objets quotidiens, les bonus liés au combos des tâches, et l'Or obtenu en validant des tâches.";
 "controls" = "Contrôles";
@@ -1031,7 +1031,7 @@
 "learn_more" = "En savoir plus";
 "insufficient_hourglasses_message_subscriber" = "Vous aurez besoin de plus de sabliers mystiques pour acheter cet objet ! Gardez votre abonnement pour recevoir des sabliers.";
 "insufficient_hourglasses_message" = "Vous aurez besoin de plus de sabliers mystiques pour acheter cet objet ! Les sabliers sont des récompenses pour un abonnement de plusieurs mois consécutifs.";
-"more_gems_message" = "Vous aurez besoin de plus de gemmes pour acheter cet objet !";
+"more_gems_message" = "Il vous faut plus de Gemmes pour acheter ceci";
 "complete_more_tasks" = "Vous devez réaliser plus de tâches avant de pouvoir vous payer cet objet !";
 "gift_sent_to" = "Vous avez envoyé à %@ :";
 "gift_sent_confirmation" = "Votre cadeau a été envoyé !";
