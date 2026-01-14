@@ -1547,7 +1547,7 @@
 "classes.mages" = "Magos";
 "classes.warriors" = "Guerreiros";
 "classes.healers" = "Curandeiros";
-"classes.rogues" = "Gatunos";
+"classes.rogues" = "Ladinos";
 "locations.customizations" = "Personalizações";
 "shops.purchased_all_gear_armoire_empty" = "Novos equipamentos são lançados durante as Grandes Galas. O estoque do Armário Encantado é renovado a cada mês também!";
 "shops.purchased_all_gear_title" = "Você possui todos os %@ Equipamentos";
