@@ -27,7 +27,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     private var fetchGearDisposable: Disposable?
     
     private var ownedItems = [String: OwnedItemProtocol]()
-    private var pinnedItems = [String?]()
+    private var pinnedItems = [InAppRewardProtocol]()
     private var completedQuests = [String?]()
     private var user: UserProtocol?
     private var userClass: String? {
@@ -95,9 +95,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         
         disposable.add(userRepository.getInAppRewards()
             .map({ (rewards, _) in
-                return rewards.map({ (reward) in
-                    return reward.key
-                })
+                return rewards
             }).on(value: {[weak self] rewards in
                 self?.pinnedItems = rewards
                 self?.collectionView?.reloadData()
@@ -370,7 +368,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 if let ownedItem = ownedItems["\(item.key ?? "")-\(item.type ?? item.purchaseType ?? "")"] {
                     itemCell.itemCount = ownedItem.numberOwned
                 }
-                itemCell.isPinned = pinnedItems.contains(item.key)
+                itemCell.isPinned = pinnedItems.contains(where: { pinned in
+                    return pinned.key == item.key || pinned.path == item.path
+                })
                 if item.type == "quests" || item.pinType == "quests" {
                     itemCell.isChecked = completedQuests.contains(item.key)
                 }

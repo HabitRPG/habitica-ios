@@ -138,11 +138,11 @@ class BuySheetViewModel: ViewModel {
         
         disposable.add(userRepository.getInAppRewards().take(first: 1)
             .map({ (rewards, _) in
-                return rewards.map({ (reward) in
-                    return reward.key
-                })
+                return rewards
             }).on(value: {[weak self]rewards in
-                self?.isPinned = rewards.contains(self?.item.key)
+                self?.isPinned = rewards.contains(where: { pinned in
+                    return pinned.key == self?.item.key || pinned.path == self?.item.path
+                })
             }).start())
     }
     

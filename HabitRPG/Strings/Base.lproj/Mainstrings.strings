@@ -1136,7 +1136,7 @@
 "gift_sent_confirmation" = "Your gift was sent!";
 "gift_sent_to" = "You sent %@:";
 "complete_more_tasks" = "You need to complete more tasks before you can afford this item!";
-"more_gems_message" = "You’ll need more Gems to buy this item!";
+"more_gems_message" = "You’ll need more Gems to buy this";
 "insufficient_hourglasses_message" = "You’ll need more Mystic Hourglasses to buy this item! Hourglasses are rewarded for being subscribed for consecutive months.";
 "insufficient_hourglasses_message_subscriber" = "You’ll need more Mystic Hourglasses to buy this item! Stay Subscribed to keep receiving your Hourglasses.";
 "learn_more" = "Learn More";

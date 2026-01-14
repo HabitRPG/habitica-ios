@@ -31,14 +31,14 @@ struct InsufficientCurrencySheet<Icon: View, Title: View, Content: View, Buttons
                     .clipShape(.circle)
                 ArmoirePlus(thickness: 3, length: 6, maxSpacing: 2, color: plusColor)
                     .offset(x: -70, y: -60)
-                ArmoirePlus(color: plusColor)
+                ArmoirePlus(thickness: 4, length: 9, maxSpacing: 3, color: plusColor)
                     .offset(x: 80, y: 55)
             }
             title
                 .scaledFont(size: 22, weight: .bold)
                 .foregroundStyle(.white)
                 .padding(.horizontal, 50)
-        }.padding(.top, 50), description: content, buttons: buttons)
+        }.padding(.top, 50), description: content.frame(maxWidth: 320), buttons: buttons)
     }
 }
 

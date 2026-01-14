@@ -213,6 +213,7 @@ struct LoginForm: View {
                 onLogin()
             } label: {
                 Text(viewState == .register ? L10n.continue : L10n.Login.login)
+                    .foregroundStyle(.white)
             }
                 .padding(.top, 36)
                 .opacity(isFormValid ? 1 : 0.5)
@@ -224,6 +225,7 @@ struct LoginForm: View {
             } label: {
                 Label {
                     Text(L10n.Login.continueWithApple)
+                        .foregroundStyle(.white)
                 } icon: {
                     Image(Asset.loginApple.name)
                 }
@@ -234,6 +236,7 @@ struct LoginForm: View {
             } label: {
                 Label {
                     Text(L10n.Login.continueWithGoogle)
+                        .foregroundStyle(.white)
                 } icon: {
                     Image(Asset.loginGoogle.name)
                 }
@@ -265,7 +268,7 @@ struct LoginButton<Label: View>: View {
         
         if #available(iOS 26.0, *) {
             button
-                .buttonStyle(.glass(.clear.tint(.white.opacity(0.7))))
+                .buttonStyle(.glass(.clear.tint(.white.opacity(0.2))))
         } else {
             button.buttonStyle(LoginScreenButtonStyle())
         }
@@ -434,6 +437,7 @@ struct LoginScreen: View {
                     Picker(selection: $chosenServer) {
                         ForEach(Servers.allServers) { server in
                             Text(server.niceName).tag(server.rawValue)
+                                .foregroundStyle(.white)
                         }
                     }.pickerStyle(.menu)
                         .onChange(of: chosenServer) { _ in
