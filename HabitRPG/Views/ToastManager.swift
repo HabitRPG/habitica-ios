@@ -151,7 +151,7 @@ class ToastManager: NSObject {
             displayQueue.append(toast)
             display(toast: toast)
         } else {
-            displayQueue.append((toast))
+            displayQueue.append(toast)
         }
     }
     

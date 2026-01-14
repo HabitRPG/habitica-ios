@@ -158,7 +158,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
             }
             })
         )
-        present(sheet, animated: true)
+        sheet.show()
     }
     
     private func showPurchaseDialog(gear: GearProtocol, withSource sourceView: UIView?) {
@@ -175,7 +175,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
             }
             })
         )
-        present(sheet, animated: true)
+        sheet.show()
     }
     
     private func showPurchaseDialog(customizationSet: CustomizationSetProtocol, withSource sourceView: UIView?) {
@@ -203,7 +203,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
             }
             })
         )
-        present(sheet, animated: true)
+        sheet.show()
     }
     
     private func showTimeTravelDialog() {

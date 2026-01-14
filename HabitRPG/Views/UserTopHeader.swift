@@ -303,15 +303,18 @@ class UserTopHeader: UIView, Themeable {
         } else {
             classImageView.image = nil
             classImageView.isHidden = true
+            levelLabel.textColor = ThemeService.shared.theme.secondaryTextColor
             levelStackview.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         }
     }
     
-    @objc private func onGemTapped() {
+    @objc
+    private func onGemTapped() {
         RouterHandler.shared.handle(.purchaseGems)
     }
     
-    @objc private func onHourglassTapped() {
+    @objc
+    private func onHourglassTapped() {
         RouterHandler.shared.handle(.subscription)
     }
 }

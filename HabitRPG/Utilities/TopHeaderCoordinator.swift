@@ -96,11 +96,13 @@ class TopHeaderCoordinator: NSObject {
         }
         scrollView?.contentInset = insets
         scrollView?.scrollIndicatorInsets = insets
-        if navController.state == .hidden {
-            scrollView?.contentOffset = CGPoint(x: 0, y: -navController.contentOffset)
-        }
-        if scrollView?.contentOffset.y ?? 0 < -navController.contentOffset {
-            scrollView?.contentOffset = CGPoint(x: 0, y: 0)
+        if followScrollView {
+            if navController.state == .hidden {
+                scrollView?.contentOffset = CGPoint(x: 0, y: -navController.contentOffset)
+            }
+            if scrollView?.contentOffset.y ?? 0 < -navController.contentOffset {
+                scrollView?.contentOffset = CGPoint(x: 0, y: 0)
+            }
         }
         didAppear = true
         isVisible = true

@@ -86,6 +86,7 @@ struct PetBottomSheetView: View, Dismissable {
                         .frame(height: 124, alignment: .bottom)
                         .zIndex(3)
                     ProgressView(value: (feedValue ?? Float(trained)) / 50)
+                        .tint(Color(theme.successColor))
                         .animation(.smooth, value: feedValue)
                         .padding(.horizontal, 4)
                         .padding(.vertical, 3)
@@ -113,7 +114,7 @@ struct PetBottomSheetView: View, Dismissable {
                                 ProgressView().habiticaProgressStyle(strokeWidth: 6)
                             } else {
                                 Image(Asset.feedSaddle.name).interpolation(.none)
-                                Text(L10n.Stable.useSaddle).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(theme.tintedMainText)).underline(UIAccessibility.buttonShapesEnabled)
+                                Text(L10n.Stable.useSaddle).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(theme.primaryTextColor)).underline(UIAccessibility.buttonShapesEnabled)
                             }
                         }
                     }).buttonStyle { configuration in
@@ -133,7 +134,7 @@ struct PetBottomSheetView: View, Dismissable {
                     }, label: {
                         VStack {
                             Image(getFoodName()).interpolation(.none)
-                            Text(L10n.Stable.feed).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(theme.tintedMainText)).underline(UIAccessibility.buttonShapesEnabled)
+                            Text(L10n.Stable.feed).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(theme.primaryTextColor)).underline(UIAccessibility.buttonShapesEnabled)
                         }
                     }).buttonStyle { configuration in
                         let conf = configuration.label

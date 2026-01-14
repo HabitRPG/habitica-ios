@@ -301,7 +301,6 @@ struct SubscriptionPage: View {
     var textColor: Color = .white
     
     var body: some View {
-        if viewModel.subscriptionPlan?.isValid == true {
             VStack(spacing: 0) {
                 if let endDate = viewModel.activePromo?.endDate, viewModel.activePromo?.identifier == "g1g1" {
                     G1G1Banner(endDate: endDate)
@@ -395,7 +394,7 @@ struct SubscriptionPage: View {
                         }
                         Rectangle()
                             .frame(height: viewModel.showHourglassPromo && viewModel.selectedSubscription == viewModel.availableSubscriptions.last ? 186 : 126)
-                            .cornerRadius(UIConstants.mediumCornerRadius)
+                            .cornerRadius(UIConstants.largeCornerRadius)
                             .offset(y: 4.0 + (CGFloat(viewModel.availableSubscriptions.firstIndex(of: viewModel.selectedSubscription) ?? 0) * 134.0))
                             .animation(.interpolatingSpring(stiffness: 500, damping: 55), value: viewModel.selectedSubscription)
                         SubscriptionOptionStack(viewModel: viewModel)
@@ -501,7 +500,6 @@ struct SubscriptionPage: View {
             .background(backgroundColor.ignoresSafeArea(.all, edges: .top).padding(.bottom, 4))
             .ignoresSafeArea()
         }
-    }
 }
 
 struct ScrollableSubscriptionPage: View {
@@ -513,6 +511,7 @@ struct ScrollableSubscriptionPage: View {
                 SubscriptionPage(viewModel: viewModel)
                     .id("page")
             }
+            .frame(maxHeight: .infinity)
             .onChange(of: viewModel.scrollToTop) { _ in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                     withAnimation {
@@ -537,7 +536,6 @@ struct SubscriptionPagePreview: PreviewProvider {
 
 class SubscriptionModalViewController: HostingBottomSheetController<ScrollableSubscriptionPage> {
     let viewModel: SubscriptionViewModel
-    let userRepository = UserRepository()
         
     init(presentationPoint: PresentationPoint?) {
         viewModel = SubscriptionViewModel(presentationPoint: presentationPoint)

@@ -607,7 +607,7 @@ class UserProfileViewController: BaseHostingViewController<ProfilePage> {
         
         viewModel.onAchievementDetail = { achievement in
             let sheet = HostingBottomSheetController(rootView: AchievementDetailSheet(achievement: achievement))
-            self.present(sheet, animated: true)
+            sheet.show()
         }
         
         let subscriber = Signal<CalculatedUserStats, NSError>.Observer(value: {[weak self] stats in
@@ -699,6 +699,11 @@ class UserProfileViewController: BaseHostingViewController<ProfilePage> {
         if needsDoneButton {
             navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped))
         }
+    }
+    
+    override func applyTheme(theme: any Theme) {
+        super.applyTheme(theme: theme)
+        navigationItem.leftBarButtonItem?.tintColor = theme.fixedTintColor
     }
     
     @objc

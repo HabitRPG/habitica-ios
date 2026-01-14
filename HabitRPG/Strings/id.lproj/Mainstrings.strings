@@ -1148,7 +1148,7 @@
 "empty.notifications.title" = "Kamu sudah tahu semuanya!";
 "show_details" = "Tampilkan Detil";
 "gift_gems_disclaimer" = "Habitica tidak akan pernah meminta kamu untuk memberikan permata kepada pemain lain. Mengemis orang lain agar diberi permata adalah tindakan pelanggaran pada Pedoman Komunitas dan akan dilaporkan pada admin@habitica.com.";
-"gift_gems_alert_title" = "Kepada siapa kamu ingin mengirim hadiah?";
+"gift_gems_alert_title" = "Hadiahkan Permata";
 "hourglasses_description" = "Jam Pasir Mistik adalah mata uang yang sangat langka dan hanya bisa kamu dapatkan dengan berlangganan Habitica. Kamu dapat menggunakannya di Toko Penjelajah Waktu untuk membeli set Perlengkapan Langganan dari masa lalu, Hewan Peliharaan eksklusif, Tunggangan, Latar Belakang animasi, atau bahkan Misi spesial! Semua bonus tambahan ini adalah cara yang bagus untuk tetap termotivasi sepanjang tahun dan memberi hadiah untuk dirimu atas kerja kerasmu.\n\nPara pelanggan menerima satu Jam Pasir Mistik di awal setiap bulan selama mereka masih memiliki manfaat langganan, ditambah berbagai keuntungan lainnya. Jangan lupa untuk melihat opsi langganan kami jika kamu tertarik dengan apa yang ditawarkan oleh para Penjelajah Waktu!";
 "learn_more" = "Pelajari Lebih Lanjut";
 "excess_no_items_left" = "Kamu telah mempunyai semua yang kamu butuhkan untuk semua peliharaan %@. Apakah kamu yakin untuk membeli %d %@s?";
@@ -1360,7 +1360,7 @@
 "settings.manage_privacy_preferences" = "Ubah izin privasimu";
 "settings.privacy_preferences" = "Preferensi Privasi";
 "your_privacy_preferences" = "Preferensi Privasimu";
-"privacy_preferences_sheet_description" = "Habitica menggunakan data dari perangkatmu untuk menganalisa performa, menolong jika ada masalah, dan memberikan pengalaman bermain yang paling seru untukmu. Untuk itu, kami perlu minta izin berikut ini.\n\nKamu bisa ubah pengaturannya kapan aja. Buat info lebih lanjut, kunjungi [Privacy Policy](https://habitica.com/static/privacy).";
+"privacy_preferences_sheet_description" = "Privasimu sangat penting bagi kami. Habitica menggunakan data dari perangkatmu untuk menganalisa performa, menolong jika ada masalah, dan memberikan pengalaman bermain yang paling seru untukmu. Untuk itu, kami perlu minta izin berikut ini.\n\nKamu bisa ubah pengaturannya kapan aja. Buat info lebih lanjut, kunjungi [Privacy Policy](https://habitica.com/static/privacy).";
 "performance_analytics" = "Performa & Analisa";
 "privacy_preferences_full_description" = "Privasimu berarti bagi kami.Habitica menggunakan data dari perangkatmu untuk menganalisis performa, menangani permintaan dukungan, dan memberikan pengalaman gamifikasi terbaik untukmu. Untuk melakukan itu, kami perlu meminta izin berikut.\n\nKamu dapat mengubah izin ini kapan saja melalui pengaturan akunmu.";
 "performance_analytics_description" = "Ini digunakan untuk meningkatkan pengalaman pemain, performa, dan layanan Habitica.\nTim dukungan kami juga akan menggunakan data ini saat menangani permintaan dan laporan bug.";
@@ -1473,3 +1473,7 @@
 "empty.messages" = "Kamu tidak memiliki pesan apapun";
 "empty.messages_description" = "Kirim pesan untuk memulai percakapan dengan anggota Kelompokmu atau pemain Habitica lain";
 "glossary" = "Glosarium";
+"purchased_amount" = "Kamu membeli %d %@";
+"gift_gems_alert_text" = "Akun mana yang ingin kamu berikan hadiahmu?";
+"hatch_pet_new_title" = "Tetaskan Hewan Peliharaan baru";
+"fcv_streak_explanation" = "Kamu dapat memulihkan rekor beruntun pada masing-masing tugas dengan mengetuknya untuk membuka tampilan sunting";

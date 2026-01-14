@@ -1,0 +1,142 @@
+{
+  "fill" : {
+    "linear-gradient" : [
+      "display-p3:0.45690,0.14925,1.00000,1.00000",
+      "display-p3:0.60799,0.25311,1.00000,1.00000"
+    ],
+    "orientation" : {
+      "start" : {
+        "x" : 0.5,
+        "y" : 0
+      },
+      "stop" : {
+        "x" : 0.5,
+        "y" : 0.7
+      }
+    }
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "blend-mode" : "hard-light",
+          "fill-specializations" : [
+            {
+              "value" : {
+                "linear-gradient" : [
+                  "display-p3:1.00000,0.38039,0.39608,1.00000",
+                  "srgb:1.00000,0.58039,0.29804,1.00000"
+                ],
+                "orientation" : {
+                  "start" : {
+                    "x" : 0.5,
+                    "y" : 0.30190972222222223
+                  },
+                  "stop" : {
+                    "x" : 0.5,
+                    "y" : 0.7
+                  }
+                }
+              }
+            },
+            {
+              "appearance" : "dark",
+              "value" : "automatic"
+            }
+          ],
+          "glass" : true,
+          "hidden" : false,
+          "image-name" : "alpha.svg",
+          "name" : "alpha",
+          "opacity" : 1,
+          "position" : {
+            "scale" : 1.5,
+            "translation-in-points" : [
+              285.8125,
+              302.1171875
+            ]
+          }
+        },
+        {
+          "blend-mode-specializations" : [
+            {
+              "value" : "plus-darker"
+            },
+            {
+              "appearance" : "dark",
+              "value" : "plus-darker"
+            },
+            {
+              "appearance" : "tinted",
+              "value" : "overlay"
+            }
+          ],
+          "fill-specializations" : [
+            {
+              "value" : "automatic"
+            },
+            {
+              "appearance" : "dark",
+              "value" : {
+                "linear-gradient" : [
+                  "srgb:0.31373,0.70980,0.91373,1.00000",
+                  "display-p3:0.57255,0.36078,0.95294,1.00000"
+                ],
+                "orientation" : {
+                  "start" : {
+                    "x" : 0.5,
+                    "y" : 1
+                  },
+                  "stop" : {
+                    "x" : 0.5,
+                    "y" : 0
+                  }
+                }
+              }
+            }
+          ],
+          "glass" : true,
+          "hidden" : false,
+          "image-name" : "test_habitica_icon2.svg",
+          "name" : "test_habitica_icon2",
+          "opacity-specializations" : [
+            {
+              "value" : 1
+            },
+            {
+              "appearance" : "tinted",
+              "value" : 1
+            }
+          ],
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              -50.453125,
+              -0.984375
+            ]
+          }
+        }
+      ],
+      "lighting-specializations" : [
+        {
+          "appearance" : "dark",
+          "value" : "individual"
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}

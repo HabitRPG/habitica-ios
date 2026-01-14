@@ -67,7 +67,7 @@ class PetDetailViewController: StableDetailViewController<PetProtocol, PetStable
                                                                               onEquip: {[weak self] in
             self?.inventoryRepository.equip(type: "pet", key: pet.key ?? "").observeCompleted {}
         }))
-        present(sheet, animated: true)
+        sheet.show()
     }
     
     private func showHatchingDialog(forStableItem item: PetStableItem) {

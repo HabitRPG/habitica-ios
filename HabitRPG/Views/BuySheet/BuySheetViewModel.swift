@@ -72,6 +72,9 @@ class BuySheetViewModel: ViewModel {
     }
     
     var canBuyDisplay: Bool {
+        if item.key == "gem" && user?.purchased?.subscriptionPlan?.gemsRemaining == 0 {
+            return false
+        }
         return canAffordDisplay && !isLocked
     }
     
@@ -135,11 +138,11 @@ class BuySheetViewModel: ViewModel {
         
         disposable.add(userRepository.getInAppRewards().take(first: 1)
             .map({ (rewards, _) in
-                return rewards.map({ (reward) in
-                    return reward.key
-                })
+                return rewards
             }).on(value: {[weak self]rewards in
-                self?.isPinned = rewards.contains(self?.item.key)
+                self?.isPinned = rewards.contains(where: { pinned in
+                    return pinned.key == self?.item.key || pinned.path == self?.item.path
+                })
             }).start())
     }
     
@@ -190,16 +193,20 @@ class BuySheetViewModel: ViewModel {
                 return
             }
             remainingPurchaseQuantity { remainingQuantity in
+                var quantity = self.quantity
                 if remainingQuantity >= 0 {
-                    if remainingQuantity < self.quantity {
+                    if remainingQuantity < quantity {
                         self.displayPurchaseConfirmationDialog(quantity: remainingQuantity)
                         return
                     }
                 }
+                if self.item.purchaseType == "gems", let remaining = self.user?.purchased?.subscriptionPlan?.gemsRemaining {
+                    quantity = min(remaining, quantity)
+                }
                 withAnimation {
                     self.isPurchasing = true
                 }
-                self.buyItem(quantity: self.quantity)
+                self.buyItem(quantity: quantity)
             }
         }
     }
@@ -398,9 +405,7 @@ class BuySheetViewModel: ViewModel {
             }
         }
         let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
             viewController.show()
-        }
     }
     
     static func displayGemCapReachedModal() {
@@ -413,9 +418,7 @@ class BuySheetViewModel: ViewModel {
                                               content: Text(L10n.Inventory.noGemsLeft)) {
         }
         let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
             viewController.show()
-        }
     }
     
     func displayPurchaseConfirmationDialog(quantity: Int) {

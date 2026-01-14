@@ -112,7 +112,7 @@ struct TaskFormView: View {
     @ViewBuilder private var dynamicFormPart: some View {
         if viewModel.taskType == .habit && viewModel.isTaskEditable {
             TaskFormSection(header: Text(L10n.Tasks.Form.controls.localizedCapitalized),
-                            content: HabitControlsFormView(taskColor: viewModel.lightTaskTintColor.uiColor(), isUp: $viewModel.up, isDown: $viewModel.down), backgroundColor: .clear)
+                            content: HabitControlsFormView(taskColor: viewModel.pickerTintColor, isUp: $viewModel.up, isDown: $viewModel.down), backgroundColor: .clear)
         } else if viewModel.taskType == .reward && viewModel.isTaskEditable {
             TaskFormSection(header: Text(L10n.Tasks.Form.cost.localizedCapitalized),
                             content: PlusMinusStepperView(amount: $viewModel.value, icon: Image(uiImage: HabiticaIcons.imageOfGold)), backgroundColor: .clear)
@@ -270,6 +270,14 @@ class TaskFormController: UIHostingController<TaskFormView> {
                 navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.save, style: .plain, target: self, action: #selector(rightButtonTapped))
             } else {
                 navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.create, style: .plain, target: self, action: #selector(rightButtonTapped))
+            }
+            if ThemeService.shared.theme.isDark {
+                navigationItem.rightBarButtonItem?.tintColor = .white
+                navigationItem.leftBarButtonItem?.tintColor = .white
+                if #available(iOS 26.0, *) {
+                    navigationItem.leftBarButtonItem?.style = .prominent
+                    navigationItem.rightBarButtonItem?.style = .prominent
+                }
             }
         }
     }

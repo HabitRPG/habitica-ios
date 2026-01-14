@@ -140,7 +140,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     
         KeyboardManager.addObservingView(view)
         if #available(iOS 26.0, *) {
-            let effect = UIGlassEffect(style: .clear)
+            let effect = UIGlassEffect(style: .regular)
             effect.tintColor = ThemeService.shared.theme.contentBackgroundColor.withAlphaComponent(0.9)
             backgroundView.effect = effect
         }

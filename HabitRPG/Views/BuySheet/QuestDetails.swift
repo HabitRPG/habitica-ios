@@ -108,9 +108,12 @@ struct QuestDetails: View {
     var body: some View {
         if let quest = quest {
             QuestGoalViewUI(quest: quest)
-            Text(L10n.Tasks.rewards)
-                .scaledFont(size: 16, weight: .semibold)
-                .padding(.bottom, 15)
+            HStack(spacing: 10) {
+                Image(Asset.questRewardsLeft.name)
+                Text(L10n.Tasks.rewards)
+                    .scaledFont(size: 16, weight: .semibold)
+                Image(Asset.questRewardsRight.name)
+            }.padding(.bottom, 15)
             VStack(spacing: 8) {
                 if let experience = quest.drop?.experience {
                     QuestReward(icon: Image(uiImage: HabiticaIcons.imageOfExperienceReward), label: Text(L10n.Quests.rewardExperience(experience)))

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct FanfareContainer<Content: View>: View {
     var haloColor: Color
-    var circleColor: Color
+    var circleColor: Color = .white
     var outerRingColor: Color
     var plusColor: Color
     @ViewBuilder let content: () -> Content

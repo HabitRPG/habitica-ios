@@ -369,6 +369,7 @@ struct TaskFilterPage: View {
                         Button(role: .confirm) {
                             viewModel.dismiss()
                         }.buttonStyle(.glassProminent)
+                            .tint(Color(themeService.theme.fixedTintColor))
                     } else {
                         Button {
                             viewModel.dismiss()

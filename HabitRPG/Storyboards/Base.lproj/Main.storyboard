@@ -663,7 +663,7 @@
                                         <color key="textColor" red="0.3075395823" green="0.2903449535" blue="0.34151983260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3ow-rh-Fzj">
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3ow-rh-Fzj">
                                         <rect key="frame" x="246" y="67" width="64" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
@@ -675,7 +675,7 @@
                                         </connections>
                                     </segmentedControl>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eEO-JP-9TP">
-                                        <rect key="frame" x="8" y="53" width="359" height="250"/>
+                                        <rect key="frame" x="36" y="171" width="359" height="250"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wrE-l6-peu" customClass="AvatarOverviewItemView" customModule="Habitica" customModuleProvider="target">

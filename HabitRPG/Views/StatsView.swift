@@ -24,6 +24,7 @@ class StatsView: UIView, Themeable {
     @IBOutlet private weak var allocatedLabel: UILabel!
     @IBOutlet private weak var allocatedBackgroundView: UIView!
     @IBOutlet private weak var allocateButton: UIButton!
+    @IBOutlet weak var topBarTrailingConstraint: NSLayoutConstraint!
     
     private var containedView: UIView?
     
@@ -37,8 +38,15 @@ class StatsView: UIView, Themeable {
             topBackground.backgroundColor = attributeBackgroundColor
         }
     }
-    @IBInspectable var attributeTextColor: UIColor?
-    
+    @IBInspectable var attributeTextColor: UIColor? {
+        didSet {
+            titleLabel.textColor = attributeTextColor
+            totalValueLabel.textColor = attributeTextColor
+        }
+    }
+    @IBInspectable var allocateButtonBackgroundColor: UIColor?
+    @IBInspectable var allocateButtonTextColor: UIColor?
+
     var totalValue: Int = 0 {
         didSet {
             totalValueLabel.text = String(totalValue)
@@ -71,22 +79,12 @@ class StatsView: UIView, Themeable {
             allocateButton.isHidden = !canAllocatePoints
             let theme = ThemeService.shared.theme
             if canAllocatePoints {
-                allocateButton.backgroundColor = theme.offsetBackgroundColor
-                allocatedBackgroundView.backgroundColor = theme.offsetBackgroundColor
-                if theme.isDark {
-                    allocateButton.tintColor = .gray400
-                    allocatedLabel.textColor = theme.primaryTextColor
-                    allocatedValueLabel.textColor = theme.primaryTextColor
-                } else {
-                    allocateButton.tintColor = .purple500
-                    allocatedValueLabel.textColor = attributeTextColor
-                    allocatedLabel.textColor = attributeTextColor
-                }
+                allocateButton.backgroundColor = allocateButtonBackgroundColor
+                allocateButton.tintColor = allocateButtonTextColor
+                topBarTrailingConstraint.constant = 0
             } else {
                 allocateButton.backgroundColor = theme.windowBackgroundColor
-                allocatedBackgroundView.backgroundColor = theme.windowBackgroundColor
-                allocatedLabel.textColor = theme.dimmedTextColor
-                allocatedValueLabel.textColor = theme.primaryTextColor
+                topBarTrailingConstraint.constant = 26
             }
         }
     }
@@ -120,10 +118,7 @@ class StatsView: UIView, Themeable {
             
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
-            
-            allocateButton.setImage(HabiticaIcons.imageOfAttributeAllocateButton, for: .normal)
-            allocateButton.tintColor = UIColor(red: 0.529, green: 0.506, blue: 0.565, alpha: 1.000)
-            
+                        
             setNeedsUpdateConstraints()
             updateConstraints()
             setNeedsLayout()
@@ -135,13 +130,13 @@ class StatsView: UIView, Themeable {
     func applyTheme(theme: Theme) {
         backgroundColor = theme.contentBackgroundColor
         containedView?.backgroundColor = theme.contentBackgroundColorDimmed
-        levelLabel.textColor = theme.dimmedTextColor
+        levelLabel.textColor = theme.secondaryTextColor
         levelValueLabel.textColor = theme.primaryTextColor
-        equipmentLabel.textColor = theme.dimmedTextColor
+        equipmentLabel.textColor = theme.secondaryTextColor
         equipmentValueLabel.textColor = theme.primaryTextColor
-        buffsLabel.textColor = theme.dimmedTextColor
+        buffsLabel.textColor = theme.secondaryTextColor
         buffsValueLabel.textColor = theme.primaryTextColor
-        allocatedLabel.textColor = theme.dimmedTextColor
+        allocatedLabel.textColor = theme.secondaryTextColor
         allocatedValueLabel.textColor = theme.primaryTextColor
     }
     

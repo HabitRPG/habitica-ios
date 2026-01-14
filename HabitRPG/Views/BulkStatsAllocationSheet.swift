@@ -25,6 +25,8 @@ struct StatsAllocationRow<Title: View>: View {
                 .scaledFont(size: 17, weight: .semibold)
                 .frame(width: UIFontMetrics.default.scaledValue(for: 50))
             Text("\(amount + initialAmount, format: .number.precision(.fractionLength(0)))")
+                .contentTransition(.numericText())
+                .animation(.default, value: amount)
                 .frame(width: 40, alignment: .trailing)
                 .foregroundStyle(Color(themeService.theme.quadTextColor))
                 .padding(.trailing, 17)
@@ -33,6 +35,8 @@ struct StatsAllocationRow<Title: View>: View {
                 Text("+")
                     .foregroundStyle(Color(themeService.theme.quadTextColor))
                 Text("\(amount + initialAmount, format: .number.precision(.fractionLength(0)))")
+                    .contentTransition(.numericText())
+                    .animation(.default, value: amount)
                     .foregroundStyle(Color(themeService.theme.secondaryTextColor))
             }.frame(width: 64, height: 48)
                 .background(Color(themeService.theme.windowBackgroundColor))
@@ -118,7 +122,9 @@ struct BulkStatsAllocationSheet: View, Dismissable {
                     .frame(width: 24, height: 24)
             }), content: VStack {
                 VStack(spacing: 2) {
-                    Text("\(strength + intelligence + constitution + perception, format: .number.precision(.fractionLength(0)))/\(maxToAllocate, format: .number.precision(.fractionLength(0)))")
+                    Text("\(totalAllocated, format: .number.precision(.fractionLength(0)))/\(maxToAllocate, format: .number.precision(.fractionLength(0)))")
+                        .contentTransition(.numericText())
+                        .animation(.default, value: totalAllocated)
                     .foregroundStyle(Color(ThemeService.shared.theme.tintColor))
                     .scaledFont(size: 28, weight: .bold)
                 Text(L10n.allocated)

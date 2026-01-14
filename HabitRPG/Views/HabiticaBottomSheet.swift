@@ -13,6 +13,37 @@ protocol Dismissable {
     var dismisser: Dismisser { get set }
 }
 
+private class QueueManager {
+    static var displayQueue: [(() -> Void)] = [(() -> Void)]()
+    static var showingSheet: Bool {
+        return displayQueue.isEmpty == false
+    }
+    
+    private static func showCurrent() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            if let action = displayQueue.first {
+                action()
+            }
+        }
+    }
+    
+    static func showNext() {
+        if showingSheet {
+            displayQueue.removeFirst()
+            showCurrent()
+        }
+    }
+    
+    static func enqueue(_ action: @escaping () -> Void) {
+        if !showingSheet {
+            displayQueue.append(action)
+            showCurrent()
+        } else {
+            displayQueue.append(action)
+        }
+    }
+}
+
 class HostingBottomSheetController<ContentView: View>: UIHostingController<ContentView>, HostingViewController {
     private var bottomInset: CGFloat = 0
     
@@ -64,7 +95,16 @@ class HostingBottomSheetController<ContentView: View>: UIHostingController<Conte
         super.viewWillDisappear(animated)
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        QueueManager.showNext()
+    }
+    
     func show() {
-        UIApplication.shared.topmostViewController?.present(self, animated: true)
+        QueueManager.enqueue {
+            if let top = UIApplication.shared.topmostViewController, top != self {
+                top.present(self, animated: true)
+            }
+        }
     }
 }

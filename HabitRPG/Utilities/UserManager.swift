@@ -19,7 +19,7 @@ class UserManager: NSObject {
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
     private let inventoryRepository = InventoryRepository()
-    private let disposable = CompositeDisposable()
+    private var disposable = CompositeDisposable()
     private let configRepository = ConfigRepository.shared
     
     private weak var faintViewController: FaintViewController?
@@ -35,7 +35,15 @@ class UserManager: NSObject {
         return Calendar.current.date(byAdding: .day, value: -1, to: today)
     }
     
+    func stopListening() {
+        disposable.dispose()
+    }
+
     func beginListening() {
+        if !disposable.isDisposed {
+            disposable.dispose()
+        }
+        disposable = CompositeDisposable()
         disposable.add(userRepository.getUser()
             .throttle(0.5, on: QueueScheduler.main)
             .on(value: {[weak self]user in
@@ -95,16 +103,7 @@ class UserManager: NSObject {
         
         let sheet = HostingBottomSheetController(rootView: RYABottomSheet(tasks: tasks, onCronRun: {
         }), prefersGrabberVisible: false, interactiveDismiss: false)
-        if var topController = UIApplication.topViewController() {
-            while let presentedViewController = topController.presentedViewController {
-                topController = presentedViewController
-            }
-            while let parent = topController.parent {
-                topController = parent
-            }
-            topController.present(sheet, animated: true) {
-            }
-        }
+        sheet.show()
     }
     
     private func updateQuestStatus(user: UserProtocol?) {
@@ -143,7 +142,7 @@ class UserManager: NSObject {
         if !user.isValid {
             return
         }
-        if !UserDefaults.standard.bool(forKey: "isInSetup") && user.flags?.welcomed == false {
+        if UserDefaults.standard.bool(forKey: "isInSetup") && user.flags?.welcomed == false {
             userRepository.updateUser(key: "flags.welcomed", value: true).observeCompleted {
             }
         }

@@ -406,11 +406,11 @@
 "stats.stat_guide" = "Guide des attributs";
 "stats.strength_title" = "Force";
 "stats.intelligence_title" = "Intelligence";
-"stats.intelligence_text" = "Augmente l'expérience reçue des tâches validées. Augmente également votre limite de mana et sa vitesse de régénération dans le temps.";
+"stats.intelligence_text" = "Augmente l'Expérience reçue des tâches. Augmente également votre limite de Mana et sa vitesse de régénération.";
 "stats.constitution_title" = "Constitution";
-"stats.constitution_text" = "Diminue la quantité de dégâts reçue de vos tâches. Ne diminue pas les dégâts reçus des boss.";
+"stats.constitution_text" = "Réduit les dommages subis des Quotidiennes manquées et des Habitudes négatives. Ne réduit pas les dégâts infligés par les boss de Quête.";
 "stats.perception_title" = "Perception";
-"stats.perception_text" = "Augmente la probabilité de trouver du butin lorsqu'une tâche est validée, la limite de butin quotidienne, le bonus des combos, et la quantité d'or reçue pour les tâches.";
+"stats.perception_text" = "Augmente les chances de drop des objets, la limite de drop des objets quotidiens, les bonus liés au combos des tâches, et l'Or obtenu en validant des tâches.";
 "controls" = "Contrôles";
 "tasks.habits" = "Habitudes";
 "tasks.dailies" = "Quotidiennes";
@@ -761,7 +761,7 @@
 "titles.skills" = "Compétences";
 "titles.avatar" = "Avatar";
 "titles.gift_subscription" = "Offrir un Abonnement";
-"stats.strength_text" = "Augmente le bonus des coups critiques et leur chance lorsqu'une tâche est validée. Augmente également les dégâts infligés aux boss.";
+"stats.strength_text" = "Augmente le bonus et la chance de coups critiques vous validez vos tâches. Augmente également les dégâts infligés aux boss de Quêtes.";
 "tasks.due_today" = "Aujourd'hui";
 "tasks.due_tomorrow" = "Demain";
 "tasks.due_in_x_days" = "Dans %d jours";
@@ -845,7 +845,7 @@
 "world_boss.rage_strike_warning" = "Soyez prudent.e...\nUne fois sa barre de rage remplie, le boss mondial attaquera et s'en prendra à l'un.e de nos ami.es marchand.es. Continuez à accomplir vos Quotidiennes pour tenter de l'en empêcher !";
 "world_boss.rage_strike_damaged" = "%@ a le coeur brisé !\nNotre cher %@ fut dévasté lorsque %@ brisa le %@. Vite, occupez-vous de vos tâches pour vaincre le monstre et aider à reconstruire !";
 "world_boss.rage_strike_explanation" = "Il peut y avoir jusqu'à 3 attaques de rage\nLa barre se remplit lorsque les habitants d'Habitica manquent leurs Quotidiennes. Lorsque la jauge sera remplie, la Décoeurageante libèrera son Brisement de cœur sur l'un.e des marchand.es d'Habitica, alors assurez-vous d'accomplir vos tâches !";
-"checkin_yesterdays_dalies" = "Cochez les Quotidiennes accomplies hier :";
+"checkin_yesterdays_dalies" = "Cochez les Quotidiennes accomplies hier avant de commencer votre nouvelle journée :";
 "force_start" = "Démarrage forcé";
 "leave_challenge" = "Quitter le défi";
 "join_challenge" = "Participer au défi";
@@ -1031,7 +1031,7 @@
 "learn_more" = "En savoir plus";
 "insufficient_hourglasses_message_subscriber" = "Vous aurez besoin de plus de sabliers mystiques pour acheter cet objet ! Gardez votre abonnement pour recevoir des sabliers.";
 "insufficient_hourglasses_message" = "Vous aurez besoin de plus de sabliers mystiques pour acheter cet objet ! Les sabliers sont des récompenses pour un abonnement de plusieurs mois consécutifs.";
-"more_gems_message" = "Vous aurez besoin de plus de gemmes pour acheter cet objet !";
+"more_gems_message" = "Il vous faut plus de Gemmes pour acheter ceci";
 "complete_more_tasks" = "Vous devez réaliser plus de tâches avant de pouvoir vous payer cet objet !";
 "gift_sent_to" = "Vous avez envoyé à %@ :";
 "gift_sent_confirmation" = "Votre cadeau a été envoyé !";
@@ -1039,7 +1039,7 @@
 "gift_gems_explanation_purchase" = "Choisissez combien de gemmes offrir ci-dessous, ou changez d'onglet pour offrir des gemmes de votre propre réserve";
 "gift_gems_disclaimer" = "Habitica ne vous obligera jamais à offrir des gemmes à d'autres personnes. Réclamer des gemmes est une violation de notre guide de vie en communauté qui doit être reportée à admin@habitica.com.";
 "gift_gems_alert_prompt" = "Entrez l'@identifiant de la personne destinataire";
-"gift_gems_alert_title" = "A qui voudriez-vous envoyer votre cadeau ?";
+"gift_gems_alert_title" = "Offrir des Gemmes";
 "gift_gems_prompt" = "Vous voulez offrir un beau butin de gemmes à quelqu'un d'autre ?";
 "purchase_x" = "Acheter %d";
 "excess_x_items_left" = "Vous avez seulement besoin de %d %@s pour faire éclore tous les familiers possibles. Voulez-vous vraiment acheter %d ?";
@@ -1149,7 +1149,7 @@
 "currency" = "Monnaie";
 "premium_currency" = "Monnaie premium";
 "mana_description" = "Les points de mana sont débloqués avec le système de classe au niveau 10, et vous permettent d'**utiliser des compétences** au fur et à mesure que vous les apprenez dès le niveau 11. \n \nQuelques ** points de mana sont gagnés** chaque nouveau jour, mais vous pouvez en gagner plus en réalisant des tâches ou en utilisant des compétences de la classe Mage.";
-"gold_description" = "L'or est la **principale forme de monnaie** dans Habitica et vous permet d'acheter de l'équipement, des quêtes, des objets ou même des récompenses personnalisées que vous créez vous-même. \n \n**Gagnez de l'or** en validant vos tâches ou en réalisant des quêtes, ou avec certaines compétences de classe. Un **attribut de perception** plus élevé augmente l'or que vous gagnez. \n \nSi vous vous abonnez à Habitica, vous pourrez même utiliser l'or pour acheter un nombre de gemmes déterminé par la durée de votre abonnement.";
+"gold_description" = "L'Or est la principale forme de monnaie dans Habitica et vous permet d'acheter de l'équipement, des quêtes, des objets ou même des récompenses personnalisées que vous créez vous-même.\n\nGagnez de l'Or en accomplissant des tâches, des quêtes, ou avec certaines compétences de Classe.";
 "experience_points" = "Points d'expérience";
 "health_description" = "Ceci représente la santé de votre avatar. Rater une quotidienne ou réaliser une mauvaise habitude **diminue vos points de vie**. \n \n**Retrouvez des points de vie** en montant de niveau, en utilisant une potion, ou une compétence de classe de régénération. \n \nSi vos **points de vie tombent à 0**, vous perdrez un niveau, tout votre or, et une pièce d'équipement. L'équipement perdu peut être racheté.";
 "health_points" = "Points de vie";
@@ -1261,7 +1261,7 @@
 "see_you_tomorrow" = "À demain";
 "tasks.form.reset_counter" = "Réinitialiser le Compteur";
 "tasks.form.adjust_counter" = "Ajuster le Compteur";
-"next_prize_in_x_checkins" = "Prochain prix dans %d enregistrements";
+"next_prize_in_x_checkins" = "Prochaine récompense au %d jour !";
 "tasks.form.none" = "Aucun";
 "scheduled" = "Planifiées";
 "not_due" = "Non Échues";
@@ -1372,7 +1372,7 @@
 "armoire.equipment_remaining" = "Équipement restant : %d";
 "sale_ends_in" = "La vente se termine dans %@";
 "next_checkin_prize_in_x_days" = "Votre prochaine récompense sera débloquée dans %d connexions";
-"next_prize_at_x_checkins" = "Prochaine récompense dans %d connexions";
+"next_prize_at_x_checkins" = "Prochaine récompense au %d jour !";
 "one_item_found" = "1 objet en attente";
 "ban_user" = "Bannir l'Utilisateur";
 "unban_user" = "Débannir l'Utilisateur";
@@ -1588,7 +1588,7 @@
 "settings.privacy_preferences" = "Préférences de Confidentialité";
 "settings.manage_privacy_preferences" = "Changer vos paramètres de confidentialité";
 "your_privacy_preferences" = "Vos Préférences de Confidentialité";
-"privacy_preferences_sheet_description" = "Habitica utilise des données de votre appareil pour une analyse des performances, la gestion des requêtes sur le support, et pour vous proposer la meilleure expérience de jeu possible. Pour cela, nous avons besoin de quelques autorisations.\n\nVous pouvez changer vos paramètres à tout moment. Pour en savoir plus, consultez notre [Politique de Confidentialité](https://habitica.com/static/privacy).";
+"privacy_preferences_sheet_description" = "Votre confidentialité nous importe. Habitica utilise des données de votre appareil pour une analyse des performances, la gestion des requêtes sur le support, et pour vous proposer la meilleure expérience de jeu possible. Pour cela, nous avons besoin de quelques autorisations.\n\nVous pouvez changer vos paramètres à tout moment. Pour en savoir plus, consultez notre [Politique de Confidentialité](https://habitica.com/static/privacy).";
 "performance_analytics" = "Performance et Analyses";
 "strictly_necessary" = "Strict nécessaire";
 "strictly_necessary_description" = "Ce sont les données nécessaires requises pour le bon fonctionnement de notre application. Ces données sont celles liées à vos préférences enregistrées dans vos paramètres, ainsi que des informations en cas d'arrêt inopiné de l'application.";
@@ -1649,3 +1649,14 @@
 "not_now" = "Pas tout de suite";
 "undo" = "Annuler";
 "assigned_stat" = "Attribut Assigné";
+"empty.messages" = "Vous n'avez pas de messages";
+"empty.challenges" = "Vous ne participez à aucun Défi";
+"empty.challenges_description" = "Parcourez la section \"Découvrir\" afin de trouver des Défis thématiques créés par d'autres joueu·r·se·s et y participer. C'est une chouette façon de remplir votre liste de Tâches !";
+"empty.messages_description" = "Envoyez un message pour commencer une discussion avec un·e membre de votre Équipe ou un·e autre joueu·r·se Habitica";
+"glossary" = "Glossaire";
+"purchased_amount" = "Vous avez acheté %d %@";
+"gift_gems_alert_text" = "À quel compte souhaitez-vous envoyer votre cadeau ?";
+"hatch_pet_new_title" = "Faire éclore un nouveau Familier";
+"fcv_streak_explanation" = "Vous pouvez restaurer vos combos sur des tâches individuelles en cliquant dessus pour les éditer";
+"checkin_prize_set_description" = "Vous avez obtenu un ensemble de %s grâce à vos efforts pour rendre votre vie meilleur";
+"next_prize_in_1_checkin" = "Prochaine récompense dans 1 jour !";

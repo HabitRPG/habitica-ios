@@ -33,7 +33,7 @@ class FixCharacterViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = L10n.Titles.fixValues
+        title = L10n.Titles.fixValues
         
         headerLabel.text = L10n.Settings.fixValuesDescription
         headerLabel.font = .systemFont(ofSize: 15)
@@ -87,6 +87,8 @@ class FixCharacterViewController: BaseTableViewController {
         headerView.backgroundColor = theme.contentBackgroundColor
         tableView.backgroundColor = theme.contentBackgroundColor
         headerLabel.textColor = theme.primaryTextColor
+        navigationItem.rightBarButtonItem?.tintColor = theme.fixedTintColor
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.primaryTextColor]
     }
     
     private func identifierFor(index: Int) -> String {
@@ -118,12 +120,25 @@ class FixCharacterViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
+        cell.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         if let titleLabel = cell.viewWithTag(1) as? UILabel,
             let iconView = cell.viewWithTag(3) as? UIImageView,
             let valueField = cell.viewWithTag(2) as? UITextField {
             configure(item: indexPath.item, titleLabel: titleLabel, iconView: iconView, valueField: valueField)
             valueField.textColor = ThemeService.shared.theme.primaryTextColor
+            let bottomLabel = cell.viewWithTag(5) as? UILabel
+            let spacing = view.constraints.first { constraint in
+                return constraint.identifier == "extraDescriptionSpacing"
+            }
+            if indexPath.item == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+                bottomLabel?.text = L10n.fcvStreakExplanation
+                bottomLabel?.textColor = ThemeService.shared.theme.ternaryTextColor
+                bottomLabel?.font = .preferredFont(forTextStyle: .subheadline)
+                spacing?.constant = 8
+            } else {
+                bottomLabel?.text = nil
+                spacing?.constant = 2
+            }
         }
         if let wrapper = cell.viewWithTag(4) {
             wrapper.borderWidth = 0
@@ -143,30 +158,31 @@ class FixCharacterViewController: BaseTableViewController {
             valueField.text = "\(floatValue)"
             valueField.keyboardType = .decimalPad
         }
+        let isDark = ThemeService.shared.theme.isDark
         switch item {
         case 0:
             titleLabel.text = L10n.health
-            titleLabel.textColor = UIColor.red10
+            titleLabel.textColor = isDark ? .red500 : .red10
             iconView.image = HabiticaIcons.imageOfHeartLightBg
             return
         case 1:
             titleLabel.text = L10n.experience
-            titleLabel.textColor = UIColor.yellow10
+            titleLabel.textColor = isDark ? .yellow500 : .yellow10
             iconView.image = HabiticaIcons.imageOfExperience
             return
         case 2:
             titleLabel.text = L10n.manaPoints
-            titleLabel.textColor = UIColor.blue10
+            titleLabel.textColor = isDark ? .blue500 : .blue10
             iconView.image = HabiticaIcons.imageOfMagic
             return
         case 3:
             titleLabel.text = L10n.gold
-            titleLabel.textColor = UIColor.yellow10
+            titleLabel.textColor = isDark ? .orange500 : .yellow10
             iconView.image = HabiticaIcons.imageOfGold
             return
         case 4:
             titleLabel.text = L10n.characterLevel
-            titleLabel.textColor = UIColor.purple300
+            titleLabel.textColor = isDark ? .purple500 : .purple300
             configure(iconView: iconView, forHabitClass: habitClass)
             return
         case 5:

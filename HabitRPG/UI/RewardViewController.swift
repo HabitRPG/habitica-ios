@@ -127,11 +127,7 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
             }
             let sheet = HostingBottomSheetController(rootView: BuySheet(item: item),
                                                      prefersGrabberVisible: false)
-            if let tabbarController = self.tabBarController {
-                tabbarController.present(sheet, animated: true, completion: nil)
-            } else {
-                present(sheet, animated: true, completion: nil)
-            }
+            sheet.show()
         }
     }
     

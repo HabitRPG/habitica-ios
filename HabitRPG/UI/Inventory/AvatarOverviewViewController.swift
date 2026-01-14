@@ -47,7 +47,6 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
         topHeaderCoordinator?.hideNavBar = false
         topHeaderCoordinator?.alternativeHeader = headerView
         topHeaderCoordinator?.followScrollView = false
-        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
         
         setupItemViews()
         
@@ -71,7 +70,6 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
     }
     
     override func populateText() {
-        navigationItem.title = L10n.Titles.avatar
         bodySizeLabel.text = L10n.bodySize
         bodySizeControl.setTitle(L10n.slim, forSegmentAt: 0)
         bodySizeControl.setTitle(L10n.broad, forSegmentAt: 1)

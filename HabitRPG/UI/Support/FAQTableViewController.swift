@@ -135,7 +135,7 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
             stackView.titleView?.subtitleFont = UIFontMetrics.default.scaledSystemFont(ofSize: 17)
             stackView.titleView?.icon = entry["icon"] as? UIImage
             stackView.titleView?.showCarret = false
-            stackView.titleView?.insets = UIEdgeInsets(top: 16, left: 8, bottom: 16, right: 8)
+            stackView.titleView?.insets = UIEdgeInsets(top: 20, left: 8, bottom: 20, right: 8)
             stackView.cornerRadius = UIConstants.largeCornerRadius
             stackView.showSeparators = false
             stackView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
@@ -200,7 +200,7 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
             ["title": L10n.manaPoints, "subtitle": "MP", "icon": HabiticaIcons.imageOfMagic, "text": L10n.manaDescription, "color": isDark ? UIColor.blue500 : UIColor.blue10],
             ["title": L10n.gold, "subtitle": L10n.currency, "icon": HabiticaIcons.imageOfGoldReward, "text": L10n.goldDescription, "color": isDark ? UIColor.orange500 : UIColor.orange10],
             ["title": L10n.gems, "subtitle": L10n.premiumCurrency, "icon": HabiticaIcons.imageOfGem, "text": L10n.gemsDescription, "color": isDark ? UIColor.green500 : UIColor.green10],
-            ["title": L10n.mysticHourglasses, "subtitle": L10n.premiumCurrency, "icon": HabiticaIcons.imageOfHourglass, "text": L10n.hourglassesDescription, "color": isDark ? UIColor.purple500 : UIColor.purple300],
+            ["title": L10n.mysticHourglasses, "subtitle": L10n.subscriberCurrency, "icon": HabiticaIcons.imageOfHourglass, "text": L10n.hourglassesDescription, "color": isDark ? UIColor.purple500 : UIColor.purple300],
             ["title": L10n.statAllocation, "subtitle": "STR, CON, INT, PER", "icon": HabiticaIcons.imageOfStats, "text": L10n.statDescription, "color": isDark ? UIColor.orange100 : UIColor.orange1]
         ]
     }

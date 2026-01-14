@@ -247,7 +247,7 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
             self?.dataSource.filterState = newState
             self?.dataSource.updatePredicate()
         }))
-        present(sheet, animated: true)
+        sheet.show()
     }
     
     @IBAction func addChallengeAction(_ sender: Any) {

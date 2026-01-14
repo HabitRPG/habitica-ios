@@ -1037,7 +1037,7 @@ class SettingsViewController: FormViewController, Themeable {
         let sheet = HostingBottomSheetController(rootView: PauseDamageView(isPaused: isPaused, tappedButton: {
             self.userRepository.sleep().observeCompleted {}
         }))
-        present(sheet, animated: true)
+        sheet.show()
     }
 }
 

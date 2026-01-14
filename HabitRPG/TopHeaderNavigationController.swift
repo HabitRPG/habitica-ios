@@ -134,9 +134,9 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         }
         // iphones with dynamic island need this for some reason
         if statusBarHeight == 59 || statusBarHeight == 62 {
-            return topHeaderHeight + 10
+            return topHeaderHeight + 22
         }
-        return self.topHeaderHeight
+        return self.topHeaderHeight + 12
    }
     
      @objc public var contentOffset: CGFloat {
@@ -220,7 +220,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
             }
         }
         
-        if let scrollView = currentHeaderCoordinator?.scrollView {
+        if let scrollView = currentHeaderCoordinator?.scrollView, currentHeaderCoordinator?.followScrollView == true {
             if scrollView.contentInset.top != contentInset {
                 let existingInsets = scrollView.contentInset
                 var insets = UIEdgeInsets(top: contentInset, left: 0, bottom: 0, right: 0)

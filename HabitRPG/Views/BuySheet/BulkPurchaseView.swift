@@ -16,6 +16,7 @@ struct PlusMinusStepperView<Icon: View>: View {
     let icon: Icon
     var isActive: Bool = true
     var minAmount = 1
+    var maxAmount: Int?
     
     private var textProxy: Binding<String> {
         Binding<String>(get: { String(self.amount) }, set: {
@@ -40,6 +41,7 @@ struct PlusMinusStepperView<Icon: View>: View {
                 })
                 .fixedSize(horizontal: true, vertical: false)
                 .keyboardType(.numberPad)
+                .keyboardDismissMode(.interactive)
                     .contentTransition(.numericText())
                     .scaledFont(size: 22, weight: .bold)
                     .foregroundStyle(Color(isActive ? themeService.theme.primaryTextColor : themeService.theme.ternaryTextColor))
@@ -56,7 +58,7 @@ struct PlusMinusStepperView<Icon: View>: View {
             } label: {
                 Image(systemName: "plus")
                     .scaledFont(size: 22, weight: .semibold)
-            }.disabled(!isActive)
+            }.disabled((amount >= (maxAmount ?? .max)) || !isActive)
         }
     }
 }

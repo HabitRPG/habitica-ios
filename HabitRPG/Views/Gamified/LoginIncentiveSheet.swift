@@ -12,29 +12,35 @@ struct LoginIncentiveSheet: View {
     @ObservedObject var themeService = ThemeService.shared
     @Environment(\.presentationManager) var presentationManager
     
+    let key: String
     let imageName: String
     let text: String
     let nextUnlockIn: Int
     
     var body: some View {
         GamifiedBottomSheet(upperBackgroundColor: .blue100, upperContent: VStack(spacing: 0) {
-            FanfareContainer(haloColor: .blue500, circleColor: Color(themeService.theme.contentBackgroundColor), outerRingColor: .blue500, plusColor: .blue10) {
+            FanfareContainer(haloColor: .blue500, outerRingColor: .blue500, plusColor: .blue10) {
                 PixelArtView(name: imageName)
             }
             Text(L10n.unlockedAnotherCheckinPrize)
                 .foregroundStyle(.blue1)
                 .scaledFont(size: 22, weight: .bold)
-                .padding(.horizontal, 40)
+                .padding(.horizontal, 50)
+                .fixedSize(horizontal: false, vertical: true)
         }, title: Text(text), description: VStack {
-            Text(L10n.checkinPrizeEarned(text))
+            if key == "background_purple" {
+                Text(L10n.checkinPrizeSetDescription(text))
+            } else {
+                Text(L10n.checkinPrizeDescription(text))
+            }
             if nextUnlockIn > 0 {
-                Text(L10n.nextPrizeInXCheckins(nextUnlockIn))
-                    .scaledFont(size: 15)
-                    .foregroundStyle(Color.blue10)
+                Text(nextUnlockIn == 1 ? L10n.nextPrizeIn1Checkin : L10n.nextPrizeInXCheckins(nextUnlockIn))
+                    .scaledFont(size: 15, weight: .semibold)
+                    .foregroundStyle(themeService.theme.isDark ? Color.blue500 : Color.blue10)
                     .padding(.top, 20)
             }
         }) {
-            HabiticaButtonUI(label: Text(L10n.seeYouTomorrow), color: Color(themeService.theme.tintColor)) {
+            HabiticaButtonUI(label: Text(L10n.seeYouTomorrow), color: Color(themeService.theme.fixedTintColor)) {
                 presentationManager.dismiss()
             }
         }
@@ -42,5 +48,5 @@ struct LoginIncentiveSheet: View {
 }
 
 #Preview {
-    LoginIncentiveSheet(imageName: "", text: "Royal Purple Hatching Potion", nextUnlockIn: 5)
+    LoginIncentiveSheet(key: "", imageName: "", text: "Royal Purple Hatching Potion", nextUnlockIn: 5)
 }

@@ -159,7 +159,7 @@ extension GamifiedBottomSheet where Title == EmptyView {
         Text("Background")
     }.sheet(isPresented: .constant(true)) {
         GamifiedBottomSheet(upperBackgroundColor: .yellow100, upperContent: VStack(spacing: 0) {
-            FanfareContainer(haloColor: .yellow500, circleColor: .white, outerRingColor: .yellow500, plusColor: .yellow10) {
+            FanfareContainer(haloColor: .yellow500, outerRingColor: .yellow500, plusColor: .yellow10) {
                 PixelArtView(name: "achievement-alien2x")
                     .frame(width: 56, height: 56)
             }

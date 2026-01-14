@@ -77,13 +77,13 @@
 "stats.character_build_text" = "Each level earns you one point to assign to an attribute of your choice. You can do so manually, or let the game decide for you using one of the Automatic Allocation options.";
 "stats.stat_guide" = "Stat guide";
 "stats.strength_title" = "Strength";
-"stats.strength_text" = "Increases the bonus of critical hits and makes them more likely when scoring a task. Also increases damage dealt to bosses.";
+"stats.strength_text" = "Increases critical hit chance and damage when scoring tasks. Also increases damage dealt to Quest bosses.";
 "stats.intelligence_title" = "Intelligence";
-"stats.intelligence_text" = "Increases EXP earned from completing tasks. Also increases your mana cap and how fast mana regenerates over time.";
+"stats.intelligence_text" = "Increases Experience earned from tasks. Also increases your Mana cap and Mana regeneration rate.";
 "stats.constitution_title" = "Constitution";
-"stats.constitution_text" = "Decreases the amount of damage taken from your tasks. Does not decrease the damage received from bosses.";
+"stats.constitution_text" = "Reduces damage taken from missed Dailies and negative Habits. Does not reduce damage from Quest bosses.";
 "stats.perception_title" = "Perception";
-"stats.perception_text" = "Increases the likelihood of finding drops when completing Tasks, the daily drop-cap, Streak Bonuses, and the amount of gold awarded for Tasks.";
+"stats.perception_text" = "Increases item drop chance, daily item drop cap, task streak bonuses, and Gold earned when completing tasks.";
 "controls" = "Controls";
 "difficulty" = "Difficulty";
 "resetStreak" = "Reset Streak";
@@ -391,7 +391,7 @@
 "settings.privacy_preferences" = "Privacy Preferences";
 "settings.manage_privacy_preferences" = "Change your privacy permissions";
 "your_privacy_preferences" = "Your Privacy Preferences";
-"privacy_preferences_sheet_description" = "Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\nYou can change this at any time. To learn more, review our [Privacy Policy](https://habitica.com/static/privacy).";
+"privacy_preferences_sheet_description" = "Your privacy is important to us. Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\nYou can change this at any time. To learn more, review our [Privacy Policy](https://habitica.com/static/privacy).";
 "privacy_preferences_full_description" = "Your privacy is important to us. Habitica uses data from your device to analyze performance, handle support requests, and provide you with the best possible gamified experience. To do that, we need to request the following permissions.\n\nYou can change these at any time from your account settings.";
 "performance_analytics" = "Performance & Analytics";
 "performance_analytics_description" = "This is used to improve the player experience, performance, and services of Habitica. Our support team will also use this when handling requests and bug reports.";
@@ -908,7 +908,7 @@
 "world_boss.rage_strike_explanation" = "There are 3 potential Rage Strikes\nThis gauge fills when Habiticans miss their Dailies. If it fills up, the DysHeartener will unleash its Shattering Heartbreak attack on one of Habitica's shopkeepers, so be sure to do your tasks!";
 "buffs" = "Buffs";
 "allocated" = "Allocated";
-"checkin_yesterdays_dalies" = "Check off any Dailies you did yesterday:";
+"checkin_yesterdays_dalies" = "Check off any Dailies you did yesterday before starting today:";
 "start_my_day" = "Start my day";
 "gems" = "Gems";
 "teleporting_habitica" = "Teleporting to Habitica";
@@ -962,6 +962,7 @@
 "unlockDropsTitle" = "You unlocked the drop system!";
 "unlocked_another_checkin_prize" = "You unlocked another check-in prize!";
 "checkin_prize_description" = "You earned a %s for being committed to improving your life";
+"checkin_prize_set_description" = "You earned a set of %s for being committed to improving your life";
 "unlockDropsDescription" = "You've unlocked the Drop System! Now when you complete tasks, you have a small chance of finding an item, including eggs, potions, and food!";
 "leave_challenge" = "Leave Challenge";
 "join_challenge" = "Join Challenge";
@@ -1047,8 +1048,9 @@
 "next_checkin_prize_1_day" = "Your next prize unlocks in 1 Check-In";
 "next_checkin_prize_x_days" = "Your next prize unlocks at %d Check-Ins";
 "next_checkin_prize_in_x_days" = "Your next prize unlocks in %d Check-Ins";
-"next_prize_at_x_checkins" = "Next prize at %d Check-Ins";
-"next_prize_in_x_checkins" = "Next prize in %d Check-Ins";
+"next_prize_at_x_checkins" = "Next prize at %d days!";
+"next_prize_in_x_checkins" = "Next prize in %d days!";
+"next_prize_in_1_checkin" = "Next prize in 1 day!";
 "checkin_prize_earned" = "You earned a %@ as a reward for your devotion to improving your life.";
 "recipient" = "Recipient";
 "invalid_recipient_message" = "You have to specify a valid Habitica Username as recipient.";
@@ -1075,6 +1077,7 @@
 "shops.try_on_equipment" = "You can try them on from Equipment. New stock comes in at the beginning of each month!";
 "shops.customizing_your_avatar" = "customizing your avatar";
 "purchased" = "You purchased %@";
+"purchased_amount" = "You purchased %d %@";
 "buy_reward" = "You bought '%@' for %@ gold";
 "notifications.unallocated_stat_points" = "You have **%d unallocated Stat Points**";
 "notifications.new_bailey" = "New Bailey Update!";
@@ -1125,7 +1128,8 @@
 "add" = "Add";
 "onwards" = "Onwards";
 "chat_with_question" = "Who would you like to chat with?";
-"gift_gems_alert_title" = "Who would you like to send your gift to?";
+"gift_gems_alert_title" = "Git Gems";
+"gift_gems_alert_text" = "What account would you like to send your gift to?";
 "gift_gems_alert_prompt" = "Enter recipient's @username";
 "gift_gems_disclaimer" = "Habitica will never require you to gift gems to other players. Begging people for gems is a violation of the Community Guidelines and should be reported to admin@habitica.com.";
 "gift_gems_explanation_purchase" = "Choose how many Gems to gift below or switch tabs to gift Gems from your current balance";
@@ -1133,7 +1137,7 @@
 "gift_sent_confirmation" = "Your gift was sent!";
 "gift_sent_to" = "You sent %@:";
 "complete_more_tasks" = "You need to complete more tasks before you can afford this item!";
-"more_gems_message" = "You’ll need more Gems to buy this item!";
+"more_gems_message" = "You’ll need more Gems to buy this";
 "insufficient_hourglasses_message" = "You’ll need more Mystic Hourglasses to buy this item! Hourglasses are rewarded for being subscribed for consecutive months.";
 "insufficient_hourglasses_message_subscriber" = "You’ll need more Mystic Hourglasses to buy this item! Stay Subscribed to keep receiving your Hourglasses.";
 "learn_more" = "Learn More";
@@ -1189,6 +1193,7 @@
 "create_task_title" = "Create a Task";
 "complete_task_title" = "Complete a Task";
 "hatch_pet_title" = "Hatch a Pet";
+"hatch_pet_new_title" = "Hatch a new Pet";
 "feedPet_title" = "Feed a Pet";
 "hundred_gold" = "100 Gold";
 "five_achievements" = "5 Achievements";
@@ -1500,3 +1505,5 @@
 "undo" = "Undo";
 "assigned_stat" = "Assigned Stat";
 "glossary" = "Glossary";
+
+"fcv_streak_explanation" = "You can restore streaks on individual tasks by tapping them to open the edit view";
