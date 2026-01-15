@@ -34,7 +34,9 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         if topHeaderCoordinator?.alternativeHeader == nil {
             topHeaderCoordinator?.alternativeHeader = headerView
         }
-        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
+        if #unavailable(iOS 26.0) {
+            topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
+        }
         topHeaderCoordinator?.followScrollView = false
                 
         if let type = customizationType {
@@ -68,6 +70,9 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         super.applyTheme(theme: theme)
         collectionView.backgroundColor = theme.contentBackgroundColor
         collectionView.layer.cornerRadius = 22
+        if #unavailable(iOS 26.0) {
+            topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

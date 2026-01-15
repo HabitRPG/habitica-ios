@@ -72,15 +72,21 @@ class AvatarHeaderView: UIView, Themeable {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        avatarContainer.pin.width(142).height(149).top(-22).hCenter()
-        avatarWrapper.pin.width(134).height(141).top(4).hCenter()
-        avatarView.pin.width(140).height(147).center()
-        let csize = UIConstants.largeCornerRadius
-        roundingWrapper.pin.width(bounds.width).height(csize).bottom(-csize)
-        backBlockLeft.pin.size(csize - 2).top().start()
-        roundBlockLeft.pin.size(csize).top().start()
-        backBlockRight.pin.size(csize - 3).top().end()
-        roundBlockRight.pin.size(csize).top().end()
+        if #available(iOS 26.0, *) {
+            avatarContainer.pin.width(142).height(149).top(-22).hCenter()
+            avatarWrapper.pin.width(134).height(141).top(4).hCenter()
+            avatarView.pin.width(140).height(147).center()
+        } else {
+            avatarContainer.pin.width(140).height(147).top(0).hCenter()
+            avatarWrapper.pin.width(140).height(147).top().hCenter()
+            avatarView.pin.width(140).height(147).center()
+            let csize = UIConstants.largeCornerRadius
+            roundingWrapper.pin.width(bounds.width).height(csize).bottom(-csize)
+            backBlockLeft.pin.size(csize - 2).top().start()
+            roundBlockLeft.pin.size(csize).top().start()
+            backBlockRight.pin.size(csize - 3).top().end()
+            roundBlockRight.pin.size(csize).top().end()
+        }
     }
     
     func setAvatar(avatar: AvatarProtocol) {
@@ -91,7 +97,7 @@ class AvatarHeaderView: UIView, Themeable {
         if #available(iOS 26.0, *) {
             return CGSize(width: UIScreen.main.bounds.size.width, height: 127)
         } else {
-            return CGSize(width: UIScreen.main.bounds.size.width, height: 140)
+            return CGSize(width: UIScreen.main.bounds.size.width, height: 158)
         }
     }
 }

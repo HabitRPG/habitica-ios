@@ -46,7 +46,9 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
         }
         topHeaderCoordinator?.hideNavBar = false
         topHeaderCoordinator?.alternativeHeader = headerView
-        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
+        if #unavailable(iOS 26.0) {
+            topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
+        }
         topHeaderCoordinator?.followScrollView = false
         
         setupItemViews()
@@ -67,7 +69,9 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
         } else {
             containerview.backgroundColor = theme.offsetBackgroundColor
         }
-        topHeaderCoordinator?.navbarVisibleColor = theme.windowBackgroundColor
+        if #unavailable(iOS 26.0) {
+            topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
+        }
     }
     
     override func populateText() {
