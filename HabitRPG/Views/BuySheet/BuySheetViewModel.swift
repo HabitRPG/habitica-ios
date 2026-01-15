@@ -353,27 +353,11 @@ class BuySheetViewModel: ViewModel {
         }
     }
     
-    static func displayInsufficientGemsModal(reward: InAppRewardProtocol? = nil, reason: String = "purchase modal", delayDisplay: Bool = true) {
+    static func displayInsufficientGemsModal(reward: InAppRewardProtocol? = nil, reason: String = "purchase modal") {
         HabiticaAnalytics.shared.log("show insufficient gems modal", withEventProperties: ["reason": "purchase modal", "item": reward?.key ?? ""])
-        let sheet = InsufficientCurrencySheet(backgroundColor: .purple400,
-                                              circleColor: .purple100,
-                                              ringColor: .purple300,
-                                              plusColor: .purple500,
-                                              icon: Image(Asset.insufficientGems.name),
-                                              title: Text(L10n.moreGemsMessage),
-                                              content: Text(L10n.gemsSupportDevelopers)) {
-            HabiticaButtonUI(label: Text(L10n.purchaseGems), color: Color(ThemeService.shared.theme.tintColor)) {
-                RouterHandler.shared.handle(.purchaseGems)
-            }
-        }
+        let sheet = InsufficientGemsSheet()
         let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
-        if delayDisplay {
-            DispatchQueue.main.asyncAfter(deadline: .now()) {
-                viewController.show()
-            }
-        } else {
-            viewController.show()
-        }
+        viewController.show(immediately: true)
     }
     
     static func displayInsufficientGoldModal() {
@@ -386,26 +370,13 @@ class BuySheetViewModel: ViewModel {
                                               content: Text(L10n.completeMoreTasks)) {
         }
         let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            viewController.show()
-        }
+        viewController.show(immediately: true)
     }
     
     static func displayInsufficientHourglassesModal(user: UserProtocol?) {
-        let isSubscribed = user?.isSubscribed == true
-        let sheet = InsufficientCurrencySheet(backgroundColor: .blue100,
-                                              circleColor: Color(ThemeService.shared.theme.contentBackgroundColor),
-                                              ringColor: .blue500,
-                                              plusColor: .blue10,
-                                              icon: Image(Asset.insufficientHourglasses.name),
-                                              title: Text(L10n.notEnoughHourglasses),
-                                              content: Text(isSubscribed ? L10n.insufficientHourglassesMessageSubscriber : L10n.insufficientHourglassesMessage)) {
-            HabiticaButtonUI(label: Text(L10n.learnMore), color: Color(ThemeService.shared.theme.tintColor)) {
-                RouterHandler.shared.handle(.subscription)
-            }
-        }
+        let sheet = InsufficientHourglassesSheet(isSubscribed: user?.isSubscribed == true)
         let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
-            viewController.show()
+        viewController.show(immediately: true)
     }
     
     static func displayGemCapReachedModal() {

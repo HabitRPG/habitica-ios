@@ -88,7 +88,12 @@ class EquipmentOverviewView: UIView {
     }
     
     private func layout() {
-        let sidePadding: CGFloat = traitCollection.isIPadFullSize ? 16 : 8
+        let sidePadding: CGFloat
+        if #available(iOS 26.0, *) {
+            sidePadding = traitCollection.isIPadFullSize ? 16 : 8
+        } else {
+            sidePadding = UIConstants.largeCornerRadius
+        }
         let itemWidth = (bounds.size.width - (5*8) - (2*sidePadding)) / 4
         let itemHeight = itemWidth+36
         containerView.pin.top(54).start(sidePadding).end(sidePadding).height(itemHeight*2+(3*8))

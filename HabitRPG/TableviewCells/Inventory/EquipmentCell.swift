@@ -30,8 +30,8 @@ class EquipmentCell: UITableViewCell {
                 backgroundColor = ThemeService.shared.theme.tintColor.withAlphaComponent(0.1)
                 gearImageView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
             } else {
-                backgroundColor = ThemeService.shared.theme.contentBackgroundColor
-                gearImageView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                gearImageView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
 
             }
         }
@@ -42,7 +42,7 @@ class EquipmentCell: UITableViewCell {
         twoHandedIconView.image = HabiticaIcons.imageOfTwoHandedIcon
         twoHandedLabel.text = L10n.twoHanded
         noBenefitsLabel.text = L10n.noBenefit
-        gearImageView.cornerRadius = 26
+        gearImageView.cornerRadius = UIConstants.largeCornerRadius
     }
     
     func configure(_ gear: GearProtocol) {

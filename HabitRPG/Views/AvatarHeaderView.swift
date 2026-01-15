@@ -44,12 +44,12 @@ class AvatarHeaderView: UIView, Themeable {
         roundingWrapper.clipsToBounds = true
         addSubview(roundingWrapper)
         roundingWrapper.addSubview(backBlockLeft)
-        roundBlockLeft.cornerRadius = 26
+        roundBlockLeft.cornerRadius = UIConstants.largeCornerRadius
         roundBlockLeft.layer.maskedCorners = [.layerMinXMinYCorner]
         roundingWrapper.addSubview(roundBlockLeft)
         
         roundingWrapper.addSubview(backBlockRight)
-        roundBlockRight.cornerRadius = 26
+        roundBlockRight.cornerRadius = UIConstants.largeCornerRadius
         roundBlockRight.layer.maskedCorners = [.layerMaxXMinYCorner]
         roundingWrapper.addSubview(roundBlockRight)
     }
@@ -75,11 +75,12 @@ class AvatarHeaderView: UIView, Themeable {
         avatarContainer.pin.width(142).height(149).top(-22).hCenter()
         avatarWrapper.pin.width(134).height(141).top(4).hCenter()
         avatarView.pin.width(140).height(147).center()
-        roundingWrapper.pin.width(bounds.width).height(22).bottom(-22)
-        backBlockLeft.pin.size(22).top().start()
-        roundBlockLeft.pin.size(44).top().start()
-        backBlockRight.pin.size(22).top().end()
-        roundBlockRight.pin.size(44).top().end()
+        let csize = UIConstants.largeCornerRadius
+        roundingWrapper.pin.width(bounds.width).height(csize).bottom(-csize)
+        backBlockLeft.pin.size(csize - 2).top().start()
+        roundBlockLeft.pin.size(csize).top().start()
+        backBlockRight.pin.size(csize - 3).top().end()
+        roundBlockRight.pin.size(csize).top().end()
     }
     
     func setAvatar(avatar: AvatarProtocol) {

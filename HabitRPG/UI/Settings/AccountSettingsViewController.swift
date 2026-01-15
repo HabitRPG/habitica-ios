@@ -562,7 +562,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         textField.borderStyle = .roundedRect
         textField.keyboardType = .emailAddress
         textField.autocapitalizationType = .none
-        textField.cornerRadius = 26
+        textField.cornerRadius = UIConstants.largeCornerRadius
         stackView.addArrangedSubview(textField)
         alertController.contentView = stackView
         

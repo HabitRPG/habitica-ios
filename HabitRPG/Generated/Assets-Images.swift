@@ -279,6 +279,7 @@ internal enum Asset {
   internal static let rageStrikeActive = ImageAsset(name: "rage_strike_active")
   internal static let rageStrikePending = ImageAsset(name: "rage_strike_pending")
   internal static let reminder = ImageAsset(name: "reminder")
+  internal static let rewardPlainBackgrounds = ImageAsset(name: "reward_plain_backgrounds")
   internal static let searchIcon = ImageAsset(name: "search_icon")
   internal static let shopSeparatorSparkle = ImageAsset(name: "shop_separator_sparkle")
   internal static let sparkleStarsLeft = ImageAsset(name: "sparkleStarsLeft")

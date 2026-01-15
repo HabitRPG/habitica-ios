@@ -10,7 +10,8 @@ import SwiftUI
 
 struct LoginIncentiveSheet: View {
     @ObservedObject var themeService = ThemeService.shared
-    @Environment(\.presentationManager) var presentationManager
+    @Environment(\.presentationManager)
+    var presentationManager
     
     let key: String
     let imageName: String
@@ -20,7 +21,11 @@ struct LoginIncentiveSheet: View {
     var body: some View {
         GamifiedBottomSheet(upperBackgroundColor: .blue100, upperContent: VStack(spacing: 0) {
             FanfareContainer(haloColor: .blue500, outerRingColor: .blue500, plusColor: .blue10) {
-                PixelArtView(name: imageName)
+                if imageName == "background_purple" {
+                    Image(Asset.rewardPlainBackgrounds.name)
+                } else {
+                    PixelArtView(name: imageName)
+                }
             }
             Text(L10n.unlockedAnotherCheckinPrize)
                 .foregroundStyle(.blue1)

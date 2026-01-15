@@ -420,6 +420,12 @@ class RouterHandler {
             while presenter.isPresenting, let presented = presenter.presentedViewController {
                 presenter = presented
             }
+            if presenter.isBeingDismissed {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.present(viewController)
+                }
+                return
+            }
             presenter.present(viewController, animated: true, completion: nil)
         } else {
             loadingController?.loadingFinishedAction = {[weak self] in

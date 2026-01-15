@@ -91,7 +91,7 @@ class PromoBannerView: UIView {
         
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(wasTapped)))
         
-        cornerRadius = 26
+        cornerRadius = UIConstants.largeCornerRadius
         layer.masksToBounds = true
     }
     

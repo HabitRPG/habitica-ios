@@ -710,6 +710,8 @@ public enum L10n {
   public static var limitedEdition: String { return L10n.tr("Mainstrings", "limited_edition") }
   /// Limited Event
   public static var limitedEvent: String { return L10n.tr("Mainstrings", "limited_event") }
+  /// Loading
+  public static var loading: String { return L10n.tr("Mainstrings", "loading") }
   /// Logins
   public static var logins: String { return L10n.tr("Mainstrings", "logins") }
   /// Magic Potion
@@ -750,7 +752,9 @@ public enum L10n {
   public static var monthlyGemCapReached: String { return L10n.tr("Mainstrings", "monthly_gem_cap_reached") }
   /// months
   public static var months: String { return L10n.tr("Mainstrings", "months") }
-  /// You’ll need more Gems to buy this item!
+  /// More Gem packs
+  public static var moreGemPacks: String { return L10n.tr("Mainstrings", "more_gem_packs") }
+  /// You’ll need more Gems to buy this
   public static var moreGemsMessage: String { return L10n.tr("Mainstrings", "more_gems_message") }
   /// Report a Bug
   public static var moreHelpButton: String { return L10n.tr("Mainstrings", "more_help_button") }
@@ -1481,6 +1485,10 @@ public enum L10n {
   /// %d Gems
   public static func xGems(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "x_gems", p1)
+  }
+  /// %d Gems for %s
+  public static func xGemsForY(_ p1: Int, _ p2: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "x_gems_for_y", p1, p2)
   }
   /// %d gems a month
   public static func xGemsMonth(_ p1: Int) -> String {

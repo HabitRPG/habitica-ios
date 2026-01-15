@@ -971,7 +971,7 @@ class SettingsViewController: FormViewController, Themeable {
             
             alertController.addAction(title: L10n.Settings.changeClass, isMainAction: true) { _ in
                 if user.gemCount < changeClassCosts {
-                    BuySheetViewModel.displayInsufficientGemsModal(reason: "class change", delayDisplay: false)
+                    BuySheetViewModel.displayInsufficientGemsModal(reason: "class change")
                     return
                 }
                 _ = UserManager.shared.showClassSelection(user: user)

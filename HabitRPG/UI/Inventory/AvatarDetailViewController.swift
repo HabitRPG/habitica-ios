@@ -34,6 +34,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         if topHeaderCoordinator?.alternativeHeader == nil {
             topHeaderCoordinator?.alternativeHeader = headerView
         }
+        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
         topHeaderCoordinator?.followScrollView = false
                 
         if let type = customizationType {
@@ -149,9 +150,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
                 Image(uiImage: HabiticaIcons.imageOfGem)
             }) {[weak self] in
                 if self?.customizationDataSource?.canAfford(price: customization.price) != true {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
-                        BuySheetViewModel.displayInsufficientGemsModal(reason: "customization", delayDisplay: false)
-                    })
+                    BuySheetViewModel.displayInsufficientGemsModal(reason: "customization")
                     return
                 }
                 self?.customizationRepository.unlock(customization: customization, value: customization.price).observeCompleted {}
@@ -194,9 +193,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
                 Image(uiImage: HabiticaIcons.imageOfGem)
             }) {[weak self] in
                 if self?.customizationDataSource?.canAfford(price: customizationSet.setPrice) != true {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
-                        BuySheetViewModel.displayInsufficientGemsModal(reason: "customization", delayDisplay: false)
-                    })
+                    BuySheetViewModel.displayInsufficientGemsModal(reason: "customization")
                     return
                 }
                 self?.customizationRepository.unlock(customizationSet: customizationSet, value: customizationSet.setPrice).observeCompleted {}

@@ -280,6 +280,7 @@ class MainMenuViewController: BaseTableViewController {
     private static let subscriptionFooterTag = 11111
     
     fileprivate func setupFooter() {
+        stretchView.isHidden = true
         if configRepository.bool(variable: .showSubscriptionBanner) {
             if tableView.tableFooterView?.tag == MainMenuViewController.subscriptionFooterTag {
                 return
@@ -296,6 +297,7 @@ class MainMenuViewController: BaseTableViewController {
                 }
                 let view = PromoMenuView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 168))
                 promo.configurePromoMenuView(view: view)
+                stretchView.isHidden = false
                 stretchView.startColor = promo.gradientStart ?? promo.backgroundColor
                 stretchView.endColor = promo.gradientEnd ?? promo.backgroundColor
                 stretchView.diagonalMode = true
@@ -315,6 +317,7 @@ class MainMenuViewController: BaseTableViewController {
                 tableView.tableFooterView = view
             } else {
                 tableView.tableFooterView = nil
+                stretchView.isHidden = false
             }
         }
     }

@@ -74,7 +74,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         if #available(iOS 26.0, *) {
             let glassEffect = UIGlassEffect()
             searchBarWrapper.effect = glassEffect
-            searchBarWrapper.layer.cornerRadius = 26
+            searchBarWrapper.layer.cornerRadius = UIConstants.largeCornerRadius
             searchBarWrapper.clipsToBounds = true
         }
         

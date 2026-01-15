@@ -36,7 +36,8 @@ class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegat
         topHeaderCoordinator?.alternativeHeader = headerView
         topHeaderCoordinator?.followScrollView = false
         scrollView.delegate = self
-                
+        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
+
         gearView.title = L10n.Equipment.battleGear
         gearView.switchLabel = L10n.Equipment.autoEquip
         gearView.itemTapped = {[weak self] typeKey in
@@ -78,6 +79,7 @@ class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegat
         super.applyTheme(theme: theme)
         gearView.applyTheme(theme: theme)
         costumeView.applyTheme(theme: theme)
+        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
     }
     
     override func viewWillLayoutSubviews() {

@@ -70,7 +70,7 @@ class EditingTextField: UIStackView, UITextFieldDelegate {
         view.borderStyle = .none
         view.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor.withAlphaComponent(0.75)
         view.textColor = ThemeService.shared.theme.primaryTextColor
-        view.cornerRadius = 26
+        view.cornerRadius = UIConstants.largeCornerRadius
         view.borderWidth = 1
         view.borderColor = .clear
         view.textInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)

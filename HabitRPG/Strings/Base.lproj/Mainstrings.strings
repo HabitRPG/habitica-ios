@@ -1506,3 +1506,6 @@
 "glossary" = "Glossary";
 
 "fcv_streak_explanation" = "You can restore streaks on individual tasks by tapping them to open the edit view";
+"more_gem_packs" = "More Gem packs";
+"x_gems_for_y" = "%d Gems for %s";
+"loading" = "Loading";
