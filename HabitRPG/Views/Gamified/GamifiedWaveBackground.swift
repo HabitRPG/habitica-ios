@@ -58,7 +58,7 @@ struct GamifiedWaveBackground<BackgroundView: View>: ViewModifier {
 
     func body(content: Content) -> some View {
         content.background(view.clipShape(GamifiedWave(waveScale: (isAnimating ? 1 : 0)))
-            .animation(.bouncy.delay(0.2), value: isAnimating)
+            .animation(.snappy(extraBounce: 0.35).delay(0.2), value: isAnimating)
         ).onAppear {
             isAnimating = true
         }

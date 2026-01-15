@@ -23,6 +23,7 @@ struct FirstDropSheet: View {
                 .scaledFont(size: 22, weight: .bold)
                 .foregroundStyle(.white)
                 .padding(.horizontal, 50)
+                .fixedSize(horizontal: false, vertical: true)
         },
                             title: Text(L10n.firstDropExplanation2),
                             description: Text(L10n.firstDropExplanation1)) {

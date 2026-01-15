@@ -37,9 +37,9 @@ struct GamifiedBottomSheet<UpperBackground: View, UpperContent: View, Title: Vie
                         presentationManager.dismiss()
                     } label: {
                         Image(systemName: "xmark")
-                            .scaledFont(size: 24)
-                            .frame(width: 24, height: 24)
-                            .foregroundStyle(.gray10)
+                            .scaledFont(size: 20)
+                            .frame(width: 20, height: 20)
+                            .foregroundStyle(.gray10.opacity(0.6))
                             .frame(width: 44, height: 44)
                     }.buttonStyle(.plain)
                     .background {
@@ -51,7 +51,7 @@ struct GamifiedBottomSheet<UpperBackground: View, UpperContent: View, Title: Vie
                     }
                         .clipShape(.circle)
                         .padding(.top, 16)
-                        .padding(.leading, 24)
+                        .padding(.leading, 16)
             }
                 .padding(.bottom, upperContentBottomPadding)
                 .gamifiedWaveBackground(view: upperBackground)

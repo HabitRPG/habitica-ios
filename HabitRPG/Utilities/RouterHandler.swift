@@ -51,6 +51,7 @@ private struct RegexRoute {
 }
 
 enum Route {
+    case achievements
     case market
     case questShop
     case seasonalShop
@@ -68,6 +69,8 @@ enum Route {
     
     var url: String {
         switch self {
+        case .achievements:
+            return "/user/achievements"
         case .market:
             return "/inventory/market"
         case .questShop:
@@ -281,7 +284,7 @@ class RouterHandler {
             self.displayTab(index: 4)
             self.push(StoryboardScene.User.spellsViewController.instantiate())
         }
-        register("/user/achievements") {
+        register(.achievements) {
             self.displayTab(index: 4)
             self.push(StoryboardScene.User.achievementsCollectionViewController.instantiate())
         }

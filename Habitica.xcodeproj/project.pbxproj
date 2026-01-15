@@ -307,6 +307,7 @@
 		299C172929BB4EE40003906B /* SeasonalShopCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299C172829BB4EE40003906B /* SeasonalShopCollectionViewDataSource.swift */; };
 		299CE6312CC28D4400ABA85C /* AppDelege+Maintenance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299CE6302CC28D4400ABA85C /* AppDelege+Maintenance.swift */; };
 		299E6C962F192D0500F78D2B /* GiftingAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299E6C952F192CFF00F78D2B /* GiftingAlertController.swift */; };
+		299E6C982F193C0200F78D2B /* OnboardingCompletedSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299E6C972F193BFB00F78D2B /* OnboardingCompletedSheet.swift */; };
 		299F93ED246960A1008DB702 /* GiftGemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F93EC246960A1008DB702 /* GiftGemsViewController.swift */; };
 		299F93F1246D9C49008DB702 /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F93F0246D9C49008DB702 /* PaddedTextField.swift */; };
 		299FB29A2084A30400422522 /* StableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2992084A30400422522 /* StableRepository.swift */; };
@@ -1016,6 +1017,7 @@
 		299C172829BB4EE40003906B /* SeasonalShopCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonalShopCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		299CE6302CC28D4400ABA85C /* AppDelege+Maintenance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelege+Maintenance.swift"; sourceTree = "<group>"; };
 		299E6C952F192CFF00F78D2B /* GiftingAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftingAlertController.swift; sourceTree = "<group>"; };
+		299E6C972F193BFB00F78D2B /* OnboardingCompletedSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCompletedSheet.swift; sourceTree = "<group>"; };
 		299F93EC246960A1008DB702 /* GiftGemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftGemsViewController.swift; sourceTree = "<group>"; };
 		299F93F0246D9C49008DB702 /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
 		299FB2992084A30400422522 /* StableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableRepository.swift; sourceTree = "<group>"; };
@@ -1964,6 +1966,7 @@
 		29DF933B2EC6401F0047801F /* Gamified */ = {
 			isa = PBXGroup;
 			children = (
+				299E6C972F193BFB00F78D2B /* OnboardingCompletedSheet.swift */,
 				29CBCDA32EC4E5090020FC14 /* GamifiedWaveBackground.swift */,
 				29CBCDA52EC4E5EC0020FC14 /* FanfareContainer.swift */,
 				29DF933C2EC640860047801F /* GamifiedBottomSheet.swift */,
@@ -3594,6 +3597,7 @@
 				295D42F620921F4200948E7E /* ClassSelectionViewController.swift in Sources */,
 				2973E2702ED71F2D000C2E0F /* View-Extensions.swift in Sources */,
 				C897F640218CE054002907C2 /* Storyboard Segues.swift in Sources */,
+				299E6C982F193C0200F78D2B /* OnboardingCompletedSheet.swift in Sources */,
 				291CE4B6231E828E0001A243 /* UIColor-Habitica.swift in Sources */,
 				4994065A20C83D4F0084CC40 /* DailyTableViewController.swift in Sources */,
 				292F968020723A4D00804151 /* ImageManager.swift in Sources */,

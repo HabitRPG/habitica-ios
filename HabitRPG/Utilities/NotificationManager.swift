@@ -29,27 +29,27 @@ class NotificationManager {
                 .achievementMountMaster,
                 .achievementInvitedFriend,
                 .achievementChallengeJoined,
-                HabiticaNotificationType.achievementOnboardingComplete,
-                HabiticaNotificationType.achievementAllYourBase,
-                 HabiticaNotificationType.achievementBackToBasics,
-                 HabiticaNotificationType.achievementJustAddWater,
-                 HabiticaNotificationType.achievementLostMasterclasser,
-                 HabiticaNotificationType.achievementMindOverMatter,
-                 HabiticaNotificationType.achievementDustDevil,
-                 HabiticaNotificationType.achievementAridAuthority,
-                 HabiticaNotificationType.achievementMonsterMagus,
-                 HabiticaNotificationType.achievementUndeadUndertaker,
-                 HabiticaNotificationType.achievementPrimedForPainting,
-                 HabiticaNotificationType.achievementPearlyPro,
-                 HabiticaNotificationType.achievementTickledPink,
-                 HabiticaNotificationType.achievementRosyOutlook,
-                 HabiticaNotificationType.achievementBugBonanza,
-                 HabiticaNotificationType.achievementBareNecessities,
-                 HabiticaNotificationType.achievementFreshwaterFriends,
-                 HabiticaNotificationType.achievementGoodAsGold,
-                 HabiticaNotificationType.achievementAllThatGlitters,
-                 HabiticaNotificationType.achievementBoneCollector,
-                 HabiticaNotificationType.achievementSkeletonCrew:
+                .achievementOnboardingComplete,
+                .achievementAllYourBase,
+                 .achievementBackToBasics,
+                 .achievementJustAddWater,
+                 .achievementLostMasterclasser,
+                 .achievementMindOverMatter,
+                 .achievementDustDevil,
+                 .achievementAridAuthority,
+                 .achievementMonsterMagus,
+                 .achievementUndeadUndertaker,
+                 .achievementPrimedForPainting,
+                 .achievementPearlyPro,
+                 .achievementTickledPink,
+                 .achievementRosyOutlook,
+                 .achievementBugBonanza,
+                 .achievementBareNecessities,
+                 .achievementFreshwaterFriends,
+                 .achievementGoodAsGold,
+                 .achievementAllThatGlitters,
+                 .achievementBoneCollector,
+                 .achievementSkeletonCrew:
                 notificationDisplayed = NotificationManager.displayAchievement(notification: notification, isOnboarding: false, isLastOnboardingAchievement: false)
             case HabiticaNotificationType.achievementGeneric:
                 notificationDisplayed = NotificationManager.displayAchievement(notification: notification, isOnboarding: true, isLastOnboardingAchievement: notifications.contains {
@@ -187,6 +187,9 @@ class NotificationManager {
         
         if notification.type == HabiticaNotificationType.achievementOnboardingComplete {
             HabiticaAnalytics.shared.setUserProperty(key: "completedOnboarding", value: "true")
+            let viewC = HostingBottomSheetController(rootView: OnboardingCompletedSheet(), prefersGrabberVisible: false)
+            viewC.show()
+            return true
         }
         if isLastOnboardingAchievement {
             
