@@ -13,21 +13,23 @@ import Habitica_Database
 
 @objc
 class UserManager: NSObject {
-    
+
     @objc public static let shared = UserManager()
-    
+
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
     private let inventoryRepository = InventoryRepository()
     private var disposable = CompositeDisposable()
     private let configRepository = ConfigRepository.shared
-    
+
     private weak var faintViewController: FaintViewController?
     weak var classSelectionViewController: ClassSelectionViewController?
     private var lastClassSelectionDisplayed: Date?
     private var lastQuestCompletionDisplayed: Date?
     private var lastYesterdailyDialog: Date?
-    
+
+    @objc public private(set) var isLoggingOut = false
+
     private var tutorialSteps = [String: Bool]()
         
     private func getYesterday() -> Date? {
@@ -39,7 +41,17 @@ class UserManager: NSObject {
         disposable.dispose()
     }
 
+    func prepareForLogout() {
+        isLoggingOut = true
+        stopListening()
+    }
+
+    func logoutCompleted() {
+        isLoggingOut = false
+    }
+
     func beginListening() {
+        guard !isLoggingOut else { return }
         if !disposable.isDisposed {
             disposable.dispose()
         }
@@ -85,6 +97,7 @@ class UserManager: NSObject {
     }
     
     private func runCron(tasks: [TaskProtocol], uncompletedTaskCount: Int) {
+        guard !isLoggingOut else { return }
         if (lastYesterdailyDialog?.timeIntervalSinceNow ?? -600) > -600 {
             return
         }
@@ -139,7 +152,7 @@ class UserManager: NSObject {
     }
     
     private func onUserUpdated(user: UserProtocol) {
-        if !user.isValid {
+        guard !isLoggingOut, user.isValid else {
             return
         }
         if UserDefaults.standard.bool(forKey: "isInSetup") && user.flags?.welcomed == false {
