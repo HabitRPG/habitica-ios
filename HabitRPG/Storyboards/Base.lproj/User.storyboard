@@ -706,17 +706,14 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N89-h1-lZ2">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="28"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vv9-9b-cbn">
-                                                        <rect key="frame" x="15.666666666666671" y="0.0" width="77" height="31.666666666666668"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="77" id="yMd-jY-qRw"/>
-                                                        </constraints>
+                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stat_sparkles_left" translatesAutoresizingMaskIntoConstraints="NO" id="vv9-9b-cbn">
+                                                        <rect key="frame" x="29.666666666666664" y="0.0" width="59.999999999999993" height="31.666666666666668"/>
                                                     </imageView>
-                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Mxi-sL-Bvc" customClass="GradientView" customModule="Habitica" customModuleProvider="target">
-                                                        <rect key="frame" x="100.66666666666667" y="-3" width="159.66666666666663" height="34"/>
+                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="999" horizontalCompressionResistancePriority="999" translatesAutoresizingMaskIntoConstraints="NO" id="Mxi-sL-Bvc" customClass="GradientView" customModule="Habitica" customModuleProvider="target">
+                                                        <rect key="frame" x="97.666666666666686" y="-3" width="166" height="34"/>
                                                         <subviews>
                                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAQ-Tl-eLi" customClass="PaddedLabel" customModule="Habitica" customModuleProvider="target">
-                                                                <rect key="frame" x="3" y="3" width="153.66666666666666" height="28"/>
+                                                                <rect key="frame" x="3" y="3" width="160" height="28"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" priority="500" constant="160" id="Csc-sg-aZ6"/>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="PLo-Oq-bRR"/>
@@ -739,11 +736,8 @@
                                                             <constraint firstItem="SAQ-Tl-eLi" firstAttribute="leading" secondItem="Mxi-sL-Bvc" secondAttribute="leading" constant="3" id="sfr-2b-QRC"/>
                                                         </constraints>
                                                     </view>
-                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wP9-cQ-FlS">
-                                                        <rect key="frame" x="268.33333333333331" y="0.0" width="77" height="28"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="77" id="8Zz-Lt-ln4"/>
-                                                        </constraints>
+                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stat_sparkles_right" translatesAutoresizingMaskIntoConstraints="NO" id="wP9-cQ-FlS">
+                                                        <rect key="frame" x="271.66666666666669" y="0.0" width="61.333333333333314" height="28"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -751,7 +745,6 @@
                                                     <constraint firstItem="wP9-cQ-FlS" firstAttribute="top" secondItem="N89-h1-lZ2" secondAttribute="top" id="56k-G4-mjS"/>
                                                     <constraint firstAttribute="bottom" secondItem="vv9-9b-cbn" secondAttribute="bottom" constant="-3.5" id="BQW-ek-eSq"/>
                                                     <constraint firstAttribute="bottom" secondItem="wP9-cQ-FlS" secondAttribute="bottom" id="E5X-PI-JhS"/>
-                                                    <constraint firstItem="vv9-9b-cbn" firstAttribute="leading" secondItem="N89-h1-lZ2" secondAttribute="leading" constant="15.666666666666671" id="Kv2-ut-5He"/>
                                                     <constraint firstItem="vv9-9b-cbn" firstAttribute="top" secondItem="N89-h1-lZ2" secondAttribute="top" id="PS0-ul-KFb"/>
                                                     <constraint firstItem="Mxi-sL-Bvc" firstAttribute="leading" secondItem="vv9-9b-cbn" secondAttribute="trailing" constant="8.0000000000000142" id="Swl-iu-3CZ"/>
                                                     <constraint firstItem="wP9-cQ-FlS" firstAttribute="leading" secondItem="Mxi-sL-Bvc" secondAttribute="trailing" constant="8" symbolic="YES" id="cVl-2j-7Qf"/>
@@ -890,7 +883,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GDv-Ov-TyI">
                                                                 <rect key="frame" x="0.0" y="0.0" width="337" height="25"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GL3-jH-b3q">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GL3-jH-b3q">
                                                                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="21"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" priority="500" constant="100" id="8uK-Ac-r9n"/>
@@ -900,7 +893,7 @@
                                                                         <color key="textColor" red="0.3075395823" green="0.2903449535" blue="0.34151983260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JK5-eC-pvg">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JK5-eC-pvg">
                                                                         <rect key="frame" x="0.0" y="25" width="294" height="0.0"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" priority="500" constant="100" id="Lwo-Q2-IcF"/>
@@ -934,7 +927,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ru4-ID-RuK">
                                                                 <rect key="frame" x="0.0" y="40" width="337" height="25"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIm-wO-WoL">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIm-wO-WoL">
                                                                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="21"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" priority="500" constant="100" id="WmV-Dl-MFM"/>
@@ -944,7 +937,7 @@
                                                                         <color key="textColor" red="0.3075395823" green="0.2903449535" blue="0.34151983260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6c-ds-aG1">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6c-ds-aG1">
                                                                         <rect key="frame" x="0.0" y="25" width="294" height="0.0"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" priority="500" constant="21" id="Axa-em-ydX"/>
@@ -978,7 +971,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Oh-A1-tmU">
                                                                 <rect key="frame" x="0.0" y="80" width="337" height="25"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bb-My-6gu">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bb-My-6gu">
                                                                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="21"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" priority="500" constant="100" id="Bcs-bc-ULi"/>
@@ -988,7 +981,7 @@
                                                                         <color key="textColor" red="0.3075395823" green="0.2903449535" blue="0.34151983260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7h1-Ug-xTe">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7h1-Ug-xTe">
                                                                         <rect key="frame" x="0.0" y="25" width="294" height="0.0"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" priority="500" constant="21" id="oOV-Mi-Ybb"/>
@@ -1237,6 +1230,8 @@
     <resources>
         <image name="HelloHabiticanOnboarding" width="287" height="117"/>
         <image name="VeteranPets" width="121" height="31"/>
+        <image name="stat_sparkles_left" width="60" height="24"/>
+        <image name="stat_sparkles_right" width="61.333332061767578" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

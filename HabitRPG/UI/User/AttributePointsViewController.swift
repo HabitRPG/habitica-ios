@@ -152,10 +152,7 @@ class AttributePointsViewController: BaseUIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        pointsToAllocateLeftView.image = HabiticaIcons.imageOfAttributeSparklesLeft
-        pointsToAllocateRightView.image = HabiticaIcons.imageOfAttributeSparklesRight
-        
+    
         strengthStatsView.allocateAction = { [weak self] in self?.allocate("str") }
         intelligenceStatsView.allocateAction = { [weak self] in self?.allocate("int") }
         constitutionStatsView.allocateAction = { [weak self] in self?.allocate("con") }
@@ -167,7 +164,8 @@ class AttributePointsViewController: BaseUIViewController {
 
         pointsToAllocateLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openBulkAssignView)))
         pointsToAllocateLabel.horizontalPadding = 12
-        pointsToAllocateLabel.verticalPadding = 6
+        pointsToAllocateLabel.verticalPadding = 2
+        pointsToAllocateLabel.font = .systemFont(ofSize: 15, weight: .semibold)
     }
     
     override func applyTheme(theme: Theme) {
@@ -181,8 +179,11 @@ class AttributePointsViewController: BaseUIViewController {
         statGuideWrapper.backgroundColor = theme.windowBackgroundColor
         statGuideWrapper.cornerRadius = UIConstants.largeCornerRadius
         distributeEvenlyLabel.textColor = theme.primaryTextColor
+        distributeEvenlyDescription.textColor = theme.secondaryTextColor
         distributeTasksLabel.textColor = theme.primaryTextColor
+        distributeTaskDescription.textColor = theme.secondaryTextColor
         distributeClassLabel.textColor = theme.primaryTextColor
+        distributeTaskDescription.textColor = theme.secondaryTextColor
         view.backgroundColor = theme.contentBackgroundColor
         statGuideTitleLabel.textColor = theme.primaryTextColor
         characterBuildTitleLabel.textColor = theme.primaryTextColor
