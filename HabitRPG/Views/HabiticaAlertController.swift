@@ -143,6 +143,10 @@ class HabiticaAlertController: UIViewController, Themeable {
             let effect = UIGlassEffect(style: .regular)
             effect.tintColor = ThemeService.shared.theme.contentBackgroundColor.withAlphaComponent(0.9)
             backgroundView.effect = effect
+            
+            backgroundView.cornerConfiguration = .uniformCorners(radius: 26)
+        } else {
+            backgroundView.cornerRadius = UIConstants.largeCornerRadius
         }
     }
     
@@ -264,7 +268,7 @@ class HabiticaAlertController: UIViewController, Themeable {
             color = ThemeService.shared.theme.errorColor
         }
         
-        button.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .medium)
+        button.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .bold)
         if isMainAction {
             button.setTitleColor(UIColor.white, for: .normal)
             if #available(iOS 26.0, *) {
@@ -273,7 +277,7 @@ class HabiticaAlertController: UIViewController, Themeable {
                 button.tintColor = color
             } else {
                 button.backgroundColor = color
-                button.cornerRadius = 8
+                button.cornerRadius = UIConstants.mediumCornerRadius
                 button.layer.shadowColor = ThemeService.shared.theme.buttonShadowColor.cgColor
                 button.layer.shadowRadius = 2
                 button.layer.shadowOffset = CGSize(width: 1, height: 1)
@@ -329,6 +333,12 @@ class HabiticaAlertController: UIViewController, Themeable {
         }
         checkTextStackHidden()
         subtitleLabel.textColor = messageColor ?? ThemeService.shared.theme.primaryTextColor
+        if let fontDescriptor = UIFontDescriptor
+            .preferredFontDescriptor(withTextStyle: UIFont.TextStyle.body)
+            .withSymbolicTraits(UIFontDescriptor.SymbolicTraits.traitLooseLeading) {
+                    let looseLeadingFont = UIFont(descriptor: fontDescriptor, size: 15)
+                    subtitleLabel.font = looseLeadingFont
+                }
     }
     
     private func checkTextStackHidden() {

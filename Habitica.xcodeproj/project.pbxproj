@@ -306,6 +306,7 @@
 		299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
 		299C172929BB4EE40003906B /* SeasonalShopCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299C172829BB4EE40003906B /* SeasonalShopCollectionViewDataSource.swift */; };
 		299CE6312CC28D4400ABA85C /* AppDelege+Maintenance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299CE6302CC28D4400ABA85C /* AppDelege+Maintenance.swift */; };
+		299E6C962F192D0500F78D2B /* GiftingAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299E6C952F192CFF00F78D2B /* GiftingAlertController.swift */; };
 		299F93ED246960A1008DB702 /* GiftGemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F93EC246960A1008DB702 /* GiftGemsViewController.swift */; };
 		299F93F1246D9C49008DB702 /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F93F0246D9C49008DB702 /* PaddedTextField.swift */; };
 		299FB29A2084A30400422522 /* StableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2992084A30400422522 /* StableRepository.swift */; };
@@ -1014,6 +1015,7 @@
 		299BD6391F557FE700E22935 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		299C172829BB4EE40003906B /* SeasonalShopCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonalShopCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		299CE6302CC28D4400ABA85C /* AppDelege+Maintenance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelege+Maintenance.swift"; sourceTree = "<group>"; };
+		299E6C952F192CFF00F78D2B /* GiftingAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftingAlertController.swift; sourceTree = "<group>"; };
 		299F93EC246960A1008DB702 /* GiftGemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftGemsViewController.swift; sourceTree = "<group>"; };
 		299F93F0246D9C49008DB702 /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
 		299FB2992084A30400422522 /* StableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableRepository.swift; sourceTree = "<group>"; };
@@ -1692,6 +1694,7 @@
 		2967CF7E252479C400F366DF /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
+				299E6C952F192CFF00F78D2B /* GiftingAlertController.swift */,
 				29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */,
 				29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */,
 				29A9038726EA33A400442B93 /* FlagInformationOverlayView.swift */,
@@ -3788,6 +3791,7 @@
 				2909D41F272199BE00FF2B29 /* MultiLineTextField.swift in Sources */,
 				2922EE822C80772A00254106 /* SubscriptionBenefitView.swift in Sources */,
 				D9E02EC61E5E0458002CFCE2 /* ChallengeTableViewController.swift in Sources */,
+				299E6C962F192D0500F78D2B /* GiftingAlertController.swift in Sources */,
 				D96BFC4F1E191D7200266EEF /* UIAlertController-Extensions.swift in Sources */,
 				29144896208A270800F3A6B5 /* AvatarDetailViewController.swift in Sources */,
 				299C172929BB4EE40003906B /* SeasonalShopCollectionViewDataSource.swift in Sources */,

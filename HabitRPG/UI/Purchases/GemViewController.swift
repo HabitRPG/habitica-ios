@@ -214,22 +214,9 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     private var giftRecipientUsername = ""
     
     private func showGiftSubscriptionModal() {
-        let alertController = HabiticaAlertController(title: L10n.giftRecipientTitle, message: L10n.giftRecipientSubtitle)
-        let textField = UITextField()
-        textField.autocorrectionType = .no
-        textField.autocapitalizationType = .none
-        textField.borderColor = UIColor.gray300
-        textField.borderWidth = 1
-        textField.tintColor = ThemeService.shared.theme.tintColor
-        alertController.contentView = textField
-        alertController.addAction(title: L10n.continue, style: .default, isMainAction: true, closeOnTap: true, handler: { _ in
-            if let username = textField.text, username.isEmpty == false {
-                self.giftRecipientUsername = username
-                self.perform(segue: StoryboardSegue.Main.openGiftSubscriptionDialog)
-            }
-        })
-        alertController.addCancelAction()
-        alertController.containerViewSpacing = 4
+        let alertController = GiftingAlertController(title: L10n.giftSubscription, message: L10n.giftGemsAlertText) { username in
+            RouterHandler.shared.handle(.giftSubscription(username: username))
+        }
         alertController.show()
     }
     
@@ -246,59 +233,11 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     }
     
     @IBAction func giftGemsTapped(_ sender: Any) {
-        let alertController = HabiticaAlertController(title: L10n.giftGemsAlertTitle, message: L10n.giftGemsAlertText)
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 12
-        let usernameTextField = PaddedTextField()
-        usernameTextField.attributedPlaceholder = NSAttributedString(string: L10n.username, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        usernameTextField.autocapitalizationType = .none
-        usernameTextField.spellCheckingType = .no
-        usernameTextField.borderStyle = .none
-        usernameTextField.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
-        usernameTextField.cornerRadius = UIConstants.largeCornerRadius
-        usernameTextField.textInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        usernameTextField.textColor = ThemeService.shared.theme.secondaryTextColor
-        stackView.addArrangedSubview(usernameTextField)
-        alertController.contentView = stackView
-        
-        let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.isHidden = true
-        stackView.addArrangedSubview(activityIndicator)
-        
-        let errorView = UILabel()
-        errorView.isHidden = true
-        errorView.textColor = ThemeService.shared.theme.errorColor
-        errorView.text = L10n.Errors.userNotFound
-        errorView.textAlignment = .center
-        errorView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12)
-        stackView.addArrangedSubview(errorView)
-
-        var foundUser = false
-        alertController.addAction(title: L10n.continue, isMainAction: true, closeOnTap: false) {[weak self] _ in
-            activityIndicator.isHidden = false
-            errorView.isHidden = true
-            activityIndicator.startAnimating()
-            if let username = usernameTextField.text {
-                self?.socialRepository.retrieveMember(userID: username).on(
-                    value: { _ in
-                        foundUser = true
-                        alertController.dismiss(animated: true, completion: {
-                            self?.giftRecipientUsername = username
-                            self?.perform(segue: StoryboardSegue.Main.giftGemsSegue)
-                        })
-                }
-                ).observeCompleted {
-                    activityIndicator.isHidden = true
-                    if !foundUser {
-                        errorView.isHidden = false
-                    }
-                }
-            }
+        let alertController = GiftingAlertController(title: L10n.giftGemsAlertTitle, message: L10n.giftGemsAlertText) {[weak self] username in
+            self?.giftRecipientUsername = username
+            self?.perform(segue: StoryboardSegue.Main.giftGemsSegue)
         }
-        alertController.addCancelAction()
         alertController.show()
-        usernameTextField.becomeFirstResponder()
     }
     
     @IBAction func unwindToList(_ segue: UIStoryboardSegue) {

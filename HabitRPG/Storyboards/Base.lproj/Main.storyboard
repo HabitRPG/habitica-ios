@@ -1444,7 +1444,6 @@
                     <connections>
                         <outlet property="doneButton" destination="nxq-Dr-Nhh" id="b6v-zF-hN2"/>
                         <segue destination="Ne7-W6-6zE" kind="presentation" identifier="subscriptionSegue" id="mRM-bY-AV4"/>
-                        <segue destination="KOH-m5-9hA" kind="presentation" identifier="openGiftSubscriptionDialog" id="0lO-rm-fRj"/>
                         <segue destination="pUF-pN-Tcq" kind="presentation" identifier="GiftGemsSegue" id="sC6-Ol-79u"/>
                         <segue destination="aby-Ry-5XE" kind="presentation" identifier="showPromoInfoSegue" id="BqT-36-Icz"/>
                     </connections>
@@ -2818,7 +2817,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="yNZ-LP-06T"/>
         <segue reference="9d2-gY-n53"/>
-        <segue reference="FPm-Dv-Zos"/>
         <segue reference="x0h-sG-Le1"/>
         <segue reference="zgD-BU-MQh"/>
         <segue reference="xXS-0h-Y8G"/>

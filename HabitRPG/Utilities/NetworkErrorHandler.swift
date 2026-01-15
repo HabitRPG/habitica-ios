@@ -26,7 +26,7 @@ public struct DefaultOfflineErrorMessage: ErrorMessage {
 }
 
 class HabiticaNetworkErrorHandler: NetworkErrorHandler {
-    public static let errorMessages: [ErrorMessage]? = [DefaultServerUnavailableErrorMessage(), DefaultServerIssueErrorMessage(), DefaultOfflineErrorMessage()]
+    public let errorMessages: [ErrorMessage]? = [DefaultServerUnavailableErrorMessage(), DefaultServerIssueErrorMessage(), DefaultOfflineErrorMessage()]
     let disposable = ScopedDisposable(CompositeDisposable())
     
     private static let dismissingVCs = [
@@ -39,7 +39,7 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
         GiftSubscriptionViewController.self
     ]
     
-    public static func handle(error: NetworkError, messages: [String]) {
+    public func handle(error: NetworkError, messages: [String]) {
         if error.code == 401,
            !error.url.contains("/user/auth/update-password") {
             let combined = messages.joined(separator: "\n")
@@ -68,7 +68,7 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
         }
     }
 
-    static func errorMessageForCode(code: Int) -> ErrorMessage? {
+    func errorMessageForCode(code: Int) -> ErrorMessage? {
         if let messages = errorMessages {
             for errorMessage in messages where code == errorMessage.forCode {
                 return errorMessage
@@ -77,7 +77,7 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
         return nil
     }
     
-    public static func notify(message: String, code: Int, url: String) {
+    public func notify(message: String, code: Int, url: String) {
         // Suppress invalid_credentials errors - they're handled by automatic logout
         if message.lowercased().contains("invalid_credentials") {
             return
@@ -111,7 +111,7 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
         }
         
         if code == 404 {
-            if let visibleViewController = UIApplication.topViewController(), dismissingVCs.contains(where: { type(of: visibleViewController) == $0 }) {
+            if let visibleViewController = UIApplication.topViewController(), Self.dismissingVCs.contains(where: { type(of: visibleViewController) == $0 }) {
                 visibleViewController.navigationController?.popViewController(animated: true)
             }
         }

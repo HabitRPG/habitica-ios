@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 public class RetrieveMemberCall: ResponseObjectCall<MemberProtocol, APIMember> {
-    public init(userID: String, fromHall: Bool = false) {
+    public init(userID: String, fromHall: Bool = false, onError: ((NetworkError) -> Void)?) {
         if fromHall {
             super.init(httpMethod: .GET, endpoint: "hall/heroes/\(userID)")
         } else {
@@ -20,6 +20,9 @@ public class RetrieveMemberCall: ResponseObjectCall<MemberProtocol, APIMember> {
             } else {
                 super.init(httpMethod: .GET, endpoint: "members/username/\(userID)")
             }
+        }
+        if let action = onError {
+            customErrorHandler = CallbackNetworkErrorHandler(onError: action)
         }
     }
 }

@@ -576,13 +576,15 @@ class SubscriptionModalViewController: HostingBottomSheetController<ScrollableSu
         viewModel.onGiftButtonTapped = {[weak self] in
             self?.giftSubscriptionButtonTapped()
         }
+        
+        
     }
     
     func giftSubscriptionButtonTapped() {
-        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
+        let alertController = GiftingAlertController(title: L10n.giftSubscription, message: L10n.giftGemsAlertText) { username in
             RouterHandler.shared.handle(.giftSubscription(username: username))
-        }, saveButtonTitle: L10n.continue)
-        present(navController, animated: true, completion: nil)
+        }
+        alertController.show()
     }
 }
 

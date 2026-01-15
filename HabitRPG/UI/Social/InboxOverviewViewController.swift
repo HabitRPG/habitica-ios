@@ -126,7 +126,7 @@ class InboxOverviewViewController: BaseTableViewController {
             errorView.isHidden = true
             activityIndicator.startAnimating()
             if let username = usernameTextField.text {
-                self?.socialRepository.retrieveMember(userID: username).on(
+                self?.socialRepository.retrieveMember(userID: username, handleErrors: false).on(
                     value: { member in
                         foundUser = true
                         self?.newMessageUsername = username
