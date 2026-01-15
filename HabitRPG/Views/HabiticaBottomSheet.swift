@@ -14,32 +14,50 @@ protocol Dismissable {
 }
 
 private class QueueManager {
-    static var displayQueue: [(() -> Void)] = [(() -> Void)]()
+    static var displayQueue: [(presentation: () -> Bool, retryCount: Int)] = []
     static var showingSheet: Bool {
         return displayQueue.isEmpty == false
     }
-    
+    private static let maxRetries = 5
+    private static let retryDelay: TimeInterval = 0.3
+
     private static func showCurrent() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            if let action = displayQueue.first {
-                action()
+            attemptPresentation()
+        }
+    }
+
+    private static func attemptPresentation() {
+        guard var current = displayQueue.first else { return }
+
+        let presented = current.presentation()
+        if !presented {
+            current.retryCount += 1
+            if current.retryCount < maxRetries {
+                displayQueue[0] = current
+                DispatchQueue.main.asyncAfter(deadline: .now() + retryDelay) {
+                    attemptPresentation()
+                }
+            } else {
+                displayQueue.removeFirst()
+                showCurrent()
             }
         }
     }
-    
+
     static func showNext() {
         if showingSheet {
             displayQueue.removeFirst()
             showCurrent()
         }
     }
-    
-    static func enqueue(_ action: @escaping () -> Void) {
+
+    static func enqueue(_ presentation: @escaping () -> Bool) {
         if !showingSheet {
-            displayQueue.append(action)
+            displayQueue.append((presentation: presentation, retryCount: 0))
             showCurrent()
         } else {
-            displayQueue.append(action)
+            displayQueue.append((presentation: presentation, retryCount: 0))
         }
     }
 }
@@ -102,9 +120,17 @@ class HostingBottomSheetController<ContentView: View>: UIHostingController<Conte
     
     func show() {
         QueueManager.enqueue {
-            if let top = UIApplication.shared.topmostViewController, top != self {
-                top.present(self, animated: true)
+            guard let top = UIApplication.shared.topmostViewController, top != self else {
+                return false
             }
+            if top.isBeingDismissed || top.isBeingPresented {
+                return false
+            }
+            if top.presentedViewController != nil {
+                return false
+            }
+            top.present(self, animated: true)
+            return true
         }
     }
 }
