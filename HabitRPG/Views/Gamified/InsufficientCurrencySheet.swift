@@ -57,7 +57,7 @@ struct InsufficientGemsSheet: View {
                                               icon: Image(Asset.insufficientGems.name),
                                               title: Text(L10n.moreGemsMessage),
                                               content: Text(L10n.gemsSupportDevelopers)) {
-            HabiticaButtonUI(label: Text(price.isEmpty ? L10n.loading : L10n.xGemsForY(4, price)), color: Color(ThemeService.shared.theme.tintColor)) {
+            HabiticaButtonUI(label: Text(price.isEmpty ? L10n.loading : L10n.xGemsForY(4, price)), color: Color(ThemeService.shared.theme.fixedTintColor)) {
                 presentationManager.dismiss()
                 RouterHandler.shared.handle(.purchaseGems)
             }.disabled(price.isEmpty)

@@ -18,14 +18,26 @@ struct LoginIncentiveSheet: View {
     let text: String
     let nextUnlockIn: Int
     
+    private var correctedImageName: String {
+        if imageName.contains("_special_") {
+            return "shop_\(imageName)"
+        }
+        return imageName
+    }
+    
+    @ViewBuilder var image: some View {
+        if imageName == "background_purple" {
+            Image(Asset.rewardPlainBackgrounds.name)
+        } else {
+            
+            PixelArtView(name: correctedImageName)
+        }
+    }
+    
     var body: some View {
         GamifiedBottomSheet(upperBackgroundColor: .blue100, upperContent: VStack(spacing: 0) {
             FanfareContainer(haloColor: .blue500, outerRingColor: .blue500, plusColor: .blue10) {
-                if imageName == "background_purple" {
-                    Image(Asset.rewardPlainBackgrounds.name)
-                } else {
-                    PixelArtView(name: imageName)
-                }
+                image
             }
             Text(L10n.unlockedAnotherCheckinPrize)
                 .foregroundStyle(.blue1)
