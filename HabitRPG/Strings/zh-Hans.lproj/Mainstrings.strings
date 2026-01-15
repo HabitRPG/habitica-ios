@@ -265,7 +265,7 @@
 "stats.intelligence_title" = "智力";
 "stats.intelligence_text" = "提高从任务中获得的经验值。同时提你的法力值上限与法力值恢复速度。";
 "stats.constitution_title" = "体质";
-"stats.constitution_text" = "提高从任务中获得的经验值。同时提你的法力值上限与法力值恢复速度。";
+"stats.constitution_text" = "减少因未完成每日任务和负面习惯所受到的伤害。但无法减免副本首领造成的伤害。";
 "stats.perception_title" = "感知";
 "stats.perception_text" = "提高任务完成时的物品掉落几率、每日掉落上限、连续完成奖励以及获得的金币。";
 "create" = "创建";
@@ -969,7 +969,7 @@
 "learn_more" = "了解更多";
 "insufficient_hourglasses_message_subscriber" = "你需要更多的神秘沙漏来购买该物品！保持订阅，以继续接收你的沙漏。";
 "insufficient_hourglasses_message" = "你需要更多的神秘沙漏来购买该物品！沙漏连续订阅会获得奖励。";
-"more_gems_message" = "你需要更多宝石才能购买此物品！";
+"more_gems_message" = "你需要更多宝石才能购买此物品";
 "complete_more_tasks" = "你还需要完成更多任务才能购买这件物品！";
 "gift_sent_to" = "你发送%@：";
 "gift_sent_confirmation" = "你的礼物已送出！";
