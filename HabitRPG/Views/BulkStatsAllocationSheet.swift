@@ -113,7 +113,7 @@ struct BulkStatsAllocationSheet: View, Dismissable {
                 Image(systemName: .xmark)
                     .scaledFont(size: 24)
                     .frame(width: 24, height: 24)
-                    .foregroundStyle(.gray10)
+                    .foregroundStyle(Color(themeService.theme.primaryTextColor))
             }, rightAction: Button {
                 allocate()
             } label: {
@@ -125,7 +125,7 @@ struct BulkStatsAllocationSheet: View, Dismissable {
                     Text("\(totalAllocated, format: .number.precision(.fractionLength(0)))/\(maxToAllocate, format: .number.precision(.fractionLength(0)))")
                         .contentTransition(.numericText())
                         .animation(.default, value: totalAllocated)
-                    .foregroundStyle(Color(ThemeService.shared.theme.tintColor))
+                    .foregroundStyle(Color(ThemeService.shared.theme.fixedTintColor))
                     .scaledFont(size: 28, weight: .bold)
                 Text(L10n.allocated)
                     .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))

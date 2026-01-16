@@ -95,6 +95,9 @@ class MainTabBarController: UITabBarController {
         super.viewDidAppear(animated)
         presentingViewController?.willMove(toParent: nil)
         presentingViewController?.removeFromParent()
+        
+        let sheet = HostingBottomSheetController(rootView: OnboardingCompletedSheet())
+        sheet.show()
     }
     
     private func fetchData() {
@@ -196,7 +199,7 @@ class MainTabBarController: UITabBarController {
             label.textAlignment = .center
             badge.containedView = label
         }
-        badge.backgroundColor = .gray50
+        badge.backgroundColor = ThemeService.shared.theme.isDark ? .gray100 : .gray50
         if let label = badge.containedView as? UILabel {
             label.text = "\(count)"
         }

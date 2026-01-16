@@ -183,7 +183,7 @@ class AttributePointsViewController: BaseUIViewController {
         distributeTasksLabel.textColor = theme.primaryTextColor
         distributeTaskDescription.textColor = theme.secondaryTextColor
         distributeClassLabel.textColor = theme.primaryTextColor
-        distributeTaskDescription.textColor = theme.secondaryTextColor
+        distributeClassDescription.textColor = theme.secondaryTextColor
         view.backgroundColor = theme.contentBackgroundColor
         statGuideTitleLabel.textColor = theme.primaryTextColor
         characterBuildTitleLabel.textColor = theme.primaryTextColor

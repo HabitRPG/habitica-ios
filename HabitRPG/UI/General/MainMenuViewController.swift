@@ -771,19 +771,14 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     func giftSubscriptionButtonTapped() {
-        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
-            self.giftRecipientUsername = username
-            self.perform(segue: StoryboardSegue.Main.openGiftSubscriptionDialog)
-        }, saveButtonTitle: L10n.continue)
-        present(navController, animated: true, completion: nil)
+        let alertController = GiftingAlertController(title: L10n.giftSubscription, message: L10n.giftGemsAlertText) { username in
+            RouterHandler.shared.handle(.giftSubscription(username: username))
+        }
+        alertController.show()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == StoryboardSegue.Main.openGiftSubscriptionDialog.rawValue {
-            let navigationController = segue.destination as? UINavigationController
-            let giftSubscriptionController = navigationController?.topViewController as? GiftSubscriptionViewController
-            giftSubscriptionController?.giftRecipientUsername = giftRecipientUsername
-        } else if segue.identifier == StoryboardSegue.Main.showMarketSegue.rawValue {
+        if segue.identifier == StoryboardSegue.Main.showMarketSegue.rawValue {
             (segue.destination as? ShopViewController)?.shopIdentifier = Constants.MarketKey
         } else if segue.identifier == StoryboardSegue.Main.showQuestShopSegue.rawValue {
             (segue.destination as? ShopViewController)?.shopIdentifier = Constants.QuestShopKey

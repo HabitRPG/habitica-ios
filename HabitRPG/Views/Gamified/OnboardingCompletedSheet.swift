@@ -25,7 +25,7 @@ struct OnboardingCompletedSheet: View {
                 })
                 Text(L10n.onboardingCompleteAchievementTitle)
                     .scaledFont(size: 22, weight: .bold)
-                    .foregroundStyle(Color.yellow1)
+                    .foregroundStyle(Color.orange1)
                     .padding(.horizontal, 50)
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -34,7 +34,14 @@ struct OnboardingCompletedSheet: View {
                 Spacer().frame(width: 145)
                 Image(Asset.onboardingGoldRight.name)
             }.padding(.top, 70)
-        }, title: Text(markdown: L10n.onboardingCompleteTitle).scaledFont(size: 20).padding(.bottom, 12).padding(.horizontal, 8).tint(themeService.theme.isDark ? .yellow500 : .yellow10), description: Text(L10n.onboardingCompleteDescription), buttons: {
+        }, title: Text(markdown: L10n.onboardingCompleteTitle)
+            .scaledFont(size: 20)
+            .padding(.bottom, 12)
+            .padding(.horizontal, 8)
+            .tint(themeService.theme.isDark ? .yellow500 : .yellow10),
+                            description: Text(L10n.onboardingCompleteDescription)
+            .scaledFont(size: 15, weight: .semibold)
+            .foregroundStyle(Color(themeService.theme.ternaryTextColor)), buttons: {
             HabiticaButtonUI(label: Text(L10n.viewAchievements), color: Color(themeService.theme.fixedTintColor)) {
                 RouterHandler.shared.handle(.achievements)
                 presentationManager.dismiss()

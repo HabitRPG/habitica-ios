@@ -68,6 +68,8 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         
         contentStartEdge = mainTaskWrapper.edge.start
         contentEndEdge = mainTaskWrapper.edge.end
+        
+        mainTaskWrapper.cornerRadius = UIConstants.mediumCornerRadius
     }
     
     @objc

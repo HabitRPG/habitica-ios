@@ -397,16 +397,18 @@ struct ProfilePage: View {
                     Text(L10n.Stable.petsAndMounts)
                         .scaledFont(size: 22, weight: .bold)
                         .padding(.top, 28)
-                    StableBackgroundView(content: HStack(spacing: 57) {
-                        if let pet = viewModel.currentPet {
-                            PetView(pet: pet).padding(.top, 40)
-                        }
-                        if let mount = viewModel.currentMount {
-                            MountView(mount: mount).padding(.top, 30)
-                        }
-                    }, animateFlying: false)
-                    .cornerRadius(UIConstants.mediumCornerRadius)
-                    .profileContainer(spacing: 26)
+                    if viewModel.currentPet != nil || viewModel.currentMount != nil {
+                        StableBackgroundView(content: HStack(spacing: 57) {
+                            if let pet = viewModel.currentPet {
+                                PetView(pet: pet).padding(.top, 40)
+                            }
+                            if let mount = viewModel.currentMount {
+                                MountView(mount: mount).padding(.top, 30)
+                            }
+                        }, animateFlying: false)
+                        .cornerRadius(UIConstants.mediumCornerRadius)
+                        .profileContainer(spacing: 26)
+                    }
                     
                     HStack(spacing: 12) {
                         VStack(spacing: 26) {

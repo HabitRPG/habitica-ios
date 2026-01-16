@@ -1306,7 +1306,7 @@
 "class_system_disabled" = "Class System disabled.";
 "class_system_unlocked" = "Class system unlocked";
 "class_system_unlocked_description" = "Choose a class that fits your play style and unlock special skills and armor to help you on your journey";
-"class_system_enable_instructions" = "You can enable the class system from the apps settings.";
+"class_system_enable_instructions" = "You can enable the class system from Settings to choose a class later";
 "unlocks_selecting_class_description" = "Skills are unlocked once you reach level 10 and have selected a class";
 "unlocks_selecting_class_prompt" = "Now that you reached level 10, you can choose a class!";
 "pet_accessibility_label_raised" = "%@, Raised %d%%";
@@ -1484,7 +1484,7 @@
 "task_reminder" = "Task Reminder";
 "joined_x" = "Joined %s";
 "equipped_gear" = "Equipped Gear";
-"stable.pets_and_mounts" = "Pets and Mounts";
+"stable.pets_and_mounts" = "Pets & Mounts";
 "challenges_won" = "Challenges Won";
 "player_not_won_challenges" = "Player has not won any challenges.";
 "player_not_completed_quests" = "Player has not completed any quests.";
@@ -1496,7 +1496,7 @@
 "none" = "None";
 "item_is_locked" = "Item is locked";
 "edit_tags" = "Edit Tags";
-"add_tag" = "Add Tag";
+"add_tag" = "Add new Tag";
 "view_stats" = "View Stats";
 "find_stats_menu" = "You can find stats any time in the Menu";
 "go_to_pets_mounts" = "Go to Pets & Mounts";

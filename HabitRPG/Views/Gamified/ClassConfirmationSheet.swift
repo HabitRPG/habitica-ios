@@ -69,12 +69,12 @@ struct ClassConfirmationSheet: View {
                 .scaledFont(size: 22, weight: .bold)
                 .foregroundStyle(textColor)
                 .padding(.horizontal, 50)
-        }, title: Text(L10n.classChangeSuccessSubtitle), description: VStack {
+        }, title: Text(L10n.classChangeSuccessSubtitle), description: VStack(spacing: 20) {
             Text(L10n.classChangeSuccessDescription)
             Text(L10n.findStatsMenu).scaledFont(size: 15, weight: .semibold)
                 .foregroundStyle(Color(themeService.theme.ternaryTextColor))
         }) {
-            HabiticaButtonUI(label: Text(L10n.viewStats), color: Color(themeService.theme.tintColor)) {
+            HabiticaButtonUI(label: Text(L10n.viewStats), color: Color(themeService.theme.fixedTintColor)) {
                 presentationManager.dismiss()
                 RouterHandler.shared.handle(urlString: "/user/stats")
             }

@@ -308,6 +308,8 @@ internal enum Asset {
   internal static let stableTileOctober = ImageAsset(name: "stable_tile_october")
   internal static let stableTileSeptember = ImageAsset(name: "stable_tile_september")
   internal static let star = ImageAsset(name: "star")
+  internal static let statSparklesLeft = ImageAsset(name: "stat_sparkles_left")
+  internal static let statSparklesRight = ImageAsset(name: "stat_sparkles_right")
   internal static let streak = ImageAsset(name: "streak")
   internal static let streakAchievement = ImageAsset(name: "streak_achievement")
   internal static let subBenefitDrops = ImageAsset(name: "sub_benefit_drops")

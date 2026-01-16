@@ -221,11 +221,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == StoryboardSegue.Main.openGiftSubscriptionDialog.rawValue {
-            let navigationController = segue.destination as? UINavigationController
-            let giftSubscriptionController = navigationController?.topViewController as? GiftSubscriptionViewController
-            giftSubscriptionController?.giftRecipientUsername = giftRecipientUsername
-        } else if segue.identifier == StoryboardSegue.Main.giftGemsSegue.rawValue {
+        if segue.identifier == StoryboardSegue.Main.giftGemsSegue.rawValue {
             let navigationController = segue.destination as? UINavigationController
             let giftSubscriptionController = navigationController?.topViewController as? GiftGemsViewController
             giftSubscriptionController?.giftRecipientUsername = giftRecipientUsername

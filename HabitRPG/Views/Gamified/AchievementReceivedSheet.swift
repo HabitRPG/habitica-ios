@@ -27,7 +27,7 @@ struct AchievementReceivedSheet<Title: View, Description: View>: View {
         })
             Text(L10n.youGotAchievement)
                 .scaledFont(size: 22, weight: .bold)
-                .foregroundStyle(Color.yellow1)
+                .foregroundStyle(Color.orange1)
                 .padding(.horizontal, 50)
                 .fixedSize(horizontal: false, vertical: true)
         }, title: text, description: description, buttons: {

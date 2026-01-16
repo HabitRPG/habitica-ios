@@ -32,7 +32,7 @@ public enum L10n {
   }
   /// Add
   public static var add: String { return L10n.tr("Mainstrings", "add") }
-  /// Add Tag
+  /// Add new Tag
   public static var addTag: String { return L10n.tr("Mainstrings", "add_tag") }
   /// Complete these onboarding tasks and you’ll earn 5 Achievements and 100 Gold once you’re done!
   public static var adventureGuideDescription: String { return L10n.tr("Mainstrings", "adventure_guide_description") }
@@ -870,11 +870,11 @@ public enum L10n {
   public static var ok: String { return L10n.tr("Mainstrings", "ok") }
   /// Onboarding Tasks
   public static var onboardingTasks: String { return L10n.tr("Mainstrings", "onboarding_tasks") }
-  /// You completed your OnboardingTasks!
+  /// You completed your onboarding tasks!
   public static var onboardingCompleteAchievementTitle: String { return L10n.tr("Mainstrings", "onboardingComplete_achievement_title") }
   /// If you want even more, check out Achievements and start collecting!
   public static var onboardingCompleteDescription: String { return L10n.tr("Mainstrings", "onboardingCompleteDescription") }
-  /// You earned 5 Achievements and 100 Gold for your efforts.
+  /// You earned **5 Achievements** and **[100 Gold](/fake)** for your efforts.
   public static var onboardingCompleteTitle: String { return L10n.tr("Mainstrings", "onboardingCompleteTitle") }
   /// 1 Filter
   public static var oneFilter: String { return L10n.tr("Mainstrings", "one_filter") }
@@ -2948,7 +2948,7 @@ public enum L10n {
     public static var perceptionText: String { return L10n.tr("Mainstrings", "stats.perception_text") }
     /// Perception
     public static var perceptionTitle: String { return L10n.tr("Mainstrings", "stats.perception_title") }
-    /// %d Point to Allocate
+    /// %d Points to Allocate
     public static func pointsToAllocate(_ p1: Int) -> String {
       return L10n.tr("Mainstrings", "stats.points_to_allocate", p1)
     }

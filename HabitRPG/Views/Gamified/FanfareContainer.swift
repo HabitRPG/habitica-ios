@@ -39,6 +39,8 @@ struct FanfareContainer<Content: View>: View {
         }.onAppear {
             animating = true
         }
+        .frame(height: 220)
+        .padding(.top, 10)
     }
 }
 
