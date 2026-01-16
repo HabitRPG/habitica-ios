@@ -129,7 +129,7 @@
 /* (No Comment) */
 "inventory.number_gems_left" = "Gemmes mensuelles : %d/%d restantes";
 /* (No Comment) */
-"inventory.wrong_class" = "Seulement disponible pour les %@s. Vous pouvez changer votre classe dans Paramètres.";
+"inventory.wrong_class" = "Seulement disponible pour les %@s. Vous pouvez changer votre classe dans les Paramètres.";
 /* (No Comment) */
 "invite_party" = "Inviter l'équipe";
 /* (No Comment) */
@@ -393,7 +393,7 @@
 "titles.guidelines" = "Règles";
 "titles.invite_members" = "Inviter des membres";
 "titles.spells" = "Sorts";
-"stats.points_to_allocate" = "%d points à allouer";
+"stats.points_to_allocate" = "%d Points à allouer";
 "stats.auto_allocate_points" = "Attribuer automatiquement les points";
 "stats.distribute_evenly" = "Répartir équitablement";
 "stats.distribute_evenly_help" = "Affecte le même nombre de points à chaque attribut.";
@@ -1066,8 +1066,8 @@
 "mountMasterTitle" = "Maître des Montures";
 "beastMasterTitle" = "Maître des Bêtes";
 "partyOnDescription" = "Votre équipe à grandi jusqu’à 4 membres !";
-"onboardingComplete_achievement_title" = "Vous avez complété vos Tâches d’Intégration !";
-"onboardingCompleteTitle" = "Vous avez reçu 5 succès et 100 pièces d’or pour vos efforts.";
+"onboardingComplete_achievement_title" = "Vous avez complété vos tâches d’intégration !";
+"onboardingCompleteTitle" = "Vous avez reçu **5 succès** et **[100 pièces d'or](/fake)** pour vos efforts.";
 "view_onboarding_tasks" = "Voir les Tâches d’Intégration";
 "first_drop_title" = "Vous avez trouvé des nouveaux Objets !";
 "go_to_items" = "Allez voir vos Objets";
@@ -1189,7 +1189,7 @@
 "use_immediately_disclaimer" = "Cela prendra effet immédiatement après l'achat !";
 "unlocks_selecting_class_prompt" = "Maintenant que vous avez atteint le niveau 10, choisissez une classe !";
 "unlocks_selecting_class_description" = "Les compétences sont débloquées à partir du niveau dix dès lors que vous choisissez une classe";
-"class_system_enable_instructions" = "Vous pouvez activer le système de classe depuis les paramètres de l'application.";
+"class_system_enable_instructions" = "Vous pouvez activer le système de classe depuis les paramètres de l'application pour choisir une classe plus tard";
 "class_system_disabled" = "Système de classe désactivé.";
 "could_not_gift_gems" = "Impossible d'offrir les gemmes. Veuillez réessayer plus tard.";
 "end_challenge_description" = "Pour clôturer un défi, connectez-vous sur le site Habitica et utilisez le bouton \"Clore le défi\" à droite dans l'écran du défi.";
@@ -1625,7 +1625,7 @@
 "mount" = "Monture";
 "joined_x" = "Inscrit·e le %s";
 "equipped_gear" = "Équipement Porté";
-"stable.pets_and_mounts" = "Familiers et Montures";
+"stable.pets_and_mounts" = "Familiers & Montures";
 "challenges_won" = "Défis Remportés";
 "player_not_won_challenges" = "L·e·a Joueu·r·se n'a remporté aucun défi.";
 "player_not_completed_quests" = "L·e·a Joueu·r·se n'a pas accompli de quêtes.";
@@ -1635,7 +1635,7 @@
 "standard_mounts" = "Montures Standards";
 "none" = "Vide";
 "logins" = "Connexions";
-"add_tag" = "Ajouter une Étiquette";
+"add_tag" = "Ajouter une nouvelle Étiquette";
 "item_is_locked" = "L'Objet n'est pas utilisable";
 "edit_tags" = "Éditer les Étiquettes";
 "unlocked_another_checkin_prize" = "Vous avez débloqué une nouvelle récompense de connexion !";
@@ -1660,3 +1660,6 @@
 "fcv_streak_explanation" = "Vous pouvez restaurer vos combos sur des tâches individuelles en cliquant dessus pour les éditer";
 "checkin_prize_set_description" = "Vous avez obtenu un ensemble de %s grâce à vos efforts pour rendre votre vie meilleur";
 "next_prize_in_1_checkin" = "Prochaine récompense dans 1 jour !";
+"x_gems_for_y" = "%d Gemmes pour %s";
+"loading" = "Chargement";
+"more_gem_packs" = "Plus de packs de Gemmes";
