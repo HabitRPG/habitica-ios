@@ -39,6 +39,7 @@ class UserManager: NSObject {
     
     func stopListening() {
         disposable.dispose()
+        disposable = CompositeDisposable()
     }
 
     func prepareForLogout() {
