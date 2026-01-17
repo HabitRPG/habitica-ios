@@ -1036,14 +1036,14 @@
 "empty.inbox.description" = "下からチャットを始めましょう！ 友好的に接してコミュニティガイドラインを守ることを忘れないでください。";
 "gift_gems_disclaimer" = "Habiticaはプレイヤー間のジェムの贈答を強制しません。他のプレイヤーにジェムを要求することはコミュニティガイドラインに違反します。この行為を見かけた方はadmin@habitica.comまでご連絡ください。";
 "gift_gems_alert_prompt" = "受け取る人の@ユーザー名を入力してください";
-"gift_gems_alert_title" = "誰にプレゼントを贈りたいですか？";
+"gift_gems_alert_title" = "ジェムを贈る";
 "gift_gems_prompt" = "どなたかに輝くジェムを送りたいですか？";
 "gift_sent_confirmation" = "プレゼントを贈りました！";
 "gift_gems_explanation_balance" = "贈りたいジェムの数を記入するか、タブを切り替えて贈るためのジェムを購入してください";
 "learn_more" = "もっと詳しく知る";
 "insufficient_hourglasses_message_subscriber" = "このアイテムを購入するにはもっと神秘の砂時計が必要です！ 砂時計を受け取り続けるために有料プランを継続しましょう。";
 "insufficient_hourglasses_message" = "このアイテムを購入するにはもっと神秘の砂時計が必要です！ 神秘の砂時計は有料プランを数カ月継続すると獲得できます。";
-"more_gems_message" = "このアイテムを購入するにはもっとジェムが必要です！";
+"more_gems_message" = "ジェムが足りません";
 "complete_more_tasks" = "このアイテムを購入するにはもっとタスクをこなす必要があります！";
 "complete_task_description" = "ごほうびをもらうためにいずれかのタスクをチェックしましょう";
 "create_task_description" = "今週中に達成したいことをタスクとして追加しましょう";
@@ -1114,7 +1114,7 @@
 "onboardingCompleteDescription" = "もっとほしいなら、実績を確認してコレクションをはじめましょう！";
 "block" = "ブロック";
 "adventure_guide_description" = "これらの初心者入門のタスクを完了して、5つの実績バッジと100ゴールドをゲットしましょう！";
-"onboardingCompleteTitle" = "がんばったので5つの実績と100ゴールドを入手しました。";
+"onboardingCompleteTitle" = "がんばったので**5つの実績**と**[100ゴールド](/fake)**を入手しました。";
 "game_mechanics" = "ゲームの仕組み";
 "support.suggestions_button" = "フィードバックを送る";
 "support.suggestions_description" = "Habiticaがもっと上手く機能しそうな仕組みや新しいアイデアをお持ちですか？是非教えてください！";
@@ -1267,7 +1267,7 @@
 "tasks.tasks" = "タスク";
 "tasks.form.adjust_counter" = "回数を修正";
 "tasks.form.reset_counter" = "カウンターをリセット";
-"next_prize_in_x_checkins" = "次に賞品が受け取れるのは計%d日目のログインです";
+"next_prize_in_x_checkins" = "あと%d日間で次の賞品が受け取れます！";
 "tasks.form.none" = "なし";
 "scheduled" = "期限付き";
 "not_due" = "期限なし";
@@ -1640,7 +1640,7 @@
 "edit_tags" = "タグを編集";
 "pets_found" = "見つけたペット";
 "item_is_locked" = "このアイテムはロックされています";
-"add_tag" = "タグを追加";
+"add_tag" = "新しいタグを追加";
 "equipped_gear" = "身に着けた装備品";
 "player_not_won_challenges" = "このプレイヤーはまだチャレンジに優勝していません。";
 "unlocked_another_checkin_prize" = "次のチェックインの賞品がアンロックされました！";
@@ -1658,3 +1658,7 @@
 "empty.challenges" = "チャレンジに参加していません";
 "empty.messages" = "メッセージはありません";
 "empty.messages_description" = "メッセージを送って、パーティーのメンバーやほかのプレイヤーと会話を始めましょう";
+"purchased_amount" = "%d個の%@を購入しました";
+"gift_gems_alert_text" = "だれにプレゼントを贈りたいですか？";
+"hatch_pet_new_title" = "新しいペットを孵す";
+"next_prize_in_1_checkin" = "あと1日で次の賞品が受け取れます！";
