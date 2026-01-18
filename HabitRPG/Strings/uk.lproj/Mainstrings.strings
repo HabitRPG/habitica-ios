@@ -150,7 +150,7 @@
 "settings.danger_zone" = "Небезпечна Зона";
 "settings.login_methods" = "Засоби Входу";
 "settings.reset_account" = "Скинути Акаунт";
-"settings.updated_password" = "Оновлено Пароль";
+"settings.updated_password" = "Пароль успішно змінено";
 "settings.delete_account" = "Видалити Акаунт";
 "settings.delete_account_description" = "Акаунт буде видалено назавжди без можливості відновлення! Куплені або витрачені Самоцвіти не будуть повернуті. Якщо ви абсолютно впевнені, введіть свій пароль в текстове поле знизу.";
 "settings.delete_account_description_social" = "Акаунт буде видалено назавжди без можливості відновлення! Куплені або витрачені Самоцвіти не будуть повернуті. Якщо ви абсолютно впевнені, введіть DELETE в текстове поле знизу.";
@@ -1125,3 +1125,4 @@
 "accessibility.score_habit_down" = "Понизити оцінку звички";
 "settings.daily_reminder_permission_needed" = "Увімкніть сповіщення в Налаштуваннях, щоб користуватися щоденними нагадуваннями";
 "settings.change_class_title" = "Змінити клас за 3 Самоцвіти?";
+"settings.user_data" = "Дані користувача";
