@@ -222,7 +222,16 @@ struct TaskFilterPage: View {
 
     var body: some View {
         VStack {
-            VStack {
+            VStack(alignment: .leading, spacing: 10) {
+                Group {
+                    if viewModel.taskType == "habit" {
+                        Text(L10n.taskHealth)
+                    } else {
+                        Text(L10n.taskStatus)
+                    }
+                }.foregroundStyle(Color(themeService.theme.secondaryTextColor))
+                    .scaledFont(size: 15, weight: .semibold)
+                    .padding(.leading, 16)
                 Picker(selection: $viewModel.selectedFilterType) {
                     if viewModel.taskType == "habit" {
                         Text(L10n.all).tag(0)

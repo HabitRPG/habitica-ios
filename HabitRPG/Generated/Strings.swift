@@ -1306,10 +1306,14 @@ public enum L10n {
   public static var takeMeBack: String { return L10n.tr("Mainstrings", "take_me_back") }
   /// Tap to Show
   public static var tapToShow: String { return L10n.tr("Mainstrings", "tap_to_show") }
+  /// Task Health
+  public static var taskHealth: String { return L10n.tr("Mainstrings", "task_health") }
   /// Task History (Very Experimental)
   public static var taskHistory: String { return L10n.tr("Mainstrings", "task_history") }
   /// Task Reminder
   public static var taskReminder: String { return L10n.tr("Mainstrings", "task_reminder") }
+  /// Task Status
+  public static var taskStatus: String { return L10n.tr("Mainstrings", "task_status") }
   /// Teleporting to Habitica
   public static var teleportingHabitica: String { return L10n.tr("Mainstrings", "teleporting_habitica") }
   /// Terms of Service

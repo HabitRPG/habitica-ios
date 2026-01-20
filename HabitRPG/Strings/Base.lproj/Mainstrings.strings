@@ -1509,3 +1509,5 @@
 "more_gem_packs" = "More Gem packs";
 "x_gems_for_y" = "%d Gems for %s";
 "loading" = "Loading";
+"task_health" = "Task Health";
+"task_status" = "Task Status";

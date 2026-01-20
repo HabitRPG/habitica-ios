@@ -520,7 +520,7 @@ struct ProfilePage: View {
                             .profileContainer()
                     } else {
                         VStack(spacing: 8) {
-                            ForEach(member.achievements?.quests ?? [], id: \.key) { questAchievement in
+                            ForEach(member.achievements?.quests.sorted(by: { $0.index < $1.index }) ?? [], id: \.index) { questAchievement in
                                 HStack(spacing: 15) {
                                     Text("\(questAchievement.optionalCount)")
                                         .scaledFont(size: 15, weight: .semibold)
@@ -549,7 +549,7 @@ struct ProfilePage: View {
                             .profileContainer()
                     } else {
                         VStack(spacing: 8) {
-                            ForEach(challenges, id: \.index) { challenge in
+                            ForEach(challenges.sorted(by: { $0.index < $1.index }), id: \.index) { challenge in
                                 HStack(spacing: 15) {
                                     AchievementIconView(achievement: challenge)
                                     Text(challenge.title ?? "")

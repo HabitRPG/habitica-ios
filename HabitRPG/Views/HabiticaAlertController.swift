@@ -277,7 +277,6 @@ class HabiticaAlertController: UIViewController, Themeable {
             if #available(iOS 26.0, *) {
                 button.cornerConfiguration = .capsule()
                 button.tintColor = color
-                container.foregroundColor = .white
             } else {
                 button.backgroundColor = color
                 button.cornerRadius = UIConstants.mediumCornerRadius
@@ -287,7 +286,7 @@ class HabiticaAlertController: UIViewController, Themeable {
                 button.layer.shadowOpacity = 0.5
                 button.layer.masksToBounds = false
             }
-            container.foregroundColor = .white
+            button.setTitleColor(.white, for: .normal)
         } else {
             if #available(iOS 26.0, *) {
                 button.cornerConfiguration = .capsule()

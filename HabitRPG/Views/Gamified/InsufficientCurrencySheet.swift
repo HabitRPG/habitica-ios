@@ -58,8 +58,9 @@ struct InsufficientGemsSheet: View {
                                               title: Text(L10n.moreGemsMessage),
                                               content: Text(L10n.gemsSupportDevelopers)) {
             HabiticaButtonUI(label: Text(price.isEmpty ? L10n.loading : L10n.xGemsForY(4, price)), color: Color(ThemeService.shared.theme.fixedTintColor)) {
-                presentationManager.dismiss()
-                RouterHandler.shared.handle(.purchaseGems)
+                PurchaseHandler.shared.purchaseGems(PurchaseHandler.IAPIdentifiers[0], applicationUsername: "") { _ in
+                    presentationManager.dismiss()
+                }
             }.disabled(price.isEmpty)
             HabiticaButtonUI(label: Text(L10n.moreGemPacks).foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor)), color: Color(ThemeService.shared.theme.windowBackgroundColor)) {
                 presentationManager.dismiss()
