@@ -258,7 +258,6 @@ struct ArmoireView: View {
                 }
                     PixelArtView(source: viewModel.icon)
                         .frame(width: viewModel.iconWidth, height: viewModel.iconHeight)
-                        .opacity(1)
                         .offset(y: isBobbing ? 5 : -5)
                     .frame(width: 158, height: 158)
                     .background(Color(UIColor.gray700))

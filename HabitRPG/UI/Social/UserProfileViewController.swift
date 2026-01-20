@@ -195,7 +195,7 @@ struct StatsViewUI: View {
             .scaledFont(size: 22, weight: .bold)
             .padding(.vertical, 8)
             .padding(.horizontal, 26)
-            .frame(minHeight: 28)
+            .frame(minHeight: 43)
             .background(upperBackgroundColor)
             .foregroundStyle(upperTextColor)
             HStack {
@@ -209,7 +209,7 @@ struct StatsViewUI: View {
                 makeEntry(value: allocatedValue, name: L10n.allocated)
                 Spacer()
             }.padding(.vertical, 16)
-                .foregroundStyle(Color(themeService.theme.ternaryTextColor))
+                .foregroundStyle(Color(themeService.theme.secondaryTextColor))
         }.background(Color(themeService.theme.windowBackgroundColor))
             .cornerRadius(UIConstants.largeCornerRadius)
     }

@@ -68,6 +68,13 @@ class FixCharacterViewController: BaseTableViewController {
         }).start())
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        userRepository.retrieveUser(forced: true).observeCompleted {
+            
+        }
+    }
+    
     private func sizeHeaderToFit() {
         guard let headerView = tableView.tableHeaderView else {
             return
