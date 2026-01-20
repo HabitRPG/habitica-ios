@@ -167,6 +167,7 @@ class LoginViewModel: ObservableObject {
         userRepository.retrieveUser(forced: true)
             .combineLatest(with: userRepository.retrieveGroupPlans())
             .observeCompleted {[weak self] in
+                UserManager.shared.beginListening()
                 self?.viewController?.showNextViewController(segueName: isNewUser ? "SetupSegue" : "MainSegue")
                 self?.username = ""
                 self?.email = ""
