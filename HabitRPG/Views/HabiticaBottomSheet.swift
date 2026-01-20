@@ -17,6 +17,7 @@ protocol QueueableViewController {
     func showVC() -> Bool
     var isBeingPresented: Bool { get }
     var isMovingToParent: Bool { get }
+    var isCurrentlyPresented: Bool { get }
 }
 
 private class QueueManager {
@@ -27,8 +28,7 @@ private class QueueManager {
     private static var isQueueStuck: Bool {
         if let vc = displayQueue.first?.viewController {
             // There is a viewcontroller in the queue but it's not showing.
-            
-            return !vc.isBeingPresented && !vc.isMovingToParent
+            return !vc.isBeingPresented && !vc.isMovingToParent && !vc.isCurrentlyPresented
         }
         return false
     }
@@ -139,6 +139,10 @@ class HostingBottomSheetController<ContentView: View>: UIHostingController<Conte
         QueueManager.showNext()
     }
     
+    var isCurrentlyPresented: Bool {
+        return presentingViewController != nil
+    }
+
     @discardableResult
     func showVC() -> Bool {
         guard let top = UIApplication.shared.topmostViewController, top != self else {

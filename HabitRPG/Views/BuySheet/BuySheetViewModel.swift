@@ -357,7 +357,7 @@ class BuySheetViewModel: ViewModel {
         HabiticaAnalytics.shared.log("show insufficient gems modal", withEventProperties: ["reason": "purchase modal", "item": reward?.key ?? ""])
         let sheet = InsufficientGemsSheet()
         let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
-        viewController.show(immediately: true)
+        viewController.show()
     }
     
     static func displayInsufficientGoldModal() {
@@ -370,13 +370,13 @@ class BuySheetViewModel: ViewModel {
                                               content: Text(L10n.completeMoreTasks)) {
         }
         let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
-        viewController.show(immediately: true)
+        viewController.show()
     }
     
     static func displayInsufficientHourglassesModal(user: UserProtocol?) {
         let sheet = InsufficientHourglassesSheet(isSubscribed: user?.isSubscribed == true)
         let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
-        viewController.show(immediately: true)
+        viewController.show()
     }
     
     static func displayGemCapReachedModal() {
