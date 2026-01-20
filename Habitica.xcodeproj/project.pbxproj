@@ -1572,18 +1572,18 @@
 		290B62A0207F814D007287C4 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				2919FDDE2091D87A0096A53B /* FaintViewController.swift */,
 				2953D84128B6564A00DC456E /* ArmoireViewController.swift */,
-				290C3016206A963D0066AF5B /* MainMenuViewController.swift */,
-				299FB2A02084A93100422522 /* HabiticaSplitViewController.swift */,
+				29A9B056228082BF0049291E /* BaseCollectionViewController.swift */,
+				29CAC3CA2A3A1288006DF74D /* BaseHostingViewController.swift */,
 				2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */,
 				29A9B0542280825A0049291E /* BaseUIViewController.swift */,
-				29A9B056228082BF0049291E /* BaseCollectionViewController.swift */,
-				295BC6E3226F0F9500DDDF1A /* NotificationsTableViewController.swift */,
+				2919FDDE2091D87A0096A53B /* FaintViewController.swift */,
+				299FB2A02084A93100422522 /* HabiticaSplitViewController.swift */,
 				2927024224E2D83700BCAA77 /* HallOfContributorsViewController.swift */,
 				2927024924E303CB00BCAA77 /* HallOfPatronsViewController.swift */,
+				290C3016206A963D0066AF5B /* MainMenuViewController.swift */,
 				29BEEB2E253EFA7300D456F8 /* MaintenanceViewController.swift */,
-				29CAC3CA2A3A1288006DF74D /* BaseHostingViewController.swift */,
+				295BC6E3226F0F9500DDDF1A /* NotificationsTableViewController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -4163,7 +4163,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Habitica β";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_MAP_FILE_PATH = "$(TARGET_TEMP_DIR)/Habitica-LinkMap-$(CURRENT_VARIANT)-$(CURRENT_ARCH).txt";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4401,7 +4401,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Widgets/Info.plist";
 				INTENTS_CODEGEN_LANGUAGE = Swift;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4542,7 +4542,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Habitica σ";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_MAP_FILE_PATH = "$(TARGET_TEMP_DIR)/Habitica-LinkMap-$(CURRENT_VARIANT)-$(CURRENT_ARCH).txt";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4780,7 +4780,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Widgets/Info.plist";
 				INTENTS_CODEGEN_LANGUAGE = Swift;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4923,7 +4923,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Widgets/Info.plist";
 				INTENTS_CODEGEN_LANGUAGE = Swift;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4972,7 +4972,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Widgets/Info.plist";
 				INTENTS_CODEGEN_LANGUAGE = Swift;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5474,7 +5474,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5552,7 +5552,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Habitica;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

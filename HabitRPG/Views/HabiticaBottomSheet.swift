@@ -13,10 +13,24 @@ protocol Dismissable {
     var dismisser: Dismisser { get set }
 }
 
+protocol QueueableViewController {
+    func showVC() -> Bool
+    var isBeingPresented: Bool { get }
+    var isMovingToParent: Bool { get }
+}
+
 private class QueueManager {
-    static var displayQueue: [(presentation: () -> Bool, retryCount: Int)] = []
+    static var displayQueue: [(viewController: QueueableViewController, retryCount: Int)] = []
     static var showingSheet: Bool {
         return displayQueue.isEmpty == false
+    }
+    private static var isQueueStuck: Bool {
+        if let vc = displayQueue.first?.viewController {
+            // There is a viewcontroller in the queue but it's not showing.
+            
+            return !vc.isBeingPresented && !vc.isMovingToParent
+        }
+        return false
     }
     private static let maxRetries = 5
     private static let retryDelay: TimeInterval = 0.3
@@ -26,11 +40,15 @@ private class QueueManager {
             attemptPresentation()
         }
     }
+    
+    private static func unstick() {
+        displayQueue.removeFirst()
+    }
 
     private static func attemptPresentation() {
         guard var current = displayQueue.first else { return }
 
-        let presented = current.presentation()
+        let presented = current.viewController.showVC()
         if !presented {
             current.retryCount += 1
             if current.retryCount < maxRetries {
@@ -52,17 +70,20 @@ private class QueueManager {
         }
     }
 
-    static func enqueue(_ presentation: @escaping () -> Bool) {
+    static func enqueue(_ viewController: QueueableViewController) {
+        if isQueueStuck {
+            unstick()
+        }
         if !showingSheet {
-            displayQueue.append((presentation: presentation, retryCount: 0))
+            displayQueue.append((viewController: viewController, retryCount: 0))
             showCurrent()
         } else {
-            displayQueue.append((presentation: presentation, retryCount: 0))
+            displayQueue.append((viewController: viewController, retryCount: 0))
         }
     }
 }
 
-class HostingBottomSheetController<ContentView: View>: UIHostingController<ContentView>, HostingViewController {
+class HostingBottomSheetController<ContentView: View>: UIHostingController<ContentView>, HostingViewController, QueueableViewController {
     private var bottomInset: CGFloat = 0
     
     private let allowLargeDetent: Bool
@@ -118,19 +139,27 @@ class HostingBottomSheetController<ContentView: View>: UIHostingController<Conte
         QueueManager.showNext()
     }
     
-    func show() {
-        QueueManager.enqueue {
-            guard let top = UIApplication.shared.topmostViewController, top != self else {
-                return false
-            }
-            if top.isBeingDismissed || top.isBeingPresented {
-                return false
-            }
-            if top.presentedViewController != nil {
-                return false
-            }
-            top.present(self, animated: true)
-            return true
+    @discardableResult
+    func showVC() -> Bool {
+        guard let top = UIApplication.shared.topmostViewController, top != self else {
+            return false
+        }
+        if top.isBeingDismissed || top.isBeingPresented {
+            return false
+        }
+        if top.presentedViewController != nil {
+            return false
+        }
+        top.present(self, animated: true)
+        return true
+    }
+    
+    func show(immediately: Bool = false) {
+        if immediately {
+            showVC()
+            isBeingPresented
+        } else {
+            QueueManager.enqueue(self)
         }
     }
 }

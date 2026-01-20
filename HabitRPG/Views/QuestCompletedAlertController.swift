@@ -23,6 +23,7 @@ class QuestCompletedAlertController: HabiticaAlertController {
     
     init(questKey: String) {
         super.init()
+        maxAlertWidth = 460
         title = L10n.questCompletedTitle
         addAction(title: L10n.onwards, style: .default, isMainAction: true) { _ in
             self.userRepository.syncUserStats().observeCompleted {

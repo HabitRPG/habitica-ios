@@ -196,7 +196,7 @@ public enum L10n {
   }
   /// Class System disabled.
   public static var classSystemDisabled: String { return L10n.tr("Mainstrings", "class_system_disabled") }
-  /// You can enable the class system from the apps settings.
+  /// You can enable the class system from Settings to choose a class later
   public static var classSystemEnableInstructions: String { return L10n.tr("Mainstrings", "class_system_enable_instructions") }
   /// Class system unlocked
   public static var classSystemUnlocked: String { return L10n.tr("Mainstrings", "class_system_unlocked") }
@@ -1805,25 +1805,25 @@ public enum L10n {
     }
     /// Healer
     public static var healer: String { return L10n.tr("Mainstrings", "classes.healer") }
-    /// Healers stand impervious against harm, and extend that protection to others. Missed Dailies and bad Habits don't faze them much, and they have ways to recover Health from failure. Play a Healer if you enjoy assisting others in your Party, or if the idea of cheating Death through hard work inspires you!
+    /// Healers learn Skills that can heal and protect themselves and their Party. Play a Healer if you enjoy assisting others or avoiding damage! Healers benefit from a high Constitution stat.
     public static var healerDescription: String { return L10n.tr("Mainstrings", "classes.healer_description") }
     /// Healers
     public static var healers: String { return L10n.tr("Mainstrings", "classes.healers") }
     /// Mage
     public static var mage: String { return L10n.tr("Mainstrings", "classes.mage") }
-    /// Mages learn swiftly, gaining Experience and Levels faster than other classes. They also get a great deal of Mana for using special abilities. Play a Mage if you enjoy the tactical game aspects of Habitica, or if you are strongly motivated by leveling up and unlocking advanced features!
+    /// Mages learn Skills that damage Bosses and boost EXP and Mana. Play a Mage if you’re motivated by leveling up quickly! Mages benefit from a high Intelligence stat.
     public static var mageDescription: String { return L10n.tr("Mainstrings", "classes.mage_description") }
     /// Mages
     public static var mages: String { return L10n.tr("Mainstrings", "classes.mages") }
     /// Rogue
     public static var rogue: String { return L10n.tr("Mainstrings", "classes.rogue") }
-    /// Rogues love to accumulate wealth, gaining more Gold than anyone else, and are adept at finding random items. Their iconic Stealth ability lets them duck the consequences of missed Dailies. Play a Rogue if you find strong motivation from Rewards and Achievements, striving for loot and badges!
+    /// Rogues learn Skills that let them and their Party find more Gold and random drops. Play a Rogue if you want lots of items and Gold! Rogues benefit from a high Perception stat.
     public static var rogueDescription: String { return L10n.tr("Mainstrings", "classes.rogue_description") }
     /// Rogues
     public static var rogues: String { return L10n.tr("Mainstrings", "classes.rogues") }
     /// Warrior
     public static var warrior: String { return L10n.tr("Mainstrings", "classes.warrior") }
-    /// Warriors score more and better "critical hits", which randomly give bonus Gold, Experience, and drop chance for scoring a task. They also deal heavy damage to boss monsters. Play a Warrior if you find motivation from unpredictable jackpot-style rewards, or want to dish out the hurt in boss Quests!
+    /// Warriors score more critical hits and deal heavy damage to Bosses. Play a Warrior if you want to defeat monsters easily! Warriors benefit from a high Strength stat.
     public static var warriorDescription: String { return L10n.tr("Mainstrings", "classes.warrior_description") }
     /// Warriors
     public static var warriors: String { return L10n.tr("Mainstrings", "classes.warriors") }
@@ -2875,7 +2875,7 @@ public enum L10n {
     }
     /// Feed
     public static var feed: String { return L10n.tr("Mainstrings", "stable.feed") }
-    /// Pets and Mounts
+    /// Pets & Mounts
     public static var petsAndMounts: String { return L10n.tr("Mainstrings", "stable.pets_and_mounts") }
     /// Magic Potion
     public static var premium: String { return L10n.tr("Mainstrings", "stable.premium") }

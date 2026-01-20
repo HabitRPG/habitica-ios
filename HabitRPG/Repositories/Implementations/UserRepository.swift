@@ -477,8 +477,10 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return SelectClassCall(class: habiticaClass).httpResponseSignal
             .on(value: { response in
                 if response.statusCode == 200, let habiticaClass = habiticaClass {
-                    let viewController = HostingBottomSheetController(rootView: ClassConfirmationSheet(selectedClass: habiticaClass))
-                    viewController.show()
+                    let viewController = HostingBottomSheetController(rootView: ClassConfirmationSheet(selectedClass: habiticaClass), prefersGrabberVisible: false)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        viewController.show()
+                    }
                     
                     UIApplication.requestReview()
                 }

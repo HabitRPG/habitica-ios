@@ -95,9 +95,6 @@ class MainTabBarController: UITabBarController {
         super.viewDidAppear(animated)
         presentingViewController?.willMove(toParent: nil)
         presentingViewController?.removeFromParent()
-        
-        let sheet = HostingBottomSheetController(rootView: OnboardingCompletedSheet())
-        sheet.show()
     }
     
     private func fetchData() {

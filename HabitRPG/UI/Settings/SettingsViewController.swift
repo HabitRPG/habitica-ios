@@ -974,7 +974,7 @@ class SettingsViewController: FormViewController, Themeable {
                     BuySheetViewModel.displayInsufficientGemsModal(reason: "class change")
                     return
                 }
-                _ = UserManager.shared.showClassSelection(user: user)
+                UserManager.shared.showClassSelection(user: user)
             }
             alertController.addCancelAction()
             alertController.show()

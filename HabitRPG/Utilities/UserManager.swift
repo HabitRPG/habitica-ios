@@ -224,6 +224,7 @@ class UserManager: NSObject {
         return faintViewController
     }
     
+    @discardableResult
     func showClassSelection(user: UserProtocol) -> Bool {
         if let lastSelection = lastClassSelectionDisplayed, lastSelection.timeIntervalSinceNow > -10 {
             return false

@@ -33,7 +33,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     private var shouldCloseOnButtonTap = [Int: Bool]()
     
     var dismissOnBackgroundTap = true
-    var maxAlertWidth: CGFloat = 340
+    var maxAlertWidth: CGFloat = 300
     
     var onKeyboardChange: ((Bool) -> Void)?
     var onDismissAction: (() -> Void)?
@@ -95,8 +95,8 @@ class HabiticaAlertController: UIViewController, Themeable {
         }
     }
     
-    var containerViewSpacing: CGFloat = 24
-    var topOffset: CGFloat = 20
+    var containerViewSpacing: CGFloat = 20
+    var topOffset: CGFloat = 24
         
     convenience init(attributedTitle newTitle: NSAttributedString?, message newMessage: String? = nil) {
         self.init()
@@ -262,19 +262,22 @@ class HabiticaAlertController: UIViewController, Themeable {
         }
         button.titleLabel?.lineBreakMode = .byWordWrapping
         button.titleLabel?.textAlignment = .center
-        button.setTitle(title, for: .normal)
+        var buttonConfig = UIButton.Configuration.plain()
+        if #available(iOS 26.0, *) {
+            buttonConfig = .prominentGlass()
+        }
+        var container = AttributeContainer()
+        container.font = UIFont.boldSystemFont(ofSize: 17)
         var color = isMainAction ? ThemeService.shared.theme.fixedTintColor : ThemeService.shared.theme.tintColor
         if style == .destructive {
             color = ThemeService.shared.theme.errorColor
         }
         
-        button.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .bold)
         if isMainAction {
-            button.setTitleColor(UIColor.white, for: .normal)
             if #available(iOS 26.0, *) {
                 button.cornerConfiguration = .capsule()
-                button.configuration = .prominentGlass()
                 button.tintColor = color
+                container.foregroundColor = .white
             } else {
                 button.backgroundColor = color
                 button.cornerRadius = UIConstants.mediumCornerRadius
@@ -284,14 +287,16 @@ class HabiticaAlertController: UIViewController, Themeable {
                 button.layer.shadowOpacity = 0.5
                 button.layer.masksToBounds = false
             }
+            container.foregroundColor = .white
         } else {
             if #available(iOS 26.0, *) {
                 button.cornerConfiguration = .capsule()
-                button.configuration = .prominentGlass()
                 button.tintColor = UIColor("787880").withAlphaComponent(0.05)
             }
-            button.setTitleColor(ThemeService.shared.theme.primaryTextColor, for: .normal)
+            container.foregroundColor = ThemeService.shared.theme.primaryTextColor
         }
+        buttonConfig.attributedTitle = AttributedString(title, attributes: container)
+        button.configuration = buttonConfig
 
         button.addHeightConstraint(height: 48, relatedBy: NSLayoutConstraint.Relation.greaterThanOrEqual)
         button.addWidthConstraint(width: 150, relatedBy: NSLayoutConstraint.Relation.greaterThanOrEqual)

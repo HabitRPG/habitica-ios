@@ -37,12 +37,16 @@ public class HabiticaIcons : NSObject {
         static var imageOfGem_36: UIImage?
         static var imageOfWarriorLightBg: UIImage?
         static var imageOfWarriorDarkBg: UIImage?
+        static var imageOfWarriorLarge: UIImage?
         static var imageOfRogueLightBg: UIImage?
         static var imageOfRogueDarkBg: UIImage?
+        static var imageOfRogueLarge: UIImage?
         static var imageOfHealerLightBg: UIImage?
         static var imageOfHealerDarkBg: UIImage?
+        static var imageOfHealerLarge: UIImage?
         static var imageOfMageDarkBg: UIImage?
         static var imageOfMageLightBg: UIImage?
+        static var imageOfMageLarge: UIImage?
         static var imageOfHourglassShop: UIImage?
         static var imageOfDamage: UIImage?
         static var imageOfRageStrikeInactive: UIImage?
@@ -9178,6 +9182,20 @@ public class HabiticaIcons : NSObject {
 
         return Cache.imageOfWarriorDarkBg!
     }
+    
+    @objc dynamic public class var imageOfWarriorLarge: UIImage {
+        if Cache.imageOfWarriorLarge != nil {
+            return Cache.imageOfWarriorLarge!
+        }
+
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 55, height: 55), false, 0)
+            HabiticaIcons.drawWarriorLightBg(frame: CGRect(x: 0, y: 0, width: 55, height: 55))
+
+        Cache.imageOfWarriorLarge = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return Cache.imageOfWarriorLarge!
+    }
 
     @objc dynamic public class var imageOfRogueLightBg: UIImage {
         if Cache.imageOfRogueLightBg != nil {
@@ -9191,6 +9209,20 @@ public class HabiticaIcons : NSObject {
         UIGraphicsEndImageContext()
 
         return Cache.imageOfRogueLightBg!
+    }
+    
+    @objc dynamic public class var imageOfRogueLarge: UIImage {
+        if Cache.imageOfRogueLarge != nil {
+            return Cache.imageOfRogueLarge!
+        }
+
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 55, height: 55), false, 0)
+        HabiticaIcons.drawRogueLightBg(frame: CGRect(x: 0, y: 0, width: 55, height: 55))
+
+        Cache.imageOfRogueLarge = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return Cache.imageOfRogueLarge!
     }
 
     @objc dynamic public class var imageOfRogueDarkBg: UIImage {
@@ -9219,6 +9251,20 @@ public class HabiticaIcons : NSObject {
         UIGraphicsEndImageContext()
 
         return Cache.imageOfHealerLightBg!
+    }
+    
+    @objc dynamic public class var imageOfHealerLarge: UIImage {
+        if Cache.imageOfHealerLarge != nil {
+            return Cache.imageOfHealerLarge!
+        }
+
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 55, height: 55), false, 0)
+            HabiticaIcons.drawHealerLightBg(frame: CGRect(x: 0, y: 0, width: 55, height: 55))
+
+        Cache.imageOfHealerLarge = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return Cache.imageOfHealerLarge!
     }
 
     @objc dynamic public class var imageOfHealerDarkBg: UIImage {
@@ -9261,6 +9307,20 @@ public class HabiticaIcons : NSObject {
         UIGraphicsEndImageContext()
 
         return Cache.imageOfMageLightBg!
+    }
+    
+    @objc dynamic public class var imageOfMageLarge: UIImage {
+        if Cache.imageOfMageLarge != nil {
+            return Cache.imageOfMageLarge!
+        }
+
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 55, height: 55), false, 0)
+            HabiticaIcons.drawMageLightBg(frame: CGRect(x: 0, y: 0, width: 55, height: 55))
+
+        Cache.imageOfMageLarge = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return Cache.imageOfMageLarge!
     }
 
     @objc dynamic public class func imageOfCheckmark(checkmarkColor: UIColor = UIColor(red: 0.529, green: 0.506, blue: 0.565, alpha: 1.000), percentage: CGFloat = 0) -> UIImage {

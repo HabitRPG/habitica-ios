@@ -45,19 +45,19 @@ struct ClassConfirmationSheet: View {
         switch selectedClass {
         case .warrior:
             FanfareContainer(haloColor: .red500, outerRingColor: .red500, plusColor: .red10, content: {
-                Image(uiImage: HabiticaIcons.imageOfWarriorLightBg)
+                Image(uiImage: HabiticaIcons.imageOfWarriorLarge)
             })
         case .mage:
             FanfareContainer(haloColor: .blue500, outerRingColor: .blue500, plusColor: .blue10, content: {
-                Image(uiImage: HabiticaIcons.imageOfMageLightBg)
+                Image(uiImage: HabiticaIcons.imageOfMageLarge)
             })
         case .healer:
             FanfareContainer(haloColor: .yellow500, outerRingColor: .yellow500, plusColor: .yellow10, content: {
-                Image(uiImage: HabiticaIcons.imageOfHealerLightBg)
+                Image(uiImage: HabiticaIcons.imageOfHealerLarge)
             })
         case .rogue:
             FanfareContainer(haloColor: .purple500, outerRingColor: .purple500, plusColor: .purple500, content: {
-                Image(uiImage: HabiticaIcons.imageOfRogueLightBg)
+                Image(uiImage: HabiticaIcons.imageOfRogueLarge)
             })
         }
     }
