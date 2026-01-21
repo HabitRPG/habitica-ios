@@ -291,6 +291,8 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         self.scrollableView = nil
     }
     
+    var lastScrollPos: CGFloat = -1
+    
     @objc
     public func scrollView(_ scrollView: UIScrollView?, scrolledToPosition position: CGFloat) {
         if self.scrollableView != scrollView {
@@ -325,12 +327,15 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         }
         headerYPosition = frame.origin.y
         backgroundView.frame = frame
+        
+        lastScrollPos = position
     }
     
     @objc
     public func setNavigationBarColors() {
         if navbarVisibleColor != defaultNavbarVisibleColor {
             upperBackgroundView.backgroundColor = navbarVisibleColor
+            backgroundView.backgroundColor = .clear
         } else if #unavailable(iOS 26.0) {
             upperBackgroundView.backgroundColor = navbarVisibleColor
             backgroundView.backgroundColor = navbarVisibleColor

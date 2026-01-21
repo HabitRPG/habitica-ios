@@ -36,9 +36,7 @@ class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegat
         topHeaderCoordinator?.alternativeHeader = headerView
         topHeaderCoordinator?.followScrollView = false
         scrollView.delegate = self
-        if #unavailable(iOS 26.0) {
-            topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
-        }
+        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
         
         gearView.title = L10n.Equipment.battleGear
         gearView.switchLabel = L10n.Equipment.autoEquip

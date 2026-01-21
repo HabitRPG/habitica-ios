@@ -249,11 +249,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     
     func loginApple(identityToken: String, name: String, allowRegister: Bool) -> Signal<LoginResponseProtocol?, Never> {
         let call = AppleLoginCall(identityToken: identityToken, name: name, allowRegister: allowRegister)
-        return call.objectSignal.merge(with: call.responseSignal.map({ _ -> LoginResponseProtocol? in
-            let response = APILoginResponse()
-            response.newUser = true
-            return response
-        })).on(value: { loginResponse in
+        return call.objectSignal.on(value: { loginResponse in
             self.updateAuth(response: loginResponse)
         })
     }

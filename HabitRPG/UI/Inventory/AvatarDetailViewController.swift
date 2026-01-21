@@ -34,9 +34,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         if topHeaderCoordinator?.alternativeHeader == nil {
             topHeaderCoordinator?.alternativeHeader = headerView
         }
-        if #unavailable(iOS 26.0) {
-            topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
-        }
+        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
         topHeaderCoordinator?.followScrollView = false
                 
         if let type = customizationType {

@@ -44,11 +44,8 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
         if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
             topHeaderCoordinator = TopHeaderCoordinator(topHeaderNavigationController: topHeaderNavigationController, scrollView: scrollView)
         }
-        topHeaderCoordinator?.hideNavBar = false
         topHeaderCoordinator?.alternativeHeader = headerView
-        if #unavailable(iOS 26.0) {
-            topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
-        }
+        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
         topHeaderCoordinator?.followScrollView = false
         
         setupItemViews()
