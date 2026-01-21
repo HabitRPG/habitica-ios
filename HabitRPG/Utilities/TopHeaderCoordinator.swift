@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum HeaderScrollMode {
+    case slide
+    case scale
+}
+
 class TopHeaderCoordinator: NSObject {
     
     weak var scrollView: UIScrollView?
@@ -22,6 +27,7 @@ class TopHeaderCoordinator: NSObject {
         }
     }
     var followScrollView = true
+    var scrollMode: HeaderScrollMode = .slide
     var navbarVisibleColor: UIColor? {
         didSet {
             if isVisible {

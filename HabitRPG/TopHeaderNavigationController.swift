@@ -58,7 +58,8 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     @objc weak var currentHeaderCoordinator: TopHeaderCoordinator?
     private var gestureRecognizer: UIPanGestureRecognizer?
     private var headerYPosition: CGFloat = 0
-    
+    private var headerXPosition: CGFloat?
+
     private var visibleTintColor = UIColor.gray50
     private var visibleTextColor = UIColor.black
 
@@ -209,7 +210,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         let parentFrame = view.frame
         let topHeaderHeight = self.topHeaderHeight
         let width = parentFrame.size.width + parentFrame.origin.x
-        backgroundView.frame = CGRect(x: -parentFrame.origin.x, y: headerYPosition, width: width, height: topHeaderHeight)
+        backgroundView.frame = CGRect(x: headerXPosition ?? -parentFrame.origin.x, y: headerYPosition, width: width, height: topHeaderHeight)
         upperBackgroundView.frame = CGRect(x: -parentFrame.origin.x, y: 0, width: width, height: bgViewOffset)
         headerView?.frame = CGRect(x: 0, y: 0, width: width, height: defaultHeaderHeight)
         if let header = alternativeHeaderView {
@@ -300,12 +301,28 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         if newYPos > bgViewOffset {
             newYPos = bgViewOffset
         }
-        if (newYPos + frame.size.height) > bgViewOffset, state != .visible {
-            state = .visible
-        } else if state != .hidden {
-            state = .hidden
+        if currentHeaderCoordinator?.scrollMode == .slide {
+            if (newYPos + frame.size.height) > bgViewOffset, state != .visible {
+                state = .visible
+            } else if state != .hidden {
+                state = .hidden
+            }
+            frame.origin.y = newYPos
+        } else if currentHeaderCoordinator?.scrollMode == .scale {
+            backgroundView.layer.anchorPoint = CGPoint(x: -0.5, y: 0)
+            let navbarHeight = navigationBar.frame.height
+            let viewPos = max(newYPos, bgViewOffset-navbarHeight + 6)
+            frame.origin.y = viewPos
+            if viewPos != newYPos {
+                let newSize = max(frame.height - abs(newYPos - viewPos), navbarHeight - 12)
+                let scale = newSize / frame.height
+                backgroundView.transform = CGAffineTransform(scaleX: scale, y: scale)
+                headerXPosition = (frame.size.width - frame.size.width * scale)/2
+            } else {
+                backgroundView.transform = CGAffineTransform(scaleX: 1, y: 1)
+                headerXPosition = 0
+            }
         }
-        frame.origin.y = newYPos
         headerYPosition = frame.origin.y
         backgroundView.frame = frame
     }

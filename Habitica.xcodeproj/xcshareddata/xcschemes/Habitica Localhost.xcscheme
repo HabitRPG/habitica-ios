@@ -72,9 +72,20 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "-CUSTOM_DOMAIN localhost:3000 -DISABLE_SSL true"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-OPEN_URL=/user/avatar"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "OPEN_URL"
+            value = "/user/avatar"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
