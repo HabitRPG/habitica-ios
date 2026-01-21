@@ -29,13 +29,13 @@
 /* (No Comment) */
 "classes.healer" = "医者";
 /* (No Comment) */
-"classes.healer_description" = "医者不惧伤害，并将这种保护延伸到他人身上。未完成的日常任务和坏习惯都不会让他们感到害怕，而且他们有办法在失败后恢复生命值。如果你喜欢在队伍中协助他人，或者通过努力工作来救死扶伤的想法更能激励你，那就选择医者吧！";
+"classes.healer_description" = "医者能学习治疗与保护自身及队友的技能。如果你乐于助人或想要规避伤害，那就选择医者吧！体质是医者的核心属性。";
 /* (No Comment) */
 "classes.mage" = "法师";
 /* (No Comment) */
 "classes.rogue" = "盗贼";
 /* (No Comment) */
-"classes.rogue_description" = "盗贼热衷于积累财富，获得的金币比任何人都多，而且善于寻找随机物品。他们标志性的潜行技能可以让他们躲避未完成的日常任务的伤害。如果奖励、成就、战利品和徽章更能激励你，那就选择盗贼吧！";
+"classes.rogue_description" = "盗贼可习得让自己和队友获得更多金币与随机物品的技能。若你渴望收获海量战利品与财富，那就选择盗贼吧！感知是盗贼的核心属性。";
 /* (No Comment) */
 "classes.warrior" = "战士";
 /* (No Comment) */
@@ -661,8 +661,8 @@
 "intro.card1.text" = "大功告成！接下来，请同两百万玩家一起行动，完成任务，共同提升生活品质吧。";
 "theme.teal" = "蓝绿";
 "equipment.costume_explanation" = "选择“使用服装”来装备你的角色形象不会影响你的战斗装备的属性点！这意味着你可以随便装扮你的角色，而不会改变你的最优属性点的战斗装备。";
-"classes.warrior_description" = "战士可以打出更频繁和更强大的暴击，在完成任务时触发暴击可随机获得额外的金币、经验和物品掉落机会。暴击还可以对boss造成非常强大的伤害。如果不可预知的随机大奖更能激励你，或者想在副本中重创boss，那就选择战士吧！";
-"classes.mage_description" = "法师相比其他职业学习更加迅速，获得经验和提升等级的速度更快。他们还可以使用特殊的职业技能获得大量法力值。如果你喜欢Habitica游戏的策略性部分，或者提升等级和解锁高级功能更能激励你，那就选择法师吧！";
+"classes.warrior_description" = "战士有更高的暴击率，可以对Boss打出更高伤害。若你渴望轻松打败怪物，那就选择战士吧！力量是战士的核心属性。";
+"classes.mage_description" = "法师可习得对BOSS造成伤害并提升经验值与法力值的技能。若你渴望快速升级，那就选择法师吧！智力是法师的核心属性。";
 "party.create_party_description" = "与朋友一起或独自进行副本。与怪物战斗，创建挑战，并通过队伍帮助自己保持责任感。";
 "inactive" = "不活跃";
 "active_on" = "%@ 前有效";
@@ -977,9 +977,9 @@
 "gift_gems_explanation_purchase" = "在下面选择要赠送的宝石数量，或从当前余额中将标签切换到赠送的宝石";
 "gift_gems_disclaimer" = "Habitica决不会要求你向其他玩家赠送宝石。向他人讨要宝石是一种违反社区准则的行为，应举报至admin@habitica.com。";
 "gift_gems_alert_prompt" = "输入收信人的@用户名";
-"gift_gems_alert_title" = "你想将礼物送给谁？";
+"gift_gems_alert_title" = "赠送宝石";
 "gift_gems_prompt" = "想要将闪闪发光的宝石赠送别人吗？";
-"onboardingCompleteTitle" = "你通过努力获得了5项成就和100金币。";
+"onboardingCompleteTitle" = "你通过努力获得了**5项成就**和**100金币**。";
 "purchasedEquipmentDescription" = "装备可以为了实用，也可以只为装饰。提升属性可让你的角色获得各种增益";
 "fedPetDescription" = "每只宠物都有自己喜欢的特定食物！尝试找出哪种食物能让你的宠物长得最快吧";
 "hatchedPetDescription" = "有这么多宠物可以收集，你一定有自己的最爱。如果你喂它们食物，它们就会长大……";
@@ -1139,7 +1139,7 @@
 "pet_accessibility_label_raised" = "%@, 喂养 %d%%";
 "unlocks_selecting_class_prompt" = "你达到了10级，你可以选择一个职业!";
 "unlocks_selecting_class_description" = "当您达到10级且选择了职业之后，就可以解锁技能";
-"class_system_enable_instructions" = "您可以在应用程序的设置中，开启职业系统。";
+"class_system_enable_instructions" = "你可以在设置中开启职业系统，之后可选择职业";
 "end_challenge_description" = "要结束挑战，请登录Habitica网页版，然后点击挑战页面右侧的“结束挑战”按钮。";
 "settings.launch_screen" = "启动页";
 "create_challenge_description" = "创建挑战的话，登录habitica网站，在“我的挑战”界面，点击“创建”按钮。";
@@ -1562,7 +1562,7 @@
 "pet" = "宠物";
 "mount" = "坐骑";
 "equipped_gear" = "当前装备";
-"stable.pets_and_mounts" = "宠物和坐骑";
+"stable.pets_and_mounts" = "宠物与坐骑";
 "challenges_won" = "赢得的挑战";
 "player_not_won_challenges" = "玩家尚未赢得任何挑战。";
 "player_not_completed_quests" = "玩家尚未完成任何副本。";
@@ -1597,3 +1597,5 @@
 "fcv_streak_explanation" = "你可以通过点击任务打开编辑视图，从而恢复该任务的连胜纪录";
 "checkin_prize_set_description" = "因致力于改善生活，你获得了 %s 套装";
 "next_prize_in_1_checkin" = "下一个奖励将在1天后解锁！";
+"loading" = "加载中";
+"task_status" = "任务状态";
