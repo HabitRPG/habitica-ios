@@ -369,6 +369,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                     itemCell.itemCount = ownedItem.numberOwned
                 }
                 itemCell.isPinned = pinnedItems.contains(where: { pinned in
+                    guard pinned.isValid else { return false }
                     return pinned.key == item.key || pinned.path == item.path
                 })
                 if item.type == "quests" || item.pinType == "quests" {

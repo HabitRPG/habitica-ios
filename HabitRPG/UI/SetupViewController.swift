@@ -193,6 +193,10 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
                 self?.userRepository.updateUser(key: "flags.welcomed", value: true)
                     .flatMap(.latest, { _ in
                         return (self?.userRepository.retrieveUser() ?? Signal.empty)
+                    }).on(value: { user in
+                        if let user = user {
+                            UserManager.shared.syncTutorialSteps(from: user)
+                        }
                     }).observeCompleted {
                         UserDefaults.standard.set(false, forKey: "isInSetup")
                         self?.showMainView()

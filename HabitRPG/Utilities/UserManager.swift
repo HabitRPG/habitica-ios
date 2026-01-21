@@ -247,6 +247,15 @@ class UserManager: NSObject {
     func shouldDisplayTutorialStep(key: String) -> Bool {
         return !(tutorialSteps[key] ?? true)
     }
+
+    func syncTutorialSteps(from user: UserProtocol) {
+        tutorialSteps = [:]
+        user.flags?.tutorials.forEach({ (tutorial) in
+            if let key = tutorial.key {
+                tutorialSteps[key] = tutorial.wasSeen
+            }
+        })
+    }
     
     func markTutorialAsSeen(type: String, key: String) {
         disposable.add(userRepository.updateUser(key: "flags.tutorial.\(type).\(key)", value: true).observeCompleted {})

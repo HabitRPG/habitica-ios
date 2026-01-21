@@ -165,6 +165,11 @@ class LoginViewModel: ObservableObject {
 
     func onSuccessfulLogin(_ isNewUser: Bool) {
         userRepository.retrieveUser(forced: true)
+            .on(value: { user in
+                if let user = user {
+                    UserManager.shared.syncTutorialSteps(from: user)
+                }
+            })
             .combineLatest(with: userRepository.retrieveGroupPlans())
             .observeCompleted {[weak self] in
                 UserManager.shared.beginListening()
