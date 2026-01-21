@@ -55,7 +55,7 @@ struct ValueBarProgressStyle: ProgressViewStyle {
     var gradientEnd: Color
     
     func makeBody(configuration: Configuration) -> some View {
-        Capsule().fill(Color(themeService.theme.offsetBackgroundColor))
+        Capsule().fill(Color(themeService.theme.contentBackgroundColorDimmed))
             .overlay(alignment: .leading) {
                 GeometryReader { proxy in
                     Capsule().fill(
@@ -179,10 +179,11 @@ struct StatsViewUI: View {
     
     @ViewBuilder
     func makeEntry(value: Int, name: String) -> some View {
-        VStack {
+        VStack(spacing: 2) {
             Text("\(value)").scaledFont(size: 22, weight: .semibold)
             Text(name).scaledFont(size: 13)
         }
+        .foregroundStyle(Color(themeService.theme.secondaryTextColor))
     }
     
     var body: some View {
@@ -208,8 +209,7 @@ struct StatsViewUI: View {
                 Spacer()
                 makeEntry(value: allocatedValue, name: L10n.allocated)
                 Spacer()
-            }.padding(.vertical, 16)
-                .foregroundStyle(Color(themeService.theme.secondaryTextColor))
+            }.padding(.vertical, 20)
         }.background(Color(themeService.theme.windowBackgroundColor))
             .cornerRadius(UIConstants.largeCornerRadius)
     }
@@ -298,23 +298,27 @@ struct ProfilePage: View {
                                 }
                             }.scaledFont(size: 12, weight: .black)
                             if let stats = member.stats {
+                                let isDark = themeService.theme.isDark
                                 HStack(spacing: 8) {
-                                    Image(uiImage: themeService.theme.isDark ? HabiticaIcons.imageOfHeartDarkBg : HabiticaIcons.imageOfHeartLightBg)
+                                    Image(uiImage: HabiticaIcons.imageOfHeartLightBg)
+                                        .opacity(isDark ? 0.8 : 1)
                                         .frame(width: 28)
                                     ValueBar(value: stats.health, maxValue: stats.maxHealth, leadingLabel: Text("HP"), barStartColor: .red100, barEndColor: .orange100)
-                                        .foregroundStyle(Color.maroon100)
+                                        .foregroundStyle(isDark ? .maroon500 : Color.maroon100)
                                 }
                                 HStack(spacing: 8) {
                                     Image(uiImage: HabiticaIcons.imageOfExperience)
+                                        .opacity(isDark ? 0.8 : 1)
                                         .frame(width: 28)
                                     ValueBar(value: stats.experience, maxValue: stats.toNextLevel, leadingLabel: Text("EXP"), barStartColor: .orange100, barEndColor: .yellow100)
-                                        .foregroundStyle(Color.yellow1)
+                                        .foregroundStyle(isDark ? .yellow500 : Color.yellow1)
                                 }
                                 HStack(spacing: 8) {
                                     Image(uiImage: HabiticaIcons.imageOfMagic)
+                                        .opacity(isDark ? 0.8 : 1)
                                         .frame(width: 28)
                                     ValueBar(value: stats.mana, maxValue: stats.maxMana, leadingLabel: Text("MP"), barStartColor: .blue100, barEndColor: .teal100)
-                                        .foregroundStyle(Color.blue10)
+                                        .foregroundStyle(isDark ? .blue500 : Color.blue10)
                                 }
                             }
                         }.frame(maxWidth: .infinity)
@@ -484,7 +488,7 @@ struct ProfilePage: View {
                                 allocatedValue: calc.allocatedConstitution)
                 
                     StatsViewUI(upperBackgroundColor: .purple300,
-                                upperTextColor: .white,
+                                upperTextColor: .purple600,
                                 title: L10n.Stats.perceptionTitle,
                                 totalValue: calc.totalPerception,
                                 levelValue: calc.levelStat,

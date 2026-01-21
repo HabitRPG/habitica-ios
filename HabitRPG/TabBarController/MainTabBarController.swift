@@ -210,9 +210,9 @@ class MainTabBarController: UITabBarController {
     private func updateAppBadge() {
         let defaults = UserDefaults.standard
         if defaults.bool(forKey: "appBadgeActive") == true {
-            UIApplication.shared.applicationIconBadgeNumber = dueDailiesCount + dueToDosCount
+            UNUserNotificationCenter.current().setBadgeCount(dueDailiesCount + dueToDosCount)
         } else {
-            UIApplication.shared.applicationIconBadgeNumber = 0
+            UNUserNotificationCenter.current().setBadgeCount(0)
         }
     }
     
@@ -238,13 +238,8 @@ class MainTabBar: UITabBar, Themeable {
     }
     
     func applyTheme(theme: Theme) {
-        items?.forEach({
-            $0.badgeColor = theme.badgeColor
-            if theme.badgeColor.isLight() {
-                $0.setBadgeTextAttributes([.foregroundColor: UIColor.gray50], for: .normal)
-            } else {
-                $0.setBadgeTextAttributes([.foregroundColor: UIColor.gray700], for: .normal)
-            }
+        badges.values.forEach({
+            $0.backgroundColor = theme.isDark ? .gray100 : .gray50
         })
         tintColor = theme.fixedTintColor
         unselectedItemTintColor = theme.ternaryTextColor

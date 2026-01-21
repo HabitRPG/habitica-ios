@@ -249,7 +249,7 @@ struct TaskFilterPage: View {
                 }.pickerStyle(.segmented)
             }.padding(.horizontal, 16)
             List {
-                Section(L10n.tags) {
+                Section(content: {
                     ForEach((viewModel.isEditing ? viewModel.editedTags : viewModel.tags), id: \.id) { tag in
                         let isSelected = viewModel.isSelected(tag: tag)
                         HStack(spacing: 18) {
@@ -307,7 +307,10 @@ struct TaskFilterPage: View {
                             })
                         }.listRowBackground(Color(themeService.theme.windowBackgroundColor))
                     }
-                }
+                }, header: {
+                    Text(L10n.tags).foregroundStyle(Color(themeService.theme.secondaryTextColor))
+                        .scaledFont(size: 15, weight: .semibold)
+                })
                 
                 if viewModel.isSaving {
                     HabiticaProgressView().frame(height: 60)

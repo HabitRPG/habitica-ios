@@ -35,7 +35,7 @@ class GiftingAlertController: HabiticaAlertController {
         
         let errorView = UILabel()
         errorView.isHidden = true
-        errorView.textColor = ThemeService.shared.theme.errorColor
+        errorView.textColor = ThemeService.shared.theme.errorTextColor
         errorView.text = L10n.Errors.userNotFound
         errorView.textAlignment = .center
         errorView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12)

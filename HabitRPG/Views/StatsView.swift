@@ -131,13 +131,13 @@ class StatsView: UIView, Themeable {
         backgroundColor = theme.contentBackgroundColor
         containedView?.backgroundColor = theme.contentBackgroundColorDimmed
         levelLabel.textColor = theme.secondaryTextColor
-        levelValueLabel.textColor = theme.primaryTextColor
+        levelValueLabel.textColor = theme.secondaryTextColor
         equipmentLabel.textColor = theme.secondaryTextColor
-        equipmentValueLabel.textColor = theme.primaryTextColor
+        equipmentValueLabel.textColor = theme.secondaryTextColor
         buffsLabel.textColor = theme.secondaryTextColor
-        buffsValueLabel.textColor = theme.primaryTextColor
+        buffsValueLabel.textColor = theme.secondaryTextColor
         allocatedLabel.textColor = theme.secondaryTextColor
-        allocatedValueLabel.textColor = theme.primaryTextColor
+        allocatedValueLabel.textColor = theme.secondaryTextColor
     }
     
     @IBAction func allocateButtonTapped(_ sender: Any) {

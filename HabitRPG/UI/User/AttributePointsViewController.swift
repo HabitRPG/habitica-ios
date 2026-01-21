@@ -199,6 +199,13 @@ class AttributePointsViewController: BaseUIViewController {
             perceptionStatsView.tintColor = UIColor.purple300
             perceptionTitleLabel.textColor = UIColor.purple300
         }
+        strengthStatsView.attributeBackgroundColor = .red100
+        strengthStatsView.attributeTextColor = .red1
+        intelligenceStatsView.attributeBackgroundColor = .blue100
+        intelligenceStatsView.attributeTextColor = .blue1
+        constitutionStatsView.attributeBackgroundColor = .yellow100
+        constitutionStatsView.attributeTextColor = .yellow1
+        
     }
     
     private func setupRefreshControl() {
