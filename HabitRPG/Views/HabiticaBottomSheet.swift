@@ -85,9 +85,10 @@ private class QueueManager {
 
 class HostingBottomSheetController<ContentView: View>: UIHostingController<ContentView>, HostingViewController, QueueableViewController {
     private var bottomInset: CGFloat = 0
-    
+
     private let allowLargeDetent: Bool
     private let prefersGrabberVisible: Bool
+    private var isInQueue = false
         
     init(rootView: ContentView, allowLargeDetent: Bool = false, prefersGrabberVisible: Bool = true, interactiveDismiss: Bool = true) {
         self.allowLargeDetent = allowLargeDetent
@@ -136,7 +137,9 @@ class HostingBottomSheetController<ContentView: View>: UIHostingController<Conte
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        QueueManager.showNext()
+        if isInQueue {
+            QueueManager.showNext()
+        }
     }
     
     var isCurrentlyPresented: Bool {
@@ -161,8 +164,8 @@ class HostingBottomSheetController<ContentView: View>: UIHostingController<Conte
     func show(immediately: Bool = false) {
         if immediately {
             showVC()
-            isBeingPresented
         } else {
+            isInQueue = true
             QueueManager.enqueue(self)
         }
     }
