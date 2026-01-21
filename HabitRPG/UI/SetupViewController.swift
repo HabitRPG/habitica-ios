@@ -252,7 +252,11 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func showMainView() {
-        UIApplication.shared.firstKeyWindow?.rootViewController = StoryboardScene.Main.mainSplitViewController.instantiate()
+        if ConfigRepository.shared.enableIPadUI() {
+            UIApplication.shared.firstKeyWindow?.rootViewController = StoryboardScene.Main.mainSplitViewController.instantiate()
+        } else {
+            UIApplication.shared.firstKeyWindow?.rootViewController = StoryboardScene.Main.mainTabBarController.instantiate()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
