@@ -106,6 +106,7 @@
 		291CE4B6231E828E0001A243 /* UIColor-Habitica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291CE4B5231E828D0001A243 /* UIColor-Habitica.swift */; };
 		291CE4B8231EC11E0001A243 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291CE4B7231EC11E0001A243 /* FilterViewController.swift */; };
 		291DE9762099D85D0073182A /* MemberListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DE9752099D85D0073182A /* MemberListView.swift */; };
+		291E325A2F225D5600934F41 /* Task-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E32592F225D5100934F41 /* Task-Extensions.swift */; };
 		291E95AF20988025006EE585 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95AE20988025006EE585 /* NewsViewController.swift */; };
 		291E95B720988B85006EE585 /* PartyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95B620988B85006EE585 /* PartyDetailViewController.swift */; };
 		2922EE822C80772A00254106 /* SubscriptionBenefitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2922EE812C80772A00254106 /* SubscriptionBenefitView.swift */; };
@@ -827,6 +828,7 @@
 		291CE4B5231E828D0001A243 /* UIColor-Habitica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Habitica.swift"; sourceTree = "<group>"; };
 		291CE4B7231EC11E0001A243 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		291DE9752099D85D0073182A /* MemberListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListView.swift; sourceTree = "<group>"; };
+		291E32592F225D5100934F41 /* Task-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task-Extensions.swift"; sourceTree = "<group>"; };
 		291E95AE20988025006EE585 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		291E95B620988B85006EE585 /* PartyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyDetailViewController.swift; sourceTree = "<group>"; };
 		2922EE812C80772A00254106 /* SubscriptionBenefitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionBenefitView.swift; sourceTree = "<group>"; };
@@ -2264,7 +2266,6 @@
 		D95704371E106BF3004F6804 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				2973E26F2ED71F2A000C2E0F /* View-Extensions.swift */,
 				29D50AD025F769520009CF55 /* Alignment-Extensions.swift */,
 				2909D42D2726ACBD00FF2B29 /* Binding-Extensions.swift */,
 				29255E4C1F3E25910094A3E3 /* CGRect-Extensions.swift */,
@@ -2284,6 +2285,7 @@
 				29FC885B2018D47D002B3D3F /* Quest-Extensions.swift */,
 				29F89F191F47882A004E5B84 /* String-Extensions.swift */,
 				29A4CB70257FF3150013F0B3 /* String-SafeExtensions.swift */,
+				291E32592F225D5100934F41 /* Task-Extensions.swift */,
 				29646DE0205C18FA0050886C /* TaskType-Extensions.swift */,
 				29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */,
 				D96BFC4E1E191D7200266EEF /* UIAlertController-Extensions.swift */,
@@ -2300,6 +2302,7 @@
 				29D16C8425A72211001D9A61 /* UITraitCollection-Extensions.swift */,
 				D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */,
 				29D50A6725F66F760009CF55 /* UIWindowScene-Extensions.swift */,
+				2973E26F2ED71F2A000C2E0F /* View-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3467,6 +3470,7 @@
 				298BE1D52E30F376005DA8CD /* PrivacyPreferencesScreenView.swift in Sources */,
 				49DCECA91F96F8DE00982E99 /* ChallengeDetailViewModel.swift in Sources */,
 				29A62B012167D55200D4BD90 /* VerifyUsernameModalViewController.swift in Sources */,
+				291E325A2F225D5600934F41 /* Task-Extensions.swift in Sources */,
 				2919FDD52090CF900096A53B /* InboxMessagesDataSource.swift in Sources */,
 				29DF934D2ECDEE9C0047801F /* FirstDropSheet.swift in Sources */,
 				29E16313200E619400685640 /* QuestProgressView.swift in Sources */,
