@@ -145,6 +145,9 @@ class CheckboxView: UIView {
                 backgroundColor = theme.windowBackgroundColor
                 boxFillColor = theme.offsetBackgroundColor
                 checkColor = theme.dimmedTextColor
+            } else if task.isOfficial {
+                backgroundColor = .purple400
+                checkColor = .purple300
             } else {
                 backgroundColor = UIColor.forTaskValueLight(task.value)
                 checkColor = UIColor.forTaskValue(task.value)
