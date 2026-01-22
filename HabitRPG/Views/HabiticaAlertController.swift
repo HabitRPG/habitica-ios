@@ -262,10 +262,8 @@ class HabiticaAlertController: UIViewController, Themeable {
         }
         button.titleLabel?.lineBreakMode = .byWordWrapping
         button.titleLabel?.textAlignment = .center
-        var buttonConfig = UIButton.Configuration.plain()
-        if #available(iOS 26.0, *) {
-            buttonConfig = .prominentGlass()
-        }
+        
+        var buttonConfig: UIButton.Configuration
         var container = AttributeContainer()
         container.font = UIFont.boldSystemFont(ofSize: 17)
         var color = isMainAction ? ThemeService.shared.theme.fixedTintColor : ThemeService.shared.theme.tintColor
@@ -274,25 +272,25 @@ class HabiticaAlertController: UIViewController, Themeable {
         }
         
         if isMainAction {
+            button.backgroundColor = color
+            container.foregroundColor = .white
             if #available(iOS 26.0, *) {
-                button.cornerConfiguration = .capsule()
-                button.tintColor = color
+                buttonConfig = .prominentGlass()
             } else {
-                button.backgroundColor = color
+                buttonConfig = .filled()
                 button.cornerRadius = UIConstants.mediumCornerRadius
-                button.layer.shadowColor = ThemeService.shared.theme.buttonShadowColor.cgColor
-                button.layer.shadowRadius = 2
-                button.layer.shadowOffset = CGSize(width: 1, height: 1)
-                button.layer.shadowOpacity = 0.5
-                button.layer.masksToBounds = false
             }
-            button.setTitleColor(.white, for: .normal)
         } else {
-            if #available(iOS 26.0, *) {
-                button.cornerConfiguration = .capsule()
-                button.tintColor = UIColor("787880").withAlphaComponent(0.05)
+            if style == .destructive {
+                button.tintColor = ThemeService.shared.theme.errorTextColor
+            } else {
+                button.tintColor = ThemeService.shared.theme.primaryTextColor
             }
-            container.foregroundColor = ThemeService.shared.theme.primaryTextColor
+            if #available(iOS 26.0, *) {
+                buttonConfig = .glass()
+            } else {
+                buttonConfig = .plain()
+            }
         }
         buttonConfig.attributedTitle = AttributedString(title, attributes: container)
         button.configuration = buttonConfig

@@ -34,6 +34,7 @@ class ClassSelectionOptionView: UIView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         label.textAlignment = .center
+        label.textColor = .gray10
         return label
     }()
     
@@ -51,8 +52,8 @@ class ClassSelectionOptionView: UIView {
             self.labelWrapper.layer.borderWidth = CGFloat(newWidth)
             self.labelWrapper.layer.add(widthAnimation, forKey: "border width")
             UIView.animate(withDuration: 0.2) {
-                self.label.textColor = self.isSelected ? .white : ThemeService.shared.theme.primaryTextColor
-                self.labelWrapper.backgroundColor = self.isSelected ? self.selectedBackgroundColor : ThemeService.shared.theme.windowBackgroundColor
+                self.label.textColor = self.isSelected ? .white : .gray10
+                self.labelWrapper.backgroundColor = self.isSelected ? self.selectedBackgroundColor : .gray700
             }
         }
     }

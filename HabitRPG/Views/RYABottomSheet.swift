@@ -250,7 +250,7 @@ struct RYABottomSheet: View, Dismissable {
     }
     
     var body: some View {
-        BottomSheetView(dismisser: dismisser, content: VStack(spacing: 0) {
+        BottomSheetView(dismisser: dismisser, content: VStack(spacing: 8) {
             let topContent = VStack(spacing: 9) {
                 Text(L10n.welcomeBack)
                     .foregroundStyle(Color(themeService.theme.primaryTextColor))

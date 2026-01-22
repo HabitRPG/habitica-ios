@@ -235,7 +235,7 @@ class UserManager: NSObject {
                 self.classSelectionViewController = classSelectionController.topViewController as? ClassSelectionViewController
                 lastClassSelectionDisplayed = Date()
                 classSelectionController.modalTransitionStyle = .crossDissolve
-                classSelectionController.modalPresentationStyle = .overCurrentContext
+                classSelectionController.modalPresentationStyle = .overFullScreen
                 topController.present(classSelectionController, animated: true) {
                 }
                 return true

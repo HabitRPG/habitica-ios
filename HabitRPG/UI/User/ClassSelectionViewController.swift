@@ -141,6 +141,9 @@ class ClassSelectionViewController: UIViewController, Themeable {
         rogueSelectionIcon.selectionAction = {[weak self] in
             self?.set(class: .rogue, initial: false)
         }
+        
+        selectionButton.configuration = .borderless()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -154,15 +157,14 @@ class ClassSelectionViewController: UIViewController, Themeable {
     }
     
     func applyTheme(theme: Theme) {
-        view.backgroundColor = theme.contentBackgroundColor
         bottomView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         bottomView.layer.cornerRadius = UIConstants.largeCornerRadius
         if #available(iOS 26.0, *) {
             selectionButton.cornerConfiguration = .capsule()
-            selectionButton.configuration = .prominentGlass()
         } else {
             selectionButton.cornerRadius = UIConstants.mediumCornerRadius
         }
+        selectionButton.backgroundColor = .white
     }
     
     override func viewWillLayoutSubviews() {
@@ -268,7 +270,6 @@ class ClassSelectionViewController: UIViewController, Themeable {
             self?.descriptionView.text = description
             self?.descriptionView.textColor = textColor
             self?.bottomView.backgroundColor = backgroundColor
-            self?.selectionButton.tintColor = .white
             self?.selectionButton.setTitleColor(buttonColor, for: .normal)
             self?.selectionButton.setTitle(L10n.Classes.becomeAClass(className), for: .normal)
             self?.view.backgroundColor = upperBackgroundColor
