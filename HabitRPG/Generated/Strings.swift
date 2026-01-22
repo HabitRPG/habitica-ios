@@ -244,6 +244,10 @@ public enum L10n {
   public static var `continue`: String { return L10n.tr("Mainstrings", "continue") }
   /// Continue Benefits
   public static var continueBenefits: String { return L10n.tr("Mainstrings", "continue_benefits") }
+  /// Contributor Tiers
+  public static var contributorTiers: String { return L10n.tr("Mainstrings", "contributor_tiers") }
+  /// If you see an account with a colored display name and an icon, that’s a contributor tier! Tiers are given to people who help around Habitica, whether it be for translation, coding, or just being helpful. The higher the tier, the more the player has contributed.
+  public static var contributorTiersDescription: String { return L10n.tr("Mainstrings", "contributor_tiers_description") }
   /// Controls
   public static var controls: String { return L10n.tr("Mainstrings", "controls") }
   /// Copied Message
@@ -566,6 +570,8 @@ public enum L10n {
   public static var guildJoinedDescription: String { return L10n.tr("Mainstrings", "guildJoinedDescription") }
   /// Joined a Guild
   public static var guildJoinedTitle: String { return L10n.tr("Mainstrings", "guildJoinedTitle") }
+  /// Habitica Helpers
+  public static var habiticaHelpers: String { return L10n.tr("Mainstrings", "habitica_helpers") }
   /// Hatch
   public static var hatch: String { return L10n.tr("Mainstrings", "hatch") }
   /// Use on Egg

@@ -234,9 +234,18 @@ class RouterHandler {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.newsViewController.instantiate())
         }
+        register("/static/support") {
+            self.displayTab(index: 4)
+            self.push(StoryboardScene.Support.mainSupportViewController.instantiate())
+        }
+        register("/static/report-bug") {
+            self.displayTab(index: 4)
+            self.push(StoryboardScene.Support.reportBugViewController.instantiate())
+        }
         register("/static/faq") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Support.mainSupportViewController.instantiate())
+            self.push(StoryboardScene.Support.faqViewController.instantiate())
         }
         register("/static/about") {
             self.displayTab(index: 4)
@@ -244,6 +253,8 @@ class RouterHandler {
         }
         register("/static/faq/:index") { link in
             self.displayTab(index: 4)
+            self.push(StoryboardScene.Support.mainSupportViewController.instantiate())
+            self.push(StoryboardScene.Support.faqViewController.instantiate())
             let viewController = StoryboardScene.Support.faqDetailViewController.instantiate()
             viewController.index = Int(string: link["index"] ?? "0") ?? 0
             self.push(viewController)

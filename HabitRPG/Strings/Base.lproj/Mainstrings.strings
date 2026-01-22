@@ -1511,3 +1511,6 @@
 "loading" = "Loading";
 "task_health" = "Task Health";
 "task_status" = "Task Status";
+"contributor_tiers" = "Contributor Tiers";
+"habitica_helpers" = "Habitica Helpers";
+"contributor_tiers_description" = "If you see an account with a colored display name and an icon, that’s a contributor tier! Tiers are given to people who help around Habitica, whether it be for translation, coding, or just being helpful. The higher the tier, the more the player has contributed.";

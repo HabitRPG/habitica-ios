@@ -97,6 +97,7 @@ internal enum Asset {
   internal static let classUnlockIcon = ImageAsset(name: "class_unlock_icon")
   internal static let confettiPill = ImageAsset(name: "confettiPill")
   internal static let confettiTiled = ImageAsset(name: "confetti_tiled")
+  internal static let contributorsFaqIcon = ImageAsset(name: "contributors_faq_icon")
   internal static let creatorActivePixelArrowLeft = ImageAsset(name: "creator_active_pixel_arrow_left")
   internal static let creatorActivePixelArrowRight = ImageAsset(name: "creator_active_pixel_arrow_right")
   internal static let creatorBlankFace = ImageAsset(name: "creator_blank_face")

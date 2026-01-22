@@ -4393,7 +4393,7 @@ public class HabiticaIcons : NSObject {
 
     }
 
-    @objc dynamic public class func drawContributorBadge(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 16, height: 16), resizing: ResizingBehavior = .aspectFit, _1: CGFloat = 1, isNPC: Bool = false) {
+    @objc dynamic public class func drawContributorBadge(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 16, height: 16), resizing: ResizingBehavior = .aspectFit, tier: Int = 1, isNPC: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         
@@ -4427,15 +4427,15 @@ public class HabiticaIcons : NSObject {
         let strokeColor12 = UIColor(red: 0.000, green: 0.341, blue: 0.216, alpha: 1.000)
 
         //// Variable Declarations
-        let isTier1 = _1 == 1 && !isNPC
-        let isTier2 = _1 == 2 && !isNPC
-        let isTier3 = _1 == 3 && !isNPC
-        let isTier4 = _1 == 4 && !isNPC
-        let isTier5 = _1 == 5 && !isNPC
-        let isTier6 = _1 == 6 && !isNPC
-        let isTier7 = _1 == 7 && !isNPC
-        let isTier8 = _1 == 8 && !isNPC
-        let isTier9 = _1 == 9 && !isNPC
+        let isTier1 = tier == 1 && !isNPC
+        let isTier2 = tier == 2 && !isNPC
+        let isTier3 = tier == 3 && !isNPC
+        let isTier4 = tier == 4 && !isNPC
+        let isTier5 = tier == 5 && !isNPC
+        let isTier6 = tier == 6 && !isNPC
+        let isTier7 = tier == 7 && !isNPC
+        let isTier8 = tier == 8 && !isNPC
+        let isTier9 = tier == 9 && !isNPC
 
         if (isTier1) {
             //// Tier1 Drawing
@@ -9358,9 +9358,9 @@ public class HabiticaIcons : NSObject {
         return imageOfInfoIcon
     }
 
-    @objc dynamic public class func imageOfContributorBadge(_1: CGFloat = 1, isNPC: Bool = false) -> UIImage {
+    @objc dynamic public class func imageOfContributorBadge(tier: Int = 1, isNPC: Bool = false) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 16, height: 16), false, 0)
-            HabiticaIcons.drawContributorBadge(_1: _1, isNPC: isNPC)
+            HabiticaIcons.drawContributorBadge(tier: tier, isNPC: isNPC)
 
         let imageOfContributorBadge = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
