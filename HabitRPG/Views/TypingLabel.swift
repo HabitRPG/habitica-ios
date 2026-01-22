@@ -32,7 +32,7 @@ class TypingLabel: UITextView {
     }
     
     var isAnimating: Bool {
-        return timer == nil
+        return timer != nil
     }
     
     func startAnimating() {
