@@ -31,6 +31,10 @@ class TypingLabel: UITextView {
         }
     }
     
+    var isAnimating: Bool {
+        return timer == nil
+    }
+    
     func startAnimating() {
         index = 0
         mutableText = NSMutableAttributedString(string: text, attributes: [
@@ -44,12 +48,20 @@ class TypingLabel: UITextView {
         }
     }
     
+    func finishAnimating() {
+        timer?.invalidate()
+        timer = nil
+        finishedAction?()
+        attributedText = NSAttributedString(string: mutableText?.string ?? "", attributes: [
+            .foregroundColor: ThemeService.shared.theme.primaryTextColor,
+            .font: UIFont.preferredFont(forTextStyle: .subheadline)
+        ])
+    }
+    
     private func updateText() {
         index += 1
         if index > attributedText.length {
-            timer?.invalidate()
-            timer = nil
-            finishedAction?()
+            finishAnimating()
         } else {
             mutableText?.addAttribute(.foregroundColor, value: ThemeService.shared.theme.primaryTextColor, range: NSRange(location: 0, length: index))
             attributedText = mutableText

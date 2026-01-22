@@ -24,9 +24,9 @@ class SelectionIconView: UIView {
         super.init(frame: CGRect(x: 0, y: 0, width: 64, height: 64))
         addSubview(imageView)
         imageView.image = image
-        layer.borderColor = ThemeService.shared.theme.windowBackgroundColor.cgColor
+        layer.borderColor = UIColor.gray700.cgColor
         layer.borderWidth = 4
-        backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+        backgroundColor = .gray500
         
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapped)))
     }
@@ -43,13 +43,14 @@ class SelectionIconView: UIView {
                     self.layer.borderWidth = 6
                     self.backgroundColor = self.selectedBackgroundColor
                 } else {
-                    self.layer.borderColor = ThemeService.shared.theme.windowBackgroundColor.cgColor
+                    self.layer.borderColor = UIColor.gray700.cgColor
                     self.layer.borderWidth = 4
-                    self.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+                    self.backgroundColor = .gray500
                 }
                 let size: CGFloat = self.isSelected ? 85 : 64
                 self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: size, height: size)
                 self.imageView.pin.center().size(self.isSelected ? 55 : 40)
+                self.imageView.alpha = isSelected ? 1 : 0.5
                 self.cornerRadius = self.bounds.size.width / 2
             }
         }
@@ -85,7 +86,7 @@ class ClassSelectionViewController: UIViewController, Themeable {
                                                 selectedBorderColor: .yellow100,
                                                 selectedBackgroundColor: .yellow500)
     let rogueSelectionIcon = SelectionIconView(image: HabiticaIcons.imageOfRogueLightBg,
-                                               selectedBorderColor: .purple100,
+                                               selectedBorderColor: .purple300,
                                                selectedBackgroundColor: .purple600)
     let classSelectionRowWidth: CGFloat = 313
     
@@ -113,7 +114,7 @@ class ClassSelectionViewController: UIViewController, Themeable {
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.view.backgroundColor = .clear
         navigationController?.navigationBar.backgroundColor = .clear
-        
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.gray10]
         disposable.inner.add(userRepository.getUser()
             .take(first: 1)
             .filter({ user in !user.canChooseClassForFree })

@@ -24,7 +24,7 @@ struct ClassConfirmationSheet: View {
         case .healer:
             return .yellow100
         case .rogue:
-            return .purple400
+            return .purple300
         }
     }
     

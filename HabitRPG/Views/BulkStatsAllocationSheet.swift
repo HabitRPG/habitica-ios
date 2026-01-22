@@ -120,7 +120,7 @@ struct BulkStatsAllocationSheet: View, Dismissable {
                 Image(systemName: .checkmark)
                     .scaledFont(size: 24)
                     .frame(width: 24, height: 24)
-            }), content: VStack {
+            }).tint(Color(themeService.theme.fixedTintColor)), content: VStack {
                 VStack(spacing: 2) {
                     Text("\(totalAllocated, format: .number.precision(.fractionLength(0)))/\(maxToAllocate, format: .number.precision(.fractionLength(0)))")
                         .contentTransition(.numericText())
@@ -136,7 +136,7 @@ struct BulkStatsAllocationSheet: View, Dismissable {
                                    amount: $strength,
                                    initialAmount: initialStrength,
                                    maxAmount: maxToAllocate)
-                .onChange(of: strength) { _ in
+                .onChange(of: strength) {
                     if totalAllocated > maxToAllocate {
                         redistribute(exclude: "str")
                     }
@@ -146,7 +146,7 @@ struct BulkStatsAllocationSheet: View, Dismissable {
                                    amount: $intelligence,
                                    initialAmount: initialIntelligence,
                                    maxAmount: maxToAllocate)
-                .onChange(of: intelligence) { _ in
+                .onChange(of: intelligence) {
                     if totalAllocated > maxToAllocate {
                         redistribute(exclude: "int")
                     }
@@ -156,7 +156,7 @@ struct BulkStatsAllocationSheet: View, Dismissable {
                                    amount: $constitution,
                                    initialAmount: initialConstitution,
                                    maxAmount: maxToAllocate)
-                .onChange(of: constitution) { _ in
+                .onChange(of: constitution) {
                     if totalAllocated > maxToAllocate {
                         redistribute(exclude: "con")
                     }
@@ -166,7 +166,7 @@ struct BulkStatsAllocationSheet: View, Dismissable {
                                    amount: $perception,
                                    initialAmount: initialPerception,
                                    maxAmount: maxToAllocate)
-                .onChange(of: perception) { _ in
+                .onChange(of: perception) {
                     if totalAllocated > maxToAllocate {
                         redistribute(exclude: "per")
                     }
