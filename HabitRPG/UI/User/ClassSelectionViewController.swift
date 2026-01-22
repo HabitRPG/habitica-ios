@@ -17,13 +17,16 @@ class SelectionIconView: UIView {
     var selectionAction: (() -> Void)?
     
     private let imageView = UIImageView()
+    private let grayImageView = UIImageView()
     
-    init(image: UIImage, selectedBorderColor: UIColor, selectedBackgroundColor: UIColor) {
+    init(image: UIImage, grayImage: UIImage, selectedBorderColor: UIColor, selectedBackgroundColor: UIColor) {
         self.selectedBorderColor = selectedBorderColor
         self.selectedBackgroundColor = selectedBackgroundColor
         super.init(frame: CGRect(x: 0, y: 0, width: 64, height: 64))
         addSubview(imageView)
+        addSubview(grayImageView)
         imageView.image = image
+        grayImageView.image = grayImage
         layer.borderColor = UIColor.gray700.cgColor
         layer.borderWidth = 4
         backgroundColor = .gray500
@@ -37,7 +40,7 @@ class SelectionIconView: UIView {
     
     var isSelected: Bool = false {
         didSet {
-            UIView.animate(springDuration: 0.3) {
+            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .curveEaseInOut) {
                 if self.isSelected {
                     self.layer.borderColor = self.selectedBorderColor.cgColor
                     self.layer.borderWidth = 6
@@ -50,7 +53,8 @@ class SelectionIconView: UIView {
                 let size: CGFloat = self.isSelected ? 85 : 64
                 self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: size, height: size)
                 self.imageView.pin.center().size(self.isSelected ? 55 : 40)
-                self.imageView.alpha = isSelected ? 1 : 0.5
+                self.grayImageView.pin.center().size(self.isSelected ? 55 : 40)
+                self.grayImageView.alpha = self.isSelected ? 0 : 1
                 self.cornerRadius = self.bounds.size.width / 2
             }
         }
@@ -76,16 +80,20 @@ class ClassSelectionViewController: UIViewController, Themeable {
     @IBOutlet weak var rogueOptionView: ClassSelectionOptionView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
-    let warriorSelectionIcon = SelectionIconView(image: HabiticaIcons.imageOfWarriorLightBg,
+    let warriorSelectionIcon = SelectionIconView(image: Asset.classWarrior.image,
+                                                 grayImage: Asset.classWarriorGray.image,
                                                  selectedBorderColor: .maroon100,
                                                  selectedBackgroundColor: .red500)
-    let mageSelectionIcon = SelectionIconView(image: HabiticaIcons.imageOfMageLightBg,
+    let mageSelectionIcon = SelectionIconView(image: Asset.classMage.image,
+                                              grayImage: Asset.classMageGray.image,
                                               selectedBorderColor: .blue100,
                                               selectedBackgroundColor: .blue500)
-    let healerSelectionIcon = SelectionIconView(image: HabiticaIcons.imageOfHealerLightBg,
+    let healerSelectionIcon = SelectionIconView(image: Asset.classHealer.image,
+                                                grayImage: Asset.classHealerGray.image,
                                                 selectedBorderColor: .yellow100,
                                                 selectedBackgroundColor: .yellow500)
-    let rogueSelectionIcon = SelectionIconView(image: HabiticaIcons.imageOfRogueLightBg,
+    let rogueSelectionIcon = SelectionIconView(image: Asset.classRogue.image,
+                                               grayImage: Asset.classRogueGray.image,
                                                selectedBorderColor: .purple300,
                                                selectedBackgroundColor: .purple600)
     let classSelectionRowWidth: CGFloat = 313
@@ -255,8 +263,8 @@ class ClassSelectionViewController: UIViewController, Themeable {
         mageSelectionIcon.isSelected = habiticaClass == .mage
         healerSelectionIcon.isSelected = habiticaClass == .healer
         
-        UIView.animate(springDuration: 0.3) {
-            self.healerSelectionIcon.pin.vCenter(to: self.bottomView.edge.top).left((view.bounds.width - classSelectionRowWidth) / 2)
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .curveEaseInOut) {
+            self.healerSelectionIcon.pin.vCenter(to: self.bottomView.edge.top).left((self.view.bounds.width - self.classSelectionRowWidth) / 2)
             self.mageSelectionIcon.pin.vCenter(to: self.bottomView.edge.top).right(of: self.healerSelectionIcon).marginLeft(12)
             self.rogueSelectionIcon.pin.vCenter(to: self.bottomView.edge.top).right(of: self.mageSelectionIcon).marginLeft(12)
             self.warriorSelectionIcon.pin.vCenter(to: self.bottomView.edge.top).right(of: self.rogueSelectionIcon).marginLeft(12)
