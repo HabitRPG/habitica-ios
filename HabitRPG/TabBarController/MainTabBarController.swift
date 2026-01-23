@@ -132,6 +132,8 @@ class MainTabBarController: UITabBarController {
                     }
                     self?.present(controller, animated: true)
                 }
+            } else {
+                UserDefaults.standard.set(false, forKey: "isInSetup")
             }
         }).start())
         disposable.inner.add(taskRepository.getDueTasks().on(value: {[weak self] tasks in

@@ -198,7 +198,6 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
                             UserManager.shared.syncTutorialSteps(from: user)
                         }
                     }).observeCompleted {
-                        UserDefaults.standard.set(false, forKey: "isInSetup")
                         self?.showMainView()
                     }
             }

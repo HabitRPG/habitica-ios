@@ -47,12 +47,14 @@ struct PrivacyPreferencesScreenView: View, Dismissable {
                 HabiticaButtonUI(label: Text(L10n.acceptAll).foregroundStyle(.gray50), color: .white, colorOpacity: 1.0) {
                     analyticsConsent = true
                     userRepository.updateUser(key: "preferences.analyticsConsent", value: analyticsConsent).observeCompleted {
+                        UserDefaults.standard.set(false, forKey: "isInSetup")
                         dismisser.dismiss()
                     }
                 }
                 .padding(.top, 13)
                 HabiticaButtonUI(label: Text(L10n.savePreferences), color: .purple400) {
                     userRepository.updateUser(key: "preferences.analyticsConsent", value: analyticsConsent).observeCompleted {
+                        UserDefaults.standard.set(false, forKey: "isInSetup")
                         dismisser.dismiss()
                     }
                 }

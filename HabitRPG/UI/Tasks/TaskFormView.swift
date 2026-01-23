@@ -385,7 +385,9 @@ class TaskFormController: UIHostingController<TaskFormView> {
         if editedTask != nil {
             taskRepository.updateTask(task).observeCompleted {}
         } else {
-            taskRepository.createTask(task).observeCompleted {}
+            taskRepository.createTask(task).observeCompleted {
+                NotificationManager.showPendingOnboardingAchievement(key: "createdTask")
+            }
         }
     }
 }

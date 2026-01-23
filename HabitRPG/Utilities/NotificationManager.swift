@@ -87,8 +87,20 @@ class NotificationManager {
 
     }
     
-    // swiftlint:disable:next function_body_length
+    // swiftlint:disable:next function_body_length cyclomatic_complexity
     static func displayAchievement(notification: NotificationProtocol, isOnboarding: Bool, isLastOnboardingAchievement: Bool) -> Bool {
+        if isOnboarding && UserDefaults.standard.bool(forKey: "isInSetup") {
+            if let key = notification.achievementKey {
+                var pending = UserDefaults.standard.stringArray(forKey: "pendingOnboardingAchievements") ?? []
+                if !pending.contains(key) {
+                    pending.append(key)
+                    UserDefaults.standard.set(pending, forKey: "pendingOnboardingAchievements")
+                }
+            }
+            userRepository.readNotification(notification: notification).observeCompleted {}
+            return true
+        }
+
         userRepository.retrieveUser().observeCompleted {}
         userRepository.readNotification(notification: notification).observeCompleted {}
         
@@ -231,5 +243,42 @@ class NotificationManager {
         }
         userRepository.readNotification(notification: notification).observeCompleted {}
         return true
+    }
+
+    static func showPendingOnboardingAchievement(key: String) {
+        var pending = UserDefaults.standard.stringArray(forKey: "pendingOnboardingAchievements") ?? []
+        guard pending.contains(key) else { return }
+
+        pending.removeAll { $0 == key }
+        UserDefaults.standard.set(pending, forKey: "pendingOnboardingAchievements")
+
+        var text = ""
+        var description = ""
+        switch key {
+        case "createdTask":
+            text = L10n.createdTaskTitle
+            description = L10n.createdTaskDescription
+        case "completedTask":
+            text = L10n.completedTaskTitle
+            description = L10n.completedTaskDescription
+        case "hatchedPet":
+            text = L10n.hatchedPetTitle
+            description = L10n.hatchedPetDescription
+        case "fedPet":
+            text = L10n.fedPetTitle
+            description = L10n.fedPetDescription
+        case "purchasedEquipment":
+            text = L10n.purchasedEquipmentTitle
+            description = L10n.purchasedEquipmentDescription
+        default:
+            return
+        }
+
+        let viewC = HostingBottomSheetController(rootView: AchievementReceivedSheet(key: key,
+                                                                                    isOnboarding: true,
+                                                                                    text: Text(text),
+                                                                                    description: Text(description)),
+                                                 prefersGrabberVisible: false)
+        viewC.show()
     }
 }
