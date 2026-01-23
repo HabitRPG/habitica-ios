@@ -1665,3 +1665,6 @@
 "more_gem_packs" = "Plus de packs de Gemmes";
 "task_health" = "Santé de la Tâche";
 "task_status" = "État de la Tâche";
+"habitica_helpers" = "Aidant·e·s d'Habitica";
+"contributor_tiers" = "Grades de Contribut·eur·rice";
+"contributor_tiers_description" = "Si vous voyez un compte avec un pseudonyme coloré et une icône, c'est un grade de contribut·eur·rice ! Les grades sont attribués aux personnes qui aident Habitica à se développer, que ce soit en faisant de la traduction, du codage, ou en étant tout simplement utile. Plus le grade est élevé, plus l·e·a joueu·r·se a contribué.";
