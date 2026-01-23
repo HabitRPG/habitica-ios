@@ -78,7 +78,7 @@ class AvatarOverviewItemView: UIView {
         if let imagename = imagename, !imagename.contains("base_0") && !imagename.hasSuffix("background_") {
             imageView.setImagewith(name: imagename)
             noItemBorder.isHidden = true
-            imageView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+            imageView.backgroundColor = ThemeService.shared.theme.isDark ? .gray50 : ThemeService.shared.theme.contentBackgroundColor
         } else {
             imageView.image = nil
             noItemBorder.isHidden = false

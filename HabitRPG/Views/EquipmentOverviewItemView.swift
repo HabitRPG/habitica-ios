@@ -72,7 +72,7 @@ class EquipmentOverviewItemView: UIView {
     func configure(_ gearKey: String?, isTwoHanded: Bool = false) {
         if let key = gearKey, !key.contains("base_0") {
             imageView.setImagewith(name: "shop_\(key)")
-            imageView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+            imageView.backgroundColor = ThemeService.shared.theme.isDark ? .gray50 : ThemeService.shared.theme.contentBackgroundColor
             noEquipmentBorder.isHidden = true
         } else {
             imageView.image = nil

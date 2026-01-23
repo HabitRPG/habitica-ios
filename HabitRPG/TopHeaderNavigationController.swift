@@ -370,9 +370,9 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
             return .lightContent
         }
         if !isLightColor {
-            return .darkContent
-        } else {
             return .lightContent
+        } else {
+            return .darkContent
         }
     }
     

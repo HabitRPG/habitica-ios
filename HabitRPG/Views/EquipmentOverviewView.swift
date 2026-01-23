@@ -132,7 +132,11 @@ class EquipmentOverviewView: UIView {
     func applyTheme(theme: Theme) {
         titleLabel.textColor = theme.primaryTextColor
         switchLabelView.textColor = theme.secondaryTextColor
-        containerView.backgroundColor = theme.windowBackgroundColor
+        if theme.isDark {
+            containerView.backgroundColor = .gray10
+        } else {
+            containerView.backgroundColor = .gray600
+        }
         backgroundColor = theme.contentBackgroundColor
         weaponItemView.applyTheme(theme: theme)
         offHandItemView.applyTheme(theme: theme)

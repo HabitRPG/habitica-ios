@@ -64,7 +64,7 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
         if theme.isDark {
             containerview.backgroundColor = .gray10
         } else {
-            containerview.backgroundColor = theme.windowBackgroundColor
+            containerview.backgroundColor = .gray600
         }
         topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
     }
