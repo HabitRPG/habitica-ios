@@ -124,6 +124,6 @@ class CollapsibleStackView: SeparatedStackView {
         if titleColor == nil {
             titleView?.textColor = theme.ternaryTextColor
         }
-        titleView?.subtitleColor = theme.quadTextColor
+        titleView?.subtitleColor = theme.isDark ? .gray600 : .gray100
     }
 }

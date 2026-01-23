@@ -10,30 +10,38 @@ import UIKit
 import Habitica_Models
 
 class EquipmentCell: UITableViewCell {
-    
+
     @IBOutlet weak var gearImageView: NetworkImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionlabel: UILabel!
     @IBOutlet weak var twoHandedView: UIView!
     @IBOutlet weak var twoHandedIconView: UIImageView!
     @IBOutlet weak var twoHandedLabel: UILabel!
-    
+
     @IBOutlet weak var strengthLabel: UILabel!
     @IBOutlet weak var constitutionLabel: UILabel!
     @IBOutlet weak var intelligenceLabel: UILabel!
     @IBOutlet weak var perceptionLabel: UILabel!
     @IBOutlet weak var noBenefitsLabel: UILabel!
-    
+
+    private let equippedBackgroundView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 26
+        view.isHidden = true
+        return view
+    }()
+
     var isEquipped: Bool = false {
         didSet {
             if isEquipped {
-                backgroundColor = ThemeService.shared.theme.tintColor.withAlphaComponent(0.2)
+                equippedBackgroundView.isHidden = false
+                equippedBackgroundView.backgroundColor = ThemeService.shared.theme.tintColor.withAlphaComponent(0.2)
                 gearImageView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
             } else {
-                backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+                equippedBackgroundView.isHidden = true
                 gearImageView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-
             }
+            backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         }
     }
     
@@ -43,6 +51,18 @@ class EquipmentCell: UITableViewCell {
         twoHandedLabel.text = L10n.twoHanded
         noBenefitsLabel.text = L10n.noBenefit
         gearImageView.cornerRadius = UIConstants.largeCornerRadius
+
+        contentView.insertSubview(equippedBackgroundView, at: 0)
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        equippedBackgroundView.frame = CGRect(
+            x: 7,
+            y: 0,
+            width: contentView.bounds.width - 14,
+            height: contentView.bounds.height
+        )
     }
     
     func configure(_ gear: GearProtocol) {

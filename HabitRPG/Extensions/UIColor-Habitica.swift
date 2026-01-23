@@ -76,6 +76,8 @@ extension UIColor {
     @nonobjc static let blackPurple100 = UIColor(red: 0.2, green: 0.19, blue: 0.23, alpha: 1.0)
     @nonobjc static let purple10 = UIColor(red: 0.18, green: 0.11, blue: 0.31, alpha: 1.0)
     
+    @nonobjc static let pink500 = UIColor(red: 255.0 / 255.0, green: 192.0 / 255.0, blue: 222.0 / 255.0, alpha: 1.0)
+
     @nonobjc static let tier1 = UIColor(red: 196.0 / 255.0, green: 40.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
     @nonobjc static let tier2 = UIColor(red: 176.0 / 255.0, green: 21.0 / 255.0, blue: 21.0 / 255.0, alpha: 1.0)
     @nonobjc static let tier3 = UIColor(red: 215.0 / 255.0, green: 14.0 / 255.0, blue: 20.0 / 255.0, alpha: 1.0)

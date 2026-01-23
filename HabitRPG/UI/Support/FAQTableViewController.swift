@@ -22,7 +22,7 @@ struct ContributorTierList: View {
         ["name": "Tier 5 (Champion)", "tier": 5],
         ["name": "Tier 6 (Champion)", "tier": 6],
         ["name": "Tier 7 (Legendary)", "tier": 7],
-        ["name": "Tier 8 (Staff)", "tier": 8]
+        ["name": "Staff (Heroic)", "tier": 8]
     ]
     var body: some View {
         VStack(spacing: 6) {
@@ -196,7 +196,7 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
             stackView.axis = .horizontal
             stackView.isLayoutMarginsRelativeArrangement = true
             stackView.spacing = 22
-            stackView.layoutMargins = UIEdgeInsets(top: 12, left: 26, bottom: 12, right: 26)
+            stackView.layoutMargins = UIEdgeInsets(top: 26, left: 26, bottom: 26, right: 26)
             let imageView = UIImageView(image: Asset.faqIcon.image)
             imageView.contentMode = .center
             imageView.addWidthConstraint(width: 9)
