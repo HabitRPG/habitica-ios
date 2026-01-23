@@ -40,7 +40,7 @@ class SelectionIconView: UIView {
     
     var isSelected: Bool = false {
         didSet {
-            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .curveEaseInOut) {
+            UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 4, options: .curveEaseInOut) {
                 if self.isSelected {
                     self.layer.borderColor = self.selectedBorderColor.cgColor
                     self.layer.borderWidth = 6

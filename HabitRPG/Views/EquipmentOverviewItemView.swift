@@ -11,7 +11,6 @@ import UIKit
 class EquipmentOverviewItemView: UIView {
     @IBOutlet weak var imageView: NetworkImageView!
     @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var noEquipmentLabel: UILabel!
     
     let noEquipmentBorder = CAShapeLayer()
     
@@ -39,10 +38,10 @@ class EquipmentOverviewItemView: UIView {
             noEquipmentBorder.strokeColor = UIColor.gray50.cgColor
             noEquipmentBorder.lineWidth = 2
             noEquipmentBorder.lineDashPattern = [4, 4]
-            noEquipmentBorder.frame = CGRect(x: 10, y: 10, width: frame.size.width-20, height: 60)
+            noEquipmentBorder.frame = CGRect(x: 10, y: 10, width: 60, height: 60)
             noEquipmentBorder.fillColor = nil
-            noEquipmentBorder.path = UIBezierPath(rect: CGRect(x: 10, y: 10, width: frame.size.width-20, height: 60)).cgPath
-            noEquipmentLabel.layer.addSublayer(noEquipmentBorder)
+            noEquipmentBorder.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 60, height: 60), cornerRadius: UIConstants.smallCornerRadius).cgPath
+            imageView.layer.addSublayer(noEquipmentBorder)
             
             setNeedsUpdateConstraints()
             updateConstraints()
@@ -51,16 +50,16 @@ class EquipmentOverviewItemView: UIView {
             
             shouldGroupAccessibilityChildren = true
             isAccessibilityElement = true
+            
+            imageView.cornerRadius = UIConstants.mediumCornerRadius
+            label.numberOfLines = 2
         }
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageView.pin.top().left().right().aspectRatio(1.0)
-        noEquipmentLabel.pin.top().left().right().aspectRatio(1.0)
-        label.pin.below(of: imageView).left().right().bottom()
-        noEquipmentLabel.layer.sublayers?.first?.frame = noEquipmentLabel.bounds
-        noEquipmentBorder.path = UIBezierPath(rect: CGRect(x: 10, y: 10, width: noEquipmentLabel.bounds.size.width-20, height: noEquipmentLabel.bounds.size.height-20)).cgPath
+        imageView.pin.top().size(80).hCenter()
+        label.pin.below(of: imageView).marginTop(6).left().right().bottom()
     }
     
     func setup(title: String, itemTapped: @escaping (() -> Void)) {
@@ -73,16 +72,18 @@ class EquipmentOverviewItemView: UIView {
     func configure(_ gearKey: String?, isTwoHanded: Bool = false) {
         if let key = gearKey, !key.contains("base_0") {
             imageView.setImagewith(name: "shop_\(key)")
-            imageView.isHidden = false
-            noEquipmentLabel.isHidden = true
+            imageView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+            noEquipmentBorder.isHidden = true
         } else {
-            imageView.isHidden = true
-            noEquipmentLabel.isHidden = false
+            imageView.image = nil
+            imageView.backgroundColor = ThemeService.shared.theme.isDark ? .gray5 : .gray500
+            noEquipmentBorder.isHidden = false
         }
     }
     
     func applyTheme(theme: Theme) {
-        imageView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        label.textColor = ThemeService.shared.theme.secondaryTextColor
+        noEquipmentBorder.strokeColor = theme.isDark ? UIColor.gray50.cgColor : UIColor.gray400.cgColor
     }
     
     @objc

@@ -74,7 +74,7 @@ class EquipmentOverviewView: UIView {
     func getTotalHeight(for width: CGFloat) -> CGFloat {
         let itemWidth = (width - (7*8)) / 4
         let itemHeights = (itemWidth+36)*2+(3*8)
-        return itemHeights+79
+        return itemHeights+89
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -90,37 +90,37 @@ class EquipmentOverviewView: UIView {
     private func layout() {
         let sidePadding: CGFloat
         if #available(iOS 26.0, *) {
-            sidePadding = traitCollection.isIPadFullSize ? 16 : 8
+            sidePadding = traitCollection.isIPadFullSize ? 16 : 10
         } else {
             sidePadding = UIConstants.largeCornerRadius
         }
-        let itemWidth = (bounds.size.width - (5*8) - (2*sidePadding)) / 4
-        let itemHeight = itemWidth+36
-        containerView.pin.top(54).start(sidePadding).end(sidePadding).height(itemHeight*2+(3*8))
+        let itemWidth = (bounds.size.width - (3*8) - (2*14) - (2*sidePadding)) / 4
+        let itemHeight: CGFloat = 102
+        containerView.pin.top(54).start(sidePadding).end(sidePadding).height(itemHeight*2+(2*14) + 36)
         titleLabel.pin.top(0).start(sidePadding).above(of: containerView).sizeToFit(.height)
         switchView.pin.end(sidePadding).top(11)
-        switchLabelView.pin.top(0).above(of: containerView).left(of: switchView).marginRight(8).sizeToFit(.height)
+        switchLabelView.pin.top(0).above(of: containerView).left(of: switchView).marginRight(sidePadding).sizeToFit(.height)
         
-        weaponItemView.pin.top(8).left(8).width(itemWidth).height(itemHeight)
-        offHandItemView.pin.top(8).right(of: weaponItemView).marginLeft(8).width(itemWidth).height(itemHeight)
-        headItemView.pin.top(8).right(of: offHandItemView).marginLeft(8).width(itemWidth).height(itemHeight)
-        armorItemView.pin.top(8).right(of: headItemView).marginLeft(8).width(itemWidth).height(itemHeight)
+        weaponItemView.pin.top(14).left(14).width(itemWidth).height(itemHeight)
+        offHandItemView.pin.top(14).right(of: weaponItemView).marginLeft(8).width(itemWidth).height(itemHeight)
+        headItemView.pin.top(14).right(of: offHandItemView).marginLeft(8).width(itemWidth).height(itemHeight)
+        armorItemView.pin.top(14).right(of: headItemView).marginLeft(8).width(itemWidth).height(itemHeight)
         
-        headAccessoryItemView.pin.bottom(8).left(8).width(itemWidth).width(itemWidth).height(itemHeight)
-        bodyAccessoryItemView.pin.bottom(8).right(of: headAccessoryItemView).marginLeft(8).width(itemWidth).height(itemHeight)
-        backItemView.pin.bottom(8).right(of: bodyAccessoryItemView).marginLeft(8).width(itemWidth).height(itemHeight)
-        eyewearItemView.pin.bottom(8).right(of: backItemView).marginLeft(8).width(itemWidth).height(itemHeight)
+        headAccessoryItemView.pin.bottom(14).left(14).width(itemWidth).width(itemWidth).height(itemHeight + 16)
+        bodyAccessoryItemView.pin.bottom(14).right(of: headAccessoryItemView).marginLeft(8).width(itemWidth).height(itemHeight + 16)
+        backItemView.pin.bottom(14).right(of: bodyAccessoryItemView).marginLeft(8).width(itemWidth).height(itemHeight + 16)
+        eyewearItemView.pin.bottom(14).right(of: backItemView).marginLeft(8).width(itemWidth).height(itemHeight + 16)
     }
     
     // MARK: - Private Helper Methods
     
     private func setupView() {
         if let view = viewFromNibForClass() {
-            
             view.frame = bounds
             addSubview(view)
 
             setupLabels()
+            containerView.cornerRadius = UIConstants.largeCornerRadius
             
             setNeedsUpdateConstraints()
             updateConstraints()
@@ -132,6 +132,7 @@ class EquipmentOverviewView: UIView {
     func applyTheme(theme: Theme) {
         titleLabel.textColor = theme.primaryTextColor
         switchLabelView.textColor = theme.secondaryTextColor
+        containerView.backgroundColor = theme.windowBackgroundColor
         backgroundColor = theme.contentBackgroundColor
         weaponItemView.applyTheme(theme: theme)
         offHandItemView.applyTheme(theme: theme)

@@ -73,7 +73,9 @@ struct LevelupSheet: View {
             if viewModel.canSelectClass {
                 HabiticaButtonUI(label: Text(L10n.Titles.selectClass), color: Color(themeService.theme.fixedTintColor)) {
                     if let user = viewModel.user {
-                        _ = UserManager.shared.showClassSelection(user: user)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            UserManager.shared.showClassSelection(user: user)
+                        }
                     }
                     presentationManager.dismiss()
                 }

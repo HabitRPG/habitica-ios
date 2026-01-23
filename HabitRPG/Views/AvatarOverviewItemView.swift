@@ -16,26 +16,19 @@ class AvatarOverviewItemView: UIView {
         } else {
             imageView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         }
-        imageView.layer.cornerRadius = 8
+        imageView.layer.cornerRadius = UIConstants.mediumCornerRadius
         imageView.contentMode = .center
         return imageView
     }()
     var label: UILabel = {
         let label = UILabel()
         label.textColor = ThemeService.shared.theme.secondaryTextColor
-        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 11)
+        label.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12, ofWeight: .medium)
         label.textAlignment = .center
         return label
     }()
-    var noItemView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = ThemeService.shared.theme.isDark ? UIColor.gray5 : UIColor.gray500
-        imageView.layer.cornerRadius = 8
-        imageView.contentMode = .center
-        imageView.image = Asset.blankAvatar.image
-        return imageView
-    }()
-        
+    let noItemBorder = CAShapeLayer()
+
     var itemTapped: (() -> Void)?
     
     override init(frame: CGRect) {
@@ -55,7 +48,14 @@ class AvatarOverviewItemView: UIView {
         
         addSubview(imageView)
         addSubview(label)
-        addSubview(noItemView)
+        
+        noItemBorder.strokeColor = ThemeService.shared.theme.isDark ? UIColor.gray50.cgColor : UIColor.gray400.cgColor
+        noItemBorder.lineWidth = 2
+        noItemBorder.lineDashPattern = [4, 4]
+        noItemBorder.frame = CGRect(x: 10, y: 10, width: 60, height: 60)
+        noItemBorder.fillColor = nil
+        noItemBorder.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 60, height: 60), cornerRadius: UIConstants.smallCornerRadius).cgPath
+        imageView.layer.addSublayer(noItemBorder)
         
         setNeedsUpdateConstraints()
         updateConstraints()
@@ -65,9 +65,8 @@ class AvatarOverviewItemView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageView.pin.top().left().right().aspectRatio(1.0)
-        noItemView.pin.top().left().right().aspectRatio(1.0)
-        label.pin.below(of: imageView).left().right().bottom()
+        imageView.pin.top().size(80).hCenter()
+        label.pin.below(of: imageView).marginTop(6).left().right().bottom()
     }
     
     func setup(title: String, itemTapped: @escaping (() -> Void)) {
@@ -76,13 +75,14 @@ class AvatarOverviewItemView: UIView {
     }
     
     func configure(_ imagename: String?) {
-        if let imagename = imagename, !imagename.contains("base_0") {
+        if let imagename = imagename, !imagename.contains("base_0") && !imagename.hasSuffix("background_") {
             imageView.setImagewith(name: imagename)
-            imageView.isHidden = false
-            noItemView.isHidden = true
+            noItemBorder.isHidden = true
+            imageView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         } else {
-            imageView.isHidden = true
-            noItemView.isHidden = false
+            imageView.image = nil
+            noItemBorder.isHidden = false
+            imageView.backgroundColor = ThemeService.shared.theme.isDark ? .gray5 : .gray500
         }
     }
     

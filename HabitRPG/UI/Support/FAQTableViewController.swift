@@ -22,7 +22,7 @@ struct ContributorTierList: View {
         ["name": "Tier 5 (Champion)", "tier": 5],
         ["name": "Tier 6 (Champion)", "tier": 6],
         ["name": "Tier 7 (Legendary)", "tier": 7],
-        ["name": "Tier 8 (Staff)", "tier": 8],
+        ["name": "Tier 8 (Staff)", "tier": 8]
     ]
     var body: some View {
         VStack(spacing: 6) {

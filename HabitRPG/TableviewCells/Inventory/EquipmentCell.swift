@@ -27,11 +27,11 @@ class EquipmentCell: UITableViewCell {
     var isEquipped: Bool = false {
         didSet {
             if isEquipped {
-                backgroundColor = ThemeService.shared.theme.tintColor.withAlphaComponent(0.1)
+                backgroundColor = ThemeService.shared.theme.tintColor.withAlphaComponent(0.2)
                 gearImageView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
             } else {
-                backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-                gearImageView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+                backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+                gearImageView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
 
             }
         }
