@@ -4,12 +4,13 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StatsView" customModule="Habitica" customModuleProvider="target">
             <connections>
-                <outlet property="allocateButton" destination="3nk-sp-ofO" id="DvW-8s-V7d"/>
+                <outlet property="allocateButton" destination="rrv-B8-5Mq" id="zPu-34-Fzn"/>
                 <outlet property="allocatedBackgroundView" destination="v8X-2J-018" id="3Ms-H9-8Tg"/>
                 <outlet property="allocatedLabel" destination="wqP-zc-iqp" id="ZtE-nZ-2XM"/>
                 <outlet property="allocatedValueLabel" destination="fGW-Wj-Eqh" id="p3N-uD-Gbb"/>
@@ -54,25 +55,24 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3nk-sp-ofO">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrv-B8-5Mq" customClass="AllocateButton" customModule="Habitica" customModuleProvider="target">
                                             <rect key="frame" x="226" y="0.0" width="97" height="43"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="97" id="lF9-5A-wQy"/>
+                                                <constraint firstAttribute="width" constant="97" id="iYo-76-ZJ3"/>
                                             </constraints>
-                                            <state key="normal" image="allocate_arrow"/>
-                                            <connections>
-                                                <action selector="allocateButtonTapped:" destination="-1" eventType="touchUpInside" id="1zk-T4-DJl"/>
-                                            </connections>
-                                        </button>
+                                        </view>
                                     </subviews>
                                 </stackView>
                             </subviews>
                             <color key="backgroundColor" red="0.96900206799999999" green="0.30568504330000001" blue="0.31993827219999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="QUc-gJ-M6u" secondAttribute="trailing" constant="26" id="4p3-2Z-USe"/>
+                                <constraint firstAttribute="bottom" secondItem="QUc-gJ-M6u" secondAttribute="bottom" id="CkU-u6-PDN"/>
                                 <constraint firstItem="QUc-gJ-M6u" firstAttribute="leading" secondItem="A0y-c2-3s6" secondAttribute="leading" constant="26" id="Qsd-Nv-PuZ"/>
                                 <constraint firstItem="QUc-gJ-M6u" firstAttribute="top" secondItem="A0y-c2-3s6" secondAttribute="top" id="dnI-G7-PZC"/>
                                 <constraint firstAttribute="bottom" secondItem="QUc-gJ-M6u" secondAttribute="bottom" id="eKp-5N-YOg"/>
+                                <constraint firstItem="QUc-gJ-M6u" firstAttribute="top" secondItem="A0y-c2-3s6" secondAttribute="top" id="pSl-ip-6ko"/>
                                 <constraint firstAttribute="height" constant="43" id="xJX-zS-yfj"/>
                             </constraints>
                         </view>
@@ -206,6 +206,8 @@
         </view>
     </objects>
     <resources>
-        <image name="allocate_arrow" width="20" height="14"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -76,13 +76,13 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-OPEN_URL=/user/avatar"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "OPEN_URL"
-            value = "/user/avatar"
+            value = "/user/stats"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

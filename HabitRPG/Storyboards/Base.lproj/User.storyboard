@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -779,6 +778,9 @@
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="allocateButtonTextColor">
                                                                         <color key="value" red="1" green="0.71372549019607845" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="allocateButtonSecondColor">
+                                                                        <color key="value" red="0.94901960784313721" green="0.18823529411764706" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v7e-ar-WYy" customClass="StatsView" customModule="Habitica" customModuleProvider="target">
@@ -800,6 +802,9 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="allocateButtonTextColor">
                                                                         <color key="value" red="0.66274509803921566" green="0.86274509803921573" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="allocateButtonSecondColor">
+                                                                        <color key="value" red="0.16078431372549018" green="0.58431372549019611" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
@@ -828,6 +833,9 @@
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="allocateButtonTextColor">
                                                                         <color key="value" red="0.99607843137254903" green="0.87058823529411766" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="allocateButtonSecondColor">
+                                                                        <color key="value" red="0.93333333333333335" green="0.56862745098039214" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A77-n6-5Pn" customClass="StatsView" customModule="Habitica" customModuleProvider="target">
@@ -849,6 +857,9 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="allocateButtonBackgroundColor">
                                                                         <color key="value" red="0.2627450980392157" green="0.15686274509803921" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="allocateButtonSecondColor">
+                                                                        <color key="value" red="0.5725490196078431" green="0.36078431372549019" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
