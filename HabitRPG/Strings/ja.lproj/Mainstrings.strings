@@ -1662,3 +1662,6 @@
 "gift_gems_alert_text" = "だれにプレゼントを贈りたいですか？";
 "hatch_pet_new_title" = "新しいペットを孵す";
 "next_prize_in_1_checkin" = "あと1日で次の賞品が受け取れます！";
+"checkin_prize_set_description" = "あなたは、人生・生活を向上することを誓いました。それを称え、%sのセットを贈ります";
+"contributor_tiers" = "貢献者の段位";
+"x_gems_for_y" = "%sでジェムを%d個";
