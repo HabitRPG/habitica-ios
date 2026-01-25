@@ -63,10 +63,10 @@
 "stats.character_build_text" = "Tiap level memberimu satu poin untuk ditetapkan ke atribut pilihanmu. Kamu dapat melakukannya secara manual, atau membiarkan game memutuskan salah satu opsi Alokasi Otomatis.";
 "stats.stat_guide" = "Panduan stat";
 "stats.strength_title" = "Kekuatan";
-"stats.strength_text" = "Meningkatkan serangan kritikal saat menyelesaikan tugas. Juga meningkatkan damage yang diberikan kepada bos.";
+"stats.strength_text" = "Meningkatkan peluang serangan kritis dan damage saat menyelesaikan tugas. Juga meningkatkan damage yang diberikan kepada boss Quest.";
 "stats.intelligence_title" = "Kecerdasan";
 "stats.constitution_title" = "Ketahanan";
-"stats.constitution_text" = "Mengurangi damage yang disebabkan oleh tugas. Tidak mengurangi damage yang diterima dari bos.";
+"stats.constitution_text" = "Mengurangi kerusakan yang disebabkan oleh Harian yang tidak dilakukan dan Kebiasaan buruk. Tidak mengurangi kerusakan yang diterima dari bos Misi.";
 "stats.perception_title" = "Persepsi";
 "controls" = "Kontrol";
 "difficulty" = "Kesulitan";
@@ -413,7 +413,7 @@
 "classes.warrior" = "Prajurit";
 "classes.mage" = "Penyihir";
 "classes.healer" = "Penyembuh";
-"classes.healer_description" = "Penyembuh kebal terhadap bahaya, dan memperluas perlindungan itu kepada orang lain. Keseharian yang terlewatkan dan Kebiasaan buruk tidak terlalu mengganggu mereka, dan mereka memiliki cara untuk memulihkan Darah dari kegagalan. Mainkan Penyembuh jika kamu senang membantu orang lain di Party, atau jika ide mencurangi Kematian dengan kerja keras menginspirasimu!";
+"classes.healer_description" = "Penyembuh mempelajari keterampilan yang dapat menyembuhkan dan melindungi diri sendiri serta kelompoknya. Pilih kelas Tabib jika kamu senang membantu orang lain atau menghindari kerusakan! Tabib sangat diuntungkan oleh tingkat Ketahanan yang tinggi.";
 "classes.class_header" = "Profesi %@";
 "classes.become_a_class" = "Menjadi seorang %@";
 "leader" = "Pemimpin";
@@ -473,8 +473,8 @@
 "cancel" = "Membatalkan";
 "stats.auto_allocate_points" = "Alokasi Poin Otomatis";
 "stats.distribute_tasks_help" = "Tetapkan poin berdasarkan Kekuatan, Kecerdasan, Ketahanan, dan Persepsi yang berhubungan dengan tugas yang diselesaikan.";
-"stats.intelligence_text" = "Meningkatkan EXP yang diperoleh dari menyelesaikan tugas. Juga meningkatkan kapasitas dan regenerasi Mana dari waktu ke waktu.";
-"stats.perception_text" = "Meningkatkan kemungkinan menemukan hadiah saat menyelesaikan Tugas, batas harian, Bonus Rentetan, dan jumlah emas yang didapat dari Tugas.";
+"stats.intelligence_text" = "Meningkatkan EXP yang diperoleh dari menyelesaikan tugas. Juga meningkatkan kapasitas dan kecepatan regenerasi Mana.";
+"stats.perception_text" = "Meningkatkan kemungkinan menemukan hadiah, batas hadiah harian, Bonus rekor beruntun tugas, dan jumlah emas yang didapat dari Tugas.";
 "tasks.todos" = "Agenda";
 "tasks.form.dailies_title_placeholder" = "Apa yang ingin kamu lakukan secara teratur?";
 "tasks.form.scheduling" = "Penjadwalan";
@@ -541,10 +541,10 @@
 "purchase_for_without_currency" = "Beli seharga %d";
 "level" = "Level";
 "classes.rogue" = "Perampok";
-"classes.warrior_description" = "Prajurit menghasilkan \"serangan kritis\" lebih banyak dan lebih baik, yang kadang memberikan bonus Emas, Pengalaman, dan peluang mendapat item saat menyelesaikan tugas. Mereka juga menghasilkan kerusakan berat pada monster bos. Mainkan Prajurit jika kamu termotivasi dengan hadiah bergaya jackpot, atau ingin menghilangkan kerepotan di Misi bos!";
+"classes.warrior_description" = "Prajurit lebih sering menghasilkan serangan kritis dan memberikan kerusakan besar kepada bos. Pilih kelas Prajurit jika kamu ingin mengalahkan monster dengan mudah! Prajurit sangat diuntungkan oleh tingkat Kekuatan yang tinggi.";
 "equipment.nothing_equipped" = "Tidak Terpasang Apapun";
-"classes.mage_description" = "Penyihir belajar dengan cepat, memperoleh Pengalaman dan Level lebih cepat daripada pekerjaan lain. Mereka juga punya banyak Mana untuk menggunakan kemampuan khusus. Pilih Penyihir jika kamu suka bermain Habitica dengan menggunakan taktik, atau jika kamu merasa sangat termotivasi untuk naik level dan membuka fitur-fitur lanjutan!";
-"classes.rogue_description" = "Perampok suka mengumpulkan kekayaan, mendapatkan lebih banyak Emas daripada siapapun, dan mahir menemukan item. Kemampuan Penyamaran ikonik mereka memungkinkan mereka menghindari konsekuensi dari Keseharian yang terlewatkan. Mainkan Perampok jika kamu menemukan motivasi yang kuat dari Hadiah dan Pencapaian, berjuang untuk jarahan dan lencana!";
+"classes.mage_description" = "Penyihir mempelajari keterampilan yang memberikan kerusakan pada bos serta meningkatkan XP dan mana. Pilih kelas Penyihir jika kamu termotivasi untuk naik level dengan cepat! Penyihir sangat diuntungkan oleh tingkat Kecerdasan yang tinggi.";
+"classes.rogue_description" = "Perampok mempelajari keterampilan yang memungkinkan mereka dan kelompoknya menemukan lebih banyak emas dan item acak. Pilih kelas Perampok jika kamu menginginkan banyak item dan emas! Perampok sangat diuntungkan oleh tingkat Persepsi yang tinggi.";
 "party.join_party_description" = "Ingin bergabung Party dengan orang lain tetapi tidak kenal siapapun? Beri tahu para pemimpin Party bahwa kamu menunggu untuk diundang!";
 "party.leave_party_description" = "Keluar dari Party tidak akan mengeluarkan kamu dari Tantangan Party yang kamu ikuti.";
 "quests.collection_quest" = "Misi Pencarian";
@@ -897,8 +897,8 @@
 "next_checkin_prize_1_day" = "Hadiah berikutnya akan terbuka dalam 1 Cek In";
 "next_checkin_prize_in_x_days" = "Hadiah berikutnya akan terbuka dalam %d Cek In";
 "next_checkin_prize_x_days" = "Hadiah berikutnya akan terbuka Cek In ke-%d";
-"next_prize_at_x_checkins" = "Hadiah berikutnya pada Cek In ke-%d";
-"next_prize_in_x_checkins" = "Hadiah berikutnya dalam %d Cek In";
+"next_prize_at_x_checkins" = "Hadiah berikutnya pada hari ke-%d!";
+"next_prize_in_x_checkins" = "Hadiah berikutnya dalam %d hari!";
 "recipient" = "Penerima";
 "invalid_recipient_message" = "Kamu harus menentukan Nama Pengguna Habitica yang valid sebagai penerima.";
 "invalid_recipient_title" = "Nama Pengguna Habitica Tidak Valid";
@@ -950,7 +950,7 @@
 "gift_sent_confirmation" = "Hadiahmu telah dikirim!";
 "gift_sent_to" = "Kamu mengirim %@:";
 "complete_more_tasks" = "Kamu perlu menyelesaikan lebih banyak tugas sebelum bisa membeli item ini!";
-"more_gems_message" = "Kamu perlu lebih banyak Permata untuk membeli item ini!";
+"more_gems_message" = "Kamu perlu lebih banyak Permata untuk membeli ini!";
 "insufficient_hourglasses_message" = "Kamu perlu lebih banyak Jam Pasir Mistik untuk membeli item ini! Jam Pasir diberikan setelah berlangganan berturut-turut.";
 "insufficient_hourglasses_message_subscriber" = "Kamu perlu lebih banyak Jam Pasir Mistik untuk membeli item ini! Tetap Berlangganan untuk terus menerima Jam Pasir-mu.";
 "excess_items" = "Item Berlebih";
@@ -1477,3 +1477,5 @@
 "gift_gems_alert_text" = "Akun mana yang ingin kamu berikan hadiahmu?";
 "hatch_pet_new_title" = "Tetaskan Hewan Peliharaan baru";
 "fcv_streak_explanation" = "Kamu dapat memulihkan rekor beruntun pada masing-masing tugas dengan mengetuknya untuk membuka tampilan sunting";
+"checkin_prize_set_description" = "Kamu memperoleh satu set %s karena berkomitmen untuk memperbaiki hidupmu";
+"next_prize_in_1_checkin" = "Hadiah berikutnya dalam 1 hari!";
