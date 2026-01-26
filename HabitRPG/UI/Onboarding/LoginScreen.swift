@@ -85,11 +85,12 @@ struct LoginTextInput<Icon: View>: View {
     var isSecure: Bool = false
     var isValid: Bool?
     var errorMessage: String?
-    
+    var textContentType: UITextContentType?
+
     @Binding var text: String
 
     @FocusState private var isFocused: Bool
-    
+
     @State private var lastFocusChange = Date()
     @State private var lastInputChange = Date()
 
@@ -101,6 +102,7 @@ struct LoginTextInput<Icon: View>: View {
                     .textFieldStyle(LoginTextFieldStyle(prefix: prefix, icon: icon, isValid: isValid, showError: showError))
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
+                    .textContentType(textContentType)
                     .focused($isFocused)
                     .onTapGesture {
                         isFocused = true
@@ -176,32 +178,35 @@ struct LoginForm: View {
             .padding(.bottom, 7)
             .submitLabel(.next)
             .keyboardType(.emailAddress)
-        let passwordField = LoginTextInput(placeholder: L10n.password,
-                                           icon: Image(Asset.loginPassword.name),
-                                           isSecure: true,
-                                           isValid: viewState == .login ? nil : isPasswordValid,
-                                           errorMessage: viewState == .register && password.count < 8 ? L10n.Login.passwordLengthError : nil,
-                                           text: $password)
         if viewState != .login {
-            passwordField
-                .textContentType(.newPassword)
+            LoginTextInput(placeholder: L10n.password,
+                           icon: Image(Asset.loginPassword.name),
+                           isSecure: true,
+                           isValid: isPasswordValid,
+                           errorMessage: password.count < 8 ? L10n.Login.passwordLengthError : nil,
+                           textContentType: .newPassword,
+                           text: $password)
                 .submitLabel(.next)
             LoginTextInput(placeholder: L10n.repeatPassword,
                            icon: Image(Asset.loginPassword.name),
                            isSecure: true,
                            isValid: isPasswordRepeatValid,
                            errorMessage: isPasswordRepeatValid == false ? L10n.Login.passwordConfirmError : nil,
+                           textContentType: .password,
                            text: $repeatPassword)
-            .textContentType(.password)
                 .transition(.move(edge: .top).combined(with: .opacity))
                 .padding(.top, 7)
                 .submitLabel(.continue)
-                    .onSubmit {
-                        onLogin()
-                    }
+                .onSubmit {
+                    onLogin()
+                }
         } else {
-            passwordField.submitLabel(.continue)
-                .textContentType(.password)
+            LoginTextInput(placeholder: L10n.password,
+                           icon: Image(Asset.loginPassword.name),
+                           isSecure: true,
+                           textContentType: .password,
+                           text: $password)
+                .submitLabel(.continue)
                 .onSubmit {
                     onLogin()
                 }
