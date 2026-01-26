@@ -97,7 +97,7 @@ class EquipmentOverviewView: UIView {
         let itemWidth = (bounds.size.width - (3*8) - (2*14) - (2*sidePadding)) / 4
         let itemHeight: CGFloat = 102
         containerView.pin.top(54).start(sidePadding).end(sidePadding).height(itemHeight*2+(2*14) + 36)
-        titleLabel.pin.top(0).start(sidePadding).above(of: containerView).sizeToFit(.height)
+        titleLabel.pin.top(0).start(sidePadding + 14).above(of: containerView).sizeToFit(.height)
         switchView.pin.end(sidePadding).top(11)
         switchLabelView.pin.top(0).above(of: containerView).left(of: switchView).marginRight(sidePadding).sizeToFit(.height)
         
