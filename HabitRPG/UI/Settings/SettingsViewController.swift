@@ -112,6 +112,7 @@ class SettingsViewController: FormViewController, Themeable {
     
     private func handleGroupPlans() {
         disposable.inner.add(userRepository.getGroupPlans().on(value: {[weak self] plans in
+            guard !UserManager.shared.isLoggingOut else { return }
             if plans.value.isEmpty {
                 self?.groupPlanSection.hidden = Condition(booleanLiteral: true)
             } else {
@@ -269,6 +270,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.cellUpdate({ (cell, _) in
                     cell.textLabel?.textColor = UIColor.red50
                 }).onCellSelection({[weak self] (_, _) in
+                    self?.disposable.inner.dispose()
                     self?.userRepository.logoutAccount { [weak self] in
                         (UIApplication.shared.delegate as? HabiticaAppDelegate)?.showLoginScreen()
                         UserManager.shared.logoutCompleted()

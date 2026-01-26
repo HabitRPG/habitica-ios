@@ -37,6 +37,7 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             self?.user = user
         }).start())
         disposable.add(socialRepository.getMember(userID: otherUserID ?? otherUsername ?? "", retrieveIfNotFound: true).on(value: {[weak self] member in
+            guard !UserManager.shared.isLoggingOut else { return }
             self?.member = member
             if self?.otherUserID == nil {
                 self?.otherUserID = member?.id

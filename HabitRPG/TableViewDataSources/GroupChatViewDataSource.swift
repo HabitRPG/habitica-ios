@@ -29,6 +29,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
         tableView?.reloadData()
         
         disposable.add(userRepository.getUser().on(value: {[weak self] user in
+            guard !UserManager.shared.isLoggingOut else { return }
             let isFirstLoad = self?.user == nil
             self?.user = user
             self?.tableView?.reloadData()

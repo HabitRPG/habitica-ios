@@ -79,6 +79,7 @@ class EquipmentViewDataSource: BaseReactiveTableViewDataSource<GearProtocol> {
         )
         
         disposable.add(userRepository.getUser().on(value: {[weak self]user in
+            guard !UserManager.shared.isLoggingOut else { return }
             if useCostume {
                 self?.equippedKey = user.items?.gear?.costume?.keyFor(type: gearType)
             } else {

@@ -43,6 +43,7 @@ class MountOverviewDataSource: StableOverviewDataSource<MountProtocol> {
                 }), items: sortedItems) ?? [:]
             })
             .on(value: {[weak self]overviewItems in
+                guard !UserManager.shared.isLoggingOut else { return }
                 self?.sections[0].items.removeAll()
                 self?.sections[0].items.append(contentsOf: overviewItems["drop"] ?? [])
                 self?.sections[1].items.removeAll()

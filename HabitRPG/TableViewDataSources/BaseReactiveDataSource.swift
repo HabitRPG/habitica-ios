@@ -102,6 +102,7 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
     }
     
     override func notify(changes: ReactiveChangeset?, section: Int = 0) {
+        guard !UserManager.shared.isLoggingOut else { return }
         if changes == nil {
             return
         }
@@ -184,6 +185,7 @@ class BaseReactiveCollectionViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>
     }
     
     override func notify(changes: ReactiveChangeset?, section: Int = 0) {
+        guard !UserManager.shared.isLoggingOut else { return }
         if userDrivenDataUpdate {
             return
         }

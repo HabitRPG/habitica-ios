@@ -41,9 +41,10 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
                 self?.configureSections(customizations.value)
         }).start())
         disposable.add(userRepository.getUser().on(value: {[weak self]user in
+            guard !UserManager.shared.isLoggingOut else { return }
             self?.preferences = user.preferences
             self?.gemCount = user.gemCount
-            
+
             self?.updateEquippedKey(user: user)
             self?.collectionView?.reloadData()
         }).start())
