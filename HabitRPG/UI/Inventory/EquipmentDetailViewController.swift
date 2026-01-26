@@ -37,7 +37,8 @@ class EquipmentDetailViewController: BaseTableViewController, UISearchResultsUpd
         }
         topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
         topHeaderCoordinator?.followScrollView = false
-        
+        topHeaderCoordinator?.contentInsetModifier.top = -30
+
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
         
@@ -64,9 +65,7 @@ class EquipmentDetailViewController: BaseTableViewController, UISearchResultsUpd
     override func applyTheme(theme: any Theme) {
         super.applyTheme(theme: theme)
         tableView.backgroundColor = theme.contentBackgroundColor
-        if #unavailable(iOS 26.0) {
-            topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
-        }
+        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

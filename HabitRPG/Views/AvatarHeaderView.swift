@@ -80,6 +80,6 @@ class AvatarHeaderView: UIView, Themeable {
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIScreen.main.bounds.size.width, height: 155 + UIConstants.largeCornerRadius)
+        return CGSize(width: UIScreen.main.bounds.size.width, height: 170 + UIConstants.largeCornerRadius)
     }
 }

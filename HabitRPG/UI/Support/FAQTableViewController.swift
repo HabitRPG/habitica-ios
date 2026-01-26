@@ -147,9 +147,9 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        mechanicsTitleLabel.textColor = theme.quadTextColor
-        commonQuestionsTitleLabel.textColor = theme.quadTextColor
-        moreQuestionsTitle.textColor = theme.primaryTextColor
+        mechanicsTitleLabel.textColor = theme.secondaryTextColor
+        commonQuestionsTitleLabel.textColor = theme.secondaryTextColor
+        moreQuestionsTitle.textColor = theme.secondaryTextColor
         moreQuestionsText.textColor = theme.ternaryTextColor
         commonQuestionsBackground.backgroundColor = theme.windowBackgroundColor
         populateMechanics()

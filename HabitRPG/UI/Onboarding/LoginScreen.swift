@@ -172,6 +172,7 @@ struct LoginForm: View {
                        icon: Image(Asset.loginEmail.name),
                        isValid: viewState == .login ? nil : isEmailValid,
                        text: $email)
+        .textContentType(viewState == .register ? .emailAddress : .none)
             .padding(.bottom, 7)
             .submitLabel(.next)
             .keyboardType(.emailAddress)
@@ -183,6 +184,7 @@ struct LoginForm: View {
                                            text: $password)
         if viewState != .login {
             passwordField
+                .textContentType(.newPassword)
                 .submitLabel(.next)
             LoginTextInput(placeholder: L10n.repeatPassword,
                            icon: Image(Asset.loginPassword.name),
@@ -190,6 +192,7 @@ struct LoginForm: View {
                            isValid: isPasswordRepeatValid,
                            errorMessage: isPasswordRepeatValid == false ? L10n.Login.passwordConfirmError : nil,
                            text: $repeatPassword)
+            .textContentType(.password)
                 .transition(.move(edge: .top).combined(with: .opacity))
                 .padding(.top, 7)
                 .submitLabel(.continue)
@@ -198,6 +201,7 @@ struct LoginForm: View {
                     }
         } else {
             passwordField.submitLabel(.continue)
+                .textContentType(.password)
                 .onSubmit {
                     onLogin()
                 }

@@ -18,6 +18,7 @@ struct PixelArtView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: NetworkImageView, context: Context) {
+        uiView.contentMode = .scaleAspectFit
         if let name = name {
             uiView.setImagewith(name: name)
         } else if let source = source {

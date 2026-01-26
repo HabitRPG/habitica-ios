@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -203,10 +202,10 @@
             <objects>
                 <viewController storyboardIdentifier="InboxChatViewController" id="mn5-kI-z18" customClass="InboxChatViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="PIW-ch-7Uh"/>
-                        <viewControllerLayoutGuide type="bottom" id="ucE-b4-Own"/>
+                        <viewControllerLayoutGuide type="top" id="BmD-zM-mMP"/>
+                        <viewControllerLayoutGuide type="bottom" id="G6n-uz-hSx"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="43x-Iu-HK8" customClass="UITableView" customModule="Habitica" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="43x-Iu-HK8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97636467218399048" green="0.97653168439865112" blue="0.97635418176651001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -882,10 +881,10 @@
             <objects>
                 <viewController storyboardIdentifier="GroupChatViewController" id="GpJ-zx-fw9" customClass="GroupChatViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TEP-lt-p8d"/>
-                        <viewControllerLayoutGuide type="bottom" id="Sur-1o-ymQ"/>
+                        <viewControllerLayoutGuide type="top" id="up1-NV-BrT"/>
+                        <viewControllerLayoutGuide type="bottom" id="Aor-tE-Flr"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="OFX-9b-U2U" customClass="UITableView" customModule="Habitica" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="OFX-9b-U2U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -913,13 +912,13 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="mMp-6b-m4W">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSR-zm-w5F">
+                                    <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSR-zm-w5F">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <connections>
                                             <segue destination="J2Y-h9-GJa" kind="embed" id="B9N-0Y-5SV"/>
                                         </connections>
                                     </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZC-9W-gA7">
+                                    <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZC-9W-gA7">
                                         <rect key="frame" x="375" y="0.0" width="375" height="667"/>
                                         <connections>
                                             <segue destination="GpJ-zx-fw9" kind="embed" id="gAH-Zh-PJ3"/>
@@ -1641,7 +1640,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GuM-7B-owL">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="GuM-7B-owL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Q2f-jL-AaR">
@@ -2043,7 +2042,7 @@
         <segue reference="gAH-Zh-PJ3"/>
         <segue reference="lgk-R4-zXr"/>
         <segue reference="jXp-j5-lvy"/>
-        <segue reference="ypV-Mu-tgU"/>
+        <segue reference="Hfa-0k-B92"/>
         <segue reference="wif-V9-Mcy"/>
         <segue reference="2EH-Sz-Osv"/>
     </inferredMetricsTieBreakers>

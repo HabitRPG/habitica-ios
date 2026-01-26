@@ -151,7 +151,6 @@ class ClassSelectionViewController: UIViewController, Themeable {
         }
         
         selectionButton.configuration = .borderless()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -279,7 +278,9 @@ class ClassSelectionViewController: UIViewController, Themeable {
             self?.descriptionView.textColor = textColor
             self?.bottomView.backgroundColor = backgroundColor
             self?.selectionButton.setTitleColor(buttonColor, for: .normal)
-            self?.selectionButton.setTitle(L10n.Classes.becomeAClass(className), for: .normal)
+            var container = AttributeContainer()
+            container.font = UIFont.boldSystemFont(ofSize: 17)
+            self?.selectionButton.configuration?.attributedTitle = AttributedString(L10n.Classes.becomeAClass(className), attributes: container)
             self?.view.backgroundColor = upperBackgroundColor
         }
     }

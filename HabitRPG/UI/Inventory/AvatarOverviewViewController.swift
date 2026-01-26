@@ -47,7 +47,8 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
         topHeaderCoordinator?.alternativeHeader = headerView
         topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
         topHeaderCoordinator?.followScrollView = false
-        
+        topHeaderCoordinator?.contentInsetModifier.top = -30
+
         setupItemViews()
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in

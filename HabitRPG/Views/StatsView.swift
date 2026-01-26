@@ -65,7 +65,7 @@ class AllocateButton: UIView {
         return CGSize(width: 97, height: 43)
     }
     
-    private let targetScale: CGFloat = 0.9
+    private let targetScale: CGFloat = 0.8
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -84,6 +84,7 @@ class AllocateButton: UIView {
             self.backgroundColor = self.backgroundColor?.withAlphaComponent(1)
         }
         if let action = onAllocate {
+            UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
             action()
         }
     }

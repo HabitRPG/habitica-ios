@@ -36,7 +36,8 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         }
         topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
         topHeaderCoordinator?.followScrollView = false
-                
+        topHeaderCoordinator?.contentInsetModifier.top = -30
+
         if let type = customizationType {
             if type == "eyewear" || type == "headAccessory" || type == "back" || type == "animalTails" {
                 gearDataSource = AvatarGearDetailViewDataSource(type: type)
@@ -68,9 +69,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         super.applyTheme(theme: theme)
         collectionView.backgroundColor = theme.contentBackgroundColor
         collectionView.layer.cornerRadius = 22
-        if #unavailable(iOS 26.0) {
-            topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
-        }
+        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

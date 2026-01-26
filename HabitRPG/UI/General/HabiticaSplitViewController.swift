@@ -67,6 +67,9 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
                 subviews = subviews.first?.subviews ?? []
             }
             if let scroll = subviews.first as? UIScrollView {
+                if scroll.transform != .identity {
+                    return
+                }
                 scroll.contentInset = UIEdgeInsets(top: view.safeAreaInsets.top + size.height + 12, left: view.safeAreaInsets.left, bottom: view.safeAreaInsets.bottom, right: view.safeAreaInsets.right)
                 scroll.scrollIndicatorInsets = UIEdgeInsets(top: size.height + 8, left: 0, bottom: 0, right: 0)
             }

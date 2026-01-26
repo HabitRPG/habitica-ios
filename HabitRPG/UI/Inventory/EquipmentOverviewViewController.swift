@@ -35,6 +35,8 @@ class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegat
         }
         topHeaderCoordinator?.alternativeHeader = headerView
         topHeaderCoordinator?.followScrollView = false
+        topHeaderCoordinator?.contentInsetModifier.top = -30
+
         scrollView.delegate = self
         topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
         
@@ -79,9 +81,7 @@ class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegat
         super.applyTheme(theme: theme)
         gearView.applyTheme(theme: theme)
         costumeView.applyTheme(theme: theme)
-        if #unavailable(iOS 26.0) {
-            topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
-        }
+        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
     }
     
     override func viewWillLayoutSubviews() {
