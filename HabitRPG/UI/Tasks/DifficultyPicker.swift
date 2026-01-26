@@ -77,14 +77,14 @@ struct DifficultyPicker: View {
                         .glassEffect(.regular.tint(tintColor), in: RoundedRectangle(cornerRadius: UIConstants.mediumCornerRadius))
                         .frame(width: 57, height: 57)
                         .padding(.leading, offset)
-                        .animation(.spring(), value: selectedDifficulty)
+                        .animation(.bouncy, value: selectedDifficulty)
                 } else {
                     RoundedRectangle(cornerRadius: UIConstants.mediumCornerRadius).foregroundStyle(tintColor)
                         .shadow(color: .black.opacity(0.12), radius: 8, x: 0, y: 3)
                         .shadow(color: .black.opacity(0.04), radius: 1, x: 0, y: 1)
                         .frame(width: 57, height: 57)
                         .padding(.leading, offset)
-                        .animation(.spring(), value: selectedDifficulty)
+                        .animation(.bouncy, value: selectedDifficulty)
                 }
                 HStack(spacing: 0) {
                     difficultyOption(text: L10n.Tasks.Form.trivial, value: 0.1).frame(width: itemWidth)

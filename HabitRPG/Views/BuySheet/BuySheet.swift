@@ -230,7 +230,7 @@ struct BuySheet: View, Dismissable {
             }
             if viewModel.isPurchasing {
                 ProgressView().habiticaProgressStyle().frame(width: 42, height: 42)
-                    .transition(.opacity)
+                    .transition(.blurReplace)
                     .padding(9)
             } else {
                 let canBuy = viewModel.canBuyDisplay
@@ -243,7 +243,7 @@ struct BuySheet: View, Dismissable {
                                  color: Color(canBuy ? ThemeService.shared.theme.fixedTintColor : ThemeService.shared.theme.offsetBackgroundColor)) {
                     viewModel.buyPressed()
                 }.disabled(!canBuy)
-                    .transition(.opacity)
+                    .transition(.blurReplace)
             }
         }.padding(.bottom, viewModel.keyboardHeight > 0 ? viewModel.keyboardHeight - 36 : 20)
     }
