@@ -256,6 +256,8 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             let loginResponse = APILoginResponse()
             loginResponse.newUser = true
             return loginResponse
+        }).filter({ response in
+            return response != nil
         })).on(value: { loginResponse in
             self.updateAuth(response: loginResponse)
         })

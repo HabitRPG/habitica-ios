@@ -151,7 +151,7 @@ class LoginViewModel: ObservableObject {
         userRepository.loginApple(identityToken: identityToken, name: name, allowRegister: false).observeResult {[weak self] (result) in
             switch result {
             case .success(let response):
-                if response?.newUser == true {
+                if response == nil || response?.newUser == true {
                     self?.prefillUsername()
                     self?.showUsernameView = true
                 } else {
