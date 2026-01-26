@@ -198,6 +198,6 @@ class CollapsibleTitle: UIView, UIGestureRecognizerDelegate {
     }
 
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: super.intrinsicContentSize.width, height: (subtitle != nil ? font.pointSize + subtitleFont.pointSize : font.pointSize) + 30)
+        return CGSize(width: super.intrinsicContentSize.width, height: (subtitle != nil ? font.pointSize + subtitleFont.pointSize : font.pointSize) + 38)
     }
 }
