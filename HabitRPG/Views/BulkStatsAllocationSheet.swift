@@ -12,31 +12,57 @@ struct StatsAllocationRow<Title: View>: View {
     @ObservedObject var themeService = ThemeService.shared
     @Environment(\.sizeCategory)
     var sizeCategory
-    
+
     var title: Title
     var color: Color
+    var statType: StatType
     @Binding var amount: Float
     var initialAmount: Float
     var maxAmount: Float
-    
+
+    @State private var numberScale: CGFloat = 1.0
+    @State private var glowOpacity: CGFloat = 0.0
+    @State private var glowScale: CGFloat = 1.0
+    @State private var particleTrigger: Int = 0
+    @State private var previousAmount: Float = 0
+
     var body: some View {
         HStack(spacing: 0) {
             title
                 .scaledFont(size: 17, weight: .semibold)
                 .frame(width: UIFontMetrics.default.scaledValue(for: 50))
-            Text("\(amount + initialAmount, format: .number.precision(.fractionLength(0)))")
-                .contentTransition(.numericText())
-                .animation(.default, value: amount)
-                .frame(width: 40, alignment: .trailing)
-                .foregroundStyle(Color(themeService.theme.quadTextColor))
-                .padding(.trailing, 17)
+
+            ZStack {
+                Circle()
+                    .stroke(color.opacity(glowOpacity), lineWidth: 2)
+                    .scaleEffect(glowScale)
+                    .frame(width: 36, height: 36)
+
+                ParticleBurstView(
+                    color: statType.lightColor,
+                    trigger: particleTrigger,
+                    particleCount: StatAllocationHaptics.shared.currentTapVelocity > 5 ? 10 : 6
+                )
+                .frame(width: 80, height: 80)
+                .allowsHitTesting(false)
+
+                Text("\(amount + initialAmount, format: .number.precision(.fractionLength(0)))")
+                    .contentTransition(.numericText())
+                    .animation(StatAnimationConstants.numberSpring, value: amount)
+                    .scaleEffect(numberScale)
+            }
+            .frame(width: 40, alignment: .center)
+            .foregroundStyle(Color(themeService.theme.quadTextColor))
+            .padding(.trailing, 17)
+
             Slider(value: $amount, in: 0...maxAmount).tint(color)
+
             HStack(spacing: 8) {
                 Text("+")
                     .foregroundStyle(Color(themeService.theme.quadTextColor))
-                Text("\(amount + initialAmount, format: .number.precision(.fractionLength(0)))")
+                Text("\(amount, format: .number.precision(.fractionLength(0)))")
                     .contentTransition(.numericText())
-                    .animation(.default, value: amount)
+                    .animation(StatAnimationConstants.numberSpring, value: amount)
                     .foregroundStyle(Color(themeService.theme.secondaryTextColor))
             }.frame(width: 64, height: 48)
                 .background(Color(themeService.theme.windowBackgroundColor))
@@ -48,6 +74,35 @@ struct StatsAllocationRow<Title: View>: View {
                 .padding(.leading, 13)
         }
         .scaledFont(size: 17)
+        .onChange(of: amount) { oldValue, newValue in
+            if newValue > oldValue {
+                triggerAllocationAnimations()
+            }
+            previousAmount = newValue
+        }
+        .onAppear {
+            previousAmount = amount
+        }
+    }
+
+    private func triggerAllocationAnimations() {
+        StatAllocationHaptics.shared.triggerAllocationHaptic()
+
+        withAnimation(StatAnimationConstants.quickSpring) {
+            numberScale = StatAnimationConstants.numberPopScale
+        }
+        withAnimation(StatAnimationConstants.settleSpring.delay(0.1)) {
+            numberScale = 1.0
+        }
+
+        glowOpacity = 0.6
+        glowScale = 1.0
+        withAnimation(.easeOut(duration: StatAnimationConstants.glowDuration)) {
+            glowOpacity = 0.0
+            glowScale = 2.0
+        }
+
+        particleTrigger += 1
     }
 }
 
@@ -133,6 +188,7 @@ struct BulkStatsAllocationSheet: View, Dismissable {
             }
                 StatsAllocationRow(title: Text("STR").foregroundStyle(themeService.theme.isDark ? Color.red500 : Color.maroon100),
                                    color: .red100,
+                                   statType: .strength,
                                    amount: $strength,
                                    initialAmount: initialStrength,
                                    maxAmount: maxToAllocate)
@@ -143,6 +199,7 @@ struct BulkStatsAllocationSheet: View, Dismissable {
                 }
                 StatsAllocationRow(title: Text("INT").foregroundStyle(themeService.theme.isDark ? Color.blue500 : Color.blue10),
                                    color: .blue100,
+                                   statType: .intelligence,
                                    amount: $intelligence,
                                    initialAmount: initialIntelligence,
                                    maxAmount: maxToAllocate)
@@ -153,6 +210,7 @@ struct BulkStatsAllocationSheet: View, Dismissable {
                 }
                 StatsAllocationRow(title: Text("CON").foregroundStyle(themeService.theme.isDark ? Color.yellow500 : Color.yellow10),
                                    color: .yellow100,
+                                   statType: .constitution,
                                    amount: $constitution,
                                    initialAmount: initialConstitution,
                                    maxAmount: maxToAllocate)
@@ -163,6 +221,7 @@ struct BulkStatsAllocationSheet: View, Dismissable {
                 }
                 StatsAllocationRow(title: Text("PER").foregroundStyle(themeService.theme.isDark ? Color.purple500 : Color.purple300),
                                    color: .purple400,
+                                   statType: .perception,
                                    amount: $perception,
                                    initialAmount: initialPerception,
                                    maxAmount: maxToAllocate)

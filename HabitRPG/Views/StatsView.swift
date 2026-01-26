@@ -10,6 +10,8 @@ import UIKit
 
 class AllocateButton: UIView {
     var onAllocate: (() -> Void)?
+    var statColor: UIColor = .purple400
+
     private let plusOneLabel: UILabel = {
         let label = UILabel()
         label.text = "+1"
@@ -17,31 +19,33 @@ class AllocateButton: UIView {
         return label
     }()
     private let arrowView = UIImageView(image: Asset.allocateArrow.image)
-    
+
     override var tintColor: UIColor! {
         didSet {
             plusOneLabel.textColor = tintColor
             arrowView.tintColor = tintColor
+            statColor = tintColor
         }
     }
-    
+
     var secondTintColor: UIColor = .tintColor
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupView()
     }
-    
+
     private func setupView() {
         addSubview(plusOneLabel)
         addSubview(arrowView)
+        clipsToBounds = false
     }
-    
+
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -50,7 +54,7 @@ class AllocateButton: UIView {
             }
         }
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         plusOneLabel.pin.sizeToFit().vCenter()
@@ -60,38 +64,81 @@ class AllocateButton: UIView {
         plusOneLabel.pin.left(left)
         arrowView.pin.right(of: plusOneLabel).marginLeft(8)
     }
-    
+
     override var intrinsicContentSize: CGSize {
         return CGSize(width: 97, height: 43)
     }
-    
-    private let targetScale: CGFloat = 0.8
-    
+
+    private let squashScale: CGFloat = 0.85
+    private let popScale: CGFloat = 1.12
+    private let squashVerticalCompression: CGFloat = 0.9
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        UIView.animate(withDuration: 0.1) {
-            self.plusOneLabel.transform = CGAffineTransform(scaleX: self.targetScale, y: self.targetScale)
-            self.arrowView.transform = CGAffineTransform(scaleX: self.targetScale, y: self.targetScale)
-            self.backgroundColor = self.backgroundColor?.withAlphaComponent(self.targetScale)
+        StatAllocationHaptics.shared.prepare()
+
+        UIView.animate(
+            withDuration: 0.1,
+            delay: 0,
+            usingSpringWithDamping: 0.5,
+            initialSpringVelocity: 0.5,
+            options: .allowUserInteraction
+        ) {
+            let squashTransform = CGAffineTransform(scaleX: self.squashScale, y: self.squashScale * self.squashVerticalCompression)
+            self.plusOneLabel.transform = squashTransform
+            self.arrowView.transform = squashTransform
+            self.backgroundColor = self.backgroundColor?.withAlphaComponent(0.85)
         }
     }
-    
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        UIView.animate(withDuration: 0.1) {
-            self.plusOneLabel.transform = .identity
-            self.arrowView.transform = .identity
+
+        UIView.animate(
+            withDuration: 0.15,
+            delay: 0,
+            usingSpringWithDamping: 0.5,
+            initialSpringVelocity: 0.8,
+            options: .allowUserInteraction
+        ) {
+            self.plusOneLabel.transform = CGAffineTransform(scaleX: self.popScale, y: self.popScale)
+            self.arrowView.transform = CGAffineTransform(scaleX: self.popScale, y: self.popScale)
             self.backgroundColor = self.backgroundColor?.withAlphaComponent(1)
+        } completion: { _ in
+            UIView.animate(
+                withDuration: 0.3,
+                delay: 0,
+                usingSpringWithDamping: 0.7,
+                initialSpringVelocity: 0.3,
+                options: .allowUserInteraction
+            ) {
+                self.plusOneLabel.transform = .identity
+                self.arrowView.transform = .identity
+            }
         }
+
         if let action = onAllocate {
-            UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
+            StatAllocationHaptics.shared.triggerAllocationHaptic()
+
+            let centerPoint = CGPoint(x: bounds.midX, y: bounds.midY)
+            let particleCount = StatAllocationHaptics.shared.currentTapVelocity > 5 ? 12 : 8
+            StatParticleEmitter.createBurst(at: centerPoint, in: self, color: statColor, count: particleCount)
+            addGlowPulse(color: statColor)
+
             action()
         }
     }
-    
+
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesCancelled(touches, with: event)
-        UIView.animate(withDuration: 0.1) {
+
+        UIView.animate(
+            withDuration: 0.2,
+            delay: 0,
+            usingSpringWithDamping: 0.7,
+            initialSpringVelocity: 0.3,
+            options: .allowUserInteraction
+        ) {
             self.plusOneLabel.transform = .identity
             self.arrowView.transform = .identity
             self.backgroundColor = self.backgroundColor?.withAlphaComponent(1)
@@ -149,7 +196,38 @@ class StatsView: UIView, Themeable {
 
     var totalValue: Int = 0 {
         didSet {
-            totalValueLabel.text = String(totalValue)
+            if oldValue != totalValue {
+                animateValueChange(label: totalValueLabel, from: oldValue, to: totalValue)
+            } else {
+                totalValueLabel.text = String(totalValue)
+            }
+        }
+    }
+
+    private func animateValueChange(label: UILabel, from oldValue: Int, to newValue: Int) {
+        let effectColor = attributeTextColor ?? .purple400
+        label.addSunburstEffect(color: effectColor, dotCount: 10)
+
+        UIView.animate(
+            withDuration: 0.15,
+            delay: 0,
+            usingSpringWithDamping: 0.5,
+            initialSpringVelocity: 0.8,
+            options: .allowUserInteraction
+        ) {
+            label.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        } completion: { _ in
+            label.text = String(newValue)
+
+            UIView.animate(
+                withDuration: 0.3,
+                delay: 0,
+                usingSpringWithDamping: 0.7,
+                initialSpringVelocity: 0.3,
+                options: .allowUserInteraction
+            ) {
+                label.transform = .identity
+            }
         }
     }
     
@@ -170,7 +248,11 @@ class StatsView: UIView, Themeable {
     }
     var allocatedValue: Int = 0 {
         didSet {
-            allocatedValueLabel.text = String(allocatedValue)
+            if oldValue != allocatedValue {
+                animateValueChange(label: allocatedValueLabel, from: oldValue, to: allocatedValue)
+            } else {
+                allocatedValueLabel.text = String(allocatedValue)
+            }
         }
     }
     
@@ -199,8 +281,6 @@ class StatsView: UIView, Themeable {
         super.init(coder: aDecoder)
         setupView()
     }
-    
-    // MARK: - Private Helper Methods
     
     private func setupView() {
         if let view = viewFromNibForClass() {
