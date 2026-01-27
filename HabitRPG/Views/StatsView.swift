@@ -194,9 +194,9 @@ class StatsView: UIView, Themeable {
         }
     }
 
-    var totalValue: Int = 0 {
+    var totalValue: Int = -1 {
         didSet {
-            if oldValue != totalValue {
+            if oldValue != totalValue && oldValue != -1 {
                 animateValueChange(label: totalValueLabel, from: oldValue, to: totalValue)
             } else {
                 totalValueLabel.text = String(totalValue)
@@ -246,9 +246,9 @@ class StatsView: UIView, Themeable {
             buffsValueLabel.text = String(buffValue)
         }
     }
-    var allocatedValue: Int = 0 {
+    var allocatedValue: Int = -1 {
         didSet {
-            if oldValue != allocatedValue {
+            if oldValue != allocatedValue && oldValue != -1 {
                 animateValueChange(label: allocatedValueLabel, from: oldValue, to: allocatedValue)
             } else {
                 allocatedValueLabel.text = String(allocatedValue)

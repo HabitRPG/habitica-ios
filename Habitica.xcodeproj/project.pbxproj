@@ -69,6 +69,7 @@
 		290FF8B827DF6AB800F1DE45 /* CustomizationDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290FF8B727DF6AB800F1DE45 /* CustomizationDetailTests.swift */; };
 		291017DF2B06161400D0607B /* SubscriptionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291017DE2B06161400D0607B /* SubscriptionPage.swift */; };
 		2910EFCA2C16EC8700D6D1E8 /* OldAvatarDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2910EFC92C16EC8700D6D1E8 /* OldAvatarDetailViewDataSource.swift */; };
+		29128E862F28DB2F00AADD4B /* StatAllocationAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29128E852F28DB2F00AADD4B /* StatAllocationAnimations.swift */; };
 		2912C3B022CA701C00BC485F /* QuestCompletedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */; };
 		291424A1260CCE740069F792 /* EventHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291424A0260CCE740069F792 /* EventHelper.swift */; };
 		2914485B2084E61400F3A6B5 /* MountOverviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914485A2084E61400F3A6B5 /* MountOverviewDataSource.swift */; };
@@ -788,6 +789,7 @@
 		290FF8B727DF6AB800F1DE45 /* CustomizationDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationDetailTests.swift; sourceTree = "<group>"; };
 		291017DE2B06161400D0607B /* SubscriptionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPage.swift; sourceTree = "<group>"; };
 		2910EFC92C16EC8700D6D1E8 /* OldAvatarDetailViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldAvatarDetailViewDataSource.swift; sourceTree = "<group>"; };
+		29128E852F28DB2F00AADD4B /* StatAllocationAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatAllocationAnimations.swift; sourceTree = "<group>"; };
 		2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestCompletedAlertController.swift; sourceTree = "<group>"; };
 		2913E3B020F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2913E3B320F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2531,6 +2533,7 @@
 		D9C000311928F85E003D4E4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				29128E852F28DB2F00AADD4B /* StatAllocationAnimations.swift */,
 				29DDAC262E82F3F7007EC4CD /* GlassTextField.swift */,
 				29DDAC1D2E79A1D7007EC4CD /* BuySheet */,
 				29F177F72AB85D39008B8F0C /* Stable */,
@@ -3570,6 +3573,7 @@
 				29CC0DFD2E8EBE23009643B9 /* RYABottomSheet.swift in Sources */,
 				29DF93472ECCCD3B0047801F /* HatchSuggestionSheet.swift in Sources */,
 				290C302A206BA0B50066AF5B /* SkillTableViewCell.swift in Sources */,
+				29128E862F28DB2F00AADD4B /* StatAllocationAnimations.swift in Sources */,
 				290458D02021D6C60032BC5E /* TopHeaderCoordinator.swift in Sources */,
 				29DF93532ECE1B9E0047801F /* InsufficientCurrencySheet.swift in Sources */,
 				2909D4282722C24700FF2B29 /* ThemeMode.swift in Sources */,
