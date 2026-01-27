@@ -401,12 +401,12 @@ struct ComboCounterView: View {
 class SunburstView: UIView {
     private var dotLayers: [CAShapeLayer] = []
     private let dotCount: Int
-    private let dotColor: UIColor
+    private let dotColors: [UIColor]
     private let dotRadius: CGFloat = 3.0
 
-    init(dotCount: Int = 12, color: UIColor) {
+    init(dotCount: Int = 12, colors: [UIColor] = [.purple400, .green100, .orange100]) {
         self.dotCount = dotCount
-        self.dotColor = color
+        self.dotColors = colors
         super.init(frame: .zero)
         backgroundColor = .clear
         isUserInteractionEnabled = false
@@ -434,7 +434,8 @@ class SunburstView: UIView {
                 clockwise: true
             )
             dotLayer.path = dotPath.cgPath
-            dotLayer.fillColor = dotColor.cgColor
+            let colorIndex = index % dotColors.count
+            dotLayer.fillColor = dotColors[colorIndex].cgColor
             dotLayer.position = centerPoint
             dotLayer.opacity = 0
             layer.addSublayer(dotLayer)
@@ -498,7 +499,7 @@ extension UILabel {
     func addSunburstEffect(color: UIColor, dotCount: Int = 12) {
         guard let superview = superview else { return }
         let centerInSuperview = CGPoint(x: frame.midX, y: frame.midY)
-        let sunburst = SunburstView(dotCount: dotCount, color: color)
+        let sunburst = SunburstView(dotCount: dotCount)
         sunburst.burst(from: centerInSuperview, in: superview)
     }
 }
