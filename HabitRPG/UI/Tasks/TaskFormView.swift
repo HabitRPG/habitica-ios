@@ -15,6 +15,8 @@ struct TaskFormView: View {
     var presentationMode
     @State private var isEditingText = false
     @State private var isEditingNotes = false
+    @State private var isEditingCounterUp = false
+    @State private var isEditingCounterDown = false
 
     var tags: [TagProtocol] = []
     
@@ -175,12 +177,24 @@ struct TaskFormView: View {
                                 
                                 TaskFormSection(header: Text(L10n.Tasks.Form.adjustCounter.localizedCapitalized),
                                                 content: VStack {
-                                    FormRow(title: Text(L10n.Tasks.Form.positive), valueLabel: TextField(L10n.Tasks.Form.positive, text: $viewModel.counterUp)
-                                        .multilineTextAlignment(.trailing)
-                                        .keyboardType(.numberPad))
-                                    FormRow(title: Text(L10n.Tasks.Form.negative), valueLabel: TextField(L10n.Tasks.Form.negative, text: $viewModel.counterDown)
-                                        .multilineTextAlignment(.trailing)
-                                        .keyboardType(.numberPad))
+                                    FormRow(title: Text(L10n.Tasks.Form.positive), valueLabel: FocusableTextField(
+                                        placeholder: L10n.Tasks.Form.positive,
+                                        text: $viewModel.counterUp,
+                                        isFirstResponder: $isEditingCounterUp,
+                                        configuration: { textField in
+                                            textField.keyboardType = .numberPad
+                                            textField.textAlignment = .right
+                                        }
+                                    ))
+                                    FormRow(title: Text(L10n.Tasks.Form.negative), valueLabel: FocusableTextField(
+                                        placeholder: L10n.Tasks.Form.negative,
+                                        text: $viewModel.counterDown,
+                                        isFirstResponder: $isEditingCounterDown,
+                                        configuration: { textField in
+                                            textField.keyboardType = .numberPad
+                                            textField.textAlignment = .right
+                                        }
+                                    ))
                                 })
                             }
                             TaskFormSection(header: Text(L10n.Tasks.Form.tags.localizedCapitalized),
