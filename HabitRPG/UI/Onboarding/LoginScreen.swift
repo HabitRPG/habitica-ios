@@ -174,7 +174,7 @@ struct LoginForm: View {
                        icon: Image(Asset.loginEmail.name),
                        isValid: viewState == .login ? nil : isEmailValid,
                        text: $email)
-        .textContentType(viewState == .register ? .emailAddress : .none)
+        .textContentType(viewState == .register ? .emailAddress : .username)
             .padding(.bottom, 7)
             .submitLabel(.next)
             .keyboardType(.emailAddress)
