@@ -1599,3 +1599,5 @@
 "next_prize_in_1_checkin" = "下一个奖励将在1天后解锁！";
 "loading" = "加载中";
 "task_status" = "任务状态";
+"contributor_tiers_description" = "如果你看到一个用户有彩色昵称和图标，那就是贡献者等级！无论是通过翻译、编码，或者只是有所帮助，为Habitica做出贡献的人都会被授予等级。等级越高，表示此玩家的贡献越大。";
+"contributor_tiers" = "贡献者等级";
