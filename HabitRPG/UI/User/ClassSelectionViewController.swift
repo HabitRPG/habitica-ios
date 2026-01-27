@@ -244,7 +244,7 @@ class ClassSelectionViewController: UIViewController, Themeable {
         self.selectedClass = habiticaClass
         switch habiticaClass {
         case .warrior:
-            configure(className: L10n.Classes.warrior, description: L10n.Classes.warriorDescription, textColor: .white, upperBackgroundColor: .red500, backgroundColor: .maroon100, buttonColor: .blue1)
+            configure(className: L10n.Classes.warrior, description: L10n.Classes.warriorDescription, textColor: .white, upperBackgroundColor: .red500, backgroundColor: .maroon100, buttonColor: .red1)
         case .mage:
             configure(className: L10n.Classes.mage, description: L10n.Classes.mageDescription, textColor: .blue1, upperBackgroundColor: .blue500, backgroundColor: UIColor.blue100, buttonColor: .blue1)
         case .healer:
@@ -278,6 +278,7 @@ class ClassSelectionViewController: UIViewController, Themeable {
             self?.descriptionView.textColor = textColor
             self?.bottomView.backgroundColor = backgroundColor
             self?.selectionButton.setTitleColor(buttonColor, for: .normal)
+            self?.selectionButton.tintColor = buttonColor
             var container = AttributeContainer()
             container.font = UIFont.boldSystemFont(ofSize: 17)
             self?.selectionButton.configuration?.attributedTitle = AttributedString(L10n.Classes.becomeAClass(className), attributes: container)
