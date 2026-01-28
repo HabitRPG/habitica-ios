@@ -414,8 +414,9 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.text = ""
         self.searchBar.resignFirstResponder()
-        
+
         (tabBarController as? MainTabBarController)?.searchString = nil
+        dataSource?.predicate = getPredicate()
         hideSearchBar()
         tableView.reloadData()
     }
