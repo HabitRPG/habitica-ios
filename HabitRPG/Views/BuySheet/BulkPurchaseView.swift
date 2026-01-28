@@ -17,13 +17,14 @@ struct PlusMinusStepperView<Icon: View>: View {
     var isActive: Bool = true
     var minAmount = 1
     var maxAmount: Int?
-    
+    @State private var isEditing = false
+
     private var textProxy: Binding<String> {
         Binding<String>(get: { String(self.amount) }, set: {
             self.amount = Int($0) ?? 0
         })
     }
-    
+
     var body: some View {
         HStack {
             Button {
@@ -36,15 +37,19 @@ struct PlusMinusStepperView<Icon: View>: View {
             }.disabled(amount <= minAmount || !isActive)
             HStack(spacing: 4) {
                 icon
-                TextField(text: textProxy, label: {
-                    
-                })
+                FocusableTextField(
+                    placeholder: "",
+                    text: textProxy,
+                    isFirstResponder: $isEditing,
+                    configuration: { textField in
+                        textField.keyboardType = .numberPad
+                        textField.textAlignment = .center
+                        textField.font = UIFont.systemFont(ofSize: UIFontMetrics.default.scaledValue(for: 22), weight: .bold)
+                        textField.textColor = isActive ? themeService.theme.primaryTextColor : themeService.theme.ternaryTextColor
+                    }
+                )
                 .fixedSize(horizontal: true, vertical: false)
-                .keyboardType(.numberPad)
-                .keyboardDismissMode(.interactive)
-                    .contentTransition(.numericText())
-                    .scaledFont(size: 22, weight: .bold)
-                    .foregroundStyle(Color(isActive ? themeService.theme.primaryTextColor : themeService.theme.ternaryTextColor))
+                .contentTransition(.numericText())
             }
                 .padding(.vertical, 11)
                 .padding(.horizontal, 31)
