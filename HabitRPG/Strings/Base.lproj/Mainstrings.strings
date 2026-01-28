@@ -1514,3 +1514,6 @@
 "contributor_tiers" = "Contributor Tiers";
 "habitica_helpers" = "Habitica Helpers";
 "contributor_tiers_description" = "If you see an account with a colored display name and an icon, that’s a contributor tier! Tiers are given to people who help around Habitica, whether it be for translation, coding, or just being helpful. The higher the tier, the more the player has contributed.";
+"delete_x" = "Delete %s";
+"delete_task_confirmation" = "Are you sure you want to delete this Task?";
+"task" = "Task";

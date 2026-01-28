@@ -281,14 +281,22 @@ class HabiticaAlertController: UIViewController, Themeable {
                 button.cornerRadius = UIConstants.mediumCornerRadius
             }
         } else {
-            if style == .destructive {
-                button.tintColor = ThemeService.shared.theme.errorTextColor
-            } else {
-                button.tintColor = ThemeService.shared.theme.primaryTextColor
-            }
             if #available(iOS 26.0, *) {
-                buttonConfig = .glass()
+                if style == .destructive {
+                    buttonConfig = .prominentGlass()
+                    button.tintColor = ThemeService.shared.theme.errorColor.withAlphaComponent(0.2)
+                    container.foregroundColor = ThemeService.shared.theme.errorColor
+                } else {
+                    buttonConfig = .glass()
+                    button.tintColor = ThemeService.shared.theme.primaryTextColor
+                }
             } else {
+                if style == .destructive {
+                    button.tintColor = ThemeService.shared.theme.errorTextColor
+                    container.foregroundColor = ThemeService.shared.theme.errorTextColor
+                } else {
+                    button.tintColor = ThemeService.shared.theme.primaryTextColor
+                }
                 buttonConfig = .plain()
             }
         }

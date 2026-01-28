@@ -336,8 +336,14 @@ public enum L10n {
   public static func deleteChallengeTaskDescription(_ p1: Int, _ p2: String) -> String {
     return L10n.tr("Mainstrings", "delete_challenge_task_description", p1, p2)
   }
+  /// Are you sure you want to delete this Task?
+  public static var deleteTaskConfirmation: String { return L10n.tr("Mainstrings", "delete_task_confirmation") }
   /// Delete Tasks
   public static var deleteTasks: String { return L10n.tr("Mainstrings", "delete_tasks") }
+  /// Delete %s
+  public static func deleteX(_ p1: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "delete_x", p1)
+  }
   /// Delete %d Tasks
   public static func deleteXTasks(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "delete_x_tasks", p1)
@@ -1312,6 +1318,8 @@ public enum L10n {
   public static var takeMeBack: String { return L10n.tr("Mainstrings", "take_me_back") }
   /// Tap to Show
   public static var tapToShow: String { return L10n.tr("Mainstrings", "tap_to_show") }
+  /// Task
+  public static var task: String { return L10n.tr("Mainstrings", "task") }
   /// Task Health
   public static var taskHealth: String { return L10n.tr("Mainstrings", "task_health") }
   /// Task History (Very Experimental)

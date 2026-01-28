@@ -242,11 +242,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
             viewModel.task = editedTask
             
             viewModel.onTaskDelete = {[weak self] in
-                if let task = self?.editedTask {
-                    self?.taskRepository.deleteTask(task).observeCompleted {
-                    }
-                }
-                self?.dismiss(animated: true, completion: nil)
+                self?.confirmTaskDeletion()
             }
             viewModel.lightTaskTintColor = Color(editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple400)
             var tintColor: UIColor = editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple300
@@ -403,6 +399,19 @@ class TaskFormController: UIHostingController<TaskFormView> {
                 NotificationManager.showPendingOnboardingAchievement(key: "createdTask")
             }
         }
+    }
+    
+    func confirmTaskDeletion() {
+        let alert = HabiticaAlertController(title: L10n.deleteX(taskType.prettyName()), message: L10n.deleteTaskConfirmation)
+        alert.addAction(title: L10n.deleteX(L10n.task), style: .destructive) { _ in
+            if let task = self.editedTask {
+                self.taskRepository.deleteTask(task).observeCompleted {
+                }
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
+        alert.addCancelAction()
+        alert.enqueue()
     }
 }
 
