@@ -48,13 +48,13 @@ class CustomRewardCell: UICollectionViewCell {
     
     func configure(reward: TaskProtocol) {
         let theme = ThemeService.shared.theme
-        titleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
+        titleLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 16, ofWeight: .semibold)
         if let text = reward.text {
             titleLabel.attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString(baseSize: 15, textColor: theme.primaryTextColor)
         } else {
             titleLabel.text = ""
         }
-        notesLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 11)
+        notesLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
         if let trimmedNotes = reward.notes?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedNotes.isEmpty == false {
             notesLabel.attributedText = try? Down(markdownString: trimmedNotes.unicodeEmoji).toHabiticaAttributedString(baseSize: 11, textColor: theme.secondaryTextColor)
             notesLabel.isHidden = false
