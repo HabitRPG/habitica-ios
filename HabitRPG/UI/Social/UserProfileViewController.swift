@@ -773,7 +773,7 @@ class UserProfileViewController: BaseHostingViewController<ProfilePage> {
     
     private var overflowMenu: UIMenu {
         return UIMenu(children: [
-            UIMenu(options: .displayInline, children: [ UIDeferredMenuElement({[weak self] add in
+            UIMenu(options: .displayInline, children: [ UIDeferredMenuElement.uncached({[weak self] add in
                 var items = [] as [UIAction]
                 if self?.user?.id != self?.userID {
                     if self?.isBlocked == true {
