@@ -544,10 +544,10 @@
 "classes.mages" = "Mages";
 "classes.healers" = "Healers";
 "classes.rogues" = "Rogues";
-"classes.warrior_description" = "Warriors score more critical hits and deal heavy damage to Bosses. Play a Warrior if you want to defeat monsters easily! Warriors benefit from a high Strength stat.";
-"classes.mage_description" = "Mages learn Skills that damage Bosses and boost EXP and Mana. Play a Mage if you’re motivated by leveling up quickly! Mages benefit from a high Intelligence stat.";
-"classes.healer_description" = "Healers learn Skills that can heal and protect themselves and their Party. Play a Healer if you enjoy assisting others or avoiding damage! Healers benefit from a high Constitution stat.";
-"classes.rogue_description" = "Rogues learn Skills that let them and their Party find more Gold and random drops. Play a Rogue if you want lots of items and Gold! Rogues benefit from a high Perception stat.";
+"classes.warrior_description" = "Warriors score more critical hits and deal more damage to Quest bosses. Play a Warrior if you want to defeat monsters easily with powerful blows. Warriors benefit from a high Strength stat.";
+"classes.mage_description" = "Mages learn skills that damage Quest bosses and boost Exp and Mana. Play a Mage if you're motivated by leveling up quickly. Mages benefit from a high Intelligence stat.";
+"classes.healer_description" = "Healers learn skills that protect themselves and their Party from damage. Play a Healer if you enjoy assisting others or lose HP frequently. Healers benefit from a high Constitution stat.";
+"classes.rogue_description" = "Rogues learn skills that boost the rewards you receive from completing tasks. Play a Rogue if you're after more item drops and Gold. Rogues benefit from a high Perception stat.";
 "classes.class_header" = "%@ Class";
 "classes.become_a_class" = "Become a %@";
 "leader" = "Leader";
