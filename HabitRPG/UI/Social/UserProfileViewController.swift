@@ -322,8 +322,8 @@ struct ProfilePage: View {
                                 }
                             }
                         }.frame(maxWidth: .infinity)
-                    }.profileContainer(spacing: 15)
-                    
+                    }.padding(.horizontal, 15)
+
                     VStack(spacing: 2) {
                         Text(member.profile?.name ?? "")
                             .scaledFont(size: 22, weight: .bold)
