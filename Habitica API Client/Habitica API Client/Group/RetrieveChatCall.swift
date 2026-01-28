@@ -12,6 +12,6 @@ import ReactiveSwift
 
 public class RetrieveChatCall: ResponseArrayCall<ChatMessageProtocol, APIChatMessage> {
     public init(groupID: String) {
-        super.init(httpMethod: .GET, endpoint: "groups/\(groupID)/chat")
+        super.init(httpMethod: .GET, endpoint: "groups/\(groupID)/chat?limit=400")
     }
 }
