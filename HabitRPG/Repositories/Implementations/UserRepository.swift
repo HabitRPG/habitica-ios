@@ -250,7 +250,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     func loginApple(identityToken: String, name: String, allowRegister: Bool) -> Signal<LoginResponseProtocol?, Never> {
         let call = AppleLoginCall(identityToken: identityToken, name: name, allowRegister: allowRegister)
         return call.objectSignal.merge(with: call.jsonSignal.map({ response -> LoginResponseProtocol? in
-            if let json = response as? [String: Any], json["id_token"] != nil {
+            if let json = response as? [String: Any], json["id_token"] == nil {
                 return nil
             }
             let loginResponse = APILoginResponse()
