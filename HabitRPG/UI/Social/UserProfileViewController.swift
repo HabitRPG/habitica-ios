@@ -800,7 +800,7 @@ class UserProfileViewController: BaseHostingViewController<ProfilePage> {
                 self?.perform(segue: StoryboardSegue.Social.giftGemsSegue)
             },
             UIAction(title: L10n.giftSubscription, image: UIImage(systemName: "giftcard")) {[weak self] _ in
-                self?.perform(segue: StoryboardSegue.Social.giftGemsSegue)
+                self?.perform(segue: StoryboardSegue.Social.giftSubscriptionSegue)
             },
             UIMenu(options: .displayInline, children: [ UIDeferredMenuElement({[weak self] add in
                 var items = [] as [UIAction]
