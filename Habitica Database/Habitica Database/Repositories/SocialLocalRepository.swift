@@ -103,8 +103,15 @@ public class SocialLocalRepository: BaseLocalRepository {
             save(object: realmChatMessage)
         } else {
             let message = RealmChatMessage(groupID: groupID, chatMessage: chatMessage)
-            if message.timestamp == nil, let existingMessage = getRealm()?.object(ofType: RealmChatMessage.self, forPrimaryKey: message.id) {
-                message.timestamp = existingMessage.timestamp
+            let existingMessage = getRealm()?.object(ofType: RealmChatMessage.self, forPrimaryKey: message.id)
+            let minValidDate = Date(timeIntervalSince1970: 946684800)
+            let needsTimestamp = message.timestamp == nil || (message.timestamp ?? Date.distantPast) < minValidDate
+            if needsTimestamp {
+                if let existing = existingMessage, let existingTimestamp = existing.timestamp, existingTimestamp >= minValidDate {
+                    message.timestamp = existingTimestamp
+                } else {
+                    message.timestamp = Date()
+                }
             }
             save(object: message)
         }
@@ -319,8 +326,10 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func getChatMessages(groupID: String) -> SignalProducer<ReactiveResults<[ChatMessageProtocol]>, ReactiveSwiftRealmError> {
-        return RealmChatMessage.findBy(query: "groupID == '\(groupID)'").sorted(key: "timestamp", ascending: true).reactive().map({ (value, changeset) -> ReactiveResults<[ChatMessageProtocol]> in
-            return (value.map({ (message) -> ChatMessageProtocol in return message }), changeset)
+        return RealmChatMessage.findBy(query: "groupID == '\(groupID)'").sorted(key: "timestamp", ascending: false).reactive().map({ (value, changeset) -> ReactiveResults<[ChatMessageProtocol]> in
+            let messages: [ChatMessageProtocol] = value.map({ $0 as ChatMessageProtocol })
+            let sorted = messages.sorted { ($0.timestamp ?? Date()) > ($1.timestamp ?? Date()) }
+            return (sorted, changeset)
         })
     }
     
