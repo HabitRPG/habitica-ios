@@ -384,6 +384,11 @@ struct ProfilePage: View {
                     
                     if let photoUrl = viewModel.member?.profile?.photoUrl {
                         KFImage(URL(string: photoUrl))
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: .infinity, maxHeight: 400)
+                            .padding(.horizontal, 13)
+                            .profileContainer(spacing: 13)
                     }
                     
                     Text(L10n.equippedGear)
