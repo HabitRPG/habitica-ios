@@ -28,7 +28,7 @@ class MaintenanceViewController: UIViewController, Themeable {
     
     private let appstoreButton: UIButton = {
         let button = UIButton()
-        button.cornerRadius = 6
+        button.cornerRadius = UIConstants.largeCornerRadius
         button.setTitle(L10n.openAppStore, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.isPointerInteractionEnabled = true

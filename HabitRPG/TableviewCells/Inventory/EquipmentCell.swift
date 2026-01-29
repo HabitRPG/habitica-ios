@@ -26,7 +26,7 @@ class EquipmentCell: UITableViewCell {
 
     private let equippedBackgroundView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 26
+        view.layer.cornerRadius = UIConstants.largeCornerRadius
         view.isHidden = true
         return view
     }()

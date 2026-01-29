@@ -18,7 +18,7 @@ class ChallengeTableViewHeaderView: UITableViewHeaderFooterView, Themeable {
     
     func setup() {
 
-        countLabel.layer.cornerRadius = 11
+        countLabel.layer.cornerRadius = UIConstants.mediumCornerRadius
         countLabel.clipsToBounds = true
 
         ThemeService.shared.addThemeable(themable: self)

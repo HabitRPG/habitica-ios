@@ -31,7 +31,7 @@ class SubscriptionPromoView: UIView, Themeable {
         button.setTitle(L10n.subscribe, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 14)
-        button.cornerRadius = 8
+        button.cornerRadius = UIConstants.mediumCornerRadius
         button.addTarget(SubscriptionPromoView.self, action: #selector(subscribeButtonTapped), for: .touchUpInside)
         button.isPointerInteractionEnabled = true
         return button

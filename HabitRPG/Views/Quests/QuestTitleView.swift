@@ -13,7 +13,7 @@ class QuestTitleView: UIView {
     
     let imageView: NetworkImageView = {
         let view = NetworkImageView()
-        view.cornerRadius = 6
+        view.cornerRadius = UIConstants.smallCornerRadius
         view.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         return view
     }()

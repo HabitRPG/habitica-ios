@@ -528,16 +528,6 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         alertController.show()
     }
 
-    private func configureTextField(_ textField: PaddedTextField) {
-        textField.borderStyle = .none
-        textField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        textField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
-        textField.borderWidth = 1
-        textField.cornerRadius = 8
-        textField.textInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        textField.textColor = ThemeService.shared.theme.secondaryTextColor
-    }
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

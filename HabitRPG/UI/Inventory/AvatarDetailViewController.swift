@@ -68,7 +68,6 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         collectionView.backgroundColor = theme.contentBackgroundColor
-        collectionView.layer.cornerRadius = 22
         topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
     }
     

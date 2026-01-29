@@ -36,8 +36,8 @@ class HRPGShopSectionHeaderCollectionReusableView: UICollectionReusableView {
         titleLabel.textColor = .white
         swapsInLabel.textColor = .white
         
-        backgroundView.layer.cornerRadius = 9
-        lowerBackgroundView.layer.cornerRadius = 6
+        backgroundView.layer.cornerRadius = UIConstants.mediumCornerRadius
+        lowerBackgroundView.layer.cornerRadius = UIConstants.mediumCornerRadius - 3
         lowerBackgroundView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         
         changeClassPriceLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeClassTapped)))

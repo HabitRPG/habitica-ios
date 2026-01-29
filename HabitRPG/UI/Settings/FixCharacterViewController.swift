@@ -150,7 +150,7 @@ class FixCharacterViewController: BaseTableViewController {
         if let wrapper = cell.viewWithTag(4) {
             wrapper.borderWidth = 0
             wrapper.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-            wrapper.cornerRadius = 13
+            wrapper.cornerRadius = UIConstants.mediumCornerRadius
         }
         
         return cell

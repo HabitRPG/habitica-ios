@@ -127,7 +127,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         view.backgroundColor = backgroundColor
         view.priceLabel.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: view.priceLabel)
-        gradientLayer.cornerRadius = 8
+        gradientLayer.cornerRadius = UIConstants.mediumCornerRadius
         view.priceLabel.backgroundColor = .clear
         view.priceLabelBackground.layer.insertSublayer(gradientLayer, at: 0)
         view.priceLabel.textColor = .white
@@ -172,7 +172,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         viewController.promptButton.setTitleColor(.white, for: .normal)
         viewController.promptButton.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: viewController.promptButton)
-        gradientLayer.cornerRadius = 8
+        gradientLayer.cornerRadius = UIConstants.mediumCornerRadius
         viewController.promptButton.layer.insertSublayer(gradientLayer, at: 0)
         viewController.instructionsDescription = L10n.FallPromo.infoInstructions(formatter.string(from: startDate), formatter.string(from: endDate))
         formatter.dateStyle = .medium

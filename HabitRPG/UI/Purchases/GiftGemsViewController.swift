@@ -241,7 +241,7 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
         mainView.translatesAutoresizingMaskIntoConstraints = true
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 112, height: 50))
         view.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        view.cornerRadius = 8
+        view.cornerRadius = UIConstants.mediumCornerRadius
         view.translatesAutoresizingMaskIntoConstraints = false
         let innerStackView = UIStackView(frame: CGRect(x: 24, y: 0, width: 88, height: 50))
         innerStackView.distribution = .fill
