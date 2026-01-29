@@ -86,7 +86,7 @@ class CollapsibleStackView: SeparatedStackView {
     
     private func setupView() {
         axis = .vertical
-        cornerRadius = 6
+        cornerRadius = UIConstants.largeCornerRadius
         if arrangedSubviews.isEmpty == false, let subView = arrangedSubviews[0] as? CollapsibleTitle {
             titleView = subView
         } else {

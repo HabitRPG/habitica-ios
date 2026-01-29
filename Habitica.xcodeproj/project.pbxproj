@@ -70,6 +70,7 @@
 		291017DF2B06161400D0607B /* SubscriptionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291017DE2B06161400D0607B /* SubscriptionPage.swift */; };
 		2910EFCA2C16EC8700D6D1E8 /* OldAvatarDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2910EFC92C16EC8700D6D1E8 /* OldAvatarDetailViewDataSource.swift */; };
 		29128E862F28DB2F00AADD4B /* StatAllocationAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29128E852F28DB2F00AADD4B /* StatAllocationAnimations.swift */; };
+		29128E882F2B6FE200AADD4B /* habitica_beta.icon in Resources */ = {isa = PBXBuildFile; fileRef = 29128E872F2B6FE200AADD4B /* habitica_beta.icon */; };
 		2912C3B022CA701C00BC485F /* QuestCompletedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */; };
 		291424A1260CCE740069F792 /* EventHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291424A0260CCE740069F792 /* EventHelper.swift */; };
 		2914485B2084E61400F3A6B5 /* MountOverviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914485A2084E61400F3A6B5 /* MountOverviewDataSource.swift */; };
@@ -790,6 +791,7 @@
 		291017DE2B06161400D0607B /* SubscriptionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPage.swift; sourceTree = "<group>"; };
 		2910EFC92C16EC8700D6D1E8 /* OldAvatarDetailViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldAvatarDetailViewDataSource.swift; sourceTree = "<group>"; };
 		29128E852F28DB2F00AADD4B /* StatAllocationAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatAllocationAnimations.swift; sourceTree = "<group>"; };
+		29128E872F2B6FE200AADD4B /* habitica_beta.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = habitica_beta.icon; sourceTree = "<group>"; };
 		2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestCompletedAlertController.swift; sourceTree = "<group>"; };
 		2913E3B020F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2913E3B320F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2768,6 +2770,7 @@
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
 				29D825E82EF5A66E0019FEB9 /* habitica.icon */,
 				2996B0C82F0BF20500F66A12 /* habitica_alpha.icon */,
+				29128E872F2B6FE200AADD4B /* habitica_beta.icon */,
 				298BE1CD2E2FAAB7005DA8CD /* Settings-prod.bundle */,
 				298BE1D02E2FACB8005DA8CD /* Settings-staff.bundle */,
 				290279672057F0B7006DACB9 /* Generated */,
@@ -3230,6 +3233,7 @@
 				29255E451F3DD3ED0094A3E3 /* TutorialStepView.xib in Resources */,
 				D9BE05841DA6ADE70074D3B7 /* GemPurchaseView.xib in Resources */,
 				29B388E11EF2BB7600A72950 /* YesterdailyChecklistItem.xib in Resources */,
+				29128E882F2B6FE200AADD4B /* habitica_beta.icon in Resources */,
 				498E4CFC1FA17B9E006933FF /* ChallengeCreatorTableViewCell.xib in Resources */,
 				D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */,
 				D91CCAD01BCF11CC001C6A0C /* UserTopHeader.xib in Resources */,
@@ -4147,7 +4151,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Beta";
+				ASSETCATALOG_COMPILER_APPICON_NAME = habitica_beta;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;

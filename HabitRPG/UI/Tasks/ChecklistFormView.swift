@@ -84,6 +84,7 @@ struct TaskFormChecklistView: View {
         }
     }
     @State var draggedItem: ChecklistItemProtocol?
+    @State var isDragging: Bool = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -98,9 +99,10 @@ struct TaskFormChecklistView: View {
                             }
                         }, focusItemId: focusItemId).onDrag({
                             self.draggedItem = item
+                            isDragging = true
                             return NSItemProvider(item: nil, typeIdentifier: "checklistitem")
-                        })
-                        .onDrop(of: ["checklistitem"], delegate: ChecklistDropDelegate(item: item, items: $items, draggedItem: $draggedItem))
+                        }).opacity(item.id == draggedItem?.id && isDragging ? 0 : 1)
+                            .onDrop(of: ["checklistitem"], delegate: ChecklistDropDelegate(item: item, items: $items, draggedItem: $draggedItem, isDragging: $isDragging))
                     }
                     .onMove { source, destination in
                         items.move(fromOffsets: source, toOffset: destination)
@@ -116,8 +118,10 @@ struct ChecklistDropDelegate: DropDelegate {
     let item: ChecklistItemProtocol
     @Binding var items: [ChecklistItemProtocol]
     @Binding var draggedItem: ChecklistItemProtocol?
+    @Binding var isDragging: Bool
 
     func performDrop(info: DropInfo) -> Bool {
+        isDragging = false
         return true
     }
 
@@ -138,6 +142,7 @@ struct ChecklistDropDelegate: DropDelegate {
                 return
             }
             withAnimation(.default) {
+                
                 self.items.move(fromOffsets: IndexSet(integer: from), toOffset: to > from ? to + 1 : to)
             }
         }
