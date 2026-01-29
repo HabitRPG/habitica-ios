@@ -59,11 +59,22 @@ class PartyDetailViewController: GroupDetailViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        if let scrollView = scrollView {
+            for constraint in scrollView.constraints where constraint.firstItem === mainStackView || constraint.secondItem === mainStackView {
+                let attrs: [NSLayoutConstraint.Attribute] = [.leading, .trailing, .width, .left, .right]
+                if attrs.contains(constraint.firstAttribute) || attrs.contains(constraint.secondAttribute) {
+                    constraint.isActive = false
+                }
+            }
+            mainStackView.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: 16).isActive = true
+            mainStackView.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        }
+
         if let groupNameLabel = self.groupNameLabel {
             mainStackView.setCustomSpacing(16, after: groupNameLabel)
         }
-        
+
         questContentStackView.separatorColor = .clear
         
         questInvitationUserAvatarView.showPet = false
