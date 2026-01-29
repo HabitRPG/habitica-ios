@@ -144,6 +144,18 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         dataSource?.collectionView = collectionView
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            let safeLeft = view.safeAreaInsets.left
+            let safeRight = view.safeAreaInsets.right
+            let newInsets = UIEdgeInsets(top: 0, left: 6 + safeLeft, bottom: 40, right: 6 + safeRight)
+            if flowLayout.sectionInset != newInsets {
+                flowLayout.sectionInset = newInsets
+            }
+        }
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         dataSource?.dispose()
