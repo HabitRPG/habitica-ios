@@ -261,21 +261,49 @@ class MainTabBar: UITabBar, Themeable {
     
     func layoutBadges() {
         for entry in badges {
-            let frame = frameForTab(atIndex: entry.key)
             let size = entry.value.intrinsicContentSize
             let width = max(size.height, size.width)
-            // Find the edge of the icon and then center the badge there
-            let offset: CGFloat
             if #available(iOS 26.0, *) {
-                offset = 35
-            } else {
-                offset = 15
+                if let iconFrame = iconFrameForTab(atIndex: entry.key) {
+                    entry.value.frame = CGRect(x: iconFrame.maxX - width / 2 - 4, y: iconFrame.minY - size.height / 2 + 4, width: width, height: size.height)
+                    entry.value.cornerRadius = size.height / 2
+                    continue
+                }
             }
-            entry.value.frame = CGRect(x: frame.origin.x + (frame.size.width/2) + offset - (width/2), y: frame.origin.y + 4, width: width, height: size.height)
+            let frame = frameForTab(atIndex: entry.key)
+            entry.value.frame = CGRect(x: frame.origin.x + (frame.size.width/2) + 15 - (width/2), y: frame.origin.y + 4, width: width, height: size.height)
             entry.value.cornerRadius = size.height / 2
         }
     }
-    
+
+    @available(iOS 26.0, *)
+    private func iconFrameForTab(atIndex index: Int) -> CGRect? {
+        var buttons = [UIControl]()
+        if let platterView = subviews.first(where: { !($0 is PaddedView) })?.subviews.first(where: { $0.description.contains("UITabBarPlatterView") }) {
+            buttons = platterView.subviews.compactMap { $0 as? UIControl }
+        }
+        buttons.sort { $0.frame.origin.x < $1.frame.origin.x }
+        guard index < buttons.count else { return nil }
+        let button = buttons[index]
+
+        if let imageView = findImageView(in: button) {
+            return imageView.convert(imageView.bounds, to: self)
+        }
+        return nil
+    }
+
+    private func findImageView(in view: UIView) -> UIImageView? {
+        for subview in view.subviews {
+            if let imageView = subview as? UIImageView, imageView.image != nil {
+                return imageView
+            }
+            if let found = findImageView(in: subview) {
+                return found
+            }
+        }
+        return nil
+    }
+
     private func frameForTab(atIndex index: Int) -> CGRect {
         var container: UIView = self
         if #available(iOS 26.0, *) {

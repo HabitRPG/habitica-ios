@@ -212,7 +212,9 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         let width = parentFrame.size.width + parentFrame.origin.x
         backgroundView.frame = CGRect(x: headerXPosition ?? -parentFrame.origin.x, y: headerYPosition, width: width, height: topHeaderHeight)
         upperBackgroundView.frame = CGRect(x: -parentFrame.origin.x, y: 0, width: width, height: bgViewOffset)
-        headerView?.frame = CGRect(x: 0, y: 0, width: width, height: defaultHeaderHeight)
+        let safeLeft = view.safeAreaInsets.left
+        let safeRight = view.safeAreaInsets.right
+        headerView?.frame = CGRect(x: safeLeft, y: 0, width: width - safeLeft - safeRight, height: defaultHeaderHeight)
         if let header = alternativeHeaderView {
             if topHeaderHeight <= 0 {
                 header.frame = CGRect(x: -parentFrame.origin.x, y: 0, width: width, height: header.frame.size.height)

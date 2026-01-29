@@ -184,8 +184,8 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     
     override func layoutSubviews() {
-        layout()
         super.layoutSubviews()
+        layout()
     }
     
     func layoutContentStartEdge() {
