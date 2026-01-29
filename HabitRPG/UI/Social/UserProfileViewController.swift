@@ -388,7 +388,8 @@ struct ProfilePage: View {
                             .scaledToFit()
                             .frame(maxWidth: .infinity, maxHeight: 400)
                             .padding(.horizontal, 13)
-                            .profileContainer(spacing: 13)
+                            .padding(13)
+                            .cornerRadius(UIConstants.largeCornerRadius)
                     }
                     
                     Text(L10n.equippedGear)
