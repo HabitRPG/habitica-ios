@@ -1823,25 +1823,25 @@ public enum L10n {
     }
     /// Healer
     public static var healer: String { return L10n.tr("Mainstrings", "classes.healer") }
-    /// Healers learn Skills that can heal and protect themselves and their Party. Play a Healer if you enjoy assisting others or avoiding damage! Healers benefit from a high Constitution stat.
+    /// Healers learn skills that protect themselves and their Party from damage. Play a Healer if you enjoy assisting others or lose HP frequently. Healers benefit from a high Constitution stat.
     public static var healerDescription: String { return L10n.tr("Mainstrings", "classes.healer_description") }
     /// Healers
     public static var healers: String { return L10n.tr("Mainstrings", "classes.healers") }
     /// Mage
     public static var mage: String { return L10n.tr("Mainstrings", "classes.mage") }
-    /// Mages learn Skills that damage Bosses and boost EXP and Mana. Play a Mage if you’re motivated by leveling up quickly! Mages benefit from a high Intelligence stat.
+    /// Mages learn skills that damage Quest bosses and boost Exp and Mana. Play a Mage if you're motivated by leveling up quickly. Mages benefit from a high Intelligence stat.
     public static var mageDescription: String { return L10n.tr("Mainstrings", "classes.mage_description") }
     /// Mages
     public static var mages: String { return L10n.tr("Mainstrings", "classes.mages") }
     /// Rogue
     public static var rogue: String { return L10n.tr("Mainstrings", "classes.rogue") }
-    /// Rogues learn Skills that let them and their Party find more Gold and random drops. Play a Rogue if you want lots of items and Gold! Rogues benefit from a high Perception stat.
+    /// Rogues learn skills that boost the rewards you receive from completing tasks. Play a Rogue if you're after more item drops and Gold. Rogues benefit from a high Perception stat.
     public static var rogueDescription: String { return L10n.tr("Mainstrings", "classes.rogue_description") }
     /// Rogues
     public static var rogues: String { return L10n.tr("Mainstrings", "classes.rogues") }
     /// Warrior
     public static var warrior: String { return L10n.tr("Mainstrings", "classes.warrior") }
-    /// Warriors score more critical hits and deal heavy damage to Bosses. Play a Warrior if you want to defeat monsters easily! Warriors benefit from a high Strength stat.
+    /// Warriors score more critical hits and deal more damage to Quest bosses. Play a Warrior if you want to defeat monsters easily with powerful blows. Warriors benefit from a high Strength stat.
     public static var warriorDescription: String { return L10n.tr("Mainstrings", "classes.warrior_description") }
     /// Warriors
     public static var warriors: String { return L10n.tr("Mainstrings", "classes.warriors") }

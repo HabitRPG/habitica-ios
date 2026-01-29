@@ -98,8 +98,12 @@ struct TaskFormChecklistView: View {
                                 }
                             }
                         }, focusItemId: focusItemId).onDrag({
-                            self.draggedItem = item
-                            isDragging = true
+                            if self.draggedItem == nil {
+                                self.draggedItem = item
+                                isDragging = true
+                            } else {
+                                self.draggedItem = nil
+                            }
                             return NSItemProvider(item: nil, typeIdentifier: "checklistitem")
                         }).opacity(item.id == draggedItem?.id && isDragging ? 0 : 1)
                             .onDrop(of: ["checklistitem"], delegate: ChecklistDropDelegate(item: item, items: $items, draggedItem: $draggedItem, isDragging: $isDragging))
@@ -141,8 +145,7 @@ struct ChecklistDropDelegate: DropDelegate {
             }) else {
                 return
             }
-            withAnimation(.default) {
-                
+            withAnimation(.bouncy) {
                 self.items.move(fromOffsets: IndexSet(integer: from), toOffset: to > from ? to + 1 : to)
             }
         }

@@ -1614,6 +1614,16 @@
 			path = Social;
 			sourceTree = "<group>";
 		};
+		29128E892F2B738500AADD4B /* AppIcons */ = {
+			isa = PBXGroup;
+			children = (
+				29D825E82EF5A66E0019FEB9 /* habitica.icon */,
+				2996B0C82F0BF20500F66A12 /* habitica_alpha.icon */,
+				29128E872F2B6FE200AADD4B /* habitica_beta.icon */,
+			);
+			path = AppIcons;
+			sourceTree = "<group>";
+		};
 		2914485E2084E9F300F3A6B5 /* Stable */ = {
 			isa = PBXGroup;
 			children = (
@@ -2768,9 +2778,7 @@
 				29D16C7D25A33F70001D9A61 /* MainVCSelectionSegue.swift */,
 				290279AC20583EE8006DACB9 /* Storyboards */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
-				29D825E82EF5A66E0019FEB9 /* habitica.icon */,
-				2996B0C82F0BF20500F66A12 /* habitica_alpha.icon */,
-				29128E872F2B6FE200AADD4B /* habitica_beta.icon */,
+				29128E892F2B738500AADD4B /* AppIcons */,
 				298BE1CD2E2FAAB7005DA8CD /* Settings-prod.bundle */,
 				298BE1D02E2FACB8005DA8CD /* Settings-staff.bundle */,
 				290279672057F0B7006DACB9 /* Generated */,
