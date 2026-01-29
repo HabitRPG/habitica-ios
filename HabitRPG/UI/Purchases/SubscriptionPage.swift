@@ -497,8 +497,8 @@ struct SubscriptionPage: View {
             }
             .foregroundStyle(textColor)
             .padding(.top, 16)
-            .background(backgroundColor.ignoresSafeArea(.all, edges: .top).padding(.bottom, 4))
-            .ignoresSafeArea()
+            .background(backgroundColor.ignoresSafeArea().padding(.bottom, 4))
+            .ignoresSafeArea(.all, edges: .vertical)
         }
 }
 
@@ -520,7 +520,7 @@ struct ScrollableSubscriptionPage: View {
                 })
             }
         }
-        .background(Color.purple400.ignoresSafeArea(.all, edges: .bottom).padding(.top, 200))
+        .background(Color.purple400.ignoresSafeArea().padding(.top, 200))
     }
 }
 

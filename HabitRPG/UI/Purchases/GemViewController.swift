@@ -53,6 +53,19 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         collectionView.insertSubview(stretchView, at: 0)
         stretchView.backgroundColor = .purple400
     }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            let safeLeft = view.safeAreaInsets.left
+            let safeRight = view.safeAreaInsets.right
+            let newInsets = UIEdgeInsets(top: 0, left: 6 + safeLeft, bottom: 40, right: 6 + safeRight)
+            if flowLayout.sectionInset != newInsets {
+                flowLayout.sectionInset = newInsets
+            }
+        }
+    }
+
     func retrieveProductList() {
         SwiftyStoreKit.retrieveProductsInfo(Set(PurchaseHandler.IAPIdentifiers)) { (result) in
             self.products = Array(result.retrievedProducts)
