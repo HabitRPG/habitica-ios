@@ -24,6 +24,10 @@ class AvatarHeaderView: UIView, Themeable {
         setupView()
     }
     
+    private var isCompactHeight: Bool {
+        traitCollection.verticalSizeClass == .compact
+    }
+
     private func setupView() {
         ThemeService.shared.addThemeable(themable: self)
         addSubview(avatarContainer)
@@ -34,6 +38,13 @@ class AvatarHeaderView: UIView, Themeable {
             avatarWrapper.cornerConfiguration = .corners(radius: .fixed(UIConstants.mediumCornerRadius))
         }
     }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if previousTraitCollection?.verticalSizeClass != traitCollection.verticalSizeClass {
+            invalidateIntrinsicContentSize()
+        }
+    }
     
     func applyTheme(theme: any Theme) {
         backgroundColor = theme.windowBackgroundColor
@@ -41,7 +52,18 @@ class AvatarHeaderView: UIView, Themeable {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if #available(iOS 26.0, *) {
+        if isCompactHeight {
+            let scale: CGFloat = 0.6
+            if #available(iOS 26.0, *) {
+                avatarContainer.pin.width(142 * scale).height(149 * scale).top(-2).hCenter()
+                avatarWrapper.pin.width(134 * scale).height(141 * scale).top(2).hCenter()
+                avatarView.pin.width(140 * scale).height(147 * scale).center()
+            } else {
+                avatarContainer.pin.width(140 * scale).height(147 * scale).top(0).hCenter()
+                avatarWrapper.pin.width(140 * scale).height(147 * scale).top().hCenter()
+                avatarView.pin.width(140 * scale).height(147 * scale).center()
+            }
+        } else if #available(iOS 26.0, *) {
             avatarContainer.pin.width(142).height(149).top(-4).hCenter()
             avatarWrapper.pin.width(134).height(141).top(4).hCenter()
             avatarView.pin.width(140).height(147).center()
@@ -80,6 +102,9 @@ class AvatarHeaderView: UIView, Themeable {
     }
     
     override var intrinsicContentSize: CGSize {
+        if isCompactHeight {
+            return CGSize(width: UIScreen.main.bounds.size.width, height: 100 + UIConstants.largeCornerRadius)
+        }
         return CGSize(width: UIScreen.main.bounds.size.width, height: 170 + UIConstants.largeCornerRadius)
     }
 }

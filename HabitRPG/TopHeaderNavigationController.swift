@@ -158,12 +158,14 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         guard let header = alternativeHeaderView else {
             return 0
         }
-        let intrinsicHeight = header.intrinsicContentSize.height
+        var intrinsicHeight = header.intrinsicContentSize.height
         if intrinsicHeight <= 0 {
-            return header.frame.size.height
-        } else {
-            return intrinsicHeight
+            intrinsicHeight = header.frame.size.height
         }
+        if traitCollection.verticalSizeClass == .compact {
+            return min(intrinsicHeight, 100 + UIConstants.largeCornerRadius)
+        }
+        return intrinsicHeight
     }
     
     override func viewDidLoad() {
@@ -223,13 +225,14 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
             }
         }
         
-        if let scrollView = currentHeaderCoordinator?.scrollView, currentHeaderCoordinator?.followScrollView == true {
-            if scrollView.contentInset.top != contentInset {
-                let modInset = currentHeaderCoordinator?.contentInsetModifier ?? .zero
+        if let scrollView = currentHeaderCoordinator?.scrollView {
+            let modInset = currentHeaderCoordinator?.contentInsetModifier ?? .zero
+            let targetTopInset = contentInset + modInset.top
+            if scrollView.contentInset.top != targetTopInset {
                 let existingInsets = scrollView.contentInset
-                var insets = UIEdgeInsets(top: contentInset, left: modInset.left, bottom: modInset.bottom, right: modInset.right)
+                var insets = UIEdgeInsets(top: targetTopInset, left: modInset.left, bottom: modInset.bottom, right: modInset.right)
                 if existingInsets.bottom != 0 {
-                    insets = UIEdgeInsets(top: contentInset + (existingInsets.top - contentInset), left: 0, bottom: existingInsets.bottom, right: 0)
+                    insets.bottom = existingInsets.bottom
                 }
                 scrollView.contentInset = insets
                 scrollView.scrollIndicatorInsets = insets
