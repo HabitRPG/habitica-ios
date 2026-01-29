@@ -64,8 +64,6 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         tableView.estimatedRowHeight = 90
         tableView.keyboardDismissMode = .interactive
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.insetsContentViewsToSafeArea = false
-        tableView.insetsLayoutMarginsFromSafeArea = false
         
         #if !targetEnvironment(macCatalyst)
         tableView.refreshControl = HabiticaRefresControl()
@@ -147,10 +145,12 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
             inputBarOffset -= 4
         }
         tableView.contentInset.top = inputBarOffset
-        inputBarContainer.pin.horizontally(20).height(inputBarHeight + autocompleteHeight).bottom(keyboardOffset)
+        let safeLeft = view.safeAreaInsets.left
+        let safeRight = view.safeAreaInsets.right
+        inputBarContainer.pin.left(20 + safeLeft).right(20 + safeRight).height(inputBarHeight + autocompleteHeight).bottom(keyboardOffset)
         inputBar.pin.start(8).end(-10).top().bottom(2)
         if let acceptView = view.viewWithTag(999) {
-            acceptView.pin.horizontally(20).bottom((tabBarController?.tabBar.frame.height ?? 0) + 6).height(90)
+            acceptView.pin.left(20 + safeLeft).right(20 + safeRight).bottom((tabBarController?.tabBar.frame.height ?? 0) + 6).height(90)
         }
         super.viewDidLayoutSubviews()
     }
