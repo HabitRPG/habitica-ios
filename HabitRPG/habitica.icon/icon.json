@@ -1,8 +1,8 @@
 {
   "fill" : {
     "linear-gradient" : [
-      "display-p3:0.57255,0.36078,0.95294,1.00000",
-      "display-p3:0.31373,0.70980,0.91373,1.00000"
+      "display-p3:0.60174,0.49568,0.94121,1.00000",
+      "display-p3:0.35768,0.00000,0.91892,1.00000"
     ],
     "orientation" : {
       "start" : {
@@ -31,15 +31,7 @@
           "fill" : {
             "automatic-gradient" : "display-p3:0.93635,0.92198,1.00000,1.00000"
           },
-          "glass-specializations" : [
-            {
-              "value" : true
-            },
-            {
-              "appearance" : "dark",
-              "value" : true
-            }
-          ],
+          "glass" : true,
           "hidden" : false,
           "image-name" : "test_habitica_icon2.svg",
           "name" : "test_habitica_icon2",

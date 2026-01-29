@@ -19,38 +19,26 @@
     {
       "layers" : [
         {
-          "blend-mode" : "hard-light",
-          "fill-specializations" : [
-            {
-              "value" : {
-                "linear-gradient" : [
-                  "display-p3:1.00000,0.38039,0.39608,1.00000",
-                  "srgb:1.00000,0.58039,0.29804,1.00000"
-                ],
-                "orientation" : {
-                  "start" : {
-                    "x" : 0.5,
-                    "y" : 0.30190972222222223
-                  },
-                  "stop" : {
-                    "x" : 0.5,
-                    "y" : 0.7
-                  }
-                }
+          "fill" : {
+            "linear-gradient" : [
+              "display-p3:1.00000,0.70603,0.38039,1.00000",
+              "srgb:1.00000,0.94150,0.29804,1.00000"
+            ],
+            "orientation" : {
+              "start" : {
+                "x" : 0.5,
+                "y" : 0.3146667619834246
+              },
+              "stop" : {
+                "x" : 0.5,
+                "y" : 0.7
               }
-            },
-            {
-              "appearance" : "dark",
-              "value" : "automatic"
             }
-          ],
-          "glass" : true,
-          "hidden" : false,
-          "image-name" : "alpha.svg",
-          "name" : "alpha",
-          "opacity" : 1,
+          },
+          "image-name" : "beta 3.png",
+          "name" : "beta 3",
           "position" : {
-            "scale" : 1.5,
+            "scale" : 1,
             "translation-in-points" : [
               255,
               265.0208702884422
