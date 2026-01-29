@@ -35,19 +35,19 @@
 /* (No Comment) */
 "classes.healer" = "Guérisseur";
 /* (No Comment) */
-"classes.healer_description" = "Les Guérisseu·r·se·s apprennent les Compétences permettant de se soigner et se protéger, ainsi que leur Équipe. Jouez Guérisseu·r·se si vous appréciez prendre soin des autres ou éviter les dégâts ! Les Guérisseu·r·se·s bénéficient d'un attribut Consitution élevé.";
+"classes.healer_description" = "Les Guérisseu·r·se·s apprennent les compétences permettant de se protéger des dégâts, ainsi que leur Équipe. Jouez Guérisseu·r·se si vous appréciez prendre soin des autres ou perdez régulièrement des PV. Les Guérisseu·r·se·s bénéficient d'un attribut Consitution élevé.";
 /* (No Comment) */
 "classes.mage" = "Mage";
 /* (No Comment) */
-"classes.mage_description" = "Les Mages apprennent des Compétences de dégâts contre les Boss et augmentent l'XP et la Mana. Jouez Mage si vous voulez grimper rapidement les niveaux ! Les Mages bénéficient d'un attribut Intelligence élevé.";
+"classes.mage_description" = "Les Mages apprennent des compétences de dégâts contre les Boss de Quêtes et augmentent l'XP et la Mana. Jouez Mage si vous voulez grimper rapidement les niveaux. Les Mages bénéficient d'un attribut Intelligence élevé.";
 /* (No Comment) */
 "classes.rogue" = "Voleur";
 /* (No Comment) */
-"classes.rogue_description" = "Les Voleu·r·se·s apprennent des Compétences leur permettant ainsi qu'à leur équipe de trouver plus d'Or et de loot aléatoire. Jouez Voleu·r·se si vous voulez vous remplir les poches d'objets et d'Or ! Les Voleu·r·se·s bénéficient d'un attribut Perception élevé.";
+"classes.rogue_description" = "Les Voleu·r·se·s apprennent des compétences leur permettant de recevoir plus de récompenses en accomplissant leurs tâches. Jouez Voleu·r·se si vous souhaitez trouver plus d'objets et d'Or. Les Voleu·r·se·s bénéficient d'un attribut Perception élevé.";
 /* (No Comment) */
 "classes.warrior" = "Guerrier";
 /* (No Comment) */
-"classes.warrior_description" = "Les Guerri·er·ère·s assènent plus de coups critiques et font de gros dégâts aux Boss. Jouez Guerri·er·ère si vous voulez mettre la pâté aux monstres ! Les Guerri·er·ère·s bénéficient d'un attribut Force élevé.";
+"classes.warrior_description" = "Les Guerri·er·ère·s assènent plus de coups critiques et de dégâts aux Boss de Quête. Jouez Guerri·er·ère si vous voulez mettre la pâté aux monstres. Les Guerri·er·ère·s bénéficient d'un attribut Force élevé.";
 /* (No Comment) */
 "close" = "Fermer";
 /* (No Comment) */
