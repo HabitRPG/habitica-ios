@@ -363,7 +363,8 @@ class AttributePointsViewController: BaseUIViewController {
                                                                                     initialIntelligence: stats.intelligence,
                                                                                     initialConstitution: stats.constitution,
                                                                                     initialPerception: stats.perception,
-                                                                                    maxToAllocate: stats.points))
+                                                                                    maxToAllocate: stats.points),
+                                                  allowLargeDetent: true)
         sheet.show()
     }
 }

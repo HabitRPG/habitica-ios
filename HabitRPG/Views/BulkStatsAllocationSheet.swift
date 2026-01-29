@@ -175,7 +175,7 @@ struct BulkStatsAllocationSheet: View, Dismissable {
                 Image(systemName: .checkmark)
                     .scaledFont(size: 24)
                     .frame(width: 24, height: 24)
-            }).tint(Color(themeService.theme.fixedTintColor)), content: VStack {
+            }).tint(Color(themeService.theme.fixedTintColor)), content: ScrollView { VStack {
                 VStack(spacing: 2) {
                     Text("\(totalAllocated, format: .number.precision(.fractionLength(0)))/\(maxToAllocate, format: .number.precision(.fractionLength(0)))")
                         .contentTransition(.numericText())
@@ -230,7 +230,7 @@ struct BulkStatsAllocationSheet: View, Dismissable {
                         redistribute(exclude: "per")
                     }
                 }
-            }).sheetBackground(Color(themeService.theme.contentBackgroundColor))
+            }}).sheetBackground(Color(themeService.theme.contentBackgroundColor))
     }
 }
 
