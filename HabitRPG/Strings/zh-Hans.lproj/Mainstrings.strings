@@ -29,13 +29,13 @@
 /* (No Comment) */
 "classes.healer" = "医者";
 /* (No Comment) */
-"classes.healer_description" = "医者能学习治疗与保护自身及队友的技能。如果你乐于助人或想要规避伤害，那就选择医者吧！体质是医者的核心属性。";
+"classes.healer_description" = "医者可习得保护自身及队友免受伤害的技能。如果你乐于助人或频繁失去生命值，那就选择医者吧！体质是医者的核心属性。";
 /* (No Comment) */
 "classes.mage" = "法师";
 /* (No Comment) */
 "classes.rogue" = "盗贼";
 /* (No Comment) */
-"classes.rogue_description" = "盗贼可习得让自己和队友获得更多金币与随机物品的技能。若你渴望收获海量战利品与财富，那就选择盗贼吧！感知是盗贼的核心属性。";
+"classes.rogue_description" = "盗贼可习得增加任务完成奖励的技能。若你渴望收获更多掉落物品和金币，那就选择盗贼吧！感知是盗贼的核心属性。";
 /* (No Comment) */
 "classes.warrior" = "战士";
 /* (No Comment) */
