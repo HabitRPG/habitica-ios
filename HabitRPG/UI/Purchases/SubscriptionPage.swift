@@ -463,6 +463,7 @@ struct SubscriptionPage: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: .infinity)
+                        .ignoresSafeArea()
                 }
                 Group {
                     if viewModel.presentationPoint == nil {
