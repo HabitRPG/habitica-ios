@@ -316,6 +316,7 @@
             <objects>
                 <navigationController id="YXA-Gu-MWh" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hYI-ru-pDi">
+                        <rect key="frame" x="0.0" y="96" width="414" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -344,7 +345,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tM4-JA-0M5">
-                                                        <rect key="frame" x="16" y="35" width="34.5" height="16"/>
+                                                        <rect key="frame" x="16" y="33" width="39" height="18"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="500" constant="21" id="n7G-Uw-fgL"/>
                                                             <constraint firstAttribute="width" priority="500" constant="42" id="qI3-hv-dZL"/>
@@ -371,7 +372,7 @@
                                                 <rect key="frame" x="0.0" y="113" width="414" height="63"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUb-lt-zn2">
-                                                        <rect key="frame" x="16" y="35" width="34.5" height="16"/>
+                                                        <rect key="frame" x="16" y="33" width="39" height="18"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="500" constant="21" id="5Jt-am-umg"/>
                                                             <constraint firstAttribute="width" priority="500" constant="42" id="zeO-Nv-orl"/>
@@ -454,10 +455,10 @@
                         <viewLayoutGuide key="safeArea" id="8AS-Y1-98V"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="UcZ-nC-uHq" firstAttribute="leading" secondItem="8AS-Y1-98V" secondAttribute="leading" id="1XK-PV-9pO"/>
+                            <constraint firstItem="UcZ-nC-uHq" firstAttribute="leading" secondItem="r5v-Dj-90l" secondAttribute="leading" id="1XK-PV-9pO"/>
                             <constraint firstItem="UcZ-nC-uHq" firstAttribute="top" secondItem="r5v-Dj-90l" secondAttribute="top" id="Ep0-cG-Oe9"/>
-                            <constraint firstItem="8AS-Y1-98V" firstAttribute="bottom" secondItem="UcZ-nC-uHq" secondAttribute="bottom" id="QuQ-SL-Zok"/>
-                            <constraint firstItem="8AS-Y1-98V" firstAttribute="trailing" secondItem="UcZ-nC-uHq" secondAttribute="trailing" id="l8P-Aq-Y40"/>
+                            <constraint firstAttribute="bottom" secondItem="UcZ-nC-uHq" secondAttribute="bottom" id="QuQ-SL-Zok"/>
+                            <constraint firstAttribute="trailing" secondItem="UcZ-nC-uHq" secondAttribute="trailing" id="l8P-Aq-Y40"/>
                             <constraint firstItem="2fa-LQ-4Ma" firstAttribute="width" secondItem="r5v-Dj-90l" secondAttribute="width" id="qYo-OB-90s"/>
                         </constraints>
                     </view>
@@ -523,11 +524,11 @@
                         <viewLayoutGuide key="safeArea" id="p1L-Zl-qnd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="U5U-nR-j47" firstAttribute="width" secondItem="uqd-1u-8Xf" secondAttribute="width" id="1Y0-Ef-dzS"/>
                             <constraint firstItem="p1L-Zl-qnd" firstAttribute="trailing" secondItem="DS3-wV-wdp" secondAttribute="trailing" id="6oi-K1-nVc"/>
                             <constraint firstAttribute="bottom" secondItem="DS3-wV-wdp" secondAttribute="bottom" id="9wp-4A-NCk"/>
                             <constraint firstItem="DS3-wV-wdp" firstAttribute="leading" secondItem="p1L-Zl-qnd" secondAttribute="leading" id="KZ2-Ql-Dpw"/>
                             <constraint firstItem="DS3-wV-wdp" firstAttribute="top" secondItem="p1L-Zl-qnd" secondAttribute="top" id="Ovx-oB-Yq3"/>
+                            <constraint firstItem="U5U-nR-j47" firstAttribute="width" secondItem="p1L-Zl-qnd" secondAttribute="width" id="f40-5g-a6V"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="j53-eh-jiM"/>
@@ -544,12 +545,12 @@
         <scene sceneID="bdK-Y9-cYO">
             <objects>
                 <viewController storyboardIdentifier="ReportBugViewController" id="UI6-xH-IfR" customClass="ReportBugViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uW6-Rn-cAu">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uW6-Rn-cAu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9p5-x8-l8S">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="828"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="O9h-sv-rzK">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="775"/>
@@ -826,9 +827,9 @@
                         <viewLayoutGuide key="safeArea" id="SLF-B5-sHD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="SLF-B5-sHD" firstAttribute="bottom" secondItem="9p5-x8-l8S" secondAttribute="bottom" id="2wN-oy-r4p"/>
-                            <constraint firstItem="SLF-B5-sHD" firstAttribute="trailing" secondItem="9p5-x8-l8S" secondAttribute="trailing" id="E0D-zY-Ccx"/>
-                            <constraint firstItem="O9h-sv-rzK" firstAttribute="width" secondItem="uW6-Rn-cAu" secondAttribute="width" id="QuH-I8-tqK"/>
+                            <constraint firstAttribute="bottom" secondItem="9p5-x8-l8S" secondAttribute="bottom" id="2wN-oy-r4p"/>
+                            <constraint firstAttribute="trailing" secondItem="9p5-x8-l8S" secondAttribute="trailing" id="E0D-zY-Ccx"/>
+                            <constraint firstItem="O9h-sv-rzK" firstAttribute="width" secondItem="SLF-B5-sHD" secondAttribute="width" id="bCo-Z1-L1e"/>
                             <constraint firstItem="9p5-x8-l8S" firstAttribute="top" secondItem="uW6-Rn-cAu" secondAttribute="top" id="bME-g5-S5T"/>
                             <constraint firstItem="9p5-x8-l8S" firstAttribute="leading" secondItem="uW6-Rn-cAu" secondAttribute="leading" id="hWh-nz-AbJ"/>
                         </constraints>
@@ -863,7 +864,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="p4b-j2-14v"/>
+        <segue reference="hQh-5k-AfU"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
