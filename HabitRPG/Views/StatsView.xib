@@ -192,9 +192,9 @@
             <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="GWZ-py-v2E" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Cah-fc-cvx"/>
-                <constraint firstItem="GWZ-py-v2E" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="PPn-dZ-XQ4"/>
+                <constraint firstItem="GWZ-py-v2E" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="PPn-dZ-XQ4"/>
                 <constraint firstAttribute="bottom" secondItem="GWZ-py-v2E" secondAttribute="bottom" id="fbh-tT-7rU"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GWZ-py-v2E" secondAttribute="trailing" id="hzz-ac-d5D"/>
+                <constraint firstAttribute="trailing" secondItem="GWZ-py-v2E" secondAttribute="trailing" id="hzz-ac-d5D"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <userDefinedRuntimeAttributes>

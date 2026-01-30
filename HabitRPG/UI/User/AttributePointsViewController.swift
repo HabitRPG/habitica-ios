@@ -12,6 +12,7 @@ import ReactiveSwift
 
 class AttributePointsViewController: BaseUIViewController {
     
+    @IBOutlet weak var widthConstraint: NSLayoutConstraint!
     @IBOutlet weak var bulkAllocationView: UIView!
     @IBOutlet weak var bulkDistributeButtonWrapper: GradientView!
 
@@ -319,6 +320,7 @@ class AttributePointsViewController: BaseUIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        widthConstraint.constant = scrollView.bounds.width - 32
         super.viewDidLayoutSubviews()
         pointsToAllocateLabel.layer.cornerRadius = pointsToAllocateLabel.frame.size.height/2
         bulkDistributeButtonWrapper.layer.cornerRadius = bulkDistributeButtonWrapper.frame.size.height/2

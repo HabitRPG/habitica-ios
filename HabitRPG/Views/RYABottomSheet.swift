@@ -234,6 +234,8 @@ struct RYATaskView: View {
 }
 
 struct RYABottomSheet: View, Dismissable {
+    @Environment(\.safeAreaInsets) var safeAreaInsets
+    
     @ObservedObject var themeService = ThemeService.shared
     var dismisser: Dismisser {
         get {
@@ -298,7 +300,8 @@ struct RYABottomSheet: View, Dismissable {
                 bottomContent
                     .padding(.bottom, 28)
             }
-        },
+        }.padding(.leading, safeAreaInsets.leading)
+            .padding(.trailing, safeAreaInsets.trailing),
                         topPadding: 0,
                         bottomPadding: 0)
         .ignoresSafeArea()
