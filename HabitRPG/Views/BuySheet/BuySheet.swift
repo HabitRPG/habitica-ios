@@ -277,7 +277,7 @@ struct BuySheet: View, Dismissable {
                             topPadding: 0,
                             bottomPadding: 0
             )
-            .ignoresSafeArea()
+            .ignoresSafeArea(edges: [.top, .bottom])
             .onDisappear {
                 viewModel.dispose()
             }

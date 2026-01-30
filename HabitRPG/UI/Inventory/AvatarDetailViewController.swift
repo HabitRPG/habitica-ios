@@ -82,7 +82,9 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let width = 80
-        let viewWidth = Int(collectionView.frame.size.width)
+        let safeLeft = collectionView.safeAreaInsets.left
+        let safeRight = collectionView.safeAreaInsets.right
+        let viewWidth = Int(collectionView.frame.size.width - safeLeft - safeRight)
         var count = 3
         if let dataSource = gearDataSource {
             let inSection = dataSource.collectionView(collectionView, numberOfItemsInSection: section)
@@ -97,7 +99,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         }
         let totalWidth = width * count + (10 * (count-1))
         let spacing = CGFloat(viewWidth - totalWidth) / 2
-        return UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
+        return UIEdgeInsets(top: 0, left: spacing + safeLeft, bottom: 0, right: spacing + safeRight)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

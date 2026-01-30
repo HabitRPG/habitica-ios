@@ -67,8 +67,8 @@ class PartyDetailViewController: GroupDetailViewController {
                     constraint.isActive = false
                 }
             }
-            mainStackView.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: 16).isActive = true
-            mainStackView.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -16).isActive = true
+            mainStackView.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+            mainStackView.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
         }
 
         if let groupNameLabel = self.groupNameLabel {

@@ -53,14 +53,19 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
     }
     
     override func viewWillLayoutSubviews() {
-        layoutHeader()
         super.viewWillLayoutSubviews()
+        layoutHeader()
+    }
+
+    override func viewSafeAreaInsetsDidChange() {
+        super.viewSafeAreaInsetsDidChange()
+        layoutHeader()
     }
     
     func layoutHeader() {
         let size = segmentedControl.intrinsicContentSize
-        segmentedWrapper.frame = CGRect(x: 8, y: 0, width: view.frame.width - 16, height: size.height + 8)
-        segmentedControl.pin.horizontally(4).vertically(4)
+        segmentedWrapper.frame = CGRect(x: 8, y: 0, width: view.frame.width - 16, height: size.height + 4)
+        segmentedControl.pin.horizontally(4).vertically(2)
         scrollView.subviews.forEach { subview in
             var subviews: [UIView] = subview.subviews
             while !subviews.isEmpty && !(subviews.first is UIScrollView) {
@@ -70,8 +75,13 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
                 if scroll.transform != .identity {
                     return
                 }
-                scroll.contentInset = UIEdgeInsets(top: view.safeAreaInsets.top + size.height + 12, left: view.safeAreaInsets.left, bottom: view.safeAreaInsets.bottom, right: view.safeAreaInsets.right)
-                scroll.scrollIndicatorInsets = UIEdgeInsets(top: size.height + 8, left: 0, bottom: 0, right: 0)
+                let oldTopInset = scroll.contentInset.top
+                let newTopInset = view.safeAreaInsets.top + size.height + 8
+                scroll.contentInset = UIEdgeInsets(top: newTopInset, left: 0, bottom: view.safeAreaInsets.bottom, right: 0)
+                scroll.scrollIndicatorInsets = UIEdgeInsets(top: size.height + 4, left: 0, bottom: 0, right: 0)
+                if oldTopInset != newTopInset && scroll.contentOffset.y > -newTopInset && scroll.contentOffset.y <= -oldTopInset + 10 {
+                    scroll.contentOffset.y = -newTopInset
+                }
             }
         }
     }

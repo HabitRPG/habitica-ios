@@ -211,6 +211,12 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         super.viewWillLayoutSubviews()
         let parentFrame = view.frame
         let topHeaderHeight = self.topHeaderHeight
+        if shouldHideTopHeader {
+            headerYPosition = -topHeaderHeight
+            state = .hidden
+        } else if state == .visible && scrollableView == nil {
+            headerYPosition = bgViewOffset
+        }
         let width = parentFrame.size.width + parentFrame.origin.x
         backgroundView.frame = CGRect(x: headerXPosition ?? -parentFrame.origin.x, y: headerYPosition, width: width, height: topHeaderHeight)
         upperBackgroundView.frame = CGRect(x: -parentFrame.origin.x, y: 0, width: width, height: bgViewOffset)

@@ -550,6 +550,7 @@
                         <outlet property="bossHealthlabel" destination="iwR-MM-zVe" id="LeC-Zr-AyY"/>
                         <outlet property="bossImageView" destination="maA-rD-Xo6" id="up0-40-ibC"/>
                         <outlet property="cancelButton" destination="pXx-qO-qxd" id="gqT-dG-e1o"/>
+                        <outlet property="contentWidthConstraint" destination="zab-Wj-NPI" id="qdc-cW-p2z"/>
                         <outlet property="descriptionHeaderView" destination="PvU-aP-uYa" id="laW-mE-Iyb"/>
                         <outlet property="descriptionTextView" destination="xdN-Nt-8pH" id="RLt-bY-KKx"/>
                         <outlet property="forceStartButton" destination="Oo2-ht-HrC" id="dx9-ih-m2W"/>

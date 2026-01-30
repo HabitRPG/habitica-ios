@@ -72,7 +72,8 @@ class EquipmentOverviewView: UIView {
     }
     
     func getTotalHeight(for width: CGFloat) -> CGFloat {
-        let itemWidth = (width - (7*8)) / 4
+        let safeHorizontal = safeAreaInsets.left + safeAreaInsets.right
+        let itemWidth = (width - safeHorizontal - (7*8)) / 4
         let itemHeights = (itemWidth+36)*2+(3*8)
         return itemHeights+89
     }
@@ -88,18 +89,20 @@ class EquipmentOverviewView: UIView {
     }
     
     private func layout() {
-        let sidePadding: CGFloat
+        let baseSidePadding: CGFloat
         if #available(iOS 26.0, *) {
-            sidePadding = traitCollection.isIPadFullSize ? 16 : 10
+            baseSidePadding = traitCollection.isIPadFullSize ? 16 : 10
         } else {
-            sidePadding = UIConstants.largeCornerRadius
+            baseSidePadding = UIConstants.largeCornerRadius
         }
-        let itemWidth = (bounds.size.width - (3*8) - (2*14) - (2*sidePadding)) / 4
+        let sidePaddingStart = max(baseSidePadding, safeAreaInsets.left)
+        let sidePaddingEnd = max(baseSidePadding, safeAreaInsets.right)
+        let itemWidth = (bounds.size.width - (3*8) - (2*14) - sidePaddingStart - sidePaddingEnd) / 4
         let itemHeight: CGFloat = 102
-        containerView.pin.top(54).start(sidePadding).end(sidePadding).height(itemHeight*2+(2*14) + 36)
-        titleLabel.pin.top(0).start(sidePadding + 14).above(of: containerView).sizeToFit(.height)
-        switchView.pin.end(sidePadding).top(11)
-        switchLabelView.pin.top(0).above(of: containerView).left(of: switchView).marginRight(sidePadding).sizeToFit(.height)
+        containerView.pin.top(54).start(sidePaddingStart).end(sidePaddingEnd).height(itemHeight*2+(2*14) + 36)
+        titleLabel.pin.top(0).start(sidePaddingStart + 14).above(of: containerView).sizeToFit(.height)
+        switchView.pin.end(sidePaddingEnd).top(11)
+        switchLabelView.pin.top(0).above(of: containerView).left(of: switchView).marginRight(baseSidePadding).sizeToFit(.height)
         
         weaponItemView.pin.top(14).left(14).width(itemWidth).height(itemHeight)
         offHandItemView.pin.top(14).right(of: weaponItemView).marginLeft(8).width(itemWidth).height(itemHeight)

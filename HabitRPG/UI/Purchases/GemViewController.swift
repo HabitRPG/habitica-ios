@@ -59,9 +59,10 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             let safeLeft = view.safeAreaInsets.left
             let safeRight = view.safeAreaInsets.right
-            let newInsets = UIEdgeInsets(top: 0, left: 6 + safeLeft, bottom: 40, right: 6 + safeRight)
+            let newInsets = UIEdgeInsets(top: 0, left: max(25, safeLeft + 6), bottom: 40, right: max(25, safeRight + 6))
             if flowLayout.sectionInset != newInsets {
                 flowLayout.sectionInset = newInsets
+                flowLayout.minimumInteritemSpacing = 20
             }
         }
     }
@@ -139,7 +140,12 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 160, height: 222)
+        let safeLeft = view.safeAreaInsets.left
+        let safeRight = view.safeAreaInsets.right
+        let sideInset = max(25, safeLeft + 6) + max(25, safeRight + 6)
+        let availableWidth = collectionView.bounds.width - sideInset
+        let itemWidth = floor((availableWidth - 20) / 2)
+        return CGSize(width: itemWidth, height: 222)
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
