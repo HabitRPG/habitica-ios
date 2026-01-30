@@ -187,15 +187,15 @@ class ClassSelectionViewController: UIViewController, Themeable {
                 return
             }
             self.set(class: .warrior, initial: true)
-            UIView.animate(withDuration: 0.6) {
+            UIView.animate(springDuration: 0.4) {
                 self.showBottomView = true
-                self.bottomView.pin.top(61%)
+                self.bottomView.pin.top(self.view.frame.height - self.bottomView.frame.height)
                 self.healerSelectionIcon.pin.vCenter(to: self.bottomView.edge.top)
                 self.mageSelectionIcon.pin.vCenter(to: self.bottomView.edge.top)
                 self.rogueSelectionIcon.pin.vCenter(to: self.bottomView.edge.top)
                 self.warriorSelectionIcon.pin.vCenter(to: self.bottomView.edge.top)
             }
-            UIView.animate(withDuration: 0.2, delay: 0.5, options: [], animations: {
+            UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
                 self.titleView.alpha = 1
                 self.descriptionView.alpha = 1
                 self.selectionButton.alpha = 1
@@ -204,17 +204,36 @@ class ClassSelectionViewController: UIViewController, Themeable {
     }
     
     private func layout() {
-        if showBottomView {
-            bottomView.pin.horizontally().height(39%).top(61%)
-        } else {
-            bottomView.pin.horizontally().height(39%).top(100%)
-        }
-        titleView.pin.top(60).left(16).right(16).height(28)
-        selectionButton.pin.bottom(36).left(16).right(16).height(60)
-        descriptionView.pin.above(of: selectionButton).marginBottom(12).below(of: titleView).horizontally(40)
+        let width = view.frame.width
+        let height = view.frame.height
         
-        let itemWidth = (view.bounds.size.width - 50) / 2
-        let itemHeight = ((view.bounds.size.height * 0.535) - (view.pin.safeArea.top + 50)) / 2
+        var itemWidth: CGFloat
+        let itemHeight: CGFloat
+        if width < view.frame.height {
+            itemWidth = (width - 50) / 2
+            itemHeight = ((height * 0.535) - (view.pin.safeArea.top + 50)) / 2
+            if showBottomView {
+                bottomView.pin.horizontally().height(39%).top(61%)
+            } else {
+                bottomView.pin.horizontally().height(39%).top(120%)
+            }
+            titleView.pin.top(60).left(to: bottomView.edge.start).marginStart(16).right(16).height(28)
+            selectionButton.pin.bottom(36).left(16).right(16).height(60)
+            descriptionView.pin.above(of: selectionButton).marginBottom(12).below(of: titleView).horizontally(40)
+        } else {
+            // landscape layout
+            itemWidth = (width - 50) / 4
+            itemHeight = (height - (view.pin.safeArea.top + 30)) / 2
+            if showBottomView {
+                bottomView.pin.end().width(width/2).height(75%).top(25%)
+            } else {
+                bottomView.pin.end().width(width/2).height(75%).top(120%)
+            }
+            titleView.pin.top(50).left(to: bottomView.edge.start).marginStart(16).right(16).height(28)
+            selectionButton.pin.bottom(26).left(16).right(16).height(60)
+            descriptionView.pin.above(of: selectionButton).marginBottom(12).below(of: titleView).horizontally(30)
+        }
+
         if let selectedView = self.selectedView {
             selectedView.pin.vCenter().hCenter()
             loadingIndicator.pin.below(of: selectedView).marginTop(12).hCenter()
@@ -224,7 +243,8 @@ class ClassSelectionViewController: UIViewController, Themeable {
             rogueOptionView.pin.below(of: healerOptionView).left(25).width(itemWidth).height(itemHeight)
             warriorOptionView.pin.below(of: mageOptionView).right(of: rogueOptionView).width(itemWidth).height(itemHeight)
             
-            healerSelectionIcon.pin.vCenter(to: bottomView.edge.top).left((view.bounds.width - classSelectionRowWidth) / 2).sizeToFit()
+            healerSelectionIcon.pin.vCenter(to: bottomView.edge.top)
+            healerSelectionIcon.pin.left(self.bottomView.frame.origin.x + (self.bottomView.bounds.width - self.classSelectionRowWidth) / 2)
             mageSelectionIcon.pin.vCenter(to: bottomView.edge.top).right(of: healerSelectionIcon).marginLeft(12)
             rogueSelectionIcon.pin.vCenter(to: bottomView.edge.top).right(of: mageSelectionIcon).marginLeft(12)
             warriorSelectionIcon.pin.vCenter(to: bottomView.edge.top).right(of: rogueSelectionIcon).marginLeft(12)
@@ -263,7 +283,8 @@ class ClassSelectionViewController: UIViewController, Themeable {
         healerSelectionIcon.isSelected = habiticaClass == .healer
         
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .curveEaseInOut) {
-            self.healerSelectionIcon.pin.vCenter(to: self.bottomView.edge.top).left((self.view.bounds.width - self.classSelectionRowWidth) / 2)
+            self.healerSelectionIcon.pin.vCenter(to: self.bottomView.edge.top)
+            self.healerSelectionIcon.pin.left(self.bottomView.frame.origin.x + (self.bottomView.bounds.width - self.classSelectionRowWidth) / 2)
             self.mageSelectionIcon.pin.vCenter(to: self.bottomView.edge.top).right(of: self.healerSelectionIcon).marginLeft(12)
             self.rogueSelectionIcon.pin.vCenter(to: self.bottomView.edge.top).right(of: self.mageSelectionIcon).marginLeft(12)
             self.warriorSelectionIcon.pin.vCenter(to: self.bottomView.edge.top).right(of: self.rogueSelectionIcon).marginLeft(12)

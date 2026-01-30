@@ -38,7 +38,7 @@ extension UIApplication {
     }
     
     var foregroundActiveScene: UIWindowScene? {
-        connectedScenes
+        connectedScenes.lazy
             .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
     }
     
@@ -71,5 +71,16 @@ extension UIApplication {
                 SKStoreReviewController.requestReview(in: scene)
             #endif
         }
+    }
+}
+
+extension EnvironmentValues {
+    @Entry var safeAreaInsets: EdgeInsets =
+        UIApplication.shared.findKeyWindow()?.safeAreaInsets.edgeInsets ?? EdgeInsets()
+}
+
+extension UIEdgeInsets {
+    var edgeInsets: EdgeInsets {
+        EdgeInsets(top: top, leading: left, bottom: bottom, trailing: right)
     }
 }
