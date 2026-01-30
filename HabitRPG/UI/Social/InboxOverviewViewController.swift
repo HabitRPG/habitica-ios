@@ -34,6 +34,7 @@ class InboxOverviewViewController: BaseTableViewController {
             doneButton.style = .done
         } else {
             tableView.topEdgeEffect.isHidden = true
+            tableView.bottomEdgeEffect.isHidden = true
         }
         
         #if !targetEnvironment(macCatalyst)
