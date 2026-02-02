@@ -63,6 +63,20 @@ class FallExtraGemsPromotion: HabiticaPromotion {
     var startDate: Date
     var endDate: Date
     
+    // Optimize: Reuse DateFormatter instance to avoid expensive creation
+    private lazy var shortDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d"
+        return formatter
+    }()
+    
+    private lazy var fullDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .long
+        return formatter
+    }()
+    
     init(startDate: Date?, endDate: Date?) {
         self.startDate = startDate ?? Date.with(year: 2020, month: 9, day: 22, timezone: TimeZone(abbreviation: "UTC"))
         self.endDate = endDate ?? Date.with(year: 2020, month: 9, day: 30, timezone: TimeZone(abbreviation: "UTC"))
@@ -118,9 +132,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         view.rightImageView.image = Asset.fallPromoBannerRight.image
         view.setTitleImage(Asset.fallPromoTitle.image)
         view.descriptionLabel.textColor = UIColor("#FEE2B6")
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d"
-        view.setDescription(L10n.xToY(formatter.string(from: startDate), formatter.string(from: endDate)).uppercased())
+        view.setDescription(L10n.xToY(shortDateFormatter.string(from: startDate), shortDateFormatter.string(from: endDate)).uppercased())
     }
     
     func configureGemView(view: GemPurchaseCell, regularAmount: Int) {
@@ -162,9 +174,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         viewController.promoBanner.descriptionLabel.textColor = UIColor("#FEE2B6")
         viewController.promoBanner.durationLabel.textColor = .white
         viewController.promoBanner.durationLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d"
-        viewController.promoBanner.setDuration(L10n.xToY(formatter.string(from: startDate), formatter.string(from: endDate)))
+        viewController.promoBanner.setDuration(L10n.xToY(shortDateFormatter.string(from: startDate), shortDateFormatter.string(from: endDate)))
         
         viewController.promptLabel.textColor = UIColor("#F78E2F")
         viewController.promptText = L10n.FallPromo.infoPrompt
@@ -174,10 +184,8 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         let gradientLayer = makeGradient(view: viewController.promptButton)
         gradientLayer.cornerRadius = UIConstants.mediumCornerRadius
         viewController.promptButton.layer.insertSublayer(gradientLayer, at: 0)
-        viewController.instructionsDescription = L10n.FallPromo.infoInstructions(formatter.string(from: startDate), formatter.string(from: endDate))
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .long
-        viewController.limitationsDescription = L10n.GemsPromo.infoLimitations(formatter.string(from: startDate), formatter.string(from: endDate))
+        viewController.instructionsDescription = L10n.FallPromo.infoInstructions(shortDateFormatter.string(from: startDate), shortDateFormatter.string(from: endDate))
+        viewController.limitationsDescription = L10n.GemsPromo.infoLimitations(fullDateFormatter.string(from: startDate), fullDateFormatter.string(from: endDate))
     }
 }
 
@@ -188,6 +196,20 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
     var isWebPromo: Bool = false
     var startDate: Date
     var endDate: Date
+    
+    // Optimize: Reuse DateFormatter instance to avoid expensive creation
+    private lazy var shortDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d"
+        return formatter
+    }()
+    
+    private lazy var fullDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .long
+        return formatter
+    }()
     
     init(startDate: Date?, endDate: Date?) {
         self.startDate = startDate ?? Date.with(year: 2020, month: 10, day: 29, timezone: TimeZone(abbreviation: "UTC"))
@@ -230,9 +252,7 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         view.setTitleImage(Asset.spookyPromoTitle.image)
         view.descriptionLabel.textColor = UIColor("#FEE2B6")
 
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d"
-        view.setDescription(L10n.xToY(formatter.string(from: startDate), formatter.string(from: endDate)).uppercased())
+        view.setDescription(L10n.xToY(shortDateFormatter.string(from: startDate), shortDateFormatter.string(from: endDate)).uppercased())
     }
     
     func configureGemView(view: GemPurchaseCell, regularAmount: Int) {
@@ -271,19 +291,15 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         viewController.promoBanner.descriptionLabel.textColor = UIColor("#FEE2B6")
         viewController.promoBanner.durationLabel.textColor = .white
         viewController.promoBanner.durationLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d"
-        viewController.promoBanner.setDuration(L10n.xToY(formatter.string(from: startDate), formatter.string(from: endDate)))
+        viewController.promoBanner.setDuration(L10n.xToY(shortDateFormatter.string(from: startDate), shortDateFormatter.string(from: endDate)))
         
         viewController.promptLabel.textColor = UIColor("#F78E2F")
         viewController.promptText = L10n.SpookyPromo.infoPrompt
         viewController.promptButton.setTitle(L10n.viewGemBundles, for: .normal)
         viewController.promptButton.setTitleColor(.white, for: .normal)
         viewController.promptButton.backgroundColor = buttonBackground
-        viewController.instructionsDescription = L10n.SpookyPromo.infoInstructions(formatter.string(from: startDate), formatter.string(from: endDate))
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .long
-        viewController.limitationsDescription = L10n.GemsPromo.infoLimitations(formatter.string(from: startDate), formatter.string(from: endDate))
+        viewController.instructionsDescription = L10n.SpookyPromo.infoInstructions(shortDateFormatter.string(from: startDate), shortDateFormatter.string(from: endDate))
+        viewController.limitationsDescription = L10n.GemsPromo.infoLimitations(fullDateFormatter.string(from: startDate), fullDateFormatter.string(from: endDate))
     }
 }
 
@@ -294,6 +310,20 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
     var isWebPromo: Bool = false
     var startDate: Date
     var endDate: Date
+    
+    // Optimize: Reuse DateFormatter instance to avoid expensive creation
+    private lazy var shortDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d"
+        return formatter
+    }()
+    
+    private lazy var fullDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .long
+        return formatter
+    }()
     
     init(startDate: Date?, endDate: Date?) {
         self.startDate = startDate ?? Date.with(year: 2020, month: 12, day: 17, timezone: TimeZone(abbreviation: "UTC"))
@@ -360,9 +390,7 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
         view.layer.insertSublayer(gradientLayer, at: 0)
         view.leftImageView.image = Asset.subScreenG1g1PresentsLeft.image
         view.rightImageView.image = Asset.subScreenG1g1PresentsRight.image
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d"
-        view.setTitle(L10n.GiftOneGetOneData.purchaseBannerTitle(formatter.string(from: endDate)))
+        view.setTitle(L10n.GiftOneGetOneData.purchaseBannerTitle(shortDateFormatter.string(from: endDate)))
         view.titleView.textColor = .white
         view.titleView.font = .systemFont(ofSize: 17, weight: .semibold)
     }
@@ -383,9 +411,7 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
         viewController.promoBanner.descriptionLabel.textColor = .white
         viewController.promoBanner.durationLabel.textColor = .white
         viewController.promoBanner.durationLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .semibold)
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d"
-        viewController.promoBanner.setDuration(L10n.xToY(formatter.string(from: startDate), formatter.string(from: endDate)))
+        viewController.promoBanner.setDuration(L10n.xToY(shortDateFormatter.string(from: startDate), shortDateFormatter.string(from: endDate)))
         if ThemeService.shared.theme.isDark {
             viewController.promptLabel.textColor = UIColor.teal100
         } else {
@@ -396,10 +422,8 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
         viewController.promptButton.setTitleColor(.white, for: .normal)
         viewController.promptButton.backgroundColor = UIColor("#925CF3")
         viewController.instructionsDescription = L10n.GiftOneGetOneData.infoInstructions
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .long
-        viewController.limitationsDescription = L10n.GiftOneGetOneData.infoLimitations(formatter.string(from: startDate),
-                                                                                       formatter.string(from: endDate))
+        viewController.limitationsDescription = L10n.GiftOneGetOneData.infoLimitations(fullDateFormatter.string(from: startDate),
+                                                                                       fullDateFormatter.string(from: endDate))
     }
 }
 

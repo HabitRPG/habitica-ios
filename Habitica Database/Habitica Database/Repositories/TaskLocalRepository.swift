@@ -28,9 +28,9 @@ public class TaskLocalRepository: BaseLocalRepository {
     }
     
     public func save(userID: String?, task: TaskProtocol) {
-        let tags = getRealm()?.objects(RealmTag.self).filter("id IN %@", task.tags.map({ (tag) -> String? in
-            return tag.id
-        }))
+        // Optimize: Use compactMap to extract non-nil tag IDs in a single operation
+        let tagIds = task.tags.compactMap { $0.id }
+        let tags = getRealm()?.objects(RealmTag.self).filter("id IN %@", tagIds)
         save(userID: userID, task: task, tags: tags)
     }
     
