@@ -120,7 +120,9 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
             super.viewDidLayoutSubviews()
             return
         }
-        tableView.pin.all()
+        let safeLeft = view.safeAreaInsets.left
+        let safeRight = view.safeAreaInsets.right
+        tableView.pin.top().bottom().left(safeLeft).right(safeRight)
         var safearea: CGFloat = (tabBarController?.tabBar.frame.size.height ?? view.window?.safeAreaInsets.bottom ?? 0)
         var keyboardOffset = (KeyboardManager.height > 0 ? KeyboardManager.height : safearea) + 6
         if (modalPresentationStyle == .pageSheet || modalPresentationStyle == .formSheet) && view.window?.traitCollection.isIPadFullSize == true {
@@ -139,14 +141,12 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         } else {
             autocompleteHeight = 0
         }
-        
+
         var inputBarOffset = keyboardOffset + autocompleteHeight + inputBarHeight - safearea
         if tabBarController == nil {
             inputBarOffset -= 4
         }
         tableView.contentInset.top = inputBarOffset
-        let safeLeft = view.safeAreaInsets.left
-        let safeRight = view.safeAreaInsets.right
         inputBarContainer.pin.left(20 + safeLeft).right(20 + safeRight).height(inputBarHeight + autocompleteHeight).bottom(keyboardOffset)
         inputBar.pin.start(8).end(-10).top().bottom(2)
         if let acceptView = view.viewWithTag(999) {

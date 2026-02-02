@@ -58,11 +58,36 @@ class QuestDetailViewController: BaseUIViewController {
             topHeaderCoordinator = TopHeaderCoordinator(topHeaderNavigationController: topHeaderNavigationController, scrollView: scrollView)
         }
         topHeaderCoordinator?.followScrollView = false
-        
-        let borderView = UIView(frame: CGRect(x: 0, y: headerView.intrinsicContentSize.height, width: self.view.bounds.size.width, height: 1))
+        topHeaderCoordinator?.hideHeader = true
+
+        let borderView = UIView()
         borderView.backgroundColor = UIColor.gray500
         headerView.addSubview(borderView)
-        topHeaderCoordinator?.alternativeHeader = headerView
+
+        scrollView.addSubview(headerView)
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        borderView.translatesAutoresizingMaskIntoConstraints = false
+        let headerHeight: CGFloat = 87
+        NSLayoutConstraint.activate([
+            headerView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 8),
+            headerView.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: headerHeight),
+            borderView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            borderView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            borderView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
+            borderView.heightAnchor.constraint(equalToConstant: 1)
+        ])
+
+        for constraint in scrollView.constraints {
+            if let firstItem = constraint.firstItem as? UIStackView,
+               constraint.firstAttribute == .top,
+               constraint.secondItem === scrollView,
+               constraint.constant == 16 {
+                constraint.constant += headerHeight + 8
+                break
+            }
+        }
         
         loadUser()
         if let questKey = questKey {
