@@ -162,9 +162,6 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         if intrinsicHeight <= 0 {
             intrinsicHeight = header.frame.size.height
         }
-        if traitCollection.verticalSizeClass == .compact {
-            return min(intrinsicHeight, 100 + UIConstants.largeCornerRadius)
-        }
         return intrinsicHeight
     }
     

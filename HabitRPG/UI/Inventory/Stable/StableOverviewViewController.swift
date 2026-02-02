@@ -67,6 +67,7 @@ class StableOverviewViewController<ANIMAL: AnimalProtocol, DS: StableOverviewDat
         }
         let totalWidth = width * count + (14 * (count-1))
         let spacing = CGFloat(viewWidth - totalWidth) / 2
-        return UIEdgeInsets(top: 0, left: spacing + safeLeft, bottom: 0, right: spacing + safeRight)
+        let extraPadding: CGFloat = safeLeft > 0 ? 10 : 0
+        return UIEdgeInsets(top: 0, left: spacing + safeLeft + extraPadding, bottom: 0, right: spacing + safeRight + extraPadding)
     }
 }

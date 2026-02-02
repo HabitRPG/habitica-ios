@@ -64,8 +64,12 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
     
     func layoutHeader() {
         let size = segmentedControl.intrinsicContentSize
-        segmentedWrapper.frame = CGRect(x: 8, y: 0, width: view.frame.width - 16, height: size.height + 4)
-        segmentedControl.pin.horizontally(4).vertically(2)
+        let isLandscape = traitCollection.verticalSizeClass == .compact
+        let wrapperPadding: CGFloat = isLandscape ? 30 : 4
+        let verticalPadding: CGFloat = isLandscape ? 15 : 2
+        let contentInsetExtra: CGFloat = isLandscape ? 34 : 8
+        segmentedWrapper.frame = CGRect(x: 8, y: 0, width: view.frame.width - 16, height: size.height + wrapperPadding)
+        segmentedControl.pin.horizontally(4).vertically(verticalPadding)
         scrollView.subviews.forEach { subview in
             var subviews: [UIView] = subview.subviews
             while !subviews.isEmpty && !(subviews.first is UIScrollView) {
@@ -76,9 +80,9 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
                     return
                 }
                 let oldTopInset = scroll.contentInset.top
-                let newTopInset = view.safeAreaInsets.top + size.height + 8
+                let newTopInset = view.safeAreaInsets.top + size.height + contentInsetExtra
                 scroll.contentInset = UIEdgeInsets(top: newTopInset, left: 0, bottom: view.safeAreaInsets.bottom, right: 0)
-                scroll.scrollIndicatorInsets = UIEdgeInsets(top: size.height + 4, left: 0, bottom: 0, right: 0)
+                scroll.scrollIndicatorInsets = UIEdgeInsets(top: size.height + wrapperPadding, left: 0, bottom: 0, right: 0)
                 if oldTopInset != newTopInset && scroll.contentOffset.y > -newTopInset && scroll.contentOffset.y <= -oldTopInset + 10 {
                     scroll.contentOffset.y = -newTopInset
                 }
