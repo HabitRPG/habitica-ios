@@ -820,7 +820,7 @@
 "tasks.team" = "Team";
 "tasks.due_tomorrow" = "Morgen";
 "tasks.due_in_x_days" = "in %d Tagen";
-"stats.strength_text" = "Erhöht die Wahrscheinlichkeit und den Bonus von kritischen Treffern, wenn Du eine Aufgabe erledigst. Außerdem wird der Schaden gegen Bosse erhöht.";
+"stats.strength_text" = "Erhöht Wahrscheinlichkeit und Schaden kritischer Treffer, wenn du Aufgaben erledigst. Außerdem wird der Schaden gegen Bosse erhöht.";
 "tasks.due_today" = "Heute";
 "settings.change_about_message" = "Info ändern";
 "settings.reset_account_description" = "Du wirst alle deine Level, Gold und Erfahrung verlieren. Alle Ihre Aufgaben und ihre historischen Daten werden gelöscht (Herausforderungsaufgaben bleiben erhalten). Du wirst alle Ausrüstungsgegenstände verlieren, mit Ausnahme von Abonnenten-Gegenständen und kostenlosen Erinnerungsgegenständen, aber du wirst sie zurückkaufen können. Du wirst der richtigen Klasse angehören müssen, um klassenspezifische Ausrüstung wieder zu kaufen. Du behältst deine aktuelle Klasse, deine Errungenschaften sowie deine Haustiere und Reittiere. Um das Zurücksetzen zu bestätigen, gib dein Passwort unten ein.";
