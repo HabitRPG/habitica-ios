@@ -212,9 +212,11 @@ class MainMenuViewController: BaseTableViewController {
             let statsItem = menuItem(withKey: .stats)
             if user?.preferences?.disableClasses == true {
                 statsItem.isHidden = true
+            } else if (user?.stats?.level ?? 0) >= 10 && user?.flags?.classSelected == false {
+                statsItem.isHidden = true
             } else {
                 statsItem.isHidden = false
-                if user?.stats?.level ?? 0 < 10 || user?.flags?.classSelected == false {
+                if user?.stats?.level ?? 0 < 10 {
                     statsItem.subtitle = L10n.unlocksLevelTen
                     statsItem.isDisabled = true
                 } else {

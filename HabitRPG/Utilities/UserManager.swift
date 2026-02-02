@@ -179,7 +179,11 @@ class UserManager: NSObject {
         })
         
         faintViewController = checkFainting(user: user)
-                
+
+        if user.needsToChooseClass {
+            showClassSelection(user: user)
+        }
+
         handleQuestCompletion(user)
         
         userRepository.registerPushDevice(user: user).observeCompleted {}
