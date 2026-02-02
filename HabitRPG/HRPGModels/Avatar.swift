@@ -112,7 +112,7 @@ extension Avatar {
             "mount-head": "Mount_Head_\(mount ?? "")",
             "zzz": "zzz",
             "knockout": "knockout",
-            "pet": "Pet-\(pet ?? "")"
+            "pet": ImageSubstitutionManager.substituteSprite(name: "Pet-\(pet ?? "")", context: "pets")
         ]
     }
 }

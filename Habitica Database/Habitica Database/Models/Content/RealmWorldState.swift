@@ -90,6 +90,7 @@ class RealmWorldStateEvent: Object, WorldStateEventProtocol {
     @objc dynamic var aprilFools: String?
     @objc dynamic var gear: Bool = false
     @objc dynamic var season: String?
+    @objc dynamic var spriteSubstitutions: [String : [String : String]]?
     
     convenience init(event: WorldStateEventProtocol) {
         self.init()
@@ -101,5 +102,6 @@ class RealmWorldStateEvent: Object, WorldStateEventProtocol {
         aprilFools = event.aprilFools
         gear = event.gear
         season = event.season
+        spriteSubstitutions = event.spriteSubstitutions
     }
 }

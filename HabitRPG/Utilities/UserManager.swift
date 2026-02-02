@@ -19,6 +19,7 @@ class UserManager: NSObject {
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
     private let inventoryRepository = InventoryRepository()
+    private let contentRepository = ContentRepository()
     private var disposable = CompositeDisposable()
     private let configRepository = ConfigRepository.shared
 
@@ -57,6 +58,13 @@ class UserManager: NSObject {
             disposable.dispose()
         }
         disposable = CompositeDisposable()
+        disposable.add(contentRepository.getWorldState()
+            .on(value: { worldState in
+                if let substitutions = worldState.currentEvent?.spriteSubstitutions {
+                    ImageSubstitutionManager.substitutions = substitutions
+                }
+            })
+            .start())
         disposable.add(userRepository.getUser()
             .throttle(0.5, on: QueueScheduler.main)
             .on(value: {[weak self]user in

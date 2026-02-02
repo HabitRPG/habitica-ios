@@ -428,6 +428,8 @@
 		29D50B7B25F9037A0009CF55 /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D50B7A25F9037A0009CF55 /* AppDelegate+Notifications.swift */; };
 		29D6F68A2E266FA0009BEE8E /* UsernameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D6F6892E266F9D009BEE8E /* UsernameScreen.swift */; };
 		29D825E92EF5A66E0019FEB9 /* habitica.icon in Resources */ = {isa = PBXBuildFile; fileRef = 29D825E82EF5A66E0019FEB9 /* habitica.icon */; };
+		29D853F62F30C60B00D4762D /* ImageSubstitutionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D853F52F30C60600D4762D /* ImageSubstitutionManager.swift */; };
+		29D853F72F30C66100D4762D /* ImageSubstitutionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D853F52F30C60600D4762D /* ImageSubstitutionManager.swift */; };
 		29DBDE48274BCDA2008F6777 /* HabiticaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE47274BCDA2008F6777 /* HabiticaTests.swift */; };
 		29DBDE4A274BE745008F6777 /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE49274BE745008F6777 /* AccountSettingsViewController.swift */; };
 		29DBDE54274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE53274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift */; };
@@ -1140,6 +1142,7 @@
 		29D5AD5F20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		29D6F6892E266F9D009BEE8E /* UsernameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameScreen.swift; sourceTree = "<group>"; };
 		29D825E82EF5A66E0019FEB9 /* habitica.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = habitica.icon; sourceTree = "<group>"; };
+		29D853F52F30C60600D4762D /* ImageSubstitutionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSubstitutionManager.swift; sourceTree = "<group>"; };
 		29DBDE47274BCDA2008F6777 /* HabiticaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaTests.swift; sourceTree = "<group>"; };
 		29DBDE49274BE745008F6777 /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
 		29DBDE53274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountSettingsViewController+Apple.swift"; sourceTree = "<group>"; };
@@ -2440,6 +2443,7 @@
 				299BD6361F5457E100E22935 /* HabiticaIcons.swift */,
 				2942FAEE26777E00003F6500 /* HabiticaLogger.swift */,
 				292F967F20723A4D00804151 /* ImageManager.swift */,
+				29D853F52F30C60600D4762D /* ImageSubstitutionManager.swift */,
 				29A98592254841C500F04665 /* KeyboardManager.swift */,
 				29EBDA82232A3ABA006611E3 /* KeychainItem.swift */,
 				290922EF2242628600645D0E /* LanguageHandler.swift */,
@@ -3372,6 +3376,7 @@
 				2979D5F72EE1D1E500BB2F54 /* AuthenticationStorage.swift in Sources */,
 				29BEE6ED252E27B800D456F8 /* Widget.intentdefinition in Sources */,
 				29BEE755252E321F00D456F8 /* AvatarWidget.swift in Sources */,
+				29D853F72F30C66100D4762D /* ImageSubstitutionManager.swift in Sources */,
 				2995F7FC25BAF3B600322CB3 /* RemoteLogger.swift in Sources */,
 				29BEE632252CCFE100D456F8 /* StatsWidget.swift in Sources */,
 				29A4CB77257FF31F0013F0B3 /* String-SafeExtensions.swift in Sources */,
@@ -3719,6 +3724,7 @@
 				D9CE90451E4CDD6200702578 /* PillView.swift in Sources */,
 				29DC5ACD20A321C900993400 /* GroupFormViewController.swift in Sources */,
 				29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */,
+				29D853F62F30C60B00D4762D /* ImageSubstitutionManager.swift in Sources */,
 				29A62B09216CE5D700D4BD90 /* AboutViewController.swift in Sources */,
 				2914486E2085EAD300F3A6B5 /* MountDetailDataSource.swift in Sources */,
 				29CEA822264150CA00101C0A /* UIColor-Contributor.swift in Sources */,

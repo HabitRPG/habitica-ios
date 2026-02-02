@@ -44,4 +44,5 @@ public protocol WorldStateEventProtocol {
     var aprilFools: String? { get set }
     var gear: Bool { get set }
     var season: String? { get set }
+    var spriteSubstitutions: [String: [String: String]]? { get set }
 }
