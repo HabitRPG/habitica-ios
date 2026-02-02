@@ -85,9 +85,9 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     }
     
     @objc var shouldHideTopHeader: Bool = false {
-        willSet {
-            if shouldHideTopHeader != newValue {
-                if newValue {
+        didSet {
+            if oldValue != shouldHideTopHeader {
+                if shouldHideTopHeader {
                     hideHeader()
                 } else {
                     showHeader()
