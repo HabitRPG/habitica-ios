@@ -81,6 +81,17 @@ class RealmWorldState: BaseModel, WorldStateProtocol {
     }
 }
 
+class ImageSubstitutionContext: Object {
+    @objc dynamic var key: String?
+    var substitutions = Map<String, String>()
+    
+    convenience init(key: String, substitutions: Map<String, String>) {
+        self.init()
+        self.key = key
+        self.substitutions = substitutions
+    }
+}
+
 class RealmWorldStateEvent: Object, WorldStateEventProtocol {
     @objc dynamic var eventKey: String?
     @objc dynamic var start: Date?
@@ -90,7 +101,40 @@ class RealmWorldStateEvent: Object, WorldStateEventProtocol {
     @objc dynamic var aprilFools: String?
     @objc dynamic var gear: Bool = false
     @objc dynamic var season: String?
-    @objc dynamic var spriteSubstitutions: [String : [String : String]]?
+    @objc dynamic var spriteSubstitutions: [String: [String: String]]? {
+        get {
+            var subs = [String: [String: String]]()
+            if realmSpriteSubstitutions.isInvalidated {
+                return nil
+            }
+            realmSpriteSubstitutions.forEach({ sub in
+                if let key = sub.key {
+                    var subMap = [String: String]()
+                    sub.substitutions.forEach { entry in
+                        subMap[entry.key] = entry.value
+                    }
+                    subs[key] = subMap
+                }
+            })
+            return subs
+        }
+        
+        set {
+            if realmSpriteSubstitutions.isInvalidated {
+                return
+            }
+            realmSpriteSubstitutions = List()
+            newValue?.forEach { (key, entry) in
+                let subMap = Map<String, String>()
+                entry.keys.forEach({ subKey in
+                    subMap[subKey] = entry[subKey]
+                })
+                realmSpriteSubstitutions.append(ImageSubstitutionContext(key: key, substitutions: subMap))
+            }
+        }
+    }
+    
+    var realmSpriteSubstitutions = List<ImageSubstitutionContext>()
     
     convenience init(event: WorldStateEventProtocol) {
         self.init()
