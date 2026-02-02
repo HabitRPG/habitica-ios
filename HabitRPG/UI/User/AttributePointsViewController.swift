@@ -45,7 +45,6 @@ class AttributePointsViewController: BaseUIViewController {
     
     @IBOutlet weak var statGuideWrapper: StackView!
     @IBOutlet weak var statGuideTitleLabel: UILabel!
-    @IBOutlet weak var contentWidthConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var characterBuildTitleLabel: UILabel!
     @IBOutlet weak var characterBuildTextLabel: UILabel!
@@ -320,15 +319,13 @@ class AttributePointsViewController: BaseUIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        widthConstraint.constant = scrollView.bounds.width - 32
-        super.viewDidLayoutSubviews()
-        pointsToAllocateLabel.layer.cornerRadius = pointsToAllocateLabel.frame.size.height/2
-        bulkDistributeButtonWrapper.layer.cornerRadius = bulkDistributeButtonWrapper.frame.size.height/2
-
         let safeLeft = view.safeAreaInsets.left
         let safeRight = view.safeAreaInsets.right
         let totalPadding = max(16, safeLeft) + max(16, safeRight)
-        contentWidthConstraint.constant = -totalPadding
+        widthConstraint.constant = scrollView.bounds.width - totalPadding
+        super.viewDidLayoutSubviews()
+        pointsToAllocateLabel.layer.cornerRadius = pointsToAllocateLabel.frame.size.height/2
+        bulkDistributeButtonWrapper.layer.cornerRadius = bulkDistributeButtonWrapper.frame.size.height/2
     }
     
     @IBAction func autoAllocationChanged(_ sender: UISwitch) {

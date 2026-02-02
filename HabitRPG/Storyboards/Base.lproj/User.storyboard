@@ -1178,7 +1178,6 @@
                         <outlet property="bulkAllocationView" destination="N89-h1-lZ2" id="pyl-PY-pa5"/>
                         <outlet property="bulkDistributeButtonWrapper" destination="Mxi-sL-Bvc" id="oY0-oc-EH4"/>
                         <outlet property="characterBuildTextLabel" destination="wNh-Vv-aKs" id="FYu-UA-H4E"/>
-                        <outlet property="contentWidthConstraint" destination="EIz-Hq-NbH" id="cwc-sA-p1z"/>
                         <outlet property="characterBuildTitleLabel" destination="VBj-Mm-QQ4" id="LBS-nC-rP9"/>
                         <outlet property="constitutionStatsView" destination="yis-h9-p8e" id="4kj-wH-mdK"/>
                         <outlet property="constitutionTextLabel" destination="hfH-um-9Qr" id="3Ga-Ta-XZI"/>
