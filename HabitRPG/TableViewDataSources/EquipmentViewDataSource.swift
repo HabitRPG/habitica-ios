@@ -16,6 +16,7 @@ class EquipmentViewDataSource: BaseReactiveTableViewDataSource<GearProtocol> {
     private let userRepository = UserRepository()
     private let inventoryRepository = InventoryRepository()
     
+    private var initialEquippedKey: String?
     private var equippedKey: String?
     var searchProperty = MutableProperty<String?>(nil)
     var searchString: String? {
@@ -66,17 +67,26 @@ class EquipmentViewDataSource: BaseReactiveTableViewDataSource<GearProtocol> {
                 return self?.buildGearSignalProducer(keys: keys, gearType: gearType, search: search) ?? SignalProducer.empty
             })
                 .on(value: {[weak self](gear: [GearProtocol], changes: ReactiveChangeset?) in
-                self?.sections[0].items = gear
+                    self?.sections[0].items = gear.sorted(by: { first, second in
+                        if first.key == self?.initialEquippedKey {
+                            return true
+                        }
+                        return first.text ?? "" < second.text ?? ""
+                    })
                 self?.notify(changes: changes)
             })
             .start()
         )
         
         disposable.add(userRepository.getUser().on(value: {[weak self]user in
+            guard !UserManager.shared.isLoggingOut else { return }
             if useCostume {
                 self?.equippedKey = user.items?.gear?.costume?.keyFor(type: gearType)
             } else {
                 self?.equippedKey = user.items?.gear?.equipped?.keyFor(type: gearType)
+            }
+            if self?.initialEquippedKey == nil {
+                self?.initialEquippedKey = self?.equippedKey
             }
             self?.tableView?.reloadData()
         }).start())

@@ -86,6 +86,7 @@ struct PetBottomSheetView: View, Dismissable {
                         .frame(height: 124, alignment: .bottom)
                         .zIndex(3)
                     ProgressView(value: (feedValue ?? Float(trained)) / 50)
+                        .tint(Color(theme.successColor))
                         .animation(.smooth, value: feedValue)
                         .padding(.horizontal, 4)
                         .padding(.vertical, 3)
@@ -97,7 +98,7 @@ struct PetBottomSheetView: View, Dismissable {
                         .zIndex(4)
                 }
             }
-            let buttonBackground = Color(theme.isDark ? theme.offsetBackgroundColor : theme.windowBackgroundColor)
+            let buttonBackground = Color(theme.offsetBackgroundColor)
             if trained > 0 && pet.type != "special" && canRaise {
                 HStack(spacing: 16) {
                     Button(action: {
@@ -113,7 +114,7 @@ struct PetBottomSheetView: View, Dismissable {
                                 ProgressView().habiticaProgressStyle(strokeWidth: 6)
                             } else {
                                 Image(Asset.feedSaddle.name).interpolation(.none)
-                                Text(L10n.Stable.useSaddle).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(theme.tintedMainText)).underline(UIAccessibility.buttonShapesEnabled)
+                                Text(L10n.Stable.useSaddle).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(theme.primaryTextColor)).underline(UIAccessibility.buttonShapesEnabled)
                             }
                         }
                     }).buttonStyle { configuration in
@@ -121,7 +122,7 @@ struct PetBottomSheetView: View, Dismissable {
                             .frame(height: 101)
                             .maxWidth(.infinity)
                         if #available(iOS 26.0, *) {
-                            conf.glassEffect(.regular.interactive().tint(buttonBackground), in: RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius))
+                            conf.glassEffect(.regular.interactive().tint(buttonBackground.opacity(0.9)), in: RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius))
                         } else {
                             conf
                                 .background(buttonBackground)
@@ -133,14 +134,14 @@ struct PetBottomSheetView: View, Dismissable {
                     }, label: {
                         VStack {
                             Image(getFoodName()).interpolation(.none)
-                            Text(L10n.Stable.feed).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(theme.tintedMainText)).underline(UIAccessibility.buttonShapesEnabled)
+                            Text(L10n.Stable.feed).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(theme.primaryTextColor)).underline(UIAccessibility.buttonShapesEnabled)
                         }
                     }).buttonStyle { configuration in
                         let conf = configuration.label
                             .frame(height: 101)
                             .maxWidth(.infinity)
                         if #available(iOS 26.0, *) {
-                            conf.glassEffect(.regular.interactive().tint(buttonBackground.opacity(0.95)), in: RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius))
+                            conf.glassEffect(.regular.interactive().tint(buttonBackground.opacity(0.9)), in: RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius))
                         } else {
                             conf
                                 .background(buttonBackground)
@@ -149,7 +150,7 @@ struct PetBottomSheetView: View, Dismissable {
                     }
                 }
             }
-            HabiticaButtonUI(label: Text(L10n.share).foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor)), color: buttonBackground) {
+            HabiticaButtonUI(label: Text(L10n.share).foregroundStyle(Color(theme.primaryTextColor)), color: buttonBackground) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     SharingManager.share(pet: pet)
                 }

@@ -44,7 +44,7 @@
 "titles.basics" = "Básicos";
 "stats.no_points_to_allocate" = "Nenhum ponto para atribuir";
 "stats.one_point_to_allocate" = "Um ponto para atribuir";
-"stats.points_to_allocate" = "%d pontos para atribuir";
+"stats.points_to_allocate" = "%d Pontos para Atribuir";
 "stats.level" = "Nível";
 "stats.battle_gear" = "Equipamento de batalha";
 "stats.class_bonus" = "Bônus de Classe";
@@ -122,7 +122,7 @@
 "tasks.form.easy" = "Fácil";
 "tasks.form.medium" = "Médio";
 "tasks.form.hard" = "Difícil";
-"stats.strength_text" = "Aumenta o bônus de acertos críticos e os torna mais prováveis ao pontuar uma tarefa. Também aumenta o dano causado aos chefes.";
+"stats.strength_text" = "Aumenta o bônus de acertos críticos e os torna mais prováveis ao pontuar uma tarefa. Também aumenta o dano causado aos chefões de Missões.";
 "stats.constitution_text" = "Diminui a quantidade de dano recebido de suas tarefas. Não diminui o dano recebido dos chefes.";
 "tasks.reward" = "Recompensa";
 "tasks.form.habit_title_placeholder" = "Que hábitos deseja cultivar, ou cessar?";
@@ -956,3 +956,7 @@
 "choose_task" = "Escolher Tarefa";
 "filter_by_tags" = "Filtrar por Etiquetas";
 "shops.other_class_disclaimer" = "Só pode comprar equipamento para a sua classe atual";
+"privacy_preferences_full_description" = "Sua privacidade é importante para nós. Habitica usa dados do seu dispositivo para analisar o desempenho, processar solicitações de suporte e proporcionar a melhor experiência de gamificação possível. Para isso, precisamos solicitar as seguintes permissões.\n\nVocê pode alterá-las a qualquer momento nas configurações da sua conta.";
+"login.terms_text" = "Você confirma que tem pelo menos 18 anos, e que leu e concorda com nossos **[Termos de Serviço](https://habitica.com/static/terms)** e **[Política de Privacidade](https://habitica.com/static/privacy)**.";
+"privacy_preferences_sheet_description" = "Sua privacidade é importante para nós. Habitica usa dados do seu dispositivo para analisar o desempenho, processar solicitações de suporte e proporcionar a melhor experiência de gamificação possível. Para isso, precisamos solicitar as seguintes permissões.\n\nVocê pode alterar isso a qualquer momento. Para saber mais, consulte nossa [Política de Privacidade](https://habitica.com/static/privacy).";
+"party.invitation_invitername" = "**@%@** convidou você para juntar-se ao Grupo **%@**";

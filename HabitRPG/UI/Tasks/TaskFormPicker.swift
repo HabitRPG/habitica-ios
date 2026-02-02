@@ -32,14 +32,14 @@ struct TaskFormPicker: View {
                         .glassEffect(.regular.tint(tintColor))
                         .frame(width: itemWidth - 4, height: 28)
                         .padding(.leading, (CGFloat(selectedIndex) * itemWidth) + 2)
-                        .animation(.spring(), value: selection)
+                        .animation(.bouncy, value: selection)
                 } else {
                     RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius).foregroundStyle(tintColor)
                         .shadow(color: .black.opacity(0.12), radius: 8, x: 0, y: 3)
                         .shadow(color: .black.opacity(0.04), radius: 1, x: 0, y: 1)
                         .frame(width: itemWidth - 8, height: 28)
                         .padding(.leading, (CGFloat(selectedIndex) * itemWidth) + 4)
-                        .animation(.spring(), value: selection)
+                        .animation(.bouncy, value: selection)
                 }
                 HStack(spacing: 0) {
                     ForEach(options, id: \.value) { option in

@@ -51,6 +51,7 @@ class PetOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                 }), items: sortedItems) ?? [:]
             })
             .on(value: {[weak self] overviewItems in
+                guard !UserManager.shared.isLoggingOut else { return }
                 self?.sections[0].items.removeAll()
                 self?.sections[0].items.append(contentsOf: overviewItems["drop"] ?? [])
                 self?.sections[1].items.removeAll()
@@ -70,9 +71,10 @@ class PetOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                             }
                             return itemMap
                         })
-                        .on(value: { ownedItems in
-                            self.ownedItems = ownedItems
-                            self.collectionView?.reloadData()
+                        .on(value: {[weak self] ownedItems in
+                            guard !UserManager.shared.isLoggingOut else { return }
+                            self?.ownedItems = ownedItems
+                            self?.collectionView?.reloadData()
                         }).start())
         
         disposable.add(userRepository.getUser().map { $0.items?.currentPet }

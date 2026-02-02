@@ -127,11 +127,7 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
             }
             let sheet = HostingBottomSheetController(rootView: BuySheet(item: item),
                                                      prefersGrabberVisible: false)
-            if let tabbarController = self.tabBarController {
-                tabbarController.present(sheet, animated: true, completion: nil)
-            } else {
-                present(sheet, animated: true, completion: nil)
-            }
+            sheet.show()
         }
     }
     
@@ -166,6 +162,7 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
             group.interItemSpacing = .flexible(1)
             let section = NSCollectionLayoutSection(group: group)
             section.contentInsets = sectionType.sectionInset
+            section.contentInsetsReference = .safeArea
             return section
         }
         return layout

@@ -75,8 +75,11 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         }).start()
         
         goldView.insets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        goldView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
         gemView.insets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
+        gemView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
         hourglassView.insets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+        hourglassView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15, ofWeight: .bold)
     }
     
     private var isSubscribed: Bool?
@@ -141,6 +144,18 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         dataSource?.collectionView = collectionView
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            let safeLeft = view.safeAreaInsets.left
+            let safeRight = view.safeAreaInsets.right
+            let newInsets = UIEdgeInsets(top: 0, left: 6 + safeLeft, bottom: 40, right: 6 + safeRight)
+            if flowLayout.sectionInset != newInsets {
+                flowLayout.sectionInset = newInsets
+            }
+        }
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         dataSource?.dispose()
@@ -212,7 +227,7 @@ class ShopViewController: BaseCollectionViewController, ShopCollectionViewDataSo
         let sheet = HostingBottomSheetController(rootView: BuySheet(item: item, shopIdentifier: shopIdentifier, onInventoryRefresh: {
             self.refresh()
         }), prefersGrabberVisible: false)
-        present(sheet, animated: true)
+        sheet.show()
     }
     
     override func applyTheme(theme: Theme) {

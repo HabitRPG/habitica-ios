@@ -44,11 +44,11 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
         if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
             topHeaderCoordinator = TopHeaderCoordinator(topHeaderNavigationController: topHeaderNavigationController, scrollView: scrollView)
         }
-        topHeaderCoordinator?.hideNavBar = false
         topHeaderCoordinator?.alternativeHeader = headerView
-        topHeaderCoordinator?.followScrollView = false
         topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
-        
+        topHeaderCoordinator?.followScrollView = false
+        topHeaderCoordinator?.contentInsetModifier.top = -30
+
         setupItemViews()
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
@@ -65,13 +65,12 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
         if theme.isDark {
             containerview.backgroundColor = .gray10
         } else {
-            containerview.backgroundColor = theme.offsetBackgroundColor
+            containerview.backgroundColor = .gray600
         }
-        topHeaderCoordinator?.navbarVisibleColor = theme.windowBackgroundColor
+        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
     }
     
     override func populateText() {
-        navigationItem.title = L10n.Titles.avatar
         bodySizeLabel.text = L10n.bodySize
         bodySizeControl.setTitle(L10n.slim, forSegmentAt: 0)
         bodySizeControl.setTitle(L10n.broad, forSegmentAt: 1)
@@ -197,30 +196,30 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
     
     private func layout() {
         let itemWidth = 76.0
-        let itemHeight = itemWidth + 38
-        let width = min(view.bounds.size.width - 16, 420)
+        let itemHeight = itemWidth + 22
+        let width = min(view.bounds.size.width - 20, 420)
         let containerPadding = (view.bounds.size.width - width) / 2
-        containerview.pin.top(60).left(containerPadding).width(width).height(itemHeight * 3 + (3 * 12))
-        let padding = (containerview.bounds.width - 24.0 - (itemWidth*4)) / 3
+        containerview.pin.top(60).left(containerPadding).width(width).height(itemHeight * 3 + (2 * 14) + 40)
+        let padding = (containerview.bounds.width - 28.0 - (itemWidth*4)) / 3
         scrollView.contentSize = CGSize(width: view.bounds.size.width, height: containerview.bounds.origin.y + containerview.bounds.size.height + 64)
         scrollView.pin.all()
-        bodySizeLabel.pin.top(11).left(containerPadding).above(of: containerview).sizeToFit(.height)
+        bodySizeLabel.pin.top(11).left(containerPadding + 14).above(of: containerview).sizeToFit(.height)
         bodySizeControl.pin.right(containerPadding).top(20).sizeToFit()
         
-        shirtView.pin.top(12).left(12).width(itemWidth).height(itemHeight)
-        skinView.pin.top(12).right(of: shirtView).marginLeft(padding).width(itemWidth).height(itemHeight)
-        hairColorView.pin.top(12).right(of: skinView).marginLeft(padding).width(itemWidth).height(itemHeight)
-        hairBangsView.pin.top(12).right(of: hairColorView).marginLeft(padding).width(itemWidth).height(itemHeight)
+        shirtView.pin.top(14).left(14).width(itemWidth).height(itemHeight)
+        skinView.pin.top(14).right(of: shirtView).marginLeft(padding).width(itemWidth).height(itemHeight)
+        hairColorView.pin.top(14).right(of: skinView).marginLeft(padding).width(itemWidth).height(itemHeight)
+        hairBangsView.pin.top(14).right(of: hairColorView).marginLeft(padding).width(itemWidth).height(itemHeight)
         
-        hairBaseView.pin.below(of: shirtView).marginTop(12).left(12).width(itemWidth).height(itemHeight)
-        hairMustacheView.pin.below(of: shirtView).marginTop(12).right(of: hairBaseView).marginLeft(padding).width(itemWidth).height(itemHeight)
-        hairBeardView.pin.below(of: shirtView).marginTop(12).right(of: hairMustacheView).marginLeft(padding).width(itemWidth).height(itemHeight)
-        hairFlowerView.pin.below(of: shirtView).marginTop(12).right(of: hairBeardView).marginLeft(padding).width(itemWidth).height(itemHeight)
+        hairBaseView.pin.below(of: shirtView).marginTop(14).left(14).width(itemWidth).height(itemHeight)
+        hairMustacheView.pin.below(of: shirtView).marginTop(14).right(of: hairBaseView).marginLeft(padding).width(itemWidth).height(itemHeight)
+        hairBeardView.pin.below(of: shirtView).marginTop(14).right(of: hairMustacheView).marginLeft(padding).width(itemWidth).height(itemHeight)
+        hairFlowerView.pin.below(of: shirtView).marginTop(14).right(of: hairBeardView).marginLeft(padding).width(itemWidth).height(itemHeight)
         
-        wheelchairView.pin.below(of: hairBaseView).marginTop(12).left(12).width(itemWidth).height(itemHeight)
-        backgroundView.pin.below(of: hairBaseView).marginTop(12).right(of: wheelchairView).marginLeft(padding).width(itemWidth).height(itemHeight)
-        animalEarsView.pin.below(of: hairBaseView).marginTop(12).right(of: backgroundView).marginLeft(padding).width(itemWidth).height(itemHeight)
-        animalTailView.pin.below(of: hairBaseView).marginTop(12).right(of: animalEarsView).marginLeft(padding).width(itemWidth).height(itemHeight)
+        wheelchairView.pin.below(of: hairBaseView).marginTop(20).left(14).width(itemWidth).height(itemHeight)
+        animalEarsView.pin.below(of: hairBaseView).marginTop(20).right(of: wheelchairView).marginLeft(padding).width(itemWidth).height(itemHeight)
+        animalTailView.pin.below(of: hairBaseView).marginTop(20).right(of: animalEarsView).marginLeft(padding).width(itemWidth).height(itemHeight)
+        backgroundView.pin.below(of: hairBaseView).marginTop(20).right(of: animalTailView).marginLeft(padding).width(itemWidth).height(itemHeight)
     }
     
     @IBAction func bodySizeChanged(_ sender: Any) {

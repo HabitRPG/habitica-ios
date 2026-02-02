@@ -38,9 +38,12 @@ class MountOverviewDataSource: StableOverviewDataSource<MountProtocol> {
                 var sortedItems = [String: String]()
                 items.0.value.forEach { $0.isValid ? sortedItems["potion-\($0.key ?? "")"] = $0.text : () }
                 items.1.value.forEach { $0.isValid ? sortedItems["egg-\($0.key ?? "")"] = ($0 as? EggProtocol)?.mountText : () }
-                return self?.mapData(owned: pets.0, animals: pets.1.value, items: sortedItems) ?? [:]
+                return self?.mapData(owned: pets.0, animals: pets.1.value.sorted(by: { first, second in
+                    return (first.egg ?? "") < (second.egg ?? "")
+                }), items: sortedItems) ?? [:]
             })
             .on(value: {[weak self]overviewItems in
+                guard !UserManager.shared.isLoggingOut else { return }
                 self?.sections[0].items.removeAll()
                 self?.sections[0].items.append(contentsOf: overviewItems["drop"] ?? [])
                 self?.sections[1].items.removeAll()

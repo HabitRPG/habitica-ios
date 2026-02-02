@@ -7,6 +7,8 @@ private/*.key
 
 # Environemnt Config Files
 debug.xcconfig
+user.xcconfig
+
 
 # Created by https://www.gitignore.io
 ### Xcode ###

@@ -196,6 +196,7 @@ public class InventoryLocalRepository: ContentLocalRepository {
                 reward.combinedKey = (reward.userID ?? "") + (reward.key ?? "")
                 reward.path = newItem.path
                 reward.pinType = newItem.type
+                realm.add(reward)
             }
         }
     }

@@ -30,6 +30,7 @@ struct SimpleItemDetails: View {
                 .padding(6)
         } else {
             PixelArtView(name: item.imageName ?? "")
+                .frame(width: 108, height: 108)
                 .offset(y: isAnimating ? 0 : 10)
                 .animation(.easeInOut(duration: 0.3).delay(0.2), value: isAnimating)
                 .frame(width: 120, height: 120)

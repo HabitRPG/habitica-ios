@@ -63,6 +63,8 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 90
         tableView.keyboardDismissMode = .interactive
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
         #if !targetEnvironment(macCatalyst)
         tableView.refreshControl = HabiticaRefresControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -118,7 +120,7 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
             super.viewDidLayoutSubviews()
             return
         }
-        tableView.frame = view.frame
+        tableView.pin.all()
         var safearea: CGFloat = (tabBarController?.tabBar.frame.size.height ?? view.window?.safeAreaInsets.bottom ?? 0)
         var keyboardOffset = (KeyboardManager.height > 0 ? KeyboardManager.height : safearea) + 6
         if (modalPresentationStyle == .pageSheet || modalPresentationStyle == .formSheet) && view.window?.traitCollection.isIPadFullSize == true {
@@ -129,7 +131,7 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
                 keyboardOffset = KeyboardManager.height - ((view.window?.bounds.height ?? 0) -  (abs(view?.window?.convert(CGPoint(x: 0, y: 0), to: view).y ?? 0) + view.bounds.height))
             }
         }
-        let inputBarHeight = inputBar.requiredInputTextViewHeight + inputBar.padding.top + inputBar.padding.bottom + inputBar.topStackViewPadding.top + 2
+        let inputBarHeight = inputBar.requiredInputTextViewHeight + inputBar.padding.top + inputBar.topStackViewPadding.top + 2
         let autocompleteSize = autocompleteManager.tableView.intrinsicContentSize
         let autocompleteHeight: CGFloat
         if autocompleteManager.currentSession != nil {
@@ -138,21 +140,17 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
             autocompleteHeight = 0
         }
         
-        var inputBarOffset = keyboardOffset + autocompleteHeight + 8
-        if tabBarController != nil {
-            inputBarOffset += inputBarHeight + autocompleteHeight
-        } else {
+        var inputBarOffset = keyboardOffset + autocompleteHeight + inputBarHeight - safearea
+        if tabBarController == nil {
             inputBarOffset -= 4
         }
         tableView.contentInset.top = inputBarOffset
-        inputBarContainer.pin.horizontally(20).height(inputBarHeight + autocompleteHeight).bottom(keyboardOffset)
+        let safeLeft = view.safeAreaInsets.left
+        let safeRight = view.safeAreaInsets.right
+        inputBarContainer.pin.left(20 + safeLeft).right(20 + safeRight).height(inputBarHeight + autocompleteHeight).bottom(keyboardOffset)
         inputBar.pin.start(8).end(-10).top().bottom(2)
         if let acceptView = view.viewWithTag(999) {
-            let yPos: CGFloat = view.frame.size.height-90
-            let height: CGFloat = 90
-            if acceptView.frame.origin.y != yPos || acceptView.frame.height != height {
-                acceptView.frame = CGRect(x: 0, y: yPos, width: view.frame.size.width, height: height)
-            }
+            acceptView.pin.left(20 + safeLeft).right(20 + safeRight).bottom((tabBarController?.tabBar.frame.height ?? 0) + 6).height(90)
         }
         super.viewDidLayoutSubviews()
     }
@@ -163,24 +161,30 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
     
     private func checkGuidelinesAccepted(user: UserProtocol) {
         let acceptView = view.viewWithTag(999)
-        if !(user.flags?.communityGuidelinesAccepted ?? false) {
-            if acceptView != nil {
-                return
-            }
+        if acceptView == nil && !(user.flags?.communityGuidelinesAccepted ?? false) {
             guard let acceptView = Bundle.main.loadNibNamed("GuidelinesPromptView", owner: self, options: nil)?[0] as? UIView else {
                 return
             }
             let acceptButton = acceptView.viewWithTag(1) as? UIButton
             acceptButton?.setTitle(L10n.accept, for: .normal)
             acceptButton?.addTarget(self, action: #selector(acceptGuidelines), for: .touchUpInside)
+            if #available(iOS 26.0, *) {
+                acceptButton?.cornerConfiguration = .capsule()
+            } else {
+                acceptButton?.cornerRadius = UIConstants.largeCornerRadius
+            }
             let descriptionButton = acceptView.viewWithTag(2) as? UIButton
             descriptionButton?.addTarget(self, action: #selector(openGuidelinesView), for: .touchUpInside)
             acceptView.frame = CGRect(x: 0, y: view.frame.size.height-90, width: view.frame.size.width, height: 90)
             acceptView.tag = 999
+            acceptView.cornerRadius = UIConstants.largeCornerRadius
             view.addSubview(acceptView)
-        } else {
+        } else if acceptView != nil && (user.flags?.communityGuidelinesAccepted ?? false) {
             acceptView?.removeFromSuperview()
+        } else {
+            return
         }
+        view.setNeedsLayout()
     }
     
     @objc

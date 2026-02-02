@@ -10,6 +10,8 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 import Habitica_Models
+import SwiftUI
+import SwiftUIX
 
 struct ChallengeFilterState {
     var showOwned: Bool = true
@@ -41,8 +43,10 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
 
     var displayedAlert: ChallengeDetailAlert?
     
-    let segmentedWrapper = UIView()
+    let segmentedWrapper = UIVisualEffectView()
     let segmentedFilterControl = UISegmentedControl(items: [L10n.myChallenges, L10n.discover])
+    
+    let emptyView = UIHostingView(rootView: NoContentView(icon: Image(Asset.Empty.challenges.name), title: Text(L10n.Empty.challenges), content: Text(L10n.Empty.challengesDescription)))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,8 +66,10 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         if #available(iOS 26.0, *) {
             let glassEffect = UIGlassEffect()
             searchBarWrapper.effect = glassEffect
-            searchBarWrapper.layer.cornerRadius = 26
+            searchBarWrapper.layer.cornerRadius = UIConstants.largeCornerRadius
             searchBarWrapper.clipsToBounds = true
+            segmentedWrapper.effect = glassEffect
+            segmentedWrapper.cornerConfiguration = .capsule()
         }
         
         filterButton.setImage(UIImage(systemName: "slider.horizontal.3"), for: .normal)
@@ -73,7 +79,7 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: filterButton), searchButton, addButton]
 
         self.segmentedFilterControl.addTarget(self, action: #selector(ChallengeTableViewController.switchFilter(_:)), for: .valueChanged)
-        segmentedWrapper.addSubview(self.segmentedFilterControl)
+        segmentedWrapper.contentView.addSubview(self.segmentedFilterControl)
         topHeaderCoordinator?.alternativeHeader = segmentedWrapper
         topHeaderCoordinator?.hideHeader = false
         topHeaderCoordinator?.followScrollView = false
@@ -93,6 +99,10 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         dataSource.tableView = self.tableView
         
         segmentedFilterControl.selectedSegmentIndex = 0
+        
+        view.addSubview(emptyView)
+        emptyView.isHidden = true
+        dataSource.emptyView = emptyView
     }
     
     override func applyTheme(theme: Theme) {
@@ -126,6 +136,7 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     
     override func viewWillLayoutSubviews() {
         layoutHeader()
+        emptyView.pin.left().right().top(40).sizeToFit(.width)
         super.viewWillLayoutSubviews()
     }
     
@@ -139,8 +150,8 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
     
     private func layoutHeader() {
         let size = segmentedFilterControl.intrinsicContentSize
-        segmentedFilterControl.frame = CGRect(x: 8, y: 4, width: view.frame.width-16, height: size.height)
-        segmentedWrapper.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 8+size.height)
+        segmentedFilterControl.frame = CGRect(x: 4, y: 4, width: view.frame.width-24, height: size.height)
+        segmentedWrapper.frame = CGRect(x: 8, y: 0, width: view.frame.width - 16, height: 8+size.height)
     }
     
     private func removeSearchBar(isAnimated: Bool) {
@@ -236,7 +247,7 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
             self?.dataSource.filterState = newState
             self?.dataSource.updatePredicate()
         }))
-        present(sheet, animated: true)
+        sheet.show()
     }
     
     @IBAction func addChallengeAction(_ sender: Any) {

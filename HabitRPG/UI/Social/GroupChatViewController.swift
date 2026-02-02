@@ -78,7 +78,11 @@ class GroupChatViewController: MessagesViewController {
             case .failure:
                 inputBar.inputTextView.text = text
             case .success:
-                return
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if self.tableView.numberOfRows(inSection: 0) > 0 {
+                        self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
+                    }
+                }
             }
         }
     }

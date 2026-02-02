@@ -51,6 +51,7 @@ private struct RegexRoute {
 }
 
 enum Route {
+    case achievements
     case market
     case questShop
     case seasonalShop
@@ -68,6 +69,8 @@ enum Route {
     
     var url: String {
         switch self {
+        case .achievements:
+            return "/user/achievements"
         case .market:
             return "/inventory/market"
         case .questShop:
@@ -231,9 +234,18 @@ class RouterHandler {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.newsViewController.instantiate())
         }
+        register("/static/support") {
+            self.displayTab(index: 4)
+            self.push(StoryboardScene.Support.mainSupportViewController.instantiate())
+        }
+        register("/static/report-bug") {
+            self.displayTab(index: 4)
+            self.push(StoryboardScene.Support.reportBugViewController.instantiate())
+        }
         register("/static/faq") {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Support.mainSupportViewController.instantiate())
+            self.push(StoryboardScene.Support.faqViewController.instantiate())
         }
         register("/static/about") {
             self.displayTab(index: 4)
@@ -241,6 +253,8 @@ class RouterHandler {
         }
         register("/static/faq/:index") { link in
             self.displayTab(index: 4)
+            self.push(StoryboardScene.Support.mainSupportViewController.instantiate())
+            self.push(StoryboardScene.Support.faqViewController.instantiate())
             let viewController = StoryboardScene.Support.faqDetailViewController.instantiate()
             viewController.index = Int(string: link["index"] ?? "0") ?? 0
             self.push(viewController)
@@ -281,7 +295,7 @@ class RouterHandler {
             self.displayTab(index: 4)
             self.push(StoryboardScene.User.spellsViewController.instantiate())
         }
-        register("/user/achievements") {
+        register(.achievements) {
             self.displayTab(index: 4)
             self.push(StoryboardScene.User.achievementsCollectionViewController.instantiate())
         }
@@ -419,6 +433,12 @@ class RouterHandler {
             var presenter: UIViewController = tabbarController
             while presenter.isPresenting, let presented = presenter.presentedViewController {
                 presenter = presented
+            }
+            if presenter.isBeingDismissed {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.present(viewController)
+                }
+                return
             }
             presenter.present(viewController, animated: true, completion: nil)
         } else {

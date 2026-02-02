@@ -49,7 +49,9 @@ class StableDetailViewController<ANIMAL: AnimalProtocol, ITEM, DS: StableDetailD
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let width = 102
-        let viewWidth = Int(collectionView.frame.size.width)
+        let safeLeft = collectionView.safeAreaInsets.left
+        let safeRight = collectionView.safeAreaInsets.right
+        let viewWidth = Int(collectionView.frame.size.width - safeLeft - safeRight)
         var count = Int(viewWidth / width)
         if let inSection = datasource?.collectionView(collectionView, numberOfItemsInSection: section) {
             if inSection < count {
@@ -58,6 +60,6 @@ class StableDetailViewController<ANIMAL: AnimalProtocol, ITEM, DS: StableDetailD
         }
         let totalWidth = width * count + (14 * (count-1))
         let spacing = CGFloat(viewWidth - totalWidth) / 2
-        return UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
+        return UIEdgeInsets(top: 0, left: spacing + safeLeft, bottom: 0, right: spacing + safeRight)
     }
 }

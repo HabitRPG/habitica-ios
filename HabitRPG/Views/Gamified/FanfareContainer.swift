@@ -10,7 +10,7 @@ import SwiftUI
 
 struct FanfareContainer<Content: View>: View {
     var haloColor: Color
-    var circleColor: Color
+    var circleColor: Color = .white
     var outerRingColor: Color
     var plusColor: Color
     @ViewBuilder let content: () -> Content
@@ -24,7 +24,8 @@ struct FanfareContainer<Content: View>: View {
                 .animation(.linear(duration: 30).repeatForever(autoreverses: false), value: animating)
             Image(.fanfareRadial).foregroundStyle(haloColor)
             content()
-                .offset(y: animating ? 3 : -3)
+                .offset(y: animating ? 2 : -2)
+                .animation(.linear(duration: 4).repeatForever(autoreverses: true), value: animating)
                 .frame(width: 123, height: 123)
                 .background(circleColor)
                 .clipShape(.circle)
@@ -38,6 +39,8 @@ struct FanfareContainer<Content: View>: View {
         }.onAppear {
             animating = true
         }
+        .frame(height: 220)
+        .padding(.top, 10)
     }
 }
 

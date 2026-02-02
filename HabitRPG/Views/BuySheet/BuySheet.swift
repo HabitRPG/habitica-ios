@@ -44,7 +44,8 @@ struct BuyCurrencyView: View {
             Text("\(value.formatted(.number))")
                 .font(.system(size: 22, weight: .bold))
                 .foregroundStyle(textColor)
-        }.padding(9)
+        }.padding(.vertical, 9)
+            .padding(.horizontal, 12)
         
         if #available(iOS 26.0, *) {
             content
@@ -196,7 +197,10 @@ struct BuySheet: View, Dismissable {
                         EmptyView()
                     }
                 }
-                PlusMinusStepperView(amount: $viewModel.quantity, icon: icon, isActive: viewModel.item.key == "gem" ? remainingGems > 0 : true)
+                PlusMinusStepperView(amount: $viewModel.quantity,
+                                     icon: icon,
+                                     isActive: viewModel.item.key == "gem" ? remainingGems > 0 : true,
+                                     maxAmount: viewModel.item.key == "gem" ? remainingGems : nil)
             }
             if viewModel.isInstantUse {
                 BuyBanner(color: Color(themeService.theme.offsetBackgroundColor), content: Text(L10n.takeEffectImmediately).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor))
@@ -214,10 +218,10 @@ struct BuySheet: View, Dismissable {
                 if total > 0 && viewModel.user?.isSubscribed == true {
                     if remainingGems > 0 {
                         BuyBanner(color: (isDarkTheme ? Color.green500 : .green100).opacity(0.4),
-                                  content: Text(L10n.Inventory.numberGemsLeft(remainingGems, total)).foregroundStyle(Color.green1))
+                                  content: Text(L10n.Inventory.numberGemsLeft(remainingGems, total)).foregroundStyle(isDarkTheme ? Color.green500 : Color.green1))
                     } else {
                         BuyBanner(color: (isDarkTheme ? Color.yellow500 : .yellow100).opacity(0.4),
-                                  content: Text(L10n.Inventory.numberGemsLeft(remainingGems, total)).foregroundStyle(Color.green1))
+                                  content: Text(L10n.Inventory.numberGemsLeft(remainingGems, total)).foregroundStyle(isDarkTheme ? Color.yellow500 : Color.yellow1))
                     }
                 } else {
                     // This shouldn't show and is mostly for layouting purposes
@@ -226,7 +230,7 @@ struct BuySheet: View, Dismissable {
             }
             if viewModel.isPurchasing {
                 ProgressView().habiticaProgressStyle().frame(width: 42, height: 42)
-                    .transition(.opacity)
+                    .transition(.blurReplace)
                     .padding(9)
             } else {
                 let canBuy = viewModel.canBuyDisplay
@@ -239,9 +243,9 @@ struct BuySheet: View, Dismissable {
                                  color: Color(canBuy ? ThemeService.shared.theme.fixedTintColor : ThemeService.shared.theme.offsetBackgroundColor)) {
                     viewModel.buyPressed()
                 }.disabled(!canBuy)
-                    .transition(.opacity)
+                    .transition(.blurReplace)
             }
-        }.padding(.bottom, 28)
+        }.padding(.bottom, viewModel.keyboardHeight > 0 ? viewModel.keyboardHeight - 36 : 20)
     }
     
     var body: some View {
@@ -273,7 +277,10 @@ struct BuySheet: View, Dismissable {
                             topPadding: 0,
                             bottomPadding: 0
             )
-            .ignoresSafeArea()
+            .ignoresSafeArea(edges: [.top, .bottom])
+            .onDisappear {
+                viewModel.dispose()
+            }
         } else {
             Text("")
                 .task {

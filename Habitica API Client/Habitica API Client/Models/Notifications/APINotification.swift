@@ -18,7 +18,7 @@ private class APINotificationAchievementData: Decodable {
 private class APIItemReceivedData: Decodable {
     var title: String
     var icon: String
-    var destination: String
+    var destination: String?
     var text: String
 }
 

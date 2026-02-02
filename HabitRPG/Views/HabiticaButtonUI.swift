@@ -34,6 +34,7 @@ struct HabiticaButtonUI<Label: View>: View {
     }
     let label: Label
     var color: Color = .clear
+    var colorOpacity = 0.9
     var size: Size = .normal
     var type: ButtonType = .solid
     var onTap: (() -> Void)
@@ -57,7 +58,8 @@ struct HabiticaButtonUI<Label: View>: View {
             if #available(iOS 26.0, *) {
                 configuration.label
                     .glassEffect(
-                        color != .clear ? .regular.interactive().tint(color.opacity(0.9)) : .regular.interactive())
+                        color != .clear ? .regular.interactive().tint(color.opacity(colorOpacity)) : .regular.interactive())
+                    .contentShape(.capsule)
             } else {
                 configuration.label
                     .background(type == .bordered ? Color.clear : color)

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftUI
+import SwiftUIX
 
 class InboxOverviewViewController: BaseTableViewController {
     
@@ -18,6 +20,8 @@ class InboxOverviewViewController: BaseTableViewController {
     private var newMessageUsername: String?
     private var newMessageUserID: String?
 
+    let emptyView = UIHostingView(rootView: NoContentView(icon: Image(Asset.Empty.messages.name), title: Text(L10n.Empty.messages), content: Text(L10n.Empty.messagesDescription)))
+
     override func viewDidLoad() {
         tutorialIdentifier = "inbox"
         super.viewDidLoad()
@@ -28,6 +32,8 @@ class InboxOverviewViewController: BaseTableViewController {
         
         if #unavailable(iOS 26.0) {
             doneButton.style = .done
+        } else {
+            tableView.topEdgeEffect.isHidden = true
         }
         
         #if !targetEnvironment(macCatalyst)
@@ -35,6 +41,10 @@ class InboxOverviewViewController: BaseTableViewController {
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         #endif
         refresh()
+        
+        view.addSubview(emptyView)
+        emptyView.isHidden = true
+        dataSource.emptyView = emptyView
     }
     
     override func applyTheme(theme: Theme) {
@@ -118,7 +128,7 @@ class InboxOverviewViewController: BaseTableViewController {
             errorView.isHidden = true
             activityIndicator.startAnimating()
             if let username = usernameTextField.text {
-                self?.socialRepository.retrieveMember(userID: username).on(
+                self?.socialRepository.retrieveMember(userID: username, handleErrors: false).on(
                     value: { member in
                         foundUser = true
                         self?.newMessageUsername = username
@@ -141,5 +151,10 @@ class InboxOverviewViewController: BaseTableViewController {
             usernameTextField.becomeFirstResponder()
         }
         alertController.show()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        emptyView.pin.left().right().top(40).sizeToFit(.width)
+        super.viewWillLayoutSubviews()
     }
 }

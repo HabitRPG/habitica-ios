@@ -108,12 +108,13 @@ ZStack(alignment: .bottom) {
                     }
                 }, label: {
                     Text(isLastPage ? L10n.getStarted : L10n.next).padding(.vertical, 10)
+                        .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                 })
                 
                 if #available(iOS 26.0, *) {
                     button
-                        .buttonStyle(.glass)
+                        .buttonStyle(.glass(.clear))
                 } else {
                     button
                         .background(Color.black.opacity(0.3))

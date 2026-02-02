@@ -72,6 +72,7 @@ class PetDetailDataSource: StableDetailDataSource<PetProtocol, PetStableItem> {
                         }))
 
             .on(value: {[weak self](ownedPets, ownedMounts, pets, mounts) in
+                guard !UserManager.shared.isLoggingOut else { return }
                 self?.sections[0].items.removeAll()
                 self?.sections[1].items.removeAll()
                 pets.forEach({ (pet) in
@@ -93,9 +94,10 @@ class PetDetailDataSource: StableDetailDataSource<PetProtocol, PetStableItem> {
                             }
                             return itemMap
                         })
-                        .on(value: { ownedItems in
-                            self.ownedItems = ownedItems
-                            self.collectionView?.reloadData()
+                        .on(value: {[weak self] ownedItems in
+                            guard !UserManager.shared.isLoggingOut else { return }
+                            self?.ownedItems = ownedItems
+                            self?.collectionView?.reloadData()
                         }).start())
         disposable.add(userRepository.getUser().map { $0.items?.currentPet }
             .on(value: {[weak self] pet in

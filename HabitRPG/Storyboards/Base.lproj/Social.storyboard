@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -203,10 +202,10 @@
             <objects>
                 <viewController storyboardIdentifier="InboxChatViewController" id="mn5-kI-z18" customClass="InboxChatViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="PIW-ch-7Uh"/>
-                        <viewControllerLayoutGuide type="bottom" id="ucE-b4-Own"/>
+                        <viewControllerLayoutGuide type="top" id="BmD-zM-mMP"/>
+                        <viewControllerLayoutGuide type="bottom" id="G6n-uz-hSx"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="43x-Iu-HK8" customClass="UITableView" customModule="Habitica" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="43x-Iu-HK8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97636467218399048" green="0.97653168439865112" blue="0.97635418176651001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -275,11 +274,11 @@
                         <viewControllerLayoutGuide type="bottom" id="l2M-YU-7aU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bwZ-qa-gMk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="657"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dKe-8b-7wA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="657"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FSC-0T-avm">
                                         <rect key="frame" x="0.0" y="-384" width="375" height="1741"/>
@@ -551,6 +550,7 @@
                         <outlet property="bossHealthlabel" destination="iwR-MM-zVe" id="LeC-Zr-AyY"/>
                         <outlet property="bossImageView" destination="maA-rD-Xo6" id="up0-40-ibC"/>
                         <outlet property="cancelButton" destination="pXx-qO-qxd" id="gqT-dG-e1o"/>
+                        <outlet property="contentWidthConstraint" destination="zab-Wj-NPI" id="qdc-cW-p2z"/>
                         <outlet property="descriptionHeaderView" destination="PvU-aP-uYa" id="laW-mE-Iyb"/>
                         <outlet property="descriptionTextView" destination="xdN-Nt-8pH" id="RLt-bY-KKx"/>
                         <outlet property="forceStartButton" destination="Oo2-ht-HrC" id="dx9-ih-m2W"/>
@@ -573,7 +573,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="ChallengeDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LJL-4h-PRX" customClass="ChallengeDetailsTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mSs-Sh-idc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="627"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -785,11 +785,11 @@
                         <viewControllerLayoutGuide type="bottom" id="jjC-Ag-kKu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0az-3L-YFU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="657"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vH0-3y-TsP">
-                                <rect key="frame" x="16" y="70" width="343" height="513"/>
+                                <rect key="frame" x="16" y="70" width="343" height="587"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -823,7 +823,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="ChallengeTableViewController" automaticallyAdjustsScrollViewInsets="NO" id="BE2-xn-Wwl" customClass="ChallengeTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="28" sectionFooterHeight="28" id="SWx-Y1-cyG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="637"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="657"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <connections>
@@ -882,11 +882,11 @@
             <objects>
                 <viewController storyboardIdentifier="GroupChatViewController" id="GpJ-zx-fw9" customClass="GroupChatViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TEP-lt-p8d"/>
-                        <viewControllerLayoutGuide type="bottom" id="Sur-1o-ymQ"/>
+                        <viewControllerLayoutGuide type="top" id="up1-NV-BrT"/>
+                        <viewControllerLayoutGuide type="bottom" id="Aor-tE-Flr"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="OFX-9b-U2U" customClass="UITableView" customModule="Habitica" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="593"/>
+                    <view key="view" contentMode="scaleToFill" id="OFX-9b-U2U">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -911,22 +911,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="mMp-6b-m4W">
-                                <rect key="frame" x="0.0" y="74" width="375" height="593"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSR-zm-w5F">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="593"/>
+                                    <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSR-zm-w5F">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <connections>
                                             <segue destination="J2Y-h9-GJa" kind="embed" id="B9N-0Y-5SV"/>
                                         </connections>
                                     </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZC-9W-gA7">
-                                        <rect key="frame" x="375" y="0.0" width="375" height="593"/>
+                                    <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZC-9W-gA7">
+                                        <rect key="frame" x="375" y="0.0" width="375" height="667"/>
                                         <connections>
                                             <segue destination="GpJ-zx-fw9" kind="embed" id="gAH-Zh-PJ3"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="76c-yj-biB">
-                                        <rect key="frame" x="375" y="0.0" width="1" height="593"/>
+                                        <rect key="frame" x="375" y="0.0" width="1" height="667"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="Dgq-2u-kko"/>
@@ -1151,7 +1151,7 @@
                             <constraint firstAttribute="trailing" secondItem="mMp-6b-m4W" secondAttribute="trailing" id="eqk-9i-B5H"/>
                             <constraint firstItem="fUh-bv-IOV" firstAttribute="leading" secondItem="eVm-iI-MJ2" secondAttribute="leading" id="nWD-5x-jn5"/>
                             <constraint firstAttribute="bottom" secondItem="mMp-6b-m4W" secondAttribute="bottom" id="qeQ-ec-kmg"/>
-                            <constraint firstItem="mMp-6b-m4W" firstAttribute="top" secondItem="8vO-ry-4o5" secondAttribute="bottom" id="zAV-rE-QSF"/>
+                            <constraint firstItem="mMp-6b-m4W" firstAttribute="top" secondItem="eVm-iI-MJ2" secondAttribute="top" id="zAV-rE-QSF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ohm-N0-URb">
@@ -1200,22 +1200,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6y4-NW-sAd">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pCL-YP-wy9">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <connections>
                                             <segue destination="ZmK-Mz-PPG" kind="embed" id="Wxl-eq-vET"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWd-nR-RgQ">
-                                        <rect key="frame" x="375" y="0.0" width="375" height="647"/>
+                                        <rect key="frame" x="375" y="0.0" width="375" height="667"/>
                                         <connections>
                                             <segue destination="GpJ-zx-fw9" kind="embed" id="xLb-S3-ALp"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q2D-H7-UcO">
-                                        <rect key="frame" x="375" y="0.0" width="1" height="647"/>
+                                        <rect key="frame" x="375" y="0.0" width="1" height="667"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="zeK-Iz-obC"/>
@@ -1242,7 +1242,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6y4-NW-sAd" firstAttribute="top" secondItem="u8O-n4-rgv" secondAttribute="bottom" id="8bz-dd-X5s"/>
+                            <constraint firstItem="6y4-NW-sAd" firstAttribute="top" secondItem="caw-cM-y8T" secondAttribute="top" id="8bz-dd-X5s"/>
                             <constraint firstAttribute="trailing" secondItem="6y4-NW-sAd" secondAttribute="trailing" id="EGQ-5l-aot"/>
                             <constraint firstItem="6y4-NW-sAd" firstAttribute="leading" secondItem="caw-cM-y8T" secondAttribute="leading" id="Ii0-PQ-4vj"/>
                             <constraint firstAttribute="bottom" secondItem="6y4-NW-sAd" secondAttribute="bottom" id="Wdd-BW-I0F"/>
@@ -1277,11 +1277,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Mt2-dF-B4p"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Czc-6v-sm8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="clS-8V-xVt">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hLy-t6-F84">
                                         <rect key="frame" x="16" y="16" width="343" height="490"/>
@@ -1638,11 +1638,11 @@
                         <viewControllerLayoutGuide type="bottom" id="362-wL-UUI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CnB-FN-klm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="593"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GuM-7B-owL">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="593"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="GuM-7B-owL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Q2f-jL-AaR">
                                         <rect key="frame" x="16" y="16" width="343" height="979"/>
@@ -2041,9 +2041,9 @@
     <inferredMetricsTieBreakers>
         <segue reference="jzO-TO-nUb"/>
         <segue reference="gAH-Zh-PJ3"/>
-        <segue reference="BKi-xg-gxr"/>
+        <segue reference="lgk-R4-zXr"/>
         <segue reference="jXp-j5-lvy"/>
-        <segue reference="RWA-7r-R8g"/>
+        <segue reference="Hfa-0k-B92"/>
         <segue reference="wif-V9-Mcy"/>
         <segue reference="2EH-Sz-Osv"/>
     </inferredMetricsTieBreakers>

@@ -39,8 +39,10 @@ protocol HabiticaPromotion {
     var startDate: Date { get }
     var endDate: Date { get }
     
-    func backgroundColor() -> UIColor
-    func buttonBackground() -> UIColor
+    var backgroundColor: UIColor { get }
+    var gradientStart: UIColor? { get }
+    var gradientEnd: UIColor? { get }
+    var buttonBackground: UIColor { get }
     
     func configurePill(_ pillView: PillView)
     func configurePromoMenuView(view: PromoMenuView)
@@ -80,12 +82,19 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         self.endDate = endDate ?? Date.with(year: 2020, month: 9, day: 30, timezone: TimeZone(abbreviation: "UTC"))
     }
     
-    func backgroundColor() -> UIColor {
+    var backgroundColor: UIColor {
         return UIColor.gray10
     }
 
-    func buttonBackground() -> UIColor {
+    var buttonBackground: UIColor {
         return UIColor.orange50
+    }
+    
+    var gradientStart: UIColor? {
+        return nil
+    }
+    var gradientEnd: UIColor? {
+        return nil
     }
     
     private func makeGradient(view: UIView) -> CAGradientLayer {
@@ -109,7 +118,6 @@ class FallExtraGemsPromotion: HabiticaPromotion {
     }
     
     func configurePromoMenuView(view: PromoMenuView) {
-        view.backgroundColor = backgroundColor()
         view.leftImageView.image = Asset.fallPromoMenuLeft.image
         view.rightImageView.image = Asset.fallPromoMenuRight.image
         view.setTitleImage(Asset.fallPromoTitle.image)
@@ -119,7 +127,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
     }
     
     func configurePurchaseBanner(view: PromoBannerView) {
-        view.backgroundColor = backgroundColor()
+        view.backgroundColor = backgroundColor
         view.leftImageView.image = Asset.fallPromoBannerLeft.image
         view.rightImageView.image = Asset.fallPromoBannerRight.image
         view.setTitleImage(Asset.fallPromoTitle.image)
@@ -128,10 +136,10 @@ class FallExtraGemsPromotion: HabiticaPromotion {
     }
     
     func configureGemView(view: GemPurchaseCell, regularAmount: Int) {
-        view.backgroundColor = backgroundColor()
+        view.backgroundColor = backgroundColor
         view.priceLabel.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: view.priceLabel)
-        gradientLayer.cornerRadius = 8
+        gradientLayer.cornerRadius = UIConstants.mediumCornerRadius
         view.priceLabel.backgroundColor = .clear
         view.priceLabelBackground.layer.insertSublayer(gradientLayer, at: 0)
         view.priceLabel.textColor = .white
@@ -158,7 +166,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
     }
     
     func configureInfoView(_ viewController: PromotionInfoViewController) {
-        viewController.promoBanner.backgroundColor = backgroundColor()
+        viewController.promoBanner.backgroundColor = backgroundColor
         viewController.promoBanner.leftImageView.image = Asset.fallPromoInfoLeft.image
         viewController.promoBanner.rightImageView.image = Asset.fallPromoInfoRight.image
         viewController.promoBanner.setTitleImage(Asset.fallPromoTitle.image)
@@ -174,7 +182,7 @@ class FallExtraGemsPromotion: HabiticaPromotion {
         viewController.promptButton.setTitleColor(.white, for: .normal)
         viewController.promptButton.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         let gradientLayer = makeGradient(view: viewController.promptButton)
-        gradientLayer.cornerRadius = 8
+        gradientLayer.cornerRadius = UIConstants.mediumCornerRadius
         viewController.promptButton.layer.insertSublayer(gradientLayer, at: 0)
         viewController.instructionsDescription = L10n.FallPromo.infoInstructions(shortDateFormatter.string(from: startDate), shortDateFormatter.string(from: endDate))
         viewController.limitationsDescription = L10n.GemsPromo.infoLimitations(fullDateFormatter.string(from: startDate), fullDateFormatter.string(from: endDate))
@@ -208,12 +216,19 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         self.endDate = endDate ?? Date.with(year: 2020, month: 11, day: 2, timezone: TimeZone(abbreviation: "UTC"))
     }
     
-    func backgroundColor() -> UIColor {
+    var backgroundColor: UIColor {
         return .gray10
     }
 
-    func buttonBackground() -> UIColor {
+    var buttonBackground: UIColor {
         return .orange50
+    }
+    
+    var gradientStart: UIColor? {
+        return nil
+    }
+    var gradientEnd: UIColor? {
+        return nil
     }
     
     func configurePill(_ pillView: PillView) {
@@ -221,7 +236,7 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
     }
     
     func configurePromoMenuView(view: PromoMenuView) {
-        view.backgroundColor = backgroundColor()
+        view.backgroundColor = backgroundColor
         view.leftImageView.image = Asset.spookyPromoMenuLeft.image
         view.rightImageView.image = Asset.spookyPromoMenuRight.image
         view.setTitleImage(Asset.spookyPromoTitle.image)
@@ -231,7 +246,7 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
     }
     
     func configurePurchaseBanner(view: PromoBannerView) {
-        view.backgroundColor = backgroundColor()
+        view.backgroundColor = backgroundColor
         view.leftImageView.image = Asset.spookyPromoBannerLeft.image
         view.rightImageView.image = Asset.spookyPromoBannerRight.image
         view.setTitleImage(Asset.spookyPromoTitle.image)
@@ -241,9 +256,9 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
     }
     
     func configureGemView(view: GemPurchaseCell, regularAmount: Int) {
-        view.backgroundColor = backgroundColor()
+        view.backgroundColor = backgroundColor
         view.priceLabel.textColor = .white
-        view.priceLabel.backgroundColor = buttonBackground()
+        view.priceLabel.backgroundColor = buttonBackground
         view.footerLabel.text = L10n.usuallyXGems(regularAmount)
         view.footerLabel.textColor = UIColor("#CAC7CE")
         view.footerLabel.font = UIFontMetrics.default.scaledSystemFont(ofSize: 12)
@@ -268,7 +283,7 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
     }
     
     func configureInfoView(_ viewController: PromotionInfoViewController) {
-        viewController.promoBanner.backgroundColor = backgroundColor()
+        viewController.promoBanner.backgroundColor = backgroundColor
         viewController.promoBanner.leftImageView.image = Asset.spookyPromoInfoLeft.image
         viewController.promoBanner.rightImageView.image = Asset.spookyPromoInfoRight.image
         viewController.promoBanner.setTitleImage(Asset.spookyPromoTitle.image)
@@ -282,7 +297,7 @@ class SpookyExtraGemsPromotion: HabiticaPromotion {
         viewController.promptText = L10n.SpookyPromo.infoPrompt
         viewController.promptButton.setTitle(L10n.viewGemBundles, for: .normal)
         viewController.promptButton.setTitleColor(.white, for: .normal)
-        viewController.promptButton.backgroundColor = buttonBackground()
+        viewController.promptButton.backgroundColor = buttonBackground
         viewController.instructionsDescription = L10n.SpookyPromo.infoInstructions(shortDateFormatter.string(from: startDate), shortDateFormatter.string(from: endDate))
         viewController.limitationsDescription = L10n.GemsPromo.infoLimitations(fullDateFormatter.string(from: startDate), fullDateFormatter.string(from: endDate))
     }
@@ -315,18 +330,25 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
         self.endDate = endDate ?? Date.with(year: 2021, month: 1, day: 7, timezone: TimeZone(abbreviation: "UTC"))
     }
     
-    func backgroundColor() -> UIColor {
-        return UIColor.gray10
+    var backgroundColor: UIColor {
+        return UIColor("#925CF3")
     }
 
-    func buttonBackground() -> UIColor {
+    var buttonBackground: UIColor {
         return ThemeService.shared.theme.contentBackgroundColor
+    }
+    
+    var gradientStart: UIColor? {
+        return UIColor("#3BCAD7")
+    }
+    var gradientEnd: UIColor? {
+        return UIColor("#925CF3")
     }
     
     private func makeGradient(view: UIView) -> CAGradientLayer {
         let gradient: CAGradientLayer = CAGradientLayer()
 
-        gradient.colors = [UIColor("#3BCAD7").cgColor, UIColor("#925CF3").cgColor]
+        gradient.colors = [gradientStart?.cgColor ?? CGColor(gray: 0, alpha: 1), gradientEnd?.cgColor ?? CGColor(gray: 0, alpha: 1)]
         gradient.locations = [0.0, 1.0]
         gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
@@ -344,22 +366,20 @@ class GiftOneGetOnePromotion: HabiticaPromotion {
     }
     
     func configurePromoMenuView(view: PromoMenuView) {
-        view.backgroundColor = nil
-        view.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
-        let gradientLayer = makeGradient(view: view)
-        view.layer.insertSublayer(gradientLayer, at: 0)
         view.leftImageView.image = Asset.promoGiftLeftLarge.image
         view.rightImageView.image = Asset.promoGiftRightLarge.image
         view.setTitle(L10n.giftOneGetOneEvent)
-        view.titleView.textColor = .white
         view.setDescription(L10n.giftOneGetOneDescription)
-        view.descriptionView.textColor = .white
-        view.actionButton.backgroundColor = buttonBackground()
+        view.actionButton.backgroundColor = buttonBackground
         view.actionButton.setTitle(L10n.learnMore, for: .normal)
         if ThemeService.shared.theme.isDark {
             view.actionButton.setTitleColor(UIColor.teal100, for: .normal)
+            view.titleView.textColor = .white
+            view.descriptionView.textColor = .white
         } else {
             view.actionButton.setTitleColor(UIColor.teal10, for: .normal)
+            view.titleView.textColor = .blue1
+            view.descriptionView.textColor = .blue1
         }
     }
     
@@ -421,12 +441,20 @@ class Survey2021Promotion: HabiticaWebPromotion {
         self.url = URL(string: url ?? "")
     }
     
-    func backgroundColor() -> UIColor {
+    var backgroundColor: UIColor {
         return UIColor.blue1
     }
 
-    func buttonBackground() -> UIColor {
+    var buttonBackground: UIColor {
         return ThemeService.shared.theme.contentBackgroundColor
+    }
+    
+    var gradientStart: UIColor? {
+        return nil
+    }
+    
+    var gradientEnd: UIColor? {
+        return nil
     }
     
     func configurePill(_ pillView: PillView) {
@@ -434,7 +462,6 @@ class Survey2021Promotion: HabiticaWebPromotion {
     
     func configurePromoMenuView(view: PromoMenuView) {
         view.canClose = true
-        view.backgroundColor = backgroundColor()
         view.leftImageView.image = Asset.surveyArtLeft.image
         view.rightImageView.image = Asset.surveyArtRight.image
         view.setTitle(L10n.Survey.title)

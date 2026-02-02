@@ -58,7 +58,8 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     @objc weak var currentHeaderCoordinator: TopHeaderCoordinator?
     private var gestureRecognizer: UIPanGestureRecognizer?
     private var headerYPosition: CGFloat = 0
-    
+    private var headerXPosition: CGFloat?
+
     private var visibleTintColor = UIColor.gray50
     private var visibleTextColor = UIColor.black
 
@@ -134,9 +135,9 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         }
         // iphones with dynamic island need this for some reason
         if statusBarHeight == 59 || statusBarHeight == 62 {
-            return topHeaderHeight + 10
+            return topHeaderHeight + 22
         }
-        return self.topHeaderHeight
+        return self.topHeaderHeight + 12
    }
     
      @objc public var contentOffset: CGFloat {
@@ -157,12 +158,14 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         guard let header = alternativeHeaderView else {
             return 0
         }
-        let intrinsicHeight = header.intrinsicContentSize.height
+        var intrinsicHeight = header.intrinsicContentSize.height
         if intrinsicHeight <= 0 {
-            return header.frame.size.height
-        } else {
-            return intrinsicHeight
+            intrinsicHeight = header.frame.size.height
         }
+        if traitCollection.verticalSizeClass == .compact {
+            return min(intrinsicHeight, 100 + UIConstants.largeCornerRadius)
+        }
+        return intrinsicHeight
     }
     
     override func viewDidLoad() {
@@ -208,10 +211,18 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         super.viewWillLayoutSubviews()
         let parentFrame = view.frame
         let topHeaderHeight = self.topHeaderHeight
+        if shouldHideTopHeader {
+            headerYPosition = -topHeaderHeight
+            state = .hidden
+        } else if state == .visible && scrollableView == nil {
+            headerYPosition = bgViewOffset
+        }
         let width = parentFrame.size.width + parentFrame.origin.x
-        backgroundView.frame = CGRect(x: -parentFrame.origin.x, y: headerYPosition, width: width, height: topHeaderHeight)
+        backgroundView.frame = CGRect(x: headerXPosition ?? -parentFrame.origin.x, y: headerYPosition, width: width, height: topHeaderHeight)
         upperBackgroundView.frame = CGRect(x: -parentFrame.origin.x, y: 0, width: width, height: bgViewOffset)
-        headerView?.frame = CGRect(x: 0, y: 0, width: width, height: defaultHeaderHeight)
+        let safeLeft = view.safeAreaInsets.left
+        let safeRight = view.safeAreaInsets.right
+        headerView?.frame = CGRect(x: safeLeft, y: 0, width: width - safeLeft - safeRight, height: defaultHeaderHeight)
         if let header = alternativeHeaderView {
             if topHeaderHeight <= 0 {
                 header.frame = CGRect(x: -parentFrame.origin.x, y: 0, width: width, height: header.frame.size.height)
@@ -221,11 +232,13 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         }
         
         if let scrollView = currentHeaderCoordinator?.scrollView {
-            if scrollView.contentInset.top != contentInset {
+            let modInset = currentHeaderCoordinator?.contentInsetModifier ?? .zero
+            let targetTopInset = contentInset + modInset.top
+            if scrollView.contentInset.top != targetTopInset {
                 let existingInsets = scrollView.contentInset
-                var insets = UIEdgeInsets(top: contentInset, left: 0, bottom: 0, right: 0)
+                var insets = UIEdgeInsets(top: targetTopInset, left: modInset.left, bottom: modInset.bottom, right: modInset.right)
                 if existingInsets.bottom != 0 {
-                    insets = UIEdgeInsets(top: contentInset + (existingInsets.top - contentInset), left: 0, bottom: existingInsets.bottom, right: 0)
+                    insets.bottom = existingInsets.bottom
                 }
                 scrollView.contentInset = insets
                 scrollView.scrollIndicatorInsets = insets
@@ -290,6 +303,8 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         self.scrollableView = nil
     }
     
+    var lastScrollPos: CGFloat = -1
+    
     @objc
     public func scrollView(_ scrollView: UIScrollView?, scrolledToPosition position: CGFloat) {
         if self.scrollableView != scrollView {
@@ -300,26 +315,51 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         if newYPos > bgViewOffset {
             newYPos = bgViewOffset
         }
-        if (newYPos + frame.size.height) > bgViewOffset, state != .visible {
-            state = .visible
-        } else if state != .hidden {
-            state = .hidden
+        if currentHeaderCoordinator?.scrollMode == .slide {
+            if (newYPos + frame.size.height) > bgViewOffset, state != .visible {
+                state = .visible
+            } else if state != .hidden {
+                state = .hidden
+            }
+            frame.origin.y = newYPos
+        } else if currentHeaderCoordinator?.scrollMode == .scale {
+            backgroundView.layer.anchorPoint = CGPoint(x: -0.5, y: 0)
+            let navbarHeight = navigationBar.frame.height
+            let viewPos = max(newYPos, bgViewOffset-navbarHeight + 6)
+            frame.origin.y = viewPos
+            if viewPos != newYPos {
+                let newSize = max(frame.height - abs(newYPos - viewPos), navbarHeight - 12)
+                let scale = newSize / frame.height
+                backgroundView.transform = CGAffineTransform(scaleX: scale, y: scale)
+                headerXPosition = (frame.size.width - frame.size.width * scale)/2
+            } else {
+                backgroundView.transform = CGAffineTransform(scaleX: 1, y: 1)
+                headerXPosition = 0
+            }
         }
-        frame.origin.y = newYPos
         headerYPosition = frame.origin.y
         backgroundView.frame = frame
+        
+        lastScrollPos = position
     }
     
     @objc
     public func setNavigationBarColors() {
         if navbarVisibleColor != defaultNavbarVisibleColor {
             upperBackgroundView.backgroundColor = navbarVisibleColor
+            backgroundView.backgroundColor = .clear
         } else if #unavailable(iOS 26.0) {
             upperBackgroundView.backgroundColor = navbarVisibleColor
             backgroundView.backgroundColor = navbarVisibleColor
         } else {
-            backgroundView.backgroundColor = .clear
-            upperBackgroundView.backgroundColor = .clear
+            if topViewController is MainMenuViewController {
+                // in Dark mode the special header needs to be taken into account
+                upperBackgroundView.backgroundColor = navbarVisibleColor
+                backgroundView.backgroundColor = navbarVisibleColor
+            } else {
+                backgroundView.backgroundColor = .clear
+                upperBackgroundView.backgroundColor = .clear
+            }
         }
         
         let tintColor = visibleTintColor
@@ -333,15 +373,18 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
+        if upperBackgroundView.backgroundColor == .clear {
+            return ThemeService.shared.theme.isDark ? .lightContent : .darkContent
+        }
         let isLightColor = self.upperBackgroundView.backgroundColor?.isLight() ?? true
         if upperBackgroundView.backgroundColor == .white && ThemeService.shared.theme.isDark {
             // For some reason when forcing dark mode, the statusbar style is requested before the theme is applied
             return .lightContent
         }
         if !isLightColor {
-            return .darkContent
-        } else {
             return .lightContent
+        } else {
+            return .darkContent
         }
     }
     

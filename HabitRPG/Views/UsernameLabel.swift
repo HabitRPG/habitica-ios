@@ -17,7 +17,7 @@ class UsernameLabel: UILabel {
             } else {
                 textColor = UIColor.contributorColor(forTier: contributorLevel)
             }
-            iconView.image = HabiticaIcons.imageOfContributorBadge(_1: CGFloat(contributorLevel), isNPC: false)
+            iconView.image = HabiticaIcons.imageOfContributorBadge(tier: contributorLevel, isNPC: false)
         }
     }
     
@@ -88,7 +88,7 @@ struct UsernameLabelUI: View {
         HStack(alignment: .center, spacing: 2) {
             Text(name).foregroundStyle(Color(textColor))
             if level > 0 {
-                Image(uiImage: HabiticaIcons.imageOfContributorBadge(_1: CGFloat(level), isNPC: false)).frame(width: 16, height: 16)
+                Image(uiImage: HabiticaIcons.imageOfContributorBadge(tier: level, isNPC: false)).frame(width: 16, height: 16)
             }
         }
     }

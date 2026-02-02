@@ -16,8 +16,10 @@ class EquipmentDetailViewController: BaseTableViewController, UISearchResultsUpd
     
     var datasource: EquipmentViewDataSource?
     private let inventoryRepository = InventoryRepository()
-    
+    private let userRepository = UserRepository()
+
     private var searchController = UISearchController(searchResultsController: nil)
+    private let headerView = AvatarHeaderView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,26 +27,45 @@ class EquipmentDetailViewController: BaseTableViewController, UISearchResultsUpd
             datasource = EquipmentViewDataSource(useCostume: selectedCostume, gearType: gearType)
             datasource?.tableView = self.tableView
         }
-        
+        if let topHeaderNavigationController = navigationController as? TopHeaderViewController {
+            if let header = topHeaderNavigationController.currentHeaderCoordinator?.alternativeHeader as? AvatarHeaderView {
+                topHeaderCoordinator?.alternativeHeader = header
+            }
+        }
+        if topHeaderCoordinator?.alternativeHeader == nil {
+            topHeaderCoordinator?.alternativeHeader = headerView
+        }
+        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
+        topHeaderCoordinator?.followScrollView = false
+        topHeaderCoordinator?.contentInsetModifier.top = -30
+
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
         
         self.navigationItem.searchController = searchController
-        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = true
         navigationItem.backButtonDisplayMode = .minimal
         navigationItem.backButtonTitle = nil
         navigationItem.title = nil
         self.navigationItem.preferredSearchBarPlacement = .inline
-        searchController.scopeBarActivation = .automatic
+        searchController.scopeBarActivation = .onSearchActivation
+        searchController.automaticallyShowsCancelButton = true
+        if #available(iOS 26.0, *) {
+            navigationItem.preferredSearchBarPlacement = .integratedButton
+        }
         updateSearchSuggestions(withInput: nil)
-        searchController.searchBar.showsCancelButton = false
         searchController.searchResultsUpdater = self
         tableView.keyboardDismissMode = .onDrag
+        
+        userRepository.getUser().on(value: { [weak self] user in
+            self?.headerView.setAvatar(avatar: user)
+        }).start()
     }
     
     override func applyTheme(theme: any Theme) {
         super.applyTheme(theme: theme)
-        searchController.searchBar.backgroundColor = theme.contentBackgroundColor
+        tableView.backgroundColor = theme.contentBackgroundColor
+        topHeaderCoordinator?.navbarVisibleColor = ThemeService.shared.theme.windowBackgroundColor
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

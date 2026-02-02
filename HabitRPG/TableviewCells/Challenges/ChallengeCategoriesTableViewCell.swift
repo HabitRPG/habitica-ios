@@ -57,7 +57,7 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
     func emptyTagLabel() -> UILabel {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
-        label.cornerRadius = 8
+        label.cornerRadius = UIConstants.mediumCornerRadius
         return label
     }
     

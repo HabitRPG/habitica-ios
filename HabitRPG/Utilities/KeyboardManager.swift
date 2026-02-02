@@ -14,11 +14,11 @@ class KeyboardManager: NSObject {
     
     private var viewsToUpdate = [ObservingView]()
     
-    @objc static var size: CGSize {
+    static var size: CGSize {
         return shared.measuredSize.size
     }
     
-    @objc static var height: CGFloat {
+    static var height: CGFloat {
         return size.height
     }
     

@@ -30,7 +30,9 @@ class SharingManager {
 #endif
         let avc = UIActivityViewController(activityItems: sharedItems, applicationActivities: nil)
         avc.popoverPresentationController?.sourceView = sourceView ?? viewController.view
-        viewController.present(avc, animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            viewController.present(avc, animated: true, completion: nil)
+        }
     }
 
     static func share(pet: AnimalProtocol, shareIdentifier: String = "pet") {
@@ -51,19 +53,21 @@ class SharingManager {
         SharingManager.share(identifier: shareIdentifier, items: items, presentingViewController: nil, sourceView: nil)
     }
     
-    static func share(avatar: AvatarProtocol, shareIdentifier: String = "avatar") {
+    static func share(avatar: AvatarProtocol, shareIdentifier: String = "avatar", text: String? = nil) {
         let view = AvatarView(frame: CGRect(x: 0, y: 0, width: 140, height: 147))
         
         view.avatar = AvatarViewModel(avatar: avatar)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, UIScreen.main.scale)
-            if let currentContext = UIGraphicsGetCurrentContext() {
-                view.layer.render(in: currentContext)
-                if let image = UIGraphicsGetImageFromCurrentImageContext() {
-                    SharingManager.share(identifier: shareIdentifier, items: [image], presentingViewController: nil, sourceView: nil)
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, UIScreen.main.scale)
+        if let currentContext = UIGraphicsGetCurrentContext() {
+            view.layer.render(in: currentContext)
+            if let image = UIGraphicsGetImageFromCurrentImageContext() {
+                var items: [Any] = [image]
+                if let text = text {
+                    items.append(text)
                 }
-                UIGraphicsEndImageContext()
+                SharingManager.share(identifier: shareIdentifier, items: items, presentingViewController: nil, sourceView: nil)
             }
+            UIGraphicsEndImageContext()
         }
     }
     

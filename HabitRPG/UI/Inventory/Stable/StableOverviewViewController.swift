@@ -15,7 +15,8 @@ class StableOverviewViewController<ANIMAL: AnimalProtocol, DS: StableOverviewDat
     
     var organizeByColor = false
     
-    private let headerView = NPCBannerView(frame: CGRect(x: 0, y: -124, width: UIScreen.main.bounds.size.width, height: 124))
+    private let headerView = NPCBannerView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 124))
+    private let headerStretcher = UIView()
     
     override func viewDidLoad() {
         let headerXib = UINib.init(nibName: "StableSectionHeader", bundle: .main)
@@ -29,7 +30,7 @@ class StableOverviewViewController<ANIMAL: AnimalProtocol, DS: StableOverviewDat
         headerView.setSprites(identifier: "stable")
         
         collectionView?.addSubview(headerView)
-        collectionView?.contentInset = UIEdgeInsets(top: 124, left: 0, bottom: 0, right: 0)
+        collectionView?.addSubview(headerStretcher)
     }
     
     override func applyTheme(theme: Theme) {
@@ -38,9 +39,26 @@ class StableOverviewViewController<ANIMAL: AnimalProtocol, DS: StableOverviewDat
         headerView.applyTheme(backgroundColor: theme.contentBackgroundColor)
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        let offset = collectionView.contentInset.top
+        headerStretcher.frame = CGRect(x: 0, y: -offset, width: collectionView.frame.width, height: offset)
+        headerView.frame = CGRect(x: 0, y: 0, width: collectionView.frame.width, height: headerView.frame.size.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 0 {
+            return CGSize(width: collectionView.bounds.size.width, height: 184)
+        } else {
+            return CGSize(width: collectionView.bounds.size.width, height: 60)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let width = 102
-        let viewWidth = Int(collectionView.frame.size.width)
+        let safeLeft = collectionView.safeAreaInsets.left
+        let safeRight = collectionView.safeAreaInsets.right
+        let viewWidth = Int(collectionView.frame.size.width - safeLeft - safeRight)
         var count = Int(viewWidth / width)
         if let inSection = datasource?.collectionView(collectionView, numberOfItemsInSection: section) {
             if inSection < count {
@@ -49,6 +67,6 @@ class StableOverviewViewController<ANIMAL: AnimalProtocol, DS: StableOverviewDat
         }
         let totalWidth = width * count + (14 * (count-1))
         let spacing = CGFloat(viewWidth - totalWidth) / 2
-        return UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
+        return UIEdgeInsets(top: 0, left: spacing + safeLeft, bottom: 0, right: spacing + safeRight)
     }
 }

@@ -135,8 +135,11 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func runCron(checklistItems: [(TaskProtocol, ChecklistItemProtocol)], tasks: [TaskProtocol]) {
+        guard !UserManager.shared.isLoggingOut else { return }
+
         var disposable: Disposable?
         getUser().take(first: 1).on(value: {[weak self]user in
+            guard !UserManager.shared.isLoggingOut else { return }
             self?.localRepository.updateCall { _ in
                 user.needsCron = false
             }
@@ -230,17 +233,32 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     
     func login(userID: String, network: String, accessToken: String, allowRegister: Bool) -> Signal<LoginResponseProtocol?, Never> {
         let call = SocialLoginCall(userID: userID, network: network, accessToken: accessToken, allowRegister: allowRegister)
-            return call.objectSignal.merge(with: call.responseSignal.map({ _ -> LoginResponseProtocol? in
-                let response = APILoginResponse()
-                response.newUser = true
-                return response
+        return call.objectSignal.merge(with: call.httpResponseSignal.map({ response -> LoginResponseProtocol? in
+            if response.statusCode == 200 {
+                return nil
+            }
+            let response = APILoginResponse()
+            response.newUser = true
+            return response
+        }).filter({ response in
+            return response != nil
         })).on(value: { loginResponse in
             self.updateAuth(response: loginResponse)
         })
     }
     
     func loginApple(identityToken: String, name: String, allowRegister: Bool) -> Signal<LoginResponseProtocol?, Never> {
-        return AppleLoginCall(identityToken: identityToken, name: name, allowRegister: allowRegister).objectSignal.on(value: { loginResponse in
+        let call = AppleLoginCall(identityToken: identityToken, name: name, allowRegister: allowRegister)
+        return call.objectSignal.merge(with: call.jsonSignal.map({ response -> LoginResponseProtocol? in
+            if let json = response as? [String: Any], json["id_token"] == nil {
+                return nil
+            }
+            let loginResponse = APILoginResponse()
+            loginResponse.newUser = true
+            return loginResponse
+        }).filter({ response in
+            return response != nil
+        })).on(value: { loginResponse in
             self.updateAuth(response: loginResponse)
         })
     }
@@ -255,26 +273,69 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
-    func deleteAccount(password: String) -> Signal<HTTPURLResponse, Never> {
+    func deleteAccount(password: String, onLogoutComplete: (() -> Void)? = nil) -> Signal<HTTPURLResponse, Never> {
         return DeleteAccountCall(password: password).httpResponseSignal.on(value: {[weak self] response in
             if response.statusCode == 200 {
-                self?.logoutAccount()
+                self?.logoutAccount(completion: onLogoutComplete)
             }
         })
     }
     
-    func logoutAccount() {
-        localRepository.clearDatabase()
-        if let userID = currentUserId {
-            AuthenticationManager.shared.clearAuthentication(userId: userID)
+    func logoutAccount(completion: (() -> Void)? = nil) {
+        guard !UserManager.shared.isLoggingOut else {
+            completion?()
+            return
         }
-        deregisterPushDevice().observeCompleted {}
+        UserManager.shared.prepareForLogout()
+
+        URLSession.shared.getAllTasks { tasks in
+            tasks.forEach { $0.cancel() }
+        }
+
+        let userID = currentUserId
+
         let defaults = UserDefaults.standard
         let themeMode = defaults.string(forKey: "themeMode")
         let launchScreen = defaults.string(forKey: "initialScreenURL")
+
         defaults.dictionaryRepresentation().keys.forEach { defaults.removeObject(forKey: $0) }
         defaults.set(themeMode, forKey: "themeMode")
         defaults.set(launchScreen, forKey: "initialScreenURL")
+
+        if let userID = userID {
+            var hasFinalized = false
+            let finalize = { [weak self] in
+                DispatchQueue.main.async {
+                    guard !hasFinalized else { return }
+                    hasFinalized = true
+                    self?.finalizeLogout(userID: userID, completion: completion)
+                }
+            }
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                finalize()
+            }
+
+            deregisterPushDevice().observe { event in
+                switch event {
+                case .completed, .interrupted:
+                    finalize()
+                default:
+                    break
+                }
+            }
+        } else {
+            DispatchQueue.main.async { [weak self] in
+                self?.localRepository.clearDatabase()
+                completion?()
+            }
+        }
+    }
+
+    private func finalizeLogout(userID: String, completion: (() -> Void)?) {
+        AuthenticationManager.shared.clearAuthentication(userId: userID)
+        localRepository.clearDatabase()
+        completion?()
     }
     
     func updateEmail(newEmail: String, password: String) -> Signal<UserProtocol, ReactiveSwiftRealmError> {
@@ -421,8 +482,10 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return SelectClassCall(class: habiticaClass).httpResponseSignal
             .on(value: { response in
                 if response.statusCode == 200, let habiticaClass = habiticaClass {
-                    let viewController = HostingBottomSheetController(rootView: ClassConfirmationSheet(selectedClass: habiticaClass))
-                    viewController.show()
+                    let viewController = HostingBottomSheetController(rootView: ClassConfirmationSheet(selectedClass: habiticaClass), prefersGrabberVisible: false)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        viewController.show()
+                    }
                     
                     UIApplication.requestReview()
                 }

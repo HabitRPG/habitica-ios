@@ -32,6 +32,7 @@ class QuestDetailViewController: BaseUIViewController {
     
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var questTypeHeader: UILabel!
     @IBOutlet weak var descriptionTextView: MarkdownTextView!
     @IBOutlet weak var invitationsHeader: UILabel!
@@ -74,7 +75,19 @@ class QuestDetailViewController: BaseUIViewController {
         descriptionTextView.textContainerInset = UIEdgeInsets.zero
         descriptionTextView.textContainer.lineFragmentPadding = 0
     }
-    
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let safeLeft = view.safeAreaInsets.left
+        let safeRight = view.safeAreaInsets.right
+        let totalPadding = max(15, safeLeft) + max(15, safeRight)
+        contentWidthConstraint.constant = -totalPadding
+
+        let isLandscape = view.bounds.width > view.bounds.height
+        headerView.backgroundColor = isLandscape ? ThemeService.shared.theme.contentBackgroundColor : .clear
+        headerView.insets = UIEdgeInsets(top: 0, left: max(16, safeLeft), bottom: 0, right: max(16, safeRight))
+    }
+
     private func loadUser() {
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             self?.set(user: user)

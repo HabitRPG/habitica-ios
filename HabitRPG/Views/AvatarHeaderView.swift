@@ -11,14 +11,9 @@ import Habitica_Models
 
 class AvatarHeaderView: UIView, Themeable {
     private let avatarView = AvatarView()
-    
-    private let backBlockLeft = UIView()
-    private let roundBlockLeft = UIView()
-    private let backBlockRight = UIView()
-    private let roundBlockRight = UIView()
-   
-    private let roundingWrapper = UIView()
-    
+    private let avatarWrapper = UIView()
+    private let avatarContainer = UIVisualEffectView()
+       
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -29,38 +24,77 @@ class AvatarHeaderView: UIView, Themeable {
         setupView()
     }
     
+    private var isCompactHeight: Bool {
+        traitCollection.verticalSizeClass == .compact
+    }
+
     private func setupView() {
         ThemeService.shared.addThemeable(themable: self)
-        addSubview(avatarView)
-        roundingWrapper.clipsToBounds = true
-        addSubview(roundingWrapper)
-        roundingWrapper.addSubview(backBlockLeft)
-        roundBlockLeft.cornerRadius = 26
-        roundBlockLeft.layer.maskedCorners = [.layerMinXMinYCorner]
-        roundingWrapper.addSubview(roundBlockLeft)
-        
-        roundingWrapper.addSubview(backBlockRight)
-        roundBlockRight.cornerRadius = 26
-        roundBlockRight.layer.maskedCorners = [.layerMaxXMinYCorner]
-        roundingWrapper.addSubview(roundBlockRight)
+        addSubview(avatarContainer)
+        avatarWrapper.addSubview(avatarView)
+        avatarWrapper.clipsToBounds = true
+        avatarContainer.contentView.addSubview(avatarWrapper)
+        if #available(iOS 26.0, *) {
+            avatarWrapper.cornerConfiguration = .corners(radius: .fixed(UIConstants.mediumCornerRadius))
+        }
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if previousTraitCollection?.verticalSizeClass != traitCollection.verticalSizeClass {
+            invalidateIntrinsicContentSize()
+        }
     }
     
     func applyTheme(theme: any Theme) {
         backgroundColor = theme.windowBackgroundColor
-        backBlockLeft.backgroundColor = theme.windowBackgroundColor
-        roundBlockLeft.backgroundColor = theme.contentBackgroundColor
-        backBlockRight.backgroundColor = theme.windowBackgroundColor
-        roundBlockRight.backgroundColor = theme.contentBackgroundColor
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        avatarView.pin.width(140).height(147).top().hCenter()
-        roundingWrapper.pin.width(bounds.width).height(22).bottom(-22)
-        backBlockLeft.pin.size(22).top().start()
-        roundBlockLeft.pin.size(44).top().start()
-        backBlockRight.pin.size(22).top().end()
-        roundBlockRight.pin.size(44).top().end()
+        if isCompactHeight {
+            let scale: CGFloat = 0.6
+            if #available(iOS 26.0, *) {
+                avatarContainer.pin.width(142 * scale).height(149 * scale).top(-2).hCenter()
+                avatarWrapper.pin.width(134 * scale).height(141 * scale).top(2).hCenter()
+                avatarView.pin.width(140 * scale).height(147 * scale).center()
+            } else {
+                avatarContainer.pin.width(140 * scale).height(147 * scale).top(0).hCenter()
+                avatarWrapper.pin.width(140 * scale).height(147 * scale).top().hCenter()
+                avatarView.pin.width(140 * scale).height(147 * scale).center()
+            }
+        } else if #available(iOS 26.0, *) {
+            avatarContainer.pin.width(142).height(149).top(-4).hCenter()
+            avatarWrapper.pin.width(134).height(141).top(4).hCenter()
+            avatarView.pin.width(140).height(147).center()
+        } else {
+            avatarContainer.pin.width(140).height(147).top(0).hCenter()
+            avatarWrapper.pin.width(140).height(147).top().hCenter()
+            avatarView.pin.width(140).height(147).center()
+        }
+        
+        let shapeLayer = CAShapeLayer()
+        let path = UIBezierPath()
+        let width = frame.width
+        let height = frame.height
+        path.move(to: CGPoint(x: 0, y: 0))
+        path.addLine(to: CGPoint(x: width, y: 0))
+        path.addLine(to: CGPoint(x: width, y: height))
+        path.addArc(withCenter: CGPoint(x: width - UIConstants.largeCornerRadius, y: height),
+                    radius: UIConstants.largeCornerRadius,
+                    startAngle: 0,
+                    endAngle: ((.pi * 270) / 180),
+                    clockwise: false)
+        path.addLine(to: CGPoint(x: UIConstants.largeCornerRadius, y: height - UIConstants.largeCornerRadius))
+        path.addArc(withCenter: CGPoint(x: UIConstants.largeCornerRadius, y: height),
+                    radius: UIConstants.largeCornerRadius,
+                    startAngle: ((.pi * 270) / 180),
+                    endAngle: ((.pi * 180) / 180),
+                    clockwise: false)
+        path.addLine(to: CGPoint.zero)
+        path.close()
+        shapeLayer.path = path.cgPath
+        layer.mask = shapeLayer
     }
     
     func setAvatar(avatar: AvatarProtocol) {
@@ -68,6 +102,9 @@ class AvatarHeaderView: UIView, Themeable {
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIScreen.main.bounds.size.width, height: 169)
+        if isCompactHeight {
+            return CGSize(width: UIScreen.main.bounds.size.width, height: 100 + UIConstants.largeCornerRadius)
+        }
+        return CGSize(width: UIScreen.main.bounds.size.width, height: 170 + UIConstants.largeCornerRadius)
     }
 }

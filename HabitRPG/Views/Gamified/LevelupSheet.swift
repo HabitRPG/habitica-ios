@@ -32,7 +32,8 @@ class LevelupViewModel: ViewModel {
 
 struct LevelupSheet: View {
     @ObservedObject var themeService = ThemeService.shared
-    @Environment(\.presentationManager) var presentationManager
+    @Environment(\.presentationManager)
+    var presentationManager
     
     @ObservedObject var viewModel: LevelupViewModel = LevelupViewModel()
     
@@ -53,7 +54,10 @@ struct LevelupSheet: View {
                 }
                 Image(Asset.levelupstarsRight.name)
             }
-            Text(L10n.levelupTitle(viewModel.level)).scaledFont(size: 22, weight: .bold).foregroundStyle(.white)
+            Text(L10n.levelupTitle(viewModel.level))
+                .scaledFont(size: 22, weight: .bold)
+                .foregroundStyle(.white)
+                .padding(.horizontal, 50)
         }.padding(.top, 50), title: Group {
             if viewModel.canSelectClass {
                 Text(L10n.classSystemUnlocked)
@@ -62,13 +66,16 @@ struct LevelupSheet: View {
             if viewModel.canSelectClass {
                 Text(L10n.classSystemUnlockedDescription)
                 Text(L10n.classSystemEnableInstructions).foregroundStyle(Color(themeService.theme.ternaryTextColor)).scaledFont(size: 15, weight: .semibold)
+            } else {
+                Text(L10n.levelupDescription)
             }
-            Text(L10n.levelupDescription)
         }) {
             if viewModel.canSelectClass {
-                HabiticaButtonUI(label: Text(L10n.Titles.selectClass), color: Color(themeService.theme.tintColor)) {
+                HabiticaButtonUI(label: Text(L10n.Titles.selectClass), color: Color(themeService.theme.fixedTintColor)) {
                     if let user = viewModel.user {
-                        _ = UserManager.shared.showClassSelection(user: user)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            UserManager.shared.showClassSelection(user: user)
+                        }
                     }
                     presentationManager.dismiss()
                 }
@@ -77,7 +84,7 @@ struct LevelupSheet: View {
                     presentationManager.dismiss()
                 }
             } else {
-                HabiticaButtonUI(label: Text(L10n.onwards), color: Color(themeService.theme.tintColor)) {
+                HabiticaButtonUI(label: Text(L10n.onwards), color: Color(themeService.theme.fixedTintColor)) {
                     presentationManager.dismiss()
                 }
                 HabiticaButtonUI(label: Text(L10n.share).foregroundStyle(Color(themeService.theme.primaryTextColor)),

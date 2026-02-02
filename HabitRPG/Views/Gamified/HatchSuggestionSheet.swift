@@ -36,6 +36,7 @@ struct PetItemsFlowView<LeftIcon: View, MiddleIcon: View, RightIcon: View>: View
             Circle().fill().frame(width: 8, height: 8).foregroundStyle(highlightedStep == 3 ? Color.purple500 : Color.purple300)
             Spacer()
             middleIcon
+                .opacity(highlightedStep == 5 ? 0.7 : 1)
             .frame(width: 96, height: 96)
             .background(Color(themeService.theme.contentBackgroundColor))
             .clipShape(RoundedRectangle(cornerRadius: 8))
@@ -60,13 +61,29 @@ struct PetItemsFlowView<LeftIcon: View, MiddleIcon: View, RightIcon: View>: View
         .padding(.horizontal, 32)
         .task {
             repeat {
-                highlightedStep += 1
+                withAnimation {
+                    highlightedStep += 1
+                }
                 try? await Task.sleep(for: .seconds(0.2))
-                highlightedStep += 1
+                withAnimation {
+                    highlightedStep += 1
+                }
                 try? await Task.sleep(for: .seconds(0.2))
-                highlightedStep += 1
+                withAnimation {
+                    highlightedStep += 1
+                }
                 try? await Task.sleep(for: .seconds(0.2))
-                highlightedStep = 0
+                withAnimation {
+                    highlightedStep += 1
+                }
+                try? await Task.sleep(for: .seconds(0.3))
+                withAnimation {
+                    highlightedStep += 1
+                }
+                try? await Task.sleep(for: .seconds(0.3))
+                withAnimation {
+                    highlightedStep = 0
+                }
                 try? await Task.sleep(for: .seconds(2))
             } while (!Task.isCancelled)
         }
@@ -105,8 +122,9 @@ struct HatchSuggestionSheet: View {
                              rightIcon: PixelArtView(name: "Pet_HatchingPotion_\(item.pet?.potion ?? "")"),
             isleftIconActive: ownedEggCount > 0,
             isRightIconActive: ownedPotionCount > 0)
-            Text((ownedEggCount > 0 && ownedPotionCount > 0) ? L10n.hatchPet : L10n.unhatchedPet)
+            Text((ownedEggCount > 0 && ownedPotionCount > 0) ? L10n.hatchPetNewTitle : L10n.unhatchedPet)
                 .scaledFont(size: 22, weight: .bold)
+                .padding(.horizontal, 50)
                 .foregroundStyle(.white)
         }, title: Text(item.pet?.text ?? ""), description: Text(descriptionText)) {
             if ownedEggCount > 0 && ownedPotionCount > 0 {

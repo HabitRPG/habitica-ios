@@ -24,7 +24,7 @@ struct ClassConfirmationSheet: View {
         case .healer:
             return .yellow100
         case .rogue:
-            return .purple400
+            return .purple300
         }
     }
     
@@ -44,20 +44,20 @@ struct ClassConfirmationSheet: View {
     @ViewBuilder private var upperContent: some View {
         switch selectedClass {
         case .warrior:
-            FanfareContainer(haloColor: .red500, circleColor: .white, outerRingColor: .red500, plusColor: .red10, content: {
-                Image(uiImage: HabiticaIcons.imageOfWarriorLightBg)
+            FanfareContainer(haloColor: .red500, outerRingColor: .red500, plusColor: .red10, content: {
+                Image(uiImage: HabiticaIcons.imageOfWarriorLarge)
             })
         case .mage:
-            FanfareContainer(haloColor: .blue500, circleColor: .white, outerRingColor: .blue500, plusColor: .blue10, content: {
-                Image(uiImage: HabiticaIcons.imageOfMageLightBg)
+            FanfareContainer(haloColor: .blue500, outerRingColor: .blue500, plusColor: .blue10, content: {
+                Image(uiImage: HabiticaIcons.imageOfMageLarge)
             })
         case .healer:
-            FanfareContainer(haloColor: .yellow500, circleColor: .white, outerRingColor: .yellow500, plusColor: .yellow10, content: {
-                Image(uiImage: HabiticaIcons.imageOfHealerLightBg)
+            FanfareContainer(haloColor: .yellow500, outerRingColor: .yellow500, plusColor: .yellow10, content: {
+                Image(uiImage: HabiticaIcons.imageOfHealerLarge)
             })
         case .rogue:
-            FanfareContainer(haloColor: .purple500, circleColor: .white, outerRingColor: .purple500, plusColor: .purple500, content: {
-                Image(uiImage: HabiticaIcons.imageOfRogueLightBg)
+            FanfareContainer(haloColor: .purple500, outerRingColor: .purple500, plusColor: .purple500, content: {
+                Image(uiImage: HabiticaIcons.imageOfRogueLarge)
             })
         }
     }
@@ -68,12 +68,13 @@ struct ClassConfirmationSheet: View {
             Text(L10n.classChangeSuccessTitle(selectedClass.translatedName))
                 .scaledFont(size: 22, weight: .bold)
                 .foregroundStyle(textColor)
-        }, title: Text(L10n.classChangeSuccessSubtitle), description: VStack {
+                .padding(.horizontal, 50)
+        }, title: Text(L10n.classChangeSuccessSubtitle), description: VStack(spacing: 20) {
             Text(L10n.classChangeSuccessDescription)
             Text(L10n.findStatsMenu).scaledFont(size: 15, weight: .semibold)
                 .foregroundStyle(Color(themeService.theme.ternaryTextColor))
         }) {
-            HabiticaButtonUI(label: Text(L10n.viewStats), color: Color(themeService.theme.tintColor)) {
+            HabiticaButtonUI(label: Text(L10n.viewStats), color: Color(themeService.theme.fixedTintColor)) {
                 presentationManager.dismiss()
                 RouterHandler.shared.handle(urlString: "/user/stats")
             }

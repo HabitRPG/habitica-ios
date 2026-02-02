@@ -69,6 +69,8 @@
 		290FF8B827DF6AB800F1DE45 /* CustomizationDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290FF8B727DF6AB800F1DE45 /* CustomizationDetailTests.swift */; };
 		291017DF2B06161400D0607B /* SubscriptionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291017DE2B06161400D0607B /* SubscriptionPage.swift */; };
 		2910EFCA2C16EC8700D6D1E8 /* OldAvatarDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2910EFC92C16EC8700D6D1E8 /* OldAvatarDetailViewDataSource.swift */; };
+		29128E862F28DB2F00AADD4B /* StatAllocationAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29128E852F28DB2F00AADD4B /* StatAllocationAnimations.swift */; };
+		29128E882F2B6FE200AADD4B /* habitica_beta.icon in Resources */ = {isa = PBXBuildFile; fileRef = 29128E872F2B6FE200AADD4B /* habitica_beta.icon */; };
 		2912C3B022CA701C00BC485F /* QuestCompletedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */; };
 		291424A1260CCE740069F792 /* EventHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291424A0260CCE740069F792 /* EventHelper.swift */; };
 		2914485B2084E61400F3A6B5 /* MountOverviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914485A2084E61400F3A6B5 /* MountOverviewDataSource.swift */; };
@@ -106,6 +108,7 @@
 		291CE4B6231E828E0001A243 /* UIColor-Habitica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291CE4B5231E828D0001A243 /* UIColor-Habitica.swift */; };
 		291CE4B8231EC11E0001A243 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291CE4B7231EC11E0001A243 /* FilterViewController.swift */; };
 		291DE9762099D85D0073182A /* MemberListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DE9752099D85D0073182A /* MemberListView.swift */; };
+		291E325A2F225D5600934F41 /* Task-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E32592F225D5100934F41 /* Task-Extensions.swift */; };
 		291E95AF20988025006EE585 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95AE20988025006EE585 /* NewsViewController.swift */; };
 		291E95B720988B85006EE585 /* PartyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95B620988B85006EE585 /* PartyDetailViewController.swift */; };
 		2922EE822C80772A00254106 /* SubscriptionBenefitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2922EE812C80772A00254106 /* SubscriptionBenefitView.swift */; };
@@ -262,8 +265,6 @@
 		2979D5F72EE1D1E500BB2F54 /* AuthenticationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979D5F42EE1D1E000BB2F54 /* AuthenticationStorage.swift */; };
 		2979D5FC2EE1D2F100BB2F54 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979D5FB2EE1D2F100BB2F54 /* AuthenticationManager.swift */; };
 		297D15FA20B803D30048101F /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297D15F920B803D30048101F /* UserProfileViewController.swift */; };
-		2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */; };
-		2980E6091EEA25CE005B7100 /* YesterdailiesDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */; };
 		2980E60B1EEA39B1005B7100 /* YesterdailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */; };
 		2980E60D1EEA39DF005B7100 /* YesterdailyTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */; };
 		298119AB1F50251300F9FB39 /* InventoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298119AA1F50251300F9FB39 /* InventoryRepository.swift */; };
@@ -300,6 +301,7 @@
 		2995F7FB25BAF3B600322CB3 /* RemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2995F7FA25BAF3B600322CB3 /* RemoteLogger.swift */; };
 		2995F7FC25BAF3B600322CB3 /* RemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2995F7FA25BAF3B600322CB3 /* RemoteLogger.swift */; };
 		2996AA1F22EB157800033D92 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2996AA2122EB157800033D92 /* AppIntentVocabulary.plist */; };
+		2996B0C92F0BF20500F66A12 /* habitica_alpha.icon in Resources */ = {isa = PBXBuildFile; fileRef = 2996B0C82F0BF20500F66A12 /* habitica_alpha.icon */; };
 		29995A6126CBCB0B0063D4C9 /* AdServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29995A6026CBCB0B0063D4C9 /* AdServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		299B12492642D2AB00498025 /* PromoWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299B12482642D2AB00498025 /* PromoWebViewController.swift */; };
 		299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6211F505DFA00E22935 /* PaddedLabel.swift */; };
@@ -307,6 +309,8 @@
 		299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
 		299C172929BB4EE40003906B /* SeasonalShopCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299C172829BB4EE40003906B /* SeasonalShopCollectionViewDataSource.swift */; };
 		299CE6312CC28D4400ABA85C /* AppDelege+Maintenance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299CE6302CC28D4400ABA85C /* AppDelege+Maintenance.swift */; };
+		299E6C962F192D0500F78D2B /* GiftingAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299E6C952F192CFF00F78D2B /* GiftingAlertController.swift */; };
+		299E6C982F193C0200F78D2B /* OnboardingCompletedSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299E6C972F193BFB00F78D2B /* OnboardingCompletedSheet.swift */; };
 		299F93ED246960A1008DB702 /* GiftGemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F93EC246960A1008DB702 /* GiftGemsViewController.swift */; };
 		299F93F1246D9C49008DB702 /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F93F0246D9C49008DB702 /* PaddedTextField.swift */; };
 		299FB29A2084A30400422522 /* StableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2992084A30400422522 /* StableRepository.swift */; };
@@ -423,6 +427,7 @@
 		29D50AD125F769520009CF55 /* Alignment-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D50AD025F769520009CF55 /* Alignment-Extensions.swift */; };
 		29D50B7B25F9037A0009CF55 /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D50B7A25F9037A0009CF55 /* AppDelegate+Notifications.swift */; };
 		29D6F68A2E266FA0009BEE8E /* UsernameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D6F6892E266F9D009BEE8E /* UsernameScreen.swift */; };
+		29D825E92EF5A66E0019FEB9 /* habitica.icon in Resources */ = {isa = PBXBuildFile; fileRef = 29D825E82EF5A66E0019FEB9 /* habitica.icon */; };
 		29DBDE48274BCDA2008F6777 /* HabiticaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE47274BCDA2008F6777 /* HabiticaTests.swift */; };
 		29DBDE4A274BE745008F6777 /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE49274BE745008F6777 /* AccountSettingsViewController.swift */; };
 		29DBDE54274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBDE53274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift */; };
@@ -555,6 +560,8 @@
 		A0B363012E73567D00F2E0CC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		A0B363032E73567D00F2E0CC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		A0B363052E73567D00F2E0CC /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = A0B363042E73567D00F2E0CC /* FirebaseRemoteConfig */; };
+		AA835E822EBC15F400C6D779 /* project.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AA835E812EBC15F400C6D779 /* project.xcconfig */; };
+		AA835E832EBC15F400C6D779 /* project.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AA835E812EBC15F400C6D779 /* project.xcconfig */; };
 		C8415994225F8B7800989FB8 /* Habitica_Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */; };
 		C841599C225F8C2A00989FB8 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C841599B225F8C2900989FB8 /* SnapshotHelper.swift */; };
 		C85A68AF2527812400EED0D6 /* SpellTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85A68AE2527812400EED0D6 /* SpellTabBarController.swift */; };
@@ -783,6 +790,8 @@
 		290FF8B727DF6AB800F1DE45 /* CustomizationDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationDetailTests.swift; sourceTree = "<group>"; };
 		291017DE2B06161400D0607B /* SubscriptionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPage.swift; sourceTree = "<group>"; };
 		2910EFC92C16EC8700D6D1E8 /* OldAvatarDetailViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldAvatarDetailViewDataSource.swift; sourceTree = "<group>"; };
+		29128E852F28DB2F00AADD4B /* StatAllocationAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatAllocationAnimations.swift; sourceTree = "<group>"; };
+		29128E872F2B6FE200AADD4B /* habitica_beta.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = habitica_beta.icon; sourceTree = "<group>"; };
 		2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestCompletedAlertController.swift; sourceTree = "<group>"; };
 		2913E3B020F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2913E3B320F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -823,6 +832,7 @@
 		291CE4B5231E828D0001A243 /* UIColor-Habitica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Habitica.swift"; sourceTree = "<group>"; };
 		291CE4B7231EC11E0001A243 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		291DE9752099D85D0073182A /* MemberListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListView.swift; sourceTree = "<group>"; };
+		291E32592F225D5100934F41 /* Task-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task-Extensions.swift"; sourceTree = "<group>"; };
 		291E95AE20988025006EE585 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		291E95B620988B85006EE585 /* PartyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyDetailViewController.swift; sourceTree = "<group>"; };
 		2922EE812C80772A00254106 /* SubscriptionBenefitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionBenefitView.swift; sourceTree = "<group>"; };
@@ -961,8 +971,6 @@
 		297AAB4920F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		297AAB4B20F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		297D15F920B803D30048101F /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
-		2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailiesDialogView.xib; sourceTree = "<group>"; };
-		2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesterdailiesDialogView.swift; sourceTree = "<group>"; };
 		2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesterdailyTaskCell.swift; sourceTree = "<group>"; };
 		2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailyTaskCell.xib; sourceTree = "<group>"; };
 		298119AA1F50251300F9FB39 /* InventoryRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryRepository.swift; sourceTree = "<group>"; };
@@ -1006,6 +1014,7 @@
 		2996AA3122EB159C00033D92 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		2996AA3222EB159E00033D92 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = zh; path = zh.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		2996AA3322EB159F00033D92 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = fr; path = fr.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996B0C82F0BF20500F66A12 /* habitica_alpha.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = habitica_alpha.icon; sourceTree = "<group>"; };
 		29995A6026CBCB0B0063D4C9 /* AdServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdServices.framework; path = System/Library/Frameworks/AdServices.framework; sourceTree = SDKROOT; };
 		299B12482642D2AB00498025 /* PromoWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoWebViewController.swift; sourceTree = "<group>"; };
 		299BD6211F505DFA00E22935 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
@@ -1013,6 +1022,8 @@
 		299BD6391F557FE700E22935 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		299C172829BB4EE40003906B /* SeasonalShopCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonalShopCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		299CE6302CC28D4400ABA85C /* AppDelege+Maintenance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelege+Maintenance.swift"; sourceTree = "<group>"; };
+		299E6C952F192CFF00F78D2B /* GiftingAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftingAlertController.swift; sourceTree = "<group>"; };
+		299E6C972F193BFB00F78D2B /* OnboardingCompletedSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCompletedSheet.swift; sourceTree = "<group>"; };
 		299F93EC246960A1008DB702 /* GiftGemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftGemsViewController.swift; sourceTree = "<group>"; };
 		299F93F0246D9C49008DB702 /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
 		299FB2992084A30400422522 /* StableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableRepository.swift; sourceTree = "<group>"; };
@@ -1128,6 +1139,7 @@
 		29D5AD5E20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29D5AD5F20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		29D6F6892E266F9D009BEE8E /* UsernameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameScreen.swift; sourceTree = "<group>"; };
+		29D825E82EF5A66E0019FEB9 /* habitica.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = habitica.icon; sourceTree = "<group>"; };
 		29DBDE47274BCDA2008F6777 /* HabiticaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaTests.swift; sourceTree = "<group>"; };
 		29DBDE49274BE745008F6777 /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
 		29DBDE53274D0AA3008F6777 /* AccountSettingsViewController+Apple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountSettingsViewController+Apple.swift"; sourceTree = "<group>"; };
@@ -1254,6 +1266,7 @@
 		7A84E1A3228928AD0081E96F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A84E1B122898E9F0081E96F /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		7A84E1B6228A5CB40081E96F /* Habitica Intents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Habitica Intents.entitlements"; sourceTree = "<group>"; };
+		AA835E812EBC15F400C6D779 /* project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = project.xcconfig; sourceTree = "<group>"; };
 		C8415991225F8B7800989FB8 /* Habitica Snapshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica Snapshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitica_Snapshots.swift; sourceTree = "<group>"; };
 		C8415995225F8B7800989FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1565,18 +1578,18 @@
 		290B62A0207F814D007287C4 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				2919FDDE2091D87A0096A53B /* FaintViewController.swift */,
 				2953D84128B6564A00DC456E /* ArmoireViewController.swift */,
-				290C3016206A963D0066AF5B /* MainMenuViewController.swift */,
-				299FB2A02084A93100422522 /* HabiticaSplitViewController.swift */,
+				29A9B056228082BF0049291E /* BaseCollectionViewController.swift */,
+				29CAC3CA2A3A1288006DF74D /* BaseHostingViewController.swift */,
 				2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */,
 				29A9B0542280825A0049291E /* BaseUIViewController.swift */,
-				29A9B056228082BF0049291E /* BaseCollectionViewController.swift */,
-				295BC6E3226F0F9500DDDF1A /* NotificationsTableViewController.swift */,
+				2919FDDE2091D87A0096A53B /* FaintViewController.swift */,
+				299FB2A02084A93100422522 /* HabiticaSplitViewController.swift */,
 				2927024224E2D83700BCAA77 /* HallOfContributorsViewController.swift */,
 				2927024924E303CB00BCAA77 /* HallOfPatronsViewController.swift */,
+				290C3016206A963D0066AF5B /* MainMenuViewController.swift */,
 				29BEEB2E253EFA7300D456F8 /* MaintenanceViewController.swift */,
-				29CAC3CA2A3A1288006DF74D /* BaseHostingViewController.swift */,
+				295BC6E3226F0F9500DDDF1A /* NotificationsTableViewController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -1599,6 +1612,16 @@
 				290FF8A527DB634700F1DE45 /* PartyDetailTests.swift */,
 			);
 			path = Social;
+			sourceTree = "<group>";
+		};
+		29128E892F2B738500AADD4B /* AppIcons */ = {
+			isa = PBXGroup;
+			children = (
+				29D825E82EF5A66E0019FEB9 /* habitica.icon */,
+				2996B0C82F0BF20500F66A12 /* habitica_alpha.icon */,
+				29128E872F2B6FE200AADD4B /* habitica_beta.icon */,
+			);
+			path = AppIcons;
 			sourceTree = "<group>";
 		};
 		2914485E2084E9F300F3A6B5 /* Stable */ = {
@@ -1689,13 +1712,12 @@
 		2967CF7E252479C400F366DF /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
+				299E6C952F192CFF00F78D2B /* GiftingAlertController.swift */,
 				29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */,
 				29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */,
 				29A9038726EA33A400442B93 /* FlagInformationOverlayView.swift */,
 				294973D1208118C100F02AC3 /* ImageOverlayView.swift */,
 				2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */,
-				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
-				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
 			);
 			name = Alerts;
 			sourceTree = "<group>";
@@ -1960,6 +1982,7 @@
 		29DF933B2EC6401F0047801F /* Gamified */ = {
 			isa = PBXGroup;
 			children = (
+				299E6C972F193BFB00F78D2B /* OnboardingCompletedSheet.swift */,
 				29CBCDA32EC4E5090020FC14 /* GamifiedWaveBackground.swift */,
 				29CBCDA52EC4E5EC0020FC14 /* FanfareContainer.swift */,
 				29DF933C2EC640860047801F /* GamifiedBottomSheet.swift */,
@@ -2257,7 +2280,6 @@
 		D95704371E106BF3004F6804 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				2973E26F2ED71F2A000C2E0F /* View-Extensions.swift */,
 				29D50AD025F769520009CF55 /* Alignment-Extensions.swift */,
 				2909D42D2726ACBD00FF2B29 /* Binding-Extensions.swift */,
 				29255E4C1F3E25910094A3E3 /* CGRect-Extensions.swift */,
@@ -2277,6 +2299,7 @@
 				29FC885B2018D47D002B3D3F /* Quest-Extensions.swift */,
 				29F89F191F47882A004E5B84 /* String-Extensions.swift */,
 				29A4CB70257FF3150013F0B3 /* String-SafeExtensions.swift */,
+				291E32592F225D5100934F41 /* Task-Extensions.swift */,
 				29646DE0205C18FA0050886C /* TaskType-Extensions.swift */,
 				29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */,
 				D96BFC4E1E191D7200266EEF /* UIAlertController-Extensions.swift */,
@@ -2293,6 +2316,7 @@
 				29D16C8425A72211001D9A61 /* UITraitCollection-Extensions.swift */,
 				D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */,
 				29D50A6725F66F760009CF55 /* UIWindowScene-Extensions.swift */,
+				2973E26F2ED71F2A000C2E0F /* View-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2440,22 +2464,22 @@
 		D9A63A311E1031FD0083ADC4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				29A3FD262966EAAB007D85B2 /* Promo */,
-				2927025324E3EEB400BCAA77 /* Support */,
-				29B4788220BD6DDF00B6123F /* Skills */,
+				29A62B08216CE5D700D4BD90 /* AboutViewController.swift */,
 				D9E02EC41E5E02E7002CFCE2 /* Challenges */,
-				D96BFC4D1E181B5500266EEF /* Intro */,
 				290B62A0207F814D007287C4 /* General */,
+				D96BFC4D1E181B5500266EEF /* Intro */,
 				290B629F207F8140007287C4 /* Inventory */,
 				D9A63A371E104F6C0083ADC4 /* Onboarding */,
+				29A3FD262966EAAB007D85B2 /* Promo */,
 				D984D5871E49F9D9006E84F8 /* Purchases */,
 				2957B8B41F4B2DF900E836EF /* Rewards */,
 				29B3FEAD1F9A339B000B12CF /* Settings */,
 				29AAA1641F2B6D2400029737 /* Setup */,
+				29B4788220BD6DDF00B6123F /* Skills */,
 				29E16318200E849000685640 /* Social */,
+				2927025324E3EEB400BCAA77 /* Support */,
 				29C1B6A920594F3D0001D3EF /* Tasks */,
 				2986EB091FCC63CC00B316F6 /* User */,
-				29A62B08216CE5D700D4BD90 /* AboutViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -2521,6 +2545,7 @@
 		D9C000311928F85E003D4E4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				29128E852F28DB2F00AADD4B /* StatAllocationAnimations.swift */,
 				29DDAC262E82F3F7007EC4CD /* GlassTextField.swift */,
 				29DDAC1D2E79A1D7007EC4CD /* BuySheet */,
 				29F177F72AB85D39008B8F0C /* Stable */,
@@ -2675,6 +2700,7 @@
 				29706CA427D8B797006EC139 /* Habitica UI Tests */,
 				D9EB4E8D18CB4A9400BB2094 /* Frameworks */,
 				D9EB4E8C18CB4A9400BB2094 /* Products */,
+				AA835E812EBC15F400C6D779 /* project.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2752,6 +2778,7 @@
 				29D16C7D25A33F70001D9A61 /* MainVCSelectionSegue.swift */,
 				290279AC20583EE8006DACB9 /* Storyboards */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
+				29128E892F2B738500AADD4B /* AppIcons */,
 				298BE1CD2E2FAAB7005DA8CD /* Settings-prod.bundle */,
 				298BE1D02E2FACB8005DA8CD /* Settings-staff.bundle */,
 				290279672057F0B7006DACB9 /* Generated */,
@@ -3124,6 +3151,7 @@
 			files = (
 				2988EFC228D32C4300D703BC /* Mainstrings.strings in Resources */,
 				29BEE634252CCFE300D456F8 /* Assets.xcassets in Resources */,
+				AA835E832EBC15F400C6D779 /* project.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3131,6 +3159,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA835E822EBC15F400C6D779 /* project.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3175,7 +3204,6 @@
 				29B3FEBE1F9E3DC3000B12CF /* HabiticaAlertController.xib in Resources */,
 				29B478BD20C1378100B6123F /* ChallengeTableViewCell.xib in Resources */,
 				298119B51F5048C000F9FB39 /* QuestGoalView.xib in Resources */,
-				2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */,
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
@@ -3193,10 +3221,12 @@
 				49DCB7C41F40D80B0079FDD0 /* NPCBannerView.xib in Resources */,
 				498E4CF81FA17B7F006933FF /* ChallengeButtonTableViewCell.xib in Resources */,
 				498E4D081FA17DB9006933FF /* ChallengeActionsTableViewCell.xib in Resources */,
+				29D825E92EF5A66E0019FEB9 /* habitica.icon in Resources */,
 				D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */,
 				29FC8864201B78D6002B3D3F /* QuestMenuHeader.xib in Resources */,
 				2927025A24E3F42100BCAA77 /* Support.storyboard in Resources */,
 				29028BB120319E4000B7F704 /* RageStrikeActiveContentView.xib in Resources */,
+				2996B0C92F0BF20500F66A12 /* habitica_alpha.icon in Resources */,
 				29C1B6AE205952E40001D3EF /* Tasks.storyboard in Resources */,
 				D9BBF32E1DBD128700C4114C /* ShopAdFooter.xib in Resources */,
 				D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */,
@@ -3211,6 +3241,7 @@
 				29255E451F3DD3ED0094A3E3 /* TutorialStepView.xib in Resources */,
 				D9BE05841DA6ADE70074D3B7 /* GemPurchaseView.xib in Resources */,
 				29B388E11EF2BB7600A72950 /* YesterdailyChecklistItem.xib in Resources */,
+				29128E882F2B6FE200AADD4B /* habitica_beta.icon in Resources */,
 				498E4CFC1FA17B9E006933FF /* ChallengeCreatorTableViewCell.xib in Resources */,
 				D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */,
 				D91CCAD01BCF11CC001C6A0C /* UserTopHeader.xib in Resources */,
@@ -3454,6 +3485,7 @@
 				298BE1D52E30F376005DA8CD /* PrivacyPreferencesScreenView.swift in Sources */,
 				49DCECA91F96F8DE00982E99 /* ChallengeDetailViewModel.swift in Sources */,
 				29A62B012167D55200D4BD90 /* VerifyUsernameModalViewController.swift in Sources */,
+				291E325A2F225D5600934F41 /* Task-Extensions.swift in Sources */,
 				2919FDD52090CF900096A53B /* InboxMessagesDataSource.swift in Sources */,
 				29DF934D2ECDEE9C0047801F /* FirstDropSheet.swift in Sources */,
 				29E16313200E619400685640 /* QuestProgressView.swift in Sources */,
@@ -3553,6 +3585,7 @@
 				29CC0DFD2E8EBE23009643B9 /* RYABottomSheet.swift in Sources */,
 				29DF93472ECCCD3B0047801F /* HatchSuggestionSheet.swift in Sources */,
 				290C302A206BA0B50066AF5B /* SkillTableViewCell.swift in Sources */,
+				29128E862F28DB2F00AADD4B /* StatAllocationAnimations.swift in Sources */,
 				290458D02021D6C60032BC5E /* TopHeaderCoordinator.swift in Sources */,
 				29DF93532ECE1B9E0047801F /* InsufficientCurrencySheet.swift in Sources */,
 				2909D4282722C24700FF2B29 /* ThemeMode.swift in Sources */,
@@ -3584,6 +3617,7 @@
 				295D42F620921F4200948E7E /* ClassSelectionViewController.swift in Sources */,
 				2973E2702ED71F2D000C2E0F /* View-Extensions.swift in Sources */,
 				C897F640218CE054002907C2 /* Storyboard Segues.swift in Sources */,
+				299E6C982F193C0200F78D2B /* OnboardingCompletedSheet.swift in Sources */,
 				291CE4B6231E828E0001A243 /* UIColor-Habitica.swift in Sources */,
 				4994065A20C83D4F0084CC40 /* DailyTableViewController.swift in Sources */,
 				292F968020723A4D00804151 /* ImageManager.swift in Sources */,
@@ -3781,6 +3815,7 @@
 				2909D41F272199BE00FF2B29 /* MultiLineTextField.swift in Sources */,
 				2922EE822C80772A00254106 /* SubscriptionBenefitView.swift in Sources */,
 				D9E02EC61E5E0458002CFCE2 /* ChallengeTableViewController.swift in Sources */,
+				299E6C962F192D0500F78D2B /* GiftingAlertController.swift in Sources */,
 				D96BFC4F1E191D7200266EEF /* UIAlertController-Extensions.swift in Sources */,
 				29144896208A270800F3A6B5 /* AvatarDetailViewController.swift in Sources */,
 				299C172929BB4EE40003906B /* SeasonalShopCollectionViewDataSource.swift in Sources */,
@@ -3798,7 +3833,6 @@
 				291448602084EA0100F3A6B5 /* PetDetailDataSource.swift in Sources */,
 				29CAC3CB2A3A1288006DF74D /* BaseHostingViewController.swift in Sources */,
 				29A4CB71257FF3150013F0B3 /* String-SafeExtensions.swift in Sources */,
-				2980E6091EEA25CE005B7100 /* YesterdailiesDialogView.swift in Sources */,
 				29646DE1205C18FA0050886C /* TaskType-Extensions.swift in Sources */,
 				29C1360624EBD7E000DBC6B3 /* FeedViewController.swift in Sources */,
 				29B4788820BD732A00B6123F /* SkillsTaskTableViewDataSource.swift in Sources */,
@@ -4062,6 +4096,7 @@
 /* Begin XCBuildConfiguration section */
 		295519C429191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -4122,8 +4157,9 @@
 		};
 		295519C529191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Beta";
+				ASSETCATALOG_COMPILER_APPICON_NAME = habitica_beta;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
@@ -4147,7 +4183,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Habitica β";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_MAP_FILE_PATH = "$(TARGET_TEMP_DIR)/Habitica-LinkMap-$(CURRENT_VARIANT)-$(CURRENT_ARCH).txt";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4181,13 +4217,13 @@
 					"$(inherited)",
 				);
 				PRIVATE_HEADERS_FOLDER_PATH = Habitica.app/PrivateHeaders;
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica";
 				PRODUCT_MODULE_NAME = Habitica;
 				PRODUCT_NAME = Habitica;
 				PROVISIONING_PROFILE = "";
 				PUBLIC_HEADERS_FOLDER_PATH = Habitica.app/Headers;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
@@ -4201,6 +4237,7 @@
 		};
 		295519C629191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -4225,7 +4262,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HabiticaTests/UI/Login/HabiticaTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -4235,6 +4272,7 @@
 		};
 		295519C729191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4258,8 +4296,11 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitica.ios.Habitica-Snapshots";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX_ALT).ios.Habitica-Snapshots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Habitica;
@@ -4268,6 +4309,7 @@
 		};
 		295519C829191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4299,7 +4341,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.Habitica-Intents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -4311,6 +4353,7 @@
 		};
 		295519C929191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4341,7 +4384,7 @@
 				MARKETING_VERSION = 4.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.HabiticaIntentsUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -4353,6 +4396,7 @@
 		};
 		295519CA29191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -4377,7 +4421,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Widgets/Info.plist";
 				INTENTS_CODEGEN_LANGUAGE = Swift;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4387,7 +4431,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Widgets";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.Habitica-Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -4399,6 +4443,7 @@
 		};
 		295519CD29191C2300D2E360 /* Testflight-Beta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4418,7 +4463,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica-UI-Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica-UI-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -4430,6 +4475,7 @@
 		};
 		295519CE29191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -4490,8 +4536,9 @@
 		};
 		295519CF29191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Staff";
+				ASSETCATALOG_COMPILER_APPICON_NAME = habitica_alpha;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
@@ -4515,7 +4562,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Habitica σ";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_MAP_FILE_PATH = "$(TARGET_TEMP_DIR)/Habitica-LinkMap-$(CURRENT_VARIANT)-$(CURRENT_ARCH).txt";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4549,13 +4596,13 @@
 					"$(inherited)",
 				);
 				PRIVATE_HEADERS_FOLDER_PATH = Habitica.app/PrivateHeaders;
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica";
 				PRODUCT_MODULE_NAME = Habitica;
 				PRODUCT_NAME = Habitica;
 				PROVISIONING_PROFILE = "";
 				PUBLIC_HEADERS_FOLDER_PATH = Habitica.app/Headers;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
@@ -4569,6 +4616,7 @@
 		};
 		295519D029191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -4593,7 +4641,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HabiticaTests/UI/Login/HabiticaTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -4603,6 +4651,7 @@
 		};
 		295519D129191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4626,8 +4675,11 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitica.ios.Habitica-Snapshots";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX_ALT).ios.Habitica-Snapshots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Habitica;
@@ -4636,6 +4688,7 @@
 		};
 		295519D229191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4667,7 +4720,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.Habitica-Intents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -4679,6 +4732,7 @@
 		};
 		295519D329191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4709,7 +4763,7 @@
 				MARKETING_VERSION = 4.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.HabiticaIntentsUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -4721,6 +4775,7 @@
 		};
 		295519D429191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -4745,7 +4800,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Widgets/Info.plist";
 				INTENTS_CODEGEN_LANGUAGE = Swift;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4755,7 +4810,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Widgets";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.Habitica-Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -4767,6 +4822,7 @@
 		};
 		295519D729191C3E00D2E360 /* Testflight-Staff */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4786,7 +4842,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica-UI-Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica-UI-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -4798,6 +4854,7 @@
 		};
 		29706CAC27D8B797006EC139 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4816,7 +4873,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica-UI-Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica-UI-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -4830,6 +4887,7 @@
 		};
 		29706CAD27D8B797006EC139 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4849,7 +4907,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica-UI-Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica-UI-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -4861,6 +4919,7 @@
 		};
 		29BEE63A252CCFE300D456F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -4884,7 +4943,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Widgets/Info.plist";
 				INTENTS_CODEGEN_LANGUAGE = Swift;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4894,7 +4953,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Widgets";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.Habitica-Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -4908,6 +4967,7 @@
 		};
 		29BEE63B252CCFE300D456F8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -4932,7 +4992,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Widgets/Info.plist";
 				INTENTS_CODEGEN_LANGUAGE = Swift;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4942,7 +5002,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Widgets";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.Habitica-Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -4954,6 +5014,7 @@
 		};
 		7A84E1AB228928AD0081E96F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4983,7 +5044,7 @@
 				MARKETING_VERSION = 4.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.HabiticaIntentsUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -4997,6 +5058,7 @@
 		};
 		7A84E1AC228928AD0081E96F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -5027,7 +5089,7 @@
 				MARKETING_VERSION = 4.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica.HabiticaIntentsUI;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.HabiticaIntentsUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -5039,6 +5101,7 @@
 		};
 		7A84E1AE228928AD0081E96F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -5069,7 +5132,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.Habitica-Intents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -5083,6 +5146,7 @@
 		};
 		7A84E1AF228928AD0081E96F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -5114,7 +5178,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica.Habitica-Intents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -5126,6 +5190,7 @@
 		};
 		C8415999225F8B7800989FB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -5148,8 +5213,11 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitica.ios.Habitica-Snapshots";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX_ALT).ios.Habitica-Snapshots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -5160,6 +5228,7 @@
 		};
 		C841599A225F8B7800989FB8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -5183,8 +5252,11 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitica.ios.Habitica-Snapshots";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX_ALT).ios.Habitica-Snapshots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Habitica;
@@ -5193,6 +5265,7 @@
 		};
 		D944618C1AB34F5C0015215E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -5221,7 +5294,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HabiticaTests/UI/Login/HabiticaTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -5232,6 +5305,7 @@
 		};
 		D944618D1AB34F5C0015215E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -5256,7 +5330,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HabiticaTests/UI/Login/HabiticaTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -5266,6 +5340,7 @@
 		};
 		D9EB4EC118CB4A9400BB2094 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -5331,6 +5406,7 @@
 		};
 		D9EB4EC218CB4A9400BB2094 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -5391,8 +5467,9 @@
 		};
 		D9EB4EC418CB4A9400BB2094 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = habitica;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
@@ -5417,7 +5494,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5449,12 +5526,12 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica";
 				PRODUCT_MODULE_NAME = Habitica;
 				PRODUCT_NAME = Habitica;
 				PROVISIONING_PROFILE = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
@@ -5469,8 +5546,9 @@
 		};
 		D9EB4EC518CB4A9400BB2094 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA835E812EBC15F400C6D779 /* project.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = habitica;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
@@ -5494,7 +5572,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Habitica;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5526,12 +5604,12 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitrpg.ios.Habitica;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).ios.Habitica";
 				PRODUCT_MODULE_NAME = Habitica;
 				PRODUCT_NAME = Habitica;
 				PROVISIONING_PROFILE = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";

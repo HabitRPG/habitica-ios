@@ -249,8 +249,8 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
-    public func retrieveMember(userID: String, fromHall: Bool = false) -> Signal<MemberProtocol?, Never> {
-        return RetrieveMemberCall(userID: userID, fromHall: fromHall).objectSignal.on(value: {[weak self] member in
+    public func retrieveMember(userID: String, fromHall: Bool = false, handleErrors: Bool = true) -> Signal<MemberProtocol?, Never> {
+        return RetrieveMemberCall(userID: userID, fromHall: fromHall, onError: handleErrors ? nil : { _ in }).objectSignal.on(value: {[weak self] member in
             if let member = member, !fromHall {
                 self?.localRepository.save(member)
             }

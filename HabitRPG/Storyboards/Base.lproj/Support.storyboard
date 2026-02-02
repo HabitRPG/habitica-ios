@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8L7-b3-Q67">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -317,7 +316,6 @@
             <objects>
                 <navigationController id="YXA-Gu-MWh" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hYI-ru-pDi">
-                        <rect key="frame" x="0.0" y="96" width="414" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -351,7 +349,7 @@
                                                             <constraint firstAttribute="height" priority="500" constant="21" id="n7G-Uw-fgL"/>
                                                             <constraint firstAttribute="width" priority="500" constant="42" id="qI3-hv-dZL"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -378,7 +376,7 @@
                                                             <constraint firstAttribute="height" priority="500" constant="21" id="5Jt-am-umg"/>
                                                             <constraint firstAttribute="width" priority="500" constant="42" id="zeO-Nv-orl"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -457,7 +455,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="UcZ-nC-uHq" firstAttribute="leading" secondItem="8AS-Y1-98V" secondAttribute="leading" id="1XK-PV-9pO"/>
-                            <constraint firstItem="UcZ-nC-uHq" firstAttribute="top" secondItem="8AS-Y1-98V" secondAttribute="top" id="Ep0-cG-Oe9"/>
+                            <constraint firstItem="UcZ-nC-uHq" firstAttribute="top" secondItem="r5v-Dj-90l" secondAttribute="top" id="Ep0-cG-Oe9"/>
                             <constraint firstItem="8AS-Y1-98V" firstAttribute="bottom" secondItem="UcZ-nC-uHq" secondAttribute="bottom" id="QuQ-SL-Zok"/>
                             <constraint firstItem="8AS-Y1-98V" firstAttribute="trailing" secondItem="UcZ-nC-uHq" secondAttribute="trailing" id="l8P-Aq-Y40"/>
                             <constraint firstItem="2fa-LQ-4Ma" firstAttribute="width" secondItem="r5v-Dj-90l" secondAttribute="width" id="qYo-OB-90s"/>
@@ -474,6 +472,7 @@
                         <outlet property="moreQuestionsStackView" destination="gAs-0x-ank" id="gzL-ay-2uO"/>
                         <outlet property="moreQuestionsText" destination="cwy-dt-cjY" id="0yW-DE-GRz"/>
                         <outlet property="moreQuestionsTitle" destination="WX9-YK-OVf" id="K1a-rH-KBf"/>
+                        <outlet property="scrollView" destination="UcZ-nC-uHq" id="zEj-lc-eY7"/>
                         <segue destination="Zzv-XT-YeL" kind="show" identifier="showFAQDetailSegue" id="p4b-j2-14v"/>
                     </connections>
                 </viewController>

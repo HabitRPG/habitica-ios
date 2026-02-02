@@ -59,11 +59,22 @@ class PartyDetailViewController: GroupDetailViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        if let scrollView = scrollView {
+            for constraint in scrollView.constraints where constraint.firstItem === mainStackView || constraint.secondItem === mainStackView {
+                let attrs: [NSLayoutConstraint.Attribute] = [.leading, .trailing, .width, .left, .right]
+                if attrs.contains(constraint.firstAttribute) || attrs.contains(constraint.secondAttribute) {
+                    constraint.isActive = false
+                }
+            }
+            mainStackView.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+            mainStackView.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        }
+
         if let groupNameLabel = self.groupNameLabel {
             mainStackView.setCustomSpacing(16, after: groupNameLabel)
         }
-        
+
         questContentStackView.separatorColor = .clear
         
         questInvitationUserAvatarView.showPet = false
@@ -129,11 +140,12 @@ class PartyDetailViewController: GroupDetailViewController {
         partyChallengesButton.backgroundColor = theme.windowBackgroundColor
         partyChallengesButton.setTitleColor(theme.tintColor, for: .normal)
         questContentStackView.backgroundColor = theme.windowBackgroundColor
-        questContentStackView.cornerRadius = 26
+        questContentStackView.cornerRadius = UIConstants.largeCornerRadius
         inviteMemberButton.backgroundColor = theme.windowBackgroundColor
         inviteMemberButton.setTitleColor(theme.tintColor, for: .normal)
         startQuestButton.backgroundColor = theme.windowBackgroundColor
         startQuestButton.setTitleColor(theme.tintColor, for: .normal)
+        startQuestButton.cornerRadius = UIConstants.largeCornerRadius
         groupDescriptionTextView?.backgroundColor = theme.windowBackgroundColor
         questTitleSeparator.backgroundColor = theme.separatorColor
         questMechanicsButton.backgroundColor = nil
@@ -150,6 +162,7 @@ class PartyDetailViewController: GroupDetailViewController {
         membersStackview.backgroundColor = theme.contentBackgroundColor
         
         leaveButton?.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
+        leaveButton?.tintColor = theme.errorColor
     }
     
     override func populateText() {
@@ -199,7 +212,7 @@ class PartyDetailViewController: GroupDetailViewController {
                     }
                 }
             }))
-            self?.present(sheet, animated: true)
+            sheet.show()
         })
         let controller = UIHostingController(rootView: memberListView)
         controller.view.backgroundColor = .clear
@@ -431,6 +444,6 @@ class PartyDetailViewController: GroupDetailViewController {
             .padding(.horizontal, 30)
             .padding(.vertical, 16)
         }))
-        present(sheet, animated: true)
+        sheet.show()
     }
 }

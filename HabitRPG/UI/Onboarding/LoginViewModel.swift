@@ -151,7 +151,7 @@ class LoginViewModel: ObservableObject {
         userRepository.loginApple(identityToken: identityToken, name: name, allowRegister: false).observeResult {[weak self] (result) in
             switch result {
             case .success(let response):
-                if response?.newUser == true {
+                if response == nil || response?.newUser == true {
                     self?.prefillUsername()
                     self?.showUsernameView = true
                 } else {
@@ -165,8 +165,14 @@ class LoginViewModel: ObservableObject {
 
     func onSuccessfulLogin(_ isNewUser: Bool) {
         userRepository.retrieveUser(forced: true)
+            .on(value: { user in
+                if let user = user {
+                    UserManager.shared.syncTutorialSteps(from: user)
+                }
+            })
             .combineLatest(with: userRepository.retrieveGroupPlans())
             .observeCompleted {[weak self] in
+                UserManager.shared.beginListening()
                 self?.viewController?.showNextViewController(segueName: isNewUser ? "SetupSegue" : "MainSegue")
                 self?.username = ""
                 self?.email = ""

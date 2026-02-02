@@ -153,7 +153,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
                 if let drop = response.temp?.drop {
                     ToastManager.show(text: drop.dialog ?? "You found a \(drop.key ?? "")", color: .gray)
                 }
-                if let questItemsFound = response.temp?.quest?.collection, questItemsFound > 0 {
+                if TaskRepository.currentUserQuestStatus == .questCollect, let questItemsFound = response.temp?.quest?.collection, questItemsFound > 0 {
                     ToastManager.show(text: questItemsFound == 1 ? L10n.oneQuestItemFound : L10n.questItemsFound(questItemsFound), color: .gray)
                 }
             }).map({ (response, _) in

@@ -81,9 +81,6 @@ class PromotionInfoViewController: BaseUIViewController {
         mainStackView.isLayoutMarginsRelativeArrangement = true
         
         promotion?.configureInfoView(self)
-        
-        navigationController?.navigationBar.standardAppearance.shadowColor = .clear
-        navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -95,8 +92,6 @@ class PromotionInfoViewController: BaseUIViewController {
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.standardAppearance.backgroundColor = theme.contentBackgroundColor
         instructionsTitleLabel.textColor = theme.secondaryTextColor
         limitationsTitleLabel.textColor = theme.secondaryTextColor
         instructionsDescriptionLabel.textColor = theme.quadTextColor
@@ -121,12 +116,10 @@ class PromotionInfoViewController: BaseUIViewController {
     private var giftRecipientUsername = ""
 
     private func showGiftSubscriptionAlert() {
-        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                RouterHandler.shared.handle(.giftSubscription(username: username))
-            })
-        }, saveButtonTitle: L10n.continue)
-        present(navController, animated: true, completion: nil)
+        let alertController = GiftingAlertController(title: L10n.giftSubscription, message: L10n.giftGemsAlertText) { username in
+            RouterHandler.shared.handle(.giftSubscription(username: username))
+        }
+        alertController.show()
     }
 
 }

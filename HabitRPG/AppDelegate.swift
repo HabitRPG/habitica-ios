@@ -37,7 +37,6 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         Measurements.start(identifier: "didFinishLaunchingWithOptions")
-        Measurements.start(identifier: "task list loaded")
         logger = RemoteLogger()
         self.application = application
         
@@ -62,7 +61,11 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
             guard let self = self else {
                 return
             }
-            self.userRepository.logoutAccount()
+            self.userRepository.logoutAccount { [weak self] in
+                self?.showLoginScreen()
+                UserManager.shared.logoutCompleted()
+                self?.contentRepository.retrieveContent(force: true).observeCompleted {}
+            }
         }
         KeyboardManager.shared.observeKeyboardNotifications()
         
@@ -153,7 +156,7 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
         PurchaseHandler.shared.completionHandler()
         #endif
     }
-    
+
     func setupNetworkClient() {
         NetworkAuthenticationManager.shared.currentUserId = AuthenticationManager.shared.currentUserId
         NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey
@@ -244,15 +247,10 @@ class HabiticaAppDelegate: UIResponder, MessagingDelegate, UIApplicationDelegate
     @objc
     private func handleInvalidCredentials() {
         DispatchQueue.main.async { [weak self] in
-            // cancel any pending network requests to prevent race conditions
-            URLSession.shared.getAllTasks { tasks in
-                tasks.forEach { $0.cancel() }
-            }
-            
-            self?.userRepository.logoutAccount()
-            
-            self?.contentRepository.retrieveContent(force: true).observeCompleted {
+            self?.userRepository.logoutAccount { [weak self] in
                 self?.showLoginScreen()
+                UserManager.shared.logoutCompleted()
+                self?.contentRepository.retrieveContent(force: true).observeCompleted {}
             }
         }
     }

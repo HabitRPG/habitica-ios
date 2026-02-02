@@ -29,9 +29,22 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     var editable: Bool = false
     var sourceIndexPath: IndexPath?
     var snapshot: UIView?
+        
+    var fakeHeader = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 1)))
+    let headerWrapper = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fakeHeader.backgroundColor = .clear
+        topHeaderCoordinator?.hideHeader = true
+        topHeaderCoordinator?.followScrollView = false
+        topHeaderCoordinator?.alternativeHeader = fakeHeader
+        
+        tableView.tableHeaderView = headerWrapper
+        let nibViews = Bundle.main.loadNibNamed("UserTopHeader", owner: self, options: nil)
+        if let userHeader = nibViews?[0] as? UserTopHeader {
+            headerWrapper.addSubview(userHeader)
+        }
         
         createDataSource()
         dataSource?.tableView = tableView
@@ -61,7 +74,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         if #available(iOS 26.0, *) {
             let glassEffect = UIGlassEffect()
             searchBarWrapper.effect = glassEffect
-            searchBarWrapper.layer.cornerRadius = 26
+            searchBarWrapper.layer.cornerRadius = UIConstants.largeCornerRadius
             searchBarWrapper.clipsToBounds = true
         }
         
@@ -130,12 +143,16 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
             scrollToTask(with: taskId)
             scrollToTaskAfterLoading = nil
         }
-        Measurements.stop(identifier: "task list loaded")
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tableView.layoutMargins = UIEdgeInsets.zero
+        if let userHeader = headerWrapper.subviews.first as? UserTopHeader, let topHeaderController = navigationController as? TopHeaderViewController {
+            headerWrapper.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: topHeaderController.defaultHeaderHeight + 12)
+            let safeLeft = view.safeAreaInsets.left
+            let safeRight = view.safeAreaInsets.right
+            userHeader.frame = CGRect(x: safeLeft, y: 0, width: headerWrapper.bounds.size.width - safeLeft - safeRight, height: topHeaderController.defaultHeaderHeight)
+        }
     }
     
     @objc
@@ -399,8 +416,9 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.text = ""
         self.searchBar.resignFirstResponder()
-        
+
         (tabBarController as? MainTabBarController)?.searchString = nil
+        dataSource?.predicate = getPredicate()
         hideSearchBar()
         tableView.reloadData()
     }

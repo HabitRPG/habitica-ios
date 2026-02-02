@@ -93,8 +93,10 @@ struct FocusableTextField: UIViewRepresentable {
 
         public func textFieldDidBeginEditing(_ textField: UITextField) {
             self.isFirstResponder.wrappedValue = true
-            let newPosition = textField.endOfDocument
-            textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
+            DispatchQueue.main.async {
+                let newPosition = textField.endOfDocument
+                textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
+            }
         }
 
         public func textFieldDidEndEditing(_ textField: UITextField) {

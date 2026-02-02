@@ -85,11 +85,12 @@ struct LoginTextInput<Icon: View>: View {
     var isSecure: Bool = false
     var isValid: Bool?
     var errorMessage: String?
-    
+    var textContentType: UITextContentType?
+
     @Binding var text: String
 
     @FocusState private var isFocused: Bool
-    
+
     @State private var lastFocusChange = Date()
     @State private var lastInputChange = Date()
 
@@ -101,6 +102,7 @@ struct LoginTextInput<Icon: View>: View {
                     .textFieldStyle(LoginTextFieldStyle(prefix: prefix, icon: icon, isValid: isValid, showError: showError))
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
+                    .textContentType(textContentType)
                     .focused($isFocused)
                     .onTapGesture {
                         isFocused = true
@@ -172,39 +174,46 @@ struct LoginForm: View {
                        icon: Image(Asset.loginEmail.name),
                        isValid: viewState == .login ? nil : isEmailValid,
                        text: $email)
+        .textContentType(viewState == .register ? .emailAddress : .username)
             .padding(.bottom, 7)
             .submitLabel(.next)
             .keyboardType(.emailAddress)
-        let passwordField = LoginTextInput(placeholder: L10n.password,
-                                           icon: Image(Asset.loginPassword.name),
-                                           isSecure: true,
-                                           isValid: viewState == .login ? nil : isPasswordValid,
-                                           errorMessage: viewState == .register && password.count < 8 ? L10n.Login.passwordLengthError : nil,
-                                           text: $password)
         if viewState != .login {
-            passwordField
+            LoginTextInput(placeholder: L10n.password,
+                           icon: Image(Asset.loginPassword.name),
+                           isSecure: true,
+                           isValid: isPasswordValid,
+                           errorMessage: password.count < 8 ? L10n.Login.passwordLengthError : nil,
+                           textContentType: .newPassword,
+                           text: $password)
                 .submitLabel(.next)
             LoginTextInput(placeholder: L10n.repeatPassword,
                            icon: Image(Asset.loginPassword.name),
                            isSecure: true,
                            isValid: isPasswordRepeatValid,
                            errorMessage: isPasswordRepeatValid == false ? L10n.Login.passwordConfirmError : nil,
+                           textContentType: .password,
                            text: $repeatPassword)
                 .transition(.move(edge: .top).combined(with: .opacity))
                 .padding(.top, 7)
                 .submitLabel(.continue)
-                    .onSubmit {
-                        onLogin()
-                    }
+                .onSubmit {
+                    onLogin()
+                }
         } else {
-            passwordField.submitLabel(.continue)
+            LoginTextInput(placeholder: L10n.password,
+                           icon: Image(Asset.loginPassword.name),
+                           isSecure: true,
+                           textContentType: .password,
+                           text: $password)
+                .submitLabel(.continue)
                 .onSubmit {
                     onLogin()
                 }
         }
         if showLoadingIndicator {
             HabiticaProgressView()
-                .padding(.top, 40)
+                .padding(.top, 38)
                 .padding(.bottom, 12)
         } else {
             let isFormValid = viewState == .login ? !email.isEmpty && isPasswordValid == true
@@ -213,6 +222,7 @@ struct LoginForm: View {
                 onLogin()
             } label: {
                 Text(viewState == .register ? L10n.continue : L10n.Login.login)
+                    .foregroundStyle(.white)
             }
                 .padding(.top, 36)
                 .opacity(isFormValid ? 1 : 0.5)
@@ -224,6 +234,7 @@ struct LoginForm: View {
             } label: {
                 Label {
                     Text(L10n.Login.continueWithApple)
+                        .foregroundStyle(.white)
                 } icon: {
                     Image(Asset.loginApple.name)
                 }
@@ -234,6 +245,7 @@ struct LoginForm: View {
             } label: {
                 Label {
                     Text(L10n.Login.continueWithGoogle)
+                        .foregroundStyle(.white)
                 } icon: {
                     Image(Asset.loginGoogle.name)
                 }
@@ -258,12 +270,14 @@ struct LoginButton<Label: View>: View {
         let button = Button(action: {
             action()
         }, label: label
+            .scaledFont(size: 17, weight: .bold)
+            .foregroundStyle(.gray50)
             .frame(maxWidth: .infinity)
             .frame(minHeight: 44))
         
         if #available(iOS 26.0, *) {
             button
-                .buttonStyle(.glass)
+                .buttonStyle(.glass(.clear.tint(.white.opacity(0.2))))
         } else {
             button.buttonStyle(LoginScreenButtonStyle())
         }
@@ -307,21 +321,22 @@ struct LoginScreen: View {
             .animation(.bouncy, value: viewState)
             .ignoresSafeArea()
             VStack(spacing: 0) {
-                Image(Asset.loginLogo.name)
+                let icon = Image(Asset.loginLogo.name)
                     .scaleEffect(x: viewState == .initial ? 1.0 : 0.67, y: viewState == .initial ? 1.0 : 0.67)
                     .padding(.top, viewState == .initial ? 65 : 0)
-                if viewState == .initial {
-                    Text(L10n.Login.tagline)
-                        .scaledFont(size: 26, weight: .bold)
-                        .foregroundStyle(isSmallDevice ? .white : .purple500)
-                        .multilineTextAlignment(.center)
-                        .shadow(color: Color(hexadecimal: "#36205D"), x: 0, y: 0, blur: 4)
-                        .lineLimit(5)
-                        .padding(.top, 29)
-                    Spacer()
-                        .frame(maxHeight: .infinity)
-                } else {
-                    ScrollView {
+                let scrollView = ScrollView {
+                    if viewState == .initial {
+                        Text(L10n.Login.tagline)
+                            .scaledFont(size: 26, weight: .bold)
+                            .foregroundStyle(isSmallDevice ? .white : .purple500)
+                            .multilineTextAlignment(.center)
+                            .shadow(color: Color(hexadecimal: "#36205D"), x: 0, y: 0, blur: 4)
+                            .lineLimit(5)
+                            .padding(.top, 29)
+                            .padding(.horizontal, 52)
+                        Spacer()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    } else {
                         VStack(spacing: 0) {
                             LoginForm(viewState: $viewState,
                                       email: $viewModel.email,
@@ -344,8 +359,18 @@ struct LoginScreen: View {
                             .animation(.bouncy, value: viewState)
                             .transition(.asymmetric(insertion: .push(from: .top), removal: .push(from: .bottom)).combined(with: .opacity))
                         }
+                        .padding(.horizontal, 20)
+                        .transition(.scale(scale: 0.7, anchor: .bottom).combined(with: .opacity))
                     }
-                    .frame(maxHeight: .infinity)
+                }
+                .frame(maxHeight: .infinity)
+                if #available(iOS 26.0, *) {
+                    scrollView.safeAreaBar(edge: .top) {
+                        icon
+                    }
+                } else {
+                    icon
+                    scrollView
                 }
                 if viewState == .initial {
                     Group {
@@ -369,7 +394,7 @@ struct LoginScreen: View {
                         }
                             .padding(.top, 8)
                         LoginButton {
-                            withAnimation {
+                            withAnimation(.spring) {
                                 viewState = .register
                             }
                         } label: {
@@ -382,7 +407,7 @@ struct LoginScreen: View {
                             .padding(.top, 8)
                         
                         let loginButton = Button {
-                            withAnimation {
+                            withAnimation(.spring) {
                                 viewState = .login
                             }
                         } label: {
@@ -400,10 +425,11 @@ struct LoginScreen: View {
                             loginButton
                         }
                     }
+                    .padding(.horizontal, 20)
                     .animation(.bouncy, value: viewState)
                     .transition(.asymmetric(insertion: .push(from: .bottom), removal: .push(from: .top)))
                 }
-            }.padding(.horizontal, 20)
+            }
             if viewState != .initial {
                 Button {
                     withAnimation {
@@ -420,6 +446,7 @@ struct LoginScreen: View {
                     Picker(selection: $chosenServer) {
                         ForEach(Servers.allServers) { server in
                             Text(server.niceName).tag(server.rawValue)
+                                .foregroundStyle(.white)
                         }
                     }.pickerStyle(.menu)
                         .onChange(of: chosenServer) { _ in

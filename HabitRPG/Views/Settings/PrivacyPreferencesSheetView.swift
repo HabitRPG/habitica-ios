@@ -8,6 +8,23 @@
 
 import SwiftUI
 
+struct CustomToggleWrapper: UIViewRepresentable {
+    var isOn: Binding<Bool>
+
+    func makeUIView(context: Context) -> UISwitch {
+        UISwitch()
+    }
+
+    func updateUIView(_ uiView: UISwitch, context: Context) {
+        uiView.onTintColor = ThemeService.shared.theme.fixedTintColor
+        uiView.tintColor = ThemeService.shared.theme.contentBackgroundColor
+        uiView.layer.cornerRadius = uiView.frame.height / 2
+        uiView.backgroundColor = .gray600.withAlphaComponent(0.3)
+        uiView.setOn(isOn.wrappedValue, animated: true)
+        uiView.isUserInteractionEnabled = false
+    }
+}
+
 struct PrivacyToggleContainer: View {
     @ObservedObject var themeService = ThemeService.shared
     let title: Text
@@ -30,9 +47,16 @@ struct PrivacyToggleContainer: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .frame(maxWidth: .infinity)
-            Toggle(isOn: $isOn) {
+            Group {
+                CustomToggleWrapper(isOn: $isOn)
+                    .tint(Color(themeService.theme.fixedTintColor))
             }
-            .tint(Color(themeService.theme.fixedTintColor))
+            .contentShape(.capsule)
+            .onTapGesture {
+                if !disabled {
+                    isOn = !isOn
+                }
+            }
             .frame(width: 64)
                 .opacity(disabled ? 0.5 : 1.0)
         }
@@ -61,7 +85,7 @@ struct PrivacyPreferencesSheetView: View, Dismissable {
                 .padding(.horizontal, 13)
             Text((try? AttributedString(markdown: L10n.privacyPreferencesSheetDescription,
                                         options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace))) ?? AttributedString(L10n.privacyPreferencesSheetDescription))
-                .scaledFont(size: 14)
+                .scaledFont(size: 16)
                 .foregroundStyle(Color(themeService.theme.primaryTextColor))
                 .lineSpacing(3)
                 .padding(.bottom, 30)

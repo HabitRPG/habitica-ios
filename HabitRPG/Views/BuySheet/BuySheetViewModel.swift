@@ -21,6 +21,8 @@ class BuySheetViewModel: ViewModel {
     var shopIdentifier: String?
     var onInventoryRefresh: (() -> Void)?
     var dismisser: Dismisser = Dismisser()
+    
+    @Published var keyboardHeight: CGFloat = 0
 
     @Published var user: UserProtocol?
     @Published var isPinned: Bool = false
@@ -70,6 +72,9 @@ class BuySheetViewModel: ViewModel {
     }
     
     var canBuyDisplay: Bool {
+        if item.key == "gem" && user?.purchased?.subscriptionPlan?.gemsRemaining == 0 {
+            return false
+        }
         return canAffordDisplay && !isLocked
     }
     
@@ -78,7 +83,7 @@ class BuySheetViewModel: ViewModel {
     }
     
     var canBulkPurchase: Bool {
-        return item.key == "gem" || ["eggs", "hatchingPotions", "food"].contains(item.purchaseType ?? "")
+        return item.key == "gem" || ["eggs", "hatchingPotions", "food"].contains(item.purchaseType ?? "") || item.pinType == "seasonalSpell"
     }
     
     init(item: InAppRewardProtocol, shopIdentifier: String?, onInventoryRefresh: (() -> Void)?) {
@@ -88,6 +93,24 @@ class BuySheetViewModel: ViewModel {
         itemCurrency = Currency(rawValue: item.currency ?? "gold") ?? .gold
         super.init()
         setup()
+        
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(self.keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        center.addObserver(self, selector: #selector(self.keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc
+    func keyboardShow(notice: Notification) {
+        keyboardHeight = KeyboardManager.height
+    }
+    
+    @objc
+    func keyboardHide(notice: Notification) {
+        keyboardHeight = 0
     }
     
     func setup() {
@@ -115,26 +138,28 @@ class BuySheetViewModel: ViewModel {
         
         disposable.add(userRepository.getInAppRewards().take(first: 1)
             .map({ (rewards, _) in
-                return rewards.map({ (reward) in
-                    return reward.key
-                })
+                return rewards
             }).on(value: {[weak self]rewards in
-                self?.isPinned = rewards.contains(self?.item.key)
+                self?.isPinned = rewards.contains(where: { pinned in
+                    return pinned.key == self?.item.key || pinned.path == self?.item.path
+                })
             }).start())
     }
     
     func dismiss() {
+        dispose()
         dismisser.dismiss()
-        if !disposable.isDisposed {
-            disposable.dispose()
-        }
     }
     
     func pinItem() {
         guard let pinType = item.pinType, let path = item.path else {
             return
         }
-        inventoryRepository.togglePinnedItem(pinType: pinType, path: path).observeValues {[weak self] (_) in
+        inventoryRepository.togglePinnedItem(pinType: pinType, path: path)
+            .flatMap(.latest, { _ in
+                self.userRepository.retrieveInAppRewards()
+            })
+            .observeValues {[weak self] (_) in
             self?.isPinned = !(self?.isPinned ?? false)
         }
     }
@@ -168,16 +193,20 @@ class BuySheetViewModel: ViewModel {
                 return
             }
             remainingPurchaseQuantity { remainingQuantity in
+                var quantity = self.quantity
                 if remainingQuantity >= 0 {
-                    if remainingQuantity < self.quantity {
+                    if remainingQuantity < quantity {
                         self.displayPurchaseConfirmationDialog(quantity: remainingQuantity)
                         return
                     }
                 }
+                if self.item.purchaseType == "gems", let remaining = self.user?.purchased?.subscriptionPlan?.gemsRemaining {
+                    quantity = min(remaining, quantity)
+                }
                 withAnimation {
                     self.isPurchasing = true
                 }
-                self.buyItem(quantity: self.quantity)
+                self.buyItem(quantity: quantity)
             }
         }
     }
@@ -324,27 +353,11 @@ class BuySheetViewModel: ViewModel {
         }
     }
     
-    static func displayInsufficientGemsModal(reward: InAppRewardProtocol? = nil, reason: String = "purchase modal", delayDisplay: Bool = true) {
+    static func displayInsufficientGemsModal(reward: InAppRewardProtocol? = nil, reason: String = "purchase modal") {
         HabiticaAnalytics.shared.log("show insufficient gems modal", withEventProperties: ["reason": "purchase modal", "item": reward?.key ?? ""])
-        let sheet = InsufficientCurrencySheet(backgroundColor: .purple400,
-                                              circleColor: .purple100,
-                                              ringColor: .purple300,
-                                              plusColor: .purple500,
-                                              icon: Image(Asset.insufficientGems.name),
-                                              title: Text(L10n.moreGemsMessage),
-                                              content: Text(L10n.gemsSupportDevelopers)) {
-            HabiticaButtonUI(label: Text(L10n.purchaseGems), color: Color(ThemeService.shared.theme.tintColor)) {
-                RouterHandler.shared.handle(.purchaseGems)
-            }
-        }
+        let sheet = InsufficientGemsSheet()
         let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
-        if delayDisplay {
-            DispatchQueue.main.asyncAfter(deadline: .now()) {
-                viewController.show()
-            }
-        } else {
-            viewController.show()
-        }
+        viewController.show(immediately: true)
     }
     
     static func displayInsufficientGoldModal() {
@@ -357,28 +370,13 @@ class BuySheetViewModel: ViewModel {
                                               content: Text(L10n.completeMoreTasks)) {
         }
         let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            viewController.show()
-        }
+        viewController.show(immediately: true)
     }
     
     static func displayInsufficientHourglassesModal(user: UserProtocol?) {
-        let isSubscribed = user?.isSubscribed == true
-        let sheet = InsufficientCurrencySheet(backgroundColor: .blue100,
-                                              circleColor: Color(ThemeService.shared.theme.contentBackgroundColor),
-                                              ringColor: .blue500,
-                                              plusColor: .blue10,
-                                              icon: Image(Asset.insufficientHourglasses.name),
-                                              title: Text(L10n.notEnoughHourglasses),
-                                              content: Text(isSubscribed ? L10n.insufficientHourglassesMessageSubscriber : L10n.insufficientHourglassesMessage)) {
-            HabiticaButtonUI(label: Text(L10n.learnMore), color: Color(ThemeService.shared.theme.tintColor)) {
-                RouterHandler.shared.handle(.subscription)
-            }
-        }
+        let sheet = InsufficientHourglassesSheet(isSubscribed: user?.isSubscribed == true)
         let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            viewController.show()
-        }
+        viewController.show(immediately: true)
     }
     
     static func displayGemCapReachedModal() {
@@ -391,9 +389,7 @@ class BuySheetViewModel: ViewModel {
                                               content: Text(L10n.Inventory.noGemsLeft)) {
         }
         let viewController = HostingBottomSheetController(rootView: sheet, prefersGrabberVisible: false)
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
             viewController.show()
-        }
     }
     
     func displayPurchaseConfirmationDialog(quantity: Int) {

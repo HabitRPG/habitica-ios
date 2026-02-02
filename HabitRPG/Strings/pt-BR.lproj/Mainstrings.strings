@@ -739,7 +739,7 @@
 "tutorials.stats" = "Toque no botão cinza para distribuir vários de seus atributos de uma vez, ou clique nas setas para distribuir um de cada vez.";
 "world_boss.pending_strike" = "Dano Pendente";
 "world_boss.rage_strike_explanation_button" = "O que é um Golpe de Fúria?";
-"buffs" = "Buffs";
+"buffs" = "Melhorias";
 "allocated" = "Distribuído";
 "gems" = "Gemas";
 "teleporting_habitica" = "Teleportando para Habitica";
@@ -864,7 +864,7 @@
 "gift_confirmation_body_g1g1" = "Você enviou a %@ uma assinatura Habitica de %@-mês/meses e a mesma assinatura foi aplicada à sua conta para a nossa promoção \"presenteie uma e ganhe uma\"!";
 "gift_confirmation_body" = "Você enviou para %@ uma assinatura Habitica de %@-mês/meses.";
 "gift_subscription_prompt" = "Escolha abaixo a assinatura que você gostaria de presentear! Esta compra não será renovada automaticamente.";
-"gem_cap" = "Desbloqueia %d Gemas adquiríveis com Ouro por mês";
+"gem_cap" = "Desbloqueia %d Gemas compráveis com Ouro mensalmente";
 "hourglass_count" = "+%d Ampulheta Mística";
 "intro.welcome_prompt" = "Como devemos chamar você?";
 "intro.avatar_setup_speechbubble" = "Você deve ser novo aqui. Eu sou Justin, serei seu guia no Habitica.\n\nEntão, como você gostaria de parecer? Não se preocupe, você pode mudar isso mais tarde.";
@@ -1201,7 +1201,7 @@
 "stat_description" = "Todos os personagens no Habitica possuem quatro atributos que afetam os aspectos da jogabilidade.\n\n**Força (FOR)** afeta acertos críticos e aumenta o dano causado a um Chefão de Missão. Guerreiros e Ladinos ganham FOR a partir dos seus equipamentos de classe.\n\n**Constituição (CON)** aumenta seu PV e faz com que você sofra menos danos. Curandeiros e Guerreiros ganham CON a partir dos seus equipamentos de classe.\n\n**Inteligência (INT)** aumenta a quantidade de EXP que você ganha e concede mais Mana. Magos e Curandeiros ganham INT a partir dos seus equipamentos de classe.\n\n**Percepção (PER)** aumenta a quantidade de ouro que você ganha e a capacidade de encontrar itens \"dropáveis\". Ladinos e Magos ganham PER a partir dos seus equipamentos de classe.\n\nApós o nível 10, você ganha 1 Ponto de Atributo para cada nível obtido e pode distribuir estes pontos em qualquer atributo que desejar. Você também pode usar equipamentos com diferentes combinações de aumento de atributos.";
 "stat_allocation" = "Alocação de Atributo";
 "mana_description" = "Pontos de Mana são desbloqueados com o sistema de classes no nível 10 e permitem a **utilização de Habilidades** uma vez que você comece a aprendê-las no nível 11.\n\nAlguns **MP são restaurados** diariamente no reinício do dia, mas você pode recuperar mais completando tarefas ou usando uma habilidade de classe Mago(a).";
-"gold_description" = "Ponto de Ouro é a **principal forma de moeda*** dentro do Habitica e permite que você compre certos equipamentos, missões, itens ou até mesmo recompensas personalizadas que você criar.\n\n*Ganhe Ouro** através da conclusão de tarefas, missões ou através de algumas habilidades de classe. Valores mais altos do **atributo Percepção*** aumentam a quantidade de Ouro que você ganha.\n\nSe você assinar Habitica, você pode até mesmo usar o Ouro para comprar um certo número de Gemas determinado pelo tempo da sua assinatura.";
+"gold_description" = "O ouro é a principal moeda do Habitica e permite comprar certos equipamentos, missões, itens ou até mesmo recompensas personalizadas que você cria para si mesmo.\n\nGanhe ouro completando tarefas, missões ou usando algumas habilidades de classe.";
 "experience_description" = "Pontos de experiência representam seu progresso e permitem que você suba de nível. Você irá ** ganhar EXP** principalmente ao completar tarefas ou missões, mas também existem algumas habilidades de classe que dão EXP.\n\nTarefas de maior dificuldade, ou tarefas de cor vermelha lhe darão ** mais EXP***. O **atributo Inteligência** também aumenta sua taxa de ganho de EXP.";
 "experience_points" = "Pontos de Experiência";
 "health_description" = "Isso representa a vida de seu avatar. Falhar com uma Diária ou praticar um Hábito negativo **reduz seu HP**.\n\n**Recupere seu HP*** subindo de nível, usando uma Poção de Vida ou uma habilidade de classe com capacidade de cura.\n\nSe seu **HP atingir 0*** você perderá um nível, todos os Pontos de Ouro, e um equipamento. O equipamento perdido pode ser readquirido.";
@@ -1495,9 +1495,9 @@
 "settings.push_notifications.content_release" = "Lançamento de conteúdo + Eventos";
 "inventory.no_saddle_description" = "Selas fazem Mascotes crescerem imediatamente para Montarias. Você pode comprá-las no Mercado.";
 "faint.subbed_button_prompt" = "Segunda chance: Continue com 1 de Vida!";
-"faint.subbed_footer" = "Sua assinatura permite uma nova chance a cada dia se a sua Vida acabar.";
+"faint.subbed_footer" = "Sua assinatura permite uma nova chance a cada dia se a sua vida acabar";
 "faint.unsubbed_button_prompt" = "Assine para continuar com 1 de Vida!";
-"faint.unsubbed_footer" = "Uma nova chance de não zerar sua vida a cada dia, só assinando.";
+"faint.unsubbed_footer" = "Uma nova chance de não zerar sua vida a cada dia com uma assinatura";
 "faint.subbed_used" = "Você já usou sua segunda chance hoje. Você receberá outra em %s.";
 "faint.perk_success" = "Você recebeu uma segunda chance com 1 de Vida!";
 "sub_perk" = "benefício de assinante";
@@ -1547,7 +1547,7 @@
 "classes.mages" = "Magos";
 "classes.warriors" = "Guerreiros";
 "classes.healers" = "Curandeiros";
-"classes.rogues" = "Gatunos";
+"classes.rogues" = "Ladinos";
 "locations.customizations" = "Personalizações";
 "shops.purchased_all_gear_armoire_empty" = "Novos equipamentos são lançados durante as Grandes Galas. O estoque do Armário Encantado é renovado a cada mês também!";
 "shops.purchased_all_gear_title" = "Você possui todos os %@ Equipamentos";
@@ -1572,7 +1572,7 @@
 "shops.try_on_equipment" = "Você pode experimentá-los em \"Equipamentos\". Novos equipamentos estão disponíveis no começo de cada mês!";
 "shops.try_on_customize_avatar_return_next_month" = "Você pode experimentá-los customizando seu avatar. Certifique-se de voltar no próximo mês para conferir as novidades!";
 "shops.try_on_customize_avatar_return_next_season" = "Você pode experimentá-los customizando seu avatar. Certifique-se de voltar mais tarde para conferir as opções da próxima estação!";
-"empty.want_more_items" = "Procurando algo mais?";
+"empty.want_more_items" = "Buscando algo a mais?";
 "shops.try_on_customize_avatar" = "Você pode experimentá-los customizando seu avatar.";
 "shops.customization_notes" = "Gostaria de um novo visual? Veio ao lugar certo! Sempre recebemos novidades.";
 "empty.want_more_items_description" = "Confira a Loja de Personalização para encontrar ainda mais opções diferentes de personalizar seu avatar!";
@@ -1673,7 +1673,7 @@
 "stable.pets_and_mounts" = "Mascotes e Montarias";
 "pet" = "Mascote";
 "chat_with_question" = "Com quem gostaria de conversar?";
-"take_effect_immediately" = "Isto terá efeito imediatamente após a compra!";
+"take_effect_immediately" = "Isso entrará em vigor imediatamente após a compra!";
 "membership" = "Assinatura";
 "ownership" = "Propriedade";
 "equipped_gear" = "Equipamento em uso";
@@ -1699,3 +1699,8 @@
 "not_now" = "Agora não";
 "undo" = "Desfazer";
 "assigned_stat" = "Atributo atribuído";
+"empty.messages" = "Você não possui mensagens";
+"empty.messages_description" = "Envie uma mensagem para iniciar uma conversa com os membros do seu grupo ou com outro jogador do Habitica";
+"empty.challenges" = "Você não está em nenhum Desafio";
+"empty.challenges_description" = "Navegue pela seção Descobrir para encontrar e participar de diversos Desafios temáticos criados por outros jogadores. É uma ótima maneira de completar sua lista de tarefas!";
+"glossary" = "Glossário";

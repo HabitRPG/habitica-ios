@@ -37,6 +37,7 @@ public protocol Theme {
     var successColor: UIColor { get }
     var successTextColor: UIColor { get }
     var errorColor: UIColor { get }
+    var errorTextColor: UIColor { get }
     var warningColor: UIColor { get }
     var taskOverlayTint: UIColor { get }
     var segmentedTintColor: UIColor { get }
@@ -72,7 +73,7 @@ extension Theme {
     
     public var navbarHiddenColor: UIColor { return backgroundTintColor }
     
-public var primaryTextColor: UIColor { return UIColor.gray50 }
+    public var primaryTextColor: UIColor { return UIColor.gray10 }
     public var secondaryTextColor: UIColor { return UIColor.gray100 }
     public var ternaryTextColor: UIColor { return UIColor.gray200 }
     public var quadTextColor: UIColor { return UIColor.gray300 }
@@ -84,6 +85,7 @@ public var primaryTextColor: UIColor { return UIColor.gray50 }
     public var successColor: UIColor { return UIColor.green100 }
     public var successTextColor: UIColor { return UIColor.green1 }
     public var errorColor: UIColor { return UIColor.maroon100 }
+    public var errorTextColor: UIColor { return UIColor.maroon100 }
     public var warningColor: UIColor { return UIColor.yellow100 }
     public var taskOverlayTint: UIColor { return UIColor.white.withAlphaComponent(0) }
     public var segmentedTintColor: UIColor { return backgroundTintColor }
@@ -135,6 +137,7 @@ extension DarkTheme {
     public var successColor: UIColor { return UIColor.green10.withAlphaComponent(0.7) }
     public var successTextColor: UIColor { return UIColor.green500 }
     public var errorColor: UIColor { return UIColor.red10 }
+    public var errorTextColor: UIColor { return UIColor.red100 }
     public var warningColor: UIColor { return UIColor.yellow10.withAlphaComponent(0.7) }
     public var segmentedTintColor: UIColor { return backgroundTintColor }
     public var buttonShadowColor: UIColor { return UIColor.black }

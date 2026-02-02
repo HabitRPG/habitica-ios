@@ -222,7 +222,16 @@ struct TaskFilterPage: View {
 
     var body: some View {
         VStack {
-            VStack {
+            VStack(alignment: .leading, spacing: 10) {
+                Group {
+                    if viewModel.taskType == "habit" {
+                        Text(L10n.taskHealth)
+                    } else {
+                        Text(L10n.taskStatus)
+                    }
+                }.foregroundStyle(Color(themeService.theme.secondaryTextColor))
+                    .scaledFont(size: 15, weight: .semibold)
+                    .padding(.leading, 16)
                 Picker(selection: $viewModel.selectedFilterType) {
                     if viewModel.taskType == "habit" {
                         Text(L10n.all).tag(0)
@@ -240,7 +249,7 @@ struct TaskFilterPage: View {
                 }.pickerStyle(.segmented)
             }.padding(.horizontal, 16)
             List {
-                Section(L10n.tags) {
+                Section(content: {
                     ForEach((viewModel.isEditing ? viewModel.editedTags : viewModel.tags), id: \.id) { tag in
                         let isSelected = viewModel.isSelected(tag: tag)
                         HStack(spacing: 18) {
@@ -298,7 +307,10 @@ struct TaskFilterPage: View {
                             })
                         }.listRowBackground(Color(themeService.theme.windowBackgroundColor))
                     }
-                }
+                }, header: {
+                    Text(L10n.tags).foregroundStyle(Color(themeService.theme.secondaryTextColor))
+                        .scaledFont(size: 15, weight: .semibold)
+                })
                 
                 if viewModel.isSaving {
                     HabiticaProgressView().frame(height: 60)
@@ -369,6 +381,7 @@ struct TaskFilterPage: View {
                         Button(role: .confirm) {
                             viewModel.dismiss()
                         }.buttonStyle(.glassProminent)
+                            .tint(Color(themeService.theme.fixedTintColor))
                     } else {
                         Button {
                             viewModel.dismiss()

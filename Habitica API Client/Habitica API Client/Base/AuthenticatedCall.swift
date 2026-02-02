@@ -33,7 +33,7 @@ public class AuthenticatedCall: JsonNetworkCall {
     public static var notificationListener: (([NotificationProtocol]?) -> Void)?
     
     private var debugHandler = DebugOutputHandler()
-    var customErrorHandler: NetworkErrorHandler?
+    let customErrorHandler: NetworkErrorHandler?
     var needsAuthentication = true
     let queue = DispatchQueue(label: "work", qos: .userInteractive)
     private init(configuration: ServerConfigurationProtocol? = nil,
@@ -41,6 +41,7 @@ public class AuthenticatedCall: JsonNetworkCall {
                  httpHeaders: [String: String]?,
                  endpoint: String,
                  postData: Data?, ignoreEtag: Bool = false) {
+        customErrorHandler = nil
         super.init(configuration: configuration ?? AuthenticatedCall.defaultConfiguration,
                    httpMethod: httpMethod,
                    httpHeaders: httpHeaders,
@@ -51,19 +52,16 @@ public class AuthenticatedCall: JsonNetworkCall {
     
     init(configuration: ServerConfigurationProtocol? = nil,
          httpMethod: HTTPMethod, httpHeaders: [String: String]? = AuthenticatedCall.jsonHeaders(),
-         endpoint: String, postData: Data? = nil,
-         errorHandler: NetworkErrorHandler? = nil,
+         endpoint: String, postData: Data? = nil,         errorHandler: NetworkErrorHandler? = nil,
          needsAuthentication: Bool = true, ignoreEtag: Bool = false) {
         self.needsAuthentication = needsAuthentication
-        
+        customErrorHandler = errorHandler
         super.init(configuration: configuration ?? AuthenticatedCall.defaultConfiguration,
                    httpMethod: httpMethod.rawValue,
                    httpHeaders: httpHeaders,
                    endpoint: endpoint,
                    postData: postData,
                    ignoreEtag: ignoreEtag)
-        
-        customErrorHandler = errorHandler
         setupErrorHandler()
     }
     

@@ -18,6 +18,12 @@ class SystemMessageTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         messageTextView.textContainerInset = UIEdgeInsets.zero
+        
+        if #available(iOS 26.0, *) {
+            messageWrapper.cornerConfiguration = .uniformCorners(radius: .fixed(UIConstants.mediumCornerRadius))
+        } else {
+            messageWrapper.cornerRadius = UIConstants.mediumCornerRadius
+        }
     }
     
     @objc

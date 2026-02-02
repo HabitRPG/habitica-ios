@@ -12,7 +12,6 @@ import ReactiveSwift
 
 public class CancelSubscribeCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
     public init() {
-        super.init(httpMethod: .GET, endpoint: "iap/ios/subscribe/cancel")
-        customErrorHandler = PrintNetworkErrorHandler()
+        super.init(httpMethod: .GET, endpoint: "iap/ios/subscribe/cancel", errorHandler: PrintNetworkErrorHandler())
     }
 }

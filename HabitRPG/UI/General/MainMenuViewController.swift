@@ -193,6 +193,7 @@ class MainMenuViewController: BaseTableViewController {
     private var disposable = ScopedDisposable(CompositeDisposable())
     private var seasonalShopTimer: Timer?
     private var promoTimer: Timer?
+    private let stretchView = GradientView()
 
     private var menuSections = [MenuSection]()
     var visibleSections: [MenuSection] {
@@ -204,6 +205,7 @@ class MainMenuViewController: BaseTableViewController {
 
     private var user: UserProtocol? {
         didSet {
+            guard user?.isValid == true else { return }
             if let user = self.user {
                 navbarView.configure(user: user)
             }
@@ -279,6 +281,7 @@ class MainMenuViewController: BaseTableViewController {
     private static let subscriptionFooterTag = 11111
     
     fileprivate func setupFooter() {
+        stretchView.isHidden = true
         if configRepository.bool(variable: .showSubscriptionBanner) {
             if tableView.tableFooterView?.tag == MainMenuViewController.subscriptionFooterTag {
                 return
@@ -293,8 +296,12 @@ class MainMenuViewController: BaseTableViewController {
                 if tableView.tableFooterView?.tag == promoTag {
                     return
                 }
-                let view = PromoMenuView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
+                let view = PromoMenuView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 168))
                 promo.configurePromoMenuView(view: view)
+                stretchView.isHidden = false
+                stretchView.startColor = promo.gradientStart ?? promo.backgroundColor
+                stretchView.endColor = promo.gradientEnd ?? promo.backgroundColor
+                stretchView.diagonalMode = true
                 view.onButtonTapped = { [weak self] in
                     if self?.activePromo?.isWebPromo == true {
                         self?.perform(segue: StoryboardSegue.Main.showWebPromoSegue)
@@ -311,6 +318,7 @@ class MainMenuViewController: BaseTableViewController {
                 tableView.tableFooterView = view
             } else {
                 tableView.tableFooterView = nil
+                stretchView.isHidden = false
             }
         }
     }
@@ -405,6 +413,7 @@ class MainMenuViewController: BaseTableViewController {
         
         splitViewController?.displayModeButtonVisibility = .always
         splitViewController?.showsSecondaryOnlyButton = true
+        tableView.addSubview(stretchView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -419,6 +428,16 @@ class MainMenuViewController: BaseTableViewController {
                     self?.updatePromoCells()
                 })
         }
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentHeight = scrollView.contentSize.height
+        if contentHeight > 0 {
+            let footerSize = (tableView.tableFooterView?.frame.height ?? 0)
+            let bottomSize = max(0, scrollView.contentOffset.y - (contentHeight - scrollView.frame.size.height)) + footerSize
+            stretchView.frame = CGRect(x: 0, y: contentHeight - footerSize, width: scrollView.frame.size.width, height: bottomSize)
+        }
+        super.scrollViewDidScroll(scrollView)
     }
     
     private func updatePromoCells() {
@@ -753,19 +772,14 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     func giftSubscriptionButtonTapped() {
-        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
-            self.giftRecipientUsername = username
-            self.perform(segue: StoryboardSegue.Main.openGiftSubscriptionDialog)
-        }, saveButtonTitle: L10n.continue)
-        present(navController, animated: true, completion: nil)
+        let alertController = GiftingAlertController(title: L10n.giftSubscription, message: L10n.giftGemsAlertText) { username in
+            RouterHandler.shared.handle(.giftSubscription(username: username))
+        }
+        alertController.show()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == StoryboardSegue.Main.openGiftSubscriptionDialog.rawValue {
-            let navigationController = segue.destination as? UINavigationController
-            let giftSubscriptionController = navigationController?.topViewController as? GiftSubscriptionViewController
-            giftSubscriptionController?.giftRecipientUsername = giftRecipientUsername
-        } else if segue.identifier == StoryboardSegue.Main.showMarketSegue.rawValue {
+        if segue.identifier == StoryboardSegue.Main.showMarketSegue.rawValue {
             (segue.destination as? ShopViewController)?.shopIdentifier = Constants.MarketKey
         } else if segue.identifier == StoryboardSegue.Main.showQuestShopSegue.rawValue {
             (segue.destination as? ShopViewController)?.shopIdentifier = Constants.QuestShopKey

@@ -33,8 +33,9 @@ class ItemsViewController: BaseTableViewController {
     private var isPresentedModally = false
     
     override func viewDidLoad() {
-        topHeaderCoordinator?.hideHeader = true
         super.viewDidLoad()
+        topHeaderCoordinator?.hideHeader = true
+        topHeaderCoordinator?.followScrollView = false
         
         dataSource.tableView = tableView
         dataSource.itemType = itemType
@@ -228,7 +229,7 @@ class ItemsViewController: BaseTableViewController {
                 }
             }
         })
-        present(sheet, animated: true)
+        sheet.show()
     }
     
     private func openMysteryItem() {

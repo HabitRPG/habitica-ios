@@ -240,7 +240,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
             }.onCellSelection { _, _ in
                 let sheetView = PrivacyPreferencesSheetView()
                 let sheetController = HostingBottomSheetController(rootView: sheetView)
-                self.present(sheetController, animated: true)
+                sheetController.show()
             }
         }
         <<< LabelRow { row in
@@ -262,19 +262,23 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
                 cell.detailTextLabel?.text = L10n.Settings.apiDisclaimer
             }
             .onCellSelection { [weak self] _, _ in
-                guard let self = self else { return }
-                guard let token = AuthenticationManager.shared.currentUserKey else { return }
+                guard let self = self else {
+                    return
+                }
+                guard let token = AuthenticationManager.shared.currentUserKey else {
+                    return
+                }
                 let sheetView = ApiTokenSheetView(token: token) {
                     UIPasteboard.general.string = token
                     self.dismiss(animated: true) {
                         ToastManager.show(
-                            text:  L10n.copiedToClipboard,
+                            text: L10n.copiedToClipboard,
                             color: .blue
                         )
                     }
                 }
                 let sheetController = HostingBottomSheetController(rootView: sheetView)
-                self.present(sheetController, animated: true)
+                sheetController.show()
             }
         }
             <<< ButtonRow { row in
@@ -366,11 +370,12 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
     }
 
     private func deleteAccount(password: String) {
-        userRepository.deleteAccount(password: password).observeValues({ response in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                if response.statusCode == 200 {
-                    (UIApplication.shared.delegate as? HabiticaAppDelegate)?.showLoginScreen()
-                } else if response.statusCode == 401 {
+        userRepository.deleteAccount(password: password, onLogoutComplete: {
+            (UIApplication.shared.delegate as? HabiticaAppDelegate)?.showLoginScreen()
+            UserManager.shared.logoutCompleted()
+        }).observeValues({ response in
+            if response.statusCode == 401 {
+                DispatchQueue.main.async {
                     let alertView = HabiticaAlertController(title: L10n.Settings.wrongPassword)
                     alertView.addCloseAction()
                     alertView.enqueue()
@@ -523,16 +528,6 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         alertController.show()
     }
 
-    private func configureTextField(_ textField: PaddedTextField) {
-        textField.borderStyle = .none
-        textField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        textField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
-        textField.borderWidth = 1
-        textField.cornerRadius = 8
-        textField.textInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        textField.textColor = ThemeService.shared.theme.secondaryTextColor
-    }
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -557,7 +552,7 @@ class AccountSettingsViewController: FormViewController, Themeable, UITextFieldD
         textField.borderStyle = .roundedRect
         textField.keyboardType = .emailAddress
         textField.autocapitalizationType = .none
-        textField.cornerRadius = 26
+        textField.cornerRadius = UIConstants.largeCornerRadius
         stackView.addArrangedSubview(textField)
         alertController.contentView = stackView
         

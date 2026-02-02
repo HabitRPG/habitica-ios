@@ -73,8 +73,6 @@ struct SubscriptionOptionStack: View {
 }
 
 class SubscriptionViewModel: BaseSubscriptionViewModel {
-    private let disposable = ScopedDisposable(CompositeDisposable())
-
     let appleValidator: AppleReceiptValidator
     let itunesSharedSecret = Secrets.itunesSharedSecret
     let userRepository = UserRepository()
@@ -128,11 +126,11 @@ class SubscriptionViewModel: BaseSubscriptionViewModel {
             availableSubscriptions.remove(at: 1)
         }
                 
-        disposable.inner.add(inventoryRepository.getLatestMysteryGear().on(value: {[weak self] gear in
+        disposable.add(inventoryRepository.getLatestMysteryGear().on(value: {[weak self] gear in
             self?.mysteryGear = gear
         }).start())
         
-        disposable.inner.add(inventoryRepository.getLatestMysteryGearSet().on(value: {[weak self] set in
+        disposable.add(inventoryRepository.getLatestMysteryGearSet().on(value: {[weak self] set in
             self?.mysteryGearSet = set
         }).start())
         
@@ -364,11 +362,11 @@ struct SubscriptionPage: View {
                                         .cornerRadius(UIConstants.mediumCornerRadius)
                                         .frame(maxWidth: .infinity)
                                         .frame(height: 8)
-                                        Rectangle()
-                                            .foregroundStyle(.green100)
-                                            .fill()
-                                            .cornerRadius(UIConstants.mediumCornerRadius)
-                                            .frame(width: reader.size.width * (CGFloat(viewModel.subscriptionPlan?.gemCapTotal ?? 0) / 50.0), height: 8)
+                                    Rectangle()
+                                        .foregroundStyle(.green100)
+                                        .fill()
+                                        .cornerRadius(UIConstants.mediumCornerRadius)
+                                        .frame(width: reader.size.width * (CGFloat(viewModel.subscriptionPlan?.gemCapTotal ?? 0) / 50.0), height: 8)
                                 }
                             }
                             .frame(height: 8)
@@ -396,12 +394,12 @@ struct SubscriptionPage: View {
                         }
                         Rectangle()
                             .frame(height: viewModel.showHourglassPromo && viewModel.selectedSubscription == viewModel.availableSubscriptions.last ? 186 : 126)
-                            .cornerRadius(UIConstants.mediumCornerRadius)
+                            .cornerRadius(UIConstants.largeCornerRadius)
                             .offset(y: 4.0 + (CGFloat(viewModel.availableSubscriptions.firstIndex(of: viewModel.selectedSubscription) ?? 0) * 134.0))
                             .animation(.interpolatingSpring(stiffness: 500, damping: 55), value: viewModel.selectedSubscription)
                         SubscriptionOptionStack(viewModel: viewModel)
                     }
-                        .padding(.horizontal, 24)
+                    .padding(.horizontal, 24)
                     Group {
                         if viewModel.isSubscribing {
                             ProgressView().habiticaProgressStyle().frame(height: 48)
@@ -466,43 +464,42 @@ struct SubscriptionPage: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: .infinity)
                 }
-                    Group {
-                        if viewModel.presentationPoint == nil {
-                            if viewModel.isRestoringPurchase {
-                                ProgressView().habiticaProgressStyle().frame(height: 48)
-                            } else {
-                                Button {
-                                    viewModel.checkForExistingSubscription()
-                                } label: {
-                                    Text(L10n.restorePurchase)
-                                        .foregroundStyle(.yellow100)
-                                        .font(.system(size: 17, weight: .semibold))
-                                        .animation(nil)
-                                }
-                                .frame(height: 48)
-                            }
+                Group {
+                    if viewModel.presentationPoint == nil {
+                        if viewModel.isRestoringPurchase {
+                            ProgressView().habiticaProgressStyle().frame(height: 48)
                         } else {
                             Button {
-                                RouterHandler.shared.handle(.subscription)
+                                viewModel.checkForExistingSubscription()
                             } label: {
-                                Text(L10n.seeMoreSubOptions)
+                                Text(L10n.restorePurchase)
                                     .foregroundStyle(.yellow100)
                                     .font(.system(size: 17, weight: .semibold))
                             }
                             .frame(height: 48)
-                            .transition(.opacity)
                         }
+                    } else {
+                        Button {
+                            RouterHandler.shared.handle(.subscription)
+                        } label: {
+                            Text(L10n.seeMoreSubOptions)
+                                .foregroundStyle(.yellow100)
+                                .font(.system(size: 17, weight: .semibold))
+                        }
+                        .frame(height: 48)
+                        .transition(.opacity)
                     }
+                }
                 
-                        .buttonStyle(.borderless)
-                        .frame(maxWidth: .infinity)
-                        .background(.purple400)
+                .buttonStyle(.borderless)
+                .frame(maxWidth: .infinity)
+                .background(.purple400)
             }
             .foregroundStyle(textColor)
             .padding(.top, 16)
-            .background(backgroundColor.ignoresSafeArea(.all, edges: .top).padding(.bottom, 4))
-            .ignoresSafeArea()
-    }
+            .background(backgroundColor.ignoresSafeArea().padding(.bottom, 4))
+            .ignoresSafeArea(.all, edges: .vertical)
+        }
 }
 
 struct ScrollableSubscriptionPage: View {
@@ -514,6 +511,7 @@ struct ScrollableSubscriptionPage: View {
                 SubscriptionPage(viewModel: viewModel)
                     .id("page")
             }
+            .frame(maxHeight: .infinity)
             .onChange(of: viewModel.scrollToTop) { _ in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                     withAnimation {
@@ -522,7 +520,7 @@ struct ScrollableSubscriptionPage: View {
                 })
             }
         }
-        .background(Color.purple400.ignoresSafeArea(.all, edges: .bottom).padding(.top, 200))
+        .background(Color.purple400.ignoresSafeArea().padding(.top, 200))
     }
 }
 
@@ -538,7 +536,6 @@ struct SubscriptionPagePreview: PreviewProvider {
 
 class SubscriptionModalViewController: HostingBottomSheetController<ScrollableSubscriptionPage> {
     let viewModel: SubscriptionViewModel
-    let userRepository = UserRepository()
         
     init(presentationPoint: PresentationPoint?) {
         viewModel = SubscriptionViewModel(presentationPoint: presentationPoint)
@@ -582,10 +579,10 @@ class SubscriptionModalViewController: HostingBottomSheetController<ScrollableSu
     }
     
     func giftSubscriptionButtonTapped() {
-        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
+        let alertController = GiftingAlertController(title: L10n.giftSubscription, message: L10n.giftGemsAlertText) { username in
             RouterHandler.shared.handle(.giftSubscription(username: username))
-        }, saveButtonTitle: L10n.continue)
-        present(navController, animated: true, completion: nil)
+        }
+        alertController.show()
     }
 }
 
@@ -630,11 +627,9 @@ class SubscriptionPageController: UIHostingController<ScrollableSubscriptionPage
     }
     
     func giftSubscriptionButtonTapped() {
-        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                RouterHandler.shared.handle(.giftSubscription(username: username))
-            })
-        }, saveButtonTitle: L10n.continue)
-        present(navController, animated: true, completion: nil)
+        let alertController = GiftingAlertController(title: L10n.giftSubscription, message: L10n.giftGemsAlertText) { username in
+            RouterHandler.shared.handle(.giftSubscription(username: username))
+        }
+        alertController.show()
     }
 }
