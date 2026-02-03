@@ -33,6 +33,9 @@ class QuestDetailViewController: BaseUIViewController {
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var contentLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var questTypeHeader: UILabel!
     @IBOutlet weak var descriptionTextView: MarkdownTextView!
     @IBOutlet weak var invitationsHeader: UILabel!
@@ -107,6 +110,9 @@ class QuestDetailViewController: BaseUIViewController {
         let safeRight = view.safeAreaInsets.right
         let totalPadding = max(15, safeLeft) + max(15, safeRight)
         contentWidthConstraint.constant = -totalPadding
+        contentLeadingConstraint.constant = max(15, safeLeft)
+        buttonLeadingConstraint.constant = max(0, safeLeft - 16)
+        buttonTrailingConstraint.constant = max(0, safeRight - 16)
 
         let isLandscape = view.bounds.width > view.bounds.height
         headerView.backgroundColor = isLandscape ? ThemeService.shared.theme.contentBackgroundColor : .clear
