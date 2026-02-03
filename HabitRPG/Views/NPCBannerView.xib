@@ -16,6 +16,9 @@
                 <outlet property="notesLabel" destination="g3I-SJ-7Li" id="Px4-Sr-jfq"/>
                 <outlet property="npcNameLabel" destination="cQO-3U-vMy" id="VXQ-5p-4Uu"/>
                 <outlet property="plaqueImageView" destination="MoN-YN-sBN" id="mWX-E7-ZLD"/>
+                <outlet property="notesLeadingConstraint" destination="12z-lS-L3T" id="nLC-aB-c1D"/>
+                <outlet property="notesTrailingConstraint" destination="mS7-OT-j67" id="nTC-bC-d2E"/>
+                <outlet property="plaqueLeadingConstraint" destination="F0c-d7-MFg" id="pLC-cD-e3F"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
