@@ -15,7 +15,8 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
     @IBOutlet weak var rightViewWidthConstraint: NSLayoutConstraint?
     @IBOutlet weak var separatorView: UIView!
     
-    private let segmentedWrapper = UIVisualEffectView()
+    private let segmentedWrapper = UIView()
+    private let segmentedEffectView = UIVisualEffectView()
     internal let segmentedControl = UISegmentedControl(items: ["", ""])
     private var isInitialSetup = true
     var showAsSplitView = false
@@ -30,12 +31,13 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(self, action: #selector(HabiticaSplitViewController.switchView(_:)), for: .valueChanged)
         segmentedControl.isHidden = false
-        segmentedWrapper.contentView.addSubview(segmentedControl)
+        segmentedEffectView.contentView.addSubview(segmentedControl)
+        segmentedWrapper.addSubview(segmentedEffectView)
         
         if #available(iOS 26.0, *) {
             let glassEffect = UIGlassEffect()
-            segmentedWrapper.effect = glassEffect
-            segmentedWrapper.cornerConfiguration = .capsule()
+            segmentedEffectView.effect = glassEffect
+            segmentedEffectView.cornerConfiguration = .capsule()
         }
         
         topHeaderCoordinator?.alternativeHeader = segmentedWrapper
@@ -52,6 +54,13 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
         ThemeService.shared.addThemeable(themable: self)
     }
     
+    override func applyTheme(theme: any Theme) {
+        super.applyTheme(theme: theme)
+        if #unavailable(iOS 26.0) {
+            segmentedWrapper.backgroundColor = theme.contentBackgroundColor
+        }
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         layoutHeader()
@@ -64,11 +73,19 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
     
     func layoutHeader() {
         let size = segmentedControl.intrinsicContentSize
-        let isLandscape = traitCollection.verticalSizeClass == .compact
-        let wrapperPadding: CGFloat = isLandscape ? 30 : 4
-        let verticalPadding: CGFloat = isLandscape ? 15 : 2
-        let contentInsetExtra: CGFloat = isLandscape ? 34 : 8
-        segmentedWrapper.frame = CGRect(x: 8, y: 0, width: view.frame.width - 16, height: size.height + wrapperPadding)
+        var safeLeft = view.safeAreaInsets.left
+        if safeLeft == 0 {
+            safeLeft = 8
+        }
+        var safeRight = view.safeAreaInsets.right
+        if safeRight == 0 {
+            safeRight = 8
+        }
+        let wrapperPadding: CGFloat = 4
+        let verticalPadding: CGFloat = 2
+        let contentInsetExtra: CGFloat = 8
+        segmentedWrapper.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: size.height + wrapperPadding)
+        segmentedEffectView.frame = CGRect(x: safeLeft, y: 0, width: view.frame.width - safeLeft - safeRight, height: size.height + wrapperPadding)
         segmentedControl.pin.horizontally(4).vertically(verticalPadding)
         scrollView.subviews.forEach { subview in
             var subviews: [UIView] = subview.subviews

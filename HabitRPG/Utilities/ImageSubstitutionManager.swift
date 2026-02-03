@@ -9,12 +9,9 @@
 class ImageSubstitutionManager {
     static func substituteSprite(name: String, context: String? = nil) -> String {
         if context == "pets", let petSubs = substitutions["pets"] {
-            for substitution in petSubs.keys {
-                if name.starts(with: substitution) {
-                    return petSubs[substitution] ?? name
-                }
+            for substitution in petSubs.keys where name.starts(with: substitution) {
+                return petSubs[substitution] ?? name
             }
-            
         }
         return name
     }

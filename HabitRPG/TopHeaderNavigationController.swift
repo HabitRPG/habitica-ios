@@ -136,6 +136,8 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         // iphones with dynamic island need this for some reason
         if statusBarHeight == 59 || statusBarHeight == 62 {
             return topHeaderHeight + 22
+        } else if statusBarHeight == 0 {
+            return self.topHeaderHeight
         }
         return self.topHeaderHeight + 12
    }

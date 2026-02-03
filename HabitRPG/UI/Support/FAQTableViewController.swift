@@ -191,6 +191,7 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
     
     private func populateFAQ(questions: [FAQEntryProtocol]) {
         commonQuestionsStackView.removeAllArrangedSubviews()
+        commonQuestionsStackView.cornerRadius = UIConstants.largeCornerRadius
         questions.forEach { question in
             let stackView = UIStackView()
             stackView.axis = .horizontal

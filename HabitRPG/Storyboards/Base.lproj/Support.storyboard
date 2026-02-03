@@ -64,11 +64,6 @@
                                                                 <state key="normal" title="Button">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <real key="value" value="20"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <segue destination="eB8-pX-8Ww" kind="show" id="b97-uP-5OB"/>
                                                                 </connections>
@@ -132,11 +127,6 @@
                                                                 <state key="normal" title="Button">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <real key="value" value="20"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <segue destination="UI6-xH-IfR" kind="show" id="3Zk-d4-Msv"/>
                                                                 </connections>
@@ -200,11 +190,6 @@
                                                                 <state key="normal" title="Button">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <real key="value" value="20"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="suggestionButtonTapped:" destination="8L7-b3-Q67" eventType="touchUpInside" id="sYy-tw-eTj"/>
                                                                 </connections>
@@ -233,18 +218,10 @@
                                                         <rect key="frame" x="12" y="12" width="390" height="38"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <inset key="contentEdgeInsets" minX="16" minY="8" maxX="16" maxY="8"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="Button">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
-                                                        <buttonConfiguration key="configuration" style="tinted" title="Button">
-                                                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </buttonConfiguration>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="20"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="resetTutorialButtonTapped:" destination="8L7-b3-Q67" eventType="touchUpInside" id="saU-oE-9Gy"/>
                                                         </connections>
@@ -796,11 +773,6 @@
                                                         <buttonConfiguration key="configuration" style="filled" title="Button">
                                                             <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
                                                         </buttonConfiguration>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="8"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="reportBugButtonTapped:" destination="UI6-xH-IfR" eventType="touchUpInside" id="xXD-Fx-V8a"/>
                                                         </connections>

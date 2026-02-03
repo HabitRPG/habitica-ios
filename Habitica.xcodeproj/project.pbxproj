@@ -212,7 +212,6 @@
 		296E4F0D2C91A05A00D9CBDE /* G1G1Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296E4F0C2C91A05A00D9CBDE /* G1G1Banner.swift */; };
 		296F51642358E5EF0019C872 /* SubscriptionPromoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296F51632358E5EF0019C872 /* SubscriptionPromoView.swift */; };
 		29701FE01F560D310097BBCC /* UIApplication-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */; };
-		29701FE21F5617900097BBCC /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29701FE11F5617900097BBCC /* ToastView.xib */; };
 		29701FE61F56DABC0097BBCC /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FE51F56DABC0097BBCC /* RoundedView.swift */; };
 		29706C8727D22CF3006EC139 /* LabeledProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29706C8627D22CF3006EC139 /* LabeledProgressBar.swift */; };
 		29706C8927D23C82006EC139 /* SpellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29706C8827D23C82006EC139 /* SpellViewController.swift */; };
@@ -925,7 +924,6 @@
 		296E4F0E2C91A6A800D9CBDE /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		296F51632358E5EF0019C872 /* SubscriptionPromoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPromoView.swift; sourceTree = "<group>"; };
 		29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication-Extensions.swift"; sourceTree = "<group>"; };
-		29701FE11F5617900097BBCC /* ToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
 		29701FE51F56DABC0097BBCC /* RoundedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		29706C8627D22CF3006EC139 /* LabeledProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledProgressBar.swift; sourceTree = "<group>"; };
 		29706C8827D23C82006EC139 /* SpellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellViewController.swift; sourceTree = "<group>"; };
@@ -2594,7 +2592,6 @@
 				299BD6321F5420D600E22935 /* Tasks */,
 				29255E4A1F3E236C0094A3E3 /* ToastManager.swift */,
 				29255E481F3E1B0F0094A3E3 /* ToastView.swift */,
-				29701FE11F5617900097BBCC /* ToastView.xib */,
 				299BD6331F5420F000E22935 /* Tutorials */,
 				29706C8E27D60307006EC139 /* TypingLabel.swift */,
 				29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */,
@@ -3253,7 +3250,6 @@
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
 				293BB49C1FCD7DC8003B6F4F /* StatsView.xib in Resources */,
 				290279A920583EDE006DACB9 /* Settings.storyboard in Resources */,
-				29701FE21F5617900097BBCC /* ToastView.xib in Resources */,
 				D9D17CD21E6898E400AD9232 /* HabitTableViewCell.xib in Resources */,
 				293282161F389DBB00D42961 /* SetupCustomizationItemView.xib in Resources */,
 				290279AD20583EF9006DACB9 /* Intro.storyboard in Resources */,

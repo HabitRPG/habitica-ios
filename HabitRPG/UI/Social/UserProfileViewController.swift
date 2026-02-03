@@ -417,7 +417,7 @@ struct ProfilePage: View {
                             }
                         }, animateFlying: false)
                         .cornerRadius(UIConstants.mediumCornerRadius)
-                        .profileContainer(spacing: 26)
+                        .profileContainer(spacing: UIConstants.largeCornerRadius)
                     }
                     
                     HStack(spacing: 12) {

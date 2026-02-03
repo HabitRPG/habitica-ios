@@ -197,11 +197,11 @@ struct FaintView: View {
                     .padding(.top, 12)
                     .padding(.horizontal, 40)
                 Text(L10n.Faint.disclaimer)
-                    .font(.system(size: 14))
+                    .font(.system(size: 12, weight: .semibold))
                     .multilineTextAlignment(.center)
                     .padding(.top, 32)
                     .padding(.bottom, 8)
-                    .padding(.horizontal, 48)
+                    .padding(.horizontal, 36)
                 HabiticaButtonUI(label: Group {
                     if isReviving {
                         HStack(spacing: 12) {
@@ -211,7 +211,7 @@ struct FaintView: View {
                     } else {
                         Text(L10n.Faint.button).foregroundStyle(.maroon100)
                     }
-                }) {
+                }, color: .white) {
                     if isReviving {
                         return
                     }
@@ -226,12 +226,12 @@ struct FaintView: View {
                 let gradientColors: [Color] = [Color(hexadecimal: "72CFFF"),
                                                Color(hexadecimal: "77F4C7")
                 ]
-                VStack(spacing: 9) {
+                VStack(spacing: 6) {
                     if viewModel.isSubscribed {
                         if let nextUsage = viewModel.nextPerkUsage {
                             Text(L10n.Faint.subbedUsed(nextUsage.getShortRemainingString()))
                                 .foregroundStyle(Color(themeService.theme.isDark ? UIColor.teal500 : UIColor.teal1))
-                                .font(.system(size: 15, weight: .semibold))
+                                .font(.system(size: 14, weight: .semibold))
                                 .multilineTextAlignment(.center)
                                 .padding(.horizontal, 36)
                                 .padding(.bottom, 38)
@@ -247,7 +247,8 @@ struct FaintView: View {
                                 .font(.headline)
                                 .padding(.vertical, 6)
                                 .frame(minHeight: 60)
-                                .frame(maxWidth: .infinity)
+                                .frame(maxWidth: .infinity),
+                                             color: .white
                             ) {
                                 if isUsingPerk {
                                     return
@@ -262,20 +263,18 @@ struct FaintView: View {
                             .padding(.bottom, 8)
                             Text(L10n.Faint.subbedFooter)
                                 .foregroundStyle(Color.teal1)
-                                .font(.system(size: 15, weight: .semibold))
+                                .font(.system(size: 14, weight: .semibold))
                                 .multilineTextAlignment(.center)
                                 .padding(.horizontal, 36)
                                 .padding(.bottom, 38)
                         }
                     } else {
-                        HabiticaButtonUI(label: Group {
-                            Text(L10n.Faint.unsubbedButtonPrompt)
-                        }
-                            .foregroundStyle(Color(UIColor.teal10))
+                        HabiticaButtonUI(label: Text(L10n.Faint.unsubbedButtonPrompt).foregroundStyle(Color(UIColor.teal10))
                             .font(.headline)
                             .padding(.vertical, 6)
                             .frame(minHeight: 60)
-                            .frame(maxWidth: .infinity)
+                            .frame(maxWidth: .infinity),
+                                         color: .white
                         ) {
                             
                         }
@@ -284,14 +283,14 @@ struct FaintView: View {
                         .padding(.bottom, 8)
                         Text(L10n.Faint.unsubbedFooter)
                             .foregroundStyle(Color.teal1)
-                            .font(.system(size: 15, weight: .semibold))
+                            .font(.system(size: 14, weight: .semibold))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 36)
                             .padding(.bottom, 38)
                     }
                 }
                 .padding(.top, 16)
-                .background(LinearGradient(colors: gradientColors, startPoint: .leading, endPoint: .trailing))
+                .background(RotatingLinearGradient(colors: gradientColors, animationDuration: 20))
                 .cornerRadius([.topLeading, .topTrailing], UIConstants.largeCornerRadius)
             }.background(.yellow100)
                 .foregroundStyle(.red1)

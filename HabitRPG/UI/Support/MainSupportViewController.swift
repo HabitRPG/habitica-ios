@@ -84,6 +84,11 @@ class MainSupportViewController: BaseUIViewController {
         resetTutorialButton.buttonColor = theme.offsetBackgroundColor
         resetTutorialButton.setTitleColor(theme.primaryTextColor, for: .normal)
         resetTutorialButton.titleLabel?.font = UIFontMetrics.default.scaledSystemFont(ofSize: 15)
+        
+        questionsContainer.cornerRadius = UIConstants.largeCornerRadius
+        bugContainer.cornerRadius = UIConstants.largeCornerRadius
+        suggestionsContainer.cornerRadius = UIConstants.largeCornerRadius
+        resetTutorialContainer.cornerRadius = UIConstants.largeCornerRadius
     }
     
     @IBAction func suggestionButtonTapped(_ sender: Any) {

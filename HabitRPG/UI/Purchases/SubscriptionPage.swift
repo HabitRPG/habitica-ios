@@ -513,7 +513,7 @@ struct ScrollableSubscriptionPage: View {
                     .id("page")
             }
             .frame(maxHeight: .infinity)
-            .onChange(of: viewModel.scrollToTop) { _ in
+            .onChange(of: viewModel.scrollToTop) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                     withAnimation {
                         reader.scrollTo("page", anchor: .top)
@@ -587,7 +587,7 @@ class SubscriptionModalViewController: HostingBottomSheetController<ScrollableSu
     }
 }
 
-class SubscriptionPageController: UIHostingController<ScrollableSubscriptionPage> {
+class SubscriptionPageController: BaseHostingViewController<ScrollableSubscriptionPage> {
     let viewModel: SubscriptionViewModel
     let userRepository = UserRepository()
 
@@ -612,6 +612,15 @@ class SubscriptionPageController: UIHostingController<ScrollableSubscriptionPage
     required init?(coder aDecoder: NSCoder) {
         viewModel = SubscriptionViewModel(presentationPoint: nil)
         super.init(coder: aDecoder, rootView: ScrollableSubscriptionPage(viewModel: viewModel))
+    }
+    
+    override func applyTheme(theme: any Theme) {
+        super.applyTheme(theme: theme)
+        if #unavailable(iOS 26.0) {
+            navigationController?.navigationBar.backgroundColor = .purple300
+            navigationController?.navigationBar.barTintColor = .purple300
+            navigationController?.navigationBar.isTranslucent = false
+        }
     }
     
     override func viewDidLoad() {
