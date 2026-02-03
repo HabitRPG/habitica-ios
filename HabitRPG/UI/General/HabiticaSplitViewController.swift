@@ -81,11 +81,19 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
         if safeRight == 0 {
             safeRight = 8
         }
-        let wrapperPadding: CGFloat = 4
+        let wrapperPadding: CGFloat
         let verticalPadding: CGFloat = 2
-        let contentInsetExtra: CGFloat = 8
-        segmentedWrapper.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: size.height + wrapperPadding)
-        segmentedEffectView.frame = CGRect(x: safeLeft, y: 0, width: view.frame.width - safeLeft - safeRight, height: size.height + wrapperPadding)
+        let contentInsetExtra: CGFloat
+        let isLandscape = traitCollection.verticalSizeClass == .compact
+        if #available(iOS 26.0, *) {
+            wrapperPadding = isLandscape ? 20 : 0
+            contentInsetExtra = isLandscape ? 24 : 8
+        } else {
+            wrapperPadding = 0
+            contentInsetExtra = 8
+        }
+        segmentedWrapper.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: size.height + 8)
+        segmentedEffectView.frame = CGRect(x: safeLeft, y: wrapperPadding, width: view.frame.width - safeLeft - safeRight, height: size.height + verticalPadding*2)
         segmentedControl.pin.horizontally(4).vertically(verticalPadding)
         scrollView.subviews.forEach { subview in
             var subviews: [UIView] = subview.subviews
