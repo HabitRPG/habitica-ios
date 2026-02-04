@@ -107,14 +107,21 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         tableView.reloadData()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { _ in
+            self.tableView.visibleCells.forEach { $0.setNeedsLayout() }
+        })
+    }
+
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         isScrolling = true
     }
-    
+
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         isScrolling = false
     }
-    
+
     override func viewDidLayoutSubviews() {
         if view.frame.height > (parent?.view.frame.height ?? 0) {
             super.viewDidLayoutSubviews()
