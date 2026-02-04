@@ -367,7 +367,7 @@
 /* (No Comment) */
 "stats.one_point_to_allocate" = "1 Punt om toe te wijzen";
 /* (No Comment) */
-"stats.points_to_allocate" = "%d Punt om toe te wijzen";
+"stats.points_to_allocate" = "%d Punten om toe te wijzen";
 /* (No Comment) */
 "summary" = "Samenvatting";
 /* (No Comment) */
@@ -535,7 +535,7 @@
 "stats.stat_guide" = "Statistieken gids";
 "stats.strength_title" = "Kracht";
 "stats.intelligence_title" = "Intelligentie";
-"stats.intelligence_text" = "Verhoog ervaringspunten die je verdient door taken te voltooien. Verhoogt ook je manamaximum en hoe snel je mana terugwint.";
+"stats.intelligence_text" = "Verhoog Ervaringspunten die je verdient door taken te voltooien. Verhoogt ook je Manamaximum en de snelheid waarmee je Mana terugwint.";
 "stats.constitution_title" = "Weerbaarheid";
 "stats.constitution_text" = "Verlaagt de hoeveelheid schade van je onvoltooide taken. Verlaagt de schade van bazen niet.";
 "stats.perception_title" = "Gezichtsveld";
@@ -909,7 +909,7 @@
 "tasks.due_tomorrow" = "Morgen";
 "tasks.due_today" = "Vandaag";
 "tasks.team" = "Team";
-"stats.strength_text" = "Verhoogt de bonus van kritieke treffers en verhoogt de kans erop als je een taak voltooit. Verhoogt ook de schade toegebracht aan bazen.";
+"stats.strength_text" = "Verhoogt de kans op kritieke treffers en schade als je taken voltooit. Verhoogt ook de schade toegebracht aan bazen.";
 "titles.achievements" = "Prestaties";
 "titles.notifications" = "Meldingen";
 "titles.messages" = "Berichten";
