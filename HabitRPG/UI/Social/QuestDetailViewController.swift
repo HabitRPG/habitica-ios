@@ -104,6 +104,13 @@ class QuestDetailViewController: BaseUIViewController {
         descriptionTextView.textContainer.lineFragmentPadding = 0
     }
 
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { _ in
+            self.topHeaderCoordinator?.showHideHeader(show: false, animated: false)
+        })
+    }
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let safeLeft = view.safeAreaInsets.left
