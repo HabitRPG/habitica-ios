@@ -37,7 +37,7 @@
 /* (No Comment) */
 "classes.healer" = "Heiler";
 /* (No Comment) */
-"classes.healer_description" = "Heiler stehen Schaden unbeeindruckt gegenüber und erweitern diesen Schutz auf Andere. Verpasste tägliche Aufgaben und schlechte Angewohnheiten schaden ihnen nicht viel und sie haben Mittel und Wege Lebenspunkte wiederherzustellen. Spiele einen Heiler, wenn Du gerne Anderen in einer Party hilfst, oder wenn es Dich besonders reizt, dem Tod durch harte Arbeit zu entkommen!";
+"classes.healer_description" = "Heiler lernen Fähigkeiten, die dich sowie deine Party heilen und schützen können. Spiele einen Heiler, wenn du es magst, andere zu unterstützen oder Schaden zu vermieden! Heiler profitieren von einem hohen Ausdauer-Wert.";
 /* (No Comment) */
 "classes.mage" = "Magier";
 /* (No Comment) */
