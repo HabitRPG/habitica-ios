@@ -37,7 +37,7 @@
 /* (No Comment) */
 "classes.healer" = "Heiler";
 /* (No Comment) */
-"classes.healer_description" = "Heiler lernen Fähigkeiten, die dich sowie deine Party heilen und schützen können. Spiele einen Heiler, wenn du es magst, andere zu unterstützen oder Schaden zu vermieden! Heiler profitieren von einem hohen Ausdauer-Wert.";
+"classes.healer_description" = "Heiler lernen Fähigkeiten, die sich und deren Party vor Schaden schützen können. Spiele einen Heiler, wenn du es magst, andere zu unterstützen oder du häufig HP verlierst. Heiler profitieren von einem hohen Ausdauer-Wert.";
 /* (No Comment) */
 "classes.mage" = "Magier";
 /* (No Comment) */
@@ -45,7 +45,7 @@
 /* (No Comment) */
 "classes.rogue" = "Schurke";
 /* (No Comment) */
-"classes.rogue_description" = "Schurken lieben es, Reichtümer anzuhäufen, indem sie mehr Gold als Andere verdienen und geschickt darin sind, neue Gegenstände zu finden. Ihre typische Fähigkeit sich im Verborgenen zu bewegen, erlaubt Dir gelegentlich die Folgen verpasster täglicher Aufgaben zu vermeiden. Spiele einen Schurken, wenn Dich Spielbelohnungen und Erfolge besonders reizen und Du nach Beute und Ehrenabzeichen trachtest!";
+"classes.rogue_description" = "Schurken lernen Fähigkeiten, die ihnen, sowie ihrer Party, helfen, mehr Gold und zufällige Drops zu erhalten. Spiele als ein Schurke, wenn du viele Gegenstände und Gold finden möchtest. Schurken profitieren von einem hohen Wahrnehmung-Wert.";
 /* (No Comment) */
 "classes.warrior" = "Krieger";
 /* (No Comment) */
