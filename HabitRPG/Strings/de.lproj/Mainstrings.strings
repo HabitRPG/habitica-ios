@@ -1326,7 +1326,7 @@
 "tasks.form.adjust_counter" = "Zähler anpassen";
 "tasks.form.last_scored" = "Zuletzt erreicht";
 "see_you_tomorrow" = "Bis morgen";
-"next_prize_in_x_checkins" = "Nächster Preis in %d Anmeldungen";
+"next_prize_in_x_checkins" = "Nächster Preis in %d Tagen!";
 "scheduled" = "geplant";
 "completed" = "erledigt";
 "not_due" = "Noch nicht fällig";
@@ -1493,7 +1493,7 @@
 "armoire.equipment_remaining" = "Ausrüstungsgegenstände verbleibend: %d";
 "sale_ends_in" = "Angebot endet in %@";
 "next_checkin_prize_in_x_days" = "Dein nächster Preis wird nach %d weiteren Anmeldungen freigeschaltet";
-"next_prize_at_x_checkins" = "Nächster Preis bei %d Anmeldungen";
+"next_prize_at_x_checkins" = "Nächster Preis nach %d Tagen!";
 "subscription.stay_motivated_with_more_rewards" = "Bleibe als Abonent mit noch mehr Belohnungen motiviert";
 "subscription.thanks_for_subscribing" = "Danke für dein Abonnement";
 "subscription.info_faint_title" = "Bekomme eine zweite Chance";
@@ -1712,7 +1712,7 @@
 "not_now" = "Jetzt nicht";
 "undo" = "Rückgängig";
 "assigned_stat" = "Statuswert zugewiesen";
-"empty.challenges_description" = "Stöbere im Entdecken-Bereich und finde unzählige themenbezogene Herausforderungen anderer Spieler*innen, an denen du teilnehmen kannst. So kannst du deine Aufgabenliste ganz einfach füllen!";
+"empty.challenges_description" = "Stöbere im Entdecken-Bereich und finde unzählige themenbezogene Herausforderungen, die anderer Spieler*innen erstellt haben. Das ist eine tolle Möglichkeit deine Aufgabenliste zu füllen!";
 "empty.messages" = "Du hast keine Nachrichten";
 "empty.messages_description" = "Sende eine Nachricht, um eine Unterhaltung mit deinen Partymitgliedern oder anderen Habitica-Spieler*innen zu beginnen";
 "empty.challenges" = "Du nimmst noch an keinen Herausforderungen teil";
@@ -1721,4 +1721,5 @@
 "gift_gems_alert_text" = "Welchem Account möchtest du dein Geschenk schicken?";
 "hatch_pet_new_title" = "Ein neues Haustier ausbrüten";
 "fcv_streak_explanation" = "Du kannst Strähnen einzelner Aufgaben wiederherstellen, in dem du sie antippst um die Bearbeitungsansicht zu öffnen";
-"checkin_prize_set_description" = "Da du entschlossen bist, dein Leben zu verbessern, hast du ein %s Set erhalten";
+"checkin_prize_set_description" = "Du hast dir ein Set von %s verdient, weil entschieden bist dein Leben zu verbessern";
+"next_prize_in_1_checkin" = "Nächster Preis in 1 Tag!";
