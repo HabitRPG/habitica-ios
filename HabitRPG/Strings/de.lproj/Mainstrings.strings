@@ -41,7 +41,7 @@
 /* (No Comment) */
 "classes.mage" = "Magier";
 /* (No Comment) */
-"classes.mage_description" = "Magier lernen Fähigkeiten, die Bossen Schaden zufügen sowie Erfahrung und Mana steigern. Spiele einen Magier wenn du motiviert bist, schnell im Level aufzusteigen! Magier profitieren von einem hohen Intelligenz-Wert.";
+"classes.mage_description" = "Magier lernen Fähigkeiten, die Quest-Bossen Schaden zufügen sowie Erfahrung und Mana steigern. Spiele einen Magier, wenn dich schnelles Leveln motiviert. Magier profitieren von einem hohen Intelligenz-Wert.";
 /* (No Comment) */
 "classes.rogue" = "Schurke";
 /* (No Comment) */
@@ -49,7 +49,7 @@
 /* (No Comment) */
 "classes.warrior" = "Krieger";
 /* (No Comment) */
-"classes.warrior_description" = "Krieger erzielen mehr kritische Treffer und verursachen schweren Schaden an Bossen. Spiele einen Krieger, wenn du Monster einfach erledigen möchtest! Krieger profitieren von einem hohen Stärke-Wert.";
+"classes.warrior_description" = "Krieger erzielen mehr kritische Treffer und verursachen mehr Schaden an Quest-Bossen. Spiele einen Krieger, wenn du Monster einfach mit kraftvollen Schlägen erledigen möchtest. Krieger profitieren von einem hohen Stärke-Wert.";
 /* (No Comment) */
 "close" = "Schließen";
 /* (No Comment) */
@@ -531,11 +531,11 @@
 "stats.stat_guide" = "Attribut-Helfer";
 "stats.strength_title" = "Stärke";
 "stats.intelligence_title" = "Intelligenz";
-"stats.intelligence_text" = "Du erhältst mehr Erfahrung von erledigten Aufgaben. Außerdem wird Dein Mana-Limit erhöht, und Du regenerierst Dein Mana schneller.";
+"stats.intelligence_text" = "Erhöht von Aufgaben verdiente Erfahrung. Erhöht zudem dein Mana-Limit und deine Mana-Regeneration.";
 "stats.constitution_title" = "Ausdauer";
-"stats.constitution_text" = "Verringert den Schaden, den Du von verpassten Aufgaben erhältst. Schaden durch Bosse wird allerdings nicht verringert.";
+"stats.constitution_text" = "Verringert den Schaden von verpassten Aufgaben und negativen Angewohnheiten. Schaden durch Bosse wird nicht verringert.";
 "stats.perception_title" = "Wahrnehmung";
-"stats.perception_text" = "Erhöht die Wahrscheinlichkeit, Beute zu finden wenn Du Aufgaben erledigst. Ausserdem werden Dein tägliches Beutelimit, der Strähnenbonus und die Goldmenge für erledigte Aufgaben erhöht.";
+"stats.perception_text" = "Erhöht Wahrscheinlichkeit Beute zu finden, das tägliche Beute-Limit, Aufgaben-Strähnen-Boni und verdientes Geld beim erledigen von Aufgaben.";
 "tasks.habits" = "Gewohnheiten";
 "tasks.dailies" = "Tägliche Aufgaben";
 "tasks.rewards" = "Belohnungen";
