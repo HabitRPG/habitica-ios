@@ -45,7 +45,7 @@
 /* (No Comment) */
 "classes.rogue" = "Schurke";
 /* (No Comment) */
-"classes.rogue_description" = "Schurken lernen Fähigkeiten, die ihnen, sowie ihrer Party, helfen, mehr Gold und zufällige Drops zu erhalten. Spiele als ein Schurke, wenn du viele Gegenstände und Gold finden möchtest. Schurken profitieren von einem hohen Wahrnehmung-Wert.";
+"classes.rogue_description" = "Schurken lernen Fähigkeiten, welche die Breite von erledigten Aufgaben erhöhen. Spiele einen Schurken, wenn du es mehr Gegenstände und Gold abgesehen hast. Schurken profitieren von einem hohen Wahrnehmung-Wert.";
 /* (No Comment) */
 "classes.warrior" = "Krieger";
 /* (No Comment) */
@@ -1721,3 +1721,4 @@
 "gift_gems_alert_text" = "Welchem Account möchtest du dein Geschenk schicken?";
 "hatch_pet_new_title" = "Ein neues Haustier ausbrüten";
 "fcv_streak_explanation" = "Du kannst Strähnen einzelner Aufgaben wiederherstellen, in dem du sie antippst um die Bearbeitungsansicht zu öffnen";
+"checkin_prize_set_description" = "Da du entschlossen bist, dein Leben zu verbessern, hast du ein %s Set erhalten";
