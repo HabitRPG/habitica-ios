@@ -90,7 +90,7 @@
 "stats.strength_text" = "Kritik vuruş bonusunu artırır ve bir görevi tamamlarken kritik vuruş olasılığını yükseltir. Ayrıca canavarlara verilen hasarı da artırır.";
 "stats.intelligence_title" = "Zeka";
 "stats.intelligence_text" = "Görevlerden kazanılan deneyim puanını artırır. Ayrıca mana limitini ve mana'nın yenilenme hızını artırır.";
-"stats.constitution_text" = "Görevlerden alınan hasarı azaltır. Canavarlardan alınan hasarı azaltmaz.";
+"stats.constitution_text" = "Günlük işlerden ve olumsuz alışkanlıklardan alınan hasarı azaltır. Canavarlardan alınan hasarı azaltmaz.";
 "stats.perception_text" = "Görevleri tamamlarken düşen eşya bulma olasılığını, günlük düşen eşya sınırını, Seri Bonuslarını ve Görevler için verilen altın miktarını artırır.";
 "difficulty" = "Zorluk";
 "resetStreak" = "Seriyi Sıfırla";
