@@ -222,13 +222,12 @@ class NotificationManager {
         }
         let nextRewardAt = loginIncentiveNotification.nextRewardAt
         userRepository.retrieveUser().observeValues { user in
-            if let reward = loginIncentiveNotification.rewardKey.first {
+            if !loginIncentiveNotification.rewardKey.isEmpty {
                 var nextRewardIn = 0
                 if let loginIncentives = user?.loginIncentives {
                     nextRewardIn = nextRewardAt - loginIncentives
                 }
-                let viewC = HostingBottomSheetController(rootView: LoginIncentiveSheet(key: reward,
-                    imageName: reward,
+                let viewC = HostingBottomSheetController(rootView: LoginIncentiveSheet(rewards: loginIncentiveNotification.rewardKey,
                                                                                        text: loginIncentiveNotification.rewardText ?? "",
                                                                                        nextUnlockIn: nextRewardIn), prefersGrabberVisible: false)
                 viewC.show()
