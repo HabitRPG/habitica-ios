@@ -44,7 +44,11 @@
 	<string>${CUSTOM_DOMAIN}</string>
 	<key>DisableSSL</key>
 	<string>${DISABLE_SSL}</string>
+	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
+	<false/>
 	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
+	<key>GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED</key>
 	<false/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
