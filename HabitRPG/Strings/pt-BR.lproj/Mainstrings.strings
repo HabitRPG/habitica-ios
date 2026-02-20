@@ -355,7 +355,7 @@
 /* (No Comment) */
 "stats.one_point_to_allocate" = "1 Ponto para Distribuir";
 /* (No Comment) */
-"stats.points_to_allocate" = "%d Pontos para Distribuir";
+"stats.points_to_allocate" = "%d Pontos para Atribuir";
 /* (No Comment) */
 "summary" = "Sumário";
 /* (No Comment) */
@@ -505,7 +505,7 @@
 "stats.stat_guide" = "Guia de Atributos";
 "stats.strength_title" = "Força";
 "stats.intelligence_title" = "Inteligência";
-"stats.intelligence_text" = "Aumenta a experiência obtida ao completar tarefas. Também aumenta seu limite e taxa de recuperação de mana.";
+"stats.intelligence_text" = "Aumenta a Experiência recebida das tarefas. Além disso, aumenta a quantidade total de Mana e acelera sua regeneração.";
 "stats.constitution_title" = "Constituição";
 "stats.constitution_text" = "Diminui o dano recebido pelas tarefas. Não diminui o dano causado por chefões.";
 "stats.perception_title" = "Percepção";
@@ -803,7 +803,7 @@
 "titles.avatar" = "Personagem";
 "titles.gift_subscription" = "Presentear Assinatura";
 "stats.total" = "Total";
-"stats.strength_text" = "Aumenta o bônus de acertos críticos e os torna mais prováveis ao marcar uma tarefa. Também aumenta o dano causado aos chefes.";
+"stats.strength_text" = "Aumenta a chance e o dano de acerto crítico ao concluir tarefas. Também aumenta o dano causado aos Chefões de Missão.";
 "tasks.team" = "Time";
 "tasks.due_today" = "Hoje";
 "tasks.due_tomorrow" = "Vencimento amanhã";
@@ -1704,3 +1704,7 @@
 "empty.challenges" = "Você não está em nenhum Desafio";
 "empty.challenges_description" = "Navegue pela seção Descobrir para encontrar e participar de diversos Desafios temáticos criados por outros jogadores. É uma ótima maneira de completar sua lista de tarefas!";
 "glossary" = "Glossário";
+"purchased_amount" = "Você adquiriu %d %@";
+"checkin_prize_set_description" = "Você ganhou um conjunto de %s por estar comprometido em melhorar sua vida";
+"next_prize_in_1_checkin" = "Próxima recompensa em 1 dia!";
+"gift_gems_alert_text" = "Para qual conta você gostaria de enviar seu presente?";
