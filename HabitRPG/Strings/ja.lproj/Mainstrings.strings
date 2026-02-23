@@ -1665,3 +1665,4 @@
 "checkin_prize_set_description" = "あなたは、人生・生活を向上することを誓いました。それを称え、%sのセットを贈ります";
 "contributor_tiers" = "貢献者の段位";
 "x_gems_for_y" = "%sでジェムを%d個";
+"item_only_available_for" = "このアイテムは%sだけに発売中です";
