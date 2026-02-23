@@ -272,7 +272,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         }
         
         if isMainAction {
-            button.backgroundColor = color
+            button.tintColor = color
             container.foregroundColor = .white
             if #available(iOS 26.0, *) {
                 buttonConfig = .prominentGlass()
@@ -282,12 +282,12 @@ class HabiticaAlertController: UIViewController, Themeable {
             }
         } else {
             if #available(iOS 26.0, *) {
+                buttonConfig = .glass()
                 if style == .destructive {
-                    buttonConfig = .prominentGlass()
+                    buttonConfig.baseBackgroundColor = ThemeService.shared.theme.errorColor.withAlphaComponent(0.2)
                     button.tintColor = ThemeService.shared.theme.errorColor.withAlphaComponent(0.2)
                     container.foregroundColor = ThemeService.shared.theme.errorColor
                 } else {
-                    buttonConfig = .glass()
                     button.tintColor = ThemeService.shared.theme.primaryTextColor
                 }
             } else {
@@ -399,6 +399,12 @@ class HabiticaAlertController: UIViewController, Themeable {
             }
             while let parent = topController.parent {
                 topController = parent
+            }
+            if topController.isBeingDismissed || topController.isBeingPresented {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.show()
+                }
+                return
             }
             modalTransitionStyle = .crossDissolve
             modalPresentationStyle = .overFullScreen

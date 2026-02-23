@@ -204,7 +204,6 @@ class PartyDetailViewController: GroupDetailViewController {
                 if self?.isLeader == true && self?.groupProperty.value?.leaderID != member.id {
                     BottomSheetMenuitem(title: L10n.transferOwnership) {
                         self?.showTransferOwnershipDialog(memberID: member.id ?? "", displayName: member.profile?.name ?? "")
-
                     }
                     BottomSheetMenuitem(title: L10n.Party.removeFromParty) {
                         self?.showRemoveMemberDialog(memberID: member.id ?? "", displayName: member.profile?.name ?? "")

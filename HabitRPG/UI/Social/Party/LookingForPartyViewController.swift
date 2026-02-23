@@ -256,6 +256,8 @@ struct LookingForPartyView: View {
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
             .padding(14)
         }.background(Color(themeService.theme.contentBackgroundColor))
+            .scrollClipDisabled()
+            .padding(.top, 50)
     }
     
     var body: some View {

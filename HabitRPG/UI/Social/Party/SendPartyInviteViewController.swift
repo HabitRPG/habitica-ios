@@ -159,6 +159,7 @@ struct SendPartyInviteView: View {
                     .foregroundStyle(Color(themeService.theme.secondaryTextColor))
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
+            .padding(.top, 40)
             .padding(14)
         }
     }
