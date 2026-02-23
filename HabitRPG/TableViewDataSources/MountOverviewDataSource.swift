@@ -34,16 +34,26 @@ class MountOverviewDataSource: StableOverviewDataSource<MountProtocol> {
             .combineLatest(with: inventoryRepository.getItems(type: ItemType.hatchingPotions)
                             .combineLatest(with: inventoryRepository.getItems(type: ItemType.eggs))
             )
-            .map({[weak self] (pets, items) -> [String: [StableOverviewItem]] in
+            .map({[weak self] (mounts, items) -> [String: [StableOverviewItem]] in
                 var sortedItems = [String: String]()
                 items.0.value.forEach { $0.isValid ? sortedItems["potion-\($0.key ?? "")"] = $0.text : () }
                 items.1.value.forEach { $0.isValid ? sortedItems["egg-\($0.key ?? "")"] = ($0 as? EggProtocol)?.mountText : () }
-                return self?.mapData(owned: pets.0, animals: pets.1.value.sorted(by: { first, second in
-                    return (first.egg ?? "") < (second.egg ?? "")
-                }), items: sortedItems) ?? [:]
+                let sortedMounts: [AnimalProtocol]
+                if self?.organizeByColor == true {
+                    sortedMounts = mounts.1.value.sorted(by: { first, second in
+                        return (first.potion ?? "") < (second.potion ?? "")
+                    })
+                } else {
+                    sortedMounts = mounts.1.value.sorted(by: { first, second in
+                        return (first.egg ?? "") < (second.egg ?? "")
+                    })
+                }
+                return self?.mapData(owned: mounts.0, animals: sortedMounts, items: sortedItems) ?? [:]
             })
             .on(value: {[weak self]overviewItems in
-                guard !UserManager.shared.isLoggingOut else { return }
+                guard !UserManager.shared.isLoggingOut else {
+                    return
+                }
                 self?.sections[0].items.removeAll()
                 self?.sections[0].items.append(contentsOf: overviewItems["drop"] ?? [])
                 self?.sections[1].items.removeAll()
