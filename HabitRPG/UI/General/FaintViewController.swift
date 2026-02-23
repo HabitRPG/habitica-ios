@@ -331,20 +331,6 @@ class FaintViewController: UIHostingController<FaintView> {
         })
     }
     
-    func show() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            if var topController = UIApplication.topViewController() {
-                if let tabBarController = topController.tabBarController {
-                    topController = tabBarController
-                }
-                self.modalTransitionStyle = .crossDissolve
-                self.modalPresentationStyle = .overCurrentContext
-                topController.present(self, animated: true) {
-                }
-            }
-        }
-    }
-    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if ThemeService.shared.theme.isDark {
             return .lightContent

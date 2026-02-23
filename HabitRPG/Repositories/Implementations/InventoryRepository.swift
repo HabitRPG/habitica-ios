@@ -133,7 +133,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                     if openArmoireView {
                         let viewController = ArmoireViewController()
                         viewController.configure(type: armoire.type ?? "", text: armoire.dropText ?? "", key: armoire.dropKey, value: armoire.value)
-                        viewController.show()
+                        viewController.showFullscreen()
                     }
                 } else {
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1.0) {

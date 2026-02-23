@@ -468,20 +468,6 @@ class ArmoireViewController: UIHostingController<ArmoireView> {
             viewModel.value = value
         }
     }
-    
-    func show() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            if var topController = UIApplication.topViewController() {
-                if let tabBarController = topController.tabBarController {
-                    topController = tabBarController
-                }
-                self.modalTransitionStyle = .crossDissolve
-                self.modalPresentationStyle = .overCurrentContext
-                topController.present(self, animated: true) {
-                }
-            }
-        }
-    }
 }
 
 struct ArmoireView_Previews: PreviewProvider {

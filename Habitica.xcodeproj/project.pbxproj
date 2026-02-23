@@ -251,6 +251,7 @@
 		2973E26C2ED5F580000C2E0F /* FormTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2973E26B2ED5F580000C2E0F /* FormTextFieldStyle.swift */; };
 		2973E26E2ED6154E000C2E0F /* BulkPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2973E26D2ED6154E000C2E0F /* BulkPurchaseView.swift */; };
 		2973E2702ED71F2D000C2E0F /* View-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2973E26F2ED71F2A000C2E0F /* View-Extensions.swift */; };
+		29748D6B2F4CAFEC00021855 /* UIViewController-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29748D6A2F4CAFE700021855 /* UIViewController-Extensions.swift */; };
 		2974BD91208DEFEA00EC1A25 /* CustomizationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */; };
 		2974BDAD208F68A800EC1A25 /* CustomizationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */; };
 		2974BDB42090926B00EC1A25 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDB32090926B00EC1A25 /* MainTabBarController.swift */; };
@@ -956,6 +957,7 @@
 		2973E26B2ED5F580000C2E0F /* FormTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextFieldStyle.swift; sourceTree = "<group>"; };
 		2973E26D2ED6154E000C2E0F /* BulkPurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkPurchaseView.swift; sourceTree = "<group>"; };
 		2973E26F2ED71F2A000C2E0F /* View-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View-Extensions.swift"; sourceTree = "<group>"; };
+		29748D6A2F4CAFE700021855 /* UIViewController-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController-Extensions.swift"; sourceTree = "<group>"; };
 		2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationDetailCell.swift; sourceTree = "<group>"; };
 		2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationHeaderView.swift; sourceTree = "<group>"; };
 		2974BDB32090926B00EC1A25 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -2278,6 +2280,7 @@
 		D95704371E106BF3004F6804 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				29748D6A2F4CAFE700021855 /* UIViewController-Extensions.swift */,
 				29D50AD025F769520009CF55 /* Alignment-Extensions.swift */,
 				2909D42D2726ACBD00FF2B29 /* Binding-Extensions.swift */,
 				29255E4C1F3E25910094A3E3 /* CGRect-Extensions.swift */,
@@ -3593,6 +3596,7 @@
 				29255E4B1F3E236C0094A3E3 /* ToastManager.swift in Sources */,
 				29DF93452ECCC3370047801F /* MountRaisedSheet.swift in Sources */,
 				29DFBEFA2B10AE8E000B554B /* FlagPage.swift in Sources */,
+				29748D6B2F4CAFEC00021855 /* UIViewController-Extensions.swift in Sources */,
 				296CB4EE218C99FD0044A33E /* HabiticaButton.swift in Sources */,
 				29EBDA83232A3ABA006611E3 /* KeychainItem.swift in Sources */,
 				292AA72420FE15090022CC5F /* UIFont-Extensions.swift in Sources */,

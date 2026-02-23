@@ -230,7 +230,7 @@ class UserManager: NSObject {
     private func checkFainting(user: UserProtocol) -> FaintViewController? {
         if user.stats != nil && (user.stats?.health ?? 0) <= 0.0 && faintViewController == nil {
             let faintView = FaintViewController()
-            faintView.show()
+            faintView.showFullscreen()
             return faintView
         }
         return faintViewController
