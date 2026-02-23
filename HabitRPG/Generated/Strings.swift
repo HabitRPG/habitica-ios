@@ -650,6 +650,10 @@ public enum L10n {
   public static var isOpen: String { return L10n.tr("Mainstrings", "is_open") }
   /// Item is locked
   public static var itemIsLocked: String { return L10n.tr("Mainstrings", "item_is_locked") }
+  /// This item is only available to %s
+  public static func itemOnlyAvailableFor(_ p1: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "item_only_available_for", p1)
+  }
   /// Join
   public static var join: String { return L10n.tr("Mainstrings", "join") }
   /// Join Challenge

@@ -209,6 +209,11 @@ struct BuySheet: View, Dismissable {
             if let date = viewModel.item.availableUntil() {
                 BuyBanner(color: (isDarkTheme ? Color.purple500 : .purple400).opacity(0.4), content: Text(L10n.Inventory.availableFor(date.getShortRemainingString()))
                     .foregroundStyle(ThemeService.shared.theme.isDark ? Color.purple600 : Color.purple100))
+            }
+            let userClass = viewModel.user?.stats?.habitClass
+            if viewModel.item.locked && viewModel.item.actualClass != userClass {
+                BuyBanner(color: Color(ThemeService.shared.theme.offsetBackgroundColor),
+                          content: Text(L10n.itemOnlyAvailableFor(viewModel.item.actualClass?.translatedClassNamePlural ?? "")).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor)))
             } else if viewModel.item.locked {
                 BuyBanner(color: Color(ThemeService.shared.theme.offsetBackgroundColor),
                           content: Text(viewModel.item.lockedReason ?? viewModel.item.shortLockedReason ?? L10n.itemIsLocked).foregroundStyle(Color(ThemeService.shared.theme.secondaryTextColor)))
@@ -316,6 +321,8 @@ private class PreviewInAppReward: InAppRewardProtocol {
     var value: Float = 20
     var isValid: Bool = true
     var isManaged: Bool = false
+    var klass: String?
+    var specialClass: String?
 }
 
 #Preview("BuySheet Egg") {

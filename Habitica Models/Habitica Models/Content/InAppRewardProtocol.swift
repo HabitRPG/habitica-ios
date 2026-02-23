@@ -28,6 +28,8 @@ public protocol InAppRewardProtocol: BaseRewardProtocol {
     var unlockConditionIncentiveThreshold: Int { get set }
     var previous: String? { get set }
     var level: Int { get set }
+    var klass: String? { get set }
+    var specialClass: String? { get set }
     
     var category: ShopCategoryProtocol? { get }
 
@@ -44,5 +46,12 @@ public extension InAppRewardProtocol {
         } else {
             return imageName ?? ""
         }
+    }
+    
+    var actualClass: String? {
+        if klass == "special" {
+            return specialClass
+        }
+        return klass
     }
 }
