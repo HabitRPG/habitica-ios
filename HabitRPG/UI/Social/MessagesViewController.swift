@@ -48,6 +48,7 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         inputBar.separatorLine.isHidden = true
         autocompleteManager.tableView.backgroundColor = .clear
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         hidesBottomBarWhenPushed = true
@@ -152,8 +153,9 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
             inputBarOffset -= 4
         }
         tableView.contentInset.top = inputBarOffset
-        inputBarContainer.pin.left(20).right(20).height(inputBarHeight + autocompleteHeight).bottom(keyboardOffset)
-        inputBar.pin.start(8).end(-10).top().bottom(2)
+        inputBarContainer.pin.left(20).right(20).height(inputBarHeight + autocompleteHeight + 10).bottom(keyboardOffset)
+        inputBar.pin.start(8).end(-10).top().bottom()
+        inputBar.inputTextView.contentInset = .zero
         if let acceptView = view.viewWithTag(999) {
             acceptView.pin.left(20).right(20).bottom((tabBarController?.tabBar.frame.height ?? 0) + 6).height(90)
         }
