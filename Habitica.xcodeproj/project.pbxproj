@@ -144,7 +144,6 @@
 		292BD8AB28B4EB42006447EF /* Eureka in Frameworks */ = {isa = PBXBuildFile; productRef = 292BD8AA28B4EB42006447EF /* Eureka */; };
 		292BD8AE28B4EB81006447EF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 292BD8AD28B4EB81006447EF /* Kingfisher */; };
 		292BD8B128B4EC36006447EF /* TagListView in Frameworks */ = {isa = PBXBuildFile; productRef = 292BD8B028B4EC36006447EF /* TagListView */; };
-		292D6C9B2101FF080078288A /* InviteMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D6C9A2101FF080078288A /* InviteMembersViewController.swift */; };
 		292DEE3A204D9D290086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; };
 		292DEE3C204D9D360086D5F7 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; };
 		292DEE4C204DA1830086D5F7 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */; };
@@ -859,7 +858,6 @@
 		292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInvitationView.swift; sourceTree = "<group>"; };
 		292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInvitationListView.swift; sourceTree = "<group>"; };
 		292AA72320FE15090022CC5F /* UIFont-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont-Extensions.swift"; sourceTree = "<group>"; };
-		292D6C9A2101FF080078288A /* InviteMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteMembersViewController.swift; sourceTree = "<group>"; };
 		292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2011,7 +2009,6 @@
 				29DC5AC620A1E52400993400 /* QuestDetailViewController.swift */,
 				29DC5ACC20A321C900993400 /* GroupFormViewController.swift */,
 				297D15F920B803D30048101F /* UserProfileViewController.swift */,
-				292D6C9A2101FF080078288A /* InviteMembersViewController.swift */,
 				29951A1D2326670500918FC8 /* InboxOverviewViewController.swift */,
 				29951A1F232669C500918FC8 /* InboxChatViewController.swift */,
 				29706C9727D66C77006EC139 /* MessagesViewController.swift */,
@@ -3635,7 +3632,6 @@
 				29CEA8562641A2B500101C0A /* AdventureGuideTableViewCell.swift in Sources */,
 				2902796D2057F2C5006DACB9 /* Strings.swift in Sources */,
 				292DEE76204E053D0086D5F7 /* HabitButton.swift in Sources */,
-				292D6C9B2101FF080078288A /* InviteMembersViewController.swift in Sources */,
 				29617E0824E12A5300CF5EB4 /* NetworkImageView.swift in Sources */,
 				2973E26C2ED5F580000C2E0F /* FormTextFieldStyle.swift in Sources */,
 				29028C392034ABAF00B7F704 /* TaskRepositoryImpl.swift in Sources */,

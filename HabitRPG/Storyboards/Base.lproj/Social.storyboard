@@ -549,11 +549,11 @@
                         <outlet property="bossDifficultyLabel" destination="owM-ZU-Erj" id="d2m-BL-AjY"/>
                         <outlet property="bossHealthlabel" destination="iwR-MM-zVe" id="LeC-Zr-AyY"/>
                         <outlet property="bossImageView" destination="maA-rD-Xo6" id="up0-40-ibC"/>
+                        <outlet property="buttonLeadingConstraint" destination="n0C-0v-tyS" id="bLC-bB-c2C"/>
+                        <outlet property="buttonTrailingConstraint" destination="cK5-b1-fp4" id="bTC-cC-d3D"/>
                         <outlet property="cancelButton" destination="pXx-qO-qxd" id="gqT-dG-e1o"/>
                         <outlet property="contentLeadingConstraint" destination="z8x-qt-pEN" id="cLC-aA-b1B"/>
                         <outlet property="contentWidthConstraint" destination="zab-Wj-NPI" id="qdc-cW-p2z"/>
-                        <outlet property="buttonLeadingConstraint" destination="n0C-0v-tyS" id="bLC-bB-c2C"/>
-                        <outlet property="buttonTrailingConstraint" destination="cK5-b1-fp4" id="bTC-cC-d3D"/>
                         <outlet property="descriptionHeaderView" destination="PvU-aP-uYa" id="laW-mE-Iyb"/>
                         <outlet property="descriptionTextView" destination="xdN-Nt-8pH" id="RLt-bY-KKx"/>
                         <outlet property="forceStartButton" destination="Oo2-ht-HrC" id="dx9-ih-m2W"/>
@@ -599,7 +599,7 @@
                         <viewControllerLayoutGuide type="top" id="8FN-16-lYP"/>
                         <viewControllerLayoutGuide type="bottom" id="P6N-Fc-Wb3"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Lyy-sF-5bz">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lyy-sF-5bz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="593"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -615,7 +615,6 @@
             <objects>
                 <navigationController storyboardIdentifier="UserProfileNavController" id="oLT-m4-I14" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EzW-JX-RHc">
-                        <rect key="frame" x="0.0" y="20" width="375" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -665,13 +664,13 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lUA-N8-pND">
                                 <rect key="frame" x="0.0" y="74" width="375" height="593"/>
                                 <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F32-IZ-jcu">
+                                    <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F32-IZ-jcu">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="593"/>
                                         <connections>
                                             <segue destination="NAg-B6-gAf" kind="embed" id="LNd-kW-DZX"/>
                                         </connections>
                                     </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oxa-yG-OLf">
+                                    <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxa-yG-OLf">
                                         <rect key="frame" x="375" y="0.0" width="375" height="593"/>
                                         <connections>
                                             <segue destination="lxq-H7-XEI" kind="embed" id="9eh-dp-cpO"/>
@@ -718,7 +717,6 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Ye-yE-okG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1W3-Az-jfk">
-                        <rect key="frame" x="0.0" y="16" width="375" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2029,8 +2027,8 @@
                         <viewControllerLayoutGuide type="top" id="dF0-ge-ava"/>
                         <viewControllerLayoutGuide type="bottom" id="KFE-wg-3Cp"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="c0G-mD-pQc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c0G-mD-pQc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="593"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -2042,11 +2040,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jzO-TO-nUb"/>
+        <segue reference="9eh-dp-cpO"/>
         <segue reference="gAH-Zh-PJ3"/>
         <segue reference="lgk-R4-zXr"/>
         <segue reference="jXp-j5-lvy"/>
-        <segue reference="Hfa-0k-B92"/>
+        <segue reference="ypV-Mu-tgU"/>
         <segue reference="wif-V9-Mcy"/>
         <segue reference="2EH-Sz-Osv"/>
     </inferredMetricsTieBreakers>
