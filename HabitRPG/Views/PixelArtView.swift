@@ -14,7 +14,9 @@ struct PixelArtView: UIViewRepresentable {
     var source: Source?
     
     func makeUIView(context: Context) -> NetworkImageView {
-        NetworkImageView()
+        let view = NetworkImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }
     
     func updateUIView(_ uiView: NetworkImageView, context: Context) {

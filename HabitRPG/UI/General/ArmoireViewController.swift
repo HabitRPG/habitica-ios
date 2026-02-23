@@ -256,7 +256,13 @@ struct ArmoireView: View {
                                         repetitions: 20,
                                         repetitionInterval: 0.1)
                 }
-                    PixelArtView(source: viewModel.icon)
+                Group {
+                    if viewModel.type == "experience" {
+                        Image(Asset.armoireExperience.name)
+                    } else {
+                        PixelArtView(source: viewModel.icon)
+                    }
+                }
                         .frame(width: viewModel.iconWidth, height: viewModel.iconHeight)
                         .offset(y: isBobbing ? 5 : -5)
                     .frame(width: 158, height: 158)
