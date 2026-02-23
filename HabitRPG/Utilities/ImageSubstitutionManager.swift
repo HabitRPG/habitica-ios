@@ -12,6 +12,11 @@ class ImageSubstitutionManager {
             for substitution in petSubs.keys where name.starts(with: substitution) {
                 return petSubs[substitution] ?? name
             }
+            if name.isEmpty {
+                return petSubs["noPet"] ?? name
+            } else {
+                return petSubs["default"] ?? name
+            }
         }
         return name
     }
