@@ -221,6 +221,12 @@ struct ProfilePage: View {
     
     @State private var showEquipmentCostume = "equipment"
     
+    private func copyToClipboard(title: String, value: String) {
+        let pasteboard = UIPasteboard.general
+        pasteboard.string = value
+        ToastManager.show(text: L10n.copiedXToClipboard(title), color: .green)
+    }
+    
     private func classTextColor(className: String) -> Color {
         if themeService.theme.isDark {
             switch className {
@@ -352,7 +358,7 @@ struct ProfilePage: View {
                                 Text("@\(viewModel.member?.username ?? "")")
                             }.frame(maxWidth: .infinity, alignment: .leading)
                             Button {
-                                
+                                copyToClipboard(title: L10n.username, value: viewModel.member?.username ?? "")
                             } label: {
                                 Image(systemName: "document.on.document")
                             }.buttonStyle(.borderless)
@@ -366,7 +372,7 @@ struct ProfilePage: View {
                                 Text("\(viewModel.member?.id ?? "")")
                             }.frame(maxWidth: .infinity, alignment: .leading)
                             Button {
-                                
+                                copyToClipboard(title: L10n.userID, value: viewModel.member?.id ?? "")
                             } label: {
                                 Image(systemName: "document.on.document")
                             }.buttonStyle(.borderless)
