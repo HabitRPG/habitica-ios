@@ -121,7 +121,18 @@ public class SocialLocalRepository: BaseLocalRepository {
         if let realmMessage = message as? RealmInboxMessage {
             save(object: realmMessage)
         } else {
-            save(object: RealmInboxMessage(userID: userID, inboxMessage: message))
+            let message = RealmInboxMessage(userID: userID, inboxMessage: message)
+            let existingMessage = getRealm()?.object(ofType: RealmInboxMessage.self, forPrimaryKey: message.id)
+            let minValidDate = Date(timeIntervalSince1970: 946684800)
+            let needsTimestamp = message.timestamp == nil || (message.timestamp ?? Date.distantPast) < minValidDate
+            if needsTimestamp {
+                if let existing = existingMessage, let existingTimestamp = existing.timestamp, existingTimestamp >= minValidDate {
+                    message.timestamp = existingTimestamp
+                } else {
+                    message.timestamp = Date()
+                }
+            }
+            save(object: message)
         }
     }
     
@@ -413,7 +424,9 @@ public class SocialLocalRepository: BaseLocalRepository {
         return RealmInboxMessage.findBy(query: "ownUserID == '\(userID)' && userID = '\(withUserID)'")
             .sorted(key: "timestamp", ascending: false)
             .reactive().map({ (value, changeset) -> ReactiveResults<[InboxMessageProtocol]> in
-                return (value.map({ (message) -> InboxMessageProtocol in return message }), changeset)
+                let messages: [InboxMessageProtocol] = value.map({ $0 as InboxMessageProtocol })
+                let sorted = messages.sorted { ($0.timestamp ?? Date()) > ($1.timestamp ?? Date()) }
+                return (sorted, changeset)
             })
     }
     

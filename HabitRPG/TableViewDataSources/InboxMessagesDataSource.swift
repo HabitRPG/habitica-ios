@@ -96,10 +96,10 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             isExpanded = expandedChatPath == indexPath
         }
         
-        cell.isFirstMessage = indexPath?.item == 0
+        cell.isFirstMessage = indexPath?.item == (sections[0].items.count - 1)
         cell.configure(inboxMessage: message,
-                       previousMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)+1, section: indexPath?.section ?? 0)),
-                       nextMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)-1, section: indexPath?.section ?? 0)),
+                       previousMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)-1, section: indexPath?.section ?? 0)),
+                       nextMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)+1, section: indexPath?.section ?? 0)),
                        user: self.user, isExpanded: isExpanded)
         
         cell.profileAction = {[weak self] in

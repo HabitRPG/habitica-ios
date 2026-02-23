@@ -74,11 +74,24 @@ public class UserLocalRepository: BaseLocalRepository {
     }
     
     public func save(userID: String, messages: [InboxMessageProtocol]) {
+        let minValidDate = Date(timeIntervalSince1970: 946684800)
         save(objects: messages.map { (messsage) in
+            let message: RealmInboxMessage
             if let realmInboxMessage = messsage as? RealmInboxMessage {
-                return realmInboxMessage
+                message = realmInboxMessage
+            } else {
+                message = RealmInboxMessage(userID: userID, inboxMessage: messsage)
             }
-            return RealmInboxMessage(userID: userID, inboxMessage: messsage)
+            let existingMessage = getRealm()?.object(ofType: RealmInboxMessage.self, forPrimaryKey: message.id)
+            let needsTimestamp = message.timestamp == nil || (message.timestamp ?? Date.distantPast) < minValidDate
+            if needsTimestamp {
+                if let existing = existingMessage, let existingTimestamp = existing.timestamp, existingTimestamp >= minValidDate {
+                    message.timestamp = existingTimestamp
+                } else {
+                    message.timestamp = Date()
+                }
+            }
+            return message
         })
     }
     
