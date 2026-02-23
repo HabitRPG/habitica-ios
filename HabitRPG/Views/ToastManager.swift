@@ -66,22 +66,17 @@ class ToastManager: NSObject {
     }
     
     private func present(toast: UIHostingView<ToastView>, completion: (() -> Void)?) {
-        if var viewController = UIApplication.topViewController() {
-            if let tabbarController = viewController.tabBarController {
-                viewController = tabbarController
-            }
-            if let navigationController = viewController.navigationController {
-                viewController = navigationController
-            }
+        if let window = UIApplication.shared.findKeyWindow() {
             let contentView = toast
-            contentView.frame = CGRect(x: 0, y: 0, width: viewController.view.frame.size.width, height: viewController.view.frame.size.height)
+            contentView.frame = window.bounds
             contentView.setNeedsLayout()
-            viewController.view.addSubview(contentView)
+            window.addSubview(contentView)
             let bottomOffset = KeyboardManager.height > 0 ? KeyboardManager.height - 44 : 0
-            viewController.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-\(bottomOffset)-|",
+            contentView.translatesAutoresizingMaskIntoConstraints = false
+            window.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-\(bottomOffset)-|",
                                                                               options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                                                                               metrics: nil, views: ["view": contentView]))
-            viewController.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|",
+            window.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|",
                                                                               options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                                                                               metrics: nil, views: ["view": contentView]))
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
