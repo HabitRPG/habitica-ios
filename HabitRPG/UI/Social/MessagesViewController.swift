@@ -139,7 +139,8 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
                 keyboardOffset = KeyboardManager.height - ((view.window?.bounds.height ?? 0) -  (abs(view?.window?.convert(CGPoint(x: 0, y: 0), to: view).y ?? 0) + view.bounds.height))
             }
         }
-        let inputBarHeight = inputBar.requiredInputTextViewHeight + inputBar.padding.top + inputBar.topStackViewPadding.top + 2
+        let textViewHeight = inputBar.maxTextViewHeight > 0 ? min(inputBar.requiredInputTextViewHeight, inputBar.maxTextViewHeight) : inputBar.requiredInputTextViewHeight
+        let inputBarHeight = textViewHeight + inputBar.padding.top + inputBar.topStackViewPadding.top + 2
         let autocompleteSize = autocompleteManager.tableView.intrinsicContentSize
         let autocompleteHeight: CGFloat
         if autocompleteManager.currentSession != nil {
