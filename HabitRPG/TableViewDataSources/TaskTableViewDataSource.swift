@@ -124,7 +124,11 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
                 logger.record(error: error)
                 self?.fetchTasks()
             }, value: {[weak self] (tasks, changes) in
-                self?.sections[0].items = tasks.sorted { $0.order < $1.order }
+                if self?.sortKey == "duedate" {
+                    self?.sections[0].items = tasks.sorted { ($0.duedate?.timeIntervalSince1970 ?? 0) < ($1.duedate?.timeIntervalSince1970 ?? 0) }
+                } else {
+                    self?.sections[0].items = tasks.sorted { $0.order < $1.order }
+                }
                 self?.notify(changes: changes)
                 self?.isProcessingDeletion = false
         }).start()
