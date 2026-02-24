@@ -273,7 +273,7 @@
 /* (No Comment) */
 "settings.change_class" = "Verander klasse";
 /* (No Comment) */
-"settings.change_class_disclaimer" = "Dit zet de klasse van je personage en toegewezen eigenschapspunten terug op nul (je krijgt ze allemaal terug om opnieuw toe te wijzen) en kost 3 edelstenen.";
+"settings.change_class_disclaimer" = "Dit verwijdert je huidige klassen en het zet al je toegewezen eigenschapspunten terug, waarna je een nieuwe klasse kunt kiezen";
 /* (No Comment) */
 "settings.clear_cache" = "Cache wissen";
 /* (No Comment) */
@@ -537,9 +537,9 @@
 "stats.intelligence_title" = "Intelligentie";
 "stats.intelligence_text" = "Verhoog Ervaringspunten die je verdient door taken te voltooien. Verhoogt ook je Manamaximum en de snelheid waarmee je Mana terugwint.";
 "stats.constitution_title" = "Weerbaarheid";
-"stats.constitution_text" = "Verlaagt de hoeveelheid schade van je onvoltooide taken. Verlaagt de schade van bazen niet.";
+"stats.constitution_text" = "Verlaagt de hoeveelheid schade geleden door onvoltooide Dagelijkse Taken en negatieve Gewoontes. Verlaagt de schade geleden door Queeste bazen niet.";
 "stats.perception_title" = "Gezichtsveld";
-"stats.perception_text" = "Verhoogt de waarschijnlijkheid van het vinden van drops bij het voltooien van taken, de dagelijkse drop-drempel, serie bonussen, en de hoeveelheid Goud die je verdient door taken te voltooien.";
+"stats.perception_text" = "Verhoogt de kans op voorwerp drops bij het voltooien van taken, de dagelijkse drop-drempel, serie bonussen, en de hoeveelheid Goud die je verdient door taken te voltooien.";
 "tasks.habits" = "Gewoontes";
 "tasks.dailies" = "Dagelijkse Taken";
 "tasks.rewards" = "Beloningen";
@@ -905,7 +905,7 @@
 "tasks.repeats.repeats_every" = "Herhaalt elke %@";
 "tasks.repeats.repeats_every_on" = "Herhaalt elke %@ op %@";
 "tasks.every_x" = "elke %d %@";
-"tasks.due_in_x_days" = "Moet over %d dagen gedaan zijn";
+"tasks.due_in_x_days" = "Over %d dagen";
 "tasks.due_tomorrow" = "Morgen";
 "tasks.due_today" = "Vandaag";
 "tasks.team" = "Team";
@@ -1334,7 +1334,7 @@
 "settings.add_email" = "Voeg e-mail toe";
 "settings.change" = "Verander";
 "settings.reset_account_confirm" = "Weet je zeker dat je wil resetten?";
-"settings.updated_password" = "Wachtwoord veranderd";
+"settings.updated_password" = "Wachtwoord met succes veranderd";
 "mute_user_confirm" = "Wil je deze gebruiker dempen?";
 "not_due" = "Moet nog niet af";
 "settings.next_cron_run" = "Volgende dag reset: %@";
@@ -1343,3 +1343,18 @@
 "settings.custom_day_start_description" = "Verander wanneer jouw dag verwisseld na de standaard tijd van 12:00 AM";
 "tasks.form.not_editable_disclaimer" = "Uitdagingen en groepstaken hebben gelimiteerde bewerkingsopties in vergelijking met je normale taken";
 "yes" = "Ja";
+"none" = "Geen";
+"view_stats" = "Eigenschappen bekijken";
+"undo" = "Ongedaan maken";
+"not_now" = "Niet nu";
+"x_gems_for_y" = "%d Edelstenen voor %s";
+"more_gem_packs" = "Meer Edelsteenpakketten";
+"loading" = "Bezig met laden";
+"task_status" = "Taak Status";
+"task_health" = "Taak Gezondheid";
+"delete_x" = "Verwijder %s";
+"settings.daily_reminder_permission_needed" = "Zet notificaties aan in Instellingen om dagelijkse herinneringen te gebruiken";
+"settings.reloaded_content" = "Inhoud opnieuw laden";
+"item_only_available_for" = "Dit voorwerp is alleen beschikbaar voor %s";
+"settings.change_class_title" = "Klasse veranderen voor 3 Edelstenen?";
+"assigned_stat" = "Toegewezen Eigenschap";

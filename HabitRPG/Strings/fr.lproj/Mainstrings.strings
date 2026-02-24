@@ -561,8 +561,8 @@
 "pending_damage" = "Dégâts en attente";
 "quests.started_by" = "Commencé par %@";
 "groups.assign_new_leader" = "Assigner une nouvelle personne responsable";
-"groups.guild_invitation_no_invitername" = "Quelqu'un vous a invité·e à rejoindre la Guilde : **%@**";
-"groups.guild_invitation_invitername" = "**@%@** vous a invité à rejoindre la Guilde : **%@**";
+"groups.guild_invitation_no_invitername" = "Quelqu'un vous a invité·e à rejoindre le Groupe **%@**";
+"groups.guild_invitation_invitername" = "**@%@** vous a invité·e à rejoindre le Groupe **%@**";
 "inactive" = "Inactif";
 "one_month" = "1 mois";
 "x_months" = "%d mois";
@@ -1672,3 +1672,4 @@
 "delete_task_confirmation" = "Êtes vous sûr·e de vouloir supprimer cette Tâche ?";
 "task" = "Tâche";
 "item_only_available_for" = "Cet objet n'est disponible que pour %s";
+"boss" = "Boss";
