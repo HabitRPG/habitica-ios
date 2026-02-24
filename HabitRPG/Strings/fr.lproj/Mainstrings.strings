@@ -1671,3 +1671,4 @@
 "delete_x" = "Supprimer %s";
 "delete_task_confirmation" = "Êtes vous sûr·e de vouloir supprimer cette Tâche ?";
 "task" = "Tâche";
+"item_only_available_for" = "Cet objet n'est disponible que pour %s";
