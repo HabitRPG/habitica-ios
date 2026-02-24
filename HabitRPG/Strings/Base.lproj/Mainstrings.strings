@@ -605,6 +605,7 @@
 "quests.accepted" = "Accepted";
 "quests.rejected" = "Rejected";
 "quests.pending" = "Pending";
+"boss" = "Boss";
 "quests.confirm_cancel_invitation" = "Are you sure you want to cancel this quest? All invitation acceptances will be lost. The quest owner will retain possession of the quest scroll.";
 "quests.confirm_force_start" = "Are you sure? Not all party members have joined this quest! Quests start automatically when all players have joined or rejected the invitation.";
 "quests.confirm_abort" = "Are you sure you want to abort this mission? It will abort it for everyone in your party and all progress will be lost. The quest scroll will be returned to the quest owner.";
@@ -624,8 +625,8 @@
 "quests.unlock_previous_short" = "Finish Quest %d";
 "groups.leader_challenges" = "Only leader can create Challenges";
 "groups.assign_new_leader" = "Assign new Leader";
-"groups.guild_invitation_no_invitername" = "Someone invited you to join the Guild: **%@**";
-"groups.guild_invitation_invitername" = "**@%@** invited you to join the Guild: **%@**";
+"groups.guild_invitation_no_invitername" = "Someone invited you to join the Group **%@**";
+"groups.guild_invitation_invitername" = "**@%@** invited you to join the Goup **%@**";
 "groups.groups" = "Groups";
 "groups.group" = "Group";
 "groups.group_plan_settings" = "Group Plan Settings";

@@ -92,7 +92,10 @@ struct InviteView: View {
             }, label: {
                 Image(systemName: .xmark).frame(width: 14, height: 14).foregroundStyle(Color(themeService.theme.primaryTextColor))
             }).frame(width: 30, height: 48)
-            FocusableTextField(placeholder: "Username or email address", text: $text, isFirstResponder: $isFirstResponder).frame(height: 48)
+            FocusableTextField(placeholder: "Username or email address", text: $text, isFirstResponder: $isFirstResponder, configuration: { textfield in
+                textfield.autocapitalizationType = .none
+            })
+                .frame(height: 48)
         }.background(Color(themeService.theme.windowBackgroundColor).cornerRadius(UIConstants.mediumCornerRadius))
         .transition(.opacity)
     }

@@ -100,6 +100,8 @@ public enum L10n {
   }
   /// Body Size
   public static var bodySize: String { return L10n.tr("Mainstrings", "body_size") }
+  /// Boss
+  public static var boss: String { return L10n.tr("Mainstrings", "boss") }
   /// Broad
   public static var broad: String { return L10n.tr("Mainstrings", "broad") }
   /// Broken Challenge
@@ -2061,11 +2063,11 @@ public enum L10n {
     public static var groupPlanSettings: String { return L10n.tr("Mainstrings", "groups.group_plan_settings") }
     /// Groups
     public static var groups: String { return L10n.tr("Mainstrings", "groups.groups") }
-    /// **@%@** invited you to join the Guild: **%@**
+    /// **@%@** invited you to join the Goup **%@**
     public static func guildInvitationInvitername(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "groups.guild_invitation_invitername", p1, p2)
     }
-    /// Someone invited you to join the Guild: **%@**
+    /// Someone invited you to join the Group **%@**
     public static func guildInvitationNoInvitername(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "groups.guild_invitation_no_invitername", p1)
     }

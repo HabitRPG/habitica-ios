@@ -356,7 +356,7 @@ public class UserLocalRepository: BaseLocalRepository {
     
     public func getNotifications(userID: String) -> SignalProducer<ReactiveResults<[NotificationProtocol]>, ReactiveSwiftRealmError> {
         return RealmNotification.findBy(query: "userID == '\(userID)' && realmType != ''").sorted(key: "priority").reactive().map({ (value, changeset) -> ReactiveResults<[NotificationProtocol]> in
-            return (value.map({ (notification) -> NotificationProtocol in return notification }), changeset)
+            return (value.map({ (notification) -> NotificationProtocol in return notification.freeze() }), changeset)
         })
     }
     
