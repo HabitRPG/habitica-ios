@@ -1604,3 +1604,4 @@
 "delete_x" = "删除%s";
 "delete_task_confirmation" = "确定要删除这项任务吗？";
 "task" = "任务";
+"item_only_available_for" = "此物品仅限%s使用";
