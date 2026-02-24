@@ -35,11 +35,28 @@ struct FormDatePicker<TitleView: View>: View {
     }
     
     var body: some View {
-        DatePicker(selection: dateProxy,
-                 displayedComponents: [.date],
-                 label: {
-          title
-                 })
+        HStack {
+            title
+            Spacer()
+            if value == nil {
+                Button {
+                    value = Date()
+                } label: {
+                    Text(L10n.add).font(.system(size: 15, weight: .bold))
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 8)
+                .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                .cornerRadius(UIConstants.largeCornerRadius)
+            } else {
+                DatePicker(selection: dateProxy,
+                         displayedComponents: [.date],
+                         label: {
+                         })
+                .datePickerStyle(.compact)
+            }
+        }
+
         .padding(.leading, 26).padding(.trailing, 12)
         .frame(height: 50)
     }
