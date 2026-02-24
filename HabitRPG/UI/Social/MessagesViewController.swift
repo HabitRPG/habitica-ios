@@ -42,6 +42,7 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         } else {
             inputBarContainer.effect = UIBlurEffect(style: .systemMaterial)
         }
+        inputBar.inputTextView.isImagePasteEnabled = false
         inputBarContainer.cornerRadius = UIConstants.largeCornerRadius
         inputBar.backgroundColor = .clear
         inputBar.backgroundView.backgroundColor = .clear
@@ -129,10 +130,11 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
             return
         }
         tableView.pin.all()
-        var safearea: CGFloat = (tabBarController?.tabBar.frame.size.height ?? view.window?.safeAreaInsets.bottom ?? 0)
-        var keyboardOffset = (KeyboardManager.height > 0 ? KeyboardManager.height : safearea) + 6
+        let safearea = view.window?.safeAreaInsets ?? .zero
+        var safeheight: CGFloat = (tabBarController?.tabBar.frame.size.height ?? safearea.bottom)
+        var keyboardOffset = (KeyboardManager.height > 0 ? KeyboardManager.height : safeheight) + 6
         if (modalPresentationStyle == .pageSheet || modalPresentationStyle == .formSheet) && view.window?.traitCollection.isIPadFullSize == true {
-            safearea = 0
+            safeheight = 0
             if (view.window?.bounds.size.height ?? 0) - KeyboardManager.height > view.bounds.size.height {
                 keyboardOffset = 0
             } else {
@@ -149,12 +151,12 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
             autocompleteHeight = 0
         }
 
-        var inputBarOffset = keyboardOffset + autocompleteHeight + inputBarHeight - safearea
+        var inputBarOffset = keyboardOffset + autocompleteHeight + inputBarHeight - safeheight
         if tabBarController == nil {
             inputBarOffset -= 4
         }
         tableView.contentInset.top = inputBarOffset
-        inputBarContainer.pin.left(20).right(20).height(inputBarHeight + autocompleteHeight + 10).bottom(keyboardOffset)
+        inputBarContainer.pin.left(safearea.left + 20).right(safearea.right + 20).height(inputBarHeight + autocompleteHeight + 10).bottom(keyboardOffset)
         inputBar.pin.start(8).end(-10).top().bottom()
         inputBar.inputTextView.contentInset = .zero
         if let acceptView = view.viewWithTag(999) {
