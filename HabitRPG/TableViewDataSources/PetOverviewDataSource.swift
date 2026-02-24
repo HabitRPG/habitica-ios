@@ -89,6 +89,7 @@ class PetOverviewDataSource: StableOverviewDataSource<PetProtocol> {
             .on(value: {[weak self] pet in
                 if self?.currentSelected != pet {
                     self?.currentSelected = pet
+                    self?.collectionView?.reloadData()
                 }
             })
             .start())
