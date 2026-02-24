@@ -69,6 +69,7 @@ class MountOverviewDataSource: StableOverviewDataSource<MountProtocol> {
             .on(value: {[weak self] mount in
                 if self?.currentSelected != mount {
                     self?.currentSelected = mount
+                    self?.collectionView?.reloadData()
                 }
             })
             .start())
