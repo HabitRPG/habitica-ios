@@ -41,7 +41,9 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
                 self?.configureSections(customizations.value)
         }).start())
         disposable.add(userRepository.getUser().on(value: {[weak self]user in
-            guard !UserManager.shared.isLoggingOut else { return }
+            guard !UserManager.shared.isLoggingOut else {
+                return
+            }
             self?.preferences = user.preferences
             self?.gemCount = user.gemCount
 
@@ -137,8 +139,7 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
                 continue
             }
             if let set = customization.set,
-                customizationType == "background" && (set.key?.contains("incentive") == true || set.key?.contains("timeTravel") == true || set.key?.contains("event") == true)
-             {
+                customizationType == "background" && (set.key?.contains("incentive") == true || set.key?.contains("timeTravel") == true || set.key?.contains("event") == true) {
                 if let index = sections.firstIndex(where: { (section) -> Bool in
                     return section.key == set.key
                 }) {

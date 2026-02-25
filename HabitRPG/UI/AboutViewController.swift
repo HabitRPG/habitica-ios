@@ -70,7 +70,9 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         if let headerView = tableView.tableHeaderView {
             let targetWidth = view.bounds.width
             let gradientTargetWidth = targetWidth - 40 - view.safeAreaInsets.left - view.safeAreaInsets.right
-            guard gradientLayer?.frame.width != gradientTargetWidth else { return }
+            guard gradientLayer?.frame.width != gradientTargetWidth else {
+                return
+            }
             headerView.frame = CGRect(x: 0, y: 10, width: targetWidth, height: 150)
             headerView.subviews.first?.frame = headerView.bounds
             gradientLayer?.frame = CGRect(x: 20, y: 10, width: gradientTargetWidth, height: 130)

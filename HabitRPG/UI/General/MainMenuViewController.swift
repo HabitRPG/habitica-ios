@@ -205,7 +205,9 @@ class MainMenuViewController: BaseTableViewController {
 
     private var user: UserProtocol? {
         didSet {
-            guard user?.isValid == true else { return }
+            guard user?.isValid == true else {
+                return
+            }
             if let user = self.user {
                 navbarView.configure(user: user)
             }

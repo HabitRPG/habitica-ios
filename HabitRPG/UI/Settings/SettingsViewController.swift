@@ -112,7 +112,9 @@ class SettingsViewController: FormViewController, Themeable {
     
     private func handleGroupPlans() {
         disposable.inner.add(userRepository.getGroupPlans().on(value: {[weak self] plans in
-            guard !UserManager.shared.isLoggingOut else { return }
+            guard !UserManager.shared.isLoggingOut else {
+                return
+            }
             if plans.value.isEmpty {
                 self?.groupPlanSection.hidden = Condition(booleanLiteral: true)
             } else {

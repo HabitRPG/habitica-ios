@@ -46,7 +46,9 @@ private class QueueManager {
     }
 
     private static func attemptPresentation() {
-        guard var current = displayQueue.first else { return }
+        guard var current = displayQueue.first else {
+            return
+        }
 
         let presented = current.viewController.showVC()
         if !presented {

@@ -18,7 +18,7 @@ public class APIWorldStateEvent: WorldStateEventProtocol, Decodable {
     public var aprilFools: String?
     public var gear: Bool
     public var season: String?
-    public var spriteSubstitutions: [String : [String : String]]?
+    public var spriteSubstitutions: [String: [String: String]]?
     
     enum CodingKeys: String, CodingKey {
         case event

@@ -123,9 +123,9 @@ struct LoginTextInput<Icon: View>: View {
                     .padding(.bottom, 6)
                     .foregroundStyle(.red500)
             }
-        }.onChange(of: isFocused) { _ in
+        }.onChange(of: isFocused) {
             lastFocusChange = Date()
-        }.onChange(of: text) { _ in
+        }.onChange(of: text) {
             lastInputChange = Date()
         }
     }
@@ -449,7 +449,7 @@ struct LoginScreen: View {
                                 .foregroundStyle(.white)
                         }
                     }.pickerStyle(.menu)
-                        .onChange(of: chosenServer) { _ in
+                        .onChange(of: chosenServer) {
                             let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate
                             appDelegate?.updateServer()
                         }

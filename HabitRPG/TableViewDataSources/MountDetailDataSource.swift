@@ -52,7 +52,9 @@ class MountDetailDataSource: StableDetailDataSource<MountProtocol, MountStableIt
                         })
                 }))
             .on(value: {[weak self](ownedMounts, mounts) in
-                guard !UserManager.shared.isLoggingOut else { return }
+                guard !UserManager.shared.isLoggingOut else {
+                    return
+                }
                 self?.sections[0].items.removeAll()
                 self?.sections[1].items.removeAll()
                 mounts.forEach({ (mount) in

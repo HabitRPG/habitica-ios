@@ -73,7 +73,9 @@ class MountOverviewViewController: StableOverviewViewController<MountProtocol, M
             stableRepository.getMount(key: item.searchKey)
                 .take(first: 1)
                 .on(value: {[weak self] mount in
-                    guard let mount = mount else { return }
+                    guard let mount = mount else {
+                        return
+                    }
                     let sheet = HostingBottomSheetController(rootView: MountBottomSheetView(
                         mount: mount,
                         owned: true,

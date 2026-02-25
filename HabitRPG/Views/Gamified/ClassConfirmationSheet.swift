@@ -11,7 +11,8 @@ import Habitica_Models
 
 struct ClassConfirmationSheet: View {
     @ObservedObject var themeService = ThemeService.shared
-    @Environment(\.presentationManager) var presentationManager
+    @Environment(\.presentationManager)
+    var presentationManager
     
     var selectedClass: HabiticaClass
     

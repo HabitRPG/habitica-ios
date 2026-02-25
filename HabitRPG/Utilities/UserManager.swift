@@ -53,7 +53,9 @@ class UserManager: NSObject {
     }
 
     func beginListening() {
-        guard !isLoggingOut else { return }
+        guard !isLoggingOut else {
+            return
+        }
         if !disposable.isDisposed {
             disposable.dispose()
         }
@@ -106,7 +108,9 @@ class UserManager: NSObject {
     }
     
     private func runCron(tasks: [TaskProtocol], uncompletedTaskCount: Int) {
-        guard !isLoggingOut else { return }
+        guard !isLoggingOut else {
+            return
+        }
         if (lastYesterdailyDialog?.timeIntervalSinceNow ?? -600) > -600 {
             return
         }

@@ -424,7 +424,6 @@ class SunburstView: UIView {
         dotLayers.removeAll()
 
         for index in 0..<dotCount {
-            let angle = (CGFloat(index) / CGFloat(dotCount)) * 2 * .pi
             let dotLayer = CAShapeLayer()
             let dotPath = UIBezierPath(
                 arcCenter: .zero,
