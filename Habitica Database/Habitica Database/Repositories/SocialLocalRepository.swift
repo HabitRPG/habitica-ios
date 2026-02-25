@@ -80,7 +80,6 @@ public class SocialLocalRepository: BaseLocalRepository {
         })
     }
     
-    
     public func deleteAllChallenges() {
         updateCall { realm in
             let allChallenges = realm.objects(RealmChallenge.self)
@@ -317,7 +316,6 @@ public class SocialLocalRepository: BaseLocalRepository {
         }
     }
     
-    
     public func getGroup(groupID: String) -> SignalProducer<GroupProtocol?, ReactiveSwiftRealmError> {
         return RealmGroup.findBy(query: "id == '\(groupID)'").reactive().map({ (groups, _) -> GroupProtocol? in
             return groups.first
@@ -359,7 +357,9 @@ public class SocialLocalRepository: BaseLocalRepository {
             query = RealmChallenge.findAll()
         }
         // swiftlint:disable:next force_unwrapping
-        return query!.sorted(by: [SortDescriptor(keyPath: "official", ascending: false), SortDescriptor(keyPath: "createdAt", ascending: false)]).reactive().map({ (value, changeset) -> ReactiveResults<[ChallengeProtocol]> in
+        return query!.sorted(by: [SortDescriptor(keyPath: "official", ascending: false), SortDescriptor(keyPath: "createdAt", ascending: false)])
+            .reactive()
+            .map({ (value, changeset) -> ReactiveResults<[ChallengeProtocol]> in
             return (value.map({ (challenge) -> ChallengeProtocol in return challenge }), changeset)
         })
     }

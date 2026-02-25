@@ -50,7 +50,6 @@ public class StableLocalRepository: ContentLocalRepository {
         } else {
             producer = RealmPet.findAll()
         }
-        // swiftlint:disable:next force_unwrapping
         return producer.sorted(by: [SortDescriptor(keyPath: sortKey, ascending: true)]).reactive().map({ (value, changeset) -> ReactiveResults<[PetProtocol]> in
             return (value.map({ (item) -> PetProtocol in return item }), changeset)
         })

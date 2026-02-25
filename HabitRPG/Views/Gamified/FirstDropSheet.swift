@@ -10,7 +10,8 @@ import SwiftUI
 
 struct FirstDropSheet: View {
     @ObservedObject var themeService = ThemeService.shared
-    @Environment(\.presentationManager) var presentationManager
+    @Environment(\.presentationManager)
+    var presentationManager
     let eggKey: String
     let potionKey: String
     

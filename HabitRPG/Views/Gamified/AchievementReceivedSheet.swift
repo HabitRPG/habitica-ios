@@ -10,7 +10,8 @@ import SwiftUI
 
 struct AchievementReceivedSheet<Title: View, Description: View>: View {
     @ObservedObject var themeService = ThemeService.shared
-    @Environment(\.presentationManager) var presentationManager
+    @Environment(\.presentationManager)
+    var presentationManager
 
     let key: String
     let isOnboarding: Bool

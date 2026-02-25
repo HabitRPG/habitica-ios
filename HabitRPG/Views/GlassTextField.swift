@@ -51,6 +51,7 @@ class GlassTextField: UIVisualEffectView {
         return CGSize(width: fieldSize.width + 32, height: fieldSize.height + 24)
     }
     
+    @discardableResult
     override func becomeFirstResponder() -> Bool {
         textField.becomeFirstResponder()
     }

@@ -322,7 +322,6 @@ extension ShapeStyle where Self == Color {
         return .gray700
     }
     
-    
     static var purple10: Color {
         return .purple10
     }
@@ -350,7 +349,6 @@ extension ShapeStyle where Self == Color {
     static var purple5060: Color {
         return .purple5060
     }
-    
     
     static var blackPurple50: Color {
         return .blackPurple50

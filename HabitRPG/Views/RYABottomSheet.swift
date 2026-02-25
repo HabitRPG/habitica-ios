@@ -234,7 +234,8 @@ struct RYATaskView: View {
 }
 
 struct RYABottomSheet: View, Dismissable {
-    @Environment(\.safeAreaInsets) var safeAreaInsets
+    @Environment(\.safeAreaInsets)
+    var safeAreaInsets
     
     @ObservedObject var themeService = ThemeService.shared
     var dismisser: Dismisser {

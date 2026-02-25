@@ -11,15 +11,24 @@ import SwiftUI
 extension Font.Weight {
     var asUIFontWeight: UIFont.Weight {
         switch self {
-        case .ultraLight: return .ultraLight
-        case .black: return .black
-        case .light: return .light
-        case .bold: return .bold
-        case .heavy: return .heavy
-        case .medium: return .medium
-        case .regular: return .regular
-        case .semibold: return .semibold
-        case .thin: return .thin
+        case .ultraLight:
+            return .ultraLight
+        case .black:
+            return .black
+        case .light:
+            return .light
+        case .bold:
+            return .bold
+        case .heavy:
+            return .heavy
+        case .medium:
+            return .medium
+        case .regular:
+            return .regular
+        case .semibold:
+            return .semibold
+        case .thin:
+            return .thin
         default:
             return .regular
         }

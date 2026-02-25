@@ -246,7 +246,9 @@ class NotificationManager {
 
     static func showPendingOnboardingAchievement(key: String) {
         var pending = UserDefaults.standard.stringArray(forKey: "pendingOnboardingAchievements") ?? []
-        guard pending.contains(key) else { return }
+        guard pending.contains(key) else {
+            return
+        }
 
         pending.removeAll { $0 == key }
         UserDefaults.standard.set(pending, forKey: "pendingOnboardingAchievements")

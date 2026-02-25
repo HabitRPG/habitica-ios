@@ -52,7 +52,7 @@ public class AuthenticatedCall: JsonNetworkCall {
     
     init(configuration: ServerConfigurationProtocol? = nil,
          httpMethod: HTTPMethod, httpHeaders: [String: String]? = AuthenticatedCall.jsonHeaders(),
-         endpoint: String, postData: Data? = nil,         errorHandler: NetworkErrorHandler? = nil,
+         endpoint: String, postData: Data? = nil, errorHandler: NetworkErrorHandler? = nil,
          needsAuthentication: Bool = true, ignoreEtag: Bool = false) {
         self.needsAuthentication = needsAuthentication
         customErrorHandler = errorHandler

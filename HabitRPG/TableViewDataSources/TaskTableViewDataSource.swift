@@ -97,7 +97,9 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         sections.append(ItemSection<TaskProtocol>())
         if configRepository.bool(variable: .moveAdventureGuide) {
             disposable.add(userRepository.getUser().on(value: {[weak self] user in
-                guard !UserManager.shared.isLoggingOut else { return }
+                guard !UserManager.shared.isLoggingOut else {
+                    return
+                }
                 self?.showingAdventureGuide = !(user.achievements?.hasCompletedOnboarding ?? true)
                 if self?.showingAdventureGuide == true {
                     self?.adventureGuideCompletedCount = user.achievements?.onboardingAchievements.filter({ $0.value }).count ?? 0

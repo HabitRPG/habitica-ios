@@ -147,7 +147,9 @@ class MenuNavigationBarView: UIView, Themeable {
     
     @objc
     public func configure(user: UserProtocol) {
-        guard user.isValid else { return }
+        guard user.isValid else {
+            return
+        }
         displayNameLabel.text = user.profile?.name
         if let username = user.username {
             usernameLabel.text = "@\(username)"

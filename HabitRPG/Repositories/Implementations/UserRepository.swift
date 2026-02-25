@@ -135,11 +135,15 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func runCron(checklistItems: [(TaskProtocol, ChecklistItemProtocol)], tasks: [TaskProtocol]) {
-        guard !UserManager.shared.isLoggingOut else { return }
+        guard !UserManager.shared.isLoggingOut else {
+            return
+        }
 
         var disposable: Disposable?
         getUser().take(first: 1).on(value: {[weak self]user in
-            guard !UserManager.shared.isLoggingOut else { return }
+            guard !UserManager.shared.isLoggingOut else {
+                return
+            }
             self?.localRepository.updateCall { _ in
                 user.needsCron = false
             }
@@ -306,7 +310,9 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             var hasFinalized = false
             let finalize = { [weak self] in
                 DispatchQueue.main.async {
-                    guard !hasFinalized else { return }
+                    guard !hasFinalized else {
+                        return
+                    }
                     hasFinalized = true
                     self?.finalizeLogout(userID: userID, completion: completion)
                 }
@@ -534,6 +540,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         }
     }
     
+    @discardableResult
     func cancelSubscription() -> Signal<UserProtocol?, Never> {
         return CancelSubscribeCall().objectSignal.flatMap(.latest) {[weak self] _ in
             return self?.retrieveUser(withTasks: false, forced: true) ?? Signal.empty

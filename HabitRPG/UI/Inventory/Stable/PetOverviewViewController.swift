@@ -78,7 +78,9 @@ class PetOverviewViewController: StableOverviewViewController<PetProtocol, PetOv
             )
             .take(first: 1)
             .on(value: {[weak self] (pet, ownedPets, ownedMounts, mounts) in
-                guard let pet = pet else { return }
+                guard let pet = pet else {
+                    return
+                }
                 let trained = ownedPets.value.first?.trained ?? 0
                 let mountExists = mounts.value.first != nil
                 let mountOwned = ownedMounts.value.first?.owned ?? false

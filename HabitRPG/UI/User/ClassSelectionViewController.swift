@@ -264,13 +264,33 @@ class ClassSelectionViewController: UIViewController, Themeable {
         self.selectedClass = habiticaClass
         switch habiticaClass {
         case .warrior:
-            configure(className: L10n.Classes.warrior, description: L10n.Classes.warriorDescription, textColor: .white, upperBackgroundColor: .red500, backgroundColor: .maroon100, buttonColor: .red1)
+            configure(className: L10n.Classes.warrior,
+                      description: L10n.Classes.warriorDescription,
+                      textColor: .white,
+                      upperBackgroundColor: .red500,
+                      backgroundColor: .maroon100,
+                      buttonColor: .red1)
         case .mage:
-            configure(className: L10n.Classes.mage, description: L10n.Classes.mageDescription, textColor: .blue1, upperBackgroundColor: .blue500, backgroundColor: UIColor.blue100, buttonColor: .blue1)
+            configure(className: L10n.Classes.mage,
+                      description: L10n.Classes.mageDescription,
+                      textColor: .blue1,
+                      upperBackgroundColor: .blue500,
+                      backgroundColor: UIColor.blue100,
+                      buttonColor: .blue1)
         case .healer:
-            configure(className: L10n.Classes.healer, description: L10n.Classes.healerDescription, textColor: .yellow1, upperBackgroundColor: .yellow500, backgroundColor: UIColor.yellow100, buttonColor: .yellow1)
+            configure(className: L10n.Classes.healer,
+                      description: L10n.Classes.healerDescription,
+                      textColor: .yellow1,
+                      upperBackgroundColor: .yellow500,
+                      backgroundColor: UIColor.yellow100,
+                      buttonColor: .yellow1)
         case .rogue:
-            configure(className: L10n.Classes.rogue, description: L10n.Classes.rogueDescription, textColor: .white, upperBackgroundColor: .purple600, backgroundColor: UIColor.purple300, buttonColor: UIColor.purple50)
+            configure(className: L10n.Classes.rogue,
+                      description: L10n.Classes.rogueDescription,
+                      textColor: .white,
+                      upperBackgroundColor: .purple600,
+                      backgroundColor: UIColor.purple300,
+                      buttonColor: UIColor.purple50)
         }
         warriorOptionView.isSelected = habiticaClass == .warrior
         mageOptionView.isSelected = habiticaClass == .mage

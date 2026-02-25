@@ -67,7 +67,8 @@ struct GiftSubscriptionPage: View {
                                                  instantGems: "24",
                                                  isSelected: PurchaseHandler.noRenewSubscriptionIdentifiers[2] == viewModel.selectedSubscription,
                                                  isGift: true)
-                        SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.noRenewSubscriptionIdentifiers[3])), recurring: Text(viewModel.titleFor(PurchaseHandler.noRenewSubscriptionIdentifiers[3])),
+                        SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.noRenewSubscriptionIdentifiers[3])),
+                                                 recurring: Text(viewModel.titleFor(PurchaseHandler.noRenewSubscriptionIdentifiers[3])),
                                                  tag: HStack(spacing: 0) {
                             Image(uiImage: Asset.flagFlap.image.withRenderingMode(.alwaysTemplate)).foregroundStyle(Color(hexadecimal: "77F4C7"))
                             Text("Popular").foregroundStyle(Color(UIColor.teal1)).font(.system(size: 12, weight: .semibold))

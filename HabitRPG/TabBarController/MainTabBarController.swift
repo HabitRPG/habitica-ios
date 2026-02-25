@@ -283,7 +283,9 @@ class MainTabBar: UITabBar, Themeable {
             buttons = platterView.subviews.compactMap { $0 as? UIControl }
         }
         buttons.sort { $0.frame.origin.x < $1.frame.origin.x }
-        guard index < buttons.count else { return nil }
+        guard index < buttons.count else {
+            return nil
+        }
         let button = buttons[index]
 
         if let imageView = findImageView(in: button) {

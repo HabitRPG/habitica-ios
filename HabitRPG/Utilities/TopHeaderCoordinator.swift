@@ -99,7 +99,10 @@ class TopHeaderCoordinator: NSObject {
         let existingInsets = scrollView?.contentInset
         var insets = UIEdgeInsets(top: navController.contentInset + contentInsetModifier.top, left: contentInsetModifier.left, bottom: contentInsetModifier.bottom, right: contentInsetModifier.right)
         if existingInsets?.bottom != 0 {
-            insets = UIEdgeInsets(top: navController.contentInset + ((existingInsets?.top ?? 0) - navController.contentInset) + contentInsetModifier.top, left: contentInsetModifier.left, bottom: (existingInsets?.bottom ?? 0) + contentInsetModifier.bottom, right: contentInsetModifier.right)
+            insets = UIEdgeInsets(top: navController.contentInset + ((existingInsets?.top ?? 0) - navController.contentInset) + contentInsetModifier.top,
+                                  left: contentInsetModifier.left,
+                                  bottom: (existingInsets?.bottom ?? 0) + contentInsetModifier.bottom,
+                                  right: contentInsetModifier.right)
         }
         scrollView?.contentInset = insets
         scrollView?.scrollIndicatorInsets = insets

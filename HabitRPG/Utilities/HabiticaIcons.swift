@@ -2439,12 +2439,9 @@ public class HabiticaIcons : NSObject {
         let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 28, height: 28), target: targetFrame)
         context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
         context.scaleBy(x: resizedFrame.width / 28, y: resizedFrame.height / 28)
-        let resizedShadowScale: CGFloat = min(resizedFrame.width / 28, resizedFrame.height / 28)
-
 
         //// Color Declarations
         let strokeColor = UIColor(red: 0.380, green: 0.200, blue: 0.706, alpha: 1.000)
-        let shadowTint = UIColor(red: 0.102, green: 0.094, blue: 0.114, alpha: 1.000)
         let fillColor39 = UIColor(red: 1, green: 1, blue: 1.000, alpha: 1.000)
         let strokeColor2 = UIColor(red: 1, green: 1, blue: 1.000, alpha: 1.000)
 

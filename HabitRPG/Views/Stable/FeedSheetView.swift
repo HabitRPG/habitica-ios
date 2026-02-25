@@ -82,7 +82,10 @@ struct FeedSheetView: View {
                         Image(uiImage: Asset.shop.image)
                         Text(L10n.Items.footerFoodTitle).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color(themeService.theme.secondaryTextColor))
                             .padding(.vertical, 1)
-                        Text(AttributedString(L10n.Items.footerFoodDescription).withHighlightWords(words: L10n.Locations.market)).font(.system(size: 14)).foregroundStyle(Color(themeService.theme.ternaryTextColor))
+                        Text(AttributedString(L10n.Items.footerFoodDescription)
+                            .withHighlightWords(words: L10n.Locations.market))
+                            .font(.system(size: 14))
+                            .foregroundStyle(Color(themeService.theme.ternaryTextColor))
                     }
                     .padding(.top, 16)
                     .multilineTextAlignment(.center)

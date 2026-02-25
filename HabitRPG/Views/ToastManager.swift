@@ -124,7 +124,7 @@ class ToastManager: NSObject {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + toast.rootView.options.delayDuration) {[weak self] in
             self?.present(toast: toast) {
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+toast.rootView.options.displayDuration) {[weak self] in
-                    self?.dismiss(toast: toast) { () -> Void in
+                    self?.dismiss(toast: toast) {
                         if self?.displayQueue.isEmpty == true {
                             return
                         }

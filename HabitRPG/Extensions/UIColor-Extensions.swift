@@ -371,6 +371,7 @@ extension Color {
         return UIColor(self)
     }
 
+    // swiftlint:disable:next large_tuple
     private func components() -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         let scanner = Scanner(string: self.description.trimmingCharacters(in: CharacterSet.alphanumerics.inverted))
         var hexNumber: UInt64 = 0

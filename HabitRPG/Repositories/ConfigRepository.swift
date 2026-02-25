@@ -180,7 +180,7 @@ enum ConfigVariable: Int {
             .showTaskGraphs,
             .advertiseTaskGraphs,
             .enableCronButton,
-            .hideChallenges,
+            .hideChallenges
         ]
     }
     // swiftlint:enable cyclomatic_complexity
