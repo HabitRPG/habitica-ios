@@ -53,7 +53,7 @@ struct PlusMinusStepperView<Icon: View>: View {
             }
                 .padding(.vertical, 11)
                 .padding(.horizontal, 31)
-                .frame(minWidth: 112, minHeight: 50)
+                .frame(minWidth: 112)
                 .background(Color(themeService.theme.windowBackgroundColor))
                 .clipShape(.capsule)
             Button {
@@ -64,6 +64,6 @@ struct PlusMinusStepperView<Icon: View>: View {
                 Image(systemName: "plus")
                     .scaledFont(size: 22, weight: .semibold)
             }.disabled((amount >= (maxAmount ?? .max)) || !isActive)
-        }
+        }.fixedSize(horizontal: false, vertical: true)
     }
 }
