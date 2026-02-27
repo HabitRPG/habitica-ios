@@ -510,7 +510,7 @@
 "quests.rage_attack" = "怒气攻击：%@";
 "groups.leader_challenges" = "只有队长才能创建挑战";
 "groups.assign_new_leader" = "选出新会长";
-"groups.guild_invitation_no_invitername" = "有人邀请你加入公会：**%@**";
+"groups.guild_invitation_no_invitername" = "有人邀请你加入团队：**%@**";
 "groups.guild_invitation_invitername" = "**@%@**邀请你加入公会：**%@**";
 "confirm" = "确认";
 "inventory.no_gems_left" = "你已购买了本月的所有宝石。更多宝石将在每月的前三天上架。感谢你的订阅！";
