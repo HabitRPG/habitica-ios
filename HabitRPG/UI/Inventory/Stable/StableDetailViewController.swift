@@ -52,13 +52,20 @@ class StableDetailViewController<ANIMAL: AnimalProtocol, ITEM, DS: StableDetailD
         let safeLeft = collectionView.safeAreaInsets.left
         let safeRight = collectionView.safeAreaInsets.right
         let viewWidth = Int(collectionView.frame.size.width - safeLeft - safeRight)
-        var count = Int(viewWidth / width)
+        var count = 0
+        var totalWidth = 0
+        while (totalWidth + width + 14) < viewWidth {
+            count += 1
+            if totalWidth > 0 {
+                totalWidth += 14
+            }
+            totalWidth += width
+        }
         if let inSection = datasource?.collectionView(collectionView, numberOfItemsInSection: section) {
             if inSection < count {
                 count = inSection
             }
         }
-        let totalWidth = width * count + (14 * (count-1))
         let spacing = CGFloat(viewWidth - totalWidth) / 2
         let extraPadding: CGFloat = safeLeft > 0 ? 10 : 0
         return UIEdgeInsets(top: 0, left: spacing + safeLeft + extraPadding, bottom: 0, right: spacing + safeRight + extraPadding)

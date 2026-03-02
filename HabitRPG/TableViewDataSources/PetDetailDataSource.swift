@@ -75,7 +75,9 @@ class PetDetailDataSource: StableDetailDataSource<PetProtocol, PetStableItem> {
                 guard !UserManager.shared.isLoggingOut else { return }
                 self?.sections[0].items.removeAll()
                 self?.sections[1].items.removeAll()
-                pets.forEach({ (pet) in
+                pets.sorted(by: { first, second in
+                    return (first.key ?? "") < (second.key ?? "")
+                }).forEach({ (pet) in
                     let item = PetStableItem(pet: pet, trained: ownedPets[pet.key ?? ""] ?? 0, canRaise: ownedMounts[pet.key ?? ""] ?? mounts[pet.key ?? ""] ?? false)
                     if pet.type == "premium" {
                         self?.sections[1].items.append(item)
