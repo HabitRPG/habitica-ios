@@ -66,10 +66,13 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         tableView.estimatedRowHeight = 90
         tableView.keyboardDismissMode = .interactive
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.insetsContentViewsToSafeArea = false
+        tableView.insetsLayoutMarginsFromSafeArea = false
+        tableView.contentInsetAdjustmentBehavior = .never
         
         #if !targetEnvironment(macCatalyst)
-        tableView.refreshControl = HabiticaRefresControl()
-        tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+            tableView.refreshControl = HabiticaRefresControl()
+            tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         #endif
         
         inputBar.delegate = self
@@ -132,11 +135,10 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         tableView.pin.all()
         let safearea = view.window?.safeAreaInsets ?? .zero
         var safeheight: CGFloat = (tabBarController?.tabBar.frame.size.height ?? safearea.bottom)
-        var keyboardOffset = (KeyboardManager.height > 0 ? KeyboardManager.height : safeheight) + 6
-        if (modalPresentationStyle == .pageSheet || modalPresentationStyle == .formSheet) && view.window?.traitCollection.isIPadFullSize == true {
-            safeheight = 0
+        var keyboardOffset = (KeyboardManager.height > 0 ? KeyboardManager.height : safeheight) + 12
+        if (modalPresentationStyle == .pageSheet || modalPresentationStyle == .formSheet) && traitCollection.isIPadFullSize == true {
             if (view.window?.bounds.size.height ?? 0) - KeyboardManager.height > view.bounds.size.height {
-                keyboardOffset = 0
+                keyboardOffset = safearea.bottom + 16
             } else {
                 keyboardOffset = KeyboardManager.height - ((view.window?.bounds.height ?? 0) -  (abs(view?.window?.convert(CGPoint(x: 0, y: 0), to: view).y ?? 0) + view.bounds.height))
             }
@@ -151,12 +153,13 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
             autocompleteHeight = 0
         }
 
-        var inputBarOffset = keyboardOffset + autocompleteHeight + inputBarHeight - safeheight
-        if tabBarController == nil {
-            inputBarOffset -= 4
-        }
-        tableView.contentInset.top = inputBarOffset
-        inputBarContainer.pin.left(safearea.left + 20).right(safearea.right + 20).height(inputBarHeight + autocompleteHeight + 10).bottom(keyboardOffset)
+        let inputBarOffset = keyboardOffset + autocompleteHeight + inputBarHeight + 10
+        tableView.contentInset.top = inputBarOffset + 16
+        tableView.contentInset.bottom = navigationController?.navigationBar.frame.totalHeight ?? 0
+        inputBarContainer.pin.left(safearea.left + 20)
+            .right(safearea.right + 20)
+            .height(inputBarHeight + autocompleteHeight + 10)
+            .bottom(keyboardOffset == 0 && safeheight == 0 ? safearea.bottom + 8 : keyboardOffset)
         inputBar.pin.start(8).end(-10).top().bottom()
         inputBar.inputTextView.contentInset = .zero
         if let acceptView = view.viewWithTag(999) {
