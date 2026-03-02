@@ -115,10 +115,19 @@ struct HatchSuggestionSheet: View {
         }
     }
     
+    @ViewBuilder
+    private var petIcon: some View {
+        if item.canRaise {
+            PixelArtView(name: "stable_Pet-\(item.pet?.egg ?? "")-\(item.pet?.potion ?? "")-outline")
+        } else {
+            PixelArtView(name: "stable_Pet-\(item.pet?.egg ?? "")-\(item.pet?.potion ?? "")").opacity(0.4)
+        }
+    }
+    
     var body: some View {
         GamifiedBottomSheet(upperContent: VStack(spacing: 25) {
             PetItemsFlowView(leftIcon: PixelArtView(name: "Pet_Egg_\(item.pet?.egg ?? "")"),
-                             middleIcon: PixelArtView(name: "stable_Pet-\(item.pet?.egg ?? "")-\(item.pet?.potion ?? "")-outline"),
+                             middleIcon: petIcon,
                              rightIcon: PixelArtView(name: "Pet_HatchingPotion_\(item.pet?.potion ?? "")"),
             isleftIconActive: ownedEggCount > 0,
             isRightIconActive: ownedPotionCount > 0)
