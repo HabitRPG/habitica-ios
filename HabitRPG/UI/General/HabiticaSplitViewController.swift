@@ -163,7 +163,7 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
         scrollView.isScrollEnabled = !showAsSplitView
         topHeaderCoordinator?.hideHeader = showAsSplitView
         if showAsSplitView {
-            let leftMultiplier = max(0.333, 375 / scrollView.frame.width)
+            let leftMultiplier = max(0.3, 375 / scrollView.frame.width)
             if leftViewWidthConstraint?.multiplier != leftMultiplier {
                 leftViewWidthConstraint = leftViewWidthConstraint?.setMultiplier(multiplier: leftMultiplier)
                 rightViewWidthConstraint = rightViewWidthConstraint?.setMultiplier(multiplier: 1-leftMultiplier)

@@ -247,6 +247,8 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
             self?.dataSource.filterState = newState
             self?.dataSource.updatePredicate()
         }))
+        sheet.modalPresentationStyle = .popover
+        sheet.popoverPresentationController?.sourceView = sender
         sheet.show()
     }
     
