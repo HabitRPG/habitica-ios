@@ -719,6 +719,13 @@ class UserProfileViewController: BaseHostingViewController<ProfilePage> {
         }
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { _ in
+            self.topHeaderCoordinator?.showHideHeader(show: false, animated: false)
+        })
+    }
+
     override func applyTheme(theme: any Theme) {
         super.applyTheme(theme: theme)
         navigationItem.leftBarButtonItem?.tintColor = theme.fixedTintColor
