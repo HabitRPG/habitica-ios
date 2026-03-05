@@ -446,6 +446,7 @@
 		29DDAC232E8140D9007EC4CD /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 29D048B92E3A641A004A6AAA /* RealmSwift */; };
 		29DDAC252E82C2CC007EC4CD /* StableDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDAC242E82C2C5007EC4CD /* StableDetailDataSource.swift */; };
 		29DDAC272E82F3FC007EC4CD /* GlassTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDAC262E82F3F7007EC4CD /* GlassTextField.swift */; };
+		29DE29E42F58421C0063A2CF /* ChallengesFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DE29E32F5842160063A2CF /* ChallengesFormViewController.swift */; };
 		29DF933D2EC640860047801F /* GamifiedBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF933C2EC640860047801F /* GamifiedBottomSheet.swift */; };
 		29DF93432ECC8A880047801F /* PetHatchedSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF93422ECC8A880047801F /* PetHatchedSheet.swift */; };
 		29DF93452ECCC3370047801F /* MountRaisedSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF93442ECCC3370047801F /* MountRaisedSheet.swift */; };
@@ -1156,6 +1157,7 @@
 		29DDAC202E79A74F007EC4CD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		29DDAC242E82C2C5007EC4CD /* StableDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableDetailDataSource.swift; sourceTree = "<group>"; };
 		29DDAC262E82F3F7007EC4CD /* GlassTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassTextField.swift; sourceTree = "<group>"; };
+		29DE29E32F5842160063A2CF /* ChallengesFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesFormViewController.swift; sourceTree = "<group>"; };
 		29DF933C2EC640860047801F /* GamifiedBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamifiedBottomSheet.swift; sourceTree = "<group>"; };
 		29DF93422ECC8A880047801F /* PetHatchedSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetHatchedSheet.swift; sourceTree = "<group>"; };
 		29DF93442ECCC3370047801F /* MountRaisedSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountRaisedSheet.swift; sourceTree = "<group>"; };
@@ -2669,6 +2671,7 @@
 		D9E02EC41E5E02E7002CFCE2 /* Challenges */ = {
 			isa = PBXGroup;
 			children = (
+				29DE29E32F5842160063A2CF /* ChallengesFormViewController.swift */,
 				49A84FAF1F9FC945003E2956 /* Details */,
 				D9E02EC51E5E0458002CFCE2 /* ChallengeTableViewController.swift */,
 			);
@@ -3714,6 +3717,7 @@
 				D9BB45CC1E76E0FC0002AE2E /* ToDoTableViewCell.swift in Sources */,
 				29706C8727D22CF3006EC139 /* LabeledProgressBar.swift in Sources */,
 				29701FE61F56DABC0097BBCC /* RoundedView.swift in Sources */,
+				29DE29E42F58421C0063A2CF /* ChallengesFormViewController.swift in Sources */,
 				29706C9627D64547006EC139 /* HabiticaApplication.swift in Sources */,
 				29B3FEB11F9A37E3000B12CF /* BaseSettingsViewController.swift in Sources */,
 				290B62A4207F818E007287C4 /* ItemsViewDataSource.swift in Sources */,

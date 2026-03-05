@@ -47,8 +47,8 @@ class ChallengeTableViewCell: UITableViewCell {
         otherPillsStack.removeAllArrangedSubviews()
         challenge.categories
             .compactMap { $0.name }
-            .filter { $0 != CategoryNameHelper.official }
-            .compactMap { CategoryNameHelper.localizedCategoryNameFor(name: $0) }
+            .filter { $0 != ChallengeCategory.official.rawValue }
+            .compactMap { ChallengeCategory.localizedCategoryNameFor(name: $0) }
             .enumerated()
             .forEach { idx, name in
                 let pill = PillView()

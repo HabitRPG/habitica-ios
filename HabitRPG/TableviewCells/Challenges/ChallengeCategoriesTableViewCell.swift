@@ -46,7 +46,7 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
     
     func createCategoryLabel(_ category: String) -> UILabel {
         let label = emptyTagLabel()
-        label.text = "  \(CategoryNameHelper.localizedCategoryNameFor(name: category) ?? category)  "
+        label.text = "  \(ChallengeCategory.localizedCategoryNameFor(name: category) ?? category)  "
         label.textColor = ThemeService.shared.theme.ternaryTextColor
         label.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
         label.translatesAutoresizingMaskIntoConstraints = false
