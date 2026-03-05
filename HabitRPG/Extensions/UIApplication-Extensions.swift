@@ -33,7 +33,8 @@ extension UIApplication {
     }
     
     func findKeyWindow() -> UIWindow? {
-        let windows = foregroundActiveScene?.windows
+        let scenes = connectedScenes.map { $0 as? UIWindowScene }.filter { $0 != nil }
+        let windows = (foregroundActiveScene ?? scenes.first ?? nil)?.windows
         return windows?.first(where: { $0.isKeyWindow }) ?? windows?.first
     }
     
