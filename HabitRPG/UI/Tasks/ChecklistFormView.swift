@@ -86,6 +86,8 @@ struct TaskFormChecklistView: View {
     @State var draggedItem: ChecklistItemProtocol?
     @State var isDragging: Bool = false
 
+    @State private var lastOnDrag = Date()
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(L10n.Tasks.Form.checklist.uppercased()).font(.system(size: 13, weight: .semibold)).foregroundStyle(Color(themeService.theme.quadTextColor)).padding(.leading, 14)
@@ -98,6 +100,10 @@ struct TaskFormChecklistView: View {
                                 }
                             }
                         }, focusItemId: focusItemId).onDrag({
+                            if lastOnDrag.timeIntervalSinceNow > -0.2 {
+                                return NSItemProvider(item: nil, typeIdentifier: "checklistitem")
+                            }
+                            lastOnDrag = .now
                             if self.draggedItem == nil {
                                 self.draggedItem = item
                                 isDragging = true
@@ -118,7 +124,6 @@ struct TaskFormChecklistView: View {
 }
 
 struct ChecklistDropDelegate: DropDelegate {
-
     let item: ChecklistItemProtocol
     @Binding var items: [ChecklistItemProtocol]
     @Binding var draggedItem: ChecklistItemProtocol?
