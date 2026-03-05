@@ -416,8 +416,13 @@ class RouterHandler {
         }
     }
     
+    private weak var cachedTabBarController: MainTabBarController?
+    
     private var tabbarController: MainTabBarController? {
-        return UIWindow.findViewController()
+        if cachedTabBarController == nil {
+            cachedTabBarController = UIWindow.findViewController()
+        }
+        return cachedTabBarController
     }
     
     private var selectedNavigationController: UINavigationController? {
