@@ -61,7 +61,7 @@ extension UIColor {
     @nonobjc static let gray300 = UIColor(red: 165.0 / 255.0, green: 161.0 / 255.0, blue: 172.0 / 255.0, alpha: 1.0)
     @nonobjc static let gray400 = UIColor(red: 195.0 / 255.0, green: 192.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0)
     @nonobjc static let gray500 = UIColor(red: 225.0 / 255.0, green: 224.0 / 255.0, blue: 227.0 / 255.0, alpha: 1.0)
-    @nonobjc static let gray600 = UIColor(red: 232.0 / 255.0, green: 231.0 / 255.0, blue: 233.0 / 255.0, alpha: 1.0)
+    @nonobjc static let gray600 = UIColor(red: 237.0 / 255.0, green: 236.0 / 255.0, blue: 238.0 / 255.0, alpha: 1.0)
     @nonobjc static let gray700 = UIColor(white: 249.0 / 255.0, alpha: 1.0)
     
     @nonobjc static let purple50 = UIColor(red: 54.0 / 255.0, green: 32.0 / 255.0, blue: 93.0 / 255.0, alpha: 1.0)
@@ -76,6 +76,8 @@ extension UIColor {
     @nonobjc static let blackPurple100 = UIColor(red: 0.2, green: 0.19, blue: 0.23, alpha: 1.0)
     @nonobjc static let purple10 = UIColor(red: 0.18, green: 0.11, blue: 0.31, alpha: 1.0)
     
+    @nonobjc static let pink500 = UIColor(red: 255.0 / 255.0, green: 192.0 / 255.0, blue: 222.0 / 255.0, alpha: 1.0)
+
     @nonobjc static let tier1 = UIColor(red: 196.0 / 255.0, green: 40.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
     @nonobjc static let tier2 = UIColor(red: 176.0 / 255.0, green: 21.0 / 255.0, blue: 21.0 / 255.0, alpha: 1.0)
     @nonobjc static let tier3 = UIColor(red: 215.0 / 255.0, green: 14.0 / 255.0, blue: 20.0 / 255.0, alpha: 1.0)
@@ -320,7 +322,6 @@ extension ShapeStyle where Self == Color {
         return .gray700
     }
     
-    
     static var purple10: Color {
         return .purple10
     }
@@ -348,7 +349,6 @@ extension ShapeStyle where Self == Color {
     static var purple5060: Color {
         return .purple5060
     }
-    
     
     static var blackPurple50: Color {
         return .blackPurple50

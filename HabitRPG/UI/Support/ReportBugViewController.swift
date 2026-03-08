@@ -72,6 +72,7 @@ class ReportBugViewController: BaseUIViewController, MFMailComposeViewController
         updateAppBackground.cornerRadius = UIConstants.largeCornerRadius
         clearCacheBackground.cornerRadius = UIConstants.largeCornerRadius
         manualSyncBackground.cornerRadius = UIConstants.largeCornerRadius
+        moreHelpButton.cornerRadius = UIConstants.mediumCornerRadius
     }
     
     override func populateText() {

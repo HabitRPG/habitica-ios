@@ -12,6 +12,7 @@ import ReactiveSwift
 
 class AttributePointsViewController: BaseUIViewController {
     
+    @IBOutlet weak var widthConstraint: NSLayoutConstraint!
     @IBOutlet weak var bulkAllocationView: UIView!
     @IBOutlet weak var bulkDistributeButtonWrapper: GradientView!
 
@@ -152,10 +153,7 @@ class AttributePointsViewController: BaseUIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        pointsToAllocateLeftView.image = HabiticaIcons.imageOfAttributeSparklesLeft
-        pointsToAllocateRightView.image = HabiticaIcons.imageOfAttributeSparklesRight
-        
+    
         strengthStatsView.allocateAction = { [weak self] in self?.allocate("str") }
         intelligenceStatsView.allocateAction = { [weak self] in self?.allocate("int") }
         constitutionStatsView.allocateAction = { [weak self] in self?.allocate("con") }
@@ -167,7 +165,8 @@ class AttributePointsViewController: BaseUIViewController {
 
         pointsToAllocateLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openBulkAssignView)))
         pointsToAllocateLabel.horizontalPadding = 12
-        pointsToAllocateLabel.verticalPadding = 6
+        pointsToAllocateLabel.verticalPadding = 2
+        pointsToAllocateLabel.font = .systemFont(ofSize: 15, weight: .semibold)
     }
     
     override func applyTheme(theme: Theme) {
@@ -181,8 +180,11 @@ class AttributePointsViewController: BaseUIViewController {
         statGuideWrapper.backgroundColor = theme.windowBackgroundColor
         statGuideWrapper.cornerRadius = UIConstants.largeCornerRadius
         distributeEvenlyLabel.textColor = theme.primaryTextColor
+        distributeEvenlyDescription.textColor = theme.secondaryTextColor
         distributeTasksLabel.textColor = theme.primaryTextColor
+        distributeTaskDescription.textColor = theme.secondaryTextColor
         distributeClassLabel.textColor = theme.primaryTextColor
+        distributeClassDescription.textColor = theme.secondaryTextColor
         view.backgroundColor = theme.contentBackgroundColor
         statGuideTitleLabel.textColor = theme.primaryTextColor
         characterBuildTitleLabel.textColor = theme.primaryTextColor
@@ -198,6 +200,13 @@ class AttributePointsViewController: BaseUIViewController {
             perceptionStatsView.tintColor = UIColor.purple300
             perceptionTitleLabel.textColor = UIColor.purple300
         }
+        strengthStatsView.attributeBackgroundColor = .red100
+        strengthStatsView.attributeTextColor = .red1
+        intelligenceStatsView.attributeBackgroundColor = .blue100
+        intelligenceStatsView.attributeTextColor = .blue1
+        constitutionStatsView.attributeBackgroundColor = .yellow100
+        constitutionStatsView.attributeTextColor = .yellow1
+        
     }
     
     private func setupRefreshControl() {
@@ -310,6 +319,10 @@ class AttributePointsViewController: BaseUIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        let safeLeft = view.safeAreaInsets.left
+        let safeRight = view.safeAreaInsets.right
+        let totalPadding = max(16, safeLeft) + max(16, safeRight)
+        widthConstraint.constant = scrollView.bounds.width - totalPadding
         super.viewDidLayoutSubviews()
         pointsToAllocateLabel.layer.cornerRadius = pointsToAllocateLabel.frame.size.height/2
         bulkDistributeButtonWrapper.layer.cornerRadius = bulkDistributeButtonWrapper.frame.size.height/2
@@ -355,7 +368,8 @@ class AttributePointsViewController: BaseUIViewController {
                                                                                     initialIntelligence: stats.intelligence,
                                                                                     initialConstitution: stats.constitution,
                                                                                     initialPerception: stats.perception,
-                                                                                    maxToAllocate: stats.points))
+                                                                                    maxToAllocate: stats.points),
+                                                  allowLargeDetent: true)
         sheet.show()
     }
 }

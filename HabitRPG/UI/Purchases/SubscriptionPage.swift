@@ -463,6 +463,7 @@ struct SubscriptionPage: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: .infinity)
+                        .ignoresSafeArea()
                 }
                 Group {
                     if viewModel.presentationPoint == nil {
@@ -497,8 +498,8 @@ struct SubscriptionPage: View {
             }
             .foregroundStyle(textColor)
             .padding(.top, 16)
-            .background(backgroundColor.ignoresSafeArea(.all, edges: .top).padding(.bottom, 4))
-            .ignoresSafeArea()
+            .background(backgroundColor.ignoresSafeArea().padding(.bottom, 4))
+            .ignoresSafeArea(.all, edges: .vertical)
         }
 }
 
@@ -512,7 +513,7 @@ struct ScrollableSubscriptionPage: View {
                     .id("page")
             }
             .frame(maxHeight: .infinity)
-            .onChange(of: viewModel.scrollToTop) { _ in
+            .onChange(of: viewModel.scrollToTop) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                     withAnimation {
                         reader.scrollTo("page", anchor: .top)
@@ -520,7 +521,7 @@ struct ScrollableSubscriptionPage: View {
                 })
             }
         }
-        .background(Color.purple400.ignoresSafeArea(.all, edges: .bottom).padding(.top, 200))
+        .background(Color.purple400.ignoresSafeArea().padding(.top, 200))
     }
 }
 
@@ -579,14 +580,14 @@ class SubscriptionModalViewController: HostingBottomSheetController<ScrollableSu
     }
     
     func giftSubscriptionButtonTapped() {
-        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
+        let alertController = GiftingAlertController(title: L10n.giftSubscription, message: L10n.giftGemsAlertText) { username in
             RouterHandler.shared.handle(.giftSubscription(username: username))
-        }, saveButtonTitle: L10n.continue)
-        present(navController, animated: true, completion: nil)
+        }
+        alertController.show()
     }
 }
 
-class SubscriptionPageController: UIHostingController<ScrollableSubscriptionPage> {
+class SubscriptionPageController: BaseHostingViewController<ScrollableSubscriptionPage> {
     let viewModel: SubscriptionViewModel
     let userRepository = UserRepository()
 
@@ -613,6 +614,15 @@ class SubscriptionPageController: UIHostingController<ScrollableSubscriptionPage
         super.init(coder: aDecoder, rootView: ScrollableSubscriptionPage(viewModel: viewModel))
     }
     
+    override func applyTheme(theme: any Theme) {
+        super.applyTheme(theme: theme)
+        if #unavailable(iOS 26.0) {
+            navigationController?.navigationBar.backgroundColor = .purple300
+            navigationController?.navigationBar.barTintColor = .purple300
+            navigationController?.navigationBar.isTranslucent = false
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .purple300
@@ -627,11 +637,9 @@ class SubscriptionPageController: UIHostingController<ScrollableSubscriptionPage
     }
     
     func giftSubscriptionButtonTapped() {
-        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                RouterHandler.shared.handle(.giftSubscription(username: username))
-            })
-        }, saveButtonTitle: L10n.continue)
-        present(navController, animated: true, completion: nil)
+        let alertController = GiftingAlertController(title: L10n.giftSubscription, message: L10n.giftGemsAlertText) { username in
+            RouterHandler.shared.handle(.giftSubscription(username: username))
+        }
+        alertController.show()
     }
 }

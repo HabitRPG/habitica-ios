@@ -256,9 +256,14 @@ struct ArmoireView: View {
                                         repetitions: 20,
                                         repetitionInterval: 0.1)
                 }
-                    PixelArtView(source: viewModel.icon)
+                Group {
+                    if viewModel.type == "experience" {
+                        Image(Asset.armoireExperience.name)
+                    } else {
+                        PixelArtView(source: viewModel.icon)
+                    }
+                }
                         .frame(width: viewModel.iconWidth, height: viewModel.iconHeight)
-                        .opacity(1)
                         .offset(y: isBobbing ? 5 : -5)
                     .frame(width: 158, height: 158)
                     .background(Color(UIColor.gray700))
@@ -337,7 +342,8 @@ struct ArmoireView: View {
                                 .frame(minHeight: 60)
                                 .frame(maxWidth: .infinity)
                                 .background(LinearGradient(colors: gradientColors, startPoint: .leading, endPoint: .trailing))
-                                .overlay(RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius).stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
+                                .overlay(RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius)
+                                    .stroke(LinearGradient(colors: gradientColors, startPoint: .trailing, endPoint: .leading), lineWidth: 3))
                                 .cornerRadius(UIConstants.largeCornerRadius)
                         })
                         .frame(maxWidth: 600)
@@ -461,20 +467,6 @@ class ArmoireViewController: UIHostingController<ArmoireView> {
         viewModel.key = key ?? ""
         if let value = value {
             viewModel.value = value
-        }
-    }
-    
-    func show() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            if var topController = UIApplication.topViewController() {
-                if let tabBarController = topController.tabBarController {
-                    topController = tabBarController
-                }
-                self.modalTransitionStyle = .crossDissolve
-                self.modalPresentationStyle = .overCurrentContext
-                topController.present(self, animated: true) {
-                }
-            }
         }
     }
 }

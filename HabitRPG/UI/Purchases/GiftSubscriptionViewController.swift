@@ -37,7 +37,7 @@ struct GiftSubscriptionPage: View {
                                 .fill()
                                 .foregroundStyle(Color(UIColor.purple200))
                                 .frame(height: 126)
-                                .cornerRadius(UIConstants.mediumCornerRadius)
+                                .cornerRadius(UIConstants.largeCornerRadius)
                                 .padding(.vertical, 4).onTapGesture {
                                     withAnimation {
                                         viewModel.selectedSubscription = sub
@@ -48,7 +48,7 @@ struct GiftSubscriptionPage: View {
                     Rectangle()
                         .foregroundStyle(.white)
                         .frame(height: 126)
-                        .cornerRadius(UIConstants.mediumCornerRadius)
+                        .cornerRadius(UIConstants.largeCornerRadius)
                         .offset(y: 4.0 + (CGFloat(viewModel.availableSubscriptions.firstIndex(of: viewModel.selectedSubscription) ?? 0) * 134.0))
                         .animation(.interpolatingSpring(stiffness: 500, damping: 55), value: viewModel.selectedSubscription)
                     VStack(spacing: 0) {
@@ -67,7 +67,8 @@ struct GiftSubscriptionPage: View {
                                                  instantGems: "24",
                                                  isSelected: PurchaseHandler.noRenewSubscriptionIdentifiers[2] == viewModel.selectedSubscription,
                                                  isGift: true)
-                        SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.noRenewSubscriptionIdentifiers[3])), recurring: Text(viewModel.titleFor(PurchaseHandler.noRenewSubscriptionIdentifiers[3])),
+                        SubscriptionOptionViewUI(price: Text(viewModel.priceFor(PurchaseHandler.noRenewSubscriptionIdentifiers[3])),
+                                                 recurring: Text(viewModel.titleFor(PurchaseHandler.noRenewSubscriptionIdentifiers[3])),
                                                  tag: HStack(spacing: 0) {
                             Image(uiImage: Asset.flagFlap.image.withRenderingMode(.alwaysTemplate)).foregroundStyle(Color(hexadecimal: "77F4C7"))
                             Text("Popular").foregroundStyle(Color(UIColor.teal1)).font(.system(size: 12, weight: .semibold))

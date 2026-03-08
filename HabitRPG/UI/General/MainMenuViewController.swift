@@ -205,15 +205,20 @@ class MainMenuViewController: BaseTableViewController {
 
     private var user: UserProtocol? {
         didSet {
+            guard user?.isValid == true else {
+                return
+            }
             if let user = self.user {
                 navbarView.configure(user: user)
             }
             let statsItem = menuItem(withKey: .stats)
             if user?.preferences?.disableClasses == true {
                 statsItem.isHidden = true
+            } else if (user?.stats?.level ?? 0) >= 10 && user?.flags?.classSelected == false {
+                statsItem.isHidden = true
             } else {
                 statsItem.isHidden = false
-                if user?.stats?.level ?? 0 < 10 || user?.flags?.classSelected == false {
+                if user?.stats?.level ?? 0 < 10 {
                     statsItem.subtitle = L10n.unlocksLevelTen
                     statsItem.isDisabled = true
                 } else {
@@ -280,6 +285,7 @@ class MainMenuViewController: BaseTableViewController {
     private static let subscriptionFooterTag = 11111
     
     fileprivate func setupFooter() {
+        stretchView.isHidden = true
         if configRepository.bool(variable: .showSubscriptionBanner) {
             if tableView.tableFooterView?.tag == MainMenuViewController.subscriptionFooterTag {
                 return
@@ -296,6 +302,7 @@ class MainMenuViewController: BaseTableViewController {
                 }
                 let view = PromoMenuView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 168))
                 promo.configurePromoMenuView(view: view)
+                stretchView.isHidden = false
                 stretchView.startColor = promo.gradientStart ?? promo.backgroundColor
                 stretchView.endColor = promo.gradientEnd ?? promo.backgroundColor
                 stretchView.diagonalMode = true
@@ -315,6 +322,7 @@ class MainMenuViewController: BaseTableViewController {
                 tableView.tableFooterView = view
             } else {
                 tableView.tableFooterView = nil
+                stretchView.isHidden = false
             }
         }
     }
@@ -768,19 +776,14 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     func giftSubscriptionButtonTapped() {
-        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
-            self.giftRecipientUsername = username
-            self.perform(segue: StoryboardSegue.Main.openGiftSubscriptionDialog)
-        }, saveButtonTitle: L10n.continue)
-        present(navController, animated: true, completion: nil)
+        let alertController = GiftingAlertController(title: L10n.giftSubscription, message: L10n.giftGemsAlertText) { username in
+            RouterHandler.shared.handle(.giftSubscription(username: username))
+        }
+        alertController.show()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == StoryboardSegue.Main.openGiftSubscriptionDialog.rawValue {
-            let navigationController = segue.destination as? UINavigationController
-            let giftSubscriptionController = navigationController?.topViewController as? GiftSubscriptionViewController
-            giftSubscriptionController?.giftRecipientUsername = giftRecipientUsername
-        } else if segue.identifier == StoryboardSegue.Main.showMarketSegue.rawValue {
+        if segue.identifier == StoryboardSegue.Main.showMarketSegue.rawValue {
             (segue.destination as? ShopViewController)?.shopIdentifier = Constants.MarketKey
         } else if segue.identifier == StoryboardSegue.Main.showQuestShopSegue.rawValue {
             (segue.destination as? ShopViewController)?.shopIdentifier = Constants.QuestShopKey

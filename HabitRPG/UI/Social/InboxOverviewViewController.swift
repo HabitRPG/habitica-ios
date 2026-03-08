@@ -32,6 +32,9 @@ class InboxOverviewViewController: BaseTableViewController {
         
         if #unavailable(iOS 26.0) {
             doneButton.style = .done
+        } else {
+            tableView.topEdgeEffect.isHidden = true
+            tableView.bottomEdgeEffect.isHidden = true
         }
         
         #if !targetEnvironment(macCatalyst)
@@ -126,7 +129,7 @@ class InboxOverviewViewController: BaseTableViewController {
             errorView.isHidden = true
             activityIndicator.startAnimating()
             if let username = usernameTextField.text {
-                self?.socialRepository.retrieveMember(userID: username).on(
+                self?.socialRepository.retrieveMember(userID: username, handleErrors: false).on(
                     value: { member in
                         foundUser = true
                         self?.newMessageUsername = username

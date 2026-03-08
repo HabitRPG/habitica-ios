@@ -15,7 +15,8 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
     @IBOutlet weak var rightViewWidthConstraint: NSLayoutConstraint?
     @IBOutlet weak var separatorView: UIView!
     
-    private let segmentedWrapper = UIVisualEffectView()
+    private let segmentedWrapper = UIView()
+    private let segmentedEffectView = UIVisualEffectView()
     internal let segmentedControl = UISegmentedControl(items: ["", ""])
     private var isInitialSetup = true
     var showAsSplitView = false
@@ -30,12 +31,13 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(self, action: #selector(HabiticaSplitViewController.switchView(_:)), for: .valueChanged)
         segmentedControl.isHidden = false
-        segmentedWrapper.contentView.addSubview(segmentedControl)
+        segmentedEffectView.contentView.addSubview(segmentedControl)
+        segmentedWrapper.addSubview(segmentedEffectView)
         
         if #available(iOS 26.0, *) {
             let glassEffect = UIGlassEffect()
-            segmentedWrapper.effect = glassEffect
-            segmentedWrapper.cornerConfiguration = .capsule()
+            segmentedEffectView.effect = glassEffect
+            segmentedEffectView.cornerConfiguration = .capsule()
         }
         
         topHeaderCoordinator?.alternativeHeader = segmentedWrapper
@@ -52,23 +54,63 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
         ThemeService.shared.addThemeable(themable: self)
     }
     
+    override func applyTheme(theme: any Theme) {
+        super.applyTheme(theme: theme)
+        if #unavailable(iOS 26.0) {
+            segmentedWrapper.backgroundColor = theme.contentBackgroundColor
+        }
+    }
+    
     override func viewWillLayoutSubviews() {
-        layoutHeader()
         super.viewWillLayoutSubviews()
+        layoutHeader()
+    }
+
+    override func viewSafeAreaInsetsDidChange() {
+        super.viewSafeAreaInsetsDidChange()
+        layoutHeader()
     }
     
     func layoutHeader() {
         let size = segmentedControl.intrinsicContentSize
-        segmentedWrapper.frame = CGRect(x: 8, y: 0, width: view.frame.width - 16, height: size.height + 8)
-        segmentedControl.pin.horizontally(4).vertically(4)
+        var safeLeft = view.safeAreaInsets.left
+        if safeLeft == 0 {
+            safeLeft = 8
+        }
+        var safeRight = view.safeAreaInsets.right
+        if safeRight == 0 {
+            safeRight = 8
+        }
+        let wrapperPadding: CGFloat
+        let verticalPadding: CGFloat = 2
+        let contentInsetExtra: CGFloat
+        let isLandscape = traitCollection.verticalSizeClass == .compact
+        if #available(iOS 26.0, *) {
+            wrapperPadding = isLandscape ? 20 : 0
+            contentInsetExtra = isLandscape ? 24 : 8
+        } else {
+            wrapperPadding = 0
+            contentInsetExtra = 8
+        }
+        segmentedWrapper.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: size.height + 8)
+        segmentedEffectView.frame = CGRect(x: safeLeft, y: wrapperPadding, width: view.frame.width - safeLeft - safeRight, height: size.height + verticalPadding*2)
+        segmentedControl.pin.horizontally(4).vertically(verticalPadding)
         scrollView.subviews.forEach { subview in
             var subviews: [UIView] = subview.subviews
             while !subviews.isEmpty && !(subviews.first is UIScrollView) {
                 subviews = subviews.first?.subviews ?? []
             }
             if let scroll = subviews.first as? UIScrollView {
-                scroll.contentInset = UIEdgeInsets(top: view.safeAreaInsets.top + size.height + 12, left: view.safeAreaInsets.left, bottom: view.safeAreaInsets.bottom, right: view.safeAreaInsets.right)
-                scroll.scrollIndicatorInsets = UIEdgeInsets(top: size.height + 8, left: 0, bottom: 0, right: 0)
+                if scroll.transform != .identity {
+                    return
+                }
+                let oldTopInset = scroll.contentInset.top
+                let newTopInset = view.safeAreaInsets.top + size.height + contentInsetExtra
+                scroll.contentInset = UIEdgeInsets(top: newTopInset, left: 0, bottom: view.safeAreaInsets.bottom, right: 0)
+                scroll.scrollIndicatorInsets = UIEdgeInsets(top: size.height + wrapperPadding, left: 0, bottom: 0, right: 0)
+                if oldTopInset != newTopInset && scroll.contentOffset.y > -newTopInset && scroll.contentOffset.y <= -oldTopInset + 10 {
+                    scroll.contentOffset.y = -newTopInset
+                }
             }
         }
     }

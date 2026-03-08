@@ -20,11 +20,11 @@ class RealmGearSet: Object, GearSetProtocol {
         return "key"
     }
     
-    convenience init(_ po: GearSetProtocol) {
+    convenience init(_ protocolObject: GearSetProtocol) {
         self.init()
-        key = po.key
-        text = po.text
-        start = po.start
-        end = po.end
+        key = protocolObject.key
+        text = protocolObject.text
+        start = protocolObject.start
+        end = protocolObject.end
     }
 }

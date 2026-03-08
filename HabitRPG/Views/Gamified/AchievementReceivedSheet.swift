@@ -10,7 +10,8 @@ import SwiftUI
 
 struct AchievementReceivedSheet<Title: View, Description: View>: View {
     @ObservedObject var themeService = ThemeService.shared
-    @Environment(\.presentationManager) var presentationManager
+    @Environment(\.presentationManager)
+    var presentationManager
 
     let key: String
     let isOnboarding: Bool
@@ -27,17 +28,16 @@ struct AchievementReceivedSheet<Title: View, Description: View>: View {
         })
             Text(L10n.youGotAchievement)
                 .scaledFont(size: 22, weight: .bold)
-                .foregroundStyle(Color.yellow1)
+                .foregroundStyle(Color.orange1)
                 .padding(.horizontal, 50)
+                .fixedSize(horizontal: false, vertical: true)
         }, title: text, description: description, buttons: {
             HabiticaButtonUI(label: Text(L10n.onwards), color: Color(themeService.theme.fixedTintColor)) {
                 presentationManager.dismiss()
             }
             if isOnboarding {
                 HabiticaButtonUI(label: Text(L10n.viewOnboardingTasks).foregroundStyle(Color(themeService.theme.primaryTextColor)), color: Color(themeService.theme.offsetBackgroundColor)) {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        RouterHandler.shared.handle(urlString: "/user/onboarding")
-                    }
+                    RouterHandler.shared.handle(urlString: "/user/onboarding")
                     presentationManager.dismiss()
                 }
             }

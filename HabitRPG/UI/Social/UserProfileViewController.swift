@@ -55,7 +55,7 @@ struct ValueBarProgressStyle: ProgressViewStyle {
     var gradientEnd: Color
     
     func makeBody(configuration: Configuration) -> some View {
-        Capsule().fill(Color(themeService.theme.offsetBackgroundColor))
+        Capsule().fill(Color(themeService.theme.contentBackgroundColorDimmed))
             .overlay(alignment: .leading) {
                 GeometryReader { proxy in
                     Capsule().fill(
@@ -179,10 +179,11 @@ struct StatsViewUI: View {
     
     @ViewBuilder
     func makeEntry(value: Int, name: String) -> some View {
-        VStack {
+        VStack(spacing: 2) {
             Text("\(value)").scaledFont(size: 22, weight: .semibold)
             Text(name).scaledFont(size: 13)
         }
+        .foregroundStyle(Color(themeService.theme.secondaryTextColor))
     }
     
     var body: some View {
@@ -195,7 +196,7 @@ struct StatsViewUI: View {
             .scaledFont(size: 22, weight: .bold)
             .padding(.vertical, 8)
             .padding(.horizontal, 26)
-            .frame(minHeight: 28)
+            .frame(minHeight: 43)
             .background(upperBackgroundColor)
             .foregroundStyle(upperTextColor)
             HStack {
@@ -208,8 +209,7 @@ struct StatsViewUI: View {
                 Spacer()
                 makeEntry(value: allocatedValue, name: L10n.allocated)
                 Spacer()
-            }.padding(.vertical, 16)
-                .foregroundStyle(Color(themeService.theme.ternaryTextColor))
+            }.padding(.vertical, 20)
         }.background(Color(themeService.theme.windowBackgroundColor))
             .cornerRadius(UIConstants.largeCornerRadius)
     }
@@ -220,6 +220,12 @@ struct ProfilePage: View {
     @ObservedObject fileprivate var viewModel: ProfileViewModel
     
     @State private var showEquipmentCostume = "equipment"
+    
+    private func copyToClipboard(title: String, value: String) {
+        let pasteboard = UIPasteboard.general
+        pasteboard.string = value
+        ToastManager.show(text: L10n.copiedXToClipboard(title), color: .green)
+    }
     
     private func classTextColor(className: String) -> Color {
         if themeService.theme.isDark {
@@ -298,28 +304,32 @@ struct ProfilePage: View {
                                 }
                             }.scaledFont(size: 12, weight: .black)
                             if let stats = member.stats {
+                                let isDark = themeService.theme.isDark
                                 HStack(spacing: 8) {
-                                    Image(uiImage: themeService.theme.isDark ? HabiticaIcons.imageOfHeartDarkBg : HabiticaIcons.imageOfHeartLightBg)
+                                    Image(uiImage: HabiticaIcons.imageOfHeartLightBg)
+                                        .opacity(isDark ? 0.8 : 1)
                                         .frame(width: 28)
                                     ValueBar(value: stats.health, maxValue: stats.maxHealth, leadingLabel: Text("HP"), barStartColor: .red100, barEndColor: .orange100)
-                                        .foregroundStyle(Color.maroon100)
+                                        .foregroundStyle(isDark ? .maroon500 : Color.maroon100)
                                 }
                                 HStack(spacing: 8) {
                                     Image(uiImage: HabiticaIcons.imageOfExperience)
+                                        .opacity(isDark ? 0.8 : 1)
                                         .frame(width: 28)
                                     ValueBar(value: stats.experience, maxValue: stats.toNextLevel, leadingLabel: Text("EXP"), barStartColor: .orange100, barEndColor: .yellow100)
-                                        .foregroundStyle(Color.yellow1)
+                                        .foregroundStyle(isDark ? .yellow500 : Color.yellow1)
                                 }
                                 HStack(spacing: 8) {
                                     Image(uiImage: HabiticaIcons.imageOfMagic)
+                                        .opacity(isDark ? 0.8 : 1)
                                         .frame(width: 28)
                                     ValueBar(value: stats.mana, maxValue: stats.maxMana, leadingLabel: Text("MP"), barStartColor: .blue100, barEndColor: .teal100)
-                                        .foregroundStyle(Color.blue10)
+                                        .foregroundStyle(isDark ? .blue500 : Color.blue10)
                                 }
                             }
                         }.frame(maxWidth: .infinity)
-                    }.profileContainer(spacing: 15)
-                    
+                    }.padding(.horizontal, 15)
+
                     VStack(spacing: 2) {
                         Text(member.profile?.name ?? "")
                             .scaledFont(size: 22, weight: .bold)
@@ -348,7 +358,7 @@ struct ProfilePage: View {
                                 Text("@\(viewModel.member?.username ?? "")")
                             }.frame(maxWidth: .infinity, alignment: .leading)
                             Button {
-                                
+                                copyToClipboard(title: L10n.username, value: viewModel.member?.username ?? "")
                             } label: {
                                 Image(systemName: "document.on.document")
                             }.buttonStyle(.borderless)
@@ -362,7 +372,7 @@ struct ProfilePage: View {
                                 Text("\(viewModel.member?.id ?? "")")
                             }.frame(maxWidth: .infinity, alignment: .leading)
                             Button {
-                                
+                                copyToClipboard(title: L10n.userID, value: viewModel.member?.id ?? "")
                             } label: {
                                 Image(systemName: "document.on.document")
                             }.buttonStyle(.borderless)
@@ -380,6 +390,12 @@ struct ProfilePage: View {
                     
                     if let photoUrl = viewModel.member?.profile?.photoUrl {
                         KFImage(URL(string: photoUrl))
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: .infinity, maxHeight: 400)
+                            .padding(.horizontal, 13)
+                            .padding(13)
+                            .cornerRadius(UIConstants.largeCornerRadius)
                     }
                     
                     Text(L10n.equippedGear)
@@ -397,16 +413,18 @@ struct ProfilePage: View {
                     Text(L10n.Stable.petsAndMounts)
                         .scaledFont(size: 22, weight: .bold)
                         .padding(.top, 28)
-                    StableBackgroundView(content: HStack(spacing: 57) {
-                        if let pet = viewModel.currentPet {
-                            PetView(pet: pet).padding(.top, 40)
-                        }
-                        if let mount = viewModel.currentMount {
-                            MountView(mount: mount).padding(.top, 30)
-                        }
-                    }, animateFlying: false)
-                    .cornerRadius(UIConstants.mediumCornerRadius)
-                    .profileContainer(spacing: 26)
+                    if viewModel.currentPet != nil || viewModel.currentMount != nil {
+                        StableBackgroundView(content: HStack(spacing: 57) {
+                            if let pet = viewModel.currentPet {
+                                PetView(pet: pet).padding(.top, 40)
+                            }
+                            if let mount = viewModel.currentMount {
+                                MountView(mount: mount).padding(.top, 30)
+                            }
+                        }, animateFlying: false)
+                        .cornerRadius(UIConstants.mediumCornerRadius)
+                        .profileContainer(spacing: UIConstants.largeCornerRadius)
+                    }
                     
                     HStack(spacing: 12) {
                         VStack(spacing: 26) {
@@ -482,7 +500,7 @@ struct ProfilePage: View {
                                 allocatedValue: calc.allocatedConstitution)
                 
                     StatsViewUI(upperBackgroundColor: .purple300,
-                                upperTextColor: .white,
+                                upperTextColor: .purple600,
                                 title: L10n.Stats.perceptionTitle,
                                 totalValue: calc.totalPerception,
                                 levelValue: calc.levelStat,
@@ -518,7 +536,7 @@ struct ProfilePage: View {
                             .profileContainer()
                     } else {
                         VStack(spacing: 8) {
-                            ForEach(member.achievements?.quests ?? [], id: \.key) { questAchievement in
+                            ForEach(member.achievements?.quests.sorted(by: { $0.index < $1.index }) ?? [], id: \.index) { questAchievement in
                                 HStack(spacing: 15) {
                                     Text("\(questAchievement.optionalCount)")
                                         .scaledFont(size: 15, weight: .semibold)
@@ -547,7 +565,7 @@ struct ProfilePage: View {
                             .profileContainer()
                     } else {
                         VStack(spacing: 8) {
-                            ForEach(challenges, id: \.index) { challenge in
+                            ForEach(challenges.sorted(by: { $0.index < $1.index }), id: \.index) { challenge in
                                 HStack(spacing: 15) {
                                     AchievementIconView(achievement: challenge)
                                     Text(challenge.title ?? "")
@@ -701,6 +719,13 @@ class UserProfileViewController: BaseHostingViewController<ProfilePage> {
         }
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { _ in
+            self.topHeaderCoordinator?.showHideHeader(show: false, animated: false)
+        })
+    }
+
     override func applyTheme(theme: any Theme) {
         super.applyTheme(theme: theme)
         navigationItem.leftBarButtonItem?.tintColor = theme.fixedTintColor
@@ -762,7 +787,7 @@ class UserProfileViewController: BaseHostingViewController<ProfilePage> {
     
     private var overflowMenu: UIMenu {
         return UIMenu(children: [
-            UIMenu(options: .displayInline, children: [ UIDeferredMenuElement({[weak self] add in
+            UIMenu(options: .displayInline, children: [ UIDeferredMenuElement.uncached({[weak self] add in
                 var items = [] as [UIAction]
                 if self?.user?.id != self?.userID {
                     if self?.isBlocked == true {
@@ -789,7 +814,7 @@ class UserProfileViewController: BaseHostingViewController<ProfilePage> {
                 self?.perform(segue: StoryboardSegue.Social.giftGemsSegue)
             },
             UIAction(title: L10n.giftSubscription, image: UIImage(systemName: "giftcard")) {[weak self] _ in
-                self?.perform(segue: StoryboardSegue.Social.giftGemsSegue)
+                self?.perform(segue: StoryboardSegue.Social.giftSubscriptionSegue)
             },
             UIMenu(options: .displayInline, children: [ UIDeferredMenuElement({[weak self] add in
                 var items = [] as [UIAction]

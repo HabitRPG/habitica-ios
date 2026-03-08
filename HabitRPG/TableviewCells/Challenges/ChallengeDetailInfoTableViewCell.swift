@@ -131,7 +131,11 @@ class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
     func emptyTagLabel() -> UILabel {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
-        label.cornerRadius = 11
+        if #available(iOS 26.0, *) {
+            label.cornerConfiguration = .capsule()
+        } else {
+            label.cornerRadius = UIConstants.smallCornerRadius
+        }
         return label
     }
 }

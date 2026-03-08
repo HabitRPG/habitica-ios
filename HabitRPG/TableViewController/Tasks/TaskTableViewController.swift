@@ -74,7 +74,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         if #available(iOS 26.0, *) {
             let glassEffect = UIGlassEffect()
             searchBarWrapper.effect = glassEffect
-            searchBarWrapper.layer.cornerRadius = 26
+            searchBarWrapper.layer.cornerRadius = UIConstants.largeCornerRadius
             searchBarWrapper.clipsToBounds = true
         }
         
@@ -149,7 +149,9 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         super.viewDidLayoutSubviews()
         if let userHeader = headerWrapper.subviews.first as? UserTopHeader, let topHeaderController = navigationController as? TopHeaderViewController {
             headerWrapper.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: topHeaderController.defaultHeaderHeight + 12)
-            userHeader.frame = CGRect(x: 0, y: 0, width: headerWrapper.bounds.size.width, height: topHeaderController.defaultHeaderHeight)
+            let safeLeft = view.safeAreaInsets.left
+            let safeRight = view.safeAreaInsets.right
+            userHeader.frame = CGRect(x: safeLeft, y: 0, width: headerWrapper.bounds.size.width - safeLeft - safeRight, height: topHeaderController.defaultHeaderHeight)
         }
     }
     
@@ -414,8 +416,9 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.text = ""
         self.searchBar.resignFirstResponder()
-        
+
         (tabBarController as? MainTabBarController)?.searchString = nil
+        dataSource?.predicate = getPredicate()
         hideSearchBar()
         tableView.reloadData()
     }

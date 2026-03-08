@@ -13,42 +13,84 @@ protocol Dismissable {
     var dismisser: Dismisser { get set }
 }
 
+protocol QueueableViewController {
+    func showVC() -> Bool
+    var isBeingPresented: Bool { get }
+    var isMovingToParent: Bool { get }
+    var isCurrentlyPresented: Bool { get }
+}
+
 private class QueueManager {
-    static var displayQueue: [(() -> Void)] = [(() -> Void)]()
+    static var displayQueue: [(viewController: QueueableViewController, retryCount: Int)] = []
     static var showingSheet: Bool {
         return displayQueue.isEmpty == false
     }
-    
+    private static var isQueueStuck: Bool {
+        if let vc = displayQueue.first?.viewController {
+            // There is a viewcontroller in the queue but it's not showing.
+            return !vc.isBeingPresented && !vc.isMovingToParent && !vc.isCurrentlyPresented
+        }
+        return false
+    }
+    private static let maxRetries = 5
+    private static let retryDelay: TimeInterval = 0.3
+
     private static func showCurrent() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            if let action = displayQueue.first {
-                action()
-            }
+            attemptPresentation()
         }
     }
     
+    private static func unstick() {
+        displayQueue.removeFirst()
+    }
+
+    private static func attemptPresentation() {
+        guard var current = displayQueue.first else {
+            return
+        }
+
+        let presented = current.viewController.showVC()
+        if !presented {
+            current.retryCount += 1
+            if current.retryCount < maxRetries {
+                displayQueue[0] = current
+                DispatchQueue.main.asyncAfter(deadline: .now() + retryDelay) {
+                    attemptPresentation()
+                }
+            } else {
+                displayQueue.removeFirst()
+                showCurrent()
+            }
+        }
+    }
+
     static func showNext() {
         if showingSheet {
             displayQueue.removeFirst()
             showCurrent()
         }
     }
-    
-    static func enqueue(_ action: @escaping () -> Void) {
+
+    static func enqueue(_ viewController: QueueableViewController) {
+        if isQueueStuck {
+            unstick()
+        }
         if !showingSheet {
-            displayQueue.append(action)
+            displayQueue.append((viewController: viewController, retryCount: 0))
             showCurrent()
         } else {
-            displayQueue.append(action)
+            displayQueue.append((viewController: viewController, retryCount: 0))
         }
     }
 }
 
-class HostingBottomSheetController<ContentView: View>: UIHostingController<ContentView>, HostingViewController {
+class HostingBottomSheetController<ContentView: View>: UIHostingController<ContentView>, HostingViewController, QueueableViewController {
     private var bottomInset: CGFloat = 0
-    
+
     private let allowLargeDetent: Bool
     private let prefersGrabberVisible: Bool
+    private var isInQueue = false
         
     init(rootView: ContentView, allowLargeDetent: Bool = false, prefersGrabberVisible: Bool = true, interactiveDismiss: Bool = true) {
         self.allowLargeDetent = allowLargeDetent
@@ -97,14 +139,36 @@ class HostingBottomSheetController<ContentView: View>: UIHostingController<Conte
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        QueueManager.showNext()
+        if isInQueue {
+            QueueManager.showNext()
+        }
     }
     
-    func show() {
-        QueueManager.enqueue {
-            if let top = UIApplication.shared.topmostViewController, top != self {
-                top.present(self, animated: true)
-            }
+    var isCurrentlyPresented: Bool {
+        return presentingViewController != nil
+    }
+
+    @discardableResult
+    func showVC() -> Bool {
+        guard let top = UIApplication.shared.topmostViewController, top != self else {
+            return false
+        }
+        if top.isBeingDismissed || top.isBeingPresented {
+            return false
+        }
+        if top.presentedViewController != nil {
+            return false
+        }
+        top.present(self, animated: true)
+        return true
+    }
+    
+    func show(immediately: Bool = false) {
+        if immediately {
+            showVC()
+        } else {
+            isInQueue = true
+            QueueManager.enqueue(self)
         }
     }
 }

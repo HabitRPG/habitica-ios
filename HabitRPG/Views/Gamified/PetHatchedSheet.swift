@@ -20,7 +20,7 @@ struct PetHatchedSheet: View, Dismissable {
                             upperContent: PetView(pet: pet).padding(.top, 40),
                             upperContentBottomPadding: 10,
                             title: Text(L10n.Inventory.hatched(pet.text ?? "")),
-                            xButtonBackground: .gray600.opacity(0.7)) {
+                            buttons: {
             HabiticaButtonUI(label: Text(L10n.equip), color: Color(themeService.theme.fixedTintColor)) {
                 onEquip()
                 dismisser.dismiss()
@@ -29,7 +29,7 @@ struct PetHatchedSheet: View, Dismissable {
                 SharingManager.share(pet: pet, shareIdentifier: "hatchedPet")
                 dismisser.dismiss()
             }
-        }
+        }, xButtonBackground: .gray600.opacity(0.7))
     }
 }
 

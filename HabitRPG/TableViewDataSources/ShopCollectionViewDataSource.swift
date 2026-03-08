@@ -70,6 +70,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         sections[0].showIfEmpty = needsGearSection
         
         disposable.add(inventoryRepository.getShop(identifier: identifier).on(value: {[weak self] shop in
+            guard !UserManager.shared.isLoggingOut else {
+                return
+            }
             let sectionCount = self?.sections.count ?? 0
             if sectionCount >= 2 {
                 self?.sections.removeLast(sectionCount - 1)
@@ -79,6 +82,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         }).start())
         
         disposable.add(userRepository.getUser().on(value: {[weak self] user in
+            guard !UserManager.shared.isLoggingOut else {
+                return
+            }
             var shouldReload = false
             if self?.user?.isSubscribed != user.isSubscribed {
                 shouldReload = true
@@ -97,6 +103,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             .map({ (rewards, _) in
                 return rewards
             }).on(value: {[weak self] rewards in
+                guard !UserManager.shared.isLoggingOut else {
+                    return
+                }
                 self?.pinnedItems = rewards
                 self?.collectionView?.reloadData()
             }).start())
@@ -114,6 +123,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             }
             return ownedItems
         }).on(value: {[weak self] items in
+            guard !UserManager.shared.isLoggingOut else {
+                return
+            }
             self?.ownedItems = items
             self?.collectionView?.reloadData()
             }).start())
@@ -170,6 +182,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 })
             })
             .on(value: {[weak self] items in
+                guard !UserManager.shared.isLoggingOut else {
+                    return
+                }
                 if (self?.sections.count ?? 0) > 0 {
                     self?.sections[0].items = items
                     self?.sections[0].showIfEmpty = true
@@ -369,6 +384,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                     itemCell.itemCount = ownedItem.numberOwned
                 }
                 itemCell.isPinned = pinnedItems.contains(where: { pinned in
+                    guard pinned.isValid else {
+                        return false
+                    }
                     return pinned.key == item.key || pinned.path == item.path
                 })
                 if item.type == "quests" || item.pinType == "quests" {

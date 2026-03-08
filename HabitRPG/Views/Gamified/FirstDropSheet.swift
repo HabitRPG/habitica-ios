@@ -10,7 +10,8 @@ import SwiftUI
 
 struct FirstDropSheet: View {
     @ObservedObject var themeService = ThemeService.shared
-    @Environment(\.presentationManager) var presentationManager
+    @Environment(\.presentationManager)
+    var presentationManager
     let eggKey: String
     let potionKey: String
     
@@ -23,6 +24,7 @@ struct FirstDropSheet: View {
                 .scaledFont(size: 22, weight: .bold)
                 .foregroundStyle(.white)
                 .padding(.horizontal, 50)
+                .fixedSize(horizontal: false, vertical: true)
         },
                             title: Text(L10n.firstDropExplanation2),
                             description: Text(L10n.firstDropExplanation1)) {

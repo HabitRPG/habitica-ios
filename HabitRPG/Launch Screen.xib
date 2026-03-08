@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,7 +22,7 @@
                         <color key="tintColor" red="0.79943448309999998" green="0.38318526739999997" blue="0.97967308760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_logo" translatesAutoresizingMaskIntoConstraints="NO" id="VYm-Tu-aaY">
-                        <rect key="frame" x="62.333333333333329" y="208" width="250.66666666666669" height="191"/>
+                        <rect key="frame" x="62.333333333333329" y="209" width="250.66666666666669" height="191"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" red="0.46390098330000001" green="0.22368210550000001" blue="0.92845708130000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -33,7 +32,8 @@
                     <constraint firstItem="VYm-Tu-aaY" firstAttribute="centerX" secondItem="akb-tb-YfK" secondAttribute="centerX" id="8K6-bI-S0P"/>
                     <constraint firstAttribute="trailing" secondItem="zzf-Ms-aKz" secondAttribute="trailing" id="YEk-uW-krF"/>
                     <constraint firstItem="zzf-Ms-aKz" firstAttribute="leading" secondItem="akb-tb-YfK" secondAttribute="leading" id="d85-95-6Qm"/>
-                    <constraint firstItem="VYm-Tu-aaY" firstAttribute="top" secondItem="akb-tb-YfK" secondAttribute="top" constant="208" id="nxQ-My-Hbs"/>
+                    <constraint firstItem="VYm-Tu-aaY" firstAttribute="centerY" secondItem="akb-tb-YfK" secondAttribute="centerY" multiplier="0.75" id="n2n-Gk-tmj"/>
+                    <constraint firstItem="VYm-Tu-aaY" firstAttribute="centerX" secondItem="akb-tb-YfK" secondAttribute="centerX" id="z75-xW-ThG"/>
                 </constraints>
             </view>
             <point key="canvasLocation" x="543.5" y="-220"/>

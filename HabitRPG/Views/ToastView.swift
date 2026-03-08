@@ -20,6 +20,8 @@ struct StatsChange {
 struct ToastView: View {
     @ObservedObject var options: ToastOptions
     
+    @State var isShowing = false
+    
     public init(options: ToastOptions) {
         self.options = options
     }
@@ -193,8 +195,14 @@ struct ToastView: View {
                     content
                         .background(options.backgroundColor.getColor())
                         .clipShape(.capsule)
-                        .padding(.bottom, 20)
+                        .padding(.bottom, 30)
                 }
+        }
+        .opacity(isShowing ? 1 : 0)
+        .onAppear {
+            withAnimation(.easeInOut(duration: 0.2)) {
+                isShowing = true
+            }
         }
         .fixedSize(horizontal: false, vertical: true)
         .foregroundStyle(.white)

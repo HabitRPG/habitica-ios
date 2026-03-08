@@ -13,21 +13,24 @@ import Habitica_Database
 
 @objc
 class UserManager: NSObject {
-    
+
     @objc public static let shared = UserManager()
-    
+
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
     private let inventoryRepository = InventoryRepository()
+    private let contentRepository = ContentRepository()
     private var disposable = CompositeDisposable()
     private let configRepository = ConfigRepository.shared
-    
+
     private weak var faintViewController: FaintViewController?
     weak var classSelectionViewController: ClassSelectionViewController?
     private var lastClassSelectionDisplayed: Date?
     private var lastQuestCompletionDisplayed: Date?
     private var lastYesterdailyDialog: Date?
-    
+
+    @objc public private(set) var isLoggingOut = false
+
     private var tutorialSteps = [String: Bool]()
         
     private func getYesterday() -> Date? {
@@ -37,13 +40,33 @@ class UserManager: NSObject {
     
     func stopListening() {
         disposable.dispose()
+        disposable = CompositeDisposable()
+    }
+
+    func prepareForLogout() {
+        isLoggingOut = true
+        stopListening()
+    }
+
+    func logoutCompleted() {
+        isLoggingOut = false
     }
 
     func beginListening() {
+        guard !isLoggingOut else {
+            return
+        }
         if !disposable.isDisposed {
             disposable.dispose()
         }
         disposable = CompositeDisposable()
+        disposable.add(contentRepository.getWorldState()
+            .on(value: { worldState in
+                if let substitutions = worldState.currentEvent?.spriteSubstitutions {
+                    ImageSubstitutionManager.substitutions = substitutions
+                }
+            })
+            .start())
         disposable.add(userRepository.getUser()
             .throttle(0.5, on: QueueScheduler.main)
             .on(value: {[weak self]user in
@@ -85,6 +108,9 @@ class UserManager: NSObject {
     }
     
     private func runCron(tasks: [TaskProtocol], uncompletedTaskCount: Int) {
+        guard !isLoggingOut else {
+            return
+        }
         if (lastYesterdailyDialog?.timeIntervalSinceNow ?? -600) > -600 {
             return
         }
@@ -139,7 +165,7 @@ class UserManager: NSObject {
     }
     
     private func onUserUpdated(user: UserProtocol) {
-        if !user.isValid {
+        guard !isLoggingOut, user.isValid else {
             return
         }
         if UserDefaults.standard.bool(forKey: "isInSetup") && user.flags?.welcomed == false {
@@ -157,7 +183,11 @@ class UserManager: NSObject {
         })
         
         faintViewController = checkFainting(user: user)
-                
+
+        if user.needsToChooseClass {
+            showClassSelection(user: user)
+        }
+
         handleQuestCompletion(user)
         
         userRepository.registerPushDevice(user: user).observeCompleted {}
@@ -204,12 +234,13 @@ class UserManager: NSObject {
     private func checkFainting(user: UserProtocol) -> FaintViewController? {
         if user.stats != nil && (user.stats?.health ?? 0) <= 0.0 && faintViewController == nil {
             let faintView = FaintViewController()
-            faintView.show()
+            faintView.showFullscreen()
             return faintView
         }
         return faintViewController
     }
     
+    @discardableResult
     func showClassSelection(user: UserProtocol) -> Bool {
         if let lastSelection = lastClassSelectionDisplayed, lastSelection.timeIntervalSinceNow > -10 {
             return false
@@ -220,7 +251,7 @@ class UserManager: NSObject {
                 self.classSelectionViewController = classSelectionController.topViewController as? ClassSelectionViewController
                 lastClassSelectionDisplayed = Date()
                 classSelectionController.modalTransitionStyle = .crossDissolve
-                classSelectionController.modalPresentationStyle = .overCurrentContext
+                classSelectionController.modalPresentationStyle = .overFullScreen
                 topController.present(classSelectionController, animated: true) {
                 }
                 return true
@@ -231,6 +262,15 @@ class UserManager: NSObject {
     
     func shouldDisplayTutorialStep(key: String) -> Bool {
         return !(tutorialSteps[key] ?? true)
+    }
+
+    func syncTutorialSteps(from user: UserProtocol) {
+        tutorialSteps = [:]
+        user.flags?.tutorials.forEach({ (tutorial) in
+            if let key = tutorial.key {
+                tutorialSteps[key] = tutorial.wasSeen
+            }
+        })
     }
     
     func markTutorialAsSeen(type: String, key: String) {

@@ -35,6 +35,8 @@ class RealmInAppReward: BaseModel, InAppRewardProtocol {
     @objc dynamic var unlockConditionIncentiveThreshold: Int = 0
     @objc dynamic var previous: String?
     @objc dynamic var level: Int = 0
+    @objc var klass: String?
+    @objc var specialClass: String?
     
     @objc dynamic var category: ShopCategoryProtocol? {
         return realmCategory.first
@@ -71,5 +73,7 @@ class RealmInAppReward: BaseModel, InAppRewardProtocol {
         unlockConditionIncentiveThreshold = protocolObject.unlockConditionIncentiveThreshold
         previous = protocolObject.previous
         level = protocolObject.level
+        klass = protocolObject.klass
+        specialClass = protocolObject.specialClass
     }
 }

@@ -18,6 +18,7 @@ public class HabiticaAnalytics {
     public func initialize() {
         amplitude = Amplitude(configuration: Configuration(apiKey: Secrets.amplitudeApiKey,
                                                            optOut: true))
+        
         setUserID(AuthenticationManager.shared.currentUserId)
     }
     

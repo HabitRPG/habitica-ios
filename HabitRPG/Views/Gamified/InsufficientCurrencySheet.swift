@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftyStoreKit
 
 struct InsufficientCurrencySheet<Icon: View, Title: View, Content: View, Buttons: View>: View {
     let backgroundColor: Color
@@ -42,9 +43,57 @@ struct InsufficientCurrencySheet<Icon: View, Title: View, Content: View, Buttons
     }
 }
 
-#Preview {
-    InsufficientCurrencySheet(
-        backgroundColor: .purple400, circleColor: .purple10, ringColor: .purple300, plusColor: .purple500, icon: Image(Asset.insufficientGems.name), title: Text(L10n.moreGemsMessage), content: Text("")) {
-            
+struct InsufficientGemsSheet: View {
+    @Environment(\.presentationManager)
+    var presentationManager
+    
+    @State var price: String = ""
+
+    var body: some View {
+        InsufficientCurrencySheet(backgroundColor: .purple400,
+                                              circleColor: .purple100,
+                                              ringColor: .purple300,
+                                              plusColor: .purple500,
+                                              icon: Image(Asset.insufficientGems.name),
+                                              title: Text(L10n.moreGemsMessage),
+                                              content: Text(L10n.gemsSupportDevelopers)) {
+            HabiticaButtonUI(label: Text(price.isEmpty ? L10n.loading : L10n.xGemsForY(4, price)), color: Color(ThemeService.shared.theme.fixedTintColor)) {
+                PurchaseHandler.shared.purchaseGems(PurchaseHandler.IAPIdentifiers[0], applicationUsername: "") { _ in
+                    presentationManager.dismiss()
+                }
+            }.disabled(price.isEmpty)
+            HabiticaButtonUI(label: Text(L10n.moreGemPacks).foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor)), color: Color(ThemeService.shared.theme.windowBackgroundColor)) {
+                presentationManager.dismiss()
+                RouterHandler.shared.handle(.purchaseGems)
+            }
+        }.task {
+            SwiftyStoreKit.retrieveProductsInfo(Set([PurchaseHandler.IAPIdentifiers[0]])) { (result) in
+                if let product = result.retrievedProducts.first, let price = product.localizedPrice {
+                    self.price = price
+                }
+            }
         }
+    }
+}
+
+struct InsufficientHourglassesSheet: View {
+    @Environment(\.presentationManager)
+    var presentationManager
+    
+    let isSubscribed: Bool
+
+    var body: some View {
+        InsufficientCurrencySheet(backgroundColor: .blue100,
+                                              circleColor: Color(ThemeService.shared.theme.contentBackgroundColor),
+                                              ringColor: .blue500,
+                                              plusColor: .blue10,
+                                              icon: Image(Asset.insufficientHourglasses.name),
+                                              title: Text(L10n.notEnoughHourglasses),
+                                              content: Text(isSubscribed ? L10n.insufficientHourglassesMessageSubscriber : L10n.insufficientHourglassesMessage)) {
+            HabiticaButtonUI(label: Text(L10n.learnMore), color: Color(ThemeService.shared.theme.tintColor)) {
+                presentationManager.dismiss()
+                RouterHandler.shared.handle(.subscription)
+            }
+        }
+    }
 }

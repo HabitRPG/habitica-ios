@@ -32,6 +32,10 @@ class QuestDetailViewController: BaseUIViewController {
     
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var contentLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var questTypeHeader: UILabel!
     @IBOutlet weak var descriptionTextView: MarkdownTextView!
     @IBOutlet weak var invitationsHeader: UILabel!
@@ -57,11 +61,36 @@ class QuestDetailViewController: BaseUIViewController {
             topHeaderCoordinator = TopHeaderCoordinator(topHeaderNavigationController: topHeaderNavigationController, scrollView: scrollView)
         }
         topHeaderCoordinator?.followScrollView = false
-        
-        let borderView = UIView(frame: CGRect(x: 0, y: headerView.intrinsicContentSize.height, width: self.view.bounds.size.width, height: 1))
+        topHeaderCoordinator?.hideHeader = true
+
+        let borderView = UIView()
         borderView.backgroundColor = UIColor.gray500
         headerView.addSubview(borderView)
-        topHeaderCoordinator?.alternativeHeader = headerView
+
+        scrollView.addSubview(headerView)
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        borderView.translatesAutoresizingMaskIntoConstraints = false
+        let headerHeight: CGFloat = 87
+        NSLayoutConstraint.activate([
+            headerView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 8),
+            headerView.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: headerHeight),
+            borderView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            borderView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            borderView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
+            borderView.heightAnchor.constraint(equalToConstant: 1)
+        ])
+
+        for constraint in scrollView.constraints {
+            if let firstItem = constraint.firstItem as? UIStackView,
+               constraint.firstAttribute == .top,
+               constraint.secondItem === scrollView,
+               constraint.constant == 16 {
+                constraint.constant += headerHeight + 8
+                break
+            }
+        }
         
         loadUser()
         if let questKey = questKey {
@@ -74,7 +103,29 @@ class QuestDetailViewController: BaseUIViewController {
         descriptionTextView.textContainerInset = UIEdgeInsets.zero
         descriptionTextView.textContainer.lineFragmentPadding = 0
     }
-    
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { _ in
+            self.topHeaderCoordinator?.showHideHeader(show: false, animated: false)
+        })
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let safeLeft = view.safeAreaInsets.left
+        let safeRight = view.safeAreaInsets.right
+        let totalPadding = max(15, safeLeft) + max(15, safeRight)
+        contentWidthConstraint.constant = -totalPadding
+        contentLeadingConstraint.constant = max(15, safeLeft)
+        buttonLeadingConstraint.constant = max(0, safeLeft - 16)
+        buttonTrailingConstraint.constant = max(0, safeRight - 16)
+
+        let isLandscape = view.bounds.width > view.bounds.height
+        headerView.backgroundColor = isLandscape ? ThemeService.shared.theme.contentBackgroundColor : .clear
+        headerView.insets = UIEdgeInsets(top: 0, left: max(16, safeLeft), bottom: 0, right: max(16, safeRight))
+    }
+
     private func loadUser() {
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             self?.set(user: user)

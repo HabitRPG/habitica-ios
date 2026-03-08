@@ -35,19 +35,19 @@
 /* (No Comment) */
 "classes.healer" = "Guérisseur";
 /* (No Comment) */
-"classes.healer_description" = "Les Guérisseurs se montrent insensibles aux blessures et ils partagent cette protection avec les autres. Les Quotidiennes manquées et les mauvaises habitudes ne les gênent pas beaucoup et ils ont les moyens de récupérer leur santé après un échec. Jouez en tant que Guérisseur si vous aimez soutenir les membres de votre équipe ou si l'idée de tromper la Mort par votre dur labeur vous inspire !";
+"classes.healer_description" = "Les Guérisseu·r·se·s apprennent les compétences permettant de se protéger des dégâts, ainsi que leur Équipe. Jouez Guérisseu·r·se si vous appréciez prendre soin des autres ou perdez régulièrement des PV. Les Guérisseu·r·se·s bénéficient d'un attribut Consitution élevé.";
 /* (No Comment) */
 "classes.mage" = "Mage";
 /* (No Comment) */
-"classes.mage_description" = "Les mages apprennent vite, gagnant de l'expérience et des niveaux plus rapidement que les autres classes. Ils et elles ont aussi de grandes réserves de mana à disposition pour utiliser leurs capacités spéciales. Jouez un mage si vous appréciez le côté tactique d'Habitica, ou si vous vous réjouissez à l'idée de monter de niveau et de débloquer de nouvelles fonctionnalités !";
+"classes.mage_description" = "Les Mages apprennent des compétences de dégâts contre les Boss de Quêtes et augmentent l'XP et la Mana. Jouez Mage si vous voulez grimper rapidement les niveaux. Les Mages bénéficient d'un attribut Intelligence élevé.";
 /* (No Comment) */
 "classes.rogue" = "Voleur";
 /* (No Comment) */
-"classes.rogue_description" = "Les Voleurs adorent accumuler les richesses, ils gagnent plus d'or que n'importe qui d'autre et trouvent souvent des objets par hasard. Leur faculté iconique de Furtivité leur permet d'esquiver les conséquences de tâches Quotidiennes manquées. Choisissez le Voleur si les Récompenses et les Succès vous motivent et si vous convoitez le butin et les badges !";
+"classes.rogue_description" = "Les Voleu·r·se·s apprennent des compétences leur permettant de recevoir plus de récompenses en accomplissant leurs tâches. Jouez Voleu·r·se si vous souhaitez trouver plus d'objets et d'Or. Les Voleu·r·se·s bénéficient d'un attribut Perception élevé.";
 /* (No Comment) */
 "classes.warrior" = "Guerrier";
 /* (No Comment) */
-"classes.warrior_description" = "Les Guerriers réalisent des «coups critiques» plus nombreux et plus efficaces qui augmentent aléatoirement l'or et l'expérience obtenus ainsi que les chances de trouver du butin en complétant une tâche. Ils infligent aussi des dommages lourds aux boss. Jouez un Guerrier si des récompenses imprévisibles du genre jackpot vous motivent ou si vous voulez distribuer des coups pendant les quêtes !";
+"classes.warrior_description" = "Les Guerri·er·ère·s assènent plus de coups critiques et de dégâts aux Boss de Quête. Jouez Guerri·er·ère si vous voulez mettre la pâté aux monstres. Les Guerri·er·ère·s bénéficient d'un attribut Force élevé.";
 /* (No Comment) */
 "close" = "Fermer";
 /* (No Comment) */
@@ -129,7 +129,7 @@
 /* (No Comment) */
 "inventory.number_gems_left" = "Gemmes mensuelles : %d/%d restantes";
 /* (No Comment) */
-"inventory.wrong_class" = "Seulement disponible pour les %@s. Vous pouvez changer votre classe dans Paramètres.";
+"inventory.wrong_class" = "Seulement disponible pour les %@s. Vous pouvez changer votre classe dans les Paramètres.";
 /* (No Comment) */
 "invite_party" = "Inviter l'équipe";
 /* (No Comment) */
@@ -393,7 +393,7 @@
 "titles.guidelines" = "Règles";
 "titles.invite_members" = "Inviter des membres";
 "titles.spells" = "Sorts";
-"stats.points_to_allocate" = "%d points à allouer";
+"stats.points_to_allocate" = "%d Points à allouer";
 "stats.auto_allocate_points" = "Attribuer automatiquement les points";
 "stats.distribute_evenly" = "Répartir équitablement";
 "stats.distribute_evenly_help" = "Affecte le même nombre de points à chaque attribut.";
@@ -561,8 +561,8 @@
 "pending_damage" = "Dégâts en attente";
 "quests.started_by" = "Commencé par %@";
 "groups.assign_new_leader" = "Assigner une nouvelle personne responsable";
-"groups.guild_invitation_no_invitername" = "Quelqu'un vous a invité·e à rejoindre la Guilde : **%@**";
-"groups.guild_invitation_invitername" = "**@%@** vous a invité à rejoindre la Guilde : **%@**";
+"groups.guild_invitation_no_invitername" = "Quelqu'un vous a invité·e à rejoindre le Groupe **%@**";
+"groups.guild_invitation_invitername" = "**@%@** vous a invité·e à rejoindre le Groupe **%@**";
 "inactive" = "Inactif";
 "one_month" = "1 mois";
 "x_months" = "%d mois";
@@ -1066,8 +1066,8 @@
 "mountMasterTitle" = "Maître des Montures";
 "beastMasterTitle" = "Maître des Bêtes";
 "partyOnDescription" = "Votre équipe à grandi jusqu’à 4 membres !";
-"onboardingComplete_achievement_title" = "Vous avez complété vos Tâches d’Intégration !";
-"onboardingCompleteTitle" = "Vous avez reçu 5 succès et 100 pièces d’or pour vos efforts.";
+"onboardingComplete_achievement_title" = "Vous avez complété vos tâches d’intégration !";
+"onboardingCompleteTitle" = "Vous avez reçu **5 succès** et **[100 pièces d'or](/fake)** pour vos efforts.";
 "view_onboarding_tasks" = "Voir les Tâches d’Intégration";
 "first_drop_title" = "Vous avez trouvé des nouveaux Objets !";
 "go_to_items" = "Allez voir vos Objets";
@@ -1189,7 +1189,7 @@
 "use_immediately_disclaimer" = "Cela prendra effet immédiatement après l'achat !";
 "unlocks_selecting_class_prompt" = "Maintenant que vous avez atteint le niveau 10, choisissez une classe !";
 "unlocks_selecting_class_description" = "Les compétences sont débloquées à partir du niveau dix dès lors que vous choisissez une classe";
-"class_system_enable_instructions" = "Vous pouvez activer le système de classe depuis les paramètres de l'application.";
+"class_system_enable_instructions" = "Vous pouvez activer le système de classe depuis les paramètres de l'application pour choisir une classe plus tard";
 "class_system_disabled" = "Système de classe désactivé.";
 "could_not_gift_gems" = "Impossible d'offrir les gemmes. Veuillez réessayer plus tard.";
 "end_challenge_description" = "Pour clôturer un défi, connectez-vous sur le site Habitica et utilisez le bouton \"Clore le défi\" à droite dans l'écran du défi.";
@@ -1625,7 +1625,7 @@
 "mount" = "Monture";
 "joined_x" = "Inscrit·e le %s";
 "equipped_gear" = "Équipement Porté";
-"stable.pets_and_mounts" = "Familiers et Montures";
+"stable.pets_and_mounts" = "Familiers & Montures";
 "challenges_won" = "Défis Remportés";
 "player_not_won_challenges" = "L·e·a Joueu·r·se n'a remporté aucun défi.";
 "player_not_completed_quests" = "L·e·a Joueu·r·se n'a pas accompli de quêtes.";
@@ -1635,7 +1635,7 @@
 "standard_mounts" = "Montures Standards";
 "none" = "Vide";
 "logins" = "Connexions";
-"add_tag" = "Ajouter une Étiquette";
+"add_tag" = "Ajouter une nouvelle Étiquette";
 "item_is_locked" = "L'Objet n'est pas utilisable";
 "edit_tags" = "Éditer les Étiquettes";
 "unlocked_another_checkin_prize" = "Vous avez débloqué une nouvelle récompense de connexion !";
@@ -1660,3 +1660,16 @@
 "fcv_streak_explanation" = "Vous pouvez restaurer vos combos sur des tâches individuelles en cliquant dessus pour les éditer";
 "checkin_prize_set_description" = "Vous avez obtenu un ensemble de %s grâce à vos efforts pour rendre votre vie meilleur";
 "next_prize_in_1_checkin" = "Prochaine récompense dans 1 jour !";
+"x_gems_for_y" = "%d Gemmes pour %s";
+"loading" = "Chargement";
+"more_gem_packs" = "Plus de packs de Gemmes";
+"task_health" = "Santé de la Tâche";
+"task_status" = "État de la Tâche";
+"habitica_helpers" = "Aidant·e·s d'Habitica";
+"contributor_tiers" = "Grades de Contribut·eur·rice";
+"contributor_tiers_description" = "Si vous voyez un compte avec un pseudonyme coloré et une icône, c'est un grade de contribut·eur·rice ! Les grades sont attribués aux personnes qui aident Habitica à se développer, que ce soit en faisant de la traduction, du codage, ou en étant tout simplement utile. Plus le grade est élevé, plus l·e·a joueu·r·se a contribué.";
+"delete_x" = "Supprimer %s";
+"delete_task_confirmation" = "Êtes vous sûr·e de vouloir supprimer cette Tâche ?";
+"task" = "Tâche";
+"item_only_available_for" = "Cet objet n'est disponible que pour %s";
+"boss" = "Boss";

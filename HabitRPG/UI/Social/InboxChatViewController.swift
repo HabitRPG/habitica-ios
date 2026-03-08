@@ -26,6 +26,10 @@ class InboxChatViewController: MessagesViewController {
         dataSource.tableView = tableView
         dataSource.viewController = self
         
+        if #available(iOS 26.0, *) {
+            tableView.topEdgeEffect.isHidden = true
+        }
+        
         tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "emptyCell")
         dataSource.emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.inboxChatStyle)
         
@@ -107,7 +111,11 @@ class InboxChatViewController: MessagesViewController {
             case .failure:
                 inputBar.inputTextView.text = text
             case .success:
-                return
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if self.tableView.numberOfRows(inSection: 0) > 0 {
+                        self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
+                    }
+                }
             }
         }
     }

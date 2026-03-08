@@ -101,12 +101,14 @@ struct DailySchedulingView: View {
         VStack(spacing: 0) {
             if isEditable {
                 FormDatePicker(title: Text(L10n.Tasks.Form.startDate), value: $startDate)
+                    .animation(.snappy, value: frequency)
                 separator
                 FormSheetSelector(title: Text(L10n.Tasks.Form.repeats), value: $frequency, options: DailySchedulingView.dailyRepeatOptions)
+                    .animation(.none, value: frequency)
                 separator
                 NumberPickerFormView(title: Text(L10n.Tasks.Form.every), value: $everyX, minValue: 0, maxValue: 400, formatter: { value in
                     return "\(value) \(suffix.localizedCapitalized)"
-                })
+                }).animation(.snappy, value: frequency)
                 if frequency == "weekly" {
                     separator
                     HStack {
@@ -120,6 +122,7 @@ struct DailySchedulingView: View {
                     }
                     .transition(.move(edge: .top).combined(with: .opacity))
                     .padding(.horizontal, 14).padding(.top, 10)
+                    .padding(.bottom, 2)
                 }
                 if frequency == "monthly" {
                     separator
@@ -127,6 +130,7 @@ struct DailySchedulingView: View {
                         LabeledFormValue(value: "day", label: L10n.Tasks.Form.dayOfMonth),
                         LabeledFormValue(value: "week", label: L10n.Tasks.Form.dayOfWeek)
                     ], selection: $dayOrWeekMonth)
+                    .tint(tintColor)
                     .transition(.move(edge: .top).combined(with: .opacity))
                     .padding(.horizontal, 12).padding(.top, 10)
                 }
@@ -148,7 +152,6 @@ struct DailySchedulingView: View {
                 .font(.caption)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(Color(themeService.theme.ternaryTextColor))
-        }
-
+        }                .animation(.bouncy(), value: frequency)
     }
 }

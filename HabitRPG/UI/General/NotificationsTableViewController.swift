@@ -9,23 +9,44 @@
 import UIKit
 import Habitica_Models
 import SwiftUI
+import ReactiveSwift
+import Kingfisher
 
 class NotificationsViewModel: ViewModel {
     var onDismiss: ((@escaping () -> Void) -> Void)?
     
     private let userRepository = UserRepository()
     private let socialRepository = SocialRepository()
+    private let inventoryRepository = InventoryRepository()
     @Published var notifications: [NotificationProtocol] = []
     @Published var partyID: String?
+    @Published var inviterNames: [String: String?] = [:]
+    @Published var quests: [String: QuestProtocol?] = [:]
     
     override init() {
         super.init()
-        disposable.add(userRepository.getNotifications().on(value: {[weak self] (entries, _) in
+        disposable.add(userRepository.getNotifications()
+            .on(value: {[weak self] (entries, _) in
             if self?.notifications.isEmpty == true {
                 self?.notifications = entries
             } else {
                 withAnimation {
                     self?.notifications = entries
+                }
+            }
+            entries.forEach { notification in
+                if notification.type == .groupInvite {
+                    if let groupInvite = notification as? NotificationGroupInviteProtocol, let id = groupInvite.inviterID {
+                        if self?.inviterNames.keys.contains(id) != true {
+                            self?.getInviter(id: id)
+                        }
+                    }
+                } else if notification.type == .questInvite {
+                    if let questInvite = notification as? NotificationQuestInviteProtocol, let key = questInvite.questKey {
+                        if self?.quests.keys.contains(key) != true {
+                            self?.getQuest(key: key)
+                        }
+                    }
                 }
             }
             }).start())
@@ -49,24 +70,37 @@ class NotificationsViewModel: ViewModel {
         disposable.add(userRepository.readNotifications(notifications: dismissableNotifications).observeCompleted {})
     }
     
+    func updateNotifications() {
+        disposable.add(userRepository.retrieveUser(forced: true).observeCompleted {
+        })
+    }
+    
     func decline(notification: NotificationProtocol) {
         if notification.type == .groupInvite, let notification = notification as? NotificationGroupInviteProtocol {
-            socialRepository.rejectGroupInvitation(groupID: notification.groupID ?? "").observeCompleted {}
+            socialRepository.rejectGroupInvitation(groupID: notification.groupID ?? "").observeCompleted {
+                self.updateNotifications()
+            }
         } else if notification.type == .questInvite && notification is NotificationQuestInviteProtocol {
-            socialRepository.rejectQuestInvitation(groupID: "party").observeCompleted {}
+            socialRepository.rejectQuestInvitation(groupID: "party").observeCompleted {
+                self.updateNotifications()
+            }
         }
     }
     
     func accept(notification: NotificationProtocol) {
         if notification.type == .groupInvite, let notification = notification as? NotificationGroupInviteProtocol {
-            socialRepository.joinGroup(groupID: notification.groupID ?? "", isParty: notification.isParty).observeCompleted {}
+            socialRepository.joinGroup(groupID: notification.groupID ?? "", isParty: notification.isParty).observeCompleted {
+                self.updateNotifications()
+            }
         } else if notification.type == .questInvite && notification is NotificationQuestInviteProtocol {
-            socialRepository.acceptQuestInvitation(groupID: "party").observeCompleted {}
+            socialRepository.acceptQuestInvitation(groupID: "party").observeCompleted {
+                self.updateNotifications()
+            }
+            
         }
     }
     
     func openNotification(notification: NotificationProtocol) {
-        // This could be handled better
         var url: String?
         switch notification.type {
         case .groupInvite:
@@ -91,12 +125,23 @@ class NotificationsViewModel: ViewModel {
         case .newStuff:
             url = "/static/new-stuff"
         case .itemReceived:
-            let itemReceivedNotification = notification as? NotificationItemReceivedProtocol
-            if itemReceivedNotification?.openDestination?.starts(with: "/") == true {
-                url = itemReceivedNotification?.openDestination
-                break
+            url = openItemReceivedNotification(notification: notification as? NotificationItemReceivedProtocol)
+        default:
+            break
+        }
+        if let url = url, let onDismiss = onDismiss {
+            onDismiss {
+                RouterHandler.shared.handle(urlString: url)
             }
-            switch itemReceivedNotification?.openDestination {
+        }
+    }
+    
+    private func openItemReceivedNotification(notification: NotificationItemReceivedProtocol?) -> String? {
+        let url: String?
+        if notification?.openDestination?.starts(with: "/") == true {
+            url = notification?.openDestination
+        } else {
+            switch notification?.openDestination {
             case "equipment":
                 url = "/inventory/equipment"
             case "customization":
@@ -106,14 +151,24 @@ class NotificationsViewModel: ViewModel {
             default:
                 url = "/inventory/items"
             }
-        default:
-            break
         }
-        if let url = url, let onDismiss = onDismiss {
-            onDismiss {
-                RouterHandler.shared.handle(urlString: url)
+        return url
+    }
+    
+    private func getInviter(id: String) {
+        inviterNames[id] = nil
+        disposable.add(socialRepository.retrieveMember(userID: id).observeValues({[weak self] member in
+            if let name = member?.profile?.name ?? member?.username {
+                self?.inviterNames[id] = name
             }
-        }
+        }))
+    }
+    
+    private func getQuest(key: String) {
+        quests[key] = nil
+        disposable.add(inventoryRepository.getQuest(key: key).take(first: 1).on(value: {[weak self] quest in
+            self?.quests[key] = quest
+        }).start())
     }
 }
 
@@ -199,11 +254,11 @@ struct NotificationResponseView: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            HabiticaButtonUI(label: Image(systemName: .xmark).foregroundStyle(.red1), color: .red100, onTap: {
-                
+            HabiticaButtonUI(label: Image(systemName: .xmark).foregroundStyle(.red1), color: .red100, size: .small, onTap: {
+                onDecline()
             })
-            HabiticaButtonUI(label: Image(systemName: .xmark).foregroundStyle(.green1), color: .green100, onTap: {
-                
+            HabiticaButtonUI(label: Image(systemName: .checkmark).foregroundStyle(.green1), color: .green100, size: .small, onTap: {
+                onAccept()
             })
         }.scaledFont(size: 17, weight: .medium)
     }
@@ -308,21 +363,72 @@ struct NewMysteryItemNotificationView: View {
 
 struct QuestInviteNotificationView: View {
     let notification: NotificationQuestInviteProtocol
+    let quest: QuestProtocol?
     let onDecline: () -> Void
     let onAccept: () -> Void
 
     var body: some View {
-        NotificationMainContent(content: {
-            NotificationImage(content: Image(.notificationsQuest))
-            NotificationTexts(title: Text(""))
-        })
-        NotificationResponseView(onDecline: onDecline, onAccept: onAccept)
+        VStack(spacing: 8) {
+            if let quest = quest {
+                NotificationMainContent(content: {
+                    NotificationImage(content: Image(.notificationsQuest))
+                    NotificationTexts(description: Text(markdown: L10n.Notifications.questInvite(quest.text ?? "")))
+                })
+                VStack(spacing: 12) {
+                    HStack {
+                        if let boss = quest.boss {
+                            Text(L10n.boss)
+                            Spacer()
+                            HStack(spacing: 4) {
+                                Text("\(boss.health)").foregroundStyle(.red1)
+                                Image(uiImage: HabiticaIcons.imageOfHeartLightBg)
+                            }.padding(.horizontal, 11)
+                                .padding(.vertical, 6)
+                                .background(.red500)
+                                .cornerRadius(UIConstants.mediumCornerRadius)
+                        } else if let collect = quest.collect {
+                            Text(L10n.collect)
+                            Spacer()
+                            HStack(spacing: 2) {
+                                ForEach(collect, id: \.key) { item in
+                                    KFImage(ImageManager.buildImageUrl(name: "quest_\(quest.key ?? "")_\(item.key ?? "")"))
+                                        .resizable()
+                                        .interpolation(.none)
+                                        .frame(width: 25, height: 25)
+                                }
+                                let sum = collect.map { $0.count }.reduce(0, +)
+                                Text("\(sum)")
+                                    .padding(4)
+                                    .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                                    .cornerRadius(UIConstants.mediumCornerRadius)
+                            }
+                        }
+                    }
+                    HStack {
+                        Text(L10n.difficulty)
+                        Spacer()
+                        Image(uiImage: HabiticaIcons.imageOfDifficultyStars(difficulty: CGFloat(quest.boss?.strength ?? 1)))
+                            .padding(.horizontal, 11)
+                            .padding(.vertical, 6)
+                            .background(Color(ThemeService.shared.theme.offsetBackgroundColor))
+                            .cornerRadius(UIConstants.mediumCornerRadius)
+                    }
+                }
+                .font(.system(size: 15, weight: .semibold))
+                .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))
+                .padding(11)
+                .background(Color(ThemeService.shared.theme.contentBackgroundColor))
+                .cornerRadius(UIConstants.mediumCornerRadius)
+                    
+                }
+            NotificationResponseView(onDecline: onDecline, onAccept: onAccept)
+        }
     }
 }
 
 struct GroupInviteNotificationView: View {
     let notification: NotificationGroupInviteProtocol
-    let isPartyInvite: Bool
+    let inviterName: String?
     let onDecline: () -> Void
     let onAccept: () -> Void
 
@@ -345,11 +451,13 @@ struct GroupInviteNotificationView: View {
     }
     
     var body: some View {
-        NotificationMainContent {
-            NotificationImage(content: Image(.notificationsGuild))
-            NotificationTexts(title: Text(getTitleFor(groupName: notification.groupName ?? "", inviterName: nil, isPartyInvitation: isPartyInvite)))
+        VStack(spacing: 0) {
+            NotificationMainContent {
+                NotificationImage(content: Image(.notificationsGuild))
+                NotificationTexts(description: Text(markdown: getTitleFor(groupName: notification.groupName ?? "", inviterName: inviterName, isPartyInvitation: notification.isParty)))
+            }
+            NotificationResponseView(onDecline: onDecline, onAccept: onAccept)
         }
-        NotificationResponseView(onDecline: onDecline, onAccept: onAccept)
     }
 }
 
@@ -400,13 +508,13 @@ struct NotificationsPage: View {
         } else if type == .newMysteryItem, let notification = notification as? NotificationNewMysteryItemProtocol {
             NewMysteryItemNotificationView(notification: notification, onDismiss: onNotificationDismiss)
         } else if type == .questInvite, let notification = notification as? NotificationQuestInviteProtocol {
-            QuestInviteNotificationView(notification: notification, onDecline: {
+            QuestInviteNotificationView(notification: notification, quest: viewModel.quests[notification.questKey ?? ""] ?? nil, onDecline: {
                 viewModel.decline(notification: notification)
             }, onAccept: {
                 viewModel.accept(notification: notification)
             })
         } else if type == .groupInvite, let notification = notification as? NotificationGroupInviteProtocol {
-            GroupInviteNotificationView(notification: notification, isPartyInvite: notification.groupID == viewModel.partyID, onDecline: {
+            GroupInviteNotificationView(notification: notification, inviterName: viewModel.inviterNames[notification.inviterID ?? ""] ?? nil, onDecline: {
                 viewModel.decline(notification: notification)
             }, onAccept: {
                 viewModel.accept(notification: notification)
@@ -429,7 +537,7 @@ struct NotificationsPage: View {
             } else {
                 ScrollView {
                     LazyVStack(spacing: 8) {
-                        ForEach(viewModel.notifications, id: \.safeId) { notification in
+                        ForEach(viewModel.notifications, id: \.id) { notification in
                             if notification.isValid {
                                 renderNotification(notification: notification)
                                     .foregroundStyle(Color(ThemeService.shared.theme.primaryTextColor))

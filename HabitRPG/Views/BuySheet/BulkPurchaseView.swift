@@ -17,13 +17,14 @@ struct PlusMinusStepperView<Icon: View>: View {
     var isActive: Bool = true
     var minAmount = 1
     var maxAmount: Int?
-    
+    @State private var isEditing = false
+
     private var textProxy: Binding<String> {
         Binding<String>(get: { String(self.amount) }, set: {
             self.amount = Int($0) ?? 0
         })
     }
-    
+
     var body: some View {
         HStack {
             Button {
@@ -36,19 +37,23 @@ struct PlusMinusStepperView<Icon: View>: View {
             }.disabled(amount <= minAmount || !isActive)
             HStack(spacing: 4) {
                 icon
-                TextField(text: textProxy, label: {
-                    
-                })
+                FocusableTextField(
+                    placeholder: "",
+                    text: textProxy,
+                    isFirstResponder: $isEditing,
+                    configuration: { textField in
+                        textField.keyboardType = .numberPad
+                        textField.textAlignment = .center
+                        textField.font = UIFont.systemFont(ofSize: UIFontMetrics.default.scaledValue(for: 22), weight: .bold)
+                        textField.textColor = isActive ? themeService.theme.primaryTextColor : themeService.theme.ternaryTextColor
+                    }
+                )
                 .fixedSize(horizontal: true, vertical: false)
-                .keyboardType(.numberPad)
-                .keyboardDismissMode(.interactive)
-                    .contentTransition(.numericText())
-                    .scaledFont(size: 22, weight: .bold)
-                    .foregroundStyle(Color(isActive ? themeService.theme.primaryTextColor : themeService.theme.ternaryTextColor))
+                .contentTransition(.numericText())
             }
                 .padding(.vertical, 11)
                 .padding(.horizontal, 31)
-                .frame(minWidth: 112, minHeight: 50)
+                .frame(minWidth: 112)
                 .background(Color(themeService.theme.windowBackgroundColor))
                 .clipShape(.capsule)
             Button {
@@ -59,6 +64,6 @@ struct PlusMinusStepperView<Icon: View>: View {
                 Image(systemName: "plus")
                     .scaledFont(size: 22, weight: .semibold)
             }.disabled((amount >= (maxAmount ?? .max)) || !isActive)
-        }
+        }.fixedSize(horizontal: false, vertical: true)
     }
 }

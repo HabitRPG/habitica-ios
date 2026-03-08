@@ -29,6 +29,9 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
         tableView?.reloadData()
         
         disposable.add(userRepository.getUser().on(value: {[weak self] user in
+            guard !UserManager.shared.isLoggingOut else {
+                return
+            }
             let isFirstLoad = self?.user == nil
             self?.user = user
             self?.tableView?.reloadData()
@@ -37,7 +40,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             }
         }).start())
         disposable.add(socialRepository.getChatMessages(groupID: groupID).on(value: {[weak self] (chatMessages, changes) in
-            self?.sections[0].items = chatMessages.reversed()
+            self?.sections[0].items = chatMessages
             self?.notify(changes: changes)
         }).start())
         disposable.add(socialRepository.getGroupMembers(groupID: groupID).filter({ members in
@@ -73,14 +76,14 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             isExpanded = expandedChatPath == indexPath
         }
         
-        cell.isFirstMessage = indexPath?.item == 0
+        cell.isFirstMessage = indexPath?.item == (sections[0].items.count - 1)
         var username = user?.username ?? ""
         if username.isEmpty {
             username = self.user?.profile?.name ?? ""
         }
         cell.configure(chatMessage: chatMessage,
-                       previousMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)+1, section: indexPath?.section ?? 0)),
-                       nextMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)-1, section: indexPath?.section ?? 0)),
+                       previousMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)-1, section: indexPath?.section ?? 0)),
+                       nextMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)+1, section: indexPath?.section ?? 0)),
                        userID: self.user?.id ?? "",
                        username: username,
                        isModerator: self.user?.isModerator == true,

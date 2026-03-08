@@ -46,11 +46,22 @@ class PetOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                         sortedItems["egg-\($0.key ?? "")"] = $0.text
                     }
                 }
-                return self?.mapData(owned: pets.0, animals: pets.1.value.sorted(by: { first, second in
-                    return (first.egg ?? "") < (second.egg ?? "")
-                }), items: sortedItems) ?? [:]
+                let sortedPets: [AnimalProtocol]
+                if self?.organizeByColor == true {
+                    sortedPets = pets.1.value.sorted(by: { first, second in
+                        return (first.potion ?? "") < (second.potion ?? "")
+                    })
+                } else {
+                    sortedPets = pets.1.value.sorted(by: { first, second in
+                        return (first.egg ?? "") < (second.egg ?? "")
+                    })
+                }
+                return self?.mapData(owned: pets.0, animals: sortedPets, items: sortedItems) ?? [:]
             })
             .on(value: {[weak self] overviewItems in
+                guard !UserManager.shared.isLoggingOut else {
+                    return
+                }
                 self?.sections[0].items.removeAll()
                 self?.sections[0].items.append(contentsOf: overviewItems["drop"] ?? [])
                 self?.sections[1].items.removeAll()
@@ -70,15 +81,19 @@ class PetOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                             }
                             return itemMap
                         })
-                        .on(value: { ownedItems in
-                            self.ownedItems = ownedItems
-                            self.collectionView?.reloadData()
+                        .on(value: {[weak self] ownedItems in
+                            guard !UserManager.shared.isLoggingOut else {
+                                return
+                            }
+                            self?.ownedItems = ownedItems
+                            self?.collectionView?.reloadData()
                         }).start())
         
         disposable.add(userRepository.getUser().map { $0.items?.currentPet }
             .on(value: {[weak self] pet in
                 if self?.currentSelected != pet {
                     self?.currentSelected = pet
+                    self?.collectionView?.reloadData()
                 }
             })
             .start())

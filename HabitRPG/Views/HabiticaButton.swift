@@ -69,7 +69,7 @@ class HabiticaButton: UIButton {
         if #available(iOS 26.0, *) {
             configuration = .prominentGlass()
         } else {
-            cornerRadius = UIConstants.largeCornerRadius
+            cornerRadius = UIConstants.mediumCornerRadius
         }
         setTitleColor(.white, for: .normal)
         isPointerInteractionEnabled = true

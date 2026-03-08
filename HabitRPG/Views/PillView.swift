@@ -135,7 +135,7 @@ class PillView: UIView {
             if isCircular {
                 sublayer.cornerRadius = frame.size.height / 2
             } else if hasRoundedCorners {
-                sublayer.cornerRadius = 5
+                sublayer.cornerRadius = UIConstants.smallCornerRadius
             } else {
                 sublayer.cornerRadius = 0
             }
@@ -143,7 +143,7 @@ class PillView: UIView {
         if isCircular {
             layer.cornerRadius = frame.size.height / 2
         } else if hasRoundedCorners {
-            layer.cornerRadius = 5
+            layer.cornerRadius = UIConstants.smallCornerRadius
         } else {
             layer.cornerRadius = 0
         }

@@ -59,6 +59,7 @@ class StableOverviewCell: UICollectionViewCell {
         shouldGroupAccessibilityChildren = true
         isAccessibilityElement = true
         accessibilityLabel = item.text + " " + L10n.Accessibility.xofx(item.numberOwned, item.totalNumber)
+        bgView.cornerRadius = UIConstants.mediumCornerRadius
     }
     
 }

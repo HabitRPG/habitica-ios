@@ -68,6 +68,8 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         
         contentStartEdge = mainTaskWrapper.edge.start
         contentEndEdge = mainTaskWrapper.edge.end
+        
+        mainTaskWrapper.cornerRadius = UIConstants.mediumCornerRadius
     }
     
     @objc
@@ -182,8 +184,8 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     
     override func layoutSubviews() {
-        layout()
         super.layoutSubviews()
+        layout()
     }
     
     func layoutContentStartEdge() {
@@ -214,7 +216,13 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
                 lastView = subtitleLabel
             }
             if !taskDetailLine.isHidden {
-                taskDetailLine.pin.below(of: lastView).marginTop(12).start(to: contentStartEdge).marginStart(12).marginEnd(12).end(to: contentEndEdge).height(taskDetailLine.detailLabel.font.lineHeight)
+                taskDetailLine.pin.below(of: lastView)
+                    .marginTop(12)
+                    .start(to: contentStartEdge)
+                    .marginStart(12)
+                    .marginEnd(12)
+                    .end(to: contentEndEdge)
+                    .height(taskDetailLine.detailLabel.font.lineHeight)
                 lastView = taskDetailLine
             }
         }

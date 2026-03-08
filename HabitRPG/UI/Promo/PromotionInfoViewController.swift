@@ -116,12 +116,10 @@ class PromotionInfoViewController: BaseUIViewController {
     private var giftRecipientUsername = ""
 
     private func showGiftSubscriptionAlert() {
-        let navController = EditingFormViewController.buildWithUsernameField(title: L10n.giftRecipientTitle, subtitle: L10n.giftRecipientSubtitle, onSave: { username in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                RouterHandler.shared.handle(.giftSubscription(username: username))
-            })
-        }, saveButtonTitle: L10n.continue)
-        present(navController, animated: true, completion: nil)
+        let alertController = GiftingAlertController(title: L10n.giftSubscription, message: L10n.giftGemsAlertText) { username in
+            RouterHandler.shared.handle(.giftSubscription(username: username))
+        }
+        alertController.show()
     }
 
 }

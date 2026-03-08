@@ -162,6 +162,7 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
             group.interItemSpacing = .flexible(1)
             let section = NSCollectionLayoutSection(group: group)
             section.contentInsets = sectionType.sectionInset
+            section.contentInsetsReference = .safeArea
             return section
         }
         return layout

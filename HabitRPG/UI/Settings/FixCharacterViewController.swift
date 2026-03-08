@@ -68,6 +68,13 @@ class FixCharacterViewController: BaseTableViewController {
         }).start())
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        userRepository.retrieveUser(forced: true).observeCompleted {
+            
+        }
+    }
+    
     private func sizeHeaderToFit() {
         guard let headerView = tableView.tableHeaderView else {
             return
@@ -143,7 +150,7 @@ class FixCharacterViewController: BaseTableViewController {
         if let wrapper = cell.viewWithTag(4) {
             wrapper.borderWidth = 0
             wrapper.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-            wrapper.cornerRadius = 13
+            wrapper.cornerRadius = UIConstants.mediumCornerRadius
         }
         
         return cell

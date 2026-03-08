@@ -14,10 +14,17 @@ struct PixelArtView: UIViewRepresentable {
     var source: Source?
     
     func makeUIView(context: Context) -> NetworkImageView {
-        NetworkImageView()
+        let view = NetworkImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }
     
     func updateUIView(_ uiView: NetworkImageView, context: Context) {
-        uiView.setImagewith(name: name)
+        uiView.contentMode = .scaleAspectFit
+        if let name = name {
+            uiView.setImagewith(name: name)
+        } else if let source = source {
+            uiView.kf.setImage(with: source)
+        }
     }
 }

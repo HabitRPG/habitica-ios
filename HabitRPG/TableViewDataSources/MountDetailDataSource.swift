@@ -52,9 +52,14 @@ class MountDetailDataSource: StableDetailDataSource<MountProtocol, MountStableIt
                         })
                 }))
             .on(value: {[weak self](ownedMounts, mounts) in
+                guard !UserManager.shared.isLoggingOut else {
+                    return
+                }
                 self?.sections[0].items.removeAll()
                 self?.sections[1].items.removeAll()
-                mounts.forEach({ (mount) in
+                mounts.sorted(by: { first, second in
+                    return (first.key ?? "") < (second.key ?? "")
+                }).forEach({ (mount) in
                     let item = MountStableItem(mount: mount, owned: ownedMounts[mount.key ?? ""] ?? false)
                     if mount.type == "premium" {
                         self?.sections[1].items.append(item)

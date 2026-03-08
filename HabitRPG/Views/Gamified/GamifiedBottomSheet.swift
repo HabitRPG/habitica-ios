@@ -37,9 +37,9 @@ struct GamifiedBottomSheet<UpperBackground: View, UpperContent: View, Title: Vie
                         presentationManager.dismiss()
                     } label: {
                         Image(systemName: "xmark")
-                            .scaledFont(size: 24)
-                            .frame(width: 24, height: 24)
-                            .foregroundStyle(.gray10)
+                            .scaledFont(size: 20)
+                            .frame(width: 20, height: 20)
+                            .foregroundStyle(.gray10.opacity(0.6))
                             .frame(width: 44, height: 44)
                     }.buttonStyle(.plain)
                     .background {
@@ -51,7 +51,7 @@ struct GamifiedBottomSheet<UpperBackground: View, UpperContent: View, Title: Vie
                     }
                         .clipShape(.circle)
                         .padding(.top, 16)
-                        .padding(.leading, 24)
+                        .padding(.leading, 16)
             }
                 .padding(.bottom, upperContentBottomPadding)
                 .gamifiedWaveBackground(view: upperBackground)
@@ -70,7 +70,12 @@ struct GamifiedBottomSheet<UpperBackground: View, UpperContent: View, Title: Vie
 }
 
 extension GamifiedBottomSheet where UpperBackground == SolidColorView {
-    init(upperBackgroundColor: Color = .purple400, upperContent: UpperContent, upperContentBottomPadding: CGFloat = 35, title: Title, description: Description, @ViewBuilder buttons: @escaping () -> Buttons, xButtonBackground: Color? = nil) {
+    init(upperBackgroundColor: Color = .purple400,
+         upperContent: UpperContent,
+         upperContentBottomPadding: CGFloat = 35,
+         title: Title,
+         description: Description, @ViewBuilder buttons: @escaping () -> Buttons,
+         xButtonBackground: Color? = nil) {
         self.upperContent = upperContent
         self.upperContentBottomPadding = upperContentBottomPadding
         self.title = title
@@ -82,7 +87,10 @@ extension GamifiedBottomSheet where UpperBackground == SolidColorView {
 }
 
 extension GamifiedBottomSheet where Description == EmptyView, UpperBackground == SolidColorView {
-    init(upperBackgroundColor: Color = .purple400, upperContent: UpperContent, upperContentBottomPadding: CGFloat = 35, title: Title, @ViewBuilder buttons: @escaping () -> Buttons, xButtonBackground: Color? = nil) {
+    init(upperBackgroundColor: Color = .purple400,
+         upperContent: UpperContent, upperContentBottomPadding: CGFloat = 35,
+         title: Title,
+         @ViewBuilder buttons: @escaping () -> Buttons, xButtonBackground: Color? = nil) {
         self.upperContent = upperContent
         self.upperContentBottomPadding = upperContentBottomPadding
         self.title = title
@@ -94,7 +102,11 @@ extension GamifiedBottomSheet where Description == EmptyView, UpperBackground ==
 }
 
 extension GamifiedBottomSheet where UpperBackground == SolidColorView, Title == EmptyView, Description == EmptyView {
-    init(upperBackgroundColor: Color = .purple400, upperContent: UpperContent, upperContentBottomPadding: CGFloat = 35, @ViewBuilder buttons: @escaping () -> Buttons, xButtonBackground: Color? = nil) {
+    init(upperBackgroundColor: Color = .purple400,
+         upperContent: UpperContent,
+         upperContentBottomPadding: CGFloat = 35,
+         @ViewBuilder buttons: @escaping () -> Buttons,
+         xButtonBackground: Color? = nil) {
         self.upperContent = upperContent
         self.upperContentBottomPadding = upperContentBottomPadding
         self.title = EmptyView()
@@ -106,7 +118,12 @@ extension GamifiedBottomSheet where UpperBackground == SolidColorView, Title == 
 }
 
 extension GamifiedBottomSheet where UpperBackground == SolidColorView, Title == EmptyView {
-    init(upperBackgroundColor: Color = .purple400, upperContent: UpperContent, upperContentBottomPadding: CGFloat = 35, description: Description, @ViewBuilder buttons: @escaping () -> Buttons, xButtonBackground: Color? = nil) {
+    init(upperBackgroundColor: Color = .purple400,
+         upperContent: UpperContent,
+         upperContentBottomPadding: CGFloat = 35,
+         description: Description,
+         @ViewBuilder buttons: @escaping () -> Buttons,
+         xButtonBackground: Color? = nil) {
         self.upperContent = upperContent
         self.upperContentBottomPadding = upperContentBottomPadding
         self.title = EmptyView()
@@ -120,7 +137,12 @@ extension GamifiedBottomSheet where UpperBackground == SolidColorView, Title == 
 // Extensions for custom background view
 
 extension GamifiedBottomSheet where Description == EmptyView {
-    init(upperBackground: UpperBackground, upperContent: UpperContent, upperContentBottomPadding: CGFloat = 35, title: Title, @ViewBuilder buttons: @escaping () -> Buttons, xButtonBackground: Color? = nil) {
+    init(upperBackground: UpperBackground,
+         upperContent: UpperContent,
+         upperContentBottomPadding: CGFloat = 35,
+         title: Title,
+         @ViewBuilder buttons: @escaping () -> Buttons,
+         xButtonBackground: Color? = nil) {
         self.upperContent = upperContent
         self.upperContentBottomPadding = upperContentBottomPadding
         self.title = title
@@ -132,7 +154,11 @@ extension GamifiedBottomSheet where Description == EmptyView {
 }
 
 extension GamifiedBottomSheet where Title == EmptyView, Description == EmptyView {
-    init(upperBackground: UpperBackground, upperContent: UpperContent, upperContentBottomPadding: CGFloat = 35, @ViewBuilder buttons: @escaping () -> Buttons, xButtonBackground: Color? = nil) {
+    init(upperBackground: UpperBackground,
+         upperContent: UpperContent,
+         upperContentBottomPadding: CGFloat = 35,
+         @ViewBuilder buttons: @escaping () -> Buttons,
+         xButtonBackground: Color? = nil) {
         self.upperContent = upperContent
         self.upperContentBottomPadding = upperContentBottomPadding
         self.title = EmptyView()
@@ -144,7 +170,12 @@ extension GamifiedBottomSheet where Title == EmptyView, Description == EmptyView
 }
 
 extension GamifiedBottomSheet where Title == EmptyView {
-    init(upperBackground: UpperBackground, upperContent: UpperContent, upperContentBottomPadding: CGFloat = 35, description: Description, @ViewBuilder buttons: @escaping () -> Buttons, xButtonBackground: Color? = nil) {
+    init(upperBackground: UpperBackground,
+         upperContent: UpperContent,
+         upperContentBottomPadding: CGFloat = 35,
+         description: Description,
+         @ViewBuilder buttons: @escaping () -> Buttons,
+         xButtonBackground: Color? = nil) {
         self.upperContent = upperContent
         self.upperContentBottomPadding = upperContentBottomPadding
         self.title = EmptyView()

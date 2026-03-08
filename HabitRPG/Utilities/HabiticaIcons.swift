@@ -37,16 +37,17 @@ public class HabiticaIcons : NSObject {
         static var imageOfGem_36: UIImage?
         static var imageOfWarriorLightBg: UIImage?
         static var imageOfWarriorDarkBg: UIImage?
+        static var imageOfWarriorLarge: UIImage?
         static var imageOfRogueLightBg: UIImage?
         static var imageOfRogueDarkBg: UIImage?
+        static var imageOfRogueLarge: UIImage?
         static var imageOfHealerLightBg: UIImage?
         static var imageOfHealerDarkBg: UIImage?
+        static var imageOfHealerLarge: UIImage?
         static var imageOfMageDarkBg: UIImage?
         static var imageOfMageLightBg: UIImage?
+        static var imageOfMageLarge: UIImage?
         static var imageOfHourglassShop: UIImage?
-        static var imageOfAttributeSparklesLeft: UIImage?
-        static var imageOfAttributeSparklesRight: UIImage?
-        static var imageOfAttributeAllocateButton: UIImage?
         static var imageOfDamage: UIImage?
         static var imageOfRageStrikeInactive: UIImage?
         static var imageOfRage: UIImage?
@@ -2438,12 +2439,9 @@ public class HabiticaIcons : NSObject {
         let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 28, height: 28), target: targetFrame)
         context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
         context.scaleBy(x: resizedFrame.width / 28, y: resizedFrame.height / 28)
-        let resizedShadowScale: CGFloat = min(resizedFrame.width / 28, resizedFrame.height / 28)
-
 
         //// Color Declarations
         let strokeColor = UIColor(red: 0.380, green: 0.200, blue: 0.706, alpha: 1.000)
-        let shadowTint = UIColor(red: 0.102, green: 0.094, blue: 0.114, alpha: 1.000)
         let fillColor39 = UIColor(red: 1, green: 1, blue: 1.000, alpha: 1.000)
         let strokeColor2 = UIColor(red: 1, green: 1, blue: 1.000, alpha: 1.000)
 
@@ -4344,194 +4342,6 @@ public class HabiticaIcons : NSObject {
 
     }
 
-    @objc dynamic public class func drawAttributeSparklesLeft(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 77, height: 24), resizing: ResizingBehavior = .aspectFit) {
-        //// General Declarations
-        let context = UIGraphicsGetCurrentContext()!
-        
-        //// Resize to Target Frame
-        context.saveGState()
-        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 77, height: 24), target: targetFrame)
-        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
-        context.scaleBy(x: resizedFrame.width / 77, y: resizedFrame.height / 24)
-
-
-        //// Color Declarations
-        let fillColor18 = UIColor(red: 0.604, green: 0.384, blue: 1.000, alpha: 1.000)
-        let fillColor71 = UIColor(red: 0.314, green: 0.710, blue: 0.914, alpha: 1.000)
-        let fillColor72 = UIColor(red: 1.000, green: 0.380, blue: 0.396, alpha: 1.000)
-        let fillColor73 = UIColor(red: 1.000, green: 0.706, blue: 0.271, alpha: 1.000)
-
-        //// Star Drawing
-        let starPath = UIBezierPath()
-        starPath.move(to: CGPoint(x: 42.5, y: 0))
-        starPath.addLine(to: CGPoint(x: 44.66, y: 4.34))
-        starPath.addLine(to: CGPoint(x: 49, y: 6.5))
-        starPath.addLine(to: CGPoint(x: 44.66, y: 8.66))
-        starPath.addLine(to: CGPoint(x: 42.5, y: 13))
-        starPath.addLine(to: CGPoint(x: 40.34, y: 8.66))
-        starPath.addLine(to: CGPoint(x: 36, y: 6.5))
-        starPath.addLine(to: CGPoint(x: 40.34, y: 4.34))
-        starPath.close()
-        fillColor71.setFill()
-        starPath.fill()
-
-
-        //// Star 2 Drawing
-        let star2Path = UIBezierPath()
-        star2Path.move(to: CGPoint(x: 69, y: 6))
-        star2Path.addLine(to: CGPoint(x: 71.65, y: 11.35))
-        star2Path.addLine(to: CGPoint(x: 77, y: 14))
-        star2Path.addLine(to: CGPoint(x: 71.65, y: 16.65))
-        star2Path.addLine(to: CGPoint(x: 69, y: 22))
-        star2Path.addLine(to: CGPoint(x: 66.35, y: 16.65))
-        star2Path.addLine(to: CGPoint(x: 61, y: 14))
-        star2Path.addLine(to: CGPoint(x: 66.35, y: 11.35))
-        star2Path.close()
-        fillColor18.setFill()
-        star2Path.fill()
-
-
-        //// Star 3 Drawing
-        let star3Path = UIBezierPath()
-        star3Path.move(to: CGPoint(x: 22, y: 14))
-        star3Path.addLine(to: CGPoint(x: 23.66, y: 17.34))
-        star3Path.addLine(to: CGPoint(x: 27, y: 19))
-        star3Path.addLine(to: CGPoint(x: 23.66, y: 20.66))
-        star3Path.addLine(to: CGPoint(x: 22, y: 24))
-        star3Path.addLine(to: CGPoint(x: 20.34, y: 20.66))
-        star3Path.addLine(to: CGPoint(x: 17, y: 19))
-        star3Path.addLine(to: CGPoint(x: 20.34, y: 17.34))
-        star3Path.close()
-        fillColor72.setFill()
-        star3Path.fill()
-
-
-        //// Star 4 Drawing
-        let star4Path = UIBezierPath()
-        star4Path.move(to: CGPoint(x: 3.5, y: 9))
-        star4Path.addLine(to: CGPoint(x: 4.67, y: 11.33))
-        star4Path.addLine(to: CGPoint(x: 7, y: 12.5))
-        star4Path.addLine(to: CGPoint(x: 4.67, y: 13.67))
-        star4Path.addLine(to: CGPoint(x: 3.5, y: 16))
-        star4Path.addLine(to: CGPoint(x: 2.33, y: 13.67))
-        star4Path.addLine(to: CGPoint(x: 0, y: 12.5))
-        star4Path.addLine(to: CGPoint(x: 2.33, y: 11.33))
-        star4Path.close()
-        fillColor73.setFill()
-        star4Path.fill()
-        
-        context.restoreGState()
-
-    }
-
-    @objc dynamic public class func drawAttributeSparklesRight(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 77, height: 24), resizing: ResizingBehavior = .aspectFit) {
-        //// General Declarations
-        let context = UIGraphicsGetCurrentContext()!
-        
-        //// Resize to Target Frame
-        context.saveGState()
-        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 77, height: 24), target: targetFrame)
-        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
-        context.scaleBy(x: resizedFrame.width / 77, y: resizedFrame.height / 24)
-
-
-        //// Color Declarations
-        let fillColor18 = UIColor(red: 0.604, green: 0.384, blue: 1.000, alpha: 1.000)
-        let fillColor71 = UIColor(red: 0.314, green: 0.710, blue: 0.914, alpha: 1.000)
-        let fillColor72 = UIColor(red: 1.000, green: 0.380, blue: 0.396, alpha: 1.000)
-        let fillColor74 = UIColor(red: 1.000, green: 0.745, blue: 0.365, alpha: 1.000)
-
-        //// Star Drawing
-        let starPath = UIBezierPath()
-        starPath.move(to: CGPoint(x: 34.5, y: 0))
-        starPath.addLine(to: CGPoint(x: 36.66, y: 4.34))
-        starPath.addLine(to: CGPoint(x: 41, y: 6.5))
-        starPath.addLine(to: CGPoint(x: 36.66, y: 8.66))
-        starPath.addLine(to: CGPoint(x: 34.5, y: 13))
-        starPath.addLine(to: CGPoint(x: 32.34, y: 8.66))
-        starPath.addLine(to: CGPoint(x: 28, y: 6.5))
-        starPath.addLine(to: CGPoint(x: 32.34, y: 4.34))
-        starPath.close()
-        fillColor72.setFill()
-        starPath.fill()
-
-
-        //// Star 2 Drawing
-        let star2Path = UIBezierPath()
-        star2Path.move(to: CGPoint(x: 8, y: 6))
-        star2Path.addLine(to: CGPoint(x: 10.65, y: 11.35))
-        star2Path.addLine(to: CGPoint(x: 16, y: 14))
-        star2Path.addLine(to: CGPoint(x: 10.65, y: 16.65))
-        star2Path.addLine(to: CGPoint(x: 8, y: 22))
-        star2Path.addLine(to: CGPoint(x: 5.35, y: 16.65))
-        star2Path.addLine(to: CGPoint(x: 0, y: 14))
-        star2Path.addLine(to: CGPoint(x: 5.35, y: 11.35))
-        star2Path.close()
-        fillColor74.setFill()
-        star2Path.fill()
-
-
-        //// Star 3 Drawing
-        let star3Path = UIBezierPath()
-        star3Path.move(to: CGPoint(x: 55, y: 14))
-        star3Path.addLine(to: CGPoint(x: 56.66, y: 17.34))
-        star3Path.addLine(to: CGPoint(x: 60, y: 19))
-        star3Path.addLine(to: CGPoint(x: 56.66, y: 20.66))
-        star3Path.addLine(to: CGPoint(x: 55, y: 24))
-        star3Path.addLine(to: CGPoint(x: 53.34, y: 20.66))
-        star3Path.addLine(to: CGPoint(x: 50, y: 19))
-        star3Path.addLine(to: CGPoint(x: 53.34, y: 17.34))
-        star3Path.close()
-        fillColor18.setFill()
-        star3Path.fill()
-
-
-        //// Star 4 Drawing
-        let star4Path = UIBezierPath()
-        star4Path.move(to: CGPoint(x: 73.5, y: 9))
-        star4Path.addLine(to: CGPoint(x: 74.67, y: 11.33))
-        star4Path.addLine(to: CGPoint(x: 77, y: 12.5))
-        star4Path.addLine(to: CGPoint(x: 74.67, y: 13.67))
-        star4Path.addLine(to: CGPoint(x: 73.5, y: 16))
-        star4Path.addLine(to: CGPoint(x: 72.33, y: 13.67))
-        star4Path.addLine(to: CGPoint(x: 70, y: 12.5))
-        star4Path.addLine(to: CGPoint(x: 72.33, y: 11.33))
-        star4Path.close()
-        fillColor71.setFill()
-        star4Path.fill()
-        
-        context.restoreGState()
-
-    }
-
-    @objc dynamic public class func drawAttributeAllocateButton(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 24, height: 15), resizing: ResizingBehavior = .aspectFit) {
-        //// General Declarations
-        let context = UIGraphicsGetCurrentContext()!
-        
-        //// Resize to Target Frame
-        context.saveGState()
-        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 24, height: 15), target: targetFrame)
-        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
-        context.scaleBy(x: resizedFrame.width / 24, y: resizedFrame.height / 15)
-
-
-        //// Color Declarations
-        let fillColor75 = UIColor(red: 0.529, green: 0.506, blue: 0.565, alpha: 1.000)
-
-        //// Bezier Drawing
-        let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x: 0, y: 15))
-        bezierPath.addLine(to: CGPoint(x: 12, y: 0))
-        bezierPath.addLine(to: CGPoint(x: 24, y: 15))
-        bezierPath.addLine(to: CGPoint(x: 0, y: 15))
-        bezierPath.close()
-        bezierPath.usesEvenOddFillRule = true
-        fillColor75.setFill()
-        bezierPath.fill()
-        
-        context.restoreGState()
-
-    }
 
     @objc dynamic public class func drawInfoIcon(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 20, height: 20), resizing: ResizingBehavior = .aspectFit, infoIconColor: UIColor = UIColor(red: 0.604, green: 0.384, blue: 1.000, alpha: 1.000)) {
         //// General Declarations
@@ -4580,7 +4390,7 @@ public class HabiticaIcons : NSObject {
 
     }
 
-    @objc dynamic public class func drawContributorBadge(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 16, height: 16), resizing: ResizingBehavior = .aspectFit, _1: CGFloat = 1, isNPC: Bool = false) {
+    @objc dynamic public class func drawContributorBadge(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 16, height: 16), resizing: ResizingBehavior = .aspectFit, tier: Int = 1, isNPC: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         
@@ -4614,15 +4424,15 @@ public class HabiticaIcons : NSObject {
         let strokeColor12 = UIColor(red: 0.000, green: 0.341, blue: 0.216, alpha: 1.000)
 
         //// Variable Declarations
-        let isTier1 = _1 == 1 && !isNPC
-        let isTier2 = _1 == 2 && !isNPC
-        let isTier3 = _1 == 3 && !isNPC
-        let isTier4 = _1 == 4 && !isNPC
-        let isTier5 = _1 == 5 && !isNPC
-        let isTier6 = _1 == 6 && !isNPC
-        let isTier7 = _1 == 7 && !isNPC
-        let isTier8 = _1 == 8 && !isNPC
-        let isTier9 = _1 == 9 && !isNPC
+        let isTier1 = tier == 1 && !isNPC
+        let isTier2 = tier == 2 && !isNPC
+        let isTier3 = tier == 3 && !isNPC
+        let isTier4 = tier == 4 && !isNPC
+        let isTier5 = tier == 5 && !isNPC
+        let isTier6 = tier == 6 && !isNPC
+        let isTier7 = tier == 7 && !isNPC
+        let isTier8 = tier == 8 && !isNPC
+        let isTier9 = tier == 9 && !isNPC
 
         if (isTier1) {
             //// Tier1 Drawing
@@ -9369,6 +9179,20 @@ public class HabiticaIcons : NSObject {
 
         return Cache.imageOfWarriorDarkBg!
     }
+    
+    @objc dynamic public class var imageOfWarriorLarge: UIImage {
+        if Cache.imageOfWarriorLarge != nil {
+            return Cache.imageOfWarriorLarge!
+        }
+
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 55, height: 55), false, 0)
+            HabiticaIcons.drawWarriorLightBg(frame: CGRect(x: 0, y: 0, width: 55, height: 55))
+
+        Cache.imageOfWarriorLarge = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return Cache.imageOfWarriorLarge!
+    }
 
     @objc dynamic public class var imageOfRogueLightBg: UIImage {
         if Cache.imageOfRogueLightBg != nil {
@@ -9382,6 +9206,20 @@ public class HabiticaIcons : NSObject {
         UIGraphicsEndImageContext()
 
         return Cache.imageOfRogueLightBg!
+    }
+    
+    @objc dynamic public class var imageOfRogueLarge: UIImage {
+        if Cache.imageOfRogueLarge != nil {
+            return Cache.imageOfRogueLarge!
+        }
+
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 55, height: 55), false, 0)
+        HabiticaIcons.drawRogueLightBg(frame: CGRect(x: 0, y: 0, width: 55, height: 55))
+
+        Cache.imageOfRogueLarge = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return Cache.imageOfRogueLarge!
     }
 
     @objc dynamic public class var imageOfRogueDarkBg: UIImage {
@@ -9410,6 +9248,20 @@ public class HabiticaIcons : NSObject {
         UIGraphicsEndImageContext()
 
         return Cache.imageOfHealerLightBg!
+    }
+    
+    @objc dynamic public class var imageOfHealerLarge: UIImage {
+        if Cache.imageOfHealerLarge != nil {
+            return Cache.imageOfHealerLarge!
+        }
+
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 55, height: 55), false, 0)
+            HabiticaIcons.drawHealerLightBg(frame: CGRect(x: 0, y: 0, width: 55, height: 55))
+
+        Cache.imageOfHealerLarge = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return Cache.imageOfHealerLarge!
     }
 
     @objc dynamic public class var imageOfHealerDarkBg: UIImage {
@@ -9453,6 +9305,20 @@ public class HabiticaIcons : NSObject {
 
         return Cache.imageOfMageLightBg!
     }
+    
+    @objc dynamic public class var imageOfMageLarge: UIImage {
+        if Cache.imageOfMageLarge != nil {
+            return Cache.imageOfMageLarge!
+        }
+
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 55, height: 55), false, 0)
+            HabiticaIcons.drawMageLightBg(frame: CGRect(x: 0, y: 0, width: 55, height: 55))
+
+        Cache.imageOfMageLarge = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return Cache.imageOfMageLarge!
+    }
 
     @objc dynamic public class func imageOfCheckmark(checkmarkColor: UIColor = UIColor(red: 0.529, green: 0.506, blue: 0.565, alpha: 1.000), percentage: CGFloat = 0) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 16, height: 12), false, 0)
@@ -9478,47 +9344,6 @@ public class HabiticaIcons : NSObject {
         return Cache.imageOfHourglassShop!
     }
 
-    @objc dynamic public class var imageOfAttributeSparklesLeft: UIImage {
-        if Cache.imageOfAttributeSparklesLeft != nil {
-            return Cache.imageOfAttributeSparklesLeft!
-        }
-
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 77, height: 24), false, 0)
-            HabiticaIcons.drawAttributeSparklesLeft()
-
-        Cache.imageOfAttributeSparklesLeft = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-
-        return Cache.imageOfAttributeSparklesLeft!
-    }
-
-    @objc dynamic public class var imageOfAttributeSparklesRight: UIImage {
-        if Cache.imageOfAttributeSparklesRight != nil {
-            return Cache.imageOfAttributeSparklesRight!
-        }
-
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 77, height: 24), false, 0)
-            HabiticaIcons.drawAttributeSparklesRight()
-
-        Cache.imageOfAttributeSparklesRight = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-
-        return Cache.imageOfAttributeSparklesRight!
-    }
-
-    @objc dynamic public class var imageOfAttributeAllocateButton: UIImage {
-        if Cache.imageOfAttributeAllocateButton != nil {
-            return Cache.imageOfAttributeAllocateButton!
-        }
-
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 24, height: 15), false, 0)
-            HabiticaIcons.drawAttributeAllocateButton()
-
-        Cache.imageOfAttributeAllocateButton = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-
-        return Cache.imageOfAttributeAllocateButton!
-    }
 
     @objc dynamic public class func imageOfInfoIcon(infoIconColor: UIColor = UIColor(red: 0.604, green: 0.384, blue: 1.000, alpha: 1.000)) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 20, height: 20), false, 0)
@@ -9530,9 +9355,9 @@ public class HabiticaIcons : NSObject {
         return imageOfInfoIcon
     }
 
-    @objc dynamic public class func imageOfContributorBadge(_1: CGFloat = 1, isNPC: Bool = false) -> UIImage {
+    @objc dynamic public class func imageOfContributorBadge(tier: Int = 1, isNPC: Bool = false) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 16, height: 16), false, 0)
-            HabiticaIcons.drawContributorBadge(_1: _1, isNPC: isNPC)
+            HabiticaIcons.drawContributorBadge(tier: tier, isNPC: isNPC)
 
         let imageOfContributorBadge = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()

@@ -15,6 +15,8 @@ struct TaskFormView: View {
     var presentationMode
     @State private var isEditingText = false
     @State private var isEditingNotes = false
+    @State private var isEditingCounterUp = false
+    @State private var isEditingCounterDown = false
 
     var tags: [TagProtocol] = []
     
@@ -175,12 +177,24 @@ struct TaskFormView: View {
                                 
                                 TaskFormSection(header: Text(L10n.Tasks.Form.adjustCounter.localizedCapitalized),
                                                 content: VStack {
-                                    FormRow(title: Text(L10n.Tasks.Form.positive), valueLabel: TextField(L10n.Tasks.Form.positive, text: $viewModel.counterUp)
-                                        .multilineTextAlignment(.trailing)
-                                        .keyboardType(.numberPad))
-                                    FormRow(title: Text(L10n.Tasks.Form.negative), valueLabel: TextField(L10n.Tasks.Form.negative, text: $viewModel.counterDown)
-                                        .multilineTextAlignment(.trailing)
-                                        .keyboardType(.numberPad))
+                                    FormRow(title: Text(L10n.Tasks.Form.positive), valueLabel: FocusableTextField(
+                                        placeholder: L10n.Tasks.Form.positive,
+                                        text: $viewModel.counterUp,
+                                        isFirstResponder: $isEditingCounterUp,
+                                        configuration: { textField in
+                                            textField.keyboardType = .numberPad
+                                            textField.textAlignment = .right
+                                        }
+                                    ))
+                                    FormRow(title: Text(L10n.Tasks.Form.negative), valueLabel: FocusableTextField(
+                                        placeholder: L10n.Tasks.Form.negative,
+                                        text: $viewModel.counterDown,
+                                        isFirstResponder: $isEditingCounterDown,
+                                        configuration: { textField in
+                                            textField.keyboardType = .numberPad
+                                            textField.textAlignment = .right
+                                        }
+                                    ))
                                 })
                             }
                             TaskFormSection(header: Text(L10n.Tasks.Form.tags.localizedCapitalized),
@@ -228,11 +242,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
             viewModel.task = editedTask
             
             viewModel.onTaskDelete = {[weak self] in
-                if let task = self?.editedTask {
-                    self?.taskRepository.deleteTask(task).observeCompleted {
-                    }
-                }
-                self?.dismiss(animated: true, completion: nil)
+                self?.confirmTaskDeletion()
             }
             viewModel.lightTaskTintColor = Color(editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple400)
             var tintColor: UIColor = editedTask != nil ? .forTaskValueLight(editedTask?.value ?? 0) : .purple300
@@ -385,8 +395,23 @@ class TaskFormController: UIHostingController<TaskFormView> {
         if editedTask != nil {
             taskRepository.updateTask(task).observeCompleted {}
         } else {
-            taskRepository.createTask(task).observeCompleted {}
+            taskRepository.createTask(task).observeCompleted {
+                NotificationManager.showPendingOnboardingAchievement(key: "createdTask")
+            }
         }
+    }
+    
+    func confirmTaskDeletion() {
+        let alert = HabiticaAlertController(title: L10n.deleteX(taskType.prettyName()), message: L10n.deleteTaskConfirmation)
+        alert.addAction(title: L10n.deleteX(L10n.task), style: .destructive) { _ in
+            if let task = self.editedTask {
+                self.taskRepository.deleteTask(task).observeCompleted {
+                }
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
+        alert.addCancelAction()
+        alert.enqueue()
     }
 }
 

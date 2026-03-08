@@ -59,7 +59,7 @@
 "titles.basics" = "Basics";
 "stats.no_points_to_allocate" = "0 Points to Allocate";
 "stats.one_point_to_allocate" = "1 Point to Allocate";
-"stats.points_to_allocate" = "%d Point to Allocate";
+"stats.points_to_allocate" = "%d Points to Allocate";
 "stats.level" = "Level";
 "stats.battle_gear" = "Battle Gear";
 "stats.class_bonus" = "Class-Bonus";
@@ -544,10 +544,10 @@
 "classes.mages" = "Mages";
 "classes.healers" = "Healers";
 "classes.rogues" = "Rogues";
-"classes.warrior_description" = "Warriors score more and better \"critical hits\", which randomly give bonus Gold, Experience, and drop chance for scoring a task. They also deal heavy damage to boss monsters. Play a Warrior if you find motivation from unpredictable jackpot-style rewards, or want to dish out the hurt in boss Quests!";
-"classes.mage_description" = "Mages learn swiftly, gaining Experience and Levels faster than other classes. They also get a great deal of Mana for using special abilities. Play a Mage if you enjoy the tactical game aspects of Habitica, or if you are strongly motivated by leveling up and unlocking advanced features!";
-"classes.healer_description" = "Healers stand impervious against harm, and extend that protection to others. Missed Dailies and bad Habits don't faze them much, and they have ways to recover Health from failure. Play a Healer if you enjoy assisting others in your Party, or if the idea of cheating Death through hard work inspires you!";
-"classes.rogue_description" = "Rogues love to accumulate wealth, gaining more Gold than anyone else, and are adept at finding random items. Their iconic Stealth ability lets them duck the consequences of missed Dailies. Play a Rogue if you find strong motivation from Rewards and Achievements, striving for loot and badges!";
+"classes.warrior_description" = "Warriors score more critical hits and deal more damage to Quest bosses. Play a Warrior if you want to defeat monsters easily with powerful blows. Warriors benefit from a high Strength stat.";
+"classes.mage_description" = "Mages learn skills that damage Quest bosses and boost Exp and Mana. Play a Mage if you're motivated by leveling up quickly. Mages benefit from a high Intelligence stat.";
+"classes.healer_description" = "Healers learn skills that protect themselves and their Party from damage. Play a Healer if you enjoy assisting others or lose HP frequently. Healers benefit from a high Constitution stat.";
+"classes.rogue_description" = "Rogues learn skills that boost the rewards you receive from completing tasks. Play a Rogue if you're after more item drops and Gold. Rogues benefit from a high Perception stat.";
 "classes.class_header" = "%@ Class";
 "classes.become_a_class" = "Become a %@";
 "leader" = "Leader";
@@ -605,6 +605,7 @@
 "quests.accepted" = "Accepted";
 "quests.rejected" = "Rejected";
 "quests.pending" = "Pending";
+"boss" = "Boss";
 "quests.confirm_cancel_invitation" = "Are you sure you want to cancel this quest? All invitation acceptances will be lost. The quest owner will retain possession of the quest scroll.";
 "quests.confirm_force_start" = "Are you sure? Not all party members have joined this quest! Quests start automatically when all players have joined or rejected the invitation.";
 "quests.confirm_abort" = "Are you sure you want to abort this mission? It will abort it for everyone in your party and all progress will be lost. The quest scroll will be returned to the quest owner.";
@@ -624,8 +625,8 @@
 "quests.unlock_previous_short" = "Finish Quest %d";
 "groups.leader_challenges" = "Only leader can create Challenges";
 "groups.assign_new_leader" = "Assign new Leader";
-"groups.guild_invitation_no_invitername" = "Someone invited you to join the Guild: **%@**";
-"groups.guild_invitation_invitername" = "**@%@** invited you to join the Guild: **%@**";
+"groups.guild_invitation_no_invitername" = "Someone invited you to join the Group **%@**";
+"groups.guild_invitation_invitername" = "**@%@** invited you to join the Goup **%@**";
 "groups.groups" = "Groups";
 "groups.group" = "Group";
 "groups.group_plan_settings" = "Group Plan Settings";
@@ -1166,9 +1167,9 @@
 "go_to_items" = "Go to Items";
 "first_drop_title" = "You found new items!";
 "view_onboarding_tasks" = "View Onboarding Tasks";
-"onboardingCompleteTitle" = "You earned 5 Achievements and 100 Gold for your efforts.";
+"onboardingCompleteTitle" = "You earned **5 Achievements** and **[100 Gold](/fake)** for your efforts.";
 "onboardingCompleteDescription" = "If you want even more, check out Achievements and start collecting!";
-"onboardingComplete_achievement_title" = "You completed your OnboardingTasks!";
+"onboardingComplete_achievement_title" = "You completed your onboarding tasks!";
 "partyUpTitle" = "Party Up";
 "partyUpDescription" = "You teamed up with a party member!";
 "partyOnTitle" = "Party On";
@@ -1307,7 +1308,7 @@
 "class_system_disabled" = "Class System disabled.";
 "class_system_unlocked" = "Class system unlocked";
 "class_system_unlocked_description" = "Choose a class that fits your play style and unlock special skills and armor to help you on your journey";
-"class_system_enable_instructions" = "You can enable the class system from the apps settings.";
+"class_system_enable_instructions" = "You can enable the class system from Settings to choose a class later";
 "unlocks_selecting_class_description" = "Skills are unlocked once you reach level 10 and have selected a class";
 "unlocks_selecting_class_prompt" = "Now that you reached level 10, you can choose a class!";
 "pet_accessibility_label_raised" = "%@, Raised %d%%";
@@ -1485,7 +1486,7 @@
 "task_reminder" = "Task Reminder";
 "joined_x" = "Joined %s";
 "equipped_gear" = "Equipped Gear";
-"stable.pets_and_mounts" = "Pets and Mounts";
+"stable.pets_and_mounts" = "Pets & Mounts";
 "challenges_won" = "Challenges Won";
 "player_not_won_challenges" = "Player has not won any challenges.";
 "player_not_completed_quests" = "Player has not completed any quests.";
@@ -1497,7 +1498,7 @@
 "none" = "None";
 "item_is_locked" = "Item is locked";
 "edit_tags" = "Edit Tags";
-"add_tag" = "Add Tag";
+"add_tag" = "Add new Tag";
 "view_stats" = "View Stats";
 "find_stats_menu" = "You can find stats any time in the Menu";
 "go_to_pets_mounts" = "Go to Pets & Mounts";
@@ -1507,3 +1508,15 @@
 "glossary" = "Glossary";
 
 "fcv_streak_explanation" = "You can restore streaks on individual tasks by tapping them to open the edit view";
+"more_gem_packs" = "More Gem packs";
+"x_gems_for_y" = "%d Gems for %s";
+"loading" = "Loading";
+"task_health" = "Task Health";
+"task_status" = "Task Status";
+"contributor_tiers" = "Contributor Tiers";
+"habitica_helpers" = "Habitica Helpers";
+"contributor_tiers_description" = "If you see an account with a colored display name and an icon, that’s a contributor tier! Tiers are given to people who help around Habitica, whether it be for translation, coding, or just being helpful. The higher the tier, the more the player has contributed.";
+"delete_x" = "Delete %s";
+"delete_task_confirmation" = "Are you sure you want to delete this Task?";
+"task" = "Task";
+"item_only_available_for" = "This item is only available to %s";

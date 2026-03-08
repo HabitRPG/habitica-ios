@@ -157,7 +157,13 @@ extension HabiticaAppDelegate: UNUserNotificationCenterDelegate {
             
             for offset in 0...6 {
                 let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: actualDate)
-                let newComponents = DateComponents(calendar: calendar, timeZone: .current, year: components.year, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
+                let newComponents = DateComponents(calendar: calendar,
+                                                   timeZone: .current,
+                                                   year: components.year,
+                                                   month: components.month,
+                                                   day: components.day,
+                                                   hour: components.hour,
+                                                   minute: components.minute)
                 let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
 
                 let notification = buildBaseNotification()
@@ -173,7 +179,13 @@ extension HabiticaAppDelegate: UNUserNotificationCenterDelegate {
             }
             
             let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: actualDate)
-            let newComponents = DateComponents(calendar: calendar, timeZone: .current, year: components.year, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
+            let newComponents = DateComponents(calendar: calendar,
+                                               timeZone: .current,
+                                               year: components.year,
+                                               month: components.month,
+                                               day: components.day,
+                                               hour: components.hour,
+                                               minute: components.minute)
             let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
 
             let notification = buildBaseNotification()

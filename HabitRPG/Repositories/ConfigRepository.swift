@@ -23,7 +23,6 @@ enum ConfigVariable: Int {
     
     case shopSpriteSuffix
     case maxChatLength
-    case spriteSubstitutions
     case lastVersionNumber
     case lastVersionCode
     case randomizeAvatar
@@ -62,7 +61,6 @@ enum ConfigVariable: Int {
         case .apiVersion: return "apiVersion"
         case .shopSpriteSuffix: return "shopSpriteSuffix"
         case .maxChatLength: return "maxChatLength"
-        case .spriteSubstitutions: return "spriteSubstitutions"
         case .lastVersionNumber: return "lastVersionNumber"
         case .lastVersionCode: return "lastVersionCode"
         case .randomizeAvatar: return "randomizeAvatar"
@@ -107,8 +105,6 @@ enum ConfigVariable: Int {
             return "" as NSString
         case .maxChatLength:
             return 3000 as NSNumber
-        case .spriteSubstitutions:
-            return "{}" as NSString
         case .lastVersionNumber:
             return "" as NSString
         case .lastVersionCode:
@@ -166,7 +162,6 @@ enum ConfigVariable: Int {
             .apiVersion,
             .shopSpriteSuffix,
             .maxChatLength,
-            .spriteSubstitutions,
             .lastVersionNumber,
             .lastVersionCode,
             .randomizeAvatar,
@@ -185,7 +180,7 @@ enum ConfigVariable: Int {
             .showTaskGraphs,
             .advertiseTaskGraphs,
             .enableCronButton,
-            .hideChallenges,
+            .hideChallenges
         ]
     }
     // swiftlint:enable cyclomatic_complexity

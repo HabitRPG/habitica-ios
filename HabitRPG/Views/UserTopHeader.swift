@@ -262,7 +262,7 @@ class UserTopHeader: UIView, Themeable {
     
     private func configureClassDisplay(user: UserProtocol) {
         levelLabel.text = "Lvl \(user.stats?.level ?? 0)"
-        if user.preferences?.disableClasses != true && (user.stats?.level ?? 0) >= 10 {
+        if user.preferences?.disableClasses != true && user.flags?.classSelected == true && (user.stats?.level ?? 0) >= 10 {
             switch user.stats?.habitClass ?? "" {
             case "warrior":
                 classImageView.image = HabiticaIcons.imageOfWarriorLightBg

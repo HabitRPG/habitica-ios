@@ -73,6 +73,9 @@ class QuestMenuHeader: UIView {
     
     @objc
     func configure(user: UserProtocol) {
+        guard user.isValid else {
+            return
+        }
         let pendingDamage: Float = user.party?.quest?.progress?.up ?? 0.0
         if pendingDamage > 0 {
             pendingDamageLabel.text = "+\(formatter.string(from: NSNumber(value: pendingDamage)) ?? "0")"

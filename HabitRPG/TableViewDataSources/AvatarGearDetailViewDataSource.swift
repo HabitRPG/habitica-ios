@@ -60,6 +60,9 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
                 self?.configureSections(gear.value)
             }).start())
         disposable.add(userRepository.getUser().on(value: {[weak self]user in
+            guard !UserManager.shared.isLoggingOut else {
+                return
+            }
             self?.preferences = user.preferences
             let outfit = (user.preferences?.useCostume ?? false) ? user.items?.gear?.costume : user.items?.gear?.equipped
             switch self?.gearType {

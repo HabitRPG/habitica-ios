@@ -85,11 +85,12 @@ struct LoginTextInput<Icon: View>: View {
     var isSecure: Bool = false
     var isValid: Bool?
     var errorMessage: String?
-    
+    var textContentType: UITextContentType?
+
     @Binding var text: String
 
     @FocusState private var isFocused: Bool
-    
+
     @State private var lastFocusChange = Date()
     @State private var lastInputChange = Date()
 
@@ -101,6 +102,7 @@ struct LoginTextInput<Icon: View>: View {
                     .textFieldStyle(LoginTextFieldStyle(prefix: prefix, icon: icon, isValid: isValid, showError: showError))
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
+                    .textContentType(textContentType)
                     .focused($isFocused)
                     .onTapGesture {
                         isFocused = true
@@ -121,9 +123,9 @@ struct LoginTextInput<Icon: View>: View {
                     .padding(.bottom, 6)
                     .foregroundStyle(.red500)
             }
-        }.onChange(of: isFocused) { _ in
+        }.onChange(of: isFocused) {
             lastFocusChange = Date()
-        }.onChange(of: text) { _ in
+        }.onChange(of: text) {
             lastInputChange = Date()
         }
     }
@@ -178,32 +180,39 @@ struct LoginForm: View {
                        icon: Image(Asset.loginEmail.name),
                        isValid: viewState == .login ? nil : isEmailValid,
                        text: $email)
+        .textContentType(viewState == .register ? .emailAddress : .username)
             .padding(.bottom, 7)
             .submitLabel(.next)
             .keyboardType(.emailAddress)
-        let passwordField = LoginTextInput(placeholder: L10n.password,
-                                           icon: Image(Asset.loginPassword.name),
-                                           isSecure: true,
-                                           isValid: viewState == .login ? nil : isPasswordValid,
-                                           errorMessage: viewState == .register && password.count < 8 ? L10n.Login.passwordLengthError : nil,
-                                           text: $password)
         if viewState != .login {
-            passwordField
+            LoginTextInput(placeholder: L10n.password,
+                           icon: Image(Asset.loginPassword.name),
+                           isSecure: true,
+                           isValid: isPasswordValid,
+                           errorMessage: password.count < 8 ? L10n.Login.passwordLengthError : nil,
+                           textContentType: .newPassword,
+                           text: $password)
                 .submitLabel(.next)
             LoginTextInput(placeholder: L10n.repeatPassword,
                            icon: Image(Asset.loginPassword.name),
                            isSecure: true,
                            isValid: isPasswordRepeatValid,
                            errorMessage: isPasswordRepeatValid == false ? L10n.Login.passwordConfirmError : nil,
+                           textContentType: .password,
                            text: $repeatPassword)
                 .transition(.move(edge: .top).combined(with: .opacity))
                 .padding(.top, 7)
                 .submitLabel(.continue)
-                    .onSubmit {
-                        onLogin()
-                    }
+                .onSubmit {
+                    onLogin()
+                }
         } else {
-            passwordField.submitLabel(.continue)
+            LoginTextInput(placeholder: L10n.password,
+                           icon: Image(Asset.loginPassword.name),
+                           isSecure: true,
+                           textContentType: .password,
+                           text: $password)
+                .submitLabel(.continue)
                 .onSubmit {
                     onLogin()
                 }
@@ -465,7 +474,7 @@ struct LoginScreen: View {
                                 .foregroundStyle(.white)
                         }
                     }.pickerStyle(.menu)
-                        .onChange(of: chosenServer) { _ in
+                        .onChange(of: chosenServer) {
                             let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate
                             appDelegate?.updateServer()
                         }

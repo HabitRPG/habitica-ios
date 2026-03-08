@@ -37,6 +37,9 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             self?.user = user
         }).start())
         disposable.add(socialRepository.getMember(userID: otherUserID ?? otherUsername ?? "", retrieveIfNotFound: true).on(value: {[weak self] member in
+            guard !UserManager.shared.isLoggingOut else {
+                return
+            }
             self?.member = member
             if self?.otherUserID == nil {
                 self?.otherUserID = member?.id
@@ -95,10 +98,10 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             isExpanded = expandedChatPath == indexPath
         }
         
-        cell.isFirstMessage = indexPath?.item == 0
+        cell.isFirstMessage = indexPath?.item == (sections[0].items.count - 1)
         cell.configure(inboxMessage: message,
-                       previousMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)+1, section: indexPath?.section ?? 0)),
-                       nextMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)-1, section: indexPath?.section ?? 0)),
+                       previousMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)-1, section: indexPath?.section ?? 0)),
+                       nextMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)+1, section: indexPath?.section ?? 0)),
                        user: self.user, isExpanded: isExpanded)
         
         cell.profileAction = {[weak self] in

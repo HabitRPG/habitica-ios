@@ -14,7 +14,7 @@ class ImageManager {
     static let baseURL = "https://habitica-assets.s3.amazonaws.com/mobileApp/images/"
     
     static func buildImageUrl(name: String, extension fileExtension: String = "") -> URL? {
-        let actualName = substituteSprite(name: name)
+        let actualName = ImageSubstitutionManager.substituteSprite(name: name)
         return URL(string: "\(baseURL)\(actualName).\(getFormat(name: actualName, format: fileExtension))")
     }
     
@@ -110,13 +110,5 @@ class ImageManager {
         }
         return formatDictionary[name] ?? "png"
     }
-    
-    private static func substituteSprite(name: String) -> String {
-        if let value = substitutions[name] {
-            return (value as? String) ?? name
-        }
-        return name
-    }
-    
-    static var substitutions = ConfigRepository.shared.dictionary(variable: .spriteSubstitutions)
+
 }

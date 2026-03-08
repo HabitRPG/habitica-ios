@@ -234,6 +234,9 @@ struct RYATaskView: View {
 }
 
 struct RYABottomSheet: View, Dismissable {
+    @Environment(\.safeAreaInsets)
+    var safeAreaInsets
+    
     @ObservedObject var themeService = ThemeService.shared
     var dismisser: Dismisser {
         get {
@@ -250,7 +253,7 @@ struct RYABottomSheet: View, Dismissable {
     }
     
     var body: some View {
-        BottomSheetView(dismisser: dismisser, content: VStack(spacing: 0) {
+        BottomSheetView(dismisser: dismisser, content: VStack(spacing: 8) {
             let topContent = VStack(spacing: 9) {
                 Text(L10n.welcomeBack)
                     .foregroundStyle(Color(themeService.theme.primaryTextColor))
@@ -298,7 +301,8 @@ struct RYABottomSheet: View, Dismissable {
                 bottomContent
                     .padding(.bottom, 28)
             }
-        },
+        }.padding(.leading, safeAreaInsets.leading)
+            .padding(.trailing, safeAreaInsets.trailing),
                         topPadding: 0,
                         bottomPadding: 0)
         .ignoresSafeArea()

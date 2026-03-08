@@ -17,11 +17,25 @@ struct HabitControlsFormView: View {
     private func buildOption(text: String, icon: UIImage, isActive: Binding<Bool>) -> some View {
         return VStack(spacing: 12) {
             Group {
-                Image(uiImage: icon)
-                    .accessibilityHidden(true)
-                    .frame(width: 57, height: 57)
-                    .background(isActive.wrappedValue ? taskColor : Color(themeService.theme.windowBackgroundColor))
-                    .cornerRadius(UIConstants.mediumCornerRadius)
+                ZStack {
+                    Rectangle()
+                        .fill()
+                        .foregroundStyle(Color(themeService.theme.windowBackgroundColor))
+                        .frame(width: 57, height: 57)
+                    if isActive.wrappedValue {
+                        RoundedRectangle(cornerRadius: UIConstants.mediumCornerRadius, )
+                            .fill()
+                            .frame(width: 57, height: 57)
+                            .foregroundStyle(taskColor)
+                            .transition(.scale)
+                            .zIndex(1)
+                    }
+                    Image(uiImage: icon)
+                        .accessibilityHidden(true)
+                        .frame(width: 57, height: 57)
+                        .zIndex(2)
+                }
+                .clipShape(.rect(cornerRadius: UIConstants.mediumCornerRadius))
                 Text(text)
                     .accessibilityHidden(true)
                     .font(.system(size: 15, weight: isActive.wrappedValue ? .semibold : .regular))
@@ -34,7 +48,7 @@ struct HabitControlsFormView: View {
         .padding(.top, 4)
         .onTapGesture {
             UISelectionFeedbackGenerator.oneShotSelectionChanged()
-            withAnimation {
+            withAnimation(.bouncy) {
                 isActive.wrappedValue.toggle()
             }
         }

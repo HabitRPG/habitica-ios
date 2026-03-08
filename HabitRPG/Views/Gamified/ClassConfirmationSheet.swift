@@ -11,7 +11,8 @@ import Habitica_Models
 
 struct ClassConfirmationSheet: View {
     @ObservedObject var themeService = ThemeService.shared
-    @Environment(\.presentationManager) var presentationManager
+    @Environment(\.presentationManager)
+    var presentationManager
     
     var selectedClass: HabiticaClass
     
@@ -24,7 +25,7 @@ struct ClassConfirmationSheet: View {
         case .healer:
             return .yellow100
         case .rogue:
-            return .purple400
+            return .purple300
         }
     }
     
@@ -45,19 +46,19 @@ struct ClassConfirmationSheet: View {
         switch selectedClass {
         case .warrior:
             FanfareContainer(haloColor: .red500, outerRingColor: .red500, plusColor: .red10, content: {
-                Image(uiImage: HabiticaIcons.imageOfWarriorLightBg)
+                Image(uiImage: HabiticaIcons.imageOfWarriorLarge)
             })
         case .mage:
             FanfareContainer(haloColor: .blue500, outerRingColor: .blue500, plusColor: .blue10, content: {
-                Image(uiImage: HabiticaIcons.imageOfMageLightBg)
+                Image(uiImage: HabiticaIcons.imageOfMageLarge)
             })
         case .healer:
             FanfareContainer(haloColor: .yellow500, outerRingColor: .yellow500, plusColor: .yellow10, content: {
-                Image(uiImage: HabiticaIcons.imageOfHealerLightBg)
+                Image(uiImage: HabiticaIcons.imageOfHealerLarge)
             })
         case .rogue:
             FanfareContainer(haloColor: .purple500, outerRingColor: .purple500, plusColor: .purple500, content: {
-                Image(uiImage: HabiticaIcons.imageOfRogueLightBg)
+                Image(uiImage: HabiticaIcons.imageOfRogueLarge)
             })
         }
     }
@@ -69,12 +70,12 @@ struct ClassConfirmationSheet: View {
                 .scaledFont(size: 22, weight: .bold)
                 .foregroundStyle(textColor)
                 .padding(.horizontal, 50)
-        }, title: Text(L10n.classChangeSuccessSubtitle), description: VStack {
+        }, title: Text(L10n.classChangeSuccessSubtitle), description: VStack(spacing: 20) {
             Text(L10n.classChangeSuccessDescription)
             Text(L10n.findStatsMenu).scaledFont(size: 15, weight: .semibold)
                 .foregroundStyle(Color(themeService.theme.ternaryTextColor))
         }) {
-            HabiticaButtonUI(label: Text(L10n.viewStats), color: Color(themeService.theme.tintColor)) {
+            HabiticaButtonUI(label: Text(L10n.viewStats), color: Color(themeService.theme.fixedTintColor)) {
                 presentationManager.dismiss()
                 RouterHandler.shared.handle(urlString: "/user/stats")
             }

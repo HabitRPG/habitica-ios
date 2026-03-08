@@ -86,7 +86,7 @@ class CollapsibleStackView: SeparatedStackView {
     
     private func setupView() {
         axis = .vertical
-        cornerRadius = 6
+        cornerRadius = UIConstants.largeCornerRadius
         if arrangedSubviews.isEmpty == false, let subView = arrangedSubviews[0] as? CollapsibleTitle {
             titleView = subView
         } else {
@@ -124,6 +124,6 @@ class CollapsibleStackView: SeparatedStackView {
         if titleColor == nil {
             titleView?.textColor = theme.ternaryTextColor
         }
-        titleView?.subtitleColor = theme.quadTextColor
+        titleView?.subtitleColor = theme.isDark ? .gray600 : .gray100
     }
 }

@@ -36,8 +36,8 @@ class HRPGShopSectionHeaderCollectionReusableView: UICollectionReusableView {
         titleLabel.textColor = .white
         swapsInLabel.textColor = .white
         
-        backgroundView.layer.cornerRadius = 9
-        lowerBackgroundView.layer.cornerRadius = 6
+        backgroundView.layer.cornerRadius = UIConstants.mediumCornerRadius
+        lowerBackgroundView.layer.cornerRadius = UIConstants.mediumCornerRadius - 3
         lowerBackgroundView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         
         changeClassPriceLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeClassTapped)))
@@ -127,36 +127,37 @@ class HRPGShopSectionHeaderCollectionReusableView: UICollectionReusableView {
     override func layoutSubviews() {
         super.layoutSubviews()
         let topOffset = 0.0
-        let horizontalPadding = 12.0
+        let horizontalPadding = 12.0 + safeAreaInsets.left
+        let horizontalPaddingEnd = 12.0 + safeAreaInsets.right
         let verticalPadding = 8.0
-        titleLabel.pin.start(horizontalPadding + 24).end(horizontalPadding + 24).top(topOffset+verticalPadding).sizeToFit(.width)
+        titleLabel.pin.start(horizontalPadding + 24).end(horizontalPaddingEnd + 24).top(topOffset+verticalPadding).sizeToFit(.width)
         leftSparkleView.pin.start(horizontalPadding + 16).vCenter(to: titleLabel.edge.vCenter)
-        rightSparkleView.pin.end(horizontalPadding + 16).vCenter(to: titleLabel.edge.vCenter)
-        
+        rightSparkleView.pin.end(horizontalPaddingEnd + 16).vCenter(to: titleLabel.edge.vCenter)
+
         var height = titleLabel.bounds.size.height + verticalPadding*2
         if !separatorView.isHidden || !lowerBackgroundView.isHidden {
-            separatorView.pin.start(horizontalPadding).end(horizontalPadding).top(topOffset+height - 3).height(3)
-            lowerBackgroundView.pin.start(horizontalPadding + 3).end(horizontalPadding + 3).top(topOffset+height).height(height-8)
+            separatorView.pin.start(horizontalPadding).end(horizontalPaddingEnd).top(topOffset+height - 3).height(3)
+            lowerBackgroundView.pin.start(horizontalPadding + 3).end(horizontalPaddingEnd + 3).top(topOffset+height).height(height-8)
             height *= 2
             height -= 5
         }
         if !swapsInLabel.isHidden {
-            swapsInLabel.pin.start(horizontalPadding + 12).end(horizontalPadding).top(topOffset+height/2).height(height/2)
+            swapsInLabel.pin.start(horizontalPadding + 12).end(horizontalPaddingEnd).top(topOffset+height/2).height(height/2)
         }
         if !gearCategoryButton.isHidden {
-            gearCategoryButton.pin.start(horizontalPadding + 12).end(horizontalPadding).top(topOffset+height/2).height(height/2)
+            gearCategoryButton.pin.start(horizontalPadding + 12).end(horizontalPaddingEnd).top(topOffset+height/2).height(height/2)
         }
         if !dropdownIconView.isHidden {
-            dropdownIconView.pin.end(horizontalPadding + 16).vCenter(to: lowerBackgroundView.edge.vCenter).width(10).height(7)
+            dropdownIconView.pin.end(horizontalPaddingEnd + 16).vCenter(to: lowerBackgroundView.edge.vCenter).width(10).height(7)
         }
-        backgroundView.pin.start(horizontalPadding).end(horizontalPadding).top(topOffset).height(height)
-        
+        backgroundView.pin.start(horizontalPadding).end(horizontalPaddingEnd).top(topOffset).height(height)
+
         if !otherClassDisclaimer.isHidden {
-            otherClassDisclaimer.pin.below(of: backgroundView).marginTop(12).start().end().sizeToFit(.width)
+            otherClassDisclaimer.pin.below(of: backgroundView).marginTop(12).start(horizontalPadding).end(horizontalPaddingEnd).sizeToFit(.width)
         }
-        
+
         if !changeClassWrapper.isHidden {
-            changeClassWrapper.pin.below(of: otherClassDisclaimer).marginTop(6).start(12).end(12).height(60)
+            changeClassWrapper.pin.below(of: otherClassDisclaimer).marginTop(6).start(horizontalPadding).end(horizontalPaddingEnd).height(60)
         }
     }
 }

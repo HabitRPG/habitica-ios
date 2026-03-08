@@ -42,12 +42,14 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         } else {
             inputBarContainer.effect = UIBlurEffect(style: .systemMaterial)
         }
+        inputBar.inputTextView.isImagePasteEnabled = false
         inputBarContainer.cornerRadius = UIConstants.largeCornerRadius
         inputBar.backgroundColor = .clear
         inputBar.backgroundView.backgroundColor = .clear
         inputBar.separatorLine.isHidden = true
         autocompleteManager.tableView.backgroundColor = .clear
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         hidesBottomBarWhenPushed = true
@@ -63,6 +65,8 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 90
         tableView.keyboardDismissMode = .interactive
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
         #if !targetEnvironment(macCatalyst)
         tableView.refreshControl = HabiticaRefresControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -105,31 +109,40 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         tableView.reloadData()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { _ in
+            self.tableView.visibleCells.forEach { $0.setNeedsLayout() }
+        })
+    }
+
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         isScrolling = true
     }
-    
+
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         isScrolling = false
     }
-    
+
     override func viewDidLayoutSubviews() {
         if view.frame.height > (parent?.view.frame.height ?? 0) {
             super.viewDidLayoutSubviews()
             return
         }
-        tableView.frame = view.frame
-        var safearea: CGFloat = (tabBarController?.tabBar.frame.size.height ?? view.window?.safeAreaInsets.bottom ?? 0)
-        var keyboardOffset = (KeyboardManager.height > 0 ? KeyboardManager.height : safearea) + 6
+        tableView.pin.all()
+        let safearea = view.window?.safeAreaInsets ?? .zero
+        var safeheight: CGFloat = (tabBarController?.tabBar.frame.size.height ?? safearea.bottom)
+        var keyboardOffset = (KeyboardManager.height > 0 ? KeyboardManager.height : safeheight) + 6
         if (modalPresentationStyle == .pageSheet || modalPresentationStyle == .formSheet) && view.window?.traitCollection.isIPadFullSize == true {
-            safearea = 0
+            safeheight = 0
             if (view.window?.bounds.size.height ?? 0) - KeyboardManager.height > view.bounds.size.height {
                 keyboardOffset = 0
             } else {
                 keyboardOffset = KeyboardManager.height - ((view.window?.bounds.height ?? 0) -  (abs(view?.window?.convert(CGPoint(x: 0, y: 0), to: view).y ?? 0) + view.bounds.height))
             }
         }
-        let inputBarHeight = inputBar.requiredInputTextViewHeight + inputBar.padding.top + inputBar.padding.bottom + inputBar.topStackViewPadding.top + 2
+        let textViewHeight = inputBar.maxTextViewHeight > 0 ? min(inputBar.requiredInputTextViewHeight, inputBar.maxTextViewHeight) : inputBar.requiredInputTextViewHeight
+        let inputBarHeight = textViewHeight + inputBar.padding.top + inputBar.topStackViewPadding.top + 2
         let autocompleteSize = autocompleteManager.tableView.intrinsicContentSize
         let autocompleteHeight: CGFloat
         if autocompleteManager.currentSession != nil {
@@ -137,18 +150,17 @@ class MessagesViewController: BaseUIViewController, UITableViewDelegate, UIScrol
         } else {
             autocompleteHeight = 0
         }
-        
-        var inputBarOffset = keyboardOffset + autocompleteHeight + 8
-        if tabBarController != nil {
-            inputBarOffset += inputBarHeight + autocompleteHeight
-        } else {
+
+        var inputBarOffset = keyboardOffset + autocompleteHeight + inputBarHeight - safeheight
+        if tabBarController == nil {
             inputBarOffset -= 4
         }
         tableView.contentInset.top = inputBarOffset
-        inputBarContainer.pin.horizontally(20).height(inputBarHeight + autocompleteHeight).bottom(keyboardOffset)
-        inputBar.pin.start(8).end(-10).top().bottom(2)
+        inputBarContainer.pin.left(safearea.left + 20).right(safearea.right + 20).height(inputBarHeight + autocompleteHeight + 10).bottom(keyboardOffset)
+        inputBar.pin.start(8).end(-10).top().bottom()
+        inputBar.inputTextView.contentInset = .zero
         if let acceptView = view.viewWithTag(999) {
-            acceptView.pin.horizontally(20).bottom((tabBarController?.tabBar.frame.height ?? 0) + 6).height(90)
+            acceptView.pin.left(20).right(20).bottom((tabBarController?.tabBar.frame.height ?? 0) + 6).height(90)
         }
         super.viewDidLayoutSubviews()
     }

@@ -14,7 +14,8 @@ struct PetView: View {
     var pet: AnimalProtocol
     
     var body: some View {
-        PixelArtView(name: "stable_Pet-\(pet.key ?? "")").frame(width: 70, height: 70)
+        let substitutedName = ImageSubstitutionManager.substituteSprite(name: "Pet-\(pet.key ?? "")", context: "pets")
+        PixelArtView(name: "stable_\(substitutedName)").frame(width: 70, height: 70)
     }
 }
 

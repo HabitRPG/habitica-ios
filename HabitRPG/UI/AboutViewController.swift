@@ -19,6 +19,7 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     private var selectedIndexPath: IndexPath?
     private var supportEmail = ""
     private var user: UserProtocol?
+    private var gradientLayer: CAGradientLayer?
     
     private let versionString = Bundle.main.infoDictionary?["CFBundleShortVersionString"]
     private let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"]
@@ -49,8 +50,9 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         gradient.endPoint = CGPoint(x: 1, y: 1)
         gradient.locations =  [-0.5, 0.55, 1.1]
         gradient.frame = CGRect(x: 20, y: 10, width: headerView.bounds.width - 40, height: 130)
-        gradient.cornerRadius = 26
+        gradient.cornerRadius = UIConstants.largeCornerRadius
         headerView.layer.insertSublayer(gradient, at: 0)
+        gradientLayer = gradient
         headerView.addSubview(headerImageView)
         tableView.tableHeaderView = headerView
         
@@ -63,6 +65,21 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
         }).start()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let headerView = tableView.tableHeaderView {
+            let targetWidth = view.bounds.width
+            let gradientTargetWidth = targetWidth - 40 - view.safeAreaInsets.left - view.safeAreaInsets.right
+            guard gradientLayer?.frame.width != gradientTargetWidth else {
+                return
+            }
+            headerView.frame = CGRect(x: 0, y: 10, width: targetWidth, height: 150)
+            headerView.subviews.first?.frame = headerView.bounds
+            gradientLayer?.frame = CGRect(x: 20, y: 10, width: gradientTargetWidth, height: 130)
+            tableView.tableHeaderView = headerView
+        }
+    }
+
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         tableView.backgroundColor = theme.contentBackgroundColor

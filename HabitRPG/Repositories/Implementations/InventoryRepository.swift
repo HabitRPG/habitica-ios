@@ -133,7 +133,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                     if openArmoireView {
                         let viewController = ArmoireViewController()
                         viewController.configure(type: armoire.type ?? "", text: armoire.dropText ?? "", key: armoire.dropKey, value: armoire.value)
-                        viewController.show()
+                        viewController.showFullscreen()
                     }
                 } else {
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1.0) {
@@ -294,7 +294,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
             if response?.data == -1 {
                 StableLocalRepository().getMounts(keys: [pet.key ?? ""]).map { mounts in
                     return mounts.value.first?.text
-                }.on(value: { mountText in
+                }.on(value: { _ in
                     let sheet = MountRaisedSheet(mount: pet) {
                         self?.equip(type: "mount", key: pet.key ?? "").observeCompleted {}
                     }

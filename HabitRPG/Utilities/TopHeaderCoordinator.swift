@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum HeaderScrollMode {
+    case slide
+    case scale
+}
+
 class TopHeaderCoordinator: NSObject {
     
     weak var scrollView: UIScrollView?
@@ -22,6 +27,8 @@ class TopHeaderCoordinator: NSObject {
         }
     }
     var followScrollView = true
+    var scrollMode: HeaderScrollMode = .slide
+    var contentInsetModifier = UIEdgeInsets.zero
     var navbarVisibleColor: UIColor? {
         didSet {
             if isVisible {
@@ -90,9 +97,12 @@ class TopHeaderCoordinator: NSObject {
         navController.view.setNeedsLayout()
         
         let existingInsets = scrollView?.contentInset
-        var insets = UIEdgeInsets(top: navController.contentInset, left: 0, bottom: 0, right: 0)
+        var insets = UIEdgeInsets(top: navController.contentInset + contentInsetModifier.top, left: contentInsetModifier.left, bottom: contentInsetModifier.bottom, right: contentInsetModifier.right)
         if existingInsets?.bottom != 0 {
-            insets = UIEdgeInsets(top: navController.contentInset + ((existingInsets?.top ?? 0) - navController.contentInset), left: 0, bottom: existingInsets?.bottom ?? 0, right: 0)
+            insets = UIEdgeInsets(top: navController.contentInset + ((existingInsets?.top ?? 0) - navController.contentInset) + contentInsetModifier.top,
+                                  left: contentInsetModifier.left,
+                                  bottom: (existingInsets?.bottom ?? 0) + contentInsetModifier.bottom,
+                                  right: contentInsetModifier.right)
         }
         scrollView?.contentInset = insets
         scrollView?.scrollIndicatorInsets = insets

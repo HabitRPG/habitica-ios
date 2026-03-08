@@ -36,6 +36,7 @@ struct PetItemsFlowView<LeftIcon: View, MiddleIcon: View, RightIcon: View>: View
             Circle().fill().frame(width: 8, height: 8).foregroundStyle(highlightedStep == 3 ? Color.purple500 : Color.purple300)
             Spacer()
             middleIcon
+                .opacity(highlightedStep == 5 ? 0.7 : 1)
             .frame(width: 96, height: 96)
             .background(Color(themeService.theme.contentBackgroundColor))
             .clipShape(RoundedRectangle(cornerRadius: 8))
@@ -60,13 +61,29 @@ struct PetItemsFlowView<LeftIcon: View, MiddleIcon: View, RightIcon: View>: View
         .padding(.horizontal, 32)
         .task {
             repeat {
-                highlightedStep += 1
+                withAnimation {
+                    highlightedStep += 1
+                }
                 try? await Task.sleep(for: .seconds(0.2))
-                highlightedStep += 1
+                withAnimation {
+                    highlightedStep += 1
+                }
                 try? await Task.sleep(for: .seconds(0.2))
-                highlightedStep += 1
+                withAnimation {
+                    highlightedStep += 1
+                }
                 try? await Task.sleep(for: .seconds(0.2))
-                highlightedStep = 0
+                withAnimation {
+                    highlightedStep += 1
+                }
+                try? await Task.sleep(for: .seconds(0.3))
+                withAnimation {
+                    highlightedStep += 1
+                }
+                try? await Task.sleep(for: .seconds(0.3))
+                withAnimation {
+                    highlightedStep = 0
+                }
                 try? await Task.sleep(for: .seconds(2))
             } while (!Task.isCancelled)
         }
@@ -98,10 +115,19 @@ struct HatchSuggestionSheet: View {
         }
     }
     
+    @ViewBuilder
+    private var petIcon: some View {
+        if item.canRaise {
+            PixelArtView(name: "stable_Pet-\(item.pet?.egg ?? "")-\(item.pet?.potion ?? "")-outline")
+        } else {
+            PixelArtView(name: "stable_Pet-\(item.pet?.egg ?? "")-\(item.pet?.potion ?? "")").opacity(0.4)
+        }
+    }
+    
     var body: some View {
         GamifiedBottomSheet(upperContent: VStack(spacing: 25) {
             PetItemsFlowView(leftIcon: PixelArtView(name: "Pet_Egg_\(item.pet?.egg ?? "")"),
-                             middleIcon: PixelArtView(name: "stable_Pet-\(item.pet?.egg ?? "")-\(item.pet?.potion ?? "")-outline"),
+                             middleIcon: petIcon,
                              rightIcon: PixelArtView(name: "Pet_HatchingPotion_\(item.pet?.potion ?? "")"),
             isleftIconActive: ownedEggCount > 0,
             isRightIconActive: ownedPotionCount > 0)

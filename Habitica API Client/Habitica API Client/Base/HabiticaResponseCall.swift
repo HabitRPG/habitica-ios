@@ -41,7 +41,7 @@ public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
         } catch {
             if let handler  = self.errorHandler,
                let netError = error as? NetworkError {
-                type(of: handler).handle(error: netError, messages: [])
+                handler.handle(error: netError, messages: [])
             }
         }
         return nil

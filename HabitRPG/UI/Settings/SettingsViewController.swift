@@ -112,6 +112,9 @@ class SettingsViewController: FormViewController, Themeable {
     
     private func handleGroupPlans() {
         disposable.inner.add(userRepository.getGroupPlans().on(value: {[weak self] plans in
+            guard !UserManager.shared.isLoggingOut else {
+                return
+            }
             if plans.value.isEmpty {
                 self?.groupPlanSection.hidden = Condition(booleanLiteral: true)
             } else {
@@ -268,10 +271,13 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.logOut
                 row.cellUpdate({ (cell, _) in
                     cell.textLabel?.textColor = UIColor.red50
-                }).onCellSelection({ (_, _) in
-                    self.userRepository.logoutAccount()
-                    self.contentRepository.retrieveContent(force: true).observeCompleted {}
-                    (UIApplication.shared.delegate as? HabiticaAppDelegate)?.showLoginScreen()
+                }).onCellSelection({[weak self] (_, _) in
+                    self?.disposable.inner.dispose()
+                    self?.userRepository.logoutAccount { [weak self] in
+                        (UIApplication.shared.delegate as? HabiticaAppDelegate)?.showLoginScreen()
+                        UserManager.shared.logoutCompleted()
+                        self?.contentRepository.retrieveContent(force: true).observeCompleted {}
+                    }
                 })
         }
     }
@@ -969,10 +975,10 @@ class SettingsViewController: FormViewController, Themeable {
             
             alertController.addAction(title: L10n.Settings.changeClass, isMainAction: true) { _ in
                 if user.gemCount < changeClassCosts {
-                    BuySheetViewModel.displayInsufficientGemsModal(reason: "class change", delayDisplay: false)
+                    BuySheetViewModel.displayInsufficientGemsModal(reason: "class change")
                     return
                 }
-                _ = UserManager.shared.showClassSelection(user: user)
+                UserManager.shared.showClassSelection(user: user)
             }
             alertController.addCancelAction()
             alertController.show()

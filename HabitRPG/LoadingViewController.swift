@@ -19,16 +19,20 @@ struct LoadingPage: View {
     @ObservedObject fileprivate var viewModel: LoadingViewModel
     
     var body: some View {
+        GeometryReader { reader in
         ZStack(alignment: .top) {
             Image(uiImage: Asset.confettiTiled.image).resizable(resizingMode: .tile).foregroundStyle(Color(hexadecimal: "CC62FA")).frame(maxWidth: .infinity, maxHeight: .infinity)
-            VStack(spacing: 24) {
-                Image(uiImage: Asset.launchLogo.image)
-                ZStack {
-                    Circle().fill().foregroundStyle(Color(hexadecimal: "4F2A93").opacity(0.3))
-                    ProgressView().habiticaProgressStyle().padding(12)
-                }.frame(width: 56, height: 56).opacity(viewModel.showProgress ? 1.0 : 0.0)
-            }.padding(.top, 208)
+                VStack(spacing: 24) {
+                    Image(uiImage: Asset.launchLogo.image)
+                    ZStack {
+                        Circle().fill().foregroundStyle(Color(hexadecimal: "4F2A93").opacity(0.3))
+                        ProgressView().habiticaProgressStyle().padding(12)
+                    }.frame(width: 56, height: 56).opacity(viewModel.showProgress ? 1.0 : 0.0)
+                }
+                .padding(.top, (reader.size.height / 2 - 100) * 0.685)
+            }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(hexadecimal: "7639ED"))
         .ignoresSafeArea()
     }

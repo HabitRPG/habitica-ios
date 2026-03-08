@@ -37,19 +37,19 @@
 /* (No Comment) */
 "classes.healer" = "Heiler";
 /* (No Comment) */
-"classes.healer_description" = "Heiler stehen Schaden unbeeindruckt gegenüber und erweitern diesen Schutz auf Andere. Verpasste tägliche Aufgaben und schlechte Angewohnheiten schaden ihnen nicht viel und sie haben Mittel und Wege Lebenspunkte wiederherzustellen. Spiele einen Heiler, wenn Du gerne Anderen in einer Gruppe hilfst, oder wenn es Dich besonders reizt, dem Tod durch harte Arbeit zu entkommen!";
+"classes.healer_description" = "Heiler lernen Fähigkeiten, die sich und deren Party vor Schaden schützen können. Spiele einen Heiler, wenn du es magst, andere zu unterstützen oder du häufig HP verlierst. Heiler profitieren von einem hohen Ausdauer-Wert.";
 /* (No Comment) */
 "classes.mage" = "Magier";
 /* (No Comment) */
-"classes.mage_description" = "Magier lernen rasch, sie erhalten schneller Erfahrung und Level als andere Klassen. Sie bekommen zudem eine große Menge an Mana, die sie für Spezialfähigkeiten einsetzen können. Entscheide dich für den Magier, wenn du die taktischen Spielaspekte von Habitica liebst oder wenn du hochmotiviert bist, Stufen aufzusteigen und weitere Features freizuschalten!";
+"classes.mage_description" = "Magier lernen Fähigkeiten, die Quest-Bossen Schaden zufügen sowie Erfahrung und Mana steigern. Spiele einen Magier, wenn dich schnelles Leveln motiviert. Magier profitieren von einem hohen Intelligenz-Wert.";
 /* (No Comment) */
 "classes.rogue" = "Schurke";
 /* (No Comment) */
-"classes.rogue_description" = "Schurken lieben es, Reichtümer anzuhäufen, indem sie mehr Gold als Andere verdienen und geschickt darin sind, neue Gegenstände zu finden. Ihre typische Fähigkeit sich im Verborgenen zu bewegen, erlaubt Dir gelegentlich die Folgen verpasster täglicher Aufgaben zu vermeiden. Spiele einen Schurken, wenn Dich Spielbelohnungen und Erfolge besonders reizen und Du nach Beute und Ehrenabzeichen trachtest!";
+"classes.rogue_description" = "Schurken lernen Fähigkeiten, welche die Breite von erledigten Aufgaben erhöhen. Spiele einen Schurken, wenn du es mehr Gegenstände und Gold abgesehen hast. Schurken profitieren von einem hohen Wahrnehmung-Wert.";
 /* (No Comment) */
 "classes.warrior" = "Krieger";
 /* (No Comment) */
-"classes.warrior_description" = "Krieger verursachen mehr und stärkere \"kritische Treffer\", die zufällige Boni auf Gold, Erfahrung und Beute beim Erfüllen einer Aufgabe geben. Sie sind auch sehr stark gegen Bossmonster. Spiele einen Krieger, wenn Dich die Chance auf Belohnungen im Lottogewinn-Stil besonders reizt und Du besonders effektiv gegen Bossmonster sein willst!";
+"classes.warrior_description" = "Krieger erzielen mehr kritische Treffer und verursachen mehr Schaden an Quest-Bossen. Spiele einen Krieger, wenn du Monster einfach mit kraftvollen Schlägen erledigen möchtest. Krieger profitieren von einem hohen Stärke-Wert.";
 /* (No Comment) */
 "close" = "Schließen";
 /* (No Comment) */
@@ -531,11 +531,11 @@
 "stats.stat_guide" = "Attribut-Helfer";
 "stats.strength_title" = "Stärke";
 "stats.intelligence_title" = "Intelligenz";
-"stats.intelligence_text" = "Du erhältst mehr Erfahrung von erledigten Aufgaben. Außerdem wird Dein Mana-Limit erhöht, und Du regenerierst Dein Mana schneller.";
+"stats.intelligence_text" = "Erhöht von Aufgaben verdiente Erfahrung. Erhöht zudem dein Mana-Limit und deine Mana-Regeneration.";
 "stats.constitution_title" = "Ausdauer";
-"stats.constitution_text" = "Verringert den Schaden, den Du von verpassten Aufgaben erhältst. Schaden durch Bosse wird allerdings nicht verringert.";
+"stats.constitution_text" = "Verringert den Schaden von verpassten Aufgaben und negativen Angewohnheiten. Schaden durch Bosse wird nicht verringert.";
 "stats.perception_title" = "Wahrnehmung";
-"stats.perception_text" = "Erhöht die Wahrscheinlichkeit, Beute zu finden wenn Du Aufgaben erledigst. Ausserdem werden Dein tägliches Beutelimit, der Strähnenbonus und die Goldmenge für erledigte Aufgaben erhöht.";
+"stats.perception_text" = "Erhöht Wahrscheinlichkeit Beute zu finden, das tägliche Beute-Limit, Aufgaben-Strähnen-Boni und verdientes Geld beim erledigen von Aufgaben.";
 "tasks.habits" = "Gewohnheiten";
 "tasks.dailies" = "Tägliche Aufgaben";
 "tasks.rewards" = "Belohnungen";
@@ -820,7 +820,7 @@
 "tasks.team" = "Team";
 "tasks.due_tomorrow" = "Morgen";
 "tasks.due_in_x_days" = "in %d Tagen";
-"stats.strength_text" = "Erhöht die Wahrscheinlichkeit und den Bonus von kritischen Treffern, wenn Du eine Aufgabe erledigst. Außerdem wird der Schaden gegen Bosse erhöht.";
+"stats.strength_text" = "Erhöht Wahrscheinlichkeit und Schaden kritischer Treffer, wenn du Aufgaben erledigst. Außerdem wird der Schaden gegen Bosse erhöht.";
 "tasks.due_today" = "Heute";
 "settings.change_about_message" = "Info ändern";
 "settings.reset_account_description" = "Du wirst alle deine Level, Gold und Erfahrung verlieren. Alle Ihre Aufgaben und ihre historischen Daten werden gelöscht (Herausforderungsaufgaben bleiben erhalten). Du wirst alle Ausrüstungsgegenstände verlieren, mit Ausnahme von Abonnenten-Gegenständen und kostenlosen Erinnerungsgegenständen, aber du wirst sie zurückkaufen können. Du wirst der richtigen Klasse angehören müssen, um klassenspezifische Ausrüstung wieder zu kaufen. Du behältst deine aktuelle Klasse, deine Errungenschaften sowie deine Haustiere und Reittiere. Um das Zurücksetzen zu bestätigen, gib dein Passwort unten ein.";
@@ -1326,7 +1326,7 @@
 "tasks.form.adjust_counter" = "Zähler anpassen";
 "tasks.form.last_scored" = "Zuletzt erreicht";
 "see_you_tomorrow" = "Bis morgen";
-"next_prize_in_x_checkins" = "Nächster Preis in %d Anmeldungen";
+"next_prize_in_x_checkins" = "Nächster Preis in %d Tagen!";
 "scheduled" = "geplant";
 "completed" = "erledigt";
 "not_due" = "Noch nicht fällig";
@@ -1493,7 +1493,7 @@
 "armoire.equipment_remaining" = "Ausrüstungsgegenstände verbleibend: %d";
 "sale_ends_in" = "Angebot endet in %@";
 "next_checkin_prize_in_x_days" = "Dein nächster Preis wird nach %d weiteren Anmeldungen freigeschaltet";
-"next_prize_at_x_checkins" = "Nächster Preis bei %d Anmeldungen";
+"next_prize_at_x_checkins" = "Nächster Preis nach %d Tagen!";
 "subscription.stay_motivated_with_more_rewards" = "Bleibe als Abonent mit noch mehr Belohnungen motiviert";
 "subscription.thanks_for_subscribing" = "Danke für dein Abonnement";
 "subscription.info_faint_title" = "Bekomme eine zweite Chance";
@@ -1712,7 +1712,7 @@
 "not_now" = "Jetzt nicht";
 "undo" = "Rückgängig";
 "assigned_stat" = "Statuswert zugewiesen";
-"empty.challenges_description" = "Stöbere im Entdecken-Bereich und finde unzählige themenbezogene Herausforderungen anderer Spieler*innen, an denen du teilnehmen kannst. So kannst du deine Aufgabenliste ganz einfach füllen!";
+"empty.challenges_description" = "Stöbere im Entdecken-Bereich und finde unzählige themenbezogene Herausforderungen, die anderer Spieler*innen erstellt haben. Das ist eine tolle Möglichkeit deine Aufgabenliste zu füllen!";
 "empty.messages" = "Du hast keine Nachrichten";
 "empty.messages_description" = "Sende eine Nachricht, um eine Unterhaltung mit deinen Partymitgliedern oder anderen Habitica-Spieler*innen zu beginnen";
 "empty.challenges" = "Du nimmst noch an keinen Herausforderungen teil";
@@ -1721,3 +1721,5 @@
 "gift_gems_alert_text" = "Welchem Account möchtest du dein Geschenk schicken?";
 "hatch_pet_new_title" = "Ein neues Haustier ausbrüten";
 "fcv_streak_explanation" = "Du kannst Strähnen einzelner Aufgaben wiederherstellen, in dem du sie antippst um die Bearbeitungsansicht zu öffnen";
+"checkin_prize_set_description" = "Du hast dir ein Set von %s verdient, weil entschieden bist dein Leben zu verbessern";
+"next_prize_in_1_checkin" = "Nächster Preis in 1 Tag!";

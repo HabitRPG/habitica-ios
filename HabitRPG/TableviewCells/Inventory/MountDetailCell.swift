@@ -17,7 +17,7 @@ class MountDetailCell: UICollectionViewCell {
     func configure(mountItem: MountStableItem, currentMount: String?) {
         backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         imageView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        imageView.cornerRadius = 6
+        imageView.cornerRadius = UIConstants.mediumCornerRadius
     
         if let key = mountItem.mount?.key {
             if mountItem.owned {

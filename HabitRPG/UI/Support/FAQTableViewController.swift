@@ -11,6 +11,38 @@ import Habitica_Models
 import ReactiveSwift
 import Down
 import MessageUI
+import SwiftUIX
+
+struct ContributorTierList: View {
+    static let tiers = [
+        ["name": "Tier 1 (Friend)", "tier": 1],
+        ["name": "Tier 2 (Friend)", "tier": 2],
+        ["name": "Tier 3 (Elite)", "tier": 3],
+        ["name": "Tier 4 (Elite)", "tier": 4],
+        ["name": "Tier 5 (Champion)", "tier": 5],
+        ["name": "Tier 6 (Champion)", "tier": 6],
+        ["name": "Tier 7 (Legendary)", "tier": 7],
+        ["name": "Staff (Heroic)", "tier": 8]
+    ]
+    var body: some View {
+        VStack(spacing: 6) {
+            ForEach(enumerating: ContributorTierList.tiers) { tier in
+                let number = tier["tier"] as? Int ?? 0
+                HStack(spacing: 3) {
+                    Text(tier["name"] as? String ?? "")
+                        .foregroundStyle(Color(UIColor.contributorColor(forTier: number)))
+                        .scaledFont(size: 16, weight: .semibold)
+                    Image(uiImage: HabiticaIcons.imageOfContributorBadge(tier: number))
+                }
+                .padding(.vertical, 10)
+                .frame(maxWidth: .infinity)
+                .border(Color(UIColor.contributorColor(forTier: number).withAlphaComponent(0.2)), width: 2, cornerRadius: UIConstants.mediumCornerRadius)
+            }
+        }
+        .padding(.horizontal, 22)
+        .padding(.bottom, 22)
+    }
+}
 
 class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelegate, UIScrollViewDelegate {
     
@@ -115,9 +147,9 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        mechanicsTitleLabel.textColor = theme.quadTextColor
-        commonQuestionsTitleLabel.textColor = theme.quadTextColor
-        moreQuestionsTitle.textColor = theme.primaryTextColor
+        mechanicsTitleLabel.textColor = theme.secondaryTextColor
+        commonQuestionsTitleLabel.textColor = theme.secondaryTextColor
+        moreQuestionsTitle.textColor = theme.secondaryTextColor
         moreQuestionsText.textColor = theme.ternaryTextColor
         commonQuestionsBackground.backgroundColor = theme.windowBackgroundColor
         populateMechanics()
@@ -148,6 +180,10 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
             textView.font = UIFontMetrics.default.scaledSystemFont(ofSize: 14)
             textView.textColor = ThemeService.shared.theme.secondaryTextColor
             stackView.addArrangedSubview(textView)
+            if let show = entry["showContributorTiers"] as? Bool, show == true {
+                let contributorList = UIHostingView(rootView: ContributorTierList())
+                stackView.addArrangedSubview(contributorList)
+            }
             mechanicsStackView.addArrangedSubview(stackView)
             stackView.isCollapsed = true
         }
@@ -155,12 +191,13 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
     
     private func populateFAQ(questions: [FAQEntryProtocol]) {
         commonQuestionsStackView.removeAllArrangedSubviews()
+        commonQuestionsStackView.cornerRadius = UIConstants.largeCornerRadius
         questions.forEach { question in
             let stackView = UIStackView()
             stackView.axis = .horizontal
             stackView.isLayoutMarginsRelativeArrangement = true
             stackView.spacing = 22
-            stackView.layoutMargins = UIEdgeInsets(top: 12, left: 26, bottom: 12, right: 26)
+            stackView.layoutMargins = UIEdgeInsets(top: 26, left: 26, bottom: 26, right: 26)
             let imageView = UIImageView(image: Asset.faqIcon.image)
             imageView.contentMode = .center
             imageView.addWidthConstraint(width: 9)
@@ -201,7 +238,8 @@ class FAQViewController: BaseUIViewController, MFMailComposeViewControllerDelega
             ["title": L10n.gold, "subtitle": L10n.currency, "icon": HabiticaIcons.imageOfGoldReward, "text": L10n.goldDescription, "color": isDark ? UIColor.orange500 : UIColor.orange10],
             ["title": L10n.gems, "subtitle": L10n.premiumCurrency, "icon": HabiticaIcons.imageOfGem, "text": L10n.gemsDescription, "color": isDark ? UIColor.green500 : UIColor.green10],
             ["title": L10n.mysticHourglasses, "subtitle": L10n.subscriberCurrency, "icon": HabiticaIcons.imageOfHourglass, "text": L10n.hourglassesDescription, "color": isDark ? UIColor.purple500 : UIColor.purple300],
-            ["title": L10n.statAllocation, "subtitle": "STR, CON, INT, PER", "icon": HabiticaIcons.imageOfStats, "text": L10n.statDescription, "color": isDark ? UIColor.orange100 : UIColor.orange1]
+            ["title": L10n.statAllocation, "subtitle": "STR, CON, INT, PER", "icon": HabiticaIcons.imageOfStats, "text": L10n.statDescription, "color": isDark ? UIColor.orange100 : UIColor.orange1],
+            ["title": L10n.contributorTiers, "subtitle": L10n.habiticaHelpers, "icon": Asset.contributorsFaqIcon.image, "text": L10n.contributorTiersDescription, "color": isDark ? UIColor.teal500 : UIColor.teal10, "showContributorTiers": true]
         ]
     }
     
