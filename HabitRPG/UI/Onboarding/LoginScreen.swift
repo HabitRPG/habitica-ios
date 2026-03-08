@@ -142,8 +142,8 @@ struct LoginForm: View {
     @AppStorage("chosenServer")
     var chosenServer: String = "production"
 
-    @AppStorage("customHost")
-    var customHost: String = ""
+    @AppStorage("customUrl")
+    var customUrl: String = ""
     
     let onLogin: () -> Void
     let onAppleLogin: () -> Void
@@ -218,14 +218,14 @@ struct LoginForm: View {
                 }
         }
         if (chosenServer == "custom") {
-            LoginTextInput(placeholder: L10n.Login.customDomain,
+            LoginTextInput(placeholder: L10n.Login.customUrl,
                            icon: Image(Asset.pillGryphon.name),
-                           isValid: customHost == "" ? nil : true,
-                           text: $customHost)
+                           isValid: customUrl == "" ? nil : true,
+                           text: $customUrl)
                 .padding(.top, 7)
                 .submitLabel(.next)
                 .keyboardType(.URL)
-                .onChange(of: customHost) { _ in
+                .onChange(of: customUrl) { _ in
                     let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate
                     appDelegate?.updateServer()
                 }
@@ -322,8 +322,8 @@ struct LoginScreen: View {
     @AppStorage("chosenServer")
     var chosenServer: String = "production"
 
-    @AppStorage("customHostEnabled")
-    var customHostEnabled: Bool = false
+    @AppStorage("customUrlEnabled")
+    var customUrlEnabled: Bool = false
     
     var body: some View {
         let isSmallDevice = UIApplication.shared.firstKeyWindow?.frame.height ?? 812 < 896
@@ -347,7 +347,7 @@ struct LoginScreen: View {
                     .scaleEffect(x: viewState == .initial ? 1.0 : 0.67, y: viewState == .initial ? 1.0 : 0.67)
                     .padding(.top, viewState == .initial ? 65 : 0)
                     .onTapGesture(count: 5) {
-                        customHostEnabled = true
+                        customUrlEnabled = true
                     }
                 let scrollView = ScrollView {
                     if viewState == .initial {
@@ -478,7 +478,7 @@ struct LoginScreen: View {
                             let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate
                             appDelegate?.updateServer()
                         }
-                } else if (customHostEnabled) {
+                } else if (customUrlEnabled) {
                     Picker(selection: $chosenServer) {
                         Text(Servers.production.niceName).tag(Servers.production.rawValue)
                         Text(Servers.custom.niceName).tag(Servers.custom.rawValue)
