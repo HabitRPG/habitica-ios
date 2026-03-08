@@ -31,6 +31,7 @@ enum SettingsTags {
     static let soundTheme = "soundTheme"
     static let changeClass = "changeClass"
     static let server = "server"
+    static let customUrl = "customUrl"
     static let cancelSubscription = "cancelSubscription"
     static let searchableUsername = "searchableUsername"
     static let appLanguage = "appLanguage"
@@ -201,9 +202,19 @@ class SettingsViewController: FormViewController, Themeable {
             <<< AlertRow<LabeledFormValue<String>>(SettingsTags.server) { row in
                 row.title = L10n.Settings.server
                 row.hidden = true
-                row.options = Servers.allServers.map({ (server) -> LabeledFormValue<String> in
-                    return LabeledFormValue(value: server.rawValue, label: server.niceName)
-                })
+                
+                let customUrlEnabled = UserDefaults.standard.bool(forKey: "customUrlEnabled")
+                if (configRepository.testingLevel.isTrustworthy) {
+                    row.options = Servers.allServers.map({ (server) -> LabeledFormValue<String> in
+                        return LabeledFormValue(value: server.rawValue, label: server.niceName)
+                    })
+                } else if (customUrlEnabled) {
+                    row.options = [
+                        LabeledFormValue(value: Servers.production.rawValue, label: Servers.production.niceName),
+                        LabeledFormValue(value: Servers.custom.niceName, label: Servers.custom.niceName)
+                    ]
+                }
+                
                 if let server = Servers(rawValue: UserDefaults().string(forKey: "chosenServer") ?? "") {
                     row.value = LabeledFormValue(value: server.rawValue, label: server.niceName)
                 }
@@ -217,6 +228,15 @@ class SettingsViewController: FormViewController, Themeable {
                     let appDelegate = UIApplication.shared.delegate as? HabiticaAppDelegate
                     appDelegate?.updateServer()
                 })
+        }
+        <<< ButtonRow(SettingsTags.customUrl) { row in
+            row.hidden = true
+            row.cellStyle = .subtitle
+            row.cellUpdate { cell, _ in
+                cell.textLabel?.textAlignment = .natural
+                cell.detailTextLabel?.text = UserDefaults.standard.string(forKey: "customUrl") ?? ""
+                cell.detailTextLabel?.textColor = ThemeService.shared.theme.ternaryTextColor
+            }
         }
         <<< ButtonRow(SettingsTags.cancelSubscription) { row in
             row.title = L10n.cancelSubscription
@@ -863,6 +883,20 @@ class SettingsViewController: FormViewController, Themeable {
             themeRow?.updateCell()
             serverRow?.evaluateHidden()
             cancelSubRow?.evaluateHidden()
+        }
+        
+        let customUrlEnabled = UserDefaults.standard.bool(forKey: "customUrlEnabled")
+        if (customUrlEnabled) {
+            let chosenServer = UserDefaults.standard.string(forKey: "chosenServer")
+            let serverRow = (form.rowBy(tag: SettingsTags.server) as? AlertRow<LabeledFormValue<String>>)
+            let customUrlRow = (form.rowBy(tag: SettingsTags.customUrl) as? ButtonRow)
+            serverRow?.hidden = false
+            serverRow?.evaluateHidden()
+            
+            if (chosenServer == "custom") {
+                customUrlRow?.hidden = false
+                customUrlRow?.evaluateHidden()
+            }
         }
         
         if let row = form.rowBy(tag: SettingsTags.manuallyRestartDay) {
