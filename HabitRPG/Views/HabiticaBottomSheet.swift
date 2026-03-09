@@ -49,6 +49,9 @@ private class QueueManager {
         guard var current = displayQueue.first else {
             return
         }
+        if current.viewController.isCurrentlyPresented {
+            return
+        }
 
         let presented = current.viewController.showVC()
         if !presented {
