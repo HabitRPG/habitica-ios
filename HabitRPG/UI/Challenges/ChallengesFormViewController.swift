@@ -7,6 +7,7 @@
 //
 import SwiftUI
 import Habitica_Models
+import ReactiveSwift
 
 enum ChallengeFormStep: CaseIterable {
     case prize
@@ -15,8 +16,14 @@ enum ChallengeFormStep: CaseIterable {
     case tasks
 }
 
+struct ChallengeLocation: Identifiable {
+    let id: String
+    let name: String
+}
+
 class ChallengeFormViewModel: ViewModel {
     private let userRepository = UserRepository()
+    private let socialRepository = SocialRepository()
     var onDismiss: (() -> Void)?
     
     @Published var userGemCount = 0
@@ -24,7 +31,8 @@ class ChallengeFormViewModel: ViewModel {
     @Published var currentStepIndex: Int? = 0
     let steps = ChallengeFormStep.allCases
     
-    @Published var prizeAmount: Int = 0
+    @Published var prizeAmount: Int = 1
+    @Published var challengeLocation: ChallengeLocation? = nil
     @Published var name: String = ""
     @Published var summary: String = ""
     @Published var description: String = ""
@@ -36,15 +44,47 @@ class ChallengeFormViewModel: ViewModel {
     @Published var todos: [TaskProtocol] = []
     @Published var rewards: [TaskProtocol] = []
     
+    @Published var challengeLocations: [ChallengeLocation] = [
+        ChallengeLocation(id: Constants.TAVERN_ID, name: "Public Challenge List")
+    ]
+    
     var canCreate: Bool {
         return false
     }
     
+    var minGemAmount: Int {
+        if challengeLocation?.id == Constants.TAVERN_ID {
+            return 1
+        } else {
+            return 0
+        }
+    }
+    
     override init() {
         super.init()
+        challengeLocation = challengeLocations.first
         disposable.add(userRepository.getUser().on(value: {[weak self] user in
             self?.userGemCount = user.gemCount
-        }).start())
+        })
+            .map({ user in
+                return user.party?.id
+            })
+            .filter { $0 != nil }
+            .flatMap(.latest, {[weak self] partyID in
+                return self?.socialRepository.getGroup(groupID: partyID ?? "") ?? SignalProducer.empty
+            }).on(value: { party in
+                if let party = party, !self.challengeLocations.contains(where: { $0.id == party.id }) {
+                    self.challengeLocations.insert(ChallengeLocation(id: party.id ?? "", name: party.name ?? ""), at: 1)
+                }
+            }).start())
+        disposable.add(userRepository.getGroupPlans()
+            .on(value: { plans in
+                plans.value.forEach { plan in
+                    if !self.challengeLocations.contains(where: { $0.id == plan.id }) {
+                        self.challengeLocations.append(ChallengeLocation(id: plan.id ?? "", name: plan.name ?? ""))
+                    }
+                }
+            }).start())
     }
 
     func dismiss() {
@@ -78,10 +118,12 @@ class ChallengeFormViewModel: ViewModel {
     }
     
     func categoryTapepd(category: ChallengeCategory) {
-        if challengeCategories.contains(category) {
-            challengeCategories.remove(category)
-        } else if challengeCategories.count < 3 {
-            challengeCategories.insert(category)
+        withAnimation {
+            if challengeCategories.contains(category) {
+                challengeCategories.remove(category)
+            } else if challengeCategories.count < 3 {
+                challengeCategories.insert(category)
+            }
         }
     }
 }
@@ -125,7 +167,7 @@ struct ChallengeFormPrizePage: View {
                     .padding(.horizontal, 23)
                 PlusMinusStepperView(amount: $viewModel.prizeAmount,
                                      icon: Image(Asset.gem.name),
-                                     minAmount: 0,
+                                     minAmount: viewModel.minGemAmount,
                                      maxAmount: viewModel.userGemCount)
                     .padding(.vertical, 35)
                     .frame(maxWidth: .infinity)
@@ -133,7 +175,26 @@ struct ChallengeFormPrizePage: View {
                     .font(.system(size: 17, weight: .semibold))
                     .padding(.horizontal, 23)
                 VStack(spacing: 15) {
-                    
+                    ForEach(viewModel.challengeLocations, id: \.id) { location in
+                        HStack {
+                            Text(location.name)
+                            Spacer()
+                            if viewModel.challengeLocation?.id == location.id {
+                                Image(Asset.checkmark.name)
+                                    .renderingMode(.template)
+                                    .foregroundStyle(Color(ThemeService.shared.theme.fixedTintColor))
+                            }
+                        }.contentShape(.rect)
+                            .onTapGesture {
+                                viewModel.challengeLocation = location
+                                if viewModel.prizeAmount < viewModel.minGemAmount {
+                                    viewModel.prizeAmount = 1
+                                }
+                            }
+                        if location.id != viewModel.challengeLocations.last?.id {
+                            Divider()
+                        }
+                    }
                 }
                 .padding(15)
                 .background(Color(ThemeService.shared.theme.windowBackgroundColor))
@@ -236,6 +297,8 @@ struct ChallengeFormTagsPage: View {
                                 Spacer()
                                 if viewModel.challengeCategories.contains(challengeCategory) {
                                     Image(Asset.checkmark.name)
+                                        .renderingMode(.template)
+                                        .foregroundStyle(Color(ThemeService.shared.theme.fixedTintColor))
                                 }
                             }.padding(.leading, 12)
                                 .contentShape(.rect)
@@ -345,7 +408,9 @@ struct CreateChallengeForm: View {
                         if viewModel.hasPreviousStep {
                             ToolbarItem(placement: .topBarLeading) {
                                 Button {
-                                    viewModel.showPreviousStep()
+                                    withAnimation(.bouncy) {
+                                        viewModel.showPreviousStep()
+                                    }
                                 } label: {
                                     Image(Asset.caretLeft.name)
                                 }
