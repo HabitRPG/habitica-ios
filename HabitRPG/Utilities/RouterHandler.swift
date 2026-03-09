@@ -430,7 +430,7 @@ class RouterHandler {
     }
     
     private var loadingController: LoadingViewController? {
-        return UIApplication.shared.findKeyWindow()?.rootViewController as? LoadingViewController
+        return UIWindow.findViewController()
     }
     
     private func present(_ viewController: UIViewController) {
