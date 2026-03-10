@@ -41,25 +41,27 @@ struct SimpleItemDetails: View {
     }
 
     var body: some View {
-        if #available(iOS 26.0, *) {
-            iconView
-                .glassEffect(.regular.tint(Color(themeService.theme.windowBackgroundColor).opacity(0.65)), in: RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius))
-                .padding(.bottom, 9)
-        } else {
-            iconView
-                .background(Color(themeService.theme.windowBackgroundColor))
-                .cornerRadius(UIConstants.largeCornerRadius)
-                .padding(.bottom, 9)
-        }
-        Text(item.text ?? "")
-            .foregroundStyle(Color(themeService.theme.primaryTextColor))
-            .scaledFont(size: 22, weight: .bold)
-            .multilineTextAlignment(.center)
-        if let notes = item.notes, !notes.isEmpty, let nsAttr = try? HabiticaMarkdownHelper.toHabiticaAttributedString(notes) {
-            Text(AttributedString(nsAttr)).foregroundStyle(Color(themeService.theme.primaryTextColor)).scaledFont(size: 17)
-                .fixedSize(horizontal: false, vertical: true)
+        if item.isValid {
+            if #available(iOS 26.0, *) {
+                iconView
+                    .glassEffect(.regular.tint(Color(themeService.theme.windowBackgroundColor).opacity(0.65)), in: RoundedRectangle(cornerRadius: UIConstants.largeCornerRadius))
+                    .padding(.bottom, 9)
+            } else {
+                iconView
+                    .background(Color(themeService.theme.windowBackgroundColor))
+                    .cornerRadius(UIConstants.largeCornerRadius)
+                    .padding(.bottom, 9)
+            }
+            Text(item.text ?? "")
+                .foregroundStyle(Color(themeService.theme.primaryTextColor))
+                .scaledFont(size: 22, weight: .bold)
                 .multilineTextAlignment(.center)
-                .padding(.top, 6)
+            if let notes = item.notes, !notes.isEmpty, let nsAttr = try? HabiticaMarkdownHelper.toHabiticaAttributedString(notes) {
+                Text(AttributedString(nsAttr)).foregroundStyle(Color(themeService.theme.primaryTextColor)).scaledFont(size: 17)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 6)
+            }
         }
     }
 }
