@@ -12,8 +12,8 @@ import Habitica_Models
 import Habitica_API_Client
 import Habitica_Database
 
+// swiftlint:disable:next type_body_length
 class SocialRepository: BaseRepository<SocialLocalRepository> {
-    
     private let userRepository = UserRepository()
     
     func getGroups(predicate: NSPredicate) -> SignalProducer<ReactiveResults<[GroupProtocol]>, ReactiveSwiftRealmError> {
@@ -359,6 +359,31 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         return call.objectSignal
     }
     
+    public func createChallenge(challenge: ChallengeProtocol) -> Signal<ChallengeProtocol?, Error> {
+        localRepository.save(challenge)
+        let call = CreateChallengeCall(challenge: challenge)
+        
+        return call.httpResponseSignal.promoteError().flatMap(.latest, { response in
+            if response.statusCode == 201 {
+                return SignalProducer(value: response)
+            } else {
+                return SignalProducer(error: NSError(domain: "", code: -1))
+            }
+        }).flatMap(.latest, { _ in
+            return call.objectSignal
+        })
+    }
+    
+    public func updateChallenge(challenge: ChallengeProtocol) -> Signal<ChallengeProtocol?, Never> {
+        localRepository.save(challenge)
+        return UpdateChallengeCall(challenge: challenge)
+            .objectSignal.on(value: {[weak self] returnedChallenge in
+            if let returnedChallenge = returnedChallenge {
+                self?.localRepository.save(returnedChallenge)
+            }
+        })
+    }
+    
     public func joinChallenge(challengeID: String) -> Signal<ChallengeProtocol?, Never> {
         UISelectionFeedbackGenerator.oneShotSelectionChanged()
         if let userID = AuthenticationManager.shared.currentUserId {
@@ -469,6 +494,14 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
 
     func getEditableGroup(id: String) -> GroupProtocol? {
         return localRepository.getEditableGroup(id: id)
+    }
+    
+    func getNewChallenge() -> ChallengeProtocol {
+        return localRepository.getNewChallenge()
+    }
+
+    func getEditableChallenge(id: String) -> ChallengeProtocol? {
+        return localRepository.getEditableChallenge(id: id)
     }
     
     func createGroup(_ group: GroupProtocol) -> Signal<GroupProtocol?, Never> {

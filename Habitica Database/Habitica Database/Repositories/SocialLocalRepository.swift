@@ -442,9 +442,20 @@ public class SocialLocalRepository: BaseLocalRepository {
         return RealmGroup()
     }
     
+    public func getNewChallenge() -> ChallengeProtocol {
+        return RealmChallenge()
+    }
+    
     public func getEditableGroup(id: String) -> GroupProtocol? {
         if let group = getRealm()?.object(ofType: RealmGroup.self, forPrimaryKey: id) {
             return RealmGroup(value: group)
+        }
+        return nil
+    }
+    
+    public func getEditableChallenge(id: String) -> ChallengeProtocol? {
+        if let challenge = getRealm()?.object(ofType: RealmChallenge.self, forPrimaryKey: id) {
+            return RealmChallenge(value: challenge)
         }
         return nil
     }

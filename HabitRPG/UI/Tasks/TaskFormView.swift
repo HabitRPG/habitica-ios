@@ -223,12 +223,20 @@ struct TaskFormView: View {
     }
 }
 
+protocol ChallengeTaskFormDelegate {
+    func updated(taskType: TaskType, task: TaskProtocol)
+    func created(taskType: TaskType, task: TaskProtocol)
+    func deleted(taskType: TaskType, task: TaskProtocol)
+}
+
 class TaskFormController: UIHostingController<TaskFormView> {
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
     private let configRepository = ConfigRepository.shared
     
     private let viewModel = TaskFormViewModel()
+    
+    var challengeTaskDelegate: ChallengeTaskFormDelegate?
     
     var taskType: TaskType = .habit {
         didSet {
@@ -291,6 +299,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
             }
         }
     }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder, rootView: TaskFormView(viewModel: viewModel))
     }
@@ -335,7 +344,16 @@ class TaskFormController: UIHostingController<TaskFormView> {
         if viewModel.text.isEmpty {
             return
         }
-        self.save()
+        if let delegate = challengeTaskDelegate {
+            let task = updatedTask()
+            if editedTask != nil {
+                delegate.updated(taskType: taskType, task: task)
+            } else {
+                delegate.created(taskType: taskType, task: task)
+            }
+        } else {
+            self.save()
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -344,8 +362,17 @@ class TaskFormController: UIHostingController<TaskFormView> {
         self.dismiss(animated: true, completion: nil)
     }
     
-    private func save() {
-        let task = taskRepository.getEditableTask(id: editedTask?.id ?? "") ?? taskRepository.getNewTask()
+    private func updatedTask() -> TaskProtocol {
+        let task: TaskProtocol
+        if let edited = editedTask {
+            if edited.isManaged, let unmanaged = taskRepository.getEditableTask(id: editedTask?.id ?? "") {
+                task = unmanaged
+            } else {
+                task = edited
+            }
+        } else {
+            task = taskRepository.getNewTask()
+        }
         if task.id == nil {
             task.id = UUID().uuidString
         }
@@ -391,7 +418,11 @@ class TaskFormController: UIHostingController<TaskFormView> {
         
         task.checklist = viewModel.checklistItems
         task.reminders = viewModel.reminders
-        
+        return task
+    }
+    
+    private func save() {
+        let task = updatedTask()
         if editedTask != nil {
             taskRepository.updateTask(task).observeCompleted {}
         } else {
@@ -405,7 +436,11 @@ class TaskFormController: UIHostingController<TaskFormView> {
         let alert = HabiticaAlertController(title: L10n.deleteX(taskType.prettyName()), message: L10n.deleteTaskConfirmation)
         alert.addAction(title: L10n.deleteX(L10n.task), style: .destructive) { _ in
             if let task = self.editedTask {
-                self.taskRepository.deleteTask(task).observeCompleted {
+                if let delegate = self.challengeTaskDelegate {
+                    delegate.deleted(taskType: self.taskType, task: task)
+                } else {
+                    self.taskRepository.deleteTask(task).observeCompleted {
+                    }
                 }
             }
             self.dismiss(animated: true, completion: nil)

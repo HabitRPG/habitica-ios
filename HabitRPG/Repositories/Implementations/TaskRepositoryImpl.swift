@@ -218,9 +218,12 @@ class TaskRepository: BaseRepository<TaskLocalRepository> {
         })
     }
     
+    func createChallengeTask(challengeID: String, task: TaskProtocol) -> Signal<TaskProtocol?, Never> {
+        return CreateChallengeTaskCall(challengeID: challengeID, task: task).objectSignal
+    }
+    
     func createTasks(_ tasks: [TaskProtocol]) -> Signal<[TaskProtocol]?, Never> {
         let call = CreateTasksCall(tasks: tasks)
-        
         return call.arraySignal
     }
     
