@@ -8,20 +8,21 @@
 import UIKit
 
 extension UIViewController {
-    func showFullscreen(retry: Bool = true) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+    func showFullscreen(retry: Bool = true, delay: CGFloat = 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
             if var topController = UIApplication.topViewController() {
                 if let tabBarController = topController.tabBarController {
                     topController = tabBarController
                 }
-                if (topController.isBeingDismissed || topController.isBeingPresented) && retry {
-                    self.showFullscreen(retry: false)
-                }
-                self.modalTransitionStyle = .crossDissolve
-                self.modalPresentationStyle = .overFullScreen
                 while topController.presentedViewController != nil {
                     topController = topController.presentedViewController ?? topController
                 }
+                if (topController.isBeingDismissed || topController.isBeingPresented) && retry {
+                    self.showFullscreen(retry: false)
+                    return
+                }
+                self.modalTransitionStyle = .crossDissolve
+                self.modalPresentationStyle = .overFullScreen
                 topController.present(self, animated: true) {
                 }
             }
