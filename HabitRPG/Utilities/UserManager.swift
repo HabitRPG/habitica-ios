@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import Habitica_Models
 import ReactiveSwift
 import Habitica_Database
@@ -63,7 +64,11 @@ class UserManager: NSObject {
         disposable.add(contentRepository.getWorldState()
             .on(value: { worldState in
                 if let substitutions = worldState.currentEvent?.spriteSubstitutions {
+                    let isNewSub = ImageSubstitutionManager.substitutions.isEmpty
                     ImageSubstitutionManager.substitutions = substitutions
+                    if isNewSub {
+                        NotificationCenter.default.post(name: AvatarView.reloadAvatar, object: nil)
+                    }
                 }
             })
             .start())

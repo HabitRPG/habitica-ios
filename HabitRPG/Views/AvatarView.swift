@@ -19,13 +19,11 @@ enum AvatarViewSize: Int {
 
 @IBDesignable
 class AvatarView: UIView {
+    static let reloadAvatar = Notification.Name("reloadAvatar")
 
     @objc var avatar: Avatar? {
         didSet {
-            if let dict = avatar?.getFilenameDictionary(ignoreSleeping: ignoreSleeping) {
-                nameDictionary = dict
-            }
-            updateView()
+            reloadAvatar()
         }
     }
     
@@ -183,6 +181,19 @@ class AvatarView: UIView {
             addSubview(imageView)
             imageViews.append(imageView)
         })
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadAvatar), name: AvatarView.reloadAvatar, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc
+    private func reloadAvatar() {
+        if let dict = avatar?.getFilenameDictionary(ignoreSleeping: ignoreSleeping) {
+            nameDictionary = dict
+        }
+        updateView()
     }
     
     private func updateView() {
