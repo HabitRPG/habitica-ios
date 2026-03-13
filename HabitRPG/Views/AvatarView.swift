@@ -219,6 +219,9 @@ class AvatarView: UIView {
         guard let name = nameDictionary[type] else {
             return
         }
+        if name?.isEmpty != false {
+            return
+        }
         ImageManager.getImage(name: name ?? "") { image, _ in
             guard let image = image else {
                 return
