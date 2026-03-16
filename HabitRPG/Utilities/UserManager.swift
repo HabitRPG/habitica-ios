@@ -64,9 +64,9 @@ class UserManager: NSObject {
         disposable.add(contentRepository.getWorldState()
             .on(value: { worldState in
                 if let substitutions = worldState.currentEvent?.spriteSubstitutions {
-                    let isNewSub = ImageSubstitutionManager.substitutions.isEmpty
+                    let sublength = ImageSubstitutionManager.substitutions.count
                     ImageSubstitutionManager.substitutions = substitutions
-                    if isNewSub {
+                    if sublength != ImageSubstitutionManager.substitutions.count {
                         NotificationCenter.default.post(name: AvatarView.reloadAvatar, object: nil)
                     }
                 }

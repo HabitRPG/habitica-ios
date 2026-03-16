@@ -17,6 +17,7 @@ private struct QuestGoalViewUI: View {
             if let boss = quest.boss {
                 HStack {
                     Text(boss.name ?? "")
+                        .lineLimit(3)
                     Spacer()
                     HStack(spacing: 4) {
                         Text("\(boss.health)")
@@ -26,6 +27,7 @@ private struct QuestGoalViewUI: View {
                             .resizable()
                             .frame(width: 20, height: 20)
                     }.padding(4)
+                        .padding(.leading, 8)
                         .background(Color.red500)
                         .cornerRadius(UIConstants.largeCornerRadius)
                 }
@@ -34,7 +36,7 @@ private struct QuestGoalViewUI: View {
                 .padding(.trailing, 11)
                 .foregroundStyle(Color.red1)
                 .frame(maxWidth: .infinity)
-                    .frame(height: 50)
+                    .frame(minHeight: 50)
                     .background(.red100)
             }
             if let collects = quest.collect, collects.isEmpty == false {
