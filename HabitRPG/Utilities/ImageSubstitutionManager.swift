@@ -13,7 +13,7 @@ class ImageSubstitutionManager {
                 return petSubs[substitution] ?? name
             }
             if name.isEmpty {
-                return petSubs["noPet"] ?? name
+                return petSubs["noPetIOS"] ?? petSubs["noPet"] ?? name
             } else {
                 return petSubs["default"] ?? name
             }
