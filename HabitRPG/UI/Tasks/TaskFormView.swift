@@ -398,22 +398,49 @@ class TaskFormController: UIHostingController<TaskFormView> {
         task.counterUp = Int(string: viewModel.counterUp) ?? 0
         task.counterDown = Int(string: viewModel.counterDown) ?? 0
         
-        task.weekRepeat?.monday = viewModel.monday
-        task.weekRepeat?.tuesday = viewModel.tuesday
-        task.weekRepeat?.wednesday = viewModel.wednesday
-        task.weekRepeat?.thursday = viewModel.thursday
-        task.weekRepeat?.friday = viewModel.friday
-        task.weekRepeat?.saturday = viewModel.saturday
-        task.weekRepeat?.sunday = viewModel.sunday
         task.daysOfMonth = []
         task.weeksOfMonth = []
-        
+
         if let startDate = task.startDate {
-            if viewModel.dayOrWeekMonth == "week" {
-                task.weeksOfMonth.append(Calendar.current.component(.weekOfMonth, from: startDate)-1)
-            } else {
+            if viewModel.frequency == "monthly" && viewModel.dayOrWeekMonth == "week" {
+                let day = Calendar.current.component(.day, from: startDate)
+                let weekIndex = (day - 1) / 7
+                task.weeksOfMonth.append(weekIndex)
+
+                let dayOfWeek = Calendar.current.component(.weekday, from: startDate)
+                task.weekRepeat?.monday = (dayOfWeek == 2)
+                task.weekRepeat?.tuesday = (dayOfWeek == 3)
+                task.weekRepeat?.wednesday = (dayOfWeek == 4)
+                task.weekRepeat?.thursday = (dayOfWeek == 5)
+                task.weekRepeat?.friday = (dayOfWeek == 6)
+                task.weekRepeat?.saturday = (dayOfWeek == 7)
+                task.weekRepeat?.sunday = (dayOfWeek == 1)
+            } else if viewModel.frequency == "monthly" {
                 task.daysOfMonth.append(Calendar.current.component(.day, from: startDate))
+                task.weekRepeat?.monday = viewModel.monday
+                task.weekRepeat?.tuesday = viewModel.tuesday
+                task.weekRepeat?.wednesday = viewModel.wednesday
+                task.weekRepeat?.thursday = viewModel.thursday
+                task.weekRepeat?.friday = viewModel.friday
+                task.weekRepeat?.saturday = viewModel.saturday
+                task.weekRepeat?.sunday = viewModel.sunday
+            } else {
+                task.weekRepeat?.monday = viewModel.monday
+                task.weekRepeat?.tuesday = viewModel.tuesday
+                task.weekRepeat?.wednesday = viewModel.wednesday
+                task.weekRepeat?.thursday = viewModel.thursday
+                task.weekRepeat?.friday = viewModel.friday
+                task.weekRepeat?.saturday = viewModel.saturday
+                task.weekRepeat?.sunday = viewModel.sunday
             }
+        } else {
+            task.weekRepeat?.monday = viewModel.monday
+            task.weekRepeat?.tuesday = viewModel.tuesday
+            task.weekRepeat?.wednesday = viewModel.wednesday
+            task.weekRepeat?.thursday = viewModel.thursday
+            task.weekRepeat?.friday = viewModel.friday
+            task.weekRepeat?.saturday = viewModel.saturday
+            task.weekRepeat?.sunday = viewModel.sunday
         }
         
         task.checklist = viewModel.checklistItems
