@@ -17,6 +17,7 @@ struct PetItemsFlowView<LeftIcon: View, MiddleIcon: View, RightIcon: View>: View
     var isleftIconActive = true
     var isRightIconActive = true
     
+    @Environment(\.scenePhase) var scenePhase
     @State private var highlightedStep = 0
     
     var body: some View {
@@ -59,7 +60,8 @@ struct PetItemsFlowView<LeftIcon: View, MiddleIcon: View, RightIcon: View>: View
         .animation(.easeInOut(duration: 0.2), value: highlightedStep)
         .padding(.top, 70)
         .padding(.horizontal, 32)
-        .task {
+        .task(id: scenePhase) {
+            guard scenePhase == .active else { return }
             repeat {
                 withAnimation {
                     highlightedStep += 1
