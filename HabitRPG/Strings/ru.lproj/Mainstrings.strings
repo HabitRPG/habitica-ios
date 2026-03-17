@@ -1583,7 +1583,7 @@
 "strictly_necessary" = "Очень важно";
 "login.continue_with_apple" = "Продолжить с Apple";
 "login.continue_with_google" = "Продолжить с Google";
-"login.what_call_you" = "Напишите никнейм.";
+"login.what_call_you" = "Как нам к вам обращатся?";
 "join_habitica" = "Присоединяйся в Habitica";
 "settings.daily_reminder_permission_needed" = "Пожалуйста, включите уведомления в Настройках, чтобы использовать ежедневные напоминания";
 "settings.privacy_preferences" = "Настройки Конфиденциальности";
@@ -1606,3 +1606,6 @@
 "edit_tags" = "Редактировать теги";
 "add_tag" = "Добавить новый тег";
 "unlocked_another_checkin_prize" = "Вы разблокировали еще один приз за регистрацию!";
+"boss" = "Босс";
+"mount" = "Скакун";
+"logins" = "Входы";
