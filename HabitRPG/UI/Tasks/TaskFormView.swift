@@ -172,7 +172,7 @@ struct TaskFormView: View {
                             }
                             if viewModel.taskType == .daily && viewModel.task?.id != nil {
                                 TaskFormSection(header: Text(L10n.Tasks.Form.adjustStreak.localizedCapitalized),
-                                                content: PlusMinusStepperView(amount: $viewModel.value, icon: EmptyView(), minAmount: 0), backgroundColor: .clear)
+                                                content: PlusMinusStepperView(amount: $viewModel.streak, icon: EmptyView(), minAmount: 0), backgroundColor: .clear)
                             } else if viewModel.taskType == .habit && viewModel.task?.id != nil {
                                 
                                 TaskFormSection(header: Text(L10n.Tasks.Form.adjustCounter.localizedCapitalized),
@@ -394,7 +394,7 @@ class TaskFormController: UIHostingController<TaskFormView> {
         task.tags = viewModel.selectedTags
         task.attribute = viewModel.stat
         
-        task.streak = Int(string: viewModel.streak) ?? 0
+        task.streak = viewModel.streak
         task.counterUp = Int(string: viewModel.counterUp) ?? 0
         task.counterDown = Int(string: viewModel.counterDown) ?? 0
         
