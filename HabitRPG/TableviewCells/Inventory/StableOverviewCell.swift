@@ -41,7 +41,7 @@ class StableOverviewCell: UICollectionViewCell {
             textLabel?.numberOfLines = 2
             countLabel?.isHidden = true
             countLabelHeightConstraint.constant = 0
-            var substitutedName = ImageSubstitutionManager.substituteSprite(name: item.imageName, context: "pets")
+            var substitutedName = ImageSubstitutionManager.substituteSprite(name: item.imageName.replacingOccurrences(of: "stable_", with: ""), context: "pets")
             if !substitutedName.starts(with: "stable_") {
                 substitutedName = "stable_\(substitutedName)"
             }
