@@ -55,15 +55,20 @@ public class HabiticaServerConfig {
         case "custom":
             let customUrl = URL(string: UserDefaults.standard.string(forKey: "customUrl") ?? "")
             let scheme = customUrl?.scheme ?? "https"
-            let host: String?
+            let hostname: String?
             
             if #available(iOS 16.0, *) {
-                host = customUrl?.host()
+                hostname = customUrl?.host()
             } else {
-                host = customUrl?.host
+                hostname = customUrl?.host
             }
             
-            return ServerConfiguration(scheme: scheme, host: host ?? "", apiRoute: "api/\(Constants.defaultApiVersion)")
+            var host = hostname ?? ""
+            if let port = customUrl?.port {
+                host = "\(host):\(port)"
+            }
+            
+            return ServerConfiguration(scheme: scheme, host: host, apiRoute: "api/\(Constants.defaultApiVersion)")
         default:
             return HabiticaServerConfig.production
         }
